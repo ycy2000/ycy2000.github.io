@@ -1,0 +1,62 @@
+text-decoration : underline;
+text-decoration : line-through; 쇼핑몰 세일할때 예전꺼 중간 줄 그을때
+  태그자체 <del>
+text-decoration : overline; 위에 줄 그을때
+text-decoration : underline 2px;
+text-decoration : underline red 2px;
+text-decoration : underline wave red 2px;
+
+<em> : 강조, 기울임.
+<address> &copy; all right reserved. </address> 기울임
+기울임 해제 : font-style=normal; 기울임 : font-style=italic; /* oblique */
+
+text-align : 글씨나 인라인 요소(글씨 성격이 있는 요소)
+text-align : left; 기본값
+text-align : center;
+text-align : right;
+text-align : justify;※ word-break: break-all;
+justify와 break-all 같이 써주면 균등분할과 단어일부 줄넘김이 동시에 된다.
+
+---------------------
+자간 : letter-spacing
+공백간격 : word-spacing
+줄간격 : line-height --> 간격생기면 위아래에 line-height 1/2씩
+
+블록안의 텍스트 : text-aling:center;
+한줄짜리 텍스트이면 : line-height를 블록의 높이로 지정하면 된다.
+---------------------
+text-transform : 글씨 변신
+text-transform : uppercase; 모두 대문자
+text-transform : lowercase; 모두 소문자
+text-transform :  capitalize; 단어 앞글자만 대문자
+---------------------
+수직정렬 vertical align, 인라인 요소끼리 위, 아래, 간격을 맞춤.
+쓰는경우가 정해져있다. 인라인 요소가 연달아 나올때 크기가 달라서 안맞을때..
+vertical-align: baseline; 글자의 baseline 위치에
+vertical-align: sub; 부모요소의 아래 첨자 위치에
+vertical-align: super; 부모요소의 위 첨자 위치에
+vertical-align: top;부모요소의 상단에
+vertical-align: text-top; 부모요소의 글꼴 요소의 상단 위치에
+vertical-align: middle; 부모요소의 소문자를 기준으로 중간에
+vertical-align: bottom; 부모요소의 아래쪽에 맞춤
+vertical-align: text-bottom; 부모요소의 글꼴의 아래쪽에
+
+정밀한 위치를 지정할 때는 px  값을 지정
+vertical-align:0; baseline에서
+vertical-align: 20px; baseline에서 20px 올라온거
+
+이미지 일때도 쓰인다. 버그처럼 블록요소안에 img태그를 넣으면 아래에
+공간이 생긴다. vertical-aling: top; 하면 공백이 사라진다!!??
+
+
+
+
+
+
+
+
+
+
+
+
+

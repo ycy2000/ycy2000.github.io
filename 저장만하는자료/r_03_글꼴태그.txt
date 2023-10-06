@@ -1,0 +1,36 @@
+truetype형식 및 형식 .TTF, 오픈타입 .OTF, 트루타입 컬렉션 .ttc, 포스트스크립트 
+유형 .pfb _ .pfm.
+
+글꼴파일 다운로드 - 압축풀기 - 설치하면 C:\Windows\Fonts 폴더에 있다.
+??설치말고 복사 붙여넣기해도 되는것 같다.
+폰트가 윈도우에 많으면 부팅속도가 느려진다.
+
+웹디자인용은 별도의 폴더에 넣어 관리하면 편하다.
+??설치가 되어야 로컬 편집시 적용하여?? 아니면 링크?
+
+utf-8 형식으로 글자조합할테니 브라우저도 그거대로 해석해서 글자깨짐없게해줘
+
+<title>
+title 태그를 빠트리면 브라우저는 HTML 문서로 인정하지 않음
+
+<meta name="keywords" content="">
+대표키워드는
+
+<meta name="description" content="">
+대표설명은
+
+<meta name="viewport" content="">
+뷰포트는
+
+<meta name="robots" content="">
+검색엔진 로봇들에게도 공고사항을 줄려면
+
+https://blog.munilive.com/posts/meta-tag-property-and-use-method.html
+메타태그(META TAG) 속성정리 및 사용 방법
+
+img태그로 넣으면 세부조정 안되니 css에서 넣는다.
+
+강조 em,
+
+나의 html코드 검사 : w3 validator
+vaildate by direct input에 ctrl+a 모든 내 html코드 복붙 - check

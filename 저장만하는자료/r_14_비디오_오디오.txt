@@ -1,0 +1,70 @@
+비디오 파일
+avi : audio video interleave. 윈도 기반 컴퓨터에서 재생
+wmv : window media video. 실시간 전송 비디오에 적합
+mpeg : mpg, mpeg, mp4, moving picture experts group의 약자. 가장 평범하고 호환성이
+          좋아 사양이 낮은 컴퓨터에서도 원활히 재생.
+quick time : mov, 애플에서 개발한 mac에서 사용. quicktime player에서 재생
+flash : swf, adobe에서 개발한 포맷, flash player가 있어야 재생.
+
+오디오 파일
+mp3 : mpeg layer 3의 약자. 음량대비 음질이 좋아 대중화된 포맷
+wav : ibm과 ms에서 공동개발한 포맷, 압축을 하지 않아 음질은 좋으나 용량이 크다.
+ogg : 특허가 없어 무료 사용 가능. mp3보다 압축율이 좋고 cd음질에 가깝게 구현
+
+HTML5에서 지원가능한 비디오 포맷
+파일형식  확장자   마임타입(MIME-type)  지원브라우저
+   MP4    .mp4    video/mp4          ie9, 파이어폭스10, 크롬6, 사파리6
+   OGG    .ogg    video/ogg          파이어폭스10, 크롬6, 오페라 10.6
+   WEBM   .webm   video/webm         파이어폭스10, 크롬6, 오페라 10.6
+------------------------------------
+웹사이트 트래픽이 300메가인데 30메가짜리 비디오를 넣으면 10명만 들어와 있어도 다운된다.
+
+이미지태그 사용법과 같습니다.
+<video src="video/vivaldi.mp4"></video>
+1.플레이 버튼이 없다.비디오를 컨트롤할수 있는 controls가 있어야한다.
+  <video src="video/vivaldi.mp4" controls>
+    <p>이 브라우저는 video 요소를 지원하지 않습니다.</p>
+  </video>
+  지원하는 브라우저는 p 태그가 보이지 않습니다.
+  브라우저마다 ui가 다른데 같게 하고싶으면
+  videojs.com에서 start 사용법코드 참고.
+2.<video controls>
+    <source src="video/vivaldi.ogv" type="video/ogv"/>
+    <source src="video/vivaldi.mp4" type="video/mp4"/>
+    <source src="video/vivaldi.webm" type="video/webm"/>
+    <p>이 브라우저는 video 요소를 지원하지 않습니다.</p>
+  </video>
+3.열자마자 플레이되게 하고 싶다.<video controls autoplay>
+  ?정책이바꼈다. 소리가 있는 영상은 자동재생 하면 안된다. 웹 접근성에 어긋난다.
+   못듣는 케이스, 안보이는 케이스, 스크랩리더가 메뉴를 읽어주는데 읽어줄수 없다.
+  ->애초에 오디오를 빼고 하든가, 음소거해라. 
+   <video controls autoplay muted>
+4.영상이 끝나면 반복, loop <video controls autoplay muted loop>
+  반복되는 영상이 큰 영상의 배너에 넣는 경우가 있다.
+5.넓이와 높이 : px는 쓰지 않습니다. width="347" height="240" css에서 합니다.
+  이미지에다가 width와 height를 잘 않넣는 것처럼 css에서 합니다.
+   <video controls autoplay muted loop>
+6.중간에 하이라이트 화면을 맨앞에 정지화면으로 쓰고 싶으면. pooster
+  비디오 사이즈와 같은 크기의 스틸컷을 넣는것. autoplay를 빼겠습니다.
+   <video controls muted loop poster="video/intro.jpg">
+  이렇게 하면 플레이가 되기전에 poster의 화면이 보인다.
+7.비디오나 오디오가 다운로드가 다 되어야 플레이 되는데 미리 다운로드 할것인가.
+  preload  <video controls muted loop poster="video/intro.jpg" preload="auto">
+
+오디오도 비디오와 같습니다. type을 반드시 넣어줘야 합니다.
+<audio controls>
+  <source src="audio/Honey_bee_01_web.ogg" type="audio/ogg">
+  <source src="audio/Honey_bee_01_web.mp3" type="audio/mpeg">
+  <p>이 브라우저는 audio 요소를 지원하지 않습니다.</p>
+</audio>
+
+
+
+
+
+
+
+
+
+
+

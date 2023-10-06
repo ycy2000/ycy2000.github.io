@@ -1,0 +1,15 @@
+-----------------------------------------------------------------------------------
+*변수 형식을 입력하지 않으면 기본으로 Variant로 설정됩니다.
+Dim Foo As String, Bar As Double, Bar As Variant
+Dim Arr(0 To 20) As Double
+★ReDim 은 동적배열 Dim Arr() 선언후 사용
+Dim Arr() As Double '동적배열:크기가 정해지지 않은 배열
+ReDim Arr(0 To 20) As Double '여기서 변수사용 가능
+ReDim Arr(0 To 20) 'AS 변수유형 생략,여기서 변수사용 가능
+Redim 코드에는 Redim Preserve라는 옵션이 있다. 
+Preserve를 붙이면 기존의 배열 내부 데이터는 유지하면서 마지막 차원의 크기만 
+변경할 수 있다. 
+ReDim Preserve a(0 TO 100) '(변수가능) 작게하면 지워지는 곳이 있게된다.
+
+Dim 변수명(10) = Dim 변수명(0 TO 10) '0 부터 시작
+Dim 변수명(0 TO 3, 0 TO 3) = Dim 변수명(3,3) '0 부터 시작

@@ -1,0 +1,11 @@
+-----------------------------------------------------------------------------------
+Application.Workbooks.Open Filename:="C:\Users\cysti\Desktop\openExcel\sampleA.xlsx"
+Application.Workbooks.Open Filename:= ThisWorkbook.Path & "\sampleA.xlsx"
+
+닫기
+ActiveWorkbook.Close
+ActiveWorkbook.Close false '저장하지 않고 파일 닫기
+
+
+
+

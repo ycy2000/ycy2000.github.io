@@ -1,0 +1,52 @@
+-----------------------------------------------------------------------------------
+
+★SPLIT(값,"구분자") : 값 안에 구분자가 없으면 값 그대로 출력됨.
+★SPLIT 결과를 변수에 담을때 ★VARIANT
+★SPLIT 결과=결과일때, 첫정보는 결과(0), ★값이 없을때 : UBOUND(결과,1)=-1
+★따라서 LBOUND(결과,1)=0, 결과개수는 UBOUND(결과,1)+1
+
+★반복작업 중, 가로1줄 RANGE를 배열에 담고(2차원배열) 한줄만 JOIN하기 예제
+
+Sub SPLIT연습()
+Sheets("코딩연습").Select
+Range("N1:S6").ClearContents
+Dim 셀 As Range               '작업범위 FOR문 각셀
+Dim 작업범위 As Range         '반복작업할 범위
+Set 작업범위 = Range("J1:J6") '연습범위(J열)
+Dim 작업결과배열() As String  'SPLIT 결과값
+Dim 작업결과배열순번 As Byte
+Dim SPLIT결과개수 As Byte
+Dim SPLIT최대값 As Byte
+Dim 반복 As Byte
+'작업결과배열의 1차원의 폭을 지정.
+'PRESERVE는 마지막차원만 추가 가능(줄임 안됨)
+'SPLIT 결과값을 담기.
+For Each 셀 In 작업범위
+    작업결과배열순번 = 작업결과배열순번 + 1
+    ReDim Preserve 작업결과배열(1 To 작업범위.Cells.Count, 1 To 작업결과배열순번)
+    If 셀 = "" Then
+       '건너뜀
+       Else
+         'UBound(Split(셀, "_"), 1):값없을때 -1, 1개일때 0,....
+          SPLIT결과개수 = UBound(Split(셀, "_"), 1) + 1
+          If SPLIT결과개수 > SPLIT최대값 Then SPLIT최대값 = SPLIT결과개수
+          For 반복 = 1 To SPLIT결과개수
+              작업결과배열(작업결과배열순번, 반복) = Split(셀, "_")(반복 - 1)
+          Next
+    End If
+Next
+Range("N1").Resize(작업결과배열순번, SPLIT최대값) = 작업결과배열
+End Sub
+
+Dim 스플리트 As Variant
+스플리트 = Split(쉼표구분자로묶인뿌릴JOIN결과10개값, ",")
+Range("A11").Resize(10, 1) = Application.Transpose(Split(쉼표구분자로묶인뿌릴JOIN결과10개값, ","))
+End Sub
+
+'★★Dim 스플리트 As Variant★★
+스플리트 = Split("2023-12-50", "-")
+'★★SPLIT 값 개수.★★
+MsgBox LBound(스플리트, 1) '0, 값이 없으면 -1.
+MsgBox UBound(스플리트, 1) '2 ★★ 0 부터 시작이니 UBOUND(변수,1)+1
+'★!!★구분문자가 없으면 !!원래문자가 출력, ★!!★문자가 ""이면 에러
+Range("Q2").Resize(1, UBound(Split(문자, "_구분")) + 1) = Split(문자, "_구분")

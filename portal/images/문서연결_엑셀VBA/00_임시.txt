@@ -1,0 +1,27 @@
+셀하나 선택시 
+columnwidth
+width
+
+가로로 여러개 선택시
+columnwidth ==> null
+columns.width  ==> 전체폭
+columns.widths  ==> 에러
+
+
+Dim intEndRow As Integer
+Dim rngList As Range
+
+intEndRow = Range("B10000").End(xlUp).Row
+Set rngList = Range("B3:K" & intEndRow)
+
+With Me.ListBox1
+    .RowSource = rngList.Address
+    .ColumnCount = 10
+    .ColumnHeads = True
+    .ColumnWidths = "40;30;40;30;25;30;30;30;60;40;"
+    .TextAlign = fmTextAlignCenter
+End With
+
+
+
+Sheets("재고현황").Range("AP1:BA1").ColumnWidth = Array(Sheets("모듈").Range("AM115:AX115"))

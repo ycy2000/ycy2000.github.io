@@ -1,0 +1,15 @@
+<pre> preserve 보존
+----------------------------
+css
+white-space: nowarp; --> 줄넘김 하지마. 삐져나감
+white-space: pre; --> pre 태그처럼 됨. 삐져나감.
+white-space: pre-wrap; --> pre 태그처럼 됨. 자동줄넘김.
+
+white-space: pre-line; --> 줄앞에 공백은 없애고. 줄넘김만 보존
+-------------------
+text-indent: -9999em; 글씨만 보내버린다... 글자 안쓰면되지않나.
+h3 a {background-image:url(img/logo.png);
+인라인 요소는 width, height 줘도 적용안됨.
+img에 display:block;
+.. img넣지않고 img를 배경으로넣고 글씨를 멀리 보내는 이유
+글자가 검색이 잘된다....대부분 이렇게 처리한단다. image replacement IR 기법

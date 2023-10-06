@@ -1,0 +1,49 @@
+★ 기본글자크기 : crtl + , > font size / 메뉴글자크기 : zoom 기본0  : 전체적 적용
+
+
+VSCode 설정으로 들어 간 후
+
+★ 새로운 html파일 만들고 : ! 치고 tab 누르면 기본 html 내용 생성
+
+숏컷키/커랜팔랫트/ 필수 익스텐션 10개 추천 : 드림코딩 https://www.youtube.com/watch?v=bS9yTI2fC0w
+  커맨팔래트:ctrl + shift + p : 우측에 숏컷키
+  1.material theme : vs code 배경색
+  2.material icon theme : 아이콘 예쁘게 ?
+  3.prettier - code formatter : 셑팅할건데 ctrl + , (콤마) 또는 커맨팔레트에서 setting // ctrl + 쓰고 prettier > 우측에 항목나옴
+     셑팅창에서 save > editor:format on save 체크(프리티어와 관계없음)
+     셑팅창에서 prettier : 포맷을 어떻게 할건지 세부적으로 설정할수 있다.
+         맨아래에서 조금위 : prettier:tab width>>2 (탭입력시 2칸띄움).
+     셑팅창에서 prettier quote : 포맷을 어떻게 할건지 세부적으로 설정할수 있다.
+         자바스크립트 타입스크립츠 quote style : auto >> single (못찾겠음). 대부분 single quote 사용한단다.
+  4.bracket pair colorizer : 괄호 가독성 높여줌 (기본제공되어서 안깔아도 된다고 뜬다)
+  5.auto rename tag : 앞에 태그 바꾸면 뒤어꺼 자동 바꿈
+  6.★css peek : css 찾기 도움. 깔고나서 아이디 또는 클래스에 crtl + 마우스클릭 하면 css 파일열어서 위치로 가준다.
+     2023-07-06 유지관리가 안되어 사용아된다네. [된다, 아래꺼도 된다]
+     css navigation 깔았는데 : 아이디나 클래스에 위치해서 우클릭해서 go to definition 클릭(F12)
+
+     CDN으로 연결되면 안되고 : 다운받은 bootstarp.css파일을 하위폴더 어디엔 붙여넣으면 된다 (여결안해도되네?)
+7.html css support : 아이디나 클래스 자동완성.
+8.live sever : 5000포트로 들어갔다고 자꾸 에러남.
+9.내장기능 markdown preview : md파일 수정하면서 바로 결과보기. md파일 편집상태에서 커맨팔레트는 현재상태에서 가능한것 보여줌
+   커맨팔레트 ctrl + shift + p > preview
+
+------------------
+# 파일이 닫히고 열리는것 : preview모드이기 때문?
+  1.ctrl + , : 설정. 2.검색 enablepreview 3.workbench > editor:enable preview 체크 해제
+   ★ 표시줄 우클릭 탭사용 체크해제하면 위처럼 보인다. > 맨우측 ... 탭사용
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   사용 가능해서</p>

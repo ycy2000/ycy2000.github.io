@@ -1,0 +1,101 @@
+LISTBOX공통
+ListBox1.ListCount '개수
+ListBox1.List(0, 0) '첫번째행 첫번째값
+ListBox1.ColumnCount '가로항목수
+ListBox1.listindex  '-1:선택안함,0:첫째행
+ListBox1.ColumnCount = 10
+ListBox1.ColumnHeads = True 'true일때는 범위의 한칸위가 고정정보로 추가로 들어간다.
+ListBox1.ColumnWidths = "40;30;40;30;25;30;30;30;60;40;"
+ListBox1.TextAlign = fmTextAlignCenter '각각의 clumn 폭 안에서 가운데 정렬
+
+
+★이런식으로 전달해야하는데 : ColumnWidths = "40;30;40;30;25;30;30;30;60;40;"
+sub 범위에서listbox_column과_columwidths_구하고적용하기()
+Sheets("입고").Select
+Dim s3_범위 As Range
+Set s3_범위 = Range("a3:r10") '★
+Dim column개수 As Byte
+
+Dim columnwidths전달값 As String
+Dim 셀 As Range
+s3_범위.Rows(1).Select '가로로 한줄. selection.rows(1)은 셀 반복이 안된다.
+For Each 셀 In Selection
+    columnwidths전달값 = columnwidths전달값 & 셀.Width & ";"
+Next
+
+column개수 = s3_범위.Columns.Count
+
+ListBox1.ColumnCount = column개수
+ListBox1.ColumnWidths = columnwidths전달값
+ListBox1.RowSource = s3_범위.Address 
+'address는 a1:b9 형태일것인데 폼의 위치가 범위시트와 다를때는 시트이름을 넣어줘야함.
+'시트이름 + ! + address 예)리스트!a1:b9 형식인데, 
+'dim 앞부분 as string / 앞부분="리스트!" / listbox1.RowSource=앞부분 & s3_범위.Address 등 전달방법은 편하게 정하면 됨.
+end sub
+-----------------------------------------------------------
+★지나가는길에.... 1차원배열의 경우만 join 활용됨. 
+1)예제1
+Dim 문자열 As String
+문자열 = Join(Array(1, 2, 3), ";")
+결과 : 1;2;3
+
+2)예제2
+Dim 배열(1 To 3) As String
+배열(1) = "일"
+배열(2) = "이"
+배열(3) = "삼"
+MsgBox Join(배열, ";")
+결과 : 일;이;삼
+
+3)배열은 따로 정리한다.
+-----------------------------------------------------------
+★listbox.rowsource : 범위(리스트박스에서 편집안됨)
+  rowsource : 셀범위를 가지고온다. 셀범위를 편집해야 listbox가 변경되어 보인다.
+  1. rowsource : ="리스트!c2:e4"또는 "c2:e4" 형식으로 주소를 전달해야함.
+  2. 배열안됨. .value안됨
+  3. 수정안됨 ==> add 안됨. Clear 안됨. LST박스내 직접수정 안됨. 
+  4. 시트 주소내 값 변경시 폼의 listbox에도 변경됨
+  ListBox1.RowSource = Range("c2:e4").Address
+  ListBox1.RowSource = "c2:e4" 
+  ListBox1.RowSource = "=c2:e4"  '=를 넣어도 됨.
+  ListBox1.RowSource = "리스트!c2:e4" 
+
+-----------------------------------------------------------
+★listbox.list : 값 (독립적인 값이 되어 리스트박스에서 편집됨)
+  list : listbox에 독립적인 정보를 전달함.
+  list : ADD ○, CLEAR ○, LST박스수정 ○, RANGE값은 VALUE로 전달.
+  listbox1.column 사용안하겠다.
+  불러오자마자 LISTINDEX가 0으로? 인식되는 문제?
+  ListBox1.add ' 마지막에 빈줄하나 추가'listindex 값 변화없음
+  ListBox1.add "입력할값" '추가후 첫정보입력
+  ListBox1.clear '전부 지움
+  ListBox1.RemoveItem (ListBox1.ListIndex) 
+  ListBox1.List = Range("c2:e4").value
+  ListBox1.List = Range("C9:E9,C10:E10").Value '★떨어져 있는 다중범위 안됨 첫정보만 나옴
+  ▶UNION은 된다. (폭이 맞아야함 : ★묶어지면 하나의 범위가 되는것 같다.)
+  ListBox1.List = Union(Range("C9:E9"), Range("C10:E10")).Value
+  ▶배열이 된다. (셀범위는 2차원배열이다. 한줄짜리도 세로1칸 가로는 칸수만큼의 범위다.)
+  ListBox1.list = 배열() 
+   초기화선언 DIM은 1차원의 3, 3차원의 8까지 변수를 쓸수 있다.
+  그렇지만 REDIM PRESERVE할때는 마지막 차원의 마지막 값만 변수지정 가능.
+  배열(1 to 3, 1 to 8) : REDIM PRESERVE는 오른쪽 맨끝 숫자만 변수지정가능.세로3행, 가로8칸
+  lbound(배열, 차원번호) : 차원(왼쪽1, 오늘쪽2) 개수가아니라 첫번호. 음수도 가능.
+  ubound(배열, 차원번호) : 차원(왼쪽1, 오늘쪽2) 개수가아니라 마지막번호. 음수도 가능.
+  정수(양수음수) 순번으로 매겼을때 배열개수는 ubound-Lbound+1
+  UBOUND(배열,1):1차배열의 최대값(1TO개수)로 사용시 개수로 사용가능.Lbound=최소값=1
+  UBOUND(배열,2):2차배열의 최대값(1TO개수)로 사용시 개수로 사용가능.Lbound=최소값=1
+  1차원은 오른쪽으로, 2차는 1차는 아래쪽개수 2차는 오른쪽개수
+   마지막차원이 오른쪽으로 간다... 따라서 표처럼 아래로 뿌릴때  TRANSPOSE   
+  셀.resize(UBOUND(배열,2),UOUND(배열,1) : 결과범위지정.
+  셀.resize(UBOUND(배열,2),UOUND(배열,1) = APPLICATION.TRANSPOSE(배열)'행열바꿈 필요시.
+
+-----------------------------------------------------------
+★COMBOBOX
+  ComboBox1.List(0, 0) : (세로0부터, 가로0부터) 첫번째행, 첫번째값.
+  수정안되고 선택되는 셑팅 : STYLE > 2 - fmStyleDropDownList, 기본:0 - fmStyleDropDownCombo
+  combobox1.value : 가로세로 위치로 지정되는 값고 관계없음. 콤보박스에 보이는 값.
+  combobox1.value 제외한 위치값 (세로,가로) 으로 표현될때  VALUE를 쓰면 에러난다.
+   값 = ComboBox1.List(0, 0).value : 에러남 >> 변경 값=ComboBox1.List(0, 0)
+   저장을 하지 않는 범위라도 에러안남. 공백이 출력됨
+  MsgBox ComboBox1.List(10, 10)
+   정보개수 : ComboBox1.ListCount

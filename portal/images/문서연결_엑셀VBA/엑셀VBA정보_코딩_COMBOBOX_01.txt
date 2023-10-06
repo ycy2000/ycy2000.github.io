@@ -1,0 +1,29 @@
+-----------------------------------------------------------------------------------
+COMBOBOX
+ComboBox1.List(0, 0) : (세로0부터, 가로0부터) 첫번째행, 첫번째값.
+수정안되고 선택되는 셑팅 : STYLE > 2 - fmStyleDropDownList, 기본:0 - fmStyleDropDownCombo
+
+combobox1.value : additem으로 입력된 값과 관계없음 박스에 보이는 값(수정된 값 포함).
+Dim 값 As String
+값 = ComboBox1.List(0, 0).value : 에러남 >> 변경 값=ComboBox1.List(0, 0)
+
+저장을 하지 않는 범위라도 에러안남. 공백이 출력됨
+MsgBox ComboBox1.List(10, 10)
+
+정보개수 : ComboBox1.ListCount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

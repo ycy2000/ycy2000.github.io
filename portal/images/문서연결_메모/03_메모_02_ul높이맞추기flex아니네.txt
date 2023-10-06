@@ -1,0 +1,97 @@
+-----------------------------------------------------------------------------------
+데스크탑 : ul 넓이:
+
+
+
+
+
+
+
+○ 예를들어 10개정도의 박스가 있는데 화면크기에 따라 3개 혹은 4개가 들어간다고 가정할때
+    각각의 줄(3~4개 박스가 들어있는)의 최대 박스 높이로 같게 해주는 작업이
+    알아보니 display:flex와는 관계가 없다....
+
+○ 1. 부모요소에 {justify-content: space-between;}
+
+  2.자식요소에 {width:필요한폭; display:inline-block;}
+
+      자식요소에 {vertical-align: text-top;}  텍스트위치의 top, top은 요소의 border아래쪽
+
+    스트립트로 폭에 따라, width를 변경해줄수 있겠다.
+
+  3.자식요소를 돌면서 ?? 버튼크기가 유동적이니 버튼위치를 기준잡아야 된다??
+
+const target = document.getElementById('target'); // 요소의 id 값이 target이라 가정
+const clientRect = target.getBoundingClientRect(); // DomRect 구하기 (각종 좌표값이 들어있는 객체)
+const relativeTop = clientRect.top; // Viewport의 시작지점을 기준으로한 상대좌표 Y 값.
+
+const target = document.getElementById('target'); // 요소의 id 값이 target이라 가정
+​
+const clientRect = target.getBoundingClientRect(); // DomRect 구하기 (각종 좌표값이 들어있는 객체)
+const relativeTop = clientRect.top; // Viewport의 시작지점을 기준으로한 상대좌표 Y 값.
+​
+const scrolledTopLength = window.pageYOffset; // 스크롤된 길이
+//const scrolledTopLength = pageYOffset; // window 객체 없이 pageYOffset 메서드를 써도 가능하다.
+const absoluteTop = scrolledTopLength + relativeTop; // 절대좌표
+
+1. 요소의 절대좌표 구하기.  
+const absoluteTop = window.pageYOffset + element.getBoundingClientRect().top;
+2. Viewport의 시작지점을 기준으로한 상대좌표
+const relativeTop = element.getBoundingClientRect().top;
+3. 부모요소의 시작지점을 기준으로한 상대좌표
+// 1번에서 안내한 절대좌표 구하는 방법을 함수로 구현
+function getAbsoluteTop(element) {
+   return window.pageYOffset + element.getBoundingClientRect().top;
+}
+​
+const parentElement = element.parentElement;
+const parentAbsoluteTop = getAbsoluteTop(parentElement);
+const absoulteTop = getAbsoluteTop(element);
+​
+const relativeTop = absoluteTop - parentAbsoluteTop;
+
+
+function 임시함수2() {
+  // window.scrollY
+  var ul들 = document.querySelectorAll('#모든UL그룹묶음 button')
+  var ul높이값;
+  alert(ul들.length);
+  if (ul들.length==0) {
+    alert('변수개수 0일때 ul들.length : ' + ul들.length);
+  }else {  // ul이 있을때
+      for (i==0 ; i<ul들.length; i++) {
+
+          if (i==0) {ul높이값=(i+1) + '번째 UL높이 : ' + ul들[i].getBoundingClientRect().top + '\n'; 
+          }else{
+            ul높이값=ul높이값 + (i+1) + '번째 UL높이 : ' + ul들[i].getBoundingClientRect().top + '\n'; 
+          }
+
+      } 
+    }
+
+    alert(ul높이값);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+Sub 폼이미지컨트롤에그림넣기()
+'    그림범위.CopyPicture(모양, 형식)
+'    모양 : xlScreen(화면에 표시된대로), xlPinter(미리보기에 표시된대로)
+'    형식 : xlPicture(그림,벡터 형식의 png,wmf), xlBitmap(비트맵(bmp,jpg,gif))
+'    ★결과가 흐릴때 윈도우 화면배색 : 화면글꼴의 가장자리를 다듬는데… 해제 연결그림 흐릿한거 선명하게됨.
+'    ★그러나 일반화면이 거칠어진다.
+'1.범위를 그림으로 만들어서 파일로 내보내기
+'  A.그림으로만들 범위지정 폭알아두기
+Sheets("모듈").Select
+Dim s1_그림범위 As Range
+Set s1_그림범위 = Range("A3:I8") '★
+Dim s1_그림HEIGHT As Double
+Dim s1_그림WIDTH As Double
+s1_그림WIDTH = 그림범위.Width
+s1_그림HEIGHT = 그림범위.Height
+
+'  B.그림복사 : paste하면 나오는 상태 (그냥 셀 등에 붙여서 사용해도됨, 지금은 폼 이미지컨트롤에 그림 넣는 작업중)
+그림범위.CopyPicture xlScreen, xlBitmap
+'    그림범위.CopyPicture appearance:=xlScreen, format:=xlBitmap
+'  C.그림이름 및 파일경로 설정. 같은이름 파일있으면 삭제(쌓이는거 방지)
+Dim s1_그림이름 As String
+Dim s1_그림내보낼경로및파일이름 As String
+s1_그림이름 = "임시이름"
+s1_그림내보낼경로및파일이름 = ThisWorkbook.Path & Application.PathSeparator & s1_그림이름 & ".jpg"
+On Error Resume Next
+Kill s1_그림내보낼경로및파일이름 '이미 존재하는 그림 지우기 (없으면 에러나기때문에)
+On Error GoTo 0
+'  D.복사한내용 paste할 빈챠트 만들고 ☆챠트.chart☆ 부분에 paste하고 파일로 내보내고 필요없는 챠트는 지운다.
+Dim s1_그림담을챠트 As ChartObject
+Set s1_그림담을챠트 = ActiveSheet.ChartObjects.Add(0, 0, 그림WIDTH, 그림HEIGHT)
+s1_그림담을챠트.Chart.Paste
+s1_그림담을챠트.Chart.Export 그림내보낼경로및파일이름
+s1_그림담을챠트.Delete
+
+'2.그림파일 불러오기 (폼안에 image컨트롤에 : 그림width와 그림height지정하면 딱맞게 들어감
+'  A.그림으로만들 범위지정 폭알아두기
+입고.Image1.Picture = LoadPicture(s1_그림내보낼경로및파일이름)
+입고.Image1.Width = s1_그림WIDTH
+입고.Image1.Height = s1_그림HEIGHT
+
+Sheets("입고").Select
+
+End Sub

@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* 구조중심 */
+header #코딩메모_문서연결 ul {padding-left:5px;padding-right:10px;}
+header #코딩메모_문서연결 li {list-style: none;  width: 100%;text-overflow: ellipsis;white-space: nowrap;overflow: hidden; }
+header #코딩메모_문서연결 li:hover {background-color: aqua;}
+#선택문서셑팅하는곳 > div {background-color:white;}
+
+
+#복사연습 {margin-left:5px;font-size: 16px;width:285px;display:inline-block;vertical-align: top;background-color: bisque;}
+#복사연습 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
+#복사연습 > div {display:block;margin-bottom:-1px;}  /*1),2),3)*/
+#복사연습 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
+#복사연습 > div:nth-child(1) > button:nth-of-type(1), /*#있다면다음회차*/
+#복사연습 > div:nth-child(2) > button:nth-of-type(1), /*#회차날짜조회묶음*/
+#복사연습 > div:nth-child(3) > button:nth-of-type(1), /*#전체당번*/
+#복사연습 > div:nth-child(3) div > button:nth-of-type(1) /*#전체당번 안에 div안에 버튼8개씩*/
+{margin:0 5px;width:65px;background-color:white;}
+#복사연습 > div:nth-child(1) >  button:last-child:not(.색칠용버튼) {background-color: rgb(100, 237, 214);}/*#있다면다음회차*/
+#복사연습 > div:nth-child(3) div > button:last-child:not(.색칠용버튼) {background-color: rgb(100, 237, 214);} /*#전체당번*/
+#복사연습 > div:nth-child(2) {margin-left:5px; padding: 5px 0;}/*#회차날짜조회묶음*/
+#복사연습 > div > select {height:30px;}/*#회차날짜조회묶음*/
+#복사연습 > div > select + span {display:inline-block; width:85px;}/*#회차날짜조회묶음*/
+#복사연습 > div > select + span ~ a {padding:0 5px;}
+#복사연습 > div > select + span ~ a:not(:nth-of-type(1)) {width:25px;}
+
+
+
+
+#세로구분_당첨번호들 {margin-left:5px;font-size: 16px;width:285px;display:inline-block;vertical-align: top;background-color: bisque;}
+#세로구분_당첨번호들 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
+#세로구분_당첨번호들 > div {display:block;margin-bottom:-1px;}  /*1),2),3)*/
+#세로구분_당첨번호들 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
+/* #세로구분_당첨번호들 안에 첫번째 div : 1)있다면다음회차 2)회차날짜조회묶음 3)전체당번,이 안의 div안에 버튼있음*/
+#세로구분_당첨번호들 > div:nth-child(1) > button:nth-of-type(1), /*#있다면다음회차*/
+#세로구분_당첨번호들 > div:nth-child(2) > button:nth-of-type(1), /*#회차날짜조회묶음*/
+#세로구분_당첨번호들 > div:nth-child(3) > button:nth-of-type(1), /*#전체당번*/
+#세로구분_당첨번호들 > div:nth-child(3) div > button:nth-of-type(1) /*#전체당번 안에 div안에 버튼8개씩*/
+{margin:0 5px;width:65px;background-color:white;}
+#세로구분_당첨번호들 > div:nth-child(1) >  button:last-child:not(.색칠용버튼) {background-color: rgb(100, 237, 214);}/*#있다면다음회차*/
+#세로구분_당첨번호들 > div:nth-child(3) div > button:last-child:not(.색칠용버튼) {background-color: rgb(100, 237, 214);} /*#전체당번*/
+#세로구분_당첨번호들 > div:nth-child(2) {margin-left:5px; padding: 5px 0;}/*#회차날짜조회묶음*/
+#세로구분_당첨번호들 > div > select {height:30px;}/*#회차날짜조회묶음*/
+#세로구분_당첨번호들 > div > select + span {display:inline-block; width:85px;}/*#회차날짜조회묶음*/
+#세로구분_당첨번호들 > div > select + span ~ a {padding:0 5px;}
+#세로구분_당첨번호들 > div > select + span ~ a:not(:nth-of-type(1)) {width:25px;}
+
+/* #세로구분_색칠관련 style=left:310px는 set위해 넣어놨음. 이너스타일이 없으면 안되서 */
+#세로구분_색칠관련 #색칠용modal-body > div > button:not([type='button']),
+#세로구분_색칠관련 #모달번호45_있다면다음당번 > button
+{vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-5px;margin-bottom:-1px;}
+#세로구분_색칠관련 #모달번호45_있다면다음당번 > button {margin-right:-1px;}/*있다면다음당번*/
+#세로구분_색칠관련 > div > div > div > select {margin-left:30px; height:30px;}/*#회차select*/
+#세로구분_색칠관련 > div > div > div > #모달_출수제목보기숨기기 {width:30px;margin-top:-1px;margin-left:6px;}/*<,>*/
+#세로구분_색칠관련 #색칠용modal-body > div > button:nth-of-type(4) {margin-right:-6px;}/*45개번호들*/
+#세로구분_색칠관련 #색칠용modal-body button[type='button'] {width:30px;height:30px;margin-right:-5px;margin-bottom:-1px;}
+#세로구분_색칠관련 #색칠용modal-body input[type='text'] {vertical-align: bottom;font-size: 15px; display:inline-block; width:34px;height:30px;}
+#세로구분_색칠관련 #색칠용modal-body > div > a {padding:0 5px; width:25px;}/*+,-*/
+#세로구분_색칠관련 #색칠용modal-body > div > a:nth-of-type(1) {margin-left:5px;}/*+*/
+
+#세로구분_색칠관련 #현재색칠정보 {margin-top:5px;}
+#세로구분_색칠관련 #현재색칠번호들 {background-color: aqua;width:235px;word-break: break-all;}
+
+.색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
+.모달회차표시 {background-color:blueviolet;border-radius: 20px;}
+.색칠용버튼[title='1'], .색칠용버튼[title='2'], .색칠용버튼[title='3'], .색칠용버튼[title='4'], .색칠용버튼[title='5'],
+.색칠용버튼[title='6'], .색칠용버튼[title='7'], .색칠용버튼[title='8'], .색칠용버튼[title='9']
+{background-color: yellow;border-radius: 20px;}
+.색칠용버튼[title='10'],.색칠용버튼[title='11'], .색칠용버튼[title='12'], .색칠용버튼[title='13'], .색칠용버튼[title='14'], 
+.색칠용버튼[title='15'],.색칠용버튼[title='16'], .색칠용버튼[title='17'], .색칠용버튼[title='18'], .색칠용버튼[title='19']
+{background-color:cornflowerblue;border-radius: 20px;}
+.색칠용버튼[title='20'],.색칠용버튼[title='21'], .색칠용버튼[title='22'], .색칠용버튼[title='23'], .색칠용버튼[title='24'], 
+.색칠용버튼[title='25'],.색칠용버튼[title='26'], .색칠용버튼[title='27'], .색칠용버튼[title='28'], .색칠용버튼[title='29']
+{background-color:red ;border-radius: 20px;}
+.색칠용버튼[title='30'],.색칠용버튼[title='31'], .색칠용버튼[title='32'], .색칠용버튼[title='33'], .색칠용버튼[title='34'], 
+.색칠용버튼[title='35'],.색칠용버튼[title='36'], .색칠용버튼[title='37'], .색칠용버튼[title='38'], .색칠용버튼[title='39']
+{background-color:gray;border-radius: 20px;}
+.색칠용버튼[title='40'],.색칠용버튼[title='41'], .색칠용버튼[title='42'], .색칠용버튼[title='43'], .색칠용버튼[title='44'], 
+.색칠용버튼[title='45']
+{background-color:green;border-radius: 20px;}
+.absolute {position:absolute;}
+
+
+
+
+
+

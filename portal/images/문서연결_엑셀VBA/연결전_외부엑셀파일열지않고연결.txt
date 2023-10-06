@@ -1,0 +1,23 @@
+-----------------------------------------------------------------------------------
+'[다른 열려있는 엑셀파일 복사 해오는것]
+'Workbooks("승환축산.xlsm").Sheets("이름300").Range("a1:M24").Copy _
+'                           Destination:=Sheets("이름300").Range("a1")
+
+
+
+'[열지않고 VBA 프로젴트에 가져와서 작업.엑셀 365 안됨]
+Dim 외부파일 As Object
+Dim 경로 As String
+Dim 파일이름 As String
+
+경로 = ThisWorkbook.Path & "\"
+
+파일이름 = "통합적용.xlsm"
+
+'[열때] Application.Workbooks.Open Filename:=경로 & 파일이름 '연파일이 선택된다.
+'[닫을때]ActiveWorkbook.Close
+
+Set 외부파일 = GetObject(경로 + 파일이름) '★엑셀 VBA 프로젝트탐색기에 표시됨
+
+외부파일.IsAddin = True 'addin 모드 설정. 해당파일이 보이지 않고
+'---------]

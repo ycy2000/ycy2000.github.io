@@ -1,0 +1,44 @@
+css단위, 폰트
+모니터용 : em, ex, px, % -->px등 모두 상대값이다.
+모니터의 해상도에 따른다.
+
+로렘입숨사이트 lipsum.com
+
+body 태그 font-size : 16px; 지정했다고 가정하고
+em : em 단위가 쓰여진 곳(px등 스타일지정된 크기) 의 폰트사이즈 배수. 
+(부모태그에 지정이 없으면) body태그 16px의 배수
+부모태그에 px말고 em이 있다면 부모태그의 배수.
+
+rem : 문서의 기본값의 배수.
+:root { font-size:12px;}
+pxtoem.com 문서의 기본값. 계산.
+
+코드펜??
+
+% : 부모가 만들어준 공간안에서너비 비율.
+
+csslint : 사이트. css 넣으면 감정해줌. id는 쓰지말라고함.
+
+----------------------------------------
+font-family 속성
+서체 지정 시에는 쉼표(,)를 통해 여러개이 후보 서체를 제시할 수 있다.
+값의 마지막에는 서체의 타입을 지정하는데
+san-serif(고딕체), serif(명조체), cursive(필기체), monospace(동일공간 글꼴) 등이 있다.
+
+어느컴퓨터나 있을법한 폰드들인 경우.
+body {font-family:'돋움', dotum, helvetica, sans-serif }
+'돋움' : 서체값이 두 단어 이상이거나 영어가 아닌 경우 따옴표
+dotum : 영문윈도우 대비
+helvetica : 맥 os 기반의 컴퓨터 대비
+sans-serif : 돋움체가 고딕체 계열이므로 'sans-serif' 지정
+(sans=없다, serif=꼬리, 글씨에 꼬리가 없다. 고딕체)
+
+----------------------------------------
+fonts.google.com
+폰트선택 - + - embed font : standard는 link... 복붙. head사이에 붙여넣기.
+적용코드 아래에 있음.
+
+customize : 
+
+
+

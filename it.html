@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- 상단 nav -->
+<!-- 공통 fixed용 -->
+<header>
+  <nav id="nav_head"  ondblclick="location.href='customs.html'">
+    <!-- 큰틀 80%, 80%에서 또 80:20 좌우로 , 80%부분 display:inline-block안하면 이상해짐-->
+    <!-- 버튼클래스.btn-primary btn-secondary(폭커져안씀) btn-success btn-danger  btn-info btn-dark, 아래 황금색은 btn btn-warning-->
+    <div id="nav_회사">
+      <div>
+        <button type="button" style="margin-top:5px" class="btn btn-success" onclick="location.href='it.html' ">
+          IT
+        </button>
+        <button type="button" style="margin-top:5px" class="btn btn-danger" onclick="location.href='vba.html' ">
+          vba
+        </button>
+        <button type="button" style="margin-top:5px" class="btn btn-info" onclick="location.href='memo.html' ">
+          memo
+        </button>
+      </div>  
+    </div>
+  </nav>
+
+  <!-- 상단 nav 끝 -->
+
+  <!-- 보기_숨기기버튼 나중에 fixed하기위해 div 한겹더  style="position:fixed;width:100%"-->
+  <nav id="nav_보기숨기기버튼바탕색" ondblclick="함수버튼보기숨기기()"> 
+    <div id="보기_숨기기버튼">
+      <button type="button" class="btn btn-warning" onclick="main_list_viewHide()">리스트 보기중</button>  <!-- 큰분류 제목 html마다 수정 -->
+      <button type="button" class="btn btn-warning" onclick="sub_list_showHide()"">소제목 숨김중</button>
+      <button type="button" class="btn btn-warning" onclick="결과임시_보기_숨기기()">결과파일 숨김중</button>
+      <div class="함수버튼" style="display:none;">
+        <button type="button" class="btn btn-warning" onclick="임시함수1()">함수1</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수2()">함수2</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수3()">함수3</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수4()">함수4</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수5()">함수5</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수6()">함수6</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수7()">함수7</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수8()">함수8</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수9()">함수9</button>
+        <button type="button" class="btn btn-warning" onclick="임시함수10()">함수10</button>
+      </div>
+    </div>
+  </nav>   
+</header>   
+<!-- 공통 fixed용 끝 -->
+
+<!-- 위에까지는 어느정도 된것같다. -->
+<!-- 리스트.실질적 정보 트리 position: absolute 자리안차지하게 이거하면 왼쪽을 붙는다.-->   
+<!-- 스트립트로 visibility: hidden 과 visible 조정 id참고, position: absolute(왼쪽붙음,자리안차지);position:relative(자리차지) 조정-->  
+
+<div id="main정보보기">
+  <div id="모든_버튼과UL그룹묶음">
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      project layout, 코딩, css
+      </button>
+      <ul>
+        <li class="content" title="01_project_파순00_index" data-title="결과물_id">index 분리</li>
+        <li class="content" title="01_project_파순01_글자크기css" data-title="결과물_id">section 안에 글자크기, css</li>
+        <li class="content" title="01_project_파순01_파일제목규칙" data-title="결과물_id">파일제목 규칙, 줄바꿈, 코딩(변수)합의</li>
+        <li class="content" title="01_project_파순02_projectlayout그림" data-title="결과물_id">project layout 전체 그림</li>
+        <li class="content" title="01_project_파순03_header" data-title="결과물_id">① 세부 : header 부분 (스크롤 고정)</li>
+        <li class="content" title="" data-title="결과물_id">https://usingu.co.kr/frontend/git/한컴퓨터에서 여러계정</li>
+        <li class="content" title="" data-title="결과물_id">④</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      html, 노드 (+script 읽는순서)
+      </button>
+      <ul>
+        <li class="content" title="02_html_파순01_읽는순서" data-title="결과물_id">html 읽는순서 (script, 리스너포함)</li>
+        <li class="content" title="02_html_파순02_엔티티" data-title="결과물_id">엔티티(entity) 문자, 특수문자</li>
+        <li class="content" title="02_html_파순03_박스모델" data-title="결과물_id">박스모델, box-sizing, dispaly, position</li>
+        <li class="content" title="02_html_파순04_노드" data-title="결과물_id">** 노드 **</li>
+        <li class="content" title="02_html_파순05_노드및요소추가삭제변경" data-title="결과물_id">노드(요소) 추가,삭제,변경</li>
+        <li class="content" title="" data-title="결과물_id">text-indent : 상속됨</li>    
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      개념 정리 (querySelector)
+      </button>
+      <ul>
+        <li class="content" title="03_개념정리_파순01_요소속성선택자" data-title="결과물_id">요소(태그), 속성, 선택자</li>
+        <li class="content" title="03_개념정리_파순02_선택자선택연습" data-title="결과물_id" style="font-weight: bold;">** 선택자, 선택연습 **</li>
+        <li class="content" title="03_개념정리_파순03_속성변경" data-title="결과물_id">속성추가, 속성변경, 속성존재 확인, style</li>
+         <li class="content" title="03_개념정리_파순05_queryselector특징" data-title="결과물_id">querySelector, querySelectorAll (요소선택)</li>
+        <li class="content" title="03_개념정리_파순06_onclick함수" data-title="결과물_id">html에서 onclick=function () { };</li>
+      </ul>
+    </div>
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      javascript(css)
+      </button>
+      <ul>
+        <li class="content" title="04_javascript_파순01_코딩작성규칙?" data-title="결과물_id">js 코드 작성시 규칙들? 에러처리</li>
+        <li class="content" title="04_javascript_파순02_기본정보margin0auto등" data-title="결과물_id">margin 0 outo,length,ComputedStyle,스크롤</li>
+        <li class="content" title="04_javascript_파순03_함수중단" data-title="결과물_id">함수중단 return, 시작script에 return??</li>
+        <li class="content" title="04_javascript_파순04_배열과보이는ul가로맞추기" data-title="결과물_id">배열과 보이는ul가로맞추기</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      git,github,vsCode,bootstrap,vsCode
+      </button>
+      <ul>
+        <li class="content" title="05_git_파순01_01_깃관련" data-title="결과물_id">로컬폴더,깃,깃허브</li>
+        <li class="content" title="05_git_파순02_01_vscodeGitAddCommit" data-title="결과물_id">vscode git add commit</li>  
+        <li class="content" title="" data-title="결과물_id">전체번경 : ctrl + shift + L</li>
+        <li class="content" title="" data-title="결과물_id">css 확인 아이디 클래스 위에서 컨트롤</li>
+        <li class="content" title="" data-title="결과물_id">3</li>
+      </ul>
+    </div>
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      css
+      </button>
+      <ul>
+        <li class="content" title="06_css_파순01_css계속추가_1" data-title="결과물_id">2</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      ?
+      </button>
+      <ul>
+        <li class="content" title="07_위치_파순01_01_위치" data-title="결과물_id">flex,media,위치,정렬,,,빡치네</li>
+        <li class="content" title="" data-title="결과물_id">2</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      ?
+      </button>
+      <ul>
+        <li class="content" title="" data-title="결과물_id">1</li>
+        <li class="content" title="" data-title="결과물_id">2</li>
+      </ul>
+    </div> 
+  </div> <!--id="모든_버튼과UL그룹묶음"-->
+</div> <!-- 모든_버튼과UL그룹묶음 + 서브리스트 -->
+
+<div id="소제목과list">
+</div>
+
+<div id="content_편집중">
+</div>
+
+<div id="결과">
+</div>
+
+<!-- 모든파일 아이디 처리..-->
+<div id="결과물집합">
+  <section id="01_project_파순00_index"><div id="스크립트로ul추가"></div>
+    <img class="png패딩" src="portal/images/문서연결_index/인덱스설명.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+  <section id="01_project_파순01_글자크기css"><div id="스크립트로ul추가"></div>
+    <h4>▢ h4 : 가장큰 네모 h4, 24px</h4>
+    <h4>1. h4 : 가장큰 순번 h4, 24px</h4>
+    <h5>▢ h5, 글자크기20px, 들여쓰기 30px</h5>
+    <h5 class="h5_번들작">h5번들작, 글자크기20px, 들여쓰기 53px</h5>
+    <h5>1. h5, 글자크기20px, 들여쓰기 30px</h5>
+    <h5 class="h5_번들작">h5번들작, 글자크기20px, 들여쓰기 53px</h5>
+    <h5 class="h5_번들번들작">A. h5번들번들작, 글자크기20px, 들여쓰기 70px</h5>
+    <h5 class="h5_번들번들작">① h5번들번들작, 글자크기20px, 들여쓰기 70px</h5>
+    <h5 class="h5_번들번들작">▸ h5번들번들작, 글자크기20px, 들여쓰기 70px</h5>
+    <h5 class="h5_번들번들작">1. h5번들번들작, 글자크기20px, 들여쓰기 70px</h5>
+    <h5 class="h5_번들번들작_들작">▸ h5번들번들작_들작, 글자크기20px, 들여쓰기 90px</h5>
+    <h5>바로글자 h5, 글자크기20px, 들여쓰기 30px</h5>
+    <h5 class="h5_번들작">h5번들작, 글자크기20px, 들여쓰기 53px</h5>
+    <li>li, 20px, 점표시 글자크기20px, 들여쓰기 30px</li>
+    <h5 class="li_들작">li_들작 : 점있는 li 밑에, 글자크기20px, 들여쓰기 60px</h5>
+    <h5 class="h5_번들번들작">A. h5번들번들작, 글자크기20px, 들여쓰기 80px</h5>
+    <h5 class="h5_번들번들작">① h5번들번들작, 글자크기20px, 들여쓰기 80px</h5>
+    <h5 class="h5_번들번들작">▸ h5번들번들작, 글자크기20px, 들여쓰기 80px</h5>
+    <h5 class="h5_번들번들작">1. h5번들번들작, 글자크기20px, 들여쓰기 80px</h5>
+    <h5 class="h5_번들작">h5번들작, 글자크기20px, 들여쓰기 53px, ※li점있을때 조금 더 들여써야함</h5>
+    <h5 class="h5_들작기호들작">h5_들작기호들작   ▢ : & #9634;    ▸ : & #9656  </h5>
+    <h6>&lt;h6> (16px)</h6>
+    <br><br><br><br>
+  </section>
+
+  <section id="01_project_파순01_파일제목규칙"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. 순번_제목 순서로 계속 부여</h4>
+    <h5>01_project_01_파일제목 (여기까지 파일이름 표시하는 기본, 세부적 내용이 많으면 다음 참고)</h5>
+    <li>01_project_01_파일제목_01_소분류_01_소분류....(마지막에 순번으로)</li><br>
+    <h4 id="move2" class="목차">2. css 클래스 아이디 이름부여 방식</h4>
+    <li></li>
+    <li></li><br>
+    <h4 id="스move3" class="목차" >3. script 변수이름 지정방식</h4>
+    <li>자바스크립트 변수명에는 언더바(-)는 올 수 있지만 하이픈(-)은 올 수 없습니다.</li>
+    <pre>
+      var blue_book; //맞는 문법
+      var blue-book//틀린 문법
+    </pre>
+    <li>자바스크립트 변수명의 첫 번째 문자에는 숫자가 올 수 없습니다.</li>
+    <li>언더바(_), $ 등의 문자는 첫 글자로 자유롭게 올 수 있습니다.</li>
+    <pre>
+        var _babya;
+        var $nightball;
+    </pre>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;JavaScript 변수명 금지 단어 예약어</h4>
+    <li>자바스크립트에서는 이미 변수명으로 설정된 몇 개의 고유한 단어가 있습니다.</li>
+    <li>또는 다른 프로그래밍 언어에서 자주 사용되는 고유 변수명의 경우도 사용하지 않는 것이 좋습니다.</li>
+    <li>참고자료 : https://dasima.xyz/javascript-variable-making-rule/</li><br>
+
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;JavaScript 변수명 표기법</h4>
+    <pre>
+    변수명의 표기법은 규칙은 아닙니다. 
+    하지만 변수명을 잘 작성하면 가독성과 나중에 수정에 유리하기 때문에 몇 가지 통용되는 표기법이 있습니다.
+
+    <strong>Underscore 언더바(_) 표기법</strong>
+    변수명에 왜 언더바(_) 기호가 허용될까요? 변수명을 두 가지 이상의 단어로 설정해야 될 때 유용하기 때문입니다. 
+    변수명의 단어를 언더바(_)로 이어서 표시할 수 있습니다.
+
+      var red_bear;
+      var big_money;
+      var F_22
+
+    <strong>Upper Camel Case</strong>
+    Camel Case란 마치 낙타의 등처럼 대문자와 소문자를 섞어서 쓰는 표기법을 말합니다. 
+    Upper Camel Case는 둘 이상의 단어로 변수명을 정할 때 각각의 첫 단어를 대문자로 표시해서 구분하는 방식입니다.
+
+      JavaScript-Camelcase
+
+      var GoRush
+      var RedZerg
+
+    <strong>Lower Camel Case</strong>
+      var newMoon
+      var appleWatch
+
+    <strong>Lower Camel Case</strong>는 변수명의 첫 단어만 소문자로 입력하고 두 번째 단어부터 대문자로 입력하는 표기법입니다.
+    </pre>
+    <h4 id="move4" class="목차" >4. script 줄바꿈, vsCode 단축키와 기능키</h4>
+    <pre>
+        vsCode : 빈 html에 ! 치고 tab 누르면 기본 html 골격이 완성됨.
+
+        태그만 입력하고 엔터 => 열고 닫는 태그 완성
+           div 엔터 => &lt;div>&lt;/div>
+
+        태그*개수 입력하고 엔터 => 개수만큼 열고 닫는 태그 완성
+           div*3 엔터 => 
+           &lt;div>&lt;/div>
+           &lt;div>&lt;/div>
+           &lt;div>&lt;/div>
+
+        선택자형식으로 : div>li[class="연습"]*3 을 입력하고 엔터치면
+                        div 안에 (클래스가 "연습")자식li 3개 완성됨
+           &lt;div>
+              &lt;li class="연습">&lt;/li>
+              &lt;li class="연습">&lt;/li>
+              &lt;li class="연습">&lt;/li>
+            &lt;/div>
+        script : alert나, console.log의 화면출력되는 텍스트 줄바꿈 => '텍스트\n' 처럼 텍스트안에 '\n'을 텍스트값으로 전달 
+    
+        script : 코드가 길어서 줄바꿈 => 엔터 치고 다음줄에서 + 로 연결.
+    
+        html,css,script : 선택줄 또는 범위 주석으로 감싸거나 생성 => ctrl  + /
+                          선택줄 한줄 정보 지우기 => shift + delete
+                          범위선택안하고 => ctrl + c => 한줄 복사됨. 한줄은 드래그 안해도 됨.
+    </pre><br><br><br><br>
+  </section>
+
+  <section id="01_project_파순02_projectlayout그림"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차" >1.porject layout 전체 그림</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="01_project_파순03_header"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. header 부분 layout</h4>
+    <img src="portal/images/문서연결_PROJECT/01_project_파순02_projectlayout그림_02_header.png" alt="이미지없음">
+    <h4 id="move2" class="목차">2. header 부분 html 골격</h4>
+    <img class="png패딩" src="" alt="이미지없음">
+    <h4 id="move3" class="목차">3. header 부분 css</h4>
+    <img class="png패딩" src="" alt="이미지없음">
+    <h4 id="move4" class="목차">4. header 부분 기능</h4>
+    <img src="" alt="이미지없음">
+  </section>
+
+  <section id="02_html_파순01_읽는순서"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. 순서대로 읽되 script 만났을때, 에러코드 이후 실행 안되고 새롭게.</h4>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_01_읽는순서.png" alt="이미지없음">
+    <h4 id="move2" class="목차">2. 함수안의 변수가 script에 기본실행 변수이면 위치에 상관없이 인식됨.</h4>
+    <h4 id="move3" class="목차">3. script파일 읽어올때 실행되는 동작 (project ul 높이 변경)</h4>
+    <li>A. [F5]새로고침이나 html파일 링크로 이동시 script파일안의 함수를 제외한 모든 코드 실행됨.</li>
+    <li>B. project에 사용된 코드 : 여러개의 ul 높이를 비교하여 최대높이로 통일시키는 동작.</li>
+    <li>ul 높이 변경 실행 전,후 비교</li>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_02_ul높이전후.png" alt="이미지없음">
+    <h4 id="move4" class="목차">4. script파일 이벤트리스너 실행 과정</h4>
+    <li>A. 이벤트 감지하여 링크된 script파일에 정의된 내용을 실행한다.</li>
+    <li>B. 이벤트리스너란? html(화면)에서 일어난 일들을 감지하는 것.</li>
+    <li>C. 많은 이벤트 중에 'click' 이벤트 감지에 대해서 알아봄</li>
+    <li>D. 코드는 순서대로 실행된다는 것을 염두에 두고 이해하면 좋을 듯 하다.</li>
+    <li>E. 순서 : 이벤트감지할 변수지정 - 실행할 함수 만들기 - 이벤리스너 등록하기. </li>
+    <li>F. project에 사용된 이벤트리스너</li>
+    <br><br><br><br>
+  </section>
+
+  <section id="02_html_파순02_엔티티"><div id="스크립트로ul추가"></div>
+    <h4 id="move2" class="목차" >1. entity, 특수문자, 코딩시... pre, 유니코드 https://blogpack.tistory.com/787</h4>
+    <pre style="font-size:20px;">
+    html 특수문자 : & 다음에 붙여야 된다. 붙여서 전달하면 결과물이 나와서 ... ①②③④⑤⑥⑦⑧⑨
+           < => & lt;   > => & gt;    공백 : & nbsp;     ▢ : & #9634;    ▸ : & #9656 ○
+
+           ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙ
+
+    &lt;pre&gt; &lt;/pre&gt; : pre안의 내용은 html에서 보이는 스페이스와 엔터(줄바꿈)을 보이는대로 표시해준다.
+                   pre 태그안에서 여는태그만 & lt;로 하면 많은부분 코드를 그대로 출력해줄수 있는듯.
+
+    script : alert나, console.log의 화면출력되는 텍스트 줄바꿈 => '텍스트\n' 처럼 텍스트안에 '\n'을 텍스트값으로 전달 
+
+    script : 코드가 길어서 줄바꿈 => 엔터 치고 다음줄에서 + 로 연결.
+
+    html,css,script : 선택줄 또는 범위 주석으로 감싸거나 생성 => ctrl  + /
+                      선택줄 한줄 정보 지우기 => shift + delete
+                      범위선택안하고 => ctrl + c => 한줄 복사됨. 한줄은 드래그 안해도 됨.
+    </pre>
+    <h4 id="move1" class="목차">2. 엔티티(entity) 문자</h4>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순02_엔티티_01_엔티티.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>>
+
+  <section id="02_html_파순03_박스모델"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. 박스모델, box-sizing</h4>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_01_박스모델.png" alt="이미지없음">
+    <br>
+    <h4 id="move2" class="목차">2. dispaly</h4>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex0.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex1.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex2.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex3.png" alt="이미지없음">
+    <br>
+    <h4 id="스크롤이동3" class="목차">3. position</h4>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position1.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position2.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position3.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position4.png" alt="이미지없음">
+    <br>
+    <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position5.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="02_html_파순04_노드"><div id="스크립트로ul추가"></div>
+    <h4 class="목차" >▢ 참고 : innerText는 나의 텍스트노드 및 자식과 모든 하위 텍스트를 합친다.</h4>
+    <h4 class="목차" >▢ 참고 : 사용및 숙지는 firstElementChild, ElementSibling</h4>
+    <br>
+    <h4 id="move1" class="목차" >1. 노드의 종류와 상위, 하위, 형제노드</h4>
+    <h5>A. 문서 노드(document node) : HTML 문서 전체를 나타내는 노드.</h5>
+    <h5>B. 요소 노드(element node) : 모든 HTML 요소는 요소노드이며, 속성노드를 가질 수 있는 유일한 노드임.</h5>
+    <h5>C. 속성 노드(attribute node) :  모든 HTML 요소의 속성은 속성 노드이며, 요소 노드에 관한 정보를 가지고 있음.</h5>
+    <h5 calss="li_들작">&nbsp;&nbsp;&nbsp; 하지만 해당 요소노드의 자식노드(child node)에는 포함되지 않음.</h5>
+    <h5 calss="li_들작">&nbsp;&nbsp;&nbsp; 속성 노드(attribute node)는 요소 노드(element node)의 속성이다.</h5>
+    <h5 calss="li_들작">&nbsp;&nbsp;&nbsp; 속성 노드(attribute node)는 nextSibling, nextElementSibling으로 접근하는 부분이 아님.</h5>
+    <h5>D. 텍스트 노드(text node) : HTML 문서의 모든 텍스트는 텍스트 노드임. </h5>
+    <h5>E. 주석 노드(comment node) : HTML 문서의 모든 주석은 주석 노드임.</h5>
+    <br>
+    <li>노드(node) 범위에서 : 상위, 하위, 형제노드 표현</li>
+    <h5 calss="li_들작">1. parentNode : 부모 노드</h5>
+    <h5 calss="li_들작">2. childNodes : 자식 노드 리스트</h5>
+    <h5 calss="li_들작">3. childNodes.length : 자식 노드 개수</h5>
+    <h5 calss="li_들작">4. firstChild : 첫 번째 자식 노드</h5>
+    <h5 calss="li_들작">5. lastChild : 마지막 자식 노드</h5>
+    <h5 calss="li_들작">6. nextSibling : 다음 형제 노드</h5>
+    <h5 calss="li_들작">7. previousSibling : 이전 형제 노드</h5>
+    <br>
+    <li>Element만 한정하여 : 상위, 하위, 형제 Element 표현</li>
+    <h5 calss="li_들작">1. parentElement : 부모 요소(Element)</h5>
+    <h5 calss="li_들작">2. childElementNodes : 없나?</h5>
+    <h5 calss="li_들작">3. childElementCount : 자식 요소(Element)의 개수</h5>
+    <h5 calss="li_들작">4. firstElementChild : 첫 번째 자식 요소(Element)</h5>
+    <h5 calss="li_들작">5. lastElementChild : 마지막 자식 요소(Element)</h5>
+    <h5 calss="li_들작">6. nextElementSibling : 다음 형제 요소(Element)</h5>
+    <h5 calss="li_들작">7. previousElementSibling : 이전 형제 요소(Element)</h5>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순04_노드_01_노드.png" alt="이미지없음">
+    <br>
+    <h4 id="move2" class="목차" >2. 자식 노드의 접근 예제</h4>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순04_노드_02_노드접근.png" alt="이미지없음">
+    <br>
+    <h4 id="move3" class="목차" >3. 부모노드 접근은 parentNode(이거사용,짧으니), parentElementNode</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="02_html_파순05_노드및요소추가삭제변경"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차" >1.appendChild 문법 https://shinyks.com/2023/07/javascript/%ec%9e%90%eb%b0%94%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8-appendchild-%ec%82%ac%ec%9a%a9-%eb%b0%a9%eb%b2%95/</h4>
+    <h4 id="move2" class="목차" >2.</h4>
+    <h4 id="move3" class="목차" >2.</h4>
+    <h4 id="move4" class="목차" >2.</h4>
+    <h4 id="move5" class="목차" >2.</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="03_개념정리_파순01_요소속성선택자"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차" >1.html요소(태그) 구조</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_01_요소.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="03_개념정리_파순02_선택자선택연습"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1.querySelectorAll(선택자표현), querySelector(선택자표현)으로 사용된다.</h4>
+    <br>
+    <h4 id="move2" class="목차">2.후손,자손,형제, 선택자 종류 및 표현방법</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_02_선택자.png" alt="이미지없음">
+    <br>
+    <h4 id="move3" class="목차">3.후손(공백)과 자손(>) 선택 예제</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_03_자손후손.png" alt="이미지없음">
+    <br>
+    <h4 id="move4" class="목차">4.같은레벨 형제(+, ~) 선택 예제</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_04_형제.png" alt="이미지없음">
+    <br>
+    <h4 id="move5" class="목차">5.속성 선택자. [속성명], [속성명="속성값"]</h4>
+    <li>속성명과 속성값은 아무거나 "새롭게" 만들어도 된다.</li>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명1.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명2.png" alt="이미지없음">
+    <br>
+    <h4 id="move6" class="목차">&#9634; project 선택자 사용 참고</h4>
+    <h5>A. document.querySelector('#결과 > div > div:not(:nth-first-child) > #스크롤이동3'); </h5>
+    <h5>B. '스크롤이동3'을 변수로 받아야 하는 경우</h5>
+    <h5 class="li_들작">var 앞에문자열='#결과 > div > div:not(:nth-first-child) > ';</h5>
+    <h5 class="li_들작">var 아이디='#' + event.target.id;</h5>
+    <h5 class="li_들작">var 최종전달문자=앞에문자열 + 아이디;</h5>
+    <h5 class="li_들작">var 스크롤요소=document.querySelector(최종전달문자);</h5>
+    <h5 class="li_들작">또는</h5>
+    <h5 class="li_들작">var 아이디='#' + event.target.id; </h5>
+    <h5 class="li_들작">var 스크롤요소 = document.querySelector('#결과 > div > div:not(:nth-first-child) > ' + 아이디);</h5>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_06_스크롤이동선택자.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="03_개념정리_파순03_속성변경"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차" >1. setAttribute() : 속성을 정한다. getAttribute()  : 속성을 가져온다. (style 아님!!)</h4>
+    <li>setAttribute() 문법</li>
+    <h5 class="li_들작">element.setAttribute( 'attributename', 'attributevalue' )</h5>
+    <h5 class="li_들작">attributename에는 속성 이름을, attributevalue에는 속성값을 넣습니다.</h5>
+    <h5 class="li_들작">예를 들어</h5>
+    <h5 class="li_들작">document.getElementById( 'xyz' ).setAttribute( 'title', 'This is title' )</h5>
+    <h5 class="li_들작">id 값이 xyz인 요소의 title 속성을 This is title로 정합니다. </h5>
+    <h5 class="li_들작">만약 이미 속성값이 존재한다면 그 값을 지우고 새 값을 적용합니다.</h5>
+    <h5 class="li_들작">사용 예</h5>
+    <h5 class="li_들작">document.getElementById( 'abc' ).setAttribute( 'href', 'https://www.codingfactory.net' );</h5>
+    <li>getAttribute() 문법</li>
+    <h5 class="li_들작">element.getAttribute( 'attributename' )</h5>
+    <h5 class="li_들작">예를 들어</h5>
+    <h5 class="li_들작">var jb = document.getElementById( 'xyz' ).getAttribute( 'title' );</h5>
+    <h5 class="li_들작">id의 값이 xyz인 요소의 title 속성 값을 변수 jb에 저장합니다.</h5>
+    <br>
+    <h4 id="move2" class="목차" >2. [인라인]style(CSS) 속성값을 변경하고 확인 해보기</h4>
+    <h5>▢ 확인하는것은 inline(html에 기록되어 있거나 코드로 등록된) style만 되고 적용하는 것은 된다.</h5>
+    <br>
+    <h5>A. 속성값 추가하기</h5>
+    <h5 class="li_들작">[ style.css속성명 ]은 (개별적으로) 기존 정의 된 style에서 새로운 속성 추가(또는 덮어씀)된다.</h5>
+    <h5 class="li_들작">var 변수 = document.querySelector('#결과');</h5>
+    <h5 class="li_들작">console.log('추가전' + 변수.style.color); // 공백, 에러는 아님, 변수자체가 없으면 에러</h5>
+    <h5 class="li_들작">변수.style.color='black'; // 추가는 언제든 가능.</h5>
+    <h5 class="li_들작">console.log('추가후' + 변수.style.color); ==> black // 추가되면 확인 가능.</h5>
+    <br>
+    <h5>B. CSS 속성 여러개 추가하기 [인라인 스타일 모두 사라지고 대체됨]</h5>
+    <h5 class="li_들작">element.style.cssText</h5>
+    <h5 class="li_들작">ex)id="결과" style="color:black;display:block;height:200px;</h5>
+    <h5 class="li_들작">var 변수 = document.querySelector('#결과');</h5>
+    <h5 class="li_들작">console.log(변수.style.cssText); ==> color:black;display:block;height:200px;</h5>
+    <h5 class="li_들작">inline스타일이 없는경우 ==> 공백. 에러는 아님.</h5>
+    <h5 class="li_들작">변수.style.cssText="color:black;" //inline의 내용이 이것으로 대체됨</h5>
+    <h5 class="li_들작">console.log(변수.style.cssText); ==> color:black;</h5>
+    <br>
+    <h4 id="move3" class="목차">3. getComputedStyle( )으로 속성값 가져오기</h4>
+    <li>inline으로 정의된 style 속성 뿐 아니라 CSS 파일 내 stlye 속성도 함께 가져온다.</li>
+    <li>모든 상태가 반영된 화면상의 스타일 값이다. inline값과 안맞을수 있음.</li>
+    <br>
+    <h5>▢ 사용법</h5>
+    <h5 class="li_들작">var 변수 = document.getElementById('결과');</h5>
+    <h5 class="li_들작">var 스타일정보=getComputedStyle(변수); ==> 이곳에 모든 상태정보가 담겨 있다.</h5>
+    <h5 class="li_들작">스타일정보.height; 또는 스타일정보.width; 확인 가능.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="03_개념정리_파순05_queryselector특징"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. 이해를 쉽게 하기 위해서 ** 노드 **에 대해서 간단히 보고오길 추천.</h4>
+    <h4 id="move1" class="목차">2. 이해를 쉽게 하기 위해서 ** 선택자, 선택연습 ** 에 대해서 간단히 보고오길 추천</h4>
+    <h4 id="move2" class="목차">3. 메소드중 : 단일노드요소 선택, 노드요소의집합 선택 구분</h4>
+    <h4 id="move3" class="목차">4. querySelector(요소노드), querySelectorAll(요소노드들) 차이</h4>
+    <li>#결과 가 1개 있을때 querySelectorAll로 변수지정시. (변수.style 사용안됨??)</li>
+    <h5 class="li_들작">var 변수=document.querySelectorAll('#결과'); 형식으로 변수를 지정하였을때. 배열로 들어간다.</h5>
+    <h5 class="li_들작">console.log(변수.length); ==> 1</h5>
+    <h5 class="li_들작">console.log(변수(1)); ==> 에러나고 다음코드 취소됨.</h5>
+    <h5 class="li_들작">console.log(변수[0]); ==> 요소 반환</h5>
+    <li>#결과 가 1개 있을때 querySelector로 변수지정시. (변수.style 사용가능??)</li>
+    <h5 class="li_들작">var 변수=document.querySelector('#결과'); 형식으로 변수를 지정하였을때. 요소반환일때</h5>
+    <h5 class="li_들작">console.log(변수.length); ==> undefined (에러는 아님)</h5>
+    <h5 class="li_들작">console.log(변수(1)); ==> 에러나고 다음코드 취소됨.</h5>
+    <h5 class="li_들작">console.log(변수[0]); ==> undefined (에러는 아님)</h5>
+    <br>
+    <br><br><br><br>
+  </section>
+
+  <section id="03_개념정리_파순06_onclick함수"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">object.onclick = function() { myScript };</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="04_javascript_파순01_코딩작성규칙?"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1.javascript는 한줄씩 실행된다? 이것저것</h4>
+    <img src="portal/images/문서연결_PROJECT/04_javascript_파순01_코딩작성규칙_01_작성규칙이것저것.png" alt="이미지없음">
+    <h4 id="move1" class="목차">2. if (변수 !== null) {}</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="04_javascript_파순02_기본정보margin0auto등"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. null과 undefined</h4>
+    <li>어떤사람의 키를 적어놨다라고할때, </li>
+    <h5 class="li_들작">A. 어떤사람자체가 존재하지 않을때 null, </h5>
+    <h5 class="li_들작">B. 사람은 있지만 키라는 항목이 없을때 null</h5>
+    <h5 class="li_들작">C. 사람은 있지만 키가 안적혀 있을때 undefined</h5>
+    <br>
+    <h4 id="move2" class="목차">※ text-align: center; ==> 내가품고 있는 요소중 text(인라인속성)요소들을 가운데 정렬한다</h4>
+    <h4 id="move3" class="목차">2. 나(블록)의 가운데정렬 {margin: 0 auto;}, </h4>
+    <li>inline속성인 경우 display:block; 으로 정해놓고 해야한다.</li>
+    <h5 class="li_들작">블록속성이 폭이 정해지고 좌우여백이 있다면 가운데정렬이 된다.</h5>
+    <li>auto ==> 가운데 정렬 의미. {margin:auto;}로 해도 가운데 정렬된다,</li>
+    <li>0 ==> 위아래 마진을 0으로 한다는 의미 (0px가 정확하고 0이 아니면 단위(px)등을 꼭 써줘야 한다.</li>
+    <h5>※ 0부분 보충설명</h5>
+    <h5 class="li_들작">▸ 20px 10px 15px 10px 형식으로 쓰면 위-우측-아래-왼쪽의 폭순서이고.</h5>
+    <h5 class="li_들작">▸ 10px 하나만쓰면 위+아래 의미, 10px 20px 두개쓰면 위아래 10px, 좌우 20px라는 의미</h5>
+    <h5 class="li_들작">▸ 20px 10px 15px 형식으로 3개만쓰는경우는 왼쪽이 빠져있는 상태이고 오른쪽 오른쪽설정값(두번째꺼)을 따라간다.</h5>
+    <h5 class="li_들작">{margin: 10px auto;} : 위아래 마진을 10px 준다는 의미.</h5>
+    <h5 class="li_들작">margin-top, margin-bottom을 따로 다음순서에 설정해줘도 된다.</h5>
+    <li>좌우마진을 주는순간 가운데정렬 깨진다. margin-left, margin-right</li>
+    <li> O : {margin:0 auto} = 나를 가운데 정렬한다. margin-top, margin-bottom은 설정가능</li>
+    <h5 class="li_들작">O : {margin:10px auto} 위아래 마진을 10px 준다는 의미</h5>
+    <h5 class="li_들작">O : {margin:0 auto; margin-top: 10px;} 위 마진만 줄 경우, 따로 다음위치에 써주면 된다.</h5>
+    <h5 class="li_들작">O : {margin:auto; margin-top: 10px;} 위 마진만 줄 경우, 따로 다음위치에 써주면 된다.</h5>
+    <h5 class="li_들작">X : {margin:10px 300px auto} 위 10px, 왼쪽 300px 띄우기만 한다.</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 참고로 {margin:10px 300px;} => 상하10px, 좌우300px씩 마진준다는 뜻.</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 왼쪽마진을 나중에 줘보니 안된다. {margin:0 auto;margin-left: 50px;}</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ※ 좌우에 해당하는 곳에는 마진이 지정되면 가운데정렬이 꺠지는 듯하다.</h5>
+    <br>
+    <h4 id="move4" class="목차">3. length (querySelector, querySelectorAll 사용시 특징)</h4>
+    <li>기본적으로 length는 문자열의 길이를 말한다.</li>
+    <h5 class="li_들작">'abce'.length => 4 , ''.length : 0</h5>
+    <h5>※ querySelectorAll은 length값으로 선택된 요소들의 개수를 가진다. 없을때 0, 1개일때1, 3개일때 3, ...</h5>
+    <h5>※ querySelector는 length값이 없다. null을 반환하고 코드는 진행된다.</h5>
+    <h5>※ null과 undefined, 어떤사람의 키를 적어놨다라고할때</h5>
+    <h5 class="li_들작">A. 어떤사람자체가 존재하지 않을때 null, </h5>
+    <h5 class="li_들작">B. 사람은 있지만 키라는 항목이 없을때 null</h5>
+    <h5 class="li_들작">C. 사람은 있지만 키가 안적혀 있을때 undefined</h5>
+    <li>legnth : 문자열의 길이, 요소집합(querySelectorAll 일때) 개수</li>
+    <li>console.log(document.querySelector('#결과').length); 단독요소일때 undefined</li>
+    <h5 class="li_들작">document.querySelector('#결과')는 하나의 요소를 가리킨다. 요소의 집합이 아니다.</h5>
+    <li>var 변수= document.querySelectorAll('#결과').length);</li>
+    <h5 class="li_들작">해당요소를 찾을수 없을때 length 값 : 0 반환</h5>
+    <h5 class="li_들작">console.log(변수.length); 단독요소일때 All사용시 1</h5>
+    <h5 class="li_들작">console.log(변수.length); All사용시 없을때 0</h5>
+    <li>console.log(변수.id.length); 같은 id 2개일때, All사용시 2</li>
+    <h5 class="li_들작">console.log(변수.className); 공백(없을때)</h5>
+    <h5 class="li_들작">console.log(변수.className.length); 0 (없을때)</h5>
+    <li>console.log(변수.className.length); 하나 또는 여러개일때 모든 글자수 공백포함</li>
+    <li>console.log(변수.style); 집합정보</li>
+    <h5 class="li_들작">console.log(변수.style.width); inline에 없으면 공백</h5>
+    <h5 class="li_들작">console.log(변수.style.width); inline에 width:20px면 20px</h5>
+    <h5 class="li_들작">console.log(변수.style.width.length); inline에 없으면 0</h5>
+    <h5 class="li_들작">console.log(변수.style.width.length); inline에 width:20px면 4 (문자길이)</h5>
+    <br>
+    <h4 id="move5" class="목차">4. getComputedStyle() 사용법</h4>
+    <h5>var 변수 = document.querySelector('#content_편집중');</h5>
+    <h5>var 변수의스타일정보 = getComputedStyle(변수);</h5>
+    <h5>변수의스타일정보.style.속성명 으로 현재상태를 확인할 수 있다. </h5>
+    <h5>인라인 스타일이 아닌 현재상태라는 것을 참고</h5>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp; project에 getComputedStyle() </h4>
+    <h5>A. 맨위로 스크롤해야되는 요소의 위치값을 숫자로 알아야 했다.</h5>
+    <h5>B. 같은 id가 두개였고 두번째꺼 [1] 의 위치값을 알아야 했다.</h5>
+    <h5>C. 결과가 문자열이었기 때문에 추출한 숫자형식문자열을 숫자로 변환하여 비교한 후에 마지막 결과에 px를 추가하여 전달.</h5>
+    <h5>D. header가 높이(fix높이)를 차지하지 않고 있어서 보이는 header 높이(fix높이)값 만큼 아래로 더 이동해야 함.</h5>
+    <h5 class="li_들작">var 스크롤요소들=document.querySelectorAll(아이디); //2개</h5>
+    <h5 class="li_들작">if (스크롤요소들[1]) { //두번째가 있다면.</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  var target = 스크롤요소들[1];</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  //window.scrollY 문서의 최상단 위치값(요소의 위치값에 더해야함?)</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top; //현재위치</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  var fix높이 = getComputedStyle(document.querySelector('header')).height</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  fix높이 = fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  fix높이 = parseInt(fix높이); //숫자형식으로 변환</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  //아래코드는 절대좌표 - fix높이의 위치를 맨위로 스크롤하라는 의미.</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;  window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });</h5>
+    <h5 class="li_들작">}</h5>
+    <br>
+    <h4 id="move6" class="목차">5. project 스크롤이동 사용 코드</h4>
+    <h5>var 스크롤요소들=document.querySelectorAll(아이디); //2개</h5>
+    <h5>if (스크롤요소들[1]) { //두번째가 있다면.</h5>
+    <h5 class="li_들작">var target = 스크롤요소들[1];</h5>
+    <h5 class="li_들작">//window.scrollY 문서의 최상단 위치값</h5>
+    <h5 class="li_들작">var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top; //현재위치</h5>
+    <h5 class="li_들작">var fix높이=getComputedStyle(document.querySelector('header')).height</h5>
+    <h5 class="li_들작">fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기</h5>
+    <h5 class="li_들작">fix높이 = parseInt(fix높이); //숫자형식으로 변환</h5>
+    <h5 class="li_들작">//아래코드는 절대좌표 - fix높이의 위치를 맨위로 스크롤하라는 의미.</h5>
+    <h5 class="li_들작">window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });</h5>
+    <h5>}</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="04_javascript_파순03_함수중단"><div id="스크립트로ul추가"></div>
+    <h5>return;</h5>
+    <h5>return true;</h5>
+    <h5>return false;</h5>
+    <h5>return x;</h5>
+    <h5>return x + y / 3;</h5>
+    <h5>count === 5 : 값과 형식이 모두 일치</h5>
+    <h5>count == 5 : 값이 일치</h5>
+    <h5>count = 5 : 새로운 값을 대입</h5>
+    <br>
+    <h5>function exer() {</h5>
+    <h5 class="h5_번들작">for (var count=1; count++) { //무한반복</h5>
+    <h5 class="h5_번들번들작">console.log(count + 'A'); // 1 2 3 4 5</h5>
+    <h5 class="h5_번들번들작">if(count === 5) {</h5>
+    <h5 class="h5_번들번들작_들작">return; // 멈춤</h5>
+    <h5 class="h5_번들번들작">} // (1) count === 5 END</h5>
+    <h5 class="h5_번들번들작">console.log(count + 'B'); // 1 2 3 4</h5>
+    <h5 class="h5_번들작">} // (2) for() END</h5>
+    <h5 class="h5_번들작">console.log(count + 'C'); // for문 끝났으므로 절대 나타나지 않는다.</h5>
+    <h5>} // (3) counter() END</h5>
+    <h5>counter(); 1A 1B 2A 2B 3A 3B 4A 4B 5A</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="04_javascript_파순04_배열과보이는ul가로맞추기"><div id="스크립트로ul추가"></div>
+    <h5 id="move1" class="목차">1. 스크립트에 사용한 코드. 정리필요</h5>
+    <pre>
+      // 시작하면 바로 실행됨 !!!! ul_height_change
+      var con = document.querySelectorAll('[title="버튼과ul"]');
+      var ul들 = document.querySelectorAll('[title="버튼과ul"] ul');
+      var arr_ul들 = [];
+      var 버튼높이=0;
+      var 가로개수=0;
+      var 서너개ul높이=[];
+      var 서너개ul적용높이=0;
+      var 적용개수=0;
+      
+      for (var i=0 ; i <  ul들.length; i++) {
+        //현재 높이 숫자로 담는동작
+        if (i == 0) {
+          메세지 = (i+1) + '번째ul높이 : ' +  getComputedStyle(ul들[i]).height + '\n';
+          arr_ul들[i]=parseFloat(getComputedStyle(ul들[i]).height);
+        }
+        if (i !== 0) {
+          메세지 += (i+1) + '번째ul높이 : ' +  getComputedStyle(ul들[i]).height + '\n';
+          arr_ul들[i]=parseFloat(getComputedStyle(ul들[i]).height);
+        }
+      
+        //시작시 버튼높이 다르니 줄수 1추가로 시작.
+        if (버튼높이!==con[i].getBoundingClientRect().top) {
+          
+          서너개ul높이=[];
+          // 가로개수만큼의 정보에서 최대값을 구해야됨
+          if (i!==0) {
+            for (var j=1; j &lt; 가로개수; j++) {
+              서너개ul높이.push(arr_ul들[i-가로개수+j])
+            }
+            서너개ul적용높이=Math.max(...서너개ul높이);
+            for (var j=1; j &lt; 가로개수; j++) {
+              arr_ul들[i-j]=서너개ul적용높이;
+            }
+            적용개수=적용개수+서너개ul높이.length;
+          }
+          가로개수=1 //달라지자마자자
+          버튼높이=con[i].getBoundingClientRect().top;
+        }
+      
+        if (버튼높이==con[i].getBoundingClientRect().top) {
+            가로개수=가로개수+1
+        }
+      }
+      
+          //for문끝나고 ul들.length &lt; ul들.length일때 마지막 작업
+          if (ul들.length > 적용개수) {
+            서너개ul높이=[];
+            for (var k=적용개수; k < ul들.length; k++) {
+              서너개ul높이.push(arr_ul들[k]);
+            }
+      
+            서너개ul적용높이=Math.max(...서너개ul높이);
+      
+            for (k=적용개수; k < ul들.length; k++) {
+              arr_ul들[k]=서너개ul적용높이;
+            }
+            적용개수=적용개수+서너개ul높이.length;
+          }
+      
+      for (var i=0 ; i <  ul들.length; i++) {
+        ul들[i].style.height=arr_ul들[i] + 'px'
+        }
+
+    </pre>
+    <h5 id="move2" class="목차">2. 설명</h5>
+    <h5 class="h5_번들작">① 변수들 기본 3가지.</h5>
+    <h5 class="h5_번들번들작">▸ var con = document.querySelectorAll('[title="버튼과ul"]');</h5>
+    <h5 class="h5_번들번들작_들작">버튼과ul이 묶어져 있는 것. 상단에 맞춤 정렬 해놨기 때문에</h5>
+    <h5 class="h5_번들번들작_들작">높이(getComputedStyle(ul들[i]).height)가 다르면 다른 줄로 인식하면 되겠다.</h5>
+    <br>
+    <h5 class="h5_번들번들작">▸ var ul들 = document.querySelectorAll('[title="버튼과ul"] ul');</h5>
+    <h5 class="h5_번들번들작_들작">버튼 말고 ul만!! 이것의 높이를 조정하는 작업이다.</h5>
+    <br>
+    <h5 class="h5_번들번들작">▸ var arr_ul들=[];</h5>
+    <h5 class="h5_번들번들작_들작">높이 조정하려는 모든 ul들의 높이를 담아두고</h5>
+    <h5 class="h5_번들번들작_들작">가로줄마다 최대높이를 구해서 최대높이로 바꿔줄 것이다.</h5>
+    <h5 class="h5_번들번들작_들작">담을 때와 변경할 때는 숫자로 하고, 최종 적용시 'px' 추가.</h5>
+    <br>
+    <h5 class="h5_번들작">② 버튼높이 달라지면 작업해야할 유기적으로 엮여 있는 변수들</h5>
+    <h5 class="h5_번들작">※ 버튼높이, 가로개수, 서너개ul높이[], 서너개ul적용높이</h5>
+    <h5 class="h5_번들작">※ 과정 설명</h5>
+    <br>
+    <h5 class="h5_번들번들작">가. 버튼높이 초기값 0, 버튼높이가 이전높이와 같을 때와 다를 때, </h5>
+    <h5 class="h5_번들번들작_들작">▸ 버튼높이 달리질 때 코드가 먼저 나오고, 같을 때 코드가 나중에 나온다. </h5>
+    <h5 style="text-indent: 113px;">처음 시작할 때 버튼높이 초기값이 0이므로 바로 달라지는데 </h5>
+    <h5 style="text-indent: 113px;">달라질 때는 달라지기 전의 개수를 파악해서 높이를 조정해주는 작업을 하게 된다. </h5>
+    <h5 style="text-indent: 113px;">처음 시작할 때 배열순번[0]일때는 이 작업이 필요 없으므로 조건이 'i!==0 이다' </h5>
+    <h5 style="text-indent: 113px;">달라질 때 달라지기 전의 개수를 파악해 높이를 조정한 후에 '가로개수=1'로 지정 </h5>
+    <br>
+    <h5 class="h5_번들번들작_들작">▸ 버튼높이 같을 때는 '가로개수=가로개수+1'해준다. 이코드가 나중에 나온다. </h5>
+    <br>
+    <h5 class="h5_번들번들작">나. 높이가 달라지면 '서너개ul높이=[]' 배열을 초기화 해주고,</h5>
+    <h5 class="h5_번들번들작_들작">▸ '가로개수만큼 ul의 높이를 '서너개ul높이=[]' 배열에 추가'</h5>
+    <h5 style="text-indent: 113px;">'서너개ul높이=[]' 배열에 담은값의 최대값 구하기. </h5>
+    <h5 style="text-indent: 113px;">서너개ul적용높이=Math.max(...서너개ul높이);</h5>
+    <h5 style="text-indent: 113px;">최대값을 해당 순번의 arr_ul들[i-가로개수+j] 배열에 넣기(변경하기)</h5>
+    <h5 style="text-indent: 113px;">적용한 개수를 파악해둔다.'적용개수=적용개수+서너개ul높이.length;'</h5>
+    <h5 style="text-indent: 113px;">가로개수를 1로 지정하기. 버튼높이 지정하기. 순서이다.</h5>
+    <br>
+    <h5 class="h5_번들번들작">다. 버튼높이가 같다면 '가로개수=가로개수+1'만 하면 된다.</h5>
+    <br>
+    <h5 class="h5_번들작">③ 마지막 줄 작업은 따로 해줘야한다.</h5>
+    <h5 class="h5_번들번들작">가. 코드를 보면 바로 이해할 수 있들 듯.</h5>
+    <br>
+    <h5 class="h5_번들작">④ 담아둔 ul 높이들을 적용하면 끝.</h5>
+  <br><br><br><br>
+  </section>
+
+  <section id="05_git_파순01_01_깃관련"><div id="스크립트로ul추가"></div>
+    <h5 class="목차">4. 5.가 주요정보. add, commit, push, pull, 두군데서 gitHub 저장소 관리방법</h5>
+    <h4 class="목차">▢ 이해가 부족하여 기초적이고 필요한것만 메모해놓겠음</h4>
+    <h4 class="목차">▢ git : 분산 버전관리 시스템, 프로그램이다. 로컬저장소와 원격저장소 사이에서 파일을 관리한다.</h4>
+    <h4 class="목차">▢ gitHub : 원격저장소 서비스업체이다 다른 것도 많이 한다. git이름이 앞에 있다고 관련짓지 말자.</h4>
+    <h5 class="목차">※ gitHub에서 clone 하면 숨김깃폴더가 딸려온다. 바로 연결된것인가? git init 원격저장소연결등 필요없는건가?</h5>
+    <h4 class="목차">▢ git 프로그램을 이용해 원격저장소와 로컬저장소간 정보이동을 관리한다.</h4>
+    <h4 class="목차">▢ 원격저장소의 main(master)에 올리고 내려받는 것만 알려고 한다.</h4>
+    <h4 class="목차">▢ gitHub에 원격저장소 만들기, gitHub원격저장소와 연동할 로컬폴더에 git설치, 정보 주고 받는 방법.</h4>
+    <h4 id="move1" class="목차">1. git 기본 설명 </h4>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
+    <br>
+    <h4 id="move2" class="목차">2. git 설치후 <u><bold>"git bash"</bold></u> 명령창 사용하여 이름과 이메일 등록은 한번만 하면된다. </h4>
+    <li>git 폴더마다 따로 지정할 수 있고 다른 설정도 많지만  global user.name과 global user.email만 설정하겠다.</li>
+    <li class="목차">git 설치후,  global user.name과 global user.email 설정</li>
+    <h5 class="li_들작">▸ global user.name 등록 명령어</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.name "ycy2000"</h5>
+    <h5 class="li_들작">▸ user.name 확인 명령어</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.name ==> 등록된 것 없다면 공백, 있다면 ycy2000</h5>
+    <h5 class="li_들작">▸ user.email 등록 명령어</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email "ycy2000@naver.com"</h5>
+    <h5 class="li_들작">▸ user.email 확인 명령어</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email ==>  ==> 등록된 것 없다면 공백, 있다면 ycy2000@naver.com</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
+    <br>
+    <h4 id="move3" class="목차">3. github에 원격저장소 만들기. (내용이 없으면 브런치(master)도 없는 상태)</h4>
+    <h5 id="move4" class="목차">※ gitHub 안에 git이 깔려있다고 이해한다. 로컬과 연결없이도 파일을 드래그해서 넣을수 있다.(10개씩만 됨)</h5>
+    <h5>A. github 회원가입 : 회원가입시 email, ycy2000@naver.com, </h5>
+    <h5 class="li_들작">가입후 아이디는 ycy2000 또는 가입시 email, 비번, dxxxix3xx8</h5>
+    <h5 class="li_들작">▸ create repository (저장소 생성)</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소생성.png" alt="이미지없음">
+    <br>
+    <h5 id="move5" class="li_들작 목차">▸ github에서 빈 레포지터리 생성하면 당연히 git을 활용할 것이기 때문에 간단한 git 명령어 설명을 해준다.</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_04_github저장소생성2.png" alt="이미지없음">
+    <br>
+    <h4 id="move6" class="목차">4. git 시작, 로컬폴더와 gitHub 원격저장소 연결, 정보 올리기. gitHub 원격저장소가 비어있을때 예시.</h4>
+    <h5>A. git init (해당 폴더를 git을 활용해서 관리하겠다는 선언), 한번만 하면된다. 해제하려면 숨김폴더 .git을 삭제하면 된다. </h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
+    <br>
+    <h5>B. 원격저장소 연결. 연결확인 방법. 연결해제 방법.</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
+    <br>
+    <h5 id="move7" class="목차">C. 정보 주고 받기, add, commit, push</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_07_주고받기.png" alt="이미지없음">
+    <br>
+    <h4 id="move8" class="목차">5. clone</h4>
+    <li>깃허브에 저장소에 정보가 있는 경우 땡겨오고 싶을때.</li>
+    <h5 class="li_들작">$ git clone "https://github.com/ycy2000/exer.git"</h5>
+    <h5 class="li_들작">그러면 현재폴더에 원격저장소이름의 폴더가 생기면서 그 폴더 안에 깃폴더와 내용물이 담겨있다."</h5>
+    <h5 class="li_들작">폴더안에 폴더가 깃폴더인데.... 하나더 루트폴더에서 git init없이 clone 하면되는건가??</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="05_git_파순02_01_vscodeGitAddCommit"><div id="스크립트로ul추가"></div>
+    <h5>git add . ==> git commit -m "메세지" ==> git push origin master : 로컬에서 원격에 올리기</h5>
+    <h5>로컬 빈폴더 git init, git remote add origin "https://github.com/ycy2000/ycy2000.github.io.git",</h5>
+    <h5>git pull origin master : 가지고오기</h5>
+    <h5>document.body.offsetWidth : 화면넓이 갤탭s7fe 1205 >> 1210보다 작아지면?</h5>
+    <h5>document.body.clientWidth : 화면넓이</h5>
+    <h5>document.body.scrollWidth : 화면보다 넓은 것이 있을때 넓이</h5>
+
+    <img src="" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="06_css_파순01_css계속추가_1"><div id="스크립트로ul추가"></div>
+    <embed src="portal/images/코딩메모_lo_ycy/06_css_파순01_css계속추가_1.txt" width=1050px height=700px>
+    <br><br><br><br>
+  </section>
+
+  <!-- 기본구조-->   
+  <section id=""><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1.</h4>
+    <li></li>
+    <h5></h5>
+    <h5 class="li_들작"></h5>
+    <img src="" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+  <!-- 기본구조 끝--> 
+</div>
+
+
+<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='my_index.html'"
+role="button" title="Move Top" data-toggle="tooltip" data-placement="left">
+<span>Top</span></a>
+
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/custom_js.js"></script>
+
+</body>
+
+</html>

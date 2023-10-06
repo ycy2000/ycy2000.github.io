@@ -1,0 +1,50 @@
+-----------------------------------------------------------------------------------
+function 임시함수1() {
+  var con = document.querySelectorAll('[title="버튼과ul"]')
+  if(con.length==0){alert('변수가 비었음.');return;} //alert('변수가 비었음.'); 
+
+  var 가로줄수=0;
+  var 가로줄수마다ul개수배열=[];
+  var 가로줄수마다최대높이배열=[];
+  var 높이=0;
+  var 가로개수카운트;
+  var 비교카운트;
+  var 메세지;
+
+  for (var i=0 ; i<con.length; i++) {
+    if (i=0) {가로개수카운트=1; 비교카운트=1;}
+    if (i!==0) {가로개수카운트=가로개수카운트+1;}
+
+    if (높이!==con[i].getBoundingClientRect().top) {
+        가로개수카운트=1 
+        가로줄수=가로줄수+1; 
+        높이=con[i].getBoundingClientRect().top 
+      }
+
+    if (비교카운트<가로개수카운트) {alert('비교카운트<가로개수카운트 : ' + 비교카운트 + '<' + 가로개수카운트);}
+
+    메세지+='비교카운트' + 비교카운트 + '\n가로개수카운트 : ' + 가로개수카운트
+
+    
+
+
+}; 
+alert('가로줄수 : ' + 가로줄수);
+alert(메세지);
+
+
+
+
+// 임시 확인용 for, 숫자값으로 나옴 정수인듯
+//   var ul높이값모음;
+//   for (var i=0 ; i<con.length; i++) {
+//     if (i==0) {ul높이값모음=(i+1) + '번째 UL높이 : ' + con[i].getBoundingClientRect().top + '\n'; }
+//     if (i!==0) {ul높이값모음+=(i+1) + '번째 UL높이 : ' + con[i].getBoundingClientRect().top + '\n'; }
+// }; alert(ul높이값모음);
+
+
+
+
+  
+  // var style_value=getComputedStyle(con);
+}

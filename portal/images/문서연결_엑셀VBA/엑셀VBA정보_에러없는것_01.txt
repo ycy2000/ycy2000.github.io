@@ -1,0 +1,33 @@
+-----------------------------------------------------------------------------------
+LEFT, MID, RIGHT : 에러없고 공백 출력
+
+Replace(문자, 바꿀값, 대체값)
+
+If IsEmpty(Range("c4")) Then '○
+If Range("c4") = "" Then     '○
+If Range("c1") = Empty Then  'X
+
+'특정문자열 포함 확인
+InStr([Start], String1, String], [Campare])
+Compare : 2,3 사용
+  1)vbUseCompareOption : 값 -1 : Option Compare 문의 설정을 사용해 비교합니다.
+  2)vbBinaryCompare    : 값  0 : 대소문자 구분. A와 a는 다른 값. ★기본값
+  3)vbTextCompare      : 값  1 : 대소문자 구분 X, A와 a는 같은 값.
+  4)vbDatabaseCompare  : 값  2 : 엑세스 전용, 데이터베이스 정보에 맞춰 비교합니다.
+
+Start : String1에서 String2를 찾기 시작할 위치 (생략시 왼쪽부터 시작)
+String1 : 전체 문자열
+String2 : 찾을 문자열
+Compare : 문자열을 비교하는 방법
+
+'추천 : 없으면 0 출력, 있으면 위치 출력
+InStr(1, 전체문자열, 찾을문자열, 1) '대소문자 구별 X, 맨우측 0 이면 대소문자 구별
+
+약식
+InStr(txt, findStr) : 파라미터 두개만 된다. 대소문자 구별만 된다(선택 안됨)
+MsgBox InStr(Range("d1"), "기준") : 있으면, 위치(숫자) 출력
+MsgBox InStr(Range("d1"), "기준") : 없으면, 0 출력
+
+'직접실행창에서 확인
+'직접실행창 값 지우기 : Ctrl + A , Delete
+Debug.Print "내부셀" & 내부셀

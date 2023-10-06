@@ -1,0 +1,95 @@
+라벨을 클릭했을때 인풋이 활성화
+1.<input> : 단독태그, 여기에 아이디 id="name" [이곳은 한글이 안된다한다]
+2.<label for="name">이름 : </label> : 누구를 위한 라벨인가 for
+3. 정보를 입력받아 데이터베이스로 넘긴다고 했을때 type="text"
+   <input id="name" type="text> : 형식이 안맞을때 데이터베이스 에러??
+4.※동작을 하려면 form 태그로 감싸져 있어야 한다.
+5.form에는 반드시 action이 있어야한다. 회원가입이고 한다면 join.php 프로그램   
+   파일이에요. 정보를 받아서 처리해주는거에요.
+   비워두면 머라해요. 아무거나 써줍니다. #
+6.join.php파일은 프로그래머가 작성합니다... 이게 작동하려면 name이 있어야합니다.
+   input태그에. 프로그래머가 정하는 겁니다.
+  name은 데이터베이스의 이름입니다. 필드명..
+7.email의 type을 email로 하면 브라우저 차원에서 이메일 형식이 아니면 경고를 띄웁니다.
+8.반드시 있어야할 정보를 어떻게 전송할 것인지 메소드.form태그.
+  post방식 : 살짝 암호화되어 들어가고 내용을 길게 넣어줄수 있어요. 아이디 비번 노출되면 안됨.
+   get방식 : 암호화 되지 않고 주소표시줄에 묻어간다. 주소표시줄 끝에 보인다.
+   네이버에서 비교
+9.비밀번호 숨겨서.. type="password"
+10.필수사항과 비필수사항이 있다면 필수사항을 묶어줄 필요가 있다. fieldset
+11.fieldset에는 반드시 제목성격의 legend가 있어야 합니다.
+   테두리로 감싸진다.
+12.type="date"하면 달력이 나온다.(크롬). ie는 안나옴. 뒤쳐짐...
+    달력이 안나오면 jqueryui.com 같은 프레임워크의 힘을 빌려야 한다.
+    위젯에서 datepicker - view source(링크와 스크립트가 해준다)
+     link부터 script까지 카피, head에 붙여넣기.
+     demo 스타일시트 지우고 스타일시트에 http://추가...
+13.select안에 option 클릭하면 사용자가 보는건 content, db에 저장되는건  value
+14.라벨 눌렀을때 체크되는건 type="checkbox"
+   <label for="reading">독서</label>
+   <input id="reading" type="checkbox" value="독서" name="mb_interest">
+15.둘중 하나만 선택 type="radio"
+16.인풋, 버튼에 아이콘
+   <input type="image" src="send.png" alt="send"/>
+  <button type="submit"><img src="send.png" alt="send"/></button>
+17.이미지크기 조정 : width, height, background:none; border:none
+
+  <p>
+     <span>성별</span>
+     <label for="male">남성</label>
+     <input id="male" type="radio" value="남성" name="mb_sex">
+     <label for="female">여성</label>
+     <input id="female" type="radio" value="여성" name="mb_sex">
+  </p>
+
+
+<form action="join.php" method="">
+  <fieldset>
+    <legend>필수 입력 사항</legend>
+    <p>
+      <label for="name">이름: </label>
+        <input id="name" type="text" name="mb_name">
+    </p>
+    <p>
+      <label for="email">이메일: </label>
+       <input id="email" type="email" name="mb_email">
+    </p>
+    <p>
+      <label for="password">비밀번호: </label>
+         <input id="password" type="password" name="mb_pw">
+    </p>
+    <p>
+       <input type="submit" value="전송"/>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>부가 입력 사항</legend>
+    <p>
+      <label for="birthdate">생년월일: </label>
+        <input id="birthdate" type="date" name="mb_date">
+    </p>
+    <p>
+      <span>거주지를 선택해주세요.</span>
+      <select name="mb_address">
+        <option value-"서울시">서울시</option> 
+        <option value-"경기도">경기도</option> 
+        <option value-"충청도">충청도</option> 
+        <option value-"제주도">제주도</option> 
+      </select> 
+    </p>
+  </fieldset>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+

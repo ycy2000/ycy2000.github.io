@@ -1,0 +1,12 @@
+-----------------------------------------------------------------------------------
+COUNTIF 10칸이 공백(K12:K21)일때, 참조 L12	
+0	COUNTIF($K$12:$K$21,$L$12)
+10	COUNTIF($K$12:$K$21,"")
+10	WorksheetFunction.CountIf(Range("K12:K21"), "")
+0	WorksheetFunction.CountIf(Range("K12:K21"), Range("L12"))
+0	RANGE("L12")를 RANGE 변수 SET 참조셀로 지정시
+10	RANGE("L12")를 STRING 변수로 지정시
+0	공백 STRING 변수를 L12에 대입시
+결론 : 셀에 공백을 대입시켜도 셀은 카운팅안됨.	
+         안의 값으로는 카운팅이 됨.	
+

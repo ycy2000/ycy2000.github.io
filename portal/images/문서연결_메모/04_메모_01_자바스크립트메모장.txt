@@ -1,0 +1,45 @@
+-----------------------------------------------------------------------------------
+null과 undefined
+자바스크립트에서 null이란 object 타입이며, 아직 '값'이 정해지지 않은 것을 의미합니다.
+
+또한, undefined란 null과는 달리 '타입'이 정해지지 않은 것을 의미합니다.
+
+따라서 자바스크립트에서 undefined는 초기화되지 않은 변수나 존재하지 않는 값에 접근할 때 반환됩니다.
+null과 undefined는 동등 연산자(==)와 일치 연산자(===)로 비교할 때 그 결괏값이 다르므로 주의해야 합니다.
+
+null과 undefined는 타입을 제외하면 같은 의미지만, 타입이 다르므로 일치하지는 않습니다.
+
+예제
+null ==  undefined; // true
+
+null === undefined; // false
+var month, date;             // 여러 변수를 한 번에 선언
+
+var hours = 7, minutes = 15; // 여러 변수를 선언과 동시에 초기화
+
+month = 10, date = 5;        // 여러 변수를 한 번에 초기화
+자바스크립트에서 선언만 되고 초기화하지 않은 변수는 undefined 값을 갖습니다.
+
+예제
+var num;  // undefined
+
+num = 10; // 10
+&&	논리식이 모두 참이면 참을 반환함. (논리 AND 연산)
+||	논리식 중에서 하나라도 참이면 참을 반환함. (논리 OR 연산)
+!	논리식의 결과가 참이면 거짓을, 거짓이면 참을 반환함. (논리 NOT 연산)
+var x = true, y = false;
+
+document.write((x && y) + "<br>"); // false (논리 AND 연산)
+
+document.write((x || y) + "<br>"); // true  (논리 OR  연산)
+
+document.write(!x);                // false (논리 NOT 연산)
+
+<input type=text name=indate size=10 onclick="cal_call("2007", "11")"> 요런식이구요
+<script>
+function cal_call(year, month) {
+var url = "calender.php?year=" + year +"&month=" + month;
+window.open(url, "calender", "width=180, height=180");
+}
+</script>
+

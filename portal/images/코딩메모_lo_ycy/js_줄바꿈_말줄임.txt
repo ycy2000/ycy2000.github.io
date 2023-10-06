@@ -1,0 +1,13 @@
+----------------------------------------------------------------------------------------------------------
+white-space: nowrap을 하여 자동 줄바꿈을 없애자
+text-overflow는 글자가 특정 범위를 벗어나는 경우에 어떻게 처리할 건지 지정할 수 있다.
+말줄임 처리를 하려면, text-overflow: ellipsis를 하면 된다.
+잠깐! text-overflow를 적용하기 위해선 overflow(visible 제외)를 지정해야한다.
+
+1)줄바꿈안할때 : 길어질때 말줄임표 셑트
+  width: 250px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; 
+
+2)한단어일때줄바꿈 : word-break: break-all;

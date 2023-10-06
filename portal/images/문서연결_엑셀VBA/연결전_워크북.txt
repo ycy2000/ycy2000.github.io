@@ -1,0 +1,10 @@
+-----------------------------------------------------------------------------------
+Application.Workbooks.Open Filename:=LBL_백업할시트경로 & T_백업할파일이름 & T_확장자 '열어본다.
+Workbooks(T_백업할파일이름 & T_확장자).Close False
+Workbooks("통합적용.xlsm").Close False 'TRUE 또는 생략시 저장하고 닫기
+Dim wk As Workbook
+Set wk = Workbooks("Example.xlsx")
+Set wk = ThisWorkbook
+Set wk = Workbooks(1)
+Workbooks(1) '열려 있는 가장 처음 워크북 개체에 인덱스 이용해   접근하기
+Workbooks(Workbooks.Count) '열려 있는 가장 마지막 워크북 개체에 인덱스 이용해   접근하기

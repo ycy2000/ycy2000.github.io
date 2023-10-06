@@ -1,0 +1,12 @@
+-----------------------------------------------------------------------------------
+개체변수에만 사용 NOTHING
+Dim 범위 As Range : If 범위 Is Nothing Then : Set 범위 = Nothing
+If Not 범위 Is Nothing Then : Set 구문을 사용하여 C에 개체가 입력(할당)되었다면
+★match함수에러로 range 설정 못하면 nothing(할당되지 못하였다)
+
+개체가 범위인지 그림인지 확인, 
+1.범위이면 selection.name에서 에러난다. 변수.type에서 에러난다.
+
+Range("P2:R3") = Union(Sheets("리스트").Range("C9:E9"), _
+                       Sheets("리스트").Range("C10:E10")).Value 'Value없으면 값 X
+

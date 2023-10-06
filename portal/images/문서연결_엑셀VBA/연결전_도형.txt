@@ -1,0 +1,46 @@
+-----------------------------------------------------------------------------------
+ActiveSheet.Pictures.Delete '사진만 모두 삭제할 경우
+ActiveSheet.Shapes.SelectAll '모든 도형을 선택
+Selection.Delete             '선택된 도형을 모두 삭제
+Worksheets(1).Shapes.Select
+Set sr = Selection.ShapeRange     
+Set myRange = Activesheet.Shapes.Range(Array("Shape1", "Shape2"))
+
+Shapes 지정한 시트의 모든 Shape 개체의 컬렉션입니다.
+각 Shape 개체는 도형, 자유형, OLE 개체, 그림 등과 같이 
+그리기 층에 있는 개체를 나타냅니다.
+Shape 개체를 하나만 반환하려면 Shapes(index)를 사용합니다.
+
+MsgBox TypeName(Selection) : 텍스트   박스-textbox
+MsgBox TypeName(Selection) : 셀연결그림 등-picture
+
+Dim 개체 As Shape '★Shapes로 하면 안됨
+For Each 개체 In ActiveSheet.Shapes
+    If 개체.Type = 17 Then  '글상자:17, 연결그림=그림판에서 잘라온그림=13
+
+    'MsoShapeType
+    'msoAutoShape         1   AutoShape
+    'msoCallout           2   Callout
+    'msoCanvas            20  Canvas
+    'msoChart             3   Chart
+    'msoComment           4   Comment
+    'msoDiagram           21  Diagram
+    'msoEmbeddedOLEObject 7   Embedded OLE object
+    'msoFormControl       8   Form control
+    'msoFreeform          5   Freeform
+    'msoGroup             6   Group
+    'msoIgxGraphic        24  SmartArt graphic
+    'msoInk               22  Ink
+    'msoInkComment        23  Ink comment
+    'msoLine              9   Line
+    'msoLinkedOLEObject   10  Linked OLE object
+    'msoLinkedPicture     11  Linked picture
+    'msoMedia             16  Media
+    'msoOLEControlObject  12  OLE control object (ActiveX controls)
+    'msoPicture           13  Picture
+    'msoPlaceholder       14  Placeholder
+    'msoScriptAnchor      18  Script anchor
+    'msoShapeTypeMixed -  2   Mixed shape type
+    'msoTable             19  Table
+    'msoTextBox           17  Text box
+    'msoTextEffect        15  Text effect

@@ -1,0 +1,4 @@
+-----------------------------------------------------------------------------------
+If Application.CutCopyMode Then '안되는것 : If Application.CutCopyMode=True Then
+Set xRg = xSheet.UsedRange.SpecialCells(xlCellTypeFormulas)
+        If xRg Is Nothing Then  'SET에서 에러가 아니다?

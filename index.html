@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- 상단 nav -->
+<!-- 공통 fixed용 -->
+<header id="head_button_group" class="container-fluid fixed-top h_color">
+
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
+  <nav class="navbar bg-body-tertiary pt-0 pb-0  m-0"  ondblclick="location.href='lotto.html'">   
+    <div class="container-fluid my_nav_width">
+
+      <!--디바이스 작아지면 버튼으로 변해서 누르면 class="collapse navbar-collapse" id="navbarSupportedContent" 부분이 드랍다운된다.-->
+      <div class="my_nav_width">
+        <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
+        <button class="navbar-toggler d-inline-block p-1 me-2" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-brand d-inline-block m-0 pt-0"">
+          <a class="navbar-brand dropdown-item">세관</a>
+        </div>
+        <a id="a_리스트보기숨기기" class="btn btn-light m-0 h_color" onclick="main_list_viewHide()">리스트 보기중</a>
+        <a id="a_소제목보기숨기기" class="btn btn-light m-0 h_color" onclick="sub_list_showHide()">소제목 숨김중</a>
+        <a class="btn btn-light m-0 h_color" onclick="결과임시_보기_숨기기()">결과파일 숨김중</a>
+        <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
+        <div class="collapse navbar-collapse width_100" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3">
+            <li class="nav-item dropdown me-2">
+              <a class="active nav-link dropdown-toggle" href="#" 
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                임시함수들
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <bttton class="btn btn-light active m-2 p-1" onclick="임시함수1()">함수1</bttton>
+                  <span>함수의 설명이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수2()">함수2</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수3()">함수3</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수4()">함수4</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수5()">함수5</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수6()">함수6</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수7()">함수7</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수8()">함수8<a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수9()">함수9</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <li>
+                  <a class="btn btn-light active m-2 p-1" onclick="임시함수10()">함수10</a>
+                  <span>이 함수의 설명</span>
+                </li>
+                <!-- <li><hr class="dropdown-divider"></li> -->
+              </ul>
+            </li>
+            <li class="nav-item dropdown me-2">
+              <a class="active nav-link dropdown-toggle" href="#" 
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                링크이동
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.html">index</a></li>
+                <li><a class="dropdown-item" href="vba.html">vba</a></li>
+                <!-- <li><hr class="dropdown-divider"></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+  </nav>
+</header>
+<div style="height:5px;"></div><!-- main과 띄우기용 -->
+<!-- 공통 fixed용 끝 -->
+
+<!-- 위에까지는 어느정도 된것같다. -->
+<!-- 리스트.실질적 정보 트리 position: absolute 자리안차지하게 이거하면 왼쪽을 붙는다.-->   
+<!-- 스트립트로 visibility: hidden 과 visible 조정 id참고, position: absolute(왼쪽붙음,자리안차지);position:relative(자리차지) 조정-->  
+
+<div id="main정보보기">
+  <div id="모든_버튼과UL그룹묶음">
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      보세화물, 화물인도동의서(D/O), 물품반출입
+      </button>
+      <ul>
+        <li class="content" title="01_보세화물_01_보세화물" data-title="결과물_id">통관, 보세화물, 관리화물 등 용어</li>
+        <li class="content" title="01_보세화물_02_반입및검사" data-title="결과물_id">물품의 반입, 검사</li>
+        <li class="content" title="01_보세화물_03_BL과DO등" data-title="결과물_id">M/BL, H/BL, ★선사 D/O, ★포딩 D/O, 유산스</li>
+        <li class="content" title="01_보세화물_04_물품반입반출유형" data-title="결과물_id">물품반입 유형, 물품반출 유형, 선용품 관련</li>
+        <li class="content" title="01_보세화물_05_미래" data-title="결과물_id">미래소프트 보세프로그램</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      세관,유니패스,보세구역 기초정보
+      </button>
+      <ul>
+        <li class="content" title="02_세관_01_조직도업무분장연락처" data-title="결과물_id">세관 부호, 조직도, 업무분장, 연락처</li>
+        <li class="content" title="02_세관_02_유니패스란" data-title="결과물_id">유니패스란? 로그인, 인증서등록, 화물조회</li>
+        <li class="content" title="02_세관_03_문서재수신" data-title="결과물_id">문서재수신(1개월 내), 재고다운로드, ?고지서?</li>
+        <li class="content" title="02_세관_04_01_특허보세구역게시" data-title="결과물_id">특허보세구역, 자율관리보세구역, 게시 의무</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      UNIPASS에서 직접하는 업무들 (문서첨부 업무)
+      </button>
+      <ul>
+        <li class="content" title="03_세관_01_유니패스업무_01_이상보고" data-title="결과물_id">반입물품 이상보고</li>
+        <li class="content" title="03_세관_02_반출입정정" data-title="결과물_id">보세화물 반출입 정정 승인 신청</li>
+        <li class="content" title="03_세관_03_법규준수도" data-title="결과물_id">법규준수도, 법규수행능력평가 점수 확인방법</li>
+        <li class="content" title="" data-title="결과물_id">X법규수행능력평가 자료 작성 및 제출 (전산)</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      중요 점검 및 보고사항, 특허갱신, 변경신고
+      </button>
+      <ul>
+        <li class="content" title="" data-title="결과물_id">X1.</li>
+        <li class="content" title="" data-title="결과물_id">X2.</li>
+        <li class="content" title="" data-title="결과물_id">X3.</li>
+        <li class="content" title="" data-title="결과물_id">X특허갱신시 자료 작성 및 제출 (직접 제출)</li>
+        <li class="content" title="" data-title="결과물_id">X법규수행능력평가 A 등급 유지방법 (중요!!)</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      보세화물 관련 고시
+      </button>
+      <ul>
+        <li class="content" title="05_고시_01_pdf파일전체보기" data-title="결과물_id">pdf파일전체보기</li>
+        <li class="content" title="05_고시_10_특허보세구역운영에관한고시" data-title="결과물_id">특허보세구역운영에관한고시</li>
+        <li class="content" title="05_고시_20_자율관리보세구역운영에관한고시" data-title="결과물_id">자율관리보세구역운영에관한고시</li>
+        <li class="content" title="05_고시_30_보세화물입출항하선하기및적재에관한고시" data-title="결과물_id">보세화물입출항하선하기및적재에관한고시</li>
+        <li class="content" title="05_고시_40_보세화물관리에관한고시" data-title="결과물_id">보세화물관리에관한고시</li>
+        <li class="content" title="05_고시_50_컨테이너관리에관한고시" data-title="결과물_id">컨테이너관리에관한고시</li>
+        <li class="content" title="05_고시_60_관리대상화물관리에관한고시" data-title="결과물_id">관리대상화물관리에관한고시</li>
+        <li class="content" title="05_고시_70_보세운송에관한고시" data-title="결과물_id">보세운송에관한고시</li>
+      </ul>
+    </div>
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      보세화물 반출입 관련 업무
+      </button>
+      <ul>
+        <li class="content" title="06_반출입_파순01_01문서수신" data-title="결과물_id">보세프로그램으로 세관 유니패스 문서 수신하기</li>
+        <li class="content" title="06_반출입_파순02_01반입등록" data-title="결과물_id">보세화물 반입신고(등록, 송신, 수신, 확인)</li>
+        <li class="content" title="06_반출입_파순03_반출관련" data-title="결과물_id">보세화물 반출신고(등록, 송신, 수신, 확인)</li>
+        <li class="content" title="06_반출입_파순04_내국화물" data-title="결과물_id">내국화물 반입 및 반출신고</li>
+        <li class="content" title="06_반출입_파순05_체화등록통고" data-title="결과물_id">체화등록, 체화통고</li>
+        <li class="content" title="06_반출입_파순06_체화등록통고엑셀활용" data-title="결과물_id">체화등록, 체화통고 엑셀활용</li>
+        <li class="content" title="06_반출입_파순07_관리화물전자SEAL" data-title="결과물_id">관리화물(전자seal)</li>
+        <li class="content" title="06_반출입_파순08_전산재고조사" data-title="결과물_id">X내국물품반출입신고 검증 및 전산재고조사</li>
+      </ul>
+    </div>
+    
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      화물관련 대장 작성 및 관리방법
+      </button>
+      <ul>
+        <li class="content" title="" data-title="결과물_id">X1.</li>
+        <li class="content" title="" data-title="결과물_id">X2.</li>
+        <li class="content" title="" data-title="결과물_id">X3.</li>
+        <li class="content" title="" data-title="결과물_id">X4.</li>
+      </ul>
+    </div> 
+
+    <div title="버튼과ul">
+      <button class="btn btn-success" type="button" onclick="sub_list_Show(event)">
+      ?
+      </button>
+      <ul>
+        <li class="content" title="" data-title="결과물_id"></li>
+
+      </ul>
+    </div> 
+
+  </div> <!--id="모든_버튼과UL그룹묶음"-->
+</div> <!-- 모든_버튼과UL그룹묶음 + 서브리스트 -->
+
+<div id="소제목과list">
+</div>
+
+<div id="content_편집중">
+</div>
+
+<div id="결과">
+</div>
+
+<!-- 모든파일 아이디 처리.. 공백넣기 : &nbsp; -->
+<div id="결과물집합">
+  <!-- 그림 100%를위하여 겉에는 100프로 활용 -->
+  <!-- h2 ol을 자동으로 생성하는게 목표. div ol 아래부터 실질적 편집. h4 1. li div로 묶어야함. -->
+  <section id="01_보세화물_01_보세화물"><div id="스크립트로ul추가"></div>
+    <h4 id="move2" class="목차">&#9634 통관절차는 수입신고(통관신청) 조건을 갖추기 위한 과정입니다.</h4>
+    <h4 id="move3" class="목차">&#9634 수입신고(통관신청)은 반입(전)후 관련기관의 수입검사를 모두 완료한 후에 합니다.</h4>
+    <br>
+    <h4 id="move4" class="목차">1. 보세, 보세화물, 보세구역, 특허보세구역, 보세운송, 관리화물</h4>
+    <li>보세, 보세화물 : 보세는 통관 완료전이라는 의미. 보세화물은 통관 완료전인 화물.</li>
+    <li>보세구역 : 보세화물을 보관하는 장소. 세관에서 지정하거나 세관의 특허를 받아야합니다. </li>
+    <li>보세운송 : 보세화물을 보세구역간 이동하는 행위, 세관의 승인을 얻어야 운송할 수 있습니다. </li>
+    <h5 class="li_들작">※ 보세운송승인 물품은 창고에서 반입예정물품 목록으로 수신되어 쉽게 확인이 됩니다.</h5>
+    <h5 class="li_들작">※ 보세운송승인 물품은 창고에서 해상수입물품의 경우 승인일로부터 보통 10일이내 반입신고 완료하여야 합니다.</h5>
+    <h5 class="li_들작들작">(보세운송에관한 고시 제1장 제6조(보세운송기간)) </h5>
+    <h5 class="li_들작들작">기한내 반입이 어려울 경우 CY에 있는 경우 보세운송신고 당사자가 연장신청하고,</h5>
+    <h5 class="li_들작들작">창고에 도착한 물품의 경우 추가로 창고의 반입지연 사유서를 첨부하여 보세운송신고 당사자가 연장신청 할 수 있습니다.</h5>
+    <li>관리화물 : 세관에서 직접 보려는 화물. (주로 제보가 있거나, 엑스레이상 의심물품을 직접 확인하기 위함입니다.)</li>
+    <h5 class="li_들작">선박에 있는 화물은 보세구역을 하선장소로 지정하여 하선신고를 하게되는데</h5>
+    <h5 class="li_들작">보통 부두의 접안시설 옆에있는 컨테이너야적장(CY)입니다.</h5>
+    <h5 class="li_들작">하선신고는 보세운송처럼 창고에서 수신되는 반입예정정보에 뜨지 않기 때문에,</h5>
+    <h5 class="li_들작">관리화물 등이 하선장소가 '동일냉장 보세구역'으로 지정이 되어 반입되는 경우에는</h5>
+    <h5 class="li_들작">화주 등이 연락을 해줘야 알 수 있습니다.</h5>
+    <h5 class="li_들작">※ 관리화물은 해당화물의 하선신고 장소를 동일냉장보세구역으로 하는것입니다.</h5>
+    <h5 class="li_들작들작">관리화물은 세관에서 직접 물품을 보겠다는 의미입니다.</h5>
+    <h5 class="li_들작들작">세관 직원의 입회 및 지시가 없이는 컨테이너 개봉금지입니다.</h5>
+    <h5 class="li_들작">※ CY로 하선신고후 관리화물 지정시 CY로 하선신고된 내역을 취소후 동일냉장으로 하선신고 됩니다.</h5>
+    <h5 class="li_들작">※ 하선신고 물품은 해상물품의 경우 3일이내(토,일 공휴일 등 노는날 제외???) 반입이 완료되어야 합니다.</h5>
+    <h5 class="li_들작들작">(보세화물 입출항 하선 하기 및 적재에 관한 고시 제19조(하선장소 물품반입) 컨테이너화물 접안일로부터 3일이내 반입.)</h5>
+    <h5 class="li_들작">※ 화주(관세사)에서 관리화물이 있다고 연락이 옵니다.</h5>
+    <h5 class="li_들작">※ 세관담당자는 언제 작업할 것인지 시간조율 연락이 옵니다.</h5>
+    <h5 class="li_들작">※ 전자seal이 부착되어 있으면 해제등록이 필요합니다.</h5>
+    <li>특허보세구역 : 보세화물을 보관할 수 있도록 특별히 허가를 받은 보세구역</li>
+    <h5 class="li_들작">특허보세구역의 종류는 다양합니다. 동일냉장은 특허보세구역 영업용보세창고 입니다.</h5>
+    <h5 class="li_들작">일반화물 보관 + 보세화물 보관 가능합니다.</h5>
+    <br>
+    <h4 id="move5"  class="목차">2. 보세화물의 통관(=통관절차를 완료한는 것)</h4>
+    <li>관세법상 통관 : 수출의 면서, 수입의 면허, 반송의 면허</li>
+    <li>국제간의 물품수출입은 반드시 세관을 통과하여야 하는데</li>
+    <h5 class="li_들작">각 주무부처(식약청, 검역원, 수품원 등)의 수출입절차(검사, 검역 등) 통과 등이</h5>
+    <h5 class="li_들작">이상없이 진행된 후 수입신고(통관신청)을 하면,</h5>
+    <h5 class="li_들작">세관에서 검토하여 이상이 없을시 관세등을 납부하면 수입신고가 승인이 됩니다.</h5>
+    <h5 class="li_들작">통관신청(수입신고)이 승인되면 승인정보가 수신되고 창고에서 수입신고수리후반출신고하면</h5>
+    <h5 class="li_들작">보세화물 상태에서 해제되고 반출(출고)할 수 있습니다. 일반화물(내국화물)로 분류됩니다.</h5>
+    <h5 class="li_들작">출고의뢰를 받았을때 해당물품이 수입신고수리 및 수입신고수리후반출신고가 완료되었는지 확인해야합니다.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="01_보세화물_02_반입및검사"><div id="스크립트로ul추가"></div><br>
+    <h4 id="move1"  class="목차">1. 먼저, 보세화물 종류별로 보관 및 반입조건이 있습니다.<span style="font-size:20px;"> ※ 자세한 사항은 다른 관공서 정보 참고</span></h4>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 전제조건</h4>
+    <h4>&nbsp;&nbsp;&nbsp; ① 특허보세구역 특허를 받은 공간(동결실 2곳 제외 창고내 전체)</h4>
+    <h4>&nbsp;&nbsp;&nbsp; ② 수입식품등 보관업 영업등록된 공간(특허보세구역 특허 공간)</h4>
+    <h4>&nbsp;&nbsp;&nbsp; ③ 식품보존업 영업신고된 공간(창고내 전체)</h4>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 수입축산물의 경우, 전제조건을 충족하고 AND</h4>
+		<h5>① 검역대상물품의 경우		</h5>
+    <h5 class="li_들작">A. 축산물 보관업 영업허가된 공간 : 102호, 103호, 201호, 301호, 401호방	</h5>
+    <h5 class="li_들작">B. A.중에 수입식용축산물보관장(검역시행장) 지정된 공간 (102호 제외)	</h5>
+    <h5 class="li_들작들작">※ 검역대상물품이 아닌 경우에 입고하면 안됩니다. (벌금)	</h5>
+    <h5 class="li_들작들작">※ 따라서 검역대상물품의 경우 ==> 103호, 201호, 301호, 401호방		</h5>
+    <h5>② 검역대상물품이 아닌 경우		</h5>
+    <h5 class="li_들작">A. 축산물 보관업 영업허가된 공간 중에 검역시행장이 아닌 공간 : 102호	</h5>
+    <h5 class="li_들작들작">※ 수입산 치즈를 예를 들면 축산물로 분류되며 검역대상이 아닌 경우가 있습니다.	</h5>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 수입식물류로 분류되는 경우, 전제조건을 충족하고 AND</h4>
+		<h5>① 수입식물류 검역장소로 지정된 공간. 보통 특허보세구역 특허 공간</h5>
+    <h5 class="li_들작">※ 지정이 안되어 있는데 반입을 하면 벌금인지는 확인이 안됩니다.	</h5>
+    <h5 class="li_들작">※ 지정이 안되어 있으면 반입되었더라도 검사가 안되어서 다른창고로 보세운송하여 보내야 합니다.	</h5>
+    <h5 class="li_들작">A. 축산물 반입장소 제외 모두 가능</h5>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 축산물 제외한 물품(수입 및 내국)은 축산물보관장소 제외한 곳 중 제한없습니다.		</h4>
+		<h5>① 전제조건을 충족한 공간 중에 수입축산물 보관장소 제외.	</h5>
+    <br>
+    <h4 id="move2"  class="목차">2. 통관절차중 : 보세화물 반입시, 반입후 관련기관의 수입검사</h4>
+    <li>(검역대상 또는 검역대상 아닌)축산물, 검역대상식물류, 검역대상수산생물류, 일반식품류</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_01_수입축산물검사.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_02_수입식물류검사.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_03_일반수입식품류검사.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_04_수산생물검사.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="01_보세화물_03_BL과DO등"><div id="스크립트로ul추가"></div>
+    <h4 id="move1"  class="목차">1. 화물관리번호, 해상화물의 운송계약, 선사와 M/BL, 포딩과 H/BL, B/L 보는법</h4>
+    <li>화물관리번호</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_01화물관리번호.png" alt="이미지없음">
+    <br>
+    <li>포워딩, 콘솔, 해상화물의 운송계약, 선사와 M/BL, 포딩과 H/BL, 선하증권(B/L)</li>
+    <h5 class="li_들작">A. 포워딩, 콘솔</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_02포딩콘솔.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">B. 해상화물의 운송계약 예시</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_03운송예시.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_03운송예시2.png" alt="이미지없음">
+    <br>
+    <h5 id="move2" class="목차">C. 해상화물의 운송계약 정리, 화물의 소유권</h5>
+    <h5 class="h5_번들작">▸ 포워딩 업체가 발행한 House B/L은 선사가 가지고 있는 화물, 예들들어 CY에 도착한 화물을</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  인도 받을수 있는 서류가 아닙니다. 선사와 관련없는 서류이고 포딩과의 계약서류입니다.</h5>
+    <br>
+    <h5 class="h5_번들작">▸ 관리화물인 경우 3일이내 반입이라는 관세법상 규칙때문에 선사의 D/O가 발행전이라도</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  물품이 반입될 수도 있고 이 경우 동일냉장에서 등록해놓은 물품의 화주가 진정한 화주가 아니고</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  선사의 원본 B/L 인수 및 D/O발행 전 까지는 선사의 소유임을 인지해야 합니다.</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  관리화물이 아닌 경우라면 선사는 원본 B/L 인수하고 D/O발행 원칙을 지키는 것으로 알고 있습니다.</h5>
+    <br>
+    <h5 class="h5_번들작">▸ House B/L인 경우, 포워딩 업체가 선사에 원본 B/L 제시 및 선사의 D/O발행에 의해서 창고로 </h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  반입되겠지만, 이 경우에도 동일냉장에서 등록해 놓은 물품의 화주가 진정한 화주가 아니고</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  포워딩의 D/O발행 및 창고에서 확인하기전 까지는 포워딩의 소유임을 인지해야 합니다.</h5>
+    <br>
+    <h5 class="h5_번들작">▸ ※ Master B/L 발행한 물품인지, House B/L 발행한 물품인지 확인을 한 번 해줘야하고, </h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  그에 따라 확인해야 할 D/O를 인지하고 확인해야 하며,</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  이 후에도, 통관 전이라도 양도가 있으면 화주는 바뀔수 있습니다.</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  창고에서 수신되는 통관정보에는 화주정보도 있습니다. 반드시 확인 해야 할 정보입니다.</h5>
+    <br>
+    <li id="move3" class="목차">B/L 보는법</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_04BL보는법.png" alt="이미지없음">
+    <br>
+    <li id="move4" class="목차">Master B/L 인지 House B/L 인지 확인하는 방법.</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_05BL구분법.png" alt="이미지없음">
+    <br>
+    <li id="move5" class="목차">수입대금 결재방식</li>
+    <h5 class="h5_번들작">▸ 송금방식(T/T), 추심방식 </h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_06송금추심.png" alt="이미지없음">
+    <br>
+    <h5 id="move6" class="목차">▸ 신용장거래(은행의 지급보증) (유산스 Usance) </h5>
+    <h5 class="h5_번들작">※ 유산스(Usance)란 일반적으로 신용장(L/C, Letter of Credit)방식에 의한 </h5>
+    <h5 class="h5_번들번들작">무역결제에 있어 어음의 지급기한을 의미하며,</h5>
+    <h5 class="h5_번들번들작">수입자가 일정기간(통상 30일, 60일, 90일, 150일) 후에 수출대금을 지급하는 단기연불수입의 일종이다.</h5>
+    <h5 class="h5_번들번들작">연불수입(수입 상품의 대금을 결제하는 방식의 하나. </h5>
+    <h5 class="h5_번들번들작">선금 지급이나 전액 외상으로 수입 상품을 공급받고 대금은 일정 기간에 나누어 결제한다.) </h5>
+    <br>
+    <h5 id="move7" class="h5_번들작 목차">※ L/G : Letter of Guarantee : 수입화물선취보증</h5>
+    <h5 class="h5_번들번들작">신용장 거래방식에서 원본 B/L이 늦어질때 은행이 보증을 하여 원본 B/L이 도착하면</h5>
+    <h5 class="h5_번들번들작">L/G와 교환할것을 약속하는 서류. </h5>
+    <h5 class="h5_번들번들작">개설의뢰인(화주)는 이 서류를 원본 B/L처럼 선사에 제출하여 화물인 인도받습니다. </h5>
+    <h5 class="h5_번들번들작">물류비용 발생 및 통관지연을 방지하기 위해 물품을 먼저 인도하고  </h5>
+    <h5 class="h5_번들번들작">원본 B/L이 도착하면 서로 교환하게 됩니다. </h5>
+    <br>
+    <h5 id="move8" class="목차">A. 신용장 개설 합의, 신용장 개설</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_07신용장개설합의.png" alt="이미지없음">
+    <br>
+    <h5 id="move9" class="목차">B. 신용장을 Buyer에게 전달</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_08신용장바이어에게전달.png" alt="이미지없음">
+    <br>
+    <h5 id="move10" class="목차">C. 신용장에서 요구한 서류를 Seller에게서 받는 과정</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_09신용장서류받기.png" alt="이미지없음">
+    <br>
+    <h5 id="move11" class="목차">D. Seller가 물품대금을 받는 과정</h5>
+    <h5 class="h5_번들작">▸ 개설은행은 신용장에서 요구한 서류만을 심사하여 일치하면 통지은행에 대금을 지급한다.</h5>
+    <h5 class="h5_번들작">▸ 대금을 지급받은 통지은행은 Seller에게 대금을 지급한다.</h5>
+    <h5 class="h5_번들작">▸ Buyer는 전달받은 물품에 이상이 있더라고 대금지급과정에 관여할 수 없다.</h5>
+    <br>
+    <h5 id="move12" class="목차">E. 신용장거래방식의 특징</h5>
+    <h5 class="h5_번들작">▸ 수익자 (Seller)</h5>
+    <h5 class="h5_번들번들작">신용위험 회피</h5>
+    <h5 class="h5_번들번들작">신용장을 담보로 대출을 받을수 있다. (무역금융)</h5>
+    <br>
+    <h5 class="h5_번들작">▸ 개설의뢰인 (Buyer)</h5>
+    <h5 class="h5_번들번들작">수수료가 많다</h5>
+    <h5 class="h5_번들번들작">개설의뢰인에게는 좋은게 별로 없다고 설명함.</h5>
+    <h5 class="h5_번들번들작">2000년 전에는 80%를 차지하다가 현재 10%정도라고 설명함.</h5>
+    <br>
+    <h5 class="h5_번들작"> ▸ 은행</h5>
+    <h5 class="h5_번들번들작">수수료를 높게 받는다고 설명함.</h5>
+    <br>
+    <h4 id="move13"  class="목차">※ D/O 관련 대법원 판결정보</h4>
+    <h5 class="h5_번들작 목차">C. 해상화물의 운송계약 정리, 화물의 소유권 내용 참고</h5>
+    <h5 class="h5_번들번들작">Master B/L의 경우 선사의 D/O를 받기전까지 화물은 선사에게 소유권이 있고,</h5>
+    <h5 class="h5_번들번들작">House B/L의 경우 포딩의 D/O를 받기전까지 화물은 포딩에게 소유권이 있으니,</h5>
+    <h5 class="h5_번들번들작">선사나 포딩과 소유권 분쟁에 휘말리지 않으려면 각 D/O를 챙겨서 확인하여야한다.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="01_보세화물_04_물품반입반출유형"><div id="스크립트로ul추가"></div>
+    <h4 id="move1"  class="목차">▢ 물품반입 유형 : 입항반입, 보세운송반입, B/L분할 반입</h4>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_04_01_반입유형.png" alt="이미지없음">
+    <br>
+    <h4 id="move2"  class="목차">▢ 물품반출 유형</h4>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_04_02_반출유형.png" alt="이미지없음">
+    <br>
+    <h4 id="move3"  class="목차">▢ 선용품 관련 정보</h4>
+    <li>정보 수집중</li>
+    <img src="" alt="이미지없음">
+  </section>
+
+  <section id="01_보세화물_05_미래"><div id="스크립트로ul추가"></div>
+    <h4>▢ 영업프로그램 및 보세화물프로그램이 통합되어 있습니다.</h4>
+    <h4>▢ 로그인 방법과 간단한 메뉴설명만 하고 세부적인 사용법은 실무에서 다룹니다.</h4>
+    <h4>▢ 공인인증서를 등록하였다면 프로그램 종료시까지 유지됩니다.</h4>
+    <h4 class="목차">1. 로그인 방법, 화면설명, 유니패스 송수신 메뉴 사용시 공인인증서 등록방법</h4>
+    <h5>A. 바탕화면에서 <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_01_아이콘.png" style="display:inline" alt="이미지없음"> 더블클릭</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ① 사번 입력후 엔터치면 우측에 이름이 나옵니다.</h5>
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 202203(김기수),202204(양충영), 202205(백명탁), 202206(차승환), 202207(김경아), 202208(김인애), 202209(윤하늬)</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ② 비밀번호 입력후 엔터 두번 치면 로그인 됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_02_로그인.png" alt="이미지없음">
+    <br>
+    <h5>B. 첫화면에 일정표와 유통기한경과물품 목록창이 뜨는데, 필요 없으면 닫습니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_03_로그인.png" alt="이미지없음">
+    <br>
+    <h5 id="move1" class="목차">C. 처음화면입니다. 간단한 메뉴 설명입니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_04_초기화면.png" alt="이미지없음">
+    <br>
+    <h5 id="move2" class="목차">D. 유니패스에 송수신되는 메뉴 사용시 인증서 로그인창이 뜹니다. (인증서 등록방법)</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ① 인증서위치 선택</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ② 인증서 선택</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ③ 인증서 비밀번호 입력, dongil3368</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ④ 확인</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_05_인증서.png" alt="이미지없음">
+    <br>
+    <h5 id="move3" class="목차">E. EDI(Electronic Data Interchange) : 전자문서교환, 보세화물 관련 문서입니다.</h5>
+    <h5 id="move4" class="목차">&nbsp;&nbsp;&nbsp; 세관 유니패스와 관련된 모든 문서 및 송수신 결과 등 확인.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_06_edi.png" alt="이미지없음">
+    <br>
+    <h5 id="move5" class="목차">F. 보세화물관리 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_07_보세화물관리.png" alt="이미지없음">
+    <br>
+    <h5 id="move6" class="목차">G. 수신문서관리 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_08_수신문서관리.png" alt="이미지없음">
+    <br>
+    <h5 id="move7" class="목차">H. 기타정보 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_09_기타정보.png" alt="이미지없음">
+    <br>
+    <h5 id="move8" class="목차">I. 내국화물관리 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_10_내국관리.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="02_세관_01_조직도업무분장연락처"><div id="스크립트로ul추가"></div>
+    <h4 class="목차">&#9634; 부산 본부세관 고유 부호 : 030, 동일냉장 고유 부호 : 11597</h4>
+    <h4 class="목차">&#9634; 부산 본부세관 인터넷 검색하여 사이트 방문 (여기서는 우측 밝은색 조직도와 직원안내만 봅니다.)</h4>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_01_세관조직도메인.png" alt="이미지없음">
+    <br>
+    <h4 id="move1" class="목차">1. 조직도 (우측 끝) "세관소개" => 조직 및 직원안내 => 조직도. <span style="font-size: 20px;">(주로 연락하는 부서는 감시국 => "수출입물류과")</span></h4>
+    <li class="">"감시국" 클릭하면 "수출입물류과" 포함하여 여러부서별 업무분장을 확인할 수 있습니다.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_02_세관조직도.png" alt="이미지없음">
+    <br>
+    <h4 id="move2"  class="목차">2. "감시국" 클릭했을때 나오는 분장업무중 "수출입물류과"의 분장업무들 "확인"</h4>
+    <li>☞ 수출입물류과<br>
+        ㆍ보세구역의 지정 및 특허와 보세화물의 관리<br>
+        ㆍ자유무역지역 및 종합보세구역의 관리<br>
+        ㆍ수출입화물의 보관·운송 및 물류의 개선<br>
+        ㆍ보세구역운영인·운송업자의 자율적 법규준수도의 측정 및 관리<br>
+        ㆍ장치기간경과화물·몰수품 및 국고귀속물품의 관리·공매예정가격의 산출 및 매각<br>
+        ㆍ외국인투자에 대한 통관지원<br>
+        ㆍ권역내 세관의 통관업무에 대한 지도·감독<br>
+        ㆍ통관에 관한 정보의 수집과 종합관리<br>
+        ㆍ남북한 왕래자에 대한 휴대품검사 및 남북교역물품의 반출입관리<br>
+        ㆍ기타 국내 다른 과의 주관에 속하지 아니하는 사항
+    </li>
+    <br>
+    <h4 id="move3"  class="목차">3. 조직도 (우측 끝) "세관소개" => 조직 및 직원안내 => 직원안내 (★ 중요 ★)</h4>
+    <li class="목차">부서로 찾기 클릭 => 감시국 클릭 => "수출입물류과부터 담당자와 담당업무 및 연락처가 뜹니다."</li>   
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_03_직원안내.png" alt="이미지없음">
+    <br> 
+    <h4 id="move4"  class="목차">4. 수출입물류과 담당업무 설명 (메인)</h4>
+    <li class="목차">검은색 테두리 친 담당자와 자주 통화하게 된다.(체화,공매,폐기, 반출입관리. 법규수행능력평가 중요)</li>
+    <h5 class="목차">※ 특히 반출입관리는 반입물품 이상보고, 반입정정, 반출정정 업무가 빈번합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_04_직원안내자세히.png" alt="이미지없음"><br><br><br><br>
+  </section>
+
+  <section id="02_세관_02_유니패스란"><div id="스크립트로ul추가"></div>
+    <h4 class="목차">&#9634; 유니패스(UNIPASS)</h4>
+    <li>유니패스란 우리나라 전자통관 시스템으로 쉽게 말해 한국형 무역 행정 서비스입니다.</li>
+    <h5 class="li_들작">"다양한 관세 서비스를 통합"한다는 뜻의 <strong>UNI</strong>와 "전자시스템으로 원스톱 처리"한다는</h5>
+    <h5 class="li_들작">뜻의 <strong>pass</strong>를 합친 말입니다.</h5>
+    <h5 class="li_들작">유니패스는 물품의 수출입 신고, 세금 납부, 화물 검사 등 통관 절차를 전산시스템으로 자동화한 것으로</h5>
+    <h5 class="li_들작">따로 세관을 방문하거나 서류를 작성할 필요 없이 인터넷을 통해 처리해주는 시스템입니다</h5>
+    <br>
+    <h4 class="목차">&#9634; UNIPASS를 통해서 전자문서 제출하는 업무들 예시.</h4>
+    <h5>A. 보세화물의 반출입신고, 반출입신고의 정정 및 취소 신청, 반입물품 이상보고 등</h5>
+    <h5 class="li_들작">&#9656 미래소프트 보세관리 프로그램은 유니패스의 문서들을 땡겨와서 보여주는 것입니다.</h5>
+    <h5 class="li_들작">&#9656 보세관리 프로그램이 오류 등으로 세관의 문서를 땡겨오지 못하여 발생하는 신고누락 등의 책임은</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;전적으로 창고에 있습니다.</h5>
+    <h5 class="li_들작">&#9656 송신=문서제출이고 그 결과를 알려줍니다. 접수=접수, 오류통보=무효입니다.</h5>
+    <h5 class="li_들작">&#9656 승인통보, 체화통고 등 다양한 정보를 알려줍니다.</h5>
+    <br>
+    <h4 id="move5" class="목차">1. UNIPASS 로그인 방법, ID:go4323, password:!dongil3368, 공인인증서password:dongil3368</h4>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;주소 : https://unipass.customs.go.kr/csp/index.do</h4>
+    <li>반출입신고는 등 대부분은 미래소프트 보세프로그램을 통해서 편리하게 할수 있습니다.</li>
+    <li>UNIPASS에서 직접하는 업무는 반입이상보고, 반출입정정신청, 재고조회 등입니다.</li>
+    <li>문서송신(반입이상보고, 반출입정정신청 등)은 회사명의의 활동이므로 공인인증서 로그인을 해야 사용가능합니다.</li>
+    <br>
+    <h5 class="li_들작">가. 로그인 방법 : 사이트방문 - ① 로그인 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_01_로그인1.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">나. 로그인방법 : 공인인증서 화면 전까지 ① ② ③ ④ </h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_01_로그인2.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">다. 로그인 방법 : 공인인증서 화면 ① ② ③ ④ </h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_01_로그인3.png" alt="이미지없음">
+    <br>
+    <h4 id="move6" class="목차">2. (로그인 후) 공인인증서 등록. 창고 보세프로그램도 같은 공인인증서를 사용합니다. </h4>
+    <li>공인인증서 등록은 아이디와 비번만 입력하고 로그인해서 사용가능한 기능입니다.</li>
+    <li>공인인증서 유효기간은 1년입니다. 1년마다 재발급(한국정보통신? 총무부) 받아서 등록 해줘야 합니다.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_02_인증서등록.png" alt="이미지없음">
+    <BR></BR>
+    <h4 id="move7" class="목차">3. 화물조회 (수입화물진행정보 확인방법)</h4>
+    <h5>1. (로그인 안해도 상관없음) 유니패스 - 관세청 사이트 방문</h5>
+    <h5>2. "화물진행정보조회 메뉴"에서 ① Master B/L 번호 또는 House B/L 번호 입력 후 조회</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_02_화물조회1.png" alt="이미지없음">
+    <br>
+    <h5>3. 조회결과화면 예시</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_02_화물조회2.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>  
+
+  <section id="02_세관_03_문서재수신"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. (공인인증서 로그인 후) 문서함에서 문서 재수신 방법</h4>
+    <h5>① My메뉴 클릭, ② 문서함 사용관리 클릭, ③ 수신문서함 클릭, ④ 수신현황 클릭, ⑤ 수신기간 설정,</h5>
+    <h5>⑥조회 클릭, ⑦ 재수신 받을 문서 선택, ⑧ 재수신 클릭, ⑨ 재수신 처리하시겠습니까? 확인 클릭,</h5>
+    <h5>⑩ 정상적으로 처리되었습니다. 확인 클릭, ⑪ 보세프로그램에서 수신하면 다시 수신됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_01_문서재수신.png" alt="이미지없음">
+    <br>
+    <h4 id="move2" class="목차">2. 보세화물 재고, 내국화물 재고 다운로드 (재고조사할때 이 자료와 일치해야 합니다.)</h4>
+    <h4 id="move3" class="목차">▢ (공인인증서 로그인 후) 보세구역 재고현황 다운로드</h4>
+    <li>메뉴에 접근 : ① 정보조회 클릭, ② 통관물류정보 클릭, ③ 보세구역 재고현황 클릭</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_02_보세재고1.png" alt="이미지없음">
+    <br>
+    <li id="move4" class="목차">보세구역 재고현황 다운로드 : ① 조회 클릭, ② 다운로드 클릭, ③ 다운로드 됩니다.</li>
+    <li>다운로드 된 파일은 윈도우탐색기 - 다운로드 폴더에서 확인.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_02_보세재고2.png" alt="이미지없음">
+    <br>
+    <h4 id="move5" class="목차">▢ (공인인증서 로그인 후) 내국물품 반출입 재고현황 다운로드</h4>
+    <li>메뉴에 접근 : ① 정보조회 클릭, ② 통관물류정보 클릭, ③ 내국물품 반출입 재고현황 클릭</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_03_내국재고1.png" alt="이미지없음">
+    <br>
+    <li id="move6" class="목차">내국물품 반출입 재고현황 다운로드 : ① 1년 클릭, ② 조회 클릭, ③ 다운로드 클릭, ④ 다운로드 됩니다.</li>
+    <li>다운로드 된 파일은 윈도우탐색기 - 다운로드 폴더에서 확인.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_03_내국재고2.png" alt="이미지없음">
+    <br><br><br><br><br>
+  </section>
+
+  <section id="02_세관_04_01_특허보세구역게시" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 특허보세구역과 자율관리보세구역</h4>
+    <br>
+    <h4>1. 자율관리보세구역이란 특허보세구역을 운영하는 업체가</h4>
+    <h5>가. 보세화물관리를 위한 보세사 채용.</h5>
+    <h5>나. 화물의 반출입, 재고관리 등 실시간 물품관리가 가능한 전산시스템(WMS, ERP EMD) 구비.</h5>
+    <h5>다. 운영인 등의 법규수행능력이 우수하여 보세구역 자율관리에 지장이 없다고 판단되는 업체를</h5>
+    <h5 class="li_들작">자율관리보세구역으로 세관이 지정할 수 있다.</h5>
+    <h5 class="li_들작">※ 특허보세구역의 법규수행능력평가 점수가 3년평균 A등급이상을 유지하는 업체</h5>
+    <br>
+    <h4 id="move2" class="목차">2. 자율관리보세구역 혜택</h4>
+    <h5>※자율관리 보세구역 운영에 관한 고시 제7조(절차생략 등)</h5>
+    <br>
+    <h5>가. 식품위생법 제10조, 축산물 위생관리법 제6조에 따른 표시작업(원산지표시 제외) 할때 보수작업 신청(승인) 생략.</h5>
+    <h5 class="li_들작">▸ 예 ) 축산물 입고시 한글스티커 부착작업 할 때 보수작업의 신청(승인) 없이 자율적으로 할 수 있습니다.</h5>
+    <h5 class="li_들작">▸ 예 ) 다른식품도 한글스티커 작업할때 자율적으로 하는 부분들입니다.</h5>
+    <br>
+    <h5 class="li_들작">단, ★원산지 표시가 누락되었을 경우에 원산지를 표시하는 작업은 보수작업 신청(승인) 받아야 됩니다.</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;&nbsp; ★보수작업 대장 작성, 보수작업 완료보고서 제출, 작업 전 후 사진 등록 등 하여야 합니다.</h5>
+    <br>
+    <h5>나. 보세화물 관리에 관한 고시 제16조에 따른 재고조사 및 보고의무를 분기별 1회에서 년 1회로 완화</h5>
+    <h5 class="li_들작">※ 특허보세구역 운영상황의 보고 기한이 다가오면 세관에서 공문을 보내주는데 요구서류에</h5>
+    <h5 class="h5_번들번들작">재고조사보고서 등을 요청하는데 이것이 그 1회보고가 됩니다.</h5>
+    <h5 class="h5_번들번들작">요청을 안하면 직접 보고해야 합니다. 운영상황의 보고 공문 도착시 이부분을 확인하고,</h5>
+    <h5 class="h5_번들번들작">법령에 정한 보고사항 등의 체크리스트에 체크해 놓습니다.</h5>
+    <h5 class="h5_번들번들작">★ 또한 운영상황의 보고 날짜는 법규수행능력평가때 날짜를 기재하므로 체크해 두어야 합니다.</h5>
+    <br>
+    <h5>다. 특허보세구역 운영에 관한 고시 제22조에 따른 보세구역 운영상황의 점검생략</h5>
+    <h5 class="li_들작">▸ 특허보세구역 운영에 관한 고시 제20조(보세구역 운영상황의 보고)를 2월말까지 하는데,</h5>
+    <h5 class="h5_번들번들작">그 보고내용이 일치하는지와 운영상황에 문제가 없는지 방문조사하게 되어있는데 생략한다는 것입니다.</h5>
+    <br>
+    <h5>라. 보세화물 관리에 관한 고시 제17조에 따른 장치물품 수입신고 전 확인신청(승인) 생략</h5>
+    <h5 class="li_들작">▸ 화주 등이 물품 반입시 검품 등을 할때 '장치물품의 수입신고 전 확인신청(승인)'을 받아야</h5>
+    <h5 class="h5_번들번들작">물품을 볼 수 있는데 그 신청(승인)을 생략한다는 것입니다.</h5>
+    <h5 class="h5_번들번들작">★ 그러나 그 물품을 '장치물품 수입신고 전 확인대장'에 기록관리는 해야합니다. </h5>
+    <br>
+    <h4 id="move3" class="목차">▢ 특허보세구역 운영에 관한 고시 제16조(특허장의 게시 등)</h4>
+    <h5>① 운영인은 보세구역 내 일정한 장소에 다음 각 호의 사항을 게시하여야 한다.</h5>
+    <h5 class="li_들작">가. 별지 제2호서식의 특허장</h5>
+    <h5 class="li_들작">나. 보관요율(자가용보세창고는 제외한다) 및 보관규칙</h5>
+    <h5 class="li_들작">다. 화재보험요율</h5>
+    <h5 class="li_들작">라. 자율관리보세구역지정서</h5>
+    <h5 class="li_들작">마. 위험물품장치허가증 등 관계 행정기관의 장의 허가, 승인 또는 등록증</h5>
+    <h5 class="h5_번들번들작">(위험물품, 식품류를 보관하는 보세구역에 한정한다)</h5>
+    <h5>② 운영인은 보세구역 입구에 별표 1과 같은 간판을 게시하고 민원인출입구, 울타리 등 필요한 장소에</h5>
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp; 별표 2와 같은 안내문을 게시하여야 한다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관_04_01_특허보세구역게시.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="03_세관_01_유니패스업무_01_이상보고" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 보세화물관리에 관한 고시 제5조(물품의 반입)</h4>
+    <h5>③ 운영인은 반입된 물품이 반입예정 정보와 품명.수량이 상이하거나 안보위해물품의 반입, 포장파손 누출,</h5>
+    <h5>&nbsp;&nbsp;&nbsp; 오염 등으로 이상이 있는 경우에는 즉시 별지 제1호서식의 반입물품 이상보고서에</h5>
+    <h5>&nbsp;&nbsp;&nbsp; 다음 각 호의 서류를 첨하여 전자문서로 세관장에게 제출하여야 한다.</h5>
+    <h5>&nbsp;&nbsp;&nbsp; 다만, 전자문서로 제출할 수 없는 경우에는 서류로 제출 할 수 있다.</h5>
+    <br>
+    <h5 class="li_들작">1. 사유서 (화주의 사유서)</h5>
+    <h5 class="li_들작">2. B/L 사본 등 세관장이 반입물품 이상여부 확인을 위해 필요한 서류</h5>
+    <h5 class="li_들작">&nbsp;&nbsp; (반입물품 이상보고서, 입고확인서, B/L, 팩킹리스트, 인보이스)</h5>
+    <br>
+    <h4 id="move2" class="목차">▢ 반입물품 이상보고 및 이상보고후 반입신고까지 과정</h4>
+    <h5>※ 세관 감시국 수출입물류과 반출입관리 담당자가 담당합니다.</h5>
+    <h5>1. 먼저 gross 중량 기준으로 1개의 중량을 근사값으로 정하여 신고할 수량과 gross중량을 확정하여</h5>
+    <h5>&nbsp;&nbsp;&nbsp; 다음과 같이 반입물품 이상보고서를 작성해 봅니다. 내용에 이상이 없는지 확인하고 이대로 진행합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_01_유니패스업무_01_이상보고서.png" alt="이미지없음">
+    <br>
+    <h5>2. 화주의 사유서를 받아야 하는데 창고측에서 대신 적고 팩스보내서 확인하고 명판 직인 찍어달라고 하는 것이</h5>
+    <h5 class="h5_번들작">진행이 빠르고 수월할 수 있습니다. </h5>
+    <h5 class="h5_번들작">미리 만들어 놓은 반입물품 이상보고서를 화주(관세사)에게 팩스 보내주고</h5>
+    <h5 class="h5_번들작">참고하여 직접 사유서를 작성하여 직인 명판 찍어서 보내달라고 하던지,</h5>
+    <h5 class="h5_번들작">대신 적은 사유서를 보내주면서 확인 후 화주의 명판 직인을 찍어서 보내달라고 해서 준비합니다.</h5>
+    <br>
+    <h5 class="h5_번들작">★ 세관 검토/승인 담당자에 따라서 더 자세한 내용을 담은 화주의 사유서를 요구하는 경우도 있습니다.</h5>
+    <h5 class="h5_번들작">★ 요구사항을 화주에게 전달하여 다시 받아야 하는 경우도 있습니다.</h5>
+    <br>
+    <h5>3. B/L, 팩킹리스트, 인보이스 없으면 다시 달라고하고 훼손되었으면 깨끗한 걸로 다시 보내달라고 합니다.</h5>
+    <br>
+    <h5>4. 창고의 입고확인서 준비합니다.</h5>
+    <h5 class="h5_번들작">※ 준비한 서류들을 스캔본으로 묶어서 만들어 놓습니다.. (서류첨부 준비)</h5>
+    <h5 class="h5_번들작">※ 2023.08.14 세관에서 입고확인서에 보세사 성명 및 싸인 넣으라고 하였음.</h5>
+    <h5 class="h5_번들작">※ 보세창고 명판과 도장 찍고 보세사 성명 및 싸인 넣을것</h5>
+    <br>
+    <h5 id="move3" class="목차">5. 유니패스에서 반입이상보고서 작성 및 전송</h5>
+    <h5 class="li_들작">▸ 메뉴에 접근 : 유니패스 공인인증서 로그인후, ① 전자신고 클릭,  ② 화물 클릭.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_01_유니패스업무_02_이상보고서메뉴.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">▸ 메뉴에 접근 : ① '이상보고' 입력,  ② 조회 클릭, ③ 반입물품 이상보고서 클릭.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_01_유니패스업무_02_이상보고서메뉴2.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">▸ 이상보고서 내용 작성</h5>
+    <h5 class="h5_번들번들작">※ 오류때문에 전산팀에 문의했을때 화물관리번호, 적하목록관리번호, BL번호를 대문자로 입력해야 한다고 하였음. </h5>
+    <h5 class="h5_번들번들작">※ 대문자상태로 화물관리번호 - 없이 입력. 입력후에 알파벳 O,I등이 자동으로 소문자로 바뀌는듯 합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_01_유니패스업무_02_이상보고서메뉴3.png" alt="이미지없음">
+    <br>
+    <h5>6. 반입이상보고서 발송즉시 접수되는 문서이고, </h5>
+    <h5 class="h5_번들작">접수되면 세관담당자가 확인후 물어볼 것이 있으면 유선으로 연락이 올 것입니다.</h5>
+    <h5 class="h5_번들작">보고서 만으로 확인이 가능한 경우는 보통 검토 결과를 전자문서로 보내는데</h5>
+    <h5 class="h5_번들작">'기각'과 '확인' 두가지 입니다. 두가지다 '승인통보' 제목으로 수신됩니다.</h5>
+    <h5 class="h5_번들작">화물진행정보에서 확인하는 것이 더 직관적이니 화물진행정보에서 확인하고 '확인'의 승인통보라면 7.번</h5>
+    <br>
+    <h5>7. 반입이상보고의 승인통보를 확인하고 이상보고한 내역대로 반입신고합니다.</h5>
+    <br>
+    <h5 id="move4" class="목차">8. 사유서를 다시 제출할 때, 또는 서류첨부를 누락했을때 '첨부서류 사후제출' 방법
+    <h5 class="li_들작">▸ 메뉴에 접근 :  ① 전자신고 클릭, ② 첨부서류 사후제출 클릭.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_01_유니패스업무_03_사후제출1.png" alt="이미지없음">
+    <h5 class="li_들작">▸ 첨부서류 사후제출</h5>
+    <h5 class="h5_번들번들작">※ 처리가 완료된 것은 조회되지 않습니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_01_유니패스업무_03_사후제출2.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="03_세관_02_반출입정정" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 반입정정 (사례는 출력물 참고)</h4>
+    <br>
+    <h4>▢ 보세화물관리에 관한 고시」 제9조제(반입확인 및 반입신고)</h4>
+    <h5>⑤ 운영인은 제1항부터 제4항에 따른 반입신고 내역을 정정하려는 때에는 별지 제6호서식의 </h5>
+    <h5>반입신고 정정 신청서를 세관장에게 전자문서로 제출하고 승인을 받아야 한다.</h5>
+    <br>
+    <h4>▢ 반입정정 승인 신청을 하는 경우들</h4>
+    <h5>1. 취소 : 착각하여 다른물품을 반입신고 한 경우 등.(선 반입신고 취소)</h5>
+    <h5 class="h5_번들작">※ 도착하지 않은 물품을 다른 물품으로 착각하여 반입신고 하였다면</h5>
+    <h5 class="h5_번들번들작">꼭! 반출정정 승인신청 후에 승인을 받아 반입신고 내역을 삭제해야한다.</h5>
+    <br>
+    <h5>2. 정정 : 반입신고 내역의 일부를 정정하려는 경우</h5>
+    <h5 class="h5_번들작">A. 몇개가 초과 되거나 모자란데 맞는것으로 착각하고 적하목록대로 신고하였다.</h5>
+    <h5 class="h5_번들작">B. 100묶음으로 진행하는 화물인데 200개로 적하목록 제출부터 잘못 진행되어 반입된 경우.</h5>
+    <h5 class="h5_번들작">C. B/L과 반입예정정보가 다른데 확인하지 못하고 반입신고 한 경우.</h5>
+    <h5 class="h5_번들작">D. 수입검사 과정에서 내용물의 중량이 부족한 경우 등, 중량을 수정하는 경우가 있음.</h5>
+    <h5 class="h5_번들작">★ 보세창고와 화주 등 관련이 있으면 사유서를(자세하게 설명) 제출하여야 합니다.</h5>
+    <br>
+    <h5>2. 정정신청 방법 : UNIPASS 공인인증서 로그인 - </h5>
+    <h5 class="h5_번들작">※ 보세창고와 화주 등 관련이 있으면 사유서를 준비하여 PDF 파일로 준비합니다.</h5>
+
+    <br><br><br><br>
+  </section>
+
+  <section id="03_세관_03_법규준수도"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. 법규준수도는 법규수행능력평가 항목중 하나. (확인방법)</h4>
+    <h4 id="move2" class="목차">▢ (공인인증서 로그인 후) 법규준수도 확인</h4>
+    <li>메뉴에 접근 : ① 정보조회 클릭, ② 법규준수도 클릭, ③ 법규준수도 클릭,  ④ (새로운 화면) 점수확인 클릭.</li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_01_법규준수도1.png" alt="이미지없음">
+    <br>
+    <li>메뉴에 접근 : ① 년도/분기 선택(선택분기까지 1년간), ② 조회 클릭, ③ 동일냉장(주) 클릭 (영업용창고).</li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_01_법규준수도2.png" alt="이미지없음">
+    <br>
+    <li id="move3" class="목차">결과 확인 (최종 점수), 상세내역 확인하려면 ① 상세조회 클릭</li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_01_법규준수도3.png" alt="이미지없음">
+    <br>
+    <li id="move4" class="목차">법규준수도(법규수행능력평가 항목의 하나입니다.) 상세내역</li>
+    <li id="move5" class="목차">① 해당하는 문서의 내역들이 나옵니다..</li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_01_법규준수도4.png" alt="이미지없음">
+    <br>
+    <h4 id="move6" class="목차">2. (중요!!) 법규수행능력 점수 보는법 (3년평균 90점이상 유지시 A등급입니다. A등급 유지가 중요합니다.)</h4>
+    <h4 id="move7" class="목차">▢ (공인인증서 로그인 후) 법규수행능력 평가 점수 확인</h4>
+    <li>메뉴에 접근 : ① 전자신고 클릭, ② 통지현황 클릭.</li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_02_법규수행1.png" alt="이미지없음">
+    <br>
+    <li>메뉴에 접근 : ① 사업자등록번호 선택, ② 통보일자 10월1일 ~ 12월31일 선택, ③ 조회, ④ 신고번호 클릭 </li>
+    <li>메뉴에 접근 : "처음 한번만 조회기간이 적용됩니다. 다음부터는 1개월만 조회된다는 메세지나옵니다." </li>
+    <li>메뉴에 접근 : 3년의 기간을 정해도 됩니다. "다시 조회하려면 초기화면으로 나갔다가 다시 들어와야 합니다." </li>
+    <li>메뉴에 접근 : * 법규수행 심사기간이 10월1일부터 12월31일입니다.* </li>
+    <h5 class="li_들작">※ 사업자등록번호 바로위에 사서함을 선택하면 예전꺼(1개월 지난거) 전자문서 확인가능. </h5>  
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_02_법규수행2.png" alt="이미지없음">
+    <br>
+    <li id="move8" class="목차">결과 보기 (화면기준 96건이 들어있습니다) </li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_02_법규수행3.png" alt="이미지없음">
+    <br>
+    <li id="move9" class="목차">결과 보기 : 모든항목을 발췌하였습니다. (배점부분이 부정확한 것 같습니다.) </li>
+    <li>조건별 점수 정보를 알아보아야겠습니다. </li>
+    <img src="portal/images/문서연결_세관및유니패스/03_세관_03_법규준수도_02_법규수행4.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="05_고시_01_pdf파일전체보기" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">① 클릭하면 전체보기가 되고 다시 누르면 원래대로 돌아갑니다.</h4>
+    <img src="portal/images/문서연결_세관및유니패스/08_고시_01_pdf파일전체보기.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="05_고시_10_특허보세구역운영에관한고시" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 특허보세구역운영에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_10_특허보세구역운영에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="05_고시_20_자율관리보세구역운영에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 자율관리보세구역운영에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_20_자율관리보세구역운영에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="05_고시_30_보세화물입출항하선하기및적재에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세화물입출항하선하기및적재에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_30_보세화물입출항하선하기및적재에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="05_고시_40_보세화물관리에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세화물관리에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_40_보세화물관리에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="05_고시_50_컨테이너관리에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 컨테이너관리에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_50_컨테이너관리에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="05_고시_60_관리대상화물관리에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 관리대상화물관리에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_60_관리대상화물관리에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="05_고시_70_보세운송에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세운송에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_70_보세운송에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="06_반출입_파순01_01문서수신"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 문서수신, EDI(Electronic Data Interchange) : 전자문서교환, 보세화물 관련 문서입니다.</h4>
+    <h5>세관에서 동일냉장으로 보낸 문서는 UNIPASS 문서함에 있고, 창고업무의 편리를 위하여</h5>
+    <h5>보세프로그램 제공업체의 프로그램으로 문서함의 정보를 땡겨오는 형식입니다.</h5>
+    <h5>어떤 이유로 중요한 문서가 수신되지 않아서 처리하지 못하여 발생한 책임은 창고에 있습니다.</h5>
+    <br>
+    <h5>1. 메뉴에 접근 : EDI - 수신문서관리 - 수신(문서) 관리</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순01_01문서수신접근.png" alt="이미지없음">
+    <br>
+    <h5>2. 문서수신 </h5>
+    <h5 class="h5_번들작">화면설명 ① : 모든 수신된 문서의 제목입니다.</h5>
+    <h5 class="h5_번들작">화면설명 ② : 수신된 문서 중에 접수와 오류에 관계된 문서만 보여줍니다.</h5>
+    <h5 class="h5_번들작">화면설명 ③ : 반입과 반출관련 기능들도 여기에서 수행할 수 있습니다.</h5>
+    <h5 class="h5_번들작">문서수신 ④ : 수신/변환/수정(R) 클릭</h5>
+    <h5 class="h5_번들작">문서수신 ⑤ : 확인 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순01_02문서수신.png" alt="이미지없음">
+    <br>
+    <h4 id="move2" class="목차">&#9634; 문서의 종류</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="06_반출입_파순02_01반입등록">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 반입예정정보 보는법 : EDI - 보세화물관리 - 반입예정정보 조회</h4>
+    <h5>A. 수신일자 : 세관에서의 수신일자, 화주명과 B/L등은 세부조회 조건입니다.</h5>
+    <h5>B. 조회조건 - 전체 : 수신받은 모든 반입예정 정보</h5>
+    <h5 class="h5_번들작">조회조건 - 반입예정품 : 반입등록을 하지 않은 정보 (★반입등록 용도로, 기본으로 이곳을 설정해 놓습니다.)</h5>
+    <h5 class="h5_번들작">조회조건 - 반입품 : 반입등록을 한 정보 </h5>
+    <h5 class="h5_번들작">조회조건 - 반입취소건 : 반입등록을 하였다가 반입취소한 것</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순01_01반입예정보는법.png" alt="이미지없음">
+    <h4 id="move2" class="목차">&#9634; 보세화물 반입등록 </h4>
+    <h5>1. 반입등록화면 설명 : EDI - 보세화물관리 - 반입 등록</h5>
+    <h5 class="h5_번들작">A. 반입등록 화면 자체로는 거의 쓸 일이 없습니다. 내용을 모두 직접 기재해야 합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_02반입등록.png" alt="이미지없음">
+    <br>
+    <h5>2. 반입등록 과정 이해</h5>
+    <h5 class="h5_번들작">A. 반입예정정보가 수신되면 해당 메뉴로 정보가 들어가게 됩니다.</h5>
+    <h5 class="h5_번들번들작">이 경우 반입예정정보 화면에서 반입등록을 할 수 있습니다. 반입등록에 필요한 대부분의</h5>
+    <h5 class="h5_번들번들작">정보가 자동 셑팅되고 화주, 품명, 장치장소 등 일부만 입력하면 됩니다.</h5>
+    <br>
+    <h5 class="h5_번들작">B. 반입예정정보에서 해당정보가 반입등록이 되면 반입등록 정보는 반입조회(송신) 메뉴에 새롭게 생성됩니다.</h5>
+    <h5 class="h5_번들번들작">반입예정정보에서 없어지는 것이 아니고 각각 별도로 관리됩니다.</h5>
+    <h5 class="h5_번들번들작">보통 반입예정정보에서는 반입등록 전(★반입예정품)인 것만 보게하도록 설정합니다. </h5>
+    <br>
+    <h5 class="h5_번들작">C. 반입예정정보가 없는 '관리화물'등의 경우는 '반입 등록(수기)' 메뉴에서</h5>
+    <h5 class="h5_번들번들작">화물을 조회하여 대부부의 기본사항을 자동 셑팅하여 반입등록정보를 생성합니다.</h5>
+    <h5 class="h5_번들번들작">※ 반입 등록(수기) 사용 예 : EDI - 보세화물관리 - 반입 등록(수기)</h5>
+    <h5 class="h5_번들번들작">※ 조회가 된다면 이후 과정은 반입예정정보에서 반입등록하는 것과 같습니다.</h5>
+    <br>
+    <h5 id="move3" class="목차">3. 반입등록 방법 (반입예정정보 메뉴에서 반입등록)</h5>
+    <h5 class="h5_번들작">A. 메뉴에 접근 : EDI - 보세화물관리 - 반입예정정보조회</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_03반입등록접근.png" alt="이미지없음">
+    <h5 class="h5_번들작">B. 메뉴에 접근 : ① 반입등록 정보 선택, ② 반입등록 클릭.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_04반입등록클릭.png" alt="이미지없음">
+    <h5 class="h5_번들작">C. 정보 입력</h5>
+    <h5 class="h5_번들번들작">① 화주입력 : 셀클릭후 F9키 누르면 화주폼이 뜹니다. (셀 클릭 안하면 마지막에 정보가 안들어감)</h5>
+    <h5 class="h5_번들번들작">② 품명 선택 : <img style="display:inline;" src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_05화주화살표.png" alt="이미지없음"> 눌러서 품명 분류 선택하고 우측에 세부품명 적기 </h5>
+    <h5 class="h5_번들번들작">③ '고내'라고 입력</h5>
+    <h5 class="h5_번들번들작">④ 컨테이너 대수 확인 (공란인 경우가 간혹 있음)</h5>
+    <h5 class="h5_번들번들작">⑤ 이상이 없는 경우는, ③ 이후 엔터 3번치면 적하목록과 같은 정보로 입력됩니다.</h5>
+    <h5 class="h5_번들번들작">⑥ 등록 : 반입조회 송신 메뉴에 정보가 생성됨. 정보의 송수신은 반입조회 송신메뉴에서 합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_05등록화면.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_06화주선택.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_07품명선택.png" alt="이미지없음">
+    <br>
+    <h5 id="move4" class="목차">4. 반입등록한 정보 송신, 수신, 수신내역 확인</h5>
+    <h5 class="h5_번들작">A. 메뉴에 접근 : EDI - 보세화물관리 - 반입 조회(송신)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_08반입송신접근.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">B. 송신</h5>
+    <h5 class="h5_번들번들작">※ 전송선택은 '부분선택'으로 놓고 사용하겠습니다. '전체선택'은 모든 내역이 선택됩니다.</h5>
+    <h5 class="h5_번들번들작">① <img style="display:inline;" src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_09반입송신체크.png" alt="이미지없음">
+    부분을 클릭하면 체크표시가 됩니다. 한번 더 누르면 체크해제 표시됩니다. (여러개 선택됩니다.)</h5>
+    <h5 class="h5_번들번들작">② 전송준비(F) 클릭</h5>
+    <h5 class="h5_번들번들작">③ (반입전송준비) 확인(A) 클릭</h5>
+    <h5 class="h5_번들번들작_들작">▸ (반입전송준비) 확인(A) 클릭하면 ③ 전송준비(F)가 흐릿하게 되고 ④ 전송(T)가 활성화됩니다.</h5>
+    <h5 class="h5_번들번들작">④ 확인 클릭 (전송준비가 완료되었다는 메세지)</h5>
+    <h5 class="h5_번들번들작">⑤ 전송(T) 클릭</h5>
+    <h5 class="h5_번들번들작">⑥ 확인 클릭. 전송되면 목록에서 사라집니다. 조회조건 전체로 하면 볼 수 있습니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_10반입송신.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">C. 수신하여 송신정보의 결과 확인 (접수통보인지 확인, 오류통보이면 무효입니다.)</h5>
+    <h5 class="h5_번들번들작">※ 보세프로그램으로 세관 유니패스 문서 수신하기 참고</h5>
+    <br>
+    <h5 id="move5" class="목차">5. 관리화물, 입항반입 등 반입예정정보에 없는 경우 반입등록시 유의사항</h5>
+    <h5 class="h5_번들작">등록하면 예정정보와 반입조회송신 두군데 다 생성됩니다.</h5>
+    <h5 class="h5_번들작">예정정보에는 수신일이 기본값인 하루전으로 등록되어서 하루전으로 조회해야되고,</h5>
+    <h5 class="h5_번들작">이미 반입등록처리되었으므로 전체보기로 조회해야됩니다.</h5>
+    <h5 class="h5_번들작">반입조회송신에서는 입항일자로 조회됩니다.</h5>
+    <h5 class="h5_번들작">반입조회송신으로 넘어가면 입항반입이 보세운송반입으로 바뀌는 경우가 있으니 꼭!! 확인하시고</h5>
+    <h5 class="h5_번들작">하선신고로 들어오는 경우 입항반입이므로 입항반입으로 해야합니다.</h5>
+    <br>
+    <h5 id="move6" class="목차">6. 관리화물, 입항반입 등 반입예정정보에 없는 경우 반입등록 방법</h5>
+    <h5 class="h5_번들작">A. 메뉴에 접근 : EDI - 보세화물관리 - 반입 등록(수기)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_11반입수기접근.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">B. 반입등록(수기) 메뉴로 반입등록 방법</h5>
+    <h5 class="h5_번들번들작">① 적화목록 불러오기(Q) 클릭</h5>
+    <h5 class="h5_번들번들작">② 조회하려는 번호에 체크하고 (Master B/L기준) 정보 넣고 </h5>
+    <h5 class="h5_번들번들작">③ 검색(Q) 클릭하면, 기본정보가 폼으로 들어갑니다.</h5>
+    <h5 class="h5_번들번들작_들작">이후는 반입등록 방법과 같이 화주, 품명, 보관층, 수량, 중량 입력한 후에 </h5>
+    <h5 class="h5_번들번들작">④ 등록 클릭</h5>
+    <h5 class="h5_번들번들작">⑤ 예 클릭 (저장할지 확인 메세지)</h5>
+    <h5 class="h5_번들번들작">⑥ 확인 클릭 (작업완료 메세지)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순02_12반입수기등록.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="06_반출입_파순03_반출관련">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 수입신고 수리후 반출승인 물품에 대해서</h4>
+    <h5>※ 수입신고 수리후 반출 : 통관 완료 되었으니 반출해도 된다는 내용.</h5>
+    <h5>※ '수입신고 수리후 반출'을 제외한 다른 반출승인 유형은 보세화물 상태로 이동하는 것입니다.</h5>
+    <h5>1. 2000개의 물품에 대해서 수입신고 수리후 반출승인이 되었다면</h5>
+    <h5 class="h5_번들작">▸ 원칙적으로 '반출전 반출신고'라는 의미가 출고할 때마다 출고하는 수량만큼만 반출신고하고</h5>
+    <h5 class="h5_번들번들작">출고하라는 것인데 실무적으로 어렵기 때문에 '수입신고 수리후 반출승인'의 경우에는</h5>
+    <h5 class="h5_번들번들작">그때그때 바로 전량 반출신고를 합니다.</h5>
+    <h5 class="h5_번들작">▸ 이 경우 반출신고한 물품은 '내국물품반입신고'하여 '내국물품으로 관리'합니다.</h5>
+    <br>
+    <h5>2. 2000개의 물품에 대해서 반출승인 정보를 수신하지 못하여 인지하지 못하고 있다면?</h5>
+    <h5 class="h5_번들작">▸ 출고의뢰가 있다면 보세물품인지 확인을 반드시 하기 때문에 출고의뢰 시점에서 확인이 됩니다.</h5>
+    <h5 class="h5_번들번들작">문서를 재수신하여 반출신고 하거나, 1개월지 지난 문서는 재수신이 되지 않기 때문에</h5>
+    <h5 class="h5_번들번들작">유니패스를 통해서 직접 반출신고를 하면 됩니다.</h5>
+    <br>
+    <h5>3. 2.의 경우 출고의뢰가 없이 시간이 흐른다면 '수입신고 수리후 반출'은 6개월 이내에 반출신고를 하여야 합니다.</h5>
+    <h5 class="h5_번들작">※ 안전하게 1년에 3번 정도는 이런 물품이 있는지 확인하여야 합니다.</h5>
+    <h5 class="h5_번들번들작">보세화물 재고목록을 일일이 클릭하여 확인하면 됩니다.</h5>
+    <br>
+    <h4 id="move2" class="목차">&#9634; 반출승인 유형</h4>
+    <h5>※ 모든 반출승인 문서의 제목은 '반출승인'이지만 반출신고 화면에서는 더 자세한 승인유형이 표시됩니다.</h5>
+    <h5>※ 수입신고 수리후 반출 : 통관 완료 되었으니 반출해도 된다는 내용.</h5>
+    <h5 class="h5_번들작">반출신고를 하면(해야지) 내국화물 상태가 됩니다.</h5>
+    <h5>※ '수입신고 수리후 반출'을 제외하면 모두 보세화물 상태로 반출되는 것입니다.</h5>
+    <h5 class="h5_번들작">&nbsp;전산상으로는 같은 과정이지만 유형별로 반출시기 및 확인사항을 숙지하여야 합니다.</h5>
+    <h5>1. 수입신고 수리후 반출 : 통관 완료 되었으니 반출해도 된다는 내용.</h5>
+    <h5>2. 멸각폐기 반출 : 통관하지 않고 물품을 폐기하는 장소로 보세화물 상태로 반출되는 경우. (식품검사 불합격 등)</h5>
+    <h5>3. 반송화물 반출 : 통관하지 않고 물품을 외국으로 반출하는 경우</h5>
+    <h5>4. 보세운송 반출 : 단순히 보세구역간의 이동 (보관창고를 바꾸거나 현재 보관창고에서 수입검사가 안되는 경우 등)</h5>
+    <br>
+    <h4 id="move3" class="목차">&#9634; 반출신고 등록 방법 : 수입신고 수리후 반출을 예로 보겠습니다. 전산상으로는 모두 같습니다.</h4>
+    <h5>1. 메뉴에 접근 : EDI - 보세화물관리 - 반출승인내역 조회</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순03_반출관련_01메뉴접근.png" alt="이미지없음">
+    <br>
+    <h5>2. 반출신고 등록 : ① 반출신고할 정보 선택, ② 반입등록(A) 클릭, 새로운 창이 뜹니다, </h5>
+    <h5 class="h5_번들작">③ 등록(A) 클릭, ④ 예(Y)클릭, ⑤ 확인 클릭, ⑥닫기(X) 클릭</h5>
+    <h5 class="h5_번들작">※ 등록한 정보는 '반출 조회(송신)' 메뉴에 생성되었습니다. </h5>
+    <h5 class="h5_번들작">※ 지금 화면에서는 검색하면 사라집니다. 반복작업후 송신하려면. </h5>
+    <h5 class="h5_번들작">⑦ 조회(송신)(S) 클릭하면 바로 갑니다.  </h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순03_반출관련_02반출등록.png" alt="이미지없음">
+    <br>
+    <h4 id="move4" class="목차">&#9634; 반출신고 등록 내역 송신 </h4>
+    <h5>1. 메뉴에 접근 : EDI - 보세화물관리 - 반출 조회(송신)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순03_반출관련_03송신메뉴접근.png" alt="이미지없음">
+    <br>
+    <h5>2. 송신 : ① 전체내역은 30개씩 선택되고, 부분선택은 ② 선택상자 네모 클릭하면 체크 또는 체크해제 됩니다.</h5>
+    <h5 class="h5_번들작">③ 전송준비(F)) 클릭, ④ 확인(A) 클릭, ⑤ 확인 클릭, ⑥ 전송(T) 클릭, ⑦ 예(Y)) 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순03_반출관련_04송신.png" alt="이미지없음">
+    <br>
+    <h5>3. 수신문서 메뉴에서 문서를 수신받아 결과를 확인합니다.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="06_반출입_파순04_내국화물">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 내국물품 관련 법령 등</h4>
+    <h5>1. 관세법 제183조(보세창고)</h5>
+    <h5 class="h5_번들작">① 보세창고에는 외국물품이나 통관을 하려는 물품을 장치한다. </h5>
+    <h5 class="h5_번들작">② 운영인은 미리 세관장에게 신고를 하고 제1항에 따른 물품의 장치에 방해되지 아니하는 범위에서 </h5>
+    <h5 class="h5_번들번들작">보세창고에 내국물품을 장치할 수 있다. </h5>
+    <h5 class="h5_번들번들작">다만, 동일한 보세창고에 장치되어 있는 동안 수입신고가 수리된 물품은 신고 없이 계속하여 장치할 수 있다.</h5>
+    <h5 class="h5_번들작">③ 운영인은 보세창고에 1년(제2항 단서에 따른 물품은 6개월) 이상 계속하여 </h5>
+    <h5 class="h5_번들번들작">제2항에서 규정한 내국물품만을 장치하려면 세관장의 승인을 받아야 한다.</h5>
+    <br>
+    <h5>2. 관세법 제157조(물품의 반입.반출)</h5>
+    <h5 class="h5_번들작">① 보세구역에 물품을 반입하거나 반출하려는 자는 <bold style="text-decoration:underline;">'대통령령으로 정하는 바'</bold>에 따라 세관장에게 신고하여야 한다. </h5>
+    <h5 class="h5_번들작">② 제1항에 따라 보세구역에 물품을 반입하거나 반출하려는 경우에는 세관장은 세관공무원을 참여시킬 수 있으며, </h5>
+    <h5 class="h5_번들번들작">세관공무원은 해당 물품을 검사할 수 있다. </h5>
+    <h5 class="h5_번들작">③ 세관장은 보세구역에 반입할 수 있는 물품의 종류를 제한할 수 있다.</h5>
+    <h5 class="h5_번들작"><bold style="text-decoration:underline;">※ '대통령령으로 정하는 바' : 관세법 시행령 제176조(물품의 반출입신고)</bold></h5>
+    <h5 class="h5_번들번들작">2. 내국물품(수출신고가 수리된 물품을 포함한다)의 경우</h5>
+    <h5 class="h5_번들번들작_들작">가. 물품의 반입일시</h5>
+    <h5 class="h5_번들번들작_들작">나. 물품의 품명, 포장의 종류, 반입개수, 장치위치와 장치기간</h5>
+    <br>
+    <h5>3. 보세화물관리에관한고시 제12조(보세창고 내국화물반출입신고 등)</h5>
+    <h5 class="h5_번들작">① 운영인이 법 제183조제2항 및 「관세법 시행령」(이하 "영"이라 한다) 제197조에 따라 보세창고의 일정구역에  </h5>
+    <h5 class="h5_번들번들작">일정기간 동안 내국물품을 반복적으로 장치하려는 경우 세관장은 외국물품의 장치 및 세관감시단속에 지장이 없다고  </h5>
+    <h5 class="h5_번들번들작">인정하는 때에는 보관장소, 내국물품의 종류, 기간 등에 대해 이를 포괄적으로 허용할 수 있다. </h5>
+    <h5 class="h5_번들작">② 법 제157조제1항 및 영 제176조에 따라 보세창고에 내국물품을 반출입하려는 자는 반출입 전에 </h5>
+    <h5 class="h5_번들번들작">별지 제11호서식 및 별지 제12호서식의 내국물품반출입신고서를 세관장에게 전자문서로 제출하여야 하며, 이 경우</h5>
+    <h5 class="h5_번들번들작">반입신고에 대해서는 법 제183조제2항 및 영 제197조제1항에 따른 내국물품장치신고(별지 제13호서식)로 갈음한다.</h5>
+    <h5 class="h5_번들작">③ 제2항에 따라 반출입신고를 접수한 세관장은 반출입신고수리필증을 교부하지 아니한다. </h5>
+    <h5 class="h5_번들번들작">다만, 반출입시 세관공무원을 입회시킬 수 있으며 세관 공무원은 해당 물품에 대하여 검사할 수 있다.</h5>
+    <h5 class="h5_번들작">④ 법 제183조제3항 및 영 제197조제2항과 제3항에 따라 1년 이상 계속하여 내국물품만을 장치하려는 자는 </h5>
+    <h5 class="h5_번들번들작">별지 제14호서식의 내국물품장치승인(신청)서를 제출하여 세관장의 승인을 받아야 한다.(개정 `14.12.10.)</h5>
+    <h5 class="h5_번들작">⑤ 제2항과 제3항에도 불구하고 세관장은 제4항에 따른 승인을 얻어 장치하는 물품에 대하여 </h5>
+    <h5 class="h5_번들번들작">대장관리 등 기록유지가 되는 경우에는 해당물품의 반출입신고를 생략하게 할 수 있다.(개정 `14.12.10.)</h5>
+    <h5 class="h5_번들작">⑥ 법 제177조제1항제1호나목에 따른 내국물품의 장치기간은 1년으로 한다. </h5>
+    <h5 class="h5_번들번들작">다만, 법 제183조제2항 단서에 따른 수입신고수리물품의 장치기간은 6개월로 하며,</h5>
+    <h5 class="h5_번들번들작">이 경우 세관장이 필요하다고 인정한 때에는 수입신고수리일부터 1년의 범위에서 별지 제15호서식의 </h5>
+    <h5 class="h5_번들번들작">반출기간연장승인(신청)서에 따른 세관장의 승인을 받아 그 장치기간을 연장할 수 있다.</h5>
+    <br>
+    <h4 id="move2" class="목차">&#9634; 내국물품 내용 정리</h4>
+    <h5>1. 내국물품 장치신고 : 관세법 제183조 ②항  </h5>
+    <h5 class="h5_번들작">▸ 장치신고의무 위반시 과태료 : 1차 25만원, 2차 50만원, 3차이상 100만원</h5>
+    <h5 class="h5_번들작">▸ 보세화물로 반입되어 수입신고수리된 물품은 장치신고를 하지않고 장치할 수 있다.</h5>
+    <h5 class="h5_번들번들작">6개월까지 장치할 수 있다. 연장신청하고 승인받으면 6개월 더 연장가능.</h5>
+    <h5 class="h5_번들작">▸ 내국화물(내국물품 상태로 반입되는 물품, 타 창고에서 수입신고수리된 물품 포함)을 </h5>
+    <h5 class="h5_번들번들작">장치(반입)하려면 장치신고후 세관의 승인을 받아야 한다.</h5>
+    <h5 class="h5_번들번들작">장치신고가 승인을 받으면 반입하고 반입신고, 반출하면서 반출신고한다.</h5>
+    <h5 class="h5_번들번들작">장치기간은 1년이다.</h5>
+    <h5>2. 자율관리보세구역은 내국물품반출입관리대장을 관리하는 경우 반출입신고 생략은 가능하나 장치신고는 하여야 한다.  </h5>
+    <h5 class="h5_번들작">▸ 내국물품반출입관리대장을 관리한다는 말은 실무적으로 반출입신고로 관리한다는 말과 같습니다.</h5>
+    <h5 class="h5_번들작">▸ 장치신고는 하여야한다는 말은</h5>
+    <h5 class="h5_번들번들작">보세화물관리에관한고시 제12조(보세창고 내국화물반출입신고 등) 제 ②항에서</h5>
+    <h5 class="h5_번들번들작">반입신고를 장치신고로 갈음한다고 되어있기 때문에 장치신고만 따로 하는 방법은 없다고 봐야하겠습니다.</h5>
+    <h5>3. 결론은  </h5>
+    <h5 class="h5_번들작">▸ 내국물품은 반입신고를 하면, 장치신고는 반입신고로 갈음한다고 하였기때문에 두가지가 동시에 됩니다. </h5>
+    <h5 class="h5_번들작">★ 자율관리보세구역의 경우 장치.반입신고를 매월 말 기준 익월 1일에 일괄전송 가능이라고 하였으므로</h5>
+    <h5 class="h5_번들번들작">반입 및 반출신고를 이 시기에 함께합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_01결론.png" alt="이미지없음">
+    <br>
+    <h4 id="move3" class="목차">&#9634; (전산)내국물품 반출입신고 순서. 반출신고 - 반입신고 순서 - 재고확인 순서</h4>
+    <h5 id="move4" class="목차">1. 내국물품 반출신고</h5>
+    <h5 class="h5_번들작">▸ 메뉴에 접근 : EDI - 내국화물관리 -</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_02메뉴접근.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">▸ 반출신고 정보 생성</h5>
+    <h5 class="h5_번들번들작">① 기준일자 지정 : 오늘이 8월 3일이면 8월 1일 (1일로 지정)</h5>
+    <h5 class="h5_번들번들작_들작">당일로 기준일자를 정하려면 모든 작업이 끝나고 작업해야 합니다.</h5>
+    <h5 class="h5_번들번들작_들작">(반출입이 일과시간내 꾸준히 이루어지기 때문입니다.)</h5>
+    <h5 class="h5_번들번들작">② 구분을 '누적수탁출고건(미등록)' 선택   </h5>
+    <h5 class="h5_번들번들작">③ 검색(Q) 클릭, ④ 선택 클릭 (전체 선택됨, √ 표시 확인), ⑤ '누적수탁품출고가있는건 일괄반출등록' 클릭  </h5>
+    <h5 class="h5_번들번들작">⑥ 예(Y) 클릭 (일괄등록을 진행하시겠습니까?) ⑦ 확인 클릭 (정상적으로 완료되었습니다)  </h5>
+    <h5 class="h5_번들번들작">⑦ 확인 클릭하면, 반출등록 정보 송신 화면으로 이동합니다. </h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_03반출정보생성.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">▸ (이어서) 반출신고 생성정보 송신</h5>
+    <h5 class="h5_번들번들작">① 전송선택을 전체선택으로 합니다. (30개씩 선택됩니다)  </h5>
+    <h5 class="h5_번들번들작_들작">송신되면 리스트에서 사라지고 새로운 정보 30개 선택됩니다. </h5>
+    <h5 class="h5_번들번들작">② 전송준비(F) 클릭, ③ 확인(A) 클릭 (내국물품 반출전송준비)</h5>
+    <h5 class="h5_번들번들작">④ 확인 클릭 (정상적으로 전송준비가 완료되었습니다.!)</h5>
+    <h5 class="h5_번들번들작">⑤ 예(Y) 클릭 (내국반출물품자료 전송을 하시겠습니까?)</h5>
+    <h5 class="h5_번들번들작">※ 송신 작업시간이 약간 걸립니다.</h5>
+    <h5 class="h5_번들번들작">※ 송신할 자료가 보통 400~500건 되니 ② ~ ⑤ 를 반복합니다.</h5>
+    <h5 class="h5_번들번들작">※ 송신이 완료되면 수신하여 오류통보가 있는지 확인해야합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_04반출정보송신.png" alt="이미지없음">
+    <br>
+    <h5 id="move6" class="목차">2. 내국물품 반입신고 (반드시!! 반출신고 이후 송수신 완료후에 해야합니다.)</h5>
+    <h5 class="h5_번들작">※ 기준일자 입출고 완료후에 내국화물 상태인 재고를 반입자료 자동생성합니다.</h5>
+    <h5 class="h5_번들작">▸ 메뉴에 접근 : EDI - 내국화물관리 - 내국물품 반입신고(수탁품 일괄 등록)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_05내국반입메뉴접근.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">▸ 반입신고 정보 생성</h5>
+    <h5 class="h5_번들번들작">① 기준일자 지정 : 반출신고할때 지정한 날짜와 같은 날짜로 지정 (1일)</h5>
+    <h5 class="h5_번들번들작">② 검색(Q) 클릭 (목록생성 시간이 조금 있습니다.)</h5>
+    <h5 class="h5_번들번들작">③ 수탁품 일괄 내국물품 등록하기 클릭</h5>
+    <h5 class="h5_번들번들작">④ 새로운 화면에서 5가지 설정을 정확하게 하고, '등록(A)' 클릭</h5>
+    <h5 class="h5_번들번들작">⑤ 예(Y) 클릭 (입력한 자료를 저장하시겠습니까)</h5>
+    <h5 class="h5_번들번들작">※ 별도의 메세지 없이 자료가 저장되었습니다. '내국물품 반입조회(송신)' 메뉴에서 송신하면 됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_06내국반입등록.png" alt="이미지없음">
+    <br>
+    <h5 id="move7" class="h5_번들작 목차">▸ 반입신고 생성정보 송신</h5>
+    <h5 class="h5_번들작">▸ 메뉴에 접근 : EDI - 내국화물관리 - 내국물품 반입신고(수탁품 일괄 등록)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_07내국반입송신메뉴접근.png" alt="이미지없음">
+    <h5 class="h5_번들작">▸ 내국물품 반입신고 생성정보 송신</h5>
+    <h5 class="h5_번들번들작">① 반입일자 지정 : 반입등록일자의 정보가 조회됩니다.</h5>
+    <h5 class="h5_번들번들작">② 전송선택을 '전체선택'으로 합니다. 30개씩 선택됩니다.</h5>
+    <h5 class="h5_번들번들작">③ 전송준비(F) 클릭, ④ 확인(A) 클릭 (내국화물반입전송준비)</h5>
+    <h5 class="h5_번들번들작">⑤ 확인 클릭 (정상적으로 전송준비가 완료되었습니다.)</h5>
+    <h5 class="h5_번들번들작">⑥ 전송(T) 클릭, ⑦ 예(Y) 클릭 (내국물품반입자료 전송을 하시겠습니까)</h5>
+    <h5 class="h5_번들번들작">※ 송신 작업시간이 약간 걸립니다.</h5>
+    <h5 class="h5_번들번들작">※ 송신할 자료가 보통 100여건 되니 ③ ~ ⑦ 를 반복합니다.</h5>
+    <h5 class="h5_번들번들작">※ 송신이 완료되면 수신하여 오류통보가 있는지 확인해야합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순04_내국화물_08내국반입송신.png" alt="이미지없음">
+    <br>
+    <h4 id="move8" class="목차">&#9634; 위와 같이 내국화물 반출입신고를 하고 난 후에 검증 및 전산재고조사를 합니다.</h4>
+    <h4 id="move9" class="목차">&nbsp;&nbsp;&nbsp; 특수한 상황에 대하여서는 '내국물품반출입신고 검증 및 전산재고조사' 참고</h4>
+    <br><br><br><br>
+  </section>
+
+  <section id="06_반출입_파순05_체화등록통고">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세화물 반입일로부터 5개월이 되면 화주에게 등기우편으로 체화통고서를 보내야합니다.</h4>
+    <h5>※ 날짜를 딱 맞추라는 이야기도 있지만 편의상 2주정도 앞에 2주간 통고대상을 모아서 등기우편을 보냅니다.</h5>
+    <h5>※ 체크리스트 등에 통고서 등기우편 보낸 내역을 적어 놓고 통고일에 전산통고합니다.</h5>
+    <br>
+    <h4 id="move2" class="목차">1. '반입재고조회' 메뉴에서 반출통고대상 확인 및 체화등록</h4>
+    <h5>가. 반입재고조회 : EDI - 보세화물관리 - 반입재고조회 클릭 (보세화물 재고목록이 뜹니다.)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_01반입재고조회.png" alt="이미지없음">
+    <h5 class="h5_번들작">ⓐ 통고서 등기우편 보낼 목록을 정해서 BL번호 메모해놓습니다.</h5>
+    <h5 class="h5_번들번들작">'수탁관리 - 재고관리 - 거래처/품명별 재고현황'에서 BL번호조회하여 '거래처' 확인, 메모</h5>
+    <br>
+    <h5>나. 반입재고조회 : EDI - 보세화물관리 - 반입재고조회 </h5>
+    <h5 class="h5_번들작">① BL번호 넣고, ② 검색, ③ 체화통고등록(C) 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_02통고등록접근.png" alt="이미지없음">
+    <br>
+    <h5 id="move3" class="목차">다. 체화통고 등록 화면 </h5>
+    <h5 class="h5_번들작">① 화주는 확인해 둔 현재화주와 다르면 현재화주로 변경.</h5>
+    <h5 class="h5_번들작">② 우편번호 없으면 넣어야 합니다. (없으면 오류통보 수신됩니다.)</h5>
+    <h5 class="h5_번들작">③ 통고일자가 안맞으면 오류통보가 되는데, 오류통보 문서를 클릭하면 아래에 통고일자가</h5>
+    <h5 class="h5_번들번들작">&nbsp;몇일이라고 쓰여져 있습니다. 그런 경우, 다시 등록하면서 통고일자를 수정해주고 송신하면 됩니다.</h5>
+    <h5 class="h5_번들번들작">&nbsp;★ 조회조건을 '전체'로 하여야합니다. 송신된것으로 분류되므로 미전송분에는 안뜹니다.</h5>
+    <h5 class="h5_번들작">④ 등록(A) 클릭, ⑤ 예(Y) 클릭, ⑥ 확인 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_03통고등록.png" alt="이미지없음">
+    <br>
+    <h5 id="move4" class="목차">라. 체화통고서 출력 (출력하려면 선택체크 해야하는데 송신되면 선택체크가 안됩니다.) </h5>
+    <h5 class="h5_번들작">※ 선택 체크 안되면 업체주소와 정보등이 안나옵니다.</h5>
+    <h5 class="h5_번들작">※ 체화통고 등록이 되어야 조회 및 송신이 가능합니다.</h5>
+    <h5 class="h5_번들작">① 메뉴에 접근 : EDI - 보세화물관리 - 체화 조회(송신)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_04통고서출력접근.png" alt="이미지없음">
+    <h5 class="h5_번들작">② 통고일자 설정후 엔터치면 조회됩니다.</h5>
+    <h5 class="h5_번들작">③ 출력할 항목 체크 (여러건 체크 가능)</h5>
+    <h5 class="h5_번들작">④ 체화통고서(P) 클릭 (출력화면으로 이동)</h5>
+    <h5 class="h5_번들작">⑤ 인쇄 아이콘 누르면 출력됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_05출력체크.png" alt="이미지없음">
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_06출력.png" alt="이미지없음">
+    <br>
+    <h5 id="move5" class="목차">마. 출력한 체화통고서는 등기우편 발송 (총무부에 발송 부탁하면 됩니다.)  </h5>
+    <h5 class="h5_번들작">※ 직인찍고 원본은 등기우편 발송하고 복사본은 우편발송 영수증과 함께 보관합니다.   </h5>
+    <br>
+    <h5 id="move6" class="목차">바. 송신 (오류통보시 문서에 오류통보라고 따로 뜨지 않기 때문에 수신확인을 꼭 해야합니다.)  </h5>
+    <h5 class="h5_번들작">① 메뉴에 접근 : EDI - 보세화물관리 - 체화 조회(송신)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_04통고서출력접근.png" alt="이미지없음">
+    <h5 class="h5_번들작">② 통고일자 설정후 엔터치면 조회됩니다.</h5>
+    <h5 class="h5_번들작">③ 출력할 항목 체크 (여러건 체크 가능)</h5>
+    <h5 class="h5_번들작">④ 전송준비(F) 클릭 ⑤⑥⑦</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순05_07송신.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="06_반출입_파순06_체화등록통고엑셀활용">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 체화통고서 출력부분만 따로 엑셀 활용합니다.</h4>
+    <h5>※ 이유는 등기우편물을 받는 주소가 전산등록된 주소와 다른경우가 있어서 우편물이 반송되는 경우가 있습니다.</h5>
+    <h5>※ 우편물 수령 주소가 전산과 다른경우와 우편번호 누락된 화주 등 주로 발송하는 화주의 정보가 있습니다.</h5>
+    <br>
+    <h5>1. 엑셀 자료 준비</h5>
+    <h5 class="h5_번들작">▢ 엑셀파일 준비 : 바탕화면 - 계산중심180130 - 파일옮김 - 1_통고서등 엑셀파일 열기 - 통고서 시트 선택</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순06_01통고서등엑셀파일준비.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">▢ 반입재고조회 : EDI - 보세화물관리 - 반입재고조회 클릭 (보세화물 재고목록이 뜹니다.)</h5>
+    <h5 class="h5_번들작">① 'EXCEL로' 클릭, ② EXCEL화일로 변환하기! 클릭 </h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순06_02반입재고엑셀로.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">③ 열린 재고파일에서 필요한 범위만 복사해서 (CTRL + C)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순06_03반입재고범위복사.png" alt="이미지없음">
+    <br>
+    <h5 class="h5_번들작">④ 1_통고서등 엑셀파일로 가서 O5셀에 붙여넣기 (O5셀 선택후 CTRL + V)</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순06_04엑셀로출력.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="06_반출입_파순07_관리화물전자SEAL"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 관리화물에 부착된 전자SEAL해제 및 반입방법을 설명하기 전에</h4>
+    <h5>※ 화물진행정보에 '보세운송 검사대상'이라고 뜨고 전자seal이 부착된 경우가 있는데, </h5>
+    <h5 class="h5_번들작"> 이것은 확인후 해제등록만 하면 탈거 후 작업이 가능하고,</h5>
+    <h5>※ 보세운송반출 화물이 '보세운송 검사대상'이 되면 전자seal이 부착될때까지 반출승인이 안납니다.</h5>
+    <h5>※ 해제되어 탈거된 전자seal은 전자seal에 기록된 주소로 착불로 택배를 보내줍니다.</h5>
+    <h5>※ 전자SEAL 해제등록 방법은 관리화물 관련 작업방법에 나오는 설명과 같습니다.</h5>
+    <br>
+    <h4 id="move2" class="목차">▢ 관리화물 : 세관에서 직접 보려는 화물. </h4>
+    <h5>※ 랜덤이거나, 주로 제보가 있거나, 엑스레이상 의심물품을 직접 확인하기 위함입니다.</h5>
+    <h5>※ 관리화물은 세관이 직접 하선장소를 지정하는데 '하선신고로 반입되면 입항반입' 입니다. </h5>
+    <h5 class="h5_번들작">하선신고는 보세운송처럼 창고에서 수신되는 반입예정정보에 뜨지 않기 때문에,</h5>
+    <h5 class="h5_번들작">관리화물 등이 하선장소가 '동일냉장 보세구역'으로 지정이 되어 반입되는 경우에는</h5>
+    <h5 class="h5_번들작">화주 등이 연락을 해줘야 알 수 있습니다.</h5>
+    <h5>※ 관리화물은 세관에서 직접 물품을 보겠다는 화물이므로</h5>
+    <h5 class="h5_번들작">세관 직원의 입회 및 지시가 없이는 컨테이너 개봉금지입니다.</h5>
+    <h5>※ 하선신고 물품은 해상물품의 경우 3일이내(토,일 공휴일 등 노는날 제외???) 반입이 완료되어야 합니다.</h5>
+    <h5 class="h5_번들작">(보세화물 입출항 하선 하기 및 적재에 관한 고시 제19조(하선장소 물품반입) 컨테이너화물 접안일로부터 3일이내 반입.)</h5>
+    <h5>※ 화주(관세사)에서 관리화물이 있다고 연락이 옵니다.</h5>
+    <h5>※ 세관담당자는 언제 작업할 것인지 시간조율 연락이 옵니다.</h5>
+    <h5>※ 전자seal이 부착되어 있으면 해제등록이 필요합니다.</h5>
+    <br>
+    <h4 id="move3" class="목차">▢ 관리화물 반입순서 </h4>
+    <h5>※ 화물정보 확인 : B/L 팩킹등 정보가 화물진행정보와 일치하는지 확인 등</h5>
+    <h5>1) 운송스케쥴 확인하여 컨테이너가 언제 오는지 확인해놓기.</h5>
+    <h5>2) 세관에서 연락이 오면 작업시간 조율, 또는 관리화물 담당자에게 전화하여 작업일정 조율.</h5>
+    <h5>3) 세관 담당자에 제출할 서류 준비 : B/L, 팩킹리스트</h5>
+    <h5 id="move4" class="목차">4) 컨테이너 도착하면 전자봉인번호 확인하고 일치하면 해제등록 해놓습니다. (탈거는 세관담당자 지시에 따릅니다.)</h5>
+    <h5 class="h5_번들작">▸ UNIPASS 공인인증서 로그인 후</h5>
+    <h5 class="h5_번들작">① 업무지원 클릭, ② 전자봉인 클릭, ③ 해제관리 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순07_관리화물전자SEAL_01해제등록.png" alt="이미지없음">
+    <h5 class="h5_번들작">④ 컨테이너 선택후 컨테이너번호 입력</h5>
+    <h5 class="h5_번들작">⑤ 해제구분 : 미해제, 해제했으면 해제 선택</h5>
+    <h5 class="h5_번들작">⑥ 조회 클릭 : 아래에 목록이 뜹니다.</h5>
+    <h5 id="move5" class="목차 h5_번들작">⑦ 전자seal번호가 맞으면 '장비해제등록' 클릭하면 끝입니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순07_관리화물전자SEAL_02해제등록.png" alt="이미지없음">
+    <h5 id="move6" class="목차 h5_번들작">⑧ 세관 담당자 오면 전자씰 개봉할까요 물어보고 탈거하면 됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순07_관리화물전자SEAL_03탈거.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+    <section id="06_반출입_파순08_전산재고조사">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; </h4>
+
+    <br><br><br><br>
+  </section>
+
+  <section id="">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1.</h4>
+    <li></li>
+    <h5></h5>
+    <h5 class="li_들작"></h5>
+    <img src="" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+  <!-- 기본구조 끝--> 
+</div>
+
+
+
+<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='my_index.html'"
+role="button" title="Move Top" data-toggle="tooltip" data-placement="left">
+<span>Top</span></a>
+
+
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/custom_js.js"></script>
+</body>
+
+</html>

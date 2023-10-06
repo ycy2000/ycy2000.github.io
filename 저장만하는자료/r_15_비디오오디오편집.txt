@@ -1,0 +1,20 @@
+유튜브 다운로드 버튼이 없어졌어요.
+최고 480p인데 요즘 다 풀hd입니다. 풀hd로 다운받으려면 별도의 프로그램 필요. 유료
+--------------------------------------
+다운로드
+주소창에 youtube앞에다가 ss 치고 엔터 --> ssyoutube.com으로 이동됨.
+다운로드 360이나 480 아무거나 상관 없습니다.
+다른 사이트 뜨는데 닫고, 해당 동영상이 플레이 되고 있을겁니다. 이게 원본입니다.
+마우스 우클릭하고 동영상을 다른이름으로 저장.
+다른메세지에 낚이지 마시고 영상에서 우클릭해 다운로드 합니다.
+-----------------------------------------
+영상에 밑에 보면 공유가 있고 클릭하면 동영상 퍼가기
+<iframe> .......... </iframe> 복사
+iframe은 iframe 소스 안에 있는 웹페이지를 저 사이즈에다가 그대로 가두는 거예요.
+우리 페이지에다가 가상의 페이지를 불러와서 그 페이지에 나오는 내용을 그 자리에
+넣어버리는 거예요.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g65oWFMSoK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+1.iframe으로 유튜브의 영상을 그대로 가지고오는 것에 대한 문제점 : 앞뒤로 광고가 붙는다.
+   비디오 공유 플렛폼이 하나더 있어요. vimeo.com

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+#회차select {height:30px;}
+#회차와선택한당번 {margin-left:5px;font-size: 16px;}
+#span_날짜 {display:inline-block; width:85px;}
+#회차와선택한당번 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
+#회차와선택한당번 div {display:block;width:330px;margin-right:10px;margin-bottom:-1px;}  /*6개번호*/
+#회차와선택한당번 button:nth-of-type(1) {margin:0 5px;width:50px;background-color: #007bc3;}
+#회차와선택한당번 button:last-child {background-color: rgb(100, 237, 214);}
+
+.modal-body button {width:50px; height:50px;margin-right:-6px;margin-bottom:-2px; padding:0;}
+.일주전modal-body button {width:50px; height:50px;margin-right:-8px;margin-bottom:-2px; padding:0;}
+#id_번호입력 > div {display:block;width:295px;font-size: 25px;padding-right:15px;}  /*6개번호*/
+#id_번호입력 > div > div {display:inline-block;width:40px;text-align: center;} /*6개번호 내부 각 번호*/
+#삭제 {height:20px;width:20px;}
+#id_번호입력아래당첨번호숨김 > div > span {margin-left:7px;}
+#id_번호입력아래당첨번호숨김 > div > span:nth-child(1) {margin-left:16px;}
+#id_번호입력아래당첨번호숨김 > div > span:nth-child(2) {margin-left:28px;}
+#id_번호입력아래당첨번호숨김 > div > span:nth-child(3) {margin-left:50px;}
+#id_번호입력아래당첨번호숨김 > div > span:nth-child(4) {margin-left:32px;}
+#id_번호입력아래당첨번호숨김 > div > span:last-child {margin-left:12px;}
+#id_번호입력아래당첨번호숨김 > div {display:block;width:420px;font-size: 16px;margin-right:10px;margin-bottom:-1px;}  /*6개번호*/
+#id_번호입력아래당첨번호숨김 > div > button {border:1px solid black; margin-right:-2px;width:31px;}
+#id_번호입력아래당첨번호숨김 > div > button:nth-of-type(1) {padding:1px 0px; background-color: white;width:60px;}
+#id_번호입력아래당첨번호숨김 > div > button:nth-of-type(2) {padding:1px 0px; background-color: white;width:60px;}
+#id_번호입력아래당첨번호숨김 > div > button:nth-of-type(3) {margin-left:1px;display:inline-block; width:100px;}
+#id_번호입력아래당첨번호숨김 > div > button:last-child {background-color: rgb(100, 237, 214);}
+
+
+#최근미출수와출수 > div > div {width:70px;display: inline-block;}
+#최근미출수와출수 > div button {background-color: white; vertical-align: bottom; border:1px; font-size:18px;width:40px; height:40px;margin-right:-6px;margin-bottom:-2px; padding:0;letter-spacing: 0;}
+#최근미출수와출수 .십오주미출수 button {border-bottom:1px solid black;}
+#최근미출수와출수 .오주출수 button {border-bottom:1px solid black;} /*js작성중*/
+.십오주미출수 {border-bottom:1px solid black;padding-bottom: 1px;}
+.오주출수 {border-bottom:1px solid black;padding-bottom: 1px;}/*js작성중*/
+.none_js {display:none;}
+.자동번호나온횟수 button {background-color: white; vertical-align: bottom; border:1px; font-size:18px;width:40px; height:40px;margin-right:-6px;margin-bottom:-2px; padding:0;letter-spacing: 0;}
+.자동번호나온횟수 > div > div {display:inline-block;width:60px;}
+

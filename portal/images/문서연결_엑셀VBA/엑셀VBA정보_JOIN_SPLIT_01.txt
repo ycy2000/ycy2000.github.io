@@ -1,0 +1,51 @@
+-----------------------------------------------------------------------------------
+COLUMNWIDTH 전달
+Sheets("연락처").Range("A1:I1").ColumnWidth = Array(Sheets("연락처").Range("J1:R1"))
+Sheets("연락처").Range("A1:I1").ColumnWidth = Sheets("연락처").Range("J1:R1")
+Sheets("연락처").Range("A1:B1").ColumnWidth = Array(10, 10)
+
+★JOIN(ARRAY(값1,값2,...),"구분자"). 값이 하나일때 값 자체를 출력함.
+★JOIN(일차원배열,"구분자")
+★JOIN(일차원배열(),"구분자")
+★X:JOIN(RANGE("A1:E1"),"구분자"), RANGE를 배열에 담으면 첫정보 배열(1,1), 2차원
+
+Sub JOIN연습()
+Sheets("코딩연습").Select
+Range("A1:A6") = "TOLEFT"
+Range("H1:H6") = "END"
+Range("G1:G6").ClearContents
+
+'이차원배열의 한줄만 JOIN
+'A열:TOLEFT벽, B:F:유동정보, G:빈열,H:END실행열
+Dim 셀 As Range               '작업범위 FOR문 각셀
+Dim 작업범위 As Range         '반복작업할 범위
+Set 작업범위 = Range("B1:B6") '연습범위(B열)
+Dim 작업결과() As String      'JOIN 결과값
+Dim 이차원배열() As Variant   '가로1줄 RANGE. 선언만.
+'RANGE를 배열에 담을때 VARIANT로 설정해야함.
+Dim 이차원배열순번 As Byte    '셀마다 매겨짐
+Dim JOIN할문자개수 As Byte
+Dim JOIN할문자배열() As String '1차원배열
+Dim 반복 As Byte
+For Each 셀 In 작업범위       '셀마다 독립작업
+    이차원배열순번 = 이차원배열순번 + 1
+    ReDim Preserve 작업결과(1 To 이차원배열순번) '값 기억
+    '최소1(값없을때, 최대6:값5개풀)
+    JOIN할문자개수 = Cells(셀.Row, "H").End(xlToLeft).Column - 1
+    If JOIN할문자개수 = 0 Then
+       작업결과(이차원배열순번) = ""
+       Else
+       '1)JOIN할문자들을 배열에 담는다
+          ReDim JOIN할문자배열(1 To JOIN할문자개수)
+          For 반복 = 1 To JOIN할문자개수
+              JOIN할문자배열(반복) = Cells(셀.Row, "A").Offset(0, 반복)
+              '공백일때 구분자만 추가됨
+          Next
+        '2)JOIN함수로 문자열로 저장
+          작업결과(이차원배열순번) = Join(JOIN할문자배열, "_")
+    End If
+Next
+
+'작업결과를 J열에 뿌림
+Range("J1").Resize(이차원배열순번, 1) = Application.Transpose(작업결과)
+End Sub

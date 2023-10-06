@@ -1,0 +1,25 @@
+-----------------------------------------------------------------------------------
+THISWORKBOOK.Path = "C:\Users\COM\Desktop\업무참고html"
+MsgBox Dir(ThisWorkbook.Path) : 공백
+MsgBox Dir(ThisWorkbook.Path, vbDirectory) : 업무참고html(현재 폴더이름)
+MsgBox Dir(ThisWorkbook.Path & "\") : 첫번째 파일이름
+MsgBox Dir(ThisWorkbook.Path & "\*.*") : 첫번째 파일이름(*.*). 점이 들어간
+
+Sub 현재폴더파일이름가져오기()
+Sheets("파일이름").Select
+Dim 폴더경로 As String
+Dim 파일이름 As String
+Dim i As Integer
+Range("A:A").ClearContents
+        폴더경로 = ThisWorkbook.Path & "\"
+        파일이름 = Dir(폴더경로 & "*.*") '첫번째 파일명 가져오기
+        
+        Do While 파일이름 <> ""
+            i = i + 1
+            Range("A" & CStr(i + 1)).Value = 파일이름
+            파일이름 = Dir() '다음 파일명 가져오기
+        Loop
+
+        MsgBox "파일 갯수: " & i & "개"
+          
+End Sub

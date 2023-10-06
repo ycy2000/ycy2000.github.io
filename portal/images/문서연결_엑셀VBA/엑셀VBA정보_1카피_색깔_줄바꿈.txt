@@ -1,0 +1,61 @@
+-----------------------------------------------------------------------------------
+
+'색깔
+    Selection.Interior.Color = 49407 '주황
+    Selection.Interior.Color = 65535 '노랑
+    Selection.Interior.Pattern = xlNone '채우기 없음
+    End With
+'★선택하여붙여넣기도 SELECT를 안하면 다른시트에서 가능하다.
+'카피후 모두 붙여넣기(복사상태)
+    ActiveSheet.Paste
+    Application.CutCopyMode = False
+'카피후 값 붙여넣기(복사상태)
+ '   Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+     Application.CutCopyMode = False '카피모드 해제
+     SkipBlanks:=False '빈셀 건너뜀
+     Transpose:=False '행열바꿈
+'카피후 값 붙여넣기(복사상태)
+    Selection.PasteSpecial Paste:=xlPasteValues
+    Application.CutCopyMode = False
+'카피후 서식 붙여넣기(복사상태)
+    Selection.PasteSpecial Paste:=xlPasteFormats
+    Application.CutCopyMode = False
+'카피후 열너비 붙여넣기(복사상태)
+    Selection.PasteSpecial Paste:=xlPasteColumnWidths
+    Application.CutCopyMode = False
+ '카피후 수식 및 숫자서식 붙여넣기(복사상태)
+    Selection.PasteSpecial Paste:=xlPasteFormulasAndNumberFormats
+    Application.CutCopyMode = False
+'카피후 붙여넣기
+    Range("C2:D2").Copy
+'  ★Range.PasteSpecial (붙여넣기, 연산, 내용있는 셀만, 행/열바꿈)
+'  ★붙여넣기 : Paste
+    Range("C100:D100").PasteSpecial xlPasteValues '값
+    Range("C100:D100").PasteSpecial xlPasteFormats '서식
+    Range("C100:D100").PasteSpecial xlPasteColumnWidths '열너비
+    Range("C100:D100").PasteSpecial xlPasteFormulas '수식
+    Range("C100:D100").PasteSpecial xlPasteFormulasAndNumberFormats '수식과 숫자서식
+    Range("C100:D100").PasteSpecial xlPasteAllExceptBorders '선빼고
+'  ★연산 : Operation
+'  xlPasteSpecialOperationMultiply : 곱하기
+'  ★내용 있는 셀만 : SkipBlanks
+'  True, False
+'  ★행/열 바꿈 : Transpose
+'  True, False
+
+    Range("C100:D100").PasteSpecial xlPasteAll '모두
+'다른시트에서 명령 가능
+    Range("C2:D2").Copy Destination:=Range("C100:D100")
+'★[다른 열려있는 엑셀파일 복사 해오는것]
+'Workbooks("승환축산.xlsm").Sheets("이름300").Range("a1:M24").Copy _
+'                           Destination:=Sheets("이름300").Range("a1")
+'줄바꿈 해제
+    Selection.WrapText = False
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+-----------------------------------------------------------------------------------
+document.write("배열 arr의 요소에는 [" + arr + "]가 있습니다.<br>"); // 배열의 요소를 모두 출력함.
+document.write("배열 arr의 길이는 " + arr.length + "입니다.");       // 배열의 길이를 출력함.
+
+○ 배열. length는 개수, 순서 첫번째는 [0]
+    var arr =  []; ==> 빈배열 생성
+    var arr = new Array(); ==> 빈배열 생성
+    var arr = new Array(3); ==> 3개 크기의 배열 생성,  
+    생성 : var arr - [,,,]; ==> 쉼표 개수만큼 지정됨
+    생성 : var arr = ['zero', 'one', 'tow']; ==> 값 할당하며 생성
+    값이 할당되지 않은 것을 console.log(arr[i]); ==> undefined 출력
+○ 배열에 값 넣기
+    var arr = new Array(); ==> 빈배열 선언.
+    var arr = new Array(3); ==> 3개정보 배열 선언
+    arr.length=5 ==> 5개짜리 배열로 변경하라
+    arr[0]=1 ==> 첫번째 배열에 1 값을 할당
+○ 배열
+    var arr = new Array(); ==> 빈배열 선언.
+    arr[5] = 6;  ==> 바로 6번째 값 6할당하면 배열길이 6개로 됨
+    alert(arr.length);
+○ 배열추가
+    var arr = new Array(); ==> 빈배열 선언.
+    arr[5] = 6;  ==> 바로 6번째 값 6할당하면 배열길이 7개로 됨
+    push하면 하나추가 됨
+    arr.push(1212);  or arr.push('문자열');
+--------------------------------------------------------
+※ flex : 부모에 display:flex(기본값 가로), ==> 자식들(flex item들을 조율)이 영향을 받는다.
+  부모에서 설정중 space로 구분된거 양쪽정렬 :  추가로 justify-content: space-between; 
+
+※ flex item 기본값 : 작아지면 작아지는데 커지면 커지지는 않는다.(원래크기보다 커지지 않는다)
+    flex-grow:0
+    flex-shrink:1
+    flex-basis:auto
+※ flex-none : 원래크기 유지 영항 안받음.(왼쪽꺼 고정할때)
+※ flex-grow:0 , 남는 여백을 나눠가지는 비율 0 이면 여백을 나눠가지지 않는다. 
+   1;1;0;1;2 ==> 합이 5이므로 여백을 5로 나눠서 각각 자신의 원래 너비에 너비에 추가됨?
+※ flex-shrink:1 , grow와 반대개념? 0 이면 줄어들지 않고 ...
+※ flex-basis:auto
+   flex box 안에 width가 50px인 A, 100px인 B, 120px인 C가 있다.
+   이들의 flex-basis를 flex-basis: 100px로 설정하면
+
+   A는 50px에서 100px로 늘어나고
+   B는 똑같은 100px이므로 변화가 없고
+   C는 120px은 100px보다 크지만 그대로 유지된다.
+   (이를 통해 flex-basis는 최소 width(또는 height)처럼 동작한다는 것을 알 수 있다??)
+※ flex-basis:0
+   content 너비가 달라도 item이 같은 너비를 가진다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
