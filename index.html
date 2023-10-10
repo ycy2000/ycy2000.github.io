@@ -32,9 +32,20 @@
         <div class="navbar-brand d-inline-block m-0 pt-0"">
           <a class="navbar-brand dropdown-item">세관</a>
         </div>
-        <a id="a_리스트보기숨기기" class="btn btn-light m-0 h_color" onclick="main_list_viewHide()">리스트 보기중</a>
-        <a id="a_소제목보기숨기기" class="btn btn-light m-0 h_color" onclick="sub_list_showHide()">소제목 숨김중</a>
-        <a class="btn btn-light m-0 h_color" onclick="결과임시_보기_숨기기()">결과파일 숨김중</a>
+
+        <a class="active nav-link dropdown-toggle d-inline-block" href="#" 
+          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          보기/숨기기
+        </a>
+        <ul class="dropdown-menu 폭80" id="샘플">
+          <li id="a_리스트보기숨기기" class="btn btn-light m-0 d-block" onclick="main_list_viewHide()">리스트 보기중</li>
+          <li id="a_소제목보기숨기기" class="btn btn-light m-0 d-block me-auto" onclick="sub_list_showHide()">소제목 숨김중</li>
+          <li class="btn btn-light m-0 d-block me-auto" onclick="결과임시_보기_숨기기()">결과파일 숨김중</li>
+          <!-- <li><hr class="dropdown-divider"></li> -->
+        </ul>
+        <bttton class="btn btn-light active m-2 p-1" onclick="임시함수1()">함수1</bttton>
+
+
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse width_100" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3">

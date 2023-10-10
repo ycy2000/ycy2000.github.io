@@ -55,75 +55,13 @@ function 임시함수2() {
 }
 
 function 임시함수1() {
-  var con = document.querySelectorAll('[title="버튼과ul"]');
-  var ul들 = document.querySelectorAll('[title="버튼과ul"] ul');
-  var arr_ul들 = [];
-  var 서너개ul높이=[];
-  var 서너개ul적용높이=0;
-  var 버튼높이=0;
-  var 줄수=0;
-  var 가로개수=0;
-  var 적용개수=0;
-
-  if(con.length==0){alert('변수가 비었음.');return;} //alert('변수가 비었음.'); 
-
-
-
-  for (var i=0 ; i <  ul들.length; i++) {
-    //현재 높이 숫자로 담는동작
-    if (i == 0) {
-      메세지 = (i+1) + '번째ul높이 : ' +  getComputedStyle(ul들[i]).height + '\n';
-      arr_ul들[i]=parseFloat(getComputedStyle(ul들[i]).height);
-    }
-    if (i !== 0) {
-      메세지 += (i+1) + '번째ul높이 : ' +  getComputedStyle(ul들[i]).height + '\n';
-      arr_ul들[i]=parseFloat(getComputedStyle(ul들[i]).height);
-    }
-
-    //시작비 버튼높이 다르니 줄수 1추가로 시작.
-    if (버튼높이!==con[i].getBoundingClientRect().top) {
-      
-      서너개ul높이=[];
-      // 가로개수만큼의 정보에서 최대값을 구해야됨
-      if (i!==0) {
-        for (var j=1; j<가로개수; j++) {
-          서너개ul높이.push(arr_ul들[i-가로개수+j])
-        }
-        서너개ul적용높이=Math.max(...서너개ul높이);
-        for (var j=1; j<가로개수; j++) {
-          arr_ul들[i-j]=서너개ul적용높이;
-        }
-        적용개수=적용개수+서너개ul높이.length;
-      }
-      가로개수=1 //달라지마자자
-      줄수=줄수+1 
-      버튼높이=con[i].getBoundingClientRect().top;
-    }
-    if (버튼높이==con[i].getBoundingClientRect().top) {
-        가로개수=가로개수+1
-    }
-  }
-
-      //for문끝나고 ul들.length<ul들.length일때 마지막 작업
-      if (ul들.length > 적용개수) {
-        서너개ul높이=[];
-        for (var k=적용개수; k < ul들.length; k++) {
-          서너개ul높이.push(arr_ul들[k]);
-        }
-
-        서너개ul적용높이=Math.max(...서너개ul높이);
-
-        for (k=적용개수; k < ul들.length; k++) {
-          arr_ul들[k]=서너개ul적용높이;
-        }
-        적용개수=적용개수+서너개ul높이.length;
-        // alert('i : ' + i + '\n서너개ul높이 : ' + 서너개ul높이 + '\n서너개ul적용높이 : ' + 서너개ul적용높이);
-      }
-
-  for (var i=0 ; i <  ul들.length; i++) {
-    ul들[i].style.height=arr_ul들[i] + 'px'
-    }
-    alert('적용개수 : ' + 적용개수 + '\n' + 메세지);
+// 특정아이디의 속성들을 보고싶다
+var 스타일정보=window.getComputedStyle(document.querySelector('#샘플'));
+alert('display : ' + 스타일정보.display
++'\nposition : ' + 스타일정보.position
++'\nleft : ' + 스타일정보.left
++'\ntop : ' + 스타일정보.top
+);
 }
 
 

@@ -17,6 +17,9 @@ header {position:fixed;width:100%;}
 #소제목과list
 {width:82%; margin: 0 auto;}
 
+.폭80 {width:82%;margin-left:8.4%;}
+.폭80 > li {text-align: left;}
+
 #보기_숨기기버튼 {padding: 5px 0px;}
 #보기_숨기기버튼 button {padding:0px 5px;height:30px;}
 #nav_회사 {vertical-align:top;}
@@ -119,7 +122,7 @@ section > #스크립트로ul추가 h6 {text-indent: 60px;font-weight: bold;}/* �
 .my_nav_width {width:84%;}
 @media (max-width:1300px) {
     .my_nav_width {width:100%;}
-
+    .폭80 {width:100%;;margin-left:0;}
 }
 
 
