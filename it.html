@@ -16,48 +16,60 @@
 <body>
 <!-- 상단 nav -->
 <!-- 공통 fixed용 -->
-<header>
-  <nav id="nav_head"  ondblclick="location.href='index.html'">
-    <!-- 큰틀 80%, 80%에서 또 80:20 좌우로 , 80%부분 display:inline-block안하면 이상해짐-->
-    <!-- 버튼클래스.btn-primary btn-secondary(폭커져안씀) btn-success btn-danger  btn-info btn-dark, 아래 황금색은 btn btn-warning-->
-    <div id="nav_회사">
-      <div>
-        <button type="button" style="margin-top:5px" class="btn btn-success" onclick="location.href='it.html' ">
-          IT
+<header id="head_button_group" class="container-fluid fixed-top h_color">
+
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
+  <nav class="navbar bg-body-tertiary pt-0 pb-0  m-0"  ondblclick="location.href='lotto.html'">   
+    <div class="container-fluid my_nav_width">
+
+      <!--디바이스 작아지면 버튼으로 변해서 누르면 class="collapse navbar-collapse" id="navbarSupportedContent" 부분이 드랍다운된다.-->
+      <div class="my_nav_width">
+        <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
+        <button class="navbar-toggler d-inline-block p-1 me-2" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <button type="button" style="margin-top:5px" class="btn btn-danger" onclick="location.href='vba.html' ">
-          vba
-        </button>
-        <button type="button" style="margin-top:5px" class="btn btn-info" onclick="location.href='memo.html' ">
-          memo
-        </button>
-      </div>  
+        <div class="navbar-brand d-inline-block m-0 pt-0"">
+          <a class="navbar-brand dropdown-item">IT</a>
+        </div>
+
+        <a class="active nav-link dropdown-toggle d-inline-block" href="#" 
+          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          보기/숨기기
+        </a>
+        <ul class="dropdown-menu 폭80" id="샘플">
+          <li id="a_리스트보기숨기기" class="btn btn-light m-0 d-block" onclick="main_list_viewHide()">리스트 보기중</li>
+          <li id="a_소제목보기숨기기" class="btn btn-light m-0 d-block me-auto" onclick="sub_list_showHide()">소제목 숨김중</li>
+          <li class="btn btn-light m-0 d-block me-auto" onclick="결과임시_보기_숨기기()">결과파일 숨김중</li>
+          <!-- <li><hr class="dropdown-divider"></li> -->
+        </ul>
+
+        <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
+        <div class="collapse navbar-collapse width_100" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3">
+            <li class="nav-item dropdown me-2">
+              <a class="active nav-link dropdown-toggle" href="#" 
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                링크이동
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.html">세관</a></li>
+                <li><a class="dropdown-item" href="vba.html">Excel,vba</a></li>
+                <li><a class="dropdown-item" href="it.html">IT</a></li>
+                <li><a class="dropdown-item" href="memo.html">memo</a></li>
+                <!-- <li><hr class="dropdown-divider"></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+
     </div>
   </nav>
-
-  <!-- 상단 nav 끝 -->
-
-  <!-- 보기_숨기기버튼 나중에 fixed하기위해 div 한겹더  style="position:fixed;width:100%"-->
-  <nav id="nav_보기숨기기버튼바탕색" ondblclick="함수버튼보기숨기기()"> 
-    <div id="보기_숨기기버튼">
-      <button type="button" class="btn btn-warning" onclick="main_list_viewHide()">리스트 보기중</button>  <!-- 큰분류 제목 html마다 수정 -->
-      <button type="button" class="btn btn-warning" onclick="sub_list_showHide()"">소제목 숨김중</button>
-      <button type="button" class="btn btn-warning" onclick="결과임시_보기_숨기기()">결과파일 숨김중</button>
-      <div class="함수버튼" style="display:none;">
-        <button type="button" class="btn btn-warning" onclick="임시함수1()">함수1</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수2()">함수2</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수3()">함수3</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수4()">함수4</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수5()">함수5</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수6()">함수6</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수7()">함수7</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수8()">함수8</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수9()">함수9</button>
-        <button type="button" class="btn btn-warning" onclick="임시함수10()">함수10</button>
-      </div>
-    </div>
-  </nav>   
-</header>   
+</header> 
+<div style="height:5px;"></div><!-- main과 띄우기용 -->
 <!-- 공통 fixed용 끝 -->
 
 <!-- 위에까지는 어느정도 된것같다. -->
