@@ -359,7 +359,15 @@ if (1==1) {
       document.querySelector('#색칠45_있다면다음회차').innerHTML=버튼45html;
        } else {
         // 다음회차 당번 있을때
-
+        for (var t=0; t<6; t++) {
+          번호=document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1
+          //현재 45개 버튼을 품고있는 몇번째 div인가, 현재 div안의 몇번째 버튼에 색칠할것인가
+          //숫자 예 : var 시작배열값=(회차개수-1)*9; 
+          document.querySelectorAll('#색칠45_있다면다음회차 button')[번호-1].innerHTML=번호;
+  
+          document.querySelectorAll('#색칠45_있다면다음회차 button')[번호-1].classList.add('사오색칠');
+  
+        }
     }
 
     document.querySelector('#색칠45_순번').innerHTML=버튼45html;
@@ -385,6 +393,9 @@ if (1==1) {
         //현재 45개 버튼을 품고있는 몇번째 div인가, 현재 div안의 몇번째 버튼에 색칠할것인가
         //숫자 예 : var 시작배열값=(회차개수-1)*9; 
         document.querySelectorAll('#색칠45_당번 button')[(i*45)+번호-1].innerHTML=번호;
+
+        document.querySelectorAll('#색칠45_당번 button')[(i*45)+번호-1].classList.add('사오색칠');
+
       }
    }
   }
@@ -900,10 +911,6 @@ if (1==1) {
   function 모달번호감추기() {
     document.querySelector('#세로구분_색칠관련').classList.add('d-none');
     document.querySelector('#li_모달번호45보기숨기기').innerText='모달번호45보기';
-  }
-  function 모달번호_원래위치로() {
-    document.querySelector('#세로구분_색칠관련').style.left='310px';
-    document.querySelector('#세로구분_색칠관련').style.top='50px';
   }
   function 모달번호_왼쪽으로() {
     var 이동값=document.querySelector('#이동용input').value * 1;

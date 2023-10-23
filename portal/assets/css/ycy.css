@@ -5,7 +5,6 @@ header #코딩메모_문서연결 li {list-style: none;  width: 100%;text-overfl
 header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #선택문서셑팅하는곳 > div {background-color:white;}
 
-
 #복사연습 {margin-left:5px;font-size: 16px;width:285px;display:inline-block;vertical-align: top;background-color: bisque;}
 #복사연습 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
 #복사연습 > div {display:block;margin-bottom:-1px;}  /*1),2),3)*/
@@ -60,6 +59,7 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #세로구분_색칠관련 #현재색칠정보 {margin-top:5px;}
 #세로구분_색칠관련 #현재색칠번호들 {background-color: aqua;width:235px;word-break: break-all;}
 
+.사오색칠 {background-color: blueviolet;}
 .색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
 .모달회차표시 {background-color:blueviolet;border-radius: 20px;}
 .색칠용버튼[title='1'], .색칠용버튼[title='2'], .색칠용버튼[title='3'], .색칠용버튼[title='4'], .색칠용버튼[title='5'],
