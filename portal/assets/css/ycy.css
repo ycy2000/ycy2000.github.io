@@ -26,10 +26,10 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 
 
 
-#세로구분_당첨번호들 {margin-left:5px;font-size: 16px;width:285px;display:inline-block;vertical-align: top;background-color: bisque;}
-#세로구분_당첨번호들 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
-#세로구분_당첨번호들 > div {display:block;margin-bottom:-1px;}  /*1),2),3)*/
-#세로구분_당첨번호들 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
+#세로구분_당첨번호들, #세로구분_색칠45 {margin-left:5px;font-size: 16px;width:285px;display:inline-block;vertical-align: top;background-color: bisque;}
+#세로구분_당첨번호들 button, #세로구분_색칠45 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
+#세로구분_당첨번호들 > div,  #세로구분_색칠45 > div {display:block;margin-bottom:-1px;}  /*1),2),3)*/
+#세로구분_당첨번호들 > div > div,  #세로구분_색칠45 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
 /* #세로구분_당첨번호들 안에 첫번째 div : 1)있다면다음회차 2)회차날짜조회묶음 3)전체당번,이 안의 div안에 버튼있음*/
 #세로구분_당첨번호들 > div:nth-child(1) > button:nth-of-type(1), /*#있다면다음회차*/
 #세로구분_당첨번호들 > div:nth-child(2) > button:nth-of-type(1), /*#회차날짜조회묶음*/

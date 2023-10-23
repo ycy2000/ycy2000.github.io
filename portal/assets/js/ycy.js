@@ -349,6 +349,9 @@ if (1==1) {
   //복사연습
   document.querySelector('#복사연습').innerHTML=document.querySelector('#세로구분_당첨번호들').innerHTML;
   
+  function 색칠_45() {
+    
+  }
   function 새로고침시함수넣기() {
     var 버튼들=버튼들=document.querySelectorAll('#아이디변경 button');
     for (var i=0; i<버튼들.length; i++) {
