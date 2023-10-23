@@ -377,9 +377,19 @@ if (1==1) {
      }
 
     // 색칠하기
+    var 번호;
     for (var i=0; i<100; i++) {
       //당번 6개씩 번호 넣고 색칠하기
+      for (var t=0; t<6; t++) {
+        번호=document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1
+        //현재 45개 버튼을 품고있는 몇번째 div인가, 현재 div안의 몇번째 버튼에 색칠할것인가
+        //숫자 예 : var 시작배열값=(회차개수-1)*9; 
+        document.querySelectorAll('#색칠45_당번 button')[(i*45)+번호-1].innerHTML=번호;
+      }
    }
+  }
+  function 임시() {
+    alert(document.querySelector('#전체당번').innerHTML);
   }
   function 새로고침시함수넣기() {
     var 버튼들=버튼들=document.querySelectorAll('#아이디변경 button');

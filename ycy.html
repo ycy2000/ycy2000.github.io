@@ -49,9 +49,10 @@
             <li>
               <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline-block" style="width:200px;" 
               onclick="header_dropdown_모달45보기숨기기()">모달번호45숨기기</a>
-              <a calss="d-inline-block" style="width:50px;" onclick="모달번호_원래위치로()">원래위치</a>
+              <a calss="dropdown-item d-inline-block" style="width:50px;" onclick="모달번호_원래위치로()">원래위치</a>
             </li>
             <li><a class="dropdown-item" onclick=" alert('화면넓이 : ' + document.body.clientWidth );">width</a></li>
+            <li><a class="dropdown-item" onclick="색칠_45()">색칠_45</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
@@ -78,7 +79,7 @@
             임시함수
           </a>
           <ul class="dropdown-menu" style="width:300px;">
-            <li><a class="dropdown-item">비어있음</a></li>
+            <li><a class="dropdown-item" onclick="임시()">비어있음</a></li>
             <li><a class="dropdown-item" onclick="window.location.reload()">새로고침</a>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
@@ -470,8 +471,8 @@
   </div>
 
 </div>
-<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='my_index.html'"
-role="button" title="Move Top" data-toggle="tooltip" data-placement="left">
+<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
+role="button" title="Move Top" data-toggle="tooltip" data-placement="left" style="left:5px; width:50px;">
 <span>Top</span></a>
 
 <!-- 부트스트랩.body 맨 마지막에.. -->
