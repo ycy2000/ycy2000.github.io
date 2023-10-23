@@ -346,11 +346,40 @@ if (1==1) {
   
   }
   if (1==1) {새로고침시함수넣기();}
+  if (1==1) {색칠_45();}
   //복사연습
   document.querySelector('#복사연습').innerHTML=document.querySelector('#세로구분_당첨번호들').innerHTML;
   
   function 색칠_45() {
-    
+    var 버튼45html;
+    for (var i=0; i<45; i++) {
+      if(i==0) {버튼45html='<button></button>'} else {버튼45html+='<button></button>'}
+    }
+    if (document.querySelector('#회차select').selectedIndex==0) {
+      document.querySelector('#색칠45_있다면다음회차').innerHTML=버튼45html;
+       } else {
+        // 다음회차 당번 있을때
+
+    }
+
+    document.querySelector('#색칠45_순번').innerHTML=버튼45html;
+    for (i=0; i<45; i++) {
+      document.querySelectorAll('#색칠45_순번 button')[i].innerHTML=i+1
+    }
+
+    // 빈버튼 만들기
+    for (var i=0; i<100; i++) {
+        if(i==0) {
+          document.querySelector('#색칠45_당번').innerHTML='<div>' + 버튼45html + '</div>';
+        } else {
+          document.querySelector('#색칠45_당번').innerHTML+='<div>' + 버튼45html + '</div>';
+        }
+     }
+
+    // 색칠하기
+    for (var i=0; i<100; i++) {
+      //당번 6개씩 번호 넣고 색칠하기
+   }
   }
   function 새로고침시함수넣기() {
     var 버튼들=버튼들=document.querySelectorAll('#아이디변경 button');
