@@ -51,7 +51,9 @@
               onclick="header_dropdown_모달45보기숨기기()">모달번호45숨기기</a>
             </li>
             <li><a class="dropdown-item" onclick=" alert('화면넓이 : ' + document.body.clientWidth );">width</a></li>
-            <li><a class="dropdown-item" onclick="색칠_45()">색칠_45</a></li>
+            <li><a class="dropdown-item" onclick="색칠_45()" style="width:120px; display:inline-block">색칠_45</a>
+              <a id="li_색칠45보기숨기기" class="dropdown-item" onclick="header_dropdown_색칠45보기숨기기()" 
+              style="width:165px; display:inline-block">색칠45숨기기</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
@@ -211,7 +213,12 @@
     </ul>
   </div>
 </div>
-<div class="absolute" id="세로구분_색칠45" style="width:1320px; left:710px;top:50px; z-index: 2;background-color: white;">
+<div class="absolute" id="세로구분_색칠45_간격" style="width:180px; left:710px;top:50px; z-index: 2;background-color: white;">
+  <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
+</div>
+<div class="absolute" id="세로구분_색칠45" style="width:1320px; left:890px;top:50px; z-index: 2;background-color: white;">
   <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
