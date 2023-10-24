@@ -350,21 +350,92 @@ if (1==1) {
   //복사연습
   document.querySelector('#복사연습').innerHTML=document.querySelector('#세로구분_당첨번호들').innerHTML;
   
-  function 색칠_45_간격() {
+  function 색칠_45_간격당당첨() {
     var 간격6html;
     var 간격;
+    var 배열=[];
     for (var i=0; i<6; i++) {
       if(i==0) {간격6html='<button></button>'} else {간격6html+='<button></button>'}
     }
+    document.querySelector('#색칠45_간격당당첨_있다면다음회차').innerHTML=간격6html;
     if (document.querySelector('#회차select').selectedIndex==0) {
-      document.querySelector('#색칠45_간격_있다면다음회차').innerHTML=간격6html;
+      
        } else {
         // 다음회차 당번 있을때
         for (var t=0; t<6; t++) {
-          간격=document.querySelectorAll('#있다면다음회차 button')[t+2].innerHTML*1-document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1
-          //현재 45개 버튼을 품고있는 몇번째 div인가, 현재 div안의 몇번째 버튼에 색칠할것인가
-          //숫자 예 : var 시작배열값=(회차개수-1)*9; 
-          document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[번호-1].innerHTML=간격;  
+          if (t==0) {간격=44-document.querySelectorAll('#있다면다음회차 button')[6].innerHTML*1+document.querySelectorAll('#있다면다음회차 button')[1].innerHTML*1}
+          else {간격=-1+document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1-document.querySelectorAll('#있다면다음회차 button')[t+0].innerHTML*1}
+  
+          document.querySelectorAll('#색칠45_간격당당첨_있다면다음회차 button')[t].innerHTML=간격;
+        }
+        // 배열에 담고 정렬후 다시 뿌리기
+        for (var t=0; t<6; t++) {
+          배열.push(document.querySelectorAll('#색칠45_간격당당첨_있다면다음회차 button')[t].innerHTML);
+        }
+        배열.sort((a,m) => m-a);
+        for (var t=0; t<6; t++) {
+          document.querySelectorAll('#색칠45_간격당당첨_있다면다음회차 button')[t].innerHTML=배열[t];
+        }
+    }
+
+    document.querySelector('#색칠45_간격당당첨_순번').innerHTML='간격안 다음회차 당첨개수';
+
+    // 빈버튼 만들기
+    for (var i=0; i<100; i++) {
+        if(i==0) {
+          document.querySelector('#색칠45_간격당당첨_당번').innerHTML='<div>' + 간격6html + '</div>';
+        } else {
+          document.querySelector('#색칠45_간격당당첨_당번').innerHTML+='<div>' + 간격6html + '</div>';
+        }
+     }
+
+    // 배열초기화
+    for (var i=0; i<100; i++) {
+      배열=[];
+      //간격
+      for (var t=0; t<6; t++) {
+        if (t==0) {간격=44-document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1}
+        else {간격=-1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1-document.querySelectorAll('#전체당번 button')[(i*8)+t+0].innerHTML*1}
+
+        document.querySelectorAll('#색칠45_간격당당첨_당번 button')[(i*6)+t].innerHTML=간격;
+      }
+        // 배열에 담고 정렬후 다시 뿌리기
+        for (var t=0; t<6; t++) {
+          배열.push(document.querySelectorAll('#색칠45_간격당당첨_당번 button')[(i*6)+t].innerHTML);
+        }
+        배열.sort((a,m) => m-a);
+        for (var t=0; t<6; t++) {
+          document.querySelectorAll('#색칠45_간격당당첨_당번 button')[(i*6)+t].innerHTML=배열[t];
+        }
+   }
+
+  }
+
+  function 색칠_45_간격() {
+    var 간격6html;
+    var 간격;
+    var 배열=[];
+    for (var i=0; i<6; i++) {
+      if(i==0) {간격6html='<button></button>'} else {간격6html+='<button></button>'}
+    }
+    document.querySelector('#색칠45_간격_있다면다음회차').innerHTML=간격6html;
+    if (document.querySelector('#회차select').selectedIndex==0) {
+      
+       } else {
+        // 다음회차 당번 있을때
+        for (var t=0; t<6; t++) {
+          if (t==0) {간격=44-document.querySelectorAll('#있다면다음회차 button')[6].innerHTML*1+document.querySelectorAll('#있다면다음회차 button')[1].innerHTML*1}
+          else {간격=-1+document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1-document.querySelectorAll('#있다면다음회차 button')[t+0].innerHTML*1}
+  
+          document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[t].innerHTML=간격;
+        }
+        // 배열에 담고 정렬후 다시 뿌리기
+        for (var t=0; t<6; t++) {
+          배열.push(document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[t].innerHTML);
+        }
+        배열.sort((a,m) => m-a);
+        for (var t=0; t<6; t++) {
+          document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[t].innerHTML=배열[t];
         }
     }
 
@@ -379,20 +450,26 @@ if (1==1) {
         }
      }
 
-    // 색칠하기
+    // 배열초기화
     for (var i=0; i<100; i++) {
-      //당번 6개씩 번호 넣고 색칠하기
+      배열=[];
+      //간격
       for (var t=0; t<6; t++) {
-        if (t==0) {간격=45-document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1}
-        else {간격=document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1-document.querySelectorAll('#전체당번 button')[(i*8)+t+0].innerHTML*1}
+        if (t==0) {간격=44-document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1}
+        else {간격=-1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1-document.querySelectorAll('#전체당번 button')[(i*8)+t+0].innerHTML*1}
 
-        console.log(간격);
         document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=간격;
-        //정렬
-
-
       }
+        // 배열에 담고 정렬후 다시 뿌리기
+        for (var t=0; t<6; t++) {
+          배열.push(document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML);
+        }
+        배열.sort((a,m) => m-a);
+        for (var t=0; t<6; t++) {
+          document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=배열[t];
+        }
    }
+
   }
   function 색칠_45() {
     var 버튼45html;
@@ -443,6 +520,7 @@ if (1==1) {
       }
    }
    색칠_45_간격();
+   색칠_45_간격당당첨()
   }
   function 임시() {
     alert(document.querySelector('#전체당번').innerHTML);
