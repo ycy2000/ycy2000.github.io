@@ -372,10 +372,11 @@ if (1==1) {
   function 색칠_45_간격() {
     //추가:1==>01형태로 13_3 형태로 간격_다음회차 간격번호에 당첨개수 형태로 정렬후 간격부분과 당첨개수부분으로 뿌리기
     //첫번호일때 당첨이 마지막번호에서 45사이에 있는지 + 1에서 첫번호까지 당첨있는지 = 개수에서 
-
     var 간격6html;
-    var 간격;
-    var 배열=[];
+    var 간격_다음당개=[];
+    var 당개;
+    var 다음당번=[];
+    var 배열=[]; //두개 붙은 것 한세트
     for (var i=0; i<6; i++) {
       if(i==0) {간격6html='<button></button>'} else {간격6html+='<button></button>'}
     }
@@ -383,25 +384,23 @@ if (1==1) {
     if (document.querySelector('#회차select').selectedIndex==0) {
       
        } else {
-        // 다음회차 당번 있을때
+        // 다음회차 당번 있을때, 당개를 적지 않는다.
         for (var t=0; t<6; t++) {
-          if (t==0) {간격=44-document.querySelectorAll('#있다면다음회차 button')[6].innerHTML*1+document.querySelectorAll('#있다면다음회차 button')[1].innerHTML*1}
-          else {간격=-1+document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1-document.querySelectorAll('#있다면다음회차 button')[t+0].innerHTML*1}
-  
-          document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[t].innerHTML=간격;
+          if (t==0) {
+            간격_다음당개=44-document.querySelectorAll('#있다면다음회차 button')[6].innerHTML*1+document.querySelectorAll('#있다면다음회차 button')[1].innerHTML*1;
+            배열.push(간격_다음당개);
+          } else {
+            간격_다음당개=-1+document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1-document.querySelectorAll('#있다면다음회차 button')[t+0].innerHTML*1;
+            배열.push(간격_다음당개);
+          }
         }
         // 배열에 담고 정렬후 다시 뿌리기
-        for (var t=0; t<6; t++) {
-          배열.push(document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[t].innerHTML);
-        }
         배열.sort((a,m) => m-a);
         for (var t=0; t<6; t++) {
           document.querySelectorAll('#색칠45_간격_있다면다음회차 button')[t].innerHTML=배열[t];
         }
     }
-
     document.querySelector('#색칠45_간격_순번').innerHTML='간격 내림차순';
-
     // 빈버튼 만들기
     for (var i=0; i<100; i++) {
         if(i==0) {
@@ -413,21 +412,62 @@ if (1==1) {
 
     // 배열초기화
     for (var i=0; i<100; i++) {
-      배열=[];
+      다음당번=[];
+      if (i==0) {
+        if (document.querySelector('#회차select').selectedIndex==0) {
+          다음당번=[0,0,0,0,0,0];
+        } else {
+          for (var t=0; t<6; t++) {
+            다음당번.push(document.querySelectorAll('#있다면다음회차 button')[t+1].innerHTML*1);
+          }
+        }
+      }
+      if (i!=0) {
+        for (var t=0; t<6; t++) {
+          다음당번.push(document.querySelectorAll('#전체당번 button')[(i*8)+t-7].innerHTML*1);
+        }
+      }
       //간격
       for (var t=0; t<6; t++) {
-        if (t==0) {간격=44-document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1}
-        else {간격=-1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1-document.querySelectorAll('#전체당번 button')[(i*8)+t+0].innerHTML*1}
-
-        document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=간격;
+        if (t==0) {
+          간격_다음당개=44-document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1;
+           if (간격_다음당개.toString().length==1) {간격_다음당개= '0' + 간격_다음당개;}
+           //당개구하고 붙이기 (100개부분), data.sort((a, b) => 첫번째 조건 || 두번째 조건);
+          //  console.log('다음당번 : ' + 다음당번 + ' ' + document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1 + ' 보다 크거나' + document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1 + ' 보다 작은것 개수');
+               if (다음당번[0]==0) {
+                   당개=0
+                } else {
+                당개=다음당번.filter(element => element >(document.querySelectorAll('#전체당번 button')[(i*8)+t+6].innerHTML*1) || element < document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1).length;
+                } 
+               간격_다음당개=간격_다음당개 + '_' + 당개;
       }
-        // 배열에 담고 정렬후 다시 뿌리기
+        else {
+          간격_다음당개=-1+document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML*1-document.querySelectorAll('#전체당번 button')[(i*8)+t+0].innerHTML*1;
+           if (간격_다음당개.toString().length==1) {간격_다음당개= '0' + 간격_다음당개;}
+           //당개구하고 붙이기
+           당개=다음당번.filter(element => element <document.querySelectorAll('#전체당번 button')[(i*8)+t+1].innerHTML &&  element > document.querySelectorAll('#전체당번 button')[(i*8)+t+0].innerHTML).length;
+           간격_다음당개=간격_다음당개 + '_' + 당개;
+      }
+      //왼쪽에 먼저 뿌리기
+        document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=간격_다음당개;
+      }
+        // 배열에 담고 정렬후 두군데로 나눠서 다시 뿌리기
+        배열=[];
         for (var t=0; t<6; t++) {
           배열.push(document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML);
         }
-        배열.sort((a,m) => m-a);
+
+          배열.sort().reverse();
+
         for (var t=0; t<6; t++) {
-          document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=배열[t];
+          document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=배열[t].split('_')[0];
+          document.querySelectorAll('#색칠45_간격당당첨_당번 button')[(i*6)+t].innerHTML=배열[t].split('_')[1];
+        }
+        //왼쪽 01 형식을 숫자로 변경
+        for (var t=0; t<6; t++) {
+          if (document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML[0]==0) {
+              document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML=document.querySelectorAll('#색칠45_간격_당번 button')[(i*6)+t].innerHTML[1];
+          }
         }
    }
 
