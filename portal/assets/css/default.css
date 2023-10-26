@@ -4,10 +4,11 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 .h_color {background-color: rgb(235, 227, 219);border-color:  rgb(235, 227, 219);}
 /* pre  {font-family: '바탕체';font-weight: bold;} */
 header {position:fixed;width:100%;}
-[title="버튼과ul"] > h5, [title="버튼과ul"] > ul > li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+[title="버튼과ul"] > h5, [title="버튼과ul"] > button,[title="버튼과ul"] > ul > li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+[title="버튼과ul"] > button {width:364px; text-align: left;}
 /* #nav_head : 바탕색 */
 #nav_head {background:url('../../images/layout/headerotherbg.png') repeat;padding-bottom: 5px;}
-#nav_보기숨기기버튼바탕색 {background-color: white; }
+#nav_보기숨기기버튼바탕색 {background-color: white;}
 /* 넓이 */
 #보기_숨기기버튼, 
 #nav_회사, 
