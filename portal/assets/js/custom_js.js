@@ -78,8 +78,6 @@ function 함수버튼보기숨기기 () {
     con.style.display = 'none';
   } 
 }
-
-
 function content편집중_보기_숨기기() {
   var con = document.querySelector('#content_편집중');
   var button=	document.querySelector('#보기_숨기기버튼>button:nth-of-type(4)');
@@ -105,15 +103,15 @@ function 결과임시_보기_숨기기() {
   // console.log(button);
   if(con.style.display=='none'){ 		
     con.style.display = 'block'; 
-    if (a_결과파일보기숨기기) {a_결과파일보기숨기기.innerText='결과파일 보기중'	}
+    if (a_리스트보기숨기기) {button.innerText='결과파일 보기중'	}
   }else{ 		
     con.style.display = 'none';
-    if (a_결과파일보기숨기기) {a_결과파일보기숨기기.innerText='결과파일 숨김중'	}	
+    if (a_리스트보기숨기기) {button.innerText='결과파일 숨김중'	}	
   }
   // SHOW 안했을때 ALERT.스페이스1글자,엔터1글자,빈줄한글자 인식됨,태그를 딱 붙이면  0, 주석도 글자수로 카운트
   if(con.innerHTML.length<3){ 		
     con.style.display = 'none';
-    if (a_결과파일보기숨기기) {a_결과파일보기숨기기.innerText='결과파일 숨김중'	}
+    if (a_리스트보기숨기기) {button.innerText='결과파일 숨김중'	}
     alert('결과의 내용이 없는 상태입니다.')	
   } 
 }
