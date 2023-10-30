@@ -137,16 +137,11 @@
           <button>44</button>
           <button>45</button>
           <button id="클릭수" class="d-none">0</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-2 p-0" onclick="모달번호_왼쪽으로()">←</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_오른쪽으로()">→</button>
-          <button title="모달번호_원래위치로" type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_원래위치로()" style="width:50px;">위치</button>
         </div>
         <div>
           <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호감추기()">X</button>
           <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="칠_click();">칠</button>
           <input id="이동용input" type="text" class="mt-1 ms-1" value="150">
-          <button type="button" class="btn btn-secondary mt-1 p-0" onclick="모달번호_위로()">↑</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_아래로()">↓</button>
           <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_플러스_일()">+</a>
           <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_마이너스_일()">-</a>
         </div>
@@ -154,7 +149,7 @@
           <div id="현재색칠정보" class="d-inline-block" onclick="현재색칠정보_click_색과정보초기화()">색칠할정보</div>
           <div id="평균계산값" class="d-inline-block"></div>
         </div>
-        <div id="현재색칠번호들"></div>
+        <div id="현재색칠번호들" style="white-space:normal"></div>
       </div>
     </div>
 
@@ -198,6 +193,10 @@
       </ul>
     </div>
   </div>
+
+
+
+
   <div id="세로구분_당첨번호들" class="d-inline-block">
     <div id="있다면다음회차"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
     <div id="회차날짜조회묶음">
@@ -212,11 +211,11 @@
 
     <div id="전체당번"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
   </div>
-
-  <div id="복사연습" class="absolute d-none" style="z-index: 1;left:800px;">
-
+  <div class="d-inline-block" id="세로구분_색칠45_원간격" style="width:175px;background-color: white;">
+    <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_원간격_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
-
   <div class="d-inline-block" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
     <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
