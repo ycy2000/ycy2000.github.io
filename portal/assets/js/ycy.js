@@ -358,7 +358,7 @@ if (1==1) {
       if(i==0) {간격6html='<button></button>'} else {간격6html+='<button></button>'}
     }
     document.querySelector('#색칠45_간격당당첨_있다면다음회차').innerHTML=간격6html;
-    document.querySelector('#색칠45_간격당당첨_순번').innerHTML='간격안 다음회차 당첨개수';
+    document.querySelector('#색칠45_간격당당첨_순번').innerHTML='다음회차당개';
     // 빈버튼 만들기
     for (var i=0; i<100; i++) {
         if(i==0) {
@@ -1036,6 +1036,10 @@ if (1==1) {
   function 모달번호감추기() {
     document.querySelector('#세로구분_색칠관련').classList.add('d-none');
     document.querySelector('#li_모달번호45보기숨기기').innerText='모달번호45보기';
+  }
+  function 모달번호_원래위치로() {
+    document.querySelector('#세로구분_색칠관련').style.left='4px';
+    document.querySelector('#세로구분_색칠관련').style.top='50px';
   }
   function 모달번호_왼쪽으로() {
     var 이동값=document.querySelector('#이동용input').value * 1;

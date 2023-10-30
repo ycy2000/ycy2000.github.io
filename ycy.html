@@ -139,11 +139,12 @@
       <div class="d-inline-block" style="margin-left:-2px;">
         <!-- 모달번호45_있다면다음당번 : 처음에 고정값이고 새로고침후 번호선택 회차 바뀌면 새롭게 지정됨 -->
         <div id="모달번호45_있다면다음당번"><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button></div>
-        <li class="nav-item dropdown me-2 mb-1 mt-1 d-inline-block"  style="padding-right:15px;">
+        <li class="nav-item dropdown me-2 mb-1 mt-1 d-inline-block">
           <span>번호색칠</span>
         </li>
+        <button style="width:50px;margin-left:-7px;" type="button" class="btn btn-secondary p-0" onclick="모달색칠해제()">Clear</button>
         <select id="색칠용회차select" class="d-inline-block" onchange="모달회차_change();"></select>
-        <button id="모달_출수제목보기숨기기" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
+        <button id="모달_출수제목보기숨기기" style="margin-left:1px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
       </div>
     </div>
     <div id="색칠용modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
@@ -218,12 +219,12 @@
   <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
 </div>
-<div class="absolute" id="세로구분_색칠45_간격당당첨" style="width:180px; left:890px;top:50px; z-index: 2;background-color: white;">
+<div class="absolute" id="세로구분_색칠45_간격당당첨" style="width:130px; left:890px;top:50px; z-index: 2;background-color: white;">
   <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
 </div>
-<div class="absolute" id="세로구분_색칠45" style="width:1320px; left:1070px;top:50px; z-index: 2;background-color: white;">
+<div class="absolute" id="세로구분_색칠45" style="width:1320px; left:1010px;top:50px; z-index: 2;background-color: white;">
   <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
   <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
