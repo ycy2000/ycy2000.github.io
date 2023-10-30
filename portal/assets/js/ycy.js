@@ -85,7 +85,10 @@ if (1==1) {
   + '<button>42</button> '
   + '</div>'
   + document.querySelector('#색칠용modal-body').innerHTML;
-  document.querySelector('#간격용modal-body').innerHTML='<div>'
+  document.querySelector('#간격용modal-body').innerHTML= '<div>'
+  + '간격번호'
+  + '</div>'
+  +'<div>'
   + '<button>1</button> '
   + '<button>2</button> '
   + '<button>3</button> '

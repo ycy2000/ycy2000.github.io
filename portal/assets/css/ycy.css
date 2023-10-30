@@ -58,7 +58,8 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #세로구분_색칠관련 #색칠용modal-body > div > a {padding:0 5px; width:25px;}/*+,-*/
 #세로구분_색칠관련 #색칠용modal-body > div > a:nth-of-type(1) {margin-left:5px;}/*+*/
 
-#간격용modal-body button {width:30px;height:30px;margin-right:-5px;margin-bottom:-1px;}
+#간격용modal-body button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-5px;margin-bottom:-1px;}
+#간격용modal-body > div > button:nth-of-type(4) {margin-right:-6px;}/*45개번호들*/
 
 
 #세로구분_색칠관련 #현재색칠정보 {margin-top:5px;}
