@@ -51,11 +51,9 @@
               onclick="header_dropdown_모달45보기숨기기()">모달번호45숨기기</a>
             </li>
             <li><a class="dropdown-item" onclick=" alert('화면넓이 : ' + document.body.clientWidth );">width</a></li>
-            <li><a class="dropdown-item" onclick="색칠_45()" style="width:80px; display:inline-block;">색칠_45</a>
+            <li><a class="dropdown-item" onclick="색칠_45()" style="width:120px; display:inline-block">색칠_45</a>
               <a id="li_색칠45보기숨기기" class="dropdown-item" onclick="header_dropdown_색칠45보기숨기기()" 
-              style="width:100px; display:inline-block;padding:0px;">색칠45숨기기</a>
-              <a id="li_간격45보기숨기기" class="dropdown-item" onclick="header_dropdown_간격45보기숨기기()" 
-              style="width:100px; display:inline-block;padding:0px;">간격45숨기기</a></li>
+              style="width:165px; display:inline-block">색칠45숨기기</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
@@ -116,122 +114,122 @@
 </div>
 <!-- ========================================================= -->
 <div style="white-space: nowrap;">
-  <div class="d-inline-block" id="세로구분_색칠관련" style="background-color: white;margin-left:3px;">
+<div id="세로구분_당첨번호들" class="d-inline-block">
+  <div id="있다면다음회차"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
+  <div id="회차날짜조회묶음">
+    <select id="회차select" onclick="회차select_click()">
+    <!-- 새로고침시 <option>회차</option> 추가됨 .. 이래 조회 a 태그 오른쪽에 button 8개, 회차와 당번-->
+    </select>
+    <span id="span_날짜"></span>
+    <a type="button" class="btn btn-primary btn_당번조회" onclick="당번조회와_색칠하기()">조회</a>
+    <a type="button" class="btn btn-primary btn_당번조회" onclick="당번조회와_색칠하기_플러스_일()">+</a>
+    <a type="button" class="btn btn-primary btn_당번조회" onclick="당번조회와_색칠하기_마이너스_일()">-</a>
+  </div>
 
-    <div style="width:240px;display: inline-block;">
-      <div class="modal-header">
-        <div class="d-inline-block" style="margin-left:-2px;">
-          <!-- 모달번호45_있다면다음당번 : 처음에 고정값이고 새로고침후 번호선택 회차 바뀌면 새롭게 지정됨 -->
-          <div id="모달번호45_있다면다음당번"><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button></div>
-          <li class="nav-item dropdown me-2 mb-1 mt-1 d-inline-block">
-            <span>번호색칠</span>
-          </li>
-          <button style="width:50px;margin-left:-7px;" type="button" class="btn btn-secondary p-0" onclick="모달색칠해제()">Clear</button>
-          <select id="색칠용회차select" class="d-inline-block" onchange="모달회차_change();"></select>
-          <button id="모달_출수제목보기숨기기" style="margin-left:1px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
-        </div>
-      </div>
-      <div id="색칠용modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
-        <div>
-          <button>43</button>
-          <button>44</button>
-          <button>45</button>
-          <button id="클릭수" class="d-none">0</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-2 p-0" onclick="모달번호_왼쪽으로()">←</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_오른쪽으로()">→</button>
-          <button title="모달번호_원래위치로" type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_원래위치로()" style="width:50px;">위치</button>
-        </div>
-        <div>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호감추기()">X</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="칠_click();">칠</button>
-          <input id="이동용input" type="text" class="mt-1 ms-1" value="150">
-          <button type="button" class="btn btn-secondary mt-1 p-0" onclick="모달번호_위로()">↑</button>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_아래로()">↓</button>
-          <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_플러스_일()">+</a>
-          <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_마이너스_일()">-</a>
-        </div>
-        <div>
-          <div id="현재색칠정보" class="d-inline-block" onclick="현재색칠정보_click_색과정보초기화()">색칠할정보</div>
-          <div id="평균계산값" class="d-inline-block"></div>
-        </div>
-        <div id="현재색칠번호들"></div>
+  <div id="전체당번"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
+</div>
+
+<div id="복사연습" class="absolute d-none" style="z-index: 1;left:800px;">
+
+</div>
+
+<div  class="d-inline-block" id="세로구분_색칠관련" style="background-color: white;">
+
+  <div style="width:240px;display: inline-block;">
+    <div class="modal-header">
+      <div class="d-inline-block" style="margin-left:-2px;">
+        <!-- 모달번호45_있다면다음당번 : 처음에 고정값이고 새로고침후 번호선택 회차 바뀌면 새롭게 지정됨 -->
+        <div id="모달번호45_있다면다음당번"><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button></div>
+        <li class="nav-item dropdown me-2 mb-1 mt-1 d-inline-block">
+          <span>번호색칠</span>
+        </li>
+        <button style="width:50px;margin-left:-7px;" type="button" class="btn btn-secondary p-0" onclick="모달색칠해제()">Clear</button>
+        <select id="색칠용회차select" class="d-inline-block" onchange="모달회차_change();"></select>
+        <button id="모달_출수제목보기숨기기" style="margin-left:1px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
       </div>
     </div>
-
-    <div id="출수제목" style="width:180px;display: inline-block;vertical-align: top;">
-      <button onclick="오주전();">5</button>
-      <button onclick="십주전();">10</button>
-      <button onclick="십오주전();">15</button>
-      <button onclick="이십주전();">20</button>
-      <button onclick="삼십주전();">30</button>
-      <ul id="색칠할번호선택_ul" >
-        <li><a class="dropdown-item">오주미출수</a></li>
-        <li><a class="dropdown-item">십주미출수</a></li>
-        <li><a class="dropdown-item">십오주미출수</a></li>
-        <li><a class="dropdown-item">이월수</a></li>
-        <li><a class="dropdown-item">이웃수</a></li>
-        <li><a class="dropdown-item">이월이웃수</a></li>
-        <li><a class="dropdown-item">오주1출수</a></li>
-        <li><a class="dropdown-item">오주2출수</a></li>
-        <li><a class="dropdown-item">오주3출수</a></li>
-        <li><a class="dropdown-item">오주4출수</a></li>
-        <li><a class="dropdown-item">오주5출수</a></li>
-        <li><a class="dropdown-item">단번대</a></li>
-        <li><a class="dropdown-item">십번대</a></li>
-        <li><a class="dropdown-item">이십번대</a></li>
-        <li><a class="dropdown-item">삼십번대</a></li>
-        <li><a class="dropdown-item">사십번대</a></li>
-        <li><a class="dropdown-item">가로1라인</a></li>
-        <li><a class="dropdown-item">가로2라인</a></li>
-        <li><a class="dropdown-item">가로3라인</a></li>
-        <li><a class="dropdown-item">가로4라인</a></li>
-        <li><a class="dropdown-item">가로5라인</a></li>
-        <li><a class="dropdown-item">가로6라인</a></li>
-        <li><a class="dropdown-item">가로7라인</a></li>
-        <li><a class="dropdown-item">세로1라인</a></li>
-        <li><a class="dropdown-item">세로2라인</a></li>
-        <li><a class="dropdown-item">세로3라인</a></li>
-        <li><a class="dropdown-item">세로4라인</a></li>
-        <li><a class="dropdown-item">세로5라인</a></li>
-        <li><a class="dropdown-item">세로6라인</a></li>
-        <li><a class="dropdown-item">세로7라인</a></li>
-      </ul>
+    <div id="색칠용modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
+      <div>
+        <button>43</button>
+        <button>44</button>
+        <button>45</button>
+        <button id="클릭수" class="d-none">0</button>
+        <button type="button" class="btn btn-secondary mt-1 ms-2 p-0" onclick="모달번호_왼쪽으로()">←</button>
+        <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_오른쪽으로()">→</button>
+        <button title="모달번호_원래위치로" type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_원래위치로()" style="width:50px;">위치</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호감추기()">X</button>
+        <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="칠_click();">칠</button>
+        <input id="이동용input" type="text" class="mt-1 ms-1" value="150">
+        <button type="button" class="btn btn-secondary mt-1 p-0" onclick="모달번호_위로()">↑</button>
+        <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호_아래로()">↓</button>
+        <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_플러스_일()">+</a>
+        <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_마이너스_일()">-</a>
+      </div>
+      <div>
+        <div id="현재색칠정보" class="d-inline-block" onclick="현재색칠정보_click_색과정보초기화()">색칠할정보</div>
+        <div id="평균계산값" class="d-inline-block"></div>
+      </div>
+      <div id="현재색칠번호들"></div>
     </div>
   </div>
-  <div id="세로구분_당첨번호들" class="d-inline-block">
-    <div id="있다면다음회차"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
-    <div id="회차날짜조회묶음">
-      <select id="회차select" onclick="회차select_click()">
-      <!-- 새로고침시 <option>회차</option> 추가됨 .. 이래 조회 a 태그 오른쪽에 button 8개, 회차와 당번-->
-      </select>
-      <span id="span_날짜"></span>
-      <a type="button" class="btn btn-primary btn_당번조회" onclick="당번조회와_색칠하기()">조회</a>
-      <a type="button" class="btn btn-primary btn_당번조회" onclick="당번조회와_색칠하기_플러스_일()">+</a>
-      <a type="button" class="btn btn-primary btn_당번조회" onclick="당번조회와_색칠하기_마이너스_일()">-</a>
-    </div>
 
-    <div id="전체당번"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
+  <div id="출수제목" style="width:180px;display: inline-block;vertical-align: top;">
+    <button onclick="오주전();">5</button>
+    <button onclick="십주전();">10</button>
+    <button onclick="십오주전();">15</button>
+    <button onclick="이십주전();">20</button>
+    <button onclick="삼십주전();">30</button>
+    <ul id="색칠할번호선택_ul" >
+      <li><a class="dropdown-item">오주미출수</a></li>
+      <li><a class="dropdown-item">십주미출수</a></li>
+      <li><a class="dropdown-item">십오주미출수</a></li>
+      <li><a class="dropdown-item">이월수</a></li>
+      <li><a class="dropdown-item">이웃수</a></li>
+      <li><a class="dropdown-item">이월이웃수</a></li>
+      <li><a class="dropdown-item">오주1출수</a></li>
+      <li><a class="dropdown-item">오주2출수</a></li>
+      <li><a class="dropdown-item">오주3출수</a></li>
+      <li><a class="dropdown-item">오주4출수</a></li>
+      <li><a class="dropdown-item">오주5출수</a></li>
+      <li><a class="dropdown-item">단번대</a></li>
+      <li><a class="dropdown-item">십번대</a></li>
+      <li><a class="dropdown-item">이십번대</a></li>
+      <li><a class="dropdown-item">삼십번대</a></li>
+      <li><a class="dropdown-item">사십번대</a></li>
+      <li><a class="dropdown-item">가로1라인</a></li>
+      <li><a class="dropdown-item">가로2라인</a></li>
+      <li><a class="dropdown-item">가로3라인</a></li>
+      <li><a class="dropdown-item">가로4라인</a></li>
+      <li><a class="dropdown-item">가로5라인</a></li>
+      <li><a class="dropdown-item">가로6라인</a></li>
+      <li><a class="dropdown-item">가로7라인</a></li>
+      <li><a class="dropdown-item">세로1라인</a></li>
+      <li><a class="dropdown-item">세로2라인</a></li>
+      <li><a class="dropdown-item">세로3라인</a></li>
+      <li><a class="dropdown-item">세로4라인</a></li>
+      <li><a class="dropdown-item">세로5라인</a></li>
+      <li><a class="dropdown-item">세로6라인</a></li>
+      <li><a class="dropdown-item">세로7라인</a></li>
+    </ul>
   </div>
-
-  <div id="복사연습" class="absolute d-none" style="z-index: 1;left:800px;">
-
-  </div>
-
-  <div class="d-inline-block" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
-    <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
-  </div>
-  <div class="d-inline-block" id="세로구분_색칠45_간격당당첨" style="width:116px;background-color: white;">
-    <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
-  </div>
-  <div class="d-inline-block" id="세로구분_색칠45" style="width:1320px;background-color: white;">
-    <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
-  </div>
+</div>
+<div class="d-inline-block" id="세로구분_색칠45_간격" style="width:180px;background-color: white;">
+  <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
+</div>
+<div class="d-inline-block" id="세로구분_색칠45_간격당당첨" style="width:130px;background-color: white;">
+  <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
+</div>
+<div class="d-inline-block" id="세로구분_색칠45" style="width:1320px;background-color: white;">
+  <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
+  <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
+</div>
 </div>
 
 

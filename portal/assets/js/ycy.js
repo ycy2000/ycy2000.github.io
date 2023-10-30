@@ -621,10 +621,11 @@ if (1==1) {
       버튼들[i].removeAttribute('title');
     }
     for (var i=0; i<버튼들.length; i++) {
-      if (i%8==0) {
+      if (i%8==7) {
         if (번호들.filter(element => 버튼들[i].innerHTML === element).length==1) {
-          버튼들[i].classList.add('색칠용버튼');
-          버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+          // 보너스볼에 색칠 안함. 아래는 색칠할때
+          // 버튼들[i].classList.add('색칠용버튼');
+          // 버튼들[i].setAttribute('title',버튼들[i].innerHTML);
         }
       } else {
         if (번호들.filter(element => 버튼들[i].innerHTML === element).length==1) {
@@ -803,9 +804,6 @@ if (1==1) {
         모달다음당번버튼들[i].innerHTML='_';
       }
     }
-  
-  
-    
     // 15주번호들을 담고 7*10=70개를 0으로 대체하면 5주번호들, 35개를 0으로 대체하면 10주번호들, 대체하지 않으면 15주번호들
     var 오주번호들=[];
     var 십주번호들=[];
@@ -1079,6 +1077,17 @@ if (1==1) {
     document.querySelector('#li_색칠45보기숨기기').innerText='색칠45숨기기'
     }
   }
+  function header_dropdown_간격45보기숨기기() {
+    if (document.querySelector('#li_간격45보기숨기기').innerText=='간격45숨기기') {
+      document.querySelector('#세로구분_색칠45_간격').classList.add('d-none')
+      document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none')
+      document.querySelector('#li_간격45보기숨기기').innerText='간격45보기'
+    } else {
+      document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none')
+      document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none')
+      document.querySelector('#li_간격45보기숨기기').innerText='간격45숨기기'
+    }
+  }
   function 문서연결닫기() {
     document.querySelector('#선택문서셑팅하는곳').innerHTML='';
     document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
@@ -1107,10 +1116,11 @@ if (1==1) {
       버튼들[i].removeAttribute('title');
     }
     for (var i=0; i<버튼들.length; i++) {
-      if (i%8==0) {
+      if (i%8==7) {
         if (번호들.filter(element => 버튼들[i].innerHTML === element).length==1) {
-          버튼들[i].classList.add('색칠용버튼');
-          버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+          // 보너스볼에 색칠 안함. 아래는 색칠할때
+          // 버튼들[i].classList.add('색칠용버튼');
+          // 버튼들[i].setAttribute('title',버튼들[i].innerHTML);
         }
       } else {
         if (번호들.filter(element => 버튼들[i].innerHTML === element).length==1) {
