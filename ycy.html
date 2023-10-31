@@ -43,26 +43,6 @@
         <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            숨기기/보기
-          </a>
-          <ul class="dropdown-menu" style="width:300px;z-index: 100;">
-            <li>
-              <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline-block" style="width:200px;" 
-              onclick="header_dropdown_모달45보기숨기기()">모달번호45숨기기</a>
-            </li>
-            <li><a class="dropdown-item" onclick=" alert('화면넓이 : ' + document.body.clientWidth );">width</a></li>
-            <li><a class="dropdown-item" onclick="색칠_45()" style="width:80px; display:inline-block;">색칠_45</a>
-              <a id="li_색칠45보기숨기기" class="dropdown-item" onclick="header_dropdown_색칠45보기숨기기()" 
-              style="width:100px; display:inline-block;padding:0px;">색칠45숨기기</a>
-              <a id="li_간격45보기숨기기" class="dropdown-item" onclick="header_dropdown_간격45보기숨기기()" 
-              style="width:100px; display:inline-block;padding:0px;">간격45숨기기</a></li>
-            <!-- <li><hr class="dropdown-divider"></li> -->
-          </ul>
-        </li>
-        <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
-        <li class="nav-item dropdown me-2 d-inline-block ms-3">
-          <a class="active nav-link dropdown-toggle" href="#" 
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             코딩메모
           </a>
           <ul id="코딩메모_문서연결" class="dropdown-menu pb-1" style="width:1010px;left:-285px;">
@@ -87,6 +67,20 @@
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
+
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+          <div class="offcanvas-header p-1">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body small p-1" style="font-size: 16px;">
+            <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_모달45보기숨기기()">모달번호45숨기기</a>
+            <a class="dropdown-item d-inline" style="margin-right:5px;" onclick="색칠_45()">색칠_45실행</a>
+            <a id="li_색칠45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_색칠45보기숨기기()">색칠45숨기기</a>
+            <a id="li_간격45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_간격45보기숨기기()" >간격45숨기기</a>
+          </div>
+        </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent"><!-- 숨김버튼 누를때 나오는 것 -->
           <ul class="navbar-nav me-auto>
@@ -215,9 +209,9 @@
     <div id="전체당번"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
   </div>
   <div class="d-inline-block" id="세로구분_색칠45_원간격" style="width:175px;background-color: white;">
-    <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_원간격_당번"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 6개 --></div>
+    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로  원간격 글자--></div>
+    <div id="색칠45_원간격_당번"><!--innerhtml로 button 6개 --></div>
   </div>
   <div class="d-inline-block" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
     <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>

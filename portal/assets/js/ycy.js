@@ -87,6 +87,7 @@ if (1==1) {
   + document.querySelector('#색칠용modal-body').innerHTML;
   document.querySelector('#간격용modal-body').innerHTML= '<div>'
   + '간격번호'
+  + '<button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="간격번호색칠해제()">Clear</button>'
   + '</div>'
   +'<div>'
   + '<button>1</button> '
@@ -645,6 +646,13 @@ if (1==1) {
             버튼들[(index차이*8)].classList.add('색칠용버튼');
           }
   }
+  function 간격번호색칠해제() {
+    var 버튼들=document.querySelectorAll('#간격용modal-body button');
+    for (var i=0; i<버튼들.length; i++) {
+      버튼들[i].classList.remove('색칠용버튼');
+      버튼들[i].removeAttribute('title');
+    }
+  }
   function 현재색칠정보_click_색과정보초기화() {
     document.querySelector('#현재색칠정보').innerHTML='색칠할정보';
     document.querySelector('#현재색칠번호들').innerHTML='';
@@ -1201,6 +1209,7 @@ if (1==1) {
   var 리스너_색칠할번호선택_ul=document.querySelector('#색칠할번호선택_ul');
   var 리스너_모달번호들=document.querySelector('#색칠용modal-body');
   var 리스너_코딩메모문서연결=document.querySelector('#코딩메모_문서연결');
+  var 리스너_원간격버튼=document.querySelector('#세로구분_색칠45_원간격');
   
   function 리스너용모달번호각버튼색칠(e) {
     모달번호들=document.querySelectorAll('#색칠용modal-body button');
@@ -1231,7 +1240,58 @@ if (1==1) {
       document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
     }
   }
-  
+  function 리스너용원간격번호보기(e) {
+    간격번호색칠해제()
+    //클래스주고 몇번째인지 확인후 클래스 지운다
+    var 순번값;
+    var index_no;
+    var click_arr_no;
+    var 당번=[];
+    var 결과번호들=[];
+
+    e.target.classList.add('select');
+    //select 클래스 찾기 두군데서 각각 찾아본다.
+    for (var i=0; i<6; i++) {
+      if (document.querySelectorAll('#색칠45_원간격_있다면다음회차 button')[i].classList.contains('select')) {
+        순번값=i;
+      }
+    }
+    //있다면다음회차 클릭시 처리
+    if (순번값>-1) {
+      alert('순번값 : ' + 순번값 + '있다면다음회차클릭시'); e.target.classList.remove('select');
+      return;
+    }
+    //진행된다면 있다면다음회차 클릭이 아닌 경우다
+    for (var i=0; i<document.querySelectorAll('#색칠45_원간격_당번 button').length; i++) {
+      if (document.querySelectorAll('#색칠45_원간격_당번 button')[i].classList.contains('select')) {
+        순번값=i;
+      }
+    }
+    index_no=parseInt(순번값/6); //몫
+    click_arr_no=순번값%6; //나머지
+    //에러면 중단된다. 다시 하면 된다. 원간격 클릭시
+    당번=[];
+    for (var i=0; i<6; i++) {
+      당번.push(document.querySelectorAll('#전체당번 button')[index_no*8+1+i].innerHTML*1);
+    }
+    //0일때 마지막번호+1부터 45까지 순서대로 + 첫번호-1부터 1까지, 두번째부터는 현재번호+1부터 다음번호-1까지 push
+    if (click_arr_no==0) {
+
+    } else {
+
+    }
+    
+      alert('영보다크다 : ' + document.querySelectorAll('#전체당번 button')[index_no*8].innerHTML + 당번);
+
+
+ 
+      
+
+
+
+    e.target.classList.remove('select');
+  }
+  리스너_원간격버튼.addEventListener('click', 리스너용원간격번호보기); 
   리스너_코딩메모문서연결.addEventListener('click', 문서연결); 
   리스너_색칠할번호선택_ul.addEventListener('click',리스너용색칠할번호선택시색칠하기);
   리스너_모달번호들.addEventListener('click',리스너용모달번호각버튼색칠);
