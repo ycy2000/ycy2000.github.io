@@ -410,6 +410,18 @@ if (1==1) {
   }
   if (1==1) {새로고침시함수넣기();}
   if (1==1) {색칠_45();}
+  if (1==1) {//d-done 클래스 참조하여 보기 숨기기 innerHTML 설정
+    if (document.querySelector('#세로구분_색칠45_원간격').classList.contains('d-none')) {
+      document.querySelector('#li_간격45보기숨기기').innerText='간격45보기'
+    } else {
+      document.querySelector('#li_간격45보기숨기기').innerText='간격45숨기기'
+    }
+    if (document.querySelector('#세로구분_색칠45').classList.contains('d-none')) {
+      document.querySelector('#li_색칠45보기숨기기').innerText='색칠45보기'
+    } else {
+      document.querySelector('#li_색칠45보기숨기기').innerText='색칠45숨기기'
+    }
+  }
   
   function 색칠_45_간격당당첨빈버튼() {
     var 간격6html;
@@ -1122,26 +1134,35 @@ if (1==1) {
     document.querySelector('#li_모달번호45보기숨기기').innerText='모달번호45숨기기'
     }
   }
+  function header_dropdown_45간격과색칠보기() {
+    document.querySelector('#세로구분_색칠45').classList.remove('d-none');
+    document.querySelector('#li_색칠45보기숨기기').innerText='색칠45숨기기';
+
+    document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
+    document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none');
+    document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
+    document.querySelector('#li_간격45보기숨기기').innerText='간격45숨기기';
+  }
   function header_dropdown_색칠45보기숨기기() {
     if (document.querySelector('#li_색칠45보기숨기기').innerText=='색칠45숨기기') {
-      document.querySelector('#세로구분_색칠45').classList.add('d-none')
-      document.querySelector('#li_색칠45보기숨기기').innerText='색칠45보기'
+      document.querySelector('#세로구분_색칠45').classList.add('d-none');
+      document.querySelector('#li_색칠45보기숨기기').innerText='색칠45보기';
     } else {
     document.querySelector('#세로구분_색칠45').classList.remove('d-none');
-    document.querySelector('#li_색칠45보기숨기기').innerText='색칠45숨기기'
+    document.querySelector('#li_색칠45보기숨기기').innerText='색칠45숨기기';
     }
   }
   function header_dropdown_간격45보기숨기기() {
     if (document.querySelector('#li_간격45보기숨기기').innerText=='간격45숨기기') {
-      document.querySelector('#세로구분_색칠45_간격').classList.add('d-none')
-      document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none')
-      document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none')
-      document.querySelector('#li_간격45보기숨기기').innerText='간격45보기'
+      document.querySelector('#세로구분_색칠45_간격').classList.add('d-none');
+      document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none');
+      document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none');
+      document.querySelector('#li_간격45보기숨기기').innerText='간격45보기';
     } else {
-      document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none')
-      document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none')
-      document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none')
-      document.querySelector('#li_간격45보기숨기기').innerText='간격45숨기기'
+      document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
+      document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none');
+      document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
+      document.querySelector('#li_간격45보기숨기기').innerText='간격45숨기기';
     }
   }
   function 문서연결닫기() {
