@@ -62,7 +62,7 @@
             임시함수
           </a>
           <ul class="dropdown-menu" style="width:300px;">
-            <li><a class="dropdown-item" onclick="임시()">비어있음</a></li>
+            <li><a class="dropdown-item" onclick="임시()">임시()</a></li>
             <li><a class="dropdown-item" onclick="window.location.reload()">새로고침</a>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
@@ -75,11 +75,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body small p-1" style="font-size: 16px;">
-            <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_모달45보기숨기기()">모달번호45숨기기</a>
-            <a class="dropdown-item d-inline" style="margin-right:5px;" onclick="색칠_45()">색칠_45실행</a>
-            <a class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_45간격과색칠보기()" >45간격과색칠보기</a>
-            <a id="li_간격45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_간격45보기숨기기()" >간격45숨기기</a>
-            <a id="li_색칠45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_색칠45보기숨기기()">색칠45숨기기</a>
+            <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_모달45보기숨기기()">[1]모달번호45숨기기</a>
+            <a class="dropdown-item d-inline" style="margin-right:5px;border:1px solid black;padding:0px 4px;" onclick="색칠_45()">[2]색칠_45실행</a>
+            <a class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_45간격과색칠보기()">[2]45간격과색칠보기</a>
+            <a id="li_간격45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_간격45보기숨기기()">[2]간격45숨기기</a>
+            <a id="li_색칠45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_색칠45보기숨기기()">[2]색칠45숨기기</a>
+            <a class="dropdown-item d-inline" style="margin-right:5px;border:1px solid black;padding:0px 4px;" onclick="여러당번개수작성()">[3]여러당번개수_실행</a>
+            <a id="li_여러당번개수보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_여러당번개수보기숨기기()">[3]여러당번개수숨기기</a>
           </div>
         </div>
 
@@ -113,7 +115,7 @@
 <div style="white-space: nowrap;">
   <div class="d-inline-block" id="세로구분_색칠관련" style="background-color: white;margin-left:3px;">
 
-    <div style="width:240px;display: inline-block;">
+    <div style="width:235px;display: inline-block;">
       <div class="modal-header">
         <div class="d-inline-block" style="margin-left:-2px;">
           <!-- 모달번호45_있다면다음당번 : 처음에 고정값이고 새로고침후 번호선택 회차 바뀌면 새롭게 지정됨 -->
@@ -151,7 +153,7 @@
       </div>
     </div>
 
-    <div id="출수제목" style="width:180px;display: inline-block;vertical-align: top;">
+    <div id="출수제목" style="width:175px;display: inline-block;vertical-align: top;">
       <button onclick="오주전();">5</button>
       <button onclick="십주전();">10</button>
       <button onclick="십오주전();">15</button>
@@ -228,6 +230,59 @@
     <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
+  </div>
+
+  <div id="여러당번개수" class="d-inline-block d-none" style="vertical-align: top;">
+    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:88px;">5주미출</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
+      <div id="여러_오주미출버튼" class="고정btn"><!--innerhtml로 div안에 button 3개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:88px;">5주1출</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
+      <div id="여러_오주1출버튼" class="고정btn"><!--innerhtml로 div안에 button 3개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:88px;">5주2출</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
+      <div id="여러_오주2출버튼" class="고정btn"><!--innerhtml로 div안에 button 3개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:88px;">5주3출</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
+      <div id="여러_오주3출버튼" class="고정btn"><!--innerhtml로 div안에 button 3개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:88px;text-indent:-2px;">이웃수</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
+      <div id="여러_이웃수버튼" class="고정btn"><!--innerhtml로 div안에 button 3개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:30px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:30px;font-size: 14px;text-indent:-2px;">이월</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>이월</span></div>
+      <div id="여러_이월수버튼" class="고정btn"><!--innerhtml로 div안에 button 1개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:88px;text-indent:-2px;">이월+이웃수</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
+      <div id="여러_이월이웃수버튼" class="고정btn"><!--innerhtml로 div안에 button 3개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:144px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:144px;text-indent:-2px;">단번~40번대</button></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>단번</span><span style="margin-left:9px;">10</span><span style="margin-left:13px;">20</span><span style="margin-left:13px;">30</span><span style="margin-left:13px;">40</span></div>
+      <div id="여러_단번사십번버튼" class="고정btn"><!--innerhtml로 div안에 button 5개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:204px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:204px;text-indent:-2px;">가로라인</button></div>
+      <div style="margin-top:10px;margin-bottom:4px;"><span style="margin-left:9px;">1</span><span style="margin-left:20px;">2</span><span style="margin-left:20px;">3</span><span style="margin-left:20px;">4</span><span style="margin-left:20px;">5</span><span style="margin-left:20px;">6</span><span style="margin-left:20px;">7</span></div>
+      <div id="여러_가로라인버튼" class="고정btn"><!--innerhtml로 div안에 button 7개씩--></div>
+    </div>
+    <div class="d-inline-block" style="width:204px;background-color:white;vertical-align: top;">
+      <div class="고정btn"><button style="width:204px;text-indent:-2px;">가로라인</button></div>
+      <div style="margin-top:10px;margin-bottom:4px;"><span style="margin-left:9px;">1</span><span style="margin-left:20px;">2</span><span style="margin-left:20px;">3</span><span style="margin-left:20px;">4</span><span style="margin-left:20px;">5</span><span style="margin-left:20px;">6</span><span style="margin-left:20px;">7</span></div>
+      <div id="여러_세로라인버튼" class="고정btn"><!--innerhtml로 div안에 button 7개씩--></div>
+    </div>
   </div>
 </div>
 
