@@ -30,66 +30,8 @@ if (1==1) {
   + '<div id="세로5라인">5_12_19_26_33_40</div>'
   + '<div id="세로6라인">6_13_20_27_34_41</div>'
   + '<div id="세로7라인">7_14_21_28_35_42</div>'
-  document.querySelector('#색칠용modal-body').innerHTML='<div>'
-  + '<button>1</button> '
-  + '<button>2</button> '
-  + '<button>3</button> '
-  + '<button>4</button> '
-  + '<button>5</button> '
-  + '<button>6</button> '
-  + '<button>7</button> '
-  + '</div>'
-  + '<div>'
-  + '<button>8</button> '
-  + '<button>9</button> '
-  + '<button>10</button> '
-  + '<button>11</button> '
-  + '<button>12</button> '
-  + '<button>13</button> '
-  + '<button>14</button> '
-  + '</div>'
-  + '<div>'
-  + '<button>15</button> '
-  + '<button>16</button> '
-  + '<button>17</button> '
-  + '<button>18</button> '
-  + '<button>19</button> '
-  + '<button>20</button> '
-  + '<button>21</button> '
-  + '</div>'
-  + '<div>'
-  + '<button>22</button> '
-  + '<button>23</button> '
-  + '<button>24</button> '
-  + '<button>25</button> '
-  + '<button>26</button> '
-  + '<button>27</button> '
-  + '<button>28</button> '
-  + '</div>'
-  + '<div>'
-  + '<button>29</button> '
-  + '<button>30</button> '
-  + '<button>31</button> '
-  + '<button>32</button> '
-  + '<button>33</button> '
-  + '<button>34</button> '
-  + '<button>35</button> '
-  + '</div>'
-  + '<div>'
-  + '<button>36</button> '
-  + '<button>37</button> '
-  + '<button>38</button> '
-  + '<button>39</button> '
-  + '<button>40</button> '
-  + '<button>41</button> '
-  + '<button>42</button> '
-  + '</div>'
-  + document.querySelector('#색칠용modal-body').innerHTML;
-  document.querySelector('#간격용modal-body').innerHTML= '<div>'
-  + '간격번호'
-  + '<button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="간격번호색칠해제()">Clear</button>'
-  + '</div>'
-  +'<div>'
+
+  var 번호45html='<div>'
   + '<button>1</button> '
   + '<button>2</button> '
   + '<button>3</button> '
@@ -148,8 +90,14 @@ if (1==1) {
   + '<button>44</button> '
   + '<button>45</button> '
   + '</div>'
+  document.querySelector('#색칠용modal-body').innerHTML=번호45html+document.querySelector('#색칠용modal-body').innerHTML;
+  document.querySelector('#중복확인45버튼_1st').innerHTML= '<div>'
+  + '간격번호'
+  + '<button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="간격번호색칠해제()">Clear</button>'
+  + '</div>'
+  + 번호45html;
   }
-  //function 선택회차날짜와당번넣기() 코드와 새로고침시 코드가 같도록 코딩하기.
+  //152번째줄 !! function 선택회차날짜와당번넣기() 코드와 새로고침시 코드가 같도록 코딩하기.
   //너무 길어 숨기기 쉽게 if로 감쌌다.
   if (1==1) {
   var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
@@ -524,75 +472,230 @@ if (1==1) {
     var 전회차당번=[];
     var 이월수=[];
     var 이웃수=[];
-    var 이월플러스이웃수=[];
+    var 이월이웃수=[];
 
     var 오주미출개수=0;
     var 오주1출개수=0;
     var 오주2출개수=0;
     var 오주3출이상개수=0;
+    var 오주미출당개=0;
+    var 오주1출당개=0;
+    var 오주2출당개=0;
+    var 오주3출이상당개=0;
+    var 이월당개=0;
+    var 단번당개=0;
+    var 십번당개=0;
+    var 이십번당개=0;
+    var 삼십번당개=0;
+    var 사십번당개=0;
+    var 가로1당개=0;
+    var 가로2당개=0;
+    var 가로3당개=0;
+    var 가로4당개=0;
+    var 가로5당개=0;
+    var 가로6당개=0;
+    var 가로7당개=0;
+    var 세로1당개=0;
+    var 세로2당개=0;
+    var 세로3당개=0;
+    var 세로4당개=0;
+    var 세로5당개=0;
+    var 세로6당개=0;
+    var 세로7당개=0;
+    var 이웃당개=0;
+    var 이월이웃당개=0;
+    var 빼기추가;
+    var 더하기추가;
 
     var 전체당번button=document.querySelectorAll('#전체당번 button'); //8개중 2-7 6개번호(보볼제외)
 
     for (var 회차=0; 회차<95; 회차++) {
+      현재당번=[];
+      오주당번=[];
+      전회차당번=[];
+      이월수7=[];
+      이웃수=[];
+      이월이웃수=[];
+  
+      오주미출개수=0;
+      오주1출개수=0;
+      오주2출개수=0;
+      오주3출이상개수=0;
+      오주미출당개=0;
+      오주1출당개=0;
+      오주2출당개=0;
+      오주3출이상당개=0;
+      이월당개=0; //전회차당번이 현재당번에 몇개 있는지
+      단번당개=0;
+      십번당개=0;
+      이십번당개=0;
+      삼십번당개=0;
+      사십번당개=0;
+      가로1당개=0;
+      가로2당개=0;
+      가로3당개=0;
+      가로4당개=0;
+      가로5당개=0;
+      가로6당개=0;
+      가로7당개=0;
+      세로1당개=0;
+      세로2당개=0;
+      세로3당개=0;
+      세로4당개=0;
+      세로5당개=0;
+      세로6당개=0;
+      세로7당개=0;
+      이웃당개=0;
+      이월이웃당개=0;
+
       for (var i=0; i<48; i++) {
-        if (i%8==0 || i%8==7) {
+        if (i%8==0) {//i%8==0 || i%8==7 보볼제외시
           //첫번째 0 = 회차, 8번째 7 = 보볼
         } else {
-          if (i<8) { //2-7까지만 넣게됨
+          if (i<7) { //2-7까지만 넣게됨
             현재당번.push(전체당번button[(회차*8)+i].innerText*1)
           }
           if (i>7 && i<16) { //10-15까지만 넣게됨
             전회차당번.push(전체당번button[(회차*8)+i].innerText*1)
           }
-          if (i>16) { //10-15까지만 넣게됨
+          if (i>7) { //10-15까지만 넣게됨
             오주당번.push(전체당번button[(회차*8)+i].innerText*1)
           }
         }
       }
-      // for (var 사오=1; 사오<46; 사오++) {
-      //   console.log(사오 + ' 개수 : ' + 오주당번.filter(element => element*1 == 사오).length);
-      // }
+      이월수7=전회차당번;
+      이월이웃수=전회차당번;
+      for (i=0; i<7; i++) {
+        if (이월수7[i]==1) {
+          빼기추가=45;
+          더하기추가=2;
+        } else if (이월수7[i]==45) {
+          빼기추가=44;
+          더하기추가=1;
+        } else {
+          빼기추가=이월수7[i]-1;
+          더하기추가=이월수7[i]+1;
+        }
+        if (이월수7.filter(element => element*1 == 빼기추가).length==0) {
+          이웃수.push(빼기추가);
+          이월이웃수.push(빼기추가);
+        }
+        if (이월수7.filter(element => element*1 == 더하기추가).length==0) {
+          이웃수.push(더하기추가);
+          이월이웃수.push(더하기추가);
+        }
+      }
+      document.querySelectorAll('#여러_이웃수버튼 button')[(회차*3)].innerHTML=이웃수.length;
+      if ((7*이웃수.length)/45<1) {
+        document.querySelectorAll('#여러_이웃수버튼 button')[(회차*3)+1].innerHTML=((7*이웃수.length)/45).toPrecision(1);
+      } else {
+        document.querySelectorAll('#여러_이웃수버튼 button')[(회차*3)+1].innerHTML=((7*이웃수.length)/45).toPrecision(2);
+      }
+      document.querySelectorAll('#여러_이월이웃수버튼 button')[(회차*3)].innerHTML=이월이웃수.length;
+      if ((7*이월이웃수.length)/45<1) {
+        document.querySelectorAll('#여러_이월이웃수버튼 button')[(회차*3)+1].innerHTML=((7*이월이웃수.length)/45).toPrecision(1);
+      } else {
+        document.querySelectorAll('#여러_이월이웃수버튼 button')[(회차*3)+1].innerHTML=((7*이월이웃수.length)/45).toPrecision(2);
+      }
+      for (i=0; i<이웃수.length; i++) {
+        if (현재당번.filter(element => 이웃수[i]*1 == element).length==1) {이웃당개=이웃당개+1};
+      }
+      document.querySelectorAll('#여러_이웃수버튼 button')[회차*3+2].innerHTML=이웃당개;
+      for (i=0; i<이월이웃수.length; i++) {
+        if (현재당번.filter(element => 이월이웃수[i]*1 == element).length==1) {이월이웃당개=이월이웃당개+1};
+      }
+      document.querySelectorAll('#여러_이월이웃수버튼 button')[회차*3+2].innerHTML=이월이웃당개;
+
+
+
+      //5주미출,1,2,3출 작성중
       for (var 사오=1; 사오<46; 사오++) {
         if (오주당번.filter(element => element*1 == 사오).length==0) {
           오주미출개수=오주미출개수+1;
+          if (현재당번.filter(element => element*1 == 사오).length==1) {오주미출당개=오주미출당개+1};
         } else if (오주당번.filter(element => element*1 == 사오).length==1) {
           오주1출개수=오주1출개수+1;
+          if (현재당번.filter(element => element*1 == 사오).length==1) {오주1출당개=오주1출당개+1};
         } else if (오주당번.filter(element => element*1 == 사오).length==2) {
           오주2출개수=오주2출개수+1;
+          if (현재당번.filter(element => element*1 == 사오).length==1) {오주2출당개=오주2출당개+1};
         } else {
           오주3출이상개수=오주3출이상개수+1;
+          if (현재당번.filter(element => element*1 == 사오).length==1) {오주3출이상당개=오주3출이상당개+1};
         }
       }
       document.querySelectorAll('#여러_오주미출버튼 button')[(회차*3)].innerHTML=오주미출개수;
+      document.querySelectorAll('#여러_오주미출버튼 button')[(회차*3)+1].innerHTML=((7*오주미출개수)/45).toPrecision(2);
+      document.querySelectorAll('#여러_오주미출버튼 button')[(회차*3)+2].innerHTML=오주미출당개;
       document.querySelectorAll('#여러_오주1출버튼 button')[(회차*3)].innerHTML=오주1출개수;
+      document.querySelectorAll('#여러_오주1출버튼 button')[(회차*3)+1].innerHTML=((7*오주1출개수)/45).toPrecision(2);
+      document.querySelectorAll('#여러_오주1출버튼 button')[(회차*3)+2].innerHTML=오주1출당개;
       document.querySelectorAll('#여러_오주2출버튼 button')[(회차*3)].innerHTML=오주2출개수;
+      if ((7*오주2출개수)/45<1) {
+        document.querySelectorAll('#여러_오주2출버튼 button')[(회차*3)+1].innerHTML=((7*오주2출개수)/45).toPrecision(1);
+      } else {
+        document.querySelectorAll('#여러_오주2출버튼 button')[(회차*3)+1].innerHTML=((7*오주2출개수)/45).toPrecision(2);
+      }
+      document.querySelectorAll('#여러_오주2출버튼 button')[(회차*3)+2].innerHTML=오주2출당개;
       document.querySelectorAll('#여러_오주3출버튼 button')[(회차*3)].innerHTML=오주3출이상개수;
+      if ((7*오주3출이상개수)/45<1) {
+        document.querySelectorAll('#여러_오주3출버튼 button')[(회차*3)+1].innerHTML=((7*오주3출이상개수)/45).toPrecision(1);
+      } else {
+        document.querySelectorAll('#여러_오주3출버튼 button')[(회차*3)+1].innerHTML=((7*오주3출이상개수)/45).toPrecision(2);
+      }
+      document.querySelectorAll('#여러_오주3출버튼 button')[(회차*3)+2].innerHTML=오주3출이상당개;
+      //이월,이웃,이월+이웃수작성중
+      for (i=0; i<7; i++) {
+        if (현재당번.filter(element => 전회차당번[i]*1 == element).length==1) {이월당개=이월당개+1};
+      }
+      document.querySelectorAll('#여러_이월수버튼 button')[회차].innerHTML=이월당개;
+      //단번~40번대 : 단번대9, 1,2,3십번대 10, 40번대 6
+      for (i=0; i<10; i++) {
+        if (i<9 && 현재당번.filter(element => 단번대[i] == element).length==1) {단번당개=단번당개+1}
+        if (i<10 && 현재당번.filter(element => 십번대[i] == element).length==1) {십번당개=십번당개+1}
+        if (i<10 && 현재당번.filter(element => 이십번대[i] == element).length==1) {이십번당개=이십번당개+1}
+        if (i<10 && 현재당번.filter(element => 삼십번대[i] == element).length==1) {삼십번당개=삼십번당개+1}
+        if (i<6 && 현재당번.filter(element => 사십번대[i] == element).length==1) {사십번당개=사십번당개+1}
+      }
+      document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5].innerHTML=단번당개;
+      document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5+1].innerHTML=십번당개;
+      document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5+2].innerHTML=이십번당개;
+      document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5+3].innerHTML=삼십번당개;
+      document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5+4].innerHTML=사십번당개;
+      //가로,세로라인
+      for (i=0; i<7; i++) {
+        if (현재당번.filter(element => 가로1라인[i] == element).length==1) {가로1당개=가로1당개+1}
+        if (현재당번.filter(element => 가로2라인[i] == element).length==1) {가로2당개=가로2당개+1}
+        if (현재당번.filter(element => 가로3라인[i] == element).length==1) {가로3당개=가로3당개+1}
+        if (현재당번.filter(element => 가로4라인[i] == element).length==1) {가로4당개=가로4당개+1}
+        if (현재당번.filter(element => 가로5라인[i] == element).length==1) {가로5당개=가로5당개+1}
+        if (현재당번.filter(element => 가로6라인[i] == element).length==1) {가로6당개=가로6당개+1}
+        if (현재당번.filter(element => 가로7라인[i] == element).length==1) {가로7당개=가로7당개+1}
+        if (현재당번.filter(element => 세로1라인[i] == element).length==1) {세로1당개=가로1당개+1}
+        if (현재당번.filter(element => 세로2라인[i] == element).length==1) {세로2당개=가로2당개+1}
+        if (현재당번.filter(element => 세로3라인[i] == element).length==1) {세로3당개=가로3당개+1}
+        if (현재당번.filter(element => 세로4라인[i] == element).length==1) {세로4당개=가로4당개+1}
+        if (현재당번.filter(element => 세로5라인[i] == element).length==1) {세로5당개=가로5당개+1}
+        if (현재당번.filter(element => 세로6라인[i] == element).length==1) {세로6당개=가로6당개+1}
+        if (현재당번.filter(element => 세로7라인[i] == element).length==1) {세로7당개=가로7당개+1}
+      }
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7].innerHTML=가로1당개;
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7+1].innerHTML=가로2당개;
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7+2].innerHTML=가로3당개;
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7+3].innerHTML=가로4당개;
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7+4].innerHTML=가로5당개;
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7+5].innerHTML=가로6당개;
+      document.querySelectorAll('#여러_가로라인버튼 button')[회차*7+6].innerHTML=가로7당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7].innerHTML=세로1당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7+1].innerHTML=세로2당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7+2].innerHTML=세로3당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7+3].innerHTML=세로4당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7+4].innerHTML=세로5당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7+5].innerHTML=세로6당개;
+      document.querySelectorAll('#여러_세로라인버튼 button')[회차*7+6].innerHTML=세로7당개;
 
-      console.log('오주미출개수 : ' + 오주미출개수 + '\n오주1출개수 : ' + 오주1출개수 
-      + '\n오주2출개수 : ' + 오주2출개수 + '\n오주3출이상개수 : ' + 오주3출이상개수);
 
 
-      오주미출개수=0;
-      오주1출개수=0;
-      오주2출개수=0;
-      오주3출이상개수=0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      현재당번=[];
-      전회차당번=[];
-      오주당번=[];
 
     }
 
@@ -603,11 +706,15 @@ if (1==1) {
 
 
 
-    if (document.querySelector('#여러당번개수').classList.contains('d-none')) {
-      document.querySelector('#여러당번개수').classList.remove('d-none')
-    }
-    document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수숨기기';
-   alert('완료');
+
+
+
+        //내부에 개별적으로 숨긴것은 복원이 안되므로 개별적으로 다 복구해놓기
+        document.querySelector('#여러당번개수').classList.remove('d-none');
+        document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+        for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
+          document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
+        }
   }
   function 색칠_45_간격() {
     //추가:1==>01형태로 13_3 형태로 간격_다음회차 간격번호에 당첨개수 형태로 정렬후 간격부분과 당첨개수부분으로 뿌리기
@@ -726,7 +833,8 @@ if (1==1) {
    document.querySelector('#세로구분_색칠45').classList.remove('d-none');
    document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
    document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
-   alert('완료');
+   document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두숨기기';
+
   }
   function 색칠_45() {
     var 버튼45html;
@@ -1067,12 +1175,12 @@ if (1==1) {
     
     for (var i=시작배열값; i<Number(시작배열값+135);i++ ) {
       순번확인=순번확인+1;
-      if (순번확인>2) {
+      if (순번확인>2) {//(순번확인>2)에서 변경
         십오주번호들.push(당번전체[i]);
       }
       if (순번확인==9) {순번확인=0;}
     }
-    
+   
     for (i=0; i<십오주번호들.length; i++) {
       if (i<70) {
         오주번호들.push(0);
@@ -1259,10 +1367,6 @@ if (1==1) {
     document.querySelector('#색칠용회차select').selectedIndex=
     document.querySelector('#회차select').selectedIndex+20;모달회차_change();셑팅번호_모달에색칠();
   }
-  function 삼십주전() {
-    document.querySelector('#색칠용회차select').selectedIndex=
-    document.querySelector('#회차select').selectedIndex+30;모달회차_change();셑팅번호_모달에색칠();
-  }
   function 출_출수제목_click시_숫자개수와평균() {
     document.querySelector('#평균계산값').innerHTML='';
     var 숫자개수=document.querySelector('#현재색칠번호들').innerHTML.trim().split('_').length;
@@ -1295,14 +1399,24 @@ if (1==1) {
     document.querySelector('#li_모달번호45보기숨기기').innerText='[1]모달번호45숨기기'
     }
   }
-  function header_dropdown_45간격과색칠보기() {
-    document.querySelector('#세로구분_색칠45').classList.remove('d-none');
-    document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
-
-    document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
-    document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none');
-    document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
-    document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
+  function header_dropdown_45간격과색칠모두보기숨기기() {
+    if (document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML=='[2]45간격과색칠모두보기') {
+      document.querySelector('#세로구분_색칠45').classList.remove('d-none');
+      document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
+      document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
+      document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none');
+      document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
+      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
+      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두숨기기';
+    } else if (document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML=='[2]45간격과색칠모두숨기기') {
+      document.querySelector('#세로구분_색칠45').classList.add('d-none');
+      document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45보기';
+      document.querySelector('#세로구분_색칠45_간격').classList.add('d-none');
+      document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none');
+      document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none');
+      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45보기';
+      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두보기';
+    }
   }
   function header_dropdown_색칠45보기숨기기() {
     if (document.querySelector('#li_색칠45보기숨기기').innerText=='[2]색칠45숨기기') {
@@ -1327,13 +1441,24 @@ if (1==1) {
     }
   }
   function header_dropdown_여러당번개수보기숨기기() {
-    if (document.querySelector('#li_여러당번개수보기숨기기').innerText=='[3]여러당번개수숨기기') {
+    if (document.querySelector('#li_여러당번개수보기숨기기').innerText=='[3]여러당번개수모두숨기기') {
       document.querySelector('#여러당번개수').classList.add('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수보기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두보기';
     } else {
+      //내부에 개별적으로 숨긴것은 복원이 안되므로 개별적으로 다 복구해놓기
       document.querySelector('#여러당번개수').classList.remove('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수숨기기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+      for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
+        document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
+      }
     }
+  }
+  function header_dropdown_여러당번개수보기만() {
+      document.querySelector('#여러당번개수').classList.remove('d-none');
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+      for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
+        document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
+      }
   }
   function 문서연결닫기() {
     document.querySelector('#선택문서셑팅하는곳').innerHTML='';
@@ -1401,6 +1526,7 @@ if (1==1) {
   var 리스너_모달번호들=document.querySelector('#색칠용modal-body');
   var 리스너_코딩메모문서연결=document.querySelector('#코딩메모_문서연결');
   var 리스너_원간격버튼=document.querySelector('#세로구분_색칠45_원간격');
+  var 리스너_여러당번개수각각숨기기=document.querySelector('#여러당번개수');
   
   function 리스너용모달번호각버튼색칠(e) {
     모달번호들=document.querySelectorAll('#색칠용modal-body button');
@@ -1482,7 +1608,11 @@ if (1==1) {
 
     e.target.classList.remove('select');
   }
+  function 리스너용여러당번개수각각숨기기(e) {
+    if (e.target.classList.contains('클릭시숨기기')) {e.target.parentNode.parentNode.classList.add('d-none')}
+  }
   리스너_원간격버튼.addEventListener('click', 리스너용원간격번호보기); 
   리스너_코딩메모문서연결.addEventListener('click', 문서연결); 
   리스너_색칠할번호선택_ul.addEventListener('click',리스너용색칠할번호선택시색칠하기);
   리스너_모달번호들.addEventListener('click',리스너용모달번호각버튼색칠);
+  리스너_여러당번개수각각숨기기.addEventListener('click',리스너용여러당번개수각각숨기기);
