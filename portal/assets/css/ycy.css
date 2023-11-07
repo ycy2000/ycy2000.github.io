@@ -54,7 +54,7 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #모달번호45_있다면다음당번 {margin-left:2px;}
 #세로구분_색칠관련 #색칠용modal-body > div > button:not([type='button']),
 #세로구분_색칠관련 #모달번호45_있다면다음당번 > button,
-#중복확인45버튼_1st button
+#세로구분_중복확인45들 > div > div > button
 {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-5px;margin-bottom:-1px;}
 #세로구분_색칠관련 #모달번호45_있다면다음당번 > button {margin-right:-1px;}/*있다면다음당번*/
 #세로구분_색칠관련 > div > div > div > select {margin-left:2px; height:30px;}/*#회차select*/
@@ -65,7 +65,7 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #세로구분_색칠관련 #색칠용modal-body > div > a {padding:0 5px; width:25px;}/*+,-*/
 #세로구분_색칠관련 #색칠용modal-body > div > a:nth-of-type(1) {margin-left:5px;}/*+*/
 
-#중복확인45버튼_1st > div > button:nth-child(2) {margin-right:-6px;}/*45개버튼중 3번째 세로에 폭을 좀 더 줄여야할때... 기본 -5px인데 ... -6으로*/
+#세로구분_중복확인45들 > div > div > button:nth-child(2) {margin-right:-6px;}/*45개버튼중 3번째 세로에 폭을 좀 더 줄여야할때... 기본 -5px인데 ... -6으로*/
 /*#세로구분_색칠관련 #색칠용modal-body > div > button:nth-of-type(4) {margin-right:-6px;}45개번호들*/
 
 #세로구분_색칠관련 #현재색칠정보 {margin-top:5px;}

@@ -96,7 +96,18 @@ if (1==1) {
   + '<button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="간격번호색칠해제()">Clear</button>'
   + '</div>'
   + 번호45html;
+  document.querySelector('#중복확인45버튼_2st').innerHTML= '<div>'
+  + '간격번호'
+  + '<button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="간격번호색칠해제()">Clear</button>'
+  + '</div>'
+  + 번호45html;
+  document.querySelector('#중복확인45버튼_3st').innerHTML= '<div>'
+  + '간격번호'
+  + '<button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="간격번호색칠해제()">Clear</button>'
+  + '</div>'
+  + 번호45html;
   }
+  
   //152번째줄 !! function 선택회차날짜와당번넣기() 코드와 새로고침시 코드가 같도록 코딩하기.
   //너무 길어 숨기기 쉽게 if로 감쌌다.
   if (1==1) {
