@@ -35,7 +35,8 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 .버튼두개흰색 div button:last-child {background-color:rgb(221, 197, 197);}
 #여러_가로라인버튼 button, #여러_세로라인버튼 button {width:20px;}
 
-#세로구분_당첨번호들 > div > div,  #세로구분_색칠45 > div > div, #세로구분_색칠45_간격 > div > div, #세로구분_색칠45_원간격 > div > div, #세로구분_색칠45_간격당당첨 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
+#세로구분_당첨번호들 > div > div,  #세로구분_색칠45 > div > div, #세로구분_색칠45_간격 > div > div, 
+#세로구분_색칠45_원간격 > div > div, #세로구분_색칠45_간격당당첨 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
 /* #세로구분_당첨번호들 안에 첫번째 div : 1)있다면다음회차 2)회차날짜조회묶음 3)전체당번,이 안의 div안에 버튼있음*/
 #세로구분_당첨번호들 > div:nth-child(1) > button:nth-of-type(1), /*#있다면다음회차*/
 #세로구분_당첨번호들 > div:nth-child(2) > button:nth-of-type(1), /*#회차날짜조회묶음*/
@@ -55,18 +56,17 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #세로구분_색칠관련 #색칠용modal-body > div > button:not([type='button']),
 #세로구분_색칠관련 #모달번호45_있다면다음당번 > button,
 #세로구분_중복확인45들 > div > div > button
-{vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-5px;margin-bottom:-1px;}
+{vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
 #세로구분_색칠관련 #모달번호45_있다면다음당번 > button {margin-right:-1px;}/*있다면다음당번*/
 #세로구분_색칠관련 > div > div > div > select {margin-left:2px; height:30px;}/*#회차select*/
 #세로구분_색칠관련 > div > div > div > #모달_출수제목보기숨기기 {width:30px;margin-top:-1px;margin-left:6px;}/*<,>*/
-#세로구분_색칠관련 #색칠용modal-body > div > button:nth-of-type(4) {margin-right:-6px;}/*45개번호들*/
+#세로구분_색칠관련 #색칠용modal-body > div > button:nth-of-type(4) {margin-right:-1px;}/*45개번호들*/
 #세로구분_색칠관련 #색칠용modal-body button[type='button'] {width:30px;height:30px;margin-right:-5px;margin-bottom:-1px;}
 #세로구분_색칠관련 #색칠용modal-body input[type='text'] {vertical-align: bottom;font-size: 15px; display:inline-block; width:34px;height:30px;}
 #세로구분_색칠관련 #색칠용modal-body > div > a {padding:0 5px; width:25px;}/*+,-*/
 #세로구분_색칠관련 #색칠용modal-body > div > a:nth-of-type(1) {margin-left:5px;}/*+*/
 
-#세로구분_중복확인45들 > div > div > button:nth-child(2) {margin-right:-6px;}/*45개버튼중 3번째 세로에 폭을 좀 더 줄여야할때... 기본 -5px인데 ... -6으로*/
-/*#세로구분_색칠관련 #색칠용modal-body > div > button:nth-of-type(4) {margin-right:-6px;}45개번호들*/
+
 
 #세로구분_색칠관련 #현재색칠정보 {margin-top:5px;}
 #세로구분_색칠관련 #현재색칠번호들 {background-color: aqua;width:235px;word-break: break-all;}
