@@ -15,6 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <style>
   #main사이드 {background-color: aqua;margin-left:3px;width:300px;height:1000px;vertical-align: top;}
+  .a_형식 {color:chocolate;text-decoration: underline;}
+  #black리스너용 > div > li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -86,9 +88,14 @@
 
 <div style="white-space: nowrap;" id="black리스너용">
   <div class="d-inline-block" id="main사이드" style="vertical-align: top;">
+    <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
+    <li class="파일연결" title="계획정보">계획정보</li>
+    <li class="서브리스트연결" title="List_무역선에서중범점진_용맹재료">List_무역선에서 중범(점진,용맹) 재료</li>
+    <li class="파일연결" title="무역선에서중범점진만들때필요한파템강화"><span class="a_형식">파템강화 : </span>무역선에서 중범선 점진 만들때 필요한 파템 강화 방법</li>
+    <li class="파일연결" title="콕스해적단의유물전투파밍시">콕스해적단의유물(전투)파밍시</li>
     <li class="서브리스트연결" title="List_대양">List_대양</li>
-    <li class="파일연결" title="대양_선원관리">선원관리</li>
-    <li class="파일연결" title="대양_선원성장스탯정보">선원성장스탯정보</li>
+    <li class="파일연결" title="대양_선원관리">대양_선원관리</li>
+    <li class="파일연결" title="대양_선원성장스탯정보">대양_선원성장스탯정보</li>
   </div>
   <div id="서브리스트가져오는곳" class="d-inline-block d-none" style="vertical-align: top;width:200px;height:1000px;background-color: aqua;">
     <button style="margin-bottom:7px;" onclick="document.querySelector('#서브리스트가져오는곳').classList.add('d-none');">닫기</button>
@@ -97,8 +104,31 @@
     <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">닫기</button>
   </div>
 </div>
-
+<!-- list가 있는것들 -->
 <div id="sublist숨김" style="display:none;">
+  <div id="List_무역선에서중범점진_용맹재료">
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_모든재료요약">모든재료요약 : 무역선에서 중범점진_용맹재료</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_홍조빛해저단괴">(90)홍조빛해저단괴</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_심해초줄기">(205)심해초줄기</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_순수한암초조각">(180)순수한 암초 조각</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_순수한진주결정">(45)순수한 진주 결정</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_파도빛이감도는규격각목">(180)파도빛이 감도는 규격 각목</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_콕스해적단의유물">콕스해적단의유물[연결]</li>
+    <li>(120)콕스해적단의유물 전투</li>
+    <li>(30)콕스해적단의유물 상급</li>
+    <li>(60)콕스해적단의유물 하급</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_짙은파도빛이감도는규격각목">(144)짙은 파도빛이 감도는 규격각목</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_강화된섬나무증착합판">(300)강화된 섬나무 증착합판</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_대양의견고한현철">(150)대양의 견고한 현철</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_빛나는코발트주괴">(30)빛나는 코발트 주괴</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_달의비늘이새겨진합판">(400)달의 비늘이 새겨진 합판</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_달의핏줄이새겨진아마포">(180)달의 핏줄이 새겨진 아마포</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_심해의눈물">(42)심해의 눈물</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_화려한암염주괴">(35)화려한 암염 주괴</li>
+    <li class="파일연결" title="무역선에서중범점진_용맹재료_화려한진주결정">(35)화려한 진주 결정</li>
+
+  </div>
+
   <div id="List_대양">
     <li class="파일연결" title="대양_선원관리">선원고용</li>
     <li class="파일연결" title="대양_선원성장스탯정보">선원성장스탯정보</li>
@@ -112,12 +142,103 @@
     <li>0</li>
   </div>
 </div>
+<!-- 개별 결과파일들 -->
 <div id="문서정보숨김" style="display:none;">
+  <div id="콕스해적단의유물전투파밍시">
+    <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=23474" target="_blank">콕스해적단의유물(전투)파밍시</a></li>
+    <img src="portal/images/black_문서/콕스해적단의유물파밍시.png" alt="이미지없음">
+  </div>
+  <div id="계획정보">
+    <img src="portal/images/black_문서/계획정보.png" alt="이미지없음">
+  </div>
+  <div id="무역선에서중범점진_용맹재료_모든재료요약">
+    <h5>▢ 무역선에서중범점진_용맹재료_모든재료요약</h5>
+    <li>(90)홍조빛 해저 단괴 : 오킬루아의 눈 [일일] 어린 해달 상인들을 위해, 산호조각 10개 전달 : 홍조빛 해저단괴2개, 오킬루아 기념주화1개.</li>
+    <li>(205)심해초 줄기 : 오킬루아의 눈 [일일]고귀한 산호초 조각 (오색빛 산호 조각 1개 전달하기)[오색산호가 아닌 점박이산호 또는 나팔산호를 채집할때 부수적으로 얻을 수 있다]
+      <h6 style="text-indent: 23px;"><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=24844" target="_blank">파푸아크리니에 점박이산호와 나팔산호 많다.</a></h6>
+    </li>
+    <li>(180)순수한 암초 조각 : 오킬루아의 눈 [일일]라비켈의 시험 (물물교환 5회)
+      <h6 style="text-indent: 23px;">순수한 진주 결정 2개, 심해의 기억이 담긴 아교 8개, 순수한 암초 조각 8개 중 ★택1★</h6>
+    </li>
+    <li>(45)순수한 진주 결정 : 오킬루아의 눈 [일일]라비켈의 시험 (물물교환 5회)
+      <h6 style="text-indent: 23px;">순수한 진주 결정 2개, 심해의 기억이 담긴 아교 8개, 순수한 암초 조각 8개 중 ★택1★</h6>
+    </li>
+    <li><span class="a_형식">선행퀘</span>(180)파도빛이 감도는 규격 각목 : 오킬루아의 눈 [일일] 길드는 자선 단체가 아니다 (남쪽 어린 해왕류 처치 2마리)
+      <h6 style="text-indent: 23px;">확정 : 파도빛이 감도는 규격 각목 3개, 오킬루아 기념주화1</h6>
+    </li>
+    <li><span class="a_형식">선행퀘</span>(120)콕스 해적단의 유물 전투 : 해양괴수 처치, 물물교환(4,5단계 교역품), [탐색]섬 주민의 요청 랜덤
+      <h6 style="text-indent: 23px;">오킬루아의 눈의 병사 [일일]제 몸 하나는 스스로 지켜야 (북동쪽 해카루 쫒아내기)</h6>
+      <h6 style="text-indent: 23px;">확정 : 콕스 해적단의 유물(전투) 3개, 오킬루아 기념주화1</h6>
+    </li>
+    <li>(30)콕스 해적단의 유물 상급 : 해양괴수 처치, 물물교환(4단계 교역품), [탐색]섬 주민의 요청 랜덤
+      <h6 style="text-indent: 23px;">오킬루아의 눈 [일일]세렌디아 병사들을 위한 마음 (물물교환 10회), [일일]라비켈의 시험 (물물교환 5회) 끝나고 수주</h6>
+      <h6 style="text-indent: 23px;">강화된 섬나무 증착합판 10개, 유물 상급 1개 ★택1★, 오킬루아 기념주화1</h6>
+    </li>
+    <li>(60)[교역출]콕스 해적단의 유물 하급 : 해양괴수 처치, 물물교환(2단계 교역품), [탐색]섬 주민의 요청 랜덤</li>
+    <li><span class="a_형식">선행퀘</span>(144)짙은 파도빛이 감도는 규격각목 : 오킬루아의 눈 [일일]너도 좋고, 나도 좋고 (북서쪽 표류추적자 쫒아내기)
+      <h6 style="text-indent: 23px;">확정 : 짙은 파도빛이 감도는 규격각목 3개, 오킬루아 기념주화1</h6>
+    </li>
+    <li><span class="a_형식">후행퀘</span>(300)강화된 섬나무 증착합판 : 오킬루아의 눈 [일일]세렌디아 병사들을 위한 마음 (물물교환 10회), [일일]라비켈의 시험 (물물교환 5회) 끝나고 수주
+      <h6 style="text-indent: 23px;">강화된 섬나무 증착합판 10개, 유물 상급 1개 ★택1★, 오킬루아 기념주화1</h6>
+    </li>
+    <li>(150)[교역출]대양의 견고한 현철</li>
+    <li>(30)[교역출]빛나는 코발트 주괴</li>
+    <li><span class="a_형식">후행퀘</span>(400)달의 비늘이 새겨진 합판 : 오킬루아의 눈 [일일] 그믐달 길드의 칸디둠 사냥꾼
+      <h6 style="text-indent: 23px;">확정 : 달의 비늘이 새겨진 합판 10, 오킬루아 기념주화1</h6>
+      <h6 style="text-indent: 23px;">[일일]길드는 자선 단체가 아니다, [일일]제 몸 하나는 스스로 지켜야, [일일]너도 좋고, 나도 좋고 의뢰 완료후에 수주 가능</h6>
+      <h6 style="text-indent: 23px;">[일일] 그믐달 길드의 칸디둠 사냥꾼, [일일] 그믐달 어린 칸디둠 사냥꾼(달의 비늘이 새겨진 합판 5개) 중 택1</h6>
+    </li>
+
+    <li><span class="a_형식">후행퀘</span>(180)달의 핏줄이 새겨진 아마포 : 오킬루아의 눈 [일일]그믐달 길드의 나인샤크 사냥꾼
+      <h6 style="text-indent: 23px;">확정 : 달의 핏줄이 새겨진 아마포 3개, 오킬루아 기념주화1</h6>
+      <h6 style="text-indent: 23px;">[일일]길드는 자선 단체가 아니다, [일일]제 몸 하나는 스스로 지켜야, [일일]너도 좋고, 나도 좋고 의뢰 완료후에 수주 가능</h6>
+      <h6 style="text-indent: 23px;">[일일]그믐달 길드의 나인샤크 사냥꾼, [일일]그믐달 어린 나인샤크 사냥꾼(달의 핏줄이 새겨진 아마포 1개) 중 택1</h6>
+    </li>
+
+    <li><span class="a_형식">후행퀘</span>(42)심해의 눈물 : 오킬루아의 눈 [일일]그믐달 길드의 검은무쇠이빨 사냥꾼
+      <h6 style="text-indent: 23px;">확정 : 심해의 눈물 1, 오킬루아 기념주화1</h6>
+      <h6 style="text-indent: 23px;">[일일]길드는 자선 단체가 아니다, [일일]제 몸 하나는 스스로 지켜야, [일일]너도 좋고, 나도 좋고 의뢰 완료후에 수주 가능</h6>
+      <h6 style="text-indent: 23px;">[일일]그믐달 길드의 검은무쇠이빨 사냥꾼, [일일]그믐달 길드의 검은무쇠이빨 사냥꾼(심해의 원석 1[2개 간이연금시 눈물1개]) 중 택1</h6>
+    </li>
+    <li>(35)[교역출:3000부터뜸]화려한 암염주괴</li>
+    <li>(35)[교역출:3000부터뜸]화려한 진주 결정</li>
+  </div>
+
+  <div id="무역선에서중범점진만들때필요한파템강화">
+    <h5>▢ 무역선에서 중범 점진 만들때 필요한 파템 강화 방법</h5>
+    <li>흑룡선수상, 개량형 장갑, 메이나 함포, 비층 바람 돛 각각 만들때 4종을 사서 재료넣고 에페리아에서 제작돌려야함.</li>
+    <img src="portal/images/black_문서/중범선파템재료구매.png" alt="이미지없음">
+    <br><br>
+    <h6 style="text-indent: 23px;">1~5강은 온기를 품은 블랙스톤 : <span class="a_형식">까마귀 주화 10주화로 구매, 2~4단계 해상 교역품 물물교환</span></h6>
+    <h6 style="text-indent: 23px;">6~10강은 한기가 서린 블랙스톤 : <span class="a_형식">까마귀 주화 20주화로 구매, 2~4단계 해상 교역품 물물교환</span></h6>
+    <h6 style="text-indent: 23px;">스탯넣고 직강하자. 하강이 없다.</h6>
+    <h5>▢ 강화 정보</h5>
+    <img src="portal/images/black_문서/중범선파템강화정보.png" alt="이미지없음">
+    <br><br><br><br><br>
+  </div>
+  
+
+  <div id="무역선에서중범점진_용맹재료_콕스해적단의유물">
+    <img src="portal/images/black_문서/콕스해적단의유물.png" alt="이미지없음">
+    <br>
+    <li>점진/용맹 필요개수 => 전투 : 120 / 250, 상급 : 30 / 30, 하급 : 60 / 60</li>
+    <li>해양괴수 처치</li>
+    <li><a href="https://ashasleti.tistory.com/1203" target="_blank">탐색이란? : 쿨타임 20분,</a></li>
+    <li>탐색을 누르면 [탐색]섬 주민의 요청 [탐색]섬 아이의 요청 </li>
+    <li>퀘스트로 까마귀주화 획득, 홍조빝 해저 단괴, 파도빛이 감도는 규격각목, 빛나는 코발트 주괴</li>
+    <li>[탐색]표류자의 요청 퀘스트로 심해초 줄기, 순수한 암초 조각(O), 코발트 주괴(X)</li>
+    <li>퀘완료 위치</li>
+    <br>
+    <img src="portal/images/black_문서/탐색퀘완료위치.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/black_문서/탐색했을때.png" alt="이미지없음">
+
+
+  </div>
   <div id="대양_선원관리">
     <li>https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=26995</li>
-    <li class="">선원관리</li>
+    <li>선원관리</li>
     <img src="portal/images/black_문서/대양_선원.png" alt="이미지없음">
-    <br>
     <img src="portal/images/black_문서/대양_선원2.png" alt="이미지없음">
   </div>
   <div id="대양_선원성장스탯정보">

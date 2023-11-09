@@ -150,6 +150,7 @@
         </div>
         <div id="현재색칠번호들" style="white-space:normal"></div>
       </div>
+      <div onclick="번호참조체크된곳에색칠()">※번호참조체크된곳에색칠</div>
       <br><br>
 
     </div>
@@ -200,10 +201,10 @@
         <div class="form-check d-inline-block">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
           <label class="form-check-label" for="flexCheckDefault1">
-            번호참조 색칠
+            번호참조색칠
           </label>
         </div>
-        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" 
+        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:-5px;" 
         type="button" class="btn btn-secondary p-0" onclick="중복확인45버튼_1st_색칠해제()">Clear</button>
       </div>
     </div>
@@ -212,10 +213,10 @@
         <div class="form-check d-inline-block">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
           <label class="form-check-label" for="flexCheckDefault2">
-            번호참조 색칠
+            번호참조색칠
           </label>
         </div>
-        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" 
+        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:-5px;" 
         type="button" class="btn btn-secondary p-0" onclick="중복확인45버튼_2st_색칠해제()">Clear</button>
       </div>
     </div>
@@ -224,10 +225,10 @@
         <div class="form-check d-inline-block">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
           <label class="form-check-label" for="flexCheckDefault3">
-            번호참조 색칠
+            번호참조색칠
           </label>
         </div>
-        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:5px;" 
+        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:-5px;" 
         type="button" class="btn btn-secondary p-0" onclick="중복확인45버튼_3st_색칠해제()">Clear</button>
       </div>
     </div>
@@ -253,17 +254,17 @@
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45_원간격" style="width:175px;background-color: white;">
     <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 6개 --></div>
-    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로  원간격 글자--></div>
+    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;" onclick="document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none')"><!--innerhtml로  원간격 글자--></div>
     <div id="색칠45_원간격_당번"><!--innerhtml로 button 6개 --></div>
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
     <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;" onclick="document.querySelector('#세로구분_색칠45_간격').classList.add('d-none')"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45_간격당당첨" style="width:116px;background-color: white;">
     <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;" onclick="document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none')"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45" style="width:1320px;background-color: white;">

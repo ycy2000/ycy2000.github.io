@@ -340,7 +340,7 @@ if (1==1) {
       document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수45숨기기'
     }
   }
-  
+  // ★★ 버튼 눌렀을때 번호들 가져오기
   function 색칠_45_간격당당첨빈버튼() {
     var 간격6html;
     var 간격;
@@ -1502,16 +1502,28 @@ if (1==1) {
     }
     출_출수제목_click시_숫자개수와평균();
   }
+  function 번호참조체크된곳에색칠() {
+    var 숫자들=document.querySelector('#현재색칠번호들').innerHTML.trim().split('_');
+    //글자없어도 숫자들.length=1
+    //
+    if (숫자들[0]>0) {
+      alert('숫자들[0] : ' + 숫자들[0] + ' ,영보다크다');
+    } else {
+      alert('숫자들[0] : ' + 숫자들[0] + ' ,문자인경우 >0이 아니다');
+    }
+
+  }
   
   var 리스너_색칠할번호선택_ul=document.querySelector('#색칠할번호선택_ul');
   var 리스너_모달번호들=document.querySelector('#색칠용modal-body');
+
   var 리스너_중복확인45버튼_1st=document.querySelector('#중복확인45버튼_1st');
   var 리스너_중복확인45버튼_2st=document.querySelector('#중복확인45버튼_2st');
   var 리스너_중복확인45버튼_3st=document.querySelector('#중복확인45버튼_3st');
+
   var 리스너_코딩메모문서연결=document.querySelector('#코딩메모_문서연결');
   var 리스너_원간격버튼=document.querySelector('#세로구분_색칠45_원간격');
   var 리스너_여러당번개수각각숨기기=document.querySelector('#여러당번개수');
-  var black리스너용=document.querySelector('#리스너용');
   
   function 리스너용모달번호각버튼색칠(e) {
     if (e.target.parentNode.parentNode.id=='색칠용modal-body') {모달번호들=document.querySelectorAll('#색칠용modal-body button');}
@@ -1626,9 +1638,6 @@ if (1==1) {
   function 리스너용여러당번개수각각숨기기(e) {
     if (e.target.classList.contains('클릭시숨기기')) {e.target.parentNode.parentNode.classList.add('d-none')}
   }
-  function black_문서연결닫기(e) {
-    alert(e.target.outerHTML);
-  }
   리스너_원간격버튼.addEventListener('click', 리스너용원간격번호보기); 
   리스너_코딩메모문서연결.addEventListener('click', 문서연결); 
   리스너_색칠할번호선택_ul.addEventListener('click',리스너용색칠할번호선택시색칠하기);
@@ -1637,4 +1646,3 @@ if (1==1) {
   리스너_중복확인45버튼_2st.addEventListener('click',리스너용모달번호각버튼색칠);
   리스너_중복확인45버튼_3st.addEventListener('click',리스너용모달번호각버튼색칠);
   리스너_여러당번개수각각숨기기.addEventListener('click',리스너용여러당번개수각각숨기기);
-  black리스너용.addEventListener('ckick',black_문서연결닫기);
