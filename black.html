@@ -18,6 +18,8 @@
   .a_형식 {color:chocolate;text-decoration: underline;}
   #black리스너용 > div > li,
   #서브리스트가져오는곳 > div > li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .accordion-button, .accordion-body, #main사이드 > li {padding:7px 3px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;list-style: none;}
+  .accordion-body > li, #선택문서셑팅하는곳 li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;list-style: none;}
 </style>
 </head>
 <body>
@@ -89,6 +91,40 @@
 
 <div style="white-space: nowrap;" id="black리스너용">
   <div class="d-inline-block" id="main사이드" style="vertical-align: top;">
+    <div class="accordion"><!--accordion-body의 부모의 data-bs-parent="#accordionExample" : 여기 id와 같으면 여기가 열리면 다른곳 닫힌다? -->
+      <div class="accordion-item">
+        <h2 class="accordion-header"><!-- button에 collasped 클래스 추가햐면 화살표 아래로 상태 -->
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#숨김ID_1" aria-expanded="true" aria-controls="collapseOne">
+            중범선 만들기, 증축, 장비
+          </button>
+        </h2>
+        <div id="숨김ID_1" class="accordion-collapse collapse show"><!-- 펼쳐놓으려면 show 클래스 추가 -->
+          <div class="accordion-body">
+            <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 모험가 가이드 : 중범선 만들기 </a></li>
+            <li><a href="https://www.youtube.com/watch?v=GN2-Dk69SKc" target="_blank">유튜브 가이드 영상 45분짜리</a></li>
+            <li class="파일연결" title="S1_무역선구축함증축재료">경범선/호위함 => 무역선/구축함 증축</li>
+            <li>3</li>
+            <li>4</li>
+            <li class="파일연결" title="S1_까마귀둥지라비니아퀘">무역선 증축재료 퀘스트 (1회성:까마귀 둥지)</li>
+            <li class="파일연결" title="S1_오킬루아일퀘">무역선 증축재료 퀘스트 (오킬루아)</li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#숨김ID_2" aria-expanded="true" aria-controls="collapseOne">
+            Accordion Item #1
+          </button>
+        </h2>
+        <div id="숨김ID_2" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+    </div>
     <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
     <li class="파일연결" title="계획정보">계획정보</li>
     <li class="파일연결" title="배정보증축식정보">배정보, 증축식 정보</li>
@@ -146,7 +182,41 @@
 </div>
 <!-- 개별 결과파일들 -->
 <div id="문서정보숨김" style="display:none;">
-  
+  <div id="S1_무역선구축함증축재료">
+    <h5>▢ 까마귀 둥지, 라비니아 퀘스트 (무역선 증축 재료)</h5>
+    <br><br>
+    <h5>▢ 까마귀 둥지 파킹 위치</h5>
+    <br><br>
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="S1_까마귀둥지라비니아퀘">
+    <h5>▢ 까마귀 둥지, 라비니아 퀘스트 (무역선 증축 재료)</h5>
+    <img src="portal/images/black_문서/S1_까마귀둥지라비니아퀘.png" alt="이미지없음">
+    <br><br>
+    <h5>▢ 까마귀 둥지 파킹 위치</h5>
+    <img src="portal/images/black_문서/S1_까마귀둥지파킹위치.png" alt="이미지없음">
+    <br><br>
+    <h5>▢ 퀘스트 공략</h5>
+    <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=22806" target="_blank">검은사막 커뮤니티 퀘스트 공략 글</a></li>
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="S1_오킬루아일퀘">
+    <h5>▢ 오킬루아 일퀘 버스받는 법</h5>
+    <li>1. esc - 커뮤니티 클릭 - 대화그룹 클릭 - 청새치 주점 입장, 채팅설정에서 대화그룹 체크</li>
+    <li style="text-indent: 17px;">채팅보면서 버스모집글확인 - 귓말해서 해당채널로 이동후 파티가입 (오킬루아에 대기)</li>
+    <img src="portal/images/black_문서/S1_오킬일퀘청새치대화그룹입장.png" alt="이미지없음">
+    <br><br>
+    <li>2. 버스퀘스트는 선행 3개, 후행 3개 (칸나검) 로 나뉘어져 있음.</li>
+    <img src="portal/images/black_문서/S1_오킬일퀘선행퀘후행퀘.png" alt="이미지없음">
+    <br><br>
+    <li>3. 오킬일퀘로 모이는 오킬리아 기념 주화 교환 퀘스트 (재료)</li>
+    <img src="portal/images/black_문서/S1_오킬일퀘주화교환퀘.png" alt="이미지없음">
+    <li></li>
+    <li></li>
+
+
+    <br><br><br><br><br><br><br>
+  </div>
   <div id="배정보증축식정보">
     <h5>▢ (개량형) 경범선, 스탯정보와 무역선 증축식</h5>
     <img src="portal/images/black_문서/배정보경범선과무역선증축식.png" alt="이미지없음">
