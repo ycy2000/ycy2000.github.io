@@ -15,13 +15,5 @@
       document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
       return;
     }
-//2.class 서브리스트연결 ==> 타이틀과 같은 이름의 element있으면 #서브리스트가져오는곳 으로 가지고오기 ==> #서브리스트가져오는곳 class d-none remove : return;
-    if (e.target.classList.contains('서브리스트연결') && document.querySelector('#' + 타이틀)) {
-      document.querySelector('#서브리스트가져오는곳').innerHTML=document.querySelector('#서브리스트가져오는곳 button').outerHTML;
-      document.querySelector('#서브리스트가져오는곳').innerHTML+=document.querySelector('#' + 타이틀).outerHTML;
-      document.querySelector('#서브리스트가져오는곳').classList.remove('d-none');
-      return;
-    }
-
   }
   black리스너용.addEventListener('click',문서연결또는하위메뉴);
