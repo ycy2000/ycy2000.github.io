@@ -14,15 +14,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <style>
+  /* 넘치지않게, 말줄임, 줄바꿈하지 않기 : overflow:hidden; text-overflow:ellipsis; white-space:nowrap; */
   #main사이드 {background-color: aqua;margin-left:3px;width:300px;height:1000px;vertical-align: top;}
   .a_형식 {color:chocolate;text-decoration: underline;}
-  #black리스너용 > div > li,
-  #서브리스트가져오는곳 > div > li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .accordion-button, .accordion-body, #main사이드 > li {padding:7px 3px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;list-style: none;}
-  .accordion-body > li, #선택문서셑팅하는곳 li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;list-style: none;padding-bottom:5px;}
+  .accordion-button, .accordion-body, #main사이드 > li {padding:7px 3px;list-style: none;}
+  .accordion-body > li, #선택문서셑팅하는곳 li {list-style: none;padding-bottom:5px;}
   .accordion-button:hover, .accordion-body:hover, .accordion-body > li:hover, 
-  #선택문서셑팅하는곳 li:hover,
-  #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {overflow:visible;z-index: 999;background-color: white;}
+  #선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;}
 </style>
 </head>
 <body>
@@ -118,9 +116,9 @@
           <div class="accordion-body">
             <li><button class="파일연결" title="S1_인벤중범선증축표">인벤 : 중범선 중축표 [목표]</button> 
                 <button class="파일연결" title="S0_01_일퀘출석체크">일퀘출쳌</button></li>
-            <li class="파일연결" title="S1_화려한2종교환무역품">화려2종,현철 (물교 단계 재료?) [물교 3천회 이후]</li>
+            <li class="파일연결" title="S1_화려한2종교환무역품" style="overflow:visible;">화려2종,현철 (물교 단계 재료?) [물교 3천회 이후]</li>
             <li class="파일연결" title="S1_무역품택배퀘물교퀘" style="text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해상일퀘 동선 (무역품 택배, 물교 퀘스트)</li>
-            <li class="파일연결" title="">[콕스 상급]준비중</li>
+            <li class="파일연결" title="S1_무역선과호위함파템제작및성능"><span class="a_형식">[증축전후 비교]</span> 무역선,호위함 파템제작</li>
           </div>
         </div>
       </div>
@@ -151,6 +149,13 @@
         </h2>
         <div id="숨김ID_3" class="accordion-collapse collapse show">
           <div class="accordion-body" style="background-color: rgb(231, 197, 197);">
+            <li><a herf="https://www.inven.co.kr/board/black/3584/44622" target="_blank">증축재료 물물교환 설명</a></li>
+            <li><a herf="https://www.inven.co.kr/board/black/3584/43492" target="_blank">물물교환 섬 단계별 지도</a></li>
+            <li><a herf="https://www.inven.co.kr/board/black/3584/43599" target="_blank">1~5단계 교환품 갯수, 창고관리</a></li>
+            <li>메모할거 있으면 여기 아무렇게나</li>
+            <li>메모할거 있으면 여기 아무렇게나</li>
+            <li>메모할거 있으면 여기 아무렇게나</li>
+            <li>메모할거 있으면 여기 아무렇게나</li>
             <li>메모할거 있으면 여기 아무렇게나</li>
           </div>
         </div>
@@ -178,8 +183,8 @@
     <img src="portal/images/black_문서/S1_인벤용맹비상증축표.png" alt="이미지없음">
     <br><br><br><br><br><br><br>
   </div>
-  <div id="S0_01_일퀘출석체크">
-    <embed src="portal/images/black_문서/S0_01_일퀘출석체크.txt" width=1000px height=700px>
+  <div id="S0_01_일퀘출석체크" style="border:1px solid black;">
+    <embed src="portal/images/black_문서/S0_01_일퀘출석체크.txt" width=1000px height=870px>
   </div>
   <div id="S1_화려한2종교환무역품">
     <h5>▢ 화려한 2종 교환무역품 : 3000회부터 5120회까지 재료갱신에서 나오고, 5120회부터 일반갱신에서도 나온다</h5>
@@ -244,8 +249,7 @@
       <h6 style="text-indent: 23px;">2. [개별적으로] <span class="a_형식">일리아 나루터지기 다리오 : 오킬리아로 배달 <span class="a_형식">★콕스 하급 2개</span>, 까주 40★ (제한시간 1시간)</span></h6>
       <h6 style="text-indent: 23px;">※ 밸리아에서 틴베라 2종 받고 일리아가서 오킬택배 받고 오킬간다?? 오킬은 갈일 있으면??</h6>
       <h5>▢ 무역품 물물교환퀘스트 순서 [개인적]</h5>
-      <h6 style="text-indent: 23px;"><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=83184&_opinionNo=0"
-        target="_blank">1. 오킬리아 물교 5회(라비켈), 10회(병사) ==> 일리아 물교 퀘 3종으로 바뀜. </a> 항해 경험치 공통</h6>
+      <h6 style="text-indent: 23px;">1. 오킬리아 물교 5회(라비켈), 10회(병사) ==> 일리아 물교 퀘 3종으로 바뀜. 항해 경험치 공통</h6>
       <h6 style="text-indent: 42px;">[일일] 활기찬 일리야섬 I 물교 5회 :(택1) <span class="a_형식">순수한 진주 결정 2, 순수한 암초 조각 8,</span> 심해의 기억이 담긴 아교 8(X)</h6>  
       <h6 style="text-indent: 42px;">[일일] 활기찬 일리야섬 II 물교 10회 :(택1) <span class="a_형식">강화된 섬나무 증착합판 10, 콕스 해적단의 유물 (협상 상급) 1 (★)</span></h6>  
       <h6 style="text-indent: 42px;">[일일] 활기찬 일리야섬 III 물교 15회 :까마귀 주화 10</h6>  
@@ -263,8 +267,39 @@
       <h6>▢ 콕스해적단의 유물 (전투)가 모자란다고 한다. 콕스토벌증표 200개당 1개. 콕스고장난함포 10개당 1개, 사냥시 득.</h6>
     </div>
   </div>
-  
+  <div id="S1_인벤중범선증축표">
+    <h5><a href="https://www.inven.co.kr/board/black/3584/52329" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+    <h5>▢ 중범선 점진/균형/용맹/비상 수량 정리표 [점진먼저 물교용, 다음목표 용맹]</h5>
+    <img src="portal/images/black_문서/S1_인벤점진균형용맹비상수량정리표.png" alt="이미지없음">
+    <h5>▢ 중범선 점진/균형 : 일리아 물교퀘 3회로 변경 (라비켈 I,II, 세렌디아 병사)</h5>
+    <img src="portal/images/black_문서/S1_인벤점진균형증축표.png" alt="이미지없음">
+    <br><br>
+    <h5>▢ 중범선 용맹/비상<H5>
+    <img src="portal/images/black_문서/S1_인벤용맹비상증축표.png" alt="이미지없음">
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="S1_무역선과호위함파템제작및성능">
+    <h6>▢ 증축후 [중범선] 녹템인 토로 장비 10강 하지 못하는 상태면 증축을 하지 말자??</h6>
+    <h6>▢ 파템제작 순서(증축전에 사용하기 위함) : 1. 함포, 2. 선수상(속도), 3. 돛,장갑은 재료 되는대로.</h6>
+    <h6>▢ 파템제작되면 강화 : 1~5단=온기를 품은 블랙스톤(10주화)[2~4단물물교환], 6~10단=한기가 서린 블랙스톤(20주화)[2~4단물물교환] [녹템 강화도 같은거 쓴다]</h6>
+    <h6>▢ 무역선 파템 재료</h6>
+    <img src="portal/images/black_문서/S1_무역선파템재료.png" alt="이미지없음">
+    <h6>▢ 구축함 파템 재료</h6>
+    <h6>▢ 무역선(노템), 무역선(녹템10강), 무역선(★파템10강★), 중범선_점진(노템),중범선_점진(녹템10강),중범선_점진(★파템10강★) </h6>
+    <h6 style="text-indent: 23px;"></h6>
+    <img src="" alt="이미지없음">
+    <embed src="" width=1000px height=870px>
+    <br><br><br><br><br><br><br>
+  </div>
 
+  <div id="샘플">
+    <h5><a href="" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+    <h5>▢ </h5>
+    <h6 style="text-indent: 23px;"></h6>
+    <img src="" alt="이미지없음">
+    <embed src="" width=1000px height=870px>
+    <br><br><br><br><br><br><br>
+  </div>
 
 
 <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
