@@ -104,7 +104,7 @@ function 해양죄표와섬이름() {
 
 }
 //임시실행
-if (1=='중지') {
+if (1=="임시") {
   document.querySelector('#선택문서셑팅하는곳').innerHTML+=document.querySelector('#S1_해역사진').outerHTML;
   document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
   document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
