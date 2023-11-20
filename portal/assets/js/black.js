@@ -13,9 +13,13 @@ var 재료교환섬='_에버딘_마르카_인버넨_델링하트_';
 function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
     document.querySelector('#textarea').classList.add('d-none');
+    document.querySelector('#우측상단메모').classList.add('d-none');
+    document.querySelector('#우측하단메모').classList.add('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
   } else {
     document.querySelector('#textarea').classList.remove('d-none');
+    document.querySelector('#우측상단메모').classList.remove('d-none');
+    document.querySelector('#우측하단메모').classList.remove('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
   }
 } 
