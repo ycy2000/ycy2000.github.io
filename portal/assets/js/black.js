@@ -1,13 +1,135 @@
-function 섬이름검색() {
-  var 검색명=document.getElementById('섬이름검색명').value; //인풋의 value
-  alert('input박스의.value : ' + 검색명);
+var 구역1상=['쿠이트','알마이','테스테','파딕스'];
+var 구역1하=['데이튼','오벤','네트넘','던데','에버딘','알브레서','바라테르','란디스','세르카','진버레이','바에자','모드릭','시오닐','라메다','테야말'];
+var 구역2=['타슈','아리타','나르보','리스즈','마르카','루루브','스타렌'];
+var 구역3=['툴루','오르프스','인버넨','발베쥬','마를레느','마리베노','에프데룬','루비아노','에베토','두흐','앙쥬'];
+var 구역4=['라시드','알하나','아지르','바레미','웨이타','칸베라','아라킬','오스트라','델링하트','필바라','푸자라','파라타마','베이루와','타라무라'];
+var 구역5=['틴베라','레라오','포르타넨','샤샤','로즈반','오리샤','보아','티그리스','시르나','에스파','리에드','소코타'];
+var 일반물품섬='_바에자_세르카_란디스_바라테르_스타렌_두흐_에베토_마리베노_에프데룬_베이루와_파라타마_';
+var 단계1섬='_쿠이트_테스테_타슈_아리타_라시드_포르타넨_보아_에스파_소코타_틴베라_레라오_';
+var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마를레느_웨이타_칸베라_아라킬_오스트라_타라무라_';
+var 단계3섬='_데이튼_테야말_리스즈_툴루_알하나_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
+var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
+var 재료교환섬='_에버딘_마르카_인버넨_델링하트_';
+function textarea보기숨기기() {
+  if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
+    document.querySelector('#textarea').classList.add('d-none');
+    document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
+  } else {
+    document.querySelector('#textarea').classList.remove('d-none');
+    document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
+  }
+} 
+function 섬이름검색1() {
+  //버튼 누를때만 작동되네?
+  document.querySelector('#div섬구역1').innerHTML='';
+  var text=document.querySelector('#input섬이름1').value;
+  var result='';
+  if (구역1하.find(element => element==text)) {result="1구역하"};
+  if (구역1상.find(element => element==text)) {result="1구역상"};
+  if (구역2.find(element => element==text)) {result="2구역"};
+  if (구역3.find(element => element==text)) {result="3구역"};
+  if (구역4.find(element => element==text)) {result="4구역"};
+  if (구역5.find(element => element==text)) {result="5구역"};
+  
+  if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
+  if (단계1섬.search(text)>-1) {result=result + ',1단계'};
+  if (단계2섬.search(text)>-1) {result=result + ',2단계'};
+  if (단계3섬.search(text)>-1) {result=result + ',3단계'};
+  if (단계4섬.search(text)>-1) {result=result + ',4단계'};
+  if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
+  document.querySelector('#div섬구역1').innerHTML=result;
 }
+function 섬이름검색2() {
+  //버튼 누를때만 작동되네?
+  document.querySelector('#div섬구역2').innerHTML='';
+  var text=document.querySelector('#input섬이름2').value;
+  var result='';
+  if (구역1하.find(element => element==text)) {result="1구역하"};
+  if (구역1상.find(element => element==text)) {result="1구역상"};
+  if (구역2.find(element => element==text)) {result="2구역"};
+  if (구역3.find(element => element==text)) {result="3구역"};
+  if (구역4.find(element => element==text)) {result="4구역"};
+  if (구역5.find(element => element==text)) {result="5구역"};
+  
+  if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
+  if (단계1섬.search(text)>-1) {result=result + ',1단계'};
+  if (단계2섬.search(text)>-1) {result=result + ',2단계'};
+  if (단계3섬.search(text)>-1) {result=result + ',3단계'};
+  if (단계4섬.search(text)>-1) {result=result + ',4단계'};
+  if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
+
+  document.querySelector('#div섬구역2').innerHTML=result;
+}
+function 섬이름검색3() {
+  //버튼 누를때만 작동되네?
+  document.querySelector('#div섬구역3').innerHTML='';
+  var text=document.querySelector('#input섬이름3').value;
+  var result='';
+  if (구역1하.find(element => element==text)) {result="1구역하"};
+  if (구역1상.find(element => element==text)) {result="1구역상"};
+  if (구역2.find(element => element==text)) {result="2구역"};
+  if (구역3.find(element => element==text)) {result="3구역"};
+  if (구역4.find(element => element==text)) {result="4구역"};
+  if (구역5.find(element => element==text)) {result="5구역"};
+  
+  if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
+  if (단계1섬.search(text)>-1) {result=result + ',1단계'};
+  if (단계2섬.search(text)>-1) {result=result + ',2단계'};
+  if (단계3섬.search(text)>-1) {result=result + ',3단계'};
+  if (단계4섬.search(text)>-1) {result=result + ',4단계'};
+  if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
+
+  document.querySelector('#div섬구역3').innerHTML=result;
+}
+function 섬이름검색4() {
+  //버튼 누를때만 작동되네?
+  document.querySelector('#div섬구역4').innerHTML='';
+  var text=document.querySelector('#input섬이름4').value;
+  var result='';
+  if (구역1하.find(element => element==text)) {result="1구역하"};
+  if (구역1상.find(element => element==text)) {result="1구역상"};
+  if (구역2.find(element => element==text)) {result="2구역"};
+  if (구역3.find(element => element==text)) {result="3구역"};
+  if (구역4.find(element => element==text)) {result="4구역"};
+  if (구역5.find(element => element==text)) {result="5구역"};
+  
+  if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
+  if (단계1섬.search(text)>-1) {result=result + ',1단계'};
+  if (단계2섬.search(text)>-1) {result=result + ',2단계'};
+  if (단계3섬.search(text)>-1) {result=result + ',3단계'};
+  if (단계4섬.search(text)>-1) {result=result + ',4단계'};
+  if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
+
+  document.querySelector('#div섬구역4').innerHTML=result;
+}
+function 섬이름검색5() {
+  //버튼 누를때만 작동되네?
+  document.querySelector('#div섬구역5').innerHTML='';
+  var text=document.querySelector('#input섬이름5').value;
+  var result='';
+  if (구역1하.find(element => element==text)) {result="1구역하"};
+  if (구역1상.find(element => element==text)) {result="1구역상"};
+  if (구역2.find(element => element==text)) {result="2구역"};
+  if (구역3.find(element => element==text)) {result="3구역"};
+  if (구역4.find(element => element==text)) {result="4구역"};
+  if (구역5.find(element => element==text)) {result="5구역"};
+  
+  if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
+  if (단계1섬.search(text)>-1) {result=result + ',1단계'};
+  if (단계2섬.search(text)>-1) {result=result + ',2단계'};
+  if (단계3섬.search(text)>-1) {result=result + ',3단계'};
+  if (단계4섬.search(text)>-1) {result=result + ',4단계'};
+  if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
+
+  document.querySelector('#div섬구역5').innerHTML=result;
+}
+
 function 해양죄표와섬이름() {
   const canvas = document.getElementById('myCanvas');
   const ctx = canvas.getContext("2d");
   var x=0;
-  ctx.font = "Arial bold 10px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용
+  ctx.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용
   ctx.fillStyle = 'yellow';
   ctx.textAlign = 'center';
   ctx.strokeStyle='yellow';
