@@ -10,6 +10,15 @@ var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마
 var 단계3섬='_데이튼_테야말_리스즈_툴루_알하나_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
 var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
 var 재료교환섬='_에버딘_마르카_인버넨_델링하트_';
+function 섬검색초기화() {
+  for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
+    document.querySelectorAll('#리스너용섬이름검색 input')[i].value='';
+  }
+  for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 div').length; i++) {
+    document.querySelectorAll('#리스너용섬이름검색 div')[i].innerHTML='';
+  }
+
+} 
 function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
     document.querySelector('#textarea').classList.add('d-none');
