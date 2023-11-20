@@ -42,7 +42,7 @@ function 섬이름검색1() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  document.querySelector('#div섬구역1').innerHTML=result;
+  if (text=='') {document.querySelector('#div섬구역1').innerHTML=''} else {document.querySelector('#div섬구역1').innerHTML=result;};
 }
 function 섬이름검색2() {
   //버튼 누를때만 작동되네?
@@ -63,7 +63,7 @@ function 섬이름검색2() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  document.querySelector('#div섬구역2').innerHTML=result;
+  if (text=='') {document.querySelector('#div섬구역2').innerHTML=''} else {document.querySelector('#div섬구역2').innerHTML=result;};
 }
 function 섬이름검색3() {
   //버튼 누를때만 작동되네?
@@ -84,7 +84,7 @@ function 섬이름검색3() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  document.querySelector('#div섬구역3').innerHTML=result;
+  if (text=='') {document.querySelector('#div섬구역3').innerHTML=''} else {document.querySelector('#div섬구역3').innerHTML=result;};
 }
 function 섬이름검색4() {
   //버튼 누를때만 작동되네?
@@ -105,7 +105,7 @@ function 섬이름검색4() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  document.querySelector('#div섬구역4').innerHTML=result;
+  if (text=='') {document.querySelector('#div섬구역4').innerHTML=''} else {document.querySelector('#div섬구역4').innerHTML=result;};
 }
 function 섬이름검색5() {
   //버튼 누를때만 작동되네?
@@ -126,7 +126,7 @@ function 섬이름검색5() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  document.querySelector('#div섬구역5').innerHTML=result;
+  if (text=='') {document.querySelector('#div섬구역5').innerHTML=''} else {document.querySelector('#div섬구역5').innerHTML=result;};
 }
 
 function 해양죄표와섬이름() {
