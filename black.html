@@ -94,6 +94,7 @@
             }
 
         ">main사이드숨기기</button>
+        <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
         
       </div>
     </div>
@@ -174,7 +175,6 @@
     <li class="파일연결" title="대양_선원성장스탯정보">_</li>
   </div>
   <div id="선택문서셑팅하는곳" class="d-inline-block d-none" style="vertical-align: top;width:1400px;">
-    <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">닫기</button>
   </div>
 </div>
 
@@ -294,7 +294,45 @@
     <br><br><br><br><br><br><br>
   </div>
   <div id="S1_해역사진">
-    <h6>▢ 우측 짤린곳, 할마드, 카슈마, 더코, 안카도 내항, 하코번섬</h6>
+    <div>
+      <h6 style="display:inline-block">위, 배+장비무게, 펫등무게 변경가능</h6>
+      <h6 style="text-indent: 33px;display:inline-block">X 1.7</h6>
+      <h6 style="text-indent: 40px;display:inline-block">펫등무게</h6>
+      <h6 style="text-indent: 25px;display:inline-block">여유무게</h6>
+      <h6 style="text-indent: 30px;display:inline-block">2단(800)</h6>
+      <h6 style="text-indent: 30px;display:inline-block">3단(900)</h6>
+      <h6 style="text-indent: 30px;display:inline-block">4,5단(천)</h6>
+    </div>
+    <h6>▢ <span>배+장비무게</span>
+      <input onchange="계산_무게()" id="계산_배와장비무게" type = "text" maxlength = "10" style="width:80px;text-align: center;background-color: aqua;" value="11500">
+      <span>, 최대적재</span>
+      <input id="계산_최대적재" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input onchange="계산_무게()" id="계산_펫등무게" type = "text" maxlength = "10" style="width:80px;text-align: center;background-color: aqua;" value="0">
+      <span>, </span>
+      <input id="계산_여유무게" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>: </span>
+      <input id="계산_800" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input id="계산_900" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input id="계산_천" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+    </h6>
+    <h6>▢ <span>배+장비무게</span>
+      <input onchange="계산_무게()" id="계산2_배와장비무게" type = "text" maxlength = "10" style="width:80px;text-align: center;" value="11500">
+      <span>, 최대적재</span>
+      <input id="계산2_최대적재" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input id="계산2_펫등무게" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input id="계산2_여유무게" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>: </span>
+      <input id="계산2_800" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input id="계산2_900" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+      <span>, </span>
+      <input id="계산2_천" type = "text" maxlength = "10" style="width:80px;text-align: center;">
+    </h6>
     <h6 id="섬이름검색결과" style="position: relative;">▢ 섬이름 완전일치시에 
       <span class="a_형식">구역과 가져갈 물품 단계</span> 표시, 
       <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea숨기기</button>
@@ -321,7 +359,7 @@
       <form class="d-inline-block" onsubmit="return false">
         <input onchange="섬이름검색1()" id="input섬이름1" type = "text" maxlength = "10" style="width:80px;">
       </form>
-      <div id="div섬구역1" style="width:130px;height:30px;vertical-align: top; border:1px solid black;display:inline-block; background-color: rgb(189, 163, 163);"></div><span>, </span>
+      <div id="div섬구역1" style="width:130px;height:30px;vertical-align: top; border:1px solid black;display:inline-block; background-color: gray;"></div><span>, </span>
 
       <form class="d-inline-block" onsubmit="return false">
         <input onchange="섬이름검색2()" id="input섬이름2" type = "text" maxlength = "10" style="width:80px;">

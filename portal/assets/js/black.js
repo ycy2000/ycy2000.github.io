@@ -10,6 +10,28 @@ var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마
 var 단계3섬='_데이튼_테야말_리스즈_툴루_알하나_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
 var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
 var 재료교환섬='_에버딘_마르카_인버넨_델링하트_';
+function 계산_무게() {
+  var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
+  var 펫등무게=document.querySelector('#계산_펫등무게').value;
+  document.querySelector('#계산2_펫등무게').value=펫등무게;
+  if (isNaN(배와장비무게)) {alert('배와장비무게가 숫자가 아님'); return;}; //숫자가 아니면
+  if (isNaN(펫등무게)) {alert('펫등무게가 숫자가 아님'); return;}; //숫자가 아니면
+  var 여유무게=배와장비무게-펫등무게;
+  document.querySelector('#계산_여유무게').value=여유무게;
+  document.querySelector('#계산_800').value=(여유무게/800).toFixed(1);
+  document.querySelector('#계산_900').value=(여유무게/900).toFixed(1);
+  document.querySelector('#계산_천').value=(여유무게/1000).toFixed(1);
+
+  var 최대적재=배와장비무게*1.7;
+  document.querySelector('#계산2_배와장비무게').value=''; //
+  document.querySelector('#계산2_최대적재').value=최대적재;
+  여유무게=최대적재-펫등무게;
+  document.querySelector('#계산2_여유무게').value=여유무게;
+  document.querySelector('#계산2_800').value=(여유무게/800).toFixed(1);
+  document.querySelector('#계산2_900').value=(여유무게/900).toFixed(1);
+  document.querySelector('#계산2_천').value=(여유무게/1000).toFixed(1);
+
+}
 function 섬검색초기화() {
   for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
     document.querySelectorAll('#리스너용섬이름검색 input')[i].value='';
@@ -51,7 +73,7 @@ function 섬이름검색1() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  if (text=='') {document.querySelector('#div섬구역1').innerHTML=''} else {document.querySelector('#div섬구역1').innerHTML=result;};
+  if (result=='') {document.querySelector('#div섬구역1').innerHTML=''} else {document.querySelector('#div섬구역1').innerHTML=result;};
 }
 function 섬이름검색2() {
   //버튼 누를때만 작동되네?
@@ -72,7 +94,7 @@ function 섬이름검색2() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  if (text=='') {document.querySelector('#div섬구역2').innerHTML=''} else {document.querySelector('#div섬구역2').innerHTML=result;};
+  if (result=='') {document.querySelector('#div섬구역2').innerHTML=''} else {document.querySelector('#div섬구역2').innerHTML=result;};
 }
 function 섬이름검색3() {
   //버튼 누를때만 작동되네?
@@ -93,7 +115,7 @@ function 섬이름검색3() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  if (text=='') {document.querySelector('#div섬구역3').innerHTML=''} else {document.querySelector('#div섬구역3').innerHTML=result;};
+  if (result=='') {document.querySelector('#div섬구역3').innerHTML=''} else {document.querySelector('#div섬구역3').innerHTML=result;};
 }
 function 섬이름검색4() {
   //버튼 누를때만 작동되네?
@@ -114,7 +136,7 @@ function 섬이름검색4() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  if (text=='') {document.querySelector('#div섬구역4').innerHTML=''} else {document.querySelector('#div섬구역4').innerHTML=result;};
+  if (result=='') {document.querySelector('#div섬구역4').innerHTML=''} else {document.querySelector('#div섬구역4').innerHTML=result;};
 }
 function 섬이름검색5() {
   //버튼 누를때만 작동되네?
@@ -135,7 +157,7 @@ function 섬이름검색5() {
   if (단계4섬.search(text)>-1) {result=result + ',4단계'};
   if (재료교환섬.search(text)>-1) {result=result + ',재료교환'};
 
-  if (text=='') {document.querySelector('#div섬구역5').innerHTML=''} else {document.querySelector('#div섬구역5').innerHTML=result;};
+  if (result=='') {document.querySelector('#div섬구역5').innerHTML=''} else {document.querySelector('#div섬구역5').innerHTML=result;};
 }
 
 function 해양죄표와섬이름() {
@@ -281,9 +303,9 @@ function 문서연결또는하위메뉴(e) {
   }
 //1.class 파일연결 ==> 타이틀과 같은 이름의 element있으면 #선택문서셑팅하는곳 으로 가지고오기 ==> #선택문서셑팅하는곳 class d-none remove : return;    
   if (e.target.classList.contains('파일연결') && document.querySelector('#' + 타이틀)) {
-    document.querySelector('#선택문서셑팅하는곳').innerHTML=document.querySelector('#선택문서셑팅하는곳 button').outerHTML;
-    document.querySelector('#선택문서셑팅하는곳').innerHTML+=document.querySelector('#' + 타이틀).outerHTML;
+    document.querySelector('#선택문서셑팅하는곳').innerHTML=document.querySelector('#' + 타이틀).outerHTML;
     document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
+    if (타이틀=='S1_해역사진') {계산_무게()};
     return;
   }
 }
