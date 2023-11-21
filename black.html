@@ -18,9 +18,9 @@
   #main사이드 {background-color: aqua;margin-left:3px;width:300px;height:1000px;vertical-align: top;}
   .a_형식 {color:chocolate;text-decoration: underline;}
   .accordion-button, .accordion-body, #main사이드 > li {padding:7px 3px;list-style: none;}
-  .accordion-body > li, #선택문서셑팅하는곳 li {list-style: none;padding-bottom:5px;}
+  .accordion-body > li, #선택문서셑팅하는곳 li {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .accordion-button:hover, .accordion-body:hover, .accordion-body > li:hover, 
-  #선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;}
+  #선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;overflow:visible;}
 </style>
 </head>
 <body>
@@ -56,13 +56,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body small p-1" style="font-size: 16px;">
-            <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_모달45보기숨기기()">[1]모달번호45숨기기</a>
-            <a class="dropdown-item d-inline" style="margin-right:5px;border:1px solid black;padding:0px 4px;" onclick="색칠_45()">[2]색칠_45실행</a>
-            <a id="li_45간격과색칠모두보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_45간격과색칠모두보기숨기기()">[2]45간격과색칠모두숨기기</a>
-            <a id="li_간격45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_간격45보기숨기기()">[2]간격45숨기기</a>
-            <a id="li_색칠45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_색칠45보기숨기기()">[2]색칠45숨기기</a>
-            <a class="dropdown-item d-inline" style="margin-right:5px;border:1px solid black;padding:0px 4px;" onclick="여러당번개수작성()">[3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</a>
-            <a id="li_여러당번개수보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_여러당번개수보기숨기기()">[3]여러당번개수모두숨기기</a>
+            <span>[1]</span>
+            <span>[2]</span>
+            <span>[2]</span>
+            <span>[2]간격45숨기기</span>
+            <span>[2]색칠45숨기기</span>
+            <span>[3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</span>
+            <span>[3]여러당번개수모두숨기기</span>
           </div>
         </div>
 
@@ -117,11 +117,12 @@
           <div class="accordion-body">
             <li><button class="파일연결" title="S1_인벤중범선증축표">인벤 : 중범선 중축표 [목표]</button> 
                 <button class="파일연결" title="S0_01_일퀘출석체크">일퀘출쳌</button></li>
-            <li class="파일연결" title="S1_화려한2종교환무역품" style="overflow:visible;">화려한2종,현철 (물교 단계 재료?) [물교 3천회 이후]</li>
+            <li class="파일연결" title="S1_화려한2종교환무역품">화려한2종,현철 (물교 단계 재료?) [물교 3천회 이후]</li>
             <li class="파일연결" title="S1_해상일퀘동선" style="text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해상일퀘 동선, 재료수급 png</li>
-            <li class="파일연결 a_형식" title="S1_증축전후비교">[증축전후 비교] 무역선,구축함</li>
-            <li class="파일연결" title="S1_해역사진" style="background-color: cadetblue;">해역사진</li>
+            <li class="파일연결" title="S1_해역사진" style="background-color: cadetblue;
+             text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해역사진 [물교계획, 무게 계산]</li>
             <li class="파일연결" title="S1_까마귀주화상점">까마귀 주화 상점, 레마섬, 까마귀둥지 [온기를 품은 블랙스톤(10주화), 한기가 서린 블랙스톤(20주화)]</li>
+            <li class="파일연결 a_형식" title="S1_증축전후비교">[증축전후 비교] 무역선,구축함</li>
           </div>
         </div>
       </div>
@@ -136,8 +137,6 @@
         <div id="숨김ID_2" class="accordion-collapse collapse show">
           <div class="accordion-body">
             <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=71348&_categoryNo=12&_sortType=1&_orderType=False&_bigPageNo=1&_pageNo=2&_pageSize=25&_searchDay=0&_searchType=1&_processStatus=99&_forumListType=3" target="_blank">38일차 최단 파밍 과정</a></li>
-            <li><a href="https://www.inven.co.kr/board/black/3584/45180" target="_blank">중범선별 스탯 [점진, 비상]</a></li>
-            <li><a href="https://www.inven.co.kr/board/black/3584/44375" target="_blank">파푸아:점박이,나팔산호</a></li>
             <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
             <li><a href="https://ashasleti.tistory.com/1051" target="_blank">중범선 파템 비교[치로][펌]]</a></li>
           </div>
@@ -235,7 +234,7 @@
       <h6 style="text-indent: 23px;">7. 자수정 파편</h6>
     </div>
     <div style="margin-top:5px;"></div>
-    <div style="display:inline-block;width:450px;height:360px;border:1px solid black;vertical-align: top;">
+    <div style="display:inline-block;width:400px;height:360px;border:1px solid black;vertical-align: top;">
       <h5>▢ 5단 왼쪽 : 필요한 4단 오른쪽</h5>
       <h6 style="text-indent: 23px;">1. <span class="a_형식">[중복]</span> 고대인을 형상화한 초상화 </h6>
       <h6 style="text-indent: 23px;">2. <span class="a_형식">[중복]</span> 고급 문양의 옷감</h6>
@@ -254,8 +253,15 @@
   <div id="S1_해상일퀘동선">
     <div style="display: inline-block; width:900px;vertical-align: top;">
       <h5><span class="a_형식">▢ 중범(용맹/비상) 증축식 펌</span></h5>
+      <textarea id="textarea" style="position: absolute; width:420px;height:175px;">3000회까지 재료 비축, 3000회부터 재갱에서 화려나옴.
+5120회부터 일반갱신에서도 화려한 나옴.
+나오기 시작하면 잘 모임. 심해의 눈물보다 빨리 모임.
+까주런을 해야하는데 하게 되면
+일반재료는 교섭력이 모자라서 못하게되고 가끔 채워주는 
+형식으로 한다.
+빛나는 코발트 주괴도 물교해야함.</textarea>
       <embed style="border:1px solid black;" src="portal/images/black_문서/S1_인벤용맹비상증축표.png">
-      <embed style="position:absolute; left:750px; top:478px; border:1px solid black;" src="portal/images/black_문서/S1_대양창고재료만.png">
+      <embed style="position:absolute; left:750px; top:441px; border:1px solid black;" src="portal/images/black_문서/S1_대양창고재료만.png">
       <br>
       <div class="d-inline-block" style="width:600px;">
         <h5>▢ 1.벨리아 출발 준비</h5>
