@@ -1,8 +1,54 @@
-var 구역1상=['쿠이트','알마이','테스테','파딕스'];
-var 구역1하=['데이튼','오벤','네트넘','던데','에버딘','알브레서','바라테르','란디스','세르카','진버레이','바에자','모드릭','시오닐','라메다','테야말'];
-var 구역2=['타슈','아리타','나르보','리스즈','마르카','루루브','스타렌'];
-var 구역3=['툴루','오르프스','인버넨','발베쥬','마를레느','마리베노','에프데룬','루비아노','에베토','두흐','앙쥬'];
-var 구역4=['라시드','알하나','아지르','바레미','웨이타','칸베라','아라킬','오스트라','델링하트','필바라','푸자라','파라타마','베이루와','타라무라'];
+for (var i=0; i<document.querySelectorAll('input').length; i++) {
+  document.querySelectorAll('input')[i].autocomplete="off";
+}
+var 단계1물품=['앵두나무 씨앗 주머니','황금빛 모래','쫄깃한 전어 회',
+'해상 전투 식량','해적의 화약','로아 꽃 씨앗 주머니','알수없는 고대 벽화','뗏목 조각품',
+'거대한 물고기 뼈','비옥한 흙','갈퀴 꽃 씨앗 주머니','고대 항아리 파편','때 탄 갈매기 조각상','말린 푸른 장미']
+var 단계2물품=['섬마을 도시락','최고급 굴 상자','넓찍한 돌판','정제된 식수','오색 구슬','해적선 돛대','괴생물 촉수',
+'나르보산 해삼','소라게 껍질 장식','해양 구조품','크론성 금주화','해적 금주화','성게 가시','균형잡힌 돌탑']
+var 단계3물품=['롭스타 그물','족제비 가죽 외투','해골 장식 찻잔','해적단의 보급상자','찢어진 해적 보물지도','낡은 지령서',
+'해골무늬 카페트','반달 조리용 칼','정찰병 망원경','오래된 모래 시계','푸른 야초 더미','희귀 약초 무더기','걸쭉한 괴생물 혈액','종유석 파편']
+var 단계4물품=['뱃사공의 수련서','청동 촛대','해상 기사단의 창','훔친 해적단 단도','조개 껍질 장식','청록빛 소금덩어리','해적의 열쇠',
+'자수정 파편','해상 기사단의 투구','만병통치약','목 잘린 용 조각상','굳어진 용암 액','오색빛 실타래','금주화가 담긴 낡은 상자']
+var 단계5물품=['젊음을 담은 비약','고대인을 형상화한 초상화','102년 묵은 황금초','조각상의 눈물','푸른빛 석영','팔각 문양 보관함','정체불명의 암석',
+'황금빛 물고기 비늘','팔랑나비 박제품','37년된 약주','흰색 애벌레 박제품','고급 문양의 옷감','빛바랜 황금용 조각상','최고급 황금 촛대']
+
+var 구역1상_북동=['쿠이트'];
+var 구역1상_남동=['파딕스'];
+var 구역1상_서=['알마이'];
+var 구역1상_남서=['테스테'];
+var 구역1하_북=['데이튼','오벤'];
+var 구역1하_동=['던데','에버딘','알브레서','바라테르'];
+var 구역1하_중앙=['란디스','세르카','진버레이','바에자'];
+var 구역1하_중서=['모드릭','시오닐','라메다'];
+var 구역1하_서남끝=['테야말'];
+
+var 구역2_중앙위=['아리타'];
+var 구역2_북동끝=['타슈'];
+var 구역2_서하=['스타렌'];
+var 구역2_중앙=['나르보','리스즈','마르카','루루브'];
+
+var 구역3_동남=['루비아노','에베토','에프데룬','마리베노'];
+var 구역3_서남=['두흐'];
+var 구역3_서끝=['인버넨','앙쥬'];
+var 구역3_중앙=['발베쥬','마를레느'];
+var 구역3_중북=['툴루','오르프스'];
+
+var 구역4_동끝=['푸자라'];
+var 구역4_남동=['델링하트','필바라'];
+var 구역4_중남=['오스트라','아라킬','칸베라'];
+var 구역4_남끝=['타라무라'];
+var 구역4_남서끝=['파라타마','베이루와'];
+var 구역4_서끝=['바레미','웨이타'];
+var 구역4_중북서=['아지르'];
+var 구역4_북서끝=['라시드','알하나'];
+
+var 구역5_북끝=['틴베라','레라오'];
+var 구역5_북동끝=['포르타넨','샤샤','로즈반'];
+var 구역5_동끝=['오리샤','보아'];
+var 구역5_동남끝=['티그리스','시르나','에스파','리에드'];
+var 구역5_동남남끝=['소코타'];
+
 var 구역5=['틴베라','레라오','포르타넨','샤샤','로즈반','오리샤','보아','티그리스','시르나','에스파','리에드','소코타'];
 var 일반물품섬='_바에자_세르카_란디스_바라테르_스타렌_두흐_에베토_마리베노_에프데룬_베이루와_파라타마_';
 var 단계1섬='_쿠이트_테스테_타슈_아리타_라시드_포르타넨_보아_에스파_소코타_틴베라_레라오_';
@@ -10,6 +56,87 @@ var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마
 var 단계3섬='_데이튼_테야말_리스즈_툴루_알하나_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
 var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
 var 재료교환섬='_에버딘_마르카_인버넨_델링하트_';
+
+function 물품조회_0() {
+  var 시작배열=0;
+  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
+  var 조회개수=0;
+  var 물품조회결과='';
+  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
+  for (var i=0; i<14; i++) {
+    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
+    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계2물품[i]+'\n';}
+    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계3물품[i]+'\n';}
+    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계4물품[i]+'\n';}
+    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계5물품[i]+'\n';}
+  }
+  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
+  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
+  if (조회개수>1) {
+    alert('[' + 조회개수 + '개]' + 물품조회결과);
+    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
+  }
+}
+function 물품조회_1() {
+  var 시작배열=2;
+  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
+  var 조회개수=0;
+  var 물품조회결과='';
+  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
+  for (var i=0; i<14; i++) {
+    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
+    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계2물품[i]+'\n';}
+    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계3물품[i]+'\n';}
+    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계4물품[i]+'\n';}
+    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계5물품[i]+'\n';}
+  }
+  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
+  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
+  if (조회개수>1) {
+    alert('[' + 조회개수 + '개]' + 물품조회결과);
+    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
+  }
+}
+function 물품조회_2() {
+  var 시작배열=4;
+  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
+  var 조회개수=0;
+  var 물품조회결과='';
+  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
+  for (var i=0; i<14; i++) {
+    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
+    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계2물품[i]+'\n';}
+    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계3물품[i]+'\n';}
+    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계4물품[i]+'\n';}
+    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계5물품[i]+'\n';}
+  }
+  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
+  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
+  if (조회개수>1) {
+    alert('[' + 조회개수 + '개]' + 물품조회결과);
+    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
+  }
+}
+function 물품조회_3() {
+  var 시작배열=6;
+  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
+  var 조회개수=0;
+  var 물품조회결과='';
+  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
+  for (var i=0; i<14; i++) {
+    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
+    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계2물품[i]+'\n';}
+    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계3물품[i]+'\n';}
+    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계4물품[i]+'\n';}
+    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계5물품[i]+'\n';}
+  }
+  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
+  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
+  if (조회개수>1) {
+    alert('[' + 조회개수 + '개]' + 물품조회결과);
+    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
+  }
+}
 function 계산_나의무게계산() {
   var 일단등무게=document.querySelector('#계산3_1단등무게').value;
   var 계산3_800개수=document.querySelector('#계산3_800').value;
@@ -25,6 +152,34 @@ function 계산_나의무게계산() {
   if (isNaN(계산3_천개수)) {alert('계산3_천개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
   document.querySelector('#계산3_합산무게').value=Number(일단등무게) + Number((계산3_800개수*800)) + Number((계산3_900개수*900)) + Number((계산3_천개수*1000));
 
+}
+function 차감교섭력clear() {
+  document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;
+  for (var i=0; i<8; i++) {
+    document.querySelectorAll('#차감input들 input')[2*i].value='';
+    document.querySelectorAll('#차감input들 input')[(2*i)+1].value=1;
+  }
+}
+function 남은교섭력계산() {
+  var 남은_차감후_교섭력_2개=document.querySelectorAll('#남은_차감후_교섭력 input');
+  var 차감input들_16개=document.querySelectorAll('#차감input들 input');
+  // 남은교석력, 차감교섭력과 개수 8셑트 16개input 컨트롤
+  var 남은교섭력;
+  if (남은_차감후_교섭력_2개[0].value=='') {남은교섭력=0;} else {남은교섭력=남은_차감후_교섭력_2개[0].value;};
+  if (isNaN(남은교섭력)) {alert('남은교섭력이 공백 또는 숫자가 아님 return'); return;} //숫자가 아니면
+  var 차감후은교섭력=남은_차감후_교섭력_2개[1];
+  // 공란이면 0, 아니면 숫자일때 진행, 숫자아니면 메세지
+  var 숫자확인;
+  for (var i=0; i<차감input들_16개.length; i++) {
+    if (차감input들_16개[i].value=='') {숫자확인=0;} else {숫자확인=차감input들_16개[i].value;}
+    if (isNaN(숫자확인)) {alert('차감 박스가 공백 또는 숫자가 아님 return'); return;} //숫자가 아니면
+  }
+  var 차감할교섭력=0;
+  for (var i=0; i<8; i++) {
+    if (차감input들_16개[2*i].value=='') {숫자확인=0;} else {숫자확인=차감input들_16개[2*i].value;}
+    차감할교섭력+=숫자확인*차감input들_16개[(2*i)+1].value;
+  }
+  남은_차감후_교섭력_2개[1].value=남은교섭력-차감할교섭력;
 }
 function 계산_무게() {
   var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
@@ -58,12 +213,14 @@ function 섬검색초기화() {
 } 
 function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
-    document.querySelector('#textarea').classList.add('d-none');
+    document.querySelector('#좌측상단메모').classList.add('d-none');
+    document.querySelector('#중간하단메모').classList.add('d-none');
     document.querySelector('#우측상단메모').classList.add('d-none');
     document.querySelector('#우측하단메모').classList.add('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
   } else {
-    document.querySelector('#textarea').classList.remove('d-none');
+    document.querySelector('#좌측상단메모').classList.remove('d-none');
+    document.querySelector('#중간하단메모').classList.remove('d-none');
     document.querySelector('#우측상단메모').classList.remove('d-none');
     document.querySelector('#우측하단메모').classList.remove('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
@@ -74,12 +231,42 @@ function 섬이름검색1() {
   document.querySelector('#div섬구역1').innerHTML='';
   var text=document.querySelector('#input섬이름1').value;
   var result='';
-  if (구역1하.find(element => element==text)) {result="1구역하"};
-  if (구역1상.find(element => element==text)) {result="1구역상"};
-  if (구역2.find(element => element==text)) {result="2구역"};
-  if (구역3.find(element => element==text)) {result="3구역"};
-  if (구역4.find(element => element==text)) {result="4구역"};
-  if (구역5.find(element => element==text)) {result="5구역"};
+  if (구역1상_북동.find(element => element==text)) {result="1구역상_북동"};
+  if (구역1상_남동.find(element => element==text)) {result="1구역상_남동"};
+  if (구역1상_서.find(element => element==text)) {result="1구역상_서"};
+  if (구역1상_남서.find(element => element==text)) {result="1구역상_남서"};
+
+  if (구역1하_북.find(element => element==text)) {result="1구역하_북"};
+  if (구역1하_동.find(element => element==text)) {result="1구역하_동"};
+  if (구역1하_중앙.find(element => element==text)) {result="1구역하_중앙"};
+  if (구역1하_중서.find(element => element==text)) {result="1구역하_중서"};
+  if (구역1하_서남끝.find(element => element==text)) {result="1구역하_서남끝"};
+
+  if (구역2_중앙위.find(element => element==text)) {result="2구역_중앙위"};
+  if (구역2_북동끝.find(element => element==text)) {result="2구역_북동끝"};
+  if (구역2_서하.find(element => element==text)) {result="2구역_서하"};
+  if (구역2_중앙.find(element => element==text)) {result="2구역_중앙"};
+
+  if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
+
+  if (구역4_동끝.find(element => element==text)) {result="4구역_동끝"};
+  if (구역4_남동.find(element => element==text)) {result="4구역_남동"};
+  if (구역4_중남.find(element => element==text)) {result="4구역_중남"};
+  if (구역4_남끝.find(element => element==text)) {result="4구역_남끝"};
+  if (구역4_남서끝.find(element => element==text)) {result="4구역_남서끝"};
+  if (구역4_서끝.find(element => element==text)) {result="4구역_서끝"};
+  if (구역4_중북서.find(element => element==text)) {result="4구역_중북서"};
+  if (구역4_북서끝.find(element => element==text)) {result="4구역_북서끝"};
+
+  if (구역5_북끝.find(element => element==text)) {result="5구역_북끝"};
+  if (구역5_북동끝.find(element => element==text)) {result="5구역_북동끝"};
+  if (구역5_동끝.find(element => element==text)) {result="5구역_동끝"};
+  if (구역5_동남끝.find(element => element==text)) {result="5구역_동남끝"};
+  if (구역5_동남남끝.find(element => element==text)) {result="5구역_동남남끝"};
   
   if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
   if (단계1섬.search(text)>-1) {result=result + ',1단계'};
@@ -95,12 +282,42 @@ function 섬이름검색2() {
   document.querySelector('#div섬구역2').innerHTML='';
   var text=document.querySelector('#input섬이름2').value;
   var result='';
-  if (구역1하.find(element => element==text)) {result="1구역하"};
-  if (구역1상.find(element => element==text)) {result="1구역상"};
-  if (구역2.find(element => element==text)) {result="2구역"};
-  if (구역3.find(element => element==text)) {result="3구역"};
-  if (구역4.find(element => element==text)) {result="4구역"};
-  if (구역5.find(element => element==text)) {result="5구역"};
+  if (구역1상_북동.find(element => element==text)) {result="1구역상_북동"};
+  if (구역1상_남동.find(element => element==text)) {result="1구역상_남동"};
+  if (구역1상_서.find(element => element==text)) {result="1구역상_서"};
+  if (구역1상_남서.find(element => element==text)) {result="1구역상_남서"};
+
+  if (구역1하_북.find(element => element==text)) {result="1구역하_북"};
+  if (구역1하_동.find(element => element==text)) {result="1구역하_동"};
+  if (구역1하_중앙.find(element => element==text)) {result="1구역하_중앙"};
+  if (구역1하_중서.find(element => element==text)) {result="1구역하_중서"};
+  if (구역1하_서남끝.find(element => element==text)) {result="1구역하_서남끝"};
+
+  if (구역2_중앙위.find(element => element==text)) {result="2구역_중앙위"};
+  if (구역2_북동끝.find(element => element==text)) {result="2구역_북동끝"};
+  if (구역2_서하.find(element => element==text)) {result="2구역_서하"};
+  if (구역2_중앙.find(element => element==text)) {result="2구역_중앙"};
+
+  if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
+
+  if (구역4_동끝.find(element => element==text)) {result="4구역_동끝"};
+  if (구역4_남동.find(element => element==text)) {result="4구역_남동"};
+  if (구역4_중남.find(element => element==text)) {result="4구역_중남"};
+  if (구역4_남끝.find(element => element==text)) {result="4구역_남끝"};
+  if (구역4_남서끝.find(element => element==text)) {result="4구역_남서끝"};
+  if (구역4_서끝.find(element => element==text)) {result="4구역_서끝"};
+  if (구역4_중북서.find(element => element==text)) {result="4구역_중북서"};
+  if (구역4_북서끝.find(element => element==text)) {result="4구역_북서끝"};
+
+  if (구역5_북끝.find(element => element==text)) {result="5구역_북끝"};
+  if (구역5_북동끝.find(element => element==text)) {result="5구역_북동끝"};
+  if (구역5_동끝.find(element => element==text)) {result="5구역_동끝"};
+  if (구역5_동남끝.find(element => element==text)) {result="5구역_동남끝"};
+  if (구역5_동남남끝.find(element => element==text)) {result="5구역_동남남끝"};
   
   if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
   if (단계1섬.search(text)>-1) {result=result + ',1단계'};
@@ -116,12 +333,42 @@ function 섬이름검색3() {
   document.querySelector('#div섬구역3').innerHTML='';
   var text=document.querySelector('#input섬이름3').value;
   var result='';
-  if (구역1하.find(element => element==text)) {result="1구역하"};
-  if (구역1상.find(element => element==text)) {result="1구역상"};
-  if (구역2.find(element => element==text)) {result="2구역"};
-  if (구역3.find(element => element==text)) {result="3구역"};
-  if (구역4.find(element => element==text)) {result="4구역"};
-  if (구역5.find(element => element==text)) {result="5구역"};
+  if (구역1상_북동.find(element => element==text)) {result="1구역상_북동"};
+  if (구역1상_남동.find(element => element==text)) {result="1구역상_남동"};
+  if (구역1상_서.find(element => element==text)) {result="1구역상_서"};
+  if (구역1상_남서.find(element => element==text)) {result="1구역상_남서"};
+
+  if (구역1하_북.find(element => element==text)) {result="1구역하_북"};
+  if (구역1하_동.find(element => element==text)) {result="1구역하_동"};
+  if (구역1하_중앙.find(element => element==text)) {result="1구역하_중앙"};
+  if (구역1하_중서.find(element => element==text)) {result="1구역하_중서"};
+  if (구역1하_서남끝.find(element => element==text)) {result="1구역하_서남끝"};
+
+  if (구역2_중앙위.find(element => element==text)) {result="2구역_중앙위"};
+  if (구역2_북동끝.find(element => element==text)) {result="2구역_북동끝"};
+  if (구역2_서하.find(element => element==text)) {result="2구역_서하"};
+  if (구역2_중앙.find(element => element==text)) {result="2구역_중앙"};
+
+  if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
+
+  if (구역4_동끝.find(element => element==text)) {result="4구역_동끝"};
+  if (구역4_남동.find(element => element==text)) {result="4구역_남동"};
+  if (구역4_중남.find(element => element==text)) {result="4구역_중남"};
+  if (구역4_남끝.find(element => element==text)) {result="4구역_남끝"};
+  if (구역4_남서끝.find(element => element==text)) {result="4구역_남서끝"};
+  if (구역4_서끝.find(element => element==text)) {result="4구역_서끝"};
+  if (구역4_중북서.find(element => element==text)) {result="4구역_중북서"};
+  if (구역4_북서끝.find(element => element==text)) {result="4구역_북서끝"};
+
+  if (구역5_북끝.find(element => element==text)) {result="5구역_북끝"};
+  if (구역5_북동끝.find(element => element==text)) {result="5구역_북동끝"};
+  if (구역5_동끝.find(element => element==text)) {result="5구역_동끝"};
+  if (구역5_동남끝.find(element => element==text)) {result="5구역_동남끝"};
+  if (구역5_동남남끝.find(element => element==text)) {result="5구역_동남남끝"};
   
   if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
   if (단계1섬.search(text)>-1) {result=result + ',1단계'};
@@ -137,12 +384,42 @@ function 섬이름검색4() {
   document.querySelector('#div섬구역4').innerHTML='';
   var text=document.querySelector('#input섬이름4').value;
   var result='';
-  if (구역1하.find(element => element==text)) {result="1구역하"};
-  if (구역1상.find(element => element==text)) {result="1구역상"};
-  if (구역2.find(element => element==text)) {result="2구역"};
-  if (구역3.find(element => element==text)) {result="3구역"};
-  if (구역4.find(element => element==text)) {result="4구역"};
-  if (구역5.find(element => element==text)) {result="5구역"};
+  if (구역1상_북동.find(element => element==text)) {result="1구역상_북동"};
+  if (구역1상_남동.find(element => element==text)) {result="1구역상_남동"};
+  if (구역1상_서.find(element => element==text)) {result="1구역상_서"};
+  if (구역1상_남서.find(element => element==text)) {result="1구역상_남서"};
+
+  if (구역1하_북.find(element => element==text)) {result="1구역하_북"};
+  if (구역1하_동.find(element => element==text)) {result="1구역하_동"};
+  if (구역1하_중앙.find(element => element==text)) {result="1구역하_중앙"};
+  if (구역1하_중서.find(element => element==text)) {result="1구역하_중서"};
+  if (구역1하_서남끝.find(element => element==text)) {result="1구역하_서남끝"};
+
+  if (구역2_중앙위.find(element => element==text)) {result="2구역_중앙위"};
+  if (구역2_북동끝.find(element => element==text)) {result="2구역_북동끝"};
+  if (구역2_서하.find(element => element==text)) {result="2구역_서하"};
+  if (구역2_중앙.find(element => element==text)) {result="2구역_중앙"};
+
+  if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
+
+  if (구역4_동끝.find(element => element==text)) {result="4구역_동끝"};
+  if (구역4_남동.find(element => element==text)) {result="4구역_남동"};
+  if (구역4_중남.find(element => element==text)) {result="4구역_중남"};
+  if (구역4_남끝.find(element => element==text)) {result="4구역_남끝"};
+  if (구역4_남서끝.find(element => element==text)) {result="4구역_남서끝"};
+  if (구역4_서끝.find(element => element==text)) {result="4구역_서끝"};
+  if (구역4_중북서.find(element => element==text)) {result="4구역_중북서"};
+  if (구역4_북서끝.find(element => element==text)) {result="4구역_북서끝"};
+
+  if (구역5_북끝.find(element => element==text)) {result="5구역_북끝"};
+  if (구역5_북동끝.find(element => element==text)) {result="5구역_북동끝"};
+  if (구역5_동끝.find(element => element==text)) {result="5구역_동끝"};
+  if (구역5_동남끝.find(element => element==text)) {result="5구역_동남끝"};
+  if (구역5_동남남끝.find(element => element==text)) {result="5구역_동남남끝"};
   
   if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
   if (단계1섬.search(text)>-1) {result=result + ',1단계'};
@@ -158,12 +435,42 @@ function 섬이름검색5() {
   document.querySelector('#div섬구역5').innerHTML='';
   var text=document.querySelector('#input섬이름5').value;
   var result='';
-  if (구역1하.find(element => element==text)) {result="1구역하"};
-  if (구역1상.find(element => element==text)) {result="1구역상"};
-  if (구역2.find(element => element==text)) {result="2구역"};
-  if (구역3.find(element => element==text)) {result="3구역"};
-  if (구역4.find(element => element==text)) {result="4구역"};
-  if (구역5.find(element => element==text)) {result="5구역"};
+  if (구역1상_북동.find(element => element==text)) {result="1구역상_북동"};
+  if (구역1상_남동.find(element => element==text)) {result="1구역상_남동"};
+  if (구역1상_서.find(element => element==text)) {result="1구역상_서"};
+  if (구역1상_남서.find(element => element==text)) {result="1구역상_남서"};
+
+  if (구역1하_북.find(element => element==text)) {result="1구역하_북"};
+  if (구역1하_동.find(element => element==text)) {result="1구역하_동"};
+  if (구역1하_중앙.find(element => element==text)) {result="1구역하_중앙"};
+  if (구역1하_중서.find(element => element==text)) {result="1구역하_중서"};
+  if (구역1하_서남끝.find(element => element==text)) {result="1구역하_서남끝"};
+
+  if (구역2_중앙위.find(element => element==text)) {result="2구역_중앙위"};
+  if (구역2_북동끝.find(element => element==text)) {result="2구역_북동끝"};
+  if (구역2_서하.find(element => element==text)) {result="2구역_서하"};
+  if (구역2_중앙.find(element => element==text)) {result="2구역_중앙"};
+
+  if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
+
+  if (구역4_동끝.find(element => element==text)) {result="4구역_동끝"};
+  if (구역4_남동.find(element => element==text)) {result="4구역_남동"};
+  if (구역4_중남.find(element => element==text)) {result="4구역_중남"};
+  if (구역4_남끝.find(element => element==text)) {result="4구역_남끝"};
+  if (구역4_남서끝.find(element => element==text)) {result="4구역_남서끝"};
+  if (구역4_서끝.find(element => element==text)) {result="4구역_서끝"};
+  if (구역4_중북서.find(element => element==text)) {result="4구역_중북서"};
+  if (구역4_북서끝.find(element => element==text)) {result="4구역_북서끝"};
+
+  if (구역5_북끝.find(element => element==text)) {result="5구역_북끝"};
+  if (구역5_북동끝.find(element => element==text)) {result="5구역_북동끝"};
+  if (구역5_동끝.find(element => element==text)) {result="5구역_동끝"};
+  if (구역5_동남끝.find(element => element==text)) {result="5구역_동남끝"};
+  if (구역5_동남남끝.find(element => element==text)) {result="5구역_동남남끝"};
   
   if (일반물품섬.search(text)>-1) {result=result + ',일반>1단'};
   if (단계1섬.search(text)>-1) {result=result + ',1단계'};
