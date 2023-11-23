@@ -35,6 +35,11 @@
   <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
   <nav class="navbar bg-body-tertiary pt-1 m-0">    
     <div class="container-fluid">
+      <!-- 특수문자 메모 띄우기 -->
+      <div id="특수문자보기" style="position: absolute;right:0px;top:20px;display:none;">
+        <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
+        <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width="700px" height="400ppx">
+      </div>
       <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
         <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" 
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,6 +70,7 @@
 
     ">main사이드숨기기</button>
     <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
+    <button onclick="document.querySelector('#특수문자보기').style.display='block'">html 특수문자</button>
 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
@@ -493,7 +499,7 @@
     <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <h6 style="position: relative;">▢ 자동이동시간 참고</h6>
-    <textarea id="자동이동시간참고" style="position: absolute; width:485px;height:390px; top:1530px;">
+    <textarea id="자동이동시간참고" style="position: absolute; width:485px;height:390px; top:1650px;">
 
 
 
@@ -509,7 +515,9 @@
 
     </textarea>
     <img src="portal/images/black_문서/S1_자동이동시간참고.png" alt="이미지없음">
-    <br></br>
+    <br>
+    <h6>▢ 이동시간_잡다한것</h6>
+    <img src="portal/images/black_문서/S1_이동시간잡다한것.png" alt="이미지없음">
     <h6>▢ 대양 마고리아 12별</h6>
     <img src="portal/images/black_문서/S1_마고리아12별.png" alt="이미지없음">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
