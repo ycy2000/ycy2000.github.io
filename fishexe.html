@@ -37,10 +37,11 @@
           role="button" data-bs-toggle="dropdown" aria-expanded="false">
           보기/숨기기
         </a>
-        <ul class="dropdown-menu 폭80" id="샘플">
+        <ul class="dropdown-menu 폭80" id="보기_숨기기버튼">
           <li id="a_리스트보기숨기기" class="btn btn-light m-0 d-block" onclick="main_list_viewHide()">리스트 보기중</li>
           <li id="a_소제목보기숨기기" class="btn btn-light m-0 d-block me-auto" onclick="sub_list_showHide()">소제목 숨김중</li>
-          <li class="btn btn-light m-0 d-block me-auto" onclick="결과임시_보기_숨기기()">결과파일 숨김중</li>
+          <li id="a_결과파일보기숨기기" class="btn btn-light m-0 d-block me-auto" onclick="결과임시_보기_숨기기()">결과파일 숨김중</li>
+          <li class="btn btn-light m-0 d-block me-auto" onclick="임시함수1()">임시함수1</li>
           <!-- <li><hr class="dropdown-divider"></li> -->
         </ul>
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
@@ -115,7 +116,7 @@
 <div id="content_편집중">
 </div>
 
-<div id="결과">
+<div style="display:none;" id="결과">
 </div>
 
 <!-- 모든파일 아이디 처리.. 공백넣기 : &nbsp; -->

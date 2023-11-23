@@ -55,13 +55,8 @@ function 임시함수2() {
 }
 
 function 임시함수1() {
-// 특정아이디의 속성들을 보고싶다
-var 스타일정보=window.getComputedStyle(document.querySelector('#샘플'));
-alert('display : ' + 스타일정보.display
-+'\nposition : ' + 스타일정보.position
-+'\nleft : ' + 스타일정보.left
-+'\ntop : ' + 스타일정보.top
-);
+  var a_리스트보기숨기기=	document.querySelector('#a_리스트보기숨기기');
+  alert(a_리스트보기숨기기);
 }
 
 
@@ -98,20 +93,19 @@ function content편집중_보기_숨기기() {
 }
 function 결과임시_보기_숨기기() {
   var con = document.querySelector('#결과');
-  var button=	document.querySelector('#보기_숨기기버튼>button:nth-of-type(3)');
-  var a_리스트보기숨기기=	document.querySelector('#a_결과파일보기숨기기');
+  var button=	document.querySelector('#a_결과파일보기숨기기');
   // console.log(button);
   if(con.style.display=='none'){ 		
     con.style.display = 'block'; 
-    if (a_리스트보기숨기기) {button.innerText='결과파일 보기중'	}
+    button.innerText='결과파일 보기중';
   }else{ 		
     con.style.display = 'none';
-    if (a_리스트보기숨기기) {button.innerText='결과파일 숨김중'	}	
+    button.innerText='결과파일 숨김중';
   }
   // SHOW 안했을때 ALERT.스페이스1글자,엔터1글자,빈줄한글자 인식됨,태그를 딱 붙이면  0, 주석도 글자수로 카운트
   if(con.innerHTML.length<3){ 		
     con.style.display = 'none';
-    if (a_리스트보기숨기기) {button.innerText='결과파일 숨김중'	}
+    button.innerText='결과파일 숨김중';
     alert('결과의 내용이 없는 상태입니다.')	
   } 
 }
@@ -285,6 +279,7 @@ function clickHandler(event) {
           }
           var 추가할문자열;
           추가할문자열=앞문자열 + 중간문자열 + 뒷문자열
+
           document.querySelector('#결과 #스크립트로ul추가').innerHTML=추가할문자열;
           document.querySelector('#a_결과파일보기숨기기').innerText='결과파일 보기중';
           //id가 따라와서 아이다가 두개가되기때문에 y_result의 아이디를 바꿔줘야함

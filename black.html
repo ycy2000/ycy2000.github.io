@@ -53,6 +53,18 @@
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
+        <button type="button" id="black버튼" onclick="
+        var 타겟=document.querySelector('#black버튼');
+        if (타겟.innerHTML=='main사이드숨기기') {
+          document.querySelector('#main사이드').classList.add('d-none')
+          타겟.innerHTML='main사이드보기'
+        } else  {
+          document.querySelector('#main사이드').classList.remove('d-none')
+          타겟.innerHTML='main사이드숨기기'
+        }
+
+    ">main사이드숨기기</button>
+    <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
@@ -78,6 +90,7 @@
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 링크이동
               </a>
+              
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="kim.html">Kim</a></li>
                 <li><a class="dropdown-item" href="it.html">it</a></li>
@@ -86,21 +99,7 @@
               </ul>
             </li>
           </ul>
-        </div>
-
-        <button type="button" id="black버튼" onclick="
-            var 타겟=document.querySelector('#black버튼');
-            if (타겟.innerHTML=='main사이드숨기기') {
-              document.querySelector('#main사이드').classList.add('d-none')
-              타겟.innerHTML='main사이드보기'
-            } else  {
-              document.querySelector('#main사이드').classList.remove('d-none')
-              타겟.innerHTML='main사이드숨기기'
-            }
-
-        ">main사이드숨기기</button>
-        <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
-        
+        </div>       
       </div>
     </div>
   </nav>
@@ -144,6 +143,7 @@
             <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=71348&_categoryNo=12&_sortType=1&_orderType=False&_bigPageNo=1&_pageNo=2&_pageSize=25&_searchDay=0&_searchType=1&_processStatus=99&_forumListType=3" target="_blank">38일차 최단 파밍 과정</a></li>
             <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
             <li><a href="https://ashasleti.tistory.com/1051" target="_blank">중범선 파템 비교[치로][펌]]</a></li>
+            <li><a href="https://www.kr.playblackdesert.com/ko-kr/Forum/ForumTopic/Detail?_topicNo=11523&_opinionNo=0" target="_blank">물물교환 섬 단계별 지도</a></li>
           </div>
         </div>
       </div>
@@ -429,7 +429,7 @@
       <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea숨기기</button>
       <button onclick="섬검색초기화()">섬검색결과 초기화</button>
     </div>
-    <textarea id="좌측상단메모" style="position: absolute; width:700px;height:300px;top:212px;left:317px">물물교환 계획 메모
+    <textarea id="좌측상단메모" style="position: absolute; width:700px;height:300px;top:212px;left:317px">(1시간20분)하코번 종 교섭력 : , (50분)대양 종 교섭력 : , 합계 : 
 
 
 
@@ -454,23 +454,23 @@
 
 
     </textarea>
-    <textarea id="중간하단메모" style="position: absolute; width:444px;height:355px; top:802px;left:670px;">
-
-
-
-
-
-
-
-
-
-
-
-
+    <textarea id="중간하단메모" style="position: absolute; width:549px;height:490px; top:802px;left:565px;">[대양 코인 50분]속도 114.1%, 자동이동 해풍X, 쾌속운항O.
+      일리야 아래 - 하코번 : 19분 30초
+      하코번 - 더코 : 8분 30초
+      더코 - 카슈마, 카슈마 - 할마드 :4 분 10초 
+      할마드 - 일리야 : 분
+      일리야 - 쿠이트제도 위 : 6분 40초(옮긴후)
+      쿠이트제도 위 - 파키오의 전투 똇목 : 8분 40초
+      파키오와 전투 뗏목 - 랑티니아의 전투 뗏목 : 3분 40초
+      랑티니아의 전투 뗏목 - 떠돌이 상인의 배 : 1분 10초
+      떠돌이 상인의 배 - 난파된 하란의 수송선 : 2분 5초
+      난파된 하란의 수송선 - 쿠이트제도 위 : 7분 (47도정도 아래로 좀더)
+      쿠이트제도 위 - 일리야 : 6분 40초 ====== 대양코인 50분
+      -------------------------------------------------------------
 
 
     </textarea>
-    <textarea id="우측하단메모" style="position: absolute; width:750px;height:355px;top:802px;left:1113px;">B=하선, N=승선, G=물물교환정보, CTRL+F=아이템찾기, 빼놓은선박수리같이됨
+    <textarea id="우측하단메모" style="position: absolute; width:750px;height:490px;top:802px;left:1113px;">B=하선, N=승선, G=물물교환정보, CTRL+F=아이템찾기, 빼놓은선박수리같이됨
 ALT+Q=창고열기, ALT+W=거래소열기, P=선박정보(키잡은상태:가방도같이나옴=내정보)
 ★섬아이의요청 : 홍조빛해저단괴 말고, 빛나는 코발트주고 받아라?
 3000회부터 화려한 시리즈 재료갱신에 나옴. 5120회부터는 일반갱신에서도 나옴
@@ -487,22 +487,20 @@ ALT+Q=창고열기, ALT+W=거래소열기, P=선박정보(키잡은상태:가방
 
 
     <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음">
-    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <h6 style="position: relative;">▢ 자동이동시간 참고</h6>
-    <textarea id="중간하단메모" style="position: absolute; width:444px;height:390px; top:1520px;">속도 114.1%, 자동이동 해풍X, 쾌속운항O.
-일리야 아래 - 하코번 : 19분 30초
-하코번 - 더코 : 8분 30초
-더코 - 카슈마, 카슈마 - 할마드 :4 분 10초 
-할마드 - 일리야 : 분
-일리야 - 쿠이트제도 위 : 6분 40초(옮긴후)
-쿠이트제도 위 - 파키오의 전투 똇목 : 8분 40초
-파키오와 전투 뗏목 - 랑티니아의 전투 뗏목 : 3분 40초
-랑티니아의 전투 뗏목 - 떠돌이 상인의 배 : 1분 10초
-떠돌이 상인의 배 - 난파된 하란의 수송선 : 2분 5초
-난파된 하란의 수송선 - 쿠이트제도 위 : 7분 (47도정도 아래로 좀더)
-쿠이트제도 위 - 일리야 : 6분 40초
+    <textarea id="자동이동시간참고" style="position: absolute; width:485px;height:390px; top:1530px;">
 
-65분+더코카슈마할마드 할마드-일리야
+
+
+
+
+
+
+
+
+
+
 
 
     </textarea>
