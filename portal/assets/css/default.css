@@ -5,6 +5,7 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 /* pre  {font-family: '바탕체';font-weight: bold;} */
 header {position:fixed;width:100%;}
 [title="버튼과ul"] > h5, [title="버튼과ul"] > button,[title="버튼과ul"] > ul > li {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+[title="버튼과ul"] > h5:hover, [title="버튼과ul"] > button:hover,[title="버튼과ul"] > ul > li:hover {overflow:visible;}
 [title="버튼과ul"] > button {width:364px; text-align: left;}
 /* #nav_head : 바탕색 */
 #nav_head {background:url('../../images/layout/headerotherbg.png') repeat;padding-bottom: 5px;}

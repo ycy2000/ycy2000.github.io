@@ -17,11 +17,17 @@
 <!-- 상단 nav -->
 <!-- 공통 fixed용 -->
 <header id="head_button_group" class="container-fluid fixed-top h_color">
-
   <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
-  <nav class="navbar bg-body-tertiary pt-0 pb-0  m-0"  ondblclick="location.href='ycy.html'">   
+  <nav class="navbar bg-body-tertiary pt-0 pb-0  m-0">   
     <div class="container-fluid my_nav_width">
-
+      <!-- 특수문자 메모 띄우기 -->
+      <div id="특수문자보기" style="position: absolute;right:0px;top:20px;display:none;">
+        <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
+        <embed style="border:1px solid black;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width="700px" height="400ppx">
+      </div>
+      <!-- 왼쪽상단에 투명하게 ycy로 이동 -->
+      <a class="dropdown-item" href="ycy.html" 
+      style="position: absolute;left:0px;border:none;height:40px;width:30px;background:url('../../images/layout/headerotherbg.png') repeat;"></a>
       <!--디바이스 작아지면 버튼으로 변해서 누르면 class="collapse navbar-collapse" id="navbarSupportedContent" 부분이 드랍다운된다.-->
       <div class="my_nav_width">
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
@@ -44,6 +50,7 @@
           <li class="btn btn-light m-0 d-block me-auto" onclick="임시함수1()">임시함수1</li>
           <!-- <li><hr class="dropdown-divider"></li> -->
         </ul>
+        <button onclick="document.querySelector('#특수문자보기').style.display='block'">html 특수문자</button>
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse width_100" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3">
@@ -79,14 +86,15 @@
       </button>
       <ul>
         <li class="content" title="01_수품원_01_검사정보01" data-title="결과물_id">수산물 수출검사 설명 (약정체결 국가 정보 등)</li>
-        <li class="content" title="" data-title="결과물_id">약정체결 아닌 국가인 경우 수출검사</li>
-        <li class="content" title="" data-title="결과물_id">(수산물) 위생약정 체결국가에 공장등록</li>
-        <li class="content" title="" data-title="결과물_id">(수산물) 위생약정 체결국가에 수출검사 과정</li>
-        <li class="content" title="" data-title="결과물_id">위임장, 가공일지, 전산신청 작성 및 신청방법</li>
-        <li class="content" title="" data-title="결과물_id">검사신청시 유의사항 모음</li>
-        <li class="content" title="" data-title="결과물_id">검사정보 샘플 모음 (영문품명 학명 등)</li>
-        <li class="content" title="" data-title="결과물_id">수출 수산물 등록공장 점검</li>
-        <li class="content" title="" data-title="결과물_id">수산물품질관리원 정보</li>
+        <li class="content" title="01_수품원_02_약정체결아닌국가인경우" data-title="결과물_id">약정체결 아닌 국가인 경우 수출검사</li>
+        <li class="content" title="01_수품원_03_화주교부자료" data-title="결과물_id">화주교부자료, 화주에게 요청할 자료 (출력물)</li>
+        <li class="content" title="" data-title="결과물_id">x베트남 검사 기한 : 평일7일째 되는날까지</li>
+        <li class="content" title="" data-title="결과물_id">x위임장, 가공일지 작성방법</li>
+        <li class="content" title="" data-title="결과물_id">x[위임장, 가공일지 준비후] 전산 검사신청 방법</li>
+        <li class="content" title="" data-title="결과물_id">x[방어의 수매확인서 등] 준비서류 및 확인사항</li>
+        <li class="content" title="" data-title="결과물_id">x검사정보 샘플 모음 (영문품명 학명 등)</li>
+        <li class="content" title="" data-title="결과물_id">x수출 수산물 등록공장 점검</li>
+        <li class="content" title="" data-title="결과물_id">x수산물품질관리원 정보</li>
       </ul>
     </div> 
 
@@ -127,14 +135,39 @@
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ 개요</h4>
     <img src="portal/images/문서연결_수품원/01_수품원_01_검사정보01.png" alt="이미지없음">
+    <h4 id="move2" class="목차">▢ 동일냉장이 등록한 나라 (등록번호) : 중국, 베트남, 태국, 인도네시아</h4>
+    <li>중국 등록번호 : KP-034, 중국에서 관리하는 등록번호 : CKOR18PP1805010017 (스티커에 두개다 기재해야함)</li>
+    <li>태국 등록번호 : KTH-026</li>
+    <li>베트남 등록번호 : KVN-044</li>
+    <li>인도네시아 등록번호 : KID-024</li>
+    <h4 id="move3" class="목차">▢ 수품원에서 확인하는 필수정보 4가지 [화주에 교부자료] , 나머지는 화주의 필요에 따라 추가 가능</h4>
+    <li>가공장 주소 : 중국에는 상호와 주소를 함께 쓰는데 다른 나라의 경우 상호명만 쓰는 경우도 봤음, 다 쓰는걸로 안내?</li>
+    <li>등록번호 : 도착하는 나라의 등록번호</li>
+    <li>수출국(export contruy) : the republic of korea</li>
+    <li>품명 : 영문 품명</li>
     <br><br><br><br>
+  </section>
+
+  <section id="01_수품원_02_약정체결아닌국가인경우">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 동일냉장에 물품이 있는경우 화주가 직접 신청하면서 검사장소를 동일냉장으로 지정한 경우이다.</h4>
+    <h4 id="move2" class="목차">▢ 해당화주의 명의로 검사대상물의 재고확인서를 준비해 두었다가 검사원에게 제출하고 검사 입회한다.</h4>
+    <h5 class="목차"> 일본 등, 약정에서 제외된 물품이거나 어떤 경우에라도 화주가 검사신청하는 경우 검사장소가 동일냉장인 경우.</h5>
+    <h5 class="목차"> 약정에서 제외된 물품이거나 어떤 경우에라도 화주가 검사신청하는 경우 검사장소가 동일냉장인 경우.</h5>
+  </section>
+
+  <section id="01_수품원_03_화주교부자료">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 화주에 교부자료, 화주에 요청할 정보 정리 출력물</h4>
+    <embed src="portal/images/문서연결_수품원/01_수품원_03_화주교부자료.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
   <section id="">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">1.</h4>
     <li></li>
-    <h5></h5>
+    <h5>▢ </h5>
     <h5 class="li_들작"></h5>
     <img src="" alt="이미지없음">
     <br><br><br><br>

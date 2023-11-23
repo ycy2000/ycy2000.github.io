@@ -60,7 +60,10 @@ function 임시함수1() {
 }
 
 
-
+function 특수문자보기 () {
+  //메모장 띄우기
+  alert('메모장으로 띄우기');
+}
 function 맨위로 () {
   // 안씀
   window.scrollTo({ top: 0, behavior: "smooth" }); 
