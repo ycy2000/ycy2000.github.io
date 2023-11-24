@@ -1,0 +1,23 @@
+ 배경 이미지 지정하기 (background-image) 
+Copy
+body {background-image : url('이미지 URL');}
+#area {background-image : url('이미지 URL');}
+.area {background-image : url('이미지 URL');}기 [코딩하는 녀석:티스토리]
+
+배경 이미지 반복 설정하기(background-repeat)
+background-repeat : repeat : 화면에 가득 찰 때까지 배경 이미지를 반복합니다.
+background-repeat : repeat-x : 화면에 가득 찰 때까지 배경 이미지를 가로로 반복합니다.
+background-repeat : repeat-y : 화면에 가득 찰 때까지 배경 이미지를 세로로 반복합니다.
+background-repeat : no-repeat : 배경 이미지를 반복하지 않고 한 번만 표시합니다.
+
+배경 이미지 크기 조절하기(background-size)
+background-size : auto : 원래 이미지 크기만큼 배경에 표시됩니다.
+background-size : contain : 요소 안에 배경 이미지가 다 들어가도록 이미지를 자동으로 확대 / 축소합니다.
+background-size : cover : 배경 이미지로 요소를 모두 덮도록 이미지를 확대 / 축소합니다.
+background-size : [크기값] : 배경 이미지의 크기를 지정합니다. (너비만 지정할 경우 높이를 자동 계산)
+background-size : [백분율] : 배경 이미지가 들어갈 요소 기준으로 백분율 값을 지정합니다.
+
+배경 이미지 위치 조절하기(background-position)
+background-position : [수평위치] [수직 위치]
+수평위치 : left, center, right, 백분율, 길이값
+수직위치 : top, center, bottom, 백분율, 길이값

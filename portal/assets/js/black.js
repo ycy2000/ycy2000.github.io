@@ -117,26 +117,6 @@ function 물품조회_2() {
     document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
   }
 }
-function 물품조회_3() {
-  var 시작배열=6;
-  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
-  var 조회개수=0;
-  var 물품조회결과='';
-  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
-  for (var i=0; i<14; i++) {
-    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
-    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[2]'+단계2물품[i]+'\n';}
-    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[3]'+단계3물품[i]+'\n';}
-    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[4]'+단계4물품[i]+'\n';}
-    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[5]'+단계5물품[i]+'\n';}
-  }
-  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
-  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
-  if (조회개수>1) {
-    alert('[' + 조회개수 + '개]' + 물품조회결과);
-    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
-  }
-}
 function 계산_나의무게계산() {
   var 일단등무게=document.querySelector('#계산3_1단등무게').value;
   var 계산3_800개수=document.querySelector('#계산3_800').value;
@@ -613,7 +593,12 @@ ctx.lineWidth='1';
 ctx.setLineDash([2])
 ctx.stroke();
 }
+var 리스너용canvas모든버튼들=document.querySelector('#canvas모든버튼들');
 var black리스너용=document.querySelector('#black리스너용');
+function canvas텍스트보기(e) {
+  document.querySelector('#embed부분').src=e.target.title;
+  document.querySelector('#canvas텍스트').style.display='block';
+} 
 function 문서연결또는하위메뉴(e) {
   //하위메뉴 타이틀인경우 하위메뉴 나오게하고 끝. 문서가 연결된 경우 문서연결만하고 끝 / e.target.title 자체로는 에러가 안남 length=0
   //querySeloctor #만 있으면 에러, 뭐라도 있으면 에러는 아님 undefined
@@ -631,4 +616,5 @@ function 문서연결또는하위메뉴(e) {
     return;
   }
 }
+리스너용canvas모든버튼들.addEventListener('click',canvas텍스트보기);
 black리스너용.addEventListener('click',문서연결또는하위메뉴);

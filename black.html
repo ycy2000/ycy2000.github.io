@@ -26,6 +26,11 @@
   #물품조회 input:nth-of-type(even) {width:352px;text-align: left;}
   #차감input들 input:nth-of-type(odd) {width:60px;text-align: center;margin-right:2px;}
   #차감input들 input:nth-of-type(even) {width:30px;text-align: center;}
+  #파템재료_재료아이콘 > div, #파템재료_일퀘개수 > div {height:38px;margin:1px 0px;border:1px solid black;} /* 494 */
+  #파템재료_일퀘개수 > div {height:38px;margin:1px 0px;border:1px solid black;}
+  #파템재료_재료아이콘 .아이콘 {width:140px;}
+  #파템재료_일퀘개수 > div > button {margin:0;padding:0;border:none;border-right:1px solid black;width:50px;height:38px;}
+  #파템재료_일퀘개수 > div > button:last-child {border:none;}
 </style>
 </head>
 <body>
@@ -39,6 +44,10 @@
       <div id="특수문자보기" style="position: absolute;right:0px;top:20px;display:none;">
         <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
         <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width="700px" height="400ppx">
+      </div>
+      <div id="canvas텍스트" style="position: absolute;left:300px;top:50px;display:none;background-color: white;border:1px solid black;">
+        <button onclick="document.querySelector('#canvas텍스트').style.display='none'">닫기</button><br>
+        <embed id="embed부분" src="" width=1000px height=870px>
       </div>
       <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
         <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" 
@@ -75,17 +84,11 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">canvas 제목</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body small p-1" style="font-size: 16px;">
-            <span>[1]</span>
-            <span>[2]</span>
-            <span>[2]</span>
-            <span>[2]간격45숨기기</span>
-            <span>[2]색칠45숨기기</span>
-            <span>[3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</span>
-            <span>[3]여러당번개수모두숨기기</span>
+          <div id="canvas모든버튼들" class="offcanvas-body small p-1" style="font-size: 16px;">
+            <button title='portal/images/black_캔버스메모장/S2_01_큰이미지에서일부분만.txt'>큰이미지에서 일부이미지 추출</button>
           </div>
         </div>
 
@@ -187,8 +190,6 @@
   <div id="선택문서셑팅하는곳" class="d-inline-block d-none" style="vertical-align: top;width:1400px;">
   </div>
 </div>
-
-
 
 <!-- 개별 결과파일들 -->
 <div id="문서정보숨김" style="display:none;">
@@ -341,11 +342,42 @@
         <input onchange="물품조회_0()" type = "text" maxlength = "10"><input type = "text" maxlength = "10"><br>
         <input onchange="물품조회_1()" type = "text" maxlength = "10"><input type = "text" maxlength = "10"><br>
         <input onchange="물품조회_2()" type = "text" maxlength = "10"><input type = "text" maxlength = "10"><br>
-        <input onchange="물품조회_3()" type = "text" maxlength = "10"><input type = "text" maxlength = "10">
+        <button style="width:81px;" onclick="
+        if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
+          document.querySelector('#이동시간none상태').classList.add('d-none');
+          document.querySelector('#해역_물품단계').classList.remove('d-none');
+          document.querySelector('#자동이동시간참고').style.marginTop='0px';          
+        } else {
+          document.querySelector('#이동시간none상태').classList.remove('d-none');
+          document.querySelector('#해역_물품단계').classList.add('d-none');
+          document.querySelector('#자동이동시간참고').style.marginTop='483px';  
+        }
+        ">이동시간</button>
+        <button style="width:81px;margin-left:-7px;" onclick="
+        if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
+          document.querySelector('#모은재료none상태').classList.remove('d-none');  
+
+          document.querySelector('#좌측상단메모').classList.add('d-none');
+          document.querySelector('#중간하단메모').classList.add('d-none');
+          document.querySelector('#우측상단메모').classList.add('d-none');
+          document.querySelector('#우측하단메모').classList.add('d-none');
+          document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
+          // document.querySelector('#해역_물품단계').classList.add('d-none');
+          // document.querySelector('#자동이동시간참고').style.marginTop='483px';  
+        } else {
+          document.querySelector('#모은재료none상태').classList.add('d-none');
+
+          document.querySelector('#좌측상단메모').classList.remove('d-none');
+          document.querySelector('#중간하단메모').classList.remove('d-none');
+          document.querySelector('#우측상단메모').classList.remove('d-none');
+          document.querySelector('#우측하단메모').classList.remove('d-none');
+          document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
+          // document.querySelector('#해역_물품단계').classList.remove('d-none');
+          // document.querySelector('#자동이동시간참고').style.marginTop='0px';  
+        }
+        ">모은재료</button>
       </div>
     </div>
-
-
 
     <div id="무게계산" class="d-inline-block" style="vertical-align: top;margin-left:10px;">
       <div>
@@ -436,7 +468,77 @@
       <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea숨기기</button>
       <button onclick="섬검색초기화()">섬검색결과 초기화</button>
     </div>
-    <textarea id="좌측상단메모" style="position: absolute; width:700px;height:300px;top:212px;left:317px">(1시간20분)하코번 종 교섭력 : , (50분)대양 종 교섭력 : , 합계 : 
+    <div id="이동시간none상태" class="d-none" style="position: absolute;left:157px;">
+      <h6 class="d-inline-block">▢ 이동시간_잡다한것</h6>
+      <img src="portal/images/black_문서/S1_이동시간잡다한것.png" alt="이미지없음">
+    </div>
+    <div id="모은재료none상태" class="d-none" style="position: absolute;left:317px;top:212px;">
+      <div id="모은재료_파템재료" style="border:1px solid black;background-color: white;"><!-- 빈칸도 만들고, 세로로 나열됨 -->
+        <div id="파템재료_일퀘개수" class="d-inline-block 재료높이" style="vertical-align: top;">
+          <div></div>
+          <div><button>필요수</button><button>보유수</button><button>남은수</button><button>일get</button><button>일퀘수</button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+          <div><button></button><button></button><button></button><button></button><button></button></div>
+
+        </div>
+        
+        <div id="파템재료_재료아이콘" class="d-inline-block 재료높이" style="vertical-align: top;">
+          <div></div>
+          <div></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -0px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -41px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -84px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -126px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -213px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -254px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -0px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -41px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -84px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -126px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -213px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+          <div style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -254px;" title="홍조빛 해저 단괴" class="아이콘" ></div>
+
+
+        </div>
+
+        <div id="파템재료_재료이름" class="d-inline-block" style="vertical-align: top;">1</div>
+        <div id="파템재료_필요개수" class="d-inline-block" style="vertical-align: top;">1</div>
+        <div id="파템재료_모은개수" class="d-inline-block" style="vertical-align: top;">1</div>
+
+        <div id="선수상필요" class="d-inline-block" style="vertical-align: top;">필요</div>
+        <div id="선수상보유" class="d-inline-block" style="vertical-align: top;">보유</div>
+
+        <div id="돛필요" class="d-inline-block" style="vertical-align: top;">필요</div>
+        <div id="돛보유" class="d-inline-block" style="vertical-align: top;">보유</div>
+
+        <div id="함포필요" class="d-inline-block" style="vertical-align: top;">필요</div>
+        <div id="함포보유" class="d-inline-block" style="vertical-align: top;">보유</div>
+
+        <div id="파템필요" class="d-inline-block" style="vertical-align: top;">필요</div>
+        <div id="파템보유" class="d-inline-block" style="vertical-align: top;">보유</div>
+     </div>
+     <div id="모은재료_일반재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
+        <div id="일반재료_일퀘개수" class="d-inline-block" style="vertical-align: top;">1</div>
+        <div id="일반재료_재료아이콘" class="d-inline-block" style="vertical-align: top;">1</div>
+        <div id="일반재료_재료이름" class="d-inline-block" style="vertical-align: top;">1</div>
+        <div id="일반재료_필요개수" class="d-inline-block" style="vertical-align: top;">1</div>
+        <div id="일반재료_모은개수" class="d-inline-block" style="vertical-align: top;">1</div>
+     </div>
+    </div>
+    <div id="해역_물품단계" style="visibility: visible;">
+      <textarea id="좌측상단메모" style="position: absolute; width:700px;height:300px;top:212px;left:317px">(1시간20분)하코번 종 교섭력 : , (50분)대양 종 교섭력 : , 합계 : 
 
 
 
@@ -447,21 +549,21 @@
 
 
 
-    </textarea>
-    <textarea id="우측상단메모" style="position: absolute; width:387px;height:247px;top:212px;left:1470px;">114.1%, 에스파-일리아 과적(자동) : 8분
-000% : 일리아 - 하코번 (자동) :  분
-000% : 하코번 - 더코 (자동) :  분
-일리아-에페 : 정상8분,
-에페리아 던데-로즈반:자동정상 14분
-일리아 위 로즈반-일리아:과적6분
+      </textarea>
+      <textarea id="우측상단메모" style="position: absolute; width:387px;height:247px;top:212px;left:1470px;">114.1%, 에스파-일리아 과적(자동) : 8분
+  000% : 일리아 - 하코번 (자동) :  분
+  000% : 하코번 - 더코 (자동) :  분
+  일리아-에페 : 정상8분,
+  에페리아 던데-로즈반:자동정상 14분
+  일리아 위 로즈반-일리아:과적6분
 
 
 
 
 
 
-    </textarea>
-    <textarea id="중간하단메모" style="position: absolute; width:549px;height:490px; top:802px;left:565px;">[대양 코인 50분]속도 114.1%, 자동이동 해풍X, 쾌속운항O.
+      </textarea>
+      <textarea id="중간하단메모" style="position: absolute; width:549px;height:490px; top:802px;left:565px;">[대양 코인 50분]속도 114.1%, 자동이동 해풍X, 쾌속운항O.
       일리야 아래 - 하코번 : 19분 30초
       하코번 - 더코 : 8분 30초
       더코 - 카슈마, 카슈마 - 할마드 :4 분 10초 
@@ -480,8 +582,8 @@
       3000회부터 화려한 시리즈 재료갱신에. 5120회부터는 일반갱신에서도
       ★ 선박의 과적품 가방에 넣을수 있다. 한번의 기회!! ★ 
       ★ 가방 무게 오바 전에 퀘 완료!! ★ 
-    </textarea>
-    <textarea id="우측하단메모" style="position: absolute; width:750px;height:490px;top:802px;left:1113px;">B=하선, N=승선, G=물물교환정보, CTRL+F=아이템찾기, 빼놓은선박수리같이됨
+      </textarea>
+      <textarea id="우측하단메모" style="position: absolute; width:750px;height:490px;top:802px;left:1113px;">B=하선, N=승선, G=물물교환정보, CTRL+F=아이템찾기, 빼놓은선박수리같이됨
 
 
 
@@ -494,13 +596,14 @@
 
 
 
-    </textarea>
+      </textarea>
 
 
-    <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음">
+      <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음">
+    </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <h6 style="position: relative;">▢ 자동이동시간 참고</h6>
-    <textarea id="자동이동시간참고" style="position: absolute; width:485px;height:390px; top:1650px;">
+    <h6 id="자동이동시간참고" style="position: relative;margin-top:0px;">▢ 자동이동시간 참고</h6>
+    <textarea style="position: absolute; width:485px;height:390px; top:1650px;">
 
 
 
@@ -517,8 +620,6 @@
     </textarea>
     <img src="portal/images/black_문서/S1_자동이동시간참고.png" alt="이미지없음">
     <br>
-    <h6>▢ 이동시간_잡다한것</h6>
-    <img src="portal/images/black_문서/S1_이동시간잡다한것.png" alt="이미지없음">
     <h6>▢ 대양 마고리아 12별</h6>
     <img src="portal/images/black_문서/S1_마고리아12별.png" alt="이미지없음">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -551,7 +652,6 @@
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
   role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
   <span>Top</span></a>
-
 <!-- 부트스트랩.body 맨 마지막에.. -->
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
