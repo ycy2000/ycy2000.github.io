@@ -29,7 +29,7 @@ var 구역2_서하=['스타렌'];
 var 구역2_중앙=['나르보','리스즈','마르카','루루브'];
 
 var 구역3_동남=['루비아노','에베토','에프데룬','마리베노'];
-var 구역3_서남=['두흐'];
+var 구역3_남=['두흐'];
 var 구역3_서끝=['인버넨','앙쥬'];
 var 구역3_중앙=['발베쥬','마를레느'];
 var 구역3_중북=['툴루','오르프스'];
@@ -56,6 +56,104 @@ var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마
 var 단계3섬='_데이튼_테야말_리스즈_툴루_알하나_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
 var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
 var 재료교환섬='_네트넘_에버딘_마르카_인버넨_델링하트_';
+
+function 모은재료클릭시() {
+  if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
+    document.querySelector('#모은재료none상태').classList.remove('d-none');  
+
+    document.querySelector('#좌측상단메모').classList.add('d-none');
+    document.querySelector('#중간하단메모').classList.add('d-none');
+    document.querySelector('#우측상단메모').classList.add('d-none');
+    document.querySelector('#우측하단메모').classList.add('d-none');
+    document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
+    // document.querySelector('#해역_물품단계').classList.add('d-none');
+    // document.querySelector('#자동이동시간참고').style.marginTop='483px';  
+  } else {
+    document.querySelector('#모은재료none상태').classList.add('d-none');
+
+    document.querySelector('#좌측상단메모').classList.remove('d-none');
+    document.querySelector('#중간하단메모').classList.remove('d-none');
+    document.querySelector('#우측상단메모').classList.remove('d-none');
+    document.querySelector('#우측하단메모').classList.remove('d-none');
+    document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
+    // document.querySelector('#해역_물품단계').classList.remove('d-none');
+    // document.querySelector('#자동이동시간참고').style.marginTop='0px';  
+  }
+
+  //파템료계산. 재료별로 동작 [파템제작재료12종]
+  //1.재료 우측에 필요수량 합산하에 좌측 전체필요수에 넣는다. 세번쨰버튼이 첫번째 파템 필요수
+  //필요수,보유수(수동입력),남은수,일get(수동입력),일퀘수 : 첫버튼부터 다섯개버튼씩
+  var 전체필요수=0;
+  var 더할수1=0;
+  var 더할수2=0;
+  var 더할수3=0;
+  var 더할수4=0;
+  var 타겟;
+  var 보유수=0;
+  var 전체수=0;
+  var 첫타겟순번=0;
+  var 일퀘수=0;
+  var 남은수=0;
+  var 일퀘남은날=0;
+  for (var i=0; i<17; i++) {
+    첫타겟순번+=2;
+    if (isNaN(document.querySelectorAll('#파템_함포 button')[첫타겟순번].innerHTML)) {더할수1=0;} 
+    else {더할수1=Number(document.querySelectorAll('#파템_함포 button')[첫타겟순번].innerHTML);}
+    if (isNaN(document.querySelectorAll('#파템_선수상 button')[첫타겟순번].innerHTML)) {더할수2=0;} 
+    else {더할수2=Number(document.querySelectorAll('#파템_선수상 button')[첫타겟순번].innerHTML);}
+    if (isNaN(document.querySelectorAll('#파템_장갑 button')[첫타겟순번].innerHTML)) {더할수3=0;} 
+    else {더할수3=Number(document.querySelectorAll('#파템_장갑 button')[첫타겟순번].innerHTML);}
+    if (isNaN(document.querySelectorAll('#파템_돛 button')[첫타겟순번].innerHTML)) {더할수4=0;} 
+    else {더할수4=Number(document.querySelectorAll('#파템_돛 button')[첫타겟순번].innerHTML);}
+    //전체필요수
+    전체수=더할수1+더할수2+더할수3+더할수4;
+    document.querySelectorAll('#파템재료_일퀘개수 button')[i*5].innerHTML=전체수;
+
+    //남은수
+    if (document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+1].innerHTML=='') {
+      보유수=0;
+    } else {
+      보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+1].innerHTML);
+    }
+    남은수=전체수-보유수;
+    document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+2].innerHTML=남은수;
+
+    //일퀘남은날수  : 일퀘수가 기록되어 있을때, 남은수 나누기 일퀘수 올림,,,,,,,일퀘남은날=(남은수/일퀘수).toPrecision(0);
+    타겟=document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+3];//일퀘수
+    if (isNaN(타겟.innerHTML) || 타겟.innerHTML=='') {} else {
+      일퀘수=Number(타겟.innerHTML);
+      일퀘남은날=Number(남은수/일퀘수).toFixed(0);
+      document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=일퀘남은날;
+    }
+  }
+
+
+
+
+  var 배열_콕스유물전투=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_홍조빛해저단괴=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_빛나는코발트주괴=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_달의비늘이새겨진합판=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_콕스유물상급=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_순수한진주결정=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_파도빛이감도는규격각목=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_대양의견고한현철=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_심해초줄기=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_순수한암초조각=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_콕스유물=[0,0,0,0,0,0,0,0,0,0];
+  var 배열_강화된섬나무증착합판=[0,0,0,0,0,0,0,0,0,0];
+  var 더할수=0;
+  var 타겟;
+  //[0] : 전체필요수, 4개 합산 : 파템_함포,파템_선수상,파템_장갑,파템_돛 세번째 div안의 첫번째 button
+  for (var i=0; i<4; i++) {
+    //1.전체필요수 [0]
+    타겟=document.querySelector('#파템_함포 > div:nth-last-of-type(3) > button:first-of-type');
+    if (타겟.innerHTML=='') {더할수=0;} else {더할수=타겟.innerHTML*1}  
+    
+
+  }
+
+}
 
 function 물품조회_0() {
   var 시작배열=0;
@@ -136,13 +234,30 @@ function 계산_나의무게계산() {
 function 차감교섭력clear() {
   document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;
   for (var i=0; i<8; i++) {
-    document.querySelectorAll('#차감input들 input')[2*i].value='';
-    document.querySelectorAll('#차감input들 input')[(2*i)+1].value=1;
+    document.querySelectorAll('#차감input들 input')[i].value='';
+    document.querySelectorAll('#차감input들 button')[i].innerHTML=1;
   }
 }
+function 개수1버튼더블클릭() {document.querySelectorAll('#차감input들 button')[0].innerHTML=1;남은교섭력계산();}
+function 개수2버튼더블클릭() {document.querySelectorAll('#차감input들 button')[1].innerHTML=1;남은교섭력계산();}
+function 개수3버튼더블클릭() {document.querySelectorAll('#차감input들 button')[2].innerHTML=1;남은교섭력계산();}
+function 개수4버튼더블클릭() {document.querySelectorAll('#차감input들 button')[3].innerHTML=1;남은교섭력계산();}
+function 개수5버튼더블클릭() {document.querySelectorAll('#차감input들 button')[4].innerHTML=1;남은교섭력계산();}
+function 개수6버튼더블클릭() {document.querySelectorAll('#차감input들 button')[5].innerHTML=1;남은교섭력계산();}
+function 개수7버튼더블클릭() {document.querySelectorAll('#차감input들 button')[6].innerHTML=1;남은교섭력계산();}
+function 개수8버튼더블클릭() {document.querySelectorAll('#차감input들 button')[7].innerHTML=1;남은교섭력계산();}
+function 개수1버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[0]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수2버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[1]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수3버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[2]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수4버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[3]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수5버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[4]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수6버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[5]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수7버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[6]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수8버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[7]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 남은교섭력계산() {
   var 남은_차감후_교섭력_2개=document.querySelectorAll('#남은_차감후_교섭력 input');
-  var 차감input들_16개=document.querySelectorAll('#차감input들 input');
+  var 차감개수들_8개=document.querySelectorAll('#차감input들 button');
+  var 차감input들_8개=document.querySelectorAll('#차감input들 input');
   // 남은교석력, 차감교섭력과 개수 8셑트 16개input 컨트롤
   var 남은교섭력;
   if (남은_차감후_교섭력_2개[0].value=='') {남은교섭력=0;} else {남은교섭력=남은_차감후_교섭력_2개[0].value;};
@@ -150,14 +265,14 @@ function 남은교섭력계산() {
   var 차감후은교섭력=남은_차감후_교섭력_2개[1];
   // 공란이면 0, 아니면 숫자일때 진행, 숫자아니면 메세지
   var 숫자확인;
-  for (var i=0; i<차감input들_16개.length; i++) {
-    if (차감input들_16개[i].value=='') {숫자확인=0;} else {숫자확인=차감input들_16개[i].value;}
+  for (var i=0; i<차감input들_8개.length; i++) {
+    if (차감input들_8개[i].value=='') {숫자확인=0;} else {숫자확인=차감input들_8개[i].value;}
     if (isNaN(숫자확인)) {alert('차감 박스가 공백 또는 숫자가 아님 return'); return;} //숫자가 아니면
   }
   var 차감할교섭력=0;
   for (var i=0; i<8; i++) {
-    if (차감input들_16개[2*i].value=='') {숫자확인=0;} else {숫자확인=차감input들_16개[2*i].value;}
-    차감할교섭력+=숫자확인*차감input들_16개[(2*i)+1].value;
+    if (차감input들_8개[i].value=='') {숫자확인=0;} else {숫자확인=차감input들_8개[i].value;}
+    차감할교섭력+=숫자확인*차감개수들_8개[i].innerHTML;
   }
   남은_차감후_교섭력_2개[1].value=남은교섭력-차감할교섭력;
 }
@@ -229,6 +344,7 @@ function 섬이름검색1() {
 
   if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_남.find(element => element==text)) {result="3구역_남"};
   if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
@@ -280,6 +396,7 @@ function 섬이름검색2() {
 
   if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
+  if (구역3_남.find(element => element==text)) {result="3구역_남"};
   if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
@@ -332,6 +449,7 @@ function 섬이름검색3() {
   if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_남.find(element => element==text)) {result="3구역_남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
 
@@ -383,6 +501,7 @@ function 섬이름검색4() {
   if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_남.find(element => element==text)) {result="3구역_남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
 
@@ -434,6 +553,7 @@ function 섬이름검색5() {
   if (구역3_동남.find(element => element==text)) {result="3구역_동남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_서끝.find(element => element==text)) {result="3구역_서끝"};
+  if (구역3_남.find(element => element==text)) {result="3구역_남"};
   if (구역3_중앙.find(element => element==text)) {result="3구역_중앙"};
   if (구역3_중북.find(element => element==text)) {result="3구역_중북"};
 
