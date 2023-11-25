@@ -126,33 +126,107 @@ function 모은재료클릭시() {
       document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=일퀘남은날;
     }
   }
-
-
-
-
-  var 배열_콕스유물전투=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_홍조빛해저단괴=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_빛나는코발트주괴=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_달의비늘이새겨진합판=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_콕스유물상급=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_순수한진주결정=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_파도빛이감도는규격각목=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_대양의견고한현철=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_심해초줄기=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_순수한암초조각=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_콕스유물=[0,0,0,0,0,0,0,0,0,0];
-  var 배열_강화된섬나무증착합판=[0,0,0,0,0,0,0,0,0,0];
-  var 더할수=0;
-  var 타겟;
-  //[0] : 전체필요수, 4개 합산 : 파템_함포,파템_선수상,파템_장갑,파템_돛 세번째 div안의 첫번째 button
-  for (var i=0; i<4; i++) {
-    //1.전체필요수 [0]
-    타겟=document.querySelector('#파템_함포 > div:nth-last-of-type(3) > button:first-of-type');
-    if (타겟.innerHTML=='') {더할수=0;} else {더할수=타겟.innerHTML*1}  
-    
-
-  }
-
+    //반복문을 벗어나 단독작업
+    //함포,선수상,흑장갑,돛 필요수 우측에 보유수 채워넣기
+    //보유수
+    //심해의 눈물
+    var 비교수=0;
+    var 순번=0;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //화려한 진주 결정
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //콕스유물 전추
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    if (비교수>보유수) {document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
+      document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=125;
+      document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수-125;
+    }
+    //화려한 암염 주괴
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //짙은 파도빛이 감도는 규격 각목
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //달의 핏줄이 새겨진 아마포
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //홍조빛 해저단괴
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
+    if (비교수>보유수) {document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
+      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=50;
+      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수-50;
+    }
+    //빛나는 코발트 주괴
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_돛 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //달의 비늘이 새겨진 합판
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    if (비교수>보유수) {document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
+      document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=300;
+      document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수-300;
+    }
+    //콕스유물 상급
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_돛 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //순수한 진주 결정
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //파도빛이 감도는 규격 각목
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //대양의 견고한 현철
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
+    // 심해초줄기
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
+    if (비교수>보유수) {document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
+      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=125;
+      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수-125;
+    }
+    //순수한 암초 조각
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //콕스유물 하급
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수;
+    //강화된 섬나무 증착합판
+    순번+=1;
+    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
+    document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
 }
 
 function 물품조회_0() {

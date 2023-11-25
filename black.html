@@ -26,10 +26,13 @@
   #물품조회 input:nth-of-type(even) {width:352px;text-align: left;}
   #차감input들 input {width:60px;text-align: center;margin-right:2px;}
   #차감input들 button {border:1px solid rgb(126, 118, 118);margin:0;}
-  #파템재료_재료아이콘 > div, #파템재료_일퀘개수 > div,
+  #파템재료_재료아이콘 > div, #파템재료_일퀘개수 > div, #파템재료_가방아이콘 > div,
   #파템_함포 > div, #파템_선수상 > div, #파템_장갑 > div, #파템_돛 > div {height:38px;margin:1px 0px;border:1px solid black;text-align: center;} /* 494 */
   #파템_함포 > div:first-child, #파템_선수상 > div:first-child, #파템_장갑 > div:first-child, #파템_돛 > div:first-child {padding-top:6px;}
+
   #파템재료_재료아이콘 .아이콘 {width:140px;}
+  #파템재료_가방아이콘 .아이콘 {width:39px;}
+
   #파템재료_일퀘개수 > div {height:38px;margin:1px 0px;border:1px solid black;background-color: rgb(236, 223, 223);}
 
   #파템재료_일퀘개수 > div > button, 
@@ -51,6 +54,13 @@
   #파템재료_일퀘개수 > div:first-child {height:76px;background-color: rgb(236, 223, 223);}
   #파템재료_일퀘개수 > div:first-child div {display:inline-block;border-right:1px solid black;width:30px;text-align: center;text-wrap:wrap ;vertical-align: top; background-color: rgb(236, 223, 223);}
   #파템재료_일퀘개수 > div:first-child div:last-of-type {border-right:none;}
+  #파템재료_일퀘개수 > div > button:nth-child(5n-2) { background-color: rgb(229, 223, 236);font-weight: bold;}
+  #파템재료_일퀘개수 > div > button:nth-child(5n) { background-color: rgb(229, 223, 236);font-weight: bold;}
+  #파템재료_일퀘개수 > div > button, 
+  #파템_함포 > div > button:nth-child(2n+2),
+  #파템_선수상 > div > button:nth-child(2n+2),
+  #파템_장갑 > div > button:nth-child(2n+2),
+  #파템_돛 > div > button:nth-child(2n+2) { background-color: rgb(229, 223, 236);font-weight: bold;}
 
   /* 세번째 div의 첫번째 button의 innerhtml */
   /* #파템_함포 > div:nth-last-of-type(3) > buttom:first-of-type {} */
@@ -477,151 +487,156 @@
       <div id="모은재료_파템재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
         <div id="파템재료_일퀘개수" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div><div>필요수</div><div>보유수</div><div>남은수</div><div>일<br><br>get</div><div>일퀘수</div></div>
+          <div><button>42</button><button>21</button><button></button><button>1</button><button></button></div><!-- 심해의 눈물 1-->
+          <div><button>30</button><button>1</button><button></button><button>물교</button><button></button></div><!-- 화려한 진주 결정-->
           <div><button></button><button>58</button><button></button><button>3</button><button></button></div><!-- 콕스유물 전투 -->
+          <div><button>30</button><button>2</button><button></button><button>물교</button><button></button></div><!-- 화려한 암염 주괴-->
+          <div><button>170</button><button>64</button><button></button><button>3</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+
+          <div><button>180</button><button>123</button><button></button><button>3</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button></button><button>45</button><button></button><button>2</button><button></button></div><!-- 홍조빛 해저 단괴-->
           <div><button></button><button>4</button><button></button><button>물교</button><button></button></div><!--빛나는 코발트주괴 -->
           <div><button></button><button>200</button><button></button><button>10</button><button></button></div><!-- 달의 비늘이 새겨진 합판-->
           <div><button></button><button>21</button><button></button><button>1</button><button></button></div><!-- 콕스유물 상급-->
           <div><button></button><button>40</button><button></button><button>2</button><button></button></div><!-- 순수한 진주결정-->
-
           <div><button></button><button>62</button><button></button><button>3</button><button></button></div><!--파도빛이 감도는 규격 각목 -->
           <div><button></button><button>15</button><button></button><button>물교</button><button></button></div><!-- 대양의 견고한 현철-->
           <div><button></button><button>86</button><button></button><button>4</button><button></button></div><!-- 심해초 줄기-->
           <div><button></button><button>151</button><button></button><button>8</button><button></button></div><!-- 순수한 암초조각-->
           <div><button></button><button>53</button><button></button><button>3</button><button></button></div><!-- 콕스유물 하급-->
           <div><button></button><button>220</button><button></button><button></button><button></button></div><!--강화된 섬나무 증착합판 -->
-
-          <div><button>30</button><button>2</button><button></button><button>물교</button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button>30</button><button>1</button><button></button><button>물교</button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button>180</button><button>123</button><button></button><button>3</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button>42</button><button>21</button><button></button><button>1</button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button>170</button><button>64</button><button></button><button>3</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-
         </div>
         
         <div id="파템재료_재료아이콘" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div style="padding-top:5px;">중범선-용맹</div>
           <div></div>
+          <div title="1" datae="심해의 눈물" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -435px;"></div>
+          <div title="" data="화려한 진주 결정" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -350px;"></div>
           <div title="3 [일일]제 몸 하나는 스스로 지켜야, +[탐색]섬 아이의 요청 선택보상" data="콕스유물 전투" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -0px;"></div>
+          <div title="" data="화려한 암염 주괴" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -307px;"></div>
+          <div title="" data="짙은 파도빛이 감도는 규격 각목" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -3px -489px;"></div>
+          <div title="3" data="달의 핏줄이 새겨진 아마포" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -393px;"></div>
           <div title="2 [일일]어린 해달 상인들을 위해" data="홍조빛 해저 단괴" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -0px;"></div>
           <div title="물물교환, +[탐색]섬 아이의 요청 선택보상" data="빛나는 코발트주괴" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -254px;"></div>
           <div title="10 [일일]그믐달 길드의 칸디둠 사냥꾼" data="달의 비늘이 새겨진 합판" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -41px;"></div>
           <div title="1 +[탐색]섬 아이의 요청 선택보상" data="콕스유물 상급" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -213px;"></div>
           <div title="" data="순수한 진주결정" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -213px;"></div>
-
           <div title="3 [일일]길드는 자선단체가 아니다." data="파도빛이 감도는 규격 각목" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -84px;"></div>
           <div title="" data="대양의 견고한 현철" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -84px;"></div>
           <div title="4" data="심해초 줄기" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -41px;"></div>
           <div title="8" data="순수한 암초조각" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -126px;"></div>
           <div title="" datae="콕스유물 하급" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -254px;"></div>
           <div title="1 물물교환" data="강화된 섬나무 증착합판" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -126px;"></div>
+        </div>
 
-          <div title="" data="화려한 암염 주괴" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -307px;"></div>
-          <div title="" data="화려한 진주 결정" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -350px;"></div>
-          <div title="3" data="달의 핏줄이 새겨진 아마포" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -393px;"></div>
-          <div title="1" datae="심해의 눈물" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -435px;"></div>
-          <div title="" data="짙은 파도빛이 감도는 규격 각목" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -3px -489px;"></div>
+        <div id="파템재료_가방아이콘" class="d-inline-block 재료높이" style="vertical-align: top;">
+          <div style="padding-top:5px;width:40px;"></div>
+          <div style="width:40px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: 1px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -37px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -75px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -113px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -151px -0px;"></div><!-- 콕스상급 -->
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -188px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -226px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -265px -0px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -302px -0px;"></div><!-- 심해초 줄기 -->
+
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: 1px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -37px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -75px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -113px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -151px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -188px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -226px -38px;"></div>
+          <div class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료모은것.png');background-position: -265px -38px;"></div>
         </div>
 
         <div id="파템_함포" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div>함포</div>
-
           <div><button>필요</button><button>보유</button></div>
+          <div><button>42</button><button></button></div><!-- 심해의 눈물 1-->
+          <div><button>30</button><button></button></div><!-- 화려한 진주 결정-->
           <div><button>125</button><button></button></div><!-- 콕스유물 전투 -->
+          <div><button>30</button><button></button></div><!-- 화려한 암염 주괴-->
+          <div><button>170</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button>180</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button></button><button></button></div><!-- 홍조빛 해저 단괴 -->
           <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
           <div><button>300</button><button></button></div><!--  달의 비늘이 새겨진 합판-->
           <div><button></button><button></button></div><!-- 콕스유물 상급 -->
           <div><button></button><button></button></div><!-- 순수한 진주결정 -->
-
           <div><button>180</button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
           <div><button></button><button></button></div><!-- 대양의 견고한 현철 -->
           <div><button></button><button></button></div><!--  심해초 줄기-->
           <div><button>180</button><button></button></div><!-- 순수한 암초조각 -->
           <div><button></button><button></button></div><!-- 콕스유물 하급 -->
           <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
-
-          <div><button>30</button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button>30</button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button>180</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button>42</button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button>170</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-
         </div>
         <div id="파템_선수상" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div>선수상</div>
 
           <div><button>필요</button><button>보유</button></div>
+          <div><button>일반</button><button></button></div><!-- 심해의 눈물 1-->
+          <div><button>일반</button><button></button></div><!-- 화려한 진주 결정-->
           <div><button></button><button></button></div><!-- 콕스유물 전투 -->
+          <div><button>일반</button><button></button></div><!-- 화려한 암염 주괴-->
+          <div><button>일반</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button>일반</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button>50</button><button></button></div><!-- 홍조빛 해저 단괴 -->
           <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
           <div><button></button><button></button></div><!--  달의 비늘이 새겨진 합판-->
           <div><button></button><button></button></div><!-- 콕스유물 상급 -->
           <div><button></button><button></button></div><!-- 순수한 진주결정 -->
-
           <div><button></button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
           <div><button>150</button><button></button></div><!-- 대양의 견고한 현철 -->
           <div><button>125</button><button></button></div><!--  심해초 줄기-->
           <div><button></button><button></button></div><!-- 순수한 암초조각 -->
           <div><button></button><button></button></div><!-- 콕스유물 하급 -->
           <div><button>300</button><button></button></div><!--  강화된 섬나무 증착합판-->
-
-          <div><button></button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-
         </div>
         <div id="파템_장갑" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div>흑장갑</div>
 
           <div><button>필요</button><button>보유</button></div>
+          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
+          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
           <div><button>125</button><button></button></div><!-- 콕스유물 전투 -->
+          <div><button></button><button></button></div><!-- 화려한 암염 주괴-->
+          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button></button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button></button><button></button></div><!-- 홍조빛 해저 단괴 -->
           <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
           <div><button>300</button><button></button></div><!--  달의 비늘이 새겨진 합판-->
           <div><button></button><button></button></div><!-- 콕스유물 상급 -->
           <div><button>45</button><button></button></div><!-- 순수한 진주결정 -->
-
           <div><button></button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
           <div><button></button><button></button></div><!-- 대양의 견고한 현철 -->
           <div><button></button><button></button></div><!--  심해초 줄기-->
           <div><button></button><button></button></div><!-- 순수한 암초조각 -->
           <div><button>60</button><button></button></div><!-- 콕스유물 하급 -->
           <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
-
-          <div><button></button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-
         </div>
         <div id="파템_돛" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">
           <div>돛</div>
-
           <div><button>필요</button><button>보유</button></div>
+          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
+          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
           <div><button></button><button></button></div><!-- 콕스유물 전투 -->
+          <div><button></button><button></button></div><!-- 화려한 암염 주괴-->
+          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button></button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button>50</button><button></button></div><!-- 홍조빛 해저 단괴 -->
           <div><button>30</button><button></button></div><!-- 빛나는 코발트주괴 -->
           <div><button></button><button></button></div><!--  달의 비늘이 새겨진 합판-->
           <div><button>30</button><button></button></div><!-- 콕스유물 상급 -->
           <div><button></button><button></button></div><!-- 순수한 진주결정 -->
-
           <div><button></button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
           <div><button></button><button></button></div><!-- 대양의 견고한 현철 -->
           <div><button>125</button><button></button></div><!--  심해초 줄기-->
           <div><button></button><button></button></div><!-- 순수한 암초조각 -->
           <div><button></button><button></button></div><!-- 콕스유물 하급 -->
           <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
-
-          <div><button></button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-
         </div>
         <div id="재료모은거" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">
           <img src="portal/images/black_문서/S2_재료모은것.png" alt="이미지없음">
@@ -631,11 +646,11 @@
 
     <div>일반재료</div>
     <div id="모은재료_일반재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
-      <div id="일반재료_일퀘개수">180 / 108 [일일]그믐달 길드의 나인샤크 사냥꾼, 달의 핏줄이 새겨진 아마포 3</div>
-      <div id="일반재료_재료아이콘">42 / 21 [일일]그믐달 길드의 검은무쇠이빨 사냥꾼, 심해의 눈물 1</div>
-      <div id="일반재료_재료이름">170 / 64  [일일]너도 좋고, 나도 좋고, 짙은 파도빛이 감도는 규격 각목 3</div>
-      <div id="일반재료_필요개수">30 / 1 [물교]화려한 암염 주괴</div>
-      <div id="일반재료_모은개수">30 /   [물교]화려한 진주 결정</div>
+      <div id="일반재료_일퀘개수">[일일]그믐달 길드의 나인샤크 사냥꾼, 달의 핏줄이 새겨진 아마포 3</div>
+      <div id="일반재료_재료아이콘">[일일]그믐달 길드의 검은무쇠이빨 사냥꾼, 심해의 눈물 1</div>
+      <div id="일반재료_재료이름">[일일]너도 좋고, 나도 좋고, 짙은 파도빛이 감도는 규격 각목 3</div>
+      <div id="일반재료_필요개수">[물교]화려한 암염 주괴</div>
+      <div id="일반재료_모은개수">[물교]화려한 진주 결정</div>
     </div>
     </div>
 
