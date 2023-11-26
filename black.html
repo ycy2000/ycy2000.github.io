@@ -15,10 +15,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <style>
   /* 넘치지않게, 말줄임, 줄바꿈하지 않기 : overflow:hidden; text-overflow:ellipsis; white-space:nowrap; */
-  #main사이드 {background-color: aqua;margin-left:3px;width:300px;height:1000px;vertical-align: top;}
+  #main사이드 {margin-left:3px;width:300px;}
   .a_형식 {color:chocolate;text-decoration: underline;}
-  .accordion-button, .accordion-body, #main사이드 > li {padding:7px 3px;list-style: none;}
-  .accordion-body > li, #선택문서셑팅하는곳 li {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #main사이드 li {padding:7px 3px;list-style: none;}
+  #선택문서셑팅하는곳 li, #main사이드 li {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .accordion-button:hover, .accordion-body:hover, .accordion-body > li:hover, 
   #선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;overflow:visible;}
   .무게input들 input {width:52px;text-align: center;}
@@ -61,6 +61,8 @@
   #파템_선수상 > div > button:nth-child(2n+2),
   #파템_장갑 > div > button:nth-child(2n+2),
   #파템_돛 > div > button:nth-child(2n+2) { background-color: rgb(229, 223, 236);font-weight: bold;}
+
+  .노랑 {background-color: chartreuse;}
 
   /* 세번째 div의 첫번째 button의 innerhtml */
   /* #파템_함포 > div:nth-last-of-type(3) > buttom:first-of-type {} */
@@ -152,74 +154,27 @@
 <div style="white-space: nowrap;" id="black리스너용">
   <div class="d-inline-block" style="width:3px;"></div>
   <div class="d-inline-block" id="main사이드" style="vertical-align: top;">
-    <div class="accordion"><!--accordion-body의 부모의 data-bs-parent="#accordionExample" : 여기 id와 같으면 여기가 열리면 다른곳 닫힌다? -->
-      <div class="accordion-item">
-        <h2 class="accordion-header"><!-- button에 collasped 클래스 추가햐면 화살표 아래로 상태 -->
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#숨김ID_1" aria-expanded="true" aria-controls="collapseOne">
-            중범선(점진,용맹) 만들기, 증축, 장비
-          </button>
-        </h2>
-        <div id="숨김ID_1" class="accordion-collapse collapse show"><!-- 펼쳐놓으려면 show 클래스 추가 -->
-          <div class="accordion-body">
-            <li><button class="파일연결" title="S1_인벤중범선증축표">인벤 : 중범선 중축표 [목표]</button> 
-                <button class="파일연결" title="S0_01_일퀘출석체크">일퀘출쳌</button></li>
-            <li class="파일연결" title="S1_화려한2종교환무역품">화려한2종,현철 (물교 단계 재료?) [물교 3천회 이후]</li>
-            <li class="파일연결" title="S1_해상일퀘동선" style="text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해상일퀘 동선, 재료수급 png</li>
-            <li class="파일연결" title="S1_해역사진" style="background-color: cadetblue;
-             text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해역사진 [물교계획, 무게 계산]</li>
-            <li class="파일연결" title="S1_까마귀주화상점">까마귀 주화 상점, 레마섬, 까마귀둥지 [온기를 품은 블랙스톤(10주화), 한기가 서린 블랙스톤(20주화)]</li>
-            <li class="파일연결 a_형식" title="S1_증축전후비교">[증축전후 비교] 무역선,구축함</li>
-          </div>
-        </div>
-      </div>
+    <div style="background-color: aqua;">
+      <li><button class="파일연결" title="S1_인벤중범선증축표">인벤 : 중범선 중축표 [목표]</button> 
+          <button class="파일연결" title="S0_01_일퀘출석체크">일퀘출쳌</button></li>
+      <li class="파일연결" title="S1_해상일퀘동선" style="text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해상일퀘 동선, 재료수급 png</li>
+      <li class="파일연결" title="S1_해역사진" style="background-color: cadetblue;
+        text-decoration-line:underline; text-decoration-color:blue;text-decoration-style:wavy;">해역사진 [물교계획, 무게 계산]</li>
+      <li class="파일연결" title="S1_까마귀주화상점">까마귀 주화 상점, 레마섬, 까마귀둥지 [온기를 품은 블랙스톤(10주화), 한기가 서린 블랙스톤(20주화)]</li>
+      <li class="파일연결 a_형식" title="S1_증축전후비교">[증축전후 비교] 무역선,구축함</li>
     </div>
-    <div class="accordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#숨김ID_2" aria-expanded="true" aria-controls="collapseOne">
-            유투브, 블로그 바로가기
-          </button>
-        </h2>
-        <div id="숨김ID_2" class="accordion-collapse collapse show">
-          <div class="accordion-body">
-            <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=71348&_categoryNo=12&_sortType=1&_orderType=False&_bigPageNo=1&_pageNo=2&_pageSize=25&_searchDay=0&_searchType=1&_processStatus=99&_forumListType=3" target="_blank">38일차 최단 파밍 과정</a></li>
-            <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
-            <li><a href="https://ashasleti.tistory.com/1051" target="_blank">중범선 파템 비교[치로][펌]]</a></li>
-            <li><a href="https://www.kr.playblackdesert.com/ko-kr/Forum/ForumTopic/Detail?_topicNo=11523&_opinionNo=0" target="_blank">물물교환 섬 단계별 지도</a></li>
-          </div>
-        </div>
-      </div>
+    <div style="background-color:white;">
+      <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=71348&_categoryNo=12&_sortType=1&_orderType=False&_bigPageNo=1&_pageNo=2&_pageSize=25&_searchDay=0&_searchType=1&_processStatus=99&_forumListType=3" target="_blank">38일차 최단 파밍 과정</a></li>
+      <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
+      <li><a href="https://ashasleti.tistory.com/1051" target="_blank">중범선 파템 비교[치로][펌]]</a></li>
+      <li><a href="https://www.kr.playblackdesert.com/ko-kr/Forum/ForumTopic/Detail?_topicNo=11523&_opinionNo=0" target="_blank">물물교환 섬 단계별 지도</a></li>
+      <li>_</li>
+      <li><a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">canvas 선긋기</a></li>
+      <li class="파일연결" title="대양_선원성장스탯정보">_</li>
     </div>
-    <div class="accordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="background-color: cadetblue;color:black;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#숨김ID_3" aria-expanded="true" aria-controls="collapseOne">
-            인스턴트 메모들
-          </button>
-        </h2>
-        <div id="숨김ID_3" class="accordion-collapse collapse show">
-          <div class="accordion-body" style="background-color: rgb(231, 197, 197);">
-            <li>_</li>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="accordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="background-color: cadetblue;color:black;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#숨김ID_4" aria-expanded="true" aria-controls="collapseOne">
-            script
-          </button>
-        </h2>
-        <div id="숨김ID_4" class="accordion-collapse collapse show">
-          <div class="accordion-body" style="background-color: rgb(231, 197, 197);">
-            <li><a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">canvas 선긋기</a></li>
-          </div>
-        </div>
-      </div>
-    </div>
-    <li class="파일연결" title="대양_선원성장스탯정보">_</li>
   </div>
+
+  
   <div id="선택문서셑팅하는곳" class="d-inline-block d-none" style="vertical-align: top;width:1400px;">
   </div>
 </div>
@@ -240,61 +195,7 @@
   <div id="S0_01_일퀘출석체크" style="border:1px solid black;">
     <embed src="portal/images/black_문서/S0_01_일퀘출석체크.txt" width=1000px height=870px>
   </div>
-  <div id="S1_화려한2종교환무역품">
-    <h5>▢ 화려한 2종 교환무역품 : 3000회부터 5120회까지 재료갱신에서 나오고, 5120회부터 일반갱신에서도 나온다</h5>
-    <div style="display:inline-block;width:400px;height:305px; border:1px solid black;vertical-align: top;">
-      <h5>▢ 화려한 암염 주괴 : 5단계 교역품 물물교환</h5>
-      <h6 style="text-indent: 23px;"><span class="a_형식">점진 : 35, 용맹 : 30 == 65개 필요</span></h6>
-      <h6 style="text-indent: 23px;">1. <span class="a_형식">[중복]</span> 고대인을 형상화한 초상화 </h6>
-      <h6 style="text-indent: 23px;">2. <span class="a_형식">[중복]</span> 고급 문양의 옷감</h6>
-      <h6 style="text-indent: 23px;">3. <span class="a_형식">[중복]</span> 푸른빛 석영</h6>
-      <h6 style="text-indent: 23px;">4. <span class="a_형식">[중복]</span> 황금빛 물고기 비늘</h6>
-      <h6 style="text-indent: 23px;">5. <span class="a_형식">[중복]</span> 빛바랜 황금용 조각상</h6>
-      <h6 style="text-indent: 23px;">6. (암염) 102년 묵은 황금초</h6>
-      <h6 style="text-indent: 23px;">7. (암염) 흰색 애벌레 박제품</h6>
-      <h6 style="text-indent: 23px;">8. (암염) 팔랑나비 박제품</h6>
-      <h6 style="text-indent: 23px;">9. (암염) 최고급 황금 촛대</h6>
-    </div>
-    <div style="display:inline-block;width:400px;height:305px;border:1px solid black;vertical-align: top;">
-      <h5>▢ 화려한 진주 결정 : 5단계 교역품 물물교환</h5>
-      <h6 style="text-indent: 23px;"><span class="a_형식">점진 : 35, 용맹 : 30 == 65개 필요</span></h6>
-      <h6 style="text-indent: 23px;">1. <span class="a_형식">[중복]</span> 고대인을 형상화한 초상화 </h6>
-      <h6 style="text-indent: 23px;">2. <span class="a_형식">[중복]</span> 고급 문양의 옷감</h6>
-      <h6 style="text-indent: 23px;">3. <span class="a_형식">[중복]</span> 푸른빛 석영</h6>
-      <h6 style="text-indent: 23px;">4. <span class="a_형식">[중복]</span> 황금빛 물고기 비늘</h6>
-      <h6 style="text-indent: 23px;">5. <span class="a_형식">[중복]</span> 빛바랜 황금용 조각상</h6>
-      <h6 style="text-indent: 23px;">6. [진주] 젊음을 담은 비약</h6>
-      <h6 style="text-indent: 23px;">7. [진주] 정체불명의 암석</h6>
-      <h6 style="text-indent: 23px;">8. [진주] 팔각 문양 보관함</h6>
-    </div>
-    <div style="display:inline-block;width:450px;height:305px;border:1px solid black;vertical-align: top;">
-      <h5>▢ 대양의 견고한 현철 : 4단계 교역품 물물교환</h5>
-      <h6 style="text-indent: 23px;"><span class="a_형식">파템 선수상 재료로 150개 필요</span></h6>
-      <h6 style="text-indent: 23px;">1. 오색빛 실타래 </h6>
-      <h6 style="text-indent: 23px;">2. 청록빛 소금 덩어리</h6>
-      <h6 style="text-indent: 23px;">3. 만병통치약</h6>
-      <h6 style="text-indent: 23px;">4. 훔친 해적단 단도</h6>
-      <h6 style="text-indent: 23px;">5. 해적의 열쇠</h6>
-      <h6 style="text-indent: 23px;">6. 청동 촛대</h6>
-      <h6 style="text-indent: 23px;">7. 자수정 파편</h6>
-    </div>
-    <div style="margin-top:5px;"></div>
-    <div style="display:inline-block;width:400px;height:360px;border:1px solid black;vertical-align: top;">
-      <h5>▢ 5단 왼쪽 : 필요한 4단 오른쪽</h5>
-      <h6 style="text-indent: 23px;">1. <span class="a_형식">[중복]</span> 고대인을 형상화한 초상화 </h6>
-      <h6 style="text-indent: 23px;">2. <span class="a_형식">[중복]</span> 고급 문양의 옷감</h6>
-      <h6 style="text-indent: 23px;">3. <span class="a_형식">[중복]</span> 푸른빛 석영</h6>
-      <h6 style="text-indent: 23px;">4. <span class="a_형식">[중복]</span> 황금빛 물고기 비늘</h6>
-      <h6 style="text-indent: 23px;">5. <span class="a_형식">[중복]</span> 빛바랜 황금용 조각상</h6>
-      <h6 style="text-indent: 23px;">6. (암염 )102년 묵은 황금초</h6>
-      <h6 style="text-indent: 23px;">7. (암염) 흰색 애벌레 박제품</h6>
-      <h6 style="text-indent: 23px;">8. (암염) 팔랑나비 박제품</h6>
-      <h6 style="text-indent: 23px;">9. (암염) 최고급 황금 촛대</h6>
-      <h6 style="text-indent: 23px;">10. [진주] 젊음을 담은 비약</h6>
-      <h6 style="text-indent: 23px;">11. [진주] 정체불명의 암석</h6>
-      <h6 style="text-indent: 23px;">12. [진주] 팔각 문양 보관함</h6>
-    </div>
-  </div>
+
   <div id="S1_해상일퀘동선">
     <div style="display: inline-block; width:900px;vertical-align: top;">
       <h5><span class="a_형식">▢ 중범(용맹/비상) 증축식 펌</span></h5>
@@ -356,17 +257,17 @@
         <input type = "text" maxlength = "10" style="margin-left:17px;width:82px;text-align: center;" value=0>
       </div>
       <div id="차감input들" class="d-inline-block" style="margin-left:5px;width:182px;vertical-align: top;border-right:1px solid black;">
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수1버튼클릭()" ondblclick="개수1버튼더블클릭()">1</button>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수2버튼클릭()" ondblclick="개수2버튼더블클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수1버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수1버튼클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수2버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수2버튼클릭()">1</button>
         <br>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수3버튼클릭()" ondblclick="개수3버튼더블클릭()">1</button>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수4버튼클릭()" ondblclick="개수4버튼더블클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수3버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수3버튼클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수4버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수4버튼클릭()">1</button>
         <br>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수5버튼클릭()" ondblclick="개수5버튼더블클릭()">1</button>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수6버튼클릭()" ondblclick="개수6버튼더블클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수5버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수5버튼클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수6버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수6버튼클릭()">1</button>
         <br>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수7버튼클릭()" ondblclick="개수7버튼더블클릭()">1</button>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><button onclick="개수8버튼클릭()" ondblclick="개수8버튼더블클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수7버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수7버튼클릭()">1</button>
+        <input onchange="남은교섭력계산()" ondblclick="개수8버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수8버튼클릭()">1</button>
       </div>
     </div>
 
@@ -487,24 +388,24 @@
       <div id="모은재료_파템재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
         <div id="파템재료_일퀘개수" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div><div>필요수</div><div>보유수</div><div>남은수</div><div>일<br><br>get</div><div>일퀘수</div></div>
-          <div><button>42</button><button>21</button><button></button><button>1</button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button>30</button><button>1</button><button></button><button>물교</button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button>58</button><button></button><button>3</button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button>30</button><button>2</button><button></button><button>물교</button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button>170</button><button>64</button><button></button><button>3</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button>42</button><button style="background-color: chartreuse;">22</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 심해의 눈물 1-->
+          <div><button>30</button><button style="background-color: chartreuse;">2</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 진주 결정-->
+          <div><button></button><button style="background-color: chartreuse;">62</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 전투 -->
+          <div><button>30</button><button style="background-color: chartreuse;">3</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 암염 주괴-->
+          <div><button>170</button><button style="background-color: chartreuse;">69</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
 
-          <div><button>180</button><button>123</button><button></button><button>3</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button>45</button><button></button><button>2</button><button></button></div><!-- 홍조빛 해저 단괴-->
-          <div><button></button><button>4</button><button></button><button>물교</button><button></button></div><!--빛나는 코발트주괴 -->
-          <div><button></button><button>200</button><button></button><button>10</button><button></button></div><!-- 달의 비늘이 새겨진 합판-->
-          <div><button></button><button>21</button><button></button><button>1</button><button></button></div><!-- 콕스유물 상급-->
-          <div><button></button><button>40</button><button></button><button>2</button><button></button></div><!-- 순수한 진주결정-->
-          <div><button></button><button>62</button><button></button><button>3</button><button></button></div><!--파도빛이 감도는 규격 각목 -->
-          <div><button></button><button>15</button><button></button><button>물교</button><button></button></div><!-- 대양의 견고한 현철-->
-          <div><button></button><button>86</button><button></button><button>4</button><button></button></div><!-- 심해초 줄기-->
-          <div><button></button><button>151</button><button></button><button>8</button><button></button></div><!-- 순수한 암초조각-->
-          <div><button></button><button>53</button><button></button><button>3</button><button></button></div><!-- 콕스유물 하급-->
-          <div><button></button><button>220</button><button></button><button></button><button></button></div><!--강화된 섬나무 증착합판 -->
+          <div><button>180</button><button style="background-color: chartreuse;">126</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
+          <div><button></button><button style="background-color: chartreuse;">49</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 홍조빛 해저 단괴-->
+          <div><button></button><button style="background-color: chartreuse;">5</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!--빛나는 코발트주괴 -->
+          <div><button></button><button style="background-color: chartreuse;">220</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!-- 달의 비늘이 새겨진 합판-->
+          <div><button></button><button style="background-color: chartreuse;">24</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 상급-->
+          <div><button></button><button style="background-color: chartreuse;">42</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 진주결정-->
+          <div><button></button><button style="background-color: chartreuse;">66</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--파도빛이 감도는 규격 각목 -->
+          <div><button></button><button style="background-color: chartreuse;">21</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 대양의 견고한 현철-->
+          <div><button></button><button style="background-color: chartreuse;">94</button><button></button><button>4</button><button style="background-color: chartreuse;"></button></div><!-- 심해초 줄기-->
+          <div><button></button><button style="background-color: chartreuse;">159</button><button></button><button>8</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 암초조각-->
+          <div><button></button><button style="background-color: chartreuse;">58</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 하급-->
+          <div><button></button><button style="background-color: chartreuse;">230</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!--강화된 섬나무 증착합판 -->
         </div>
         
         <div id="파템재료_재료아이콘" class="d-inline-block 재료높이" style="vertical-align: top;">
@@ -520,11 +421,11 @@
           <div title="물물교환, +[탐색]섬 아이의 요청 선택보상" data="빛나는 코발트주괴" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -254px;"></div>
           <div title="10 [일일]그믐달 길드의 칸디둠 사냥꾼" data="달의 비늘이 새겨진 합판" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -41px;"></div>
           <div title="1 +[탐색]섬 아이의 요청 선택보상" data="콕스유물 상급" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -213px;"></div>
-          <div title="" data="순수한 진주결정" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -213px;"></div>
+          <div title="2  [일일]활기찬 일리야 섬 I" data="순수한 진주결정" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -213px;"></div>
           <div title="3 [일일]길드는 자선단체가 아니다." data="파도빛이 감도는 규격 각목" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -84px;"></div>
           <div title="" data="대양의 견고한 현철" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -84px;"></div>
           <div title="4" data="심해초 줄기" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -41px;"></div>
-          <div title="8" data="순수한 암초조각" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -126px;"></div>
+          <div title="8 [일일]활기찬 일리야 섬 I" data="순수한 암초조각" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -126px;"></div>
           <div title="" datae="콕스유물 하급" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -254px;"></div>
           <div title="1 물물교환" data="강화된 섬나무 증착합판" class="아이콘" style="background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -126px;"></div>
         </div>
@@ -555,12 +456,12 @@
         <div id="파템_함포" class="d-inline-block 재료높이" style="vertical-align: top;">
           <div>함포</div>
           <div><button>필요</button><button>보유</button></div>
-          <div><button>42</button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button>30</button><button></button></div><!-- 화려한 진주 결정-->
+          <div><button class="노랑">42</button><button class="노랑"></button></div><!-- 심해의 눈물 1-->
+          <div><button class="노랑">30</button><button class="노랑"></button></div><!-- 화려한 진주 결정-->
           <div><button>125</button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button>30</button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button>170</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-          <div><button>180</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
+          <div><button class="노랑">30</button><button class="노랑"></button></div><!-- 화려한 암염 주괴-->
+          <div><button class="노랑">170</button><button class="노랑"></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button class="노랑">180</button><button class="노랑"></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button></button><button></button></div><!-- 홍조빛 해저 단괴 -->
           <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
           <div><button>300</button><button></button></div><!--  달의 비늘이 새겨진 합판-->
@@ -577,12 +478,12 @@
           <div>선수상</div>
 
           <div><button>필요</button><button>보유</button></div>
-          <div><button>일반</button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button>일반</button><button></button></div><!-- 화려한 진주 결정-->
+          <div><button class="노랑">일반</button><button></button></div><!-- 심해의 눈물 1-->
+          <div><button class="노랑">일반</button><button></button></div><!-- 화려한 진주 결정-->
           <div><button></button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button>일반</button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button>일반</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-          <div><button>일반</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
+          <div><button class="노랑">일반</button><button></button></div><!-- 화려한 암염 주괴-->
+          <div><button class="노랑">일반</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+          <div><button class="노랑">일반</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
           <div><button>50</button><button></button></div><!-- 홍조빛 해저 단괴 -->
           <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
           <div><button></button><button></button></div><!--  달의 비늘이 새겨진 합판-->
@@ -667,12 +568,25 @@
 
 
       </textarea>
-      <textarea id="우측상단메모" style="position: absolute; width:387px;height:247px;top:212px;left:1470px;">(부족) 4.목 잘린 용 조각상, 4.만병통치약
-  114.1%, 에스파-일리아 과적(자동) : 8분
-  일리아-에페 : 정상8분,
-  에페리아 던데-로즈반:자동정상 14분
-  일리아 위 포르타넨 과적 : 8.20
-  일리아 레라오 일반 : 4.40, 과적
+      <textarea id="우측상단메모" style="position: absolute; width:387px;height:247px;top:212px;left:1470px;">[대양 코인 50분]속도 114.1%, 자동이동 해풍X
+일리야 아래 - 하코번 : 19분 30초
+하코번 - 더코 : 8분 30초
+더코 - 카슈마 : 3 분 10초 
+5구역우측 과적 : 10분정도
+할마드 - 일리야 정상T : 분
+-------------------------------------------------------------
+일리야 - 쿠이트제도 위 : 6분 40초(옮긴후)
+쿠이트제도 위 - 파키오의 전투 똇목 : 8분 40초
+파키오와 전투 뗏목 - 랑티니아의 전투 뗏목 : 3.40
+랑티니아의 전투 뗏목 - 떠돌이 상인의 배 : 1.10
+떠돌이 상인의 배 - 난파된 하란의 수송선 : 2.5
+난파된 하란의 수송선 - 쿠이트제도 위 : 7분 (47도정도 아래로 좀더)
+쿠이트제도 위 - 일리야 : 6분 40초 ====== 대양코인 50분
+-------------------------------------------------------------
+★ 가방 무게 오바 전에 퀘 완료!! ★ 
+대양의 견고한 현철, 강화된 섬나무 합판이 모자란다?? 
+[[[물교품은 1단50 이상유지 2단 100 3단 100 4단 50 5단 5-10정도 유지]]]
+
 
 
 
@@ -680,31 +594,21 @@
 
 
       </textarea>
-      <textarea id="중간하단메모" style="position: absolute; width:549px;height:490px; top:802px;left:565px;">[대양 코인 50분]속도 114.1%, 자동이동 해풍X, 쾌속운항O.
-      일리야 아래 - 하코번 : 19분 30초
-      하코번 - 더코 : 8분 30초
-      더코 - 카슈마 : 3 분 10초 
-      [할마드-시르나 : 2분, 시르나-일리아 과적 : 9분40초]
-      5구역우측 과적 : 10분정도
-      할마드 - 일리야 정상T : 분
-      -------------------------------------------------------------
-      일리야 - 쿠이트제도 위 : 6분 40초(옮긴후)
-      쿠이트제도 위 - 파키오의 전투 똇목 : 8분 40초
-      파키오와 전투 뗏목 - 랑티니아의 전투 뗏목 : 3분 40초
-      랑티니아의 전투 뗏목 - 떠돌이 상인의 배 : 1분 10초
-      떠돌이 상인의 배 - 난파된 하란의 수송선 : 2분 5초
-      난파된 하란의 수송선 - 쿠이트제도 위 : 7분 (47도정도 아래로 좀더)
-      쿠이트제도 위 - 일리야 : 6분 40초 ====== 대양코인 50분
-      -------------------------------------------------------------
-      대양의 견고한 현철, 강화된 섬나무 합판이 모자란다?? 
-      [[[물교품은 1단50 이상유지 2단 100 3단 100 4단 50 5단 5-10정도 유지]]]
-      주화 교환 8종 26만교역, 하코번 복귀시 3단준비
-      3000회부터 화려한 시리즈 재료갱신에. 5120회부터는 일반갱신에서도
-      ★ 선박의 과적품 가방에 넣을수 있다. 한번의 기회!! ★ 
-      ★ 가방 무게 오바 전에 퀘 완료!! ★ 
-      </textarea>
-      <textarea id="우측하단메모" style="position: absolute; width:750px;height:490px;top:802px;left:1113px;">B=하선, N=승선, G=물물교환정보, CTRL+F=아이템찾기, 빼놓은선박수리같이됨
+      <textarea id="중간하단메모" style="position: absolute; width:549px;height:490px; top:802px;left:565px;">[할마드-시르나 : 2분, 
+        시르나-일리아 과적 : 9.40초, 수동:4.30
+        114.1%, 에스파-일리아 과적(자동) : 8분
+        일리아-에페 : 수동8분,T쾌속X11.30
+        리스즈 - 일리야 과적 T : 10.30
+        에페리아 던데-로즈반:자동정상 14분
+        일리아 위 포르타넨 과적 : 8.20
+        일리아 레라오 일반 : 4.40, 과적
+        타슈 - 일리야T 과적 : 9.50
+        바레미 : 수동 2분
+        티그리스 : 과적 7.50
 
+      
+      </textarea>
+      <textarea id="우측하단메모" style="position: absolute; width:750px;height:490px;top:802px;left:1113px;">
 
 
 
