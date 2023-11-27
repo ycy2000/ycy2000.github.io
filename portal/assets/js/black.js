@@ -455,11 +455,13 @@ function 섬검색초기화() {
 function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
     document.querySelector('#추가1').classList.add('d-none');
+    document.querySelector('#추가2').classList.add('d-none');
     document.querySelector('#좌측상단메모').classList.add('d-none');
     document.querySelector('#우측상단메모').classList.add('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
   } else {
     document.querySelector('#추가1').classList.remove('d-none');
+    document.querySelector('#추가2').classList.remove('d-none');
     document.querySelector('#좌측상단메모').classList.remove('d-none');
     document.querySelector('#우측상단메모').classList.remove('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
