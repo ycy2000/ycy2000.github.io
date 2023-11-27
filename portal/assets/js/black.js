@@ -1,88 +1,67 @@
-for (var i=0; i<document.querySelectorAll('input').length; i++) {
-  document.querySelectorAll('input')[i].autocomplete="off";
-}
-var 단계1물품=['앵두나무 씨앗 주머니','황금빛 모래','쫄깃한 전어 회',
-'해상 전투 식량','해적의 화약','로아 꽃 씨앗 주머니','알수없는 고대 벽화','뗏목 조각품',
-'거대한 물고기 뼈','비옥한 흙','갈퀴 꽃 씨앗 주머니','고대 항아리 파편','때 탄 갈매기 조각상','말린 푸른 장미']
-var 단계2물품=['섬마을 도시락','최고급 굴 상자','넓찍한 돌판','정제된 식수','오색 구슬','해적선 돛대','괴생물 촉수',
-'나르보산 해삼','소라게 껍질 장식','해양 구조품','크론성 금주화','해적 금주화','성게 가시','균형잡힌 돌탑']
-var 단계3물품=['롭스타 그물','족제비 가죽 외투','해골 장식 찻잔','해적단의 보급상자','찢어진 해적 보물지도','낡은 지령서',
-'해골무늬 카페트','반달 조리용 칼','정찰병 망원경','오래된 모래 시계','푸른 야초 더미','희귀 약초 무더기','걸쭉한 괴생물 혈액','종유석 파편']
-var 단계4물품=['뱃사공의 수련서','청동 촛대','해상 기사단의 창','훔친 해적단 단도','조개 껍질 장식','청록빛 소금덩어리','해적의 열쇠',
-'자수정 파편','해상 기사단의 투구','만병통치약','목 잘린 용 조각상','굳어진 용암 액','오색빛 실타래','금주화가 담긴 낡은 상자']
-var 단계5물품=['젊음을 담은 비약','고대인을 형상화한 초상화','102년 묵은 황금초','조각상의 눈물','푸른빛 석영','팔각 문양 보관함','정체불명의 암석',
-'황금빛 물고기 비늘','팔랑나비 박제품','37년된 약주','흰색 애벌레 박제품','고급 문양의 옷감','빛바랜 황금용 조각상','최고급 황금 촛대']
-
-var 구역1상_북동=['쿠이트'];
-var 구역1상_남동=['파딕스'];
-var 구역1상_서=['알마이'];
-var 구역1상_남서=['테스테'];
-var 구역1하_북=['데이튼','오벤','네트넘'];
-var 구역1하_동=['던데','에버딘','알브레서','바라테르'];
-var 구역1하_중앙=['란디스','세르카','진버레이','바에자'];
-var 구역1하_중서=['모드릭','시오닐','라메다'];
-var 구역1하_서남끝=['테야말'];
-
-var 구역2_중앙위=['아리타'];
-var 구역2_북동끝=['타슈'];
-var 구역2_서하=['스타렌'];
-var 구역2_중앙=['나르보','리스즈','마르카','루루브'];
-
-var 구역3_동남=['루비아노','에베토','에프데룬','마리베노'];
-var 구역3_남=['두흐'];
-var 구역3_서끝=['인버넨','앙쥬'];
-var 구역3_중앙=['발베쥬','마를레느'];
-var 구역3_중북=['툴루','오르프스'];
-
-var 구역4_동끝=['푸자라'];
-var 구역4_남동=['델링하트','필바라'];
-var 구역4_중남=['오스트라','아라킬','칸베라'];
-var 구역4_남끝=['타라무라'];
-var 구역4_남서끝=['파라타마','베이루와'];
-var 구역4_서끝=['바레미','웨이타'];
-var 구역4_중북서=['아지르'];
-var 구역4_북서끝=['라시드','알나하'];
-
-var 구역5_북끝=['틴베라','레라오'];
-var 구역5_북동끝=['포르타넨','샤샤','로즈반'];
-var 구역5_동끝=['오리샤','보아'];
-var 구역5_동남끝=['티그리스','시르나','에스파','리에드'];
-var 구역5_동남남끝=['소코타'];
-
-var 구역5=['틴베라','레라오','포르타넨','샤샤','로즈반','오리샤','보아','티그리스','시르나','에스파','리에드','소코타'];
-var 일반물품섬='_바에자_세르카_란디스_바라테르_스타렌_두흐_에베토_마리베노_에프데룬_베이루와_파라타마_';
-var 단계1섬='_쿠이트_테스테_타슈_아리타_라시드_포르타넨_보아_에스파_소코타_틴베라_레라오_';
-var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마를레느_웨이타_칸베라_아라킬_오스트라_타라무라_';
-var 단계3섬='_데이튼_테야말_리스즈_툴루_알나하_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
-var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
-var 재료교환섬='_네트넘_에버딘_마르카_인버넨_델링하트_';
-
-function 모은재료클릭시() {
-  if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
-    document.querySelector('#모은재료none상태').classList.remove('d-none');  
-
-    document.querySelector('#좌측상단메모').classList.add('d-none');
-    document.querySelector('#중간하단메모').classList.add('d-none');
-    document.querySelector('#우측상단메모').classList.add('d-none');
-    document.querySelector('#우측하단메모').classList.add('d-none');
-    document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
-    // document.querySelector('#해역_물품단계').classList.add('d-none');
-    // document.querySelector('#자동이동시간참고').style.marginTop='483px';  
-  } else {
-    document.querySelector('#모은재료none상태').classList.add('d-none');
-
-    document.querySelector('#좌측상단메모').classList.remove('d-none');
-    document.querySelector('#중간하단메모').classList.remove('d-none');
-    document.querySelector('#우측상단메모').classList.remove('d-none');
-    document.querySelector('#우측하단메모').classList.remove('d-none');
-    document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
-    // document.querySelector('#해역_물품단계').classList.remove('d-none');
-    // document.querySelector('#자동이동시간참고').style.marginTop='0px';  
+if (1==1) {
+  for (var i=0; i<document.querySelectorAll('input').length; i++) {
+    document.querySelectorAll('input')[i].autocomplete="off";
   }
+  var 단계1물품=['앵두나무 씨앗 주머니','황금빛 모래','쫄깃한 전어 회',
+  '해상 전투 식량','해적의 화약','로아 꽃 씨앗 주머니','알수없는 고대 벽화','뗏목 조각품',
+  '거대한 물고기 뼈','비옥한 흙','갈퀴 꽃 씨앗 주머니','고대 항아리 파편','때 탄 갈매기 조각상','말린 푸른 장미']
+  var 단계2물품=['섬마을 도시락','최고급 굴 상자','넓찍한 돌판','정제된 식수','오색 구슬','해적선 돛대','괴생물 촉수',
+  '나르보산 해삼','소라게 껍질 장식','해양 구조품','크론성 금주화','해적 금주화','성게 가시','균형잡힌 돌탑']
+  var 단계3물품=['롭스타 그물','족제비 가죽 외투','해골 장식 찻잔','해적단의 보급상자','찢어진 해적 보물지도','낡은 지령서',
+  '해골무늬 카페트','반달 조리용 칼','정찰병 망원경','오래된 모래 시계','푸른 야초 더미','희귀 약초 무더기','걸쭉한 괴생물 혈액','종유석 파편']
+  var 단계4물품=['뱃사공의 수련서','청동 촛대','해상 기사단의 창','훔친 해적단 단도','조개 껍질 장식','청록빛 소금덩어리','해적의 열쇠',
+  '자수정 파편','해상 기사단의 투구','만병통치약','목 잘린 용 조각상','굳어진 용암 액','오색빛 실타래','금주화가 담긴 낡은 상자']
+  var 단계5물품=['젊음을 담은 비약','고대인을 형상화한 초상화','102년 묵은 황금초','조각상의 눈물','푸른빛 석영','팔각 문양 보관함','정체불명의 암석',
+  '황금빛 물고기 비늘','팔랑나비 박제품','37년된 약주','흰색 애벌레 박제품','고급 문양의 옷감','빛바랜 황금용 조각상','최고급 황금 촛대']
 
+  var 구역1상_북동=['쿠이트'];
+  var 구역1상_남동=['파딕스'];
+  var 구역1상_서=['알마이'];
+  var 구역1상_남서=['테스테'];
+  var 구역1하_북=['데이튼','오벤','네트넘'];
+  var 구역1하_동=['던데','에버딘','알브레서','바라테르'];
+  var 구역1하_중앙=['란디스','세르카','진버레이','바에자'];
+  var 구역1하_중서=['모드릭','시오닐','라메다'];
+  var 구역1하_서남끝=['테야말'];
+
+  var 구역2_중앙위=['아리타'];
+  var 구역2_북동끝=['타슈'];
+  var 구역2_서하=['스타렌'];
+  var 구역2_중앙=['나르보','리스즈','마르카','루루브'];
+
+  var 구역3_동남=['루비아노','에베토','에프데룬','마리베노'];
+  var 구역3_남=['두흐'];
+  var 구역3_서끝=['인버넨','앙쥬'];
+  var 구역3_중앙=['발베쥬','마를레느'];
+  var 구역3_중북=['툴루','오르프스'];
+
+  var 구역4_동끝=['푸자라'];
+  var 구역4_남동=['델링하트','필바라'];
+  var 구역4_중남=['오스트라','아라킬','칸베라'];
+  var 구역4_남끝=['타라무라'];
+  var 구역4_남서끝=['파라타마','베이루와'];
+  var 구역4_서끝=['바레미','웨이타'];
+  var 구역4_중북서=['아지르'];
+  var 구역4_북서끝=['라시드','알나하'];
+
+  var 구역5_북끝=['틴베라','레라오'];
+  var 구역5_북동끝=['포르타넨','샤샤','로즈반'];
+  var 구역5_동끝=['오리샤','보아'];
+  var 구역5_동남끝=['티그리스','시르나','에스파','리에드'];
+  var 구역5_동남남끝=['소코타'];
+
+  var 구역5=['틴베라','레라오','포르타넨','샤샤','로즈반','오리샤','보아','티그리스','시르나','에스파','리에드','소코타'];
+  var 일반물품섬='_바에자_세르카_란디스_바라테르_스타렌_두흐_에베토_마리베노_에프데룬_베이루와_파라타마_';
+  var 단계1섬='_쿠이트_테스테_타슈_아리타_라시드_포르타넨_보아_에스파_소코타_틴베라_레라오_';
+  var 단계2섬='_모드릭_진버레이_던데_알브레서_루루브_앙쥬_마를레느_웨이타_칸베라_아라킬_오스트라_타라무라_';
+  var 단계3섬='_데이튼_테야말_리스즈_툴루_알나하_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
+  var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
+  var 재료교환섬='_네트넘_에버딘_마르카_인버넨_델링하트_';
+}
   //파템료계산. 재료별로 동작 [파템제작재료12종]
   //1.재료 우측에 필요수량 합산하에 좌측 전체필요수에 넣는다. 세번쨰버튼이 첫번째 파템 필요수
   //필요수,보유수(수동입력),남은수,일get(수동입력),일퀘수 : 첫버튼부터 다섯개버튼씩
+if (1==1) {
   var 전체필요수=0;
   var 더할수1=0;
   var 더할수2=0;
@@ -126,6 +105,9 @@ function 모은재료클릭시() {
       document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=일퀘남은날;
     }
   }
+}
+
+if (1==1) {
     //반복문을 벗어나 단독작업
     //함포,선수상,흑장갑,돛 필요수 우측에 보유수 채워넣기
     //보유수
@@ -228,7 +210,97 @@ function 모은재료클릭시() {
     비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
     document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
 }
+//맨마지막에 넣어야함
+var value있는것들=document.querySelectorAll('button[class~="모으기완료"');
+var value있는것들다음버튼;
+for (var i=0; i<value있는것들.length; i++) {
+  value있는것들다음버튼=value있는것들[i].nextElementSibling;
+  // console.log(value있는것들[i].innerHTML*1 + ' : ' + value있는것들다음버튼.innerHTML*1 + '같거나 뒤에 것이 클때');
+  if (Number(value있는것들다음버튼.innerHTML*1)>=Number(value있는것들[i].innerHTML*1)) {
+    value있는것들다음버튼.style.cssText ="background-color: chocolate";
+  }
+}
 
+function 물품단계클릭시() {
+  // 해역_물품단계
+  // 모은재료none상태
+  // 이동시간잡다한것none상태
+  // 자동이동시간참고
+  // 마고리아12별
+  if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
+    document.querySelector('#해역_물품단계').classList.remove('d-none');  
+    document.querySelector('#모은재료none상태').classList.add('d-none');
+    document.querySelector('#이동시간잡다한것none상태').classList.add('d-none');
+    document.querySelector('#자동이동시간참고').classList.add('d-none'); 
+    document.querySelector('#마고리아12별').classList.add('d-none'); 
+  } else {
+    document.querySelector('#해역_물품단계').classList.add('d-none'); 
+  }
+}
+function 모은재료클릭시() {
+  // 해역_물품단계
+  // 모은재료none상태
+  // 이동시간잡다한것none상태
+  // 자동이동시간참고
+  // 마고리아12별
+  if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
+    document.querySelector('#해역_물품단계').classList.add('d-none');  
+    document.querySelector('#모은재료none상태').classList.remove('d-none'); 
+    document.querySelector('#이동시간잡다한것none상태').classList.add('d-none');
+    document.querySelector('#자동이동시간참고').classList.add('d-none'); 
+    document.querySelector('#마고리아12별').classList.add('d-none'); 
+  } else {
+    document.querySelector('#모은재료none상태').classList.add('d-none');
+  }
+}
+function 이동시간잡다한것클릭시() {
+  // 해역_물품단계
+  // 모은재료none상태
+  // 이동시간잡다한것none상태
+  // 자동이동시간참고
+  // 마고리아12별
+  if (document.querySelector('#이동시간잡다한것none상태').classList.contains('d-none')) {
+    document.querySelector('#해역_물품단계').classList.add('d-none');  
+    document.querySelector('#모은재료none상태').classList.add('d-none'); 
+    document.querySelector('#이동시간잡다한것none상태').classList.remove('d-none');
+    document.querySelector('#자동이동시간참고').classList.add('d-none'); 
+    document.querySelector('#마고리아12별').classList.add('d-none'); 
+  } else {
+    document.querySelector('#이동시간잡다한것none상태').classList.add('d-none');
+  }
+}
+function 자동이동클릭시() {
+  // 해역_물품단계
+  // 모은재료none상태
+  // 이동시간잡다한것none상태
+  // 자동이동시간참고
+  // 마고리아12별
+  if (document.querySelector('#자동이동시간참고').classList.contains('d-none')) {
+    document.querySelector('#해역_물품단계').classList.add('d-none');  
+    document.querySelector('#모은재료none상태').classList.add('d-none'); 
+    document.querySelector('#이동시간잡다한것none상태').classList.add('d-none');
+    document.querySelector('#자동이동시간참고').classList.remove('d-none'); 
+    document.querySelector('#마고리아12별').classList.add('d-none'); 
+  } else {
+    document.querySelector('#자동이동시간참고').classList.add('d-none');
+  }
+}
+function 마고리아클릭시() {
+  // 해역_물품단계
+  // 모은재료none상태
+  // 이동시간잡다한것none상태
+  // 자동이동시간참고
+  // 마고리아12별
+  if (document.querySelector('#마고리아12별').classList.contains('d-none')) {
+    document.querySelector('#해역_물품단계').classList.add('d-none');  
+    document.querySelector('#모은재료none상태').classList.add('d-none'); 
+    document.querySelector('#이동시간잡다한것none상태').classList.add('d-none');
+    document.querySelector('#자동이동시간참고').classList.add('d-none'); 
+    document.querySelector('#마고리아12별').classList.remove('d-none'); 
+  } else {
+    document.querySelector('#마고리아12별').classList.add('d-none');
+  }
+}
 function 물품조회_0() {
   var 시작배열=0;
   var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
@@ -382,16 +454,14 @@ function 섬검색초기화() {
 } 
 function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
+    document.querySelector('#추가1').classList.add('d-none');
     document.querySelector('#좌측상단메모').classList.add('d-none');
-    document.querySelector('#중간하단메모').classList.add('d-none');
     document.querySelector('#우측상단메모').classList.add('d-none');
-    document.querySelector('#우측하단메모').classList.add('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
   } else {
+    document.querySelector('#추가1').classList.remove('d-none');
     document.querySelector('#좌측상단메모').classList.remove('d-none');
-    document.querySelector('#중간하단메모').classList.remove('d-none');
     document.querySelector('#우측상단메모').classList.remove('d-none');
-    document.querySelector('#우측하단메모').classList.remove('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
   }
 } 
