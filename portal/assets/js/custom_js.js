@@ -108,8 +108,7 @@ function 결과임시_보기_숨기기() {
   // SHOW 안했을때 ALERT.스페이스1글자,엔터1글자,빈줄한글자 인식됨,태그를 딱 붙이면  0, 주석도 글자수로 카운트
   if(con.innerHTML.length<3){ 		
     con.style.display = 'none';
-    button.innerText='결과파일 숨김중';
-    alert('결과의 내용이 없는 상태입니다.')	
+    button.innerText='결과파일 없음';
   } 
 }
 
@@ -150,8 +149,7 @@ function sub_list_showHide() {
   if(con.innerHTML.length<3){ 		
     con.style.display = 'none';
     if (button) {button.innerText='소제목 숨김중'	}
-    if (a_소제목보기숨기기) {a_소제목보기숨기기.innerText='소제목 숨김중'	}
-    alert('소제목이 없는 상태입니다.')
+    if (a_소제목보기숨기기) {a_소제목보기숨기기.innerText='소제목 없음'	}
   }
 }  
 
@@ -179,7 +177,7 @@ function sub_list_Show(event) {
     if (a_소제목보기숨기기) {a_소제목보기숨기기.innerText='소제목 보기중'	}
   }
 }   
-
+if (1==1) {
 // 시작하면 바로 실행됨 !!!! ul_height_change
 var con = document.querySelectorAll('[title="버튼과ul"]');
 var ul들 = document.querySelectorAll('[title="버튼과ul"] ul');
@@ -317,7 +315,7 @@ function clickHandler(event) {
     console.log(document.querySelector('#결과'));
   }
 };	
-
+}
 function 결과스크롤 (event) {
 
   if (event.target.id.length>0) {
