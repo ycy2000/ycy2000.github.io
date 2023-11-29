@@ -33,17 +33,11 @@
           <a class="navbar-brand dropdown-item">memo</a>
         </div>
 
-        <a class="active nav-link dropdown-toggle d-inline-block" href="#" 
-          role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          보기/숨기기
-        </a>
-        <ul class="dropdown-menu 폭80" id="샘플">
-          <li id="a_리스트보기숨기기" class="btn btn-light m-0 d-block" onclick="main_list_viewHide()">리스트 보기중</li>
-          <li id="a_소제목보기숨기기" class="btn btn-light m-0 d-block me-auto" onclick="sub_list_showHide()">소제목 숨김중</li>
-          <li class="btn btn-light m-0 d-block me-auto" onclick="결과임시_보기_숨기기()">결과파일 숨김중</li>
-          <!-- <li><hr class="dropdown-divider"></li> -->
-        </ul>
+        <a id="a_리스트보기숨기기" style="border:1px solid black;padding:5px;border-radius: 5px;" onclick="main_list_viewHide()">리스트 보기중</a>
+        <a id="a_소제목보기숨기기" style="border:1px solid black;padding:5px;border-radius: 5px;" onclick="sub_list_showHide()">소제목 없음</a>
+        <a id="a_결과파일보기숨기기" style="border:1px solid black;padding:5px;border-radius: 5px;" onclick="결과임시_보기_숨기기()">결과파일 없음</a>
 
+        <button onclick="document.querySelector('#특수문자보기').style.display='block'">html 특수문자</button>
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse width_100" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3">
