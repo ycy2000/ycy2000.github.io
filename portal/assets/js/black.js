@@ -470,15 +470,13 @@ function 섬검색초기화() {
 } 
 function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
-    document.querySelector('#추가2').classList.add('d-none');
     document.querySelector('#좌측상단메모').classList.add('d-none');
-    document.querySelector('#우측상단메모').classList.add('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
+    document.querySelector('#해역사진마진').classList.add('해역사진마진');
   } else {
-    document.querySelector('#추가2').classList.remove('d-none');
     document.querySelector('#좌측상단메모').classList.remove('d-none');
-    document.querySelector('#우측상단메모').classList.remove('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
+    document.querySelector('#해역사진마진').classList.remove('해역사진마진');
   }
 } 
 function 섬이름검색1() {
@@ -503,7 +501,7 @@ function 섬이름검색1() {
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
   if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_=북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -560,7 +558,7 @@ function 섬이름검색2() {
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
   if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_=북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -618,7 +616,7 @@ function 섬이름검색3() {
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
   if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_=북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -675,7 +673,7 @@ function 섬이름검색4() {
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
   if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_=북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -732,7 +730,7 @@ function 섬이름검색5() {
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
   if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_=북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
