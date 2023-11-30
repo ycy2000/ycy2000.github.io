@@ -165,9 +165,9 @@ if (1==1) {
     순번+=1;
     보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
     비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
-    if (비교수>보유수) {document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=50;
-      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수-50;
+    if (비교수>보유수) {document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
+      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=50;
+      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수-50;
     }
     //빛나는 코발트 주괴
     순번+=1;
@@ -206,9 +206,9 @@ if (1==1) {
     순번+=1;
     보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
     비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
-    if (비교수>보유수) {document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=125;
-      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수-125;
+    if (비교수>보유수) {document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
+      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=125;
+      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수-125;
     }
     //순수한 암초 조각
     순번+=1;
