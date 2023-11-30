@@ -138,13 +138,13 @@ if (1==1) {
     보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
     비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
     document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //콕스유물 전추
+    //콕스유물 전투
     순번+=1;
     보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
     비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
     if (비교수>보유수) {document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=125;
-      document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수-125;
+      document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=80;
+      document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수-80;
     }
     //화려한 암염 주괴
     순번+=1;
@@ -205,10 +205,10 @@ if (1==1) {
     // 심해초줄기
     순번+=1;
     보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
+    비교수=Number(document.querySelectorAll('#파템_돛 button')[((순번+1)*2)].innerHTML);
     if (비교수>보유수) {document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=125;
-      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수-125;
+      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=80;
+      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수-80;
     }
     //순수한 암초 조각
     순번+=1;
