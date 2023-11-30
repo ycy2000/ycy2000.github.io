@@ -1,8 +1,10 @@
- 배경 이미지 지정하기 (background-image) 
-Copy
-body {background-image : url('이미지 URL');}
-#area {background-image : url('이미지 URL');}
-.area {background-image : url('이미지 URL');}기 [코딩하는 녀석:티스토리]
+portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt
+
+배경 이미지 지정하기 (background-image) 
+
+1.img 자체가 아닌 div의 배경 : 폭,높이설정후 (-을 붙인후 시작할 위치 px지정)
+  background-position: -0px -435px;
+  background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');
 
 배경 이미지 반복 설정하기(background-repeat)
 background-repeat : repeat : 화면에 가득 찰 때까지 배경 이미지를 반복합니다.
@@ -21,3 +23,4 @@ background-size : [백분율] : 배경 이미지가 들어갈 요소 기준으�
 background-position : [수평위치] [수직 위치]
 수평위치 : left, center, right, 백분율, 길이값
 수직위치 : top, center, bottom, 백분율, 길이값
+
