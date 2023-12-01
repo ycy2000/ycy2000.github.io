@@ -472,11 +472,9 @@ function textarea보기숨기기() {
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
     document.querySelector('#좌측상단메모').classList.add('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
-    document.querySelector('#해역사진마진').classList.add('해역사진마진');
   } else {
     document.querySelector('#좌측상단메모').classList.remove('d-none');
     document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
-    document.querySelector('#해역사진마진').classList.remove('해역사진마진');
   }
 } 
 function 섬이름검색1() {
