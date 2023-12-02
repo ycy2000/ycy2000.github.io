@@ -492,6 +492,7 @@ function 섬이름검색1() {
   if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
   if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
   if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
+  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
   if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
 
   if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
@@ -549,6 +550,7 @@ function 섬이름검색2() {
   if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
   if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
   if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
+  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
   if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
 
   if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
@@ -607,6 +609,7 @@ function 섬이름검색3() {
   if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
   if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
   if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
+  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
   if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
 
   if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
@@ -664,6 +667,7 @@ function 섬이름검색4() {
   if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
   if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
   if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
+  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
   if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
 
   if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
@@ -721,6 +725,7 @@ function 섬이름검색5() {
   if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
   if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
   if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
+  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
   if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
 
   if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
