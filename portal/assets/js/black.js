@@ -32,8 +32,8 @@ if (1==1) {
   var 구역03_남서=['에프데룬'];
   var 구역03_서서남=['마리베노'];
 
-  var 구역04_북북서=['틴베라'];
-  var 구역04_북서=['포르타넨'];
+  var 구역04_북북동=['틴베라'];
+  var 구역04_북동=['포르타넨'];
   var 구역04_동=['티그리스'];
   var 구역04_동남=['리에드','소코타'];
   var 구역04_서남=['루비아노'];
@@ -499,8 +499,8 @@ function 섬이름검색1() {
   if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
-  if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
+  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -557,8 +557,8 @@ function 섬이름검색2() {
   if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
-  if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
+  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -616,8 +616,8 @@ function 섬이름검색3() {
   if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
-  if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
+  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -674,8 +674,8 @@ function 섬이름검색4() {
   if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
-  if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
+  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
@@ -732,8 +732,8 @@ function 섬이름검색5() {
   if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
   if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
 
-  if (구역04_북북서.find(element => element==text)) {result="구역04_북북서"};
-  if (구역04_북서.find(element => element==text)) {result="구역04_=북서"};
+  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
+  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
   if (구역04_동.find(element => element==text)) {result="구역04_동"};
   if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
   if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
