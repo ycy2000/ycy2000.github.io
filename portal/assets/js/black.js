@@ -860,12 +860,65 @@ ctx.lineWidth='1';
 ctx.setLineDash([2])
 ctx.stroke();
 }
-var 리스너용canvas모든버튼들=document.querySelector('#canvas모든버튼들');
+function canvas모든텍스트파일() {
+  //최종적으로 세로 두줄이 되도록 한다. 17줄
+  var 검색할버튼클래스들=document.querySelectorAll('.canvas파일');
+  var 내부html='';
+  for (var i=0; i<검색할버튼클래스들.length; i++) {
+    내부html+=검색할버튼클래스들[i].outerHTML;
+  }
+  document.querySelector('#canvas검색결과').innerHTML=내부html;
+  var 카테고리들=document.querySelectorAll('.카테고리');
+  for (var i=0; i<카테고리들.length; i++) {
+    카테고리들[i].style.display='none';
+  }
+  document.querySelector('#canvas검색결과').style.display='block';
+}
+function canvas검색실행() {
+  //처음에 input value가 있다가 마지막에 사라짐?
+  document.querySelector('#canvas검색결과').innerHTML='';
+  var 검색할문자=document.querySelector('#canvas검색').value;
+  if (document.querySelector('#canvas검색').value=='') {return;}
+  var 검색할버튼클래스들=document.querySelectorAll('.canvas파일');
+  var 내부html='';
+  for (var i=0; i<검색할버튼클래스들.length; i++) {
+    if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
+      내부html+=검색할버튼클래스들[i].outerHTML;
+    }
+  }
+  if (내부html=='') {alert('없음');return;}
+  document.querySelector('#canvas검색결과').innerHTML=내부html;
+  //카테고리들 none
+  var 카테고리들=document.querySelectorAll('.카테고리');
+  for (var i=0; i<카테고리들.length; i++) {
+    카테고리들[i].style.display='none';
+  }
+  document.querySelector('#canvas검색결과').style.display='block';
+  document.querySelector('#canvas검색').value=검색할문자;
+}
+var 리스너용canvas모든버튼들=document.querySelector('#offcanvasBottom');
 var black리스너용=document.querySelector('#black리스너용');
-function canvas텍스트보기(e) {
-  document.querySelector('#embed부분').src=e.target.title;
-  document.querySelector('#canvas텍스트').style.display='block';
-} 
+var black리스너용=document.querySelector('#black리스너용');
+function canvas카테고리또는파일(e) {
+  // class가 카테고리 있으면, canvas파일 있으면
+  // alert(e.target.id);
+  if (e.target.classList.contains('카테고리실행')) {
+    // 카테고리 클래스 모두 none후에 클릭한 것만 block
+    var 카테고리들=document.querySelectorAll('.카테고리');
+    for (var i=0; i<카테고리들.length; i++) {
+      카테고리들[i].style.display='none';
+    }
+    document.querySelector('#canvas검색결과').style.display='none';
+    document.querySelector('#' + e.target.title).style.display='block';
+    return;
+  }
+  if (e.target.classList.contains('canvas파일')) {
+    // 기존파일부분 clear 후에 불러오기
+    document.querySelector('#embed부분').src=e.target.title;
+    document.querySelector('#canvas텍스트').style.display='block';
+    return;
+  }
+}
 function 문서연결또는하위메뉴(e) {
   //하위메뉴 타이틀인경우 하위메뉴 나오게하고 끝. 문서가 연결된 경우 문서연결만하고 끝 / e.target.title 자체로는 에러가 안남 length=0
   //querySeloctor #만 있으면 에러, 뭐라도 있으면 에러는 아님 undefined
@@ -883,5 +936,5 @@ function 문서연결또는하위메뉴(e) {
     return;
   }
 }
-리스너용canvas모든버튼들.addEventListener('click',canvas텍스트보기);
 black리스너용.addEventListener('click',문서연결또는하위메뉴);
+리스너용canvas모든버튼들.addEventListener('click',canvas카테고리또는파일);

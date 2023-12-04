@@ -86,6 +86,9 @@
   #파템재료_재료아이콘 > div:nth-of-type(17) {background-position: -192px -126px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"순수한 암초조각"*/
   #파템재료_재료아이콘 > div:nth-of-type(18) {background-position: -192px -254px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"콕스유물 하급"*/
   #파템재료_재료아이콘 > div:nth-of-type(19) {background-position: -0px -126px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"강화된 섬나무 증착합판""*/
+  .카테고리 h6, #canvas검색결과 h6 {text-decoration-line: underline;}
+  .카테고리 div {border-right:1px solid black;width:610px;height:440px;vertical-align: top;display:inline-block;}
+  .offcanvas-body div {vertical-align: top;}
 
 
 </style>
@@ -141,58 +144,55 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
-            <h5 style="display:inline-block" class="offcanvas-title" id="offcanvasBottomLabel">canvas 제목</h5>
-            <button onclick="document.querySelector('#캔버스1').style.display='none'">닫기</button>
+            <div>
+              <h5 onclick="canvas모든텍스트파일()" style="display:inline-block;width:150px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">offcanvas 제목</h5>
+              <h6 onclick="canvas검색실행()" class="d-inline-block" style="background-color: aqua;">검색</h6>
+              <input onchange="canvas검색실행()" id="canvas검색" style="width:150px;" class="d-inline-block" type = "text">
+              <h6 onclick="document.querySelector('#canvas검색').value='';" class="d-inline-block" style="background-color: aqua;">clear</h6>
+              <button class="카테고리실행" title="js_01">js_01</button> 
+              <button class="카테고리실행" title="구조class_id">구조class_id</button> 
+              <button class="카테고리실행" title="bootstrap">bootstrap</button> 
+            </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div id="canvas모든버튼들" class="offcanvas-body small p-1" style="font-size: 16px;">
-            <div style="width:300px;display:inline-block;position: absolute;" id="캔버스1">
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button>
+          <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+          <div class="offcanvas-body small p-1" style="font-size: 16px;">
+            <div id="canvas검색결과" style="display:none;">
             </div>
-            <div style="width:300px;display:inline-block;position: absolute;">
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button>
+            <div class="카테고리" id="js_01" style="display:block;">
+              <div>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
             </div>
-            <div style="width:300px;display:inline-block;position: absolute;">
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button><br>
-              <button title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</button>
+            <div class="카테고리" id="구조class_id" style="display:none;">
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
+            </div>
+            <div class="카테고리" id="bootstrap" style="display:none;">
+              <div>
+                <h6 class="canvas파일" title=''>
+                  준비중:offcanvas-header의 한줄은 justify-content: space-between; 인것 같다. X표시는 우측 끝에 별도인것 같다. 별도의 DIV로 justfy 회피
+                </h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>카테1</h6>
+              </div>
             </div>
           </div>
         </div>
@@ -234,6 +234,7 @@
       <li class="파일연결 a_형식" title="S1_증축전후비교">[증축전후 비교] 무역선,구축함</li>
     </div>
     <div style="background-color:white;">
+      <li><a href="https://www.kr.playblackdesert.com/ko-KR/Forum/ForumTopic/Detail?_topicNo=21772&_opinionNo=0" target="_blank">검은사막 칸 포탄 넣기</a>, 가방 닫으면 포탄 못넣음 열어놓기</li>
       <li><a href="https://www.kr.playblackdesert.com/ko-KR/Wiki?wikiNo=295" target="_blank">검은사막 중범선 만들기 가이드(맨아래)</a></li>
       <li><a href="https://ashasleti.tistory.com/1051" target="_blank">중범선 파템 비교[치로][펌]]</a></li>
       <li>_</li>
@@ -500,7 +501,7 @@
           <span>, 최대적재</span>
           <input id="계산_최대적재" type = "text" maxlength = "10" value="빈칸">
           <span>, </span>
-          <input onchange="계산_무게()" id="계산_일반등무게" type = "text" maxlength = "10" value="300">
+          <input onchange="계산_무게()" id="계산_일반등무게" type = "text" maxlength = "10" value="609">
           <span>, </span>
           <input id="계산_여유무게" type = "text" maxlength = "10">
           <span>: </span>
