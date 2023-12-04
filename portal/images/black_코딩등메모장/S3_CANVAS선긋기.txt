@@ -1,0 +1,80 @@
+function 해양죄표와섬이름() {
+  const canvas = document.getElementById('myCanvas');//캔버스만들어놓고 아이디 부여한것
+  const ctx = canvas.getContext("2d"); //2d그림객체생성
+  var x=0;
+  ctx.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용
+
+//선색, 정렬, 선폭 미리 정해두기
+  ctx.fillStyle = 'yellow';
+  ctx.textAlign = 'center';
+  ctx.strokeStyle='yellow';
+  ctx.lineWidth='1';
+
+  for (var i=1; i<16; i++) {
+    x=x+100;
+    ctx.beginPath(); //이거하면 새로 그린다. 안넣으면 이전 끝부분과 연결된다?
+    ctx.moveTo(x, 0); //여기좌표에서 시작한다.
+    ctx.lineTo(x, 10); //move좌표에서 line좌표로 그린다.
+    ctx.stroke(); //그려라!
+    if (i==5 || i==10 || i==15) {
+      ctx.fillText(x, x, 20); //텍스트, x좌표, y좌표
+    }
+    ctx.beginPath();
+    ctx.moveTo(0, x);
+    ctx.lineTo(10, x);
+    ctx.stroke();
+    if (i==5 || i==10 || i==15) {
+      ctx.fillText(x, 20, x+3);
+    }
+  }
+  //섬이름
+  ctx.fillText('에프데 룬', 743, 625);
+  ctx.fillText('베이루와', 840, 625);
+  ctx.fillText('파라타마', 790, 580);
+  ctx.fillText('웨이타', 770, 515);
+
+}
+
+//채우기 rect(x,y,w,h) x,y좌표에서 w폭만큼 h높이만큼 채운다.
+//closePash(); 경로를 종료, 세 개 이상의 점이 있을 경우, 마지막 점과 첫번째 점을 연결
+//그려진 경로의 출력방법 : fill(), stroke()
+
+	<canvas id="canvas" width="500" height="300">
+		해당 브라우저에서는 지원하지 않습니다.
+	</canvase>
+
+원호그리기 : arc(x,y,반지름,시작각도,종료각도,그리는방향)
+
+원/원호 그리기
+
+ - x: 원의 중심x좌표, y: 원의 중심y좌표, 시작각도: 라디안 단위(각도*Math.PI/180), 
+
+   종료각도: 라디안 단위(각도*Math.PI/180), 그리는_방향: false(시계)/true(시계반대)
+
+ - 그리는 방향은 기본 false(시계 방향)
+
+ - 3시 방향 기준 0도(시작각도), 6시 방향 기준 90도, 9시 방향 기준 180도 , ..
+
+ - 부채꼴을 그리는 경우 moveTo(x,y) 경로와 arc()의 중심 좌표를 동일하게 한 후 그려준 후 closePath()로 시작점을 이어 그립니다.
+
+arcTo(x1, y1, x2, y2, 반지름)
+
+직선과 접하는 원호 그리기
+
+ - x1: 보조점x좌표, y1 보조점y좌표, x2: 종료점x좌표, y2: 종료점y좌표
+
+quadraticCurveTo(제어점x, 제어점y, 종료점x, 종료점y)
+
+3차 베지에 곡선 그리기
+
+ - n개의 점으로부터 얻어지는 (n-1)차 곡선
+
+
+
+
+
+
+
+
+
+
