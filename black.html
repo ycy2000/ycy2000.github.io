@@ -18,7 +18,7 @@
   #main사이드 {margin-left:3px;width:300px;}
   .a_형식 {color:chocolate;text-decoration: underline;}
   #main사이드 li {padding:7px 3px;list-style: none;}
-  #선택문서셑팅하는곳 li, #main사이드 li {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #선택문서셑팅하는곳 li, #main사이드 li, .offcanvas-header > div  {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .accordion-button:hover, .accordion-body:hover, .accordion-body > li:hover, 
   #선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;overflow:visible;}
   .무게input들 input {width:52px;text-align: center;}
@@ -89,7 +89,8 @@
   .카테고리 h6, #canvas검색결과 h6 {text-decoration-line: underline;}
   .카테고리 div {border-right:1px solid black;width:610px;height:440px;vertical-align: top;display:inline-block;}
   .offcanvas-body div {vertical-align: top;}
-
+  .js모든파일리스트div {width:900px;height:440px;vertical-align: top;display:inline-block;}
+  .현재카테고리 {background-color: chartreuse;}
 
 </style>
 </head>
@@ -145,13 +146,18 @@
         <div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
             <div>
-              <h5 onclick="canvas모든텍스트파일()" style="display:inline-block;width:150px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">offcanvas 제목</h5>
-              <h6 onclick="canvas검색실행()" class="d-inline-block" style="background-color: aqua;">검색</h6>
+              <h6 onclick="canvas초기화()" style="display:inline-block;width:50px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">초기화</h6>
+              <h6 onclick="canvas모든텍스트파일()" style="display:inline-block;width:100px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">모든text파일</h6>
+              <h6 onclick="canvas모든카테고리()" style="display:inline-block;width:100px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">모든카테고리</h6>              
+              <h6 onclick="canvas검색실행()" title="보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!" class="d-inline-block" style="background-color: aqua;">파일검색</h6>
               <input onchange="canvas검색실행()" id="canvas검색" style="width:150px;" class="d-inline-block" type = "text">
               <h6 onclick="document.querySelector('#canvas검색').value='';" class="d-inline-block" style="background-color: aqua;">clear</h6>
-              <button class="카테고리실행" title="js_01">js_01</button> 
-              <button class="카테고리실행" title="구조class_id">구조class_id</button> 
-              <button class="카테고리실행" title="bootstrap">bootstrap</button> 
+              <button onclick="canvas카테고리숨김()">&lt;&lt;</button> <button onclick="canvas카테고리숨김해제()">&gt;&gt;</button> 
+              <button class="카테고리실행 현재카테고리" title="_01_js_01">_01_js_01</button> 
+              <button class="카테고리실행" title="_02_구조class_id">_02_구조class_id</button> 
+              <button class="카테고리실행" title="_03_css">_03_css</button> 
+              <button class="카테고리실행" title="_04_bootstrap">_04_bootstrap</button> 
+              <button class="카테고리실행" title="_05_유의사항">_05_유의사항</button> 
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -159,10 +165,9 @@
           <div class="offcanvas-body small p-1" style="font-size: 16px;">
             <div id="canvas검색결과" style="display:none;">
             </div>
-            <div class="카테고리" id="js_01" style="display:block;">
+            <div class="카테고리" id="_01_js_01" style="display:block;">
               <div>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/이미지_배경에서_일부분만.txt'>이미지_배경에서_일부분만</h6>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/S3_CANVAS선긋기.txt'>canvas 선긋기 text 정리 <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_01_js_01_CANVAS선긋기.txt'>_01_js_01_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
               </div>
               <div>
                 <h6 class="canvas파일" title=''>카테1</h6>
@@ -171,28 +176,54 @@
                 <h6 class="canvas파일" title=''>카테1</h6>
               </div>
             </div>
-            <div class="카테고리" id="구조class_id" style="display:none;">
+            <div class="카테고리" id="_02_구조class_id" style="display:none;">
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_02_구조class_id_offcanvas_body_01.txt'>
+                  _02_구조class_id_offcanvas_body_01.txt : class_offcanvas-header>div>button : offcanvas-header와 offcanvas-body</h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_02_구조class_id_아이디와클래스숫자로시작안됨.txt'>
+                  _02_구조class_id_아이디와클래스숫자로시작안됨</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvas파일" title=''>세로2</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvas파일" title=''>세로3</h6>
               </div>
             </div>
-            <div class="카테고리" id="bootstrap" style="display:none;">
+            <div class="카테고리" id="_03_css" style="display:none;">
               <div>
-                <h6 class="canvas파일" title=''>
-                  준비중:offcanvas-header의 한줄은 justify-content: space-between; 인것 같다. X표시는 우측 끝에 별도인것 같다. 별도의 DIV로 justfy 회피
-                </h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_03_css_text줄넘기기_문장처리등01.txt'>_03_css_text줄넘기기_문장처리등01.txt : 줄넘기지 않기, overflow시 처리</h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_03_css_이미지_배경에서_일부분만.txt'>_03_css_이미지_배경에서_일부분만.txt</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvas파일" title=''>세로2</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvas파일" title=''>세로3</h6>
+              </div>
+            </div>
+            <div class="카테고리" id="_04_bootstrap" style="display:none;">
+              <div>
+                <h6 class="canvas파일" title=''>세로1</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>세로2</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>세로3</h6>
+              </div>
+            </div>
+            <div class="카테고리" id="_05_유의사항" style="display:none;">
+              <div>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_05_유의사항_클래스아이디숫자안됨.txt'>_05_유의사항_클래스아이디숫자안됨.txt</h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_05_유의사항_메모장에서열면anci.txt'>_05_유의사항_메모장에서열면anci.txt</h6>
+                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_05_유의사항_구글_그림에서데이터추출.txt'>_05_유의사항_구글_그림에서데이터추출.txt</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>세로2</h6>
+              </div>
+              <div>
+                <h6 class="canvas파일" title=''>세로3</h6>
               </div>
             </div>
           </div>
@@ -210,6 +241,7 @@
                 <li><a class="dropdown-item" href="kim.html">Kim</a></li>
                 <li><a class="dropdown-item" href="it.html">it</a></li>
                 <li><a class="dropdown-item" href="ycy.html">ycy</a></li>
+                <li><a class="dropdown-item" href="index.html">세관</a></li>
                 <!-- <li><hr class="dropdown-divider"></li> -->
               </ul>
             </li>

@@ -860,9 +860,60 @@ ctx.lineWidth='1';
 ctx.setLineDash([2])
 ctx.stroke();
 }
+function canvas초기화() {
+  document.querySelector('#canvas검색결과').style.display='none';
+  document.querySelector('#ct_js_01').style.display='block';
+}
 function canvas모든텍스트파일() {
-  //최종적으로 세로 두줄이 되도록 한다. 17줄
+  //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
+  //34개이상일때 나누기2 왼쪽오른쪽
+  document.querySelector('#canvas검색결과').innerHTML='';
   var 검색할버튼클래스들=document.querySelectorAll('.canvas파일');
+  var 개수=검색할버튼클래스들.length;
+  var 왼쪽내부html='';
+  var 오른쪽내부html='';
+
+  if (개수<=17) {
+    for (var i=0; i<검색할버튼클래스들.length; i++) {
+      왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+    }
+    왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+    오른쪽내부html='<div class="js모든파일리스트div"></div>'
+  }
+
+  if (개수>=18 && 개수<=34) {
+    for (var i=0; i<17; i++) {
+      왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+    }
+    for (var i=17; i<개수; i++) {
+      오른쪽내부html+=검색할버튼클래스들[i].outerHTML;
+    }
+    왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+    오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
+
+  }
+  if (개수>34) {
+    for (var i=0; i<(개수/2); i++) {
+      왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+    }
+    for (var i=(개수/2); i<개수; i++) {
+      오른쪽내부html+=검색할버튼클래스들[i].outerHTML;
+    }
+    왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+    오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
+
+  }
+  document.querySelector('#canvas검색결과').innerHTML=왼쪽내부html + 오른쪽내부html;
+  var 카테고리들=document.querySelectorAll('.카테고리');
+  for (var i=0; i<카테고리들.length; i++) {
+    카테고리들[i].style.display='none';
+  }
+  document.querySelector('#canvas검색결과').style.display='block';
+}
+function canvas모든카테고리() {
+  //최종적으로 세로 두줄이 되도록 한다. 17줄
+  document.querySelector('#canvas검색결과').innerHTML='';
+  var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
   var 내부html='';
   for (var i=0; i<검색할버튼클래스들.length; i++) {
     내부html+=검색할버튼클래스들[i].outerHTML;
@@ -873,6 +924,30 @@ function canvas모든텍스트파일() {
     카테고리들[i].style.display='none';
   }
   document.querySelector('#canvas검색결과').style.display='block';
+}
+function canvas카테고리숨김() {
+  //class="카테고리실행". 
+  var 숨김수=0;
+  var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
+  for (var i=0; i<검색할버튼클래스들.length; i++) {
+    //5개씩 d-none 클래스추가
+    if (!검색할버튼클래스들[i].classList.contains('d-none')) {
+      if (숨김수<5) {검색할버튼클래스들[i].classList.add('d-none'); 숨김수+=1;}
+    }
+  }
+}
+function canvas카테고리숨김해제() {
+  //class="카테고리실행". 
+  var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
+  var none수=0;
+  for (var i=0; i<검색할버튼클래스들.length; i++) {
+    if (검색할버튼클래스들[i].classList.contains('d-none')) {none수+=1;}
+  }
+  if (none수>0) {
+    for (var i=none수-5; i<none수; i++) {
+      if (i>-1) {검색할버튼클래스들[i].classList.remove('d-none')}
+    }
+  }
 }
 function canvas검색실행() {
   //처음에 input value가 있다가 마지막에 사라짐?
@@ -902,14 +977,24 @@ var black리스너용=document.querySelector('#black리스너용');
 function canvas카테고리또는파일(e) {
   // class가 카테고리 있으면, canvas파일 있으면
   // alert(e.target.id);
+
+  var body카테고리실행버튼들=document.querySelectorAll('.카테고리실행');
   if (e.target.classList.contains('카테고리실행')) {
     // 카테고리 클래스 모두 none후에 클릭한 것만 block
-    var 카테고리들=document.querySelectorAll('.카테고리');
+    for (var i=0; i<body카테고리실행버튼들.length; i++) {
+      body카테고리실행버튼들[i].classList.remove('현재카테고리');
+    }
+    var 카테고리들=document.querySelectorAll('.카테고리'); //숨길것들
     for (var i=0; i<카테고리들.length; i++) {
       카테고리들[i].style.display='none';
     }
+
+    e.target.classList.add('현재카테고리'); 
+
+
     document.querySelector('#canvas검색결과').style.display='none';
     document.querySelector('#' + e.target.title).style.display='block';
+
     return;
   }
   if (e.target.classList.contains('canvas파일')) {
