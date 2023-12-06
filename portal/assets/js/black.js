@@ -115,10 +115,17 @@ if (1==1) {
 
     //일퀘남은날수  : 일퀘수가 기록되어 있을때, 남은수 나누기 일퀘수 올림,,,,,,,일퀘남은날=(남은수/일퀘수).toPrecision(0);
     타겟=document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+3];//일퀘수
-    if (isNaN(타겟.innerHTML) || 타겟.innerHTML=='') {} else {
+    if (isNaN(타겟.innerHTML) || 타겟.innerHTML=='') {
+      document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=남은수;
+      document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].style.backgroundColor='white';
+    } else {
       일퀘수=Number(타겟.innerHTML);
       일퀘남은날=Number(남은수/일퀘수).toFixed(0);
       document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=일퀘남은날;
+      if (일퀘남은날<1) {
+        document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML='완';
+        document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].style.backgroundColor='white';
+      }
     }
   }
 }
@@ -850,19 +857,20 @@ function 임시() {
 }
 function canvas초기화() {
   document.querySelector('#canvas검색결과').style.display='none';
-  document.querySelector('#ct_js_01').style.display='block';
+  document.querySelector('#_00_유의사항').style.display='block';
 }
 function canvas모든텍스트파일() {
   //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
   //34개이상일때 나누기2 왼쪽오른쪽
   document.querySelector('#canvas검색결과').innerHTML='';
-  var 검색할버튼클래스들=document.querySelectorAll('.canvas파일');
+  var 검색할버튼클래스들=document.querySelectorAll('.카테고리 h6');//canvastext파일, canvas_div
   var 개수=검색할버튼클래스들.length;
   var 왼쪽내부html='';
   var 오른쪽내부html='';
 
   if (개수<=17) {
     for (var i=0; i<검색할버튼클래스들.length; i++) {
+      console.log(검색할버튼클래스들[i].outerHTML);
       왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
     }
     왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
@@ -939,10 +947,9 @@ function canvas카테고리숨김해제() {
 }
 function canvas검색실행() {
   //처음에 input value가 있다가 마지막에 사라짐?
-  document.querySelector('#canvas검색결과').innerHTML='';
   var 검색할문자=document.querySelector('#canvas검색').value;
   if (document.querySelector('#canvas검색').value=='') {return;}
-  var 검색할버튼클래스들=document.querySelectorAll('.canvas파일');
+  var 검색할버튼클래스들=document.querySelectorAll('.카테고리 h6');
   var 내부html='';
   for (var i=0; i<검색할버튼클래스들.length; i++) {
     if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
@@ -950,6 +957,7 @@ function canvas검색실행() {
     }
   }
   if (내부html=='') {alert('없음');return;}
+  document.querySelector('#canvas검색결과').innerHTML='';
   document.querySelector('#canvas검색결과').innerHTML=내부html;
   //카테고리들 none
   var 카테고리들=document.querySelectorAll('.카테고리');
