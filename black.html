@@ -139,11 +139,11 @@
         }
 
     ">main사이드숨기기</button>
-    <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
-    <button onclick="
-    document.querySelector('#특수문자보기').style.display='block';
-    document.querySelector('#canvas텍스트').style.display='none';
-    ">html 특수문자</button>
+        <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
+        <button onclick="
+        document.querySelector('#특수문자보기').style.display='block';
+        document.querySelector('#canvas텍스트').style.display='none';
+        ">html 특수문자</button>
     
         <!-- #offcanvasBottom 바로 밑에 오프캔버스 내용이 있어야됨 -->
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
@@ -157,11 +157,12 @@
               <input onchange="canvas검색실행()" id="canvas검색" style="width:150px;" class="d-inline-block" type = "text">
               <h6 onclick="document.querySelector('#canvas검색').value='';" class="d-inline-block" style="background-color: aqua;">clear</h6>
               <button onclick="canvas카테고리숨김()">&lt;&lt;</button> <button onclick="canvas카테고리숨김해제()">&gt;&gt;</button> 
-              <button class="카테고리실행 현재카테고리" title="_01_js_01">_01_js_01</button> 
+              
+              <button class="카테고리실행 현재카테고리" title="_00_유의사항">_00_유의사항</button> 
+              <button class="카테고리실행" title="_01_js_01">_01_js_01</button> 
               <button class="카테고리실행" title="_02_구조class_id">_02_구조class_id</button> 
               <button class="카테고리실행" title="_03_css">_03_css</button> 
               <button class="카테고리실행" title="_04_bootstrap">_04_bootstrap</button> 
-              <button class="카테고리실행" title="_05_유의사항">_05_유의사항</button> 
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -169,7 +170,22 @@
           <div class="offcanvas-body small p-1" style="font-size: 16px;">
             <div id="canvas검색결과" style="display:none;">
             </div>
-            <div class="카테고리" id="_01_js_01" style="display:block;">
+            <div class="카테고리" id="_00_유의사항" style="display:block;">
+              <div>
+                <h6 class="canvastext파일" title=''>_00_유의사항_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
+                <h6 class="canvastext파일" title='_00_유의사항_클래스아이디숫자안됨.txt'>_00_유의사항_클래스아이디숫자안됨.txt</h6>
+                <h6 class="canvastext파일" title='_00_유의사항_메모장에서열면anci.txt'>_00_유의사항_메모장에서열면anci.txt</h6>
+                <h6 class="canvastext파일" title='_00_유의사항_구글_그림에서데이터추출.txt'>_00_유의사항_구글_그림에서데이터추출.txt</h6>
+                <h6 class="canvastext파일" title='_00_유의사항_더하기_숫자_소수점_변수에러상황.txt'>_00_유의사항_더하기_숫자_소수점_변수에러상황.txt</h6>
+              </div>
+              <div>
+                <h6 class="canvastext파일" title=''>세로2</h6>
+              </div>
+              <div>
+                <h6 class="canvastext파일" title=''>세로3</h6>
+              </div>
+            </div>
+            <div class="카테고리" id="_01_js_01" style="display:none;">
               <div>
                 <h6 class="canvastext파일" title='_01_js_01_CANVAS선긋기.txt'>_01_js_01_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
                 <h6 class="canvas_div" title='_01_js_01_CANVAS선긋기_div'>링크 : _01_js_01_CANVAS선긋기_div</h6>
@@ -218,21 +234,9 @@
                 <h6 class="canvastext파일" title=''>세로3</h6>
               </div>
             </div>
-            <div class="카테고리" id="_05_유의사항" style="display:none;">
-              <div>
-                <h6 class="canvastext파일" title='_05_유의사항_클래스아이디숫자안됨.txt'>_05_유의사항_클래스아이디숫자안됨.txt</h6>
-                <h6 class="canvastext파일" title='_05_유의사항_메모장에서열면anci.txt'>_05_유의사항_메모장에서열면anci.txt</h6>
-                <h6 class="canvastext파일" title='_05_유의사항_구글_그림에서데이터추출.txt'>_05_유의사항_구글_그림에서데이터추출.txt</h6>
-              </div>
-              <div>
-                <h6 class="canvastext파일" title=''>세로2</h6>
-              </div>
-              <div>
-                <h6 class="canvastext파일" title=''>세로3</h6>
-              </div>
-            </div>
           </div>
         </div>
+        <button style="margin-bottom:7px;" onclick="임시()">임시함수</button>
         <!-- canvas_div모음 none상태로 두고 꺼내쓰기 -->
         <div id="canvas_div" class="d-none">
           <div id="_01_js_01_CANVAS선긋기_div">
@@ -694,7 +698,6 @@
             <div><button></button><button></button></div><!-- 콕스유물 하급 -->
             <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
           </div>
-
           <div id="파템_장갑" class="d-inline-block 재료높이" style="vertical-align: top;">
             <div>흑장갑</div>
 
@@ -717,7 +720,6 @@
             <div><button class="모으기완료">60</button><button></button></div><!-- 콕스유물 하급 -->
             <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
           </div>
-
           <div id="파템_돛" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">
             <div>돛</div>
             <div><button>필요</button><button>보유</button></div>

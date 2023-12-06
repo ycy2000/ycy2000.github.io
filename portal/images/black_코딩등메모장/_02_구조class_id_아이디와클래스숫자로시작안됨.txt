@@ -1,9 +1,0 @@
-아이디와 클래스 숫자로 시작 안됨 : 규칙이었지 아마.
-
-js스크립트에서 오류남
-
-document.querySelector('#' + e.target.title).style.display='block';
-
-e.target.title가 숫자로 시작되면 오류 : 02_js_01
-
-e.target.title가 숫자로 시작안하면 진행됨 : _02_js_01

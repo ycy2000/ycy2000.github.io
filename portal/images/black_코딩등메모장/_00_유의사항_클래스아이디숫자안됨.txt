@@ -1,0 +1,25 @@
+아이디와 클래스 숫자로 시작 안됨 : 규칙이었지 아마.
+
+js스크립트에서 오류남
+
+document.querySelector('#' + e.target.title).style.display='block';
+
+e.target.title가 숫자로 시작되면 오류 : 02_js_01
+
+e.target.title가 숫자로 시작안하면 진행됨 : _02_js_01
+
+
+-----------------------------------------------------------------------------------------------
+
+에러 : if (document.querySelector('')) : 공백은 에러남
+에러 : if (document.querySelector('#')) : # 에러남
+에러 : if (document.querySelector('#00')) : #00 숫자로시작하면 에러남
+에러 : if (document.querySelector('.')) : .(점) 에러남
+에러 : if (document.querySelector('.00')) : .00 숫자로시작하면 에러남
+
+
+에러아님 : null, (false조건) if (document.querySelector('임시')) : #, .(점) .. 없는 변수
+
+에러아님 : null, (false조건) if (document.querySelector('#임시')) : #, .(점) .. 있지만 없는 변수
+
+★ null은 지정해봤는데 없다는 개념. ★ undifined는 지정하지 않았다는 개념.

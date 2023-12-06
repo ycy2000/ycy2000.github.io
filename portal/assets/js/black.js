@@ -841,24 +841,9 @@ if (1=="임시") {
 
 
 function 임시() {
-// 1. canvas 엘리먼트를 취득한다.
-const canvas = document.getElementById('myCanvas');
+  var 변수='12.99';
+console.log(parseInt(변수,8))
 
-// 2. 2d모드의 그리기 객체를 취득한다. => 이 객체를 통해 canvas에 그림을 그릴 수 있다.
-const ctx = canvas.getContext("2d");
-ctx.clearRect(0, 0, canvas.width, canvas.height); //초기화
-해양죄표와섬이름()
-// 3. 새선 그리기 설정
-ctx.beginPath();
-ctx.moveTo(0, 0);
-ctx.lineTo(600, 350);
-ctx.lineTo(600, 500);
-ctx.lineTo(350, 500);
-ctx.lineTo(350, 350);
-ctx.strokeStyle='yellow';
-ctx.lineWidth='1';
-ctx.setLineDash([2])
-ctx.stroke();
 }
 function canvas초기화() {
   document.querySelector('#canvas검색결과').style.display='none';
