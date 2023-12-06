@@ -107,7 +107,8 @@
         <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width=1000px height=870px>
       </div>
       <div id="canvas텍스트" style="position: absolute;left:300px;top:50px;display:none;background-color: white;border:1px solid black;">
-        <button onclick="document.querySelector('#canvas텍스트').style.display='none'">닫기</button><br>
+        <button onclick="document.querySelector('#canvas텍스트').style.display='none'">닫기</button>
+        <button onclick="탐색기()">탐색기</button><br>
         <embed id="embed부분" src="" width=1000px height=870px>
       </div>
       <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
@@ -307,7 +308,9 @@
     <br><br><br><br><br><br><br>
   </div>
   <div id="S0_01_일퀘출석체크" style="border:1px solid black;">
-    <embed src="portal/images/black_문서/S0_01_일퀘출석체크.txt" width=1000px height=870px>
+    <button onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">닫기</button>
+    <button onclick="탐색기()">탐색기</button><br>
+    <embed id="embed부분" src="portal/images/black_문서/S0_01_일퀘출석체크.txt" width=1000px height=870px>
   </div>
 
   <div id="S1_해상일퀘동선">

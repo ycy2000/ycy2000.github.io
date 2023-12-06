@@ -226,6 +226,7 @@ if (1==1) {
     비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
     document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
 }
+var embed_루트src_탐색기='';
 //맨마지막에 넣어야함
 var value있는것들=document.querySelectorAll('button[class~="모으기완료"');
 var value있는것들다음버튼;
@@ -841,8 +842,10 @@ if (1=="임시") {
 
 
 function 임시() {
-  var 변수='12.99';
-console.log(parseInt(변수,8))
+  embed_루트src_탐색기='portal/images/black_코딩등메모장/';
+  document.querySelector('#특수문자보기').style.display='none';
+  document.querySelector('#embed부분').src=embed_루트src_탐색기;
+  document.querySelector('#canvas텍스트').style.display='block';
 
 }
 function canvas초기화() {
@@ -959,7 +962,13 @@ function canvas검색실행() {
 var 리스너용canvas모든버튼들=document.querySelector('#offcanvasBottom');
 var black리스너용=document.querySelector('#black리스너용');
 var black리스너용=document.querySelector('#black리스너용');
+function 탐색기() {
+  document.querySelector('#특수문자보기').style.display='none';
+  document.querySelector('#embed부분').src=embed_루트src_탐색기;
+  document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
+  document.querySelector('#canvas텍스트').style.display='block';
 
+}
 function canvas카테고리또는파일(e) {
   // 1. e.target.classList.contains('카테고리실행') ==> offcanvas-body > id="canvas검색결과" 에 나타내기
   // 2. e.target.classList.contains('canvastext파일') ==> id="canvas텍스트"에 나타내기 , position: absolute 단독
@@ -991,9 +1000,9 @@ function canvas카테고리또는파일(e) {
   // 2. e.target.classList.contains('canvastext파일') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
   if (e.target.classList.contains('canvastext파일')) {
     // 기존파일부분 clear 후에 불러오기
-    var 경로앞부분='portal/images/black_코딩등메모장/';
+    embed_루트src_탐색기='portal/images/black_코딩등메모장/';
     document.querySelector('#특수문자보기').style.display='none';
-    document.querySelector('#embed부분').src=경로앞부분 + e.target.title;
+    document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
     document.querySelector('#canvas텍스트').style.display='block';
     return;
   }
@@ -1020,6 +1029,7 @@ function 문서연결또는하위메뉴(e) {
   }
 //1.class 파일연결 ==> 타이틀과 같은 이름의 element있으면 #선택문서셑팅하는곳 으로 가지고오기 ==> #선택문서셑팅하는곳 class d-none remove : return;    
   if (e.target.classList.contains('파일연결') && document.querySelector('#' + 타이틀)) {
+    if (e.target.title=='S0_01_일퀘출석체크') {embed_루트src_탐색기='portal/images/black_문서/'}
     document.querySelector('#선택문서셑팅하는곳').innerHTML=document.querySelector('#' + 타이틀).outerHTML;
     document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
     if (타이틀=='S1_해역사진') {계산_무게()};
