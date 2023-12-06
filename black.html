@@ -102,9 +102,9 @@
   <nav class="navbar bg-body-tertiary pt-1 m-0">    
     <div class="container-fluid">
       <!-- 특수문자 메모 띄우기 -->
-      <div id="특수문자보기" style="position: absolute;right:0px;top:20px;display:none;">
-        <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
-        <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width="700px" height="400ppx">
+      <div id="특수문자보기" style="position: absolute;left:300px;top:50px;display:none;background-color: white;border:1px solid black;">
+        <button onclick="document.querySelector('#특수문자보기').style.display='none';">닫기</button><br>
+        <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width=1000px height=870px>
       </div>
       <div id="canvas텍스트" style="position: absolute;left:300px;top:50px;display:none;background-color: white;border:1px solid black;">
         <button onclick="document.querySelector('#canvas텍스트').style.display='none'">닫기</button><br>
@@ -140,8 +140,12 @@
 
     ">main사이드숨기기</button>
     <button style="margin-bottom:7px;" onclick="document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');">우측닫기</button>
-    <button onclick="document.querySelector('#특수문자보기').style.display='block'">html 특수문자</button>
-
+    <button onclick="
+    document.querySelector('#특수문자보기').style.display='block';
+    document.querySelector('#canvas텍스트').style.display='none';
+    ">html 특수문자</button>
+    
+        <!-- #offcanvasBottom 바로 밑에 오프캔버스 내용이 있어야됨 -->
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
@@ -167,65 +171,72 @@
             </div>
             <div class="카테고리" id="_01_js_01" style="display:block;">
               <div>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_01_js_01_CANVAS선긋기.txt'>_01_js_01_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
+                <h6 class="canvastext파일" title='_01_js_01_CANVAS선긋기.txt'>_01_js_01_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
+                <h6 class="canvas_div" title='_01_js_01_CANVAS선긋기_div'>링크 : _01_js_01_CANVAS선긋기_div</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvastext파일" title=''>카테1</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>카테1</h6>
+                <h6 class="canvastext파일" title=''>카테1</h6>
               </div>
             </div>
             <div class="카테고리" id="_02_구조class_id" style="display:none;">
               <div>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_02_구조class_id_offcanvas_body_01.txt'>
+                <h6 class="canvastext파일" title='_02_구조class_id_offcanvas_body_01.txt'>
                   _02_구조class_id_offcanvas_body_01.txt : class_offcanvas-header>div>button : offcanvas-header와 offcanvas-body</h6>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_02_구조class_id_아이디와클래스숫자로시작안됨.txt'>
+                <h6 class="canvastext파일" title='_02_구조class_id_아이디와클래스숫자로시작안됨.txt'>
                   _02_구조class_id_아이디와클래스숫자로시작안됨</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로2</h6>
+                <h6 class="canvastext파일" title=''>세로2</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로3</h6>
+                <h6 class="canvastext파일" title=''>세로3</h6>
               </div>
             </div>
             <div class="카테고리" id="_03_css" style="display:none;">
               <div>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_03_css_text줄넘기기_문장처리등01.txt'>_03_css_text줄넘기기_문장처리등01.txt : 줄넘기지 않기, overflow시 처리</h6>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_03_css_이미지_배경에서_일부분만.txt'>_03_css_이미지_배경에서_일부분만.txt</h6>
+                <h6 class="canvastext파일" title='_03_css_text줄넘기기_문장처리등01.txt'>_03_css_text줄넘기기_문장처리등01.txt : 줄넘기지 않기, overflow시 처리</h6>
+                <h6 class="canvastext파일" title='_03_css_이미지_배경에서_일부분만.txt'>_03_css_이미지_배경에서_일부분만.txt</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로2</h6>
+                <h6 class="canvastext파일" title=''>세로2</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로3</h6>
+                <h6 class="canvastext파일" title=''>세로3</h6>
               </div>
             </div>
             <div class="카테고리" id="_04_bootstrap" style="display:none;">
               <div>
-                <h6 class="canvas파일" title=''>세로1</h6>
+                <h6 class="canvastext파일" title=''>세로1</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로2</h6>
+                <h6 class="canvastext파일" title=''>세로2</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로3</h6>
+                <h6 class="canvastext파일" title=''>세로3</h6>
               </div>
             </div>
             <div class="카테고리" id="_05_유의사항" style="display:none;">
               <div>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_05_유의사항_클래스아이디숫자안됨.txt'>_05_유의사항_클래스아이디숫자안됨.txt</h6>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_05_유의사항_메모장에서열면anci.txt'>_05_유의사항_메모장에서열면anci.txt</h6>
-                <h6 class="canvas파일" title='portal/images/black_코딩등메모장/_05_유의사항_구글_그림에서데이터추출.txt'>_05_유의사항_구글_그림에서데이터추출.txt</h6>
+                <h6 class="canvastext파일" title='_05_유의사항_클래스아이디숫자안됨.txt'>_05_유의사항_클래스아이디숫자안됨.txt</h6>
+                <h6 class="canvastext파일" title='_05_유의사항_메모장에서열면anci.txt'>_05_유의사항_메모장에서열면anci.txt</h6>
+                <h6 class="canvastext파일" title='_05_유의사항_구글_그림에서데이터추출.txt'>_05_유의사항_구글_그림에서데이터추출.txt</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로2</h6>
+                <h6 class="canvastext파일" title=''>세로2</h6>
               </div>
               <div>
-                <h6 class="canvas파일" title=''>세로3</h6>
+                <h6 class="canvastext파일" title=''>세로3</h6>
               </div>
             </div>
+          </div>
+        </div>
+        <!-- canvas_div모음 none상태로 두고 꺼내쓰기 -->
+        <div id="canvas_div" class="d-none">
+          <div id="_01_js_01_CANVAS선긋기_div">
+            _01_js_01_CANVAS선긋기_div
           </div>
         </div>
 
@@ -275,7 +286,8 @@
     </div>
   </div>
 
-  
+  <!-- black리스너용.addEventListener('click',문서연결또는하위메뉴);
+리스너용canvas모든버튼들.addEventListener('click',canvas카테고리또는파일); 모두 이곳으로 -->
   <div id="선택문서셑팅하는곳" class="d-inline-block d-none" style="vertical-align: top;width:1400px;">
   </div>
 </div>
@@ -794,24 +806,24 @@
           </div>
           <div id="파템재료_일퀘개수" class="d-inline-block 재료높이" style="vertical-align: top;">
             <div><div>필<br>요<br>수</div><div>보<br>유<br>수</div><div>남<br>은<br>수</div><div>일<br><br>get</div><div>일<br>퀘<br>수</div></div>
-            <div><button>42</button><button style="background-color: chartreuse;"  title="심해의눈물">30</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 심해의 눈물 1-->
-            <div><button>30</button><button style="background-color: chartreuse;"  title="화려한 진주 결정">14</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 진주 결정-->
-            <div><button></button><button style="background-color: chartreuse;"    title="콕스유물 전투">111</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 전투 -->
-            <div><button>30</button><button style="background-color: chartreuse;"  title="화려한 암염 주괴">18</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 암염 주괴-->
-            <div><button>170</button><button style="background-color: chartreuse;" title="짙은파도빛규격각">101</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+            <div><button>42</button><button style="background-color: chartreuse;"  title="심해의눈물"      >32</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 심해의 눈물 1-->
+            <div><button>30</button><button style="background-color: chartreuse;"  title="화려한 진주 결정">16</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 진주 결정-->
+            <div><button></button><button style="background-color: chartreuse;"    title="콕스유물 전투"   >119</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 전투 -->
+            <div><button>30</button><button style="background-color: chartreuse;"  title="화려한 암염 주괴">25</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 암염 주괴-->
+            <div><button>170</button><button style="background-color: chartreuse;" title="짙은파도빛규격각">112</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
 
-            <div><button>180</button><button style="background-color: chartreuse;" title="달의핏줄이새겨진아마포">205</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-            <div><button></button><button style="background-color: chartreuse;"    title="홍조빛 해저 단괴">77</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 홍조빛 해저 단괴-->
-            <div><button></button><button style="background-color: chartreuse;"    title="빛나는코발트주괴">21</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!--빛나는 코발트주괴 -->
-            <div><button></button><button style="background-color: chartreuse;"    title="달의비늘이새겨진합판">381</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!-- 달의 비늘이 새겨진 합판-->
-            <div><button></button><button style="background-color: chartreuse;"    title="콕스유물 상급">31</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 상급-->
-            <div><button></button><button style="background-color: chartreuse;"    title="순수한 진주 결정">54</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 진주결정-->
-            <div><button></button><button style="background-color: chartreuse;"    title="파도빛이 감도는 규격 각목">99</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--파도빛이 감도는 규격 각목 -->
-            <div><button></button><button style="background-color: chartreuse;"    title="대양의 견고한 현철">72</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 대양의 견고한 현철-->
-            <div><button></button><button style="background-color: chartreuse;"    title="심해초 줄기">145</button><button></button><button>4</button><button style="background-color: chartreuse;"></button></div><!-- 심해초 줄기-->
-            <div><button></button><button style="background-color: chartreuse;"    title="순수한 암초 조각">208</button><button></button><button>8</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 암초조각-->
-            <div><button></button><button style="background-color: chartreuse;"    title="콕스유물 하급">79</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 하급-->
-            <div><button></button><button style="background-color: chartreuse;"    title="강화된 섬나무 증착합판">290</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!--강화된 섬나무 증착합판 -->
+            <div><button>180</button><button style="background-color: chartreuse;" title="달의핏줄이새겨진아마포">244</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
+            <div><button></button><button style="background-color: chartreuse;"    title="홍조빛 해저 단괴"    >87</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 홍조빛 해저 단괴-->
+            <div><button></button><button style="background-color: chartreuse;"    title="빛나는코발트주괴"    >24</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!--빛나는 코발트주괴 -->
+            <div><button></button><button style="background-color: chartreuse;"    title="달의비늘이새겨진합판">432</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!-- 달의 비늘이 새겨진 합판-->
+            <div><button></button><button style="background-color: chartreuse;"    title="콕스유물 상급"       >33</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 상급-->
+            <div><button></button><button style="background-color: chartreuse;"    title="순수한 진주 결정"    >58</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 진주결정-->
+            <div><button></button><button style="background-color: chartreuse;"    title="파도빛이 감도는 규격 각목">111</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--파도빛이 감도는 규격 각목 -->
+            <div><button></button><button style="background-color: chartreuse;"    title="대양의 견고한 현철"  >110</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 대양의 견고한 현철-->
+            <div><button></button><button style="background-color: chartreuse;"    title="심해초 줄기"         >163</button><button></button><button>4</button><button style="background-color: chartreuse;"></button></div><!-- 심해초 줄기-->
+            <div><button></button><button style="background-color: chartreuse;"    title="순수한 암초 조각"    >224</button><button></button><button>8</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 암초조각-->
+            <div><button></button><button style="background-color: chartreuse;"    title="콕스유물 하급"       >85</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 하급-->
+            <div><button></button><button style="background-color: chartreuse;"    title="강화된 섬나무 증착합판">310</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!--강화된 섬나무 증착합판 -->
           </div>
 
           <div id="재료모은거" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">
@@ -819,7 +831,7 @@
             <div style="position:absolute;left:960px;top:3px;">
               <h6><b><i><u style="color:blueviolet">중범파템용 : 온기 35, 한기 80</u></i></b></h6>
               <h6><b><i><u style="color:blueviolet">토로용 : 온기 280, 한기 360, 치료용 더 많이!!</u></i></b></h6>
-              <h6><b><i><u style="color:blueviolet">!</u></i></b></h6>
+              <h6><b><i><u style="color:blueviolet">오킬 주간 온기 60*3=180, 한기 30*3=90 선택</u></i></b></h6>
             </div>
             <div id="설명" style="margin-top:79px;">
               <h6 style="text-indent: 350px;">1 [일일]그믐달 길드의 어린 <b><u>검은무쇠이빨</u></b></h6><!-- 심해의 눈물 1-->
@@ -827,7 +839,7 @@
               <h6><b><i><u style="color:blueviolet">부족!!</u></i></b> 3 [일일]제 몸 하나는 스스로 지켜야, 점진:함포60,흑장갑60</h6><!-- 콕스유물 전투 -->
               <h6><b><i><u style="color:blueviolet">물교</u></i></b></h6><!-- 화려한 암염 주괴-->
               <h6><b><i><u style="color:blueviolet">부족!!</u></i></b> 3 [일일]병사 표류추적자, 점진:144   </b><b><i><u style="color:blueviolet">물교할때 2개 나옴, 2회교환!</u></i></b></h6><!--짙은 파도빛이 감도는 규격 각목 3 -->
-              <h6> 3 [일일]그믐달 길드의 <b><u>어린 나인샤크</u> </b><b><i><u style="color:blueviolet">물교할때 11개 나옴?</u></i></b></h6><!-- 달의 핏줄이 새겨진 아마포 3-->
+              <h6 style="background-color: cadetblue;"> 3 [일일]그믐달 길드의 <b><u>어린 나인샤크</u></b> <b><u style="color:blueviolet">어른으로 받기!!</u></b> <b><i><u style="color:blueviolet">물교할때 11개 나옴?</u></i></b></h6><!-- 달의 핏줄이 새겨진 아마포 3-->
               <h6> 2 [일일]오킬루아 큐리오 산호조각 10개와 교환</h6><!-- 홍조빛 해저 단괴 -->
               <h6><b><i><u style="color:blueviolet">부족!! 물교</u></i></b>   </b><b><i><u style="color:blueviolet">물교할때 1개 나옴</u></i></b></h6><!-- 빛나는 코발트주괴 -->
               <h6>10 [일일]그믐달 길드의 <b><u>어린 칸디둠</u></b> 사냥꾼, 점진:함포200,흑장갑200</h6><!--  달의 비늘이 새겨진 합판-->
@@ -846,7 +858,7 @@
 
         <div>일반재료</div>
         <div id="모은재료_일반재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
-          <div id="일반재료_일퀘개수"><a href="https://www.kr.playblackdesert.com/ko-KR/News/Detail?groupContentNo=11336&countryType=ko-KR">24.11.29 대양 퀘스트 업데이트</a></div>
+          <div id="일반재료_일퀘개수"><a href="https://www.kr.playblackdesert.com/ko-KR/News/Detail?groupContentNo=11336&countryType=ko-KR" target="_blank">24.11.29 대양 퀘스트 업데이트</a></div>
           <div id="일반재료_일퀘개수">[일일]그믐달 길드의 나인샤크 사냥꾼, 달의 핏줄이 새겨진 아마포 3</div>
           <div id="일반재료_재료아이콘">[일일]그믐달 길드의 검은무쇠이빨 사냥꾼, 심해의 눈물 1</div>
           <div id="일반재료_재료이름">[일일]너도 좋고, 나도 좋고, 짙은 파도빛이 감도는 규격 각목 3</div>
@@ -879,8 +891,7 @@
     <embed src="" width=1000px height=870px>
     <br><br><br><br><br><br><br>
   </div>
-
-
+</div><!-- 개별 결과파일들id="문서정보숨김" 끝 -->
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
   role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
   <span>Top</span></a>

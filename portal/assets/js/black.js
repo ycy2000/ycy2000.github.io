@@ -974,9 +974,15 @@ function canvas검색실행() {
 var 리스너용canvas모든버튼들=document.querySelector('#offcanvasBottom');
 var black리스너용=document.querySelector('#black리스너용');
 var black리스너용=document.querySelector('#black리스너용');
+
 function canvas카테고리또는파일(e) {
-  // class가 카테고리 있으면, canvas파일 있으면
-  // alert(e.target.id);
+  // 1. e.target.classList.contains('카테고리실행') ==> offcanvas-body > id="canvas검색결과" 에 나타내기
+  // 2. e.target.classList.contains('canvastext파일') ==> id="canvas텍스트"에 나타내기 , position: absolute 단독
+  // 3. e.target.classList.contains('canvas_DIV') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
+
+  // 1. e.target.classList.contains('카테고리실행') ==> offcanvas-body > id="canvas검색결과" 에 나타내기
+  //    (먼저나오는) offcanvas-header의 것일수도있고, function canvas모든카테고리()실행시 class="offcanvas-body > id="canvas검색결과" 안의 것일수도 있다.
+  //    모든 class='카테고리'는 class="offcanvas-body안에 하나만 block상태로 유지하거나 모두 none상태
 
   var body카테고리실행버튼들=document.querySelectorAll('.카테고리실행');
   if (e.target.classList.contains('카테고리실행')) {
@@ -989,20 +995,34 @@ function canvas카테고리또는파일(e) {
       카테고리들[i].style.display='none';
     }
 
-    e.target.classList.add('현재카테고리'); 
-
+    document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리'); //offcanvas-header가 먼저나오니 offcanvas-header쪽에 색칠됨
 
     document.querySelector('#canvas검색결과').style.display='none';
     document.querySelector('#' + e.target.title).style.display='block';
 
     return;
   }
-  if (e.target.classList.contains('canvas파일')) {
+
+  // 2. e.target.classList.contains('canvastext파일') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
+  if (e.target.classList.contains('canvastext파일')) {
     // 기존파일부분 clear 후에 불러오기
-    document.querySelector('#embed부분').src=e.target.title;
+    var 경로앞부분='portal/images/black_코딩등메모장/';
+    document.querySelector('#특수문자보기').style.display='none';
+    document.querySelector('#embed부분').src=경로앞부분 + e.target.title;
     document.querySelector('#canvas텍스트').style.display='block';
     return;
   }
+  // 3. e.target.classList.contains('canvas_DIV') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
+  if (e.target.classList.contains('canvas_div')) {
+    // 기존파일부분 clear 후에 불러오기
+    var 닫기버튼='<button onclick="document.querySelector(\'#선택문서셑팅하는곳\').classList.add(\'d-none\')">닫기</button><br>'
+    document.querySelector('#canvas텍스트').style.display='none';
+    document.querySelector('#선택문서셑팅하는곳').innerHTML=닫기버튼 + document.querySelector('#' + e.target.title).outerHTML;
+    document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
+  }
+
+
+
 }
 function 문서연결또는하위메뉴(e) {
   //하위메뉴 타이틀인경우 하위메뉴 나오게하고 끝. 문서가 연결된 경우 문서연결만하고 끝 / e.target.title 자체로는 에러가 안남 length=0
