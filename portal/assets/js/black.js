@@ -233,6 +233,7 @@ if (1==1) {
     비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
     document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
 }
+if (1==1) {
 var embed_루트src_탐색기='';
 //맨마지막에 넣어야함
 var value있는것들=document.querySelectorAll('button[class~="모으기완료"');
@@ -244,6 +245,36 @@ for (var i=0; i<value있는것들.length; i++) {
     value있는것들다음버튼.style.cssText ="background-color: chocolate";
   }
 }
+}
+
+function navbar_main사이드숨기기_click () {
+  var 타겟=document.querySelector('#black버튼');
+  if (타겟.innerHTML=='main사이드숨기기') {
+    document.querySelector('#main사이드').classList.add('d-none')
+    타겟.innerHTML='main사이드보기'
+  } else  {
+    document.querySelector('#main사이드').classList.remove('d-none')
+    타겟.innerHTML='main사이드숨기기'
+  }  
+}
+function navbar_우측닫기_click () {
+  document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
+}
+function navbar_html특수문자_click () {
+  document.querySelector('#특수문자보기').style.display='block';
+  document.querySelector('#canvas텍스트').style.display='none';
+}
+
+function navbar_임시함수_click () {
+  
+}
+//main사이드 이벤트리스너 : 
+//canvas : 
+
+
+
+
+
 function 덩어리이동5개textarea_모두보기() {
   document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
   document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='inline-block';
@@ -459,12 +490,10 @@ function 섬검색초기화() {
 function textarea보기숨기기() {
   //상단시작지점 top:212px; 그림아래top:1026px;*/
   if (document.querySelector('#textarea기능버튼').innerHTML=='textarea내리기') {
-    document.querySelector('#덩어리이동5개textarea').style.top='';
-    document.querySelector('#덩어리이동5개textarea').style.top='1026px;';
+    document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '1026px');
     document.querySelector('#textarea기능버튼').innerHTML='textarea올리기';
   } else {
-    document.querySelector('#덩어리이동5개textarea').style.top='';
-    document.querySelector('#덩어리이동5개textarea').style.top='212px';
+    document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '212px');
     document.querySelector('#textarea기능버튼').innerHTML='textarea내리기';
   }
 } 
@@ -880,7 +909,11 @@ function 임시() {
 }
 function canvas초기화() {
   document.querySelector('#canvas검색결과').style.display='none';
-  document.querySelector('#_00_유의사항').style.display='block';
+  document.querySelector('#CN_유의사항').style.display='block';
+    for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+      document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+    }
+  document.querySelector('[title="CN_유의사항"]').classList.add('현재카테고리');
 }
 function canvas모든텍스트파일() {
   //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
@@ -1035,6 +1068,7 @@ function canvas카테고리또는파일(e) {
     document.querySelector('#특수문자보기').style.display='none';
     document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
     document.querySelector('#canvas텍스트').style.display='block';
+    document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
     return;
   }
   // 3. e.target.classList.contains('canvas_DIV') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
@@ -1060,9 +1094,10 @@ function 문서연결또는하위메뉴(e) {
   }
 //1.class 파일연결 ==> 타이틀과 같은 이름의 element있으면 #선택문서셑팅하는곳 으로 가지고오기 ==> #선택문서셑팅하는곳 class d-none remove : return;    
   if (e.target.classList.contains('파일연결') && document.querySelector('#' + 타이틀)) {
-    if (e.target.title=='S0_01_일퀘출석체크') {embed_루트src_탐색기='portal/images/black_문서/'}
+    if (타이틀=='S0_01_일퀘출석체크' || 타이틀=='S0_01_일퀘출석체크') {embed_루트src_탐색기='portal/images/black_문서/'}
     document.querySelector('#선택문서셑팅하는곳').innerHTML=document.querySelector('#' + 타이틀).outerHTML;
     document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
+    document.querySelector('#canvas텍스트').style.display='none';
     if (타이틀=='S1_해역사진') {계산_무게()};
     return;
   }
