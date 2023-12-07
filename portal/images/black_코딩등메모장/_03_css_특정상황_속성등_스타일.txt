@@ -1,0 +1,47 @@
+1. 속성선택자 : class, title, id, src 등, 요소 안에 들어가는 것.
+   
+   css 표현 : 대괄호 []
+
+   a[title] / li[class="a"] 오로지 a 클래스 하나만 있는경우 해당 / li[class~="a"] 여러 클래스중 a 클래스가 있는것 해당
+
+   li[class^="box-"] 여러 클래스중 box-로 시작되는 것이 있는 경우
+
+   li[class$="-box"] 여러 클래스중 -box로 끝나는 것이 있는 경우
+
+   li[class*="box"] box를 포함하는 것이 있는 경우
+
+   li[class^="a" i] 공백과 i를 붙이면 대소문자 구분없이 찾는다. ★대소문자 구분하여 다른 클래스이다.
+
+
+2. 의사클래스 (특정상태, 특정 조건) ==> 콜론 : 으로 시작한다.
+
+   :first-child ==> 요소뒤에 붙이지 않는 경우 모든 first-child 해당
+
+    p:first-child ==> p태그의 첫번째 자식 (p태그의 자식중 첫번째)
+
+    a:link 링크상태일때, a:visited 방문했을때, a:hover 마우스 올렸을때
+
+3. 부정선택자 :not(선택자)
+
+   #해역_물품단계 > textarea:not(:first-of-type) ==>첫번째 textarea가 아닌 경우
+
+   ★:first-of-type 같은 타입의 첫번째 요소
+
+4. nth 예제 ★nth-of-type으로 하면 같은 타입인것 중에!!
+
+   마지막 자식중에서, li에 important클래스가 있는는것 중 (-n+3의 것들 1,2,3)
+
+   :nth-last-child(-n + 3 of li.important)
+
+   tr:nth-last-child(odd)또는tr:nth-last-child(2n+1)
+
+   :nth-last-child(7) ==>7번째 요소 / nth-last-child(3n+4) 4,7,10... / :nth-last-child(-n+3) 마지막 세요소
+
+
+ 
+
+id="해역_물품단계" 안에서 첫번째 자식 textarea들에서 ★첫번째 textarea가 아닌 것만★ 
+
+  #해역_물품단계 > textarea:not(:first-of-type) {position: absolute;width:400px;height:700px;left:309px;top:212px;}
+
+  아닌것 :not(클래스나 아이디 등 조건), :first-of-type = 첫번째 같은 타입 요소

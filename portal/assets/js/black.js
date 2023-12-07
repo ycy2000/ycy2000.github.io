@@ -244,7 +244,27 @@ for (var i=0; i<value있는것들.length; i++) {
     value있는것들다음버튼.style.cssText ="background-color: chocolate";
   }
 }
-
+function 덩어리이동5개textarea_모두보기() {
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='inline-block';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='inline-block';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='inline-block';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
+}
+function 덩어리이동5개textarea_두개숨기기() {
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='none';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='none';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='inline-block';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='inline-block';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
+}
+function 덩어리이동5개textarea_네개숨기기() {
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='none';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='none';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='none';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='none';
+  document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
+}
 function 물품단계클릭시() {
   // 해역_물품단계
   // 모은재료none상태
@@ -437,12 +457,15 @@ function 섬검색초기화() {
 
 } 
 function textarea보기숨기기() {
-  if (document.querySelector('#textarea기능버튼').innerHTML=='textarea숨기기') {
-    document.querySelector('#좌측상단메모').classList.add('d-none');
-    document.querySelector('#textarea기능버튼').innerHTML='textarea보기';
+  //상단시작지점 top:212px; 그림아래top:1026px;*/
+  if (document.querySelector('#textarea기능버튼').innerHTML=='textarea내리기') {
+    document.querySelector('#덩어리이동5개textarea').style.top='';
+    document.querySelector('#덩어리이동5개textarea').style.top='1026px;';
+    document.querySelector('#textarea기능버튼').innerHTML='textarea올리기';
   } else {
-    document.querySelector('#좌측상단메모').classList.remove('d-none');
-    document.querySelector('#textarea기능버튼').innerHTML='textarea숨기기';
+    document.querySelector('#덩어리이동5개textarea').style.top='';
+    document.querySelector('#덩어리이동5개textarea').style.top='212px';
+    document.querySelector('#textarea기능버튼').innerHTML='textarea내리기';
   }
 } 
 function 섬이름검색1() {

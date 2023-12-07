@@ -91,6 +91,8 @@
   .offcanvas-body div {vertical-align: top;}
   .js모든파일리스트div {width:900px;height:440px;vertical-align: top;display:inline-block;}
   .현재카테고리 {background-color: chartreuse;}
+  #덩어리이동5개textarea {position: absolute;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;left:311px;top:1026px;}/* 상단시작지점 top:212px; 그림아래top:1026px;*/
+  #덩어리이동5개textarea > textarea {width:700px;height:700px;display:inline-block;}
 </style>
 </head>
 <body>
@@ -172,6 +174,7 @@
             </div>
             <div class="카테고리" id="_00_유의사항" style="display:block;">
               <div>
+                <h6 class="canvastext파일" title='_00_유의사항_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt'>_00_유의사항_코딩시불편함참고_ctrl_f활용위해_같은단어최소화</h6>
                 <h6 class="canvastext파일" title=''>_00_유의사항_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
                 <h6 class="canvastext파일" title='_00_유의사항_클래스아이디숫자안됨.txt'>_00_유의사항_클래스아이디숫자안됨.txt</h6>
                 <h6 class="canvastext파일" title='_00_유의사항_메모장에서열면anci.txt'>_00_유의사항_메모장에서열면anci.txt</h6>
@@ -200,6 +203,7 @@
             <div class="카테고리" id="_02_구조class_id" style="display:none;">
               <div>
                 <h6 class="canvastext파일" title='_02_구조class_id_offcanvas_body_01.txt'>_02_구조class_id_offcanvas_body_01.txt</h6>
+                <h6 class="canvastext파일" title='_02_구조class_id_textarea보기숨기기top잘안됨.txt'>_02_구조class_id_textarea보기숨기기top잘안됨.txt</h6>
               </div>
               <div>
                 <h6 class="canvastext파일" title=''>세로2</h6>
@@ -212,6 +216,7 @@
               <div>
                 <h6 class="canvastext파일" title='_03_css_text줄넘기기_문장처리등01.txt'>_03_css_text줄넘기기_문장처리등01.txt : 줄넘기지 않기, overflow시 처리</h6>
                 <h6 class="canvastext파일" title='_03_css_이미지_배경에서_일부분만.txt'>_03_css_이미지_배경에서_일부분만.txt</h6>
+                <h6 class="canvastext파일" title='_03_css_특정상황_속성등_스타일.txt'>_03_css_특정상황_속성등_스타일.txt</h6>
               </div>
               <div>
                 <h6 class="canvastext파일" title=''>세로2</h6>
@@ -619,7 +624,7 @@
           <input onchange="섬이름검색5()" id="input섬이름5" type = "text" maxlength = "10" style="width:80px;">
         </form>
         <div id="div섬구역5" style="width:130px;height:30px;vertical-align: top; border:1px solid black;display:inline-block; background-color: gray;"></div><span>, </span>
-        <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea숨기기</button>
+        <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea올리기</button>
         <button onclick="섬검색초기화()">섬검색결과 초기화</button>
       </div>
     </div><!-- fixed -->
@@ -651,65 +656,71 @@
 
         </textarea>
         <div style="height:159px;"></div>
+        <div id="덩어리이동5개textarea">
+          <button onclick=" 덩어리이동5개textarea_모두보기()">기본보기</button>
+          <button onclick=" 덩어리이동5개textarea_두개숨기기()">3번째부터보기</button>
+          <button onclick=" 덩어리이동5개textarea_네개숨기기()">5번째보기</button><br>
+          <textarea>5조각상의 눈물 : 해적의 열쇠,일리야
+            5 팔랑나비 박제품 : 목 잘린 용 조각상, 바레미
+            5 102년 묵은 황금초 : 뱃사공의 수련서, 오르프스
+            5 황금빛 물고기 비늘 : 만병통치약, 발베쥬
+            5 푸른빛 석영 : 해상 기사단의 창, 나르보
+            5 최고급 황금 촛대 : 금주화가 담긴 낡은, 파딕스
+            5 정체불명의 암석 : 자수정 파편, 오벤섬
+            5 빛바랜 황금용 조각상 : 청록빛 소금 덩어리, 시오닐
+            5 오색빛 산호 노리개 1500 : 조개 껍질 장식, 난파된 고대 유적 수송선
+            
+            일반 화려한 암염 주괴[인버넨] : 5 황금빛 물고기 비늘
+            일반 화려한 진주 결정[마르카] : 5 고급 문양의 옷감
+                     </textarea>
+                    <textarea>4 청록빛 소금덩어리 : 찢어진 해적 보물지도, 알나하
+            4 뱃사공의 수련서 : 종유석 파편, 샤샤
+            4 해상 기사단의 창 : 해적단의 보급상자, 로즈반
+            4 만병통치약 : 족제비 가죽 외투, 툴루
+            4 목 잘린 용 조각상 : 정찰병 망원경, 오리샤
+            4 해적의 열쇠 : 희귀 약초 무더기, 시르나
+            4 자수정 파편 : 롭스타 그물, 리스즈
+            4 조개 껍질 장식 : 해골 장식 찻잔, 알마이
+            4 금주화가 담긴 낡은 상자 : 반달 조리용 칼, 데이튼
+            
+              주아앙 : 6순수, 3현실, 2자신
+                    </textarea>
+                    <textarea>3 정찰병 망원경 : 해적 금주화, 아라킬
+            3 희귀 약초 무더기 : 널찍한 돌판, 타라무라
+            3 종유석 파편 : 괴생물 촉수, 웨이타
+            3 해적단의 보급상자 : 오색 구슬, 마를레느
+            3 족제비 가죽 외투 : 나르보산 해삼, 앙쥬
+            3 찢어진 해적 보물지도 : 성게 가시, 던데
+            3 반달 조리용 칼 : 균형잡힌 돌탑
+            3 롭스타 그물 : 해양 구조품, 루루브
+            3 해골 장식 찻잔 : 균형잡힌 돌탑, 진버레이
+            
+            
+                    </textarea>
+                    <textarea>2 해적 금주화 : 갈퀴 꽃 씨앗 주머니
+            2 널찍한 돌판 : 로아 꽃 씨앗 주머니
+            2 오색 구슬 : 쫄깃한 전어 회
+            2 괴생물 촉수 : 비옥한 흙
+            2 나르보산 해삼 : 황금빛 모래
+            2 해적선 돛대 : 고대 항아리 파편
+            2 성게 가시 : 앵두나무 씨앗 주머니
+            2 해양 구조품 : 해적의 화약
+            2 균형잡힌 돌탑 : 알수없는 고대 벽화
+                    </textarea>
+                    <textarea>카슈마 : 102년 묵은 황금초
+            할마드 : 정체불명의 암석
+            파키오와 전투 똇목 : 흰색 애벌레 박제품
+            까마귀 상단소유의 선박 : 푸른빛 석영
+            난파된 하란의 수송선 : 황금빛 물고기 비늘
+            떠내려온 미완성 선박 : 빛바랜 황금용 조각상
+            1500 난파된 고대 유적 수송선 : 4 조개 껍질 장식 - 5 오색빛 산호 노리개
+            
+            
+                    </textarea>
+
+        </div>
         <img style="margin-bottom:2px;margin-left:-8px;" src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음">
-        <br>
-        <textarea style="width:400px;height:700px;display:inline-block;vertical-align: top;">5조각상의 눈물 : 해적의 열쇠,일리야
-5 팔랑나비 박제품 : 목 잘린 용 조각상, 바레미
-5 102년 묵은 황금초 : 뱃사공의 수련서, 오르프스
-5 황금빛 물고기 비늘 : 만병통치약, 발베쥬
-5 푸른빛 석영 : 해상 기사단의 창, 나르보
-5 최고급 황금 촛대 : 금주화가 담긴 낡은, 파딕스
-5 정체불명의 암석 : 자수정 파편, 오벤섬
-5 빛바랜 황금용 조각상 : 청록빛 소금 덩어리, 시오닐
-5 오색빛 산호 노리개 1500 : 조개 껍질 장식, 난파된 고대 유적 수송선
-
-일반 화려한 암염 주괴[인버넨] : 5 황금빛 물고기 비늘
-일반 화려한 진주 결정[마르카] : 5 고급 문양의 옷감
-         </textarea>
-        <textarea style="width:400px;height:700px;display:inline-block;vertical-align: top;"">4 청록빛 소금덩어리 : 찢어진 해적 보물지도, 알나하
-4 뱃사공의 수련서 : 종유석 파편, 샤샤
-4 해상 기사단의 창 : 해적단의 보급상자, 로즈반
-4 만병통치약 : 족제비 가죽 외투, 툴루
-4 목 잘린 용 조각상 : 정찰병 망원경, 오리샤
-4 해적의 열쇠 : 희귀 약초 무더기, 시르나
-4 자수정 파편 : 롭스타 그물, 리스즈
-4 조개 껍질 장식 : 해골 장식 찻잔, 알마이
-4 금주화가 담긴 낡은 상자 : 반달 조리용 칼, 데이튼
-
-  주아앙 : 6순수, 3현실, 2자신
-        </textarea>
-        <textarea style="width:400px;height:700px;display:inline-block;vertical-align: top;">3 정찰병 망원경 : 해적 금주화, 아라킬
-3 희귀 약초 무더기 : 널찍한 돌판, 타라무라
-3 종유석 파편 : 괴생물 촉수, 웨이타
-3 해적단의 보급상자 : 오색 구슬, 마를레느
-3 족제비 가죽 외투 : 나르보산 해삼, 앙쥬
-3 찢어진 해적 보물지도 : 성게 가시, 던데
-3 반달 조리용 칼 : 균형잡힌 돌탑
-3 롭스타 그물 : 해양 구조품, 루루브
-3 해골 장식 찻잔 : 균형잡힌 돌탑, 진버레이
-
-
-        </textarea>
-        <textarea style="width:400px;height:700px;display:inline-block;vertical-align: top;">2 해적 금주화 : 갈퀴 꽃 씨앗 주머니
-2 널찍한 돌판 : 로아 꽃 씨앗 주머니
-2 오색 구슬 : 쫄깃한 전어 회
-2 괴생물 촉수 : 비옥한 흙
-2 나르보산 해삼 : 황금빛 모래
-2 해적선 돛대 : 고대 항아리 파편
-2 성게 가시 : 앵두나무 씨앗 주머니
-2 해양 구조품 : 해적의 화약
-2 균형잡힌 돌탑 : 알수없는 고대 벽화
-        </textarea>
-        <textarea style="width:400px;height:700px;display:inline-block;vertical-align: top;">카슈마 : 102년 묵은 황금초
-할마드 : 정체불명의 암석
-파키오와 전투 똇목 : 흰색 애벌레 박제품
-까마귀 상단소유의 선박 : 푸른빛 석영
-난파된 하란의 수송선 : 황금빛 물고기 비늘
-떠내려온 미완성 선박 : 빛바랜 황금용 조각상
-1500 난파된 고대 유적 수송선 : 4 조개 껍질 장식 - 5 오색빛 산호 노리개
-
-
-                  </textarea>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
       <div id="모은재료none상태" class="d-none" style="width:100%; position: absolute;left:314px;top:212px;margin-bottom:5px;background-color: white;">

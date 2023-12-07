@@ -1,0 +1,27 @@
+function textarea보기숨기기() {
+
+  //상단시작지점 top:212px; 그림아래top:1026px;*/
+
+  if (document.querySelector('#textarea기능버튼').innerHTML=='textarea내리기') {
+
+    document.querySelector('#덩어리이동5개textarea').style.top='';
+
+    document.querySelector('#덩어리이동5개textarea').style.top='1026px;';
+
+    document.querySelector('#textarea기능버튼').innerHTML='textarea올리기';
+
+  } else {
+    document.querySelector('#덩어리이동5개textarea').style.top='';
+
+    document.querySelector('#덩어리이동5개textarea').style.top='212px';
+
+    document.querySelector('#textarea기능버튼').innerHTML='textarea내리기';
+
+  }
+} 
+
+★첫번째 작동은 되는듯하나 두번째부터 안되어서 보니까 계속 같은 212px로 나타났음.
+
+★style.top을 공백 ''으로 설정하고 다시 바꾸니 작동한다. 인라인에 style="top:1026px;"해두면 또 안됨
+
+★인라인에 style="top:1026px;" 해두고 해도 잘 안바뀐다.
