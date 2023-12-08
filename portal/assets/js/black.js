@@ -246,7 +246,8 @@ for (var i=0; i<value있는것들.length; i++) {
   }
 }
 }
-
+계산_무게()
+canvas초기화()
 function navbar_main사이드숨기기_click () {
   var 타겟=document.querySelector('#black버튼');
   if (타겟.innerHTML=='main사이드숨기기') {
@@ -261,14 +262,23 @@ function navbar_우측닫기_click () {
   document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
 }
 function navbar_html특수문자_click () {
-  document.querySelector('#특수문자보기').style.display='block';
-  document.querySelector('#canvas텍스트').style.display='none';
+  var 타겟element;
+  var 셑팅할곳;
+  //파일셑팅
+    타겟element=document.querySelector('#html특수문자_click');
+    셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
+    셑팅할곳.innerHTML=타겟element.outerHTML;
+    console.log(타겟element.outerHTML)
 }
 
 function navbar_임시함수_click () {
-  
+  alert('작성중')
 }
+
+
+
 //main사이드 이벤트리스너 : 
+
 //canvas : 
 
 
@@ -901,25 +911,22 @@ if (1=="임시") {
 
 
 function 임시() {
-  embed_루트src_탐색기='portal/images/black_코딩등메모장/';
-  document.querySelector('#특수문자보기').style.display='none';
-  document.querySelector('#embed부분').src=embed_루트src_탐색기;
-  document.querySelector('#canvas텍스트').style.display='block';
+
 
 }
 function canvas초기화() {
-  document.querySelector('#canvas검색결과').style.display='none';
-  document.querySelector('#CN_유의사항').style.display='block';
-    for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
-      document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
-    }
-  document.querySelector('[title="CN_유의사항"]').classList.add('현재카테고리');
+  document.querySelector('#캔버스바디').innerHTML='';
+  for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+    document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+  }
+  document.querySelector('#캔버스바디').innerHTML=document.querySelector('#유의사항').outerHTML;
+  document.querySelector('[title=유의사항]').classList.add('현재카테고리');
 }
 function canvas모든텍스트파일() {
   //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
   //34개이상일때 나누기2 왼쪽오른쪽
-  document.querySelector('#canvas검색결과').innerHTML='';
-  var 검색할버튼클래스들=document.querySelectorAll('.카테고리 h6');//canvastext파일, canvas_div
+  document.querySelector('#캔버스바디').innerHTML='';
+  var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');//canvastext파일, canvas_div
   var 개수=검색할버튼클래스들.length;
   var 왼쪽내부html='';
   var 오른쪽내부html='';
@@ -955,27 +962,25 @@ function canvas모든텍스트파일() {
     오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
 
   }
-  document.querySelector('#canvas검색결과').innerHTML=왼쪽내부html + 오른쪽내부html;
+  document.querySelector('#캔버스바디').innerHTML=왼쪽내부html + 오른쪽내부html;
   var 카테고리들=document.querySelectorAll('.카테고리');
   for (var i=0; i<카테고리들.length; i++) {
     카테고리들[i].style.display='none';
   }
-  document.querySelector('#canvas검색결과').style.display='block';
 }
 function canvas모든카테고리() {
   //최종적으로 세로 두줄이 되도록 한다. 17줄
-  document.querySelector('#canvas검색결과').innerHTML='';
+  document.querySelector('#캔버스바디').innerHTML='';
   var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
   var 내부html='';
   for (var i=0; i<검색할버튼클래스들.length; i++) {
     내부html+=검색할버튼클래스들[i].outerHTML;
   }
-  document.querySelector('#canvas검색결과').innerHTML=내부html;
+  document.querySelector('#캔버스바디').innerHTML=내부html;
   var 카테고리들=document.querySelectorAll('.카테고리');
   for (var i=0; i<카테고리들.length; i++) {
     카테고리들[i].style.display='none';
   }
-  document.querySelector('#canvas검색결과').style.display='block';
 }
 function canvas카테고리숨김() {
   //class="카테고리실행". 
@@ -1005,7 +1010,7 @@ function canvas검색실행() {
   //처음에 input value가 있다가 마지막에 사라짐?
   var 검색할문자=document.querySelector('#canvas검색').value;
   if (document.querySelector('#canvas검색').value=='') {return;}
-  var 검색할버튼클래스들=document.querySelectorAll('.카테고리 h6');
+  var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');
   var 내부html='';
   for (var i=0; i<검색할버튼클래스들.length; i++) {
     if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
@@ -1013,94 +1018,69 @@ function canvas검색실행() {
     }
   }
   if (내부html=='') {alert('없음');return;}
-  document.querySelector('#canvas검색결과').innerHTML='';
-  document.querySelector('#canvas검색결과').innerHTML=내부html;
-  //카테고리들 none
-  var 카테고리들=document.querySelectorAll('.카테고리');
-  for (var i=0; i<카테고리들.length; i++) {
-    카테고리들[i].style.display='none';
-  }
-  document.querySelector('#canvas검색결과').style.display='block';
+  document.querySelector('#캔버스바디').innerHTML=내부html;
   document.querySelector('#canvas검색').value=검색할문자;
 }
-var 리스너용canvas모든버튼들=document.querySelector('#offcanvasBottom');
-var black리스너용=document.querySelector('#black리스너용');
-var black리스너용=document.querySelector('#black리스너용');
-function 탐색기() {
-  document.querySelector('#특수문자보기').style.display='none';
-  document.querySelector('#embed부분').src=embed_루트src_탐색기;
-  document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
-  document.querySelector('#canvas텍스트').style.display='block';
 
+var 리스너_main사이드=document.querySelector('#메인사이드와우측을함께담은div');
+var 리스너_캔버스=document.querySelector('#offcanvasBottom');
+function main사이드클릭시(e) {
+  //class="파일연결" title="S1_해상일퀘동선" 타이틀을 아이디로 가진 div가 id=숨김_main사이드와header관련 안에 있다
+  var 유형='';
+  var 타겟element;
+  var 셑팅할곳;
+  if (e.target.classList.contains('파일연결')) {
+    유형="파일연결";
+    타겟element=document.querySelector('#' + e.target.title);
+    셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
+    셑팅할곳.innerHTML=타겟element.outerHTML;
+  }
+  if (e.target.title=='S1_해역사진') {console.log('계산_무게'); 계산_무게()};
 }
-function canvas카테고리또는파일(e) {
-  // 1. e.target.classList.contains('카테고리실행') ==> offcanvas-body > id="canvas검색결과" 에 나타내기
-  // 2. e.target.classList.contains('canvastext파일') ==> id="canvas텍스트"에 나타내기 , position: absolute 단독
-  // 3. e.target.classList.contains('canvas_DIV') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
 
-  // 1. e.target.classList.contains('카테고리실행') ==> offcanvas-body > id="canvas검색결과" 에 나타내기
-  //    (먼저나오는) offcanvas-header의 것일수도있고, function canvas모든카테고리()실행시 class="offcanvas-body > id="canvas검색결과" 안의 것일수도 있다.
-  //    모든 class='카테고리'는 class="offcanvas-body안에 하나만 block상태로 유지하거나 모두 none상태
-
-  var body카테고리실행버튼들=document.querySelectorAll('.카테고리실행');
+function 캔버스클릭시(e) {
+  var 유형='';
+  var 타겟element;
+  var 셑팅할곳;
+  //파일셑팅
   if (e.target.classList.contains('카테고리실행')) {
-    // 카테고리 클래스 모두 none후에 클릭한 것만 block
-    for (var i=0; i<body카테고리실행버튼들.length; i++) {
-      body카테고리실행버튼들[i].classList.remove('현재카테고리');
-    }
-    var 카테고리들=document.querySelectorAll('.카테고리'); //숨길것들
-    for (var i=0; i<카테고리들.length; i++) {
-      카테고리들[i].style.display='none';
-    }
-
-    document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리'); //offcanvas-header가 먼저나오니 offcanvas-header쪽에 색칠됨
-
-    document.querySelector('#canvas검색결과').style.display='none';
-    document.querySelector('#' + e.target.title).style.display='block';
-
-    return;
+    유형="카테고리실행";
+    타겟element=document.querySelector('#' + e.target.title);
+    셑팅할곳=document.querySelector('#캔버스바디');
+    셑팅할곳.innerHTML=타겟element.outerHTML;
   }
 
-  // 2. e.target.classList.contains('canvastext파일') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
   if (e.target.classList.contains('canvastext파일')) {
-    // 기존파일부분 clear 후에 불러오기
-    embed_루트src_탐색기='portal/images/black_코딩등메모장/';
-    document.querySelector('#특수문자보기').style.display='none';
-    document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
-    document.querySelector('#canvas텍스트').style.display='block';
-    document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
-    return;
+    유형="canvastext파일";
+    타겟element=document.querySelector('#숨김_main사이드와header관련 > #canvas텍스트');
+    셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
+    셑팅할곳.innerHTML=타겟element.outerHTML;
   }
-  // 3. e.target.classList.contains('canvas_DIV') ==> id="main사이드" 의 형제인 id="선택문서셑팅하는곳"에 나타내기
+  
   if (e.target.classList.contains('canvas_div')) {
-    // 기존파일부분 clear 후에 불러오기
-    var 닫기버튼='<button onclick="document.querySelector(\'#선택문서셑팅하는곳\').classList.add(\'d-none\')">닫기</button><br>'
-    document.querySelector('#canvas텍스트').style.display='none';
-    document.querySelector('#선택문서셑팅하는곳').innerHTML=닫기버튼 + document.querySelector('#' + e.target.title).outerHTML;
-    document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
+    유형="canvas_div";
+    타겟element=document.querySelector('#' + e.target.title);
+    셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
+    셑팅할곳.innerHTML=타겟element.outerHTML;
   }
 
-
-
-}
-function 문서연결또는하위메뉴(e) {
-  //하위메뉴 타이틀인경우 하위메뉴 나오게하고 끝. 문서가 연결된 경우 문서연결만하고 끝 / e.target.title 자체로는 에러가 안남 length=0
-  //querySeloctor #만 있으면 에러, 뭐라도 있으면 에러는 아님 undefined
-  var 타이틀;
-  if (e.target.title.length==0) { 
-    타이틀='_' 
-  } else {
-    타이틀=e.target.title;
+  //후속작업
+  if (유형=='카테고리실행') {
+    for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+      document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+    }
+    document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');
   }
-//1.class 파일연결 ==> 타이틀과 같은 이름의 element있으면 #선택문서셑팅하는곳 으로 가지고오기 ==> #선택문서셑팅하는곳 class d-none remove : return;    
-  if (e.target.classList.contains('파일연결') && document.querySelector('#' + 타이틀)) {
-    if (타이틀=='S0_01_일퀘출석체크' || 타이틀=='S0_01_일퀘출석체크') {embed_루트src_탐색기='portal/images/black_문서/'}
-    document.querySelector('#선택문서셑팅하는곳').innerHTML=document.querySelector('#' + 타이틀).outerHTML;
-    document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
-    document.querySelector('#canvas텍스트').style.display='none';
-    if (타이틀=='S1_해역사진') {계산_무게()};
-    return;
+
+  if (유형=='canvastext파일') {
+    embed_루트src_탐색기='portal/images/black_코딩등메모장/';
+    document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
   }
 }
-black리스너용.addEventListener('click',문서연결또는하위메뉴);
-리스너용canvas모든버튼들.addEventListener('click',canvas카테고리또는파일);
+
+리스너_main사이드.addEventListener('click',main사이드클릭시);
+리스너_캔버스.addEventListener('click',캔버스클릭시);
+
+
+
+
