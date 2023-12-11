@@ -76,7 +76,6 @@ if (1==1) {
 //재료보유수 기록 참조하여 부위별 정보의 보유수에 뿌리기
 if (1==1) {
 var 보유수=document.querySelectorAll('#파템재료_일퀘개수 .노랑');
-console.log(보유수[0].innerHTML);
 //보유수[0]심해의 눈물 
 //보유수[1]화려한 진주 결정
 //보유수[3]화려한 암염 주괴
@@ -124,11 +123,6 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(13) > button:nth
 document.querySelector('#파템_일반재료2 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=보유수[13].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[9].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[7].innerHTML;
-}
-
-
-
-
 //보유수[0]심해의 눈물 
 //보유수[1]화려한 진주 결정
 //보유수[2]콕스유물 전투
@@ -147,6 +141,9 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth
 //보유수[14]순수한 암초조각
 //보유수[15]콕스유물 하급
 //보유수[16]강화된 섬나무 증착합판
+}
+
+
 
 
 
@@ -189,7 +186,7 @@ function navbar_html특수문자_click () {
 }
 
 function navbar_임시함수_click () {
-  alert('작성중')
+  console.log(this.target);
 }
 function 덩어리이동5개textarea_모두보기() {
   document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
