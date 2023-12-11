@@ -297,26 +297,28 @@ function 개수10버튼클릭() {var 버튼=document.querySelectorAll('#차감in
 function 개수11버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[10]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 개수12버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[11]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 남은교섭력계산() {
-  var 남은_차감후_교섭력_2개=document.querySelectorAll('#남은_차감후_교섭력 input');
-  var 차감개수들_8개=document.querySelectorAll('#차감input들 button');
-  var 차감input들_8개=document.querySelectorAll('#차감input들 input');
-  // 남은교석력, 차감교섭력과 개수 8셑트 16개input 컨트롤
-  var 남은교섭력;
-  if (남은_차감후_교섭력_2개[0].value=='') {남은교섭력=0;} else {남은교섭력=남은_차감후_교섭력_2개[0].value;};
-  if (isNaN(남은교섭력)) {alert('남은교섭력이 공백 또는 숫자가 아님 return'); return;} //숫자가 아니면
-  var 차감후은교섭력=남은_차감후_교섭력_2개[1];
-  // 공란이면 0, 아니면 숫자일때 진행, 숫자아니면 메세지
-  var 숫자확인;
-  for (var i=0; i<차감input들_8개.length; i++) {
-    if (차감input들_8개[i].value=='') {숫자확인=0;} else {숫자확인=차감input들_8개[i].value;}
-    if (isNaN(숫자확인)) {alert('차감 박스가 공백 또는 숫자가 아님 return'); return;} //숫자가 아니면
-  }
+  if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
+  if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
+  var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
+  var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
+
+  var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
+  var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
+
   var 차감할교섭력=0;
-  for (var i=0; i<8; i++) {
-    if (차감input들_8개[i].value=='') {숫자확인=0;} else {숫자확인=차감input들_8개[i].value;}
-    차감할교섭력+=숫자확인*차감개수들_8개[i].innerHTML;
+  var 곱할값=0;
+
+  for (var i=0; i<차감할1회교섭력_12개.length; i++) {
+    if (isNaN(차감할1회교섭력_12개[i].value*1)) {
+      곱할값=0;
+    } else {
+      곱할값=차감할1회교섭력_12개[i].value*1;
+    }
+
+    차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
   }
-  남은_차감후_교섭력_2개[1].value=남은교섭력-차감할교섭력;
+
+  남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
 }
 function 계산_무게() {
   var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
