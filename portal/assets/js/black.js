@@ -73,166 +73,83 @@ if (1==1) {
   var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
   var 재료교환섬='_네트넘_에버딘_마르카_인버넨_델링하트_';
 }
-  //파템료계산. 재료별로 동작 [파템제작재료12종]
-  //1.재료 우측에 필요수량 합산하에 좌측 전체필요수에 넣는다. 세번쨰버튼이 첫번째 파템 필요수
-  //필요수,보유수(수동입력),남은수,일get(수동입력),일퀘수 : 첫버튼부터 다섯개버튼씩
-
+//재료보유수 기록 참조하여 부위별 정보의 보유수에 뿌리기
 if (1==1) {
-  var 전체필요수=0;
-  var 더할수1=0;
-  var 더할수2=0;
-  var 더할수3=0;
-  var 더할수4=0;
-  var 타겟;
-  var 보유수=0;
-  var 전체수=0;
-  var 첫타겟순번=0;
-  var 일퀘수=0;
-  var 남은수=0;
-  var 일퀘남은날=0;
-  for (var i=0; i<17; i++) {
-    첫타겟순번+=2;
-    if (isNaN(document.querySelectorAll('#파템_함포 button')[첫타겟순번].innerHTML)) {더할수1=0;} 
-    else {더할수1=Number(document.querySelectorAll('#파템_함포 button')[첫타겟순번].innerHTML);}
-    if (isNaN(document.querySelectorAll('#파템_선수상 button')[첫타겟순번].innerHTML)) {더할수2=0;} 
-    else {더할수2=Number(document.querySelectorAll('#파템_선수상 button')[첫타겟순번].innerHTML);}
-    if (isNaN(document.querySelectorAll('#파템_장갑 button')[첫타겟순번].innerHTML)) {더할수3=0;} 
-    else {더할수3=Number(document.querySelectorAll('#파템_장갑 button')[첫타겟순번].innerHTML);}
-    if (isNaN(document.querySelectorAll('#파템_돛 button')[첫타겟순번].innerHTML)) {더할수4=0;} 
-    else {더할수4=Number(document.querySelectorAll('#파템_돛 button')[첫타겟순번].innerHTML);}
-    //전체필요수
-    전체수=더할수1+더할수2+더할수3+더할수4;
-    document.querySelectorAll('#파템재료_일퀘개수 button')[i*5].innerHTML=전체수;
+var 보유수=document.querySelectorAll('#파템재료_일퀘개수 .노랑');
+console.log(보유수[0].innerHTML);
+//보유수[0]심해의 눈물 
+//보유수[1]화려한 진주 결정
+//보유수[3]화려한 암염 주괴
+//보유수[4]짙은 파도빛이 감도는 규격 각목
+//보유수[5]달의 핏줄이 새겨진 아마포
+document.querySelector('#파템_일반재료1 > div:nth-of-type(2) > button:nth-of-type(2)').innerHTML=보유수[0].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(3) > button:nth-of-type(2)').innerHTML=보유수[1].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(4) > button:nth-of-type(2)').innerHTML=보유수[3].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(5) > button:nth-of-type(2)').innerHTML=보유수[4].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(6) > button:nth-of-type(2)').innerHTML=보유수[5].innerHTML;
 
-    //남은수
-    if (document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+1].innerHTML=='') {
-      보유수=0;
-    } else {
-      보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+1].innerHTML);
-    }
-    남은수=전체수-보유수;
-    document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+2].innerHTML=남은수;
+//보유수[2]콕스 전투
+//보유수[8]달의비늘 합판
+//보유수[14]순수한 암초
+//보유수[11]파도빛 각목
+document.querySelector('#파템_일반재료1 > div:nth-of-type(8) > button:nth-of-type(2)').innerHTML=보유수[2].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(9) > button:nth-of-type(2)').innerHTML=보유수[8].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(10) > button:nth-of-type(2)').innerHTML=보유수[14].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(11) > button:nth-of-type(2)').innerHTML=보유수[11].innerHTML;
 
-    //일퀘남은날수  : 일퀘수가 기록되어 있을때, 남은수 나누기 일퀘수 올림,,,,,,,일퀘남은날=(남은수/일퀘수).toPrecision(0);
-    타겟=document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+3];//일퀘수
-    if (isNaN(타겟.innerHTML) || 타겟.innerHTML=='') {
-      document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=남은수;
-      document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].style.backgroundColor='white';
-    } else {
-      일퀘수=Number(타겟.innerHTML);
-      일퀘남은날=Number(남은수/일퀘수).toFixed(0);
-      document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML=일퀘남은날;
-      if (일퀘남은날<1) {
-        document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].innerHTML='완';
-        document.querySelectorAll('#파템재료_일퀘개수 button')[(i*5)+4].style.backgroundColor='white';
-      }
-    }
-  }
+//보유수[6]홍조 단괴
+//보유수[13]심해초 줄기
+//보유수[12]대양의 현철
+//보유수[16]강화된 섬나무
+document.querySelector('#파템_일반재료1 > div:nth-of-type(13) > button:nth-of-type(2)').innerHTML=보유수[6].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=보유수[13].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[12].innerHTML;
+document.querySelector('#파템_일반재료1 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[16].innerHTML;
+
+//=====================2
+//보유수[2]콕스 전투
+//보유수[8]달의비늘 합판
+//보유수[10]순수한 진주
+//보유수[15] 콕스 하급
+document.querySelector('#파템_일반재료2 > div:nth-of-type(8) > button:nth-of-type(2)').innerHTML=보유수[2].innerHTML;
+document.querySelector('#파템_일반재료2 > div:nth-of-type(9) > button:nth-of-type(2)').innerHTML=보유수[8].innerHTML;
+document.querySelector('#파템_일반재료2 > div:nth-of-type(10) > button:nth-of-type(2)').innerHTML=보유수[10].innerHTML;
+document.querySelector('#파템_일반재료2 > div:nth-of-type(11) > button:nth-of-type(2)').innerHTML=보유수[15].innerHTML;
+
+//보유수[6]홍조 단괴
+//보유수[13]심해초 줄기
+//보유수[9]콕스 상급
+//보유수[7] 빛나는 코발트
+document.querySelector('#파템_일반재료2 > div:nth-of-type(13) > button:nth-of-type(2)').innerHTML=보유수[6].innerHTML;
+document.querySelector('#파템_일반재료2 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=보유수[13].innerHTML;
+document.querySelector('#파템_일반재료2 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[9].innerHTML;
+document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[7].innerHTML;
 }
 
-if (1==1) {
-    //반복문을 벗어나 단독작업
-    //함포,선수상,흑장갑,돛 필요수 우측에 보유수 채워넣기
-    //보유수
-    //심해의 눈물
-    var 비교수=0;
-    var 순번=0;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //화려한 진주 결정
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //콕스유물 전투
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    if (비교수>보유수) {document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=80;
-      document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수-80;
-    }
-    //화려한 암염 주괴
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //짙은 파도빛이 감도는 규격 각목
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //달의 핏줄이 새겨진 아마포
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //홍조빛 해저단괴
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
-    if (비교수>보유수) {document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=50;
-      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수-50;
-    }
-    //빛나는 코발트 주괴
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_돛 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //달의 비늘이 새겨진 합판
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    if (비교수>보유수) {document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=300;
-      document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수-300;
-    }
-    //콕스유물 상급
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_돛 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //순수한 진주 결정
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //파도빛이 감도는 규격 각목
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //대양의 견고한 현철
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
-    // 심해초줄기
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_돛 button')[((순번+1)*2)].innerHTML);
-    if (비교수>보유수) {document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=보유수;} else {
-      document.querySelectorAll('#파템_돛 button')[((순번+1)*2)+1].innerHTML=80;
-      document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수-80;
-    }
-    //순수한 암초 조각
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_함포 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_함포 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //콕스유물 하급
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_장갑 button')[((순번+1)*2)+1].innerHTML=보유수;
-    //강화된 섬나무 증착합판
-    순번+=1;
-    보유수=Number(document.querySelectorAll('#파템재료_일퀘개수 button')[(순번*5)+1].innerHTML);
-    비교수=Number(document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)].innerHTML);
-    document.querySelectorAll('#파템_선수상 button')[((순번+1)*2)+1].innerHTML=보유수;
-}
+
+
+
+//보유수[0]심해의 눈물 
+//보유수[1]화려한 진주 결정
+//보유수[2]콕스유물 전투
+//보유수[3]화려한 암염 주괴
+//보유수[4]짙은 파도빛이 감도는 규격 각목
+
+//보유수[5]달의 핏줄이 새겨진 아마포
+//보유수[6]홍조빛 해저 단괴
+//보유수[7]빛나는 코발트주괴
+//보유수[8]달의 비늘이 새겨진 합판
+//보유수[9]콕스유물 상급
+//보유수[10]순수한 진주결정
+//보유수[11]파도빛이 감도는 규격 각목
+//보유수[12]대양의 견고한 현철
+//보유수[13]심해초 줄기
+//보유수[14]순수한 암초조각
+//보유수[15]콕스유물 하급
+//보유수[16]강화된 섬나무 증착합판
+
+
+
 if (1==1) {
 var embed_루트src_탐색기='';
 //맨마지막에 넣어야함
@@ -274,17 +191,6 @@ function navbar_html특수문자_click () {
 function navbar_임시함수_click () {
   alert('작성중')
 }
-
-
-
-//main사이드 이벤트리스너 : 
-
-//canvas : 
-
-
-
-
-
 function 덩어리이동5개textarea_모두보기() {
   document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
   document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='inline-block';
@@ -346,66 +252,6 @@ function 마고리아클릭시() {
     document.querySelector('#마고리아12별').classList.add('d-none');
   }
 }
-function 물품조회_0() {
-  var 시작배열=0;
-  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
-  var 조회개수=0;
-  var 물품조회결과='';
-  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
-  for (var i=0; i<14; i++) {
-    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
-    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[2]'+단계2물품[i]+'\n';}
-    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[3]'+단계3물품[i]+'\n';}
-    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[4]'+단계4물품[i]+'\n';}
-    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[5]'+단계5물품[i]+'\n';}
-  }
-  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
-  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
-  if (조회개수>1) {
-    alert('[' + 조회개수 + '개]' + 물품조회결과);
-    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
-  }
-}
-function 물품조회_1() {
-  var 시작배열=2;
-  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
-  var 조회개수=0;
-  var 물품조회결과='';
-  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
-  for (var i=0; i<14; i++) {
-    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
-    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[2]'+단계2물품[i]+'\n';}
-    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[3]'+단계3물품[i]+'\n';}
-    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[4]'+단계4물품[i]+'\n';}
-    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[5]'+단계5물품[i]+'\n';}
-  }
-  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
-  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
-  if (조회개수>1) {
-    alert('[' + 조회개수 + '개]' + 물품조회결과);
-    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
-  }
-}
-function 물품조회_2() {
-  var 시작배열=4;
-  var 조회물품명=document.querySelectorAll('#물품조회 input')[시작배열].value;
-  var 조회개수=0;
-  var 물품조회결과='';
-  if (조회물품명=='' || 조회물품명==' ' ) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='';return;}
-  for (var i=0; i<14; i++) {
-    if (단계1물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[1]'+단계1물품[i]+'\n';}
-    if (단계2물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[2]'+단계2물품[i]+'\n';}
-    if (단계3물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[3]'+단계3물품[i]+'\n';}
-    if (단계4물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[4]'+단계4물품[i]+'\n';}
-    if (단계5물품[i].search(조회물품명)>-1) {조회개수=조회개수+1;물품조회결과+='[5]'+단계5물품[i]+'\n';}
-  }
-  if (조회개수==0) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='없음';}
-  if (조회개수==1) {document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;}
-  if (조회개수>1) {
-    alert('[' + 조회개수 + '개]' + 물품조회결과);
-    document.querySelectorAll('#물품조회 input')[시작배열+1].value='[' + 조회개수 + '개]' + 물품조회결과;
-  }
-}
 function 계산_나의무게계산() {
   var 일단등무게=document.querySelector('#계산3_1단등무게').value;
   var 계산3_800개수=document.querySelector('#계산3_800').value;
@@ -437,6 +283,10 @@ function 개수5버튼더블클릭() {document.querySelectorAll('#차감input들
 function 개수6버튼더블클릭() {document.querySelectorAll('#차감input들 button')[5].innerHTML=1;남은교섭력계산();}
 function 개수7버튼더블클릭() {document.querySelectorAll('#차감input들 button')[6].innerHTML=1;남은교섭력계산();}
 function 개수8버튼더블클릭() {document.querySelectorAll('#차감input들 button')[7].innerHTML=1;남은교섭력계산();}
+function 개수9버튼더블클릭() {document.querySelectorAll('#차감input들 button')[8].innerHTML=1;남은교섭력계산();}
+function 개수10버튼더블클릭() {document.querySelectorAll('#차감input들 button')[9].innerHTML=1;남은교섭력계산();}
+function 개수11버튼더블클릭() {document.querySelectorAll('#차감input들 button')[10].innerHTML=1;남은교섭력계산();}
+function 개수12버튼더블클릭() {document.querySelectorAll('#차감input들 button')[11].innerHTML=1;남은교섭력계산();}
 function 개수1버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[0]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 개수2버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[1]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 개수3버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[2]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
@@ -445,6 +295,10 @@ function 개수5버튼클릭() {var 버튼=document.querySelectorAll('#차감inp
 function 개수6버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[5]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 개수7버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[6]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 개수8버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[7]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수9버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[8]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수10버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[9]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수11버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[10]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
+function 개수12버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[11]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 남은교섭력계산() {
   var 남은_차감후_교섭력_2개=document.querySelectorAll('#남은_차감후_교섭력 input');
   var 차감개수들_8개=document.querySelectorAll('#차감input들 button');

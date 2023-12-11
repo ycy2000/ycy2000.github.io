@@ -10,15 +10,11 @@
 #메인사이드와우측을함께담은div #main사이드 div:nth-of-type(2) {background-color:white;}
 #메인사이드와우측을함께담은div #main사이드우측의_코딩결과div {vertical-align: top;width:1400px;}
 
-#S1_해역사진 > div:first-child {position:fixed;background-color: white;display:block;width:100%;padding-bottom:2px;}
-#S1_해역사진 #교섭력계산 {width:310px;vertical-align: top;margin-right:5px;}
+#S1_해역사진 > div:first-child {position:fixed;background-color: white;display:block;width:100%;;padding-bottom:2px;}
+#S1_해역사진 #교섭력계산 {width:450px;vertical-align: top;margin-right:5px;}
 #S1_해역사진 #교섭력계산 #남은_차감후_교섭력 {width:110px; border-right:1px solid black;}
 #S1_해역사진 #교섭력계산 #남은_차감후_교섭력 input {margin-left:17px;width:82px;text-align: center;}
 #S1_해역사진 #교섭력계산 #차감input들 {margin-left:5px;width:182px;vertical-align: top;border-right:1px solid black;}
-#S1_해역사진 #물품조회 #물품조회_상 {margin-left:-9px;width:430px;vertical-align: top;border-right:1px solid black;}
-#S1_해역사진 #물품조회 #물품조회_상 > button:nth-of-type(1) {width:81px;}
-#S1_해역사진 #물품조회 #물품조회_상 > button:nth-of-type(2) {width:81px;margin-left:-7px;}
-#S1_해역사진 #물품조회 #물품조회_상 > button:nth-of-type(3) {width:81px;margin-left:-7px;}
 #S1_해역사진 #무게계산 {vertical-align: top;margin-left:10px;}
 #S1_해역사진 #무게계산 > div:first-child > h6 {display:inline-block;}
 #S1_해역사진 #무게계산 > div:first-child > h6:nth-of-type(2) {text-indent: 25px;}
@@ -31,17 +27,124 @@
 #S1_해역사진 #리스너용섬이름검색 {position: relative;}
 #S1_해역사진 #리스너용섬이름검색 > form > input {width:80px;}
 #S1_해역사진 #리스너용섬이름검색 > div {width:130px;height:30px;vertical-align: top; border:1px solid black;display:inline-block; background-color: gray;}/* 섬구역 1,2,3,4,5 */
-#S1_해역사진 #해역_물품단계 > textarea[id="좌측상단메모"] {position: fixed; width:307px;height:620px;top:212px;left:3px;}
-#S1_해역사진 #해역_물품단계 > #덩어리이동5개textarea {position: absolute;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;left:311px;top:1026px;}/* 상단시작지점 top:212px; 그림아래top:1026px;*/
+#S1_해역사진 #해역_물품단계 > textarea[id="좌측상단메모"] {position: fixed; width:407px;height:620px;top:212px;left:3px;}
+#S1_해역사진 #해역_물품단계 > #덩어리이동5개textarea {position: absolute;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;left:411px;top:1026px;}/* 상단시작지점 top:212px; 그림아래top:1026px;*/
 #S1_해역사진 #해역_물품단계 > #덩어리이동5개textarea > textarea {width:700px;height:700px;display:inline-block;}
-#S1_해역사진 #해역_물품단계 > img:nth-of-type(1) {margin-bottom:2px;margin-left:-8px;}
+#S1_해역사진 #해역_물품단계 > img:nth-of-type(1) {margin-bottom:2px;margin-left:90px;}
 #S1_해역사진 #모은재료none상태 {width:100%; position: absolute;left:314px;top:212px;margin-bottom:5px;background-color: white;}
-#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템_함포 {vertical-align: top;}
-#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템_장갑 {vertical-align: top;}
-#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템_돛 {vertical-align: top;padding-right:3px;}
-#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템_선수상 {vertical-align: top;}
-#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템재료_재료아이콘 {vertical-align: top;}
+#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > div {vertical-align: top;}/*일반재료,파템_함포,파템_장갑,파템_돛,파템_선수상,파템_재료아이콘 */
+#S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템_돛 {padding-right:3px;}
 #S1_해역사진 #모은재료none상태 > #모은재료_파템재료 > #파템재료_재료아이콘 > div:first-child {padding-top:5px;}
+
+/* 예전꺼 */
+#main사이드 {margin-left:3px;width:300px;}
+.a_형식 {color:chocolate;text-decoration: underline;}
+#main사이드 li {padding:7px 3px;list-style: none;}
+#선택문서셑팅하는곳 li, #main사이드 li, .offcanvas-header > div  {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.accordion-button:hover, .accordion-body:hover, .accordion-body > li:hover, 
+#선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;overflow:visible;}
+.무게input들 input {width:52px;text-align: center;}
+#차감input들 input {width:60px;text-align: center;margin-right:2px;}
+#차감input들 button {border:1px solid rgb(126, 118, 118);margin:0;}
+
+/* #모은재료none상태 > #모은재료_파템재료 > div들 */
+#파템_함포 > div > button,
+#파템_선수상 > div > button,
+#파템_장갑 > div > button,
+#파템_돛 > div > button {margin:0;padding:0;border:none;width:30px;height:38px;border-right:1px solid black;vertical-align: top;}
+#파템_함포 > div:last-of-type > button,
+#파템_선수상 > div:last-of-type > button,
+#파템_장갑 > div:last-of-type > button,
+#파템_돛 > div:last-of-type > button {border-bottom:1px solid black;}
+
+#파템_함포 > div > button:last-of-type,
+#파템_선수상 > div > button:last-of-type,
+#파템_장갑 > div > button:last-of-type,
+#파템_돛 > div > button:last-of-type {border-right:none;text-align: center;}
+#파템_함포 > div > button:nth-child(2n+2),
+#파템_선수상 > div > button:nth-child(2n+2),
+#파템_장갑 > div > button:nth-child(2n+2),
+#파템_돛 > div > button:nth-child(2n+2) { background-color: rgb(229, 223, 236);font-weight: bold;}
+
+.노랑 {background-color: chartreuse;}
+#구축파템강화확률 th, #구축파템강화확률 td {text-align: center;}
+#구축파템강화확률 tr {height:10px;}
+/* 세번째 div의 첫번째 button의 innerhtml */
+/* #파템_함포 > div:nth-last-of-type(3) > buttom:first-of-type {} */
+.카테고리 h6, #canvas검색결과 h6 {text-decoration-line: underline;}
+.카테고리 div {border-right:1px solid black;width:610px;height:440px;vertical-align: top;display:inline-block;}
+.offcanvas-body div {vertical-align: top;}
+.js모든파일리스트div {width:900px;height:440px;vertical-align: top;display:inline-block;}
+.현재카테고리 {background-color: chartreuse;}
+
+#파템재료_재료아이콘 > div, #파템재료_가방아이콘 > div,
+#파템_함포 > div, #파템_선수상 > div, #파템_장갑 > div, #파템_돛 > div, #파템_일반재료1 > div, #파템_일반재료2 > div
+ {height:38px;margin:1px 0px;border:1px solid black;text-align: center;} /* 494 */
+#파템_함포 > div:first-child, #파템_선수상 > div:first-child, #파템_장갑 > div:first-child, #파템_돛 > div:first-child {padding-top:6px;}
+/* 예전꺼 끝 */
+
+#파템_일반재료1, #파템_일반재료2 {vertical-align: top;text-align: left;}
+#파템_일반재료1 > div, #파템_일반재료2 > div, #파템재료_재료아이콘 > div, #파템재료_가방아이콘 > div {border:none;margin-bottom:-2px;}
+#파템_일반재료2 > div:first-child {border:1px solid black;}
+#파템재료_재료아이콘 > div, #파템재료_가방아이콘 > div {border:1px solid black;}
+#파템_일반재료1 > div > button, #파템_일반재료2 > div > button {margin:0;padding:0;margin-right:-1px; width:34px;height:38px;border:1px solid black;vertical-align: top;}
+#파템_일반재료1 > div > button:first-child, #파템_일반재료2 > div > button:first-child {width:140px;}
+#파템_일반재료1 > div > button:last-child, #파템_일반재료2 > div > button:last-child {border-right:1px solid black;}
+#파템_일반재료1 > div:nth-of-type(6), #파템_일반재료1 > div:nth-of-type(11) {margin-bottom:5px;}/* 일반아래 함포부분 띄우기 */
+#파템_일반재료2 > div:nth-of-type(6), #파템_일반재료2 > div:nth-of-type(11) {margin-bottom:5px;}/* 일반아래 함포부분 띄우기 */
+#파템_일반재료2 > div:nth-of-type(6), #파템_일반재료2 > div:nth-of-type(11) {margin-bottom:5px;}/* 일반아래 함포부분 띄우기 */
+
+#파템_일반재료2 > div:nth-of-type(2) > button {width:304px;margin-left:-1px;}
+#파템_일반재료2 > div:nth-of-type(3) > button {width:304px;margin-left:-1px;}
+#파템_일반재료2 > div:nth-of-type(4) > button {width:304px;margin-left:-1px;}
+#파템_일반재료2 > div:nth-of-type(5) > button {width:304px;margin-left:-1px;}
+#파템_일반재료2 > div:nth-of-type(6) > button {width:304px;margin-left:-1px;}
+
+#파템재료_가방아이콘 > div:nth-of-type(6), #파템재료_가방아이콘 > div:nth-of-type(11) {margin-bottom:5px;}/* 왼쪽 띄우기 맞추기*/
+#파템재료_재료아이콘 > div:nth-of-type(6), #파템재료_재료아이콘 > div:nth-of-type(11) {margin-bottom:5px;}/* 왼쪽 띄우기 맞추기*/
+
+#파템재료_일퀘개수 > div:nth-of-type(5), #파템재료_일퀘개수 > div:nth-of-type(10) {margin-bottom:5px;}/* 왼쪽 띄우기 맞추기*/
+/* 파템재료_일퀘개수 관련정비 */
+#파템재료_일퀘개수 > div {margin-bottom:-1px;height:38px;border:1px solid black;}
+#파템재료_일퀘개수 > div > button {height:36px;width:32px;border:none;vertical-align: top;padding:0px;text-align: center;}
+#파템재료_일퀘개수 > div > button:first-child {border-right:1px solid black;}
+#파템재료_일퀘개수 > div:first-child {height:75px;}
+#파템재료_일퀘개수 > div:first-child > button {height:73px;}
+#파템재료_일퀘개수 > div:first-child > div {display: inline-block;}
+
+#재료모은거 > #설명 > h6 {width:700px; height:38px;margin:1px 0px;border:1px solid black;margin-bottom:-2px;padding-top:10px;}
+
+#파템_일반재료1 > div:nth-of-type(8) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -0px;} /* 함포8,9,10,11, 전투, 달의, 순수, 파도빛 */
+#파템_일반재료1 > div:nth-of-type(9) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -41px;} /* 함포8,9,10,11, 전투, 달의, 순수, 파도빛 */
+#파템_일반재료1 > div:nth-of-type(10) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -126px;} /* 함포8,9,10,11, 전투, 달의, 순수, 파도빛 */
+#파템_일반재료1 > div:nth-of-type(11) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -84px;} /* 함포8,9,10,11, 전투, 달의, 순수, 파도빛 */
+
+#파템_일반재료1 > div:nth-of-type(13) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -0px;} /* 선수상8,9,10,11, 홍조, 심해초, 현철, 강화섬나무합판 */
+#파템_일반재료1 > div:nth-of-type(14) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -41px;} /* 선수상8,9,10,11, 홍조, 심해초, 현철, 강화섬나무합판 */
+#파템_일반재료1 > div:nth-of-type(15) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -84px;} /* 선수상8,9,10,11, 홍조, 심해초, 현철, 강화섬나무합판 */
+#파템_일반재료1 > div:nth-of-type(16) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -126px;} /* 선수상8,9,10,11, 홍조, 심해초, 현철, 강화섬나무합판 */
+
+#파템_일반재료2 > div:nth-of-type(8) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -0px;} /* 흑장갑13,14,15,16, 전투, 달의, 순수, 하급 */
+#파템_일반재료2 > div:nth-of-type(9) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -41px;} /* 흑장갑13,14,15,16, 전투, 달의, 순수, 하급 */
+#파템_일반재료2 > div:nth-of-type(10) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -213px;} /* 흑장갑13,14,15,16, 전투, 달의, 순수, 하급 */
+#파템_일반재료2 > div:nth-of-type(11) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -254px;} /* 흑장갑13,14,15,16, 전투, 달의, 순수, 하급 */
+
+
+#파템_일반재료2 > div:nth-of-type(13) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -0px;} /* 돛13,14,15,16, 홍조, 심해초, 상급, 빛나는코발트 */
+#파템_일반재료2 > div:nth-of-type(14) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -41px;} /* 돛13,14,15,16, 홍조, 심해초, 상급, 빛나는코발트 */
+#파템_일반재료2 > div:nth-of-type(15) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -213px;} /* 돛13,14,15,16, 홍조, 심해초, 상급, 빛나는코발트 */
+#파템_일반재료2 > div:nth-of-type(16) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -254px;} /* 돛13,14,15,16, 홍조, 심해초, 상급, 빛나는코발트 */
+/* 파템재료_일퀘개수 관련정비 */
+#파템_일반재료1 #파템_일반재교_개수, #파템_일반재료2 #파템_일반재교_개수 {width:140px;}
+#파템재료_재료아이콘 .아이콘 {width:140px;}
+#파템재료_가방아이콘 .아이콘 {width:39px;}
+
+#모은재료_파템재료 > #파템_일반재료1 > div:nth-of-type(2) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -435px;}
+#모은재료_파템재료 > #파템_일반재료1 > div:nth-of-type(3) > button:first-child  {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -350px;}
+#모은재료_파템재료 > #파템_일반재료1 > div:nth-of-type(4) > button:first-child  {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -307px;}
+#모은재료_파템재료 > #파템_일반재료1 > div:nth-of-type(5) > button:first-child  {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -3px -489px;}
+#모은재료_파템재료 > #파템_일반재료1 > div:nth-of-type(6) > button:first-child  {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -393px;}
+
 #파템재료_재료아이콘 > div[class~="아이콘"][data="심해의 눈물"]                   {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -435px;}
 #파템재료_재료아이콘 > div[class~="아이콘"][data="화려한 진주 결정"]              {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -350px;}
 #파템재료_재료아이콘 > div[class~="아이콘"][data="콕스유물 전투"]                 {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -0px;}
@@ -97,79 +200,3 @@
 
 
 
-#main사이드 {margin-left:3px;width:300px;}
-.a_형식 {color:chocolate;text-decoration: underline;}
-#main사이드 li {padding:7px 3px;list-style: none;}
-#선택문서셑팅하는곳 li, #main사이드 li, .offcanvas-header > div  {list-style: none;padding-bottom:5px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.accordion-button:hover, .accordion-body:hover, .accordion-body > li:hover, 
-#선택문서셑팅하는곳 li:hover, #서브리스트가져오는곳 > div > li:hover, #main사이드 li:hover {background-color: white;overflow:visible;}
-.무게input들 input {width:52px;text-align: center;}
-#물품조회 input:nth-of-type(odd) {width:80px;text-align: left;}
-#물품조회 input:nth-of-type(even) {width:352px;text-align: left;}
-#차감input들 input {width:60px;text-align: center;margin-right:2px;}
-#차감input들 button {border:1px solid rgb(126, 118, 118);margin:0;}
-#파템재료_재료아이콘 > div, #파템재료_일퀘개수 > div, #파템재료_가방아이콘 > div,
-#파템_함포 > div, #파템_선수상 > div, #파템_장갑 > div, #파템_돛 > div {height:38px;margin:1px 0px;border:1px solid black;text-align: center;} /* 494 */
-#파템_함포 > div:first-child, #파템_선수상 > div:first-child, #파템_장갑 > div:first-child, #파템_돛 > div:first-child {padding-top:6px;}
-
-#설명 h6 {width:700px; height:40px;margin:1px 0px;border:1px solid black;margin-bottom:-2px;padding-top:10px;}
-
-#파템재료_재료아이콘 .아이콘 {width:140px;}
-#파템재료_가방아이콘 .아이콘 {width:39px;}
-
-#파템재료_일퀘개수 > div {height:38px;margin:1px 0px;border:1px solid black;background-color: rgb(236, 223, 223);}
-
-#파템재료_일퀘개수 > div > button, 
-#파템_함포 > div > button,
-#파템_선수상 > div > button,
-#파템_장갑 > div > button,
-#파템_돛 > div > button {margin:0;padding:0;border:none;width:30px;height:38px;border-right:1px solid black;vertical-align: top;}
-#파템_함포 > div:last-of-type > button,
-#파템_선수상 > div:last-of-type > button,
-#파템_장갑 > div:last-of-type > button,
-#파템_돛 > div:last-of-type > button {border-bottom:1px solid black;}
-
-#파템재료_일퀘개수 > div > button:last-of-type,
-#파템_함포 > div > button:last-of-type,
-#파템_선수상 > div > button:last-of-type,
-#파템_장갑 > div > button:last-of-type,
-#파템_돛 > div > button:last-of-type {border-right:none;text-align: center;}
-#파템재료_일퀘개수 > div:last-of-type > button {border-bottom:1px solid black;}
-#파템재료_일퀘개수 > div:first-child {height:76px;background-color: rgb(236, 223, 223);}
-#파템재료_일퀘개수 > div:first-child div {display:inline-block;border-right:1px solid black;width:30px;text-align: center;text-wrap:wrap ;vertical-align: top; background-color: rgb(236, 223, 223);}
-#파템재료_일퀘개수 > div:first-child div:last-of-type {border-right:none;}
-#파템재료_일퀘개수 > div > button:nth-child(5n-2) { background-color: rgb(229, 223, 236);font-weight: bold;}
-#파템재료_일퀘개수 > div > button:nth-child(5n) { background-color: rgb(229, 223, 236);font-weight: bold;}
-#파템재료_일퀘개수 > div > button, 
-#파템_함포 > div > button:nth-child(2n+2),
-#파템_선수상 > div > button:nth-child(2n+2),
-#파템_장갑 > div > button:nth-child(2n+2),
-#파템_돛 > div > button:nth-child(2n+2) { background-color: rgb(229, 223, 236);font-weight: bold;}
-
-.노랑 {background-color: chartreuse;}
-#구축파템강화확률 th, #구축파템강화확률 td {text-align: center;}
-#구축파템강화확률 tr {height:10px;}
-/* 세번째 div의 첫번째 button의 innerhtml */
-/* #파템_함포 > div:nth-last-of-type(3) > buttom:first-of-type {} */
-#파템재료_재료아이콘 > div:nth-of-type(3) {background-position: -0px -435px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"심해의 눈물"*/
-#파템재료_재료아이콘 > div:nth-of-type(4) {background-position: -0px -350px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"화려한 진주 결정"*/
-#파템재료_재료아이콘 > div:nth-of-type(5) {background-position: -192px -0px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"콕스유물 전투"*/
-#파템재료_재료아이콘 > div:nth-of-type(6) {background-position: -0px -307px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"화려한 암염 주괴"*/
-#파템재료_재료아이콘 > div:nth-of-type(7) {background-position: -3px -489px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"짙은 파도빛이 감도는 규격 각목"*/
-#파템재료_재료아이콘 > div:nth-of-type(8) {background-position: -0px -393px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"달의 핏줄이 새겨진 아마포"*/
-#파템재료_재료아이콘 > div:nth-of-type(9) {background-position: -0px -0px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"홍조빛 해저 단괴"*/
-#파템재료_재료아이콘 > div:nth-of-type(10) {background-position: -0px -254px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"빛나는 코발트주괴"*/
-#파템재료_재료아이콘 > div:nth-of-type(11) {background-position: -192px -41px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"달의 비늘이 새겨진 합판"*/
-#파템재료_재료아이콘 > div:nth-of-type(12) {background-position: -0px -213px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"콕스유물 상급"*/
-#파템재료_재료아이콘 > div:nth-of-type(13) {background-position: -192px -213px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"순수한 진주결정"*/
-#파템재료_재료아이콘 > div:nth-of-type(14) {background-position: -192px -84px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"파도빛이 감도는 규격 각목"*/
-#파템재료_재료아이콘 > div:nth-of-type(15) {background-position: -0px -84px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"대양의 견고한 현철"*/
-#파템재료_재료아이콘 > div:nth-of-type(16) {background-position: -0px -41px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"심해초 줄기"*/
-#파템재료_재료아이콘 > div:nth-of-type(17) {background-position: -192px -126px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"순수한 암초조각"*/
-#파템재료_재료아이콘 > div:nth-of-type(18) {background-position: -192px -254px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"콕스유물 하급"*/
-#파템재료_재료아이콘 > div:nth-of-type(19) {background-position: -0px -126px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"강화된 섬나무 증착합판""*/
-.카테고리 h6, #canvas검색결과 h6 {text-decoration-line: underline;}
-.카테고리 div {border-right:1px solid black;width:610px;height:440px;vertical-align: top;display:inline-block;}
-.offcanvas-body div {vertical-align: top;}
-.js모든파일리스트div {width:900px;height:440px;vertical-align: top;display:inline-block;}
-.현재카테고리 {background-color: chartreuse;}
