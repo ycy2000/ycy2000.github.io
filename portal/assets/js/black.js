@@ -267,7 +267,7 @@ function 계산_나의무게계산() {
 }
 function 차감교섭력clear() {
   document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;
-  for (var i=0; i<8; i++) {
+  for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
     document.querySelectorAll('#차감input들 input')[i].value='';
     document.querySelectorAll('#차감input들 button')[i].innerHTML=1;
   }
