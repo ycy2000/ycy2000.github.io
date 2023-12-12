@@ -563,8 +563,8 @@ function main사이드_dblclick시(e) {
   }
 }
 function main사이드_change시(e) {
-  //교섭력오른쪽의 버튼클릭시 값 +1
-  if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
+  //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
+  if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') {
     남은교섭력계산()
   }
   //섬이름검색
