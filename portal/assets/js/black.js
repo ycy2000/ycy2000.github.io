@@ -159,7 +159,7 @@ for (var i=0; i<value있는것들.length; i++) {
 계산_무게()
 canvas초기화()
 function navbar_main사이드숨기기_click () {
-  var 타겟=document.querySelector('#black버튼');
+  var 타겟=document.querySelector('#navbar_main사이드숨기기');
   if (타겟.innerHTML=='main사이드숨기기') {
     document.querySelector('#main사이드').classList.add('d-none')
     타겟.innerHTML='main사이드보기'
@@ -169,7 +169,7 @@ function navbar_main사이드숨기기_click () {
   }  
 }
 function navbar_우측닫기_click () {
-  document.querySelector('#선택문서셑팅하는곳').classList.add('d-none');
+  document.querySelector('#main사이드우측의_코딩결과div').classList.add('d-none');
 }
 function navbar_html특수문자_click () {
   var 타겟element;
@@ -648,7 +648,6 @@ function main사이드클릭시_문서연결(e) {//교섭력계산기능
     남은교섭력계산()
   }
 }
-
 function 캔버스클릭시(e) {
   var 유형='';
   var 타겟element;
