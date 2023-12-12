@@ -143,10 +143,6 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth
 //보유수[16]강화된 섬나무 증착합판
 }
 
-
-
-
-
 if (1==1) {
 var embed_루트src_탐색기='';
 //맨마지막에 넣어야함
@@ -186,7 +182,11 @@ function navbar_html특수문자_click () {
 }
 
 function navbar_임시함수_click () {
-  console.log(this.target);
+  document.querySelectorAll('#차감input들 button')[0].innerHTML='1';
+alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);
+document.querySelectorAll('#차감input들 button')[0].innerHTML=1;
+alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);
+
 }
 function 덩어리이동5개textarea_모두보기() {
   document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
@@ -272,30 +272,6 @@ function 차감교섭력clear() {
     document.querySelectorAll('#차감input들 button')[i].innerHTML=1;
   }
 }
-function 개수1버튼더블클릭() {document.querySelectorAll('#차감input들 button')[0].innerHTML=1;남은교섭력계산();}
-function 개수2버튼더블클릭() {document.querySelectorAll('#차감input들 button')[1].innerHTML=1;남은교섭력계산();}
-function 개수3버튼더블클릭() {document.querySelectorAll('#차감input들 button')[2].innerHTML=1;남은교섭력계산();}
-function 개수4버튼더블클릭() {document.querySelectorAll('#차감input들 button')[3].innerHTML=1;남은교섭력계산();}
-function 개수5버튼더블클릭() {document.querySelectorAll('#차감input들 button')[4].innerHTML=1;남은교섭력계산();}
-function 개수6버튼더블클릭() {document.querySelectorAll('#차감input들 button')[5].innerHTML=1;남은교섭력계산();}
-function 개수7버튼더블클릭() {document.querySelectorAll('#차감input들 button')[6].innerHTML=1;남은교섭력계산();}
-function 개수8버튼더블클릭() {document.querySelectorAll('#차감input들 button')[7].innerHTML=1;남은교섭력계산();}
-function 개수9버튼더블클릭() {document.querySelectorAll('#차감input들 button')[8].innerHTML=1;남은교섭력계산();}
-function 개수10버튼더블클릭() {document.querySelectorAll('#차감input들 button')[9].innerHTML=1;남은교섭력계산();}
-function 개수11버튼더블클릭() {document.querySelectorAll('#차감input들 button')[10].innerHTML=1;남은교섭력계산();}
-function 개수12버튼더블클릭() {document.querySelectorAll('#차감input들 button')[11].innerHTML=1;남은교섭력계산();}
-function 개수1버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[0]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수2버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[1]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수3버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[2]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수4버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[3]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수5버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[4]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수6버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[5]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수7버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[6]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수8버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[7]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수9버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[8]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수10버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[9]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수11버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[10]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
-function 개수12버튼클릭() {var 버튼=document.querySelectorAll('#차감input들 button')[11]; 버튼.innerHTML=Number(버튼.innerHTML) + 1;남은교섭력계산();}
 function 남은교섭력계산() {
   if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
   if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
@@ -356,306 +332,10 @@ function textarea보기숨기기() {
     document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '1026px');
     document.querySelector('#textarea기능버튼').innerHTML='textarea올리기';
   } else {
-    document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '212px');
+    document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '242px');
     document.querySelector('#textarea기능버튼').innerHTML='textarea내리기';
   }
 } 
-function 섬이름검색1() {
-  //버튼 누를때만 작동되네?
-  document.querySelector('#div섬구역1').innerHTML='';
-  var text=document.querySelector('#input섬이름1').value;
-  var result='';
-  if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
-  if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
-  if (구역01_남.find(element => element==text)) {result="구역01_남"};
-  if (구역01_남서.find(element => element==text)) {result="구역01_남서"};
-  if (구역01_북서.find(element => element==text)) {result="구역01_북서"};
-
-  if (구역02_동북.find(element => element==text)) {result="구역02_동북"};
-  if (구역02_남동.find(element => element==text)) {result="구역02_남동"};
-  if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
-  if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
-  if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
-  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
-  if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
-
-  if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
-  if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
-  if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
-
-  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
-  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
-  if (구역04_동.find(element => element==text)) {result="구역04_동"};
-  if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
-  if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
-  if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};
-  if (구역04_서서북.find(element => element==text)) {result="구역04_서서북"};
-
-  if (구역05_북북동.find(element => element==text)) {result="구역05_북북동"};
-  if (구역05_동동북.find(element => element==text)) {result="구역05_동동북"};
-  if (구역05_동.find(element => element==text)) {result="구역05_동"};
-  if (구역05_동동남.find(element => element==text)) {result="구역05_동동남"};
-  if (구역05_남동.find(element => element==text)) {result="구역05_남동"};
-  if (구역05_서서남.find(element => element==text)) {result="구역05_서서남"};
-  if (구역05_서.find(element => element==text)) {result="구역05_서"};
-
-  if (구역06_서서남.find(element => element==text)) {result="구역06_서서남"};
-  if (구역06_서.find(element => element==text)) {result="구역06_서"};
-  if (구역06_서북.find(element => element==text)) {result="구역06_서북"};
-
-  if (구역07_서남.find(element => element==text)) {result="구역07_서남"};
-  if (구역07_서.find(element => element==text)) {result="구역07_서"};
-  if (구역07_서서북.find(element => element==text)) {result="구역07_서서북"};
-
-  if (구역08_서서북.find(element => element==text)) {result="구역08_서서북"};
-  if (구역08_서서남.find(element => element==text)) {result="구역08_서서남"};
-
-  if (구역09_서서북.find(element => element==text)) {result="구역09_서서북"};
-  if (구역09_서서남.find(element => element==text)) {result="구역09_서서남"};
-  if (구역09_서남.find(element => element==text)) {result="구역09_서남"};
-
-  if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
-  if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
-
-  if (result=='') {document.querySelector('#div섬구역1').innerHTML=''} else {document.querySelector('#div섬구역1').innerHTML=result;};
-}
-function 섬이름검색2() {
-  //버튼 누를때만 작동되네?
-  document.querySelector('#div섬구역2').innerHTML='';
-  var text=document.querySelector('#input섬이름2').value;
-  var result='';
-  if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
-  if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
-  if (구역01_남.find(element => element==text)) {result="구역01_남"};
-  if (구역01_남서.find(element => element==text)) {result="구역01_남서"};
-  if (구역01_북서.find(element => element==text)) {result="구역01_북서"};
-
-  if (구역02_동북.find(element => element==text)) {result="구역02_동북"};
-  if (구역02_남동.find(element => element==text)) {result="구역02_남동"};
-  if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
-  if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
-  if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
-  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
-  if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
-
-  if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
-  if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
-  if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
-
-  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
-  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
-  if (구역04_동.find(element => element==text)) {result="구역04_동"};
-  if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
-  if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
-  if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};
-  if (구역04_서서북.find(element => element==text)) {result="구역04_서서북"};
-
-  if (구역05_북북동.find(element => element==text)) {result="구역05_북북동"};
-  if (구역05_동동북.find(element => element==text)) {result="구역05_동동북"};
-  if (구역05_동.find(element => element==text)) {result="구역05_동"};
-  if (구역05_동동남.find(element => element==text)) {result="구역05_동동남"};
-  if (구역05_남동.find(element => element==text)) {result="구역05_남동"};
-  if (구역05_서서남.find(element => element==text)) {result="구역05_서서남"};
-  if (구역05_서.find(element => element==text)) {result="구역05_서"};
-
-  if (구역06_서서남.find(element => element==text)) {result="구역06_서서남"};
-  if (구역06_서.find(element => element==text)) {result="구역06_서"};
-  if (구역06_서북.find(element => element==text)) {result="구역06_서북"};
-
-  if (구역07_서남.find(element => element==text)) {result="구역07_서남"};
-  if (구역07_서.find(element => element==text)) {result="구역07_서"};
-  if (구역07_서서북.find(element => element==text)) {result="구역07_서서북"};
-
-  if (구역08_서서북.find(element => element==text)) {result="구역08_서서북"};
-  if (구역08_서서남.find(element => element==text)) {result="구역08_서서남"};
-
-  if (구역09_서서북.find(element => element==text)) {result="구역09_서서북"};
-  if (구역09_서서남.find(element => element==text)) {result="구역09_서서남"};
-  if (구역09_서남.find(element => element==text)) {result="구역09_서남"};
-
-  if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
-  if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
-
-  if (result=='') {document.querySelector('#div섬구역2').innerHTML=''} else {document.querySelector('#div섬구역2').innerHTML=result;};
-}
-function 섬이름검색3() {
-  //버튼 누를때만 작동되네?
-  document.querySelector('#div섬구역3').innerHTML='';
-  var text=document.querySelector('#input섬이름3').value;
-  var result='';
-  var result='';
-  if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
-  if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
-  if (구역01_남.find(element => element==text)) {result="구역01_남"};
-  if (구역01_남서.find(element => element==text)) {result="구역01_남서"};
-  if (구역01_북서.find(element => element==text)) {result="구역01_북서"};
-
-  if (구역02_동북.find(element => element==text)) {result="구역02_동북"};
-  if (구역02_남동.find(element => element==text)) {result="구역02_남동"};
-  if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
-  if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
-  if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
-  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
-  if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
-
-  if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
-  if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
-  if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
-
-  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
-  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
-  if (구역04_동.find(element => element==text)) {result="구역04_동"};
-  if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
-  if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
-  if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};
-  if (구역04_서서북.find(element => element==text)) {result="구역04_서서북"};
-
-  if (구역05_북북동.find(element => element==text)) {result="구역05_북북동"};
-  if (구역05_동동북.find(element => element==text)) {result="구역05_동동북"};
-  if (구역05_동.find(element => element==text)) {result="구역05_동"};
-  if (구역05_동동남.find(element => element==text)) {result="구역05_동동남"};
-  if (구역05_남동.find(element => element==text)) {result="구역05_남동"};
-  if (구역05_서서남.find(element => element==text)) {result="구역05_서서남"};
-  if (구역05_서.find(element => element==text)) {result="구역05_서"};
-
-  if (구역06_서서남.find(element => element==text)) {result="구역06_서서남"};
-  if (구역06_서.find(element => element==text)) {result="구역06_서"};
-  if (구역06_서북.find(element => element==text)) {result="구역06_서북"};
-
-  if (구역07_서남.find(element => element==text)) {result="구역07_서남"};
-  if (구역07_서.find(element => element==text)) {result="구역07_서"};
-  if (구역07_서서북.find(element => element==text)) {result="구역07_서서북"};
-
-  if (구역08_서서북.find(element => element==text)) {result="구역08_서서북"};
-  if (구역08_서서남.find(element => element==text)) {result="구역08_서서남"};
-
-  if (구역09_서서북.find(element => element==text)) {result="구역09_서서북"};
-  if (구역09_서서남.find(element => element==text)) {result="구역09_서서남"};
-  if (구역09_서남.find(element => element==text)) {result="구역09_서남"};
-
-  if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
-  if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
-
-  if (result=='') {document.querySelector('#div섬구역3').innerHTML=''} else {document.querySelector('#div섬구역3').innerHTML=result;};
-}
-function 섬이름검색4() {
-  //버튼 누를때만 작동되네?
-  document.querySelector('#div섬구역4').innerHTML='';
-  var text=document.querySelector('#input섬이름4').value;
-  var result='';
-  if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
-  if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
-  if (구역01_남.find(element => element==text)) {result="구역01_남"};
-  if (구역01_남서.find(element => element==text)) {result="구역01_남서"};
-  if (구역01_북서.find(element => element==text)) {result="구역01_북서"};
-
-  if (구역02_동북.find(element => element==text)) {result="구역02_동북"};
-  if (구역02_남동.find(element => element==text)) {result="구역02_남동"};
-  if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
-  if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
-  if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
-  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
-  if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
-
-  if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
-  if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
-  if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
-
-  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
-  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
-  if (구역04_동.find(element => element==text)) {result="구역04_동"};
-  if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
-  if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
-  if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};
-  if (구역04_서서북.find(element => element==text)) {result="구역04_서서북"};
-
-  if (구역05_북북동.find(element => element==text)) {result="구역05_북북동"};
-  if (구역05_동동북.find(element => element==text)) {result="구역05_동동북"};
-  if (구역05_동.find(element => element==text)) {result="구역05_동"};
-  if (구역05_동동남.find(element => element==text)) {result="구역05_동동남"};
-  if (구역05_남동.find(element => element==text)) {result="구역05_남동"};
-  if (구역05_서서남.find(element => element==text)) {result="구역05_서서남"};
-  if (구역05_서.find(element => element==text)) {result="구역05_서"};
-
-  if (구역06_서서남.find(element => element==text)) {result="구역06_서서남"};
-  if (구역06_서.find(element => element==text)) {result="구역06_서"};
-  if (구역06_서북.find(element => element==text)) {result="구역06_서북"};
-
-  if (구역07_서남.find(element => element==text)) {result="구역07_서남"};
-  if (구역07_서.find(element => element==text)) {result="구역07_서"};
-  if (구역07_서서북.find(element => element==text)) {result="구역07_서서북"};
-
-  if (구역08_서서북.find(element => element==text)) {result="구역08_서서북"};
-  if (구역08_서서남.find(element => element==text)) {result="구역08_서서남"};
-
-  if (구역09_서서북.find(element => element==text)) {result="구역09_서서북"};
-  if (구역09_서서남.find(element => element==text)) {result="구역09_서서남"};
-  if (구역09_서남.find(element => element==text)) {result="구역09_서남"};
-
-  if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
-  if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
-
-  if (result=='') {document.querySelector('#div섬구역4').innerHTML=''} else {document.querySelector('#div섬구역4').innerHTML=result;};
-}
-function 섬이름검색5() {
-  //버튼 누를때만 작동되네?
-  document.querySelector('#div섬구역5').innerHTML='';
-  var text=document.querySelector('#input섬이름5').value;
-  var result='';
-  if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
-  if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
-  if (구역01_남.find(element => element==text)) {result="구역01_남"};
-  if (구역01_남서.find(element => element==text)) {result="구역01_남서"};
-  if (구역01_북서.find(element => element==text)) {result="구역01_북서"};
-
-  if (구역02_동북.find(element => element==text)) {result="구역02_동북"};
-  if (구역02_남동.find(element => element==text)) {result="구역02_남동"};
-  if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
-  if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
-  if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
-  if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
-  if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
-
-  if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
-  if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
-  if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
-
-  if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
-  if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
-  if (구역04_동.find(element => element==text)) {result="구역04_동"};
-  if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
-  if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
-  if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};
-  if (구역04_서서북.find(element => element==text)) {result="구역04_서서북"};
-
-  if (구역05_북북동.find(element => element==text)) {result="구역05_북북동"};
-  if (구역05_동동북.find(element => element==text)) {result="구역05_동동북"};
-  if (구역05_동.find(element => element==text)) {result="구역05_동"};
-  if (구역05_동동남.find(element => element==text)) {result="구역05_동동남"};
-  if (구역05_남동.find(element => element==text)) {result="구역05_남동"};
-  if (구역05_서서남.find(element => element==text)) {result="구역05_서서남"};
-  if (구역05_서.find(element => element==text)) {result="구역05_서"};
-
-  if (구역06_서서남.find(element => element==text)) {result="구역06_서서남"};
-  if (구역06_서.find(element => element==text)) {result="구역06_서"};
-  if (구역06_서북.find(element => element==text)) {result="구역06_서북"};
-
-  if (구역07_서남.find(element => element==text)) {result="구역07_서남"};
-  if (구역07_서.find(element => element==text)) {result="구역07_서"};
-  if (구역07_서서북.find(element => element==text)) {result="구역07_서서북"};
-
-  if (구역08_서서북.find(element => element==text)) {result="구역08_서서북"};
-  if (구역08_서서남.find(element => element==text)) {result="구역08_서서남"};
-
-  if (구역09_서서북.find(element => element==text)) {result="구역09_서서북"};
-  if (구역09_서서남.find(element => element==text)) {result="구역09_서서남"};
-  if (구역09_서남.find(element => element==text)) {result="구역09_서남"};
-
-  if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
-  if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
-
-  if (result=='') {document.querySelector('#div섬구역5').innerHTML=''} else {document.querySelector('#div섬구역5').innerHTML=result;};
-}
 
 function 해양죄표와섬이름() {
   const canvas = document.getElementById('myCanvas');
@@ -766,12 +446,6 @@ if (1=="임시") {
   해양죄표와섬이름()
 }
 
-
-
-function 임시() {
-
-
-}
 function canvas초기화() {
   document.querySelector('#캔버스바디').innerHTML='';
   for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
@@ -882,7 +556,81 @@ function canvas검색실행() {
 
 var 리스너_main사이드=document.querySelector('#메인사이드와우측을함께담은div');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
-function main사이드클릭시(e) {
+function main사이드_dblclick시(e) {
+  if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
+    e.target.nextElementSibling.innerHTML=1;
+    남은교섭력계산()
+  }
+}
+function main사이드_change시(e) {
+  //교섭력오른쪽의 버튼클릭시 값 +1
+  if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
+    남은교섭력계산()
+  }
+  //섬이름검색
+  if (1==1) {
+    if (e.target.parentNode.parentNode.id=='리스너용섬이름검색' && e.target.nodeName=='INPUT' && e.target.parentNode.nextElementSibling.nodeName=='DIV') {
+      e.target.parentNode.nextElementSibling.innerHTML='';
+      var text=e.target.value;
+      var result='';
+      if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
+      if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
+      if (구역01_남.find(element => element==text)) {result="구역01_남"};
+      if (구역01_남서.find(element => element==text)) {result="구역01_남서"};
+      if (구역01_북서.find(element => element==text)) {result="구역01_북서"};
+    
+      if (구역02_동북.find(element => element==text)) {result="구역02_동북"};
+      if (구역02_남동.find(element => element==text)) {result="구역02_남동"};
+      if (구역02_남남서.find(element => element==text)) {result="구역02_남남서"};
+      if (구역02_남서.find(element => element==text)) {result="구역02_남서"};
+      if (구역02_서끝.find(element => element==text)) {result="구역02_서끝"};
+      if (구역02_서서남.find(element => element==text)) {result="구역02_서서남"};
+      if (구역02_서북.find(element => element==text)) {result="구역02_서북"};
+    
+      if (구역03_북서.find(element => element==text)) {result="구역03_북동"};
+      if (구역03_남서.find(element => element==text)) {result="구역03_남서"};
+      if (구역03_서서남.find(element => element==text)) {result="구역03_서서남"};
+    
+      if (구역04_북북동.find(element => element==text)) {result="구역04_북북동"};
+      if (구역04_북동.find(element => element==text)) {result="구역04_=북동"};
+      if (구역04_동.find(element => element==text)) {result="구역04_동"};
+      if (구역04_동남.find(element => element==text)) {result="구역04_동남"};
+      if (구역04_서남.find(element => element==text)) {result="구역04_서남"};
+      if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};
+      if (구역04_서서북.find(element => element==text)) {result="구역04_서서북"};
+    
+      if (구역05_북북동.find(element => element==text)) {result="구역05_북북동"};
+      if (구역05_동동북.find(element => element==text)) {result="구역05_동동북"};
+      if (구역05_동.find(element => element==text)) {result="구역05_동"};
+      if (구역05_동동남.find(element => element==text)) {result="구역05_동동남"};
+      if (구역05_남동.find(element => element==text)) {result="구역05_남동"};
+      if (구역05_서서남.find(element => element==text)) {result="구역05_서서남"};
+      if (구역05_서.find(element => element==text)) {result="구역05_서"};
+    
+      if (구역06_서서남.find(element => element==text)) {result="구역06_서서남"};
+      if (구역06_서.find(element => element==text)) {result="구역06_서"};
+      if (구역06_서북.find(element => element==text)) {result="구역06_서북"};
+    
+      if (구역07_서남.find(element => element==text)) {result="구역07_서남"};
+      if (구역07_서.find(element => element==text)) {result="구역07_서"};
+      if (구역07_서서북.find(element => element==text)) {result="구역07_서서북"};
+    
+      if (구역08_서서북.find(element => element==text)) {result="구역08_서서북"};
+      if (구역08_서서남.find(element => element==text)) {result="구역08_서서남"};
+    
+      if (구역09_서서북.find(element => element==text)) {result="구역09_서서북"};
+      if (구역09_서서남.find(element => element==text)) {result="구역09_서서남"};
+      if (구역09_서남.find(element => element==text)) {result="구역09_서남"};
+    
+      if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
+      if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
+    
+      if (result=='') {e.target.parentNode.nextElementSibling.innerHTML=''} else {e.target.parentNode.nextElementSibling.innerHTML=result;};
+  }
+  }
+}
+function main사이드클릭시_문서연결(e) {//교섭력계산기능
+  console.log('main사이드클릭시(e)');
   //class="파일연결" title="S1_해상일퀘동선" 타이틀을 아이디로 가진 div가 id=숨김_main사이드와header관련 안에 있다
   var 유형='';
   var 타겟element;
@@ -893,7 +641,12 @@ function main사이드클릭시(e) {
     셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
     셑팅할곳.innerHTML=타겟element.outerHTML;
   }
-  if (e.target.title=='S1_해역사진') {console.log('계산_무게'); 계산_무게()};
+  if (e.target.title=='S1_해역사진') {계산_무게()};
+  //교섭력오른쪽의 버튼클릭시 값 +1
+  if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
+    e.target.innerHTML=Number(e.target.innerHTML)+1;
+    남은교섭력계산()
+  }
 }
 
 function 캔버스클릭시(e) {
@@ -935,8 +688,9 @@ function 캔버스클릭시(e) {
     document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
   }
 }
-
-리스너_main사이드.addEventListener('click',main사이드클릭시);
+리스너_main사이드.addEventListener('click',main사이드클릭시_문서연결);
+리스너_main사이드.addEventListener('change',main사이드_change시);
+리스너_main사이드.addEventListener('dblclick',main사이드_dblclick시);
 리스너_캔버스.addEventListener('click',캔버스클릭시);
 
 

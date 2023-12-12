@@ -27,7 +27,7 @@
 #S1_해역사진 #리스너용섬이름검색 {position: relative;}
 #S1_해역사진 #리스너용섬이름검색 > form > input {width:80px;}
 #S1_해역사진 #리스너용섬이름검색 > div {width:130px;height:30px;vertical-align: top; border:1px solid black;display:inline-block; background-color: gray;}/* 섬구역 1,2,3,4,5 */
-#S1_해역사진 #해역_물품단계 > textarea[id="좌측상단메모"] {position: fixed; width:407px;height:620px;top:212px;left:3px;}
+#S1_해역사진 #해역_물품단계 > textarea[id="좌측상단메모"] {position: fixed; width:407px;height:620px;top:244px;left:3px;}
 #S1_해역사진 #해역_물품단계 > #덩어리이동5개textarea {position: absolute;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;left:411px;top:1026px;}/* 상단시작지점 top:212px; 그림아래top:1026px;*/
 #S1_해역사진 #해역_물품단계 > #덩어리이동5개textarea > textarea {width:700px;height:700px;display:inline-block;}
 #S1_해역사진 #해역_물품단계 > img:nth-of-type(1) {margin-bottom:2px;margin-left:90px;}
@@ -180,6 +180,10 @@
 #파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(18) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -78px -78px;}
 #파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(19) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -115px -78px;;}
 #파템재료_일퀘개수 button[title] {background-color: chartreuse;}
+
+#캔버스바디 {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.canvas카테고리 > div {width:620px;display:inline-block;}/* 항상 세로 세줄로 보고 싶다 */
+
 
 
 

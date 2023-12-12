@@ -314,28 +314,28 @@
       <div id="교섭력계산" class="d-inline-block"><!-- width등-->
         <div id="남은_차감후_교섭력" class="d-inline-block""><!-- width등-->
           <h6 title="오른쪽은 소비할 정보. 그 오른쪽은 물품이름 적으면 우측에 조회결과가 나온다.">▢ <b class="a_형식" onclick="차감교섭력clear()">남은 교섭력</b></h6>
-          <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><!-- width등-->
+          <input type = "text" maxlength = "10"><!-- width등-->
           <h6>▢ <b>차감후 교섭</b></h6>
           <input type = "text" maxlength = "10" value=0><!-- width등-->
         </div>
         <div id="차감input들" class="d-inline-block"><!-- width등-->
-          <input onchange="남은교섭력계산()" ondblclick="개수1버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수1버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수2버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수2버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수3버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수3버튼클릭()">1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
           <br>
-          <input onchange="남은교섭력계산()" ondblclick="개수4버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수4버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수5버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수5버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수6버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수6버튼클릭()">1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
           <div class="d-inline-block" onclick="물품단계클릭시()">물품단계</div><!-- width등-->
           <br>
-          <input onchange="남은교섭력계산()" ondblclick="개수7버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수7버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수8버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수8버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수9버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수9버튼클릭()">1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
           <div class="d-inline-block" onclick="마고리아클릭시()">마고리아</div><!-- width등-->
           <br>
-          <input onchange="남은교섭력계산()" ondblclick="개수10버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수10버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수11버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수11버튼클릭()">1</button>
-          <input onchange="남은교섭력계산()" ondblclick="개수12버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수12버튼클릭()">1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
+          <input type = "text" maxlength = "10"><button>1</button>
           <div class="d-inline-block" onclick="모은재료클릭시()">모은재료</div><!-- width등-->
         </div>
       </div>
@@ -401,32 +401,41 @@
       </div>
 
       <div id="리스너용섬이름검색"><!--position: relative, input에 width:80px;-->
-        <form class="d-inline-block" onsubmit="return false">
-          <input onchange="섬이름검색1()" id="input섬이름1" type = "text" maxlength = "10"><!--width:80px;-->
-        </form>
-        <div id="div섬구역1"></div><!--width등--><span>, </span>
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false">
-          <input onchange="섬이름검색2()" id="input섬이름2" type = "text" maxlength = "10"><!--width:80px;-->
-        </form>
-        <div id="div섬구역2"></div><!--width등--><span>, </span>
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false">
-          <input onchange="섬이름검색3()" id="input섬이름3" type = "text" maxlength = "10"><!--width:80px;-->
-        </form>
-        <div id="div섬구역3"></div><!--width등--><span>, </span>
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false">
-          <input onchange="섬이름검색4()" id="input섬이름4" type = "text" maxlength = "10"><!--width:80px;-->
-        </form>
-        <div id="div섬구역4"></div><!--width등--><span>, </span>
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false">
-          <input onchange="섬이름검색5()" id="input섬이름5" type = "text" maxlength = "10"><!--width:80px;-->
-        </form>
-        <div id="div섬구역5"></div><!--width등--><span>, </span>
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
+
         <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea올리기</button>
         <button onclick="섬검색초기화()">섬검색결과 초기화</button>
+
+        <h5 style="height:3px;padding:0px;margin:0px;"></h5>
+
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
+
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
+
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
+
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
+
+        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <div></div><!--width등--><span>, </span>
+        
       </div>
     </div><!-- fixed -->
     <div></div>
@@ -456,7 +465,7 @@
 
 
         </textarea>
-        <div style="height:159px;"></div>
+        <div style="height:195px;"></div>
         <div id="덩어리이동5개textarea">
           <button onclick=" 덩어리이동5개textarea_모두보기()">기본보기</button>
           <button onclick=" 덩어리이동5개textarea_두개숨기기()">3번째부터보기</button>
@@ -729,6 +738,7 @@
   </div>
 </div>
 
+<!-- canvastext파일, canvas_div-->
 <div id="canvas카테고리모음" class="d-none">
   <div class="canvas카테고리" id="유의사항">
     <div>
@@ -740,7 +750,7 @@
       <h6 class="canvastext파일" title='유의사항_더하기_숫자_소수점_변수에러상황.txt'>유의사항_더하기_숫자_소수점_변수에러상황.txt</h6>
     </div>
     <div>
-      <h6 class="canvastext파일" title=''>세로2</h6>
+      <h6 class="canvas_div" title='유의사항_CTRL_F주요키워드'>유의사항_CTRL_F주요키워드</h6>
     </div>
     <div>
       <h6 class="canvastext파일" title=''>세로3</h6>
@@ -750,10 +760,10 @@
     <div>
       <h6 class="canvastext파일" title='JS_style제어_css제어_01.txt'>JS_style제어_css제어_01.txt</h6>
       <h6 class="canvastext파일" title='JS_CANVAS선긋기.txt'>JS_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
-      <h6 class="canvas_div" title='JS_CANVAS선긋기_div'>JS_CANVAS선긋기_div</h6>
     </div>
     <div>
-      <h6 class="canvastext파일" title=''>카테1</h6>
+      <h6 class="canvas_div" title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
+      <h6 class="canvas_div" title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
     </div>
     <div>
       <h6 class="canvastext파일" title=''>카테1</h6>
@@ -797,444 +807,92 @@
   </div>
   <div class="canvas카테고리" id="jQuery">
     <div>
-      <h6 class="canvastext파일" title='jQuery_설치.txt'>jQuery_설치.txt</h6>
+      <h6 class="canvastext파일" title=''>세로1</h6>
     </div>
     <div>
       <h6 class="canvastext파일" title=''>세로2</h6>
     </div>
     <div>
-      <h6 class="canvastext파일" title=''>세로3</h6>
+      <h6 class="canvas_div" title='jQuery_설치와기초사용법'>jQuery_설치와기초사용법</h6>
+      <h6 class="canvas_div" title='jQuery_문법리스트'>jQuery_문법리스트</h6>
     </div>
   </div>
 </div>
 
+<!-- DIV들 모음 : 하나가 올라감 -->
 <div id="canvas안의canvas_div모음" class="d-none">
-
-
-</div>
-
-
-
-
-
-<div id="S1_해역사진_보관" style="display: none;">
-  <div><!-- position:fixed 등-->
-    <div id="교섭력계산" class="d-inline-block"><!-- width등-->
-      <div id="남은_차감후_교섭력" class="d-inline-block""><!-- width등-->
-        <h6 title="오른쪽은 소비할 정보. 그 오른쪽은 물품이름 적으면 우측에 조회결과가 나온다.">▢ <b class="a_형식" onclick="차감교섭력clear()">남은 교섭력</b></h6>
-        <input onchange="남은교섭력계산()" type = "text" maxlength = "10"><!-- width등-->
-        <h6>▢ <b>차감후 교섭</b></h6>
-        <input type = "text" maxlength = "10" value=0><!-- width등-->
-      </div>
-      <div id="차감input들" class="d-inline-block"><!-- width등-->
-        <input onchange="남은교섭력계산()" ondblclick="개수1버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수1버튼클릭()">1</button>
-        <input onchange="남은교섭력계산()" ondblclick="개수2버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수2버튼클릭()">1</button>
-        <br>
-        <input onchange="남은교섭력계산()" ondblclick="개수3버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수3버튼클릭()">1</button>
-        <input onchange="남은교섭력계산()" ondblclick="개수4버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수4버튼클릭()">1</button>
-        <br>
-        <input onchange="남은교섭력계산()" ondblclick="개수5버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수5버튼클릭()">1</button>
-        <input onchange="남은교섭력계산()" ondblclick="개수6버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수6버튼클릭()">1</button>
-        <br>
-        <input onchange="남은교섭력계산()" ondblclick="개수7버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수7버튼클릭()">1</button>
-        <input onchange="남은교섭력계산()" ondblclick="개수8버튼더블클릭()" type = "text" maxlength = "10"><button onclick="개수8버튼클릭()">1</button>
-      </div>
-    </div>
-
-    <div id="물품조회" class="d-inline-block">
-      <div id="물품조회_상" class="d-inline-block"><!-- width등-->
-        <input onchange="물품조회_0()" type = "text" maxlength = "10"><input type = "text" maxlength = "10"><br>
-        <input onchange="물품조회_1()" type = "text" maxlength = "10"><input type = "text" maxlength = "10"><br>
-        <input onchange="물품조회_2()" type = "text" maxlength = "10"><input type = "text" maxlength = "10"><br>
-        <button onclick="물품단계클릭시()">물품단계</button><!-- width등-->
-        <button onclick="마고리아클릭시()">마고리아</button><!-- width등-->
-        <button onclick="모은재료클릭시()">모은재료</button><!-- width등-->
-      </div>
-    </div>
-
-    <div id="무게계산" class="d-inline-block"><!-- width등-->
-      <div>
-        <h6>위, 배+장비무게, 펫등무게 변경</h6>
-        <h6>X 1.7</h6><!-- text-indent 등-->
-        <h6>선원</h6><!-- text-indent 등-->
-        <h6>여유무게</h6><!-- text-indent 등-->
-        <h6>2단(800)</h6><!--display:inline-block-->
-        <h6>3단(900)</h6><!-- text-indent 등-->
-        <h6>4,5단(천)</h6><!-- text-indent 등-->
-      </div>
-      <h6 class="무게input들">▢ <span>배+장비무게</span>
-        <input onchange="계산_무게()" id="계산_배와장비무게" type = "text" maxlength = "10" value="13600">
-        <span>, 최대적재</span>
-        <input id="계산_최대적재" type = "text" maxlength = "10" value="빈칸">
-        <span>, </span>
-        <input onchange="계산_무게()" id="계산_일반등무게" type = "text" maxlength = "10" value="609">
-        <span>, </span>
-        <input id="계산_여유무게" type = "text" maxlength = "10">
-        <span>: </span>
-        <input id="계산_800" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산_900" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산_천" type = "text" maxlength = "10">
-      </h6>
-      <h6 class="무게input들">▢ <span>배+장비무게</span>
-        <input id="계산2_배와장비무게" type = "text" maxlength = "10" value="빈칸">
-        <span>, 최대적재</span>
-        <input id="계산2_최대적재" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산2_일반등무게" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산2_여유무게" type = "text" maxlength = "10">
-        <span>: </span>
-        <input id="계산2_800" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산2_900" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산2_천" type = "text" maxlength = "10">
-      </h6>
-      <h6 id="나의무게" class="무게input들">▢ <span>나의무게[무역품개수], 첫칸은 무게</span><!--span에 margin-right:27px-->
-        <input class="d-none" type = "text" maxlength = "10">
-        <input class="d-none" type = "text" maxlength = "10">
-        <span>, </span><!--span에 margin-left:8px-->
-        <input onchange="계산_나의무게계산()" id="계산3_1단등무게" type = "text" maxlength = "10">
-        <span>, </span>
-        <input id="계산3_합산무게" type = "text" maxlength = "10">
-        <span>: </span>
-        <input onchange="계산_나의무게계산()" id="계산3_800" type = "text" maxlength = "10">
-        <span>, </span>
-        <input onchange="계산_나의무게계산()" id="계산3_900" type = "text" maxlength = "10">
-        <span>, </span>
-        <input onchange="계산_나의무게계산()" id="계산3_천" type = "text" maxlength = "10">
-        <button onclick="
-        for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
-          document.querySelectorAll('#나의무게 input')[i].value='';
-        }     
-        ">clear</button>
-      </h6>
-    </div>
-
-    <div id="리스너용섬이름검색"><!--position: relative, input에 width:80px;-->
-      <form class="d-inline-block" onsubmit="return false">
-        <input onchange="섬이름검색1()" id="input섬이름1" type = "text" maxlength = "10"><!--width:80px;-->
-      </form>
-      <div id="div섬구역1"></div><!--width등--><span>, </span>
-
-      <form class="d-inline-block" onsubmit="return false">
-        <input onchange="섬이름검색2()" id="input섬이름2" type = "text" maxlength = "10"><!--width:80px;-->
-      </form>
-      <div id="div섬구역2"></div><!--width등--><span>, </span>
-
-      <form class="d-inline-block" onsubmit="return false">
-        <input onchange="섬이름검색3()" id="input섬이름3" type = "text" maxlength = "10"><!--width:80px;-->
-      </form>
-      <div id="div섬구역3"></div><!--width등--><span>, </span>
-
-      <form class="d-inline-block" onsubmit="return false">
-        <input onchange="섬이름검색4()" id="input섬이름4" type = "text" maxlength = "10"><!--width:80px;-->
-      </form>
-      <div id="div섬구역4"></div><!--width등--><span>, </span>
-
-      <form class="d-inline-block" onsubmit="return false">
-        <input onchange="섬이름검색5()" id="input섬이름5" type = "text" maxlength = "10"><!--width:80px;-->
-      </form>
-      <div id="div섬구역5"></div><!--width등--><span>, </span>
-      <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea올리기</button>
-      <button onclick="섬검색초기화()">섬검색결과 초기화</button>
-    </div>
-  </div><!-- fixed -->
-  <div></div>
-
-  <div>
-    <div id="해역_물품단계" class="d-block">
-      <textarea id="좌측상단메모">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </textarea>
-      <div style="height:159px;"></div>
-      <div id="덩어리이동5개textarea">
-        <button onclick=" 덩어리이동5개textarea_모두보기()">기본보기</button>
-        <button onclick=" 덩어리이동5개textarea_두개숨기기()">3번째부터보기</button>
-        <button onclick=" 덩어리이동5개textarea_네개숨기기()">5번째보기</button><br>
-        <textarea>5조각상의 눈물 : 해적의 열쇠,일리야
-          5 팔랑나비 박제품 : 목 잘린 용 조각상, 바레미
-          5 102년 묵은 황금초 : 뱃사공의 수련서, 오르프스
-          5 황금빛 물고기 비늘 : 만병통치약, 발베쥬
-          5 푸른빛 석영 : 해상 기사단의 창, 나르보
-          5 최고급 황금 촛대 : 금주화가 담긴 낡은, 파딕스
-          5 정체불명의 암석 : 자수정 파편, 오벤섬
-          5 빛바랜 황금용 조각상 : 청록빛 소금 덩어리, 시오닐
-          5 오색빛 산호 노리개 1500 : 조개 껍질 장식, 난파된 고대 유적 수송선
-          
-          일반 화려한 암염 주괴[인버넨] : 5 황금빛 물고기 비늘
-          일반 화려한 진주 결정[마르카] : 5 고급 문양의 옷감
-                   </textarea>
-                  <textarea>4 청록빛 소금덩어리 : 찢어진 해적 보물지도, 알나하
-          4 뱃사공의 수련서 : 종유석 파편, 샤샤
-          4 해상 기사단의 창 : 해적단의 보급상자, 로즈반
-          4 만병통치약 : 족제비 가죽 외투, 툴루
-          4 목 잘린 용 조각상 : 정찰병 망원경, 오리샤
-          4 해적의 열쇠 : 희귀 약초 무더기, 시르나
-          4 자수정 파편 : 롭스타 그물, 리스즈
-          4 조개 껍질 장식 : 해골 장식 찻잔, 알마이
-          4 금주화가 담긴 낡은 상자 : 반달 조리용 칼, 데이튼
-          
-            주아앙 : 6순수, 3현실, 2자신
-                  </textarea>
-                  <textarea>3 정찰병 망원경 : 해적 금주화, 아라킬
-          3 희귀 약초 무더기 : 널찍한 돌판, 타라무라
-          3 종유석 파편 : 괴생물 촉수, 웨이타
-          3 해적단의 보급상자 : 오색 구슬, 마를레느
-          3 족제비 가죽 외투 : 나르보산 해삼, 앙쥬
-          3 찢어진 해적 보물지도 : 성게 가시, 던데
-          3 반달 조리용 칼 : 균형잡힌 돌탑
-          3 롭스타 그물 : 해양 구조품, 루루브
-          3 해골 장식 찻잔 : 균형잡힌 돌탑, 진버레이
-          
-          
-                  </textarea>
-                  <textarea>2 해적 금주화 : 갈퀴 꽃 씨앗 주머니
-          2 널찍한 돌판 : 로아 꽃 씨앗 주머니
-          2 오색 구슬 : 쫄깃한 전어 회
-          2 괴생물 촉수 : 비옥한 흙
-          2 나르보산 해삼 : 황금빛 모래
-          2 해적선 돛대 : 고대 항아리 파편
-          2 성게 가시 : 앵두나무 씨앗 주머니
-          2 해양 구조품 : 해적의 화약
-          2 균형잡힌 돌탑 : 알수없는 고대 벽화
-                  </textarea>
-                  <textarea>카슈마 : 102년 묵은 황금초
-          할마드 : 정체불명의 암석
-          파키오와 전투 똇목 : 흰색 애벌레 박제품
-          까마귀 상단소유의 선박 : 푸른빛 석영
-          난파된 하란의 수송선 : 황금빛 물고기 비늘
-          떠내려온 미완성 선박 : 빛바랜 황금용 조각상
-          1500 난파된 고대 유적 수송선 : 4 조개 껍질 장식 - 5 오색빛 산호 노리개
-          
-          
-                  </textarea>
-
-      </div>
-      <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div id="모은재료none상태" class="d-none"><!--width:100%등-->
-      <div id="모은재료_파템재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
-        <div id="파템_함포" class="d-inline-block 재료높이"><!--vertical-align: top-->
-          <div>함포</div>
-          <div><button>필요</button><button>보유</button></div>
-          <div><button class="노랑 모으기완료">42</button><button class="노랑"></button></div><!-- 심해의 눈물 1-->
-          <div><button class="노랑 모으기완료">30</button><button class="노랑"></button></div><!-- 화려한 진주 결정-->
-          <div><button class="모으기완료">80</button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button class="노랑 모으기완료">30</button><button class="노랑"></button></div><!-- 화려한 암염 주괴-->
-          <div><button class="노랑 모으기완료">170</button><button class="노랑"></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-          <div><button class="노랑 모으기완료">180</button><button class="노랑"></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button></button></div><!-- 홍조빛 해저 단괴 -->
-          <div><button class="노랑">물교</button><button></button></div><!-- 빛나는 코발트주괴 -->
-          <div><button class="모으기완료">300</button><button></button></div><!--  달의 비늘이 새겨진 합판-->
-          <div><button></button><button></button></div><!-- 콕스유물 상급 -->
-          <div><button></button><button></button></div><!-- 순수한 진주결정 -->
-          <div><button class="모으기완료">180</button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
-          <div><button class="노랑">물교</button><button></button></div><!-- 대양의 견고한 현철 -->
-          <div><button></button><button></button></div><!--  심해초 줄기-->
-          <div><button class="모으기완료">180</button><button></button></div><!-- 순수한 암초조각 -->
-          <div><button></button><button></button></div><!-- 콕스유물 하급 -->
-          <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
-        </div>
-        <div id="파템_장갑" class="d-inline-block 재료높이"><!--vertical-align: top-->
-          <div>흑장갑</div>
-
-          <div><button>필요</button><button>보유</button></div>
-          <div><button class="노랑">일반</button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button class="노랑">일반</button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button class="모으기완료">60</button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button class="노랑">일반</button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button class="노랑">일반</button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-          <div><button class="노랑">일반</button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button></button></div><!-- 홍조빛 해저 단괴 -->
-          <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
-          <div><button class="모으기완료">300</button><button></button></div><!--  달의 비늘이 새겨진 합판-->
-          <div><button></button><button></button></div><!-- 콕스유물 상급 -->
-          <div><button class="모으기완료">45</button><button></button></div><!-- 순수한 진주결정 -->
-          <div><button></button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
-          <div><button></button><button></button></div><!-- 대양의 견고한 현철 -->
-          <div><button></button><button></button></div><!--  심해초 줄기-->
-          <div><button></button><button></button></div><!-- 순수한 암초조각 -->
-          <div><button class="모으기완료">60</button><button></button></div><!-- 콕스유물 하급 -->
-          <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
-        </div>
-        <div id="파템_돛" class="d-inline-block 재료높이"><!--vertical-align: top-->
-          <div>돛</div>
-          <div><button>필요</button><button>보유</button></div>
-          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button></button><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-          <div><button></button><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button class="모으기완료">50</button><button></button></div><!-- 홍조빛 해저 단괴 -->
-          <div><button class="모으기완료">30</button><button></button></div><!-- 빛나는 코발트주괴 -->
-          <div><button></button><button></button></div><!--  달의 비늘이 새겨진 합판-->
-          <div><button class="모으기완료">30</button><button></button></div><!-- 콕스유물 상급 -->
-          <div><button></button><button></button></div><!-- 순수한 진주결정 -->
-          <div><button></button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
-          <div><button></button><button></button></div><!-- 대양의 견고한 현철 -->
-          <div><button class="모으기완료">80</button><button></button></div><!--  심해초 줄기-->
-          <div><button></button><button></button></div><!-- 순수한 암초조각 -->
-          <div><button></button><button></button></div><!-- 콕스유물 하급 -->
-          <div><button></button><button></button></div><!--  강화된 섬나무 증착합판-->
-        </div>
-        <div id="파템_선수상" class="d-inline-block 재료높이"><!--vertical-align: top-->
-          <div>선수상</div>
-
-          <div><button>필요</button><button>보유</button></div>
-          <div><button></button><button></button></div><!-- 심해의 눈물 1-->
-          <div><button></button><button></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button></button></div><!-- 콕스유물 전투 -->
-          <div><button></buttons=><button></button></div><!-- 화려한 암염 주괴-->
-          <div><button></button><button></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-          <div><button></buttons=><button></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button class="모으기완료">50</button><button></button></div><!-- 홍조빛 해저 단괴 -->
-          <div><button></button><button></button></div><!-- 빛나는 코발트주괴 -->
-          <div><button></button><button></button></div><!--  달의 비늘이 새겨진 합판-->
-          <div><button></button><button></button></div><!-- 콕스유물 상급 -->
-          <div><button></button><button></button></div><!-- 순수한 진주결정 -->
-          <div><button></button><button></button></div><!-- 파도빛이 감도는 규격 각목 -->
-          <div><button class="모으기완료">150</button><button></button></div><!-- 대양의 견고한 현철 -->
-          <div><button class="모으기완료">125</button><button></button></div><!--  심해초 줄기-->
-          <div><button></button><button></button></div><!-- 순수한 암초조각 -->
-          <div><button></button><button></button></div><!-- 콕스유물 하급 -->
-          <div><button class="모으기완료">300</button><button></button></div><!--  강화된 섬나무 증착합판-->
-        </div>
-        <div id="파템재료_재료아이콘" class="d-inline-block 재료높이"><!--vertical-align: top-->
-          <div>중범선-용맹</div><!--padding-top:5px-->
-          <div>심해의 눈물 맞춤?</div>
-          <div class="아이콘" data="심해의 눈물"        title="1 [일일]그믐달 길드의 어린 검은무쇠이빨"></div>
-          <div class="아이콘" data="화려한 진주 결정"   title=""  class="아이콘"></div>
-          <div class="아이콘" data="콕스유물 전투"      title="3 [일일]제 몸 하나는 스스로 지켜야, +[탐색]섬 아이의 요청 선택보상"></div>
-          <div class="아이콘" data="화려한 암염 주괴"   title=""></div>
-          <div class="아이콘" data="짙은 파도빛이 감도는 규격 각목" title=""></div>
-          <div class="아이콘" data="달의 핏줄이 새겨진 아마포" title="3"></div>
-          <div class="아이콘" data="홍조빛 해저 단괴"   title="2 [일일]어린 해달 상인들을 위해"></div>
-          <div class="아이콘" data="빛나는 코발트주괴"  title="물물교환, +[탐색]섬 아이의 요청 선택보상"></div>
-          <div class="아이콘" data="달의 비늘이 새겨진 합판" title="10 [일일]그믐달 길드의 칸디둠 사냥꾼"></div>
-          <div class="아이콘" data="콕스유물 상급"      title="1 +[탐색]섬 아이의 요청 선택보상"></div>
-          <div class="아이콘" data="순수한 진주결정"    title="2  [일일]활기찬 일리야 섬 I"></div>
-          <div class="아이콘" data="파도빛이 감도는 규격 각목" title="3 [일일]길드는 자선단체가 아니다."></div>
-          <div class="아이콘" data="대양의 견고한 현철" title=""></div>
-          <div class="아이콘" data="심해초 줄기" title="4"></div>
-          <div class="아이콘" data="순수한 암초조각" title="8 [일일]활기찬 일리야 섬 I"></div>
-          <div class="아이콘" data="콕스유물 하급" title=""></div>
-          <div class="아이콘" data="강화된 섬나무 증착합판" title="1 물물교환"></div>
-        </div>
-        <div id="파템재료_가방아이콘" class="d-inline-block 재료높이" style="vertical-align: top;">
-          <div style="padding-top:5px;width:40px;"></div>
-          <div style="width:40px;"></div>
-          <div class="아이콘"></div><!-- 심해의 눈물 -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!-- 달의 핏줄이 새겨진 아마포 -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-
-          <div class="아이콘"></div><!-- 콕스유물 상급 -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!-- 대양의 견고한 현철 -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-          <div class="아이콘"></div><!--  -->
-        </div>
-        <div id="파템재료_일퀘개수" class="d-inline-block 재료높이" style="vertical-align: top;">
-          <div><div>필<br>요<br>수</div><div>보<br>유<br>수</div><div>남<br>은<br>수</div><div>일<br><br>get</div><div>일<br>퀘<br>수</div></div>
-          <div><button>42</button><button  title="심해의눈물"      >32</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 심해의 눈물 1-->
-          <div><button>30</button><button  title="화려한 진주 결정">16</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 진주 결정-->
-          <div><button></button><button    title="콕스유물 전투"   >119</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 전투 -->
-          <div><button>30</button><button  title="화려한 암염 주괴">25</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 화려한 암염 주괴-->
-          <div><button>170</button><button title="짙은파도빛규격각">112</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-
-          <div><button>180</button><button title="달의핏줄이새겨진아마포">244</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-          <div><button></button><button    title="홍조빛 해저 단괴"    >87</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 홍조빛 해저 단괴-->
-          <div><button></button><button    title="빛나는코발트주괴"    >24</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!--빛나는 코발트주괴 -->
-          <div><button></button><button    title="달의비늘이새겨진합판">432</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!-- 달의 비늘이 새겨진 합판-->
-          <div><button></button><button    title="콕스유물 상급"       >33</button><button></button><button>1</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 상급-->
-          <div><button></button><button    title="순수한 진주 결정"    >58</button><button></button><button>2</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 진주결정-->
-          <div><button></button><button    title="파도빛이 감도는 규격 각목">111</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!--파도빛이 감도는 규격 각목 -->
-          <div><button></button><button    title="대양의 견고한 현철"  >110</button><button></button><button>물교</button><button style="background-color: chartreuse;"></button></div><!-- 대양의 견고한 현철-->
-          <div><button></button><button    title="심해초 줄기"         >163</button><button></button><button>4</button><button style="background-color: chartreuse;"></button></div><!-- 심해초 줄기-->
-          <div><button></button><button    title="순수한 암초 조각"    >224</button><button></button><button>8</button><button style="background-color: chartreuse;"></button></div><!-- 순수한 암초조각-->
-          <div><button></button><button    title="콕스유물 하급"       >85</button><button></button><button>3</button><button style="background-color: chartreuse;"></button></div><!-- 콕스유물 하급-->
-          <div><button></button><button    title="강화된 섬나무 증착합판">310</button><button></button><button>10</button><button style="background-color: chartreuse;"></button></div><!--강화된 섬나무 증착합판 -->
-        </div>
-
-        <div id="재료모은거" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">
-          <img style="position:absolute" src="portal/images/black_문서/S2_재료모은것.png" alt="이미지없음">
-          <div style="position:absolute;left:960px;top:3px;">
-            <h6><b><i><u style="color:blueviolet">중범파템용 : 온기 35, 한기 80</u></i></b></h6>
-            <h6><b><i><u style="color:blueviolet">토로용 : 온기 280, 한기 360, 치료용 더 많이!!</u></i></b></h6>
-            <h6><b><i><u style="color:blueviolet">오킬 주간 온기 60*3=180, 한기 30*3=90 선택</u></i></b></h6>
-          </div>
-          <div id="설명" style="margin-top:79px;">
-            <h6 style="text-indent: 350px;">1 [일일]그믐달 길드의 어린 <b><u>검은무쇠이빨</u></b></h6><!-- 심해의 눈물 1-->
-            <h6><b><i><u style="color:blueviolet">물교</u></i></b> 함포:무게 1000, 장갑:무게 2000, 돛:무게 1000,회전10%,제동10% 선수상:무게 1000,속도12%</h6><!-- 화려한 진주 결정-->
-            <h6><b><i><u style="color:blueviolet">부족!!</u></i></b> 3 [일일]제 몸 하나는 스스로 지켜야, 점진:함포60,흑장갑60</h6><!-- 콕스유물 전투 -->
-            <h6><b><i><u style="color:blueviolet">물교</u></i></b></h6><!-- 화려한 암염 주괴-->
-            <h6><b><i><u style="color:blueviolet">부족!!</u></i></b> 3 [일일]병사 표류추적자, 점진:144   </b><b><i><u style="color:blueviolet">물교할때 2개 나옴, 2회교환!</u></i></b></h6><!--짙은 파도빛이 감도는 규격 각목 3 -->
-            <h6 style="background-color: cadetblue;"> 3 [일일]그믐달 길드의 <b><u>어린 나인샤크</u></b> <b><u style="color:blueviolet">어른으로 받기!!</u></b> <b><i><u style="color:blueviolet">물교할때 11개 나옴?</u></i></b></h6><!-- 달의 핏줄이 새겨진 아마포 3-->
-            <h6> 2 [일일]오킬루아 큐리오 산호조각 10개와 교환</h6><!-- 홍조빛 해저 단괴 -->
-            <h6><b><i><u style="color:blueviolet">부족!! 물교</u></i></b>   </b><b><i><u style="color:blueviolet">물교할때 1개 나옴</u></i></b></h6><!-- 빛나는 코발트주괴 -->
-            <h6>10 [일일]그믐달 길드의 <b><u>어린 칸디둠</u></b> 사냥꾼, 점진:함포200,흑장갑200</h6><!--  달의 비늘이 새겨진 합판-->
-            <h6> 1 [일일]일리야 물물교환 퀘스트</h6><!-- 콕스유물 상급 -->
-            <h6> 2 [일일]일리야 물물교환 퀘스트</h6><!-- 순수한 진주결정 -->
-            <h6><b><i><u style="color:blueviolet">부족!!</u></i></b> 3 [일일]병사 어린해왕류  </b><b><i><u style="color:blueviolet">물교할때 2개 나옴, 2회교환!</u></i></b></h6><!-- 파도빛이 감도는 규격 각목 -->
-            <h6><b><i><u style="color:blueviolet">부족!! 물교</u></i></b>   </b><b><i><u style="color:blueviolet">물교할때 3개 나옴</u></i></b></h6><!-- 대양의 견고한 현철 -->
-            <h6><b><i><u style="color:blueviolet">부족!!</u></i></b> 4 [일일]오색빛 산호조각 교환,   </b><b><i><u style="color:blueviolet">물교할때 1개 나옴</u></i></b> <b><i><u style="color:blueviolet">점진 돛 : 80</u></i></b></h6><!--  심해초 줄기-->
-            <h6> 8 [일일]일리야 물물교환 퀘스트</h6><!-- 순수한 암초조각 -->
-            <h6> 1 [일일]일리야 물물교환 퀘스트</h6><!-- 콕스유물 하급 -->
-            <h6>10  [일일]일리야 물물교환 퀘스트</h6><!--  강화된 섬나무 증착합판-->
-          </div>
-
-        </div>
-      </div>
-
-      <div>일반재료</div>
-      <div id="모은재료_일반재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->
-        <div id="일반재료_일퀘개수"><a href="https://www.kr.playblackdesert.com/ko-KR/News/Detail?groupContentNo=11336&countryType=ko-KR" target="_blank">24.11.29 대양 퀘스트 업데이트</a></div>
-        <div id="일반재료_일퀘개수">[일일]그믐달 길드의 나인샤크 사냥꾼, 달의 핏줄이 새겨진 아마포 3</div>
-        <div id="일반재료_재료아이콘">[일일]그믐달 길드의 검은무쇠이빨 사냥꾼, 심해의 눈물 1</div>
-        <div id="일반재료_재료이름">[일일]너도 좋고, 나도 좋고, 짙은 파도빛이 감도는 규격 각목 3</div>
-        <div id="일반재료_필요개수">[물교]화려한 암염 주괴</div>
-        <div id="일반재료_모은개수">[물교]화려한 진주 결정</div>
-      </div>
-    </div>
-    <div id="마고리아12별" class="d-none" style="position: absolute;left:914px;top:212px;margin-bottom:5px;background-color: white;"">
-      <img src="portal/images/black_문서/S1_마고리아12별.png" alt="이미지없음">
-    </div>
+  <div id="샘플">
+    <h5><a href="" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+    <h5>▢ </h5>
+    <h6 style="text-indent: 23px;"></h6>
+    <img src="" alt="이미지없음">
+    <embed src="" width=1000px height=870px>
+    <br><br><br><br><br><br><br>
   </div>
+  <div id="JS_이벤트리스너_이벤트종류_작동순서">
+    <h5>▢ 인라인에 onclick동작있을때 이벤트리스너 동작은?</h5>
+    <h6 style="text-indent: 23px;">이벤트리스너 걸어놓으거 먼저 동작후, 버튼에 걸려있는 onclick동작</h6>
+    <h5>▢ 같은 element에 각각 다른 이벤트를 걸수있다. ex)click, dbclick, change</h5>
+    <h5>★★ 클릭한 요소의 순서 : e.target.classList.add해주고 찾는형식??</h5>
+    <h5>▢ 이벤트리스너 이벤트 종류</h5>
+    <img src="portal/images/black_코딩등그림판/jQuery_이벤트리스너이벤트종류_01.png" alt="이미지없음"  style="vertical-align: top;">
+    <br><br><br><br><br><br><br>
+  </div>JS_이벤트리스너_이벤트종류_작동순서
+  <div id="JS_input_value_숫자표현결과_조건표현인자">
+    <h6>★ 숫자를 더할 경우 숫자로 표현되도록 바꾸어야한다.</h6>
+    <h6>★ typeof 요소또는 값 : value에 '1'로 문자열 숫자를 전달하든, 1 처럼 숫자를 전달하든 value의 type은 ★string★이다.</h6>
+    <h6 style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML='1';</h6>
+    <h6 style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</h6>
+    <h6 style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML=1;</h6>
+    <h6 style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</h6>
+    <h6>▢ 공백[여러공백]일때 : 공백일때 0으로 인식, 1을곱하면 0, 1을 곱하면 숫자로 인식, 안곱해도 숫자 0으로 인식.</h6>
+    <h6>▢ 많은 공백중 숫자한번 : 숫자로 인식. ==> ★ 공백일때 굳이 0 으로 설정하는 코딩이 필요없을듯.</h6>
+    <h6>▢ 많은 공백중 숫자 두번 : 문자로 인식. ==> ★ isNaN(표현)이 숫자가 아닐때가 true, 숫자이면 false</h6>
+    <h6>▢ 문자열에 곱하기해도 에러는 아니고 NaN으로 설정됨</h6>
+    <h6>▢ 조건 : 아닐때 !조건, or 조건 || 조건 (||는 shift ￦), and 조건 && 조건, 보다크다 >=, 보다 작다 <=,</h6>
+    <h6>▢ 더하기는 문자열 더하기도 포함한다는것 : 결과+=더할값 ==> 기존 결과에 우측에 더하여 붙인다.</h6>
+
+
+
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="유의사항_CTRL_F주요키워드">
+    <h5>▢ canvas카테고리모음 : 1개, 여기서 title에 가지고올 id넣는곳</h5>
+    <h5>▢ canvas안의canvas_div모음 : 1개, 카테고리목록에서 class가 canvas_div인 div들이 id를 가지고 대기중이다.</h5>
+    <h5>▢ 숨김_main사이드와header관련 : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h5>
+    <h5>▢ 숨김_main사이드와header관련 : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h5>
+    <h5>▢ S1_해역사진 : 3개, </h5>
+    <h5>▢ 모은재료none상태 : 1개, S1_해역사진 에서 많이 아래쪽, 개수기록시.</h5>
+    <h5>▢ 샘플 : 2개, </h5>
+    <h5 style="text-indent: 23px;">첫번째는 canvas안의canvas_div모음 내부자료 맨 첫번째 장소로 이동,</h5>
+    <h5 style="text-indent: 23px;">두번째는 숨김_main사이드와header관련 내부자료 맨아래쪽으로 이동,</h5>
+    <h5>▢ </h5>
+    <h5>▢ </h5>
+    <h5>▢ </h5>
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="jQuery_설치와기초사용법">
+    <h5><a href="https://milku.tistory.com/84" target="_blank">jQuery_설치와기초사용법</a></h5>
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음"  style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_03.png" alt="이미지없음" style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_05.png" alt="이미지없음" style="vertical-align: top;">
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="jQuery_문법리스트">
+    <h5><a href="https://soft91.tistory.com/9" target="_blank">JQuery - JQuery 기본문법</a></h5>
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_01.png" alt="이미지없음"  style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_03.png" alt="이미지없음" style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <br><br><br><br><br><br><br>
+  </div>
+
+
 </div>
+
+
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
   role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
   <span>Top</span></a>
