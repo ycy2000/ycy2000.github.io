@@ -326,17 +326,17 @@
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div class="d-inline-block" onclick="물품단계클릭시()">물품단계</div><!-- width등-->
+          <div onclick="물품단계클릭시()">물품단계</div><!-- width등-->
           <br>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div class="d-inline-block" onclick="마고리아클릭시()">마고리아</div><!-- width등-->
+          <div onclick="마고리아클릭시()">마고리아</div><!-- width등-->
           <br>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div class="d-inline-block" onclick="모은재료클릭시()">모은재료</div><!-- width등-->
+          <div onclick="모은재료클릭시()">모은재료</div><!-- width등-->
         </div>
       </div>
       <div id="무게계산" class="d-inline-block"><!-- width등-->
@@ -401,19 +401,19 @@
       </div>
 
       <div id="리스너용섬이름검색"><!--position: relative, input에 width:80px;-->
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
         <button id="textarea기능버튼" onclick="textarea보기숨기기()">textarea올리기</button>
@@ -421,19 +421,19 @@
 
         <h5 style="height:3px;padding:0px;margin:0px;"></h5>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
 
-        <form class="d-inline-block" onsubmit="return false"><input type = "text" maxlength = "10"></form>
+        <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
         <div></div><!--width등--><span>, </span>
         
       </div>
@@ -716,13 +716,13 @@
 <div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div>
-      <h6 onclick="canvas초기화()" style="display:inline-block;width:50px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">초기화</h6>
-      <h6 onclick="canvas모든텍스트파일()" style="display:inline-block;width:100px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">모든text파일</h6>
-      <h6 onclick="canvas모든카테고리()" style="display:inline-block;width:100px; background-color: aqua;" class="offcanvas-title" id="offcanvasBottomLabel">모든카테고리</h6>              
-      <h6 onclick="canvas검색실행()" title="보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!" class="d-inline-block" style="background-color: aqua;">파일검색</h6>
-      <input onchange="canvas검색실행()" id="canvas검색" style="width:150px;" class="d-inline-block" type = "text">
-      <h6 onclick="document.querySelector('#canvas검색').value='';" class="d-inline-block" style="background-color: aqua;">clear</h6>
-      <button onclick="canvas카테고리숨김()">&lt;&lt;</button> <button onclick="canvas카테고리숨김해제()">&gt;&gt;</button> 
+      <h6 class="offcanvas-title" id="캔버스바디_초기화">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title" id="캔버스바디_모든text파일">모든text파일</h6><!--click동작-->
+      <h6 class="offcanvas-title" id="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <input id="canvas검색" type = "text"><!-- change 동작-->
+      <h6 id="canvas검색_clear">clear</h6><!--click동작-->
+      <button id="캔버스바디_카테고리숨김">&lt;&lt;</button> <button id="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
       
       <button class="카테고리실행" title="유의사항">유의사항</button> 
       <button class="카테고리실행" title="JS">JS</button> 
@@ -819,7 +819,7 @@
   </div>
 </div>
 
-<!-- DIV들 모음 : 하나가 올라감 -->
+<!-- DIV들 모_음 : 하나가 올라감 -->
 <div id="canvas안의canvas_div모음" class="d-none">
   <div id="샘플">
     <h5><a href="" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
@@ -857,14 +857,14 @@
     <br><br><br><br><br><br><br>
   </div>
   <div id="유의사항_CTRL_F주요키워드">
-    <h6>▢ canvas카테고리모음 : 1개, 여기서 title에 가지고올 id넣는곳</h6>
-    <h6>▢ canvas안의canvas_div모음 : 1개, 카테고리목록에서 class가 canvas_div인 div들이 id를 가지고 대기중이다.</h6>
+    <h6>▢ canvas카테고리모_음 : 1개, 여기서 title에 가지고올 id넣는곳</h6>
+    <h6>▢ canvas안의canvas_div모_음 : 1개, 카테고리목록에서 class가 canvas_div인 div들이 id를 가지고 대기중이다.</h6>
     <h6>▢ 숨김_main사이드와header관련 : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h6>
     <h6>▢ 숨김_main사이드와header관련 : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h6>
-    <h6>▢ S1_해역사진 : 3개, </h6>
-    <h6>▢ 모은재료none상태 : 1개, S1_해역사진 에서 많이 아래쪽, 개수기록시.</h6>
+    <h6>▢ S1_해역사_진 : 3개, </h6>
+    <h6>▢ 모은재료none상태 : 1개, S1_해역사_진 에서 많이 아래쪽, 개수기록시.</h6>
     <h6>▢ 샘플 : 2개, </h6>
-    <h6 style="text-indent: 23px;">첫번째는 canvas안의canvas_div모음 내부자료 맨 첫번째 장소로 이동,</h6>
+    <h6 style="text-indent: 23px;">첫번째는 canvas안의canvas_div모_음 내부자료 맨 첫번째 장소로 이동,</h6>
     <h6 style="text-indent: 23px;">두번째는 숨김_main사이드와header관련 내부자료 맨아래쪽으로 이동,</h6>
     <h6>▢ </h6>
     <h6>▢ </h6>
