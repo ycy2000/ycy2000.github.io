@@ -239,11 +239,6 @@ function 덩어리이동5개textarea_네개숨기기() {
   document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
 }
 function 물품단계클릭시() {
-  // 해역_물품단계
-  // 모은재료none상태
-  // 이동시간잡다한것none상태
-  // 자동이동시간참고
-  // 마고리아12별
   if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
     document.querySelector('#해역_물품단계').classList.remove('d-none');  
     document.querySelector('#모은재료none상태').classList.add('d-none');
@@ -253,11 +248,6 @@ function 물품단계클릭시() {
   }
 }
 function 모은재료클릭시() {
-  // 해역_물품단계
-  // 모은재료none상태
-  // 이동시간잡다한것none상태
-  // 자동이동시간참고
-  // 마고리아12별
   if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
     document.querySelector('#해역_물품단계').classList.add('d-none');  
     document.querySelector('#모은재료none상태').classList.remove('d-none'); 
@@ -267,11 +257,6 @@ function 모은재료클릭시() {
   }
 }
 function 마고리아클릭시() {
-  // 해역_물품단계
-  // 모은재료none상태
-  // 이동시간잡다한것none상태
-  // 자동이동시간참고
-  // 마고리아12별
   if (document.querySelector('#마고리아12별').classList.contains('d-none')) {
     document.querySelector('#마고리아12별').classList.remove('d-none'); 
   } else {
