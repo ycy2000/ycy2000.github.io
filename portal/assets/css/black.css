@@ -113,6 +113,8 @@
 #파템재료_일퀘개수 > div:first-child > div {display: inline-block;}
 
 #재료모은거 > #설명 > h6 {width:700px; height:38px;margin:1px 0px;border:1px solid black;margin-bottom:-2px;padding-top:10px;}
+#재료모은거 > #설명 > h6:nth-of-type(1) {background-color: cadetblue;}/* 검은무쇠이빨*/
+#재료모은거 > #설명 > h6:nth-of-type(4), #재료모은거 > #설명 > h6:nth-of-type(9) {margin-bottom:5px;}/* 아래 띄우기 맞추기*/
 
 #파템_일반재료1 > div:nth-of-type(8) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -1px;} /* 함포8,9,10,11, 전투, 달의, 순수, 파도빛 */
 #파템_일반재료1 > div:nth-of-type(9) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -43px;} /* 함포8,9,10,11, 전투, 달의, 순수, 파도빛 */

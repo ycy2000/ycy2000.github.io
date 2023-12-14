@@ -208,15 +208,23 @@ function navbar_html특수문자_click () {
     타겟element=document.querySelector('#html특수문자_click');
     셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
     셑팅할곳.innerHTML=타겟element.outerHTML;
+    document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
 }
 
 function navbar_임시함수_click () {
-  document.querySelectorAll('#차감input들 button')[0].innerHTML='1';
-alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);
-document.querySelectorAll('#차감input들 button')[0].innerHTML=1;
-alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);
+var 오브젝트={첫번째:'첫번째값', 두번째:'두번쨰값',세번째:'세번째값'}
+for (var i=0; i<3; i++) {	
+  x=x+1;
+	// Key출력	
+ 	key = x; 
+	// Value출력	
+	console.log(오브젝트[x]);
+};
 
 }
+
+
+
 function 덩어리이동5개textarea_모두보기() {
   document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
   document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='inline-block';
@@ -529,8 +537,14 @@ function main사이드_change시(e) {
       if (구역10_서끝.find(element => element==text)) {result="구역10_서끝"};
       if (구역10_서남.find(element => element==text)) {result="구역10_서남"};
     
-      if (result=='') {e.target.parentNode.nextElementSibling.innerHTML=''} else {e.target.parentNode.nextElementSibling.innerHTML=result;};
-  }
+      if (result=='') {
+        e.target.parentNode.nextElementSibling.innerHTML='';
+      } else {
+        e.target.parentNode.nextElementSibling.innerHTML=result;
+        if (e.target.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nodeName=='FORM')
+        e.target.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.children[0]. focus();
+      }
+    }
   }
 }
 function main사이드클릭시_문서연결_버튼플러스일후남은교섭력계산(e) {//교섭력계산기능
@@ -544,8 +558,9 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
     셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
     셑팅할곳.innerHTML=타겟element.outerHTML;
   }
+  document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
   if (e.target.title=='S1_해역사진') {계산_무게()};
-  //교섭력오른쪽의 버튼클릭시 값 +1
+  //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
     e.target.innerHTML=Number(e.target.innerHTML)+1;
     남은교섭력계산()
@@ -693,6 +708,7 @@ function 캔버스클릭시(e) {
     }
 
   }
+  document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
 }
 리스너_main사이드.addEventListener('click',main사이드클릭시_문서연결_버튼플러스일후남은교섭력계산);
 리스너_main사이드.addEventListener('change',main사이드_change시);
