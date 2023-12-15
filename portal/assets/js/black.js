@@ -1,4 +1,5 @@
 if (1==1) {
+  var embed_루트src_탐색기='';
   for (var i=0; i<document.querySelectorAll('input').length; i++) {
     document.querySelectorAll('input')[i].autocomplete="off";
   }
@@ -72,9 +73,8 @@ if (1==1) {
   var 단계3섬='_데이튼_테야말_리스즈_툴루_알나하_샤샤_로즈반_오리샤_티그리스_시르나_리에드_'
   var 단계4섬='_오벤_파딕스_라메다_시오닐_나르보_오르프스_발베쥬_바레미_아지르_푸자라_필바라_';
   var 재료교환섬='_네트넘_에버딘_마르카_인버넨_델링하트_';
-}
+
 //재료보유수 기록 참조하여 부위별 정보의 보유수에 뿌리기
-if (1==1) {
 var 보유수=document.querySelectorAll('#파템재료_일퀘개수 .노랑');
 //보유수[0]심해의 눈물 
 //보유수[1]화려한 진주 결정
@@ -123,39 +123,8 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(13) > button:nth
 document.querySelector('#파템_일반재료2 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=보유수[13].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[9].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[7].innerHTML;
-//보유수[0]심해의 눈물 
-//보유수[1]화려한 진주 결정
-//보유수[2]콕스유물 전투
-//보유수[3]화려한 암염 주괴
-//보유수[4]짙은 파도빛이 감도는 규격 각목
-
-//보유수[5]달의 핏줄이 새겨진 아마포
-//보유수[6]홍조빛 해저 단괴
-//보유수[7]빛나는 코발트주괴
-//보유수[8]달의 비늘이 새겨진 합판
-//보유수[9]콕스유물 상급
-//보유수[10]순수한 진주결정
-//보유수[11]파도빛이 감도는 규격 각목
-//보유수[12]대양의 견고한 현철
-//보유수[13]심해초 줄기
-//보유수[14]순수한 암초조각
-//보유수[15]콕스유물 하급
-//보유수[16]강화된 섬나무 증착합판
 }
 
-if (1==1) {
-var embed_루트src_탐색기='';
-//맨마지막에 넣어야함
-var value있는것들=document.querySelectorAll('button[class~="모으기완료"');
-var value있는것들다음버튼;
-for (var i=0; i<value있는것들.length; i++) {
-  value있는것들다음버튼=value있는것들[i].nextElementSibling;
-  // console.log(value있는것들[i].innerHTML*1 + ' : ' + value있는것들다음버튼.innerHTML*1 + '같거나 뒤에 것이 클때');
-  if (Number(value있는것들다음버튼.innerHTML*1)>=Number(value있는것들[i].innerHTML*1)) {
-    value있는것들다음버튼.style.cssText ="background-color: chocolate";
-  }
-}
-}
 function 계산_무게() {
   var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
   var 일반등무게=document.querySelector('#계산_일반등무게').value;
@@ -212,14 +181,7 @@ function navbar_html특수문자_click () {
 }
 
 function navbar_임시함수_click () {
-var 오브젝트={첫번째:'첫번째값', 두번째:'두번쨰값',세번째:'세번째값'}
-for (var i=0; i<3; i++) {	
-  x=x+1;
-	// Key출력	
- 	key = x; 
-	// Value출력	
-	console.log(오브젝트[x]);
-};
+console.log(document.querySelector('#S1_해역사진').childNodes)
 
 }
 
@@ -338,118 +300,6 @@ function textarea보기숨기기() {
     document.querySelector('#textarea기능버튼').innerHTML='textarea내리기';
   }
 } 
-
-function 해양죄표와섬이름() {
-  const canvas = document.getElementById('myCanvas');
-  const ctx = canvas.getContext("2d");
-  var x=0;
-  ctx.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용
-  ctx.fillStyle = 'yellow';
-  ctx.textAlign = 'center';
-  ctx.strokeStyle='yellow';
-  ctx.lineWidth='1';
-
-  for (var i=1; i<16; i++) {
-    x=x+100;
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, 10);
-    ctx.stroke();
-    if (i==5 || i==10 || i==15) {
-      ctx.fillText(x, x, 20);
-    }
-    ctx.beginPath();
-    ctx.moveTo(0, x);
-    ctx.lineTo(10, x);
-    ctx.stroke();
-    if (i==5 || i==10 || i==15) {
-      ctx.fillText(x, 20, x+3);
-    }
-  }
-  //섬이름
-  ctx.fillText('에프데 룬', 743, 625);
-  ctx.fillText('베이루와', 840, 625);
-  ctx.fillText('파라타마', 790, 580);
-  ctx.fillText('웨이타', 770, 515);
-  ctx.fillText('바레미', 745, 480);
-  ctx.fillText('아지르', 825, 430);
-  ctx.fillText('알나하', 780, 390);
-  ctx.fillText('라시드', 822, 330);
-  ctx.fillText('칸베라', 830, 530);
-  ctx.fillText('아라킬', 850, 555);
-  ctx.fillText('타라무라', 900, 600);
-  ctx.fillText('오스트라', 915, 570);
-  ctx.fillText('델링하트', 990, 580);
-  ctx.fillText('필바라', 1050, 610);
-  ctx.fillText('소코타', 1150, 655);
-  ctx.fillText('리에드', 1225, 610);
-  ctx.fillText('에스파', 1260, 540);
-  ctx.fillText('티그리스', 1240, 510);
-  ctx.fillText('시르나', 1290, 510);
-  ctx.fillText('오리샤', 1260, 370);
-  ctx.fillText('보아', 1260, 432);
-  ctx.fillText('할마드', 1433, 415);
-  ctx.fillText('카슈마', 1460, 380);
-  ctx.fillText('푸자라', 1057, 480);
-  ctx.fillText('샤샤', 1062, 335);
-  ctx.fillText('로즈반', 1130, 325);
-  ctx.fillText('포르타넨', 1100, 260);
-  ctx.fillText('틴베라', 1000, 180);
-  ctx.fillText('레라오', 1070, 180);
-
-  ctx.fillText('타슈', 580, 290);
-  ctx.fillText('툴루', 625, 425);
-  ctx.fillText('오르프스', 665, 425);
-  ctx.fillText('발베쥬', 615, 500);
-  ctx.fillText('마를레느', 660, 500);
-  ctx.fillText('에베토', 640, 560);
-  ctx.fillText('두흐', 612, 575);
-  ctx.fillText('루비아노', 680, 605);
-  ctx.fillText('마리베노', 700, 550);
-  ctx.fillText('앙쥬', 570, 540);
-  ctx.fillText('인버넨', 580, 460);
-  ctx.fillText('마르카', 505, 530);
-  ctx.fillText('나르보', 500, 470);
-  ctx.fillText('루루브', 465, 545);
-  ctx.fillText('리스즈', 440, 505);
-  ctx.fillText('스타렌', 422, 580);
-  ctx.fillText('알브레서', 332, 620);
-  ctx.fillText('바라테르', 335, 650);
-  ctx.fillText('란디스', 230, 680);
-  ctx.fillText('세르카', 230, 705);
-  ctx.fillText('던데', 255, 610);
-  ctx.fillText('에버딘', 290, 600);
-  ctx.fillText('네트넘', 210, 590);
-  ctx.fillText('오벤', 250, 550);
-  ctx.fillText('데이튼', 175, 550);
-  ctx.fillText('진버레이', 180, 650);
-  ctx.fillText('테야말', 73, 750);
-  ctx.fillText('라메다', 95, 650);
-  ctx.fillText('시오닐', 117, 710);
-  ctx.fillText('모드릭', 150, 715);
-  ctx.fillText('바에자', 190, 730);
-  ctx.fillText('테스테', 194, 440);
-  ctx.fillText('파딕스', 300, 394);
-  ctx.fillText('알마이', 230, 390);
-  ctx.fillText('쿠이트제도', 300, 337);
-  ctx.fillText('아리타', 430, 400);
-  ctx.fillText('', 840, 600);
-
-
-
-
-}
-//임시실행
-if (1=="임시") {
-  document.querySelector('#선택문서셑팅하는곳').innerHTML+=document.querySelector('#S1_해역사진').outerHTML;
-  document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
-  document.querySelector('#선택문서셑팅하는곳').classList.remove('d-none');
-  document.querySelector('#main사이드').classList.add('d-none');
-  해양죄표와섬이름()
-}
-
-
-
 function canvas검색실행() {
   //처음에 input value가 있다가 마지막에 사라짐?
   var 검색할문자=document.querySelector('#canvas검색').value;
@@ -542,7 +392,7 @@ function main사이드_change시(e) {
       } else {
         e.target.parentNode.nextElementSibling.innerHTML=result;
         if (e.target.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nodeName=='FORM')
-        e.target.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.children[0]. focus();
+        e.target.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.children[0].focus();
       }
     }
   }
