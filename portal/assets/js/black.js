@@ -124,62 +124,6 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(14) > button:nth
 document.querySelector('#파템_일반재료2 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[9].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[7].innerHTML;
 }
-
-function 계산_무게() {
-  var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
-  var 일반등무게=document.querySelector('#계산_일반등무게').value;
-  document.querySelector('#계산2_일반등무게').value=일반등무게;
-  if (isNaN(배와장비무게)) {alert('배와장비무게가 숫자가 아님'); return;}; //숫자가 아니면
-  if (isNaN(일반등무게)) {alert('일반등무게가 숫자가 아님'); return;}; //숫자가 아니면
-  var 여유무게=배와장비무게-일반등무게;
-  document.querySelector('#계산_여유무게').value=여유무게;
-  document.querySelector('#계산_800').value=(여유무게/800).toFixed(1);
-  document.querySelector('#계산_900').value=(여유무게/900).toFixed(1);
-  document.querySelector('#계산_천').value=(여유무게/1000).toFixed(1);
-
-  var 최대적재=배와장비무게*1.7;
-  document.querySelector('#계산2_최대적재').value=최대적재;
-  여유무게=최대적재-일반등무게;
-  document.querySelector('#계산2_여유무게').value=여유무게;
-  document.querySelector('#계산2_800').value=(여유무게/800).toFixed(1);
-  document.querySelector('#계산2_900').value=(여유무게/900).toFixed(1);
-  document.querySelector('#계산2_천').value=(여유무게/1000).toFixed(1);
-
-}
-계산_무게()
-function canvas초기화() {
-  var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
-  셑팅_캔버스바디.innerHTML='';
-  for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
-    document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
-  }
-  셑팅_캔버스바디.innerHTML=document.querySelector('#유의사항').outerHTML;
-  document.querySelector('[title=유의사항]').classList.add('현재카테고리');
-}
-canvas초기화()
-function navbar_main사이드숨기기_click () {
-  var 타겟=document.querySelector('#navbar_main사이드숨기기');
-  if (타겟.innerHTML=='main사이드숨기기') {
-    document.querySelector('#main사이드').classList.add('d-none')
-    타겟.innerHTML='main사이드보기'
-  } else  {
-    document.querySelector('#main사이드').classList.remove('d-none')
-    타겟.innerHTML='main사이드숨기기'
-  }  
-}
-function navbar_우측닫기_click () {
-  document.querySelector('#main사이드우측의_코딩결과div').classList.add('d-none');
-}
-function navbar_html특수문자_click () {
-  var 타겟element;
-  var 셑팅할곳;
-  //파일셑팅
-    타겟element=document.querySelector('#html특수문자_click');
-    셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
-    셑팅할곳.innerHTML=타겟element.outerHTML;
-    document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
-}
-
 function navbar_임시함수_click () {
   var 순번; 카운팅=-1;
   var target=document.querySelectorAll('#연습_타겟순번확인 span')[3];
@@ -196,102 +140,71 @@ function navbar_임시함수_click () {
 
 }
 
-function 물품단계클릭시() {
-  if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
-    document.querySelector('#해역_물품단계').classList.remove('d-none');  
-    document.querySelector('#모은재료none상태').classList.add('d-none');
-    document.querySelector('#마고리아12별').classList.add('d-none'); 
-  } else {
-    document.querySelector('#해역_물품단계').classList.add('d-none'); 
-  }
-}
-function 모은재료클릭시() {
-  if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
-    document.querySelector('#해역_물품단계').classList.add('d-none');  
-    document.querySelector('#모은재료none상태').classList.remove('d-none'); 
-    document.querySelector('#마고리아12별').classList.add('d-none'); 
-  } else {
-    document.querySelector('#모은재료none상태').classList.add('d-none');
-  }
-}
-function 마고리아클릭시() {
-  if (document.querySelector('#마고리아12별').classList.contains('d-none')) {
-    document.querySelector('#마고리아12별').classList.remove('d-none'); 
-  } else {
-    document.querySelector('#마고리아12별').classList.add('d-none');
-  }
-}
-function 계산_나의무게계산() {
-  var 일단등무게=document.querySelector('#계산3_1단등무게').value;
-  var 계산3_800개수=document.querySelector('#계산3_800').value;
-  var 계산3_900개수=document.querySelector('#계산3_900').value;
-  var 계산3_천개수=document.querySelector('#계산3_천').value;
-  if (일단등무게=='') {일단등무게=0;}
-  if (계산3_800개수=='') {계산3_800개수=0;}
-  if (계산3_900개수=='') {계산3_900개수=0;}
-  if (계산3_천개수=='') {계산3_천개수=0;}
-  if (isNaN(일단등무게)) {alert('일단등무게가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-  if (isNaN(계산3_800개수)) {alert('계산3_800개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-  if (isNaN(계산3_900개수)) {alert('계산3_900개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-  if (isNaN(계산3_천개수)) {alert('계산3_천개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-  document.querySelector('#계산3_합산무게').value=Number(일단등무게) + Number((계산3_800개수*800)) + Number((계산3_900개수*900)) + Number((계산3_천개수*1000));
-
-}
-function 차감교섭력clear() {
-  document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;
-  for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
-    document.querySelectorAll('#차감input들 input')[i].value='';
-    document.querySelectorAll('#차감input들 button')[i].innerHTML=1;
-  }
-}
-function 남은교섭력계산() {
-  if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
-  if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
-  var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
-  var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
-
-  var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
-  var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
-
-  var 차감할교섭력=0;
-  var 곱할값=0;
-
-  for (var i=0; i<차감할1회교섭력_12개.length; i++) {
-    if (isNaN(차감할1회교섭력_12개[i].value*1)) {
-      곱할값=0;
-    } else {
-      곱할값=차감할1회교섭력_12개[i].value*1;
-    }
-
-    차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
-  }
-
-  남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
-}
 
 
 
-function canvas검색실행() {
-  //처음에 input value가 있다가 마지막에 사라짐?
-  var 검색할문자=document.querySelector('#canvas검색').value;
-  if (document.querySelector('#canvas검색').value=='') {return;}
-  var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');
-  var 내부html='';
-  for (var i=0; i<검색할버튼클래스들.length; i++) {
-    if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
-      내부html+=검색할버튼클래스들[i].outerHTML;
-    }
-  }
-  if (내부html=='') {alert('없음');return;}
-  document.querySelector('#캔버스바디').innerHTML=내부html;
-  document.querySelector('#canvas검색').value=검색할문자;
-}
+var 리스너_header=document.querySelector('#head_button_group');
 var 리스너_main사이드=document.querySelector('#메인사이드와우측을함께담은div');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
+function header_click시 (e) {
+  //캔버스여는 버튼, 초기화
+  if (e.target.id=='header_canvas_click') {
+    var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
+    셑팅_캔버스바디.innerHTML='';
+    for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+      document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+    }
+    셑팅_캔버스바디.innerHTML=document.querySelector('#유의사항').outerHTML;
+    document.querySelector('[title=유의사항]').classList.add('현재카테고리');
+  }
+  if (e.target.id=='navbar_main사이드숨기기') {
+      var 타겟=document.querySelector('#navbar_main사이드숨기기');
+      if (타겟.innerHTML=='main사이드숨기기') {
+        document.querySelector('#main사이드').classList.add('d-none')
+        타겟.innerHTML='main사이드보기'
+      } else  {
+        document.querySelector('#main사이드').classList.remove('d-none')
+        타겟.innerHTML='main사이드숨기기'
+      }  
+  }
+  if (e.target.id=='navbar_우측닫기_click') {
+    document.querySelector('#main사이드우측의_코딩결과div').classList.add('d-none');
+  }
+  if (e.target.id=='navbar_html특수문자_click') {
+    var 타겟element;
+    var 셑팅할곳;
+    //파일셑팅
+      타겟element=document.querySelector('#html특수문자_click');
+      셑팅할곳=document.querySelector('#메인사이드와우측을함께담은div > #main사이드우측의_코딩결과div');
+      셑팅할곳.innerHTML=타겟element.outerHTML;
+      document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
+  }
+}
 function main사이드_dblclick시(e) {
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
     e.target.nextElementSibling.innerHTML=1;
-    남은교섭력계산()
+    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
+    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
+    var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
+    var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
+  
+    var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
+    var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
+  
+    var 차감할교섭력=0;
+    var 곱할값=0;
+  
+    for (var i=0; i<차감할1회교섭력_12개.length; i++) {
+      if (isNaN(차감할1회교섭력_12개[i].value*1)) {
+        곱할값=0;
+      } else {
+        곱할값=차감할1회교섭력_12개[i].value*1;
+      }
+  
+      차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
+    }
+  
+    남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   }
 }
 function main사이드_change시(e) {
@@ -300,7 +213,28 @@ function main사이드_change시(e) {
   var result='';
   //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') {
-    남은교섭력계산()
+    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
+    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
+    var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
+    var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
+  
+    var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
+    var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
+  
+    var 차감할교섭력=0;
+    var 곱할값=0;
+  
+    for (var i=0; i<차감할1회교섭력_12개.length; i++) {
+      if (isNaN(차감할1회교섭력_12개[i].value*1)) {
+        곱할값=0;
+      } else {
+        곱할값=차감할1회교섭력_12개[i].value*1;
+      }
+  
+      차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
+    }
+  
+    남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   }
   //섬이름검색
   if (1==1) {
@@ -392,6 +326,37 @@ function main사이드_change시(e) {
       document.querySelectorAll('#차감input들 input')[2].focus()
     }
   }// 끝 : 교섭력 기록후 포커스 이동
+  //id=나의무게  자식요소 input change
+  if (e.target.parentNode.id=='나의무게' && e.target.nodeName=='INPUT') {
+    var 일단등무게=document.querySelector('#계산3_1단등무게').value;
+    var 계산3_800개수=document.querySelector('#계산3_800').value;
+    var 계산3_900개수=document.querySelector('#계산3_900').value;
+    var 계산3_천개수=document.querySelector('#계산3_천').value;
+    if (일단등무게=='') {일단등무게=0;}
+    if (계산3_800개수=='') {계산3_800개수=0;}
+    if (계산3_900개수=='') {계산3_900개수=0;}
+    if (계산3_천개수=='') {계산3_천개수=0;}
+    if (isNaN(일단등무게)) {alert('일단등무게가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
+    if (isNaN(계산3_800개수)) {alert('계산3_800개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
+    if (isNaN(계산3_900개수)) {alert('계산3_900개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
+    if (isNaN(계산3_천개수)) {alert('계산3_천개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
+    document.querySelector('#계산3_합산무게').value=Number(일단등무게) + Number((계산3_800개수*800)) + Number((계산3_900개수*900)) + Number((계산3_천개수*1000));
+    
+    e.target.classList.add('표시');
+    플러스일=-1; //버튼두개는 none, 3,4,5,6,7번째, 계산3_1단등무게,계산3_합산무게,계산3_800,계산3_900,계산3_천
+    for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
+      플러스일+=1;
+      if (document.querySelectorAll('#나의무게 input')[i].classList.contains('표시')) {표시순번=플러스일; e.target.classList.remove('표시');}
+    }
+    if (표시순번==2) {document.querySelectorAll('#나의무게 input')[4].focus();}
+    if (표시순번==4) {document.querySelectorAll('#나의무게 input')[5].focus();}
+    if (표시순번==5) {document.querySelectorAll('#나의무게 input')[6].focus();}   
+  }
+  //id=계산_배와장비무게,id=계산_일반등무게
+  if (e.target.id=='계산_배와장비무게' || e.target.id=='계산_일반등무게') {  
+
+  }
+
 }
 function main사이드클릭시_문서연결_버튼플러스일후남은교섭력계산(e) {//교섭력계산기능
   //class="파일연결" title="S1_해상일퀘동선" 타이틀을 아이디로 가진 div가 id=숨김_main사이드와header관련 안에 있다
@@ -405,7 +370,27 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
     셑팅할곳.innerHTML=타겟element.outerHTML;
   }
   document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
-  if (e.target.title=='S1_해역사진') {계산_무게()};
+  //S1_해역사진 경우 계산_무게
+  if (e.target.title=='S1_해역사진') {
+    var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
+    var 일반등무게=document.querySelector('#계산_일반등무게').value;
+    document.querySelector('#계산2_일반등무게').value=일반등무게;
+    if (isNaN(배와장비무게)) {alert('배와장비무게가 숫자가 아님'); return;}; //숫자가 아니면
+    if (isNaN(일반등무게)) {alert('일반등무게가 숫자가 아님'); return;}; //숫자가 아니면
+    var 여유무게=배와장비무게-일반등무게;
+    document.querySelector('#계산_여유무게').value=여유무게;
+    document.querySelector('#계산_800').value=(여유무게/800).toFixed(1);
+    document.querySelector('#계산_900').value=(여유무게/900).toFixed(1);
+    document.querySelector('#계산_천').value=(여유무게/1000).toFixed(1);
+  
+    var 최대적재=배와장비무게*1.7;
+    document.querySelector('#계산2_최대적재').value=최대적재;
+    여유무게=최대적재-일반등무게;
+    document.querySelector('#계산2_여유무게').value=여유무게;
+    document.querySelector('#계산2_800').value=(여유무게/800).toFixed(1);
+    document.querySelector('#계산2_900').value=(여유무게/900).toFixed(1);
+    document.querySelector('#계산2_천').value=(여유무게/1000).toFixed(1);
+  }
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
     e.target.innerHTML=Number(e.target.innerHTML)+1;
@@ -421,6 +406,8 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
       } else {
         document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '242px');
         document.querySelector('#textarea보기숨기기').innerHTML='textarea내리기';
+        document.querySelector('#S1_일리야창고').style.visibility='hidden';
+        document.querySelector('#S1_에페리아창고').style.visibility='hidden';
       }
     } else if (e.target.id=='textarea덩어리_기본보기') {
       document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
@@ -453,7 +440,7 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
   }
   //S1_해역사진 아래 숨겨진 S1_일리야에페리아창고 사진 두장 보기 숨기기
   if (e.target.id=='S1_일리야에페리아창고') {
-    if (document.querySelector('#S1_일리야창고').style.visibility='hidden') {
+    if (document.querySelector('#S1_일리야창고').style.visibility=='hidden') {
       document.querySelector('#S1_일리야창고').style.visibility='visible';
       document.querySelector('#S1_에페리아창고').style.visibility='visible';
     } else {
@@ -461,10 +448,62 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
       document.querySelector('#S1_에페리아창고').style.visibility='hidden';
     }
   }
-
+  //차감할교섭력_clear
+  if (e.target.id=='차감할교섭력_clear') {
+    document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;
+    for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
+      document.querySelectorAll('#차감input들 input')[i].value='';
+      document.querySelectorAll('#차감input들 button')[i].innerHTML=1;
+    }
+  }
+  //id=나의무게_clear
+  if (e.target.id=='나의무게_clear') {
+    for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
+      document.querySelectorAll('#나의무게 input')[i].value='';
+    }    
+  }
+  //id=나의무게_clear
+  if (e.target.id=='물품단계클릭시') {
+    if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
+      document.querySelector('#해역_물품단계').classList.remove('d-none');  
+      document.querySelector('#모은재료none상태').classList.add('d-none');
+      document.querySelector('#마고리아12별').classList.add('d-none'); 
+    } else {
+      document.querySelector('#해역_물품단계').classList.add('d-none'); 
+    }
+  }
+  if (e.target.id=='마고리아클릭시') {
+    if (document.querySelector('#마고리아12별').classList.contains('d-none')) {
+      document.querySelector('#마고리아12별').classList.remove('d-none'); 
+    } else {
+      document.querySelector('#마고리아12별').classList.add('d-none');
+    }
+  }
+  if (e.target.id=='모은재료클릭시') {
+    if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
+      document.querySelector('#해역_물품단계').classList.add('d-none');  
+      document.querySelector('#모은재료none상태').classList.remove('d-none'); 
+      document.querySelector('#마고리아12별').classList.add('d-none'); 
+    } else {
+      document.querySelector('#모은재료none상태').classList.add('d-none');
+    }
+  }
 }
 function 캔버스_검색value_change시(e) {
   //#canvas검색 input value가 change됐을때 검색실행,  
+    //처음에 input value가 있다가 마지막에 사라짐?
+    var 검색할문자=document.querySelector('#canvas검색').value;
+    if (document.querySelector('#canvas검색').value=='') {return;}
+    var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');
+    var 내부html='';
+    for (var i=0; i<검색할버튼클래스들.length; i++) {
+      if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
+        내부html+=검색할버튼클래스들[i].outerHTML;
+      }
+    }
+    if (내부html=='') {alert('없음');return;}
+    document.querySelector('#캔버스바디').innerHTML=내부html;
+    document.querySelector('#canvas검색').value=검색할문자;
 }
 function 캔버스클릭시(e) {
   //카테고리실행 class, canvastext파일 class, canvas_div class 일때
@@ -514,7 +553,15 @@ function 캔버스클릭시(e) {
   //id="캔버스바디_초기화", id="캔버스바디_모든text파일", id="캔버스바디_모든카테고리", id="canvas검색_clear", 
   //id="캔버스바디_카테고리숨김", id="캔버스바디_카테고리숨김해제"
   if (1==1) {
-    if (e.target.id=='캔버스바디_초기화') {canvas초기화()}
+    if (e.target.id=='캔버스바디_초기화') {
+      var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
+      셑팅_캔버스바디.innerHTML='';
+      for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+        document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+      }
+      셑팅_캔버스바디.innerHTML=document.querySelector('#유의사항').outerHTML;
+      document.querySelector('[title=유의사항]').classList.add('현재카테고리');
+    }
     if (e.target.id=='캔버스바디_모든text파일') {
       //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
       //34개이상일때 나누기2 왼쪽오른쪽
@@ -607,6 +654,7 @@ function 캔버스클릭시(e) {
   }
   document.querySelector('#main사이드우측의_코딩결과div').classList.remove('d-none');
 }
+리스너_header.addEventListener('click',header_click시);
 리스너_main사이드.addEventListener('click',main사이드클릭시_문서연결_버튼플러스일후남은교섭력계산);
 리스너_main사이드.addEventListener('change',main사이드_change시);
 리스너_main사이드.addEventListener('dblclick',main사이드_dblclick시);

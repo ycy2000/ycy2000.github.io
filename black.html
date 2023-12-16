@@ -37,11 +37,11 @@
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
-        <button id="navbar_main사이드숨기기" type="button" onclick="navbar_main사이드숨기기_click ()">main사이드숨기기</button>
-        <button onclick="navbar_우측닫기_click ()">우측닫기</button>
-        <button onclick="navbar_html특수문자_click ()">html 특수문자</button>
+        <button id="navbar_main사이드숨기기" type="button">main사이드숨기기</button>
+        <button id="navbar_우측닫기_click">우측닫기</button>
+        <button id="navbar_html특수문자_click">html 특수문자</button>
         <!-- #offcanvasBottom 클릭하면 나오는 id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
+        <button id="header_canvas_click" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <button onclick="navbar_임시함수_click ()">임시함수</button>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -309,7 +309,7 @@
     <div><!-- position:fixed 등-->
       <div id="교섭력계산" class="d-inline-block"><!-- width등-->
         <div id="남은_차감후_교섭력" class="d-inline-block""><!-- width등-->
-          <h6 title="오른쪽은 소비할 정보. 그 오른쪽은 물품이름 적으면 우측에 조회결과가 나온다.">▢ <b class="a_형식" onclick="차감교섭력clear()">남은 교섭력</b></h6>
+          <h6 id="차감할교섭력_clear" title="오른쪽은 소비할 정보. 그 오른쪽은 물품이름 적으면 우측에 조회결과가 나온다.">▢ <b class="a_형식">남은 교섭력</b></h6>
           <input type = "text" maxlength = "10"><!-- width등-->
           <h6>▢ <b>차감후 교섭</b></h6>
           <input type = "text" maxlength = "10" value=0><!-- width등-->
@@ -323,17 +323,17 @@
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div onclick="물품단계클릭시()">물품단계</div><!-- width등-->
+          <div id="물품단계클릭시">물품단계</div><!-- width등-->
           <br>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div onclick="마고리아클릭시()">마고리아</div><!-- width등-->
+          <div id="마고리아클릭시">마고리아</div><!-- width등-->
           <br>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div onclick="모은재료클릭시()">모은재료</div><!-- width등-->
+          <div id="모은재료클릭시">모은재료</div><!-- width등-->
         </div>
       </div>
       <div id="무게계산" class="d-inline-block"><!-- width등-->
@@ -380,20 +380,16 @@
           <input class="d-none" type = "text" maxlength = "10">
           <input class="d-none" type = "text" maxlength = "10">
           <span>, </span><!--span에 margin-left:8px-->
-          <input onchange="계산_나의무게계산()" id="계산3_1단등무게" type = "text" maxlength = "10">
+          <input id="계산3_1단등무게" type = "text" maxlength = "10">
           <span>, </span>
           <input id="계산3_합산무게" type = "text" maxlength = "10">
           <span>: </span>
-          <input onchange="계산_나의무게계산()" id="계산3_800" type = "text" maxlength = "10">
+          <input id="계산3_800" type = "text" maxlength = "10">
           <span>, </span>
-          <input onchange="계산_나의무게계산()" id="계산3_900" type = "text" maxlength = "10">
+          <input  id="계산3_900" type = "text" maxlength = "10">
           <span>, </span>
-          <input onchange="계산_나의무게계산()" id="계산3_천" type = "text" maxlength = "10">
-          <button onclick="
-          for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
-            document.querySelectorAll('#나의무게 input')[i].value='';
-          }     
-          ">clear</button>
+          <input  id="계산3_천" type = "text" maxlength = "10">
+          <button id="나의무게_clear">clear</button>
         </h6>
       </div>
 
@@ -527,9 +523,9 @@
                     </textarea>
 
         </div>
+        <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
         <img id="S1_일리야창고" style="position: absolute;left:670px;visibility:hidden;" src="portal/images/black_문서/S1_창고_일리야.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
         <img id="S1_에페리아창고" style="position: absolute;left:510px;visibility:hidden;" src="portal/images/black_문서/S1_창고_에페리아.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
-        <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
