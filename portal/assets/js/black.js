@@ -181,33 +181,21 @@ function navbar_html특수문자_click () {
 }
 
 function navbar_임시함수_click () {
-console.log(document.querySelector('#S1_해역사진').childNodes)
+  var 순번; 카운팅=-1;
+  var target=document.querySelectorAll('#연습_타겟순번확인 span')[3];
+  target.classList.add('표시');
+
+  for (var i=0; i<target.parentNode.children.length; i++) {
+    console.log(target.parentNode.children[i].classList)
+    카운팅=카운팅+1;
+    if (target.parentNode.children[i].classList.contains('표시')) {
+      순번=카운팅;
+      target.parentNode.children[i].remove('표시');
+    }
+  }
 
 }
 
-
-
-function 덩어리이동5개textarea_모두보기() {
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='inline-block';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='inline-block';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='inline-block';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
-}
-function 덩어리이동5개textarea_두개숨기기() {
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='none';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='none';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='inline-block';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='inline-block';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
-}
-function 덩어리이동5개textarea_네개숨기기() {
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='none';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='none';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='none';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='none';
-  document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
-}
 function 물품단계클릭시() {
   if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
     document.querySelector('#해역_물품단계').classList.remove('d-none');  
@@ -281,25 +269,8 @@ function 남은교섭력계산() {
   남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
 }
 
-function 섬검색초기화() {
-  for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
-    document.querySelectorAll('#리스너용섬이름검색 input')[i].value='';
-  }
-  for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 div').length; i++) {
-    document.querySelectorAll('#리스너용섬이름검색 div')[i].innerHTML='';
-  }
 
-} 
-function textarea보기숨기기() {
-  //상단시작지점 top:212px; 그림아래top:1026px;*/
-  if (document.querySelector('#textarea기능버튼').innerHTML=='textarea내리기') {
-    document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '1026px');
-    document.querySelector('#textarea기능버튼').innerHTML='textarea올리기';
-  } else {
-    document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '242px');
-    document.querySelector('#textarea기능버튼').innerHTML='textarea내리기';
-  }
-} 
+
 function canvas검색실행() {
   //처음에 input value가 있다가 마지막에 사라짐?
   var 검색할문자=document.querySelector('#canvas검색').value;
@@ -315,7 +286,6 @@ function canvas검색실행() {
   document.querySelector('#캔버스바디').innerHTML=내부html;
   document.querySelector('#canvas검색').value=검색할문자;
 }
-
 var 리스너_main사이드=document.querySelector('#메인사이드와우측을함께담은div');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
 function main사이드_dblclick시(e) {
@@ -325,6 +295,9 @@ function main사이드_dblclick시(e) {
   }
 }
 function main사이드_change시(e) {
+  console.log('main사이드_change시(e)');
+  var text=e.target.value;
+  var result='';
   //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') {
     남은교섭력계산()
@@ -333,8 +306,8 @@ function main사이드_change시(e) {
   if (1==1) {
     if (e.target.parentNode.parentNode.id=='리스너용섬이름검색' && e.target.nodeName=='INPUT' && e.target.parentNode.nextElementSibling.nodeName=='DIV') {
       e.target.parentNode.nextElementSibling.innerHTML='';
-      var text=e.target.value;
-      var result='';
+      // var text=e.target.value;
+      // var result='';
       if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
       if (구역01_남남동끝.find(element => element==text)) {result="구역01_남남동끝"};
       if (구역01_남.find(element => element==text)) {result="구역01_남"};
@@ -396,6 +369,29 @@ function main사이드_change시(e) {
       }
     }
   }
+  //교섭력 기록후 포커스 이동, id="차감input들" 안의 input 12개
+  if (e.target.parentNode.id=='차감input들' && e.target.nodeName=='INPUT') {
+    e.target.classList.add('표시');
+    var 표시순번;
+    var 플러스일=-1;
+    for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
+      플러스일+=1;
+      if (document.querySelectorAll('#차감input들 input')[i].classList.contains('표시')) {표시순번=플러스일; e.target.classList.remove('표시');}
+    }
+    // console.log('document.querySelectorAll#차감input들 input).length : ' + document.querySelectorAll('#차감input들 input').length);
+    // console.log('플러스일 : ' + 플러스일);
+    // console.log('표시순번 : ' + 표시순번);
+    if (표시순번==11) {
+      document.querySelectorAll('#차감input들 input')[0].focus()
+    } else if (표시순번<9){
+      document.querySelectorAll('#차감input들 input')[표시순번+3].focus()
+    } else if (표시순번==9){
+      document.querySelectorAll('#차감input들 input')[1].focus()
+    }
+    else if (표시순번==10){
+      document.querySelectorAll('#차감input들 input')[2].focus()
+    }
+  }// 끝 : 교섭력 기록후 포커스 이동
 }
 function main사이드클릭시_문서연결_버튼플러스일후남은교섭력계산(e) {//교섭력계산기능
   //class="파일연결" title="S1_해상일퀘동선" 타이틀을 아이디로 가진 div가 id=숨김_main사이드와header관련 안에 있다
@@ -415,6 +411,57 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
     e.target.innerHTML=Number(e.target.innerHTML)+1;
     남은교섭력계산()
   }
+  //textarea보기숨기기 : 보기숨기기
+  if (1==1) {
+    if (e.target.id=='textarea보기숨기기') {
+      //상단시작지점 top:212px; 그림아래top:1026px;*/
+      if (document.querySelector('#textarea보기숨기기').innerHTML=='textarea내리기') {
+        document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '1026px');
+        document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
+      } else {
+        document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '242px');
+        document.querySelector('#textarea보기숨기기').innerHTML='textarea내리기';
+      }
+    } else if (e.target.id=='textarea덩어리_기본보기') {
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='inline-block';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='inline-block';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='inline-block';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='inline-block';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
+    } else if (e.target.id=='textarea덩어리_3번째부터보기') {
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='none';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='none';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='inline-block';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='inline-block';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
+    } else if (e.target.id=='textarea덩어리_5번째보기') {
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[0].style.display='none';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[1].style.display='none';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[2].style.display='none';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[3].style.display='none';
+      document.querySelectorAll('#덩어리이동5개textarea textarea')[4].style.display='inline-block';
+    }
+  }
+  //섬검색초기화 클릭시
+  if (e.target.id=='섬검색초기화') {
+    for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
+      document.querySelectorAll('#리스너용섬이름검색 input')[i].value='';
+    }
+    for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 div').length; i++) {
+      document.querySelectorAll('#리스너용섬이름검색 div')[i].innerHTML='';
+    }
+  }
+  //S1_해역사진 아래 숨겨진 S1_일리야에페리아창고 사진 두장 보기 숨기기
+  if (e.target.id=='S1_일리야에페리아창고') {
+    if (document.querySelector('#S1_일리야창고').style.visibility='hidden') {
+      document.querySelector('#S1_일리야창고').style.visibility='visible';
+      document.querySelector('#S1_에페리아창고').style.visibility='visible';
+    } else {
+      document.querySelector('#S1_일리야창고').style.visibility='hidden';
+      document.querySelector('#S1_에페리아창고').style.visibility='hidden';
+    }
+  }
+
 }
 function 캔버스_검색value_change시(e) {
   //#canvas검색 input value가 change됐을때 검색실행,  

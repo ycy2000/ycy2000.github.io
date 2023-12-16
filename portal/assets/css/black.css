@@ -184,6 +184,8 @@
 #파템재료_일퀘개수 button[title] {background-color: chartreuse;}
 #리스너용섬이름검색 form {display:inline-block;}
 #교섭력계산 > #차감input들 > div {display:inline-block;}
+#모은재료_파템재료 > div > div > button:nth-of-type(6){background-color:chocolate;} /* 용맹 개수 기록 부분 */
+
 
 #캔버스바디 {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .canvas카테고리 > div {width:620px;display:inline-block;}/* 항상 세로 세줄로 보고 싶다 */
