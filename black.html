@@ -104,7 +104,7 @@
   </div>
   <div id="S0_일퀘출석체크" style="border:1px solid black;">
     <button onclick="document.querySelector('#main사이드우측의_코딩결과div').innerHTML='';">닫기</button><br>
-    <embed id="embed부분" src="portal/images/black_문서/S0_일퀘출석체크.txt" width=1000px height=870px>
+    <embed id="embed부분" src="portal/images/black_문서/S0_01_일퀘출석체크.txt" width=1000px height=870px>
   </div>
   <div id="S0_물교메모" style="border:1px solid black;">
     <button onclick="document.querySelector('#main사이드우측의_코딩결과div').innerHTML='';">닫기</button><br>
@@ -303,13 +303,17 @@
     <h6>▢ 구축함(노템), 구축함(녹템10강), 구축함(★파템10강★), 중범선_용맹(노템),중범선_용맹(녹템10강),중범선_용맹(★파템10강★) </h6>
     <h6>▢ 구축함과 무역선 비교 (중범선 점진, 비상 비교)</h6>
     <img src="portal/images/black_문서/S1_증축전후비교.png" alt="이미지없음">
+    <h6>▢ S1_무역선파템.png, S1_중범선노템.pn, S1_중범선녹템.png, 일퀘 36일째에 제작, 각목류 모잘랐음 (괄호는 선원, 나의장비, 나의레벨 능력치)</h6>
+    <img src="portal/images/black_문서/S1_무역선파템.png" alt="이미지없음">
+    <img src="portal/images/black_문서/S1_중범선점진노템.png" alt="이미지없음"><br>
+    <img src="portal/images/black_문서/S1_중범선점진녹템.png" alt="이미지없음">
     <br><br><br><br><br><br><br>
   </div>
   <div id="S1_해역사진">
     <div><!-- position:fixed 등-->
       <div id="교섭력계산" class="d-inline-block"><!-- width등-->
         <div id="남은_차감후_교섭력" class="d-inline-block""><!-- width등-->
-          <h6 id="차감할교섭력_clear" title="오른쪽은 소비할 정보. 그 오른쪽은 물품이름 적으면 우측에 조회결과가 나온다.">▢ <b class="a_형식">남은 교섭력</b></h6>
+          <h6 id="차감할교섭력_clear" title="오른쪽은 소비할 정보. 그 오른쪽은 물품이름 적으면 우측에 조회결과가 나온다." class="a_형식">남은 교섭력</h6>
           <input type = "text" maxlength = "10"><!-- width등-->
           <h6>▢ <b>차감후 교섭</b></h6>
           <input type = "text" maxlength = "10" value=0><!-- width등-->
@@ -347,11 +351,11 @@
           <h6>4,5단(천)</h6><!-- text-indent 등-->
         </div>
         <h6 class="무게input들">▢ <span>배+장비무게</span>
-          <input onchange="계산_무게()" id="계산_배와장비무게" type = "text" maxlength = "10" value="14300">
+          <input id="계산_배와장비무게" type = "text" maxlength = "10" value="20900">
           <span style="background-color: aqua;" title="구축함:">, 최대적재</span>
           <input id="계산_최대적재" type = "text" maxlength = "10" value="빈칸">
           <span>, </span>
-          <input onchange="계산_무게()" id="계산_일반등무게" type = "text" maxlength = "10" value="609">
+          <input id="계산_일반등무게" type = "text" maxlength = "10" value="2409">
           <span>, </span>
           <input id="계산_여유무게" type = "text" maxlength = "10">
           <span>: </span>
@@ -359,7 +363,7 @@
           <span>, </span>
           <input id="계산_900" type = "text" maxlength = "10">
           <span>, </span>
-          <input id="계산_천" type = "text" maxlength = "10">
+          <input id="계산_천" type = "text" maxlength = "10"><span>, 점진녹템10강:20900,순수200*9 + 자신300*2 = 2400 + 장비9 </span>
         </h6>
         <h6 class="무게input들">▢ <span>배+장비무게</span>
           <input id="계산2_배와장비무게" type = "text" maxlength = "10" value="빈칸">
@@ -539,7 +543,7 @@
             <div><button title="짙은 파도빛 각목"></button><button class="노랑"></button><button>144</button><button>144</button><button>144</button><button>170</button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
             <div><button title="달의 핏줄 아마포"></button><button class="노랑"></button><button>180</button><button>180</button><button>210</button><button>180</button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
 
-            <div><button>함포(무게!!,데미지)</button><button class="노랑">보유</button><button>점진</button><button>균형</button><button>비상</button><button>용맹</button></div><!-- 심해의 눈물 1-->
+            <div><button style="background-color: blueviolet;color:yellow;">함포(무게!!,데미지)</button><button class="노랑">보유</button><button>점진</button><button>균형</button><button>비상</button><button>용맹</button></div><!-- 심해의 눈물 1-->
             <div><button title="[병사퀘] 제 몸 하나는 스스로 지켜야 3개 get, 물교할때 1개씩."    ></button><button class="노랑"></button><button>60</button><button>60</button><button>125</button><button>125</button></div><!-- 심해의 눈물 1-->
             <div><button title="[라비켈] '어린' 칸디둠 처치. 물교할때 10개씩."></button><button class="노랑"></button><button>200</button><button>200</button><button>300</button><button>300</button></div><!-- 화려한 진주 결정-->
             <div><button title="[일리야 물교퀘] 8개"  ></button><button class="노랑"></button><button>180</button><button>180</button><button>180</button><button>180</button></div><!-- 화려한 암염 주괴-->
@@ -620,24 +624,24 @@
           </div>
           <div id="파템재료_일퀘개수" title="보유기록" class="d-inline-block 재료높이" style="vertical-align: top;">
             <div><button>일<br><br>get</button><button title="파템재료_일퀘개수">보<br><br>유</button></div>
-            <div><button>1</button><button    class="노랑">42</button></div><!-- 심해의 눈물 1-->
-            <div><button>물교</button><button class="노랑">42</button></div><!-- 화려한 진주 결정-->
-            <div><button>3</button><button    class="노랑">112</button></div><!-- 콕스유물 전투 -->
-            <div><button>물교</button><button class="노랑">46</button></div><!-- 화려한 암염 주괴-->
-            <div><button>3</button><button    class="노랑">167</button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+            <div><button>1</button><button    class="노랑">1</button></div><!-- 심해의 눈물 1-->
+            <div><button>물교</button><button class="노랑">9</button></div><!-- 화려한 진주 결정-->
+            <div><button>3</button><button    class="노랑">58</button></div><!-- 콕스유물 전투 -->
+            <div><button>물교</button><button class="노랑">13</button></div><!-- 화려한 암염 주괴-->
+            <div><button>3</button><button    class="노랑">28</button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
 
-            <div><button>3</button><button    class="노랑">383</button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-            <div><button>2</button><button    class="노랑">45</button></div><!-- 홍조빛 해저 단괴-->
-            <div><button>물교</button><button class="노랑">19</button></div><!--빛나는 코발트주괴 -->
-            <div><button>10</button><button    class="노랑">542</button></div><!-- 달의 비늘이 새겨진 합판-->
-            <div><button>1</button><button    class="노랑">13</button></div><!-- 콕스유물 상급-->
-            <div><button>2</button><button    class="노랑">33</button></div><!-- 순수한 진주결정-->
-            <div><button>3</button><button    class="노랑">173</button></div><!--파도빛이 감도는 규격 각목 -->
-            <div><button>물교</button><button class="노랑">64</button></div><!-- 대양의 견고한 현철-->
-            <div><button>4</button><button    class="노랑">32</button></div><!-- 심해초 줄기-->
-            <div><button>8</button><button    class="노랑">304</button></div><!-- 순수한 암초조각-->
-            <div><button>3</button><button    class="노랑">58</button></div><!-- 콕스유물 하급-->
-            <div><button>10</button><button    class="노랑">110</button></div><!--강화된 섬나무 증착합판 -->
+            <div><button>3</button><button    class="노랑">230</button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
+            <div><button>2</button><button    class="노랑">51</button></div><!-- 홍조빛 해저 단괴-->
+            <div><button>물교</button><button class="노랑">23</button></div><!--빛나는 코발트주괴 -->
+            <div><button>10</button><button    class="노랑">364</button></div><!-- 달의 비늘이 새겨진 합판-->
+            <div><button>1</button><button    class="노랑">14</button></div><!-- 콕스유물 상급-->
+            <div><button>2</button><button    class="노랑">35</button></div><!-- 순수한 진주결정-->
+            <div><button>3</button><button    class="노랑">2</button></div><!--파도빛이 감도는 규격 각목 -->
+            <div><button>물교</button><button class="노랑">76</button></div><!-- 대양의 견고한 현철-->
+            <div><button>4</button><button    class="노랑">40</button></div><!-- 심해초 줄기-->
+            <div><button>8</button><button    class="노랑">132</button></div><!-- 순수한 암초조각-->
+            <div><button>3</button><button    class="노랑">61</button></div><!-- 콕스유물 하급-->
+            <div><button>10</button><button    class="노랑">120</button></div><!--강화된 섬나무 증착합판 -->
           </div>
 
           <div id="재료모은거" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">

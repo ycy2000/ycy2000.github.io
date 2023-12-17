@@ -353,8 +353,25 @@ function main사이드_change시(e) {
     if (표시순번==5) {document.querySelectorAll('#나의무게 input')[6].focus();}   
   }
   //id=계산_배와장비무게,id=계산_일반등무게
-  if (e.target.id=='계산_배와장비무게' || e.target.id=='계산_일반등무게') {  
-
+  if (e.target.parentNode.classList.contains('무게input들') && e.target.tagName=='INPUT') {  
+    var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
+    var 일반등무게=document.querySelector('#계산_일반등무게').value;
+    document.querySelector('#계산2_일반등무게').value=일반등무게;
+    if (isNaN(배와장비무게)) {alert('배와장비무게가 숫자가 아님'); return;}; //숫자가 아니면
+    if (isNaN(일반등무게)) {alert('일반등무게가 숫자가 아님'); return;}; //숫자가 아니면
+    var 여유무게=배와장비무게-일반등무게;
+    document.querySelector('#계산_여유무게').value=여유무게;
+    document.querySelector('#계산_800').value=(여유무게/800).toFixed(1);
+    document.querySelector('#계산_900').value=(여유무게/900).toFixed(1);
+    document.querySelector('#계산_천').value=(여유무게/1000).toFixed(1);
+  
+    var 최대적재=배와장비무게*1.7;
+    document.querySelector('#계산2_최대적재').value=최대적재;
+    여유무게=최대적재-일반등무게;
+    document.querySelector('#계산2_여유무게').value=여유무게;
+    document.querySelector('#계산2_800').value=(여유무게/800).toFixed(1);
+    document.querySelector('#계산2_900').value=(여유무게/900).toFixed(1);
+    document.querySelector('#계산2_천').value=(여유무게/1000).toFixed(1);
   }
 
 }
@@ -394,8 +411,38 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
     e.target.innerHTML=Number(e.target.innerHTML)+1;
-    남은교섭력계산()
+    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
+    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
+    var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
+    var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
+  
+    var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
+    var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
+  
+    var 차감할교섭력=0;
+    var 곱할값=0;
+  
+    for (var i=0; i<차감할1회교섭력_12개.length; i++) {
+      if (isNaN(차감할1회교섭력_12개[i].value*1)) {
+        곱할값=0;
+      } else {
+        곱할값=차감할1회교섭력_12개[i].value*1;
+      }
+  
+      차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
+    }
+  
+    남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   }
+  if (e.target.parentNode.id=='차감할교섭력_clear') {
+    for (var i=0; i<document.querySelectorAll('#차감input들 button').length;) {
+      document.querySelectorAll('#차감input들 input')[i].value='';
+      document.querySelectorAll('#차감input들 button')[i].value='';
+    }
+    document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=111;
+  }
+ 
+
   //textarea보기숨기기 : 보기숨기기
   if (1==1) {
     if (e.target.id=='textarea보기숨기기') {
@@ -463,7 +510,7 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
       document.querySelectorAll('#나의무게 input')[i].value='';
     }    
   }
-  //id=나의무게_clear
+  //
   if (e.target.id=='물품단계클릭시') {
     if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
       document.querySelector('#해역_물품단계').classList.remove('d-none');  
