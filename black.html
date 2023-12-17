@@ -318,12 +318,12 @@
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div id="S1_일리야에페리아창고">일리에페</div><!-- width등-->
+          <div id="S1_일리야에페리아창고" style="background-color: aqua;">일리에페</div><!-- width등-->
           <br>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
-          <div id="물품단계클릭시">물품단계</div><!-- width등-->
+          <div id="물품단계클릭시" style="background-color: aqua;">물품단계</div><!-- width등-->
           <br>
           <input type = "text" maxlength = "10"><button>1</button>
           <input type = "text" maxlength = "10"><button>1</button>
@@ -348,7 +348,7 @@
         </div>
         <h6 class="무게input들">▢ <span>배+장비무게</span>
           <input onchange="계산_무게()" id="계산_배와장비무게" type = "text" maxlength = "10" value="14300">
-          <span>, 최대적재</span>
+          <span style="background-color: aqua;" title="구축함:">, 최대적재</span>
           <input id="계산_최대적재" type = "text" maxlength = "10" value="빈칸">
           <span>, </span>
           <input onchange="계산_무게()" id="계산_일반등무게" type = "text" maxlength = "10" value="609">
@@ -524,8 +524,8 @@
 
         </div>
         <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
-        <img id="S1_일리야창고" style="position: absolute;left:670px;visibility:hidden;" src="portal/images/black_문서/S1_창고_일리야.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
-        <img id="S1_에페리아창고" style="position: absolute;left:510px;visibility:hidden;" src="portal/images/black_문서/S1_창고_에페리아.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
+        <div id="S1_일리야창고사진" style="visibility: hidden;"></div>
+        <div id="S1_에페리아창고사진" style="visibility: hidden;"></div>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
@@ -641,7 +641,7 @@
           </div>
 
           <div id="재료모은거" class="d-inline-block 재료높이" style="vertical-align: top;padding-right:3px;">
-            <img style="position:absolute" src="portal/images/black_문서/S2_재료모은것.png" alt="이미지없음">
+            <div id="재료모은거_에페리아전체사진일부"></div>
             <div style="position:absolute;left:1218px;top:3px;">
               <h6><b><i><u style="color:blueviolet">중범파템용 : 온기 35, 한기 80</u></i></b></h6>
               <h6><b><i><u style="color:blueviolet">토로용 : 온기 280, 한기 360, 치료용 더 많이!!</u></i></b></h6>

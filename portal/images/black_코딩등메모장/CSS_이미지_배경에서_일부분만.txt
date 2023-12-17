@@ -31,4 +31,7 @@ background-position : [수평위치] [수직 위치]
 {background-position: -192px -0px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"콕스유물 전투"*/
 {background-position: -0px -307px;background-image:url('portal/images/black_문서/S2_재료아이콘추출용.png');}/*"화려한 암염 주괴"*/
 
+2.img에서 
+  object-fit : none; 자동크기조절 해제
+
  

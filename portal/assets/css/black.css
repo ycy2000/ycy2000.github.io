@@ -10,6 +10,8 @@
 #메인사이드와우측을함께담은div #main사이드 div:nth-of-type(2) {background-color:white;}
 #메인사이드와우측을함께담은div #main사이드우측의_코딩결과div {vertical-align: top;width:1400px;}
 
+#S1_에페리아창고사진 {position: absolute;width:342px;height:116px;top:245px;left:520px; background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -1px;}
+#S1_일리야창고사진 {position: absolute;width:342px;height:380px;top:245px;left:862px; background-image:url('../../../portal/images/black_문서/S1_창고_일리야.png');background-position: -1px -1px;}
 #S1_해역사진 > div:first-child {position:fixed;background-color: white;display:block;width:100%;;padding-bottom:2px;}
 #S1_해역사진 #교섭력계산 {width:450px;vertical-align: top;margin-right:5px;}
 #S1_해역사진 #교섭력계산 #남은_차감후_교섭력 {width:110px; border-right:1px solid black;}
@@ -112,6 +114,8 @@
 #파템재료_일퀘개수 > div:first-child > button {height:73px;}
 #파템재료_일퀘개수 > div:first-child > div {display: inline-block;}
 
+#재료모은거 #재료모은거_에페리아전체사진일부 {position: absolute;width:342px;height:116px; background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -1px;}
+
 #재료모은거 > #설명 > h6 {width:700px; height:38px;margin:1px 0px;border:1px solid black;margin-bottom:-2px;padding-top:10px;}
 #재료모은거 > #설명 > h6:nth-of-type(1) {background-color: cadetblue;}/* 검은무쇠이빨*/
 #재료모은거 > #설명 > h6:nth-of-type(4), #재료모은거 > #설명 > h6:nth-of-type(9) {margin-bottom:5px;}/* 아래 띄우기 맞추기*/
@@ -164,23 +168,23 @@
 #파템재료_재료아이콘 > div[class~="아이콘"][data="순수한 암초조각"]               {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -126px;}
 #파템재료_재료아이콘 > div[class~="아이콘"][data="콕스유물 하급"]                 {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -254px;}
 #파템재료_재료아이콘 > div[class~="아이콘"][data="강화된 섬나무 증착합판"]        {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -0px -126px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(3) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -2px -1px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(4) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -191px -1px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(5) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -229px -1px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(6) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -267px -1px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(7) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -304px -1px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(8) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -2px -39px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(9) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -40px -39px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(10) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -115px -39px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(11) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -153px -39px;} /*달의 비늘이 새겨진 합판*/
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(12) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -191px -39px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(13) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -229px -39px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(14) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -266px -39px;}/*파도빛이 감도는 규격 각목*/
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(15) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -304px -39px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(16) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -1px -78px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(17) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -41px -78px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(18) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -78px -78px;}
-#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(19) {background-image:url('../../../portal/images/black_문서/S2_재료모은것.png');background-position: -115px -78px;;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(3) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -2px -1px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(4) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -191px -1px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(5) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -229px -1px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(6) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -267px -1px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(7) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -304px -1px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(8) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -2px -39px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(9) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -40px -39px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(10) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -115px -39px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(11) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -153px -39px;} /*달의 비늘이 새겨진 합판*/
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(12) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -191px -39px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(13) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -229px -39px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(14) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -266px -39px;}/*파도빛이 감도는 규격 각목*/
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(15) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -304px -39px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(16) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -78px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(17) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -41px -78px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(18) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -78px -78px;}
+#파템재료_가방아이콘 > div[class~="아이콘"]:nth-of-type(19) {background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -115px -78px;;}
 #파템재료_일퀘개수 button[title] {background-color: chartreuse;}
 #리스너용섬이름검색 form {display:inline-block;}
 #교섭력계산 > #차감input들 > div {display:inline-block;}

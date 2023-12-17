@@ -440,12 +440,13 @@ function main사이드클릭시_문서연결_버튼플러스일후남은교섭�
   }
   //S1_해역사진 아래 숨겨진 S1_일리야에페리아창고 사진 두장 보기 숨기기
   if (e.target.id=='S1_일리야에페리아창고') {
-    if (document.querySelector('#S1_일리야창고').style.visibility=='hidden') {
-      document.querySelector('#S1_일리야창고').style.visibility='visible';
-      document.querySelector('#S1_에페리아창고').style.visibility='visible';
+    console.log('S1_일리야에페리아창고 클릭시');
+    if (document.querySelector('#S1_일리야창고사진').style.visibility=='hidden') {
+      document.querySelector('#S1_일리야창고사진').style.visibility='visible';
+      document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
     } else {
-      document.querySelector('#S1_일리야창고').style.visibility='hidden';
-      document.querySelector('#S1_에페리아창고').style.visibility='hidden';
+      document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
+      document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
     }
   }
   //차감할교섭력_clear
