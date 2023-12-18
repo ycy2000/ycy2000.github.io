@@ -361,8 +361,8 @@ function main사이드_change시(e) {
 function main사이드_클릭시(e) {//교섭력계산기능
   console.log('main사이드_클릭시(e)');
   if (e.target.id=='background-position연습') {
-    document.querySelector('#위무게와교섭력계산부분').classList.add('d-none');
-    document.querySelector('#background-position연습').classList.add('d-none');
+    // document.querySelector('#위무게와교섭력계산부분').classList.add('d-none');
+    // document.querySelector('#background-position연습').classList.add('d-none');
   }
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
