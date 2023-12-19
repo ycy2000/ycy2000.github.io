@@ -10,7 +10,7 @@
 #메인사이드와우측을함께담은div #main사이드 div:nth-of-type(2) {background-color:white;}
 #메인사이드와우측을함께담은div #main사이드우측의_코딩결과div {vertical-align: top;width:1400px;}
 
-
+#S1_증축전후비교 img {vertical-align: top;}
 /* 예전꺼 */
 #main사이드 {margin-left:3px;width:300px;}
 .a_형식 {color:chocolate;text-decoration: underline;}

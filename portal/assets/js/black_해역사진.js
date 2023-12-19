@@ -1,5 +1,5 @@
 //해역위치와 물품단계
-if (1==1) {
+if (document.querySelector('#해역_물품단계')) {
   var embed_루트src_탐색기='';
   for (var i=0; i<document.querySelectorAll('input').length; i++) {
     document.querySelectorAll('input')[i].autocomplete="off";
@@ -124,25 +124,47 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(13) > button:nth
 document.querySelector('#파템_일반재료2 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=보유수[13].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[9].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[7].innerHTML;
+//초기화시 해역사진 셑팅
+document.querySelector('#복사').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+}
+function 계산_배와장비무게() {
+  //일반쪽 계산
+  var 적재가능일반무게=document.querySelector('#적재가능일반무게').value; //html에 기록
+  document.querySelector('#적재가능과적무게').value=적재가능일반무게*1.7;
+  var 선원과장비무게일반쪽=9; //장비무게
+  선원과장비무게일반쪽+=200*Number(document.querySelector('#선원_순수+button').innerHTML);
+  선원과장비무게일반쪽+=300*Number(document.querySelector('#선원_현실+button').innerHTML);
+  선원과장비무게일반쪽+=300*Number(document.querySelector('#선원_자신+button').innerHTML);
+  document.querySelector('#선원과장비무게일반쪽').value=선원과장비무게일반쪽;
+  var 선실현황=0;
+  선실현황+=10*Number(document.querySelector('#선원_순수+button').innerHTML);
+  선실현황+=10*Number(document.querySelector('#선원_현실+button').innerHTML);
+  선실현황+=5*Number(document.querySelector('#선원_자신+button').innerHTML);
+  document.querySelector('#선실').innerHTML=선실현황;
+  var 여유무게일반쪽=적재가능일반무게-선원과장비무게일반쪽;
+  document.querySelector('#일반여유무게').value=여유무게일반쪽;
+  document.querySelector('#일반계산_800').value=(여유무게일반쪽/800).toFixed(1);
+  document.querySelector('#일반계산_900').value=(여유무게일반쪽/900).toFixed(1);
+  document.querySelector('#일반계산_천').value=(여유무게일반쪽/1000).toFixed(1);
+  //과적쪽 계산
+  document.querySelector('#선원과장비무게과적쪽').value=선원과장비무게일반쪽;
+  var 여유무게과적쪽=적재가능일반무게*1.7-선원과장비무게일반쪽;
+  document.querySelector('#과적여유무게').value=여유무게과적쪽;
+  document.querySelector('#과적계산_800').value=(여유무게과적쪽/800).toFixed(1);
+  document.querySelector('#과적계산_900').value=(여유무게과적쪽/900).toFixed(1);
+  document.querySelector('#과적계산_천').value=(여유무게과적쪽/1000).toFixed(1);
+  //나의무게쪽 계산
+  var 나의무게=0;
+  document.querySelector('#선원과장비무게나의무게쪽').value=선원과장비무게일반쪽;
+  나의무게+=Number(document.querySelector('#선원과장비무게나의무게쪽').value);
+  나의무게+=Number(document.querySelector('#나의무게계산_800').value)*800;
+  나의무게+=Number(document.querySelector('#나의무게계산_900').value)*900;
+  나의무게+=Number(document.querySelector('#나의무게계산_천').value)*1000;
+  document.querySelector('#나의무게input').value=나의무게;
 }
 //배장비무게, 초기화때 return 쓰면 안되고, 초기화때는 배무게와 선원무게만으로 계산한다
-if (1==1) {
-    var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
-    var 일반등무게=document.querySelector('#계산_일반등무게').value;
-    document.querySelector('#계산2_일반등무게').value=일반등무게;
-    var 여유무게=배와장비무게-일반등무게;
-    document.querySelector('#계산_여유무게').value=여유무게;
-    document.querySelector('#계산_800').value=(여유무게/800).toFixed(1);
-    document.querySelector('#계산_900').value=(여유무게/900).toFixed(1);
-    document.querySelector('#계산_천').value=(여유무게/1000).toFixed(1);
-  
-    var 최대적재=배와장비무게*1.7;
-    document.querySelector('#계산2_최대적재').value=최대적재;
-    여유무게=최대적재-일반등무게;
-    document.querySelector('#계산2_여유무게').value=여유무게;
-    document.querySelector('#계산2_800').value=(여유무게/800).toFixed(1);
-    document.querySelector('#계산2_900').value=(여유무게/900).toFixed(1);
-    document.querySelector('#계산2_천').value=(여유무게/1000).toFixed(1);
+if (document.querySelector('#해역_물품단계')) {
+계산_배와장비무게()
 }
 function navbar_임시함수_click () {
 
@@ -152,7 +174,7 @@ function navbar_임시함수_click () {
 
 
 var 리스너_리스너용전체=document.querySelector('#리스너용전체');
-function main사이드_dblclick시(e) {
+function 리스너_dblclick시(e) {
   console.log('main사이드_dblclick시(e)');
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
     e.target.nextElementSibling.innerHTML=1;
@@ -180,7 +202,7 @@ function main사이드_dblclick시(e) {
     남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   }
 }
-function main사이드_change시(e) {
+function 리스너_change시(e) {
   console.log('main사이드_change시(e)');
   var text=e.target.value;
   var result='';
@@ -311,58 +333,84 @@ function main사이드_change시(e) {
   }// 끝 : 교섭력 기록후 포커스 이동
   //id=나의무게  자식요소 input change
   if (e.target.parentNode.id=='나의무게' && e.target.nodeName=='INPUT') {
-    var 일단등무게=document.querySelector('#계산3_1단등무게').value;
-    var 계산3_800개수=document.querySelector('#계산3_800').value;
-    var 계산3_900개수=document.querySelector('#계산3_900').value;
-    var 계산3_천개수=document.querySelector('#계산3_천').value;
-    if (일단등무게=='') {일단등무게=0;}
-    if (계산3_800개수=='') {계산3_800개수=0;}
-    if (계산3_900개수=='') {계산3_900개수=0;}
-    if (계산3_천개수=='') {계산3_천개수=0;}
-    if (isNaN(일단등무게)) {alert('일단등무게가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-    if (isNaN(계산3_800개수)) {alert('계산3_800개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-    if (isNaN(계산3_900개수)) {alert('계산3_900개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-    if (isNaN(계산3_천개수)) {alert('계산3_천개수가 빈칸이나 숫자가 아님'); return;}; //숫자가 아니면
-    document.querySelector('#계산3_합산무게').value=Number(일단등무게) + Number((계산3_800개수*800)) + Number((계산3_900개수*900)) + Number((계산3_천개수*1000));
-    
-    e.target.classList.add('표시');
-    플러스일=-1; //버튼두개는 none, 3,4,5,6,7번째, 계산3_1단등무게,계산3_합산무게,계산3_800,계산3_900,계산3_천
-    for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
-      플러스일+=1;
-      if (document.querySelectorAll('#나의무게 input')[i].classList.contains('표시')) {표시순번=플러스일; e.target.classList.remove('표시');}
-    }
-    if (표시순번==2) {document.querySelectorAll('#나의무게 input')[4].focus();}
-    if (표시순번==4) {document.querySelectorAll('#나의무게 input')[5].focus();}
-    if (표시순번==5) {document.querySelectorAll('#나의무게 input')[6].focus();}   
+    console.log('e.target.parentNode.id==나의무게');
+    계산_배와장비무게()
   }
-  //id=계산_배와장비무게,id=계산_일반등무게
-  if (e.target.parentNode.classList.contains('무게input들') && e.target.tagName=='INPUT') {  
-    var 배와장비무게=document.querySelector('#계산_배와장비무게').value;
-    var 일반등무게=document.querySelector('#계산_일반등무게').value;
-    document.querySelector('#계산2_일반등무게').value=일반등무게;
-    if (isNaN(배와장비무게)) {alert('배와장비무게가 숫자가 아님'); return;}; //숫자가 아니면
-    if (isNaN(일반등무게)) {alert('일반등무게가 숫자가 아님'); return;}; //숫자가 아니면
-    var 여유무게=배와장비무게-일반등무게;
-    document.querySelector('#계산_여유무게').value=여유무게;
-    document.querySelector('#계산_800').value=(여유무게/800).toFixed(1);
-    document.querySelector('#계산_900').value=(여유무게/900).toFixed(1);
-    document.querySelector('#계산_천').value=(여유무게/1000).toFixed(1);
-  
-    var 최대적재=배와장비무게*1.7;
-    document.querySelector('#계산2_최대적재').value=최대적재;
-    여유무게=최대적재-일반등무게;
-    document.querySelector('#계산2_여유무게').value=여유무게;
-    document.querySelector('#계산2_800').value=(여유무게/800).toFixed(1);
-    document.querySelector('#계산2_900').value=(여유무게/900).toFixed(1);
-    document.querySelector('#계산2_천').value=(여유무게/1000).toFixed(1);
+  //id=나의무게 change후 포커스이동, 안하는게 편한듯
+  // if (e.target.parentNode.id=='나의무게' && e.target.nodeName=='INPUT') {
+  //     e.target.classList.add('표시');
+  //     var 표시순번;
+  //     var 플러스일=-1;
+  //     for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
+  //       플러스일+=1;
+  //       if (document.querySelectorAll('#나의무게 input')[i].classList.contains('표시')) {표시순번=플러스일; e.target.classList.remove('표시');}
+  //     }
+  //     if (표시순번==4) {document.querySelectorAll('#나의무게 input')[5].focus()}
+  //     if (표시순번==5) {document.querySelectorAll('#나의무게 input')[6].focus()}
+  //     if (표시순번==6) {document.querySelectorAll('#나의무게 input')[4].focus()}
+  // }
+}
+function 리스너_클릭시(e) {//교섭력계산기능
+  console.log('리스너_클릭시(e)');
+  console.log('e.target.title : ' + e.target.title);
+  //세희 검은사막 로그인 관련
+  if (e.target.title=='게임아이콘_더블클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='비밀번호입력후실행') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='이차비밀번호입력') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  //세희 검은사막 로그인 관련 끝
+  if (e.target.title=='바다악어') {
+    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #바다악어').outerHTML;
+  }
+  if (e.target.classList.contains('선원플러스')) {
+    var 숫자=Number(e.target.previousElementSibling.innerHTML);
+    e.target.previousElementSibling.innerHTML=숫자+1;
+    계산_배와장비무게();
+  }
+  if (e.target.classList.contains('선원마이너스')) {
+    var 숫자=Number(e.target.previousElementSibling.previousElementSibling.innerHTML);
+    if (숫자-1<0) {
+
+    } else {
+      e.target.previousElementSibling.previousElementSibling.innerHTML=숫자-1;
+      계산_배와장비무게();
+    }
+  }
+  //id=해역_물품단계
+  if (e.target.title=='해역_물품단계') {
+    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
+    document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
+  }
+  //해역_물품단계안_S1_일리야에페리아창고, 해역_물품단계 가 셑팅안되어있으면 가져오면서 창고띄우고, 아니면 띄우거나숨기거나
+  if (e.target.title=='해역_물품단계안_S1_일리야에페리아창고') {
+    if (document.querySelector('#복사 #해역_물품단계')) {
+      //#복사 안에 #해역+물품단계 가 있는 상태
+      if (document.querySelector('#S1_일리야창고사진').style.visibility=='hidden') {
+        document.querySelector('#S1_일리야창고사진').style.visibility='visible';
+        document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
+      } else {
+        document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
+        document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
+      }
+    } else {
+      //##복사 안에 #해역+물품단계 가 없는 상태, #해역_물품단계 띄우고 일리에페사진 visibility: visible;
+      document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
+      document.querySelector('#S1_일리야창고사진').style.visibility='visible';
+      document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
+    }
+  }
+  //마고리아클릭시
+  if (e.target.title=='마고리아클릭시') {
+    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #마고리아클릭시').outerHTML;
+  }
+  //모은재료클릭시
+  if (e.target.title=='모은재료클릭시') {
+    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #모은재료클릭시').outerHTML;
   }
 
-}
-function main사이드_클릭시(e) {//교섭력계산기능
-  console.log('main사이드_클릭시(e)');
+
   if (e.target.id=='background-position연습') {
-    // document.querySelector('#위무게와교섭력계산부분').classList.add('d-none');
-    // document.querySelector('#background-position연습').classList.add('d-none');
+    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #background-position연습').outerHTML;
   }
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
@@ -384,10 +432,8 @@ function main사이드_클릭시(e) {//교섭력계산기능
       } else {
         곱할값=차감할1회교섭력_12개[i].value*1;
       }
-  
       차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
     }
-  
     남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   }
   if (e.target.parentNode.id=='차감할교섭력_clear') {
@@ -397,23 +443,23 @@ function main사이드_클릭시(e) {//교섭력계산기능
     }
     document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=111;
   }
- 
-
-  //textarea보기숨기기 : 보기숨기기
-  if (1==1) {
-    if (e.target.id=='textarea보기숨기기') {
-      //상단시작지점 top:212px; 그림아래top:1026px;*/
-      if (document.querySelector('#textarea보기숨기기').innerHTML=='textarea내리기') {
-        document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '250px');
-        document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
-      } else {
-        document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '-533px');
-        document.querySelector('#textarea보기숨기기').innerHTML='textarea내리기';
-        document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
-        document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
-      }
+  //textarea보기숨기기 : 보기숨기기, id="해역_물품단계"가 셑팅이 안되어 있는경우, 되어있는경우.
+  if (e.target.id=='textarea보기숨기기') {
+    //상단시작지점 top:212px; 그림아래top:1026px;*/
+    if (!document.querySelector('#복사 #해역_물품단계')) {
+      document.querySelector('#복사').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+    }
+    if (document.querySelector('#textarea보기숨기기').innerHTML=='textarea내리기') {
+      document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '250px');
+      document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
+    } else {
+      document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '-533px');
+      document.querySelector('#textarea보기숨기기').innerHTML='textarea내리기';
+      document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
+      document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
     }
   }
+  
   //섬검색초기화 클릭시
   if (e.target.id=='섬검색초기화') {
     for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
@@ -421,17 +467,6 @@ function main사이드_클릭시(e) {//교섭력계산기능
     }
     for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 div').length; i++) {
       document.querySelectorAll('#리스너용섬이름검색 div')[i].innerHTML='';
-    }
-  }
-  //S1_해역사진 아래 숨겨진 S1_일리야에페리아창고 사진 두장 보기 숨기기
-  if (e.target.id=='S1_일리야에페리아창고') {
-    console.log('S1_일리야에페리아창고 클릭시');
-    if (document.querySelector('#S1_일리야창고사진').style.visibility=='hidden') {
-      document.querySelector('#S1_일리야창고사진').style.visibility='visible';
-      document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
-    } else {
-      document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
-      document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
     }
   }
   //차감할교섭력_clear
@@ -446,41 +481,13 @@ function main사이드_클릭시(e) {//교섭력계산기능
   if (e.target.id=='나의무게_clear') {
     for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
       document.querySelectorAll('#나의무게 input')[i].value='';
+      계산_배와장비무게();
     }    
   }
-  //
-  if (e.target.id=='물품단계클릭시') {
-    if (document.querySelector('#해역_물품단계').classList.contains('d-none')) {
-      console.log('해역_물품단계 d-none 제거')
-      document.querySelector('#해역_물품단계').classList.remove('d-none');  
-      document.querySelector('#모은재료none상태').classList.add('d-none');
-      document.querySelector('#마고리아12별none상태').classList.add('d-none'); 
-    } else {
-      console.log('해역_물품단계 d-none추가')
-      document.querySelector('#해역_물품단계').classList.add('d-none'); 
-    }
-  }
-  if (e.target.id=='마고리아클릭시') {
-    if (document.querySelector('#마고리아12별none상태').classList.contains('d-none')) {
-      document.querySelector('#마고리아12별none상태').classList.remove('d-none'); 
-    } else {
-      document.querySelector('#마고리아12별none상태').classList.add('d-none');
-    }
-  }
-  if (e.target.id=='모은재료클릭시') {
-    if (document.querySelector('#모은재료none상태').classList.contains('d-none')) {
-      document.querySelector('#해역_물품단계').classList.add('d-none');  
-      document.querySelector('#모은재료none상태').classList.remove('d-none'); 
-      document.querySelector('#마고리아12별none상태').classList.add('d-none'); 
-    } else {
-      document.querySelector('#모은재료none상태').classList.add('d-none');
-      document.querySelector('#해역_물품단계').classList.remove('d-none'); 
-    }
-  }
 }
-리스너_리스너용전체.addEventListener('click',main사이드_클릭시);
-리스너_리스너용전체.addEventListener('change',main사이드_change시);
-리스너_리스너용전체.addEventListener('dblclick',main사이드_dblclick시);
+리스너_리스너용전체.addEventListener('click',리스너_클릭시);
+리스너_리스너용전체.addEventListener('change',리스너_change시);
+리스너_리스너용전체.addEventListener('dblclick',리스너_dblclick시);
 
 
 
