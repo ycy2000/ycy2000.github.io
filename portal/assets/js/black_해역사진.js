@@ -358,6 +358,15 @@ function 리스너_클릭시(e) {//교섭력계산기능
   if (e.target.title=='비밀번호입력후실행') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='이차비밀번호입력') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면_물물교환선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+
+  
   //세희 검은사막 로그인 관련 끝
   if (e.target.title=='바다악어') {
     document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #바다악어').outerHTML;
