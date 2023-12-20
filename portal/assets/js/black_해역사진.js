@@ -366,16 +366,15 @@ function 리스너_클릭시(e) {//교섭력계산기능
   if (e.target.title=='게임1_아이콘_더블클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임2_게임시작클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임3_비밀번호입력후로그인클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임3_게임시작') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임4_시작클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임5_2차비밀번호입력') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임6_접속할서버선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임7_캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-
+  if (e.target.title=='게임화면1_esc클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면2_물물교환클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면3_물물교환갱신클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면4_세번째재료교환갱신클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   
   //세희 검은사막 로그인 관련 끝
   if (e.target.title=='바다악어') {
