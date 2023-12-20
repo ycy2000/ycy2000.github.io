@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* 세희 로그인 관련 #메인사이드와우측을함께담은div 안에 왼쪽 id="main사이드", 오른쪽 id="복사"*/
 #메인사이드와우측을함께담은div {white-space:nowrap;}
-#main사이드, #복사 {display:inline-block;vertical-align: top;}
+#main사이드, #복사 {display:inline-block;vertical-align: top;white-space: normal;}
 #main사이드 {width:400px;}
 #main사이드 * {padding:0px;margin:0px;}
 #main사이드 .accordion-header button{height:40px;text-indent:10px;text-align: left;}
@@ -15,7 +15,7 @@
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 #복사 > div {margin-left:5px;}
 /* 전체를 감싸는 div */
-#위무게와교섭력계산부분 {margin-left:5px;margin-bottom: 5px; white-space: nowrap;}
+#위무게와교섭력계산부분 {margin-left:250px;margin-bottom: 5px; white-space: nowrap;}
 #위무게와교섭력계산부분 > div {vertical-align: top;}
 /* #위무게와교섭력계산부분 > #교섭력계산 */
 #위무게와교섭력계산부분 > #교섭력계산 {display:inline-block;}
@@ -32,7 +32,7 @@
 /* #위무게와교섭력계산부분 > div : id="무게계산" [자식DIV :id="무게계산첫줄", h6안에 인풋과버튼들 3개*/
 #무게계산 {width:1000px;display:inline-block;}
 #무게계산 > #무게계산첫줄 > h6 {display:inline-block;}
-#무게계산 > #무게계산첫줄 > h6:nth-of-type(1) {margin-left:132px;}
+#무게계산 > #무게계산첫줄 > h6:nth-of-type(1) {margin-left:51px;}
 #무게계산 > #무게계산첫줄 > h6:nth-of-type(2) {margin-left:10px;}
 #무게계산 > #무게계산첫줄 > h6:nth-of-type(3) {margin-left:11px;}
 #무게계산 > #무게계산첫줄 > h6:nth-of-type(4) {margin-left:18px;}/*선원+장비*/
@@ -44,10 +44,11 @@
 #무게계산 input {width:70px;text-align: center;}
 #과적여유무게 {background-color: cadetblue;}
 /* 무게계산 > h6 > span의 첫번째형제 선원div,두번째+버튼 개수,세번째+버튼, 네번째-버튼, 바로뒤 인접형제 선택자 e + f */
-#무게계산 > h6 > span+div {width:90px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;}
-#무게계산 > h6 > span+div+button {width:32px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;margin-left:-1px;}
-#무게계산 > h6 > span+div+button+button {width:22px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;margin-left:-1px;}
-#무게계산 > h6 > span+div+button+button+button {width:22px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;margin-left:-1px;}
+#무게계산 > h6 span+div {width:90px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;}
+#무게계산 > h6 span+div+button {width:32px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;margin-left:-1px;}
+#무게계산 > h6 span+div+button+button {width:22px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;margin-left:-1px;}
+#무게계산 > h6 span+div+button+button+button {width:22px;height:25px;border:1px solid rgb(143, 130, 130);vertical-align: top;margin-left:-1px;}
+#나의무게 > button:first-child {margin-left:59px;}
 /* #위무게와교섭력계산부분 > div : id="리스너용섬이름검색" */
 #리스너용섬이름검색 form, #리스너용섬이름검색 div {display: inline-block;vertical-align: top;}
 #리스너용섬이름검색 div, #리스너용섬이름검색 input {height:30px;margin:0;padding:0;}
@@ -57,7 +58,7 @@
 /* 아래부분 */
 #textarea좌측상단메모 {width:520px;height:770px;left:5px;position: absolute;}
 #해역_물품단계 img {position: absolute;left:339px;}
-#덩어리이동5개textarea {white-space: nowrap; position: absolute;margin-left:5px;margin-top:780px;}
+#덩어리이동5개textarea {white-space: nowrap; position: absolute;margin-top:780px;}
 #덩어리이동5개textarea textarea {display: inline-block;width:614px;height:500px; left:5px;top:1020px;}
 #S1_에페리아창고사진 {position: absolute;width:342px;height:116px;top:250px;left:530px; background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -1px;}
 #S1_일리야창고사진 {position: absolute;width:342px;height:380px;top:250px;left:872px; background-image:url('../../../portal/images/black_문서/S1_창고_일리야.png');background-position: -1px -1px;}
@@ -105,7 +106,7 @@
 
 #파템_일반재료1, #파템_일반재료2 {vertical-align: top;text-align: left;}
 #파템_일반재료1 > div, #파템_일반재료2 > div, #파템재료_재료아이콘 > div, #파템재료_가방아이콘 > div {border:none;margin-bottom:-2px;}
-#파템_일반재료2 > div:first-child {border:1px solid black;}
+#파템_일반재료2 > div:first-child {border:1px solid black;border-right:none;}
 #파템재료_재료아이콘 > div, #파템재료_가방아이콘 > div {border:1px solid black;}
 #파템_일반재료1 > div > button, #파템_일반재료2 > div > button {margin:0;padding:0;margin-right:-1px; width:34px;height:38px;border:1px solid black;vertical-align: top;}
 #파템_일반재료1 > div > button:first-child, #파템_일반재료2 > div > button:first-child {width:140px;}
@@ -119,11 +120,17 @@
 #파템_일반재료2 > div:nth-of-type(4) > button {width:304px;margin-left:-1px;}
 #파템_일반재료2 > div:nth-of-type(5) > button {width:304px;margin-left:-1px;}
 #파템_일반재료2 > div:nth-of-type(6) > button {width:304px;margin-left:-1px;}
-
+/*왼쪽 띄우기 맞추기*/
 #파템재료_가방아이콘 > div:nth-of-type(6), #파템재료_가방아이콘 > div:nth-of-type(11) {margin-bottom:5px;}/*왼쪽 띄우기 맞추기*/
 #파템재료_재료아이콘 > div:nth-of-type(6), #파템재료_재료아이콘 > div:nth-of-type(11) {margin-bottom:5px;} /*왼쪽 띄우기 맞추기*/
-
 #파템재료_일퀘개수 > div:nth-of-type(5), #파템재료_일퀘개수 > div:nth-of-type(10) {margin-bottom:5px;}/* 왼쪽 띄우기 맞추기*/
+/* 재료설명*/
+.재료설명 {vertical-align: top;}
+.재료설명 > div {border:1px solid black;height:38px;width:300px;margin-bottom:-1px;margin-left:-4px; text-align: left;font-size:14px;line-height: 17px;padding-left:4px;}
+.재료설명 > div:nth-of-type(1) {margin-top:1px;font-size: 16px;text-align: center;}
+.재료설명 > div:nth-of-type(6) {margin-bottom:5px;}
+.재료설명 > div:nth-of-type(11) {margin-bottom:5px;}
+
 /* 파템재료_일퀘개수 관련정비 */
 #파템재료_일퀘개수 > div {margin-bottom:-1px;height:38px;border:1px solid black;}
 #파템재료_일퀘개수 > div > button {height:36px;width:32px;border:none;vertical-align: top;padding:0px;text-align: center;}
@@ -133,7 +140,7 @@
 #파템재료_일퀘개수 > div:first-child > div {display: inline-block;}
 
 #재료모은거 #재료모은거_에페리아전체사진일부 {position: absolute;width:342px;height:116px; background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -1px;}
-
+#재료모은거_에페리아전체사진일부 {position: absolute;width:342px;height:116px; background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -1px;}
 #재료모은거 > #설명 > h6 {width:700px; height:38px;margin:1px 0px;border:1px solid black;margin-bottom:-2px;padding-top:10px;}
 #재료모은거 > #설명 > h6:nth-of-type(1) {background-color: cadetblue;}/* 검은무쇠이빨*/
 #재료모은거 > #설명 > h6:nth-of-type(4), #재료모은거 > #설명 > h6:nth-of-type(9) {margin-bottom:5px;}/* 아래 띄우기 맞추기*/

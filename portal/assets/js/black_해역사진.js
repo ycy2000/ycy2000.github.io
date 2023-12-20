@@ -174,6 +174,13 @@ function navbar_임시함수_click () {
 
 
 var 리스너_리스너용전체=document.querySelector('#리스너용전체');
+var 리스너_header=document.querySelector('header');
+function header_클릭시(e) {
+  if (e.target.id=='background-position연습') {
+    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.id).outerHTML;
+  }
+
+}
 function 리스너_dblclick시(e) {
   console.log('main사이드_dblclick시(e)');
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
@@ -207,7 +214,7 @@ function 리스너_change시(e) {
   var text=e.target.value;
   var result='';
   //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
-  if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') {
+  if ((e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') || e.target.id=='일회교섭력') {
     if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
     if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
     var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
@@ -230,6 +237,8 @@ function 리스너_change시(e) {
     }
   
     남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
+    document.querySelector('#나눈값').value=(Number(보유교섭력_요소.value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
+    
   }
   //섬이름검색
   if (1==1) {
@@ -354,12 +363,13 @@ function 리스너_클릭시(e) {//교섭력계산기능
   console.log('리스너_클릭시(e)');
   console.log('e.target.title : ' + e.target.title);
   //세희 검은사막 로그인 관련
-  if (e.target.title=='게임아이콘_더블클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='비밀번호입력후실행') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='이차비밀번호입력') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임화면_물물교환선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임1_아이콘_더블클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임2_게임시작클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임3_비밀번호입력후로그인클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임4_시작클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임5_2차비밀번호입력') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임6_접속할서버선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임7_캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
@@ -415,11 +425,6 @@ function 리스너_클릭시(e) {//교섭력계산기능
   //모은재료클릭시
   if (e.target.title=='모은재료클릭시') {
     document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #모은재료클릭시').outerHTML;
-  }
-
-
-  if (e.target.id=='background-position연습') {
-    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #background-position연습').outerHTML;
   }
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
@@ -494,6 +499,7 @@ function 리스너_클릭시(e) {//교섭력계산기능
     }    
   }
 }
+리스너_header.addEventListener('click',header_클릭시);
 리스너_리스너용전체.addEventListener('click',리스너_클릭시);
 리스너_리스너용전체.addEventListener('change',리스너_change시);
 리스너_리스너용전체.addEventListener('dblclick',리스너_dblclick시);
