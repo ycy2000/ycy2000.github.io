@@ -196,7 +196,7 @@ for (var i=0; i<position조절할버튼들.length; i++) {
 
 
 //초기화시 해역사진 셑팅
-document.querySelector('#해역셑팅').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+document.querySelector('#해역_물품단계_고정').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
 }
 function 계산_배와장비무게() {
   //일반쪽 계산
@@ -250,8 +250,8 @@ var 리스너_header=document.querySelector('header');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
 function header_클릭시(e) {
   if (e.target.id=='해역사진보기') {
-    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
-    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역고정').classList.remove('d-none');
+    document.querySelector('#해역셑팅').classList.add('d-none');
     document.querySelector('#해역셑팅아님').classList.add('d-none');
   }해역사진보기
 
@@ -436,8 +436,7 @@ function 리스너_해역사진관련_change시(e) {
 }
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_클릭시(e)');
-  console.log('e.target.title : ' + e.target.title);
-  //세희 검은사막 로그인 관련
+   //세희 검은사막 로그인 관련
   if (e.target.title=='게임1_아이콘_더블클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임2_게임시작클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   if (e.target.title=='게임3_비밀번호입력후로그인클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
@@ -454,6 +453,7 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   //세희 검은사막 로그인 관련 끝
   if (e.target.title=='바다악어') {
     document.querySelector('#해역셑팅아님').innerHTML=document.querySelector('#아이디call_none #바다악어').outerHTML;
+    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
     document.querySelector('#해역셑팅').classList.add('d-none');
     document.querySelector('#해역셑팅아님').classList.remove('d-none');
   }
@@ -473,15 +473,14 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   }
   //id=해역_물품단계
   if (e.target.title=='해역_물품단계') {
-    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
-    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+    document.querySelector('#해역셑팅').classList.add('d-none');
     document.querySelector('#해역셑팅아님').classList.add('d-none');
     document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
   }
   //해역_물품단계안_S1_일리야에페리아창고, 해역_물품단계 가 셑팅안되어있으면 가져오면서 창고띄우고, 아니면 띄우거나숨기거나
   if (e.target.title=='해역_물품단계안_S1_일리야에페리아창고') {
-    if (document.querySelector('#해역셑팅 #해역_물품단계')) {
-      //#해역사진관련복사 안에 #해역+물품단계 가 있는 상태
+    document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
       if (document.querySelector('#S1_일리야창고사진').style.visibility=='hidden') {
         document.querySelector('#S1_일리야창고사진').style.visibility='visible';
         document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
@@ -489,21 +488,19 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
         document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
         document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
       }
-    } else {
-      //##해역사진관련복사 안에 #해역+물품단계 가 없는 상태, #해역_물품단계 띄우고 일리에페사진 visibility: visible;
-      document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
-      document.querySelector('#S1_일리야창고사진').style.visibility='visible';
-      document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
-    }
+      document.querySelector('#해역셑팅').classList.add('d-none');
+      document.querySelector('#해역셑팅아님').classList.add('d-none');
   }
   //마고리아클릭시
   if (e.target.title=='마고리아클릭시') {
     document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #마고리아클릭시').outerHTML;
     document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
     document.querySelector('#해역셑팅아님').classList.add('d-none');
   }
   //모은재료클릭시
   if (e.target.title=='모은재료클릭시') {
+    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
     document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #모은재료클릭시').outerHTML;
     document.querySelector('#해역셑팅').classList.remove('d-none');
     document.querySelector('#해역셑팅아님').classList.add('d-none');
