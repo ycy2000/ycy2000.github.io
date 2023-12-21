@@ -1,3 +1,11 @@
+//캔버스body초기화
+var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
+셑팅_캔버스바디.innerHTML='';
+for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+  document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+}
+셑팅_캔버스바디.innerHTML=document.querySelector('#유의사항').outerHTML;
+document.querySelector('[title=유의사항]').classList.add('현재카테고리');
 //해역위치와 물품단계
 if (document.querySelector('#해역_물품단계')) {
   var embed_루트src_탐색기='';
@@ -124,8 +132,71 @@ document.querySelector('#파템_일반재료2 > div:nth-of-type(13) > button:nth
 document.querySelector('#파템_일반재료2 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=보유수[13].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(15) > button:nth-of-type(2)').innerHTML=보유수[9].innerHTML;
 document.querySelector('#파템_일반재료2 > div:nth-of-type(16) > button:nth-of-type(2)').innerHTML=보유수[7].innerHTML;
+// id="파템재료_일퀘개수" : 에페리아 사진 참조하여 아이콘 따기, 
+var 초기가로=-2; //초기값
+var 초기세로=-2; //초기값
+var 가로이동=0;
+var 세로이동=0;
+var 속성값;
+var position조절할버튼들=document.querySelectorAll('#파템재료_일퀘개수 .에페리아창고사진일부분');
+//var q = Math.floor( 13 / 5); console.log(q) // 2
+var 아이콘순번=0; //17가지, 가로9칸, 첫째칸=1, 세로첫째칸=1 : 세로1, 가로4 
+var 가로순번;//9번째 나머지가 0인데 9로 하기 위함
+
+
+//button.setAttribute("name", "helloButton");background-position: -2px -2px;
+
+for (var i=0; i<position조절할버튼들.length; i++) {
+  if (i==0) {아이콘순번=1};//심해의 눈물
+  if (i==1) {아이콘순번=6};//화려한 진주 결정
+  if (i==2) {아이콘순번+=1};//
+  if (i==3) {아이콘순번+=1};//
+  if (i==4) {아이콘순번+=1};//
+  if (i==5) {아이콘순번+=1};//
+  if (i==6) {아이콘순번+=1};//
+  if (i==7) {아이콘순번=13};//빛나는 코발트
+  if (i==8) {아이콘순번+=1};//달의 비늘이
+  if (i==9) {아이콘순번+=1};//콕스 상급
+  if (i==10) {아이콘순번+=1};//
+  if (i==11) {아이콘순번+=1};//
+  if (i==12) {아이콘순번+=1};//대양의 견고한 현철
+  if (i==13) {아이콘순번+=1};//
+  if (i==14) {아이콘순번+=1};//Math.floor( 아이콘순번 / 9)*43*-1;
+  if (i==15) {아이콘순번+=1};//(parseInt( 아이콘순번 / 9)-1)*43*-1;
+  if (i==16) {아이콘순번+=1};//강화된 섬나무 합판
+  if ((아이콘순번 % 9)==0) {가로순번=9} else {가로순번=아이콘순번 % 9}
+  가로이동=Number(초기가로) + (가로순번-1)*38*-1;
+  세로이동=Number(초기가로) + Math.floor( (아이콘순번-1) / 9)*38*-1; //1-9는 몫이 0,
+  속성값=가로이동 + 'px' + ' ' + 세로이동 + 'px';
+  // position조절할버튼들[i].setAttribute("backgroundPosition", 속성값);
+  position조절할버튼들[i].style.backgroundPosition=속성값;
+}
+
+// position조절할버튼들[0].setAttribute("background-position", 위치문자열);//심해의 눈물 
+// position조절할버튼들[1].setAttribute("background-position", 위치문자열);//화려한 진주 결정
+// position조절할버튼들[2].setAttribute("background-position", 위치문자열);//콕스 전투
+// position조절할버튼들[3].setAttribute("background-position", 위치문자열);//화려한 암염 주괴
+// position조절할버튼들[4].setAttribute("background-position", 위치문자열);//짙은 파도빛이 감도는 규격 각목
+// position조절할버튼들[5].setAttribute("background-position", 위치문자열);//달의 핏줄이 새겨진 아마포
+// position조절할버튼들[6].setAttribute("background-position", 위치문자열);//홍조 단괴
+// position조절할버튼들[7].setAttribute("background-position", 위치문자열);//빛나는 코발트
+// position조절할버튼들[8].setAttribute("background-position", 위치문자열);//달의비늘 합판
+// position조절할버튼들[9].setAttribute("background-position", 위치문자열);//콕스 상급
+// position조절할버튼들[10].setAttribute("background-position", 위치문자열);//순수한 진주
+// position조절할버튼들[11].setAttribute("background-position", 위치문자열);//파도빛 각목
+// position조절할버튼들[12].setAttribute("background-position", 위치문자열);//대양의 현철
+// position조절할버튼들[13].setAttribute("background-position", 위치문자열);//심해초 줄기
+// position조절할버튼들[14].setAttribute("background-position", 위치문자열);//순수한 암초
+// position조절할버튼들[15].setAttribute("background-position", 위치문자열);//콕스 하급
+// position조절할버튼들[16].setAttribute("background-position", 위치문자열);//강화된 섬나무
+
+
+
+
+
+
 //초기화시 해역사진 셑팅
-document.querySelector('#복사').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+document.querySelector('#해역셑팅').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
 }
 function 계산_배와장비무게() {
   //일반쪽 계산
@@ -167,21 +238,25 @@ if (document.querySelector('#해역_물품단계')) {
 계산_배와장비무게()
 }
 function navbar_임시함수_click () {
-
+  var q = Math.floor( 1 / 5)
+  alert(q) // 2
 }
 
 
 
 
-var 리스너_리스너용전체=document.querySelector('#리스너용전체');
+var 리스너_해역사진관련=document.querySelector('#리스너용해역사진관련');
 var 리스너_header=document.querySelector('header');
+var 리스너_캔버스=document.querySelector('#offcanvasBottom');
 function header_클릭시(e) {
-  if (e.target.id=='background-position연습') {
-    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.id).outerHTML;
-  }
+  if (e.target.id=='해역사진보기') {
+    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
+    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역셑팅아님').classList.add('d-none');
+  }해역사진보기
 
 }
-function 리스너_dblclick시(e) {
+function 리스너_해역사진관련_dblclick시(e) {
   console.log('main사이드_dblclick시(e)');
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
     e.target.nextElementSibling.innerHTML=1;
@@ -209,7 +284,7 @@ function 리스너_dblclick시(e) {
     남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   }
 }
-function 리스너_change시(e) {
+function 리스너_해역사진관련_change시(e) {
   console.log('main사이드_change시(e)');
   var text=e.target.value;
   var result='';
@@ -359,26 +434,28 @@ function 리스너_change시(e) {
   //     if (표시순번==6) {document.querySelectorAll('#나의무게 input')[4].focus()}
   // }
 }
-function 리스너_클릭시(e) {//교섭력계산기능
+function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_클릭시(e)');
   console.log('e.target.title : ' + e.target.title);
   //세희 검은사막 로그인 관련
-  if (e.target.title=='게임1_아이콘_더블클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임2_게임시작클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임3_비밀번호입력후로그인클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임3_게임시작') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임4_시작클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임5_2차비밀번호입력') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임6_접속할서버선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임7_캐릭터선택') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임화면1_esc클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임화면2_물물교환클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임화면3_물물교환갱신클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
-  if (e.target.title=='게임화면4_세번째재료교환갱신클릭') {document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임1_아이콘_더블클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임2_게임시작클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임3_비밀번호입력후로그인클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임3_게임시작') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임4_시작클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임5_2차비밀번호입력') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임6_접속할서버선택') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임7_캐릭터선택') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면1_esc클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면2_물물교환클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면3_물물교환갱신클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
+  if (e.target.title=='게임화면4_세번째재료교환갱신클릭') {document.querySelector('#해역사진관련복사').innerHTML=document.querySelector('#아이디call_none #' + e.target.title).outerHTML;}
   
   //세희 검은사막 로그인 관련 끝
   if (e.target.title=='바다악어') {
-    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #바다악어').outerHTML;
+    document.querySelector('#해역셑팅아님').innerHTML=document.querySelector('#아이디call_none #바다악어').outerHTML;
+    document.querySelector('#해역셑팅').classList.add('d-none');
+    document.querySelector('#해역셑팅아님').classList.remove('d-none');
   }
   if (e.target.classList.contains('선원플러스')) {
     var 숫자=Number(e.target.previousElementSibling.innerHTML);
@@ -396,13 +473,15 @@ function 리스너_클릭시(e) {//교섭력계산기능
   }
   //id=해역_물품단계
   if (e.target.title=='해역_물품단계') {
-    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
+    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
+    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역셑팅아님').classList.add('d-none');
     document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
   }
   //해역_물품단계안_S1_일리야에페리아창고, 해역_물품단계 가 셑팅안되어있으면 가져오면서 창고띄우고, 아니면 띄우거나숨기거나
   if (e.target.title=='해역_물품단계안_S1_일리야에페리아창고') {
-    if (document.querySelector('#복사 #해역_물품단계')) {
-      //#복사 안에 #해역+물품단계 가 있는 상태
+    if (document.querySelector('#해역셑팅 #해역_물품단계')) {
+      //#해역사진관련복사 안에 #해역+물품단계 가 있는 상태
       if (document.querySelector('#S1_일리야창고사진').style.visibility=='hidden') {
         document.querySelector('#S1_일리야창고사진').style.visibility='visible';
         document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
@@ -411,19 +490,23 @@ function 리스너_클릭시(e) {//교섭력계산기능
         document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
       }
     } else {
-      //##복사 안에 #해역+물품단계 가 없는 상태, #해역_물품단계 띄우고 일리에페사진 visibility: visible;
-      document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
+      //##해역사진관련복사 안에 #해역+물품단계 가 없는 상태, #해역_물품단계 띄우고 일리에페사진 visibility: visible;
+      document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #해역_물품단계').outerHTML;
       document.querySelector('#S1_일리야창고사진').style.visibility='visible';
       document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
     }
   }
   //마고리아클릭시
   if (e.target.title=='마고리아클릭시') {
-    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #마고리아클릭시').outerHTML;
+    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #마고리아클릭시').outerHTML;
+    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역셑팅아님').classList.add('d-none');
   }
   //모은재료클릭시
   if (e.target.title=='모은재료클릭시') {
-    document.querySelector('#복사').innerHTML=document.querySelector('#아이디call_none #모은재료클릭시').outerHTML;
+    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #모은재료클릭시').outerHTML;
+    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역셑팅아님').classList.add('d-none');
   }
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
@@ -459,14 +542,16 @@ function 리스너_클릭시(e) {//교섭력계산기능
   //textarea보기숨기기 : 보기숨기기, id="해역_물품단계"가 셑팅이 안되어 있는경우, 되어있는경우.
   if (e.target.id=='textarea보기숨기기') {
     //상단시작지점 top:212px; 그림아래top:1026px;*/
-    if (!document.querySelector('#복사 #해역_물품단계')) {
-      document.querySelector('#복사').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+    if (!document.querySelector('#해역셑팅 #해역_물품단계')) {
+      document.querySelector('#해역셑팅').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+      document.querySelector('#해역셑팅').classList.remove('d-none');
+      document.querySelector('#해역셑팅아님').classList.add('d-none');
     }
     if (document.querySelector('#textarea보기숨기기').innerHTML=='textarea내리기') {
       document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '250px');
       document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
     } else {
-      document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '-533px');
+      document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '-780px');
       document.querySelector('#textarea보기숨기기').innerHTML='textarea내리기';
       document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
       document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
@@ -498,11 +583,181 @@ function 리스너_클릭시(e) {//교섭력계산기능
     }    
   }
 }
-리스너_header.addEventListener('click',header_클릭시);
-리스너_리스너용전체.addEventListener('click',리스너_클릭시);
-리스너_리스너용전체.addEventListener('change',리스너_change시);
-리스너_리스너용전체.addEventListener('dblclick',리스너_dblclick시);
+function 캔버스_검색value_change시(e) {
+  //#canvas검색 input value가 change됐을때 검색실행,  
+    //처음에 input value가 있다가 마지막에 사라짐?
+    var 검색할문자=document.querySelector('#canvas검색').value;
+    if (document.querySelector('#canvas검색').value=='') {return;}
+    var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');
+    var 내부html='';
+    for (var i=0; i<검색할버튼클래스들.length; i++) {
+      if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
+        내부html+=검색할버튼클래스들[i].outerHTML;
+      }
+    }
+    if (내부html=='') {alert('없음');return;}
+    document.querySelector('#캔버스바디').innerHTML=내부html;
+    document.querySelector('#canvas검색').value=검색할문자;
+}
+function 캔버스클릭시(e) {
+  //카테고리실행 class, canvastext파일 class, canvas_div class 일때
+  //id="캔버스바디_초기화", id="캔버스바디_모든text파일", id="캔버스바디_모든카테고리", id="canvas검색_clear", 
+  //id="캔버스바디_카테고리숨김", id="캔버스바디_카테고리숨김해제"
 
+  //공통 변수 3개
+  var 타겟element;
+  var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
+  var 셑팅_main사이드우측=document.querySelector('#해역셑팅아님');
+
+  //카테고리실행 class, canvastext파일 class, canvas_div class 일때
+  if (1==1) {
+    var 유형='';
+    if (e.target.classList.contains('카테고리실행')) {
+      유형="카테고리실행";
+      타겟element=document.querySelector('#' + e.target.title);
+      셑팅_캔버스바디.innerHTML=타겟element.outerHTML;
+    }
+    if (e.target.classList.contains('canvastext파일')) {
+      유형="canvastext파일";
+      타겟element=document.querySelector('#숨김_main사이드와header관련 > #canvas텍스트');
+      셑팅_main사이드우측.innerHTML=타겟element.outerHTML;
+      document.querySelector('#해역셑팅').classList.add('d-none');
+      document.querySelector('#해역셑팅아님').classList.remove('d-none');
+      document.querySelector('#canvas텍스트').classList.add('m0auto');
+    }
+    
+    if (e.target.classList.contains('canvas_div')) {
+      유형="canvas_div";
+      타겟element=document.querySelector('#' + e.target.title);
+      셑팅_main사이드우측.innerHTML=타겟element.outerHTML;
+      document.querySelector('#해역셑팅').classList.add('d-none');
+      document.querySelector('#해역셑팅아님').classList.remove('d-none');
+      document.querySelector('#' + e.target.title ).classList.add('m0auto');
+    }
+
+    //후속작업
+    if (유형=='카테고리실행') {
+      for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+        document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+      }
+      document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');
+    }
+
+    if (유형=='canvastext파일') {
+      embed_루트src_탐색기='portal/images/black_코딩등메모장/';
+      document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
+    }
+  }
+
+  //id="캔버스바디_초기화", id="캔버스바디_모든text파일", id="캔버스바디_모든카테고리", id="canvas검색_clear", 
+  //id="캔버스바디_카테고리숨김", id="캔버스바디_카테고리숨김해제"
+  if (1==1) {
+    if (e.target.id=='캔버스바디_초기화') {
+      var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
+      셑팅_캔버스바디.innerHTML='';
+      for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
+        document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
+      }
+      셑팅_캔버스바디.innerHTML=document.querySelector('#유의사항').outerHTML;
+      document.querySelector('[title=유의사항]').classList.add('현재카테고리');
+    }
+    if (e.target.id=='캔버스바디_모든text파일') {
+      //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
+      //34개이상일때 나누기2 왼쪽오른쪽
+      셑팅_캔버스바디.innerHTML='';
+      var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');//canvastext파일, canvas_div
+      var 개수=검색할버튼클래스들.length;
+      var 왼쪽내부html='';
+      var 오른쪽내부html='';
+
+      if (개수<=17) {
+        for (var i=0; i<검색할버튼클래스들.length; i++) {
+          console.log(검색할버튼클래스들[i].outerHTML);
+          왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+        }
+        왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+        오른쪽내부html='<div class="js모든파일리스트div"></div>'
+      }
+
+      if (개수>=18 && 개수<=34) {
+        for (var i=0; i<17; i++) {
+          왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+        }
+        for (var i=17; i<개수; i++) {
+          오른쪽내부html+=검색할버튼클래스들[i].outerHTML;
+        }
+        왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+        오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
+
+      }
+      if (개수>34) {
+        for (var i=0; i<(개수/2); i++) {
+          왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+        }
+        for (var i=(개수/2); i<개수; i++) {
+          오른쪽내부html+=검색할버튼클래스들[i].outerHTML;
+        }
+        왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+        오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
+
+      }
+      셑팅_캔버스바디.innerHTML=왼쪽내부html + 오른쪽내부html;
+      var 카테고리들=document.querySelectorAll('.카테고리');
+      for (var i=0; i<카테고리들.length; i++) {
+        카테고리들[i].style.display='none';
+      }
+    }
+    if (e.target.id=='캔버스바디_모든카테고리') {
+      //최종적으로 세로 두줄이 되도록 한다. 17줄
+      셑팅_캔버스바디.innerHTML='';
+      var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
+      var 내부html='';
+      for (var i=0; i<검색할버튼클래스들.length; i++) {
+        내부html+=검색할버튼클래스들[i].outerHTML;
+      }
+      셑팅_캔버스바디.innerHTML=내부html;
+      var 카테고리들=document.querySelectorAll('.카테고리');
+      for (var i=0; i<카테고리들.length; i++) {
+        카테고리들[i].style.display='none';
+      }
+
+    }
+    if (e.target.id=='canvas검색_clear') {
+      document.querySelector('#canvas검색').innerHTML='';   
+    }
+    if (e.target.id=='캔버스바디_카테고리숨김') {
+      //class="카테고리실행". 
+      var 숨김수=0;
+      var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
+      for (var i=0; i<검색할버튼클래스들.length; i++) {
+        //5개씩 d-none 클래스추가
+        if (!검색할버튼클래스들[i].classList.contains('d-none')) {
+          if (숨김수<5) {검색할버튼클래스들[i].classList.add('d-none'); 숨김수+=1;}
+        }
+      }
+    }
+    if (e.target.id=='캔버스바디_카테고리숨김해제') {
+      //class="카테고리실행". 
+      var 검색할버튼클래스들=document.querySelectorAll('.카테고리실행');
+      var none수=0;
+      for (var i=0; i<검색할버튼클래스들.length; i++) {
+        if (검색할버튼클래스들[i].classList.contains('d-none')) {none수+=1;}
+      }
+      if (none수>0) {
+        for (var i=none수-5; i<none수; i++) {
+          if (i>-1) {검색할버튼클래스들[i].classList.remove('d-none')}
+        }
+      }     
+    }
+
+  }
+}
+리스너_header.addEventListener('click',header_클릭시);
+리스너_해역사진관련.addEventListener('click',리스너_해역사진관련_클릭시);
+리스너_해역사진관련.addEventListener('change',리스너_해역사진관련_change시);
+리스너_해역사진관련.addEventListener('dblclick',리스너_해역사진관련_dblclick시);
+리스너_캔버스.addEventListener('click',캔버스클릭시);
+리스너_캔버스.addEventListener('change',캔버스_검색value_change시);
 
 
 
