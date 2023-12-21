@@ -539,13 +539,12 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   //textarea보기숨기기 : 보기숨기기, id="해역_물품단계"가 셑팅이 안되어 있는경우, 되어있는경우.
   if (e.target.id=='textarea보기숨기기') {
     //상단시작지점 top:212px; 그림아래top:1026px;*/
-    if (!document.querySelector('#해역셑팅 #해역_물품단계')) {
-      document.querySelector('#해역셑팅').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
-      document.querySelector('#해역셑팅').classList.remove('d-none');
-      document.querySelector('#해역셑팅아님').classList.add('d-none');
-    }
+    document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+    document.querySelector('#해역셑팅').classList.add('d-none');
+    document.querySelector('#해역셑팅아님').classList.add('d-none');
+
     if (document.querySelector('#textarea보기숨기기').innerHTML=='textarea내리기') {
-      document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '250px');
+      document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '0px');
       document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
     } else {
       document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '-780px');
