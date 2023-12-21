@@ -87,7 +87,7 @@
               <button title="게임화면2_물물교환클릭">2.오른쪽 아래 부분 '물물교환' 클릭</button><br>
               <button title="게임화면3_물물교환갱신클릭">3.물물교환 갱신 클릭</button><br>
               <button title="게임화면4_세번째재료교환갱신클릭">4.세번째꺼 '재료교환 갱신' 클릭</button><br>
-              <button>[게임 종료하기] esc 누르면 맨밑 오른쪽</button>
+              <button title="게임화면5_종료">[게임 종료하기] esc 누르면 맨밑 오른쪽</button>
 
               
             </div>
@@ -158,14 +158,26 @@
     <h6>8.캐릭터 선택 : 맨위에꺼 '잔인한X' 오른쪽 <span class="a_형식">'입장'</span> 클릭!! (다른캐릭터 클릭하면 오른쪽에 '입장' 생김)</h6> 
     <img src="portal/images/black_로그인/게임7_캐릭터선택.png" alt="이미지없음">
   </div>
-  <div id="게임화면_물물교환선택">
-    <h6>5.게임화면 : 물물교환 선택하기 순서 ①②③④⑤⑥⑦⑧⑨ </h6> 
-    <h6 style="text-indent: 15px;;">① Esc 누르기(키보드 왼쪽 맨 위에꺼) ==> 메뉴 나옴</h6> 
-    <h6 style="text-indent: 15px;;"></h6> 
-    
+  <div id="게임화면1_esc클릭">
+    <h6>왼쪽 맨 위 키보드 'ESC' 누르면 전체메뉴 나온다. </h6> 
+    <img src="portal/images/black_로그인/게임화면1_esc클릭.png" alt="이미지없음">
   </div>
-
-
+  <div id="게임화면2_물물교환클릭">
+    <h6>물물교환 클릭</h6> 
+    <img src="portal/images/black_로그인/게임화면2_물물교환클릭.png" alt="이미지없음">
+  </div>
+  <div id="게임화면3_물물교환갱신클릭">
+    <h6>물물교환 갱신 클릭</h6> 
+    <img src="portal/images/black_로그인/게임화면3_물물교환갱신클릭.png" alt="이미지없음">
+  </div>
+  <div id="게임화면4_세번째재료교환갱신클릭">
+    <h6>게임화면4_세번째재료교환갱신클릭</h6> 
+    <img src="portal/images/black_로그인/게임화면4_세번째재료교환갱신클릭.png" alt="이미지없음">
+  </div>
+  <div id="게임화면5_종료">
+    <h6>게임화면5_종료</h6> 
+    <img src="portal/images/black_로그인/게임화면5_종료.png" alt="이미지없음">
+  </div>
 </div>
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
   role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
@@ -174,7 +186,18 @@
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
-<script src="portal/assets/js/black_해역사진.js"></script>
+<script>
+var 리스너=document.querySelector('#리스너용전체');
+function 클릭시(e) {
+  if (document.querySelector('#' + e.target.title)) {
+    document.querySelector('#복사').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
+  }
+}
+리스너.addEventListener('click',클릭시);
+
+
+
+</script>
 </body>
 
 </html>
