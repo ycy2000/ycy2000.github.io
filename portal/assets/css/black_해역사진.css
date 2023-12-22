@@ -1,17 +1,15 @@
 @charset "UTF-8";
-.m0auto {margin-left:250px;}
+.팝업메모 {position: absolute;z-index: 9999;}
+#전체대체 {margin-left:115px;}
 .offcanvas-header h6,.offcanvas-header input,.offcanvas-header button {display:inline-block;}
 .canvas카테고리 > div {display:inline-block; width:617px;vertical-align: top;}
 .현재카테고리 {background-color: chocolate;}
 /* 세희 로그인 관련 #메인사이드와우측을함께담은div 안에 왼쪽 id="main사이드", 오른쪽 id="복사"*/
-#메인사이드와우측을함께담은div {white-space:nowrap;overflow: hidden;}
-#main사이드, #복사 {display:inline-block;vertical-align: top;white-space: normal;}
-#main사이드 {width:400px;}
-#main사이드 * {padding:0px;margin:0px;}
-#main사이드 .accordion-header button{height:40px;text-indent:10px;text-align: left;}
+#main과우측 {white-space:nowrap;overflow: hidden;}
+#main사이드 {display:inline-block;vertical-align: top;white-space: normal;margin-left:10px;}
+#main사이드 {width:400px;height:900px;border-right:1px solid black;}
+#main사이드 > li:hover {background-color: aqua;}
 #main사이드 button {width:100%;margin-bottom:3px;text-align: left;border:1px solid black;padding:0px;}
-#main사이드 .accordion-body {margin-top:10px;}
-#main사이드 .accordion-body h6, #main사이드 .accordion-body button {text-indent: 5px;margin-bottom:3px;}
 /* 세희 로그인관련 끝 */
 /* white-space:nowrap; white-space: normal;*/
 

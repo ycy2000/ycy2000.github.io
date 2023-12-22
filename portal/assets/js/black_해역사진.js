@@ -1,3 +1,36 @@
+//보기셑팅관련
+var 메모아이디;
+var 메모요소;
+var 유형='해역사진초기값';
+function 보기셑팅() {
+  if (유형=='해역사진초기값') {
+    document.querySelector('#리스너용해역사진관련').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
+    document.querySelector('#main과우측').classList.add('d-none');
+    document.querySelector('#전체대체').classList.add('d-none');
+  }
+  if (유형=='코딩등메모장text파일') {
+    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+    document.querySelector('#main과우측').classList.add('d-none');
+    document.querySelector('#전체대체').classList.remove('d-none');
+  }
+  if (유형=='canvas_div') {
+    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+    document.querySelector('#main과우측').classList.add('d-none');
+    document.querySelector('#전체대체').classList.remove('d-none');
+  }
+  if (유형=='main과우측') {
+    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+    document.querySelector('#main과우측').classList.remove('d-none');
+    document.querySelector('#전체대체').classList.add('d-none');
+  }
+  if (유형=='header전체대체') {
+
+  }
+
+}
+보기셑팅()
 //캔버스body초기화
 var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
 셑팅_캔버스바디.innerHTML='';
@@ -195,8 +228,9 @@ for (var i=0; i<position조절할버튼들.length; i++) {
 
 
 
-//초기화시 해역사진 셑팅
+//초기화시 해역사진 셑팅, 백만 나누기 일회교섭력
 document.querySelector('#해역_물품단계_고정').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+document.querySelector('#나눈값').value=(Number(document.querySelector('#남은교섭력').value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
 }
 function 계산_배와장비무게() {
   //일반쪽 계산
@@ -244,20 +278,26 @@ function navbar_임시함수_click () {
 
 
 
-
+var 리스너_main과우측=document.querySelector('#main과우측');
 var 리스너_해역사진관련=document.querySelector('#리스너용해역사진관련');
 var 리스너_header=document.querySelector('header');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
 function header_클릭시(e) {
+  console.log('header_클릭시(e)');
   if (e.target.id=='해역사진보기') {
-    document.querySelector('#해역고정').classList.remove('d-none');
-    document.querySelector('#해역셑팅').classList.add('d-none');
-    document.querySelector('#해역셑팅아님').classList.add('d-none');
-  }해역사진보기
-
+    유형='해역사진초기값'
+    console.log('유형 : ' +  유형);
+    보기셑팅()
+  }
+  if (e.target.title=='main과우측') {
+    유형='main과우측'
+    console.log('유형 : ' +  유형);
+    보기셑팅()
+  }
 }
 function 리스너_해역사진관련_dblclick시(e) {
-  console.log('main사이드_dblclick시(e)');
+  //교섭력기록된곳 더블클릭시 오른쪽 수량버튼 1로 변하고 계산다시
+  console.log('리스너_해역사진관련_dblclick시(e)');
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
     e.target.nextElementSibling.innerHTML=1;
     if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
@@ -285,8 +325,8 @@ function 리스너_해역사진관련_dblclick시(e) {
   }
 }
 function 리스너_해역사진관련_change시(e) {
-  console.log('main사이드_change시(e)');
-  var text=e.target.value;
+  console.log('리스너_해역사진관련_change시(e)');
+  var text=e.target.value;//input
   var result='';
   //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
   if ((e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') || e.target.id=='일회교섭력') {
@@ -420,27 +460,31 @@ function 리스너_해역사진관련_change시(e) {
     console.log('e.target.parentNode.id==나의무게');
     계산_배와장비무게()
   }
-  //id=나의무게 change후 포커스이동, 안하는게 편한듯
-  // if (e.target.parentNode.id=='나의무게' && e.target.nodeName=='INPUT') {
-  //     e.target.classList.add('표시');
-  //     var 표시순번;
-  //     var 플러스일=-1;
-  //     for (var i=0; i<document.querySelectorAll('#나의무게 input').length; i++) {
-  //       플러스일+=1;
-  //       if (document.querySelectorAll('#나의무게 input')[i].classList.contains('표시')) {표시순번=플러스일; e.target.classList.remove('표시');}
-  //     }
-  //     if (표시순번==4) {document.querySelectorAll('#나의무게 input')[5].focus()}
-  //     if (표시순번==5) {document.querySelectorAll('#나의무게 input')[6].focus()}
-  //     if (표시순번==6) {document.querySelectorAll('#나의무게 input')[4].focus()}
-  // }
+}
+function 코딩해역메모위치조정() {
+  if (메모아이디=='메모_ta순수') {메모요소.style.left='1095px';메모요소.style.top='79px';}
+
 }
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
-  console.log('리스너_클릭시(e)');
+  console.log('리스너_해역사진관련_클릭시(e)');
+  if (e.target.classList.contains('코딩해역메모')) {
+    if (document.querySelector('#' + e.target.title).style.visibility=='hidden') {
+      document.querySelector('#' + e.target.title).style.visibility='visible';
+      메모아이디=e.target.title;
+      메모요소=document.querySelector('#' + e.target.title);
+      코딩해역메모위치조정();
+    } else {
+      document.querySelector('#' + e.target.title).style.visibility='hidden';
+    }
+    console.log('e.target.classList : ' + e.target.classList);
+  }
+  //메모 클릭하면 안보이게
+  if (e.target.classList.contains('팝업메모')) {
+      e.target.style.visibility='hidden';
+  }
   if (e.target.title=='바다악어') {
-    document.querySelector('#해역셑팅아님').innerHTML=document.querySelector('#아이디call_none #바다악어').outerHTML;
-    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
-    document.querySelector('#해역셑팅').classList.add('d-none');
-    document.querySelector('#해역셑팅아님').classList.remove('d-none');
+    document.querySelector('#전체대체').innerHTML=document.querySelector('#해역관련자료none #바다악어').outerHTML;
+    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
   }
   if (e.target.classList.contains('선원플러스')) {
     var 숫자=Number(e.target.previousElementSibling.innerHTML);
@@ -459,13 +503,12 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   //id=해역_물품단계
   if (e.target.title=='해역_물품단계') {
     document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
-    document.querySelector('#해역셑팅').classList.add('d-none');
-    document.querySelector('#해역셑팅아님').classList.add('d-none');
-    document.querySelector('#textarea보기숨기기').innerHTML='textarea올리기';
+    document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
   }
-  //해역_물품단계안_S1_일리야에페리아창고, 해역_물품단계 가 셑팅안되어있으면 가져오면서 창고띄우고, 아니면 띄우거나숨기거나
+  //
   if (e.target.title=='해역_물품단계안_S1_일리야에페리아창고') {
     document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
       if (document.querySelector('#S1_일리야창고사진').style.visibility=='hidden') {
         document.querySelector('#S1_일리야창고사진').style.visibility='visible';
         document.querySelector('#S1_에페리아창고사진').style.visibility='visible';
@@ -473,22 +516,18 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
         document.querySelector('#S1_일리야창고사진').style.visibility='hidden';
         document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
       }
-      document.querySelector('#해역셑팅').classList.add('d-none');
-      document.querySelector('#해역셑팅아님').classList.add('d-none');
   }
   //마고리아클릭시
   if (e.target.title=='마고리아클릭시') {
-    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #마고리아클릭시').outerHTML;
-    document.querySelector('#해역셑팅').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_대체부분').innerHTML=document.querySelector('#해역관련자료none #마고리아클릭시').outerHTML;
     document.querySelector('#해역_물품단계_고정').classList.add('d-none');
-    document.querySelector('#해역셑팅아님').classList.add('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.remove('d-none');
   }
   //모은재료클릭시
   if (e.target.title=='모은재료클릭시') {
+    document.querySelector('#해역_물품단계_대체부분').innerHTML=document.querySelector('#해역관련자료none #모은재료클릭시').outerHTML;
     document.querySelector('#해역_물품단계_고정').classList.add('d-none');
-    document.querySelector('#해역셑팅').innerHTML=document.querySelector('#아이디call_none #모은재료클릭시').outerHTML;
-    document.querySelector('#해역셑팅').classList.remove('d-none');
-    document.querySelector('#해역셑팅아님').classList.add('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.remove('d-none');
   }
   //교섭력오른쪽의 버튼클릭시 값 +1, 닫기 할때 다음줄에서 에러난다. 작동은 된다.
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='BUTTON' && e.target.previousElementSibling.nodeName=='INPUT') {
@@ -525,8 +564,7 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   if (e.target.id=='textarea보기숨기기') {
     //상단시작지점 top:212px; 그림아래top:1026px;*/
     document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
-    document.querySelector('#해역셑팅').classList.add('d-none');
-    document.querySelector('#해역셑팅아님').classList.add('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
 
     if (document.querySelector('#textarea보기숨기기').innerHTML=='textarea내리기') {
       document.querySelector('#덩어리이동5개textarea').style.setProperty('top', '0px');
@@ -538,7 +576,6 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
       document.querySelector('#S1_에페리아창고사진').style.visibility='hidden';
     }
   }
-  
   //섬검색초기화 클릭시
   if (e.target.id=='섬검색초기화') {
     for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
@@ -581,39 +618,34 @@ function 캔버스_검색value_change시(e) {
     document.querySelector('#canvas검색').value=검색할문자;
 }
 function 캔버스클릭시(e) {
-  //카테고리실행 class, canvastext파일 class, canvas_div class 일때
-  //id="캔버스바디_초기화", id="캔버스바디_모든text파일", id="캔버스바디_모든카테고리", id="canvas검색_clear", 
-  //id="캔버스바디_카테고리숨김", id="캔버스바디_카테고리숨김해제"
+  //id=전체대체 로 결과가 들어가는 경우
+  //document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+  //document.querySelector('#전체대체').classList.remove('d-none');
 
-  //공통 변수 3개
-  var 타겟element;
+  //공통 변수 3개, #캔버스바디 로 결과가 들어가는 경우와, #전체대체 로 결과가 들어가는 경우
+  var 캔버스관련자료none안_타겟element;
   var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
-  var 셑팅_main사이드우측=document.querySelector('#해역셑팅아님');
+  var 결과부분=document.querySelector('#전체대체');
 
-  //카테고리실행 class, canvastext파일 class, canvas_div class 일때
+  //카테고리실행 class, 코딩등메모장text파일 class, canvas_div class 일때
   if (1==1) {
-    var 유형='';
     if (e.target.classList.contains('카테고리실행')) {
-      유형="카테고리실행";
-      타겟element=document.querySelector('#' + e.target.title);
-      셑팅_캔버스바디.innerHTML=타겟element.outerHTML;
+      유형="카테고리실행"; //#canvas텍스트 가져와서 나중에 후속작업이 있다.
+      캔버스관련자료none안_타겟element=document.querySelector('#' + e.target.title);
+      셑팅_캔버스바디.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
     }
-    if (e.target.classList.contains('canvastext파일')) {
-      유형="canvastext파일";
-      타겟element=document.querySelector('#숨김_main사이드와header관련 > #canvas텍스트');
-      셑팅_main사이드우측.innerHTML=타겟element.outerHTML;
-      document.querySelector('#해역셑팅').classList.add('d-none');
-      document.querySelector('#해역셑팅아님').classList.remove('d-none');
-      document.querySelector('#canvas텍스트').classList.add('m0auto');
+    if (e.target.classList.contains('코딩등메모장text파일')) {
+      유형="코딩등메모장text파일"; //#canvas텍스트 가져와서 나중에 후속작업이 있다.
+      캔버스관련자료none안_타겟element=document.querySelector('#main사이드와header관련none > #canvas텍스트');
+      결과부분.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
+      보기셑팅();
     }
     
     if (e.target.classList.contains('canvas_div')) {
       유형="canvas_div";
-      타겟element=document.querySelector('#' + e.target.title);
-      셑팅_main사이드우측.innerHTML=타겟element.outerHTML;
-      document.querySelector('#해역셑팅').classList.add('d-none');
-      document.querySelector('#해역셑팅아님').classList.remove('d-none');
-      document.querySelector('#' + e.target.title ).classList.add('m0auto');
+      캔버스관련자료none안_타겟element=document.querySelector('#' + e.target.title);
+      결과부분.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
+      보기셑팅();
     }
 
     //후속작업
@@ -623,9 +655,12 @@ function 캔버스클릭시(e) {
       }
       document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');
     }
-
-    if (유형=='canvastext파일') {
+    if (유형=='코딩등메모장text파일') {
       embed_루트src_탐색기='portal/images/black_코딩등메모장/';
+      document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
+    }
+    if (유형=='black_문서_text파일') {
+      embed_루트src_탐색기='portal/images/black_문서/';
       document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
     }
   }
@@ -646,7 +681,7 @@ function 캔버스클릭시(e) {
       //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
       //34개이상일때 나누기2 왼쪽오른쪽
       셑팅_캔버스바디.innerHTML='';
-      var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');//canvastext파일, canvas_div
+      var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');//코딩등메모장text파일, canvas_div
       var 개수=검색할버튼클래스들.length;
       var 왼쪽내부html='';
       var 오른쪽내부html='';
@@ -733,12 +768,19 @@ function 캔버스클릭시(e) {
 
   }
 }
+function main과우측_클릭시(e) {
+  console.log('main과우측_클릭시(e) e.target.title : ' + e.target.title);
+  if (e.target.classList.contains('파일연결')) {
+    document.querySelector('#main사이드우측의_코딩결과div').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
+  }
+
+}
 리스너_header.addEventListener('click',header_클릭시);
 리스너_해역사진관련.addEventListener('click',리스너_해역사진관련_클릭시);
 리스너_해역사진관련.addEventListener('change',리스너_해역사진관련_change시);
 리스너_해역사진관련.addEventListener('dblclick',리스너_해역사진관련_dblclick시);
 리스너_캔버스.addEventListener('click',캔버스클릭시);
 리스너_캔버스.addEventListener('change',캔버스_검색value_change시);
-
+리스너_main과우측.addEventListener('click',main과우측_클릭시);
 
 
