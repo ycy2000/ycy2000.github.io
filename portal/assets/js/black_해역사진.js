@@ -460,9 +460,15 @@ function 리스너_해역사진관련_change시(e) {
     console.log('e.target.parentNode.id==나의무게');
     계산_배와장비무게()
   }
+  //id=배무게있는곳  자식요소 input change
+  if (e.target.parentNode.id=='배무게있는곳' && e.target.id=='적재가능일반무게') {
+    console.log('e.target.parentNode.id==적재가능일반무게');
+    계산_배와장비무게()
+  }
 }
 function 코딩해역메모위치조정() {
   if (메모아이디=='메모_ta순수') {메모요소.style.left='1095px';메모요소.style.top='79px';}
+  if (메모아이디=='메모_ta자신') {메모요소.style.left='1095px';메모요소.style.top='79px';}
 
 }
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
