@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* 전체글꼴 */
 body, pre {font-family: 'Noto Serif KR', serif;}
-#head_button_group {background:url('../../images/layout/headerotherbg.png') repeat;padding: 5px;}
+#head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {
     cursor: pointer;
@@ -13,5 +13,12 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 }
 .back-to-top-css:hover {opacity: 1;}
 /* sunsa_cy.html*/
-.header_선택색상 {background-color:chartreuse}
+#head_button_group button {margin:0;padding:0;margin-right:5px;}
+#head_button_group textarea {resize: none;line-height: 25px;vertical-align: top;margin-top:2px;}
+.navbar-collapse {margin:0;padding:0}
+
+/* 선사일때 결과left만 사용하면서 width 다쓰기 */
+#결과left와right {margin-left:10px;}
+
+#결과left_선사 .btn {margin:0px;margin-bottom:-1px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
 
