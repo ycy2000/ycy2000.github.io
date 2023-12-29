@@ -19,6 +19,7 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 
 /* 선사일때 결과left만 사용하면서 width 다쓰기 */
 #결과left와right {margin-left:10px;}
-
-#결과left_선사 .btn {margin:0px;margin-bottom:-1px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+/* #결과left_선사 > div  ==> id="결과left_고려해운 */
+#결과left_선사 > div > div[class~='btn'] {margin:0px;margin-bottom:-1px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+#결과left_선사 > div > div {display:inline-block;}
 
