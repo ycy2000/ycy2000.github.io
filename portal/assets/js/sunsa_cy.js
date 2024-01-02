@@ -12,10 +12,12 @@ function 보기셑팅() {
   if (유형=='카피보기') {
     document.querySelector('#카피').classList.remove('d-none');
     document.querySelector('#캔버스결과').classList.add('d-none');
+    document.querySelector('#execl범위풀기결과').style.visibility='hidden';
   }
   if (유형=='canvas_div') {
     document.querySelector('#카피').classList.add('d-none');
     document.querySelector('#캔버스결과').classList.remove('d-none');
+    document.querySelector('#execl범위풀기결과').style.visibility='hidden';
   }
 }
 보기셑팅()
@@ -76,9 +78,13 @@ function 리스너_head_button_group클릭이벤트(e) {
       보기셑팅()
     }
   }
-  //innerHTML이 풀기
-  if (e.target.innerHTML=='풀기') {
-    alert('풀기');
+  //textarea로보기
+  if (e.target.innerHTML=='textarea로보기') {
+    
+  }
+  //tab으로분리보기
+  if (e.target.innerHTML=='tab으로분리보기') {
+    
   }
   //innerHTML이 clear
   if (e.target.innerHTML=='clear') {
@@ -86,11 +92,11 @@ function 리스너_head_button_group클릭이벤트(e) {
   }
   //innerHTML이 보기/숨기기
   if (e.target.innerHTML=='숨기기') {
-    console.log(e.target.innerHTML)
-    document.querySelector('#execl범위풀기결과').style.visibility='hidden';//textarea는 현재보이는 정보가 value  
+    console.log('e.target.innerHTML==숨기기');
+    document.querySelector('#execl범위풀기결과').style.visibility='hidden';//textarea는 현재보이는 정보가 value 
     e.target.innerHTML='보기';
   } else if (e.target.innerHTML=='보기') {
-    document.querySelector('#execl범위풀기결과').style.visibility='visible';//textarea는 현재보이는 정보가 value  
+    document.querySelector('#execl범위풀기결과').style.visibility='visible';//textarea는 현재보이는 정보가 value 
     e.target.innerHTML='숨기기';
   }
 }
