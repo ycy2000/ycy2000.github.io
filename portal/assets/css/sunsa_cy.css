@@ -13,13 +13,20 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 }
 .back-to-top-css:hover {opacity: 1;}
 /* sunsa_cy.html*/
-#head_button_group button {margin:0;padding:0;margin-right:5px;}
+#head_button_group button {margin:0;padding:0px 3px;}
 #head_button_group textarea {resize: none;line-height: 25px;vertical-align: top;margin-top:2px;}
 .navbar-collapse {margin:0;padding:0}
 
-/* 선사일때 결과left만 사용하면서 width 다쓰기 */
-#결과left와right {margin:0px 10px;}
-/* #결과left_선사 > div  ==> id="결과left_고려해운 */
-#결과left_선사 > div > div {display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
-#결과left_선사 > div > div:first-child {width:7%;}
+#카피, #캔버스결과 {margin-left:5px;}
+.가로한줄 {white-space: nowrap;}
+.가로한줄 > div {display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.가로한줄 > div:first-child {width:150px;}
+.가로한줄 > div:first-child > span {float:right;margin-top: 2px;}
+.가로한줄 > div:nth-of-type(2) {width:1650px;}
+/* #카피 시작부분에 #선사정보 absolute상태, 선사 클릭시 선사정보가 있으면 id를 참조해 #선사정보_none > #타이틀을 가져옴, id가 선사_==>선사정보_ */
+#카피 > #선사정보 {position: absolute;left:213px;background-color: white;}
 
+
+.offcanvas-header h6,.offcanvas-header input,.offcanvas-header button {display:inline-block;}
+.canvas카테고리 > div {display:inline-block; width:617px;vertical-align: top;}
+.현재카테고리 {background-color: chocolate;}

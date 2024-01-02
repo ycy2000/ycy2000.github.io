@@ -24,13 +24,18 @@
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <button type="button" title="결과left_선사" class="btn btn-light active 선사화주cy">선사</button>
-        <button type="button" title="결과left_화주" class="btn btn-light 선사화주cy">화주</button>
-        <button type="button" title="결과left_cy" class="btn btn-light 선사화주cy">CY</button>
-        <button type="button" title="결과left_운송사" class="btn btn-light 선사화주cy">운송사</button>
+        <button type="button" title="결과_선사" class="btn btn-light active 카테고리">선사</button>
+        <button type="button" title="결과_화주" class="btn btn-light 카테고리">화주</button>
+        <button type="button" title="결과_cy" class="btn btn-light 카테고리">CY</button>
+        <button type="button" title="결과_운송사" class="btn btn-light 카테고리">운송사</button>
         <textarea id="dk" rows="1" spellcheck="false" title="엑셀범위 복붙하고 우측 '풀기' 클릭하면"></textarea>
-        <button type="button" class="btn ps-1 pe-1" style="border:1px solid black;">풀기</button>
-        <button type="button" class="btn ps-1 pe-1" style="border:1px solid black;background-color: blueviolet;color:yellow;">신뢰X,간단메모용입니다!!</button>
+        <button type="button" class="btn" style="border:1px solid black;">excel범위풀기</button>
+        <button type="button" class="btn" style="border:1px solid black;">clear</button>
+        <button type="button" class="btn d-inline-block" style="border:1px solid black;width:60px;">보기</button>
+        <button type="button" class="btn" style="border:1px solid black;background-color: blueviolet;color:yellow;">신뢰X,간단메모용입니다!!</button>
+        <!-- #offcanvasBottom 클릭하면 나오는 id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
+        <button id="캔버스버튼" type="button" class="btn" style="border:1px solid black;background-color: blueviolet;color:yellow;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">정보링크</button>
+
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto>
@@ -55,41 +60,141 @@
 
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
 <!-- id="리스너용해역사진관련" id="main과우측" id="전체대체" 중 하나만?? 본다-->
-<div id="결과left와right">
-  <div id="간단설명나오는곳">간단설명나오는곳</div>
-  <div id="결과left">
+<div id="execl범위풀기결과" style="position: absolute;visibility:hidden;left:213px;background-color: white;z-index: 9999;border:1px solid black;" >
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+  <h5>• dfsfsdfsdfsdfsdf</h5>
+</div>
+<!-- 캔버스결과와 카피가 d-none 스위치 -->
+<div id="캔버스결과" class="d-none"></div>
+<div id="카피" class="d-none">
+  <div id="선사정보" style="position: absolute;visibility: hidden;"></div><!--이줄은 지워지고 다시 들어간다. 선사 클릭시 들어올 정보 -->
+
+</div>
+
+<div id="결과모음_none" class="d-none">
+  <div id="결과_선사">
+    <div class="가로한줄" id="선사_고려해운">
+      <div><a href="https://www.ekmtc.com/index.html#/cargo-tracking" target="_blank">고려해운</a></div>
+      <div>KMTC</div>
+    </div>
+    <div class="가로한줄" id="선사_하파그">
+      <div title="Confirm My Choices클릭, 부산으로 뜬다, 어느 cy인지 안나온다."><a href="https://www.hapag-lloyd.com/en/online-business/track/track-by-container-solution.html" target="_blank">하파그</a><span class="badge rounded-pill text-bg-info">Info</span></div>
+      <div> Hapag-Lloyd</div>
+    </div>
+    <div class="가로한줄" id="선사_OOCL">
+      <div><a href="https://www.oocl.com/eng/ourservices/eservices/cargotracking/Pages/cargotracking.aspx" target="_blank">OOCL</a><span class="badge rounded-pill text-bg-info">Info</span></div>
+      <div>OOCL</div>
+    </div>
+  </div>
+
+  <div id="결과_화주">
 
   </div>
-  <div id="결과right">
-    
+
+  <div id="결과_cy">
+
+  </div>
+
+  <div id="결과_운송사">
+
+  </div>
+  <!-- 선사정보_none : 선사클릭했을때 info alsolute hidden, visible -->
+  <div id="선사정보_none" class="d-none">
+    <div id="선사_하파그_정보">
+      <h6 style="font-weight: bold;">Hapag-Lloyd</h6>
+      <h6>• 부산까지만 뜨고 어느 cy인지 확인은 안됨</h6>
+    </div>
+    <div id="선사_OOCL_정보">
+      <h6 style="font-weight: bold;">OOCL</h6>
+      <h6>• 쿠키공지 : 일단 모두수락해야하고, 나중에 설정관리에서 동의철회 가능하다는 내용이 뜬다.</h6>
+    </div>
   </div>
 </div>
 
-<div id="결과left모음_none" class="d-none">
-  <div id="결과left_선사">
-    <div id="결과left_고려해운">
-      <div>고려해운</div>
-      <div>고려해운</div>
+<!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
+<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div>
+      <h6 class="offcanvas-title" id="캔버스바디_초기화">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title" id="캔버스바디_모든text파일">모든text파일</h6><!--click동작-->
+      <h6 class="offcanvas-title" id="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <input id="canvas검색" type = "text"><!-- change 동작-->
+      <h6 id="canvas검색_clear">clear</h6><!--click동작-->
+      <button id="캔버스바디_카테고리숨김">&lt;&lt;</button> <button id="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <!--class카테고리실행 여러개가 되면 가로로 나열되고 각각 여러 정보를 담은 div를 불러오게된다.-->
+      <button class="카테고리실행" title="참고">참고</button> 
+      <button class="카테고리실행" title="참고2">참고2</button> 
     </div>
-    <div id="결과left_고려해운">
-      <div>고려해운</div>
-      <div>고려해운</div>
-    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-
-  <div id="결과left_화주">
-
-  </div>
-  <div id="결과left_cy">
-
-  </div>
-  <div id="결과left_운송사">
-
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div id="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
   </div>
 </div>
 
-<div id="결과right모음_none" class="d-none">
-
+<!-- 코딩등메모장text파일, canvas_div-->
+<div id="캔버스관련자료none" class="d-none">
+  <div id="canvas카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="canvas카테고리" id="참고"><!--세로로 3개의 div를 가진다.-->
+      <div>
+        <h6 class="canvas_div" title='canvas_div_선사_선사정보'>선사정보</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='canvas_div_선사_선사프리타임'>선사프리타임</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='canvas_div_선사_선사프리타임'>선사프리타임</h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="참고2"><!--세로로 3개의 div를 가진다.-->
+      <div>
+        <h6 class="canvas_div" title='canvas_div_선사_선사프리타임'>선사프리타임</h6>
+      </div>
+    </div>
+  </div>
+  <!-- DIV들 모_음 : 하나가 올라감 -->
+  <div id="canvas결과모음"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div id="canvas_div_선사_선사정보">
+      <div><a href="https://www.tradlinx.com/blog/guide/%ec%84%b8%ea%b3%84-%ed%95%b4%ec%9a%b4%ec%8b%9c%ec%9e%a5%ec%9d%84-%ec%a7%80%eb%b0%b0%ed%95%98%eb%8a%94-%ea%b8%80%eb%a1%9c%eb%b2%8c-%ec%84%a0%ec%82%ac-%ec%88%9c%ec%9c%84/" target="_blank">선사정보</a></div>
+      <div>선사정보</div>
+    </div>
+    <div id="canvas_div_선사_선사프리타임">
+      <div><a href="https://m.blog.naver.com/nnnnnnv/222983489683" target="_blank">선사별프리타임</a></div>
+      <div>선사별프리타임</div>
+    </div>
+    <div id="참고_CTRL_F주요키워드"><!-- 참고 -->
+      <h6>▢ canvas카테고리모_음 : 1개, 여기서 title에 가지고올 id넣는곳</h6>
+      <h6>▢ canvas안의canvas_div모_음 : 1개, 카테고리목록에서 class가 canvas_div인 div들이 id를 가지고 대기중이다.</h6>
+      <h6>▢ main사이드와header관련none : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h6>
+      <h6>▢ main사이드와header관련none : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h6>
+      <h6>▢ S1_해역사_진 : 3개, </h6>
+      <h6>▢ 모은재료none상태 : 1개, S1_해역사_진 에서 많이 아래쪽, 개수기록시.</h6>
+      <h6>▢ 샘플 : 2개, </h6>
+      <h6 style="text-indent: 23px;">첫번째는 canvas안의canvas_div모_음 내부자료 맨 첫번째 장소로 이동,</h6>
+      <h6 style="text-indent: 23px;">두번째는 main사이드와header관련none 내부자료 맨아래쪽으로 이동,</h6>
+      <h6>▢ </h6>
+      <h6>▢ </h6>
+      <h6>▢ </h6>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="샘플">
+      <h5><a href="" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+      <h5>▢ </h5>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+      <embed src="" width=1000px height=870px>
+      <br><br><br><br><br><br><br>
+    </div>
+  </div>
 </div>
 
 

@@ -38,7 +38,7 @@ for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
   document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
 }
 셑팅_캔버스바디.innerHTML=document.querySelector('#참고').outerHTML;
-document.querySelector('[title=참고]').classList.add('현재카테고리');
+document.querySelector('[title="참고"]').classList.add('현재카테고리');
 //해역위치와 물품단계
 if (document.querySelector('#해역_물품단계')) {
   var embed_루트src_탐색기='';
@@ -745,7 +745,7 @@ function 캔버스클릭시(e) {
 
     }
     if (e.target.id=='canvas검색_clear') {
-      document.querySelector('#canvas검색').innerHTML='';   
+      document.querySelector('#canvas검색').value='';   
     }
     if (e.target.id=='캔버스바디_카테고리숨김') {
       //class="카테고리실행". 
