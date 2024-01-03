@@ -42,6 +42,11 @@
         <button id="header_canvas_click" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
 
         <button onclick="navbar_임시함수_click ()">임시함수</button>
+        <button onclick="
+        document.querySelector('#일회교섭력으로').value=document.querySelector('#일회교섭력변경').value;
+        일회교섭력으로계산();
+        document.querySelector('#나눈값').value=(1000000/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
+        ">1회교섭력변경</button><input style="width:70px;margin-left:3px;text-align: center;" type = "text" maxlength = "10" id="일회교섭력변경">
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto>
@@ -187,47 +192,47 @@
 
     <div id="리스너용섬이름검색" style="margin-left:280px;"><!--position: relative, input에 width:80px;-->
       <h6 id="교섭력규칙" style="z-index: -100;">
-        <span>1회교섭력</span><input id="일회교섭력으로" type = "text" maxlength = "10" value=10889><span style="text-align: left;">이면</span><br>
-        <span>재갱1회당</span><input type = "text" maxlength = "10"><span>4.07</span><br>
-        <span>하코저가2종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
-        <span>하코고가2종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
-        <span>대양저가3종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
-        <span>대양고가3종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
+        <span>1회교섭력</span><input style="z-index: 999;" id="일회교섭력으로" type = "text" maxlength = "10" value=10668><span style="text-align: left;">이면</span><br>
+        <span>재갱1회당</span><input type = "text" maxlength = "10"><span class="d-none">4.3002</span><br>
+        <span>하코저가2종</span><input type = "text" maxlength = "10"><span class="d-none">2.54949</span><br>
+        <span>하코고가2종</span><input type = "text" maxlength = "10"><span class="d-none">3.06468</span><br>
+        <span>대양저가3종</span><input type = "text" maxlength = "10"><span class="d-none">3.25815</span><br>
+        <span>대양고가3종</span><input type = "text" maxlength = "10"><span class="d-none">4.07274</span><br>
         <span>하코4종합계</span><input type = "text" maxlength = "10">
         <span>대양6종합계</span><input type = "text" maxlength = "10"> <span style="width:75px;">하코+대양</span><input type = "text" maxlength = "10">
 
         <h6 style="position: absolute;top:180px;left:225px;">
-          <span style="margin-right:3px;">4단까주</span><input style="height:25px;width:55px;" type = "text" maxlength = "10">
-          <span style="margin-left:3px;">4단까주8개</span> <input style="height:25px;width:89px;" type = "text" maxlength = "10">
+          <span style="margin-left:10px;margin-right:3px;">4단까주</span><input id="사단까주" style="height:25px;width:55px;text-align: center;" type = "text" maxlength = "10">
+          <span style="margin-left:2px;">4단까주8개</span> <input id="사단까주8개" style="height:25px;width:80px;text-align: center;" type = "text" maxlength = "10">
         </h6>
         
 
       </h6>
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
       <button title="바다악어">바다악어</button> <button id="textarea보기숨기기">textarea올리기</button>
 
       <h5 style="height:3px;padding:0px;margin:0px;"></h5>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
+      <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
       <button id="섬검색초기화">섬검색결과 초기화</button>
       <button><a href="https://creativefactorys.tistory.com/entry/%EA%B2%80%EC%9D%80%EC%82%AC%EB%A7%89-%EC%BD%95%EC%8A%A4-%ED%95%B4%EC%A0%81%EB%8B%A8-%EC%9C%A0%EB%A0%B9%EC%84%A0-%EB%A7%89%EC%82%AC-%EB%A3%A8%ED%8A%B8-%EC%A0%95%EB%A6%AC" target="_blank">파도빛각목</a></button>
@@ -414,23 +419,23 @@
 
       <div id="파템재료_일퀘개수" title="보유기록" class="d-inline-block 재료높이" style="vertical-align: top;">
         <div><button></button><button style="font-size: 14px;line-height: 16px;">일퀘개수</button><button title="파템재료_일퀘개수">보유</button><button>메모</button></div>
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>1</button><button    class="노랑">16</button><button>[일일] 어린 <span class="a_형식">검은무쇠이빨</span> 1개</button></div><!-- 심해의 눈물 1-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">36</button><button>물교 1개</button></div><!-- 화려한 진주 결정-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">39</button><button>[병사] 3개</button></div><!-- 콕스유물 전투 -->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">33</button><button>물교 1개</button></div><!-- 화려한 암염 주괴-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">111</button><button>[병사] 3개 (짙은 파도빛)</button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">244</button><button>[나루터지기]어린 나인샤크 3개</button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>2</button><button    class="노랑">78</button><button>[큐리오]2개</button></div><!-- 홍조빛 해저 단괴-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">7</button><button>물교 1개</button></div><!--빛나는 코발트주괴 -->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>10</button><button    class="노랑">300</button><button>[나루터지기]어린 칸디둠 10개</button></div><!-- 달의 비늘이 새겨진 합판-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>1</button><button    class="노랑">6</button><button>협상 상급 [물교퀘] 1개</button></div><!-- 콕스유물 상급-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>2</button><button    class="노랑">21</button><button>[물교퀘] 2개</button></div><!-- 순수한 진주결정-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">124</button><button>[병사] 3개 (파도빛)</button></div><!--파도빛이 감도는 규격 각목 -->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">162</button><button>물교 3개</button></div><!-- 대양의 견고한 현철-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>4</button><button    class="노랑">76</button><button>[큐리오] 4개</button></div><!-- 심해초 줄기-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>8</button><button    class="노랑">254</button><button>[물교퀘] 8개</button></div><!-- 순수한 암초조각-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">49</button><button>협상 하급 [물교퀘] 1개</button></div><!-- 콕스유물 하급-->
-        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>10</button><button    class="노랑">271</button><button>[물교퀘] 10개</button></div><!--강화된 섬나무 증착합판 -->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>1</button><button    class="노랑">18</button><button>[일일] 어린 <span class="a_형식">검은무쇠이빨</span> 1개</button></div><!-- 심해의 눈물 1-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">38</button><button>물교 1개</button></div><!-- 화려한 진주 결정-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">49</button><button>[병사] 3개</button></div><!-- 콕스유물 전투 -->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">35</button><button>물교 1개</button></div><!-- 화려한 암염 주괴-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">121</button><button>[병사] 3개 (짙은 파도빛)</button></div><!--짙은 파도빛이 감도는 규격 각목 3 -->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">272</button><button>[나루터지기]어린 나인샤크 3개</button></div><!-- 달의 핏줄이 새겨진 아마포 3-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>2</button><button    class="노랑">86</button><button>[큐리오]2개</button></div><!-- 홍조빛 해저 단괴-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">9</button><button>물교 1개</button></div><!--빛나는 코발트주괴 -->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>10</button><button    class="노랑">322</button><button>[나루터지기]어린 칸디둠 10개</button></div><!-- 달의 비늘이 새겨진 합판-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>1</button><button    class="노랑">8</button><button>협상 상급 [물교퀘] 1개</button></div><!-- 콕스유물 상급-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>2</button><button    class="노랑">25</button><button>[물교퀘] 2개</button></div><!-- 순수한 진주결정-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">135</button><button>[병사] 3개 (파도빛)</button></div><!--파도빛이 감도는 규격 각목 -->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>물교</button><button class="노랑">174</button><button>물교 3개</button></div><!-- 대양의 견고한 현철-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>4</button><button    class="노랑">90</button><button>[큐리오] 4개</button></div><!-- 심해초 줄기-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>8</button><button    class="노랑">270</button><button>[물교퀘] 8개</button></div><!-- 순수한 암초조각-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>3</button><button    class="노랑">55</button><button>협상 하급 [물교퀘] 1개</button></div><!-- 콕스유물 하급-->
+        <div><button class="에페리아창고사진일부분" style="background-position: -2px -2px;"></button><button>10</button><button    class="노랑">291</button><button>[물교퀘] 10개</button></div><!--강화된 섬나무 증착합판 -->
       </div>
     </div>
   </div>

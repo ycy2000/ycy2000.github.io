@@ -20,16 +20,16 @@ function 일회교섭력으로계산() {
 
   document.querySelector('#일회교섭력').value=기록할값.toFixed(0);
 
-  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 2;
+  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML);
   인풋들[2].value=기록할값.toFixed(0);//하코번저가2종
 
-  기록할값=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML) * 2;
+  기록할값=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML);
   인풋들[3].value=기록할값.toFixed(0);//하코번고가2종
 
-  기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML) * 3;
+  기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML);
   인풋들[4].value=기록할값.toFixed(0);//대양저가3종
 
-  기록할값=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML) * 3;
+  기록할값=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML);
   인풋들[5].value=기록할값.toFixed(0);//대양고가3종
 
   기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 3;
@@ -41,6 +41,9 @@ function 일회교섭력으로계산() {
   인풋들[7].value=기록할값.toFixed(0);//대양6종합계
 
   인풋들[8].value=Number(인풋들[6].value) + Number(인풋들[7].value);//까주합
+
+  document.querySelector('#사단까주').value=Number(일회교섭력 * 1.51556).toFixed(0);//사단까주
+  document.querySelector('#사단까주8개').value=Number(일회교섭력 * 1.51556 * 8).toFixed(0);//사단까주8개
 }
 일회교섭력으로계산()
 var 메모아이디;
@@ -633,8 +636,8 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   }
   //섬검색초기화 클릭시
   if (e.target.id=='섬검색초기화') {
-    for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
-      document.querySelectorAll('#리스너용섬이름검색 input')[i].value='';
+    for (var i=0; i<document.querySelectorAll('.섬검색인풋').length; i++) {
+      document.querySelectorAll('.섬검색인풋')[i].value='';
     }
     for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 div').length; i++) {
       document.querySelectorAll('#리스너용섬이름검색 div')[i].innerHTML='';

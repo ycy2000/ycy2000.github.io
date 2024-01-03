@@ -218,7 +218,7 @@
 
 #교섭력규칙 {display:inline-block;position: absolute;left:10px;top:47px;}
 #교섭력규칙 > span:nth-child(odd){display:inline-block;width:90px; text-align: left;height:25px;margin-left:2px;}
-#교섭력규칙 > span:nth-child(even){display:inline-block;width:80px; text-align: left;height:25px;margin-left:2px;}
+#교섭력규칙 > span:nth-child(even){display:inline-block;background-color: blue; text-align: left;height:25px;margin-left:22px;}
 #교섭력규칙 > input {display:inline-block;width:80px; text-align: center;height:25px;}
 #교섭력규칙 > h6 > input {display:inline-block;width:80px; text-align: center;height:25px;}
 
