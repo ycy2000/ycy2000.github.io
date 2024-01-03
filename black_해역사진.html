@@ -128,7 +128,7 @@
     </div>
     <div id="무게계산"><!-- width등-->
       <div id="무게계산첫줄">
-        <span>일회교섭력 : </span><input type = "text" maxlength = "10" id="일회교섭력" style="width:55px;height:25px;" value=45980>
+        <span>재갱교섭력 : </span><input type = "text" maxlength = "10" id="일회교섭력" style="width:55px;height:25px;">
         <span>:</span> <input type = "text" maxlength = "10" id="나눈값" style="width:40px;height:25px;">
         <h6>선원(주아앙:6:3:2)</h6><!-- text-indent 등-->
         <h6 style="width:20px;">선실:</h6><!-- text-indent 등-->
@@ -185,10 +185,24 @@
       </h6>
     </div>
 
-    <div id="리스너용섬이름검색"><!--position: relative, input에 width:80px;-->
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
-      <div></div><!--width등--><span>, </span>
+    <div id="리스너용섬이름검색" style="margin-left:280px;"><!--position: relative, input에 width:80px;-->
+      <h6 id="교섭력규칙" style="z-index: -100;">
+        <span>1회교섭력</span><input id="일회교섭력으로" type = "text" maxlength = "10" value=10889><span style="text-align: left;">이면</span><br>
+        <span>재갱1회당</span><input type = "text" maxlength = "10"><span>4.07</span><br>
+        <span>하코저가2종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
+        <span>하코고가2종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
+        <span>대양저가3종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
+        <span>대양고가3종</span><input type = "text" maxlength = "10"><span>4.07</span><br>
+        <span>하코4종합계</span><input type = "text" maxlength = "10">
+        <span>대양6종합계</span><input type = "text" maxlength = "10"> <span style="width:75px;">하코+대양</span><input type = "text" maxlength = "10">
 
+        <h6 style="position: absolute;top:180px;left:225px;">
+          <span style="margin-right:3px;">4단까주</span><input style="height:25px;width:55px;" type = "text" maxlength = "10">
+          <span style="margin-left:3px;">4단까주8개</span> <input style="height:25px;width:89px;" type = "text" maxlength = "10">
+        </h6>
+        
+
+      </h6>
       <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
 
@@ -215,15 +229,61 @@
 
       <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
-
-      <form onsubmit="return false"><input type = "text" maxlength = "10"></form>
-      <div></div><!--width등--><span>, </span>
       <button id="섬검색초기화">섬검색결과 초기화</button>
       <button><a href="https://creativefactorys.tistory.com/entry/%EA%B2%80%EC%9D%80%EC%82%AC%EB%A7%89-%EC%BD%95%EC%8A%A4-%ED%95%B4%EC%A0%81%EB%8B%A8-%EC%9C%A0%EB%A0%B9%EC%84%A0-%EB%A7%89%EC%82%AC-%EB%A3%A8%ED%8A%B8-%EC%A0%95%EB%A6%AC" target="_blank">파도빛각목</a></button>
     </div>
   </div>
-  <div id="해역_물품단계_고정"><!-- 초기화때  id="해역_물품단계 outerHTML 들어온다.-->
-
+  <div id="해역_물품단계_고정">
+    <div id="해역_물품단계" style="position: absolute;">
+      <textarea id="textarea좌측상단메모">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      </textarea>
+      <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
+      <div id="S1_일리야창고사진" style="visibility: hidden;"></div>
+      <div id="S1_에페리아창고사진" style="visibility: hidden;"></div>
+      <div id="덩어리이동5개textarea"><!--15칸-->
+        <textarea title="1/9">주아앙 : 순수6, 현실3, 자신2
+          반하냥 자신 : 제일 높은거 8.2
+        </textarea>
+        <textarea title="2/9">달의 비늘이 새겨진 합판
+          홍조빛 해저 단괴
+          심해초 줄기
+          콕스 전투 (콕스 인장)
+          규격 각목 2종
+        </textarea>
+        <textarea title="3/9">
+        </textarea><br>
+        <textarea title="4/9">
+        </textarea>
+        <textarea title="5/9">
+        </textarea>
+        <textarea title="6/9"></textarea><br>
+        <textarea title="7/9"></textarea>
+        <textarea title="8/9"></textarea>
+        <textarea title="9/9"></textarea>
+  
+      </div>
+    </div>
   </div>
 
   <div id="해역_물품단계_대체부분">
@@ -253,64 +313,12 @@
 </div>
 <!-- id="리스너용해역사진관련"==>d-none 후에 이곳을 보이게 한다. 캔버스결과파일 등-->
 <div id="전체대체" class="col-10"">
-
 </div>
 <!-- 해역관련자료none -->
 <div id="해역관련자료none" class="d-none">
   <div id="바다악어">
     <h6><a href="file:///C:/Users/COM/Documents/git_project/ycy2000.github.io/black_%ED%95%B4%EC%97%AD%EC%82%AC%EC%A7%84.html" target="_blank">바다악어</a></h6>
     <h6><a href="https://www.kr.playblackdesert.com/ko-kr/Forum/ForumTopic/Detail?_topicNo=26880&_opinionNo=26878" target="_blank">바다악어를 잡아보자</a></h6>
-
-  </div>
-  <div id="해역_물품단계" style="position: absolute;">
-    <textarea id="textarea좌측상단메모">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </textarea>
-    <img src="portal/images/black_문서/S1_해역사진.png" alt="이미지없음"><!--margin-bottom:2px;margin-left:-8px;-->
-    <div id="S1_일리야창고사진" style="visibility: hidden;"></div>
-    <div id="S1_에페리아창고사진" style="visibility: hidden;"></div>
-    <div id="덩어리이동5개textarea"><!--15칸-->
-      <textarea title="1/9">주아앙 : 순수6, 현실3, 자신2
-        반하냥 자신 : 제일 높은거 8.2
-      </textarea>
-      <textarea title="2/9">달의 비늘이 새겨진 합판
-        홍조빛 해저 단괴
-        심해초 줄기
-        콕스 전투 (콕스 인장)
-        규격 각목 2종
-      </textarea>
-      <textarea title="3/9">
-      </textarea><br>
-      <textarea title="4/9">
-      </textarea>
-      <textarea title="5/9">
-      </textarea>
-      <textarea title="6/9"></textarea><br>
-      <textarea title="7/9"></textarea>
-      <textarea title="8/9"></textarea>
-      <textarea title="9/9"></textarea>
-
-    </div>
   </div>
   <div id="모은재료클릭시" style="margin-left:100px;"><!--width:100%등-->
     <div id="모은재료_파템재료"><!-- 빈칸도 만들고, 세로로 나열됨 -->

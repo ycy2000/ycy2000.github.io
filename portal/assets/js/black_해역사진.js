@@ -1,4 +1,48 @@
 //보기셑팅관련
+function 일회교섭력으로계산() {
+  var 인풋들=document.querySelectorAll('#교섭력규칙 input')
+  var 일회교섭력=Number(document.querySelector('#일회교섭력으로').value);
+  if (isNaN(일회교섭력)) {일회교섭력=0}
+  //document.querySelectorAll('#교섭력규칙 input')[0] ==> 일회교섭력
+  //document.querySelectorAll('#교섭력규칙 input')[1] ==> 재갱1회당
+  //document.querySelectorAll('#교섭력규칙 input')[2] ==> 하코번저가2종
+  //document.querySelectorAll('#교섭력규칙 input')[3] ==> 하코번고가2종
+  //document.querySelectorAll('#교섭력규칙 input')[4] ==> 대양저가3종
+  //document.querySelectorAll('#교섭력규칙 input')[5] ==> 대양고가3종
+  //document.querySelectorAll('#교섭력규칙 input')[6] ==> 하코4종합계
+  //document.querySelectorAll('#교섭력규칙 input')[7] ==> 대양6종합계
+  //document.querySelectorAll('#교섭력규칙 input')[8] ==> 까주합
+  //곱하는값은 인풋 오른쪽 형제
+  var 기록할값;
+  console.log('일회교섭력 : ' + 일회교섭력);
+  기록할값=일회교섭력 * Number(인풋들[1].nextElementSibling.innerHTML);
+  인풋들[1].value=기록할값.toFixed(0);//재갱1회당
+
+  document.querySelector('#일회교섭력').value=기록할값.toFixed(0);
+
+  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 2;
+  인풋들[2].value=기록할값.toFixed(0);//하코번저가2종
+
+  기록할값=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML) * 2;
+  인풋들[3].value=기록할값.toFixed(0);//하코번고가2종
+
+  기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML) * 3;
+  인풋들[4].value=기록할값.toFixed(0);//대양저가3종
+
+  기록할값=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML) * 3;
+  인풋들[5].value=기록할값.toFixed(0);//대양고가3종
+
+  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 3;
+  기록할값+=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML) * 3;
+  인풋들[6].value=기록할값.toFixed(0);//하코4종합계
+
+  기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML) * 3;
+  기록할값+=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML) * 3;
+  인풋들[7].value=기록할값.toFixed(0);//대양6종합계
+
+  인풋들[8].value=Number(인풋들[6].value) + Number(인풋들[7].value);//까주합
+}
+일회교섭력으로계산()
 var 메모아이디;
 var 메모요소;
 var 유형='해역사진초기값';
@@ -228,8 +272,7 @@ for (var i=0; i<position조절할버튼들.length; i++) {
 
 
 
-//초기화시 해역사진 셑팅, 백만 나누기 일회교섭력
-document.querySelector('#해역_물품단계_고정').innerHTML=document.querySelector('#해역_물품단계').outerHTML;
+//백만 나누기 일회교섭력
 document.querySelector('#나눈값').value=(Number(document.querySelector('#남은교섭력').value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
 }
 function 계산_배와장비무게() {
@@ -326,6 +369,10 @@ function 리스너_해역사진관련_dblclick시(e) {
 }
 function 리스너_해역사진관련_change시(e) {
   console.log('리스너_해역사진관련_change시(e)');
+  //일회교섭력 변경시 재갱회당소모값, 하코번4종, 대양6종 소모값 계산
+  if (e.target.id=='일회교섭력으로') {
+    일회교섭력으로계산()
+  }
   var text=e.target.value;//input
   var result='';
   //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
@@ -358,7 +405,7 @@ function 리스너_해역사진관련_change시(e) {
   //섬이름검색
   if (1==1) {
     if (e.target.parentNode.parentNode.id=='리스너용섬이름검색' && e.target.nodeName=='INPUT' && e.target.parentNode.nextElementSibling.nodeName=='DIV') {
-      e.target.parentNode.nextElementSibling.innerHTML='';
+      e.target.parentNode.nextElementSibling.innerHTML='';//form결과를 나타내는 형제 div
       // var text=e.target.value;
       // var result='';
       if (구역01_동끝.find(element => element==text)) {result="구역01_동끝"};
@@ -420,14 +467,15 @@ function 리스너_해역사진관련_change시(e) {
         e.target.parentNode.nextElementSibling.innerHTML=result;
         //포커스이동
         var 표시배열;
-        e.target.classList.add('표시');
-        for (var i=0; i<document.querySelectorAll('#리스너용섬이름검색 input').length; i++) {
-          if (document.querySelectorAll('#리스너용섬이름검색 input')[i].classList.contains('표시')) {표시배열=i;}
+        e.target.classList.add('표시');//표시된곳 i 를 찾지 못함
+        for (var i=0; i<document.querySelectorAll('#리스너용해역사진관련 #리스너용섬이름검색 form input').length; i++) {
+          if (document.querySelectorAll('#리스너용해역사진관련 #리스너용섬이름검색 form input')[i].classList.contains('표시')) {표시배열=i;}
         }
-        if (표시배열==document.querySelectorAll('#리스너용섬이름검색 input').length-1) {
-          document.querySelectorAll('#리스너용섬이름검색 input')[0].focus()
+        e.target.classList.remove('표시');
+        if (표시배열==document.querySelectorAll('#리스너용해역사진관련 #리스너용섬이름검색 form input').length-1) {
+          document.querySelectorAll('#리스너용해역사진관련 #리스너용섬이름검색 form input')[0].focus()
         } else {
-          document.querySelectorAll('#리스너용섬이름검색 input')[표시배열+1].focus()
+          document.querySelectorAll('#리스너용해역사진관련 #리스너용섬이름검색 form input')[표시배열+1].focus()
         }
       }
     }
@@ -491,6 +539,7 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   if (e.target.title=='바다악어') {
     document.querySelector('#전체대체').innerHTML=document.querySelector('#해역관련자료none #바다악어').outerHTML;
     document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+    document.querySelector('#전체대체').classList.remove('d-none');
   }
   if (e.target.classList.contains('선원플러스')) {
     var 숫자=Number(e.target.previousElementSibling.innerHTML);
