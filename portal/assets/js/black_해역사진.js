@@ -282,7 +282,7 @@ function 계산_배와장비무게() {
   //일반쪽 계산
   var 적재가능일반무게=document.querySelector('#적재가능일반무게').value; //html에 기록
   document.querySelector('#적재가능과적무게').value=적재가능일반무게*1.7;
-  var 선원과장비무게일반쪽=9; //장비무게
+  var 선원과장비무게일반쪽=10; //장비무게,해원석
   선원과장비무게일반쪽+=200*Number(document.querySelector('#선원_순수+button').innerHTML);
   선원과장비무게일반쪽+=300*Number(document.querySelector('#선원_현실+button').innerHTML);
   선원과장비무게일반쪽+=300*Number(document.querySelector('#선원_자신+button').innerHTML);
