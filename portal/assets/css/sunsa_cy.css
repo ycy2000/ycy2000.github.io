@@ -30,3 +30,6 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 .offcanvas-header h6,.offcanvas-header input,.offcanvas-header button {display:inline-block;}
 .canvas카테고리 > div {display:inline-block; width:617px;vertical-align: top;}
 .현재카테고리 {background-color: chocolate;}
+
+#execl범위풀기결과 {white-space: nowrap;padding-left:5px;}/* tab으로풀기?*/
+#execl범위풀기결과 span {margin-right:5px;display:inline-block;height:20px;}/* 기본넓이 30px, 스크립트로조정*/

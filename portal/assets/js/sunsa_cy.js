@@ -1,3 +1,11 @@
+function 임시() {
+  console.log(document.querySelector('#dk').value.split('\n').length);
+  for (var i=0; i<document.querySelector('#dk').value.split('\n').length; i++) {
+  console.log(document.querySelector('#dk').value.split('\n')[i]);
+  }
+
+  document.querySelector('#임시').classList.remove('d-none');
+}
 //캔버스body초기화
 var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
 셑팅_캔버스바디.innerHTML='';
@@ -12,12 +20,10 @@ function 보기셑팅() {
   if (유형=='카피보기') {
     document.querySelector('#카피').classList.remove('d-none');
     document.querySelector('#캔버스결과').classList.add('d-none');
-    document.querySelector('#execl범위풀기결과').style.visibility='hidden';
   }
   if (유형=='canvas_div') {
     document.querySelector('#카피').classList.add('d-none');
     document.querySelector('#캔버스결과').classList.remove('d-none');
-    document.querySelector('#execl범위풀기결과').style.visibility='hidden';
   }
 }
 보기셑팅()
@@ -28,6 +34,8 @@ document.querySelector('#카피').innerHTML=선사기존html + document.querySel
 var 리스너_카피=document.querySelector('#카피');
 var 리스너_head_button_group=document.querySelector('#head_button_group');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
+var 리스너_execl범위풀기결과=document.querySelector('#execl범위풀기결과');
+
 function 리스너_카피_클릭이벤트(e) {
   console.log('리스너_카피_클릭이벤트(e)');
   //
@@ -78,17 +86,84 @@ function 리스너_head_button_group클릭이벤트(e) {
       보기셑팅()
     }
   }
-  //textarea로보기
-  if (e.target.innerHTML=='textarea로보기') {
-    
+  //textarea초기화
+  if (e.target.innerHTML=='초기화') {
+    // document.querySelector('#execl범위풀기결과').innerHTML='';
+    document.querySelector('#execl범위풀기결과').innerHTML='';
+    document.querySelector('#execl범위풀기결과').style.visibility='hidden';
+    document.querySelector('#textarea_보기숨기기').innerHTML='보기';
   }
-  //tab으로분리보기
+  //tab으로분리보기, 엑셀범위 붙여넣기 하면 가로는 탭, 세로는 줄바꿈이 된다.
   if (e.target.innerHTML=='tab으로분리보기') {
-    
+    var 문자열=document.querySelector('#dk').value;
+    var 줄바꿈정보=문자열.split('\n');
+    var 줄바꿈한줄정보;
+    var 한줄결과문자열='';
+    var 결과합치기문자열='';
+    for (var i=0; i<줄바꿈정보.length-1; i++) {
+      한줄결과문자열='';
+      줄바꿈한줄정보=줄바꿈정보[i].split('\t');
+      for (var 내부=0; 내부<줄바꿈한줄정보.length; 내부++) {
+        한줄결과문자열+='<span>' + 줄바꿈한줄정보[내부] + '</span>';
+      }
+      한줄결과문자열='<div>' + 한줄결과문자열 + '</div>';
+      결과합치기문자열=결과합치기문자열 + 한줄결과문자열;
+    }
+
+    var 문자열=document.querySelector('#dk').value;
+    if (document.querySelector('#execl범위풀기결과 span')) {
+        document.querySelector('#execl범위풀기결과').innerHTML+=결과합치기문자열;
+        document.querySelector('#execl범위풀기결과').style.visibility='visible';
+        document.querySelector('#textarea_보기숨기기').innerHTML='숨기기';
+      } else {
+        document.querySelector('#execl범위풀기결과').innerHTML=결과합치기문자열;
+        document.querySelector('#execl범위풀기결과').style.visibility='visible';
+        document.querySelector('#textarea_보기숨기기').innerHTML='숨기기';
+      }
+    //span폭조정. 마지막에 1칸짜리가 생기는데..마지막 정보를 제외하고 정보생성하였다. 위에서
+    var div안span최대넓이들=[];//기존꺼에 + 될때 최대개수 다를수 있다...
+    var 스타일width;
+    for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
+      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
+
+      for (var 내부=0; 내부<document.querySelectorAll('.코딩표시 > span').length; 내부++) {
+        스타일width=window.getComputedStyle(document.querySelectorAll('.코딩표시 > span')[내부]).width;
+        if (스타일width.width<3) {
+          스타일width=0;
+        } else {
+          스타일width=Number(스타일width.substring(0,스타일width.length-2)).toFixed(0);
+        }
+        if (!div안span최대넓이들[내부]) {
+          div안span최대넓이들.push(스타일width);
+        } else {
+          if (Number(div안span최대넓이들[내부])<Number(스타일width)) {
+            div안span최대넓이들[내부]=스타일width;}
+        }
+      }
+      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.remove('코딩표시');
+    }
+    console.log('-------------넓이 확인 끝 ---------------')
+    //맨 상단에 지우기 span 추가
+    var 맨상단지우기span='';
+    for (var i=0; i<div안span최대넓이들.length; i++) {
+      맨상단지우기span+='<span>del</span>'
+    }
+    맨상단지우기span='<div id="del">' + 맨상단지우기span + '</div>';
+
+    document.querySelector('#execl범위풀기결과').innerHTML=맨상단지우기span+document.querySelector('#execl범위풀기결과').innerHTML;
+    //span넓이 조정
+    for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
+      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
+
+      for (var 내부=0; 내부<document.querySelectorAll('.코딩표시 > span').length; 내부++) {
+        document.querySelectorAll('.코딩표시 > span')[내부].style.width=Number(div안span최대넓이들[내부]) + 10 + 'px';
+      }
+      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.remove('코딩표시');
+    }
   }
   //innerHTML이 clear
   if (e.target.innerHTML=='clear') {
-    document.querySelector('#카피').value='';//textarea는 현재보이는 정보가 value  
+    document.querySelector('#dk').value='';
   }
   //innerHTML이 보기/숨기기
   if (e.target.innerHTML=='숨기기') {
@@ -104,22 +179,6 @@ function 리스너_head_button_group클릭이벤트(e) {
 function 리스너_head_button_group_change이벤트(e) {
   //e
   console.log('change이벤트(e)');
-  if (e.target.tagName=='TEXTAREA') {
-    var 줄바꿈별문자열=document.querySelector('#dk').value.split('\n')
-    console.log('줄바꿈별문자열.lnegth : ' + 줄바꿈별문자열.length)
-    var 탭분리문자열;
-    for (var i=0; i<줄바꿈별문자열.length; i++) {
-      console.log('줄바꿈별문자열[' + i + '] : ' + 줄바꿈별문자열[i])
-      탭분리문자열=줄바꿈별문자열[i].split('\t')
-      console.log('탭분리문자열.lnegth : ' + 탭분리문자열.length)
-      for (var 내부=0; 내부<탭분리문자열.length; 내부++ ) {
-        console.log('탭분리문자열[' + 내부 + '] : ' + 탭분리문자열[내부])
-      }
-    }
-  }
-
-  console.log('줄바꿈별문자열.length : ' + 줄바꿈별문자열.length)
-
 }
 function 캔버스_검색value_change시(e) {
   //#canvas검색 input value가 change됐을때 검색실행,  
@@ -268,9 +327,30 @@ function 캔버스클릭시(e) {
 
   }
 }
+function execl범위풀기결과_click시(e) {
+  console.log('execl범위풀기결과_click시(e)');
+  if (e.target.innerHTML=='del') {
+    e.target.classList.add('코딩표시');
+    var 표시순번;
+    for (var i=0; i<document.querySelectorAll('#del span').length; i++) {
+      if (document.querySelectorAll('#del span')[i].classList.contains('코딩표시')) {표시순번=i;}
+    }
+    e.target.classList.remove('코딩표시');
+    for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
+      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
+      for (var 내부=0; 내부<document.querySelectorAll('.코딩표시 span').length; 내부++) {
+        if (내부==표시순번) {
+          document.querySelectorAll('.코딩표시 span')[내부].classList.add('d-none');
+        }
+      }
+      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.remove('코딩표시');
+    }
+  }
+}
 리스너_카피.addEventListener('click', 리스너_카피_클릭이벤트);
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
 리스너_head_button_group.addEventListener('change', 리스너_head_button_group_change이벤트);
 리스너_캔버스.addEventListener('click',캔버스클릭시);
 리스너_캔버스.addEventListener('change',캔버스_검색value_change시);
+리스너_execl범위풀기결과.addEventListener('click',execl범위풀기결과_click시);
 
