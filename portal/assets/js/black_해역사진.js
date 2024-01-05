@@ -41,8 +41,8 @@ function 일회교섭력으로계산() {
   기록할값=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML);
   인풋들[5].value=기록할값.toFixed(0);//대양고가3종
 
-  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 3;
-  기록할값+=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML) * 3;
+  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 2;
+  기록할값+=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML) * 2;
   인풋들[6].value=기록할값.toFixed(0);//하코4종합계
 
   기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML) * 3;
