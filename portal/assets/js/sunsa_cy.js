@@ -150,7 +150,12 @@ function 리스너_head_button_group클릭이벤트(e) {
     }
     맨상단지우기span='<div id="del">' + 맨상단지우기span + '</div>';
 
-    document.querySelector('#execl범위풀기결과').innerHTML=맨상단지우기span+document.querySelector('#execl범위풀기결과').innerHTML;
+    //☆ 지우기span이 있으면 (첫번째 span의 innerHTML이 '숨김'일때 안넣는걸로...
+    if (document.querySelector('#del')) {
+
+    } else {
+      document.querySelector('#execl범위풀기결과').innerHTML=맨상단지우기span+document.querySelector('#execl범위풀기결과').innerHTML;
+    }
     //span넓이 조정
     for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
       document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
@@ -178,9 +183,10 @@ function 리스너_head_button_group클릭이벤트(e) {
 
 function 리스너_head_button_group_change이벤트(e) {
   //e
-  console.log('change이벤트(e)');
+  console.log('리스너_head_button_group_change이벤트(e)');
 }
 function 캔버스_검색value_change시(e) {
+  console.log('캔버스_검색value_change시(e)');
   //#canvas검색 input value가 change됐을때 검색실행,  
     //처음에 input value가 있다가 마지막에 사라짐?
     var 검색할문자=document.querySelector('#canvas검색').value;
@@ -329,6 +335,7 @@ function 캔버스클릭시(e) {
 }
 function execl범위풀기결과_click시(e) {
   console.log('execl범위풀기결과_click시(e)');
+  //한줄당 하나의 div이고, div안에 span이 있다... 표시순번이 0인것(첫번째)==> 첫번째 세로숨김 제한. 첫번째 가로숨김 제한
   if (e.target.innerHTML=='del') {
     e.target.classList.add('코딩표시');
     var 표시순번;

@@ -1,3 +1,12 @@
+//캔버스가 있다면 캔버스 head에 카테고리 제목들을 자동 셑팅해주는 코드를 만들어야함
+if (document.querySelector('#캔버스header')) {
+  var 카테고리버튼생성='';//<button class="카테고리실행" title="참고">참고</button> 
+  var id_캔버스관련자료none_안_class_canvas카테고리=document.querySelectorAll('#캔버스관련자료none .canvas카테고리');
+  for (var i=0; i<id_캔버스관련자료none_안_class_canvas카테고리.length; i++) {
+    카테고리버튼생성+='<button class="카테고리실행" style="margin-right:-2px" title="' + id_캔버스관련자료none_안_class_canvas카테고리[i].id + '">' + id_캔버스관련자료none_안_class_canvas카테고리[i].id + '</button>';
+  }
+  document.querySelector('#캔버스header').innerHTML=document.querySelector('#캔버스header').innerHTML + 카테고리버튼생성;
+}
 //보기셑팅관련
 function 일회교섭력으로계산() {
   var 인풋들=document.querySelectorAll('#교섭력규칙 input')
@@ -48,31 +57,31 @@ function 일회교섭력으로계산() {
 일회교섭력으로계산()
 var 메모아이디;
 var 메모요소;
-var 유형='해역사진초기값';
+var 보기셑팅유형='해역사진초기값';
 function 보기셑팅() {
-  if (유형=='해역사진초기값') {
+  if (보기셑팅유형=='해역사진초기값') {
     document.querySelector('#리스너용해역사진관련').classList.remove('d-none');
     document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
     document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
     document.querySelector('#main과우측').classList.add('d-none');
     document.querySelector('#전체대체').classList.add('d-none');
   }
-  if (유형=='코딩등메모장text파일') {
+  if (보기셑팅유형=='코딩등메모장text파일') {
     document.querySelector('#리스너용해역사진관련').classList.add('d-none');
     document.querySelector('#main과우측').classList.add('d-none');
     document.querySelector('#전체대체').classList.remove('d-none');
   }
-  if (유형=='canvas_div') {
+  if (보기셑팅유형=='canvas_div') {
     document.querySelector('#리스너용해역사진관련').classList.add('d-none');
     document.querySelector('#main과우측').classList.add('d-none');
     document.querySelector('#전체대체').classList.remove('d-none');
   }
-  if (유형=='main과우측') {
+  if (보기셑팅유형=='main과우측') {
     document.querySelector('#리스너용해역사진관련').classList.add('d-none');
     document.querySelector('#main과우측').classList.remove('d-none');
     document.querySelector('#전체대체').classList.add('d-none');
   }
-  if (유형=='header전체대체') {
+  if (보기셑팅유형=='header전체대체') {
 
   }
 
@@ -88,7 +97,6 @@ for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
 document.querySelector('[title="참고"]').classList.add('현재카테고리');
 //해역위치와 물품단계
 if (document.querySelector('#해역_물품단계')) {
-  var embed_루트src_탐색기='';
   for (var i=0; i<document.querySelectorAll('input').length; i++) {
     document.querySelectorAll('input')[i].autocomplete="off";
   }
@@ -219,7 +227,7 @@ var 가로이동=0;
 var 세로이동=0;
 var 속성값;
 var position조절할버튼들=document.querySelectorAll('#파템재료_일퀘개수 .에페리아창고사진일부분');
-//var q = Math.floor( 13 / 5); console.log(q) // 2
+//Math.floor( 13 / 5); console.log(q) // 2
 var 아이콘순번=0; //17가지, 가로9칸, 첫째칸=1, 세로첫째칸=1 : 세로1, 가로4 
 var 가로순번;//9번째 나머지가 0인데 9로 하기 위함
 
@@ -318,8 +326,7 @@ if (document.querySelector('#해역_물품단계')) {
 계산_배와장비무게()
 }
 function navbar_임시함수_click () {
-  var q = Math.floor( 1 / 5)
-  alert(q) // 2
+  alert(Math.floor( 12 / 5)) // 2
 }
 
 
@@ -327,17 +334,17 @@ function navbar_임시함수_click () {
 var 리스너_main과우측=document.querySelector('#main과우측');
 var 리스너_해역사진관련=document.querySelector('#리스너용해역사진관련');
 var 리스너_header=document.querySelector('header');
-var 리스너_캔버스=document.querySelector('#offcanvasBottom');
+var 리스너_캔버스전체=document.querySelector('#캔버스전체');
 function header_클릭시(e) {
   console.log('header_클릭시(e)');
   if (e.target.id=='해역사진보기') {
-    유형='해역사진초기값'
-    console.log('유형 : ' +  유형);
+    보기셑팅유형='해역사진초기값'
+    console.log('보기셑팅유형 : ' +  보기셑팅유형);
     보기셑팅()
   }
   if (e.target.title=='main과우측') {
-    유형='main과우측'
-    console.log('유형 : ' +  유형);
+    보기셑팅유형='main과우측'
+    console.log('보기셑팅유형 : ' +  보기셑팅유형);
     보기셑팅()
   }
 }
@@ -659,72 +666,55 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
     }    
   }
 }
-function 캔버스_검색value_change시(e) {
-  //#canvas검색 input value가 change됐을때 검색실행,  
-    //처음에 input value가 있다가 마지막에 사라짐?
-    var 검색할문자=document.querySelector('#canvas검색').value;
-    if (document.querySelector('#canvas검색').value=='') {return;}
-    var 검색할버튼클래스들=document.querySelectorAll('.canvas카테고리 h6');
+function 캔버스_검색input_change시(e) {
+  console.log('캔버스_검색value_change시');
+  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
+    var 검색할문자=document.querySelector('#canvas검색input').value;
+    if (document.querySelector('#canvas검색input').value=='') {return;}
+    var 검색할버튼클래스들=document.querySelectorAll('#canvas카테고리모음 .canvas카테고리 h6');
     var 내부html='';
     for (var i=0; i<검색할버튼클래스들.length; i++) {
-      if (검색할버튼클래스들[i].title.search(검색할문자)>-1) {
+      if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) {
         내부html+=검색할버튼클래스들[i].outerHTML;
       }
     }
     if (내부html=='') {alert('없음');return;}
     document.querySelector('#캔버스바디').innerHTML=내부html;
-    document.querySelector('#canvas검색').value=검색할문자;
+    document.querySelector('#canvas검색input').value=검색할문자;
 }
 function 캔버스클릭시(e) {
-  //id=전체대체 로 결과가 들어가는 경우
-  //document.querySelector('#리스너용해역사진관련').classList.add('d-none');
-  //document.querySelector('#전체대체').classList.remove('d-none');
-
-  //공통 변수 3개, #캔버스바디 로 결과가 들어가는 경우와, #전체대체 로 결과가 들어가는 경우
+  console.log('캔버스클릭시(e)');
   var 캔버스관련자료none안_타겟element;
   var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
   var 결과부분=document.querySelector('#전체대체');
 
-  //카테고리실행 class, 코딩등메모장text파일 class, canvas_div class 일때
   if (1==1) {
+    //카테고리실행 : 캔버스바디에 카테고리 제목들 나오게한다.
     if (e.target.classList.contains('카테고리실행')) {
-      유형="카테고리실행"; //#canvas텍스트 가져와서 나중에 후속작업이 있다.
+      보기셑팅유형="카테고리실행";
       캔버스관련자료none안_타겟element=document.querySelector('#' + e.target.title);
       셑팅_캔버스바디.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
-    }
-    if (e.target.classList.contains('코딩등메모장text파일')) {
-      유형="코딩등메모장text파일"; //#canvas텍스트 가져와서 나중에 후속작업이 있다.
-      캔버스관련자료none안_타겟element=document.querySelector('#main사이드와header관련none > #canvas텍스트');
-      결과부분.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
-      보기셑팅();
-    }
-    
-    if (e.target.classList.contains('canvas_div')) {
-      유형="canvas_div";
-      캔버스관련자료none안_타겟element=document.querySelector('#' + e.target.title);
-      결과부분.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
-      보기셑팅();
-    }
-
-    //후속작업
-    if (유형=='카테고리실행') {
       for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
         document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
       }
-      document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');
+    document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');
     }
-    if (유형=='코딩등메모장text파일') {
-      embed_루트src_탐색기='portal/images/black_코딩등메모장/';
-      document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
+    //코딩등메모장text파일 : #canvas텍스트 배치후에 embed부분 수정
+    if (e.target.classList.contains('코딩등메모장text파일')) {
+      보기셑팅유형="코딩등메모장text파일";
+      캔버스관련자료none안_타겟element=document.querySelector('#canvas결과모음 > #canvas텍스트');
+      결과부분.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
+      document.querySelector('#embed부분').src='portal/images/black_코딩등메모장/' + e.target.title;
+      보기셑팅();
     }
-    if (유형=='black_문서_text파일') {
-      embed_루트src_탐색기='portal/images/black_문서/';
-      document.querySelector('#embed부분').src=embed_루트src_탐색기 + e.target.title;
+    //canvas_div : 배치
+    if (e.target.classList.contains('canvas_div')) {
+      보기셑팅유형="canvas_div";
+      캔버스관련자료none안_타겟element=document.querySelector('#' + e.target.title);
+      결과부분.innerHTML=캔버스관련자료none안_타겟element.outerHTML;
+      보기셑팅();
     }
   }
-
-  //id="캔버스바디_초기화", id="캔버스바디_모든text파일", id="캔버스바디_모든카테고리", id="canvas검색_clear", 
-  //id="캔버스바디_카테고리숨김", id="캔버스바디_카테고리숨김해제"
   if (1==1) {
     if (e.target.id=='캔버스바디_초기화') {
       var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
@@ -732,10 +722,10 @@ function 캔버스클릭시(e) {
       for (var i=0; i<document.querySelectorAll('.카테고리실행').length; i++) {
         document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
       }
-      셑팅_캔버스바디.innerHTML=document.querySelector('#참고').outerHTML;
-      document.querySelector('[title=참고]').classList.add('현재카테고리');
+      셑팅_캔버스바디.innerHTML=document.querySelectorAll('#canvas카테고리모음 .canvas카테고리')[0].outerHTML;
+      document.querySelector('[title=' + document.querySelectorAll('.카테고리실행')[0].title + ']').classList.add('현재카테고리');
     }
-    if (e.target.id=='캔버스바디_모든text파일') {
+    if (e.target.id=='캔버스바디_모든제목보기') {
       //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
       //34개이상일때 나누기2 왼쪽오른쪽
       셑팅_캔버스바디.innerHTML='';
@@ -762,24 +752,19 @@ function 캔버스클릭시(e) {
         }
         왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
         오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
-
       }
       if (개수>34) {
-        for (var i=0; i<(개수/2); i++) {
-          왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
-        }
-        for (var i=(개수/2); i<개수; i++) {
-          오른쪽내부html+=검색할버튼클래스들[i].outerHTML;
+        for (var i=0; i<개수; i++) {
+          if (i<(개수/2)) {
+            왼쪽내부html+=검색할버튼클래스들[i].outerHTML;
+          }else {
+            오른쪽내부html+=검색할버튼클래스들[i].outerHTML;
+          }
         }
         왼쪽내부html='<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
         오른쪽내부html='<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
-
       }
       셑팅_캔버스바디.innerHTML=왼쪽내부html + 오른쪽내부html;
-      var 카테고리들=document.querySelectorAll('.카테고리');
-      for (var i=0; i<카테고리들.length; i++) {
-        카테고리들[i].style.display='none';
-      }
     }
     if (e.target.id=='캔버스바디_모든카테고리') {
       //최종적으로 세로 두줄이 되도록 한다. 17줄
@@ -790,14 +775,9 @@ function 캔버스클릭시(e) {
         내부html+=검색할버튼클래스들[i].outerHTML;
       }
       셑팅_캔버스바디.innerHTML=내부html;
-      var 카테고리들=document.querySelectorAll('.카테고리');
-      for (var i=0; i<카테고리들.length; i++) {
-        카테고리들[i].style.display='none';
-      }
-
     }
-    if (e.target.id=='canvas검색_clear') {
-      document.querySelector('#canvas검색').value='';   
+    if (e.target.id=='canvas검색input_clear') {
+      document.querySelector('#canvas검색input').value='';   
     }
     if (e.target.id=='캔버스바디_카테고리숨김') {
       //class="카테고리실행". 
@@ -837,8 +817,8 @@ function main과우측_클릭시(e) {
 리스너_해역사진관련.addEventListener('click',리스너_해역사진관련_클릭시);
 리스너_해역사진관련.addEventListener('change',리스너_해역사진관련_change시);
 리스너_해역사진관련.addEventListener('dblclick',리스너_해역사진관련_dblclick시);
-리스너_캔버스.addEventListener('click',캔버스클릭시);
-리스너_캔버스.addEventListener('change',캔버스_검색value_change시);
+리스너_캔버스전체.addEventListener('click',캔버스클릭시);
+리스너_캔버스전체.addEventListener('change',캔버스_검색input_change시);
 리스너_main과우측.addEventListener('click',main과우측_클릭시);
 
 
