@@ -36,6 +36,7 @@ code {color:black;}
 #차감input들 > div {display: inline-block;width:70px;margin-bottom:-1px;}
 /* #위무게와교섭력계산부분 > div : id="무게계산" [자식DIV :id="무게계산첫줄", h6안에 인풋과버튼들 3개*/
 #무게계산 {width:1000px;display:inline-block;}
+#무게계산 > #무게계산첫줄 > input {height:25px;}
 #무게계산 > #무게계산첫줄 > h6 {display:inline-block;}
 #무게계산 > #무게계산첫줄 > h6:nth-of-type(1) {margin-left:51px;}
 #무게계산 > #무게계산첫줄 > h6:nth-of-type(2) {margin-left:10px;}

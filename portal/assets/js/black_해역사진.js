@@ -1,4 +1,22 @@
 function 교섭력계산() {
+  var 일회교섭력=Number(document.querySelector('#일회교섭력').value);
+  if (isNaN(일회교섭력)) {일회교섭력=0}
+  //곱하는값은 인풋 오른쪽 형제
+  document.querySelector('#계산_재갱1회당').value=(일회교섭력*(4.30022)).toFixed(0);
+
+  document.querySelector('#계산_하코저가').value=(일회교섭력*(2.06013)).toFixed(0);
+  document.querySelector('#계산_하코고가').value=(일회교섭력*(2.80712)).toFixed(0);
+  document.querySelector('#계산_대양저가').value=(일회교섭력*(3.25815)).toFixed(0);
+  document.querySelector('#계산_대양고가').value=(일회교섭력*(4.0728)).toFixed(0);
+
+  document.querySelector('#계산_하코4종').value=document.querySelector('#계산_하코저가').value*2 + document.querySelector('#계산_하코고가').value*2;
+  document.querySelector('#계산_대양7종').value=document.querySelector('#계산_대양저가').value*3 + document.querySelector('#계산_대양고가').value*4;
+  document.querySelector('#계산_하코와대양합').value=Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
+  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5156)).toFixed(0);
+  document.querySelector('#계산_사단까주8개').value=(document.querySelector('#계산_사단까주').value*8).toFixed(0);
+
+  document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/일회교섭력).toFixed(1);
+
   if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
   if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
   var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
@@ -21,9 +39,9 @@ function 교섭력계산() {
   }
   남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
   document.querySelector('#나눈값').value=(Number(보유교섭력_요소.value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
-  document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/Number(document.querySelector('#일회교섭력으로').value)).toFixed(1);
+  document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
 }
-
+교섭력계산();
 //캔버스가 있다면 캔버스 head에 카테고리 제목들을 자동 셑팅해주는 코드를 만들어야함
 if (document.querySelector('#캔버스header')) {
   var 카테고리버튼생성='';//<button class="카테고리실행" title="참고">참고</button> 
@@ -33,30 +51,7 @@ if (document.querySelector('#캔버스header')) {
   }
   document.querySelector('#캔버스header').innerHTML=document.querySelector('#캔버스header').innerHTML + 카테고리버튼생성;
 }
-//보기셑팅관련
-function 일회교섭력으로계산() {
-  var 일회교섭력=Number(document.querySelector('#일회교섭력으로').value);
-  if (isNaN(일회교섭력)) {일회교섭력=0}
-  //곱하는값은 인풋 오른쪽 형제
-  document.querySelector('#계산_재갱1회당').value=(일회교섭력*(4.30022)).toFixed(0);
 
-  document.querySelector('#일회교섭력').value=document.querySelector('#계산_재갱1회당').value;//재갱교섭력 배무게정보있는쪽
-  document.querySelector('#나눈값').value=(1000000/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
-
-  document.querySelector('#계산_하코저가').value=(일회교섭력*(2.06013)).toFixed(0);
-  document.querySelector('#계산_하코고가').value=(일회교섭력*(2.80712)).toFixed(0);
-  document.querySelector('#계산_대양저가').value=(일회교섭력*(3.25815)).toFixed(0);
-  document.querySelector('#계산_대양고가').value=(일회교섭력*(4.0728)).toFixed(0);
-
-  document.querySelector('#계산_하코4종').value=document.querySelector('#계산_하코저가').value*2 + document.querySelector('#계산_하코고가').value*2;
-  document.querySelector('#계산_대양7종').value=document.querySelector('#계산_대양저가').value*3 + document.querySelector('#계산_대양고가').value*4;
-  document.querySelector('#계산_하코와대양합').value=Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
-  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5156)).toFixed(0);
-  document.querySelector('#계산_사단까주8개').value=(document.querySelector('#계산_사단까주').value*8).toFixed(0);
-
-  document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/일회교섭력).toFixed(1);
-}
-일회교섭력으로계산()
 var 메모아이디;
 var 메모요소;
 var 보기셑팅유형='해역사진초기값';
@@ -489,6 +484,31 @@ function 코딩해역메모위치조정() {
 }
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_해역사진관련_클릭시(e)');
+  //선원비율클릭시
+  if (e.target.id=='육삼이') {
+    document.querySelector('#선원_순수').nextElementSibling.innerHTML=6;
+    document.querySelector('#선원_현실').nextElementSibling.innerHTML=3;
+    document.querySelector('#선원_자신').nextElementSibling.innerHTML=2;
+    계산_배와장비무게();
+  }
+  if (e.target.id=='자신20') {
+    document.querySelector('#선원_순수').nextElementSibling.innerHTML=0;
+    document.querySelector('#선원_현실').nextElementSibling.innerHTML=0;
+    document.querySelector('#선원_자신').nextElementSibling.innerHTML=20;
+    계산_배와장비무게();
+  }
+  if (e.target.id=='순수10') {
+    document.querySelector('#선원_순수').nextElementSibling.innerHTML=10;
+    document.querySelector('#선원_현실').nextElementSibling.innerHTML=0;
+    document.querySelector('#선원_자신').nextElementSibling.innerHTML=0;
+    계산_배와장비무게();
+  }
+  if (e.target.id=='현실10') {
+    document.querySelector('#선원_순수').nextElementSibling.innerHTML=0;
+    document.querySelector('#선원_현실').nextElementSibling.innerHTML=10;
+    document.querySelector('#선원_자신').nextElementSibling.innerHTML=0;
+    계산_배와장비무게();
+  }
   //교섭력규칙 안의 숫자클릭시
   var 실행='';
   if (e.target.id=='계산_하코저가'||e.target.id=='계산_하코고가'||e.target.id=='계산_대양저가'||e.target.id=='계산_대양고가'||
@@ -590,15 +610,16 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
       }
       차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
     }
-    남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
-    document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/Number(document.querySelector('#일회교섭력으로').value)).toFixed(1);
+    교섭력계산();
   }
   if (e.target.parentNode.id=='차감할교섭력_clear') {
+    var 남은교섭력=document.querySelectorAll('#남은교섭력').value;
     for (var i=0; i<document.querySelectorAll('#차감input들 button').length;) {
-      document.querySelectorAll('#차감input들 input')[i].value='';
-      document.querySelectorAll('#차감input들 button')[i].value=1;
+        document.querySelectorAll('#차감input들 input')[i].value='';
+        document.querySelectorAll('#차감input들 button')[i].value=1;
     }
-    교섭력계산();
+    document.querySelectorAll('#차감후교섭력').value=남은교섭력;
+    alert('실행했다');
   }
   
   //textarea보기숨기기 : 보기숨기기, id="해역_물품단계"가 셑팅이 안되어 있는경우, 되어있는경우.
@@ -628,11 +649,11 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   }
   //차감할교섭력_clear
   if (e.target.id=='차감할교섭력_clear') {
-    document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;
     for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
       document.querySelectorAll('#차감input들 input')[i].value='';
       document.querySelectorAll('#차감input들 button')[i].innerHTML=1;
     }
+    document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=document.querySelectorAll('#남은_차감후_교섭력 input')[0].value;
   }
   //id=나의무게_clear
   if (e.target.id=='나의무게_clear') {
