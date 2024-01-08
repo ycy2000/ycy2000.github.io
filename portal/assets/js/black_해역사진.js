@@ -1,3 +1,29 @@
+function 교섭력계산() {
+  if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
+  if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
+  var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
+  var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
+
+  var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
+  var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
+
+  var 차감할교섭력=0;
+  var 곱할값=0;
+
+  for (var i=0; i<차감할1회교섭력_12개.length; i++) {
+    if (isNaN(차감할1회교섭력_12개[i].value*1)) {
+      곱할값=0;
+    } else {
+      곱할값=차감할1회교섭력_12개[i].value*1;
+    }
+
+    차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
+  }
+  남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
+  document.querySelector('#나눈값').value=(Number(보유교섭력_요소.value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
+  document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/Number(document.querySelector('#일회교섭력으로').value)).toFixed(1);
+}
+
 //캔버스가 있다면 캔버스 head에 카테고리 제목들을 자동 셑팅해주는 코드를 만들어야함
 if (document.querySelector('#캔버스header')) {
   var 카테고리버튼생성='';//<button class="카테고리실행" title="참고">참고</button> 
@@ -9,50 +35,26 @@ if (document.querySelector('#캔버스header')) {
 }
 //보기셑팅관련
 function 일회교섭력으로계산() {
-  var 인풋들=document.querySelectorAll('#교섭력규칙 input')
   var 일회교섭력=Number(document.querySelector('#일회교섭력으로').value);
   if (isNaN(일회교섭력)) {일회교섭력=0}
-  //document.querySelectorAll('#교섭력규칙 input')[0] ==> 일회교섭력
-  //document.querySelectorAll('#교섭력규칙 input')[1] ==> 재갱1회당
-  //document.querySelectorAll('#교섭력규칙 input')[2] ==> 하코번저가2종
-  //document.querySelectorAll('#교섭력규칙 input')[3] ==> 하코번고가2종
-  //document.querySelectorAll('#교섭력규칙 input')[4] ==> 대양저가3종
-  //document.querySelectorAll('#교섭력규칙 input')[5] ==> 대양고가3종
-  //document.querySelectorAll('#교섭력규칙 input')[6] ==> 하코4종합계
-  //document.querySelectorAll('#교섭력규칙 input')[7] ==> 대양6종합계
-  //document.querySelectorAll('#교섭력규칙 input')[8] ==> 까주합
   //곱하는값은 인풋 오른쪽 형제
-  var 기록할값;
-  console.log('일회교섭력 : ' + 일회교섭력);
-  기록할값=일회교섭력 * Number(인풋들[1].nextElementSibling.innerHTML);
-  인풋들[1].value=기록할값.toFixed(0);//재갱1회당
+  document.querySelector('#계산_재갱1회당').value=(일회교섭력*(4.30022)).toFixed(0);
 
-  document.querySelector('#일회교섭력').value=기록할값.toFixed(0);
+  document.querySelector('#일회교섭력').value=document.querySelector('#계산_재갱1회당').value;//재갱교섭력 배무게정보있는쪽
+  document.querySelector('#나눈값').value=(1000000/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
 
-  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML);
-  인풋들[2].value=기록할값.toFixed(0);//하코번저가2종
+  document.querySelector('#계산_하코저가').value=(일회교섭력*(2.06013)).toFixed(0);
+  document.querySelector('#계산_하코고가').value=(일회교섭력*(2.80712)).toFixed(0);
+  document.querySelector('#계산_대양저가').value=(일회교섭력*(3.25815)).toFixed(0);
+  document.querySelector('#계산_대양고가').value=(일회교섭력*(4.0728)).toFixed(0);
 
-  기록할값=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML);
-  인풋들[3].value=기록할값.toFixed(0);//하코번고가2종
+  document.querySelector('#계산_하코4종').value=document.querySelector('#계산_하코저가').value*2 + document.querySelector('#계산_하코고가').value*2;
+  document.querySelector('#계산_대양7종').value=document.querySelector('#계산_대양저가').value*3 + document.querySelector('#계산_대양고가').value*4;
+  document.querySelector('#계산_하코와대양합').value=Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
+  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5156)).toFixed(0);
+  document.querySelector('#계산_사단까주8개').value=(document.querySelector('#계산_사단까주').value*8).toFixed(0);
 
-  기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML);
-  인풋들[4].value=기록할값.toFixed(0);//대양저가3종
-
-  기록할값=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML);
-  인풋들[5].value=기록할값.toFixed(0);//대양고가3종
-
-  기록할값=일회교섭력 * Number(인풋들[2].nextElementSibling.innerHTML) * 2;
-  기록할값+=일회교섭력 * Number(인풋들[3].nextElementSibling.innerHTML) * 2;
-  인풋들[6].value=기록할값.toFixed(0);//하코4종합계
-
-  기록할값=일회교섭력 * Number(인풋들[4].nextElementSibling.innerHTML) * 3;
-  기록할값+=일회교섭력 * Number(인풋들[5].nextElementSibling.innerHTML) * 3;
-  인풋들[7].value=기록할값.toFixed(0);//대양6종합계
-
-  인풋들[8].value=Number(인풋들[6].value) + Number(인풋들[7].value);//까주합
-
-  document.querySelector('#사단까주').value=Number(일회교섭력 * 1.51556).toFixed(0);//사단까주
-  document.querySelector('#사단까주8개').value=Number(일회교섭력 * 1.51556 * 8).toFixed(0);//사단까주8개
+  document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/일회교섭력).toFixed(1);
 }
 일회교섭력으로계산()
 var 메모아이디;
@@ -353,28 +355,7 @@ function 리스너_해역사진관련_dblclick시(e) {
   console.log('리스너_해역사진관련_dblclick시(e)');
   if (e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT' && e.target.nextElementSibling.nodeName=='BUTTON') {
     e.target.nextElementSibling.innerHTML=1;
-    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
-    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
-    var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
-    var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
-  
-    var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
-    var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
-  
-    var 차감할교섭력=0;
-    var 곱할값=0;
-  
-    for (var i=0; i<차감할1회교섭력_12개.length; i++) {
-      if (isNaN(차감할1회교섭력_12개[i].value*1)) {
-        곱할값=0;
-      } else {
-        곱할값=차감할1회교섭력_12개[i].value*1;
-      }
-  
-      차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
-    }
-  
-    남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
+    교섭력계산()
   }
 }
 function 리스너_해역사진관련_change시(e) {
@@ -387,30 +368,7 @@ function 리스너_해역사진관련_change시(e) {
   var result='';
   //교섭력오른쪽의 버튼클릭시 값 +1, && e.target.nextElementSibling.nodeName=='BUTTON' 제거, 남은교섭력 change시에 작동안해서
   if ((e.target.parentNode.parentNode.id=='교섭력계산' && e.target.nodeName=='INPUT') || e.target.id=='일회교섭력') {
-    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[0].value=0;}
-    if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) {document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=0;}
-    var 보유교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[0];
-    var 남은교섭력_요소=document.querySelectorAll('#남은_차감후_교섭력 input')[1];
-  
-    var 차감할1회교섭력_12개=document.querySelectorAll('#차감input들 input');
-    var 차감할횟수_12개=document.querySelectorAll('#차감input들 button');
-  
-    var 차감할교섭력=0;
-    var 곱할값=0;
-  
-    for (var i=0; i<차감할1회교섭력_12개.length; i++) {
-      if (isNaN(차감할1회교섭력_12개[i].value*1)) {
-        곱할값=0;
-      } else {
-        곱할값=차감할1회교섭력_12개[i].value*1;
-      }
-  
-      차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
-    }
-  
-    남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
-    document.querySelector('#나눈값').value=(Number(보유교섭력_요소.value)/Number(document.querySelector('#일회교섭력').value)).toFixed(1);
-    
+    교섭력계산()
   }
   //섬이름검색
   if (1==1) {
@@ -531,6 +489,22 @@ function 코딩해역메모위치조정() {
 }
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_해역사진관련_클릭시(e)');
+  //교섭력규칙 안의 숫자클릭시
+  var 실행='';
+  if (e.target.id=='계산_하코저가'||e.target.id=='계산_하코고가'||e.target.id=='계산_대양저가'||e.target.id=='계산_대양고가'||
+      e.target.id=='계산_하코4종'||e.target.id=='계산_대양7종'||e.target.id=='계산_사단까주'||e.target.id=='계산_사단까주8개'||
+      e.target.id=='계산_하코와대양합'||e.target.id=='일회교섭력으로'||e.target.id=='계산_재갱1회당') {
+        for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
+          if (실행=='' && document.querySelectorAll('#차감input들 input')[i].value=='') {
+            console.log('실행되어야할 부분');
+           
+            document.querySelectorAll('#차감input들 input')[i].value=e.target.value;
+            document.querySelectorAll('#차감input들 input')[i].nextElementSibling.innerHTML=1;
+            교섭력계산()
+            실행='실행했음';
+          }
+        }
+    }
   if (e.target.classList.contains('코딩해역메모')) {
     if (document.querySelector('#' + e.target.title).style.visibility=='hidden') {
       document.querySelector('#' + e.target.title).style.visibility='visible';
@@ -547,9 +521,9 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
       e.target.style.visibility='hidden';
   }
   if (e.target.title=='바다악어') {
-    document.querySelector('#전체대체').innerHTML=document.querySelector('#해역관련자료none #바다악어').outerHTML;
-    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
-    document.querySelector('#전체대체').classList.remove('d-none');
+    document.querySelector('#해역_물품단계_대체부분').innerHTML=document.querySelector('#해역관련자료none #바다악어').outerHTML;
+    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.remove('d-none');
   }
   if (e.target.classList.contains('선원플러스')) {
     var 숫자=Number(e.target.previousElementSibling.innerHTML);
@@ -617,14 +591,16 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
       차감할교섭력+=Number(차감할횟수_12개[i].innerHTML)*곱할값;
     }
     남은교섭력_요소.value=보유교섭력_요소.value-차감할교섭력;
+    document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/Number(document.querySelector('#일회교섭력으로').value)).toFixed(1);
   }
   if (e.target.parentNode.id=='차감할교섭력_clear') {
     for (var i=0; i<document.querySelectorAll('#차감input들 button').length;) {
       document.querySelectorAll('#차감input들 input')[i].value='';
-      document.querySelectorAll('#차감input들 button')[i].value='';
+      document.querySelectorAll('#차감input들 button')[i].value=1;
     }
-    document.querySelectorAll('#남은_차감후_교섭력 input')[1].value=111;
+    교섭력계산();
   }
+  
   //textarea보기숨기기 : 보기숨기기, id="해역_물품단계"가 셑팅이 안되어 있는경우, 되어있는경우.
   if (e.target.id=='textarea보기숨기기') {
     //상단시작지점 top:212px; 그림아래top:1026px;*/
@@ -820,5 +796,4 @@ function main과우측_클릭시(e) {
 리스너_캔버스전체.addEventListener('click',캔버스클릭시);
 리스너_캔버스전체.addEventListener('change',캔버스_검색input_change시);
 리스너_main과우측.addEventListener('click',main과우측_클릭시);
-
 
