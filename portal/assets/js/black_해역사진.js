@@ -540,7 +540,7 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   if (e.target.classList.contains('팝업메모')) {
       e.target.style.visibility='hidden';
   }
-  if (e.target.title=='바다악어') {
+  if (e.target.innerHTML=='바다악어') {
     document.querySelector('#해역_물품단계_대체부분').innerHTML=document.querySelector('#해역관련자료none #바다악어').outerHTML;
     document.querySelector('#해역_물품단계_고정').classList.add('d-none');
     document.querySelector('#해역_물품단계_대체부분').classList.remove('d-none');
