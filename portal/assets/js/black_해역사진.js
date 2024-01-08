@@ -5,14 +5,16 @@ function 교섭력계산() {
   document.querySelector('#계산_재갱1회당').value=(일회교섭력*(4.30022)).toFixed(0);
 
   document.querySelector('#계산_하코저가').value=(일회교섭력*(2.06013)).toFixed(0);
-  document.querySelector('#계산_하코고가').value=(일회교섭력*(2.80712)).toFixed(0);
+  document.querySelector('#계산_더코').value=(일회교섭력*(2.5495)).toFixed(0);
+  document.querySelector('#계산_하코').value=(일회교섭력*(3.06473)).toFixed(0);
   document.querySelector('#계산_대양저가').value=(일회교섭력*(3.25815)).toFixed(0);
   document.querySelector('#계산_대양고가').value=(일회교섭력*(4.0728)).toFixed(0);
 
-  document.querySelector('#계산_하코4종').value=document.querySelector('#계산_하코저가').value*2 + document.querySelector('#계산_하코고가').value*2;
+  document.querySelector('#계산_하코4종').value=Number(document.querySelector('#계산_하코저가').value*2)
+  + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
   document.querySelector('#계산_대양7종').value=document.querySelector('#계산_대양저가').value*3 + document.querySelector('#계산_대양고가').value*4;
   document.querySelector('#계산_하코와대양합').value=Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
-  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5156)).toFixed(0);
+  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5155)).toFixed(0);
   document.querySelector('#계산_사단까주8개').value=(document.querySelector('#계산_사단까주').value*8).toFixed(0);
 
   document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/일회교섭력).toFixed(1);
@@ -513,7 +515,7 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   var 실행='';
   if (e.target.id=='계산_하코저가'||e.target.id=='계산_하코고가'||e.target.id=='계산_대양저가'||e.target.id=='계산_대양고가'||
       e.target.id=='계산_하코4종'||e.target.id=='계산_대양7종'||e.target.id=='계산_사단까주'||e.target.id=='계산_사단까주8개'||
-      e.target.id=='계산_하코와대양합'||e.target.id=='일회교섭력으로'||e.target.id=='계산_재갱1회당') {
+      e.target.id=='계산_하코와대양합'||e.target.id=='일회교섭력으로'||e.target.id=='계산_재갱1회당'||e.target.id=='일회교섭력') {
         for (var i=0; i<document.querySelectorAll('#차감input들 input').length; i++) {
           if (실행=='' && document.querySelectorAll('#차감input들 input')[i].value=='') {
             console.log('실행되어야할 부분');

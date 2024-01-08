@@ -222,7 +222,7 @@ code {color:black;}
 #모은재료_파템재료 > div > div > button:nth-of-type(6){background-color:chocolate;} /* 용맹 개수 기록 부분 */
 
 #교섭력규칙1 {display:inline-block;position: absolute;left:10px;top:47px;}
-#교섭력규칙2 {display:inline-block;position: absolute;left:10px;top:180px;}
+#교섭력규칙2 {display:inline-block;position: absolute;left:10px;top:199px;}
 #교섭력규칙1 span:nth-of-type(2n-1), #교섭력규칙2 span:nth-of-type(2n-1)
 {margin-bottom:-1px; display:inline-block;text-align: left;width:60px; height:20x;margin-left:22px;}
 #교섭력규칙1 input, #교섭력규칙2 input {margin-bottom:-1px; display:inline-block;width:50px; text-align: center;height:20px;}
