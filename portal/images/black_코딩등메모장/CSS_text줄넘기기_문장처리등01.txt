@@ -1,6 +1,0 @@
-줄 넘기지 않기 : 넘칠때 hidden; 넘칠때 끝처리 ellipsis; 줄넘김하지마 nowrap;
-
-.offcanvas-header > div  {list-style: none;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-
-
-

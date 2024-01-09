@@ -34,7 +34,7 @@ document.querySelector('#카피').innerHTML=선사기존html + document.querySel
 var 리스너_카피=document.querySelector('#카피');
 var 리스너_head_button_group=document.querySelector('#head_button_group');
 var 리스너_캔버스=document.querySelector('#offcanvasBottom');
-var 리스너_execl범위풀기결과=document.querySelector('#execl범위풀기결과');
+var 리스너_execl범위풀_기결과=document.querySelector('#execl범위풀_기결과');
 
 function 리스너_카피_클릭이벤트(e) {
   console.log('리스너_카피_클릭이벤트(e)');
@@ -53,26 +53,47 @@ function 리스너_카피_클릭이벤트(e) {
     var 아이디='_';
     아이디=e.target.parentNode.parentNode.id;
     if (아이디=='') {아이디='_'}
-    //id=선사정보에 해당아이디가 없는 경우에만 셑팅한다.
-    if (!document.querySelector('#선사정보 #' + 아이디 + '_정보') && document.querySelector('#선사정보_none #' + 아이디 + '_정보')) {
-      document.querySelector('#선사정보').innerHTML=document.querySelector('#선사정보_none #' + 아이디 + '_정보').outerHTML;
-      document.querySelector('#선사정보').style.visibility='visible';
-      console.log('아이디 : ' + 아이디);
-    } else if (document.querySelector('#선사정보 #' + 아이디 + '_정보') && document.querySelector('#선사정보').style.visibility=='hidden') {
-      document.querySelector('#선사정보').style.visibility='visible';
-    } else if (document.querySelector('#선사정보 #' + 아이디 + '_정보') && document.querySelector('#선사정보').style.visibility=='visible') {
-      document.querySelector('#선사정보').style.visibility='hidden';
-      console.log('아이디 : ' + 아이디);
+    //아이디:선사_OOCL, 선사==>선사정보 하려면
+
+    var 배치할곳=document.querySelector('#선사정보');
+    var 찾을정보있는none요소이름=아이디.split('_')[0] + '정보_none';
+    var 찾을요소=document.querySelector('#' + 찾을정보있는none요소이름 + ' #' + 아이디 + '_정보');
+
+    console.log(찾을정보있는none요소이름)
+
+    //id=선사정보에 해당아이디가 없는 경우에만 셑팅한다. #선사정보 #' + 아이디 + '_정보'는 경과부분이고, 선사정보가 아닐수도 있으니 헷갈리지 말것
+    //#선사정보_none #' + 아이디 + '_정보' 부분은 #선사정보_none==>#운송사정보_none 유연하게 될수 있도록 코딩한다.
+    if (!document.querySelector('#선사정보 #' + 아이디 + '_정보') && 찾을요소) {
+      배치할곳.innerHTML=찾을요소.outerHTML;
+      배치할곳.style.visibility='visible';
+    } else if (document.querySelector('#선사정보 #' + 아이디 + '_정보') && 배치할곳.style.visibility=='hidden') {
+      배치할곳.style.visibility='visible';
+    } else if (document.querySelector('#선사정보 #' + 아이디 + '_정보') && 배치할곳.style.visibility=='visible') {
+      배치할곳.style.visibility='hidden';
     } else {
-      document.querySelector('#선사정보').style.visibility='hidden';
-      console.log('아이디 : ' + 아이디);
+      배치할곳.style.visibility='hidden';
     }
-    console.log('마지막');
+    //left조정
+    if (찾을정보있는none요소이름=='선사정보_none') {배치할곳.style.left='154px'}
+    if (찾을정보있는none요소이름=='운송사정보_none') {배치할곳.style.left='284px'}
+
+    console.log('아이디 : ' + 아이디 + ' : 마지막');
   }
 }
 function 리스너_head_button_group클릭이벤트(e) {
   console.log('리스너_head_button_group클릭이벤트(e)');
+  if (e.target.id=='결과내검색_초기화버튼') {
+    console.log('e.target.id==결과내검색_초기화버튼');
+    //execl범위풀_기결과 안에 class 결과표시 가 있으면 classlist.remove
+    //카피 안에 class 결과표시 가 있으면 classlist.remove
+      var 찾을곳들=document.querySelectorAll('.결과내검색색깔넣기');
+      for (var i=0; i<찾을곳들.length; i++) {
+          찾을곳들[i].classList.remove('결과내검색색깔넣기');
+      }
+    document.querySelector('#결과내검색').value='';
+  }
   //버튼에 색칠하고 해당버튼의 title을 id로가진 결과left모음_none안의 요소를 id=결과left 에 배치
+  //카테고리의 경우 : 머리글이 각각 다르게 추가한 후에 배치한다??
   if (e.target.classList.contains('카테고리')) {
     for (var i=0; i<document.querySelectorAll('#head_button_group .카테고리').length; i++) {
       document.querySelectorAll('#head_button_group .카테고리')[i].classList.remove('active');
@@ -87,19 +108,20 @@ function 리스너_head_button_group클릭이벤트(e) {
     }
   }
   //textarea초기화
-  if (e.target.innerHTML=='초기화') {
-    // document.querySelector('#execl범위풀기결과').innerHTML='';
-    document.querySelector('#execl범위풀기결과').innerHTML='';
-    document.querySelector('#execl범위풀기결과').style.visibility='hidden';
-    document.querySelector('#textarea_보기숨기기').innerHTML='보기';
+  if (e.target.innerHTML=='결과만초기화') {
+    // document.querySelector('#execl범위풀_기결과').innerHTML='';
+    document.querySelector('#execl범위풀_기결과').innerHTML='';
+    document.querySelector('#execl범위풀_기결과').style.visibility='hidden';
+    document.querySelector('#textarea_보기숨기기').innerHTML='결과만보기';
   }
   //tab으로분리보기, 엑셀범위 붙여넣기 하면 가로는 탭, 세로는 줄바꿈이 된다.
-  if (e.target.innerHTML=='tab으로분리보기') {
+  if (e.target.innerHTML=='풀기') {
     var 문자열=document.querySelector('#dk').value;
     var 줄바꿈정보=문자열.split('\n');
     var 줄바꿈한줄정보;
     var 한줄결과문자열='';
     var 결과합치기문자열='';
+    if (문자열=='') {return;}
     for (var i=0; i<줄바꿈정보.length-1; i++) {
       한줄결과문자열='';
       줄바꿈한줄정보=줄바꿈정보[i].split('\t');
@@ -111,20 +133,20 @@ function 리스너_head_button_group클릭이벤트(e) {
     }
 
     var 문자열=document.querySelector('#dk').value;
-    if (document.querySelector('#execl범위풀기결과 span')) {
-        document.querySelector('#execl범위풀기결과').innerHTML+=결과합치기문자열;
-        document.querySelector('#execl범위풀기결과').style.visibility='visible';
-        document.querySelector('#textarea_보기숨기기').innerHTML='숨기기';
+    if (document.querySelector('#execl범위풀_기결과 span')) {
+        document.querySelector('#execl범위풀_기결과').innerHTML+=결과합치기문자열;
+        document.querySelector('#execl범위풀_기결과').style.visibility='visible';
+        document.querySelector('#textarea_보기숨기기').innerHTML='결과만숨기기';
       } else {
-        document.querySelector('#execl범위풀기결과').innerHTML=결과합치기문자열;
-        document.querySelector('#execl범위풀기결과').style.visibility='visible';
-        document.querySelector('#textarea_보기숨기기').innerHTML='숨기기';
+        document.querySelector('#execl범위풀_기결과').innerHTML=결과합치기문자열;
+        document.querySelector('#execl범위풀_기결과').style.visibility='visible';
+        document.querySelector('#textarea_보기숨기기').innerHTML='결과만보기';
       }
     //span폭조정. 마지막에 1칸짜리가 생기는데..마지막 정보를 제외하고 정보생성하였다. 위에서
     var div안span최대넓이들=[];//기존꺼에 + 될때 최대개수 다를수 있다...
     var 스타일width;
-    for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
-      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
+    for (var i=0; i<document.querySelectorAll('#execl범위풀_기결과 div').length; i++) {
+      document.querySelectorAll('#execl범위풀_기결과 div')[i].classList.add('코딩표시');
 
       for (var 내부=0; 내부<document.querySelectorAll('.코딩표시 > span').length; 내부++) {
         스타일width=window.getComputedStyle(document.querySelectorAll('.코딩표시 > span')[내부]).width;
@@ -140,7 +162,7 @@ function 리스너_head_button_group클릭이벤트(e) {
             div안span최대넓이들[내부]=스타일width;}
         }
       }
-      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.remove('코딩표시');
+      document.querySelectorAll('#execl범위풀_기결과 div')[i].classList.remove('코딩표시');
     }
     console.log('-------------넓이 확인 끝 ---------------')
     //맨 상단에 지우기 span 추가
@@ -154,36 +176,55 @@ function 리스너_head_button_group클릭이벤트(e) {
     if (document.querySelector('#del')) {
 
     } else {
-      document.querySelector('#execl범위풀기결과').innerHTML=맨상단지우기span+document.querySelector('#execl범위풀기결과').innerHTML;
+      document.querySelector('#execl범위풀_기결과').innerHTML=맨상단지우기span+document.querySelector('#execl범위풀_기결과').innerHTML;
     }
     //span넓이 조정
-    for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
-      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
+    for (var i=0; i<document.querySelectorAll('#execl범위풀_기결과 div').length; i++) {
+      document.querySelectorAll('#execl범위풀_기결과 div')[i].classList.add('코딩표시');
 
       for (var 내부=0; 내부<document.querySelectorAll('.코딩표시 > span').length; 내부++) {
         document.querySelectorAll('.코딩표시 > span')[내부].style.width=Number(div안span최대넓이들[내부]) + 10 + 'px';
       }
-      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.remove('코딩표시');
+      document.querySelectorAll('#execl범위풀_기결과 div')[i].classList.remove('코딩표시');
     }
+    document.querySelector('#dk').classList.add('execl범위풀_기결과_보라색칠');
+    document.querySelector('#textarea_보기숨기기').innerHTML='결과만숨기기';
   }
   //innerHTML이 clear
   if (e.target.innerHTML=='clear') {
     document.querySelector('#dk').value='';
+    document.querySelector('#dk').classList.remove('execl범위풀_기결과_보라색칠');
   }
   //innerHTML이 보기/숨기기
-  if (e.target.innerHTML=='숨기기') {
-    console.log('e.target.innerHTML==숨기기');
-    document.querySelector('#execl범위풀기결과').style.visibility='hidden';//textarea는 현재보이는 정보가 value 
-    e.target.innerHTML='보기';
-  } else if (e.target.innerHTML=='보기') {
-    document.querySelector('#execl범위풀기결과').style.visibility='visible';//textarea는 현재보이는 정보가 value 
-    e.target.innerHTML='숨기기';
+  if (e.target.innerHTML=='결과만숨기기') {
+    console.log('e.target.innerHTML==결과만숨기기');
+    document.querySelector('#execl범위풀_기결과').style.visibility='hidden';//textarea는 현재보이는 정보가 value 
+    e.target.innerHTML='결과만보기';
+  } else if (e.target.innerHTML=='결과만보기') {
+    document.querySelector('#execl범위풀_기결과').style.visibility='visible';//textarea는 현재보이는 정보가 value 
+    e.target.innerHTML='결과만숨기기';
   }
 }
 
 function 리스너_head_button_group_change이벤트(e) {
   //e
-  console.log('리스너_head_button_group_change이벤트(e)');
+  console.log('리스너_head_button_group_change이벤트(e) ==> id==결과내검색');
+  if (e.target.id=='결과내검색') {//#카피 안에 들어와 있는 내용들을 확인한다. id=결과내검색 input 변경시
+    //#카피 > div > div > div : #카피 > #결과>선사 > #선사_고려해운 > div(가로한줄)
+    console.log('작성중.1.#카피 > div > div > div : #카피 > #결과>선사 > #선사_고려해운 > div(가로한줄) 에서 : \n div(가로한줄).innerText 에 검색값 포함 되면'
+    + '\n부모요소에 결과내검색색깔넣기 class.add \n2.해당작업을 #execl범위풀_기결과 > div > span에도 '
+    + '\n부모div에 색깔넣기용 class.add');
+    console.log('document.querySelectorAll(#카피 > div > div > div).length : ' + document.querySelectorAll('#카피 > div > div > div').length);
+
+    var text=document.querySelector('#결과내검색').value;
+    if (text=='') {return;}
+    var 찾을곳들=document.querySelectorAll('#카피 > div > div > div');
+    for (var i=0; i<찾을곳들.length; i++) {
+      if (찾을곳들[i].innerText.search(text)>-1) {
+        찾을곳들[i].parentElement.classList.add('결과내검색색깔넣기');
+      }
+    }
+  }
 }
 function 캔버스_검색value_change시(e) {
   console.log('캔버스_검색value_change시(e)');
@@ -333,8 +374,8 @@ function 캔버스클릭시(e) {
 
   }
 }
-function execl범위풀기결과_click시(e) {
-  console.log('execl범위풀기결과_click시(e)');
+function execl범위풀_기결과_click시(e) {
+  console.log('execl범위풀_기결과_click시(e)');
   //한줄당 하나의 div이고, div안에 span이 있다... 표시순번이 0인것(첫번째)==> 첫번째 세로숨김 제한. 첫번째 가로숨김 제한
   if (e.target.innerHTML=='del') {
     e.target.classList.add('코딩표시');
@@ -343,14 +384,14 @@ function execl범위풀기결과_click시(e) {
       if (document.querySelectorAll('#del span')[i].classList.contains('코딩표시')) {표시순번=i;}
     }
     e.target.classList.remove('코딩표시');
-    for (var i=0; i<document.querySelectorAll('#execl범위풀기결과 div').length; i++) {
-      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.add('코딩표시');
+    for (var i=0; i<document.querySelectorAll('#execl범위풀_기결과 div').length; i++) {
+      document.querySelectorAll('#execl범위풀_기결과 div')[i].classList.add('코딩표시');
       for (var 내부=0; 내부<document.querySelectorAll('.코딩표시 span').length; 내부++) {
         if (내부==표시순번) {
           document.querySelectorAll('.코딩표시 span')[내부].classList.add('d-none');
         }
       }
-      document.querySelectorAll('#execl범위풀기결과 div')[i].classList.remove('코딩표시');
+      document.querySelectorAll('#execl범위풀_기결과 div')[i].classList.remove('코딩표시');
     }
   }
 }
@@ -359,5 +400,5 @@ function execl범위풀기결과_click시(e) {
 리스너_head_button_group.addEventListener('change', 리스너_head_button_group_change이벤트);
 리스너_캔버스.addEventListener('click',캔버스클릭시);
 리스너_캔버스.addEventListener('change',캔버스_검색value_change시);
-리스너_execl범위풀기결과.addEventListener('click',execl범위풀기결과_click시);
+리스너_execl범위풀_기결과.addEventListener('click',execl범위풀_기결과_click시);
 

@@ -237,7 +237,6 @@
       <form onsubmit="return false"><input class="섬검색인풋" type = "text" maxlength = "10"></form>
       <div></div><!--width등--><span>, </span>
       <button id="섬검색초기화">섬검색결과 초기화</button>
-      <button><a href="https://creativefactorys.tistory.com/entry/%EA%B2%80%EC%9D%80%EC%82%AC%EB%A7%89-%EC%BD%95%EC%8A%A4-%ED%95%B4%EC%A0%81%EB%8B%A8-%EC%9C%A0%EB%A0%B9%EC%84%A0-%EB%A7%89%EC%82%AC-%EB%A3%A8%ED%8A%B8-%EC%A0%95%EB%A6%AC" target="_blank">파도빛각목</a></button>
     </div>
   </div>
   <div id="해역_물품단계_고정">
@@ -503,6 +502,7 @@
         <h6 class="canvas_div" title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
         <h6 class="canvas_div" title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
         <h6 class="canvas_div" title='JS_textarea내용의탭으로구분여러줄가공'>JS_textarea내용의탭으로구분여러줄가공</h6>
+        <h6 class="canvas_div" title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
       </div>
       <div>
         <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(0);==>12.1, 반올림</h6>
@@ -530,7 +530,6 @@
     </div>
     <div class="canvas카테고리" id="CSS">
       <div>
-        <h6 class="코딩등메모장text파일" title='CSS_text줄넘기기_문장처리등01.txt'>CSS_text줄넘기기_문장처리등01.txt : 줄넘기지 않기, overflow시 처리</h6>
         <h6 class="코딩등메모장text파일" title='CSS_이미지_배경에서_일부분만.txt'>CSS_이미지_배경에서_일부분만.txt</h6>
         <h6 class="코딩등메모장text파일" title='CSS_특정상황_속성등_스타일.txt'>CSS_특정상황_속성등_스타일.txt</h6>
       </div>
@@ -665,6 +664,7 @@
     </div>
     <div id="줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격"><!-- 참고 -->
       <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold"><a href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95" target="_blank">자바스크립트로 오버플로 확인</a></h5>
         <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
         <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
         <h6 style="text-indent: 23px;">넘김 ==> white-space:normal;  넘기지 않음 ==> white-space:nowrap;	</h6>
@@ -715,6 +715,22 @@
       <h6 style="text-indent: 18px;">탭으로 분리된 것 : split("\t"), 탭문자 자체를 넣어도 됨</h6>
       <h6 style="text-indent: 18px;">줄바꿈 된 것 : split("\n")</h6>
       <br><br><br><br><br><br><br>
+    </div>
+    <div id="JS_search_find_match사용법">
+      <h6 style="font-weight: bold;">• search</h6>
+      <code style="color:black;">if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) &#123;</code><br>
+      <code style="color:black;text-indent: 23px;">내부html+=검색할버튼클래스들[i].outerHTML;</code><br>
+      <code style="color:black;">&#125;</code>
+      <h6 style="font-weight: bold;">• find : 배열안에 찾을값이 있는지 확인.</h6>
+      <code style="color:black;">var 구역04_서서남=['에베토','발베쥬','마를레느'];</code><br>
+      <code style="color:black;text-indent: 23px;">if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};</code>
+      <h6>정확히 일치하는 값이 있으면 true</h6>
+      <h6 style="font-weight: bold;">• match : 1.대소문자구분, 2.대소문자구분없이 "i"</h6>
+      <h6>1) 대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
+      <code style="color:black;">String.match(new RegExp(searchVariable, "i"));</code><br>
+      <h6>1) 대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
+      <code style="color:black;">String.match(new RegExp(searchVariable));</code><br>
+      <h6>일치하는 값이 있으면 true, 없으면 null(false)</h6>
     </div>
     <div id="JS_input_value_숫자표현결과_조건표현인자">
       <h6>★ 숫자를 더할 경우 숫자로 표현되도록 바꾸어야한다.</h6>
