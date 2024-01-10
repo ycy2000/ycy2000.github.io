@@ -1,3 +1,4 @@
+document.querySelector('#적재가능일반무게').value=document.querySelector('#점진무게').title;
 function 교섭력계산() {
   var 일회교섭력=Number(document.querySelector('#일회교섭력').value);
   if (isNaN(일회교섭력)) {일회교섭력=0}
@@ -490,6 +491,14 @@ function 코딩해역메모위치조정() {
 }
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_해역사진관련_클릭시(e)');
+  if (e.target.id=='점진무게') {
+    document.querySelector('#적재가능일반무게').value=21830;
+    계산_배와장비무게()
+  }
+  if (e.target.id=='용맹무게') {
+    document.querySelector('#적재가능일반무게').value=19500;
+    계산_배와장비무게()
+  }
   //선원비율클릭시
   if (e.target.id=='육삼이') {
     document.querySelector('#선원_순수').nextElementSibling.innerHTML=6;
