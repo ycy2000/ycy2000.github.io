@@ -325,7 +325,11 @@ if (document.querySelector('#해역_물품단계')) {
 계산_배와장비무게()
 }
 function navbar_임시함수_click () {
-  alert(Math.floor( 12 / 5)) // 2
+  let str = document.querySelector('#JS_search_find_match사용법').innerText;
+  console.log(str.length);
+  console.log(str.match('검색할버튼클래스들'));
+
+
 }
 
 

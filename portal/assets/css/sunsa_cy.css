@@ -18,23 +18,22 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 .navbar-collapse {margin:0;padding:0}
 
 #카피, #캔버스결과 {margin-left:5px;}
-/* #결과_선사 > div ==> #카피 안으로 배치되므로  #카피 안에 #결과_선사 > div*/
-/* #결과_선사 > div ==> #결과_선사  안의 각각 ex)id=선사_고려해운 : 가로 한줄을 품고 있다 */
-#결과_선사 > div {white-space: nowrap;}/* nowarp<>normal */
-#결과_선사 > div > div {display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
-#결과_선사 > div > div:first-child {width:150px;}
-#결과_선사 > div > div:first-child > span {float:right;margin-top: 2px;}
-#결과_선사 > div > div:nth-of-type(2) {width:1700px;}
+/* 가로한줄이 독립적이게... 전체검색시 여러군데서 가지고 오게 되니까... */
+.결과_선사한줄독립 {white-space: nowrap;}/* nowarp<>normal */
+.결과_선사한줄독립 > div {display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.결과_선사한줄독립 > div:first-child {width:150px;}
+.결과_선사한줄독립 > div:first-child > span {float:right;margin-top: 2px;}
+.결과_선사한줄독립 > div:nth-of-type(2) {width:1700px;}
 
-#결과_운송사 > div {white-space: nowrap;}
-#결과_운송사 > div > div {overflow: hidden;height:28px;vertical-align: top; display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
-#결과_운송사 > div > div:first-child {width:280px;}
-#결과_운송사 > div > div:first-child > span {float:right;margin-top: 2px;}
-#결과_운송사 > div > div:nth-of-type(2) {width:300px;}
-#결과_운송사 > div > div:nth-of-type(3) {width:200px;}
-#결과_운송사 > div > div:nth-of-type(4) {width:200px;margin-right:-6px;}
-#결과_운송사 > div > div:nth-of-type(5) {width:200px;}
-#결과_운송사 > div > div:nth-of-type(6) {width:674px;}
+.결과_운송사한줄독립 {white-space: nowrap;}
+.결과_운송사한줄독립 > div {overflow: hidden;height:28px;vertical-align: top; display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.결과_운송사한줄독립 > div:first-child {width:280px;}
+.결과_운송사한줄독립 > div:first-child > span {float:right;margin-top: 2px;}
+.결과_운송사한줄독립 > div:nth-of-type(2) {width:300px;}
+.결과_운송사한줄독립 > div:nth-of-type(3) {width:200px;}
+.결과_운송사한줄독립 > div:nth-of-type(4) {width:200px;margin-right:-6px;}
+.결과_운송사한줄독립 > div:nth-of-type(5) {width:200px;}
+.결과_운송사한줄독립 > div:nth-of-type(6) {width:674px;}
 
 
 /* #카피 시작부분에 #선사정보 absolute상태, 선사 클릭시 선사정보가 있으면 id를 참조해 #선사정보_none > #타이틀을 가져옴, id가 선사_==>선사정보_ */

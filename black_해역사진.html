@@ -717,20 +717,70 @@
       <br><br><br><br><br><br><br>
     </div>
     <div id="JS_search_find_match사용법">
-      <h6 style="font-weight: bold;">• search</h6>
-      <code style="color:black;">if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) &#123;</code><br>
-      <code style="color:black;text-indent: 23px;">내부html+=검색할버튼클래스들[i].outerHTML;</code><br>
-      <code style="color:black;">&#125;</code>
-      <h6 style="font-weight: bold;">• find : 배열안에 찾을값이 있는지 확인.</h6>
-      <code style="color:black;">var 구역04_서서남=['에베토','발베쥬','마를레느'];</code><br>
-      <code style="color:black;text-indent: 23px;">if (구역04_서서남.find(element => element==text)) {result="구역04_서서남"};</code>
-      <h6>정확히 일치하는 값이 있으면 true</h6>
-      <h6 style="font-weight: bold;">• match : 1.대소문자구분, 2.대소문자구분없이 "i"</h6>
-      <h6>1) 대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
-      <code style="color:black;">String.match(new RegExp(searchVariable, "i"));</code><br>
-      <h6>1) 대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
-      <code style="color:black;">String.match(new RegExp(searchVariable));</code><br>
-      <h6>일치하는 값이 있으면 true, 없으면 null(false)</h6>
+      <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6 style="font-weight: bold;">• search : 없으면 -1, 첫번째면 0, 대소문자 구분.</h6>
+        <code style="color:black;">if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) &#123;
+          <br><span style="margin-right:23px;"></span>내부html+=검색할버튼클래스들[i].outerHTML;
+          <br>&#125;</code>
+        <h6 style="font-weight: bold;">• find : 배열안에 찾을값이 있는지 확인. arr.find(callback(element, index, array), thisArg)</h6>
+        <h6 style="font-weight: bold;">• 대소문자 구분, 전체일치.</h6>
+        <h6 style="margin-left:10px;">find 함수는 배열의 요소를 순차적으로 순회하면서 조건에 일치하는 요소의 값을 즉시 반환합니다. </h6>
+        <h6 style="margin-left:10px;">조건을 일치하는 경우가 없다면, undefined를 반환합니다.</h6>
+        <h6 style="margin-left:10px;">arr : 순회하고자 하는 배열, element : 현재배열의 요소, index(생략 가능) : 현재 배열 요소의 index,</h6>
+        <h6 style="margin-left:10px;">array(생략 가능) : filter 함수를 호출한 배열, thisArg(생략 가능) : callback을 실행할 때 </h6>
+        <h6 style="margin-left:10px;">this로 사용되는 값(=map 함수에서 사용될 this값)</h6>
+        <h6 style="margin-left:10px;font-weight: bold;">필요할때 다시 공부하고, 현재 사용해본 형식에 대한 설명이다.</h6>
+        <code>var 배열=[];//빈배열 선언, 또는 미리 만들어도 됨 ['문자열1','문자열2','문자열3',....]
+          <br>배열.push('문자열1');//배열값 추가
+          <br>배열.push('문자열2');//배열값 추가
+          <br>배열.push('문자열3');//배열값 추가
+          <br>var 찾을값='문자열2';
+          <br>var 결과;
+          <br><span style="margin-right:23px;"></span>if (배열.find(element => element==찾을값)) {//element:현재 배열값.
+          <br><span style="margin-right:23px;"></span>결과="찾았음";
+          <br>console.log(배열.find(element => element==찾을값));// 문자열2
+          <br>// 찾을값을 없는문자열로 지정하였다면...
+          <br>console.log(배열.find(element => element==찾을값));// undefined
+          <br>}
+        </code>
+        <h6>정확히 일치하는 값이 있으면 '해당 문자열'이 반환되고, true 조건으로 활용가능.</h6>
+        <h6 style="font-weight: bold;">• match : 1.대소문자구분, 2.대소문자구분없이 "i"</h6>
+        <h6>대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
+        <code style="margin-left:22px;">String.match(new RegExp(searchVariable, "i"));</code>
+        <h6>대소문자 구분. searchVariable=찾을문자열</h6>
+        <code style="margin-left:22px;">String.match(new RegExp(searchVariable));</code>
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
+        <h6 style="font-weight: bold;">• match 예시 : 문자열.match(찾을 단어)</h6>
+        <code style="margin-left:22px;">?? let reg = [/\w+java\w+/g, /java\w+/] : 정규식 나중에... 모르겠다.
+          <br>let str = 'hello world';
+          <br>console.log(str.match('hello'));
+          <br>console.log(str.match('HELLO'));//==> null
+          <br>console.log(str.match('rld'));
+          <br>console.log(str.match('llo'));
+          <br>-콘솔결과창(배열) : ['hello', index: 0, input: 'hello world', groups: undefined]
+          <br>-★ length=1 이고==> 배열이 하나이므로 str.match('hello')[0]만 표시가능하다
+          <br>-★ index(찾은곳 순번, 0부터시작), input(문자열 전체), groups는 정보인듯.
+          <br>-console.log(str.match('HELLO'));//==> null</h6>
+          <br>-콘솔결과창(배열) : ['rld', index: 8, input: 'hello world', groups: undefined]
+          <br>-콘솔결과창(배열) : ['llo', index: 2, input: 'hello world', groups: undefined]
+        </code>
+        <h6 style="font-weight: bold;">• 활용 : 위 정보에서</h6>
+        <code style="margin-left:22px;">console.log(str.match('rld')); // ==> ['rld', index: 8, input: 'hello world', groups: undefined]
+          <br><span style="font-weight:bold;">※결과는 하나의 배열을 가진다. index와 input은 속성처럼 접근가능하다.</span>
+          <br>활용가능 : console.log(str.match('rld'))[0]; // ==> rld
+          <br>console.log(str.match('rld'))[1]; // ==> undefined
+          <br>console.log(str.match('rld'))[2]; // ==> undefined
+          <br>console.log(str.match('rld'))[3]; // ==> undefined
+          <br>활용가능 : console.log(str.match('rld').index); // ==> 8
+          <br>활용가능 : console.log(str.match('rld').input); // ==> hello world
+        </code>
+        <h6 style="font-weight: bold;">• 어떻게 활용 가능한가 : 요소의 innerText를 담으면 하위의 하위 요소의 모든 문자열을 합친 하나의 문자열이다.</h6>
+        <h6 style="text-indent: 15px;">▢ 문자열 안에 \n (줄바꿈) 있으니 활용 가능.</h6>
+        <h6 style="text-indent: 15px;">1.if (문자열.search(검색할문자)>-1) {...}</h6>
+        <h6 style="text-indent: 15px;">2.find는 완전일치, 일부일치 확인은 search와 match, search가 가벼울듯.</h6>
+        <!-- <br><span style="margin-right:23px;"></span> -->
+      </div>
     </div>
     <div id="JS_input_value_숫자표현결과_조건표현인자">
       <h6>★ 숫자를 더할 경우 숫자로 표현되도록 바꾸어야한다.</h6>
@@ -783,15 +833,16 @@
       <div style="width:800px;margin-right:5px;" class="d-inline-block">
         <h6 class="fw-bold">▢ 필수 : #전체대체(외부배치), 전역변수 '보기셑팅유형' ==> 숨길꺼 보일꺼 설정하는 function 보기셑팅()</h6>
         <h6>• 보기셑팅함수 간단 보기</h6>
-        <code style="margin-left:10px;">function 보기셑팅() &#123</code><br>
-        <code style="margin-left:20px;">if (보기셑팅유형=='해역사진초기값') {</code><br>
-        <code style="margin-left:30px;">document.querySelector('#리스너용해역사진관련').classList.remove('d-none');</code><br>
-        <code style="margin-left:30px;">document.querySelector('#해역_물품단계_고정').classList.remove('d-none');</code><br>
-        <code style="margin-left:30px;">document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');</code><br>
-        <code style="margin-left:30px;">document.querySelector('#main과우측').classList.add('d-none');</code><br>
-        <code style="margin-left:30px;">document.querySelector('#전체대체').classList.add('d-none');</code><br>
-        <code style="margin-left:20px;">&#125;</code><br>
-        <code style="margin-left:10px;">&#125;</code>
+        <code style="margin-left:10px;">function 보기셑팅() &#123
+        <br><span style="margin-left:10px"></span> if (보기셑팅유형=='해역사진초기값') {
+          <br><span style="margin-left:20px"></span>document.querySelector('#리스너용해역사진관련').classList.remove('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#main과우측').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#전체대체').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>&#125;
+          <br><span style="margin-left:10px"></span>&#125;
+        </code>
       </div>
     </div>
   </div>

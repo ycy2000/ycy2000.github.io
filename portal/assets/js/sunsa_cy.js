@@ -82,6 +82,24 @@ function 리스너_카피_클릭이벤트(e) {
 }
 function 리스너_head_button_group클릭이벤트(e) {
   console.log('리스너_head_button_group클릭이벤트(e)');
+  if (e.target.id=='전체검색') {
+    document.querySelector('#전체검색div').classList.remove('d-none');
+    //위치가 아래에 붙도록...
+    var 전체검색div높이=document.querySelector('#전체검색div').style.height;//500px
+    전체검색div높이=Number(전체검색div높이.substring(0,전체검색div높이.length-2));
+    var 화면높이=window.innerHeight;//969
+    document.querySelector('#전체검색div').style.top=(화면높이 - 전체검색div높이) + 'px';
+
+    console.log('요소에 해당 style이 없을때')
+    console.log('computedstyle.top : ' + window.getComputedStyle(document.querySelector('#전체검색div')).top);
+    console.log('요소.style.top :  ' + document.querySelector('#전체검색div').style.top + ' ==> 적용하면 확인됨');
+    console.log('전체검색div높이 : ' + 전체검색div높이);
+    console.log('화면높이 - 전체검색div높이 : ' + (화면높이 - 전체검색div높이));
+    console.log(window.getComputedStyle(document.querySelector('#전체검색div')).top);
+  }
+  if (e.target.id=='전체검색_초기화버튼') {
+    document.querySelector('#전체검색div').classList.add('d-none')='';
+  }
   if (e.target.id=='결과내검색_초기화버튼') {
     console.log('e.target.id==결과내검색_초기화버튼');
     //execl범위풀_기결과 안에 class 결과표시 가 있으면 classlist.remove
