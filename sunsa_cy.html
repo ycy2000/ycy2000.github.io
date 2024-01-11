@@ -49,7 +49,7 @@
         <button onclick="document.querySelector('#임시').classList.add('d-none');" type="button" class="btn" style="border:1px solid black;">X</button>
         <span style="vertical-align:middle;margin-right:5px;" title="1.몇번째 div인지와, 2.보라색색칠하기">결과내검색</span><input id="결과내검색" type = "text" spellcheck="false" style="width:80px;vertical-align:bottom;">
         <button type="button" id="결과내검색_초기화버튼" class="btn" style="border:1px solid black;">X</button>
-        <button id="전체검색" style="vertical-align:middle;margin-right:5px;" title="선사,포딩,화주,등등 모두검색, 기타">전체검색 및 기타</button>
+        <button id="전체검색div보기" style="vertical-align:middle;margin-right:5px;" title="선사,포딩,화주,등등 모두검색, 기타">전체검색 및 기타</button><input id="전체검색input" type = "text" spellcheck="false" style="width:80px;vertical-align:bottom;">
         <button type="button" id="전체검색_초기화버튼" class="btn" style="border:1px solid black;">X</button>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -77,8 +77,9 @@
 <!-- id="리스너용해역사진관련" id="main과우측" id="전체대체" 중 하나만?? 본다-->
 <!-- 안에 textarea를 넣던지, input들을 넣던지. -->
 <div id="임시" class="d-none" style="position: absolute;">ㅇㄹㄴㄹ</div>
-<div id="전체검색div" class="d-none" style="display: block; position: absolute;height:500px;width:100%; background-color: burlywood;">
-
+<div id="전체검색div" class="d-none" style="margin-left:5px; display: block; position: absolute;height:500px;width:100%; background-color: burlywood;">
+  <div id="전체검색header"></div>
+  <div id="전체검색body"></div>
 </div>
 <div id="execl범위풀_기결과" style="position: absolute;visibility:hidden;left:156px;top:200px; background-color: white;z-index: 9999;border:1px solid black;" ></div>
 
@@ -143,9 +144,9 @@
       <div>승환 휴가때</div>
     </div>
 
-    <div id="운송사_이지스2" class="결과_운송사한줄독립">
+    <div id="운송사_이지스2" class="결과_운송사한줄독립 gksk enf">
       <div>(주)이지트랜스,이지스</div>
-      <div>[샤시]051-715-0506(통화:715-0527)</div>
+      <div>[샤시]051-715-0506(통화:715-0527)(OVERFLOW아아아아아)</div>
       <div></div>
       <div></div>
       <div></div>

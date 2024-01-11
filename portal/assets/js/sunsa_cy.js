@@ -1,10 +1,7 @@
 function 임시() {
-  console.log(document.querySelector('#dk').value.split('\n').length);
-  for (var i=0; i<document.querySelector('#dk').value.split('\n').length; i++) {
-  console.log(document.querySelector('#dk').value.split('\n')[i]);
-  }
-
-  document.querySelector('#임시').classList.remove('d-none');
+  var 요소=document.querySelector('#임시');
+  요소.style.display='blosdfck'
+  console.log(요소.style.display)
 }
 //캔버스body초기화
 var 셑팅_캔버스바디=document.querySelector('#캔버스바디');
@@ -38,7 +35,22 @@ var 리스너_execl범위풀_기결과=document.querySelector('#execl범위풀_�
 
 function 리스너_카피_클릭이벤트(e) {
   console.log('리스너_카피_클릭이벤트(e)');
-  //
+  //text-overflow: ellipsis 활성 여부 :  e.target.clientWidth >= e.target.scrollWidth) {//오버플로우 없는 경우
+  //className은 문자열, classList는 배열?
+  if (e.target.parentElement.className.search('독립')>-1) {//여러 class 중에 ..독립 class가 첫번째에 배치하도록 약속
+    if (e.target.innerHTML=='') {return;}
+    var 시작시=window.getComputedStyle(e.target).whiteSpace;
+    if (window.getComputedStyle(e.target).whiteSpace=='normal') {
+      e.target.style.whiteSpace='nowrap';
+      e.target.style.height='28px';
+      console.log('시작시 : ' + 시작시 + ', ==>변경 : nowrap, 결과높이 clientHeight : 28px');
+    } else {
+      e.target.style.whiteSpace='normal';
+      e.target.style.height=e.target.scrollHeight + 'px';
+      console.log('시작시 : ' + 시작시 + ', ==>변경 : normal, 결과높이 scrollHeight : ' + e.target.scrollHeight + 'px');
+    }
+  }
+  
   if (e.target.classList.contains('조회')) {
     alert('조회');
 
@@ -80,25 +92,29 @@ function 리스너_카피_클릭이벤트(e) {
     console.log('아이디 : ' + 아이디 + ' : 마지막');
   }
 }
+function 전체검색div보기() {
+  document.querySelector('#전체검색div').classList.remove('d-none');
+  //위치가 아래에 붙도록...
+  var 전체검색div높이=document.querySelector('#전체검색div').style.height;//500px
+  전체검색div높이=Number(전체검색div높이.substring(0,전체검색div높이.length-2));
+  var 화면높이=window.innerHeight;//969
+  document.querySelector('#전체검색div').style.top=(화면높이 - 전체검색div높이) + 'px';
+
+  console.log('요소에 해당 style이 없을때')
+  console.log('computedstyle.top : ' + window.getComputedStyle(document.querySelector('#전체검색div')).top);
+  console.log('요소.style.top :  ' + document.querySelector('#전체검색div').style.top + ' ==> 적용하면 확인됨');
+  console.log('전체검색div높이 : ' + 전체검색div높이);
+  console.log('화면높이 - 전체검색div높이 : ' + (화면높이 - 전체검색div높이));
+  console.log(window.getComputedStyle(document.querySelector('#전체검색div')).top);
+}
 function 리스너_head_button_group클릭이벤트(e) {
   console.log('리스너_head_button_group클릭이벤트(e)');
-  if (e.target.id=='전체검색') {
-    document.querySelector('#전체검색div').classList.remove('d-none');
-    //위치가 아래에 붙도록...
-    var 전체검색div높이=document.querySelector('#전체검색div').style.height;//500px
-    전체검색div높이=Number(전체검색div높이.substring(0,전체검색div높이.length-2));
-    var 화면높이=window.innerHeight;//969
-    document.querySelector('#전체검색div').style.top=(화면높이 - 전체검색div높이) + 'px';
-
-    console.log('요소에 해당 style이 없을때')
-    console.log('computedstyle.top : ' + window.getComputedStyle(document.querySelector('#전체검색div')).top);
-    console.log('요소.style.top :  ' + document.querySelector('#전체검색div').style.top + ' ==> 적용하면 확인됨');
-    console.log('전체검색div높이 : ' + 전체검색div높이);
-    console.log('화면높이 - 전체검색div높이 : ' + (화면높이 - 전체검색div높이));
-    console.log(window.getComputedStyle(document.querySelector('#전체검색div')).top);
+  if (e.target.id=='전체검색div보기') {
+    전체검색div보기();
   }
   if (e.target.id=='전체검색_초기화버튼') {
-    document.querySelector('#전체검색div').classList.add('d-none')='';
+    document.querySelector('#전체검색div').classList.add('d-none');
+    document.querySelector('#전체검색input').value='';
   }
   if (e.target.id=='결과내검색_초기화버튼') {
     console.log('e.target.id==결과내검색_초기화버튼');
@@ -225,8 +241,30 @@ function 리스너_head_button_group클릭이벤트(e) {
 }
 
 function 리스너_head_button_group_change이벤트(e) {
-  //e
-  console.log('리스너_head_button_group_change이벤트(e) ==> id==결과내검색');
+  console.log('리스너_head_button_group_change이벤트(e)');
+  if (e.target.id=='전체검색input') {
+    var 검색할문자열=document.querySelector('#전체검색input').value.toUpperCase();
+    if (검색할문자열=='') {return;}
+    if (document.querySelector('#전체검색div').classList.contains('d-none')) {전체검색div보기()}
+    // #결과모음_none > #결과>선사 > #각 한줄 div
+    var 검색할요소들=document.querySelectorAll('#결과모음_none > div > div');
+    var 추출문자열;
+    var 결과='';
+    var 결과유무='없음';
+    추출문자열=검색할요소들[0].innerText;
+    for (var i=0; i<검색할요소들.length; i++) {
+      추출문자열=검색할요소들[i].innerText.toUpperCase();
+      if (추출문자열.search(검색할문자열)>-1) {
+        결과유무='있음';
+        결과+=검색할요소들[i].outerHTML;
+      }
+      if (결과유무=='없음') {
+        // alert('검색결과 : 없음')
+      } else {
+        document.querySelector('#전체검색body').innerHTML=결과;
+      }
+    }
+  }
   if (e.target.id=='결과내검색') {//#카피 안에 들어와 있는 내용들을 확인한다. id=결과내검색 input 변경시
     //#카피 > div > div > div : #카피 > #결과>선사 > #선사_고려해운 > div(가로한줄)
     console.log('작성중.1.#카피 > div > div > div : #카피 > #결과>선사 > #선사_고려해운 > div(가로한줄) 에서 : \n div(가로한줄).innerText 에 검색값 포함 되면'
@@ -234,11 +272,11 @@ function 리스너_head_button_group_change이벤트(e) {
     + '\n부모div에 색깔넣기용 class.add');
     console.log('document.querySelectorAll(#카피 > div > div > div).length : ' + document.querySelectorAll('#카피 > div > div > div').length);
 
-    var text=document.querySelector('#결과내검색').value;
+    var text=document.querySelector('#결과내검색').value.toUpperCase();
     if (text=='') {return;}
     var 찾을곳들=document.querySelectorAll('#카피 > div > div > div');
     for (var i=0; i<찾을곳들.length; i++) {
-      if (찾을곳들[i].innerText.search(text)>-1) {
+      if (찾을곳들[i].innerText.search(text.toUpperCase())>-1) {
         찾을곳들[i].parentElement.classList.add('결과내검색색깔넣기');
       }
     }

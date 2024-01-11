@@ -26,7 +26,7 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 .결과_선사한줄독립 > div:nth-of-type(2) {width:1700px;}
 
 .결과_운송사한줄독립 {white-space: nowrap;}
-.결과_운송사한줄독립 > div {overflow: hidden;height:28px;vertical-align: top; display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.결과_운송사한줄독립 > div {overflow: hidden;text-overflow:ellipsis;height:28px;vertical-align: top; display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
 .결과_운송사한줄독립 > div:first-child {width:280px;}
 .결과_운송사한줄독립 > div:first-child > span {float:right;margin-top: 2px;}
 .결과_운송사한줄독립 > div:nth-of-type(2) {width:300px;}
