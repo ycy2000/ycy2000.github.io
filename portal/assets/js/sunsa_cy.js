@@ -37,8 +37,28 @@ function 리스너_카피_클릭이벤트(e) {
   console.log('리스너_카피_클릭이벤트(e)');
   //text-overflow: ellipsis 활성 여부 :  e.target.clientWidth >= e.target.scrollWidth) {//오버플로우 없는 경우
   //className은 문자열, classList는 배열?
-  if (e.target.parentElement.className.search('독립')>-1) {//여러 class 중에 ..독립 class가 첫번째에 배치하도록 약속
-    if (e.target.innerHTML=='') {return;}
+  if (e.target.parentElement.className.search('독립')>-1) {//첫div클릭시 색칠/색칠해제, 다른div는 최대높이로.
+    e.target.classList.add('코딩표시');
+    var 높이확인용div들;
+    var 코딩표시인덱스;
+    console.log('e.target.parentElement.children.length : ' + e.target.parentElement.children.length)
+    for (var i=0; i<e.target.parentElement.children.length; i++) {
+      if (e.target.parentElement.children[i].classList.contains('코딩표시')) {코딩표시인덱스=i}
+    }
+    if (코딩표시인덱스==0) {//첫번째일때 색칠만
+      if (e.target.parentElement.classList.contains('결과내검색색깔넣기')) {
+        e.target.parentElement.classList.remove('결과내검색색깔넣기');
+      } else {
+        e.target.parentElement.classList.add('결과내검색색깔넣기');
+      }
+    }
+    if (코딩표시인덱스!==0) {//첫번째 whiteSpace=='normal'후에 가장 높은 높이로 재설정
+      
+
+    }
+
+
+
     var 시작시=window.getComputedStyle(e.target).whiteSpace;
     if (window.getComputedStyle(e.target).whiteSpace=='normal') {
       e.target.style.whiteSpace='nowrap';
@@ -49,6 +69,8 @@ function 리스너_카피_클릭이벤트(e) {
       e.target.style.height=e.target.scrollHeight + 'px';
       console.log('시작시 : ' + 시작시 + ', ==>변경 : normal, 결과높이 scrollHeight : ' + e.target.scrollHeight + 'px');
     }
+
+    e.target.classList.remove('코딩표시');
   }
   
   if (e.target.classList.contains('조회')) {
@@ -90,6 +112,19 @@ function 리스너_카피_클릭이벤트(e) {
     if (찾을정보있는none요소이름=='운송사정보_none') {배치할곳.style.left='284px'}
 
     console.log('아이디 : ' + 아이디 + ' : 마지막');
+  }
+  //보이게 한 선사정보 숨기기
+  var 앞세글자;
+  var 뒤세글자;
+  앞세글자=e.target.parentElement.id.substring(0,3);
+  뒤세글자=e.target.parentElement.id.substring(e.target.parentElement.id.length-3);
+  console.log('length : ' + e.target.parentElement.id.length 
+  + ' e.target.parentElement.id : ' + e.target.parentElement.id 
+  + ' 앞세글자 : ' + 앞세글자 + ' ,뒤세글자 : ' + 뒤세글자)
+  
+  if (앞세글자=='선사_' && 뒤세글자=='_정보' && e.target.parentElement.id.length>6) {
+    console.log('앞세글자==선사_ && 뒤세글자==_정보')
+    document.querySelector('#선사정보').style.visibility='hidden';
   }
 }
 function 전체검색div보기() {

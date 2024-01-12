@@ -504,6 +504,7 @@
         <h6 class="canvas_div" title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
         <h6 class="canvas_div" title='JS_textarea내용의탭으로구분여러줄가공'>JS_textarea내용의탭으로구분여러줄가공</h6>
         <h6 class="canvas_div" title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
+        <h6 class="canvas_div" title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
       </div>
       <div>
         <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(0);==>12.1, 반올림</h6>
@@ -795,23 +796,72 @@
         <!-- <br><span style="margin-right:23px;"></span> -->
       </div>
     </div>
+
+    <div id="JS_문자열자르기_substr_substring_slice">
+      <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6>• 세 가지 함수의 인수 중 대괄호([]) 부분은 생략이 가능하며, 생략할 경우 시작 위치부터 문자열 끝까지 자른다.</h6>
+        <h6>• str.substr(start[, length]) : 시작위치에서, 몇글자를 자른다.</h6>
+        <code style="margin-left:10px">var str = '자바스크립트';
+          <br>var result1 = str.substr(0, 2); // 결과 : "자바"
+          <br>var result2 = str.substr(2, 4); // 결과 : "스크립트"
+          <br>var result3 = str.substr(2); // 결과 : "스크립트"
+        </code>
+        <h6>• str.substring(indexStart[, indexEnd]) : 왼쪽은 0부터시작, 오른쪽은 1부터시작, 시작위치부터 끝위치까지</h6>
+        <code style="margin-left:10px">var str = '자바스크립트';
+          <br>var result1 = str.substring(0, 2); // 결과 : "자바"
+          <br>var result2 = str.substring(2, 5); // 결과 : "스크립"
+          <br>var result3 = str.substring(2, 6); // 결과 : "스크립트"
+          <br>var result4 = str.substring(2); // 결과 : "스크립트"
+        </code>
+        <h6>• str.slice(beginIndex[, endIndex])문자열을 뒤에서부터 자르기 위해서는 slice() 함수를 사용하면 효율적이며 </h6>
+        <h6 style="text-indent: 10px;">타 언어의 Right 함수와 비슷하다고 생각하면 된다.</h6>
+        <code style="margin-left:10px">var str = '자바스크립트';
+          <br>var result1 = str.slice(0, 2); // 결과 : "자바"
+          <br>var result2 = str.slice(2, 6); // 결과 : "스크립트"
+          <br>var result3 = str.slice(2); // 결과 : "스크립트"
+          <br>/************************************/
+          <br>var result4 = str.slice(-4); // 결과 : "스크립트" == <b>이것만 이해하자</b>
+          <br>var result3 = str.slice(2); // 결과 : "스크립트"
+          <br>var result5 = str.slice(-4, 5); // 결과 : "스크립"
+          <br>var result6 = str.slice(2, -1); // 결과 : "스크립"
+        </code>
+        <img src="portal/images/black_코딩등그림판/JS_문자열자르기_substr_substring_slice_slice캡쳐.png" alt="이미지없음"  style="vertical-align: top;">
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
+
+      </div>
+
+    </div>
+
+
+
+
+    
     <div id="JS_input_value_숫자표현결과_조건표현인자">
-      <h6>★ 숫자를 더할 경우 숫자로 표현되도록 바꾸어야한다.</h6>
-      <h6>★ typeof 요소또는 값 : value에 '1'로 문자열 숫자를 전달하든, 1 처럼 숫자를 전달하든 value의 type은 ★string★이다.</h6>
-      <h6 style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML='1';</h6>
-      <h6 style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</h6>
-      <h6 style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML=1;</h6>
-      <h6 style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</h6>
-      <h6>▢ 공백[여러공백]일때 : 공백일때 0으로 인식, 1을곱하면 0, 1을 곱하면 숫자로 인식, 안곱해도 숫자 0으로 인식.</h6>
-      <h6>▢ 많은 공백중 숫자한번 : 숫자로 인식. ==> ★ 공백일때 굳이 0 으로 설정하는 코딩이 필요없을듯.</h6>
-      <h6>▢ 많은 공백중 숫자 두번 : 문자로 인식. ==> ★ isNaN(표현)이 숫자가 아닐때가 true, 숫자이면 false</h6>
-      <h6>▢ 문자열에 곱하기해도 에러는 아니고 NaN으로 설정됨</h6>
-      <h6>▢ 조건 : 아닐때 !조건, or 조건 || 조건 (||는 shift ￦), and 조건 && 조건, 보다크다 >=, 보다 작다 <=,</h6>
-      <h6>▢ 더하기는 문자열 더하기도 포함한다는것 : 결과+=더할값 ==> 기존 결과에 우측에 더하여 붙인다.</h6>
+      <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6>★ 숫자를 더할 경우 숫자로 표현되도록 바꾸어야한다.</h6>
+        <h6>★ typeof 요소또는 값 : value에 '1'로 문자열 숫자를 전달하든, </h6>
+        <h6 style="text-indent: 23px;">1 처럼 숫자를 전달하든 value의 type은 ★string★이다.</h6>
+        <code style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML='1';</code>
+        <code style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</code>
+        <code style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML=1;</code>
+        <code style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</code>
+        <h6>▢ 공백[여러공백]일때 : 공백일때 0으로 인식, 1을곱하면 0, 1을 곱하면 숫자로 인식, 안곱해도 숫자 0으로 인식.</h6>
+        <h6>▢ 많은 공백중 숫자한번 : 숫자로 인식. ==> ★ 공백일때 굳이 0 으로 설정하는 코딩이 필요없을듯.</h6>
+        <h6>▢ 많은 공백중 숫자 두번 : 문자로 인식. ==> ★ isNaN(표현)이 숫자가 아닐때가 true, 숫자이면 false</h6>
+        <h6>▢ 문자열에 곱하기해도 에러는 아니고 NaN으로 설정됨</h6>
+        <h6>▢ 조건 : 아닐때 !조건, or 조건 || 조건 (||는 shift ￦), and 조건 && 조건, 보다크다 >=, 보다 작다 <=,</h6>
+        <h6>▢ 더하기는 문자열 더하기도 포함한다는것 : 결과+=더할값 ==> 기존 결과에 우측에 더하여 붙인다.</h6>
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
+        <h6>★ input 초기값, 한글 영문, ie에서 나왔고 크롬과 엣지에서 안된다네요.</h6>
+        <code>• 한글과 영문 가능 : &lt;input type='text' style="ime-mode:auto;"&gt;
+          <br>• 영문만 가능 : &lt;input type='text' style="ime-mode:disabled;"
+          <br>• 한글 우선 영문 가능 : &lt;input type='text' style="ime-mode:active;"
+          <br>• 영문 우선 한글 가능 : &lt;input type='text' style="ime-mode:inactive;"
+        </code>
 
-
-
-      <br><br><br><br><br><br><br>
+      </div>
     </div>
 
     <div id="jQuery_설치와기초사용법">

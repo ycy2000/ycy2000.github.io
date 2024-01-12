@@ -28,7 +28,8 @@
         <button type="button" title="결과_포딩" class="btn btn-light 카테고리">포딩</button>
         <button type="button" title="결과_화주" class="btn btn-light 카테고리">화주</button>
         <button type="button" title="결과_cy" class="btn btn-light 카테고리">CY</button>
-        <button type="button" title="결과_운송사" class="btn btn-light 카테고리">운송사</button>
+        <button type="button" title="결과_면허" class="btn btn-light 카테고리">면허</button>
+        <button type="button" title="결과_운송사" class="btn btn-light 카테고리">운송</button>
         <button type="button" title="결과_관세사" class="btn btn-light 카테고리">관세사</button>
         <textarea id="dk" style="width:50px;" rows="1" spellcheck="false" title="엑셀범위 복붙하고 우측 메뉴 중에 '풀기' 클릭하면"></textarea>
         <div class="dropdown d-inline-block">
@@ -88,6 +89,7 @@
   <div id="선사정보" style="position: absolute;visibility: hidden;"></div><!--이줄은 지워지고 다시 들어간다. 선사 클릭시 들어올 정보 -->
 
 </div>
+<div id="기타정보" class="d-none"></div>
 
 <div id="결과모음_none" class="d-none"><!--선사,포딩 등 카테고리 통쨰로 배치할때 가져오는 id들 -->
   <div id="결과_선사">
@@ -96,33 +98,75 @@
       <div>KMTC</div>
     </div>
     <div id="선사_하파그" class="결과_선사한줄독립">
-      <div title="Confirm My Choices클릭, 부산으로 뜬다, 어느 cy인지 안나온다."><a href="https://www.hapag-lloyd.com/en/online-business/track/track-by-container-solution.html" target="_blank">하파그</a><span class="badge rounded-pill text-bg-info">메모</span></div>
-      <div> Hapag-Lloyd</div>
+      <div title="Confirm My Choices클릭, 부산으로 뜬다, 어느 cy인지 안나온다."><a href="https://www.hapag-lloyd.com/en/online-business/track/track-by-container-solution.html" target="_blank">하파그</a></div>
+      <div><span class="badge rounded-pill text-bg-info">메모</span>Hapag-Lloyd</div>
     </div>
     <div id="선사_OOCL" class="결과_선사한줄독립">
-      <div><a href="https://www.oocl.com/eng/ourservices/eservices/cargotracking/Pages/cargotracking.aspx" target="_blank">OOCL</a><span class="badge rounded-pill text-bg-info">메모</span></div>
-      <div>OOCL</div>
+      <div><a href="https://www.oocl.com/eng/ourservices/eservices/cargotracking/Pages/cargotracking.aspx" target="_blank">OOCL</a></div>
+      <div><span class="badge rounded-pill text-bg-info">메모</span>OOCL</div>
     </div>
     <div id="선사_MSC" class="결과_선사한줄독립">
-      <div><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC</a><span class="badge rounded-pill text-bg-info">메모</span></div>
-      <div>MSC</div>
+      <div><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC</a></div>
+      <div><span class="badge rounded-pill text-bg-info">메모</span>MSC</div>
     </div>
     <div id="선사_NYK" class="결과_선사한줄독립">
       <div><a href="http://nyk.container-tracking.org/#google_vignette" target="_blank">NYK</a></div>
       <div>NYK</div>
     </div>
+    <div id="선사_천경해운ckline" class="결과_선사한줄독립">
+      <div><a href="https://es.ckline.co.kr/" target="_blank">천경해운<b>CK</b>LINE</a></div>
+      <div>[선사]천경해운<b>CK</b>LINE, 홈페이지:https://www.ckline.co.kr/</div>
+    </div>
   </div>
 
-  <div id="결과_포딩" class="결과_선사한줄독립">
+  <div id="결과_포딩">
+    <div id="포딩_머리글" class="결과_포딩한줄독립">
+      <div>포딩</div>
+      <div>연락처</div>
+      <div>통화확인</div>
+      <div>메모</div>
+    </div>
+
+    <div id="포딩_스카이로드" class="결과_포딩한줄독립">
+      <div>스카이로드</div>
+      <div>051-442-1223</div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="포딩_트랜스포트" class="결과_포딩한줄독립">
+      <div>트랜스포트</div>
+      <div>051-467-8970<br>dkdkdk</div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="포딩_스마일" class="결과_포딩한줄독립">
+      <div>스마일</div>
+      <div>051-710-3091</div>
+      <div></div>
+      <div>MH=>SS,</div>
+    </div>
+
+    <div id="포딩_도원물류" class="결과_포딩한줄독립">
+      <div>도원물류</div>
+      <div>051-469-2067</div>
+      <div></div>
+      <div></div>
+    </div>
 
   </div>
 
-  <div id="결과_화주" class="결과_선사한줄독립">
+  <div id="결과_화주">
 
   </div>
 
   <div id="결과_cy">
-    <div id="운송사_머리글" class="결과_운송사한줄독립">
+
+  </div>
+
+  <div id="결과_면허">
+    <div id="면허_머리글" class="결과_면허한줄독립">
       <div>(면허)운송사</div>
       <div>배차담당연락처</div>
       <div>통화확인</div>
@@ -131,14 +175,15 @@
       <div>비고</div>
     </div>
 
-    <div id="운송사_이지스" class="결과_운송사한줄독립">
-      <div>(주)이지트랜스,이지스</div>
-      <div>051-715-3955</div>
-      <div>23.12.28</div>
+    <div id="면허_소진" class="결과_면허한줄독립">
+      <div>[면허](주)소진</div>
+      <div>051-442-1378</div>
       <div></div>
       <div></div>
-      <div>승환 휴가때</div>
+      <div></div>
+      <div>EX:운송, 금경로지텍, 나모TLS</div>
     </div>
+
   </div>
 
   <div id="결과_운송사">
@@ -157,14 +202,14 @@
       <div>23.12.28</div>
       <div></div>
       <div></div>
-      <div>승환 휴가때</div>
+      <div>조율 없이 그냥 오는 경우가 많음</div>
     </div>
 
     <div id="운송사_이지스2" class="결과_운송사한줄독립 gksk enf">
       <div>(주)이지트랜스,이지스</div>
-      <div>[샤시]051-715-0506(통화:715-0527)</div>
-      <div></div>
-      <div></div>
+      <div>[샤시]051-715-0506(통화:715-0527) 연습용 3줄 <br> br <br> br 연습용 3줄연습용 3줄연습용 3줄</div>
+      <div>연습용 3줄 <br> br</div>
+      <div>연습용 3줄 <br> br연습용 3줄 <br> br연습용 3줄 <br> br연습용 3줄 <br> br연습용 3줄 <br> br</div>
       <div></div>
       <div></div>
     </div>
@@ -203,15 +248,6 @@
       <div></div>
       <div></div>
       <div>승환 휴가때, 허치슨 물품(북항)일때 전화옴</div>
-    </div>
-
-    <div id="운송사_소진" class="결과_운송사한줄독립">
-      <div>[면허](주)소진</div>
-      <div>051-442-1378</div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div>EX:운송, 금경로지텍, 나모TLS</div>
     </div>
 
     <div id="운송사_금경로지텍" class="결과_운송사한줄독립">
@@ -376,6 +412,150 @@
       <div>동륜물류 관련</div>
     </div>
 
+    <div id="운송사_웰빙로직스" class="결과_운송사한줄독립">
+      <div>(주)웰빙로직스</div>
+      <div>051-921-0905</div>
+      <div></div>
+      <div>051-921-0904</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_조이로지스틱스" class="결과_운송사한줄독립">
+      <div>(주)조이로지스틱스</div>
+      <div>051-621-5914</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_천경" class="결과_운송사한줄독립">
+      <div>(주)천경</div>
+      <div>051-630-4713</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div><b>CK</b>LINE : 천경해운, 자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_청보통운" class="결과_운송사한줄독립">
+      <div>(주)청보통운</div>
+      <div></div>
+      <div></div>
+      <div>051-465-2510</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_코리아브이익스프레스" class="결과_운송사한줄독립">
+      <div>(주)코리아브이익스프레스</div>
+      <div>면허만 진행(많음)</div>
+      <div></div>
+      <div>051-465-0131</div>
+      <div>동신선박</div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_태흥글로벌" class="결과_운송사한줄독립">
+      <div>(주)태흥글로벌</div>
+      <div>051-466-4107</div>
+      <div></div>
+      <div>051-466-7850</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_화신종합운수" class="결과_운송사한줄독립">
+      <div>(주)화신종합운수</div>
+      <div>면허만 진행(많음)</div>
+      <div></div>
+      <div>051-627-8588</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_고려물류" class="결과_운송사한줄독립">
+      <div>(주)고려물류</div>
+      <div>051-442-0719</div>
+      <div></div>
+      <div>051-640-6131</div>
+      <div>KMTC</div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_천일정기화물자동차" class="결과_운송사한줄독립">
+      <div>천일정기화물자동차(주)</div>
+      <div>070-7166-1110</div>
+      <div></div>
+      <div>(전자봉인)070-7166-1129</div>
+      <div>MSC</div>
+      <div>라인운송일 경우엔 프리타임내에..</div>
+    </div>
+
+    <div id="운송사_삼익물류" class="결과_운송사한줄독립">
+      <div>삼익물류(주)</div>
+      <div>면허만 진행(많음)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>서원운수와 연계</div>
+    </div>
+
+    <div id="운송사_현대로지스틱스" class="결과_운송사한줄독립">
+      <div>현대로지스틱스(주)</div>
+      <div>051-660-3117</div>
+      <div></div>
+      <div></div>
+      <div>현대상선</div>
+      <div>라인운송일 경우엔 프리타임내에..</div>
+    </div>
+
+    <div id="운송사_화성익스프레스" class="결과_운송사한줄독립">
+      <div>화성익스프레스(주)</div>
+      <div>면허만 진행(많음)</div>
+      <div></div>
+      <div>051-631-5262</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_한산물류" class="결과_운송사한줄독립">
+      <div>(주)한산물류</div>
+      <div>051-714-6240</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>서원운수와 연계</div>
+    </div>
+
+    <div id="운송사_현원물류" class="결과_운송사한줄독립">
+      <div>현원물류(주)</div>
+      <div>면허만 진행(많음)</div>
+      <div></div>
+      <div>051-442-2358</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_한타특수운송" class="결과_운송사한줄독립">
+      <div>(주)한타특수운송</div>
+      <div>면허만 진행(많음)</div>
+      <div></div>
+      <div>051-783-7500</div>
+      <div></div>
+      <div>자주 연락하지 않음</div>
+    </div>
+
+    <div id="운송사_한진" class="결과_운송사한줄독립">
+      <div>한진</div>
+      <div>면허파트:051-466-5451</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
     <div id="운송사_" class="결과_운송사한줄독립">
       <div></div>
       <div></div>
@@ -386,21 +566,6 @@
     </div>
 
   </div>
-  
-
-  이지스
-HU
-나모TLS
-
-SS
-이지스
-에이스
-KCTC
-골든로지텍,㈜효성특송
-금경
-이지트랜스
-금경로지텍
-
 
   <div id="결과_관세사">
 

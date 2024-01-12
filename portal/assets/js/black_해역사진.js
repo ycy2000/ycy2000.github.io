@@ -681,12 +681,12 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
 function 캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-    var 검색할문자=document.querySelector('#canvas검색input').value;
+    var 검색할문자=document.querySelector('#canvas검색input').value.toUpperCase();
     if (document.querySelector('#canvas검색input').value=='') {return;}
     var 검색할버튼클래스들=document.querySelectorAll('#canvas카테고리모음 .canvas카테고리 h6');
     var 내부html='';
     for (var i=0; i<검색할버튼클래스들.length; i++) {
-      if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) {
+      if (검색할버튼클래스들[i].innerHTML.toUpperCase().search(검색할문자)>-1) {
         내부html+=검색할버튼클래스들[i].outerHTML;
       }
     }

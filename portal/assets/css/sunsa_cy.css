@@ -20,21 +20,33 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 #카피, #캔버스결과 {margin-left:5px;}
 /* 가로한줄이 독립적이게... 전체검색시 여러군데서 가지고 오게 되니까... */
 .결과_선사한줄독립 {white-space: nowrap;}/* nowarp<>normal */
-.결과_선사한줄독립 > div {display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.결과_선사한줄독립 > div 
+{overflow: hidden;text-overflow:ellipsis;height:28px;vertical-align: top;display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; 
+    padding:2px 4px;border:1px solid black;border-radius: 0%;}
 .결과_선사한줄독립 > div:first-child {width:150px;}
 .결과_선사한줄독립 > div:first-child > span {float:right;margin-top: 2px;}
 .결과_선사한줄독립 > div:nth-of-type(2) {width:1700px;}
 
-.결과_운송사한줄독립 {white-space: nowrap;}
-.결과_운송사한줄독립 > div {overflow: hidden;text-overflow:ellipsis;height:28px;vertical-align: top; display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; padding:2px 4px;border:1px solid black;border-radius: 0%;}
-.결과_운송사한줄독립 > div:first-child {width:280px;}
-.결과_운송사한줄독립 > div:first-child > span {float:right;margin-top: 2px;}
-.결과_운송사한줄독립 > div:nth-of-type(2) {width:300px;}
-.결과_운송사한줄독립 > div:nth-of-type(3) {width:200px;}
-.결과_운송사한줄독립 > div:nth-of-type(4) {width:200px;margin-right:-6px;}
-.결과_운송사한줄독립 > div:nth-of-type(5) {width:200px;}
-.결과_운송사한줄독립 > div:nth-of-type(6) {width:674px;}
+.결과_포딩한줄독립 {white-space: nowrap;}/* nowarp<>normal */
+.결과_포딩한줄독립 > div 
+{overflow: hidden;text-overflow:ellipsis;height:28px;vertical-align: top;display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; 
+    padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.결과_포딩한줄독립 > div:first-child {width:150px;}
+.결과_포딩한줄독립 > div:nth-of-type(2) {width:300px;}
+.결과_포딩한줄독립 > div:nth-of-type(3) {width:200px;}
+.결과_포딩한줄독립 > div:nth-of-type(4) {width:1200px;}
 
+.결과_운송사한줄독립, .결과_면허한줄독립 {white-space: nowrap;}
+.결과_운송사한줄독립 > div, .결과_면허한줄독립 > div
+{overflow: hidden;text-overflow:ellipsis;height:28px;vertical-align: top; display:inline-block;margin:0px;margin-bottom:-1px;margin-right:-5px; 
+    padding:2px 4px;border:1px solid black;border-radius: 0%;}
+.결과_운송사한줄독립 > div:first-child, .결과_면허한줄독립 > div:first-child {width:280px;}
+.결과_운송사한줄독립 > div:first-child > span, .결과_면허한줄독립 > div:first-child > span {float:right;margin-top: 2px;}
+.결과_운송사한줄독립 > div:nth-of-type(2), .결과_면허한줄독립 > div:nth-of-type(2) {width:300px;}
+.결과_운송사한줄독립 > div:nth-of-type(3), .결과_면허한줄독립 > div:nth-of-type(3) {width:200px;}
+.결과_운송사한줄독립 > div:nth-of-type(4), .결과_면허한줄독립 > div:nth-of-type(4) {width:200px;margin-right:-6px;}
+.결과_운송사한줄독립 > div:nth-of-type(5), .결과_면허한줄독립 > div:nth-of-type(5) {width:200px;}
+.결과_운송사한줄독립 > div:nth-of-type(6), .결과_면허한줄독립 > div:nth-of-type(6) {width:674px;}
 
 /* #카피 시작부분에 #선사정보 absolute상태, 선사 클릭시 선사정보가 있으면 id를 참조해 #선사정보_none > #타이틀을 가져옴, id가 선사_==>선사정보_ */
 #카피 > #선사정보 {position: absolute;left:154px;background-color: white; border:1px solid black;background-color: aqua;}
