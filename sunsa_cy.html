@@ -31,6 +31,7 @@
         <button type="button" title="결과_면허" class="btn btn-light 카테고리">면허</button>
         <button type="button" title="결과_운송사" class="btn btn-light 카테고리">운송</button>
         <button type="button" title="결과_관세사" class="btn btn-light 카테고리">관세사</button>
+        <button type="button" title="결과_품명" class="btn btn-light 카테고리">품명</button>
         <textarea id="dk" style="width:50px;" rows="1" spellcheck="false" title="엑셀범위 복붙하고 우측 메뉴 중에 '풀기' 클릭하면"></textarea>
         <div class="dropdown d-inline-block">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,8 +74,15 @@
   </nav>
   <!-- position:absolute -->
 </header>
-
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
+<div id='modal' class="d-none">
+	<div id='content'>
+		<input type='button' value='X' class="close" id='btnClose'/>
+		<label>암호를 입력하세요</label><br/>
+		<input type='text' id='pwd' onchange="check클릭()" />
+		<input type='button' value='check' id='btnCheck' onclick="check클릭()" />
+	</div>
+</div>
 <!-- id="리스너용해역사진관련" id="main과우측" id="전체대체" 중 하나만?? 본다-->
 <!-- 안에 textarea를 넣던지, input들을 넣던지. -->
 <div id="임시" class="d-none" style="position: absolute;">ㅇㄹㄴㄹ</div>
@@ -103,11 +111,11 @@
     </div>
     <div id="선사_OOCL" class="결과_선사한줄독립">
       <div><a href="https://www.oocl.com/eng/ourservices/eservices/cargotracking/Pages/cargotracking.aspx" target="_blank">OOCL</a></div>
-      <div><span class="badge rounded-pill text-bg-info">메모</span>OOCL</div>
+      <div>OOCL</div>
     </div>
     <div id="선사_MSC" class="결과_선사한줄독립">
       <div><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC</a></div>
-      <div><span class="badge rounded-pill text-bg-info">메모</span>MSC</div>
+      <div>MSC</div>
     </div>
     <div id="선사_NYK" class="결과_선사한줄독립">
       <div><a href="http://nyk.container-tracking.org/#google_vignette" target="_blank">NYK</a></div>
@@ -158,6 +166,236 @@
   </div>
 
   <div id="결과_화주">
+    <div id="화주_머리글" class="결과_화주한줄독립">
+      <div>상호</div>
+      <div>관세사</div>
+      <div>비고</div>
+      <div>연락처</div>
+      <div>성명</div>
+      <div>e-mail</div>
+      <div>사업자번호</div>
+      <div>주소</div>
+    </div>
+
+    <div id="화주_도오수이" class="결과_화주한줄독립">
+      <div>(주)도오수이한국지점</div>
+      <div>수정관세사</div>
+      <div>2023.5.4</div>
+      <div>T)051-462-2456,F)051-462-1567</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_에스에프(SF)트레이딩" class="결과_화주한줄독립">
+      <div>에스에프(SF)트레이딩</div>
+      <div>충정관세사 손부장 010-2597-2979 화주 윤채원 과장 010-8342-8522</div>
+      <div>2020.09.04</div>
+      <div>T)070-8633-1131,F)070-8233-1130</div>
+      <div>정현정</div>
+      <div>haewoosmg@naver.com</div>
+      <div>851-45-00767(일반)</div>
+      <div>부산광역시 사하구 장평로 43, 2층(장림동, 세양수산)</div>
+    </div>
+
+    <div id="화주_삼성웰스토리1" class="결과_화주한줄독립">
+      <div>삼성웰스토리주식회사1</div>
+      <div>일진관세사</div>
+      <div>중국산 참조기, 2016.2.1</div>
+      <div>T)031-615-0703,F)010-9020-4574</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>김민기 031-288-0506, 010-3291-0149</div>
+    </div>
+
+    <div id="화주_ck국제수산무역" class="결과_화주한줄독립">
+      <div>ck국제수산무역</div>
+      <div>wy관세사 T)051-465-8178, F)051-466-6324 010-6694-2425</div>
+      <div>2015.11.25</div>
+      <div>화주 010-8741-0029</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_뉴포트" class="결과_화주한줄독립">
+      <div>뉴포트</div>
+      <div>일진과세사 곽과장</div>
+      <div>2016.7.11</div>
+      <div>T)02-3412-5526 조실장님(조은영)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_한외해운" class="결과_화주한줄독립">
+      <div>한외해운</div>
+      <div>세광관세사 T)051-467-0121 F)051-467-1716</div>
+      <div>2014.01.22</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_백이무역" class="결과_화주한줄독립">
+      <div>원일통상 T)051-465-4087 F)051-465-4088</div>
+      <div>2016.07.02</div>
+      <div></div>
+      <div>051-256-6114</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_씨스퀘어" class="결과_화주한줄독립">
+      <div>씨스퀘어</div>
+      <div>충정관세사 F)905-8460</div>
+      <div>화주 : 010-7115-3693</div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_민트레이딩" class="결과_화주한줄독립">
+      <div>민트레이딩</div>
+      <div>일진관세사 곽대훈 과장 대한제당 담당</div>
+      <div>2015.11.02</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_선우수산무역" class="결과_화주한줄독립">
+      <div>선우수산무역</div>
+      <div>원관세사 T)051-466-3500 김홍근 부장 F)051-466-3653</div>
+      <div>2015.10.08</div>
+      <div>T)02-565-7995 정성은 부장, F)02-569-7995 010-5772-6284</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>정양희 이사</div>
+    </div>
+
+    <div id="화주_케이비엠푸드" class="결과_화주한줄독립">
+      <div>(주)케이비엠푸드인터내셔널KBM</div>
+      <div>보강관세사(이정연) T)031-708-9380</div>
+      <div>2016.03.11</div>
+      <div>T)010-6532-2166</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="화주_" class="결과_화주한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>T),F)</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
 
   </div>
 
@@ -207,9 +445,9 @@
 
     <div id="운송사_이지스2" class="결과_운송사한줄독립 gksk enf">
       <div>(주)이지트랜스,이지스</div>
-      <div>[샤시]051-715-0506(통화:715-0527) 연습용 3줄 <br> br <br> br 연습용 3줄연습용 3줄연습용 3줄</div>
-      <div>연습용 3줄 <br> br</div>
-      <div>연습용 3줄 <br> br연습용 3줄 <br> br연습용 3줄 <br> br연습용 3줄 <br> br연습용 3줄 <br> br</div>
+      <div>[샤시]051-715-0506(통화:715-0527)</div>
+      <div></div>
+      <div></div>
       <div></div>
       <div></div>
     </div>
@@ -355,7 +593,7 @@
       <div></div>
       <div>051-600-9706</div>
       <div></div>
-      <div>운송 관련 원활함 (계획에 맞춰줌)</div>
+      <div>운송 관련 원활함 (계획에 맞춰줌), 파란색 샤시</div>
     </div>
 
     <div id="운송사_인터지스" class="결과_운송사한줄독립">
@@ -490,7 +728,7 @@
       <div></div>
       <div>(전자봉인)070-7166-1129</div>
       <div>MSC</div>
-      <div>라인운송일 경우엔 프리타임내에..</div>
+      <div>라인운송일 경우엔 프리타임내에.. 노란바탕에 양끝단 청록</div>
     </div>
 
     <div id="운송사_삼익물류" class="결과_운송사한줄독립">
@@ -568,6 +806,61 @@
   </div>
 
   <div id="결과_관세사">
+
+  </div>
+
+  <div id="결과_품명">
+    <div id="품명_머리글" class="결과_품명한줄독립">
+      <div>영문명</div>
+      <div>한글품명</div>
+      <div>영문명</div>
+      <div>한글품명</div>
+      <div>영문명</div>
+      <div>한글품명</div>
+      <div>영문명</div>
+      <div>한글품명</div>
+      <div>영문명</div>
+      <div>한글품명</div>
+    </div>
+
+    <div id="품명_001" class="결과_품명한줄독립">
+      <div>seasoned scallop slice</div>
+      <div>조미가리비살</div>
+      <div>baby clam</div>
+      <div>피바지락</div>
+      <div>ligament pen shell meat</div>
+      <div>키조개살</div>
+      <div>hard clam</div>
+      <div>백합</div>
+      <div>capelin</div>
+      <div>열빙어</div>
+    </div>
+
+    <div id="품명_002" class="결과_품명한줄독립">
+      <div>Litopenaeus vannamei shrimp</div>
+      <div>태평양흰다리새우</div>
+      <div>Penaeus vannamei shrimp</div>
+      <div>태평양흰다리새우</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="품명_" class="결과_품명한줄독립">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
 
   </div>
   

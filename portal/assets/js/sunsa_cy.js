@@ -27,6 +27,25 @@ function 보기셑팅() {
 
 var 선사기존html='<div id="선사정보" style="visibility: hidden;"></div>'
 document.querySelector('#카피').innerHTML=선사기존html + document.querySelector('#결과모음_none #결과_선사').outerHTML;//안에 내용만
+//비밀번호 입력위해 숨기기
+if ('비밀번호'=='비밀번') {
+  document.querySelector('#modal').classList.remove('d-none');
+  document.querySelector('#카피').classList.add('d-none');
+  document.querySelector('#head_button_group').classList.add('d-none');
+  
+  var btnCheck = document.getElementById('btnCheck');
+  function check클릭 () {
+    if (document.querySelector('#pwd').value=='3368') {
+      document.querySelector('#카피').classList.remove('d-none');
+      document.querySelector('#head_button_group').classList.remove('d-none');
+      document.querySelector('#modal').classList.add('d-none');
+    } else {
+      alert('비밀번호가 맞지 않습니다 (힌트:팩스)')
+    }
+  }
+}
+
+
 // 링크이동시 실행될것 한번더
 var 리스너_카피=document.querySelector('#카피');
 var 리스너_head_button_group=document.querySelector('#head_button_group');
@@ -45,30 +64,12 @@ function 리스너_카피_클릭이벤트(e) {
     for (var i=0; i<e.target.parentElement.children.length; i++) {
       if (e.target.parentElement.children[i].classList.contains('코딩표시')) {코딩표시인덱스=i}
     }
-    if (코딩표시인덱스==0) {//첫번째일때 색칠만
+      //코딩표시인덱스는 0 일때 첫번째일때만 색칠하려고 했는데 그냥 한다.
       if (e.target.parentElement.classList.contains('결과내검색색깔넣기')) {
         e.target.parentElement.classList.remove('결과내검색색깔넣기');
       } else {
         e.target.parentElement.classList.add('결과내검색색깔넣기');
       }
-    }
-    if (코딩표시인덱스!==0) {//첫번째 whiteSpace=='normal'후에 가장 높은 높이로 재설정
-      
-
-    }
-
-
-
-    var 시작시=window.getComputedStyle(e.target).whiteSpace;
-    if (window.getComputedStyle(e.target).whiteSpace=='normal') {
-      e.target.style.whiteSpace='nowrap';
-      e.target.style.height='28px';
-      console.log('시작시 : ' + 시작시 + ', ==>변경 : nowrap, 결과높이 clientHeight : 28px');
-    } else {
-      e.target.style.whiteSpace='normal';
-      e.target.style.height=e.target.scrollHeight + 'px';
-      console.log('시작시 : ' + 시작시 + ', ==>변경 : normal, 결과높이 scrollHeight : ' + e.target.scrollHeight + 'px');
-    }
 
     e.target.classList.remove('코딩표시');
   }
@@ -175,6 +176,39 @@ function 리스너_head_button_group클릭이벤트(e) {
       유형='카피보기';
       보기셑팅()
     }
+    var 최대높이div;//가장 높은 높이로 재설정
+    var 현재div높이;
+    var 높이px;
+    var 가로한줄모두=document.querySelectorAll('#카피 > div > div');
+    for (var i=0; i<가로한줄모두.length; i++) {
+      최대높이div=0;//sustring:시작위치(0부터)에서 끝위치(1부터)까지
+      for (var 내부=0; 내부<가로한줄모두[i].children.length; 내부++) {
+        높이px=window.getComputedStyle(가로한줄모두[i].children[내부]).height;
+        현재div높이=Number(높이px.substring(0,높이px.length-2));
+        if (최대높이div<현재div높이) {최대높이div=현재div높이}
+      }
+      for (var 내부=0; 내부<가로한줄모두[i].children.length; 내부++) {
+        가로한줄모두[i].children[내부].style.height=최대높이div + 'px';
+      }
+    }
+
+
+
+
+
+
+    // var 시작시=window.getComputedStyle(e.target).whiteSpace;
+    // if (window.getComputedStyle(e.target).whiteSpace=='normal') {
+    //   e.target.style.whiteSpace='nowrap';
+    //   e.target.style.height='28px';
+    //   console.log('시작시 : ' + 시작시 + ', ==>변경 : nowrap, 결과높이 clientHeight : 28px');
+    // } else {
+    //   e.target.style.whiteSpace='normal';
+    //   e.target.style.height=e.target.scrollHeight + 'px';
+    //   console.log('시작시 : ' + 시작시 + ', ==>변경 : normal, 결과높이 scrollHeight : ' + e.target.scrollHeight + 'px');
+    // }
+
+    // e.target.classList.remove('코딩표시');
   }
   //textarea초기화
   if (e.target.innerHTML=='결과만초기화') {
@@ -302,16 +336,12 @@ function 리스너_head_button_group_change이벤트(e) {
   }
   if (e.target.id=='결과내검색') {//#카피 안에 들어와 있는 내용들을 확인한다. id=결과내검색 input 변경시
     //#카피 > div > div > div : #카피 > #결과>선사 > #선사_고려해운 > div(가로한줄)
-    console.log('작성중.1.#카피 > div > div > div : #카피 > #결과>선사 > #선사_고려해운 > div(가로한줄) 에서 : \n div(가로한줄).innerText 에 검색값 포함 되면'
-    + '\n부모요소에 결과내검색색깔넣기 class.add \n2.해당작업을 #execl범위풀_기결과 > div > span에도 '
-    + '\n부모div에 색깔넣기용 class.add');
-    console.log('document.querySelectorAll(#카피 > div > div > div).length : ' + document.querySelectorAll('#카피 > div > div > div').length);
-
     var text=document.querySelector('#결과내검색').value.toUpperCase();
     if (text=='') {return;}
+    
     var 찾을곳들=document.querySelectorAll('#카피 > div > div > div');
     for (var i=0; i<찾을곳들.length; i++) {
-      if (찾을곳들[i].innerText.search(text.toUpperCase())>-1) {
+      if (찾을곳들[i].innerText.toUpperCase().search(text.toUpperCase())>-1) {
         찾을곳들[i].parentElement.classList.add('결과내검색색깔넣기');
       }
     }
