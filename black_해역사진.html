@@ -533,7 +533,7 @@
         <h6 class="canvas_div" title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
       </div>
       <div>
-        <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(0);==>12.1, 반올림</h6>
+        <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(1);==>12.1, 반올림</h6>
         <h6>메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1</h6>
         <h6>메모_#split:줄바꿈정보=문자열.split('\n'); 탭으로분리정보=문자열.split('\t');</h6>
         <h6>메모_#정규식 : 3.121px의 경우 소수점까지 사라져 숫자만 추출시 ==> 3121이 된다.</h6>
@@ -756,12 +756,13 @@
     </div>
     <div id="JS_search_find_match사용법">
       <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6 style="font-weight: bold;">• 찾을값이 포함된 문자열과 찾을값을 모두 대문자로 바꿔서 search, find 사용</h6>
+        <code style="margin-left:10px;">var 검색할문자열=document.querySelector('#전체검색input').value.toUpperCase(); </code>
         <h6 style="font-weight: bold;">• search : 없으면 -1, 첫번째면 0, 대소문자 구분.</h6>
         <code style="color:black;">if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) &#123;
           <br><span style="margin-right:23px;"></span>내부html+=검색할버튼클래스들[i].outerHTML;
           <br>&#125;
         </code>
-        <h6>innerText에서는 search가 안된다??</h6>
         <h6 style="font-weight: bold;">• find : 배열안에 찾을값이 있는지 확인. arr.find(callback(element, index, array), thisArg)</h6>
         <h6 style="font-weight: bold;">• 대소문자 구분, 전체일치.</h6>
         <h6 style="margin-left:10px;">find 함수는 배열의 요소를 순차적으로 순회하면서 조건에 일치하는 요소의 값을 즉시 반환합니다. </h6>
@@ -784,13 +785,13 @@
           <br>}
         </code>
         <h6>정확히 일치하는 값이 있으면 '해당 문자열'이 반환되고, true 조건으로 활용가능.</h6>
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
         <h6 style="font-weight: bold;">• match : 1.대소문자구분, 2.대소문자구분없이 "i"</h6>
         <h6>대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
         <code style="margin-left:22px;">String.match(new RegExp(searchVariable, "i"));</code>
         <h6>대소문자 구분. searchVariable=찾을문자열</h6>
         <code style="margin-left:22px;">String.match(new RegExp(searchVariable));</code>
-      </div>
-      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
         <h6 style="font-weight: bold;">• match 예시 : 문자열.match(찾을 단어)</h6>
         <code style="margin-left:22px;">?? let reg = [/\w+java\w+/g, /java\w+/] : 정규식 나중에... 모르겠다.
           <br>let str = 'hello world';
