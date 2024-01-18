@@ -62,9 +62,9 @@ code {display: block; color:black;margin-bottom:5px;}
 #리스너용섬이름검색 input {width:80px;}
 #리스너용섬이름검색 div {border:1px solid black;background-color: rgb(231, 222, 222);}
 /* 아래부분 */
-#textarea좌측상단메모 {width:520px;height:770px;left:5px;position: absolute;}
+#textarea좌측상단메모 {width:520px;height:718px;left:5px;position: absolute;}
 #해역_물품단계 img {position: absolute;left:339px;}
-#덩어리이동5개textarea {white-space: nowrap; position: absolute;margin-top:780px;left:5px;}
+#덩어리이동5개textarea {white-space: nowrap; position: absolute;margin-top:730px;left:5px;}
 #덩어리이동5개textarea textarea {display: inline-block;width:614px;height:500px; left:5px;top:1020px;}
 #S1_에페리아창고사진 {position: absolute;width:342px;height:116px;top:0px;left:530px; background-image:url('../../../portal/images/black_문서/S1_창고_에페리아.png');background-position: -1px -1px;}
 #S1_일리야창고사진 {position: absolute;width:342px;height:380px;top:00px;left:872px; background-image:url('../../../portal/images/black_문서/S1_창고_일리야.png');background-position: -1px -1px;}
