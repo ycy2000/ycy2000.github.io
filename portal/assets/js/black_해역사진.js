@@ -15,7 +15,7 @@ function 교섭력계산() {
   + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
   document.querySelector('#계산_대양7종').value=document.querySelector('#계산_대양저가').value*3 + document.querySelector('#계산_대양고가').value*4;
   document.querySelector('#계산_하코와대양합').value=Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
-  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5155)).toFixed(0);
+  document.querySelector('#계산_사단까주').value=(일회교섭력*(1.5154)).toFixed(0);
   document.querySelector('#계산_사단까주8개').value=(document.querySelector('#계산_사단까주').value*8).toFixed(0);
 
   document.querySelector('#계산_차감후교섭의일갱개수').value=(Number(document.querySelector('#차감후교섭력').value)/일회교섭력).toFixed(1);
