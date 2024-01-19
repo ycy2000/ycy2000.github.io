@@ -546,7 +546,6 @@
     </div>
     <div class="canvas카테고리" id="BLACK구조">
       <div>
-        <h6 class="코딩등메모장text파일" title='BLACK구조_class_id_offcanvas_body_01.txt'>BLACK구조_class_id_offcanvas_body_01.txt</h6>
         <h6 class="코딩등메모장text파일" title='BLACK구조_class_id_textarea보기숨기기top잘안됨.txt'>BLACK구조_class_id_textarea보기숨기기top잘안됨.txt</h6>
       </div>
       <div>
@@ -590,6 +589,17 @@
       <div>
         <h6 class="canvas_div" title='jQuery_설치와기초사용법'>jQuery_설치와기초사용법</h6>
         <h6 class="canvas_div" title='jQuery_문법리스트'>jQuery_문법리스트</h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="연습">
+      <div>
+        <h6 class="코딩등메모장text파일" title=''></h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='연습_인터벌_interval_움짤1'>연습_인터벌_interval_움짤1</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title=''></h6>
       </div>
     </div>
   </div>
@@ -934,6 +944,31 @@
           <br><span style="margin-left:20px"></span>&#125;
           <br><span style="margin-left:10px"></span>&#125;
         </code>
+      </div>
+    </div>
+    <div id="연습_인터벌_interval_움짤1">
+      <div style="width:800px;margin-right:5px;border-right:1px solid black;" class="d-inline-block">
+        <h6>출처 : https://curryyou.tistory.com/328 </h6>
+        <h6>• Canvas 객체의 toDataURL()함수를 통해 캔버스에 그린 그림을 문자열 형태로 변환할 수 있는데,</h6>
+        <h6 style="text-indent: 10px;">Canvas에 그려진 내용을 Data URL로 변환한 것이기 때문에 그 자체로 이미지 정보가 된다.</h6>
+        <h6 style="text-indent: 10px;">Canvas에 그려진 내용을 문자열로 변환하여 img요소의 src로 사용할 수 있다.</h6>
+        <code style="margin-left: 10px;">&lt;img id="myImage">
+          <br>function toDataURL() {
+          <br><span style="margin-left: 10px;"></span>var myImage=document.getElemetnById('myImage');
+          <br><span style="margin-left: 10px;"></span>myImage.src=canvas.toDataURL();
+          <br>}
+        </code>
+        <h6>• setInterval(콜백함수,시간)는 "시간(ms)"를 간격으로 "콜백함수"를 반복 호출 하는 함수이다.</h6>
+        <h6>1. setInterval()함수의 반환값을 변수에 할당하여 반복시작</h6>
+        <h6 style="text-indent: 18px;">let 변수=setInterval(콜백함수,시간);</h6>
+        <h6>2. clearInterval(변수)로 반복 중단</h6>
+        <h6 style="text-indent: 18px;">clearInterval(변수);</h6>
+        <h6>3. setInterval()함수의 반환값을 변수에 재할당하여 재시작</h6>
+        <h6 style="text-indent: 18px;">변수=setInterval(콜백함수,시간);</h6>
+      <div style="width:800px;margin-left:-10px;padding-left:5px;border-left:1px solid black;" class="d-inline-block">
+
+          
+
       </div>
     </div>
   </div>

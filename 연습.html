@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<link href="portal/assets/css/ycy.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<style>
+  .사진공통스타일 {width:151px;height:151px;background-image:url(portal/images/canvas인터벌연습/인터벌연습그림.png);border:1px solid black;}
+  #임시사진누적 > div > div {display: inline-block;margin-right:-4px;}
+</style>
+</head>
+<body>
+  <p>한장의 그림에서 background-position 으로 여러부분으로 잘라서 인터벌줘서 다음그림 보이게하기</p>
+  <div>
+    <img id="원본사진" src="portal/images/canvas인터벌연습/인터벌연습그림.png" alt="이미지없음">
+  </div>
+<!-- 가로자를폭, 세로자를폭, #파템_일반재료1 > div:nth-of-type(8) > button:first-child {background-image:url('../../../portal/images/black_문서/S2_재료아이콘추출용.png');background-position: -192px -1px;}-->
+  <div id="사진보이기" style="position: absolute;left:960px;top:503px;">
+    <button onclick="순차적배치()">하나씩보이기</button><button style="margin-bottom:5px;margin-left:-2px;" onclick="순차적배치중단()">중단하기</button><br>
+    <div id="배치"></div></div>
+  </div>
+  <div id="임시사진누적" style="margin-left:27px;margin-top:5px;">
+    <div>
+      <div class="사진공통스타일" style="background-position: -28px -21px;"></div>
+      <div class="사진공통스타일" style="background-position: -179px -21px;"></div>
+      <div class="사진공통스타일" style="background-position: -330px -21px;"></div>
+      <div class="사진공통스타일" style="background-position: -481px -21px;"></div>
+      <div class="사진공통스타일" style="background-position: -632px -21px;"></div>
+      <div class="사진공통스타일" style="background-position: -783px -21px;"></div>
+    </div>
+    <div>
+      <div class="사진공통스타일" style="background-position: -28px -172px;"></div>
+      <div class="사진공통스타일" style="background-position: -179px -172px;"></div>
+      <div class="사진공통스타일" style="background-position: -330px -172px;"></div>
+      <div class="사진공통스타일" style="background-position: -481px -172px;"></div>
+      <div class="사진공통스타일" style="background-position: -632px -172px;"></div>
+      <div class="사진공통스타일" style="background-position: -783px -172px;"></div>
+    </div>
+    <div>
+      <div class="사진공통스타일" style="background-position: -28px -323px;"></div>
+      <div class="사진공통스타일" style="background-position: -179px -323px;"></div>
+      <div class="사진공통스타일" style="background-position: -330px -323px;"></div>
+      <div class="사진공통스타일" style="background-position: -481px -323px;"></div>
+      <div class="사진공통스타일" style="background-position: -632px -323px;"></div>
+      <div class="사진공통스타일" style="background-position: -783px -323px;"></div>
+    </div>
+  </div>
+
+
+<script>
+  var 배치할outerhtml;
+  var 배치할index=0;
+  var 배치할18종들=document.querySelectorAll('#임시사진누적 > div > div');
+  var 변수;
+
+  function 배치실행() {
+    console.log('배치실행, 배치할index : ' + 배치할index);
+    배치할outerhtml=배치할18종들[배치할index].outerHTML;
+    if (배치할outerhtml) {
+      document.querySelector('#배치').innerHTML=배치할outerhtml;
+      배치할index=Number(배치할index+1) % 18;
+    }
+  }
+
+  function 순차적배치() {
+    순차적배치중단();//번갈아 누르면 중단되는데 배치두번누르고 중단이 안됨
+    console.log('순차적배치');
+    변수=setInterval(배치실행,100);
+  }
+  function 순차적배치중단() {
+    clearInterval(변수);
+  }
+
+
+</script>
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+
+</body>
+
+</html>
