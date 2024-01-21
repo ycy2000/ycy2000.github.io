@@ -263,21 +263,26 @@ var 회귀선택버튼div;
     백회귀전체='<div id="js백회귀전체">' + 백회귀제목 + 각백회귀누적 + '</div>';
     document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=선택회차다음번호 + document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML+백회귀전체;
 
+var 전체변수selectdindex=document.querySelector('#회차select').selectedIndex;
 function 신규회귀변경3회귀() {
+  전체변수selectdindex=document.querySelector('#회차select').selectedIndex;
   document.querySelector('#회귀수입력').value=5;
   신규회귀변경()
 }
 function 신규회귀변경100회귀() {
+  전체변수selectdindex=document.querySelector('#회차select').selectedIndex;
   document.querySelector('#회귀수입력').value=100;
   신규회귀변경()
 }
+
 function 신규회귀변경() {
+  전체변수selectdindex=document.querySelector('#회차select').selectedIndex;
   var 회귀수=document.querySelector('#회귀수입력').value;
   신규회귀값=Number(회귀수);
 
   var 백회귀번호들=[];
   for (i=0; i<백회귀개수; i++) {
-    시작배열값=(회차개수 - (신규회귀값 * (i+1)))*9;
+    시작배열값=(회차개수 - 전체변수selectdindex - (신규회귀값 * (i+1)))*9;
     for (var t=0; t<9; t++) {
       백회귀번호들.push(당번전체[시작배열값+t]);
     }
@@ -487,7 +492,7 @@ var 다음btn='';
 
 
   //새로고침시 회귀와 미출수부분 코드와 유사; 단독 : 최근회차가아닐때 설정된회차 다음회차 당번넣기
-
+var 신규회귀값=Number(document.querySelector('#회귀수입력').value);//지워지기전에
 if (selectedindex!==0) {
   시작배열값=(회차개수 - selectedindex )*9;
   for (var i=0; i<9; i++) {
@@ -554,52 +559,61 @@ for (var i=0; i<회귀번호들.length; i++) {
 회귀전체=회귀제목 + 각회귀누적;
 document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=회귀전체;
 
-  //INDEX 전용 100회귀
-  var 백회귀개수=0;
-  i=1;
-  while ((회차개수+1-selectedindex-(100*i))>0) {
-    백회귀개수=백회귀개수+1;
-    i=i+1;
-  }
 
-  var 백회귀번호들=[];
-for (i=0; i<백회귀개수; i++) {
-  시작배열값=(회차개수 - selectedindex-(100 * (i+1)))*9;
-  for (var t=0; t<9; t++) {
-    백회귀번호들.push(당번전체[시작배열값+t]);
-  }
-  // if (i==0) {alert('회차개수 : ' + 회차개수 + ' 백회귀번호들 : ' + 백회귀번호들)}
-}
 
-  var 백회귀전체='';
-  var 각백회귀누적='';
-  var 백회귀제목='';
-  var 백회귀btn='';
-  var 백누적=0;
-  백회귀제목='<div></div><div><span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span></div>'
-
-  for (var i=0; i<백회귀번호들.length; i++) {
-    if ((i % 9)==0) {
-      백누적=Number(백누적+100);
-      백회귀btn='<button>' + 백누적 + '</button>'; 
-      백회귀btn+='<button>' + 백회귀번호들[i] + '회</button>'; 
-    } else if ((i % 9)==1) {
-      백회귀btn+='<button>' + 백회귀번호들[i] + '</button>';//날짜
-    } else {
-      //숫자부분
-      백회귀btn+='<button>' + 백회귀번호들[i] + '</button>'; 
+  // 100회귀 고정이었는데 선택할수 있는 버튼 추가
+  var 회귀선택버튼div;
+  회귀선택버튼div='<div style="margin-top:5px;"><input id="회귀수입력" type = "text" spellcheck="false" style="width:50px;vertical-align:bottom;text-align:center;" value=100>'
+  + '<button style="width:70px;height:30px;" onclick="신규회귀변경()">회귀변경</button>'
+  + '<button style="width:50px;height:30px;background-color: rgb(100, 237, 214);" onclick="신규회귀변경3회귀()">5회귀</button>'
+  + '<button style="width:75px;height:30px;background-color: rgb(100, 237, 214);" onclick="신규회귀변경100회귀()">100회귀</button></div>'
+  // 100회귀 고정이었는데 선택할수 있는 버튼 추가>>
+    //INDEX 전용 100회귀, 작업중
+    var 백회귀개수=10;//표시되는 수
+    // var 신규회귀값=100;  지워지기전에 위부분에
+    i=1;
+    // while ((회차개수+1-(100*i))>0) {
+    //   백회귀개수=백회귀개수+1;
+    //   i=i+1;
+    // }
+  
+    var 백회귀번호들=[];
+     console.log('시작배열값 : ' + 시작배열값)
+    for (i=0; i<백회귀개수; i++) {
+      시작배열값=(회차개수 - selectedindex - (신규회귀값 * (i+1)))*9;
+      for (var t=0; t<9; t++) {
+        백회귀번호들.push(당번전체[시작배열값+t]);
+      }
+      // if (i==0) {alert('회차개수 : ' + 회차개수 + ' 백회귀번호들 : ' + 백회귀번호들)}
     }
-
-    if ((i % 9)==8) {
-      if (i==8) {각백회귀누적='<div>' + 백회귀btn + '</div>'}
-      if (i!==8) {각백회귀누적=각백회귀누적 + '<div>' + 백회귀btn + '</div>'}
-    }
-  }
-  백회귀전체=백회귀제목 + 각백회귀누적;
-  document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=선택회차다음번호 + document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML+백회귀전체;
-
-
-//새로고침시 진행되는 코드와 유사하다 끝..
+    
+      var 백회귀전체='';
+      var 각백회귀누적='';
+      var 백회귀제목='';
+      var 백회귀btn='';
+      var 백누적=0;
+      백회귀제목=회귀선택버튼div + '<div></div><div><span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span></div>'
+    
+      for (var i=0; i<백회귀번호들.length; i++) {
+        if ((i % 9)==0) {
+          백누적=Number(백누적+신규회귀값);
+          백회귀btn='<button>' + 백누적 + '</button>'; 
+          백회귀btn+='<button>' + 백회귀번호들[i] + '회</button>'; 
+        } else if ((i % 9)==1) {
+          백회귀btn+='<button class="span_날짜">' + 백회귀번호들[i] + '</button>';//날짜
+        } else {
+          //숫자부분
+          백회귀btn+='<button>' + 백회귀번호들[i] + '</button>'; 
+        }
+    
+        if ((i % 9)==8) {
+          if (i==8) {각백회귀누적='<div>' + 백회귀btn + '</div>'}
+          if (i!==8) {각백회귀누적=각백회귀누적 + '<div>' + 백회귀btn + '</div>'}
+        }
+      }
+      백회귀전체='<div id="js백회귀전체">' + 백회귀제목 + 각백회귀누적 + '</div>';
+      document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=선택회차다음번호 + document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML+백회귀전체;
+      document.querySelector('#회귀수입력').value=신규회귀값;
 }
 
 
