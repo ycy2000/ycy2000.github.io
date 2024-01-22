@@ -5,11 +5,11 @@ function 교섭력계산() {
   //곱하는값은 인풋 오른쪽 형제
   document.querySelector('#계산_재갱1회당').value=(일회교섭력*(4.30022)).toFixed(0);
 
-  document.querySelector('#계산_하코저가').value=(일회교섭력*(2.06)).toFixed(0);
+  document.querySelector('#계산_하코저가').value=(일회교섭력*(2.0601)).toFixed(0);
   document.querySelector('#계산_더코').value=(일회교섭력*(2.5494)).toFixed(0);
   document.querySelector('#계산_하코').value=(일회교섭력*(3.0646)).toFixed(0);
-  document.querySelector('#계산_대양저가').value=(일회교섭력*(3.258)).toFixed(0);
-  document.querySelector('#계산_대양고가').value=(일회교섭력*(4.0725)).toFixed(0);
+  document.querySelector('#계산_대양저가').value=(일회교섭력*(3.2581)).toFixed(0);
+  document.querySelector('#계산_대양고가').value=(일회교섭력*(4.0727)).toFixed(0);
 
   document.querySelector('#계산_하코4종').value=Number(document.querySelector('#계산_하코저가').value*2)
   + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
