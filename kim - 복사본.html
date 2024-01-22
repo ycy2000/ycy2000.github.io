@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <!--업무참고 css-->
 <link href="portal/assets/css/default.css" rel="stylesheet">
-<link href="portal/assets/css/kim.css" rel="stylesheet">
+<link href="portal/assets/css/kim - 복사본.css" rel="stylesheet">
 <!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,77 +92,30 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="width:370px;">
+    <div class="modal-content" style="width:1000px;">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button id="modal클릭수" class="d-none">0</button>
       </div>
-      <div class="modal-body"><!-- 1 ~ 45 -->
-        <div>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
+      <div class="modal-body" style="width:1000px;"><!-- 1 ~ 45 -->
+        <div id="modal-왼쪽" style="width:330px; display: inline-block;border-right:1px solid rgb(189, 170, 170);">
+          <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><br>
+          <button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><br>
+          <button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button><br>
+          <button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button><br>
+          <button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button><br>
+          <button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button><br>
+          <button>43</button><button>44</button><button style="width:46px;">45</button>
+          <div style="margin-top:10px;">
+            <span type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</span>
+            <span type="button" class="btn btn-primary" onclick="document.querySelector('#id_번호입력').innerHTML='<div></div>';">번호지움</span>
+            <span type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</span>
+          </div>
         </div>
-        <div>
-          <button>8</button>
-          <button>9</button>
-          <button>10</button>
-          <button>11</button>
-          <button>12</button>
-          <button>13</button>
-          <button>14</button>
+        <div id="modal-오른쪽번호입력" style="width:370px; display: inline-block;vertical-align: top;margin-left:10px;">
+
         </div>
-        <div>
-          <button>15</button>
-          <button>16</button>
-          <button>17</button>
-          <button>18</button>
-          <button>19</button>
-          <button>20</button>
-          <button>21</button>
-        </div>
-        <div>
-          <button>22</button>
-          <button>23</button>
-          <button>24</button>
-          <button>25</button>
-          <button>26</button>
-          <button>27</button>
-          <button>28</button>
-        </div>
-        <div>
-          <button>29</button>
-          <button>30</button>
-          <button>31</button>
-          <button>32</button>
-          <button>33</button>
-          <button>34</button>
-          <button>35</button>
-        </div>
-        <div>
-          <button>36</button>
-          <button>37</button>
-          <button>38</button>
-          <button>39</button>
-          <button>40</button>
-          <button>41</button>
-          <button>42</button>
-        </div>
-        <div>
-          <button>43</button>
-          <button>44</button>
-          <button>45</button>
-          <button id="클릭수" class="d-none">0</button>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="document.querySelector('#id_번호입력').innerHTML='<div></div>';">번호지움</button>
-        <button type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</button>
       </div>
     </div>
   </div>
@@ -170,37 +123,44 @@
 
 
 <div class="p-2 d-flex container-fluid" style="margin:0 auto;">
-  <div>
-    <div id="id_번호입력아래당첨번호숨김">
-      <div></div><!-- 넓이차지용 -->
+  <div id="배치_왼쪽" style="width:440px;">
+    <div id="id_배치_왼쪽_다음회차" class="왼쪽당번"><!--가로한줄 P10개 -->
+      <P>다음</P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P>
     </div>
+    <div id="id_배치_왼쪽_회귀5종머리글" class="왼쪽당번">
+      <span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span><br>
+      <P>60회귀</P><P>1099회</P><P>2023-12-23</P><P>3</P><P>20</P><P>28</P><P>38</P><P>40</P><P>43</P><P>4</P><br>
+      <P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>
+      <P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>
+      <P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>
+      <P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P>
+    </div>
+    <div id="id_배치_왼쪽_회귀5종번호들" class="왼쪽당번">
 
-    <div id="id_번호입력">
-      <div></div><!-- 넓이차지용 -->
+    </div>
+    <div id="id_배치_왼쪽_회귀변경버튼과머리글" class="왼쪽당번">
+
+    </div>
+    <div id="id_배치_왼쪽_회귀변경번호들" class="왼쪽당번">
+
     </div>
   </div>
 
-  <div style="margin:0 auto;width:100%;font-size: 20px;">
-    <div id="회차와선택한당번">
-      <span>최근회차</span>
-      <select id="회차select" onclick="
-      document.querySelector('#span_날짜').innerHTML='';
-      for (var i=0; i<document.querySelectorAll('#span_날짜 ~ button').length; i++) {
-        if (i>0) {document.querySelectorAll('#span_날짜 ~ button')[i].innerHTML='';}
-      }
-      ">
+  <div id="배치_오른쪽" style="width:500px;">
+    <div id="배치_오른쪽_회차선택과_조회_선택회차당번">
+      <span style="width:65px;text-align: start;">최근회차</span>
+      <select id="회차select" onchange="회차변경실행()">
       </select>
-      <span id="span_날짜"></span><button id="btn_당번조회" onclick="선택회차날짜와당번넣기()">조회</button><button>2</button><button>2</button><button></button><button></button><button></button><button></button><button></button>
+      <span id="span_날짜" style="width:90px;"></span><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
     </div>
-    <!--최근미출수와출수 js스크립트  -->
-    <div id="최근미출수와출수" >
+    <div id="배치_오른쪽_최근미출수와출수" >
     </div>
-<!--자동번호 나온횟수 js스크립트  -->
-    <div class="자동번호나온횟수" >
+
+    <div class="배치_오른쪽_자동번호나온횟수" >
       <div>자동번호 나온횟수</div>
     </div>
   </div>
-</div><!-- main과 띄우기용 -->
+</div>
 
 
 
@@ -443,7 +403,7 @@ role="button" title="Move Top" data-toggle="tooltip" data-placement="left">
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
-<script src="portal/assets/js/kim.js"></script>
+<script src="portal/assets/js/kim - 복사본.js"></script>
 </body>
 
 </html>
