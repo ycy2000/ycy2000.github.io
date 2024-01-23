@@ -1,8 +1,0 @@
-@charset "UTF-8";
-span, p {display:inline-block;margin:0;margin-right:-1px;padding:0; 
-  height:30px;width:30px;vertical-align: top;padding-top:2px;text-align:center;margin-bottom:-1px;}
-p {border:1px solid gray;}
-#span_날짜 ~ p:nth-of-type(7) {background-color: aqua;}
-.왼쪽당번 > span:nth-of-type(10n+1), .왼쪽당번 > p:nth-of-type(10n+1) {width:60px;}
-.왼쪽당번 > span:nth-of-type(10n+2), .왼쪽당번 > p:nth-of-type(10n+2) {width:60px;}
-.왼쪽당번 > span:nth-of-type(10n+3), .왼쪽당번 > p:nth-of-type(10n+3) {width:100px;}

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+span, p {display:inline-block;margin:0;margin-right:-1px;padding:0; 
+  height:30px;width:30px;vertical-align: top;padding-top:2px;text-align:center;margin-bottom:-1px;}
+p {border:1px solid gray;}
+#span_날짜 ~ p:nth-of-type(7), .왼쪽당번 > p:nth-of-type(10n) {background-color: aqua;}
+.왼쪽당번 > span:nth-of-type(10n+1), .왼쪽당번 > p:nth-of-type(10n+1) {width:60px;}
+.왼쪽당번 > span:nth-of-type(10n+2), .왼쪽당번 > p:nth-of-type(10n+2) {width:60px;}
+.왼쪽당번 > span:nth-of-type(10n+3), .왼쪽당번 > p:nth-of-type(10n+3) {width:100px;}
+
+#id_배치_왼쪽_회귀변경 > button {height:30px;background-color: rgb(100, 237, 214);margin-left:-5px;border:1px solid black;}
+#id_배치_왼쪽_회귀변경 > button:nth-of-type(4) {margin-left:-6px;}
+
+.modal_body button {width:50px; height:50px;margin-right:-6px;margin-bottom:-2px; padding:0;}
+#modal_왼쪽 > div > span {padding-top:3px;}
+#modal_왼쪽 > div > span:nth-of-type(1) {width:130px;}
+#modal_왼쪽 > div > span:nth-of-type(2) {width:130px;}
+
+#modal_오른쪽번호입력 p {width:30px;}
+#modal_오른쪽번호입력 span {width:50px;}
+
+#배치_오른쪽_5_10_15주미출수 span:nth-of-type(1) {width:55px;text-align: end;margin-right:5px;}
+#배치_오른쪽_5_10_15주미출수 span:nth-of-type(2) {width:40px;height:25px;margin-right:5px;border:1px solid black;font-size: 14px;margin-top:2px;}
+#배치_오른쪽_5_10_15주미출수 {font-size: 18px;border-bottom:1px solid gray;padding-top:5px;}
