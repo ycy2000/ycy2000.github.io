@@ -143,10 +143,13 @@
   <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
   <div id="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;margin-left:10px;"><!-- 스크립트로 불러옴-->
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
+      <div class="modal-content" style="white-space: nowrap;">
+        <div class="modal-header" style="justify-content: left;">
           <h1 class="modal-title fs-5" id="exampleModalLabel">번호입력</h1>
           <button id="modal클릭수" class="d-none">0</button>
+          <button id="입력번호보기" style="margin-left:316px;" onclick="기본보기()">기본보기</button>
+          <button id="입력번호보기" style="margin-left:316px;" onclick="입력번호보기()">입력번호보기</button>
+          <button id="나온횟수보기" style="margin-left:10px;" onclick="나온횟수보기()">나온횟수보기</button>
         </div>
         <div class="modal_body"><!-- 1 ~ 45 -->
           <div id="modal_왼쪽" style="width:330px; display: inline-block;border-right:1px solid rgb(189, 170, 170);">
@@ -162,11 +165,14 @@
               <span type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</span>
             </div>
           </div>
-          <div id="modal_오른쪽번호입력" style="display: inline-block;vertical-align: top;margin-left:10px;">
+          <div id="modal_오른쪽번호입력" style="display: inline-block;vertical-align: top;margin-left:10px;margin-top:5px;">
             <!--<div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div> 13개 -->
-            <div id="번호입력_좌" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
-            <div id="번호입력_중" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
-            <div id="번호입력_우" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
+            <div id="번호입력_좌" class="d-inline-block" style="width:230px;vertical-align: top;"><div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div></div>
+            <div id="번호입력_중" class="d-inline-block" style="width:230px;vertical-align: top;"><div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div></div>
+            <div id="번호입력_우" class="d-inline-block" style="width:230px;vertical-align: top;"><div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div></div>
+          </div>
+          <div id="modal_오른쪽나온횟수" style="display: inline-block;vertical-align: top;margin-left:10px;margin-top:5px;">
+            <div>나온횟수</div>
           </div>
         </div>
       </div>

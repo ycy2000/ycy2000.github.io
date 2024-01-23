@@ -179,11 +179,18 @@ function 회차변경실행() {
 
 
 }
-function 자동번호나온횟수() {
-  
-  console.log(document.querySelector('#modal_오른쪽번호입력').innerHTML)
+function 기본보기() {
+  document.querySelector('#modal_오른쪽나온횟수').classList.remove('d-none');
+  document.querySelector('#modal_오른쪽번호입력').classList.remove('d-none');
 }
-
+function 나온횟수보기() {
+  document.querySelector('#modal_오른쪽나온횟수').classList.remove('d-none');
+  document.querySelector('#modal_오른쪽번호입력').classList.add('d-none');
+}
+function 입력번호보기() {
+  document.querySelector('#modal_오른쪽나온횟수').classList.add('d-none');
+  document.querySelector('#modal_오른쪽번호입력').classList.remove('d-none');
+}
 
 var 입력된번호들=document.querySelector('#modal_오른쪽번호입력');
 function 번호하나삭제(e) {
