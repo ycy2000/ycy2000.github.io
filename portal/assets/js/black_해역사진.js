@@ -411,6 +411,7 @@ function 리스너_해역사진관련_change시(e) {
       if (구역04_동남30도.find(element => element==text)) {result="구역04_동남30도"};
       if (구역04_동남45도.find(element => element==text)) {result="구역04_동남45도"};
       if (구역04_서남30도.find(element => element==text)) {result="구역04_서남30도"};
+      if (구역04_서남40도.find(element => element==text)) {result="구역04_서남40도"};
       if (구역04_서남5도.find(element => element==text)) {result="구역04_서남5도"};
       if (구역04_서북15도.find(element => element==text)) {result="구역04_서북15도"};
     
