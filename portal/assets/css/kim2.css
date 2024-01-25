@@ -28,6 +28,7 @@ p {border:1px solid gray;}
 #modal_오른쪽번호입력 p {width:30px;}
 #modal_오른쪽번호입력 span {width:50px;}
 
-#배치_오른쪽_5_10_15주미출수 span:nth-of-type(1) {width:55px;text-align: end;margin-right:5px;}
-#배치_오른쪽_5_10_15주미출수 span:nth-of-type(2) {width:40px;height:25px;margin-right:5px;border:1px solid black;font-size: 14px;margin-top:2px;}
-#배치_오른쪽_5_10_15주미출수 {font-size: 18px;border-bottom:1px solid gray;padding-top:5px;}
+#배치_오른쪽_5_10_15주미출수 span:nth-of-type(1), #배치_오른쪽_5주출수 > div span:nth-of-type(1) {width:80px;text-align: end;margin-right:5px;}
+#배치_오른쪽_5_10_15주미출수 span:nth-of-type(2), #배치_오른쪽_5주출수 > div span:nth-of-type(2) {width:40px;height:25px;margin-right:5px;border:1px solid black;font-size: 14px;margin-top:2px;}
+#배치_오른쪽_5_10_15주미출수 span:nth-of-type(3), #배치_오른쪽_5주출수 > div span:nth-of-type(3) {width:40px;height:25px;margin-right:5px;font-size: 14px;margin-top:2px;}
+#배치_오른쪽_5_10_15주미출수, #배치_오른쪽_5주출수 {font-size: 16px;border-bottom:1px solid gray;padding-top:5px;}

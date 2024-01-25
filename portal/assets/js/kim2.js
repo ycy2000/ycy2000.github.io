@@ -382,9 +382,44 @@ function 회차변경실행() {
       }
     }
   }
-  document.querySelector('#배치_오른쪽_5_10_15주미출수').innerHTML='<div id="미출수5주간"><span>5주간</span><span onclick="색칠1_미출수5주_색칠할번호_전체변수설정()">색칠</span>' + 미출수5_html + '</div>' 
-  + '<div id="미출수10주간"><span>10주간</span><span onclick="색칠1_미출수10주_색칠할번호_전체변수설정()">색칠</span>' + 미출수10_html + '</div>'
-  + '<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
+  document.querySelector('#배치_오른쪽_5_10_15주미출수').innerHTML='<div id="미출수5주간"><span>5주간미출</span><span onclick="색칠1_미출수5주_색칠할번호_전체변수설정()">색칠</span><span>몇개</span>' + 미출수5_html + '</div>' 
+  + '<div id="미출수10주간"><span>10주간미출</span><span onclick="색칠1_미출수10주_색칠할번호_전체변수설정()">색칠</span><span>몇개</span>' + 미출수10_html + '</div>'
+  + '<div id="미출수15주간"><span>15주간미출</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span><span>몇개</span>' + 미출수15_html + '</div>'
+
+  //5주출수, 최근회차포함5주간번호들
+  var 횟수담기=[];
+  for (var i=1; i<46; i++) {
+    횟수담기.push(최근회차포함5주간번호들.filter(element => i == element).length)
+  }
+  //
+  var maxValue = Math.max.apply(null, 횟수담기);
+  var minValue = Math.min.apply(null, 횟수담기);
+  console.log('최근회차포함5주간번호들 : ' + 최근회차포함5주간번호들)
+  console.log('횟수담기 : ' + 횟수담기)
+  console.log('maxValue : ' + maxValue)
+  console.log('minValue : ' + minValue)
+  //횟수만 만들기 '<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
+  var 횟수만html='';
+  var 개수확인;
+  for (var i=minValue;i<=maxValue; i++) {//최대 최소 사이의 값이 없을수도 있음.
+    if (횟수담기.filter(element => i == element).length>0) {
+      횟수만html+='<div id="오주' + i + '출수"><span>오주' + i + '출수</span><span>색칠</span>'
+      //개수확인
+      개수확인=0;
+      for (var 번호순회=0;번호순회<45;번호순회++) {
+        if(횟수담기[번호순회]==i) {개수확인+=1;}
+      }
+      횟수만html+='<span>' + 개수확인 + '개</span>'
+      //html만들기
+      for (var 번호순회=0;번호순회<45;번호순회++) {
+        if(횟수담기[번호순회]==i) {횟수만html+='<p>' + (번호순회+1) + '</p>'}
+      }
+      횟수만html+='</div>'
+    }
+  }
+  //'<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
+  document.querySelector('#배치_오른쪽_5주출수').innerHTML=횟수만html;
+  console.log(횟수만html)
 
   if (전체변수_색칠유형=="최근회차") {색칠1_최근회차_색칠할번호_전체변수설정();}
   if (전체변수_색칠유형=="미출수5주") {색칠1_미출수5주_색칠할번호_전체변수설정()}
