@@ -2,8 +2,28 @@
 //            5,10,15주미출수 => 내부 p, 
 var 전체변수_색칠할번호자신요소들;//없을수도 있음
 var 전체변수_배열_색칠할번호들=[];
-var 전체변수_색칠유형;//요소id 또는 특수 또는 없음
+var 전체변수_색칠유형="";//회귀변경, 회차변경시 우측 정보가 초기화되어 색칠이 해제되므로....
+function 색칠해제와변수초기화() {
+  전체변수_색칠유형="";
+  var 본인색칠요소=document.querySelectorAll('.본인색칠');
+  var 본인색칠개수=본인색칠요소.length;
+  if (본인색칠요소.length>0) {
+    for (var i=0; i<본인색칠개수; i++) {
+      본인색칠요소[i].classList.remove('본인색칠');
+    }
+  }
+  //먼저 다 지운다.
+  var 왼쪽색칠요소=document.querySelectorAll('.왼쪽색칠');
+  var 왼쪽색칠개수=왼쪽색칠요소.length;
+  if (왼쪽색칠요소.length>0) {
+    for (var i=0; i<왼쪽색칠개수; i++) {
+      왼쪽색칠요소[i].classList.remove('왼쪽색칠');
+    }
+  }
+}
 function 색칠1_최근회차_색칠할번호_전체변수설정() {
+  console.log('색칠1_최근회차_색칠할번호_전체변수설정()');
+  전체변수_색칠유형="최근회차";
   전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
   전체변수_색칠할번호자신요소들=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p');//최근회차, p 7개
   //색칠할 번호들 담기
@@ -12,20 +32,29 @@ function 색칠1_최근회차_색칠할번호_전체변수설정() {
       전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
     }
   }
-  //자신들 색칠 해제
-  if (document.querySelectorAll('.본인색칠')[0]) {//하나라도 있으면
-    for (var i=0; i<document.querySelectorAll('.본인색칠').length; i++) {
-      document.querySelectorAll('.본인색칠')[i].classList.remove('본인색칠');
+  //자신들 색칠 해제, 하나라도 있으면,i<document.querySelectorAll('.본인색칠').length 돌면서 줄어듬
+  var 본인색칠요소=document.querySelectorAll('.본인색칠');
+  var 본인색칠개수=본인색칠요소.length;
+  if (본인색칠요소.length>0) {
+    for (var i=0; i<본인색칠개수; i++) {
+      본인색칠요소[i].classList.remove('본인색칠');
     }
   }
-  //자신 색칠
-  if (전체변수_색칠할번호자신요소들) {//하나라도 있으면
+  //자신 색칠, 하나라도 있으면
+  if (전체변수_색칠할번호자신요소들) {
     for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
-      전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      if (전체변수_색칠할번호자신요소들[i].innerHTML=='') {
+
+      } else {
+        전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      }
     }
   }
+  왼쪽색칠_내부또는단독작동_설정된변수참고_실행();
 }
 function 색칠1_미출수5주_색칠할번호_전체변수설정() {
+  console.log('색칠1_미출수5주_색칠할번호_전체변수설정()');
+  전체변수_색칠유형="미출수5주";
   전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
   전체변수_색칠할번호자신요소들=document.querySelectorAll('#미출수5주간 p');
   //색칠할 번호들 담기
@@ -34,20 +63,29 @@ function 색칠1_미출수5주_색칠할번호_전체변수설정() {
       전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
     }
   }
-  //자신들 색칠 해제
-  if (document.querySelectorAll('.본인색칠')[0]) {//하나라도 있으면
-    for (var i=0; i<document.querySelectorAll('.본인색칠').length; i++) {
-      document.querySelectorAll('.본인색칠')[i].classList.remove('본인색칠');
+  //자신들 색칠 해제, 하나라도 있으면,i<document.querySelectorAll('.본인색칠').length 돌면서 줄어듬
+  var 본인색칠요소=document.querySelectorAll('.본인색칠');
+  var 본인색칠개수=본인색칠요소.length;
+  if (본인색칠요소.length>0) {
+    for (var i=0; i<본인색칠개수; i++) {
+      본인색칠요소[i].classList.remove('본인색칠');
     }
   }
-  //자신 색칠
-  if (전체변수_색칠할번호자신요소들) {//하나라도 있으면
+  //자신 색칠, 하나라도 있으면
+  if (전체변수_색칠할번호자신요소들) {
     for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
-      전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      if (전체변수_색칠할번호자신요소들[i].innerHTML=='') {
+
+      } else {
+        전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      }
     }
   }
+  왼쪽색칠_내부또는단독작동_설정된변수참고_실행();
 }
 function 색칠1_미출수10주_색칠할번호_전체변수설정() {
+  console.log('색칠1_미출수10주_색칠할번호_전체변수설정()');
+  전체변수_색칠유형="미출수10주";
   전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
   전체변수_색칠할번호자신요소들=document.querySelectorAll('#미출수10주간 p');
   //색칠할 번호들 담기
@@ -56,20 +94,29 @@ function 색칠1_미출수10주_색칠할번호_전체변수설정() {
       전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
     }
   }
-  //자신들 색칠 해제
-  if (document.querySelectorAll('.본인색칠')[0]) {//하나라도 있으면
-    for (var i=0; i<document.querySelectorAll('.본인색칠').length; i++) {
-      document.querySelectorAll('.본인색칠')[i].classList.remove('본인색칠');
+  //자신들 색칠 해제, 하나라도 있으면,i<document.querySelectorAll('.본인색칠').length 돌면서 줄어듬
+  var 본인색칠요소=document.querySelectorAll('.본인색칠');
+  var 본인색칠개수=본인색칠요소.length;
+  if (본인색칠요소.length>0) {
+    for (var i=0; i<본인색칠개수; i++) {
+      본인색칠요소[i].classList.remove('본인색칠');
     }
   }
-  //자신 색칠
-  if (전체변수_색칠할번호자신요소들) {//하나라도 있으면
+  //자신 색칠, 하나라도 있으면
+  if (전체변수_색칠할번호자신요소들) {
     for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
-      전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      if (전체변수_색칠할번호자신요소들[i].innerHTML=='') {
+
+      } else {
+        전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      }
     }
   }
+  왼쪽색칠_내부또는단독작동_설정된변수참고_실행();
 }
 function 색칠1_미출수15주_색칠할번호_전체변수설정() {
+  console.log('색칠1_미출수15주_색칠할번호_전체변수설정()');
+  전체변수_색칠유형="미출수15주";
   전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
   전체변수_색칠할번호자신요소들=document.querySelectorAll('#미출수15주간 p');
   //색칠할 번호들 담기
@@ -78,22 +125,45 @@ function 색칠1_미출수15주_색칠할번호_전체변수설정() {
       전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
     }
   }
-  //자신들 색칠 해제
-  if (document.querySelectorAll('.본인색칠')[0]) {//하나라도 있으면
-    for (var i=0; i<document.querySelectorAll('.본인색칠').length; i++) {
-      document.querySelectorAll('.본인색칠')[i].classList.remove('본인색칠');
+  //자신들 색칠 해제, 하나라도 있으면,i<document.querySelectorAll('.본인색칠').length 돌면서 줄어듬
+  var 본인색칠요소=document.querySelectorAll('.본인색칠');
+  var 본인색칠개수=본인색칠요소.length;
+  if (본인색칠요소.length>0) {
+    for (var i=0; i<본인색칠개수; i++) {
+      본인색칠요소[i].classList.remove('본인색칠');
     }
   }
-  //자신 색칠
-  if (전체변수_색칠할번호자신요소들) {//하나라도 있으면
+  //자신 색칠, 하나라도 있으면
+  if (전체변수_색칠할번호자신요소들) {
     for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
-      전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      if (전체변수_색칠할번호자신요소들[i].innerHTML=='') {
+
+      } else {
+        전체변수_색칠할번호자신요소들[i].classList.add('본인색칠');
+      }
     }
   }
+  왼쪽색칠_내부또는단독작동_설정된변수참고_실행();
 }
 function 왼쪽색칠_내부또는단독작동_설정된변수참고_실행() {
-
+  console.log('왼쪽색칠_내부또는단독작동_설정된변수참고_실행()');
+  //먼저 다 지운다.
+  var 왼쪽색칠요소=document.querySelectorAll('.왼쪽색칠');
+  var 왼쪽색칠개수=왼쪽색칠요소.length;
+  if (왼쪽색칠요소.length>0) {
+    for (var i=0; i<왼쪽색칠개수; i++) {
+      왼쪽색칠요소[i].classList.remove('왼쪽색칠');
+    }
+  }
+  if (전체변수_배열_색칠할번호들.length==0) {return;}
+  var 열개p중3에서8이보볼제외=document.querySelectorAll('#배치_왼쪽 p');
+  for (var i=0; i<열개p중3에서8이보볼제외.length; i++) {
+    if ((i % 10) > 2 && 전체변수_배열_색칠할번호들.find(element => element==열개p중3에서8이보볼제외[i].innerHTML)) {
+      열개p중3에서8이보볼제외[i].classList.add('왼쪽색칠')
+    }
+  }
 }
+
 
 
 
@@ -124,6 +194,20 @@ function 회귀변경() {
   일_오_백회귀수선택=Number(document.querySelector('#회귀수입력').value);
   회차변경실행();
 }
+function 회귀수증가() {
+  if (document.querySelector('#회귀수입력').value>0) {
+    document.querySelector('#회귀수입력').value=Number(document.querySelector('#회귀수입력').value) + 1;
+  }
+  일_오_백회귀수선택=Number(document.querySelector('#회귀수입력').value);
+  회차변경실행();
+}
+function 회귀수감소() {
+  if (document.querySelector('#회귀수입력').value>1) {
+    document.querySelector('#회귀수입력').value=Number(document.querySelector('#회귀수입력').value) - 1;
+  }
+  일_오_백회귀수선택=Number(document.querySelector('#회귀수입력').value);
+  회차변경실행();
+}
 function 회귀변경1() {
   document.querySelector('#회귀수입력').value=1;
   일_오_백회귀수선택=Number(document.querySelector('#회귀수입력').value);
@@ -139,8 +223,22 @@ function 회귀변경100() {
   일_오_백회귀수선택=Number(document.querySelector('#회귀수입력').value);
   회차변경실행();
 }
-
+function 회차증가() {//index 0일때 최근회차, 증가는 index 감소
+  console.log('회차증가()');
+  if (회차selectedIndex==0) {
+    alert('가장 최근 회차입니다')
+  } else {
+    document.querySelector('#회차select').selectedIndex=Number(회차selectedIndex-1);
+    회차변경실행()
+  }
+}
+function 회차감소() {//index 0일때 최근회차, 감소는 index 증가
+  console.log('회차감소()');
+    document.querySelector('#회차select').selectedIndex=Number(회차selectedIndex+1);
+    회차변경실행()
+}
 function 회차변경실행() {
+  console.log('회차변경실행()');
   //회차SELECT부분,당번전체[0]은 2001년처음정보
   회차selectedIndex=document.querySelector('#회차select').selectedIndex;
   document.querySelector('#span_날짜').innerHTML=당번전체[-(회차selectedIndex*9) + 당번전체.length - 8]; //날짜, -9하면 회차(9개정보)
@@ -213,6 +311,19 @@ function 회차변경실행() {
       }
     }
   }
+  //최근회차가 맨앞에 고정으로 추가되기를 원한다.
+  document.querySelector('#js_회귀변경p생성').innerHTML='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>' + document.querySelector('#js_회귀변경p생성').innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[0].innerHTML='';
+  document.querySelectorAll('#js_회귀변경p생성 p')[1].innerHTML=document.querySelector('#회차select').value;
+  document.querySelectorAll('#js_회귀변경p생성 p')[2].innerHTML=document.querySelector('#span_날짜').innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[3].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[0].innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[4].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[1].innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[5].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[2].innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[6].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[3].innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[7].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[4].innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[8].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[5].innerHTML;
+  document.querySelectorAll('#js_회귀변경p생성 p')[9].innerHTML=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[6].innerHTML;
+   //----최근회차가 맨앞에 고정으로 추가되기를 원한다.>
   //미출수기록
   if (회차selectedIndex>(회차개수-15)) {alert('회차selectedIndex>(회차개수-15)');return;}
   var 최근회차포함5주간번호들=[];//당번전체 한회당 9개, 회차_날짜_번호7개, 작업중
@@ -275,37 +386,59 @@ function 회차변경실행() {
   + '<div id="미출수10주간"><span>10주간</span><span onclick="색칠1_미출수10주_색칠할번호_전체변수설정()">색칠</span>' + 미출수10_html + '</div>'
   + '<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
 
-
-
-
+  if (전체변수_색칠유형=="최근회차") {색칠1_최근회차_색칠할번호_전체변수설정();}
+  if (전체변수_색칠유형=="미출수5주") {색칠1_미출수5주_색칠할번호_전체변수설정()}
+  if (전체변수_색칠유형=="미출수10주") {색칠1_미출수10주_색칠할번호_전체변수설정()}
+  if (전체변수_색칠유형=="미출수15주") {색칠1_미출수15주_색칠할번호_전체변수설정()}
 }
 function 번호전체지움() {
-  document.querySelector('#번호입력_좌').innerHTML='';
-  document.querySelector('#번호입력_중').innerHTML='';
-  document.querySelector('#번호입력_우').innerHTML='';
-}
-function 기본보기() {
-  document.querySelector('#modal_오른쪽나온횟수').classList.remove('d-none');
-  document.querySelector('#modal_오른쪽번호입력').classList.remove('d-none');
-}
-function 나온횟수보기() {
-  document.querySelector('#modal_오른쪽나온횟수').classList.remove('d-none');
-  document.querySelector('#modal_오른쪽번호입력').classList.add('d-none');
-}
-function 입력번호보기() {
-  document.querySelector('#modal_오른쪽나온횟수').classList.add('d-none');
-  document.querySelector('#modal_오른쪽번호입력').classList.remove('d-none');
+  console.log('번호전체지움()');
+  document.querySelector('#번호입력').innerHTML='';
 }
 
 var 입력된번호들=document.querySelector('#modal_오른쪽번호입력');
 function 번호하나삭제(e) {
-  console.log('e.target.innerHTML : ' + e.target.innerHTML)
+  console.log('번호하나삭제(e)');
   if (e.target.innerHTML=='삭제') {
     e.target.parentNode.outerHTML='<div><span>삭제</span></div>';
   }
 }
+function 번호입력나온횟수() {
+  console.log('번호입력나온횟수()')
+  var 번호입력p들=document.querySelectorAll('#번호입력 p');
+  if (번호입력p들.length==0) {document.querySelector('#js나온횟수결과').innerHTML='';return;}
+  var 번호담기=[];
+  for (var i=0; i<번호입력p들.length; i++) {
+    번호담기.push(번호입력p들[i].innerHTML)
+  }
+  var 횟수담기=[];
+  for (var i=1; i<46; i++) {
+    횟수담기.push(번호담기.filter(element => i == element).length)
+  }
+  //
+  var maxValue = Math.max.apply(null, 횟수담기);
+  var minValue = Math.min.apply(null, 횟수담기);
+  console.log('번호담기 : ' + 번호담기)
+  console.log('횟수담기 : ' + 횟수담기)
+  console.log('maxValue : ' + maxValue)
+  console.log('minValue : ' + minValue)
+  //횟수만 만들기
+  var 횟수만html='';
+  for (var i=minValue;i<=maxValue; i++) {//최대 최소 사이의 값이 없을수도 있음.
+    if (횟수담기.filter(element => i == element).length>0) {
+      횟수만html+='<div><span>' + i + '회</span>'
+      for (var 번호순회=0;번호순회<45;번호순회++) {
+        if(횟수담기[번호순회]==i) {횟수만html+='<p>' + (번호순회+1) + '</p>'}
+      }
+      횟수만html+='</div>'
+    }
+  }
+  document.querySelector('#js나온횟수결과').innerHTML=횟수만html;
+}
 var 번호입력모달body=document.querySelector('#modal_왼쪽');
 function 번호입력(e) {
+  if (e.target.nodeName!='BUTTON') {return;}
+  console.log('번호입력(e)');
   var 클릭수=Number(document.querySelector('#modal클릭수').innerHTML);
   // bg-primary있으면 빼고 id=클릭수 숫자 -1
   if (e.target.tagName=='BUTTON' && e.target.classList.contains('bg-primary')) {
@@ -333,13 +466,7 @@ function 번호입력(e) {
     }
     추가할innerhtml='<div><span>삭제</span>' + 추가할innerhtml + '</div>'
 
-    if (document.querySelectorAll('#번호입력_좌 div').length<13) {
-      document.querySelector('#번호입력_좌').innerHTML+=추가할innerhtml;
-    } else if(document.querySelectorAll('#번호입력_중 div').length<13) {
-      document.querySelector('#번호입력_중').innerHTML+=추가할innerhtml;
-    } else if(document.querySelectorAll('#번호입력_우 div').length<13) {
-      document.querySelector('#번호입력_우').innerHTML+=추가할innerhtml;
-    }
+    document.querySelector('#번호입력').innerHTML+=추가할innerhtml;
 
     //색칠해제후 클릭수0 초기화
     for (var i=0; i<버튼들.length; i++) {
@@ -353,4 +480,5 @@ function 번호입력(e) {
 }
 입력된번호들.addEventListener('click', 번호하나삭제); 
 번호입력모달body.addEventListener('click', 번호입력); 
+
 

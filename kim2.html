@@ -113,10 +113,11 @@
     </div>
     <div id="id_배치_왼쪽_회귀변경" class="왼쪽당번">
       <input id="회귀수입력" type = "text" spellcheck="false" style="width:50px;vertical-align:bottom;text-align:center;margin-top:10px;" value=''>
+      <button style="width:40px;margin-left:-5px;" onclick="회귀수증가()">▲</button><button style="width:40px;margin-left:-1px;" onclick="회귀수감소()">▼</button>
       <button style="width:90px;" onclick="회귀변경()">회귀변경</button>
-      <button style="width:60px;" onclick="회귀변경5()">5회귀</button>
+      <button style="width:60px;margin-right:-1px;" onclick="회귀변경5()">5회귀</button>
       <button style="width:75px;" onclick="회귀변경100()">100회귀</button>
-      <button style="width:75px;" onclick="회귀변경1()">1회귀</button><br>  
+      <button style="width:74px;" onclick="회귀변경1()">1회귀</button><br>  
       <span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span><br>
       <div id="js_회귀변경p생성" class="왼쪽당번">
       </div>
@@ -127,7 +128,7 @@
     <div id="배치_오른쪽_회차선택과_조회_선택회차당번">
       <span style="width:65px;text-align: start;">최근회차</span>
       <select id="회차select" onchange="회차변경실행()">
-      </select>
+      </select><span class="회차select우측스팬" onclick="회차증가()">▲</span><span class="회차select우측스팬" onclick="회차감소()">▼</span>
       <span id="span_날짜" style="width:90px;"></span><p></p><p></p><p></p><p></p><p></p><p></p><p></p><span style="margin-left:3px;width:45px;border:1px solid black;" onclick="색칠1_최근회차_색칠할번호_전체변수설정()">색칠</span><span style="width:90px;">보볼제외</span><span style="width:90px;border:1px solid black" onclick="색칠해제와변수초기화()">색칠해제</span>
     </div>
     <div id="배치_오른쪽_5_10_15주미출수">
@@ -145,11 +146,8 @@
     <div class="modal-dialog">
       <div class="modal-content" style="white-space: nowrap;">
         <div class="modal-header" style="justify-content: left;">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">번호입력</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">번호입력</h1><span style="margin-left:278px;">번호추가</span><span style="margin-left:205px;">나온횟수</span>
           <button id="modal클릭수" class="d-none">0</button>
-          <button id="입력번호보기" style="margin-left:316px;" onclick="기본보기()">기본보기</button>
-          <button id="입력번호보기" style="margin-left:10px;" onclick="입력번호보기()">입력번호보기</button>
-          <button id="나온횟수보기" style="margin-left:10px;" onclick="나온횟수보기()">나온횟수보기</button>
         </div>
         <div class="modal_body"><!-- 1 ~ 45 -->
           <div id="modal_왼쪽" style="width:330px; display: inline-block;border-right:1px solid rgb(189, 170, 170);">
@@ -162,17 +160,15 @@
             <button>43</button><button>44</button><button style="width:46px;">45</button>
             <div style="margin-top:10px;">
               <span type="button" class="btn btn-primary" onclick="번호전체지움()">번호전체지움</span>
-              <span type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</span>
+              <span type="button" class="btn btn-primary" onclick="번호입력나온횟수()">횟수 계산</span>
             </div>
           </div>
           <div id="modal_오른쪽번호입력" style="display: inline-block;vertical-align: top;margin-left:10px;margin-top:5px;">
             <!--<div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div> 13개 -->
-            <div id="번호입력_좌" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
-            <div id="번호입력_중" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
-            <div id="번호입력_우" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
+            <div id="번호입력" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
           </div>
           <div id="modal_오른쪽나온횟수" style="display: inline-block;vertical-align: top;margin-left:10px;margin-top:5px;">
-            <div>나온횟수</div>
+            <div id="js나온횟수결과"></div>
           </div>
         </div>
       </div>

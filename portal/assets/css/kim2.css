@@ -21,8 +21,9 @@ p {border:1px solid gray;}
 
 .선택연계 {background-color:yellow;}
 .선택 {background-color: blue;} /* 클래스 동시에 있으면, 나중에 나온게 적용*/
-.왼쪽꺼색칠 {background-color:yellow;}
+.왼쪽색칠 {background-color:yellow;}
 .본인색칠 {background-color:yellow;}
+.회차select우측스팬 {border:1px solid black;height:27px;font-size: 12px;margin-left:10px;width:30px;}
 
 #modal_오른쪽번호입력 p {width:30px;}
 #modal_오른쪽번호입력 span {width:50px;}
