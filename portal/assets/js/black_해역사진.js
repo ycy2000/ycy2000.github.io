@@ -368,11 +368,28 @@ function 리스너_해역사진관련_dblclick시(e) {
     교섭력계산()
   }
 }
+function 무게와교섭임시적용() {
+  var text=document.querySelector('#무게와교섭임시적용input').value;
+  if (text.substring(0,2)!='점진' && text.substring(0,2)!='용맹' && text.substring(0,2)!='교섭') {
+    alert('점진:21500:용맹:19500 형식으로 변수를 바꿀수 있다(split씀).\n첫글자는 "점진","용맹","교섭"으로 시작되어야함.\n시작글자 추가될 수 있음'
+           + '\n:이후 숫자이어야한다.');
+    return;
+  }
+  var 스플릿=text.split(':');//작성중
+  if (스플릿.length==2 && 스플릿[1]>0) {console.log('스플릿.length==2 && 스플릿[1]>0')}
+  for (var i=0; i<스플릿.length; i+=2) {
+    if (스플릿[i]=='점진' && 스플릿[i+1]>0) {document.querySelector('#적재가능일반무게').value=스플릿[i+1];계산_배와장비무게();}
+    if (스플릿[i]=='용맹' && 스플릿[i+1]>0) {document.querySelector('#적재가능일반무게').value=스플릿[i+1];계산_배와장비무게();}
+    if (스플릿[i]=='교섭' && 스플릿[i+1]>0) {document.querySelector('#일회교섭력').value=스플릿[i+1];교섭력계산();}
+
+
+  }
+}
 function 리스너_해역사진관련_change시(e) {
   console.log('리스너_해역사진관련_change시(e)');
   //일회교섭력 변경시 재갱회당소모값, 하코번4종, 대양6종 소모값 계산
   if (e.target.id=='일회교섭력으로') {
-    일회교섭력으로계산()
+
   }
   var text=e.target.value;//input
   var result='';

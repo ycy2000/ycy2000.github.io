@@ -113,11 +113,11 @@
     </div>
     <div id="id_배치_왼쪽_회귀변경" class="왼쪽당번">
       <input id="회귀수입력" type = "text" spellcheck="false" style="width:50px;vertical-align:bottom;text-align:center;margin-top:10px;" value=''>
-      <button style="width:40px;margin-left:-5px;" onclick="회귀수증가()">▲</button><button style="width:40px;margin-left:-1px;" onclick="회귀수감소()">▼</button>
-      <button style="width:90px;" onclick="회귀변경()">회귀변경</button>
-      <button style="width:60px;margin-right:-1px;" onclick="회귀변경5()">5회귀</button>
-      <button style="width:75px;" onclick="회귀변경100()">100회귀</button>
-      <button style="width:74px;" onclick="회귀변경1()">1회귀</button><br>  
+      <button style="width:40px;margin-left:-5px;" id="js회귀수증가">▲</button><button style="width:40px;margin-left:-1px;" id="js회귀수감소">▼</button>
+      <button style="width:90px;" id="js회귀변경">회귀변경</button>
+      <button style="width:60px;margin-right:-1px;" id="js회귀변경5">5회귀</button>
+      <button style="width:75px;" id="js회귀변경100">100회귀</button>
+      <button style="width:74px;" id="js회귀변경1">1회귀</button><br>  
       <span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span><br>
       <div id="js_회귀변경p생성" class="왼쪽당번">
       </div>
@@ -128,8 +128,10 @@
     <div id="배치_오른쪽_회차선택과_조회_선택회차당번">
       <span style="width:65px;text-align: start;">최근회차</span>
       <select id="회차select" onchange="회차변경실행()">
-      </select><span class="회차select우측스팬" onclick="회차증가()">▲</span><span class="회차select우측스팬" onclick="회차감소()">▼</span>
-      <span id="span_날짜" style="width:90px;"></span><p></p><p></p><p></p><p></p><p></p><p></p><p></p><span style="margin-left:3px;width:45px;border:1px solid black;" onclick="색칠1_최근회차_색칠할번호_전체변수설정()">색칠</span><span style="width:90px;">보볼제외</span><span style="width:90px;border:1px solid black" onclick="색칠해제와변수초기화()">색칠해제</span>
+      </select><span class="회차select우측스팬" id="js회차증가">▲</span><span class="회차select우측스팬" id="js회차감소">▼</span>
+      <span id="span_날짜" style="width:90px;"></span><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+      <span style="margin-left:3px;width:45px;border:1px solid black;" id="전체변수_색칠유형_최근회차">색칠</span>
+      <span style="width:90px;">보볼제외</span><span style="width:90px;border:1px solid black" id="js색칠해제와변수초기화">색칠해제</span>
     </div>
     <div id="배치_오른쪽_5_10_15주미출수">
     </div>
@@ -157,13 +159,13 @@
             <button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button><br>
             <button>43</button><button>44</button><button style="width:46px;">45</button>
             <div style="margin-top:10px;">
-              <span type="button" class="btn btn-primary" onclick="번호전체지움()">번호전체지움</span>
-              <span type="button" class="btn btn-primary" onclick="번호입력나온횟수()">횟수 계산</span>
+              <span type="button" class="btn btn-primary" id="js전체번호지움">번호전체지움</span>
+              <span type="button" class="btn btn-primary" id="js입력번호횟수계산">횟수 계산</span>
             </div>
           </div>
           <div id="modal_오른쪽번호입력" style="display: inline-block;vertical-align: top;margin-left:10px;margin-top:5px;">
-            <!--<div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div> 13개 -->
             <div id="번호입력" class="d-inline-block" style="width:230px;vertical-align: top;"></div>
+            <!--<div><span>삭제</span><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>36</p></div> 13개 -->
           </div>
           <div id="modal_오른쪽나온횟수" style="display: inline-block;vertical-align: top;margin-left:10px;margin-top:5px;">
             <div id="js나온횟수결과"></div>
