@@ -70,7 +70,7 @@ function 회차변경실행() {
   var js_회귀변경p생성html='';
   for (var 값이있으면=0; 값이있으면<20; 값이있으면++) {
     if (당번전체[-((회차selectedIndex+(회귀숫자*(값이있으면+1)))*9) + 당번전체.length - 8]) {
-      js_회귀변경p생성html+='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>'
+      js_회귀변경p생성html+='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><h6></h6><br>'
     }
   }
   document.querySelector('#js_회귀변경p생성').innerHTML=js_회귀변경p생성html;
@@ -92,7 +92,7 @@ function 회차변경실행() {
     }
   }
   //최근회차가 맨앞에 고정으로 추가되기를 원한다.
-  document.querySelector('#js_회귀변경p생성').innerHTML='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>' + document.querySelector('#js_회귀변경p생성').innerHTML;
+  document.querySelector('#js_회귀변경p생성').innerHTML='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><h6></h6><br>' + document.querySelector('#js_회귀변경p생성').innerHTML;
   document.querySelectorAll('#js_회귀변경p생성 p')[0].innerHTML='';
   document.querySelectorAll('#js_회귀변경p생성 p')[1].innerHTML=document.querySelector('#회차select').value;
   document.querySelectorAll('#js_회귀변경p생성 p')[2].innerHTML=document.querySelector('#span_날짜').innerHTML;
@@ -207,6 +207,133 @@ function 회차변경실행() {
   //'<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
   document.querySelector('#배치_오른쪽_5주출수').innerHTML=횟수만html;
 
+  //전체변수대로 색칠 하려면 자체적으로 변수를 만들어줘야함. 변경할때
+  if (전체변수_색칠유형=='전체변수_색칠유형_미출수5주') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#미출수5주간 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_미출수10주') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#미출수10주간 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_미출수15주') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#미출수15주간 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_오주0출수') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#오주0출수 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_오주1출수') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#오주1출수 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_오주2출수') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#오주2출수 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_오주3출수') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#오주3출수 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_오주4출수') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#오주4출수 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
+  if (전체변수_색칠유형=='전체변수_색칠유형_오주5출수') {
+    기존표시제거();
+    전체변수_배열_색칠할번호들=[];//초기화 해 놓는다
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('#오주5출수 p');
+    //색칠할 번호들 담기
+    for (var i=0; i<전체변수_색칠할번호자신요소들.length; i++) {
+      if (전체변수_색칠할번호자신요소들[i].innerHTML!='') {
+        전체변수_배열_색칠할번호들.push(전체변수_색칠할번호자신요소들[i].innerHTML);
+        전체변수_색칠할번호자신요소들[i].classList.add('표시');
+      }
+    }
+    전체변수_색칠할번호자신요소들=document.querySelectorAll('.표시');
+    전체변수대로색칠();
+  }
   전체변수대로색칠()
 }
 var 전체변수_색칠할번호자신요소들;//없을수도 있음
@@ -552,12 +679,23 @@ function 전체변수대로색칠() {
     }
   }
   //왼쪽색칠
+  var 몇개=0;
+  console.log(전체변수_배열_색칠할번호들)
   if (전체변수_배열_색칠할번호들) {
     var 왼쪽div안10개p전체=document.querySelectorAll('.왼쪽당번 p');//0회귀,1회차,2날짜, 9보볼
     for (var i=0; i<왼쪽div안10개p전체.length; i++) {
-      if (((i+1) % 10) > 2 && ((i+1) % 10) < 9 ) {//나머지 : 0회귀,1회차,2날짜, 9보볼
+      if (((i+1) % 10) > 3) {//나머지 : 1회귀,2회차,3날짜, 0보볼
         if (전체변수_배열_색칠할번호들.find(element => element==왼쪽div안10개p전체[i].innerHTML)) {
+          몇개+=1;
           왼쪽div안10개p전체[i].classList.add('왼쪽색칠');
+        }
+      }
+      if ((i+1) % 10 == 0) {
+        if (몇개>0) {
+          왼쪽div안10개p전체[i].nextElementSibling.innerHTML=몇개 + '개';
+          몇개=0;
+        } else {
+
         }
       }
     }

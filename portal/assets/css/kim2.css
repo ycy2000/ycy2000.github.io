@@ -1,6 +1,7 @@
 @charset "UTF-8";
-span, p {display:inline-block;margin:0;margin-right:-1px;padding:0; 
+span, p, h6 {display:inline-block;margin:0;margin-right:-1px;padding:0; 
   height:30px;width:30px;vertical-align: top;padding-top:2px;text-align:center;margin-bottom:-1px;}
+h6 {width:50px;font-size: 14px;padding-top:5px;}
 p {border:1px solid gray;}
 #span_날짜 ~ p:nth-of-type(7), .왼쪽당번 > p:nth-of-type(10n) {background-color: aqua;}
 .왼쪽당번 > span:nth-of-type(10n+1), .왼쪽당번 > p:nth-of-type(10n+1) {width:60px;}
