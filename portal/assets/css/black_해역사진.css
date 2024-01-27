@@ -219,7 +219,7 @@ code {display: block; color:black;margin-bottom:5px;}
 #파템재료_일퀘개수 button[title] {background-color: chartreuse;}
 #리스너용섬이름검색 form {display:inline-block;}
 #교섭력계산 > #차감input들 > div {display:inline-block;}
-#모은재료_파템재료 > div > div > button:nth-of-type(6){background-color:chocolate;} /* 용맹 개수 기록 부분 */
+#모은재료_파템재료 > div > div > button:nth-of-type(5){background-color:chocolate;} /* 비상 개수 기록 부분 */
 
 #교섭력규칙1 {display:inline-block;position: absolute;left:10px;top:47px;}
 #교섭력규칙2 {display:inline-block;position: absolute;left:10px;top:199px;}
