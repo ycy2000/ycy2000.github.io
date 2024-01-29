@@ -222,6 +222,7 @@ function 회차변경실행() {
     //'<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
     document.querySelector('#배치_오른쪽_5주출수').innerHTML=횟수만html;
   }
+  최근번호피해서색칠()
 }
 function 색칠해제() {//class 제거 : 본인색칠, 왼쪽색칠
   var 본인색칠요소=document.querySelectorAll('.본인색칠');
