@@ -49,6 +49,20 @@ function 회차변경실행() {
         id_배치_왼쪽_다음회차[내부].innerHTML=당번전체[-((회차selectedIndex-1)*9) + 당번전체.length - 7 + 내부-3]; 
       }
     }
+    //js피해서색칠_우측_다음회차
+    var id_배치_왼쪽_다음회차=document.querySelectorAll('#js피해서색칠_우측_다음회차 p');
+    id_배치_왼쪽_다음회차[0].innerHTML='다음';
+    id_배치_왼쪽_다음회차[1].innerHTML=(Number(document.querySelector('#회차select').value.substring(0, document.querySelector('#회차select').value.length-1))+1) + '회';
+    if (회차selectedIndex==0) {
+      for (var 내부=2;내부<10;내부++) {
+        id_배치_왼쪽_다음회차[내부].innerHTML='';
+      }
+    } else {
+      id_배치_왼쪽_다음회차[2].innerHTML=당번전체[-((회차selectedIndex-1)*9) + 당번전체.length - 8];//날짜
+      for (var 내부=3;내부<10;내부++) {
+        id_배치_왼쪽_다음회차[내부].innerHTML=당번전체[-((회차selectedIndex-1)*9) + 당번전체.length - 7 + 내부-3]; 
+      }
+    }
   }
   //    3.5,10,15,30,60회귀. 가로한줄당 p가 10개, [0]:100 200 ..., [1]:회차, [2]:날짜, [3~9]:번호
   if ('3.5,10,15,30,60회귀'=='3.5,10,15,30,60회귀') {
@@ -220,7 +234,7 @@ function 회차변경실행() {
       }
     }
     //'<div id="미출수15주간"><span>15주간</span><span onclick="색칠1_미출수15주_색칠할번호_전체변수설정()">색칠</span>' + 미출수15_html + '</div>'
-    document.querySelector('#배치_오른쪽_5주출수').innerHTML=횟수만html;
+    document.querySelector('#배치_오른쪽_5주출수').innerHTML=횟수만html; 
   }
   최근번호피해서색칠()
 }
@@ -268,6 +282,31 @@ function 색칠유형대로색칠() {
       }
     }
   }
+  //추가
+  if (색칠유형=='색칠유형_노란색번호색칠') {
+    있다면본인색칠할요소를포함하는p요소들=document.querySelectorAll('#js피해서색칠 button');
+    //ex:배치_오른쪽_회차선택과_조회_선택회차당번(p10개), 미출수5주간, 미출수10주간, 미출수15주간, 오주1~5출수
+    console.log('피할번호연계 클래스 수 : ' + document.querySelectorAll('.피할번호연계').length)
+    for (var i=0; i<있다면본인색칠할요소를포함하는p요소들.length; i++) {
+      if (있다면본인색칠할요소를포함하는p요소들[i].classList.contains('피할번호연계')) {
+        색칠할번호들.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
+      }
+    }
+    //오른쪽 색칠 : 배치_오른쪽_회차선택과_조회_선택회차당번, 배치_오른쪽_5_10_15주미출수, 배치_오른쪽_5주출수
+    var 오른쪽=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p');
+    for (var i=0; i<오른쪽.length; i++) {
+      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+    }
+    오른쪽=document.querySelectorAll('#배치_오른쪽_5_10_15주미출수 p');
+    for (var i=0; i<오른쪽.length; i++) {
+      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+    }
+    오른쪽=document.querySelectorAll('#배치_오른쪽_5주출수 p');
+    for (var i=0; i<오른쪽.length; i++) {
+      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+    }
+  }
+
   //왼쪽색칠은 공통이 될듯
   var 몇개=0;
   console.log('색칠할번호들 : ' + 색칠할번호들)
@@ -395,15 +434,14 @@ function 번호입력나온횟수() {
 }
 function 최근번호피해서색칠() {
     // 임시 최근회차번호 6개를 넣고
+    console.log('최근번호피해서색칠()');
     var 버튼들=document.querySelectorAll('#js피해서색칠 button');
     if (document.querySelectorAll('.피할번호')[0]) {
-      console.log('class피할번호연계 지우기')
       for (var i=0; i<버튼들.length; i++) {
         버튼들[i].classList.remove('피할번호');
       }
     }
     if (document.querySelectorAll('.피할번호연계')[0]) {
-      console.log('class피할번호연계 지우기')
       for (var i=0; i<버튼들.length; i++) {
         버튼들[i].classList.remove('피할번호연계');
       }
@@ -414,19 +452,17 @@ function 최근번호피해서색칠() {
     버튼들[Number(document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[6].innerHTML)-1].classList.add('피할번호');
     버튼들[Number(document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[7].innerHTML)-1].classList.add('피할번호');
     버튼들[Number(document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p')[8].innerHTML)-1].classList.add('피할번호');
-    피해서번호색칠();
+    피해서번호색칠()
 }
 function 피해서번호색칠() {
   console.log('피해서번호색칠()');
   //피할번호연계 클래스 모두 지우고 시작
   var 버튼들=document.querySelectorAll('#js피해서색칠 button');
   if (document.querySelectorAll('.피할번호')[0]) {
-    console.log('class피할번호연계 지우기')
     for (var i=0; i<버튼들.length; i++) {
       버튼들[i].classList.remove('피할번호연계');
     }
   } else {
-    console.log('class피할번호연계 지우기')
     for (var i=0; i<버튼들.length; i++) {
       버튼들[i].classList.remove('피할번호연계');
     }
@@ -442,14 +478,11 @@ function 피해서번호색칠() {
       }
     }
   }
-  console.log('몫 : ' + 몫 + ' , 나머지 : ' + 나머지)
-
-
-  //몫이 아닌경우와 나머지가 아닌경우 피할번호연계 제거, undefined 활용가능. undefined.lneght는 오류
   for (var i=0; i<버튼들.length; i++) {
-    if (몫.includes(Math.floor( i / 7)) || 버튼들[i].classList.contains('피할번호')) {} else {버튼들[i].classList.add('피할번호연계');console.log('add(피할번호연계)')}
-    if (나머지.includes(i % 7) || 버튼들[i].classList.contains('피할번호')) {} else {버튼들[i].classList.add('피할번호연계');console.log('add(피할번호연계)')}
+    if (몫.find(element => element==Math.floor(i / 7)) || 나머지.find(element => element==(i % 7)) && 버튼들[i].classList.contains('피할번호')) {
+    } else {버튼들[i].classList.add('피할번호연계');}
   }
+  //몫이 아닌경우와 나머지가 아닌경우 피할번호연계 제거, undefined 활용가능. undefined.lneght는 오류
 }
 var 바디=document.querySelector('body');
 function 클릭이벤트통합(e) {
@@ -518,6 +551,11 @@ function 클릭이벤트통합(e) {
       e.target.classList.add('피할번호');
       피해서번호색칠();
     }   
+  }
+  if (e.target.innerHTML=='노란색번호색칠') {
+    색칠유형='색칠유형_노란색번호색칠';
+    색칠해제();
+    색칠유형대로색칠();
   }
 }
 
