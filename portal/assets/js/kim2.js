@@ -1,5 +1,6 @@
 //리뉴얼
 if ('초기작업'=='초기작업') {
+  document.querySelector('#회귀결과정보수').value=50;
   var 색칠유형='';
   var 회차selectedIndex=0;
   document.querySelector('#회귀수입력').value=1;
@@ -96,7 +97,9 @@ function 회차변경실행() {
     회귀숫자=Number(document.querySelector('#회귀수입력').value);
     document.querySelector('#js_회귀변경p생성').innerHTML='';
     var js_회귀변경p생성html='';
-    for (var 값이있으면=0; 값이있으면<20; 값이있으면++) {
+    var 회귀결과정보수=document.querySelector('#회귀결과정보수').value;
+    if (isNaN(회귀결과정보수)) {회귀결과정보수=50;document.querySelector('#회귀결과정보수').value=50;}
+    for (var 값이있으면=0; 값이있으면<회귀결과정보수; 값이있으면++) {
       if (당번전체[-((회차selectedIndex+(회귀숫자*(값이있으면+1)))*9) + 당번전체.length - 8]) {
         js_회귀변경p생성html+='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><h6></h6><br>'
       }
@@ -104,7 +107,7 @@ function 회차변경실행() {
     document.querySelector('#js_회귀변경p생성').innerHTML=js_회귀변경p생성html;
     var 회귀변경가로개수=document.querySelectorAll('#js_회귀변경p생성 p').length/10;
     순번=0;
-    for (var 값이있으면=0; 값이있으면<20; 값이있으면++) {
+    for (var 값이있으면=0; 값이있으면<회귀결과정보수; 값이있으면++) {
       if (당번전체[-((회차selectedIndex+(회귀숫자*(값이있으면+1)))*9) + 당번전체.length - 8]) {
         document.querySelectorAll('#js_회귀변경p생성 p')[순번].innerHTML=회귀숫자*(값이있으면+1);
         순번+=1;
@@ -358,12 +361,6 @@ function 회귀변경() {
   색칠해제();
   색칠유형대로색칠()
 }
-function 회귀변경1() {
-  document.querySelector('#회귀수입력').value=1;
-  회차변경실행();
-  색칠해제();
-  색칠유형대로색칠()
-}
 function 회귀변경5() {
   document.querySelector('#회귀수입력').value=5;
   회차변경실행();
@@ -478,11 +475,13 @@ function 피해서번호색칠() {
       }
     }
   }
+  //몫.find(element => element==Math.floor(i / 7))    나머지.find(element => element==(i % 7))
+  console.log('몫 : ' + 몫 + ' , 나머지 : ' + 나머지)
   for (var i=0; i<버튼들.length; i++) {
-    if (몫.find(element => element==Math.floor(i / 7)) || 나머지.find(element => element==(i % 7)) && 버튼들[i].classList.contains('피할번호')) {
-    } else {버튼들[i].classList.add('피할번호연계');}
+    // console.log('번호 ' + (i+1) + ' 의 몫 : ' + Math.floor(i / 7) + ' 개수 : ' + 몫.filter(element => element==Math.floor(i / 7)).length)
+    if (몫.filter(element => element==Math.floor(i / 7)).length==0) {버튼들[i].classList.add('피할번호연계')}
+    if (나머지.filter(element => element==(i % 7)).length==0) {버튼들[i].classList.add('피할번호연계')}
   }
-  //몫이 아닌경우와 나머지가 아닌경우 피할번호연계 제거, undefined 활용가능. undefined.lneght는 오류
 }
 var 바디=document.querySelector('body');
 function 클릭이벤트통합(e) {
@@ -496,8 +495,6 @@ function 클릭이벤트통합(e) {
   if (아이디=='js색칠해제와변수초기화') {색칠해제와변수초기화();return;}
   if (아이디=='js회귀수증가') {회귀수증가();return;}
   if (아이디=='js회귀수감소') {회귀수감소();return;}
-  if (아이디=='js회귀변경') {회귀변경();return;}
-  if (아이디=='js회귀변경1') {회귀변경1();return;}
   if (아이디=='js회귀변경5') {회귀변경5();return;}
   if (아이디=='js회귀변경100') {회귀변경100();return;}
   if (아이디=='js회차증가') {회차증가();return;}

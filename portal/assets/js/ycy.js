@@ -1557,13 +1557,13 @@ if (1==1) {
 
 
 
-    if (모달번호들[e.target.innerHTML-1]) {
-      if (모달번호들[e.target.innerHTML-1].classList.contains('색칠용버튼')) {
-        모달번호들[e.target.innerHTML-1].classList.remove('색칠용버튼');
-        모달번호들[e.target.innerHTML-1].removeAttribute('title');
+    if (모달번호들[e.target.innerHTML]) {//첫번째버튼의 innerHTML이 CLEAR다
+      if (모달번호들[e.target.innerHTML].classList.contains('색칠용버튼')) {
+        모달번호들[e.target.innerHTML].classList.remove('색칠용버튼');
+        모달번호들[e.target.innerHTML].removeAttribute('title');
       } else {
-        모달번호들[e.target.innerHTML-1].classList.add('색칠용버튼');
-        모달번호들[e.target.innerHTML-1].setAttribute('title',e.target.innerHTML);
+        모달번호들[e.target.innerHTML].classList.add('색칠용버튼');
+        모달번호들[e.target.innerHTML].setAttribute('title',e.target.innerHTML);
       }
     }
   }
