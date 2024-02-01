@@ -7,7 +7,7 @@ function 교섭력계산() {
   document.querySelector('#계산_재갱1회당').value = (일회교섭력 * (4.30022)).toFixed(0);
 
   document.querySelector('#계산_하코저가').value = (일회교섭력 * (2.06)).toFixed(0);
-  document.querySelector('#계산_더코').value = (일회교섭력 * (2.5493)).toFixed(0);
+  document.querySelector('#계산_더코').value = (일회교섭력 * (2.5494)).toFixed(0);
   document.querySelector('#계산_하코').value = (일회교섭력 * (3.0645)).toFixed(0);
   document.querySelector('#계산_대양저가').value = (일회교섭력 * (3.25795)).toFixed(0);
   document.querySelector('#계산_대양고가').value = (일회교섭력 * (4.0725)).toFixed(0);
