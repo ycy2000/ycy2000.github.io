@@ -520,6 +520,7 @@ function 리스너_해역사진관련_change시(e) {
 }
 function 코딩해역메모위치조정() {
   if (메모아이디 == '메모_ta순수') { 메모요소.style.left = '1095px'; 메모요소.style.top = '79px'; }
+  if (메모아이디 == '메모_ta현실') { 메모요소.style.left = '1095px'; 메모요소.style.top = '79px'; }
   if (메모아이디 == '메모_ta자신') { 메모요소.style.left = '1095px'; 메모요소.style.top = '79px'; }
 
 }
