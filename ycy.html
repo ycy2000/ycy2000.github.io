@@ -43,26 +43,6 @@
         <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            코딩메모
-          </a>
-          <ul id="코딩메모_문서연결" class="dropdown-menu pb-1" style="width:1515px;left:-160px;">
-            <ul class="d-inline-block align-top" style="width:500px;">
-              <li class="d-inline-block align-top" title="js_배열_sort_filter_자료형_selectdindex">js_배열_sort_filter_자료형_selectdindexjs_배열_sort_filter_자료형_selectdindex</li>
-              <li class="d-inline-block align-top" title="js_줄바꿈_말줄임">줄바꿈, 줄바꿈안하고말줄임, 줄바꿈안하기</li>
-              <li class="d-inline-block align-top" title="js_보볼포함미출수계산">js_보볼포함미출수계산, 초기화동작과 function 모달회차_change()</li>
-            </ul>
-            <ul class="d-inline-block align-top" style="width:500px;">
-              <li class="d-inline-block align-top">세로두번째묶음</li>
-            </ul>
-            <ul class="d-inline-block align-top" style="width:500px;">
-              <li class="d-inline-block align-top">세로세번째묶음</li>
-            </ul>
-          </ul>
-        </li>
-        <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
-        <li class="nav-item dropdown me-2 d-inline-block ms-3">
-          <a class="active nav-link dropdown-toggle" href="#" 
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             실행 및 임시함수
           </a>
           <ul class="dropdown-menu" style="width:300px;">
@@ -114,7 +94,6 @@
 </header>
 
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
-<div id="선택문서셑팅하는곳" class="absolute d-none" style="left:10px;top:50px;z-index: 3;"></div>
 <div style="position: relative;"></div><!--absolute시작기준 -->
 <div id="색칠용번호들" class="d-none"><!--항상숨겨져있음 기본정보 , 새로고침시 자동작성-->
 </div>
@@ -195,48 +174,6 @@
     </div>
   </div>
 
-  <div id="세로구분_중복확인45들" class="d-inline-block" style="vertical-align: top;margin-left:7px;margin-right:2px;">
-    <div id="중복확인45버튼_1st" class="modal-body">
-      <div>간격번호
-        <div class="form-check d-inline-block">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-          <label class="form-check-label" for="flexCheckDefault1">
-            번호참조색칠
-          </label>
-        </div>
-        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:-5px;" 
-        type="button" class="btn btn-secondary p-0" onclick="중복확인45버튼_1st_색칠해제()">Clear</button>
-      </div>
-    </div>
-    <div id="중복확인45버튼_2st" class="modal-body">
-      <div>간격번호
-        <div class="form-check d-inline-block">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-          <label class="form-check-label" for="flexCheckDefault2">
-            번호참조색칠
-          </label>
-        </div>
-        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:-5px;" 
-        type="button" class="btn btn-secondary p-0" onclick="중복확인45버튼_2st_색칠해제()">Clear</button>
-      </div>
-    </div>
-    <div id="중복확인45버튼_3st" class="modal-body">
-      <div>간격번호
-        <div class="form-check d-inline-block">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-          <label class="form-check-label" for="flexCheckDefault3">
-            번호참조색칠
-          </label>
-        </div>
-        <button style="width:50px;height:27px;margin-bottom:1px;margin-left:-5px;" 
-        type="button" class="btn btn-secondary p-0" onclick="중복확인45버튼_3st_색칠해제()">Clear</button>
-      </div>
-    </div>
-  </div>
-
-
-
-
 
   <div id="세로구분_당첨번호들" class="d-inline-block">
     <div id="있다면다음회차"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
@@ -254,18 +191,26 @@
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45_원간격" style="width:175px;background-color: white;">
     <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 6개 --></div>
-    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;" onclick="document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none')"><!--innerhtml로  원간격 글자--></div>
+    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로  원간격 글자--></div>
     <div id="색칠45_원간격_당번"><!--innerhtml로 button 6개 --></div>
-  </div>
-  <div class="d-inline-block d-none" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
-    <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;" onclick="document.querySelector('#세로구분_색칠45_간격').classList.add('d-none')"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45_간격당당첨" style="width:116px;background-color: white;">
     <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;" onclick="document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none')"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
+  </div>
+
+  <div class="d-inline-block d-none" id="세로구분_색칠45_이월" style="width:15px;background-color: white;margin-right:16px;">
+    <div id="색칠45_간격_이월_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격_이월_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격_이월"><!--innerhtml로 button 45 개 --></div>
+  </div>
+
+
+  <div class="d-inline-block d-none" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
+    <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45" style="width:1320px;background-color: white;">
     <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
@@ -568,7 +513,7 @@
     1086_2023-09-23_11_16_25_27_35_36_37_1087_2023-09-30_13_14_18_21_34_44_16_1088_2023-10-07_11_21_22_30_39_44_31_1089_2023-10-14_4_18_31_37_42_43_40_1090_2023-10-21_12_19_21_29_40_45_1_
     1091_2023-10-28_6_20_23_24_28_30_44_1092_2023-11-04_7_18_19_26_33_45_37_1093_2023-11-11_10_17_22_30_35_43_44_1094_2023-11-18_6_7_15_22_26_40_41_1095_2023-11-25_8_14_28_29_34_40_12_
     1096_2023-12-02_1_12_16_19_23_43_34_1097_2023-12-09_14_33_34_35_37_40_4_1098_2023-12-16_12_16_21_24_41_43_15_1099_2023-12-23_3_20_28_38_40_43_4_1100_2023-12-30_17_26_29_30_31_43_12_
-    1101_2024-01-06_6_7_13_28_36_42_4_1102_2024-01-13_13_14_22_26_37_38_20_1103_2024-01-20_10_12_29_31_40_44_2_1104_2024-01-27_1_7_21_30_35_38_2
+    1101_2024-01-06_6_7_13_28_36_42_4_1102_2024-01-13_13_14_22_26_37_38_20_1103_2024-01-20_10_12_29_31_40_44_2_1104_2024-01-27_1_7_21_30_35_38_2_1105_2024-02-03_6_16_34_37_39_40_11
   </div>
 
 </div>

@@ -23,19 +23,21 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #복사연습 > div > select + span ~ a:not(:nth-of-type(1)) {width:25px;}
 
 .고정btn button {vertical-align: top; padding:0px; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
-#세로구분_당첨번호들, #세로구분_색칠45, #세로구분_색칠45_간격, #세로구분_색칠45_원간격, #세로구분_색칠45_간격당당첨 
+#세로구분_당첨번호들, #세로구분_색칠45, #세로구분_색칠45_간격, #세로구분_색칠45_원간격, #세로구분_색칠45_간격당당첨, #세로구분_색칠45_이월
 {font-size: 16px;width:285px;vertical-align: top;background-color: bisque;}
-#세로구분_당첨번호들 button, #세로구분_색칠45 button, #세로구분_색칠45_간격 button, #세로구분_색칠45_원간격 button 
+#세로구분_당첨번호들 button, #세로구분_색칠45 button, #세로구분_색칠45_간격 button, #세로구분_색칠45_원간격 button, #세로구분_색칠45_이월 button 
 {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
 #세로구분_색칠45_간격당당첨 button {vertical-align: top; width:20px;height:30px;border:1px solid gray;margin-right:-1px;}
 #세로구분_당첨번호들 > div,  #세로구분_색칠45 > div, #세로구분_색칠45_간격 > div, 
-#세로구분_색칠45_원간격 > div, #세로구분_색칠45_간격당당첨 > div,
+#세로구분_색칠45_원간격 > div, #세로구분_색칠45_간격당당첨 > div, #세로구분_색칠45_이월 > div,
 .고정btn div {display:block;margin-bottom:-1px;}  /*1),2),3)*/
 .버튼두개흰색 div button:not(:last-child){background-color:white;}
 .버튼두개흰색 div button:last-child {background-color:rgb(221, 197, 197);}
 #여러_가로라인버튼 button, #여러_세로라인버튼 button {width:20px;}
 
-#세로구분_당첨번호들 > div > div,  #세로구분_색칠45 > div > div, #세로구분_색칠45_간격 > div > div, 
+.임시표시 {background-color: burlywood;}
+
+#세로구분_당첨번호들 > div > div,  #세로구분_색칠45 > div > div, #세로구분_색칠45_간격 > div > div, #세로구분_색칠45_이월 > div > div,
 #세로구분_색칠45_원간격 > div > div, #세로구분_색칠45_간격당당첨 > div > div {display:block;margin-bottom:-1px;} /*#전체당번 div 안에 div안에 버튼8개씩*/
 /* #세로구분_당첨번호들 안에 첫번째 div : 1)있다면다음회차 2)회차날짜조회묶음 3)전체당번,이 안의 div안에 버튼있음*/
 #세로구분_당첨번호들 > div:nth-child(1) > button:nth-of-type(1), /*#있다면다음회차*/

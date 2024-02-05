@@ -309,6 +309,31 @@ function 색칠유형대로색칠() {
       if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
   }
+  if (색칠유형=='색칠유형_주황색번호색칠') {
+    있다면본인색칠할요소를포함하는p요소들=document.querySelectorAll('#js피해서색칠 button');
+    //ex:배치_오른쪽_회차선택과_조회_선택회차당번(p10개), 미출수5주간, 미출수10주간, 미출수15주간, 오주1~5출수
+    console.log('피할번호연계 클래스 수 : ' + document.querySelectorAll('.피할번호연계').length)
+    for (var i=0; i<있다면본인색칠할요소를포함하는p요소들.length; i++) {
+      if (있다면본인색칠할요소를포함하는p요소들[i].classList.contains('피할번호연계') || 있다면본인색칠할요소를포함하는p요소들[i].classList=='') {
+
+      } else {
+        색칠할번호들.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
+      }
+    }
+    //오른쪽 색칠 : 배치_오른쪽_회차선택과_조회_선택회차당번, 배치_오른쪽_5_10_15주미출수, 배치_오른쪽_5주출수
+    var 오른쪽=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p');
+    for (var i=0; i<오른쪽.length; i++) {
+      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+    }
+    오른쪽=document.querySelectorAll('#배치_오른쪽_5_10_15주미출수 p');
+    for (var i=0; i<오른쪽.length; i++) {
+      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+    }
+    오른쪽=document.querySelectorAll('#배치_오른쪽_5주출수 p');
+    for (var i=0; i<오른쪽.length; i++) {
+      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+    }
+  }
 
   //왼쪽색칠은 공통이 될듯
   var 몇개=0;
@@ -549,8 +574,13 @@ function 클릭이벤트통합(e) {
       피해서번호색칠();
     }   
   }
-  if (e.target.innerHTML=='노란색번호색칠') {
+  if (e.target.innerHTML=='노란색') {
     색칠유형='색칠유형_노란색번호색칠';
+    색칠해제();
+    색칠유형대로색칠();
+  }
+  if (e.target.innerHTML=='주황색') {
+    색칠유형='색칠유형_주황색번호색칠';
     색칠해제();
     색칠유형대로색칠();
   }
