@@ -43,31 +43,32 @@
         <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            실행 및 임시함수
+            실행 및 보기
           </a>
-          <ul class="dropdown-menu" style="width:300px;">
-            <li><a class="dropdown-item" onclick="색칠_45()">[2]색칠_45실행</a></li>
-            <li><a class="dropdown-item" onclick="여러당번개수작성()">[3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</a></li>
-            <li><a class="dropdown-item" onclick="임시()">임시()</a></li>
-            <li><a class="dropdown-item" onclick="window.location.reload()">새로고침</a>
+          <ul class="dropdown-menu" style="width:500px;">
+            <li><a class="dropdown-item" onclick="색칠_45()">[실행][2]색칠_45실행</a></li>
+            <li><a class="dropdown-item" onclick="여러당번개수작성()">[실행][3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_모달45보기숨기기()" id="li_모달번호45보기숨기기">[숨기기]칠</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_당번보기숨기기()" id="li_당번보기숨기기">[숨기기]당번</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_45간격과색칠모두보기숨기기()" id="li_45간격과색칠모두보기숨기기">[숨기기][2]45간격과색칠모두</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_간격45보기숨기기()" id="li_간격45보기숨기기">[숨기기][2]간격45만</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_색칠45보기숨기기()" id="li_색칠45보기숨기기">[숨기기][2]색칠45만</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_여러당번개수보기숨기기()" id="li_여러당번개수보기숨기기">[숨기기][3]여러당번정보</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_1_2_3모두보기숨기기()" id="li_1_2_3모두보기숨기기">[숨기기]1_2_3모두</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
+        <button type="button" onclick="임시추출만개()">임시추출만개()</button>
+        <button type="button" onclick="임시번호6()">임시번호6()</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body small p-1" style="font-size: 16px;">
-            <a id="li_모달번호45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_모달45보기숨기기()">[1]모달번호45숨기기</a>
-            <a class="dropdown-item d-inline" style="margin-right:5px;border:1px solid black;padding:0px 4px;" onclick="색칠_45()">[2]색칠_45실행</a>
-            <a id="li_45간격과색칠모두보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_45간격과색칠모두보기숨기기()">[2]45간격과색칠모두숨기기</a>
-            <a id="li_간격45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_간격45보기숨기기()">[2]간격45숨기기</a>
-            <a id="li_색칠45보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_색칠45보기숨기기()">[2]색칠45숨기기</a>
-            <a class="dropdown-item d-inline" style="margin-right:5px;border:1px solid black;padding:0px 4px;" onclick="여러당번개수작성()">[3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</a>
-            <a id="li_여러당번개수보기숨기기" class="dropdown-item d-inline" style="margin-right:5px;" onclick="header_dropdown_여러당번개수보기숨기기()">[3]여러당번개수모두숨기기</a>
+
           </div>
         </div>
 
@@ -116,12 +117,10 @@
       <div id="색칠용modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
         <!-- 버튼45개 script로 들어감 -->
         <div>
-          <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="모달번호감추기()">X</button>
           <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="칠_click();">칠</button>
-          <input id="이동용input" type="text" class="mt-1 ms-1" value="150">
           <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_플러스_일()">+</a>
           <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_마이너스_일()">-</a>
-          <button id="모달_출수제목보기숨기기" style="margin-left:1px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
+          <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="margin-left:1px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
         </div>
         <div>
           <div id="현재색칠정보" class="d-inline-block" onclick="현재색칠정보_click_색과정보초기화()">색칠할정보</div>
@@ -202,28 +201,31 @@
 
   <div class="d-inline-block d-none" id="세로구분_색칠45_이월" style="width:15px;background-color: white;margin-right:16px;">
     <div id="색칠45_간격_이월_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_이월_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격_이월_순번" style="margin-top:7px;margin-bottom:8px;" title="현재줄의 당번6개중 다음회차에 나오는 개수"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격_이월"><!--innerhtml로 button 45 개 --></div>
   </div>
-
 
   <div class="d-inline-block d-none" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
     <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
+  <div class="d-inline-block d-none" id="세로구분_색칠45_내림_간격당당첨" style="width:116px;background-color: white;">
+    <div id="색칠45_간격당당첨_내림_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격당당첨_내림_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+    <div id="색칠45_간격당당첨_내림_당번"><!--innerhtml로 button 45 개 --></div>
+  </div>
   <div class="d-inline-block d-none" id="세로구분_색칠45" style="width:1320px;background-color: white;">
     <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
     <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
   </div>
-
   <div id="여러당번개수" class="d-inline-block d-none" style="vertical-align: top;">
     <div title="보볼포함 7개의 이월수" class="d-inline-block" style="width:30px;background-color:white;vertical-align: top;">
       <div class="고정btn"><button title="header_dropdown_여러당번개수보기만()" onclick="header_dropdown_여러당번개수보기만()" 
         style="width:30px;font-size: 14px;text-indent:-2px;background-color: aqua;">이월</button>
       </div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>7중</span></div>
+      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>6중</span></div>
       <div id="여러_이월수버튼" class="고정btn"><!--innerhtml로 div안에 button 1개씩--></div>
     </div>
     <div title="당번6개의이웃수" class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
@@ -271,6 +273,12 @@
       <div style="margin-top:10px;margin-bottom:4px;"><span style="margin-left:5px;">1</span><span style="margin-left:10px;">2</span><span style="margin-left:10px;">3</span><span style="margin-left:10px;">4</span><span style="margin-left:10px;">5</span><span style="margin-left:10px;">6</span><span style="margin-left:10px;">7</span></div>
       <div id="여러_세로라인버튼" class="고정btn"><!--innerhtml로 div안에 button 7개씩--></div>
     </div>
+  </div>
+
+  <div id="추출만개" class="d-inline-block" style="vertical-align: top;">
+
+
+
   </div>
 </div>
 
