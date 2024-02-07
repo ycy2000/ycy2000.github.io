@@ -880,6 +880,40 @@ if (1==1) {
    색칠_45_간격();
 
   }
+  function 임시_셑팅번호_만개에색칠() {
+
+    if (document.querySelector('#세로구분_색칠관련 #현재색칠번호들').innerHTML=='') {return;}
+    var 번호들=document.querySelector('#세로구분_색칠관련 #현재색칠번호들').innerHTML.trim().split('_');
+    var 버튼들=document.querySelectorAll('#추출만개 > div:nth-of-type(2) button'); 
+    console.log('버튼들.length : ' + 버튼들.length)
+    for (var i=0; i<버튼들.length; i++) {
+      버튼들[i].classList.remove('색칠용버튼');
+      버튼들[i].removeAttribute('title');
+    }
+    for (var i=0; i<버튼들.length; i++) {
+      if (번호들.filter(element => 버튼들[i].innerHTML == element).length!==0) {
+        버튼들[i].classList.add('색칠용버튼');
+        버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+      }
+    }
+    버튼들=document.querySelectorAll('#세로구분_색칠관련 #모달번호45_있다면다음당번 button');
+    for (i=0; i<버튼들.length; i++) {
+      버튼들[i].classList.remove('색칠용버튼');
+      버튼들[i].removeAttribute('title');
+    }
+    for (var i=0; i<버튼들.length; i++) {
+        if (번호들.filter(element => 버튼들[i].innerHTML === element).length==1) {
+          버튼들[i].classList.add('색칠용버튼');
+          버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+        }
+    }
+      //모달회차SELECTEDINDEX, 당번회차SELECTEDINDEX
+      버튼들=document.querySelectorAll('#세로구분_당첨번호들 #전체당번 button');
+      if (document.querySelector('#세로구분_색칠관련 #색칠용회차select').selectedIndex>=document.querySelector('#세로구분_당첨번호들 #회차select').selectedIndex) {
+        var index차이=document.querySelector('#세로구분_색칠관련 #색칠용회차select').selectedIndex-document.querySelector('#세로구분_당첨번호들 #회차select').selectedIndex;
+        버튼들[(index차이*8)].classList.add('색칠용버튼');
+      }
+  }
   function 임시번호6() {
     //번호들은 순서대로 되어있고 있는배열 개수만큼 푸시값 추가하여 푸시값에서 픽하여 index를 따고 있는 번호들의 index......
     for (var 출=0; 출<40; 출++) {
@@ -902,7 +936,7 @@ if (1==1) {
     var 세로순번html='';
     for (var i=0; i<30; i++) {
 
-      var 랜덤=[], 개수=0, 내부=0, 푸시값, 추출6=[];
+      var 랜덤=[], 개수=0, 내부=0, 푸시값, 추출6=[], 버튼6개='';
       while (내부<45) {
         푸시값=Math.floor(Math.random()*1000);
         if (!랜덤.find(element => element == 푸시값)) {랜덤.push(푸시값);내부++;}
@@ -922,10 +956,8 @@ if (1==1) {
     }
     세로백개html='<div>' + 세로백개html + '</div>'
     세로순번html='<div>' + 세로순번html + '</div>'
-    for (var i=0; i<10; i++) {
-      document.querySelector('#추출만개').innerHTML+=세로백개html;
-    }
-    document.querySelector('#추출만개').innerHTML=세로순번html+document.querySelector('#추출만개').innerHTML;
+    document.querySelector('#추출만개').innerHTML=세로순번html+세로백개html;
+    칠_click();
   }
   function 당번색칠해제() {
     var 버튼들=버튼들=document.querySelectorAll('#전체당번 button');
@@ -997,6 +1029,7 @@ if (1==1) {
     당번색칠해제();
     모달색칠해제();
     셑팅번호_당번에색칠();
+    임시_셑팅번호_만개에색칠();
     셑팅번호_모달에색칠();
     출_출수제목_click시_숫자개수와평균();
   }

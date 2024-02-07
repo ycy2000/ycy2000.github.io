@@ -101,14 +101,16 @@ function 회차변경실행() {
     if (isNaN(회귀결과정보수)) {회귀결과정보수=50;document.querySelector('#회귀결과정보수').value=50;}
     for (var 값이있으면=0; 값이있으면<회귀결과정보수; 값이있으면++) {
       if (당번전체[-((회차selectedIndex+(회귀숫자*(값이있으면+1)))*9) + 당번전체.length - 8]) {
-        js_회귀변경p생성html+='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><h6></h6><br>'
+        js_회귀변경p생성html+='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>'
       }
     }
     document.querySelector('#js_회귀변경p생성').innerHTML=js_회귀변경p생성html;
     var 회귀변경가로개수=document.querySelectorAll('#js_회귀변경p생성 p').length/10;
     순번=0;
+    
     for (var 값이있으면=0; 값이있으면<회귀결과정보수; 값이있으면++) {
       if (당번전체[-((회차selectedIndex+(회귀숫자*(값이있으면+1)))*9) + 당번전체.length - 8]) {
+        
         document.querySelectorAll('#js_회귀변경p생성 p')[순번].innerHTML=회귀숫자*(값이있으면+1);
         순번+=1;
         document.querySelectorAll('#js_회귀변경p생성 p')[순번].innerHTML=(최근회차-(회귀숫자*(값이있으면+1))) + '회';
@@ -123,7 +125,7 @@ function 회차변경실행() {
       }
     }
     //    최근회차가 맨앞에 고정으로 추가되기를 원한다.
-    document.querySelector('#js_회귀변경p생성').innerHTML='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><h6></h6><br>' + document.querySelector('#js_회귀변경p생성').innerHTML;
+    document.querySelector('#js_회귀변경p생성').innerHTML='<P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><br>' + document.querySelector('#js_회귀변경p생성').innerHTML;
     document.querySelectorAll('#js_회귀변경p생성 p')[0].innerHTML='';
     document.querySelectorAll('#js_회귀변경p생성 p')[1].innerHTML=document.querySelector('#회차select').value;
     document.querySelectorAll('#js_회귀변경p생성 p')[2].innerHTML=document.querySelector('#span_날짜').innerHTML;
@@ -185,24 +187,29 @@ function 회차변경실행() {
     for (var i=0; i<45; i++) {
       if (최근회차포함5주간번호들.filter(element => (i+1).toString() === element).length==0) {
         미출수5_html+='<p>' + (i+1) + '</p>';
-        미출수5_html_개수+=1;
+        미출수5_html_개수+=1; //몇개 부분
         if (최근회차포함10주간번호들.filter(element => (i+1).toString() === element).length==0) {
           미출수10_html+='<p>' + (i+1) + '</p>';
-          미출수10_html_개수+=1;
+          미출수10_html_개수+=1; //몇개 부분
         } else {
           미출수10_html+='<p></p>';
         }
         if (최근회차포함15주간번호들.filter(element => (i+1).toString() === element).length==0) {
           미출수15_html+='<p>' + (i+1) + '</p>';
-          미출수15_html_개수+=1;
+          미출수15_html_개수+=1; //몇개 부분
         } else {
           미출수15_html+='<p></p>';
         }
       }
     }
-    미출수5_html='<div id="미출수5주간"><span>5주간미출</span><span id="색칠유형_미출수5주">색칠</span><span>' + 미출수5_html_개수 + '개</span>' + 미출수5_html + '</div>';
-    미출수10_html='<div id="미출수10주간"><span>10주간미출</span><span id="색칠유형_미출수10주">색칠</span><span>' + 미출수10_html_개수 + '개</span>' + 미출수10_html + '</div>';
-    미출수15_html='<div id="미출수15주간"><span>15주간미출</span><span id="색칠유형_미출수15주">색칠</span><span>' + 미출수15_html_개수 + '개</span>' + 미출수15_html + '</div>';
+    // 몇개 부분 없애기 전
+    // 미출수5_html='<div id="미출수5주간"><span>5주간미출</span><span id="색칠유형_미출수5주">색칠</span><span>' + 미출수5_html_개수 + '개</span>' + 미출수5_html + '</div>';
+    // 미출수10_html='<div id="미출수10주간"><span>10주간미출</span><span id="색칠유형_미출수10주">색칠</span><span>' + 미출수10_html_개수 + '개</span>' + 미출수10_html + '</div>';
+    // 미출수15_html='<div id="미출수15주간"><span>15주간미출</span><span id="색칠유형_미출수15주">색칠</span><span>' + 미출수15_html_개수 + '개</span>' + 미출수15_html + '</div>';
+    
+    미출수5_html='<div id="미출수5주간"><span>5주간미출</span><span id="색칠유형_미출수5주">색칠</span>' + 미출수5_html + '</div>';
+    미출수10_html='<div id="미출수10주간"><span>10주간미출</span><span id="색칠유형_미출수10주">색칠</span>' + 미출수10_html + '</div>';
+    미출수15_html='<div id="미출수15주간"><span>15주간미출</span><span id="색칠유형_미출수15주">색칠</span>' + 미출수15_html + '</div>';
     document.querySelector('#배치_오른쪽_5_10_15주미출수').innerHTML=미출수5_html + 미출수10_html + 미출수15_html;
 
     //    7.5주출수, 최근회차포함5주간번호들
@@ -228,7 +235,9 @@ function 회차변경실행() {
         for (var 번호순회=0;번호순회<45;번호순회++) {
           if(횟수담기[번호순회]==i) {개수확인+=1;}
         }
-        횟수만html+='<span>' + 개수확인 + '개</span>'
+            // 몇개 부분 없애기 전
+        // 횟수만html+='<span>' + 개수확인 + '개</span>'
+
         //html만들기
         for (var 번호순회=0;번호순회<45;번호순회++) {
           if(횟수담기[번호순회]==i) {횟수만html+='<p>' + (번호순회+1) + '</p>'}
@@ -260,7 +269,7 @@ function 색칠해제() {//class 제거 : 본인색칠, 왼쪽색칠
   
   var 왼쪽div안10개p전체=document.querySelectorAll('.왼쪽당번 p');//0회귀,1회차,2날짜, 9보볼
   for (var i=0; i<왼쪽div안10개p전체.length; i++) {
-    if ((i+1) % 10 == 0) {왼쪽div안10개p전체[i].nextElementSibling.innerHTML='';}
+    // if ((i+1) % 10 == 0) {왼쪽div안10개p전체[i].nextElementSibling.innerHTML='';} ==> 몇개 부분
   }
 }
 function 색칠유형대로색칠() {
@@ -349,7 +358,7 @@ function 색칠유형대로색칠() {
       }
       if ((i+1) % 10 == 0) {
         if (몇개>0) {
-          왼쪽div안10개p전체[i].nextElementSibling.innerHTML=몇개 + '개';
+          // 왼쪽div안10개p전체[i].nextElementSibling.innerHTML=몇개 + '개'; ==> 몇개 부분
           몇개=0;
         } else {
 
@@ -359,7 +368,7 @@ function 색칠유형대로색칠() {
   }
 }
 function 전체변수_색칠유형_초기화() {
-  전체변수_색칠유형="";
+  색칠유형='';
 }
 function 색칠해제와변수초기화() {
   전체변수_색칠유형_초기화();
@@ -574,12 +583,12 @@ function 클릭이벤트통합(e) {
       피해서번호색칠();
     }   
   }
-  if (e.target.innerHTML=='노란색') {
+  if (e.target.id=='색칠유형_노란색번호색칠') {
     색칠유형='색칠유형_노란색번호색칠';
     색칠해제();
     색칠유형대로색칠();
   }
-  if (e.target.innerHTML=='주황색') {
+  if (e.target.id=='색칠유형_주황색번호색칠') {
     색칠유형='색칠유형_주황색번호색칠';
     색칠해제();
     색칠유형대로색칠();
