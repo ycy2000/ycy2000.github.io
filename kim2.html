@@ -31,7 +31,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <li id="header_canvas_click" class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#캔버스전체" aria-controls="offcanvasBottom">번호입력</li>
-        <li class="btn btn-light" id="header_색칠유형">색칠유형</li>
+        <li class="btn btn-light" id="header_색칠유형" onclick="alert('색칠유형 : ' + 색칠유형 + ' , \n색칠할번호들 : ' + 색칠할번호들)">색칠유형</li>
+        <li class="btn btn-light" onclick="document.querySelector('#페이지1').classList.remove('d-none')">기본페이지</li>
+        <li class="btn btn-light" onclick="document.querySelector('#페이지1').classList.add('d-none')">번호생성페이지</li>
 
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -97,8 +99,8 @@
 </div>
 
 
-<div class="p-2 d-flex container-fluid" style="margin:0 auto;">
-  <div id="배치_왼쪽" style="width:430px;">
+<div class="페이지" id="페이지1" class="p-2 d-flex container-fluid" style="margin:0 auto;">
+  <div id="배치_왼쪽" style="width:430px;display: inline-block;">
     <div id="id_배치_왼쪽_다음회차" class="왼쪽당번"><!--가로한줄 P10개 -->
       <P>다음</P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P>
     </div>
@@ -124,7 +126,7 @@
     </div>
   </div>
 
-  <div id="배치_오른쪽">
+  <div id="배치_오른쪽" style="display: inline-block;vertical-align: top;">
     <div id="배치_오른쪽_회차선택과_조회_선택회차당번">
       <span style="width:65px;text-align: start;">최근회차</span>
       <select id="회차select" onchange="회차selectedIndex_change()"></select>
@@ -144,7 +146,10 @@
       <button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button><br>
       <button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button><br>
       <button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button><br>
-      <button>43</button><button>44</button><button style="width:46px;">45</button><span id="색칠유형_노란색번호색칠" style="line-height: 20px;">노란색<br>색칠</span><span id="색칠유형_주황색번호색칠" style="line-height: 20px;">주황색<br>색칠</span>
+      <button>43</button><button>44</button><button style="width:46px;">45</button>
+      <span id="색칠유형_노란색번호색칠" style="line-height: 20px;">노란색<br>색칠</span>
+      <span id="색칠유형_주황색번호색칠" style="line-height: 20px;">주황색<br>색칠</span>
+      <span id="색칠유형_흰색번호색칠" style="line-height: 20px;">흰색<br>색칠</span>
       <div style="margin-top:10px;">
         <span type="button" class="btn btn-primary" onclick="최근번호피해서색칠()">최근번호피해서색칠</span>
         <span type="button" class="btn btn-primary">?</span>
@@ -160,6 +165,16 @@
       <div id="js피해서색칠_우측_5주출수">
       </div>
     </div>
+  </div>
+</div>
+
+<div class="페이지" id="페이지2" class="p-2 d-flex container-fluid" style="margin:0 auto;">
+  <div id="페이지2_왼쪽">
+    <div id="번호종류들">
+      <div><input style="width:180px;" type = "text" value="추출할 번호들"><span style="width:90px;border:1px solid black;">추출할 개수</span><span></span></div><!--머리글한줄, 나머지는 번호관련-->
+      <div><input style="width:180px;" type = "text" value="자유롭게 선택한 번호"><span>3</span><button>증</button><button>감</button><span style="display:inline-block; width:300px;border:1px solid black;">07_10_23_29_33_35_40_16_07_10_23_29_33_35_40_16_07_10_23_29_33_35_40_16_07_10_23_29_33_35_40_16</span></div><!--머리글한줄, 나머지는 번호관련-->
+    </div>
+
   </div>
 </div>
 
