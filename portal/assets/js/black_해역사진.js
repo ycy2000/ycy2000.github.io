@@ -1,22 +1,22 @@
 // document.querySelector('#적재가능일반무게').value=document.querySelector('#점진무게').title;
-document.querySelector('#적재가능일반무게').value = 20290;
+document.querySelector('#적재가능일반무게').value = 20440;
 function 교섭력계산() {
   var 일회교섭력 = Number(document.querySelector('#일회교섭력').value);
   if (isNaN(일회교섭력)) { 일회교섭력 = 0 }
   //곱하는값은 인풋 오른쪽 형제
   document.querySelector('#계산_재갱1회당').value = (일회교섭력 * (4.30022)).toFixed(0);
 
-  document.querySelector('#계산_하코저가').value = (일회교섭력 * (2.0601)).toFixed(0);
+  document.querySelector('#계산_하코저가').value = (일회교섭력 * (2.0602)).toFixed(0);
   document.querySelector('#계산_더코').value = (일회교섭력 * (2.5495)).toFixed(0);
   document.querySelector('#계산_하코').value = (일회교섭력 * (3.0647)).toFixed(0);
-  document.querySelector('#계산_대양저가').value = (일회교섭력 * (3.2582)).toFixed(0);
-  document.querySelector('#계산_대양고가').value = (일회교섭력 * (4.0727)).toFixed(0);
+  document.querySelector('#계산_대양저가').value = (일회교섭력 * (3.2581)).toFixed(0);
+  document.querySelector('#계산_대양고가').value = (일회교섭력 * (4.0728)).toFixed(0);
 
   document.querySelector('#계산_하코4종').value = Number(document.querySelector('#계산_하코저가').value * 2)
     + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
   document.querySelector('#계산_대양7종').value = document.querySelector('#계산_대양저가').value * 3 + document.querySelector('#계산_대양고가').value * 4;
   document.querySelector('#계산_하코와대양합').value = Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
-  document.querySelector('#계산_사단까주').value = (일회교섭력 * (1.51546)).toFixed(0);
+  document.querySelector('#계산_사단까주').value = (일회교섭력 * (1.51548)).toFixed(0);
   document.querySelector('#계산_사단까주8개').value = (document.querySelector('#계산_사단까주').value * 8).toFixed(1);
 
   document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / 일회교섭력).toFixed(0);
@@ -531,7 +531,7 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
     계산_배와장비무게()
   }
   if (e.target.id == '용맹무게') {
-    document.querySelector('#적재가능일반무게').value = 20290;
+    document.querySelector('#적재가능일반무게').value = 20440;
     계산_배와장비무게()
   }
   //선원비율클릭시
