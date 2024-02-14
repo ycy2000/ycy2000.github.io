@@ -50,10 +50,10 @@
 .자동번호나온횟수 > div > div {display:inline-block;width:60px;}
 
 #id_번호입력아래당첨번호숨김 > div > button:nth-child(1) {background-color: red;}
-#id_번호입력아래당첨번호숨김 > div > button:nth-child(2) {background-color: blue;}
+
 #id_번호입력아래당첨번호숨김 > div > button:nth-child(3) {background-color: purple;}
 
 #js백회귀전체 > div > button:nth-child(1) {background-color: red;}
-#js백회귀전체 > div > button:nth-child(2) {background-color: blue;}
+
 #js백회귀전체 > div > button:nth-child(3) {background-color: purple;}
 
