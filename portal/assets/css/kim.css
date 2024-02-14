@@ -49,3 +49,11 @@
 .자동번호나온횟수 button {background-color: white; vertical-align: bottom; border:1px; font-size:18px;width:40px; height:40px;margin-right:-6px;margin-bottom:-2px; padding:0;letter-spacing: 0;}
 .자동번호나온횟수 > div > div {display:inline-block;width:60px;}
 
+#id_번호입력아래당첨번호숨김 > div > button:nth-child(1) {background-color: red;}
+#id_번호입력아래당첨번호숨김 > div > button:nth-child(2) {background-color: blue;}
+#id_번호입력아래당첨번호숨김 > div > button:nth-child(3) {background-color: purple;}
+
+#js백회귀전체 > div > button:nth-child(1) {background-color: red;}
+#js백회귀전체 > div > button:nth-child(2) {background-color: blue;}
+#js백회귀전체 > div > button:nth-child(3) {background-color: purple;}
+
