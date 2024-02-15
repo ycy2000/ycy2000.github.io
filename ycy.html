@@ -50,7 +50,7 @@
             <li><a class="dropdown-item" onclick="여러당번개수작성()">[실행][3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</a></li>
             <li><a class="dropdown-item" onclick="header_dropdown_모달45보기숨기기()" id="li_모달번호45보기숨기기">[숨기기]칠</a></li>
             <li><a class="dropdown-item" onclick="header_dropdown_당번보기숨기기()" id="li_당번보기숨기기">[숨기기]당번</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_45간격과색칠모두보기숨기기()" id="li_45간격과색칠모두보기숨기기">[숨기기][2]45간격과색칠모두</a></li>
+            <li><a class="dropdown-item" onclick="header_dropdown_45간격과색칠모두보기숨기기()" id="li_45간격과색칠모두보기숨기기">[모두숨기기][2]45간격과색칠</a></li>
             <li><a class="dropdown-item" onclick="header_dropdown_간격45보기숨기기()" id="li_간격45보기숨기기">[숨기기][2]간격45만</a></li>
             <li><a class="dropdown-item" onclick="header_dropdown_색칠45보기숨기기()" id="li_색칠45보기숨기기">[숨기기][2]색칠45만</a></li>
             <li><a class="dropdown-item" onclick="header_dropdown_여러당번개수보기숨기기()" id="li_여러당번개수보기숨기기">[숨기기][3]여러당번정보</a></li>
@@ -60,9 +60,9 @@
         </li>
 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
-        <button type="button" onclick="임시추출만개()">임시추출만개()</button>
-        <button type="button" onclick="임시번호6()">임시번호6()</button>
-        <button type="button" onclick="임시_셑팅번호_만개에색칠()">임시_셑팅번호_만개에색칠()</button>
+        <button type="button" onclick="임시추출30개()">임시추출30개()</button>
+        <button type="button" onclick="추출조건보기()">추출조건보기()</button>
+        <button type="button" onclick="임시_피해서번호색칠()">임시_피해서번호색칠()</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
@@ -97,8 +97,7 @@
 
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
 <div style="position: relative;"></div><!--absolute시작기준 -->
-<div id="색칠용번호들" class="d-none"><!--항상숨겨져있음 기본정보 , 새로고침시 자동작성-->
-</div>
+<div id="색칠용번호들" class="d-none"><!--항상숨겨져있음 기본정보 , 새로고침시 자동작성--></div>
 <!-- ========================================================= -->
 <div style="white-space: nowrap;">
   <div class="d-inline-block" id="세로구분_색칠관련" style="background-color: white;margin-left:3px;">
@@ -121,7 +120,7 @@
           <button type="button" class="btn btn-secondary mt-1 ms-1 p-0" onclick="칠_click();">칠</button>
           <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_플러스_일()">+</a>
           <a type="button" class="btn btn-primary btn_당번조회" onclick="모달회차_마이너스_일()">-</a>
-          <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="margin-left:1px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">&lt;</button>
+          <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="margin-left:1px;width:90px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">번호종류&lt;</button>
         </div>
         <div>
           <div id="현재색칠정보" class="d-inline-block" onclick="현재색칠정보_click_색과정보초기화()">색칠할정보</div>
@@ -129,7 +128,6 @@
         </div>
         <div id="현재색칠번호들" style="white-space:normal"></div>
       </div>
-      <div onclick="번호참조체크된곳에색칠()">※번호참조체크된곳에색칠</div>
       <br><br>
 
     </div>
@@ -223,7 +221,7 @@
   </div>
   <div id="여러당번개수" class="d-inline-block d-none" style="vertical-align: top;">
     <div title="보볼포함 7개의 이월수" class="d-inline-block" style="width:30px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button title="header_dropdown_여러당번개수보기만()" onclick="header_dropdown_여러당번개수보기만()" 
+      <div class="고정btn"><button title="header_dropdown_여러당번개수보기만()==>각 제목 클릭시 개별적으로 숨겨지고, 이거 누르면 다 보이게 됨" onclick="header_dropdown_여러당번개수보기만()" 
         style="width:30px;font-size: 14px;text-indent:-2px;background-color: aqua;">이월</button>
       </div>
       <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>6중</span></div>
@@ -276,9 +274,45 @@
     </div>
   </div>
 
-  <div id="추출만개" class="d-inline-block" style="vertical-align: top;">
+  <div id="추출만개" class="d-inline-block" style="vertical-align: top;"></div>
+  <div id="추출조건" class="e" style="position: absolute;border:1px solid black;background-color: white; width:1000px;height:300px;left:5px;top:460px;">
+    <div id="추출조건_머리글">
+      <span style="margin-left:100px;">조건설명</span><span style="margin-left:300px;">번호</span><span style="margin-left:406px;">추출</span>
 
-
+    </div>
+    <div id="추출조건_1">
+      <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
+      <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
+      <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
+      <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등-->     
+    </div>
+    <div id="추출조건_2">
+      <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
+      <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
+      <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
+      <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
+    </div>
+    <div id="추출조건_3">
+      <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
+      <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
+      <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
+      <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
+    </div>
+    <div id="추출조건_4">
+      
+    </div>
+    <div id="추출조건_5">
+      
+    </div>
+    <div id="추출조건_6">
+      
+    </div>
+    <div id="추출조건_7">
+      
+    </div>
+    <div id="추출조건_8">
+      
+    </div>
 
   </div>
 </div>
@@ -522,7 +556,8 @@
     1086_2023-09-23_11_16_25_27_35_36_37_1087_2023-09-30_13_14_18_21_34_44_16_1088_2023-10-07_11_21_22_30_39_44_31_1089_2023-10-14_4_18_31_37_42_43_40_1090_2023-10-21_12_19_21_29_40_45_1_
     1091_2023-10-28_6_20_23_24_28_30_44_1092_2023-11-04_7_18_19_26_33_45_37_1093_2023-11-11_10_17_22_30_35_43_44_1094_2023-11-18_6_7_15_22_26_40_41_1095_2023-11-25_8_14_28_29_34_40_12_
     1096_2023-12-02_1_12_16_19_23_43_34_1097_2023-12-09_14_33_34_35_37_40_4_1098_2023-12-16_12_16_21_24_41_43_15_1099_2023-12-23_3_20_28_38_40_43_4_1100_2023-12-30_17_26_29_30_31_43_12_
-    1101_2024-01-06_6_7_13_28_36_42_4_1102_2024-01-13_13_14_22_26_37_38_20_1103_2024-01-20_10_12_29_31_40_44_2_1104_2024-01-27_1_7_21_30_35_38_2_1105_2024-02-03_6_16_34_37_39_40_11
+    1101_2024-01-06_6_7_13_28_36_42_41_1102_2024-01-13_13_14_22_26_37_38_20_1103_2024-01-20_10_12_29_31_40_44_2_1104_2024-01-27_1_7_21_30_35_38_2_1105_2024-02-03_6_16_34_37_39_40_11_
+    1106_2024-02-10_1_3_4_29_42_45_36
   </div>
 
 </div>

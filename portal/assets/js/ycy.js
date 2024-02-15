@@ -30,6 +30,7 @@ if (1==1) {
   + '<div id="세로5라인">5_12_19_26_33_40</div>'
   + '<div id="세로6라인">6_13_20_27_34_41</div>'
   + '<div id="세로7라인">7_14_21_28_35_42</div>'
+  + '<div id="피해서번호"></div>'
 
   var 가로7개buttondiv;
   var 가로3개buttondiv;
@@ -259,7 +260,7 @@ if (1==1) {
   var 이웃수=[];
   var 이월수플러스이웃수=[];
   시작배열값=(회차개수-1)*9;
-  for (i=2; i<9; i++) {
+  for (i=2; i<8; i++) {
     이월수.push(당번전체[시작배열값+i])
   }
   for (i=0; i<이월수.length; i++) {
@@ -268,7 +269,7 @@ if (1==1) {
   }
   이월수.sort((a,t) => a-t);
   
-  for (i=0; i<7; i++) {
+  for (i=0; i<6; i++) {
       if (이월수[i]==1) {
         이월수플러스이웃수.push(45);
         이월수플러스이웃수.push(2);
@@ -533,7 +534,7 @@ if (1==1) {
       }
       이월수7=전회차당번;
       이월이웃수=전회차당번;
-      for (i=0; i<7; i++) {
+      for (i=0; i<6; i++) {
         if (이월수7[i]==1) {
           빼기추가=45;
           더하기추가=2;
@@ -631,7 +632,7 @@ if (1==1) {
       document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5+3].innerHTML=삼십번당개;
       document.querySelectorAll('#여러_단번사십번버튼 button')[회차*5+4].innerHTML=사십번당개;
       //가로,세로라인
-      for (i=0; i<7; i++) {
+      for (i=0; i<6; i++) {
         if (현재당번.filter(element => 가로1라인[i] == element).length==1) {가로1당개=가로1당개+1}
         if (현재당번.filter(element => 가로2라인[i] == element).length==1) {가로2당개=가로2당개+1}
         if (현재당번.filter(element => 가로3라인[i] == element).length==1) {가로3당개=가로3당개+1}
@@ -679,7 +680,7 @@ if (1==1) {
 
         //내부에 개별적으로 숨긴것은 복원이 안되므로 개별적으로 다 복구해놓기
         document.querySelector('#여러당번개수').classList.remove('d-none');
-        document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+        document.querySelector('#li_여러당번개수보기숨기기').innerText='[모두숨기기][3]여러당번개수';
         for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
           document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
         }
@@ -823,9 +824,9 @@ if (1==1) {
    document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.remove('d-none');
    document.querySelector('#세로구분_색칠45_이월').classList.remove('d-none');
    document.querySelector('#세로구분_색칠45').classList.remove('d-none');
-   document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
-   document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
-   document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두숨기기';
+   document.querySelector('#li_색칠45보기숨기기').innerText='[숨기기][2]색칠45만';
+   document.querySelector('#li_간격45보기숨기기').innerText='[숨기기][2]간격45만';
+   document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[모두숨기기][2]45간격과색칠';
   }
   function 색칠_45() {
     var 버튼45html;
@@ -884,7 +885,7 @@ if (1==1) {
 
     if (document.querySelector('#세로구분_색칠관련 #현재색칠번호들').innerHTML=='') {return;}
     var 번호들=document.querySelector('#세로구분_색칠관련 #현재색칠번호들').innerHTML.trim().split('_');
-    var 버튼들=document.querySelectorAll('#추출만개 > div:nth-of-type(2) button'); 
+    var 버튼들=document.querySelectorAll('#추출만개 > div > button:not(.순번)'); 
     console.log('버튼들.length : ' + 버튼들.length)
     for (var i=0; i<버튼들.length; i++) {
       버튼들[i].classList.remove('색칠용버튼');
@@ -914,7 +915,86 @@ if (1==1) {
         버튼들[(index차이*8)].classList.add('색칠용버튼');
       }
   }
-  function 임시번호6() {
+  function 추출조건보기() {
+    if (document.querySelector('#추출조건').classList.contains('d-none')) {
+      document.querySelector('#추출조건').classList.remove('d-none');
+    } else {
+      document.querySelector('#추출조건').classList.add('d-none');
+    }
+
+
+  }
+
+
+  function 임시_피해서번호색칠() {
+    console.log('피해서번호색칠()');
+    //피할번호연계 클래스 모두 지우고 시작
+    var 버튼들=document.querySelectorAll('#색칠용modal-body button');//필요없는버튼 두개가 더 있다. 칠, 번호종류
+    var 색칠용버튼숫자=document.querySelectorAll('#색칠용modal-body .색칠용버튼').length;
+    //피할번호 있으면 작동, 몫과 나머지 구해놓기
+    var 몫=[];
+    var 나머지=[];
+    var 번호묶음text='';
+    if (색칠용버튼숫자>0) {
+      for (var i=0; i<45; i++) {
+        if (버튼들[i].classList.contains('색칠용버튼')) {
+          몫.push(Math.floor( i / 7));
+          나머지.push(i % 7);
+        }
+      }
+    }
+    //몫.find(element => element==Math.floor(i / 7))    나머지.find(element => element==(i % 7))
+    console.log('몫 : ' + 몫 + ' , 나머지 : ' + 나머지)
+
+    var 중복포함번호들=[];
+    for (var i=0; i<45; i++) {
+      // console.log('번호 ' + (i+1) + ' 의 몫 : ' + Math.floor(i / 7) + ' 개수 : ' + 몫.filter(element => element==Math.floor(i / 7)).length)
+      if (몫.filter(element => element==Math.floor(i / 7)).length==0) {
+        if (번호묶음text=='') {
+          중복포함번호들.push(i+1);
+          번호묶음text=(i+1);
+        } else {
+          중복포함번호들.push(i+1);
+          번호묶음text=번호묶음text + '_' + (i+1);
+        }
+        // 버튼들[i].classList.add('색칠용버튼');
+        // 버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+      }
+      if (나머지.filter(element => element==(i % 7)).length==0) {
+        if (번호묶음text=='') {
+          중복포함번호들.push(i+1);
+          번호묶음text=(i+1);
+        } else {
+          중복포함번호들.push(i+1);
+          번호묶음text=번호묶음text + '_' + (i+1);
+        }
+        // 버튼들[i].classList.add('색칠용버튼');
+        // 버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+      }
+    }
+
+    var 중복제거번호들=new Set(중복포함번호들);
+    중복제거번호들=[...중복제거번호들];
+
+    document.querySelector('#현재색칠번호들').innerHTML=중복제거번호들.join('_');
+
+    모달색칠해제();
+    셑팅번호_당번에색칠();
+    임시_셑팅번호_만개에색칠();
+    셑팅번호_모달에색칠();
+    document.querySelector('#평균계산값').innerHTML='';
+
+    var 숫자개수=중복제거번호들.length;
+    var 평균=(숫자개수/7).toPrecision(2);
+    var return값=' (' + 숫자개수 + '개, 평균 : ' + 평균 + ')';
+    if (숫자개수>0) {
+      document.querySelector('#평균계산값').innerHTML=return값;
+    }
+
+    document.querySelector('#현재색칠정보').innerHTML='피해서번호';
+  }
+
+  function 임시번호6() {//지워도 됨
     //번호들은 순서대로 되어있고 있는배열 개수만큼 푸시값 추가하여 푸시값에서 픽하여 index를 따고 있는 번호들의 index......
     for (var 출=0; 출<40; 출++) {
         var 랜덤=[], 개수=0, i=0, 푸시값, 추출6=[];
@@ -929,11 +1009,33 @@ if (1==1) {
         console.log(추출6.sort((a, b) => a - b))
     }
   }
-  function 임시추출만개() {
+  var 임시=document.querySelector('#추출조건');
+  function 임시_색칠할번호들call(e) {
+    if (e.target.nodeName!='BUTTON') {return;}
+    e.target.previousElementSibling.previousElementSibling.value=document.querySelector('#현재색칠정보').innerHTML + document.querySelector('#평균계산값').innerHTML;
+    e.target.previousElementSibling.value=document.querySelector('#현재색칠번호들').innerHTML;
+
+  }
+  임시.addEventListener('click',임시_색칠할번호들call)
+
+
+
+  function 임시clear() {
+    document.querySelector('#추출만개').innerHTML='';
+  }
+  function 임시추출30개() {
     //<div>버튼6개</div>
     var 버튼6개='';
     var 세로백개html='';
     var 세로순번html='';
+    for (var i=0; i<30; i++) {
+      세로순번html+='<button class="순번">' + (i+1) + '</button>';
+    }
+    if (document.querySelector('#추출만개').innerHTML=='') {
+      document.querySelector('#추출만개').innerHTML='<p style="margin-bottom:10px;"><button style="width:140px;" onclick="임시clear()">번호추출조건보기</button></p>'
+      document.querySelector('#추출만개').innerHTML+=세로순번html='<div style="width:31px">' + 세로순번html + '</div>';
+    }
+
     for (var i=0; i<30; i++) {
 
       var 랜덤=[], 개수=0, 내부=0, 푸시값, 추출6=[], 버튼6개='';
@@ -950,13 +1052,10 @@ if (1==1) {
       for (var 내부=0; 내부<6; 내부++) {
         버튼6개+='<button>' + 추출6[내부] + '</button>'
       }
-
       세로백개html+=버튼6개;
-      세로순번html+='<button>' + (i+1) + '</button>';
     }
     세로백개html='<div>' + 세로백개html + '</div>'
-    세로순번html='<div>' + 세로순번html + '</div>'
-    document.querySelector('#추출만개').innerHTML=세로순번html+세로백개html;
+    document.querySelector('#추출만개').innerHTML+=세로백개html;
     칠_click();
   }
   function 당번색칠해제() {
@@ -1197,12 +1296,14 @@ if (1==1) {
     document.querySelector('#색칠용회차select').selectedIndex=
     document.querySelector('#색칠용회차select').selectedIndex-1;
     모달회차_change();
+    임시_셑팅번호_만개에색칠();
     셑팅번호_모달에색칠();
   }
   function 모달회차_마이너스_일 () {
     document.querySelector('#색칠용회차select').selectedIndex=
     document.querySelector('#색칠용회차select').selectedIndex+1;
     모달회차_change();
+    임시_셑팅번호_만개에색칠();
     셑팅번호_모달에색칠();
   }
   function 모달회차_change() {
@@ -1351,7 +1452,7 @@ if (1==1) {
     var 이웃수=[];
     var 이월수플러스이웃수=[];
     시작배열값=(회차개수-selectedindex-1)*9;
-    for (i=2; i<9; i++) {
+    for (i=2; i<8; i++) {
       이월수.push(당번전체[시작배열값+i])
     }
     for (i=0; i<이월수.length; i++) {
@@ -1359,7 +1460,7 @@ if (1==1) {
       if (i!==0) {이월수결과=이월수결과 + '_' + 이월수[i];}
     }
     이월수.sort((a,t) => a-t);
-    for (i=0; i<7; i++) {
+    for (i=0; i<6; i++) {
         if (이월수[i]==1) {
           이웃수.push(45);
           이웃수.push(2);
@@ -1409,6 +1510,7 @@ if (1==1) {
       change용색칠할번호선택시색칠하기()
     } else {
       당번색칠해제();
+      임시_셑팅번호_만개에색칠();
       셑팅번호_당번에색칠();
     }
     
@@ -1439,12 +1541,12 @@ if (1==1) {
     }
   }
   function 출수제목보기숨기기() {
-    if (document.querySelector('#모달_출수제목보기숨기기').innerHTML=='&lt;') {
+    if (document.querySelector('#모달_출수제목보기숨기기').innerHTML=='번호종류&lt;') {
   
-      document.querySelector('#모달_출수제목보기숨기기').innerHTML='&gt;';
+      document.querySelector('#모달_출수제목보기숨기기').innerHTML='번호종류&gt;';
       document.querySelector('#출수제목').classList.add('d-none');
     } else {
-      document.querySelector('#모달_출수제목보기숨기기').innerHTML='&lt;';
+      document.querySelector('#모달_출수제목보기숨기기').innerHTML='번호종류&lt;';
       document.querySelector('#출수제목').classList.remove('d-none');
     }
   }
@@ -1455,16 +1557,16 @@ if (1==1) {
       document.querySelector('#세로구분_색칠관련').classList.add('d-none')
       document.querySelector('#li_모달번호45보기숨기기').innerText='[보기]칠'
       document.querySelector('#세로구분_색칠45').classList.add('d-none');
-      document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45보기';
+      document.querySelector('#li_색칠45보기숨기기').innerText='[보기][2]색칠45만';
       document.querySelector('#세로구분_색칠45_간격').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_이월').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.add('d-none');
-      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45보기';
-      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두보기';
+      document.querySelector('#li_간격45보기숨기기').innerText='[보기][2]간격45만';
+      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[모두보기][2]45간격과색칠';
       document.querySelector('#여러당번개수').classList.add('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두보기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[모두보기][3]여러당번개수';
 
 
       document.querySelector('#li_1_2_3모두보기숨기기').innerText='[보기]1_2_3모두'
@@ -1474,16 +1576,16 @@ if (1==1) {
       document.querySelector('#세로구분_색칠관련').classList.remove('d-none');
       document.querySelector('#li_모달번호45보기숨기기').innerText='[숨기기]칠'
       document.querySelector('#세로구분_색칠45').classList.remove('d-none');
-      document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
+      document.querySelector('#li_색칠45보기숨기기').innerText='[숨기기][2]색칠45만';
       document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_이월').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.remove('d-none');
-      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
-      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두숨기기';
+      document.querySelector('#li_간격45보기숨기기').innerText='[숨기기][2]간격45만';
+      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[모두숨기기][2]45간격과색칠';
       document.querySelector('#여러당번개수').classList.remove('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[모두숨기기][3]여러당번개수';
       for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
         document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
       }
@@ -1510,7 +1612,7 @@ if (1==1) {
     }
   }
   function header_dropdown_45간격과색칠모두보기숨기기() {
-    if (document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML=='[2]45간격과색칠모두보기') {
+    if (document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML=='[모두보기][2]45간격과색칠') {
       document.querySelector('#세로구분_색칠45').classList.remove('d-none');
       document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
       document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
@@ -1518,54 +1620,54 @@ if (1==1) {
       document.querySelector('#세로구분_색칠45_이월').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.remove('d-none');
-      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
-      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두숨기기';
-    } else if (document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML=='[2]45간격과색칠모두숨기기') {
+      document.querySelector('#li_간격45보기숨기기').innerText='[숨기기][2]간격45만';
+      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[모두숨기기][2]45간격과색칠';
+    } else if (document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML=='[모두숨기기][2]45간격과색칠') {
       document.querySelector('#세로구분_색칠45').classList.add('d-none');
-      document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45보기';
+      document.querySelector('#li_색칠45보기숨기기').innerText='[보기][2]색칠45만';
       document.querySelector('#세로구분_색칠45_간격').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_이월').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.add('d-none');
-      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45보기';
-      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[2]45간격과색칠모두보기';
+      document.querySelector('#li_간격45보기숨기기').innerText='[보기][2]간격45만';
+      document.querySelector('#li_45간격과색칠모두보기숨기기').innerHTML='[모두보기][2]45간격과색칠';
     }
   }
   function header_dropdown_색칠45보기숨기기() {
-    if (document.querySelector('#li_색칠45보기숨기기').innerText=='[2]색칠45숨기기') {
+    if (document.querySelector('#li_색칠45보기숨기기').innerText=='[숨기기][2]색칠45만') {
       document.querySelector('#세로구분_색칠45').classList.add('d-none');
-      document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45보기';
+      document.querySelector('#li_색칠45보기숨기기').innerText='[보기][2]색칠45만';
     } else {
     document.querySelector('#세로구분_색칠45').classList.remove('d-none');
-    document.querySelector('#li_색칠45보기숨기기').innerText='[2]색칠45숨기기';
+    document.querySelector('#li_색칠45보기숨기기').innerText='[숨기기][2]색칠45만';
     }
   }
   function header_dropdown_간격45보기숨기기() {
-    if (document.querySelector('#li_간격45보기숨기기').innerText=='[2]간격45숨기기') {
+    if (document.querySelector('#li_간격45보기숨기기').innerText=='[숨기기][2]간격45만') {
       document.querySelector('#세로구분_색칠45_간격').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_원간격').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_이월').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_간격당당첨').classList.add('d-none');
       document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.add('d-none');
-      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45보기';
+      document.querySelector('#li_간격45보기숨기기').innerText='[보기][2]간격45만';
     } else {
       document.querySelector('#세로구분_색칠45_간격').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_원간격').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_이월').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_간격당당첨').classList.remove('d-none');
       document.querySelector('#세로구분_색칠45_내림_간격당당첨').classList.remove('d-none');
-      document.querySelector('#li_간격45보기숨기기').innerText='[2]간격45숨기기';
+      document.querySelector('#li_간격45보기숨기기').innerText='[숨기기][2]간격45만';
     }
   }
   function header_dropdown_여러당번개수보기숨기기() {
-    if (document.querySelector('#li_여러당번개수보기숨기기').innerText=='[3]여러당번개수모두숨기기') {
+    if (document.querySelector('#li_여러당번개수보기숨기기').innerText=='[모두숨기기][3]여러당번개수') {
       document.querySelector('#여러당번개수').classList.add('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두보기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[모두보기][3]여러당번개수';
     } else {
       //내부에 개별적으로 숨긴것은 복원이 안되므로 개별적으로 다 복구해놓기
       document.querySelector('#여러당번개수').classList.remove('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[모두숨기기][3]여러당번개수';
       for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
         document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
       }
@@ -1573,7 +1675,7 @@ if (1==1) {
   }
   function header_dropdown_여러당번개수보기만() {
       document.querySelector('#여러당번개수').classList.remove('d-none');
-      document.querySelector('#li_여러당번개수보기숨기기').innerText='[3]여러당번개수모두숨기기';
+      document.querySelector('#li_여러당번개수보기숨기기').innerText='[모두숨기기][3]여러당번개수';
       for (i=0; i<document.querySelectorAll('#여러당번개수 > div').length;i++) {
         document.querySelectorAll('#여러당번개수>div')[i].classList.remove('d-none');
       }
@@ -1667,6 +1769,7 @@ if (1==1) {
     당번색칠해제();
     모달색칠해제();
     셑팅번호_당번에색칠();
+    임시_셑팅번호_만개에색칠();
     셑팅번호_모달에색칠();
     출_출수제목_click시_숫자개수와평균()
   }
@@ -1733,7 +1836,8 @@ if (1==1) {
     var 문자열추출join=문자열추출.join('_');
     document.querySelector('#현재색칠번호들').innerHTML=문자열추출join
     e.target.classList.add('임시표시');
-    셑팅번호_모달에색칠()
+    셑팅번호_모달에색칠();
+    임시_셑팅번호_만개에색칠();
     셑팅번호_당번에색칠();
   }
 

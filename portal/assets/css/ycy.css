@@ -72,9 +72,8 @@ header #코딩메모_문서연결 li:hover {background-color: aqua;}
 #세로구분_색칠관련 #현재색칠번호들 {background-color: aqua;width:235px;word-break: break-all;}
 
 #추출만개 > div {display: inline-block; width:180px;white-space:initial;}
-#추출만개 > div:nth-child(1) {width:31px;margin-left:10px;}
 #추출만개 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
-#추출만개 > div:nth-child(1) button {background-color: blueviolet;}
+#추출만개 > div > .순번 {background-color: blueviolet;}
 
 .사오색칠 {background-color: blueviolet;}
 .색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
