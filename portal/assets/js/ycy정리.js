@@ -5,7 +5,8 @@ if ('초기화'=='초기화') {
   var 전체변수_당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
   var 전체변수_회차개수=Number(전체변수_당번전체.length/9);
   var 전체변수_회차select안옵션html;
-  var 전체변수_아이디;
+  var 전체변수_색칠할번호들_아이디;
+  var 전체변수_색칠할번호들;//초기화 말고, 나중에 쓰임
   for (var i=0; i<전체변수_회차개수; i++) {
     if (i==0) {
       전체변수_회차select안옵션html='<option>' + 전체변수_당번전체[(i*9)] + '회</option>'
@@ -17,7 +18,7 @@ if ('초기화'=='초기화') {
   document.querySelector('#칠_색칠할번호선택_ul').innerHTML='';
   for (var i=0; i<document.querySelectorAll('#색칠용번호들 div').length; i++) {
     전체변수_아이디=document.querySelectorAll('#색칠용번호들 div')[i].id;
-    document.querySelector('#칠_색칠할번호선택_ul').innerHTML+='<li><a class="dropdown-item">' + 전체변수_아이디 + '</a></li>'
+    document.querySelector('#칠_색칠할번호선택_ul').innerHTML+='<li><a class="dropdown-item 색칠할번호class_a">' + 전체변수_아이디 + '</a></li>'
     if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='흰색부분' || 전체변수_아이디=='수동선택번호') {
       document.querySelectorAll('#칠_색칠할번호선택_ul li')[i].classList.add('피해서번호글꼴');
     }
@@ -80,7 +81,16 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
 
 
 
+function 색칠해제_전체() {
 
+}
+function 색칠할번호들색칠_번호45() {
+
+  
+}
+function 색칠할번호들색칠_당번() {
+  
+}
 function 바디클릭시동작설정(e) {
   if (e.target.id=='동작_당번회차_플러스') {
     if (document.querySelector('#당번_회차select').selectedIndex==0) {
@@ -94,6 +104,18 @@ function 바디클릭시동작설정(e) {
       document.querySelector('#당번_회차select').selectedIndex+=1;
       당번_회차change();
   }
+  if (e.target.classList.contains('색칠할번호class_a')) {
+    전체변수_색칠할번호들_아이디=e.target.innerHTML;
+    document.querySelector('#칠_현재색칠번호들').innerHTML=document.querySelector('#' + 전체변수_색칠할번호들_아이디).innerHTML;
+    전체변수_색칠할번호들=document.querySelector('#칠_현재색칠번호들').innerHTML.split('_');//비어있어도 1개이다.
+    //모두 45이하 숫자인지 확인. 아니면 메세지 후 중단
+    for (var i=0; i<전체변수_색칠할번호들.length;i++) {
+      if (전체변수_색칠할번호들[i]*1>45 || 전체변수_색칠할번호들[i]*1<1) {alert(전체변수_색칠할번호들[i] + ' : 1~45사이의 숫자가 아님. 중단.');return;}
+    }
+    색칠해제_전체();
+    색칠할번호들색칠_번호45();
+    색칠할번호들색칠_당번();
+}
 }
 var 바디리스너용=document.querySelector('body');
 바디리스너용.addEventListener('click',바디클릭시동작설정)
