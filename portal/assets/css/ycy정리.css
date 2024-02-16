@@ -1,0 +1,55 @@
+@charset "UTF-8";
+body, pre {font-family: 'Noto Serif KR', serif;}
+header {position:fixed;width:100%;}
+#whole > div {vertical-align: top;}
+
+#세로구분_당번 {background-color: bisque;padding-left:5px;padding-right:5px;}
+.하위div안버튼7개까지css > div > button, .버튼45css > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+.하위div안버튼7개까지css > div > span {background-color: white; display:inline-block;line-height: 34px;text-align: center; width:60px;height:34px;border:1px solid gray;margin-right:5px;margin-bottom:-1px;}
+.하위div안버튼7개까지css > div > button:nth-of-type(7) {background-color: rgb(100, 237, 214);}
+.피해서번호글꼴 {font-style : italic;color: blue;}
+#당번_전체 > div:nth-child(odd) > *:not(:last-child) {background-color:bisque;color:blue;}
+#당번_회차날짜조회묶음 {height:34px;}
+#당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
+
+#칠_부분 {margin-top:5px;}
+#칠_부분 button:nth-of-type(1) {width:30px;margin-left:0px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.사오색칠 {background-color: blueviolet;}
+.색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
+.모달회차표시 {background-color:blueviolet;border-radius: 20px;}
+.색칠용버튼[title='1'], .색칠용버튼[title='2'], .색칠용버튼[title='3'], .색칠용버튼[title='4'], .색칠용버튼[title='5'],
+.색칠용버튼[title='6'], .색칠용버튼[title='7'], .색칠용버튼[title='8'], .색칠용버튼[title='9']
+{background-color: yellow;border-radius: 20px;}
+.색칠용버튼[title='10'],.색칠용버튼[title='11'], .색칠용버튼[title='12'], .색칠용버튼[title='13'], .색칠용버튼[title='14'], 
+.색칠용버튼[title='15'],.색칠용버튼[title='16'], .색칠용버튼[title='17'], .색칠용버튼[title='18'], .색칠용버튼[title='19']
+{background-color:cornflowerblue;border-radius: 20px;}
+.색칠용버튼[title='20'],.색칠용버튼[title='21'], .색칠용버튼[title='22'], .색칠용버튼[title='23'], .색칠용버튼[title='24'], 
+.색칠용버튼[title='25'],.색칠용버튼[title='26'], .색칠용버튼[title='27'], .색칠용버튼[title='28'], .색칠용버튼[title='29']
+{background-color:red ;border-radius: 20px;}
+.색칠용버튼[title='30'],.색칠용버튼[title='31'], .색칠용버튼[title='32'], .색칠용버튼[title='33'], .색칠용버튼[title='34'], 
+.색칠용버튼[title='35'],.색칠용버튼[title='36'], .색칠용버튼[title='37'], .색칠용버튼[title='38'], .색칠용버튼[title='39']
+{background-color:gray;border-radius: 20px;}
+.색칠용버튼[title='40'],.색칠용버튼[title='41'], .색칠용버튼[title='42'], .색칠용버튼[title='43'], .색칠용버튼[title='44'], 
+.색칠용버튼[title='45']
+{background-color:green;border-radius: 20px;}
+.absolute {position:absolute;}
+
+
+
+
+
+
