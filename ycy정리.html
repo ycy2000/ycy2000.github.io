@@ -97,14 +97,15 @@
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
 <div style="position: relative;border:1px solid black;width:1205px;"></div><!--absolute시작기준 -->
 <div id="색칠용번호들" class="d-none"><!--항상숨겨져있음 기본정보 , 새로고침시 자동작성-->
+  <div id="오주출수"></div>
   <div id="오주미출수"></div>
   <div id="십주미출수"></div>
   <div id="십오주미출수"></div>
   <div id="이월수"></div>
 
+  <div id="색칠된번호"></div>
   <div id="피해서번호"></div>
   <div id="흰색부분"></div>
-  <div id="수동선택번호"></div>
 
   <div id="이웃수"></div>
   <div id="이월이웃수"></div>
@@ -144,8 +145,8 @@
           <li class="nav-item dropdown me-2 mb-1 mt-1 d-inline-block">
             <span>번호색칠</span>
           </li>
-          <button style="width:50px;margin-left:-7px;" type="button" class="btn btn-secondary p-0" onclick="모달색칠해제()">Clear</button>
-          <select id="칠_회차select" class="d-inline-block" onchange="모달회차_change();"></select>
+          <button style="width:50px;margin-left:-7px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
+          <select id="칠_회차select" class="d-inline-block" onchange="번호색칠_회차change();"></select>
         </div>
       </div>
       <div id="칠_modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
@@ -159,14 +160,14 @@
           <div><button>43</button><button>44</button><button>45</button></div>
         </div>
         <div id="칠_부분">
-          <button type="button" class="btn btn-secondary" onclick="칠_click();">칠</button>
-          <a type="button" class="btn btn-primary" onclick="모달회차_플러스_일()">+</a>
-          <a type="button" class="btn btn-primary" onclick="모달회차_마이너스_일()">-</a>
+          <button type="button" class="btn btn-secondary" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
+          <a type="button" class="btn btn-primary" onclick="번호색칠_회차change_플러스()">+</a>
+          <a type="button" class="btn btn-primary" onclick="번호색칠_회차change_마이너스()">-</a>
           <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="margin-left:1px;width:90px;" type="button" class="btn btn-secondary p-0" onclick="출수제목보기숨기기()">번호종류&lt;</button>
         </div>
         <div>
           <div>색칠할번호</div>
-          <div id="칠_현재색칠할번호_정보와개수" class="d-inline-block">이웃수 (7개, 평균 : 1.0)</div>
+          <div id="칠_현재색칠할번호_정보와개수" class="d-inline-block"></div>
         </div>
         <div id="칠_현재색칠번호들" style="white-space:normal;word-break:break-all"></div>
       </div>

@@ -5,8 +5,8 @@ if ('초기화'=='초기화') {
   var 전체변수_당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
   var 전체변수_회차개수=Number(전체변수_당번전체.length/9);
   var 전체변수_회차select안옵션html;
-  var 전체변수_색칠할번호들_아이디;
-  var 전체변수_색칠할번호들;//초기화 말고, 나중에 쓰임
+  var 전체변수_색칠할번호들_아이디='없음';
+  var 전체변수_색칠할번호들_배열;//초기화 말고, 나중에 쓰임
   for (var i=0; i<전체변수_회차개수; i++) {
     if (i==0) {
       전체변수_회차select안옵션html='<option>' + 전체변수_당번전체[(i*9)] + '회</option>'
@@ -18,9 +18,9 @@ if ('초기화'=='초기화') {
   document.querySelector('#칠_색칠할번호선택_ul').innerHTML='';
   for (var i=0; i<document.querySelectorAll('#색칠용번호들 div').length; i++) {
     전체변수_아이디=document.querySelectorAll('#색칠용번호들 div')[i].id;
-    document.querySelector('#칠_색칠할번호선택_ul').innerHTML+='<li><a class="dropdown-item 색칠할번호class_a">' + 전체변수_아이디 + '</a></li>'
-    if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='흰색부분' || 전체변수_아이디=='수동선택번호') {
-      document.querySelectorAll('#칠_색칠할번호선택_ul li')[i].classList.add('피해서번호글꼴');
+    document.querySelector('#칠_색칠할번호선택_ul').innerHTML+='<li><a class="dropdown-item 색칠할번호_로연결된text_class">' + 전체변수_아이디 + '</a></li>'
+    if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='흰색부분' || 전체변수_아이디=='색칠된번호' || 전체변수_아이디=='오주출수') {
+      document.querySelectorAll('#칠_색칠할번호선택_ul li')[i].classList.add('파란색글자');
     }
   }
 
@@ -31,13 +31,288 @@ if ('초기화'=='초기화') {
   var 전체변수_index확정=document.querySelector('#당번_회차select').selectedIndex;
   var 전체변수_시작배열값;//9개정보중 회차번호
   당번_회차change();
+  번호색칠_회차change();
   //=========>초기 작업 끝.
 }
-function 번호색칠_회차change() {// 복잡!!
+
+//색칠동작 순서 : 1.색칠해제_전체(), 2.색칠동작(),
+
+
+
+function 번호색칠_clear() {
+  document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML='색칠할 번호 아이디 설정 없음';
+  document.querySelector('#칠_현재색칠번호들').innerHTML='';
+  전체변수_색칠할번호들_아이디='없음';
+  전체변수_색칠할번호들_배열=[];
+  색칠해제_전체();
+}
+function 색칠해제_전체() {
+  var 버튼들=document.querySelectorAll('#whole .색칠용버튼');
+  for (var i=0; i<버튼들.length; i++) {
+    버튼들[i].classList.remove('색칠용버튼');
+    버튼들[i].removeAttribute('title');
+  }
+}
+function 색칠동작() {
+  색칠해제_전체();
+  if (전체변수_색칠할번호들_아이디=='없음') {//초기화시 또는 clear시
+    document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML='색칠할 번호 아이디 설정 없음';
+    document.querySelector('#칠_현재색칠번호들').innerHTML='';
+    return;
+  }
+  //모두 45이하 숫자인지 확인. 아니면 메세지 후 중단, 아이디는 색칠할번호들 ul의 li 클릭시 생성되거나, 없음.
+  전체변수_색칠할번호들_배열=document.querySelector('#색칠용번호들 #' + 전체변수_색칠할번호들_아이디).innerHTML.split('_');//비어있어도 1개이다.
+  var 개수=0, 평균=0;
+  for (var i=0; i<전체변수_색칠할번호들_배열.length;i++) {
+    if (전체변수_색칠할번호들_배열[i]*1>45 || 전체변수_색칠할번호들_배열[i]*1<1) {
+      document.querySelector('#칠_현재색칠번호들').innerHTML=전체변수_색칠할번호들_배열;
+      document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML=전체변수_색칠할번호들_아이디 + ' (없음)';
+      return;
+    }
+    개수+=1;
+  }
+  평균=(개수/7).toPrecision(2); 
+  document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML=전체변수_색칠할번호들_아이디 + ' (' + 개수 + '개, 평균 : ' + 평균 + ')';
+  document.querySelector('#칠_현재색칠번호들').innerHTML=전체변수_색칠할번호들_배열;
+  //색칠
+  var 버튼들=document.querySelectorAll('.버튼45css button');
+  for (var i=0; i<버튼들.length; i++) {
+    if (전체변수_색칠할번호들_배열.find(element => element == 버튼들[i].innerHTML)) {
+      버튼들[i].classList.add('색칠용버튼');
+      버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+     }
+  }
+  버튼들=document.querySelectorAll('#당번_있다면다음회차 button');
+  for (var i=0; i<버튼들.length; i++) {
+    if (전체변수_색칠할번호들_배열.find(element => element == 버튼들[i].innerHTML)) {
+      버튼들[i].classList.add('색칠용버튼');
+      버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+     }
+  }
+  버튼들=document.querySelectorAll('#당번_전체 button');
+  for (var i=0; i<버튼들.length; i++) {
+    if (전체변수_색칠할번호들_배열.find(element => element == 버튼들[i].innerHTML)) {
+      버튼들[i].classList.add('색칠용버튼');
+      버튼들[i].setAttribute('title',버튼들[i].innerHTML);
+     }
+  }
+
+}
+function 번호색칠_회차change_플러스() {
+  console.log('번호색칠_회차change_플러스()')
   전체변수_index확정=document.querySelector('#칠_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
-  전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정-1)*9;//9개정보중 회차번호
+  if (전체변수_index확정==0) {
+
+  } else {
+    전체변수_index확정=전체변수_index확정-1;
+  }
+  전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정)*9;//9개정보중 회차번호
+  document.querySelector('#칠_회차select').selectedIndex=전체변수_index확정;//선택안되면 -1, 초기화면 0
+  번호색칠_회차change()
+}
+function 번호색칠_회차change_마이너스() {
+  console.log('번호색칠_회차change_마이너스()')
+  전체변수_index확정=document.querySelector('#칠_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
+  전체변수_index확정=전체변수_index확정+1;
+  전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정)*9;//9개정보중 회차번호
+  document.querySelector('#칠_회차select').selectedIndex=전체변수_index확정;//선택안되면 -1, 초기화면 0
+  번호색칠_회차change()
+}
+function 번호색칠_회차change() {// 복잡!!
+  console.log('번호색칠_회차change()')
+  전체변수_index확정=document.querySelector('#칠_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
+  전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정)*9;//9개정보중 회차번호
+  //오주출수,오주미출수,십주미출수,십오주미출수,이월수,칠_번호,피해서번호,흰색부분,이웃수,이월이웃수,오주1출수,오주2출수,오주3출수,오주4출수,오주5출수 생성하여 넣어두기
+  var 십오주간번호_보볼제외=[], 십주간번호_보볼제외=[], 오주간번호_보볼제외=[], 최근번호_보볼제외=[];
+  var 나머지;
+  for (var i=0; i<9*15; i++) {//결과번호 개수는 90개다. 6*15
+    나머지=i%9;
+    if (나머지<2 || 나머지==8) {
+
+    } else {
+      if (i<9*1) {최근번호_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i])}
+      if (i<9*5) {오주간번호_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i])}
+      if (i<9*10) {십주간번호_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i])}
+      if (i<9*15) {십오주간번호_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i])}
+    }
+  }
+
+  var 카운트=0;
+  var 연결_text='';
+  for (var i=1; i<46; i++) {
+    if (십주간번호_보볼제외.filter(element => i == element).length==0) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#십주미출수').innerHTML=연결_text;
+  카운트=0;
+
+  var 연결_text='';
+  for (var i=1; i<46; i++) {
+    if (십오주간번호_보볼제외.filter(element => i == element).length==0) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#십오주미출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length>0) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length==0) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주미출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length==1) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주1출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length==2) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주2출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length==3) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주3출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length==4) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주4출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=1; i<46; i++) {
+    if (오주간번호_보볼제외.filter(element => i == element).length==5) {
+      if (카운트==0) {
+        연결_text=i;
+        카운트+=1;
+      } else {
+        연결_text+='_' + i;
+        카운트+=1;
+      }
+    }
+  }
+  document.querySelector('#오주5출수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=0; i<6; i++) {
+    if (i==0) {
+      연결_text=최근번호_보볼제외[i];
+    } else {
+      연결_text+='_' + 최근번호_보볼제외[i];
+    }
+  }
+  document.querySelector('#이월수').innerHTML=연결_text;
+
+
+  
+  색칠동작();
+
+
+
+
+
+
+
+
+
+
+
+
+}
+function 번호색칠_칠_조금다름() {
+  console.log('번호색칠_칠_조금다름()')
+  전체변수_색칠할번호들_아이디='색칠된번호';
+  var 색칠45색칠된번호=[];
+  var 버튼들=document.querySelectorAll('#칠_modal-body .버튼45css button');
+  for (var i=0; i<45; i++) {
+    if (버튼들[i].classList.contains('색칠용버튼')) {색칠45색칠된번호.push(i+1)}
+  }
+  document.querySelector('#색칠용번호들 #' + 전체변수_색칠할번호들_아이디).innerHTML=색칠45색칠된번호.join('_');//비어있어도 1개이다.
+  //피해서번호 넣기, 흰색부분 넣기.
+  색칠동작();
 }
 function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변경은 없고!! 색칠 자체만 다시하면 됨.
+  console.log('당번_회차change()')
   전체변수_index확정=document.querySelector('#당번_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
   전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정-1)*9;//9개정보중 회차번호
   //당번부분 변경 : 있다면 다음회차부분
@@ -66,6 +341,7 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
     당번_전체html+=각한줄당번div;
   }
   document.querySelector('#당번_전체').innerHTML=당번_전체html; 
+  색칠동작();
 }
 
 
@@ -81,18 +357,20 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
 
 
 
-function 색칠해제_전체() {
 
-}
-function 색칠할번호들색칠_번호45() {
 
-  
-}
-function 색칠할번호들색칠_당번() {
-  
-}
 function 바디클릭시동작설정(e) {
+  if (e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
+    if (e.target.classList.contains('색칠용버튼')) {
+      e.target.classList.remove('색칠용버튼');
+      e.target.removeAttribute('title');
+    } else {
+      e.target.classList.add('색칠용버튼');
+      e.target.setAttribute('title',e.target.innerHTML);
+    }
+  }
   if (e.target.id=='동작_당번회차_플러스') {
+    console.log('바디클릭시동작설정(e) ==> e.target.id==동작_당번회차_플러스')
     if (document.querySelector('#당번_회차select').selectedIndex==0) {
       alert('가장 최근회차입니다.');
     } else {
@@ -101,20 +379,16 @@ function 바디클릭시동작설정(e) {
     }
   }
   if (e.target.id=='동작_당번회차_마이너스') {
+    console.log('바디클릭시동작설정(e) ==> e.target.id==동작_당번회차_마이너스')
       document.querySelector('#당번_회차select').selectedIndex+=1;
       당번_회차change();
   }
-  if (e.target.classList.contains('색칠할번호class_a')) {
-    전체변수_색칠할번호들_아이디=e.target.innerHTML;
-    document.querySelector('#칠_현재색칠번호들').innerHTML=document.querySelector('#' + 전체변수_색칠할번호들_아이디).innerHTML;
-    전체변수_색칠할번호들=document.querySelector('#칠_현재색칠번호들').innerHTML.split('_');//비어있어도 1개이다.
-    //모두 45이하 숫자인지 확인. 아니면 메세지 후 중단
-    for (var i=0; i<전체변수_색칠할번호들.length;i++) {
-      if (전체변수_색칠할번호들[i]*1>45 || 전체변수_색칠할번호들[i]*1<1) {alert(전체변수_색칠할번호들[i] + ' : 1~45사이의 숫자가 아님. 중단.');return;}
-    }
-    색칠해제_전체();
-    색칠할번호들색칠_번호45();
-    색칠할번호들색칠_당번();
+  if (e.target.classList.contains('색칠할번호_로연결된text_class')) {
+    console.log('바디클릭시동작설정(e) ==> e.target.classList.contains(색칠할번호_로연결된text_class)');
+    //★★★
+    전체변수_색칠할번호들_아이디=e.target.innerHTML;//설명정보 생성시 필요
+    //★★★
+    색칠동작();
 }
 }
 var 바디리스너용=document.querySelector('body');

@@ -7,8 +7,8 @@ header {position:fixed;width:100%;}
 .하위div안버튼7개까지css > div > button, .버튼45css > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
 .하위div안버튼7개까지css > div > span {background-color: white; display:inline-block;line-height: 34px;text-align: center; width:60px;height:34px;border:1px solid gray;margin-right:5px;margin-bottom:-1px;}
 .하위div안버튼7개까지css > div > button:nth-of-type(7) {background-color: rgb(100, 237, 214);}
-.피해서번호글꼴 {font-style : italic;color: blue;}
-#당번_전체 > div:nth-child(odd) > *:not(:last-child) {background-color:bisque;color:blue;}
+.파란색글자 {font-style : italic;color: blue;}
+#당번_전체 > div:nth-child(odd) > *:not(:last-child):not([class*='색칠용버튼']) {background-color:bisque;color:blue;}
 #당번_회차날짜조회묶음 {height:34px;}
 #당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
 
