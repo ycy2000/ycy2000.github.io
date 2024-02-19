@@ -34,11 +34,6 @@ if ('초기화'=='초기화') {
   번호색칠_회차change();
   //=========>초기 작업 끝.
 }
-
-//색칠동작 순서 : 1.색칠해제_전체(), 2.색칠동작(),
-
-
-
 function 번호색칠_clear() {
   document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML='색칠할 번호 아이디 설정 없음';
   document.querySelector('#칠_현재색칠번호들').innerHTML='';
@@ -153,7 +148,7 @@ function 번호색칠_회차change() {// 복잡!!
   document.querySelector('#십주미출수').innerHTML=연결_text;
   카운트=0;
 
-  var 연결_text='';
+  연결_text='';
   for (var i=1; i<46; i++) {
     if (십오주간번호_보볼제외.filter(element => i == element).length==0) {
       if (카운트==0) {
@@ -282,6 +277,51 @@ function 번호색칠_회차change() {// 복잡!!
     }
   }
   document.querySelector('#이월수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  var 왼쪽번호, 오른쪽번호;
+  for (var i=0; i<6; i++) {
+    if (최근번호_보볼제외[i]==1) {
+      왼쪽번호=45;
+    } else {
+      왼쪽번호=Number(최근번호_보볼제외[i])-1;
+    }
+    if (최근번호_보볼제외[i]==45) {
+      오른쪽번호=1;
+    } else {
+      오른쪽번호=Number(최근번호_보볼제외[i])+1;
+    }
+    if (최근번호_보볼제외.filter(element => 왼쪽번호 == element).length==0) {
+      if (카운트==0) {
+        연결_text=왼쪽번호;
+        카운트+=1;
+      } else {
+        연결_text+='_' + 왼쪽번호;
+      }
+    }
+    if (최근번호_보볼제외.filter(element => 오른쪽번호 == element).length==0) {
+      if (카운트==0) {
+        연결_text=오른쪽번호;
+        카운트+=1;
+      } else {
+        연결_text+='_' + 오른쪽번호;
+      }
+    }
+  }
+  document.querySelector('#이웃수').innerHTML=연결_text;
+  카운트=0;
+
+  연결_text='';
+  for (var i=0; i<6; i++) {
+    if (i==0) {
+      연결_text=최근번호_보볼제외[i];
+    } else {
+      연결_text+='_' + 최근번호_보볼제외[i];
+    }
+  }
+  document.querySelector('#이월이웃수').innerHTML=연결_text;
+  카운트=0;
 
 
   
@@ -343,22 +383,6 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
   document.querySelector('#당번_전체').innerHTML=당번_전체html; 
   색칠동작();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function 바디클릭시동작설정(e) {
   if (e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
     if (e.target.classList.contains('색칠용버튼')) {
@@ -399,251 +423,6 @@ var 바디리스너용=document.querySelector('body');
 
 
 
-
-
-
-
-
-
-  
-  //30회차만 짜를려고 했는데 다 가지고온다
-  for (var 삼십번=0; 삼십번<100; 삼십번++) {
-    if (당번전체[시작배열값-(삼십번*9)]) {
-      변경배열값=시작배열값-(삼십번*9);
-      for (var i=0; i<9; i++) {
-        if (i==0) {
-          span_날짜_다음btn='<button>' + 당번전체[변경배열값+i] + '회</button>'; 
-        } else if (i==1) {
-          //날짜 건너뜀
-        } else {
-          span_날짜_다음btn+='<button>' + 당번전체[변경배열값+i] + '</button>'; 
-        }
-      }  
-      if (삼십번==0) {
-        document.querySelector('#전체당번').innerHTML='<div>' + span_날짜_다음btn + '</div>';
-      } else {
-        document.querySelector('#전체당번').innerHTML=document.querySelector('#전체당번').innerHTML + '<div>' + span_날짜_다음btn + '</div>';
-      }
-    }
-
-
-
-
-
-  //있다면 다음회차 : 전체당번와 유사
-  var 있다면다음회차_btn;
-  있다면다음회차_btn='<button>' + (Number(당번전체[시작배열값])+1) + '회</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button><button>_</button>';
-  if (당번전체[시작배열값+10]) {
-    있다면다음회차_btn='';
-    for (var i=0; i<9; i++) {
-      if (i==0) {
-        있다면다음회차_btn='<button>' + 당번전체[시작배열값+i+9] + '회</button>'; 
-      } else if (i==1) {
-        //날짜 건너뜀
-      } else {
-        있다면다음회차_btn+='<button>' + 당번전체[시작배열값+i+9] + '</button>'; 
-      }
-    }  
-  }  
-  document.querySelector('#있다면다음회차').innerHTML=있다면다음회차_btn;
-  
-  //색칠용번호 넣기 : function과 유사하게 작성할것
-  //
-  var index에서빼기=0;
-  시작배열값=(회차개수-selectedindex-index에서빼기)*9;
-  
-  // 15주번호들을 담고 7*10=70개를 0으로 대체하면 5주번호들, 35개를 0으로 대체하면 10주번호들, 대체하지 않으면 15주번호들
-  var 오주번호들=[];
-  var 십주번호들=[];
-  var 십오주번호들=[];
-  //새로고침시 십오주번호들 : 
-  
-  index에서빼기=15;
-  시작배열값=(회차개수-selectedindex-index에서빼기)*9;//회차,날짜,숫자7개 : 15전
-  var 순번확인=0;
-  
-  for (var i=시작배열값; i<Number(시작배열값+135);i++ ) {
-    순번확인=순번확인+1;
-    if (순번확인>2) {
-      십오주번호들.push(당번전체[i]);
-    }
-    if (순번확인==9) {순번확인=0;}
-  }
-  
-  for (i=0; i<십오주번호들.length; i++) {
-    if (i<70) {
-      오주번호들.push(0);
-    } else {
-      오주번호들.push(십오주번호들[i]);
-    } 
-    if (i<35) {
-      십주번호들.push(0);
-    } else {
-      십주번호들.push(십오주번호들[i]);
-    } 
-  }
-  
-  var 오주미출수=[];
-  //오주미출수를 담는다
-  for (i=0; i<45; i++) {
-    if (오주번호들.filter(element => (i+1).toString() === element).length==0) {오주미출수.push(i+1);}
-   }
-  //오주미출수를 담았다. 숫자 제대로 정렬하기 위함.  오주미출수.sort(); 는 문자열로 인식하여 정렬됨
-  오주미출수.sort((a,t) => a-t);
-  
-  var 십주미출수=[];
-  //오주미출수를 담는다
-  for (i=0; i<45; i++) {
-    if (십주번호들.filter(element => (i+1).toString() === element).length==0) {십주미출수.push(i+1);}
-   }
-  //오주미출수를 담았다. 숫자 제대로 정렬하기 위함.  오주미출수.sort(); 는 문자열로 인식하여 정렬됨
-  십주미출수.sort((a,t) => a-t);
-  
-  var 십오주미출수=[];
-  //오주미출수를 담는다
-  for (i=0; i<45; i++) {
-    if (십오주번호들.filter(element => (i+1).toString() === element).length==0) {십오주미출수.push(i+1);}
-   }
-  //오주미출수를 담았다. 숫자 제대로 정렬하기 위함.  오주미출수.sort(); 는 문자열로 인식하여 정렬됨
-  십오주미출수.sort((a,t) => a-t);
-  
-  var 오주미출결과;
-  var 십주미출결과;
-  var 십오주미출결과;
-  for (i=0; i<오주미출수.length; i++) {
-    if (i==0) {오주미출결과=오주미출수[i];}
-    if (i!==0) {오주미출결과=오주미출결과 + '_' + 오주미출수[i];}
-  }
-  for (i=0; i<십주미출수.length; i++) {
-    if (i==0) {십주미출결과=십주미출수[i];}
-    if (i!==0) {십주미출결과=십주미출결과 + '_' + 십주미출수[i];}
-  }
-  for (i=0; i<십오주미출수.length; i++) {
-    if (i==0) {십오주미출결과=십오주미출수[i];}
-    if (i!==0) {십오주미출결과=십오주미출결과 + '_' + 십오주미출수[i];}
-  }
-  
-  document.querySelector('#오주미출수').innerHTML=오주미출결과;
-  document.querySelector('#십주미출수').innerHTML=십주미출결과;
-  document.querySelector('#십오주미출수').innerHTML=십오주미출결과;
-  
-  var 오주1출결과;
-  var 오주2출결과;
-  var 오주3출결과;
-  var 오주4출결과;
-  var 오주5출결과;
-  var 오주1출=[];
-  var 오주2출=[];
-  var 오주3출=[];
-  var 오주4출=[];
-  var 오주5출=[];
-  
-  for (i=0; i<45; i++) {
-    if (오주번호들.filter(element => (i+1).toString() === element).length==1) {오주1출.push(i+1);}
-    if (오주번호들.filter(element => (i+1).toString() === element).length==2) {오주2출.push(i+1);}
-    if (오주번호들.filter(element => (i+1).toString() === element).length==3) {오주3출.push(i+1);}
-    if (오주번호들.filter(element => (i+1).toString() === element).length==4) {오주4출.push(i+1);}
-    if (오주번호들.filter(element => (i+1).toString() === element).length==5) {오주5출.push(i+1);}
-   }
-   for (i=0; i<오주1출.length; i++) {
-    if (i==0) {오주1출결과=오주1출[i];}
-    if (i!==0) {오주1출결과=오주1출결과 + '_' + 오주1출[i];}
-  }
-  for (i=0; i<오주2출.length; i++) {
-    if (i==0) {오주2출결과=오주2출[i];}
-    if (i!==0) {오주2출결과=오주2출결과 + '_' + 오주2출[i];}
-  }
-  for (i=0; i<오주3출.length; i++) {
-    if (i==0) {오주3출결과=오주3출[i];}
-    if (i!==0) {오주3출결과=오주3출결과 + '_' + 오주3출[i];}
-  }
-  for (i=0; i<오주4출.length; i++) {
-    if (i==0) {오주4출결과=오주4출[i];}
-    if (i!==0) {오주4출결과=오주4출결과 + '_' + 오주4출[i];}
-  }
-  for (i=0; i<오주5출.length; i++) {
-    if (i==0) {오주5출결과=오주5출[i];}
-    if (i!==0) {오주5출결과=오주5출결과 + '_' + 오주5출[i];}
-  }
-  document.querySelector('#오주1출수').innerHTML=오주1출결과;
-  document.querySelector('#오주2출수').innerHTML=오주2출결과;
-  document.querySelector('#오주3출수').innerHTML=오주3출결과;
-  document.querySelector('#오주4출수').innerHTML=오주4출결과;
-  document.querySelector('#오주5출수').innerHTML=오주5출결과;
-  
-  var 이월수결과;
-  var 이웃수결과;
-  var 이월수플러스이웃수결과;
-  var 이월수=[];
-  var 이웃수=[];
-  var 이월수플러스이웃수=[];
-  시작배열값=(회차개수-1)*9;
-  for (i=2; i<8; i++) {
-    이월수.push(당번전체[시작배열값+i])
-  }
-  for (i=0; i<이월수.length; i++) {
-    if (i==0) {이월수결과=이월수[i];}
-    if (i!==0) {이월수결과=이월수결과 + '_' + 이월수[i];}
-  }
-  이월수.sort((a,t) => a-t);
-  
-  for (i=0; i<6; i++) {
-      if (이월수[i]==1) {
-        이월수플러스이웃수.push(45);
-        이월수플러스이웃수.push(2);
-        이월수플러스이웃수.push(이월수[i]*1);
-      } else if (이월수[i]==45) { //45 가능
-        이월수플러스이웃수.push(1);
-        이월수플러스이웃수.push(44);
-        이월수플러스이웃수.push(이월수[i]*1);
-      } else {
-        이월수플러스이웃수.push((이월수[i]-1)*1);
-        이월수플러스이웃수.push(이월수[i]*1+1);
-        이월수플러스이웃수.push(이월수[i]*1);
-      }
-    }
-    //모두 문자열로 변환후 중복제거
-    for (i=0; i<이월수플러스이웃수.length; i++) {
-      이월수플러스이웃수[i]=이월수플러스이웃수[i].toString();
-    }
-    이월수플러스이웃수=[...new Set(이월수플러스이웃수)];
-    이월수플러스이웃수.sort((a,t) => a-t);
-  var 순번;
-  순번=0;
-  for (i=0; i<이월수플러스이웃수.length; i++) {
-    if (i==0) {이월수플러스이웃수결과=이월수플러스이웃수[i];}
-    if (i!==0) {이월수플러스이웃수결과=이월수플러스이웃수결과 + '_' + 이월수플러스이웃수[i];}
-  }
-  
-  //이월수플러러스이웃수 배열에 0 추가하고 이월수와 같은배열값을 0 으로 대체하고 정렬후 첫째배열(0)삭제
-  이월수플러스이웃수.push(0);
-  for (i=0; i<이월수플러스이웃수.length; i++) {
-    for (a=0; a<이월수.length; a++) {
-      if (이월수플러스이웃수[i]==이월수[a]) {이월수플러스이웃수[i]=0;}
-    }
-  }
-    //중복제거
-    이월수플러스이웃수=[...new Set(이월수플러스이웃수)];
-    이월수플러스이웃수.sort((a,t) => a-t);
-  
-    for (i=1; i<이월수플러스이웃수.length; i++) {
-      if (i==1) {이웃수결과=이월수플러스이웃수[i];}
-      if (i!==1) {이웃수결과=이웃수결과 + '_' + 이월수플러스이웃수[i];}
-    }
-  
-  
-  document.querySelector('#이월수').innerHTML=이월수결과;
-  document.querySelector('#이웃수').innerHTML=이웃수결과;
-  document.querySelector('#이월이웃수').innerHTML=이월수플러스이웃수결과;
-  
-  // =====================================================>>
-  
-  }
-
-
-
-
-  
   if (1==1) {//d-done 클래스 참조하여 보기 숨기기 innerHTML 설정
     if (document.querySelector('#세로구분_색칠45_원간격').classList.contains('d-none')) {
       document.querySelector('#li_간격45보기숨기기').innerText='[숨기기][2]간격45만'
