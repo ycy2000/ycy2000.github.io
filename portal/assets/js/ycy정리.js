@@ -230,18 +230,24 @@ function 번호색칠_회차change() {// 복잡!!
   document.querySelector('#이월이웃수').innerHTML=연결_text_배열.sort((a, b) => a - b).join('_'); 
   색칠동작();
 }
+function 번호색칠_1_2중복() {
+  if (!document.querySelector('#색칠선택3').classList.contains('색칠선택span선택css')) {
+    alert('선택하고')
+  }
+
+}
 function 번호색칠_칠_조금다름() {
   console.log('번호색칠_칠_조금다름()')
   전체변수_색칠할번호들_아이디='칠_번호';
   var 색칠45색칠된번호=[];
-  var 버튼들=document.querySelectorAll('#칠_modal-body > #id_버튼45_1st button');
+  var 버튼들=document.querySelectorAll('#' + 색칠해제_변수 + ' button');
   for (var i=0; i<45; i++) {
     if (버튼들[i].classList.contains('색칠용버튼')) {색칠45색칠된번호.push(i+1)}
   }
   document.querySelector('#색칠용번호들 #칠_번호').innerHTML=색칠45색칠된번호.join('_');//비어있어도 1개이다.
 
 
-  var 색칠용버튼개수=document.querySelectorAll('#칠_modal-body > #id_버튼45_1st .색칠용버튼').length;
+  var 색칠용버튼개수=document.querySelectorAll('#' + 색칠해제_변수 + ' .색칠용버튼').length;
   console.log('색칠용버튼개수 : ' + 색칠용버튼개수)
   //피할번호 있으면 작동, 몫과 나머지 구해놓기
   var 몫=[];

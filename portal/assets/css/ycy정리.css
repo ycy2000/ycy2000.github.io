@@ -12,7 +12,6 @@ header {position:fixed;width:100%;}
 #당번_회차날짜조회묶음 {height:34px;}
 #당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
 
-#칠_부분 button:nth-of-type(1) {width:30px;margin-left:0px;}
 .색칠선택span기본css {display: inline-block; width:24px;height:24px;border-radius: 24px;margin:5px; border:1px solid gray;}
 .색칠선택span {display: inline-block; vertical-align: top;padding-top:5px;}
 .색칠선택span선택css {border:8px solid blue;}

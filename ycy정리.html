@@ -140,6 +140,7 @@
   <div class="d-inline-block" id="칠_전체" style="background-color: white;margin-left:3px;">
 
     <div id="칠_left" style="width:235px;display: inline-block;">
+      <div id="칠_현재색칠번호들" style="white-space:normal;word-break:break-all" class="d-none"></div>
       <div class="modal-header">
         <div class="d-inline-block" style="margin-left:-2px;">
           <li class="nav-item dropdown me-2 mb-1 mt-1 d-inline-block">
@@ -150,6 +151,11 @@
           <a type="button" class="btn btn-primary" onclick="번호색칠_회차change_마이너스()" style="height:26px;padding:0 13px;margin-top:-3px;">-</a>
         </div>
       </div>
+      <div style="border-bottom:1px solid black;margin-bottom:5px;">
+        <div class="d-inline-block">색칠할번호</div>
+        <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="width:90px;margin-left:54px;" type="button" class="btn btn-secondary p-0" onclick="번호종류_보기숨기기()">번호종류&lt;</button>
+        <div id="칠_현재색칠할번호_정보와개수"></div>
+      </div>
       <div id="칠_modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
         <div id="id_버튼45_1st" class="버튼45css">
           <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
@@ -158,19 +164,12 @@
           <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
           <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
           <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-          <div><button>43</button><button>44</button><button>45</button><span id="색칠선택1" class="색칠선택span기본css 색칠선택span선택css"></span><span class="색칠선택span">색칠선택</span></div>
+          <div><button>43</button><button>44</button><button>45</button><span id="색칠선택1" class="색칠선택span기본css 색칠선택span선택css"></span><span class="색칠선택span">색칠선택1</span></div>
         </div>
-        <div id="칠_부분">
-          <button type="button" class="btn btn-secondary" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
-          <button style="width:50px;margin-left:-7px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
-          <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="margin-left:1px;width:90px;" type="button" class="btn btn-secondary p-0" onclick="번호종류_보기숨기기()">번호종류&lt;</button>
+        <div>
+          <button style="width:40px;margin-left:0px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
+          <button style="width:50px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
         </div>
-        <div style="border-bottom:1px solid black;">
-          <div>색칠할번호</div>
-          <div id="칠_현재색칠할번호_정보와개수" class="d-inline-block"></div>
-        </div>
-        <div id="칠_현재색칠번호들" style="white-space:normal;word-break:break-all" class="d-none"></div>
-
         <div id="id_버튼45_2st" class="버튼45css" style="margin-top:5px;">
           <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
           <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
@@ -178,10 +177,12 @@
           <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
           <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
           <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-          <div><button>43</button><button>44</button><button>45</button><span id="색칠선택2" class="색칠선택span기본css"></span><span class="색칠선택span">색칠선택</span></div>
-
+          <div><button>43</button><button>44</button><button>45</button><span id="색칠선택2" class="색칠선택span기본css"></span><span class="색칠선택span">색칠선택2</span></div>
         </div>
-        <div>dfdsfsd</div>
+        <div>
+          <button style="width:40px;margin-left:0px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
+          <button style="width:50px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
+        </div>
 
         <div id="id_버튼45_3st" class="버튼45css" style="margin-top:10px;">
           <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
@@ -190,9 +191,13 @@
           <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
           <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
           <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-          <div><button>43</button><button>44</button><button>45</button><span id="색칠선택3" class="색칠선택span기본css"></span><span class="색칠선택span">색칠선택</span></div>
+          <div><button>43</button><button>44</button><button>45</button><span id="색칠선택3" class="색칠선택span기본css"></span><span class="색칠선택span">색칠선택3</span></div>
         </div>
-        <div>dfdsfsd</div>
+        <div>
+          <button style="width:40px;margin-left:0px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
+          <button style="width:50px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
+          <button style="width:65px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_1_2중복()">1,2중복</button>
+        </div>
       </div>
       <br><br>
 
