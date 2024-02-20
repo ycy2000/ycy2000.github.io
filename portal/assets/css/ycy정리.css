@@ -12,8 +12,10 @@ header {position:fixed;width:100%;}
 #당번_회차날짜조회묶음 {height:34px;}
 #당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
 
-#칠_부분 {margin-top:5px;}
 #칠_부분 button:nth-of-type(1) {width:30px;margin-left:0px;}
+.색칠선택span기본css {display: inline-block; width:24px;height:24px;border-radius: 24px;margin:5px; border:1px solid gray;}
+.색칠선택span {display: inline-block; vertical-align: top;padding-top:5px;}
+.색칠선택span선택css {border:8px solid blue;}
 
 
 
@@ -30,6 +32,9 @@ header {position:fixed;width:100%;}
 
 .사오색칠 {background-color: blueviolet;}
 .색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
+
+.당번_span_한개 {border-radius: 20px;}/* 번호색칠 index와 같은 곳에 회차에 당번 회차 동그라미용 */
+
 .모달회차표시 {background-color:blueviolet;border-radius: 20px;}
 .색칠용버튼[title='1'], .색칠용버튼[title='2'], .색칠용버튼[title='3'], .색칠용버튼[title='4'], .색칠용버튼[title='5'],
 .색칠용버튼[title='6'], .색칠용버튼[title='7'], .색칠용버튼[title='8'], .색칠용버튼[title='9']

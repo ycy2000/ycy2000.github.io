@@ -1,5 +1,7 @@
 if ('초기화'=='초기화') {
   //옵션 생성이 새로고침시 필수동작이다.
+
+  var 색칠해제_변수='id_버튼45_1st';
   var 전체변수_번호색칠회차index=0;
   var 전체변수_당번회차index=0;
   var 전체변수_당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
@@ -19,7 +21,7 @@ if ('초기화'=='초기화') {
   for (var i=0; i<document.querySelectorAll('#색칠용번호들 div').length; i++) {
     전체변수_아이디=document.querySelectorAll('#색칠용번호들 div')[i].id;
     document.querySelector('#칠_색칠할번호선택_ul').innerHTML+='<li><a class="dropdown-item 색칠할번호_로연결된text_class">' + 전체변수_아이디 + '</a></li>'
-    if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='흰색부분' || 전체변수_아이디=='색칠된번호' || 전체변수_아이디=='오주출수') {
+    if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='나머지' || 전체변수_아이디=='칠_번호' || 전체변수_아이디=='오주출수') {
       document.querySelectorAll('#칠_색칠할번호선택_ul li')[i].classList.add('파란색글자');
     }
   }
@@ -39,17 +41,39 @@ function 번호색칠_clear() {
   document.querySelector('#칠_현재색칠번호들').innerHTML='';
   전체변수_색칠할번호들_아이디='없음';
   전체변수_색칠할번호들_배열=[];
-  색칠해제_전체();
+  색칠해제_변수에따라();
+  색칠해제_당번();
 }
-function 색칠해제_전체() {
-  var 버튼들=document.querySelectorAll('#whole .색칠용버튼');
+function 색칠해제_변수에따라() {
+  var 버튼들=document.querySelectorAll('#' + 색칠해제_변수 + ' .색칠용버튼');
   for (var i=0; i<버튼들.length; i++) {
     버튼들[i].classList.remove('색칠용버튼');
     버튼들[i].removeAttribute('title');
   }
 }
-function 색칠동작() {
-  색칠해제_전체();
+function 색칠해제_당번() {
+  var 버튼들=document.querySelectorAll('#당번_전체 .색칠용버튼');
+  for (var i=0; i<버튼들.length; i++) {
+    버튼들[i].classList.remove('색칠용버튼');
+    버튼들[i].removeAttribute('title');
+  }
+}
+function 색칠동작() {//번호색칠 회차와 같은 회차가 당번회차에 있을때 동그라미
+  console.log('색칠동작');
+  색칠해제_변수에따라();
+  색칠해제_당번();
+  //번호색칠 회차와 같은 회차가 당번회차에 있을때 동그라미
+  var 당번_span들=document.querySelectorAll('#당번_전체 span');
+  if (document.querySelectorAll('#당번_전체 span')[0]) {
+    for (var i=0; i<당번_span들.length; i++) {
+      당번_span들[i].classList.remove('당번_span_한개');
+    }
+  }
+  if (전체변수_당번회차index<=전체변수_번호색칠회차index) {
+    var 인덱스차이=전체변수_번호색칠회차index-전체변수_당번회차index;
+    당번_span들[인덱스차이].classList.add('당번_span_한개');
+  }//동그라미 끝.
+
   if (전체변수_색칠할번호들_아이디=='없음') {//초기화시 또는 clear시
     document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML='색칠할 번호 아이디 설정 없음';
     document.querySelector('#칠_현재색칠번호들').innerHTML='';
@@ -70,7 +94,7 @@ function 색칠동작() {
   document.querySelector('#칠_현재색칠할번호_정보와개수').innerHTML=전체변수_색칠할번호들_아이디 + ' (' + 개수 + '개, 평균 : ' + 평균 + ')';
   document.querySelector('#칠_현재색칠번호들').innerHTML=전체변수_색칠할번호들_배열;
   //색칠
-  var 버튼들=document.querySelectorAll('.버튼45css button');
+  var 버튼들=document.querySelectorAll('#' + 색칠해제_변수 + ' button');
   for (var i=0; i<버튼들.length; i++) {
     if (전체변수_색칠할번호들_배열.find(element => element == 버튼들[i].innerHTML)) {
       버튼들[i].classList.add('색칠용버튼');
@@ -91,7 +115,16 @@ function 색칠동작() {
       버튼들[i].setAttribute('title',버튼들[i].innerHTML);
      }
   }
+}
+function 번호종류_보기숨기기() {
+  if (document.querySelector('#모달_출수제목보기숨기기').innerHTML=='번호종류&lt;') {
 
+    document.querySelector('#모달_출수제목보기숨기기').innerHTML='번호종류&gt;';
+    document.querySelector('#칠_right_출수제목').classList.add('d-none');
+  } else {
+    document.querySelector('#모달_출수제목보기숨기기').innerHTML='번호종류&lt;';
+    document.querySelector('#칠_right_출수제목').classList.remove('d-none');
+  }
 }
 function 번호색칠_회차change_플러스() {
   console.log('번호색칠_회차change_플러스()')
@@ -115,6 +148,7 @@ function 번호색칠_회차change_마이너스() {
 }
 function 번호색칠_회차change() {// 복잡!!
   console.log('번호색칠_회차change()')
+  전체변수_번호색칠회차index=document.querySelector('#칠_회차select').selectedIndex;//당번회차동그라미용
   전체변수_index확정=document.querySelector('#칠_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
   전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정)*9;//9개정보중 회차번호
   //오주출수,오주미출수,십주미출수,십오주미출수,이월수,칠_번호,피해서번호,흰색부분,이웃수,이월이웃수,오주1출수,오주2출수,오주3출수,오주4출수,오주5출수 생성하여 넣어두기
@@ -132,154 +166,46 @@ function 번호색칠_회차change() {// 복잡!!
     }
   }
 
-  var 카운트=0;
-  var 연결_text='';
-  for (var i=1; i<46; i++) {
-    if (십주간번호_보볼제외.filter(element => i == element).length==0) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#십주미출수').innerHTML=연결_text;
-  카운트=0;
+  var 연결_text_배열=[];
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (십주간번호_보볼제외.filter(element => i == element).length==0) {연결_text_배열.push(i);}}
+  document.querySelector('#십주미출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (십오주간번호_보볼제외.filter(element => i == element).length==0) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#십오주미출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (십오주간번호_보볼제외.filter(element => i == element).length==0) {연결_text_배열.push(i);}}
+  document.querySelector('#십오주미출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length>0) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length>0) {연결_text_배열.push(i);}}
+  document.querySelector('#오주출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length==0) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주미출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length==0) {연결_text_배열.push(i);}}
+  document.querySelector('#오주미출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length==1) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주1출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length==1) {연결_text_배열.push(i);}}
+  document.querySelector('#오주1출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length==2) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주2출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length==2) {연결_text_배열.push(i);}}
+  document.querySelector('#오주2출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length==3) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주3출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length==3) {연결_text_배열.push(i);}}
+  document.querySelector('#오주3출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length==4) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주4출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length==4) {연결_text_배열.push(i);}}
+  document.querySelector('#오주4출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=1; i<46; i++) {
-    if (오주간번호_보볼제외.filter(element => i == element).length==5) {
-      if (카운트==0) {
-        연결_text=i;
-        카운트+=1;
-      } else {
-        연결_text+='_' + i;
-        카운트+=1;
-      }
-    }
-  }
-  document.querySelector('#오주5출수').innerHTML=연결_text;
-  카운트=0;
+  연결_text_배열=[];
+  for (var i=1; i<46; i++) {if (오주간번호_보볼제외.filter(element => i == element).length==5) {연결_text_배열.push(i);}}
+  document.querySelector('#오주5출수').innerHTML=연결_text_배열.join('_');
 
-  연결_text='';
-  for (var i=0; i<6; i++) {
-    if (i==0) {
-      연결_text=최근번호_보볼제외[i];
-    } else {
-      연결_text+='_' + 최근번호_보볼제외[i];
-    }
-  }
-  document.querySelector('#이월수').innerHTML=연결_text;
-  카운트=0;
+  document.querySelector('#이월수').innerHTML=최근번호_보볼제외.sort((a, b) => a - b).join('_');
 
-  연결_text='';
+  연결_text_배열=[];
   var 왼쪽번호, 오른쪽번호;
   for (var i=0; i<6; i++) {
     if (최근번호_보볼제외[i]==1) {
@@ -292,67 +218,85 @@ function 번호색칠_회차change() {// 복잡!!
     } else {
       오른쪽번호=Number(최근번호_보볼제외[i])+1;
     }
-    if (최근번호_보볼제외.filter(element => 왼쪽번호 == element).length==0) {
-      if (카운트==0) {
-        연결_text=왼쪽번호;
-        카운트+=1;
-      } else {
-        연결_text+='_' + 왼쪽번호;
-      }
-    }
-    if (최근번호_보볼제외.filter(element => 오른쪽번호 == element).length==0) {
-      if (카운트==0) {
-        연결_text=오른쪽번호;
-        카운트+=1;
-      } else {
-        연결_text+='_' + 오른쪽번호;
-      }
-    }
+    if (최근번호_보볼제외.filter(element => 왼쪽번호 == element).length==0) {연결_text_배열.push(왼쪽번호);}
+    if (최근번호_보볼제외.filter(element => 오른쪽번호 == element).length==0) {연결_text_배열.push(오른쪽번호);}
   }
-  document.querySelector('#이웃수').innerHTML=연결_text;
-  카운트=0;
+  document.querySelector('#이웃수').innerHTML=연결_text_배열.sort((a, b) => a - b).join('_');
 
-  연결_text='';
+  //배열 초기화 하지 않고, 이웃수 결과에 이월수 추가한다.
   for (var i=0; i<6; i++) {
-    if (i==0) {
-      연결_text=최근번호_보볼제외[i];
-    } else {
-      연결_text+='_' + 최근번호_보볼제외[i];
-    }
+    if (연결_text_배열.filter(element => 최근번호_보볼제외[i] == element).length==0) {연결_text_배열.push(최근번호_보볼제외[i]);}
   }
-  document.querySelector('#이월이웃수').innerHTML=연결_text;
-  카운트=0;
-
-
-  
+  document.querySelector('#이월이웃수').innerHTML=연결_text_배열.sort((a, b) => a - b).join('_'); 
   색칠동작();
-
-
-
-
-
-
-
-
-
-
-
-
 }
 function 번호색칠_칠_조금다름() {
   console.log('번호색칠_칠_조금다름()')
-  전체변수_색칠할번호들_아이디='색칠된번호';
+  전체변수_색칠할번호들_아이디='칠_번호';
   var 색칠45색칠된번호=[];
-  var 버튼들=document.querySelectorAll('#칠_modal-body .버튼45css button');
+  var 버튼들=document.querySelectorAll('#칠_modal-body > #id_버튼45_1st button');
   for (var i=0; i<45; i++) {
     if (버튼들[i].classList.contains('색칠용버튼')) {색칠45색칠된번호.push(i+1)}
   }
-  document.querySelector('#색칠용번호들 #' + 전체변수_색칠할번호들_아이디).innerHTML=색칠45색칠된번호.join('_');//비어있어도 1개이다.
-  //피해서번호 넣기, 흰색부분 넣기.
+  document.querySelector('#색칠용번호들 #칠_번호').innerHTML=색칠45색칠된번호.join('_');//비어있어도 1개이다.
+
+
+  var 색칠용버튼개수=document.querySelectorAll('#칠_modal-body > #id_버튼45_1st .색칠용버튼').length;
+  console.log('색칠용버튼개수 : ' + 색칠용버튼개수)
+  //피할번호 있으면 작동, 몫과 나머지 구해놓기
+  var 몫=[];
+  var 나머지=[];
+  if (색칠용버튼개수>0) {
+    for (var i=0; i<45; i++) {
+      if (버튼들[i].classList.contains('색칠용버튼')) {
+        몫.push(Math.floor( i / 7));
+        나머지.push(i % 7);
+      }
+    }
+  }
+
+  var 피해서번호_배열=[];
+  for (var i=0; i<45; i++) {
+    // console.log('번호 ' + (i+1) + ' 의 몫 : ' + Math.floor(i / 7) + ' 개수 : ' + 몫.filter(element => element==Math.floor(i / 7)).length)
+    if (몫.filter(element => element==Math.floor(i / 7)).length==0) {피해서번호_배열.push(i+1)}
+    if (나머지.filter(element => element==(i % 7)).length==0) {피해서번호_배열.push(i+1)}
+  }
+  피해서번호_배열=new Set(피해서번호_배열); //중복제거 배열아님
+  피해서번호_배열=[...피해서번호_배열];//배열로 전환
+
+  document.querySelector('#피해서번호').innerHTML=피해서번호_배열.join('_');
+
+  var 나머지_배열=[];
+  for (var i=1; i<46; i++) {
+    if (피해서번호_배열.filter(element => element==i).length==0 && 색칠45색칠된번호.filter(element => element==i).length==0) {나머지_배열.push(i)}
+  }
+  document.querySelector('#나머지').innerHTML=나머지_배열.join('_');
+
+
+
+
+
   색칠동작();
+}
+function 오주전() {
+  document.querySelector('#칠_회차select').selectedIndex=
+  document.querySelector('#당번_회차select').selectedIndex+5;번호색칠_회차change();
+}
+function 십주전() {
+  document.querySelector('#칠_회차select').selectedIndex=
+  document.querySelector('#당번_회차select').selectedIndex+10;번호색칠_회차change();
+}
+function 십오주전() {
+  document.querySelector('#칠_회차select').selectedIndex=
+  document.querySelector('#당번_회차select').selectedIndex+15;번호색칠_회차change();
+}
+function 이십주전() {
+  document.querySelector('#칠_회차select').selectedIndex=
+  document.querySelector('#당번_회차select').selectedIndex+20;번호색칠_회차change();
 }
 function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변경은 없고!! 색칠 자체만 다시하면 됨.
   console.log('당번_회차change()')
+  전체변수_당번회차index=document.querySelector('#당번_회차select').selectedIndex;//당번회차동그라미용
   전체변수_index확정=document.querySelector('#당번_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
   전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정-1)*9;//9개정보중 회차번호
   //당번부분 변경 : 있다면 다음회차부분
@@ -384,7 +328,30 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
   색칠동작();
 }
 function 바디클릭시동작설정(e) {
-  if (e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
+  if (e.target.id=='색칠선택1') {
+    console.log('바디클릭시동작설정(e) ==> e.target.id==색칠선택1')
+    색칠해제_변수='id_버튼45_1st';
+    document.querySelector('#색칠선택1').classList.add('색칠선택span선택css');
+    document.querySelector('#색칠선택2').classList.remove('색칠선택span선택css');
+    document.querySelector('#색칠선택3').classList.remove('색칠선택span선택css');
+  }
+  if (e.target.id=='색칠선택2') {
+    console.log('바디클릭시동작설정(e) ==> e.target.id==색칠선택2')
+    색칠해제_변수='id_버튼45_2st';
+    document.querySelector('#색칠선택1').classList.remove('색칠선택span선택css');
+    document.querySelector('#색칠선택2').classList.add('색칠선택span선택css');
+    document.querySelector('#색칠선택3').classList.remove('색칠선택span선택css');
+  }
+  if (e.target.id=='색칠선택3') {
+    console.log('바디클릭시동작설정(e) ==> e.target.id==색칠선택3')
+    색칠해제_변수='id_버튼45_3st';
+    document.querySelector('#색칠선택1').classList.remove('색칠선택span선택css');
+    document.querySelector('#색칠선택2').classList.remove('색칠선택span선택css');
+    document.querySelector('#색칠선택3').classList.add('색칠선택span선택css');
+  }
+
+  
+  if (!e.target.classList.contains('색칠선택span기본css') && e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
     if (e.target.classList.contains('색칠용버튼')) {
       e.target.classList.remove('색칠용버튼');
       e.target.removeAttribute('title');
@@ -417,6 +384,15 @@ function 바디클릭시동작설정(e) {
 }
 var 바디리스너용=document.querySelector('body');
 바디리스너용.addEventListener('click',바디클릭시동작설정)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1408,6 +1384,7 @@ var 바디리스너용=document.querySelector('body');
     임시_셑팅번호_만개에색칠();
     셑팅번호_모달에색칠();
   }
+
   function 모달회차_change() {
     //색칠용번호 넣기 : function과 유사하게 작성할것
       var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
@@ -1617,22 +1594,7 @@ var 바디리스너용=document.querySelector('body');
     }
     
   }
-  function 오주전() {
-    document.querySelector('#색칠용회차select').selectedIndex=
-    document.querySelector('#회차select').selectedIndex+5;모달회차_change();셑팅번호_모달에색칠();
-  }
-  function 십주전() {
-    document.querySelector('#색칠용회차select').selectedIndex=
-    document.querySelector('#회차select').selectedIndex+10;모달회차_change();셑팅번호_모달에색칠();
-  }
-  function 십오주전() {
-    document.querySelector('#색칠용회차select').selectedIndex=
-    document.querySelector('#회차select').selectedIndex+15;모달회차_change();셑팅번호_모달에색칠();
-  }
-  function 이십주전() {
-    document.querySelector('#색칠용회차select').selectedIndex=
-    document.querySelector('#회차select').selectedIndex+20;모달회차_change();셑팅번호_모달에색칠();
-  }
+
   function 출_출수제목_click시_숫자개수와평균() {
     document.querySelector('#평균계산값').innerHTML='';
     var 숫자개수=document.querySelector('#현재색칠번호들').innerHTML.trim().split('_').length;
@@ -1642,16 +1604,7 @@ var 바디리스너용=document.querySelector('body');
       document.querySelector('#평균계산값').innerHTML=return값;
     }
   }
-  function 출수제목보기숨기기() {
-    if (document.querySelector('#모달_출수제목보기숨기기').innerHTML=='번호종류&lt;') {
-  
-      document.querySelector('#모달_출수제목보기숨기기').innerHTML='번호종류&gt;';
-      document.querySelector('#출수제목').classList.add('d-none');
-    } else {
-      document.querySelector('#모달_출수제목보기숨기기').innerHTML='번호종류&lt;';
-      document.querySelector('#출수제목').classList.remove('d-none');
-    }
-  }
+
   function header_dropdown_1_2_3모두보기숨기기() {
     if (document.querySelector('#li_1_2_3모두보기숨기기').innerText=='[숨기기]1_2_3모두') {
       document.querySelector('#세로구분_당첨번호들').classList.add('d-none')
