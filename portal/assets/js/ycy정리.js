@@ -21,7 +21,7 @@ if ('초기화'=='초기화') {
   for (var i=0; i<document.querySelectorAll('#색칠용번호들 div').length; i++) {
     전체변수_아이디=document.querySelectorAll('#색칠용번호들 div')[i].id;
     document.querySelector('#칠_색칠할번호선택_ul').innerHTML+='<li><a class="dropdown-item 색칠할번호_로연결된text_class">' + 전체변수_아이디 + '</a></li>'
-    if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='나머지' || 전체변수_아이디=='칠_번호' || 전체변수_아이디=='오주출수') {
+    if (전체변수_아이디=='피해서번호' || 전체변수_아이디=='나머지' || 전체변수_아이디=='칠_번호' || 전체변수_아이디=='오주출수' || 전체변수_아이디=='중복1_2') {
       document.querySelectorAll('#칠_색칠할번호선택_ul li')[i].classList.add('파란색글자');
     }
   }
@@ -34,6 +34,9 @@ if ('초기화'=='초기화') {
   var 전체변수_시작배열값;//9개정보중 회차번호
   당번_회차change();
   번호색칠_회차change();
+  세로_모두숨기기();
+  document.querySelector('#칠_전체').classList.remove('d-none');
+  document.querySelector('#세로구분_당번_전체').classList.remove('d-none');  
   //=========>초기 작업 끝.
 }
 function 번호색칠_clear() {
@@ -45,10 +48,19 @@ function 번호색칠_clear() {
   색칠해제_당번();
 }
 function 색칠해제_변수에따라() {
+  console.log('색칠해제_변수에따라()')
   var 버튼들=document.querySelectorAll('#' + 색칠해제_변수 + ' .색칠용버튼');
   for (var i=0; i<버튼들.length; i++) {
     버튼들[i].classList.remove('색칠용버튼');
     버튼들[i].removeAttribute('title');
+  }
+  var 버튼들=document.querySelectorAll('#' + 색칠해제_변수 + ' .피해서3종_선택번호');
+  for (var i=0; i<버튼들.length; i++) {
+    버튼들[i].classList.remove('피해서3종_선택번호');
+  }
+  var 버튼들=document.querySelectorAll('#' + 색칠해제_변수 + ' .피해서3종_피해서번호');
+  for (var i=0; i<버튼들.length; i++) {
+    버튼들[i].classList.remove('피해서3종_피해서번호');
   }
 }
 function 색칠해제_당번() {
@@ -231,10 +243,64 @@ function 번호색칠_회차change() {// 복잡!!
   색칠동작();
 }
 function 번호색칠_1_2중복() {
+  console.log('번호색칠_1_2중복()');
   if (!document.querySelector('#색칠선택3').classList.contains('색칠선택span선택css')) {
-    alert('선택하고')
+    alert('색칠선택3 선택하고');
+    return;
+  }
+  var 일번번호=[];
+  for (var i=0; i<45; i++) {
+    if (document.querySelectorAll('#id_버튼45_1st button')[i].classList.contains('색칠용버튼')){일번번호.push(i+1);}
+  }
+  var 이번번호=[];
+  for (var i=0; i<45; i++) {
+    if (document.querySelectorAll('#id_버튼45_2st button')[i].classList.contains('색칠용버튼')){이번번호.push(i+1);}
+  }
+  var 중복번호=[];
+  for (var i=0; i<45; i++) {
+    if (일번번호.includes(i+1) && 이번번호.includes(i+1)) {중복번호.push(i+1)}
   }
 
+  var 버튼들=document.querySelectorAll('#id_버튼45_3st .색칠용버튼');
+  for (var i=0; i<버튼들.length; i++) {
+    버튼들[i].classList.remove('색칠용버튼');
+    버튼들[i].removeAttribute('title');
+  }
+  var 버튼들=document.querySelectorAll('#id_버튼45_3st button');
+  for (var i=0; i<45; i++) {
+    if (중복번호.includes(i+1)) {
+      console.log(i+1 + ' : 중복')
+      버튼들[i].classList.add('색칠용버튼');
+      버튼들[i].setAttribute('title',i+1);
+    }
+  }
+  document.querySelector('#중복1_2').innerHTML=중복번호.join('_');
+  전체변수_색칠할번호들_아이디='중복1_2';
+  색칠동작();
+}
+
+function 피해서3종() {
+  if (!document.querySelector('#색칠선택3').classList.contains('색칠선택span선택css')) {alert('색칠선택3 선택하고 클릭할것');return;}
+  번호색칠_칠_조금다름();//칠_번호, 피해서번호 생성되었음
+  색칠해제_변수에따라(); 
+  var 버튼들=document.querySelectorAll('#id_버튼45_3st button');
+  var 칠_번호_text=document.querySelector('#칠_번호').innerHTML;
+  var 피해서번호_text=document.querySelector('#피해서번호').innerHTML;
+  var 번호들=[];
+  if (칠_번호_text.length>0) {
+    번호들=칠_번호_text.split('_');
+    for (var i=1; i<46; i++) {
+      if (번호들.filter(element => element==i).length>0) {버튼들[i-1].classList.add('피해서3종_선택번호');}
+    }
+  }
+  // console.log('칠_번호_text : ' + 칠_번호_text + ' , 번호들 : ' + 번호들)
+  if (피해서번호_text.length>0) {
+    번호들=피해서번호_text.split('_');
+    for (var i=1; i<46; i++) {
+      if (번호들.filter(element => element==i).length>0) {버튼들[i-1].classList.add('피해서3종_피해서번호');}
+    }
+  }
+  // console.log('피해서번호_text : ' + 피해서번호_text + ' , 번호들 : ' + 번호들)
 }
 function 번호색칠_칠_조금다름() {
   console.log('번호색칠_칠_조금다름()')
@@ -333,7 +399,32 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
   document.querySelector('#당번_전체').innerHTML=당번_전체html; 
   색칠동작();
 }
+function 세로_모두숨기기() {
+  document.querySelector('#칠_전체').classList.add('d-none');
+  document.querySelector('#세로구분_당번_전체').classList.add('d-none');  
+  document.querySelector('#세로구분_간격관련_전체').classList.add('d-none');
+  document.querySelector('#세로구분_여러당번개수_전체').classList.add('d-none');
+  document.querySelector('#세로구분_분석자료_전체').classList.add('d-none');
+  document.querySelector('#세로구분_임시_전체').classList.add('d-none');
+  document.querySelector('#세로구분_추출관련_전체').classList.add('d-none');
+}
 function 바디클릭시동작설정(e) {
+  if (e.target.innerHTML=='분석자료') {
+    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==분석자료');
+    세로_모두숨기기();
+    document.querySelector('#세로구분_분석자료_전체').classList.remove('d-none');
+  }
+  if (e.target.innerHTML=='임시사진_분석자료') {
+    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==임시사진_분석자료');
+    세로_모두숨기기();
+    document.querySelector('#세로구분_임시_전체').classList.remove('d-none');
+  }
+  if (e.target.innerHTML=='칠_관련,당번') {
+    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==칠_관련,당번');
+    세로_모두숨기기();
+    document.querySelector('#칠_전체').classList.remove('d-none');
+    document.querySelector('#세로구분_당번_전체').classList.remove('d-none'); 
+  }
   if (e.target.id=='색칠선택1') {
     console.log('바디클릭시동작설정(e) ==> e.target.id==색칠선택1')
     색칠해제_변수='id_버튼45_1st';
@@ -357,7 +448,8 @@ function 바디클릭시동작설정(e) {
   }
 
   
-  if (!e.target.classList.contains('색칠선택span기본css') && e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
+  if (e.target.nodeName=='BUTTON' && e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
+    console.log('바디클릭시동작설정(e) ==> e.target.nodeName==BUTTON) && e.target.parentNode.parentNode.classList.contains(버튼45css)')
     if (e.target.classList.contains('색칠용버튼')) {
       e.target.classList.remove('색칠용버튼');
       e.target.removeAttribute('title');

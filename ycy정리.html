@@ -57,7 +57,9 @@
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
-
+        <button type="button">칠_관련,당번</button>
+        <button type="button">분석자료</button>
+        <button type="button">임시사진_분석자료</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <button type="button" onclick="임시추출30개()">임시추출30개()</button>
         <button type="button" onclick="추출조건보기()">추출조건보기()</button>
@@ -108,6 +110,7 @@
   <div id="칠_번호"></div>
   <div id="피해서번호"></div>
   <div id="나머지"></div>
+  <div id="중복1_2"></div>
 
   <div id="오주1출수"></div>
   <div id="오주2출수"></div>
@@ -196,7 +199,8 @@
         <div>
           <button style="width:40px;margin-left:0px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
           <button style="width:50px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
-          <button style="width:65px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_1_2중복()">1,2중복</button>
+          <button style="width:57px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_1_2중복()">12중복</button>
+          <button style="width:75px;" type="button" class="btn btn-secondary p-0" onclick="피해서3종()">피해서3종</button>
         </div>
       </div>
       <br><br>
@@ -213,7 +217,7 @@
     </div>
   </div>
 
-  <div id="세로구분_당번" class="d-inline-block">
+  <div id="세로구분_당번_전체" class="d-inline-block">
     <div id="당번_있다면다음회차" class="하위div안버튼7개까지css" style="margin-bottom:5px;"><div><span></span><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div></div>
     <div id="당번_회차날짜조회묶음">
       <select id="당번_회차select" onchange="당번_회차change()">
@@ -227,39 +231,52 @@
     <div id="당번_전체" class="하위div안버튼7개까지css"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
   </div>
 
-  <div class="d-inline-block d-none" id="세로구분_색칠45_원간격" style="width:175px;background-color: white;">
-    <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 6개 --></div>
-    <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로  원간격 글자--></div>
-    <div id="색칠45_원간격_당번"><!--innerhtml로 button 6개 --></div>
-  </div>
-  <div class="d-inline-block d-none" id="세로구분_색칠45_간격당당첨" style="width:116px;background-color: white;">
-    <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
+  <div id="세로구분_분석자료_전체" class="d-inline-block" style="vertical-align: top;">
+  
   </div>
 
-  <div class="d-inline-block d-none" id="세로구분_색칠45_이월" style="width:15px;background-color: white;margin-right:16px;">
-    <div id="색칠45_간격_이월_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_이월_순번" style="margin-top:7px;margin-bottom:8px;" title="현재줄의 당번6개중 다음회차에 나오는 개수"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_이월"><!--innerhtml로 button 45 개 --></div>
+  <div id="세로구분_임시_전체" class="d-inline-block" style="vertical-align: top;">
+    <img src="portal/images/black_문서/임시사진_분석자료.png" alt="이미지없음"><br>
+    <img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음">
   </div>
 
-  <div class="d-inline-block d-none" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
-    <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
+
+  <div id="세로구분_간격관련_전체">
+    <div class="d-inline-block" id="세로구분_색칠45_원간격" style="width:175px;background-color: white;">
+      <div id="색칠45_원간격_있다면다음회차"><!--innerhtml로 button 6개 --></div>
+      <div id="색칠45_원간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로  원간격 글자--></div>
+      <div id="색칠45_원간격_당번"><!--innerhtml로 button 6개 --></div>
+    </div>
+    <div class="d-inline-block" id="세로구분_색칠45_간격당당첨" style="width:116px;background-color: white;">
+      <div id="색칠45_간격당당첨_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격당당첨_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격당당첨_당번"><!--innerhtml로 button 45 개 --></div>
+    </div>
+
+    <div class="d-inline-block" id="세로구분_색칠45_이월" style="width:15px;background-color: white;margin-right:16px;">
+      <div id="색칠45_간격_이월_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격_이월_순번" style="margin-top:7px;margin-bottom:8px;" title="현재줄의 당번6개중 다음회차에 나오는 개수"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격_이월"><!--innerhtml로 button 45 개 --></div>
+    </div>
+
+    <div class="d-inline-block" id="세로구분_색칠45_간격" style="width:175px;background-color: white;">
+      <div id="색칠45_간격_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격_당번"><!--innerhtml로 button 45 개 --></div>
+    </div>
+    <div class="d-inline-block" id="세로구분_색칠45_내림_간격당당첨" style="width:116px;background-color: white;">
+      <div id="색칠45_간격당당첨_내림_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격당당첨_내림_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_간격당당첨_내림_당번"><!--innerhtml로 button 45 개 --></div>
+    </div>
+    <div class="d-inline-block" id="세로구분_색칠45" style="width:1320px;background-color: white;">
+      <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
+      <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
+    </div>
   </div>
-  <div class="d-inline-block d-none" id="세로구분_색칠45_내림_간격당당첨" style="width:116px;background-color: white;">
-    <div id="색칠45_간격당당첨_내림_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_내림_순번" style="margin-top:7px;margin-bottom:8px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_간격당당첨_내림_당번"><!--innerhtml로 button 45 개 --></div>
-  </div>
-  <div class="d-inline-block d-none" id="세로구분_색칠45" style="width:1320px;background-color: white;">
-    <div id="색칠45_있다면다음회차"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_순번" style="margin:5px 0px;"><!--innerhtml로 button 45 개 --></div>
-    <div id="색칠45_당번"><!--innerhtml로 button 45 개 --></div>
-  </div>
-  <div id="여러당번개수" class="d-inline-block d-none" style="vertical-align: top;">
+
+  <div id="세로구분_여러당번개수_전체" class="d-inline-block" style="vertical-align: top;">
     <div title="보볼포함 7개의 이월수" class="d-inline-block" style="width:30px;background-color:white;vertical-align: top;">
       <div class="고정btn"><button title="header_dropdown_여러당번개수보기만()==>각 제목 클릭시 개별적으로 숨겨지고, 이거 누르면 다 보이게 됨" onclick="header_dropdown_여러당번개수보기만()" 
         style="width:30px;font-size: 14px;text-indent:-2px;background-color: aqua;">이월</button>
@@ -314,47 +331,54 @@
     </div>
   </div>
 
-  <div id="추출만개" class="d-inline-block" style="vertical-align: top;"></div>
-  <div id="추출조건" class="d-none" style="position: absolute;border:1px solid black;background-color: white; width:1000px;height:300px;left:5px;top:460px;">
-    <div id="추출조건_머리글">
-      <span style="margin-left:100px;">조건설명</span><span style="margin-left:300px;">번호</span><span style="margin-left:406px;">추출</span>
-
-    </div>
-    <div id="추출조건_1">
-      <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
-      <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
-      <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
-      <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등-->     
-    </div>
-    <div id="추출조건_2">
-      <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
-      <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
-      <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
-      <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
-    </div>
-    <div id="추출조건_3">
-      <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
-      <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
-      <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
-      <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
-    </div>
-    <div id="추출조건_4">
-      
-    </div>
-    <div id="추출조건_5">
-      
-    </div>
-    <div id="추출조건_6">
-      
-    </div>
-    <div id="추출조건_7">
-      
-    </div>
-    <div id="추출조건_8">
-      
-    </div>
-
+  <div id="세로구분_추출관련_전체" class="d-inline-block" style="vertical-align: top;">
+    <div id="추출만개" class="d-inline-block" style="vertical-align: top;"></div>
+    <div id="추출조건" class="d-none" style="position: absolute;border:1px solid black;background-color: white; width:1000px;height:300px;left:5px;top:460px;">
+      <div id="추출조건_머리글">
+        <span style="margin-left:100px;">조건설명</span><span style="margin-left:300px;">번호</span><span style="margin-left:406px;">추출</span>
+  
+      </div>
+      <div id="추출조건_1">
+        <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
+        <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
+        <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
+        <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등-->     
+      </div>
+      <div id="추출조건_2">
+        <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
+        <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
+        <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
+        <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
+      </div>
+      <div id="추출조건_3">
+        <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
+        <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
+        <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
+        <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
+      </div>
+      <div id="추출조건_4">
+        
+      </div>
+      <div id="추출조건_5">
+        
+      </div>
+      <div id="추출조건_6">
+        
+      </div>
+      <div id="추출조건_7">
+        
+      </div>
+      <div id="추출조건_8">
+        
+      </div>
+  
+    </div>  
+  
   </div>
+
+
+
+
 </div>
 
 
