@@ -224,20 +224,47 @@
       <!-- 새로고침시 <option>회차</option> 추가됨 .. 이래 조회 a 태그 오른쪽에 button 8개, 회차와 당번-->
       </select>
       <span class="span_날짜"></span>
-      <a type="button" class="btn btn-primary" id="동작_당번회차_플러스">+</a>
-      <a type="button" class="btn btn-primary" id="동작_당번회차_마이너스"">-</a>
+      <a type="button" class="btn btn-primary" id="동작_당번회차_플러스" style="height:26px;padding:0 13px;margin-top:-3px;">+</a>
+      <a type="button" class="btn btn-primary" id="동작_당번회차_마이너스" style="height:26px;padding:0 13px;margin-top:-3px;">-</a>
     </div>
 
     <div id="당번_전체" class="하위div안버튼7개까지css"><!--innerhtml로 button 8 개 (회차와 당번) --></div>
   </div>
 
   <div id="세로구분_분석자료_전체" class="d-inline-block" style="vertical-align: top;">
+    <div id="분석자료_당번_있다면다음회차" class="분석자료_하위div안버튼7개까지css" style="margin-bottom:5px;"><!--js초기화시가지고옴 --></div>
+    <div id="분석자료_당번_회차날짜조회묶음">
+      <select id="분석자료_당번_회차select" onchange="분석자료_회차_change()" style="margin-right:4px;">
+      <!--js초기화시가지고옴 -->
+      </select>
+      <span id="분석자료_span_날짜"></span><div id="분석자료_당번" style="display: inline-block;"></div>
+      <a type="button" class="btn btn-primary" id="분석자료_동작_당번회차_플러스" onclick="분석자료_회차_플러스()" style="height:22px;padding-top:0px; margin-top:-5px;">+</a>
+      <a type="button" class="btn btn-primary" id="분석자료_동작_당번회차_마이너스" onclick="분석자료_회차_마이너스()" style="height:22px;padding-top:0px;margin-top:-5px;">-</a>
+    </div>
+    <div id="분석자료_여러45칸">
+      <div id="임시_순번45" class="분석자료_순번버튼css"><span></span></div>
+      <div id="임시_당번45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>당번</span></div>
+      <div id="임시_이웃수45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>이웃수</span></div>
+      <div id="임시_1출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주1출</span></div>
+      <div id="임시_2출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주2출</span></div>
+      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주3출이상</span></div>
+      <div id="임시_미출5" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주미출</span></div>
+      <div id="임시_미출10" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>10주미출</span></div>
+      <div id="임시_미출15" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>15주미출</span></div>
+      <div id="임시_피해서번호" class="다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span style="background-color: deepskyblue;" title="처음에는 당번의 피해서번호">피해서번호</span></div>
+      <div id="임시_흰색부분" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>흰색부분</span></div>
+      <div id="임시_1" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_1</span></div>
+      <div id="임시_2" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_2</span></div>
+      <div id="임시_3" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_3</span></div>
+      <div id="임시_4" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_4</span></div>
+    </div>
   
   </div>
 
   <div id="세로구분_임시_전체" class="d-inline-block" style="vertical-align: top;">
     <img src="portal/images/black_문서/임시사진_분석자료.png" alt="이미지없음"><br>
-    <img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음">
+    <img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음"><br>
+    <img src="portal/images/black_문서/임시사진_분석자료3.png" alt="이미지없음">
   </div>
 
 
@@ -626,30 +653,12 @@
 
 </div>
 
-<div id="문서정보숨김" style="display:none;">
-  <div id="js_배열_sort_filter_자료형_selectdindex">
-    <button onclick="문서연결닫기()">닫기</button><br>
-    <embed src="portal/images/코딩메모_lo_ycy/js_배열_sort_filter_자료형_selectdindex.txt" width=1000px height=700px>
-  </div>
-  <div id="js_줄바꿈_말줄임">
-    <button onclick="문서연결닫기()">닫기</button><br>
-    <embed src="portal/images/코딩메모_lo_ycy/js_줄바꿈_말줄임.txt" width=1000px height=700px>
-  </div>
-  <div id="js_보볼포함미출수계산">
-    <button onclick="문서연결닫기()">닫기</button><br>
-    <embed src="portal/images/코딩메모_lo_ycy/js_보볼포함미출수계산.txt" width=1000px height=700px>
-  </div>
-
-</div>
-<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
-role="button" title="Move Top" data-toggle="tooltip" data-placement="left" style="left:5px; width:50px;">
-<span>Top</span></a>
-
 <!-- 부트스트랩.body 맨 마지막에.. -->
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
 <script src="portal/assets/js/ycy정리.js"></script>
+<script src="portal/assets/js/ycy정리_분석자료_독립적.js"></script>
 </body>
 
 </html>

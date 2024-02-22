@@ -400,13 +400,10 @@ function 당번_회차change() {//비교적 간단 : 색칠할 번호들의 변�
   색칠동작();
 }
 function 세로_모두숨기기() {
-  document.querySelector('#칠_전체').classList.add('d-none');
-  document.querySelector('#세로구분_당번_전체').classList.add('d-none');  
-  document.querySelector('#세로구분_간격관련_전체').classList.add('d-none');
-  document.querySelector('#세로구분_여러당번개수_전체').classList.add('d-none');
-  document.querySelector('#세로구분_분석자료_전체').classList.add('d-none');
-  document.querySelector('#세로구분_임시_전체').classList.add('d-none');
-  document.querySelector('#세로구분_추출관련_전체').classList.add('d-none');
+  var whole_자식div=document.querySelectorAll('#whole > div');
+  for (var i=0; i<whole_자식div.length; i++) {
+    whole_자식div[i].classList.add('d-none');
+  }
 }
 function 바디클릭시동작설정(e) {
   if (e.target.innerHTML=='분석자료') {
