@@ -6,17 +6,17 @@ function 교섭력계산() {
   //곱하는값은 인풋 오른쪽 형제
   document.querySelector('#계산_재갱1회당').value = (일회교섭력 * (4.30022)).toFixed(0);
 
-  document.querySelector('#계산_하코저가').value = (일회교섭력 * (2.0601)).toFixed(0);
-  document.querySelector('#계산_더코').value = (일회교섭력 * (2.5494)).toFixed(0);
-  document.querySelector('#계산_하코').value = (일회교섭력 * (3.0645)).toFixed(0);
-  document.querySelector('#계산_대양저가').value = (일회교섭력 * (3.258)).toFixed(0);
-  document.querySelector('#계산_대양고가').value = (일회교섭력 * (4.0725)).toFixed(0);
+  document.querySelector('#계산_하코저가').value = 21492;
+  document.querySelector('#계산_더코').value = 26597;
+  document.querySelector('#계산_하코').value = 31972;
+  document.querySelector('#계산_대양저가').value = 33990;
+  document.querySelector('#계산_대양고가').value = 42488;
 
   document.querySelector('#계산_하코4종').value = Number(document.querySelector('#계산_하코저가').value * 2)
     + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
   document.querySelector('#계산_대양7종').value = document.querySelector('#계산_대양저가').value * 3 + document.querySelector('#계산_대양고가').value * 4;
   document.querySelector('#계산_하코와대양합').value = Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양7종').value);
-  document.querySelector('#계산_사단까주').value = (일회교섭력 * (1.5154)).toFixed(0);
+  document.querySelector('#계산_사단까주').value = 15810;
   document.querySelector('#계산_사단까주8개').value = (document.querySelector('#계산_사단까주').value * 8).toFixed(1);
 
   document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / 일회교섭력).toFixed(0);
