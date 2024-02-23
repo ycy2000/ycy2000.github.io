@@ -242,22 +242,80 @@
       <a type="button" class="btn btn-primary" id="분석자료_동작_당번회차_마이너스" onclick="분석자료_회차_마이너스()" style="height:22px;padding-top:0px;margin-top:-5px;">-</a>
     </div>
     <div id="분석자료_여러45칸">
-      <div id="임시_순번45" class="분석자료_순번버튼css"><span></span></div>
-      <div id="임시_당번45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>당번</span></div>
-      <div id="임시_이웃수45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>이웃수</span></div>
-      <div id="임시_1출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주1출</span></div>
-      <div id="임시_2출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주2출</span></div>
-      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주3출이상</span></div>
-      <div id="임시_미출5" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>5주미출</span></div>
-      <div id="임시_미출10" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>10주미출</span></div>
-      <div id="임시_미출15" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>15주미출</span></div>
-      <div id="임시_피해서번호" class="다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span style="background-color: deepskyblue;" title="처음에는 당번의 피해서번호">피해서번호</span></div>
-      <div id="임시_흰색부분" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>흰색부분</span></div>
-      <div id="임시_1" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_1</span></div>
-      <div id="임시_2" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_2</span></div>
-      <div id="임시_3" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_3</span></div>
-      <div id="임시_4" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span>임시_4</span></div>
+      <div id="임시_순번45" class="분석자료_순번버튼css"><span title="클릭한 번호는 id_임시버튼45에 색칠된다.">번호선택↓</span><span>추출</span></div>
+      <div id="임시_당번45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">당번</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_이웃수45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">이웃수</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_1출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주1출</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_2출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주2출</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주3출이상</span class="클릭_더블클릭"><span></span></div>
+      <div id="임시_미출5" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주미출</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_미출10" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">10주미출</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_미출15" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">15주미출</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_피할번호" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">피할번호</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_피해서번호" class="다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span style="background-color: deepskyblue;" title="처음에는 당번의 피해서번호" class="분석자료_번호선택">피해서번호</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_흰색부분" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">흰색부분</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_1" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_1</span><span></span class="클릭_더블클릭"></div>
+      <div id="임시_2" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_2</span><span></span class="클릭_더블클릭"></div>
+      <div id="임시_3" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_3</span><span></span class="클릭_더블클릭"></div>
+      <div id="임시_4" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_4</span><span></span class="클릭_더블클릭"></div>
     </div>
+    <div id="id_임시버튼45" class="absolute d-none" style="background-color: white;">
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div style="display: inline-block;"><button>43</button><button>44</button><button>45</button></div>
+      <div style="display: inline-block;margin-left:5px; position: absolute;"><span>피클</span><span>색_clear</span></div><br>
+      <span>피해서번호생성</span><span>피해서3종보기</span><br>
+      <span>넣기1</span><span>넣기2</span><span>넣기3</span><span>넣기4</span>
+    </div>
+
+    <div id="분석자료_30회차당번_제목" style="border:2px solid black">
+      <div><span>5주간 출수</span></div>
+      <div><span>30주간</span></div>
+      <div><span>1~5주</span></div>
+      <div><span>6~10주</span></div>
+      <div><span>11~15주</span></div>
+      <div><span>16~20주</span></div>
+      <div><span>21~25주</span></div>
+      <div><span>26~30주</span></div>
+    </div>
+
+    <div id="분석자료_30회차당번" style="border:2px solid black; border-top:1px;">
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div style="border-top:2px solid black"><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div style="border-top:2px solid black"><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div style="border-top:2px solid black"><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div style="border-top:2px solid black"><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div style="border-top:2px solid black"><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+      <div><span></span></div>
+    </div>
+
   
   </div>
 
