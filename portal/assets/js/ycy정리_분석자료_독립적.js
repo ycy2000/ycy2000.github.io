@@ -272,24 +272,16 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#임시_미출15 button')[i-1].innerHTML=i+1;
       document.querySelectorAll('#임시_미출15 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
+  }
     //30회차번호기록관련 : #분석자료_30회차당번 > div 안에, span 하나, button 45개씩
     var 현재작업div내_버튼들;
     var 회차부분;
-    var 임시카운트=0;
     for (var i=0; i<30; i++) {//당번부터
       현재작업div내_버튼들=document.querySelectorAll('#분석자료_30회차당번 > div:nth-of-type(' + (i+1) + ') button');
       회차부분=(분석자료_회차개수-분석자료_회차index-1-i)*9;
-      console.log('회차부분 : ' + 회차부분)
-      console.log('분석자료_당번전체[회차부분+2] : ' + 분석자료_당번전체[회차부분+2])
-임시카운트+=1;
-      console.log('임시카운트 : ' + 임시카운트)
-      console.log('분석자료_당번전체.length : ' + 분석자료_당번전체.length)
-      console.log('분석자료_당번전체[9936] : ' + 분석자료_당번전체[9936])//요게 안된다??
-
       for (var 내부=0; 내부<6; 내부++) {
-        console.log('분석자료_당번전체[회차부분+2+내부] : ' + 분석자료_당번전체[회차부분+2+내부])
-        현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]].innerHTML=분석자료_당번전체[회차부분+2+내부];
-        현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]].classList.add('분석자료_고정등번호색칠')
+        현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].innerHTML=분석자료_당번전체[회차부분+2+내부];
+        현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].classList.add('분석자료_고정등번호색칠')
       }
 
     }
@@ -306,7 +298,7 @@ function 분석자료_회차_change() {
 
 
 
-}
+
 function 분석자료_회차_플러스() {
   console.log('분석자료_회차_플러스()')
   if (분석자료_회차index==0) {alert('가장 최근 회차입니다.'); return;}
