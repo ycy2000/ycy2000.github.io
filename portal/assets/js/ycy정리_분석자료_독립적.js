@@ -260,6 +260,10 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i+1;
       document.querySelectorAll('#임시_3출이상45 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
+    if (오주간번호_보볼제외.filter(element => i == element).length>0) {//#임시_미출5
+      document.querySelectorAll('#임시_출 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_출 button')[i-1].classList.add('분석자료_고정등번호색칠')
+    }
     if (오주간번호_보볼제외.filter(element => i == element).length==0) {//#임시_미출5
       document.querySelectorAll('#임시_미출5 button')[i-1].innerHTML=i+1;
       document.querySelectorAll('#임시_미출5 button')[i-1].classList.add('분석자료_고정등번호색칠')
