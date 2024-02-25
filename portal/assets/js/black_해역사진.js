@@ -527,11 +527,11 @@ function 코딩해역메모위치조정() {
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_해역사진관련_클릭시(e)');
   if (e.target.id == '점진무게') {
-    document.querySelector('#적재가능일반무게').value = 21500;
+    document.querySelector('#적재가능일반무게').value = document.querySelector('#점진무게').title;
     계산_배와장비무게()
   }
   if (e.target.id == '용맹무게') {
-    document.querySelector('#적재가능일반무게').value = 20440;
+    document.querySelector('#적재가능일반무게').value = document.querySelector('#용맹무게').title;
     계산_배와장비무게()
   }
   //선원비율클릭시
