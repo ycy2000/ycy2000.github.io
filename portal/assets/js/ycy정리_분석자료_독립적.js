@@ -287,7 +287,65 @@ function 분석자료_회차_change() {
         현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].innerHTML=분석자료_당번전체[회차부분+2+내부];
         현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].classList.add('분석자료_고정등번호색칠')
       }
+    }
+    //5주구간 출수 7종, 분석자료_시작배열값=(분석자료_회차개수-분석자료_회차index-1)*9;
+    var 번호30주간=[], 번호5주간=[], 번호6_10주간=[], 번호11_15주간=[], 번호16_20주간=[], 번호21_25주간=[], 번호26_30주간=[];
 
+    for (var i=0; i<30; i++) {//번호30주간
+      for (var 내부=0; 내부<9; 내부++) {
+        if (내부>1 && 내부<8) {
+          번호30주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i)*9+내부])
+        }
+      }
+    }
+    for (var i=0; i<5; i++) {//번호5주간
+      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호5주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i)*9+내부])}}
+    }
+    for (var i=0; i<5; i++) {//번호6_10주간
+      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호6_10주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-5)*9+내부])}}
+    }
+    for (var i=0; i<5; i++) {//번호11_15주간
+      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호11_15주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-10)*9+내부])}}
+    }
+    for (var i=0; i<5; i++) {//번호16_20주간
+      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호16_20주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-15)*9+내부])}}
+    }
+    for (var i=0; i<5; i++) {//번호21_25주간
+      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호21_25주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-20)*9+내부])}}
+    }
+    for (var i=0; i<5; i++) {//번호26_30주간
+      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호26_30주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-25)*9+내부])}}
+    }
+
+    for (var i=1; i<46; i++) {
+      if (번호30주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].innerHTML=번호30주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
+      if (번호5주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].innerHTML=번호5주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
+      if (번호6_10주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(4) button')[i-1].innerHTML=번호6_10주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(4) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
+      if (번호11_15주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(5) button')[i-1].innerHTML=번호11_15주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(5) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
+      if (번호16_20주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(6) button')[i-1].innerHTML=번호16_20주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(6) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
+      if (번호21_25주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(7) button')[i-1].innerHTML=번호21_25주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(7) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
+      if (번호26_30주간.filter(element => element==i).length>0) {
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].innerHTML=번호26_30주간.filter(element => element==i).length;
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].classList.add('분석자료_고정등번호색칠');
+      }
     }
     // document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i+1;
     // document.querySelectorAll('#임시_3출이상45 button')[i-1].classList.add('분석자료_고정등번호색칠')

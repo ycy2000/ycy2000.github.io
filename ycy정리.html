@@ -39,25 +39,18 @@
           </ul>
         </li>
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
-        <li class="nav-item dropdown me-2 d-inline-block ms-3">
+        <li class="nav-item dropdown me-2 d-inline-block ms-3 d-none">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
             실행 및 보기
           </a>
           <ul class="dropdown-menu" style="width:500px;">
             <li><a class="dropdown-item" onclick="색칠_45()">[실행][2]색칠_45실행</a></li>
-            <li><a class="dropdown-item" onclick="여러당번개수작성()">[실행][3]여러당번개수_실행(미출,이웃수는 현재회차 이전부터)</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_모달45보기숨기기()" id="li_모달번호45보기숨기기">[숨기기]칠</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_당번보기숨기기()" id="li_당번보기숨기기">[숨기기]당번</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_45간격과색칠모두보기숨기기()" id="li_45간격과색칠모두보기숨기기">[모두숨기기][2]45간격과색칠</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_간격45보기숨기기()" id="li_간격45보기숨기기">[숨기기][2]간격45만</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_색칠45보기숨기기()" id="li_색칠45보기숨기기">[숨기기][2]색칠45만</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_여러당번개수보기숨기기()" id="li_여러당번개수보기숨기기">[숨기기][3]여러당번정보</a></li>
-            <li><a class="dropdown-item" onclick="header_dropdown_1_2_3모두보기숨기기()" id="li_1_2_3모두보기숨기기">[숨기기]1_2_3모두</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
         <button type="button">칠_관련,당번</button>
+        <button type="button">흐름_</button>
         <button type="button">분석자료</button>
         <button type="button">임시사진_분석자료</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
@@ -156,7 +149,8 @@
       </div>
       <div style="border-bottom:1px solid black;margin-bottom:5px;">
         <div class="d-inline-block">색칠할번호</div>
-        <button title="5,10,15,20 출수제목 보기 숨기기" id="모달_출수제목보기숨기기" style="width:90px;margin-left:54px;" type="button" class="btn btn-secondary p-0" onclick="번호종류_보기숨기기()">번호종류&lt;</button>
+        <button title="흐름" style="width:40px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+        <button title="출수제목" style="width:90px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수제목</button>
         <div id="칠_현재색칠할번호_정보와개수"></div>
       </div>
       <div id="칠_modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
@@ -207,12 +201,30 @@
 
     </div>
 
-    <div id="칠_right_출수제목" style="width:135px;display: inline-block;vertical-align: top;">
+    <div id="칠_right_출수제목">
+      <button title="흐름" style="width:40px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+      <button title="출수제목" style="width:80px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수제목</button><br>
+      <button style="width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
+      <button style="width:60px;margin-left:5px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button><br>
       <button onclick="오주전();">5</button>
       <button onclick="십주전();">10</button>
       <button onclick="십오주전();">15</button>
       <button onclick="이십주전();">20</button>
       <ul id="칠_색칠할번호선택_ul"><!--#색칠용번호들 각id를 innerHTML로 스크립트로 가져옴 <li><a class="dropdown-item">오주미출수</a></li>-->
+      </ul>
+    </div>
+    <div id="칠_right_흐름" style="width:135px;display: inline-block;vertical-align: top;" class="d-none">
+      <button title="흐름" style="width:40px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+      <button title="출수제목" style="width:80px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수제목</button><br>
+      <button style="width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
+      <button style="width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button>
+      <ul id="칠_흐름">
+        <li><a class="dropdown-item">오주미출수</a></li>
+        <li><a class="dropdown-item">오주미출수</a></li>
+        <li><a class="dropdown-item">오주미출수</a></li>
+        <li><a class="dropdown-item">오주미출수</a></li>
+        <li><a class="dropdown-item">오주미출수</a></li>
+        <li><a class="dropdown-item">오주미출수</a></li>
       </ul>
     </div>
   </div>
@@ -232,7 +244,7 @@
   </div>
 
   <div id="세로구분_분석자료_전체" class="d-inline-block" style="vertical-align: top;">
-    <div id="분석자료_당번_있다면다음회차" class="분석자료_하위div안버튼7개까지css" style="margin-bottom:5px;"><!--js초기화시가지고옴 --></div>
+    <div id="분석자료_당번_있다면다음회차" style="margin-bottom:5px;"><!--js초기화시가지고옴 --></div>
     <div id="분석자료_당번_회차날짜조회묶음">
       <select id="분석자료_당번_회차select" onchange="분석자료_회차_change()" style="margin-right:4px;">
       <!--js초기화시가지고옴 -->
@@ -274,7 +286,7 @@
     </div>
 
     <div id="분석자료_30회차당번_제목" style="border:2px solid black">
-      <div class="다섯개씩번갈아색칠"><span>5주간 출수</span></div>
+      <div class="다섯개씩번갈아색칠"><span>순번</span></div>
       <div class="다섯개씩번갈아색칠"><span>30주간</span></div>
       <div class="다섯개씩번갈아색칠"><span>1~5주</span></div>
       <div class="다섯개씩번갈아색칠"><span>6~10주</span></div>
@@ -285,22 +297,22 @@
     </div>
 
     <div id="분석자료_30회차당번" style="border:2px solid black; border-top:1px;">
-      <div class="30회차당번-1 다섯개씩번갈아색칠"><span></span></div>
-      <div class="30회차당번-2 다섯개씩번갈아색칠"><span></span></div>
-      <div class="30회차당번-3 다섯개씩번갈아색칠"><span></span></div>
-      <div class="30회차당번-4 다섯개씩번갈아색칠"><span></span></div>
-      <div class="30회차당번-5 다섯개씩번갈아색칠"><span></span></div>
-      <div class="30회차당번-6 다섯개씩번갈아색칠" style="border-top:2px solid black"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
-      <div class="다섯개씩번갈아색칠" style="border-top:2px solid black"><span></span></div>
+      <div class="다섯개씩번갈아색칠"><span></span></div>
+      <div class="다섯개씩번갈아색칠" style="border-top:2px solid black"><span style="height:21px;"></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
-      <div class="다섯개씩번갈아색칠" style="border-top:2px solid black"><span></span></div>
+      <div class="다섯개씩번갈아색칠" style="border-top:2px solid black"><span style="height:21px;"></span></div>
+      <div class="다섯개씩번갈아색칠"><span></span></div>
+      <div class="다섯개씩번갈아색칠"><span></span></div>
+      <div class="다섯개씩번갈아색칠"><span></span></div>
+      <div class="다섯개씩번갈아색칠"><span></span></div>
+      <div class="다섯개씩번갈아색칠" style="border-top:2px solid black"><span style="height:21px;"></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
@@ -362,105 +374,20 @@
     </div>
   </div>
 
-  <div id="세로구분_여러당번개수_전체" class="d-inline-block" style="vertical-align: top;">
-    <div title="보볼포함 7개의 이월수" class="d-inline-block" style="width:30px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button title="header_dropdown_여러당번개수보기만()==>각 제목 클릭시 개별적으로 숨겨지고, 이거 누르면 다 보이게 됨" onclick="header_dropdown_여러당번개수보기만()" 
-        style="width:30px;font-size: 14px;text-indent:-2px;background-color: aqua;">이월</button>
-      </div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>6중</span></div>
-      <div id="여러_이월수버튼" class="고정btn"><!--innerhtml로 div안에 button 1개씩--></div>
+  <div id="세로구분_흐름_전체" class="d-inline-block" style="vertical-align: top;">
+    <!-- 이월수 개수 : 번호, 이웃수개수 : 번호, 미출123출, 연번, 단번,십번,이십번,삼십번,사십번대 -->
+    <div id="흐름_삼이일" class="흐름div안버튼7개까지css">
+      <div>전회차 5주간출수중</div>
+      <div>해당회차 당첨개수</div>
+      <div class="높이낮춤"><button>미출</button><button>1출</button><button>2출</button><button>3↑</button></div>
+      <div><button></button><button></button><button></button><button></button></div>
+      <div><button></button><button></button><button></button><button></button></div>
+      <div><button></button><button></button><button></button><button></button></div>
     </div>
-    <div title="당번6개의이웃수" class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:88px;text-indent:-2px;">이웃수</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
-      <div id="여러_이웃수버튼" class="고정btn 버튼두개흰색"><!--innerhtml로 div안에 button 3개씩--></div>
-    </div>
-    <div title="당번6개의이웃수 + 이월7개" class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:88px;text-indent:-2px;">이월+이웃수</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
-      <div id="여러_이월이웃수버튼" class="고정btn 버튼두개흰색"><!--innerhtml로 div안에 button 3개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:88px;">5주미출</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
-      <div id="여러_오주미출버튼" class="고정btn 버튼두개흰색"><!--innerhtml로 div안에 button 3개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:88px;">5주1출</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
-      <div id="여러_오주1출버튼" class="고정btn 버튼두개흰색"><!--innerhtml로 div안에 button 3개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:88px;">5주2출</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
-      <div id="여러_오주2출버튼" class="고정btn 버튼두개흰색"><!--innerhtml로 div안에 button 3개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:87px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:88px;">5주3출</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>개수</span><span style="margin-left:2px;">평균</span><span style="margin-left:2px;">당첨</span></div>
-      <div id="여러_오주3출버튼" class="고정btn 버튼두개흰색"><!--innerhtml로 div안에 button 3개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:144px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:144px;text-indent:-2px;">단번~40번대</button></div>
-      <div style="margin-top:10px;margin-bottom:7px;font-size: 14px;"><span>단번</span><span style="margin-left:9px;">10</span><span style="margin-left:13px;">20</span><span style="margin-left:13px;">30</span><span style="margin-left:13px;">40</span></div>
-      <div id="여러_단번사십번버튼" class="고정btn"><!--innerhtml로 div안에 button 5개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:140px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:135px;text-indent:-2px;">가로라인</button></div>
-      <div style="margin-top:10px;margin-bottom:4px;"><span style="margin-left:5px;">1</span><span style="margin-left:10px;">2</span><span style="margin-left:10px;">3</span><span style="margin-left:10px;">4</span><span style="margin-left:10px;">5</span><span style="margin-left:10px;">6</span><span style="margin-left:10px;">7</span></div>
-      <div id="여러_가로라인버튼" class="고정btn"><!--innerhtml로 div안에 button 7개씩--></div>
-    </div>
-    <div class="d-inline-block" style="width:140px;background-color:white;vertical-align: top;">
-      <div class="고정btn"><button class=" 클릭시숨기기" style="width:135px;text-indent:-2px;">가로라인</button></div>
-      <div style="margin-top:10px;margin-bottom:4px;"><span style="margin-left:5px;">1</span><span style="margin-left:10px;">2</span><span style="margin-left:10px;">3</span><span style="margin-left:10px;">4</span><span style="margin-left:10px;">5</span><span style="margin-left:10px;">6</span><span style="margin-left:10px;">7</span></div>
-      <div id="여러_세로라인버튼" class="고정btn"><!--innerhtml로 div안에 button 7개씩--></div>
-    </div>
+
   </div>
 
-  <div id="세로구분_추출관련_전체" class="d-inline-block" style="vertical-align: top;">
-    <div id="추출만개" class="d-inline-block" style="vertical-align: top;"></div>
-    <div id="추출조건" class="d-none" style="position: absolute;border:1px solid black;background-color: white; width:1000px;height:300px;left:5px;top:460px;">
-      <div id="추출조건_머리글">
-        <span style="margin-left:100px;">조건설명</span><span style="margin-left:300px;">번호</span><span style="margin-left:406px;">추출</span>
-  
-      </div>
-      <div id="추출조건_1">
-        <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
-        <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
-        <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
-        <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등-->     
-      </div>
-      <div id="추출조건_2">
-        <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
-        <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
-        <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
-        <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
-      </div>
-      <div id="추출조건_3">
-        <input style="width:250px;" type = "text" maxlength = "300" value=""><!-- width등-->
-        <input style="width:500px;" type = "text" maxlength = "700" value=""><!-- width등-->
-        <button onclick="임시_색칠할번호들call(e)">색칠할번호들call</button>
-        <input style="width:30px;text-align: center;" type = "text" maxlength = "1" value=""><!-- width등--> 
-      </div>
-      <div id="추출조건_4">
-        
-      </div>
-      <div id="추출조건_5">
-        
-      </div>
-      <div id="추출조건_6">
-        
-      </div>
-      <div id="추출조건_7">
-        
-      </div>
-      <div id="추출조건_8">
-        
-      </div>
-  
-    </div>  
-  
-  </div>
+
 
 
 
