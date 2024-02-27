@@ -249,31 +249,31 @@ function 분석자료_회차_change() {
   }
   for (var i=1; i<46; i++) {
     if (오주간번호_보볼제외.filter(element => i == element).length==1) {//#임시_1출45
-      document.querySelectorAll('#임시_1출45 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_1출45 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_1출45 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
     if (오주간번호_보볼제외.filter(element => i == element).length==2) {//#임시_2출45
-      document.querySelectorAll('#임시_2출45 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_2출45 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_2출45 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
     if (오주간번호_보볼제외.filter(element => i == element).length>2) {//#임시_3출이상45
-      document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_3출이상45 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
     if (오주간번호_보볼제외.filter(element => i == element).length>0) {//#임시_미출5
-      document.querySelectorAll('#임시_출 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_출 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_출 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
     if (오주간번호_보볼제외.filter(element => i == element).length==0) {//#임시_미출5
-      document.querySelectorAll('#임시_미출5 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_미출5 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_미출5 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
     if (십주간번호_보볼제외.filter(element => i == element).length==0) {//#임시_미출10
-      document.querySelectorAll('#임시_미출10 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_미출10 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_미출10 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
     if (십오주간번호_보볼제외.filter(element => i == element).length==0) {//#임시_미출15
-      document.querySelectorAll('#임시_미출15 button')[i-1].innerHTML=i+1;
+      document.querySelectorAll('#임시_미출15 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_미출15 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
   }
@@ -318,9 +318,9 @@ function 분석자료_회차_change() {
     }
 
     for (var i=1; i<46; i++) {
-      if (번호30주간.filter(element => element==i).length>0) {
+      if (번호30주간.filter(element => element==i).length>=0) {
         document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].innerHTML=번호30주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].classList.add('분석자료_고정등번호색칠');
+        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].classList.add('분석자료_고정등번호색칠_30주합계');
       }
       if (번호5주간.filter(element => element==i).length>0) {
         document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].innerHTML=번호5주간.filter(element => element==i).length;
@@ -350,17 +350,6 @@ function 분석자료_회차_change() {
     // document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i+1;
     // document.querySelectorAll('#임시_3출이상45 button')[i-1].classList.add('분석자료_고정등번호색칠')
   }
-
-
-
-
-
-
-
-
-
-
-
 function 분석자료_회차_플러스() {
   console.log('분석자료_회차_플러스()')
   if (분석자료_회차index==0) {alert('가장 최근 회차입니다.'); return;}
@@ -375,8 +364,11 @@ function 분석자료_회차_마이너스() {
   document.querySelector('#분석자료_당번_회차select').selectedIndex=분석자료_회차index;
   분석자료_회차_change();
 }
+function 분석자료_번호추출() {
+  
 
 
+}
 
 //
 var 리스너용_세로구분_분석자료_전체=document.querySelector('#세로구분_분석자료_전체');
@@ -477,5 +469,58 @@ function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
     e.target.innerHTML='';
   }
 }
+var 리스너용빈곳번호=document.querySelector('#분석자료_여러45칸');
+function 리스너용빈곳번호_번호색칠(e) {
+  if (e.target.nodeName!='BUTTON') {console.log('버튼아님'); return;}
+  if (e.target.innerHTML!='') {console.log('innerHTML있음'); return;}
+  e.target.classList.add('표시');
+  var 카운트=-1;
+  var 표시배열값;
+  var 표시포함버튼들=document.querySelectorAll('#' + e.target.parentNode.id + ' button');
+  for (var i=0; i<45; i++) {
+    카운트+=1;
+    if (표시포함버튼들[i].classList.contains('표시')) {표시배열값=카운트;}
+  }
+  e.target.classList.remove('표시');
+  var 번호들=[];
+  var 표시중단;
+  //본인포함 오른쪽진행 1.배열44까지, 
+  for (var i=표시배열값; i<45; i++) {//뒤로
+    if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+    if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+  }
+  if (표시중단!='중단') {//2.배열44까지 중단없으면 0부터
+    for (var i=0; i<45; i++) {//뒤로
+      if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+      if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+    }
+  }
+  표시중단='';
+  //본인포함 왼쪽진행 1.배열44까지, 
+  for (var i=표시배열값; i>=0; i--) {//뒤로
+    if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+    if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+  }
+  if (표시중단!='중단') {//2.배열44까지 중단없으면 0부터
+    for (var i=44; i>=0; i--) {//뒤로
+      if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+      if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+    }
+  }
+   번호들=new Set(번호들); //중복제거 배열아님 : 색칠이 없을때 중복발생
+   번호들=[...번호들];//배열로 전환
+   번호들.sort((a,t) => a-t);//정렬
+  console.log('번호들 : ' + 번호들)
+  //색칠하기
+  document.querySelector('#id_임시버튼45').classList.remove('d-none');
+  for (var i=0; i<45; i++) {
+    document.querySelectorAll('#id_임시버튼45 button')[i].classList.remove('색칠용버튼');//지워준다, 아래꺼와 별개지만 반복횟수가 같다
+    if (번호들.filter(element => element==i+1).length>0) {
+      document.querySelectorAll('#id_임시버튼45 button')[i].classList.add('색칠용버튼');
+      document.querySelectorAll('#id_임시버튼45 button')[i].setAttribute('title',i+1);
+    }
+  }  
+}
 리스너용_세로구분_분석자료_전체.addEventListener('click',리스너용_세로구분_분석자료_전체_click시);
 리스너용_세로구분_분석자료_전체.addEventListener('dblclick',리스너용_세로구분_분석자료_전체_dblclick시);
+리스너용빈곳번호.addEventListener('click',리스너용빈곳번호_번호색칠)

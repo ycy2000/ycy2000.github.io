@@ -39,24 +39,23 @@
           </ul>
         </li>
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
-        <li class="nav-item dropdown me-2 d-inline-block ms-3 d-none">
+        <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
             실행 및 보기
           </a>
           <ul class="dropdown-menu" style="width:500px;">
-            <li><a class="dropdown-item" onclick="색칠_45()">[실행][2]색칠_45실행</a></li>
+            <li><a class="dropdown-item" onclick="실행_흐름만들기()">[실행]흐름 만들기</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
         <button type="button">칠_관련,당번</button>
-        <button type="button">흐름_</button>
         <button type="button">분석자료</button>
+        <button type="button">흐름_</button>
+        <button class="d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
+        <button type="button">추출된번호</button>
+        <button type="button">추출된번호필터링</button>
         <button type="button">임시사진_분석자료</button>
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
-        <button type="button" onclick="임시추출30개()">임시추출30개()</button>
-        <button type="button" onclick="추출조건보기()">추출조건보기()</button>
-        <button type="button" onclick="임시_피해서번호색칠()">임시_피해서번호색칠()</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
@@ -166,6 +165,8 @@
         <div>
           <button style="width:40px;margin-left:0px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
           <button style="width:50px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
+          <button style="width:57px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_2_3중복()">23중복</button>
+          <button style="width:75px;" type="button" class="btn btn-secondary p-0" onclick="피해서3종()">피해서3종</button>
         </div>
         <div id="id_버튼45_2st" class="버튼45css" style="margin-top:5px;">
           <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
@@ -193,8 +194,6 @@
         <div>
           <button style="width:40px;margin-left:0px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_칠_조금다름();" title="색칠된번호, 피해서번호, 흰색부분 완성됨">칠</button>
           <button style="width:50px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_clear()">Clear</button>
-          <button style="width:57px;" type="button" class="btn btn-secondary p-0" onclick="번호색칠_1_2중복()">12중복</button>
-          <button style="width:75px;" type="button" class="btn btn-secondary p-0" onclick="피해서3종()">피해서3종</button>
         </div>
       </div>
       <br><br>
@@ -202,10 +201,11 @@
     </div>
 
     <div id="칠_right_출수제목">
-      <button title="흐름" style="width:40px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
-      <button title="출수제목" style="width:80px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수제목</button><br>
-      <button style="width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
-      <button style="width:60px;margin-left:5px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button><br>
+      <button title="흐름" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+      <button title="출수제목" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수</button>
+      <button style="width:45px;font-size:14px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_둘다숨기기()">숨기기</button><br>
+      <button style="width:65px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
+      <button style="width:65px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button><br>
       <button onclick="오주전();">5</button>
       <button onclick="십주전();">10</button>
       <button onclick="십오주전();">15</button>
@@ -214,17 +214,12 @@
       </ul>
     </div>
     <div id="칠_right_흐름" style="width:135px;display: inline-block;vertical-align: top;" class="d-none">
-      <button title="흐름" style="width:40px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
-      <button title="출수제목" style="width:80px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수제목</button><br>
-      <button style="width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
-      <button style="width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button>
-      <ul id="칠_흐름">
-        <li><a class="dropdown-item">오주미출수</a></li>
-        <li><a class="dropdown-item">오주미출수</a></li>
-        <li><a class="dropdown-item">오주미출수</a></li>
-        <li><a class="dropdown-item">오주미출수</a></li>
-        <li><a class="dropdown-item">오주미출수</a></li>
-        <li><a class="dropdown-item">오주미출수</a></li>
+      <button title="흐름" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+      <button title="출수제목" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수</button>
+      <button style="width:45px;font-size:14px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_둘다숨기기()">숨기기</button><br>
+      <button style="width:65px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
+      <button style="width:65px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button>
+      <ul id="칠_흐름_ul"><!--#세로구분_흐름_전체 각id를 innerHTML로 스크립트로 가져옴 <li><a class="dropdown-item">흐름_삼이일</a></li>-->
       </ul>
     </div>
   </div>
@@ -250,11 +245,14 @@
       <!--js초기화시가지고옴 -->
       </select>
       <span id="분석자료_span_날짜"></span><div id="분석자료_당번" style="display: inline-block;"></div>
-      <a type="button" class="btn btn-primary" id="분석자료_동작_당번회차_플러스" onclick="분석자료_회차_플러스()" style="height:22px;padding-top:0px; margin-top:-5px;">+</a>
-      <a type="button" class="btn btn-primary" id="분석자료_동작_당번회차_마이너스" onclick="분석자료_회차_마이너스()" style="height:22px;padding-top:0px;margin-top:-5px;">-</a>
+      <a type="button" class="btn btn-primary p-0" id="분석자료_동작_당번회차_플러스" onclick="분석자료_회차_플러스()" style="height:25px; width:40px;margin-left:5px;font-size: 14px;">+</a>
+      <a type="button" class="btn btn-primary p-0" id="분석자료_동작_당번회차_마이너스" onclick="분석자료_회차_마이너스()" style="height:25px; width:40px;margin-left:5px;font-size: 14px;">-</a>
+      <button style="height:25px; width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0" onclick="분석자료_번호추출()">번호추출</button>
+      <input id="분석자료_번호추출개수" type = "text" maxlength = "10" value=300 style="width:45px;height:25px;vertical-align: bottom;">
+      <button style="height:25px; width:110px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">추출된번호clear</button>
     </div>
     <div id="분석자료_여러45칸">
-      <div id="임시_순번45" class="분석자료_순번버튼css"><span title="클릭한 번호는 id_임시버튼45에 색칠된다.">번호선택↓</span><span>추출</span></div>
+      <div id="임시_순번45" class="분석자료_순번버튼css"  style="background-color: chartreuse;"><span title="클릭한 번호는 id_임시버튼45에 색칠된다.">번호선택↓</span><span>추출</span></div>
       <div id="임시_당번45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">당번</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_이웃수45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">이웃수</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_1출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주1출</span><span class="클릭_더블클릭"></span></div>
@@ -280,7 +278,7 @@
       <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
       <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
       <div style="display: inline-block;"><button>43</button><button>44</button><button>45</button></div>
-      <div style="display: inline-block;margin-left:5px; position: absolute;"><span>피클</span><span>색_clear</span></div><br>
+      <div style="display: inline-block;margin-left:5px; position: absolute;"><span title="위에 색칠된 피할번호, 피해서번호, 흰색부분 3종 지워진다">피클</span><span>색_clear</span></div><br>
       <span>피해서번호생성</span><span>피해서3종보기</span><br>
       <span>넣기1</span><span>넣기2</span><span>넣기3</span><span>넣기4</span>
     </div>
@@ -380,9 +378,8 @@
       <div>전회차 5주간출수중</div>
       <div>해당회차 당첨개수</div>
       <div class="높이낮춤"><button>미출</button><button>1출</button><button>2출</button><button>3↑</button></div>
-      <div><button></button><button></button><button></button><button></button></div>
-      <div><button></button><button></button><button></button><button></button></div>
-      <div><button></button><button></button><button></button><button></button></div>
+      <!-- 네번째 div안에 삼이일 정보 넣는 형식-->
+      <div class="흐름내부div_button"></div>
     </div>
 
   </div>
