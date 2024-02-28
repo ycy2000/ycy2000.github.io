@@ -32,7 +32,14 @@ header {position:fixed;width:100%;}
 #칠_right_출수제목, #칠_right_흐름 {width:135px;display: inline-block;vertical-align: top;}
 
 #세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div {height:23px;margin-bottom:-1px;}
-#세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div button
+
+#세로구분_추출된번호_전체 {margin-left:5px;}
+#추출된번호_30개씩무한누적 > div {display: inline-block; margin-right:5px;}
+#추출된번호_30개씩무한누적 > div > div {margin-bottom:-2px;}
+#추출된번호_30개씩무한누적 > div > div button
+{vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
+
+#세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div button 
 {vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
 .다섯개씩번갈아색칠 button:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
 .다섯개씩번갈아색칠 button:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}

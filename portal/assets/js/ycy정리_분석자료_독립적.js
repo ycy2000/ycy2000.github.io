@@ -1,4 +1,5 @@
 if ('초기화'=='초기화') {
+  var 분석자료_번호추출_진행가능판단;
   var 넣기아이디='';
   var 분석자료_회차index;
   var 분석자료_당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
@@ -364,7 +365,107 @@ function 분석자료_회차_마이너스() {
   document.querySelector('#분석자료_당번_회차select').selectedIndex=분석자료_회차index;
   분석자료_회차_change();
 }
+function 분석자료_번호추출_진행가능판단_실행() {
+  console.log('분석자료_번호추출_진행가능판단_실행()')
+  //분석자료_번호추출_진행가능판단='가능'
+  분석자료_번호추출_진행가능판단='가능';//불가능을 추가한다.
+  if (isNaN(document.querySelector('#분석자료_번호추출개수').value)) {
+    alert('input : #분석자료_번호추출개수.value가 숫자가 아님 : return;');
+    분석자료_번호추출_진행가능판단='불가능';
+    return;
+  }
+  if (document.querySelector('#분석자료_번호추출개수').value<1) {
+    alert('input : #분석자료_번호추출개수.value가 0보다 크지 않음, 빈칸 또는 공백일때 0으로 인식 : return;');
+    분석자료_번호추출_진행가능판단='불가능';
+    return;
+  }
+
+  for (var i=0; i<document.querySelectorAll('#분석자료_여러45칸 .클릭_더블클릭').length; i++) {
+    var 버튼안숫자개수=0;
+    for (var 내부=0; 내부<45; 내부++) {
+      if (document.querySelectorAll('#분석자료_여러45칸 > div:nth-of-type(' + (i+2) + ') button')[내부].innerHTML.length>0) {버튼안숫자개수+=1;}
+    }
+    if (버튼안숫자개수<document.querySelectorAll('.클릭_더블클릭')[i].innerHTML) {
+      alert('추출개수 기록 숫자가 숫자가 있는 버튼수보다 크면 안됨 : return;');
+      분석자료_번호추출_진행가능판단='불가능';
+    }
+  }
+  
+
+}
 function 분석자료_번호추출() {
+  분석자료_번호추출_진행가능판단_실행();
+  if (분석자료_번호추출_진행가능판단=='불가능') {return;}
+  console.log('분석자료_번호추출()')
+  var 추출개수=Number(document.querySelector('#분석자료_번호추출개수').value);
+  var 누적할요소=document.querySelector('#추출된번호_30개씩무한누적');
+  var 추가할html='';
+  var 추출개수카운트=0;
+  var 삼십카운트=0;//div묶고
+  for (var i=0; i<추출개수; i++) {//추출개수 : <div>버튼6개</div>
+    삼십카운트+=1;
+    var 인스턴트text='';
+    var 생성번호배열=['','','','','',''];//length==0, 각 i 당 배열 담을때 모두 돌아야한다.
+
+    //마구 넣고, 중복제거가 6개 초과시 6개만 가져오는것으로. 6개 미만인경우 값없는 버튼
+
+    for (var 한줄=0; 한줄<document.querySelectorAll('#분석자료_여러45칸 .클릭_더블클릭').length; 한줄++) {
+      var 버튼안숫자개수=0;
+      var 한줄추출개수=Number(document.querySelectorAll('.클릭_더블클릭')[한줄].innerHTML);
+      var 한줄번호배열=[];
+      var 한줄랜덤배열=[];
+      var 여섯개만=[];
+      if (document.querySelectorAll('.클릭_더블클릭')[한줄].innerHTML.length>0) {
+        for (var 한줄내부=0; 한줄내부<45; 한줄내부++) {
+          if (document.querySelectorAll('#분석자료_여러45칸 > div:nth-of-type(' + (한줄+2) + ') button')[한줄내부].innerHTML.length>0) {
+            버튼안숫자개수+=1;
+            한줄번호배열.push(Number(document.querySelectorAll('#분석자료_여러45칸 > div:nth-of-type(' + (한줄+2) + ') button')[한줄내부].innerHTML));        
+          }
+        }
+      }
+      if (한줄번호배열.length>0 && 한줄추출개수>0 && 버튼안숫자개수>=document.querySelectorAll('.클릭_더블클릭')[한줄].innerHTML) {
+        for (var 한줄랜덤배열i=0; i<한줄번호배열.length; 한줄랜덤배열i++) {
+          한줄랜덤배열.push(Math.random());
+        }
+        for (var 한줄추출개수i=0; i<한줄추출개수; 한줄추출개수i++) {
+          // 생성번호배열.push(한줄번호배열(한줄랜덤배열.indexof(Math.max(...한줄랜덤배열))));
+          생성번호배열.push(한줄번호배열[한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))]);
+          한줄랜덤배열[한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))]=0;
+        }
+        생성번호배열=new Set(생성번호배열); //중복제거 배열아님 : 색칠이 없을때 중복발생
+        생성번호배열=[...생성번호배열];//배열로 전환
+        for (var 생성번호배열i=0; 생성번호배열i<6; 생성번호배열i++) {
+          if (생성번호배열[생성번호배열i]) {
+            여섯개만.push(생성번호배열[생성번호배열i]);
+          } else {
+            여섯개만.push('');
+          }
+        }
+        여섯개만.sort((a,t) => a-t);//정렬
+        console.log('여섯개만 : ' + 여섯개만)
+      }
+    }
+
+    for (var 인스턴트text내부=0; 인스턴트text내부<6; 인스턴트text내부++) {
+      if (여섯개만[인스턴트text내부]) {
+        인스턴트text+='<button>' + 여섯개만[인스턴트text내부] + '</button>';
+      } else {
+        인스턴트text+='<button></button>';
+      }
+
+    }
+    console.log('추출개수 : ' + (i+1))
+    인스턴트text='<div>' + 인스턴트text + '</div>' //가로한줄
+    추가할html+=인스턴트text //가로한줄
+    if (삼십카운트==30 || (i+1)==추출개수) {
+      추가할html='<div>' + 추가할html + '</div>'
+      누적할요소.innerHTML+=추가할html;
+      추가할html='';
+      삼십카운트=0;
+    }
+  }
+  var 클릭_더블클릭=document.querySelectorAll('.클릭_더블클릭');
+  //클릭_더블클릭이 0보다큰것이면 실행 : 추출개수가 번호개수보다 크지않다면 진행
   
 
 
@@ -455,12 +556,13 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
   }
   if (e.target.innerHTML=='추출') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==추출');
-
-    for (var i=1; i<document.querySelectorAll('.클릭_더블클릭').length; i++) {//1부터 (두번째꺼부터)
+    for (var i=0; i<document.querySelectorAll('.클릭_더블클릭').length; i++) {//1부터 (두번째꺼부터)
       document.querySelectorAll('.클릭_더블클릭')[i].innerHTML='';
     }
-
-
+  }
+  if (e.target.innerHTML=='추출된번호clear') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==추출된번호clear');
+    document.querySelector('#추출된번호_30개씩무한누적').innerHTML='';
   }
 }
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {

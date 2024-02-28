@@ -247,8 +247,8 @@
       <span id="분석자료_span_날짜"></span><div id="분석자료_당번" style="display: inline-block;"></div>
       <a type="button" class="btn btn-primary p-0" id="분석자료_동작_당번회차_플러스" onclick="분석자료_회차_플러스()" style="height:25px; width:40px;margin-left:5px;font-size: 14px;">+</a>
       <a type="button" class="btn btn-primary p-0" id="분석자료_동작_당번회차_마이너스" onclick="분석자료_회차_마이너스()" style="height:25px; width:40px;margin-left:5px;font-size: 14px;">-</a>
-      <button style="height:25px; width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0" onclick="분석자료_번호추출()">번호추출</button>
-      <input id="분석자료_번호추출개수" type = "text" maxlength = "10" value=300 style="width:45px;height:25px;vertical-align: bottom;">
+      <button style="height:25px; width:90px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0" onclick="분석자료_번호추출()">번호추출누적</button>
+      <input id="분석자료_번호추출개수" type = "text" maxlength = "10" value=1 style="width:45px;height:25px;vertical-align: bottom;">
       <button style="height:25px; width:110px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">추출된번호clear</button>
     </div>
     <div id="분석자료_여러45칸">
@@ -257,7 +257,7 @@
       <div id="임시_이웃수45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">이웃수</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_1출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주1출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_2출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주2출</span><span class="클릭_더블클릭"></span></div>
-      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주3출이상</span class="클릭_더블클릭"><span></span></div>
+      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주3출이상</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_출" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_미출5" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주미출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_미출10" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">10주미출</span><span class="클릭_더블클릭"></span></div>
@@ -265,10 +265,10 @@
       <div id="임시_피할번호" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">피할번호</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_피해서번호" class="다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span style="background-color: deepskyblue;" title="처음에는 당번의 피해서번호" class="분석자료_번호선택">피해서번호</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_흰색부분" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">흰색부분</span><span class="클릭_더블클릭"></span></div>
-      <div id="임시_1" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_1</span><span></span class="클릭_더블클릭"></div>
-      <div id="임시_2" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_2</span><span></span class="클릭_더블클릭"></div>
-      <div id="임시_3" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_3</span><span></span class="클릭_더블클릭"></div>
-      <div id="임시_4" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_4</span><span></span class="클릭_더블클릭"></div>
+      <div id="임시_1" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_1</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_2" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_2</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_3" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_3</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_4" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_4</span><span class="클릭_더블클릭"></span></div>
     </div>
     <div id="id_임시버튼45" class="absolute d-none" style="background-color: white;">
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
@@ -326,8 +326,24 @@
       <div class="다섯개씩번갈아색칠"><span></span></div>
       <div class="다섯개씩번갈아색칠"><span></span></div>
     </div>
+  </div>
 
-  
+  <div id="세로구분_흐름_전체" class="d-inline-block" style="vertical-align: top;">
+    <!-- 이월수 개수 : 번호, 이웃수개수 : 번호, 미출123출, 연번, 단번,십번,이십번,삼십번,사십번대 -->
+    <div id="흐름_삼이일" class="흐름div안버튼7개까지css">
+      <div>전회차 5주간출수중</div>
+      <div>해당회차 당첨개수</div>
+      <div class="높이낮춤"><button>미출</button><button>1출</button><button>2출</button><button>3↑</button></div>
+      <!-- 네번째 div안에 삼이일 정보 넣는 형식-->
+      <div class="흐름내부div_button"></div>
+    </div>
+
+  </div>
+
+  <div id="세로구분_추출된번호_전체" class="d-inline-block" style="vertical-align: top;">
+    <div>※번호추출은 분석자료에서!!</div>
+    <div id="추출된번호_30개씩무한누적"><!-- <div> 안에 <div>버튼6개<div>*30개 만들고 번호넣는다 -->
+    </div>
   </div>
 
   <div id="세로구분_임시_전체" class="d-inline-block" style="vertical-align: top;">
@@ -372,17 +388,7 @@
     </div>
   </div>
 
-  <div id="세로구분_흐름_전체" class="d-inline-block" style="vertical-align: top;">
-    <!-- 이월수 개수 : 번호, 이웃수개수 : 번호, 미출123출, 연번, 단번,십번,이십번,삼십번,사십번대 -->
-    <div id="흐름_삼이일" class="흐름div안버튼7개까지css">
-      <div>전회차 5주간출수중</div>
-      <div>해당회차 당첨개수</div>
-      <div class="높이낮춤"><button>미출</button><button>1출</button><button>2출</button><button>3↑</button></div>
-      <!-- 네번째 div안에 삼이일 정보 넣는 형식-->
-      <div class="흐름내부div_button"></div>
-    </div>
 
-  </div>
 
 
 
