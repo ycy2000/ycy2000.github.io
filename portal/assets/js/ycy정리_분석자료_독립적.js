@@ -162,7 +162,8 @@ function 분석자료_넣기아이디에_색칠번호넣기() {
 function 분석자료_회차_change() {
   console.log('분석자료_회차_change()')
 
-  for (var i=0; i<45; i++) {//3종 색 칠할때 쓰여질수 있어서지운다
+  //3종 색 칠할때 쓰여질수 있어서지운다
+  for (var i=0; i<45; i++) {
     if (document.querySelectorAll('#id_임시버튼45 button')[i].classList.contains('분석자료_피해서3종_선택번호')) {
       document.querySelectorAll('#id_임시버튼45 button')[i].classList.remove('분석자료_피해서3종_선택번호');
       document.querySelectorAll('#id_임시버튼45 button')[i].removeAttribute('title');
@@ -198,8 +199,10 @@ function 분석자료_회차_change() {
   var 고정번호들=document.querySelectorAll('.분석자료_고정등번호색칠');
   console.log('고정번호들.length : ' + 고정번호들.length)
   for (var i=0; i<고정번호들.length; i++) {
-    고정번호들[i].classList.remove('분석자료_고정등번호색칠');
-    고정번호들[i].innerHTML='';
+    if (고정번호들[i].parentNode.id!='임시_피할번호' && 고정번호들[i].parentNode.id!='임시_피해서번호' && 고정번호들[i].parentNode.id!='임시_흰색부분') {
+      고정번호들[i].classList.remove('분석자료_고정등번호색칠');
+      고정번호들[i].innerHTML='';
+    }
   }
   //
   var 이월수_배열=[];
