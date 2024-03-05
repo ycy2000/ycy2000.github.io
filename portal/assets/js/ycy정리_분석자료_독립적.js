@@ -397,6 +397,13 @@ function 분석자료_번호추출_진행가능판단_실행() {
 
 }
 function 분석자료_번호추출() {
+          //중복제거, 배열로전환, 정렬
+          // 생성번호배열=new Set(생성번호배열);
+          // 생성번호배열=[...생성번호배열];
+          // 여섯개만.sort((a,t) => a-t);
+          // 최대값 : Math.max(...한줄랜덤배열)
+          // 최대값의 인덱스 위치 : 한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))
+          // 인덱스 위치의 값을 0으로 : 한줄랜덤배열[한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))]=0;
   분석자료_번호추출_진행가능판단_실행();
   if (분석자료_번호추출_진행가능판단=='불가능') {return;}
   console.log('분석자료_번호추출()')
@@ -405,70 +412,24 @@ function 분석자료_번호추출() {
   var 추가할html='';
   var 추출개수카운트=0;
   var 삼십카운트=0;//div묶고
-  for (var i=0; i<추출개수; i++) {//추출개수 : <div>버튼6개</div>
-    삼십카운트+=1;
-    var 인스턴트text='';
-    var 생성번호배열=['','','','','',''];//length==0, 각 i 당 배열 담을때 모두 돌아야한다.
 
-    //마구 넣고, 중복제거가 6개 초과시 6개만 가져오는것으로. 6개 미만인경우 값없는 버튼
-
-    for (var 한줄=0; 한줄<document.querySelectorAll('#분석자료_여러45칸 .클릭_더블클릭').length; 한줄++) {
-      var 버튼안숫자개수=0;
-      var 한줄추출개수=Number(document.querySelectorAll('.클릭_더블클릭')[한줄].innerHTML);
-      var 한줄번호배열=[];
-      var 한줄랜덤배열=[];
-      var 여섯개만=[];
-      if (document.querySelectorAll('.클릭_더블클릭')[한줄].innerHTML.length>0) {
-        for (var 한줄내부=0; 한줄내부<45; 한줄내부++) {
-          if (document.querySelectorAll('#분석자료_여러45칸 > div:nth-of-type(' + (한줄+2) + ') button')[한줄내부].innerHTML.length>0) {
-            버튼안숫자개수+=1;
-            한줄번호배열.push(Number(document.querySelectorAll('#분석자료_여러45칸 > div:nth-of-type(' + (한줄+2) + ') button')[한줄내부].innerHTML));        
-          }
-        }
-      }
-      if (한줄번호배열.length>0 && 한줄추출개수>0 && 버튼안숫자개수>=document.querySelectorAll('.클릭_더블클릭')[한줄].innerHTML) {
-        for (var 한줄랜덤배열i=0; i<한줄번호배열.length; 한줄랜덤배열i++) {
-          한줄랜덤배열.push(Math.random());
-        }
-        for (var 한줄추출개수i=0; i<한줄추출개수; 한줄추출개수i++) {
-          // 생성번호배열.push(한줄번호배열(한줄랜덤배열.indexof(Math.max(...한줄랜덤배열))));
-          생성번호배열.push(한줄번호배열[한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))]);
-          한줄랜덤배열[한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))]=0;
-        }
-        생성번호배열=new Set(생성번호배열); //중복제거 배열아님 : 색칠이 없을때 중복발생
-        생성번호배열=[...생성번호배열];//배열로 전환
-        for (var 생성번호배열i=0; 생성번호배열i<6; 생성번호배열i++) {
-          if (생성번호배열[생성번호배열i]) {
-            여섯개만.push(생성번호배열[생성번호배열i]);
-          } else {
-            여섯개만.push('');
-          }
-        }
-        여섯개만.sort((a,t) => a-t);//정렬
-        console.log('여섯개만 : ' + 여섯개만)
-      }
-    }
-
-    for (var 인스턴트text내부=0; 인스턴트text내부<6; 인스턴트text내부++) {
-      if (여섯개만[인스턴트text내부]) {
-        인스턴트text+='<button>' + 여섯개만[인스턴트text내부] + '</button>';
-      } else {
-        인스턴트text+='<button></button>';
-      }
-
-    }
-    console.log('추출개수 : ' + (i+1))
-    인스턴트text='<div>' + 인스턴트text + '</div>' //가로한줄
-    추가할html+=인스턴트text //가로한줄
-    if (삼십카운트==30 || (i+1)==추출개수) {
-      추가할html='<div>' + 추가할html + '</div>'
-      누적할요소.innerHTML+=추가할html;
-      추가할html='';
-      삼십카운트=0;
-    }
+  var 임시_작업요소, 임시_아이디, 임시_span1, 임시_span2_숫자, 임시_버튼개수, 임시_분석자료_고정등번호색칠_클래스개수;
+  for (var 클릭_더블클릭반복=0; 클릭_더블클릭반복<document.querySelectorAll('.클릭_더블클릭').length; 클릭_더블클릭반복++) {
+    임시_아이디=document.querySelectorAll('.클릭_더블클릭')[클릭_더블클릭반복].parentNode.id;
+    임시_작업요소=document.querySelector('#' + 임시_아이디);
+    임시_span1=document.querySelectorAll('#' + 임시_아이디 + ' span')[0].innerHTML;
+    임시_span2_숫자=Number(document.querySelectorAll('#' + 임시_아이디 + ' span')[1].innerHTML);
+    임시_버튼개수=document.querySelectorAll('#' + 임시_아이디 + ' button').length;
+    임시_분석자료_고정등번호색칠_클래스개수=document.querySelectorAll('#' + 임시_아이디 + ' 분석자료_고정등번호색칠').length;
+    console.log('구분')
+    console.log('임시_작업요소.id : ' + 임시_작업요소.id)
+    console.log('임시_span1.innerHTML : ' + 임시_span1)
+    console.log('임시_span2_숫자(Number) : ' + 임시_span2_숫자)
+    console.log('임시_버튼개수 : ' + 임시_버튼개수)
+    console.log('임시_분석자료_고정등번호색칠_클래스개수 : ' + 임시_분석자료_고정등번호색칠_클래스개수)    
   }
-  var 클릭_더블클릭=document.querySelectorAll('.클릭_더블클릭');
-  //클릭_더블클릭이 0보다큰것이면 실행 : 추출개수가 번호개수보다 크지않다면 진행
+
+
   
 
 
