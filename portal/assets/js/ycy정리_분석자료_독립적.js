@@ -245,10 +245,10 @@ function 분석자료_회차_change() {
     나머지=i%9;
     if (나머지<2 || 나머지==8) {
 
-    } else {
-      if (i<9*5) {오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i])}
-      if (i<9*10) {십주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i])}
-      if (i<9*15) {십오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i])}
+    } else {//+8:해당회차의 보볼
+      if (i<9*5) {오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+8])}
+      if (i<9*10) {십주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+8])}
+      if (i<9*15) {십오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+8])}
     }
   }
   for (var i=1; i<46; i++) {
@@ -264,7 +264,7 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_3출이상45 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
-    if (오주간번호_보볼제외.filter(element => i == element).length>0) {//#임시_미출5
+    if (오주간번호_보볼제외.filter(element => i == element).length>0) {//#임시_출
       document.querySelectorAll('#임시_출 button')[i-1].innerHTML=i;
       document.querySelectorAll('#임시_출 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
@@ -409,30 +409,75 @@ function 분석자료_번호추출() {
   console.log('분석자료_번호추출()')
   var 추출개수=Number(document.querySelector('#분석자료_번호추출개수').value);
   var 누적할요소=document.querySelector('#추출된번호_30개씩무한누적');
-  var 추가할html='';
+  var 한줄번호누적배열;
+  var 번호한줄divhtml='';
+  var 넣을html누적='';
   var 추출개수카운트=0;
   var 삼십카운트=0;//div묶고
-
-  var 임시_작업요소, 임시_아이디, 임시_span1, 임시_span2_숫자, 임시_버튼개수, 임시_분석자료_고정등번호색칠_클래스개수;
-  for (var 클릭_더블클릭반복=0; 클릭_더블클릭반복<document.querySelectorAll('.클릭_더블클릭').length; 클릭_더블클릭반복++) {
-    임시_아이디=document.querySelectorAll('.클릭_더블클릭')[클릭_더블클릭반복].parentNode.id;
-    임시_작업요소=document.querySelector('#' + 임시_아이디);
-    임시_span1=document.querySelectorAll('#' + 임시_아이디 + ' span')[0].innerHTML;
-    임시_span2_숫자=Number(document.querySelectorAll('#' + 임시_아이디 + ' span')[1].innerHTML);
-    임시_버튼개수=document.querySelectorAll('#' + 임시_아이디 + ' button').length;
-    임시_분석자료_고정등번호색칠_클래스개수=document.querySelectorAll('#' + 임시_아이디 + ' 분석자료_고정등번호색칠').length;
-    console.log('구분')
-    console.log('임시_작업요소.id : ' + 임시_작업요소.id)
-    console.log('임시_span1.innerHTML : ' + 임시_span1)
-    console.log('임시_span2_숫자(Number) : ' + 임시_span2_숫자)
-    console.log('임시_버튼개수 : ' + 임시_버튼개수)
-    console.log('임시_분석자료_고정등번호색칠_클래스개수 : ' + 임시_분석자료_고정등번호색칠_클래스개수)    
+  var 고정번호랜덤배열;
+  var 임시_작업요소, 임시_아이디, 임시_span1, 임시_span2_숫자, 임시_버튼개수, 임시_분석자료_고정등번호색칠_클래스, 최대값인덱스;
+  var 생성개수=0;
+  //1회추출 먼저 작성하고 반복을 추가하기로
+  for (var i=0; i<추출개수; i++) {
+    한줄번호누적배열=[];//당번부터 임시4까지 번호추출 누적
+    번호한줄divhtml=''
+    //번호를 담는다...
+    for (var 클릭_더블클릭반복=0; 클릭_더블클릭반복<document.querySelectorAll('.클릭_더블클릭').length; 클릭_더블클릭반복++) {
+      임시_아이디=document.querySelectorAll('.클릭_더블클릭')[클릭_더블클릭반복].parentNode.id;
+      임시_작업요소=document.querySelector('#' + 임시_아이디);
+      임시_span1=document.querySelectorAll('#' + 임시_아이디 + ' span')[0].innerHTML;
+      임시_span2_숫자=Number(document.querySelectorAll('#' + 임시_아이디 + ' span')[1].innerHTML);
+      임시_버튼개수=document.querySelectorAll('#' + 임시_아이디 + ' button').length;
+      임시_분석자료_고정등번호색칠_클래스=document.querySelectorAll('#' + 임시_아이디 + ' .분석자료_고정등번호색칠');
+      // console.log('구분')
+      // console.log('임시_작업요소.id : ' + 임시_작업요소.id)
+      // console.log('임시_span1.innerHTML : ' + 임시_span1)
+      // console.log('임시_span2_숫자(Number) : ' + 임시_span2_숫자)
+      // console.log('임시_버튼개수 : ' + 임시_버튼개수)
+      // console.log('임시_분석자료_고정등번호색칠_클래스개수 : ' + 임시_분석자료_고정등번호색칠_클래스.length)  
+      if (임시_span2_숫자>0 && 임시_분석자료_고정등번호색칠_클래스.length>0) {//추출개수가 0보다 크고 숫자(색칠)이 있으면
+        //랜덤배열 생성(추출하면 index참조하여 값을 0으로)
+        고정번호랜덤배열=[];
+        for (var 랜덤추가=0; 랜덤추가<임시_분석자료_고정등번호색칠_클래스.length; 랜덤추가++) {
+          고정번호랜덤배열.push(Math.random());
+        }
+        for (var 추출=0; 추출<임시_span2_숫자; 추출++) {
+          최대값인덱스=고정번호랜덤배열.indexOf(Math.max(...고정번호랜덤배열));
+          고정번호랜덤배열[최대값인덱스]=0;//다음최대값 추출위해 0(최소값)으로 변경해둠
+          한줄번호누적배열.push(임시_분석자료_고정등번호색칠_클래스[최대값인덱스].innerHTML);
+        }
+      }
+    }
+    //중복제거, 배열로전환, 정렬
+    한줄번호누적배열=new Set(한줄번호누적배열);
+    한줄번호누적배열=[...한줄번호누적배열];
+    한줄번호누적배열.sort((a,t) => a-t);
+    //번호한줄divhtml : <div>버튼,,,</div>
+    if (한줄번호누적배열.length>0) {
+      번호한줄divhtml='';
+      for (var div생성=0; div생성<한줄번호누적배열.length; div생성++) {
+        번호한줄divhtml+='<button>' + 한줄번호누적배열[div생성] + '</button>'
+      }
+      번호한줄divhtml='<div>' + 번호한줄divhtml + '</div>'
+      넣을html누적+=번호한줄divhtml;
+      번호한줄divhtml='';//초기화
+      //30개? div 묶는 조건
+      생성개수+=1;
+      if (생성개수==30) {
+        넣을html누적='<div>' + 넣을html누적 + '</div>'; 
+        누적할요소.innerHTML+=넣을html누적;//넣기
+        넣을html누적='';//초기화
+        생성개수=0;
+      }
+    }
   }
-
-
-  
-
-
+  if (생성개수!=30) {//30미만일때 마지막 처리
+    넣을html누적='<div>' + 넣을html누적 + '</div>'; 
+    누적할요소.innerHTML+=넣을html누적;//넣기
+    넣을html누적='';//초기화
+  }
+  document.querySelector('#번호누적개수').innerHTML=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div').length; 
+  alert('생성완료! 추출된번호 클릭!')
 }
 
 //
@@ -493,6 +538,11 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     if (e.target.innerHTML=='넣기4') {넣기아이디='임시_4'}
     분석자료_넣기아이디에_색칠번호넣기();
   }
+  if (e.target.innerHTML=='위로' || e.target.innerHTML=='아래로') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==위로,아래로')
+    if (e.target.innerHTML=='위로') {document.querySelector('#id_임시버튼45').style.top='137px'}
+    if (e.target.innerHTML=='아래로') {document.querySelector('#id_임시버튼45').style.top='490px'}
+  }
   if (e.target.innerHTML=='피클') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==피클')
     for (var i=0; i<45; i++) {
@@ -527,6 +577,7 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
   if (e.target.innerHTML=='추출된번호clear') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==추출된번호clear');
     document.querySelector('#추출된번호_30개씩무한누적').innerHTML='';
+    document.querySelector('#번호누적개수').innerHTML=0;
   }
 }
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {

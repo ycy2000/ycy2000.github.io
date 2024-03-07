@@ -247,9 +247,10 @@
       <span id="분석자료_span_날짜"></span><div id="분석자료_당번" style="display: inline-block;"></div>
       <a type="button" class="btn btn-primary p-0" id="분석자료_동작_당번회차_플러스" onclick="분석자료_회차_플러스()" style="height:25px; width:40px;margin-left:5px;font-size: 14px;">+</a>
       <a type="button" class="btn btn-primary p-0" id="분석자료_동작_당번회차_마이너스" onclick="분석자료_회차_마이너스()" style="height:25px; width:40px;margin-left:5px;font-size: 14px;">-</a>
-      <button style="height:25px; width:90px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0" onclick="분석자료_번호추출()">번호추출누적</button>
-      <input id="분석자료_번호추출개수" type = "text" maxlength = "10" value=1 style="width:45px;height:25px;vertical-align: bottom;">
+      <button style="height:25px; width:80px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0" onclick="분석자료_번호추출()">번호추출</button>
+      <input id="분석자료_번호추출개수" type = "text" maxlength = "10" value=300 style="width:45px;height:25px;vertical-align: bottom;">
       <button style="height:25px; width:110px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">추출된번호clear</button>
+      <span>누적개수</span><button id="번호누적개수" style="height:25px; width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">0</button>
     </div>
     <div id="분석자료_여러45칸">
       <div id="임시_순번45" class="분석자료_순번버튼css"  style="background-color: chartreuse;"><span title="클릭한 번호는 id_임시버튼45에 색칠된다.">번호선택↓</span><span>추출</span></div>
@@ -270,7 +271,7 @@
       <div id="임시_3" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_3</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_4" class=" 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">임시_4</span><span class="클릭_더블클릭"></span></div>
     </div>
-    <div id="id_임시버튼45" class="absolute d-none" style="background-color: white;">
+    <div id="id_임시버튼45" class="absolute d-none" style="background-color: white;top:490px;">
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -280,7 +281,8 @@
       <div style="display: inline-block;"><button>43</button><button>44</button><button>45</button></div>
       <div style="display: inline-block;margin-left:5px; position: absolute;"><span title="위에 색칠된 피할번호, 피해서번호, 흰색부분 3종 지워진다">피클</span><span>색_clear</span></div><br>
       <span>피해서번호생성</span><span>피해서3종보기</span><br>
-      <span>넣기1</span><span>넣기2</span><span>넣기3</span><span>넣기4</span>
+      <span>넣기1</span><span>넣기2</span><span>넣기3</span><span>넣기4</span><br>
+      <span>위로</span><span>아래로</span>
     </div>
 
     <div id="분석자료_30회차당번_제목" style="border:2px solid black">
