@@ -452,6 +452,28 @@ function 분석자료_번호추출() {
     한줄번호누적배열=new Set(한줄번호누적배열);
     한줄번호누적배열=[...한줄번호누적배열];
     한줄번호누적배열.sort((a,t) => a-t);
+    //#여섯개안되면.innerHTML : 나오는대로>패스, 여섯개안되면 6개 맞추기>==
+    if (document.querySelector('#여섯개안되면').innerHTML=='여섯개안되면 6개 맞추기' && 한줄번호누적배열.length<6) {
+      var 추가개수=6-한줄번호누적배열.length;
+      고정번호랜덤배열=[];
+      for (var 랜덤추가=0; 랜덤추가<45; 랜덤추가++) {
+        고정번호랜덤배열.push(Math.random());
+      }
+      //기존번호 부분 0으로(최소값)
+      for (var 랜덤추가=0; 랜덤추가<한줄번호누적배열.length; 랜덤추가++) {
+        고정번호랜덤배열[Number(한줄번호누적배열[랜덤추가])-1]=0;
+      }
+      for (var 추출=0; 추출<추가개수; 추출++) {
+        최대값인덱스=고정번호랜덤배열.indexOf(Math.max(...고정번호랜덤배열));
+        고정번호랜덤배열[최대값인덱스]=0;//다음최대값 추출위해 0(최소값)으로 변경해둠
+        한줄번호누적배열.push(최대값인덱스+1);
+      }
+      //중복제거, 배열로전환, 정렬
+      한줄번호누적배열=new Set(한줄번호누적배열);
+      한줄번호누적배열=[...한줄번호누적배열];
+      한줄번호누적배열.sort((a,t) => a-t);
+    }
+
     //번호한줄divhtml : <div>버튼,,,</div>
     if (한줄번호누적배열.length>0) {
       번호한줄divhtml='';
@@ -578,6 +600,16 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==추출된번호clear');
     document.querySelector('#추출된번호_30개씩무한누적').innerHTML='';
     document.querySelector('#번호누적개수').innerHTML=0;
+  }
+  if (e.target.id=='여섯개안되면') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.id==여섯개안되면');
+    if (document.querySelector('#여섯개안되면').innerHTML=='여섯개안되면 6개 맞추기') {
+      document.querySelector('#여섯개안되면').innerHTML='나오는대로';
+      document.querySelector('#여섯개안되면').style.width='85px';
+    } else {
+      document.querySelector('#여섯개안되면').innerHTML='여섯개안되면 6개 맞추기';
+      document.querySelector('#여섯개안되면').style.width='180px';
+    }
   }
 }
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
