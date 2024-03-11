@@ -14,7 +14,7 @@ header {position:fixed;width:100%;}
 .파란색글자 {font-style : italic;color: blue;}
 #당번_전체 > div:nth-child(odd) > *:not(:last-child):not([class*='색칠용버튼']) {background-color:bisque;color:blue;}
 
-.흐름내부div_button > div:nth-child(odd) > button {background-color:bisque;color:blue;}
+.흐름내부div_button > div:nth-child(odd) > button:not([class*='간격클릭클래스']) {background-color:bisque;color:blue;}
 
 #당번_회차날짜조회묶음 {height:34px;}
 #당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
@@ -93,6 +93,9 @@ header {position:fixed;width:100%;}
 
 .사오색칠 {background-color: blueviolet;}
 .색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
+.간격클릭클래스 {background-color:chartreuse;border-radius: 20px;}
+
+
 
 .당번_span_한개 {border-radius: 20px;}/* 번호색칠 index와 같은 곳에 회차에 당번 회차 동그라미용 */
 

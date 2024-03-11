@@ -678,7 +678,15 @@ function 바디클릭시동작설정(e) {
   }
   if (e.target.parentNode.parentNode.classList.contains('간격추출색칠')) {
     console.log('바디클릭시동작설정(e) ==> e.target.parentNode.parentNode.classList.contains(간격추출색칠)');
+    if (e.target.classList.contains('간격클릭클래스')) {
+      document.querySelector('.간격클릭클래스').classList.remove('간격클릭클래스');//색칠되어있는거클릭시 색칠지움
+      return;
+    }
     e.target.parentNode.classList.add('코딩표시');
+    if (document.querySelector('.간격클릭클래스')) {
+      document.querySelector('.간격클릭클래스').classList.remove('간격클릭클래스');//하나있는거 지움
+    }
+    e.target.classList.add('간격클릭클래스');
     var 부모의부모의부모의아이디=e.target.parentNode.parentNode.parentNode.id;
     var 순환요소=document.querySelectorAll('#' + 부모의부모의부모의아이디 + ' .간격추출색칠 > div');
     var 순번=0;
@@ -695,7 +703,25 @@ function 바디클릭시동작설정(e) {
       당번.push(document.querySelectorAll('#당번_전체 > div:nth-of-type(' + 코딩표시인덱스 + ') button')[i].innerHTML);
     }
     console.log('당번 : ' + 당번)
+    //#칠_번호에 : 1_2_3_4_5_6_7_8_9 형태로 번호전달, 전체변수_색칠할번호들_아이디 ==> 칠_번호
     var 클릭버튼인덱스=Number(e.target.title);
+    var 색칠할번호배열=[];
+    if (클릭버튼인덱스==5) {
+      for (var i=1; i<당번[0]; i++) {
+       색칠할번호배열.push(i);
+      }
+      for (var i=45; i>당번[5]; i--) {
+        색칠할번호배열.push(i);
+      }
+    }
+    if (클릭버튼인덱스!=5) {
+      for (var i=(Number(당번[클릭버튼인덱스])+1); i<Number(당번[클릭버튼인덱스+1]); i++) {
+        색칠할번호배열.push(i);
+      }
+    }
+    document.querySelector('#칠_번호').innerHTML=색칠할번호배열.join('_');
+    전체변수_색칠할번호들_아이디 ='칠_번호';
+    색칠동작();
 
     return;
   }
