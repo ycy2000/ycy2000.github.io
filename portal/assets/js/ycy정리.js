@@ -433,8 +433,10 @@ function 실행_흐름만들기() {
   전체변수_index확정=document.querySelector('#당번_회차select').selectedIndex;
   전체변수_시작배열값=(전체변수_회차개수-전체변수_index확정-1)*9;//9개정보중 회차번호 : 현재회차 다음회차!!
   document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML='';
+  document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML='';
+  document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML='';
   for (var 당번정보=0; 당번정보<100; 당번정보++) {
-    var 현재회차제외_오주간번호_보볼제외=[], 현재회차제외_최근번호_보볼제외=[], 현재회차_보볼제외=[];
+    var 현재회차제외_오주간번호_보볼제외=[], 현재회차제외_최근번호_보볼제외=[], 현재회차_보볼제외=[], 간격용_다음회차_보볼제외=[];
     var 나머지;
     var 흐름_삼이일_미출=0, 흐름_삼이일_1출=0, 흐름_삼이일_2출=0, 흐름_삼이일_3출이상=0;
     var 흐름_삼이일_innerHTML='';
@@ -445,6 +447,7 @@ function 실행_흐름만들기() {
       } else {
         if (i<9*1) {현재회차제외_최근번호_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i-(당번정보*9)])}
         if (i<9*1) {현재회차_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i+9-(당번정보*9)])}
+        if (i<9*1) {간격용_다음회차_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i+9+9-(당번정보*9)])}
         if (i<9*5) {현재회차제외_오주간번호_보볼제외.push(전체변수_당번전체[전체변수_시작배열값-i-(당번정보*9)])}
       }
     }
@@ -461,10 +464,87 @@ function 실행_흐름만들기() {
     흐름_삼이일_innerHTML+='<button>' + 흐름_삼이일_3출이상 + '</button>';
     흐름_삼이일_innerHTML='<div>' + 흐름_삼이일_innerHTML + '</div>';
     document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML+=흐름_삼이일_innerHTML;
-
-    
-
-
+    //흐름_간격
+    현재회차_보볼제외.sort((a,t) => a-t);
+    현재회차제외_최근번호_보볼제외.sort((a,t) => a-t);
+   
+    var 간격1, 간격2, 간격3, 간격4, 간격5, 간격6, 당첨1, 당첨2, 당첨3, 당첨4, 당첨5, 당첨6 ; 
+    var 간격_innerHTML='', 간격당당첨_innerHTML='';
+    간격1=현재회차_보볼제외[1] - 현재회차_보볼제외[0]-1;
+    간격2=현재회차_보볼제외[2] - 현재회차_보볼제외[1]-1;
+    간격3=현재회차_보볼제외[3] - 현재회차_보볼제외[2]-1;
+    간격4=현재회차_보볼제외[4] - 현재회차_보볼제외[3]-1;
+    간격5=현재회차_보볼제외[5] - 현재회차_보볼제외[4]-1;
+    간격6=(45-현재회차_보볼제외[5]) + (현재회차_보볼제외[0]-1);
+    if (전체변수_index확정==0 && 당번정보==0) {
+      당첨1='_', 당첨2='_', 당첨3='_', 당첨4='_', 당첨5='_', 당첨6='_';
+      // console.log('당번정보 : ' + 당번정보)
+    } else {
+      당첨1=간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[0])) && (element < Number(현재회차_보볼제외[1])))).length;
+      당첨2=간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[1])) && (element < Number(현재회차_보볼제외[2])))).length;
+      당첨3=간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[2])) && (element < Number(현재회차_보볼제외[3])))).length;
+      당첨4=간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[3])) && (element < Number(현재회차_보볼제외[4])))).length;
+      당첨5=간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[4])) && (element < Number(현재회차_보볼제외[5])))).length;
+      당첨6=간격용_다음회차_보볼제외.filter(element => element > Number(현재회차_보볼제외[5])).length + 간격용_다음회차_보볼제외.filter(element => element < Number(현재회차_보볼제외[0])).length;
+      // console.log('간격용_다음회차_보볼제외 : ' + 간격용_다음회차_보볼제외)
+      // console.log('당번정보 : ' + 당번정보 + ' , ' + 당첨1 + ' ,' + 당첨2 + ' ,' + 당첨3 + ' ,' + 당첨4 + ' ,' + 당첨5 + ' ,' + 당첨6)
+    }
+    간격_innerHTML+='<button title="0">' + 간격1 + '</button>';
+    간격_innerHTML+='<button title="1">' + 간격2 + '</button>';
+    간격_innerHTML+='<button title="2">' + 간격3 + '</button>';
+    간격_innerHTML+='<button title="3">' + 간격4 + '</button>';
+    간격_innerHTML+='<button title="4">' + 간격5 + '</button>';
+    간격_innerHTML+='<button title="5">' + 간격6 + '</button>';
+    간격_innerHTML='<div>' + 간격_innerHTML + '</div>';
+    document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML+=간격_innerHTML;
+    간격당당첨_innerHTML+='<button title="0">' + 당첨1 + '</button>';
+    간격당당첨_innerHTML+='<button title="1">' + 당첨2 + '</button>';
+    간격당당첨_innerHTML+='<button title="2">' + 당첨3 + '</button>';
+    간격당당첨_innerHTML+='<button title="3">' + 당첨4 + '</button>';
+    간격당당첨_innerHTML+='<button title="4">' + 당첨5 + '</button>';
+    간격당당첨_innerHTML+='<button title="5">' + 당첨6 + '</button>';
+    간격당당첨_innerHTML='<div>' + 간격당당첨_innerHTML + '</div>';
+    document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML+=간격당당첨_innerHTML;
+    //흐름_간격 내림차순
+    var 내림차순간격_innerHTML='', 내림차순간격당당첨_innerHTML='';
+    var 간격배열=[간격1,간격2,간격3,간격4,간격5,간격6];
+    var 당첨배열=[당첨1,당첨2,당첨3,당첨4,당첨5,당첨6];
+    var 내림차순간격배열=[];
+    var 내림차순당첨배열=[];
+    var 내림차순의원간격인덱스=[];
+    for (var i=0; i<6; i++) {
+      내림차순간격배열.push(Math.max(...간격배열));
+      내림차순당첨배열.push(당첨배열[간격배열.indexOf(Math.max(...간격배열))]);
+      내림차순의원간격인덱스.push(간격배열.indexOf(Math.max(...간격배열)));
+      간격배열[간격배열.indexOf(Math.max(...간격배열))]=-1;
+    }
+    if (전체변수_index확정==0 && 당번정보==0) {
+      당첨1='_', 당첨2='_', 당첨3='_', 당첨4='_', 당첨5='_', 당첨6='_';
+      // console.log('당번정보 : ' + 당번정보)
+    } else {
+      당첨1=내림차순당첨배열[0];
+      당첨2=내림차순당첨배열[1];
+      당첨3=내림차순당첨배열[2];
+      당첨4=내림차순당첨배열[3];
+      당첨5=내림차순당첨배열[4];
+      당첨6=내림차순당첨배열[5];
+    }
+    내림차순간격_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[0] + '">' + 내림차순간격배열[0] + '</button>';
+    내림차순간격_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[1] + '">' + 내림차순간격배열[1] + '</button>';
+    내림차순간격_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[2] + '">' + 내림차순간격배열[2] + '</button>';
+    내림차순간격_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[3] + '">' + 내림차순간격배열[3] + '</button>';
+    내림차순간격_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[4] + '">' + 내림차순간격배열[4] + '</button>';
+    내림차순간격_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[5] + '">' + 내림차순간격배열[5] + '</button>';
+    내림차순간격_innerHTML='<div>' + 내림차순간격_innerHTML + '</div>';
+    document.querySelector('#흐름_간격내림차순 > div:nth-of-type(4)').innerHTML+=내림차순간격_innerHTML;
+    내림차순간격당당첨_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[0] + '">' + 당첨1 + '</button>';
+    내림차순간격당당첨_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[1] + '">' + 당첨2 + '</button>';
+    내림차순간격당당첨_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[2] + '">' + 당첨3 + '</button>';
+    내림차순간격당당첨_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[3] + '">' + 당첨4 + '</button>';
+    내림차순간격당당첨_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[4] + '">' + 당첨5 + '</button>';
+    내림차순간격당당첨_innerHTML+='<button ' + 'title="' + 내림차순의원간격인덱스[5] + '">' + 당첨6 + '</button>';
+    내림차순간격당당첨_innerHTML='<div>' + 내림차순간격당당첨_innerHTML + '</div>';
+    document.querySelector('#흐름_간격당당첨내림차순 > div:nth-of-type(4)').innerHTML+=내림차순간격당당첨_innerHTML;
   }
 }
 function 바디클릭시동작설정(e) {
@@ -500,12 +580,15 @@ function 바디클릭시동작설정(e) {
     return;
   }
   if (e.target.innerHTML=='흐름_') {
-    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==흐름');
+    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==흐름_');
     기본보기();
     세로_모두숨기기();
     document.querySelector('#칠_전체').classList.remove('d-none');
     document.querySelector('#세로구분_흐름_전체').classList.remove('d-none');
     document.querySelector('#세로구분_당번_전체').classList.remove('d-none');
+    for (var i=0; i<document.querySelectorAll('.클릭시부모숨기기').length; i++) {
+      document.querySelectorAll('.클릭시부모숨기기')[i].parentNode.classList.remove('d-none');
+    }
     return;
   }
   if (e.target.innerHTML=='추출된번호') {
@@ -553,8 +636,6 @@ function 바디클릭시동작설정(e) {
     document.querySelector('#색칠선택3').classList.add('색칠선택span선택css');
     return;
   }
-
-  
   if (e.target.nodeName=='BUTTON' && e.target.parentNode.parentNode.classList.contains('버튼45css')) {//버튼 클릭시
     console.log('바디클릭시동작설정(e) ==> e.target.nodeName==BUTTON) && e.target.parentNode.parentNode.classList.contains(버튼45css)')
     if (e.target.classList.contains('색칠용버튼')) {
@@ -588,6 +669,34 @@ function 바디클릭시동작설정(e) {
     전체변수_색칠할번호들_아이디=e.target.innerHTML;//설명정보 생성시 필요
     //★★★
     색칠동작();
+    return;
+  }
+  if (e.target.classList.contains('클릭시부모숨기기')) {
+    console.log('바디클릭시동작설정(e) ==> e.target.classList.contains(클릭시부모숨기기)');
+    e.target.parentNode.classList.add('d-none')
+    return;
+  }
+  if (e.target.parentNode.parentNode.classList.contains('간격추출색칠')) {
+    console.log('바디클릭시동작설정(e) ==> e.target.parentNode.parentNode.classList.contains(간격추출색칠)');
+    e.target.parentNode.classList.add('코딩표시');
+    var 부모의부모의부모의아이디=e.target.parentNode.parentNode.parentNode.id;
+    var 순환요소=document.querySelectorAll('#' + 부모의부모의부모의아이디 + ' .간격추출색칠 > div');
+    var 순번=0;
+    var 코딩표시인덱스;
+    for (var i=0; i<순환요소.length; i++) {
+      순번+=1;
+      if(순환요소[i].classList.contains('코딩표시')) {
+        코딩표시인덱스=순번;
+        순환요소[i].classList.remove('코딩표시')
+      }
+    }
+    var 당번=[];
+    for (var i=0; i<6; i++) {
+      당번.push(document.querySelectorAll('#당번_전체 > div:nth-of-type(' + 코딩표시인덱스 + ') button')[i].innerHTML);
+    }
+    console.log('당번 : ' + 당번)
+    var 클릭버튼인덱스=Number(e.target.title);
+
     return;
   }
 }

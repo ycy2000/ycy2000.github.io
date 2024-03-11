@@ -13,6 +13,9 @@ header {position:fixed;width:100%;}
 
 .파란색글자 {font-style : italic;color: blue;}
 #당번_전체 > div:nth-child(odd) > *:not(:last-child):not([class*='색칠용버튼']) {background-color:bisque;color:blue;}
+
+.흐름내부div_button > div:nth-child(odd) > button {background-color:bisque;color:blue;}
+
 #당번_회차날짜조회묶음 {height:34px;}
 #당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
 
