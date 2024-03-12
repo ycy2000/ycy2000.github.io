@@ -435,6 +435,8 @@ function 실행_흐름만들기() {
   document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML='';
   document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML='';
   document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML='';
+  document.querySelector('#흐름_간격내림차순 > div:nth-of-type(4)').innerHTML='';
+  document.querySelector('#흐름_간격당당첨내림차순 > div:nth-of-type(4)').innerHTML='';
   for (var 당번정보=0; 당번정보<100; 당번정보++) {
     var 현재회차제외_오주간번호_보볼제외=[], 현재회차제외_최근번호_보볼제외=[], 현재회차_보볼제외=[], 간격용_다음회차_보볼제외=[];
     var 나머지;

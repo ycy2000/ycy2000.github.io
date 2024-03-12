@@ -73,7 +73,8 @@ header {position:fixed;width:100%;}
 
 #id_임시버튼45 {padding-top:6px;padding-bottom:6px;}
 #id_임시버튼45 button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
-#id_임시버튼45 span {display: inline-block;width:55px;margin-right:5px; height:24px;border-radius: 4px;border:1px solid gray;text-align: center;}
+#id_임시버튼45 span, #넣기번호메모 span
+{display: inline-block;width:55px;margin-right:5px; height:24px;border-radius: 4px;border:1px solid gray;text-align: center;}
 #id_임시버튼45 > div > span:nth-of-type(1) {width:50px;vertical-align: middle;margin-top:6px;}
 #id_임시버튼45 > div > span:nth-of-type(2) {width:75px;vertical-align: middle;margin-top:6px;}
 #id_임시버튼45 span:nth-of-type(1), #id_임시버튼45 span:nth-of-type(2) {width:115px;margin-top:5px;margin-bottom:3px;}

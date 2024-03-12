@@ -552,18 +552,47 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==색_clear')
     분석자료_임시버튼45clear();
   }
-  if (e.target.innerHTML=='넣기1' || e.target.innerHTML=='넣기2' || e.target.innerHTML=='넣기3' || e.target.innerHTML=='넣기4') {
-    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==넣기1,넣기2,넣기3,넣기4')
+  if (e.target.innerHTML=='넣기1' || e.target.innerHTML=='넣기2' || e.target.innerHTML=='넣기3' || e.target.innerHTML=='넣기4' || e.target.innerHTML=='칠번호' || e.target.innerHTML=='선택1') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==넣기1,넣기2,넣기3,넣기4,칠번호,선택1')
     if (e.target.innerHTML=='넣기1') {넣기아이디='임시_1'}
     if (e.target.innerHTML=='넣기2') {넣기아이디='임시_2'}
     if (e.target.innerHTML=='넣기3') {넣기아이디='임시_3'}
     if (e.target.innerHTML=='넣기4') {넣기아이디='임시_4'}
+    if (e.target.innerHTML=='칠번호') {넣기아이디='임시_칠번호'}
+    if (e.target.innerHTML=='선택1') {넣기아이디='임시_선택1중복등'}
     분석자료_넣기아이디에_색칠번호넣기();
   }
+  if (e.target.innerHTML=='칠관련번호색칠만') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==칠관련번호색칠만')
+    분석자료_임시버튼45clear();
+    //색칠상태그대로 갖고옴
+    for (var i=0; i<45; i++) {
+      if (document.querySelectorAll('#id_버튼45_1st button')[i].classList.contains('색칠용버튼')) {
+      document.querySelectorAll('#id_임시버튼45 button')[i].classList.add('색칠용버튼');
+      document.querySelectorAll('#id_임시버튼45 button')[i].setAttribute('title',i+1);
+      }
+    }  
+
+  }
+  if (e.target.innerHTML=='넣기번호메모') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==넣기번호메모')
+    //칠관련 선택1의 색칠된 번호대로
+    if (document.querySelector('#넣기번호메모').classList.contains('d-none')) {
+      document.querySelector('#넣기번호메모').classList.remove('d-none');
+    } else {
+      document.querySelector('#넣기번호메모').classList.add('d-none');
+    }
+  }
+  if (e.target.id=='넣기번호메모clear') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.id==넣기번호메모clear')
+    for (var i=0; i<document.querySelectorAll('#넣기번호메모 input').length; i++) {
+      document.querySelectorAll('#넣기번호메모 input')[i].value='';
+    }
+  }넣기번호메모clear
   if (e.target.innerHTML=='위로' || e.target.innerHTML=='아래로') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==위로,아래로')
     if (e.target.innerHTML=='위로') {document.querySelector('#id_임시버튼45').style.top='137px'}
-    if (e.target.innerHTML=='아래로') {document.querySelector('#id_임시버튼45').style.top='490px'}
+    if (e.target.innerHTML=='아래로') {document.querySelector('#id_임시버튼45').style.top='533px'}
   }
   if (e.target.innerHTML=='피클') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==피클')
