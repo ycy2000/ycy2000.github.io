@@ -185,10 +185,10 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#분석자료_당번_있다면다음회차 button')[i].innerHTML='_';
     }
   } else {
-    document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값-9+0] + '회';//회차
-    document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[1].innerHTML=분석자료_당번전체[분석자료_시작배열값-9+1];//날짜
+    document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+0] + '회';//회차
+    document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[1].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+1];//날짜
     for (var i=0; i<7; i++) {//세번째부터 9번째 버튼까지 7개
-      document.querySelectorAll('#분석자료_당번_있다면다음회차 button')[i].innerHTML=분석자료_당번전체[분석자료_시작배열값-9+2+i];
+      document.querySelectorAll('#분석자료_당번_있다면다음회차 button')[i].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+2+i];
     }
   }
   document.querySelectorAll('#분석자료_당번 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값+1];//날짜
