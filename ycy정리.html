@@ -251,7 +251,7 @@
       <input id="분석자료_번호추출개수" type = "text" maxlength = "10" value=300 style="width:45px;height:25px;vertical-align: bottom;">
       <button style="height:25px; width:110px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">추출된번호clear</button>
       <span>누적개수</span><button id="번호누적개수" style="height:25px; width:60px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">0</button>
-      <button id="여섯개안되면" style="height:25px; width:85px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">나오는대로</button>
+      <button id="여섯개안되면" style="height:25px; width:180px;margin-left:5px;font-size: 14px;" type="button" class="btn btn-secondary p-0">여섯개안되면 6개 맞추기</button>
     </div>
     <div id="분석자료_여러45칸">
       <div id="임시_순번45" class="분석자료_순번버튼css"  style="background-color: chartreuse;"><span title="클릭한 번호는 id_임시버튼45에 색칠된다.">번호선택↓</span><span>추출</span></div>
@@ -389,7 +389,20 @@
   </div>
 
   <div id="세로구분_추출된번호_전체" class="d-inline-block" style="vertical-align: top;">
-    <div>※번호추출은 분석자료에서!!</div>
+    <div style="margin-bottom:3px;"><span>※번호추출은 분석자료에서!!</span> <button onclick="필터링조건표보기숨기기()">필터링조건표</button></div>
+    <div id="추출된번호_30개씩무한누적"><!-- <div> 안에 <div>버튼6개<div>*30개 만들고 번호넣는다 -->
+    </div>
+  </div>
+  <div id="필터링조건표" class="absolute" style="padding:5px; background-color: white;top:533px; top:84px; left:5px;border:1px solid black;">
+    <div style="margin-bottom:3px;display:inline-block;"><span>※이곳번호를 아래조건과 맞는것들을 "추출된번호필터링"으로 추가!!</span> <button>필터링실행!!</button></div>
+    <div style="margin-bottom:3px;display:inline-block;"><span>※가로 한줄씩 단독으로 조건을 확인하여 필터링 조건표에 표시!!</span> <button>개별조건개수확인!!</button></div>
+    
+    <div id="분석자료_여러45칸_유사함"><!-- <div> 안에 <div>버튼6개<div>*30개 만들고 번호넣는다 -->
+    </div>
+  </div>
+
+  <div id="세로구분_추출된번호필터링_전체" class="d-inline-block" style="vertical-align: top;">
+    <div style="margin-bottom:3px;"><span>※필터링된 번호들!!</span></div>
     <div id="추출된번호_30개씩무한누적"><!-- <div> 안에 <div>버튼6개<div>*30개 만들고 번호넣는다 -->
     </div>
   </div>

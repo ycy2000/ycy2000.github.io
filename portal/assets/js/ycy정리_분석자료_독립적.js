@@ -159,6 +159,13 @@ function 분석자료_넣기아이디에_색칠번호넣기() {
     }
   }
 }
+function 필터링조건표보기숨기기() {
+  if (document.querySelector('#필터링조건표').classList.contains('d-none')) {
+    document.querySelector('#필터링조건표').classList.remove('d-none');
+  } else {
+    document.querySelector('#필터링조건표').classList.add('d-none');
+  }
+}
 function 분석자료_회차_change() {
   console.log('분석자료_회차_change()')
 
@@ -353,6 +360,7 @@ function 분석자료_회차_change() {
     }
     // document.querySelectorAll('#임시_3출이상45 button')[i-1].innerHTML=i+1;
     // document.querySelectorAll('#임시_3출이상45 button')[i-1].classList.add('분석자료_고정등번호색칠')
+    document.querySelector('#분석자료_여러45칸_유사함').innerHTML=document.querySelector('#분석자료_여러45칸').innerHTML;
   }
 function 분석자료_회차_플러스() {
   console.log('분석자료_회차_플러스()')
@@ -395,6 +403,95 @@ function 분석자료_번호추출_진행가능판단_실행() {
   }
   
 
+}
+function 분석자료_번호추출_다르게연습() {
+          //중복제거, 배열로전환, 정렬
+          // 생성번호배열=new Set(생성번호배열);
+          // 생성번호배열=[...생성번호배열];
+          // 여섯개만.sort((a,t) => a-t);
+          // 최대값 : Math.max(...한줄랜덤배열)
+          // 최대값의 인덱스 위치 : 한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))
+          // 인덱스 위치의 값을 0으로 : 한줄랜덤배열[한줄랜덤배열.indexOf(Math.max(...한줄랜덤배열))]=0;
+          분석자료_번호추출_진행가능판단_실행();
+          if (분석자료_번호추출_진행가능판단=='불가능') {return;}
+          console.log('분석자료_번호추출()')
+          var 추출개수=Number(document.querySelector('#분석자료_번호추출개수').value);
+          var 누적할요소=document.querySelector('#추출된번호_30개씩무한누적');
+          var 한줄번호누적배열;
+          var 번호한줄divhtml='';
+          var 넣을html누적='';
+          var 추출개수카운트=0;
+          var 삼십카운트=0;//div묶고
+          var 고정번호랜덤배열;
+          var 임시_작업요소, 임시_아이디, 임시_span1, 임시_span2_숫자, 임시_버튼개수, 임시_분석자료_고정등번호색칠_클래스, 최대값인덱스;
+          var 생성개수=0;
+          var 연습배열=[];
+          //1회추출 먼저 작성하고 반복을 추가하기로
+          for (var i=0; i<추출개수; i++) {
+            한줄번호누적배열=[];//당번부터 임시4까지 번호추출 누적
+            번호한줄divhtml=''
+            //번호를 담는다...
+            for (var 클릭_더블클릭반복=0; 클릭_더블클릭반복<document.querySelectorAll('.클릭_더블클릭').length; 클릭_더블클릭반복++) {
+              임시_아이디=document.querySelectorAll('.클릭_더블클릭')[클릭_더블클릭반복].parentNode.id;
+              임시_작업요소=document.querySelector('#' + 임시_아이디);
+              임시_span1=document.querySelectorAll('#' + 임시_아이디 + ' span')[0].innerHTML;
+              임시_span2_숫자=Number(document.querySelectorAll('#' + 임시_아이디 + ' span')[1].innerHTML);
+              임시_버튼개수=document.querySelectorAll('#' + 임시_아이디 + ' button').length;
+              임시_분석자료_고정등번호색칠_클래스=document.querySelectorAll('#' + 임시_아이디 + ' .분석자료_고정등번호색칠');
+              // console.log('구분')
+              // console.log('임시_작업요소.id : ' + 임시_작업요소.id)
+              // console.log('임시_span1.innerHTML : ' + 임시_span1)
+              // console.log('임시_span2_숫자(Number) : ' + 임시_span2_숫자)
+              // console.log('임시_버튼개수 : ' + 임시_버튼개수)
+              // console.log('임시_분석자료_고정등번호색칠_클래스개수 : ' + 임시_분석자료_고정등번호색칠_클래스.length)  
+              if (임시_span2_숫자>0 && 임시_분석자료_고정등번호색칠_클래스.length>0) {//추출개수가 0보다 크고 숫자(색칠)이 있으면
+                //랜덤배열 생성(추출하면 index참조하여 값을 0으로)
+                고정번호랜덤배열=[];
+                for (var 랜덤추가=0; 랜덤추가<임시_분석자료_고정등번호색칠_클래스.length; 랜덤추가++) {
+                  고정번호랜덤배열.push(Math.random());
+                }
+                for (var 추출=0; 추출<임시_span2_숫자; 추출++) {
+                  최대값인덱스=고정번호랜덤배열.indexOf(Math.max(...고정번호랜덤배열));
+                  고정번호랜덤배열[최대값인덱스]=0;//다음최대값 추출위해 0(최소값)으로 변경해둠
+                  한줄번호누적배열.push(임시_분석자료_고정등번호색칠_클래스[최대값인덱스].innerHTML);
+                }
+              }
+            }
+            //중복제거, 배열로전환, 정렬
+            한줄번호누적배열=new Set(한줄번호누적배열);
+            한줄번호누적배열=[...한줄번호누적배열];
+            한줄번호누적배열.sort((a,t) => a-t);
+
+            //#여섯개안되면.innerHTML : 나오는대로>패스, 여섯개안되면 6개 맞추기>==
+            if (document.querySelector('#여섯개안되면').innerHTML=='여섯개안되면 6개 맞추기' && 한줄번호누적배열.length<6) {
+              var 추가개수=6-한줄번호누적배열.length;
+              고정번호랜덤배열=[];
+              for (var 랜덤추가=0; 랜덤추가<45; 랜덤추가++) {
+                고정번호랜덤배열.push(Math.random());
+              }
+              //기존번호 부분 0으로(최소값)
+              for (var 랜덤추가=0; 랜덤추가<한줄번호누적배열.length; 랜덤추가++) {
+                고정번호랜덤배열[Number(한줄번호누적배열[랜덤추가])-1]=0;
+              }
+              for (var 추출=0; 추출<추가개수; 추출++) {
+                최대값인덱스=고정번호랜덤배열.indexOf(Math.max(...고정번호랜덤배열));
+                고정번호랜덤배열[최대값인덱스]=0;//다음최대값 추출위해 0(최소값)으로 변경해둠
+                한줄번호누적배열.push(최대값인덱스+1);
+              }
+              //중복제거, 배열로전환, 정렬
+              한줄번호누적배열=new Set(한줄번호누적배열);
+              한줄번호누적배열=[...한줄번호누적배열];
+              한줄번호누적배열.sort((a,t) => a-t);
+            }
+        
+            //번호한줄divhtml : <div>버튼,,,</div>
+            if (한줄번호누적배열.length>0) {
+              if (한줄번호누적배열[0]==7) {연습배열.push(한줄번호누적배열.join('_'))};
+            }
+          }
+          // 누적할요소.innerHTML=연습배열;
+
+          alert('생성완료! 추출된번호 클릭!')
 }
 function 분석자료_번호추출() {
           //중복제거, 배열로전환, 정렬
