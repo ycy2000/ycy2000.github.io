@@ -54,8 +54,9 @@
         <button type="button">분석자료</button>
         <button class="d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
         <button type="button">추출된번호</button>
-        <button type="button">추출된번호필터링</button>
+        <button type="button">필터링된번호들</button>
         <button type="button">임시사진_분석자료</button>
+        <button type="button" onclick="임시함수set관련()">임시함수SET관련</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
@@ -257,11 +258,12 @@
       <div id="임시_순번45" class="분석자료_순번버튼css"  style="background-color: chartreuse;"><span title="클릭한 번호는 id_임시버튼45에 색칠된다.">번호선택↓</span><span>추출</span></div>
       <div id="임시_당번45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">당번</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_이웃수45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">이웃수</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_당번이웃" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">당번+이웃</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_출" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_미출5" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주미출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_1출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주1출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_2출45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주2출</span><span class="클릭_더블클릭"></span></div>
-      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주3출이상</span><span class="클릭_더블클릭"></span></div>
-      <div id="임시_출" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주출</span><span class="클릭_더블클릭"></span></div>
+      <div id="임시_3출이상45" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">5주3출이상</span><span class="클릭_더블클릭"></span></div>      
       <div id="임시_미출10" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">10주미출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_미출15" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">15주미출</span><span class="클릭_더블클릭"></span></div>
       <div id="임시_피할번호" class="분석자료고정번호 다섯개씩번갈아색칠 분석자료_하위div안버튼7개까지css"><span class="분석자료_번호선택">피할번호</span><span class="클릭_더블클릭"></span></div>
@@ -396,19 +398,11 @@
     <div id="추출된번호_30개씩무한누적"><!-- <div> 안에 <div>버튼6개<div>*30개 만들고 번호넣는다 -->
     </div>
   </div>
-  <div id="필터링조건표" class="absolute" style="padding:5px; background-color: white;top:533px; top:84px; left:5px;border:1px solid black;">
+  <div id="필터링조건표_전체" class="absolute" style="padding:5px; background-color: white;top:533px; top:84px; left:5px;border:1px solid black;">
     <div style="margin-bottom:3px;display:inline-block;"><span>※가로 한줄씩 단독으로 조건을 확인하여 필터링 조건표에 표시!!</span> <button>개별조건개수확인!!</button></div>
     <div style="margin-bottom:3px;display:inline-block;"><span>※이곳번호를 아래조건과 맞는것들을 "추출된번호필터링"으로 추가!!</span> <button>필터링실행!!</button></div>
-    <div id="분석자료_여러45칸_유사함">
-      <div><span>분석자료</span><span style="font-size: 13px;">이상</span><span style="font-size: 13px;">까지</span><span class="d-none"></span></div>
-      <div><span class="인풋clear">5주미출</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">5주1출</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">5주2출</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">5주3출↑</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">당번</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">이웃수</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">,구분번호</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
-      <div><span class="인풋clear">,구분번호</span><input type = "text" maxlength = 1><input type = "text" maxlength = 1><span class="d-none 숨김_연결번호"></span></div>
+    <div id="분석자료_여러45칸_유사함"><!--innerHTML가져옴 2번째부터 19개, 당번부타 선택1까지  -->
+
     </div>
   </div>
 

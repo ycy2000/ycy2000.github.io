@@ -515,6 +515,7 @@
       </div>
       <div>
         <h6 class="canvas_div" title='줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격'>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        <h6 class="canvas_div" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체'>중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체</h6>
         <h6 class="canvas_div" title='height'>scrollHeight, clientHeight, offsetHeight</h6>
         <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
         <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
@@ -727,11 +728,71 @@
         <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
         <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
         <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
-
-
-
       </div>
       <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+
+      </div>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체">
+      <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold">1.중복제거 : 한줄번호누적배열=new Set(한줄번호누적배열);</h5>
+        <h6 style="text-indent: 23px;">중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,</h6>
+        <h6 style="text-indent: 23px;">SET으로 중복제거하면 ARRAY가 아니라 OBJECT(class객체)라서 배열[0]등으로 사용안됨</h6>
+        <h6 style="text-indent: 23px;">배열 : [3,2,2,'4'], set객체 : {3,2,'4'} </h6>
+        <h5 class="fw-bold">2.한줄번호누적배열=[...한줄번호누적배열];</h5>
+        <h6 style="text-indent: 23px;">※ Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환하였습니다.
+        <h5 class="fw-bold">3. 정렬 : 한줄번호누적배열.sort((a,t) => a-t);</h5>
+        <h5 class="fw-bold">4. set</h5>
+        <h6 style="text-indent: 23px;">※ set.add(value) : 값 추가 </h6>
+        <h6 style="text-indent: 23px;">※ set.delete(value) : 값 제거</h6>
+        <h6 style="text-indent: 44px;">호출 시점에 셋 내에 값이 있어서 제거에 성공하면 true, 아니면 false를 반환한다.</h6>
+        <h6 style="text-indent: 23px;" class="fw-bold">※ set.has(value) : Set 내에 값이 존재하면 true, 아니면 false를 반환 ★★★</h6>
+        <h6 style="text-indent: 23px;">※ set.size : Set에 몇 개의 값이 있는지 세준다.</h6>
+        <h5 class="fw-bold">5. set 반복문 사용방법</h5>
+        <code style="margin-left:10px;">let set = new Set(["oranges", "apples", "bananas"]);</code>
+        <code style="margin-left:10px;">1.for(let value of set) {alert(value);}</code>
+        <code style="margin-left:10px;">2.for(let key of set.keys()) {alert(key);}</code>
+        <code style="margin-left:10px;">3.for(let value of set.values()) {alert(value);}</code>
+        <code style="margin-left:10px;">무슨말인지?</code>
+        <code style="margin-left:10px;">set.keys() : Set 내의 모든 값을 포함하는 이터러블 객체를 반환</code>
+        <code style="margin-left:10px;">set.values() : set.keys와 동일한 작업을 합니다. 맵과의 호환성을 위해 만들어진 메서드이다</code>
+        <code style="margin-left:10px;">set.entries() : Set 내의 각 값을 이용해 만든 [value, value] 배열을 포함하는 이터러블 객체를 반환. 맵과의 호환성을 위해 만들어졌습니다.</code>
+        <code style="margin-left:10px;"></code>
+      </div>
+      <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold">4. set</h5>
+        <h6 style="text-indent: 23px;">※ 세트(set)는 한마디로 순서가 없는 중복되지 않은 데이터의 집합인데요. </h6>
+        <h6 style="text-indent: 23px;">※ 배열(array)과 차이점을 이해하는 것이 무엇보다 중요합니다.</h6>
+        <h6 style="text-indent: 23px;">※ 배열은 데이터를 순서있게 저장합니다. </h6>
+        <h6 style="text-indent: 23px;">※ 그래서 인덱스(index)를 통해서 특정 위치에 저장되어 있는 데이터에 접근이 가능하죠. </h6>
+        <h6 style="text-indent: 23px;">※ 그리고 배열에는 동일한 값을 여러 번 저장할 수 있습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 값이 동일하더라도 인덱스가 틀리기 때문에 데이터의 중복이 문제되지 않습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 반면에 세트는 얼핏 보기에는 배열과 비슷해보일 수 있지만 사실 결이 아주 다른 자료구조입니다.</h6>
+        <h6 style="text-indent: 23px;">※ 우선 세트는 데이터를 순서없이 저장합니다. </h6>
+        <h6 style="text-indent: 23px;">※ 따라서 배열처럼 인덱스를 통해서 접근할 수가 없습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 그리고 세트는 중복된 데이터를 허용하지 않습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 즉, 기존에 세트에 있는 값을 또 추가하면 아무 효력이 발생하지 않습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 자바스크립트에서 Set는 클래스(class)이므로 </h6>
+        <h6 style="text-indent: 44px;">new 키워드와 생성자를 사용하여 객체를 생성할 수 있습니다.</h6>
+        <h6 style="text-indent: 23px;">※ const set = new Set(); // Set(0) {size: 0}</h6>
+        <h6 style="text-indent: 23px;">※ 위와 같이 생성자의 인자로 아무 것도 넘기지 않으면 빈 세트가 만들어지며,</h6>
+        <h6 style="text-indent: 23px;">※ 아래와 같이 배열을 인수로 넘기면 배열에 담긴 값으로 세트가 만들어집니다.</h6>
+        <h6 style="text-indent: 23px;">※ const numSet = new Set([1, 2, 3]); // Set(3) {1, 2, 3}</h6>
+        <h6 style="text-indent: 23px;">※ 값 추가</h6>
+        <h6 style="text-indent: 23px;">※ 세트에 새로운 값을 추가할 때는 add() 메서드를 사용하는데요</h6>
+        <h6 style="text-indent: 23px;">※ 위에서 설명드린 것처럼 세트에는 중복된 값이 추가되지 않으며, 유일한 값만 저장됩니다.</h6>
+        <h6 style="text-indent: 23px;">※ set.add(1); // Set(1) {1}</h6>
+        <h6 style="text-indent: 23px;">※ set.add("A"); // Set(2) {1, 'A'}</h6>
+        <h6 style="text-indent: 23px;">※ set.add(true); // Set(3) {1, 'A', true}</h6>
+        <h6 style="text-indent: 23px;">※ 참고로 add() 메서드는 값을 추가한 후에 세트를 반환하기 때문에 </h6>
+        <h6 style="text-indent: 23px;">※ 아래와 같이 연쇄적으로 호출할 수도 있습니다.</h6>
+        <h6 style="text-indent: 23px;">※ set.add(1).add("A").add(true); // Set(3) {1, 'A', true}</h6>
+        <h6 style="text-indent: 23px;">※ 값 삭제</h6>
+        <h6 style="text-indent: 23px;">※ Set의 delete() 메서드를 사용하면 세트로 부터 특정 값을 삭제할 수 있는데요</h6>
+        <h6 style="text-indent: 23px;">※ delete() 메서드에 인자로 넘기는 값이 세트에 존재하여 성공적으로 삭제하였다면 </h6>
+        <h6 style="text-indent: 23px;">※ true를 반환하고, 해당 값이 세트에 존재하지 않아서 삭제에 실패하였다면 false를 반환합니다.</h6>
+        <h6 style="text-indent: 23px;">※ set.delete(1); // true, set.delete(2); // false</h6>
 
       </div>
       <br><br><br><br><br><br><br>

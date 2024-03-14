@@ -28,6 +28,7 @@ if ('초기화'=='초기화') {
   for (var i=0; i<45; i++) {
     임시_45개버튼+='<button></button>'
   }
+  임시_45개버튼='<div style="display:inline-block;">' + 임시_45개버튼 + '</div>';//선택하기 쉽도록
   var 분석자료_여러45칸div_들=document.querySelectorAll('#분석자료_여러45칸 > div');
   for (var i=0; i<분석자료_여러45칸div_들.length; i++) {
     분석자료_여러45칸div_들[i].innerHTML+=임시_45개버튼;//빈 45개 버튼
@@ -160,10 +161,10 @@ function 분석자료_넣기아이디에_색칠번호넣기() {
   }
 }
 function 필터링조건표보기숨기기() {
-  if (document.querySelector('#필터링조건표').classList.contains('d-none')) {
-    document.querySelector('#필터링조건표').classList.remove('d-none');
+  if (document.querySelector('#필터링조건표_전체').classList.contains('d-none')) {
+    document.querySelector('#필터링조건표_전체').classList.remove('d-none');
   } else {
-    document.querySelector('#필터링조건표').classList.add('d-none');
+    document.querySelector('#필터링조건표_전체').classList.add('d-none');
   }
 }
 function 분석자료_회차_change() {
@@ -180,8 +181,6 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#id_임시버튼45 button')[i].removeAttribute('title');
     }
   }
-
-
   분석자료_회차index=document.querySelector('#분석자료_당번_회차select').selectedIndex;//선택안되면 -1, 초기화면 0
   document.querySelector('#분석자료_당번_회차select').selectedIndex=분석자료_회차index;
   분석자료_시작배열값=(분석자료_회차개수-분석자료_회차index-1)*9;//9개정보중 회차번호
@@ -217,11 +216,14 @@ function 분석자료_회차_change() {
   for (var i=0; i<6; i++) {//당번 6개
     이월수_배열.push(분석자료_당번전체[분석자료_시작배열값+2+i]);
   }
-  //당번색칠 
+  var 당번이웃버튼들=document.querySelectorAll('#임시_당번이웃 button');
+  //당번색칠
   색칠할곳45버튼들=document.querySelectorAll('#임시_당번45 button');
   for (var i=0; i<이월수_배열.length; i++) {
     색칠할곳45버튼들[이월수_배열[i]-1].innerHTML=이월수_배열[i];
     색칠할곳45버튼들[이월수_배열[i]-1].classList.add('분석자료_고정등번호색칠')
+    당번이웃버튼들[이월수_배열[i]-1].innerHTML=이월수_배열[i];
+    당번이웃버튼들[이월수_배열[i]-1].classList.add('분석자료_고정등번호색칠')
   }
   //이웃수색칠 
   var 왼쪽번호, 오른쪽번호;
@@ -244,6 +246,8 @@ function 분석자료_회차_change() {
   for (var i=0; i<이웃수_배열.length; i++) {
     색칠할곳45버튼들[이웃수_배열[i]-1].innerHTML=이웃수_배열[i];
     색칠할곳45버튼들[이웃수_배열[i]-1].classList.add('분석자료_고정등번호색칠')
+    당번이웃버튼들[이웃수_배열[i]-1].innerHTML=이웃수_배열[i];
+    당번이웃버튼들[이웃수_배열[i]-1].classList.add('분석자료_고정등번호색칠')
   }
   //오주 미출부터 1,2,3출이상 색칠하기
   var 십오주간번호_보볼제외=[], 십주간번호_보볼제외=[], 오주간번호_보볼제외=[];
@@ -253,11 +257,12 @@ function 분석자료_회차_change() {
     if (나머지<2 || 나머지==8) {
 
     } else {//+8:해당회차의 보볼
-      if (i<9*5) {오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+8])}
-      if (i<9*10) {십주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+8])}
-      if (i<9*15) {십오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+8])}
+      if (i<9*5) {오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+9])}
+      if (i<9*10) {십주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+9])}
+      if (i<9*15) {십오주간번호_보볼제외.push(분석자료_당번전체[분석자료_시작배열값-i+9])}
     }
   }
+
   for (var i=1; i<46; i++) {
     if (오주간번호_보볼제외.filter(element => i == element).length==1) {//#임시_1출45
       document.querySelectorAll('#임시_1출45 button')[i-1].innerHTML=i;
@@ -288,79 +293,171 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#임시_미출15 button')[i-1].classList.add('분석자료_고정등번호색칠')
     }
   }
-    //30회차번호기록관련 : #분석자료_30회차당번 > div 안에, span 하나, button 45개씩
-    var 현재작업div내_버튼들;
-    var 회차부분;
-    for (var i=0; i<30; i++) {//당번부터
-      현재작업div내_버튼들=document.querySelectorAll('#분석자료_30회차당번 > div:nth-of-type(' + (i+1) + ') button');
-      회차부분=(분석자료_회차개수-분석자료_회차index-1-i)*9;
-      for (var 내부=0; 내부<6; 내부++) {
-        현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].innerHTML=분석자료_당번전체[회차부분+2+내부];
-        현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].classList.add('분석자료_고정등번호색칠')
-      }
+  //30회차번호기록관련 : #분석자료_30회차당번 > div 안에, span 하나, button 45개씩
+  var 현재작업div내_버튼들;
+  var 회차부분;
+  for (var i=0; i<30; i++) {//당번부터
+    현재작업div내_버튼들=document.querySelectorAll('#분석자료_30회차당번 > div:nth-of-type(' + (i+1) + ') button');
+    회차부분=(분석자료_회차개수-분석자료_회차index-1-i)*9;
+    for (var 내부=0; 내부<6; 내부++) {
+      현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].innerHTML=분석자료_당번전체[회차부분+2+내부];
+      현재작업div내_버튼들[분석자료_당번전체[회차부분+2+내부]-1].classList.add('분석자료_고정등번호색칠')
     }
-    //5주구간 출수 7종, 분석자료_시작배열값=(분석자료_회차개수-분석자료_회차index-1)*9;
-    var 번호30주간=[], 번호5주간=[], 번호6_10주간=[], 번호11_15주간=[], 번호16_20주간=[], 번호21_25주간=[], 번호26_30주간=[];
-
-    for (var i=0; i<30; i++) {//번호30주간
-      for (var 내부=0; 내부<9; 내부++) {
-        if (내부>1 && 내부<8) {
-          번호30주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i)*9+내부])
-        }
-      }
-    }
-    for (var i=0; i<5; i++) {//번호5주간
-      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호5주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i)*9+내부])}}
-    }
-    for (var i=0; i<5; i++) {//번호6_10주간
-      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호6_10주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-5)*9+내부])}}
-    }
-    for (var i=0; i<5; i++) {//번호11_15주간
-      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호11_15주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-10)*9+내부])}}
-    }
-    for (var i=0; i<5; i++) {//번호16_20주간
-      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호16_20주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-15)*9+내부])}}
-    }
-    for (var i=0; i<5; i++) {//번호21_25주간
-      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호21_25주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-20)*9+내부])}}
-    }
-    for (var i=0; i<5; i++) {//번호26_30주간
-      for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호26_30주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-25)*9+내부])}}
-    }
-
-    for (var i=1; i<46; i++) {
-      if (번호30주간.filter(element => element==i).length>=0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].innerHTML=번호30주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].classList.add('분석자료_고정등번호색칠_30주합계');
-      }
-      if (번호5주간.filter(element => element==i).length>0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].innerHTML=번호5주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].classList.add('분석자료_고정등번호색칠');
-      }
-      if (번호6_10주간.filter(element => element==i).length>0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(4) button')[i-1].innerHTML=번호6_10주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(4) button')[i-1].classList.add('분석자료_고정등번호색칠');
-      }
-      if (번호11_15주간.filter(element => element==i).length>0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(5) button')[i-1].innerHTML=번호11_15주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(5) button')[i-1].classList.add('분석자료_고정등번호색칠');
-      }
-      if (번호16_20주간.filter(element => element==i).length>0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(6) button')[i-1].innerHTML=번호16_20주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(6) button')[i-1].classList.add('분석자료_고정등번호색칠');
-      }
-      if (번호21_25주간.filter(element => element==i).length>0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(7) button')[i-1].innerHTML=번호21_25주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(7) button')[i-1].classList.add('분석자료_고정등번호색칠');
-      }
-      if (번호26_30주간.filter(element => element==i).length>0) {
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].innerHTML=번호26_30주간.filter(element => element==i).length;
-        document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].classList.add('분석자료_고정등번호색칠');
-      }
-    }
-    //분석자료_여러45칸_유사함
-
   }
+  //5주구간 출수 7종, 분석자료_시작배열값=(분석자료_회차개수-분석자료_회차index-1)*9;
+  var 번호30주간=[], 번호5주간=[], 번호6_10주간=[], 번호11_15주간=[], 번호16_20주간=[], 번호21_25주간=[], 번호26_30주간=[];
+
+  for (var i=0; i<30; i++) {//번호30주간
+    for (var 내부=0; 내부<9; 내부++) {
+      if (내부>1 && 내부<8) {
+        번호30주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i)*9+내부])
+      }
+    }
+  }
+  for (var i=0; i<5; i++) {//번호5주간
+    for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호5주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i)*9+내부])}}
+  }
+  for (var i=0; i<5; i++) {//번호6_10주간
+    for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호6_10주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-5)*9+내부])}}
+  }
+  for (var i=0; i<5; i++) {//번호11_15주간
+    for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호11_15주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-10)*9+내부])}}
+  }
+  for (var i=0; i<5; i++) {//번호16_20주간
+    for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호16_20주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-15)*9+내부])}}
+  }
+  for (var i=0; i<5; i++) {//번호21_25주간
+    for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호21_25주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-20)*9+내부])}}
+  }
+  for (var i=0; i<5; i++) {//번호26_30주간
+    for (var 내부=0; 내부<9; 내부++) {if (내부>1 && 내부<8) {번호26_30주간.push(분석자료_당번전체[(분석자료_회차개수-분석자료_회차index-1-i-25)*9+내부])}}
+  }
+
+  for (var i=1; i<46; i++) {
+    if (번호30주간.filter(element => element==i).length>=0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].innerHTML=번호30주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(2) button')[i-1].classList.add('분석자료_고정등번호색칠_30주합계');
+    }
+    if (번호5주간.filter(element => element==i).length>0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].innerHTML=번호5주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(3) button')[i-1].classList.add('분석자료_고정등번호색칠');
+    }
+    if (번호6_10주간.filter(element => element==i).length>0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(4) button')[i-1].innerHTML=번호6_10주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(4) button')[i-1].classList.add('분석자료_고정등번호색칠');
+    }
+    if (번호11_15주간.filter(element => element==i).length>0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(5) button')[i-1].innerHTML=번호11_15주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(5) button')[i-1].classList.add('분석자료_고정등번호색칠');
+    }
+    if (번호16_20주간.filter(element => element==i).length>0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(6) button')[i-1].innerHTML=번호16_20주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(6) button')[i-1].classList.add('분석자료_고정등번호색칠');
+    }
+    if (번호21_25주간.filter(element => element==i).length>0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(7) button')[i-1].innerHTML=번호21_25주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(7) button')[i-1].classList.add('분석자료_고정등번호색칠');
+    }
+    if (번호26_30주간.filter(element => element==i).length>0) {
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].innerHTML=번호26_30주간.filter(element => element==i).length;
+      document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].classList.add('분석자료_고정등번호색칠');
+    }
+  }
+  //시험적이다.. 필터링조건표 편집 : 원구조에서 편집 : #분석자료_여러45칸_유사함 > div(#임시_순번45) > span2ro div1개(버튼45개)
+  document.querySelector('#분석자료_여러45칸_유사함').innerHTML=document.querySelector('#분석자료_여러45칸').innerHTML
+  //두줄더 추가, 
+  document.querySelector('#분석자료_여러45칸_유사함').innerHTML=
+  document.querySelector('#분석자료_여러45칸_유사함').innerHTML + document.querySelector('#임시_당번45').outerHTML
+  + document.querySelector('#임시_당번45').outerHTML;
+  //추가된 아이디변경 span1에 메모넣기
+  var div개수=document.querySelectorAll('#분석자료_여러45칸_유사함 > div').length;
+  document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[div개수-2].id='구분추가1';
+  document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[div개수-1].id='구분추가2';
+  document.querySelector('#분석자료_여러45칸_유사함 > #구분추가1 > span:nth-of-type(1)').innerHTML=',로 번호구분';
+  document.querySelector('#분석자료_여러45칸_유사함 > #구분추가2 > span:nth-of-type(1)').innerHTML=',로 번호구분';
+  //추가된 것은 div안의 버튼삭제
+  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가1 > div').innerHTML='<input type = "text">';
+  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가2 > div').innerHTML='<input type = "text">';
+  //   임시_순번45 안 2번째 span을 2개로 늘린다.
+  document.querySelector('#분석자료_여러45칸_유사함 > #임시_순번45 > span:nth-of-type(2)').outerHTML='<span onclick="인풋모두clear()">에서</span><span onclick="인풋모두clear()">까지</span>';
+    //   다음으로나오는 형제 인풋 두개의 값을 지우는 클래스 부여한다
+    for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택').length; i++) {
+      document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택')[i].classList.add('인풋clear');
+    }
+  //   나머지 안 2번째 span을 input2개로 늘린다.
+  for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택').length; i++) {
+    document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text"><input type = "text">';
+  }
+
+
+
+
+
+
+
+
+
+  if ('숨김'=='이거안씀') {
+    //필터링조건표부분.
+    var 숨김연결번호=document.querySelectorAll('#분석자료_여러45칸_유사함 > div > span:nth-of-type(2)')
+    숨김연결번호[1].innerHTML='_' + 이월수_배열.join('_') + '_';
+    숨김연결번호[2].innerHTML='_' + 이웃수_배열.join('_') + '_';
+    숨김연결번호[3].innerHTML='_' + 이월수_배열.join('_') + '_' + 이웃수_배열.join('_') + '_';
+    var 배열편집=[];//중복제거, 배열로전환, 정렬
+    배열편집=new Set(오주간번호_보볼제외);
+    배열편집=[...배열편집];
+    배열편집.sort((a,t) => a-t);
+    숨김연결번호[4].innerHTML='_' + 배열편집.join('_') + '_';//5주출
+    배열편집=[];
+    for (var i=1; i<45; i++) {
+      if (오주간번호_보볼제외.indexOf(String(i))==-1) {배열편집.push(i)}
+    }
+    숨김연결번호[5].innerHTML='_' + 배열편집.join('_') + '_';//5주미출
+    배열편집=[];
+    for (var i=1; i<45; i++) {
+      if (오주간번호_보볼제외.filter(element => i == element).length==1) {배열편집.push(i)}
+    }
+    숨김연결번호[6].innerHTML='_' + 배열편집.join('_') + '_';//5주1출
+    배열편집=[];
+    for (var i=1; i<45; i++) {
+      if (오주간번호_보볼제외.filter(element => i == element).length==2) {배열편집.push(i)}
+    }
+    숨김연결번호[7].innerHTML='_' + 배열편집.join('_') + '_';//5주2출
+    배열편집=[];
+    for (var i=1; i<45; i++) {
+      if (오주간번호_보볼제외.filter(element => i == element).length>=3) {배열편집.push(i)}
+    }
+    숨김연결번호[8].innerHTML='_' + 배열편집.join('_') + '_';//5주3출이상
+    배열편집=[];
+    for (var i=1; i<45; i++) {
+      if (십주간번호_보볼제외.indexOf(String(i))==-1) {배열편집.push(i)}
+    }
+    숨김연결번호[9].innerHTML='_' + 배열편집.join('_') + '_';//십주미출
+    배열편집=[];
+    for (var i=1; i<45; i++) {
+      if (십오주간번호_보볼제외.indexOf(String(i))==-1) {배열편집.push(i)}
+    }
+    숨김연결번호[10].innerHTML='_' + 배열편집.join('_') + '_';//십오주미출
+    //필터링조건표부분. 끝==>
+
+    //분석자료_여러45칸_유사함 제목 innerHTML가져오기
+    var 복사할곳=document.querySelectorAll('#분석자료_여러45칸_유사함 > div > span:nth-of-type(1)');
+    for (var i=1; i<document.querySelectorAll('#분석자료_여러45칸 > div > span:nth-of-type(1)').length; i++) {
+      복사할곳[i].innerHTML=document.querySelectorAll('#분석자료_여러45칸 > div > span:nth-of-type(1)')[i].innerHTML;
+    }
+    //분석자료_여러45칸_유사함 제목 버튼가져오기
+    var 복사할곳=document.querySelectorAll('#분석자료_여러45칸_유사함 > div > div');
+    for (var i=1; i<document.querySelectorAll('#분석자료_여러45칸 > div > div').length; i++) {
+      복사할곳[i].innerHTML=document.querySelectorAll('#분석자료_여러45칸 > div > div')[i].outerHTML;
+    }
+  }
+
+}
+function 인풋모두clear() {
+  for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 input').length; i++) {
+    document.querySelectorAll('#분석자료_여러45칸_유사함 input')[i].value='';
+  }
+}
 function 분석자료_회차_플러스() {
   console.log('분석자료_회차_플러스()')
   if (분석자료_회차index==0) {alert('가장 최근 회차입니다.'); return;}
@@ -456,7 +553,9 @@ function 분석자료_번호추출() {
       }
     }
     //중복제거, 배열로전환, 정렬
+    console.log('new SET 전 한줄번호누적배열 : ' + typeof(한줄번호누적배열))
     한줄번호누적배열=new Set(한줄번호누적배열);
+    console.log('new SET 후 한줄번호누적배열 : ' + typeof(한줄번호누적배열))
     한줄번호누적배열=[...한줄번호누적배열];
     한줄번호누적배열.sort((a,t) => a-t);
     //#여섯개안되면.innerHTML : 나오는대로>패스, 여섯개안되면 6개 맞추기>==
