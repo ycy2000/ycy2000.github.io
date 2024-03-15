@@ -376,8 +376,8 @@ function 분석자료_회차_change() {
   document.querySelector('#분석자료_여러45칸_유사함 > #구분추가1 > span:nth-of-type(1)').innerHTML=',로 번호구분';
   document.querySelector('#분석자료_여러45칸_유사함 > #구분추가2 > span:nth-of-type(1)').innerHTML=',로 번호구분';
   //추가된 것은 div안의 버튼삭제
-  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가1 > div').innerHTML='<input type = "text">';
-  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가2 > div').innerHTML='<input type = "text">';
+  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가1 > div').outerHTML='<input type = "text"><span style="width:40px;">메모</span><input type = "text">';
+  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가2 > div').outerHTML='<input type = "text"><span style="width:40px;">메모</span><input type = "text">';
   //   임시_순번45 안 2번째 span을 2개로 늘린다.
   document.querySelector('#분석자료_여러45칸_유사함 > #임시_순번45 > span:nth-of-type(2)').outerHTML='<span onclick="인풋모두clear()">에서</span><span onclick="인풋모두clear()">까지</span>';
     //   다음으로나오는 형제 인풋 두개의 값을 지우는 클래스 부여한다
@@ -387,6 +387,16 @@ function 분석자료_회차_change() {
   //   나머지 안 2번째 span을 input2개로 늘린다.
   for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택').length; i++) {
     document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text"><input type = "text">';
+  }
+  //까지 우측에 개별 span 추가
+  for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div').length; i++) {
+    if (i==0) {
+      document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML=
+      document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML + '<span style="width:35px;">개별</span>';
+    } else {
+    document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML=
+    document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML + '<span style="width:35px;"></span>';
+    }
   }
 
 
@@ -698,7 +708,7 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
   if (e.target.innerHTML=='위로' || e.target.innerHTML=='아래로') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==위로,아래로')
     if (e.target.innerHTML=='위로') {document.querySelector('#id_임시버튼45').style.top='137px'}
-    if (e.target.innerHTML=='아래로') {document.querySelector('#id_임시버튼45').style.top='533px'}
+    if (e.target.innerHTML=='아래로') {document.querySelector('#id_임시버튼45').style.top='556px'}
   }
   if (e.target.innerHTML=='피클') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==피클')

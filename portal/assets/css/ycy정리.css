@@ -54,8 +54,11 @@ header {position:fixed;width:100%;}
 .분석자료_하위div안버튼7개까지css span, .분석자료_순번버튼css span, #분석자료_당번 span, .분석자료_하위div안버튼7개까지css input 
 {display:inline-block; width:88px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}
 .분석자료_순번버튼css span:nth-of-type(3) {width:30px;font-size: 13px;}/* 필터링조건표용 */
+.분석자료_순번버튼css span:nth-of-type(4) {width:35px;font-size: 13px;background-color:cornflowerblue;}/* 필터링조건표용 */
+.분석자료_하위div안버튼7개까지css span:nth-of-type(2) {background-color:chartreuse;}/* 필터링조건표용 */
 .분석자료_하위div안버튼7개까지css input {width:30px;text-align: center;}
-
+.분석자료_하위div안버튼7개까지css input:nth-of-type(3) {width:300px;text-align: left;}
+.분석자료_하위div안버튼7개까지css input:nth-of-type(4) {width:653px;text-align: left;}
 
 
 #분석자료_당번_있다면다음회차 span {display:inline-block; width:88px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}

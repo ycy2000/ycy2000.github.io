@@ -591,6 +591,8 @@ function 바디클릭시동작설정(e) {
     for (var i = 0; i < document.querySelectorAll('.클릭시부모숨기기').length; i++) {
       document.querySelectorAll('.클릭시부모숨기기')[i].parentNode.classList.remove('d-none');
     }
+    document.querySelector('#흐름_간격').classList.add('d-none');
+    document.querySelector('#흐름_간격당당첨').classList.add('d-none');
     return;
   }
   if (e.target.innerHTML == '추출된번호') {
