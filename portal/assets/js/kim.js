@@ -565,8 +565,8 @@ document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=회
   var 회귀선택버튼div;
   회귀선택버튼div='<div style="margin-top:5px;"><input id="회귀수입력" type = "text" spellcheck="false" style="width:50px;vertical-align:bottom;text-align:center;" value=100>'
   + '<button style="width:70px;height:30px;" onclick="신규회귀변경()">회귀변경</button>'
-  + '<button style="width:50px;height:30px;background-color: rgb(100, 237, 214);" onclick="신규회귀변경3회귀()">5회귀</button>'
-  + '<button style="width:75px;height:30px;background-color: rgb(100, 237, 214);" onclick="신규회귀변경100회귀()">100회귀</button></div>'
+  + '<button style="width:50px;height:30px;background-color: yellow;" onclick="신규회귀변경3회귀()">5회귀</button>'
+  + '<button style="width:75px;height:30px;background-color: yellow;" onclick="신규회귀변경100회귀()">100회귀</button></div>'
   // 100회귀 고정이었는데 선택할수 있는 버튼 추가>>
     //INDEX 전용 100회귀, 작업중
     var 백회귀개수=10;//표시되는 수
