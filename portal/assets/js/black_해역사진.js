@@ -3,7 +3,7 @@ document.querySelector('#적재가능일반무게').value = 20650;//새로고침
 function 교섭력계산() {
   var 일회교섭력 = Number(document.querySelector('#일회교섭력').value);
   if (isNaN(일회교섭력)) { 일회교섭력 = 0 }
-  //곱하는값은 인풋 오른쪽 형제
+  //곱하는값은 인풋 오른쪽 형제 
   document.querySelector('#계산_재갱1회당').value = (일회교섭력 * (4.30022)).toFixed(0);
 
   document.querySelector('#계산_하코저가').value = 21307;
