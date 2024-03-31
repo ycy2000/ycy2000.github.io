@@ -518,12 +518,6 @@ function 리스너_해역사진관련_change시(e) {
     계산_배와장비무게()
   }
 }
-function 코딩해역메모위치조정() {
-  if (메모아이디 == '메모_ta순수') { 메모요소.style.left = '1095px'; 메모요소.style.top = '79px'; }
-  if (메모아이디 == '메모_ta현실') { 메모요소.style.left = '1095px'; 메모요소.style.top = '79px'; }
-  if (메모아이디 == '메모_ta자신') { 메모요소.style.left = '1095px'; 메모요소.style.top = '79px'; }
-
-}
 function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
   console.log('리스너_해역사진관련_클릭시(e)');
   if (e.target.id == '점진무게') {
@@ -575,16 +569,13 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
       }
     }
   }
-  if (e.target.classList.contains('코딩해역메모')) {
-    if (document.querySelector('#' + e.target.title).style.visibility == 'hidden') {
-      document.querySelector('#' + e.target.title).style.visibility = 'visible';
-      메모아이디 = e.target.title;
-      메모요소 = document.querySelector('#' + e.target.title);
-      코딩해역메모위치조정();
+  if (e.target.title=='메모_순수자신현실') {
+    console.log('(e.target.title==메모_순수자신현실');
+    if (document.querySelector('#메모_순수자신현실').style.visibility == 'hidden') {
+      document.querySelector('#메모_순수자신현실').style.visibility = 'visible';
     } else {
       document.querySelector('#' + e.target.title).style.visibility = 'hidden';
     }
-    console.log('e.target.classList : ' + e.target.classList);
   }
   //메모 클릭하면 안보이게
   if (e.target.classList.contains('팝업메모')) {
