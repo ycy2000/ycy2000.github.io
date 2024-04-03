@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<link href="portal/assets/css/캔버스.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header id="head_button_group" class="container-fluid">
+  <nav class="navbar bg-body-tertiary pt-1 m-0">    
+    <div class="container-fluid">
+      <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
+        <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- #캔버스전체 클릭하면 나오는 id="캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
+        <button id="header_canvas_click" type="button" data-bs-toggle="offcanvas" data-bs-target="#캔버스전체" aria-controls="offcanvasBottom">Offcanvas</button>
+        <span onclick="head_캔버스_검색input_change시()">검색 </span><input id="head_캔버스_검색input" onchange="head_캔버스_검색input_change시()" type = "text" style="width:150px;"><!-- change 동작-->
+
+        <button onclick="navbar_임시함수_click ()">임시함수</button>
+        <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
+        <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto>
+            <li class="nav-item dropdown">
+              <a class="active nav-link dropdown-toggle mt-2" href="#" 
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                링크이동
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="black_해역사진.html">Black</a></li>
+                <li><a class="dropdown-item" href="kim.html">Kim</a></li>
+                <li><a class="dropdown-item" href="it.html">it</a></li>
+                <li><a class="dropdown-item" href="ycy정리.html">ycy</a></li>
+                <li><a class="dropdown-item" href="index.html">세관</a></li>
+                <!-- <li><hr class="dropdown-divider"></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>       
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
+<!-- id="리스너용해역사진관련" id="main과우측" id="전체대체" 중 하나만?? 본다-->
+<!-- id="리스너용해역사진관련"==>d-none 후에 이곳을 보이게 한다. 캔버스결과파일 등-->
+<div id="전체대체" class="col-10"">
+</div>
+
+<!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
+<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="캔버스전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div id="캔버스header">
+      <h6 class="offcanvas-title" id="캔버스바디_초기화">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title" id="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title" id="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <input id="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 id="canvas검색input_clear">clear</h6><!--click동작-->
+      <button id="캔버스바디_카테고리숨김">&lt;&lt;</button> <button id="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div id="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<!-- 코딩등메모장text파일, canvas_div-->
+<div id="캔버스관련자료none" class="d-none">
+  <div id="canvas카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="canvas카테고리" id="참고">
+      <div>
+        <h6 class="코딩등메모장text파일" title='참고_특수문자.txt'>참고_특수문자.txt</h6>
+        <h6 class="코딩등메모장text파일" title='참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt'>참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt</h6>
+        <h6 class="코딩등메모장text파일" title=''>참고_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
+        <h6 class="코딩등메모장text파일" title='참고_클래스아이디숫자안됨.txt'>참고_클래스아이디숫자안됨.txt</h6>
+        <h6 class="코딩등메모장text파일" title='참고_메모장에서열면anci.txt'>참고_메모장에서열면anci.txt</h6>
+        <h6 class="코딩등메모장text파일" title='참고_구글_그림에서데이터추출.txt'>참고_구글_그림에서데이터추출.txt</h6>
+        <h6 class="코딩등메모장text파일" title='참고_더하기_숫자_소수점_변수에러상황.txt'>참고_더하기_숫자_소수점_변수에러상황.txt</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='참고_CTRL_F주요키워드' style="background-color: coral;">참고_CTRL_F주요키워드</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY'>참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT'>참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
+        <h6 class="canvas_div" title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
+        <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
+        <h6>메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격'>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        <h6 class="canvas_div" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체'>중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체</h6>
+        <h6 class="canvas_div" title='height'>scrollHeight, clientHeight, offsetHeight</h6>
+        <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
+        <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
+        <h6><a href="https://2boki.tistory.com/129" target="_blank">[제이쿼리] load() 메소드 사용하여 다른 html의 값 가져오기</a></h6>
+        <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
+        <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="JS">
+      <div>
+        <h6 class="코딩등메모장text파일" title='JS_style제어_css제어_01.txt'>JS_style제어_css제어_01.txt</h6>
+        <h6 class="코딩등메모장text파일" title='JS_CANVAS선긋기.txt'>JS_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
+        <h6 class="canvas_div" title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
+        <h6 class="canvas_div" title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
+        <h6 class="canvas_div" title='JS_textarea내용의탭으로구분여러줄가공'>JS_textarea내용의탭으로구분여러줄가공</h6>
+        <h6 class="canvas_div" title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
+        <h6 class="canvas_div" title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
+      </div>
+      <div>
+        <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(1);==>12.1, 반올림</h6>
+        <h6>메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1</h6>
+        <h6>메모_#split:줄바꿈정보=문자열.split('\n'); 탭으로분리정보=문자열.split('\t');</h6>
+        <h6>메모_#정규식 : 3.121px의 경우 소수점까지 사라져 숫자만 추출시 ==> 3121이 된다.</h6>
+        <h6>메모_#left#substring : '3.121px'.substring(0,5) ==> 3.121 (숫자.toFixed(0)==>정수)</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='JS_웹페이지이동'><a href="https://www.daleseo.com/js-location/" target="_blank">자바스크립트로 웹 페이지 이동하는 방법</a></h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="BLACK구조">
+      <div>
+        <h6 class="코딩등메모장text파일" title='BLACK구조_class_id_textarea보기숨기기top잘안됨.txt'>BLACK구조_class_id_textarea보기숨기기top잘안됨.txt</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='구조_black_해역사진_html'>구조_black_해역사진_html</h6>
+        <h6 class="canvas_div" title='구조_캔버스독립구조'>구조_캔버스독립구조</h6>
+      </div>
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로3</h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="CSS">
+      <div>
+        <h6 class="코딩등메모장text파일" title='CSS_이미지_배경에서_일부분만.txt'>CSS_이미지_배경에서_일부분만.txt</h6>
+        <h6 class="코딩등메모장text파일" title='CSS_특정상황_속성등_스타일.txt'>CSS_특정상황_속성등_스타일.txt</h6>
+      </div>
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로2</h6>
+      </div>
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로3</h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="Bootstrap">
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로1</h6>
+      </div>
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로2</h6>
+      </div>
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로3</h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="jQuery">
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로1</h6>
+      </div>
+      <div>
+        <h6 class="코딩등메모장text파일" title=''>세로2</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='jQuery_설치와기초사용법'>jQuery_설치와기초사용법</h6>
+        <h6 class="canvas_div" title='jQuery_문법리스트'>jQuery_문법리스트</h6>
+      </div>
+    </div>
+    <div class="canvas카테고리" id="연습">
+      <div>
+        <h6 class="canvas_div" title='촬영 1도 안 하고 노트북으로만 쇼츠 만들어서 월 4천씩 버는 비결'><a href="https://www.youtube.com/watch?v=elhxzHXqGRw">촬영 1도 안 하고 노트북으로만 쇼츠 만들어서 월 4천씩 버는 비결</a></h6>
+        <h6 class="canvas_div" title='AI툴_개요'>AI툴_개요</h6>
+        <h6 class="canvas_div" title='AI툴_메모'>AI툴_메모</h6>
+        <h6 class="canvas_div" title='AI툴_이미지생성_Stable_Diffusion_Online'>AI툴_이미지생성_Stable_Diffusion_Online</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='연습_인터벌_interval_움짤1'>연습_인터벌_interval_움짤1</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title=''></h6>
+      </div>
+    </div>
+  </div>
+  <!-- DIV들 모_음 : 하나가 올라감 -->
+  <div id="canvas결과모음"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div id="canvas텍스트">
+      <button onclick="document.querySelector('#전체대체').innerHTML=''";>닫기</button>
+      <button onclick="document.querySelector('#embed부분').src=embed_루트src_탐색기;">탐색기</button><br>
+      <embed id="embed부분" src="" width=1000px height=870px>
+    </div>
+    <div id="참고_CTRL_F주요키워드"><!-- 참고 -->
+      <h6>▢ canvas카테고리모_음 : 1개, 여기서 title에 가지고올 id넣는곳</h6>
+      <h6>▢ canvas안의canvas_div모_음 : 1개, 카테고리목록에서 class가 canvas_div인 div들이 id를 가지고 대기중이다.</h6>
+      <h6>▢ main사이드와header관련none : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h6>
+      <h6>▢ main사이드와header관련none : 1개, main사이드(왼쪽) 클릭시 연결되는 문서들 집합</h6>
+      <h6>▢ S1_해역사_진 : 3개, </h6>
+      <h6>▢ 모은재료none상태 : 1개, S1_해역사_진 에서 많이 아래쪽, 개수기록시.</h6>
+      <h6>▢ 샘플 : 2개, </h6>
+      <h6 style="text-indent: 23px;">첫번째는 canvas안의canvas_div모_음 내부자료 맨 첫번째 장소로 이동,</h6>
+      <h6 style="text-indent: 23px;">두번째는 main사이드와header관련none 내부자료 맨아래쪽으로 이동,</h6>
+      <h6>▢ </h6>
+      <h6>▢ </h6>
+      <h6>▢ </h6>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY">
+      <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h5>
+      <h6>• 대괄호 []로 묶여있음, const cars = ["Saab","Volvo","BMW"];</h6>
+      <img src="portal/images/black_코딩등그림판/참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY.png" alt="이미지없음">
+
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT">
+      <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h5>
+      <h6>• 중괄호 { }로 묶여있음, const preson = {firstName:"John",lastName:"Doe",age:50,eyeColor:"blue"};</h6>
+      <h6>• Key는 변수 취급. ex)document.querySelector('#연습').style.display='block;'에서</h6>
+      <h6 style="text-indent: 23px;">display부분과 value부분 'block;' ==> 각각 firstName, "John"부분이라고 보면 되겠다.</h6>
+      <h6 style="text-indent: 23px;">★ Key부분에 따옴표가 없는것에 주목!! 따옴표가 있으면 값(string), 없으면(숫자제외) string이 아니라는 의미!!</h6>
+      <h6>• 변수.Key 형태로 값을 호출한다. 배열처럼 [순번] 안됨. 괄호(순번)도 안됨</h6>
+      <img src="portal/images/black_코딩등그림판/참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT.png" alt="이미지없음">
+      <h6 style="text-indent: 23px;"></h6>
+
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="참고_ARRAY_OBJECT_JSON_구분정리_03_JSON">
+      <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h5>
+      <img src="portal/images/black_코딩등그림판/참고_ARRAY_OBJECT_JSON_구분정리_03_JSON.png" alt="이미지없음">
+
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="Sibling_Node_Element_tagName은대문자_TARGET순번확인"><!-- 참고 -->
+      <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 class="fw-bold">Sibling_Node_Element_tagName은대문자_TARGET순번확인</h5>
+        <h6>1. 공백이나 spacebar, 엔터가 있으면 text노드가 있는것이다.	 </h6>
+        <h6>2. Siblings are "brothers" and "sisters". : 같은 부모를 가졌다.	 </h6>
+        <h6>3. section에 엔터, div사이의 엔터에 text노드가 있는것이다.	 </h6>
+        <h6>4. parenNode는 무조건 element이고 최상위 element는 html이다.	 </h6>
+        <h6>5 .nextSibling, previousSibling : 주석노드나 텍스트노드인 경우가 있다.	 </h6>
+        <h6>6 .nextElementSibling, previousElementSibling : element만 다룬다	 </h6>
+        <h6>7. childNodes : childNode[0] 형식으로 선택한다. Text노드, 주석노드 포함	 </h6>
+        <h6>8. children : children[0] 형식으로 선택한다. Element만 다룬다.	 </h6>
+        <h6>★첫번째div안에 p가 하나인데 tagName을 확인하기	 </h6>
+        <h6 style="text-indent: 23px;">console.log(document.querySelector('#연습').children[0].children[0].tagName); 	</h6>
+        <h6>★첫번째div안에 p가 하나인데 다음(없는) sibling을 지정하면 error	 </h6>
+        <h6 style="text-indent: 23px;">console.log(document.querySelector('#연습').children[0].children[1].tagName); 	</h6>
+        <h6 style="text-indent: 23px;">console.log(document.querySelector('#연습').children[0].children[1].nextElementSibling.tagName);	 	</h6>
+        <br>
+        <h5 class="fw-bold">요소.childNodes ==> 첫번째 자식들만, 주석노드, text노드, element노드 </h5>
+        <h6 class="fw-bold"> (엔터 또는 스페이스바 또는 텍스트=text 노드, 태그사이에 스페이스바나 엔터가 있으면 text로 인식된다.)</h6>
+        <h6>• console.log(document.querySelector('#S1_해역사진').childNodes); </h6>
+        <h6 style="text-indent: 23px;">NodeList(8) [text, div, comment, text, div, text, div, text]</h6>
+        <img style="position:absolute;left:600px;" src="portal/images/black_코딩등그림판/참고_S1_해역사진_childNodes.png" alt="이미지없음">
+        <h6 style="text-indent: 23px;">0 : text ==> 첫번째는 text노드, 다음 div사이의 엔터</h6>
+        <h6 style="text-indent: 23px;">1 : div  ==> 두번째는 div이다</h6>
+        <h6 style="text-indent: 23px;">2 : comment ==> 세번째 주석노드 : &lt;!-- fixed --&gt;부분</h6>
+        <h6 style="text-indent: 23px;">3 : text ==> 네번째는 text노드 : 엔터가 있다.</h6>
+        <h6 style="text-indent: 23px;">4 : div  ==> 다섯번째는 div이다</h6>
+        <h6 style="text-indent: 23px;">5 : text ==> 여섯번째는 text노드 : 엔터가 있다.</h6>
+        <h6 style="text-indent: 23px;">6 : div  ==> 일곱번째는 div이다</h6>
+        <h6 style="text-indent: 23px;">7 : text  ==> 여덟번째는 text노드 : 닫는 div 앞에 엔터가 있다. </h6>
+        <h6 style="text-indent: 23px;">length=8; </h6>
+      </div>
+      <div class=" d-inline-block align-top" style="width:800px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold">tagName은 대문자! 예)태그이름이 input인경우 (★스크립트는 대소문자 구분!)</h5>
+        <h6 style="text-indent: 23px;">var 태그이름=document.querySelector('#연습').tagName);</h6>
+        <h6 style="text-indent: 23px;">console.log(태그이름); ==> 'INPUT' 	</h6>
+        <h6 style="text-indent: 23px;">if (태그이름=='INPUT') ==> true 	</h6>
+        <h6 style="text-indent: 23px;">if (태그이름=='input') ==> false 	</h6>
+        <br>
+        <h5 class="fw-bold">target 순번확인 : target표시 > parentNode올라가서 children 순회하여 표시 찾기</h5>
+      </div>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="참고_오버레이_이미지사진띄우기_각도_드래곤">
+      <h5><a href="https://wjdtmddnjs6788.tistory.com/1282" target="_blank">▢ 참고_오버레이_이미지사진띄우기_각도_드래곤</a></h5>
+      <h6 style="text-indent: 23px;">zip파일 다운로드 ==> 풀기, SD.exe 실행, 우클릭 메뉴 활용</h6>
+    </div>
+
+
+
+    
+    <div id="줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격"><!-- 참고 -->
+      <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold"><a href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95" target="_blank">자바스크립트로 오버플로 확인</a></h5>
+        <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
+        <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
+        <h6 style="text-indent: 23px;">넘김 ==> white-space:normal;  넘기지 않음 ==> white-space:nowrap;	</h6>
+        <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
+        <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
+        <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
+        <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
+        <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
+        <h6 class="fw-bold">4. 줄바꿈 기준 : word-break, 기본값 normal, 상속 yes</h6>
+        <h6 style="text-indent: 23px;">CJK(Chinese - Japanese - Korean, 중국·일본·한국)는 일본어, 한국어, 중국어를 통틀어 이르는 말</h6>
+        <h6 style="text-indent: 23px;">normal : CJK 문자는 글자 기준(break-all)으로, CJK 이외의 문자는 단어 기준으로 줄바꿈합니다.</h6>
+        <h6 style="text-indent: 23px;word-break:keep-all;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)</h6>
+        <h6 style="text-indent: 23px;word-break:keep-all;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며 공백이 늘어남)</h6>
+        <h6 style="text-indent: 23px;word-break:normal;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)</h6>
+        <h6 style="text-indent: 23px;word-break:normal;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며 공백이 늘어남)</h6>
+        <h6 style="text-indent: 23px;">break-all : 글자 기준으로 줄바꿈합니다.</h6>
+        <h6 style="text-indent: 23px;">keep-all : 단어 기준으로 줄바꿈합니다.</h6>
+        <h6 style="text-indent: 23px;">initial : 기본값으로 설정합니다.</h6>
+        <h6 style="text-indent: 23px;">inherit : 부모 요소의 속성값을 상속받습니다.</h6>
+        <h6 class="fw-bold">5. 한 줄에 inline-block, inline 요소가 여러개 있을때 맨 윗단 정렬 ==> vertical-align:top;</h6>
+        <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
+        <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
+        <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
+      </div>
+      <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+
+      </div>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체">
+      <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold">1.중복제거 : 한줄번호누적배열=new Set(한줄번호누적배열);</h5>
+        <h6 style="text-indent: 23px;">중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,</h6>
+        <h6 style="text-indent: 23px;">SET으로 중복제거하면 ARRAY가 아니라 OBJECT(class객체)라서 배열[0]등으로 사용안됨</h6>
+        <h6 style="text-indent: 23px;">배열 : [3,2,2,'4'], set객체 : {3,2,'4'} </h6>
+        <h5 class="fw-bold">2.한줄번호누적배열=[...한줄번호누적배열];</h5>
+        <h6 style="text-indent: 23px;">※ Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환하였습니다.
+        <h5 class="fw-bold">3. 정렬 : 한줄번호누적배열.sort((a,t) => a-t);</h5>
+        <h5 class="fw-bold">4. set</h5>
+        <h6 style="text-indent: 23px;">※ set.add(value) : 값 추가 </h6>
+        <h6 style="text-indent: 23px;">※ set.delete(value) : 값 제거</h6>
+        <h6 style="text-indent: 44px;">호출 시점에 셋 내에 값이 있어서 제거에 성공하면 true, 아니면 false를 반환한다.</h6>
+        <h6 style="text-indent: 23px;" class="fw-bold">※ set.has(value) : Set 내에 값이 존재하면 true, 아니면 false를 반환 ★★★</h6>
+        <h6 style="text-indent: 23px;">※ set.size : Set에 몇 개의 값이 있는지 세준다.</h6>
+        <h5 class="fw-bold">5. set 반복문 사용방법</h5>
+        <code style="margin-left:10px;">let set = new Set(["oranges", "apples", "bananas"]);</code>
+        <code style="margin-left:10px;">1.for(let value of set) {alert(value);}</code>
+        <code style="margin-left:10px;">2.for(let key of set.keys()) {alert(key);}</code>
+        <code style="margin-left:10px;">3.for(let value of set.values()) {alert(value);}</code>
+        <code style="margin-left:10px;">무슨말인지?</code>
+        <code style="margin-left:10px;">set.keys() : Set 내의 모든 값을 포함하는 이터러블 객체를 반환</code>
+        <code style="margin-left:10px;">set.values() : set.keys와 동일한 작업을 합니다. 맵과의 호환성을 위해 만들어진 메서드이다</code>
+        <code style="margin-left:10px;">set.entries() : Set 내의 각 값을 이용해 만든 [value, value] 배열을 포함하는 이터러블 객체를 반환. 맵과의 호환성을 위해 만들어졌습니다.</code>
+        <code style="margin-left:10px;"></code>
+      </div>
+      <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold">4. set</h5>
+        <h6 style="text-indent: 23px;">※ 세트(set)는 한마디로 순서가 없는 중복되지 않은 데이터의 집합인데요. </h6>
+        <h6 style="text-indent: 23px;">※ 배열(array)과 차이점을 이해하는 것이 무엇보다 중요합니다.</h6>
+        <h6 style="text-indent: 23px;">※ 배열은 데이터를 순서있게 저장합니다. </h6>
+        <h6 style="text-indent: 23px;">※ 그래서 인덱스(index)를 통해서 특정 위치에 저장되어 있는 데이터에 접근이 가능하죠. </h6>
+        <h6 style="text-indent: 23px;">※ 그리고 배열에는 동일한 값을 여러 번 저장할 수 있습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 값이 동일하더라도 인덱스가 틀리기 때문에 데이터의 중복이 문제되지 않습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 반면에 세트는 얼핏 보기에는 배열과 비슷해보일 수 있지만 사실 결이 아주 다른 자료구조입니다.</h6>
+        <h6 style="text-indent: 23px;">※ 우선 세트는 데이터를 순서없이 저장합니다. </h6>
+        <h6 style="text-indent: 23px;">※ 따라서 배열처럼 인덱스를 통해서 접근할 수가 없습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 그리고 세트는 중복된 데이터를 허용하지 않습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 즉, 기존에 세트에 있는 값을 또 추가하면 아무 효력이 발생하지 않습니다.</h6>
+        <h6 style="text-indent: 23px;">※ 자바스크립트에서 Set는 클래스(class)이므로 </h6>
+        <h6 style="text-indent: 44px;">new 키워드와 생성자를 사용하여 객체를 생성할 수 있습니다.</h6>
+        <h6 style="text-indent: 23px;">※ const set = new Set(); // Set(0) {size: 0}</h6>
+        <h6 style="text-indent: 23px;">※ 위와 같이 생성자의 인자로 아무 것도 넘기지 않으면 빈 세트가 만들어지며,</h6>
+        <h6 style="text-indent: 23px;">※ 아래와 같이 배열을 인수로 넘기면 배열에 담긴 값으로 세트가 만들어집니다.</h6>
+        <h6 style="text-indent: 23px;">※ const numSet = new Set([1, 2, 3]); // Set(3) {1, 2, 3}</h6>
+        <h6 style="text-indent: 23px;">※ 값 추가</h6>
+        <h6 style="text-indent: 23px;">※ 세트에 새로운 값을 추가할 때는 add() 메서드를 사용하는데요</h6>
+        <h6 style="text-indent: 23px;">※ 위에서 설명드린 것처럼 세트에는 중복된 값이 추가되지 않으며, 유일한 값만 저장됩니다.</h6>
+        <h6 style="text-indent: 23px;">※ set.add(1); // Set(1) {1}</h6>
+        <h6 style="text-indent: 23px;">※ set.add("A"); // Set(2) {1, 'A'}</h6>
+        <h6 style="text-indent: 23px;">※ set.add(true); // Set(3) {1, 'A', true}</h6>
+        <h6 style="text-indent: 23px;">※ 참고로 add() 메서드는 값을 추가한 후에 세트를 반환하기 때문에 </h6>
+        <h6 style="text-indent: 23px;">※ 아래와 같이 연쇄적으로 호출할 수도 있습니다.</h6>
+        <h6 style="text-indent: 23px;">※ set.add(1).add("A").add(true); // Set(3) {1, 'A', true}</h6>
+        <h6 style="text-indent: 23px;">※ 값 삭제</h6>
+        <h6 style="text-indent: 23px;">※ Set의 delete() 메서드를 사용하면 세트로 부터 특정 값을 삭제할 수 있는데요</h6>
+        <h6 style="text-indent: 23px;">※ delete() 메서드에 인자로 넘기는 값이 세트에 존재하여 성공적으로 삭제하였다면 </h6>
+        <h6 style="text-indent: 23px;">※ true를 반환하고, 해당 값이 세트에 존재하지 않아서 삭제에 실패하였다면 false를 반환합니다.</h6>
+        <h6 style="text-indent: 23px;">※ set.delete(1); // true, set.delete(2); // false</h6>
+
+      </div>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="height"><!-- 참고 -->
+      <h6>• margin 값은 공통적으로 포함하지 않는다.</h6>
+      <h6>• clientHeight : content영역 + padding 영역, <u><b>border 제외, scroll 아래 제외</b></u></h6>
+      <h6>• offsetHeight : content영역 + padding 영역 + border 영역, <u><b>, scroll 아래 제외</b></u></h6>
+      <h6>• scrollHeight : content영역 + padding 영역 + border 영역 + <u><b>숨겨져 있어도 scroll 전체 포함</b></u></h6>
+      <br>
+      <h6>• offsetHeight : CSS로 요소의 높이를 지정할 때 정해지는 높이입니다.</h6>
+      <h6 style="text-indent: 10px;">패딩과 테두리가 포함되며, "box-sizing" 모델 속성 값에 따라 패딩과 테두리 값이 제외될 수 있으므로 주의해야 합니다.</h6>
+      <h6 style="text-indent: 10px;">요소가 감춤 상태인 경우 offsetHeight는 0을 반환합니다.</h6>
+    </div>
+    <div id="JS_이벤트리스너_이벤트종류_작동순서">
+      <h5>▢ 인라인에 onclick동작있을때 이벤트리스너 동작은?</h5>
+      <h6 style="text-indent: 23px;">이벤트리스너 걸어놓으거 먼저 동작후, 버튼에 걸려있는 onclick동작</h6>
+      <h5>▢ 같은 element에 각각 다른 이벤트를 걸수있다. ex)click, dbclick, change</h5>
+      <h5>★★ 클릭한 요소의 순서 : e.target.classList.add해주고 찾는형식??</h5>
+      <h5>▢ 이벤트리스너 이벤트 종류</h5>
+      <img src="portal/images/black_코딩등그림판/jQuery_이벤트리스너이벤트종류_01.png" alt="이미지없음"  style="vertical-align: top;">
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="JS_textarea내용의탭으로구분여러줄가공">
+      <h6>1. textarea안에 초기화시 기록된값=요소.innerHTML, textarea안에 현재 기록된값=요소.value</h6>
+      <h6>2. &lt;textarea placeholder="내용을 입력해 주세요." /> placeholder태그 사용시 가로세로 조절가능</h6>
+      <h6>3. 내부TEXT선택, textarea와 input에서만 : 요소.select();</h6>
+      <h6>4. 선택범위 text 복사(클립보드) : document.execCommand('copy');</h6>
+      <h6>5. string.split(separator, limit); 탭과 줄바꿈,'limit'은 최대 분할 개수를 나타내며, 필수 값이 아닙니다.</h6>
+      <h6 style="text-indent: 18px;">탭으로 분리된 것 : split("\t"), 탭문자 자체를 넣어도 됨</h6>
+      <h6 style="text-indent: 18px;">줄바꿈 된 것 : split("\n")</h6>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="JS_search_find_match사용법">
+      <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6 style="font-weight: bold;">• 찾을값이 포함된 문자열과 찾을값을 모두 대문자로 바꿔서 search, find 사용</h6>
+        <code style="margin-left:10px;">var 검색할문자열=document.querySelector('#전체검색input').value.toUpperCase(); </code>
+        <h6 style="font-weight: bold;">• search : 없으면 -1, 첫번째면 0, 대소문자 구분.</h6>
+        <code style="color:black;">if (검색할버튼클래스들[i].innerHTML.search(검색할문자)>-1) &#123;
+          <br><span style="margin-right:23px;"></span>내부html+=검색할버튼클래스들[i].outerHTML;
+          <br>&#125;
+        </code>
+        <h6 style="font-weight: bold;">• find : 배열안에 찾을값이 있는지 확인. arr.find(callback(element, index, array), thisArg)</h6>
+        <h6 style="font-weight: bold;">• 대소문자 구분, 전체일치.</h6>
+        <h6 style="margin-left:10px;">find 함수는 배열의 요소를 순차적으로 순회하면서 조건에 일치하는 요소의 값을 즉시 반환합니다. </h6>
+        <h6 style="margin-left:10px;">조건을 일치하는 경우가 없다면, undefined를 반환합니다.</h6>
+        <h6 style="margin-left:10px;">arr : 순회하고자 하는 배열, element : 현재배열의 요소, index(생략 가능) : 현재 배열 요소의 index,</h6>
+        <h6 style="margin-left:10px;">array(생략 가능) : filter 함수를 호출한 배열, thisArg(생략 가능) : callback을 실행할 때 </h6>
+        <h6 style="margin-left:10px;">this로 사용되는 값(=map 함수에서 사용될 this값)</h6>
+        <h6 style="margin-left:10px;font-weight: bold;">필요할때 다시 공부하고, 현재 사용해본 형식에 대한 설명이다.</h6>
+        <code>var 배열=[];//빈배열 선언, 또는 미리 만들어도 됨 ['문자열1','문자열2','문자열3',....]
+          <br>배열.push('문자열1');//배열값 추가
+          <br>배열.push('문자열2');//배열값 추가
+          <br>배열.push('문자열3');//배열값 추가
+          <br>var 찾을값='문자열2';
+          <br>var 결과;
+          <br><span style="margin-right:23px;"></span>if (배열.find(element => element==찾을값)) {//element:현재 배열값.
+          <br><span style="margin-right:23px;"></span>결과="찾았음";
+          <br>console.log(배열.find(element => element==찾을값));// 문자열2
+          <br>// 찾을값을 없는문자열로 지정하였다면...
+          <br>console.log(배열.find(element => element==찾을값));// undefined
+          <br>}
+        </code>
+        <h6>정확히 일치하는 값이 있으면 '해당 문자열'이 반환되고, true 조건으로 활용가능.</h6>
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
+        <h6 style="font-weight: bold;">• match : 1.대소문자구분, 2.대소문자구분없이 "i"</h6>
+        <h6>대소문자 구분 : "i" 부분이 대소문자 구분하지 않는다는 조건이다. searchVariable=찾을문자열</h6>
+        <code style="margin-left:22px;">String.match(new RegExp(searchVariable, "i"));</code>
+        <h6>대소문자 구분. searchVariable=찾을문자열</h6>
+        <code style="margin-left:22px;">String.match(new RegExp(searchVariable));</code>
+        <h6 style="font-weight: bold;">• match 예시 : 문자열.match(찾을 단어)</h6>
+        <code style="margin-left:22px;">?? let reg = [/\w+java\w+/g, /java\w+/] : 정규식 나중에... 모르겠다.
+          <br>let str = 'hello world';
+          <br>console.log(str.match('hello'));
+          <br>console.log(str.match('HELLO'));//==> null
+          <br>console.log(str.match('rld'));
+          <br>console.log(str.match('llo'));
+          <br>-콘솔결과창(배열) : ['hello', index: 0, input: 'hello world', groups: undefined]
+          <br>-★ length=1 이고==> 배열이 하나이므로 str.match('hello')[0]만 표시가능하다
+          <br>-★ index(찾은곳 순번, 0부터시작), input(문자열 전체), groups는 정보인듯.
+          <br>-console.log(str.match('HELLO'));//==> null</h6>
+          <br>-콘솔결과창(배열) : ['rld', index: 8, input: 'hello world', groups: undefined]
+          <br>-콘솔결과창(배열) : ['llo', index: 2, input: 'hello world', groups: undefined]
+        </code>
+        <h6 style="font-weight: bold;">• 활용 : 위 정보에서</h6>
+        <code style="margin-left:22px;">console.log(str.match('rld')); // ==> ['rld', index: 8, input: 'hello world', groups: undefined]
+          <br><span style="font-weight:bold;">※결과는 하나의 배열을 가진다. index와 input은 속성처럼 접근가능하다.</span>
+          <br>활용가능 : console.log(str.match('rld'))[0]; // ==> rld
+          <br>console.log(str.match('rld'))[1]; // ==> undefined
+          <br>console.log(str.match('rld'))[2]; // ==> undefined
+          <br>console.log(str.match('rld'))[3]; // ==> undefined
+          <br>활용가능 : console.log(str.match('rld').index); // ==> 8
+          <br>활용가능 : console.log(str.match('rld').input); // ==> hello world
+        </code>
+        <h6 style="font-weight: bold;">• 어떻게 활용 가능한가 : 요소의 innerText를 담으면 하위의 하위 요소의 모든 문자열을 합친 하나의 문자열이다.</h6>
+        <h6 style="text-indent: 15px;">▢ 문자열 안에 \n (줄바꿈) 있으니 활용 가능.</h6>
+        <h6 style="text-indent: 15px;">1.if (문자열.search(검색할문자)>-1) {...}</h6>
+        <h6 style="text-indent: 15px;">2.find는 완전일치, 일부일치 확인은 search와 match, search가 가벼울듯.</h6>
+        <!-- <br><span style="margin-right:23px;"></span> -->
+      </div>
+    </div>
+
+    <div id="JS_문자열자르기_substr_substring_slice">
+      <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6>• 세 가지 함수의 인수 중 대괄호([]) 부분은 생략이 가능하며, 생략할 경우 시작 위치부터 문자열 끝까지 자른다.</h6>
+        <h6>• str.substr(start[, length]) : 시작위치에서, 몇글자를 자른다.</h6>
+        <code style="margin-left:10px">var str = '자바스크립트';
+          <br>var result1 = str.substr(0, 2); // 결과 : "자바"
+          <br>var result2 = str.substr(2, 4); // 결과 : "스크립트"
+          <br>var result3 = str.substr(2); // 결과 : "스크립트"
+        </code>
+        <h6>• str.substring(indexStart[, indexEnd]) : 왼쪽은 0부터시작, 오른쪽은 1부터시작, 시작위치부터 끝위치까지</h6>
+        <code style="margin-left:10px">var str = '자바스크립트';
+          <br>var result1 = str.substring(0, 2); // 결과 : "자바"
+          <br>var result2 = str.substring(2, 5); // 결과 : "스크립"
+          <br>var result3 = str.substring(2, 6); // 결과 : "스크립트"
+          <br>var result4 = str.substring(2); // 결과 : "스크립트"
+        </code>
+        <h6>• str.slice(beginIndex[, endIndex])문자열을 뒤에서부터 자르기 위해서는 slice() 함수를 사용하면 효율적이며 </h6>
+        <h6 style="text-indent: 10px;">타 언어의 Right 함수와 비슷하다고 생각하면 된다.</h6>
+        <code style="margin-left:10px">var str = '자바스크립트';
+          <br>var result1 = str.slice(0, 2); // 결과 : "자바"
+          <br>var result2 = str.slice(2, 6); // 결과 : "스크립트"
+          <br>var result3 = str.slice(2); // 결과 : "스크립트"
+          <br>/************************************/
+          <br>var result4 = str.slice(-4); // 결과 : "스크립트" == <b>이것만 이해하자</b>
+          <br>var result3 = str.slice(2); // 결과 : "스크립트"
+          <br>var result5 = str.slice(-4, 5); // 결과 : "스크립"
+          <br>var result6 = str.slice(2, -1); // 결과 : "스크립"
+        </code>
+        <img src="portal/images/black_코딩등그림판/JS_문자열자르기_substr_substring_slice_slice캡쳐.png" alt="이미지없음"  style="vertical-align: top;">
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
+
+      </div>
+
+    </div>
+
+
+
+
+    
+    <div id="JS_input_value_숫자표현결과_조건표현인자">
+      <div style="width:800px;display:inline-block;border-right:1px solid black;">
+        <h6>★ 숫자를 더할 경우 숫자로 표현되도록 바꾸어야한다.</h6>
+        <h6>★ typeof 요소또는 값 : value에 '1'로 문자열 숫자를 전달하든, </h6>
+        <h6 style="text-indent: 23px;">1 처럼 숫자를 전달하든 value의 type은 ★string★이다.</h6>
+        <code style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML='1';</code>
+        <code style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</code>
+        <code style="text-indent: 23px;">document.querySelectorAll('#차감input들 button')[0].innerHTML=1;</code>
+        <code style="text-indent: 23px;">alert(typeof document.querySelectorAll('#차감input들 button')[0].innerHTML);</code>
+        <h6>▢ 공백[여러공백]일때 : 공백일때 0으로 인식, 1을곱하면 0, 1을 곱하면 숫자로 인식, 안곱해도 숫자 0으로 인식.</h6>
+        <h6>▢ 많은 공백중 숫자한번 : 숫자로 인식. ==> ★ 공백일때 굳이 0 으로 설정하는 코딩이 필요없을듯.</h6>
+        <h6>▢ 많은 공백중 숫자 두번 : 문자로 인식. ==> ★ isNaN(표현)이 숫자가 아닐때가 true, 숫자이면 false</h6>
+        <h6>▢ 문자열에 곱하기해도 에러는 아니고 NaN으로 설정됨</h6>
+        <h6>▢ 조건 : 아닐때 !조건, or 조건 || 조건 (||는 shift ￦), and 조건 && 조건, 보다크다 >=, 보다 작다 <=,</h6>
+        <h6>▢ 더하기는 문자열 더하기도 포함한다는것 : 결과+=더할값 ==> 기존 결과에 우측에 더하여 붙인다.</h6>
+      </div>
+      <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
+        <h6>★ input 초기값, 한글 영문, ie에서 나왔고 크롬과 엣지에서 안된다네요.</h6>
+        <code>• 한글과 영문 가능 : &lt;input type='text' style="ime-mode:auto;"&gt;
+          <br>• 영문만 가능 : &lt;input type='text' style="ime-mode:disabled;"
+          <br>• 한글 우선 영문 가능 : &lt;input type='text' style="ime-mode:active;"
+          <br>• 영문 우선 한글 가능 : &lt;input type='text' style="ime-mode:inactive;"
+        </code>
+
+      </div>
+    </div>
+
+    <div id="jQuery_설치와기초사용법">
+      <h5><a href="https://milku.tistory.com/84" target="_blank">jQuery_설치와기초사용법</a></h5>
+      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음"  style="vertical-align: top;">
+      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_03.png" alt="이미지없음" style="vertical-align: top;">
+      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_05.png" alt="이미지없음" style="vertical-align: top;">
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="jQuery_문법리스트">
+      <h5><a href="https://soft91.tistory.com/9" target="_blank">JQuery - JQuery 기본문법</a></h5>
+      <img src="portal/images/black_코딩등그림판/JQuery기본문법_01.png" alt="이미지없음"  style="vertical-align: top;">
+      <img src="portal/images/black_코딩등그림판/JQuery기본문법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img src="portal/images/black_코딩등그림판/JQuery기본문법_03.png" alt="이미지없음" style="vertical-align: top;">
+      <img src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="구조_black_해역사진_html">
+      <h5><a href="" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+      <h5>▢ </h5>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+      <embed src="" width=1000px height=870px>
+      <br><br><br><br><br><br><br>
+    </div>
+    <div id="구조_캔버스독립구조">
+      <div style="width:800px;margin-right:5px;" class="d-inline-block">
+        <img src="portal/images/black_코딩등그림판/구조_캔버스독립구조.png" alt="이미지없음">
+      </div>
+      <div style="width:800px;margin-right:5px;" class="d-inline-block">
+        <h6 class="fw-bold">▢ 필수 : #전체대체(외부배치), 전역변수 '보기셑팅유형' ==> 숨길꺼 보일꺼 설정하는 function 보기셑팅()</h6>
+        <h6>• 보기셑팅함수 간단 보기</h6>
+        <code style="margin-left:10px;">function 보기셑팅() &#123
+        <br><span style="margin-left:10px"></span> if (보기셑팅유형=='해역사진초기값') {
+          <br><span style="margin-left:20px"></span>document.querySelector('#리스너용해역사진관련').classList.remove('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#main과우측').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#전체대체').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>&#125;
+          <br><span style="margin-left:10px"></span>&#125;
+        </code>
+      </div>
+    </div>
+    <div id="_2024년_인생자동화_AI툴_14가지">
+      <div style="width:800px;margin-right:5px;" class="d-inline-block">
+        <img src="portal/images/black_코딩등그림판/구조_캔버스독립구조.png" alt="이미지없음">
+      </div>
+      <div style="width:800px;margin-right:5px;" class="d-inline-block">
+        <h6 class="fw-bold">▢ 필수 : #전체대체(외부배치), 전역변수 '보기셑팅유형' ==> 숨길꺼 보일꺼 설정하는 function 보기셑팅()</h6>
+        <h6>• 보기셑팅함수 간단 보기</h6>
+        <code style="margin-left:10px;">function 보기셑팅() &#123
+        <br><span style="margin-left:10px"></span> if (보기셑팅유형=='해역사진초기값') {
+          <br><span style="margin-left:20px"></span>document.querySelector('#리스너용해역사진관련').classList.remove('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#해역_물품단계_고정').classList.remove('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#해역_물품단계_대체부분').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#main과우측').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>document.querySelector('#전체대체').classList.add('d-none');
+          <br><span style="margin-left:20px"></span>&#125;
+          <br><span style="margin-left:10px"></span>&#125;
+        </code>
+      </div>
+    </div>
+    <div id="AI툴_개요">
+      <div style="width:800px;margin-right:5px;border-right:1px solid black;" class="d-inline-block">
+        <h5 style="font-weight: bold;">헤이젠</h5>
+        <h6>• 영상에서 언어 번역 (목소리, 한국말로 해도 영어로 말하도록함)</h6>
+        <h6 style="text-indent: 10px;">목소리를 복제하여 입모양을 자연스럽게 움직여서 더 리얼하게 보이게함</h6>
+        <h6>• 사용법</h6>
+        <h6>1. 비디오 업로드, 2. 사용하고 싶은 언어 선택, 3. 번역하기 클릭</h6>
+        <h5 style="font-weight: bold;">이미지 생성 AI</h5>
+        <h6>• 미드저니, 달리3, 스태빌리티, 파이어플라이</h6>
+        <h5 style="font-weight: bold;">Freeflo 툴</h5>
+        <h6>• 이미지를 생성할때 어떤 프롬프트[미드저니에 넣어보면 같은?게 나옴]가 쓰였는지 알려줘서, </h6>
+        <h6 style="text-indent: 10px;">여러분이 고르신 이미지와 비슷하거나 같은 이미지를 생성할 수 있도록 도와주는 툴입니다.</h6>
+        <h6 style="text-indent: 10px;">즉, AI 툴을 쉽게 사용하게 도와주는 AI 툴인 거죠.</h6>
+        <h6>• Freeflo 페이지를 통해 원하는 이미지를 둘러보거나 스타일별로 필터링하여 다양한 이미지 컬렉션을 볼 수 있습니다.</h6>
+        <h6 style="text-indent: 10px;">특정 키워드로 검색을 할 수도 있고요.</h6>
+      </div>
+      <div style="width:800px;margin-left:-10px;padding-left:5px;border-left:1px solid black;" class="d-inline-block">
+
+      </div>
+    </div>
+    <div id="AI툴_메모">
+      <div style="width:800px;margin-right:5px;border-right:1px solid black;" class="d-inline-block">
+        <h5 style="font-weight: bold;">Stable Diffusion Online [무료]</h5>
+        <h6>• 이미지 생성 AI : 미드저니가 가장 유명한데 유료</h6>
+        <h6 style="text-indent: 10px;"></h6>
+        <h6>• </h6>
+        <h6>1. </h6>
+        <h6 style="text-indent: 18px;"></h6>
+      </div>
+      <div style="width:800px;margin-left:-10px;padding-left:5px;border-left:1px solid black;" class="d-inline-block">
+
+      </div>
+    </div>
+    <div id="AI툴_이미지생성_Stable_Diffusion_Online">
+      <div style="width:800px;margin-right:5px;border-right:1px solid black;" class="d-inline-block">
+        <h5 style="font-weight: bold;">Stable Diffusion Online [무료]</h5>
+        <h6>• 이미지 생성 AI : 미드저니가 가장 유명한데 유료</h6>
+        <h6>• Stable Diffusion은 Stability에서 2022년 8월 오픈소스로 배포한 텍스트를 이미지로 만들어주는 인공지능 </h6>
+        <h6 style="text-indent: 10px;">모델입니다.</h6>
+        <h6>• 사용법은 크게 내 컴퓨터에 설치하는 방법과 브라우저를 통해 사용하는 방법으로 나누어져 있습니다.</h6>
+        <h6>• 설치없이 브라우저에서 사용방법</h6>
+        <h6 style="text-indent: 10px;">*사이트방문-Get Started for free-Enter your prompt==>만들고 싶은 이미지에 대한 내용 입력 </h6>
+        <h6 style="text-indent: 20px;">-Enter a negative prompt ==> 포함하지 않을 내용 입력</h6>
+        <h6 style="text-indent: 20px;">ex) 겨울에 털 많은 고양잉 그리고 싶은데 낮은 퀄리티는 배제하고 싶다면</h6>
+        <h6 style="text-indent: 48px;">포함 : hairy cat on a winter background</h6>
+        <h6 style="text-indent: 48px;">배제 : low quality</h6>
+        <h6 style="text-indent: 48px;">그리고 Generate image를 누르면 아래와 같은 이미지를 얻을 수 있습니다.</h6>
+        <h6 style="text-indent: 10px;"></h6>
+        <h6>• </h6>
+        <h6>1. </h6>
+        <h6 style="text-indent: 18px;"></h6>
+      </div>
+      <div style="width:800px;margin-left:-10px;padding-left:5px;border-left:1px solid black;" class="d-inline-block">
+
+      </div>
+    </div>
+
+
+
+
+
+    <div id="AI툴_???">
+      <div style="width:800px;margin-right:5px;border-right:1px solid black;" class="d-inline-block">
+        <h6></h6>
+        <h6>• </h6>
+        <h6 style="text-indent: 10px;"></h6>
+        <h6>• </h6>
+        <h6>1. </h6>
+        <h6 style="text-indent: 18px;"></h6>
+      </div>
+      <div style="width:800px;margin-left:-10px;padding-left:5px;border-left:1px solid black;" class="d-inline-block">
+
+      </div>
+    </div>
+
+
+    <div id="연습_인터벌_interval_움짤1">
+      <div style="width:800px;margin-right:5px;border-right:1px solid black;" class="d-inline-block">
+        <h6>출처 : https://curryyou.tistory.com/328 </h6>
+        <h6>• Canvas 객체의 toDataURL()함수를 통해 캔버스에 그린 그림을 문자열 형태로 변환할 수 있는데,</h6>
+        <h6 style="text-indent: 10px;">Canvas에 그려진 내용을 Data URL로 변환한 것이기 때문에 그 자체로 이미지 정보가 된다.</h6>
+        <h6 style="text-indent: 10px;">Canvas에 그려진 내용을 문자열로 변환하여 img요소의 src로 사용할 수 있다.</h6>
+        <code style="margin-left: 10px;">&lt;img id="myImage">
+          <br>function toDataURL() {
+          <br><span style="margin-left: 10px;"></span>var myImage=document.getElemetnById('myImage');
+          <br><span style="margin-left: 10px;"></span>myImage.src=canvas.toDataURL();
+          <br>}
+        </code>
+        <h6>• setInterval(콜백함수,시간)는 "시간(ms)"를 간격으로 "콜백함수"를 반복 호출 하는 함수이다.</h6>
+        <h6>1. setInterval()함수의 반환값을 변수에 할당하여 반복시작</h6>
+        <h6 style="text-indent: 18px;">let 변수=setInterval(콜백함수,시간);</h6>
+        <h6>2. clearInterval(변수)로 반복 중단</h6>
+        <h6 style="text-indent: 18px;">clearInterval(변수);</h6>
+        <h6>3. setInterval()함수의 반환값을 변수에 재할당하여 재시작</h6>
+        <h6 style="text-indent: 18px;">변수=setInterval(콜백함수,시간);</h6>
+      <div style="width:800px;margin-left:-10px;padding-left:5px;border-left:1px solid black;" class="d-inline-block">
+        <img src="portal/images/black_코딩등그림판/연습_인터벌_setInterval.png" alt="이미지없음">
+      </div>
+    </div>
+  </div>
+</div>
+<div id="main사이드와header관련none" style="display:none;">
+  <div id="html특수문자_click">
+    <button onclick="document.querySelector('##전체대체').innerHTML='';">닫기</button><br>
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width=1000px height=870px>
+  </div>
+  <div id="S0_01_까주모음참고" style="border:1px solid black;">
+    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+    <embed id="embed부분" src="portal/images/black_문서/S0_01_까주모음참고.txt" width=1000px height=870px>
+  </div>
+  <div id="S0_물교메모" style="border:1px solid black;">
+    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+    <embed id="embed부분" src="portal/images/black_문서/S0_물교메모.txt" width=1000px height=870px>
+  </div>
+  <div id="S1_인벤중범선증축표">
+    <h5><a href="https://www.inven.co.kr/board/black/3584/52329" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+    <h5>▢ 중범선 점진/균형/용맹/비상 수량 정리표 [점진먼저 물교용, 다음목표 용맹]</h5>
+    <img src="portal/images/black_문서/S1_인벤점진균형용맹비상수량정리표.png" alt="이미지없음">
+    <h5>▢ 중범선 점진/균형 : 일리아 물교퀘 3회로 변경 (라비켈 I,II, 세렌디아 병사)</h5>
+    <img src="portal/images/black_문서/S1_인벤점진균형증축표.png" alt="이미지없음">
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="S1_해상일퀘동선">
+    <div>
+      <h5>▢ 중범증축 녹+파템강화 온기,한기 / 중범이후, 토로강화 햇빛달빛, 치로강화 노을스톤</h5>
+      <div class="d-inline-block" style="width:600px;vertical-align: top;">
+        <h6 style="text-indent: 23px;">1.온기, 한기스톤 : 중범증축시 녹템과 파템강화. <b><i><u style="color:blueviolet">파템시 온기 35, 한기 80개 준비.</u></i></b></h6>
+        <h6 style="text-indent: 23px;">2.햇빛, 달빛스톤 : 온기,한기 10개 + 별빛수정[100주화] 가열하기</h6>
+        <h6 style="text-indent: 23px;"><b><i><u style="color:blueviolet">[토로강화용!] 온기280, 한기360, 별빛수정66(6천6백) 일단 준비!!</u></i></b></h6>
+        <h6 style="text-indent: 23px;"><b><i><u style="color:blueviolet">주간퀘3종 온기180, 한기90</u></i></b></h6>
+        <h6 style="text-indent: 23px;"><b><i><u style="color:blueviolet">어린칸디둠 : 달의 비늘이 새겨진 합판 10, 일반 : 온기14 or 한기7 or 100까주</u></i></b></h6>
+        <h6 style="text-indent: 23px;"><b><i><u style="color:blueviolet">어린나인샤크 : 달의 핏줄이 새겨진 아마포 3, 일반 : 온기14 or 한기7 or 100까주</u></i></b></h6>
+        <h6 style="text-indent: 23px;"><b><i><u style="color:blueviolet">어린검무쇠 : 심해의 눈물 1, 일반 : 온기14 or 한기7 or 100까주</u></i></b></h6>
+
+        <h6 style="text-indent: 40px;">: 중범 녹템인 토로장비 강화.<b><i><u style="color:blueviolet"> 햇빛=200주화, 달빛=300주화 가치!!!</u></i></b></h6>
+        <h6 style="text-indent: 23px;">3.토로 강화 햇빛, 달빛 : 4피스 개당 1만 까주. 강화는 햇빛, 달빛   </h6>
+        <h6 style="text-indent: 23px;">4.치로 강화 노을스톤 : 햇빛, 달빛 1개 + 별빛 가루[노드]10개, 일리야에서 부품공방 제작.</h6>
+
+        
+      </div>
+      <div class="d-inline-block" style="width:600px;vertical-align: top;">
+        <h6 style="text-indent: 23px;">5.치로장비 4부위 <b>★만들때 토로10강과 맞는 허가증+★</b> 파트별로 100개씩<span class="a_형식">[총1200개]</span> 다음 3가지 재료가 들어간다.</h6>
+        <h6 style="text-indent: 40px;">• 난폭한 파도가 새겨진 합판(350주화)[공작] : 난폭한 해양 괴수의 비늘 1, 바다 악어의 비늘.</h6>
+        <h6 style="text-indent: 40px;">• 정교하게 다듬어진 지지대(350주화)[공작] : 난폭한 해양 괴수의 뼈 1, 별빛 강화제(250주화) 1.</h6>
+        <h6 style="text-indent: 40px;">• 파도의 흔적이 담긴 접착제(350주화)[간이연금] : 난폭한 해양 괴수의 진액 1, 별빛 유화제(250주화) 1. </h6>
+        <h6 style="text-indent: 40px;"><span class="a_형식">350 X 1200 = 42만 주화</span> 
+          <b><i><u style="color:blueviolet">치로만드기전에 몇년간 토로 쓸듯!!!, </u></i></b> 
+          <b><i><u style="color:blueviolet"> 매일 2000주화 모은다면 210일!!!</u></i></b> 
+        </h6>
+        <h6 style="text-indent: 23px;">6.무역선[녹템10강]과 중범선점진 녹템(토로10강) 비교[무게위주] : <b><i><u style="color:blueviolet">증축시 속도10%, 회전과 가속 5% 증가.</u></i></b></h6>
+        <h6 style="text-indent: 40px;"><b><i><u style="color:blueviolet">• 무역선 일반무게 : 11500 • 무역선 과적무게 : 19550</u></i></b></h6>
+        <h6 style="text-indent: 40px;">중범선점진 녹템(토로10강) 비교[무게위주], <b><i><u style="color:blueviolet">선원300*5:1509 포함 계산</u></i></b></h6>
+        <h6 style="text-indent: 40px;"><b><i><u style="color:blueviolet">• 중범선 점진 일반무게 : 20900, 2단(800):24개, 3단(900):21개, 4-5단(1000):19개</u></i></b></h6>
+        <h6 style="text-indent: 40px;"><b><i><u style="color:blueviolet">• 중범선 점진 과적무게 : 35530, 2단(800):42개, 3단(900):37개, 4-5단(1000):34개</u></i></b></h6>
+
+      </div>
+    </div>
+
+    <li><hr class="divider p-0 m-0"></li>
+
+    <div>
+      <h5>▢ 토로 햇빛, 달빛 강화확률 : 9에서 10강할때 32스택에 50% : 부위당 7(28) / 9(36) 정도 <b><i><u style="color:blueviolet">[토로강화용!] 온기280, 한기360, 별빛수정66(6천6백) 일단 준비!!</u></i></b></h5>
+      <h5>▢ 구축함 파템 온기,한기 강화확률 <b><i><u style="color:blueviolet">파템강화시 온기 35, 한기 80개 준비.</u></i></b></h5>
+      <div  id="구축파템강화확률">
+        <div class="d-inline-block" style="margin-right:20px;vertical-align:top;">
+          <h6>온기를 품은 블랙스톤 - 실패시 내구도 5 감소</h6>
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th style="width:10px;">강화</th>
+                <th style="width:10px;">비고</th>
+                <th style="width:10px;">강제강화</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>+1</td>
+                <td>10스택 60%</td>
+                <td>블스5 / 내구15</td>
+              </tr>
+              <tr>
+                <td>+2</td>
+                <td>14스택 60%</td>
+                <td>블스6 / 내구20</td>
+              </tr>
+              <tr>
+                <td>+3</td>
+                <td>20스택 60%</td>
+                <td>블스7 / 내구25</td>
+                <!-- <td colspan="2">Larry the Bird</td> -->
+              </tr>
+              <tr>
+                <td>+4</td>
+                <td>30스택 60%</td>
+                <td>블스10 / 내구35</td>
+              </tr>
+              <tr>
+                <td>+5</td>
+                <td>30스택 48%</td>
+                <td>블스13 / 내구40</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-inline-block" style="margin-right:20px;vertical-align: top;">
+          <h6>한기가 서린 블랙스톤 - 실패시 내구도 10 감소</h6>
+          <table class="table table-bordered table-striped table-hover"">
+            <thead>
+              <tr>
+                <th>강화</th>
+                <th>비고</th>
+                <th>강제강화</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>+6</td>
+                <td>30스택 40%</td>
+                <td>블스23 / 내구100</td>
+              </tr>
+              <tr>
+                <td>+7</td>
+                <td>30스택 20%</td>
+                <td>블스46 / 내구100</td>
+              </tr>
+              <tr>
+                <td>+8</td>
+                <td>30스택 12%</td>
+                <td>블스76 / 내구100</td>
+                <!-- <td colspan="2">Larry the Bird</td> -->
+              </tr>
+              <tr>
+                <td>+9</td>
+                <td>40스택 10%</td>
+                <td>블스115 / 내구100</td>
+              </tr>
+              <tr>
+                <td>+10</td>
+                <td>50스택 6%</td>
+                <td>블스230 / 내구100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <img src="portal/images/black_문서/S1_구축파템강화확률.png" alt="이미지없음">
+      </div>
+
+    </div>
+
+    <li><hr class="divider p-0 m-0"></li>
+
+    <div>
+      <h5>▢ 재갱은 설렁설렁하자[스트레스 받음] 화려한 위주로 재갱받고 일갱 까주중심 품목채우기 위주로...</h5>
+      <div class="d-inline-block" style="width:600px;vertical-align: top;">
+        <h6 style="text-indent: 23px;">1. 까주런 및 재료교환 후에 4,5단 채워주기 해야하는데 하게 되면</h6>
+        <h6 style="text-indent: 40px;">일반재료는 교섭력이 모자라서 못하게되고 가끔 채워주는 형식으로 한다.</h6>
+        <h6 style="text-indent: 40px;"><b>[물교품은 1단50 이상유지, 2단 100, 3단 100, 4단 50, 5단 5-10정도 유지]</b></h6>
+        <h6 style="text-indent: 23px;">2. 화려한 2종, 콕스전투, 빛나는 코발트 주괴, 대양의 견고한 현철,   </h6>
+        <h6 style="text-indent: 40px;">해저 단괴, 심해초줄기, 햇빛달빛스톤(비쌈)</h6>
+        
+      </div>
+      <div class="d-inline-block" style="width:600px;vertical-align: top;">
+        <h6 style="text-indent: 23px;">1.</h6>
+        <h6 style="text-indent: 40px;">일</h6>
+        <h6 style="text-indent: 40px;">형</h6>
+        <h6 style="text-indent: 23px;">2. </h6>
+        <h6 style="text-indent: 40px;">심</h6>
+      </div>
+    </div>
+
+    <li><hr class="divider p-0 m-0"></li>
+
+    <div class="d-inline-block" style="width:600px;">
+      <h5>▢ 1.벨리아 출발 준비</h5>
+      <h6 style="text-indent: 23px;">1. 에페리아 3종 : 골몬대소, 해카루, 항해경험치</h6>
+      <h6 style="text-indent: 23px;">2. 벨리아 나루터지기 : 고등어, 골몬대소, 해카루 항해경험치</h6>
+      <h6 style="text-indent: 40px;">벨리아 나루터지기 : 택배(일리아 : 1시간)</h6>
+      <h6 style="text-indent: 40px;">벨리아 로비니아 : 택배(틴베라 : 25분) <span class="a_형식">★출발직전 받기★</span></h6>
+      <h6 style="text-indent: 40px;">벨리아 주점주인 : 굶주린 해양생물, 콕스해적단 처치</h6>
+      <h6 style="text-indent: 40px;">벨리아 주점 미아 : 택배(틴베라)</h6>
+      <h5>▢ 2.일리아 도착</h5>
+      <h6 style="text-indent: 23px;">1. 나루터지기에 일리아 택배 퀘 완료하고, 오킬라아 택배 퀘 수주(1시간)</h6>
+    </div>
+    <div class="d-inline-block">
+      <h5>▢ 3.오킬루아 도착</h5>
+      <h6 style="text-indent: 23px;">1. 나루터지기에 오킬 택배 완료하고</h6>
+      <h6 style="text-indent: 23px;">2. 나루터지기 퀘3종, 병사 퀘3종 수주</h6>
+      <h5>▢ 4.대양 몹 잡고 오킬루아 복귀</h5>
+      <h6 style="text-indent: 23px;">1. 나루터지기 퀘3종 완료, 병사 퀘3종 완료</h6>
+      <h6 style="text-indent: 23px;">2. 큐리오 쪽으로 가다가 언덕 오르면 말 불러서 큐리오 퀘 2종 완 (산호조각 10, 오색 산호조각 1)</h6>
+      <h6 style="text-indent: 42px;">언덕위에 시후람에게 벨리아(선택) 택배퀘 수주받고 ★택배 받기★</h6>  
+      <h6 style="text-indent: 42px;">황새치 잡았으면 낚시퀘 수주 및 황새치 1개 주고 퀘 완료</h6>  
+      <h5>▢ 5.벨리아 복귀</h5>
+    </div>
+
+    <br>
+    <img src="portal/images/black_문서/S1_모든해상일퀘그림.png" alt="이미지없음">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  </div>
+  <div id="S1_증축전후비교">
+    <h6>▢ 파템제작 순서(증축전에 사용하기 위함) : 1. 함포, 2. 선수상(속도), 3. 돛,장갑은 재료 되는대로.</h6>
+    <h6>▢ 파템제작되면 강화 : 1~5단=온기를 품은 블랙스톤(10주화)[2~4단물물교환], 6~10단=한기가 서린 블랙스톤(20주화)[2~4단물물교환] [녹템 강화도 같은거 쓴다]</h6>
+    <h6>▢ 무역선(노템), 무역선(녹템10강), 무역선(★파템10강★), 중범선_점진(노템),중범선_점진(녹템10강),중범선_점진(★파템10강★) </h6>
+    <h6>▢ 구축함(노템), 구축함(녹템10강), 구축함(★파템10강★), 중범선_용맹(노템),중범선_용맹(녹템10강),중범선_용맹(★파템10강★) </h6>
+    <h6>▢ 구축함과 무역선 비교 (중범선 점진, 비상 비교), <span style="color:blueviolet">치로 강화시 : 1,2,3,4에 50쓰고, 5,6,7,8에 80쓰고, 9,10에 100쓰고</span></h6>
+    <img src="portal/images/black_문서/S1_증축전후비교.png" alt="이미지없음">
+    <h6>▢ S1_무역선파템.png, S1_중범선노템.pn, S1_중범선녹템.png, 일퀘 36일째에 제작, 각목류 모잘랐음 (괄호는 선원, 나의장비, 나의레벨 능력치)</h6>
+    <img src="portal/images/black_문서/S1_무역선파템.png" alt="이미지없음">
+    <img src="portal/images/black_문서/S1_중범선점진노템.png" alt="이미지없음"><br>
+    <img src="portal/images/black_문서/S1_중범선점진녹템.png" alt="이미지없음">
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <div id="S1_까마귀주화상점">
+    <h6>▢ 레마섬과 까마귀 둥지, 온기를 품은 블랙스톤(10주화), 한기가 서린 블랙스톤(20주화)</h6>
+    <img src="portal/images/black_문서/S1_까마귀주화상점물품.png" alt="이미지없음">
+  </div>
+  <div id="S3_CANVAS선긋기">
+    <h5>▢ CANVAS 선긋기 </h5>
+    <embed src="portal/images/black_문서/S3_CANVAS선긋기.txt" width=1000px height=870px>
+
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <div id="샘플">
+    <h5><a href="" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
+    <h5>▢ </h5>
+    <h6 style="text-indent: 23px;"></h6>
+    <img src="" alt="이미지없음">
+    <embed src="" width=1000px height=870px>
+    <br><br><br><br><br><br><br>
+  </div>
+</div><!-- 개별 결과파일들id="문서정보숨김" 끝 -->
+  <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
+  role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
+  <span>Top</span></a>
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/캔버스.js"></script>
+</body>
+
+</html>
