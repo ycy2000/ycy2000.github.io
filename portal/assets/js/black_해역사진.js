@@ -1,22 +1,22 @@
 // document.querySelector('#적재가능일반무게').value=document.querySelector('#점진무게').title;
-document.querySelector('#적재가능일반무게').value = 20450;//새로고침시 무게 용맹무게??
+document.querySelector('#적재가능일반무게').value = 20650;//새로고침시 무게 용맹무게??
 function 교섭력계산() {
   var 일회교섭력 = Number(document.querySelector('#일회교섭력').value);
   if (isNaN(일회교섭력)) { 일회교섭력 = 0 }
   //곱하는값은 인풋 오른쪽 형제 
   document.querySelector('#계산_재갱1회당').value = (일회교섭력 * (4.30022)).toFixed(0);
 
-  document.querySelector('#계산_하코저가').value = 21239;
-  document.querySelector('#계산_더코').value = 26283;
-  document.querySelector('#계산_하코').value = 31595;
-  document.querySelector('#계산_대양저가').value = 33590;
-  document.querySelector('#계산_대양고가').value = 41987;
+  document.querySelector('#계산_하코저가').value = 21205;
+  document.querySelector('#계산_더코').value = 26242;
+  document.querySelector('#계산_하코').value = 31545;
+  document.querySelector('#계산_대양저가').value = 33537;
+  document.querySelector('#계산_대양고가').value = 41922;
 
   document.querySelector('#계산_하코4종').value = Number(document.querySelector('#계산_하코저가').value * 2)
     + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
   document.querySelector('#계산_대양8종').value = document.querySelector('#계산_대양저가').value * 3 + document.querySelector('#계산_대양고가').value * 5;
   document.querySelector('#계산_하코와대양합').value = Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양8종').value);
-  document.querySelector('#계산_사단까주').value = 15624;
+  document.querySelector('#계산_사단까주').value = 15600;
   document.querySelector('#계산_사단까주8개').value = (document.querySelector('#계산_사단까주').value * 8).toFixed(0);
 
   document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / 일회교섭력).toFixed(0);
