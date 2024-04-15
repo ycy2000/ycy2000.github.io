@@ -1,5 +1,5 @@
 // document.querySelector('#적재가능일반무게').value=document.querySelector('#점진무게').title;
-document.querySelector('#적재가능일반무게').value = 20650;//새로고침시 무게 용맹무게??
+document.querySelector('#적재가능일반무게').value = 20550;//새로고침시 무게 용맹무게??
 function 교섭력계산() {
   var 일회교섭력 = Number(document.querySelector('#일회교섭력').value);
   if (isNaN(일회교섭력)) { 일회교섭력 = 0 }
