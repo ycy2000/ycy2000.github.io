@@ -4,8 +4,8 @@
 #span_날짜 {display:inline-block; width:85px;}
 #회차와선택한당번 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
 #회차와선택한당번 div {display:block;width:330px;margin-right:10px;margin-bottom:-1px;}  /*6개번호*/
-#회차와선택한당번 button:nth-of-type(1) {margin:0 5px;width:50px;background-color: #007bc3;}
-#회차와선택한당번 button:last-child {background-color: yellow;}
+#회차와선택한당번 button:nth-of-type(1) {margin:0 5px;width:50px;background-color: red;}
+#회차와선택한당번 button:last-child {background-color: green;}
 
 .modal-body button {width:50px; height:50px;margin-right:-6px;margin-bottom:-2px; padding:0;}
 .일주전modal-body button {width:50px; height:50px;margin-right:-8px;margin-bottom:-2px; padding:0;}
@@ -23,7 +23,7 @@
 #id_번호입력아래당첨번호숨김 > div > button:nth-of-type(1) {padding:1px 0px; background-color: white;width:60px;}
 #id_번호입력아래당첨번호숨김 > div > button:nth-of-type(2) {padding:1px 0px; background-color: white;width:60px;}
 #id_번호입력아래당첨번호숨김 > div > button:nth-of-type(3) {margin-left:1px;display:inline-block; width:100px;}
-#id_번호입력아래당첨번호숨김 > div > button:last-child {background-color:yellow;}
+#id_번호입력아래당첨번호숨김 > div > button:last-child {background-color:green;}
 
 #js백회귀전체 > div > span {margin-left:7px;}
 #js백회귀전체 > div > span:nth-child(1) {margin-left:16px;}
@@ -36,7 +36,7 @@
 #js백회귀전체 > div > button:nth-of-type(1) {padding:1px 0px; background-color: white;width:60px;}
 #js백회귀전체 > div > button:nth-of-type(2) {padding:1px 0px; background-color: white;width:60px;}
 #js백회귀전체 > div > button:nth-of-type(3) {margin-left:1px;display:inline-block; width:100px;}
-#js백회귀전체 > div > button:last-child {background-color: yellow;}  /* rgb(100, 237, 214)*/
+#js백회귀전체 > div > button:last-child {background-color: green;}  /* rgb(100, 237, 214)*/
 
 
 #최근미출수와출수 > div > div {width:70px;display: inline-block;}
