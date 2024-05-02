@@ -24,7 +24,15 @@
       <!-- 특수문자 메모 띄우기 -->
       <div id="특수문자보기" style="position: absolute;right:0px;top:20px;display:none;">
         <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
-        <embed style="border:1px solid black;background-color: white;" src="portal/images/코딩메모_lo_ycy/01_특수문자.txt" width="700px" height="400ppx">
+        <div style="background-color: white; border:1px solid black;padding:5px;">
+          <h5>▸ </h5>
+          <h5>&#9634 </h5>
+          <h5>① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ </h5>
+          <h5> </h5>
+          <h5> </h5>
+          <h5> </h5>
+          <h5> </h5>
+        </div>
       </div>
       <!--디바이스 작아지면 버튼으로 변해서 누르면 class="collapse navbar-collapse" id="navbarSupportedContent" 부분이 드랍다운된다.-->
       <div class="my_nav_width">
@@ -114,7 +122,7 @@
       </button>
       <ul>
         <li class="content" title="04_세관_01_운영상황의보고" data-title="결과물_id">1.특허보세구역 운영상황의 보고, 재고조사 보고</li>
-        <li class="content" title="" data-title="결과물_id">X2.자율관리보세구역....</li>
+        <li class="content" title="04_세관_01_자율관리보세구역자율점검표제출" data-title="결과물_id">2.자율관리보세구역 자율점검표 제출</li>
         <li class="content" title="04_세관_03_법규수행평가자료준비" data-title="결과물_id">법규수행능력평가 자료 작성 및 제출 (전산)</li>
         <li class="content" title="" data-title="결과물_id">X특허갱신시 자료 작성 및 제출 (직접 제출)</li>
         <li class="content" title="" data-title="결과물_id">X보세구역 정기조사</li>
@@ -765,6 +773,11 @@
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
+  <section id="04_세관_01_자율관리보세구역자율점검표제출"><div id="스크립트로ul추가"></div>
+    <embed src="portal/images/문서연결_세관및유니패스/04_세관_01_자율관리보세구역자율점검표제출.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
   <section id="04_세관_03_법규수행평가자료준비" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ (공문) 법규수행능력 점검 통지서 등기우편/전자등기</h4>
     <h5>※ 유니패스에서 점검표 작성 및 증빙자료 첨부후 제출(전송) - 세관에서 검토후 제출서류 인정하거나 실사</h5>
@@ -1329,6 +1342,8 @@
     <br>
     <h5 class="h5_번들작">※ 담당자 e-mail : &lt;hyouk.kim@samsung.com>&lt;hyoung22.kim@samsung.com>&lt;buk17713@hanmail.net></h5>
     <br>
+    <h5>2. 삼성웰스토리 SRM 협력회사 지원시스템 로그인 - 계근정보 입력</h5>
+    <br>
     <h4 id="move2" class="목차">&#9634; <b>[입고내역 관련] </b>엑셀파일[파일명:삼성중량다시0925.xlsm] 기능 및 사용법 설명</h4>
     <h5>1. 입고관련시트 : "입고" 시트, "입고확인서" 시트</h5>
     <h5>2. "입고" 시트의 입고내역 정보는 ★입고확인서 만들때, ★계근내역서 만들때 모두 사용됩니다.</h5>
@@ -1351,30 +1366,52 @@
     <h5>4. EXCEL에서 중량계근내역서 작성</h5>
     <h5>5. 중량계근표 출력(PDF파일로 내 컴퓨터에 저장해도 됨) 및 ★정보확인★</h5>
     <br>
-    <h4 id="move3" class="목차">&#9634; <b>[중량계근 관련] </b>엑셀파일[파일명:삼성중량다시0925.xlsm] 사용법 <b>[자세한 설명] </b></h4>
+    <h4 id="move4" class="목차">&#9634; <b>[중량계근 관련] </b>엑셀파일[파일명:삼성중량다시0925.xlsm] 에 사용할 계근정보 준비 <b>[자세한 설명] </b></h4>
     <h5>1. 영업프로그램에서 해당목록 선택</h5>
     <h5 class="h5_번들작">▸ 메뉴에 접근 : 영업프로그램 - 수탁관리 - 출고/이고 관리 - 품목별 출고현황 조회/수정/삭제/출력 </h5>
     <img src="portal/images/문서연결_팔번/08_중량체크01_영업출고1.png" alt="이미지없음">
-    <h5 class="h5_번들작">▸ 출고내역 조회 : (필요시)조회조건 입력 - 검색 - (중량계근표 엑셀파일로 볼) 내역 선택 - 계근현황 클릭 </h5>
+    <h5 class="h5_번들작">▸ 출고내역 조회 : (필요시) ① 조회조건 입력 - 검색 - ② (중량계근표 엑셀파일로 볼) 내역 선택 - ③ 계근현황 클릭 </h5>
     <img src="portal/images/문서연결_팔번/08_중량체크01_영업출고2.png" alt="이미지없음">
-    <h5 class="h5_번들작">▸ 영업프로그램 계근표 엑셀파일 준비 :  </h5>
-    <img src="portal/images/문서연결_팔번/08_중량체크01_영업출고계근현황.png" alt="이미지없음">
-    <h5>---- EXCEL로 클릭하면 엑셀파일이 켜진다</h5>
-    <h5>3. 삼성중량다시0925.xlsm 파일로 변환된 계근정보를 복사해서 붙여넣기로 가져오기</h5>
-    <h5>4. EXCEL에서 중량계근내역서 작성</h5>
-    <h5>5. 중량계근표 출력(PDF파일로 내 컴퓨터에 저장해도 됨) 및 ★정보확인★</h5>
+    <h5 class="h5_번들작">▸ 영업프로그램 계근표 엑셀파일 준비</h5>
+    <h5 class="h5_번들번들작">※ 위에서 <img src="portal/images/문서연결_팔번/08_중량체크01_계근현황아이콘.png" alt="이미지없음"> 클릭하면 계근현황이 뜬다. </h5>
+    <h5 class="h5_번들번들작">① "EXCEL로" 클릭하면 오른쪽 엑셀파일처럼 엑셀파일로 변환되어 켜진다</h5>
+    <h5 class="h5_번들번들작">② 엑셀파일의 A:C열을 복사하여 [파일명:삼성중량다시0925.xlsm]에 붙여넣어 사용할 것이다.</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_영업출고계근표변환하기클릭.png" alt="이미지없음">
     <br>
-    <h4 id="move5" class="목차">&#9634; 삼성웰스토리 SRM 협력회사 지원시스템 로그인 - 계근정보 입력</h4>
-    <h5>1. 로그인 : https://srm.welstory.com/spligin.do  id : 180111 , password : ? [차승환 과장 자리 컴퓨터에서]</h5>
+    <h4 id="move5" class="목차">&#9634; <b>[중량계근 관련] </b>엑셀파일[파일명:삼성중량다시0925.xlsm] 에 사용법 <b>[자세한 설명] </b></h4>
+    <h5>※ 엑셀파일[파일명:삼성중량다시0925.xlsm] 실행. 처음화면 [처음화면에는 A:C열이 비어있음 확인]</h5>
+    <h5>① "계근정보" 시트 선택</h5>
+    <h5>② 영업프로그램의 계근정보 엑셀파일의 A:C열을 복사 - "계근정보" 시트 A열 선택후 붙여넣기(CTRL + V)</h5>
+    <h5>③ 매크로 아이콘 <img src="portal/images/문서연결_팔번/08_중량체크01_영업출고계근표매크로아이콘.png" alt="이미지없음">클릭</h5>
+    <h5>클릭하였다면 A:C열이 E:G로 복사되고 A:C열이지워진다. 추가로 계근표 상자가 나타난다. 오차범위가 큰 것이 회색처리.</h5>
+    <h5>※ 입고 시트에 이력번호와 품명이 같은내역이 여러개 있는 경우는 선택상자가 뜹니다. 해당내역 선택하면 됩니다.</h5>
+    <h5>※ 중량이 맞게 기록되었다고 판단되면, "출고기록후 출력" 클릭.</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_삼성계근엑셀처음화면.png" alt="이미지없음">
+    <br>
+    <h5>※ 계근정보 시트 설명 : 매크로 아이콘 <img src="portal/images/문서연결_팔번/08_중량체크01_영업출고계근표매크로아이콘.png" alt="이미지없음">클릭후 기준.</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_계근엑셀설명출고등록된번호.png" alt="이미지없음">
+    <img src="portal/images/문서연결_팔번/08_중량체크01_계근엑셀설명추가.png" alt="이미지없음">
+    <br>
+    <h4 id="move8" class="목차">&#9634; 중량계근내역서 E-MAIL 발송 (담당자 3명 전체메일로)</h4>
+    <h5>※ 담당자 e-mail : &lt;hyouk.kim@samsung.com>&lt;hyoung22.kim@samsung.com>&lt;buk17713@hanmail.net></h5>
+    <br>
+    <h4 id="move7" class="목차">&#9634; 삼성웰스토리 SRM 협력회사 지원시스템 로그인 - 계근정보 입력</h4>
+    <h5>1. 삼성웰스토리 SRM시스템 사이트 검색</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_삼성사이트검색.png" alt="이미지없음">
+    <br>
+    <h5>2. 로그인 : https://srm.welstory.com/spligin.do  id : 180111 , password : ? [차승환 과장 자리 컴퓨터에서]</h5>
     <h5 class="h5_번들작">※ 로그인 후 팝업 닫기</h5>
-    <h5>2. 임가공관리 - 출고승인관리 - 조회(우측) (조회조건에 출고요청일자 지정하여 조회)</h5>
-    <h5>3. 확정중량 기록할 목록 선택 (왼쪽 여러개 클릭하면 체크표시가 뜸)</h5>
-    <h5>4. 스크롤바를 우측으로 옮겨서 유통이력번호 참조하여 중량을 기록하고 우측 상단 '출고확정요청' 클릭 -끝-</h5>
-    <h5>※ 김해와 왜관에 같은 품목이 있을때, 출고증이 두건으로 끊겨있지만 하나만 나타나는것도 있음.</h5>
-    <h5>※ 알아서 선택하여 중량을 기록하거나, 합산하여 기록한다.</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_삼성사이트로그인.png" alt="이미지없음">
     <br>
-    <h4 id="move5" class="목차">&#9634; 중량계근내역서 E-MAIL 발송 (담당자 3명 전체메일로)</h4>
-    <h5 class="h5_번들작">※ 담당자 e-mail : &lt;hyouk.kim@samsung.com>&lt;hyoung22.kim@samsung.com>&lt;buk17713@hanmail.net></h5>
+    <h5>3. ① 임가공관리 - ② 출고승인관리</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_삼성사이트임가공.png" alt="이미지없음">
+    <br>
+    <h5>4. ① 출고요청일자 지정 (당일에서 당일로 조회하면 될 듯), ② 조회 클릭</h5>
+    <h5 class="h5_번들작">③ 전체선택 (해당없는것도 선택될 수 있음), 개별적으로 선택하려면 ④ 번 방법으로.</h5>
+    <h5 class="h5_번들작">④ ⑤ 번에 중량을 기록할 내역에 클릭!! 체크표시 확인</h5>
+    <h5 class="h5_번들작">⑤ 해당셀 마다 클릭하여 중량 기록 (동일냉장 출고증이 여러장이라도 "증명서발급번호와 품명"이 같으면 합산하여 기록)</h5>
+    <h5 class="h5_번들작">⑥ (중량 기록이 모두 완료되었다면) 출고확정요청 클릭</h5>
+    <img src="portal/images/문서연결_팔번/08_중량체크01_삼성사이트확정요청.png" alt="이미지없음">
     <br><br><br><br>
   </section>
 
