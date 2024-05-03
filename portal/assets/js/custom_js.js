@@ -68,6 +68,133 @@ function 맨위로 () {
   // 안씀
   window.scrollTo({ top: 0, behavior: "smooth" }); 
 }
+//아이디가 숫자로 시작되면 js에서는 에러나는가? if (document.querySelector('#결과물집합 #' + li타이틀)) 에서 li타이틀이 숫자로 시작되어 에러남
+function 제목검색() {//38개이까지 한 화면
+  // #모든_버튼과UL그룹묶음 안의 li들의 innerHTML 에 #제목검색결과div input의 value가 포함되면 복사누적
+  var li들=document.querySelectorAll('#모든_버튼과UL그룹묶음 li');
+  var 누적할곳=document.querySelector('#제목검색결과div_내부ul');
+  누적할곳.innerHTML='';
+  var 찾을값=document.querySelector('#세관검색input').value.toUpperCase();
+  if (찾을값=='') {
+    document.querySelector('#제목검색결과div').style.display='none';
+    return;
+  }
+  var 카운트=0;
+  //li의 innerHTML에 있거나, 
+  //결과 SECTION의 innerHTML에 있거나 ==> LI의 타이틀을 ID로 가지는것
+  var li해당;
+  var li타이틀;
+  var section해당;
+  var 해당판단;
+  for (var i=0; i<li들.length; i++) {
+    section해당="미해당"
+    li해당="미해당"
+    해당판단='미해당';
+    if (li들[i].innerHTML.toUpperCase().search(찾을값) > -1) {li해당='해당'};
+    li타이틀=li들[i].title;
+    if (li타이틀=='') {li타이틀='_'}
+    if (document.querySelector('#결과물집합 #' + li타이틀)) {
+      if (document.querySelector('#결과물집합 #' + li타이틀).innerHTML.toUpperCase().search(찾을값) > -1) {
+        section해당='해당';
+      } else {
+        section해당='미해당';
+      }
+    } else {
+      section해당='미해당';    
+    }
+    if (li해당=='해당') {해당판단='해당'}
+    if (해당판단=='해당') {누적할곳.innerHTML+=li들[i].outerHTML;카운트+=1;}
+  }
+  if (카운트==0) {
+    alert('없음');
+  } else {
+    document.querySelector('#제목검색결과div').style.display='inline-block';
+  }
+}
+function 내용검색() {//38개이까지 한 화면
+  // #모든_버튼과UL그룹묶음 안의 li들의 innerHTML 에 #제목검색결과div input의 value가 포함되면 복사누적
+  var li들=document.querySelectorAll('#모든_버튼과UL그룹묶음 li');
+  var 누적할곳=document.querySelector('#제목검색결과div_내부ul');
+  누적할곳.innerHTML='';
+  var 찾을값=document.querySelector('#세관검색input').value.toUpperCase();
+  if (찾을값=='') {
+    document.querySelector('#제목검색결과div').style.display='none';
+    return;
+  }
+  var 카운트=0;
+  //li의 innerHTML에 있거나, 
+  //결과 SECTION의 innerHTML에 있거나 ==> LI의 타이틀을 ID로 가지는것
+  var li해당;
+  var li타이틀;
+  var section해당;
+  var 해당판단;
+  for (var i=0; i<li들.length; i++) {
+    section해당="미해당"
+    li해당="미해당"
+    해당판단='미해당';
+    if (li들[i].innerHTML.toUpperCase().search(찾을값) > -1) {li해당='해당'};
+    li타이틀=li들[i].title;
+    if (li타이틀=='') {li타이틀='_'}
+    if (document.querySelector('#결과물집합 #' + li타이틀)) {
+      if (document.querySelector('#결과물집합 #' + li타이틀).innerHTML.toUpperCase().search(찾을값) > -1) {
+        section해당='해당';
+      } else {
+        section해당='미해당';
+      }
+    } else {
+      section해당='미해당';    
+    }
+    if (section해당=='해당') {해당판단='해당'}
+    if (해당판단=='해당') {누적할곳.innerHTML+=li들[i].outerHTML;카운트+=1;}
+  }
+  if (카운트==0) {
+    alert('없음');
+  } else {
+    document.querySelector('#제목검색결과div').style.display='inline-block';
+  }
+}
+function 제목과내용검색() {//38개이까지 한 화면
+  // #모든_버튼과UL그룹묶음 안의 li들의 innerHTML 에 #제목검색결과div input의 value가 포함되면 복사누적
+  var li들=document.querySelectorAll('#모든_버튼과UL그룹묶음 li');
+  var 누적할곳=document.querySelector('#제목검색결과div_내부ul');
+  누적할곳.innerHTML='';
+  var 찾을값=document.querySelector('#세관검색input').value.toUpperCase();
+  if (찾을값=='') {
+    document.querySelector('#제목검색결과div').style.display='none';
+    return;
+  }
+  var 카운트=0;
+  //li의 innerHTML에 있거나, 
+  //결과 SECTION의 innerHTML에 있거나 ==> LI의 타이틀을 ID로 가지는것
+  var li해당;
+  var li타이틀;
+  var section해당;
+  var 해당판단;
+  for (var i=0; i<li들.length; i++) {
+    section해당="미해당"
+    li해당="미해당"
+    해당판단='미해당';
+    if (li들[i].innerHTML.toUpperCase().search(찾을값) > -1) {li해당='해당'};
+    li타이틀=li들[i].title;
+    if (li타이틀=='') {li타이틀='_'}
+    if (document.querySelector('#결과물집합 #' + li타이틀)) {
+      if (document.querySelector('#결과물집합 #' + li타이틀).innerHTML.toUpperCase().search(찾을값) > -1) {
+        section해당='해당';
+      } else {
+        section해당='미해당';
+      }
+    } else {
+      section해당='미해당';    
+    }
+    if (li해당=='해당' || section해당=='해당') {해당판단='해당'}
+    if (해당판단=='해당') {누적할곳.innerHTML+=li들[i].outerHTML;카운트+=1;}
+  }
+  if (카운트==0) {
+    alert('없음');
+  } else {
+    document.querySelector('#제목검색결과div').style.display='inline-block';
+  }
+}
 function 함수버튼보기숨기기 () {
   var con = document.querySelector('.함수버튼');
   if(con.style.display=='none'){ 		
@@ -250,7 +377,8 @@ var fixed용_스타일_높이=getComputedStyle(변수_fixed용).height;
 var 결과스크롤이동용=document.querySelector('#결과');
 document.querySelector('#main정보보기').style.paddingTop=fixed용_스타일_높이
 //header높으를 두칸으로 인식했다가. 이동완료시 한칸이된다? 
-var full_2=document.querySelector('#main정보보기');	//클릭시 fixed 조정위함 추가.
+//var full_2=document.querySelector('#main정보보기');	클릭시 fixed 조정위함 추가.
+var full_2=document.querySelector('body');	//#main정보보기 대신 이렇게하면 찾기용 겸용됨
 var 소제목=document.querySelector('#소제목과list');	//클릭시 fixed 조정위함 추가.
 function clickHandler(event) {	
   console.log('body에 리스너 full_2 click 함수실행');
@@ -342,5 +470,8 @@ function 결과스크롤 (event) {
 full_2.addEventListener('click', clickHandler); //리스너용
 소제목.addEventListener('click', clickHandler); //리스너용
 결과스크롤이동용.addEventListener('click', clickHandler); 
+
+var 찾기input=document.querySelector('#세관검색input');
+찾기input.addEventListener('change', 제목과내용검색); //리스너용
 console.log('마지막');
 

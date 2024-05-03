@@ -22,17 +22,18 @@
   <nav class="navbar bg-body-tertiary pt-0 pb-0  m-0">   
     <div class="container-fluid my_nav_width">
       <!-- 특수문자 메모 띄우기 -->
-      <div id="특수문자보기" style="position: absolute;right:0px;top:20px;display:none;">
+      <div id="특수문자보기" style="position: absolute;right:0px;top:20px;width:500px;display:none;">
         <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
         <div style="background-color: white; border:1px solid black;padding:5px;">
-          <h5>▸ </h5>
-          <h5>&#9634 </h5>
-          <h5>① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ </h5>
-          <h5> </h5>
-          <h5> </h5>
-          <h5> </h5>
-          <h5> </h5>
+          <h5>▢ < ▸ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ</h5>
+          <h5>① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+
         </div>
+      </div>
+      <div id="제목검색결과div" style="position: absolute;width:777px;margin-left:-5px;top:12px;display:none;">
+        <button onclick="document.querySelector('#제목검색결과div').style.display='none'">닫기</button><br>
+        <ul style="background-color: white; border:1px solid black;padding:5px;" id="제목검색결과div_내부ul">
+        </ul>
       </div>
       <!--디바이스 작아지면 버튼으로 변해서 누르면 class="collapse navbar-collapse" id="navbarSupportedContent" 부분이 드랍다운된다.-->
       <div class="my_nav_width">
@@ -42,7 +43,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-brand d-inline-block m-0 pt-0"">
-          <a class="navbar-brand dropdown-item">세관</a>
+          <a class="navbar-brand dropdown-item">보세화물 등 입출고업무 참고</a>
         </div>
 
         <a id="a_리스트보기숨기기" style="border:1px solid black;padding:5px;border-radius: 5px;" onclick="main_list_viewHide()">리스트 보기중</a>
@@ -50,6 +51,10 @@
         <a id="a_결과파일보기숨기기" style="border:1px solid black;padding:5px;border-radius: 5px;" onclick="결과임시_보기_숨기기()">결과파일 없음</a>
 
         <button onclick="document.querySelector('#특수문자보기').style.display='block'">html 특수문자</button>
+        <span onclick="document.querySelector('#세관검색input').value='';
+                       document.querySelector('#제목검색결과div').style.display='none';
+        " style="margin-left:5px;">찾기</span>
+        <input style="width:120px;margin-left:3px;" type = "text" id="세관검색input"><button onclick="제목검색()">제목검색</button><button onclick="내용검색()">내용검색</button><button onclick="제목과내용검색()">제목+내용검색</button>
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse width_100" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3">
@@ -84,11 +89,11 @@
       보세화물, 화물인도동의서(D/O), 물품반출입
       </button>
       <ul>
-        <li class="content" title="01_보세화물_01_보세화물" data-title="결과물_id">통관, 보세화물, 관리화물 등 용어</li>
-        <li class="content" title="01_보세화물_02_반입및검사" data-title="결과물_id">물품의 반입, 검사</li>
-        <li class="content" title="01_보세화물_03_BL과DO등" data-title="결과물_id">M/BL, H/BL, 선사 D/O, 포딩 D/O, 유산스</li>
-        <li class="content" title="01_보세화물_04_물품반입반출유형" data-title="결과물_id">물품반입 유형, 물품반출 유형, 선용품 관련</li>
-        <li class="content" title="01_보세화물_05_미래" data-title="결과물_id">미래소프트 보세프로그램</li>
+        <li class="content" title="_01_보세화물_01_보세화물" data-title="결과물_id">통관, 보세화물, 관리화물 등 용어</li>
+        <li class="content" title="_01_보세화물_02_반입및검사" data-title="결과물_id">물품의 반입, 검사</li>
+        <li class="content" title="_01_보세화물_03_BL과DO등" data-title="결과물_id">M/BL, H/BL, 선사 D/O, 포딩 D/O, 유산스</li>
+        <li class="content" title="_01_보세화물_04_물품반입반출유형" data-title="결과물_id">물품반입 유형, 물품반출 유형, 선용품 관련</li>
+        <li class="content" title="_01_보세화물_05_미래" data-title="결과물_id">미래소프트 보세프로그램</li>
       </ul>
     </div> 
 
@@ -97,10 +102,10 @@
       세관,유니패스,보세구역 기초정보
       </button>
       <ul>
-        <li class="content" title="02_세관_01_조직도업무분장연락처" data-title="결과물_id">세관 부호, 조직도, 업무분장, 연락처</li>
-        <li class="content" title="02_세관_02_유니패스란" data-title="결과물_id">유니패스란? 로그인, 인증서등록, 화물조회</li>
-        <li class="content" title="02_세관_03_문서재수신" data-title="결과물_id">문서재수신(1개월 내), 재고다운로드, ?고지서?</li>
-        <li class="content" title="02_세관_04_01_특허보세구역게시" data-title="결과물_id">특허보세구역, 자율관리보세구역, 게시 의무</li>
+        <li class="content" title="_02_세관_01_조직도업무분장연락처" data-title="결과물_id">세관 부호, 조직도, 업무분장, 연락처</li>
+        <li class="content" title="_02_세관_02_유니패스란" data-title="결과물_id">유니패스란? 로그인, 인증서등록, 화물조회</li>
+        <li class="content" title="_02_세관_03_문서재수신" data-title="결과물_id">문서재수신(1개월 내), 재고다운로드, ?고지서?</li>
+        <li class="content" title="_02_세관_04_01_특허보세구역게시" data-title="결과물_id">특허보세구역, 자율관리보세구역, 게시 의무</li>
       </ul>
     </div> 
 
@@ -109,10 +114,10 @@
       UNIPASS에서 직접하는 업무들 (문서첨부 업무)
       </button>
       <ul>
-        <li class="content" title="03_세관_01_유니패스업무_01_이상보고" data-title="결과물_id">반입물품 이상보고 (첨부서류 사후제출)</li>
-        <li class="content" title="03_세관_02_반입정정" data-title="결과물_id">보세화물 반입 정정 승인 신청</li>
-        <li class="content" title="03_세관_02_반출정정" data-title="결과물_id">보세화물 반출 정정 승인 신청</li>
-        <li class="content" title="03_세관_03_법규준수도" data-title="결과물_id">법규준수도, 법규수행능력평가 점수 확인방법</li>
+        <li class="content" title="_03_세관_01_유니패스업무_01_이상보고" data-title="결과물_id">반입물품 이상보고 (첨부서류 사후제출)</li>
+        <li class="content" title="_03_세관_02_반입정정" data-title="결과물_id">보세화물 반입 정정 승인 신청</li>
+        <li class="content" title="_03_세관_02_반출정정" data-title="결과물_id">보세화물 반출 정정 승인 신청</li>
+        <li class="content" title="_03_세관_03_법규준수도" data-title="결과물_id">법규준수도, 법규수행능력평가 점수 확인방법</li>
       </ul>
     </div> 
 
@@ -121,10 +126,10 @@
       점검 및 보고사항, 특허갱신, 변경신고
       </button>
       <ul>
-        <li class="content" title="04_세관_01_운영상황의보고" data-title="결과물_id">1.특허보세구역 운영상황의 보고, 재고조사 보고</li>
-        <li class="content" title="04_세관_01_자율관리보세구역자율점검표제출" data-title="결과물_id">2.자율관리보세구역 자율점검표 제출</li>
-        <li class="content" title="04_세관_03_법규수행평가자료준비" data-title="결과물_id">법규수행능력평가 자료 작성 및 제출 (전산)</li>
-        <li class="content" title="" data-title="결과물_id">X특허갱신시 자료 작성 및 제출 (직접 제출)</li>
+        <li class="content" title="_04_세관_01_운영상황의보고" data-title="결과물_id">1.특허보세구역 운영상황의 보고, 재고조사 보고</li>
+        <li class="content" title="_04_세관_01_자율관리보세구역자율점검표제출" data-title="결과물_id">2.자율관리보세구역 자율점검표 제출</li>
+        <li class="content" title="_04_세관_03_법규수행평가자료준비" data-title="결과물_id">법규수행능력평가 자료 작성 및 제출 (전산)</li>
+        <li class="content" title="_04_세관_04_특허갱신시" data-title="결과물_id">X특허갱신시 자료 작성 및 제출 (직접 제출)</li>
       </ul>
     </div> 
 
@@ -133,14 +138,14 @@
       보세화물 관련 고시
       </button>
       <ul>
-        <li class="content" title="05_고시_01_pdf파일전체보기" data-title="결과물_id">pdf파일전체보기</li>
-        <li class="content" title="05_고시_10_특허보세구역운영에관한고시" data-title="결과물_id">특허보세구역운영에관한고시</li>
-        <li class="content" title="05_고시_20_자율관리보세구역운영에관한고시" data-title="결과물_id">자율관리보세구역운영에관한고시</li>
-        <li class="content" title="05_고시_30_보세화물입출항하선하기및적재에관한고시" data-title="결과물_id">보세화물입출항하선하기및적재에관한고시</li>
-        <li class="content" title="05_고시_40_보세화물관리에관한고시" data-title="결과물_id">보세화물관리에관한고시</li>
-        <li class="content" title="05_고시_50_컨테이너관리에관한고시" data-title="결과물_id">컨테이너관리에관한고시</li>
-        <li class="content" title="05_고시_60_관리대상화물관리에관한고시" data-title="결과물_id">관리대상화물관리에관한고시</li>
-        <li class="content" title="05_고시_70_보세운송에관한고시" data-title="결과물_id">보세운송에관한고시</li>
+        <li class="content" title="_05_고시_01_pdf파일전체보기" data-title="결과물_id">pdf파일전체보기</li>
+        <li class="content" title="_05_고시_10_특허보세구역운영에관한고시" data-title="결과물_id">특허보세구역운영에관한고시</li>
+        <li class="content" title="_05_고시_20_자율관리보세구역운영에관한고시" data-title="결과물_id">자율관리보세구역운영에관한고시</li>
+        <li class="content" title="_05_고시_30_보세화물입출항하선하기및적재에관한고시" data-title="결과물_id">보세화물입출항하선하기및적재에관한고시</li>
+        <li class="content" title="_05_고시_40_보세화물관리에관한고시" data-title="결과물_id">보세화물관리에관한고시</li>
+        <li class="content" title="_05_고시_50_컨테이너관리에관한고시" data-title="결과물_id">컨테이너관리에관한고시</li>
+        <li class="content" title="_05_고시_60_관리대상화물관리에관한고시" data-title="결과물_id">관리대상화물관리에관한고시</li>
+        <li class="content" title="_05_고시_70_보세운송에관한고시" data-title="결과물_id">보세운송에관한고시</li>
       </ul>
     </div>
 
@@ -149,14 +154,15 @@
       보세화물 반출입 관련 업무
       </button>
       <ul>
-        <li class="content" title="06_반출입_파순01_01문서수신" data-title="결과물_id">보세프로그램으로 세관 유니패스 문서 수신하기</li>
-        <li class="content" title="06_반출입_파순02_01반입등록" data-title="결과물_id">보세화물 반입신고(등록, 송신, 수신, 확인)</li>
-        <li class="content" title="06_반출입_파순03_반출관련" data-title="결과물_id">보세화물 반출신고(등록, 송신, 수신, 확인)</li>
-        <li class="content" title="06_반출입_파순04_내국화물" data-title="결과물_id">내국화물 반입 및 반출신고, 오류처리 ★</li>
-        <li class="content" title="06_반출입_파순08_전산재고조사" data-title="결과물_id">X내국물품반출입신고 검증 및 전산재고조사</li>
-        <li class="content" title="06_반출입_파순05_체화등록통고" data-title="결과물_id">체화등록, 체화통고, 통고서 출력</li>
-        <li class="content" title="06_반출입_파순06_체화등록통고엑셀활용" data-title="결과물_id">(체화) 반출통고서 출력 엑셀활용</li>
-        <li class="content" title="06_반출입_파순07_관리화물전자SEAL" data-title="결과물_id">관리화물(전자seal)</li>
+        <li class="content" title="_06_반출입_파순01_01문서수신" data-title="결과물_id">보세프로그램으로 세관 유니패스 문서 수신하기</li>
+        <li class="content" title="_06_반출입_파순02_01반입등록" data-title="결과물_id">보세화물 반입신고(등록, 송신, 수신, 확인)</li>
+        <li class="content" title="_06_반출입_파순03_반출관련" data-title="결과물_id">보세화물 반출신고(등록, 송신, 수신, 확인)</li>
+        <li class="content" title="_06_반출입_파순04_내국화물" data-title="결과물_id">내국화물 반입 및 반출신고, 오류처리 ★</li>
+        <li class="content" title="_06_반출입_파순08_전산재고조사" data-title="결과물_id">X내국물품반출입신고 검증 및 전산재고조사</li>
+        <li class="content" title="_06_반출입_파순05_체화등록통고" data-title="결과물_id">체화등록, 체화통고, 통고서 출력</li>
+        <li class="content" title="_06_반출입_파순06_체화등록통고엑셀활용" data-title="결과물_id">(체화) 반출통고서 출력 엑셀활용</li>
+        <li class="content" title="_06_반출입_파순07_관리화물전자SEAL" data-title="결과물_id">전자seal(관리화물과 보세운송 검사대상)</li>
+        <li class="content" title="_06_반출입_파순08_보세운송차량기록" data-title="결과물_id">★보세운송차량 기록 및 확인</li>
       </ul>
     </div>
     
@@ -181,8 +187,8 @@
       ?
       </button>
       <ul>
-        <li class="content" title="08_팔번_중량체크관련" data-title="결과물_id">중량체크 방법 [계근정보 입력]</li>
-        <li class="content" title="08_팔번_중량체크관련엑셀파일사용법" data-title="결과물_id">계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</li>
+        <li class="content" title="_08_팔번_중량체크관련" data-title="결과물_id">중량체크 방법 [계근정보 입력]</li>
+        <li class="content" title="_08_팔번_중량체크관련엑셀파일사용법" data-title="결과물_id">계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</li>
       </ul>
     </div> 
 
@@ -202,7 +208,7 @@
 <div id="결과물집합">
   <!-- 그림 100%를위하여 겉에는 100프로 활용 -->
   <!-- h2 ol을 자동으로 생성하는게 목표. div ol 아래부터 실질적 편집. h4 1. li div로 묶어야함. -->
-  <section id="01_보세화물_01_보세화물"><div id="스크립트로ul추가"></div>
+  <section id="_01_보세화물_01_보세화물"><div id="스크립트로ul추가"></div>
     <h4 id="move2" class="목차">&#9634 통관절차는 수입신고(통관신청) 조건을 갖추기 위한 과정입니다.</h4>
     <h4 id="move3" class="목차">&#9634 수입신고(통관신청)은 반입(전)후 관련기관의 수입검사를 모두 완료한 후에 합니다.</h4>
     <br>
@@ -247,7 +253,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="01_보세화물_02_반입및검사"><div id="스크립트로ul추가"></div><br>
+  <section id="_01_보세화물_02_반입및검사"><div id="스크립트로ul추가"></div><br>
     <h4 id="move1"  class="목차">1. 먼저, 보세화물 종류별로 보관 및 반입조건이 있습니다.<span style="font-size:20px;"> ※ 자세한 사항은 다른 관공서 정보 참고</span></h4>
     <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 전제조건</h4>
     <h4>&nbsp;&nbsp;&nbsp; ① 특허보세구역 특허를 받은 공간(동결실 2곳 제외 창고내 전체)</h4>
@@ -285,7 +291,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="01_보세화물_03_BL과DO등"><div id="스크립트로ul추가"></div>
+  <section id="_01_보세화물_03_BL과DO등"><div id="스크립트로ul추가"></div>
     <h4 id="move1"  class="목차">1. 화물관리번호, 해상화물의 운송계약, 선사와 M/BL, 포딩과 H/BL, B/L 보는법</h4>
     <li>화물관리번호</li>
     <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_01화물관리번호.png" alt="이미지없음">
@@ -376,7 +382,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="01_보세화물_04_물품반입반출유형"><div id="스크립트로ul추가"></div>
+  <section id="_01_보세화물_04_물품반입반출유형"><div id="스크립트로ul추가"></div>
     <h4 id="move1"  class="목차">▢ 물품반입 유형 : 입항반입, 보세운송반입, B/L분할 반입</h4>
     <img src="portal/images/문서연결_세관및유니패스/00_보세화물_04_01_반입유형.png" alt="이미지없음">
     <br>
@@ -388,7 +394,7 @@
     <img src="" alt="이미지없음">
   </section>
 
-  <section id="01_보세화물_05_미래"><div id="스크립트로ul추가"></div>
+  <section id="_01_보세화물_05_미래"><div id="스크립트로ul추가"></div>
     <h4>▢ 영업프로그램 및 보세화물프로그램이 통합되어 있습니다.</h4>
     <h4>▢ 로그인 방법과 간단한 메뉴설명만 하고 세부적인 사용법은 실무에서 다룹니다.</h4>
     <h4>▢ 공인인증서를 등록하였다면 프로그램 종료시까지 유지됩니다.</h4>
@@ -430,7 +436,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="02_세관_01_조직도업무분장연락처"><div id="스크립트로ul추가"></div>
+  <section id="_02_세관_01_조직도업무분장연락처"><div id="스크립트로ul추가"></div>
     <h4 class="목차">&#9634; 부산 본부세관 고유 부호 : 030, 동일냉장 고유 부호 : 11597</h4>
     <h4 class="목차">&#9634; 부산 본부세관 인터넷 검색하여 사이트 방문 (여기서는 우측 밝은색 조직도와 직원안내만 봅니다.)</h4>
     <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_01_세관조직도메인.png" alt="이미지없음">
@@ -463,7 +469,7 @@
     <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_04_직원안내자세히.png" alt="이미지없음"><br><br><br><br>
   </section>
 
-  <section id="02_세관_02_유니패스란"><div id="스크립트로ul추가"></div>
+  <section id="_02_세관_02_유니패스란"><div id="스크립트로ul추가"></div>
     <h4 class="목차">&#9634; 유니패스(UNIPASS)</h4>
     <li>유니패스란 우리나라 전자통관 시스템으로 쉽게 말해 한국형 무역 행정 서비스입니다.</li>
     <h5 class="li_들작">"다양한 관세 서비스를 통합"한다는 뜻의 <strong>UNI</strong>와 "전자시스템으로 원스톱 처리"한다는</h5>
@@ -509,7 +515,7 @@
     <br><br><br><br>
   </section>  
 
-  <section id="02_세관_03_문서재수신"><div id="스크립트로ul추가"></div>
+  <section id="_02_세관_03_문서재수신"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">1. (공인인증서 로그인 후) 문서함에서 문서 재수신 방법</h4>
     <h5>① My메뉴 클릭, ② 문서함 사용관리 클릭, ③ 수신문서함 클릭, ④ 수신현황 클릭, ⑤ 수신기간 설정,</h5>
     <h5>⑥조회 클릭, ⑦ 재수신 받을 문서 선택, ⑧ 재수신 클릭, ⑨ 재수신 처리하시겠습니까? 확인 클릭,</h5>
@@ -535,7 +541,7 @@
     <br><br><br><br><br>
   </section>
 
-  <section id="02_세관_04_01_특허보세구역게시" ><div id="스크립트로ul추가"></div>
+  <section id="_02_세관_04_01_특허보세구역게시" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ 특허보세구역과 자율관리보세구역</h4>
     <br>
     <h4>1. 자율관리보세구역이란 특허보세구역을 운영하는 업체가</h4>
@@ -585,7 +591,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="03_세관_01_유니패스업무_01_이상보고" ><div id="스크립트로ul추가"></div>
+  <section id="_03_세관_01_유니패스업무_01_이상보고" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ 보세화물관리에 관한 고시 제5조(물품의 반입)</h4>
     <h5>③ 운영인은 반입된 물품이 반입예정 정보와 품명.수량이 상이하거나 안보위해물품의 반입, 포장파손 누출,</h5>
     <h5>&nbsp;&nbsp;&nbsp; 오염 등으로 이상이 있는 경우에는 즉시 별지 제1호서식의 반입물품 이상보고서에</h5>
@@ -647,7 +653,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="03_세관_02_반입정정" ><div id="스크립트로ul추가"></div>
+  <section id="_03_세관_02_반입정정" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ 반입정정 (사례는 출력물 참고)</h4>
     <br>
     <h4>▢ 보세화물관리에 관한 고시」 제9조제(반입확인 및 반입신고)</h4>
@@ -694,7 +700,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="03_세관_02_반출정정" ><div id="스크립트로ul추가"></div>
+  <section id="_03_세관_02_반출정정" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ 반출정정 (사례는 출력물 참고)</h4>
     <br>
     <h4>▢ 반출정정 = 수입신고수리된 내역을 반출신고 후에 수정하는 것</h4>
@@ -726,7 +732,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="03_세관_03_법규준수도"><div id="스크립트로ul추가"></div>
+  <section id="_03_세관_03_법규준수도"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">1. 법규준수도는 법규수행능력평가 항목중 하나. (확인방법)</h4>
     <h4 id="move2" class="목차">▢ (공인인증서 로그인 후) 법규준수도 확인</h4>
     <li>메뉴에 접근 : ① 정보조회 클릭, ② 법규준수도 클릭, ③ 법규준수도 클릭,  ④ (새로운 화면) 점수확인 클릭.</li>
@@ -763,7 +769,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="04_세관_01_운영상황의보고"><div id="스크립트로ul추가"></div>
+  <section id="_04_세관_01_운영상황의보고"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 특허보세구역 운영상황의 보고</h4>
     <li>특허보세구역 운영상황의 보고는 안내 공문이 오지 않았다고 잊어버리면 안됩니다. 2월말까지 기한입니다.</li>
     <li>특허보세구역 운영상황의 보고는 법규수행능력평가 자료 제출시 기재하기 위하여 제출일자(메일 보낸 날짜) 기록.</li>
@@ -772,12 +778,12 @@
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="04_세관_01_자율관리보세구역자율점검표제출"><div id="스크립트로ul추가"></div>
+  <section id="_04_세관_01_자율관리보세구역자율점검표제출"><div id="스크립트로ul추가"></div>
     <embed src="portal/images/문서연결_세관및유니패스/04_세관_01_자율관리보세구역자율점검표제출.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="04_세관_03_법규수행평가자료준비" ><div id="스크립트로ul추가"></div>
+  <section id="_04_세관_03_법규수행평가자료준비" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ (공문) 법규수행능력 점검 통지서 등기우편/전자등기</h4>
     <h5>※ 유니패스에서 점검표 작성 및 증빙자료 첨부후 제출(전송) - 세관에서 검토후 제출서류 인정하거나 실사</h5>
     <embed src="portal/images/문서연결_세관및유니패스/04_세관_03_법규01_공문.pdf" 
@@ -845,55 +851,65 @@
     <br><br><br><br>
   </section>
 
-  <section id="05_고시_01_pdf파일전체보기" ><div id="스크립트로ul추가"></div>
+  <section id="_04_세관_04_특허갱신시" ><div id="스크립트로ul추가"></div>
+    <h5>※ 특허만료일 1개월전까지 신청서제출 ==> 준비할 자료가 많으니 2개월전 즘에 세관에 연락하여 1개월 전까지 완료본을</h5>
+    <h5 class="h5_번들작"> 제출할 수 있도록 준비한다. 큰 틀에서 비슷하니 최근 갱신신청 정보만 참고해도 되겠습니다.</h5>
+    <h5>※ 2024.5.1 만료기준, 3월 초에 연락하여 두번정도 중간점검 및 미비한 자료 준비하여 3월19일에 신청하였고</h5>
+    <h5 class="h5_번들작">특허신청수수료 고지서를 유니패스를 통해 발급받아 납부하고 납부내역 캡쳐하여 메일전송하였음.</h5>
+    <h5 class="h5_번들작">제출서류 검토중인 4월에는 두번정도 추가자료 및 보완요청이 있었음. 4월중순에는 창고에 방문하여 확인이 필요했던</h5>
+    <h5 class="h5_번들작">내용을 확인하였음. 주로 cctv 관련이었음.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="_05_고시_01_pdf파일전체보기" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">① 클릭하면 전체보기가 되고 다시 누르면 원래대로 돌아갑니다.</h4>
     <img src="portal/images/문서연결_세관및유니패스/08_고시_01_pdf파일전체보기.png" alt="이미지없음">
     <br><br><br><br>
   </section>
 
-  <section id="05_고시_10_특허보세구역운영에관한고시" ><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_10_특허보세구역운영에관한고시" ><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 특허보세구역운영에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_10_특허보세구역운영에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="05_고시_20_자율관리보세구역운영에관한고시"><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_20_자율관리보세구역운영에관한고시"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 자율관리보세구역운영에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_20_자율관리보세구역운영에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="05_고시_30_보세화물입출항하선하기및적재에관한고시"><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_30_보세화물입출항하선하기및적재에관한고시"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 보세화물입출항하선하기및적재에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_30_보세화물입출항하선하기및적재에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="05_고시_40_보세화물관리에관한고시"><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_40_보세화물관리에관한고시"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 보세화물관리에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_40_보세화물관리에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="05_고시_50_컨테이너관리에관한고시"><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_50_컨테이너관리에관한고시"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 컨테이너관리에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_50_컨테이너관리에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="05_고시_60_관리대상화물관리에관한고시"><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_60_관리대상화물관리에관한고시"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 관리대상화물관리에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_60_관리대상화물관리에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="05_고시_70_보세운송에관한고시"><div id="스크립트로ul추가"></div>
+  <section id="_05_고시_70_보세운송에관한고시"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 보세운송에관한고시</h4>
     <embed src="portal/images/문서연결_세관및유니패스/08_고시_70_보세운송에관한고시.pdf" 
     type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
-  <section id="06_반출입_파순01_01문서수신"><div id="스크립트로ul추가"></div>
+  <section id="_06_반출입_파순01_01문서수신"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 문서수신, EDI(Electronic Data Interchange) : 전자문서교환, 보세화물 관련 문서입니다.</h4>
     <h5>세관에서 동일냉장으로 보낸 문서는 UNIPASS 문서함에 있고, 창고업무의 편리를 위하여</h5>
     <h5>보세프로그램 제공업체의 프로그램으로 문서함의 정보를 땡겨오는 형식입니다.</h5>
@@ -914,7 +930,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순02_01반입등록">
+  <section id="_06_반출입_파순02_01반입등록">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 반입예정정보 보는법 : EDI - 보세화물관리 - 반입예정정보 조회</h4>
     <h5>A. 수신일자 : 세관에서의 수신일자, 화주명과 B/L등은 세부조회 조건입니다.</h5>
@@ -1003,7 +1019,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순03_반출관련">
+  <section id="_06_반출입_파순03_반출관련">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 수입신고 수리후 반출승인 물품에 대해서</h4>
     <h5>※ 수입신고 수리후 반출 : 통관 완료 되었으니 반출해도 된다는 내용.</h5>
@@ -1057,7 +1073,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순04_내국화물">
+  <section id="_06_반출입_파순04_내국화물">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 내국물품 관련 법령 등</h4>
     <h5>1. 관세법 제183조(보세창고)</h5>
@@ -1184,7 +1200,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순05_체화등록통고">
+  <section id="_06_반출입_파순05_체화등록통고">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 보세화물 반입일로부터 5개월이 되면 화주에게 등기우편으로 체화통고서를 보내야합니다.</h4>
     <h5 id="move2">※ 날짜를 딱 맞추라는 이야기도 있지만 편의상 2주정도 앞에 2주간 통고대상을 모아서 등기우편을 보냅니다.</h5>
@@ -1259,7 +1275,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순06_체화등록통고엑셀활용">
+  <section id="_06_반출입_파순06_체화등록통고엑셀활용">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 체화통고서 출력부분만 따로 엑셀 활용합니다.</h4>
     <h5>※ 이유는 등기우편물을 받는 주소가 전산등록된 주소와 다른경우가 있어서 우편물이 반송되는 경우가 있습니다.</h5>
@@ -1281,7 +1297,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순07_관리화물전자SEAL"><div id="스크립트로ul추가"></div>
+  <section id="_06_반출입_파순07_관리화물전자SEAL"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">▢ 관리화물에 부착된 전자SEAL해제 및 반입방법을 설명하기 전에</h4>
     <h5>※ 화물진행정보에 '보세운송 검사대상'이라고 뜨고 전자seal이 부착된 경우가 있는데, </h5>
     <h5 class="h5_번들작"> 이것은 확인후 해제등록만 하면 탈거 후 작업이 가능하고,</h5>
@@ -1322,14 +1338,21 @@
     <br><br><br><br>
   </section>
 
-  <section id="06_반출입_파순08_전산재고조사">
+  <section id="_06_반출입_파순08_보세운송차량기록">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; </h4>
 
     <br><br><br><br>
   </section>
 
-  <section id="08_팔번_중량체크관련엑셀파일사용법">
+  <section id="_06_반출입_파순08_전산재고조사">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; </h4>
+
+    <br><br><br><br>
+  </section>
+
+  <section id="_08_팔번_중량체크관련엑셀파일사용법">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 간단요약 : 삼성웰스토리 중량체크 관련 업무</h4>
     <br>
@@ -1414,7 +1437,7 @@
     <br><br><br><br>
   </section>
 
-  <section id="08_팔번_중량체크관련">
+  <section id="_08_팔번_중량체크관련">
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; (제목) 중량기록 방법, 어플깔기, 수정, 출력, EXCEL활용, 삼성웰스토리</h4>
     <h5>1. 영업프로그램에서 해당 출고내역 선택 후 직접 입력하는 방법</h5>
