@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<link href="portal/assets/css/sunsa_cy.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header id="head_button_group" class="container-fluid">
+  <nav class="navbar bg-body-tertiary pt-1 m-0">    
+    <div class="container-fluid">
+      <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
+        <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <button type="button" title="결과_리스트" class="btn btn-light active 카테고리">리스트</button>
+        <button type="button" title="결과_축산예정" class="btn btn-light 카테고리">축산예정</button>
+        <button type="button" title="결과_입항관리" class="btn btn-light 카테고리">입항관리</button>
+        <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
+        <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item dropdown">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-3 dropdown-menu">
+                <li><a class="dropdown-item" href="list.html">리스트</a></li>
+                <li><a class="dropdown-item" href="index.html">세관</a></li>
+                <li><a class="dropdown-item" href="fishexe.html">기타(수품원 등)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>       
+      </div>
+    </div>
+  </nav>
+  <!-- position:absolute -->
+</header>
+<div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
+<!-- id="리스너용해역사진관련" id="main과우측" id="전체대체" 중 하나만?? 본다-->
+<!-- 안에 textarea를 넣던지, input들을 넣던지. -->
+
+<div id="결과카피" class="d-none">
+
+</div>
+
+<div id="결과모음_none" class="d-none"><!--선사,포딩 등 카테고리 통쨰로 배치할때 가져오는 id들 -->
+  <div id="결과_">
+    <div id="결과_리스트">
+      <img src="portal/images/문서연결_리스트/list_리스트.png" alt="이미지없음">
+    </div>
+  </div>
+
+</div>
+
+  <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
+  role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
+  <span>Top</span></a>
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/list.js"></script>
+</body>
+
+</html>
