@@ -1,26 +1,73 @@
 @charset "UTF-8";
 /* #풀기셑팅안에, 10칸정보 각 div를 감싼 div */
 #js_리스트_왼쪽, 
-#js_리스트_정리 
+#js_리스트_정리,
+#js_입항관리,
+#js_입항관리_정리, 
+#js_축산예정 
 {display:inline-block; vertical-align: top; margin-right:10px;}
+#js_입항관리 {width:1040px;}/* 폭이좁아 아래로 내려올 수 있다>? */
 #js_리스트_왼쪽 > div, 
-#js_리스트_정리 > div 
+#js_리스트_정리 > div,
+#js_입항관리 > div,
+#js_입항관리_정리 > div,
+#js_축산예정 > div
 {display:block; margin-bottom:-7px;}
 #js_리스트_왼쪽 > div > div, 
-#js_리스트_정리 > div > div 
+#js_리스트_정리 > div > div,
+#js_입항관리 > div > div,
+#js_입항관리_정리 > div > div,
+#js_축산예정 > div > div 
 {display:inline-block; border:1px solid black;margin-right:-1px;white-space:nowrap;overflow:hidden;height:27px;}
+
 #js_리스트_왼쪽 > div:nth-child(10n+11) {background-color: aqua;}
-#js_리스트_왼쪽 > div > div:nth-child(1) {width:180px;}
-#js_리스트_왼쪽 > div > div:nth-child(2) {width:130px;}
+#js_리스트_왼쪽 > div > div:nth-child(1) {width:30px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(2) {width:180px;}
 #js_리스트_왼쪽 > div > div:nth-child(3) {width:130px;}
-#js_리스트_왼쪽 > div > div:nth-child(4) {width:70px;} /* 품명 */
-#js_리스트_왼쪽 > div > div:nth-child(5) {width:60px;text-align: center;}
-#js_리스트_왼쪽 > div > div:nth-child(6) {width:130px;}
-#js_리스트_왼쪽 > div > div:nth-child(7) {width:50px;text-align: center;}
-#js_리스트_왼쪽 > div > div:nth-child(8) {width:30px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(4) {width:130px;}
+#js_리스트_왼쪽 > div > div:nth-child(5) {width:70px;} /* 품명 */
+#js_리스트_왼쪽 > div > div:nth-child(6) {width:60px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(7) {width:130px;}
+#js_리스트_왼쪽 > div > div:nth-child(8) {width:50px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(9) {width:30px;text-align: center;}
 
 #js_리스트_정리 > div > div:nth-child(1) {width:130px;}
 #js_리스트_정리 > div > div:nth-child(2) {width:50px;text-align: center;}
+/* A:L 12칸, 6빈칸 */
+#js_입항관리 > div > div:nth-child(1) {width:30px;text-align: center;}
+#js_입항관리 > div > div:nth-child(2) {width:100px;}
+#js_입항관리 > div > div:nth-child(3) {width:140px;}
+#js_입항관리 > div > div:nth-child(4) {width:80px;}
+#js_입항관리 > div > div:nth-child(5) {width:470px;}
+#js_입항관리 > div > div:nth-child(6) {width:0px;border:none;}
+#js_입항관리 > div > div:nth-child(7) {width:110px;margin-left:1px;}
+#js_입항관리 > div > div:nth-child(8) {width:80px;}
+#js_입항관리 > div > div:nth-child(9) {width:30px;text-align: center;}
+#js_입항관리 > div > div:nth-child(10) {width:0px;border:none;}
+#js_입항관리 > div > div:nth-child(11) {width:0px;border:none;}
+#js_입항관리 > div > div:nth-child(12) {width:0px;border:none;}
+
+#js_입항관리_정리 > div > div:nth-child(1) {width:130px;}
+#js_입항관리_정리 > div > div:nth-child(2) {width:50px;text-align: center;}
+
+#js_축산예정 > div > div:nth-child(1) {width:30px;text-align: center;}
+#js_축산예정 > div > div:nth-child(2) {width:170px;}
+#js_축산예정 > div > div:nth-child(3) {width:180px;}
+#js_축산예정 > div > div:nth-child(4) {width:120px;}
+#js_축산예정 > div > div:nth-child(5) {width:50px;}
+#js_축산예정 > div > div:nth-child(6) {width:60px;}
+#js_축산예정 > div > div:nth-child(7) {width:110px;}
+#js_축산예정 > div > div:nth-child(8) {width:50px;}
+#js_축산예정 > div > div:nth-child(9) {width:40px;}
+#js_축산예정 > div > div:nth-child(10) {width:40px;}
+#js_축산예정 > div > div:nth-child(11) {width:50px;}
+#js_축산예정 > div > div:nth-child(12) {width:80px;}
+#js_축산예정 > div > div:nth-child(13) {width:80px;}
+#js_축산예정 > div > div:nth-child(14) {width:50px;}/*품명*/
+#js_축산예정 > div > div:nth-child(15) {width:80px;}
+#js_축산예정 > div > div:nth-child(16) {width:130px;}
+#js_축산예정 > div > div:nth-child(17) {width:60px;}
+
 #modal{
 	z-index : 1;
 	background-color: rgba(0,0,0,.3);
