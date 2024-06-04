@@ -134,13 +134,24 @@ function 리스너_head_button_group클릭이벤트(e) {
   if(e.target.classList.contains('카테고리')) {e.target.classList.add('active')}
 
   if (e.target.innerHTML=='리스트') {
-    풀기_리스트();
+    console.log('PNG_리스트_셑팅')
+    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_리스트.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='입항관리') {
-    풀기_입항관리();
+    console.log('PNG_입항관리_셑팅')
+    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_입항관리.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='축산예정') {
-    풀기_축산예정();
+    console.log('PNG_축산_셑팅')
+    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_축산.png" alt="이미지없음">';
+  }
+  if (e.target.innerHTML=='예정') {
+    console.log('PNG_예정_셑팅')
+    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_예정.png" alt="이미지없음">';
+  }
+  if (e.target.innerHTML=='완료') {
+    console.log('PNG_완료_셑팅')
+    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_완료.png" alt="이미지없음">';
   }
 }
 
