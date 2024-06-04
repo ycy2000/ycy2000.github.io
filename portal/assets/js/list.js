@@ -117,7 +117,7 @@ function 풀기_축산예정() {
 
 
 //시작시 작동코드
-풀기_리스트()
+document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_리스트.png" alt="이미지없음">';
 for (var i=0; i<document.querySelectorAll('.카테고리').length; i++) {
   document.querySelectorAll('.카테고리')[i].classList.remove('active');
   if(document.querySelectorAll('.카테고리')[i].title=='결과_리스트') {
