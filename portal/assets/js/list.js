@@ -152,6 +152,11 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#풀기셑팅').classList.remove('d-none');
     document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_완료.png" alt="이미지없음">';
   }
+  if (e.target.innerHTML=='면허,운송') {
+    console.log('PNG_면허운송_셑팅')
+    document.querySelector('#풀기셑팅').classList.remove('d-none');
+    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_면허운송.png" alt="이미지없음">';
+  }
 }
 
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
