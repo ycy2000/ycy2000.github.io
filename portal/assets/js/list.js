@@ -137,11 +137,6 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#풀기셑팅').classList.remove('d-none');
     document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_입항관리.png" alt="이미지없음">';
   }
-  if (e.target.innerHTML=='축산예정') {
-    console.log('PNG_축산_셑팅')
-    document.querySelector('#풀기셑팅').classList.remove('d-none');
-    document.querySelector('#풀기셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_축산.png" alt="이미지없음">';
-  }
   if (e.target.innerHTML=='예정') {
     console.log('PNG_예정_셑팅')
     document.querySelector('#풀기셑팅').classList.remove('d-none');
