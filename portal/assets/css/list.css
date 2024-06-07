@@ -1,4 +1,5 @@
 @charset "UTF-8";
+#풀기셑팅 {white-space:nowrap;}
 /* #풀기셑팅안에, 10칸정보 각 div를 감싼 div */
 #js_리스트_왼쪽, 
 #js_리스트_정리,
@@ -30,6 +31,13 @@
 #js_리스트_왼쪽 > div > div:nth-child(7) {width:130px;}
 #js_리스트_왼쪽 > div > div:nth-child(8) {width:50px;text-align: center;}
 #js_리스트_왼쪽 > div > div:nth-child(9) {width:30px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(10) {width:50px;text-align: center;}/* 도착일 */
+#js_리스트_왼쪽 > div > div:nth-child(11) {width:50px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(12) {width:30px;text-align: center;}
+#js_리스트_왼쪽 > div > div:nth-child(13) {width:150px;}/* 면허 */
+#js_리스트_왼쪽 > div > div:nth-child(14) {width:100px;}
+#js_리스트_왼쪽 > div > div:nth-child(15) {width:130px;}
+#js_리스트_왼쪽 > div > div:nth-child(16) {width:130px;}
 
 #js_리스트_정리 > div > div:nth-child(1) {width:130px;}
 #js_리스트_정리 > div > div:nth-child(2) {width:50px;text-align: center;}
