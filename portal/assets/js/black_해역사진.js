@@ -82,8 +82,10 @@ function 보기셑팅() {
     document.querySelector('#main과우측').classList.remove('d-none');
     document.querySelector('#전체대체').classList.add('d-none');
   }
-  if (보기셑팅유형 == 'header전체대체') {
-
+  if (보기셑팅유형 == '우사') {
+    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+    document.querySelector('#main과우측').classList.add('d-none');
+    document.querySelector('#전체대체').classList.remove('d-none');
   }
 
 }
@@ -358,6 +360,12 @@ function header_클릭시(e) {
   if (e.target.title == 'main과우측') {
     보기셑팅유형 = 'main과우측'
     console.log('보기셑팅유형 : ' + 보기셑팅유형);
+    보기셑팅()
+  }
+  if (e.target.innerHTML=='우사') {
+    보기셑팅유형 = '우사'
+    console.log('보기셑팅유형 : ' + 보기셑팅유형);
+    document.querySelector('#전체대체').innerHTML='<img src="portal/images/black_문서/우사.png" alt="이미지없음">'
     보기셑팅()
   }
 }
@@ -849,7 +857,6 @@ function main과우측_클릭시(e) {
   if (e.target.classList.contains('파일연결')) {
     document.querySelector('#main사이드우측의_코딩결과div').innerHTML = document.querySelector('#' + e.target.title).outerHTML;
   }
-
 }
 리스너_header.addEventListener('click', header_클릭시);
 리스너_해역사진관련.addEventListener('click', 리스너_해역사진관련_클릭시);
