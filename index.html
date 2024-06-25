@@ -25,7 +25,7 @@
       <div id="특수문자보기" style="position: absolute;right:0px;top:20px;width:500px;display:none;">
         <button onclick="document.querySelector('#특수문자보기').style.display='none'">닫기</button><br>
         <div style="background-color: white; border:1px solid black;padding:5px;">
-          <h5>▢ < ▸ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ</h5>
+          <h5> • ▢ < ▸ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ</h5>
           <h5>① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
 
         </div>
@@ -176,6 +176,7 @@
       <ul>
         <li class="content" title="_08_팔번_중량체크관련" data-title="결과물_id">중량체크 방법 [계근정보 입력]</li>
         <li class="content" title="_08_팔번_중량체크관련엑셀파일사용법" data-title="결과물_id">계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</li>
+        <li class="content" title="_08_팔번_내국번호보는방법" data-title="결과물_id">★ 내국번호는 입고내역×, 보는방법, 번호부여방식 등</li>
       </ul>
     </div> 
 
@@ -1295,6 +1296,8 @@
     <img src="portal/images/문서연결_세관및유니패스/06_반출입_파순03_반출관련_04송신.png" alt="이미지없음">
     <br>
     <h5>3. 수신문서 메뉴에서 문서를 수신받아 결과를 확인합니다.</h5>
+    <br>
+    <h4 id="move5" class="목차">&#9634; ★ 삭제 등 오류처리 방법 ★</h4>
     <br><br><br><br>
   </section>
 
@@ -1775,6 +1778,22 @@
     <h5 class="h5_번들작">⑥ (중량 기록이 모두 완료되었다면) 출고확정요청 클릭</h5>
     <img src="portal/images/문서연결_팔번/08_중량체크01_삼성사이트확정요청.png" alt="이미지없음">
     <br><br><br><br>
+  </section>
+
+  <section id="_08_팔번_내국번호보는방법">
+    <div id="스크립트로ul추가"></div>
+    <h5 style="text-decoration: underline; font-weight: bold;" id="move1" class="목차">할당관세? 등의 물품에 대해서 내국물품반입신고번호 문의가 있었다.</h5>
+    <h5 class="목차">1. 입고내역 맨우측 내국물품번호는 세관에 전송한 내국물품반입신호번호가 아님!!!</h5>
+    <h5 class="li_들작">• 입고내역 맨우측 내국물품번호는 내국물품반입신고 날짜 참고용으로 활용가능</h5>
+    <h5 class="li_들작">• 입고내역 맨우측 내국물품번호는 이체가 없었거나 이체 전에 내국반입시 번호가 부여됨</h5>
+    <h5 class="li_들작">• 이체후 반입시 이체건에 번호부여되어 입고내역에서 확인 안됨</h5>
+    <h5 class="li_들작">• 이체가 여러날에 걸쳐 복수 인 경우 다른 번호로 잡힘</h5>
+    <h5 class="목차">2. 재고현황에서 확인되는 세관에 신고된 내국물품 반입번호 형식 : 24-12345678 (년도, 8자리)</h5>
+    <h5 class="목차">3. 세관에 신고된 내국물품 반입번호 전체번호는 03011597-[창고 고유번호]를 앞에 추가해야 함</h5>
+    <h5 class="li_들작">• 세관에 신고된 내국물품 반입번호 형식 : 03011597-24-12345678 (고유번호, 년도, 8자리)</h5>
+    <h5 class="li_들작">• 030 은 부산본부세관 고유번호, 11597 은 동일냉장 고유번호</h5>
+    <h5 class="목차">4. 세관에 신고된 내국물품반입번호는 재고현황에서 재고 클릭 후 하단에서 확인 가능</h5>
+    <h5 class="목차">5. 세관에 신고된 내국물품반입번호는 재고현황을 EXCEL로 변환시 확인 가능</h5>
   </section>
 
   <section id="_08_팔번_중량체크관련">
