@@ -19,7 +19,7 @@ function 교섭력계산() {
   document.querySelector('#계산_사단까주').value = 15399;
   document.querySelector('#계산_사단까주8개').value = (document.querySelector('#계산_사단까주').value * 8).toFixed(0);
 
-  document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / 일회교섭력).toFixed(0);
+  document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / 일회교섭력).toFixed(3);
 
   if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[0].value)) { document.querySelectorAll('#남은_차감후_교섭력 input')[0].value = 0; }
   if (isNaN(document.querySelectorAll('#남은_차감후_교섭력 input')[1].value)) { document.querySelectorAll('#남은_차감후_교섭력 input')[1].value = 0; }
@@ -43,7 +43,7 @@ function 교섭력계산() {
   }
   남은교섭력_요소.value = 보유교섭력_요소.value - 차감할교섭력;
   document.querySelector('#나눈값').value = (Number(보유교섭력_요소.value) / Number(document.querySelector('#일회교섭력').value)).toFixed(1);
-  document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / Number(document.querySelector('#일회교섭력').value)).toFixed(2);
+  document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / Number(document.querySelector('#일회교섭력').value)).toFixed(3);
 }
 교섭력계산();
 //캔버스가 있다면 캔버스 head에 카테고리 제목들을 자동 셑팅해주는 코드를 만들어야함
