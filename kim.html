@@ -21,7 +21,7 @@
 
   <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
   <nav class="navbar bg-body-tertiary pt-1 m-0">    
-    <div class="container-fluid">
+    <div class="container-fluid" style="z-index: 10;">
 
       <!--디바이스 작아지면 버튼으로 변해서 누르면 class="collapse navbar-collapse" id="navbarSupportedContent" 부분이 드랍다운된다.-->
       <div>
@@ -60,6 +60,17 @@
           </ul>
         </li>
 
+        <li class="nav-item dropdown me-2 d-inline-block ms-3">
+          <a class="active nav-link dropdown-toggle" href="#" 
+            role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="document.querySelector('#메모').classList.add('d-none')">
+            전세계약시 주의사항
+          </a>
+          <ul class="dropdown-menu" style="width:300px;">
+            <li><a class="dropdown-item" onclick="전세계약시주의사항()">전세계약시 주의사항</a></li>
+            <li><a href="https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=B&mobileAt=" target="_blank">국토교통부 실거래가 공개시스템</a></li>
+          </ul>
+        </li>
+
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -89,6 +100,10 @@
 
 
 <div style="height:50px;"></div><!-- header와 띄우기용 -->
+
+<div id="메모" style="position:absolute;background-color: white;z-index: 8;" class="d-none">
+  <img src="portal/images/문서연결_kim/전세계약시주의사항.png" alt="이미지없음">
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

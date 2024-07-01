@@ -1,3 +1,7 @@
+function 전세계약시주의사항() {
+    document.querySelector('#메모').classList.remove('d-none');
+}
+
 
 var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
 var 회차select안옵션html;
