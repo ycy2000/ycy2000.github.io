@@ -87,6 +87,11 @@ function 보기셑팅() {
     document.querySelector('#main과우측').classList.add('d-none');
     document.querySelector('#전체대체').classList.remove('d-none');
   }
+  if (보기셑팅유형 == '도사') {
+    document.querySelector('#리스너용해역사진관련').classList.add('d-none');
+    document.querySelector('#main과우측').classList.add('d-none');
+    document.querySelector('#전체대체').classList.remove('d-none');
+  }
 
 }
 보기셑팅()
@@ -366,6 +371,12 @@ function header_클릭시(e) {
     보기셑팅유형 = '우사'
     console.log('보기셑팅유형 : ' + 보기셑팅유형);
     document.querySelector('#전체대체').innerHTML='<img src="portal/images/black_문서/우사.png" alt="이미지없음">'
+    보기셑팅()
+  }
+  if (e.target.innerHTML=='도사') {
+    보기셑팅유형 = '도사'
+    console.log('보기셑팅유형 : ' + 보기셑팅유형);
+    document.querySelector('#전체대체').innerHTML='<img src="portal/images/black_문서/도사.png" alt="이미지없음">'
     보기셑팅()
   }
 }
