@@ -8,10 +8,6 @@ if (document.querySelector('#캔버스header')) {
   document.querySelector('#캔버스header').innerHTML = document.querySelector('#캔버스header').innerHTML + 카테고리버튼생성;
 }
 
-var 메모아이디;
-var 메모요소;
-var 보기셑팅유형 = '해역사진초기값';
-
 //캔버스body초기화
 var 셑팅_캔버스바디 = document.querySelector('#캔버스바디');
 셑팅_캔버스바디.innerHTML = '';
@@ -21,28 +17,14 @@ for (var i = 0; i < document.querySelectorAll('.카테고리실행').length; i++
 셑팅_캔버스바디.innerHTML = document.querySelector('#참고').outerHTML;
 document.querySelector('[title="참고"]').classList.add('현재카테고리');
 
-function navbar_임시함수_click() {
-  let str = document.querySelector('#JS_search_find_match사용법').innerText;
-  console.log(str.length);
-  console.log(str.match('검색할버튼클래스들'));
-
-
-}
-
 var 리스너_header = document.querySelector('header');
 var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스클릭시(e)
 var 리스너_캔버스전체 = document.querySelector('#캔버스전체');
 function header_클릭시(e) {
+  //Offcanvas클릭은 영향없다. 다른것일때
   console.log('header_클릭시(e)');
-  if (e.target.id == '해역사진보기') {
-    보기셑팅유형 = '해역사진초기값'
-    console.log('보기셑팅유형 : ' + 보기셑팅유형);
-    보기셑팅()
-  }
-  if (e.target.title == 'main과우측') {
-    보기셑팅유형 = 'main과우측'
-    console.log('보기셑팅유형 : ' + 보기셑팅유형);
-    보기셑팅()
+  if (e.target.innerHTML == 'html특수문자') {
+    리스너_전체대체.innerHTML=document.querySelector('#html특수문자_click').innerHTML;
   }
 }
 function head_캔버스_검색input_change시() {
@@ -107,6 +89,10 @@ function 캔버스클릭시(e) {
       캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
       결과부분.innerHTML = 캔버스관련자료none안_타겟element.outerHTML;
     }
+    //
+    if (e.target.innerHTML=='파일검색') {
+      document.querySelector('#canvas검색input').value='';
+    }
   }
   if (1 == 1) {
     if (e.target.id == '캔버스바디_초기화') {
@@ -127,26 +113,39 @@ function 캔버스클릭시(e) {
       var 왼쪽내부html = '';
       var 오른쪽내부html = '';
 
+      console.log('e.target.id == 캔버스바디_모든제목보기');
+      console.log('.canvas카테고리 안 h6 개수 : ' + 개수);
+
       if (개수 <= 17) {
+        console.log('개수 <= 17 조건 진행');
         for (var i = 0; i < 검색할버튼클래스들.length; i++) {
-          console.log(검색할버튼클래스들[i].outerHTML);
+          // console.log(검색할버튼클래스들[i].outerHTML);
           왼쪽내부html += 검색할버튼클래스들[i].outerHTML;
         }
-        왼쪽내부html = '<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+        왼쪽내부html = '<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;">' + 왼쪽내부html + '</div>'
         오른쪽내부html = '<div class="js모든파일리스트div"></div>'
+        셑팅_캔버스바디.innerHTML = 왼쪽내부html + 오른쪽내부html;
       }
 
+      var 왼쪽내부html = '';
+      var 오른쪽내부html = '';
       if (개수 >= 18 && 개수 <= 34) {
+        console.log('개수 >= 18 && 개수 <= 34 조건 진행');
         for (var i = 0; i < 17; i++) {
           왼쪽내부html += 검색할버튼클래스들[i].outerHTML;
         }
         for (var i = 17; i < 개수; i++) {
           오른쪽내부html += 검색할버튼클래스들[i].outerHTML;
         }
-        왼쪽내부html = '<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+        왼쪽내부html = '<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;">' + 왼쪽내부html + '</div>'
         오른쪽내부html = '<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
+        셑팅_캔버스바디.innerHTML = 왼쪽내부html + 오른쪽내부html;
       }
+
+      var 왼쪽내부html = '';
+      var 오른쪽내부html = '';
       if (개수 > 34) {
+        console.log('개수 > 34 조건 진행');
         for (var i = 0; i < 개수; i++) {
           if (i < (개수 / 2)) {
             왼쪽내부html += 검색할버튼클래스들[i].outerHTML;
@@ -154,10 +153,10 @@ function 캔버스클릭시(e) {
             오른쪽내부html += 검색할버튼클래스들[i].outerHTML;
           }
         }
-        왼쪽내부html = '<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;>' + 왼쪽내부html + '</div>'
+        왼쪽내부html = '<div class="js모든파일리스트div" style="border-right:1px solid;margin-right:10px;">' + 왼쪽내부html + '</div>'
         오른쪽내부html = '<div class="js모든파일리스트div"">' + 오른쪽내부html + '</div>'
+        셑팅_캔버스바디.innerHTML = 왼쪽내부html + 오른쪽내부html;
       }
-      셑팅_캔버스바디.innerHTML = 왼쪽내부html + 오른쪽내부html;
     }
     if (e.target.id == '캔버스바디_모든카테고리') {
       //최종적으로 세로 두줄이 되도록 한다. 17줄
