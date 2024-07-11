@@ -26,7 +26,7 @@
         </button>
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
         <!-- #캔버스전체 클릭하면 나오는 id="캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
-        <button id="header_canvas_click" type="button" data-bs-toggle="offcanvas" data-bs-target="#캔버스전체" aria-controls="offcanvasBottom">Offcanvas</button>
+        <button id="header_canvas_click" type="button" data-bs-toggle="offcanvas" data-bs-target="#캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
         <button>html특수문자</button> 
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -124,6 +124,12 @@
       <code class="fw-bold" style="color:blueviolet">• Range("T1:T2").Copy Range("U2") 'Destination:= 생략 가능</code>
       <code class="fw-bold">• 동작 후 Application.CutCopyMode = False 상태가 된다. (카피 상태 해제)</code>
       <br>
+      <h5 class="fw-bold">현재시트에서 다른시트로 copy 가능. 시트이동 없음.</h5>
+      <code class="fw-bold">• Range("b2:c3").Copy Sheets("sheet2").Range("p11")</code>
+      <br>
+      <h5 class="fw-bold">다른시트 범위를 copy 하여 현재시트로 가져오기 가능. 시트이동 없음.</h5>
+      <code class="fw-bold">• sheets("sheet1").range("b2:c3").Copy Sheets("sheet2").Range("p1")</code>
+      <br>
       <h5 class="fw-bold">ActiveSheet.Paste는 선택하여 붙여넣기의 기본값이다.</h5>
       <code class="fw-bold" style="color:blueviolet">• 매개변수 : Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False</code>
       <code class="fw-bold">• Paste:=xlPasteValues : 모두 붙여넣기, Paste:= 생략하여 xlPasteValues 형식으로 입력 가능</code>
@@ -148,12 +154,12 @@
   <div id="excel_find"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">find로 찾지못한 변수는 Nothing 상태이다.</h5>
-      <code class="fw-bold">• If Not 변수 Is Nothing Then : 변수가 Nothing이 아니라면 => 설정이 되었다면</code>
-      <code class="fw-bold" style="color:blueviolet">• If 변수 Is Nothing Then : 변수가 Nothing이라면 => 설정이 안되었다면(찾지 못했다면) ★ 여기서는 에러가 안남</code>
-      <code class="fw-bold">• Nothing상태의 변수를 사용하면 에러가 난다.</code>
+      <code class="fw-bold">• If Not 변수 Is Nothing Then : 변수가 Nothing이 아니라면 => 설정이 되었다면(찾았다면)</code>
+      <code class="fw-bold">• If 변수 Is Nothing Then : 변수가 Nothing이라면 => 설정이 안되었다면(찾지 못했다면)</code>
+      <code class="fw-bold" style="color:blueviolet">• ★ Nothing상태의 변수를 사용(선택 또는 접근 등)하면 에러가 난다.</code>
       <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlWhole)</code>
       <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlPart)</code>
-      <code class="fw-bold">카피 : Set C = .FindNext(C)</code>
+      <code class="fw-bold">카피 : Set C = .FindNext(C) <span style="color:blueviolet">'현재조건대로 다음찾기</span></code>
       <br>
       <h5 class="fw-bold">find 참고. 괄호가 있는것 주의.</h5>
       <code class="fw-bold">Dim 찾기결과 As Range</code>
@@ -164,21 +170,18 @@
       <code class="fw-bold">• what:="찾는값" => "찾*":'찾'으로 시작되는 것. "찾?":'찾'으로 시작되는 두글자 </code>
       <code class="fw-bold">• After:=ActiveCell '설정된 셀 제외한 다음부터 찾기, 결과가 없으면 ActiveCell이후 끝까지 찾고 처음부터 다시찾는다.</code>
       <code class="fw-bold">• LookIn:=xlFormulas</code>
-      <code class="fw-bold" style="text-indent: 21px;">- C3셀의 수식이 '=IF(1=1,"true","false")'이면 C3셀에 표시되는 결과는 'TRUE'이다</code>
-      <code class="fw-bold" style="text-indent: 21px;">- LookIn:=xlFormulas : 수식에서 찾는다면 'true', 'false', 'IF' 등 모두 찾아진다.</code>
-      <code class="fw-bold" style="text-indent: 21px;">- LookIn:=xlValues : 값에서</code>
-      <code class="fw-bold">• LookAt:=xlPart</code>
-      <code class="fw-bold">• SearchOrder:=xlByRows</code>
-      <code class="fw-bold">• SearchDirection:=xlNext</code>
-      <code class="fw-bold">• MatchCase:=False</code>
-      <code class="fw-bold">• MatchByte:=False</code>
+      <code class="fw-bold" style="text-indent: 21px;color:blueviolet">- C3셀의 수식이 '=IF(1=1,"true","false")'이면 C3셀에 표시되는 결과는 'TRUE'이다</code>
+      <code class="fw-bold" style="text-indent: 21px;color:blueviolet">- LookIn:=xlFormulas : 수식에서 찾는다면 'true', 'false', 'IF' 등 모두 찾아진다.</code>
+      <code class="fw-bold" style="text-indent: 21px;color:blueviolet">- LookIn:=xlValues : 값에서 'flase'를 찾으면 찾지 못한다.</code>
+      <code class="fw-bold" style="text-indent: 21px;">- LookIn:=xlComments : 메모에서 찾는다.</code>
+      <code class="fw-bold">• LookAt:=xlPart : 부분일치 또는 전체일치(xlWhole)</code>
+      <code class="fw-bold">• SearchOrder:=xlByRows : 검색할 순서 - 행 또는 열(xlByColumns)</code>
+      <code class="fw-bold">• SearchDirection:=xlNext : 검색할 방향 - 순방향 또는 역방향(xlPrevious)</code>
+      <code class="fw-bold">• MatchCase:=False : 대소문자 구분 여부</code>
+      <code class="fw-bold">• MatchByte:=False : 더블 바이트 문자 지원을 설치한 경우에만 사용(예: 중국어)</code>
       <code class="fw-bold">• SearchFormat:=False</code>
       <br>
       <h5 class="fw-bold">바꿀범위.Replace what:="바꿀값", replacement:="결과값" '괄호가 없는것 주의</h5>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <code class="fw-bold"></code>
-      <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
