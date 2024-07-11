@@ -164,6 +164,9 @@
       <code class="fw-bold">• what:="찾는값" => "찾*":'찾'으로 시작되는 것. "찾?":'찾'으로 시작되는 두글자 </code>
       <code class="fw-bold">• After:=ActiveCell '설정된 셀 제외한 다음부터 찾기, 결과가 없으면 ActiveCell이후 끝까지 찾고 처음부터 다시찾는다.</code>
       <code class="fw-bold">• LookIn:=xlFormulas</code>
+      <code class="fw-bold" style="text-indent: 21px;">- C3셀의 수식이 '=IF(1=1,"true","false")'이면 C3셀에 표시되는 결과는 'TRUE'이다</code>
+      <code class="fw-bold" style="text-indent: 21px;">- LookIn:=xlFormulas : 수식에서 찾는다면 'true', 'false', 'IF' 등 모두 찾아진다.</code>
+      <code class="fw-bold" style="text-indent: 21px;">- LookIn:=xlValues : 값에서</code>
       <code class="fw-bold">• LookAt:=xlPart</code>
       <code class="fw-bold">• SearchOrder:=xlByRows</code>
       <code class="fw-bold">• SearchDirection:=xlNext</code>
