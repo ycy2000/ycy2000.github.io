@@ -99,7 +99,7 @@
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
       </div>
       <div>
-        <h6 class="canvas_div" title='excel_find'>find찾기</h6>
+        <h6 class="canvas_div" title='excel_find'>find찾기, 바꾸기</h6>
       </div>
       <div>
         <h6>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
@@ -149,12 +149,29 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">find로 찾지못한 변수는 Nothing 상태이다.</h5>
       <code class="fw-bold">• If Not 변수 Is Nothing Then : 변수가 Nothing이 아니라면 => 설정이 되었다면</code>
-      <code class="fw-bold">• If 변수 Is Nothing Then : 변수가 Nothing이라면 => 설정이 안되었다면(찾지 못했다면) ★ 여기서는 에러가 안남</code>
+      <code class="fw-bold" style="color:blueviolet">• If 변수 Is Nothing Then : 변수가 Nothing이라면 => 설정이 안되었다면(찾지 못했다면) ★ 여기서는 에러가 안남</code>
       <code class="fw-bold">• Nothing상태의 변수를 사용하면 에러가 난다.</code>
       <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlWhole)</code>
       <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlPart)</code>
       <code class="fw-bold">카피 : Set C = .FindNext(C)</code>
-      <h5 class="fw-bold"></h5>
+      <br>
+      <h5 class="fw-bold">find 참고. 괄호가 있는것 주의.</h5>
+      <code class="fw-bold">Dim 찾기결과 As Range</code>
+      <code class="fw-bold">Set 찾기결과 = Cells.Find(what:="찾는값", After:=ActiveCell, LookIn:=xlFormulas, LookAt:= _</code>
+      <code class="fw-bold" style="text-indent: 116px;">xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:=False _</code>
+      <code class="fw-bold" style="text-indent: 116px;">, MatchByte:=False, SearchFormat:=False)</code>
+      <br>
+      <code class="fw-bold">• what:="찾는값" => "찾*":'찾'으로 시작되는 것. "찾?":'찾'으로 시작되는 두글자 </code>
+      <code class="fw-bold">• After:=ActiveCell '설정된 셀 제외한 다음부터 찾기, 결과가 없으면 ActiveCell이후 끝까지 찾고 처음부터 다시찾는다.</code>
+      <code class="fw-bold">• LookIn:=xlFormulas</code>
+      <code class="fw-bold">• LookAt:=xlPart</code>
+      <code class="fw-bold">• SearchOrder:=xlByRows</code>
+      <code class="fw-bold">• SearchDirection:=xlNext</code>
+      <code class="fw-bold">• MatchCase:=False</code>
+      <code class="fw-bold">• MatchByte:=False</code>
+      <code class="fw-bold">• SearchFormat:=False</code>
+      <br>
+      <h5 class="fw-bold">바꿀범위.Replace what:="바꿀값", replacement:="결과값" '괄호가 없는것 주의</h5>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
       <code class="fw-bold"></code>
