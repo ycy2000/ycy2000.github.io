@@ -99,7 +99,7 @@
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
       </div>
       <div>
-        <h6>메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
+        <h6 class="canvas_div" title='excel_find'>find찾기</h6>
       </div>
       <div>
         <h6>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
@@ -110,26 +110,63 @@
   <!-- DIV들 모_음 : 하나가 올라감 -->
   <div id="copy_cut_paste"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">copy, cut, paste</h5>
+      <code class="fw-bold">카피 : ActiveSheet.Paste '모두(셀선택상태로, PasteSpecial의 초기값, 모두_연산없음_빈셀도복사_행열바꿈없음) </code>
+      <code class="fw-bold">카피 : Selection.PasteSpecial xlPasteFormats '서식만</code>
+      <code class="fw-bold">카피 : Selection.PasteSpecial xlPasteValues '값만</code>
+      <code class="fw-bold">카피 : Selection.PasteSpecial xlPasteValuesAndNumberFormats '값 및 표시 형식</code>
+      <br>
+      <h5 class="fw-bold">copy(cut은 확장범위 붙여넣기는 안됨)</h5>
+      <code class="fw-bold">• Range("T1:T2").Copy Destination:=Range("U2") 'Destination은 목적지 셀 하나가 기본</code>
+      <code class="fw-bold">• Range("T1:T2").Copy (Destination:=Range("U2")) '()안에 매개변수 넣을 때는 매개변수 써야 함</code>
+      <code class="fw-bold" style="color:blueviolet">• Range("T1:T2").Copy (Range("U2")) '이거는 에러난다. 매개변수에 개체변수가 들어가면 안됨...</code>
+      <code class="fw-bold">• Range("T1:T2").Copy Destination:=Range("U2:V5") 'Destination을 하나이상의 셀로 지정하면 반복되었을때 딱맞는 범위가 </code>
+      <code class="fw-bold" style="text-indent: 16px;">지정되지 않으면 첫셀 하나가 지정된 것으로 간주되고 딱맞으면 반복적으로 채워준다.</code>
+      <code class="fw-bold" style="color:blueviolet">• Range("T1:T2").Copy Range("U2") 'Destination:= 생략 가능</code>
+      <code class="fw-bold">• 동작 후 Application.CutCopyMode = False 상태가 된다. (카피 상태 해제)</code>
+      <br>
+      <h5 class="fw-bold">ActiveSheet.Paste는 선택하여 붙여넣기의 기본값이다.</h5>
+      <code class="fw-bold" style="color:blueviolet">• 매개변수 : Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False</code>
+      <code class="fw-bold">• Paste:=xlPasteValues : 모두 붙여넣기, Paste:= 생략하여 xlPasteValues 형식으로 입력 가능</code>
+      <code class="fw-bold">• Operation:=xlNone : 연산 없음, Operation:= 생략하여 xlNone 형식으로 입력 가능</code>
+      <code class="fw-bold">• SkipBlanks:=False : 빈셀 건너뜀 하지 않음, SkipBlanks:= 생략하여 false 형식으로 입력 가능</code>
+      <code class="fw-bold">• Transpose:=False : 행열바꿈 하지 않음, Transpose:= 생략하여 false 형식으로 입력 가능</code>
+      <code class="fw-bold">★ 매개변수(Transpose:=) 지정시 순서 상관없음. 지정하지 않으면 순서맞춰야함</code>
+      <code class="fw-bold">★ 매개변수 지정하지 않을때 사이에 값을 지정하지 않을경우 쉼표(,)로 구분해야함 </code>
+      <br>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">선택하여 붙여넣기(PasteSpecial)</h5>
+      <code class="fw-bold">Range("t1").Select</code>
+      <code class="fw-bold">Selection.Copy</code>
+      <code class="fw-bold">Range("v2").Select</code>
+      <code class="fw-bold">Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False</code>
+      <code class="fw-bold">Application.CutCopyMode = False</code>
+      <h6>엑셀에서 셀카피 후 목적지 셀 클릭하고 우클릭하면 다음 메뉴가 나온다.</h6>
+      <img src="portal/images/문서연결_엑셀VBA/excel_copy_2.png" alt="이미지없음">
+    </div>
+  </div>
+  <div id="excel_find"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">find로 찾지못한 변수는 Nothing 상태이다.</h5>
+      <code class="fw-bold">• If Not 변수 Is Nothing Then : 변수가 Nothing이 아니라면 => 설정이 되었다면</code>
+      <code class="fw-bold">• If 변수 Is Nothing Then : 변수가 Nothing이라면 => 설정이 안되었다면(찾지 못했다면) ★ 여기서는 에러가 안남</code>
+      <code class="fw-bold">• Nothing상태의 변수를 사용하면 에러가 난다.</code>
+      <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlWhole)</code>
+      <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlPart)</code>
+      <code class="fw-bold">카피 : Set C = .FindNext(C)</code>
+      <h5 class="fw-bold"></h5>
       <h6></h6>
-      <h6 style="text-indent: 23px;">    Range("A1:D10").Select
-        Selection.Copy
-        Range("F1:L19").Select
-        ActiveSheet.Paste</h6>
-      <code style="text-indent: 23px;">
-        Range("A1:D10").Select
-        Selection.Copy
-        Range("F1:L19").Select
-        ActiveSheet.Paste
-      </code>
+      <h6 style="text-indent: 23px;"></h6>
+      <code class="fw-bold"></code>
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-  <div id="copy_cut_paste"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"></h5>
+      <code class="fw-bold"></code>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
@@ -138,10 +175,13 @@
     </div>
   </div>
 
-  <div id="html특수문자_click">
+  <div id="html특수문자_click" style="position: absolute;right:0px;top:20px;width:500px;display:none;">
     <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
-  </div>
+    <div style="background-color: white; border:1px solid black;padding:5px;">
+      <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+      <h5>※ ★ ● • ▢ < ▸ </h5>
+
+    </div>
 </div>
 
 
