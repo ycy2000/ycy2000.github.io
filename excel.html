@@ -83,23 +83,24 @@
 <!-- 코딩등메모장text파일, canvas_div-->
 <div id="캔버스관련자료none" class="d-none">
   <div id="canvas카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="canvas카테고리" id="참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6>diddid참고_특수문자.txt</h6>
-      </div>
-      <div>
-        <h6>메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
-      </div>
-      <div>
-        <h6>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
-      </div>
-    </div>
     <div class="canvas카테고리" id="excel">
       <div>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='excel_find'>find찾기, 바꾸기</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='excel_배열'>배열 > split, join</h6>
+      </div>
+    </div>
+
+    <div class="canvas카테고리" id="참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6>diddid참고_특수문자.txt</h6>
+      </div>
+      <div>
+        <h6>메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
       </div>
       <div>
         <h6>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
@@ -157,11 +158,11 @@
       <code class="fw-bold">• If Not 변수 Is Nothing Then : 변수가 Nothing이 아니라면 => 설정이 되었다면(찾았다면)</code>
       <code class="fw-bold">• If 변수 Is Nothing Then : 변수가 Nothing이라면 => 설정이 안되었다면(찾지 못했다면)</code>
       <code class="fw-bold" style="color:blueviolet">• ★ Nothing상태의 변수를 사용(선택 또는 접근 등)하면 에러가 난다.</code>
-      <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlWhole)</code>
-      <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, Lookat:=xlPart)</code>
-      <code class="fw-bold">카피 : Set C = .FindNext(C) <span style="color:blueviolet">'현재조건대로 다음찾기</span></code>
+      <code class="fw-bold">카피 : Set C = ActiveSheet.Range("H:H").Find(What:=name, LookIn:=xlValues, Lookat:=xlWhole) 'Lookat:=xlPart</code>
+      <code class="fw-bold">카피 : Set C = range개체.FindNext(C) <span style="color:blueviolet">'AFTER:=C, 현재조건대로 다음찾기, 여러번 반복할때 C가 재설정되어야 함</span></code>
+      <code class="fw-bold">카피 : Cells.Find(what:="찾을값", AFTER:=ActiveCell, LookIn:=xlValues, LookAt:=xlWhole) 'Lookat:=xlPart</code>
       <br>
-      <h5 class="fw-bold">find 참고. 괄호가 있는것 주의.</h5>
+      <h5 class="fw-bold">find 참고. 괄호가 있는것 주의.(기본:LookIn:=xlFormulas, 코드내부에서는 유효, 나오면 다시 기본으로)</h5>
       <code class="fw-bold">Dim 찾기결과 As Range</code>
       <code class="fw-bold">Set 찾기결과 = Cells.Find(what:="찾는값", After:=ActiveCell, LookIn:=xlFormulas, LookAt:= _</code>
       <code class="fw-bold" style="text-indent: 116px;">xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:=False _</code>
@@ -184,6 +185,39 @@
       <h5 class="fw-bold">바꿀범위.Replace what:="바꿀값", replacement:="결과값" '괄호가 없는것 주의</h5>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <code class="fw-bold">• LookIn:=xlValues, LookIn:=xlFormulas : 엑셀 또는 VAB에서 설정하였다면 (vba에서)나와도 바뀐 설정대로 간다.</code>
+      <code class="fw-bold" style="text-indent: 21px;">- 코드 내부에서 LookIn:=xlValues, LookIn:=xlFormulas 선택하여 설정이 필요하다.</code>
+      <code class="fw-bold" style="color:blueviolet">• LookIn:=xlValues : ★ 화면에 보이는 값대로 찾을때 설정해 주어야 함.</code>
+      <code class="fw-bold" style="color:blueviolet">• 범위.Activate하면, 범위.Select와 같다(이전 Select해제)</code>
+      <code class="fw-bold" style="color:blueviolet">• Find 결과를 AFTER:="찾을값" 에 활용할때, Select 또는 Activate 해 주어야 하는지 체크. 그렇지 않으면 선택되지 않는다.</code>
+      <code class="fw-bold" style="text-indent: 21px;">- AFTER:=Find 결과(변수) 또는</code>
+      <code class="fw-bold" style="text-indent: 21px;">- Find 결과를 Select 또는 Activate 해 주고 AFTER:=Activecell 형식으로 활용한다.</code>
+      <br>
+      <h5 class="fw-bold">find : vba코드 참고</h5>
+      <code><span class="d-inline-block" style="width:200px;">	Sub 매크로2()	</span> <span>	반복횟수 = 10	</span></code>
+      <code><span class="d-inline-block" style="width:200px;">	Dim 반복 As Integer	</span> <span>	Set 찾은셀 = Range("a1") '초기값	</span></code>
+      <code><span class="d-inline-block" style="width:200px;">	Dim 반복횟수 As Integer	</span> <span>	Set 찾을범위 = Cells	</span></code>
+      <code><span class="d-inline-block" style="width:200px;">	Dim 찾을값 As String	</span> <span>	찾을값 = "임시"	</span></code>
+      <code><span class="d-inline-block" style="width:200px;">	Dim 찾은셀 As Range		</span></code>
+      <code><span class="d-inline-block" style="width:200px;">	Dim 찾을범위 As Range	</span></code>
+      <br>		
+      <code>	For 반복 = 1 To 반복횟수	</code>
+      <code>	    Set 찾은셀 = 찾을범위.Find(what:=찾을값, AFTER:=찾은셀, LookIn:=xlValues, LookAt:=xlWhole)	</code>
+      <code>	    'LookIn:=xlFormulas, LookAt:=xlPart	</code>
+      <code>	    '찾은셀 활용 코드	</code>
+      <code>	Next	</code>
+      <br>		
+      <code>	'찾지 못했을때 에러방지 방법1 : 건너뛰는 방법	</code>
+      <code>	    'Set 찾은셀 : 찾지못했을때(찾은셀 Is Nothing) 변수지정시는 에러가 안나고	</code>
+      <code>	    'Set 찾은셀 : 찾았을때(Not 찾은셀 Is Nothing)	</code>
+      <code>	    'Nothing 상태의 변수를 활용(선택 등)할 때 에러가 난다.	</code>
+      <code>	    If 찾은셀 Is Nothing Then GoTo 찾지못했을때 'GoTo 찾지못했을때 => '찾지못했을때'코드로 건너뜀	</code>
+      <code>	    '찾았을때 코드	</code>
+      <code>	찾지못했을때:	</code>
+      <br>		
+      <code>	'찾지 못했을때 에러방지 방법2 : If로 감싸는 방법	</code>
+      <code>	    If Not 찾은셀 Is Nothing Then	</code>
+      <code>	       '찾았을때 코드	</code>
     </div>
   </div>
   <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->

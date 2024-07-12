@@ -14,8 +14,8 @@ var 셑팅_캔버스바디 = document.querySelector('#캔버스바디');
 for (var i = 0; i < document.querySelectorAll('.카테고리실행').length; i++) {
   document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
 }
-셑팅_캔버스바디.innerHTML = document.querySelector('#참고').outerHTML;
-document.querySelector('[title="참고"]').classList.add('현재카테고리');
+셑팅_캔버스바디.innerHTML = document.querySelector('#excel').outerHTML;
+document.querySelector('[title="excel"]').classList.add('현재카테고리');
 
 var 리스너_header = document.querySelector('header');
 var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스클릭시(e)
