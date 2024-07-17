@@ -239,9 +239,29 @@
       <code style="text-indent: 23px;">1. 범위로 지정된 곳에 공백이 있으면 "0"으로 지정됨</code>
       <code style="text-indent: 23px;">2. 범위로 지정된 곳에 공백이나 숫자가 아니면<span style="color:blueviolet">(문자일때) 에러!!</span></code>
       <br>
-      <h5 class="fw-bold">split 활용하여 columwidth 적용방법 및 참고</h5>
-      <br>
       <h5 class="fw-bold">배열을 columwidth 적용방법 및 참고</h5>
+      <div class="d-inline-block">
+        <code class="fw-bold">Sub 매크로2()</code>
+        <code class="fw-bold" style="text-indent: 23px;">Dim range배열() As Variant</code>
+        <code class="fw-bold" style="text-indent: 23px;">range배열 = Range("a2:f2")</code>
+        <code class="fw-bold" style="text-indent: 23px;">'Range("H2:M2") = Range("A2:F2") '값을 뿌릴때</code>
+        <code class="fw-bold" style="text-indent: 23px;">'Range("H2:M2") = range배열 '값을 뿌릴때</code>
+        <code class="fw-bold" style="text-indent: 23px;">Range("H2:M2").ColumnWidth = range배열</code>
+        <code class="fw-bold">End Sub</code>
+      </div>
+      <div class="d-inline-block" style="margin-left:55px;">
+        <code class="fw-bold">Sub 매크로2()</code>
+        <code class="fw-bold" style="text-indent: 23px;">Dim range배열() As Variant</code>
+        <code class="fw-bold" style="text-indent: 23px;">range배열 = Range("a2:f2")</code>
+        <code class="fw-bold" style="text-indent: 23px;">'Range("H2:M2") = Range("A2:F2") '값을 뿌릴때</code>
+        <code class="fw-bold" style="text-indent: 23px;">'Range("H2:M2") = range배열 '값을 뿌릴때</code>
+        <code class="fw-bold" style="text-indent: 23px;">Range("H2:M2").ColumnWidth = range배열</code>
+        <code class="fw-bold">End Sub</code>
+      </div>
+
+      <br>
+      <h5 class="fw-bold">split 활용하여 columwidth 적용방법 및 참고</h5>
+
 
 
       <code class="fw-bold" style="text-indent: 15px;"></code>
