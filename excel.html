@@ -89,6 +89,7 @@
       </div>
       <div>
         <h6 class="canvas_div" title='excel_find'>find찾기, 바꾸기</h6>
+        <h6 class="canvas_div" title='excel_column'>column > columnwidth, 열숨기기/보기, columnwidth 적용방법</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
@@ -221,6 +222,39 @@
       <code>	       '찾았을때 코드	</code>
     </div>
   </div>
+
+  <div id="excel_column"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">column 숨기기/보기, 폭 지정하기 <span style="color:blueviolet">(셀 하나만 지정해도 된다)</span></h5>
+      <code class="fw-bold d-inline-block" style="width:400px;">• Range("a1").EntireColumn.Hidden = True</code>
+      <code class="fw-bold d-inline-block"">Range("a1").EntireColumn.Hidden = False</code>
+      <code class="fw-bold d-inline-block" style="text-indent: 15px;width:400px;">Range("a1").ColumnWidth = 0</code>
+      <code class="fw-bold d-inline-block">Range("a1").ColumnWidth = 8.38</code>
+      <br><br>
+      <h5 class="fw-bold">셀값 참조하여 columwidth 적용방법 및 참고</h5>
+      <h5 class="fw-bold"><code>Range("a2:f2") 6개 셀에 각각 5,5,5,2,2,2 를 기록한 상태에서 h~m열의 columnwidth 변경 예시.</code></h5>
+      <code class="fw-bold">• Range("H2:M2").ColumnWidth = Range("A2:F2")<span style="color:blueviolet"> → 범위로 전달 : 마지막셀값(f2) 값이 일괄 적용됨. ★잘못된 사용</span></code>
+      <code class="fw-bold">• Range("H2:M2").ColumnWidth = Range("A2:F2").value<span style="color:blueviolet"> → 범위.value로 전달 : 각각 적용됨. ★올바른 사용</span></code>
+      <code class="fw-bold">• 공통적으로</code>
+      <code style="text-indent: 23px;">1. 범위로 지정된 곳에 공백이 있으면 "0"으로 지정됨</code>
+      <code style="text-indent: 23px;">2. 범위로 지정된 곳에 공백이나 숫자가 아니면<span style="color:blueviolet">(문자일때) 에러!!</span></code>
+      <br>
+      <h5 class="fw-bold">split 활용하여 columwidth 적용방법 및 참고</h5>
+      <br>
+      <h5 class="fw-bold">배열을 columwidth 적용방법 및 참고</h5>
+
+
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
   <div id="excel_배열_선언"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">Array 사용방법</h5>
@@ -261,7 +295,7 @@
       <code class="fw-bold" style="text-indent: 35px;color:blueviolet">Redim 배열변수(1 To 10, 3 To 8) '변수값이 정해졌을때는, Redim 배열변수(1 To 세로개수, 3 To 가로개수) 형식으로 사용</code>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">Raneg범위를 배열에 담기(1개 셀이라도 2차원 배열이다), <span style="color:blueviolet">★ 변수형을 Variant로 지정해야 된다</span></span></h5>
+      <h5 class="fw-bold">Raneg범위를 배열에 담기(가로 한줄 셀범위라도 2차원 배열이다), <span style="color:blueviolet">★ 변수형을 Variant로 지정해야 된다</span></span></h5>
       <code class="fw-bold">• Dim 배열() As Variant</code>
       <code class="fw-bold" style="text-indent: 15px;">배열 = Range("A1:B4") '배열(1 To 4, 1 To 2)</code>
       <code class="fw-bold"><span style="color:blueviolet">• 첫셀 좌표는 배열(1,1) 이다. 1개셀은 안담긴다. 1Area만 담긴다.(여러범위라도 첫범위만)</span></code>
@@ -271,9 +305,12 @@
       <code class="fw-bold">• 타겟.Resize(UBound(배열, 2), UBound(배열, 1)) = Application.Transpose(배열)</code>
       <code class="fw-bold" style="color:blueviolet">• 마지막 차수가 오른쪽으로 확장되고, transpose 결과범위를 왼쪽에 설정해두고 Application.Transpose(배열)</code>
       <br>
-      <h5 class="fw-bold">Union()은 잘 사용해야 한다.</h5>
-      <code class="fw-bold">• 동일 Sheet의 범위에서만 적용이 된다.</code>
-      <code class="fw-bold">• 기본적으로 복사가 안되고, 같은 범위 and 같은 가로일때, 같은 가로폭 and 세로같은 column일때만? 복사 됨</code>
+      <h5 class="fw-bold">Union(범위, 범위,... ,범위)</h5>
+      <code class="fw-bold">• 동일 Sheet의 범위에서만 적용이 된다. union적용범위.areas(1)=첫번째범위</code>
+      <code class="fw-bold">• 선택까지는 이상이 없지만, 복사와 붙여넣기와 값 옮기기 할 때 제약이 있다.</code>
+      <code class="fw-bold" style="color:blueviolet">• union 적용범위에서, 복사와 붙여넣기와 값 옮기기가 가능한 상태 예시</code>
+      <code class="fw-bold" style="text-indent: 15px;">1. 가로부분에 여러범위인 경우 : 높이 같아야함 and 동일한 row이여야함. ★가로로 붙여짐</code>
+      <code class="fw-bold" style="text-indent: 15px;">2. 세로부분에 여러범위인 경우 : 폭이 같아야함 and 동일한 column이어야함. ★세로로 붙여짐</code>
       <br>
       <h5 class="fw-bold">Split함수 결과를 배열에 담기, <span style="color:blueviolet">★1차원 배열이다.</span></h5>
       <code class="fw-bold">• Dim 문자열 As String</code>
@@ -301,16 +338,44 @@
 
   <div id="excel_배열_RANGE"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
+      <h5 class="fw-bold" style="color:blueviolet">배열은 Range에서 어떻게 표식되는지? : Vba 예시 코드</h5>
+      <code class="fw-bold">Sub 매크로2()</code>
+      <code class="fw-bold" style="text-indent: 15px;">Sheets("sheet2").Select</code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1:F20").ClearContents</code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1") = "배열의 범위를 벗어나는 Range에는 '#N/A'(not available : 해당사항 없음) 표시."</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim 이차원배열(1 To 3, 1 To 5) As String</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim 반복 As Byte</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim 내부반복 As Byte</code>
+      <code class="fw-bold" style="text-indent: 15px;">For 반복 = 1 To 3</code>
+      <code class="fw-bold" style="text-indent: 30px;">    For 내부반복 = 1 To 5</code>
+      <code class="fw-bold" style="text-indent: 45px;">        이차원배열(반복, 내부반복) = "1차수 (" & 반복 & ") , 2차수 (" & 내부반복 & ")"</code>
+      <code class="fw-bold" style="text-indent: 30px;">    Next</code>
+      <code class="fw-bold" style="text-indent: 15px;">Next</code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A2:F6") = 이차원배열</code>
+      <code class="fw-bold" style="text-indent: 15px;">'정보가 추가될때마다 오른쪽으로 확장되는데 => 결과를 아래로 확장되는 정보로 표시하고 싶을때 Transpose사용</code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A8") = "Resize(세로폭, 가로폭), 가로로 확장하는 마지막차수(2차수)의 최대값 UBound(이차원배열, 2), 정보개수가 아닐수 있음을 주의"</code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A9").Resize(UBound(이차원배열, 2), UBound(이차원배열, 1)) = Application.Transpose(이차원배열)</code>
+      <code class="fw-bold" style="text-indent: 15px;">'★마지막차수는 셀에서 가로로 확장된다. 마지막차수만 Redim Preserve할 수 있다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim 일차원배열(1 To 4) As String</code>
+      <code class="fw-bold" style="text-indent: 15px;">For 반복 = 1 To 4</code>
+      <code class="fw-bold" style="text-indent: 30px;">    일차원배열(반복) = "마지막(1차수)의 (" & 반복 & ")"</code>
+      <code class="fw-bold" style="text-indent: 15px;">Next</code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A16:F17") = 일차원배열</code>
+      <code class="fw-bold">End Sub</code>
+      <br>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
+
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">Vba 코딩 결과 참고.</h5>
+      <code class="fw-bold" style="color:blueviolet">• 배열의 범위를 벗어나는 Range에는 '#N/A'(not available : 해당사항 없음) 표시.</code>
+      <img src="portal/images/문서연결_엑셀VBA/excel_배열_RANGE_vba예시코드.png" alt="이미지없음">
+      <br><br>
+      <code class="fw-bold" style="color:blueviolet">• 가로 한줄짜리 배열만!!?? Range가 세로로 여러줄인 경우 반복된다.</code>
     </div>
   </div>
   
