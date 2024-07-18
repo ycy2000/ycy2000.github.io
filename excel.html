@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <!--업무참고 css-->
 <link href="portal/assets/css/default.css" rel="stylesheet">
-<link href="portal/assets/css/black_해역사진.css" rel="stylesheet">
+<link href="portal/assets/css/excel.css" rel="stylesheet">
 <!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +25,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
-        <!-- #캔버스전체 클릭하면 나오는 id="캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
-        <button id="header_canvas_click" type="button" data-bs-toggle="offcanvas" data-bs-target="#캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
+        <!-- #excel캔버스전체 클릭하면 나오는 id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#excel캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#추가캔버스전체" aria-controls="offcanvasBottom">추가캔버스</button>
+
         <button>html특수문자</button> 
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,16 +61,16 @@
 </div>
 
 <!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="캔버스전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="추가캔버스전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
-    <div id="캔버스header">
-      <h6 class="offcanvas-title" id="캔버스바디_초기화">초기화</h6><!--click동작-->
-      <h6 class="offcanvas-title" id="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
-      <h6 class="offcanvas-title" id="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
+    <div class="캔버스header">
+      <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title" class="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title" class="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
       <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
-      <input id="canvas검색input" type = "text"><!-- change 동작-->
-      <h6 id="canvas검색input_clear">clear</h6><!--click동작-->
-      <button id="캔버스바디_카테고리숨김">&lt;&lt;</button> <button id="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
 
       <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
 
@@ -76,13 +78,34 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
-  <div id="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title" class="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title" class="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
   </div>
 </div>
 
 <!-- 코딩등메모장text파일, canvas_div-->
-<div id="캔버스관련자료none" class="d-none">
-  <div id="canvas카테고리모음"><!--캔버스바디에 들어간다-->
+<div id="excel캔버스전체_관련자료none" class="d-none">
+  <div id="excelcanvas카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="canvas카테고리" id="excel">
       <div>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
@@ -431,7 +454,7 @@
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
-<script src="portal/assets/js/캔버스.js"></script>
+<script src="portal/assets/js/excel.js"></script>
 </body>
 
 </html>
