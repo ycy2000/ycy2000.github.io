@@ -72,6 +72,7 @@ function excel캔버스클릭시(e) {
       }
     }
     if (e.target.id == 'excel캔버스바디_모든제목보기') {
+      console.log('excel캔버스바디_모든제목보기')
       //34개까지는 17개가 초과하면 왼쪽17개 나머지 오른쪽
       //34개이상일때 나누기2 왼쪽오른쪽
       셑팅_캔버스바디.innerHTML = '';
