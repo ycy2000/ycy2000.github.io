@@ -5,7 +5,7 @@ code {display: block; color:black;margin-bottom:5px;}
 #전체대체 {margin-left:115px; white-space: nowrap;}
 #전체대체 > div > div {vertical-align: top;}
 .offcanvas-header h6,.offcanvas-header input,.offcanvas-header button {display:inline-block;}
-.canvas카테고리 > div {display:inline-block; width:617px;vertical-align: top;}
+.개별카테고리 > div {display:inline-block; width:617px;vertical-align: top;}
 .현재카테고리 {background-color: chocolate;}
 
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}

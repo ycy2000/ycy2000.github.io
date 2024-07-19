@@ -71,6 +71,7 @@
       <input class="canvas검색input" type = "text"><!-- change 동작-->
       <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
       <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
 
       <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
 
@@ -85,13 +86,14 @@
 <div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
-      <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
-      <h6 class="offcanvas-title" class="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
-      <h6 class="offcanvas-title" class="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
-      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
       <input class="canvas검색input" type = "text"><!-- change 동작-->
       <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
       <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
 
       <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
 
@@ -103,10 +105,25 @@
   </div>
 </div>
 
+<div id="추가캔버스전체_관련자료none" class="d-none">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="추가캔버스전체_추가">
+      <div>
+        <h6 class="canvas_div" title='copy_cut_paste'>추가캔버스테스트</h6>
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="추가캔버스전체_참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+
+    </div>
+  </div>
+
+</div>
+
 <!-- 코딩등메모장text파일, canvas_div-->
 <div id="excel캔버스전체_관련자료none" class="d-none">
-  <div id="excelcanvas카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="canvas카테고리" id="excel">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="excel캔버스전체_excel">
       <div>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
       </div>
@@ -116,11 +133,11 @@
       </div>
       <div>
         <h6 class="canvas_div" title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
-        <h6 class="canvas_div" title='excel_배열_RANGE'>배열_Range에서 > </h6>
+        <h6 class="canvas_div" title='excel_배열_RANGE'>배열_Range에서 > 배열을 Range에 적용시 어떻게 표시되는지</h6>
       </div>
     </div>
 
-    <div class="canvas카테고리" id="참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="excel캔버스전체_참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6>diddid참고_특수문자.txt</h6>
       </div>
@@ -272,14 +289,9 @@
         <code class="fw-bold" style="text-indent: 23px;">Range("H2:M2").ColumnWidth = range배열</code>
         <code class="fw-bold">End Sub</code>
       </div>
-      <div class="d-inline-block" style="margin-left:55px;">
-        <code class="fw-bold">Sub 매크로2()</code>
-        <code class="fw-bold" style="text-indent: 23px;">Dim range배열() As Variant</code>
-        <code class="fw-bold" style="text-indent: 23px;">range배열 = Range("a2:f2")</code>
-        <code class="fw-bold" style="text-indent: 23px;">'Range("H2:M2") = Range("A2:F2") '값을 뿌릴때</code>
-        <code class="fw-bold" style="text-indent: 23px;">'Range("H2:M2") = range배열 '값을 뿌릴때</code>
-        <code class="fw-bold" style="text-indent: 23px;">Range("H2:M2").ColumnWidth = range배열</code>
-        <code class="fw-bold">End Sub</code>
+      <div class="d-inline-block" style="margin-left:55px;vertical-align: top;">
+        <code class="fw-bold" style="text-indent: 23px;">Dim range배열 As Variant</code>
+        <code class="fw-bold" style="text-indent: 23px;">range배열 = Array(2, 12, 2, 12, 2, 12)</code>
       </div>
 
       <br>
@@ -444,6 +456,11 @@
       <h5>※ ★ ● • ▢ < ▸ </h5>
 
     </div>
+  </div>
+</div>
+
+<div id="추가캔버스전체_관련자료none" class="d-none">
+
 </div>
 
 
