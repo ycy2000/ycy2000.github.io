@@ -290,12 +290,15 @@
         <code class="fw-bold">End Sub</code>
       </div>
       <div class="d-inline-block" style="margin-left:55px;vertical-align: top;">
-        <code class="fw-bold" style="text-indent: 23px;">Dim range배열 As Variant</code>
-        <code class="fw-bold" style="text-indent: 23px;">range배열 = Array(2, 12, 2, 12, 2, 12)</code>
+        <code class="fw-bold" style="text-indent: 23px;">Dim 배열 As Variant</code>
+        <code class="fw-bold" style="text-indent: 23px;">배열 = Array(2, 12, 2, 12, 2, 12)</code>
       </div>
 
       <br>
-      <h5 class="fw-bold">split 활용하여 columwidth 적용방법 및 참고</h5>
+      <h5 class="fw-bold">join, split 활용하여 columwidth 적용방법 및 참고 (1차원배열과 Array 이해)</h5>
+      <code class="fw-bold">• range는 2차원배열이고, 범위.value도 1차원배열이 아니다. </code>
+      <code class="fw-bold">• 1차원배열은 join과 split을 사용할 수 있다.  </code>
+      <code class="fw-bold">• 1차원배열은 Array(값1, 값2, ..., 값10) 형태로 표현할 수 있다.</code>
 
 
 
@@ -312,6 +315,9 @@
 
   <div id="excel_배열_선언"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">Dim int1, int2, int3, int4 As Integer 라고 선언시 </h5>
+      <code class="fw-bold">• int4만 Integer이고 나머진 variant형으로 선언이 되므로 주의하여야 한다.</code>
+      <br>
       <h5 class="fw-bold">Array 사용방법</h5>
       <code class="fw-bold">• Dim 방향 As Variant '변수에 배열을 담을때는 변수형을 Varant로 한다?</code>
       <code class="fw-bold" style="text-indent: 15px;">방향=Array("부산", "대구", "광주", "목포") '--방향(1)=부산, ..., 방향(4)="목포"</code>
@@ -348,7 +354,8 @@
       <code class="fw-bold">• 순서 : 빈배열 선언, Redim Preserve로 크기변경, <span style="color:blueviolet">새로운 크기 내의 저장된 값 사라지지 않음</span></span></code>
       <code class="fw-bold" style="text-indent: 21px;color:blueviolet">- Dim 배열변수() As String '★ 1차수를 수정하면 에러남(1 To 10), 2차수는 증가 감소 가능</code>
       <code class="fw-bold" style="text-indent: 35px;color:blueviolet">Redim 배열변수(1 To 10, 3 To 8) '변수값이 정해졌을때는, Redim 배열변수(1 To 세로개수, 3 To 가로개수) 형식으로 사용</code>
-    </div>
+    </div>    
+    
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <h5 class="fw-bold">Raneg범위를 배열에 담기(가로 한줄 셀범위라도 2차원 배열이다), <span style="color:blueviolet">★ 변수형을 Variant로 지정해야 된다</span></span></h5>
       <code class="fw-bold">• Dim 배열() As Variant</code>

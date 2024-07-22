@@ -47,6 +47,7 @@ function 선택한캔버스_카테고리작성및_초기작업() {
   if (관련자료none_개별카테고리class들.length>0) {
     document.querySelector('#' + 선택한캔버스id + ' .js카테고리생성').innerHTML=카테고리버튼생성;
   }
+  document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML='';
 }
 
 function 선택한캔버스클릭시(e) {
