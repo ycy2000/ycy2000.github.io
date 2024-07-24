@@ -1,4 +1,5 @@
 var 선택한캔버스id='없음';
+var 이전캔버스id='없음';
 var 리스너_header = document.querySelector('header');
 var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스클릭시(e)
 var 리스너_excel캔버스전체 = document.querySelector('#excel캔버스전체');
@@ -47,7 +48,9 @@ function 선택한캔버스_카테고리작성및_초기작업() {
   if (관련자료none_개별카테고리class들.length>0) {
     document.querySelector('#' + 선택한캔버스id + ' .js카테고리생성').innerHTML=카테고리버튼생성;
   }
-  document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML='';
+  //이전 캔버스 선택상태를 그대로 유지하기 위해서
+  if (이전캔버스id!=선택한캔버스id) {document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML='';}
+  이전캔버스id=선택한캔버스id;
 }
 
 function 선택한캔버스클릭시(e) {
@@ -79,6 +82,11 @@ function 선택한캔버스클릭시(e) {
       console.log('캔버스바디의 목록을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅')
       선택한캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
       결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
+    }
+    //
+    if (e.target.classList.contains('연결없음')) {
+      console.log('연결없음 : 연결된 div 등이 없음')
+      alert('연결된 문서 없음');
     }
     //
     if (e.target.innerHTML=='clear') {

@@ -125,11 +125,14 @@
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="excel캔버스전체_excel">
       <div>
+        <h6 class="canvas_div" title='vba변수선언'>vba 변수선언</h6>
+        <h6 class="canvas_div" title='도형관련1'>도형 > 도형의 종류 확인, 만들기, 내용변경, 도형에 설정된 매크로이름</h6>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
+        <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf)</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='excel_find'>find찾기, 바꾸기</h6>
-        <h6 class="canvas_div" title='excel_column'>column > columnwidth, 열숨기기/보기, columnwidth 적용방법</h6>
+        <h6 class="canvas_div" title='excel_column'>column > columnwidth, 열숨기기/보기, join, split, array</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
@@ -139,18 +142,56 @@
 
     <div class="개별카테고리" id="excel캔버스전체_참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6>diddid참고_특수문자.txt</h6>
+        <h6 class="연결없음">diddid참고_특수문자.txt</h6>
       </div>
       <div>
-        <h6>메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
+        <h6 class="연결없음">메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
       </div>
       <div>
-        <h6>줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        <h6 class="연결없음">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
       </div>
     </div>
   </div>
 
   <!-- DIV들 모_음 : 하나가 올라감 -->
+  <div id="vba변수선언"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">Visual Basic에서는 아래 형식으로 모두 Date타입 선언이 된다.</h5>
+      <code class="fw-bold">• Dim lastTime, nextTime, allTimes() As Date</code>
+      <br>
+      <h5 class="fw-bold">VBA(Visual Basic for Applications)에서는 변수명마다 type을 지정해주어야 한다.</h5>
+      <code class="fw-bold">• Dim lastTime, nextTime, allTimes() As Date</code>
+      <code class="fw-bold" style="text-indent: 15px;">변수형을 따로 지정하지 않으면 lastTime, nextTime은 Variant형으로 지정된다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">allTimes() As Date만 Date 타입으로 지정된다.</code>
+      <code class="fw-bold" style="color:blueviolet">• vba에서 모두 Date 타입으로 변수를 선언하려면 아래와 같이</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim lastTime As Date, nextTime As Date, allTimes() As Date</code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="도형관련1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• 시트 전체 도형 지우기 : ActiveSheet.DrawingObjects.Delete</code>
+      <code class="fw-bold">• Name으로 도형선택 : ActiveSheet.Shapes.Range(Array("TextBox 10")).Select</code>
+      <code class="fw-bold">• 순번으로 도형선택 : ActiveSheet.Shapes(1).Select '1부터 순번시작됨</code>
+      <h5 class="fw-bold"><span style="color:blueviolet">도형의 종류를 번호로 알아낼때 select후 selection.Type 형태로는 에러??</span></h5>
+      <h5 class="fw-bold">도형의 종류를 번호로 알아내기</h5>
+      <code class="fw-bold">• Dim 도형 As Shape</code>
+      <code class="fw-bold" style="text-indent: 15px;">For Each 도형 In ActiveSheet.Shapes</code>
+      <code class="fw-bold" style="text-indent: 25px;">If 도형.Type = 17 And LEFT(도형.OnAction, 4) = LEFT(백업파일명, 4) Then 도형.Delete</code>
+      <code class="fw-bold" style="text-indent: 25px;"><span style="color:blueviolet">'도형.OnAction은 도형에 걸린 매크로 이름(문자열)</span></code>
+      <code class="fw-bold" style="text-indent: 25px;"><span style="color:blueviolet">'코드설명 : 도형.Type=17 : 도형의 종류가 글상자이고</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Next</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• 주요도형 : 13(Picture), 17(Text box), 3(Chart), 1(AutoShape), 검색 : VBA 도형 Type 확인 </code>
+      <br>
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
   <div id="copy_cut_paste"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <code class="fw-bold">카피 : ActiveSheet.Paste '모두(셀선택상태로, PasteSpecial의 초기값, 모두_연산없음_빈셀도복사_행열바꿈없음) </code>
@@ -194,6 +235,29 @@
       <img src="portal/images/문서연결_엑셀VBA/excel_copy_2.png" alt="이미지없음">
     </div>
   </div>
+
+  <div id="vba주요문자열"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• 큰따옴표를 문자열로 전달할때 : Chr(34) </code>
+      <code class="fw-bold" style="text-indent: 15px;">- vba로 전달할 문자열 예시 : =COUNTIFS(완료!$C:$C,$U5,완료!$I:$I,">=" & DATE($Q$4,W$4,1))</code>
+      <code class="fw-bold" style="text-indent: 15px;">- Chr()함수 사용한 표현 <span style="color:blueviolet">: "=COUNTIFS(완료!$C:$C,$U5,완료!$I:$I," & Chr(34) & ">=" & Chr(34) & "DATE($Q$4,W$4,1))"</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- 전체문자열을 vba 코딩시 큰따옴표로 감싸기때문에 전달할문자열의 ">=" 부분의 큰따옴표를 Chr()함수로 전달한다</code>
+      <code class="fw-bold" style="text-indent: 15px;">- ">=" 부분에서 큰따옴표를 Chr()함수로 표현하면 <span style="color:blueviolet">: Chr(34) & ">=" & Chr(34)</span></code>
+      <br>
+      <code class="fw-bold">• 엔터를 문자열로 전달할때 : Chr(10) </code>
+      <code class="fw-bold" style="text-indent: 15px;"><span style="color:blueviolet">Range("A5") = "수" & Chr(10) & "산" & Chr(10) & "물"</span></code>
+      <br>
+      <code class="fw-bold">• Msgbox "문자열" 형식으로 전달할때 줄바꿈 할 때 : vblf </code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
   <div id="excel_find"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">find로 찾지못한 변수는 Nothing 상태이다.</h5>
@@ -271,13 +335,14 @@
       <code class="fw-bold d-inline-block" style="text-indent: 15px;width:400px;">Range("a1").ColumnWidth = 0</code>
       <code class="fw-bold d-inline-block">Range("a1").ColumnWidth = 8.38</code>
       <br><br>
-      <h5 class="fw-bold">셀값 참조하여 columwidth 적용방법 및 참고</h5>
+      <h5 class="fw-bold">셀값 참조하여 columwidth 적용방법 및 참고 <span style="color:blueviolet">(+ Split 적용법)</span></h5>
       <h5 class="fw-bold"><code>Range("a2:f2") 6개 셀에 각각 5,5,5,2,2,2 를 기록한 상태에서 h~m열의 columnwidth 변경 예시.</code></h5>
       <code class="fw-bold">• Range("H2:M2").ColumnWidth = Range("A2:F2")<span style="color:blueviolet"> → 범위로 전달 : 마지막셀값(f2) 값이 일괄 적용됨. ★잘못된 사용</span></code>
       <code class="fw-bold">• Range("H2:M2").ColumnWidth = Range("A2:F2").value<span style="color:blueviolet"> → 범위.value로 전달 : 각각 적용됨. ★올바른 사용</span></code>
       <code class="fw-bold">• 공통적으로</code>
       <code style="text-indent: 23px;">1. 범위로 지정된 곳에 공백이 있으면 "0"으로 지정됨</code>
       <code style="text-indent: 23px;">2. 범위로 지정된 곳에 공백이나 숫자가 아니면<span style="color:blueviolet">(문자일때) 에러!!</span></code>
+      <code class="fw-bold">• Range("H2:M2").ColumnWidth = <span style="color:blueviolet">Split("5,5,5,2,2,2", ",")</span></code>
       <br>
       <h5 class="fw-bold">배열을 columwidth 적용방법 및 참고</h5>
       <div class="d-inline-block">
@@ -290,24 +355,36 @@
         <code class="fw-bold">End Sub</code>
       </div>
       <div class="d-inline-block" style="margin-left:55px;vertical-align: top;">
-        <code class="fw-bold" style="text-indent: 23px;">Dim 배열 As Variant</code>
+        <code class="fw-bold" style="text-indent: 23px;">Dim 배열 As Variant <span style="color:blueviolet">'Variant!!</span></code>
         <code class="fw-bold" style="text-indent: 23px;">배열 = Array(2, 12, 2, 12, 2, 12)</code>
+        <code class="fw-bold" style="text-indent: 23px;">MsgBox Join(배열, ":") '=> 2:12:2:12:2:12</code>
+        <code class="fw-bold" style="text-indent: 23px;">MsgBox Join(배열) '=> 2 12 2 12 2 12 '공백으로 설정됨</code>
+        <code class="fw-bold" style="text-indent: 23px;">MsgBox Split(Join(배열, ":"), ":")(1) '=> 2</code>
+        <code class="fw-bold" style="text-indent: 23px;"><span style="color:blueviolet">'고정된 배열일때만 사용 </span></code>
+        <code class="fw-bold" style="text-indent: 23px;"></code>
       </div>
-
-      <br>
-      <h5 class="fw-bold">join, split 활용하여 columwidth 적용방법 및 참고 (1차원배열과 Array 이해)</h5>
+      <br><br>
+      <h5 class="fw-bold">join, split, array (1차원배열))</h5>
       <code class="fw-bold">• range는 2차원배열이고, 범위.value도 1차원배열이 아니다. </code>
       <code class="fw-bold">• 1차원배열은 join과 split을 사용할 수 있다.  </code>
-      <code class="fw-bold">• 1차원배열은 Array(값1, 값2, ..., 값10) 형태로 표현할 수 있다.</code>
-
-
-
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
+      <code class="fw-bold">• 1차원배열은 Array(값1, 값2, ..., 값10) 형태로 표현할 수 있다. '배열번호 0 부터</code>
+      <div class="d-inline-block">
+        <code class="fw-bold">Sub 매크로2()</code>
+        <code class="fw-bold" style="text-indent: 23px;">Dim 배열() As String</code>
+        <code class="fw-bold" style="text-indent: 23px;">ReDim 배열(2)</code>
+        <code class="fw-bold" style="text-indent: 23px;">배열(0) = Array(1, 2, 3)(0) '배열(0)=1</code>
+        <code class="fw-bold" style="text-indent: 23px;">배열(1) = Array(1, 2, 3)(1) '배열(0)=2</code>
+        <code class="fw-bold" style="text-indent: 23px;">배열(2) = Array(1, 2, 3)(2) '배열(0)=3</code>
+        <code class="fw-bold" style="text-indent: 23px;">MsgBox 배열(1) '=> 2</code>
+        <code class="fw-bold">End Sub</code>
+      </div>
+      <div class="d-inline-block" style="margin-left:55px;vertical-align: top;">
+        <code class="fw-bold">Sub 매크로2()</code>
+        <code class="fw-bold" style="text-indent: 23px;">Dim 배열 As Variant <span style="color:blueviolet">'Variant!!</span></code>
+        <code class="fw-bold" style="text-indent: 23px;">배열 = Array(1, 2, 3, 4)</code>
+        <code class="fw-bold" style="text-indent: 23px;">MsgBox 배열(1) '=> 2</code>
+        <code class="fw-bold">End Sub</code>
+      </div>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
