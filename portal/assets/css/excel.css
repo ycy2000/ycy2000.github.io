@@ -11,5 +11,11 @@ code {display: block; color:black;margin-bottom:5px;}
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 #복사 > div {margin-left:5px;}
 
+.임시_내부3정보 > :nth-child(1) {display:inline-block; width:220px;background-color: aqua;border-bottom: 1px solid black;}  /* code*/
+.임시_내부3정보 > :nth-child(2) {display:inline-block; width:40px;text-align:center;border-bottom: 1px solid black;}
+.임시_내부3정보 > :nth-child(3) {display:inline-block; width:180px;background-color:antiquewhite;border-bottom: 1px solid black;margin-right:10px;}
+.임시_내부3정보 > :nth-child(4) {display:inline-block; width:220px;background-color: aqua;border-bottom: 1px solid black;}  /* code*/
+.임시_내부3정보 > :nth-child(5) {display:inline-block; width:40px;text-align:center;border-bottom: 1px solid black;}
+.임시_내부3정보 > :nth-child(6) {display:inline-block; width:180px;background-color:antiquewhite;border-bottom: 1px solid black;}
 
 

@@ -126,7 +126,10 @@
     <div class="개별카테고리" id="excel캔버스전체_excel">
       <div>
         <h6 class="canvas_div" title='vba변수선언'>vba 변수선언</h6>
-        <h6 class="canvas_div" title='도형관련1'>도형 > 도형의 종류 확인, 만들기, 내용변경, 도형에 설정된 매크로이름</h6>
+        <h6 class="canvas_div" title='도형_종류와삭제'>도형 > 종류, 삭제</h6>
+        <h6 class="canvas_div" title='도형_종류확인_내용변경'>도형 > 도형 종류 확인 Type, 내용변경, 도형에 OnAction(매크로이름) 지정</h6>
+        <h6 class="canvas_div" title='도형_선택_위치확인'>도형 > 도형의 선택, 위치확인</h6>
+        <h6 class="canvas_div" title='도형_excel삽입메뉴'>도형 > excel삽입메뉴</h6>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
         <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf)</h6>
       </div>
@@ -156,6 +159,9 @@
   <!-- DIV들 모_음 : 하나가 올라감 -->
   <div id="vba변수선언"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">Dim int1, int2, int3, int4 As Integer 라고 선언시 </h5>
+      <code class="fw-bold">• int4만 Integer이고 나머진 variant형으로 선언이 되므로 주의하여야 한다.</code>
+      <br>
       <h5 class="fw-bold">Visual Basic에서는 아래 형식으로 모두 Date타입 선언이 된다.</h5>
       <code class="fw-bold">• Dim lastTime, nextTime, allTimes() As Date</code>
       <br>
@@ -170,11 +176,35 @@
     </div>
   </div>
 
-  <div id="도형관련1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="도형_종류와삭제"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• 시트 전체 도형 지우기 : ActiveSheet.DrawingObjects.Delete</code>
-      <code class="fw-bold">• Name으로 도형선택 : ActiveSheet.Shapes.Range(Array("TextBox 10")).Select</code>
-      <code class="fw-bold">• 순번으로 도형선택 : ActiveSheet.Shapes(1).Select '1부터 순번시작됨</code>
+      <div class="임시_내부3정보"><div>'MsoShapeType</div><div>번호</div><div>이름</div><div>'MsoShapeType</div><div>번호</div><div>이름</div></div>
+      <div class="임시_내부3정보"><div>'msoAutoShape</div><div>1</div><div>AutoShape</div><div>'msoCallout</div><div>2</div><div>Callout</div></div>
+      <div class="임시_내부3정보"><div>'msoChart</div><div>3</div><div>Chart</div><div>'msoComment</div><div>4</div><div>Comment</div></div>
+      <div class="임시_내부3정보"><div>'msoDiagram</div><div>21</div><div>Diagram</div><div>'msoEmbeddedOLEObject</div><div>7</div><div>Embedded OLE object</div></div>
+      <div class="임시_내부3정보"><div>'msoFormControl</div><div>8</div><div>Form control</div><div>'msoFreeform</div><div>5</div><div>Freeform</div></div>
+      <div class="임시_내부3정보"><div>'msoGroup</div><div>6</div><div>Group</div><div>'msoIgxGraphic </div><div>24</div><div>SmartArt graphic</div></div>
+      <div class="임시_내부3정보"><div>'msoInk</div><div>22</div><div>Ink</div><div>'msoInkComment</div><div>23</div><div>Ink comment</div></div>
+      <div class="임시_내부3정보"><div>'msoLine </div><div>9</div><div>Line</div><div>'msoLinkedOLEObject </div><div>10</div><div>Linked OLE object</div></div>
+      <div class="임시_내부3정보"><div>'msoLinkedPicture </div><div>11</div><div>Linked picture</div><div>'msoMedia  </div><div>16</div><div>Media</div></div>
+      <div class="임시_내부3정보"><div>'msoOLEControlObject<br><br> </div><div>12<br><br></div><div>OLE control object (ActiveX controls)</div><div>'msoPicture  </div><div>13</div><div>Picture</div></div>
+      <div class="임시_내부3정보"><div>'msoPlaceholder</div><div>14</div><div>Placeholder</div><div>'msoScriptAnchor </div><div>18</div><div>Script anchor</div></div>
+      <div class="임시_내부3정보"><div>'msoShapeTypeMixed -</div><div>2</div><div>Mixed shape type</div><div>'msoTable </div><div>19</div><div>Table</div></div>
+      <div class="임시_내부3정보"><div>'msoTextBox </div><div>17</div><div>Text box</div><div>'msoTextEffect </div><div>15</div><div>Text effect</div></div>
+      <div class="임시_내부3정보"><div>'msoCanvas</div><div>20</div><div>Canvas</div></div>
+    
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">도형 삭제 (도형의 종류 참고, 도형 만들기 참고)</h5>
+      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.DrawingObjects.Delete <span style="color:blueviolet"> (ActiveSheet.Shapes.Delete 안됨)</span></code>
+      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.Shapes.SelectAll '모든 Shape개체 선택, Selection.Delete</code>
+      <code class="fw-bold">• 시트 전체 사진만 삭제 : ActiveSheet.Pictures.Delete </code>
+      <br>
+    </div>
+  </div>
+
+  <div id="도형_종류확인_내용변경"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"><span style="color:blueviolet">도형의 종류를 번호로 알아낼때 select후 selection.Type 형태로는 에러??</span></h5>
       <h5 class="fw-bold">도형의 종류를 번호로 알아내기</h5>
       <code class="fw-bold">• Dim 도형 As Shape</code>
@@ -185,8 +215,74 @@
       <code class="fw-bold" style="text-indent: 15px;">Next</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold">• 주요도형 : 13(Picture), 17(Text box), 3(Chart), 1(AutoShape), 검색 : VBA 도형 Type 확인 </code>
-      <br>
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
 
+  <div id="도형_선택_위치확인"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">도형 선택 (도형삭제에서 더 많은 정보 확인)</h5>
+      <code class="fw-bold">• ActiveSheet.Shapes.SelectAll <span style="color:blueviolet">(select 안됨. SelectAll로 써야함)</span></code>
+      <code class="fw-bold" style="color:blueviolet">• 인덱스 번호로 선택 : ActiveSheet.Shapes(1).Select '첫번째 도형 선택</code>
+      <code class="fw-bold" style="color:blueviolet">• Shapes.range(Array()) : 인덱스(배열)번호 사용 선택</code>
+      <code class="fw-bold" style="text-indent: 15px;">- ActiveSheet.Shapes.Range(Array(1, 3)).Select '첫번째와 세번째 도형 선택</code>
+      <code class="fw-bold" style="color:blueviolet">• Shapes.range(Array()) : 도형이름 사용 선택</code>
+      <code class="fw-bold" style="text-indent: 15px;">- ActiveSheet.Shapes.Range(Array("그림 8", "그림 10")).Select</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 코딩 응용</code>
+      <code class="fw-bold" style="text-indent: 25px;">Dim 배열() As String</code>
+      <code class="fw-bold" style="text-indent: 25px;">ReDim 배열(1 To 2)</code>
+      <code class="fw-bold" style="text-indent: 25px;">배열(1) = "그림 8"</code>
+      <code class="fw-bold" style="text-indent: 25px;">배열(2) = "그림 10"</code>
+      <code class="fw-bold" style="text-indent: 25px;color:blueviolet">ActiveSheet.Shapes.Range(배열).Select</code>
+      <code class="fw-bold">• 선택한범위 안의 도형 선택. select는 이전 선택 해제됨. 다중선택은 select (False)</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- 범위안에 도형이 완전히 들어가 있을때 선택됨.</code>
+      <code class="fw-bold" style="text-indent: 15px;">Sub 도형선택()</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim shp As Shape</code>
+      <code class="fw-bold" style="text-indent: 15px;">Dim cellRange As Range</code>
+      <code class="fw-bold" style="text-indent: 15px;">Set cellRange = Selection ' 현재 선택된 셀 범위</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">For Each shp In ActiveSheet.Shapes ' 모든 도형을 검사</code>
+      <code class="fw-bold" style="text-indent: 25px;">' 도형이 선택된 셀 범위 안에 있는지 확인</code>
+      <code class="fw-bold" style="text-indent: 25px;">If Not Intersect(shp.TopLeftCell, cellRange) Is Nothing _</code>
+      <code class="fw-bold" style="text-indent: 35px;">And Not Intersect(shp.BottomRightCell, cellRange) Is Nothing Then</code>
+      <code class="fw-bold" style="text-indent: 35px;">shp.Select (False) ' 도형 선택 false가 다중 선택을 의미</code>
+      <code class="fw-bold" style="text-indent: 25px;">End If</code>
+      <code class="fw-bold" style="text-indent: 15px;">Next shp</code>
+      <code class="fw-bold" style="text-indent: 15px;">End Sub</code>
+      <code class="fw-bold" style="text-indent: 15px;">출처: https://han8849.tistory.com/124 [90년대생의 직장생활:티스토리]</code>
+      <br>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">도형 위치 확인</h5>
+      <code class="fw-bold" style="color:blueviolet">• 선택한 범위안에 도형위치를 '셀'로 확인 (셀범위 선택상태에서 사용)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- TopLeftCell : 그림이 차지하는 범위중 왼쪽 최상단 셀.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- BottomRightCell : 그림이 차지하는 범위중 오른쪽 최하단 셀.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 사용 예 : Range(Pic.TopLeftCell.Address, Pic.BottomRightCell.Address).Select</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 사용 예 : Range(Pic.TopLeftCell, Pic.BottomRightCell).Select</code>
+      <br>
+      <code class="fw-bold" style="color:blueviolet">• 도형 자체의 위치를 '좌표값'으로 확인</code>
+      <code class="fw-bold" style="text-indent: 15px;">- TopLeft, BottomRight, Top, Right, Bottom, Left</code>
+      <br>
+    </div>
+  </div>
+
+  <div id="도형_excel삽입메뉴"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
@@ -392,9 +488,6 @@
 
   <div id="excel_배열_선언"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">Dim int1, int2, int3, int4 As Integer 라고 선언시 </h5>
-      <code class="fw-bold">• int4만 Integer이고 나머진 variant형으로 선언이 되므로 주의하여야 한다.</code>
-      <br>
       <h5 class="fw-bold">Array 사용방법</h5>
       <code class="fw-bold">• Dim 방향 As Variant '변수에 배열을 담을때는 변수형을 Varant로 한다?</code>
       <code class="fw-bold" style="text-indent: 15px;">방향=Array("부산", "대구", "광주", "목포") '--방향(1)=부산, ..., 방향(4)="목포"</code>
