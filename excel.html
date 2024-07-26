@@ -126,8 +126,9 @@
     <div class="개별카테고리" id="excel캔버스전체_excel">
       <div>
         <h6 class="canvas_div" title='vba변수선언'>vba 변수선언</h6>
-        <h6 class="canvas_div" title='도형_종류와삭제'>도형 > 종류, 삭제</h6>
-        <h6 class="canvas_div" title='도형_종류확인_내용변경'>도형 > 도형 종류 확인 Type, 내용변경, 도형에 OnAction(매크로이름) 지정</h6>
+        <h6 class="canvas_div" title='도형_종류와만들기'>도형 > ★참고사항, 종류, 만들기</h6>
+        <h6 class="canvas_div" title='도형_내용분석'>도형 > 내용확인, 분석</h6>
+        <h6 class="canvas_div" title='도형_종류확인_삭제등'>도형 > 도형 종류 확인 Type, 삭제, 내용변경, 도형에 OnAction(매크로이름) 지정</h6>
         <h6 class="canvas_div" title='도형_선택_위치확인'>도형 > 도형의 선택, 위치확인</h6>
         <h6 class="canvas_div" title='도형_excel삽입메뉴'>도형 > excel삽입메뉴</h6>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
@@ -176,8 +177,17 @@
     </div>
   </div>
 
-  <div id="도형_종류와삭제"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="도형_종류와만들기"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">참고사항</h5>
+      <code class="fw-bold">• Shapes 객체는 ActiveSheet.Shapes 형태로 시트단위?, 범위.Shapes 형태로 사용이 아님</code>
+      <code class="fw-bold">• 도형을 select하였을때 selection.Type이 안되는 경우? => 도형변수.Type 형태로 사용해야?</code>
+      <code class="fw-bold">• Shapes(순번) : 1부터 시작되는 순번의 도형, Shapes.Range(배열) : 배열의 값이 숫자면 순번이고 문자열이면 Name이다</code>
+      <code class="fw-bold" style="text-indent: 15px;">- ActiveSheet.Shapes.Range(Array(1, 3)).Select</code>
+      <code class="fw-bold" style="text-indent: 15px;">- ActiveSheet.Shapes.Range(Array("그림 8", "그림 10")).Select</code>
+      <code class="fw-bold" style="text-indent: 15px;">- Dim 배열(1 to 2) As String / 배열(1)="그림 8" / 배열(2)="그림 10" / ActiveSheet.Shapes.Range(Array(배열)).Select</code>
+      <br>
+      <h5 class="fw-bold">도형의 종류 (ActiveSheet.Shapes.AddShape는 MsoAutoShapeType의 도형을 만드는 코드다)</h5>
       <div class="임시_내부3정보"><div>'MsoShapeType</div><div>번호</div><div>이름</div><div>'MsoShapeType</div><div>번호</div><div>이름</div></div>
       <div class="임시_내부3정보"><div>'msoAutoShape</div><div>1</div><div>AutoShape</div><div>'msoCallout</div><div>2</div><div>Callout</div></div>
       <div class="임시_내부3정보"><div>'msoChart</div><div>3</div><div>Chart</div><div>'msoComment</div><div>4</div><div>Comment</div></div>
@@ -192,20 +202,54 @@
       <div class="임시_내부3정보"><div>'msoShapeTypeMixed -</div><div>2</div><div>Mixed shape type</div><div>'msoTable </div><div>19</div><div>Table</div></div>
       <div class="임시_내부3정보"><div>'msoTextBox </div><div>17</div><div>Text box</div><div>'msoTextEffect </div><div>15</div><div>Text effect</div></div>
       <div class="임시_내부3정보"><div>'msoCanvas</div><div>20</div><div>Canvas</div></div>
-    
+      <br>
+      <h5 class="fw-bold">msoAutoShape 타입 도형(Type번호 1, 이름 AutoShape) 만들기 코드</h5>
+      <code class="fw-bold">• ActiveSheet.Shapes.AddShape(MsoAutoShapeType[타입이름문자열],Left, Top, Width, Height).Select</code>
+      <code class="fw-bold" style="color:blueviolet">• .Select 가 없으면 에러가 나는 이유?? 관련정보</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 괄호가 있을 때는 함수의 기능을 하여 반환하는 값이 발생하고, (함수가 되므로 반환하는 값을 저장할 변수가 지정되어야 함)</code>
+      <code class="fw-bold" style="text-indent: 30px;">괄호가 없을 때는 단순 명령으로 끝난다. </code>
+      <code class="fw-bold" style="color:blueviolet">• .Select 없이 변수를 사용하여 생성만하는 코드</code>
+      <code class="fw-bold" style="text-indent: 30px;">Dim 도형 As Shape</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 도형 = ActiveSheet.Shapes.AddShape(msoShapeRectangle, 10, 10, 10, 10)</code>
+      <code class="fw-bold" style="color:blueviolet">• ActiveSheet.Shapes.AddShape(msoShapeRectangle, 34.5, 103.5, 72, 26.25).Select</code>
+      <code class="fw-bold" style="color:blueviolet">• Left, Top, Width, Height 지정해야하고 '.Select' </code>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">도형 삭제 (도형의 종류 참고, 도형 만들기 참고)</h5>
-      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.DrawingObjects.Delete <span style="color:blueviolet"> (ActiveSheet.Shapes.Delete 안됨)</span></code>
-      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.Shapes.SelectAll '모든 Shape개체 선택, Selection.Delete</code>
-      <code class="fw-bold">• 시트 전체 사진만 삭제 : ActiveSheet.Pictures.Delete </code>
+      <code class="fw-bold" style="color:blueviolet">• MsoAutoShapeType 부분에 숫자를 넣으면 생성되는, 해당인덱스의 도형(Type 번호가 아님), 예)1~137까지 된다.</code>
+      <img src="portal/images/문서연결_엑셀VBA/도형_1에서137.png" alt="이미지없음">
+      <br><br>
+      <h5 class="fw-bold">msoTextNpx 타입 도형(Type번호 17, 이름 Text Box) 만들기 코드</h5>
+      <code class="fw-bold">• ActiveSheet.Shapes.AddTextbox(msoTextOrientationHorizontal, 266.25, 57.75, 80.25, 29.25).Select</code>
+      <code class="fw-bold" style="color:blueviolet">• msoTextOrientationHorizontal 부분에 숫자를 넣으면 1~6까지 된다. 모양이 같아보임</code>
       <br>
+      <h5 class="fw-bold">msoChart 타입 도형(Type번호 3, 이름 Chart) 만들기 코드</h5>
+      <code class="fw-bold">• ActiveSheet.Shapes.AddChart2(251, xlPie).Select</code>
+      <br>
+      <h5 class="fw-bold">종류가 많으니, vba에서 개체찾기 클릭후 chart등 검색어 입력후 참고</h5>
+      <img src="portal/images/문서연결_엑셀VBA/도형_vba개체찾기참고.png" alt="이미지없음">
+
+
+
     </div>
   </div>
 
-  <div id="도형_종류확인_내용변경"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="도형_내용분석"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"><span style="color:blueviolet">도형의 종류를 번호로 알아낼때 select후 selection.Type 형태로는 에러??</span></h5>
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="도형_종류확인_삭제등"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class="d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">도형의 종류를 번호로 알아내기</h5>
       <code class="fw-bold">• Dim 도형 As Shape</code>
       <code class="fw-bold" style="text-indent: 15px;">For Each 도형 In ActiveSheet.Shapes</code>
@@ -215,15 +259,27 @@
       <code class="fw-bold" style="text-indent: 15px;">Next</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold">• 주요도형 : 13(Picture), 17(Text box), 3(Chart), 1(AutoShape), 검색 : VBA 도형 Type 확인 </code>
+      <br>
+      <h5 class="fw-bold">타입이름문자열 알아내기, 맞는지 확인하기 : 시트에 도형이 하나 있다고 가정함</h5>
+      <code class="fw-bold">• 글상자만듬 : ActiveSheet.Shapes.AddTextbox(msoTextOrientationHorizontal, 266.25, 57.75, 80.25, 29.25).Select</code>
+      <code class="fw-bold">• TypeName, TypeOf </code>
+      <code class="fw-bold" style="text-indent: 30px;">MsgBox TypeName(ActiveSheet.Shapes(1)) => Shape</code>
+      <code class="fw-bold" style="text-indent: 30px;">MsgBox TypeOf ActiveSheet.Shapes(1) Is Shape => True 또는 False 반환</code>
+      <code class="fw-bold" style="text-indent: 30px;">If TypeOf ActiveSheet.Shapes(1) Is Shape Then => Type이 Shape라면</code>
+      
       <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">도형 삭제 (도형의 종류 참고, 도형 만들기 참고)</h5>
+      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.DrawingObjects.Delete <span style="color:blueviolet"> (ActiveSheet.Shapes.Delete 안됨)</span></code>
+      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.Shapes.SelectAll '모든 Shape개체 선택, Selection.Delete</code>
+      <code class="fw-bold">• 시트 전체 사진만 삭제 : ActiveSheet.Pictures.Delete </code>
+      <br>
     </div>
   </div>
 
