@@ -131,6 +131,8 @@
         <h6 class="canvas_div" title='도형_종류확인_삭제등'>도형 > 도형 종류 확인 Type, 삭제, 내용변경, 도형에 OnAction(매크로이름) 지정</h6>
         <h6 class="canvas_div" title='도형_선택_위치확인'>도형 > 도형의 선택, 위치확인</h6>
         <h6 class="canvas_div" title='도형_excel삽입메뉴'>도형 > excel삽입메뉴</h6>
+        <h6 class="canvas_div" title='폼_위치'>폼 > 위치</h6>
+        <h6 class="canvas_div" title='그림_화면복사'>그림 > 화면복사 활용법, LoadPicture</h6>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
         <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf)</h6>
       </div>
@@ -235,16 +237,57 @@
 
   <div id="도형_내용분석"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <h5 class="fw-bold">자동 매크로 기록으로 텍스트상자 만들기 예시</h5>
+      <code class="fw-bold">• Sub 매크로9()</code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.DrawingObjects.Delete</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'1.가로텍스트상자 만들기</code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.AddTextbox(msoTextOrientationHorizontal, 215.25, 102, 180.75, 32.25).Select</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'2.내용기록 : "가로텍스트상자"</code>
+      <code class="fw-bold" style="text-indent: 15px;">Selection.ShapeRange(1).TextFrame2.TextRange.Characters.Text = "가로텍스트상자"</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'3.Characters.Text는 글자 입력이고, 들여쓰기(양수/음수)는 Characters(시작, 글자수) 시작 첫번째는 1</code>
+      <code class="fw-bold" style="text-indent: 15px;">Selection.ShapeRange(1).TextFrame2.TextRange.Characters(1, 7).ParagraphFormat.FirstLineIndent = 2</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'4. 세번째 글자부터 글자3개를 글자크기 크게(18), 굵게</code>
+      <code class="fw-bold" style="text-indent: 15px;">Selection.ShapeRange(1).TextFrame2.TextRange.Characters(3, 3).Font.Size = 18</code>
+      <code class="fw-bold" style="text-indent: 15px;">Selection.ShapeRange(1).TextFrame2.TextRange.Characters(3, 3).Font.Bold = msoTrue</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'※ TextFrame구체적인 예: 문자의 색상을 설정하려면 TextFrame을 사용해야 하지만</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'   간격을 설정하려면 TextFrame2를 사용해야 하는 것 같습니다. 샘플 코드:</code>
+      <code class="fw-bold" style="text-indent: 15px;">'   pptShape.TextFrame.TextRange.Characters(i, 1).Font.Color = vbRed</code>
+      <code class="fw-bold" style="text-indent: 15px;">'   pptShape.TextFrame2.TextRange.Characters(i, 1).Font.Spacing = -1</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'6. 개체가 아래 셀에 연결되는 방식을 나타내는 XlPlacement 값을 반환하거나 설정합니다 .</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'   속성에서 "위치만 변함" 선택하였음.</code>
+      <code class="fw-bold" style="text-indent: 15px;">Selection.Placement = xlMove</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'7. 텍스트상자</code>
+      <code class="fw-bold" style="text-indent: 15px;">With Selection.ShapeRange.TextFrame2</code>
+      <code class="fw-bold" style="text-indent: 15px;">.VerticalAnchor = msoAnchorMiddle '세로맞춤=중간</code>
+      <code class="fw-bold" style="text-indent: 15px;">.HorizontalAnchor = msoAnchorNone '가로맞춤=설정안함</code>
+      <code class="fw-bold" style="text-indent: 15px;">End With</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'   채우기 Fill..Visible = msoTrue 먼저(색상, 투명도 등)</code>
+      <code class="fw-bold" style="text-indent: 15px;">With Selection.ShapeRange.Fill</code>
+      <code class="fw-bold" style="text-indent: 15px;">.Visible = msoTrue</code>
+      <code class="fw-bold" style="text-indent: 15px;">.ForeColor.RGB = RGB(255, 255, 0) '노란색 색상</code>
+      <code class="fw-bold" style="text-indent: 15px;">.Transparency = 0.6399999857 '투명도</code>
+      <code class="fw-bold" style="text-indent: 15px;">.Solid '균일한 색상으로</code>
+      <code class="fw-bold" style="text-indent: 15px;">End With</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">' 테두리</code>
+      <code class="fw-bold" style="text-indent: 15px;">With Selection.ShapeRange.Line</code>
+      <code class="fw-bold" style="text-indent: 15px;">.Visible = msoTrue</code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <code class="fw-bold" style="text-indent: 15px;">.ForeColor.ObjectThemeColor = msoThemeColorText1 '라인 테두리 형식</code>
+      <code class="fw-bold" style="text-indent: 15px;">.ForeColor.TintAndShade = 0</code>
+      <code class="fw-bold" style="text-indent: 15px;">.ForeColor.Brightness = 0</code>
+      <code class="fw-bold" style="text-indent: 15px;">.Transparency = 0</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">.Weight = 2 '두께</code>
+      <code class="fw-bold" style="text-indent: 15px;">End With</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">' 텍스트상자 외부에서 선택하여 가운데 정렬(내부 텍스트 가운데 정렬)</code>
+      <code class="fw-bold" style="text-indent: 15px;">Selection.ShapeRange.TextFrame2.TextRange.ParagraphFormat.Alignment = msoAlignCenter</code>
+      <code class="fw-bold" style="text-indent: 15px;">End Sub</code>
+
+
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
 
@@ -262,23 +305,22 @@
       <br>
       <h5 class="fw-bold">타입이름문자열 알아내기, 맞는지 확인하기 : 시트에 도형이 하나 있다고 가정함</h5>
       <code class="fw-bold">• 글상자만듬 : ActiveSheet.Shapes.AddTextbox(msoTextOrientationHorizontal, 266.25, 57.75, 80.25, 29.25).Select</code>
-      <code class="fw-bold">• TypeName, TypeOf </code>
+      <code class="fw-bold">• TypeName, TypeOf Is 타입명 : True/False </code>
       <code class="fw-bold" style="text-indent: 30px;">MsgBox TypeName(ActiveSheet.Shapes(1)) => Shape</code>
       <code class="fw-bold" style="text-indent: 30px;">MsgBox TypeOf ActiveSheet.Shapes(1) Is Shape => True 또는 False 반환</code>
       <code class="fw-bold" style="text-indent: 30px;">If TypeOf ActiveSheet.Shapes(1) Is Shape Then => Type이 Shape라면</code>
-      
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold"></code>
+      <br>
+      <h5 class="fw-bold">도형 삭제 (도형의 종류 참고, 도형 만들기 참고)</h5>
+      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.DrawingObjects.Delete <span style="color:blueviolet"> (ActiveSheet.Shapes.Delete 안됨)</span></code>
+      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.Shapes.SelectAll '모든 Shape개체 선택, Selection.Delete</code>
+      <code class="fw-bold">• 시트 전체 사진만 삭제 : ActiveSheet.Pictures.Delete </code>
+
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">도형 삭제 (도형의 종류 참고, 도형 만들기 참고)</h5>
-      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.DrawingObjects.Delete <span style="color:blueviolet"> (ActiveSheet.Shapes.Delete 안됨)</span></code>
-      <code class="fw-bold">• 시트 전체 도형 삭제 : ActiveSheet.Shapes.SelectAll '모든 Shape개체 선택, Selection.Delete</code>
-      <code class="fw-bold">• 시트 전체 사진만 삭제 : ActiveSheet.Pictures.Delete </code>
+
       <br>
     </div>
   </div>
@@ -341,6 +383,51 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="폼_위치"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">셀이나 글상자, 그림 등 : 시트편집 범위에서 작동?하는 것은 </h5>
+      <code class="fw-bold">• TOP=0 => A1셀의 TOP, LEFT=0 => A1셀의 LEFT</code>
+      <br>
+      <h5 class="fw-bold">폼은 프로그램에서 작동?하므로 </h5>
+      <code class="fw-bold">• TOP => 엑셀창의 TOP, LEFT=> 엑셀창의 LEFT</code>
+      <code class="fw-bold">• 전체화면인 경우 엑셀창의 TOP은 -6??</code>
+      <br>
+      <h5 class="fw-bold">폼의 위치를 셀기준 상대위치로 지정하려고 한다면, </h5>
+      <code class="fw-bold">• UserForm1.Left = 셀.Left + 30 + Application.Left <span style="color:blueviolet">' 30은 행표시 순번위 폭, Application.Left는 엑셀창의 left</span></code>
+      <code class="fw-bold" style="text-indent: 15px;"> UserForm1.Top = Selection.Top + Application.Top + 테마의 높이(조정)</code>
+      <code class="fw-bold">엑셀의 셀에도 윈도우좌표가 되어 있습니다. APPLICATION에도 좌표가 있구요..</code>
+      <br>
+      <h5 class="fw-bold">테마의 높이가 고정이 아닌데 이것의 해결방법은 찾지 못했음. 임의로 조정값 넣어야됨</h5>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="그림_화면복사"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <img src="portal/images/문서연결_엑셀VBA/그림_화면복사활용1.png" alt="이미지없음">
+      <div class="d-inline-block align-top" style="margin-left:-250px;background-color: white;padding-left:5px;">
+        <code class="fw-bold">• Selection.CopyPicture Appearance:=xlScreen, Format:=xlPicture</code>
+        <code class="fw-bold">• Selection.CopyPicture Appearance:=xlScreen, Format:=xlBitmap</code>
+        <code class="fw-bold">• Selection.CopyPicture Appearance:=xlPrinter, Format:=xlPicture</code>
+        <code class="fw-bold"> • CopyPicture : 클립보드에 저장된 상태. Paste 활용 가능</code>
+        <code class="fw-bold"> • 폼에 그림을 가져오기 위해서 그림을 내보내야함 (폴더에 저장)</code>
+        <code class="fw-bold"> • 폴더의 그림을 가져오기. LoadPicture</code>
+      </div>
+      <br>
+      <img src="portal/images/문서연결_엑셀VBA/그림_화면복사활용2.png" alt="이미지없음">
+
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
     </div>
   </div>
 
