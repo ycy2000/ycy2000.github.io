@@ -8,7 +8,7 @@ var 리스너_추가캔버스전체 = document.querySelector('#추가캔버스�
 function header_클릭시(e) {
   //Offcanvas클릭은 영향없다. 다른것일때
   console.log('header_클릭시(e)');
-  if (e.target.innerHTML == 'html특수문자') {
+  if (e.target.innerHTML == '특문') {
     리스너_전체대체.innerHTML=document.querySelector('#html특수문자_click').innerHTML;
   }
   if (e.target.innerHTML == 'Excel,Vba') {//캔버스 들어가려면 클릭이 된다.
@@ -82,6 +82,7 @@ function 선택한캔버스클릭시(e) {
       console.log('캔버스바디의 목록을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅')
       선택한캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
       결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
+      document.querySelector('#선택문서제목').innerHTML=e.target.innerHTML;
     }
     //
     if (e.target.classList.contains('연결없음')) {
