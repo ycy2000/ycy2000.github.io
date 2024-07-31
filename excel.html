@@ -330,53 +330,54 @@
       <br>
       <h5 class="fw-bold">도형 선택 vba 코딩 참고 (vba 한줄에 여러 명령시 명령마다 ":" 으로 구분)</h5>
       <code class="fw-bold">Sub 그림_글상자_도형_선택예제()</code>
-      <code class="fw-bold" style="text-indent: 15px;">Sheets("SHEET1").Select: Range("A1").Select '선택 해제</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.SelectAll '모든 도형 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select '선택 해제</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.DrawingObjects.Select '모든 도형 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select '선택 해제</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Pictures.Select '그림만 선택, 도형이나 글상자만 선택하는 것은 모르겠음</code>
-      <code class="fw-bold" style="text-indent: 15px;">'Shape의 순번은 확인해야 알 수 있다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">Sheets("SHEET1").Select: Range("A1").Select <span style="color:blueviolet">'선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.SelectAll <span style="color:blueviolet">'모든 도형 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select <span style="color:blueviolet"> '선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.DrawingObjects.Select  <span style="color:blueviolet">'모든 도형 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select <span style="color:blueviolet"> '선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Pictures.Select <span style="color:blueviolet"> '그림만 선택, 도형이나 글상자만 선택하는 것은 모르겠음</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select <span style="color:blueviolet">'선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'Shape의 순번은 확인해야 알 수 있다.</code>
       <code class="fw-bold" style="text-indent: 15px;">Dim 배열_그림들() As Integer, 배열_글상자들() As Integer, 배열_도형들() As Integer</code>
       <code class="fw-bold" style="text-indent: 15px;">Dim 그림순번 As Byte, 글상자순번 As Byte, 도형순번 As Byte</code>
       <code class="fw-bold" style="text-indent: 15px;">Dim 인덱스 As Byte, sh As Shape</code>
       <code class="fw-bold" style="text-indent: 15px;">For Each sh In ActiveSheet.Shapes</code>
-      <code class="fw-bold" style="text-indent: 15px;">인덱스 = 인덱스 + 1  '첫도형의 인덱스 1</code>
+      <code class="fw-bold" style="text-indent: 25px;">인덱스 = 인덱스 + 1  <span style="color:blueviolet">'첫도형의 인덱스 1</span></code>
 
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <code class="fw-bold" style="text-indent: 15px;">If sh.Type = msoPicture Then 그림순번 = 그림순번 + 1 '번호로는 13, 그림이라면</code>
-      <code class="fw-bold" style="text-indent: 15px;">If sh.Type = msoTextBox Then 글상자순번 = 글상자순번 + 1 '번호로는 17, 글상자라면</code>
-      <code class="fw-bold" style="text-indent: 15px;">If sh.Type = msoAutoShape Then 도형순번 = 도형순번 + 1 '번호로는 1, 글상자라면</code>
-      <code class="fw-bold" style="text-indent: 15px;">' Name는 바꿀수 있는데 같은 이름이어도 상관이 없다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">If sh.Type = msoPicture Then</code>
-      <code class="fw-bold" style="text-indent: 15px;">ReDim Preserve 배열_그림들(1 To 그림순번): 배열_그림들(그림순번) = 인덱스 '인덱스 번호 누적 저장</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes(인덱스).Name = "그림" & 그림순번 '이름부여 예시</code>
-      <code class="fw-bold" style="text-indent: 15px;">End If</code>
-      <code class="fw-bold" style="text-indent: 15px;">If sh.Type = msoTextBox Then</code>
-      <code class="fw-bold" style="text-indent: 15px;">ReDim Preserve 배열_글상자들(1 To 글상자순번): 배열_글상자들(글상자순번) = 인덱스</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes(인덱스).Name = "글상자" & 글상자순번 '이름부여 예시</code>
-      <code class="fw-bold" style="text-indent: 15px;">End If</code>
-      <code class="fw-bold" style="text-indent: 15px;">If sh.Type = msoAutoShape Then</code>
-      <code class="fw-bold" style="text-indent: 15px;">ReDim Preserve 배열_도형들(1 To 도형순번): 배열_도형들(도형순번) = 인덱스 '인덱스 번호 누적 저장</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes(인덱스).Name = "도형" & 도형순번 '이름부여 예시</code>
-      <code class="fw-bold" style="text-indent: 15px;">End If</code>
+      <code class="fw-bold" style="text-indent: 25px;">If sh.Type = msoPicture Then 그림순번 = 그림순번 + 1 <span style="color:blueviolet">'번호로는 13, 그림이라면</span></code>
+      <code class="fw-bold" style="text-indent: 25px;">If sh.Type = msoTextBox Then 글상자순번 = 글상자순번 + 1 <span style="color:blueviolet">'번호로는 17, 글상자라면</span></code>
+      <code class="fw-bold" style="text-indent: 25px;">If sh.Type = msoAutoShape Then 도형순번 = 도형순번 + 1 <span style="color:blueviolet">'번호로는 1, 글상자라면</span></code>
+      <code class="fw-bold" style="text-indent: 25px;color:blueviolet">' Name을 바꿀수 있는데 같은 이름이어도 상관이 없다.</code>
+      <code class="fw-bold" style="text-indent: 25px;">If sh.Type = msoPicture Then <span style="color:blueviolet">'msoPicture 대신에 13 가능, If sh.Type = 13 Then</span></code>
+      <code class="fw-bold" style="text-indent: 40px;">ReDim Preserve 배열_그림들(1 To 그림순번): 배열_그림들(그림순번) = 인덱스 <span style="color:blueviolet">'인덱스 번호 누적 저장</span></code>
+      <code class="fw-bold" style="text-indent: 40px;">ActiveSheet.Shapes(인덱스).Name = "그림" & 그림순번 <span style="color:blueviolet">'이름부여 예시</span></code>
+      <code class="fw-bold" style="text-indent: 25px;">End If</code>
+      <code class="fw-bold" style="text-indent: 25px;">If sh.Type = msoTextBox Then <span style="color:blueviolet">'msoTextBox 대신에 17 가능, If sh.Type = 17 Then</span></code>
+      <code class="fw-bold" style="text-indent: 40px;">ReDim Preserve 배열_글상자들(1 To 글상자순번): 배열_글상자들(글상자순번) = 인덱스</code>
+      <code class="fw-bold" style="text-indent: 40px;">ActiveSheet.Shapes(인덱스).Name = "글상자" & 글상자순번 <span style="color:blueviolet">'이름부여 예시</span></code>
+      <code class="fw-bold" style="text-indent: 25px;">End If</code>
+      <code class="fw-bold" style="text-indent: 25px;">If sh.Type = msoAutoShape Then <span style="color:blueviolet">'msoAutoShape 대신에 1 가능, If sh.Type = 1 Then</span></code>
+      <code class="fw-bold" style="text-indent: 40px;">ReDim Preserve 배열_도형들(1 To 도형순번): 배열_도형들(도형순번) = 인덱스 <span style="color:blueviolet">'인덱스 번호 누적 저장</span></code>
+      <code class="fw-bold" style="text-indent: 40px;">ActiveSheet.Shapes(인덱스).Name = "도형" & 도형순번 <span style="color:blueviolet">'이름부여 예시</span></code>
+      <code class="fw-bold" style="text-indent: 25px;">End If</code>
       <code class="fw-bold" style="text-indent: 15px;">Next</code>
       <code class="fw-bold" style="text-indent: 15px;">MsgBox "그림개수 : " & UBound(배열_그림들, 1) - LBound(배열_그림들, 1) + 1 & "개, " & _</code>
-      <code class="fw-bold" style="text-indent: 15px;">"글상자개수 : " & UBound(배열_글상자들, 1) - LBound(배열_글상자들, 1) + 1 & "개, " & _</code>
-      <code class="fw-bold" style="text-indent: 15px;">"도형개수 : " & UBound(배열_도형들, 1) - LBound(배열_도형들, 1) + 1 & "개"</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들).Select '그림 3개 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select '선택 해제</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들)(1).Select (False) '그림 1개 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들)(2).Select (False) '그림 2개 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들)(3).Select (False) '그림 3개 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select '선택 해제</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(Array("그림1")).Select '도형이름="그림1" 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(Array("그림2")).Select '도형이름="그림1" 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(Array("그림3")).Select '도형이름="그림1" 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select '선택 해제</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들).Select (False) '그림 3개 선택됨</code>
-      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_도형들).Select (False) '그림 3개 + 도형 3개 선택됨</code>
+      <code class="fw-bold" style="text-indent: 70px;">"글상자개수 : " & UBound(배열_글상자들, 1) - LBound(배열_글상자들, 1) + 1 & "개, " & _</code>
+      <code class="fw-bold" style="text-indent: 70px;">"도형개수 : " & UBound(배열_도형들, 1) - LBound(배열_도형들, 1) + 1 & "개"</code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들).Select <span style="color:blueviolet">'그림 3개 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select <span style="color:blueviolet">'선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들)(1).Select (False) <span style="color:blueviolet">'그림 1개 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들)(2).Select (False) <span style="color:blueviolet">'그림 2개 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들)(3).Select (False) <span style="color:blueviolet">'그림 3개 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select <span style="color:blueviolet">'선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(Array("그림1")).Select <span style="color:blueviolet">'도형이름="그림1" 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(Array("그림2")).Select <span style="color:blueviolet">'도형이름="그림2" 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(Array("그림3")).Select <span style="color:blueviolet">'도형이름="그림3" 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">Range("A1").Select <span style="color:blueviolet">'선택 해제</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_그림들).Select (False) <span style="color:blueviolet">'그림 3개 선택됨</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Shapes.Range(배열_도형들).Select (False) <span style="color:blueviolet">'그림 3개 + 도형 3개 선택됨</span></code>
       <code class="fw-bold" style="text-indent: 15px;">End Sub</code>
       <br>
     </div>
