@@ -532,10 +532,17 @@
 
   <div id="폼_control_image"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">Image 컨트롤에 이미지 고정</h5>
-      <img src="portal/images/문서연결_엑셀VBA/image고정예시1.png" alt="이미지없음">
+      <h5 class="fw-bold">안되는 것</h5>
       <code class="fw-bold">• 안됨 : 시트에 그림삽입 후 - 복사 - vba projext에서 Image Control 선택후 - 붙여넣기</code>
       <code class="fw-bold">• 안됨 : 시트범위를 그림으로 복사 붙여넣은것을 - 복사하여 - vba projext에서 Image Control 선택후 붙여넣기</code>
+      <br>
+      <h5 class="fw-bold">Image 컨트롤에 이미지 고정</h5>
+      <img src="portal/images/문서연결_엑셀VBA/image고정예시1.png" alt="이미지없음">
+      <br>
+      <h5 class="fw-bold">vba 코딩으로 Image Control에 LoadPicture(파일경로) 활용하여 Load 하기</h5>
+      <code class="fw-bold">• Image1.Picture = LoadPicture(ThisWorkbook.Path & Application.PathSeparator & "챠트.jpg")</code>
+      
+
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
