@@ -82,6 +82,7 @@ function 선택한캔버스클릭시(e) {
       console.log('캔버스바디의 목록을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅')
       선택한캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
       결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
+      document.querySelector('#선택문서id').innerHTML=e.target.title;
       document.querySelector('#선택문서제목').innerHTML=e.target.innerHTML;
     }
     //

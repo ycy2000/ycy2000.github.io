@@ -29,7 +29,7 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#excel캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#추가캔버스전체" aria-controls="offcanvasBottom">추가캔버스</button>
 
-        <button>특문</button> <span>제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
+        <button>특문</button> <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto>
@@ -101,7 +101,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
-  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
   </div>
 </div>
 
@@ -132,10 +132,11 @@
         <h6 class="canvas_div" title='도형_위치확인과다중선택예제'>도형 > 위치확인, 다중선택 예제</h6>
         <h6 class="canvas_div" title='도형_내용분석'>도형 > 내용확인, 분석</h6>
         <h6 class="canvas_div" title='폼_위치'>폼 > 폼위치, Top, Left</h6>
+        <h6 class="canvas_div" title='폼_control_image'>폼 > Control > Image, 폼 내 Image 넣기</h6>
         <h6 class="canvas_div" title='그림_화면복사'>그림 > 화면복사 방법, 폼에 그림으로 넣었을때 어떻게 보이는지</h6>
-        <h6 class="canvas_div" title='그림_화면복사코딩'>그림 > 그림으로 복사한 범위를 챠트에 담아 내보내기 Export, 폴더의 파일 삭제 Kill, 폼내 Image 컨트롤로 가져오기 LoadPicture, 시트에 삽입하기 Insert</h6>
+        <h6 class="canvas_div" title='그림_화면복사코딩'>그림 > <span style="color:blueviolet">vba코딩,</span> 범위를 그림으로 복사후 폴더에 저장, Insert, LoadPicture, Export</h6>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
-        <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf)</h6>
+        <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf), chr</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='excel_find'>find찾기, 바꾸기</h6>
@@ -149,7 +150,7 @@
 
     <div class="개별카테고리" id="excel캔버스전체_참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="연결없음">diddid참고_특수문자.txt</h6>
+        <h6 class="연결없음">html화면복사 > 엑셀로 붙여넣을때 한줄로 나옴 : 메모장에 붙여넣으면 줄바꿈 됨 => 메모장에서 복사해서 가지고옴</h6>
       </div>
       <div>
         <h6 class="연결없음">메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
@@ -184,10 +185,12 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">참고사항</h5>
       <code class="fw-bold" style="color:blueviolet">• 도형의 이름(Name)이 같아도 상관없음 [index가 다름]</code>
+      <code class="fw-bold" style="color:blueviolet">• Shapes(모든도형), DrawingObjects, Pictures 객체의 상위 객체는 시트(Activesheet)</code>
+      <code class="fw-bold" style="color:blueviolet">• 범위.Shapes 형태로 상위 객체를 Range로 사용할 수 없다</code>
+      <code class="fw-bold" style="color:blueviolet">• 도형의 Type등을 확인할 때는 도형을 의미하는 변수, 또는 도형을 의미하는 표현식이어야 한다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 예 : 도형을 select하였을때 selection.Type이 안되는 경우 => 도형변수.Type 형태로 사용해야?</code>
       <br>
       <h5 class="fw-bold">참고사항</h5>
-      <code class="fw-bold" style="color:blueviolet">• Shapes 객체는 ActiveSheet.Shapes 형태로 시트단위?, 범위.Shapes 형태로 사용이 아님</code>
-      <code class="fw-bold">• 도형을 select하였을때 selection.Type이 안되는 경우? => 도형변수.Type 형태로 사용해야?</code>
       <code class="fw-bold">• ActiveSheet.Shapes(순번) : Shapes(모든도형들 중) (순번) 1부터 시작되는 순번의 도형</code>
       <code class="fw-bold">• ActiveSheet.Shapes.Range(배열) : Shapes(모든도형들 중) 배열에 담긴 도형들</code>
       <code class="fw-bold">• ActiveSheet.Shapes.Range(Array()) : () 안의 값이 숫자면 순번이고 문자열이면 Name이다</code>
@@ -238,13 +241,13 @@
       <code class="fw-bold" style="text-indent: 30px;">괄호가 없을 때는 명령으로 끝난다.<span style="color:blueviolet"> (.Select : 선택하라는 명령)</span></code>
       <code class="fw-bold" style="color:blueviolet">• .Select 없이 변수를 사용하여 생성만하는 코드</code>
       <code class="fw-bold" style="text-indent: 30px;">Dim 도형 As Shape</code>
-      <code class="fw-bold" style="text-indent: 30px;">Set 도형 = ActiveSheet.Shapes.AddShape(msoShapeRectangle, 10, 10, 10, 10)</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 도형 = ActiveSheet.Shapes.AddShape(msoShapeRectangle, 10, 10, 10, 10) <span style="color:blueviolet">'시트에 도형이 만들어짐</span></code>
       <code class="fw-bold" style="color:blueviolet">• 시트에 만드는 코드 (.Select)</code>
       <code class="fw-bold" style="color:blueviolet;text-indent: 30px;">ActiveSheet.Shapes.AddShape(msoShapeRectangle, 34.5, 103.5, 72, 26.25).Select</code>
       <code class="fw-bold" style="color:blueviolet;text-indent: 30px;">Left, Top, Width, Height 지정해야하고 '.Select' </code>
       <br>
       <code class="fw-bold" style="color:blueviolet">• 주요도형 (이름 : 번호 MsoShapeType) (번호=MsoShapeType) (종류에서 더 많은 정보 확인)</code>
-      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Text box : 17 msoTextBox - AutoShape : 1 msoAutoShape - Picture : 13 msoPicture</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Text box : 17 msoTextBox, AutoShape : 1 msoAutoShape, Picture : 13 msoPicture</code>
       
 
 
@@ -300,7 +303,7 @@
       <code class="fw-bold">• 하나 있을때 Name은 가능: <span style="color:blueviolet">MsgBox ActiveSheet.Shapes.Range(Array("그림 2")).Name => 그림 2</span></code>
       <br>
       <code class="fw-bold" style="color:blueviolet">• 주요도형 (이름 : 번호 MsoShapeType) (번호=MsoShapeType) (종류에서 더 많은 정보 확인)</code>
-      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Text box : 17 msoTextBox - AutoShape : 1 msoAutoShape - Picture : 13 msoPicture</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Text box : 17 msoTextBox, AutoShape : 1 msoAutoShape, Picture : 13 msoPicture</code>
       
       <br>
     </div>
@@ -401,7 +404,7 @@
       <code class="fw-bold" style="text-indent: 15px;">End Sub</code>
       <code class="fw-bold" style="text-indent: 15px;">출처: https://han8849.tistory.com/124 [90년대생의 직장생활:티스토리]</code>
       <br>
-      <h5 class="fw-bold">도형 위치 확인</h5>
+      <h5 class="fw-bold">도형 위치 확인 (참고:도형의 시작위치는 셀편집화면기준, 폼은 다르다)</h5>
       <code class="fw-bold" style="color:blueviolet">• 선택한 범위안에 도형위치를 '셀'로 확인 (셀범위 선택상태에서 사용)</code>
       <code class="fw-bold" style="text-indent: 15px;">- TopLeftCell : 그림이 차지하는 범위중 왼쪽 최상단 셀.</code>
       <code class="fw-bold" style="text-indent: 15px;">- BottomRightCell : 그림이 차지하는 범위중 오른쪽 최하단 셀.</code>
@@ -474,27 +477,71 @@
     </div>
   </div>
 
-
-
-
-
   <div id="폼_위치"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">셀이나 글상자, 그림 등 : 시트편집 범위에서 작동?하는 것은 </h5>
-      <code class="fw-bold">• TOP=0 => A1셀의 TOP, LEFT=0 => A1셀의 LEFT</code>
+      <h5 class="fw-bold">도형과 폼의 위치 확인 (참고:도형의 시작위치는 셀편집화면기준, 폼은 다르다)</h5>
+      <code class="fw-bold">• 도형 : TOP=0 => A1셀의 TOP, LEFT=0 => A1셀의 LEFT</code>
+      <code class="fw-bold">• 도형의 경우 특정셀 기준으로 위치를 잡기가 쉽다.</code>
       <br>
-      <h5 class="fw-bold">폼은 프로그램에서 작동?하므로 </h5>
-      <code class="fw-bold">• TOP => 엑셀창의 TOP, LEFT=> 엑셀창의 LEFT</code>
-      <code class="fw-bold">• 전체화면인 경우 엑셀창의 TOP은 -6??</code>
+      <h5 class="fw-bold">엑셀 전체창 / 부분창일때, Application.TOP(LEFT),  ActiveWindow.TOP(LEFT) </h5>
+      <code class="fw-bold" style="color:blueviolet">• 폼의 위치를 LEFT=0, TOP=0 으로 지정하였다.</code>
+      <code class="fw-bold" style="color:blueviolet">• LEFT 시작값은 -5, TOP 시작값은 Application=-6, ActiveWindow=-5(테두리 제외 값인 듯)</code>
+      <code class="fw-bold" style="color:blueviolet">★ 폼의 위치는 화면기준으로 생각하면 되겠다.</code>
+      <img src="portal/images/문서연결_엑셀VBA/도형_폼위치예시.png" alt="이미지없음" style="display:inline-block;margin-left:20px;">
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">폼의 위치를 셀기준 상대위치로 지정하고 싶을때 참고 코드 </h5>
+      <code class="fw-bold">Private Sub UserForm_Activate()</code>
+      <code class="fw-bold">Sheets("SHEET1").Select: Dim 기준셀 As Range: Set 기준셀 = Range("T10")</code>
       <br>
-      <h5 class="fw-bold">폼의 위치를 셀기준 상대위치로 지정하려고 한다면, </h5>
-      <code class="fw-bold">• UserForm1.Left = 셀.Left + 30 + Application.Left <span style="color:blueviolet">' 30은 행표시 순번부분의 폭, Application.Left는 엑셀창의 left</span></code>
-      <code class="fw-bold" style="text-indent: 15px;"> UserForm1.Top = Selection.Top + Application.Top + 테마의 높이(조정)</code>
+      <code class="fw-bold">Dim 전체화면탭표시높이 As Double, 전체화면탭및명령표시높이 As Double, 전체화면LEFT보정 As Double</code>
+      <code class="fw-bold">전체화면탭표시높이 = 99.5: 전체화면탭및명령표시높이 = 164.5: 전체화면LEFT보정 = 28.5 </code>
       <br>
-      <h5 class="fw-bold">테마의 높이가 고정이 아닌데 이것의 해결방법은 찾지 못했음. 임의로 조정값 넣어야됨</h5>
+      <code class="fw-bold">Dim 부분창화면탭표시높이 As Double, 부분창화면탭및명령표시높이 As Double, 부분창화면LEFT보정 As Double</code>
+      <code class="fw-bold">부분창화면탭표시높이 = 99.5 - 3: 부분창화면탭및명령표시높이 = 164.5 - 3: 부분창화면LEFT보정 = 28.5 - 5.5</code>
+      <br>
+      <code class="fw-bold">Dim 보정종류 As String</code>
+      <code class="fw-bold" style="color:blueviolet">'보정종류 = "전체화면탭표시"</code>
+      <code class="fw-bold" style="color:blueviolet">'보정종류 = "전체화면탭및명령표시"</code>
+      <code class="fw-bold" style="color:blueviolet">'보정종류 = "부분창화면탭표시"</code>
+      <code class="fw-bold">보정종류 = "부분창화면탭및명령표시"</code>
+      <br>
+      <code class="fw-bold">If 보정종류 = "전체화면탭표시" Then</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.TOP = ActiveWindow.TOP + 기준셀.TOP + 전체화면탭표시높이</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.LEFT = ActiveWindow.LEFT + 기준셀.LEFT + 전체화면LEFT보정</code>
+      <code class="fw-bold">End If</code>
+      <code class="fw-bold">If 보정종류 = "전체화면탭및명령표시" Then</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.TOP = ActiveWindow.TOP + 기준셀.TOP + 전체화면탭및명령표시높이</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.LEFT = ActiveWindow.LEFT + 기준셀.LEFT + 전체화면LEFT보정</code>
+      <code class="fw-bold">End If</code>
+      <code class="fw-bold">If 보정종류 = "부분창화면탭표시" Then</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.TOP = ActiveWindow.TOP + 기준셀.TOP + 부분창화면탭표시높이</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.LEFT = ActiveWindow.LEFT + 기준셀.LEFT + 부분창화면LEFT보정</code>
+      <code class="fw-bold">End If</code>
+      <code class="fw-bold">If 보정종류 = "부분창화면탭및명령표시" Then</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.TOP = ActiveWindow.TOP + 기준셀.TOP + 부분창화면탭및명령표시높이</code>
+      <code class="fw-bold" style="text-indent: 15px;">Me.LEFT = ActiveWindow.LEFT + 기준셀.LEFT + 부분창화면LEFT보정</code>
+      <code class="fw-bold">End If</code>
+      <code class="fw-bold">End Sub</code>
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
+    </div>
+  </div>
+
+  <div id="폼_control_image"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">Image 컨트롤에 이미지 고정</h5>
+      <img src="portal/images/문서연결_엑셀VBA/image고정예시1.png" alt="이미지없음">
+      <code class="fw-bold">• 안됨 : 시트에 그림삽입 후 - 복사 - vba projext에서 Image Control 선택후 - 붙여넣기</code>
+      <code class="fw-bold">• 안됨 : 시트범위를 그림으로 복사 붙여넣은것을 - 복사하여 - vba projext에서 Image Control 선택후 붙여넣기</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
@@ -528,9 +575,13 @@
       <code class="fw-bold" style="text-indent: 15px;">- ThisWorkbook.Path & Application.PathSeparator & "챠트.jpg"</code>
       <code class="fw-bold">• 폼 내, Image 컨트롤(이름:Image1) 안에 사진 로드(Load) : <span style="color:blueviolet">Image1.Picture = LoadPicture(파일경로)</span></code>
       <code class="fw-bold" style="text-indent: 15px;">- Image1.Picture = LoadPicture(ThisWorkbook.Path & Application.PathSeparator & "챠트.jpg")</span></code>
-      <code class="fw-bold" style="color:blueviolet">• 범위를 사진으로 불러오려면 폴더에 저장한 후, 위의 Insert와 LoadPicture 명령으로 가져올 수 있다.</code>
       <code class="fw-bold" style="color:blueviolet">• 범위를 사진으로 내보낼때 챠트에 담아 그림으로 내보낼 수 있다.</code>
-      <code class="fw-bold">Private Sub UserForm_Initialize()</code>
+      <br>
+      <h5 class="fw-bold">vba 코딩 활용 : Call 범위를_그림형식으로_현재폴더에_저장</h5>
+      <code class="fw-bold">• 다른시트의 범위 참고 : Selection 은 단독으로만 사용 가능??, Sheets("리스트").Selection(x), ActiveSheet.Selection(x)</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">Sheets("리스트").Range("F1:H12").CopyPicture Appearance:=xlScreen, Format:=xlPicture</code>
+      <code class="fw-bold" style="text-indent: 15px;">ActiveSheet.Paste</code>
+      <code class="fw-bold">Sub 범위를_그림형식으로_현재폴더에_저장()</code>
       <code class="fw-bold" style="text-indent: 15px;">Sheets("엑셀삽입메뉴의도형").Select</code>
       <code class="fw-bold" style="text-indent: 15px;">Dim 범위 As Range</code>
       <code class="fw-bold" style="text-indent: 15px;">Set 범위 = Range("F2:H6")</code>
