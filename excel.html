@@ -132,15 +132,18 @@
         <h6 class="canvas_div" title='도형_위치확인과다중선택예제'>도형 > 위치확인, 다중선택 예제</h6>
         <h6 class="canvas_div" title='도형_내용분석'>도형 > 내용확인, 분석</h6>
         <h6 class="canvas_div" title='폼_위치'>폼 > 폼위치, Top, Left</h6>
-        <h6 class="canvas_div" title='폼_control_image'>폼 > Control > Image, 폼 내 Image 넣기</h6>
+        <h6 class="canvas_div" title='폼_control_image'>폼 > Image, 폼 내 Image 넣기</h6>
+        <h6 class="canvas_div" title='폼_control관련_1'>폼 > control관련_1, 유형, 이름, 속성종류</h6>
         <h6 class="canvas_div" title='그림_화면복사'>그림 > 화면복사 방법, 폼에 그림으로 넣었을때 어떻게 보이는지</h6>
         <h6 class="canvas_div" title='그림_화면복사코딩'>그림 > <span style="color:blueviolet">vba코딩,</span> 범위를 그림으로 복사후 폴더에 저장, Insert, LoadPicture, Export</h6>
         <h6 class="canvas_div" title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
         <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf), chr</h6>
       </div>
-      <div>
-        <h6 class="canvas_div" title='excel_find'>find찾기, 바꾸기</h6>
-        <h6 class="canvas_div" title='excel_column'>column > columnwidth, 열숨기기/보기, join, split, array</h6>
+      <div> 
+        <h6 class="canvas_div" title='excel_InStrRev'>작성중 InStr, InStrRev 찾기</h6>
+        <h6 class="canvas_div" title='excel_search'>작성중 Search 찾기</h6>
+        <h6 class="canvas_div" title='excel_find'>Find찾기, Replace바꾸기</h6>
+        <h6 class="canvas_div" title='excel_column'>Column > ColumnWidth, 열숨기기/보기, Join, Split, Array</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
@@ -538,9 +541,10 @@
       <br>
       <h5 class="fw-bold">Image 컨트롤에 이미지 고정</h5>
       <img src="portal/images/문서연결_엑셀VBA/image고정예시1.png" alt="이미지없음">
-      <br>
+      <br><br>
       <h5 class="fw-bold">vba 코딩으로 Image Control에 LoadPicture(파일경로) 활용하여 Load 하기</h5>
       <code class="fw-bold">• Image1.Picture = LoadPicture(ThisWorkbook.Path & Application.PathSeparator & "챠트.jpg")</code>
+      <code class="fw-bold">• ThisWorkbook.Path : C:\Users\COM\Desktop\계산중심180130, Application.PathSeparator : \ </code>
       
 
       <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -548,9 +552,44 @@
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
+      <!--  <img src="" alt="이미지없음"> -->
+      
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">Image Control에 PNG파일이 Load 안되는 것은?</h5>
+      <img src="portal/images/문서연결_엑셀VBA/엑셀png파일로딩안됨.png" alt="이미지없음">
+      <code class="fw-bold">• 처음 png파일이었고 확장자만 다른것으로 바꿈 => 안됨	</code>
+      <code class="fw-bold">• 처음 png파일이 아닌경우 확장자만 png로 바꿈 => 됨			</code>
+      <code class="fw-bold">• 결론 : <span style="color:blueviolet">만들때 형식을 인식하고,</span> png파일은 안된다는 이야기?		</code>
+      <code class="fw-bold" style="color:blueviolet">★ 엑셀에서 export 하는 파일을 png확장자로 저장하여도 Load되는 것은	그림형식이 png는 아닌듯		</code>
+				
+						
+				
+					
+
+    </div>
+  </div>
+
+  <div id="폼_control관련_1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">폼 내 Control (폼 안의 것들) For Each 컨트롤 In Me.Controls => 프레인 안의 컨트롤도 돈다.(모두)</h5>
+      <code class="fw-bold">• vba project 창 - 보기 - 도구상자 : 컨트롤의 종류 확인</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 아이콘 클릭(선택) - 폼 안에서 드래그하여 크기조정하면 생성됨</code>
+      <img src="portal/images/문서연결_엑셀VBA/폼control유형이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
+
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <!--  <img src="" alt="이미지없음"> -->
+      
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">폼도 Control이다. Control 속성 확인 : vba project 창 - 보기 - 속성 창(W) 클릭</h5>
+      <code class="fw-bold">• vba project 창 왼쪽에 속성 보기 창이 뜬다.</code>
+      <code class="fw-bold">• Control 마다 속성이 같은것도 있고 다르다.</code>
+      <img src="portal/images/문서연결_엑셀VBA/폼control속성이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
     </div>
   </div>
 
