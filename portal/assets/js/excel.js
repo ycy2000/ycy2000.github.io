@@ -38,10 +38,13 @@ function 선택한캔버스_카테고리작성및_초기작업() {
 
   //header 카테고리들 버튼 내용 생성, id가 excel캔버스전체_excel일때 버튼안의 값이 excel로 나타나게 split
   // 관련자료none_개별카테고리class들.length : 없으면 0, 에러는 아님
+  var 문자열;
   for (var i = 0; i < 관련자료none_개별카테고리class들.length; i++) {
+    문자열=관련자료none_개별카테고리class들[i].id;
     카테고리버튼생성 += '<button class="카테고리실행" style="margin-right:-2px" title="' 
-                       + 관련자료none_개별카테고리class들[i].id + '">' 
-                       + 관련자료none_개별카테고리class들[i].id.split('_')[1] + '</button>';
+                       + 문자열 + '">' 
+                       + 문자열.substring(문자열.search('_')+1) + '</button>';
+                       //+ 관련자료none_개별카테고리class들[i].id.split('_')[1] + '</button>';  [대상 문자열].search([조건 문자열]);
   }
 
   //header 카테고리들 버튼 생성
