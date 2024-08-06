@@ -139,9 +139,10 @@
       </div>
       <div>
         <h6 class="canvas_div" title='폼_위치'>폼 > 폼위치, Top, Left</h6>
-        <h6 class="canvas_div" title='폼_control관련_1'>폼 > control관련_1, 유형, 이름, 속성종류 <span style="color:blueviolet">MsgBox TypeName(컨트롤)</span></h6>
-        <h6 class="canvas_div" title='폼_control_image'>폼 > control > Image, 폼 내 Image 넣기</h6>
-        <h6 class="canvas_div" title='폼_control_textbox'>폼 > control > TextBox, 한영전환, 예제)T1=텍스트박스이름, <span style="color:blueviolet">IME모드</span></h6>
+        <h6 class="canvas_div" title='폼_컨트롤이벤트동작들'>폼 > Control 이벤트 동작들, 컨트롤, Initialize, Activate</h6>
+        <h6 class="canvas_div" title='폼_control관련_1'>폼 > Control관련_1, 유형, 이름, 속성종류 <span style="color:blueviolet">MsgBox TypeName(컨트롤)</span></h6>
+        <h6 class="canvas_div" title='폼_control_공통위주'>폼 > Control > <span style="color:blueviolet">공통위주</span>로 TextBox 속성으로 확인, 한영전환, <span style="color:blueviolet">IME모드</span></h6>
+        <h6 class="canvas_div" title='폼_control_image'>폼 > Control > Image, 폼 내 Image 넣기</h6>
         
       </div>
     </div>
@@ -547,6 +548,334 @@
     </div>
   </div>
 
+  <div id="폼_컨트롤이벤트동작들"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <h5 class="fw-bold">UserForm은 이름이 아니라 UserForm, 다른 컨트롤은 (부여된)이름. <span style="color:blueviolet">고유이벤트 보라색칠, 이벤트이름 클릭시 : 같은 이름 '노랑 색칠' 및 설명 생성</span></h5>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">UserForm</code>
+      <code class="fw-bold">Activate</code>
+      <code class="fw-bold">AddControl</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Deactivate</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Initialize</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">Layout</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+      <code class="fw-bold">QueryClose</code>
+      <code class="fw-bold">RemoveControl</code>
+      <code class="fw-bold">Resize</code>
+      <code class="fw-bold">Scroll</code>
+      <code class="fw-bold">Terminate</code>
+      <code class="fw-bold">Zoom</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">Frame1</code>
+      <code class="fw-bold">AddControl</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">Layout</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+      <code class="fw-bold">RemoveControl</code>
+      <code class="fw-bold">Scroll</code>
+      <code class="fw-bold">Zoom</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">MultiPage1</code>
+      <code class="fw-bold">AddControl</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">Layout</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+      <code class="fw-bold">RemoveControl</code>
+      <code class="fw-bold">Scroll</code>
+      <code class="fw-bold">Zoom</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">명령단추_1</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">스핀단추_1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">SpinDown</code>
+      <code class="fw-bold">SpinUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">스크롤막대_1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">Scroll</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">LABEL_1</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">폼내_T1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">DropButtonClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">콤보박스_1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">DropButtonClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">목록상자_1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">이미지_1</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">체크박스_1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <div style="display:inline-block;" class="폼control이벤트">
+      <code class="fw-bold" style="color:blueviolet">옵션버튼_1</code>
+      <code class="fw-bold">AfterUpdate</code>
+      <code class="fw-bold">BeforeDragOver</code>
+      <code class="fw-bold">BeforeDropOrPaste</code>
+      <code class="fw-bold">BeforeUpdate</code>
+      <code class="fw-bold">Change</code>
+      <code class="fw-bold">Click</code>
+      <code class="fw-bold">DbClick</code>
+      <code class="fw-bold">Enter</code>
+      <code class="fw-bold">Error</code>
+      <code class="fw-bold">Exit</code>
+      <code class="fw-bold">KeyDown</code>
+      <code class="fw-bold">KeyPress</code>
+      <code class="fw-bold">KeyUp</code>
+      <code class="fw-bold">MouseDown</code>
+      <code class="fw-bold">MouseMove</code>
+      <code class="fw-bold">MouseUp</code>
+    </div>
+    <br>
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold" style="color:blueviolet"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Activate </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Deactivate</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Initialize</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>QueryClose</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Resize</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Terminate</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">스핀단추 고유 : </span>SpinDown</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">스핀단추 고유 : </span>SpinUp</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDragOver</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDropOrPaste</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">모두포함 3종 : </span>Error </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+
+      
+      
+      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>AddControl</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Layout</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>RemoveControl</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Zoom</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage, 스크롤막대 : </span>Scroll</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• Click</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• DbClick</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• KeyDown</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• KeyPress</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• KeyUp</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+
+
+      
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <code class="fw-bold">• MouseDown</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• MouseMove</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• MouseUp</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• Enter</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• Exit</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• Change</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• AfterUpdate</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• BeforeUpdate</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• DropButtonClick</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+
+
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+    </div>
+  </div>
+
   <div id="폼_control관련_1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">폼 내 Control (폼 안의 것들) For Each 컨트롤 In Me.Controls => 프레임 안의 컨트롤도 돈다.(모두)</h5>
@@ -611,9 +940,10 @@
     </div>
   </div>
 
-  <div id="폼_control_textbox"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="폼_control_공통위주"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <img src="portal/images/문서연결_엑셀VBA/excel_control_textbox.png" alt="이미지없음" style="position: absolute;left:607px;">
+      <code class="fw-bold">• T1=TextBox 이름 예시</code>
       <h5 class="fw-bold">WordWrap, MultiLine (폼내 줄바꿈, Ctrl 또는 Shift + Enter)</h5>
       <code class="fw-bold">• WordWrap : T1내 글자가 길어서 폭을 넘길때 자동줄바꿈(True), 줄바꿈없음(False)</code>
       <code class="fw-bold" style="color:blueviolet">• WordWrap : MultiLine=Ture일때만 작동, MultiLine=False인 경우 줄바꿈 안됨</code>
@@ -633,9 +963,7 @@
         <code class="fw-bold">• 한글쪽에서 SpaceBar 폭이 다름</code>
       </div>
       <br><br>
-      <h5 class="fw-bold">TextAlign : 정렬</h5>
-      <br>
-      <h5 class="fw-bold">Value = 또는 그냥 = : 값 적용 </h5>
+      <h5 class="fw-bold">TextAlign : 정렬, Value = 또는 그냥 = : 값 적용</h5>
       <br>
       <h5 class="fw-bold">Enabled = False : 글자가 흐릿하게 되면서, 선택 및 편집불가</h5>
       <br>
@@ -645,6 +973,9 @@
       <br>
       <h5 class="fw-bold">MaxLength : 글자수 제한, MultiLine 상태에서 엔터는 1글자</h5>
       <code class="fw-bold">• 제한이 없으려면 0</code>
+      <code class="fw-bold">• 코딩으로 값 변경시 제한이 없음. 편집중에 제한됨. </code>
+      <br>
+      <h5 class="fw-bold">Visible : 폼을 켜면 해당 Conrol은 보이지 않는다.</h5>
       <code class="fw-bold"></code>
       
 
@@ -662,6 +993,7 @@
       
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
     </div>
   </div>  
 

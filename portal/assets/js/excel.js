@@ -231,6 +231,11 @@ function 전체대체클릭시(e) {
       캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
       결과부분.innerHTML = 캔버스관련자료none안_타겟element.outerHTML;
     }
+    //canvas_div : 배치
+    if (e.target.nodeName=='CODE' && e.target.parentElement.classList.contains('폼control이벤트')) {
+      console.log('부모요소의 클래스에 "폼control이벤트" 포함시')
+      폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e)
+    }    
   }
 }
 
@@ -241,5 +246,40 @@ function 전체대체클릭시(e) {
 리스너_excel캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_추가캔버스전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_추가캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
+
+폼컨트롤이벤트_단독기능보라_클래스부여()
+
+function 폼컨트롤이벤트_단독기능보라_클래스부여() {//html켤때 동작, 전체대체로 outerhtml복사될 예정
+  let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
+  var 요소들=document.querySelectorAll('.폼control이벤트 > code:not(:first-child)');
+
+  for (var i=0; i<요소들.length; i++) {
+    모든control이름들.push(요소들[i].innerHTML);
+  }
+  //고유값 확인
+  //let 고유값배열 = Array.from(new Set(모든control이름들))
+  //console.log(고유값배열);
+
+  for (var i=0; i<요소들.length; i++) {
+    if (모든control이름들.filter(element => 요소들[i].innerHTML == element).length == 1) { 요소들[i].classList.add('폼컨트롤이벤트_단독기능보라_클래스') }
+    if (모든control이름들.filter(element => 요소들[i].innerHTML == element).length == 13) { 요소들[i].classList.add('폼컨트롤이벤트_모두포함브라운_클래스') }
+  }
+}
+function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e) {//전체대체로 outerhtml복사된 곳
+  console.log('폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e)');
+  let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
+  var 요소들=document.querySelectorAll('.폼control이벤트 > code:not(:first-child)');
+
+  var 색칠할이름=e.target.innerHTML;
+  console.log('색칠할이름 :' + 색칠할이름)
+
+  for (var i=0; i<요소들.length; i++) {
+    모든control이름들.push(요소들[i].innerHTML);
+  }
+  for (var i=0; i<요소들.length; i++) {
+    요소들[i].classList.remove('폼컨트롤이벤트_단독기능노랑_클래스')
+    if (요소들[i].innerHTML == 색칠할이름) { 요소들[i].classList.add('폼컨트롤이벤트_단독기능노랑_클래스') }
+  }
+}
 
 

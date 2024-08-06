@@ -18,4 +18,10 @@ code {display: block; color:black;margin-bottom:5px;}
 .임시_내부3정보 > :nth-child(5) {display:inline-block; width:40px;text-align:center;border-bottom: 1px solid black;}
 .임시_내부3정보 > :nth-child(6) {display:inline-block; width:180px;background-color:antiquewhite;border-bottom: 1px solid black;}
 
+.폼control이벤트 {border:1px solid black;padding:0 5px;vertical-align: top;width:138px;background-color: cadetblue;}
+.폼control이벤트 > code:first-child {border-bottom:1px solid black;font-size:20px;}
+.폼컨트롤이벤트_단독기능보라_클래스 {color:blueviolet;}
+.폼컨트롤이벤트_단독기능노랑_클래스 {color:yellow;}
+.폼컨트롤이벤트_모두포함브라운_클래스 {color:brown;}
+
 
