@@ -247,11 +247,18 @@ function 전체대체클릭시(e) {
 리스너_추가캔버스전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_추가캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
 
-폼컨트롤이벤트_단독기능보라_클래스부여()
+폼컨트롤이벤트_단독기능보라_클래스부여();
 
 function 폼컨트롤이벤트_단독기능보라_클래스부여() {//html켤때 동작, 전체대체로 outerhtml복사될 예정
+  console.log('폼컨트롤이벤트_단독기능보라_클래스부여()');
   let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
-  var 요소들=document.querySelectorAll('.폼control이벤트 > code:not(:first-child)');
+  var 요소들;
+  //요소들.length : 처음에 188 이라면 전체대체로 올라왔다면 두배다.
+  if (document.querySelectorAll('#전체대체 .폼control이벤트').length==0) {//전체대체로 복사전
+    요소들=document.querySelectorAll('.폼control이벤트 > code:not(:first-child)');
+  } else {
+    요소들=document.querySelectorAll('#전체대체 .폼control이벤트 > code:not(:first-child)');
+  }
 
   for (var i=0; i<요소들.length; i++) {
     모든control이름들.push(요소들[i].innerHTML);
@@ -261,14 +268,24 @@ function 폼컨트롤이벤트_단독기능보라_클래스부여() {//html켤�
   //console.log(고유값배열);
 
   for (var i=0; i<요소들.length; i++) {
+    요소들[i].classList.remove('폼컨트롤이벤트_단독기능노랑_클래스');
+    요소들[i].classList.remove('폼컨트롤이벤트_단독기능보라_클래스');
+    요소들[i].classList.remove('폼컨트롤이벤트_모두포함브라운_클래스');
+  }
+  for (var i=0; i<요소들.length; i++) {
     if (모든control이름들.filter(element => 요소들[i].innerHTML == element).length == 1) { 요소들[i].classList.add('폼컨트롤이벤트_단독기능보라_클래스') }
     if (모든control이름들.filter(element => 요소들[i].innerHTML == element).length == 13) { 요소들[i].classList.add('폼컨트롤이벤트_모두포함브라운_클래스') }
   }
 }
 function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e) {//전체대체로 outerhtml복사된 곳
   console.log('폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e)');
+
+  if (document.querySelector('.선택이벤트설명요소색칠')) {
+    document.querySelector('.선택이벤트설명요소색칠').classList.remove('선택이벤트설명요소색칠');
+  }
+
   let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
-  var 요소들=document.querySelectorAll('.폼control이벤트 > code:not(:first-child)');
+  var 요소들=document.querySelectorAll('#전체대체 .폼control이벤트 > code:not(:first-child)');
 
   var 색칠할이름=e.target.innerHTML;
   console.log('색칠할이름 :' + 색칠할이름)
@@ -276,9 +293,39 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
   for (var i=0; i<요소들.length; i++) {
     모든control이름들.push(요소들[i].innerHTML);
   }
+
+  폼컨트롤이벤트_단독기능보라_클래스부여()
+
   for (var i=0; i<요소들.length; i++) {
-    요소들[i].classList.remove('폼컨트롤이벤트_단독기능노랑_클래스')
-    if (요소들[i].innerHTML == 색칠할이름) { 요소들[i].classList.add('폼컨트롤이벤트_단독기능노랑_클래스') }
+    if (요소들[i].innerHTML == 색칠할이름) { 
+      요소들[i].classList.remove('폼컨트롤이벤트_단독기능노랑_클래스');
+      요소들[i].classList.remove('폼컨트롤이벤트_단독기능보라_클래스');
+      요소들[i].classList.remove('폼컨트롤이벤트_모두포함브라운_클래스');
+      요소들[i].classList.add('폼컨트롤이벤트_단독기능노랑_클래스') 
+    }
+  }
+  //.이벤트작업code > code : innerHTML에서 클릭한 동작이름찾고 있으면 이동
+  var 이벤트설명요소들=document.querySelectorAll('#전체대체 .이벤트작업code > code');
+  var 선택이벤트설명요소;
+  var 선택이벤트설명요소첫번째=0;
+  //  [대상 문자열].search([조건 문자열]); 대소문자 구분
+  if (!이벤트설명요소들.length==0) {
+    for (var i=0; i<이벤트설명요소들.length; i++) {
+      if (이벤트설명요소들[i].innerHTML.search(색칠할이름)>0 && 선택이벤트설명요소첫번째==0) {
+        선택이벤트설명요소=이벤트설명요소들[i];
+        선택이벤트설명요소첫번째=1; //0이 아닌것으로 변경, 다음에 나오는거 설정안되도록
+      }
+    }
+
+    if (선택이벤트설명요소) {
+      선택이벤트설명요소.classList.add('선택이벤트설명요소색칠');
+      var 절대좌표 = window.scrollY + 선택이벤트설명요소.getBoundingClientRect().top;
+      var fix높이=getComputedStyle(document.querySelector('header')).height
+      fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기
+      fix높이 = parseInt(fix높이); //숫자형식으로 변환
+      window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });
+    }
+
   }
 }
 
