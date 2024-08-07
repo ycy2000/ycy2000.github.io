@@ -305,7 +305,7 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
     }
   }
   //.이벤트작업code > code : innerHTML에서 클릭한 동작이름찾고 있으면 이동
-  var 이벤트설명요소들=document.querySelectorAll('#전체대체 .이벤트작업code > code');
+  var 이벤트설명요소들=document.querySelectorAll('#전체대체 .이벤트설명요소');
   var 선택이벤트설명요소;
   var 선택이벤트설명요소첫번째=0;
   //  [대상 문자열].search([조건 문자열]); 대소문자 구분

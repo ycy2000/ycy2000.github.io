@@ -785,7 +785,7 @@
     </div>
     <br>
     <div class=" d-inline-block align-top 이벤트작업code" style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Activate : 폼이 Activate 상태가 된 후 실행, 폼이 나타날 위치 변경할 때 등</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>Activate : 폼이 Activate 상태가 된 후 실행, 폼이 나타날 위치 변경할 때 등</code>
       <code class="fw-bold" style="text-indent: 15px;">- 폼이 1개이면 처음 켜질때 Activate 실행.</code>
       <code class="fw-bold" style="text-indent: 15px;">- 폼을 2개 켜는 상황에서. 상태가 상호 변경되는 상황에서 실행됨. <span style="color:blueviolet">'상태가 변경되는 것이 실행된다??'</span></code>
       <code class="fw-bold" style="text-indent: 30px;">1) 첫 폼을 켜면 첫 폼의 Actviate 실행</code>
@@ -794,43 +794,68 @@
       <code class="fw-bold" style="text-indent: 53px;">- 이전폼(첫째폼)이 Deactivate 상태라면, 켜지는 폼의 Activate 실행 </code>
       <code class="fw-bold" style="text-indent: 30px;">3) 두개의 폼을 번갈아 클릭, 이미 선택되어 있는 폼의 Deactivate가 실행됨. 클릭하는 폼의 Activate가 아님. 1)의 의미</code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom, Frame, MultiPage : </span>AddControl : 폼에 컨트롤이 추가될때</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom, Frame, MultiPage : </span>AddControl : 폼에 컨트롤이 추가될때마다 실행되는 코드 (Initialize 에서도 작동)</code>
       <code class="fw-bold" style="text-indent: 15px;">- Occurs when a control is inserted onto a form, a Frame, or a Page of a MultiPage.</code>
-      <code class="fw-bold" style="text-indent: 15px;">Set ctl = me.Controls.Add(ControlClass, Name, Visible) '컨트롤 추가 코딩</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">Set ctl = me.Controls.Add(ControlClass, Name, Visible) '컨트롤 추가 코딩</code>
       <code class="fw-bold" style="text-indent: 15px;">1) ctl은 Control을 뜻하며, "TextBox, Label, CheckBox, CommandButton, ListBox" 등이 될 수 있다.</code>
       <code class="fw-bold" style="text-indent: 15px;">2) 정해져 있는 ControlClass</code>
+      <div style="display:inline-block;width:240px;margin-left:10px;">
+        <code class="fw-bold" style="text-indent: 30px;">Forms.CheckBox.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.ComboBox.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.Frame.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.Image.1</code>
+      </div>
+      <div style="display:inline-block;width:240px;">
+        <code class="fw-bold" style="text-indent: 30px;">Forms.Label.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.ListBox.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.MultiPage.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.OptionButton.1</code>
+      </div>
+      <div style="display:inline-block;width:240px;">
+        <code class="fw-bold" style="text-indent: 30px;">Forms.ScrollBar.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.SpinButton.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.TabStrip.1</code>
+        <code class="fw-bold" style="text-indent: 30px;">Forms.ToggleButton.1</code>
+      </div>
       <code class="fw-bold" style="text-indent: 15px;">3) Name은 ctl(object)의 이름을 뜻하고 유일한 이름이어야 한다.</code>
       <code class="fw-bold" style="text-indent: 30px;">이름을 생략할 수 있으며, 생략하게 되면 기본적으로 'TextBox1" 이런 형태로 이름이 부여된다.</code>
       <code class="fw-bold" style="text-indent: 15px;">4) Visible 속성은 True와 False인 Boolean 값이고 생략 가능하며, 기본은 True이다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">Control 추가 코드 예시</code>
-      <code class="fw-bold" style="text-indent: 30px;">Dim txtBox as MSFroms.Textbox</code>
-      <code class="fw-bold" style="text-indent: 30px;">Set txtBox = me.Controls.ADD("Forms.Textbox.1", "metxtb")</code>
-      <code class="fw-bold" style="text-indent: 30px;">화면 제일 상단 왼쪽에 TextBox가 추가된다.</code>
-      <code class="fw-bold" style="text-indent: 30px;">위치를 정하고 싶으면 추가되는 Control에 위치값을 설정하면 된다.</code>
-      <code class="fw-bold" style="text-indent: 30px;"></code>
-      <code class="fw-bold" style="text-indent: 30px;"></code>
-      <code class="fw-bold" style="text-indent: 30px;"></code>
-      <code class="fw-bold" style="text-indent: 30px;"></code>
-      <code class="fw-bold" style="text-indent: 30px;"></code>
-      <code class="fw-bold" style="text-indent: 30px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">Control 추가 코드 예시</code>
+      <code class="fw-bold" style="text-indent: 30px;">Dim 명령버튼 As MSForms.CommandButton</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 명령버튼 = Me.Controls.Add("Forms.CommandButton.1", "명령버튼이름")</code>
+      <code class="fw-bold" style="text-indent: 30px;">With 명령버튼</code>
+      <code class="fw-bold" style="text-indent: 45px;">.TOP = 25: .LEFT = 10: .HEIGHT = 15: .WIDTH = 120</code>
+      <code class="fw-bold" style="text-indent: 30px;">End With</code>
+      <code class="fw-bold" style="text-indent: 30px;">Dim 라벨 As MSForms.Label</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 라벨 = Me.Controls.Add("Forms.Label.1", "라벨이름")</code>
+      <code class="fw-bold" style="text-indent: 30px;">With 라벨</code>
+      <code class="fw-bold" style="text-indent: 45px;">.TOP = 10: .LEFT = 10: .HEIGHT = 15: .WIDTH = 120</code>
+      <code class="fw-bold" style="text-indent: 30px;">End With</code>
+      <code class="fw-bold" style="text-indent: 30px;">라벨.Caption = "Foo"</code>
+      <code class="fw-bold" style="text-indent: 30px;">Dim 텍스트박스 As MSForms.TextBox</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 텍스트박스 = Me.Controls.Add("Forms.TextBox.1") '이름 설정 안하면 알아서 이름 지정됨</code>
+      <code class="fw-bold" style="text-indent: 30px;">With 텍스트박스</code>
+      <code class="fw-bold" style="text-indent: 45px;">.TOP = 40: .LEFT = 10: .HEIGHT = 15: .WIDTH = 120</code>
+      <code class="fw-bold" style="text-indent: 30px;">End With</code>
+      <code class="fw-bold" style="text-indent: 30px;">텍스트박스 = "텍스트박스.Value와 같다" '텍스트박스.Value와 같다</code>
 
-      <code class="fw-bold">• AfterUpdate</code>
+      <code class="fw-bold 이벤트설명요소">• AfterUpdate</code>
 
-      <code class="fw-bold">• BeforeUpdate</code>
+      <code class="fw-bold 이벤트설명요소">• BeforeUpdate</code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDragOver</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDragOver</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDropOrPaste</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDropOrPaste</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• Change</code>
+      <code class="fw-bold 이벤트설명요소">• Change</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• Click</code>
+      <code class="fw-bold 이벤트설명요소">• Click</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Deactivate : Deactivate 상태가 된 후</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>Deactivate : Deactivate 상태가 된 후</code>
       <code class="fw-bold" style="text-indent: 15px;">The Deactivate event occurs when a form loses the focus to a Table, Query, Form, Report, Macro,</code>
       <code class="fw-bold" style="text-indent: 15px;">or Module window, or to the Database window.</code>
       <code class="fw-bold" style="text-indent: 15px;">비활성화 이벤트 는 폼의 포커스가 테이블, 쿼리, 폼, 보고서, 매크로 </code>
@@ -838,45 +863,52 @@
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">ex) 폼을 두개 켰을때 다름폼을 클릭했을때, 이전 폼이 Deactivate 상태가 된다.</code>
       <code class="fw-bold" style="text-indent: 45px;color:blueviolet">(단순히 시트의 셀이나 도형을 선택하는 경우가 아님)</code>
 
-      <code class="fw-bold">• DropButtonClick</code>
+      <code class="fw-bold 이벤트설명요소">• DropButtonClick</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• DbClick</code>
+      <code class="fw-bold 이벤트설명요소">• DbClick</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>  
 
-      <code class="fw-bold">• Enter</code>
+      <code class="fw-bold 이벤트설명요소">• Enter</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">모두포함 3종 : </span>Error </code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">모두포함 3종 : </span>Error </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• Exit</code>
+      <code class="fw-bold 이벤트설명요소">• Exit</code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Initialize : 폼이 켜지기 전에 실행, 컨트롤의 속성이나 값 등을 셑팅, 그 밖에 자유로운 코딩</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>Initialize : 폼이 켜지기 전에 실행, 컨트롤의 속성이나 값 등을 셑팅, 그 밖에 자유로운 코딩</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• KeyDown</code>
+      <code class="fw-bold 이벤트설명요소">• KeyDown</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• KeyPress</code>
+      <code class="fw-bold 이벤트설명요소">• KeyPress</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• KeyUp</code>
+      <code class="fw-bold 이벤트설명요소">• KeyUp</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Layout</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Layout</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• MouseDown</code>
+      <code class="fw-bold 이벤트설명요소">• MouseDown</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• MouseMove</code>
+      <code class="fw-bold 이벤트설명요소">• MouseMove : 마우스 포인터가 해당 컨트롤 위에 놓여졌을때</code>
+      <code class="fw-bold" style="text-indent: 15px;">Private Sub ListBox1_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)</code>
+
+
+      MsgBox "Button : " & Button '모르겠음. 일단 0 이 나옴
+      MsgBox "Shift : " & Shift 'shift 누른상태면 1, 아니면 0
+      MsgBox "X : " & X '해당 리스트박스 안의 가로좌표값 (왼쪽 시작점이면 0)
+      MsgBox "Y : " & Y '해당 리스트박스 안의 세로좌표값 (위쪽 시작점이면 0)
+
+
+      <code class="fw-bold 이벤트설명요소">• MouseUp</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• MouseUp</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>QueryClose : 폼에서 X(끄기 버튼)을 눌렀을때 또는 Unload Me 실행시 실행됨. (X로 끄는거 방지 등)</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>QueryClose : 폼에서 X(끄기 버튼)을 눌렀을때 또는 Unload Me 실행시 실행됨. (X로 끄는거 방지 등)</code>
       <code class="fw-bold" style="text-indent: 15px;">- Cancel 기본값 0 (False) : 0 일때 누르면 닫히고, 다른 숫자면(Ture) 안닫힌다. 문자열이면 Error</code>
       <code class="fw-bold" style="text-indent: 15px;">- CloseMode : Unload 메뉴로 넘어오면 vbFormCode (정수값=1), x 버튼으로 넘어오면 vbFormControlMenu (정수값=0) </code>
       <code class="fw-bold" style="text-indent: 15px;">Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)</code>
@@ -894,24 +926,24 @@
       <code class="fw-bold" style="text-indent: 15px;">End Sub</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">'Exit 버튼 닫기 코드 예 : Unload Me</code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Resize : Me.width=Me.width + 50 등으로 사이즈가 조정되는 경우</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>Resize : Me.width=Me.width + 50 등으로 사이즈가 조정되는 경우</code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>RemoveControl</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>RemoveControl</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage, 스크롤막대 : </span>Scroll</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage, 스크롤막대 : </span>Scroll</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">스핀단추 고유 : </span>SpinDown : SpinDown 부분을 클릭했을때</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">스핀단추 고유 : </span>SpinDown : SpinDown 부분을 클릭했을때</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">스핀단추 고유 : </span>SpinUp : SpinUp 부분을 클릭했을때</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">스핀단추 고유 : </span>SpinUp : SpinUp 부분을 클릭했을때</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserFrom 고유 : </span>Terminate : 폼이 종료된 후 실행</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>Terminate : 폼이 종료된 후 실행</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
-      <code class="fw-bold">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Zoom</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Zoom</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
 
     </div>
