@@ -682,7 +682,7 @@
       <code class="fw-bold">BeforeDragOver</code>
       <code class="fw-bold">BeforeDropOrPaste</code>
       <code class="fw-bold">BeforeUpdate</code>
-      <code class="fw-bold">Click</code>
+      <code class="fw-bold">Change</code>
       <code class="fw-bold">DbClick</code>
       <code class="fw-bold">DropButtonClick</code>
       <code class="fw-bold">Enter</code>
@@ -823,12 +823,12 @@
       <code class="fw-bold" style="text-indent: 15px;">4) Visible 속성은 True와 False인 Boolean 값이고 생략 가능하며, 기본은 True이다.</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">Control 추가 코드 예시</code>
       <code class="fw-bold" style="text-indent: 30px;">Dim 명령버튼 As MSForms.CommandButton</code>
-      <code class="fw-bold" style="text-indent: 30px;">Set 명령버튼 = Me.Controls.Add("Forms.CommandButton.1", "명령버튼이름")</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 명령버튼 = Me.Controls.Add("Forms.CommandButton.1", "명령버튼이름") <span style="color:blueviolet">'control이 생성됨</span></code>
       <code class="fw-bold" style="text-indent: 30px;">With 명령버튼</code>
       <code class="fw-bold" style="text-indent: 45px;">.TOP = 25: .LEFT = 10: .HEIGHT = 15: .WIDTH = 120</code>
       <code class="fw-bold" style="text-indent: 30px;">End With</code>
       <code class="fw-bold" style="text-indent: 30px;">Dim 라벨 As MSForms.Label</code>
-      <code class="fw-bold" style="text-indent: 30px;">Set 라벨 = Me.Controls.Add("Forms.Label.1", "라벨이름")</code>
+      <code class="fw-bold" style="text-indent: 30px;">Set 라벨 = Me.Controls.Add("Forms.Label.1", "라벨이름") <span style="color:blueviolet">'control이 생성됨</span></code>
       <code class="fw-bold" style="text-indent: 30px;">With 라벨</code>
       <code class="fw-bold" style="text-indent: 45px;">.TOP = 10: .LEFT = 10: .HEIGHT = 15: .WIDTH = 120</code>
       <code class="fw-bold" style="text-indent: 30px;">End With</code>
@@ -878,6 +878,10 @@
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
+
+
+    </div>
+    <div class=" d-inline-block align-top 이벤트작업code" style="width:925px;border-right:1px solid black;white-space:normal;">
       <code class="fw-bold 이벤트설명요소">• Change</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
@@ -898,26 +902,30 @@
       <code class="fw-bold 이벤트설명요소">• DbClick : Private Sub UserForm_DblClick(ByVal Cancel As MSForms.ReturnBoolean)</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>  
       <br>
-      <code class="fw-bold 이벤트설명요소">• Enter : Private Sub ListBox1_Enter() => 마우스 3종 중 클릭했을때</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold 이벤트설명요소">• Enter : Private Sub ListBox1_Enter() => 마우스 3종 중 클릭했을때 (ActiveControl이 됨)</code>
+      <code class="fw-bold" style="text-indent: 15px;">Enter는 컨트롤이 같은 폼의 컨트롤에서 실제로 포커스를 받기 전에 발생합니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">추가설명 : 체크박스는 클릭시마다 체그/체크해제 되는데, Enter 이벤트 걸면 Enter이벤트만 실행됨</code>
+      <code class="fw-bold" style="text-indent: 15px;">Enter이벤트로 ActiveControl이 된 상태에서, 다시 눌렀을때는 Enter이벤트가 발생하지 않는다.</code>
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">모두포함 3종 : </span>Error </code>
       <code class="fw-bold" style="text-indent: 15px;">Private Sub ComboBox1_Error(ByVal Number As Integer, ByVal Description As MSForms.ReturnString, </code>
       <code class="fw-bold" style="text-indent: 15px;">ByVal SCode As Long, ByVal Source As String, ByVal HelpFile As String, ByVal HelpContext As Long, </code>
       <code class="fw-bold" style="text-indent: 15px;">ByVal CancelDisplay As MSForms.ReturnBoolean)      </code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• Exit</code>
+      <code class="fw-bold 이벤트설명요소">• Exit : Private Sub ListBox2_Exit(ByVal Cancel As MSForms.ReturnBoolean)</code>
+      <code class="fw-bold" style="text-indent: 15px;">Exit는 컨트롤이 같은 폼의 다른 컨트롤에 포커스를 잃기 직전에 발생합니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">Frame이나 Form의 바탕부분이나 Image 컨트롤 클릭시에는 동작하지 않는다. </code>
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>Initialize : 폼이 켜지기 전에 실행, 컨트롤의 속성이나 값 등을 셑팅, 그 밖에 자유로운 코딩</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• KeyDown</code>
+      <code class="fw-bold 이벤트설명요소">• KeyDown : Private Sub ListBox2_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• KeyPress</code>
+      <code class="fw-bold 이벤트설명요소">• KeyPress : Private Sub ListBox2_KeyPress(ByVal KeyAscii As MSForms.ReturnInteger)</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• KeyUp</code>
+      <code class="fw-bold 이벤트설명요소">• KeyUp : Private Sub ListBox2_KeyUp(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Layout</code>
@@ -981,10 +989,6 @@
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Zoom</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
-
-    </div>
-    <div class=" d-inline-block align-top 이벤트작업code" style="width:925px;border-right:1px solid black;white-space:normal;">
-
 
     </div>
   </div>
