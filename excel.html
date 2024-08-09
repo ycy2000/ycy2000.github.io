@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'><!-- 나눔고딕 추가.. -->
+<!-- STYLE에 : font-family: 'Noto Sans', sans-serif;  -->
 <!-- head 안에.. -->
 <!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -794,7 +796,7 @@
       <code class="fw-bold" style="text-indent: 53px;">- 이전폼(첫째폼)이 Deactivate 상태라면, 켜지는 폼의 Activate 실행 </code>
       <code class="fw-bold" style="text-indent: 30px;">3) 두개의 폼을 번갈아 클릭, 이미 선택되어 있는 폼의 Deactivate가 실행됨. 클릭하는 폼의 Activate가 아님. 1)의 의미</code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom, Frame, MultiPage : </span>AddControl : 폼에 컨트롤이 추가될때마다 실행되는 코드 (Initialize 에서도 작동)</code>
+      <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet;">UserFrom, Frame, MultiPage : </span>AddControl : 폼에 컨트롤이 추가될때마다 실행되는 코드 (Initialize 에서도 작동)</code>
       <code class="fw-bold" style="text-indent: 15px;">- Occurs when a control is inserted onto a form, a Frame, or a Page of a MultiPage.</code>
       <code class="fw-bold" style="text-indent: 15px;">Private Sub UserForm_AddControl(ByVal Control As MSForms.Control)</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">Set ctl = me.Controls.Add(ControlClass, Name, Visible) '컨트롤 추가 코딩</code>
@@ -845,6 +847,7 @@
       <code class="fw-bold 이벤트설명요소">• BeforeUpdate</code>
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDragOver : 리스트박스1의 1개목록 클릭하여 드래그하여 리스트박스2에 올렸을때 (마우스 버튼 떼기 전)</code>
+      <code class="fw-bold" style="text-indent: 15px;">아래 BeforeDragOver, BeforeDropOrPaste 코딩 예제 참고</code>      
       <code class="fw-bold" style="text-indent: 15px;">Private Sub ListBox2_BeforeDragOver(ByVal Cancel As MSForms.ReturnBoolean, ByVal Data As MSForms.DataObject, </code>
       <code class="fw-bold" style="text-indent: 15px;">ByVal X As Single, ByVal Y As Single, ByVal DragState As Long, ByVal Effect As MSForms.ReturnEffect,  </code>
       <code class="fw-bold" style="text-indent: 15px;">ByVal Shift As Integer) </code>
@@ -864,25 +867,22 @@
       <code class="fw-bold" style="text-indent: 15px;">- DragState As Long : </code>
       <code class="fw-bold" style="text-indent: 15px;">- Effect As MSForms.ReturnEffect : 숫자인 듯, 1 이 특정상황인듯.</code>
       <code class="fw-bold" style="text-indent: 15px;">- Shift As Integer : shift 누른상태면 1, 아니면 0</code>
-
-
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">모두포함 3종 : </span>BeforeDropOrPaste : 리스트박스1의 1개목록 클릭하여 드래그하여 리스트박스2에 올린후 마우스 버튼 뗏을때</code>
+      <code class="fw-bold" style="text-indent: 15px;">아래 BeforeDragOver, BeforeDropOrPaste 코딩 예제 참고</code> 
       <code class="fw-bold" style="text-indent: 15px;">Private Sub ListBox2_BeforeDropOrPaste(ByVal Cancel As MSForms.ReturnBoolean, ByVal Action As Long, </code>
       <code class="fw-bold" style="text-indent: 15px;">ByVal Data As MSForms.DataObject, ByVal X As Single, ByVal Y As Single, ByVal Effect As MSForms.ReturnEffect, </code>
       <code class="fw-bold" style="text-indent: 15px;">ByVal Shift As Integer)</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Userform에서는 변수가 하나 더 있다 : Control As MSForms.Control</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">※ BeforeDragOver 변수가 다 있고 추가변수 1개 있음 </code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Action As MSForms.fmAction : </code>
-
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
+      <code class="fw-bold" style="color:blueviolet">★ BeforeDragOver, BeforeDropOrPaste 코딩 예제</code>
 
 
     </div>
     <div class=" d-inline-block align-top 이벤트작업code" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <code class="fw-bold 이벤트설명요소">• Change</code>
+      <code class="fw-bold 이벤트설명요소">• Change : 텍스트박스의 경우 자판 하나마다</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
       <code class="fw-bold 이벤트설명요소">• Click : Private Sub UserForm_Click()</code>
@@ -920,24 +920,39 @@
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
       <code class="fw-bold 이벤트설명요소">• KeyDown : Private Sub ListBox2_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- KeyCode : 마우스로 선택시는 해당사항 없고, 자판누를때</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 사용 예 : If KeyCode = 27 Then MsgBox "KeyCode=27, Esc 누름"</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 자판 누르면, KeyDown작동 후 KeyPress작동.</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">★ KeyDown, KeyPress, KeyUp 설명.</code>
+      <code class="fw-bold" style="text-indent: 15px;"- >컨트롤의 이벤트를 살펴보면, KeyDown, KeyPress, KeyUp이라는 이벤트가 있습니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;"- >이 이벤트들을 통해서, 특정 키를 입력할 때 실행되도록 만들 수 있습니다. </code>
+      <code class="fw-bold" style="text-indent: 15px;"- >각각 누른다, 누른다, 뗀다 정도로 번역할 수 있을 거 같은데요.</code>
+      <code class="fw-bold" style="text-indent: 15px;"- >이벤트가 발생하는 순서를 보면, KeyDown → KeyPress → KeyUp 순서로 실행됩니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;"- >KeyDown과 KeyPress는 유사한 혹은 똑같은 이벤트로 생각할 수 있지만, 키보드의 허용범위가 다릅니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;"- >KeyPress는 탭, 엔터, 화살표 등에는 이벤트가 발생하지 않으므로, KeyDown 이벤트를 사용하도록 하겠습니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;"- >설명 출처 : https://stat-and-news-by-daragon9.tistory.com/entry/엑셀VBA-텍스트-박스에-숫자만-입력되도록-하기</code>
+         
+      <img src="portal/images/문서연결_엑셀VBA/폼컨트롤이벤트_keydown번호들.png" alt="이미지없음">
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
       <code class="fw-bold 이벤트설명요소">• KeyPress : Private Sub ListBox2_KeyPress(ByVal KeyAscii As MSForms.ReturnInteger)</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
       <code class="fw-bold 이벤트설명요소">• KeyUp : Private Sub ListBox2_KeyUp(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;">예) 텍스트박스에 1 을 누른 상태로 있으면 1 이 계속 입력되는데 뗄 때 작동</code>
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserForm, Frame, MultiPage : </span>Layout</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• MouseDown : 마우스 3종 버튼 중, 눌렀을 때</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold 이벤트설명요소">• MouseDown : Private Sub ListBox2_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, </code>
+      <code class="fw-bold" style="text-indent: 15px;">ByVal X As Single, ByVal Y As Single)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 마우스 3종 버튼 중, 눌렀을 때</code>
       <br>
-      <code class="fw-bold 이벤트설명요소">• MouseMove : 마우스 포인터가 해당 컨트롤 위에 놓여졌을때</code>
+      <code class="fw-bold 이벤트설명요소">• MouseMove : Private Sub ListBox1_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, </code>
+      <code class="fw-bold" style="text-indent: 15px;">ByVal X As Single, ByVal Y As Single)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 마우스 포인터가 해당 컨트롤 위에 놓여졌을때</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">MouseDown, MouseMove, MouseUp 3종 모두 매개변수가 같다.</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">3종동시 : 가만있으면 Move가 계속동작한다고본다. Down하면 Down후 Move상태, Up하며 Up후 Move상태</code>
-      <code class="fw-bold" style="text-indent: 15px;">Private Sub ListBox1_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)</code>
       <code class="fw-bold" style="text-indent: 15px;">- MsgBox "Button : " & Button '마우스버튼 : 안누름 0, 왼쪽 1, 중간 4, 오른쪽 2</code>
       <code class="fw-bold" style="text-indent: 15px;">- MsgBox "Shift : " & Shift 'shift 누른상태면 1, 아니면 0</code>
       <code class="fw-bold" style="text-indent: 15px;">- MsgBox "X : " & X '해당 리스트박스 안의 가로좌표값 (왼쪽 시작점이면 0)</code>
@@ -949,8 +964,8 @@
       
 
 
-      <code class="fw-bold 이벤트설명요소">• MouseUp : 마우스 3종 버튼 중, 눌렀다가 뗄 때</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold 이벤트설명요소">• MouseUp : Private Sub ListBox2_KeyUp(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 마우스 3종 버튼 중, 눌렀다가 뗄 때</code>
       <br>
       <code class="fw-bold 이벤트설명요소">• <span style="color:blueviolet">UserFrom 고유 : </span>QueryClose : 폼에서 X(끄기 버튼)을 눌렀을때 또는 Unload Me 실행시 실행됨. (X로 끄는거 방지 등)</code>
       <code class="fw-bold" style="text-indent: 15px;">- Cancel 기본값 0 (False) : 0 일때 누르면 닫히고, 다른 숫자면(Ture) 안닫힌다. 문자열이면 Error</code>
@@ -1530,7 +1545,7 @@
     <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
     <div style="background-color: white; border:1px solid black;padding:5px;">
       <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
-      <h5>※ ★ ● • ▢ < ▸ ☞</h5>
+      <h5>※ ★ ● • ▢ < ▸ ☞ \ Ø</h5>
 
     </div>
   </div>
