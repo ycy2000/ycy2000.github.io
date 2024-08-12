@@ -29,7 +29,7 @@
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
         <!-- #excel캔버스전체 클릭하면 나오는 id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#excel캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#추가캔버스전체" aria-controls="offcanvasBottom">추가캔버스</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#탁구github전체" aria-controls="offcanvasBottom">탁구,github</button>
 
         <button>특문</button> <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
@@ -63,7 +63,7 @@
 </div>
 
 <!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="추가캔버스전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="탁구github전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
@@ -107,19 +107,69 @@
   </div>
 </div>
 
-<div id="추가캔버스전체_관련자료none" class="d-none">
+<div id="탁구github전체_관련자료none" class="d-none">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="추가캔버스전체_추가">
+    <div class="개별카테고리" id="탁구github전체_탁구">
       <div>
-        <h6 class="canvas_div" title='copy_cut_paste'>추가캔버스테스트</h6>
+        <h6 class="canvas_div" title='출처밝히는방법'>출처 밝히는 방법</h6>
+        <h6 class="canvas_div" title='포핸드1'>포핸드 - 기본</h6>
       </div>
     </div>
 
-    <div class="개별카테고리" id="추가캔버스전체_참고"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="탁구github전체_github"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+
+    </div>
+    <div class="개별카테고리" id="탁구github전체_참고2"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
 
     </div>
   </div>
 
+  <!-- DIV들 모_음 : 하나가 올라감 -->
+  <div id="출처밝히는방법"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• 논문 : 논문 저자, 「논문명」, 발행처, 발생호(발행연도), 인용 쪽수 표기</code>
+      <code class="fw-bold">• 단행본 : 한 권, 한 권이 단독으로 간행되는 서적을 뜻한다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 집필자(저자), "제목", 출판사, 발행연도, 인용쪽수(p.101~102)</code>
+      <code class="fw-bold">• 인터넷 신문기사 : 기자이름, "기사 제목", 신문사 이름, 기고 일자, URL</code>
+      <code class="fw-bold">• 웹페이지 : 웹페이지 운영자 이름, 업데이트 일자, URL</code>
+      <code class="fw-bold">• (백과) 사전 : (저자명), 항목, (백과) 사전 이름, 출판사, 발행연도</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="color:blueviolet"></code>
+      <h5 class="fw-bold">출처 : https://semobakwi.tistory.com/56</h5>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>  
+  <div id="포핸드1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=tYbZYPzqg4E" target="_blank">백드라이브 안되는분, 1편 폼만 신경쓰지 마시고요 ㅠ</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 그립</code>
+      <code class="fw-bold">• Seohee (서희)</code>
+      <code class="fw-bold" style="text-indent: 15px;">넷지마스터, </code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <!--<img src="" alt="이미지없음">-->
+      <h6 style="text-indent: 23px;"></h6>
+      
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+  <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
 </div>
 
 <!-- 코딩등메모장text파일, canvas_div-->
@@ -1548,16 +1598,11 @@
     <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
     <div style="background-color: white; border:1px solid black;padding:5px;">
       <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
-      <h5>※ ★ ● • ▢ < ▸ ☞ \ Ø</h5>
+      <h5>※ ★ ● • ▢ < ▸ ☞ \ Ø 「 」</h5>
 
     </div>
   </div>
 </div>
-
-<div id="추가캔버스전체_관련자료none" class="d-none">
-
-</div>
-
 
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
   role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
