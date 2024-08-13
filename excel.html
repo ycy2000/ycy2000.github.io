@@ -201,7 +201,8 @@
 
     <div class="개별카테고리" id="excel캔버스전체_개별명령1"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div" title='vba변수선언'>vba 변수선언</h6>
+        <h6 class="canvas_div" title='vba변수선언'>vba 변수1 > 선언, 변수이름 규칙, 데이터형(Type), 프로시저</h6>
+        <h6 class="canvas_div" title='vba변수2'>vba 변수2 > As 데이터형(Type), Type들</h6>
         <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf), chr</h6>
         <h6 class="canvas_div" title='excel_InStrRev'>작성중 InStr, InStrRev 찾기</h6>
         <h6 class="canvas_div" title='excel_search'>작성중 Search 찾기</h6>
@@ -234,11 +235,40 @@
   <!-- DIV들 모_음 : 하나가 올라감 -->
   <div id="vba변수선언"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">Dim int1, int2, int3, int4 As Integer 라고 선언시 </h5>
-      <code class="fw-bold">• int4만 Integer이고 나머진 variant형으로 선언이 되므로 주의하여야 한다.</code>
+      <h5 class="fw-bold"><span style="color:blueviolet">프로시저 : 명령문의 집합 </span>Private Sub(현재 모듈에서 호출가능), Sub(프로젝트 전역에서 호출가능) </h5>
+      <h5 class="fw-bold">변수의 선언 : [키워드] 변수명 [As 데이터형] </h5>
+      <code class="fw-bold">• [키워드] 4종 : <span style="color:blueviolet">Dim, Static, Private, Public,</span> 편집화면에서 <span style="color:blueviolet">파란색</span>으로 표시된다.</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Static 변수명 As Integer : 프로시저 외부에서 선언시 에러</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- Public 변수명 As Integer : 프로시저 내부에서 선언시 에러</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 키워드 : vba에서 기능이 미리 정의된, 의미 있는 단어 </code>
+      <code class="fw-bold" style="text-indent: 15px;">- Dim : (변수)프로시저 바깥에서 선언하면 모듈안의 프로시저에서 기억 </code>
+      <code class="fw-bold" style="text-indent: 15px;">- Dim : (변수)프로시저 내부에서 선언하면 프로시저 종료시 초기화</code>
+      <code class="fw-bold" style="text-indent: 15px;">- Static(사전:정적인) : (변수)프로시저 안에서 선언, 프로시저 종료시 기억됨, 현재 프로시저에서만 해당</code>
+      <code class="fw-bold" style="text-indent: 15px;">- Private(사전:사적인) : (프로시저) Private Sub 는 현재 모듈에서만 Call 가능  </code>
+      <code class="fw-bold" style="text-indent: 15px;">- Public(사전:공공의) : (변수)프로시저 바깥에서 선언, 프로젝트 전역에서 사용 및 기억</code>
+      <img src="portal/images/문서연결_엑셀VBA/변수선언키워드.png" alt="이미지없음">
+
+
+
+
       <br>
-      <h5 class="fw-bold">Visual Basic에서는 아래 형식으로 모두 Date타입 선언이 된다.</h5>
-      <code class="fw-bold">• Dim lastTime, nextTime, allTimes() As Date</code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">Dim int1, int2, int3 As Integer 라고 선언시 </h5>
+      <code class="fw-bold">• int3만 Integer이고 나머진 variant형으로 선언이 되므로 주의하여야 한다.</code>
+      <code class="fw-bold">• 모두 Integer형식으로 선언하려면 : <span style="color:blueviolet">Dim int1 As Integer, int2 As Integer, int3 As Integer</span></code>
+      <code class="fw-bold" style="color:blueviolet">• As 데이터형 : 생략 가능, 생략시 데이터형이 Variant형으로 지정됨.</code>
+      <br>
+      <h5 class="fw-bold">변수 이름 규칙</h5>
+      <code class="fw-bold">• 첫번째 문자는 숫자 안됨</code>
+      <code class="fw-bold">• <span style="color:blueviolet">밑줄(_) 이외</span>의 특수문자(.,,,!,@,#,$,-,[,] 등)을 사용할 수 없음</code>
+      <code class="fw-bold">• Visual Basic의 함수, 명령문, 메서드와 같은 키워드를 이름으로 사용할 수 없음.</code>
+      <code class="fw-bold" style="text-indent: 15px;">ex : Dim dim As Integer</code>
+      <code class="fw-bold">• 길이는 255자를 넘을 수 없음</code>
+      <code class="fw-bold">• <span style="color:blueviolet">같은 수준의 범위</span>에서는 이름을 중복하여 지정할 수 없음.</code>
+      <code class="fw-bold" style="color:blueviolet">• 대/소문자 구분하지 않음</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 변수명을 AbcDE 로 선언하고 사용할 때, abcde로 사용하면 자동으로 AbcDE로 변경되는데</code>
+      <code class="fw-bold" style="text-indent: 30px;">변수명을 정확히 사용하고 있다는 것을 인지할 수 있음</code>
       <br>
       <h5 class="fw-bold">VBA(Visual Basic for Applications)에서는 변수명마다 type을 지정해주어야 한다.</h5>
       <code class="fw-bold">• Dim lastTime, nextTime, allTimes() As Date</code>
@@ -246,6 +276,29 @@
       <code class="fw-bold" style="text-indent: 15px;">allTimes() As Date만 Date 타입으로 지정된다.</code>
       <code class="fw-bold" style="color:blueviolet">• vba에서 모두 Date 타입으로 변수를 선언하려면 아래와 같이</code>
       <code class="fw-bold" style="text-indent: 15px;">Dim lastTime As Date, nextTime As Date, allTimes() As Date</code>
+      <br>
+      <h5 class="fw-bold">As 데이터형 종류 : ① 문자열, 숫자, 통화, Boolean ② Object ③ Variant </h5>
+      <code class="fw-bold"><h5 class="p-0 m-0" style="display: inline-block;line-height:15px;">① </h5> Let 변수명 =  값, 기본적으로 Let이 생략된 상태이므로 생략해도 됨</code>
+      <code class="fw-bold"><h5 class="p-0 m-0" style="display: inline-block;line-height:15px;">② </h5> Set 변수명 = 개체 (개체에는 여러 속성이 있을수 있다)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 개체변수명.속성명 으로 접근할 수 있다. (속성 예 : Name, Type 등등)</code>
+      <code class="fw-bold"><h5 class="p-0 m-0" style="display: inline-block;line-height:15px;">③ </h5> Variant (변수 대입시에 Object인지 아닌지 결정됨)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 변수대입시 결정된 변수가 Object(ex:Image개체인 경우), Set 사용 안하면 에러</code>
+      <code class="fw-bold">• Object는 개체이고 개체의 종류는 여러가지 (Range, Worksheet, Workbook, Image, Chart, Picture 등)</code>
+      <br>
+      <h5 class="fw-bold">변수에 값을 대입시, Let(생략 가능), Set(생략시 에러 : <span style="color:blueviolet">개체일때 Set 생락하면 안된다는 의미</span>)</h5>
+    </div>
+  </div>
+
+  <div id="vba변수2"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
