@@ -1,9 +1,14 @@
+function 연습() {
+  console.log('개수 : ' + document.querySelectorAll('.모든검색 > [id]').length);
+}
+
 var 선택한캔버스id='없음';
 var 이전캔버스id='없음';
 var 리스너_header = document.querySelector('header');
 var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스클릭시(e)
 var 리스너_excel캔버스전체 = document.querySelector('#excel캔버스전체');
 var 리스너_탁구github전체 = document.querySelector('#탁구github전체');
+var 리스너_htmlJavascript전체 = document.querySelector('#htmlJavascript전체');
 
 function header_클릭시(e) {
   //Offcanvas클릭은 영향없다. 다른것일때
@@ -18,6 +23,11 @@ function header_클릭시(e) {
   }
   if (e.target.innerHTML == '탁구,github') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='탁구github전체';
+    console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    선택한캔버스_카테고리작성및_초기작업();
+  }
+  if (e.target.innerHTML == 'html,javascript') {//캔버스 들어가려면 클릭이 된다.
+    선택한캔버스id='htmlJavascript전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
@@ -202,11 +212,33 @@ function 선택한캔버스_검색input_change시(e) {
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
   var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
-  var 검색할버튼클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+  var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
   var 내부html = '';
-  for (var i = 0; i < 검색할버튼클래스들.length; i++) {
-    if (검색할버튼클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      내부html += 검색할버튼클래스들[i].outerHTML;
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+    if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      내부html += 검색할클래스들[i].outerHTML;
+    }
+  }
+  //id 검색결과 추가
+
+
+  //id 검색결과 추가 끝
+
+  if (내부html == '') { alert('없음'); return; }
+  document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
+  document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;
+}
+
+function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e) {
+  console.log('캔버스_검색value_change시');
+  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
+  var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
+  if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
+  var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+  var 내부html = '';
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+    if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      내부html += 검색할클래스들[i].outerHTML;
     }
   }
   if (내부html == '') { alert('없음'); return; }
@@ -246,6 +278,8 @@ function 전체대체클릭시(e) {
 리스너_excel캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_탁구github전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_탁구github전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_htmlJavascript전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
 
 폼컨트롤이벤트_단독기능보라_클래스부여();
 
