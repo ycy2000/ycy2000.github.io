@@ -212,18 +212,23 @@ function 선택한캔버스_검색input_change시(e) {
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
   var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
+
+  //예전코드 대비 추가 1 : id 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
+  var 검색결과포함id배열=[];
+  var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+
+
+
+  //예전코드 대비 추가 1 끝
+
   var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
   var 내부html = '';
   for (var i = 0; i < 검색할클래스들.length; i++) {
+  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
     if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       내부html += 검색할클래스들[i].outerHTML;
     }
   }
-  //id 검색결과 추가
-
-
-  //id 검색결과 추가 끝
-
   if (내부html == '') { alert('없음'); return; }
   document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
   document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;

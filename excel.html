@@ -179,11 +179,11 @@
 
   <div id="excel_js_펑션_검색확장"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">캔버스는 다르지만 class="모든검색" 에서 다른 캔버스의 자료도 뜰 수 있도록 검색확장이 필요</h5>
-      <code class="fw-bold">• 처음 검색을 만들때 검색할 클래스들 설명 </code>
+      <h5 class="fw-bold">아이디 '캔버스이름_관련자료none' 첫번째 자식에는 '카테고리 클래스 요소', 'id'있는 요소 있음</h5>
+      <code class="fw-bold">• 처음 검색을 만들때 '카테고리 클래스 요소' 에서만 검색하도록 하였음. </code>
       <code class="fw-bold" style="text-indent: 15px;">var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 해당하는 하나의 카테고리의 제목부분만 검색하였음. 해당부분의 title 을 id로 찾아와 가져오는 방식</code>
-      <code class="fw-bold">• 해당 id의 많은 내용중에서는 검색하지 않았음. (여기도 검색하려는 목적) </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 검색할클래스들 의 title을 id로 하는 내용중에서도 검색하도록 코딩하려고 한다.</code>
+      <code class="fw-bold" style="color:blueviolet">• 순차적으로 찾기 위하여 id의 내용을 검색하여 id를 배열에 담아두는 코드를 먼저 추가하려고 한다. </code>
       <code class="fw-bold">• 예전 코드 </code>
       <img src="portal/images/문서연결_엑셀VBA/검색관련예전코드.png" alt="이미지없음">
       <br><br>
