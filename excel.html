@@ -131,11 +131,17 @@
 </div>
 
 <div id="htmlJavascript전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음 하하하"><!--캔버스바디에 들어간다-->
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="htmlJavascript전체_JS">
       <div>
         <h6 class="canvas_div" title='excel_js파일유의사항'>JS > 유의사항 : e.target, 검색, innerText, innerHTML,outerHTML, </h6>
-        <h6 class="canvas_div" title='excel_js_펑션_검색확장'>excel.js 코드 > function 선택한캔버스_검색input_change시(e) => 검색확장</h6>
+        <h6 class="canvas_div" title='excel_js_검색단어바탕색'>JS > 검색단어 결과에 바탕색 칠하는 방법 </h6>
+        <h6 class="canvas_div" title='excel_js_scroll'>JS > scroll : 위치, 찾기, 좌표,   </h6>
+        <h6 class="canvas_div" title='excel_js_찾기'>JS > 찾기/개수 : search, match, split, indexOf,    </h6>
+        <h6 class="canvas_div" title='excel_js_split'>JS > split, 구분문자의 개수를 구할수 있다.   </h6>
+        <h6 class="canvas_div" title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴) </h6>
+        <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
+        <h6 class="canvas_div" title='excel_js_펑션_검색확장'>JS > function 선택한캔버스_검색input_change시(e) => 검색확장</h6>
       </div>
     </div>
 
@@ -171,6 +177,155 @@
       <h6 style="text-indent: 23px;"></h6>
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="excel_js_검색단어바탕색"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">검색단어 결과 참고사항. 요소 안에서 검색하더라도, 요소안의 태그 내의 문자열일 수도 있다.</h5>
+      <code class="fw-bold">1) innerText 로 검색하면 요소안의 태그 내용은 검색이 안된다.</code>
+      <code class="fw-bold" style="text-indent: 23px;"> <span style="color:blueviolet">innerHTML 로 검색</span>하면 요소안의 태그 내용도 검색된다. <span style="color:blueviolet">이것 활용!! 위치정보 활용하기 위함</span></code>
+      <code class="fw-bold">2) 검색결과(요소내 첫번째 결과)의 위치 </code>
+      <code class="fw-bold">3) 검색결과를 검색결과 좌/우에 '바탕색칠하는 클래스를 부여한 span태그로 감싼다' </code>   
+      <code class="fw-bold" style="color:blueviolet">4) 사용후, 생성된 span태그 처리 : classList.remove('클래스명')  </code>   
+      <code class="fw-bold" style="text-indent: 23px;color:blueviolet">또는 클래스명 찾아서, outerHTML=innerHTML 형태로 처리</code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="excel_js_scroll"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <img src="portal/images/문서연결_엑셀VBA/js_scroll.png" alt="이미지없음">
+      <code class="fw-bold">if (선택이벤트설명요소) {</code>
+      <code class="fw-bold" style="text-indent: 15px;">선택이벤트설명요소.classList.add('선택이벤트설명요소색칠');</code>
+      <code class="fw-bold" style="text-indent: 15px;">var 절대좌표 = window.scrollY + 선택이벤트설명요소.getBoundingClientRect().top;</code>
+      <code class="fw-bold" style="text-indent: 15px;">var fix높이=getComputedStyle(document.querySelector('header')).height</code>
+      <code class="fw-bold" style="text-indent: 15px;">fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기</code>
+      <code class="fw-bold" style="text-indent: 15px;">fix높이 = parseInt(fix높이); //숫자형식으로 변환</code>
+      <code class="fw-bold" style="text-indent: 15px;">window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });</code>
+      <code class="fw-bold">}</code>
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="excel_js_찾기"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://gent.tistory.com/467" target="_blank">https://gent.tistory.com/467</a></h5>
+      <h5 class="fw-bold">문자열.search('찾을문자열'); : 없을때 -1, 시작 0, 대/소문자 구분.</h5>
+      <code class="fw-bold">• match : https://codingeverybody.kr/자바스크립트-문자열-match-함수-개념-정리-및-사용-예제/</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 문자열.split('구분문자').length : 구분문자의 개수는 결과-1 (구분문자 없을때 결과가 1 이므로)</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="excel_js_split"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">문자열.split('구분문자') : 구분문자가 있으면 구분문자 제외하여 각각 배열에 담는다.</h5>
+      <code class="fw-bold" style="color:blueviolet">★ 대/소문자 구별</code>
+      <code class="fw-bold" style="color:blueviolet">1)구분문자가 없으면 : 전체문자열이 문자열.split('구분문자')[0] 에 담긴다. length=1</code>
+      <code class="fw-bold">2)구분문자가 1개이고 구분문자가 전체문자열과 같으면 : length=2 ([0],[1])</code>
+      <code class="fw-bold" style="text-indent: 20px;">- var 문자열='예제문자열' // 전체문자열이 구분문자열이면 두개배열, 좌우로 1개씩</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('예제문자열').length) // 2</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('예제문자열')[0].length) // 0</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('예제문자열')[0]) // 빈문자열</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('예제문자열')[0].length) // 0</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('예제문자열')[1]) // 빈문자열</code>
+      <code class="fw-bold">3)구분문자가 1개이고 구분문자가 전체문자열의 일부이면 : length=2 ([0],[1])</code>
+      <code class="fw-bold" style="text-indent: 20px;">- var 문자열='예제문자열' // 전체문자열이 구분문자열이면 두개배열, 좌우로 1개씩</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('문자열').length) // 2</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('문자열')[0].length) // 2</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('문자열')[0]) // 예제</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('문자열')[0].length) // 0</code>
+      <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('문자열')[1]) // 빈문자열, <span style="color:blueviolet">구분문자가 '예제'이면 결과는 length는 3, 값은 '문자열'</span></code>
+      <code class="fw-bold" style="color:blueviolet">4)2),3)에 따라 구분문자열이 1개인 경우 2개 배열 <span style="color:blueviolet">(좌우가 비어도 하나씩 배열에 담긴다) </span></code>
+      <code class="fw-bold" style="color:blueviolet">5)구분문자의 개수는, 문자열.split('문자열').length - 1</code>
+      
+      
+      
+      
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="excel_js_match"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://codingeverybody.kr/자바스크립트-문자열-match-함수-개념-정리-및-사용-예제/" target="_blank">str.match(regexp);</a> </h5>
+      <code class="fw-bold">• regexp가 문자열 또는 숫자이면 내부적으로 new RegExp(regexp)를 사용하여 자동으로 정규 표현식 객체로 변환합니다.</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="excel_js_정규식"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-정규식-RegExp-누구나-이해하기-쉽게-정리" target="_blank">정규 표현식 링크</a> </h5>
+      <h5 class="fw-bold">정규식 Regular Expression, 문자열에서 특정 문자 조합을 찾기 위한 패턴, 정규식도 객체다 </h5>
+      <code class="fw-bold">• 정규식도 객채로서, RegExp의 exec()와 test() 매서드를 사용할 수 있습니다.</code>
+      <code class="fw-bold">• String 의 match(), replace(), search(), split() 메서드와도 함께 사용할 수 있습니다.</code>
+      <code class="fw-bold">• 정규식을 사용하는 방법으로는 test, exec, match 등이 있습니다.</code>
+      <br>
+      <h5 class="fw-bold">정규식도 객체다 </h5>
+      <code class="fw-bold">• var 문자열='abc12_abc123_abc1234'</code>
+      <code class="fw-bold" style="text-indent: 15px;">var 문자패턴=/aBc\d{3}/i '설명 : \d=숫자, {2}=2개, i플래그=대소문자구분없음 </code>
+      <code class="fw-bold" style="text-indent: 15px;">문자패턴 설명 : aBc로 시작되고(플래그i로 대소문자 구분이 없이), 연속으로 숫자 3개가 있는 문자열 </code>
+      <code class="fw-bold" style="text-indent: 15px;">var 결과배열=문자열.split(문자패턴); </code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(결과배열(0)); </code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(결과배열(1)); </code>
+      <code class="fw-bold"></code>
+
+      <h5 class="fw-bold">/regexr/i : ①/(시작,종료기호)  ②regexr(패턴표현)  ③/(시작,종료기호)  ④i(플래그)</h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
@@ -346,7 +501,7 @@
         <h6 class="canvas_div" title='excel_배열_RANGE'>배열_Range에서 > 배열을 Range에 적용시 어떻게 표시되는지</h6>
       </div>
       <div>
-        <h6 class="연결없음">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        <h6 class="연결없음">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_줄간격</h6>
       </div>
     </div>
 

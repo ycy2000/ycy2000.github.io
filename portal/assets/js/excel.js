@@ -1,5 +1,18 @@
 function 연습() {
-  console.log('개수 : ' + document.querySelectorAll('.모든검색 > [id]').length);
+  var 문자열='abc12_abc123_abc1234aaa'
+  var 문자패턴=/aBc\d{3}/i //설명 : \d=숫자, {3}=3개, i플래그=대소문자구분없음
+  //문자패턴 설명 : aBc로 시작되고(플래그i로 대소문자 구분이 없이), 연속으로 숫자 3개가 있는 문자열
+  var 결과배열=문자열.split(문자패턴);
+  console.log(결과배열.length);
+  console.log(결과배열[0]); //abc12_
+  console.log(결과배열[1]); //_
+  console.log(결과배열[2]); //4aaa
+
+  var 문자패턴=/aBc\d{3}/ //i플래그 없으면 대소문자구분하여 일치하는 문자열이 없다.
+  //split는 일치하는 문자열이 없으면 전체 문자열을 반환한다. length=1
+  var 결과배열=문자열.split(문자패턴);
+  console.log(결과배열.length);
+  console.log(결과배열[0]);
 }
 
 var 선택한캔버스id='없음';
@@ -209,13 +222,19 @@ function 선택한캔버스클릭시(e) {
 
 function 선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
+  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
+  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
+  }
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
   var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
 
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
-  var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
+  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
+  var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
   console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
@@ -225,13 +244,15 @@ function 선택한캔버스_검색input_change시(e) {
   }
   //예전코드 대비 추가 1 끝
 
-  var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+  var 검색할클래스들 = document.querySelectorAll('.모든검색 .개별카테고리 > div > h6');
   var 내부html = '';
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
     if (검색결과포함id배열.includes(검색할클래스들[i].title) || 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       내부html += 검색할클래스들[i].outerHTML;
-    }
+      //제목부분과, 해당아이디 div가 있으면 그 내부의 모든 검색문자에 바탕색
+    }  
   }
   if (내부html == '') { alert('없음'); return; }
   document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
