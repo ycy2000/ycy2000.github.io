@@ -1,18 +1,41 @@
 function 연습() {
-  var 문자열='abc12_abc123_abc1234aaa'
-  var 문자패턴=/aBc\d{3}/i //설명 : \d=숫자, {3}=3개, i플래그=대소문자구분없음
-  //문자패턴 설명 : aBc로 시작되고(플래그i로 대소문자 구분이 없이), 연속으로 숫자 3개가 있는 문자열
-  var 결과배열=문자열.split(문자패턴);
-  console.log(결과배열.length);
-  console.log(결과배열[0]); //abc12_
-  console.log(결과배열[1]); //_
-  console.log(결과배열[2]); //4aaa
+  const text_eamil = "문의는 help@example.com 또는 support@example.org 으로 연락 주시기 바랍니다.";
 
-  var 문자패턴=/aBc\d{3}/ //i플래그 없으면 대소문자구분하여 일치하는 문자열이 없다.
-  //split는 일치하는 문자열이 없으면 전체 문자열을 반환한다. length=1
-  var 결과배열=문자열.split(문자패턴);
-  console.log(결과배열.length);
-  console.log(결과배열[0]);
+  const emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+  const emailMatches = text_eamil.match(emailPattern);
+  
+  console.log(emailMatches);
+  // 출력: ["help@example.com", "support@example.org"]
+
+  const text_phone = "문의는 010-9876-5432 또는 010-9876-5439로 연락 주세요.";
+
+  const phonePattern = /\d{3}-\d{4}-\d{4}/g;
+  const phoneMatches = text_phone.match(phonePattern);
+  
+  console.log(phoneMatches);
+  // 출력: ["010-9876-5432", "010-9876-5439"]
+
+  const text_url = "더 많은 정보는 https://www.example.co.kr에서 확인하세요.";
+
+  const urlPattern = /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;
+  const urlMatches = text_url.match(urlPattern);
+  
+  console.log(urlMatches);
+  // 출력: ["https://www.example.co.kr"]
+
+  const html = '<div class="container"><p>Hello, <b>world!</b></p></div>';
+  const tagPattern = /<[^>]+>/g;
+  const tags = html.match(tagPattern);
+  
+  console.log(tags);
+  // 출력: ["<div class="container">", "<p>", "<b>", "</b></p>", "</div>"]
+
+  const css = '.header { color: #333; } .main-content { font-size: 16px; }';
+  const classPattern = /\.([a-zA-Z-_\d]+)/g;
+  const classes = css.match(classPattern);
+  
+  console.log(classes);
+  // 출력: [".header", ".main-content"]
 }
 
 var 선택한캔버스id='없음';
