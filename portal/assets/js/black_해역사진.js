@@ -543,8 +543,8 @@ function 리스너_해역사진관련_클릭시(e) {//교섭력계산기능
     document.querySelector('#적재가능일반무게').value = document.querySelector('#점진무게').title;
     계산_배와장비무게()
   }
-  if (e.target.id == '용맹무게') {
-    document.querySelector('#적재가능일반무게').value = document.querySelector('#용맹무게').title;
+  if (e.target.id == '비상무게') {
+    document.querySelector('#적재가능일반무게').value = document.querySelector('#비상무게').title;
     계산_배와장비무게()
   }
   //선원비율클릭시
