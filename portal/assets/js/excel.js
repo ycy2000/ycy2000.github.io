@@ -1,41 +1,37 @@
 function 연습() {
-  const text_eamil = "문의는 help@example.com 또는 support@example.org 으로 연락 주시기 바랍니다.";
-
-  const emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
-  const emailMatches = text_eamil.match(emailPattern);
   
-  console.log(emailMatches);
-  // 출력: ["help@example.com", "support@example.org"]
+  var 문자열='찾기1, 찾기2, 찾기3'
+  console.log('문자열.length : ' + 문자열.length) // 결과 : 13
+  console.log(문자열.indexOf('없으면')) // 결과 : -1
+  console.log(문자열.indexOf('3')) // 결과 : 12
+  //찾을 index 생략시 (0) 이 생략되었다고 본다.
+  console.log(문자열.indexOf('3',문자열.length)) // 결과 : -1
+  console.log(문자열.indexOf('3',문자열.length-1)) // 결과 : 12
 
-  const text_phone = "문의는 010-9876-5432 또는 010-9876-5439로 연락 주세요.";
+  console.log('찾기3') 
+  console.log(문자열.indexOf('찾기3')) // 결과 : 10
+  console.log(문자열.indexOf('찾기3',문자열.length)) // 결과 : -1
+  console.log(문자열.indexOf('찾기3',문자열.length-3)) // 결과 : 10
 
-  const phonePattern = /\d{3}-\d{4}-\d{4}/g;
-  const phoneMatches = text_phone.match(phonePattern);
+  console.log('lastIndexOf : 오른쪽 끝부터 찾기') 
+  console.log(문자열.lastIndexOf('없으면')) // 결과 : -1
+  console.log(문자열.lastIndexOf('3')) // 결과 : 12
+  console.log(문자열.lastIndexOf('3',문자열.length + 10)) // 결과 : 12
+  // 우측 끝 index보다 더 큰 숫자도가능함.
+  console.log(문자열.lastIndexOf('3',문자열.length-2)) // 결과 : -1
+
+  console.log('lastIndexOf : 오른쪽 끝부터 찾기') 
+  console.log(문자열.lastIndexOf('찾기')) // 결과 : 10
+  //찾을 index 생략시 (문자열.length-1) 이 생략되었다고 본다.
+  console.log(문자열.lastIndexOf('찾기',0)) // 결과 : 0
+  console.log(문자열.lastIndexOf('찾기',-1)) // 결과 : -1
+  //찾을 index 에 음수를 넣어도 에러는 아니고 못찾음 -1
+  console.log(문자열.lastIndexOf('찾기',문자열.length-3)) // 결과 : 10
+  console.log(문자열.lastIndexOf('찾기',문자열.length-4)) // 결과 : 5
+
+
   
-  console.log(phoneMatches);
-  // 출력: ["010-9876-5432", "010-9876-5439"]
 
-  const text_url = "더 많은 정보는 https://www.example.co.kr에서 확인하세요.";
-
-  const urlPattern = /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;
-  const urlMatches = text_url.match(urlPattern);
-  
-  console.log(urlMatches);
-  // 출력: ["https://www.example.co.kr"]
-
-  const html = '<div class="container"><p>Hello, <b>world!</b></p></div>';
-  const tagPattern = /<[^>]+>/g;
-  const tags = html.match(tagPattern);
-  
-  console.log(tags);
-  // 출력: ["<div class="container">", "<p>", "<b>", "</b></p>", "</div>"]
-
-  const css = '.header { color: #333; } .main-content { font-size: 16px; }';
-  const classPattern = /\.([a-zA-Z-_\d]+)/g;
-  const classes = css.match(classPattern);
-  
-  console.log(classes);
-  // 출력: [".header", ".main-content"]
 }
 
 var 선택한캔버스id='없음';
@@ -62,7 +58,7 @@ function header_클릭시(e) {
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
-  if (e.target.innerHTML == 'html,javascript') {//캔버스 들어가려면 클릭이 된다.
+  if (e.target.innerHTML == 'htmlJava') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='htmlJavascript전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
