@@ -255,13 +255,37 @@ function 선택한캔버스_검색input_change시(e) {
 
 function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
-  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
+  //바탕색 초기화
+  var 초기화할것들=document.querySelectorAll('.검색결과바탕색');
+  if (초기화할것들.length==0) {
+
+  } else {
+    for (var i=0; i<초기화할것들.length; i++) {
+      초기화할것들.outerHTML=초기화할것들.innerHTML
+    }
+  }
+
   var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
   var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
   var 내부html = '';
+  var 검색할전체문자열;
+  var 검색할문자포함개수;
+  //카테고리 부분과 id 부분, 2번 작업, 현재 카테고리 부분
   for (var i = 0; i < 검색할클래스들.length; i++) {
     if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      검색할전체문자열=검색할클래스들[i].innerHTML.toUpperCase();
+      검색할문자포함개수=문자열.split(검색할문자).length-1; //없을때 1 이므로
+      //거꾸로 찾기 : 문자열.lastindexOf('찾을문자열', 찾기시작위치)
+      for (var T=0; T<검색할문자포함개수; T++) {
+
+
+        
+
+      }
+
+
+
       내부html += 검색할클래스들[i].outerHTML;
     }
   }
