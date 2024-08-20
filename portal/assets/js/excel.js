@@ -1,33 +1,8 @@
 function 연습() {
   
-  var 문자열='찾기1, 찾기2, 찾기3'
-  console.log('문자열.length : ' + 문자열.length) // 결과 : 13
-  console.log(문자열.indexOf('없으면')) // 결과 : -1
-  console.log(문자열.indexOf('3')) // 결과 : 12
-  //찾을 index 생략시 (0) 이 생략되었다고 본다.
-  console.log(문자열.indexOf('3',문자열.length)) // 결과 : -1
-  console.log(문자열.indexOf('3',문자열.length-1)) // 결과 : 12
+  
+  console.log('01234'.slice(1,3))
 
-  console.log('찾기3') 
-  console.log(문자열.indexOf('찾기3')) // 결과 : 10
-  console.log(문자열.indexOf('찾기3',문자열.length)) // 결과 : -1
-  console.log(문자열.indexOf('찾기3',문자열.length-3)) // 결과 : 10
-
-  console.log('lastIndexOf : 오른쪽 끝부터 찾기') 
-  console.log(문자열.lastIndexOf('없으면')) // 결과 : -1
-  console.log(문자열.lastIndexOf('3')) // 결과 : 12
-  console.log(문자열.lastIndexOf('3',문자열.length + 10)) // 결과 : 12
-  // 우측 끝 index보다 더 큰 숫자도가능함.
-  console.log(문자열.lastIndexOf('3',문자열.length-2)) // 결과 : -1
-
-  console.log('lastIndexOf : 오른쪽 끝부터 찾기') 
-  console.log(문자열.lastIndexOf('찾기')) // 결과 : 10
-  //찾을 index 생략시 (문자열.length-1) 이 생략되었다고 본다.
-  console.log(문자열.lastIndexOf('찾기',0)) // 결과 : 0
-  console.log(문자열.lastIndexOf('찾기',-1)) // 결과 : -1
-  //찾을 index 에 음수를 넣어도 에러는 아니고 못찾음 -1
-  console.log(문자열.lastIndexOf('찾기',문자열.length-3)) // 결과 : 10
-  console.log(문자열.lastIndexOf('찾기',문자열.length-4)) // 결과 : 5
 
 
   

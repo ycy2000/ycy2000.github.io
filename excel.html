@@ -143,7 +143,7 @@
         <h6 class="canvas_div" title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
         <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
         <h6 class="canvas_div" title='excel_js_json'>JS > json</h6>
-        <h6 class="canvas_div" title='excel_js_substr등'>JS > trim, replace, replaceAll, +, contact, join, slice, substr, substring, slice</h6>
+        <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
 
       </div>
       <div>
@@ -420,14 +420,36 @@
 
   <div id="excel_js_substr등"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <h5 class="fw-bold"><a href="https://gent.tistory.com/467" target="_blank">https://gent.tistory.com/467</a></h5>
+      <h5 class="fw-bold">concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h5>
+      <code class="fw-bold">• concat : 문자열.concat(문자1, 문자2,...) 인수는 1개 이상.</code>
+      <code class="fw-bold" style="text-indent: 15px;">''.concat('a','b') : 빈문자열 ''을 사용할 수 있다.</code>
+      <code class="fw-bold">• join : 배열.join() 구분자 넣지 않으면 쉼표(,)를 구분자로 한 것과 같다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">1차원 배열 속 문자열을 합친다.</code>
+      <code class="fw-bold">• + : 문자열 + 문자열</code>
+      <code class="fw-bold">• <span style="color:blueviolet">오른쪽과 왼쪽의(내부 아님)</span> 공백제거 : 문자열.trim();</code>
+      <code class="fw-bold">• <span style="color:blueviolet">공백제거는 replace 활용</span> 문자열.replace(정규식,'바꿀값'); <span style="color:blueviolet">정규식으로 모든문자 지정(플래그 g) 안하면 하나만 바뀐다.</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- var str = str.replace(/^\s+|\s+$/gm, '');</code>
+      <code class="fw-bold" style="text-indent: 30px;">^\s+ : ^문자열 = 문자열로 시작하는, 공백(\s = space 공백, \S = 공백이 아닌것), + = 최소 한개 or 여러개</code>
+      <code class="fw-bold" style="text-indent: 30px;color:blueviolet">한개나 여러개의 공백으로 시작하거나, | = or 의미</code>
+      <code class="fw-bold" style="text-indent: 30px;">\s+$ : $ --로 끝나는, \s+$ = <span style="color:blueviolet">최소 한개 or 여러개의 공백으로 끝나는</span> (좌우 공백만)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 플래그 g : 모두, 플래그 m : 여러줄 모두</code>
+      <code class="fw-bold">• <span style="color:blueviolet">모든 공백제거 : 문자열.replace(/(\s*)/gm, ''); -- (\s*) 그룹, * = 없거나 or 있거나(여러개)</span></code>
+      <code class="fw-bold">• <span style="color:blueviolet">모든 공백제거 : 문자열.replace(/(\s)/gm, ''); 플래그 g 없으면 에러</span></code>
+      <code class="fw-bold">• <span style="color:blueviolet">모든 공백제거 : 문자열.replaceAll(' ',''); </span></code>
+      <code class="fw-bold">• slice, substr, substring, 대괄호([]) 부분은 생략이 가능하며, 생략할 경우 시작 위치부터 문자열 끝까지 자른다.</code>
+      <code class="fw-bold">• 문자열.substr(start[, length]) : 시작부분부터 length개수만큼 자른다. 인덱스 0 부터</code>
+      <code class="fw-bold">• 문자열.slice(beginIndex[, endIndex]) : <span style="color:blueviolet">beginIndex은 0 부터, endIndex는 1 부터</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- '01234'.slice(1,3) : 결과 12</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 음수인자일때 주의</code>
+      <code class="fw-bold">• 문자열.substring(indexStart[, indexEnd]) : 시작부분부터 indexEnd 위치까지 자른다. 인덱스 0 부터</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 음수인자일때 주의</code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
+      <span style="color:blueviolet"></span>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
