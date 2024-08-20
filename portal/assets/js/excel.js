@@ -271,17 +271,26 @@ function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e)
   var 내부html = '';
   var 검색할전체문자열;
   var 검색할문자포함개수;
+  var 찾기시작index;
+  var 찾은index;
+  var innerhtml왼쪽;
+  var innerhtml오른쪽;
+  var 클래스추가문자열;
+  클래스추가문자열='<span class="검색결과바탕색">' + 검색할문자 + '</span>';
   //카테고리 부분과 id 부분, 2번 작업, 현재 카테고리 부분
   for (var i = 0; i < 검색할클래스들.length; i++) {
     if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색할전체문자열=검색할클래스들[i].innerHTML.toUpperCase();
       검색할문자포함개수=문자열.split(검색할문자).length-1; //없을때 1 이므로
+      찾기시작index=검색할문자.length;
       //거꾸로 찾기 : 문자열.lastindexOf('찾을문자열', 찾기시작위치)
       for (var T=0; T<검색할문자포함개수; T++) {
+        찾은index=검색할전체문자열.lastIndexOf(검색할문자,찾기시작index);
+        innerhtml왼쪽=검색할전체문자열.substring(0,찾은index-1-검색할문자.length);
+        innerhtml오른쪽=검색할전체문자열.substring(찾은index+검색할문자.length,검색할전체문자열.length-1);
+        검색할클래스들[i].innerHTML=innerhtml왼쪽 + 클래스추가문자열 + innerhtml오른쪽
 
-
-        
-
+        찾기시작index=찾은index-1;
       }
 
 
