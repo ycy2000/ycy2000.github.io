@@ -1,8 +1,49 @@
 function 연습() {
-  
-  
-  console.log('01234'.slice(1,3))
+console.log('document.querySelector(.임시클래스).childNodes.length : ' + document.querySelector('.임시클래스').childNodes.length)
+console.log('childNodes는 #text 노드 포함하고, 첫번째 자식만 해당함')
+console.log('childNodes는 #text 사이에 다른 노드 있고, 다시 #text 노드 나오면, 각각 해당함')
+for (var i=0; i<document.querySelector('.임시클래스').childNodes.length; i++) {
+  console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').childNodes[i].nodeName)
+  console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').childNodes[i].textContent)
+}
+console.log('\ndocument.querySelector(.임시클래스).children.length : ' + document.querySelector('.임시클래스').children.length)
+console.log('children는 #text 노드 X, #comment 노드 X')
+console.log('element 요소만, 첫번째 자식만 해당함')
+for (var i=0; i<document.querySelector('.임시클래스').children.length; i++) {
+  console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').children[i].nodeName)
+  console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').children[i].textContent)
+}
+console.log('\ndocument.querySelector(.임시클래스).getElementsByTagName(*).length : ' + document.querySelector('.임시클래스').getElementsByTagName('*').length)
+for (var i=0; i<document.querySelector('.임시클래스').getElementsByTagName('*').length; i++) {
+  console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[i].nodeName)
+  console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[i].textContent)
+  console.log('node ' + i + ' 부모노드 : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[i].parentNode.nodeName)
+}
 
+
+  return;
+  //id="excel_js_substr등
+  //document.querySelector('.임시클래스').innerText.repalce(/공백/g,'')
+  //document.querySelector('.임시클래스').innerText.replace(/\s/g,'<span class="검색결과바탕색"> </span>')
+  console.log('document.querySelector(.임시클래스).innerText : ' + document.querySelector('.임시클래스').innerText)
+  document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerText.replace(/안/g,'<span class="검색결과바탕색">안</span>')
+
+
+  console.log('document.querySelector(.임시클래스).innerHTML : ' + document.querySelector('.임시클래스').innerHTML)
+  console.log('document.querySelector(.임시클래스).childNodes.length : ' + document.querySelector('.임시클래스').childNodes.length)
+  for (var i=0; i<document.querySelector('.임시클래스').childNodes.length; i++) {
+    console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').childNodes[i].nodeName)
+    console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').childNodes[i].textContent)
+    console.log('node ' + i + ' innerText : ' + document.querySelector('.임시클래스').childNodes[i].innerText)
+  }
+  console.log(' ')
+  console.log('document.querySelector(.임시클래스).children.length : ' + document.querySelector('.임시클래스').children.length)
+  for (var i=0; i<document.querySelector('.임시클래스').children.length; i++) {
+    console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').children[i].nodeName)
+    console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').children[i].textContent)
+    console.log('node ' + i + ' innerText : ' + document.querySelector('.임시클래스').children[i].innerText)
+  }
+  console.log(' node는 내부 몽땅???')
 
 
   
@@ -255,48 +296,37 @@ function 선택한캔버스_검색input_change시(e) {
 
 function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
-  //바탕색 초기화
-  var 초기화할것들=document.querySelectorAll('.검색결과바탕색');
-  if (초기화할것들.length==0) {
-
-  } else {
-    for (var i=0; i<초기화할것들.length; i++) {
-      초기화할것들.outerHTML=초기화할것들.innerHTML
-    }
+  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
+  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
   }
-
+  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
   var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
-  var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
-  var 내부html = '';
-  var 검색할전체문자열;
-  var 검색할문자포함개수;
-  var 찾기시작index;
-  var 찾은index;
-  var innerhtml왼쪽;
-  var innerhtml오른쪽;
-  var 클래스추가문자열;
-  클래스추가문자열='<span class="검색결과바탕색">' + 검색할문자 + '</span>';
-  //카테고리 부분과 id 부분, 2번 작업, 현재 카테고리 부분
+
+  //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
+  var 검색결과포함id배열=[];
+  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
+  var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
+  console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
-    if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      검색할전체문자열=검색할클래스들[i].innerHTML.toUpperCase();
-      검색할문자포함개수=문자열.split(검색할문자).length-1; //없을때 1 이므로
-      찾기시작index=검색할문자.length;
-      //거꾸로 찾기 : 문자열.lastindexOf('찾을문자열', 찾기시작위치)
-      for (var T=0; T<검색할문자포함개수; T++) {
-        찾은index=검색할전체문자열.lastIndexOf(검색할문자,찾기시작index);
-        innerhtml왼쪽=검색할전체문자열.substring(0,찾은index-1-검색할문자.length);
-        innerhtml오른쪽=검색할전체문자열.substring(찾은index+검색할문자.length,검색할전체문자열.length-1);
-        검색할클래스들[i].innerHTML=innerhtml왼쪽 + 클래스추가문자열 + innerhtml오른쪽
-
-        찾기시작index=찾은index-1;
-      }
-
-
-
-      내부html += 검색할클래스들[i].outerHTML;
+  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
+    if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      검색결과포함id배열.push(검색할클래스들[i].id);
     }
+  }
+  //예전코드 대비 추가 1 끝
+
+  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+  var 검색할클래스들 = document.querySelectorAll('.모든검색 .개별카테고리 > div > h6');
+  var 내부html = '';
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
+    if (검색결과포함id배열.includes(검색할클래스들[i].title) || 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      내부html += 검색할클래스들[i].outerHTML;
+      //제목부분과, 해당아이디 div가 있으면 그 내부의 모든 검색문자에 바탕색
+    }  
   }
   if (내부html == '') { alert('없음'); return; }
   document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
