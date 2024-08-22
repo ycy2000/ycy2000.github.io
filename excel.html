@@ -147,7 +147,7 @@
 
       </div>
       <div>
-        <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>검색단어바탕색 클래스 관련 예제, 임시클래스 </h6>
+        <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>검색단어바탕색 클래스 관련 예제, 임시_클래스 </h6>
         <h6 class="canvas_div" title='excel_js_검색단어바탕색'>코드 :  검색단어 결과에 바탕색 칠하는 방법 </h6>
         <h6 class="canvas_div" title='excel_js_펑션_검색확장'>코드 : 선택한캔버스_검색input_change시(e) => 검색확장</h6>
         <h6 class="canvas_div" title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
@@ -400,6 +400,14 @@
       <code class="fw-bold" style="text-indent: 30px;">.(점)으로 시작되고, </code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- email패턴 : /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- url패턴 : /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;</code>
+      <br>
+      <h5 class="fw-bold">정규식, 아닌것 : ?! </h5>
+      <code class="fw-bold"">• (?![^<]*?<\/span>) : *=없거나 있거나, ?=없거나 or 최대 한개만, <span style="color:blueviolet">span태그 통째로 제외</span>  </code>
+      <code class="fw-bold">• \/span 에서 /가 정규식에 쓰이는 문자열이므로 문자열이라는 표시로 \/ 으로 표현됨</code>
+      <code class="fw-bold">• (?![^<]*?$>) : 시작태그 아닌것, (?![^<]*?<\/*?$>) : 닫는태그 아닌것  </code>
+      <code class="fw-bold">• (?![^&]*;)</code>
+      <code class="fw-bold" style="color:blueviolet">★★ 내부의 여는태그부분과, 닫는태그부분만 제외하고 '찾기' 문자열에 클래스 부여</code>
+
     </div>
   </div>
 
@@ -458,9 +466,23 @@
 
   <div id="excel_js_검색단어바탕색예제"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold 임시클래스" style="text-indent: 15px;">
+        시작1찾기, 
+        <span title="child span1 title 찾기">
+          child span1 찾기, 
+          <span>
+            span 안의 span 찾기,
+          </span>child span2찾기, 
+        </span>시작2찾기 
+      </code>
+      <img src="portal/images/문서연결_엑셀VBA/바탕색예제.png" alt="이미지없음">
+
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <h5 class="fw-bold"></h5>
       <img src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
-      <code class="fw-bold 임시클래스"><!--주석노드-->
+      <code class="fw-bold"><!--주석노드-->
         시작부분텍스트(없으면 노드가 없음), 
         <span style="color:blueviolet">span텍스트 
           <a style="color:cadetblue;">스팬 안에 a 태그, a 태그 내부에 내용없는 span태그 하나 있음, 
@@ -469,21 +491,26 @@
         </span> 
         끝부분텍스트
       </code>
-      <code class="fw-bold">• 힌트 : 1) document.querySelector('.임시클래스').getElementsByTagName('*').length : <span style="color:blueviolet">모든 태그를 도는데</span></code>
+      <code class="fw-bold">• <span style="color:blueviolet">getElementsByTagName : 하나의 요소.getElementsByTagName, querySelectorAll 은 에러</span></code>
+      <code class="fw-bold">• 참고 : 1) document.querySelector('.??').getElementsByTagName('*').length : <span style="color:blueviolet">모든 태그를 도는데</span></code>
       <code class="fw-bold" style="text-indent: 68px;">2) 돌고 있는 Tag 의 previousSibling(이전 형제 노드, #comment, #text 포함) 의 </code>
       <code class="fw-bold" style="text-indent: 93px;">nodeNme='#text' 이면 앞쪽에 문자열이 있다는 의미. </code>
       <code class="fw-bold" style="text-indent: 68px;">3) 1), 2) 반복하면서 text 작업. 마지막 태그일때 nextSibling 의 nodeName='#text'이면 마지막 부분에 문자열이 있다</code>
       <code class="fw-bold" style="color:blueviolet;text-indent: 68px;">※ innerHTML로 쓸 정보를 배열에 담아둔다, 변경한배열을 합친다. innerHTML을 변경한다.</code>
-      <code class="fw-bold">• 힌트 : 1) </code>
-      <code class="fw-bold">• 힌트 : 1) </code>
+      <code class="fw-bold">• 참고 : 2) innerText를 변경하면 'innerHTML = 변경된 innerText'</code>
+      <br>
+      <h5 class="fw-bold">방법결정 : 태그 안의 내용은 그냥 두고, text부분만 변경 replace(/정규식/igm,'바꿀값')</h5>
+      <code class="fw-bold">• 플래그 i : 대소문자 구분없음, 플래그 g : 모두, 플래그 m : 행이 바뀌더라도 검색 계속 </code>
+      <code class="fw-bold">• 정규식, 태그내용 : <[^>]+>/g </code>
+      <code class="fw-bold">• 제외 정규식 출처 : <a href="https://bba-jin.tistory.com/14" target="_blank">https://bba-jin.tistory.com/14</a> </code>
+
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
     </div>
   </div>
 
@@ -538,7 +565,7 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"></h5>
       <img src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
-      <code class="fw-bold 임시클래스">
+      <code class="fw-bold">
         시작부분텍스트(없으면 노드가 없음), 
         <span style="color:blueviolet">span텍스트 
           <a style="color:cadetblue;">스팬 안에 a 태그, a 태그 내부에 내용없는 span태그 하나 있음, 
@@ -548,14 +575,14 @@
         끝부분텍스트
       </code>
       <h5 class="fw-bold">childNodes : 주석노드, 텍스트노드 포함, 첫번째 자식들만(첫번째 자식들 내부의 노드는 해당없음).</h5>
-      <code class="fw-bold">• document.querySelector('.임시클래스').childNodes[i].nodeName : 내부텍스트</code>
+      <code class="fw-bold">• document.querySelector('.??').childNodes[i].nodeName : 내부텍스트</code>
       <code class="fw-bold" style="text-indent: 15px;">childNodes : 첫번째 자식들. 자식들 내부의 노드는 제외됨. (children은 element요소만 해당)</code>
       <code class="fw-bold" style="text-indent: 15px;">nodeName : <span style="color:blueviolet">#text => innetText 안됨,</span> textContent</code>
       <code class="fw-bold" style="text-indent: 15px;">nodeName : SPAN => innetText, textContent</code>
       <h5 class="fw-bold">children : 주석노드X, 텍스트노드 X, 첫번째 자식들만(첫번째 자식들 내부의 노드는 해당없음).</h5>
       <h5 class="fw-bold">getElementsByTagName('*') : 주석노드X, 텍스트노드 X, 모든 태그(태그 내부의 태그 포함)</h5>
-      <code class="fw-bold">• 힌트 : document.querySelector('.임시클래스').getElementsByTagName('*').length</code>
-      <code class="fw-bold" style="text-indent: 15px;">힌트 : document.querySelector('.임시클래스').getElementsByTagName('*')[i].parentNode.nodeName</code>
+      <code class="fw-bold">• 힌트 : document.querySelector('.??').getElementsByTagName('*').length</code>
+      <code class="fw-bold" style="text-indent: 15px;">힌트 : document.querySelector('.??').getElementsByTagName('*')[i].parentNode.nodeName</code>
       <h5 class="fw-bold">기타 노드</h5>
       <code class="fw-bold">• parentNode: 부모 노드</code>
       <code class="fw-bold">• firstChild: 첫번째 자식 노드</code>

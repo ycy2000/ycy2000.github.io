@@ -1,49 +1,11 @@
 function 연습() {
-console.log('document.querySelector(.임시클래스).childNodes.length : ' + document.querySelector('.임시클래스').childNodes.length)
-console.log('childNodes는 #text 노드 포함하고, 첫번째 자식만 해당함')
-console.log('childNodes는 #text 사이에 다른 노드 있고, 다시 #text 노드 나오면, 각각 해당함')
-for (var i=0; i<document.querySelector('.임시클래스').childNodes.length; i++) {
-  console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').childNodes[i].nodeName)
-  console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').childNodes[i].textContent)
-}
-console.log('\ndocument.querySelector(.임시클래스).children.length : ' + document.querySelector('.임시클래스').children.length)
-console.log('children는 #text 노드 X, #comment 노드 X')
-console.log('element 요소만, 첫번째 자식만 해당함')
-for (var i=0; i<document.querySelector('.임시클래스').children.length; i++) {
-  console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').children[i].nodeName)
-  console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').children[i].textContent)
-}
-console.log('\ndocument.querySelector(.임시클래스).getElementsByTagName(*).length : ' + document.querySelector('.임시클래스').getElementsByTagName('*').length)
-for (var i=0; i<document.querySelector('.임시클래스').getElementsByTagName('*').length; i++) {
-  console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[i].nodeName)
-  console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[i].textContent)
-  console.log('node ' + i + ' 부모노드 : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[i].parentNode.nodeName)
-}
+  console.log('\ndocument.querySelector(.임시클래스).innerHTML : \n' + document.querySelector('.임시클래스').innerHTML)
 
+  //document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerHTML.replace(/찾기/gmi,'찾~~기')
 
-  return;
-  //id="excel_js_substr등
-  //document.querySelector('.임시클래스').innerText.repalce(/공백/g,'')
-  //document.querySelector('.임시클래스').innerText.replace(/\s/g,'<span class="검색결과바탕색"> </span>')
-  console.log('document.querySelector(.임시클래스).innerText : ' + document.querySelector('.임시클래스').innerText)
-  document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerText.replace(/안/g,'<span class="검색결과바탕색">안</span>')
-
-
-  console.log('document.querySelector(.임시클래스).innerHTML : ' + document.querySelector('.임시클래스').innerHTML)
-  console.log('document.querySelector(.임시클래스).childNodes.length : ' + document.querySelector('.임시클래스').childNodes.length)
-  for (var i=0; i<document.querySelector('.임시클래스').childNodes.length; i++) {
-    console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').childNodes[i].nodeName)
-    console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').childNodes[i].textContent)
-    console.log('node ' + i + ' innerText : ' + document.querySelector('.임시클래스').childNodes[i].innerText)
-  }
-  console.log(' ')
-  console.log('document.querySelector(.임시클래스).children.length : ' + document.querySelector('.임시클래스').children.length)
-  for (var i=0; i<document.querySelector('.임시클래스').children.length; i++) {
-    console.log('node ' + i + ' name : ' + document.querySelector('.임시클래스').children[i].nodeName)
-    console.log('node ' + i + ' textContent : ' + document.querySelector('.임시클래스').children[i].textContent)
-    console.log('node ' + i + ' innerText : ' + document.querySelector('.임시클래스').children[i].innerText)
-  }
-  console.log(' node는 내부 몽땅???')
+  document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerHTML.replace(/(찾기)+(?![^<]*>)/gmi,'<span class="검색결과바탕색">찾기</span>')
+  //(?![^<]*?$>) : 시작태그 아닌것, (?![^<]*?<\/*?$>)
+  console.log('\ndocument.querySelector(.임시클래스).innerHTML : \n' + document.querySelector('.임시클래스').innerHTML)
 
 
   
