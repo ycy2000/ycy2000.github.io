@@ -144,12 +144,10 @@
         <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
         <h6 class="canvas_div" title='excel_js_배열과json객체와json비교'>JS > 배열과 json객체와 json비교</h6>
         <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
-
+        <h6 class="canvas_div" title='excel_js_반복문'>JS > 반복문, for, do..while, 레이블 문, break 문, continue 문, for..in 문, for..of 문</h6>
       </div>
       <div>
-        <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>검색단어바탕색 클래스 관련 예제, 임시_클래스 </h6>
-        <h6 class="canvas_div" title='excel_js_검색단어바탕색'>코드 :  검색단어 결과에 바탕색 칠하는 방법 </h6>
-        <h6 class="canvas_div" title='excel_js_펑션_검색확장'>코드 : 선택한캔버스_검색input_change시(e) => 검색확장</h6>
+        <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
         <h6 class="canvas_div" title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
       </div>
     </div>
@@ -187,25 +185,6 @@
       <h6 style="text-indent: 23px;"></h6>
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="excel_js_검색단어바탕색"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">검색단어 결과 참고사항. 요소 안에서 검색하더라도, 요소안의 태그 내의 문자열일 수도 있다.</h5>
-      <code class="fw-bold">1) innerText 로 검색하면 요소안의 태그 내용은 검색이 안된다.</code>
-      <code class="fw-bold" style="text-indent: 23px;"> <span style="color:blueviolet">innerHTML 로 검색</span>하면 요소안의 태그 내용도 검색된다. <span style="color:blueviolet">이것 활용!! 위치정보 활용하기 위함</span></code>
-      <code class="fw-bold">2) 검색결과(요소내 첫번째 결과)의 위치 </code>
-      <code class="fw-bold">3) 검색결과를 검색결과 좌/우에 '바탕색칠하는 클래스를 부여한 span태그로 감싼다' </code>   
-      <code class="fw-bold" style="color:blueviolet">4) 사용후, 생성된 span태그 처리 : classList.remove('클래스명')  </code>   
-      <code class="fw-bold" style="text-indent: 23px;color:blueviolet">또는 클래스명 찾아서, outerHTML=innerHTML 형태로 처리</code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
@@ -498,8 +477,29 @@
     </div>
   </div>
 
+  <div id="excel_js_반복문"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Loops_and_iteration" target="_blank">반복문 링크</a></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
   <div id="excel_js_검색단어바탕색예제"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">검색단어 결과 참고사항. 요소 안에서 검색하더라도, 요소안의 태그 내의 문자열일 수도 있다.</h5>
+      <code class="fw-bold">1) innerText 로 검색하면 요소안의 태그 내용은 검색이 안된다.</code>
+      <code class="fw-bold" style="text-indent: 23px;"> <span style="color:blueviolet">innerHTML 로 검색</span>하면 요소안의 태그 내용도 검색된다. <span style="color:blueviolet">이것 활용!! 위치정보 활용하기 위함</span></code>
+      <code class="fw-bold">2) innerHTML을 변경하여 사용해야하고, 바꿀값은 태그내의 내용을 제외하고 싶다면, <span style="color:blueviolet">정규식활용 </span></code>
+      <br>
+
       <img src="portal/images/문서연결_엑셀VBA/노드예제2.png" alt="이미지없음">
       <br>
 
@@ -541,35 +541,6 @@
       <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
 
-    </div>
-  </div>
-
-  <div id="excel_js_펑션_검색확장"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">아이디 '캔버스이름_관련자료none' 첫번째 자식에는 '카테고리 클래스 요소', 'id'있는 요소 있음</h5>
-      <code class="fw-bold">• 처음 검색을 만들때 '카테고리 클래스 요소' 에서만 검색하도록 하였음. </code>
-      <code class="fw-bold" style="text-indent: 15px;">var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 검색할클래스들 의 title을 id로 하는 내용중에서도 검색하도록 코딩하려고 한다.</code>
-      <code class="fw-bold" style="color:blueviolet">• 순차적으로 찾기 위하여 id의 내용을 검색하여 id를 배열에 담아두는 코드를 먼저 추가하려고 한다. </code>
-      <code class="fw-bold">• 예전 코드 </code>
-      <img src="portal/images/문서연결_엑셀VBA/검색관련예전코드.png" alt="이미지없음">
-      <br><br>
-      <h5 class="fw-bold">참고사항</h5>
-      <img src="portal/images/문서연결_엑셀VBA/검색확장변경점참고정보1.png" alt="이미지없음">
-
-      <h6></h6>
-      <span style="color:blueviolet"></span>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <code class="fw-bold">• </code>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">변경점 (카테고리에서 검색결과에 id 검색결과 추가하는 형식)</h5>
-      <code class="fw-bold">• var 검색할클래스들 css 정의 관련</code>
-      <code class="fw-bold" style="text-indent: 30px;">- 검색할 곳 : <span style="color:blueviolet">class=모든검색 의 첫번째 자식인데 id가 있는 요소.</span></code>
-      <code class="fw-bold" style="text-indent: 48px;"><span style="color:blueviolet">var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]')</span></code>
     </div>
   </div>
 
