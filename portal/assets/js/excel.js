@@ -1,6 +1,14 @@
 function 연습() {
-  console.log('\ndocument.querySelector(.임시클래스).innerHTML : \n' + document.querySelector('.임시클래스').innerHTML)
 
+  //console.log(document.querySelector('.임시클래스').innerHTML.match(/<[^>]+>/g)) //태그형식
+  var 찾는값='찾기';
+  var 정규식내부= '(?![^<]*>)찾기'
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'g')
+  //console.log(document.querySelector('.임시클래스').innerHTML.match(/(?![^<]*>)찾기/g)) //태그형식 아닌것
+  console.log(정규식내부)
+  console.log(document.querySelector('.임시클래스').innerHTML.match(정규식내부)) //태그형식 아닌것
+
+  return;
   //document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerHTML.replace(/찾기/gmi,'찾~~기')
 
   document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerHTML.replace(/(찾기)+(?![^<]*>)/gmi,'<span class="검색결과바탕색">찾기</span>')
@@ -217,7 +225,7 @@ function 선택한캔버스클릭시(e) {
   }
 }
 
-function 선택한캔버스_검색input_change시(e) {
+function 원본_선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
   //추가 : 검색결과바탕색 클래스 TEXT만 남기기
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
@@ -256,7 +264,7 @@ function 선택한캔버스_검색input_change시(e) {
   document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;
 }
 
-function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e) {
+function 선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
   //추가 : 검색결과바탕색 클래스 TEXT만 남기기
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
@@ -267,6 +275,9 @@ function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e)
   var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
 
+  var 찾는값=검색할문자;
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'g')
+
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
@@ -276,6 +287,10 @@ function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e)
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
     if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색결과포함id배열.push(검색할클래스들[i].id);
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=
+        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
     }
   }
   //예전코드 대비 추가 1 끝
@@ -286,6 +301,9 @@ function 캔버스만되는예전꺼_선택한캔버스_검색input_change시(e)
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
     if (검색결과포함id배열.includes(검색할클래스들[i].title) || 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
       내부html += 검색할클래스들[i].outerHTML;
       //제목부분과, 해당아이디 div가 있으면 그 내부의 모든 검색문자에 바탕색
     }  

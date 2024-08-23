@@ -142,7 +142,7 @@
         <h6 class="canvas_div" title='excel_js_split'>JS > split : 찾기, 정규식, 구분문자의 개수를 구할수 있다.   </h6>
         <h6 class="canvas_div" title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
         <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
-        <h6 class="canvas_div" title='excel_js_json'>JS > json</h6>
+        <h6 class="canvas_div" title='excel_js_배열과json객체와json비교'>JS > 배열과 json객체와 json비교</h6>
         <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
 
       </div>
@@ -340,20 +340,15 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <img src="portal/images/문서연결_엑셀VBA/match3.png" alt="이미지없음">
-      <code class="fw-bold">• emailPattern : /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;</code>
-      <code class="fw-bold">• phonePattern : /\d{3}-\d{4}-\d{4}/g;</code>
-      <code class="fw-bold">• urlPattern : /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;</code>
-      <code class="fw-bold">• tagPattern : /<[^>]+>/g;</code>
-      <code class="fw-bold">• classPattern : /\.([a-zA-Z-_\d]+)/g;</code>
+
     </div>
   </div>
 
   <div id="excel_js_정규식"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-정규식-RegExp-누구나-이해하기-쉽게-정리" target="_blank">정규 표현식 링크</a> match정보 참고 </h5>
-      <h5 class="fw-bold">정규식 Regular Expression, 문자열에서 특정 문자 조합을 찾기 위한 패턴, 정규식도 객체다 </h5>
       <code class="fw-bold" style="color:blueviolet">출처: https://inpa.tistory.com/entry/JS-📚-정규식-RegExp-누구나-이해하기-쉽게-정리 [Inpa Dev 👨‍💻:티스토리]</code>
+      <h5 class="fw-bold">정규식 Regular Expression, 문자열에서 특정 문자 조합을 찾기 위한 패턴, 정규식도 객체다 </h5>
       <code class="fw-bold">• 정규식도 객채로서, RegExp의 exec()와 test() 매서드를 사용할 수 있습니다.</code>
       <code class="fw-bold">• String 의 match(), replace(), search(), split() 메서드와도 함께 사용할 수 있습니다.</code>
       <code class="fw-bold" style="color:blueviolet">• 정규식을 사용하는 방법으로는 test, exec, match 등이 있습니다.</code>
@@ -365,13 +360,28 @@
       <br>
       <h5 class="fw-bold">플래그부분 : i(대소문자구분없음), g(모두찾기), m(여러줄이 있는 경우 모두 찾기) </h5>
       <code class="fw-bold">• var 문자열='abc12_abc123_abc1234'</code>
-      <code class="fw-bold" style="text-indent: 15px;">var 문자패턴=/aBc\d{3}/i '설명 : \d=숫자, {2}=2개, i플래그=대소문자구분없음 </code>
+      <code class="fw-bold" style="text-indent: 15px;">var 문자패턴=/aBc\d{3}/i '설명 : \d=숫자, {3}=3개, i플래그=대소문자구분없음 </code>
       <code class="fw-bold" style="text-indent: 15px;">문자패턴 설명 : aBc로 시작되고(플래그i로 대소문자 구분이 없이), 연속으로 숫자 3개가 있는 문자열 </code>
       <img src="portal/images/문서연결_엑셀VBA/정규식.png" alt="이미지없음">
       <code class="fw-bold">• m : 뒤에서 배울 입력 시작(^) 앵커나 입력 종료($) 앵커는 전체 문자열이 아닌 각 줄 별로 대응되게 만들어졌기 때문에, </code>
       <code class="fw-bold" style="text-indent: 15px;">만일 여러줄을 검색해야 한다면 m 플래그를 사용한다고 보면 된다</code>
       <br>
       <h5 class="fw-bold" style="font-size:19px;">var 찾을문자열 = /abc/ ; var 찾을문자열 =  new RegEXP("abc"); var 찾을문자열 =  new RegEXP(/abc/);</h5>
+      <h5 class="fw-bold" style="font-size:19px;">var 찾을문자열 =  new RegEXP('abc', 'g'); var 찾을문자열 =  new RegEXP(/abc/, 'g');</h5>
+      <code class="fw-bold" style="color:blueviolet">• new RegEXP 사용시 정규식(//로 전달 또는,문자열의 경우//제외하고 따옴표로 감싼다, 플래그(따옴표로 감싼다) 전달방법 주의, </code>
+      <code class="fw-bold" style="color:blueviolet">• 정규식에 문자열 전달시 내부적으로 자동으로 / /로 감싸게되니 / /를 넣지않도록 한다.</code>
+      <br>
+      <h5 class="fw-bold" style="font-size:19px;">변수사용 방법 : new RegEXP('문자열', '플래그')</h5>
+      <img src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
+      <br><br>
+      <h5 class="fw-bold">/regexr/i : ①/(시작,종료기호)  ②regexr(패턴표현)  ③/(시작,종료기호)  ④i(플래그)</h5>
+      <br>
+      <img src="portal/images/문서연결_엑셀VBA/match3.png" alt="이미지없음">
+      <code class="fw-bold">• emailPattern : /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;</code>
+      <code class="fw-bold">• phonePattern : /\d{3}-\d{4}-\d{4}/g;</code>
+      <code class="fw-bold">• urlPattern : /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;</code>
+      <code class="fw-bold">• tagPattern : /<[^>]+>/g;</code>
+      <code class="fw-bold">• classPattern : /\.([a-zA-Z-_\d]+)/g;</code>
       <br>
       <code class="fw-bold">• </code>
       <code class="fw-bold">• </code>
@@ -383,7 +393,7 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">/regexr/i : ①/(시작,종료기호)  ②regexr(패턴표현)  ③/(시작,종료기호)  ④i(플래그)</h5>
+
       <code class="fw-bold">• \d : 숫자, \D : 숫자 아닌것, {개수}, 패턴아닌 문자는 문자 그대로. 플래그 g : 모두.</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 전화번호패턴 010-1234-5678: /\d{3}-\d{4}-\d{4}/g;</code>
       <code class="fw-bold">• ^문자열 : 문자열로 시작되는, 대괄호 안의 ^ ([^문자열]) : 각각의 문자열로 시작되지 않는 것 (제외)</code>
@@ -392,8 +402,8 @@
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- html태그패턴 : /<[^>]+>/g; => &#60;img src="" alt="이미지없음"></code>
       <code class="fw-bold" style="text-indent: 30px;">< 로 시작되고 > 가 아닌거 최소한글자 후 > 로 끝나는것 플래그 g 모두</code>
 
-      <code class="fw-bold">• \특수기호 : 특수기호 \* \^ \& \! \? ...등, . 도 특수기호?, 대괄호 안은 or 의미 [abc] : "a" 또는 "b" 또는 "c" 를 포함하는</code>
-      <code class="fw-bold" style="text-indent: 15px;">대괄호는 or : a-zA-Z 또는 A-z: 영어 알파벳 대소문자 모두 또는 _ 하이픈 또는 \d 숫자</code>
+      <code class="fw-bold">• \특수기호 : 특수기호 \* \^ \& \! \? 등, . 도 특수기호?, 대괄호 안은 or 의미 [abc] : "a" 또는 "b" 또는 "c" 를 포함하는</code>
+      <code class="fw-bold" style="text-indent: 15px;">대괄호는 or, a-zA-Z 또는 A-z: 영어 알파벳 대소문자 모두 또는 _ 하이픈 또는 \d 숫자</code>
       <code class="fw-bold" style="text-indent: 15px;">잘모르겠다 : + : 최소한개 or 여러개</code>
       <code class="fw-bold" style="text-indent: 15px;">플래그 g 모두</code>
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- html클래스패턴 : /\.([a-zA-Z-_\d]+)/g;</code>
@@ -402,19 +412,43 @@
       <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- url패턴 : /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;</code>
       <br>
       <h5 class="fw-bold">정규식, 아닌것 : ?! </h5>
+      <code class="fw-bold" style="color:blueviolet">출처: <a href="https://bba-jin.tistory.com/14" target="_blank">https://bba-jin.tistory.com/14</a></code>
       <code class="fw-bold"">• (?![^<]*?<\/span>) : *=없거나 있거나, ?=없거나 or 최대 한개만, <span style="color:blueviolet">span태그 통째로 제외</span>  </code>
       <code class="fw-bold">• \/span 에서 /가 정규식에 쓰이는 문자열이므로 문자열이라는 표시로 \/ 으로 표현됨</code>
       <code class="fw-bold">• (?![^<]*?$>) : 시작태그 아닌것, (?![^<]*?<\/*?$>) : 닫는태그 아닌것  </code>
       <code class="fw-bold">• (?![^&]*;)</code>
       <code class="fw-bold" style="color:blueviolet">★★ 내부의 여는태그부분과, 닫는태그부분만 제외하고 '찾기' 문자열에 클래스 부여</code>
-
+      <br>
+      <h5 class="fw-bold">연습</h5>
+      <code class="fw-bold 임시클래스" style="text-indent: 15px;">
+        시작1찾기, 
+        <span title="child span1 title 찾기">
+          child span1 찾기, 
+          <span>
+            span 안의 span 찾기,
+          </span>child span2찾기, 
+        </span>시작2찾기 
+      </code>
+      <img src="portal/images/문서연결_엑셀VBA/바탕색예제.png" alt="이미지없음">
+      <code class="fw-bold"">• html태그패턴 : /<[^>]+>/g; : 태그 형식 추출</code>
+      <img src="portal/images/문서연결_엑셀VBA/바탕색예제_태그형식추출.png" alt="이미지없음">
+      <code class="fw-bold"">• html태그패턴 아닌것 : /(?![^<]*>)찾기/g; : 태그 형식 무시하고, '찾기' 추출</code>
+      <code class="fw-bold" style="text-indent: 15px;">- [^<]부분을 [ ] 제외하면 안됨. 잘 모르겠다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- '찾기' 부분 변수사용 방법 : 정규식을 객체로 사용</code>
+      <img src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
+      <code class="fw-bold" style="text-indent: 45px;"></code>
+      <code class="fw-bold"">• </code>
+      <code class="fw-bold"">• </code>
+      <code class="fw-bold"">• </code>
+      <code class="fw-bold"">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
     </div>
   </div>
 
-  <div id="excel_js_json"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="excel_js_배열과json객체와json비교"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"></h5>
-      <h5 class="fw-bold">자료 출처 : <a href="https://gent.tistory.com/21" target="_blank">https://gent.tistory.com/21</a></h5>
+      <h5 class="fw-bold">자료 출처 : <a href="https://take-it-into-account.tistory.com/256#:~:text=%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20JSON%20Object%EB%93%A4%EC%9D%B4%20%EB%AA%A8%EC%9D%B8%20%EA%B2%83%EC%9D%B4%20JSON%20Array%EB%A1%9C%20%EB%8C%80%EA%B4%84%ED%98%B8,%EC%97%86%EB%8A%94%20%EB%B0%B0%EC%97%B4%20%ED%98%95%ED%83%9C%EB%A1%9C%20%EB%82%98%ED%83%80%EB%82%B4%EC%97%AC%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%B3%84%EB%A1%9C%20%EB%82%98%EB%88%84%EC%96%B4%20%EC%A0%80%EC%9E%A5%ED%95%98%EA%B3%A0%20%EC%A0%91%EA%B7%BC%ED%95%9C%EB%8B%A4." target="_blank">https://take-it-into-account.tistory.com/256#:~:text=%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20JSON%20Object%EB%93%A4%EC%9D%B4%20%EB%AA%A8%EC%9D%B8%20%EA%B2%83%EC%9D%B4%20JSON%20Array%EB%A1%9C%20%EB%8C%80%EA%B4%84%ED%98%B8,%EC%97%86%EB%8A%94%20%EB%B0%B0%EC%97%B4%20%ED%98%95%ED%83%9C%EB%A1%9C%20%EB%82%98%ED%83%80%EB%82%B4%EC%97%AC%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%B3%84%EB%A1%9C%20%EB%82%98%EB%88%84%EC%96%B4%20%EC%A0%80%EC%9E%A5%ED%95%98%EA%B3%A0%20%EC%A0%91%EA%B7%BC%ED%95%9C%EB%8B%A4.</a></h5>
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
@@ -466,21 +500,12 @@
 
   <div id="excel_js_검색단어바탕색예제"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold 임시클래스" style="text-indent: 15px;">
-        시작1찾기, 
-        <span title="child span1 title 찾기">
-          child span1 찾기, 
-          <span>
-            span 안의 span 찾기,
-          </span>child span2찾기, 
-        </span>시작2찾기 
-      </code>
-      <img src="portal/images/문서연결_엑셀VBA/바탕색예제.png" alt="이미지없음">
+      <img src="portal/images/문서연결_엑셀VBA/노드예제2.png" alt="이미지없음">
+      <br>
 
 
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold"></h5>
       <img src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
       <code class="fw-bold"><!--주석노드-->
         시작부분텍스트(없으면 노드가 없음), 
@@ -499,9 +524,14 @@
       <code class="fw-bold" style="color:blueviolet;text-indent: 68px;">※ innerHTML로 쓸 정보를 배열에 담아둔다, 변경한배열을 합친다. innerHTML을 변경한다.</code>
       <code class="fw-bold">• 참고 : 2) innerText를 변경하면 'innerHTML = 변경된 innerText'</code>
       <br>
+      <h5 class="fw-bold">변수사용 참고</h5>
+      <img src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
+      <br><br>
       <h5 class="fw-bold">방법결정 : 태그 안의 내용은 그냥 두고, text부분만 변경 replace(/정규식/igm,'바꿀값')</h5>
       <code class="fw-bold">• 플래그 i : 대소문자 구분없음, 플래그 g : 모두, 플래그 m : 행이 바뀌더라도 검색 계속 </code>
-      <code class="fw-bold">• 정규식, 태그내용 : <[^>]+>/g </code>
+      <code class="fw-bold">• 정규식, 태그내용 : /<[^>]+>/g</code>
+      <code class="fw-bold">• 정규식, 태그내용 제외하고 '찾기'를 찾는다 : /(?![^<]*>)찾기/g</code>
+      <code class="fw-bold">• '찾기'를 다른문자열 사용할 수 있게 변수로 넣기 : 위 '변수사용 참고' 부분 참고 </code>
       <code class="fw-bold">• 제외 정규식 출처 : <a href="https://bba-jin.tistory.com/14" target="_blank">https://bba-jin.tistory.com/14</a> </code>
 
       <code class="fw-bold" style="text-indent: 15px;"></code>
