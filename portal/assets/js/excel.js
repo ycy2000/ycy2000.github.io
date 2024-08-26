@@ -1,22 +1,13 @@
 function 연습() {
 
   //console.log(document.querySelector('.임시클래스').innerHTML.match(/<[^>]+>/g)) //태그형식
-  var 찾는값='찾기';
-  var 정규식내부= '(?![^<]*>)찾기'
-  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'g')
-  //console.log(document.querySelector('.임시클래스').innerHTML.match(/(?![^<]*>)찾기/g)) //태그형식 아닌것
-  console.log(정규식내부)
-  console.log(document.querySelector('.임시클래스').innerHTML.match(정규식내부)) //태그형식 아닌것
+  console.log('TagName[0].nodeNmae : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[0].nodeName)
+  console.log('TagName[0].firshChild.nodeValue : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[0].firstChild.nodeValue)
+  console.log('TagName[1].nodeNmae : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[1].nodeName)
+  console.log('TagName[1].firshChild.nodeValue : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[1].firstChild.nodeValue)
+  console.log('TagName[2].nodeNmae : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[2].nodeName)
+  console.log('TagName[2].firshChild.nodeValue : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[2].firstChild.nodeValue)
 
-  return;
-  //document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerHTML.replace(/찾기/gmi,'찾~~기')
-
-  document.querySelector('.임시클래스').innerHTML=document.querySelector('.임시클래스').innerHTML.replace(/(찾기)+(?![^<]*>)/gmi,'<span class="검색결과바탕색">찾기</span>')
-  //(?![^<]*?$>) : 시작태그 아닌것, (?![^<]*?<\/*?$>)
-  console.log('\ndocument.querySelector(.임시클래스).innerHTML : \n' + document.querySelector('.임시클래스').innerHTML)
-
-
-  
 
 }
 

@@ -399,7 +399,7 @@
       <code class="fw-bold" style="color:blueviolet">★★ 내부의 여는태그부분과, 닫는태그부분만 제외하고 '찾기' 문자열에 클래스 부여</code>
       <br>
       <h5 class="fw-bold">연습</h5>
-      <code class="fw-bold 임시클래스" style="text-indent: 15px;">
+      <code class="fw-bold 임시클래스" style="text-indent: 15px;"><!-- 주석 -->
         시작1찾기, 
         <span title="child span1 title 찾기">
           child span1 찾기, 
@@ -597,9 +597,17 @@
       <span style="color:blueviolet"></span>
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
+
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">노드.nodeName 결과</h5>
+      <code class="fw-bold">• 주석 : #comment,  텍스트 : #text, 다른 노드 : 대문자 ex) DIV, LI, A, SPAN,,,,</code>
+      <h5 class="fw-bold">노드.nodeValue 결과</h5>
+      <code class="fw-bold">• innerText와 같다고 본다, 단, #comment, #text 의 내부 텍스트도 nodeVlaue 로 확인 가능</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(document.querySelector('.임시클래스').childNodes[0].nodeValue)</code>
+      <code class="fw-bold">• 요소 자체는 nodeValue로 접근이 안된다. null 반환, document.querySelector('.임시클래스').nodeValue</code>
+      <code class="fw-bold" style="color:blueviolet">• 같은 레벨에 text노드 - 요소 - text노드 형식이면 text노드는 각각 구분된다.</code>
     </div>
   </div>
 
