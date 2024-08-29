@@ -156,7 +156,17 @@ function 내용검색() {//38개이까지 한 화면
     document.querySelector('#제목검색결과div').style.display='inline-block';
   }
 }
+function 검색결과바탕색초기화() {
+  console.log('검색결과바탕색 개수 : ' + document.querySelectorAll('.검색결과바탕색').length)
+  if (document.querySelectorAll('.검색결과바탕색').length>0) {
+    for (var i=0; i<document.querySelectorAll('.검색결과바탕색').length; i++) {
+      //document.querySelectorAll('.검색결과바탕색')[i].outerHTML=document.querySelectorAll('.검색결과바탕색')[i].innerHTML;
+      document.querySelectorAll('.검색결과바탕색')[i].classList.remove('검색결과바탕색')
+    }
+  }
+}
 function 제목과내용검색() {//38개이까지 한 화면
+  검색결과바탕색초기화()
   // #모든_버튼과UL그룹묶음 안의 li들의 innerHTML 에 #제목검색결과div input의 value가 포함되면 복사누적
   var li들=document.querySelectorAll('#모든_버튼과UL그룹묶음 li');
   var 누적할곳=document.querySelector('#제목검색결과div_내부ul');
@@ -178,13 +188,16 @@ function 제목과내용검색() {//38개이까지 한 화면
     section해당="미해당"
     li해당="미해당"
     해당판단='미해당';
-    if (li들[i].innerText.toUpperCase().search(찾을값) > -1) {li해당='해당'};
+    if (li들[i].innerText.toUpperCase().search(찾을값) > -1) {
+      console.log('li들[' + i + '] : ' + li들[i].innerText)
+      li들[i].innerHTML=
+      li들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾을값 + '</span>');
+      li해당='해당'
+    };
     li타이틀=li들[i].title;
     if (li타이틀=='') {li타이틀='_'}
     if (document.querySelector('#결과물집합 #' + li타이틀)) {
       if (document.querySelector('#결과물집합 #' + li타이틀).innerText.toUpperCase().search(찾을값) > -1) {
-        document.querySelector('#결과물집합 #' + li타이틀)[i].innerHTML=
-        document.querySelector('#결과물집합 #' + li타이틀)[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾을값 + '</span>');
         section해당='해당';
       } else {
         section해당='미해당';
