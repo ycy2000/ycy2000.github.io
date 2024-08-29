@@ -121,6 +121,7 @@ function 내용검색() {//38개이까지 한 화면
     document.querySelector('#제목검색결과div').style.display='none';
     return;
   }
+
   var 카운트=0;
   //li의 innerHTML에 있거나, 
   //결과 SECTION의 innerHTML에 있거나 ==> LI의 타이틀을 ID로 가지는것
@@ -132,11 +133,13 @@ function 내용검색() {//38개이까지 한 화면
     section해당="미해당"
     li해당="미해당"
     해당판단='미해당';
-    if (li들[i].innerHTML.toUpperCase().search(찾을값) > -1) {li해당='해당'};
+    if (li들[i].innerText.toUpperCase().search(찾을값) > -1) {
+      li해당='해당'
+    };
     li타이틀=li들[i].title;
     if (li타이틀=='') {li타이틀='_'}
     if (document.querySelector('#결과물집합 #' + li타이틀)) {
-      if (document.querySelector('#결과물집합 #' + li타이틀).innerHTML.toUpperCase().search(찾을값) > -1) {
+      if (document.querySelector('#결과물집합 #' + li타이틀).innerText.toUpperCase().search(찾을값) > -1) {//innerHTML 에서 Text로 변경
         section해당='해당';
       } else {
         section해당='미해당';
@@ -154,6 +157,51 @@ function 내용검색() {//38개이까지 한 화면
   }
 }
 function 제목과내용검색() {//38개이까지 한 화면
+  // #모든_버튼과UL그룹묶음 안의 li들의 innerHTML 에 #제목검색결과div input의 value가 포함되면 복사누적
+  var li들=document.querySelectorAll('#모든_버튼과UL그룹묶음 li');
+  var 누적할곳=document.querySelector('#제목검색결과div_내부ul');
+  누적할곳.innerHTML='';
+  var 찾을값=document.querySelector('#세관검색input').value.toUpperCase();
+  if (찾을값=='') {
+    document.querySelector('#제목검색결과div').style.display='none';
+    return;
+  }
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾을값, 'g') // 추가
+  var 카운트=0;
+  //li의 innerHTML에 있거나, 
+  //결과 SECTION의 innerHTML에 있거나 ==> LI의 타이틀을 ID로 가지는것
+  var li해당;
+  var li타이틀;
+  var section해당;
+  var 해당판단;
+  for (var i=0; i<li들.length; i++) {
+    section해당="미해당"
+    li해당="미해당"
+    해당판단='미해당';
+    if (li들[i].innerText.toUpperCase().search(찾을값) > -1) {li해당='해당'};
+    li타이틀=li들[i].title;
+    if (li타이틀=='') {li타이틀='_'}
+    if (document.querySelector('#결과물집합 #' + li타이틀)) {
+      if (document.querySelector('#결과물집합 #' + li타이틀).innerText.toUpperCase().search(찾을값) > -1) {
+        document.querySelector('#결과물집합 #' + li타이틀)[i].innerHTML=
+        document.querySelector('#결과물집합 #' + li타이틀)[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾을값 + '</span>');
+        section해당='해당';
+      } else {
+        section해당='미해당';
+      }
+    } else {
+      section해당='미해당';    
+    }
+    if (li해당=='해당' || section해당=='해당') {해당판단='해당'}
+    if (해당판단=='해당') {누적할곳.innerHTML+=li들[i].outerHTML;카운트+=1;}
+  }
+  if (카운트==0) {
+    alert('없음');
+  } else {
+    document.querySelector('#제목검색결과div').style.display='inline-block';
+  }
+}
+function 제목과내용검색_기존꺼백업() {//38개이까지 한 화면
   // #모든_버튼과UL그룹묶음 안의 li들의 innerHTML 에 #제목검색결과div input의 value가 포함되면 복사누적
   var li들=document.querySelectorAll('#모든_버튼과UL그룹묶음 li');
   var 누적할곳=document.querySelector('#제목검색결과div_내부ul');
