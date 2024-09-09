@@ -263,11 +263,11 @@ function 선택한캔버스_검색input_change시(e) {
     검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
   }
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-  var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
+  var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase(); 
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
 
-  var 찾는값=검색할문자;
-  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'g')
+  var 찾는값=document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value; 
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
 
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
