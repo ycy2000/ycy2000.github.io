@@ -53,6 +53,7 @@
         <button onclick="document.querySelector('#특수문자보기').style.display='block'">html 특수문자</button>
         <span onclick="document.querySelector('#세관검색input').value='';
                        document.querySelector('#제목검색결과div').style.display='none';
+                       검색결과바탕색초기화();
         " style="margin-left:5px;">찾기</span>
         <input style="width:120px;margin-left:3px;" type = "text" id="세관검색input"><button onclick="제목검색()">제목검색</button><button onclick="내용검색()">내용검색</button><button onclick="제목과내용검색()">제목+내용검색</button>
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->

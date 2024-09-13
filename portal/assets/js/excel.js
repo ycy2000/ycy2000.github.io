@@ -30,7 +30,7 @@ function header_클릭시(e) {
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
-  if (e.target.innerHTML == '탁구,github') {//캔버스 들어가려면 클릭이 된다.
+  if (e.target.innerHTML == '탁구,github,샷컷') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='탁구github전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
