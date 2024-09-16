@@ -739,11 +739,104 @@ function 숫자() {
 
 
 var 입력된번호들=document.querySelector('#id_번호입력');
+var 선긋기번호들=document.querySelector('#id_번호입력');
 function 번호하나삭제(e) {
   if (e.target.classList.contains('삭제')) {
     var 삭제할요소=e.target.parentNode;
     삭제할요소.innerHTML='';
   }
+}
+function 선긋기(e) {
+  var canvas = document.querySelector('#canvas');
+  var 선긋기요소=e.target.parentNode; //div안에 div 6개 안에 숫자있음
+  //선긋기표시 있는거 클릭시 초기화, 
+  if (선긋기요소.classList.contains('선긋기표시')) {
+    console.log('선긋기(e) 선긋기표시 클래스 있는거 다시 클릭시')
+    선긋기요소.classList.remove('선긋기표시');
+    canvas.classList.add('d-none');
+      //번호45색칠 초기화
+    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+    for (var i=0; i<버튼들.length; i++) {
+      if (버튼들[i].classList.contains('bg-primary')) {
+        버튼들[i].classList.remove('bg-primary');
+      }
+    }
+    return; // 이 동작만 여깃 중단
+  } else if (document.querySelectorAll('.선긋기표시').length==1) {
+    console.log('선긋기(e) 선긋기표시 클래스 있을때')
+    document.querySelector('.선긋기표시').classList.remove('선긋기표시');
+    선긋기요소.classList.add('선긋기표시');
+  } else if (document.querySelectorAll('.선긋기표시').length==0) {
+    console.log('선긋기(e) 선긋기표시 클래스 없을때')
+    선긋기요소.classList.add('선긋기표시')
+  }
+  var 숫자담기배열=[];
+  for (var i=0; i<document.querySelectorAll('.선긋기표시 > div').length; i++) {
+    숫자담기배열.push(document.querySelectorAll('.선긋기표시 > div')[i].innerText)
+  }
+  //번호45색칠 초기화
+  var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+  for (var i=0; i<버튼들.length; i++) {
+    if (버튼들[i].classList.contains('bg-primary')) {
+      버튼들[i].classList.remove('bg-primary');
+    }
+  }
+  //번호45, 6개번호 색칠
+  for (var i=0; i<버튼들.length; i++) {
+    if (숫자담기배열.find(element => element == i+1)) { 버튼들[i].classList.add('bg-primary');}
+  }
+  document.querySelector('#클릭수').innerHTML=6;
+
+  var canvas = document.getElementById("canvas");
+  canvas.classList.remove('d-none')
+  var ctx = canvas.getContext('2d');
+    // 픽셀 정리
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 컨텍스트 리셋
+    ctx.beginPath();
+  var 가로나머지;
+  var 세로몫;
+  var 가로;
+  var 세로;
+//5번 선을 긋는다. (가로, 세로), 메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1
+  for (var i=0; i<6; i++) {
+    세로몫=Math.floor((숫자담기배열[i]-1)/7);
+    가로나머지=(숫자담기배열[i]-1) % 7
+    if (가로나머지==0) {가로=5;} //
+    if (가로나머지==1) {가로=53;}
+    if (가로나머지==2) {가로=101;}
+    if (가로나머지==3) {가로=149;}
+    if (가로나머지==4) {가로=197;}
+    if (가로나머지==5) {가로=245;}
+    if (가로나머지==6) {가로=293;} //
+
+    if (세로몫==0) {세로=5;}
+    if (세로몫==1) {세로=53;}
+    if (세로몫==2) {세로=101;}
+    if (세로몫==3) {세로=149;}
+    if (세로몫==4) {세로=197;}
+    if (세로몫==5) {세로=245;}
+    if (세로몫==6) {세로=293;}//
+    console.log('(숫자담기배열[i]-1) : ' + (숫자담기배열[i]-1) + ', 가로나머지 : ' + 가로나머지 + ', 세로몫 : ' + 세로몫)
+    if (i==0) {
+      ctx.beginPath();
+      ctx.moveTo(가로, 세로); //숫자담기배열[0] 좌표
+    }
+    if (i>0) {
+      ctx.lineTo(가로, 세로);
+    }
+  }
+  ctx.stroke();
+  //ctx.closePath();
+  //7. 그려진 경로의 출력 방법을 설정합니다. -->
+
+}
+
+function 다음선() {
+  //선긋기 정보가 있을때 and 선택된정보가 없을때 첫번째
+  //선긋기 정보가 있을때 선택된 정보가 있고 마지막 정보일때 첫정보
+  //선긋기 정보가 있을때 선택된 정보가 있고 마지막 정보가 아닐때 다음꺼
+
 }
 
 var 번호입력모달body=document.querySelector('.모달바디왼쪽45');
@@ -774,7 +867,7 @@ function 번호입력(e) {
       }
     }
     document.querySelector('#id_번호입력').innerHTML=추가할innerhtml + '<button class="삭제">X</button><button class="선긋기">선긋기</button></div>' + document.querySelector('#id_번호입력').innerHTML;
-    console.log(document.querySelector('#id_번호입력').innerHTML);
+    //console.log(document.querySelector('#id_번호입력').innerHTML);
 
     //색칠해제후 클릭수0 초기화
     for (var i=0; i<버튼들.length; i++) {
@@ -785,6 +878,17 @@ function 번호입력(e) {
     document.querySelector('#클릭수').innerHTML=0
   }
   // 클릭수가 6일때 끝
+
+  // 클릭수가 7일때 (선긋기 보기할 때 하나 더 누르게 되면 초기화)
+  if (클릭수==7) {
+    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+    for (var i=0; i<버튼들.length; i++) {
+      if (버튼들[i].classList.contains('bg-primary')) {
+        버튼들[i].classList.remove('bg-primary');
+      }
+    }
+    document.querySelector('#클릭수').innerHTML=0
+  }
 }
 
 
@@ -805,4 +909,5 @@ function 번호입력(e) {
 
 
 입력된번호들.addEventListener('click', 번호하나삭제); 
+선긋기번호들.addEventListener('click', 선긋기); 
 번호입력모달body.addEventListener('click', 번호입력); 
