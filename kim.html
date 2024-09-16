@@ -107,77 +107,83 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="width:370px;">
+    <div class="modal-content" style="width:700px;background-color: white;"><!-- 1 ~ 45 -->
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body"><!-- 1 ~ 45 -->
-        <div>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
+      <div class="바디왼쪽" style="display:inline-block; margin-top:5px; margin-left:5px;width:380px;">
+        <div class="모달바디왼쪽45"><!-- 1 ~ 45 -->
+          <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+          </div>
+          <div>
+            <button>8</button>
+            <button>9</button>
+            <button>10</button>
+            <button>11</button>
+            <button>12</button>
+            <button>13</button>
+            <button>14</button>
+          </div>
+          <div>
+            <button>15</button>
+            <button>16</button>
+            <button>17</button>
+            <button>18</button>
+            <button>19</button>
+            <button>20</button>
+            <button>21</button>
+          </div>
+          <div>
+            <button>22</button>
+            <button>23</button>
+            <button>24</button>
+            <button>25</button>
+            <button>26</button>
+            <button>27</button>
+            <button>28</button>
+          </div>
+          <div>
+            <button>29</button>
+            <button>30</button>
+            <button>31</button>
+            <button>32</button>
+            <button>33</button>
+            <button>34</button>
+            <button>35</button>
+          </div>
+          <div>
+            <button>36</button>
+            <button>37</button>
+            <button>38</button>
+            <button>39</button>
+            <button>40</button>
+            <button>41</button>
+            <button>42</button>
+          </div>
+          <div>
+            <button>43</button>
+            <button>44</button>
+            <button>45</button>
+            <button id="클릭수" class="d-none">0</button>
+          </div>
         </div>
-        <div>
-          <button>8</button>
-          <button>9</button>
-          <button>10</button>
-          <button>11</button>
-          <button>12</button>
-          <button>13</button>
-          <button>14</button>
-        </div>
-        <div>
-          <button>15</button>
-          <button>16</button>
-          <button>17</button>
-          <button>18</button>
-          <button>19</button>
-          <button>20</button>
-          <button>21</button>
-        </div>
-        <div>
-          <button>22</button>
-          <button>23</button>
-          <button>24</button>
-          <button>25</button>
-          <button>26</button>
-          <button>27</button>
-          <button>28</button>
-        </div>
-        <div>
-          <button>29</button>
-          <button>30</button>
-          <button>31</button>
-          <button>32</button>
-          <button>33</button>
-          <button>34</button>
-          <button>35</button>
-        </div>
-        <div>
-          <button>36</button>
-          <button>37</button>
-          <button>38</button>
-          <button>39</button>
-          <button>40</button>
-          <button>41</button>
-          <button>42</button>
-        </div>
-        <div>
-          <button>43</button>
-          <button>44</button>
-          <button>45</button>
-          <button id="클릭수" class="d-none">0</button>
+        <div style="margin-top:5px; margin-bottom:5px;"><!-- class="modal-footer" -->
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="document.querySelector('#id_번호입력').innerHTML='<div></div>';">번호지움</button>
+          <button type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</button>
+          <button type="button" class="btn btn-secondary" onclick="다음선()">다음선</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="document.querySelector('#id_번호입력').innerHTML='<div></div>';">번호지움</button>
-        <button type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</button>
+      <div id="id_번호입력" style="position:absolute; left:355px;top:68px;width:340px;">
+        
       </div>
     </div>
   </div>
@@ -190,7 +196,7 @@
       <div></div><!-- 넓이차지용 -->
     </div>
 
-    <div id="id_번호입력">
+    <div>
       <div></div><!-- 넓이차지용 -->
     </div>
   </div>

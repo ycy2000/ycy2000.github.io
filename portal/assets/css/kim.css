@@ -7,11 +7,13 @@
 #회차와선택한당번 button:nth-of-type(1) {margin:0 5px;width:50px;background-color: red;}
 #회차와선택한당번 button:last-child {background-color: green;}
 
-.modal-body button {width:50px; height:50px;margin-right:-6px;margin-bottom:-2px; padding:0;}
+.모달바디왼쪽45 button {width:50px; height:50px;margin-right:-7px;margin-bottom:-2px; padding:0;}
 .일주전modal-body button {width:50px; height:50px;margin-right:-8px;margin-bottom:-2px; padding:0;}
-#id_번호입력 > div {display:block;width:295px;font-size: 25px;padding-right:15px;}  /*6개번호*/
+#id_번호입력 > div {display:block;width:355px;font-size: 25px;padding-right:15px;}  /*6개번호*/
 #id_번호입력 > div > div {display:inline-block;width:40px;text-align: center;} /*6개번호 내부 각 번호*/
-#삭제 {height:20px;width:20px;}
+#id_번호입력 > div > button {display:inline-block;width:40px;text-align: center;} /*삭제, 선긋기*/
+.삭제 {margin-left:5px;height:20px;width:20px;font-size: 12px;padding:0}
+.선긋기 {margin-left:10px;display:inline-block;height:20px;width:50px;font-size: 12px;padding:0}
 #id_번호입력아래당첨번호숨김 > div > span {margin-left:7px;}
 #id_번호입력아래당첨번호숨김 > div > span:nth-child(1) {margin-left:16px;}
 #id_번호입력아래당첨번호숨김 > div > span:nth-child(2) {margin-left:28px;}

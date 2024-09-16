@@ -740,14 +740,13 @@ function 숫자() {
 
 var 입력된번호들=document.querySelector('#id_번호입력');
 function 번호하나삭제(e) {
-  if (e.target.id=='삭제') {
+  if (e.target.classList.contains('삭제')) {
     var 삭제할요소=e.target.parentNode;
     삭제할요소.innerHTML='';
   }
-
 }
 
-var 번호입력모달body=document.querySelector('.modal-body');
+var 번호입력모달body=document.querySelector('.모달바디왼쪽45');
 function 번호입력(e) {
   var 클릭수=Number(document.querySelector('#클릭수').innerHTML);
   // bg-primary있으면 빼고 id=클릭수 숫자 -1
@@ -765,7 +764,7 @@ function 번호입력(e) {
 
   // 클릭수가 6일때
   if (클릭수==6) {
-    var 버튼들=document.querySelectorAll('.modal-body button');
+    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
     var 추가할innerhtml="<div>";
     //숫자 6개 입력
     for (var i=0; i<버튼들.length; i++) {
@@ -774,7 +773,7 @@ function 번호입력(e) {
         추가할innerhtml= 추가할innerhtml + '<div>' + 버튼들[i].innerHTML + '</div>';
       }
     }
-    document.querySelector('#id_번호입력').innerHTML=추가할innerhtml + '<button id="삭제"></button></div>' + document.querySelector('#id_번호입력').innerHTML;
+    document.querySelector('#id_번호입력').innerHTML=추가할innerhtml + '<button class="삭제">X</button><button class="선긋기">선긋기</button></div>' + document.querySelector('#id_번호입력').innerHTML;
     console.log(document.querySelector('#id_번호입력').innerHTML);
 
     //색칠해제후 클릭수0 초기화
