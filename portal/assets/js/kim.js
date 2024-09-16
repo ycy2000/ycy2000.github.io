@@ -746,6 +746,17 @@ function 번호하나삭제(e) {
     삭제할요소.innerHTML='';
   }
 }
+function 번호지움() {
+  document.querySelector('#id_번호입력').innerHTML='<div></div>';
+  document.querySelector('#canvas').classList.add('d-none');
+  var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+  for (var i=0; i<버튼들.length; i++) {
+    if (버튼들[i].classList.contains('bg-primary')) {
+      버튼들[i].classList.remove('bg-primary');
+    }
+  }
+  document.querySelector('#클릭수').innerHTML=0;
+}
 function 선긋기(e) {
   var canvas = document.querySelector('#canvas');
   var 선긋기요소=e.target.parentNode; //div안에 div 6개 안에 숫자있음
@@ -805,37 +816,32 @@ function 선긋기(e) {
     if (가로나머지==0) {가로=5;} //
     if (가로나머지==1) {가로=53;}
     if (가로나머지==2) {가로=101;}
-    if (가로나머지==3) {가로=149;}
-    if (가로나머지==4) {가로=197;}
-    if (가로나머지==5) {가로=245;}
-    if (가로나머지==6) {가로=293;} //
+    if (가로나머지==3) {가로=148;}
+    if (가로나머지==4) {가로=195;}
+    if (가로나머지==5) {가로=243;}
+    if (가로나머지==6) {가로=290;} //
 
     if (세로몫==0) {세로=5;}
     if (세로몫==1) {세로=53;}
-    if (세로몫==2) {세로=101;}
-    if (세로몫==3) {세로=149;}
-    if (세로몫==4) {세로=197;}
-    if (세로몫==5) {세로=245;}
-    if (세로몫==6) {세로=293;}//
-    console.log('(숫자담기배열[i]-1) : ' + (숫자담기배열[i]-1) + ', 가로나머지 : ' + 가로나머지 + ', 세로몫 : ' + 세로몫)
+    if (세로몫==2) {세로=100;}
+    if (세로몫==3) {세로=151;}
+    if (세로몫==4) {세로=200;}
+    if (세로몫==5) {세로=249;}
+    if (세로몫==6) {세로=298;}//
+    //console.log('(숫자담기배열[i]-1) : ' + (숫자담기배열[i]-1) + ', 가로나머지 : ' + 가로나머지 + ', 세로몫 : ' + 세로몫)
     if (i==0) {
       ctx.beginPath();
       ctx.moveTo(가로, 세로); //숫자담기배열[0] 좌표
+      //console.log('ctx.moveTo(가로, 세로) : ' + 가로 + ', ' + 세로)
     }
     if (i>0) {
       ctx.lineTo(가로, 세로);
+      //console.log('ctx.lineTo(가로, 세로) : ' + 가로 + ', ' + 세로)
     }
   }
   ctx.stroke();
   //ctx.closePath();
   //7. 그려진 경로의 출력 방법을 설정합니다. -->
-
-}
-
-function 다음선() {
-  //선긋기 정보가 있을때 and 선택된정보가 없을때 첫번째
-  //선긋기 정보가 있을때 선택된 정보가 있고 마지막 정보일때 첫정보
-  //선긋기 정보가 있을때 선택된 정보가 있고 마지막 정보가 아닐때 다음꺼
 
 }
 
