@@ -30,6 +30,9 @@
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <button style="border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="입력번호와회귀번호보이기()">번호입력</button>
+        <button style="border:none;" onclick="기본보기()">기본보기</button>
+        <button style="border:none;" onclick="색칠보기()">색칠보기</button>
         <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,22 +42,7 @@
             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="입력번호와회귀번호보이기()">번호입력</a></li>
             <li><a class="dropdown-item"  onclick="자동번호나온횟수()">자동번호나온횟수계산</a></li>
             <li><a class="dropdown-item"  onclick="자동번호나온횟수지우기()">자동번호나온횟수지우기</a></li>
-            <li><a class="dropdown-item"  onclick="window.location.reload()">새로고침</a>
-            <!-- <li><hr class="dropdown-divider"></li> -->
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown me-2 d-inline-block ms-3">
-          <a class="active nav-link dropdown-toggle" href="#" 
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            숨기기/보기
-          </a>
-          <ul class="dropdown-menu" style="width:300px;">
-            <li><a id="미출수와출수보기숨기기" class="dropdown-item" onclick="최근미출수와출수_viewHide()">미출수숨기기</a></li>
-            <li><a id="입력번호보기숨기기" class="dropdown-item" onclick="document.querySelector('#id_번호입력').innerHTML='<div></div>';">입력번호지우기</a></li>
-            <li><a class="dropdown-item" onclick="입력번호와회귀번호보이기()">입력번호+회귀번호보기</a></li>
-            <li><a class="dropdown-item" onclick="입력번호와회귀번호숨기기()">입력번호+회귀번호숨기기</a></li>
-            <li><a class="dropdown-item" onclick="자동번호나온횟수지우기()">자동번호나온횟수지우기</a></li>
+            <li><a class="dropdown-item"  onclick="window.location.reload()">새로고침</a></li>
             <li><a class="dropdown-item" onclick=" alert('화면넓이 : ' + document.body.clientWidth );">width</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
@@ -91,9 +79,6 @@
         </div>
         
       </div>
-
-
-
     </div>
   </nav>
 </header>
@@ -179,6 +164,7 @@
         <div style="margin-top:5px; margin-bottom:5px;"><!-- class="modal-footer" -->
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="번호지움()">번호지움</button>
+          <!-- 번호 없거나, 번호지움 후 횟수계산 누르면 나온횟수 지우기 -->
           <button type="button" class="btn btn-primary" onclick="자동번호나온횟수()">횟수 계산</button>
         </div>
       </div>
@@ -189,47 +175,990 @@
   </div>
 </div>
 
-
-<div class="p-2 d-flex container-fluid" style="margin:0 auto;">
-  <div>
-    <div id="id_번호입력아래당첨번호숨김">
-      <div></div><!-- 넓이차지용 -->
-    </div>
-
+<div id="기본보기">
+  <div class="p-2 d-flex container-fluid" style="margin:0 auto;">
     <div>
-      <div></div><!-- 넓이차지용 -->
+      <div id="id_번호입력아래당첨번호숨김">
+        <div></div><!-- 넓이차지용 -->
+      </div>
+
+      <div>
+        <div></div><!-- 넓이차지용 -->
+      </div>
+    </div>
+
+    <div style="margin:0 auto;width:100%;font-size: 20px;">
+      <div id="회차와선택한당번">
+        <span>최근회차</span>
+        <select id="회차select" onclick="
+        document.querySelector('#span_날짜').innerHTML='';
+        for (var i=0; i<document.querySelectorAll('#span_날짜 ~ button').length; i++) {
+          if (i>0) {document.querySelectorAll('#span_날짜 ~ button')[i].innerHTML='';}
+        }
+        ">
+        </select>
+        <span id="span_날짜"></span><button id="btn_당번조회" onclick="선택회차날짜와당번넣기()">조회</button><button>2</button><button>2</button><button></button><button></button><button></button><button></button><button></button>
+      </div>
+      <!--최근미출수와출수 js스크립트  -->
+      <div id="최근미출수와출수" >
+      </div>
+  <!--자동번호 나온횟수 js스크립트  -->
+      <div class="자동번호나온횟수" >
+        <div>자동번호 나온횟수</div>
+      </div>
+    </div>
+  </div><!-- main과 띄우기용 -->
+</div>
+<div id="색칠보기" class="d-none" style="width:1175px;height:920px;background-color:burlywood">
+  <div id="색칠보기_머리글">
+    <button>모두초기화</button><button>현재페이지초기화</button>
+    <div id="색칠보기_페이지번호">
+      <span>페이지선택</span>
+      <button class="선택노랑">1</button>
+      <button class="기본초코">2</button>
+      <button class="기본초코">3</button>
+      <button class="기본초코">4</button>
+      <button class="기본초코">5</button>
+      <button class="기본초코">6</button>
+      <button class="기본초코">7</button>
+      <button class="기본초코">8</button>
+      <button class="기본초코">9</button>
+      <button class="기본초코">10</button>
     </div>
   </div>
-
-  <div style="margin:0 auto;width:100%;font-size: 20px;">
-    <div id="회차와선택한당번">
-      <span>최근회차</span>
-      <select id="회차select" onclick="
-      document.querySelector('#span_날짜').innerHTML='';
-      for (var i=0; i<document.querySelectorAll('#span_날짜 ~ button').length; i++) {
-        if (i>0) {document.querySelectorAll('#span_날짜 ~ button')[i].innerHTML='';}
-      }
-      ">
-      </select>
-      <span id="span_날짜"></span><button id="btn_당번조회" onclick="선택회차날짜와당번넣기()">조회</button><button>2</button><button>2</button><button></button><button></button><button></button><button></button><button></button>
+  <div class="색칠보기_페이지">
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
     </div>
-    <!--최근미출수와출수 js스크립트  -->
-    <div id="최근미출수와출수" >
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
     </div>
-<!--자동번호 나온횟수 js스크립트  -->
-    <div class="자동번호나온횟수" >
-      <div>자동번호 나온횟수</div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
+    </div>
+    <div class="색칠div">
+      <div class="색칠div_45"><!-- 1 ~ 45 -->
+        <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>15</button>
+          <button>16</button>
+          <button>17</button>
+          <button>18</button>
+          <button>19</button>
+          <button>20</button>
+          <button>21</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>22</button>
+          <button>23</button>
+          <button>24</button>
+          <button>25</button>
+          <button>26</button>
+          <button>27</button>
+          <button>28</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>29</button>
+          <button>30</button>
+          <button>31</button>
+          <button>32</button>
+          <button>33</button>
+          <button>34</button>
+          <button>35</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>36</button>
+          <button>37</button>
+          <button>38</button>
+          <button>39</button>
+          <button>40</button>
+          <button>41</button>
+          <button>42</button>
+        </div>
+        <div class="가로색칠">
+          <div> </div>
+          <button>43</button>
+          <button>44</button>
+          <button>45</button>
+        </div>
+      </div>
     </div>
   </div>
-</div><!-- main과 띄우기용 -->
-
-
+</div>
 
 
 
 
 
 <div id="숨김정보전체" style="display:none;">
+  <!-- 색칠 복사해서 사용하는것 -->
+  <div class="색칠div">
+    <div class="색칠div_45"><!-- 1 ~ 45 -->
+      <div class="세로색칠div들"><div>지움</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div></div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+      </div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>8</button>
+        <button>9</button>
+        <button>10</button>
+        <button>11</button>
+        <button>12</button>
+        <button>13</button>
+        <button>14</button>
+      </div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>15</button>
+        <button>16</button>
+        <button>17</button>
+        <button>18</button>
+        <button>19</button>
+        <button>20</button>
+        <button>21</button>
+      </div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>22</button>
+        <button>23</button>
+        <button>24</button>
+        <button>25</button>
+        <button>26</button>
+        <button>27</button>
+        <button>28</button>
+      </div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>29</button>
+        <button>30</button>
+        <button>31</button>
+        <button>32</button>
+        <button>33</button>
+        <button>34</button>
+        <button>35</button>
+      </div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>36</button>
+        <button>37</button>
+        <button>38</button>
+        <button>39</button>
+        <button>40</button>
+        <button>41</button>
+        <button>42</button>
+      </div>
+      <div class="가로색칠">
+        <div> </div>
+        <button>43</button>
+        <button>44</button>
+        <button>45</button>
+      </div>
+    </div>
+  </div>
   <div id="숨김정보_당번전체">
     1_2002-12-07_10_23_29_33_35_40_16_2_2002-12-14_9_13_21_25_32_42_2_3_2002-12-21_11_16_19_21_27_31_30_4_2002-12-28_14_27_30_31_40_42_2_5_2003-01-04_16_24_29_40_41_42_3_
     6_2003-01-11_14_15_26_27_40_42_34_7_2003-01-18_2_9_16_25_26_40_42_8_2003-01-25_8_19_25_34_37_39_9_9_2003-02-01_2_4_16_17_36_39_14_10_2003-02-08_9_25_30_33_41_44_6_

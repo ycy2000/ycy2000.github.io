@@ -1,7 +1,15 @@
+//색칠보기에  .색칠보기_페이지 1개 있는데 9개 추가
+for (var i=0; i<9; i++) {
+  document.querySelector('#색칠보기').innerHTML=document.querySelector('#색칠보기').innerHTML + document.querySelector('.색칠보기_페이지').outerHTML;
+}
+for (var i=1; i<10; i++) {
+  document.querySelectorAll('.색칠보기_페이지')[i].classList.add('d-none');
+}
+
+
 function 전세계약시주의사항() {
     document.querySelector('#메모').classList.remove('d-none');
 }
-
 
 var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
 var 회차select안옵션html;
@@ -621,7 +629,7 @@ document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=회
 }
 
 
-
+//안씀
 function 최근미출수와출수_viewHide() {
   var 최근미출수와출수보기숨기기=	document.querySelector('#최근미출수와출수');
   
@@ -641,6 +649,7 @@ function 자동번호나온횟수지우기() {
 function 자동번호나온횟수() {
   //#id_번호입력 > div > div
   var id_번호입력_div개수=document.querySelectorAll('#id_번호입력 > div > div');
+  if (document.querySelectorAll('#id_번호입력 > div > div').length==0) {자동번호나온횟수지우기(); return;}
   var 숫자담기배열=[];
   var 숫자있을때증가=0;
   
@@ -705,6 +714,7 @@ function 자동번호나온횟수() {
   }
   자동번호나온횟수div.innerHTML='<div>자동번호 나온횟수</div>' + 추가할요소;
 }
+//안씀
 function 입력번호와회귀번호숨기기() {
   var 입력번호보기숨기기=	document.querySelector('#id_번호입력');
   var 회귀번호보기숨기기=	document.querySelector('#id_번호입력아래당첨번호숨김');
@@ -717,6 +727,7 @@ function 입력번호와회귀번호숨기기() {
     document.querySelector('#회귀번호보기숨기기').innerText='회귀번호보이기';
   }
 }
+//안씀
 function 입력번호와회귀번호보이기() {
   var 입력번호보기숨기기=	document.querySelector('#id_번호입력');
   var 회귀번호보기숨기기=	document.querySelector('#id_번호입력아래당첨번호숨김');
@@ -897,9 +908,98 @@ function 번호입력(e) {
     document.querySelector('#클릭수').innerHTML=0
   }
 }
+function 기본보기() {
+  console.log('기본보기');
+  document.querySelector('#기본보기').classList.remove('d-none');
+  document.querySelector('#색칠보기').classList.add('d-none');
+}
+function 색칠보기() {
+  console.log('색칠보기');
+  document.querySelector('#기본보기').classList.add('d-none');
+  document.querySelector('#색칠보기').classList.remove('d-none');
+}
+
+var 색칠보기이벤트=document.querySelector('#색칠보기');
+function 색칠보기클릭이벤트(e) {
+  if (e.target.parentNode.id=='색칠보기_페이지번호' && e.target.innerText!='페이지선택') {
+    //페이지 번호를 클릭했을때, 10개 페이지 일단 숨기기
+    for (var i=0; i<10; i++) {
+      document.querySelectorAll('.색칠보기_페이지')[i].classList.add('d-none');
+    }
+    document.querySelector('#색칠보기_페이지번호 > .선택노랑').classList='기본초코'
+    e.target.classList='선택노랑';
+    //페이지 번호를 클릭했을때, 해당페이지 보이기
+    document.querySelectorAll('.색칠보기_페이지')[e.target.innerText-1].classList.remove('d-none');
+  }
+  //세로색칠
+  if (e.target.parentNode.classList.contains('세로색칠div들') && e.target.innerText!='지움') {
+    e.target.parentNode.parentNode.id='임시부모표시';
+    e.target.classList.add('임시타겟표시');
+    var 타겟순번=-1;
+    for (var i=0; i < document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div').length; i++) {
+      if (document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div')[i].classList.contains('임시타겟표시')) {
+        타겟순번=i;
+      }
+    }
+    //class 색칠중 있으면 색 지우기, 없으면 색 입히기, js노랑줄
+    if (document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div')[타겟순번].classList.contains('js세로색칠중')) {
+      for (var i=0; i<document.querySelectorAll('#임시부모표시 .가로색칠 button:nth-of-type(' + 타겟순번 + ')').length; i++) {
+        document.querySelectorAll('#임시부모표시 .가로색칠 button:nth-of-type(' + 타겟순번 + ')')[i].classList.remove('js세로노랑줄');
+      }
+      document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div')[타겟순번].classList.remove('js세로색칠중')
+    } else {
+      for (var i=0; i<document.querySelectorAll('#임시부모표시 .가로색칠 button:nth-of-type(' + 타겟순번 + ')').length; i++) {
+        document.querySelectorAll('#임시부모표시 .가로색칠 button:nth-of-type(' + 타겟순번 + ')')[i].classList.add('js세로노랑줄');
+      }
+      document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div')[타겟순번].classList.add('js세로색칠중')
+    }
+    e.target.classList.remove('임시타겟표시');
+    e.target.parentNode.parentNode.id='';
+  }
+  //가로색칠
+  if (e.target.parentNode.classList.contains('가로색칠') && e.target.tagName=='DIV') {
+    console.log('가로색칠')
+    e.target.parentNode.parentNode.id='임시부모표시';
+    e.target.classList.add('임시타겟표시');
+    e.target.parentNode.id='임시가로색칠';
+    var 타겟순번=-1;
+    for (var i=0; i < document.querySelectorAll('#임시부모표시 > .가로색칠 > div').length; i++) {
+      if (document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[i].classList.contains('임시타겟표시')) {
+        타겟순번=i;
+      }
+    }
+    //
+    if (document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[타겟순번].classList.contains('js가로색칠중')) {
+      for (var i=0; i<document.querySelectorAll('#임시부모표시 .임시가로색칠 button').length; i++) {
+        document.querySelectorAll('#임시부모표시 .임시가로색칠 button')[i].classList.remove('js가로노랑줄');
+      }
 
 
 
+
+
+
+      document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[타겟순번].classList.remove('js가로색칠중')
+    } else {
+      for (var i=0; i<document.querySelectorAll('#임시부모표시 .가로색칠 div').length; i++) {
+        document.querySelectorAll('#임시부모표시 .가로색칠 div')[타겟순번].classList.add('js가로노랑줄');
+      }
+      document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[타겟순번].classList.add('js가로색칠중')
+    }
+    e.target.classList.remove('임시타겟표시');
+    e.target.parentNode.parentNode.id='';
+    e.target.parentNode.id='';
+  }
+  //버튼 틀릭했을때
+  if (e.target.parentNode.classList.contains('가로색칠') && e.target.tagName=='BUTTON') {
+    if (e.target.classList.contains('js버튼')) { 
+      e.target.classList.remove('js버튼');
+    } else {
+      e.target.classList.add('js버튼');
+    }
+    
+  }
+}
 
 
 
@@ -914,7 +1014,7 @@ function 번호입력(e) {
 
 
 
-
+색칠보기이벤트.addEventListener('click', 색칠보기클릭이벤트); 
 입력된번호들.addEventListener('click', 번호하나삭제); 
 선긋기번호들.addEventListener('click', 선긋기); 
 번호입력모달body.addEventListener('click', 번호입력); 

@@ -15,6 +15,35 @@
 .삭제 {margin-left:5px;height:20px;width:20px;font-size: 12px;padding:0}
 .선긋기 {margin-left:10px;display:inline-block;height:20px;width:50px;font-size: 12px;padding:0}
 .선긋기표시 {background-color: rgb(0, 162, 255);}
+#색칠보기_페이지번호 {display: inline-block; margin:0; padding:0;} 
+#색칠보기_페이지번호 > span {margin-left:-2px; display: inline-block;border:2px solid black;padding:1px 6px; background-color:chocolate;box-sizing: border-box;} 
+#색칠보기_페이지번호 > button {width:30px;margin-left:-2px; display: inline-block;border:2px solid black;padding:1px 0px; box-sizing: border-box;} 
+#색칠보기_페이지번호 > .기본초코 {background-color:chocolate;}
+#색칠보기_페이지번호 > .선택노랑 {background-color:yellow;}
+.색칠div {display: inline-block; margin-top:5px;}
+.세로색칠div들 > div, .색칠div_45 > div > div, .색칠div_45 > div > button {width:37px;height:37px;}
+.세로색칠div들 > div:not(:first-child), .가로색칠 > div {margin-left:-1px;vertical-align: top; display: inline-block; background-color: aqua;border:1px solid black;}
+.세로색칠div들 > div:first-child {vertical-align: top;display: inline-block; background-color: none;border:none;}
+.색칠div_45 > div > div, .색칠div_45 > div > button {vertical-align: top;display: inline-block;border:1px solid black;}
+.색칠div_45 > div > button {margin-left:-5px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(1) .가로색칠 > button:nth-of-type(5) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(5) .가로색칠 > button:nth-of-type(5) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(9) .가로색칠 > button:nth-of-type(5) {margin-left:-6px;}
+
+.색칠보기_페이지 > .색칠div:nth-of-type(2) .가로색칠 > button:nth-of-type(4) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(6) .가로색칠 > button:nth-of-type(4) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(10) .가로색칠 > button:nth-of-type(4) {margin-left:-6px;}
+
+.색칠보기_페이지 > .색칠div:nth-of-type(3) .가로색칠 > button:nth-of-type(3) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(7) .가로색칠 > button:nth-of-type(3) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(11) .가로색칠 > button:nth-of-type(3) {margin-left:-6px;}
+
+.색칠보기_페이지 > .색칠div:nth-of-type(4) .가로색칠 > button:nth-of-type(2) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(8) .가로색칠 > button:nth-of-type(2) {margin-left:-6px;}
+.색칠보기_페이지 > .색칠div:nth-of-type(12) .가로색칠 > button:nth-of-type(2) {margin-left:-6px;}
+.가로색칠 {margin:-1px 0 0 1px;padding:0;}
+.js세로노랑줄, .js가로노랑줄 {background-color:yellow;}
+.js버튼 {background-color:red;}
 #id_번호입력아래당첨번호숨김 > div > span {margin-left:7px;}
 #id_번호입력아래당첨번호숨김 > div > span:nth-child(1) {margin-left:16px;}
 #id_번호입력아래당첨번호숨김 > div > span:nth-child(2) {margin-left:28px;}
