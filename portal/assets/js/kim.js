@@ -931,6 +931,17 @@ function 색칠보기클릭이벤트(e) {
     //페이지 번호를 클릭했을때, 해당페이지 보이기
     document.querySelectorAll('.색칠보기_페이지')[e.target.innerText-1].classList.remove('d-none');
   }
+  //지움
+  if (e.target.parentNode.classList.contains('세로색칠div들') && e.target.innerText=='지움') {
+    console.log('지움')
+    e.target.parentNode.parentNode.id='임시부모표시';
+    for (var i=0; i<document.querySelectorAll('#임시부모표시 button').length; i++) {
+      document.querySelectorAll('#임시부모표시 button')[i].classList='';
+    }
+    for (var i=0; i<document.querySelectorAll('#임시부모표시 > div > div').length; i++) {
+      document.querySelectorAll('#임시부모표시 > div > div')[i].classList='';
+    }
+  }
   //세로색칠
   if (e.target.parentNode.classList.contains('세로색칠div들') && e.target.innerText!='지움') {
     e.target.parentNode.parentNode.id='임시부모표시';
@@ -958,7 +969,6 @@ function 색칠보기클릭이벤트(e) {
   }
   //가로색칠
   if (e.target.parentNode.classList.contains('가로색칠') && e.target.tagName=='DIV') {
-    console.log('가로색칠')
     e.target.parentNode.parentNode.id='임시부모표시';
     e.target.classList.add('임시타겟표시');
     e.target.parentNode.id='임시가로색칠';
@@ -970,19 +980,13 @@ function 색칠보기클릭이벤트(e) {
     }
     //
     if (document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[타겟순번].classList.contains('js가로색칠중')) {
-      for (var i=0; i<document.querySelectorAll('#임시부모표시 .임시가로색칠 button').length; i++) {
-        document.querySelectorAll('#임시부모표시 .임시가로색칠 button')[i].classList.remove('js가로노랑줄');
+      for (var i=0; i<document.querySelectorAll('#임시부모표시 #임시가로색칠 button').length; i++) {
+        document.querySelectorAll('#임시부모표시 #임시가로색칠 button')[i].classList.remove('js가로노랑줄');
       }
-
-
-
-
-
-
       document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[타겟순번].classList.remove('js가로색칠중')
     } else {
-      for (var i=0; i<document.querySelectorAll('#임시부모표시 .가로색칠 div').length; i++) {
-        document.querySelectorAll('#임시부모표시 .가로색칠 div')[타겟순번].classList.add('js가로노랑줄');
+      for (var i=0; i<document.querySelectorAll('#임시부모표시 #임시가로색칠 button').length; i++) {
+        document.querySelectorAll('#임시부모표시 #임시가로색칠 button')[i].classList.add('js가로노랑줄');
       }
       document.querySelectorAll('#임시부모표시 > .가로색칠 > div')[타겟순번].classList.add('js가로색칠중')
     }
