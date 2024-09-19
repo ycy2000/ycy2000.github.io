@@ -25,7 +25,7 @@
 .세로색칠div들 > div:not(:first-child), .가로색칠 > div {margin-left:-1px;vertical-align: top; display: inline-block; background-color: aqua;border:1px solid black;}
 .세로색칠div들 > div:first-child {vertical-align: top;display: inline-block; background-color: none;border:none;}
 .색칠div_45 > div > div, .색칠div_45 > div > button {vertical-align: top;display: inline-block;border:1px solid black;}
-.색칠div_45 > div > button {margin-left:-5px;}
+.색칠div_45 > div > button {margin-left:-6px;}
 .색칠보기_페이지 > .색칠div:nth-of-type(1) .가로색칠 > button:nth-of-type(5) {margin-left:-6px;}
 .색칠보기_페이지 > .색칠div:nth-of-type(5) .가로색칠 > button:nth-of-type(5) {margin-left:-6px;}
 .색칠보기_페이지 > .색칠div:nth-of-type(9) .가로색칠 > button:nth-of-type(5) {margin-left:-6px;}
