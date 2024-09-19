@@ -941,6 +941,7 @@ function 색칠보기클릭이벤트(e) {
     for (var i=0; i<document.querySelectorAll('#임시부모표시 > div > div').length; i++) {
       document.querySelectorAll('#임시부모표시 > div > div')[i].classList='';
     }
+    e.target.parentNode.parentNode.id='';
   }
   //세로색칠
   if (e.target.parentNode.classList.contains('세로색칠div들') && e.target.innerText!='지움') {
