@@ -921,6 +921,83 @@ function 색칠보기() {
 
 var 색칠보기이벤트=document.querySelector('#색칠보기');
 function 색칠보기클릭이벤트(e) {
+  //부모 : 색칠div_45(작업캔버스있는곳)
+  if (e.target.innerText=='선긋기') {
+    console.log('캔버스12선긋기');
+    e.target.parentNode.id='임시부모표시';
+    if (document.querySelector('#임시부모표시 canvas').classList.contains('js캔버스')) {
+      document.querySelector('#임시부모표시 canvas').classList.add('d-none');
+      document.querySelector('#임시부모표시 canvas').classList.remove('js캔버스');
+      console.log(document.querySelector('#임시부모표시 canvas').classList)
+    } else {
+      document.querySelector('#임시부모표시 canvas').classList.add('js캔버스');
+      document.querySelector('#임시부모표시 canvas').classList.remove('d-none');
+      console.log(document.querySelector('#임시부모표시 canvas').classList)
+    }
+
+
+
+    e.target.parentNode.id='';
+  }
+  if (e.target.innerText=='모두초기화') {
+    console.log('모두초기화');
+    console.log('js버튼 개수 : ' + document.querySelectorAll('.js버튼').length)
+    console.log('js세로색칠중 개수 : ' + document.querySelectorAll('.js세로색칠중').length)
+    console.log('js세로노랑줄 개수 : ' + document.querySelectorAll('.js세로노랑줄').length)
+    console.log('js가로색칠중 개수 : ' + document.querySelectorAll('.js가로색칠중').length)
+    console.log('js가로노랑줄 개수 : ' + document.querySelectorAll('.js가로노랑줄').length)
+    var js버튼개수=document.querySelectorAll('.js버튼').length;
+    var js세로색칠중개수=document.querySelectorAll('.js세로색칠중').length;
+    var js세로노랑줄개수=document.querySelectorAll('.js세로노랑줄').length;
+    var js가로색칠중개수=document.querySelectorAll('.js가로색칠중').length;
+    var js가로노랑줄개수=document.querySelectorAll('.js가로노랑줄').length;
+    
+    for (var i=0; i<js버튼개수; i++) {document.querySelectorAll('.js버튼')[js버튼개수-i-1].classList.remove('js버튼')}
+    for (var i=0; i<js세로색칠중개수; i++) {document.querySelectorAll('.js세로색칠중')[js세로색칠중개수-i-1].classList.remove('js세로색칠중')}
+    for (var i=0; i<js세로노랑줄개수; i++) {document.querySelectorAll('.js세로노랑줄')[js세로노랑줄개수-i-1].classList.remove('js세로노랑줄')}
+    for (var i=0; i<js가로색칠중개수; i++) {document.querySelectorAll('.js가로색칠중')[js가로색칠중개수-i-1].classList.remove('js가로색칠중')}
+    for (var i=0; i<js가로노랑줄개수; i++) {document.querySelectorAll('.js가로노랑줄')[js가로노랑줄개수-i-1].classList.remove('js가로노랑줄')}    
+  }
+  if (e.target.innerText=='현재페이지초기화') {
+    //#색칠보기 .색칠보기_페이지:nth-child : #색칠보기 첫번째 child는 #색칠보기_머리글 이고, 해당 순번이 .색칠보기_페이지 일때 선택됨. 순번2부터!!
+    console.log('현재페이지초기화');
+    var 페이지배열번호;
+    for (var i=0; i<document.querySelectorAll('#색칠보기_페이지번호 button').length; i++) {
+      if (document.querySelectorAll('#색칠보기_페이지번호 button')[i].classList.contains('선택노랑')) {페이지배열번호=i}
+    }
+    console.log('페이지배열번호 : ' + 페이지배열번호)
+    console.log('js버튼 개수 : ' + document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js버튼').length)
+    console.log('js세로색칠중 개수 : ' + document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js세로색칠중').length)
+    console.log('js세로노랑줄 개수 : ' + document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js세로노랑줄').length)
+    console.log('js가로색칠중 개수 : ' + document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로색칠중').length)
+    console.log('js가로노랑줄 개수 : ' + document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로노랑줄').length)
+    var js버튼개수=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js버튼').length;
+    var js세로색칠중개수=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js세로색칠중').length;
+    var js세로노랑줄개수=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js세로노랑줄').length;
+    var js가로색칠중개수=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로색칠중').length;
+    var js가로노랑줄개수=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로노랑줄').length;
+
+    for (var i=0; i<js버튼개수; i++) {
+      console.log('js버튼 클래스 삭제')
+      document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js버튼')[js버튼개수-i-1].classList.remove('js버튼')
+    }
+    for (var i=0; i<js세로색칠중개수; i++) {
+      console.log('js세로색칠중 클래스 삭제')
+      document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js세로색칠중')[js세로색칠중개수-i-1].classList.remove('js세로색칠중')
+    }
+    for (var i=0; i<js세로노랑줄개수; i++) {
+      console.log('js세로노랑줄 클래스 삭제')
+      document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js세로노랑줄')[js세로노랑줄개수-i-1].classList.remove('js세로노랑줄')
+    }
+    for (var i=0; i<js가로색칠중개수; i++) {
+      console.log('js가로색칠중 클래스 삭제')
+      document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로색칠중')[js가로색칠중개수-i-1].classList.remove('js가로색칠중')
+    }
+    for (var i=0; i<js가로노랑줄개수; i++) {
+      console.log('js가로노랑줄 클래스 삭제')
+      document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로노랑줄')[js가로노랑줄개수-i-1].classList.remove('js가로노랑줄')
+    }   
+  }
   if (e.target.parentNode.id=='색칠보기_페이지번호' && e.target.innerText!='페이지선택') {
     //페이지 번호를 클릭했을때, 10개 페이지 일단 숨기기
     for (var i=0; i<10; i++) {
@@ -953,7 +1030,7 @@ function 색칠보기클릭이벤트(e) {
         타겟순번=i;
       }
     }
-    //class 색칠중 있으면 색 지우기, 없으면 색 입히기, js노랑줄
+    //class 색칠중 있으면 색 지우기, 없으면 색 입히기, js노랑줄 
     if (document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div')[타겟순번].classList.contains('js세로색칠중')) {
       for (var i=0; i<document.querySelectorAll('#임시부모표시 .가로색칠 button:nth-of-type(' + 타겟순번 + ')').length; i++) {
         document.querySelectorAll('#임시부모표시 .가로색칠 button:nth-of-type(' + 타겟순번 + ')')[i].classList.remove('js세로노랑줄');
@@ -966,7 +1043,7 @@ function 색칠보기클릭이벤트(e) {
       document.querySelectorAll('#임시부모표시 > .세로색칠div들 > div')[타겟순번].classList.add('js세로색칠중')
     }
     e.target.classList.remove('임시타겟표시');
-    e.target.parentNode.parentNode.id='';
+    e.target.parentNode.parentNode.id=''; //색칠div_45
   }
   //가로색칠
   if (e.target.parentNode.classList.contains('가로색칠') && e.target.tagName=='DIV') {
