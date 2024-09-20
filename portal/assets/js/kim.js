@@ -922,22 +922,114 @@ function 색칠보기() {
 var 색칠보기이벤트=document.querySelector('#색칠보기');
 function 색칠보기클릭이벤트(e) {
   //부모 : 색칠div_45(작업캔버스있는곳)
+  var 정보; //캔버스초기화, 캔버스선긋기
   if (e.target.innerText=='선긋기') {
     console.log('캔버스12선긋기');
     e.target.parentNode.id='임시부모표시';
     if (document.querySelector('#임시부모표시 canvas').classList.contains('js캔버스')) {
       document.querySelector('#임시부모표시 canvas').classList.add('d-none');
       document.querySelector('#임시부모표시 canvas').classList.remove('js캔버스');
-      console.log(document.querySelector('#임시부모표시 canvas').classList)
+      //캔버스 초기화
     } else {
       document.querySelector('#임시부모표시 canvas').classList.add('js캔버스');
       document.querySelector('#임시부모표시 canvas').classList.remove('d-none');
       console.log(document.querySelector('#임시부모표시 canvas').classList)
     }
-
-
-
     e.target.parentNode.id='';
+    return;
+
+
+    document.getElementById('clear').addEventListener('click', function() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }, false);
+
+    var canvas = document.querySelector('#canvas');
+    var 선긋기요소=e.target.parentNode; //div안에 div 6개 안에 숫자있음
+    //선긋기표시 있는거 클릭시 초기화, 
+    if (선긋기요소.classList.contains('선긋기표시')) {
+      console.log('선긋기(e) 선긋기표시 클래스 있는거 다시 클릭시')
+      선긋기요소.classList.remove('선긋기표시');
+      canvas.classList.add('d-none');
+        //번호45색칠 초기화
+      var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+      for (var i=0; i<버튼들.length; i++) {
+        if (버튼들[i].classList.contains('bg-primary')) {
+          버튼들[i].classList.remove('bg-primary');
+        }
+      }
+      document.querySelector('#클릭수').innerHTML=0;
+      return; // 이 동작만 여깃 중단
+    } else if (document.querySelectorAll('.선긋기표시').length==1) {
+      console.log('선긋기(e) 선긋기표시 클래스 있을때')
+      document.querySelector('.선긋기표시').classList.remove('선긋기표시');
+      선긋기요소.classList.add('선긋기표시');
+    } else if (document.querySelectorAll('.선긋기표시').length==0) {
+      console.log('선긋기(e) 선긋기표시 클래스 없을때')
+      선긋기요소.classList.add('선긋기표시')
+    }
+    var 숫자담기배열=[];
+    for (var i=0; i<document.querySelectorAll('.선긋기표시 > div').length; i++) {
+      숫자담기배열.push(document.querySelectorAll('.선긋기표시 > div')[i].innerText)
+    }
+    //번호45색칠 초기화
+    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+    for (var i=0; i<버튼들.length; i++) {
+      if (버튼들[i].classList.contains('bg-primary')) {
+        버튼들[i].classList.remove('bg-primary');
+      }
+    }
+    //번호45, 6개번호 색칠
+    for (var i=0; i<버튼들.length; i++) {
+      if (숫자담기배열.find(element => element == i+1)) { 버튼들[i].classList.add('bg-primary');}
+    }
+    document.querySelector('#클릭수').innerHTML=6;
+  
+    var canvas = document.getElementById("canvas");
+    canvas.classList.remove('d-none')
+    var ctx = canvas.getContext('2d');
+      // 픽셀 정리
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // 컨텍스트 리셋
+      ctx.beginPath();
+    var 가로나머지;
+    var 세로몫;
+    var 가로;
+    var 세로;
+  //5번 선을 긋는다. (가로, 세로), 메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1
+    for (var i=0; i<6; i++) {
+      세로몫=Math.floor((숫자담기배열[i]-1)/7);
+      가로나머지=(숫자담기배열[i]-1) % 7
+      if (가로나머지==0) {가로=26;} //
+      if (가로나머지==1) {가로=74;}
+      if (가로나머지==2) {가로=122;}
+      if (가로나머지==3) {가로=169;}
+      if (가로나머지==4) {가로=216;}
+      if (가로나머지==5) {가로=264;}
+      if (가로나머지==6) {가로=311;} //
+  
+      if (세로몫==0) {세로=25;}
+      if (세로몫==1) {세로=73;}
+      if (세로몫==2) {세로=120;}
+      if (세로몫==3) {세로=168;}
+      if (세로몫==4) {세로=217;}
+      if (세로몫==5) {세로=266;}
+      if (세로몫==6) {세로=315;}//
+      //console.log('(숫자담기배열[i]-1) : ' + (숫자담기배열[i]-1) + ', 가로나머지 : ' + 가로나머지 + ', 세로몫 : ' + 세로몫)
+      if (i==0) {
+        ctx.beginPath();
+        ctx.moveTo(가로, 세로); //숫자담기배열[0] 좌표
+        //console.log('ctx.moveTo(가로, 세로) : ' + 가로 + ', ' + 세로)
+      }
+      if (i>0) {
+        ctx.lineTo(가로, 세로);
+        //console.log('ctx.lineTo(가로, 세로) : ' + 가로 + ', ' + 세로)
+      }
+    }
+    ctx.stroke();
+    //ctx.closePath();
+    //7. 그려진 경로의 출력 방법을 설정합니다. -->
+
+    
   }
   if (e.target.innerText=='모두초기화') {
     console.log('모두초기화');
