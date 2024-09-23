@@ -750,7 +750,7 @@ function 숫자() {
 
 
 var 입력된번호들=document.querySelector('#id_번호입력');
-var 선긋기번호들=document.querySelector('#id_번호입력');
+var 번호입력선긋기번호들=document.querySelector('#id_번호입력');
 function 번호하나삭제(e) {
   if (e.target.classList.contains('삭제')) {
     var 삭제할요소=e.target.parentNode;
@@ -768,9 +768,27 @@ function 번호지움() {
   }
   document.querySelector('#클릭수').innerHTML=0;
 }
-function 선긋기(e) {
+
+function 번호입력선긋기(e) {
+  console.log('번호입력 선긋기(e)')
   var canvas = document.querySelector('#canvas');
   var 선긋기요소=e.target.parentNode; //div안에 div 6개 안에 숫자있음
+  console.log('e.target.innerHTML : ' + e.target.innerHTML)
+
+  //선긋기표시 없을때 x 일때 지우고 return;
+  if (!선긋기요소 && e.target.innerHTML=='X') {
+    console.log('!선긋기요소 && e.target.innerHTML==X')
+    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
+    for (var i=0; i<버튼들.length; i++) {
+      if (버튼들[i].classList.contains('bg-primary')) {
+        버튼들[i].classList.remove('bg-primary');
+      }
+    }
+    document.querySelector('#클릭수').innerHTML=0;
+    canvas.classList.add('d-none');
+    return;
+  }
+
   //선긋기표시 있는거 클릭시 초기화, 
   if (선긋기요소.classList.contains('선긋기표시')) {
     console.log('선긋기(e) 선긋기표시 클래스 있는거 다시 클릭시')
@@ -812,49 +830,22 @@ function 선긋기(e) {
 
   var canvas = document.getElementById("canvas");
   canvas.classList.remove('d-none')
-  var ctx = canvas.getContext('2d');
+  var 선긋기 = canvas.getContext('2d');
     // 픽셀 정리
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    선긋기.clearRect(0, 0, canvas.width, canvas.height);
     // 컨텍스트 리셋
-    ctx.beginPath();
-  var 가로나머지;
-  var 세로몫;
+    선긋기.beginPath();
   var 가로;
   var 세로;
 //5번 선을 긋는다. (가로, 세로), 메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1
-  for (var i=0; i<6; i++) {
-    세로몫=Math.floor((숫자담기배열[i]-1)/7);
-    가로나머지=(숫자담기배열[i]-1) % 7
-    if (가로나머지==0) {가로=26;} //
-    if (가로나머지==1) {가로=74;}
-    if (가로나머지==2) {가로=122;}
-    if (가로나머지==3) {가로=169;}
-    if (가로나머지==4) {가로=216;}
-    if (가로나머지==5) {가로=264;}
-    if (가로나머지==6) {가로=311;} //
-
-    if (세로몫==0) {세로=25;}
-    if (세로몫==1) {세로=73;}
-    if (세로몫==2) {세로=120;}
-    if (세로몫==3) {세로=168;}
-    if (세로몫==4) {세로=217;}
-    if (세로몫==5) {세로=266;}
-    if (세로몫==6) {세로=315;}//
-    //console.log('(숫자담기배열[i]-1) : ' + (숫자담기배열[i]-1) + ', 가로나머지 : ' + 가로나머지 + ', 세로몫 : ' + 세로몫)
-    if (i==0) {
-      ctx.beginPath();
-      ctx.moveTo(가로, 세로); //숫자담기배열[0] 좌표
-      //console.log('ctx.moveTo(가로, 세로) : ' + 가로 + ', ' + 세로)
-    }
-    if (i>0) {
-      ctx.lineTo(가로, 세로);
-      //console.log('ctx.lineTo(가로, 세로) : ' + 가로 + ', ' + 세로)
-    }
+for (var i=0; i<6; i++) {
+    가로=버튼들[숫자담기배열[i]-1].offsetLeft+17;
+    세로=버튼들[숫자담기배열[i]-1].offsetTop-42;
+    console.log(가로 + ', ' + 세로 + ' , 버튼들[숫자담기배열[i]].innerHTML : '  + 버튼들[숫자담기배열[i]].innerHTML)
+    if (i==0) {선긋기.moveTo(가로,세로)}
+    if (i>0) {선긋기.lineTo(가로,세로)}
+    if (i==5) {선긋기.stroke()}
   }
-  ctx.stroke();
-  //ctx.closePath();
-  //7. 그려진 경로의 출력 방법을 설정합니다. -->
-
 }
 
 var 번호입력모달body=document.querySelector('.모달바디왼쪽45');
@@ -921,115 +912,59 @@ function 색칠보기() {
 
 var 색칠보기이벤트=document.querySelector('#색칠보기');
 function 색칠보기클릭이벤트(e) {
-  //부모 : 색칠div_45(작업캔버스있는곳)
-  var 정보; //캔버스초기화, 캔버스선긋기
+  //임시부모표시 : 색칠div_45(작업캔버스있는곳)
+  if (e.target.innerText=='선지움') {
+    console.log('캔버스12선지움');
+    e.target.parentNode.id='임시부모표시';//색칠div_45
+    //선긋기초기화
+    var 선긋기요소=document.querySelector('#임시부모표시 canvas');
+    var 선긋기 = 선긋기요소.getContext('2d');
+      // 픽셀 정리
+      선긋기.clearRect(0, 0, canvas.width, canvas.height);
+      // 컨텍스트 리셋
+      선긋기.beginPath();
+    //선긋기 끝
+    //마무리
+    document.querySelector('#임시부모표시 canvas').classList.add('d-none');
+    e.target.parentNode.id='';
+    e.target.innerText='선긋기';
+    return;
+  }
   if (e.target.innerText=='선긋기') {
     console.log('캔버스12선긋기');
-    e.target.parentNode.id='임시부모표시';
-    if (document.querySelector('#임시부모표시 canvas').classList.contains('js캔버스')) {
-      document.querySelector('#임시부모표시 canvas').classList.add('d-none');
-      document.querySelector('#임시부모표시 canvas').classList.remove('js캔버스');
-      //캔버스 초기화
-    } else {
-      document.querySelector('#임시부모표시 canvas').classList.add('js캔버스');
-      document.querySelector('#임시부모표시 canvas').classList.remove('d-none');
-      console.log(document.querySelector('#임시부모표시 canvas').classList)
-    }
-    e.target.parentNode.id='';
-    return;
-
-
-    document.getElementById('clear').addEventListener('click', function() {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-    }, false);
-
-    var canvas = document.querySelector('#canvas');
-    var 선긋기요소=e.target.parentNode; //div안에 div 6개 안에 숫자있음
-    //선긋기표시 있는거 클릭시 초기화, 
-    if (선긋기요소.classList.contains('선긋기표시')) {
-      console.log('선긋기(e) 선긋기표시 클래스 있는거 다시 클릭시')
-      선긋기요소.classList.remove('선긋기표시');
-      canvas.classList.add('d-none');
-        //번호45색칠 초기화
-      var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
-      for (var i=0; i<버튼들.length; i++) {
-        if (버튼들[i].classList.contains('bg-primary')) {
-          버튼들[i].classList.remove('bg-primary');
-        }
-      }
-      document.querySelector('#클릭수').innerHTML=0;
-      return; // 이 동작만 여깃 중단
-    } else if (document.querySelectorAll('.선긋기표시').length==1) {
-      console.log('선긋기(e) 선긋기표시 클래스 있을때')
-      document.querySelector('.선긋기표시').classList.remove('선긋기표시');
-      선긋기요소.classList.add('선긋기표시');
-    } else if (document.querySelectorAll('.선긋기표시').length==0) {
-      console.log('선긋기(e) 선긋기표시 클래스 없을때')
-      선긋기요소.classList.add('선긋기표시')
-    }
-    var 숫자담기배열=[];
-    for (var i=0; i<document.querySelectorAll('.선긋기표시 > div').length; i++) {
-      숫자담기배열.push(document.querySelectorAll('.선긋기표시 > div')[i].innerText)
-    }
-    //번호45색칠 초기화
-    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
-    for (var i=0; i<버튼들.length; i++) {
-      if (버튼들[i].classList.contains('bg-primary')) {
-        버튼들[i].classList.remove('bg-primary');
-      }
-    }
-    //번호45, 6개번호 색칠
-    for (var i=0; i<버튼들.length; i++) {
-      if (숫자담기배열.find(element => element == i+1)) { 버튼들[i].classList.add('bg-primary');}
-    }
-    document.querySelector('#클릭수').innerHTML=6;
-  
-    var canvas = document.getElementById("canvas");
-    canvas.classList.remove('d-none')
-    var ctx = canvas.getContext('2d');
+    e.target.parentNode.id='임시부모표시';//색칠div_45
+    var js버튼들=document.querySelectorAll('#임시부모표시 .js버튼');
+    if (js버튼들.length<2) {console.log('js버튼개수<2 : return : js버튼개수 : ' + js버튼들.length);return;}
+    //선긋기
+    var 선긋기요소=document.querySelector('#임시부모표시 canvas');
+    var 선긋기 = 선긋기요소.getContext('2d');
       // 픽셀 정리
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      선긋기.clearRect(0, 0, 선긋기요소.width, 선긋기요소.height);
       // 컨텍스트 리셋
-      ctx.beginPath();
-    var 가로나머지;
-    var 세로몫;
-    var 가로;
-    var 세로;
-  //5번 선을 긋는다. (가로, 세로), 메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1
-    for (var i=0; i<6; i++) {
-      세로몫=Math.floor((숫자담기배열[i]-1)/7);
-      가로나머지=(숫자담기배열[i]-1) % 7
-      if (가로나머지==0) {가로=26;} //
-      if (가로나머지==1) {가로=74;}
-      if (가로나머지==2) {가로=122;}
-      if (가로나머지==3) {가로=169;}
-      if (가로나머지==4) {가로=216;}
-      if (가로나머지==5) {가로=264;}
-      if (가로나머지==6) {가로=311;} //
-  
-      if (세로몫==0) {세로=25;}
-      if (세로몫==1) {세로=73;}
-      if (세로몫==2) {세로=120;}
-      if (세로몫==3) {세로=168;}
-      if (세로몫==4) {세로=217;}
-      if (세로몫==5) {세로=266;}
-      if (세로몫==6) {세로=315;}//
-      //console.log('(숫자담기배열[i]-1) : ' + (숫자담기배열[i]-1) + ', 가로나머지 : ' + 가로나머지 + ', 세로몫 : ' + 세로몫)
-      if (i==0) {
-        ctx.beginPath();
-        ctx.moveTo(가로, 세로); //숫자담기배열[0] 좌표
-        //console.log('ctx.moveTo(가로, 세로) : ' + 가로 + ', ' + 세로)
+      선긋기.beginPath();//선긋기 실행 선긋기.stroke();선긋기.closePath()처음마지막 연결 안씀;
+      // 선긋기 : 시작점 선긋기.moveTo(가로, 세로), 다음목적지 선긋기.lineTo(가로, 세로)
+      var 가로, 세로;
+      for (var i=0; i<js버튼들.length; i++) {
+        //가로=js버튼들[i].offsetLeft;position이 relativer기준
+        //세로=js버튼들[i].offsetTop;position이 relativer기준
+        console.log('js버튼들[i].offsetTop : ' + js버튼들[i].offsetTop)
+        가로=js버튼들[i].offsetLeft-18;
+        세로=js버튼들[i].offsetTop-18;
+        if (i==0) {선긋기.moveTo(가로,세로)}
+        if (i>0) {선긋기.lineTo(가로,세로)}
+        if (i==js버튼들.length-1) {선긋기.stroke()}
       }
-      if (i>0) {
-        ctx.lineTo(가로, 세로);
-        //console.log('ctx.lineTo(가로, 세로) : ' + 가로 + ', ' + 세로)
-      }
-    }
-    ctx.stroke();
-    //ctx.closePath();
-    //7. 그려진 경로의 출력 방법을 설정합니다. -->
 
-    
+
+
+
+
+
+    //마무리
+    document.querySelector('#임시부모표시 canvas').classList.remove('d-none');
+    e.target.parentNode.id='';
+    e.target.innerText='선지움';
+    return;
   }
   if (e.target.innerText=='모두초기화') {
     console.log('모두초기화');
@@ -1049,6 +984,38 @@ function 색칠보기클릭이벤트(e) {
     for (var i=0; i<js세로노랑줄개수; i++) {document.querySelectorAll('.js세로노랑줄')[js세로노랑줄개수-i-1].classList.remove('js세로노랑줄')}
     for (var i=0; i<js가로색칠중개수; i++) {document.querySelectorAll('.js가로색칠중')[js가로색칠중개수-i-1].classList.remove('js가로색칠중')}
     for (var i=0; i<js가로노랑줄개수; i++) {document.querySelectorAll('.js가로노랑줄')[js가로노랑줄개수-i-1].classList.remove('js가로노랑줄')}    
+
+    //현재페이지초기화에서 캔버스 초기화 12개
+    var 열두개각페이지들;
+    var 선긋기요소;
+    var 선긋기;
+
+    for (var 전체페이지=0; 전체페이지<10; 전체페이지++) {
+
+      열두개각페이지들=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (전체페이지+1) + ')' + ' .색칠div_45');
+        for (var i=0; i<열두개각페이지들.length; i++) {
+          열두개각페이지들[i].id='임시부모표시';
+
+          선긋기요소=document.querySelector('#임시부모표시 canvas');
+          선긋기 = 선긋기요소.getContext('2d');
+          선긋기.clearRect(0, 0, 선긋기요소.width, 선긋기요소.height);
+          // 컨텍스트 리셋
+          선긋기.beginPath();//선긋기 실행 선긋기.stroke();선긋기.closePath()처음마지막 연결 안씀;
+          선긋기요소.classList.add('d-none');
+          열두개각페이지들[i].id='';
+        }
+
+        for (var i=0; i<document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (전체페이지+1) + ')' + ' .색칠div_45 .선긋기').length; i++) {
+          document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (전체페이지+1) + ')' + ' .색칠div_45 .선긋기')[i].innerHTML='선긋기';
+        }
+
+
+
+    }
+
+
+
+    
   }
   if (e.target.innerText=='현재페이지초기화') {
     //#색칠보기 .색칠보기_페이지:nth-child : #색칠보기 첫번째 child는 #색칠보기_머리글 이고, 해당 순번이 .색칠보기_페이지 일때 선택됨. 순번2부터!!
@@ -1089,6 +1056,23 @@ function 색칠보기클릭이벤트(e) {
       console.log('js가로노랑줄 클래스 삭제')
       document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ') .js가로노랑줄')[js가로노랑줄개수-i-1].classList.remove('js가로노랑줄')
     }   
+    //현재페이지초기화에서 캔버스 초기화 12개
+    var 열두개각페이지들=document.querySelectorAll('#색칠보기 .색칠보기_페이지:nth-child(' + (페이지배열번호+2) + ')' + ' .색칠div_45');
+    var 선긋기요소;
+    var 선긋기;
+    for (var i=0; i<열두개각페이지들.length; i++) {
+      열두개각페이지들[i].id='임시부모표시';
+
+      선긋기요소=document.querySelector('#임시부모표시 canvas');
+      선긋기 = 선긋기요소.getContext('2d');
+      선긋기.clearRect(0, 0, 선긋기요소.width, 선긋기요소.height);
+      // 컨텍스트 리셋
+      선긋기.beginPath();//선긋기 실행 선긋기.stroke();선긋기.closePath()처음마지막 연결 안씀;
+      선긋기요소.classList.add('d-none');
+      document.querySelector('#임시부모표시 .선긋기').innerHTML='선긋기';
+      열두개각페이지들[i].id='';
+    }
+
   }
   if (e.target.parentNode.id=='색칠보기_페이지번호' && e.target.innerText!='페이지선택') {
     //페이지 번호를 클릭했을때, 10개 페이지 일단 숨기기
@@ -1110,6 +1094,14 @@ function 색칠보기클릭이벤트(e) {
     for (var i=0; i<document.querySelectorAll('#임시부모표시 > div > div').length; i++) {
       document.querySelectorAll('#임시부모표시 > div > div')[i].classList='';
     }
+    var 선긋기요소=document.querySelector('#임시부모표시 canvas');
+    var 선긋기 = 선긋기요소.getContext('2d');
+      // 픽셀 정리
+      선긋기.clearRect(0, 0, 선긋기요소.width, 선긋기요소.height);
+      // 컨텍스트 리셋
+      선긋기.beginPath();//선긋기 실행 선긋기.stroke();선긋기.closePath()처음마지막 연결 안씀;
+    document.querySelector('#임시부모표시 .선긋기').innerHTML='선긋기';
+    선긋기요소.classList.add('d-none')
     e.target.parentNode.parentNode.id='';
   }
   //세로색칠
@@ -1190,5 +1182,5 @@ function 색칠보기클릭이벤트(e) {
 
 색칠보기이벤트.addEventListener('click', 색칠보기클릭이벤트); 
 입력된번호들.addEventListener('click', 번호하나삭제); 
-선긋기번호들.addEventListener('click', 선긋기); 
+번호입력선긋기번호들.addEventListener('click', 번호입력선긋기); 
 번호입력모달body.addEventListener('click', 번호입력); 
