@@ -324,21 +324,14 @@ function 전체대체클릭시(e) {
     그리기.strokeStyle='blue'; // 선 색상, stroke()는 선 그리기 명령어
     그리기.lineWidth='1';
 
-    if (e.target.innerHTML=='캔버스초기화') {
+    if (!e.target.classList.contains('캔버스그리기')) {
       console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 캔버스초기화')
+      console.log('var 그리기 = 캔버스.getContext("2d"); 에서 이미 캔버스는 지워졌음.')
 
       //그리기.clearRect(0,0,캔버스.width,캔버스.height)
     }
-    if (e.target.innerHTML=='선긋기') {
-      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 선긋기')
-      
-    }
-    if (e.target.innerHTML=='선긋기처음과끝연결') {
-      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 선긋기처음과끝연결')
-      
-    }
-    if (e.target.innerHTML=='도형만들기') {
-      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 도형만들기')
+    if (e.target.classList.contains('캔버스그리기')) {
+      console.log('리스너_선긋기div안클릭시(e) > e.target.classList.contains(캔버스그리기)')
       그리기.clearRect(0,0,200,캔버스.height)
       그리기.strokeRect(5,5,200,40); //사각형그리기, 테두리
       그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
@@ -376,11 +369,36 @@ function 전체대체클릭시(e) {
       그리기.lineTo(420,10);
       그리기.lineTo(420,100);
       그리기.stroke();
+
+      그리기.fillText('그리기.moveTo(220,10);',223,12); //사각형그리기, 테두리
+      그리기.fillText('그리기.lineTo(420,10);',223,32); //사각형그리기, 테두리
+      그리기.fillText('그리기.lineTo(420,100);',223,52); //사각형그리기, 테두리
+      그리기.fillText('그리기.stroke();',223,72); //사각형그리기, 테두리
+
+      그리기.moveTo(220,110);
+      그리기.lineTo(420,110);
+      그리기.lineTo(420,220);
+      그리기.closePath();
+      그리기.stroke();
+
+      그리기.fillText('그리기.moveTo(220,10);',223,113); //사각형그리기, 테두리
+      그리기.fillText('그리기.lineTo(420,10);',223,133); //사각형그리기, 테두리
+      그리기.fillText('그리기.lineTo(420,100);',223,153); //사각형그리기, 테두리
+      그리기.fillStyle = 'blue';
+      그리기.fillText('그리기.closePath(); 처음과 끝좌표 연결',223,173); //사각형그리기, 테두리
+      그리기.fillStyle = 'black';
+      그리기.fillText('그리기.stroke();',223,193); //사각형그리기, 테두리
+
+      그리기.fillStyle = 'blue';
+      그리기.fillText('글자 넣는건 fillText',223,220); //사각형그리기, 테두리
+      그리기.fillStyle = 'black';
+      그리기.fillText('그리기.fillText("글자 넣는건 fillText",223,233)',223,240); //사각형그리기, 테두리
+      그리기.fillStyle = 'blue';
+      그리기.fillText('채우기색깔은 fillStyle',223,260); //사각형그리기, 테두리
+      그리기.fillStyle = 'black';
+      그리기.fillText('그리기.fillStyle = "blue";',223,280); //사각형그리기, 테두리
     }
-    if (e.target.innerHTML=='도형내 텍스트 채우기') {
-      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 도형내 텍스트 채우기')
-      
-    }
+
     return;
   }
 
