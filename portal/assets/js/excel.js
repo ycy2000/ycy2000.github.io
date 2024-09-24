@@ -1,13 +1,6 @@
 function 연습() {
-
-  //console.log(document.querySelector('.임시클래스').innerHTML.match(/<[^>]+>/g)) //태그형식
-  console.log('TagName[0].nodeNmae : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[0].nodeName)
-  console.log('TagName[0].firshChild.nodeValue : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[0].firstChild.nodeValue)
-  console.log('TagName[1].nodeNmae : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[1].nodeName)
-  console.log('TagName[1].firshChild.nodeValue : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[1].firstChild.nodeValue)
-  console.log('TagName[2].nodeNmae : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[2].nodeName)
-  console.log('TagName[2].firshChild.nodeValue : ' + document.querySelector('.임시클래스').getElementsByTagName('*')[2].firstChild.nodeValue)
-
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#excel_js_선긋기와위치').outerHTML;
+  document.querySelector('#전체대체').classList.remove('d-none');
 
 }
 
@@ -308,6 +301,88 @@ function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
   var 캔버스관련자료none안_타겟element;
   var 결과부분 = document.querySelector('#전체대체');
+  //다른곳 클릭하면 캔버스 그림이 지워지는 이유를 모르겠다.
+  
+  if (document.querySelector('#전체대체 #선긋기와위치')) {
+    console.log('#전체대체 안에 #선긋기와위치 canvas 들어 있으면')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    // DPR 정보 가져오기
+    var dpr = window.devicePixelRatio;
+    // 캔버스 요소의 크기 가져오기
+    var rect = 캔버스.getBoundingClientRect();
+    캔버스.width = rect.width * dpr;
+    캔버스.height = rect.height * dpr;
+    // scale() 함수를 사용하여 캔버스 유닛 크기 보정
+    그리기.scale(dpr, dpr);
+
+    //선색, 정렬, 선폭 미리 정해두기
+    그리기.font = "bold 10pt '맑은 고딕'";
+    그리기.textBaseline="top"; //top, middle, bottom, alphabetic, hanging, ideo graphic
+    그리기.fillStyle = 'red'; //채워지는 색깔, fillText도 채우기임
+    그리기.textAlign = 'left';
+    그리기.strokeStyle='blue'; // 선 색상, stroke()는 선 그리기 명령어
+    그리기.lineWidth='1';
+
+    if (e.target.innerHTML=='캔버스초기화') {
+      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 캔버스초기화')
+
+      //그리기.clearRect(0,0,캔버스.width,캔버스.height)
+    }
+    if (e.target.innerHTML=='선긋기') {
+      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 선긋기')
+      
+    }
+    if (e.target.innerHTML=='선긋기처음과끝연결') {
+      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 선긋기처음과끝연결')
+      
+    }
+    if (e.target.innerHTML=='도형만들기') {
+      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 도형만들기')
+      그리기.clearRect(0,0,200,캔버스.height)
+      그리기.strokeRect(5,5,200,40); //사각형그리기, 테두리
+      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
+      그리기.fillText('사각형 테두리 바로 만들기;',8,8); //사각형그리기, 테두리
+      그리기.fillText('그리기.strokeRect(5,5,200,40);',8,25); //사각형그리기, 테두리
+
+      그리기.beginPath();
+      그리기.strokeStyle = 'black'; //채워지는 색깔, fillText도 채우기임
+      그리기.rect(5,50,200,102); //사각형그리기, 테두리
+      그리기.stroke();
+      그리기.fillText('stroke()로 사각형 테두리 만들기;',8,56); //사각형그리기, 테두리
+      그리기.fillText('그리기.beginPath();',8,76); //사각형그리기, 테두리
+      그리기.fillText('그리기.strokeStyle = black;',8,96); //사각형그리기, 테두리
+      그리기.fillText('그리기.rect(5,50,200,90);',8,116); //사각형그리기, 테두리
+      그리기.fillText('그리기.stroke();',8,136); //사각형그리기, 테두리
+      // 그리기.fill(); ==> 그리기.stroke(); 결과에 채움
+      
+      그리기.beginPath();
+      그리기.fillText('채우기, 그리기.fill()은;',8,160); //사각형그리기, 테두리
+      그리기.fillText('그리기.stroke(); 전, 또는 후에',8,180); //사각형그리기, 테두리
+      그리기.fillText('채워진다.; 그리기.fillStyle = red;',8,200); //사각형그리기, 테두리
+      
+      그리기.fillStyle = 'red';
+      그리기.rect(5,220,200,80); //사각형그리기, 테두리
+      그리기.fill();
+      그리기.stroke();
+
+      그리기.fillStyle = 'black';
+      그리기.fillText('그리기.fillStyle = black;',8,225); //사각형그리기, 테두리
+      그리기.fillText('그리기.rect(5,220,200,50);',8,245); //사각형그리기, 테두리
+      그리기.fillText('그리기.fill();',8,265); //사각형그리기, 테두리
+      그리기.fillText('그리기.stroke();',8,285); //사각형그리기, 테두리
+
+      그리기.moveTo(220,10);
+      그리기.lineTo(420,10);
+      그리기.lineTo(420,100);
+      그리기.stroke();
+    }
+    if (e.target.innerHTML=='도형내 텍스트 채우기') {
+      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 도형내 텍스트 채우기')
+      
+    }
+    return;
+  }
 
   if (1 == 1) {
     //코딩등메모장text파일 : #canvas텍스트 배치후에 embed부분 수정
@@ -328,16 +403,6 @@ function 전체대체클릭시(e) {
     }    
   }
 }
-
-리스너_header.addEventListener('click', header_클릭시);
-리스너_전체대체.addEventListener('click', 전체대체클릭시);
-//리스너를 이것 저것으로 변경이 안됨??
-리스너_excel캔버스전체.addEventListener('click', 선택한캔버스클릭시);
-리스너_excel캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
-리스너_탁구github전체.addEventListener('click', 선택한캔버스클릭시);
-리스너_탁구github전체.addEventListener('change', 선택한캔버스_검색input_change시);
-리스너_htmlJavascript전체.addEventListener('click', 선택한캔버스클릭시);
-리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
 
 폼컨트롤이벤트_단독기능보라_클래스부여();
 
@@ -420,5 +485,18 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 
   }
 }
+
+리스너_header.addEventListener('click', header_클릭시);
+리스너_전체대체.addEventListener('click', 전체대체클릭시);
+//리스너를 이것 저것으로 변경이 안됨??
+리스너_excel캔버스전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_excel캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_탁구github전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_탁구github전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_htmlJavascript전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
+
+
+
 
 

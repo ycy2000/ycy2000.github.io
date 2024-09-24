@@ -150,6 +150,10 @@
         <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
         <h6 class="canvas_div" title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
       </div>
+      <div>
+        <h6 class="canvas_div" title='excel_js_선긋기와위치'>JS > 선긋기, 캔버스, 위치, 좌표</h6>
+        <h6 class="canvas_div" title='excel_js_캔버스흐림현상'>JS > 캔버스 흐림 현상, 그림영역과 관련됨</h6>
+      </div>
     </div>
 
     <div class="개별카테고리" id="htmlJavascript전체_html_css"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
@@ -566,6 +570,109 @@
 
     </div>
   </div>
+
+  <div id="excel_js_선긋기와위치"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">선긋기, 그리기 (캔버스)</h5>
+      <div style="position: relative;">
+        <div><button>캔버스초기화</button> <button>선긋기</button> <button>선긋기처음과끝연결</button> <button>도형만들기</button> <button>도형내 텍스트 채우기</button> <button>??</button></div>
+        <!--캔버스의 기본크기가, 너비 300, 높이 150-->
+        <canvas id="선긋기와위치" style="width:910px;height:300px;border:1px solid black;margin-top:5px;"></canvas>
+      </div>
+      <code class="fw-bold">var 캔버스 = document.querySelector('#전체대체 #선긋기와위치'); //캔버스만들어놓고 아이디 부여한것</code>
+      <code class="fw-bold">var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성</code>
+      <code class="fw-bold" style="color:blueviolet">• 요소.offsetX, 요소.offsetY : 마우스 좌표, 요소.offsetLeft, 요소.offsetTop : position:relative 기준</code>
+      <code class="fw-bold" style="color:blueviolet">• var 좌표정보 = 요소.getBoundingClientRect; // clientLeft 없는듯(client...)</code>
+      <code class="fw-bold" style="color:blueviolet">• 요소.clientLeft, 요소.clientTop, 요소.clientHeight : 화면기준</code>
+      <code class="fw-bold">• 그리기.beginPath(); : 그리기 시작. 있어야만 하는 경우를 모르겠다. 안 써도 되는듯.</code>
+      <code class="fw-bold">• 그리기.fillText('에프데 룬', 0, 0); // 글자를 넣는다. 좌표 위에 글자가 넣어진다 .<span style="color:blueviolet">실행마다 추가됨.</span></code>
+      <code class="fw-bold">• 그리기.Rect(x,y,w,h); // x,y좌표에서 w폭만큼 h높이만큼 사각형 그린다.(테두리)</code>
+      <code class="fw-bold">• 그리기.strokeRect(x,y,w,h); // x,y좌표에서 w폭만큼 h높이만큼 사각형 그린다.(테두리)</code>
+      <code class="fw-bold">• 그리기.clearRect(0,0,캔버스.width,캔버스.height) //설정된 영역만큼 캔버스에서 지움</code>
+      <code class="fw-bold">• 연속선 그리기 :</code>
+      <code class="fw-bold" style="text-indent: 15px;">1) 그리기.moveTo(가로,세로) : 기준위치 설정, </code>
+      <code class="fw-bold" style="text-indent: 15px;">2) 그리기.lineTo(가로,세로) : 그리면서 좌표이동(계속 할 수 있음)</code>
+      <code class="fw-bold" style="text-indent: 15px;">※ stroke(), fill() 전에, 처음과 끝을 연결하는 선을 그으려면 : <span style="color:blueviolet">그리기.closePath();</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">3) 다 그렸으면 AND 선으로 나타내려면 : 그리기.stroke(); // 선 타나남. </code>
+      <code class="fw-bold" style="text-indent: 15px;">3) 다 그렸으면 AND 처음과 끝을 연결하여 닫힌 공간을 채우려면 : 그리기.fill();</code>
+      
+      
+      
+      <h5 class="fw-bold">그리기 준비 : 캔버스와 캔버스안에서 그리기 객체, 필요시 서식 등</h5>
+      <code class="fw-bold">var 캔버스 = document.querySelector('#전체대체 #선긋기와위치'); //캔버스만들어놓고 아이디 부여한것</code>
+      <code class="fw-bold">var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성</code>
+      <code class="fw-bold">// 필요시, 서식 등</code>
+      <code class="fw-bold" style="text-indent: 15px;">폰트 설정 (키기와 글꼴, 글자스타일): 그리기.font</code>
+      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용</code>
+      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "20pt '맑은 고딕'"</code>
+      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "bold 20pt '맑은 고딕'"</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용</code>
+      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "20pt '맑은 고딕'"</code>
+      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "bold 20pt '맑은 고딕'"</code>
+
+
+
+      <code class="fw-bold" style="text-indent: 15px;">ctx.fillStyle = 'yellow';</code>
+      <code class="fw-bold" style="text-indent: 15px;">ctx.textAlign = 'center';</code>
+      <code class="fw-bold" style="text-indent: 15px;">ctx.strokeStyle='yellow'; // 선 색상, stroke()는 선 그리기 명령어</code>
+      <code class="fw-bold" style="text-indent: 15px;">ctx.lineWidth='1';</code>
+      <code class="fw-bold"><a href="https://rootingforme.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-canvas-%EA%B7%B8%EB%A6%BC%ED%8C%90-%EC%84%A0-%EA%B8%8B%EA%B8%B0-%EC%A0%90-%EC%B0%8D%EA%B8%B0-%EC%83%89%EC%83%81%EB%B3%80%EA%B2%BD-offsetX-offsetY-lineWidth-strokeStyle" target="_blank">그림판,선긋기,점찍기,색상변경</a></code>
+      <code class="fw-bold"><a href="https://blog.naver.com/javaking75/140170296812" target="_blank">텍스트출력하기</a></code>
+      <span style="color:blueviolet"></span>
+
+      
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+
+  <div id="excel_js_캔버스흐림현상"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• canvas 태그 만들면 기본크기가, 너비 300, 높이 150 ==> 인라인 스타일로 크기 크게 변경하면 확대되어 보이게 됨. </code>
+      <code class="fw-bold">• 기본너비보다 작을때는 자동으로 보정된다. 커질때가 문제이다. </code>
+      <code class="fw-bold">• 캔버스크기를 기본값보다 크게 인라인스타일로 지정한 경우 보정하는 코드.</code>
+      <code class="fw-bold" style="text-indent: 13px;">var 캔버스 = document.querySelector('#전체대체 #선긋기와위치');</code>
+      <code class="fw-bold" style="text-indent: 13px;">var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성</code>
+      <code class="fw-bold" style="text-indent: 13px;">// DPR 정보 가져오기</code>
+      <code class="fw-bold" style="text-indent: 13px;">var dpr = window.devicePixelRatio;</code>
+      <code class="fw-bold" style="text-indent: 13px;">// 캔버스 요소의 크기 가져오기</code>
+      <code class="fw-bold" style="text-indent: 13px;">var rect = 캔버스.getBoundingClientRect();</code>
+      <code class="fw-bold" style="text-indent: 13px;">캔버스.width = rect.width * dpr;</code>
+      <code class="fw-bold" style="text-indent: 13px;">캔버스.height = rect.height * dpr;</code>
+      <code class="fw-bold" style="text-indent: 13px;">// scale() 함수를 사용하여 캔버스 유닛 크기 보정</code>
+      <code class="fw-bold" style="text-indent: 13px;">그리기.scale(dpr, dpr);</code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+
 
   <div id="excel_js_HTML노드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
