@@ -303,9 +303,9 @@ function 전체대체클릭시(e) {
   var 결과부분 = document.querySelector('#전체대체');
   //다른곳 클릭하면 캔버스 그림이 지워지는 이유를 모르겠다.
   
-  if (document.querySelector('#전체대체 #선긋기와위치')) {
-    console.log('#전체대체 안에 #선긋기와위치 canvas 들어 있으면')
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치');
+  if (e.target.classList.contains('캔버스그리기')) {
+    console.log('e.target.classList.contains(캔버스그리기)')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치1');
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
     // DPR 정보 가져오기
     var dpr = window.devicePixelRatio;
@@ -324,83 +324,247 @@ function 전체대체클릭시(e) {
     그리기.strokeStyle='blue'; // 선 색상, stroke()는 선 그리기 명령어
     그리기.lineWidth='1';
 
-    if (!e.target.classList.contains('캔버스그리기')) {
-      console.log('리스너_선긋기div안클릭시(e) > e.target.innerHTML : 캔버스초기화')
-      console.log('var 그리기 = 캔버스.getContext("2d"); 에서 이미 캔버스는 지워졌음.')
+    그리기.clearRect(0,0,캔버스.width,캔버스.height)
+    그리기.strokeRect(5,5,200,40); //사각형그리기, 테두리
+    그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
+    그리기.fillText('사각형 테두리 바로 만들기;',8,8); //사각형그리기, 테두리
+    그리기.fillText('그리기.strokeRect(5,5,200,40);',8,25); //사각형그리기, 테두리
 
-      //그리기.clearRect(0,0,캔버스.width,캔버스.height)
-    }
-    if (e.target.classList.contains('캔버스그리기')) {
-      console.log('리스너_선긋기div안클릭시(e) > e.target.classList.contains(캔버스그리기)')
-      그리기.clearRect(0,0,200,캔버스.height)
-      그리기.strokeRect(5,5,200,40); //사각형그리기, 테두리
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('사각형 테두리 바로 만들기;',8,8); //사각형그리기, 테두리
-      그리기.fillText('그리기.strokeRect(5,5,200,40);',8,25); //사각형그리기, 테두리
+    그리기.beginPath();
+    그리기.strokeStyle = 'black'; //채워지는 색깔, fillText도 채우기임
+    그리기.rect(5,50,200,102); //사각형그리기, 테두리
+    그리기.stroke();
+    그리기.fillText('stroke()로 사각형 테두리 만들기;',8,56); //사각형그리기, 테두리
+    그리기.fillText('그리기.beginPath();',8,76); //사각형그리기, 테두리
+    그리기.fillText('그리기.strokeStyle = black;',8,96); //사각형그리기, 테두리
+    그리기.fillText('그리기.rect(5,50,200,90);',8,116); //사각형그리기, 테두리
+    그리기.fillText('그리기.stroke();',8,136); //사각형그리기, 테두리
+    // 그리기.fill(); ==> 그리기.stroke(); 결과에 채움
+    
+    그리기.beginPath();
+    그리기.fillText('채우기, 그리기.fill()은;',8,160); //사각형그리기, 테두리
+    그리기.fillText('그리기.beginPath(); 이후에',8,180); //사각형그리기, 테두리
+    그리기.fillText('변수에 담기는 것들 모두에',8,200); //사각형그리기, 테두리
+    그리기.fillText('채워진다.; 그리기.fillStyle = red;',8,220); //사각형그리기, 테두리
+    
+    그리기.fillStyle = 'red';
+    그리기.rect(5,240,200,80); //사각형그리기, 테두리
+    그리기.fill();
+    그리기.stroke();
 
-      그리기.beginPath();
-      그리기.strokeStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.rect(5,50,200,102); //사각형그리기, 테두리
-      그리기.stroke();
-      그리기.fillText('stroke()로 사각형 테두리 만들기;',8,56); //사각형그리기, 테두리
-      그리기.fillText('그리기.beginPath();',8,76); //사각형그리기, 테두리
-      그리기.fillText('그리기.strokeStyle = black;',8,96); //사각형그리기, 테두리
-      그리기.fillText('그리기.rect(5,50,200,90);',8,116); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke();',8,136); //사각형그리기, 테두리
-      // 그리기.fill(); ==> 그리기.stroke(); 결과에 채움
-      
-      그리기.beginPath();
-      그리기.fillText('채우기, 그리기.fill()은;',8,160); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke(); 전, 또는 후에',8,180); //사각형그리기, 테두리
-      그리기.fillText('채워진다.; 그리기.fillStyle = red;',8,200); //사각형그리기, 테두리
-      
-      그리기.fillStyle = 'red';
-      그리기.rect(5,220,200,80); //사각형그리기, 테두리
-      그리기.fill();
-      그리기.stroke();
+    그리기.fillStyle = 'black';
+    그리기.fillText('그리기.fillStyle = black;',8,245); //사각형그리기, 테두리
+    그리기.fillText('그리기.rect(5,220,200,50);',8,265); //사각형그리기, 테두리
+    그리기.fillText('그리기.fill();',8,285); //사각형그리기, 테두리
+    그리기.fillText('그리기.stroke();',8,305); //사각형그리기, 테두리
 
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.fillStyle = black;',8,225); //사각형그리기, 테두리
-      그리기.fillText('그리기.rect(5,220,200,50);',8,245); //사각형그리기, 테두리
-      그리기.fillText('그리기.fill();',8,265); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke();',8,285); //사각형그리기, 테두리
+    그리기.moveTo(220,10);
+    그리기.lineTo(420,10);
+    그리기.lineTo(420,100);
+    그리기.stroke();
 
-      그리기.moveTo(220,10);
-      그리기.lineTo(420,10);
-      그리기.lineTo(420,100);
-      그리기.stroke();
+    그리기.fillText('그리기.moveTo(220,10);',223,12); //사각형그리기, 테두리
+    그리기.fillText('그리기.lineTo(420,10);',223,32); //사각형그리기, 테두리
+    그리기.fillText('그리기.lineTo(420,100);',223,52); //사각형그리기, 테두리
+    그리기.fillText('그리기.stroke();',223,72); //사각형그리기, 테두리
 
-      그리기.fillText('그리기.moveTo(220,10);',223,12); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,10);',223,32); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,100);',223,52); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke();',223,72); //사각형그리기, 테두리
+    그리기.moveTo(220,110);
+    그리기.lineTo(420,110);
+    그리기.lineTo(420,220);
+    그리기.closePath();
+    그리기.stroke();
 
-      그리기.moveTo(220,110);
-      그리기.lineTo(420,110);
-      그리기.lineTo(420,220);
-      그리기.closePath();
-      그리기.stroke();
+    그리기.fillText('그리기.moveTo(220,10);',223,113); //사각형그리기, 테두리
+    그리기.fillText('그리기.lineTo(420,10);',223,133); //사각형그리기, 테두리
+    그리기.fillText('그리기.lineTo(420,100);',223,153); //사각형그리기, 테두리
+    그리기.fillStyle = 'blue';
+    그리기.fillText('그리기.closePath();',223,173); //사각형그리기, 테두리
+    그리기.fillText('처음과 끝좌표 연결',223,193); //사각형그리기, 테두리
+    그리기.fillStyle = 'black';
+    그리기.fillText('그리기.stroke();',223,213); //사각형그리기, 테두리
 
-      그리기.fillText('그리기.moveTo(220,10);',223,113); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,10);',223,133); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,100);',223,153); //사각형그리기, 테두리
-      그리기.fillStyle = 'blue';
-      그리기.fillText('그리기.closePath(); 처음과 끝좌표 연결',223,173); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.stroke();',223,193); //사각형그리기, 테두리
+    그리기.beginPath();
+    그리기.moveTo(220,240);
+    그리기.lineTo(420,240);
+    그리기.lineTo(420,350);
+    그리기.closePath();
+    그리기.fillStyle = 'red';
+    그리기.fill();
+    그리기.stroke();
 
-      그리기.fillStyle = 'blue';
-      그리기.fillText('글자 넣는건 fillText',223,220); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.fillText("글자 넣는건 fillText",223,233)',223,240); //사각형그리기, 테두리
-      그리기.fillStyle = 'blue';
-      그리기.fillText('채우기색깔은 fillStyle',223,260); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.fillStyle = "blue";',223,280); //사각형그리기, 테두리
-    }
+    그리기.fillStyle = 'black';
+    그리기.fillText('그리기.moveTo(220,10);',223,113); //사각형그리기, 테두리
+    그리기.fillText('그리기.lineTo(420,10);',223,133); //사각형그리기, 테두리
+    그리기.fillText('그리기.lineTo(420,100);',223,153); //사각형그리기, 테두리
+    그리기.fillStyle = 'blue';
+    그리기.fillText('그리기.closePath();',223,173); //사각형그리기, 테두리
+    그리기.fillText('처음과 끝좌표 연결',223,193); //사각형그리기, 테두리
+    그리기.fillStyle = 'black';
+    그리기.fillText('그리기.stroke();',223,213); //사각형그리기, 테두리
+
+    그리기.fillStyle = 'blue';
+    그리기.fillText('그리',223,250); //사각형그리기, 테두리
+    그리기.fillStyle = 'yellow';
+    그리기.fillText('기.stroke(); 직전에',250,250); //사각형그리기, 테두리
+    그리기.fillStyle = 'blue';
+    그리기.fillText('채우기 명령',223,270); //사각형그리기, 테두리
+    그리기.fillText('그리기.fill();',223,290); //사각형그리기, 테두리
+    그리기.fillText('그리기.closePath();',223,310); //사각형그리기, 테두리
+    그리기.fillText('없어도 채워짐;',223,330); //사각형그리기, 테두리
+
+    그리기.fillStyle = 'blue';
+    그리기.fillText('글자 넣는건 fillText',433,10); //사각형그리기, 테두리
+    그리기.fillStyle = 'black';
+    그리기.fillText('그리기.fillText("글자 넣는건 fillText",223,233)',433,30); //사각형그리기, 테두리
+    그리기.fillStyle = 'blue';
+    그리기.fillText('채우기색깔은 fillStyle',433,50); //사각형그리기, 테두리
+    그리기.fillStyle = 'black';
+    그리기.fillText('그리기.fillStyle = "blue";',433,70); //사각형그리기, 테두리
+
+    그리기.lineWidth=20;
+    그리기.strokeRect(433,95,232,80);
+    그리기.fillText('그리기.lineWidth=20;',443,110);
+    그리기.fillText('그리기.strokeRect(433,90,180,40);',443,130);
+    그리기.fillText('사각형부분은 선의 중앙;',443,150);
+
+    그리기.fillRect(675,95,232,80);
+    그리기.fillStyle = 'yellow';
+    그리기.fillText('그리기.fillRect(675,95,232,80);',685,105);
+    그리기.fillText('채워진사각형',685,125);
+
+    그리기.strokeRect(433,200,232,80);
+    그리기.fillStyle = 'yellow';
+    그리기.fillRect(433,200,232,80);
+    그리기.fillStyle = 'black';
+    그리기.fillText('순서',443,215);
+    그리기.fillText('strokeRect > fillRect;',443,230);
+    그리기.fillText('나중꺼가 덮어씀',443,250);
+
+    그리기.fillStyle = 'yellow';
+    그리기.fillRect(675,200,232,80);
+    그리기.strokeStyle='black';
+    그리기.strokeRect(675,200,232,80);
+    그리기.fillStyle = 'black';
+    그리기.fillText('순서',685,215);
+    그리기.fillText('fillRect > strokeRect;',685,235);
+    그리기.fillText('나중꺼가 덮어씀',685,255);
+
+
+
+
+
 
     return;
   }
+  if (e.target.innerHTML=='캔버스초기화1') {
+    console.log('e.target.innerHTML==캔버스초기화1');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치1');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
+  if (e.target.innerHTML=='그리기2') {
+    console.log('e.target.innerHTML==그리기2')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+
+    //그리기.lineCap = "butt/square/round" 
+
+    그리기.strokeStyle='black';
+    그리기.fillStyle='black';
+    그리기.font = "bold 10pt '맑은 고딕'"; // 순서 중요하네
+    그리기.lineWidth=20;
+    그리기.beginPath();
+
+    그리기.moveTo(15,15);
+    그리기.lineTo(80,15);
+    그리기.lineTo(80,55);
+    그리기.lineTo(15,55);
+    그리기.lineTo(15,15);
+    그리기.lineCap='butt';
+    그리기.stroke();
+    그리기.fillText('butt (디폴트)',5,80);
+
+    그리기.fillText('맨마지막에만 적용된다. ',5,100);
+    그리기.fillText('나머지는 꺽이는 부분 서식으로 해야함. ',5,120);
+    그리기.fillText('그리기.lineJoin="속성 값"',5,140);
+
+    그리기.beginPath();
+    그리기.moveTo(110,15);
+    그리기.lineTo(175,15);
+    그리기.lineTo(175,55);
+    그리기.lineTo(110,55);
+    그리기.lineTo(110,15);
+    그리기.lineCap='square';
+    그리기.stroke();
+    그리기.fillText('square',120,80);
+
+    그리기.beginPath();
+    그리기.moveTo(205,15);
+    그리기.lineTo(270,15);
+    그리기.lineTo(270,55);
+    그리기.lineTo(205,55);
+    그리기.lineTo(205,15);
+    그리기.lineCap='round';
+    그리기.stroke();
+    그리기.fillText('round',215,80);
+
+
+  }
+  if (e.target.innerHTML=='그리기3') {
+    console.log('e.target.innerHTML==그리기3')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치3');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+
+    //선 꺾이는 부분 처리, 그리기.lineJoin = "miter" // miter (디폴트), bevel, round 중 1개
+
+    그리기.strokeStyle='black';
+    그리기.fillStyle='black';
+    그리기.font = "bold 10pt '맑은 고딕'"; // 순서 중요하네
+    그리기.lineWidth=20;
+    그리기.beginPath();
+
+    그리기.lineJoin='miter';
+    그리기.moveTo(15,15);
+    그리기.lineTo(80,15);
+    그리기.lineTo(80,55);
+    그리기.lineTo(15,55);
+    그리기.lineTo(15,15);
+    그리기.stroke();
+    그리기.fillText('miter (디폴트)',5,80);
+
+    그리기.fillText('꺽어지는 부분에만 적용된다. ',5,100);
+    그리기.fillText('그리기.lineJoin="속성 값"',5,120);
+
+    그리기.beginPath();
+    그리기.lineJoin='bevel'; //좌표에서 벗어나 튀어나오는 라인폭의 1/2을 잘라냄
+    그리기.moveTo(110,15);
+    그리기.lineTo(175,15);
+    그리기.lineTo(175,55);
+    그리기.lineTo(110,55);
+    그리기.lineTo(110,15);
+    그리기.stroke();
+    그리기.fillText('bevel',120,80);
+
+    그리기.beginPath();
+    그리기.lineJoin='round';
+    그리기.moveTo(205,15);
+    그리기.lineTo(270,15);
+    그리기.lineTo(270,55);
+    그리기.lineTo(205,55);
+    그리기.lineTo(205,15);
+    그리기.stroke();
+    그리기.fillText('round',215,80);
+  }
+  if (e.target.innerHTML=='그리기4') {
+    console.log('e.target.innerHTML==그리기4')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치3');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+
+    //호 : arc(x, y, radius, startAngle, endAngle, anticlockwise)
+
+  }
+
+  
 
   if (1 == 1) {
     //코딩등메모장text파일 : #canvas텍스트 배치후에 embed부분 수정

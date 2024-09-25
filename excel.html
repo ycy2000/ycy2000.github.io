@@ -574,61 +574,116 @@
   <div id="excel_js_선긋기와위치"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">선긋기, 그리기 (캔버스)</h5>
-      <div style="position: relative;">
-        <div><button class="캔버스그리기">그리기 : 선긋기, 글자는 fillText, 도형만들기, 서식, stroke() 명령과 동작stroke(매개변수 형식) 명령 </button></div>
-        <!--캔버스의 기본크기가, 너비 300, 높이 150-->
-        <canvas id="선긋기와위치" style="width:910px;height:300px;border:1px solid black;margin-top:5px;"></canvas>
-      </div>
-      <code class="fw-bold">var 캔버스 = document.querySelector('#전체대체 #선긋기와위치'); //캔버스만들어놓고 아이디 부여한것</code>
-      <code class="fw-bold">var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성</code>
+      <code class="fw-bold"><a href="https://rootingforme.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-canvas-%EA%B7%B8%EB%A6%BC%ED%8C%90-%EC%84%A0-%EA%B8%8B%EA%B8%B0-%EC%A0%90-%EC%B0%8D%EA%B8%B0-%EC%83%89%EC%83%81%EB%B3%80%EA%B2%BD-offsetX-offsetY-lineWidth-strokeStyle" target="_blank">그림판,선긋기,점찍기,색상변경</a></code>
+      <code class="fw-bold"><a href="https://blog.naver.com/javaking75/140170296812" target="_blank">텍스트출력하기</a></code>
+      <code class="fw-bold"><a href="https://curryyou.tistory.com/324" target="_blank">선 출발점, 도착점</a></code>
+      
       <code class="fw-bold" style="color:blueviolet">• 요소.offsetX, 요소.offsetY : 마우스 좌표, 요소.offsetLeft, 요소.offsetTop : position:relative 기준</code>
       <code class="fw-bold" style="color:blueviolet">• var 좌표정보 = 요소.getBoundingClientRect; // clientLeft 없는듯(client...)</code>
       <code class="fw-bold" style="color:blueviolet">• 요소.clientLeft, 요소.clientTop, 요소.clientHeight : 화면기준</code>
-      <code class="fw-bold">• 그리기.beginPath(); : 그리기 시작. 있어야만 하는 경우를 모르겠다. 안 써도 되는듯.</code>
-      <code class="fw-bold">• 그리기.fillText('에프데 룬', 0, 0); // 글자를 넣는다. 좌표 위에 글자가 넣어진다 .<span style="color:blueviolet">실행마다 추가됨.</span></code>
-      <code class="fw-bold">• 그리기.Rect(x,y,w,h); // x,y좌표에서 w폭만큼 h높이만큼 사각형 그린다.(테두리)</code>
-      <code class="fw-bold">• 그리기.strokeRect(x,y,w,h); // x,y좌표에서 w폭만큼 h높이만큼 사각형 그린다.(테두리)</code>
-      <code class="fw-bold">• 그리기.clearRect(0,0,캔버스.width,캔버스.height) //설정된 영역만큼 캔버스에서 지움</code>
-      <code class="fw-bold">• 연속선 그리기 중 처음과 마지막 위치 연결 : 그리기.closePath(); : 그리기.stroke() 전에 실행해야함. 그리는 것에 포함됨</code>
-      <code class="fw-bold">• 연속선 그리기 :</code>
-      <code class="fw-bold" style="text-indent: 15px;">1) 그리기.moveTo(가로,세로) : 기준위치 설정, </code>
-      <code class="fw-bold" style="text-indent: 15px;">2) 그리기.lineTo(가로,세로) : 그리면서 좌표이동(계속 할 수 있음)</code>
-      <code class="fw-bold" style="text-indent: 15px;">※ stroke(), fill() 전에, 처음과 끝을 연결하는 선을 그으려면 : <span style="color:blueviolet">그리기.closePath();</span></code>
-      <code class="fw-bold" style="text-indent: 15px;">3) 다 그렸으면 AND 선으로 나타내려면 : 그리기.stroke(); // 선 타나남. </code>
-      <code class="fw-bold" style="text-indent: 15px;">3) 다 그렸으면 AND 처음과 끝을 연결하여 닫힌 공간을 채우려면 : 그리기.fill();</code>
+      <div style="position: relative;">
+        <div>
+          <button class="캔버스그리기">그리기 : 선긋기, 글자는 fillText, 도형만들기, 서식, stroke() 명령과 동작stroke(매개변수 형식) 명령 </button>
+          <button>캔버스초기화1</button>
+        </div>
+        <h6 style="margin-top:3px;">canvas 태그 기본크기 : 너비 300, 높이 150, scale조정 js코드 적용하여 크기는 보정되었지만 선명하지 않다. (가로910, 세로350)</h6>
+        <!--캔버스의 기본크기가, 너비 300, 높이 150-->
+        <canvas id="선긋기와위치1" style="width:910px;height:350px;border:1px solid black;"></canvas>
+        <h6>※ 다음은 기본 canvas : 너비 300, 높이 150, 선명하다.</h6>
+        <div class="d-inline-block">
+          <button>그리기2</button> <button>초기화2</button> <span title="연속선 그리기, 선그리기에서 마지막 선 끝만 서식">그리기.lineCap = '';</span><br>
+          <canvas id="선긋기와위치2" style="border:1px solid black;margin-top:5px;"></canvas>
+        </div>
+        <div class="d-inline-block">
+          <button>그리기3</button> <button>초기화3</button> <span title="연속선 그리기, 선그리기에서 꺽어지는 부분들만 서식">그리기.lineJoin = '';</span><br>
+          <canvas id="선긋기와위치3" style="border:1px solid black;margin-top:5px;"></canvas>
+        </div>
+        <div class="d-inline-block">
+          <button>그리기4</button> <button>초기화4</button><br>
+          <canvas id="선긋기와위치4" style="border:1px solid black;margin-top:5px;"></canvas>
+        </div>
+       
+      </div>
+
       
       
       
-      <h5 class="fw-bold">그리기 준비 : 캔버스와 캔버스안에서 그리기 객체, 필요시 서식 등</h5>
-      <code class="fw-bold">var 캔버스 = document.querySelector('#전체대체 #선긋기와위치'); //캔버스만들어놓고 아이디 부여한것</code>
-      <code class="fw-bold">var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성</code>
-      <code class="fw-bold">// 필요시, 서식 등</code>
-      <code class="fw-bold" style="text-indent: 15px;">폰트 설정 (키기와 글꼴, 글자스타일): 그리기.font</code>
-      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용</code>
-      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "20pt '맑은 고딕'"</code>
-      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "bold 20pt '맑은 고딕'"</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용</code>
-      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "20pt '맑은 고딕'"</code>
-      <code class="fw-bold" style="text-indent: 30px;">그리기.font = "bold 20pt '맑은 고딕'"</code>
 
 
 
-      <code class="fw-bold" style="text-indent: 15px;">ctx.fillStyle = 'yellow';</code>
-      <code class="fw-bold" style="text-indent: 15px;">ctx.textAlign = 'center';</code>
-      <code class="fw-bold" style="text-indent: 15px;">ctx.strokeStyle='yellow'; // 선 색상, stroke()는 선 그리기 명령어</code>
-      <code class="fw-bold" style="text-indent: 15px;">ctx.lineWidth='1';</code>
-      <code class="fw-bold"><a href="https://rootingforme.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-canvas-%EA%B7%B8%EB%A6%BC%ED%8C%90-%EC%84%A0-%EA%B8%8B%EA%B8%B0-%EC%A0%90-%EC%B0%8D%EA%B8%B0-%EC%83%89%EC%83%81%EB%B3%80%EA%B2%BD-offsetX-offsetY-lineWidth-strokeStyle" target="_blank">그림판,선긋기,점찍기,색상변경</a></code>
-      <code class="fw-bold"><a href="https://blog.naver.com/javaking75/140170296812" target="_blank">텍스트출력하기</a></code>
       <span style="color:blueviolet"></span>
 
       
       <h6></h6>
       <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">그리기 준비 : 캔버스와 캔버스안에서 그리기 객체, 필요시 서식 등</h5>
+      <h6>그림이 그려지는 영역은 '캔버스 요소'에 그려지는 영역을 정의하는 변수를 생성하고 '변수에 동작 명령'으로 그려지게 됨</h6>
+      <h6 style="color:blueviolet;text-indent: 23px;">var 캔버스 = document.querySelector('#전체대체 #선긋기와위치');</h6>
+      <h6 style="color:blueviolet;text-indent: 23px;">var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성</h6>
+      <h6 style="color:blueviolet;text-indent: 23px;">getContext 사용가능 여부 확인 : if (캔버스.getContext)</h6>
+      <br>
+      <h6>canvas 태그의 기본값 : 너비 300, 높이 150</h6>
+      <h6>그려진 것을 초기화하는 것은 '지우는 동작'으로 한다 : 그리기.clearRect(0,0,캔버스.width,캔버스.height);</h6>
+      <h6>캔버스 크기가 작을때는 괜찮은데 크게 설정한 경우, 확대된 비율만큼 그리기 결과가 확대되어 흐리게 나타남</h6>
+      <h6>※ ex) stroke는 그리다, fill은 채우다 뜻. 포함한 명령어와 그렇지 않은 명령어.</h6>
+      <h6 style="text-indent: 21px;">stroke를 포함한 명령어 : 그리기.strokeRect(5,5,200,40); (x,y,width,height)</h6>
+      <h6 style="text-indent: 36px;">사각형 테두리 그리기, 동작이 완료, <span style="color:blueviolet;font-weight: bold;">임시 저장중인 변수</span>가 없음.</h6>
+      <h6 style="text-indent: 21px;">stroke를 포함하지 않은 명령어 : 그리기.rect(5,5,200,40); (x,y,width,height)</h6>
+      <h6 style="text-indent: 36px;">사각형 테두리 그리기, 그린 후 변수에 <span style="color:blueviolet;font-weight: bold;">임시 저장</span>되어 있음. 그리기.fill(); 함수 등 사용 가능</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">※ fill(); 명령 : 그리기.beginPath(); 명령 이후에 생성된 변수에 담기는 그리기에 모두 채워진다.</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">※ 그리기.beginPath(); : fill() 등은 저장된 변수에 작동하는데 변수를 초기화한다.</h6>
+      <h6>※ 서식1</h6>
+      <h6 style="text-indent: 21px;">그리기.font = "Arial bold 12px Arial, sans-serif"; //italic Arial서체 없을 경우, sans-serif 적용</h6>
+      <h6 style="text-indent: 21px;">그리기.font = "20pt '맑은 고딕'"</h6>
+      <h6 style="text-indent: 21px;">그리기.font = "bold 20pt '맑은 고딕'"</h6>
+      <h6 style="text-indent: 21px;">그리기.fillStyle = 'yellow'; // 채우는 형식 색깔. fillText 결과텍스트, fill()</h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">그리기.fillStyle = '#99CCFF'; </h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">그리기.fillStyle = 'black'; </h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">그리기.fillStyle = 'rgb(0,255,255)'; </h6>
+      <h6 style="text-indent: 21px;">그리기.textAlign = 'center'; // fillText 결과텍스트</h6>
+      <h6 style="text-indent: 21px;">그리기.strokeStyle='yellow'; // 선 색상, 그리기.rect 사각형 테두리, line명령어 결과 선 색상.</h6>
+      <h6 style="text-indent: 21px;">그리기.lineWidth='1'; // 선 두께</h6>
+      <h6 style="text-indent: 21px;"></h6>
+      <h6 style="text-indent: 21px;"></h6>
+      <h6 style="text-indent: 21px;"></h6>
+      <h6 style="text-indent: 21px;"></h6>
+      <h6>※ 좌표를 이동하며 연속으로 이어지는 선 그리기</h6>
+      <h6 style="text-indent: 21px;">1) 좌표이동만, 2) 다시 이동할 좌표설정 및 이전 좌표에서 선을 긋는다. </h6>
+      <h6 style="text-indent: 21px;">3) 선택사항 : 좌표가 3개 이상이 되었을때 처음과 마지막을 연결하는 선을 긋는다.</h6>
+      <h6 style="text-indent: 21px;">4) stroke(); 명령을 실행하면 선이 그어진다. 선, 도형 및 모든 동작정보 함께 그린다.</h6>
+      <h6 style="text-indent: 21px;">'ㄷ' 형식의 선을 긋는다면 </h6>
+      <h6 style="text-indent: 36px;">그리기.beginPath(); 그리기.moveTo(100,0); 그리기.lineTo(0,0); 그리기.lineTo(0,100); </h6>
+      <h6 style="text-indent: 36px;">그리기.lineTo(100,100); 그리기.stroke();</h6>
+      <h6 style="text-indent: 21px;">'ㄷ' 형식의 선을 긋는데 처음과 마지막을 연결하려면 (결과는 'ㅁ'형태가 된다)</h6>
+      <h6 style="text-indent: 36px;">그리기.stroke(); 명령 직전에, <span style="color:blueviolet;font-weight: bold;">그리기.closePath(); 명령을 추가한다.</span></h6>
+      <h6>※ 서식 : 선 끝부분 처리, <span style="color:blueviolet;font-weight: bold;">그리기.lineCap</span> = "butt" // butt, square, round 중 1개</h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">그리기.stroke(); 로 실행되는 line 에만 해당됨</h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">스타일을 바꾸려면. 그리기.beginPath(); 해주고 바꿔야함.</h6>
+      <h6 style="text-indent: 21px;">miter : 꺽이는 좌표에 선두께의 1/2이 튀어나옴 (미사용과 같은듯?)</h6>
+      <h6 style="text-indent: 21px;">bebel : 꺽이는 좌표에 선두께의 1/2이 튀어나오지 않게 잘라냄</h6>
+      <h6 style="text-indent: 21px;">round : 꺽이는 좌표에 선두께의 1/2이 둥글게 튀어나옴.</h6>
+      <h6>※ 서식 : 선 꺾이는 부분 처리, <span style="color:blueviolet;font-weight: bold;">그리기.lineJoin</span> = "miter" // miter (디폴트), bevel, round 중 1개</h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">그리기.stroke(); 로 실행되는 line 에만 해당됨</h6>
+      <h6>※ 호나 원 : arc(x, y, radius, startAngle, endAngle, anticlockwise)</h6>
+      <h6 style="text-indent: 21px;">(x, y) 위치에 원점을 두면서, 반지름 radius을 가지고, startAngle 에서 시작하여 </h6>
+      <h6 style="text-indent: 21px;">endAngle 에서 끝나며 주어진 anticlockwise 방향으로 향하는 (기본값은 시계방향 회전) 호를 그리게 됩니다.</h6>
+      <h6>※ 호나 원 : arcTo(x1, y1, x2, y2, radius)</h6>
+      <h6 style="text-indent: 21px;">주어진 제어점들과 반지름으로 호를 그리고, 이전 점과 직선으로 연결합니다.</h6>
+      <h6>※ arc 메소드의 여섯개의 매개변수에 대하여 좀 더 자세하게 알아봅시다:</h6>
+      <h6 style="text-indent: 21px;">x 와 y는 호를 그릴 때 필요한 원점 좌표입니다. 반지름(radius) 은 말 그대로 호의 반지름을 뜻합니다.</h6>
+      <h6 style="text-indent: 21px;">startAngle 및 endAngle 매개 변수는 원의 커브를 따라 호의 시작점과 끝점을 라디안 단위로 정의합니다.</h6>
+      <h6 style="text-indent: 21px;">이 변수들은 x축을 기준으로 계산됩니다. Boolean 값을 가지는 anticlockwise 변수는 true일 때</h6>
+      <h6 style="text-indent: 21px;">호를 반시계 방향으로 그리게 되며, 그렇지 않을 경우에는 시계 방향으로 그리게 됩니다.</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">※ 참고: arc 함수에서 각도는 각이 아닌 라디안 값을 사용합니다. 각도를 라디안으로 바꾸려면</h6>
+      <h6 style="color:blueviolet;font-weight: bold;text-indent: 21px;"> 다음의 JavaScript(JavaScript) 코드를 사용하실 수 있습니다: radians = (Math.PI/180)*degrees.</h6>
+      <h6 style="text-indent: 21px;"></h6>
+      <h6 style="text-indent: 21px;"></h6>
 
+
+          
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
   </div>
 
