@@ -462,6 +462,24 @@ function 전체대체클릭시(e) {
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
     그리기.clearRect(0,0,캔버스.width,캔버스.height);
   }
+  if (e.target.innerHTML=='초기화2') {
+    console.log('e.target.innerHTML==초기화2');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
+  if (e.target.innerHTML=='초기화3') {
+    console.log('e.target.innerHTML==초기화3');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치3');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
+  if (e.target.innerHTML=='초기화4') {
+    console.log('e.target.innerHTML==초기화4');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치4');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
   if (e.target.innerHTML=='그리기2') {
     console.log('e.target.innerHTML==그리기2')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
@@ -557,10 +575,22 @@ function 전체대체클릭시(e) {
   }
   if (e.target.innerHTML=='그리기4') {
     console.log('e.target.innerHTML==그리기4')
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치3');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치4');
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
 
     //호 : arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    그리기.beginPath();
+    그리기.lineWidth='2'
+    그리기.arc(50, 50, 40, 0, 2*Math.PI);
+    그리기.stroke();
+
+    그리기.beginPath();
+    그리기.arc(140, 50, 40, 0, 6);
+    그리기.stroke();
+
+    그리기.beginPath();
+    그리기.arc(230, 50, 40, Math.PI, 2*Math.PI);
+    그리기.stroke();
 
   }
 

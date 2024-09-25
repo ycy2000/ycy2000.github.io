@@ -599,7 +599,7 @@
           <canvas id="선긋기와위치3" style="border:1px solid black;margin-top:5px;"></canvas>
         </div>
         <div class="d-inline-block">
-          <button>그리기4</button> <button>초기화4</button><br>
+          <button>그리기4</button> <button>초기화4</button> <span title="호나 원,">호나 원;</span><br>
           <canvas id="선긋기와위치4" style="border:1px solid black;margin-top:5px;"></canvas>
         </div>
        
@@ -667,6 +667,8 @@
       <h6>※ 서식 : 선 꺾이는 부분 처리, <span style="color:blueviolet;font-weight: bold;">그리기.lineJoin</span> = "miter" // miter (디폴트), bevel, round 중 1개</h6>
       <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">그리기.stroke(); 로 실행되는 line 에만 해당됨</h6>
       <h6>※ 호나 원 : arc(x, y, radius, startAngle, endAngle, anticlockwise)</h6>
+      <h6 style="text-indent: 21px;">arc(x, y, 반지름, 시작각도, 종료각도, anticlockwise)</h6>
+      <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">180도=Math.Pl, 360도=2*Math.Pl(원만들때 종료각도), 라디안 : 반지름과 호의 길이가 같아지는 1 라디안은 57.3도</h6>
       <h6 style="text-indent: 21px;">(x, y) 위치에 원점을 두면서, 반지름 radius을 가지고, startAngle 에서 시작하여 </h6>
       <h6 style="text-indent: 21px;">endAngle 에서 끝나며 주어진 anticlockwise 방향으로 향하는 (기본값은 시계방향 회전) 호를 그리게 됩니다.</h6>
       <h6>※ 호나 원 : arcTo(x1, y1, x2, y2, radius)</h6>
