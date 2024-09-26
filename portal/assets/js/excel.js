@@ -718,7 +718,7 @@ function 전체대체클릭시(e) {
     그리기.fillRect(200,40,10,10);
     그리기.fillRect(10,70,10,10);
     그리기.fillText('(10,10)',10,30)
-    그리기.fillText('(200,40)',190,60)
+    그리기.fillText('(200,40)',180,60)
     그리기.fillText('(10,70)',10,90)
     그리기.fillStyle='black';
     그리기.font='bold 13px 맑은 고딕';
@@ -733,82 +733,57 @@ function 전체대체클릭시(e) {
     그리기.stroke();
 
     //반지름 10 원
-    그리기.fillStyle='red';
     그리기.beginPath();
-    그리기.arc(100,40,10,0,2*Math.PI);
+    그리기.fillStyle='red';
+    그리기.strokeStyle='black';
+    그리기.arc(143,40,10,0,2*Math.PI);
     그리기.fill();
     그리기.fillStyle='black';
     그리기.fillText('반지름10인원 예시',5,45);
 
     그리기.beginPath();
-    그리기.moveTo(240, 10);
+    그리기.strokeStyle='blue';
+    그리기.beginPath();
+    그리기.moveTo(10, 180);
+    그리기.lineTo(210, 210);
+    그리기.stroke();
+    
+
+    그리기.strokeStyle='black';
+    그리기.beginPath();
+    그리기.moveTo(10, 180);
     //그리기.lineTo(440, 40); 이거 대신에 그리기.arcTo(앞x, 얖y, 뒤x, 뒤y, 반지름); 
     // 앞좌표 moveTo에서 향하는 목적지, 뒤좌표 다음선의 목적지
-    그리기.arcTo(440, 40, 240, 70, 10);
-    그리기.lineTo(240, 70);
+    그리기.arcTo(210, 210, 10, 240, 10);
+    그리기.lineTo(10, 240);
     그리기.stroke();
+
     그리기.font='bold 10px 맑은 고딕';
     그리기.fillStyle='red';
-    그리기.fillRect(240,10,10,10);
-    그리기.fillRect(440,40,10,10);
-    그리기.fillRect(240,70,10,10);
-    그리기.fillText('(240,10)',240,30)
-    그리기.fillText('(440,40)',410,60)
-    그리기.fillText('(240,70)',260,90)
+    그리기.fillRect(10,180,10,10);
+    그리기.fillRect(210,210,10,10);
+    그리기.fillRect(10,240,10,10);
+    그리기.fillText('(10,180)',10,200)
+    그리기.fillText('(210,210)',185,230)
+    그리기.fillText('(10,240)',10,260)
     그리기.fillStyle='black';
     그리기.font='bold 13px 맑은 고딕';
-    그리기.fillText('1) 그리기.beginPath();',240,110);
-    그리기.fillText('2) 그리기.moveTo(240, 10);',240,130);
-    그리기.fillText('3) 그리기.arcTo(440, 40, 240, 70, 10);',240,150);
-    그리기.fillText('4) 그리기.lineTo(240, 70);',240,170);
-    그리기.fillText('5) 그리기.stroke();',240,190);
+    그리기.fillText('1) 그리기.beginPath();',10,280);
+    그리기.fillText('2) 그리기.moveTo(240, 10);',10,300);
+    그리기.fillText('3) 그리기.arcTo(440, 40, 240, 70, 10);',10,320);
+    그리기.fillText('4) 그리기.lineTo(240, 70);',10,340);
+    그리기.fillText('5) 그리기.stroke();',10,360);
 
-    그리기.beginPath();
-    그리기.fillStyle='black';
-    그리기.moveTo(740, 10);
-    그리기.arcTo(940, 40, 540, 70, 15);
-    그리기.lineTo(740, 70);
+    //두번째
+    그리기.moveTo(300, 10);
+    //그리기.lineTo(440, 40);
+    그리기.arcTo(500, 40, 300, 70, 35);
+    그리기.lineTo(300, 70);
     그리기.stroke();
-    그리기.font='bold 10px 맑은 고딕';
-    그리기.fillStyle='red';
 
-    그리기.beginPath();
-    그리기.fillStyle='black';
-    그리기.moveTo(740, 80);
-    그리기.arcTo(940, 110, 540, 140, 20);
-    그리기.lineTo(740, 140);
-    그리기.stroke();
-    그리기.font='bold 10px 맑은 고딕';
-    그리기.fillStyle='red';
-
-    그리기.beginPath();
-    그리기.fillStyle='black';
-    그리기.moveTo(740, 150);
-    그리기.arcTo(940, 180, 540, 210, 23);
-    그리기.lineTo(740, 210);
-    그리기.stroke();
-    그리기.font='bold 10px 맑은 고딕';
-    그리기.fillStyle='red';
-
-    그리기.beginPath();
-    그리기.fillStyle='black';
-    그리기.moveTo(740, 220);
-    그리기.arcTo(940, 250, 540, 280, 30);
-    그리기.lineTo(740, 280);
-    그리기.stroke();
-    그리기.font='bold 10px 맑은 고딕';
-    그리기.fillStyle='red';
-
-
-
-
-
-    return;
     
-    그리기.moveTo(10, 200);
-    그리기.arcTo(200, 100, 100, 10, 10);
-    그리기.lineTo(100, 10);
-    그리기.stroke();
+
+
 
 
   }
