@@ -480,6 +480,30 @@ function 전체대체클릭시(e) {
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
     그리기.clearRect(0,0,캔버스.width,캔버스.height);
   }
+  if (e.target.innerHTML=='초기화5') {
+    console.log('e.target.innerHTML==초기화5');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치5');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
+  if (e.target.innerHTML=='초기화6') {
+    console.log('e.target.innerHTML==초기화6');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치6');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
+  if (e.target.innerHTML=='초기화7') {
+    console.log('e.target.innerHTML==초기화7');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치7');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
+  if (e.target.innerHTML=='초기화8') {
+    console.log('e.target.innerHTML==초기화8');
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치8');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    그리기.clearRect(0,0,캔버스.width,캔버스.height);
+  }
   if (e.target.innerHTML=='그리기2') {
     console.log('e.target.innerHTML==그리기2')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
@@ -552,6 +576,9 @@ function 전체대체클릭시(e) {
 
     그리기.fillText('꺽어지는 부분에만 적용된다. ',5,100);
     그리기.fillText('그리기.lineJoin="속성 값"',5,120);
+    그리기.fillStyle='blueviolet';
+    그리기.fillText('line폭의 1/2을 처리하는 서식?',5,140);
+    그리기.fillStyle='black';
 
     그리기.beginPath();
     그리기.lineJoin='bevel'; //좌표에서 벗어나 튀어나오는 라인폭의 1/2을 잘라냄
@@ -577,6 +604,10 @@ function 전체대체클릭시(e) {
     console.log('e.target.innerHTML==그리기4')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치4');
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    var 각도;
+
+    //Math.PI=3.14..(라디안값) 180도, 1라디안 57.3...도
+    //30도를 표현할때 라디안 부분에 입력할 값은 : 30(각도) / (180/Math.PI)
 
     //호 : arc(x, y, radius, startAngle, endAngle, anticlockwise)
     그리기.beginPath();
@@ -584,16 +615,203 @@ function 전체대체클릭시(e) {
     그리기.arc(50, 50, 40, 0, 2*Math.PI);
     그리기.stroke();
 
+    그리기.font = "bold 10pt '맑은 고딕' ";
+    그리기.fillText('각도시작은',18,40);
+    그리기.fillText('오른쪽끝',22,60);
+    그리기.fillText('anticlockwise 기본값 : false (시계방향)',3,105);
+    그리기.fillText('각도부분 입력값은 라디안값 : 시작각도, 종료각도',3,125);
+    그리기.fillText('각도로 변환 : 30(각도) / (180/Math.PI)',3,145);
+
     그리기.beginPath();
-    그리기.arc(140, 50, 40, 0, 6);
+    각도=90;
+    그리기.arc(140, 50, 40, 0, 각도 / (180/Math.PI));
+    그리기.fill();
+    그리기.stroke();
+
+    그리기.beginPath();
+    각도=270;
+    그리기.arc(140, 50, 40, Math.PI, 각도 / (180/Math.PI));
+    그리기.fill();
     그리기.stroke();
 
     그리기.beginPath();
     그리기.arc(230, 50, 40, Math.PI, 2*Math.PI);
+    그리기.fill();
     그리기.stroke();
 
-  }
 
+  }
+  if (e.target.innerHTML=='그리기5') {
+    console.log('e.target.innerHTML==그리기5')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치5');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    var 각도;
+
+    //Math.PI=3.14..(라디안값) 180도, 1라디안 57.3...도
+    //30도를 표현할때 라디안 부분에 입력할 값은 : 30(각도) / (180/Math.PI)
+
+    //호 : arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    그리기.beginPath();
+    그리기.lineWidth='2'
+    그리기.moveTo(10,10);
+    그리기.arc(35, 35, 40, 0, 70 / (180/Math.PI));
+    그리기.closePath();
+    그리기.fillStyle='yellow';
+    그리기.fill();
+    그리기.stroke();
+
+    그리기.font = "bold 10pt '맑은 고딕' ";
+    그리기.fillStyle='black';
+    그리기.fillText('부채꼴 : 1)그리기.moveTo(x,y)',25,15);
+    그리기.fillText('2)그리기.arc(x,y,반지름,시작각도,종료각도)',78,35);
+    그리기.fillText('3)그리기.closePath()',78,55);
+
+    그리기.fillText('a)그리기.moveTo(10,10);',5,85);
+    그리기.fillText('b)그리기.arc(35, 35, 40, 0, 70 / (180/Math.PI));',5,105);
+    그리기.fillText('b)부분이 lineTo처럼 작동되었다.;',5,125);
+    그리기.fillText('그리기.closePath();에서 처음과 끝부분이 연결됨',5,145);
+
+    
+
+
+
+
+  }
+  if (e.target.innerHTML=='그리기6') {
+    console.log('e.target.innerHTML==그리기6')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치6');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+
+    var 이미지객체=new Image();
+    이미지객체.src='portal/images/문서연결_엑셀VBA/원호.png';
+    이미지객체.onload=function() {
+      그리기.drawImage(이미지객체,0,0); //(이미지객체,x,y,width,height)
+    }
+  }
+  if (e.target.innerHTML=='그리기7') {
+    console.log('e.target.innerHTML==그리기7')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치7');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    var 각도;
+
+
+  }
+  if (e.target.innerHTML=='그리기8') {
+    console.log('e.target.innerHTML==그리기8')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치8');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    var 각도;
+        // DPR 정보 가져오기
+        var dpr = window.devicePixelRatio;
+        // 캔버스 요소의 크기 가져오기
+        var rect = 캔버스.getBoundingClientRect();
+        캔버스.width = rect.width * dpr;
+        캔버스.height = rect.height * dpr;
+        // scale() 함수를 사용하여 캔버스 유닛 크기 보정
+        그리기.scale(dpr, dpr);
+
+    //두 직선 사이 호 arcTo(x1, y1, x2, y2, radius) : 두 선 사이에 radius반지름의 원형태로 처리한다?
+    그리기.lineWidth='2'
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillStyle='red';
+    그리기.fillRect(10,10,10,10);
+    그리기.fillRect(200,40,10,10);
+    그리기.fillRect(10,70,10,10);
+    그리기.fillText('(10,10)',10,30)
+    그리기.fillText('(200,40)',190,60)
+    그리기.fillText('(10,70)',10,90)
+    그리기.fillStyle='black';
+    그리기.font='bold 13px 맑은 고딕';
+    그리기.fillText('1) 그리기.moveTo(10, 10);',10,110);
+    그리기.fillText('2) 그리기.lineTo(200, 40);',10,130);
+    그리기.fillText('3) 그리기.lineTo(10, 70);',10,150);
+    그리기.fillText('4) 그리기.stroke();',10,170);
+
+    그리기.moveTo(10, 10);
+    그리기.lineTo(200, 40);
+    그리기.lineTo(10, 70);
+    그리기.stroke();
+
+    //반지름 10 원
+    그리기.fillStyle='red';
+    그리기.beginPath();
+    그리기.arc(100,40,10,0,2*Math.PI);
+    그리기.fill();
+    그리기.fillStyle='black';
+    그리기.fillText('반지름10인원 예시',5,45);
+
+    그리기.beginPath();
+    그리기.moveTo(240, 10);
+    //그리기.lineTo(440, 40); 이거 대신에 그리기.arcTo(앞x, 얖y, 뒤x, 뒤y, 반지름); 
+    // 앞좌표 moveTo에서 향하는 목적지, 뒤좌표 다음선의 목적지
+    그리기.arcTo(440, 40, 240, 70, 10);
+    그리기.lineTo(240, 70);
+    그리기.stroke();
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillStyle='red';
+    그리기.fillRect(240,10,10,10);
+    그리기.fillRect(440,40,10,10);
+    그리기.fillRect(240,70,10,10);
+    그리기.fillText('(240,10)',240,30)
+    그리기.fillText('(440,40)',410,60)
+    그리기.fillText('(240,70)',260,90)
+    그리기.fillStyle='black';
+    그리기.font='bold 13px 맑은 고딕';
+    그리기.fillText('1) 그리기.beginPath();',240,110);
+    그리기.fillText('2) 그리기.moveTo(240, 10);',240,130);
+    그리기.fillText('3) 그리기.arcTo(440, 40, 240, 70, 10);',240,150);
+    그리기.fillText('4) 그리기.lineTo(240, 70);',240,170);
+    그리기.fillText('5) 그리기.stroke();',240,190);
+
+    그리기.beginPath();
+    그리기.fillStyle='black';
+    그리기.moveTo(740, 10);
+    그리기.arcTo(940, 40, 540, 70, 15);
+    그리기.lineTo(740, 70);
+    그리기.stroke();
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillStyle='red';
+
+    그리기.beginPath();
+    그리기.fillStyle='black';
+    그리기.moveTo(740, 80);
+    그리기.arcTo(940, 110, 540, 140, 20);
+    그리기.lineTo(740, 140);
+    그리기.stroke();
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillStyle='red';
+
+    그리기.beginPath();
+    그리기.fillStyle='black';
+    그리기.moveTo(740, 150);
+    그리기.arcTo(940, 180, 540, 210, 23);
+    그리기.lineTo(740, 210);
+    그리기.stroke();
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillStyle='red';
+
+    그리기.beginPath();
+    그리기.fillStyle='black';
+    그리기.moveTo(740, 220);
+    그리기.arcTo(940, 250, 540, 280, 30);
+    그리기.lineTo(740, 280);
+    그리기.stroke();
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillStyle='red';
+
+
+
+
+
+    return;
+    
+    그리기.moveTo(10, 200);
+    그리기.arcTo(200, 100, 100, 10, 10);
+    그리기.lineTo(100, 10);
+    그리기.stroke();
+
+
+  }
   
 
   if (1 == 1) {
