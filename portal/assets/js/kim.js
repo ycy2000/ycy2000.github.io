@@ -875,7 +875,8 @@ function 번호입력(e) {
         추가할innerhtml= 추가할innerhtml + '<div>' + 버튼들[i].innerHTML + '</div>';
       }
     }
-    document.querySelector('#id_번호입력').innerHTML=추가할innerhtml + '<button class="삭제">X</button><button class="선긋기">선긋기</button></div>' + document.querySelector('#id_번호입력').innerHTML;
+    //document.querySelector('#id_번호입력').innerHTML=추가할innerhtml + '<button class="삭제">X</button><button class="선긋기">선긋기</button></div>' + document.querySelector('#id_번호입력').innerHTML;
+    document.querySelector('#id_번호입력').innerHTML+=추가할innerhtml + '<button class="삭제">X</button><button class="선긋기">선긋기</button></div>';
     //console.log(document.querySelector('#id_번호입력').innerHTML);
 
     //색칠해제후 클릭수0 초기화
