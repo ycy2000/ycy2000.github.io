@@ -456,54 +456,13 @@ function 전체대체클릭시(e) {
 
     return;
   }
-  if (e.target.innerHTML=='캔버스초기화1') {
-    console.log('e.target.innerHTML==캔버스초기화1');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치1');
+  if (e.target.innerHTML.substring(0,3)=='초기화') {
+    console.log("e.target.innerHTML.substring(0,2)=='초기화'");
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치' + e.target.innerHTML.substr(3,2));
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
     그리기.clearRect(0,0,캔버스.width,캔버스.height);
   }
-  if (e.target.innerHTML=='초기화2') {
-    console.log('e.target.innerHTML==초기화2');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
-  if (e.target.innerHTML=='초기화3') {
-    console.log('e.target.innerHTML==초기화3');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치3');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
-  if (e.target.innerHTML=='초기화4') {
-    console.log('e.target.innerHTML==초기화4');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치4');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
-  if (e.target.innerHTML=='초기화5') {
-    console.log('e.target.innerHTML==초기화5');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치5');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
-  if (e.target.innerHTML=='초기화6') {
-    console.log('e.target.innerHTML==초기화6');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치6');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
-  if (e.target.innerHTML=='초기화7') {
-    console.log('e.target.innerHTML==초기화7');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치7');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
-  if (e.target.innerHTML=='초기화8') {
-    console.log('e.target.innerHTML==초기화8');
-    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치8');
-    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    그리기.clearRect(0,0,캔버스.width,캔버스.height);
-  }
+
   if (e.target.innerHTML=='그리기2') {
     console.log('e.target.innerHTML==그리기2')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
@@ -687,18 +646,97 @@ function 전체대체클릭시(e) {
     이미지객체.onload=function() {
       그리기.drawImage(이미지객체,0,0); //(이미지객체,x,y,width,height)
     }
+    그리기.fillStyle='black';
+    그리기.font='bold 10px 맑은 고딕';
+    그리기.fillText('var 이미지객체=new Image();',5,90);
+    그리기.fillText('이미지객체.src="portal/images/문서연결_엑셀VBA/원호.png";',5,105);
+    그리기.fillText('이미지객체.onload=function()',5,120);
+    그리기.fillText('{그리기.drawImage(이미지객체,0,0);}',5,135);
+    그리기.font='bold 13px 맑은 고딕';
+    그리기.fillText('그리기.drawImage(이미지객체,0,0);가',100,15);
+    그리기.fillText('캔버스에 이미지 넣는 동작인데.',100,35);
+    그리기.fillText('이미지객체.onload 안쓰면',100,55);
+    그리기.fillText('두번째 실행때 나타난다?',100,75);
   }
   if (e.target.innerHTML=='그리기7') {
     console.log('e.target.innerHTML==그리기7')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치7');
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-    var 각도;
+    
+    그리기.font='bold 13px 맑은 고딕';
+    그리기.fillStyle='black';
+    그리기.beginPath();
+    그리기.arc(35,35,30,0,2*Math.PI);
+    그리기.setLineDash([4,2]);
+    그리기.stroke();
+    그리기.beginPath();
+    그리기.arc(35,110,30,0,2*Math.PI);
+    그리기.setLineDash([0,0]);
+    그리기.stroke();
+    그리기.fillText("그리기.font='bold 13px 맑은 고딕';",75,15)
+    그리기.fillText('그리기.beginPath();',75,35)
+    그리기.fillText('그리기.arc(35,35,30,0,2*Math.PI);',75,55)
+    그리기.fillText('그리기.setLineDash([4,2]);',75,75)
+    그리기.fillText('그리기.stroke();',75,95)
+    그리기.fillStyle='red';
+    그리기.fillText('점선없애기는 setLineDash([0,0]);',75,115)
 
 
   }
   if (e.target.innerHTML=='그리기8') {
     console.log('e.target.innerHTML==그리기8')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치8');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+
+    그리기.globalAlpha='0.5';
+    그리기.fillStyle='black';
+    그리기.fillRect(5,5,40,40);
+    그리기.fillStyle='yellow';
+    그리기.fillRect(25,25,40,40);
+    그리기.fillStyle='green';
+    그리기.fillRect(45,45,40,40);
+    그리기.fillStyle='red';
+    그리기.fillRect(65,65,40,40);
+
+    그리기.globalAlpha='0.9';
+    그리기.fillStyle='black';
+    그리기.fillRect(95,5,40,40);
+    그리기.fillStyle='yellow';
+    그리기.fillRect(115,25,40,40);
+    그리기.fillStyle='green';
+    그리기.fillRect(135,45,40,40);
+    그리기.fillStyle='red';
+    그리기.fillRect(155,65,40,40);
+
+    그리기.globalAlpha='1';
+    그리기.fillStyle='black';
+    그리기.fillRect(185,5,40,40);
+    그리기.fillStyle='yellow';
+    그리기.fillRect(205,25,40,40);
+    그리기.fillStyle='green';
+    그리기.fillRect(225,45,40,40);
+    그리기.fillStyle='red';
+    그리기.fillRect(245,65,40,40);
+
+    그리기.fillStyle='black';
+    그리기.font='bold 14px 맑은 고딕';
+    그리기.fillText("그리기.globalAlpha='1'; 예제는 0.5, 0.9, 1",10,120);
+    그리기.fillText("0일때 투명, 1일때 가장 진함;",10,140);
+
+  }
+  if (e.target.innerHTML=='그리기9') {
+    console.log('e.target.innerHTML==그리기9')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치9');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+  }
+  if (e.target.innerHTML=='그리기10') {
+    console.log('e.target.innerHTML==그리기10')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치10');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+  }
+  if (e.target.innerHTML=='그리기11') {
+    console.log('e.target.innerHTML==그리기11')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치11');
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
     var 각도;
         // DPR 정보 가져오기
@@ -735,11 +773,20 @@ function 전체대체클릭시(e) {
     //반지름 10 원
     그리기.beginPath();
     그리기.fillStyle='red';
-    그리기.strokeStyle='black';
-    그리기.arc(143,40,10,0,2*Math.PI);
-    그리기.fill();
+    그리기.strokeStyle='blue';
+    그리기.arc(142,40,10,0,2*Math.PI);
+    그리기.stroke();
+    그리기.fill(); // stroke()와 별개이다. stroke
     그리기.fillStyle='black';
     그리기.fillText('반지름10인원 예시',5,45);
+
+    그리기.beginPath();
+    그리기.fillStyle='red';
+    그리기.strokeStyle='blue';
+    그리기.arc(142,210,10,0,2*Math.PI);
+    그리기.stroke();
+    그리기.fill(); // stroke()와 별개이다. stroke
+    그리기.fillStyle='black';
 
     그리기.beginPath();
     그리기.strokeStyle='blue';
@@ -775,13 +822,146 @@ function 전체대체클릭시(e) {
     그리기.fillText('5) 그리기.stroke();',10,360);
 
     //두번째
-    그리기.moveTo(300, 10);
-    //그리기.lineTo(440, 40);
-    그리기.arcTo(500, 40, 300, 70, 35);
-    그리기.lineTo(300, 70);
+    그리기.beginPath();
+    그리기.strokeStyle='red';
+    그리기.moveTo(400, 40);
+    그리기.lineTo(600, 70);
+    그리기.lineTo(400, 100);
+    그리기.stroke();
+    그리기.beginPath();
+    그리기.moveTo(400, 100);
+    그리기.lineTo(200, 130);
     그리기.stroke();
 
+    그리기.beginPath();
+    그리기.strokeStyle='black';
+    그리기.moveTo(400, 40);
+    그리기.arcTo(600, 70, 400, 100, 50);
+    그리기.lineTo(400, 150);
+    그리기.stroke();
+    그리기.fillStyle='red';
+    그리기.fillRect(400,40,10,10);
+    그리기.fillRect(600,70,10,10);
+    그리기.fillRect(400,100,10,10);
+    그리기.fillRect(400,150,10,10);
+    그리기.fillText('A.(400,40)',400,38);
+    그리기.fillText('B.(600,70)',550,60);
+    그리기.fillText('C.(400,100)',420,110);
+    그리기.fillText('D.(400,150)',420,160);
+
+    그리기.beginPath();
+    그리기.fillStyle='black';
+    그리기.strokeStyle='red';
+    그리기.fillText('그리기.moveTo(400, 40);',620,15);
+    그리기.fillText('그리기.arcTo(600, 70, 400, 100, 50);',620,45);
+    그리기.moveTo(715,17);
+    그리기.lineTo(765,17);
+    그리기.stroke();
+    그리기.moveTo(700,47);
+    그리기.lineTo(745,47);
+    그리기.stroke();
+    그리기.moveTo(750,47);
+    그리기.lineTo(800,47);
+    그리기.stroke();
+    그리기.moveTo(814,47);
+    그리기.lineTo(830,47);
+    그리기.stroke();
+    그리기.moveTo(700,127);
+    그리기.lineTo(760,127);
+    그리기.stroke();
+    그리기.beginPath();
+    그리기.arc(263,70,50,0,2*Math.PI);
+    그리기.stroke();
+    그리기.fillStyle='red';
+    그리기.fillText('좌표 A',717,32);
+    그리기.fillText('좌표 B',700,62);
+    그리기.fillText('좌표 C',760,62);
+    그리기.fillText('반지름',810,62);
+    그리기.fillText('좌표 D',710,141);
+    그리기.fillText('내접하는 호에 선이 그어졌는데, 좌표 D 와 연결선 그린다.',570,156);
+    그리기.fillText('A와B, B와C를 있는 연장선상의 직선과 내접하는',620,82);
+    그리기.fillText('반지름 50의 원을 만든다.',620,102);
+    그리기.fillStyle='black';
+    그리기.fillText('그리기.lineTo(400, 150);',620,122);
+
     
+
+
+    그리기.beginPath();
+    그리기.strokeStyle='black';
+    그리기.moveTo(400, 240);
+    그리기.arcTo(600, 270, 400, 300, 50);
+    그리기.lineTo(400, 350);
+    그리기.stroke();
+    그리기.fillStyle='red';
+    그리기.fillRect(400,240,10,10);
+    그리기.fillRect(600,270,10,10);
+    그리기.fillRect(400,300,10,10);
+    그리기.fillRect(400,350,10,10);
+    그리기.fillText('A.(400,40)',400,238);
+    그리기.fillText('B.(600,70)',550,290);
+    그리기.fillText('C.(400,100)',400,290);
+    그리기.fillText('D.(400,150)',420,360);
+
+    그리기.beginPath();
+    그리기.strokeStyle='black';
+    그리기.moveTo(650, 190);
+    그리기.arcTo(850, 220, 650, 250, 25);
+    그리기.lineTo(650, 300);
+    그리기.stroke();
+    그리기.fillStyle='red';
+    그리기.fillRect(650,190,10,10);
+    그리기.fillRect(850,220,10,10);
+    그리기.fillRect(650,250,10,10);
+    그리기.fillRect(650,300,10,10);
+    그리기.fillText('반지름 : 25 일때',750,200);
+    그리기.fillText('A.(400,40)',650,190);
+    그리기.fillText('B.(600,70)',800,243);
+    그리기.fillText('C.(400,100)',650,247);
+    그리기.fillText('D.(400,150)',665,310);
+    그리기.fillText('반지름이 작으면 오른쪽으로 이동할 것이고...',650,330);
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+  }
+  if (e.target.innerHTML=='그리기12') {
+    console.log('e.target.innerHTML==그리기12')
+    var 캔버스 = document.querySelector('#전체대체 #선긋기와위치12');
+    var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+    var 각도;
+        // DPR 정보 가져오기
+        var dpr = window.devicePixelRatio;
+        // 캔버스 요소의 크기 가져오기
+        var rect = 캔버스.getBoundingClientRect();
+        캔버스.width = rect.width * dpr;
+        캔버스.height = rect.height * dpr;
+        // scale() 함수를 사용하여 캔버스 유닛 크기 보정
+        그리기.scale(dpr, dpr);
+
+    //이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)
+    그리기.font='bold 14px 맑은 고딕';
+    그리기.fillStyle='black';
+    그리기.fillText('이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)',15,15);
+    for (var i=0; i<36; i++) {
+
+      setTimeout(function() {
+      그리기.arc(190,210,180,(i*10)/(180/Math.PI),((i+1)*10)/(180/Math.PI));
+      그리기.stroke();}, 1000);
+      console.log(i)
+
+    }
+
 
 
 

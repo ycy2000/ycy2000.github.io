@@ -574,19 +574,13 @@
   <div id="excel_js_선긋기와위치"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">선긋기, 그리기 (캔버스)</h5>
-      <code class="fw-bold"><a href="https://rootingforme.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-canvas-%EA%B7%B8%EB%A6%BC%ED%8C%90-%EC%84%A0-%EA%B8%8B%EA%B8%B0-%EC%A0%90-%EC%B0%8D%EA%B8%B0-%EC%83%89%EC%83%81%EB%B3%80%EA%B2%BD-offsetX-offsetY-lineWidth-strokeStyle" target="_blank">그림판,선긋기,점찍기,색상변경</a></code>
-      <code class="fw-bold"><a href="https://blog.naver.com/javaking75/140170296812" target="_blank">텍스트출력하기</a></code>
-      <code class="fw-bold"><a href="https://curryyou.tistory.com/324" target="_blank">선 출발점, 도착점</a></code>
-      <code class="fw-bold"><a href="https://blog.naver.com/shadowbug/220741292339" target="_blank">artTo</a></code>
-      
-      
       <code class="fw-bold" style="color:blueviolet">• 요소.offsetX, 요소.offsetY : 마우스 좌표, 요소.offsetLeft, 요소.offsetTop : position:relative 기준</code>
       <code class="fw-bold" style="color:blueviolet">• var 좌표정보 = 요소.getBoundingClientRect; // clientLeft 없는듯(client...)</code>
       <code class="fw-bold" style="color:blueviolet">• 요소.clientLeft, 요소.clientTop, 요소.clientHeight : 화면기준</code>
       <div style="position: relative;">
         <div>
           <button class="캔버스그리기">그리기 : 선긋기, 글자는 fillText, 도형만들기, 서식, stroke() 명령과 동작stroke(매개변수 형식) 명령 </button>
-          <button>캔버스초기화1</button>
+          <button>초기화1</button>
         </div>
         <h6 style="margin-top:3px;">canvas 태그 기본크기 : 너비 300, 높이 150, scale조정 js코드 적용하여 크기는 보정되었지만 선명하지 않다. (가로910, 세로350)</h6>
         <!--캔버스의 기본크기가, 너비 300, 높이 150-->
@@ -601,7 +595,7 @@
           <canvas id="선긋기와위치3" style="border:1px solid black;margin-top:5px;"></canvas>
         </div>
         <div class="d-inline-block">
-          <button>그리기4</button> <button>초기화4</button> <span title="원, 원호(원의 일부),">원, 원호(원의 일부);</span><br>
+          <button>그리기4</button> <button>초기화4</button> <span title=" arc(x, y, radius, startAngle, endAngle, articlockwise)">원, 원호(원의 일부);</span><br>
           <canvas id="선긋기와위치4" style="border:1px solid black;margin-top:5px;"></canvas>
         </div><br>
         <div class="d-inline-block">
@@ -613,12 +607,28 @@
           <canvas id="선긋기와위치6" style="border:1px solid black;margin-top:5px;"></canvas>
         </div>
         <div class="d-inline-block">
-          <button>그리기7</button> <button>초기화7</button> <span title="임시">임시7</span><br>
+          <button>그리기7</button> <button>초기화7</button> <span title="점선 : setLineDash( [int d, int m] ), 점선길이, 점선사이 간격">점선 : setLineDash</span><br>
           <canvas id="선긋기와위치7" style="border:1px solid black;margin-top:5px;"></canvas>
         </div><br>
         <div class="d-inline-block">
-          <button>그리기8</button> <button>초기화8</button> <span title="artTo(x1, y1, x2, y2, radius) : 두 직선 사이 호">임시</span><br>
-          <canvas id="선긋기와위치8" style="width:910px;height:400px;border:1px solid black;margin-top:5px;">></canvas>
+          <button>그리기8</button> <button>초기화8</button> <span title="0.2추천, 0에서 1, 그리기.globalAlpha='0.5';">투명도:globalAlpha</span><br>
+          <canvas id="선긋기와위치8" style="border:1px solid black;margin-top:5px;"></canvas>
+        </div>
+        <div class="d-inline-block">
+          <button>그리기9</button> <button>초기화9</button> <span title=""></span><br>
+          <canvas id="선긋기와위치9" style="border:1px solid black;margin-top:5px;"></canvas>
+        </div>
+        <div class="d-inline-block">
+          <button>그리기10</button> <button>초기화10</button> <span title=""></span><br>
+          <canvas id="선긋기와위치10" style="border:1px solid black;margin-top:5px;"></canvas>
+        </div><br>
+        <div class="d-inline-block">
+          <button>그리기11</button> <button>초기화11</button> <span>두 직선사이의 호 : arcTo(x1, y1, x2, y2, radius)</spantitle=><br>
+          <canvas id="선긋기와위치11" style="width:910px;height:400px;border:1px solid black;margin-top:5px;">></canvas>
+        </div><br>
+        <div class="d-inline-block">
+          <button>그리기12</button> <button>초기화12</button> <span>베지어(Bezier) 곡선과 이차(Quadratic )곡선</spantitle=><br>
+          <canvas id="선긋기와위치12" style="width:910px;height:400px;border:1px solid black;margin-top:5px;">></canvas>
         </div>
        
       </div>
@@ -714,6 +724,22 @@
       <h6 style="text-indent: 21px;">var 이미지객체=new Image();</h6>
       <h6 style="text-indent: 21px;">이미지객체.src='portal/images/문서연결_엑셀VBA/원호.png';</h6>
       <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">이미지객체.onload=function() {그리기.drawImage(이미지객체,0,0);}</h6>
+      <h6>※ 베지어(Bezier) 곡선과 이차(Quadratic )곡선</h6>
+      <img src="portal/images/문서연결_엑셀VBA/베지어곡선.png" alt="이미지없음" style="display: inline-block;vertical-align: top;">
+      <div style="display: inline-block;background-color: aqua;width:700px;">
+        <h6 style="color:blueviolet;font-weight: bold;">• 앞서 시작점을 설정한다 : 그리기.moveTo(x,y);</h6>
+        <h6>• 이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)</h6>
+        <h6 style="text-indent: 10px;">cp1x 및 cp1y로 지정된 제어점을 사용하여 현재 펜의 위치에서 x와 y로 지정된 끝점까지</h6>
+        <h6 style="text-indent: 10px;">이차 베지어 곡선을 그립니다.</h6>
+        <h6>• 베지어(Bezier) 곡선(3차곡선) : bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</h6>
+        <h6 style="text-indent: 10px;">(cp1x, cp1y) 및 (cp2x, cp2y)로 지정된 제어점을 사용하여 </h6>
+        <h6 style="text-indent: 10px;">현재 펜 위치에서 x 및 y로 지정된 끝점까지 삼차 베지어 곡선을 그립니다.</h6>
+     </div>
+     <h6>※ ctx.translate(150, 150); // 오른쪽으로 150, 아래쪽으로 150 이동</h6>
+     
+
+     <h6><a href="https://webisfree.com/2018-06-17/%EC%BA%94%EB%B2%84%EC%8A%A4%EC%97%90-%EA%B3%A1%EC%84%A0-%EC%BB%A4%EB%B8%8C%EB%A5%BC-%EA%B7%B8%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%98%88%EC%A0%9C%EB%B3%B4%EA%B8%B0" target="_blank">bezierCurveTo()를 사용한 베지에 커브, 곡선 그리는 방법</a></h6>
+      
       
       
       
