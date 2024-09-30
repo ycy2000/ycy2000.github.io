@@ -1089,6 +1089,10 @@ function 색칠보기클릭이벤트(e) {
   if (e.target.parentNode.classList.contains('세로색칠div들') && e.target.innerText=='지움') {
     console.log('지움')
     e.target.parentNode.parentNode.id='임시부모표시';
+    //span값 지우기
+    document.querySelector('#임시부모표시 span').innerHTML='';
+
+    //span값 지우기 끝
     for (var i=0; i<document.querySelectorAll('#임시부모표시 button').length; i++) {
       document.querySelectorAll('#임시부모표시 button')[i].classList='';
     }

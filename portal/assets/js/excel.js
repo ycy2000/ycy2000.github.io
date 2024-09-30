@@ -949,20 +949,190 @@ function 전체대체클릭시(e) {
         // scale() 함수를 사용하여 캔버스 유닛 크기 보정
         그리기.scale(dpr, dpr);
 
-    //이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)
-    그리기.font='bold 14px 맑은 고딕';
-    그리기.fillStyle='black';
-    그리기.fillText('이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)',15,15);
-    for (var i=0; i<36; i++) {
+    if ('quadrtic'=='quadrtic')  {  
+      //이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)
+      그리기.font='bold 14px 맑은 고딕';
+      그리기.fillStyle='black';
+      그리기.fillText('그리기.moveTo(30,290); // 시작좌표',15,15);
+      그리기.fillStyle='red';
+      그리기.fillText('quadraticCurveTo(제어점x, 제어점y, 종료x , 종료y)',15,35);
+      그리기.fillStyle='black';
+      그리기.fillText('quadraticCurveTo(cp1x, cp1y, x, y)',15,55);
+      그리기.fillText('(30,290))',10,315);
+      그리기.fillText('(340,290)',310,315);
+      그리기.fillText('제어점',30,150);
+      그리기.fillText('제어점',175,80);
+      그리기.fillText('제어점',315,148);
+      그리기.fillStyle='blue';
+      그리기.fillText('(50,177)',25,165);
+      그리기.fillStyle='red';
+      그리기.fillText('(188,110)',163,98);
+      그리기.fillStyle='black';
+      그리기.fillText('(330,177)',302,165);
+      그리기.arc(190,290,180,0,2*Math.PI);
+      그리기.stroke();
+      그리기.fillStyle='red';
+      그리기.fillRect(30,290,10,10);
+      그리기.fillRect(340,290,10,10);
+      그리기.beginPath();
+      그리기.strokeStyle='blue';
+      그리기.lineWidth=1;
+      그리기.setLineDash([2,2]);
+      그리기.moveTo(30,290);
+      그리기.lineTo(340,290);
+      그리기.stroke();
 
-      setTimeout(function() {
-      그리기.arc(190,210,180,(i*10)/(180/Math.PI),((i+1)*10)/(180/Math.PI));
-      그리기.stroke();}, 1000);
-      console.log(i)
+      그리기.strokeStyle='blue';
+      그리기.lineWidth=2;
+      그리기.setLineDash([2,0]);
+      그리기.beginPath();
+      그리기.arc(50,177,5,0,2*Math.PI);
+      그리기.stroke();
+
+      그리기.strokeStyle='red';
+      그리기.beginPath();
+      그리기.arc(188,110,5,0,2*Math.PI);
+      그리기.stroke();
+
+      그리기.strokeStyle='black';
+      그리기.beginPath();
+      그리기.arc(330,177,5,0,2*Math.PI);
+      그리기.stroke();
+
+      그리기.beginPath();
+      그리기.moveTo(30,290);
+      그리기.quadraticCurveTo(50, 177, 340, 290); //제어점, 목표점
+      그리기.stroke();
+
+      그리기.strokeStyle='red';
+      그리기.beginPath();
+      그리기.moveTo(30,290);
+      그리기.quadraticCurveTo(188, 110, 340, 290); //제어점, 목표점
+      그리기.stroke();
+
+      그리기.strokeStyle='black';
+      그리기.beginPath();
+      그리기.moveTo(30,290);
+      그리기.quadraticCurveTo(330, 177, 340, 290); //제어점, 목표점
+      그리기.stroke();
+
+      그리기.clearRect(0,320,380,320);
+      그리기.fillStyle='black';
+      그리기.fillText('그리기.beginPath();',10,340);
+      그리기.fillText('그리기.moveTo(30,290);',10,360);
+      그리기.fillText('그리기.quadraticCurveTo(330, 177, 340, 290);',10,380);
+      그리기.fillText('그리기.stroke();',10,400);
+    } 
+    if ('bezierCurveTo'=='bezierCurveTo')  {  //550 오른쪽
+      그리기.beginPath();
+      그리기.arc(640,290,180,0,2*Math.PI);
+      그리기.stroke();
+
+      그리기.fillStyle='red';
+      그리기.fillRect(480,290,10,10);
+      그리기.fillRect(790,290,10,10);
+      그리기.beginPath();
+      그리기.strokeStyle='blue';
+      그리기.lineWidth=1;
+      그리기.setLineDash([2,2]);
+      그리기.moveTo(480,290);
+      그리기.lineTo(790,290);
+      그리기.stroke();
+      그리기.fillStyle='black';
+      그리기.fillText('(480,290)',460,313);
+      그리기.fillText('(790,290)',760,313);
+
+      그리기.strokeStyle='blue';
+      그리기.lineWidth=2;
+      그리기.setLineDash([2,0]);
+      그리기.beginPath();
+      그리기.arc(50,177,5,0,2*Math.PI);
+      그리기.stroke();
+
+      그리기.strokeStyle='red';
+      그리기.beginPath();
+      그리기.arc(188,110,5,0,2*Math.PI);
+      그리기.stroke();
+
+      그리기.fillText('그리기.beginPath();',480,15);
+      그리기.fillText('그리기.moveTo(480,290);',480,35);
+      그리기.fillStyle='red';
+      그리기.fillText('그리기.bezierCurveTo(x커브점1, y커브점1,',480,55);
+      그리기.fillText('x커브점2, y커브점2, x종료점, y종료점);',625,75);
+      그리기.fillStyle='black';
+      그리기.fillText('그리기.bezierCurveTo(500, 176, 600, 400, 790, 290);',480,95);
+      그리기.fillText('그리기.stroke();',480,115);
+
+      그리기.strokeStyle='red';
+      그리기.beginPath();
+      그리기.arc(500,176,5,0,2*Math.PI);
+      그리기.stroke();
+      그리기.beginPath();
+      그리기.arc(600,400,5,0,2*Math.PI);
+      그리기.stroke();
+      그리기.fillStyle='red';
+      그리기.fillText('(500,176)',467,196);
+      그리기.fillText('(600,400)',568,420);
+      그리기.fillStyle='black';
+      그리기.fillText('커브점 1',472,216);
+      그리기.fillText('커브점 2',573,440);
+
+      그리기.beginPath();
+      그리기.moveTo(480,290);
+      그리기.bezierCurveTo(500, 176, 600, 400, 790, 290);
+      그리기.stroke();
+
+
+
+      그리기.strokeStyle='blue';
+      그리기.beginPath();
+      그리기.arc(700,140,5,0,2*Math.PI);
+      그리기.stroke();
+      그리기.beginPath();
+      그리기.arc(850,450,5,0,2*Math.PI);
+      그리기.stroke();
+      그리기.strokeStyle='black';
+      그리기.beginPath();
+      그리기.arc(600,200,5,0,2*Math.PI);
+      그리기.stroke();
+      그리기.beginPath();
+      그리기.arc(650,200,5,0,2*Math.PI);
+      그리기.stroke();
+      그리기.fillStyle='blue';
+      그리기.fillText('(700,140)',670,160);
+      그리기.fillText('(850,450)',820,470);
+      그리기.fillStyle='black';
+      그리기.fillText('커브점 1',675,180);
+      그리기.fillText('커브점 2',825,490);
+      그리기.fillStyle='black';
+      그리기.fillText('커브점 1',675,180);
+      그리기.fillText('커브점 2',825,490);
+      그리기.fillStyle='black';
+      그리기.fillText('(600,200)',560,192);
+      그리기.fillText('(650,200)',625,192);
+      그리기.fillText('커브점 1',560,220);
+      그리기.fillText('커브점 2',625,220);
+
+      그리기.strokeStyle='blue';
+      그리기.beginPath();
+      그리기.moveTo(480,290);
+      그리기.bezierCurveTo(700, 140, 850, 450, 790, 290);
+      그리기.stroke();
+
+      그리기.strokeStyle='black';
+      그리기.beginPath();
+      그리기.moveTo(480,290);
+      그리기.bezierCurveTo(600, 200, 650, 200, 790, 290);
+      그리기.stroke();
+
+
+
+
+
+
+      
 
     }
-
-
 
 
 

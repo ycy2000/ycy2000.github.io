@@ -13,7 +13,7 @@
 #id_번호입력 > div > div {display:inline-block;width:40px;text-align: center;} /*6개번호 내부 각 번호*/
 #id_번호입력 > div > button {display:inline-block;width:40px;text-align: center;} /*삭제, 선긋기*/
 .삭제 {margin-left:5px;height:20px;width:20px;font-size: 12px;padding:0}
-.선긋기 {margin-left:10px;display:inline-block;height:20px;width:50px;font-size: 12px;padding:0}
+.선긋기 {display:inline-block;font-size: 12px;padding:0}
 .선긋기표시 {background-color: rgb(0, 162, 255);}
 #색칠보기_페이지번호 {display: inline-block; margin:0; padding:0;} 
 #색칠보기_페이지번호 > span {margin-left:-2px; display: inline-block;border:2px solid black;padding:1px 6px; background-color:chocolate;box-sizing: border-box;} 
