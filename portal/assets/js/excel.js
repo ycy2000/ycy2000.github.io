@@ -11,6 +11,7 @@ var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스
 var 리스너_excel캔버스전체 = document.querySelector('#excel캔버스전체');
 var 리스너_탁구github전체 = document.querySelector('#탁구github전체');
 var 리스너_htmlJavascript전체 = document.querySelector('#htmlJavascript전체');
+var 리스너_embed메모장전체 = document.querySelector('#embed메모장전체');
 
 function header_클릭시(e) {
   //Offcanvas클릭은 영향없다. 다른것일때
@@ -33,6 +34,11 @@ function header_클릭시(e) {
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
+  if (e.target.innerHTML == 'embed') {//캔버스 들어가려면 클릭이 된다.
+    선택한캔버스id='embed메모장전체';
+    console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    선택한캔버스_카테고리작성및_초기작업();
+  }
 }
 
 //각 캔버스는 header에  카테고리 목록은 고정이 아니라 캔버스관련자료none에서 가져오는 정보이다.
@@ -50,6 +56,7 @@ function 선택한캔버스_카테고리작성및_초기작업() {
 
   //header 카테고리들 버튼 내용 생성, id가 excel캔버스전체_excel일때 버튼안의 값이 excel로 나타나게 split
   // 관련자료none_개별카테고리class들.length : 없으면 0, 에러는 아님
+
   var 문자열;
   for (var i = 0; i < 관련자료none_개별카테고리class들.length; i++) {
     문자열=관련자료none_개별카테고리class들[i].id;
@@ -58,7 +65,6 @@ function 선택한캔버스_카테고리작성및_초기작업() {
                        + 문자열.substring(문자열.search('_')+1) + '</button>';
                        //+ 관련자료none_개별카테고리class들[i].id.split('_')[1] + '</button>';  [대상 문자열].search([조건 문자열]);
   }
-
   //header 카테고리들 버튼 생성
   if (관련자료none_개별카테고리class들.length>0) {
     document.querySelector('#' + 선택한캔버스id + ' .js카테고리생성').innerHTML=카테고리버튼생성;
@@ -87,10 +93,14 @@ function 선택한캔버스클릭시(e) {
       document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');//선택한 카테고리 버튼 색칠클래스 제거
     }
     //캔버스바디의 목옥을 눌렀을때 : 메모장 형식 미완성
-    if (e.target.classList.contains('코딩등메모장text파일')) {
-      선택한캔버스관련자료none안_타겟element = document.querySelector('#canvas텍스트');
+    if (e.target.classList.contains('메모장추가_div')) {
+      console.log('선택한캔버스클릭시(e) > 메모장추가_div : div갖고오고 + 메모장파일하나 갖고옴');
+      선택한캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
       결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
-      document.querySelector('#embed부분').src = 'portal/images/black_코딩등메모장/' + e.target.title;
+      document.querySelector('#선택문서id').innerHTML=e.target.title;
+      document.querySelector('#선택문서제목').innerHTML=e.target.innerHTML;
+      document.querySelector('#embed부분').src = 'portal/images/black_코딩등메모장/' + e.target.title + '.txt';
+      console.log(e.target.title + '.txt')
     }
     //캔버스바디의 목옥을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅
     if (e.target.classList.contains('canvas_div')) {
@@ -1250,6 +1260,8 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 리스너_탁구github전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_htmlJavascript전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_embed메모장전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_embed메모장전체.addEventListener('change', 선택한캔버스_검색input_change시);
 
 
 
