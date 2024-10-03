@@ -1163,11 +1163,23 @@ function 색칠보기클릭이벤트(e) {
   }
   //버튼 틀릭했을때
   if (e.target.parentNode.classList.contains('가로색칠') && e.target.tagName=='BUTTON') {
-    if (e.target.classList.contains('js버튼')) { 
-      e.target.classList.remove('js버튼');
+    e.target.parentNode.parentNode.id='임시부모표시';//색칠div_45
+    var js버튼들=document.querySelectorAll('#임시부모표시 .js버튼');
+    console.log('js버튼 클래스 개수 : ' + js버튼들.length)
+    if (js버튼들.length==6 && !e.target.classList.contains('js버튼')) {
+      alert('6개 색칠중, 추가 안됨')
     } else {
-      e.target.classList.add('js버튼');
+      if (e.target.classList.contains('js버튼')) { 
+        e.target.classList.remove('js버튼');
+      } else {
+        e.target.classList.add('js버튼');
+      }
     }
+    e.target.parentNode.id='';
+
+
+
+
     
   }
 }
