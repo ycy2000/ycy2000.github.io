@@ -1,5 +1,77 @@
+
+function 파일리스트_연습() {
+  //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
+  const fileInput = document.querySelector('#file_input');
+  const fileListContainer = document.querySelector('.file_list_container');
+
+  fileListContainer.innerHTML='';
+
+  //리스너 등록할때 #전체대체로 들어갔을때 등록해야 됨. change는 파일명이 추가될때마다 실행됨.
+  fileInput.addEventListener('change', displaySelectedDirectories);
+
+      function displaySelectedDirectories() {
+
+          const selectedDirectories = fileInput.files;
+
+          //fileInput.files : 파일선택 클릭후 탐색기에서 선택한 폴더안의 모든 파일들.
+
+          //selectedDirectories : 모든 파일이 배열로 들어가 있는데 각각의 파일은 오브젝트이다? 여러 내용이 담겨있다.
+          //                      name:"00_복사사용.txt", webkitRelativePath:"문서연결_엑셀VBA/00_복사사용.txt" (상대경로:선택한폴더/파일명)
+
+
+          // 그룹화된 파일을 저장할 객체 생성
+          const filesByDirectory = {};
+          //선택한디렉토리(안의 파일), 하부디렉톡리(안의 파일)
+
+          // 선택한 디렉터리 내의 파일을 그룹화
+          for (const file of selectedDirectories) {
+
+
+
+              const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/'); // 디렉터리 경로 추출
+              //선택한 폴더인 경우 결과가 ''이다. length=0, 하위폴더인 경우 폴더이름.
+
+
+              
+
+
+              if (!filesByDirectory[directoryPath]) {
+                console.log('현재폴더인경우')
+                  filesByDirectory[directoryPath] = [];
+              }
+
+              filesByDirectory[directoryPath].push(file);
+          }
+
+          // 파일을 그룹화된 디렉터리별로 나열
+          const directoryList = document.createElement('ul');
+          fileListContainer.appendChild(directoryList);
+
+          for (const directoryPath in filesByDirectory) {
+              const directoryItem = document.createElement('li');
+              const directoryName = document.createElement('div');
+
+              directoryName.textContent = directoryPath;
+              directoryItem.appendChild(directoryName);
+
+              const fileList = document.createElement('ul');
+              for (const file of filesByDirectory[directoryPath]) {
+                  const fileItem = document.createElement('li');
+                  const fileName = document.createElement('div');
+
+                  fileName.textContent = file.name;
+                  fileItem.appendChild(fileName);
+                  fileList.appendChild(fileItem);
+              }
+
+              directoryItem.appendChild(fileList);
+              directoryList.appendChild(directoryItem);
+          }
+      }
+}
+
 function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#excel_js_선긋기와위치').outerHTML;
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#기타전체_파일리스트').outerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
 }
@@ -11,7 +83,7 @@ var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스
 var 리스너_excel캔버스전체 = document.querySelector('#excel캔버스전체');
 var 리스너_탁구github전체 = document.querySelector('#탁구github전체');
 var 리스너_htmlJavascript전체 = document.querySelector('#htmlJavascript전체');
-var 리스너_embed메모장전체 = document.querySelector('#embed메모장전체');
+var 리스너_기타전체 = document.querySelector('#기타전체');
 
 function header_클릭시(e) {
   //Offcanvas클릭은 영향없다. 다른것일때
@@ -34,8 +106,8 @@ function header_클릭시(e) {
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
-  if (e.target.innerHTML == 'embed') {//캔버스 들어가려면 클릭이 된다.
-    선택한캔버스id='embed메모장전체';
+  if (e.target.innerHTML == '기타') {//캔버스 들어가려면 클릭이 된다.
+    선택한캔버스id='기타전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
@@ -92,16 +164,7 @@ function 선택한캔버스클릭시(e) {
       }
       document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');//선택한 카테고리 버튼 색칠클래스 제거
     }
-    //캔버스바디의 목옥을 눌렀을때 : 메모장 형식 미완성
-    if (e.target.classList.contains('메모장추가_div')) {
-      console.log('선택한캔버스클릭시(e) > 메모장추가_div : div갖고오고 + 메모장파일하나 갖고옴');
-      선택한캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
-      결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
-      document.querySelector('#선택문서id').innerHTML=e.target.title;
-      document.querySelector('#선택문서제목').innerHTML=e.target.innerHTML;
-      document.querySelector('#embed부분').src = 'portal/images/black_코딩등메모장/' + e.target.title + '.txt';
-      console.log(e.target.title + '.txt')
-    }
+
     //캔버스바디의 목옥을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅
     if (e.target.classList.contains('canvas_div')) {
       console.log('캔버스바디의 목록을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅')
@@ -1150,12 +1213,6 @@ function 전체대체클릭시(e) {
   
 
   if (1 == 1) {
-    //코딩등메모장text파일 : #canvas텍스트 배치후에 embed부분 수정
-    if (e.target.classList.contains('코딩등메모장text파일')) {
-      캔버스관련자료none안_타겟element = document.querySelector('#canvas결과모음 > #canvas텍스트');
-      결과부분.innerHTML = 캔버스관련자료none안_타겟element.outerHTML;
-      document.querySelector('#embed부분').src = 'portal/images/black_코딩등메모장/' + e.target.title;
-    }
     //canvas_div : 배치
     if (e.target.classList.contains('canvas_div')) {
       캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
@@ -1260,8 +1317,8 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 리스너_탁구github전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_htmlJavascript전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
-리스너_embed메모장전체.addEventListener('click', 선택한캔버스클릭시);
-리스너_embed메모장전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_기타전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_기타전체.addEventListener('change', 선택한캔버스_검색input_change시);
 
 
 

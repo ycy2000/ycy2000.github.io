@@ -32,7 +32,7 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#탁구github전체" aria-controls="offcanvasBottom">탁구,github,샷컷</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#htmlJavascript전체" aria-controls="offcanvasBottom">htmlJava</button>
         <button>특문</button> 
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#embed메모장전체" aria-controls="offcanvasBottom">embed</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
         <button onclick="연습()">연습()</button>
         <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
@@ -132,7 +132,7 @@
   </div>
 </div>
 
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="embed메모장전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="기타전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title">초기화</h6><!--click동작-->
@@ -156,15 +156,20 @@
 
 
 
-<div id="embed메모장전체_관련자료none" class="d-none 모든검색">
+<div id="기타전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="embed메모장전체_JS">
+    <div class="개별카테고리" id="기타전체_기타"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <h6 class="canvas_div" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
+      <h6 class="canvas_div" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
+    </div>
+
+    <div class="개별카테고리" id="기타전체_JS">
       <div>
-        <h6 class="메모장추가_div" title='embed메모장전체_캔버스관련코드'>excel.html > 캔버스 관련 코드 </h6>
+        <h6 class="canvas_div" title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드 </h6>
       </div>
     </div>
 
-    <div class="개별카테고리" id="embed메모장전체_임시">
+    <div class="개별카테고리" id="기타전체_임시">
       <div>
         <h6 class="canvas_div" title=''>예제</h6>
       </div>
@@ -178,9 +183,9 @@
   </div>
 
   <!-- 카테고리 끝났으면 아래는 개별파일 -->
-  <div id="embed메모장전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="기타전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=915px height=770px style="border:1px solid black;">
+      <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=770px style="border:1px solid black;">
       <img src="portal/images/문서연결_엑셀VBA/캔버스관련코드.png" alt="이미지없음">
       <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
@@ -193,6 +198,68 @@
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
+  </div>
+
+  <div id="기타전체_파일리스트"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 style="text-indent: 15px;color:blueviolet;"><a href="https://hianna.tistory.com/347" target="_blank">출처 : 디렉토리 안의 파일 정보 읽어오기[참고만]</a></h6>
+      <h6 style="text-indent: 15px;color:blueviolet;"><a href="https://admm.tistory.com/104" target="_blank">출처 : [Java] 폴더, 하위폴더에 있는 전체 파일이름 추출(가져)오기[참고만]</a></h6>
+      <h6 style="text-indent: 15px;color:blueviolet;"><a href="https://cryingsun.tistory.com/26" target="_blank">출처 : 자바스크립트(Javascript)로 폴더 업로드해서 목록 나열하기</a></h6>
+      
+      <h5 class="fw-bold;">이해가 되지 않아 정보 수집</h5>
+      <h6 class="fw-bold;">• &#60;input type="file"&#62; 왼쪽의 태그만으로 오른쪽 처럼 보이게 된다. <input type="file" webkitdirectory> <span style="margin-left:-50px;color:blueviolet">function sssss_연습()</span></h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;"><span style="color:blueviolet">- 파일선택 인풋 버튼 누르면 파일선택하는 탐색기가 뜬다.</span> </h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;">- 선택하면 오른쪽에 파일이름이 뜬다.</h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;">- 마우스 올리면 파일이름이 title처럼 보이게 된다.</h6>
+      <h6 class="fw-bold;">• 폴더를 선택하게 하려면, &#60;input type="file"  webkitdirectory&#62; </h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;"><span style="color:blueviolet">- 파일선택 버튼 누르면 '폴더'선택하는 탐색기가 뜬다.</span> </h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;">- 선택하면 오른쪽에 하위폴더 포함한 전체 '파일개수'가 뜬다.</h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;">- 마우스 올리면 파일이름이 title처럼 보이게 된다. 한줄씩 누적되어 보이게 된다.</h6>
+      <h6 class="fw-bold;"><a href="https://hianna.tistory.com/346" targrt="_blank">• 사용자가 파일을 선택하면, 선택된 파일의 목록이 FileList 객체 형태로 files 속성에 저장됩니다.</a></h6>
+      <h6 class="fw-bold;" style="text-indent: 15px;">즉, 선택된 파일 목록을 가져오려면 files 속성을 참조하면 됩니다.</h6>
+      <h6 class="fw-bold;"><a href="https://hianna.tistory.com/345" targrt="_blank">files 속성을 참조하는 방법.</a></h6>
+
+
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      <code class="fw-bold;"></code>
+      <h6 class="fw-bold;" style="text-indent: 15px;color:blueviolet;"></h6>
+      <h5 class="fw-bold;"></h5>
+      <code class="fw-bold;">• </code>
+      <code class="fw-bold;" style="text-indent: 15px;"></code>
+      <code class="fw-bold;"></code>
+      <span style="color:blueviolet"></span>
+      <h6 class="fw-bold;"></h6>
+      <h6 style="text-indent: 23px;"></h6>
+    </div>
+
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <input onclick="파일리스트_연습()" type="file" id="file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트_연습()</span>
+      <div class="file_list_container"></div>
+      
+    </div>
+
+  </div>
+
+  <div id="기타전체_png와txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+      <code class="fw-bold;"></code>
+      <h6 style="text-indent: 15px;color:blueviolet;"></h6>
+      <h5 class="fw-bold;"></h5>
+      <code class="fw-bold;">• </code>
+      <code class="fw-bold;" style="text-indent: 15px;"></code>
+      <code class="fw-bold;"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+      
+    </div>
+
   </div>
 
   <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
@@ -216,9 +283,6 @@
 
 <div id="htmlJavascript전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="htmlJavascript전체_기타"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <h6 class="canvas_div" title='htmlJavascript_png와txt'>htmlJava > png와 txt파일 사용중 확인 </h6>
-    </div>
     <div class="개별카테고리" id="htmlJavascript전체_JS">
       <div>
         <h6 class="canvas_div" title='excel_js파일유의사항'>JS > 유의사항 : 클릭이벤트, e.target, 검색, innerText, innerHTML,outerHTML, </h6>
@@ -253,40 +317,6 @@
     </div>
     <div class="개별카테고리" id="htmlJavascript전체_참고2"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
 
-    </div>
-  </div>
-
-  <div id="htmlJavascript_png와txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">excel.html에서 png파일과 txt파일 사용중 대충 확인 하는 방법</h5>
-      <code class="fw-bold">• 사용하는 txt파일 위치, 사용하는 png파일 위치</code>
-      <h6 style="text-indent: 15px;color:blueviolet;">- 사용하는 txt파일 위치 : src="portal/images/black_코딩등메모장/텍스트파일이름.txt"</h6>
-      <h6 style="text-indent: 15px;color:blueviolet;">- 사용하는 png파일 위치 : src="portal/images/문서연결_엑셀VBA/PNG파일이름.png"</h6>
-      <code class="fw-bold">• excel.html에서 txt와 png 파일 사용한다는 것을 인지하는 방법</code>
-      <h6 style="text-indent: 15px;color:blueviolet;">- 이미지 : img 태그의 src의 length>0</h6>
-      <h6 style="text-indent: 15px;color:blueviolet;">- 텍스트파일 embed : embed태그의 src의 끝 4자리.txt</h6>
-      <code class="fw-bold">• img, txt파일 태그의 부모의 부모가 보통 파일이 연결된 id 부분이다.</code>
-      <h5 class="fw-bold">class=모든검색(예:id="htmlJavascript전체_관련자료none") 안의 img 태그와 embed 태그는</h5>
-      <code class="fw-bold" style="color:blueviolet">• src값의 length가 0 이 아니면 연결되어 있다는 뜻일수 있다.</code>
-      <code class="fw-bold">• src값이 있을때 마지막에서 두번째 '/'와 마지막 '/'사이가 폴더이름이다.</code>
-      <code class="fw-bold;"></code>
-      <h6 style="text-indent: 15px;color:blueviolet;"></h6>
-      <h5 class="fw-bold;"></h5>
-      <code class="fw-bold;">• </code>
-      <code class="fw-bold;" style="text-indent: 15px;"></code>
-      <code class="fw-bold;"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="portal/images/black_코딩등메모장/텍스트파일이름.txt" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">코딩</h5>
-      <code class="fw-bold">1. src가 있는 것들의 폴더이름을 알고 싶다. </code>
-      <code class="fw-bold">2. 폴더별로 (img, embed 태그의 src값이 있는경우, ) </code>
-      <code class="fw-bold" style="text-indent: 15px;">ⓐ 폴더내 파일이름 나열(png-txt-기타 순서), </code>
-      <code class="fw-bold" style="text-indent: 15px;">ⓑ img, embed 태그의 부모의 부모의 id의 length>0 이면 아이디로 정한다. </code>
-      <code class="fw-bold" style="text-indent: 15px;">ⓒ ⓓ ⓔ ⓕ</code>
     </div>
   </div>
 
@@ -2738,7 +2768,7 @@
     </div>
   </div>
   
-  <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id="">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
@@ -2753,15 +2783,20 @@
     </div>
   </div>
 
-  <div id="html특수문자_click" style="position: absolute;right:0px;top:20px;width:500px;display:none;">
+  <div id="html특수문자_click">
     <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
-    <div style="background-color: white; border:1px solid black;padding:5px;">
+
+    <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
       <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
       <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
-      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음">
+      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
       <br>
       <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
     </div>
+    <div style="display: inline-block;padding:5px;">
+      <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
+    </div>
+
   </div>
 </div>
 
@@ -2773,6 +2808,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
 <script src="portal/assets/js/excel.js"></script>
+
 </body>
 
 </html>
