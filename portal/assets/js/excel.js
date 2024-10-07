@@ -13,10 +13,7 @@ function 파일리스트_연습() {
 
           const selectedDirectories = fileInput.files;
 
-          //fileInput.files : 파일선택 클릭후 탐색기에서 선택한 폴더안의 모든 파일들.
 
-          //selectedDirectories : 모든 파일이 배열로 들어가 있는데 각각의 파일은 오브젝트이다? 여러 내용이 담겨있다.
-          //                      name:"00_복사사용.txt", webkitRelativePath:"문서연결_엑셀VBA/00_복사사용.txt" (상대경로:선택한폴더/파일명)
 
 
           // 그룹화된 파일을 저장할 객체 생성
@@ -26,22 +23,28 @@ function 파일리스트_연습() {
           // 선택한 디렉터리 내의 파일을 그룹화
           for (const file of selectedDirectories) {
 
+            
 
-
-              const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/'); // 디렉터리 경로 추출
+              //const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/'); // 파일을 담은 폴더이름
+              const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/'); // 파일을 담은 폴더이름
+              //const directoryPath = file.webkitRelativePath; // 그대로 사용할경우 directoryPath 값이 모두 고유값이다.
               //선택한 폴더인 경우 결과가 ''이다. length=0, 하위폴더인 경우 폴더이름.
 
 
-              
-
+  
 
               if (!filesByDirectory[directoryPath]) {
-                console.log('현재폴더인경우')
+                  console.log('시작인 경우')
                   filesByDirectory[directoryPath] = [];
               }
+              //console.log('directoryPath : ' + directoryPath)
+              //console.log(filesByDirectory[directoryPath])
+
+
 
               filesByDirectory[directoryPath].push(file);
           }
+          //console.log(filesByDirectory[''][0])
 
           // 파일을 그룹화된 디렉터리별로 나열
           const directoryList = document.createElement('ul');
