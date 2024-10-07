@@ -207,7 +207,7 @@
       <h6 style="text-indent: 15px;color:blueviolet;"><a href="https://cryingsun.tistory.com/26" target="_blank">출처 : 자바스크립트(Javascript)로 폴더 업로드해서 목록 나열하기</a></h6>
       
       <h5 class="fw-bold;">이해가 되지 않아 정보 수집</h5>
-      <h6 class="fw-bold;">• &#60;input type="file"&#62; 왼쪽의 태그만으로 오른쪽 처럼 보이게 된다. <input type="file" webkitdirectory> <span style="margin-left:-50px;color:blueviolet">function sssss_연습()</span></h6>
+      <h6 class="fw-bold;">• &#60;input type="file"&#62; 왼쪽의 태그만으로 오른쪽 처럼 보이게 된다. <input type="file"></h6>
       <h6 class="fw-bold;" style="text-indent: 15px;"><span style="color:blueviolet">- 파일선택 인풋 버튼 누르면 파일선택하는 탐색기가 뜬다.</span> </h6>
       <h6 class="fw-bold;" style="text-indent: 15px;">- 선택하면 오른쪽에 파일이름이 뜬다.</h6>
       <h6 class="fw-bold;" style="text-indent: 15px;">- 마우스 올리면 파일이름이 title처럼 보이게 된다.</h6>
@@ -247,9 +247,6 @@
       <code class="fw-bold;" style="text-indent: 70px;">const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/');</code>
       <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//slice(1,-1) : 두번째배열부터(첫번째 폴더명 제외), 끝에서 두번째배열까지(파일명 제외)</h6>
       <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//slice(0,-1) : 선택한폴더부터, 파일명제외</h6>
-
-
-      
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//전체경로가 아닌 폴더이름만 담게 된다. 선택폴더인경우 공백 반환. 하위폴더인 경우 폴더명 반환</h6>
       <code class="fw-bold;" style="text-indent: 70px;">if (!filesByDirectory[directoryPath]) &#123;</code>
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//선택폴더에 파일이 있는 경우 directoryPath가 공백이므로, 속성명을 공백으로 지정함.</h6>
@@ -269,10 +266,10 @@
       <br>
       <code class="fw-bold;" style="text-indent: 45px;">const directoryList = document.createElement('ul');</code>
       <code class="fw-bold;" style="text-indent: 45px;">fileListContainer.appendChild(directoryList);</code>
-      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//위 두줄 : ul을 넣는다.</h6>
+      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//위 두줄 : 전체 ul을 넣는다.</h6>
       <br>
       <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//아래3줄 : const directoryPath, 새로운 변수임, 다른이름으로 해도 됨.</h6>
-      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//ul 안에 들어갈 각각의 li 준비, 폴더이름이 ''공백이 아닐때 생성할 div 준비</h6>
+      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//ul 안에 들어갈 각각의 폴더관련 전체 li 준비, 폴더이름이 ''공백이 아닐때 li 안에 생성할 div 준비</h6>
       <code class="fw-bold;" style="text-indent: 45px;">for (const directoryPath in filesByDirectory) &#123;</code>
       <code class="fw-bold;" style="text-indent: 70px;">const directoryItem = document.createElement('li');</code>
       <code class="fw-bold;" style="text-indent: 70px;">const directoryName = document.createElement('div');</code>
@@ -284,6 +281,7 @@
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//위 4줄 요약 : li요소 안에 '폴더이름을 textContent로 갖는 div요소를 자식으로 넣는다.</h6>
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//★폴더이름을 기록하는 과정.</h6>
       <br>
+      <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//폴더관련 전체 li > 폴더이름 div, 폴더관련 각 파일이름 li를 담을 ul</h6>
       <code class="fw-bold;" style="text-indent: 70px;">const fileList = document.createElement('ul');</code>
       <code class="fw-bold;" style="text-indent: 70px;">for (const file of filesByDirectory[directoryPath]) &#123;</code>
       <code class="fw-bold;" style="text-indent: 90px;">const fileItem = document.createElement('li');</code>
@@ -296,10 +294,11 @@
       <br>
       <code class="fw-bold;" style="text-indent: 70px;">directoryItem.appendChild(fileList);</code>
       <code class="fw-bold;" style="text-indent: 70px;">directoryList.appendChild(directoryItem);</code>
-      <code class="fw-bold;" style="text-indent: 45px;">&#125;</code>
+      <code class="fw-bold;" style="text-indent: 45px;">&#125; <span style="color:blueviolet">// 전체 for 문 닫는 괄호</span></code>
       <code class="fw-bold;" style="text-indent: 15px;">&#125; <span style="color:blueviolet">// 내부함수 function displaySelectedDirectories() &#123; 닫는 괄호</span></code>
       <code class="fw-bold;">&#125; <span style="color:blueviolet">//function 파일리스트_연습() &#123; 닫는 괄호</span></code>
-          
+      <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">※ ul과 li div 관계</h6>
+      <h6 class="fw-bold;" style="text-indent: 90px;color:blueviolet;">전체 ul > 각 폴더 관련 li > 폴더이름 div, 파일리스트 ul 안에 각 파일 li</h6>
 
 
 
@@ -319,7 +318,7 @@
     </div>
 
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <input onclick="파일리스트_연습()" type="file" id="file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트_연습()</span>
+      <input onclick="파일리스트_연습()" type="file" id="file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트_연습() : 폴더를 선택하였을 경우</span>
       <div class="file_list_container"></div>
       
     </div>
