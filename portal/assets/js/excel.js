@@ -25,9 +25,9 @@ function 파일리스트_연습() {
 
             
 
+              const directoryPath = file.webkitRelativePath.split('/').slice(0, -1).join('/'); //slice(0, -1) 첫번째배열부터(처음폴더포함), 끝에서 두번째 배열까지(파일명제외)
               //const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/'); // 파일을 담은 폴더이름
-              const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/'); // 파일을 담은 폴더이름
-              //const directoryPath = file.webkitRelativePath; // 그대로 사용할경우 directoryPath 값이 모두 고유값이다.
+              //const directoryPath = file.webkitRelativePath; // 선택한폴더부터 파일명까지 모두 사용할경우 directoryPath 값이 모두 고유값이다.
               //선택한 폴더인 경우 결과가 ''이다. length=0, 하위폴더인 경우 폴더이름.
 
 
@@ -49,6 +49,7 @@ function 파일리스트_연습() {
           // 파일을 그룹화된 디렉터리별로 나열
           const directoryList = document.createElement('ul');
           fileListContainer.appendChild(directoryList);
+          //폴더명이 공백이면 내용없는 ul이 생기기때문에 폴더이름이 안보임, 폴더이름 부분에 첫번째 파일이름이 나오게 됨
 
           for (const directoryPath in filesByDirectory) {
               const directoryItem = document.createElement('li');

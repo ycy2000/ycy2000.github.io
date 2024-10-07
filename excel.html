@@ -245,6 +245,11 @@
       <code class="fw-bold;" style="text-indent: 45px;">for (const file of selectedDirectories) &#123;</code>
       <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//반복구문을 통해서 현재 폴더의 파일들을 담는다.</h6>
       <code class="fw-bold;" style="text-indent: 70px;">const directoryPath = file.webkitRelativePath.split('/').slice(1, -1).join('/');</code>
+      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//slice(1,-1) : 두번째배열부터(첫번째 폴더명 제외), 끝에서 두번째배열까지(파일명 제외)</h6>
+      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//slice(0,-1) : 선택한폴더부터, 파일명제외</h6>
+
+
+      
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//전체경로가 아닌 폴더이름만 담게 된다. 선택폴더인경우 공백 반환. 하위폴더인 경우 폴더명 반환</h6>
       <code class="fw-bold;" style="text-indent: 70px;">if (!filesByDirectory[directoryPath]) &#123;</code>
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//선택폴더에 파일이 있는 경우 directoryPath가 공백이므로, 속성명을 공백으로 지정함.</h6>
