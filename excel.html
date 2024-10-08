@@ -155,7 +155,9 @@
 </div>
 
 
-
+<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="기타전체_관련자료none" id="htmlJavascript전체_관련자료none" id="탁구github전체_관련자료none"-->
+<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
+ <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
 <div id="기타전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="기타전체_기타"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
@@ -240,7 +242,7 @@
       <h6 class="fw-bold;" style="text-indent: 74px;color:blueviolet;">fileInput.files[0].name ==>'08_검품확인_메뉴접근.png'</h6>
       <h6 class="fw-bold;" style="text-indent: 74px;color:blueviolet;">fileInput.files[0].webkitRealtivePath ==>'images/08_검품확인_메뉴접근.png'</h6>
       <code class="fw-bold;" style="text-indent: 45px;">const filesByDirectory = {};</code>
-      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//폴더인경우 폴더안의 파일을 담을 객체, json형태로 속성명:속성값 형태로 담긴다.</h6>
+      <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//폴더인경우 폴더안의 파일을 담을 객체(Object), key설정안하면 순번값이 key값이 되고 값으로 파일이 담긴다</h6>
       <br>
       <code class="fw-bold;" style="text-indent: 45px;">for (const file of selectedDirectories) &#123;</code>
       <h6 class="fw-bold;" style="text-indent: 45px;color:blueviolet;">//반복구문을 통해서 현재 폴더의 파일들을 담는다.</h6>
@@ -252,7 +254,8 @@
       <h6 class="fw-bold;" style="text-indent: 70px;color:blueviolet;">//선택폴더에 파일이 있는 경우 directoryPath가 공백이므로, 속성명을 공백으로 지정함.</h6>
       <code class="fw-bold;" style="text-indent: 85px;">console.log('현재폴더인경우')</code>
       <code class="fw-bold;" style="text-indent: 85px;">filesByDirectory[directoryPath] = [];</code>
-      <h6 class="fw-bold;" style="text-indent: 85px;color:blueviolet;">//속성명이 공백일뿐, 파일은 push된다.</h6>
+      <h6 class="fw-bold;" style="text-indent: 85px;color:blueviolet;">//★★directoryPath는 문자열(폴더명)이고 공백('')도 됨, </h6>
+      <h6 class="fw-bold;" style="text-indent: 85px;color:blueviolet;">//★★문자열의 key할당(폴더 나올때마다 누적됨)후 값을 빈배열로 지정함. (찾기:객체Object_JSON_기본)</h6>
       <code class="fw-bold;" style="text-indent: 70px;">&#125;</code>
       <code class="fw-bold;" style="text-indent: 70px;">filesByDirectory[directoryPath].push(file);</code>
       <code class="fw-bold;" style="text-indent: 45px;">&#125;</code>
@@ -346,7 +349,7 @@
 
   </div>
 
-  <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+  <div id=""><!--기본빈서식-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
       <h5 class="fw-bold"></h5>
@@ -377,7 +380,6 @@
         <h6 class="canvas_div" title='excel_js_split'>JS > split : 찾기, 정규식, 구분문자의 개수를 구할수 있다.   </h6>
         <h6 class="canvas_div" title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
         <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
-        <h6 class="canvas_div" title='excel_js_배열과json객체와json비교'>JS > 배열과 json객체와 json비교</h6>
         <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
         <h6 class="canvas_div" title='excel_js_반복문'>JS > 반복문, for, do..while, 레이블 문, break 문, continue 문, for..in 문, for..of 문</h6>
       </div>
@@ -391,16 +393,60 @@
       </div>
     </div>
 
-    <div class="개별카테고리" id="htmlJavascript전체_html_css"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <h6 class="canvas_div" title='excel_js_HTML노드'>노드 </h6>
-      <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
-      <h6 class="canvas_div" title='CSS_엣지와크롬1'>엣지와 크롬, CSS 적용상이??</h6>
-    </div>
-    <div class="개별카테고리" id="htmlJavascript전체_kimhtml"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <h6 class="canvas_div" title='htmlJavascript_kimhtml'>kim.html(kimhtml) </h6>
-    </div>
-    <div class="개별카테고리" id="htmlJavascript전체_참고2"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="htmlJavascript전체_JS2"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='JS2_객체Object_JSON_기본' style="color:blueviolet">JS2 > 객체Object_JSON_기본</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
+        <h6 class="canvas_div" title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
+        <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, createElement</h6>
 
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_html_css"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='excel_js_HTML노드'>노드 </h6>
+        <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
+        <h6 class="canvas_div" title='CSS_엣지와크롬1'>엣지와 크롬, CSS 적용상이??</h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_kimhtml"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='htmlJavascript_kimhtml'>kim.html(kimhtml) </h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_참고2"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
     </div>
   </div>
 
@@ -668,20 +714,43 @@
     </div>
   </div>
 
-  <div id="excel_js_배열과json객체와json비교"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"></h5>
-      <h5 class="fw-bold">자료 출처 : <a href="https://take-it-into-account.tistory.com/256#:~:text=%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20JSON%20Object%EB%93%A4%EC%9D%B4%20%EB%AA%A8%EC%9D%B8%20%EA%B2%83%EC%9D%B4%20JSON%20Array%EB%A1%9C%20%EB%8C%80%EA%B4%84%ED%98%B8,%EC%97%86%EB%8A%94%20%EB%B0%B0%EC%97%B4%20%ED%98%95%ED%83%9C%EB%A1%9C%20%EB%82%98%ED%83%80%EB%82%B4%EC%97%AC%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%B3%84%EB%A1%9C%20%EB%82%98%EB%88%84%EC%96%B4%20%EC%A0%80%EC%9E%A5%ED%95%98%EA%B3%A0%20%EC%A0%91%EA%B7%BC%ED%95%9C%EB%8B%A4." target="_blank">https://take-it-into-account.tistory.com/256#:~:text=%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20JSON%20Object%EB%93%A4%EC%9D%B4%20%EB%AA%A8%EC%9D%B8%20%EA%B2%83%EC%9D%B4%20JSON%20Array%EB%A1%9C%20%EB%8C%80%EA%B4%84%ED%98%B8,%EC%97%86%EB%8A%94%20%EB%B0%B0%EC%97%B4%20%ED%98%95%ED%83%9C%EB%A1%9C%20%EB%82%98%ED%83%80%EB%82%B4%EC%97%AC%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%B3%84%EB%A1%9C%20%EB%82%98%EB%88%84%EC%96%B4%20%EC%A0%80%EC%9E%A5%ED%95%98%EA%B3%A0%20%EC%A0%91%EA%B7%BC%ED%95%9C%EB%8B%A4.</a></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
+  <div id="JS2_객체Object_JSON_기본"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div id=""><!--기본빈서식-->
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <code class="fw-bold">• JSON은 객체(Object)의 key부분이 문자열로써 따옴표로 묶여서 표현, 모두 문자열, {}중괄호 외곽을 따옴표로 묶음? 다음에 공부</code>
+        <!-- <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;"> -->
+        <h5 class="fw-bold">객체(Object) : { } 중괄호 안에 쉴표(,)로 구분하고, key : 값 형태로 표현, key는 따옴표 치지 않는다.</h5>
+        <code class="fw-bold">• ex) var person = { name:"Jhon", age:30}</code>
+        <code class="fw-bold" style="text-indent: 15px;">모든 key 배열로 반환 : Object.keys(person); ==> ['name', 'age']</code>
+        <code class="fw-bold" style="text-indent: 15px;">모든 value 배열로 반환 : Object.values(person); ==> ['Jhon', 30]</code>
+        <code class="fw-bold" style="text-indent: 15px;">하나의 값 확인, key를 속성처럼 쓰면 된다 : person.age ==> 30</code>
+        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">★★ 하나의 값 확인 다른 방법 : 순번은 안되고 배열값으로 전달</code>
+        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">person['age'] ==> 30 : key이름 문자열</code>
+        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">★★ key값 있는지 확인</code>
+        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">if (!person['age'])  ==> 'age'라는 key가 없다면.</code>
+        <code class="fw-bold">• 새로운 key와 value 추가 코드 : person['age']=30, 또는 객체.age=30</code>
+        <code class="fw-bold">• key 값을 배열로 전달한 후 배열에 값 추가 예제</code>
+        <code class="fw-bold" style="text-indent: 15px;">var 객체={};</code>
+        <code class="fw-bold" style="text-indent: 15px;">객체.과일=[]; : key값이 '과일'이고 값으로 빈 배열 할당</code>
+        <code class="fw-bold" style="text-indent: 15px;">객체.과일.push('사과');</code>
+        <code class="fw-bold" style="text-indent: 15px;">객체.과일.push('바나나');</code>
+        <code class="fw-bold" style="text-indent: 15px;">console.log(객체.과일); 또는 console.log(객체['과일'] ==> ['사과', '바나나'])</code>
+        <code class="fw-bold" style="text-indent: 15px;">객채.과일[0] ==> '사과', 객체['과일'][1] ==> '바나나'</code>
+
+
+        
+        <code class="fw-bold" style="text-indent: 15px;"></code>
+        <code class="fw-bold">• </code>
+        <code class="fw-bold"></code>
+        <span style="color:blueviolet"></span>
+        <h6></h6>
+        <h6 style="text-indent: 23px;"></h6>
+        <img src="" alt="이미지없음">
+      </div>
+      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      </div>
     </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
+
   </div>
 
   <div id="excel_js_substr등"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
@@ -1016,6 +1085,136 @@
 
 
 
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY">
+    <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h5>
+    <h6>• 대괄호 []로 묶여있음, const cars = ["Saab","Volvo","BMW"];</h6>
+    <img src="portal/images/black_코딩등그림판/참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY.png" alt="이미지없음">
+
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT">
+    <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h5>
+    <h6>• 중괄호 { }로 묶여있음, const preson = {firstName:"John",lastName:"Doe",age:50,eyeColor:"blue"};</h6>
+    <h6>• Key는 변수 취급. ex)document.querySelector('#연습').style.display='block;'에서</h6>
+    <h6 style="text-indent: 23px;">display부분과 value부분 'block;' ==> 각각 firstName, "John"부분이라고 보면 되겠다.</h6>
+    <h6 style="text-indent: 23px;">★ Key부분에 따옴표가 없는것에 주목!! 따옴표가 있으면 값(string), 없으면(숫자제외) string이 아니라는 의미!!</h6>
+    <h6>• 변수.Key 형태로 값을 호출한다. 배열처럼 [순번] 안됨. 괄호(순번)도 안됨</h6>
+    <img src="portal/images/black_코딩등그림판/참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT.png" alt="이미지없음">
+    <h6 style="text-indent: 23px;"></h6>
+
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="참고_ARRAY_OBJECT_JSON_구분정리_03_JSON">
+    <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h5>
+    <img src="portal/images/black_코딩등그림판/참고_ARRAY_OBJECT_JSON_구분정리_03_JSON.png" alt="이미지없음">
+
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <div id="Sibling_Node_Element_tagName은대문자_TARGET순번확인"><!-- 참고 -->
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">Sibling_Node_Element_tagName은대문자_TARGET순번확인</h5>
+      <h6>1. 공백이나 spacebar, 엔터가 있으면 text노드가 있는것이다.	 </h6>
+      <h6>2. Siblings are "brothers" and "sisters". : 같은 부모를 가졌다.	 </h6>
+      <h6>3. section에 엔터, div사이의 엔터에 text노드가 있는것이다.	 </h6>
+      <h6>4. parenNode는 무조건 element이고 최상위 element는 html이다.	 </h6>
+      <h6>5 .nextSibling, previousSibling : 주석노드나 텍스트노드인 경우가 있다.	 </h6>
+      <h6>6 .nextElementSibling, previousElementSibling : element만 다룬다	 </h6>
+      <h6>7. childNodes : childNode[0] 형식으로 선택한다. Text노드, 주석노드 포함	 </h6>
+      <h6>8. children : children[0] 형식으로 선택한다. Element만 다룬다.	 </h6>
+      <h6>★첫번째div안에 p가 하나인데 tagName을 확인하기	 </h6>
+      <h6 style="text-indent: 23px;">console.log(document.querySelector('#연습').children[0].children[0].tagName); 	</h6>
+      <h6>★첫번째div안에 p가 하나인데 다음(없는) sibling을 지정하면 error	 </h6>
+      <h6 style="text-indent: 23px;">console.log(document.querySelector('#연습').children[0].children[1].tagName); 	</h6>
+      <h6 style="text-indent: 23px;">console.log(document.querySelector('#연습').children[0].children[1].nextElementSibling.tagName);	 	</h6>
+      <br>
+      <h5 class="fw-bold">요소.childNodes ==> 첫번째 자식들만, 주석노드, text노드, element노드 </h5>
+      <h6 class="fw-bold"> (엔터 또는 스페이스바 또는 텍스트=text 노드, 태그사이에 스페이스바나 엔터가 있으면 text로 인식된다.)</h6>
+      <h6>• console.log(document.querySelector('#S1_해역사진').childNodes); </h6>
+      <h6 style="text-indent: 23px;">NodeList(8) [text, div, comment, text, div, text, div, text]</h6>
+      <img style="position:absolute;left:600px;" src="portal/images/black_코딩등그림판/참고_S1_해역사진_childNodes.png" alt="이미지없음">
+      <h6 style="text-indent: 23px;">0 : text ==> 첫번째는 text노드, 다음 div사이의 엔터</h6>
+      <h6 style="text-indent: 23px;">1 : div  ==> 두번째는 div이다</h6>
+      <h6 style="text-indent: 23px;">2 : comment ==> 세번째 주석노드 : &lt;!-- fixed --&gt;부분</h6>
+      <h6 style="text-indent: 23px;">3 : text ==> 네번째는 text노드 : 엔터가 있다.</h6>
+      <h6 style="text-indent: 23px;">4 : div  ==> 다섯번째는 div이다</h6>
+      <h6 style="text-indent: 23px;">5 : text ==> 여섯번째는 text노드 : 엔터가 있다.</h6>
+      <h6 style="text-indent: 23px;">6 : div  ==> 일곱번째는 div이다</h6>
+      <h6 style="text-indent: 23px;">7 : text  ==> 여덟번째는 text노드 : 닫는 div 앞에 엔터가 있다. </h6>
+      <h6 style="text-indent: 23px;">length=8; </h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">tagName은 대문자! 예)태그이름이 input인경우 (★스크립트는 대소문자 구분!)</h5>
+      <h6 style="text-indent: 23px;">var 태그이름=document.querySelector('#연습').tagName);</h6>
+      <h6 style="text-indent: 23px;">console.log(태그이름); ==> 'INPUT' 	</h6>
+      <h6 style="text-indent: 23px;">if (태그이름=='INPUT') ==> true 	</h6>
+      <h6 style="text-indent: 23px;">if (태그이름=='input') ==> false 	</h6>
+      <br>
+      <h5 class="fw-bold">target 순번확인 : target표시 > parentNode올라가서 children 순회하여 표시 찾기</h5>
+    </div>
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <div id="참고_오버레이_이미지사진띄우기_각도_드래곤">
+    <h5><a href="https://wjdtmddnjs6788.tistory.com/1282" target="_blank">▢ 참고_오버레이_이미지사진띄우기_각도_드래곤</a></h5>
+    <h6 style="text-indent: 23px;">zip파일 다운로드 ==> 풀기, SD.exe 실행, 우클릭 메뉴 활용</h6>
+  </div>
+
+  <div id="JS2_요소추가_APPENDCHILD"><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">append와 appendChild 차이점, 요소생성 createElement, 텍스트넣기, 텍스트노드 넣기...</h5>
+      <code class="fw-bold">1. 둘 다, 부모노드에서 자식노드를 추가하는 메서드이다. </code>
+      <code class="fw-bold">2. append 메서드는, <span style="color:blueviolet">ⓐ 노드객체(Node object)</span>나 <span style="color:blueviolet">ⓑ DOMString(text)를 사용</span>할 수 있음. </code>
+      <code class="fw-bold" style="text-indent: 25px;">또한 <span style="color:blueviolet">ⓒ 한번에 여러개의 자식요소를 설정</span>할 수 있다. </code>
+      <code class="fw-bold" style="text-indent: 25px;color:blueviolet">ⓐ Node object 사용 예시</code>
+      <code class="fw-bold" style="text-indent: 25px;">var 부모=document.createElement('div'); // div 요소 변수에 담는다.</code>
+      <code class="fw-bold" style="text-indent: 25px;">var 자식=document.createElement('p'); // p 요소 변수에 담는다.</code>
+      <code class="fw-bold" style="text-indent: 25px;">부모.append(자식); // 결과(부모 div 요소 안에 자식 p 요소 생성) : <span style="color:blueviolet">&#60;div>&#60;p>&#60;/p>&#60;/div></span></code>
+      <br>
+      <code class="fw-bold" style="text-indent: 25px;color:blueviolet">ⓑ DOMString(문자열) 사용 예시 (다른방법 : 요소.textcontent='입력할 문자열')</code>
+      <code class="fw-bold" style="text-indent: 25px;">var 부모=document.createElement('div'); // div 요소 변수에 담는다.</code>
+      <code class="fw-bold" style="text-indent: 25px;">부모.append('append 예시'); // 결과(부모 div 요소 '문자열' 입력) : <span style="color:blueviolet">&#60;div>append 예시;/div></span></code>
+      <br>
+      <code class="fw-bold" style="text-indent: 25px;color:blueviolet">ⓒ 한번에 여러개의 자식요소를 설정</code>
+      <code class="fw-bold" style="text-indent: 25px;">var div요소=document.createElement('div'); // div 요소 변수에 담는다.</code>
+      <code class="fw-bold" style="text-indent: 25px;">var span요소=document.createElement('span'); // span 요소 변수에 담는다.</code>
+      <code class="fw-bold" style="text-indent: 25px;">var p요소=document.createElement('p'); // p 요소 변수에 담는다.</code>
+      <code class="fw-bold" style="text-indent: 25px;"><span style="color:blueviolet">document.body.append(div요소, '텍스트', span, p);</span> // 결과 아래</span></code>
+      <code class="fw-bold" style="text-indent: 25px;">&#60;body></code>
+      <code class="fw-bold" style="text-indent: 40px;">&#60;div>&#60;div></code>
+      <code class="fw-bold" style="text-indent: 40px;">텍스트</code>
+      <code class="fw-bold" style="text-indent: 40px;">&#60;span>&#60;span></code>
+      <code class="fw-bold" style="text-indent: 40px;">&#60;p>&#60;p></code>
+      <code class="fw-bold" style="text-indent: 25px;">&#60;/body></code>
+      <br>
+      <code class="fw-bold">3. appendChild는 위의, <span style="color:blueviolet">ⓐ Node object 사용 예시</span> 형식으로만 사용 됨. 문자열을 넣을 수 없음. </code>
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <code class="fw-bold">var 새로운요소=document.createElement("p"); ==> p태그 요소 생성.</code>
+
+
+      
+      <!-- <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;"> -->
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
