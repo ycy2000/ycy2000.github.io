@@ -403,7 +403,7 @@
         <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
       </div>
       <div>
-        <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, createElement</h6>
+        <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
 
       </div>
       <div>
@@ -1198,19 +1198,7 @@
       <code class="fw-bold" style="text-indent: 25px;">&#60;/body></code>
       <br>
       <code class="fw-bold">3. appendChild는 위의, <span style="color:blueviolet">ⓐ Node object 사용 예시</span> 형식으로만 사용 됨. 문자열을 넣을 수 없음. </code>
-
-
-
-
-
-
-
-
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <code class="fw-bold">var 새로운요소=document.createElement("p"); ==> p태그 요소 생성.</code>
-
-
-      
       <!-- <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;"> -->
       <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
@@ -1222,6 +1210,13 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">요소에 속성 추가하기, element.setAttribute(속성명, 속성값);</h5>
+      <code class="fw-bold">var 요소=document.createElement('div');</code>
+      <code class="fw-bold">요소.textcontent='텍스트기록';</code>
+      <code class="fw-bold">요소.setAttribute('id','임시아이디');</code>
+      <code class="fw-bold">console.log(요소.outerHTML); <span style="color:blueviolet">==> &#60;div id="임시아이디">텍스트기록&#60;/div></span></code>
+
+
     </div>
   </div>
 
