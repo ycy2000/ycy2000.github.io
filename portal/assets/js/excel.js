@@ -86,7 +86,7 @@ function 파일리스트_연습() {
 }
 
 function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#기타전체_파일리스트').outerHTML;
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#기타전체_파일내용').outerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
 }

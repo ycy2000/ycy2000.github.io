@@ -162,6 +162,7 @@
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="기타전체_기타"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <h6 class="canvas_div" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
+      <h6 class="canvas_div" title='기타전체_파일내용'>기타전체 > 정보수집중 : 파일내용, text, 텍스트 </h6>
       <h6 class="canvas_div" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
     </div>
 
@@ -321,12 +322,40 @@
     </div>
 
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold;">image폴더를 선택하였을 경우</h5>
       <input onclick="파일리스트_연습()" type="file" id="file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트_연습() : 폴더를 선택하였을 경우</span>
       <div class="file_list_container"></div>
       
     </div>
 
   </div>
+
+  <div id="기타전체_파일내용"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold;">코딩하려는 내용</h5>
+      <code class="fw-bold;">• 모든 html파일의 텍스트를 참조. html파일 상대경로인 portal/images/ 안의 폴더별 파일리스트가 </code>
+      <code class="fw-bold;" style="text-indent: 15px;">src='파일경로' 형식으로 '사용중'인지 확인하고 싶다.</code>
+      <code class="fw-bold;" style="text-indent: 15px;">src='파일경로' 는 document.querySelector('[src="파일경로/파일명"]) 존재여부로 판단가능</code>
+      <code class="fw-bold;">• 폴더를 선택하게 하려면, &#60;input type="file"  webkitdirectory&#62;</code>
+      <code class="fw-bold;"></code>
+      <h6 style="text-indent: 15px;color:blueviolet;"></h6>
+      <h5 class="fw-bold;"></h5>
+      <code class="fw-bold;">• </code>
+      <code class="fw-bold;" style="text-indent: 15px;"></code>
+      <code class="fw-bold;"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+      
+    </div>
+
+  </div>
+
+  
 
   <div id="기타전체_png와txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
