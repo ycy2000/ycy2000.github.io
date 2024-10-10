@@ -61,9 +61,20 @@ function 파일리스트_연습() {
               const fileList = document.createElement('ul');
               for (const file of filesByDirectory[directoryPath]) {
                   const fileItem = document.createElement('li');
+                  fileItem.setAttribute('style','margin-bottom:-1px;')
+                  var 사용유무div=document.createElement('div');
+                  사용유무div.textContent='_' //공백하나 넣기, 상자로 보이도록
+                  사용유무div.setAttribute('style','width:100px;border:1px solid black;display:inline-block;margin-right:3px;')
+                  if (document.querySelector('[src="portal/' + directoryPath + '/' + file.name + '"]')) {
+                    사용유무div.textContent='사용중'
+                    사용유무div.setAttribute('style','width:100px;border:1px solid black;display:inline-block;margin-right:3px;background-color:yellow;')
+                  }
+                  
                   const fileName = document.createElement('div');
+                  fileName.setAttribute('style','display:inline-block;')
 
                   fileName.textContent = file.name;
+                  fileItem.appendChild(사용유무div);
                   fileItem.appendChild(fileName);
                   fileList.appendChild(fileItem);
               }
@@ -75,7 +86,7 @@ function 파일리스트_연습() {
 }
 
 function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#JS2_요소추가_APPENDCHILD').outerHTML;
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#기타전체_파일리스트').outerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
 }
@@ -186,6 +197,11 @@ function 선택한캔버스클릭시(e) {
     if (e.target.innerHTML=='clear') {
       console.log('파일검색값 clear');
       document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value='';
+      // 이전 찾은거 색칠한거 그대로, 두번 전꺼는 지워진다
+      var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+      for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+        검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
+      }
     }
   }
   if (1 == 1) {
@@ -294,8 +310,11 @@ function 원본_선택한캔버스_검색input_change시(e) {
     검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
   }
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-  var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase();
+  var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase(); 
   if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
+
+  var 찾는값=document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value; 
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
 
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
@@ -304,8 +323,18 @@ function 원본_선택한캔버스_검색input_change시(e) {
   console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
+
+    //if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+    console.log('검색할클래스들[i].id : ' + 검색할클래스들[i].id)
+    console.log('찾는값 : "' + 찾는값 + '", 존재여부')
+
+
     if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색결과포함id배열.push(검색할클래스들[i].id);
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=
+        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
     }
   }
   //예전코드 대비 추가 1 끝
@@ -316,6 +345,9 @@ function 원본_선택한캔버스_검색input_change시(e) {
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
     if (검색결과포함id배열.includes(검색할클래스들[i].title) || 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
       내부html += 검색할클래스들[i].outerHTML;
       //제목부분과, 해당아이디 div가 있으면 그 내부의 모든 검색문자에 바탕색
     }  
@@ -342,10 +374,11 @@ function 선택한캔버스_검색input_change시(e) {
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
+
+  //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
   var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
   console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
-  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
     if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색결과포함id배열.push(검색할클래스들[i].id);
       if (검색할문자!=' ') {
@@ -354,19 +387,35 @@ function 선택한캔버스_검색input_change시(e) {
       }
     }
   }
-  //예전코드 대비 추가 1 끝
+  // title의 innerHTML에 찾는값 있을때 타이틀을 '검색결과포함id배열[]에 추가 내부 값 색칠
+  var 검색할클래스들 = document.querySelectorAll('.모든검색 .개별카테고리 [title]');
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+    if (검색할클래스들[i].title!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      검색결과포함id배열.push(검색할클래스들[i].title);
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=
+        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
+    }
+  }
+  //검색결과포함id배열[] 고유값 추출 var uniqueArray = [...new Set(myArray)]
+  검색결과포함id배열=[...new Set(검색결과포함id배열)];
+
+
+
+
+
+
+
+
 
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
-  var 검색할클래스들 = document.querySelectorAll('.모든검색 .개별카테고리 > div > h6');
+  var 검색할클래스들 = document.querySelectorAll('.모든검색 .개별카테고리 [title]');
   var 내부html = '';
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
-    if (검색결과포함id배열.includes(검색할클래스들[i].title) || 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      if (검색할문자!=' ') {
-        검색할클래스들[i].innerHTML=검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
-      }
+    if (검색결과포함id배열.includes(검색할클래스들[i].title)) {
       내부html += 검색할클래스들[i].outerHTML;
-      //제목부분과, 해당아이디 div가 있으면 그 내부의 모든 검색문자에 바탕색
     }  
   }
   if (내부html == '') { alert('없음'); return; }
