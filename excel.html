@@ -18,6 +18,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
+  <div id="html파일이름" style="display:none">excel.html</div>
 <header id="head_button_group" class="container-fluid">
   <nav class="navbar bg-body-tertiary pt-1 m-0" style="white-space: nowrap;">    
     <div class="container-fluid">
@@ -162,7 +163,7 @@
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="기타전체_기타"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <h6 class="canvas_div" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
-      <h6 class="canvas_div" title='기타전체_파일내용'>기타전체 > 정보수집중 : 파일내용, text, 텍스트 </h6>
+      <h6 class="canvas_div" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인 </h6>
       <h6 class="canvas_div" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
     </div>
 
@@ -332,7 +333,7 @@
 
   <div id="기타전체_파일내용"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold;">코딩하려는 내용</h5>
+      <h5 class="fw-bold;">textarea에 html 내용복사하여 src="portal/images/...." 이용하는 코드.</h5>
       <code class="fw-bold;">• 모든 html파일의 텍스트를 참조. html파일 상대경로인 portal/images/ 안의 폴더별 파일리스트가 </code>
       <code class="fw-bold;" style="text-indent: 15px;">src='파일경로' 형식으로 '사용중'인지 확인하고 싶다.</code>
       <code class="fw-bold;" style="text-indent: 15px;">src='파일경로' 는 document.querySelector('[src="파일경로/파일명"]) 존재여부로 판단가능</code>
