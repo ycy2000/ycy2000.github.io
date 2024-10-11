@@ -26,4 +26,11 @@ code {display: block; color:black;margin-bottom:5px;}
 .선택이벤트설명요소색칠 {background-color:aqua;}
 .검색결과바탕색 {background-color:chocolate;}
 
-
+.file_list_container > li {margin-bottom:-1px;}
+.file_list_container > li > div {border:1px solid black;display: inline-block;margin-right:-1px;padding-left:5px;padding-right:5px;vertical-align: top;}
+.결과표, .제목, .결과 {display: inline-block;}
+.제목 {width:85px;text-align: center;}
+.결과 {width:110px;text-align: center;margin-left:-5px;border-left:none;}
+.제목 > div, .결과 > div {border:1px solid black;margin-bottom:-1px;}
+#결과표_전체 textarea {display:inline-block;height:26px;width:80px;resize:none;margin-bottom:-7px;}
+.src있음 {background-color: yellow;}

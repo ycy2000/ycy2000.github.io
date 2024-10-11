@@ -1,8 +1,121 @@
-
-function 파일리스트_연습() {
+function 파일리스트() {
+  console.log('파일리스트()')
   //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
   const fileInput = document.querySelector('#file_input');
   const fileListContainer = document.querySelector('.file_list_container');
+
+  fileListContainer.innerHTML="<li><div>사용중인html파일</div><div>경로만</div><div>파일이름 </div></li>";
+
+  //리스너 등록할때 #전체대체로 들어갔을때 등록해야 됨. change는 파일명이 추가될때마다 실행됨.
+  fileInput.addEventListener('change', displaySelectedDirectories);
+
+      function displaySelectedDirectories() {
+
+        const selectedDirectories = fileInput.files; //파일들이 모두 담겨있다.
+
+        for (const file of selectedDirectories) {
+          var li태그생성=document.createElement('li');
+          var 내부div태그생성=document.createElement('div');
+          //내부div태그생성.textContent='없음';
+          내부div태그생성.innerText='없음';
+          li태그생성.appendChild(내부div태그생성);
+
+          var 경로div태그생성=document.createElement('div');
+          var 경로만='portal/' + file.webkitRelativePath.split('/').slice(0,file.webkitRelativePath.split('/').length-1).join('/');
+          경로div태그생성.innerText=경로만 + '/';
+          li태그생성.appendChild(경로div태그생성);
+  
+          var 파일이름div생성=document.createElement('div');
+          파일이름div생성.textContent=file.name;
+  
+          li태그생성.appendChild(파일이름div생성);
+  
+          fileListContainer.appendChild(li태그생성);
+        }
+
+
+
+
+
+
+
+      } 
+}
+function 파일리스트결과폭조정() {
+  var div들=document.querySelectorAll('#전체대체 .file_list_container > li > div:nth-child(1)');
+  var 요소정보;
+  var 최대폭=0;
+  for (var i=0; i<div들.length; i++) {
+    요소정보=div들[i].getBoundingClientRect();
+    if (요소정보.width>최대폭) {최대폭=요소정보.width}
+  }
+  console.log('최대폭 : ' + 최대폭)
+  for (var i=0; i<div들.length; i++) {
+    div들[i].setAttribute('style','width:' + 최대폭 + 'px;')
+   
+  }
+
+  var div들=document.querySelectorAll('#전체대체 .file_list_container > li > div:nth-child(2)');
+  var 요소정보;
+  var 최대폭=0;
+  for (var i=0; i<div들.length; i++) {
+    요소정보=div들[i].getBoundingClientRect();
+    if (요소정보.width>최대폭) {최대폭=요소정보.width}
+  }
+  console.log('최대폭 : ' + 최대폭)
+  for (var i=0; i<div들.length; i++) {
+    div들[i].setAttribute('style','width:' + 최대폭 + 'px;')
+   
+  }
+
+  var div들=document.querySelectorAll('#전체대체 .file_list_container > li > div:nth-child(3)');
+  var 요소정보;
+  var 최대폭=0;
+  for (var i=0; i<div들.length; i++) {
+    요소정보=div들[i].getBoundingClientRect();
+    if (요소정보.width>최대폭) {최대폭=요소정보.width}
+  }
+  console.log('최대폭 : ' + 최대폭)
+  for (var i=0; i<div들.length; i++) {
+    div들[i].setAttribute('style','width:' + 최대폭 + 'px;')
+   
+  }
+}
+function textarea정보에서html파일이름추출() {
+  console.log('textarea정보에서html파일이름추출()')
+  var 리스트정보li들=document.querySelectorAll('#전체대체 .file_list_container li');
+  //현재 html body.innerHTML에서 
+  var src, 카운트=0;
+  
+  for (var i=0; i<리스트정보li들.length; i++) {
+    리스트정보li들[i].classList.add('임시표시클래스');
+    src=document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(2)').innerHTML
+      + document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(3)').innerHTML
+    if (document.querySelector('body').innerHTML.indexOf('src="' + src + '"')>-1) {//있으면
+      카운트+=1;
+      if(document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML=='없음') {
+        document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML = html이름;
+        document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').classList.add('src있음');
+      } else { // 하나 이상 있을때
+        document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML =+ '<br>' + html이름;
+      }
+      
+    } 
+    리스트정보li들[i].classList.remove('임시표시클래스');
+  }
+  var html이름=document.querySelector('#html파일이름').innerHTML;
+  document.querySelector('#결과표_현재html .결과 > div:nth-child(2)').innerHTML=html이름;
+  //document.querySelector('#결과표_현재html .결과 > div:nth-child(3)').innerHTML=html이름;
+  //document.querySelector('#결과표_현재html .결과 > div:nth-child(4)').innerHTML=html이름;
+  document.querySelector('#결과표_현재html .결과 > div:nth-child(5)').innerHTML=카운트;//사용중개수
+  //document.querySelector('#결과표_현재html .결과 > div:nth-child(6)').innerHTML=미사용개수;
+
+  카운트=0;
+}
+function 파일리스트_연습() {
+  //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
+  const fileInput = document.querySelector('#연습_file_input');
+  const fileListContainer = document.querySelector('.연습file_list_container');
 
   fileListContainer.innerHTML='';
 
