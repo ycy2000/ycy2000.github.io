@@ -85,32 +85,91 @@ function textarea정보에서html파일이름추출() {
   console.log('textarea정보에서html파일이름추출()')
   var 리스트정보li들=document.querySelectorAll('#전체대체 .file_list_container li');
   //현재 html body.innerHTML에서 
-  var src, 카운트=0;
-  
-  for (var i=0; i<리스트정보li들.length; i++) {
-    리스트정보li들[i].classList.add('임시표시클래스');
-    src=document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(2)').innerHTML
-      + document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(3)').innerHTML
-    if (document.querySelector('body').innerHTML.indexOf('src="' + src + '"')>-1) {//있으면
-      카운트+=1;
-      if(document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML=='없음') {
-        document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML = html이름;
-        document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').classList.add('src있음');
-      } else { // 하나 이상 있을때
-        document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML =+ '<br>' + html이름;
-      }
-      
-    } 
-    리스트정보li들[i].classList.remove('임시표시클래스');
-  }
-  var html이름=document.querySelector('#html파일이름').innerHTML;
-  document.querySelector('#결과표_현재html .결과 > div:nth-child(2)').innerHTML=html이름;
-  //document.querySelector('#결과표_현재html .결과 > div:nth-child(3)').innerHTML=html이름;
-  //document.querySelector('#결과표_현재html .결과 > div:nth-child(4)').innerHTML=html이름;
-  document.querySelector('#결과표_현재html .결과 > div:nth-child(5)').innerHTML=카운트;//사용중개수
-  //document.querySelector('#결과표_현재html .결과 > div:nth-child(6)').innerHTML=미사용개수;
+  var src, 카운트=0, html의값있는src개수, 원본정보text, 파악된html들정보요소, 원본정보text에서추출된html파일이름;
+  파악된html들정보요소=document.querySelector('#파악된html리스트');
+  원본정보text=document.querySelector('body').innerHTML;
+  원본정보text에서추출된html파일이름=document.querySelector('#html파일이름').innerText;
 
-  카운트=0;
+  if (1==1) {
+    if (파악된html들정보요소.innerText.indexOf(원본정보text에서추출된html파일이름)>-1 && 리스트정보li들.length>1) {
+      //html파일이름이 있고, 파일을 읽어온 상태 = 추출안해도됨
+      console.log('현재html작업 건너뜀 : html파일이름이 있고, 파일을 읽어온 상태')
+    } else if(리스트정보li들.length==1) {
+      //파일을 읽어온 상태가 아니면 = 추출안해도됨
+      console.log('현재html작업 건너뜀 : 파일을 읽어온 상태가 아니면 = 추출안해도됨')
+    } else {
+      //for문은 파일리스트 부분에 사용된 html파일이름 적는것
+      for (var i=0; i<리스트정보li들.length; i++) {
+        리스트정보li들[i].classList.add('임시표시클래스');
+        src=document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(2)').innerHTML
+          + document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(3)').innerHTML
+        if (document.querySelector('body').innerHTML.indexOf('src="' + src + '"')>-1) {//있으면
+          카운트+=1;
+          if(document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML=='없음') {
+            document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML = 원본정보text에서추출된html파일이름;
+            document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').classList.add('src있음');
+          } else { // 하나 이상 있을때
+            document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML =document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML +  '<br>' + 원본정보text에서추출된html파일이름;
+          }
+        } 
+        리스트정보li들[i].classList.remove('임시표시클래스');
+      }
+      html의값있는src개수=document.querySelectorAll('body [src]').length-document.querySelectorAll('body [src=""]').length;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(3)').innerHTML=원본정보text에서추출된html파일이름;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(4)').innerHTML=html의값있는src개수;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(5)').innerHTML=카운트;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
+      카운트=0;
+      var 자식요소=document.createElement('span');
+      자식요소.textContent=원본정보text에서추출된html파일이름 + ',';
+      파악된html들정보요소.appendChild(자식요소);
+    }
+  }
+
+  //#결과표_전체 내의 textarea만큼 반복
+  var textarea들=document.querySelectorAll('#전체대체 #결과표_전체 textarea');
+  for (var 고정=0; 고정<textarea들.length; 고정++) {
+    var src, 카운트=0, html의값있는src개수, 원본정보text, 파악된html들정보요소, 원본정보text에서추출된html파일이름;
+    파악된html들정보요소=document.querySelector('#파악된html리스트');
+    원본정보text=textarea들[고정].value.substring(textarea들[고정].value.indexOf('body')+4,textarea들[고정].value.length)
+    var 추출관련문자열='id="html파일이름" style="display:none">';
+    var html추출시작index=원본정보text.indexOf(추출관련문자열) + 추출관련문자열.length;
+    var html추출끝index=원본정보text.indexOf('<',html추출시작index);
+    //"문자열".substring(startIndex, endIndex);0부터, 1부터
+    원본정보text에서추출된html파일이름=원본정보text.substring(html추출시작index,html추출끝index)
+    html의값있는src개수=원본정보text.match(/src="*"/ig).length;
+    if (html추출끝index>-1 && 원본정보text에서추출된html파일이름.length>5) {
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(3)').innerHTML=원본정보text에서추출된html파일이름;
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(4)').innerHTML=html의값있는src개수;
+    }
+
+    for (var i=0; i<리스트정보li들.length; i++) {
+      리스트정보li들[i].classList.add('임시표시클래스');
+      src=document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(2)').innerHTML
+        + document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(3)').innerHTML
+      if (원본정보text.indexOf('src="' + src + '"')>-1) {//있으면
+        카운트+=1;
+        if(document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML=='없음') {
+          document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML = 원본정보text에서추출된html파일이름;
+          document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').classList.add('src있음');
+        } else { // 하나 이상 있을때
+          document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML =document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML +  '<br>' + 원본정보text에서추출된html파일이름;
+        }
+      } 
+      리스트정보li들[i].classList.remove('임시표시클래스');
+    }
+    document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(5)').innerHTML=카운트;
+    document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
+}
+
+console.log('마지막')
+
+
+
+
+   
+
+  
 }
 function 파일리스트_연습() {
   //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
