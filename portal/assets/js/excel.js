@@ -121,7 +121,7 @@ function textarea정보에서html파일이름추출() {
       document.querySelector('#결과표_현재html .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
       카운트=0;
       var 자식요소=document.createElement('span');
-      자식요소.textContent=원본정보text에서추출된html파일이름 + ',';
+      자식요소.textContent=원본정보text에서추출된html파일이름;
       파악된html들정보요소.appendChild(자식요소);
     }
   }
@@ -137,29 +137,48 @@ function textarea정보에서html파일이름추출() {
     var html추출끝index=원본정보text.indexOf('<',html추출시작index);
     //"문자열".substring(startIndex, endIndex);0부터, 1부터
     원본정보text에서추출된html파일이름=원본정보text.substring(html추출시작index,html추출끝index)
-    html의값있는src개수=원본정보text.match(/src="*"/ig).length;
-    if (html추출끝index>-1 && 원본정보text에서추출된html파일이름.length>5) {
-      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(3)').innerHTML=원본정보text에서추출된html파일이름;
-      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(4)').innerHTML=html의값있는src개수;
+    
+    if (원본정보text.match(/src="*"/ig)) {//없으면 null 인데 length 물어보면 에러?
+      html의값있는src개수=원본정보text.match(/src="*"/ig).length; 
+    } else {
+      html의값있는src개수=0;
+    }
+    
+
+    if (파악된html들정보요소.innerHTML.indexOf(원본정보text에서추출된html파일이름)>-1 || 리스트정보li들.length==1 || html의값있는src개수==0) {
+      //건너뜀
+    } else {
+      if (html추출끝index>-1 && 원본정보text에서추출된html파일이름.length>5) {
+        document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(3)').innerHTML=원본정보text에서추출된html파일이름;
+        document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(4)').innerHTML=html의값있는src개수;
+        파악된html들정보요소.innerHTML=파악된html들정보요소.innerHTML + ', ' + 원본정보text에서추출된html파일이름;
+
+      }
+      for (var i=0; i<리스트정보li들.length; i++) {
+        리스트정보li들[i].classList.add('임시표시클래스');
+        src=document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(2)').innerHTML
+          + document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(3)').innerHTML
+        if (원본정보text.indexOf('src="' + src + '"')>-1) {//있으면
+          카운트+=1;
+          if(document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML=='없음') {
+            document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML = 원본정보text에서추출된html파일이름;
+            document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').classList.add('src있음');
+          } else { // 하나 이상 있을때
+            document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML =document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML +  '<br>' + 원본정보text에서추출된html파일이름;
+          }
+        } 
+        리스트정보li들[i].classList.remove('임시표시클래스');
+      }
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(5)').innerHTML=카운트;
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
     }
 
-    for (var i=0; i<리스트정보li들.length; i++) {
-      리스트정보li들[i].classList.add('임시표시클래스');
-      src=document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(2)').innerHTML
-        + document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(3)').innerHTML
-      if (원본정보text.indexOf('src="' + src + '"')>-1) {//있으면
-        카운트+=1;
-        if(document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML=='없음') {
-          document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML = 원본정보text에서추출된html파일이름;
-          document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').classList.add('src있음');
-        } else { // 하나 이상 있을때
-          document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML =document.querySelector('#전체대체 .임시표시클래스 > div:nth-child(1)').innerHTML +  '<br>' + 원본정보text에서추출된html파일이름;
-        }
-      } 
-      리스트정보li들[i].classList.remove('임시표시클래스');
-    }
-    document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(5)').innerHTML=카운트;
-    document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
+
+
+
+
+
+
 }
 
 console.log('마지막')

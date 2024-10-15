@@ -344,14 +344,14 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <code class="fw-bold">2) textarea 1개? 여러개?에 html내용 복붙해놓고 1)의 경로 src가 있으면 ⓑ에 'id=html파일이름'의 innerText를 기록</code>
       <code class="fw-bold" style="text-indent: 15px;">- 여러번 실행시, html파일이름이 같은게 있으면 건너뛰는 코드. 줄바꿈 코드</code>
-      <img src="portal/images/문서연결_엑셀VBA/html파일들캡쳐.png" alt="이미지없음" style="position: absolute;left:1740px;top:80px;">
       <code class="fw-bold">• 태그안에 src="portal/images/문서연결_엑셀VBA/html파일들캡쳐.png"로 기록되어 있더라도</code>
       <code class="fw-bold" style="text-indent: 15px;">요소로 접근시, 요소.src=file:///C:/Users/COM/Documents/git_project/ycy2000.github.io/portal/images/%EB%AC%B8%EC%84%9</code>
       <code class="fw-bold" style="text-indent: 15px;">C%EC%97%B0%EA%B2%B0_%EC%97%91%EC%85%80VBA/html%ED%8C%8C%EC%9D%BC%EB%93%A4%EC%BA%A1%EC%B3%90.png</code>
       <code class="fw-bold" style="color:blueviolet;">• 쓰여진대로 가지고오기 힌트 : document.getElementById("imgTag").getAttribute("src")</code>
       
     </div>
-    <h5 class="fw-bold">결과표 <div id="파악된html리스트" style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </h5>
+    <h5 class="fw-bold"><div style="display:inline-block;font-size: 14px;margin-left:33px;">파악된 html 리스트 참고 : excel.html, black.html, fishexe.html, index.html, it.html, kim.html, kim2.html, list.html, memo.html, sunsa_cy.html, ycy정리.html</div></h5>
+    <h5 class="fw-bold">결과표 <div id="파악된html리스트" style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </div></h5>
     <div id="결과표_전체" style="margin-bottom:5px;">
       <div id="결과표_현재html" class="결과표">
         <div class="제목">
@@ -373,7 +373,7 @@
       </div>
       <div id="결과표_textarea1" class="결과표">
         <div class="제목">
-          <div>_</div>
+          <div onclick="document.querySelector('#전체대체 #결과표_textarea1 textarea').value=''">_</div>
           <div>원본정보</div>
           <div>html파일</div>
           <div>src개수</div>
@@ -391,7 +391,7 @@
       </div>
       <div id="결과표_textarea2" class="결과표">
         <div class="제목">
-          <div>_</div>
+          <div onclick="document.querySelector('#전체대체 #결과표_textarea2 textarea').value=''">_</div>
           <div>원본정보</div>
           <div>html파일</div>
           <div>src개수</div>
@@ -409,7 +409,7 @@
       </div>
       <div id="결과표_textarea3" class="결과표">
         <div class="제목">
-          <div>_</div>
+          <div onclick="document.querySelector('#전체대체 #결과표_textarea3 textarea').value=''">_</div>
           <div>원본정보</div>
           <div>html파일</div>
           <div>src개수</div>
@@ -427,7 +427,7 @@
       </div>
       <div id="결과표_textarea4" class="결과표">
         <div class="제목">
-          <div>_</div>
+          <div onclick="document.querySelector('#전체대체 #결과표_textarea4 textarea').value=''">_</div>
           <div>원본정보</div>
           <div>html파일</div>
           <div>src개수</div>
@@ -445,7 +445,7 @@
       </div>
       <div id="결과표_textarea5" class="결과표">
         <div class="제목">
-          <div>_</div>
+          <div onclick="document.querySelector('#전체대체 #결과표_textarea5 textarea').value=''">_</div>
           <div>원본정보</div>
           <div>html파일</div>
           <div>src개수</div>
