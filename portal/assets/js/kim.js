@@ -2,14 +2,41 @@
 var 메모div내_집구조전체div가있을때만작동하는것=document.querySelector('#메모');
 function 메모div내_집구조전체(e) {
   if (e.target.classList.contains('집구조선택또는만들기')) {
-    console.log("e.target.classList.contains('집구조선택또는만들기')")// .js집구조선택노랑
-    e.target.parentNode.id='임시아이디';
+    console.log(e.target.parentNode.id)
     for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
       document.querySelectorAll('.js집구조선택노랑')[i].classList.remove('js집구조선택노랑');
     }
     e.target.classList.add('js집구조선택노랑')
+    if (document.querySelector('#메모 #집구조그림테두리' + e.target.parentNode.id)) {
+      console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않는다.')
+    } else {
+      var 가로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[3].innerText;
+      var 세로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[5].innerText;
+      var 레프트=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[7].innerText;
+      var 탑=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[9].innerText;
 
-    e.target.parentNode.id='';
+      console.log('가로 : ' + 가로 + ', 세로 : ' + 세로 + ', 레프트 : ' + 레프트 + ', 탑 : ' + 탑)
+
+      if (isNaN(가로) || isNaN(세로) || isNaN(레프트) || isNaN(탑)) {
+        console.log('숫자가 아닌게 있음')
+      } else {
+        console.log('모두숫자')
+        var 추가할네모=document.createElement('div');
+        추가할네모.setAttribute('position', 'absolute');
+        추가할네모.setAttribute('border', '1px solid black');
+        추가할네모.setAttribute('background-color', 'yellow');
+        추가할네모.setAttribute('width', 가로 + 'px');
+        추가할네모.setAttribute('height', 세로 + 'px');
+        추가할네모.setAttribute('left', 레프트 + 'px');
+        추가할네모.setAttribute('top', 탑 + 'px');
+        document.querySelector('#메모 #집구조그림테두리').appendChild(추가할네모);
+        console.log(추가할네모)
+      }
+    }
+
+
+
+
   }
   
   
