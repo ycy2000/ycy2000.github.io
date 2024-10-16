@@ -1,4 +1,31 @@
+//메모div에 리스터 걸고(html시작시부터 있어야되므로) 안에 집구조전체 div가 있으면 리스너 작동
+var 메모div내_집구조전체div가있을때만작동하는것=document.querySelector('#메모');
+function 메모div내_집구조전체(e) {
+  if (e.target.classList.contains('집구조선택또는만들기')) {
+    console.log("e.target.classList.contains('집구조선택또는만들기')")// .js집구조선택노랑
+    e.target.parentNode.id='임시아이디';
+    for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
+      document.querySelectorAll('.js집구조선택노랑')[i].classList.remove('js집구조선택노랑');
+    }
+    e.target.classList.add('js집구조선택노랑')
+
+    e.target.parentNode.id='';
+  }
+  
+  
+
+}
+메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
+
+
+
+
+
+
 //색칠보기에  .색칠보기_페이지 1개 있는데 9개 추가
+일단다숨기기();
+document.querySelector('#기본보기').classList.remove('d-none');
+
 for (var i=0; i<9; i++) {
   document.querySelector('#색칠보기').innerHTML=document.querySelector('#색칠보기').innerHTML + document.querySelector('.색칠보기_페이지').outerHTML;
 }
@@ -6,9 +33,18 @@ for (var i=1; i<10; i++) {
   document.querySelectorAll('.색칠보기_페이지')[i].classList.add('d-none');
 }
 
-
+function 일단다숨기기() {
+  for (var i=0; i<document.querySelectorAll('.숨기기').length; i++) {
+    document.querySelectorAll('.숨기기')[i].classList.add('d-none');
+  }
+}
 function 전세계약시주의사항() {
-    document.querySelector('#메모').classList.remove('d-none');
+  document.querySelector('#메모').innerHTML='<img src="portal/images/문서연결_kim/전세계약시주의사항.png" alt="이미지없음">';
+  document.querySelector('#메모').classList.remove('d-none');
+}
+function 임시_집구조() {
+  document.querySelector('#메모').innerHTML=document.querySelector('#집구조전체').innerHTML;
+  document.querySelector('#메모').classList.remove('d-none');
 }
 
 var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');

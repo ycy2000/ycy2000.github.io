@@ -32,8 +32,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <button style="border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="입력번호와회귀번호보이기()">번호입력</button>
-        <button style="border:none;" onclick="기본보기()">기본보기</button>
-        <button style="border:none;" onclick="색칠보기()">색칠보기</button>
+        <button style="border:none;" onclick="일단다숨기기();document.querySelector('#기본보기').classList.remove('d-none');기본보기()">기본보기</button>
+        <button style="border:none;" onclick="일단다숨기기();document.querySelector('#색칠보기').classList.remove('d-none');색칠보기()">색칠보기</button>
         <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +45,7 @@
             <li><a class="dropdown-item"  onclick="자동번호나온횟수지우기()">자동번호나온횟수지우기</a></li>
             <li><a class="dropdown-item"  onclick="window.location.reload()">새로고침</a></li>
             <li><a class="dropdown-item" onclick=" alert('화면넓이 : ' + document.body.clientWidth );">width</a></li>
+            <li><a class="dropdown-item" onclick="일단다숨기기();전세계약시주의사항();">전세계약시 주의사항</a></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
@@ -52,11 +53,10 @@
         <li class="nav-item dropdown me-2 d-inline-block ms-3">
           <a class="active nav-link dropdown-toggle" href="#" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="document.querySelector('#메모').classList.add('d-none')">
-            전세계약시 주의사항
+            임시
           </a>
           <ul class="dropdown-menu" style="width:300px;">
-            <li><a class="dropdown-item" onclick="전세계약시주의사항()">전세계약시 주의사항</a></li>
-            <li><a href="https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=B&mobileAt=" target="_blank">국토교통부 실거래가 공개시스템</a></li>
+            <li><a class="dropdown-item" onclick="일단다숨기기();임시_집구조();">집 구조</a></li>
           </ul>
         </li>
 
@@ -86,10 +86,6 @@
 
 
 <div style="height:50px;"></div><!-- header와 띄우기용 -->
-
-<div id="메모" style="position:absolute;background-color: white;z-index: 8;" class="d-none">
-  <img src="portal/images/문서연결_kim/전세계약시주의사항.png" alt="이미지없음">
-</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -176,7 +172,10 @@
   </div>
 </div>
 
-<div id="기본보기">
+<div id="메모" style="background-color: white;" class="d-none 숨기기">
+  <!-- js코딩으로 값이 들어옴 -->
+</div>
+<div id="기본보기" class="d-none 숨기기">
   <div class="p-2 d-flex container-fluid" style="margin:0 auto;">
     <div>
       <div id="id_번호입력아래당첨번호숨김">
@@ -210,7 +209,7 @@
     </div>
   </div><!-- main과 띄우기용 -->
 </div>
-<div id="색칠보기" class="d-none" style="width:1200px;height:920px;background-color:burlywood">
+<div id="색칠보기"  class="d-none 숨기기" style="width:1200px;height:920px;background-color:burlywood">
   <div id="색칠보기_머리글">
     <button>모두초기화</button><button>현재페이지초기화</button>
     <div id="색칠보기_페이지번호">
@@ -416,6 +415,59 @@
 
 
 <div id="숨김정보전체" style="display:none;">
+  <div id="집구조전체">
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기 js집구조선택노랑" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">냉장고</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">세탁기</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">건조기</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">TV다이</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">소파</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">컴퓨터책상</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">식탁</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+    <div class="d-inline-block" style="margin-bottom:5px;">
+      <div class="d-inline-block 집구조선택또는만들기" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;">선택또는만들기</div><br>
+      <div class="d-inline-block" style="width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" contentEditable="true">침대</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">가로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">75</div><br>
+      <div class="d-inline-block" style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;">세로</div><div  style="width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;" class="d-inline-block" contentEditable="true">70</div>
+    </div>
+
+
+
+  </div>
   <!-- 색칠 복사해서 사용하는것 -->
   <div id="숨김정보_당번전체">
     1_2002-12-07_10_23_29_33_35_40_16_2_2002-12-14_9_13_21_25_32_42_2_3_2002-12-21_11_16_19_21_27_31_30_4_2002-12-28_14_27_30_31_40_42_2_5_2003-01-04_16_24_29_40_41_42_3_
