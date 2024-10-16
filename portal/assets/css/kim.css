@@ -74,4 +74,23 @@
 #js백회귀전체 > div > button:nth-child(1) {background-color: red;}
 
 #js백회귀전체 > div > button:nth-child(3) {background-color: red;}
-
+/* 선택 또는 만들기 */
+.집구조 div:nth-child(1) {width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:1px;font-size:14px;}
+/* 냉장고 */
+.집구조 div:nth-child(2) {width:109px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/* br 도 순번을 먹는다 가로*/
+.집구조 div:nth-child(4) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/* 숫자 */
+.집구조 div:nth-child(5) {white-space:nowrap;width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/*  */
+.집구조 div:nth-child(7) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/*  */
+.집구조 div:nth-child(8) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/*  */
+.집구조 div:nth-child(10) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/*  */
+.집구조 div:nth-child(11) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/*  */
+.집구조 div:nth-child(13) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
+/*  */
+.집구조 div:nth-child(14) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}

@@ -6,41 +6,59 @@ function 메모div내_집구조전체(e) {
     for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
       document.querySelectorAll('.js집구조선택노랑')[i].classList.remove('js집구조선택노랑');
     }
+
     e.target.classList.add('js집구조선택노랑')
-    if (document.querySelector('#메모 #집구조그림테두리' + e.target.parentNode.id)) {
-      console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않는다.')
+
+    var 선택된네모div;
+    
+    var 이름=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[1].innerText;
+    var 가로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[3].innerText;
+    var 세로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[5].innerText;
+    var 레프트=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[7].innerText;
+    var 탑=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[9].innerText;
+    var 숫자보정값=1;
+
+    if (isNaN(가로) || isNaN(세로) || isNaN(레프트) || isNaN(탑)) {
+      alert('가로, 세로, 높이, 넓이 중에 숫자가 아닌게 있음')
+    } else if (가로==0 && 세로==0) {
+      //가로세로가 0인데, 네모div가 있으면 remove
+      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
+        document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div').remove();
+      }
+
     } else {
-      var 가로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[3].innerText;
-      var 세로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[5].innerText;
-      var 레프트=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[7].innerText;
-      var 탑=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[9].innerText;
 
-      console.log('가로 : ' + 가로 + ', 세로 : ' + 세로 + ', 레프트 : ' + 레프트 + ', 탑 : ' + 탑)
-
-      if (isNaN(가로) || isNaN(세로) || isNaN(레프트) || isNaN(탑)) {
-        console.log('숫자가 아닌게 있음')
+      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
+        선택된네모div=document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div');
+        console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않고, style만 변경')
+        선택된네모div.textContent=이름;
+        선택된네모div.style.textAlign='center';
+        선택된네모div.style.position='absolute';
+        선택된네모div.style.border='1px solid black';
+        선택된네모div.style.backgroundColor='yellow';
+        선택된네모div.style.width= (가로*숫자보정값) + 'px';
+        선택된네모div.style.height= (세로*숫자보정값) + 'px';
+        선택된네모div.style.left= (레프트*숫자보정값) + 'px';
+        선택된네모div.style.top= (탑*숫자보정값) + 'px';
       } else {
-        console.log('모두숫자')
+
+        console.log(e.target.parentNode.id + ' : 없으니. 만들고, style도 변경')
         var 추가할네모=document.createElement('div');
-        추가할네모.setAttribute('position', 'absolute');
-        추가할네모.setAttribute('border', '1px solid black');
-        추가할네모.setAttribute('background-color', 'yellow');
-        추가할네모.setAttribute('width', 가로 + 'px');
-        추가할네모.setAttribute('height', 세로 + 'px');
-        추가할네모.setAttribute('left', 레프트 + 'px');
-        추가할네모.setAttribute('top', 탑 + 'px');
+        추가할네모.textContent=이름;
+        추가할네모.style.textAlign='center';
+        추가할네모.id=e.target.parentNode.id + '네모div';
+        추가할네모.style.position='absolute';
+        추가할네모.style.border='1px solid black';
+        추가할네모.style.backgroundColor='yellow';
+        추가할네모.style.width= (가로*숫자보정값) + 'px';
+        추가할네모.style.height= (세로*숫자보정값) + 'px';
+        추가할네모.style.left= (레프트*숫자보정값) + 'px';
+        추가할네모.style.top= (탑*숫자보정값) + 'px';
         document.querySelector('#메모 #집구조그림테두리').appendChild(추가할네모);
-        console.log(추가할네모)
+        console.log(document.querySelector('#메모 #집구조그림테두리').innerHTML)
       }
     }
-
-
-
-
   }
-  
-  
-
 }
 메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
 
