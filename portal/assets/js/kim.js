@@ -104,15 +104,6 @@ function 임시_집구조켤때캔버스그리기() {
       캔버스.width = rect.width * dpr;
       캔버스.height = rect.height * dpr;
 
-      //가로 세로 100마다 점찍기
-      그리기.beginPath();
-      그리기.fillStyle='red'
-      그리기.lineWidth=0;
-      그리기.arc(50, 50, 2, 0, 2*Math.PI);
-      그리기.fill();
-      그리기.stroke();
-      그리기.fillText('string',11,11);
-
       var 가로=0, 세로=0;
       var 숫자보정값=0.1;
       // scale() 함수를 사용하여 캔버스 유닛 크기 보정
@@ -311,6 +302,31 @@ function 임시_집구조켤때캔버스그리기() {
       그리기.rect(1650,126,78,78); //선없애는 상자
       그리기.fill();
       그리기.lineWidth=1;
+
+
+      //가로 세로 100마다 점찍기
+      var 점가로=0, 점세로=790;
+      그리기.fillStyle='red'
+      그리기.lineWidth=1;
+      for (var i=0; i<36; i++) {
+        점가로+=50; 
+        그리기.beginPath();
+        그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
+        그리기.fill();
+        그리기.stroke();
+        그리기.fillText(점가로,점가로,점세로-20);
+      }
+      var 점가로=50, 점세로=0;
+      그리기.fillStyle='red'
+      그리기.lineWidth=1;
+      for (var i=0; i<15; i++) {
+        점세로+=50; 
+        그리기.beginPath();
+        그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
+        그리기.fill();
+        그리기.stroke();
+        그리기.fillText(점세로,점가로-20,점세로-7);
+      }
 
 
 
