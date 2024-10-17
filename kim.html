@@ -49,16 +49,9 @@
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
+        <button style="border:none;" onclick="일단다숨기기();임시_집구조불러오기();임시_집구조켤때캔버스그리기()">집구조</button>
 
-        <li class="nav-item dropdown me-2 d-inline-block ms-3">
-          <a class="active nav-link dropdown-toggle" href="#" 
-            role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="document.querySelector('#메모').classList.add('d-none')">
-            임시
-          </a>
-          <ul class="dropdown-menu" style="width:300px;">
-            <li><a class="dropdown-item" onclick="일단다숨기기();임시_집구조();">집 구조</a></li>
-          </ul>
-        </li>
+
 
         <!--숨김아이콘버튼 누르면 아이디찾아서 보기 안보기 -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -415,117 +408,119 @@
 
 
 <div id="숨김정보전체" style="display:none;">
-  <div id="집구조전체">
+  <div id="집구조전체" style="white-space: nowrap;">
     <div id="집구조_구조물1" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">큰숫자 힌트</div>
       <div class="d-inline-block" contentEditable="true">냉장고,문쪽</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">87</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">91</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">870</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">910</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">900</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">150</div>
     </div>
     <div id="집구조_구조물2" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">세탁기,깊이</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">63</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">77</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">630</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">770</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물3" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">건조기, 문쪽</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">59</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">64</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">590</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">640</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물4" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">TV다이</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">147</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">41</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">1470</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">410</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물5" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">소파</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">195</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">95</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">1950</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">950</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물6" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">컴퓨터책상</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">50</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">500</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물7" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">식탁(있던거)</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">50</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">500</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물8" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true">침대</div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">50</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">500</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물9" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true"></div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">50</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">500</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물10" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true"></div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">50</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">500</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물11" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true"></div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">55</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">550</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물12" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true"></div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">55</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">550</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
     <div id="집구조_구조물13" class="d-inline-block 집구조" style="margin-bottom:5px;">
       <div class="집구조선택또는만들기">선택또는만들기</div>
       <div class="d-inline-block" contentEditable="true"></div><br>
-      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">50</div><br>
-      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">50</div><br>
+      <div class="d-inline-block">가로</div><div class="d-inline-block" contentEditable="true">500</div><br>
+      <div class="d-inline-block">세로</div><div class="d-inline-block" contentEditable="true">500</div><br>
       <div class="d-inline-block">left</div><div class="d-inline-block" contentEditable="true">0</div><br>
       <div class="d-inline-block">top</div><div class="d-inline-block" contentEditable="true">0</div>
     </div>
 
-    <div id="집구조그림테두리" style="width:1800px;height:750px;border:1px solid black;position: relative;
-    background-repeat: no-repeat;
-    background-image:linear-gradient(rgba(0,0,255,0.5), rgba(0,0,255,0.5)), url(portal/images/문서연결_kim/집구조.png) ;">
+    <div style="position:relative"></div><!-- position:relative 용도 -->
+
+    <canvas id="집구조캔버스" style="position:absolute; width:1800px;height:800px;border:1px solid black;background-image:url(portal/images/문서연결_kim/캔버스용모눈종이배경.png )"></canvas>
+    <div id="집구조그림테두리" style="width:1800px;height:800px;border:1px solid black;position: relative;">
 
     </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 

@@ -561,6 +561,9 @@
         <h6 class="canvas_div" title='excel_js_HTML노드'>노드 </h6>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
         <h6 class="canvas_div" title='CSS_엣지와크롬1'>엣지와 크롬, CSS 적용상이??</h6>
+        <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
+        <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        
       </div>
       <div>
 
@@ -1450,6 +1453,69 @@
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
+  </div>
+
+  <div id="CSS_background"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">background</h5>
+      <code class="fw-bold">• background-image : url만, 그라데이션과 url같이는 쉼표(,)로 전달</code>
+      <code class="fw-bold" style="text-indent: 15px;">background-image:linear-gradient(rgba(0,0,255,0.5), rgba(0,0,255,0.5)), url(portal/images/문서연결_kim/집구조.png)</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• background-repeat: no-repeat; 기본은 빈곳 반복</code>
+
+      
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="CSS_줄바꿈"><!-- 참고 -->
+    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"><a
+          href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
+          target="_blank">자바스크립트로 오버플로 확인</a></h5>
+      <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
+      <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
+      <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
+      <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
+      <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
+      <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
+      <h6 class="fw-bold">4. 줄바꿈 기준 : word-break, 기본값 normal, 상속 yes</h6>
+      <h6 style="text-indent: 23px;">CJK(Chinese - Japanese - Korean, 중국·일본·한국)는 일본어, 한국어, 중국어를 통틀어 이르는 말</h6>
+      <h6 style="text-indent: 23px;">normal : CJK 문자는 글자 기준(break-all)으로, CJK 이외의 문자는 단어 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
+        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며
+        공백이 늘어남)</h6>
+      <h6 style="text-indent: 23px;word-break:normal;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
+        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)</h6>
+      <h6 style="text-indent: 23px;word-break:normal;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을
+        맞추며 공백이 늘어남)</h6>
+      <h6 style="text-indent: 23px;">break-all : 글자 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;">keep-all : 단어 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;">initial : 기본값으로 설정합니다.</h6>
+      <h6 style="text-indent: 23px;">inherit : 부모 요소의 속성값을 상속받습니다.</h6>
+      <h6 class="fw-bold">5. 한 줄에 inline-block, inline 요소가 여러개 있을때 맨 윗단 정렬 ==> vertical-align:top;</h6>
+      <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+    <br><br><br><br><br><br><br>
   </div>
 
   <div id="htmlJavascript_kimhtml"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->

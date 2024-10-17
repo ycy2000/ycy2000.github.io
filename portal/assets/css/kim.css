@@ -5,7 +5,7 @@
 #회차와선택한당번 button {vertical-align: top; width:30px;height:30px;border:1px solid gray;margin-right:-1px;}
 #회차와선택한당번 div {display:block;width:330px;margin-right:10px;margin-bottom:-1px;}  /*6개번호*/
 #회차와선택한당번 button:nth-of-type(1) {margin:0 5px;width:50px;background-color: red;}
-#회차와선택한당번 button:last-child {background-color: green;}
+#회차와선택한당번 button:last-child {background-color: gray;}
 
 .모달바디왼쪽45 button {width:50px; height:50px;margin-right:-7px;margin-bottom:-2px; padding:0;}
 .일주전modal-body button {width:50px; height:50px;margin-right:-8px;margin-bottom:-2px; padding:0;}
