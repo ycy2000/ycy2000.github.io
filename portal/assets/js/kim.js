@@ -20,6 +20,9 @@ function 공통켤때위치있는거메모div내_가구배치() {
       추가할네모.id=집구조클래스들[i].id + '네모div';
       추가할네모.style.position='absolute';
       추가할네모.style.border='1px solid black';
+      if (이름=='바디프랜드') {
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/바디프랜드.png)'
+      }
       추가할네모.style.backgroundColor='yellow';
       추가할네모.style.width= (가로*숫자보정값) + 'px';
       추가할네모.style.height= (세로*숫자보정값) + 'px';
@@ -31,6 +34,14 @@ function 공통켤때위치있는거메모div내_가구배치() {
     }
 
   }
+}
+function 가구지우기() {
+  console.log('가구지우기')
+  document.querySelector('#메모 #집구조그림테두리').innerHTML='';
+}
+function 가구만들기() {
+  console.log('가구만들기')
+  공통켤때위치있는거메모div내_가구배치()
 }
 
 function 메모div내_집구조전체(e) {
@@ -212,6 +223,10 @@ function 임시_일신집구조켤때캔버스그리기() {
   그리기.fillStyle = 'black';
   그리기.fillRect(X좌표,Y좌표+100,가로,1,);//세탁실과 화장실 구분선
 
+  그리기.textAlign = 'left';
+  그리기.fillText('컴퓨터방 : 가로 2250, 세로 3000',1300,20);
+  그리기.fillText('큰방 : 가로 3090, 세로 3630',1300,50);
+  그리기.fillText('거실 : 가로 4380, 세로 2180',1300,80);
 
 
 
@@ -242,239 +257,203 @@ function 임시_일신집구조켤때캔버스그리기() {
   }
 }
 function 임시_집구조켤때캔버스그리기() {
-      console.log('집구조켤때 한번 그리기')
-      var 캔버스 = document.querySelector('#메모 #집구조캔버스');
-      var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-      // DPR 정보 가져오기
-      var dpr = window.devicePixelRatio;
-      // 캔버스 요소의 크기 가져오기
-      var rect = 캔버스.getBoundingClientRect();
-      캔버스.width = rect.width * dpr;
-      캔버스.height = rect.height * dpr;
+  console.log('집구조켤때 한번 그리기')
+  var 캔버스 = document.querySelector('#메모 #집구조캔버스');
+  var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
+  // DPR 정보 가져오기
+  var dpr = window.devicePixelRatio;
+  // 캔버스 요소의 크기 가져오기
+  var rect = 캔버스.getBoundingClientRect();
+  캔버스.width = rect.width * dpr;
+  캔버스.height = rect.height * dpr;
 
-      var 가로=0, 세로=0;
-      var 숫자보정값=0.1;
-      // scale() 함수를 사용하여 캔버스 유닛 크기 보정
-      그리기.scale(dpr, dpr);
-      그리기.font = "bold 10pt '맑은 고딕'";
-      그리기.textBaseline="top"; //top, middle, bottom, alphabetic, hanging, ideo graphic
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.textAlign = 'center';
-      그리기.strokeStyle='black'; // 선 말고 사각형으로채우기
-      그리기.lineWidth='1';
+  var 가로=0, 세로=0, X좌표, Y좌표,벽폭,문변수가로폭,문변수세로길이;
+  var 숫자보정값=0.1;
+  // scale() 함수를 사용하여 캔버스 유닛 크기 보정
+  그리기.scale(dpr, dpr);
+  그리기.font = "bold 10pt '맑은 고딕'";
+  그리기.textBaseline="top"; //top, middle, bottom, alphabetic, hanging, ideo graphic
+  그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
+  그리기.textAlign = 'center';
+  그리기.strokeStyle='black'; // 선 말고 사각형으로채우기
+  그리기.lineWidth='1';
 
-      //현관과 컴퓨터방 벽 4개, + 문 부분 crearRect
-      가로=5000; 세로=100;//위 가로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(200,5,가로,세로); //사각형그리기
+  //배란다
+  그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
+  가로=1300*숫자보정값;세로=6300*숫자보정값;X좌표=60;Y좌표=30;
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  그리기.fillStyle='black';
+  그리기.fillText('배란다',X좌표+(가로/2),Y좌표+(세로/2));
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
 
-      가로=100; 세로=3000;//왼쪽 세로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(200,5,가로,세로); //사각형그리기
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
 
-      가로=3500; 세로=100;//아래 가로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(200,300,가로,세로); //사각형그리기
+  //컴퓨터방
+  그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
+  가로=3630*숫자보정값;세로=3090*숫자보정값;X좌표=199;Y좌표=30;
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  그리기.fillStyle='black';
+  그리기.fillText('컴퓨터방',X좌표+(가로/2),Y좌표+(세로/2));
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
 
-      가로=100; 세로=3000;//오른쪽 세로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(545,10,가로,세로); //사각형그리기
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑, 왼쪽 창문
+  문변수가로폭=벽폭; 문변수세로길이=250;
+  그리기.clearRect(X좌표-벽폭,Y좌표+10,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표-벽폭,Y좌표+10,문변수가로폭,문변수세로길이);//문
 
-      //컴퓨터방내부 채우기 먼저
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑, 오른쪽 문
+  문변수가로폭=벽폭; 문변수세로길이=130;
+  그리기.clearRect(X좌표+가로,Y좌표-벽폭+180,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭+180,문변수가로폭,문변수세로길이);//문  
 
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(555,114,145,10); //현관 중문
+  //큰방
+  그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
+  가로=3630*숫자보정값;세로=3090*숫자보정값;X좌표=199;Y좌표=350;
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  그리기.fillStyle='black';
+  그리기.fillText('큰방',X좌표+(가로/2),Y좌표+(세로/2));
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
 
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('현관중문',630,117);
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
+  문변수가로폭=벽폭; 문변수세로길이=150;
+  그리기.clearRect(X좌표-벽폭,Y좌표+10,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표-벽폭,Y좌표+10,문변수가로폭,문변수세로길이);//문
 
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(540,130,20,155); //컴퓨터방 문쪽
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
+  문변수가로폭=벽폭; 문변수세로길이=70;
+  그리기.clearRect(X좌표+가로,Y좌표-벽폭+30,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭+30,문변수가로폭,문변수세로길이);//문
 
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('문',550,200);
+  //신발장과 현관문 (구분선으로 구분)
+  그리기.fillStyle = 'rgb(221, 235, 150)';//누런색
+  가로=2000*숫자보정값;세로=1500*숫자보정값;X좌표=571;Y좌표=30;
+  그리기.fillRect(X좌표,Y좌표,가로,세로,);
+  그리기.fillStyle='black';
+  그리기.fillText('신발장',X좌표+30,Y좌표+60);
+  그리기.fillText('현관',X좌표+130,Y좌표+60);
+  그리기.fillStyle = 'gray';
+  그리기.fillRect(X좌표+70,Y좌표,3,세로);//신발장과 현관 구분선
+  그리기.fillStyle='black';
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑, 오른쪽 문
+  문변수가로폭=벽폭; 문변수세로길이=130;
+  그리기.clearRect(X좌표+가로,Y좌표+10,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+가로,Y좌표+10,문변수가로폭,문변수세로길이);//문  
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//아래 중문
+  문변수가로폭=170; 문변수세로길이=벽폭;
+  그리기.clearRect(X좌표+15,Y좌표+세로,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+15,Y좌표+세로,문변수가로폭,문변수세로길이);//문
 
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(195,35,20,250); //컴퓨터방 발코니쪽 창문
+  //화장실
+  그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
+  가로=3330*숫자보정값;세로=1786*숫자보정값;X좌표=571;Y좌표=480;
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  그리기.fillStyle='black';
+  그리기.fillText('화장실',X좌표+(가로/2),Y좌표+(세로/2));
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
+  문변수가로폭=100; 문변수세로길이=벽폭;
+  그리기.clearRect(X좌표+20,Y좌표-벽폭,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+20,Y좌표-벽폭,문변수가로폭,문변수세로길이);//문
 
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('창문',205,155);
+  //부엌방
+  그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
+  가로=3630*숫자보정값;세로=2800*숫자보정값;X좌표=972;Y좌표=379;
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  그리기.fillStyle='black';
+  그리기.fillText('부엌방',X좌표+(가로/2),Y좌표+(세로/2));
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
+  문변수가로폭=100; 문변수세로길이=벽폭;
+  그리기.clearRect(X좌표+20,Y좌표-벽폭,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+20,Y좌표-벽폭,문변수가로폭,문변수세로길이);//문
+  문변수가로폭=벽폭; 문변수세로길이=100;
+  그리기.clearRect(X좌표+가로,Y좌표+20,문변수가로폭,문변수세로길이);//창문
+  그리기.fillRect(X좌표+가로,Y좌표+20,문변수가로폭,문변수세로길이);//창문
 
-      //현관문 전실(신발장제외)
-      가로=1000; 세로=1000;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'gray';
-      그리기.fillRect(600,15,가로,세로); //사각형그리기
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('현관',600+45,15+40);
+  //부엌방공간과 우측벽
+  그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
+  가로=500*숫자보정값;세로=1786*숫자보정값;X좌표=913;Y좌표=480;
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  그리기.fillStyle='black';
+  그리기.fillText('부엌방',X좌표+(가로/2),Y좌표+(세로/2)-30);
+  그리기.fillText('수납',X좌표+(가로/2),Y좌표+(세로/2));
+  그리기.fillText('공간',X좌표+(가로/2),Y좌표+(세로/2)+30);
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
+  그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
+  그리기.fillStyle='black';
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
+  문변수가로폭=벽폭; 문변수세로길이=160;
+  그리기.clearRect(X좌표+가로,Y좌표+벽폭,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+가로,Y좌표+벽폭,문변수가로폭,문변수세로길이);//문
 
-      //신발장
-      가로=450; 세로=1000;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'rgb(221, 235, 150)';
-      그리기.fillRect(555,15,가로,세로); 
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('신발장',577,15+40);
+  //싱크대쪽 위쪽 벽, 싱크대 오른쪽 벽, 세탁실 아래쪽 벽
+  벽폭=9;//가로일수도 세로일수도
+  그리기.fillStyle='black';
+  가로=6980*숫자보정값;세로=벽폭;X좌표=780;Y좌표=180;//싱크대쪽 위쪽 벽,
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  가로=벽폭;세로=4800*숫자보정값;X좌표=1470;Y좌표=180;//싱크대 오른쪽 벽
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  가로=1390*숫자보정값;세로=벽폭;X좌표=1340;Y좌표=659;//세탁실 아래쪽 벽
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  가로=100*숫자보정값;세로=벽폭;X좌표=1340;Y좌표=370;//세탁실 입구 왼쪽
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  가로=600*숫자보정값;세로=벽폭;X좌표=1410;Y좌표=370;//세탁실 입구 오른쪽
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
 
-      //현관과부억 벽
-      그리기.fillStyle = 'black';
-      그리기.fillRect(700,114,1090,10); //현관 중문
+  //싱크대
+  가로=370;세로=70;X좌표=1100;Y좌표=188;//싱크대쪽 위쪽 벽,
+  그리기.fillStyle = 'rgb(221, 235, 150)';//누런색
+  그리기.strokeStyle='black'; // 선 말고 사각형으로채우기
+  그리기.lineWidth='1';
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
 
-      //현관 문 
-      그리기.fillStyle = 'black';
-      그리기.fillRect(700,5,10,115); //현관 중문
+  그리기.beginPath();
+  그리기.strokeRect(X좌표,Y좌표,가로,세로);
+  그리기.stroke();
+  그리기.fill();
 
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(695,25,20,75);
-      그리기.fillStyle = 'black';
-      그리기.fillText('현',705,35);그리기.fillText('관',705,53);그리기.fillText('문',705,71);
+  가로=70;세로=182;X좌표=1400;Y좌표=188;//싱크대쪽 위쪽 벽,
+  그리기.fillStyle = 'rgb(221, 235, 150)';//누런색
+  그리기.strokeStyle='black'; // 선 말고 사각형으로채우기
+  그리기.lineWidth='1';
+  그리기.fillRect(X좌표,Y좌표,가로,세로);
 
-      //큰방 채우기 3
-      가로=100; 세로=4000;//왼쪽 세로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(200,305,가로,세로); //사각형그리기
+  그리기.beginPath();
+  그리기.strokeRect(X좌표,Y좌표,가로,세로);
+  그리기.stroke();
+  그리기.fill();
 
-      가로=3500; 세로=100;//아래 가로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(200,695,가로,세로); //사각형그리기
-
-      가로=100; 세로=4000;//오른쪽 세로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(545,305,가로,세로); //사각형그리기
-
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(540,320,20,75); //큰방 문
-
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('문',550,355);
-
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(195,320,20,175); //큰방 창문
-
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('창문',205,400);
-
-      //발코니, 아래 테두리
-      가로=1950; 세로=100;//위 가로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(5,5,가로,세로); //사각형그리기
-
-      가로=17850; 세로=100;//아래 가로(화장실과 방쪽 끝까지)
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(5,695,가로,세로); //사각형그리기
-
-      가로=100; 세로=6900;//발코니 창쪽 세로
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(5,5,가로,세로); //사각형그리기
-
-      //오른쪽 끝 세로
-      가로=100; 세로=5900;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(1780,115,가로,세로); //사각형그리기
-
-      //부엌방, 왼쪽 세로, 위쪽 가로, 오른쪽세로
-      가로=100; 세로=3500;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(1100,355,가로,세로); //부엌방 왼쪽
-
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(1095,525,20,150); //부엌방 공간 문
-      그리기.fillStyle = 'black';
-      그리기.fillText('문',1105,570);
-
-      가로=100; 세로=3500;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(1600,355,가로,세로); //부엌방 오른쪽
-
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(1595,370,20,150); //부엌방 문
-      그리기.fillStyle = 'black';
-      그리기.fillText('창문',1605,435);
-
-      가로=900; 세로=100;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(1700,355,가로,세로); //부엌방 위쪽 레인지 쪽
-
-      가로=5300; 세로=100;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(1100,355,가로,세로); //부엌방 위쪽 가로
-
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(1130,350,150,20); //부엌방 문
-      그리기.fillStyle = 'black';
-      그리기.fillText('문',1190,355);
-
-      가로=100; 세로=2050;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(1000,500,가로,세로); //부엌방 수납공간
-
-      가로=5500; 세로=100;
-      가로=가로*숫자보정값; 세로=세로*숫자보정값;
-      그리기.fillStyle = 'black';
-      그리기.fillRect(550,500,가로,세로); //화장실 가로
-
-      그리기.fillStyle = 'rgb(194, 180, 180)';
-      그리기.fillRect(570,495,150,20); //부엌방 문
-      그리기.fillStyle = 'black';
-      그리기.fillText('문',640,498);
-
-      //싱크대
-      그리기.beginPath();
-      그리기.fillStyle = 'rgb(221, 235, 150)';
-      그리기.rect(1310,125,470,80); //가로 긴것
-      그리기.fill();
-      그리기.stroke();
-
-      그리기.beginPath();
-      그리기.fillStyle = 'rgb(221, 235, 150)';
-      그리기.rect(1700,126,80,229); //세로 긴것
-      그리기.fill();
-      그리기.stroke();
-      그리기.lineWidth=0;
-      그리기.rect(1650,126,78,78); //선없애는 상자
-      그리기.fill();
-      그리기.lineWidth=1;
-
-
-      //가로 세로 100마다 점찍기
-      var 점가로=0, 점세로=790;
-      그리기.fillStyle='red'
-      그리기.lineWidth=1;
-      for (var i=0; i<36; i++) {
-        점가로+=50; 
-        그리기.beginPath();
-        그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
-        그리기.fill();
-        그리기.stroke();
-        그리기.fillText(점가로,점가로,점세로-20);
-      }
-      var 점가로=50, 점세로=0;
-      그리기.fillStyle='red'
-      그리기.lineWidth=1;
-      for (var i=0; i<15; i++) {
-        점세로+=50; 
-        그리기.beginPath();
-        그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
-        그리기.fill();
-        그리기.stroke();
-        그리기.fillText(점세로,점가로-20,점세로-7);
-      }
+  그리기.fillRect(X좌표-2,Y좌표+1,가로,68);//선 없애기
 
 
 
@@ -489,136 +468,43 @@ function 임시_집구조켤때캔버스그리기() {
 
 
 
-      if (1==2) {
-      //선색, 정렬, 선폭 미리 정해두기
+  if (1==2) {
+    그리기.fillStyle='black';
+    그리기.textAlign = 'left';
+    X좌표=860;Y좌표=10;
+    그리기.fillText('세탁기들어가는 문 : 가로          , 세로          ',X좌표-70,Y좌표);그리기.fillText('현관문 : 가로          , 세로          ',X좌표+230,Y좌표);
+    그리기.fillText('큰방 : 가로          , 세로          ',X좌표,Y좌표+20);그리기.fillText('문 : 가로          , 세로          ',X좌표+230,Y좌표+20);
+    그리기.fillText('컴퓨터방 : 가로          , 세로          ',X좌표,Y좌표+40);그리기.fillText('문 : 가로          , 세로          ',X좌표+230,Y좌표+40);
+    그리기.fillText('부엌방 : 가로          , 세로          ',X좌표,Y좌표+60);
+    
+  }
 
-  
-      그리기.clearRect(0,0,캔버스.width,캔버스.height)
-      그리기.strokeRect(5,5,200,40); //사각형그리기, 테두리
-      그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.fillText('사각형 테두리 바로 만들기;',8,8); //사각형그리기, 테두리
-      그리기.fillText('그리기.strokeRect(5,5,200,40);',8,25); //사각형그리기, 테두리
-  
-      그리기.beginPath();
-      그리기.strokeStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-      그리기.rect(5,50,200,102); //사각형그리기, 테두리
-      그리기.stroke();
-      그리기.fillText('stroke()로 사각형 테두리 만들기;',8,56); //사각형그리기, 테두리
-      그리기.fillText('그리기.beginPath();',8,76); //사각형그리기, 테두리
-      그리기.fillText('그리기.strokeStyle = black;',8,96); //사각형그리기, 테두리
-      그리기.fillText('그리기.rect(5,50,200,90);',8,116); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke();',8,136); //사각형그리기, 테두리
-      // 그리기.fill(); ==> 그리기.stroke(); 결과에 채움
-      
-      그리기.beginPath();
-      그리기.fillText('채우기, 그리기.fill()은;',8,160); //사각형그리기, 테두리
-      그리기.fillText('그리기.beginPath(); 이후에',8,180); //사각형그리기, 테두리
-      그리기.fillText('변수에 담기는 것들 모두에',8,200); //사각형그리기, 테두리
-      그리기.fillText('채워진다.; 그리기.fillStyle = red;',8,220); //사각형그리기, 테두리
-      
-      그리기.fillStyle = 'red';
-      그리기.rect(5,240,200,80); //사각형그리기, 테두리
-      그리기.fill();
-      그리기.stroke();
-  
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.fillStyle = black;',8,245); //사각형그리기, 테두리
-      그리기.fillText('그리기.rect(5,220,200,50);',8,265); //사각형그리기, 테두리
-      그리기.fillText('그리기.fill();',8,285); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke();',8,305); //사각형그리기, 테두리
-  
-      그리기.moveTo(220,10);
-      그리기.lineTo(420,10);
-      그리기.lineTo(420,100);
-      그리기.stroke();
-  
-      그리기.fillText('그리기.moveTo(220,10);',223,12); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,10);',223,32); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,100);',223,52); //사각형그리기, 테두리
-      그리기.fillText('그리기.stroke();',223,72); //사각형그리기, 테두리
-  
-      그리기.moveTo(220,110);
-      그리기.lineTo(420,110);
-      그리기.lineTo(420,220);
-      그리기.closePath();
-      그리기.stroke();
-  
-      그리기.fillText('그리기.moveTo(220,10);',223,113); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,10);',223,133); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,100);',223,153); //사각형그리기, 테두리
-      그리기.fillStyle = 'blue';
-      그리기.fillText('그리기.closePath();',223,173); //사각형그리기, 테두리
-      그리기.fillText('처음과 끝좌표 연결',223,193); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.stroke();',223,213); //사각형그리기, 테두리
-  
-      그리기.beginPath();
-      그리기.moveTo(220,240);
-      그리기.lineTo(420,240);
-      그리기.lineTo(420,350);
-      그리기.closePath();
-      그리기.fillStyle = 'red';
-      그리기.fill();
-      그리기.stroke();
-  
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.moveTo(220,10);',223,113); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,10);',223,133); //사각형그리기, 테두리
-      그리기.fillText('그리기.lineTo(420,100);',223,153); //사각형그리기, 테두리
-      그리기.fillStyle = 'blue';
-      그리기.fillText('그리기.closePath();',223,173); //사각형그리기, 테두리
-      그리기.fillText('처음과 끝좌표 연결',223,193); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.stroke();',223,213); //사각형그리기, 테두리
-  
-      그리기.fillStyle = 'blue';
-      그리기.fillText('그리',223,250); //사각형그리기, 테두리
-      그리기.fillStyle = 'yellow';
-      그리기.fillText('기.stroke(); 직전에',250,250); //사각형그리기, 테두리
-      그리기.fillStyle = 'blue';
-      그리기.fillText('채우기 명령',223,270); //사각형그리기, 테두리
-      그리기.fillText('그리기.fill();',223,290); //사각형그리기, 테두리
-      그리기.fillText('그리기.closePath();',223,310); //사각형그리기, 테두리
-      그리기.fillText('없어도 채워짐;',223,330); //사각형그리기, 테두리
-  
-      그리기.fillStyle = 'blue';
-      그리기.fillText('글자 넣는건 fillText',433,10); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.fillText("글자 넣는건 fillText",223,233)',433,30); //사각형그리기, 테두리
-      그리기.fillStyle = 'blue';
-      그리기.fillText('채우기색깔은 fillStyle',433,50); //사각형그리기, 테두리
-      그리기.fillStyle = 'black';
-      그리기.fillText('그리기.fillStyle = "blue";',433,70); //사각형그리기, 테두리
-  
-      그리기.lineWidth=20;
-      그리기.strokeRect(433,95,232,80);
-      그리기.fillText('그리기.lineWidth=20;',443,110);
-      그리기.fillText('그리기.strokeRect(433,90,180,40);',443,130);
-      그리기.fillText('사각형부분은 선의 중앙;',443,150);
-  
-      그리기.fillRect(675,95,232,80);
-      그리기.fillStyle = 'yellow';
-      그리기.fillText('그리기.fillRect(675,95,232,80);',685,105);
-      그리기.fillText('채워진사각형',685,125);
-  
-      그리기.strokeRect(433,200,232,80);
-      그리기.fillStyle = 'yellow';
-      그리기.fillRect(433,200,232,80);
-      그리기.fillStyle = 'black';
-      그리기.fillText('순서',443,215);
-      그리기.fillText('strokeRect > fillRect;',443,230);
-      그리기.fillText('나중꺼가 덮어씀',443,250);
-  
-      그리기.fillStyle = 'yellow';
-      그리기.fillRect(675,200,232,80);
-      그리기.strokeStyle='black';
-      그리기.strokeRect(675,200,232,80);
-      그리기.fillStyle = 'black';
-      그리기.fillText('순서',685,215);
-      그리기.fillText('fillRect > strokeRect;',685,235);
-      그리기.fillText('나중꺼가 덮어씀',685,255);
-      }
 
+
+
+  //가로 세로 100마다 점찍기
+  var 점가로=0, 점세로=790;
+  그리기.fillStyle='red'
+  그리기.lineWidth=1;
+  for (var i=0; i<36; i++) {
+    점가로+=50; 
+    그리기.beginPath();
+    그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
+    그리기.fill();
+    그리기.stroke();
+    그리기.fillText(점가로,점가로-15,점세로-20);
+  }
+  var 점가로=33, 점세로=0;
+  그리기.fillStyle='red'
+  그리기.lineWidth=1;
+  for (var i=0; i<15; i++) {
+    점세로+=50; 
+    그리기.beginPath();
+    그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
+    그리기.fill();
+    그리기.stroke();
+    그리기.fillText(점세로,점가로-18,점세로-7);
+  }
 }
 
 var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
