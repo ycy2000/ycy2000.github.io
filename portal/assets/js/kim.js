@@ -475,6 +475,12 @@ function 임시_집구조켤때캔버스그리기() {
 
   그리기.fillRect(X좌표-2,Y좌표+1,가로,56);//선 없애기
 
+  //방크기 메모
+  그리기.fillStyle='black';
+  그리기.fillText('컴퓨터방 : 365cm, 280cm',850,10);
+  그리기.fillText('  큰방   : 365cm, 367cm',850,40);
+  그리기.fillText(' 부엌방  : 303cm, 277cm',850,70);
+
   //콘센트
   그리기.fillStyle='white';
   그리기.fillRect(290,20,10,10);
