@@ -20,6 +20,9 @@ function 공통켤때위치있는거메모div내_가구배치() {
       추가할네모.id=집구조클래스들[i].id + '네모div';
       추가할네모.style.position='absolute';
       추가할네모.style.border='1px solid black';
+      if (이름=='소파') {
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/소파.png)'
+      }
       if (이름=='바디프랜드') {
         추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/바디프랜드.png)'
       }
@@ -480,6 +483,17 @@ function 임시_집구조켤때캔버스그리기() {
   그리기.fillText('컴퓨터방 : 365cm, 280cm',850,10);
   그리기.fillText('  큰방   : 365cm, 367cm',850,40);
   그리기.fillText(' 부엌방  : 303cm, 277cm',850,70);
+
+  그리기.fillStyle = 'rgba(128,128,128,1)';//회색
+  그리기.fillRect(1009,670,220,20);
+  그리기.fillStyle='black';
+  그리기.textAlign='left';
+  그리기.fillText(' 높이  : 223cm',1050,650);
+  그리기.fillText(' 문 열렸을때  : 220cm, 닫았을때 302cm',970,673);
+
+  그리기.fillText(' 문:92cm',535,380);
+  그리기.fillText(' 문:92cm',625,524);
+  그리기.fillText(' 문:92cm',970,405);
 
   //콘센트
   그리기.fillStyle='white';
