@@ -310,6 +310,7 @@ function 임시_집구조켤때캔버스그리기() {
   그리기.fillStyle='black';
   벽폭=22;//
   그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
+
   그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑, 왼쪽 창문
   문변수가로폭=벽폭; 문변수세로길이=252;
   그리기.clearRect(X좌표-벽폭,Y좌표,문변수가로폭,문변수세로길이);//창문
@@ -333,19 +334,19 @@ function 임시_집구조켤때캔버스그리기() {
   그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
 
   그리기.fillStyle='black';
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
+  문변수가로폭=벽폭; 문변수세로길이=92;
+  그리기.clearRect(X좌표+가로,Y좌표-벽폭+30,문변수가로폭,문변수세로길이);//문
+  그리기.fillRect(X좌표+가로,Y좌표-벽폭+30,문변수가로폭,문변수세로길이);//문
+
+  그리기.fillStyle='black';
   벽폭=22;
   그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
   그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
   문변수가로폭=벽폭; 문변수세로길이=240;
   그리기.clearRect(X좌표-벽폭,Y좌표+10,문변수가로폭,문변수세로길이);//문
   그리기.fillRect(X좌표-벽폭,Y좌표+10,문변수가로폭,문변수세로길이);//문
-
-  그리기.fillStyle='black';
-  그리기.fillRect(X좌표+가로,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 오른쪽
-  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문,창문,파랑
-  문변수가로폭=벽폭; 문변수세로길이=92;
-  그리기.clearRect(X좌표+가로,Y좌표-벽폭+30,문변수가로폭,문변수세로길이);//문
-  그리기.fillRect(X좌표+가로,Y좌표-벽폭+30,문변수가로폭,문변수세로길이);//문
 
   //신발장과 현관문 (구분선으로 구분)
   그리기.fillStyle = 'rgb(221, 235, 150)';//누런색
@@ -391,7 +392,7 @@ function 임시_집구조켤때캔버스그리기() {
   가로=3030*숫자보정값;세로=2770*숫자보정값;X좌표=926;Y좌표=423;
   그리기.fillRect(X좌표,Y좌표,가로,세로);
   그리기.fillStyle='black';
-  그리기.fillText('부엌방',X좌표+(가로/2),Y좌표+(세로/2));
+  그리기.fillText('옷방',X좌표+(가로/2),Y좌표+(세로/2));
   벽폭=20;//가로일수도 세로일수도
   그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
   그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
@@ -411,7 +412,7 @@ function 임시_집구조켤때캔버스그리기() {
   가로=990*숫자보정값;세로=1580*숫자보정값;X좌표=805;Y좌표=540;
   그리기.fillRect(X좌표,Y좌표,가로,세로);
   그리기.fillStyle='black';
-  그리기.fillText('부엌방',X좌표+(가로/2),Y좌표+(세로/2)-30);
+  그리기.fillText('옷방',X좌표+(가로/2),Y좌표+(세로/2)-30);
   그리기.fillText('수납',X좌표+(가로/2),Y좌표+(세로/2));
   그리기.fillText('공간',X좌표+(가로/2),Y좌표+(세로/2)+30);
   벽폭=22;//가로일수도 세로일수도
@@ -480,9 +481,10 @@ function 임시_집구조켤때캔버스그리기() {
 
   //방크기 메모
   그리기.fillStyle='black';
-  그리기.fillText('컴퓨터방 : 365cm, 280cm',850,10);
-  그리기.fillText('  큰방   : 365cm, 367cm',850,40);
-  그리기.fillText(' 부엌방  : 303cm, 277cm',850,70);
+  그리기.textAlign='left';
+  그리기.fillText('[컴퓨터방] 가로:365cm, 세로:280cm',800,10);
+  그리기.fillText('  [큰방] 가로:365cm, 세로:367cm',817,40);
+  그리기.fillText(' [옷방] 가로:303cm, 세로:277cm',817,70);
 
   그리기.fillStyle = 'rgba(128,128,128,1)';//회색
   그리기.fillRect(1009,670,220,20);
@@ -507,6 +509,131 @@ function 임시_집구조켤때캔버스그리기() {
   그리기.fillRect(1228,470,10,10);
 
 
+  
+  //치수 마지막 기록
+  가로=3650*숫자보정값;세로=2800*숫자보정값;X좌표=192;Y좌표=30;//컴퓨터방
+  그리기.beginPath();
+  그리기.strokeStyle='yellow';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표,Y좌표-13);
+  그리기.lineTo(X좌표+가로,Y좌표-13);
+  그리기.stroke();
+  그리기.fillStyle='yellow';
+  그리기.fillText('365cm',X좌표+(가로/2),Y좌표-12);
+
+  그리기.beginPath();
+  그리기.strokeStyle='yellow';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표-18,Y좌표);
+  그리기.lineTo(X좌표-18,Y좌표+세로);
+  그리기.stroke();
+  그리기.fillStyle='yellow';
+  그리기.fillText('2',X좌표-12,Y좌표+100);
+  그리기.fillText('8',X좌표-12,Y좌표+100+15);
+  그리기.fillText('0',X좌표-12,Y좌표+100+30);
+  그리기.fillText('cm',X좌표-17,Y좌표+100+45);
+
+가로=3650*숫자보정값;세로=3670*숫자보정값;X좌표=192;Y좌표=353-벽폭;//큰방
+  그리기.beginPath();
+  그리기.strokeStyle='yellow';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표-18,Y좌표);
+  그리기.lineTo(X좌표-18,Y좌표+세로);
+  그리기.stroke();
+  그리기.fillStyle='yellow';
+  그리기.fillText('3',X좌표-12,Y좌표+100);
+  그리기.fillText('6',X좌표-12,Y좌표+100+15);
+  그리기.fillText('7',X좌표-12,Y좌표+100+30);
+  그리기.fillText('cm',X좌표-17,Y좌표+100+45);
+
+가로=3270*숫자보정값;세로=3500*숫자보정값;X좌표=576;Y좌표=167;//거실 네모
+  그리기.beginPath();
+  그리기.strokeStyle='yellow';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표+9,Y좌표+60);
+  그리기.lineTo(X좌표+가로+9,Y좌표+60);
+  그리기.stroke();
+  그리기.fillStyle='yellow';
+  그리기.fillText('327cm',X좌표+(가로/2),Y좌표+60);
+
+  그리기.beginPath();
+  그리기.strokeStyle='yellow';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표+110,Y좌표+3);
+  그리기.lineTo(X좌표+110,Y좌표+세로);
+  그리기.stroke();
+  그리기.fillStyle='yellow';
+  그리기.fillText('3',X좌표+115,Y좌표+100);
+  그리기.fillText('5',X좌표+115,Y좌표+100+15);
+  그리기.fillText('0',X좌표+115,Y좌표+100+30);
+  그리기.fillText('cm',X좌표+111,Y좌표+100+45);
+
+  그리기.beginPath();
+  그리기.strokeStyle='yellow';
+  그리기.lineWidth=2;
+  세로=237;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표+330,Y좌표+3);
+  그리기.lineTo(X좌표+330,Y좌표+세로);
+  그리기.stroke();
+  그리기.fillStyle='yellow';
+  그리기.fillText('2',X좌표+315,Y좌표+100);
+  그리기.fillText('3',X좌표+315,Y좌표+100+15);
+  그리기.fillText('7',X좌표+315,Y좌표+100+30);
+  그리기.fillText('cm',X좌표+310,Y좌표+100+45);
+  그리기.fillRect(X좌표+가로-13,Y좌표-3,30,3);
+  그리기.fillRect(X좌표+가로-13,Y좌표+세로-2,30,3);
+
+  가로=3270*숫자보정값;세로=580*숫자보정값;X좌표=1127;Y좌표=167;//싱크대 58cm
+  그리기.beginPath();
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,2]);//[2,8]
+  그리기.moveTo(X좌표,Y좌표);
+  그리기.lineTo(X좌표,Y좌표+세로);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('5',X좌표+5,Y좌표+10);
+  그리기.fillText('8',X좌표+5,Y좌표+25);
+  그리기.fillText('cm',X좌표+2,Y좌표+40);
+
+  그리기.beginPath();//싱크대 58cm 아래부분
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  세로=237-58;Y좌표=Y좌표+58;
+  그리기.setLineDash([2,2]);//[2,8]
+  그리기.moveTo(X좌표,Y좌표+3);
+  그리기.lineTo(X좌표,Y좌표+세로);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('1',X좌표+3,Y좌표+60);
+  그리기.fillText('7',X좌표+3,Y좌표+60+15);
+  그리기.fillText('9',X좌표+3,Y좌표+60+30);
+  그리기.fillText('cm',X좌표,Y좌표+60+45);
+  그리기.fillRect(X좌표-10,Y좌표-3,20,3);
+  그리기.fillRect(X좌표-10,Y좌표+세로-2,20,3);
+
+  그리기.beginPath();//옷방왼쪽부터 싱크대왼쪽까지
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  가로=220;X좌표=905;Y좌표=265;
+  그리기.setLineDash([2,2]);//[2,8]
+  그리기.moveTo(X좌표,Y좌표);
+  그리기.lineTo(X좌표+가로,Y좌표);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('???cm',X좌표+80,Y좌표+3);
+  그리기.fillRect(X좌표,Y좌표-10,3,20);
+  그리기.fillRect(X좌표+가로,Y좌표-10,3,20);
+
+  그리기.fillStyle='gray';
+  X좌표=1305;Y좌표=167;//가스레인지
+  그리기.fillRect(X좌표+2,Y좌표+170,45.5,59);/
 
 
 
@@ -519,16 +646,6 @@ function 임시_집구조켤때캔버스그리기() {
 
 
 
-  if (1==2) {
-    그리기.fillStyle='black';
-    그리기.textAlign = 'left';
-    X좌표=860;Y좌표=10;
-    그리기.fillText('세탁기들어가는 문 : 가로          , 세로          ',X좌표-70,Y좌표);그리기.fillText('현관문 : 가로          , 세로          ',X좌표+230,Y좌표);
-    그리기.fillText('큰방 : 가로          , 세로          ',X좌표,Y좌표+20);그리기.fillText('문 : 가로          , 세로          ',X좌표+230,Y좌표+20);
-    그리기.fillText('컴퓨터방 : 가로          , 세로          ',X좌표,Y좌표+40);그리기.fillText('문 : 가로          , 세로          ',X좌표+230,Y좌표+40);
-    그리기.fillText('부엌방 : 가로          , 세로          ',X좌표,Y좌표+60);
-    
-  }
 
 
 
