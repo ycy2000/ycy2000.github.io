@@ -4,6 +4,9 @@ function 공통켤때위치있는거메모div내_가구배치() {
   console.log('공통켤때위치있는거메모div내_가구배치()')
   var 집구조클래스들=document.querySelectorAll('#메모 .집구조');
   for (var i=0; i<집구조클래스들.length; i++) {
+    집구조클래스들[i].id='집구조_구조물' + (i+1);
+  }
+  for (var i=0; i<집구조클래스들.length; i++) {
     var 이름=document.querySelectorAll('#메모 #' + 집구조클래스들[i].id + ' div')[1].innerText;
     var 가로=document.querySelectorAll('#메모 #' + 집구조클래스들[i].id + ' div')[3].innerText;
     var 세로=document.querySelectorAll('#메모 #' + 집구조클래스들[i].id + ' div')[5].innerText;
