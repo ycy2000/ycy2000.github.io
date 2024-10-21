@@ -1,9 +1,4 @@
 
-function 집구조그림테두리div클릭(){
-alert('dfdfdf')
-}
-
-
 //메모div에 리스터 걸고(html시작시부터 있어야되므로) 안에 집구조전체 div가 있으면 리스너 작동
 var 메모div내_집구조전체div가있을때만작동하는것=document.querySelector('#메모');
 function 공통켤때위치있는거메모div내_가구배치() {
@@ -141,19 +136,31 @@ function 메모div내_집구조전체(e) {
   }
 }
 function 집구조그림테두리mousedown(e) {
+  // 마우스좌표가 div 의 top이 되려면 : 
   console.log('집구조그림테두리mousedown(e), e.target.id : ' + e.target.id);
   if ((e.target.id).substr(0, 7)!='집구조_구조물') {return;} 
+
   var 좌표참고요소자료=document.querySelector('#메모 #집구조그림테두리').getBoundingClientRect();
-  console.log('컴퓨터책상 클릭시 top 결과예상값 : 40')
-  console.log('window.pageYOffset : ' + window.pageYOffset)
-  console.log('#메모 #집구조그림테두리 top : ' + 좌표참고요소자료.top)
-  console.log(window.pageYOffset - 좌표참고요소자료.top)
-  console.log('e.y : ' + e.y)
-  //console.log('차이 : ' + (e.y-좌표참고요소자료.top))
+  //var 그림테두리세로좌표=window.pageYOffset+좌표참고요소자료.top;//204
+  var 클릭요소세로좌표=document.querySelector('#메모 #집구조그림테두리 #' + e.target.id).getBoundingClientRect().top;
+  var styleTop값=window.pageYOffset + e.y-205;
+
+
+
+}
+function 집구조그림테두리mousedrag(e) {
+  console.log('집구조그림테두리mousedown(e), e.target.id : ' + e.target.id);
+  if ((e.target.id).substr(0, 7)!='집구조_구조물') {return;} 
+
+  var 좌표참고요소자료=document.querySelector('#메모 #집구조그림테두리').getBoundingClientRect();
+  //var 그림테두리세로좌표=window.pageYOffset+좌표참고요소자료.top;//204
+  var 클릭요소세로좌표=document.querySelector('#메모 #집구조그림테두리 #' + e.target.id).getBoundingClientRect().top;
+  var styleTop값=window.pageYOffset + e.y-205;
+  document.querySelector('#메모 #집구조그림테두리 #' + e.target.id).style.top=styleTop값 + 'px'
 }
 메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
 메모div내_집구조전체div가있을때만작동하는것.addEventListener('mousedown',집구조그림테두리mousedown);
-
+메모div내_집구조전체div가있을때만작동하는것.addEventListener('mousedrag',집구조그림테두리mousedrag);
 
 
 
