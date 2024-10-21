@@ -1457,13 +1457,61 @@
 
   <div id="CSS_background"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• 검색어 : 배경색, rgb, rgba, 그라데이션, 회전, 그림, 색상, 색깔</code>
+      <h5 class="fw-bold">색상 표현방법 : 1.이름(147개), 2.16진수, 3.rgb 또는 rgba, 4.hsl 또는 hsla</h5>
+      <code class="fw-bold" style="text-indent: 15px;">- 16진수 예)#00FF99, 숫자는 Red, Green, Blue 순서 (FF는 10진수 255) : #으로 시작하고 두자리씩 3개의 16진수로 색상표현</code>
+      <code class="fw-bold" style="text-indent: 15px;">- rgb(Red, Green, Blue) : Red, Green, Blue는 0~255 숫자, <span style="color:blueviolet">vs code 색깔부분 커서 올리면 rgb 확인 가능</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- rgba(Red, Green, Blue, 불투명도) : 불투명도 1 = 완전 진하게, 불투명도 0 = 흰색</code>
+      <div style="margin-bottom: 10px;">
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:aqua;border:1px solid black;text-align: center;margin-bottom: -1px;">aqua</div>
+          <div style="background-color:bisque;border:1px solid black;text-align: center;margin-bottom: -1px;">bisque</div>
+          <div style="background-color:beige;border:1px solid black;text-align: center;margin-bottom: -1px;">beige</div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:blueviolet;border:1px solid black;text-align: center;margin-bottom: -1px;">blueviolet</div>
+          <div style="background-color:blanchedalmond;border:1px solid black;text-align: center;margin-bottom: -1px;">blanchedalmond</div>
+          <div style="background-color:cornflowerblue;border:1px solid black;text-align: center;margin-bottom: -1px;">cornflowerblue</div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:chartreuse;border:1px solid black;text-align: center;margin-bottom: -1px;">chartreuse</div>
+          <div style="background-color:chocolate;border:1px solid black;text-align: center;margin-bottom: -1px;">chocolate</div>
+          <div style="background-color:hotpink;border:1px solid black;text-align: center;margin-bottom: -1px;">hotpink</div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:rgba(138,43,226,1);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,1)</div>
+          <div style="background-color:rgba(138,43,226,0);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,0)</div>
+          <div style="background-color:rgba(138,43,226,0.5);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,0.5)</div>
+        </div>
+      </div>
       <h5 class="fw-bold">background</h5>
       <code class="fw-bold">• background-image : url만, 그라데이션과 url같이는 쉼표(,)로 전달</code>
-      <code class="fw-bold" style="text-indent: 15px;">background-image:linear-gradient(rgba(0,0,255,0.5), rgba(0,0,255,0.5)), url(portal/images/문서연결_kim/집구조.png)</code>
+      <code class="fw-bold" style="text-indent: 15px;">background-image:linear-gradient(rgba(0,0,255,0.5), rgba(0,0,255,0.5)), url(portal/images/문서연결_kim/소파.png)</code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold">• background-repeat: no-repeat; 기본은 빈곳 반복</code>
-
-      
+      <code class="fw-bold">• background-repeat: no-repeat; 기본은 빈곳 반복, repeat, repeat-x, repeat-y, round, space</code>
+      <div class="fw-bold" style="vertical-align: top; display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);">background-repeat: repeat</div>
+      <div class="fw-bold" style="vertical-align: top;display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: repeat-x;">
+        background-repeat: repeat-x<br>가로로만 반복, repeat-y는 세로로만 반복<br><span style="color:blue">원본그림 비율 유지</span> </div>
+      <div class="fw-bold" style="vertical-align: top;display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: round;">
+        background-repeat: round<br>div폭=그림폭<br>가로폭만큼 그림이 꽉차도록 할때.<br>세로는 반복됨<br>가로와 세로비율이 변할수 있음<br>폭이나 높이가 원본의 1.5이면 그림이 2개가 들어감. 그리고 여분은 
+        <br>그림을 늘리거나 줄여서 채움
+      </div>
+      <br><br>
+      <div class="fw-bold" style="border:1px solid black; vertical-align: top;display: inline-block;width:270px;height:192px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: space;">
+        background-repeat: space<br>글자처럼 취급되어<br>배분정렬처럼 된다<br>세로도 배분정렬처럼 된다.<br><br>원본그림 비율 유지
+        <br>폭이나 높이가 1.5이면 그림이 추가되지 않고 원본유지
+      </div>
+      <div class="fw-bold" style="border:1px solid black;vertical-align: top;display: inline-block;width:440px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: space;">
+        background-repeat: space<br>글자처럼 취급되어, 배분정렬처럼 된다,<br>세로도 배분정렬처럼 된다.<br><br>원본그림 비율 유지
+        <br>폭이나 높이가 1.5이면 그림이 추가되지 않고 원본유지
+      </div>
+      <code class="fw-bold" style="color:blueviolet">• background-size : 1)auto 2)contain 3)cover 4)100px 100px 4)70% 70%</code>
+      <code class="fw-bold" style="text-indent: 15px;">1)auto : 원본유지, 요소가 작다면 그림의 일부가 보이게 됨.</code>
+      <code class="fw-bold" style="text-indent: 15px;">2)contain : 그림이 모두 들어오게 되는 size. 원본비율 유지 </code>
+      <code class="fw-bold" style="text-indent: 15px;">3)cover : 채워지지 않는 부분이 없도록 가로 또는 세로의 폭을 채움, 원본지율 유지</code>
+      <code class="fw-bold" style="text-indent: 15px;">4)크기 지정 : 요소 안에 들어갈 그림 크기 지정. 원본의 비율이 달라짐</code>
+      <code class="fw-bold" style="text-indent: 15px;">5)비율 지정 : 요소의 폭, 높이의 지정된 %만큼의 크기로 들어감. 원본의 비율이 달라짐</code>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
@@ -1472,6 +1520,27 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold" style="color:blueviolet">그림 회전 방법</h5>
+      <code class="fw-bold" style="color:blueviolet">1)transform속성은 요소를 변형할때 사용되며, rotate()함수를 사용하여 요소를 회전할 수 있다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">-transform: rotate(90deg); 양수는 시계방향, 음수를 시계반대방향, 현상태에서 회전</code>
+      <code class="fw-bold" style="color:blueviolet;margin-bottom: 5px;">2)회전중심점 지정 : transform-origin: top left;</code><br><br>
+      <div class="fw-bold" style="border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>
+      </div>
+      <div class="fw-bold" style="margin-left:10px;transform:rotate(40deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>transform:rotate(40deg);
+      </div>
+      <div class="fw-bold" style="margin-left:80px; transform-origin:top left;transform:rotate(40deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>transform:rotate(40deg);<br><span style="color:yellow">top left</span> 
+      </div>
+      <div class="fw-bold" style="transform-origin:top left;margin-left:1px;transform:rotate(90deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>transform:rotate(90deg);<br><span style="color:yellow">top left</span> 
+      </div><br><br><br>
+      
+      <br><br>
+
+
+
     </div>
   </div>
 

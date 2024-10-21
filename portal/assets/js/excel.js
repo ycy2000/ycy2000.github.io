@@ -1,3 +1,8 @@
+function 연습() {
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#CSS_background').outerHTML;
+  document.querySelector('#전체대체').classList.remove('d-none');
+
+}
 function 파일리스트() {
   console.log('파일리스트()')
   //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
@@ -276,11 +281,7 @@ function 파일리스트_연습() {
       }
 }
 
-function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#기타전체_파일내용').outerHTML;
-  document.querySelector('#전체대체').classList.remove('d-none');
 
-}
 
 var 선택한캔버스id='없음';
 var 이전캔버스id='없음';

@@ -53,6 +53,28 @@ function 가구만들기() {
 function 메모div내_집구조전체(e) {
   //document.querySelector('#메모 #집구조전체').style.whiteSpace='nowrap'
   console.log('메모div내_집구조전체(e)')
+  if (e.target.innerHTML=='회전') {//#메모 #집구조전체 일때만 회전 있다
+    var 선택또는만들기div들=document.querySelectorAll('#메모 #집구조전체 > .집구조 > div:nth-child(1)');
+    var js집구조선택노랑i플러스일;
+    for (var i=0; i<선택또는만들기div들.length; i++) {
+      if(선택또는만들기div들[i].classList.contains('js집구조선택노랑')) {js집구조선택노랑i플러스일=i+1}
+    }
+    if (document.querySelector('#메모 #집구조전체 #집구조_구조물' + js집구조선택노랑i플러스일 + '네모div')) {
+      var 배치div=document.querySelector('#메모 #집구조전체 #집구조_구조물' + js집구조선택노랑i플러스일 + '네모div');
+      if (배치div.style.transform=='') {
+        배치div.style.transform='rotate(90deg)'
+      } else if (배치div.style.transform=='rotate(90deg)'){
+        배치div.style.transform='rotate(180deg)'
+      } else if (배치div.style.transform=='rotate(180deg)'){
+        배치div.style.transform='rotate(270deg)'
+      } else if (배치div.style.transform=='rotate(270deg)'){
+        배치div.style.transform=''
+      }
+    }
+    
+    //js집구조선택노랑i플러스일 해당순번의 배치가 안되어 있을수도 있다.
+
+  }
   if (e.target.classList.contains('집구조선택또는만들기')) {
     console.log(e.target.parentNode.id)
     for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
@@ -60,7 +82,6 @@ function 메모div내_집구조전체(e) {
     }
 
     e.target.classList.add('js집구조선택노랑')
-
     var 선택된네모div;
     
     var 이름=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[1].innerText;
@@ -81,7 +102,6 @@ function 메모div내_집구조전체(e) {
       }
 
     } else {
-
       if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
         선택된네모div=document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div');
         console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않고, style만 변경')
