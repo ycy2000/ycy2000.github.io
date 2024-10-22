@@ -137,21 +137,43 @@ function 메모div내_집구조전체(e) {
 }
 function 집구조그림테두리mousedown(e) {
   // 마우스좌표가 div 의 top이 되려면 : 
-  console.log('집구조그림테두리mousedown(e), e.target.id : ' + e.target.id);
-  if ((e.target.id).substr(0, 7)!='집구조_구조물') {return;} 
+   if ((e.target.id).substr(0, 7)!='집구조_구조물') {return;} 
+  console.log('mousedown(e) : ' + e.target.id + ', idDragging=true;');
   var 집구조그림테두리요소=document.querySelector('#메모 #집구조그림테두리');
-  var 집구조그림테두리요소_정보=집구조그림테두리요소.getBoundingClientRect();
+  var 집구조그림테두리요소_정보=집구조그림테두리요소.getBoundingClientRect();//화면기준 x,y
   //var 그림테두리세로좌표=window.pageYOffset+좌표참고요소자료.top;//204
   var 클릭요소=document.querySelector('#메모 #집구조그림테두리 #' + e.target.id);
-  var 클릭요소정보=클릭요소.getBoundingClientRect();
-  console.log('window.scrollY : ' + window.scrollY)
-  console.log('집구조그림테두리요소.id : ' + 집구조그림테두리요소.id)
-  console.log(집구조그림테두리요소_정보) //top
+  var 클릭요소정보=클릭요소.getBoundingClientRect();//화면기준 x,y
+  console.log('클릭요소.style.top.숫자만 : ' + (클릭요소.style.top).replace(/[^0-9]/g,''))
+  //console.log('window.scrollY : ' + window.scrollY)
+  //console.log('집구조그림테두리요소.id : ' + 집구조그림테두리요소.id)
+  //console.log(집구조그림테두리요소_정보) //top
   //console.log('클릭요소.id : ' + 클릭요소.id)
   //console.log(클릭요소정보)
-  console.log('마우스포인터 Y : mousedown시 값과 move값의 차이를 쓸 예정')
-  console.log(e.clientY)
+  //console.log('마우스포인터 Y : mousedown시 값과 move값의 차이를 쓸 예정')
+  var 처음마우스Y=e.clientY;
+  var 드래그Y;
+  console.log('처음마우스Y : ' + 처음마우스Y)
+  isDragging=true;
 
+  메모div내_집구조전체div가있을때만작동하는것.addEventListener('mousemove',집구조그림테두리mousemove);
+  function 집구조그림테두리mousemove(e) {
+    if (isDragging) {
+      console.log('집구조그림테두리mousemove(e) : isDragging')
+      드래그Y=e.y
+      console.log('move드래그Y ; ' + e.y)
+    }
+    console.log('드래그Y-처음마우스Y : ' + (드래그Y-처음마우스Y))
+
+  }
+
+  메모div내_집구조전체div가있을때만작동하는것.addEventListener('mouseup',집구조그림테두리mouseup);
+  function 집구조그림테두리mouseup(e) {
+    isDragging=false;
+    console.log('집구조그림테두리mouseup(e) : isDragging=false; ')
+  }
+
+  
 
 
 }
