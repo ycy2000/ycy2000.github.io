@@ -144,6 +144,7 @@ function 집구조그림테두리mousedown(e) {
   //var 그림테두리세로좌표=window.pageYOffset+좌표참고요소자료.top;//204
   var 클릭요소=document.querySelector('#메모 #집구조그림테두리 #' + e.target.id);
   var 클릭요소정보=클릭요소.getBoundingClientRect();//화면기준 x,y
+  var 클릭요소처음top=(클릭요소.style.top).replace(/[^0-9]/g,'');
   console.log('클릭요소.style.top.숫자만 : ' + (클릭요소.style.top).replace(/[^0-9]/g,''))
   //console.log('window.scrollY : ' + window.scrollY)
   //console.log('집구조그림테두리요소.id : ' + 집구조그림테두리요소.id)
@@ -158,19 +159,29 @@ function 집구조그림테두리mousedown(e) {
 
   메모div내_집구조전체div가있을때만작동하는것.addEventListener('mousemove',집구조그림테두리mousemove);
   function 집구조그림테두리mousemove(e) {
+    
+
+    return;
+
+
+
+
+    //아이디어 : 차이가 생길때...
     if (isDragging) {
       console.log('집구조그림테두리mousemove(e) : isDragging')
       드래그Y=e.y
-      console.log('move드래그Y ; ' + e.y)
+      클릭요소.style.top=((클릭요소.style.top).replace(/[^0-9]/g,'')+(드래그Y-처음마우스Y)) + 'px';
+      //console.log('드래그Y('+드래그Y + ') - 처음마우스Y' + 처음마우스Y + ' : ' + (드래그Y-처음마우스Y))
     }
-    console.log('드래그Y-처음마우스Y : ' + (드래그Y-처음마우스Y))
-
   }
 
   메모div내_집구조전체div가있을때만작동하는것.addEventListener('mouseup',집구조그림테두리mouseup);
   function 집구조그림테두리mouseup(e) {
     isDragging=false;
     console.log('집구조그림테두리mouseup(e) : isDragging=false; ')
+    드래그Y=e.y;
+    클릭요소.style.top=((클릭요소.style.top).replace(/[^0-9]/g,'')*1+(드래그Y-처음마우스Y)*1) + 'px';
+    console.log(클릭요소.style.top)
   }
 
   
@@ -362,6 +373,43 @@ function 임시_집구조켤때캔버스그리기() {
   그리기.fillStyle='black';
   그리기.fillRect(X좌표-벽폭,Y좌표-벽폭,벽폭,세로+벽폭*2);//테두리 왼쪽
   그리기.fillRect(X좌표,Y좌표+340,8,340);//테두리 왼쪽 튀어나온곳
+  ////배란다 보관함쪽
+  그리기.clearRect(X좌표+8,Y좌표+565,110-8,103);
+  그리기.fillStyle = 'rgba(0,0,128,0.4)';//문
+  그리기.clearRect(X좌표+8,Y좌표+555,110-8,10);
+  그리기.fillRect(X좌표+8,Y좌표+555,110-8,10);
+
+  ////배란다 치수
+  그리기.beginPath();//배란다 보관함 깊이
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표+48,Y좌표+565);
+  그리기.lineTo(X좌표+48,Y좌표+668);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('103cm',X좌표+72,Y좌표+610);
+
+  그리기.beginPath();//배란다 짧은가로
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표+12,Y좌표+380);
+  그리기.lineTo(X좌표+12+102,Y좌표+380);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('102cm',X좌표+55,Y좌표+385);
+
+  그리기.beginPath();//배란다 긴가로
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표,Y좌표+280);
+  그리기.lineTo(X좌표+110,Y좌표+280);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('110cm',X좌표+55,Y좌표+285);
+
 
   //컴퓨터방
   그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
@@ -394,7 +442,7 @@ function 임시_집구조켤때캔버스그리기() {
   가로=3650*숫자보정값;세로=3670*숫자보정값;X좌표=192;Y좌표=353-벽폭;
   그리기.fillRect(X좌표,Y좌표,가로,세로);
   그리기.fillStyle='black';
-  그리기.fillText('큰방',X좌표+(가로/2),Y좌표+(세로/2));
+  그리기.fillText('큰방',X좌표+(가로/2),Y좌표+115);
   벽폭=22;//가로일수도 세로일수도
   그리기.fillRect(X좌표,Y좌표-벽폭,가로,벽폭);//테두리 위
   그리기.fillRect(X좌표,Y좌표+세로,가로,벽폭);//테두리 아래
@@ -453,9 +501,30 @@ function 임시_집구조켤때캔버스그리기() {
   그리기.clearRect(X좌표+20,Y좌표-벽폭,문변수가로폭,문변수세로길이);//문
   그리기.fillRect(X좌표+20,Y좌표-벽폭,문변수가로폭,문변수세로길이);//문
 
+  그리기.beginPath();//화장실 긴가로
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표,Y좌표+21);
+  그리기.lineTo(X좌표+가로,Y좌표+21);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('206cm',X좌표+(가로/2),Y좌표+25);
+
+  그리기.beginPath();//화장실 세로
+  그리기.strokeStyle='red';
+  그리기.lineWidth=2;
+  그리기.setLineDash([2,8]);
+  그리기.moveTo(X좌표+50,Y좌표);
+  그리기.lineTo(X좌표+50,Y좌표+168);
+  그리기.stroke();
+  그리기.fillStyle='red';
+  그리기.fillText('168cm',X좌표+23,Y좌표+(세로/2));
+
+
   //부엌방
   그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
-  가로=3030*숫자보정값;세로=2770*숫자보정값;X좌표=926;Y좌표=423;
+  가로=3030*숫자보정값;세로=2770*숫자보정값;X좌표=926;Y좌표=423;//423
   그리기.fillRect(X좌표,Y좌표,가로,세로);
   그리기.fillStyle='black';
   그리기.fillText('옷방',X좌표+(가로/2),Y좌표+(세로/2));
@@ -478,7 +547,7 @@ function 임시_집구조켤때캔버스그리기() {
   //부엌방공간과 우측벽
   그리기.fillStyle = 'rgba(128,128,128,0.4)';//회색
   가로=990*숫자보정값;세로=1580*숫자보정값;X좌표=805;Y좌표=540;
-  그리기.fillRect(X좌표,Y좌표,가로,세로);
+  //그리기.fillRect(X좌표,Y좌표,가로,세로);
   그리기.fillStyle='black';
   그리기.fillText('옷방',X좌표+(가로/2),Y좌표+(세로/2)-30);
   그리기.fillText('수납',X좌표+(가로/2),Y좌표+(세로/2));
@@ -515,6 +584,8 @@ function 임시_집구조켤때캔버스그리기() {
   //싱크대쪽 위쪽 벽, 싱크대 오른쪽 벽, 세탁실 아래쪽 벽
   벽폭=22;//가로일수도 세로일수도
   그리기.fillStyle='black';
+  그리기.strokeStyle='black';
+  그리기.setLineDash([0,0]);
   가로=6650*숫자보정값;세로=벽폭;X좌표=733;Y좌표=145;//싱크대쪽 위쪽 벽,
   그리기.fillRect(X좌표,Y좌표,가로,세로);
   가로=벽폭;세로=5700*숫자보정값;X좌표=1395;Y좌표=145;//싱크대 오른쪽 벽
