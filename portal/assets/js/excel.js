@@ -1,5 +1,5 @@
 function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#CSS_background').outerHTML;
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#excel_js_마우스이벤트').outerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
 }
