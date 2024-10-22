@@ -136,6 +136,7 @@ function 메모div내_집구조전체(e) {
   }
 }
 function 집구조그림테두리mousedown(e) {
+  return;
   // 마우스좌표가 div 의 top이 되려면 : 
    if ((e.target.id).substr(0, 7)!='집구조_구조물') {return;} 
   console.log('mousedown(e) : ' + e.target.id + ', idDragging=true;');
@@ -177,6 +178,7 @@ function 집구조그림테두리mousedown(e) {
 
   메모div내_집구조전체div가있을때만작동하는것.addEventListener('mouseup',집구조그림테두리mouseup);
   function 집구조그림테두리mouseup(e) {
+    return;
     isDragging=false;
     console.log('집구조그림테두리mouseup(e) : isDragging=false; ')
     드래그Y=e.y;
