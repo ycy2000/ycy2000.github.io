@@ -647,6 +647,7 @@ function 전체대체클릭시(e) {
     var 리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');
 
     function mousedown이벤트내move가포함(e) {
+      alert('mousedown작동확인 : 모바일코딩중')
       isDragging=false;
       if ((e.target.id).substr(0,7)!='마우스예제상자') {return;}
       console.log('mousedown이벤트내move가포함');
@@ -670,7 +671,7 @@ function 전체대체클릭시(e) {
       function 마우스move(e) {
         if (!isDragging) {return;}
 
-        alert('move작동확인 : ')
+        alert('move작동확인 : 모바일코딩중')
 
         move_y=e.y;move_x=e.x;
         첫마우스에서y이동거리=move_y-첫마우스y;
