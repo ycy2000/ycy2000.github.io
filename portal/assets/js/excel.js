@@ -1,5 +1,9 @@
 function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#JS2_마우스이벤트').outerHTML;
+  var 연습요소id='JS2_마우스이벤트';
+  var 연습요소=document.querySelector('#' + 연습요소id);
+  document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
+  document.querySelector('#선택문서id').innerHTML=연습요소.id;
+  document.querySelector('#선택문서제목').innerHTML=document.querySelector('[title="' + 연습요소id + '"]').innerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
 }
@@ -643,7 +647,7 @@ function 전체대체클릭시(e) {
     var 리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');
 
     function mousedown이벤트내move가포함(e) {
-      isDragging=true;
+      isDragging=false;
       if ((e.target.id).substr(0,7)!='마우스예제상자') {return;}
       console.log('mousedown이벤트내move가포함');
       var 리스너_마우스이벤트예제div정보=리스너_마우스이벤트예제div.getBoundingClientRect();
@@ -656,6 +660,8 @@ function 전체대체클릭시(e) {
       var move_x;
       var 첫마우스에서y이동거리;
       var 첫마우스에서x이동거리;
+
+      isDragging=true;
       // 리스너_마우스이벤트예제div.innerHTML=리스너_마우스이벤트예제div.innerHTML+
       // 'e.screenY : ' + e.screenY + ', e.screenX : ' + e.screenX+ 
       // ',   타겟정보.top : ' + 타겟정보.top + ', 타겟정보.left : ' + 타겟정보.left +
@@ -663,6 +669,9 @@ function 전체대체클릭시(e) {
 
       function 마우스move(e) {
         if (!isDragging) {return;}
+
+        alert('move작동확인 : ')
+
         move_y=e.y;move_x=e.x;
         첫마우스에서y이동거리=move_y-첫마우스y;
         첫마우스에서x이동거리=move_x-첫마우스x;
