@@ -546,6 +546,7 @@
         <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
         <h6 class="canvas_div" title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
         <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
+        <h6 class="canvas_div" title='JS2_마우스이벤트'>JS2 > mouse, 마우스, 이벤트</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
@@ -1319,7 +1320,60 @@
     <h6 style="text-indent: 23px;">zip파일 다운로드 ==> 풀기, SD.exe 실행, 우클릭 메뉴 활용</h6>
   </div>
 
-  <div id="JS2_요소추가_APPENDCHILD"><!--기본빈서식-->
+  <div id="JS2_마우스이벤트">
+    <div id="마우스이벤트예제div" style="height:800px;border: 1px solid black;margin-right:10px;position: relative;">
+      <div id="마우스예제상자1" style="position: absolute;top:200px;left:600px; display:inline-block;width:130px;height:100px;border:1px solid black;">
+마우스예제상사1.<br><br> left:600px; top:200px;
+      </div>
+
+    </div>
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold"><a href="https://velog.io/@heeyoon1302/sd-zxl0vswn" target="_blank">이벤트 리스너의 재생성을 방지하는 방법, removeEventListner가 먹지를 않는 경우</a></code>
+      <h5 class="fw-bold">마우스이벤트 종류</h5>
+      <code class="fw-bold">1. click(이전에 mousedown 이벤트 발생) : element를 클릭했을 때(버튼을 눌렀다가 떼었을 때) </code>
+      <code class="fw-bold">2. mousedown : element에 마우스 버튼을 눌렀을 때 </code>
+      <code class="fw-bold">3. mouseup(다음에 click 이벤트 발생) : element에 눌렀던 마우스 버튼을 떼었을 때 </code>
+      <code class="fw-bold">4. dbclick :  </code>
+      <code class="fw-bold">5. mousemove : element에서 움직였을 때 (리스너로 등록된 element) </code>
+      <code class="fw-bold">6. mouseover : 리스너 등록된 요소 밖에 있다가 안으로 옮겼을 때 </code>
+      <code class="fw-bold">7. mouseenter : mouseover와 같다. 버블링이 발생하지 않는다.?? </code>
+      <code class="fw-bold">8. mouseout : 리스너 등록된 요소 안에 있다가 벗어났을 때 </code>
+      <code class="fw-bold">9. mouseleave : mouseout과 같다. 버블링이 발생하지 않는다.?? </code>
+      <code class="fw-bold">10. contextmenu : 마우스 오른쪽 버튼을 눌렀을 때. mousedown-mouseup 발생후 contextmemu 이벤트 발생 </code>
+      <code class="fw-bold">11. dbclick : mousedown-mouseup-click-mousedown-mouseup-click 후에 dbclick 실행 </code>
+      <code class="fw-bold" style="color:blueviolet">※ 주의 </code>
+      <code class="fw-bold" style="text-indent: 15px;">- <span style="color:blueviolet">버블링 : 자식의 이벤트가 부모에도 전달되는 것.(자식이벤트발생-부모이벤트발생...)</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- 요소 안에서 누르고(mousedown발생), 요소 밖으로 드래그하여 떼면 <span style="color:blueviolet">'mouseup과 click 발생하지 않음'</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- 요소 밖에서 누르고<span style="color:blueviolet">(mousedown과 click 발생하지 않음)</span>, 요소 안으로 드래그하여 떼면 <span style="color:blueviolet"> mouseup 이벤트만 발생함'</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- <span style="color:blueviolet">mouseover, mouseout와 mouseenter, mouseleave의 차이</span>는 element가 겹쳐있을 때 나타난다. </code>
+      <code class="fw-bold" style="text-indent: 30px;">mouseenter, mouseleave는 바깥요소에서만 이벤트 발생. mouseover, mouseout은 개별적으로 발생.</code>
+      <br>
+      <h5 class="fw-bold">좌표, 위치 (clientX, clientY, pageX, pageY, offsetX, offsetY)</h5>
+      <code class="fw-bold">1. e.clientX, e.clientY : 화면기준(스크롤 되었더라도 보이는 화면 기준) 마우스 포인터 위치</code>
+      <code class="fw-bold">2. offsetX, offsetY : 화면기준(스크롤 되었더라도 보이는 화면 기준)</code>
+
+
+      <code class="fw-bold"> </code>
+
+
+
+
+
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+
+  <div id="JS2_요소추가_APPENDCHILD">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">append와 appendChild 차이점, 요소생성 createElement, 텍스트넣기, 텍스트노드 넣기...</h5>
       <code class="fw-bold">1. 둘 다, 부모노드에서 자식노드를 추가하는 메서드이다. </code>

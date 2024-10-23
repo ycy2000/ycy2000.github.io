@@ -1,8 +1,9 @@
 function 연습() {
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#excel_js_마우스이벤트').outerHTML;
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#JS2_마우스이벤트').outerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
 }
+
 function 파일리스트() {
   console.log('파일리스트()')
   //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
@@ -615,8 +616,84 @@ function 선택한캔버스_검색input_change시(e) {
   document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;
 }
 
+isDragging=false;
 function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
+
+  
+  if (document.querySelector('#전체대체 #JS2_마우스이벤트')) {
+    //전체대체 처음누를때는, 전체대체클릭시(e)만 실행(마우스 뗄때), 다음 누를때 실행되고 뗄때 전체대체클릭시(e) 실행됨
+    //전체대체 처음누를때 이벤트등록만, 다음누를때 이벤트 실행
+
+    //?? 왜 : 누를때마다 실행이 누적되지?
+    //getEventListeners(document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div'))// : 콘솔창에서 확인, 이벤트 등록된 개수가 배열로 나온다.
+    //window.removeEventListener('message', testHandler) : 반복되는 함수에 이벤트 등록시 이거 안먹힘
+
+    //만약 반복적으로 실행되는 함수안에 이벤트 리스너를 지정하는 코드가 작성되어있다면, 함수가 실행될 때 마다 이벤트 리스너가 생성되어, 이벤트가 발생하였을 때 
+    //생성된 이벤트 리스너만큼 이벤트 리스너에 연결딘 함수가 실행될 것이다. 이러한 상황은 끔찍하기 때문에 피해줘야 한다.
+    // 1. DOM에서 객체를 가져옴
+    //let approveButton = cancleButton.nextElementSibling;
+    // 2. 가져온 객체를 복제하여 가져온 객체를 대체함
+    // 이 과정은 새로운 객체를 만들어서 대체하는 것이므로 이벤트리스너가 없고,
+    // 변수 approveButton의 참조도 끊긴다.
+    //approveButton.replaceWith(approveButton.cloneNode(true));
+    // 3. 따라서 새로 만들어서 대체한 객체를 다시 참조한다.
+    //  approveButton = cancleButton.nextElementSibling;
+    // 4. 이벤트 리스너를 추가한다.
+    var 리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');
+
+    function mousedown이벤트내move가포함(e) {
+      isDragging=true;
+      if ((e.target.id).substr(0,7)!='마우스예제상자') {return;}
+      console.log('mousedown이벤트내move가포함');
+      var 리스너_마우스이벤트예제div정보=리스너_마우스이벤트예제div.getBoundingClientRect();
+      var 타겟정보=e.target.getBoundingClientRect();
+      var 처음타겟TOP숫자=((e.target.style.top).replace(/[^0-9]/g,''))*1;
+      var 처음타겟LEFT숫자=((e.target.style.left).replace(/[^0-9]/g,''))*1;
+      var 첫마우스y=e.y;
+      var 첫마우스x=e.x;
+      var move_y;
+      var move_x;
+      var 첫마우스에서y이동거리;
+      var 첫마우스에서x이동거리;
+      // 리스너_마우스이벤트예제div.innerHTML=리스너_마우스이벤트예제div.innerHTML+
+      // 'e.screenY : ' + e.screenY + ', e.screenX : ' + e.screenX+ 
+      // ',   타겟정보.top : ' + 타겟정보.top + ', 타겟정보.left : ' + 타겟정보.left +
+      // ',   div.top : ' + 리스너_마우스이벤트예제div정보.top + ', div.left : ' + 리스너_마우스이벤트예제div정보.left + '<br>';
+
+      function 마우스move(e) {
+        if (!isDragging) {return;}
+        move_y=e.y;move_x=e.x;
+        첫마우스에서y이동거리=move_y-첫마우스y;
+        첫마우스에서x이동거리=move_x-첫마우스x;
+        //console.log('마우스move(e), isDragging=true일때만, 첫마우스에서이동거리 : ' + 첫마우스에서이동거리)
+        e.target.style.top=(처음타겟TOP숫자+첫마우스에서y이동거리) + 'PX';
+        e.target.style.left=(처음타겟LEFT숫자+첫마우스에서x이동거리) + 'PX';
+
+      }
+      var 리스너_타겟=e.target;
+      리스너_타겟.replaceWith(e.target.cloneNode(true));//1)
+      리스너_타겟=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div #' + e.target.id);//2), 1),2) 셑트로 대체되는 코드
+      리스너_타겟.addEventListener('mousemove',마우스move);
+
+      function 마우스up(e) {
+        if (!isDragging) {return;}
+        console.log('마우스up(e), isDragging=true일때만')
+        isDragging=false;
+      }
+      var 리스터_타겟=e.target;
+      리스터_타겟.replaceWith(e.target.cloneNode(true));//1)
+      리스터_타겟=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div #' + e.target.id);//2), 1),2) 셑트로 대체되는 코드
+      리스터_타겟.addEventListener('mouseup',마우스up);
+
+    }
+    //리스너_마우스이벤트예제div.removeEventListener('mousedown',mousedown이벤트내move가포함(e));
+    리스너_마우스이벤트예제div.replaceWith(리스너_마우스이벤트예제div.cloneNode(true));//1)
+    리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');//2), 1),2) 셑트로 대체되는 코드
+    리스너_마우스이벤트예제div.addEventListener('mousedown',mousedown이벤트내move가포함);
+    return;
+  }
+
   var 캔버스관련자료none안_타겟element;
   var 결과부분 = document.querySelector('#전체대체');
   //다른곳 클릭하면 캔버스 그림이 지워지는 이유를 모르겠다.
