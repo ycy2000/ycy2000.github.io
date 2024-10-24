@@ -1341,9 +1341,12 @@
       <div id="마우스이벤트예제div" style="height:70px;border: 1px solid black;margin-right:10px;position: relative;touch-action: none;">
         <div id="마우스예제상자1" style="position: absolute;top:10px;left:100px; display:inline-block;width:50px;height:50px;border:1px solid black;">예제<br>상자</div>
       </div>
-      <h6>※ <span style="color:blueviolet">전체대체클릭시(e)에 마우스 이벤트 걸면,</span> 예제상자 클릭시, 마우스가 떼어질때 - 전체대체클릭시(e)가 실행되면서</h6>
+      <h6>1. <span style="color:blueviolet">전체대체클릭시(e)에 마우스 이벤트 걸면,</span> 예제상자 클릭시, 마우스가 떼어질때 - 전체대체클릭시(e)가 실행되면서</h6>
       <h6 style="text-indent: 22px;"><span style="color:blueviolet">이벤트 등록만 될 뿐, </span>바로 움직이지 않는다.</h6>
+      <h6>2. <span style="color:blueviolet">즉시 사용할 수 있게 하려면, </span>(연습 함수도 마찬가지) 해당요소가 '#전체대체'에 셑팅될 때, <span style="color:blueviolet">이벤트 등록.</span></h6>
 
+
+      
 
 
       <code class="fw-bold"><a href="https://velog.io/@heeyoon1302/sd-zxl0vswn" target="_blank">이벤트 리스너의 재생성을 방지하는 방법, removeEventListner가 먹지를 않는 경우</a></code>
@@ -1379,7 +1382,6 @@
       <br>
       <h5 class="fw-bold">좌표, 위치 (clientX, clientY, pageX, pageY, offsetX, offsetY)</h5>
       <code class="fw-bold">1. e.clientX, e.clientY : 화면기준(스크롤 되었더라도 보이는 화면 기준) 마우스 포인터 위치</code>
-      <code class="fw-bold">2. offsetX, offsetY : 화면기준(스크롤 되었더라도 보이는 화면 기준)</code>
       <br>
       <h5 class="fw-bold">모바일에서는 다르다, touchstart, touchend, touchmove 등</h5>
       <code class="fw-bold">• 모바일에서 click : touch up & down, mouse up & down 이 실행된다.</code>
