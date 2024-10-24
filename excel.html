@@ -1249,34 +1249,8 @@
   <div id="excel_js_모바일이벤트자료">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">실습id : JS2_마우스이벤트, 실습제목 : JS2 > mouse, 마우스, 이벤트</h5>
-      <code class="fw-bold"><a href="https://velog.io/@heeyoon1302/sd-zxl0vswn" target="_blank">이벤트 리스너의 재생성을 방지하는 방법, removeEventListner가 먹지를 않는 경우</a></code>
-      <code class="fw-bold"><a href="https://dkrnfls.tistory.com/284" target="_blank">Javascript mouseup, mousedown, mousemove, touchstart, touchend, touchmove</a> </code>
-      <code class="fw-bold"><a href="https://blog.rightbrain.co.kr/?p=11693" target="_blank">신입 웹디자이너를 위한 크롬 개발자도구 활용법 Part 1</a> </code>
-      <code class="fw-bold"><a href="https://jjong-factory.tistory.com/80" target="_blank">[Javascript] mobile touch Event</a> </code>
-      <code class="fw-bold" onclick="
-      if (document.querySelector('#클릭시이미지토글').classList.contains('d-none')) {
-        document.querySelector('#클릭시이미지토글').classList.remove('d-none');
-      } else {
-        document.querySelector('#클릭시이미지토글').classList.add('d-none');
-      }
+
       
-      ">kim.html > 메모div내_집구조전체(e) > preventDefault() 작동하지 않는이유 [클릭시 img 토글]</code>
-      <img id="클릭시이미지토글" class="d-none" src="portal/images/문서연결_엑셀VBA/preventDefault작동하지않는이유.png" alt="이미지없음">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
@@ -1363,14 +1337,27 @@
   </div>
 <!-- touch-action: none; /* 모바일에서 기본 터치 동작 비활성화 */; -->
   <div id="JS2_마우스이벤트">
-    <div id="마우스이벤트예제div" style="height:800px;border: 1px solid black;margin-right:10px;position: relative;touch-action: none;">
-      <div id="마우스예제상자1" style="position: absolute;top:200px;left:600px; display:inline-block;width:130px;height:100px;border:1px solid black;">
-마우스예제상사1.<br><br> left:600px; top:200px;
-      </div>
-
-    </div>
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      
+      <div id="마우스이벤트예제div" style="height:70px;border: 1px solid black;margin-right:10px;position: relative;touch-action: none;">
+        <div id="마우스예제상자1" style="position: absolute;top:10px;left:100px; display:inline-block;width:50px;height:50px;border:1px solid black;">예제<br>상자</div>
+      </div>
+      <h6>※ <span style="color:blueviolet">전체대체클릭시(e)에 마우스 이벤트 걸면,</span> 예제상자 클릭시, 마우스가 떼어질때 - 전체대체클릭시(e)가 실행되면서</h6>
+      <h6 style="text-indent: 22px;"><span style="color:blueviolet">이벤트 등록만 될 뿐, </span>바로 움직이지 않는다.</h6>
+
+
+
+      <code class="fw-bold"><a href="https://velog.io/@heeyoon1302/sd-zxl0vswn" target="_blank">이벤트 리스너의 재생성을 방지하는 방법, removeEventListner가 먹지를 않는 경우</a></code>
+      <code class="fw-bold"><a href="https://dkrnfls.tistory.com/284" target="_blank">Javascript mouseup, mousedown, mousemove, touchstart, touchend, touchmove</a> </code>
+      <code class="fw-bold"><a href="https://blog.rightbrain.co.kr/?p=11693" target="_blank">신입 웹디자이너를 위한 크롬 개발자도구 활용법 Part 1</a> </code>
+      <code class="fw-bold"><a href="https://jjong-factory.tistory.com/80" target="_blank">[Javascript] mobile touch Event</a> </code>
+      <code class="fw-bold"><span  onclick="
+        if (document.querySelector('#클릭시이미지토글').classList.contains('d-none')) {
+          document.querySelector('#클릭시이미지토글').classList.remove('d-none');
+        } else {
+          document.querySelector('#클릭시이미지토글').classList.add('d-none');
+        }
+        " style="color:blueviolet">[클릭시 img 토글]</span>kim.html > 메모div내_집구조전체(e) > preventDefault() 작동하지 않는이유 </code>
+      <img id="클릭시이미지토글" class="d-none" src="portal/images/문서연결_엑셀VBA/preventDefault작동하지않는이유.png" alt="이미지없음">
       <h5 class="fw-bold">마우스이벤트 종류</h5>
       <code class="fw-bold">1. click(이전에 mousedown 이벤트 발생) : element를 클릭했을 때(버튼을 눌렀다가 떼었을 때) </code>
       <code class="fw-bold">2. mousedown : element에 마우스 버튼을 눌렀을 때 </code>
@@ -1393,6 +1380,11 @@
       <h5 class="fw-bold">좌표, 위치 (clientX, clientY, pageX, pageY, offsetX, offsetY)</h5>
       <code class="fw-bold">1. e.clientX, e.clientY : 화면기준(스크롤 되었더라도 보이는 화면 기준) 마우스 포인터 위치</code>
       <code class="fw-bold">2. offsetX, offsetY : 화면기준(스크롤 되었더라도 보이는 화면 기준)</code>
+      <br>
+      <h5 class="fw-bold">모바일에서는 다르다, touchstart, touchend, touchmove 등</h5>
+      <code class="fw-bold">• 모바일에서 click : touch up & down, mouse up & down 이 실행된다.</code>
+      <code class="fw-bold">• touch(모바일만) : display를 touch 했을때,  up, down, move 등이 이벤트</code>
+      <code class="fw-bold">• </code>
 
 
       <code class="fw-bold"> </code>
@@ -1411,10 +1403,7 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">모바일에서는 다르다, touchstart, touchend, touchmove 등</h5>
-      <code class="fw-bold">• 모바일에서 click : touch up & down, mouse up & down 이 실행된다.</code>
-      <code class="fw-bold">• touch(모바일만) : display를 touch 했을때,  up, down, move 등이 이벤트</code>
-      <code class="fw-bold">• </code>
+
     </div>
   </div>
 
