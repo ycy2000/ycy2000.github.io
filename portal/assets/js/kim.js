@@ -151,7 +151,6 @@ function 메모div내_집구조전체(e) {
 
         
         var isDragging = true;
-        console.log((target.style.top).indexOf('.'));
         var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0;
         var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0;
 
