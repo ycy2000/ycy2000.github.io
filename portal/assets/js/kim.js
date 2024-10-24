@@ -54,7 +54,6 @@ function 가구만들기() {
 function 메모div내_집구조전체(e) {
   //document.querySelector('#메모 #집구조전체').style.whiteSpace='nowrap'
   console.log('메모div내_집구조전체(e)')
-  var 리스너_마우스이벤트예제div=document.querySelector('#메모 #집구조그림테두리');
   if (e.target.innerHTML=='회전') {//#메모 #집구조전체 일때만 회전 있다
     var 선택또는만들기div들=document.querySelectorAll('#메모 #집구조전체 > .집구조 > div:nth-child(1)');
     var js집구조선택노랑i플러스일;
@@ -137,8 +136,7 @@ function 메모div내_집구조전체(e) {
   }
   if (document.querySelector('#메모 #집구조그림테두리')) {//드래그이벤트
     
-    console.log('드래그이벤트')
-          
+    var 리스너_마우스이벤트예제div=document.querySelector('#메모 #집구조그림테두리');
 
       function mousedownOrTouchstart(e) {
         // 터치 이벤트인지 마우스 이벤트인지 확인
@@ -151,9 +149,16 @@ function 메모div내_집구조전체(e) {
 
         console.log('mousedown or touchstart 이벤트 시작');
 
+        
         var isDragging = true;
-        var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
-        var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+        console.log((target.style.top).indexOf('.'));
+        var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0;
+        var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0;
+
+        //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
+        //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+        //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+
         var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
         var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
 
@@ -164,6 +169,8 @@ function 메모div내_집구조전체(e) {
 
         function 마우스moveOrTouchmove(e) {
             if (!isDragging) return;
+
+            console.log('마우스moveOrTouchmove(e)')
 
             // 화면 스크롤 방지 (모바일)
             if (isTouchEvent) {
