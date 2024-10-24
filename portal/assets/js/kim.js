@@ -51,89 +51,14 @@ function 가구만들기() {
   공통켤때위치있는거메모div내_가구배치()
 }
 
-function 메모div내_집구조전체(e) {
-  //document.querySelector('#메모 #집구조전체').style.whiteSpace='nowrap'
-  console.log('메모div내_집구조전체(e)')
-  if (e.target.innerHTML=='회전') {//#메모 #집구조전체 일때만 회전 있다
-    var 선택또는만들기div들=document.querySelectorAll('#메모 #집구조전체 > .집구조 > div:nth-child(1)');
-    var js집구조선택노랑i플러스일;
-    for (var i=0; i<선택또는만들기div들.length; i++) {
-      if(선택또는만들기div들[i].classList.contains('js집구조선택노랑')) {js집구조선택노랑i플러스일=i+1}
-    }
-    if (document.querySelector('#메모 #집구조전체 #집구조_구조물' + js집구조선택노랑i플러스일 + '네모div')) {
-      var 배치div=document.querySelector('#메모 #집구조전체 #집구조_구조물' + js집구조선택노랑i플러스일 + '네모div');
-      if (배치div.style.transform=='') {
-        배치div.style.transform='rotate(90deg)'
-      } else if (배치div.style.transform=='rotate(90deg)'){
-        배치div.style.transform='rotate(180deg)'
-      } else if (배치div.style.transform=='rotate(180deg)'){
-        배치div.style.transform='rotate(270deg)'
-      } else if (배치div.style.transform=='rotate(270deg)'){
-        배치div.style.transform=''
-      }
-    }
-    
-    //js집구조선택노랑i플러스일 해당순번의 배치가 안되어 있을수도 있다.
+function 임시_일신집구조불러오기() {
+  document.querySelector('#메모').innerHTML=document.querySelector('#일신집구조전체').outerHTML;
+  document.querySelector('#메모').classList.remove('d-none');
+}
+function 임시_집구조불러오기() {
+  document.querySelector('#메모').innerHTML=document.querySelector('#집구조전체').outerHTML;
+  document.querySelector('#메모').classList.remove('d-none');
 
-  }
-  if (e.target.classList.contains('집구조선택또는만들기')) {//선택된도형 설정크기와 좌표대로 만들기, 선택하기
-    console.log(e.target.parentNode.id)
-    for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
-      document.querySelectorAll('.js집구조선택노랑')[i].classList.remove('js집구조선택노랑');
-    }
-
-    e.target.classList.add('js집구조선택노랑')
-    var 선택된네모div;
-    
-    var 이름=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[1].innerText;
-    var 가로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[3].innerText;
-    var 세로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[5].innerText;
-    var 레프트=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[7].innerText;
-    var 탑=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[9].innerText;
-    var 숫자보정값=0.1;
-
-    if (isNaN(가로) || isNaN(세로) || isNaN(레프트) || isNaN(탑)) {
-      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
-        document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div').remove();
-      }
-    } else if (레프트==0 || 탑==0) {
-      //가로세로가 0인데, 네모div가 있으면 remove
-      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
-        document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div').remove();
-      }
-
-    } else {
-      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
-        선택된네모div=document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div');
-        console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않고, style만 변경')
-        선택된네모div.textContent=이름;
-        선택된네모div.style.textAlign='center';
-        선택된네모div.style.position='absolute';
-        선택된네모div.style.border='1px solid black';
-        선택된네모div.style.backgroundColor='yellow';
-        선택된네모div.style.width= (가로*숫자보정값) + 'px';
-        선택된네모div.style.height= (세로*숫자보정값) + 'px';
-        선택된네모div.style.left= (레프트*숫자보정값)*10 + 'px';
-        선택된네모div.style.top= (탑*숫자보정값)*10 + 'px';
-      } else {
-
-        console.log(e.target.parentNode.id + ' : 없으니. 만들고, style도 변경')
-        var 추가할네모=document.createElement('div');
-        추가할네모.textContent=이름;
-        추가할네모.style.textAlign='center';
-        추가할네모.id=e.target.parentNode.id + '네모div';
-        추가할네모.style.position='absolute';
-        추가할네모.style.border='1px solid black';
-        추가할네모.style.backgroundColor='yellow';
-        추가할네모.style.width= (가로*숫자보정값) + 'px';
-        추가할네모.style.height= (세로*숫자보정값) + 'px';
-        추가할네모.style.left= (레프트*숫자보정값)*10 + 'px';
-        추가할네모.style.top= (탑*숫자보정값)*10 + 'px';
-        document.querySelector('#메모 #집구조그림테두리').appendChild(추가할네모);
-        //console.log(document.querySelector('#메모 #집구조그림테두리').innerHTML)
-      }
-    }
-  }
   if (document.querySelector('#메모 #집구조그림테두리')) {//드래그이벤트
     
     var 리스너_마우스이벤트예제div=document.querySelector('#메모 #집구조그림테두리');
@@ -227,8 +152,96 @@ function 메모div내_집구조전체(e) {
       리스너_마우스이벤트예제div.addEventListener('mousedown', mousedownOrTouchstart);
       리스너_마우스이벤트예제div.addEventListener('touchstart', mousedownOrTouchstart);
   }
+
+
+  메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
 }
-메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
+function 메모div내_집구조전체(e) {
+  //document.querySelector('#메모 #집구조전체').style.whiteSpace='nowrap'
+  console.log('메모div내_집구조전체(e)')
+  if (e.target.innerHTML=='회전') {//#메모 #집구조전체 일때만 회전 있다
+    var 선택또는만들기div들=document.querySelectorAll('#메모 #집구조전체 > .집구조 > div:nth-child(1)');
+    var js집구조선택노랑i플러스일;
+    for (var i=0; i<선택또는만들기div들.length; i++) {
+      if(선택또는만들기div들[i].classList.contains('js집구조선택노랑')) {js집구조선택노랑i플러스일=i+1}
+    }
+    if (document.querySelector('#메모 #집구조전체 #집구조_구조물' + js집구조선택노랑i플러스일 + '네모div')) {
+      var 배치div=document.querySelector('#메모 #집구조전체 #집구조_구조물' + js집구조선택노랑i플러스일 + '네모div');
+      if (배치div.style.transform=='') {
+        배치div.style.transform='rotate(90deg)'
+      } else if (배치div.style.transform=='rotate(90deg)'){
+        배치div.style.transform='rotate(180deg)'
+      } else if (배치div.style.transform=='rotate(180deg)'){
+        배치div.style.transform='rotate(270deg)'
+      } else if (배치div.style.transform=='rotate(270deg)'){
+        배치div.style.transform=''
+      }
+    }
+    
+    //js집구조선택노랑i플러스일 해당순번의 배치가 안되어 있을수도 있다.
+
+  }
+  if (e.target.classList.contains('집구조선택또는만들기')) {//선택된도형 설정크기와 좌표대로 만들기, 선택하기
+    console.log(e.target.parentNode.id)
+    for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
+      document.querySelectorAll('.js집구조선택노랑')[i].classList.remove('js집구조선택노랑');
+    }
+
+    e.target.classList.add('js집구조선택노랑')
+    var 선택된네모div;
+    
+    var 이름=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[1].innerText;
+    var 가로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[3].innerText;
+    var 세로=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[5].innerText;
+    var 레프트=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[7].innerText;
+    var 탑=document.querySelectorAll('#메모 #' + e.target.parentNode.id + ' div')[9].innerText;
+    var 숫자보정값=0.1;
+
+    if (isNaN(가로) || isNaN(세로) || isNaN(레프트) || isNaN(탑)) {
+      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
+        document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div').remove();
+      }
+    } else if (레프트==0 || 탑==0) {
+      //가로세로가 0인데, 네모div가 있으면 remove
+      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
+        document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div').remove();
+      }
+
+    } else {
+      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
+        선택된네모div=document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div');
+        console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않고, style만 변경')
+        선택된네모div.textContent=이름;
+        선택된네모div.style.textAlign='center';
+        선택된네모div.style.position='absolute';
+        선택된네모div.style.border='1px solid black';
+        선택된네모div.style.backgroundColor='yellow';
+        선택된네모div.style.width= (가로*숫자보정값) + 'px';
+        선택된네모div.style.height= (세로*숫자보정값) + 'px';
+        선택된네모div.style.left= (레프트*숫자보정값)*10 + 'px';
+        선택된네모div.style.top= (탑*숫자보정값)*10 + 'px';
+      } else {
+
+        console.log(e.target.parentNode.id + ' : 없으니. 만들고, style도 변경')
+        var 추가할네모=document.createElement('div');
+        추가할네모.textContent=이름;
+        추가할네모.style.textAlign='center';
+        추가할네모.id=e.target.parentNode.id + '네모div';
+        추가할네모.style.position='absolute';
+        추가할네모.style.border='1px solid black';
+        추가할네모.style.backgroundColor='yellow';
+        추가할네모.style.width= (가로*숫자보정값) + 'px';
+        추가할네모.style.height= (세로*숫자보정값) + 'px';
+        추가할네모.style.left= (레프트*숫자보정값)*10 + 'px';
+        추가할네모.style.top= (탑*숫자보정값)*10 + 'px';
+        document.querySelector('#메모 #집구조그림테두리').appendChild(추가할네모);
+        //console.log(document.querySelector('#메모 #집구조그림테두리').innerHTML)
+      }
+    }
+  }
+
+}
+
 
 
 
@@ -255,14 +268,7 @@ function 전세계약시주의사항() {
   document.querySelector('#메모').innerHTML='<img src="portal/images/문서연결_kim/전세계약시주의사항.png" alt="이미지없음">';
   document.querySelector('#메모').classList.remove('d-none');
 }
-function 임시_집구조불러오기() {
-  document.querySelector('#메모').innerHTML=document.querySelector('#집구조전체').outerHTML;
-  document.querySelector('#메모').classList.remove('d-none');
-}
-function 임시_일신집구조불러오기() {
-  document.querySelector('#메모').innerHTML=document.querySelector('#일신집구조전체').outerHTML;
-  document.querySelector('#메모').classList.remove('d-none');
-}
+
 function 임시_일신집구조켤때캔버스그리기() {
   console.log('집구조켤때 한번 그리기')
   var 캔버스 = document.querySelector('#메모 #집구조캔버스');
