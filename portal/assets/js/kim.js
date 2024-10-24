@@ -54,6 +54,7 @@ function 가구만들기() {
 function 메모div내_집구조전체(e) {
   //document.querySelector('#메모 #집구조전체').style.whiteSpace='nowrap'
   console.log('메모div내_집구조전체(e)')
+  var 리스너_마우스이벤트예제div=document.querySelector('#메모 #집구조그림테두리');
   if (e.target.innerHTML=='회전') {//#메모 #집구조전체 일때만 회전 있다
     var 선택또는만들기div들=document.querySelectorAll('#메모 #집구조전체 > .집구조 > div:nth-child(1)');
     var js집구조선택노랑i플러스일;
@@ -76,7 +77,7 @@ function 메모div내_집구조전체(e) {
     //js집구조선택노랑i플러스일 해당순번의 배치가 안되어 있을수도 있다.
 
   }
-  if (e.target.classList.contains('집구조선택또는만들기')) {
+  if (e.target.classList.contains('집구조선택또는만들기')) {//선택된도형 설정크기와 좌표대로 만들기, 선택하기
     console.log(e.target.parentNode.id)
     for (var i=0; i<document.querySelectorAll('.js집구조선택노랑').length; i++) {
       document.querySelectorAll('.js집구조선택노랑')[i].classList.remove('js집구조선택노랑');
@@ -134,59 +135,96 @@ function 메모div내_집구조전체(e) {
       }
     }
   }
-}
+  if (document.querySelector('#메모 #집구조그림테두리')) {//드래그이벤트
+    
+    console.log('드래그이벤트')
+          
 
-isDragging=false;
-function 집구조그림테두리mousedown(e) {
-  // 마우스좌표가 div 의 top이 되려면 : 
-  var 리스너_마우스이벤트예제div=document.querySelector('#메모 #집구조전체 #집구조그림테두리');
-  isDragging=true;
-  if ((e.target.id).substr(0,7)!='집구조_구조물') {return;}
-  console.log('mousedown이벤트내move가포함');
-  var 리스너_마우스이벤트예제div정보=리스너_마우스이벤트예제div.getBoundingClientRect();
-  var 타겟정보=e.target.getBoundingClientRect();
-  var 처음타겟TOP숫자=((e.target.style.top).replace(/[^0-9]/g,''))*1;
-  var 처음타겟LEFT숫자=((e.target.style.left).replace(/[^0-9]/g,''))*1;
-  var 첫마우스y=e.y;
-  var 첫마우스x=e.x;
-  var move_y;
-  var move_x;
-  var 첫마우스에서y이동거리;
-  var 첫마우스에서x이동거리;
-  // 리스너_마우스이벤트예제div.innerHTML=리스너_마우스이벤트예제div.innerHTML+
-  // 'e.screenY : ' + e.screenY + ', e.screenX : ' + e.screenX+ 
-  // ',   타겟정보.top : ' + 타겟정보.top + ', 타겟정보.left : ' + 타겟정보.left +
-  // ',   div.top : ' + 리스너_마우스이벤트예제div정보.top + ', div.left : ' + 리스너_마우스이벤트예제div정보.left + '<br>';
+      function mousedownOrTouchstart(e) {
+        // 터치 이벤트인지 마우스 이벤트인지 확인
+        var isTouchEvent = e.type === 'touchstart';
+        var target = isTouchEvent ? e.touches[0].target : e.target;
 
-  function 마우스move(e) {
-    if (!isDragging) {return;}
-    console.log('마우스move(e), isDragging=true일때만')
-    move_y=e.y;move_x=e.x;
-    첫마우스에서y이동거리=move_y-첫마우스y;
-    첫마우스에서x이동거리=move_x-첫마우스x;
-    //console.log('마우스move(e), isDragging=true일때만, 첫마우스에서이동거리 : ' + 첫마우스에서이동거리)
-    e.target.style.top=(처음타겟TOP숫자+첫마우스에서y이동거리) + 'PX';
-    e.target.style.left=(처음타겟LEFT숫자+첫마우스에서x이동거리) + 'PX';
+        if ((e.target.id).substr(0,7)!='집구조_구조물') {
+            return;
+        }
+
+        console.log('mousedown or touchstart 이벤트 시작');
+
+        var isDragging = true;
+        var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+        var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+        var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+        var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+
+        // 부모 요소의 경계를 확인 (마우스이벤트예제div)
+        var 부모_경계 = 리스너_마우스이벤트예제div.getBoundingClientRect();
+        var 상자_너비 = target.offsetWidth;
+        var 상자_높이 = target.offsetHeight;
+
+        function 마우스moveOrTouchmove(e) {
+            if (!isDragging) return;
+
+            // 화면 스크롤 방지 (모바일)
+            if (isTouchEvent) {
+                e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
+                //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+            }
+
+            // 터치 이벤트인지 마우스 이벤트인지 확인
+            var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+            var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+
+            var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+            var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+
+            // 새로운 위치 계산
+            var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+            var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+
+            // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+            if (새로운_상자_위치_y < 0) {
+                새로운_상자_위치_y = 0;
+            }
+            if (새로운_상자_위치_x < 0) {
+                새로운_상자_위치_x = 0;
+            }
+            if (새로운_상자_위치_y + 상자_높이 > 부모_경계.height) {
+                새로운_상자_위치_y = 부모_경계.height - 상자_높이;
+            }
+            if (새로운_상자_위치_x + 상자_너비 > 부모_경계.width) {
+                새로운_상자_위치_x = 부모_경계.width - 상자_너비;
+            }
+
+            // 상자 위치 적용
+            target.style.top = 새로운_상자_위치_y + 'px';
+            target.style.left = 새로운_상자_위치_x + 'px';
+        }
+
+        function 마우스upOrTouchend() {
+            if (!isDragging) return;
+
+            console.log('마우스up 또는 터치end 이벤트 발생');
+            isDragging = false;
+
+            // 이벤트 제거
+            window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+            window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+        }
+
+        // 이벤트 추가
+        window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+        window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+      }
+
+      // mousedown과 touchstart 이벤트 모두 처리
+      리스너_마우스이벤트예제div.addEventListener('mousedown', mousedownOrTouchstart);
+      리스너_마우스이벤트예제div.addEventListener('touchstart', mousedownOrTouchstart);
   }
-
-  var 리스너_타겟=e.target;
-  리스너_타겟.replaceWith(e.target.cloneNode(true));//1)
-  리스너_타겟=document.querySelector('#메모 #집구조전체 #집구조그림테두리 #' + e.target.id);//2), 1),2) 셑트로 대체되는 코드
-  리스너_타겟.addEventListener('mousemove',마우스move);
-
-  function 마우스up(e) {
-    if (!isDragging) {return;}
-    console.log('마우스up(e), isDragging=true일때만')
-    isDragging=false;
-  }
-  var 리스터_타겟=e.target;
-  리스터_타겟.replaceWith(e.target.cloneNode(true));//1)
-  리스터_타겟=document.querySelector('#메모 #집구조전체 #집구조그림테두리 #' + e.target.id);//2), 1),2) 셑트로 대체되는 코드
-  리스터_타겟.addEventListener('mouseup',마우스up);
 }
-
 메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
-메모div내_집구조전체div가있을때만작동하는것.addEventListener('mousedown',집구조그림테두리mousedown);
+
+
 
 
 

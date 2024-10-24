@@ -633,80 +633,91 @@ function 전체대체클릭시(e) {
     //getEventListeners(document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div'))// : 콘솔창에서 확인, 이벤트 등록된 개수가 배열로 나온다.
     //window.removeEventListener('message', testHandler) : 반복되는 함수에 이벤트 등록시 이거 안먹힘
 
-    //만약 반복적으로 실행되는 함수안에 이벤트 리스너를 지정하는 코드가 작성되어있다면, 함수가 실행될 때 마다 이벤트 리스너가 생성되어, 이벤트가 발생하였을 때 
-    //생성된 이벤트 리스너만큼 이벤트 리스너에 연결딘 함수가 실행될 것이다. 이러한 상황은 끔찍하기 때문에 피해줘야 한다.
-    // 1. DOM에서 객체를 가져옴
-    //let approveButton = cancleButton.nextElementSibling;
-    // 2. 가져온 객체를 복제하여 가져온 객체를 대체함
-    // 이 과정은 새로운 객체를 만들어서 대체하는 것이므로 이벤트리스너가 없고,
-    // 변수 approveButton의 참조도 끊긴다.
-    //approveButton.replaceWith(approveButton.cloneNode(true));
-    // 3. 따라서 새로 만들어서 대체한 객체를 다시 참조한다.
-    //  approveButton = cancleButton.nextElementSibling;
-    // 4. 이벤트 리스너를 추가한다.
     var 리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');
+    function mousedownOrTouchstart(e) {
+      // 터치 이벤트인지 마우스 이벤트인지 확인
+      var isTouchEvent = e.type === 'touchstart';
+      var target = isTouchEvent ? e.touches[0].target : e.target;
 
-    function mousedown이벤트내move가포함(e) {
-      isDragging=false;
-      if ((e.target.id).substr(0,7)!='마우스예제상자') {return;}
-      console.log('mousedown이벤트내move가포함');
-
-      alert('mousedown작동확인 : 모바일코딩중')
-
-      var 리스너_마우스이벤트예제div정보=리스너_마우스이벤트예제div.getBoundingClientRect();
-      var 타겟정보=e.target.getBoundingClientRect();
-      var 처음타겟TOP숫자=((e.target.style.top).replace(/[^0-9]/g,''))*1;
-      var 처음타겟LEFT숫자=((e.target.style.left).replace(/[^0-9]/g,''))*1;
-      var 첫마우스y=e.y;
-      var 첫마우스x=e.x;
-      var move_y;
-      var move_x;
-      var 첫마우스에서y이동거리;
-      var 첫마우스에서x이동거리;
-
-      isDragging=true;
-      // 리스너_마우스이벤트예제div.innerHTML=리스너_마우스이벤트예제div.innerHTML+
-      // 'e.screenY : ' + e.screenY + ', e.screenX : ' + e.screenX+ 
-      // ',   타겟정보.top : ' + 타겟정보.top + ', 타겟정보.left : ' + 타겟정보.left +
-      // ',   div.top : ' + 리스너_마우스이벤트예제div정보.top + ', div.left : ' + 리스너_마우스이벤트예제div정보.left + '<br>';
-
-      function 마우스move(e) {
-        if (!isDragging) {return;}
-
-        alert('move작동확인 : 모바일코딩중')
-
-        move_y=e.y;move_x=e.x;
-        첫마우스에서y이동거리=move_y-첫마우스y;
-        첫마우스에서x이동거리=move_x-첫마우스x;
-        //console.log('마우스move(e), isDragging=true일때만, 첫마우스에서이동거리 : ' + 첫마우스에서이동거리)
-        e.target.style.top=(처음타겟TOP숫자+첫마우스에서y이동거리) + 'PX';
-        e.target.style.left=(처음타겟LEFT숫자+첫마우스에서x이동거리) + 'PX';
-
+      if ((e.target.id).substr(0,7)!='마우스예제상자') {
+          return;
       }
-      var 리스너_타겟=e.target;
-      리스너_타겟.replaceWith(e.target.cloneNode(true));//1)
-      리스너_타겟=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div #' + e.target.id);//2), 1),2) 셑트로 대체되는 코드
-      리스너_타겟.addEventListener('mousemove',마우스move);
 
-      function 마우스up(e) {
-        if (!isDragging) {return;}
-        console.log('마우스up(e), isDragging=true일때만')
+      console.log('mousedown or touchstart 이벤트 시작');
 
-        alert('mouseup작동확인 : 모바일코딩중')
+      var isDragging = true;
+      var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+      var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+      var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+      var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
 
-        isDragging=false;
+      // 부모 요소의 경계를 확인 (마우스이벤트예제div)
+      var 부모_경계 = 리스너_마우스이벤트예제div.getBoundingClientRect();
+      var 상자_너비 = target.offsetWidth;
+      var 상자_높이 = target.offsetHeight;
+
+      function 마우스moveOrTouchmove(e) {
+          if (!isDragging) return;
+
+          // 화면 스크롤 방지 (모바일)
+          if (isTouchEvent) {
+              e.preventDefault();
+          }
+
+          // 터치 이벤트인지 마우스 이벤트인지 확인
+          var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+          var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+
+          var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+          var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+
+          // 새로운 위치 계산
+          var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+          var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+
+          // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+          if (새로운_상자_위치_y < 0) {
+              새로운_상자_위치_y = 0;
+          }
+          if (새로운_상자_위치_x < 0) {
+              새로운_상자_위치_x = 0;
+          }
+          if (새로운_상자_위치_y + 상자_높이 > 부모_경계.height) {
+              새로운_상자_위치_y = 부모_경계.height - 상자_높이;
+          }
+          if (새로운_상자_위치_x + 상자_너비 > 부모_경계.width) {
+              새로운_상자_위치_x = 부모_경계.width - 상자_너비;
+          }
+
+          // 상자 위치 적용
+          target.style.top = 새로운_상자_위치_y + 'px';
+          target.style.left = 새로운_상자_위치_x + 'px';
       }
-      var 리스터_타겟=e.target;
-      리스터_타겟.replaceWith(e.target.cloneNode(true));//1)
-      리스터_타겟=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div #' + e.target.id);//2), 1),2) 셑트로 대체되는 코드
-      리스터_타겟.addEventListener('mouseup',마우스up);
 
-    }
-    //리스너_마우스이벤트예제div.removeEventListener('mousedown',mousedown이벤트내move가포함(e));
-    리스너_마우스이벤트예제div.replaceWith(리스너_마우스이벤트예제div.cloneNode(true));//1)
-    리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');//2), 1),2) 셑트로 대체되는 코드
-    리스너_마우스이벤트예제div.addEventListener('mousedown',mousedown이벤트내move가포함);
-    return;
+      function 마우스upOrTouchend() {
+          if (!isDragging) return;
+
+          console.log('마우스up 또는 터치end 이벤트 발생');
+          isDragging = false;
+
+          // 이벤트 제거
+          window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+          window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+      }
+
+      // 이벤트 추가
+      window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+      window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+  }
+
+  // mousedown과 touchstart 이벤트 모두 처리
+  리스너_마우스이벤트예제div.addEventListener('mousedown', mousedownOrTouchstart);
+  리스너_마우스이벤트예제div.addEventListener('touchstart', mousedownOrTouchstart);
+
+
+
+
+
   }
 
   var 캔버스관련자료none안_타겟element;
