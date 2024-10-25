@@ -67,7 +67,7 @@
 </div>
 
 <!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="탁구github전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="탁구github전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
@@ -89,7 +89,7 @@
   </div>
 </div>
 
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title">초기화</h6><!--click동작-->
@@ -111,7 +111,7 @@
   </div>
 </div>
 
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="htmlJavascript전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="htmlJavascript전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title">초기화</h6><!--click동작-->
@@ -133,7 +133,7 @@
   </div>
 </div>
 
-<div style="height:500px;" class="offcanvas offcanvas-bottom" tabindex="-1" id="기타전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="기타전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title">초기화</h6><!--click동작-->
@@ -189,7 +189,7 @@
   <!-- 카테고리 끝났으면 아래는 개별파일 -->
   <div id="기타전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=770px style="border:1px solid black;">
+      <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=290px style="border:1px solid black;">
       <img src="portal/images/문서연결_엑셀VBA/캔버스관련코드.png" alt="이미지없음">
       <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
@@ -201,6 +201,7 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold" style="text-indent: 23px;">부트스트랩 오프캔버스 스크롤 : <span style="color:blueviolet">data-bs-scroll="true"</span></h6>
     </div>
   </div>
 
@@ -551,6 +552,7 @@
       </div>
       <div>
         <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
+        <h6 class="canvas_div" title='JS2_getComputedStyle'>JS2 > getComputedStyle 사용법, 정보, 속성관련 몇개</h6>
 
       </div>
       <div>
@@ -1456,6 +1458,93 @@
       <code class="fw-bold">console.log(요소.outerHTML); <span style="color:blueviolet">==> &#60;div id="임시아이디">텍스트기록&#60;/div></span></code>
 
 
+    </div>
+  </div>
+
+  <div id="JS2_getComputedStyle"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://helloinyong.tistory.com/284" target="_blank">[2020.07.11] Element.style 속성과 getComputedStyle() 메소드의 차이</a></h5>
+      <code class="fw-bold"">1. Element.style : HTML에 기록된 style</code>
+      <h5 class="fw-bold" style="position: relative;">getComputedStyle 사용법, 
+        <span style="font-size:16px;">예제:div에 아이디 적용, div 안에 embed 있음 </span>
+        <button id="예제버튼" style="font-size: 16px; display: inline-block;position: absolute;">#예제버튼, style에 left 없음</button> 
+      </h5>
+      <h6></h6>
+      <h6><button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        예제버튼.style.cssText='font-size: 16px; display: inline-block;position: absolute';
+        if (예제버튼.style.fontSize!='16px') {alert('기본 cssText => ' + 예제버튼.style.cssText)}
+        ">기본</button> 
+      1. alert(예제버튼.style.cssText), <span style="color:blueviolet">(예제버튼.style.style은 엄청 많다. 인라인에 없는것은 기본값으로 나옴)</span>
+      </h6>
+
+      <h6><button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        예제버튼.style.cssText='font-size: 40px;';
+        ">확인</button> 
+      2. cssText="font-size: 40px;" ==> 사이즈 빼고 나머지 모드 초기값으로 됨, cssText로 전달시 모두 써야함
+      </h6>
+
+      <h6><button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        예제버튼.style.fontSize='40px'
+        ">확인</button> 
+      3. 적용예, style.fontSize='40px' 글자크기만 새로 적용, cssText에 반영됨.;
+      </h6>
+
+      <h6><button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        예제버튼.style.top='-50px'
+        ">확인</button> 
+      4. 인라인 style에 top -50px 적용, 예제버튼.style.top='-50px'
+      </h6>
+
+      <h6><button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        alert(예제버튼.style.top)
+        ">확인</button> 
+      5. 인라인 style에 top이 없는데, 예제버튼.style.top => 공백, top 적용후(4번) 확인가능
+      </h6>
+
+      <h6><button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        alert('getComputedStyle(예제버튼).top : ' + getComputedStyle(예제버튼).top + '\n' 
+             +'window.getComputedStyle(예제버튼).top : ' + window.getComputedStyle(예제버튼).top)
+        ">확인</button> 
+      5-1. 인라인 style에 없어도 getComputedStyle()에서는 정보가 있음. [window.]getComputedStyle(예제버튼).top
+      </h6>
+
+      <code class="fw-bold"">1. 변수 설정</code>
+      <code class="fw-bold" style="text-indent: 25px;">var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        <button onclick="
+        var 예제버튼=document.querySelector('#전체대체 #예제버튼');
+        var 예제버튼정보=getComputedStyle(예제버튼);
+
+          console.log(예제버튼.styleText)
+          ">연습alert</button>
+      </code>
+      <code class="fw-bold" style="text-indent: 25px;">a) var 요소정보=요소.getComputedStyle();</code>
+      <code class="fw-bold" style="text-indent: 25px;">a) var 요소정보=요소.getComputedStyle(); b) var 요소정보=window.getComputedStyle(요소); </code>
+      <code class="fw-bold" style="text-indent: 25px;">a) var 요소정보=요소.getComputedStyle(); b) var 요소정보=window.getComputedStyle(요소); </code>
+      <code class="fw-bold" style="text-indent: 25px;">a) var 요소정보=요소.getComputedStyle(); b) var 요소정보=window.getComputedStyle(요소); </code>
+      <code class="fw-bold"><span  onclick="
+        if (document.querySelector('#JS2_getComputedStyle_토글이미지_속성관련메모몇개').classList.contains('d-none')) {
+          document.querySelector('#JS2_getComputedStyle_토글이미지_속성관련메모몇개').classList.remove('d-none');
+        } else {
+          document.querySelector('#JS2_getComputedStyle_토글이미지_속성관련메모몇개').classList.add('d-none');
+        }
+        " style="color:blueviolet">[클릭시 메모장 토글]</span> 속성관련 메모 몇개 </code>
+      <div id="JS2_getComputedStyle_토글이미지_속성관련메모몇개" class="d-none" style="border:1px solid black;">
+        <embed src="portal/images/문서연결_엑셀VBA/JS_style제어_css제어_01.txt" width=920px height=1030px style="border:1px solid black;">
+      </div>  
+
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
 

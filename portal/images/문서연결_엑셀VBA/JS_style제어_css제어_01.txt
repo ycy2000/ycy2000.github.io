@@ -64,8 +64,3 @@ document.querySelector('#덩어리이동5개textarea').style.setProperty('top', 
         
    document.body.style.item(1) // ''
 
-
-
-
-
-
