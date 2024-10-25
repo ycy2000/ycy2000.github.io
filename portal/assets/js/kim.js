@@ -24,17 +24,46 @@ function 공통켤때위치있는거메모div내_가구배치() {
       추가할네모.id=집구조클래스들[i].id + '네모div';
       추가할네모.style.position='absolute';
       추가할네모.style.border='1px solid black';
-      if (이름=='소파') {
-        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/소파.png)'
-      }
-      if (이름=='바디프랜드') {
-        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/바디프랜드.png)'
-      }
       추가할네모.style.backgroundColor='yellow';
       추가할네모.style.width= (가로*숫자보정값) + 'px';
       추가할네모.style.height= (세로*숫자보정값) + 'px';
       추가할네모.style.left= (레프트*숫자보정값)*10 + 'px';
       추가할네모.style.top= (탑*숫자보정값)*10 + 'px';
+      if (이름=='침대') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/침대.png)'
+      }
+      if (이름=='건조기') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/건조기.png)'
+      }
+      if (이름=='세탁기') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/세탁기.png)'
+      }
+      if (이름=='냉장고') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/냉장고.png)'
+      }
+      if (이름=='소파') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/소파.png)'
+      }
+      if (이름=='바디프랜드') {
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/바디프랜드.png)'
+      }
+      if (이름=='컴퓨터책상') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/컴퓨터책상.png)'
+      }
+      if (이름=='TV다이') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/TV다이.png)'
+      }
+      if (이름=='식탁(구매)') {
+        추가할네모.innerHTML='';
+        추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/식탁구매.png)'
+      }
       document.querySelector('#메모 #집구조그림테두리').appendChild(추가할네모);
       //console.log(document.querySelector('#메모 #집구조그림테두리').innerHTML)
 
@@ -208,21 +237,9 @@ function 메모div내_집구조전체(e) {
       }
 
     } else {
-      if (document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div')) {
-        선택된네모div=document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div');
-        console.log(e.target.parentNode.id + ' : 이미 있다. 만들지 않고, style만 변경')
-        선택된네모div.textContent=이름;
-        선택된네모div.style.textAlign='center';
-        선택된네모div.style.position='absolute';
-        선택된네모div.style.border='1px solid black';
-        선택된네모div.style.backgroundColor='yellow';
-        선택된네모div.style.width= (가로*숫자보정값) + 'px';
-        선택된네모div.style.height= (세로*숫자보정값) + 'px';
-        선택된네모div.style.left= (레프트*숫자보정값)*10 + 'px';
-        선택된네모div.style.top= (탑*숫자보정값)*10 + 'px';
-      } else {
-
-        console.log(e.target.parentNode.id + ' : 없으니. 만들고, style도 변경')
+      document.querySelector('#메모 #집구조그림테두리 #' + e.target.parentNode.id + '네모div').remove();
+      //있던지 없던지 지우고 만든다.
+        console.log(e.target.parentNode.id + ' : 있던지 없던지 지우고 만든다.')
         var 추가할네모=document.createElement('div');
         추가할네모.textContent=이름;
         추가할네모.style.textAlign='center';
@@ -234,13 +251,51 @@ function 메모div내_집구조전체(e) {
         추가할네모.style.height= (세로*숫자보정값) + 'px';
         추가할네모.style.left= (레프트*숫자보정값)*10 + 'px';
         추가할네모.style.top= (탑*숫자보정값)*10 + 'px';
+
+        if (1==2) {//쓰기 귀찮아서 임시로
+          추가할네모.innerHTML='가로:195cm, 세로:95cm';
+          추가할네모.style.fontSize='13px';
+          추가할네모.style.paddingTop='30px';
+        }
+        if (이름=='침대') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/침대.png)'
+        }
+        if (이름=='건조기') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/건조기.png)'
+        }
+        if (이름=='세탁기') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/세탁기.png)'
+        }
+        if (이름=='냉장고') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/냉장고.png)'
+        }
+        if (이름=='소파') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/소파.png)'
+        }
+        if (이름=='컴퓨터책상') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/컴퓨터책상.png)'
+        }
+        if (이름=='TV다이') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/TV다이.png)'
+        }
+        if (이름=='식탁(구매)') {
+          추가할네모.innerHTML='';
+          추가할네모.style.backgroundImage='url(portal/images/문서연결_kim/식탁구매.png)'
+        }
         document.querySelector('#메모 #집구조그림테두리').appendChild(추가할네모);
         //console.log(document.querySelector('#메모 #집구조그림테두리').innerHTML)
       }
     }
   }
 
-}
+
 
 
 
@@ -673,9 +728,8 @@ function 임시_집구조켤때캔버스그리기() {
   //방크기 메모
   그리기.fillStyle='black';
   그리기.textAlign='left';
-  그리기.fillText('[컴퓨터방] 가로:365cm, 세로:280cm',800,10);
-  그리기.fillText('  [큰방] 가로:365cm, 세로:367cm',817,40);
-  그리기.fillText(' [옷방] 가로:303cm, 세로:277cm',817,70);
+  그리기.fillText('컴퓨터가로 56.5cm, 높이 48cm, 좌우여백 최대 44cm, 좌우네모는 가로 42cm,  세로 22cm',800,10);
+  그리기.fillText('세탁기는 정면이 좁다, 건조기는 정면이 넓다',800,30);
 
   그리기.fillStyle = 'rgba(128,128,128,1)';//회색
   그리기.fillRect(1009,670,220,20);
