@@ -1,5 +1,5 @@
 function 연습() {
-  var 연습요소id='JS2_getComputedStyle';
+  var 연습요소id='excel_js_속성선택자';
   var 연습요소=document.querySelector('#' + 연습요소id);
   document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
   document.querySelector('#선택문서id').innerHTML=연습요소.id;
