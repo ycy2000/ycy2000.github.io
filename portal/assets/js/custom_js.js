@@ -158,12 +158,12 @@ function 내용검색() {//38개이까지 한 화면
 }
 function 검색결과바탕색초기화() {
   console.log('검색결과바탕색 개수 : ' + document.querySelectorAll('.검색결과바탕색').length)
-  if (document.querySelectorAll('.검색결과바탕색').length>0) {
-    for (var i=0; i<document.querySelectorAll('.검색결과바탕색').length; i++) {
-      //document.querySelectorAll('.검색결과바탕색')[i].outerHTML=document.querySelectorAll('.검색결과바탕색')[i].innerHTML;
-      document.querySelectorAll('.검색결과바탕색')[i].classList.remove('검색결과바탕색')
-    }
+
+  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
   }
+  
 }
 function 제목과내용검색() {//38개이까지 한 화면
   검색결과바탕색초기화()
