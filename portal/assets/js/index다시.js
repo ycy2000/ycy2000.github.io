@@ -99,37 +99,20 @@ function 연습() {
   }
 }
 
-function 결과스크롤 (event) {//사용전
-
-  if (event.target.id.length>0) {
-    var 스크롤요소들=document.querySelectorAll('#' + event.target.id);
-    console.log('if (event.target.id.length>0)')
-      //#결과
-    if (스크롤요소들[1]) {
-      console.log('스크롤관련 : 최종if구문진입');
-      var target = 스크롤요소들[1];
-      console.log('스크롤요소들[1] : 스크롤이동할곳');
-      console.log(스크롤요소들[1]);
-      var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top;
-      var fix높이=getComputedStyle(document.querySelector('header')).height
-
-      fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기
-      fix높이 = parseInt(fix높이); //숫자형식으로 변환
-      window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });
-    }
-    console.log(document.querySelector('#결과'));
-  }
-
-}
-
-
 function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
   var 결과부분 = document.querySelector('#전체대체');
   if (document.querySelector('#전체대체 section')) {
-    console.log(e.target.outerHTML)
-  }
 
+      if (e.target.id.substr(0,4)=='move' && document.querySelectorAll('#전체대체 section #' + e.target.id)) {
+        var 스크롤요소들=document.querySelectorAll('#전체대체 section #' + e.target.id);
+        var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top;
+        var fix높이=getComputedStyle(document.querySelector('header')).height
+        fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기
+        fix높이 = parseInt(fix높이); //숫자형식으로 변환
+        window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });
+      }
+  }
 }
 
 function 파일리스트() {//index.html에서 안쓸껄
@@ -516,8 +499,8 @@ function 선택한캔버스클릭시(e) {
           var 앞문자열='<ul class="결과_section_목차">' + h1;
           var 뒷문자열='</ul>';
           var 중간문자열='';
-          for (var i=0; i<목차.length; i++) {
-              중간문자열=중간문자열 + 목차[i].outerHTML
+          for (var i=0; i<목차.length; i++) {//여기서 아이디를 타이틀로 변경하면 목차[i]도 변경된다??
+              중간문자열=중간문자열 + 목차[i].outerHTML;
           }
           var 추가할문자열;
           추가할문자열=앞문자열 + 중간문자열 + 뒷문자열;
