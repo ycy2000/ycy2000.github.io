@@ -99,20 +99,37 @@ function 연습() {
   }
 }
 
+function 결과스크롤 (event) {//사용전
+
+  if (event.target.id.length>0) {
+    var 스크롤요소들=document.querySelectorAll('#' + event.target.id);
+    console.log('if (event.target.id.length>0)')
+      //#결과
+    if (스크롤요소들[1]) {
+      console.log('스크롤관련 : 최종if구문진입');
+      var target = 스크롤요소들[1];
+      console.log('스크롤요소들[1] : 스크롤이동할곳');
+      console.log(스크롤요소들[1]);
+      var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top;
+      var fix높이=getComputedStyle(document.querySelector('header')).height
+
+      fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기
+      fix높이 = parseInt(fix높이); //숫자형식으로 변환
+      window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });
+    }
+    console.log(document.querySelector('#결과'));
+  }
+
+}
+
 
 function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
-
-  var 캔버스관련자료none안_타겟element;
   var 결과부분 = document.querySelector('#전체대체');
-
-  if (1 == 1) {
-    //canvas_div : 배치
-    if (e.target.classList.contains('canvas_div')) {
-      캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
-      결과부분.innerHTML = 캔버스관련자료none안_타겟element.outerHTML;
-    }
+  if (document.querySelector('#전체대체 section')) {
+    console.log(e.target.outerHTML)
   }
+
 }
 
 function 파일리스트() {//index.html에서 안쓸껄
@@ -488,8 +505,25 @@ function 선택한캔버스클릭시(e) {
       결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
       document.querySelector('#선택문서id').innerHTML=e.target.title;
       document.querySelector('#선택문서제목').innerHTML=e.target.innerHTML;
-      
-      
+
+      if (1 == 1) {
+        //canvas_div : 배치
+        if (선택한캔버스관련자료none안_타겟element.tagName=='SECTION') {
+          //section인경우 id="스크립트로ul추가"에 .목차 넣기
+          var 클릭한정보텍스트=e.target.id;
+          var h1='<h1>' + 클릭한정보텍스트 + '</h1>';
+          var 목차=document.querySelectorAll('#전체대체 #스크립트로ul추가~.목차');
+          var 앞문자열='<ul class="결과_section_목차">' + h1;
+          var 뒷문자열='</ul>';
+          var 중간문자열='';
+          for (var i=0; i<목차.length; i++) {
+              중간문자열=중간문자열 + 목차[i].outerHTML
+          }
+          var 추가할문자열;
+          추가할문자열=앞문자열 + 중간문자열 + 뒷문자열;
+          document.querySelector('#전체대체 #스크립트로ul추가').innerHTML=추가할문자열;
+        }
+      }
     }
     //
     if (e.target.classList.contains('연결없음')) {
@@ -724,90 +758,6 @@ function 선택한캔버스_검색input_change시(e) {
   if (내부html == '') { alert('없음'); return; }
   document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
   document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;
-}
-
-
-
-폼컨트롤이벤트_단독기능보라_클래스부여();
-
-function 폼컨트롤이벤트_단독기능보라_클래스부여() {//html켤때 동작, 전체대체로 outerhtml복사될 예정
-  console.log('폼컨트롤이벤트_단독기능보라_클래스부여()');
-  let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
-  var 요소들;
-  //요소들.length : 처음에 188 이라면 전체대체로 올라왔다면 두배다.
-  if (document.querySelectorAll('#전체대체 .폼control이벤트').length==0) {//전체대체로 복사전
-    요소들=document.querySelectorAll('.폼control이벤트 > code:not(:first-child)');
-  } else {
-    요소들=document.querySelectorAll('#전체대체 .폼control이벤트 > code:not(:first-child)');
-  }
-
-  for (var i=0; i<요소들.length; i++) {
-    모든control이름들.push(요소들[i].innerHTML);
-  }
-  //고유값 확인
-  //let 고유값배열 = Array.from(new Set(모든control이름들))
-  //console.log(고유값배열);
-
-  for (var i=0; i<요소들.length; i++) {
-    요소들[i].classList.remove('폼컨트롤이벤트_단독기능노랑_클래스');
-    요소들[i].classList.remove('폼컨트롤이벤트_단독기능보라_클래스');
-    요소들[i].classList.remove('폼컨트롤이벤트_모두포함브라운_클래스');
-  }
-  for (var i=0; i<요소들.length; i++) {
-    if (모든control이름들.filter(element => 요소들[i].innerHTML == element).length == 1) { 요소들[i].classList.add('폼컨트롤이벤트_단독기능보라_클래스') }
-    if (모든control이름들.filter(element => 요소들[i].innerHTML == element).length == 13) { 요소들[i].classList.add('폼컨트롤이벤트_모두포함브라운_클래스') }
-  }
-}
-function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e) {//전체대체로 outerhtml복사된 곳
-  console.log('폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e)');
-
-  if (document.querySelector('.선택이벤트설명요소색칠')) {
-    document.querySelector('.선택이벤트설명요소색칠').classList.remove('선택이벤트설명요소색칠');
-  }
-
-  let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
-  var 요소들=document.querySelectorAll('#전체대체 .폼control이벤트 > code:not(:first-child)');
-
-  var 색칠할이름=e.target.innerHTML;
-  console.log('색칠할이름 :' + 색칠할이름)
-
-  for (var i=0; i<요소들.length; i++) {
-    모든control이름들.push(요소들[i].innerHTML);
-  }
-
-  폼컨트롤이벤트_단독기능보라_클래스부여()
-
-  for (var i=0; i<요소들.length; i++) {
-    if (요소들[i].innerHTML == 색칠할이름) { 
-      요소들[i].classList.remove('폼컨트롤이벤트_단독기능노랑_클래스');
-      요소들[i].classList.remove('폼컨트롤이벤트_단독기능보라_클래스');
-      요소들[i].classList.remove('폼컨트롤이벤트_모두포함브라운_클래스');
-      요소들[i].classList.add('폼컨트롤이벤트_단독기능노랑_클래스') 
-    }
-  }
-  //.이벤트작업code > code : innerHTML에서 클릭한 동작이름찾고 있으면 이동
-  var 이벤트설명요소들=document.querySelectorAll('#전체대체 .이벤트설명요소');
-  var 선택이벤트설명요소;
-  var 선택이벤트설명요소첫번째=0;
-  //  [대상 문자열].search([조건 문자열]); 대소문자 구분
-  if (!이벤트설명요소들.length==0) {
-    for (var i=0; i<이벤트설명요소들.length; i++) {
-      if (이벤트설명요소들[i].innerHTML.search(색칠할이름)>0 && 선택이벤트설명요소첫번째==0) {
-        선택이벤트설명요소=이벤트설명요소들[i];
-        선택이벤트설명요소첫번째=1; //0이 아닌것으로 변경, 다음에 나오는거 설정안되도록
-      }
-    }
-
-    if (선택이벤트설명요소) {
-      선택이벤트설명요소.classList.add('선택이벤트설명요소색칠');
-      var 절대좌표 = window.scrollY + 선택이벤트설명요소.getBoundingClientRect().top;
-      var fix높이=getComputedStyle(document.querySelector('header')).height
-      fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기
-      fix높이 = parseInt(fix높이); //숫자형식으로 변환
-      window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });
-    }
-
-  }
 }
 
 리스너_header.addEventListener('click', header_클릭시);
