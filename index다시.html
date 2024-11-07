@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'><!-- 나눔고딕 추가.. -->
+<!-- STYLE에 : font-family: 'Noto Sans', sans-serif;  -->
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<link href="portal/assets/css/index다시.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div id="html파일이름" style="display:none">excel.html</div>
+<header id="head_button_group" class="container-fluid">
+  <nav class="navbar bg-body-tertiary pt-1 m-0" style="white-space: nowrap;">    
+    <div class="container-fluid">
+      <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
+        <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
+        <!-- #excel캔버스전체 클릭하면 나오는 id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#자료_용어_중량전체" aria-controls="offcanvasBottom">자료_용어_중량</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#반출입_유니패스전체" aria-controls="offcanvasBottom">반출입_유니패스</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#특허_법규_보고전체" aria-controls="offcanvasBottom">특허_법규_보고</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#전달사항_공문_발행물전체" aria-controls="offcanvasBottom">전달사항_공문_발행물</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
+        <button>특문</button> 
+        <button onclick="연습()">연습()</button>
+        <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
+        <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
+        <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto>
+            <li class="nav-item dropdown">
+              <a class="active nav-link dropdown-toggle mt-2" href="#" 
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                링크이동
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="list.html">List</a></li>
+                <li><a class="dropdown-item" href="black.html">Black</a></li>
+                <li><a class="dropdown-item" href="kim.html">Kim</a></li>
+                <li><a class="dropdown-item" href="it.html">it</a></li>
+                <li><a class="dropdown-item" href="ycy정리.html">ycy</a></li>
+                <li><a class="dropdown-item" href="index.html">세관</a></li>
+                <!-- <li><hr class="dropdown-divider"></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>       
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
+
+<div id="전체대체" class="col-11" style="margin-left:10px;">
+</div>
+
+<!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="자료_용어_중량전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title" class="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title" class="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="반출입_유니패스전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="특허_법규_보고전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="전달사항_공문_발행물전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="기타전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+
+<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="기타전체_관련자료none" id="htmlJavascript전체_관련자료none" id="탁구github전체_관련자료none"-->
+<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
+ <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
+<div id="기타전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="기타전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="canvas_div" title=''>title를 불러옴, 이곳은 자유롭게 작성 (타이틀 또는 검색어)</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;}</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div 3개(3칸으로 맞춤, 1칸써도 됨) 안에 h6(title 불러옴)</h6>
+    </div>
+
+    <div class="개별카테고리" id="기타전체_JS"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title=''></h6>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+</div>
+
+<div id="자료_용어_중량전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="자료용어중량전체_용어_고시"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title="_01_보세화물_01_보세화물" data-title="결과물_id">통관, 보세화물, 관리화물 등 용어</h6>
+        <h6 class="canvas_div" title="_01_보세화물_02_반입및검사" data-title="결과물_id">물품의 반입, 검사</h6>
+        <h6 class="canvas_div" title="_01_보세화물_03_BL과DO등" data-title="결과물_id">M/BL, H/BL, 선사 D/O, 포딩 D/O, 유산스</h6>
+        <h6 class="canvas_div" title="_01_보세화물_04_물품반입반출유형" data-title="결과물_id">물품반입 유형, 물품반출 유형, 선용품 관련</h6>
+        <h6 class="canvas_div" title="_01_보세화물_05_미래" data-title="결과물_id">미래소프트 보세프로그램</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title="_05_고시_01_pdf파일전체보기" data-title="결과물_id">pdf파일전체보기</h6>
+        <h6 class="canvas_div" title="_05_고시_10_특허보세구역운영에관한고시" data-title="결과물_id">특허보세구역운영에관한고시</h6>
+        <h6 class="canvas_div" title="_05_고시_20_자율관리보세구역운영에관한고시" data-title="결과물_id">자율관리보세구역운영에관한고시</h6>
+        <h6 class="canvas_div" title="_05_고시_30_보세화물입출항하선하기및적재에관한고시" data-title="결과물_id">보세화물입출항하선하기및적재에관한고시</h6>
+        <h6 class="canvas_div" title="_05_고시_40_보세화물관리에관한고시" data-title="결과물_id">보세화물관리에관한고시</h6>
+        <h6 class="canvas_div" title="_05_고시_50_컨테이너관리에관한고시" data-title="결과물_id">컨테이너관리에관한고시</h6>
+        <h6 class="canvas_div" title="_05_고시_60_관리대상화물관리에관한고시" data-title="결과물_id">관리대상화물관리에관한고시</h6>
+        <h6 class="canvas_div" title="_05_고시_70_보세운송에관한고시" data-title="결과물_id">보세운송에관한고시</h6>
+      </div>
+
+    </div>
+
+    <div class="개별카테고리" id="자료용어중량전체_자료_유니패스"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title="_02_세관_01_조직도업무분장연락처" data-title="결과물_id">세관 부호, 조직도, 업무분장, 연락처</h6>
+        <h6 class="canvas_div" title="_02_세관_02_유니패스란" data-title="결과물_id">유니패스란? 로그인, 인증서등록, 화물조회</h6>
+        <h6 class="canvas_div" title="_02_세관_03_문서재수신" data-title="결과물_id">문서재수신(1개월 내), 재고다운로드, ?고지서?</h6>
+        <h6 class="canvas_div" title="_02_세관_04_01_특허보세구역게시" data-title="결과물_id">특허보세구역, 자율관리보세구역, 게시 의무</h6>
+      </div>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <section id="_01_보세화물_01_보세화물">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move2" class="목차">&#9634 통관절차는 수입신고(통관신청) 조건을 갖추기 위한 과정입니다.</h4>
+    <h4 id="move3" class="목차">&#9634 수입신고(통관신청)은 반입(전)후 관련기관의 수입검사를 모두 완료한 후에 합니다.</h4>
+    <br>
+    <h4 id="move4" class="목차">1. 보세, 보세화물, 보세구역, 특허보세구역, 보세운송, 관리화물</h4>
+    <li>보세, 보세화물 : 보세는 통관 완료전이라는 의미. 보세화물은 통관 완료전인 화물.</li>
+    <li>보세구역 : 보세화물을 보관하는 장소. 세관에서 지정하거나 세관의 특허를 받아야합니다. </li>
+    <li>보세운송 : 보세화물을 보세구역간 이동하는 행위, 세관의 승인을 얻어야 운송할 수 있습니다. </li>
+    <h5 class="li_들작">※ 보세운송승인 물품은 창고에서 반입예정물품 목록으로 수신되어 쉽게 확인이 됩니다.</h5>
+    <h5 class="li_들작">※ 보세운송승인 물품은 창고에서 해상수입물품의 경우 컨테이너는 승인일로부터 보통 10일이내, </h5>
+    <h5 class="li_들작들작">벌크화물은 3일이내 반입신고 완료하여야 합니다.</h5>
+    <h5 class="li_들작들작">(보세운송에관한 고시 제1장 제6조(보세운송기간)) </h5>
+    <h5 class="li_들작들작">기한내 반입이 어려울 경우 CY에 있는 경우 보세운송신고 당사자가 연장신청하고,</h5>
+    <h5 class="li_들작들작">창고에 도착한 물품의 경우 창고의 반입지연 사유서를 첨부하여 보세운송신고 당사자가 연장신청 할 수 있습니다.</h5>
+    <li>관리화물 : 세관에서 직접 보려는 화물. (주로 제보가 있거나, 엑스레이상 의심물품을 직접 확인하기 위함입니다.)</li>
+    <h5 class="li_들작">선박에 있는 화물은 보세구역을 하선장소로 지정하여 하선신고를 하게되는데</h5>
+    <h5 class="li_들작">보통 부두의 접안시설 옆에있는 컨테이너야적장(CY)입니다.</h5>
+    <h5 class="li_들작">하선신고는 보세운송처럼 창고에서 수신되는 반입예정정보에 뜨지 않기 때문에,</h5>
+    <h5 class="li_들작">관리화물 등이 하선장소가 '동일냉장 보세구역'으로 지정이 되어 반입되는 경우에는</h5>
+    <h5 class="li_들작">화주 등이 연락을 해줘야 알 수 있습니다.</h5>
+    <h5 class="li_들작">※ 관리화물은 해당화물의 하선신고 장소를 동일냉장보세구역으로 하는것입니다.</h5>
+    <h5 class="li_들작들작">관리화물은 세관에서 직접 물품을 보겠다는 의미입니다.</h5>
+    <h5 class="li_들작들작">세관 직원의 입회 및 지시가 없이는 컨테이너 개봉금지입니다.</h5>
+    <h5 class="li_들작">※ CY로 하선신고후 관리화물 지정시 CY로 하선신고된 내역을 취소후 동일냉장으로 하선신고 됩니다.</h5>
+    <h5 class="li_들작">※ 하선신고 물품은 해상물품 컨테이너의 경우 3일이내(토,일 공휴일 등 노는날 제외???) 도착이 완료되어야 합니다.</h5>
+    <h5 class="li_들작">(보세화물 입출항 하선 하기 및 적재에 관한 고시 제19조(하선장소 물품반입) 컨테이너화물 접안일로부터 3일이내 반입.)</h5>
+    <h5 class="li_들작">※ 화주(관세사)에서 관리화물이 있다고 연락이 옵니다.</h5>
+    <h5 class="li_들작">※ 세관담당자는 언제 작업할 것인지 시간조율 연락이 옵니다.</h5>
+    <h5 class="li_들작">※ 전자seal이 부착되어 있으면 해제등록이 필요합니다.</h5>
+    <li>특허보세구역 : 보세화물을 보관할 수 있도록 특별히 허가를 받은 보세구역</li>
+    <h5 class="li_들작">특허보세구역의 종류는 다양합니다. 동일냉장은 특허보세구역 영업용보세창고 입니다.</h5>
+    <h5 class="li_들작">일반화물 보관 + 보세화물 보관 가능합니다.</h5>
+    <br>
+    <h4 id="move5"  class="목차">2. 보세화물의 통관(=통관절차를 완료한는 것)</h4>
+    <li>관세법상 통관 : 수출의 면서, 수입의 면허, 반송의 면허</li>
+    <li>국제간의 물품수출입은 반드시 세관을 통과하여야 하는데</li>
+    <h5 class="li_들작">각 주무부처(식약청, 검역원, 수품원 등)의 수출입절차(검사, 검역 등) 통과 등이</h5>
+    <h5 class="li_들작">이상없이 진행된 후 수입신고(통관신청)을 하면,</h5>
+    <h5 class="li_들작">세관에서 검토하여 이상이 없을시 관세등을 납부하면 수입신고가 승인이 됩니다.</h5>
+    <h5 class="li_들작">통관신청(수입신고)이 승인되면 승인정보가 수신되고 창고에서 수입신고수리후반출신고하면</h5>
+    <h5 class="li_들작">보세화물 상태에서 해제되고 반출(출고)할 수 있습니다. 일반화물(내국화물)로 분류됩니다.</h5>
+    <h5 class="li_들작">출고의뢰를 받았을때 해당물품이 수입신고수리 및 수입신고수리후반출신고가 완료되었는지 확인해야합니다.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="_01_보세화물_02_반입및검사"><div id="스크립트로ul추가"></div><br>
+    <h4 id="move1"  class="목차">1. 먼저, 보세화물 종류별로 보관 및 반입조건이 있습니다.<span style="font-size:20px;"> ※ 자세한 사항은 다른 관공서 정보 참고</span></h4>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 전제조건</h4>
+    <h4>&nbsp;&nbsp;&nbsp; ① 특허보세구역 특허를 받은 공간(동결실 2곳 제외 창고내 전체)</h4>
+    <h4>&nbsp;&nbsp;&nbsp; ② 수입식품등 보관업 영업등록된 공간(특허보세구역 특허 공간)</h4>
+    <h4>&nbsp;&nbsp;&nbsp; ③ 식품보존업 영업신고된 공간(창고내 전체)</h4>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 수입축산물의 경우, 전제조건을 충족하고 AND</h4>
+		<h5>① 검역대상물품의 경우		</h5>
+    <h5 class="li_들작">A. 축산물 보관업 영업허가된 공간 : 102호, 103호, 201호, 301호, 401호방	</h5>
+    <h5 class="li_들작">B. A.중에 수입식용축산물보관장(검역시행장) 지정된 공간 (102호 제외)	</h5>
+    <h5 class="li_들작들작">※ 검역대상물품이 아닌 경우에 입고하면 안됩니다. (벌금)	</h5>
+    <h5 class="li_들작들작">※ 따라서 검역대상물품의 경우 ==> 103호, 201호, 301호, 401호방		</h5>
+    <h5>② 검역대상물품이 아닌 경우		</h5>
+    <h5 class="li_들작">A. 축산물 보관업 영업허가된 공간 중에 검역시행장이 아닌 공간 : 102호	</h5>
+    <h5 class="li_들작들작">※ 수입산 치즈를 예를 들면 축산물로 분류되며 검역대상이 아닌 경우가 있습니다.	</h5>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 수입식물류로 분류되는 경우, 전제조건을 충족하고 AND</h4>
+		<h5>① 수입식물류 검역장소로 지정된 공간. 보통 특허보세구역 특허 공간</h5>
+    <h5 class="li_들작">※ 지정이 안되어 있는데 반입을 하면 벌금인지는 확인이 안됩니다.	</h5>
+    <h5 class="li_들작">※ 지정이 안되어 있으면 반입되었더라도 검사가 안되어서 다른창고로 보세운송하여 보내야 합니다.	</h5>
+    <h5 class="li_들작">A. 축산물 반입장소 제외 모두 가능</h5>
+    <br>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;○ 축산물 제외한 물품(수입 및 내국)은 축산물보관장소 제외한 곳 중 제한없습니다.		</h4>
+		<h5>① 전제조건을 충족한 공간 중에 수입축산물 보관장소 제외.	</h5>
+    <br>
+    <h4 id="move2"  class="목차">2. 통관절차중 : 보세화물 반입시, 반입후 관련기관의 수입검사</h4>
+    <li>(검역대상 또는 검역대상 아닌)축산물, 검역대상식물류, 검역대상수산생물류, 일반식품류</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_01_수입축산물검사.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_02_수입식물류검사.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_03_일반수입식품류검사.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_01_보세화물_04_수산생물검사.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="_01_보세화물_03_BL과DO등"><div id="스크립트로ul추가"></div>
+    <h4 id="move1"  class="목차">1. 화물관리번호, 해상화물의 운송계약, 선사와 M/BL, 포딩과 H/BL, B/L 보는법</h4>
+    <li>화물관리번호</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_01화물관리번호.png" alt="이미지없음">
+    <br>
+    <li>포워딩, 콘솔, 해상화물의 운송계약, 선사와 M/BL, 포딩과 H/BL, 선하증권(B/L)</li>
+    <h5 class="li_들작">A. 포워딩, 콘솔</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_02포딩콘솔.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">B. 해상화물의 운송계약 예시</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_03운송예시.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_03운송예시2.png" alt="이미지없음">
+    <br>
+    <h5 id="move2" class="목차">C. 해상화물의 운송계약 정리, 화물의 소유권</h5>
+    <h5 class="h5_번들작">▸ 포워딩 업체가 발행한 House B/L은 선사가 가지고 있는 화물, 예들들어 CY에 도착한 화물을</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  인도 받을수 있는 서류가 아닙니다. 선사와 관련없는 서류이고 포딩과의 계약서류입니다.</h5>
+    <br>
+    <h5 class="h5_번들작">▸ 관리화물인 경우 3일이내 반입이라는 관세법상 규칙때문에 선사의 D/O가 발행전이라도</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  물품이 반입될 수도 있고 이 경우 동일냉장에서 등록해놓은 물품의 화주가 진정한 화주가 아니고</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  선사의 원본 B/L 인수 및 D/O발행 전 까지는 선사의 소유임을 인지해야 합니다.</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  관리화물이 아닌 경우라면 선사는 원본 B/L 인수하고 D/O발행 원칙을 지키는 것으로 알고 있습니다.</h5>
+    <br>
+    <h5 class="h5_번들작">▸ House B/L인 경우, 포워딩 업체가 선사에 원본 B/L 제시 및 선사의 D/O발행에 의해서 창고로 </h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  반입되겠지만, 이 경우에도 동일냉장에서 등록해 놓은 물품의 화주가 진정한 화주가 아니고</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  포워딩의 D/O발행 및 창고에서 확인하기전 까지는 포워딩의 소유임을 인지해야 합니다.</h5>
+    <br>
+    <h5 class="h5_번들작">▸ ※ Master B/L 발행한 물품인지, House B/L 발행한 물품인지 확인을 한 번 해줘야하고, </h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  그에 따라 확인해야 할 D/O를 인지하고 확인해야 하며,</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  이 후에도, 통관 전이라도 양도가 있으면 화주는 바뀔수 있습니다.</h5>
+    <h5 class="h5_번들작">&nbsp;&nbsp;&nbsp;  창고에서 수신되는 통관정보에는 화주정보도 있습니다. 반드시 확인 해야 할 정보입니다.</h5>
+    <br>
+    <li id="move3" class="목차">B/L 보는법</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_04BL보는법.png" alt="이미지없음">
+    <br>
+    <li id="move4" class="목차">Master B/L 인지 House B/L 인지 확인하는 방법.</li>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_05BL구분법.png" alt="이미지없음">
+    <br>
+    <li id="move5" class="목차">수입대금 결재방식</li>
+    <h5 class="h5_번들작">▸ 송금방식(T/T), 추심방식 </h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_06송금추심.png" alt="이미지없음">
+    <br>
+    <h5 id="move6" class="목차">▸ 신용장거래(은행의 지급보증) (유산스 Usance) </h5>
+    <h5 class="h5_번들작">※ 유산스(Usance)란 일반적으로 신용장(L/C, Letter of Credit)방식에 의한 </h5>
+    <h5 class="h5_번들번들작">무역결제에 있어 어음의 지급기한을 의미하며,</h5>
+    <h5 class="h5_번들번들작">수입자가 일정기간(통상 30일, 60일, 90일, 150일) 후에 수출대금을 지급하는 단기연불수입의 일종이다.</h5>
+    <h5 class="h5_번들번들작">연불수입(수입 상품의 대금을 결제하는 방식의 하나. </h5>
+    <h5 class="h5_번들번들작">선금 지급이나 전액 외상으로 수입 상품을 공급받고 대금은 일정 기간에 나누어 결제한다.) </h5>
+    <br>
+    <h5 id="move7" class="h5_번들작 목차">※ L/G : Letter of Guarantee : 수입화물선취보증</h5>
+    <h5 class="h5_번들번들작">신용장 거래방식에서 원본 B/L이 늦어질때 은행이 보증을 하여 원본 B/L이 도착하면</h5>
+    <h5 class="h5_번들번들작">L/G와 교환할것을 약속하는 서류. </h5>
+    <h5 class="h5_번들번들작">개설의뢰인(화주)는 이 서류를 원본 B/L처럼 선사에 제출하여 화물인 인도받습니다. </h5>
+    <h5 class="h5_번들번들작">물류비용 발생 및 통관지연을 방지하기 위해 물품을 먼저 인도하고  </h5>
+    <h5 class="h5_번들번들작">원본 B/L이 도착하면 서로 교환하게 됩니다. </h5>
+    <br>
+    <h5 id="move8" class="목차">A. 신용장 개설 합의, 신용장 개설</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_07신용장개설합의.png" alt="이미지없음">
+    <br>
+    <h5 id="move9" class="목차">B. 신용장을 Buyer에게 전달</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_08신용장바이어에게전달.png" alt="이미지없음">
+    <br>
+    <h5 id="move10" class="목차">C. 신용장에서 요구한 서류를 Seller에게서 받는 과정</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_02_09신용장서류받기.png" alt="이미지없음">
+    <br>
+    <h5 id="move11" class="목차">D. Seller가 물품대금을 받는 과정</h5>
+    <h5 class="h5_번들작">▸ 개설은행은 신용장에서 요구한 서류만을 심사하여 일치하면 통지은행에 대금을 지급한다.</h5>
+    <h5 class="h5_번들작">▸ 대금을 지급받은 통지은행은 Seller에게 대금을 지급한다.</h5>
+    <h5 class="h5_번들작">▸ Buyer는 전달받은 물품에 이상이 있더라고 대금지급과정에 관여할 수 없다.</h5>
+    <br>
+    <h5 id="move12" class="목차">E. 신용장거래방식의 특징</h5>
+    <h5 class="h5_번들작">▸ 수익자 (Seller)</h5>
+    <h5 class="h5_번들번들작">신용위험 회피</h5>
+    <h5 class="h5_번들번들작">신용장을 담보로 대출을 받을수 있다. (무역금융)</h5>
+    <br>
+    <h5 class="h5_번들작">▸ 개설의뢰인 (Buyer)</h5>
+    <h5 class="h5_번들번들작">수수료가 많다</h5>
+    <h5 class="h5_번들번들작">개설의뢰인에게는 좋은게 별로 없다고 설명함.</h5>
+    <h5 class="h5_번들번들작">2000년 전에는 80%를 차지하다가 현재 10%정도라고 설명함.</h5>
+    <br>
+    <h5 class="h5_번들작"> ▸ 은행</h5>
+    <h5 class="h5_번들번들작">수수료를 높게 받는다고 설명함.</h5>
+    <br>
+    <h4 id="move13"  class="목차">※ D/O 관련 대법원 판결정보</h4>
+    <h5 class="h5_번들작 목차">C. 해상화물의 운송계약 정리, 화물의 소유권 내용 참고</h5>
+    <h5 class="h5_번들번들작">Master B/L의 경우 선사의 D/O를 받기전까지 화물은 선사에게 소유권이 있고,</h5>
+    <h5 class="h5_번들번들작">House B/L의 경우 포딩의 D/O를 받기전까지 화물은 포딩에게 소유권이 있으니,</h5>
+    <h5 class="h5_번들번들작">선사나 포딩과 소유권 분쟁에 휘말리지 않으려면 각 D/O를 챙겨서 확인하여야한다.</h5>
+    <br><br><br><br>
+  </section>
+
+  <section id="_01_보세화물_04_물품반입반출유형"><div id="스크립트로ul추가"></div>
+    <h4 id="move1"  class="목차">▢ 물품반입 유형 : 입항반입, 보세운송반입, B/L분할 반입</h4>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_04_01_반입유형.png" alt="이미지없음">
+    <br>
+    <h4 id="move2"  class="목차">▢ 물품반출 유형</h4>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_04_02_반출유형.png" alt="이미지없음">
+    <br>
+    <h4 id="move3"  class="목차">▢ 선용품 관련 정보</h4>
+    <li>정보 수집중</li>
+    <img src="" alt="이미지없음">
+  </section>
+
+  <section id="_01_보세화물_05_미래"><div id="스크립트로ul추가"></div>
+    <h4>▢ 영업프로그램 및 보세화물프로그램이 통합되어 있습니다.</h4>
+    <h4>▢ 로그인 방법과 간단한 메뉴설명만 하고 세부적인 사용법은 실무에서 다룹니다.</h4>
+    <h4>▢ 공인인증서를 등록하였다면 프로그램 종료시까지 유지됩니다.</h4>
+    <h4 class="목차">1. 로그인 방법, 화면설명, 유니패스 송수신 메뉴 사용시 공인인증서 등록방법</h4>
+    <h5>A. 바탕화면에서 <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_01_아이콘.png" style="display:inline" alt="이미지없음"> 더블클릭</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ① 사번 입력후 엔터치면 우측에 이름이 나옵니다.</h5>
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 202203(김기수),202204(양충영), 202205(백명탁), 202206(차승환), 202207(김경아), 202208(김인애), 202209(윤하늬)</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ② 비밀번호 입력후 엔터 두번 치면 로그인 됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_02_로그인.png" alt="이미지없음">
+    <br>
+    <h5>B. 첫화면에 일정표와 유통기한경과물품 목록창이 뜨는데, 필요 없으면 닫습니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_03_로그인.png" alt="이미지없음">
+    <br>
+    <h5 id="move1" class="목차">C. 처음화면입니다. 간단한 메뉴 설명입니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_04_초기화면.png" alt="이미지없음">
+    <br>
+    <h5 id="move2" class="목차">D. 유니패스에 송수신되는 메뉴 사용시 인증서 로그인창이 뜹니다. (인증서 등록방법)</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ① 인증서위치 선택</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ② 인증서 선택</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ③ 인증서 비밀번호 입력, dongil3368</h5>
+    <h5>&nbsp;&nbsp;&nbsp; ④ 확인</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_05_미래_05_인증서.png" alt="이미지없음">
+    <br>
+    <h5 id="move3" class="목차">E. EDI(Electronic Data Interchange) : 전자문서교환, 보세화물 관련 문서입니다.</h5>
+    <h5 id="move4" class="목차">&nbsp;&nbsp;&nbsp; 세관 유니패스와 관련된 모든 문서 및 송수신 결과 등 확인.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_06_edi.png" alt="이미지없음">
+    <br>
+    <h5 id="move5" class="목차">F. 보세화물관리 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_07_보세화물관리.png" alt="이미지없음">
+    <br>
+    <h5 id="move6" class="목차">G. 수신문서관리 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_08_수신문서관리.png" alt="이미지없음">
+    <br>
+    <h5 id="move7" class="목차">H. 기타정보 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_09_기타정보.png" alt="이미지없음">
+    <br>
+    <h5 id="move8" class="목차">I. 내국화물관리 메뉴</h5>
+    <img src="portal/images/문서연결_세관및유니패스/00_보세화물_06_미래_10_내국관리.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="_02_세관_01_조직도업무분장연락처"><div id="스크립트로ul추가"></div>
+    <h4 class="목차">&#9634; 부산 본부세관 고유 부호 : 030, 동일냉장 고유 부호 : 11597</h4>
+    <h4 class="목차">&#9634; 부산 본부세관 인터넷 검색하여 사이트 방문 (여기서는 우측 밝은색 조직도와 직원안내만 봅니다.)</h4>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_01_세관조직도메인.png" alt="이미지없음">
+    <br>
+    <h4 id="move1" class="목차">1. 조직도 (우측 끝) "세관소개" => 조직 및 직원안내 => 조직도. <span style="font-size: 20px;">(주로 연락하는 부서는 감시국 => "수출입물류과")</span></h4>
+    <li class="">"감시국" 클릭하면 "수출입물류과" 포함하여 여러부서별 업무분장을 확인할 수 있습니다.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_02_세관조직도.png" alt="이미지없음">
+    <br>
+    <h4 id="move2"  class="목차">2. "감시국" 클릭했을때 나오는 분장업무중 "수출입물류과"의 분장업무들 "확인"</h4>
+    <li>☞ 수출입물류과<br>
+        ㆍ보세구역의 지정 및 특허와 보세화물의 관리<br>
+        ㆍ자유무역지역 및 종합보세구역의 관리<br>
+        ㆍ수출입화물의 보관·운송 및 물류의 개선<br>
+        ㆍ보세구역운영인·운송업자의 자율적 법규준수도의 측정 및 관리<br>
+        ㆍ장치기간경과화물·몰수품 및 국고귀속물품의 관리·공매예정가격의 산출 및 매각<br>
+        ㆍ외국인투자에 대한 통관지원<br>
+        ㆍ권역내 세관의 통관업무에 대한 지도·감독<br>
+        ㆍ통관에 관한 정보의 수집과 종합관리<br>
+        ㆍ남북한 왕래자에 대한 휴대품검사 및 남북교역물품의 반출입관리<br>
+        ㆍ기타 국내 다른 과의 주관에 속하지 아니하는 사항
+    </li>
+    <br>
+    <h4 id="move3"  class="목차">3. 조직도 (우측 끝) "세관소개" => 조직 및 직원안내 => 직원안내 (★ 중요 ★)</h4>
+    <li class="목차">부서로 찾기 클릭 => 감시국 클릭 => "수출입물류과부터 담당자와 담당업무 및 연락처가 뜹니다."</li>   
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_03_직원안내.png" alt="이미지없음">
+    <br> 
+    <h4 id="move4"  class="목차">4. 수출입물류과 담당업무 설명 (메인)</h4>
+    <li class="목차">검은색 테두리 친 담당자와 자주 통화하게 된다.(체화,공매,폐기, 반출입관리. 법규수행능력평가 중요)</li>
+    <h5 class="목차">※ 특히 반출입관리는 반입물품 이상보고, 반입정정, 반출정정 업무가 빈번합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_04_직원안내자세히.png" alt="이미지없음"><br><br><br><br>
+  </section>
+
+  <section id="_05_고시_01_pdf파일전체보기" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">① 클릭하면 전체보기가 되고 다시 누르면 원래대로 돌아갑니다.</h4>
+    <img src="portal/images/문서연결_세관및유니패스/08_고시_01_pdf파일전체보기.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="_05_고시_10_특허보세구역운영에관한고시" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 특허보세구역운영에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_10_특허보세구역운영에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_05_고시_20_자율관리보세구역운영에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 자율관리보세구역운영에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_20_자율관리보세구역운영에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_05_고시_30_보세화물입출항하선하기및적재에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세화물입출항하선하기및적재에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_30_보세화물입출항하선하기및적재에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_05_고시_40_보세화물관리에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세화물관리에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_40_보세화물관리에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_05_고시_50_컨테이너관리에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 컨테이너관리에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_50_컨테이너관리에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_05_고시_60_관리대상화물관리에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 관리대상화물관리에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_60_관리대상화물관리에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_05_고시_70_보세운송에관한고시"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; 보세운송에관한고시</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/08_고시_70_보세운송에관한고시.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+  </section>
+
+  <section id="_02_세관_01_조직도업무분장연락처"><div id="스크립트로ul추가"></div>
+    <h4 class="목차">&#9634; 부산 본부세관 고유 부호 : 030, 동일냉장 고유 부호 : 11597</h4>
+    <h4 class="목차">&#9634; 부산 본부세관 인터넷 검색하여 사이트 방문 (여기서는 우측 밝은색 조직도와 직원안내만 봅니다.)</h4>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_01_세관조직도메인.png" alt="이미지없음">
+    <br>
+    <h4 id="move1" class="목차">1. 조직도 (우측 끝) "세관소개" => 조직 및 직원안내 => 조직도. <span style="font-size: 20px;">(주로 연락하는 부서는 감시국 => "수출입물류과")</span></h4>
+    <li class="">"감시국" 클릭하면 "수출입물류과" 포함하여 여러부서별 업무분장을 확인할 수 있습니다.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_02_세관조직도.png" alt="이미지없음">
+    <br>
+    <h4 id="move2"  class="목차">2. "감시국" 클릭했을때 나오는 분장업무중 "수출입물류과"의 분장업무들 "확인"</h4>
+    <li>☞ 수출입물류과<br>
+        ㆍ보세구역의 지정 및 특허와 보세화물의 관리<br>
+        ㆍ자유무역지역 및 종합보세구역의 관리<br>
+        ㆍ수출입화물의 보관·운송 및 물류의 개선<br>
+        ㆍ보세구역운영인·운송업자의 자율적 법규준수도의 측정 및 관리<br>
+        ㆍ장치기간경과화물·몰수품 및 국고귀속물품의 관리·공매예정가격의 산출 및 매각<br>
+        ㆍ외국인투자에 대한 통관지원<br>
+        ㆍ권역내 세관의 통관업무에 대한 지도·감독<br>
+        ㆍ통관에 관한 정보의 수집과 종합관리<br>
+        ㆍ남북한 왕래자에 대한 휴대품검사 및 남북교역물품의 반출입관리<br>
+        ㆍ기타 국내 다른 과의 주관에 속하지 아니하는 사항
+    </li>
+    <br>
+    <h4 id="move3"  class="목차">3. 조직도 (우측 끝) "세관소개" => 조직 및 직원안내 => 직원안내 (★ 중요 ★)</h4>
+    <li class="목차">부서로 찾기 클릭 => 감시국 클릭 => "수출입물류과부터 담당자와 담당업무 및 연락처가 뜹니다."</li>   
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_03_직원안내.png" alt="이미지없음">
+    <br> 
+    <h4 id="move4"  class="목차">4. 수출입물류과 담당업무 설명 (메인)</h4>
+    <li class="목차">검은색 테두리 친 담당자와 자주 통화하게 된다.(체화,공매,폐기, 반출입관리. 법규수행능력평가 중요)</li>
+    <h5 class="목차">※ 특히 반출입관리는 반입물품 이상보고, 반입정정, 반출정정 업무가 빈번합니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_01_조직도업무분장연락처_04_직원안내자세히.png" alt="이미지없음"><br><br><br><br>
+  </section>
+
+  <section id="_02_세관_02_유니패스란"><div id="스크립트로ul추가"></div>
+    <h4 class="목차">&#9634; 유니패스(UNIPASS)</h4>
+    <li>유니패스란 우리나라 전자통관 시스템으로 쉽게 말해 한국형 무역 행정 서비스입니다.</li>
+    <h5 class="li_들작">"다양한 관세 서비스를 통합"한다는 뜻의 <strong>UNI</strong>와 "전자시스템으로 원스톱 처리"한다는</h5>
+    <h5 class="li_들작">뜻의 <strong>pass</strong>를 합친 말입니다.</h5>
+    <h5 class="li_들작">유니패스는 물품의 수출입 신고, 세금 납부, 화물 검사 등 통관 절차를 전산시스템으로 자동화한 것으로</h5>
+    <h5 class="li_들작">따로 세관을 방문하거나 서류를 작성할 필요 없이 인터넷을 통해 처리해주는 시스템입니다</h5>
+    <br>
+    <h4 class="목차">&#9634; UNIPASS를 통해서 전자문서 제출하는 업무들 예시.</h4>
+    <h5>A. 보세화물의 반출입신고, 반출입신고의 정정 및 취소 신청, 반입물품 이상보고 등</h5>
+    <h5 class="li_들작">&#9656 미래소프트 보세관리 프로그램은 유니패스의 문서들을 땡겨와서 보여주는 것입니다.</h5>
+    <h5 class="li_들작">&#9656 보세관리 프로그램이 오류 등으로 세관의 문서를 땡겨오지 못하여 발생하는 신고누락 등의 책임은</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;전적으로 창고에 있습니다.</h5>
+    <h5 class="li_들작">&#9656 송신=문서제출이고 그 결과를 알려줍니다. 접수=접수, 오류통보=무효입니다.</h5>
+    <h5 class="li_들작">&#9656 승인통보, 체화통고 등 다양한 정보를 알려줍니다.</h5>
+    <br>
+    <h4 id="move5" class="목차">1. UNIPASS 로그인 방법, ID:go4323, password:!dongil3368, 공인인증서password:dongil3368</h4>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;주소 : https://unipass.customs.go.kr/csp/index.do</h4>
+    <li>반출입신고는 등 대부분은 미래소프트 보세프로그램을 통해서 편리하게 할수 있습니다.</li>
+    <li>UNIPASS에서 직접하는 업무는 반입이상보고, 반출입정정신청, 재고조회 등입니다.</li>
+    <li>문서송신(반입이상보고, 반출입정정신청 등)은 회사명의의 활동이므로 공인인증서 로그인을 해야 사용가능합니다.</li>
+    <br>
+    <h5 class="li_들작">가. 로그인 방법 : 사이트방문 - ① 로그인 클릭</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_01_로그인1.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">나. 로그인방법 : 공인인증서 화면 전까지 ① ② ③ ④ </h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_01_로그인2.png" alt="이미지없음">
+    <br>
+    <h5 class="li_들작">다. 로그인 방법 : 공인인증서 화면 ① ② ③ ④ </h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_01_로그인3.png" alt="이미지없음">
+    <br>
+    <h4 id="move6" class="목차">2. (로그인 후) 공인인증서 등록. 창고 보세프로그램도 같은 공인인증서를 사용합니다. </h4>
+    <li>공인인증서 등록은 아이디와 비번만 입력하고 로그인해서 사용가능한 기능입니다.</li>
+    <li>공인인증서 유효기간은 1년입니다. 1년마다 재발급(한국정보통신? 총무부) 받아서 등록 해줘야 합니다.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_02_인증서등록.png" alt="이미지없음">
+    <BR></BR>
+    <h4 id="move7" class="목차">3. 화물조회 (수입화물진행정보 확인방법)</h4>
+    <h5>1. (로그인 안해도 상관없음) 유니패스 - 관세청 사이트 방문</h5>
+    <h5>2. "화물진행정보조회 메뉴"에서 ① Master B/L 번호 또는 House B/L 번호 입력 후 조회</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_02_화물조회1.png" alt="이미지없음">
+    <br>
+    <h5>3. 조회결과화면 예시</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_02_유니패스란_02_화물조회2.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>  
+
+  <section id="_02_세관_03_문서재수신"><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">1. (공인인증서 로그인 후) 문서함에서 문서 재수신 방법 </h4>
+    <h5>① My메뉴 클릭, ② 문서함 사용관리 클릭, ③ 수신문서함 클릭, ④ 수신현황 클릭, ⑤ 수신기간 설정,</h5>
+    <h5>⑥조회 클릭, ⑦ 재수신 받을 문서 선택, ⑧ 재수신 클릭, ⑨ 재수신 처리하시겠습니까? 확인 클릭,</h5>
+    <h5>⑩ 정상적으로 처리되었습니다. 확인 클릭, ⑪ 보세프로그램에서 수신하면 다시 수신됩니다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_01_문서재수신.png" alt="이미지없음">
+    <br>
+    <h4 id="move2" class="목차">2. 보세화물 재고, 내국화물 재고 다운로드 (재고조사할때 이 자료와 일치해야 합니다.)</h4>
+    <h4 id="move3" class="목차">▢ (공인인증서 로그인 후) 보세구역 재고현황 다운로드</h4>
+    <li>메뉴에 접근 : ① 정보조회 클릭, ② 통관물류정보 클릭, ③ 보세구역 재고현황 클릭</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_02_보세재고1.png" alt="이미지없음">
+    <br>
+    <li id="move4" class="목차">보세구역 재고현황 다운로드 : ① 조회 클릭, ② 다운로드 클릭, ③ 다운로드 됩니다.</li>
+    <li>다운로드 된 파일은 윈도우탐색기 - 다운로드 폴더에서 확인.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_02_보세재고2.png" alt="이미지없음">
+    <br>
+    <h4 id="move5" class="목차">▢ (공인인증서 로그인 후) 내국물품 반출입 재고현황 다운로드</h4>
+    <li>메뉴에 접근 : ① 정보조회 클릭, ② 통관물류정보 클릭, ③ 내국물품 반출입 재고현황 클릭</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_03_내국재고1.png" alt="이미지없음">
+    <br>
+    <li id="move6" class="목차">내국물품 반출입 재고현황 다운로드 : ① 1년 클릭, ② 조회 클릭, ③ 다운로드 클릭, ④ 다운로드 됩니다.</li>
+    <li>다운로드 된 파일은 윈도우탐색기 - 다운로드 폴더에서 확인.</li>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관부호_03_문서재수신_03_내국재고2.png" alt="이미지없음">
+    <br><br><br><br><br>
+  </section>
+
+  <section id="_02_세관_04_01_특허보세구역게시" ><div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">▢ 특허보세구역과 자율관리보세구역</h4>
+    <br>
+    <h4>1. 자율관리보세구역이란 특허보세구역을 운영하는 업체가</h4>
+    <h5>가. 보세화물관리를 위한 보세사 채용.</h5>
+    <h5>나. 화물의 반출입, 재고관리 등 실시간 물품관리가 가능한 전산시스템(WMS, ERP EMD) 구비.</h5>
+    <h5>다. 운영인 등의 법규수행능력이 우수하여 보세구역 자율관리에 지장이 없다고 판단되는 업체를</h5>
+    <h5 class="li_들작">자율관리보세구역으로 세관이 지정할 수 있다.</h5>
+    <h5 class="li_들작">※ 특허보세구역의 법규수행능력평가 점수가 3년평균 A등급이상을 유지하는 업체</h5>
+    <br>
+    <h4 id="move2" class="목차">2. 자율관리보세구역 혜택</h4>
+    <h5>※자율관리 보세구역 운영에 관한 고시 제7조(절차생략 등)</h5>
+    <br>
+    <h5>가. 식품위생법 제10조, 축산물 위생관리법 제6조에 따른 표시작업(원산지표시 제외) 할때 보수작업 신청(승인) 생략.</h5>
+    <h5 class="li_들작">▸ 예 ) 축산물 입고시 한글스티커 부착작업 할 때 보수작업의 신청(승인) 없이 자율적으로 할 수 있습니다.</h5>
+    <h5 class="li_들작">▸ 예 ) 다른식품도 한글스티커 작업할때 자율적으로 하는 부분들입니다.</h5>
+    <br>
+    <h5 class="li_들작">단, ★원산지 표시가 누락되었을 경우에 원산지를 표시하는 작업은 보수작업 신청(승인) 받아야 됩니다.</h5>
+    <h5 class="li_들작">&nbsp;&nbsp;&nbsp;&nbsp; ★보수작업 대장 작성, 보수작업 완료보고서 제출, 작업 전 후 사진 등록 등 하여야 합니다.</h5>
+    <br>
+    <h5>나. 보세화물 관리에 관한 고시 제16조에 따른 재고조사 및 보고의무를 분기별 1회에서 년 1회로 완화</h5>
+    <h5 class="li_들작">※ 특허보세구역 운영상황의 보고 기한이 다가오면 세관에서 공문을 보내주는데 요구서류에</h5>
+    <h5 class="h5_번들번들작">재고조사보고서 등을 요청하는데 이것이 그 1회보고가 됩니다.</h5>
+    <h5 class="h5_번들번들작">요청을 안하면 직접 보고해야 합니다. 운영상황의 보고 공문 도착시 이부분을 확인하고,</h5>
+    <h5 class="h5_번들번들작">법령에 정한 보고사항 등의 체크리스트에 체크해 놓습니다.</h5>
+    <h5 class="h5_번들번들작">★ 또한 운영상황의 보고 날짜는 법규수행능력평가때 날짜를 기재하므로 체크해 두어야 합니다.</h5>
+    <br>
+    <h5>다. 특허보세구역 운영에 관한 고시 제22조에 따른 보세구역 운영상황의 점검생략</h5>
+    <h5 class="li_들작">▸ 특허보세구역 운영에 관한 고시 제20조(보세구역 운영상황의 보고)를 2월말까지 하는데,</h5>
+    <h5 class="h5_번들번들작">그 보고내용이 일치하는지와 운영상황에 문제가 없는지 방문조사하게 되어있는데 생략한다는 것입니다.</h5>
+    <br>
+    <h5>라. 보세화물 관리에 관한 고시 제17조에 따른 장치물품 수입신고 전 확인신청(승인) 생략</h5>
+    <h5 class="li_들작">▸ 화주 등이 물품 반입시 검품 등을 할때 '장치물품의 수입신고 전 확인신청(승인)'을 받아야</h5>
+    <h5 class="h5_번들번들작">물품을 볼 수 있는데 그 신청(승인)을 생략한다는 것입니다.</h5>
+    <h5 class="h5_번들번들작">★ 그러나 그 물품을 '장치물품 수입신고 전 확인대장'에 기록관리는 해야합니다. </h5>
+    <br>
+    <h4 id="move3" class="목차">▢ 특허보세구역 운영에 관한 고시 제16조(특허장의 게시 등)</h4>
+    <h5>① 운영인은 보세구역 내 일정한 장소에 다음 각 호의 사항을 게시하여야 한다.</h5>
+    <h5 class="li_들작">가. 별지 제2호서식의 특허장</h5>
+    <h5 class="li_들작">나. 보관요율(자가용보세창고는 제외한다) 및 보관규칙</h5>
+    <h5 class="li_들작">다. 화재보험요율</h5>
+    <h5 class="li_들작">라. 자율관리보세구역지정서</h5>
+    <h5 class="li_들작">마. 위험물품장치허가증 등 관계 행정기관의 장의 허가, 승인 또는 등록증</h5>
+    <h5 class="h5_번들번들작">(위험물품, 식품류를 보관하는 보세구역에 한정한다)</h5>
+    <h5>② 운영인은 보세구역 입구에 별표 1과 같은 간판을 게시하고 민원인출입구, 울타리 등 필요한 장소에</h5>
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp; 별표 2와 같은 안내문을 게시하여야 한다.</h5>
+    <img src="portal/images/문서연결_세관및유니패스/01_세관_04_01_특허보세구역게시.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+</div>
+
+<div id="반출입_유니패스전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="기타전체반출입유니패스전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="canvas_div" title=''>dfgdfgdfgtitle를 불러옴, 이곳은 자유롭게 작성 (타이틀 또는 검색어)</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;}</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div 3개(3칸으로 맞춤, 1칸써도 됨) 안에 h6(title 불러옴)</h6>
+    </div>
+
+    <div class="개별카테고리" id="반출입유니패스전체_JS"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title=''></h6>
+      </div>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+</div>
+
+<!-- 코딩등메모장text파일, canvas_div-->
+<div id="특허_법규_보고전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="기타전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="canvas_div" title=''>title를 불러옴, 이곳은 자유롭게 작성 (타이틀 또는 검색어)</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;}</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div 3개(3칸으로 맞춤, 1칸써도 됨) 안에 h6(title 불러옴)</h6>
+    </div>
+
+    <div class="개별카테고리" id="기타전체_JS"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title=''></h6>
+      </div>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+</div>
+
+<div id="전달사항_공문_발행물전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="기타전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="canvas_div" title=''>title를 불러옴, 이곳은 자유롭게 작성 (타이틀 또는 검색어)</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;}</h6>
+      <h6 class="canvas_div" title=''>.개별카테고리 > div 3개(3칸으로 맞춤, 1칸써도 됨) 안에 h6(title 불러옴)</h6>
+    </div>
+
+    <div class="개별카테고리" id="기타전체_JS"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title=''></h6>
+      </div>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+</div>
+
+<div id="특문만따로" class="d-none 모든검색">  <!-- 특문만 따로 -->
+
+  <div id="html특수문자_click">
+    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+
+    <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
+      <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+      <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
+      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
+      <br>
+      <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
+    </div>
+    <div style="display: inline-block;padding:5px;">
+      <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
+    </div>
+
+  </div>
+</div>
+
+  <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
+  role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
+  <span>Top</span></a>
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/index다시.js"></script>
+
+</body>
+
+</html>
