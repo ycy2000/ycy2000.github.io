@@ -1,11 +1,12 @@
 @charset "UTF-8";
 code {display: block; color:black;margin-bottom:5px;}
 .offcanvas-title {background-color: blanchedalmond;}
-#캔버스바디 .js모든파일리스트div {display: inline-block;width:915px;}
+.캔버스바디 .js모든파일리스트div {display: inline-block;width:915px;vertical-align: top;}
 #전체대체 {margin-left:115px; white-space: nowrap;}
 #전체대체 > div > div {vertical-align: top;}
 .offcanvas-header h6,.offcanvas-header input,.offcanvas-header button {display:inline-block;}
-.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;} /* overflow-y: scroll;로 스크롤바 생겨서 width 617에서 616으로 변경*/
+.개별카테고리 > div {display:inline-block; width:610px;vertical-align: top;} /* overflow-y: scroll;로 스크롤바 생겨서 width 617에서 616으로 변경*/
+/* overflow-y: scroll;로 스크롤바 생겨서 width 616에서 610으로 변경 (이것은 전체대체에 스크롤바가 생기면 좁아져서 조정함)*/
 .현재카테고리 {background-color: chocolate;}
 
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}

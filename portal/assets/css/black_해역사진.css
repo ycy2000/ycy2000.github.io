@@ -1,7 +1,7 @@
 @charset "UTF-8";
 code {display: block; color:black;margin-bottom:5px;}
 .offcanvas-title {background-color: blanchedalmond;}
-#캔버스바디 .js모든파일리스트div {display: inline-block;width:915px;}
+.캔버스바디 .js모든파일리스트div {display: inline-block;width:915px;vertical-align: top;}
 .팝업메모 {position: absolute;z-index: 9999;}
 #전체대체 {margin-left:115px; white-space: nowrap;}
 #전체대체 > div > div {vertical-align: top;}
