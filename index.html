@@ -29,8 +29,7 @@
         </button>
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
         <!-- #excel캔버스전체 클릭하면 나오는 id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#고시및기본전체" aria-controls="offcanvasBottom">고시및기본</button>
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#반출입_유니패스전체" aria-controls="offcanvasBottom">반출입_유니패스</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#보세_유니패스전체" aria-controls="offcanvasBottom">보세,유니패스</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#특허_법규_보고전체" aria-controls="offcanvasBottom">특허_법규_보고</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#전달사항_공문_발행물전체" aria-controls="offcanvasBottom">전달사항_공문_발행물</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
@@ -68,35 +67,13 @@
 </div>
 
 <!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
-<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="고시및기본전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="보세_유니패스전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1" style="white-space: nowrap;">
     <div class="캔버스header">
       <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
       <h6 class="offcanvas-title" class="캔버스바디_모든제목보기">모든제목보기</h6><!--click동작-->
       <h6 class="offcanvas-title" class="캔버스바디_모든카테고리">모든카테고리</h6> <!--click동작-->            
       <h6 class="d-inline-block">파일검색</h6><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
-      <input class="canvas검색input" type = "text"><!-- change 동작-->
-      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
-      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
-      <div class="js카테고리생성 d-inline-block"></div>
-
-      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
-
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
-  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
-  </div>
-</div>
-
-<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="반출입_유니패스전체" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header p-1" style="white-space: nowrap;">
-    <div class="캔버스header">
-      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
-      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
-      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
-      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
       <input class="canvas검색input" type = "text"><!-- change 동작-->
       <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
       <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
@@ -209,9 +186,24 @@
   </div>
 </div>
 
-<div id="고시및기본전체_관련자료none" class="d-none 모든검색">
+<div id="보세_유니패스전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-    <div class="개별카테고리" id="고시및기본전체_용어_고시_기본_중량"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div class="개별카테고리" id="보세유니패스전체_용어_고시_대장_중량"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 규정에 있는 대장, 게시 --</h6>
+        <h6 class="canvas_div" title="_07_대장게시등_게시사항" >특허장의 게시 등 : 간판, 안내문, 게시사항</h6>
+        <h6 class="canvas_div" title="_07_보세사의직무" style="color:blueviolet;">-- 대장 관련, 보세사제도 운영에 관한 고시 제10조(보세사의 직무) (div)--</h6>
+        <h6 class="canvas_div" title="_07_대장게시등_설명이필요한대장들">화물관련 대장 (간단한 설명) </h6>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 대장 작성방법 --</h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 중량체크, 검품정보, 미래소프트 즐겨찾기 --</h6>
+        <h6 class="canvas_div" title="_08_팔번_중량체크관련" >중량체크 방법 [계근정보 입력]</h6>
+        <h6 class="canvas_div" title="_08_팔번_중량체크관련엑셀파일사용법" >계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</h6>
+        <h6 class="canvas_div" title="_08_팔번_내국번호보는방법" >★ 내국번호는 입고내역×, 보는방법, 번호부여방식 등</h6>
+        <h6 class="canvas_div" title="_08_팔번_검품정보" >검품정보 전산에서 확인방법 (출입자일보에 입고일자 누락시)</h6>
+        <h6 class="canvas_div" title="_08_팔번_즐겨찾기" >영업프로그램 즐겨찾기 추가 삭제</h6>
+      </div>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 용어 및 참고 --</h6>
         <h6 class="canvas_div" title="_01_보세화물_01_보세화물" >통관, 보세화물, 관리화물 등 용어</h6>
@@ -219,11 +211,6 @@
         <h6 class="canvas_div" title="_01_보세화물_03_BL과DO등" >M/BL, H/BL, 선사 D/O, 포딩 D/O, 유산스</h6>
         <h6 class="canvas_div" title="_01_보세화물_04_물품반입반출유형" >물품반입 유형, 물품반출 유형, 선용품 관련</h6>
         <h6 class="canvas_div" title="_01_보세화물_05_미래" >미래소프트 보세프로그램</h6>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 규정에 있는 대장, 게시 --</h6>
-        <h6 class="canvas_div" title="_07_대장게시등_게시사항" >특허장의 게시 등 : 간판, 안내문, 게시사항</h6>
-        <h6 class="canvas_div" title="_07_대장게시등_설명이필요한대장들">화물관련 대장 </h6>
-      </div>
-      <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 고시 --</h6>
         <h6 class="canvas_div" title="_05_고시_01_pdf파일전체보기" >pdf파일전체보기</h6>
         <h6 class="canvas_div" title="_05_고시_10_특허보세구역운영에관한고시" >특허보세구역운영에관한고시</h6>
@@ -234,23 +221,37 @@
         <h6 class="canvas_div" title="_05_고시_60_관리대상화물관리에관한고시" >관리대상화물관리에관한고시</h6>
         <h6 class="canvas_div" title="_05_고시_70_보세운송에관한고시" >보세운송에관한고시</h6>
       </div>
-      <div>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 중량체크, 검품정보, 미래소프트 즐겨찾기 --</h6>
-        <h6 class="canvas_div" title="_08_팔번_중량체크관련" >중량체크 방법 [계근정보 입력]</h6>
-        <h6 class="canvas_div" title="_08_팔번_중량체크관련엑셀파일사용법" >계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</h6>
-        <h6 class="canvas_div" title="_08_팔번_내국번호보는방법" >★ 내국번호는 입고내역×, 보는방법, 번호부여방식 등</h6>
-        <h6 class="canvas_div" title="_08_팔번_검품정보" >검품정보 전산에서 확인방법 (출입자일보에 입고일자 누락시)</h6>
-        <h6 class="canvas_div" title="_08_팔번_즐겨찾기" >영업프로그램 즐겨찾기 추가 삭제</h6>
-      </div>
+
 
     </div>
 
-    <div class="개별카테고리" id="고시및기본전체_세관_유니패스_보세구역기초정보"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div class="개별카테고리" id="보세유니패스전체_유니패스_반출입"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
       <div>
         <h6 class="canvas_div" title="_02_세관_01_조직도업무분장연락처" >세관 부호, 조직도, 업무분장, 연락처</h6>
         <h6 class="canvas_div" title="_02_세관_02_유니패스란" >유니패스란? 로그인, 인증서등록, 화물조회</h6>
         <h6 class="canvas_div" title="_02_세관_03_문서재수신" >문서재수신(1개월 내), 재고다운로드, ?고지서?</h6>
         <h6 class="canvas_div" title="_02_세관_04_01_특허보세구역게시" >특허보세구역, 자율관리보세구역, 게시 의무</h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 반입신고, 반출신고 (전자문서) --</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순01_01문서수신" >보세프로그램으로 세관 유니패스 문서 수신하기</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순02_01반입등록" >보세화물 반입신고(등록, 송신, 수신, 확인)</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순03_반출관련" >보세화물 반출신고(등록, 송신, 수신, 확인)</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순04_내국화물" >내국화물 반입 및 반출신고, 오류처리 ★</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순08_전산재고조사" >X내국물품반출입신고 검증 및 전산재고조사</h6>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 체화 (등록, 우편발송, 전산통고) --</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순05_체화등록통고" >체화등록, 체화통고, 통고서 출력</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순06_체화등록통고엑셀활용" >(체화) 반출통고서 출력 엑셀활용</h6>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 전자seal (1.관리화물, 2.보세운송 검사대상) --</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순07_관리화물전자SEAL" >전자seal(관리화물과 보세운송 검사대상)</h6>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 보세운송차량기록지 (도착시간, 차량번호) --</h6>
+        <h6 class="canvas_div" title="_06_반출입_파순08_보세운송차량기록" >★보세운송차량 기록 및 확인</h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;" class="fw-bold" >-- 반입이상보고, 반출입신고의 정정(정정 또는 삭제) 신청 --</h6>
+        <h6 class="canvas_div" title="_03_세관_01_유니패스업무_01_이상보고" >반입물품 이상보고 (첨부서류 사후제출)</h6>
+        <h6 class="canvas_div" title="_03_세관_02_반입정정" >보세화물 반입 정정 승인 신청</h6>
+        <h6 class="canvas_div" title="_03_세관_02_반출정정" >보세화물 반출 정정 승인 신청</h6>
       </div>
     </div>
   </div>
@@ -489,6 +490,37 @@
     <div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 특허장의 게시 등</h4>
     <img src="portal/images/문서연결_세관및유니패스/07_대장게시등_게시사항.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <section id="_07_보세사의직무">
+    <h4>&#9634; 보세사제도 운영에 관한 고시</h4>
+    <h5>• 등록은 관세물류협회</h5>
+    <h5>• 보세사의 해고, 퇴사 등의 경우는 회사에서 세관에 보고 (일반 사원의 해고, 퇴사도 보고해야 함)</h5>
+    <h5>제10조(보세사의 직무) </h5>
+    <h5>① 영 제185조제1항제6호에서"관세청장이 정하는 업무"란 다음 각호와 같다. </h5>
+    <h5>1. 보수작업과 화주의 수입신고전 장치물품확인시 입회ㆍ감독 </h5>
+    <h5>2. 세관봉인대의 시봉 및 관리 </h5>
+    <h5>3. 환적화물 컨테이너 적출입시 입회ㆍ감독 </h5>
+    <h5>4. 다음 각 목의 비치대장 작성과 확인. 다만, 전산신고 등으로 관리되는 경우에는 생략할 수 있다. </h5>
+    <h5>가. 내국물품 반출입 관리대장(별지 제8호서식) </h5>
+    <h5>나. 보수작업 관리대장(별지 제9호서식) </h5>
+    <h5>다. 환적화물 컨테이너적출입 관리대장(별지 제10호서식) </h5>
+    <h5>라. 장치물품 수입신고전 확인대장(별지 제11호서식) </h5>
+    <h5>마. 세관봉인대 관리대장(별지 제12호서식) </h5>
+    <h5>바. 그 밖에 보세화물 관련규정에서 보세사의 직무로 정한 각종 대장 </h5>
+    <h5>② 제1항제1호부터 제4호까지에서 정한 사항 이외의 다른 규정에서 정한 직무는 그에 따른다. </h5>
+    <h5>제11조(보세사의 의무) ① 보세사는 다음 각호의 사항과 세관장의 업무감독에 관련된 명령을 준수하여야 하고 세관공무원의 지휘를 받아야 한다. </h5>
+    <h5>1. 보세사는 다른 업무를 겸임할 수 없다. 다만, 영업용 보세창고가 아닌 경우 보세화물 관리에 지장이 없는 범위 내에서 다른 업무를 겸임 할 수 있다. </h5>
+    <h5>2. 해당 보세구역에 작업이 있는 시간에는 상주하여야 한다.</h5>
+    <h5>다만, 영업용 보세창고의 경우에는 법 제321조제1항에 따른 세관개청시간과 해당 보세구역내의 작업이 있는 시간에 상주하여야 한다. </h5>
+    <h5>3. 직무와 관련하여 부당한 금품을 수수하거나 알선ㆍ중개하여서는 아니된다. </h5>
+    <h5>② 보세사는 보세구역내에 장치된 화물의 관리와 관련하여 법령 및 화물관계 제반규정과 자율관리보세구역 관리에 관한 규정을 항상 숙지하고 이를 준수하여야 한다. </h5>
+    <h5></h5>
+    <h5></h5>
+    <h5></h5>
+    <h5></h5>
+    <h5></h5>
     <br><br><br><br>
   </section>
 
@@ -922,52 +954,6 @@
     <img src="portal/images/문서연결_세관및유니패스/01_세관_04_01_특허보세구역게시.png" alt="이미지없음">
     <br><br><br><br>
   </section>
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-</div>
-
-<div id="반출입_유니패스전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-    <div class="개별카테고리" id="반출입_유니패스전체_반출입_체화_관리화물등"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 반입신고, 반출신고 (전자문서) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순01_01문서수신" >보세프로그램으로 세관 유니패스 문서 수신하기</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순02_01반입등록" >보세화물 반입신고(등록, 송신, 수신, 확인)</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순03_반출관련" >보세화물 반출신고(등록, 송신, 수신, 확인)</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순04_내국화물" >내국화물 반입 및 반출신고, 오류처리 ★</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순08_전산재고조사" >X내국물품반출입신고 검증 및 전산재고조사</h6>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 체화 (등록, 우편발송, 전산통고) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순05_체화등록통고" >체화등록, 체화통고, 통고서 출력</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순06_체화등록통고엑셀활용" >(체화) 반출통고서 출력 엑셀활용</h6>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 전자seal (1.관리화물, 2.보세운송 검사대상) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순07_관리화물전자SEAL" >전자seal(관리화물과 보세운송 검사대상)</h6>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 보세운송차량기록지 (도착시간, 차량번호) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순08_보세운송차량기록" >★보세운송차량 기록 및 확인</h6>
-      </div>
-      <div>
-        <h6 style="color:blueviolet;" class="fw-bold" >-- 반입이상보고, 반출입신고의 정정(정정 또는 삭제) 신청 --</h6>
-        <h6 class="canvas_div" title="_03_세관_01_유니패스업무_01_이상보고" >반입물품 이상보고 (첨부서류 사후제출)</h6>
-        <h6 class="canvas_div" title="_03_세관_02_반입정정" >보세화물 반입 정정 승인 신청</h6>
-        <h6 class="canvas_div" title="_03_세관_02_반출정정" >보세화물 반출 정정 승인 신청</h6>
-      </div>
-    </div>
-
-  </div>
 
   <section id="_06_반출입_파순01_01문서수신"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 문서수신, EDI(Electronic Data Interchange) : 전자문서교환, 보세화물 관련 문서입니다.</h4>
@@ -1649,6 +1635,57 @@
     <br><br><br><br>
   </section>
 
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+</div>
+
+<div id="특허_법규_보고전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
+    <div class="개별카테고리" id="특허법규보고전체_운영상황의보고"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title="_04_세관_01_운영상황의보고" >1.특허보세구역 운영상황의 보고, 재고조사 보고</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="특허법규보고전체_자율점검표제출"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title="_04_세관_01_자율관리보세구역자율점검표제출" >2.자율관리보세구역 자율점검표 제출</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="특허법규보고전체_법규수행능력평가"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title="_04_세관_03_법규수행평가자료준비" >법규수행능력평가 자료 작성 및 제출 (전산)</h6>
+        <h6 class="canvas_div" title="_03_세관_03_법규준수도" >법규준수도, 법규수행능력평가 점수 확인방법</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="특허법규보고전체_특허갱신"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+        <h6 class="canvas_div" title="_04_세관_04_특허갱신시" >특허갱신시 자료 작성 및 제출 (직접 제출)</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="특허법규보고전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+
+
   <section id="_04_세관_01_운영상황의보고"><div id="스크립트로ul추가"></div>
     <h4 id="move1" class="목차">&#9634; 특허보세구역 운영상황의 보고</h4>
     <li>특허보세구역 운영상황의 보고는 안내 공문이 오지 않았다고 잊어버리면 안됩니다. 2월말까지 기한입니다.</li>
@@ -2048,55 +2085,7 @@
     <br><br><br><br>
   </section>
 
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-</div>
-
-<div id="특허_법규_보고전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-    <div class="개별카테고리" id="특허법규보고전체_운영상황의보고"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_04_세관_01_운영상황의보고" >1.특허보세구역 운영상황의 보고, 재고조사 보고</h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="특허법규보고전체_자율점검표제출"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_04_세관_01_자율관리보세구역자율점검표제출" >2.자율관리보세구역 자율점검표 제출</h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="특허법규보고전체_법규수행능력평가"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_04_세관_03_법규수행평가자료준비" >법규수행능력평가 자료 작성 및 제출 (전산)</h6>
-        <h6 class="canvas_div" title="_03_세관_03_법규준수도" >법규준수도, 법규수행능력평가 점수 확인방법</h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="특허법규보고전체_특허갱신"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_04_세관_04_특허갱신시" >특허갱신시 자료 작성 및 제출 (직접 제출)</h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="특허법규보고전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  
   <div id=""><!--기본빈서식-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
@@ -2118,8 +2107,8 @@
   <div class="카테고리모음"><!--캔버스바디에 들어간다 div 3개 제한(각각 세로로)-->
     <div class="개별카테고리" id="전달사항공문발행물전체_여보세요"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
       <div>
-        <h6 class="canvas_div" title="_07_09_대장관련_여보세요" >★세관 여!보세요 발행물 [관세법령교육에 활용]</h6>
-        <h6 class="canvas_div" title="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정" >★23년11월, 특허심사평가항목배점조정</h6>
+        <h6 class="canvas_div" title="_07_09_대장관련_여보세요" >★세관 여!보세요 발행물 <span style="color:blueviolet" class="fw-bold">모음</span>  [관세법령교육에 활용]</h6>
+        <h6 class="canvas_div" title="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정" >★23년11월, <span style="color:blueviolet" class="fw-bold">특허심사평가항목배점조정</span></h6>
         <h6><span style="color:blueviolet">23년4월 : </span>수입신고수리화물의 반출기한이 토요일이면? => 관세법 제8조(기간 및 기한의 계산), 토요일 또는 공휴일에
         해당한 때에는 그 익일에 만료, 월요일까지 반출시 과태료 부과대상이 아님
         </h6>
@@ -2144,6 +2133,28 @@
         <h6><span style="color:blueviolet">23년8월★★ : 법령개정 정보, 컨테이너화물 하선장소 반입기간을 5일로 연장!!</span><br>
           '보세화물 입출항 하선하기 및 적재에 관한 고시, 제19조 제1항, 하선(기)장소 반입의무기간'<br>
           컨테이너 선박의 초대형화 및 부두 장치율 상승 등에 대응하여 컨테이너화물 하선장소 반입기간을 5일로 연장.
+        </h6>
+        <h6 class="canvas_div" title="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정"><span style="color:blueviolet">23년10월,11월★★ : 법령개정 정보, 시설높이 요건 삭제!! <b>(div)</b> </span><br>
+          '특허보세구역운영에관한 고시 제10조제1항제6호' 삭제<br>
+          지게차, 이동식 컨베이어 등 다양한 화물 상하차 수단이 활용되고 있는 여건을 반영하여<br>
+          민간에서 자율운영 가능하도록 시설높이 요건 삭제.
+        </h6>
+        <h6><span style="color:blueviolet" class="fw-bold">23년12월★★ : 보세사 및 직원!! 퇴사 등 미신고시 행정제재!!</span><br>
+          보세사 등록 : 물류협회<br>
+          보세사 퇴사 및 업무변경 신고 : 세관<br>
+          보세사 미등록 근무시 500만원 이하 벌금 (관세법276조 제5항)<br>
+          퇴사 및 직원변경 미신고시 행정제제 '주의' 처분 (특허보세구역 운영에 관한 고시 제18조 제1항 제1호)
+        </h6>
+        <h6><span style="color:blueviolet">24년1월 : 23년도 법규수행능력평가 결과 통보</span><br>
+          A등급(91개), B등급(49개), C등급 이하(10개), D등급 업체는 개선이행계획서 징구 후 관리예정
+        </h6>
+      </div>
+      <div>
+        <h6><span style="color:blueviolet" class="fw-bold">24년10월 : '보세창고 출입자 관리대장 양식 통일 안내'</span>
+          <br>
+          양식 출력이 필요한 분은 <u>yoboseyo@modoo.at</u>에서 다운받아 사용하십시오.
+        </h6>
+        <h6><span style="color:blueviolet" class="fw-bold">24년11월 발행분까지 내용 확인하였음</span>
         </h6>
       </div>
     </div>
@@ -2171,6 +2182,7 @@
 
   <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
   <div id="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정"><!--기본빈서식-->
+    <code class="fw-bold">• 여보세요 23년 11월 </code>
     <img src="portal/images/문서연결_세관및유니패스/07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정.png" alt="이미지없음">
   </div>
   <div id=""><!--기본빈서식-->
