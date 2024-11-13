@@ -1,3 +1,11 @@
+function png와text사용확인() {
+  var 연습요소id='기타전체_파일내용';
+  var 연습요소=document.querySelector('#' + 연습요소id);
+  document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
+  document.querySelector('#선택문서id').innerHTML=연습요소.id;
+  document.querySelector('#선택문서제목').innerHTML=document.querySelector('[title="' + 연습요소id + '"]').innerHTML;
+  document.querySelector('#전체대체').classList.remove('d-none');
+}
 function 연습() {
   var 연습요소id='excel_js_속성선택자';
   var 연습요소=document.querySelector('#' + 연습요소id);
@@ -1099,6 +1107,8 @@ function textarea정보에서html파일이름추출() {
     var html추출끝index=원본정보text.indexOf('<',html추출시작index);
     //"문자열".substring(startIndex, endIndex);0부터, 1부터
     원본정보text에서추출된html파일이름=원본정보text.substring(html추출시작index,html추출끝index)
+
+    console.log('원본정보text에서추출된html파일이름 : ' + 원본정보text에서추출된html파일이름)
     
     if (원본정보text.match(/src="*"/ig)) {//없으면 null 인데 length 물어보면 에러?
       html의값있는src개수=원본정보text.match(/src="*"/ig).length; 
