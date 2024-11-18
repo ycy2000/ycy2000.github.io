@@ -102,8 +102,13 @@ function 연습() {
 function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
   var 결과부분 = document.querySelector('#전체대체');
+  if (e.target.classList.contains('스티커정보')) {
+    if (document.querySelector('#' + e.target.title)) {
+      document.querySelector('#스티커_수품원_내용').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
+      document.querySelector('#스티커_수품원').classList.remove('d-none');
+    }
+  }
   if (document.querySelector('#전체대체 section')) {
-
       if (e.target.id.substr(0,4)=='move' && document.querySelectorAll('#전체대체 section #' + e.target.id)) {
         var 스크롤요소들=document.querySelectorAll('#전체대체 section #' + e.target.id);
         var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top;

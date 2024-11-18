@@ -18,7 +18,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-  <div id="html파일이름" style="display:none">index.html</div>
+<div id="html파일이름" style="display:none">index.html</div>
 <header id="head_button_group" class="container-fluid">
   <nav class="navbar bg-body-tertiary pt-1 m-0" style="white-space: nowrap;">    
     <div class="container-fluid">
@@ -62,9 +62,12 @@
 </header>
 
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
-
-<div id="전체대체" class="col-11" style="margin-left:10px;">
+<div id="스티커_수품원" class="d-none" style="position: absolute;background-color: white;border:1px solid black;">
+  <button onclick="document.querySelector('#스티커_수품원').classList.add('d-none')">X</button>
+  <div id="스티커_수품원_내용"></div>
 </div>
+<div id="전체대체" class="col-11" style="margin-left:10px;"></div>
+
 
 <!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
 <div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="보세_유니패스전체" aria-labelledby="offcanvasBottomLabel">
@@ -240,7 +243,9 @@
     <div class="개별카테고리" id="수품원전체_수출품목정보"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
       <div>
         <h6 style="color:blueviolet;font-weight: bold;">-- 한글품명, 전산신청시 영문품명, 스티커 영문품명, 학명등 정보 --</h6>
-        <h6 class="canvas_div" title="_02_수출품목정보_오징어">오징어</h6>
+        <h6>[메모] 중국은 학명을 넣어야한다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
+        <h6 class="canvas_div" title="_02_수출품목정보_오징어" style="color:blueviolet;font-weight: bold;">-- ★ 신청품목 정보 (스티커 등 문서연결 보기) (click=>div) --</h6>
       </div>
 
     </div>
@@ -425,33 +430,142 @@
   </section>
 
   <section id="_02_수출품목정보_오징어">
-    <table class="table table-bordered border-primary">
+    <table class="table table-bordered border-primary" style="width:1700px;">
       <thead class="table-active">
-        <td>한글품명</td>
-        <td>영문품명(전산신청 선택)</td>
+        <td>한글품명(+메모) <span style="color:blueviolet;font-weight: bold;">[스티커 등 정보가 있으면, 클릭시 나타남, <u>'title=문서제목'</u>]</span></td>
+        <td>영문품명(전산신청)[title]</td>
         <td>영문품명(스티커)</td>
         <td>학명</td>
       </thead>
-      <tbody>
+      <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
         <tr>
-          <td>한글품명</td>
-          <td>영문품명(전산신청 선택)</td>
-          <td>영문품명(스티커)</td>
-          <td>학명</td>
+          <td style="width:40%">2018.11.20 : 냉동 돔 (KP-034, 중국, FAO 77)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="수입통관"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN TILEFISH</td><!-- 영문품명(화주) -->
+          <td style="width:20%">CAULOLATILUS PRINCEPS</td><!-- 학명 -->
         </tr>
         <tr>
-          <th>3</th>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
+          <td style="width:40%">2021.10.13 : 냉동 삼치 (KP-034, 중국, FAO 61)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="연근해산"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN SPANISH MACKEREL</td><!-- 영문품명(화주) -->
+          <td style="width:20%">SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <th>3</th>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
+          <td style="width:40%">2020.12.16 : 냉동 오징어, 무라오징어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="원양물어획 반입신고"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN GIANT SQUID MEAT</td><!-- 영문품명(화주) -->
+          <td style="width:20%">DOSIDICUS GIGAS</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%">2021.08.17 : 냉동 오징어, 무라오징어 동체(자숙) (KP-034, 중국, FAO 87)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="원양물어획 반입신고"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN BOILED GIANT SQUID FILLETS</td><!-- 영문품명(화주) -->
+          <td style="width:20%">DOSIDICUS GIGAS</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%">2021.07.21 : 냉동 오징어 다리, 포크오징어 다리 (KP-034, 중국, FAO-41)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="원양물어획 반입신고"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN ILLEX SQUID TENTACLE</td><!-- 영문품명(화주) -->
+          <td style="width:20%">ILLEX ARGENTINUS</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%">2021.10.13 : 냉동 오징어 , 포크오징어 (KP-034, 중국, FAO-41)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="원양물어획 반입신고"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN SQUID</td><!-- 영문품명(화주) -->
+          <td style="width:20%">ILLEX ARGENTINUS</td><!-- 학명 -->
+        </tr>
+        <tr style="background-color:cyan;">
+          <td style="width:40%" class="스티커정보" title="수품원스티커_20181207_민어">2018.12.07 : 냉동 민어 (KP-034, 중국, FAO-77), 중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="수입통관"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN YELLOW CROAKER</td><!-- 영문품명(화주) -->
+          <td style="width:20%">UMBRINA RONCADOR</td><!-- 학명 -->
+        </tr>
+        <tr style="background-color:cyan;">
+          <td style="width:40%" class="스티커정보" title="수품원스티커_20210118_방어">2021.01.18 : 냉동 방어 (KP-034, 중국, FAO 61), 방어는 연근해산인 경우, 양식인지 아닌지 확인서 필요함</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="연근해산"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FORZEN YELLOW TAIL</td><!-- 영문품명(화주) -->
+          <td style="width:20%">SERIOLA QUINQUERADIATA</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%">2021.04.15 : 냉동 북방대합조개살 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title="수입통관"></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%">FROZEN ARCTIC SURF CLAM</td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td style="width:40%"></td><!-- 한글품명(+메모) -->
+          <td style="width:20%" title=""></td><!-- 전산신청 영문품명 -->
+          <td style="width:20%"></td><!-- 영문품명(화주) -->
+          <td style="width:20%"></td><!-- 학명 -->
         </tr>
       </tbody>
     </table>
   </section>
+
+  <div id="수품원스티커_20181207_민어">
+    <h5>▢ 중국에서 통보된 위험분석 면제품목에 열거되지 않아... 각서</h5>
+    <embed src="portal/images/문서연결_수품원/수품원스티커_20181207_민어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+  </div>
+
+  <div id="수품원스티커_20210118_방어">
+    <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
+    <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
+    <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+  </div>
 
   <div id=""><!--기본빈서식-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
