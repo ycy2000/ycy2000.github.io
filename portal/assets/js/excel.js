@@ -1480,7 +1480,12 @@ function 원본_선택한캔버스_검색input_change시(e) {
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
-  var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
+
+
+  //var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
+  var 검색할클래스들 = document.querySelectorAll('[id]'); //전체대체꺼 색칠위해
+
+
   console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
   //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  

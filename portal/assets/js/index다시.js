@@ -510,7 +510,10 @@ function 선택한캔버스클릭시(e) {
           }
           var 추가할문자열;
           추가할문자열=앞문자열 + 중간문자열 + 뒷문자열;
-          document.querySelector('#전체대체 #스크립트로ul추가').innerHTML=추가할문자열;
+          if (document.querySelector('#전체대체 #스크립트로ul추가')) {
+            document.querySelector('#전체대체 #스크립트로ul추가').innerHTML=추가할문자열;
+          }
+          
         }
       }
     }
@@ -702,7 +705,10 @@ function 선택한캔버스_검색input_change시(e) {
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
 
   //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
-  var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
+
+  //var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
+  var 검색할클래스들 = document.querySelectorAll('[id]'); //전체대체꺼 색칠위해
+
   console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
     if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
