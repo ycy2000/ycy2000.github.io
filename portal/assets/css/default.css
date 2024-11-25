@@ -53,7 +53,8 @@ section > img,
 section > embed {border:1px solid rgb(197, 179, 179);margin:0 auto;display:block} 
 /* section > :not(img),
 section > :not(embed) {width:60%;margin:0 auto;text-align: left;padding:5px;} 안되서 밑에껄로 했음*/ 
-section > li, section > h4, section > h5, section > h6, section pre {width:60%;margin:0 auto;text-align: left;padding:5px;}
+section > li, section > h4, section > h5, section > h6, section pre, section > code, section > div {width:60%;margin:0 auto;text-align: left;padding:5px;}
+/* section > code, section > div 는 excel.html편집시 추가됨 */
 
 section > li {padding:2px;}  /* h5와 높이 맞춤 */
 
