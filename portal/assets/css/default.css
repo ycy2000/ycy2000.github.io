@@ -76,6 +76,10 @@ section > #스크립트로ul추가 li {font-size: 20px;}  /* h5크기로 지정 
 section > #스크립트로ul추가 li, section > #스크립트로ul추가 h5 {text-indent: 30px;}/* 들여쓰기 */
 section > #스크립트로ul추가 h6 {text-indent: 60px;font-weight: bold;}/* 더 들여쓰기  굵게*/
 
+.깃관련 > code {text-indent: 20px;font-weight: bold;}
+.깃관련 > h5 {text-indent: 0px;}
+.깃관련 > h6 {text-indent: 45px;}
+
 .content {list-style: none;} /* sub list로갔을때 적용 */
 .content:hover {background-color: cadetblue;} /* sub list로갔을때 적용 */
 #결과물집합, #결과{display:none;}

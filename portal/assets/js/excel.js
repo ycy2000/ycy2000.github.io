@@ -7,7 +7,7 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습() {
-  var 연습요소id='excel_js_속성선택자';
+  var 연습요소id='_05_git_파순01_01_깃관련';
   var 연습요소=document.querySelector('#' + 연습요소id);
   document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
   document.querySelector('#선택문서id').innerHTML=연습요소.id;
@@ -965,6 +965,16 @@ function 전체대체클릭시(e) {
       폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(e)
     }    
   }
+  if (e.target.id.substr(0,4)=='move' && document.querySelectorAll('#전체대체 section #' + e.target.id).length>=2) {
+    var 스크롤요소들=document.querySelectorAll('#전체대체 section #' + e.target.id);
+    var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top;//[1]은 두번째꺼
+    var fix높이=getComputedStyle(document.querySelector('header')).height
+    fix높이=fix높이.replace('/[^0-9]/g', ''); //숫자형식만 남기기
+    fix높이 = parseInt(fix높이); //숫자형식으로 변환
+    window.scrollTo({ left: 0, top: 절대좌표 - fix높이, behavior: "smooth" });
+  }
+
+
 }
 
 
