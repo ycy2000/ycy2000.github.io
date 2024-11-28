@@ -30,7 +30,7 @@
         <!-- dorpdown묶음안에 dorpdown-toggle누르면 dropdown-menu보이게된다 -->
         <!-- #excel캔버스전체 클릭하면 나오는 id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#excel캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#탁구github전체" aria-controls="offcanvasBottom">탁구,github,샷컷</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#git관련전체" aria-controls="offcanvasBottom">git관련</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#htmlJavascript전체" aria-controls="offcanvasBottom">htmlJava</button>
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
@@ -68,7 +68,7 @@
 </div>
 
 <!-- 캔버스버튼눌렀을때 나오는 연결된 곳 -->
-<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="탁구github전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="git관련전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title" class="캔버스바디_초기화">초기화</h6><!--click동작-->
@@ -161,6 +161,23 @@
 <!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
  <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
 <div id="기타전체_관련자료none" class="d-none 모든검색">
+  <div class="개별카테고리" id="기타전체_탁구">
+    <div>
+      <h6 class="canvas_div" title='출처밝히는방법'>출처 밝히는 방법</h6>
+      <h6 class="canvas_div" title='포핸드1'>포핸드1 :</h6>
+      <h6 class="canvas_div" title='빽핸드1'>빽핸드1 : 박자</h6>
+      <h6 class="canvas_div" title='풋워크1'>풋워크1 : 박자</h6>
+      <h6 class="canvas_div" title='탁구링크1'>탁구 링크</h6>
+      <h6 class="canvas_div" title='탁구메모1'>탁구 메모</h6>
+      <h6 class="canvas_div" title='습득할것들1'>습득할것들1</h6>
+    </div>
+    <div>
+      <h6 class="canvas_div" title='실마리_빽쪽움직임'>실마리 빽쪽움직임</h6>
+    </div>
+  </div>
+  <div class="개별카테고리" id="기타전체_샷컷"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <h6 class="canvas_div" title='동영상편집_링크'>동영상편집 정보 링크</h6>
+  </div>
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="기타전체_기타"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <h6 class="canvas_div" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
@@ -188,6 +205,227 @@
   </div>
 
   <!-- 카테고리 끝났으면 아래는 개별파일 -->
+  <div id="출처밝히는방법"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• 논문 : 논문 저자, 「논문명」, 발행처, 발생호(발행연도), 인용 쪽수 표기</code>
+      <code class="fw-bold">• 단행본 : 한 권, 한 권이 단독으로 간행되는 서적을 뜻한다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 집필자(저자), "제목", 출판사, 발행연도, 인용쪽수(p.101~102)</code>
+      <code class="fw-bold">• 인터넷 신문기사 : 기자이름, "기사 제목", 신문사 이름, 기고 일자, URL</code>
+      <code class="fw-bold">• 웹페이지 : 웹페이지 운영자 이름, 업데이트 일자, URL</code>
+      <code class="fw-bold">• (백과) 사전 : (저자명), 항목, (백과) 사전 이름, 출판사, 발행연도</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold" style="color:blueviolet"></code>
+      <h5 class="fw-bold">출처 : https://semobakwi.tistory.com/56</h5>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>  
+  <div id="포핸드1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold"><a href="https://domountain.tistory.com/17952518" target="_blank">포핸드 롱</a> </code>
+
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <!--<img src="" alt="이미지없음">-->
+      <h6 style="text-indent: 23px;"></h6>
+      <h5 class="fw-bold"></h5>
+      
+    </div>
+  </div>
+  <div id="빽핸드1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold"><a href="https://domountain.tistory.com/17952572" target="_blank">빽핸드</a> </code>
+
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <!--<img src="" alt="이미지없음">-->
+      <h6 style="text-indent: 23px;"></h6>
+      <h5 class="fw-bold"></h5>
+      
+    </div>
+  </div>
+  <div id="풋워크1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold" style="color:blueviolet">• 하체는 단단하게, 상체는 유연하게</code>
+      <h5 class="fw-bold">포핸드쪽 움직임</h5>
+      <code class="fw-bold">• 목적지에 오른발을 위치하는게 목표 : 왼발을 튕겨 오른발 이동 - 오른발 이동과 동시에 왼발이 기본보폭으로 올 수 있도록 함</code>
+      <h6 style="text-indent: 15px;">1. 왼발이 슥 끌려오는 느낌.(오른쪽으로 이동하는 힘으로 왼쪽이 가벼워진 틈을 이용)</h6>
+      <h6 style="text-indent: 33px;">오른쪽으로 이동할때 : 앞쪽이 숙여진 기본자세가 45도가 되도록 머리를 숙이며 45도로 향한다.</h6>
+      <h6 style="text-indent: 33px;">동시에 백스윙한다. 마지막에 팔꿈치 약간 뒤로가고 팔이 약간 펴지며 스윙준비. 다음 연속동작 준비. 끊김 안됨</h6>
+      <h6 style="text-indent: 15px;">2. 추가로 더 오른쪽으로 가야하는 경우 : 왼발쪽에 적당한 중심이 오면 오른쪽을 향하는 힘을 같이 이용하여 </h6>
+      <h6 style="text-indent: 35px;">목표 타격지짐까지 튕겨 이동함과 동시에 스윙한다. 3.의 골반을 정면으로 트는 힘을 적용. 강하지 않게 된다.</h6>
+      <h6 style="text-indent: 35px;">부족한 중심이동은 팔로스로는 안으로 끝까지 당기거나 한다. 오른발 찍고 치우쳐진 공간을 조금이라도 복귀한다.</h6>
+      <h6 style="text-indent: 15px;">3. 2.의 경우가 아니면, 틀어진 45도 골반을 정면으로 틈과 동시에 오른쪽 75%중심을 회전과 함께 이동한다.</h6>
+      <h6 style="text-indent: 33px;">동시에 약간 펴 준 팔을 접으면서 2~3시 타격시 가속이 최대가 되게 타격한다.</h6>
+      <h6 style="text-indent: 15px;">4. 궤적이 유지되도록 한다 : 팔꿈치가 스윙의 힘으로 자연스럽게 앞으로 향하며 팔을 90도에서 약간 접힘.</h6>
+      <h6 style="text-indent: 15px;">※ 공의 높이나 바운드상태(오름, 내림 등)에 따라 라켓 각도, 타격 강도, 몸의 높이(무릎으로), 각도유지 등을 조정한다.</h6>
+
+
+
+
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+
+
+
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <!--<img src="" alt="이미지없음">-->
+      <h6 style="text-indent: 23px;"></h6>
+      <h5 class="fw-bold"></h5>
+      
+    </div>
+  </div>
+  <div id="탁구링크1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=tYbZYPzqg4E" target="_blank">백드라이브 안되는분, 1편 폼만 신경쓰지 마시고요 ㅠ</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 그립</code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=u-c8CP3FuuE" target="_blank">탁구 미공개 영상1 - 임창국 코치님이 공개하는 백푸쉬의 자세와 타점 1부</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=8_EJCE_ZoPU" target="_blank">임창국샘이 콕콕 찍어준다. ||커트볼 드라이브 안전이 우선이다||</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 55초~1분50초 : 어떻게든 빨리 받아내려고 한다, 받아주려고 해야한다, 이겨내려고하면 안된다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 3분30초 : 맞을때 접어요, 도는 느낌. 어? 내가 회전을 줬네..4분40초 느낌</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 11분 : ★ 스윙</code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=Ej4Mc5QjLyI" target="_blank">BEST11 드라이브, 임팩트의 비밀(1부) 어느구간에서 힘을 줘야 하나?</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 1분14초, 느낌. - 4분 28초, 잡는 타이밍, 마중나간다??</code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=U3sEV8CR1wU" target="_blank">포핸드 드라이브 라켓 각도 조금만 바꿔보세요 (김성환 관장1부)</a></code>
+      <code class="fw-bold" style="text-indent: 15px;">- 라켓각도 두껍게, 사선 스윙이기 때문에 숙여지게 되어 있다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 커트볼은 민볼보다 더 내리고 스윙스피드 더 빠르게, 민볼도 각도는 같게</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 4분40초 열고쳐도 숙여짐, 7분35초 사선스윙, 8분30초 카운터 드라이브, </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 9분49초 백사이드 포핸드 드라이브, </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=FLHfHYtFDXo" target="_blank">탁구 정영식코치 드라이브 기초강의~</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=C_L-JOHILAc&t=15s" target="_blank">정영식 틱그 커트볼 백핸드 드라이브 강의</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=OYxmFDUeI_I&t=439s" target="_blank">[순우스타일35] 쉽게 거는 백드라이브 (1부) 쇼트와 백드라이브의 차이를 아세요??</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 쇼트, 드라이브, 자세 같도록</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 드라이브 : <span style="color:blueviolet">힘빼고 빠르게 후, 마지막에 잡으려면 어깨 등에 무리가 온다.</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- 드라이브 : 쇼트의 마무리 동작처럼 (첫 힘이 마지막 즈음까지 유지?) 하면 무리가 덜 되는듯</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 드라이브 : 숙달?되면 손목으로 털어줘서 걸어지는 것 까지 (짧은 동작 필요할때)</code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=M3sBb46eru8" target="_blank">탁구게임잘하는방법,게임용 컷트볼 드라이브 2가지,탁구레슨 기초기본연습</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=3Lu9ANoyocI" target="_blank">탁구게임잘하는방법,공을 잡아치기?,투 스텝, 탁구레슨기초기본연습</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=onwrNXZi6VE" target="_blank">[황세준 탁구클럽] 실전 풋웍 - #1. 전진에서의 역습을 위한 스텝</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=r59IVXayfGg" target="_blank">[황세준 탁구클럽] 실전 풋웍 - #2. 강한 임팩트를 위한 짧은 스텝</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=Bn94wCKSxmE&t=179s" target="_blank">커트볼 백드라이브 / 이것만 알면 고민도 해결되고 성공률이 높아질 것 같아요 !! (하회전편)</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 하회전과 상회전 스윙이 똑같다? 팔 말고 무릎만 낮춰주면 된다? </code>
+      <code class="fw-bold">• <a href="https://m.cafe.daum.net/pbruk/I7B9/134?listURI=%2Fpbruk%2FI7B9" target="_blank">[스크랩] [기술 설명][왕리친의 기술] (1) 포핸드 드라이브의 기본/ 고슴도치탁구크럽</a> </code>
+      <code class="fw-bold">• <a href="https://dic.kumsung.co.kr/web/smart/detail.do?headwordId=11133&findCategory=B002009&findBookId=35" target="_blank">탁구의 드라이브</a> </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=AefFXPOBh7w" target="_blank">[ENG] 움직임의 시작. 포/백 전환 (지역 7부 레슨)</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 1분49초, </code>
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=eEK1nIHPrls&t=717s" target="_blank">[탁구 레슨] 회전많고 낮은 서비스를 자유롭게 구사하고 싶다면, 국대만 18년 유은총 선수의 포핸드 서브 꿀팁</a> </code>
+
+      
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <!--<img src="" alt="이미지없음">-->
+      <h6 style="text-indent: 23px;"></h6>
+      
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=oDwOSX86sBs" target="_blank">풋워크란? What is footwork?</a> </code>
+      <code class="fw-bold" style="text-indent: 15px;">- 1분40초, </code>
+      <code class="fw-bold" style="text-indent: 15px;">1. 두발로 중심을 잡아준다. </code>
+      <code class="fw-bold" style="text-indent: 15px;">2. 두 발을 움직여서 공 가까이 다가간다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">3. 발을 움직여서 백스윙하고 두발로 중심을 잡아준다. </code>
+      <code class="fw-bold" style="text-indent: 15px;">4. 발을 밀면서 타격의 추진력을 만들어 낸다. </code>
+      <code class="fw-bold" style="text-indent: 15px;">5. 임팩트 순간에 양발로 브레이크해서 몸통회전을 가속한다. </code>
+      <code class="fw-bold" style="text-indent: 15px;">6. 스윙이 끝나고 다시 두발로 중심을 잡아준다. </code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 투스탭 : 왼발이 오른발보다 조금 앞 자세에서 </code>
+      <code class="fw-bold" style="text-indent: 32px;color:blueviolet">가려는 방향 반대발이 크로스되며 이동</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 점프스탭  </code>
+      <code class="fw-bold" style="text-indent: 32px;color:blueviolet">1. 발 트위스트 하면서 스윙하면서 </code>
+    </div>
+  </div>
+
+  <div id="탁구메모1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• 약간 두꺼운 타격점을 찾아 타격후 덮어주는+눌러주는 궤적이지만 안으로 감기는 동작이 안되도록</code>
+
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• </code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="습득할것들1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">습득할것들</h5>
+      <code class="fw-bold">• 다음의 적당한 감각을 기른다. : <span style="color:blueviolet">댄다, 민다, 뻗는다, 건다.</span></code>
+      <code class="fw-bold">• 디펜스에서(댄다, 대면서 민다[압박]) : 무거운 공인 경우 특히 벽을 만들어 민다. <span style="color:blueviolet">기본 스윙궤적을 따른다.</span></code>
+      <h6 style="text-indent: 15px;">기본 결대로 스윙궤적이지만 느낌상 힘을 흡수한 후, 궤적에 따라 힘을 받는 벽을 만들어 미는 느낌. 숙달되면 빠르게 밀면 압박됨.</h6>
+      <h6 style="text-indent: 15px;">빠른거는 나주이고 무조건!! <span style="color:blueviolet">적당한 궤적대로 이동한다.</span></h6>
+      <h5 class="fw-bold" style="color:blueviolet">기본 빽자세는 엄청 빠르게 전환할 수 있다. 이것을 전제로!!</h5>
+      <h5 class="fw-bold">안되는것 : 빽푸시 디팬스시, 가운데 빽으로 오는 공!!</h5>
+      <code class="fw-bold">• </code>
+      <h5 class="fw-bold">안되는것 : 빽푸시 디팬스시, 왼쪽 먼 빽으로 오는 공!!</h5>
+      <code class="fw-bold">• 항상 앞꿈치에 무게중심을 두고 무릎을 굽히고, 다리 넓이는 디딤발을 찰 수 있는 적당한 거리(어깨너비보다 조금 넓게)</code>
+      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">왼쪽으로 이동시 : 오른쪽 디딤발을 차면 바로 왼쪽발이 이동할 수 있는자세에서 이동하는데,</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">중요한것! 왼발이동시 기본보폭이 되도록 오른발이 끌듯이 기본보폭을 맞추면서 끌어온다.</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">이때 (필요시) 무게 중심을 오른발로 두어 한번더 왼쪽으로 도약할 수 있도록 한다.</h6>
+      <h6 style="text-indent: 15px;"></h6>
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="실마리_빽쪽움직임"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">A~C 해보기, 결과 알려주기 : 2024.11.21, <span style="color:blueviolet;font-weight: bold;">경직되면 대처하지 못한다</span></code>
+      <code class="fw-bold">A• 문제점 및 예상되는 원인 : 빽쪽 라켓끝에 맞거나 못미치는 경우</code>
+      <h6>1. 오른발이 차 주면서 왼발이 왼쪽으로 움직이며 목적위치를 찾아갈때 <span style="color:blueviolet;font-weight: bold;">휘어나가는것 감안하여 도착지 설정해보기!!</span></h6>
+      <h6 style="text-indent: 15px;">- 긴장이 많아서 그런가? 목적지에 못미쳐 급하게 멈추고 "경직되면서 우측으로 당겨치는 모션"에서 오차발생하는듯</h6>
+      <h6 style="text-indent: 30px;">(해볼것) 경직되는 모션을 조금 늦춰보자. 경직되는 감은 필요한듯하다. 타격시 라켓 꽉 쥐어줘야할것같다.</h6>
+      <br>
+      <code class="fw-bold">B• 문제점 및 예상되는 원인 : 기본 중립자세와 공이 오는 중에 자세 잡기</code>
+      <h6 style="color:blueviolet;font-weight: bold;">1. 편한 빽쪽으로 오면, 아무리 강한 공이라도 "절대!!"" 긴장하지 말것. 어찌보면 정말 편한공인듯하다.</h6>
+      <h6>2. 포핸드 쪽으로 오면, 무조건적으로 급하게 준비하지 않기.</h6>
+      <h6 style="text-indent: 15px;">- 어쩔수 없을때 팔만 각 잡더라도, 이런 경우가 아니면 반동하여 스윙 제대로 하기</h6>
+      <h6 style="text-indent: 15px;">- 정말 빠르게, 정말 짧게 포핸드 골반과 어깨 돌린후 바로 스윙할때 정확하게 할 수 있도록. <span style="color:blueviolet;font-weight: bold;">급하게가 아니도록</span></h6>
+      <br>
+      <code class="fw-bold">C• 타격직전까지 힘빼기, 약간의 긴장감 + 자유로움 움직임 가능한 상태, 다리에만 힘주는 느낌가지기</code>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <code class="fw-bold">• https://www.youtube.com/watch?v=4TrFBSv6Jl8 </code>
+      <h6 style="text-indent: 15px;">- 빽쪽, 몸이 필요한 자리로 오지 않았어요. 몸부터 자리를 찾아가는게 중요합니다. </h6>
+      <h6 style="text-indent: 15px;">- 몸은 빠르게 움직이고, 스윙은 느긋하게 하세요. 몸이 타격 존을 빨리 만들어야 합니다. </h6>
+      <h6 style="text-indent: 15px;">- 가능하면 한발에 위치에 도달하도록 하세요. </h6>
+      <h6 style="text-indent: 15px;">- 일단 몸 중심이 좌우 어느쪽으로 치우치지 않도록 서 있어야 합니다. </h6>
+      <h6 style="text-indent: 15px;">- 몸 중심도 너무 앞으로 몰려 있으면 상하좌우 움직임이 자유롭지 못합니다. 몸은 눌러두지 않는것이 중요합니다. </h6>
+      <h6 style="text-indent: 15px;">- 몸이 전체적으로 움직이는것도 좋지 않습니다. 가능한 경우라면 원스탭으로 안정적으로 이동하면 좋습니다. </h6>
+      <h6 style="text-indent: 15px;">- 공이 짧으면 오른발을 앞으로 딛고 치면되고, 길면 왼발이 한발 뒤로 딛고 치면 됩니다. </h6>
+      <h6 style="text-indent: 15px;">- 몸 중심을 잡은 상황에서 앞으로가든 뒤로 가든 하세요. </h6>
+      <h6 style="text-indent: 15px;">- 몸 중심이 잡혀있다면 다 사용할 수 있습니다. 타이밍이 늦으면 높을 루프를 올리면 됩니다. </h6>
+      <h6 style="text-indent: 15px;">- 타이밍을 일부러 늦추거나 몸을 조금만 틀어서 방향을 바꿀수도 있습니다. </h6>
+    </div>
+  </div>
+
   <div id="기타전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=290px style="border:1px solid black;">
@@ -2385,24 +2623,9 @@
 
 </div>
 
-<div id="탁구github전체_관련자료none" class="d-none 모든검색">
+<div id="git관련전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="탁구github전체_탁구">
-      <div>
-        <h6 class="canvas_div" title='출처밝히는방법'>출처 밝히는 방법</h6>
-        <h6 class="canvas_div" title='포핸드1'>포핸드1 :</h6>
-        <h6 class="canvas_div" title='빽핸드1'>빽핸드1 : 박자</h6>
-        <h6 class="canvas_div" title='풋워크1'>풋워크1 : 박자</h6>
-        <h6 class="canvas_div" title='탁구링크1'>탁구 링크</h6>
-        <h6 class="canvas_div" title='탁구메모1'>탁구 메모</h6>
-        <h6 class="canvas_div" title='습득할것들1'>습득할것들1</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div" title='실마리_빽쪽움직임'>실마리 빽쪽움직임</h6>
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="탁구github전체_github"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="git관련전체_github"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 분산 버전관리 시스템 <span style="color:black">[PC에 설치]</span></h6>
         <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 로컬저장소와 원격저장소 사이에서 파일을 관리한다.</h6>
@@ -2411,36 +2634,63 @@
         <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : 여러 유용한 addOn 추가 설치 필요 <span style="color:black">[PC에 설치]</span></h6>
         <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : html, css, js 편집프로그램 중 하나, <span style="color:black">[git 명령 사용 가능]</span></h6>
         <h6 style="color:blueviolet;font-weight: bold;">[메모] 두군데 로컬컴퓨터에서 gitHub 원격저장소와 파일 동기화하여 사용중</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 변경내용동기화(저장)개념 : add-commit-push(동기화), 셑트다.</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub꺼 가져오기 : git pull origin main</h6>
-        <h6 style="color:blueviolet;font-weight: bold;"><br></h6>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 기본 사용 순서 --</h6>
-
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 컴퓨터꺼 gitHub에 올리기 : add-commit-push(동기화), 셑트다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub꺼 컴퓨터에 가져오기 : git pull origin main</h6>
+        <h6 style="font-weight: bold;">-- 필요한 만큼의 기본적인 사용법만 알고자 한다 -- </h6>
       </div>
       <div>
-        <h6 class="canvas_div" title='_05_git_깃관련_큰틀에서'>깃, 큰틀에서 이해해보기</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 기본 사용 방법 --</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_깃관련_큰틀에서'>[깃-로컬 깃폴더-gitHub 원격저장소, 큰틀에서 이해해보기]</h6>
+        <h6 class="fw-bold">1. 처음 셑팅 : git 프로그램 컴퓨터에 <a href="https://sfida.tistory.com/46" target="_blank">설치하기(링크)</a>. gitHub와 연동은 나중에.</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_깃허브가입하기'>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용), 원격저장소 주소확인</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_연동설정'>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 연동설정</h6>
+        <h6 class="fw-bold">4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 플러그인</h6>
+        <h6 class="fw-bold">5. 주요명령어 : add, commit, push, pull 사용법</h6>
+        <h6 class="fw-bold">6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법 <span style="color:blueviolet;font-weight: bold;">(지켜야 할 것들)</span></h6>
+        <h6 class="fw-bold">7. gitHub 원격저장소의 복사본 만들기(clone)</h6>
+        <h6 class="fw-bold">8. gitHub에서 레포지터리(원격저장소) 삭제하기</h6>
+        <h6 class="fw-bold">9. gitHub에서 레포지터리(원격저장소) 새로만들고 파일올리기</h6>
+        <h6 style="color:blueviolet;" class="fw-bold">10. 동기화 중, 발생할 수 있는 여러 경우들 대처방법</h6>
+        <h6 class="fw-bold">11. 기타 : 주요명령어 외에는 이해가 안된다.</h6>
+      </div>
+      <div>
         <h6 class="canvas_div" title='_05_git_파순01_01_깃관련' style="font-weight: bold;">★ git [설치부터 사용방법, git, gitHub, vsCode] <span style="color:blueviolet">click</span></h6>
         <h6 style="font-weight: bold;">Visual Studio Code 프로그램 깔려있다면 깃폴더 가져와서 편집 </h6>
         <h6 style="font-weight: bold;">add, commit, push를 vsCode프로그램에서 하는 방법</h6>
-      </div>
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;"><a href="https://www.freecodecamp.org/korean/news/git-fetch-vs-pull/" target="_blank">fetch, pull 명령어,</a></h6>
-        <h6 style="color:blueviolet;font-weight: bold;"><a href="https://velog.io/@msung99/push-브랜치-깃플로우-pull" target="_blank">fetch, pull 차이점, merge</a></h6>
-        <h6 style="color:blueviolet;font-weight: bold;"><a href="https://velog.io/@henotony/git-명령-취소되돌리기" target="_blank">git 명령 취소(되돌리기)</a></h6>
-        
-
         <h6>전체변경 : ctrl + shift + L</h6>
         <h6>https://usingu.co.kr/frontend/git/한컴퓨터에서 여러계정</h6>
-        <h6 class="canvas_div" title='_05_git_깃관련_설치방법'>git의 이해, git 설치방법, gitHub 사용법, vsCode 등 정보 링크</h6>
-
+        <h6 class="canvas_div" title='_05_git_깃관련_설치방법' style="color:blueviolet;font-weight: bold;">git의 이해, git 설치방법, gitHub 사용법, vsCode 등 정보 링크</h6>
         <h6 class="canvas_div" title='_05_git_파순02_01_vscodeGitAddCommit'>_05_git_파순02_01_vscodeGitAddCommit</h6>
       </div>
-      
-  
     </div>
-    <div class="개별카테고리" id="탁구github전체_샷컷"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <h6 class="canvas_div" title='동영상편집_링크'>동영상편집 정보 링크</h6>
+
+    <div class="개별카테고리" id="git관련전체_vsCode"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
     </div>
+
+    <div class="개별카테고리" id="git관련전체_Bootstrap"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
+        <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
+
+        
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+
 
     <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -2461,231 +2711,43 @@
   </div>
 
   <!-- DIV들 모_음 : 하나가 올라감 -->
-  <div id="출처밝히는방법"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• 논문 : 논문 저자, 「논문명」, 발행처, 발생호(발행연도), 인용 쪽수 표기</code>
-      <code class="fw-bold">• 단행본 : 한 권, 한 권이 단독으로 간행되는 서적을 뜻한다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 집필자(저자), "제목", 출판사, 발행연도, 인용쪽수(p.101~102)</code>
-      <code class="fw-bold">• 인터넷 신문기사 : 기자이름, "기사 제목", 신문사 이름, 기고 일자, URL</code>
-      <code class="fw-bold">• 웹페이지 : 웹페이지 운영자 이름, 업데이트 일자, URL</code>
-      <code class="fw-bold">• (백과) 사전 : (저자명), 항목, (백과) 사전 이름, 출판사, 발행연도</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold" style="color:blueviolet"></code>
-      <h5 class="fw-bold">출처 : https://semobakwi.tistory.com/56</h5>
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>  
-  <div id="포핸드1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold"><a href="https://domountain.tistory.com/17952518" target="_blank">포핸드 롱</a> </code>
 
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <!--<img src="" alt="이미지없음">-->
-      <h6 style="text-indent: 23px;"></h6>
-      <h5 class="fw-bold"></h5>
-      
-    </div>
-  </div>
-  <div id="빽핸드1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold"><a href="https://domountain.tistory.com/17952572" target="_blank">빽핸드</a> </code>
-
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <!--<img src="" alt="이미지없음">-->
-      <h6 style="text-indent: 23px;"></h6>
-      <h5 class="fw-bold"></h5>
-      
-    </div>
-  </div>
-  <div id="풋워크1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold" style="color:blueviolet">• 하체는 단단하게, 상체는 유연하게</code>
-      <h5 class="fw-bold">포핸드쪽 움직임</h5>
-      <code class="fw-bold">• 목적지에 오른발을 위치하는게 목표 : 왼발을 튕겨 오른발 이동 - 오른발 이동과 동시에 왼발이 기본보폭으로 올 수 있도록 함</code>
-      <h6 style="text-indent: 15px;">1. 왼발이 슥 끌려오는 느낌.(오른쪽으로 이동하는 힘으로 왼쪽이 가벼워진 틈을 이용)</h6>
-      <h6 style="text-indent: 33px;">오른쪽으로 이동할때 : 앞쪽이 숙여진 기본자세가 45도가 되도록 머리를 숙이며 45도로 향한다.</h6>
-      <h6 style="text-indent: 33px;">동시에 백스윙한다. 마지막에 팔꿈치 약간 뒤로가고 팔이 약간 펴지며 스윙준비. 다음 연속동작 준비. 끊김 안됨</h6>
-      <h6 style="text-indent: 15px;">2. 추가로 더 오른쪽으로 가야하는 경우 : 왼발쪽에 적당한 중심이 오면 오른쪽을 향하는 힘을 같이 이용하여 </h6>
-      <h6 style="text-indent: 35px;">목표 타격지짐까지 튕겨 이동함과 동시에 스윙한다. 3.의 골반을 정면으로 트는 힘을 적용. 강하지 않게 된다.</h6>
-      <h6 style="text-indent: 35px;">부족한 중심이동은 팔로스로는 안으로 끝까지 당기거나 한다. 오른발 찍고 치우쳐진 공간을 조금이라도 복귀한다.</h6>
-      <h6 style="text-indent: 15px;">3. 2.의 경우가 아니면, 틀어진 45도 골반을 정면으로 틈과 동시에 오른쪽 75%중심을 회전과 함께 이동한다.</h6>
-      <h6 style="text-indent: 33px;">동시에 약간 펴 준 팔을 접으면서 2~3시 타격시 가속이 최대가 되게 타격한다.</h6>
-      <h6 style="text-indent: 15px;">4. 궤적이 유지되도록 한다 : 팔꿈치가 스윙의 힘으로 자연스럽게 앞으로 향하며 팔을 90도에서 약간 접힘.</h6>
-      <h6 style="text-indent: 15px;">※ 공의 높이나 바운드상태(오름, 내림 등)에 따라 라켓 각도, 타격 강도, 몸의 높이(무릎으로), 각도유지 등을 조정한다.</h6>
-
-
-
-
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-
-
-
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <!--<img src="" alt="이미지없음">-->
-      <h6 style="text-indent: 23px;"></h6>
-      <h5 class="fw-bold"></h5>
-      
-    </div>
-  </div>
-  <div id="탁구링크1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=tYbZYPzqg4E" target="_blank">백드라이브 안되는분, 1편 폼만 신경쓰지 마시고요 ㅠ</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 그립</code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=u-c8CP3FuuE" target="_blank">탁구 미공개 영상1 - 임창국 코치님이 공개하는 백푸쉬의 자세와 타점 1부</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=8_EJCE_ZoPU" target="_blank">임창국샘이 콕콕 찍어준다. ||커트볼 드라이브 안전이 우선이다||</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 55초~1분50초 : 어떻게든 빨리 받아내려고 한다, 받아주려고 해야한다, 이겨내려고하면 안된다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 3분30초 : 맞을때 접어요, 도는 느낌. 어? 내가 회전을 줬네..4분40초 느낌</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 11분 : ★ 스윙</code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=Ej4Mc5QjLyI" target="_blank">BEST11 드라이브, 임팩트의 비밀(1부) 어느구간에서 힘을 줘야 하나?</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 1분14초, 느낌. - 4분 28초, 잡는 타이밍, 마중나간다??</code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=U3sEV8CR1wU" target="_blank">포핸드 드라이브 라켓 각도 조금만 바꿔보세요 (김성환 관장1부)</a></code>
-      <code class="fw-bold" style="text-indent: 15px;">- 라켓각도 두껍게, 사선 스윙이기 때문에 숙여지게 되어 있다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 커트볼은 민볼보다 더 내리고 스윙스피드 더 빠르게, 민볼도 각도는 같게</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 4분40초 열고쳐도 숙여짐, 7분35초 사선스윙, 8분30초 카운터 드라이브, </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 9분49초 백사이드 포핸드 드라이브, </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=FLHfHYtFDXo" target="_blank">탁구 정영식코치 드라이브 기초강의~</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=C_L-JOHILAc&t=15s" target="_blank">정영식 틱그 커트볼 백핸드 드라이브 강의</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=OYxmFDUeI_I&t=439s" target="_blank">[순우스타일35] 쉽게 거는 백드라이브 (1부) 쇼트와 백드라이브의 차이를 아세요??</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 쇼트, 드라이브, 자세 같도록</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 드라이브 : <span style="color:blueviolet">힘빼고 빠르게 후, 마지막에 잡으려면 어깨 등에 무리가 온다.</span></code>
-      <code class="fw-bold" style="text-indent: 15px;">- 드라이브 : 쇼트의 마무리 동작처럼 (첫 힘이 마지막 즈음까지 유지?) 하면 무리가 덜 되는듯</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 드라이브 : 숙달?되면 손목으로 털어줘서 걸어지는 것 까지 (짧은 동작 필요할때)</code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=M3sBb46eru8" target="_blank">탁구게임잘하는방법,게임용 컷트볼 드라이브 2가지,탁구레슨 기초기본연습</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=3Lu9ANoyocI" target="_blank">탁구게임잘하는방법,공을 잡아치기?,투 스텝, 탁구레슨기초기본연습</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=onwrNXZi6VE" target="_blank">[황세준 탁구클럽] 실전 풋웍 - #1. 전진에서의 역습을 위한 스텝</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=r59IVXayfGg" target="_blank">[황세준 탁구클럽] 실전 풋웍 - #2. 강한 임팩트를 위한 짧은 스텝</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=Bn94wCKSxmE&t=179s" target="_blank">커트볼 백드라이브 / 이것만 알면 고민도 해결되고 성공률이 높아질 것 같아요 !! (하회전편)</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 하회전과 상회전 스윙이 똑같다? 팔 말고 무릎만 낮춰주면 된다? </code>
-      <code class="fw-bold">• <a href="https://m.cafe.daum.net/pbruk/I7B9/134?listURI=%2Fpbruk%2FI7B9" target="_blank">[스크랩] [기술 설명][왕리친의 기술] (1) 포핸드 드라이브의 기본/ 고슴도치탁구크럽</a> </code>
-      <code class="fw-bold">• <a href="https://dic.kumsung.co.kr/web/smart/detail.do?headwordId=11133&findCategory=B002009&findBookId=35" target="_blank">탁구의 드라이브</a> </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=AefFXPOBh7w" target="_blank">[ENG] 움직임의 시작. 포/백 전환 (지역 7부 레슨)</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 1분49초, </code>
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=eEK1nIHPrls&t=717s" target="_blank">[탁구 레슨] 회전많고 낮은 서비스를 자유롭게 구사하고 싶다면, 국대만 18년 유은총 선수의 포핸드 서브 꿀팁</a> </code>
-
-      
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <!--<img src="" alt="이미지없음">-->
-      <h6 style="text-indent: 23px;"></h6>
-      
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=oDwOSX86sBs" target="_blank">풋워크란? What is footwork?</a> </code>
-      <code class="fw-bold" style="text-indent: 15px;">- 1분40초, </code>
-      <code class="fw-bold" style="text-indent: 15px;">1. 두발로 중심을 잡아준다. </code>
-      <code class="fw-bold" style="text-indent: 15px;">2. 두 발을 움직여서 공 가까이 다가간다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">3. 발을 움직여서 백스윙하고 두발로 중심을 잡아준다. </code>
-      <code class="fw-bold" style="text-indent: 15px;">4. 발을 밀면서 타격의 추진력을 만들어 낸다. </code>
-      <code class="fw-bold" style="text-indent: 15px;">5. 임팩트 순간에 양발로 브레이크해서 몸통회전을 가속한다. </code>
-      <code class="fw-bold" style="text-indent: 15px;">6. 스윙이 끝나고 다시 두발로 중심을 잡아준다. </code>
-      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 투스탭 : 왼발이 오른발보다 조금 앞 자세에서 </code>
-      <code class="fw-bold" style="text-indent: 32px;color:blueviolet">가려는 방향 반대발이 크로스되며 이동</code>
-      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- 점프스탭  </code>
-      <code class="fw-bold" style="text-indent: 32px;color:blueviolet">1. 발 트위스트 하면서 스윙하면서 </code>
-    </div>
-  </div>
-
-  <div id="탁구메모1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• 약간 두꺼운 타격점을 찾아 타격후 덮어주는+눌러주는 궤적이지만 안으로 감기는 동작이 안되도록</code>
-
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold">• </code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="습득할것들1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">습득할것들</h5>
-      <code class="fw-bold">• 다음의 적당한 감각을 기른다. : <span style="color:blueviolet">댄다, 민다, 뻗는다, 건다.</span></code>
-      <code class="fw-bold">• 디펜스에서(댄다, 대면서 민다[압박]) : 무거운 공인 경우 특히 벽을 만들어 민다. <span style="color:blueviolet">기본 스윙궤적을 따른다.</span></code>
-      <h6 style="text-indent: 15px;">기본 결대로 스윙궤적이지만 느낌상 힘을 흡수한 후, 궤적에 따라 힘을 받는 벽을 만들어 미는 느낌. 숙달되면 빠르게 밀면 압박됨.</h6>
-      <h6 style="text-indent: 15px;">빠른거는 나주이고 무조건!! <span style="color:blueviolet">적당한 궤적대로 이동한다.</span></h6>
-      <h5 class="fw-bold" style="color:blueviolet">기본 빽자세는 엄청 빠르게 전환할 수 있다. 이것을 전제로!!</h5>
-      <h5 class="fw-bold">안되는것 : 빽푸시 디팬스시, 가운데 빽으로 오는 공!!</h5>
-      <code class="fw-bold">• </code>
-      <h5 class="fw-bold">안되는것 : 빽푸시 디팬스시, 왼쪽 먼 빽으로 오는 공!!</h5>
-      <code class="fw-bold">• 항상 앞꿈치에 무게중심을 두고 무릎을 굽히고, 다리 넓이는 디딤발을 찰 수 있는 적당한 거리(어깨너비보다 조금 넓게)</code>
-      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">왼쪽으로 이동시 : 오른쪽 디딤발을 차면 바로 왼쪽발이 이동할 수 있는자세에서 이동하는데,</h6>
-      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">중요한것! 왼발이동시 기본보폭이 되도록 오른발이 끌듯이 기본보폭을 맞추면서 끌어온다.</h6>
-      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">이때 (필요시) 무게 중심을 오른발로 두어 한번더 왼쪽으로 도약할 수 있도록 한다.</h6>
-      <h6 style="text-indent: 15px;"></h6>
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="실마리_빽쪽움직임"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">A~C 해보기, 결과 알려주기 : 2024.11.21, <span style="color:blueviolet;font-weight: bold;">경직되면 대처하지 못한다</span></code>
-      <code class="fw-bold">A• 문제점 및 예상되는 원인 : 빽쪽 라켓끝에 맞거나 못미치는 경우</code>
-      <h6>1. 오른발이 차 주면서 왼발이 왼쪽으로 움직이며 목적위치를 찾아갈때 <span style="color:blueviolet;font-weight: bold;">휘어나가는것 감안하여 도착지 설정해보기!!</span></h6>
-      <h6 style="text-indent: 15px;">- 긴장이 많아서 그런가? 목적지에 못미쳐 급하게 멈추고 "경직되면서 우측으로 당겨치는 모션"에서 오차발생하는듯</h6>
-      <h6 style="text-indent: 30px;">(해볼것) 경직되는 모션을 조금 늦춰보자. 경직되는 감은 필요한듯하다. 타격시 라켓 꽉 쥐어줘야할것같다.</h6>
-      <br>
-      <code class="fw-bold">B• 문제점 및 예상되는 원인 : 기본 중립자세와 공이 오는 중에 자세 잡기</code>
-      <h6 style="color:blueviolet;font-weight: bold;">1. 편한 빽쪽으로 오면, 아무리 강한 공이라도 "절대!!"" 긴장하지 말것. 어찌보면 정말 편한공인듯하다.</h6>
-      <h6>2. 포핸드 쪽으로 오면, 무조건적으로 급하게 준비하지 않기.</h6>
-      <h6 style="text-indent: 15px;">- 어쩔수 없을때 팔만 각 잡더라도, 이런 경우가 아니면 반동하여 스윙 제대로 하기</h6>
-      <h6 style="text-indent: 15px;">- 정말 빠르게, 정말 짧게 포핸드 골반과 어깨 돌린후 바로 스윙할때 정확하게 할 수 있도록. <span style="color:blueviolet;font-weight: bold;">급하게가 아니도록</span></h6>
-      <br>
-      <code class="fw-bold">C• 타격직전까지 힘빼기, 약간의 긴장감 + 자유로움 움직임 가능한 상태, 다리에만 힘주는 느낌가지기</code>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <code class="fw-bold">• https://www.youtube.com/watch?v=4TrFBSv6Jl8 </code>
-      <h6 style="text-indent: 15px;">- 빽쪽, 몸이 필요한 자리로 오지 않았어요. 몸부터 자리를 찾아가는게 중요합니다. </h6>
-      <h6 style="text-indent: 15px;">- 몸은 빠르게 움직이고, 스윙은 느긋하게 하세요. 몸이 타격 존을 빨리 만들어야 합니다. </h6>
-      <h6 style="text-indent: 15px;">- 가능하면 한발에 위치에 도달하도록 하세요. </h6>
-      <h6 style="text-indent: 15px;">- 일단 몸 중심이 좌우 어느쪽으로 치우치지 않도록 서 있어야 합니다. </h6>
-      <h6 style="text-indent: 15px;">- 몸 중심도 너무 앞으로 몰려 있으면 상하좌우 움직임이 자유롭지 못합니다. 몸은 눌러두지 않는것이 중요합니다. </h6>
-      <h6 style="text-indent: 15px;">- 몸이 전체적으로 움직이는것도 좋지 않습니다. 가능한 경우라면 원스탭으로 안정적으로 이동하면 좋습니다. </h6>
-      <h6 style="text-indent: 15px;">- 공이 짧으면 오른발을 앞으로 딛고 치면되고, 길면 왼발이 한발 뒤로 딛고 치면 됩니다. </h6>
-      <h6 style="text-indent: 15px;">- 몸 중심을 잡은 상황에서 앞으로가든 뒤로 가든 하세요. </h6>
-      <h6 style="text-indent: 15px;">- 몸 중심이 잡혀있다면 다 사용할 수 있습니다. 타이밍이 늦으면 높을 루프를 올리면 됩니다. </h6>
-      <h6 style="text-indent: 15px;">- 타이밍을 일부러 늦추거나 몸을 조금만 틀어서 방향을 바꿀수도 있습니다. </h6>
-    </div>
-  </div>
 
   <section id="_05_git_깃관련_큰틀에서">
     <img src="portal/images/문서연결_엑셀VBA/_05_git_깃관련_큰틀에서.png" alt="이미지없음">
     <h5 class="fw-bold"><a href="https://namu.wiki/w/Git" target="_blank">Git, 나무위키</a></h5>
     <img src="portal/images/문서연결_엑셀VBA/_05_git_깃_구동원리나무위키.png" alt="이미지없음">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </section>
+
+  <section id="_05_git_깃허브가입하기">
+    <h4><a href="https://docs.github.com/ko/get-started/start-your-journey/creating-an-account-on-github" target="_blank">GitHub에서 계정 생성하기 [링크]</a></h4>
+    <h5>1. ID : XXX2XXX@naver.com, PW : dXXXXXXXX8</h5>
+    <br>
+    <h4>원격저장소(레포지터리) 만들기 (파일용, 블로그용 중 블로그용)</h4>
+    <h5>▸ REDEME 파일 만들지 않고 만들면 비어있는 저장소가 되어, 컴퓨터에서 full로 땡기지 않아도 된다.</h5>
+    <h5>▸ 연결할 원격저장소 주소는 : 만들고 난 후에 확인 가능</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소생성.png" alt="이미지없음">
+    <br>
+    <h4>원격저장소(레포지터리) 주소확인</h4>
+    <h5>▸ 만들어진 레포지터리 클릭</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
+    <br>
+    <h5>▸ 원격저장소 주소확인 <span style="color:blueviolet;font-size: 16px;font-weight: bold;">(Git Bash 실행창에서 연결할 때 : git remote add origin "https://github.com/ycy2000.github.io.git")</span></h5>
+    <h5 class="h5_번들작 fw-bold">※ 끝에 점git (.git)이 있다.</h5>
+    <h5 class="h5_번들작">① Code 클릭, ② Local 클릭</h5>
+    <h5 class="h5_번들작">③ 주소부분 : 끝부분이 숨겨져 있을수가 있으니 주의</h5>
+    <h5 class="h5_번들작">④ 클릭하면 주소가 복사되고, ctrl+v로 붙여넣을수 있는 상태가 된다.</h5>
+    <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github주소확인.png" alt="이미지없음">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </section>
+
+  <section id="_05_git_연동설정">
+    <h4 class="fw-bold" style="color:blueviolet">-- 깃허브 원격자장소와, 로컬컴퓨터의 깃폴더 연동시키기,  [처음 연결작업] --</h4>
+    <h4 class="fw-bold">1. 로컬에 정보 있음 - 원격저장소에 정보없음 </h4>
+    <h4 class="fw-bold">2. 로컬에 정보 없음 - 원격저장소에 정보없음 </h4>
   </section>
 
   <section id="_05_git_깃관련_설치방법">
@@ -2694,6 +2756,11 @@
     <h5 class="fw-bold"><a href="https://hyeju-dev.tistory.com/entry/GitGitHub-Git-Commit-Convention-깃-커밋-규칙" target="_blank">깃-커밋-규칙</a></h5>
     <h5 class="fw-bold"><a href="https://compogetters.tistory.com/entry/git깃허브-저장소-초기화init-커밋commit-머지merge-과정-한-번에-살펴보기#google_vignette" target="_blank">entry/git깃허브-저장소-초기화init-커밋commit-머지merge-과정-한-번에-살펴보기</a></h5>
     <h5 class="fw-bold"><a href="https://www.inflearn.com/course/git-github-원리부터-차근차근-근본깃무료" target="_blank">Git & GitHub, 원리부터 차근차근 - 근본깃</a></h5>
+    <h5 class="fw-bold"><a href="https://www.freecodecamp.org/korean/news/git-fetch-vs-pull/" target="_blank">fetch, pull 명령어,</a></h5>
+    <h5 class="fw-bold"><a href="https://velog.io/@msung99/push-브랜치-깃플로우-pull" target="_blank">fetch, pull 차이점, merge</a></h5>
+    <h5 class="fw-bold"><a href="https://velog.io/@henotony/git-명령-취소되돌리기" target="_blank">git 명령 취소(되돌리기)</a></h5>
+    <h5 class="fw-bold"><a href="https://blog.hwahae.co.kr/all/tech/tech-tech/9507" target="_blank">브랜치 전략 수립을 위한 전문가의 조언들</a></h5>
+    <h5 class="fw-bold"><a href="https://uiandwe.tistory.com/388" target="_blank">소스 프리징 현상</a></h5>
     
   </section>
 
@@ -2706,8 +2773,9 @@
     <code>4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 프러그인 프로그램들</code>
     <code>5. 주요명령어 : add, commit, push, pull 사용법</code>
     <code>6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법</code>
-    <code>7. gitHub에서 레포지터리(원격저장소) 삭제하기</code>
-    <code>8. 기타 : 주요명령어 외에는 이해가 안된다.</code>
+    <code>7. clone 복사본 가져오기, gitHub에서 레포지터리(원격저장소) 삭제하기</code>
+    <h6 style="color:blueviolet;font-weight: bold;text-indent: 19px;">8. 발생할 수 있는 여러 경우들 대처방법</h6>
+    <code>9. 기타 : 주요명령어 외에는 이해가 안된다.</code>
     <br>
     <h5 id="move1">1. 처음 셑팅 : git 프로그램 컴퓨터에 설치하기. gitHub와 연동은 나중에.</h5>
     <code>a) 다운로드 사이트 이동 : 구글에서 'GIT'으로 검색하면 다운로드 사이트 주소 : <a href="https://git-scm.com" target="_blank">https://git-scm.com</a></code>
