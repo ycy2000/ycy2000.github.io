@@ -22,6 +22,11 @@ if ('초기화'=='초기화') {
     버튼7개_html+='<button></button>'
   }
   document.querySelector('#분석자료_당번_있다면다음회차').innerHTML='<span></span><span></span>' + 버튼7개_html;
+
+  document.querySelector('#추출된번호_당번_있다면다음회차').innerHTML='<span></span><span></span>' + 버튼7개_html;
+
+  document.querySelector('#추출된번호_당번').innerHTML='<span></span><span></span>' + 버튼7개_html;
+
   document.querySelector('#분석자료_당번').innerHTML='<span></span>' + 버튼7개_html;
   
   var 임시_45개버튼='';
@@ -187,19 +192,37 @@ function 분석자료_회차_change() {
   if (분석자료_회차index==0) {
     document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[0].innerHTML='_';//회차
     document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[1].innerHTML='_';//날짜
+
+    document.querySelectorAll('#추출된번호_당번_있다면다음회차 span')[0].innerHTML='_';//회차
+    document.querySelectorAll('#추출된번호_당번_있다면다음회차 span')[1].innerHTML='_';//날짜
+
     for (var i=0; i<7; i++) {//세번째부터 9번째 버튼까지 7개
       document.querySelectorAll('#분석자료_당번_있다면다음회차 button')[i].innerHTML='_';
+
+      document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML='_';
     }
   } else {
     document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+0] + '회';//회차
     document.querySelectorAll('#분석자료_당번_있다면다음회차 span')[1].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+1];//날짜
+
+    document.querySelectorAll('#추출된번호_당번_있다면다음회차 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+0] + '회';//회차
+    document.querySelectorAll('#추출된번호_당번_있다면다음회차 span')[1].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+1];//날짜
+
     for (var i=0; i<7; i++) {//세번째부터 9번째 버튼까지 7개
       document.querySelectorAll('#분석자료_당번_있다면다음회차 button')[i].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+2+i];
+
+      document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML=분석자료_당번전체[분석자료_시작배열값+9+2+i];
     }
   }
   document.querySelectorAll('#분석자료_당번 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값+1];//날짜
+
+  document.querySelectorAll('#추출된번호_당번 span')[0].innerHTML=분석자료_당번전체[분석자료_시작배열값+0] + '회';//회차
+  document.querySelectorAll('#추출된번호_당번 span')[1].innerHTML=분석자료_당번전체[분석자료_시작배열값+1];//날짜
+
   for (var i=0; i<7; i++) {
     document.querySelectorAll('#분석자료_당번 button')[i].innerHTML=분석자료_당번전체[분석자료_시작배열값+2+i];
+
+    document.querySelectorAll('#추출된번호_당번 button')[i].innerHTML=분석자료_당번전체[분석자료_시작배열값+2+i];
   }
   //고정번호 새로고침
   var 고정번호들=document.querySelectorAll('.분석자료_고정등번호색칠');
@@ -533,6 +556,7 @@ function 분석자료_번호추출() {
   var 생성개수=0;
   //1회추출 먼저 작성하고 반복을 추가하기로
   for (var i=0; i<추출개수; i++) {
+    console.log(i+1)
     한줄번호누적배열=[];//당번부터 임시4까지 번호추출 누적
     번호한줄divhtml=''
     //번호를 담는다...
@@ -555,6 +579,10 @@ function 분석자료_번호추출() {
         for (var 랜덤추가=0; 랜덤추가<임시_분석자료_고정등번호색칠_클래스.length; 랜덤추가++) {
           고정번호랜덤배열.push(Math.random());
         }
+
+        //for (var 추출=0; 추출<임시_span2_숫자; 추출++) { : 중복된 숫자가 나온다....
+        //while (condition) {}
+
         for (var 추출=0; 추출<임시_span2_숫자; 추출++) {
           최대값인덱스=고정번호랜덤배열.indexOf(Math.max(...고정번호랜덤배열));
           고정번호랜덤배열[최대값인덱스]=0;//다음최대값 추출위해 0(최소값)으로 변경해둠
@@ -563,9 +591,10 @@ function 분석자료_번호추출() {
       }
     }
     //중복제거, 배열로전환, 정렬
-    console.log('new SET 전 한줄번호누적배열 : ' + typeof(한줄번호누적배열))
+    // console.log('new SET 전 한줄번호누적배열 : ' + typeof(한줄번호누적배열))
+    // 한줄번호누적배열=new Set(한줄번호누적배열);
+    // console.log('new SET 후 한줄번호누적배열 : ' + typeof(한줄번호누적배열))
     한줄번호누적배열=new Set(한줄번호누적배열);
-    console.log('new SET 후 한줄번호누적배열 : ' + typeof(한줄번호누적배열))
     한줄번호누적배열=[...한줄번호누적배열];
     한줄번호누적배열.sort((a,t) => a-t);
     //#여섯개안되면.innerHTML : 나오는대로>패스, 여섯개안되면 6개 맞추기>==
