@@ -525,6 +525,7 @@ function 분석자료_번호추출_진행가능판단_실행() {
     for (var 내부=0; 내부<45; 내부++) {
       if (document.querySelectorAll('#분석자료_여러45칸 > div:nth-of-type(' + (i+2) + ') button')[내부].innerHTML.length>0) {버튼안숫자개수+=1;}
     }
+    console.log('버튼안숫자개수 : ' + 버튼안숫자개수 + ', 추출개수 : ' + document.querySelectorAll('.클릭_더블클릭')[i].innerHTML)
     if (버튼안숫자개수<document.querySelectorAll('.클릭_더블클릭')[i].innerHTML) {
       alert('추출개수 기록 숫자가 숫자가 있는 버튼수보다 크면 안됨 : return;');
       분석자료_번호추출_진행가능판단='불가능';
@@ -560,13 +561,13 @@ function 분석자료_번호추출() {
     한줄번호누적배열=[];//당번부터 임시4까지 번호추출 누적
     번호한줄divhtml=''
     //번호를 담는다...
-    for (var 클릭_더블클릭반복=0; 클릭_더블클릭반복<document.querySelectorAll('.클릭_더블클릭').length; 클릭_더블클릭반복++) {
-      임시_아이디=document.querySelectorAll('.클릭_더블클릭')[클릭_더블클릭반복].parentNode.id;
-      임시_작업요소=document.querySelector('#' + 임시_아이디);
-      임시_span1=document.querySelectorAll('#' + 임시_아이디 + ' span')[0].innerHTML;
-      임시_span2_숫자=Number(document.querySelectorAll('#' + 임시_아이디 + ' span')[1].innerHTML);
-      임시_버튼개수=document.querySelectorAll('#' + 임시_아이디 + ' button').length;
-      임시_분석자료_고정등번호색칠_클래스=document.querySelectorAll('#' + 임시_아이디 + ' .분석자료_고정등번호색칠');
+    for (var 클릭_더블클릭반복=0; 클릭_더블클릭반복<document.querySelectorAll('#분석자료_여러45칸 .클릭_더블클릭').length; 클릭_더블클릭반복++) {
+      임시_아이디=document.querySelectorAll('#분석자료_여러45칸 .클릭_더블클릭')[클릭_더블클릭반복].parentNode.id;
+      임시_작업요소=document.querySelector('#분석자료_여러45칸 #' + 임시_아이디);
+      임시_span1=document.querySelectorAll('#분석자료_여러45칸 #' + 임시_아이디 + ' span')[0].innerHTML;
+      임시_span2_숫자=Number(document.querySelectorAll('#분석자료_여러45칸 #' + 임시_아이디 + ' span')[1].innerHTML);
+      임시_버튼개수=document.querySelectorAll('#분석자료_여러45칸 #' + 임시_아이디 + ' button').length;
+      임시_분석자료_고정등번호색칠_클래스=document.querySelectorAll('#분석자료_여러45칸 #' + 임시_아이디 + ' .분석자료_고정등번호색칠');
       // console.log('구분')
       // console.log('임시_작업요소.id : ' + 임시_작업요소.id)
       // console.log('임시_span1.innerHTML : ' + 임시_span1)
@@ -576,16 +577,26 @@ function 분석자료_번호추출() {
       if (임시_span2_숫자>0 && 임시_분석자료_고정등번호색칠_클래스.length>0) {//추출개수가 0보다 크고 숫자(색칠)이 있으면
         //랜덤배열 생성(추출하면 index참조하여 값을 0으로)
         고정번호랜덤배열=[];
+        var 카운트=0;
+
+        //0이 있을수 있고,,,, 중복도 가능하니... 다음꺼 안씀 (예전꺼)
         for (var 랜덤추가=0; 랜덤추가<임시_분석자료_고정등번호색칠_클래스.length; 랜덤추가++) {
           고정번호랜덤배열.push(Math.random());
         }
+
+        
+        console.log('임시_분석자료_고정등번호색칠_클래스.length : ' + 임시_분석자료_고정등번호색칠_클래스.length) //왜 두배의 개수가 나오는지 모르겠음
+        console.log('고정번호랜덤배열.length : ' + 고정번호랜덤배열.length)
+
+
+
 
         //for (var 추출=0; 추출<임시_span2_숫자; 추출++) { : 중복된 숫자가 나온다....
         //while (condition) {}
 
         for (var 추출=0; 추출<임시_span2_숫자; 추출++) {
           최대값인덱스=고정번호랜덤배열.indexOf(Math.max(...고정번호랜덤배열));
-          고정번호랜덤배열[최대값인덱스]=0;//다음최대값 추출위해 0(최소값)으로 변경해둠
+          고정번호랜덤배열[최대값인덱스]=-1;//다음최대값 추출위해 0(최소값)으로 변경해둠
           한줄번호누적배열.push(임시_분석자료_고정등번호색칠_클래스[최대값인덱스].innerHTML);
         }
       }

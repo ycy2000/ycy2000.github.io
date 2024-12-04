@@ -746,9 +746,23 @@ var 바디리스너용 = document.querySelector('body');
 바디리스너용.addEventListener('click', 바디클릭시동작설정)
 function 임시함수set관련() {
   //set 인수에 하나만 들어감?
-  var 배열1=[1,2,3];
-  var 배열2=[1,2,3];
-  var 배열3=[4,5,6];
+  var 배열1=[3,1,1,1];
+  var 배열2=[1,2,2,3];
+  var 배열3=[4,5,6,7];
+  console.log('배열1 : ' + 배열1);
+  console.log('배열2 : ' + 배열2);
+  console.log('배열3 : ' + 배열3);
+  console.log('배열1.join("_") : ' + 배열1.join("_"));
+  console.log('배열2.join("_"): ' + 배열2.join("_"));
+  console.log('배열3.join("_") : ' + 배열3.join("_"));
+  console.log('new Set(배열1.join("_")) : [object Set]');
+  console.log(new Set(배열1.join("_")));
+  console.log('new Set(배열2.join("_")) : [object Set]');
+  console.log(new Set(배열2.join("_")));
+  console.log('new Set(배열3.join("_")) : [object Set]');
+  console.log(new Set(배열3.join("_")));
+  console.log(배열1)
+  console.log([...배열1])
   var 셑=new Set(배열3.join('_'));
   console.log(셑);
   var 셑=new Set(배열3);
