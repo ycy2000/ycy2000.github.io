@@ -79,6 +79,13 @@ function 색칠해제_당번() {
     버튼들[i].classList.remove('색칠용버튼');
     버튼들[i].removeAttribute('title');
   }
+  var 버튼들 = document.querySelectorAll('#당번_있다면다음회차 .색칠용버튼');
+  for (var i = 0; i < 버튼들.length; i++) {
+    버튼들[i].classList.remove('색칠용버튼');
+    버튼들[i].removeAttribute('title');
+  }
+
+  
 }
 function 색칠동작() {//번호색칠 회차와 같은 회차가 당번회차에 있을때 동그라미
   console.log('색칠동작');
