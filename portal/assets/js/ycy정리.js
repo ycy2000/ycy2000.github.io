@@ -607,6 +607,9 @@ function 바디클릭시동작설정(e) {
     기본보기();
     세로_모두숨기기();
     document.querySelector('#세로구분_추출된번호_전체').classList.remove('d-none');
+
+    //document.querySelector('#필터링조건표_전체').classList.remove('d-none');
+
     return;
   }
   if (e.target.innerHTML == '필터링된번호들') {
@@ -621,6 +624,13 @@ function 바디클릭시동작설정(e) {
     기본보기();
     세로_모두숨기기();
     document.querySelector('#세로구분_임시_전체').classList.remove('d-none');
+    return;
+  }
+  if (e.target.innerHTML == '코딩메모') {
+    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==코딩메모');
+    기본보기();
+    세로_모두숨기기();
+    document.querySelector('#세로구분_코딩메모_전체').classList.remove('d-none');
     return;
   }
   if (e.target.innerHTML == '칠_관련,당번') {

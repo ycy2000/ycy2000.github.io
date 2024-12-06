@@ -808,9 +808,10 @@ function 리스너용빈곳번호_번호색칠(e) {
   if (e.target.nodeName!='BUTTON') {console.log('버튼아님'); return;}
   if (e.target.innerHTML!='') {console.log('innerHTML있음'); return;}
   e.target.classList.add('표시');
+  
   var 카운트=-1;
   var 표시배열값;
-  var 표시포함버튼들=document.querySelectorAll('#' + e.target.parentNode.id + ' button');
+  var 표시포함버튼들=document.querySelectorAll('#' + e.target.parentNode.parentNode.id + ' button');
   for (var i=0; i<45; i++) {
     카운트+=1;
     if (표시포함버튼들[i].classList.contains('표시')) {표시배열값=카운트;}
