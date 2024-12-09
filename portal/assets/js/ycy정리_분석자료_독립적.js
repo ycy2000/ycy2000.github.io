@@ -766,7 +766,7 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.classList.contains(클릭_더블클릭)')
     var 숫자;
     if (e.target.innerHTML=='') {
-      숫자=1;e.target.innerHTML=숫자;
+      숫자=0;e.target.innerHTML=숫자;
     } else if (e.target.innerHTML==6) {
       숫자='';e.target.innerHTML=숫자;
     } else {
@@ -798,10 +798,10 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
   }
 }
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
-  if (e.target.classList.contains('클릭_더블클릭')) {
-    console.log('리스너용_세로구분_분석자료_전체_dblclick시(e) ==> 더블클릭')
-    e.target.innerHTML='';
-  }
+  //if (e.target.classList.contains('클릭_더블클릭')) {
+  //  console.log('리스너용_세로구분_분석자료_전체_dblclick시(e) ==> 더블클릭')
+  //  e.target.innerHTML='';
+  //}
 }
 var 리스너용빈곳번호=document.querySelector('#분석자료_여러45칸');
 function 리스너용빈곳번호_번호색칠(e) {
