@@ -386,41 +386,43 @@ function 분석자료_회차_change() {
       document.querySelectorAll('#분석자료_30회차당번_제목 > div:nth-of-type(8) button')[i-1].classList.add('분석자료_고정등번호색칠');
     }
   }
-  //시험적이다.. 필터링조건표 편집 : 원구조에서 편집 : #분석자료_여러45칸_유사함 > div(#임시_순번45) > span2ro div1개(버튼45개)
-  document.querySelector('#분석자료_여러45칸_유사함').innerHTML=document.querySelector('#분석자료_여러45칸').innerHTML
-  //두줄더 추가, 
-  document.querySelector('#분석자료_여러45칸_유사함').innerHTML=
-  document.querySelector('#분석자료_여러45칸_유사함').innerHTML + document.querySelector('#임시_당번45').outerHTML
-  + document.querySelector('#임시_당번45').outerHTML;
-  //추가된 아이디변경 span1에 메모넣기
-  var div개수=document.querySelectorAll('#분석자료_여러45칸_유사함 > div').length;
-  document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[div개수-2].id='구분추가1';
-  document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[div개수-1].id='구분추가2';
-  document.querySelector('#분석자료_여러45칸_유사함 > #구분추가1 > span:nth-of-type(1)').innerHTML=',로 번호구분';
-  document.querySelector('#분석자료_여러45칸_유사함 > #구분추가2 > span:nth-of-type(1)').innerHTML=',로 번호구분';
-  //추가된 것은 div안의 버튼삭제
-  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가1 > div').outerHTML='<input type = "text"><span style="width:40px;">메모</span><input type = "text">';
-  document.querySelector('#분석자료_여러45칸_유사함 >  #구분추가2 > div').outerHTML='<input type = "text"><span style="width:40px;">메모</span><input type = "text">';
+
+  var 복사본='';
+  for (var i=0; i<11; i++) {
+    복사본+=document.querySelectorAll('#분석자료_여러45칸 div')[i*2].outerHTML;
+  }
+  document.querySelector('#분석자료_여러45칸_복사본').innerHTML=복사본;
+  var div개수=document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length;
   //   임시_순번45 안 2번째 span을 2개로 늘린다.
-  document.querySelector('#분석자료_여러45칸_유사함 > #임시_순번45 > span:nth-of-type(2)').outerHTML='<span onclick="인풋모두clear()">에서</span><span onclick="인풋모두clear()">까지</span>';
+  document.querySelector('#분석자료_여러45칸_복사본 > #임시_순번45 > span:nth-of-type(2)').outerHTML='<span onclick="인풋모두clear()">에서</span><span onclick="인풋모두clear()">까지</span>';
     //   다음으로나오는 형제 인풋 두개의 값을 지우는 클래스 부여한다
-    for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택').length; i++) {
-      document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택')[i].classList.add('인풋clear');
+    for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택').length; i++) {
+      document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택')[i].classList.add('인풋clear');
     }
   //   나머지 안 2번째 span을 input2개로 늘린다.
-  for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택').length; i++) {
-    document.querySelectorAll('#분석자료_여러45칸_유사함 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text"><input type = "text">';
+  for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택').length; i++) {
+    document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text"><input type = "text">';
   }
-  //까지 우측에 개별 span 추가
-  for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 > div').length; i++) {
-    if (i==0) {
-      document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML=
-      document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML + '<span style="width:35px;">개별</span>';
-    } else {
-    document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML=
-    document.querySelectorAll('#분석자료_여러45칸_유사함 > div')[i].children[2].outerHTML + '<span style="width:35px;"></span>';
+  
+  //까지 우측에 개별 span 추가, 개별이 뭔지 모르겠음 
+  if (1=='안씀') {
+    for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length; i++) {
+      if (i==0) {
+        document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML=
+        document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML + '<span style="width:35px;">개별</span>';
+      } else {
+      document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML=
+      document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML + '<span style="width:35px;"></span>';
+      }
     }
-  }
+  }   
+  if (1==1) {//C 지움
+    for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length; i++) {
+        document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[3].outerHTML='';
+    }
+  }  
+
+
 
 
 
@@ -678,6 +680,17 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     } else {
       document.querySelector('#id_임시버튼45').classList.add('d-none');
     }
+  }
+  if (e.target.innerHTML=='추출') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==추출')
+    var 추출개수span=document.querySelectorAll('#분석자료_여러45칸 .클릭_더블클릭');
+    for (var i=0; i<추출개수span.length; i++) {
+      추출개수span[i].innerHTML='';
+    }
+  }
+  if (e.target.innerHTML=='C') {
+    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==C')
+    e.target.previousSibling.innerHTML='';
   }
   if (e.target.classList.contains('분석자료_번호선택')) {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.classList.contains(분석자료_번호선택)')
