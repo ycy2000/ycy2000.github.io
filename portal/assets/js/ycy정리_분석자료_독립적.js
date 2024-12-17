@@ -98,6 +98,14 @@ function 분석자료_임시버튼45clear() {
     }
   }
 }
+function 분석자료_복사본버튼45clear() {
+  for (var i=0; i<45; i++) {//3종 색 칠할때 쓰여질수 있어서지운다
+    if (document.querySelectorAll('#id_복사본버튼45 button')[i].classList.contains('색칠용버튼')) {
+      document.querySelectorAll('#id_복사본버튼45 button')[i].classList.remove('색칠용버튼');
+      document.querySelectorAll('#id_복사본버튼45 button')[i].removeAttribute('title');
+    }
+  }
+}
 function 분석자료_피해서번호3종clear() {
   for (var i=0; i<45; i++) {//3종 색 칠할때 쓰여질수 있어서지운다
     if (document.querySelectorAll('#id_임시버튼45 button')[i].classList.contains('분석자료_피해서3종_선택번호')) {
@@ -160,6 +168,18 @@ function 분석자료_넣기아이디에_색칠번호넣기() {
     document.querySelectorAll('#' + 넣기아이디 + ' button')[i].innerHTML='';
     document.querySelectorAll('#' + 넣기아이디 + ' button')[i].classList.remove('분석자료_고정등번호색칠');
     if (document.querySelectorAll('#id_임시버튼45 button')[i].classList.contains('색칠용버튼')) {
+      document.querySelectorAll('#' + 넣기아이디 + ' button')[i].innerHTML=i+1;
+      document.querySelectorAll('#' + 넣기아이디 + ' button')[i].classList.add('분석자료_고정등번호색칠');
+    }
+  }
+}
+function 복사본_넣기아이디에_색칠번호넣기() {
+  console.log('넣기아이디 : ' + 넣기아이디)
+  if (넣기아이디=='') {return;}
+  for (var i=0; i<45; i++) {
+    document.querySelectorAll('#' + 넣기아이디 + ' button')[i].innerHTML='';
+    document.querySelectorAll('#' + 넣기아이디 + ' button')[i].classList.remove('분석자료_고정등번호색칠');
+    if (document.querySelectorAll('#id_복사본버튼45 button')[i].classList.contains('색칠용버튼')) {
       document.querySelectorAll('#' + 넣기아이디 + ' button')[i].innerHTML=i+1;
       document.querySelectorAll('#' + 넣기아이디 + ' button')[i].classList.add('분석자료_고정등번호색칠');
     }
@@ -390,8 +410,12 @@ function 분석자료_회차_change() {
   var 복사본='';
   for (var i=0; i<11; i++) {
     복사본+=document.querySelectorAll('#분석자료_여러45칸 div')[i*2].outerHTML;
+    if (i==0) {
+      복사본+=document.querySelectorAll('#분석자료_여러45칸 div')[2].outerHTML;
+    }
   }
   document.querySelector('#분석자료_여러45칸_복사본').innerHTML=복사본;
+
   var div개수=document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length;
   //   임시_순번45 안 2번째 span을 2개로 늘린다.
   document.querySelector('#분석자료_여러45칸_복사본 > #임시_순번45 > span:nth-of-type(2)').outerHTML='<span onclick="인풋모두clear()">에서</span><span onclick="인풋모두clear()">까지</span>';
@@ -401,96 +425,45 @@ function 분석자료_회차_change() {
     }
   //   나머지 안 2번째 span을 input2개로 늘린다.
   for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택').length; i++) {
-    document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text"><input type = "text">';
+    document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text" class="범위input"><input type = "text" class="범위input">';
   }
-  
-  //까지 우측에 개별 span 추가, 개별이 뭔지 모르겠음 
-  if (1=='안씀') {
-    for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length; i++) {
-      if (i==0) {
-        document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML=
-        document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML + '<span style="width:35px;">개별</span>';
-      } else {
-      document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML=
-      document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[2].outerHTML + '<span style="width:35px;"></span>';
-      }
-    }
-  }   
-  if (1==1) {//C 지움
+  if (1==11) {//C 지움
     for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length; i++) {
         document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[i].children[3].outerHTML='';
     }
-  }  
-
-
-
-
-
-
-
-
-
-
-
-  if ('숨김'=='이거안씀') {
-    //필터링조건표부분.
-    var 숨김연결번호=document.querySelectorAll('#분석자료_여러45칸_유사함 > div > span:nth-of-type(2)')
-    숨김연결번호[1].innerHTML='_' + 이월수_배열.join('_') + '_';
-    숨김연결번호[2].innerHTML='_' + 이웃수_배열.join('_') + '_';
-    숨김연결번호[3].innerHTML='_' + 이월수_배열.join('_') + '_' + 이웃수_배열.join('_') + '_';
-    var 배열편집=[];//중복제거, 배열로전환, 정렬
-    배열편집=new Set(오주간번호_보볼제외);
-    배열편집=[...배열편집];
-    배열편집.sort((a,t) => a-t);
-    숨김연결번호[4].innerHTML='_' + 배열편집.join('_') + '_';//5주출
-    배열편집=[];
-    for (var i=1; i<45; i++) {
-      if (오주간번호_보볼제외.indexOf(String(i))==-1) {배열편집.push(i)}
-    }
-    숨김연결번호[5].innerHTML='_' + 배열편집.join('_') + '_';//5주미출
-    배열편집=[];
-    for (var i=1; i<45; i++) {
-      if (오주간번호_보볼제외.filter(element => i == element).length==1) {배열편집.push(i)}
-    }
-    숨김연결번호[6].innerHTML='_' + 배열편집.join('_') + '_';//5주1출
-    배열편집=[];
-    for (var i=1; i<45; i++) {
-      if (오주간번호_보볼제외.filter(element => i == element).length==2) {배열편집.push(i)}
-    }
-    숨김연결번호[7].innerHTML='_' + 배열편집.join('_') + '_';//5주2출
-    배열편집=[];
-    for (var i=1; i<45; i++) {
-      if (오주간번호_보볼제외.filter(element => i == element).length>=3) {배열편집.push(i)}
-    }
-    숨김연결번호[8].innerHTML='_' + 배열편집.join('_') + '_';//5주3출이상
-    배열편집=[];
-    for (var i=1; i<45; i++) {
-      if (십주간번호_보볼제외.indexOf(String(i))==-1) {배열편집.push(i)}
-    }
-    숨김연결번호[9].innerHTML='_' + 배열편집.join('_') + '_';//십주미출
-    배열편집=[];
-    for (var i=1; i<45; i++) {
-      if (십오주간번호_보볼제외.indexOf(String(i))==-1) {배열편집.push(i)}
-    }
-    숨김연결번호[10].innerHTML='_' + 배열편집.join('_') + '_';//십오주미출
-    //필터링조건표부분. 끝==>
-
-    //분석자료_여러45칸_유사함 제목 innerHTML가져오기
-    var 복사할곳=document.querySelectorAll('#분석자료_여러45칸_유사함 > div > span:nth-of-type(1)');
-    for (var i=1; i<document.querySelectorAll('#분석자료_여러45칸 > div > span:nth-of-type(1)').length; i++) {
-      복사할곳[i].innerHTML=document.querySelectorAll('#분석자료_여러45칸 > div > span:nth-of-type(1)')[i].innerHTML;
-    }
-    //분석자료_여러45칸_유사함 제목 버튼가져오기
-    var 복사할곳=document.querySelectorAll('#분석자료_여러45칸_유사함 > div > div');
-    for (var i=1; i<document.querySelectorAll('#분석자료_여러45칸 > div > div').length; i++) {
-      복사할곳[i].innerHTML=document.querySelectorAll('#분석자료_여러45칸 > div > div')[i].outerHTML;
+  }
+  //추가된 다음당번 초기화후 다음당번 넣기
+  document.querySelectorAll('#분석자료_여러45칸_복사본 div')[2].id='임시_다음당번45';
+  document.querySelectorAll('#분석자료_여러45칸_복사본 div')[2].children[0].innerHTML='다음회차당번';
+  var 색칠지울곳=document.querySelectorAll('#분석자료_여러45칸_복사본 div:nth-of-type(2) button');
+  for (var i=0; i<색칠지울곳.length; i++) {
+    if (색칠지울곳[i].classList.contains('분석자료_고정등번호색칠')) {
+      색칠지울곳[i].classList.remove('분석자료_고정등번호색칠');
+      색칠지울곳[i].innerHTML='';
     }
   }
+  for (var i=0; i<6; i++) {
+    console.log(document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML);
+    if (document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML!='_') {
+      색칠지울곳[document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML-1].innerHTML=document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML;
+      색칠지울곳[document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML-1].classList.add('분석자료_고정등번호색칠');
+    }
+  }
+
+
+
+
+
+
+
+
 
 }
 function 인풋모두clear() {
   for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 input').length; i++) {
+    if (document.querySelectorAll('#분석자료_여러45칸_유사함 input')[i].classList.contains('범위input')) {
     document.querySelectorAll('#분석자료_여러45칸_유사함 input')[i].value='';
+    }
   }
 }
 function 분석자료_회차_플러스() {
@@ -662,6 +635,7 @@ function 분석자료_번호추출() {
 
 //
 var 리스너용_세로구분_분석자료_전체=document.querySelector('#세로구분_분석자료_전체');
+var 리스너용_필터링조건표_전체=document.querySelector('#필터링조건표_전체');
 function 리스너용_세로구분_분석자료_전체_click시(e) {
   if (e.target.nodeName=='BUTTON' && e.target.parentNode.parentNode.id=='id_임시버튼45') {//버튼 클릭시
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.nodeName==BUTTON && e.target.parentNode.parentNode.id==id_임시버튼45')
@@ -778,20 +752,12 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
   if (e.target.classList.contains('클릭_더블클릭')) {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.classList.contains(클릭_더블클릭)')
     var 숫자;
-    if (e.target.innerHTML=='') {
-      숫자=0;e.target.innerHTML=숫자;
-    } else if (e.target.innerHTML==6) {
+    if (e.target.innerHTML==6) {
       숫자='';e.target.innerHTML=숫자;
     } else {
       숫자=Number(e.target.innerHTML)
       숫자+=1;
       e.target.innerHTML=숫자;
-    }
-  }
-  if (e.target.innerHTML=='추출') {
-    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==추출');
-    for (var i=0; i<document.querySelectorAll('.클릭_더블클릭').length; i++) {//1부터 (두번째꺼부터)
-      document.querySelectorAll('.클릭_더블클릭')[i].innerHTML='';
     }
   }
   if (e.target.innerHTML=='추출된번호clear') {
@@ -810,6 +776,88 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     }
   }
 }
+function 리스너용_필터링조건표_전체_click시(e) {
+  if (e.target.nodeName=='BUTTON' && e.target.parentNode.parentNode.id=='id_복사본버튼45') {//버튼 클릭시
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.nodeName==BUTTON && e.target.parentNode.parentNode.id==id_복사본버튼45')
+    if (e.target.classList.contains('색칠용버튼')) {
+      e.target.classList.remove('색칠용버튼');
+      e.target.removeAttribute('title');
+    } else {
+      e.target.classList.add('색칠용버튼');
+      e.target.setAttribute('title',e.target.innerHTML);
+    }
+  }
+  if (e.target.innerHTML=='번호선택↓') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==번호선택↓')
+    if (document.querySelector('#id_복사본버튼45').classList.contains('d-none')) {
+      document.querySelector('#id_복사본버튼45').classList.remove('d-none');
+    } else {
+      document.querySelector('#id_복사본버튼45').classList.add('d-none');
+    }
+  }
+  if (e.target.classList.contains('분석자료_번호선택')) {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.classList.contains(분석자료_번호선택)')
+    if (document.querySelector('#id_복사본버튼45').classList.contains('d-none')) {
+      alert('번호선택↓ 누르고 번호박스 나오고 클릭하시오\n \n해당줄 45번호에 색칠'); return;
+    }
+    var 분석자료_번호요소_버튼들=document.querySelectorAll('#' + e.target.parentNode.id + ' button');
+    for (var i=0; i<45; i++) {
+      document.querySelectorAll('#id_복사본버튼45 button')[i].classList.remove('색칠용버튼');//지워준다, 아래꺼와 별개지만 반복횟수가 같다
+      if (분석자료_번호요소_버튼들[i].classList.contains('분석자료_고정등번호색칠')) {
+        document.querySelectorAll('#id_복사본버튼45 button')[i].classList.add('색칠용버튼');
+        document.querySelectorAll('#id_복사본버튼45 button')[i].setAttribute('title',i+1);
+      }
+    }   
+  }
+  if (e.target.innerHTML=='C') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==C')
+    e.target.previousSibling.value='';//input이다
+    e.target.previousSibling.previousSibling.value='';//input이다
+  }
+  if (e.target.innerHTML=='색_clear') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==색_clear')
+    분석자료_복사본버튼45clear();
+  }
+  if (e.target.innerHTML=='넣기1' || e.target.innerHTML=='넣기2' || e.target.innerHTML=='넣기3' || e.target.innerHTML=='넣기4' || e.target.innerHTML=='넣기5' || e.target.innerHTML=='넣기6' || e.target.innerHTML=='넣기7' || e.target.innerHTML=='넣기8') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==넣기1,넣기2,넣기3,넣기4,넣기5,넣기6,넣기7,넣기8')
+    if (e.target.innerHTML=='넣기1') {넣기아이디='복사본_선택1'}
+    if (e.target.innerHTML=='넣기2') {넣기아이디='복사본_선택2'}
+    if (e.target.innerHTML=='넣기3') {넣기아이디='복사본_선택3'}
+    if (e.target.innerHTML=='넣기4') {넣기아이디='복사본_선택4'}
+    if (e.target.innerHTML=='넣기5') {넣기아이디='복사본_선택5'}
+    if (e.target.innerHTML=='넣기6') {넣기아이디='복사본_선택6'}
+    if (e.target.innerHTML=='넣기7') {넣기아이디='복사본_선택7'}
+    if (e.target.innerHTML=='넣기8') {넣기아이디='복사본_선택8'}
+    복사본_넣기아이디에_색칠번호넣기();
+  }
+  if (e.target.innerHTML=='넣기번호메모') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==넣기번호메모')
+    //칠관련 선택1의 색칠된 번호대로
+    if (document.querySelector('#넣기번호메모').classList.contains('d-none')) {
+      document.querySelector('#넣기번호메모').classList.remove('d-none');
+    } else {
+      document.querySelector('#넣기번호메모').classList.add('d-none');
+    }
+  }
+  if (e.target.id=='넣기번호메모clear') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.id==넣기번호메모clear')
+    for (var i=0; i<document.querySelectorAll('#넣기번호메모 input').length; i++) {
+      document.querySelectorAll('#넣기번호메모 input')[i].value='';
+    }
+  }
+  if (e.target.innerHTML=='위로' || e.target.innerHTML=='아래로') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==위로,아래로')
+    if (e.target.innerHTML=='위로') {document.querySelector('#id_복사본버튼45').style.top='56px'}
+    if (e.target.innerHTML=='아래로') {document.querySelector('#id_복사본버튼45').style.top='555px'}
+  }
+  if (e.target.innerHTML=='조건일치색칠만') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==조건일치색칠만')
+    
+  }
+
+
+
+}
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
   //if (e.target.classList.contains('클릭_더블클릭')) {
   //  console.log('리스너용_세로구분_분석자료_전체_dblclick시(e) ==> 더블클릭')
@@ -817,6 +865,60 @@ function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
   //}
 }
 var 리스너용빈곳번호=document.querySelector('#분석자료_여러45칸');
+var 리스너용조건표빈곳번호=document.querySelector('#분석자료_여러45칸_복사본');
+
+function 리스너용조건표빈곳번호_번호색칠(e) {
+  if (e.target.nodeName!='BUTTON') {console.log('버튼아님'); return;}
+  if (e.target.innerHTML!='') {console.log('innerHTML있음'); return;}
+  e.target.classList.add('표시');
+  
+  var 카운트=-1;
+  var 표시배열값;
+  var 표시포함버튼들=document.querySelectorAll('#분석자료_여러45칸_복사본 #' + e.target.parentNode.parentNode.id + ' button');
+  for (var i=0; i<45; i++) {
+    카운트+=1;
+    if (표시포함버튼들[i].classList.contains('표시')) {표시배열값=카운트;}
+  }
+  e.target.classList.remove('표시');
+  var 번호들=[];
+  var 표시중단;
+  //본인포함 오른쪽진행 1.배열44까지, 
+  for (var i=표시배열값; i<45; i++) {//뒤로
+    if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+    if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+  }
+  if (표시중단!='중단') {//2.배열44까지 중단없으면 0부터
+    for (var i=0; i<45; i++) {//뒤로
+      if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+      if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+    }
+  }
+  표시중단='';
+  //본인포함 왼쪽진행 1.배열44까지, 
+  for (var i=표시배열값; i>=0; i--) {//뒤로
+    if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+    if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+  }
+  if (표시중단!='중단') {//2.배열44까지 중단없으면 0부터
+    for (var i=44; i>=0; i--) {//뒤로
+      if (표시포함버튼들[i].innerHTML!=''){표시중단='중단';}
+      if (표시중단!='중단' && 표시포함버튼들[i].innerHTML=='') {번호들.push(i+1);}
+    }
+  }
+   번호들=new Set(번호들); //중복제거 배열아님 : 색칠이 없을때 중복발생
+   번호들=[...번호들];//배열로 전환
+   번호들.sort((a,t) => a-t);//정렬
+  console.log('번호들 : ' + 번호들)
+  //색칠하기
+  document.querySelector('#id_복사본버튼45').classList.remove('d-none');
+  for (var i=0; i<45; i++) {
+    document.querySelectorAll('#id_복사본버튼45 button')[i].classList.remove('색칠용버튼');//지워준다, 아래꺼와 별개지만 반복횟수가 같다
+    if (번호들.filter(element => element==i+1).length>0) {
+      document.querySelectorAll('#id_복사본버튼45 button')[i].classList.add('색칠용버튼');
+      document.querySelectorAll('#id_복사본버튼45 button')[i].setAttribute('title',i+1);
+    }
+  }  
+}
 function 리스너용빈곳번호_번호색칠(e) {
   if (e.target.nodeName!='BUTTON') {console.log('버튼아님'); return;}
   if (e.target.innerHTML!='') {console.log('innerHTML있음'); return;}
@@ -871,4 +973,6 @@ function 리스너용빈곳번호_번호색칠(e) {
 }
 리스너용_세로구분_분석자료_전체.addEventListener('click',리스너용_세로구분_분석자료_전체_click시);
 리스너용_세로구분_분석자료_전체.addEventListener('dblclick',리스너용_세로구분_분석자료_전체_dblclick시);
-리스너용빈곳번호.addEventListener('click',리스너용빈곳번호_번호색칠)
+리스너용_필터링조건표_전체.addEventListener('click',리스너용_필터링조건표_전체_click시);
+리스너용빈곳번호.addEventListener('click',리스너용빈곳번호_번호색칠);
+리스너용조건표빈곳번호.addEventListener('click',리스너용조건표빈곳번호_번호색칠);

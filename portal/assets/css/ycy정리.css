@@ -44,7 +44,7 @@ header {position:fixed;width:100%;}
 #추출된번호_30개씩무한누적 > div > div button
 {vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
 
-#세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div button, #필터링조건표_전체 > div:not([id*='id_임시버튼45']) > div button  
+#세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div button, #필터링조건표_전체 > div > div:not([id*='id_복사본버튼45']) > div button  
 {vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
 .다섯개씩번갈아색칠 button:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
 .다섯개씩번갈아색칠 button:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}
@@ -77,7 +77,7 @@ header {position:fixed;width:100%;}
 .분석자료_피해서3종_피해서번호 {background-color: yellow;}
 
 #분석자료_30회차당번_제목 > div > span:nth-of-type(1), #분석자료_30회차당번 > div > span:nth-of-type(1)
-{display:inline-block; width:115px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}
+{display:inline-block; width:139px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}
 #분석자료_30회차당번_제목 > div:nth-of-type(1) > button {color:blue;background-color: peru;font-weight: bold;}
 
 #id_임시버튼45 {padding-top:6px;padding-bottom:6px;}
@@ -88,8 +88,14 @@ header {position:fixed;width:100%;}
 #id_임시버튼45 > div > span:nth-of-type(2) {width:75px;vertical-align: middle;margin-top:6px;}
 #id_임시버튼45 span:nth-of-type(1), #id_임시버튼45 span:nth-of-type(2) {width:115px;margin-top:5px;margin-bottom:3px;}
 
-
-
+/* #필터링조건표_전체 > div > div:not([id*='id_복사본버튼45']) > div button */
+#id_복사본버튼45 {padding-top:6px;padding-bottom:6px;}
+#id_복사본버튼45 button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+#id_복사본버튼45 span
+{display: inline-block;width:55px;margin-right:5px; height:24px;border-radius: 4px;border:1px solid gray;text-align: center;}
+#id_복사본버튼45 > div > span:nth-of-type(1) {width:50px;vertical-align: middle;margin-top:6px;}
+#id_복사본버튼45 > div > span:nth-of-type(2) {width:75px;vertical-align: middle;margin-top:6px;}
+#id_복사본버튼45 span:nth-of-type(1), #id_복사본버튼45 span:nth-of-type(2) {width:115px;margin-top:5px;margin-bottom:3px;}
 
 
 
