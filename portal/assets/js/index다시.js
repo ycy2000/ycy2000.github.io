@@ -406,7 +406,7 @@ function header_클릭시(e) {
   if (e.target.innerHTML == '특문') {
     리스너_전체대체.innerHTML=document.querySelector('#html특수문자_click').innerHTML;
   }
-  if (e.target.innerHTML == '보세,유니패스,미래') {//캔버스 들어가려면 클릭이 된다.
+  if (e.target.innerHTML == '보세,유니패스,미래,엑셀') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='보세_유니패스전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
