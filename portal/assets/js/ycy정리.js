@@ -581,6 +581,27 @@ function 바디클릭시동작설정(e) {
     e.target.innerHTML = '당번숨김'
     return;
   }
+  if (e.target.innerHTML == '선택색칠1 분석자료색칠') {
+    console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==선택색칠1 분석자료색칠');
+    //id_버튼45_1st 안의 button을 복사?? id_복사본버튼45
+    for (var i=0; i<document.querySelectorAll('#id_버튼45_1st button').length; i++) {
+      document.querySelectorAll('#id_복사본버튼45 button')[i].classList.remove('색칠용버튼');
+      document.querySelectorAll('#id_복사본버튼45 button')[i].removeAttribute('title');
+
+      document.querySelectorAll('#id_임시버튼45 button')[i].classList.remove('색칠용버튼');
+      document.querySelectorAll('#id_임시버튼45 button')[i].removeAttribute('title');
+      
+
+      if (document.querySelectorAll('#id_버튼45_1st button')[i].classList.contains('색칠용버튼')) {
+        document.querySelectorAll('#id_복사본버튼45 button')[i].classList.add('색칠용버튼');
+        document.querySelectorAll('#id_복사본버튼45 button')[i].setAttribute('title', document.querySelectorAll('#id_복사본버튼45 button')[i].innerHTML);
+
+        document.querySelectorAll('#id_임시버튼45 button')[i].classList.add('색칠용버튼');
+        document.querySelectorAll('#id_임시버튼45 button')[i].setAttribute('title', document.querySelectorAll('#id_임시버튼45 button')[i].innerHTML);
+      }
+    }
+    return;
+  }
   if (e.target.innerHTML == '분석자료') {
     console.log('바디클릭시동작설정(e) ==> e.target.innerHTML==분석자료');
     기본보기();
