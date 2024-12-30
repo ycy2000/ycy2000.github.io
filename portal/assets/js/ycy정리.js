@@ -774,11 +774,6 @@ function 바디클릭시동작설정(e) {
 
     return;
   }
-  if (e.target.classList.contains('인풋clear')) {
-    console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.classList.contains(인풋clear');
-    e.target.nextElementSibling.value = '';
-    e.target.nextElementSibling.nextElementSibling.value = '';
-  }
 }
 var 바디리스너용 = document.querySelector('body');
 바디리스너용.addEventListener('click', 바디클릭시동작설정)

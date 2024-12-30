@@ -449,15 +449,6 @@ function 분석자료_회차_change() {
       색칠지울곳[document.querySelectorAll('#추출된번호_당번_있다면다음회차 button')[i].innerHTML-1].classList.add('분석자료_고정등번호색칠');
     }
   }
-
-
-
-
-
-
-
-
-
 }
 function 인풋모두clear() {
   for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 input').length; i++) {
@@ -813,6 +804,15 @@ function 리스너용_필터링조건표_전체_click시(e) {
     console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==C')
     e.target.previousSibling.value='';//input이다
     e.target.previousSibling.previousSibling.value='';//input이다
+
+    if (e.target.previousSibling.previousSibling.previousSibling.innerHTML==',로 번호구분') {
+      e.target.nextSibling.value='';//input이다
+      e.target.nextSibling.nextSibling.nextSibling.value='';//input이다
+    }
+    if (e.target.previousSibling.previousSibling.previousSibling.innerHTML=='이상~이하') {
+      e.target.nextSibling.value='';//input이다
+    }
+
   }
   if (e.target.innerHTML=='색_clear') {
     console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==색_clear')
@@ -847,17 +847,67 @@ function 리스너용_필터링조건표_전체_click시(e) {
   }
   if (e.target.innerHTML=='위로' || e.target.innerHTML=='아래로') {
     console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==위로,아래로')
-    if (e.target.innerHTML=='위로') {document.querySelector('#id_복사본버튼45').style.top='56px'}
-    if (e.target.innerHTML=='아래로') {document.querySelector('#id_복사본버튼45').style.top='555px'}
+    if (e.target.innerHTML=='위로') {
+      document.querySelector('#id_복사본버튼45').style.top='56px'
+    document.querySelector('#id_복사본버튼45').style.left='1180px'
+    }
+    if (e.target.innerHTML=='아래로') {
+      document.querySelector('#id_복사본버튼45').style.top='550px'
+      document.querySelector('#id_복사본버튼45').style.left='1180px'
+    }
   }
   if (e.target.innerHTML=='조건일치색칠만') {
     console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==조건일치색칠만')
-    
+    필터링조건표_조건일치색칠만();
+  }
+}
+function 필터링조건표_조건일치색칠만() {
+  var 추출된번호div들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div');
+  var 추출된번호div개수=추출된번호div들.length;
+  if (추출된번호div개수==0) {alert('추출된번호div개수==0; return;'); return;}
+
+  var 배열_임시_다음당번45=[];
+  var 배열_임시_당번45=[];
+
+  //색칠된번호들 배열 : 분석자료_여러45칸_복사본 안에 div : 다음회차당번~15주미출, 같은 레벨 수동선택 1~8, ,로구분 두개
+  var 다음당번부터미출15까지색칠개수배열=[];
+  if (document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[1].id=='임시_다음당번45') {
+    다음당번부터미출15까지색칠개수배열.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .분석자료_고정등번호색칠').length);
+    for (var i=0; i<document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .분석자료_고정등번호색칠').length; i++) {
+      배열_임시_다음당번45.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .분석자료_고정등번호색칠')[i].innerHTML)
+    }
+  }
+  console.log(배열_임시_다음당번45)
+  if (document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[2].id=='임시_당번45') {
+    다음당번부터미출15까지색칠개수배열.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .분석자료_고정등번호색칠').length);
+    for (var i=0; i<document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .분석자료_고정등번호색칠').length; i++) {
+      배열_임시_당번45.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .분석자료_고정등번호색칠')[i].innerHTML)
+    }
+  }
+  console.log(배열_임시_당번45)
+
+
+
+  //1.추출된번호를 돌면서
+  for (var 추출된번호반복=0; 추출된번호반복<추출된번호div개수; 추출된번호반복++) {
+    var 현재번호button들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div:nth-of-type(' + (추출된번호반복+1) +') button');
+    var 현재번호=[];
+    for (var 현재번호반복=0; 현재번호반복 < 현재번호button들.length; 현재번호반복++) {
+      현재번호.push(현재번호button들[현재번호반복].innerHTML*1)
+    }
+    console.log(현재번호)
+    //현재번호가 조건에 맞는지 확인
+    //분석자료_여러45칸_복사본 안에 div : 다음회차당번~15주미출, 같은 레벨 수동선택 1~8, ,로구분 두개
+    //곱하면 false가 있으면 0; if(조건) : 조건에 0 이면 false 1이면 true
+
+
+
+
   }
 
 
-
 }
+
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
   //if (e.target.classList.contains('클릭_더블클릭')) {
   //  console.log('리스너용_세로구분_분석자료_전체_dblclick시(e) ==> 더블클릭')
