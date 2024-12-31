@@ -425,7 +425,7 @@ function 분석자료_회차_change() {
     }
   //   나머지 안 2번째 span을 input2개로 늘린다.
   for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택').length; i++) {
-    document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text" class="범위input"><input type = "text" class="범위input">';
+    document.querySelectorAll('#분석자료_여러45칸_복사본 > div > .분석자료_번호선택')[i].nextElementSibling.outerHTML='<input type = "text" class="에서까지input"><input type = "text" class="에서까지input">';
   }
   if (1==11) {//C 지움
     for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_복사본 > div').length; i++) {
@@ -452,7 +452,7 @@ function 분석자료_회차_change() {
 }
 function 인풋모두clear() {
   for (var i=0; i< document.querySelectorAll('#분석자료_여러45칸_유사함 input').length; i++) {
-    if (document.querySelectorAll('#분석자료_여러45칸_유사함 input')[i].classList.contains('범위input')) {
+    if (document.querySelectorAll('#분석자료_여러45칸_유사함 input')[i].classList.contains('에서까지input')) {
     document.querySelectorAll('#분석자료_여러45칸_유사함 input')[i].value='';
     }
   }
@@ -722,7 +722,7 @@ function 리스너용_세로구분_분석자료_전체_click시(e) {
     for (var i=0; i<document.querySelectorAll('#넣기번호메모 input').length; i++) {
       document.querySelectorAll('#넣기번호메모 input')[i].value='';
     }
-  }넣기번호메모clear
+  }
   if (e.target.innerHTML=='위로' || e.target.innerHTML=='아래로') {
     console.log('리스너용_세로구분_분석자료_전체_click시(e) ==> e.target.innerHTML==위로,아래로')
     if (e.target.innerHTML=='위로') {document.querySelector('#id_임시버튼45').style.top='137px'}
@@ -866,27 +866,129 @@ function 필터링조건표_조건일치색칠만() {
   var 추출된번호div개수=추출된번호div들.length;
   if (추출된번호div개수==0) {alert('추출된번호div개수==0; return;'); return;}
 
-  var 배열_임시_다음당번45=[];
-  var 배열_임시_당번45=[];
+  //if(i > 5) break;  // i > 5 이면 for반복문 벗어나기
+  //if(i % 2 == 0) continue; // 짝수이면 반복문 i++로 가기
+  //진행을 하지 않는 조건 확인, 
+  //1. 에서와 까지에 문자열이 있는 경우
+  //2. 쉼표로구분 : 값이 있는데 배열전환시 모두 숫자가 아닐때
+  var 모든에서까지들=document.querySelectorAll('#분석자료_여러45칸_유사함 .에서까지input');
+  console.log('모든에서까지들.length : ' + 모든에서까지들.length)
+  for (var i=0; i<모든에서까지들.length; i++) {
+    모든에서까지들[i].value=모든에서까지들[i].value; //할당을 하지 않으면 인식하지 못한다
+    if (모든에서까지들[i].value!='' && isNaN(모든에서까지들[i].value)) {alert('에서와 까지에 문자열이 있으면 작동안함'); return;}
+  }
 
-  //색칠된번호들 배열 : 분석자료_여러45칸_복사본 안에 div : 다음회차당번~15주미출, 같은 레벨 수동선택 1~8, ,로구분 두개
-  var 다음당번부터미출15까지색칠개수배열=[];
-  if (document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[1].id=='임시_다음당번45') {
-    다음당번부터미출15까지색칠개수배열.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .분석자료_고정등번호색칠').length);
-    for (var i=0; i<document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .분석자료_고정등번호색칠').length; i++) {
-      배열_임시_다음당번45.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .분석자료_고정등번호색칠')[i].innerHTML)
+  //쉼표로구분, 세번째 input value
+  var 쉼표로구분1=document.querySelector('#쉼표로구분1 > input:nth-of-type(3)').value;
+  var 배열_쉼표로구분1=[];
+  배열_쉼표로구분1=쉼표로구분1.split(',');
+  console.log('배열_쉼표로구분1 : ' + 배열_쉼표로구분1)
+  if (쉼표로구분1!='') {
+    for (i=0; i<배열_쉼표로구분1.length; i++) {
+      if (isNaN(배열_쉼표로구분1[i]) || 배열_쉼표로구분1[i]=='') {alert('쉼표로구분 배열값에 문자열이 있으면 작동안함. 마지막에 쉼표로 끝날때도'); return;}
     }
   }
-  console.log(배열_임시_다음당번45)
-  if (document.querySelectorAll('#분석자료_여러45칸_복사본 > div')[2].id=='임시_당번45') {
-    다음당번부터미출15까지색칠개수배열.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .분석자료_고정등번호색칠').length);
-    for (var i=0; i<document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .분석자료_고정등번호색칠').length; i++) {
-      배열_임시_당번45.push(document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .분석자료_고정등번호색칠')[i].innerHTML)
+
+  var 쉼표로구분2=document.querySelector('#쉼표로구분2 > input:nth-of-type(3)').value;
+  var 배열_쉼표로구분2=[];
+  배열_쉼표로구분2=쉼표로구분2.split(',');
+  console.log('배열_쉼표로구분2 : ' + 배열_쉼표로구분2)
+  if (쉼표로구분2!='') {
+    for (i=0; i<배열_쉼표로구분2.length; i++) {
+      if (isNaN(배열_쉼표로구분2[i]) || 배열_쉼표로구분2[i]=='') {alert('쉼표로구분 배열값에 문자열이 있으면 작동안함. 마지막에 쉼표로 끝날때도'); return;}
     }
   }
-  console.log(배열_임시_당번45)
 
+  //둘중 하나 숫자일때 배열 생성, 제외수1 제외수2 제외수3 안에 class 에서까지input.value
+  var 배열_제외이상이하1=[], 배열_제외이상이하2=[], 배열_제외이상이하3=[];
 
+  var 제외이상=document.querySelector('#제외수1 .에서까지input:nth-of-type(1)').value;
+  var 제외이하=document.querySelector('#제외수1 .에서까지input:nth-of-type(2)').value;
+
+  document.querySelector('#제외수1 input:nth-of-type(3)').value=''; // 지우고 시작
+
+  if (제외이상!='' || 제외이하!='') {
+    if (제외이상<1 || 제외이상=='') {제외이상=1}
+    if (제외이하>45 || 제외이하=='') {제외이하=45}
+    for (var i=제외이상; i<(제외이하*1+1);i++) {
+      배열_제외이상이하1.push(i);
+    }
+    document.querySelector('#제외수1 input:nth-of-type(3)').value=배열_제외이상이하1;
+  }
+
+  var 제외이상=document.querySelector('#제외수2 .에서까지input:nth-of-type(1)').value;
+  var 제외이하=document.querySelector('#제외수2 .에서까지input:nth-of-type(2)').value;
+
+  document.querySelector('#제외수2 input:nth-of-type(3)').value=''; // 지우고 시작
+
+  if (제외이상!='' || 제외이하!='') {
+    if (제외이상<1 || 제외이상=='') {제외이상=1}
+    if (제외이하>45 || 제외이하=='') {제외이하=45}
+    for (var i=제외이상; i<(제외이하*1+1);i++) {
+      배열_제외이상이하2.push(i);
+    }
+    document.querySelector('#제외수2 input:nth-of-type(3)').value=배열_제외이상이하2;
+  }
+
+  var 제외이상=document.querySelector('#제외수3 .에서까지input:nth-of-type(1)').value;
+  var 제외이하=document.querySelector('#제외수3 .에서까지input:nth-of-type(2)').value;
+
+  document.querySelector('#제외수3 input:nth-of-type(3)').value=''; // 지우고 시작
+
+  if (제외이상!='' || 제외이하!='') {
+    if (제외이상<1 || 제외이상=='') {제외이상=1}
+    if (제외이하>45 || 제외이하=='') {제외이하=45}
+    for (var i=제외이상; i<(제외이하*1+1);i++) {
+      배열_제외이상이하3.push(i);
+    }
+    document.querySelector('#제외수3 input:nth-of-type(3)').value=배열_제외이상이하3;
+  }
+
+  //진행을 하지 않는 조건 확인 (보이는 조건표 자체적으로): 색칠배열 정의한 후, 진행을 하지 않는 조건 확인
+  //1. 색칠배열 숫자 개수가 에서보다 작을때
+  //2. 에서와 까지가 모두 숫자인 경우에 에서가 까지보다 클때
+  var 다음회차부터15주미출div=document.querySelectorAll('#분석자료_여러45칸_복사본 > div');
+  var 색칠배열_다음회차=[], 색칠배열_당번=[], 색칠배열_이웃수=[], 색칠배열_당번과이웃수=[], 색칠배열_5주출=[], 색칠배열_5주미출=[]; 
+  var 색칠배열_5주1출=[], 색칠배열_5주2출=[], 색칠배열_5주3출이상=[], 색칠배열_10주미출=[], 색칠배열_15주미출=[]; 
+
+  for (var i=1; i<다음회차부터15주미출div.length; i++) { //i가 0이면 순번부분이므로 건너뜀, (i+1)부분은 css는 1부터이기 때문
+    //console.log('반복 11중 : ' + i)
+    var 색칠번호들=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(' + (i+1) + ') .분석자료_고정등번호색칠');
+    //console.log('색칠된번호들.length : ' + 색칠번호들.length)
+    for (var 색칠반복=0; 색칠반복<색칠번호들.length; 색칠반복++) {
+      if (i==1 && (색칠번호들.length>0)) {색칠배열_다음회차.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==2 && (색칠번호들.length>0)) {색칠배열_당번.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==3 && (색칠번호들.length>0)) {색칠배열_이웃수.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==4 && (색칠번호들.length>0)) {색칠배열_당번과이웃수.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==5 && (색칠번호들.length>0)) {색칠배열_5주출.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==6 && (색칠번호들.length>0)) {색칠배열_5주미출.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==7 && (색칠번호들.length>0)) {색칠배열_5주1출.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==8 && (색칠번호들.length>0)) {색칠배열_5주2출.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==9 && (색칠번호들.length>0)) {색칠배열_5주3출이상.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==10 && (색칠번호들.length>0)) {색칠배열_10주미출.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==11 && (색칠번호들.length>0)) {색칠배열_15주미출.push(색칠번호들[색칠반복].innerHTML)};
+    }
+  }
+  
+  //분석자료_여러45칸_유사함 2~9div
+  var 색칠배열수동div=document.querySelectorAll('#분석자료_여러45칸_유사함 > div');
+  var 색칠배열_수동1=[], 색칠배열_수동2=[], 색칠배열_수동3=[], 색칠배열_수동4=[], 색칠배열_수동5=[], 색칠배열_수동6=[], 색칠배열_수동7=[], 색칠배열_수동8=[];
+
+  for (var i=1; i<9; i++) { //i가 0이면 분석자료_여러45칸_복사본 부분이므로 건너뜀, (i+1)부분은 css는 1부터이기 때문
+    //console.log('수동부분 8중 : ' + i)
+    var 색칠번호들=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .분석자료_고정등번호색칠');
+    //console.log('색칠된번호들.length : ' + 색칠번호들.length)
+    for (var 색칠반복=0; 색칠반복<색칠번호들.length; 색칠반복++) {
+      if (i==1 && (색칠번호들.length>0)) {색칠배열_수동1.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==2 && (색칠번호들.length>0)) {색칠배열_수동2.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==3 && (색칠번호들.length>0)) {색칠배열_수동3.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==4 && (색칠번호들.length>0)) {색칠배열_수동4.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==5 && (색칠번호들.length>0)) {색칠배열_수동5.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==6 && (색칠번호들.length>0)) {색칠배열_수동6.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==7 && (색칠번호들.length>0)) {색칠배열_수동7.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==8 && (색칠번호들.length>0)) {색칠배열_수동8.push(색칠번호들[색칠반복].innerHTML)};
+    }
+  }
 
   //1.추출된번호를 돌면서
   for (var 추출된번호반복=0; 추출된번호반복<추출된번호div개수; 추출된번호반복++) {
@@ -896,6 +998,9 @@ function 필터링조건표_조건일치색칠만() {
       현재번호.push(현재번호button들[현재번호반복].innerHTML*1)
     }
     console.log(현재번호)
+
+    //추출된 번호 1개마다, 24개 배열의 에서 까지 일치여부 확인하는데..... 일치하지 않으면 다음꺼로 넘어가는 코드
+
     //현재번호가 조건에 맞는지 확인
     //분석자료_여러45칸_복사본 안에 div : 다음회차당번~15주미출, 같은 레벨 수동선택 1~8, ,로구분 두개
     //곱하면 false가 있으면 0; if(조건) : 조건에 0 이면 false 1이면 true
@@ -904,6 +1009,14 @@ function 필터링조건표_조건일치색칠만() {
 
 
   }
+
+
+
+
+
+  
+
+
 
 
 }
