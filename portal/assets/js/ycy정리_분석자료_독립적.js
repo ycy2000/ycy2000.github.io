@@ -800,6 +800,14 @@ function 리스너용_필터링조건표_전체_click시(e) {
       }
     }   
   }
+  if (e.target.innerHTML=='추출번호 동그라미 해제') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==추출번호 동그라미 해제C')
+    var 색칠된번호버튼들=document.querySelectorAll('#추출된번호_30개씩무한누적 .색칠용버튼');
+    for (var i=0; i<색칠된번호버튼들.length; i++) {
+      색칠된번호버튼들[i].classList.remove('색칠용버튼');
+      색칠된번호버튼들[i].setAttribute('title','');
+    }
+  }
   if (e.target.innerHTML=='C') {
     console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==C')
     e.target.previousSibling.value='';//input이다
@@ -860,14 +868,21 @@ function 리스너용_필터링조건표_전체_click시(e) {
     console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==조건일치색칠만')
     필터링조건표_조건일치색칠만();
   }
+  if (e.target.innerHTML=='색칠해제') {
+    console.log('리스너용_필터링조건표_전체_click시(e) ==> e.target.innerHTML==색칠해제')
+    var 추출된번호div들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div');
+    var 추출된번호div개수=추출된번호div들.length;
+    for (var i=0; i<추출된번호div개수;i++) {
+      if (추출된번호div들[i].classList.contains('현재번호체크')) {추출된번호div들[i].classList.remove('현재번호체크')}
+    }
+  }
 }
 function 필터링조건표_조건일치색칠만() {
   var 추출된번호div들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div');
   var 추출된번호div개수=추출된번호div들.length;
   if (추출된번호div개수==0) {alert('추출된번호div개수==0; return;'); return;}
+  var 모두공란='모두공란'
 
-  //if(i > 5) break;  // i > 5 이면 for반복문 벗어나기
-  //if(i % 2 == 0) continue; // 짝수이면 반복문 i++로 가기
   //진행을 하지 않는 조건 확인, 
   //1. 에서와 까지에 문자열이 있는 경우
   //2. 쉼표로구분 : 값이 있는데 배열전환시 모두 숫자가 아닐때
@@ -876,13 +891,13 @@ function 필터링조건표_조건일치색칠만() {
   for (var i=0; i<모든에서까지들.length; i++) {
     모든에서까지들[i].value=모든에서까지들[i].value; //할당을 하지 않으면 인식하지 못한다
     if (모든에서까지들[i].value!='' && isNaN(모든에서까지들[i].value)) {alert('에서와 까지에 문자열이 있으면 작동안함'); return;}
+    if (모든에서까지들[i].value!='') {모두공란='값있음'}
   }
 
   //쉼표로구분, 세번째 input value
   var 쉼표로구분1=document.querySelector('#쉼표로구분1 > input:nth-of-type(3)').value;
   var 배열_쉼표로구분1=[];
   배열_쉼표로구분1=쉼표로구분1.split(',');
-  console.log('배열_쉼표로구분1 : ' + 배열_쉼표로구분1)
   if (쉼표로구분1!='') {
     for (i=0; i<배열_쉼표로구분1.length; i++) {
       if (isNaN(배열_쉼표로구분1[i]) || 배열_쉼표로구분1[i]=='') {alert('쉼표로구분 배열값에 문자열이 있으면 작동안함. 마지막에 쉼표로 끝날때도'); return;}
@@ -892,7 +907,6 @@ function 필터링조건표_조건일치색칠만() {
   var 쉼표로구분2=document.querySelector('#쉼표로구분2 > input:nth-of-type(3)').value;
   var 배열_쉼표로구분2=[];
   배열_쉼표로구분2=쉼표로구분2.split(',');
-  console.log('배열_쉼표로구분2 : ' + 배열_쉼표로구분2)
   if (쉼표로구분2!='') {
     for (i=0; i<배열_쉼표로구분2.length; i++) {
       if (isNaN(배열_쉼표로구분2[i]) || 배열_쉼표로구분2[i]=='') {alert('쉼표로구분 배열값에 문자열이 있으면 작동안함. 마지막에 쉼표로 끝날때도'); return;}
@@ -956,17 +970,17 @@ function 필터링조건표_조건일치색칠만() {
     var 색칠번호들=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(' + (i+1) + ') .분석자료_고정등번호색칠');
     //console.log('색칠된번호들.length : ' + 색칠번호들.length)
     for (var 색칠반복=0; 색칠반복<색칠번호들.length; 색칠반복++) {
-      if (i==1 && (색칠번호들.length>0)) {색칠배열_다음회차.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==2 && (색칠번호들.length>0)) {색칠배열_당번.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==3 && (색칠번호들.length>0)) {색칠배열_이웃수.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==4 && (색칠번호들.length>0)) {색칠배열_당번과이웃수.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==5 && (색칠번호들.length>0)) {색칠배열_5주출.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==6 && (색칠번호들.length>0)) {색칠배열_5주미출.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==7 && (색칠번호들.length>0)) {색칠배열_5주1출.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==8 && (색칠번호들.length>0)) {색칠배열_5주2출.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==9 && (색칠번호들.length>0)) {색칠배열_5주3출이상.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==10 && (색칠번호들.length>0)) {색칠배열_10주미출.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==11 && (색칠번호들.length>0)) {색칠배열_15주미출.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==1 && (색칠번호들.length>0)) {색칠배열_다음회차.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==2 && (색칠번호들.length>0)) {색칠배열_당번.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==3 && (색칠번호들.length>0)) {색칠배열_이웃수.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==4 && (색칠번호들.length>0)) {색칠배열_당번과이웃수.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==5 && (색칠번호들.length>0)) {색칠배열_5주출.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==6 && (색칠번호들.length>0)) {색칠배열_5주미출.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==7 && (색칠번호들.length>0)) {색칠배열_5주1출.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==8 && (색칠번호들.length>0)) {색칠배열_5주2출.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==9 && (색칠번호들.length>0)) {색칠배열_5주3출이상.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==10 && (색칠번호들.length>0)) {색칠배열_10주미출.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==11 && (색칠번호들.length>0)) {색칠배열_15주미출.push(색칠번호들[색칠반복].innerHTML*1)};
     }
   }
   
@@ -979,37 +993,273 @@ function 필터링조건표_조건일치색칠만() {
     var 색칠번호들=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .분석자료_고정등번호색칠');
     //console.log('색칠된번호들.length : ' + 색칠번호들.length)
     for (var 색칠반복=0; 색칠반복<색칠번호들.length; 색칠반복++) {
-      if (i==1 && (색칠번호들.length>0)) {색칠배열_수동1.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==2 && (색칠번호들.length>0)) {색칠배열_수동2.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==3 && (색칠번호들.length>0)) {색칠배열_수동3.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==4 && (색칠번호들.length>0)) {색칠배열_수동4.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==5 && (색칠번호들.length>0)) {색칠배열_수동5.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==6 && (색칠번호들.length>0)) {색칠배열_수동6.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==7 && (색칠번호들.length>0)) {색칠배열_수동7.push(색칠번호들[색칠반복].innerHTML)};
-      if (i==8 && (색칠번호들.length>0)) {색칠배열_수동8.push(색칠번호들[색칠반복].innerHTML)};
+      if (i==1 && (색칠번호들.length>0)) {색칠배열_수동1.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==2 && (색칠번호들.length>0)) {색칠배열_수동2.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==3 && (색칠번호들.length>0)) {색칠배열_수동3.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==4 && (색칠번호들.length>0)) {색칠배열_수동4.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==5 && (색칠번호들.length>0)) {색칠배열_수동5.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==6 && (색칠번호들.length>0)) {색칠배열_수동6.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==7 && (색칠번호들.length>0)) {색칠배열_수동7.push(색칠번호들[색칠반복].innerHTML*1)};
+      if (i==8 && (색칠번호들.length>0)) {색칠배열_수동8.push(색칠번호들[색칠반복].innerHTML*1)};
     }
   }
-
   //1.추출된번호를 돌면서
   for (var 추출된번호반복=0; 추출된번호반복<추출된번호div개수; 추출된번호반복++) {
+    console.log('검사순번 : ' + 추출된번호반복)
+    var 현재번호div=추출된번호div들[추출된번호반복];
+    if (현재번호div.classList.contains('현재번호체크')) {현재번호div.classList.remove('현재번호체크')}
+    document.querySelector('#조건일치개수').innerHTML='';
     var 현재번호button들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div:nth-of-type(' + (추출된번호반복+1) +') button');
     var 현재번호=[];
     for (var 현재번호반복=0; 현재번호반복 < 현재번호button들.length; 현재번호반복++) {
       현재번호.push(현재번호button들[현재번호반복].innerHTML*1)
     }
-    console.log(현재번호)
+    var 진행조건=true, 에서, 까지, 일치개수; 
+    //조건이 있으면(에서 까지 기록되어 있으면) 조건이 하나라도 안 맞으면 continue;
+    //i가 0이면 순번부분이므로 건너뜀, (i+1)부분은 css는 1부터이기 때문
+    //console.log('반복 11중 : ' + i)
+    //let arrA = [1, 4, 3, 2];
+    //let arrB = [5, 2, 6, 7, 1];
+    //arrA.filter(it => arrB.includes(it)); // returns [1, 2], 교집합
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('다음회차당번 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_다음회차.includes(it)).length;
 
-    //추출된 번호 1개마다, 24개 배열의 에서 까지 일치여부 확인하는데..... 일치하지 않으면 다음꺼로 넘어가는 코드
+      console.log('   다음회차당번, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   다음회차당번 : ' + 색칠배열_다음회차)
+      console.log('   일치개수 : ' + 일치개수)
+      
 
-    //현재번호가 조건에 맞는지 확인
-    //분석자료_여러45칸_복사본 안에 div : 다음회차당번~15주미출, 같은 레벨 수동선택 1~8, ,로구분 두개
-    //곱하면 false가 있으면 0; if(조건) : 조건에 0 이면 false 1이면 true
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+
+
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('당번 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_당번.includes(it)).length;
+      console.log('   당번, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   당번 : ' + 색칠배열_당번)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(4) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(4) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('이웃수 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_이웃수.includes(it)).length;
+      console.log('   이웃수, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   이웃수 : ' + 색칠배열_이웃수)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(5) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(5) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('당번과이웃수 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_당번과이웃수.includes(it)).length;
+      console.log('   당번과이웃수, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   당번과이웃수 : ' + 색칠배열_당번과이웃수)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(6) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(6) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('5주출 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_5주출.includes(it)).length;
+      console.log('   5주미출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log(현재번호)
+      console.log(색칠배열_5주출)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(7) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(7) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('5주미출 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_5주미출.includes(it)).length;
+
+      console.log(현재번호.filter(it => 색칠배열_5주미출.includes(it)))
+
+      console.log('   5주미출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   5주미출 : ' + 색칠배열_5주미출)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(8) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(8) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('5주1출 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_5주1출.includes(it)).length;
+      console.log('   5주1출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   5주1출 : ' + 색칠배열_5주1출)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(9) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(9) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {console.log('5주2출 : 에서와 까지 공란, => 아무것도 안함')} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_5주2출.includes(it)).length;
+      console.log('   5주2출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
+      console.log('   현재번호 : ' + 현재번호)
+      console.log('   5주2출 : ' + 색칠배열_5주2출)
+      console.log('   일치개수 : ' + 일치개수)
+      
+
+      if (!(일치개수>=에서 && 일치개수<=까지)) {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
+        continue;
+      } else {
+        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
+      }
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(10) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(10) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_5주3출이상.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(11) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(11) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_10주미출.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
+    에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(12) .에서까지input')[0].value;
+    까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(12) .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_15주미출.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
+
+
+    console.log('진행조건 : ' + 진행조건 + ',15주미출까지 진행')
+    if (!진행조건) continue;
+
+    var 색칠번호들=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .분석자료_고정등번호색칠');
+    //console.log('색칠된번호들.length : ' + 색칠번호들.length)
+    for (var 색칠반복=0; 색칠반복<색칠번호들.length; 색칠반복++) {
+      에서=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .에서까지input')[0].value;
+      까지=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .에서까지input')[1].value;
+      if (에서=='' && 까지=='') continue;
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+
+      일치개수=현재번호.filter(it => 색칠배열_수동1.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      일치개수=현재번호.filter(it => 색칠배열_수동2.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      일치개수=현재번호.filter(it => 색칠배열_수동3.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      일치개수=현재번호.filter(it => 색칠배열_수동4.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      일치개수=현재번호.filter(it => 색칠배열_수동5.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) continue;
+      일치개수=현재번호.filter(it => 색칠배열_수동6.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      일치개수=현재번호.filter(it => 색칠배열_수동7.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      일치개수=현재번호.filter(it => 색칠배열_수동8.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+    }
+
+
+    if (!진행조건) continue;
 
 
 
+    에서=document.querySelector('#쉼표로구분1 > input:nth-of-type(1)').value;
+    까지=document.querySelector('#쉼표로구분1 > input:nth-of-type(2)').value;
+    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+    일치개수=현재번호.filter(it => 배열_쉼표로구분1.includes(it)).length;
+    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
 
-  }
+    에서=document.querySelector('#쉼표로구분2 > input:nth-of-type(1)').value;
+    까지=document.querySelector('#쉼표로구분2 > input:nth-of-type(2)').value;
+    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+    일치개수=현재번호.filter(it => 배열_쉼표로구분2.includes(it)).length;
+    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
 
+    에서=document.querySelector('#제외수1 .에서까지input:nth-of-type(1)').value;
+    까지=document.querySelector('#제외수1 .에서까지input:nth-of-type(2)').value;
+    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+    일치개수=현재번호.filter(it => 배열_제외이상이하1.includes(it)).length;
+    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+
+    에서=document.querySelector('#제외수2 .에서까지input:nth-of-type(1)').value;
+    까지=document.querySelector('#제외수2 .에서까지input:nth-of-type(2)').value;
+    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+    일치개수=현재번호.filter(it => 배열_제외이상이하2.includes(it)).length;
+    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+
+    에서=document.querySelector('#제외수3 .에서까지input:nth-of-type(1)').value;
+    까지=document.querySelector('#제외수3 .에서까지input:nth-of-type(2)').value;
+    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+    일치개수=현재번호.filter(it => 배열_제외이상이하3.includes(it)).length;
+    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+
+    if (모두공란=='값있음' && 진행조건) {현재번호div.classList.add('현재번호체크');}
 
 
 
@@ -1019,6 +1269,14 @@ function 필터링조건표_조건일치색칠만() {
 
 
 
+
+    
+  }
+
+  if (document.querySelectorAll('.현재번호체크').length>0) {
+    document.querySelector('#조건일치개수').innerHTML=
+    document.querySelectorAll('.현재번호체크').length;
+  }
 }
 
 function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
@@ -1032,7 +1290,28 @@ var 리스너용조건표빈곳번호=document.querySelector('#분석자료_여�
 
 function 리스너용조건표빈곳번호_번호색칠(e) {
   if (e.target.nodeName!='BUTTON') {console.log('버튼아님'); return;}
-  if (e.target.innerHTML!='') {console.log('innerHTML있음'); return;}
+  //색칠된 숫자 클릭시 색칠된 숫자와 같은 번호가 추출된숫자에 있을때...
+  if (e.target.innerHTML!='') {
+    console.log('innerHTML있음'); 
+    var 버튼들=document.querySelectorAll('#분석자료_여러45칸_복사본 #' + e.target.parentNode.parentNode.id + ' button');
+    var 색칠할번호들=[];
+    for (var i=0; i<버튼들.length; i++) {
+      if (버튼들[i].innerHTML!='') {색칠할번호들.push(버튼들[i].innerHTML*1)}
+    }
+    var 추출된모든번호버튼들=document.querySelectorAll('#추출된번호_30개씩무한누적 button');
+    for (var i=0; i<추출된모든번호버튼들.length; i++) {
+      if (색칠할번호들.filter(num => num == 추출된모든번호버튼들[i].innerHTML*1).length>=1) {
+        if (추출된모든번호버튼들[i].classList.contains('색칠용버튼')) {
+
+        } else {
+          추출된모든번호버튼들[i].classList.add('색칠용버튼');
+          추출된모든번호버튼들[i].setAttribute('title',i+1);
+        }
+      }
+    }
+    return;
+  }
+  //빈곳을 클릭했을때
   e.target.classList.add('표시');
   
   var 카운트=-1;

@@ -414,9 +414,12 @@
   <div id="필터링조건표_전체" class="absolute" style="padding:5px; background-color: white;top:533px; top:84px; left:5px;border:1px solid black;">
     <button style="position: absolute;left:1169px;top:-30px;">메모는 '로또번호선택메모'에서 하고, 아래에 복붙 참고용</button>
     <textarea style="position: absolute;top:-1px; left:1170px;width:650px;height:850px; ime-mode: active" spellcheck="false"></textarea>
-    <div style="margin-bottom:3px;display:block;"><span>※이곳번호를 아래조건과 맞는것들을 "추출된번호필터링"으로 추가!!</span> <button>조건일치색칠만</button>
-      <span>조건일치 개수 : </span><button style="width:45px;height:30px;vertical-align: top; display:inline-block;"></button> <button>조건일치필터링으로넘김</button>
+    <div style="margin-bottom:3px;display:block;"><span>※이곳번호를 아래조건과 맞는것들을 "추출된번호필터링"으로 추가!!</span> 
+      <button>조건일치색칠만</button> <button>색칠해제</button>
+      <span>조건일치 개수 : </span><button id="조건일치개수" style="width:45px;height:30px;vertical-align: top; display:inline-block;"></button> <button>조건일치필터링으로넘김</button>
     <br><span style="color:blueviolet;font-weight: bold;">※0에서 0까지로 설정하면 제외수 동작(별도 코드).</span>
+    <button>추출번호 동그라미 해제</button>
+    <span style="font-weight: bold;">※숫자칸에 숫자가 있는곳 클릭시 : 추출번호에 동그라미 누적</span>
     </div>
     <div id="분석자료_여러45칸_유사함" style="padding-bottom:5px;">
       <div id="분석자료_여러45칸_복사본" class="d-block">
