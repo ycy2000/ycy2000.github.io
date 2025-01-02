@@ -887,7 +887,6 @@ function 필터링조건표_조건일치색칠만() {
   //1. 에서와 까지에 문자열이 있는 경우
   //2. 쉼표로구분 : 값이 있는데 배열전환시 모두 숫자가 아닐때
   var 모든에서까지들=document.querySelectorAll('#분석자료_여러45칸_유사함 .에서까지input');
-  console.log('모든에서까지들.length : ' + 모든에서까지들.length)
   for (var i=0; i<모든에서까지들.length; i++) {
     모든에서까지들[i].value=모든에서까지들[i].value; //할당을 하지 않으면 인식하지 못한다
     if (모든에서까지들[i].value!='' && isNaN(모든에서까지들[i].value)) {alert('에서와 까지에 문자열이 있으면 작동안함'); return;}
@@ -1005,15 +1004,26 @@ function 필터링조건표_조건일치색칠만() {
   }
   //1.추출된번호를 돌면서
   for (var 추출된번호반복=0; 추출된번호반복<추출된번호div개수; 추출된번호반복++) {
-    console.log('검사순번 : ' + 추출된번호반복)
     var 현재번호div=추출된번호div들[추출된번호반복];
     if (현재번호div.classList.contains('현재번호체크')) {현재번호div.classList.remove('현재번호체크')}
     document.querySelector('#조건일치개수').innerHTML='';
+
+
+
+
+
+    var 추출된번호div들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div');
+
+
+
+    //바로 아래 : 현재번호button들 이, 30개마다 6개버튼이 추가되어 설정됨
     var 현재번호button들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div:nth-of-type(' + (추출된번호반복+1) +') button');
+    console.log(현재번호button들.length)
     var 현재번호=[];
     for (var 현재번호반복=0; 현재번호반복 < 현재번호button들.length; 현재번호반복++) {
       현재번호.push(현재번호button들[현재번호반복].innerHTML*1)
     }
+    console.log(현재번호)
     var 진행조건=true, 에서, 까지, 일치개수; 
     //조건이 있으면(에서 까지 기록되어 있으면) 조건이 하나라도 안 맞으면 continue;
     //i가 0이면 순번부분이므로 건너뜀, (i+1)부분은 css는 1부터이기 때문
@@ -1023,155 +1033,68 @@ function 필터링조건표_조건일치색칠만() {
     //arrA.filter(it => arrB.includes(it)); // returns [1, 2], 교집합
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(2) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('다음회차당번 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_다음회차.includes(it)).length;
-
-      console.log('   다음회차당번, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   다음회차당번 : ' + 색칠배열_다음회차)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
-
 
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(3) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('당번 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_당번.includes(it)).length;
-      console.log('   당번, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   당번 : ' + 색칠배열_당번)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(4) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(4) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('이웃수 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_이웃수.includes(it)).length;
-      console.log('   이웃수, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   이웃수 : ' + 색칠배열_이웃수)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
 
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(5) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(5) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('당번과이웃수 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_당번과이웃수.includes(it)).length;
-      console.log('   당번과이웃수, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   당번과이웃수 : ' + 색칠배열_당번과이웃수)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+    
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(6) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(6) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('5주출 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_5주출.includes(it)).length;
-      console.log('   5주미출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log(현재번호)
-      console.log(색칠배열_5주출)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(7) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(7) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('5주미출 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_5주미출.includes(it)).length;
-
-      console.log(현재번호.filter(it => 색칠배열_5주미출.includes(it)))
-
-      console.log('   5주미출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   5주미출 : ' + 색칠배열_5주미출)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(8) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(8) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('5주1출 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_5주1출.includes(it)).length;
-      console.log('   5주1출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   5주1출 : ' + 색칠배열_5주1출)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(9) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(9) .에서까지input')[1].value;
-    if (에서=='' && 까지=='') {console.log('5주2출 : 에서와 까지 공란, => 아무것도 안함')} else {
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
       일치개수=현재번호.filter(it => 색칠배열_5주2출.includes(it)).length;
-      console.log('   5주2출, 에서 : ' + 에서 + ', 까지 ; ' + 까지)
-      console.log('   현재번호 : ' + 현재번호)
-      console.log('   5주2출 : ' + 색칠배열_5주2출)
-      console.log('   일치개수 : ' + 일치개수)
-      
-
-      if (!(일치개수>=에서 && 일치개수<=까지)) {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 없으면 continue')
-        continue;
-      } else {
-        console.log('   !(일치개수>=에서 && 일치개수<=까지 : 범위내 일치개수 있으면 다음번호 검사')
-      }
+       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(10) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(10) .에서까지input')[1].value;
     if (에서=='' && 까지=='') {} else {
@@ -1179,6 +1102,7 @@ function 필터링조건표_조건일치색칠만() {
       일치개수=현재번호.filter(it => 색칠배열_5주3출이상.includes(it)).length;
       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(11) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(11) .에서까지input')[1].value;
     if (에서=='' && 까지=='') {} else {
@@ -1186,6 +1110,7 @@ function 필터링조건표_조건일치색칠만() {
       일치개수=현재번호.filter(it => 색칠배열_10주미출.includes(it)).length;
       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
+
     에서=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(12) .에서까지input')[0].value;
     까지=document.querySelectorAll('#분석자료_여러45칸_복사본 > div:nth-of-type(12) .에서까지input')[1].value;
     if (에서=='' && 까지=='') {} else {
@@ -1194,83 +1119,112 @@ function 필터링조건표_조건일치색칠만() {
       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
 
-
-    console.log('진행조건 : ' + 진행조건 + ',15주미출까지 진행')
-    if (!진행조건) continue;
-
-    var 색칠번호들=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .분석자료_고정등번호색칠');
-    //console.log('색칠된번호들.length : ' + 색칠번호들.length)
-    for (var 색칠반복=0; 색칠반복<색칠번호들.length; 색칠반복++) {
-      에서=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .에서까지input')[0].value;
-      까지=document.querySelectorAll('#분석자료_여러45칸_유사함 > div:nth-of-type(' + (i+1) + ') .에서까지input')[1].value;
-      if (에서=='' && 까지=='') continue;
+    //수동선택 1~8
+    에서=document.querySelectorAll('#복사본_선택1 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택1 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
       if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
-
       일치개수=현재번호.filter(it => 색칠배열_수동1.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
-      일치개수=현재번호.filter(it => 색칠배열_수동2.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
-      일치개수=현재번호.filter(it => 색칠배열_수동3.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
-      일치개수=현재번호.filter(it => 색칠배열_수동4.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
-      일치개수=현재번호.filter(it => 색칠배열_수동5.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) continue;
-      일치개수=현재번호.filter(it => 색칠배열_수동6.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
-      일치개수=현재번호.filter(it => 색칠배열_수동7.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
-      일치개수=현재번호.filter(it => 색칠배열_수동8.includes(it)).length;
-      if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; break;}
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
 
+    에서=document.querySelectorAll('#복사본_선택2 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택2 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동2.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
-    if (!진행조건) continue;
+    에서=document.querySelectorAll('#복사본_선택3 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택3 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동3.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
+    에서=document.querySelectorAll('#복사본_선택4 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택4 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동4.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
+    에서=document.querySelectorAll('#복사본_선택5 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택5 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동5.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
+
+    에서=document.querySelectorAll('#복사본_선택6 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택6 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동6.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
+
+    에서=document.querySelectorAll('#복사본_선택7 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택7 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동7.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
+
+    에서=document.querySelectorAll('#복사본_선택8 .에서까지input')[0].value;
+    까지=document.querySelectorAll('#복사본_선택8 .에서까지input')[1].value;
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 색칠배열_수동8.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
     에서=document.querySelector('#쉼표로구분1 > input:nth-of-type(1)').value;
     까지=document.querySelector('#쉼표로구분1 > input:nth-of-type(2)').value;
-    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
-    일치개수=현재번호.filter(it => 배열_쉼표로구분1.includes(it)).length;
-    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 배열_쉼표로구분1.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
     에서=document.querySelector('#쉼표로구분2 > input:nth-of-type(1)').value;
     까지=document.querySelector('#쉼표로구분2 > input:nth-of-type(2)').value;
-    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
-    일치개수=현재번호.filter(it => 배열_쉼표로구분2.includes(it)).length;
-    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 배열_쉼표로구분2.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
     에서=document.querySelector('#제외수1 .에서까지input:nth-of-type(1)').value;
     까지=document.querySelector('#제외수1 .에서까지input:nth-of-type(2)').value;
-    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
-    일치개수=현재번호.filter(it => 배열_제외이상이하1.includes(it)).length;
-    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 배열_제외이상이하1.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
     에서=document.querySelector('#제외수2 .에서까지input:nth-of-type(1)').value;
     까지=document.querySelector('#제외수2 .에서까지input:nth-of-type(2)').value;
-    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
-    일치개수=현재번호.filter(it => 배열_제외이상이하2.includes(it)).length;
-    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 배열_제외이상이하2.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
     에서=document.querySelector('#제외수3 .에서까지input:nth-of-type(1)').value;
     까지=document.querySelector('#제외수3 .에서까지input:nth-of-type(2)').value;
-    if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
-    일치개수=현재번호.filter(it => 배열_제외이상이하3.includes(it)).length;
-    if (!(일치개수>=에서 && 일치개수<=까지)) {진행조건=false; continue;}
+    if (에서=='' && 까지=='') {} else {
+      if (에서=='') {에서=0} ; if (까지=='') {까지=현재번호.length};
+      일치개수=현재번호.filter(it => 배열_제외이상이하3.includes(it)).length;
+      if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
+    }
 
-    if (모두공란=='값있음' && 진행조건) {현재번호div.classList.add('현재번호체크');}
-
-
-
-
-  
-
-
-
-
-
-    
+    if (모두공란=='값있음' && 진행조건) {현재번호div.classList.add('현재번호체크');} 
   }
 
   if (document.querySelectorAll('.현재번호체크').length>0) {
