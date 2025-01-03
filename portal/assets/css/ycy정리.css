@@ -97,7 +97,7 @@ header {position:fixed;width:100%;}
 #id_복사본버튼45 > div > span:nth-of-type(2) {width:75px;vertical-align: middle;margin-top:6px;}
 #id_복사본버튼45 span:nth-of-type(1), #id_복사본버튼45 span:nth-of-type(2) {width:115px;margin-top:5px;margin-bottom:3px;}
 
-.현재번호체크 {border:2px solid black;}
+.현재번호div체크 {background-color:brown;border-radius: 23px;}
 
 
 

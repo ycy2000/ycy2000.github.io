@@ -598,7 +598,7 @@ function 분석자료_번호추출() {
 
     //번호한줄divhtml : <div>버튼,,,</div>
     if (한줄번호누적배열.length>0) {
-      번호한줄divhtml='';
+      번호한줄divhtml='<span style="width:20px;height:23px;display:inline-block;"></span>';
       for (var div생성=0; div생성<한줄번호누적배열.length; div생성++) {
         번호한줄divhtml+='<button>' + 한줄번호누적배열[div생성] + '</button>'
       }
@@ -805,7 +805,7 @@ function 리스너용_필터링조건표_전체_click시(e) {
     var 색칠된번호버튼들=document.querySelectorAll('#추출된번호_30개씩무한누적 .색칠용버튼');
     for (var i=0; i<색칠된번호버튼들.length; i++) {
       색칠된번호버튼들[i].classList.remove('색칠용버튼');
-      색칠된번호버튼들[i].setAttribute('title','');
+      색칠된번호버튼들[i].removeAttribute('title');
     }
   }
   if (e.target.innerHTML=='C') {
@@ -873,7 +873,7 @@ function 리스너용_필터링조건표_전체_click시(e) {
     var 추출된번호div들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div');
     var 추출된번호div개수=추출된번호div들.length;
     for (var i=0; i<추출된번호div개수;i++) {
-      if (추출된번호div들[i].classList.contains('현재번호체크')) {추출된번호div들[i].classList.remove('현재번호체크')}
+      if (추출된번호div들[i].children[0].classList.contains('현재번호체크')) {추출된번호div들[i].children[0].classList.remove('현재번호체크')}
     }
   }
 }
@@ -1005,22 +1005,13 @@ function 필터링조건표_조건일치색칠만() {
   //1.추출된번호를 돌면서
   for (var 추출된번호반복=0; 추출된번호반복<추출된번호div개수; 추출된번호반복++) {
     var 현재번호div=추출된번호div들[추출된번호반복];
-    if (현재번호div.classList.contains('현재번호체크')) {현재번호div.classList.remove('현재번호체크')}
+    if (현재번호div.children[0].classList.contains('현재번호div체크')) {현재번호div.children[0].classList.remove('현재번호div체크')}
     document.querySelector('#조건일치개수').innerHTML='';
-
-
-
-
-
-    var 추출된번호div들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div');
-
-
-
     //바로 아래 : 현재번호button들 이, 30개마다 6개버튼이 추가되어 설정됨
-    var 현재번호button들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div:nth-of-type(' + (추출된번호반복+1) +') button');
-    console.log(현재번호button들.length)
+    //var 현재번호button들=document.querySelectorAll('#추출된번호_30개씩무한누적 > div > div:nth-of-type(' + (추출된번호반복+1) +') button');
+    var 현재번호button들=현재번호div.children;
     var 현재번호=[];
-    for (var 현재번호반복=0; 현재번호반복 < 현재번호button들.length; 현재번호반복++) {
+    for (var 현재번호반복=1; 현재번호반복 < 현재번호button들.length; 현재번호반복++) {
       현재번호.push(현재번호button들[현재번호반복].innerHTML*1)
     }
     console.log(현재번호)
@@ -1224,12 +1215,12 @@ function 필터링조건표_조건일치색칠만() {
       if (!(일치개수>=에서 && 일치개수<=까지)) {continue;}
     }
 
-    if (모두공란=='값있음' && 진행조건) {현재번호div.classList.add('현재번호체크');} 
+    if (모두공란=='값있음' && 진행조건) {현재번호div.children[0].classList.add('현재번호div체크');} 
   }
 
-  if (document.querySelectorAll('.현재번호체크').length>0) {
+  if (document.querySelectorAll('.현재번호div체크').length>0) {
     document.querySelector('#조건일치개수').innerHTML=
-    document.querySelectorAll('.현재번호체크').length;
+    document.querySelectorAll('.현재번호div체크').length;
   }
 }
 
@@ -1240,7 +1231,8 @@ function 리스너용_세로구분_분석자료_전체_dblclick시(e) {
   //}
 }
 var 리스너용빈곳번호=document.querySelector('#분석자료_여러45칸');
-var 리스너용조건표빈곳번호=document.querySelector('#분석자료_여러45칸_복사본');
+var 리스너용조건표빈곳번호=document.querySelector('#분석자료_여러45칸_유사함');
+//var 리스너용조건표빈곳번호=document.querySelector('#분석자료_여러45칸_복사본');
 
 function 리스너용조건표빈곳번호_번호색칠(e) {
   if (e.target.nodeName!='BUTTON') {console.log('버튼아님'); return;}
@@ -1259,7 +1251,7 @@ function 리스너용조건표빈곳번호_번호색칠(e) {
 
         } else {
           추출된모든번호버튼들[i].classList.add('색칠용버튼');
-          추출된모든번호버튼들[i].setAttribute('title',i+1);
+          추출된모든번호버튼들[i].setAttribute('title',추출된모든번호버튼들[i].innerHTML*1);
         }
       }
     }
@@ -1270,7 +1262,14 @@ function 리스너용조건표빈곳번호_번호색칠(e) {
   
   var 카운트=-1;
   var 표시배열값;
+
+
+
+  
   var 표시포함버튼들=document.querySelectorAll('#분석자료_여러45칸_복사본 #' + e.target.parentNode.parentNode.id + ' button');
+
+
+
   for (var i=0; i<45; i++) {
     카운트+=1;
     if (표시포함버튼들[i].classList.contains('표시')) {표시배열값=카운트;}
