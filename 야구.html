@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스 및 터치 이벤트 예제</title>
+  <style>
+    .기회한개, .기회 {margin-bottom:3px;}
+    .기회한개 *, .기회 * {display:inline-block;height:30px;width:30px;border:1px solid black;margin-right:-1px;vertical-align: top;text-align: center;}
+    .두줄 {height:50px;width:50px;font-size: 30px;display: inline-block;margin-right:1px;vertical-align: top;}
+    .두줄 div, .확정가정 div {height:50px;width:50px;font-size: 30px;border:1px solid black;text-align: center;margin-bottom:-1px;}
+    .확정가정 div {display: inline-block;margin-right:-1px;vertical-align: top;}
+    .기록중 {background-color: blueviolet;}
+    #기회 .기회 span:nth-of-type(1), #기회 .기회 span:nth-of-type(2) {margin-left:-1px;text-align: center;height:30px;width:25px;display:inline-block;background-color: cadetblue;}
+    .제외 {background-color: chocolate;}
+    .숫자일치 {margin-left:10px;margin-right:10px;}
+  </style>
+</head>
+<body>
+  <div style="display:inline-block" id="기회">
+    <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;">
+
+    </div>
+    <div id="선택" style="position: absolute;left:250px;">
+      <button onclick="계산()">계산</button><span>8934예시</span> <button>현재기록중 1개 clear</button> <button onclick="다시()" style="margin-left:200px;">다시</button> <button style="border:none;"><a href="kim.html">kim.html</a></button><br>
+      <span>선택</span><br>
+      <div class="두줄">
+        <div class="입력">0</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">1</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">2</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">3</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">4</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">5</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">6</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">7</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">8</div><div class="토글"></div>
+      </div><div class="두줄">
+        <div class="입력">9</div><div class="토글"></div>
+      </div>
+      <br><br><br><br>
+      <div id="가능번호" class="확정가정" style="display: inline-block;">가능번호만<br>
+        <div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
+      </div><br>
+      <div id="확정번호만" class="확정가정" style="display: inline-block;">확정번호<br>
+        <div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+    <div><span style="width:135px;display:inline-block;text-align: center;">기회 10번</span><span>S</span><span style="margin-left:20px;">B</span></div>
+    <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="위치일치"></span><span class="숫자일치">1</span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
+    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="위치일치"></span><span class="숫자일치">2</span><span>C</span></div>
+    <div class="기회" id="기회2"><div>8</div><div>9</div><div>4</div><div>5</div><span class="위치일치">2</span><span class="숫자일치">1</span><span>C</span></div>
+    <div class="기회" id="기회3"><div>2</div><div>3</div><div>6</div><div>4</div><span class="위치일치">1</span><span class="숫자일치">1</span><span>C</span></div>
+    <div class="기회" id="기회4"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
+    <div class="기회" id="기회5"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
+    <div class="기회" id="기회6"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
+    <div class="기회" id="기회7"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
+    <div class="기회" id="기회8"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
+    <div class="기회" id="기회9"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
+  </div>
+  <br>
+  <div style="border:1px solid black;width:215px;margin: 5px 0px;"></div>
+  <div style="display:inline-block" id="가능">
+    <div class="기회한개"><div>0</div><div>0</div><div>0</div><div>0</div></div>
+    <div class="기회한개"><div>1</div><div>1</div><div>1</div><div>1</div></div>
+    <div class="기회한개"><div>2</div><div>2</div><div>2</div><div>2</div></div>
+    <div class="기회한개"><div>3</div><div>3</div><div>3</div><div>3</div></div>
+    <div class="기회한개"><div>4</div><div>4</div><div>4</div><div>4</div></div>
+    <div class="기회한개"><div>5</div><div>5</div><div>5</div><div>5</div></div>
+    <div class="기회한개"><div>6</div><div>6</div><div>6</div><div>6</div></div>
+    <div class="기회한개"><div>7</div><div>7</div><div>7</div><div>7</div></div>
+    <div class="기회한개"><div>8</div><div>8</div><div>8</div><div>8</div></div>
+    <div class="기회한개"><div>9</div><div>9</div><div>9</div><div>9</div></div>
+  </div>
+<script>
+
+function 계산() {
+  //계산gpt
+  const 기회들 = []; // 기회들의 숫자 정보를 담는 배열
+  const 결과 = [];  // 최종적으로 조건에 맞는 조합을 저장
+
+  // 모든 가능한 조합 생성
+  const 모든조합 = 중복제거모든조합_result();
+
+  // 각 기회에서 숫자와 위치 정보를 읽어오기
+  for (let i = 0; i < 10; i++) {
+    const 기회 = document.querySelectorAll(`#기회${i} div`);
+    const 위치일치 = document.querySelector(`#기회${i} .위치일치`)?.innerHTML || '0';
+    const 숫자일치 = document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0';
+
+    if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
+      const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
+      기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
+    }
+  }
+
+  // 조건에 맞는지 모든 조합 필터링
+  모든조합.forEach(조합 => {
+    let 유효 = true;
+
+    for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) {
+      let 위치일치수 = 0;
+      let 숫자일치수 = 0;
+
+      // 위치와 값이 모두 일치하는 개수
+      for (let i = 0; i < 4; i++) {
+        if (조합[i] === 기회숫자[i]) {
+          위치일치수++;
+        }
+      }
+
+      // 숫자만 일치하는 개수
+      const 조합복사 = [...조합];
+      const 기회복사 = [...기회숫자];
+      for (let i = 0; i < 4; i++) {
+        if (조합[i] === 기회숫자[i]) {
+          조합복사[i] = -1; // 일치한 위치는 제외
+          기회복사[i] = -1;
+        }
+      }
+      숫자일치수 = 조합복사.filter(num => num !== -1 && 기회복사.includes(num)).length;
+
+      // 조건 불일치 시 필터링
+      if (위치일치수 !== 위치일치 || 숫자일치수 !== 숫자일치) {
+        유효 = false;
+        break;
+      }
+    }
+
+    if (유효) 결과.push(조합);
+  });
+
+  console.log("가능한 조합:", 결과);
+
+  var 결과한줄씩='';
+  for (var i=0; i<결과.length; i++) {
+    결과한줄씩=결과한줄씩 + '<br>' + 결과[i];
+  }
+
+  document.querySelector('#가능한조합').innerHTML=결과한줄씩;
+}
+
+
+리스너기회=document.querySelector('#기회');
+
+
+const result = [];
+중복제거모든조합_result()
+function 중복제거모든조합_result() {
+  const list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const resultSet = new Set();
+
+  for (let i = 0; i < list.length; i++) {
+    for (let j = 0; j < list.length; j++) {
+      for (let m = 0; m < list.length; m++) {
+        for (let k = 0; k < list.length; k++) {
+          // 중복된 요소 제거
+          if (i === j || i === m || j === m || j === k || m === k || k === i) continue;
+          
+          // 중복 방지를 위해 Set에 문자열로 저장
+          const combination = [list[i], list[j], list[m], list[k]].join('');
+          resultSet.add(combination);
+        }
+      }
+    }
+  }
+
+  // Set을 다시 배열로 변환하며 각 문자열을 숫자 배열로 변환
+  return Array.from(resultSet).map(combination => combination.split('').map(Number));
+}
+function 중복제거모든조합_result000() {
+  var list=[0,1,2,3,4,5,6,7,8,9];
+  for (let i = 0; i < list.length; i++) {
+    for (let j = 0; j < list.length; j++) {
+      for (let m = 0; m < list.length; m++) {
+        for (let k = 0; k < list.length; k++) {
+          // 중복된 요소 제거
+          if (i === j || i === m || j === m || j === k || m === k || k === i) continue;
+          result.push([list[i], list[j], list[m], list[k]]);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+
+
+function 계산__() {
+  console.log(result)
+  const apLetter = result.filter(x => x.includes('1'));
+  console.log(apLetter)
+}
+
+
+
+
+
+function 계산1() {
+
+  for (var i=0; i<document.querySelectorAll('.기회한개 div').length; i++) {
+    document.querySelectorAll('.기회한개 div')[i].classList.remove('제외')
+  }
+  
+  var 가능번호=[0,1,2,3,4,5,6,7,8,9]
+  var 확정번호=['','','',''];
+
+  var 기회0=[], 기회1=[], 기회2=[], 기회3=[], 기회4=[], 기회5=[], 기회6=[], 기회7=[], 기회8=[], 기회9=[];
+  var 검토할기회들=[];
+  for (var i=0; i<10; i++) {
+    기회=document.querySelectorAll('#기회' + i + ' *');
+    for (var 담기=0; 담기<기회.length-1; 담기++) {
+      if (i==0) {기회0.push(기회[담기].innerHTML)}
+      if (i==1) {기회1.push(기회[담기].innerHTML)}
+      if (i==2) {기회2.push(기회[담기].innerHTML)}
+      if (i==3) {기회3.push(기회[담기].innerHTML)}
+      if (i==4) {기회4.push(기회[담기].innerHTML)}
+      if (i==5) {기회5.push(기회[담기].innerHTML)}
+      if (i==6) {기회6.push(기회[담기].innerHTML)}
+      if (i==7) {기회7.push(기회[담기].innerHTML)}
+      if (i==8) {기회8.push(기회[담기].innerHTML)}
+      if (i==9) {기회9.push(기회[담기].innerHTML)}
+    }
+  }
+  //기회0[0]=='' 이면 공백의 값이 있다는 말이다.
+  if (기회0[0] && 기회0[1] && 기회0[2] &&기회0[3]) {검토할기회들.push(기회0)}
+  if (기회1[0] && 기회1[1] && 기회1[2] &&기회1[3]) {검토할기회들.push(기회1)}
+  if (기회2[0] && 기회2[1] && 기회2[2] &&기회2[3]) {검토할기회들.push(기회2)}
+  if (기회3[0] && 기회3[1] && 기회3[2] &&기회3[3]) {검토할기회들.push(기회3)}
+  if (기회4[0] && 기회4[1] && 기회4[2] &&기회4[3]) {검토할기회들.push(기회4)}
+  if (기회5[0] && 기회5[1] && 기회5[2] &&기회5[3]) {검토할기회들.push(기회5)}
+  if (기회6[0] && 기회6[1] && 기회6[2] &&기회6[3]) {검토할기회들.push(기회6)}
+  if (기회7[0] && 기회7[1] && 기회7[2] &&기회7[3]) {검토할기회들.push(기회7)}
+  if (기회8[0] && 기회8[1] && 기회8[2] &&기회8[3]) {검토할기회들.push(기회8)}
+  if (기회9[0] && 기회9[1] && 기회9[2] &&기회9[3]) {검토할기회들.push(기회9)}
+
+  for (var i=0; i<검토할기회들.length; i++) {
+    if (!검토할기회들[i][4] && 검토할기회들[i][5]) {
+      document.querySelectorAll('.기회한개:nth-of-type(' + (검토할기회들[i][0]*1 + 1) + ') > div')[0].classList.add('제외');
+      document.querySelectorAll('.기회한개:nth-of-type(' + (검토할기회들[i][1]*1 + 1) + ') > div')[1].classList.add('제외');
+      document.querySelectorAll('.기회한개:nth-of-type(' + (검토할기회들[i][2]*1 + 1) + ') > div')[2].classList.add('제외');
+      document.querySelectorAll('.기회한개:nth-of-type(' + (검토할기회들[i][3]*1 + 1) + ') > div')[3].classList.add('제외');
+    }
+  }
+
+  var 제외수=[];
+  for (var i=0; i<document.querySelectorAll('.토글').length; i++) {
+    if (document.querySelectorAll('.토글')[i].innerHTML!='') {
+      제외수.push(document.querySelectorAll('.토글')[i].innerHTML);
+    }
+  }
+
+  console.log('제외수 : ' + 제외수)
+  if (제외수.length>0) {
+    for (var i=0; i<제외수.length; i++) {
+      document.querySelectorAll('.기회한개:nth-of-type(' + (제외수[i][0]*1 + 1) + ') > div')[0].classList.add('제외');
+      document.querySelectorAll('.기회한개:nth-of-type(' + (제외수[i][0]*1 + 1) + ') > div')[1].classList.add('제외');
+      document.querySelectorAll('.기회한개:nth-of-type(' + (제외수[i][0]*1 + 1) + ') > div')[2].classList.add('제외');
+      document.querySelectorAll('.기회한개:nth-of-type(' + (제외수[i][0]*1 + 1) + ') > div')[3].classList.add('제외');
+    }
+  }
+
+
+
+
+
+
+}
+
+function 다시() {
+
+  document.querySelector('.기록중').classList.remove('기록중');
+  document.querySelector('#초기화시기록중클래스부여').classList.add('기록중');
+  
+
+  for (var i=0; i<document.querySelectorAll('.기회한개 div').length; i++) {
+    document.querySelectorAll('.기회한개 div')[i].classList.remove('제외')
+  }
+  for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
+    document.querySelectorAll('.입력')[i].innerHTML=i;
+    document.querySelectorAll('.입력')[i].nextSibling.innerHTML='';
+  }
+  for (var i=0; i<document.querySelectorAll('.기회 *').length; i++) {
+    if (i % 7 == 6) {
+
+    } else {
+      //document.querySelectorAll('.기회 *')[i].innerHTML='';
+    }
+  }
+  for (var i=0; i<document.querySelectorAll('#가능번호 div').length; i++) {
+    document.querySelectorAll('#가능번호 div')[i].innerHTML=i;
+  }
+  for (var i=0; i<document.querySelectorAll('#확정번호만 div').length; i++) {
+    document.querySelectorAll('#확정번호만 div')[i].innerHTML='';
+  }
+
+}
+
+function 기회click(e) {
+  if (e.target.classList.contains('토글')) {
+    if (e.target.innerHTML!='') {
+      e.target.previousSibling.innerHTML=e.target.innerHTML; 
+      e.target.innerHTML=''
+    } else {
+      e.target.innerHTML=e.target.previousSibling.innerHTML;
+      e.target.previousSibling.innerHTML=''; 
+    }
+  }
+
+  if (e.target.innerHTML=='C') {
+    document.querySelector('.기록중').classList.remove('기록중');
+    e.target.classList.add('기록중');
+  }
+
+  if (e.target.classList.contains('입력')) {
+    console.log('e.target.classList.contains(입력)')
+    if (e.target.innerHTML=='') {console.log('\u00a0\u00a0\e.target.innerHTML=="") {return;}'); return;}
+    var 기록중기회요소=document.querySelector('.기록중').parentNode;
+    var 같은번호있음;
+    for (var i=0; i<4; i++) {
+      if (기록중기회요소.children[i].innerHTML==e.target.innerHTML*1) {
+        같은번호있음='같은번호있음';
+      }
+    }
+    if (같은번호있음=='같은번호있음') {
+      console.log('같은번호있음')
+      for (var i=0; i<4; i++) {
+      if (기록중기회요소.children[i].innerHTML==e.target.innerHTML) {
+        기록중기회요소.children[i].innerHTML='';
+        return;
+        }
+      }
+    }
+    for (var i=0; i<4; i++) {
+      if (기록중기회요소.children[i].innerHTML=='') {
+        기록중기회요소.children[i].innerHTML=e.target.innerHTML;
+        return;
+      }
+    }
+
+
+  }
+
+}
+
+리스너기회.addEventListener('click', 기회click)
+</script>
+
+
+</body>
+</html>
