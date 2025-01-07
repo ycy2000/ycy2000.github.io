@@ -19,11 +19,15 @@
 </head>
 <body>
   <div style="display:inline-block" id="기회">
+    <button id="왼쪽토글" style="position: absolute;left:150px;top:430px;" onclick="왼쪽토글()">왼쪽 토글</button>
+    <button id="오른쪽토글"  onclick="오른쪽토글()" style="position: absolute;left:150px;top:460px;">오른쪽토글</button>
+    <textarea id="textarea왼쪽" spellcheck="false" style="font-weight: bold; display:block;background-color:white;position: absolute;left:145px;top:500px;width:350px;height:450px;font-size:20px;"></textarea>
+    <textarea id="textarea오른쪽" spellcheck="false"  style="font-weight: bold;display:block;background-color:white;position: absolute;left:500px;top:500px;width:340px;height:450px;font-size:20px;"></textarea>
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
     <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;"></div>
     <div id="선택" style="position: absolute;left:250px;">
       <button onclick="계산()">계산</button><span>8934예시</span> <button>현재기록중 1개 clear</button> <button onclick="다시()" style="margin-left:200px;">다시</button> <button style="border:none;"><a href="kim.html">kim.html</a></button><br>
-      <span>선택, 제외할 숫자 내림림, *랜덤번호직접입력 바탕색이 yellow이면</span><br>
+      <span>선택, 가능한 조합에서 제외할 숫자 내림</span><br>
       <div class="두줄">
         <div class="입력">0</div><div class="토글"></div>
       </div><div class="두줄">
@@ -46,7 +50,7 @@
         <div class="입력">9</div><div class="토글"></div>
       </div>
       <br><br><br><br>
-      <span>포함할숫자 내림, *랜덤번호직접입력은 선택번호사용, 번호4개일때 지움</span><br>
+      <span>가능한조합에서 포함할숫자 내림, *랜덤번호직접입력은 선택번호사용</span><br>
       <div class="두줄">
         <div class="포함">0</div><div class="포함토글"></div>
       </div><div class="두줄">
@@ -71,7 +75,7 @@
       <br><br><br><br>
       <div id="랜덤번호" style="display: inline-block;">랜덤번호(설정후 맞추기 할때)<br>
         <div></div><div></div><div></div><div></div><span id="숨겨진랜덤번호" style="display:none"></span> 
-        <div style="width:300px;border:none;"><button id="랜덤번호직접입력">랜덤번호직접입력</button> <button>랜덤번호지움</button><br>
+        <div style="width:300px;border:none;"><button id="랜덤번호직접입력">기회입력상태</button> <button>랜덤번호지움</button><br>
           <button style="vertical-align: bottom;margin-left:5px;">랜덤번호생성</button> <button style="vertical-align: bottom;">번호보기/숨기기</button></div>
         <!-- 랜덤번호가 XXXX BS직접입력 / 랜덤번호 있음 BS 계산()시 입력됨 -->
         <br> <button id="랜덤번호정보">랜덤번호가 XXXX BS직접입력</button><br><br>
@@ -80,10 +84,10 @@
       <div><div style="display:inline-block; width:250px;font-size:25px;border:1px solid black;margin-right:-1px;">포함해야하는 번호</div><div id="포함해야하는번호"  style="display:inline-block; width:250px;font-size:25px;border:1px solid black;height:33px;vertical-align:top;"></div></div>
     </div>
     <div><span style="width:135px;display:inline-block;text-align: center;">기회 10번</span><span>B</span><span style="margin-left:20px;">S</span></div>
-    <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="숫자일치">1</span><span class="위치일치">1</span><span>C</span></div>
-    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치">1</span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회2"><div>0</div><div>5</div><div>3</div><div>6</div><span class="숫자일치">2</span><span class="위치일치"></span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
-    <div class="기회" id="기회3"><div>5</div><div>7</div><div>2</div><div>3</div><span class="숫자일치">2</span><span class="위치일치">2</span><span>C</span></div>
+    <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
+    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
+    <div class="기회" id="기회2"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
+    <div class="기회" id="기회3"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회4"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회5"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회6"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
@@ -93,6 +97,10 @@
   </div>
   <br>
   <div style="border:1px solid black;width:215px;margin: 5px 0px;"></div>
+  <div>
+    순서확정된 번호 <br>
+    <div id="순서확정" class="가능숫자하나"><div></div><div></div><div></div><div></div></div>
+  </div><br>
   <div style="display:inline-block" id="가능">
     <div class="가능숫자하나"><div>0</div><div>0</div><div>0</div><div>0</div></div>
     <div class="가능숫자하나"><div>1</div><div>1</div><div>1</div><div>1</div></div>
@@ -105,8 +113,29 @@
     <div class="가능숫자하나"><div>8</div><div>8</div><div>8</div><div>8</div></div>
     <div class="가능숫자하나"><div>9</div><div>9</div><div>9</div><div>9</div></div>
   </div>
+
 <script>
 var 리턴번호;
+function 왼쪽토글() {
+
+    console.log('왼쪽 토글');
+    if (document.querySelector('#textarea왼쪽').style.display=='block') {
+      document.querySelector('#textarea왼쪽').style.display='none';
+    } else {
+      document.querySelector('#textarea왼쪽').style.display='block';
+    }
+
+}
+function 오른쪽토글() {
+
+console.log('오른쪽 토글');
+if (document.querySelector('#textarea오른쪽').style.display=='block') {
+  document.querySelector('#textarea오른쪽').style.display='none';
+} else {
+  document.querySelector('#textarea오른쪽').style.display='block';
+}
+
+}
 function 랜덤번호지움 () {
   //랜덤번호지움 실행후 사용할것
   console.log('랜덤번호지움 ()')
@@ -134,11 +163,13 @@ function 랜덤번호직접기록 () {
       document.querySelectorAll('#랜덤번호 div')[3].innerHTML=리턴번호;
   } 
   if (랜덤번호들[0].innerHTML!='' && 랜덤번호들[1].innerHTML!='' && 랜덤번호들[2].innerHTML!='' && 랜덤번호들[3].innerHTML!='') {
+    console.log('모두기록상태')
     for (var i=0; i<4; i++) {
       console.log(랜덤번호들[i].innerHTML)
       번호4개배열.push(랜덤번호들[i].innerHTML);
     }
       document.querySelector('#숨겨진랜덤번호').innerHTML=번호4개배열.join(',');
+      document.querySelector('#랜덤번호정보').innerHTML='랜덤번호 있음 BS 계산()시 입력됨'
   }
 } 
 
@@ -415,6 +446,20 @@ function 중복제거모든조합_result() {
 }
 
 function 다시() {
+
+  document.querySelector('#가능한조합').innerHTML = '';
+
+  for (var i=0; i<document.querySelectorAll('.숫자일치').length; i++) {
+    document.querySelectorAll('.숫자일치')[i].innerHTML='';
+    document.querySelectorAll('.위치일치')[i].innerHTML='';
+  }
+
+  for (var i=2; i<10; i++) {
+    var 현재기회div4개=document.querySelectorAll('#기회' + i + ' *'); 
+    for (var t=0; t<4; t++) {
+      현재기회div4개[t].innerHTML='';
+    }
+  }
   
   document.querySelector('#랜덤번호직접입력').innerHTML='랜덤번호직접입력';
   document.querySelector('#랜덤번호정보').innerHTML='랜덤번호가 XXXX BS직접입력';
@@ -498,15 +543,15 @@ function 기회click(e) {
     return;
   }
 
-  if (e.target.innerHTML=='랜덤번호직접입력') {
-    console.log('e.target.innerHTML==랜덤번호직접입력')
+  if (e.target.innerHTML=='기회입력상태') {
+    console.log('e.target.innerHTML==기회입력상태')
     e.target.innerHTML='직접입력상태'
     return;
   }
 
   if (e.target.innerHTML=='직접입력상태') {
     console.log('e.target.innerHTML==직접입력상태')
-    e.target.innerHTML='랜덤번호직접입력'
+    e.target.innerHTML='기회입력상태'
     return;
   }
 
