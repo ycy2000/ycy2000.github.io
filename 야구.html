@@ -106,6 +106,65 @@
     <div class="가능숫자하나"><div>9</div><div>9</div><div>9</div><div>9</div></div>
   </div>
 <script>
+var 리턴번호;
+function 랜덤번호지움 () {
+  //랜덤번호지움 실행후 사용할것
+  console.log('랜덤번호지움 ()')
+  document.querySelector('#숨겨진랜덤번호').innerHTML='';
+  for (i=0; i<4; i++) {
+    document.querySelectorAll('#랜덤번호 div')[i].innerHTML='';
+  }
+
+  document.querySelector('#랜덤번호정보').innerHTML='랜덤번호가 XXXX BS직접입력';
+
+} 
+
+function 랜덤번호직접기록 () {
+  //랜덤번호지움 실행후 사용할것
+  console.log('리턴번호 : ' + 리턴번호)
+  var 번호4개배열=[];
+  var 랜덤번호들=document.querySelectorAll('#랜덤번호 div');
+  if (랜덤번호들[0].innerHTML=='' && 리턴번호!='') {
+      document.querySelectorAll('#랜덤번호 div')[0].innerHTML=리턴번호;
+    } else if (랜덤번호들[1].innerHTML=='' && 리턴번호!='') {
+      document.querySelectorAll('#랜덤번호 div')[1].innerHTML=리턴번호;
+    } else if (랜덤번호들[2].innerHTML=='' && 리턴번호!='') {
+      document.querySelectorAll('#랜덤번호 div')[2].innerHTML=리턴번호;
+    } else if (랜덤번호들[3].innerHTML=='' && 리턴번호!='') {
+      document.querySelectorAll('#랜덤번호 div')[3].innerHTML=리턴번호;
+  } 
+  if (랜덤번호들[0].innerHTML!='' && 랜덤번호들[1].innerHTML!='' && 랜덤번호들[2].innerHTML!='' && 랜덤번호들[3].innerHTML!='') {
+    for (var i=0; i<4; i++) {
+      console.log(랜덤번호들[i].innerHTML)
+      번호4개배열.push(랜덤번호들[i].innerHTML);
+    }
+      document.querySelector('#숨겨진랜덤번호').innerHTML=번호4개배열.join(',');
+  }
+} 
+
+function 랜덤번호보기숨기기() {
+  console.log('function 랜덤번호보기숨기기()')
+  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
+
+  var 랜덤번호span값배열=[];
+  if (document.querySelectorAll('#랜덤번호 > div')[0].innerHTML!='') {
+    console.log('null이 아니거나 값이 있을때')
+      //기록되어 있을때
+      for (var i=0; i<4; i++) {
+        document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
+      }
+      return;
+  }
+  //기록이 없을때, 랜덤번호span값 있을때
+  if (랜덤번호span값!='' && 랜덤번호span값!=null) {
+    랜덤번호span값배열=랜덤번호span값.split(',');
+    console.log('랜덤번호span값배열 : ' + 랜덤번호span값배열)
+    for (var i=0; i<4; i++) {
+        document.querySelectorAll('#랜덤번호 > div')[i].innerHTML=랜덤번호span값배열[i];
+      }
+  }
+}
+
 function 랜덤번호생성() {
   var 랜덤배열10개=[];
   var 확정배열4개=[];
@@ -120,8 +179,13 @@ function 랜덤번호생성() {
   }
   //console.log(확정배열4개)
   document.querySelector('#숨겨진랜덤번호').innerHTML=확정배열4개.join(',');
+  //기존값 지우기
+  for (i=0; i<4; i++) {
+    document.querySelectorAll('#랜덤번호 div')[i].innerHTML='';
+  }
 
 }
+
 function 랜덤번호있을때_SB기록() {
   console.log(' 랜덤번호있을때_SB기록()')
   //숫자일치,위치일치 클래스 값 제거
@@ -397,6 +461,7 @@ function 기회click(e) {
     for (var i=0; i<기록중요소.length-1; i++) {
       기록중요소[i].innerHTML='';
     }
+    return;
   }
   if (e.target.classList.contains('위치일치') || e.target.classList.contains('숫자일치')) {
     if (e.target.innerHTML=='') {
@@ -404,6 +469,7 @@ function 기회click(e) {
     } else if (e.target.innerHTML=='4') {
       e.target.innerHTML='';
     } else {e.target.innerHTML=e.target.innerHTML*1 + 1;}
+    return;
   }
   if (e.target.classList.contains('토글')) {
     if (e.target.innerHTML!='') {
@@ -413,6 +479,7 @@ function 기회click(e) {
       e.target.innerHTML=e.target.previousSibling.innerHTML;
       e.target.previousSibling.innerHTML=''; 
     }
+    return;
   }
   if (e.target.classList.contains('포함토글')) {
     if (e.target.innerHTML!='') {
@@ -422,24 +489,38 @@ function 기회click(e) {
       e.target.innerHTML=e.target.previousSibling.innerHTML;
       e.target.previousSibling.innerHTML=''; 
     }
+    return;
   }
 
   if (e.target.innerHTML=='C') {
     document.querySelector('.기록중').classList.remove('기록중');
     e.target.classList.add('기록중');
+    return;
   }
 
-  if (e.target.classList.contains('입력')) {
-    console.log('e.target.classList.contains(입력)')
-    if (document.querySelector('#랜덤번호직접입력').innerHTML=='직접입력상태') {
-      console.log('랜덤번호직접입력상태')
+  if (e.target.innerHTML=='랜덤번호직접입력') {
+    console.log('e.target.innerHTML==랜덤번호직접입력')
+    e.target.innerHTML='직접입력상태'
+    return;
+  }
 
-      return;
-    }
+  if (e.target.innerHTML=='직접입력상태') {
+    console.log('e.target.innerHTML==직접입력상태')
+    e.target.innerHTML='랜덤번호직접입력'
+    return;
+  }
 
 
+  if (e.target.classList.contains('입력') & document.querySelector('#랜덤번호직접입력').innerHTML=='직접입력상태') {
+    console.log('e.target.classList.contains(입력) + 직접입력상태 일때')
+    
+    리턴번호=e.target.innerHTML;//전역변수
+    랜덤번호직접기록 ()
+    return;
+  }
 
-
+  if (e.target.classList.contains('입력') & document.querySelector('#랜덤번호직접입력').innerHTML!='직접입력상태') {
+    console.log('e.target.classList.contains(입력) + 직접입력상태 아닐때')
     if (e.target.innerHTML=='') {console.log('\u00a0\u00a0\e.target.innerHTML=="") {return;}'); return;}
     var 기록중기회요소=document.querySelector('.기록중').parentNode;
     var 같은번호있음;
@@ -463,39 +544,26 @@ function 기회click(e) {
         return;
       }
     }
+    return;
   }
   if (e.target.innerHTML=='랜덤번호생성') {
     console.log('e.target.innerHTML==랜덤번호생성');
     랜덤번호생성();
     document.querySelector('#랜덤번호정보').innerHTML='랜덤번호 있음 BS 계산()시 입력됨';
+    return;
   }
   if (e.target.innerHTML=='번호보기/숨기기') {
     console.log('e.target.innerHTML==번호보기/숨기기');
-    var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
-
-    var 랜덤번호span값배열=[];
-    if (document.querySelectorAll('#랜덤번호 > div')[0].innerHTML!='') {
-      console.log('null이 아니거나 값이 있을때')
-        //기록되어 있을때
-        for (var i=0; i<4; i++) {
-          document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
-        }
-        return;
-    }
-    //기록이 없을때, 랜덤번호span값 있을때
-    if (랜덤번호span값!='' && 랜덤번호span값!=null) {
-      랜덤번호span값배열=랜덤번호span값.split(',');
-      console.log('랜덤번호span값배열 : ' + 랜덤번호span값배열)
-      for (var i=0; i<4; i++) {
-          document.querySelectorAll('#랜덤번호 > div')[i].innerHTML=랜덤번호span값배열[i];
-        }
-    }
+    랜덤번호보기숨기기();
+    return;
   }
-  if (e.target.innerHTML=='랜덤번호직접입력') { 
-    console.log('e.target.innerHTML==랜덤번호직접입력')
-    e.target.innerHTML='직접입력상태';
-
+  if (e.target.innerHTML=='랜덤번호지움') {
+    console.log('e.target.innerHTML==랜덤번호지움');
+    랜덤번호지움 ()
+    return;
   }
+
+
 
 }
 
