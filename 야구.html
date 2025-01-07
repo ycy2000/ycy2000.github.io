@@ -117,6 +117,44 @@
 <script>
 var 리턴번호;
 function 왼쪽토글() {
+// 배열 선언
+const 배열1 = [0, 1, 2, 3];
+const 배열2 = [0, 1, 2, 4];
+const 배열3 = [5, 6, 4, 7];
+const 임시배열 = [null, null, null, null]; // 초기값을 null로 설정
+
+// 임시배열 업데이트 함수
+function updateTemporaryArray(sourceArray, tempArray, matchCount) {
+    // 각 위치에서 숫자가 일치하는 경우만 처리
+    let matchCounter = 0;
+
+    for (let i = 0; i < sourceArray.length; i++) {
+        if (tempArray[i] === null && matchCounter < matchCount) {
+            // tempArray의 해당 위치가 null이고, 조건에 맞는 값이 아직 부족한 경우
+            let isMatched = true;
+            for (let j = 0; j < tempArray.length; j++) {
+                if (tempArray[j] !== null && tempArray[j] !== sourceArray[j]) {
+                    isMatched = false;
+                    break;
+                }
+            }
+            if (isMatched) {
+                tempArray[i] = sourceArray[i];
+                matchCounter++;
+            }
+        }
+    }
+}
+
+// 배열1, 배열2, 배열3과 임시배열 비교 및 업데이트
+updateTemporaryArray(배열1, 임시배열, 3);
+updateTemporaryArray(배열2, 임시배열, 3);
+updateTemporaryArray(배열3, 임시배열, 1);
+
+// 결과 출력
+console.log(임시배열);
+}
+function 왼쪽토글__() {
 
     console.log('왼쪽 토글');
     if (document.querySelector('#textarea왼쪽').style.display=='block') {
@@ -253,6 +291,7 @@ function 랜덤번호있을때_SB기록() {
 
 
 } 
+
 
 function 계산() {
   console.log('계산()')
