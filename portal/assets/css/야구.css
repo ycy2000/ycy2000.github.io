@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.가능숫자하나, .기회 {margin-bottom:3px;}
+.가능숫자하나 *, .기회 * {display:inline-block;height:30px;width:30px;border:1px solid black;margin-right:-1px;vertical-align: top;text-align: center;}
+.두줄 {height:50px;width:50px;font-size: 30px;display: inline-block;margin-right:1px;vertical-align: top;}
+.두줄 div, .확정가정 div, #랜덤번호 div {height:50px;width:50px;font-size: 30px;border:1px solid black;text-align: center;margin-bottom:-1px;}
+#랜덤번호 div {display: inline-block;margin-right:-1px;vertical-align: top;}
+.기록중 {background-color: blueviolet;}
+#기회 .기회 span:nth-of-type(1), #기회 .기회 span:nth-of-type(2) {margin-left:-1px;text-align: center;height:30px;width:25px;display:inline-block;background-color: cadetblue;}
+.제외 {background-color: chocolate;}
+.위치일치 {margin-left:10px;margin-right:10px;}
+#가능한조합 div {display: inline-block;width:80px; vertical-align: top;}
+
+/* 버튼들 */
+#왼쪽토글 {position: absolute;left:150px;top:430px;}
+#오른쪽토글 {position: absolute;left:150px;top:465px;}
+
+#textarea왼쪽 {font-weight: bold; display:block;background-color:white;position: absolute;left:145px;top:500px;width:350px;height:450px;font-size:20px;}
+#textarea오른쪽 {font-weight: bold;display:block;background-color:white;position: absolute;left:500px;top:500px;width:340px;height:450px;font-size:20px;}
+
+#랜덤번호 button {font-size:16px;}/* 기회입력상태, 랜덤번호지움, 랜덤번호생성, 번호보기/지우기 */
+#버튼4개 {display:inline-block;position:absolute;top:293px;left:270px;width:280px;border:none;}
+
+#없어야할번호 div:nth-of-type(1) {height:38px;display:inline-block; width:150px;font-size:16px;border:1px solid black;margin-right:-1px;}
+#없어야할번호 div:nth-of-type(2) {height:38px;display:inline-block; width:150px;font-size:16px;border:1px solid black;vertical-align:top;}
+#없어야할번호 {margin-bottom:-1px;margin-top:-10px;}
+#포함해야하는번호 div:nth-of-type(1) {height:38px;display:inline-block; width:150px;font-size:16px;border:1px solid black;margin-right:-1px;}
+#포함해야하는번호 div:nth-of-type(2) {height:38px;display:inline-block; width:150px;font-size:16px;border:1px solid black;vertical-align:top;}

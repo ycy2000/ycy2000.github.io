@@ -3,30 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>마우스 및 터치 이벤트 예제</title>
-  <style>
-    .가능숫자하나, .기회 {margin-bottom:3px;}
-    .가능숫자하나 *, .기회 * {display:inline-block;height:30px;width:30px;border:1px solid black;margin-right:-1px;vertical-align: top;text-align: center;}
-    .두줄 {height:50px;width:50px;font-size: 30px;display: inline-block;margin-right:1px;vertical-align: top;}
-    .두줄 div, .확정가정 div, #랜덤번호 div {height:50px;width:50px;font-size: 30px;border:1px solid black;text-align: center;margin-bottom:-1px;}
-    #랜덤번호 div {display: inline-block;margin-right:-1px;vertical-align: top;}
-    .기록중 {background-color: blueviolet;}
-    #기회 .기회 span:nth-of-type(1), #기회 .기회 span:nth-of-type(2) {margin-left:-1px;text-align: center;height:30px;width:25px;display:inline-block;background-color: cadetblue;}
-    .제외 {background-color: chocolate;}
-    .위치일치 {margin-left:10px;margin-right:10px;}
-    #가능한조합 div {display: inline-block;width:80px; vertical-align: top;}
-  </style>
+  <title>야구</title>
+  <!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link href="portal/assets/css/야구.css" rel="stylesheet">
 </head>
 <body>
   <div style="display:inline-block" id="기회">
-    <button id="왼쪽토글" style="position: absolute;left:150px;top:430px;" onclick="왼쪽토글()">왼쪽 토글</button>
-    <button id="오른쪽토글"  onclick="오른쪽토글()" style="position: absolute;left:150px;top:460px;">오른쪽토글</button>
-    <textarea id="textarea왼쪽" spellcheck="false" style="font-weight: bold; display:block;background-color:white;position: absolute;left:145px;top:500px;width:350px;height:450px;font-size:20px;"></textarea>
-    <textarea id="textarea오른쪽" spellcheck="false"  style="font-weight: bold;display:block;background-color:white;position: absolute;left:500px;top:500px;width:340px;height:450px;font-size:20px;"></textarea>
+    <button id="왼쪽토글" onclick="왼쪽토글()">왼쪽 토글</button>
+    <button id="오른쪽토글"  onclick="오른쪽토글()">오른쪽토글</button>
+    <textarea class="d-block" id="textarea왼쪽" spellcheck="false"></textarea>
+    <textarea class="d-block" id="textarea오른쪽" spellcheck="false"></textarea>
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
     <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;"></div>
+
     <div id="선택" style="position: absolute;left:250px;">
-      <button onclick="계산()">계산</button><span>8934예시</span> <button>현재기록중 1개 clear</button> <button onclick="다시()" style="margin-left:200px;">다시</button> <button style="border:none;"><a href="kim.html">kim.html</a></button><br>
+      <button onclick="계산()">계산</button>
+      <span>3824예시</span> 
+      <button>현재기록중 1개 clear</button> 
+      <button onclick="임시()">임시함수</button>
+      <button onclick="다시()" style="margin-left:160px;">다시</button> 
+      <button style="border:none;"><a href="kim.html">kim.html</a></button><br>
       <span>선택, 가능한 조합에서 제외할 숫자 내림</span><br>
       <div class="두줄">
         <div class="입력">0</div><div class="토글"></div>
@@ -49,7 +46,7 @@
       </div><div class="두줄">
         <div class="입력">9</div><div class="토글"></div>
       </div>
-      <br><br><br><br>
+      <br><br><br>
       <span>가능한조합에서 포함할숫자 내림, *랜덤번호직접입력은 선택번호사용</span><br>
       <div class="두줄">
         <div class="포함">0</div><div class="포함토글"></div>
@@ -72,23 +69,32 @@
       </div><div class="두줄">
         <div class="포함">9</div><div class="포함토글"></div>
       </div>
-      <br><br><br><br>
-      <div id="랜덤번호" style="display: inline-block;">랜덤번호(설정후 맞추기 할때)<br>
+      <br><br><br>
+      <div id="랜덤번호">랜덤번호(설정후 맞추기 할때)<br>
         <div></div><div></div><div></div><div></div><span id="숨겨진랜덤번호" style="display:none"></span> 
-        <div style="width:300px;border:none;"><button id="랜덤번호직접입력">기회입력상태</button> <button>랜덤번호지움</button><br>
-          <button style="vertical-align: bottom;margin-left:5px;">랜덤번호생성</button> <button style="vertical-align: bottom;">번호보기/숨기기</button></div>
         <!-- 랜덤번호가 XXXX BS직접입력 / 랜덤번호 있음 BS 계산()시 입력됨 -->
         <br> <button id="랜덤번호정보">랜덤번호가 XXXX BS직접입력</button><br><br>
       </div>
-      <div style="margin-bottom:-1px;"><div style="display:inline-block; width:250px;font-size:25px;border:1px solid black;margin-right:-1px;">없어야할 번호</div><div id="없어야할번호" style="display:inline-block; width:250px;font-size:25px;border:1px solid black;height:33px;vertical-align:top;"></div></div>
-      <div><div style="display:inline-block; width:250px;font-size:25px;border:1px solid black;margin-right:-1px;">포함해야하는 번호</div><div id="포함해야하는번호"  style="display:inline-block; width:250px;font-size:25px;border:1px solid black;height:33px;vertical-align:top;"></div></div>
+      <div id="버튼4개">
+        <button id="랜덤번호직접입력">기회입력상태</button>
+        <button>랜덤번호지움</button><br><br>
+        <button>랜덤번호생성</button> 
+        <button>번호보기/숨기기</button>
+      </div>
+      <div id="없어야할번호">
+        <div>없어야할 번호</div><div></div>
+      </div>
+      <div id="포함해야하는번호">
+        <div>포함해야하는 번호</div><div></div>
+      </div>
+
     </div>
-    <div><span style="width:135px;display:inline-block;text-align: center;">기회 10번</span><span>B</span><span style="margin-left:20px;">S</span></div>
-    <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회2"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
-    <div class="기회" id="기회3"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회4"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
+    <div><span style="width:122px;display:inline-block;text-align: center;">기회 10번</span><span>B</span><span style="margin-left:14px;">S</span></div>
+    <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="숫자일치">1</span><span class="위치일치">1</span><span>C</span></div>
+    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치">1</span><span class="위치일치"></span><span>C</span></div>
+    <div class="기회" id="기회2"><div>1</div><div>4</div><div>2</div><div>0</div><span class="숫자일치">1</span><span class="위치일치">1</span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
+    <div class="기회" id="기회3"><div>3</div><div>8</div><div>4</div><div>9</div><span class="숫자일치">1</span><span class="위치일치">2</span><span>C</span></div>
+    <div class="기회" id="기회4"><div>3</div><div>8</div><div>5</div><div>9</div><span class="숫자일치"></span><span class="위치일치">2</span><span>C</span></div>
     <div class="기회" id="기회5"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회6"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회7"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
@@ -115,184 +121,6 @@
   </div>
 
 <script>
-var 리턴번호;
-function 왼쪽토글() {
-// 배열 선언
-const 배열1 = [0, 1, 2, 3];
-const 배열2 = [0, 1, 2, 4];
-const 배열3 = [5, 6, 4, 7];
-const 임시배열 = [null, null, null, null]; // 초기값을 null로 설정
-
-// 임시배열 업데이트 함수
-function updateTemporaryArray(sourceArray, tempArray, matchCount) {
-    // 각 위치에서 숫자가 일치하는 경우만 처리
-    let matchCounter = 0;
-
-    for (let i = 0; i < sourceArray.length; i++) {
-        if (tempArray[i] === null && matchCounter < matchCount) {
-            // tempArray의 해당 위치가 null이고, 조건에 맞는 값이 아직 부족한 경우
-            let isMatched = true;
-            for (let j = 0; j < tempArray.length; j++) {
-                if (tempArray[j] !== null && tempArray[j] !== sourceArray[j]) {
-                    isMatched = false;
-                    break;
-                }
-            }
-            if (isMatched) {
-                tempArray[i] = sourceArray[i];
-                matchCounter++;
-            }
-        }
-    }
-}
-
-// 배열1, 배열2, 배열3과 임시배열 비교 및 업데이트
-updateTemporaryArray(배열1, 임시배열, 3);
-updateTemporaryArray(배열2, 임시배열, 3);
-updateTemporaryArray(배열3, 임시배열, 1);
-
-// 결과 출력
-console.log(임시배열);
-}
-function 왼쪽토글__() {
-
-    console.log('왼쪽 토글');
-    if (document.querySelector('#textarea왼쪽').style.display=='block') {
-      document.querySelector('#textarea왼쪽').style.display='none';
-    } else {
-      document.querySelector('#textarea왼쪽').style.display='block';
-    }
-
-}
-function 오른쪽토글() {
-
-console.log('오른쪽 토글');
-if (document.querySelector('#textarea오른쪽').style.display=='block') {
-  document.querySelector('#textarea오른쪽').style.display='none';
-} else {
-  document.querySelector('#textarea오른쪽').style.display='block';
-}
-
-}
-function 랜덤번호지움 () {
-  //랜덤번호지움 실행후 사용할것
-  console.log('랜덤번호지움 ()')
-  document.querySelector('#숨겨진랜덤번호').innerHTML='';
-  for (i=0; i<4; i++) {
-    document.querySelectorAll('#랜덤번호 div')[i].innerHTML='';
-  }
-
-  document.querySelector('#랜덤번호정보').innerHTML='랜덤번호가 XXXX BS직접입력';
-
-} 
-
-function 랜덤번호직접기록 () {
-  //랜덤번호지움 실행후 사용할것
-  console.log('리턴번호 : ' + 리턴번호)
-  var 번호4개배열=[];
-  var 랜덤번호들=document.querySelectorAll('#랜덤번호 div');
-  if (랜덤번호들[0].innerHTML=='' && 리턴번호!='') {
-      document.querySelectorAll('#랜덤번호 div')[0].innerHTML=리턴번호;
-    } else if (랜덤번호들[1].innerHTML=='' && 리턴번호!='') {
-      document.querySelectorAll('#랜덤번호 div')[1].innerHTML=리턴번호;
-    } else if (랜덤번호들[2].innerHTML=='' && 리턴번호!='') {
-      document.querySelectorAll('#랜덤번호 div')[2].innerHTML=리턴번호;
-    } else if (랜덤번호들[3].innerHTML=='' && 리턴번호!='') {
-      document.querySelectorAll('#랜덤번호 div')[3].innerHTML=리턴번호;
-  } 
-  if (랜덤번호들[0].innerHTML!='' && 랜덤번호들[1].innerHTML!='' && 랜덤번호들[2].innerHTML!='' && 랜덤번호들[3].innerHTML!='') {
-    console.log('모두기록상태')
-    for (var i=0; i<4; i++) {
-      console.log(랜덤번호들[i].innerHTML)
-      번호4개배열.push(랜덤번호들[i].innerHTML);
-    }
-      document.querySelector('#숨겨진랜덤번호').innerHTML=번호4개배열.join(',');
-      document.querySelector('#랜덤번호정보').innerHTML='랜덤번호 있음 BS 계산()시 입력됨'
-  }
-} 
-
-function 랜덤번호보기숨기기() {
-  console.log('function 랜덤번호보기숨기기()')
-  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
-
-  var 랜덤번호span값배열=[];
-  if (document.querySelectorAll('#랜덤번호 > div')[0].innerHTML!='') {
-    console.log('null이 아니거나 값이 있을때')
-      //기록되어 있을때
-      for (var i=0; i<4; i++) {
-        document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
-      }
-      return;
-  }
-  //기록이 없을때, 랜덤번호span값 있을때
-  if (랜덤번호span값!='' && 랜덤번호span값!=null) {
-    랜덤번호span값배열=랜덤번호span값.split(',');
-    console.log('랜덤번호span값배열 : ' + 랜덤번호span값배열)
-    for (var i=0; i<4; i++) {
-        document.querySelectorAll('#랜덤번호 > div')[i].innerHTML=랜덤번호span값배열[i];
-      }
-  }
-}
-
-function 랜덤번호생성() {
-  var 랜덤배열10개=[];
-  var 확정배열4개=[];
-  var 최대값인덱스;
-  for (var i=0; i<10; i++) {
-    랜덤배열10개.push(Math.random());
-  }
-  for (var 추출=0; 추출<4; 추출++) {
-    최대값인덱스=랜덤배열10개.indexOf(Math.max(...랜덤배열10개));
-    랜덤배열10개[최대값인덱스]=-1;//다음최대값 추출위해 -1로 변경해둠, 최소값 0이 여러개 나올수 있으므로
-    확정배열4개.push(최대값인덱스);
-  }
-  //console.log(확정배열4개)
-  document.querySelector('#숨겨진랜덤번호').innerHTML=확정배열4개.join(',');
-  //기존값 지우기
-  for (i=0; i<4; i++) {
-    document.querySelectorAll('#랜덤번호 div')[i].innerHTML='';
-  }
-
-}
-
-function 랜덤번호있을때_SB기록() {
-  console.log(' 랜덤번호있을때_SB기록()')
-  //숫자일치,위치일치 클래스 값 제거
-  for (var i=0; i<document.querySelectorAll('.숫자일치').length; i++) {
-    document.querySelectorAll('.숫자일치')[i].innerHTML='';
-    document.querySelectorAll('.위치일치')[i].innerHTML='';
-  }
-
-  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
-  var 랜덤번호span값배열=[];
-  랜덤번호span값배열=랜덤번호span값.split(',');
-
-  for (var i=0; i<10; i++) {
-    var 볼=0, 스트=0;
-    var 현재기회div4개=document.querySelectorAll('#기회' + i + ' *'); 
-
-    if (현재기회div4개[0].innerHTML=='' && 현재기회div4개[1].innerHTML=='' && 현재기회div4개[2].innerHTML=='' && 현재기회div4개[3].innerHTML=='') {
-      //console.log('모두공란이면 continue')
-      continue;
-    }
-
-    for (var t=0; t<4; t++) {
-      console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
-      console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
-      if (랜덤번호span값배열[t]==현재기회div4개[t].innerHTML) {스트+=1;}
-      if (랜덤번호span값배열[t]!=현재기회div4개[t].innerHTML && 랜덤번호span값배열.includes(현재기회div4개[t].innerHTML)) {볼+=1;}
-    }
-
-    if (볼!=0) {현재기회div4개[4].innerHTML=볼;}
-    if (스트!=0) {현재기회div4개[5].innerHTML=스트;}
-  }
-
-
-
-
-} 
-
-
 function 계산() {
   console.log('계산()')
   // 랜덤번호 준비되어 있다면 B S 입력 추가 코드 작성
@@ -451,209 +279,10 @@ function 계산() {
   }
 }
 
-
-
-
-
-
-리스너기회=document.querySelector('#기회');
-
-
-const result = [];
-중복제거모든조합_result()
-function 중복제거모든조합_result() {
-  const list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const resultSet = new Set();
-
-  for (let i = 0; i < list.length; i++) {
-    for (let j = 0; j < list.length; j++) {
-      for (let m = 0; m < list.length; m++) {
-        for (let k = 0; k < list.length; k++) {
-          // 중복된 요소 제거
-          if (i === j || i === m || j === m || j === k || m === k || k === i) continue;
-          
-          // 중복 방지를 위해 Set에 문자열로 저장
-          const combination = [list[i], list[j], list[m], list[k]].join('');
-          resultSet.add(combination);
-        }
-      }
-    }
-  }
-
-  // Set을 다시 배열로 변환하며 각 문자열을 숫자 배열로 변환
-  return Array.from(resultSet).map(combination => combination.split('').map(Number));
-}
-
-function 다시() {
-
-  document.querySelector('#가능한조합').innerHTML = '';
-
-  for (var i=0; i<document.querySelectorAll('.숫자일치').length; i++) {
-    document.querySelectorAll('.숫자일치')[i].innerHTML='';
-    document.querySelectorAll('.위치일치')[i].innerHTML='';
-  }
-
-  for (var i=2; i<10; i++) {
-    var 현재기회div4개=document.querySelectorAll('#기회' + i + ' *'); 
-    for (var t=0; t<4; t++) {
-      현재기회div4개[t].innerHTML='';
-    }
-  }
-  
-  document.querySelector('#랜덤번호직접입력').innerHTML='랜덤번호직접입력';
-  document.querySelector('#랜덤번호정보').innerHTML='랜덤번호가 XXXX BS직접입력';
-  document.querySelector('#숨겨진랜덤번호').innerHTML='';
-  for (var i=0; i<4; i++) {
-    document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
-  }
-
-  document.querySelector('.기록중').classList.remove('기록중');
-  document.querySelector('#초기화시기록중클래스부여').classList.add('기록중');
-  
-
-  for (var i=0; i<document.querySelectorAll('.가능숫자하나 div').length; i++) {
-    document.querySelectorAll('.가능숫자하나 div')[i].classList.remove('제외')
-  }
-  for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
-    document.querySelectorAll('.입력')[i].innerHTML=i;
-    document.querySelectorAll('.입력')[i].nextSibling.innerHTML='';
-  }
-  for (var i=0; i<document.querySelectorAll('.포함').length; i++) {
-    document.querySelectorAll('.포함')[i].innerHTML=i;
-    document.querySelectorAll('.포함')[i].nextSibling.innerHTML='';
-  }
-  for (var i=0; i<document.querySelectorAll('.기회 *').length; i++) {
-    if (i % 7 == 6) {
-
-    } else {
-      //document.querySelectorAll('.기회 *')[i].innerHTML='';
-    }
-  }
-  for (var i=0; i<document.querySelectorAll('#가능번호 div').length; i++) {
-    document.querySelectorAll('#가능번호 div')[i].innerHTML=i;
-  }
-  for (var i=0; i<document.querySelectorAll('#확정번호만 div').length; i++) {
-    document.querySelectorAll('#확정번호만 div')[i].innerHTML='';
-  }
-
-}
-
-function 기회click(e) {
-  if (e.target.innerHTML=='현재기록중 1개 clear') {
-    var 기록중id=document.querySelector('.기록중').parentElement.id;
-    var 기록중요소=document.querySelectorAll('#' + 기록중id + ' *');
-    for (var i=0; i<기록중요소.length-1; i++) {
-      기록중요소[i].innerHTML='';
-    }
-    return;
-  }
-  if (e.target.classList.contains('위치일치') || e.target.classList.contains('숫자일치')) {
-    if (e.target.innerHTML=='') {
-      e.target.innerHTML=1;
-    } else if (e.target.innerHTML=='4') {
-      e.target.innerHTML='';
-    } else {e.target.innerHTML=e.target.innerHTML*1 + 1;}
-    return;
-  }
-  if (e.target.classList.contains('토글')) {
-    if (e.target.innerHTML!='') {
-      e.target.previousSibling.innerHTML=e.target.innerHTML; 
-      e.target.innerHTML=''
-    } else {
-      e.target.innerHTML=e.target.previousSibling.innerHTML;
-      e.target.previousSibling.innerHTML=''; 
-    }
-    return;
-  }
-  if (e.target.classList.contains('포함토글')) {
-    if (e.target.innerHTML!='') {
-      e.target.previousSibling.innerHTML=e.target.innerHTML; 
-      e.target.innerHTML=''
-    } else {
-      e.target.innerHTML=e.target.previousSibling.innerHTML;
-      e.target.previousSibling.innerHTML=''; 
-    }
-    return;
-  }
-
-  if (e.target.innerHTML=='C') {
-    document.querySelector('.기록중').classList.remove('기록중');
-    e.target.classList.add('기록중');
-    return;
-  }
-
-  if (e.target.innerHTML=='기회입력상태') {
-    console.log('e.target.innerHTML==기회입력상태')
-    e.target.innerHTML='직접입력상태'
-    return;
-  }
-
-  if (e.target.innerHTML=='직접입력상태') {
-    console.log('e.target.innerHTML==직접입력상태')
-    e.target.innerHTML='기회입력상태'
-    return;
-  }
-
-
-  if (e.target.classList.contains('입력') & document.querySelector('#랜덤번호직접입력').innerHTML=='직접입력상태') {
-    console.log('e.target.classList.contains(입력) + 직접입력상태 일때')
-    
-    리턴번호=e.target.innerHTML;//전역변수
-    랜덤번호직접기록 ()
-    return;
-  }
-
-  if (e.target.classList.contains('입력') & document.querySelector('#랜덤번호직접입력').innerHTML!='직접입력상태') {
-    console.log('e.target.classList.contains(입력) + 직접입력상태 아닐때')
-    if (e.target.innerHTML=='') {console.log('\u00a0\u00a0\e.target.innerHTML=="") {return;}'); return;}
-    var 기록중기회요소=document.querySelector('.기록중').parentNode;
-    var 같은번호있음;
-    for (var i=0; i<4; i++) {
-      if (기록중기회요소.children[i].innerHTML==e.target.innerHTML*1) {
-        같은번호있음='같은번호있음';
-      }
-    }
-    if (같은번호있음=='같은번호있음') {
-      console.log('같은번호있음')
-      for (var i=0; i<4; i++) {
-      if (기록중기회요소.children[i].innerHTML==e.target.innerHTML) {
-        기록중기회요소.children[i].innerHTML='';
-        return;
-        }
-      }
-    }
-    for (var i=0; i<4; i++) {
-      if (기록중기회요소.children[i].innerHTML=='') {
-        기록중기회요소.children[i].innerHTML=e.target.innerHTML;
-        return;
-      }
-    }
-    return;
-  }
-  if (e.target.innerHTML=='랜덤번호생성') {
-    console.log('e.target.innerHTML==랜덤번호생성');
-    랜덤번호생성();
-    document.querySelector('#랜덤번호정보').innerHTML='랜덤번호 있음 BS 계산()시 입력됨';
-    return;
-  }
-  if (e.target.innerHTML=='번호보기/숨기기') {
-    console.log('e.target.innerHTML==번호보기/숨기기');
-    랜덤번호보기숨기기();
-    return;
-  }
-  if (e.target.innerHTML=='랜덤번호지움') {
-    console.log('e.target.innerHTML==랜덤번호지움');
-    랜덤번호지움 ()
-    return;
-  }
-
-
-
-}
-
-리스너기회.addEventListener('click', 기회click)
 </script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/야구.js"></script>
 </body>
 </html>
