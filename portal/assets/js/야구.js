@@ -647,13 +647,13 @@ function 기회click(e) {
               var 클릭한번호;
               for (var k=0; k<10; k++) {
                 if (document.querySelectorAll('.입력')[k].classList.contains('임시표시')) {
-                  클릭한번호=i;
+                  클릭한번호=k;
                 }
               }
               e.target.classList.remove('임시표시');
               //인덱스는 i
               if (document.querySelectorAll('#가능 > div:nth-of-type(' + (클릭한번호*1 + 1) + ') div')[i].classList.contains('제외')) {
-                alert('해당숫자는 주황색칠숫자(가능번호 제외)')
+                alert(클릭한번호*1 + ' : 해당숫자는 주황색칠숫자(가능번호 제외)')
                 return;
               }
               

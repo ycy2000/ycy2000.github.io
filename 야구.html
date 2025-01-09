@@ -177,8 +177,8 @@ function 계산() {
     //gpt 코드 : 모두 값이 있을때, trim은 왜 하는지? 공백값이 있을수 있기 때문인가?
     if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
       const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
-      console.log(기회숫자)
       기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
+      console.log('기회숫자 : ' + 기회숫자 + ', B : ' + 숫자일치 + ' , S : ' + 위치일치)
     }
   }
 
@@ -309,13 +309,6 @@ function 계산() {
 
         console.log('번호 : ' + 포함해야하는번호[i] + ' 의 위치, ' + (i+1) + ', 전체개수 ' + for이치 + ' 중' + 개수0)
 
-        if (개수0==for이치) {
-          document.querySelectorAll('.순서확정')[인덱스].innerHTML=포함해야하는번호[i];
-          for (var j=0; j<10; j++) {
-            가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (j*1+1) + ') > div')[인덱스].classList.add('제외');
-            if (j==인덱스) {가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (j*1+1) + ') > div')[인덱스].classList.remove('제외');}
-          }
-        }
       }
     }
   }
@@ -344,20 +337,8 @@ function 계산() {
     }
   });
 
-  ///  제외할숫자들이 있으면 id="가능숫자하나" 안의 class="가능숫자하나" 안의 4개 div 제외 클래스 추가
-  if (제외할숫자들.length>0) {
-    //console.log(제외할숫자들)
-    var 가능div특정;
-    for (var i=0; i<제외할숫자들.length; i++) {
-      //제외할숫자들[0]==3이면
-      가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (제외할숫자들[i]*1+1) + ') > div');
-      for (var k=0; k<4; k++) {
-        if (!가능div특정[k].classList.contains('제외')){가능div특정[k].classList.add('제외')}
-      } 
-    }
-  }
- 
-  // 제외할 숫자들 포함된 조합 필터링
+  console.log('제외할 숫자들 : ' + 제외할숫자들)
+   // 제외할 숫자들 포함된 조합 필터링
   let 필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));
   });
@@ -379,6 +360,22 @@ function 계산() {
     document.querySelector('#가능한조합개수만').innerHTML = 필터링된결과.length;
     let 결과한줄씩 = '';
     let 누적 = '';
+
+    //30개일떄 이상해서
+    if (필터링된결과.length==30) {
+      for (let i = 0; i < 필터링된결과.length; i++) {
+        결과한줄씩 += '<br>' + 필터링된결과[i];
+        if (i % 30 === 29) {
+          누적 += '<div>' + 결과한줄씩 + '</div>';
+          document.querySelector('#가능한조합').innerHTML = 누적;
+      }
+     }
+     return;
+    }
+
+
+
+
     for (let i = 0; i < 필터링된결과.length; i++) {
       결과한줄씩 += '<br>' + 필터링된결과[i];
       if (i % 30 === 29) {
