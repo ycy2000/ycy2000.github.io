@@ -640,6 +640,7 @@ function 기회click(e) {
         }
       }
     }
+    
     for (var i=0; i<4; i++) {
       if (기록중기회요소.children[i].innerHTML=='') {
 
@@ -651,11 +652,15 @@ function 기회click(e) {
                 }
               }
               e.target.classList.remove('임시표시');
-              //인덱스는 i
-              if (document.querySelectorAll('#가능 > div:nth-of-type(' + (클릭한번호*1 + 1) + ') div')[i].classList.contains('제외')) {
-                alert(클릭한번호*1 + ' : 해당숫자는 주황색칠숫자(가능번호 제외)')
-                return;
+
+              if (1==2) {
+              //제한을 두지 않는다. 인덱스는 i
+                if (document.querySelectorAll('#가능 > div:nth-of-type(' + (클릭한번호*1 + 1) + ') div')[i].classList.contains('제외')) {
+                  alert(클릭한번호*1 + ' : 해당숫자는 주황색칠숫자(가능번호 제외)')
+                  return;
+                }
               }
+
               
 
         기록중기회요소.children[i].innerHTML=e.target.innerHTML;

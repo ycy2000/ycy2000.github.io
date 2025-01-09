@@ -12,8 +12,22 @@
   <div style="display:inline-block" id="기회">
     <button id="왼쪽토글" onclick="왼쪽토글()">왼쪽 토글</button>
     <button id="오른쪽토글"  onclick="오른쪽토글()">오른쪽토글</button>
-    <textarea class="d-block" id="textarea왼쪽" spellcheck="false"></textarea>
-    <textarea class="d-block" id="textarea오른쪽" spellcheck="false"></textarea>
+    <textarea class="d-block" id="textarea왼쪽" spellcheck="false">
+
+    </textarea>
+    <textarea class="d-block" id="textarea오른쪽" spellcheck="false"> (6523)예시시    B S
+0 1 2 3 : 0 2
+6 7 8 9 : 0 1 => 4, 5 포함됨 확정
+4 5 8 9 : 0 1 => 가능한 조합이 두개로 뜬다. (4 7 2 3), (6 5 2 3)
+(45중 하나인데 전체가 하나이므로 8,9제외됨)
+(0,1이 제외되는 이유는 무엇인가?)
+(2,3이 포함되는 이유는 무엇인가?)
+(3의 위치가 4번째인데 순서확정이 안되는 이유는?)
+[(4,5중 1) (6,7중 1) (0,1,2,3중 2)]
+
+5 7 2 3 : 1 2 (포함 2,3,5,6 확정) (나머지 제외 확정) : 조합도출 1개 : 6 5 2 3
+
+    </textarea>
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
     <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;"></div>
 
@@ -178,7 +192,7 @@ function 계산() {
     if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
       const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
       기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
-      console.log('기회숫자 : ' + 기회숫자 + ', B : ' + 숫자일치 + ' , S : ' + 위치일치)
+      //console.log('기회숫자 : ' + 기회숫자 + ', B : ' + 숫자일치 + ' , S : ' + 위치일치)
     }
   }
 
