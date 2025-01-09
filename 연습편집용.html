@@ -3,277 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>마우스 및 터치 이벤트 예제</title>
-  <style>
-    .기회한개, .기회 {margin-bottom:3px;}
-    .기회한개 *, .기회 * {display:inline-block;height:30px;width:30px;border:1px solid black;margin-right:-1px;vertical-align: top;text-align: center;}
-    .두줄 {height:50px;width:50px;font-size: 30px;display: inline-block;margin-right:1px;vertical-align: top;}
-    .두줄 div, .확정가정 div {height:50px;width:50px;font-size: 30px;border:1px solid black;text-align: center;margin-bottom:-1px;}
-    .확정가정 div {display: inline-block;margin-right:-1px;vertical-align: top;}
-    .기록중 {background-color: blueviolet;}
-    #기회 .기회 span:nth-of-type(1), #기회 .기회 span:nth-of-type(2) {margin-left:-1px;text-align: center;height:30px;width:25px;display:inline-block;background-color: cadetblue;}
-    .제외 {background-color: chocolate;}
-    .숫자일치 {margin-left:10px;margin-right:10px;}
-  </style>
 </head>
 <body>
-  <div style="display:inline-block" id="기회">
-    <div id="선택" style="position: absolute;left:250px;">
-      <button>계산</button><span>8934예시</span> <button>현재기록중 1개 clear</button> <button style="margin-left:200px;">다시</button> <button style="border:none;"><a href="kim.html">kim.html</a></button><br>
-      <span>선택</span><br>
-      <div class="두줄">
-        <div class="입력">0</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">1</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">2</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">3</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">4</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">5</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">6</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">7</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">8</div><div class="토글"></div>
-      </div><div class="두줄">
-        <div class="입력">9</div><div class="토글"></div>
-      </div>
-      <br><br><br><br>
-      <div id="가능번호" class="확정가정" style="display: inline-block;">가능번호만<br>
-        <div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
-      </div><br>
-      <div id="확정번호만" class="확정가정" style="display: inline-block;">확정번호<br>
-        <div></div><div></div><div></div><div></div>
-      </div>
-    </div>
-    <div><span style="width:135px;display:inline-block;text-align: center;">기회 10번</span><span>S</span><span style="margin-left:20px;">B</span></div>
-    <div class="기회" id="기회01"><div>7</div><div>1</div><div>2</div><div>3</div><span class="위치일치"></span><span class="숫자일치">1</span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
-    <div class="기회" id="기회02"><div>6</div><div>7</div><div>8</div><div>9</div><span class="위치일치"></span><span class="숫자일치">2</span><span>C</span></div>
-    <div class="기회" id="기회03"><div>8</div><div>9</div><div>4</div><div>5</div><span class="위치일치">2</span><span class="숫자일치">1</span><span>C</span></div>
-    <div class="기회" id="기회04"><div>2</div><div>3</div><div>6</div><div>4</div><span class="위치일치">1</span><span class="숫자일치">1</span><span>C</span></div>
-    <div class="기회" id="기회05"><div>8</div><div>9</div><div>1</div><div>4</div><span class="위치일치">3</span><span class="숫자일치"></span><span>C</span></div>
-    <div class="기회" id="기회06"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
-    <div class="기회" id="기회07"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
-    <div class="기회" id="기회08"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
-    <div class="기회" id="기회09"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
-    <div class="기회" id="기회10"><div></div><div></div><div></div><div></div><span class="위치일치"></span><span class="숫자일치"></span><span>C</span></div>
-  </div>
-  <br>
-  <div style="border:1px solid black;width:215px;margin: 5px 0px;"></div>
-  <div style="display:inline-block" id="가능">
-    <div class="기회한개"><div>0</div><div>0</div><div>0</div><div>0</div></div>
-    <div class="기회한개"><div>1</div><div>1</div><div>1</div><div>1</div></div>
-    <div class="기회한개"><div>2</div><div>2</div><div>2</div><div>2</div></div>
-    <div class="기회한개"><div>3</div><div>3</div><div>3</div><div>3</div></div>
-    <div class="기회한개"><div>4</div><div>4</div><div>4</div><div>4</div></div>
-    <div class="기회한개"><div>5</div><div>5</div><div>5</div><div>5</div></div>
-    <div class="기회한개"><div>6</div><div>6</div><div>6</div><div>6</div></div>
-    <div class="기회한개"><div>7</div><div>7</div><div>7</div><div>7</div></div>
-    <div class="기회한개"><div>8</div><div>8</div><div>8</div><div>8</div></div>
-    <div class="기회한개"><div>9</div><div>9</div><div>9</div><div>9</div></div>
-  </div>
-  <script>
-function 계산___() {
-  // '찾고자 하는 번호'의 가능한 번호를 추적
-  let 가능한번호 = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  let 확정번호 = ["", "", "", ""]; // 위치까지 일치하는 번호를 추적
+<script>
 
-  // 각 class="기회"를 검토
-  document.querySelectorAll('.기회').forEach((기회) => {
-    const 숫자들 = [...기회.querySelectorAll('div')].map((div) => div.textContent);
-    const 위치일치 = parseInt(기회.querySelector('.위치일치')?.textContent || "0", 10);
-    const 숫자일치 = parseInt(기회.querySelector('.숫자일치')?.textContent || "0", 10);
-    // 숫자들을 중복되지 않게 가능 번호에 추가
-    console.log(숫자들)
-    숫자들.forEach((숫자, idx) => {
+// Input opportunities
+for (var i=0; i<10; i++) {
+  console.log(opportunities[0].candidate);
+console.log(opportunities[0].positionMatch);
+console.log(opportunities[0].numberMatch);
+}
+const opportunities = [
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+];
 
-      console.log('숫자 : ' + 숫자)
-      console.log('idx : ' + idx)
-      console.log(가능한번호)
-      if (숫자) {
-        가능한번호.add(parseInt(숫자, 10));
 
+
+function findPossiblePasswords(opportunities) {
+  const allNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const possiblePasswords = [];
+
+  // Helper to count position matches
+  function countPositionMatches(password, candidate) {
+    return password.filter((num, idx) => num === candidate[idx]).length;
+  }
+
+  // Helper to count number matches (excluding position matches)
+  function countNumberMatches(password, candidate) {
+    return password.reduce((count, num, idx) => {
+      if (candidate.includes(num) && num !== candidate[idx]) {
+        return count + 1;
       }
-    });
-
-    // 위치 일치 처리
-    if (위치일치 > 0) {
-      숫자들.forEach((숫자, idx) => {
-        if (확정번호[idx] === "" && 숫자) {
-          확정번호[idx] = 숫자;
-        }
-      });
-    }
-
-    // 숫자 일치가 있지만 위치가 불일치한 숫자를 처리
-    if (숫자일치 > 0) {
-      숫자들.forEach((숫자) => {
-        if (숫자 && !확정번호.includes(숫자)) {
-          가능한번호.add(parseInt(숫자, 10));
-        }
-      });
-    }
-  });
-
-  // 가능 번호 DOM 업데이트
-  const 가능한번호div = document.querySelectorAll('#가능번호 div');
-  가능한번호div.forEach((div, idx) => {
-    div.textContent = 가능한번호.has(idx) ? idx : "";
-  });
-
-  // 확정 번호 DOM 업데이트
-  const 확정번호div = document.querySelectorAll('#확정번호만 div');
-  확정번호.forEach((숫자, idx) => {
-    확정번호div[idx].textContent = 숫자;
-  });
-}
-
-
-
-
-
-function 계산() {
-  for (var i=0; i<document.querySelectorAll('body *').length; i++) {
-    if (document.querySelectorAll('body *')[i].classList.contains('제외')) {
-      document.querySelectorAll('body *')[i].classList.remove('제외')
-    }
+      return count;
+    }, 0);
   }
-  //1.선택0~9의 숫자중 아래로 내려간 숫자 : (기회10번과 가능숫자)부분에 제외 클래스 부여
-  var 내려간숫자들=[];
-  for (var i=0; i<document.querySelectorAll('.토글').length; i++) {
-    if (document.querySelectorAll('.토글')[i].innerHTML!='') {
-      내려간숫자들.push(document.querySelectorAll('.토글')[i].innerHTML*1)
+
+  // Generate all permutations of 4 numbers from 0 to 9
+  function generatePermutations(arr, length) {
+    if (length === 1) return arr.map((n) => [n]);
+    const permutations = [];
+    for (let i = 0; i < arr.length; i++) {
+      const remaining = [...arr.slice(0, i), ...arr.slice(i + 1)];
+      const subPermutations = generatePermutations(remaining, length - 1);
+      subPermutations.forEach((perm) => permutations.push([arr[i], ...perm]));
     }
+    return permutations;
   }
-  if (내려간숫자들.length>0) {
-    var 숫자div들=document.querySelectorAll('#가능 .기회한개 > div');
-    for (var i=0; i<숫자div들.length; i++) {
-      if (내려간숫자들.filter(element => element==숫자div들[i].innerHTML).length>0) {
-        숫자div들[i].classList.add('제외');
+
+  const allPermutations = generatePermutations(allNumbers, 4);
+
+  // Filter permutations based on all opportunity conditions
+  for (const password of allPermutations) {
+    let isValid = true;
+
+    for (const { candidate, positionMatch, numberMatch } of opportunities) {
+      // Skip this opportunity if candidate length is not 4
+      if (candidate.length !== 4) {
+        continue;
       }
-    }
-    console.log(내려간숫자들)
-  }
-  //2.기회에 s=공란, b는 1_4일때 해당위치의 숫자들 : 가능부분에서 기회의 위치
-  for (var i=0; i<document.querySelectorAll('#기회 .기회').length; i++) {
-    if (document.querySelectorAll('#기회 .기회')[i].children[4].innerHTML=='' &&
-        document.querySelectorAll('#기회 .기회')[i].children[5].innerHTML!='' && document.querySelectorAll('#기회 .기회')[i].children[5].innerHTML>0) {
-        //B만 기록된 상태
-        console.log('B만기록된 상태, S : 공란, B : ' + document.querySelectorAll('#기회 .기회')[i].children[5].innerHTML)  
-        var 기회기록1st숫자=document.querySelectorAll('#기회 .기회')[i].children[0].innerHTML;
-        var 기회기록2st숫자=document.querySelectorAll('#기회 .기회')[i].children[1].innerHTML;
-        var 기회기록3st숫자=document.querySelectorAll('#기회 .기회')[i].children[2].innerHTML;
-        var 기회기록4st숫자=document.querySelectorAll('#기회 .기회')[i].children[3].innerHTML;
-        //기회기록3st숫자 : 가능의 기회기록3st숫자 번째 div 의 3번째 꺼
-        if (기회기록1st숫자!='') {document.querySelectorAll('#가능 .기회한개')[기회기록1st숫자].children[0].classList.add('제외')}
-        if (기회기록2st숫자!='') {document.querySelectorAll('#가능 .기회한개')[기회기록2st숫자].children[1].classList.add('제외')}
-        if (기회기록3st숫자!='') {document.querySelectorAll('#가능 .기회한개')[기회기록3st숫자].children[2].classList.add('제외')}
-        if (기회기록4st숫자!='') {document.querySelectorAll('#가능 .기회한개')[기회기록4st숫자].children[3].classList.add('제외')}
 
+      const posMatches = countPositionMatches(password, candidate);
+      const numMatches = countNumberMatches(password, candidate);
 
-
-    }
-  }
-
-}
-
-var 선택리스너=document.querySelector('#기회');//선택,다시,기회선택
-function 다시() {
-  for (var i=0; i<document.querySelectorAll('body *').length; i++) {
-    if (document.querySelectorAll('body *')[i].classList.contains('제외')) {
-      document.querySelectorAll('body *')[i].classList.remove('제외')
-    }
-  }
-  if (document.querySelector('.기록중')) {
-    document.querySelector('.기록중').classList.remove('기록중');
-  }
-
-  for (var i=0; i<document.querySelectorAll('#기회 .기회한개 *').length; i++) {
-    document.querySelectorAll('#기회 .기회한개 *')[i].innerHTML='';
-    if (i%7==6) {document.querySelectorAll('#기회 .기회한개 *')[i].innerHTML='C';}
-  }
-  for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
-    document.querySelectorAll('.입력')[i].innerHTML=i; 
-    document.querySelectorAll('.입력')[i].nextElementSibling.innerHTML=''; 
-  }
-  document.querySelector('#초기화시기록중클래스부여').classList.add('기록중')
-  return;
-}
-function 선택(e) {
-  console.log('선택리스너.addEventListener(click,선택);')
-  if (e.target.innerHTML=='다시') {
-    console.log('기회선택(e) => 다시() => 다시()실행')
-    다시();
-    return;
-  }
-  if (e.target.innerHTML=='C') {
-    if (document.querySelector('.기록중')) {document.querySelector('.기록중').classList.remove('기록중');}
-    e.target.classList.add('기록중');
-    return;
-  }
-  if (e.target.classList.contains('입력')) {
-    //0~9 클릭시
-    console.log('노드네임div && 부모아이디 "선택"')
-    var 기회선택id=document.querySelector('.기록중').parentElement.id;
-    console.log('기회선택id : ' + 기회선택id)
-    //기회선택 숫자4칸 document.querySelectorAll('#' + 기회선택id + ' div') 이 꽉차 있는지
-    for (var i=0; i<4; i++) {
-      //같은 번호 있으면 지우기
-      if (document.querySelectorAll('#' + 기회선택id + ' div')[i].innerHTML==e.target.innerHTML) {
-        document.querySelectorAll('#' + 기회선택id + ' div')[i].innerHTML='';
-        return;
+      if (posMatches !== positionMatch || numMatches !== numberMatch) {
+        isValid = false;
+        break;
       }
     }
 
-    for (var i=0; i<4; i++) {
-      //같은 번호 있으면 지우기
-      if (document.querySelectorAll('#' + 기회선택id + ' div')[i].innerHTML=='') {
-        document.querySelectorAll('#' + 기회선택id + ' div')[i].innerHTML=e.target.innerHTML;
-        return;
-      }
-    }
+    if (isValid) possiblePasswords.push(password.join(""));
   }
-  
-  if (e.target.nodeName=='SPAN' && e.target.parentNode.parentNode.id=='기회' && 
-     (e.target.nextSibling.classList.contains('기록중') || e.target.nextSibling.nextSibling.classList.contains('기록중'))) {
 
-    //C가 선택되지 않았을때 B누르면 에러난다 (두번째 오른쪽 요소가 없다)
-
-    console.log('노드네임span && 부모아이디 "선택"')
-    var 입력값='';
-    console.log(1==e.target.innerHTML)
-    if (e.target.innerHTML=='') {
-      입력값=1;} else if (e.target.innerHTML==4) {
-      입력값='';} else {입력값=e.target.innerHTML*1+1;}
-    e.target.innerHTML=입력값;
-  }
-  if (e.target.innerHTML=='현재기록중 1개 clear') {
-    for (var i=0; i<document.querySelector('.기록중').parentElement.children.length; i++) {
-      document.querySelector('.기록중').parentElement.children[i].innerHTML='';
-      if (i==document.querySelector('.기록중').parentElement.children.length-1) {document.querySelector('.기록중').parentElement.children[i].innerHTML='C';}
-    }
-  }
-  if (e.target.classList.contains('토글')) {
-    console.log('토글클래스 있을때')
-    if (e.target.innerHTML=='') {
-      e.target.innerHTML=e.target.previousSibling.innerHTML;
-      e.target.previousSibling.innerHTML='';
-    } else if (e.target.innerHTML!='') {
-      e.target.previousSibling.innerHTML=e.target.innerHTML;
-      e.target.innerHTML='';
-    }
-  }
-  if (e.target.innerHTML=='계산') {계산()}
+  return possiblePasswords;
 }
 
-선택리스너.addEventListener('click',선택);
+// Find all valid passwords
+const validPasswords = findPossiblePasswords(opportunities);
 
-  </script>
+// Output the results
+console.log("Possible passwords:", validPasswords);
+console.log("Total count:", validPasswords.length);
 
+
+</script>  
 
 </body>
 </html>

@@ -22,8 +22,8 @@
       <span>3824예시</span> 
       <button>현재기록중 1개 clear</button> 
       <button onclick="임시()">임시함수</button>
-      <button onclick="다시()" style="margin-left:160px;">다시</button> 
-      <button style="border:none;"><a href="kim.html">kim.html</a></button><br>
+      <button onclick="다시()" style="margin-left:60px;">다시</button> 
+      <button style="border:none;"><a href="kim.html">kim.html</a></button> <span id="필터링결과포함숫자"></span><br>
       <span>선택, 가능한 조합에서 제외할 숫자 내림</span><br>
       <div class="두줄">
         <div class="입력">0</div><div class="토글"></div>
@@ -82,10 +82,14 @@
         <button>번호보기/숨기기</button>
       </div>
       <div id="없어야할번호">
-        <div>없어야할 번호</div><div></div>
+        <div>없어야할 번호</div><div id="없어야할번호결과" style="font-size:20px; font-weight: bold;"></div>
       </div>
       <div id="포함해야하는번호">
-        <div>포함해야하는 번호</div><div></div>
+        <div>포함해야하는 번호</div><div id="포함해야하는번호결과" style="font-size:20px; font-weight: bold;"></div>
+        <div class="순서확정"></div>
+        <div class="순서확정"></div>
+        <div class="순서확정"></div>
+        <div class="순서확정"></div>
       </div>
 
     </div>
@@ -127,6 +131,12 @@ function 계산() {
   if (document.querySelector('#랜덤번호정보').innerHTML=='랜덤번호 있음 BS 계산()시 입력됨') {
     랜덤번호있을때_SB기록()
   }
+  for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
+    document.querySelectorAll('.입력')[i].classList.remove('번호_선택또는가능초코');
+  }
+  for (var i=0; i<document.querySelectorAll('.포함').length; i++) {
+    document.querySelectorAll('.포함')[i].classList.remove('번호_선택또는가능초코');
+  }
   // 제외 클래스 모두 제거
   for (var i=0; i<document.querySelectorAll('#가능 > div > div').length; i++) {
     document.querySelectorAll('#가능 > div > div')[i].classList.remove('제외');
@@ -143,6 +153,7 @@ function 계산() {
     const 기회 = document.querySelectorAll(`#기회${i} div`);
     const 숫자일치 = document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0';
     const 위치일치 = document.querySelector(`#기회${i} .위치일치`)?.innerHTML || '0';
+    // || '0' : 공백일때 0(설정값) 을 입력하라는 의미인가?
 
     //위치일치='', 숫자일치는 숫자 일때, 가능숫자하나 에 제외 클래스 부여
     if (숫자일치!=0 && 위치일치==0) {
@@ -158,9 +169,10 @@ function 계산() {
     }
 
 
-    //gpt 코드
+    //gpt 코드 : 모두 값이 있을때, trim은 왜 하는지? 공백값이 있을수 있기 때문인가?
     if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
       const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
+      console.log(기회숫자)
       기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
     }
   }
@@ -183,12 +195,14 @@ function 계산() {
       // 숫자만 일치하는 개수
       const 조합복사 = [...조합];
       const 기회복사 = [...기회숫자];
+
       for (let i = 0; i < 4; i++) {
         if (조합[i] === 기회숫자[i]) {
           조합복사[i] = -1; // 일치한 위치는 제외
           기회복사[i] = -1;
         }
-      }
+      }    
+
       숫자일치수 = 조합복사.filter(num => num !== -1 && 기회복사.includes(num)).length;
 
       // 조건 불일치 시 필터링
@@ -200,6 +214,103 @@ function 계산() {
 
     if (유효) 결과.push(조합);
   });
+  
+  //--------------------------- 모든조합에서 기회조건 만족하는 조합 : 결과
+  document.querySelector('#포함해야하는번호결과').innerHTML='';
+  document.querySelector('#없어야할번호결과').innerHTML='';
+  document.querySelectorAll('.순서확정')[0].innerHTML='';
+  document.querySelectorAll('.순서확정')[1].innerHTML='';
+  document.querySelectorAll('.순서확정')[2].innerHTML='';
+  document.querySelectorAll('.순서확정')[3].innerHTML='';
+  console.log('모든조합.length : ' + 모든조합.length)
+  if (결과.length > 0) {
+    console.log('결과.length : ' + 결과.length)
+    var for이치=0; 개수0=0, 개수1=0, 개수2=0, 개수3=0, 개수4=0, 개수5=0, 개수6=0, 개수7=0, 개수8=0, 개수9=0;
+
+    결과.forEach (조합 => {
+      for이치+=1;
+      if (조합.includes(0)) {개수0+=1;}
+      if (조합.includes(1)) {개수1+=1;}
+      if (조합.includes(2)) {개수2+=1;}
+      if (조합.includes(3)) {개수3+=1;}
+      if (조합.includes(4)) {개수4+=1;}
+      if (조합.includes(5)) {개수5+=1;}
+      if (조합.includes(6)) {개수6+=1;}
+      if (조합.includes(7)) {개수7+=1;}
+      if (조합.includes(8)) {개수8+=1;}
+      if (조합.includes(9)) {개수9+=1;}
+    });
+
+    var 포함해야하는번호=[];
+    if (개수0==for이치) {포함해야하는번호.push(0)}
+    if (개수1==for이치) {포함해야하는번호.push(1)}
+    if (개수2==for이치) {포함해야하는번호.push(2)}
+    if (개수3==for이치) {포함해야하는번호.push(3)}
+    if (개수4==for이치) {포함해야하는번호.push(4)}
+    if (개수5==for이치) {포함해야하는번호.push(5)}
+    if (개수6==for이치) {포함해야하는번호.push(6)}
+    if (개수7==for이치) {포함해야하는번호.push(7)}
+    if (개수8==for이치) {포함해야하는번호.push(8)}
+    if (개수9==for이치) {포함해야하는번호.push(9)}
+
+    var 없어야할번호=[];
+    if (개수0==0) {없어야할번호.push(0)}
+    if (개수1==0) {없어야할번호.push(1)}
+    if (개수2==0) {없어야할번호.push(2)}
+    if (개수3==0) {없어야할번호.push(3)}
+    if (개수4==0) {없어야할번호.push(4)}
+    if (개수5==0) {없어야할번호.push(5)}
+    if (개수6==0) {없어야할번호.push(6)}
+    if (개수7==0) {없어야할번호.push(7)}
+    if (개수8==0) {없어야할번호.push(8)}
+    if (개수9==0) {없어야할번호.push(9)}
+
+    console.log('조합개수 : ' + 결과.length + ' :: ' + 개수0 + ', ' + 개수1 + ', ' + 개수2 + ', ' + 개수3 + ', ' + 개수4 + ', ' + 개수5 + ', ' + 개수6 + ', ' + 개수7 + ', ' + 개수8 + ', ' + 개수9 + ', ')
+    if (포함해야하는번호.length>0) {document.querySelector('#포함해야하는번호결과').innerHTML=포함해야하는번호.join(' ,')}
+    if (없어야할번호.length>0) {
+      document.querySelector('#없어야할번호결과').innerHTML=없어야할번호.join(' ,');
+      for (var i=0; i<없어야할번호.length; i++) {
+        document.querySelectorAll('.입력')[없어야할번호[i]].classList.add('번호_선택또는가능초코');
+      }
+    
+    }
+    //포함해야하는 번호가 있으면 위치확정되는지 확인
+    if (포함해야하는번호.length>0) {
+      console.log('포함해야하는번호 : ' + 포함해야하는번호.length)
+      var 인덱스;
+      for (var i=0; i<포함해야하는번호.length; i++) {
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].classList.add('번호_선택또는가능초코');
+        //모든 배열에 포함되어 있으니 한번만 확인하면 된다
+        for이치=0;
+        개수0=0;//개수0 재사용
+        인덱스=결과[0].indexOf(포함해야하는번호[i]);
+        결과.forEach (조합 => {
+          for이치+=1;
+          if (조합.indexOf(포함해야하는번호[i])==인덱스) {개수0+=1;}
+        });
+
+        console.log('번호 : ' + 포함해야하는번호[i] + ' 의 위치, ' + (i+1) + ', 전체개수 ' + for이치 + ' 중' + 개수0)
+
+        if (개수0==for이치) {document.querySelectorAll('.순서확정')[인덱스].innerHTML=포함해야하는번호[i];}
+      }
+    }
+  }
+
+
+
+  //기회정보 검토 결과 포함해야하는번호와 순서확정번호를 class가능숫자하나 부분에 색칠하기
+  //순서확정 : 해당 index에 해당번호 색칠해제 나머지 번호 모두 색칠
+  //없어야할 번호 : 4개다 색칠
+
+
+
+
+
+
+
+
+
+
 
   // 제외할 숫자들 읽어오기
   const 제외할숫자들 = [];
@@ -221,6 +332,7 @@ function 계산() {
       } 
     }
   }
+ 
   // 제외할 숫자들 포함된 조합 필터링
   let 필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));

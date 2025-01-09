@@ -1,5 +1,4 @@
-function 계산1() {
-  //최근꺼 되는거
+function 계산보관() {
   console.log('계산()')
   // 랜덤번호 준비되어 있다면 B S 입력 추가 코드 작성
   if (document.querySelector('#랜덤번호정보').innerHTML=='랜덤번호 있음 BS 계산()시 입력됨') {
@@ -10,17 +9,18 @@ function 계산1() {
     document.querySelectorAll('#가능 > div > div')[i].classList.remove('제외');
   }
 
-  var 기회들 = []; // 기회들의 숫자 정보를 담는 배열
-  var 결과 = [];  // 최종적으로 조건에 맞는 조합을 저장
+  const 기회들 = []; // 기회들의 숫자 정보를 담는 배열
+  const 결과 = [];  // 최종적으로 조건에 맞는 조합을 저장
 
   // 모든 가능한 조합 생성
-  var 모든조합 = 중복제거모든조합_result();
+  const 모든조합 = 중복제거모든조합_result();
 
   // 각 기회에서 숫자와 위치 정보를 읽어오기
   for (let i = 0; i < 10; i++) {
-    var 기회 = document.querySelectorAll(`#기회${i} div`);
-    var 숫자일치 = document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0';
-    var 위치일치 = document.querySelector(`#기회${i} .위치일치`)?.innerHTML || '0';
+    const 기회 = document.querySelectorAll(`#기회${i} div`);
+    const 숫자일치 = document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0';
+    const 위치일치 = document.querySelector(`#기회${i} .위치일치`)?.innerHTML || '0';
+    // || '0' : 공백일때 0(설정값) 을 입력하라는 의미인가?
 
     //위치일치='', 숫자일치는 숫자 일때, 가능숫자하나 에 제외 클래스 부여
     if (숫자일치!=0 && 위치일치==0) {
@@ -36,9 +36,10 @@ function 계산1() {
     }
 
 
-    //gpt 코드
+    //gpt 코드 : 모두 값이 있을때, trim은 왜 하는지? 공백값이 있을수 있기 때문인가?
     if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
-      var 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
+      const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
+      console.log(기회숫자)
       기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
     }
   }
@@ -47,7 +48,7 @@ function 계산1() {
   모든조합.forEach(조합 => {
     let 유효 = true;
 
-    for (var { 기회숫자, 위치일치, 숫자일치 } of 기회들) {
+    for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) {
       let 위치일치수 = 0;
       let 숫자일치수 = 0;
 
@@ -59,14 +60,19 @@ function 계산1() {
       }
 
       // 숫자만 일치하는 개수
-      var 조합복사 = [...조합];
-      var 기회복사 = [...기회숫자];
+      const 조합복사 = [...조합];
+      const 기회복사 = [...기회숫자];
+
       for (let i = 0; i < 4; i++) {
         if (조합[i] === 기회숫자[i]) {
           조합복사[i] = -1; // 일치한 위치는 제외
           기회복사[i] = -1;
         }
       }
+
+      console.log('조합복사 : ' + 조합복사 + ', 기회복사 : ' + 기회복사)
+      
+
       숫자일치수 = 조합복사.filter(num => num !== -1 && 기회복사.includes(num)).length;
 
       // 조건 불일치 시 필터링
@@ -80,7 +86,7 @@ function 계산1() {
   });
 
   // 제외할 숫자들 읽어오기
-  var 제외할숫자들 = [];
+  const 제외할숫자들 = [];
   document.querySelectorAll('.토글').forEach(토글 => {
     if (토글.innerHTML !== '') {
       제외할숫자들.push(parseInt(토글.innerHTML, 10));
@@ -99,18 +105,13 @@ function 계산1() {
       } 
     }
   }
-
-
-
-
-
   // 제외할 숫자들 포함된 조합 필터링
   let 필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));
   });
 
   // 포함할 숫자들 읽어오기
-  var 포함할숫자들 = [];
+  const 포함할숫자들 = [];
   document.querySelectorAll('.포함토글').forEach(포함토글 => {
     if (포함토글.innerHTML !== '') {
       포함할숫자들.push(parseInt(포함토글.innerHTML, 10));
@@ -121,19 +122,6 @@ function 계산1() {
   필터링된결과 = 필터링된결과.filter(조합 =>
     포함할숫자들.every(숫자 => 조합.includes(숫자))
   );
-
-  //////필터링된결과.length==0~9숫자 개수 이면 확정숫자이다.
-  //다차원 배열은 set 형태로 만들어도 그대로이므로 문자열 형태의 1차원 배열로 만든 다음 set으로 만들어서 중복을 제거하고 다시 2차원 배열의 형태로 돌리기
-  //console.log(필터링된결과.length)
-
-
-
-
-
-
-
-
-
   // 결과 출력
   if (필터링된결과.length < 700) {
     document.querySelector('#가능한조합개수만').innerHTML = 필터링된결과.length;
@@ -155,86 +143,111 @@ function 계산1() {
 
     document.querySelector('#가능한조합').innerHTML = 누적;
   }
+
+  //gpt에 추가해 달라고한 코드 : 
+  // 새로운 코드 추가
+
+
+
+
+
+  
 }
+
 function 임시() {
-  // 배열 선언 : 3824 예시
-  var 가능한번호들 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var 배열0 = [0, 1, 2, 3]; // b=1, s=1
-  var 배열1 = [6, 7, 8, 9]; // b=1, s=0 : 45중하나
-  var 배열2 = [1, 4, 2, 0]; // b=1, s=1 : 
-  var 배열3 = [3, 8, 4, 9]; // b=1, s=2 : 89중 하나, 34있고
-  var 배열4 = [3, 8, 5, 9]; // b=0, s=2 : 384확정, (4대신 5넣었을때 1개 줄었으니 4확정, 5제외), 3,8위치 확정 4위치 네번째로 확정
-  var 배열5 = [];
-  var 배열6 = [];
-  var 배열7 = [];
-  var 배열8 = [];
-  var 배열9 = [];
-  var bs0 = [1, 1];
-  var bs1 = [1, 0];
-  var bs2 = [1, 1];
-  var bs3 = [1, 2];
-  var bs4 = [0, 2];
-  var bs5 = [0, 0];
-  var bs6 = [0, 0];
-  var bs7 = [0, 0];
-  var bs8 = [0, 0];
-  var bs9 = [0, 0];
-  var 검토배열 = [];
 
-  var 스트라이크; // 포함중_index일치개수
-  var 볼; // 포함_검토배열값중에서가능한번들배열에있는개수
+// Input opportunities
+const opportunities = [
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+  { candidate: [], positionMatch: 0, numberMatch: 0 },
+];
 
-  var 확정배열 = [null, null, null, null]; // 초기값을 null로 설정
-  var 포함될숫자 = [];
-  var 제외될숫자 = [];
-
-  // 반복문 수정: 각 배열에 대한 조건을 처리
-  for (var i = 0; i < 10; i++) {
-    // 각 배열 및 조건 설정
-    if (i == 0) { 검토배열 = 배열0; 볼 = bs0[0]; 스트라이크 = bs0[1]; }
-    if (i == 1) { 검토배열 = 배열1; 볼 = bs1[0]; 스트라이크 = bs1[1]; }
-    if (i == 2) { 검토배열 = 배열2; 볼 = bs2[0]; 스트라이크 = bs2[1]; }
-    if (i == 3) { 검토배열 = 배열3; 볼 = bs3[0]; 스트라이크 = bs3[1]; }
-    if (i == 4) { 검토배열 = 배열4; 볼 = bs4[0]; 스트라이크 = bs4[1]; }
-    if (i == 5) { 검토배열 = 배열5; 볼 = bs5[0]; 스트라이크 = bs5[1]; }
-    if (i == 6) { 검토배열 = 배열6; 볼 = bs6[0]; 스트라이크 = bs6[1]; }
-    if (i == 7) { 검토배열 = 배열7; 볼 = bs7[0]; 스트라이크 = bs7[1]; }
-    if (i == 8) { 검토배열 = 배열8; 볼 = bs8[0]; 스트라이크 = bs8[1]; }
-    if (i == 9) { 검토배열 = 배열9; 볼 = bs9[0]; 스트라이크 = bs9[1]; }
-
-    if (검토배열.length != 4) continue;
-
-    // 조건에 맞는 숫자 찾기
-    let 현재포함될숫자 = [];
-    let 현재제외될숫자 = [];
-    let 현재확정배열 = [...확정배열];
-
-    검토배열.forEach((숫자, index) => {
-      if (스트라이크 > 0 && 가능한번호들.includes(숫자)) {
-        if (검토배열[index] === 숫자) {
-          현재확정배열[index] = 숫자;
-        }
-      }
-      if (볼 > 0 && 가능한번호들.includes(숫자) && 현재확정배열.indexOf(숫자) === -1) {
-        현재포함될숫자.push(숫자);
-      }
-      if (볼 === 0 && 스트라이크 === 0 && 가능한번호들.includes(숫자)) {
-        현재제외될숫자.push(숫자);
-      }
-    });
-
-    // 업데이트
-    포함될숫자 = [...new Set([...포함될숫자, ...현재포함될숫자])];
-    제외될숫자 = [...new Set([...제외될숫자, ...현재제외될숫자])];
-    확정배열 = [...현재확정배열];
-
-    // 로그 출력
-    console.log('검토배열:', 검토배열);
-    console.log('포함될 숫자:', 포함될숫자);
-    console.log('제외될 숫자:', 제외될숫자);
-    console.log('확정 배열:', 확정배열);
-    console.log('-----------------------------------');
+for (var i=0; i<10; i++) {
+  var 기회정보6개추출=[];
+  for (var t=0; t<6; t++) {
+    if (t<4) {opportunities[i].candidate.push(document.querySelectorAll('#기회' + i + ' *')[t].innerHTML)}
+    if (t==4) {opportunities[i].numberMatch=document.querySelectorAll('#기회' + i + ' *')[t].innerHTML*1}
+    if (t==5) {opportunities[i].positionMatch=document.querySelectorAll('#기회' + i + ' *')[t].innerHTML*1}
   }
+}
+
+
+console.log('return;')
+return;
+
+function findPossiblePasswords(opportunities) {
+  const allNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const possiblePasswords = [];
+
+  // Helper to count position matches
+  function countPositionMatches(password, candidate) {
+    console.log('function countPositionMatches(password, candidate) : ' + password + ', ' + candidate)
+    return password.filter((num, idx) => num === candidate[idx]).length;
+  }
+
+  // Helper to count number matches (excluding position matches)
+  function countNumberMatches(password, candidate) {
+    return password.reduce((count, num, idx) => {
+      if (candidate.includes(num) && num !== candidate[idx]) {
+        return count + 1;
+      }
+      return count;
+    }, 0);
+  }
+
+  // Generate all permutations of 4 numbers from 0 to 9
+  function generatePermutations(arr, length) {
+    if (length === 1) return arr.map((n) => [n]);
+    const permutations = [];
+    for (let i = 0; i < arr.length; i++) {
+      const remaining = [...arr.slice(0, i), ...arr.slice(i + 1)];
+      const subPermutations = generatePermutations(remaining, length - 1);
+      subPermutations.forEach((perm) => permutations.push([arr[i], ...perm]));
+    }
+    return permutations;
+  }
+
+  const allPermutations = generatePermutations(allNumbers, 4);
+
+  // Filter permutations based on all opportunity conditions
+  for (const password of allPermutations) {
+    let isValid = true;
+
+    for (const { candidate, positionMatch, numberMatch } of opportunities) {
+      // Skip this opportunity if candidate length is not 4
+      if (candidate.length !== 4) {
+        continue;
+      }
+
+      const posMatches = countPositionMatches(password, candidate);
+      const numMatches = countNumberMatches(password, candidate);
+
+      if (posMatches !== positionMatch || numMatches !== numberMatch) {
+        isValid = false;
+        break;
+      }
+    }
+
+    if (isValid) possiblePasswords.push(password.join(""));
+  }
+
+  return possiblePasswords;
+}
+
+// Find all valid passwords
+const validPasswords = findPossiblePasswords(opportunities);
+
+// Output the results
+console.log("Possible passwords:", validPasswords);
+console.log("Total count:", validPasswords.length);
 }
 
 function 임시보관() {
@@ -431,7 +444,7 @@ function 랜덤번호있을때_SB기록() {
     }
 
     for (var t=0; t<4; t++) {
-      console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
+      //console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
       console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
       if (랜덤번호span값배열[t]==현재기회div4개[t].innerHTML) {스트+=1;}
       if (랜덤번호span값배열[t]!=현재기회div4개[t].innerHTML && 랜덤번호span값배열.includes(현재기회div4개[t].innerHTML)) {볼+=1;}
@@ -475,6 +488,13 @@ if (1==1) {//중복제거모든조합_result()
 }
 
 function 다시() {
+
+  document.querySelector('#포함해야하는번호결과').innerHTML='';
+  document.querySelector('#없어야할번호결과').innerHTML='';
+  document.querySelectorAll('.순서확정')[0].innerHTML='';
+  document.querySelectorAll('.순서확정')[1].innerHTML='';
+  document.querySelectorAll('.순서확정')[2].innerHTML='';
+  document.querySelectorAll('.순서확정')[3].innerHTML='';
 
   document.querySelector('#가능한조합').innerHTML = '';
 
