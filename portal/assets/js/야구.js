@@ -370,7 +370,7 @@ function 랜덤번호직접기록 () {
   if (랜덤번호들[0].innerHTML!='' && 랜덤번호들[1].innerHTML!='' && 랜덤번호들[2].innerHTML!='' && 랜덤번호들[3].innerHTML!='') {
     console.log('모두기록상태')
     for (var i=0; i<4; i++) {
-      console.log(랜덤번호들[i].innerHTML)
+      //console.log(랜덤번호들[i].innerHTML)
       번호4개배열.push(랜덤번호들[i].innerHTML);
     }
       document.querySelector('#숨겨진랜덤번호').innerHTML=번호4개배열.join(',');
@@ -445,7 +445,7 @@ function 랜덤번호있을때_SB기록() {
 
     for (var t=0; t<4; t++) {
       //console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
-      console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
+      //console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
       if (랜덤번호span값배열[t]==현재기회div4개[t].innerHTML) {스트+=1;}
       if (랜덤번호span값배열[t]!=현재기회div4개[t].innerHTML && 랜덤번호span값배열.includes(현재기회div4개[t].innerHTML)) {볼+=1;}
     }

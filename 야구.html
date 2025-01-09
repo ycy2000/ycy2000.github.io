@@ -17,15 +17,15 @@
     </textarea>
     <textarea class="d-block" id="textarea오른쪽" spellcheck="false"> (6523)예시시    B S
 0 1 2 3 : 0 2
-6 7 8 9 : 0 1 => 4, 5 포함됨 확정
-4 5 8 9 : 0 1 => 가능한 조합이 두개로 뜬다. (4 7 2 3), (6 5 2 3)
-(45중 하나인데 전체가 하나이므로 8,9제외됨)
-(0,1이 제외되는 이유는 무엇인가?)
-(2,3이 포함되는 이유는 무엇인가?)
-(3의 위치가 4번째인데 순서확정이 안되는 이유는?)
-[(4,5중 1) (6,7중 1) (0,1,2,3중 2)]
+6 7 8 9 : 0 1 => (4 5중 1개) (제외 및 확정 => 미확정)
+  필터링 조합에서, 첫번째에 1,2,3,7,8,9가 안보임. 두번쨰에 2,3,6,8,9가 안보임. 세번쨰에 1,3,6,7,9가 안보임.
+  네번째에 1,2,6,7,8이 안보임
+4 5 7 8 : 0 1 => "가능한 조합이 3개로 뜬다. (0 5 2 9), (4 1 2 9) (6 5 2 3)"
+"7 8 제외, 2 포함으로 뜬다" 따옴표는 코드 결과이다.
+? 2가 포함이면 세번째 순서로 확정되어야하는데 누락되는이유?
 
-5 7 2 3 : 1 2 (포함 2,3,5,6 확정) (나머지 제외 확정) : 조합도출 1개 : 6 5 2 3
+
+
 
     </textarea>
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
@@ -241,9 +241,9 @@ function 계산() {
   document.querySelectorAll('.순서확정')[1].innerHTML='';
   document.querySelectorAll('.순서확정')[2].innerHTML='';
   document.querySelectorAll('.순서확정')[3].innerHTML='';
-  console.log('모든조합.length : ' + 모든조합.length)
+  //console.log('모든조합.length : ' + 모든조합.length)
   if (결과.length > 0) {
-    console.log('결과.length : ' + 결과.length)
+    //console.log('결과.length : ' + 결과.length)
     var for이치=0; 개수0=0, 개수1=0, 개수2=0, 개수3=0, 개수4=0, 개수5=0, 개수6=0, 개수7=0, 개수8=0, 개수9=0;
 
     결과.forEach (조합 => {
@@ -284,7 +284,7 @@ function 계산() {
     if (개수8==0) {없어야할번호.push(8)}
     if (개수9==0) {없어야할번호.push(9)}
 
-    console.log('조합개수 : ' + 결과.length + ' :: ' + 개수0 + ', ' + 개수1 + ', ' + 개수2 + ', ' + 개수3 + ', ' + 개수4 + ', ' + 개수5 + ', ' + 개수6 + ', ' + 개수7 + ', ' + 개수8 + ', ' + 개수9 + ', ')
+    console.log('조합 ' + 결과.length + ' => 포함개수만 ' + 개수0 + ', ' + 개수1 + ', ' + 개수2 + ', ' + 개수3 + ', ' + 개수4 + ', ' + 개수5 + ', ' + 개수6 + ', ' + 개수7 + ', ' + 개수8 + ', ' + 개수9 + ', ')
     if (포함해야하는번호.length>0) {document.querySelector('#포함해야하는번호결과').innerHTML=포함해야하는번호.join(' ,')}
     if (없어야할번호.length>0) {
       document.querySelector('#없어야할번호결과').innerHTML=없어야할번호.join(' ,');
@@ -306,7 +306,7 @@ function 계산() {
     }
     //포함해야하는 번호가 있으면 위치확정되는지 확인
     if (포함해야하는번호.length>0) {
-      console.log('포함해야하는번호 : ' + 포함해야하는번호.length)
+      console.log('포함해야하는번호 : ' + 포함해야하는번호.length + ' 개')
       var 인덱스;
       for (var i=0; i<포함해야하는번호.length; i++) {
         document.querySelectorAll('.포함')[포함해야하는번호[i]].nextElementSibling.classList.add('번호_선택또는가능초코');
@@ -321,7 +321,12 @@ function 계산() {
           if (조합.indexOf(포함해야하는번호[i])==인덱스) {개수0+=1;}
         });
 
-        console.log('번호 : ' + 포함해야하는번호[i] + ' 의 위치, ' + (i+1) + ', 전체개수 ' + for이치 + ' 중' + 개수0)
+        console.log('포함해야하는번호 ' + 포함해야하는번호[i] + ' 의 index : ' + 인덱스 + ', 조합 ' + for이치 + ' 출현' + 개수0)
+
+        //for이치==개수0 이면 해당 인덱스위치에 순서확정번호 넣기
+        if (for이치==개수0) {
+          document.querySelectorAll('.순서확정')[인덱스].innerHTML=포함해야하는번호[i];
+        }
 
       }
     }
