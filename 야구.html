@@ -270,8 +270,21 @@ function 계산() {
     if (없어야할번호.length>0) {
       document.querySelector('#없어야할번호결과').innerHTML=없어야할번호.join(' ,');
       for (var i=0; i<없어야할번호.length; i++) {
-        document.querySelectorAll('.입력')[없어야할번호[i]].classList.add('번호_선택또는가능초코');
+        document.querySelectorAll('.입력')[없어야할번호[i]].nextElementSibling.classList.add('번호_선택또는가능초코');
+        document.querySelectorAll('.입력')[없어야할번호[i]].nextElementSibling.innerHTML=없어야할번호[i];
+        document.querySelectorAll('.입력')[없어야할번호[i]].innerHTML='';
+
+        var 가능div특정;
+        for (var i=0; i<4; i++) {
+          //제외할숫자들[0]==3이면
+          가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (없어야할번호[i]*1+1) + ') > div');
+          for (var k=0; k<4; k++) {
+            if (!가능div특정[k].classList.contains('제외')){가능div특정[k].classList.add('제외')}
+          } 
+        }
+        
       }
+      
     
     }
     //포함해야하는 번호가 있으면 위치확정되는지 확인
@@ -280,6 +293,8 @@ function 계산() {
       var 인덱스;
       for (var i=0; i<포함해야하는번호.length; i++) {
         document.querySelectorAll('.포함')[포함해야하는번호[i]].classList.add('번호_선택또는가능초코');
+        document.querySelectorAll('.포함')[없어야할번호[i]].nextElementSibling.innerHTML=포함해야하는번호[i];
+        document.querySelectorAll('.포함')[없어야할번호[i]].innerHTML='';
         //모든 배열에 포함되어 있으니 한번만 확인하면 된다
         for이치=0;
         개수0=0;//개수0 재사용
