@@ -489,6 +489,13 @@ if (1==1) {//중복제거모든조합_result()
 
 function 다시() {
 
+  
+  for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {
+    if (document.querySelectorAll('#선택 div')[i].classList.contains('번호_선택또는가능초코')) {
+      document.querySelectorAll('#선택 div')[i].classList.remove('번호_선택또는가능초코')
+    }
+  }
+
   document.querySelector('#포함해야하는번호결과').innerHTML='';
   document.querySelector('#없어야할번호결과').innerHTML='';
   document.querySelectorAll('.순서확정')[0].innerHTML='';
@@ -616,6 +623,7 @@ function 기회click(e) {
   if (e.target.classList.contains('입력') & document.querySelector('#랜덤번호직접입력').innerHTML!='직접입력상태') {
     console.log('e.target.classList.contains(입력) + 직접입력상태 아닐때')
     if (e.target.innerHTML=='') {console.log('\u00a0\u00a0\e.target.innerHTML=="") {return;}'); return;}
+
     var 기록중기회요소=document.querySelector('.기록중').parentNode;
     var 같은번호있음;
     for (var i=0; i<4; i++) {
@@ -634,6 +642,22 @@ function 기회click(e) {
     }
     for (var i=0; i<4; i++) {
       if (기록중기회요소.children[i].innerHTML=='') {
+
+              e.target.classList.add('임시표시');
+              var 클릭한번호;
+              for (var k=0; k<10; k++) {
+                if (document.querySelectorAll('.입력')[k].classList.contains('임시표시')) {
+                  클릭한번호=i;
+                }
+              }
+              e.target.classList.remove('임시표시');
+              //인덱스는 i
+              if (document.querySelectorAll('#가능 > div:nth-of-type(' + (클릭한번호*1 + 1) + ') div')[i].classList.contains('제외')) {
+                alert('해당숫자는 주황색칠숫자(가능번호 제외)')
+                return;
+              }
+              
+
         기록중기회요소.children[i].innerHTML=e.target.innerHTML;
         return;
       }

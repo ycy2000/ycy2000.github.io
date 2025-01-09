@@ -82,7 +82,7 @@
         <button>번호보기/숨기기</button>
       </div>
       <div id="없어야할번호">
-        <div>없어야할 번호</div><div id="없어야할번호결과" style="font-size:20px; font-weight: bold;"></div>
+        <div>없어야할 번호</div><div id="없어야할번호결과" style="font-size:20px; font-weight: bold;"></div> <span style="margin-left: 20px;">순서 확정된 번호</span>
       </div>
       <div id="포함해야하는번호">
         <div>포함해야하는 번호</div><div id="포함해야하는번호결과" style="font-size:20px; font-weight: bold;"></div>
@@ -127,6 +127,11 @@
 <script>
 function 계산() {
   console.log('계산()')
+  for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {
+    if (document.querySelectorAll('#선택 div')[i].classList.contains('번호_선택또는가능초코')) {
+      document.querySelectorAll('#선택 div')[i].classList.remove('번호_선택또는가능초코')
+    }
+  }
   // 랜덤번호 준비되어 있다면 B S 입력 추가 코드 작성
   if (document.querySelector('#랜덤번호정보').innerHTML=='랜덤번호 있음 BS 계산()시 입력됨') {
     랜덤번호있을때_SB기록()
@@ -275,13 +280,11 @@ function 계산() {
         document.querySelectorAll('.입력')[없어야할번호[i]].innerHTML='';
 
         var 가능div특정;
-        for (var i=0; i<4; i++) {
-          //제외할숫자들[0]==3이면
-          가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (없어야할번호[i]*1+1) + ') > div');
-          for (var k=0; k<4; k++) {
-            if (!가능div특정[k].classList.contains('제외')){가능div특정[k].classList.add('제외')}
-          } 
-        }
+        가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (없어야할번호[i]*1+1) + ') > div');
+        for (var k=0; k<4; k++) {
+          if (!가능div특정[k].classList.contains('제외')){가능div특정[k].classList.add('제외')}
+        } 
+
         
       }
       
@@ -292,9 +295,9 @@ function 계산() {
       console.log('포함해야하는번호 : ' + 포함해야하는번호.length)
       var 인덱스;
       for (var i=0; i<포함해야하는번호.length; i++) {
-        document.querySelectorAll('.포함')[포함해야하는번호[i]].classList.add('번호_선택또는가능초코');
-        document.querySelectorAll('.포함')[없어야할번호[i]].nextElementSibling.innerHTML=포함해야하는번호[i];
-        document.querySelectorAll('.포함')[없어야할번호[i]].innerHTML='';
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].nextElementSibling.classList.add('번호_선택또는가능초코');
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].nextElementSibling.innerHTML=포함해야하는번호[i];
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].innerHTML='';
         //모든 배열에 포함되어 있으니 한번만 확인하면 된다
         for이치=0;
         개수0=0;//개수0 재사용
@@ -306,7 +309,13 @@ function 계산() {
 
         console.log('번호 : ' + 포함해야하는번호[i] + ' 의 위치, ' + (i+1) + ', 전체개수 ' + for이치 + ' 중' + 개수0)
 
-        if (개수0==for이치) {document.querySelectorAll('.순서확정')[인덱스].innerHTML=포함해야하는번호[i];}
+        if (개수0==for이치) {
+          document.querySelectorAll('.순서확정')[인덱스].innerHTML=포함해야하는번호[i];
+          for (var j=0; j<10; j++) {
+            가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (j*1+1) + ') > div')[인덱스].classList.add('제외');
+            if (j==인덱스) {가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (j*1+1) + ') > div')[인덱스].classList.remove('제외');}
+          }
+        }
       }
     }
   }
