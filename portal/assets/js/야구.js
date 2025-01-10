@@ -1,8 +1,76 @@
 function 계산보관() {
   console.log('계산()')
-  // 랜덤번호 준비되어 있다면 B S 입력 추가 코드 작성
+  const 모든조합 = 중복제거모든조합_result();
   if (document.querySelector('#랜덤번호정보').innerHTML=='랜덤번호 있음 BS 계산()시 입력됨') {
     랜덤번호있을때_SB기록()
+  }
+
+  function 중복제거모든조합_result() {
+    var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var resultSet = new Set();
+  
+    for (let i = 0; i < list.length; i++) {
+      for (let j = 0; j < list.length; j++) {
+        for (let m = 0; m < list.length; m++) {
+          for (let k = 0; k < list.length; k++) {
+            // 중복된 요소 제거
+            if (i === j || i === m || j === m || j === k || m === k || k === i) continue;
+            
+            // 중복 방지를 위해 Set에 문자열로 저장
+            var combination = [list[i], list[j], list[m], list[k]].join('');
+            resultSet.add(combination);
+          }
+        }
+      }
+    }
+    // Set을 다시 배열로 변환하며 각 문자열을 숫자 배열로 변환
+    return Array.from(resultSet).map(combination => combination.split('').map(Number));
+  }
+  function 랜덤번호있을때_SB기록() {
+    console.log(' 랜덤번호있을때_SB기록()')
+    //숫자일치,위치일치 클래스 값 제거
+    for (var i=0; i<document.querySelectorAll('.숫자일치').length; i++) {
+      document.querySelectorAll('.숫자일치')[i].innerHTML='';
+      document.querySelectorAll('.위치일치')[i].innerHTML='';
+    }
+
+    var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
+    var 랜덤번호span값배열=[];
+    랜덤번호span값배열=랜덤번호span값.split(',');
+
+    for (var i=0; i<10; i++) {
+      var 볼=0, 스트=0;
+      var 현재기회div4개=document.querySelectorAll('#기회' + i + ' *'); 
+
+      if (현재기회div4개[0].innerHTML=='' && 현재기회div4개[1].innerHTML=='' && 현재기회div4개[2].innerHTML=='' && 현재기회div4개[3].innerHTML=='') {
+        //console.log('모두공란이면 continue')
+        continue;
+      }
+
+      for (var t=0; t<4; t++) {
+        //console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
+        //console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
+        if (랜덤번호span값배열[t]==현재기회div4개[t].innerHTML) {스트+=1;}
+        if (랜덤번호span값배열[t]!=현재기회div4개[t].innerHTML && 랜덤번호span값배열.includes(현재기회div4개[t].innerHTML)) {볼+=1;}
+      }
+
+      if (볼!=0) {현재기회div4개[4].innerHTML=볼;}
+      if (스트!=0) {현재기회div4개[5].innerHTML=스트;}
+    }
+  } 
+
+  for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {
+    if (document.querySelectorAll('#선택 div')[i].classList.contains('번호_선택또는가능초코')) {
+      document.querySelectorAll('#선택 div')[i].classList.remove('번호_선택또는가능초코')
+    }
+  }
+  // 랜덤번호 준비되어 있다면 B S 입력 추가 코드 작성
+
+  for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
+    document.querySelectorAll('.입력')[i].classList.remove('번호_선택또는가능초코');
+  }
+  for (var i=0; i<document.querySelectorAll('.포함').length; i++) {
+    document.querySelectorAll('.포함')[i].classList.remove('번호_선택또는가능초코');
   }
   // 제외 클래스 모두 제거
   for (var i=0; i<document.querySelectorAll('#가능 > div > div').length; i++) {
@@ -11,9 +79,6 @@ function 계산보관() {
 
   const 기회들 = []; // 기회들의 숫자 정보를 담는 배열
   const 결과 = [];  // 최종적으로 조건에 맞는 조합을 저장
-
-  // 모든 가능한 조합 생성
-  const 모든조합 = 중복제거모든조합_result();
 
   // 각 기회에서 숫자와 위치 정보를 읽어오기
   for (let i = 0; i < 10; i++) {
@@ -35,15 +100,15 @@ function 계산보관() {
       }
     }
 
-
     //gpt 코드 : 모두 값이 있을때, trim은 왜 하는지? 공백값이 있을수 있기 때문인가?
-    if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
+    //if (기회[0] && 기회[1] && 기회[2] && 기회[3] && 기회[0].innerHTML.trim() !== '') {
+    if (기회[0].innerHTML!='' && 기회[1].innerHTML!='' && 기회[2].innerHTML!='' && 기회[3].innerHTML!='') {
       const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
-      console.log(기회숫자)
       기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
+      
+      console.log('기회숫자 : ' + 기회숫자 + ', 숫자일치 : ' + 숫자일치 + ' , 위치일치 : ' + 위치일치)
     }
   }
-
   // 조건에 맞는지 모든 조합 필터링
   모든조합.forEach(조합 => {
     let 유효 = true;
@@ -68,10 +133,7 @@ function 계산보관() {
           조합복사[i] = -1; // 일치한 위치는 제외
           기회복사[i] = -1;
         }
-      }
-
-      console.log('조합복사 : ' + 조합복사 + ', 기회복사 : ' + 기회복사)
-      
+      }    
 
       숫자일치수 = 조합복사.filter(num => num !== -1 && 기회복사.includes(num)).length;
 
@@ -85,6 +147,161 @@ function 계산보관() {
     if (유효) 결과.push(조합);
   });
 
+  //--------------------------- 모든조합에서 기회조건 만족하는 조합 : 결과
+  document.querySelector('#포함해야하는번호결과').innerHTML='';
+  document.querySelector('#없어야할번호결과').innerHTML='';
+  document.querySelectorAll('.순서확정')[0].innerHTML='';
+  document.querySelectorAll('.순서확정')[1].innerHTML='';
+  document.querySelectorAll('.순서확정')[2].innerHTML='';
+  document.querySelectorAll('.순서확정')[3].innerHTML='';
+  //console.log('모든조합.length : ' + 모든조합.length)
+  if (결과.length > 0) {
+    //console.log('결과.length : ' + 결과.length)
+    var 개수0=0, 개수1=0, 개수2=0, 개수3=0, 개수4=0, 개수5=0, 개수6=0, 개수7=0, 개수8=0, 개수9=0;
+    var 결과_번호위치1포함숫자들=[];
+    var 결과_번호위치2포함숫자들=[];
+    var 결과_번호위치3포함숫자들=[];
+    var 결과_번호위치4포함숫자들=[];
+
+    결과.forEach (조합 => {
+      if (조합.includes(0)) {개수0+=1;}
+      if (조합.includes(1)) {개수1+=1;}
+      if (조합.includes(2)) {개수2+=1;}
+      if (조합.includes(3)) {개수3+=1;}
+      if (조합.includes(4)) {개수4+=1;}
+      if (조합.includes(5)) {개수5+=1;}
+      if (조합.includes(6)) {개수6+=1;}
+      if (조합.includes(7)) {개수7+=1;}
+      if (조합.includes(8)) {개수8+=1;}
+      if (조합.includes(9)) {개수9+=1;}
+      결과_번호위치1포함숫자들.push(조합[0]);
+      결과_번호위치2포함숫자들.push(조합[1]);
+      결과_번호위치3포함숫자들.push(조합[2]);
+      결과_번호위치4포함숫자들.push(조합[3]);
+    });
+
+    결과_번호위치1포함숫자들=[...new Set(결과_번호위치1포함숫자들.sort(function(a, b)  {return a - b;}))];
+    결과_번호위치2포함숫자들=[...new Set(결과_번호위치2포함숫자들.sort(function(a, b)  {return a - b;}))];
+    결과_번호위치3포함숫자들=[...new Set(결과_번호위치3포함숫자들.sort(function(a, b)  {return a - b;}))];
+    결과_번호위치4포함숫자들=[...new Set(결과_번호위치4포함숫자들.sort(function(a, b)  {return a - b;}))];
+
+    console.log(결과_번호위치1포함숫자들)
+    console.log(결과_번호위치2포함숫자들)
+    console.log(결과_번호위치3포함숫자들)
+    console.log(결과_번호위치4포함숫자들)
+
+    for (var i=0; i<10; i++) {
+      if (!결과_번호위치1포함숫자들.includes(i)) {//0을 포함하지 않는다면 index=0 위치
+        document.querySelectorAll('#가능 > div:nth-of-type(' + (i*1+1) + ') > div')[0].classList.add('제외');
+      }
+      if (!결과_번호위치2포함숫자들.includes(i)) {//0을 포함하지 않는다면 index=0 위치
+        document.querySelectorAll('#가능 > div:nth-of-type(' + (i*1+1) + ') > div')[1].classList.add('제외');
+      }
+      if (!결과_번호위치3포함숫자들.includes(i)) {//0을 포함하지 않는다면 index=0 위치
+        document.querySelectorAll('#가능 > div:nth-of-type(' + (i*1+1) + ') > div')[2].classList.add('제외');
+      }
+      if (!결과_번호위치4포함숫자들.includes(i)) {//0을 포함하지 않는다면 index=0 위치
+        document.querySelectorAll('#가능 > div:nth-of-type(' + (i*1+1) + ') > div')[3].classList.add('제외');
+      }
+    }
+
+
+
+    var 포함해야하는번호=[];
+    if (개수0==결과.length) {포함해야하는번호.push(0)}
+    if (개수1==결과.length) {포함해야하는번호.push(1)}
+    if (개수2==결과.length) {포함해야하는번호.push(2)}
+    if (개수3==결과.length) {포함해야하는번호.push(3)}
+    if (개수4==결과.length) {포함해야하는번호.push(4)}
+    if (개수5==결과.length) {포함해야하는번호.push(5)}
+    if (개수6==결과.length) {포함해야하는번호.push(6)}
+    if (개수7==결과.length) {포함해야하는번호.push(7)}
+    if (개수8==결과.length) {포함해야하는번호.push(8)}
+    if (개수9==결과.length) {포함해야하는번호.push(9)}
+
+    var 없어야할번호=[];
+    if (개수0==0) {없어야할번호.push(0)}
+    if (개수1==0) {없어야할번호.push(1)}
+    if (개수2==0) {없어야할번호.push(2)}
+    if (개수3==0) {없어야할번호.push(3)}
+    if (개수4==0) {없어야할번호.push(4)}
+    if (개수5==0) {없어야할번호.push(5)}
+    if (개수6==0) {없어야할번호.push(6)}
+    if (개수7==0) {없어야할번호.push(7)}
+    if (개수8==0) {없어야할번호.push(8)}
+    if (개수9==0) {없어야할번호.push(9)}
+
+    console.log('조합 ' + 결과.length + ' => 포함개수만 ' + 개수0 + ', ' + 개수1 + ', ' + 개수2 + ', ' + 개수3 + ', ' + 개수4 + ', ' + 개수5 + ', ' + 개수6 + ', ' + 개수7 + ', ' + 개수8 + ', ' + 개수9 + ', ')
+    if (포함해야하는번호.length>0) {document.querySelector('#포함해야하는번호결과').innerHTML=포함해야하는번호.join(' ,')}
+    if (없어야할번호.length>0) {
+      document.querySelector('#없어야할번호결과').innerHTML=없어야할번호.join(' ,');
+      for (var i=0; i<없어야할번호.length; i++) {
+        document.querySelectorAll('.입력')[없어야할번호[i]].nextElementSibling.classList.add('번호_선택또는가능초코');
+        document.querySelectorAll('.입력')[없어야할번호[i]].nextElementSibling.innerHTML=없어야할번호[i];
+        document.querySelectorAll('.입력')[없어야할번호[i]].innerHTML='';
+
+        var 가능div특정;
+        가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (없어야할번호[i]*1+1) + ') > div');
+        for (var k=0; k<4; k++) {
+          if (!가능div특정[k].classList.contains('제외')){가능div특정[k].classList.add('제외')}
+        } 
+
+        
+      }
+      
+    
+    }
+    //포함해야하는 번호가 있으면 위치확정되는지 확인
+    if (포함해야하는번호.length>0) {
+      console.log('포함해야하는번호 : ' + 포함해야하는번호.length + ' 개')
+      var 인덱스;
+      for (var i=0; i<포함해야하는번호.length; i++) {
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].nextElementSibling.classList.add('번호_선택또는가능초코');
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].nextElementSibling.innerHTML=포함해야하는번호[i];
+        document.querySelectorAll('.포함')[포함해야하는번호[i]].innerHTML='';
+        //모든 배열에 포함되어 있으니 한번만 확인하면 된다
+        개수0=0;//개수0 재사용
+        인덱스=결과[0].indexOf(포함해야하는번호[i]);
+        결과.forEach (조합 => {
+          if (조합.indexOf(포함해야하는번호[i])==인덱스) {개수0+=1;}
+        });
+        console.log('포함해야하는번호 ' + 포함해야하는번호[i] + ' 의 index : ' + 인덱스 + ', 조합 ' + 결과.length + ' 출현' + 개수0)
+
+        //결과.length==개수0 이면 해당 인덱스위치에 순서확정번호 넣기
+        if (결과.length==개수0) {
+          document.querySelectorAll('.순서확정')[인덱스].innerHTML=포함해야하는번호[i];
+          //가능부분에 해당숫자만 제외하고 나머지 '제외'클래스 추가하는 코드.
+          for (var m=0; m<10; m++) {
+            if (m==포함해야하는번호[i]) {
+              가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (포함해야하는번호[i]*1+1) + ') > div')[인덱스].classList.remove('제외');
+            }  else {
+              가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (m*1+1) + ') > div')[인덱스].classList.add('제외');
+            }
+            
+
+          }
+        }
+
+      }
+    }
+  }
+
+
+
+  //기회정보 검토 결과 포함해야하는번호와 순서확정번호를 class가능숫자하나 부분에 색칠하기
+  //순서확정 : 해당 index에 해당번호 색칠해제 나머지 번호 모두 색칠
+  //없어야할 번호 : 4개다 색칠
+
+
+
+
+
+
+
+
+
+
+
   // 제외할 숫자들 읽어오기
   const 제외할숫자들 = [];
   document.querySelectorAll('.토글').forEach(토글 => {
@@ -93,19 +310,8 @@ function 계산보관() {
     }
   });
 
-  ///  제외할숫자들이 있으면 id="가능숫자하나" 안의 class="가능숫자하나" 안의 4개 div 제외 클래스 추가
-  if (제외할숫자들.length>0) {
-    //console.log(제외할숫자들)
-    var 가능div특정;
-    for (var i=0; i<제외할숫자들.length; i++) {
-      //제외할숫자들[0]==3이면
-      가능div특정=document.querySelectorAll('#가능 > div:nth-of-type(' + (제외할숫자들[i]*1+1) + ') > div');
-      for (var k=0; k<4; k++) {
-        if (!가능div특정[k].classList.contains('제외')){가능div특정[k].classList.add('제외')}
-      } 
-    }
-  }
-  // 제외할 숫자들 포함된 조합 필터링
+  console.log('제외할 숫자들 : ' + 제외할숫자들)
+   // 제외할 숫자들 포함된 조합 필터링
   let 필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));
   });
@@ -122,23 +328,45 @@ function 계산보관() {
   필터링된결과 = 필터링된결과.filter(조합 =>
     포함할숫자들.every(숫자 => 조합.includes(숫자))
   );
-  // 결과 출력
+  // 결과 출력 
   if (필터링된결과.length < 700) {
     document.querySelector('#가능한조합개수만').innerHTML = 필터링된결과.length;
-    let 결과한줄씩 = '';
+    let 결과한줄씩연속묶음 = '';
     let 누적 = '';
+
+    //마지막 length인데 i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
+    //i! = 0 && i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
+    for (var i=0; i<필터링된결과.length; i++) {
+      
+    }
+
+
+    if (필터링된결과.length==30) {
+      for (let i = 0; i < 필터링된결과.length; i++) {
+        결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
+        if (i % 30 === 29) {
+          누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+          document.querySelector('#가능한조합').innerHTML = 누적;
+      }
+     }
+     return;
+    }
+
+
+
+
     for (let i = 0; i < 필터링된결과.length; i++) {
-      결과한줄씩 += '<br>' + 필터링된결과[i];
+      결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
       if (i % 30 === 29) {
-        누적 += '<div>' + 결과한줄씩 + '</div>';
-        결과한줄씩 = '';
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음 = '';
       }
     }
     if (필터링된결과.length < 31) {
-      누적 = '<div>' + 결과한줄씩 + '</div>';
+      누적 = '<div>' + 결과한줄씩연속묶음 + '</div>';
     }
     if (필터링된결과.length % 30 < 29 && 필터링된결과.length > 30) {
-      누적 += '<div>' + 결과한줄씩 + '</div>';
+      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
     }
 
     document.querySelector('#가능한조합').innerHTML = 누적;
@@ -153,6 +381,7 @@ function 계산보관() {
 
   
 }
+
 
 function 임시() {
 
@@ -422,69 +651,13 @@ function 랜덤번호생성() {
 
 }
 
-function 랜덤번호있을때_SB기록() {
-  console.log(' 랜덤번호있을때_SB기록()')
-  //숫자일치,위치일치 클래스 값 제거
-  for (var i=0; i<document.querySelectorAll('.숫자일치').length; i++) {
-    document.querySelectorAll('.숫자일치')[i].innerHTML='';
-    document.querySelectorAll('.위치일치')[i].innerHTML='';
-  }
 
-  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
-  var 랜덤번호span값배열=[];
-  랜덤번호span값배열=랜덤번호span값.split(',');
-
-  for (var i=0; i<10; i++) {
-    var 볼=0, 스트=0;
-    var 현재기회div4개=document.querySelectorAll('#기회' + i + ' *'); 
-
-    if (현재기회div4개[0].innerHTML=='' && 현재기회div4개[1].innerHTML=='' && 현재기회div4개[2].innerHTML=='' && 현재기회div4개[3].innerHTML=='') {
-      //console.log('모두공란이면 continue')
-      continue;
-    }
-
-    for (var t=0; t<4; t++) {
-      //console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
-      //console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
-      if (랜덤번호span값배열[t]==현재기회div4개[t].innerHTML) {스트+=1;}
-      if (랜덤번호span값배열[t]!=현재기회div4개[t].innerHTML && 랜덤번호span값배열.includes(현재기회div4개[t].innerHTML)) {볼+=1;}
-    }
-
-    if (볼!=0) {현재기회div4개[4].innerHTML=볼;}
-    if (스트!=0) {현재기회div4개[5].innerHTML=스트;}
-  }
-
-
-
-
-} 
-
+리스너가능=document.querySelector('#가능');
 리스너기회=document.querySelector('#기회');
 
 if (1==1) {//중복제거모든조합_result()
   //var result = [];
-  중복제거모든조합_result()
-  function 중복제거모든조합_result() {
-    var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var resultSet = new Set();
-  
-    for (let i = 0; i < list.length; i++) {
-      for (let j = 0; j < list.length; j++) {
-        for (let m = 0; m < list.length; m++) {
-          for (let k = 0; k < list.length; k++) {
-            // 중복된 요소 제거
-            if (i === j || i === m || j === m || j === k || m === k || k === i) continue;
-            
-            // 중복 방지를 위해 Set에 문자열로 저장
-            var combination = [list[i], list[j], list[m], list[k]].join('');
-            resultSet.add(combination);
-          }
-        }
-      }
-    }
-    // Set을 다시 배열로 변환하며 각 문자열을 숫자 배열로 변환
-    return Array.from(resultSet).map(combination => combination.split('').map(Number));
-  }
+
 }
 
 function 다시() {
@@ -685,9 +858,31 @@ function 기회click(e) {
     랜덤번호지움 ()
     return;
   }
-
-
-
 }
 
+function 가능click(e) {
+  if (e.target.parentElement.classList.contains('가능숫자하나')) {
+    console.log('가능click(e)')
+    //제외 클래스 있으면 메세지 아니면 해당 C 선택된 해당 INDEX에 값 넣기
+    var 기록중id=document.querySelector('.기록중').parentElement.id;
+    var 기록중요소=document.querySelectorAll('#' + 기록중id + ' *');
+    var 선택번호=e.target.innerHTML*1;
+    var 선택index;
+    if (e.target.classList.contains('제외')) {
+      alert(선택번호 + ' 제외 번호')
+    } else {
+      e.target.classList.add('임시표시');
+      var 표시확인부모요소=e.target.parentElement;
+      for (var i=0; i<4; i++) {
+        if (표시확인부모요소.children[i].classList.contains('임시표시')) {선택index=i;}
+        if (기록중요소[i].innerHTML==선택번호) {alert('있는번호 제외');return;}
+      }
+      console.log('선택index : ' + 선택index)
+      e.target.classList.remove('임시표시');
+      기록중요소[선택index].innerHTML=e.target.innerHTML*1;
+    }
+    return;
+  }
+}
+리스너가능.addEventListener('click', 가능click)
 리스너기회.addEventListener('click', 기회click)

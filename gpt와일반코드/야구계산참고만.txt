@@ -1,0 +1,126 @@
+function 계산() {
+  console.log('계산()');
+  const 모든조합 = 중복제거모든조합_result();
+
+  // 랜덤 번호 입력 상태라면 관련 기록 실행
+  if (document.querySelector('#랜덤번호정보').innerHTML === '랜덤번호 있음 BS 계산()시 입력됨') {
+    랜덤번호있을때_SB기록();
+  }
+
+  // 기회 정보를 읽어와 배열에 저장
+  const 기회들 = [];
+  for (let i = 0; i < 10; i++) {
+    const 기회 = document.querySelectorAll(`#기회${i} div`);
+    const 숫자일치 = parseInt(document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0', 10);
+    const 위치일치 = parseInt(document.querySelector(`#기회${i} .위치일치`)?.innerHTML || '0', 10);
+
+    if (기회[0]?.innerHTML.trim()) { // 모두 공란이 아니라면 추가
+      const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
+      기회들.push({ 기회숫자, 숫자일치, 위치일치 });
+    }
+  }
+
+  // 조건에 맞는 조합 필터링
+  const 결과 = 모든조합.filter(조합 => {
+    return 기회들.every(({ 기회숫자, 숫자일치, 위치일치 }) => {
+      let 위치일치수 = 0;
+      let 숫자일치수 = 0;
+
+      for (let i = 0; i < 4; i++) {
+        if (조합[i] === 기회숫자[i]) 위치일치수++;
+      }
+
+      const 조합복사 = [...조합];
+      const 기회복사 = [...기회숫자];
+
+      for (let i = 0; i < 4; i++) {
+        if (조합[i] === 기회숫자[i]) {
+          조합복사[i] = -1; // 일치한 위치 제외
+          기회복사[i] = -1;
+        }
+      }
+
+      숫자일치수 = 조합복사.filter(num => num !== -1 && 기회복사.includes(num)).length;
+
+      return 위치일치수 === 위치일치 && 숫자일치수 === 숫자일치;
+    });
+  });
+
+  // 최종 조건을 적용한 결과 필터링
+  const 제외할숫자들 = [...document.querySelectorAll('.토글')]
+    .filter(토글 => 토글.innerHTML !== '')
+    .map(토글 => parseInt(토글.innerHTML, 10));
+
+  const 포함할숫자들 = [...document.querySelectorAll('.포함토글')]
+    .filter(포함토글 => 포함토글.innerHTML !== '')
+    .map(포함토글 => parseInt(포함토글.innerHTML, 10));
+
+  const 최종결과 = 결과.filter(조합 => {
+    return !조합.some(숫자 => 제외할숫자들.includes(숫자)) &&
+           포함할숫자들.every(숫자 => 조합.includes(숫자));
+  });
+
+  // 결과를 화면에 출력
+  render결과(최종결과);
+}
+
+// 중복 제거 조합 생성 함수
+function 중복제거모든조합_result() {
+  const 숫자들 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const 결과 = [];
+
+  for (let i = 0; i < 숫자들.length; i++) {
+    for (let j = 0; j < 숫자들.length; j++) {
+      for (let m = 0; m < 숫자들.length; m++) {
+        for (let k = 0; k < 숫자들.length; k++) {
+          if (new Set([i, j, m, k]).size === 4) {
+            결과.push([숫자들[i], 숫자들[j], 숫자들[m], 숫자들[k]]);
+          }
+        }
+      }
+    }
+  }
+
+  return 결과;
+}
+
+// 랜덤번호 있을 때 SB 기록
+function 랜덤번호있을때_SB기록() {
+  console.log('랜덤번호 있을 때 기록 실행');
+  const 랜덤번호 = document.querySelector('#숨겨진랜덤번호').innerHTML.split(',');
+
+  for (let i = 0; i < 10; i++) {
+    const 현재기회 = document.querySelectorAll(`#기회${i} *`);
+    if ([...현재기회].every(div => div.innerHTML === '')) continue;
+
+    let 볼 = 0, 스트라이크 = 0;
+
+    for (let t = 0; t < 4; t++) {
+      if (랜덤번호[t] === 현재기회[t].innerHTML) 스트라이크++;
+      else if (랜덤번호.includes(현재기회[t].innerHTML)) 볼++;
+    }
+
+    if (볼) 현재기회[4].innerHTML = 볼;
+    if (스트라이크) 현재기회[5].innerHTML = 스트라이크;
+  }
+}
+
+// 결과 렌더링
+function render결과(결과) {
+  const 결과영역 = document.querySelector('#가능한조합');
+  const 개수버튼 = document.querySelector('#가능한조합개수만');
+
+  개수버튼.innerHTML = 결과.length;
+
+  if (결과.length < 700) {
+    let 출력 = '';
+    결과.forEach((조합, idx) => {
+      if (idx % 30 === 0) 출력 += '<div>';
+      출력 += 조합.join('') + '<br>';
+      if (idx % 30 === 29 || idx === 결과.length - 1) 출력 += '</div>';
+    });
+    결과영역.innerHTML = 출력;
+  } else {
+    결과영역.innerHTML = '결과가 너무 많습니다.';
+  }
+}

@@ -14,7 +14,7 @@
 #왼쪽토글 {position: absolute;left:150px;top:430px;}
 #오른쪽토글 {position: absolute;left:150px;top:465px;}
 
-#textarea왼쪽 {font-weight: bold; resize: both;display:block;background-color:white;position: absolute;left:145px;top:500px;width:350px;height:450px;font-size:16px;}
+#textarea왼쪽 {font-weight: bold; resize: both;display:block;background-color:white;position: absolute;left:145px;top:500px;width:600px;height:450px;font-size:16px;}
 #textarea오른쪽 {font-weight: bold;resize: both;display:block;background-color:white;position: absolute;left:500px;top:500px;width:340px;height:450px;font-size:16px;}
 
 #랜덤번호 button {font-size:16px;}/* 기회입력상태, 랜덤번호지움, 랜덤번호생성, 번호보기/지우기 */
