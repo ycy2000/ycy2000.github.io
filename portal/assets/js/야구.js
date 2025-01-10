@@ -545,6 +545,12 @@ function 임시보관() {
 
 
 var 리턴번호;
+var 조합제거번호return;
+var 조합제거리턴index;
+function 조합제거실행() {
+  console.log('조합제거실행 리턴값 : ' + 조합제거번호return + ' index : ' + 조합제거리턴index + ', 결과 개수 : ' + 필터링된결과.length)
+  
+}
 function 조합제거ON_OFF() {
   console.log('조합제거ON_OFF()')
   if (document.querySelector('#조합제거').innerHTML=='조합제거 OFF') {
@@ -557,8 +563,9 @@ function 조합제거ON_OFF() {
     document.querySelector('#조합제거').classList.add('조합제거off');
 
     for (var i=0; i<4; i++) {
-      document.querySelectorAll('#조합제거4개div')[i].innerHTML='';
+      document.querySelectorAll('#조합제거4개div div')[i].innerHTML='';
     }
+    계산();
   }
 }
 function 왼쪽토글() {
@@ -677,6 +684,14 @@ if (1==1) {//중복제거모든조합_result()
 
 function 다시() {
 
+  document.querySelector('#조합제거').innerHTML='조합제거 OFF';
+  document.querySelector('#조합제거').classList.remove('조합제거on');
+  document.querySelector('#조합제거').classList.add('조합제거off');
+
+  for (var i=0; i<4; i++) {
+    document.querySelectorAll('#조합제거4개div div')[i].innerHTML='';
+  }
+  
   for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {
     if (document.querySelectorAll('#선택 div')[i].classList.contains('번호_선택또는가능초코')) {
       document.querySelectorAll('#선택 div')[i].classList.remove('번호_선택또는가능초코')
@@ -874,14 +889,16 @@ function 기회click(e) {
     return;
   }
 }
-
-function 조합제거실행() {
-  console.log('조합제거실행 리턴값 : ' + 조합제거번호return + ', 계산()의 필터링된결과 개수 : ' + 필터링된결과.length)
-  
-}
 function 가능click(e) {
   if (document.querySelector('#조합제거').innerHTML=='조합제거 ON') {
     조합제거번호return=e.target.innerHTML*1;
+
+    e.target.classList.add('임시표시');
+    var 표시확인부모요소=e.target.parentElement;
+    for (var i=0; i<4; i++) {
+      if (표시확인부모요소.children[i].classList.contains('임시표시')) {조합제거리턴index=i;}
+    }
+    e.target.classList.remove('임시표시');
     조합제거실행();
 
     return;
@@ -900,7 +917,7 @@ function 가능click(e) {
       var 표시확인부모요소=e.target.parentElement;
       for (var i=0; i<4; i++) {
         if (표시확인부모요소.children[i].classList.contains('임시표시')) {선택index=i;}
-        if (기록중요소[i].innerHTML==선택번호) {alert('있는번호 제외');return;}
+        if (기록중요소[i].innerHTML==선택번호) {기록중요소[i].innerHTML='';return;}
       }
       console.log('선택index : ' + 선택index)
       e.target.classList.remove('임시표시');

@@ -150,6 +150,15 @@ var 필터링된결과=[];
 
 function 계산() {
   console.log('계산()')
+
+  document.querySelector('#조합제거').innerHTML='조합제거 OFF';
+  document.querySelector('#조합제거').classList.remove('조합제거on');
+  document.querySelector('#조합제거').classList.add('조합제거off');
+
+  for (var i=0; i<4; i++) {
+    document.querySelectorAll('#조합제거4개div div')[i].innerHTML='';
+  }
+
   //기록중클래스 이동 : 다음 또는 첫번째로
   var 기록중index=document.querySelector('.기록중').parentElement.id.substring(2, 3)*1;//인데스2부터 3번째까지
   console.log('기록중index : ' + 기록중index)
