@@ -677,7 +677,6 @@ if (1==1) {//중복제거모든조합_result()
 
 function 다시() {
 
-  
   for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {
     if (document.querySelectorAll('#선택 div')[i].classList.contains('번호_선택또는가능초코')) {
       document.querySelectorAll('#선택 div')[i].classList.remove('번호_선택또는가능초코')
