@@ -537,19 +537,106 @@ function 임시보관() {
 
   }
 }
-
-
-
-
-
-
-
 var 리턴번호;
 var 조합제거번호return;
 var 조합제거리턴index;
-function 조합제거실행() {
-  console.log('조합제거실행 리턴값 : ' + 조합제거번호return + ' index : ' + 조합제거리턴index + ', 결과 개수 : ' + 필터링된결과.length)
+function 조합제거번호셑팅() {
+
+  console.log('조합제거번호셑팅 리턴값 : ' + 조합제거번호return + ' index : ' + 조합제거리턴index)
+  //조합제거리턴index=0 일때 false 로 인식하는가?
+  if (parseInt(조합제거번호return, 10) && (parseInt(조합제거리턴index, 10) || 조합제거리턴index==0)) {
+
+  } else {
+    console.log('필터링결과, 제거번호, 인덱스, 번호하나라도 모두 있어야함'); return;
+  }
+  //빈경우 숫자넣기, 값 있는경우 숫자넣기, 같은번호있는경우 숫자지우기기
+  var 번호=document.querySelectorAll('#조합제거4개div div');
+  if (번호[조합제거리턴index].innerHTML==조합제거번호return) {
+    번호[조합제거리턴index].innerHTML='';
+  } else {
+    번호[조합제거리턴index].innerHTML=조합제거번호return;
+  }
+
+
+
+
+
+
+
   
+}
+function 조합제거실행() {
+  //필터링된결과는 다시 되돌릴수 있도록 놔두고 : 
+  var 제거실행결과=[];
+  var 번호1=document.querySelectorAll('#조합제거4개div div')[0].innerHTML;
+  var 번호2=document.querySelectorAll('#조합제거4개div div')[1].innerHTML;
+  var 번호3=document.querySelectorAll('#조합제거4개div div')[2].innerHTML;
+  var 번호4=document.querySelectorAll('#조합제거4개div div')[3].innerHTML;
+
+  필터링된결과.forEach(조합 => {
+
+    let 유효 = true;
+
+    console.log('[ ' + 번호1 + ', ' + 번호2 + ', ' + 번호3 + ', ' + 번호4 + ' ] 번호 <--> 조합 [ ' + 조합[0] + ', ' + 조합[1] + ', ' + 조합[2] + ', ' + 조합[3] + ' ]' )
+
+    if (번호1!='' && 번호1!=조합[0]) {유효=false;}
+    if (번호2!='' && 번호2!=조합[1]) {유효=false;}
+    if (번호3!='' && 번호3!=조합[2]) {유효=false;}
+    if (번호4!='' && 번호4!=조합[3]) {유효=false;}
+
+    if (유효) {제거실행결과.push(조합);}
+
+  });
+
+
+  if (제거실행결과.length < 700) {
+    document.querySelector('#가능한조합개수만').innerHTML = 제거실행결과.length;
+    let 결과한줄씩연속묶음 = '';
+    let 누적 = '';
+
+    //마지막 length인데 i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
+    //i! = 0 && i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
+    for (var i=0; i<제거실행결과.length; i++) {
+      
+    }
+
+
+    if (제거실행결과.length==30) {
+      for (let i = 0; i < 제거실행결과.length; i++) {
+        결과한줄씩연속묶음 += '<br>' + 제거실행결과[i];
+        if (i % 30 === 29) {
+          누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+          document.querySelector('#가능한조합').innerHTML = 누적;
+      }
+     }
+     return;
+    }
+
+
+
+
+    for (let i = 0; i < 제거실행결과.length; i++) {
+      결과한줄씩연속묶음 += '<br>' + 제거실행결과[i];
+      if (i % 30 === 29) {
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음 = '';
+      }
+    }
+    if (제거실행결과.length < 31) {
+      누적 = '<div>' + 결과한줄씩연속묶음 + '</div>';
+    }
+    if (제거실행결과.length % 30 < 29 && 제거실행결과.length > 30) {
+      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+    }
+
+    document.querySelector('#가능한조합').innerHTML = 누적;
+  }
+
+
+
+
+
+
 }
 function 조합제거ON_OFF() {
   console.log('조합제거ON_OFF()')
@@ -569,7 +656,6 @@ function 조합제거ON_OFF() {
   }
 }
 function 왼쪽토글() {
-
     console.log('왼쪽 토글');
     if (document.querySelector('#textarea왼쪽').classList.contains('d-block')) {
       document.querySelector('#textarea왼쪽').classList.remove('d-block');
@@ -580,17 +666,9 @@ function 왼쪽토글() {
     }
 
 }
-function 오른쪽토글() {
-
-console.log('오른쪽 토글');
-if (document.querySelector('#textarea오른쪽').classList.contains('d-block')) {
-  document.querySelector('#textarea오른쪽').classList.remove('d-block');
-  document.querySelector('#textarea오른쪽').classList.add('d-none');
-} else {
-  document.querySelector('#textarea오른쪽').classList.remove('d-none');
-  document.querySelector('#textarea오른쪽').classList.add('d-block');
-}
-
+function 왼쪽지우기() {
+  console.log('왼쪽 지우기기');
+  document.querySelector('#textarea왼쪽').innerHTML='';
 }
 function 랜덤번호지움 () {
   //랜덤번호지움 실행후 사용할것
@@ -899,7 +977,7 @@ function 가능click(e) {
       if (표시확인부모요소.children[i].classList.contains('임시표시')) {조합제거리턴index=i;}
     }
     e.target.classList.remove('임시표시');
-    조합제거실행();
+    조합제거번호셑팅();
 
     return;
   }
@@ -917,9 +995,13 @@ function 가능click(e) {
       var 표시확인부모요소=e.target.parentElement;
       for (var i=0; i<4; i++) {
         if (표시확인부모요소.children[i].classList.contains('임시표시')) {선택index=i;}
-        if (기록중요소[i].innerHTML==선택번호) {기록중요소[i].innerHTML='';return;}
       }
-      console.log('선택index : ' + 선택index)
+      //console.log('선택index : ' + 선택index + ', 선택번호 : ' + 선택번호 + ' ,기록중id : ' + 기록중id)
+      //console.log('기록중요소[선택index].innerHTML : ' +  기록중요소[선택index].innerHTML + ' == ' + 선택번호 + ' 선택번호')
+      //console.log('위 조건 맞으면 지우기(같은숫자면 지우기)')
+      // ''==0 이 참이다? 공백==0이 참이다?
+      if (기록중요소[선택index].innerHTML!='' && 기록중요소[선택index].innerHTML==선택번호) {기록중요소[선택index].innerHTML='';return;}
+      
       e.target.classList.remove('임시표시');
       기록중요소[선택index].innerHTML=e.target.innerHTML*1;
     }

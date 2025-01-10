@@ -10,24 +10,22 @@
 </head>
 <body>
   <div style="display:inline-block" id="기회">
-    <button id="왼쪽토글" onclick="왼쪽토글()">왼쪽 토글</button>
-    <button id="오른쪽토글"  onclick="오른쪽토글()">오른쪽토글</button>
-    <textarea class="d-block" id="textarea왼쪽" spellcheck="false" style="z-index: 9999;"> (6523)예시시    B S
-0 1 2 3 : 0 2
-6 7 8 9 : 0 1 => (4 5중 1개) (제외 및 확정 => 미확정)
-  필터링 조합에서, 첫번째에 1,2,3,7,8,9가 안보임. 두번쨰에 2,3,6,8,9,0이 안보임. 
-  세번쨰에 1,3,6,7,9,0이 안보임.  네번째에 1,2,6,7,8,0이 안보임
-4 5 7 8 : 0 1 => "가능한 조합이 3개로 뜬다. (0 5 2 9), (4 1 2 9) (6 5 2 3)"
-"7 8 제외, 2 포함으로 뜬다" 따옴표는 코드 결과이다.
-? 2가 포함이면 세번째 순서로 확정되어야하는데 누락되는이유?
+    <button id="왼쪽토글" onclick="왼쪽토글()" style="z-index: 9999;">메모토글</button>
+    <button id="왼쪽지우기" onclick="왼쪽지우기()" style="z-index: 9999;">내용지우기</button>
+    <div contenteditable id="textarea왼쪽" spellcheck="false" style="z-index: 9999;background-color: white;" class="d-none"> (6523)예시시    B S
+0 1 2 3 : 0 2 <br>
+6 7 8 9 : 0 1 => (4 5중 1개) (제외 및 확정 => 미확정)<br>
+  필터링 조합에서, 첫번째에 1,2,3,7,8,9가 안보임. 두번쨰에 2,3,6,8,9,0이 안보임. <br>
+  세번쨰에 1,3,6,7,9,0이 안보임.  네번째에 1,2,6,7,8,0이 안보임<br>
+4 5 7 8 : 0 1 => "가능한 조합이 3개로 뜬다. (0 5 2 9), (4 1 2 9) (6 5 2 3)"<br>
+"7 8 제외, 2 포함으로 뜬다" 따옴표는 코드 결과이다.<br>
+? 2가 포함이면 세번째 순서로 확정되어야하는데 누락되는이유?<br>
 
 
 
 
-    </textarea>
-    <textarea class="d-block" id="textarea오른쪽" spellcheck="false">
+    </div>
 
-    </textarea>
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
     <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;"></div>
 
@@ -109,8 +107,8 @@
     </div>
     <div><span style="width:122px;display:inline-block;text-align: center;">기회 10번</span><span>B</span><span style="margin-left:14px;">S</span></div>
     <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회2"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
+    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치"></span><span class="위치일치"></span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
+    <div class="기회" id="기회2"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회3"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회4"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회5"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
@@ -142,7 +140,9 @@
   <div>
     불일치 제거 번호 <br>
     <div id="조합제거4개div" class="가능숫자하나"><div></div><div></div><div></div><div></div></div>
-  </div><br>
+  </div>
+  <div>일치분만 추출</div>
+  <div id="조합제거실행" onclick="조합제거실행()">조합제거 실행</div>
 
 <script>
 
@@ -160,11 +160,14 @@ function 계산() {
   }
 
   //기록중클래스 이동 : 다음 또는 첫번째로
-  var 기록중index=document.querySelector('.기록중').parentElement.id.substring(2, 3)*1;//인데스2부터 3번째까지
-  console.log('기록중index : ' + 기록중index)
-  if (기록중index==9) {기록중index=0;} else {기록중index+=1;}
-  document.querySelector('.기록중').classList.remove('기록중');
-  document.querySelectorAll('#기회' + 기록중index + ' *')[6].classList.add('기록중');
+
+    var 기록중index=document.querySelector('.기록중').parentElement.id.substring(2, 3)*1;//인데스2부터 3번째까지
+    console.log('기록중index : ' + 기록중index)
+    if (기록중index==9) {기록중index=0;} else {기록중index+=1;}
+    document.querySelector('.기록중').classList.remove('기록중');
+    document.querySelectorAll('#기회' + 기록중index + ' *')[6].classList.add('기록중');
+
+
 
 
 
@@ -495,46 +498,31 @@ function 계산() {
     포함할숫자들.every(숫자 => 조합.includes(숫자))
   );
   // 결과 출력 
-  if (필터링된결과.length < 700) {
+  if (필터링된결과.length) {
     document.querySelector('#가능한조합개수만').innerHTML = 필터링된결과.length;
     let 결과한줄씩연속묶음 = '';
     let 누적 = '';
 
     //마지막 length인데 i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
     //i! = 0 && i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
+    var 몫=Math.floor(필터링된결과.length / 30);
+    var 나머지=parseInt( 필터링된결과.length / 30 );
     for (var i=0; i<필터링된결과.length; i++) {
-      
-    }
-
-
-    if (필터링된결과.length==30) {
-      for (let i = 0; i < 필터링된결과.length; i++) {
-        결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
-        if (i % 30 === 29) {
-          누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
-          document.querySelector('#가능한조합').innerHTML = 누적;
-      }
-     }
-     return;
-    }
-
-
-
-
-    for (let i = 0; i < 필터링된결과.length; i++) {
       결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
-      if (i % 30 === 29) {
+      if (필터링된결과.length % 30 == 0 && i!=0) {
         누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
-        결과한줄씩연속묶음 = '';
+        결과한줄씩연속묶음='';
+      }
+      if (필터링된결과.length < 30 && 필터링된결과.length==i) {
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
+      }
+
+      if ((i+1)==필터링된결과.length) {
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
       }
     }
-    if (필터링된결과.length < 31) {
-      누적 = '<div>' + 결과한줄씩연속묶음 + '</div>';
-    }
-    if (필터링된결과.length % 30 < 29 && 필터링된결과.length > 30) {
-      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
-    }
-
     document.querySelector('#가능한조합').innerHTML = 누적;
   }
 
