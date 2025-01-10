@@ -28,3 +28,7 @@
 
 .순서확정 {font-size:20px; font-weight: bold;border:1px solid black;display:inline-block;height:38px;vertical-align: top;width:38px;text-align: center;}
 .번호_선택또는가능초코 {background-color: chocolate;}
+
+#조합제거 {width:117px;height:35px;border:1px solid black;text-align: center;margin-top:10px;}
+.조합제거on {background-color:dodgerblue;}
+.조합제거off {background-color:white}

@@ -121,10 +121,9 @@
   </div>
   <br>
   <div style="border:1px solid black;width:215px;margin: 5px 0px;"></div>
-  <div>
-    순서확정된 번호 <br>
-    <div id="순서확정" class="가능숫자하나"><div></div><div></div><div></div><div></div></div>
-  </div><br>
+
+  <div style="margin-left:20px;">가능 번호</div>
+
   <div style="display:inline-block" id="가능">
     <div class="가능숫자하나"><div>0</div><div>0</div><div>0</div><div>0</div></div>
     <div class="가능숫자하나"><div>1</div><div>1</div><div>1</div><div>1</div></div>
@@ -137,8 +136,18 @@
     <div class="가능숫자하나"><div>8</div><div>8</div><div>8</div><div>8</div></div>
     <div class="가능숫자하나"><div>9</div><div>9</div><div>9</div><div>9</div></div>
   </div>
+  <div style="border:1px solid black;width:120px;margin-top:20px;"></div>
+  <div id="조합제거" onclick="조합제거ON_OFF()">조합제거 OFF</div>
+  <div id="필터링된결과보관" style="display:none"></div>
+  <div>
+    불일치 제거 번호 <br>
+    <div id="조합제거4개div" class="가능숫자하나"><div></div><div></div><div></div><div></div></div>
+  </div><br>
 
 <script>
+
+var 필터링된결과=[];
+
 function 계산() {
   console.log('계산()')
   //기록중클래스 이동 : 다음 또는 첫번째로
@@ -460,7 +469,7 @@ function 계산() {
 
   console.log('제외할 숫자들 : ' + 제외할숫자들)
    // 제외할 숫자들 포함된 조합 필터링
-  let 필터링된결과 = 결과.filter(조합 => {
+  필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));
   });
 
@@ -522,8 +531,8 @@ function 계산() {
 
   //gpt에 추가해 달라고한 코드 : 
   // 새로운 코드 추가
-
-
+  console.log('계산()함수에서 필터링된결과.length : ' + 필터링된결과.length)
+  return 필터링된결과;
 
 
 

@@ -545,7 +545,22 @@ function 임시보관() {
 
 
 var 리턴번호;
+function 조합제거ON_OFF() {
+  console.log('조합제거ON_OFF()')
+  if (document.querySelector('#조합제거').innerHTML=='조합제거 OFF') {
+    document.querySelector('#조합제거').innerHTML='조합제거 ON';
+    document.querySelector('#조합제거').classList.remove('조합제거off');
+    document.querySelector('#조합제거').classList.add('조합제거on');
+  } else {
+    document.querySelector('#조합제거').innerHTML='조합제거 OFF';
+    document.querySelector('#조합제거').classList.remove('조합제거on');
+    document.querySelector('#조합제거').classList.add('조합제거off');
 
+    for (var i=0; i<4; i++) {
+      document.querySelectorAll('#조합제거4개div')[i].innerHTML='';
+    }
+  }
+}
 function 왼쪽토글() {
 
     console.log('왼쪽 토글');
@@ -725,7 +740,8 @@ function 다시() {
   for (var i=0; i<document.querySelectorAll('#확정번호만 div').length; i++) {
     document.querySelectorAll('#확정번호만 div')[i].innerHTML='';
   }
-
+  document.querySelector('#가능한조합개수만').innerHTML='';
+  필터링된결과=[]; //초기화
 }
 
 function 기회click(e) {
@@ -860,7 +876,17 @@ function 기회click(e) {
   }
 }
 
+function 조합제거실행() {
+  console.log('조합제거실행 리턴값 : ' + 조합제거번호return + ', 계산()의 필터링된결과 개수 : ' + 필터링된결과.length)
+  
+}
 function 가능click(e) {
+  if (document.querySelector('#조합제거').innerHTML=='조합제거 ON') {
+    조합제거번호return=e.target.innerHTML*1;
+    조합제거실행();
+
+    return;
+  }
   if (e.target.parentElement.classList.contains('가능숫자하나')) {
     console.log('가능click(e)')
     //제외 클래스 있으면 메세지 아니면 해당 C 선택된 해당 INDEX에 값 넣기
