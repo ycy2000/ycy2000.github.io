@@ -334,47 +334,29 @@ function 계산보관() {
     let 결과한줄씩연속묶음 = '';
     let 누적 = '';
 
-    //마지막 length인데 i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
-    //i! = 0 && i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
+    var 몫=Math.floor(필터링된결과.length / 30);
+    var 나머지=parseInt( 필터링된결과.length / 30 );
     for (var i=0; i<필터링된결과.length; i++) {
-      
-    }
-
-
-    if (필터링된결과.length==30) {
-      for (let i = 0; i < 필터링된결과.length; i++) {
-        결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
-        if (i % 30 === 29) {
-          누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
-          document.querySelector('#가능한조합').innerHTML = 누적;
-      }
-     }
-     return;
-    }
-
-
-
-
-    for (let i = 0; i < 필터링된결과.length; i++) {
       결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
-      if (i % 30 === 29) {
+      if (i % 30 == 29 && i!=0) {
+        //30개씩 묶는 경우 : i==0, 29, 59, 
+        console.log('if (i % 30 == 0 && i!=0) {')
         누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
-        결과한줄씩연속묶음 = '';
+        결과한줄씩연속묶음='';
+      } else if (필터링된결과.length < 30 && 필터링된결과.length==i+1) {
+        //30개 미만인경우 묶는 경우
+        console.log('if (필터링된결과.length < 30 && 필터링된결과.length==i)')
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
+      } else if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {
+        //마지막 자투리 묶을때
+        console.log('if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {')
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
       }
     }
-    if (필터링된결과.length < 31) {
-      누적 = '<div>' + 결과한줄씩연속묶음 + '</div>';
-    }
-    if (필터링된결과.length % 30 < 29 && 필터링된결과.length > 30) {
-      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
-    }
-
     document.querySelector('#가능한조합').innerHTML = 누적;
   }
-
-  //gpt에 추가해 달라고한 코드 : 
-  // 새로운 코드 추가
-
 
 
 
@@ -577,7 +559,7 @@ function 조합제거실행() {
 
     let 유효 = true;
 
-    console.log('[ ' + 번호1 + ', ' + 번호2 + ', ' + 번호3 + ', ' + 번호4 + ' ] 번호 <--> 조합 [ ' + 조합[0] + ', ' + 조합[1] + ', ' + 조합[2] + ', ' + 조합[3] + ' ]' )
+    //console.log('[ ' + 번호1 + ', ' + 번호2 + ', ' + 번호3 + ', ' + 번호4 + ' ] 번호 <--> 조합 [ ' + 조합[0] + ', ' + 조합[1] + ', ' + 조합[2] + ', ' + 조합[3] + ' ]' )
 
     if (번호1!='' && 번호1!=조합[0]) {유효=false;}
     if (번호2!='' && 번호2!=조합[1]) {유효=false;}
@@ -638,13 +620,22 @@ function 조합제거실행() {
 
 
 }
+
+var on에서off시_c그대로 = ''; //그대로로
+
 function 조합제거ON_OFF() {
   console.log('조합제거ON_OFF()')
+  on에서off시_c그대로='';
+  //on 에서 off 될때 계산()하는데, 값이 off면 c 이동하게 되는 계산()내 코딩이 있다...
+  var 클릭전=document.querySelector('#조합제거').innerHTML;
   if (document.querySelector('#조합제거').innerHTML=='조합제거 OFF') {
     document.querySelector('#조합제거').innerHTML='조합제거 ON';
     document.querySelector('#조합제거').classList.remove('조합제거off');
     document.querySelector('#조합제거').classList.add('조합제거on');
   } else {
+    on에서off시_c그대로='그대로';
+    //
+    계산();
     document.querySelector('#조합제거').innerHTML='조합제거 OFF';
     document.querySelector('#조합제거').classList.remove('조합제거on');
     document.querySelector('#조합제거').classList.add('조합제거off');
@@ -652,7 +643,6 @@ function 조합제거ON_OFF() {
     for (var i=0; i<4; i++) {
       document.querySelectorAll('#조합제거4개div div')[i].innerHTML='';
     }
-    계산();
   }
 }
 function 왼쪽토글() {
@@ -668,7 +658,7 @@ function 왼쪽토글() {
 }
 function 왼쪽지우기() {
   console.log('왼쪽 지우기기');
-  document.querySelector('#textarea왼쪽').innerHTML='';
+  document.querySelector('#textarea왼쪽').value='';
 }
 function 랜덤번호지움 () {
   //랜덤번호지움 실행후 사용할것

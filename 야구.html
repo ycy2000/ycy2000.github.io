@@ -12,19 +12,7 @@
   <div style="display:inline-block" id="기회">
     <button id="왼쪽토글" onclick="왼쪽토글()" style="z-index: 9999;">메모토글</button>
     <button id="왼쪽지우기" onclick="왼쪽지우기()" style="z-index: 9999;">내용지우기</button>
-    <div contenteditable id="textarea왼쪽" spellcheck="false" style="z-index: 9999;background-color: white;" class="d-none"> (6523)예시시    B S
-0 1 2 3 : 0 2 <br>
-6 7 8 9 : 0 1 => (4 5중 1개) (제외 및 확정 => 미확정)<br>
-  필터링 조합에서, 첫번째에 1,2,3,7,8,9가 안보임. 두번쨰에 2,3,6,8,9,0이 안보임. <br>
-  세번쨰에 1,3,6,7,9,0이 안보임.  네번째에 1,2,6,7,8,0이 안보임<br>
-4 5 7 8 : 0 1 => "가능한 조합이 3개로 뜬다. (0 5 2 9), (4 1 2 9) (6 5 2 3)"<br>
-"7 8 제외, 2 포함으로 뜬다" 따옴표는 코드 결과이다.<br>
-? 2가 포함이면 세번째 순서로 확정되어야하는데 누락되는이유?<br>
-
-
-
-
-    </div>
+    <textarea contenteditable id="textarea왼쪽" spellcheck="false" style="text-indent: 5px; z-index: 9999;background-color: white;" class="d-block"></textarea>
 
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
     <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;"></div>
@@ -149,6 +137,7 @@
 var 필터링된결과=[];
 
 function 계산() {
+  필터링된결과=[];
   console.log('계산()')
 
   document.querySelector('#조합제거').innerHTML='조합제거 OFF';
@@ -160,17 +149,14 @@ function 계산() {
   }
 
   //기록중클래스 이동 : 다음 또는 첫번째로
-
+  if (on에서off시_c그대로 != '그대로') {
     var 기록중index=document.querySelector('.기록중').parentElement.id.substring(2, 3)*1;//인데스2부터 3번째까지
-    console.log('기록중index : ' + 기록중index)
+    //console.log('기록중index : ' + 기록중index)
     if (기록중index==9) {기록중index=0;} else {기록중index+=1;}
     document.querySelector('.기록중').classList.remove('기록중');
     document.querySelectorAll('#기회' + 기록중index + ' *')[6].classList.add('기록중');
-
-
-
-
-
+  }
+  on에서off시_c그대로='';
   const 모든조합 = 중복제거모든조합_result();
   if (document.querySelector('#랜덤번호정보').innerHTML=='랜덤번호 있음 BS 계산()시 입력됨') {
     랜덤번호있을때_SB기록()
@@ -281,7 +267,7 @@ function 계산() {
       const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));
       기회들.push({ 기회숫자, 위치일치: parseInt(위치일치, 10), 숫자일치: parseInt(숫자일치, 10) });
       
-      console.log('기회숫자 : ' + 기회숫자 + ', 숫자일치 : ' + 숫자일치 + ' , 위치일치 : ' + 위치일치)
+      //console.log('기회숫자 : ' + 기회숫자 + ', 숫자일치 : ' + 숫자일치 + ' , 위치일치 : ' + 위치일치)
     }
   }
   // 조건에 맞는지 모든 조합 필터링
@@ -360,10 +346,10 @@ function 계산() {
     결과_번호위치3포함숫자들=[...new Set(결과_번호위치3포함숫자들.sort(function(a, b)  {return a - b;}))];
     결과_번호위치4포함숫자들=[...new Set(결과_번호위치4포함숫자들.sort(function(a, b)  {return a - b;}))];
 
-    console.log(결과_번호위치1포함숫자들)
-    console.log(결과_번호위치2포함숫자들)
-    console.log(결과_번호위치3포함숫자들)
-    console.log(결과_번호위치4포함숫자들)
+    //console.log(결과_번호위치1포함숫자들)
+    //console.log(결과_번호위치2포함숫자들)
+    //console.log(결과_번호위치3포함숫자들)
+    //console.log(결과_번호위치4포함숫자들)
 
     for (var i=0; i<10; i++) {
       if (!결과_번호위치1포함숫자들.includes(i)) {//0을 포함하지 않는다면 index=0 위치
@@ -404,7 +390,7 @@ function 계산() {
     if (개수8==0) {없어야할번호.push(8)}
     if (개수9==0) {없어야할번호.push(9)}
 
-    console.log('조합 ' + 결과.length + ' => 포함개수만 ' + 개수0 + ', ' + 개수1 + ', ' + 개수2 + ', ' + 개수3 + ', ' + 개수4 + ', ' + 개수5 + ', ' + 개수6 + ', ' + 개수7 + ', ' + 개수8 + ', ' + 개수9 + ', ')
+    //console.log('조합 ' + 결과.length + ' => 포함개수만 ' + 개수0 + ', ' + 개수1 + ', ' + 개수2 + ', ' + 개수3 + ', ' + 개수4 + ', ' + 개수5 + ', ' + 개수6 + ', ' + 개수7 + ', ' + 개수8 + ', ' + 개수9 + ', ')
     if (포함해야하는번호.length>0) {document.querySelector('#포함해야하는번호결과').innerHTML=포함해야하는번호.join(' ,')}
     if (없어야할번호.length>0) {
       document.querySelector('#없어야할번호결과').innerHTML=없어야할번호.join(' ,');
@@ -422,7 +408,7 @@ function 계산() {
     }
     //포함해야하는 번호가 있으면 위치확정되는지 확인
     if (포함해야하는번호.length>0) {
-      console.log('포함해야하는번호 : ' + 포함해야하는번호.length + ' 개')
+      //console.log('포함해야하는번호 : ' + 포함해야하는번호.length + ' 개')
       var 인덱스;
       for (var i=0; i<포함해야하는번호.length; i++) {
         document.querySelectorAll('.포함')[포함해야하는번호[i]].nextElementSibling.classList.add('번호_선택또는가능초코');
@@ -434,7 +420,7 @@ function 계산() {
         결과.forEach (조합 => {
           if (조합.indexOf(포함해야하는번호[i])==인덱스) {개수0+=1;}
         });
-        console.log('포함해야하는번호 ' + 포함해야하는번호[i] + ' 의 index : ' + 인덱스 + ', 조합 ' + 결과.length + ' 출현' + 개수0)
+        //console.log('포함해야하는번호 ' + 포함해야하는번호[i] + ' 의 index : ' + 인덱스 + ', 조합 ' + 결과.length + ' 출현' + 개수0)
 
         //결과.length==개수0 이면 해당 인덱스위치에 순서확정번호 넣기
         if (결과.length==개수0) {
@@ -478,12 +464,14 @@ function 계산() {
       제외할숫자들.push(parseInt(토글.innerHTML, 10));
     }
   });
-
-  console.log('제외할 숫자들 : ' + 제외할숫자들)
+console.log('필터링된결과개수 : ' + 필터링된결과.length)
+  //console.log('제외할 숫자들 : ' + 제외할숫자들)
    // 제외할 숫자들 포함된 조합 필터링
   필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));
   });
+
+  console.log('필터링된결과개수2 : ' + 필터링된결과.length)
 
   // 포함할 숫자들 읽어오기
   const 포함할숫자들 = [];
@@ -509,26 +497,34 @@ function 계산() {
     var 나머지=parseInt( 필터링된결과.length / 30 );
     for (var i=0; i<필터링된결과.length; i++) {
       결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
-      if (필터링된결과.length % 30 == 0 && i!=0) {
+      if (i % 30 == 29 && i!=0) {
+        //30개씩 묶는 경우 : i==0, 29, 59, 
+        //console.log('if (i % 30 == 0 && i!=0) {')
         누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
         결과한줄씩연속묶음='';
-      }
-      if (필터링된결과.length < 30 && 필터링된결과.length==i) {
+      } else if (필터링된결과.length < 30 && 필터링된결과.length==i+1) {
+        //30개 미만인경우 묶는 경우
+        //console.log('if (필터링된결과.length < 30 && 필터링된결과.length==i)')
         누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
         결과한줄씩연속묶음='';
-      }
-
-      if ((i+1)==필터링된결과.length) {
+      } else if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {
+        //마지막 자투리 묶을때
+        //console.log('if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {')
         누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
         결과한줄씩연속묶음='';
       }
     }
-    document.querySelector('#가능한조합').innerHTML = 누적;
+    if (필터링된결과.lneght==0) {
+      document.querySelector('#가능한조합').innerHTML = '';
+    } else {
+      document.querySelector('#가능한조합').innerHTML = 누적;
+    }
+   
   }
 
   //gpt에 추가해 달라고한 코드 : 
   // 새로운 코드 추가
-  console.log('계산()함수에서 필터링된결과.length : ' + 필터링된결과.length)
+  //console.log('계산()함수에서 필터링된결과.length : ' + 필터링된결과.length)
   return 필터링된결과;
 
 
