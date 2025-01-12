@@ -33,6 +33,7 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#전달사항_공문_발행물전체" aria-controls="offcanvasBottom">전달사항_공문_발행물</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#수품원전체" aria-controls="offcanvasBottom">수품원</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#라벨등전체" aria-controls="offcanvasBottom">라벨등</button>
         <button>특문</button> 
         <button onclick="연습()">연습()</button>
         <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
@@ -156,10 +157,74 @@
   </div>
 </div>
 
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="라벨등전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1" style="white-space: nowrap;">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
 
 <!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="기타전체_관련자료none" id="htmlJavascript전체_관련자료none" id="탁구github전체_관련자료none"-->
 <!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
  <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
+ <div id="라벨등전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
+    <div class="개별카테고리" id="라벨등전체_라벨"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="canvas_div" title='라벨_동림연어_10768'>동림수산 연어 칠레 10678 : 27 NOV 2024 (촬영일 : 2025 1 10)</h6>
+      <h6 class="canvas_div" title='라벨_롯데연어_10708'>롯데 연어 칠레 10708 : 16/NOV/2024 (촬영일 : 2024 12 26)</h6>
+    </div>
+  </div>
+
+  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <div id="라벨_동림연어_10768"><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <img src="portal/images/문서연결_메모/연어라벨_칠레_10678.png" alt="이미지없음">
+    </div>
+  </div>
+
+  <div id="라벨_롯데연어_10708"><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <img src="portal/images/문서연결_메모/라벨_롯데연어_10708_1.jpg" alt="이미지없음"><br><br>
+      <img src="portal/images/문서연결_메모/라벨_롯데연어_10708_2.jpg" alt="이미지없음">
+    </div>
+  </div>
+
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  
+</div>
 <div id="기타전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
     <div class="개별카테고리" id="기타전체_기타"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
@@ -185,6 +250,7 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
+  
 </div>
 
 <div id="수품원전체_관련자료none" class="d-none 모든검색">
