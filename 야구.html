@@ -9,17 +9,18 @@
   <link href="portal/assets/css/야구.css" rel="stylesheet">
 </head>
 <body>
+  <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;top:40px;white-space:nowrap;z-index: 9999;"></div>
   <div style="display:inline-block" id="기회">
     <button id="왼쪽토글" onclick="왼쪽토글()" style="z-index: 9999;">메모토글</button>
     <button id="왼쪽지우기" onclick="왼쪽지우기()" style="z-index: 9999;">내용지우기</button>
     <textarea contenteditable id="textarea왼쪽" spellcheck="false" style="text-indent: 5px; z-index: 9999;background-color: white;" class="d-block"></textarea>
 
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
-    <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;"></div>
+
 
     <div id="선택" style="position: absolute;left:250px;">
-      <button onclick="계산()">계산</button>
-      <span>3824예시</span> 
+      <button onclick="계산()" style="background-color: chartreuse;">계산</button>
+      <button onclick="숫자내림초기화()" style="background-color: chartreuse;">숫자내림초기화</button>
       <button>현재기록중 1개 clear</button> 
       <button onclick="임시()">임시함수</button>
       <button onclick="다시()" style="margin-left:60px;">다시</button> 
@@ -130,7 +131,7 @@
     <div id="조합제거4개div" class="가능숫자하나"><div></div><div></div><div></div><div></div></div>
   </div>
   <div>일치분만 추출</div>
-  <div id="조합제거실행" onclick="조합제거실행()">조합제거 실행</div>
+  <div id="조합제거실행초기화" onclick="조합제거실행초기화()">조합제거초기화</div>
 
 <script>
 
@@ -464,14 +465,14 @@ function 계산() {
       제외할숫자들.push(parseInt(토글.innerHTML, 10));
     }
   });
-console.log('필터링된결과개수 : ' + 필터링된결과.length)
+console.log('계산()필터링된결과개수 : ' + 필터링된결과.length + ', 제외할숫자들 : ' + 제외할숫자들)
   //console.log('제외할 숫자들 : ' + 제외할숫자들)
    // 제외할 숫자들 포함된 조합 필터링
   필터링된결과 = 결과.filter(조합 => {
     return !조합.some(숫자 => 제외할숫자들.includes(숫자));
   });
 
-  console.log('필터링된결과개수2 : ' + 필터링된결과.length)
+  console.log('계산()필터링된결과개수2 : ' + 필터링된결과.length)
 
   // 포함할 숫자들 읽어오기
   const 포함할숫자들 = [];
@@ -482,20 +483,37 @@ console.log('필터링된결과개수 : ' + 필터링된결과.length)
   });
 
   // 포함할 숫자 조건으로 필터링
+  console.log('계산()필터링된결과개수 : ' + 필터링된결과.length + ', 포함할숫자들 : ' + 포함할숫자들)
   필터링된결과 = 필터링된결과.filter(조합 =>
     포함할숫자들.every(숫자 => 조합.includes(숫자))
   );
+  console.log('계산()필터링된결과개수2 : ' + 필터링된결과.length)
   // 결과 출력 
+
+  if (필터링된결과.length==0) {
+
+      console.log('필터링된결과==0 이거 작동안하나')
+      document.querySelector('#가능한조합').innerHTML = '';
+      document.querySelector('#가능한조합개수만').innerHTML = 0;
+      
+ }
+
+
+
+
+
+
+
   if (필터링된결과.length) {
     document.querySelector('#가능한조합개수만').innerHTML = 필터링된결과.length;
     let 결과한줄씩연속묶음 = '';
     let 누적 = '';
-
-    //마지막 length인데 i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
-    //i! = 0 && i % 30 != 0 : 결과한줄씩연속묶음 을 div로 감싸기 (30개씩 세로로 배열 css 작성)
     var 몫=Math.floor(필터링된결과.length / 30);
     var 나머지=parseInt( 필터링된결과.length / 30 );
-    for (var i=0; i<필터링된결과.length; i++) {
+
+    //예전 br 사용법
+    if (1==2) {
+      for (var i=0; i<필터링된결과.length; i++) {
       결과한줄씩연속묶음 += '<br>' + 필터링된결과[i];
       if (i % 30 == 29 && i!=0) {
         //30개씩 묶는 경우 : i==0, 29, 59, 
@@ -514,7 +532,35 @@ console.log('필터링된결과개수 : ' + 필터링된결과.length)
         결과한줄씩연속묶음='';
       }
     }
-    if (필터링된결과.lneght==0) {
+
+    }
+    
+    for (var i=0; i<필터링된결과.length; i++) {
+      결과한줄씩연속묶음 += '<div><div>' + 필터링된결과[i][0] + '</div>'  + 
+                                '<div>' + 필터링된결과[i][1] + '</div>'  + 
+                                '<div>' + 필터링된결과[i][2] + '</div>'  + 
+                                '<div>' + 필터링된결과[i][3] + '</div></div>';
+      if (i % 30 == 29 && i!=0) {
+        //30개씩 묶는 경우 : i==0, 29, 59, 
+        //console.log('if (i % 30 == 0 && i!=0) {')
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
+      } else if (필터링된결과.length < 30 && 필터링된결과.length==i+1) {
+        //30개 미만인경우 묶는 경우
+        //console.log('if (필터링된결과.length < 30 && 필터링된결과.length==i)')
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
+      } else if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {
+        //마지막 자투리 묶을때
+        //console.log('if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {')
+        누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+        결과한줄씩연속묶음='';
+      }
+    }
+
+    
+    if (필터링된결과.lenght==0) {
+      console.log('필터링된결과==0')
       document.querySelector('#가능한조합').innerHTML = '';
     } else {
       document.querySelector('#가능한조합').innerHTML = 누적;

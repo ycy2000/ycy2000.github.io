@@ -526,26 +526,15 @@ function 조합제거번호셑팅() {
 
   console.log('조합제거번호셑팅 리턴값 : ' + 조합제거번호return + ' index : ' + 조합제거리턴index)
   //조합제거리턴index=0 일때 false 로 인식하는가?
-  if (parseInt(조합제거번호return, 10) && (parseInt(조합제거리턴index, 10) || 조합제거리턴index==0)) {
 
-  } else {
-    console.log('필터링결과, 제거번호, 인덱스, 번호하나라도 모두 있어야함'); return;
-  }
   //빈경우 숫자넣기, 값 있는경우 숫자넣기, 같은번호있는경우 숫자지우기기
   var 번호=document.querySelectorAll('#조합제거4개div div');
-  if (번호[조합제거리턴index].innerHTML==조합제거번호return) {
+  if (번호[조합제거리턴index].innerHTML!='' && (번호[조합제거리턴index].innerHTML==조합제거번호return)) {
     번호[조합제거리턴index].innerHTML='';
   } else {
     번호[조합제거리턴index].innerHTML=조합제거번호return;
   }
-
-
-
-
-
-
-
-  
+  조합제거실행()
 }
 function 조합제거실행() {
   //필터링된결과는 다시 되돌릴수 있도록 놔두고 : 
@@ -570,6 +559,80 @@ function 조합제거실행() {
 
   });
 
+
+
+
+
+
+  if (제거실행결과.length==0) {
+
+    console.log('제거실행결과==0 이거 작동안하나')
+    document.querySelector('#가능한조합').innerHTML = '';
+    document.querySelector('#가능한조합개수만').innerHTML = 0;
+    
+}
+
+
+
+
+
+
+
+if (제거실행결과.length) {
+  document.querySelector('#가능한조합개수만').innerHTML = 제거실행결과.length;
+  let 결과한줄씩연속묶음 = '';
+  let 누적 = '';
+  var 몫=Math.floor(제거실행결과.length / 30);
+  var 나머지=parseInt( 제거실행결과.length / 30 );
+  
+  for (var i=0; i<제거실행결과.length; i++) {
+    결과한줄씩연속묶음 += '<div><div>' + 제거실행결과[i][0] + '</div>'  + 
+                              '<div>' + 제거실행결과[i][1] + '</div>'  + 
+                              '<div>' + 제거실행결과[i][2] + '</div>'  + 
+                              '<div>' + 제거실행결과[i][3] + '</div></div>';
+    if (i % 30 == 29 && i!=0) {
+      //30개씩 묶는 경우 : i==0, 29, 59, 
+      //console.log('if (i % 30 == 0 && i!=0) {')
+      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+      결과한줄씩연속묶음='';
+    } else if (제거실행결과.length < 30 && 제거실행결과.length==i+1) {
+      //30개 미만인경우 묶는 경우
+      //console.log('if (필터링된결과.length < 30 && 필터링된결과.length==i)')
+      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+      결과한줄씩연속묶음='';
+    } else if (제거실행결과.length>29 && i%30!=29 && (i+1)==제거실행결과.length) {
+      //마지막 자투리 묶을때
+      //console.log('if (필터링된결과.length>29 && i%30!=29 && (i+1)==필터링된결과.length) {')
+      누적 += '<div>' + 결과한줄씩연속묶음 + '</div>';
+      결과한줄씩연속묶음='';
+    }
+  }
+
+  
+  if (제거실행결과.lenght==0) {
+    console.log('필터링된결과==0')
+    document.querySelector('#가능한조합').innerHTML = '';
+  } else {
+    document.querySelector('#가능한조합').innerHTML = 누적;
+  }
+ 
+}
+
+//gpt에 추가해 달라고한 코드 : 
+// 새로운 코드 추가
+//console.log('계산()함수에서 필터링된결과.length : ' + 필터링된결과.length)
+return 필터링된결과;
+
+
+
+
+
+
+
+
+
+
+if (1==2) {
 
   if (제거실행결과.length < 700) {
     document.querySelector('#가능한조합개수만').innerHTML = 제거실행결과.length;
@@ -618,7 +681,20 @@ function 조합제거실행() {
 
 
 
+}
 
+
+
+
+
+
+}
+function 조합제거실행초기화() {
+  document.querySelectorAll('#조합제거4개div div')[0].innerHTML='';
+  document.querySelectorAll('#조합제거4개div div')[1].innerHTML='';
+  document.querySelectorAll('#조합제거4개div div')[2].innerHTML='';
+  document.querySelectorAll('#조합제거4개div div')[3].innerHTML='';
+  조합제거실행();
 }
 
 var on에서off시_c그대로 = ''; //그대로로
@@ -739,15 +815,57 @@ function 랜덤번호생성() {
     document.querySelectorAll('#랜덤번호 div')[i].innerHTML='';
   }
 
+  for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
+    document.querySelectorAll('.입력')[i].innerHTML=i;
+    document.querySelectorAll('.입력')[i].nextSibling.innerHTML='';
+  }
+  for (var i=0; i<document.querySelectorAll('.포함').length; i++) {
+    document.querySelectorAll('.포함')[i].innerHTML=i;
+    document.querySelectorAll('.포함')[i].nextSibling.innerHTML='';
+  }
+  for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {
+    if (document.querySelectorAll('#선택 div')[i].classList.contains('번호_선택또는가능초코')) {
+      document.querySelectorAll('#선택 div')[i].classList.remove('번호_선택또는가능초코')
+    }
+  }
+
 }
 
 
 리스너가능=document.querySelector('#가능');
 리스너기회=document.querySelector('#기회');
+리스너조합제거4개div=document.querySelector('#조합제거4개div');
+리스너가능한조합=document.querySelector('#가능한조합');
+
+function 가능한조합click(e) {
+  console.log('가능한조합click(e) : ' + e.target.innerHTML*1)
+  if (e.target.innerHTML=='') {return;}
+  var 기록중index=document.querySelector('.기록중').parentElement.id.substring(2, 3)*1;//인데스2부터 3번째까지
+  for (var i=0; i<4; i++) {
+    document.querySelectorAll('#기회' + 기록중index + ' *')[i].innerHTML=e.target.parentElement.children[i].innerHTML*1;
+  }
+
+
+}
 
 if (1==1) {//중복제거모든조합_result()
   //var result = [];
 
+}
+function 숫자내림초기화() {
+  //아래에 숫자가 있고 초코색아니면 아래숫자 위로 올리고 아래꺼 지움움
+  for (var i=0; i<document.querySelectorAll('.토글').length; i++) {
+    if (document.querySelectorAll('.토글')[i].innerHTML!='' && !document.querySelectorAll('.토글')[i].classList.contains('번호_선택또는가능초코')) {
+      document.querySelectorAll('.토글')[i].previousSibling.innerHTML=document.querySelectorAll('.토글')[i].innerHTML;
+      document.querySelectorAll('.토글')[i].innerHTML='';
+    }
+  }
+  for (var i=0; i<document.querySelectorAll('.포함토글').length; i++) {
+    if (document.querySelectorAll('.포함토글')[i].innerHTML!='' && !document.querySelectorAll('.포함토글')[i].classList.contains('번호_선택또는가능초코')) {
+      document.querySelectorAll('.포함토글')[i].previousSibling.innerHTML=document.querySelectorAll('.포함토글')[i].innerHTML;
+      document.querySelectorAll('.포함토글')[i].innerHTML='';
+    }
+  }
 }
 
 function 다시() {
@@ -825,7 +943,9 @@ function 다시() {
   document.querySelector('#가능한조합개수만').innerHTML='';
   필터링된결과=[]; //초기화
 }
-
+function 조합제거4개divclick(e) {
+  if (e.target.innerHTML!='') {e.target.innerHTML='';조합제거실행()}
+}
 function 기회click(e) {
   if (e.target.innerHTML=='현재기록중 1개 clear') {
     var 기록중id=document.querySelector('.기록중').parentElement.id;
@@ -967,7 +1087,8 @@ function 가능click(e) {
       if (표시확인부모요소.children[i].classList.contains('임시표시')) {조합제거리턴index=i;}
     }
     e.target.classList.remove('임시표시');
-    조합제거번호셑팅();
+    console.log()
+    조합제거번호셑팅('가능click(e) => 조합제거리턴index : ' + 조합제거리턴index);
 
     return;
   }
@@ -998,5 +1119,7 @@ function 가능click(e) {
     return;
   }
 }
-리스너가능.addEventListener('click', 가능click)
-리스너기회.addEventListener('click', 기회click)
+리스너가능.addEventListener('click', 가능click);
+리스너기회.addEventListener('click', 기회click);
+리스너조합제거4개div.addEventListener('click', 조합제거4개divclick);
+리스너가능한조합.addEventListener('click', 가능한조합click);
