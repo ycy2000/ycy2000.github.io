@@ -170,6 +170,7 @@
       <h6 class="canvas_div" title='탁구링크1'>탁구 링크</h6>
       <h6 class="canvas_div" title='탁구메모1'>탁구 메모</h6>
       <h6 class="canvas_div" title='습득할것들1'>습득할것들1</h6>
+      <h6>각도유지, 컷트볼은 아래서 높은각도, 배운자세로만 하도록, 짧은 거리 짧은 스윙</h6>
     </div>
     <div>
       <h6 class="canvas_div" title='실마리_빽쪽움직임'>실마리 빽쪽움직임</h6>
@@ -223,7 +224,6 @@
   <div id="포핸드1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <code class="fw-bold"><a href="https://domountain.tistory.com/17952518" target="_blank">포핸드 롱</a> </code>
-
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
@@ -783,6 +783,23 @@
 
 <div id="htmlJavascript전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="htmlJavascript전체_j쿼리"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6>메모 : 구글에 jQuery cdn 이런거 검색하면 나오는 사이트가 있습니다.</h6>
+        <h6>메모 : 거기서 jQuery 3.x 버전 &#123;script&#125; 태그를 찾아서 여러분들 html 파일에 복붙</h6>
+        <h6>메모 : header 부분에 넣고 사용. 아래에 넣으면 위에서는 사용 안됨.</h6>
+        <h6 style="font-weight: bold;">메모 : 구문 : $(선택자).동작함수(); <span style="color:blueviolet">innerHtml 없고 html()</span> </h6>
+        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text();  => 현재값, </h6>
+        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text('Hello, jQuery!'); => 값 변경</h6>
+        <h6 class="canvas_div" title="j쿼리">(내부에 링크) jQurey는 자바스크립트 querySelectorAll 같은거 짧게 바꿔주는거</h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
     <div class="개별카테고리" id="htmlJavascript전체_html기본"><!--div3개는 세로, 각 안에 class="코딩등메모장text파일", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6 class="canvas_div" title="_02_html_파순01_읽는순서">html 읽는순서 (script, 리스너포함)</h6>
@@ -869,6 +886,7 @@
         <h6 class="canvas_div" title="_04_javascript_from과map">from과 map, break(반복문벗어남), continue(다음반복으로)</h6>
         <h6 class="canvas_div" title="_04_javascript_every와some">every, some</h6>
         <h6 class="canvas_div" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
+        <h6 class="canvas_div" title="_04_javascript_물음표">물음표, or || 의미</h6>
 
           
 
@@ -935,6 +953,23 @@
       <div>
 
       </div>
+    </div>
+  </div>
+  
+  <div id="j쿼리"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code style="font-weight: bold;">자바 : document.querySelector('#html파일이름').innerHtml</code>
+      <code style="font-weight: bold;text-indent: 15px;">j쿼리 : $('#html파일이름').html() => <span style="color:blueviolet">html() 빈 소괄호</span></code>
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
 
@@ -2500,6 +2535,41 @@
       <code class="fw-bold" style="text-indent: 15px;">// [ 6,7,8,9 ], 0, 3</code>
       <br>
       <h5 class="fw-bold">for ( var (숫자1, 숫자2, 숫자3) of 같은변수들) { 반복동작부분 } : 같은변수들인 경우</h5>
+
+    </div>
+  </div>
+
+  <div id="_04_javascript_물음표"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://joylee-developer.tistory.com/166" target="_blank">물음표</a></h5>
+      <h5 class="fw-bold">삼항연산자 (Ternary Operator) * 변수 = 삼항연산자 형식으로 사용</h5>
+      <code class="fw-bold">• 삼항연산자 (Ternary Operator / ? : ) => Condition ? True : False</code>
+      <code class="fw-bold">• if ... else 를 대체하는 연산자이다.</code>
+      <div style="display:inline-block;margin-left:10px;font-weight: bold;margin-right:40px;border:1px solid black;">
+        <span>if (3>0) {</span><br>
+        <span style="margin-left:15px;">console.log('3은 0보다 크다')</span><br>
+        <span style="margin-left:15px;">} else {</span><br>
+        <span style="margin-left:15px;">console.log('false')</span><br>
+        <span>}</span>
+      </div>
+      <div style="display:inline-block;margin-left:10px;font-weight: bold;">
+        <span>if (3>0) {</span><br>
+        <span>console.log('3은 0보다 크다')</span><br>
+        <span>} else {</span><br>
+        <span>console.log('false')</span><br>
+        <span>}</span>
+      </div>
+      <h5 class="fw-bold">선택적 연결 (Optional Chanining)</h5>
+      <h5 class="fw-bold">무효화합체 (Nullish Coalescing)</h5>
+      <span style="color:blueviolet"></span>
+      <br>
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <span style="color:blueviolet"></span>
 
     </div>
   </div>
@@ -4578,7 +4648,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
 <script src="portal/assets/js/excel.js"></script>
-
 </body>
 
 </html>

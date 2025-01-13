@@ -7,16 +7,7 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습() {
-  var 기회정보=[], 배열=[0,1,2,3], 볼=2, 스트=1;
-  기회정보.push( { 배열, 볼, 스트 } )
-  console.log(기회정보) // [ { 배열: array(4), 볼: 2, 스트: 1} ]
-  배열=[6,7,8,9], 볼=0, 스트=3;
-  기회정보.push( { 배열, 볼, 스트 } )
-  console.log(기회정보) // [ { 배열: array(4), 볼: 2, 스트: 1}, { 배열: array(4), 볼: 0, 스트: 3} ]
-  for ( var {배열, 볼, 스트, index} of 기회정보) { 
-    var 현재배열=배열, 현재볼=볼, 현재스트=스트;
-    console.log('[ ' + 현재배열 + ' ],' + 현재볼 + ', ' + 현재스트 + ' , index : ' + index); 
-  }
+
 }
 
 
