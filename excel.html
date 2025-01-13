@@ -868,7 +868,7 @@
       <div>
         <h6 class="canvas_div" title="_04_javascript_from과map">from과 map, break(반복문벗어남), continue(다음반복으로)</h6>
         <h6 class="canvas_div" title="_04_javascript_every와some">every, some</h6>
-        <h6 class="canvas_div" title="_04_javascript_every와some">결과.forEach (조합 => &#123; 코딩 &#125 ), for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { 코딩 } </h6>
+        <h6 class="canvas_div" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
 
           
 
@@ -2456,21 +2456,51 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"><a href="https://niceman.tistory.com/78" target="_blank">every</a> </h5>
       <img src="portal/images/문서연결_엑셀VBA/every.png" alt="이미지없음">
-
-
-
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;">• </code>
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <h5 class="fw-bold">some</h5>
       <img src="portal/images/문서연결_엑셀VBA/some.png" alt="이미지없음">
+    </div>
+  </div>
+
+  <div id="_04_javascript_foreach"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">결과.forEach 기본예제 코딩</h5>
+      <code class="fw-bold">• var 순번=0; 결과=[], 배열1=[0,1,2,3], 배열2=[4,5,6,7], 배열3=[6,7,8,9];</code>
+      <code class="fw-bold" style="text-indent: 15px;">결과.push(배열1); 결과.push(배열2); 결과.push(배열3);</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(결과) // (3) [Array(4), Array(4), Array(4)] </code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(결과[1][2]) // 두번째배열 세번째값 : 6</code>
+      <br>
+      <h5 class="fw-bold">결과.forEach (조합 => { 코딩 } )</h5>
+      <code class="fw-bold">• '조합'이라는 이름은 아무거나 해도 결과 안의 각 배열(요소)를 의미한다.</code>
+      <code class="fw-bold">• 각 '조합'의 내용을 사용하지 않더라도 형식을 유지해야한다. </code>
+      <code class="fw-bold">• <span style="color:blueviolet">결과.forEach ( 조합 =></span> { 순번+=1; console.log(순번) } // 순회마다 1,2,3 출력 ) </code>
+      <code class="fw-bold">• (조합) 과 같이 변수를 '소괄호로 감싸도 되고'. <span style="color:blueviolet">변수가 2개 이상인 경우[index 사용시?] 반드시 소괄호로 감싸야됨</span></code>
+      <code class="fw-bold">• index를 활용하려면 변수에 추가하면 된다.</code>
+      <code class="fw-bold">• <span style="color:blueviolet">결과.forEach ( (조합, index) =></span> { 순번+=1; console.log('순번 : ' + 순번 + ', index : ' + index) } ) </code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">// 순번 : 1, index : 0, 순번 : 2, index : 1, 순번 : 2, index : 3</code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">for (변수 of 배열) { 반복동작부분 } : 변수 하나일때 설명 제외</h5>
+      <br>
+      <h5 class="fw-bold">배열안에 요소가, 3개의 값을 가지고 있을때 : 1.배열, 2.값, 3.값 예시</h5>
+      <code class="fw-bold">• var 기회정보=[], 배열=[0,1,2,3], 볼=2, 스트=1; </code>
+      <code class="fw-bold" style="text-indent: 15px;">기회정보.push( { 배열, 볼, 스트 } )</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(기회정보) // [ { 배열: array(4), 볼: 2, 스트: 1} ]</code>
+      <code class="fw-bold" style="text-indent: 15px;">배열=[6,7,8,9], 볼=0, 스트=3; </code>
+      <code class="fw-bold" style="text-indent: 15px;">기회정보.push( { 배열, 볼, 스트 } )</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(기회정보) // [ { 배열: array(4), 볼: 2, 스트: 1}, { 배열: array(4), 볼: 0, 스트: 3} ]</code>
+      <br>
+      <h5 class="fw-bold">for ( var (배열, 볼, 스트) of 기회정보) { 반복동작부분 } : <span style="color:blueviolet">forEach처럼 index 사용은 안됨</span></h5>
+      <code class="fw-bold">• for ( var {배열, 볼, 스트} of 기회정보) &#123;  </code>
+      <code class="fw-bold" style="text-indent: 15px;">var 현재배열=배열, 현재볼=볼, 현재스트=스트;</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log('[ ' + 현재배열 + ' ] ,' + 현재볼 + ', ' + 현재스트);  </code>
+      <code class="fw-bold" style="text-indent: 15px;">&#125;</code>
+      <code class="fw-bold" style="text-indent: 15px;">// [ 0,1,2,3 ], 2, 1</code>
+      <code class="fw-bold" style="text-indent: 15px;">// [ 6,7,8,9 ], 0, 3</code>
+      <br>
+      <h5 class="fw-bold">for ( var (숫자1, 숫자2, 숫자3) of 같은변수들) { 반복동작부분 } : 같은변수들인 경우</h5>
+
     </div>
   </div>
 
