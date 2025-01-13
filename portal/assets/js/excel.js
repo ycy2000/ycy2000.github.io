@@ -7,7 +7,9 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습() {
-
+  const adventurer = { name: 'Alice', cat: { name: 'Dinah' } };
+  const dogName = adventurer.dog.name;
+  console.log(dogName); // 결과는 undefined
 }
 
 

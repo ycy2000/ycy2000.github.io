@@ -886,7 +886,7 @@
         <h6 class="canvas_div" title="_04_javascript_from과map">from과 map, break(반복문벗어남), continue(다음반복으로)</h6>
         <h6 class="canvas_div" title="_04_javascript_every와some">every, some</h6>
         <h6 class="canvas_div" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
-        <h6 class="canvas_div" title="_04_javascript_물음표">물음표, or || 의미</h6>
+        <h6 class="canvas_div" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
 
           
 
@@ -2541,26 +2541,37 @@
 
   <div id="_04_javascript_물음표"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"><a href="https://joylee-developer.tistory.com/166" target="_blank">물음표</a></h5>
-      <h5 class="fw-bold">삼항연산자 (Ternary Operator) * 변수 = 삼항연산자 형식으로 사용</h5>
+      <h5 class="fw-bold"><a href="https://joylee-developer.tistory.com/166" target="_blank">자바스크립트 코드, ? : , ? . , ??, || </a>, 물음표 콜론, 물음표 점, 물음표 두개, or 표시 ||</h5>
+      <h5 class="fw-bold">삼항 연산자 (Ternary Operator / ? : ),  * 변수 = 삼항연산자 형식으로 사용</h5>
       <code class="fw-bold">• 삼항연산자 (Ternary Operator / ? : ) => Condition ? True : False</code>
       <code class="fw-bold">• if ... else 를 대체하는 연산자이다.</code>
-      <div style="display:inline-block;margin-left:10px;font-weight: bold;margin-right:40px;border:1px solid black;">
+      <div style="padding:10px; display:inline-block;margin-left:10px;font-weight: bold;margin-right:40px;border:1px solid black;">
         <span>if (3>0) {</span><br>
         <span style="margin-left:15px;">console.log('3은 0보다 크다')</span><br>
         <span style="margin-left:15px;">} else {</span><br>
         <span style="margin-left:15px;">console.log('false')</span><br>
         <span>}</span>
       </div>
-      <div style="display:inline-block;margin-left:10px;font-weight: bold;">
-        <span>if (3>0) {</span><br>
-        <span>console.log('3은 0보다 크다')</span><br>
-        <span>} else {</span><br>
-        <span>console.log('false')</span><br>
-        <span>}</span>
-      </div>
-      <h5 class="fw-bold">선택적 연결 (Optional Chanining)</h5>
-      <h5 class="fw-bold">무효화합체 (Nullish Coalescing)</h5>
+      <div style="vertical-align: top; padding:10px; display:inline-block;margin-left:10px;font-weight: bold;border:1px solid black;">
+        <span>삼항연산자로 표현하면, 결과값을 변수로 두고, </span><br>
+        <span>변수=삼항연산자 형식으로 작성할 수 있다.</span><br>
+        <span style="margin-left:15px;">var 결과 = (3>0) ? console.log('3은 0보다 크다') : console.log('false');</span><br>
+        <span> //바로 표시됨, 실행됨</span><br>
+        <span style="margin-left:15px;">var 결과 = (3>0) ? (console.log('3은 0보다 크다')) : (console.log('false'));</span>
+      </div><br><br>
+      <h5 class="fw-bold">선택적 연결 (Optional Chaining / ?. ) : 물음표 점 ?.</h5>
+      <code class="fw-bold">• 참조값이 null 이나 undefined 이면, error발생 대신, undefined를 return한다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">const adventurer = { name: 'Alice', cat: { name: 'Dinah' } };</code>
+      <code class="fw-bold" style="text-indent: 15px;color:blueviolet">위 코드에 없는 dog 속성에 접근했을때.</code>
+      <code class="fw-bold" style="text-indent: 15px;">const dogName = adventurer.dog.name;</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(dogName); // 결과는 error</code>
+      <code class="fw-bold" style="text-indent: 15px;">const dogName = adventurer.dog?.name; // ? (선택적연결) 사용시</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(dogName);</code>
+
+
+
+
+      <h5 class="fw-bold">무효화 합체 (Nullish Coalescing / ?? ), || 과 함께 알아보자</h5>
       <span style="color:blueviolet"></span>
       <br>
 
