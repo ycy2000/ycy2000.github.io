@@ -34,6 +34,7 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#htmlJavascript전체" aria-controls="offcanvasBottom">htmlJava</button>
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#vscode전체" aria-controls="offcanvasBottom">vsCode</button>
         <button onclick="png와text사용확인()">png와text사용확인</button>
         <button onclick="연습()">연습()</button>
         <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
@@ -156,10 +157,70 @@
   </div>
 </div>
 
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="vscode전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
 
-<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="기타전체_관련자료none" id="htmlJavascript전체_관련자료none" id="탁구github전체_관련자료none"-->
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
 <!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
  <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
+ <div id="vscode전체_관련자료none" class="d-none 모든검색">
+  <div class="개별카테고리" id="vscode전체_디버깅">
+    <div>
+      <h6><a href="https://wikidocs.net/137962" target="_blank">디버깅</a></h6>
+
+    </div>
+    <div>
+      <h6><a href="https://post.hometex.kr/114#google_vignette" target="_blank">js 코드오류 찾기</a></h6>
+    </div>
+  </div>
+
+  <div class="개별카테고리" id="vscode전체_기본2">
+    <div>
+      <h6 class="canvas_div" title='출처밝히는방법'>출처 밝히는 방법</h6>
+
+    </div>
+    <div>
+      <h6 class="canvas_div" title='실마리_빽쪽움직임'>실마리 빽쪽움직임</h6>
+    </div>
+  </div>
+
+
+
+  <div id=""><!--기본빈서식-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+</div>
+
 <div id="기타전체_관련자료none" class="d-none 모든검색">
   <div class="개별카테고리" id="기타전체_탁구">
     <div>
