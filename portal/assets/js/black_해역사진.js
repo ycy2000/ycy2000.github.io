@@ -47,15 +47,6 @@ function 교섭력계산() {
 }
 교섭력계산();
 //캔버스가 있다면 캔버스 head에 카테고리 제목들을 자동 셑팅해주는 코드를 만들어야함
-if (document.querySelector('#캔버스header')) {
-  var 카테고리버튼생성 = '';//<button class="카테고리실행" title="참고">참고</button> 
-  var id_캔버스관련자료none_안_class_canvas카테고리 = document.querySelectorAll('#캔버스관련자료none .canvas카테고리');
-  for (var i = 0; i < id_캔버스관련자료none_안_class_canvas카테고리.length; i++) {
-    카테고리버튼생성 += '<button class="카테고리실행" style="margin-right:-2px" title="' + id_캔버스관련자료none_안_class_canvas카테고리[i].id + '">' + id_캔버스관련자료none_안_class_canvas카테고리[i].id + '</button>';
-  }
-  document.querySelector('#캔버스header').innerHTML = document.querySelector('#캔버스header').innerHTML + 카테고리버튼생성;
-}
-
 var 메모아이디;
 var 메모요소;
 var 보기셑팅유형 = '해역사진초기값';
@@ -85,14 +76,7 @@ function 보기셑팅() {
 
 }
 보기셑팅()
-//캔버스body초기화
-var 셑팅_캔버스바디 = document.querySelector('#캔버스바디');
-셑팅_캔버스바디.innerHTML = '';
-for (var i = 0; i < document.querySelectorAll('.카테고리실행').length; i++) {
-  document.querySelectorAll('.카테고리실행')[i].classList.remove('현재카테고리');
-}
-셑팅_캔버스바디.innerHTML = document.querySelector('#참고').outerHTML;
-document.querySelector('[title="참고"]').classList.add('현재카테고리');
+
 //해역위치와 물품단계
 if (document.querySelector('#해역_물품단계')) {
   for (var i = 0; i < document.querySelectorAll('input').length; i++) {
@@ -851,7 +835,5 @@ function main과우측_클릭시(e) {
 리스너_해역사진관련.addEventListener('click', 리스너_해역사진관련_클릭시);
 리스너_해역사진관련.addEventListener('change', 리스너_해역사진관련_change시);
 리스너_해역사진관련.addEventListener('dblclick', 리스너_해역사진관련_dblclick시);
-리스너_캔버스전체.addEventListener('click', 캔버스클릭시);
-리스너_캔버스전체.addEventListener('change', 캔버스_검색input_change시);
 리스너_main과우측.addEventListener('click', main과우측_클릭시);
 

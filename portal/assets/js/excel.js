@@ -7,9 +7,10 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습() {
-  const adventurer = { name: 'Alice', cat: { name: 'Dinah' } };
-  const dogName = adventurer.dog.name;
-  console.log(dogName); // 결과는 undefined
+  if ( 0 ) {console.log('true조건')} else {console.log('false조건')} // 값이 0 이므로 false
+  if ( 0==0 ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true
+  if ( 0=='0' ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true
+  if ( 0==='0' ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true
 }
 
 
