@@ -362,6 +362,8 @@ function 다시() {
 
   for (var i=0; i<4; i++) {
     document.querySelectorAll('#조합제거4개div div')[i].innerHTML='';
+    document.querySelectorAll('#기회0 div')[i].innerHTML=i;
+    document.querySelectorAll('#기회1 div')[i].innerHTML=i+6;
   }
   
   for (var i=0; i<document.querySelectorAll('#선택 div').length; i++) {

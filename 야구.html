@@ -9,7 +9,7 @@
   <link href="portal/assets/css/야구.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body>
+<body style="margin-left:5px;">
   <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;top:40px;white-space:nowrap;z-index: 9999;"></div>
   <div style="display:inline-block" id="기회">
     <button id="왼쪽토글" onclick="왼쪽토글()" style="z-index: 9999;">메모토글</button>
@@ -19,7 +19,7 @@
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
 
 
-    <div id="선택" style="position: absolute;left:250px;">
+    <div id="선택" style="position: absolute;left:250px;top:20px;">
       <button onclick="계산()" style="background-color: chartreuse;">계산</button>
       <button onclick="숫자내림초기화()" style="background-color: chartreuse;">숫자내림초기화</button>
       <button>현재기록중 1개 clear</button> 

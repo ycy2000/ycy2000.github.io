@@ -15,10 +15,10 @@
 #가능한조합 > div > div > div {padding:0;line-height: 26px; height:26px;display: inline-block;width:23px;border:1px solid black;margin-right:-1px;}
 
 /* 버튼들 */
-#왼쪽토글 {position: absolute;left:145px;top:400px;}
-#왼쪽지우기 {position: absolute;left:145px;top:437px;}
+#왼쪽토글 {position: absolute;left:145px;top:420px;}
+#왼쪽지우기 {position: absolute;left:145px;top:457px;}
 #textarea왼쪽 {font-weight: bold; resize: both;background-color:white;border:1px solid black; 
-  position: absolute;left:145px;top:480px;width:700px;height:470px;font-size:16px;}
+  position: absolute;left:145px;top:495px;width:700px;height:440px;font-size:16px;}
 
 #랜덤번호 button {font-size:16px;}/* 기회입력상태, 랜덤번호지움, 랜덤번호생성, 번호보기/지우기 */
 #버튼4개 {display:inline-block;position:absolute;top:293px;left:270px;width:280px;border:none;}
