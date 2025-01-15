@@ -34,7 +34,6 @@
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#htmlJavascript전체" aria-controls="offcanvasBottom">htmlJava</button>
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#vscode전체" aria-controls="offcanvasBottom">vsCode</button>
         <button onclick="png와text사용확인()">png와text사용확인</button>
         <button onclick="연습()">연습()</button>
         <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
@@ -157,70 +156,8 @@
   </div>
 </div>
 
-<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="vscode전체" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header p-1">
-    <div class="캔버스header">
-      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
-      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
-      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
-      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
-      <input class="canvas검색input" type = "text"><!-- change 동작-->
-      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
-      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
-      <div class="js카테고리생성 d-inline-block"></div>
-
-      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
-
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
-  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
-  </div>
-</div>
-
 <!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
  <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
- <div id="vscode전체_관련자료none" class="d-none 모든검색">
-  <div class="개별카테고리" id="vscode전체_디버깅">
-    <div>
-      <h6><a href="https://wikidocs.net/137962" target="_blank">디버깅</a></h6>
-
-    </div>
-    <div>
-      <h6><a href="https://post.hometex.kr/114#google_vignette" target="_blank">js 코드오류 찾기</a></h6>
-    </div>
-  </div>
-
-  <div class="개별카테고리" id="vscode전체_기본2">
-    <div>
-      <h6 class="canvas_div" title='출처밝히는방법'>출처 밝히는 방법</h6>
-
-    </div>
-    <div>
-      <h6 class="canvas_div" title='실마리_빽쪽움직임'>실마리 빽쪽움직임</h6>
-    </div>
-  </div>
-
-
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-</div>
-
 <div id="기타전체_관련자료none" class="d-none 모든검색">
   <div class="개별카테고리" id="기타전체_탁구">
     <div>
@@ -929,7 +866,10 @@
         <h6 class="canvas_div" title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
         <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
         <h6 class="canvas_div" title='JS2_마우스이벤트'>JS2 > mouse, 마우스, 이벤트</h6>
-        <h6 class="canvas_div" title='JS2_배열중복제거'>JS2 > 2차원 배열 중복 제거거</h6>
+        <h6 class="canvas_div" title='JS2_배열중복제거'>JS2 > 2차원 배열 중복 제거</h6>
+        <h6 class="canvas_div fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체</h6>
+        <h6 class="canvas_div fw-bold" title='JS2_전개set배열'>JS2 > <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set링크</a> Set으로 중복제거, 전개(...)구문으로 Set 객체를 배열로 전환</h6>
+        <h6 class="canvas_div fw-bold" title='JS2_set교집합차집합합집합' style="color:blueviolet">JS2 > Set 활용 : 교집합, 차집합, 합집합</h6>
       </div>
       <div>
         <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
@@ -1051,7 +991,6 @@
 
       </div>
       <div>
-        <h6 class="canvas_div" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체'>중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체</h6>
         <h6 class="canvas_div" title='height'>scrollHeight, clientHeight, offsetHeight</h6>
         <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
         <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
@@ -1561,7 +1500,7 @@
         <code class="fw-bold">• ex) var person = { name:"Jhon", age:30}</code>
         <code class="fw-bold" style="text-indent: 15px;">모든 key 배열로 반환 : Object.keys(person); ==> ['name', 'age']</code>
         <code class="fw-bold" style="text-indent: 15px;">모든 value 배열로 반환 : Object.values(person); ==> ['Jhon', 30]</code>
-        <code class="fw-bold" style="text-indent: 15px;">하나의 값 확인, key를 속성처럼 쓰면 된다 : person.age ==> 30</code>
+        <code class="fw-bold" style="text-indent: 15px;">하나의 값 확인, <span style="color:blueviolet;font-weight: bold;">key를 속성처럼 쓰면 된다</span> : person.age ==> 30</code>
         <code class="fw-bold" style="text-indent: 15px;color:blueviolet">★★ 하나의 값 확인 다른 방법 : 순번은 안되고 배열값으로 전달</code>
         <code class="fw-bold" style="text-indent: 15px;color:blueviolet">person['age'] ==> 30 : key이름 문자열</code>
         <code class="fw-bold" style="text-indent: 15px;color:blueviolet">★★ key값 있는지 확인</code>
@@ -2104,6 +2043,177 @@
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       
+    </div>
+  </div>
+
+  <div id="중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체">
+    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">1.중복제거 : 한줄번호누적배열=new Set(한줄번호누적배열);</h5>
+      <h6 style="text-indent: 23px;">중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,</h6>
+      <h6 style="text-indent: 23px;">SET으로 중복제거하면 ARRAY가 아니라 OBJECT(class객체)라서 배열[0]등으로 사용안됨</h6>
+      <h6 style="text-indent: 23px;">배열 : [3,2,2,'4'], set객체 : {3,2,'4'} </h6>
+      <h5 class="fw-bold">2.한줄번호누적배열=[...한줄번호누적배열];</h5>
+      <h6 style="text-indent: 23px;">※ Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환하였습니다.
+        <h5 class="fw-bold">3. 정렬 : 한줄번호누적배열.sort((a,t) => a-t);</h5>
+        <h5 class="fw-bold">4. set</h5>
+        <h6 style="text-indent: 23px;">※ set.add(value) : 값 추가 </h6>
+        <h6 style="text-indent: 23px;">※ set.delete(value) : 값 제거</h6>
+        <h6 style="text-indent: 44px;">호출 시점에 셋 내에 값이 있어서 제거에 성공하면 true, 아니면 false를 반환한다.</h6>
+        <h6 style="text-indent: 23px;" class="fw-bold">※ set.has(value) : Set 내에 값이 존재하면 true, 아니면 false를 반환 ★★★
+        </h6>
+        <h6 style="text-indent: 23px;">※ set.size : Set에 몇 개의 값이 있는지 세준다.</h6>
+        <h5 class="fw-bold">5. set 반복문 사용방법</h5>
+        <code style="margin-left:10px;">let set = new Set(["oranges", "apples", "bananas"]);</code>
+        <code style="margin-left:10px;">1.for(let value of set) {alert(value);}</code>
+        <code style="margin-left:10px;">2.for(let key of set.keys()) {alert(key);}</code>
+        <code style="margin-left:10px;">3.for(let value of set.values()) {alert(value);}</code>
+        <code style="margin-left:10px;">무슨말인지?</code>
+        <code style="margin-left:10px;">set.keys() : Set 내의 모든 값을 포함하는 이터러블 객체를 반환</code>
+        <code style="margin-left:10px;">set.values() : set.keys와 동일한 작업을 합니다. 맵과의 호환성을 위해 만들어진 메서드이다</code>
+        <code
+          style="margin-left:10px;">set.entries() : Set 내의 각 값을 이용해 만든 [value, value] 배열을 포함하는 이터러블 객체를 반환. 맵과의 호환성을 위해 만들어졌습니다.</code>
+        <code style="margin-left:10px;"></code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">4. set</h5>
+      <h6 style="text-indent: 23px;">※ 세트(set)는 한마디로 순서가 없는 중복되지 않은 데이터의 집합인데요. </h6>
+      <h6 style="text-indent: 23px;">※ 배열(array)과 차이점을 이해하는 것이 무엇보다 중요합니다.</h6>
+      <h6 style="text-indent: 23px;">※ 배열은 데이터를 순서있게 저장합니다. </h6>
+      <h6 style="text-indent: 23px;">※ 그래서 인덱스(index)를 통해서 특정 위치에 저장되어 있는 데이터에 접근이 가능하죠. </h6>
+      <h6 style="text-indent: 23px;">※ 그리고 배열에는 동일한 값을 여러 번 저장할 수 있습니다.</h6>
+      <h6 style="text-indent: 23px;">※ 값이 동일하더라도 인덱스가 틀리기 때문에 데이터의 중복이 문제되지 않습니다.</h6>
+      <h6 style="text-indent: 23px;">※ 반면에 세트는 얼핏 보기에는 배열과 비슷해보일 수 있지만 사실 결이 아주 다른 자료구조입니다.</h6>
+      <h6 style="text-indent: 23px;">※ 우선 세트는 데이터를 순서없이 저장합니다. </h6>
+      <h6 style="text-indent: 23px;">※ 따라서 배열처럼 인덱스를 통해서 접근할 수가 없습니다.</h6>
+      <h6 style="text-indent: 23px;">※ 그리고 세트는 중복된 데이터를 허용하지 않습니다.</h6>
+      <h6 style="text-indent: 23px;">※ 즉, 기존에 세트에 있는 값을 또 추가하면 아무 효력이 발생하지 않습니다.</h6>
+      <h6 style="text-indent: 23px;">※ 자바스크립트에서 Set는 클래스(class)이므로 </h6>
+      <h6 style="text-indent: 44px;">new 키워드와 생성자를 사용하여 객체를 생성할 수 있습니다.</h6>
+      <h6 style="text-indent: 23px;">※ const set = new Set(); // Set(0) {size: 0}</h6>
+      <h6 style="text-indent: 23px;">※ 위와 같이 생성자의 인자로 아무 것도 넘기지 않으면 빈 세트가 만들어지며,</h6>
+      <h6 style="text-indent: 23px;">※ 아래와 같이 배열을 인수로 넘기면 배열에 담긴 값으로 세트가 만들어집니다.</h6>
+      <h6 style="text-indent: 23px;">※ const numSet = new Set([1, 2, 3]); // Set(3) {1, 2, 3}</h6>
+      <h6 style="text-indent: 23px;">※ 값 추가</h6>
+      <h6 style="text-indent: 23px;">※ 세트에 새로운 값을 추가할 때는 add() 메서드를 사용하는데요</h6>
+      <h6 style="text-indent: 23px;">※ 위에서 설명드린 것처럼 세트에는 중복된 값이 추가되지 않으며, 유일한 값만 저장됩니다.</h6>
+      <h6 style="text-indent: 23px;">※ set.add(1); // Set(1) {1}</h6>
+      <h6 style="text-indent: 23px;">※ set.add("A"); // Set(2) {1, 'A'}</h6>
+      <h6 style="text-indent: 23px;">※ set.add(true); // Set(3) {1, 'A', true}</h6>
+      <h6 style="text-indent: 23px;">※ 참고로 add() 메서드는 값을 추가한 후에 세트를 반환하기 때문에 </h6>
+      <h6 style="text-indent: 23px;">※ 아래와 같이 연쇄적으로 호출할 수도 있습니다.</h6>
+      <h6 style="text-indent: 23px;">※ set.add(1).add("A").add(true); // Set(3) {1, 'A', true}</h6>
+      <h6 style="text-indent: 23px;">※ 값 삭제</h6>
+      <h6 style="text-indent: 23px;">※ Set의 delete() 메서드를 사용하면 세트로 부터 특정 값을 삭제할 수 있는데요</h6>
+      <h6 style="text-indent: 23px;">※ delete() 메서드에 인자로 넘기는 값이 세트에 존재하여 성공적으로 삭제하였다면 </h6>
+      <h6 style="text-indent: 23px;">※ true를 반환하고, 해당 값이 세트에 존재하지 않아서 삭제에 실패하였다면 false를 반환합니다.</h6>
+      <h6 style="text-indent: 23px;">※ set.delete(1); // true, set.delete(2); // false</h6>
+
+    </div>
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <div id="JS2_전개set배열">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">Set은 중복제거용. 중복제거후 전개(...)구문 사용하여 배열로 전환.</h5>
+      <h6 class="fw-bold">var 배열=[2,2,3,3,0,0,1,1]; var 중복제거된배열=new Set(배열);</h6>
+      <h6 class="fw-bold">console.log(중복제거된배열); // Set(4) {2, 3, 0, 1}</h6>
+      <h6 class="fw-bold">var 중복제거된set결과를배열로변환 = [...중복제거된배열];</h6>
+      <h6 class="fw-bold">console.log(중복제거된set결과를배열로변환); // (4) [2, 3, 0, 1]</h6>
+
+      
+      
+      
+      
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      
+    </div>
+  </div>
+
+  <div id="JS2_set교집합차집합합집합">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"><a href="https://romantech.tistory.com/1149" target="_blank">이터러블 링크</a> ... 
+        <span style="font-size:16px;font-weight: bold;">반복가능한, 문자열(O), 배열(O), Object(X), Set객체(X)</span>
+        <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank">Set 링크</a> ...
+        <a href="https://poiemaweb.com/es6-class" target="_blank">더 자세한 Set 링크</a> 
+      </h5>
+      <h5 class="fw-bold">Set 객체는 중복되지 않는 유일한 값들의 집합입니다.</h5>
+      <h6 style="text-indent: 15px;">• 몇번째의 갑이 무엇인지 접근할 수 없다.</h6>
+      <h6 style="text-indent: 15px;font-weight: bold;color:blueviolet">• 순환은 할 수 있다.</h6>
+      <h6 style="text-indent: 15px;font-weight: bold;">★ 교집할, 차집합, 합집합 구할수 있고 결과를 배열로 변환하여 활용할 수 있다.</h6>
+
+      <h5 class="fw-bold">개수확인 :  set.size = 10; // 무시된다. console.log(set.size); // 3 </h5>
+      <h5 class="fw-bold">요소추가 : Set.prototype.add 메서드 사용</h5>
+      <h6 style="text-indent: 23px;">add 메서드는 새로운 요소가 추가된 Set 객체를 반환하기 때문에 </h6>
+      <h6 style="text-indent: 23px;">add 메서드를 호출한후 메서드 체이닝(메서드를 연속적으로 호출)이 가능합니다.</h6>
+      <h6 style="text-indent: 23px;font-weight: bold;">set.add(1); set.add(2); => 왼쪽 두개 명령을 하나로 set.add(1).add(2)</h6>
+      <h6 style="text-indent: 23px;font-weight: bold;">set.add(2).add(2).add(2) : 같은 값은 추가되지 않는다. set.add(2) 와 같다.</h6>
+
+      <h5 class="fw-bold">존재여부 확인 : set.has() => 형식이 모두 일치해야 같은 값으로 인식</h5>
+      <h6 style="text-indent: 23px;font-weight: bold;">var set=new Set(['아이','러브','유',4])</h6>
+      <h6 style="text-indent: 23px;font-weight: bold;">console.log(set.has(4)); // true, console.log(set.has(4)); // true</h6>
+      <h6 style="text-indent: 23px;font-weight: bold;">console.log(set.has('4')); // false, console.log(set.has('4' * 1)); // true</h6>
+
+      <h5 class="fw-bold">단일값은 중복이 제거된 상태로 저장, <span style="color:blueviolet">배열은 내용이 같아도 다른것으로 본다?</span> </h5>
+      <code class="fw-bold" style="text-indent: 15px;">• var 배열1=[1,2,3,4]; 배열2=[3,4,5,6]; 배열3=[1,2,3,4];</code>
+      <code class="fw-bold" style="text-indent: 28px;">표현1 : var set=new Set([배열1,배열2,배열3]); </code>
+      <code class="fw-bold" style="text-indent: 28px;">표현2 : var set=new Set(); set=new Set.add(배열1).add(배열2).add(배열3); </code>
+      <code class="fw-bold" style="text-indent: 28px;">console.log(set); // Set(3) {Array(4),Array(4),Array(4)} => 배열은 값이 같아도 다른걸로 본다? </code>
+      
+      <h5 class="fw-bold">모두삭제는 set.clear(), 하나 삭제 : index를 사용할수 없으므로, 값을 전달해야한다.</h5>
+      <code class="fw-bold" style="text-indent: 15px;">• set.delete(배열2); => 생성시 전달된 배열변수이름으로 지우면 지워지지만,</code>
+      <code class="fw-bold" style="text-indent: 15px;">• set.delete([3,4,5,6]); => 배열은 다 다른것으로 보기때문에 무시된다. (없는것으로 인식)</code>
+      <code class="fw-bold" style="text-indent: 15px;">• var 지울배열=[3,4,5,6]; set.delete(지울배열); => 배열은 다 다른것으로 보기때문에 무시된다. (없는것으로 인식)</code>
+
+      <h5 class="fw-bold">요소 순회하기 : const set = new Set([1, 2, 3]); set.forEach((v, v2, set) => console.log(v, v2, set));</h5>
+      <code class="fw-bold" style="text-indent: 15px;">변수 v : 현재 순회 중인 요소값, 변수 v2 : 현재 순회 중인 요소값, 변수 set : 현재 순회 중인 Set 객체 자체</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(v, v2, set) : // 1 1 Set(3) {1, 2, 3}, // 2 2 Set(3) {1, 2, 3}, // 2 3 Set(3) {1, 2, 3}</code>
+      <code class="fw-bold" style="text-indent: 15px;">v, v2가 같은 이유는 Array.prototype.forEach 메서드와의 인터페이스를 통일하기 위함.</code>
+      
+      <h5 class="fw-bold">요소 순회하기 : const set = new Set([1, 2, 3]); for (const value of set) { console.log(value); }</h5>
+
+      
+
+      
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">없어도되는? Set.prototype.intersection = function(set) { } 부분은 원리 설명인듯??</h5>
+      <code style="text-indent: 15px;">교집합 : Set.prototype.intersection = function(set) &#123; return new Set([...this].filter(v => set.has(v))); &#125;</code>
+      <code style="text-indent: 15px;">합집합 : Set.prototype.union = function (set) { return new Set([...this, ...set]); };</code>
+      <code style="text-indent: 15px;">차집합 : Set.prototype.difference = function (set) { return new Set([...this].filter(v => !set.has(v)));};</code>
+      <code style="text-indent: 15px;font-weight: bold;color:blueviolet">부분집합인지 확인 (모두 포함하는지) : 이거는 아래 코드가 있어야되네?</code>
+      <code style="text-indent: 23px;font-weight: bold;color:blueviolet">Set.prototype.isSuperset = function (subset) &#123;</code>
+      <code style="text-indent: 35px;font-weight: bold;color:blueviolet">const supersetArr = [...this];</code>
+      <code style="text-indent: 35px;font-weight: bold;color:blueviolet">return [...subset].every(v => supersetArr.includes(v));</code>
+      <code style="text-indent: 23px;font-weight: bold;color:blueviolet">&#125;; ==> every 활용. every는 모든 경우 true 일때만 true 리턴한다.</code>
+
+
+      <h5 class="fw-bold">교집합 : Set.prototype.intersection => setA.intersection</h5>
+      <code style="text-indent: 15px;">const setA = new Set([1, 2, 3, 4]); const setB = new Set([2, 4]);</code>
+      <code style="text-indent: 15px;">console.log(setA.intersection(setB)); // Set(2) {2, 4}</code>
+
+      <h5 class="fw-bold">합집합 : Set.prototype.union => setA.union</h5>
+      <code style="text-indent: 15px;">console.log(setA.union(setB)); // Set(4) {1, 2, 3, 4}</code>
+
+      <h5 class="fw-bold">차집합 : Set.prototype.difference => setA.union</h5>
+      <code style="text-indent: 15px;">console.log(setA.difference(setB)); // Set(2) {1, 3}</code>
+
+      <h5 class="fw-bold">부분집합, 상위집합 : Set.prototype.isSuperset => setA.isSuperset</h5>
+      <code style="text-indent: 15px;">const setA = new Set([1, 2, 3, 4]); const setB = new Set([2, 4]);</code>
+      <code style="text-indent: 15px;">// setA가 setB의 상위 집합인지 확인한다. setA가 setB를 모두 포함하는가?</code>
+      <code style="text-indent: 15px;">console.log(setA.isSuperset(setB)); // true</code>
+      <code style="text-indent: 15px;">// setB가 setA의 상위 집합인지 확인한다. setB가 setA를 모두 포함하는가?</code>
+      <code style="text-indent: 15px;">console.log(setB.isSuperset(setA)); // false</code>
+      
+      <h5 class="fw-bold">★ 모두 단일 값을 가진 집합일때만 비교 가능함. 배열속의 배열은 모두 다르게 인식함.</h5>
+
+
+
+
+
+
+
     </div>
   </div>
 
@@ -2903,8 +3013,8 @@
       <h5 class="fw-bold">if (조건) => 조건이 값인경우 값에 따라 판단, 조건이 조건인 경우 조건에 따라 판단</h5>
       <code class="fw-bold">• if ( 0 ) {console.log('true조건')} else {console.log('false조건')} // 값이 0 이므로 false</code>
       <code class="fw-bold">• if ( 0==0 ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true</code>
-      <code class="fw-bold">• if ( 0=='0' ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true</code>
-      <code class="fw-bold">• if ( 0==='0' ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true</code>
+      <code class="fw-bold">• if ( 0=='0' ) {console.log('true조건')} else {console.log('false조건')} // 형식을 따지지 않으므로 true</code>
+      <code class="fw-bold">• if ( 0==='0' ) {console.log('true조건')} else {console.log('false조건')} // 형식 불일치이므로 false</code>
       <code class="fw-bold">• === (등호3개) 는 형식까지 일치해야하므로 숫자0과 문자열0은 형식이 같지 않아 false</code>
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -3203,80 +3313,6 @@
     <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_더하기_숫자_소수점_변수에러상황.txt" width=1000px height=870px>
   </div>
 
-
-
-
-
-
-
-
-
-
-  <div id="중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체">
-    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">1.중복제거 : 한줄번호누적배열=new Set(한줄번호누적배열);</h5>
-      <h6 style="text-indent: 23px;">중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,</h6>
-      <h6 style="text-indent: 23px;">SET으로 중복제거하면 ARRAY가 아니라 OBJECT(class객체)라서 배열[0]등으로 사용안됨</h6>
-      <h6 style="text-indent: 23px;">배열 : [3,2,2,'4'], set객체 : {3,2,'4'} </h6>
-      <h5 class="fw-bold">2.한줄번호누적배열=[...한줄번호누적배열];</h5>
-      <h6 style="text-indent: 23px;">※ Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환하였습니다.
-        <h5 class="fw-bold">3. 정렬 : 한줄번호누적배열.sort((a,t) => a-t);</h5>
-        <h5 class="fw-bold">4. set</h5>
-        <h6 style="text-indent: 23px;">※ set.add(value) : 값 추가 </h6>
-        <h6 style="text-indent: 23px;">※ set.delete(value) : 값 제거</h6>
-        <h6 style="text-indent: 44px;">호출 시점에 셋 내에 값이 있어서 제거에 성공하면 true, 아니면 false를 반환한다.</h6>
-        <h6 style="text-indent: 23px;" class="fw-bold">※ set.has(value) : Set 내에 값이 존재하면 true, 아니면 false를 반환 ★★★
-        </h6>
-        <h6 style="text-indent: 23px;">※ set.size : Set에 몇 개의 값이 있는지 세준다.</h6>
-        <h5 class="fw-bold">5. set 반복문 사용방법</h5>
-        <code style="margin-left:10px;">let set = new Set(["oranges", "apples", "bananas"]);</code>
-        <code style="margin-left:10px;">1.for(let value of set) {alert(value);}</code>
-        <code style="margin-left:10px;">2.for(let key of set.keys()) {alert(key);}</code>
-        <code style="margin-left:10px;">3.for(let value of set.values()) {alert(value);}</code>
-        <code style="margin-left:10px;">무슨말인지?</code>
-        <code style="margin-left:10px;">set.keys() : Set 내의 모든 값을 포함하는 이터러블 객체를 반환</code>
-        <code style="margin-left:10px;">set.values() : set.keys와 동일한 작업을 합니다. 맵과의 호환성을 위해 만들어진 메서드이다</code>
-        <code
-          style="margin-left:10px;">set.entries() : Set 내의 각 값을 이용해 만든 [value, value] 배열을 포함하는 이터러블 객체를 반환. 맵과의 호환성을 위해 만들어졌습니다.</code>
-        <code style="margin-left:10px;"></code>
-    </div>
-    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">4. set</h5>
-      <h6 style="text-indent: 23px;">※ 세트(set)는 한마디로 순서가 없는 중복되지 않은 데이터의 집합인데요. </h6>
-      <h6 style="text-indent: 23px;">※ 배열(array)과 차이점을 이해하는 것이 무엇보다 중요합니다.</h6>
-      <h6 style="text-indent: 23px;">※ 배열은 데이터를 순서있게 저장합니다. </h6>
-      <h6 style="text-indent: 23px;">※ 그래서 인덱스(index)를 통해서 특정 위치에 저장되어 있는 데이터에 접근이 가능하죠. </h6>
-      <h6 style="text-indent: 23px;">※ 그리고 배열에는 동일한 값을 여러 번 저장할 수 있습니다.</h6>
-      <h6 style="text-indent: 23px;">※ 값이 동일하더라도 인덱스가 틀리기 때문에 데이터의 중복이 문제되지 않습니다.</h6>
-      <h6 style="text-indent: 23px;">※ 반면에 세트는 얼핏 보기에는 배열과 비슷해보일 수 있지만 사실 결이 아주 다른 자료구조입니다.</h6>
-      <h6 style="text-indent: 23px;">※ 우선 세트는 데이터를 순서없이 저장합니다. </h6>
-      <h6 style="text-indent: 23px;">※ 따라서 배열처럼 인덱스를 통해서 접근할 수가 없습니다.</h6>
-      <h6 style="text-indent: 23px;">※ 그리고 세트는 중복된 데이터를 허용하지 않습니다.</h6>
-      <h6 style="text-indent: 23px;">※ 즉, 기존에 세트에 있는 값을 또 추가하면 아무 효력이 발생하지 않습니다.</h6>
-      <h6 style="text-indent: 23px;">※ 자바스크립트에서 Set는 클래스(class)이므로 </h6>
-      <h6 style="text-indent: 44px;">new 키워드와 생성자를 사용하여 객체를 생성할 수 있습니다.</h6>
-      <h6 style="text-indent: 23px;">※ const set = new Set(); // Set(0) {size: 0}</h6>
-      <h6 style="text-indent: 23px;">※ 위와 같이 생성자의 인자로 아무 것도 넘기지 않으면 빈 세트가 만들어지며,</h6>
-      <h6 style="text-indent: 23px;">※ 아래와 같이 배열을 인수로 넘기면 배열에 담긴 값으로 세트가 만들어집니다.</h6>
-      <h6 style="text-indent: 23px;">※ const numSet = new Set([1, 2, 3]); // Set(3) {1, 2, 3}</h6>
-      <h6 style="text-indent: 23px;">※ 값 추가</h6>
-      <h6 style="text-indent: 23px;">※ 세트에 새로운 값을 추가할 때는 add() 메서드를 사용하는데요</h6>
-      <h6 style="text-indent: 23px;">※ 위에서 설명드린 것처럼 세트에는 중복된 값이 추가되지 않으며, 유일한 값만 저장됩니다.</h6>
-      <h6 style="text-indent: 23px;">※ set.add(1); // Set(1) {1}</h6>
-      <h6 style="text-indent: 23px;">※ set.add("A"); // Set(2) {1, 'A'}</h6>
-      <h6 style="text-indent: 23px;">※ set.add(true); // Set(3) {1, 'A', true}</h6>
-      <h6 style="text-indent: 23px;">※ 참고로 add() 메서드는 값을 추가한 후에 세트를 반환하기 때문에 </h6>
-      <h6 style="text-indent: 23px;">※ 아래와 같이 연쇄적으로 호출할 수도 있습니다.</h6>
-      <h6 style="text-indent: 23px;">※ set.add(1).add("A").add(true); // Set(3) {1, 'A', true}</h6>
-      <h6 style="text-indent: 23px;">※ 값 삭제</h6>
-      <h6 style="text-indent: 23px;">※ Set의 delete() 메서드를 사용하면 세트로 부터 특정 값을 삭제할 수 있는데요</h6>
-      <h6 style="text-indent: 23px;">※ delete() 메서드에 인자로 넘기는 값이 세트에 존재하여 성공적으로 삭제하였다면 </h6>
-      <h6 style="text-indent: 23px;">※ true를 반환하고, 해당 값이 세트에 존재하지 않아서 삭제에 실패하였다면 false를 반환합니다.</h6>
-      <h6 style="text-indent: 23px;">※ set.delete(1); // true, set.delete(2); // false</h6>
-
-    </div>
-    <br><br><br><br><br><br><br>
-  </div>
   <div id="height"><!-- 참고 -->
     <h6>• margin 값은 공통적으로 포함하지 않는다.</h6>
     <h6>• clientHeight : content영역 + padding 영역, <u><b>border 제외, scroll 아래 제외</b></u></h6>
@@ -3378,13 +3414,20 @@
 
     <div class="개별카테고리" id="git관련전체_vsCode"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-
+        <h6><a href="https://wikidocs.net/137959" target="_blank">설치 및 Exetnsion(확장기능)</a></h6>
+        <h6>Korean Language Pack for Visual Studio</h6>
+        <h6>Material Theme && Material Icon Theme</h6>
+        <h6>Bracket Pair Colorizer 2 : 대괄호, 중괄호, 소괄호 색깔 입해줌</h6>
+        <h6>indent-rainbow : 들여쓰기(indent)할 때 무지개 색으로 구분해줌</h6>
+        
       </div>
       <div>
-
+        <h6><a href="https://onsil-thegreenhouse.tistory.com/entry/Visual-Studio-Code에서-Javascript-실행하는-개발-환경-구축" target="_blank">Visual Studio Code에서 Javacript 실행하는 개발 환경 구축</a></h6>
+        <h6><a href="https://velog.io/@remon/개발-기본-지식-Node.js란" target="_blank">Node.js가 뭔가요</a></h6>
       </div>
       <div>
-
+        <h6><a href="https://wikidocs.net/137962" target="_blank">디버깅</a></h6>
+        <h6><a href="https://post.hometex.kr/114#google_vignette" target="_blank">js 코드오류 찾기</a></h6>
       </div>
     </div>
 
