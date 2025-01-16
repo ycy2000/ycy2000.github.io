@@ -15,6 +15,8 @@ function 연습() {
   console.log(setA.isSuperset(setB)); // true
   // setB가 setA의 상위 집합인지 확인한다.
   console.log(setB.isSuperset(setA)); // false
+
+  
 }
 
 
@@ -1190,7 +1192,7 @@ function header_클릭시(e) {
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();
   }
-  if (e.target.innerHTML == 'git관련') {//캔버스 들어가려면 클릭이 된다.
+  if (e.target.innerHTML == '깃_Code_부트') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='git관련전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     선택한캔버스_카테고리작성및_초기작업();

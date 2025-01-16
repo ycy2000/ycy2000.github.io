@@ -1,26 +1,6 @@
 
-function 임시() {
-  var i= 0 || 12;
-console.log(i)
+function 사용법() {
 
-}
-
-var 리턴번호;
-var 조합제거번호return;
-var 조합제거리턴index;
-function 조합제거번호셑팅() {
-
-  console.log('조합제거번호셑팅 리턴값 : ' + 조합제거번호return + ' index : ' + 조합제거리턴index)
-  //조합제거리턴index=0 일때 false 로 인식하는가?
-
-  //빈경우 숫자넣기, 값 있는경우 숫자넣기, 같은번호있는경우 숫자지우기기
-  var 번호=document.querySelectorAll('#조합제거4개div div');
-  if (번호[조합제거리턴index].innerHTML!='' && (번호[조합제거리턴index].innerHTML==조합제거번호return)) {
-    번호[조합제거리턴index].innerHTML='';
-  } else {
-    번호[조합제거리턴index].innerHTML=조합제거번호return;
-  }
-  조합제거실행()
 }
 function 조합제거실행() {
   //필터링된결과는 다시 되돌릴수 있도록 놔두고 : 
