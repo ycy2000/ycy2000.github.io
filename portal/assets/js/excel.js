@@ -8,11 +8,18 @@ function png와text사용확인() {
 }
 function 연습() {
 
+
+  Set.prototype.isSuperset = function (subset) {
+    const supersetArr = [...this];
+    return [...subset].every(v => supersetArr.includes(v));}
+
+
+
   const setA = new Set([1, 2, 3, 4]);
   const setB = new Set([2, 4]);
   
   // setA가 setB의 상위 집합인지 확인한다.
-  console.log(setA.isSuperset(setB)); // true
+  console.log(setA.isSuperset(setB),); // true
   // setB가 setA의 상위 집합인지 확인한다.
   console.log(setB.isSuperset(setA)); // false
 
@@ -1606,8 +1613,3 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_기타전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_기타전체.addEventListener('change', 선택한캔버스_검색input_change시);
-
-
-
-
-
