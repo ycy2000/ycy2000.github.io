@@ -31,12 +31,13 @@
         <!-- #excel캔버스전체 클릭하면 나오는 id="excel캔버스전체" aria-labelledby="offcanvasBottomLabel" 부분 맨 아래에 있다. -->
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#excel캔버스전체" aria-controls="offcanvasBottom">Excel,Vba</button>
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#git관련전체" aria-controls="offcanvasBottom">깃_Code_부트</button>
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#htmlJavascript전체" aria-controls="offcanvasBottom">htmlJava</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#CSS전체" aria-controls="offcanvasBottom">CSS</button>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#Java전체" aria-controls="offcanvasBottom">Java</button>
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
         <button onclick="png와text사용확인()">png와text사용확인</button>
-        <button onclick="연습()">연습()</button>
-        <span>ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span>, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
+        <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto>
@@ -112,7 +113,29 @@
   </div>
 </div>
 
-<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="htmlJavascript전체" aria-labelledby="offcanvasBottomLabel">
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="CSS전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="Java전체" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <h6 class="offcanvas-title">초기화</h6><!--click동작-->
@@ -192,7 +215,7 @@
 
     <div class="개별카테고리" id="기타전체_JS">
       <div>
-        <h6 class="canvas_div" title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드 </h6>
+
       </div>
     </div>
 
@@ -455,24 +478,6 @@
       <h6 style="text-indent: 15px;">- 몸 중심을 잡은 상황에서 앞으로가든 뒤로 가든 하세요. </h6>
       <h6 style="text-indent: 15px;">- 몸 중심이 잡혀있다면 다 사용할 수 있습니다. 타이밍이 늦으면 높을 루프를 올리면 됩니다. </h6>
       <h6 style="text-indent: 15px;">- 타이밍을 일부러 늦추거나 몸을 조금만 틀어서 방향을 바꿀수도 있습니다. </h6>
-    </div>
-  </div>
-
-  <div id="기타전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=290px style="border:1px solid black;">
-      <img src="portal/images/문서연결_엑셀VBA/캔버스관련코드.png" alt="이미지없음">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h6 class="fw-bold" style="text-indent: 23px;">부트스트랩 오프캔버스 스크롤 : <span style="color:blueviolet">data-bs-scroll="true"</span></h6>
     </div>
   </div>
 
@@ -785,32 +790,12 @@
 
 </div>
 
-<div id="htmlJavascript전체_관련자료none" class="d-none 모든검색">
+<div id="CSS전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="htmlJavascript전체_j쿼리"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6>메모 : 구글에 jQuery cdn 이런거 검색하면 나오는 사이트가 있습니다.</h6>
-        <h6>메모 : 거기서 jQuery 3.x 버전 &#123;script&#125; 태그를 찾아서 여러분들 html 파일에 복붙</h6>
-        <h6>메모 : header 부분에 넣고 사용. 아래에 넣으면 위에서는 사용 안됨.</h6>
-        <h6 style="font-weight: bold;">메모 : 구문 : $(선택자).동작함수(); <span style="color:blueviolet">innerHtml 없고 html()</span> </h6>
-        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text();  => 현재값, </h6>
-        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text('Hello, jQuery!'); => 값 변경</h6>
-        <h6 class="canvas_div" title="j쿼리">(내부에 링크) jQurey는 자바스크립트 querySelectorAll 같은거 짧게 바꿔주는거</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div" title="jQuery_설치와기초사용법">jQuery_설치와기초사용법</h6>
-        <h6 class="canvas_div" title="jQuery_문법리스트">jQuery_문법리스트</h6>
-      </div>
-      <div>
-
-      </div>
-    </div>
     <div class="개별카테고리" id="htmlJavascript전체_html기본"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div" title="_02_html_파순01_읽는순서">html 읽는순서 (script, 리스너포함)</h6>
         <h6 class="canvas_div" title="_02_html_파순02_엔티티">엔티티(entity) 문자, 특수문자</h6>
         <h6 class="canvas_div" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
-        <h6 class="canvas_div" title="_02_html_파순04_노드">** 노드 **</h6>
         <h6>text-indent : 상속됨</h6>  
         <h6>태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
         <h6 class="canvas_div" title="_01_project_파순01_파일제목규칙">파일제목 규칙, 줄바꿈, 코딩(변수)합의</h6>
@@ -822,123 +807,9 @@
 
       </div>
     </div>
-    <div class="개별카테고리" id="htmlJavascript전체_JS">
-      <div>
-        <h6 class="canvas_div" title='excel_js파일유의사항'>JS > 유의사항 : 클릭이벤트, e.target, 검색, innerText, innerHTML,outerHTML, </h6>
-        <h6 class="canvas_div" title='excel_js_scroll'>JS > scroll : 위치, 찾기, 좌표,   </h6>
-        <h6 style="color:blueviolet">JS > 정보 : 찾기, search, split, match, 정규식, indexOf(정규식 안씀, 값으로 검색, 뒤에서 검색 가능, 많이 씀)  </h6>
-        <h6 class="canvas_div" title='excel_js_search'>JS > search : <span style="color:blueviolet">시작위치 지정안됨,</span> 찾기, 정규식, 없으면 -1, 있으면 위치(첫글자 0부터)   </h6>
-        <h6 class="canvas_div" title='excel_js_indexOf'>JS > indexOf : 찾기, 정규식X, 문자열로 찾는다, 뒤에서부터 검색 가능, 많이 사용, 없으면 -1, 있으면 위치(첫글자 0부터)  </h6>
-        <h6 class="canvas_div" title='excel_js_split'>JS > split : 찾기, 정규식, 구분문자의 개수를 구할수 있다.   </h6>
-        <h6 class="canvas_div" title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
-        <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
-        <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
-        <h6 class="canvas_div" title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div" title='excel_js_선긋기와위치'>JS > 선긋기, 캔버스, 위치, 좌표</h6>
-        <h6 class="canvas_div" title='excel_js_캔버스흐림현상'>JS > 캔버스 흐림 현상, 그림영역과 관련됨</h6>
-        <h6 class="canvas_div" title='excel_js_모바일이벤트자료'>JS > 모바일이벤트자료, 마우스, 터치, 연습, 임시, 메모</h6>
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="htmlJavascript전체_JS2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title='JS2_객체Object_JSON_기본' style="color:blueviolet">JS2 > 객체Object_JSON_기본</h6>
-        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h6>
-        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h6>
-        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
-        <h6 class="canvas_div" title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
-        <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
-        <h6 class="canvas_div" title='JS2_마우스이벤트'>JS2 > mouse, 마우스, 이벤트</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
-        <h6 class="canvas_div" title='JS2_getComputedStyle'>JS2 > getComputedStyle 사용법, 정보, 속성관련 몇개</h6>
-
-      </div>
-      <div>
-        <h6 class="canvas_div" title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
-        <h6 class="canvas_div" title="_03_개념정리_파순03_속성변경">속성추가, 속성변경, 속성존재 확인, style</h6>
-        <h6 class="canvas_div" title="_03_개념정리_파순05_queryselector특징">querySelector, querySelectorAll (요소선택)</h6>
-        <h6 class="canvas_div" title="_03_개념정리_파순06_onclick함수">html에서 onclick="function () { };"</h6>
-
-      </div>
-    </div>
-    <div class="개별카테고리" id="htmlJavascript전체_JS3"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title="_04_javascript_파순01_코딩작성규칙">js 코드 작성시 규칙들? 에러처리</h6>
-        <h6 class="canvas_div" title="_04_javascript_파순02_기본정보margin0auto등">margin 0 outo,length,ComputedStyle,스크롤</h6>
-        <h6 class="canvas_div" title="_04_javascript_파순03_함수중단">함수중단 return, 시작script에 return??</h6>
-        <h6 class="canvas_div" title="_04_javascript_파순04_배열과보이는ul가로맞추기">배열과 보이는ul가로맞추기</h6>
-        
-      </div>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="htmlJavascript전체_JS4"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title='JS_CANVAS선긋기txt'>JS_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
-        <h6 class="canvas_div" title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
-        <h6 class="canvas_div" title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
-        <h6 class="canvas_div" title='JS_textarea내용의탭으로구분여러줄가공'>JS_textarea내용의탭으로구분여러줄가공</h6>
-        <h6 class="canvas_div" title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
-        <h6 class="canvas_div" title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
-      </div>
-      <div>
-        <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(1);==>12.1, 반올림</h6>
-        <h6>메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1</h6>
-        <h6>메모_#split:줄바꿈정보=문자열.split('\n'); 탭으로분리정보=문자열.split('\t');</h6>
-        <h6>메모_#정규식 : 3.121px의 경우 소수점까지 사라져 숫자만 추출시 ==> 3121이 된다.</h6>
-        <h6>메모_#left#substring : '3.121px'.substring(0,5) ==> 3.121 (숫자.toFixed(0)==>정수)</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div" title='JS_웹페이지이동'><a href="https://www.daleseo.com/js-location/"
-          target="_blank">자바스크립트로 웹 페이지 이동하는 방법</a></h6>
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="htmlJavascript전체_form과map"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title="_04_javascript_from과map">from과 map, break(반복문벗어남), continue(다음반복으로)</h6>
-        <h6 class="canvas_div" title="_04_javascript_every와some">every, some</h6>
-        <h6 class="canvas_div" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
-        <h6 class="canvas_div" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
-        <h6 class="canvas_div" title="_04_javascript_배열중복제거">배열 중복 제거하는 3가지 방법</h6>
-        <h6 class="fw-bold"><a href="https://creativevista.tistory.com/entry/자바스크립트JavaScript-배열-완벽-가이드-배열-메소드와-활용법-총정리" target="_blank">자바스크립트 배열 완벽 가이드 : 여러가지 다 있음</a> </h6>
-        <h6 class="fw-bold"><a href="https://ruriruriya.tistory.com/226" target="_blank">[JavaScript] 자바스크립트 - Set과 Map 그리고 배열과 객체와의 차이점</a> </h6>
-      
-
-
-        
-      </div>
-      <div>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet">리터럴 : index사용가능, 반복가능 => 문자열, 배열</h6>
-        <h6 class="canvas_div fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet">Set로 중복제거후 다시 배열로 변환하여 사용하면 된다.</h6>
-        <h6 class="canvas_div fw-bold" title='JS2_set교집합차집합합집합'>
-          <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set활용법</a>, 
-          Set 객체는 '집합'의 개념. 있나 없나 확인, index로 접근 안됨
-        </h6>
-      </div>
-      <div>
-
-      </div>
-    </div>
-
     <div class="개별카테고리" id="htmlJavascript전체_css"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div" title='excel_js_HTML노드'>노드 </h6>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
-        <h6 class="canvas_div" title='CSS_엣지와크롬1'>엣지와 크롬, CSS 적용상이??</h6>
         <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
         <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
         
@@ -951,116 +822,13 @@
         
       </div>
       <div>
-
+        <h6 class="canvas_div" title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
       </div>
     </div>
 
-    <div class="개별카테고리" id="htmlJavascript전체_kimhtml"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title='htmlJavascript_kimhtml'>kim.html(kimhtml) </h6>
-      </div>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="htmlJavascript전체_참고2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title='참고_특수문자txt'>참고_특수문자.txt</h6>
-        <h6 class="canvas_div" title='참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt'>참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt</h6>
-        <h6 class="fw-bold" style="color:blueviolet">메모_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
-        <h6 class="fw-bold" style="color:blueviolet">메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
-        <h6 class="canvas_div" title='참고_클래스아이디숫자안됨txt'>참고_클래스아이디숫자안됨.txt</h6>
-        <h6 class="canvas_div" title='참고_메모장에서열면ancitxt'>참고_메모장에서열면anci.txt</h6>
-        <h6 class="canvas_div" title='참고_구글_그림에서데이터추출txt'>참고_구글_그림에서데이터추출.txt</h6>
-        <h6 class="canvas_div" title='참고_더하기_숫자_소수점_변수에러상황txt'>참고_더하기_숫자_소수점_변수에러상황.txt</h6>
-
-      </div>
-      <div>
-        <h6 class="canvas_div" title='height'>scrollHeight, clientHeight, offsetHeight</h6>
-        <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
-        <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
-        <h6><a href="https://2boki.tistory.com/129" target="_blank">[제이쿼리] load() 메소드 사용하여 다른 html의 값 가져오기</a></h6>
-        <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
-        <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
-        <h6><a href="https://kingofbackend.tistory.com/187" target="_blank">[Javascript]Json과 JavaScript Object의 차이점</a></h6>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="htmlJavascript전체_ycy정리"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-        <h6 class="canvas_div" title='htmlJavascript_번호추출'>번호추출</h6>
-      </div>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
   </div>
 
-  <div id="jQuery_설치와기초사용법">
-    <h5><a href="https://milku.tistory.com/84" target="_blank">jQuery_설치와기초사용법</a></h5>
-    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음" style="vertical-align: top;">
-    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
-    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_03.png" alt="이미지없음" style="vertical-align: top;">
-    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
-    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_05.png" alt="이미지없음" style="vertical-align: top;">
-    <br><br><br><br><br><br><br>
-  </div>
-  <div id="jQuery_문법리스트">
-    <h5><a href="https://soft91.tistory.com/9" target="_blank">JQuery - JQuery 기본문법</a></h5>
-    <img src="portal/images/black_코딩등그림판/JQuery기본문법_01.png" alt="이미지없음" style="vertical-align: top;">
-    <img src="portal/images/black_코딩등그림판/JQuery기본문법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
-    <img src="portal/images/black_코딩등그림판/JQuery기본문법_03.png" alt="이미지없음" style="vertical-align: top;">
-    <img src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
-    <br><br><br><br><br><br><br>
-  </div>
-  
-  <div id="j쿼리"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code style="font-weight: bold;">자바 : document.querySelector('#html파일이름').innerHtml</code>
-      <code style="font-weight: bold;text-indent: 15px;">j쿼리 : $('#html파일이름').html() => <span style="color:blueviolet">html() 빈 소괄호</span></code>
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <section id="_02_html_파순01_읽는순서">
-    <h4>1. 순서대로 읽되 script 만났을때, 에러코드 이후 실행 안되고 새롭게.</h4>
-    <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_01_읽는순서.png" alt="이미지없음">
-    <h4>2. 함수안의 변수가 script에 기본실행 변수이면 위치에 상관없이 인식됨.</h4>
-    <h4>3. script파일 읽어올때 실행되는 동작 (project ul 높이 변경)</h4>
-    <li>A. [F5]새로고침이나 html파일 링크로 이동시 script파일안의 함수를 제외한 모든 코드 실행됨.</li>
-    <li>B. project에 사용된 코드 : 여러개의 ul 높이를 비교하여 최대높이로 통일시키는 동작.</li>
-    <li>ul 높이 변경 실행 전,후 비교</li>
-    <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_02_ul높이전후.png" alt="이미지없음">
-    <h4>4. script파일 이벤트리스너 실행 과정</h4>
-    <li>A. 이벤트 감지하여 링크된 script파일에 정의된 내용을 실행한다.</li>
-    <li>B. 이벤트리스너란? html(화면)에서 일어난 일들을 감지하는 것.</li>
-    <li>C. 많은 이벤트 중에 'click' 이벤트 감지에 대해서 알아봄</li>
-    <li>D. 코드는 순서대로 실행된다는 것을 염두에 두고 이해하면 좋을 듯 하다.</li>
-    <li>E. 순서 : 이벤트감지할 변수지정 - 실행할 함수 만들기 - 이벤리스너 등록하기. </li>
-    <li>F. project에 사용된 이벤트리스너</li>
-    <br><br><br><br>
-  </section>
-
+  <!-- 개별카테고리 끝나면 개별 id 정보 -->
   <section id="_02_html_파순02_엔티티">
     <h4>1. entity, 특수문자, 코딩시... pre, 유니코드 https://blogpack.tistory.com/787</h4>
     <pre style="font-size:20px;">
@@ -1111,45 +879,116 @@
     <br><br><br><br>
   </section>
 
-  <section id="_02_html_파순04_노드">
-    <h4>▢ 참고 : innerText는 나의 텍스트노드 및 자식과 모든 하위 텍스트를 합친다.</h4>
-    <h4>▢ 참고 : 사용및 숙지는 firstElementChild, ElementSibling</h4>
-    <br>
-    <h4>1. 노드의 종류와 상위, 하위, 형제노드</h4>
-    <h5>A. 문서 노드(document node) : HTML 문서 전체를 나타내는 노드.</h5>
-    <h5>B. 요소 노드(element node) : 모든 HTML 요소는 요소노드이며, 속성노드를 가질 수 있는 유일한 노드임.</h5>
-    <h5>C. 속성 노드(attribute node) :  모든 HTML 요소의 속성은 속성 노드이며, 요소 노드에 관한 정보를 가지고 있음.</h5>
-    <h5 calss="li_들작">&nbsp;&nbsp;&nbsp; 하지만 해당 요소노드의 자식노드(child node)에는 포함되지 않음.</h5>
-    <h5 calss="li_들작">&nbsp;&nbsp;&nbsp; 속성 노드(attribute node)는 요소 노드(element node)의 속성이다.</h5>
-    <h5 calss="li_들작">&nbsp;&nbsp;&nbsp; 속성 노드(attribute node)는 nextSibling, nextElementSibling으로 접근하는 부분이 아님.</h5>
-    <h5>D. 텍스트 노드(text node) : HTML 문서의 모든 텍스트는 텍스트 노드임. </h5>
-    <h5>E. 주석 노드(comment node) : HTML 문서의 모든 주석은 주석 노드임.</h5>
-    <br>
-    <li>노드(node) 범위에서 : 상위, 하위, 형제노드 표현</li>
-    <h5 calss="li_들작">1. parentNode : 부모 노드</h5>
-    <h5 calss="li_들작">2. childNodes : 자식 노드 리스트</h5>
-    <h5 calss="li_들작">3. childNodes.length : 자식 노드 개수</h5>
-    <h5 calss="li_들작">4. firstChild : 첫 번째 자식 노드</h5>
-    <h5 calss="li_들작">5. lastChild : 마지막 자식 노드</h5>
-    <h5 calss="li_들작">6. nextSibling : 다음 형제 노드</h5>
-    <h5 calss="li_들작">7. previousSibling : 이전 형제 노드</h5>
-    <br>
-    <li>Element만 한정하여 : 상위, 하위, 형제 Element 표현</li>
-    <h5 calss="li_들작">1. parentElement : 부모 요소(Element)</h5>
-    <h5 calss="li_들작">2. childElementNodes : 없나?</h5>
-    <h5 calss="li_들작">3. childElementCount : 자식 요소(Element)의 개수</h5>
-    <h5 calss="li_들작">4. firstElementChild : 첫 번째 자식 요소(Element)</h5>
-    <h5 calss="li_들작">5. lastElementChild : 마지막 자식 요소(Element)</h5>
-    <h5 calss="li_들작">6. nextElementSibling : 다음 형제 요소(Element)</h5>
-    <h5 calss="li_들작">7. previousElementSibling : 이전 형제 요소(Element)</h5>
-    <img src="portal/images/문서연결_PROJECT/02_html_파순04_노드_01_노드.png" alt="이미지없음">
-    <br>
-    <h4>2. 자식 노드의 접근 예제</h4>
-    <img src="portal/images/문서연결_PROJECT/02_html_파순04_노드_02_노드접근.png" alt="이미지없음">
-    <br>
-    <h4>3. 부모노드 접근은 parentNode(이거사용,짧으니), parentElementNode</h4>
-    <br><br><br><br>
-  </section>
+  <div id="CSS_1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">:nth-of-type(), :nth-child(), :first-child, :last-child</h5>
+      <code class="fw-bold">• .클래스:nth-of-type(1), div:nth-of-type(1)</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 순번은 해당 자식들 클래스, 아이디, 태그, 구분없는 순번!!</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 해당순번이 div일때, 클래스일때 작동함!!</code>
+      <code class="fw-bold">• ex : 11개의 자식이 있고 처음 자식이 div, 나머지 자식은 p 일때</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 세번째 자식 = 두번째 p 요소</code>
+      <code class="fw-bold">• ex : div > p:nth-child(3) 의 의미는</code>
+      <code class="fw-bold" style="text-indent: 15px;">- 1.세번째 자식을 확인한다, 2.p태그이면 적용한다. <span style="color:blueviolet">"p태그중 세번째 p태그 아님!!!"</span></code>
+      <code class="fw-bold" style="color:blueviolet">• HTML의 구조에 따라 예상치 않게 적용될 수 있으니 참고바람.</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="CSS_background"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code class="fw-bold">• 검색어 : 배경색, rgb, rgba, 그라데이션, 회전, 그림, 색상, 색깔</code>
+      <h5 class="fw-bold">색상 표현방법 : 1.이름(147개), 2.16진수, 3.rgb 또는 rgba, 4.hsl 또는 hsla</h5>
+      <code class="fw-bold" style="text-indent: 15px;">- 16진수 예)#00FF99, 숫자는 Red, Green, Blue 순서 (FF는 10진수 255) : #으로 시작하고 두자리씩 3개의 16진수로 색상표현</code>
+      <code class="fw-bold" style="text-indent: 15px;">- rgb(Red, Green, Blue) : Red, Green, Blue는 0~255 숫자, <span style="color:blueviolet">vs code 색깔부분 커서 올리면 rgb 확인 가능</span></code>
+      <code class="fw-bold" style="text-indent: 15px;">- rgba(Red, Green, Blue, 불투명도) : 불투명도 1 = 완전 진하게, 불투명도 0 = 흰색</code>
+      <div style="margin-bottom: 10px;">
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:aqua;border:1px solid black;text-align: center;margin-bottom: -1px;">aqua</div>
+          <div style="background-color:bisque;border:1px solid black;text-align: center;margin-bottom: -1px;">bisque</div>
+          <div style="background-color:beige;border:1px solid black;text-align: center;margin-bottom: -1px;">beige</div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:blueviolet;border:1px solid black;text-align: center;margin-bottom: -1px;">blueviolet</div>
+          <div style="background-color:blanchedalmond;border:1px solid black;text-align: center;margin-bottom: -1px;">blanchedalmond</div>
+          <div style="background-color:cornflowerblue;border:1px solid black;text-align: center;margin-bottom: -1px;">cornflowerblue</div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:chartreuse;border:1px solid black;text-align: center;margin-bottom: -1px;">chartreuse</div>
+          <div style="background-color:chocolate;border:1px solid black;text-align: center;margin-bottom: -1px;">chocolate</div>
+          <div style="background-color:hotpink;border:1px solid black;text-align: center;margin-bottom: -1px;">hotpink</div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;width:200px;">
+          <div style="background-color:rgba(138,43,226,1);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,1)</div>
+          <div style="background-color:rgba(138,43,226,0);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,0)</div>
+          <div style="background-color:rgba(138,43,226,0.5);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,0.5)</div>
+        </div>
+      </div>
+      <h5 class="fw-bold">background</h5>
+      <code class="fw-bold">• background-image : url만, 그라데이션과 url같이는 쉼표(,)로 전달</code>
+      <code class="fw-bold" style="text-indent: 15px;">background-image:linear-gradient(rgba(0,0,255,0.5), rgba(0,0,255,0.5)), url(portal/images/문서연결_kim/소파.png)</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• background-repeat: no-repeat; 기본은 빈곳 반복, repeat, repeat-x, repeat-y, round, space</code>
+      <div class="fw-bold" style="vertical-align: top; display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);">background-repeat: repeat</div>
+      <div class="fw-bold" style="vertical-align: top;display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: repeat-x;">
+        background-repeat: repeat-x<br>가로로만 반복, repeat-y는 세로로만 반복<br><span style="color:blue">원본그림 비율 유지</span> </div>
+      <div class="fw-bold" style="vertical-align: top;display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: round;">
+        background-repeat: round<br>div폭=그림폭<br>가로폭만큼 그림이 꽉차도록 할때.<br>세로는 반복됨<br>가로와 세로비율이 변할수 있음<br>폭이나 높이가 원본의 1.5이면 그림이 2개가 들어감. 그리고 여분은 
+        <br>그림을 늘리거나 줄여서 채움
+      </div>
+      <br><br>
+      <div class="fw-bold" style="border:1px solid black; vertical-align: top;display: inline-block;width:270px;height:192px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: space;">
+        background-repeat: space<br>글자처럼 취급되어<br>배분정렬처럼 된다<br>세로도 배분정렬처럼 된다.<br><br>원본그림 비율 유지
+        <br>폭이나 높이가 1.5이면 그림이 추가되지 않고 원본유지
+      </div>
+      <div class="fw-bold" style="border:1px solid black;vertical-align: top;display: inline-block;width:440px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: space;">
+        background-repeat: space<br>글자처럼 취급되어, 배분정렬처럼 된다,<br>세로도 배분정렬처럼 된다.<br><br>원본그림 비율 유지
+        <br>폭이나 높이가 1.5이면 그림이 추가되지 않고 원본유지
+      </div>
+      <code class="fw-bold" style="color:blueviolet">• background-size : 1)auto 2)contain 3)cover 4)100px 100px 4)70% 70%</code>
+      <code class="fw-bold" style="text-indent: 15px;">1)auto : 원본유지, 요소가 작다면 그림의 일부가 보이게 됨.</code>
+      <code class="fw-bold" style="text-indent: 15px;">2)contain : 그림이 모두 들어오게 되는 size. 원본비율 유지 </code>
+      <code class="fw-bold" style="text-indent: 15px;">3)cover : 채워지지 않는 부분이 없도록 가로 또는 세로의 폭을 채움, 원본지율 유지</code>
+      <code class="fw-bold" style="text-indent: 15px;">4)크기 지정 : 요소 안에 들어갈 그림 크기 지정. 원본의 비율이 달라짐</code>
+      <code class="fw-bold" style="text-indent: 15px;">5)비율 지정 : 요소의 폭, 높이의 지정된 %만큼의 크기로 들어감. 원본의 비율이 달라짐</code>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold" style="color:blueviolet">그림 회전 방법 (요소)</h5>
+      <code class="fw-bold" style="color:blueviolet">1)transform속성은 요소를 변형할때 사용되며, rotate()함수를 사용하여 요소를 회전할 수 있다.</code>
+      <code class="fw-bold" style="text-indent: 15px;">-transform: rotate(90deg); 양수는 시계방향, 음수를 시계반대방향, 현상태에서 회전</code>
+      <code class="fw-bold" style="color:blueviolet;margin-bottom: 5px;">2)회전중심점 지정 : transform-origin: top left;</code><br><br>
+      <div class="fw-bold" style="border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image:url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>
+      </div>
+      <div class="fw-bold" style="margin-left:10px;transform:rotate(40deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>transform:rotate(40deg);
+      </div>
+      <div class="fw-bold" style="margin-left:80px; transform-origin:top left;transform:rotate(40deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>transform:rotate(40deg);<br><span style="color:yellow">top left</span> 
+      </div>
+      <div class="fw-bold" style="transform-origin:top left;margin-left:1px;transform:rotate(90deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
+        background-repeat:<br> no-repeat<br>transform:rotate(90deg);<br><span style="color:yellow">top left</span> 
+      </div><br><br><br>
+      
+      <br><br>
+
+
+
+    </div>
+  </div>
 
   <section id="_01_project_파순01_파일제목규칙">
     <h4>1. 순번_제목 순서로 계속 부여</h4>
@@ -1231,6 +1070,394 @@
                           선택줄 한줄 정보 지우기 => shift + delete
                           범위선택안하고 => ctrl + c => 한줄 복사됨. 한줄은 드래그 안해도 됨.
     </pre><br><br><br><br>
+  </section>
+
+  <div id="excel_js파일유의사항"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <img src="portal/images/문서연결_엑셀VBA/js예제.png" alt="이미지없음">
+      <h5 class="fw-bold">"예제아이디의 문자열", 
+        <span style="color:blueviolet">"예제아이디 내, span태그의 문자열"</span>
+      </h5>
+      <code class="fw-bold">1) console.log(document.querySelector('#예제아이디').<span style="color:blueviolet">innerText</span>);</code>
+      <code class="fw-bold" style="text-indent: 15px;">- "예제아이디의 문자열", "예제아이디 내, span태그의 문자열"</code>
+      <code class="fw-bold">2) console.log(document.querySelector('#예제아이디').<span style="color:blueviolet">innerHTML</span>); </code>
+      <code class="fw-bold" style="text-indent: 15px;">- "예제아이디의 문자열", &#60;span style="color:blueviolet"&#62;"예제아이디 내, span태그의 문자열"</span></code>
+      <code class="fw-bold">3) console.log(document.querySelector('#예제아이디').<span style="color:blueviolet">outerHTML</span>); </code>
+      <br>
+      <h5 class="fw-bold">예제에서 > onclick="연습()" 부분은 span 부분 클릭시에도 작동함.</h5>
+      <br>
+      <h5 class="fw-bold">예제에서 > 클릭이벤트시 span부분 클릭하면 id="예제아이디"의 클릭이벤트는 실행이 안된다.</h5>
+      <code class="fw-bold" style="color:blueviolet">• 요소의 클릭이벤트시에, 클릭한 요소가 이벤트 걸어놓은 요소가 아니라 내부 요소일수도 있다.</code>
+      <code class="fw-bold">• 작동이 되게 하려면 : 부모요소를 거슬러 올라가면서 id="예제아이디" 요소가 있는지 확인</code>
+      <code class="fw-bold">• 부모요소의 tagName(결과는 대문자)이 BODY 이면 => 부모요소 검색 제한</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• </code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="CSS_줄바꿈"><!-- 참고 -->
+    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"><a
+          href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
+          target="_blank">자바스크립트로 오버플로 확인</a></h5>
+      <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
+      <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
+      <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
+      <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
+      <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
+      <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
+      <h6 class="fw-bold">4. 줄바꿈 기준 : word-break, 기본값 normal, 상속 yes</h6>
+      <h6 style="text-indent: 23px;">CJK(Chinese - Japanese - Korean, 중국·일본·한국)는 일본어, 한국어, 중국어를 통틀어 이르는 말</h6>
+      <h6 style="text-indent: 23px;">normal : CJK 문자는 글자 기준(break-all)으로, CJK 이외의 문자는 단어 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
+        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며
+        공백이 늘어남)</h6>
+      <h6 style="text-indent: 23px;word-break:normal;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
+        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)</h6>
+      <h6 style="text-indent: 23px;word-break:normal;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을
+        맞추며 공백이 늘어남)</h6>
+      <h6 style="text-indent: 23px;">break-all : 글자 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;">keep-all : 단어 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;">initial : 기본값으로 설정합니다.</h6>
+      <h6 style="text-indent: 23px;">inherit : 부모 요소의 속성값을 상속받습니다.</h6>
+      <h6 class="fw-bold">5. 한 줄에 inline-block, inline 요소가 여러개 있을때 맨 윗단 정렬 ==> vertical-align:top;</h6>
+      <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <div id="excel_js_속성선택자"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed src="portal/images/문서연결_엑셀VBA/CSS_특정상황_속성등_스타일.txt" width=910px height=900px style="border:1px solid black;">
+  </div>
+
+  <section id="_03_개념정리_파순01_요소속성선택자">
+    <h4>1.html요소(태그) 구조</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_01_요소.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <div id="CSS_이미지_배경에서_일부분만txt">
+    <embed src="portal/images/black_코딩등메모장/CSS_이미지_배경에서_일부분만.txt" width=910px height=900px style="border:1px solid black;">
+  </div>
+
+  <section id="_03_개념정리_파순02_선택자선택연습">
+    <h4>1.querySelectorAll(선택자표현), querySelector(선택자표현)으로 사용된다.</h4>
+    <br>
+    <h4>2.후손,자손,형제, 선택자 종류 및 표현방법</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_02_선택자.png" alt="이미지없음">
+    <br>
+    <h4>3.후손(공백)과 자손(>) 선택 예제</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_03_자손후손.png" alt="이미지없음">
+    <br>
+    <h4>4.같은레벨 형제(+, ~) 선택 예제</h4>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_04_형제.png" alt="이미지없음">
+    <br>
+    <h4>5.속성 선택자. [속성명], [속성명="속성값"]</h4>
+    <li>속성명과 속성값은 아무거나 "새롭게" 만들어도 된다.</li>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명1.png" alt="이미지없음">
+    <br>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명2.png" alt="이미지없음">
+    <br>
+    <h4 id="move6">&#9634; project 선택자 사용 참고</h4>
+    <h5>A. document.querySelector('#결과 > div > div:not(:nth-first-child) > #스크롤이동3'); </h5>
+    <h5>B. '스크롤이동3'을 변수로 받아야 하는 경우</h5>
+    <h5 class="li_들작">var 앞에문자열='#결과 > div > div:not(:nth-first-child) > ';</h5>
+    <h5 class="li_들작">var 아이디='#' + event.target.id;</h5>
+    <h5 class="li_들작">var 최종전달문자=앞에문자열 + 아이디;</h5>
+    <h5 class="li_들작">var 스크롤요소=document.querySelector(최종전달문자);</h5>
+    <h5 class="li_들작">또는</h5>
+    <h5 class="li_들작">var 아이디='#' + event.target.id; </h5>
+    <h5 class="li_들작">var 스크롤요소 = document.querySelector('#결과 > div > div:not(:nth-first-child) > ' + 아이디);</h5>
+    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_06_스크롤이동선택자.png" alt="이미지없음">
+    <br><br><br><br>
+  </section>
+
+  <div id="참고_특수문자txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
+  </div>
+
+  <div id="참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt" width=1000px height=870px>
+  </div>
+
+  <div id="참고_클래스아이디숫자안됨txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_클래스아이디숫자안됨.txt" width=1000px height=870px>
+  </div>
+
+  <div id="참고_메모장에서열면ancitxt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_메모장에서열면anci.txt" width=1000px height=870px>
+  </div>
+
+  <div id="참고_구글_그림에서데이터추출txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_구글_그림에서데이터추출.txt" width=1000px height=870px>
+  </div>
+  
+  <div id="참고_더하기_숫자_소수점_변수에러상황txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_더하기_숫자_소수점_변수에러상황.txt" width=1000px height=870px>
+  </div>
+
+  <div id=""><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+</div>
+
+<div id="Java전체_관련자료none" class="d-none 모든검색">
+  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+    <div class="개별카테고리" id="Java전체_node선택등"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='excel_js_HTML노드'>노드 </h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_j쿼리"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6>메모 : 구글에 jQuery cdn 이런거 검색하면 나오는 사이트가 있습니다.</h6>
+        <h6>메모 : 거기서 jQuery 3.x 버전 &#123;script&#125; 태그를 찾아서 여러분들 html 파일에 복붙</h6>
+        <h6>메모 : header 부분에 넣고 사용. 아래에 넣으면 위에서는 사용 안됨.</h6>
+        <h6 class="canvas_div" title="_02_html_파순01_읽는순서">html 읽는순서 (script, 리스너포함)</h6>
+        <h6 style="font-weight: bold;">메모 : 구문 : $(선택자).동작함수(); <span style="color:blueviolet">innerHtml 없고 html()</span> </h6>
+        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text();  => 현재값, </h6>
+        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text('Hello, jQuery!'); => 값 변경</h6>
+        <h6 class="canvas_div" title="j쿼리">(내부에 링크) jQurey는 자바스크립트 querySelectorAll 같은거 짧게 바꿔주는거</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title="jQuery_설치와기초사용법">jQuery_설치와기초사용법</h6>
+        <h6 class="canvas_div" title="jQuery_문법리스트">jQuery_문법리스트</h6>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_JS">
+      <div>
+        <h6 class="canvas_div" title='excel_js파일유의사항'>JS > 유의사항 : 클릭이벤트, e.target, 검색, innerText, innerHTML,outerHTML, </h6>
+        <h6 class="canvas_div" title='excel_js_scroll'>JS > scroll : 위치, 찾기, 좌표,   </h6>
+        <h6 style="color:blueviolet">JS > 정보 : 찾기, search, split, match, 정규식, indexOf(정규식 안씀, 값으로 검색, 뒤에서 검색 가능, 많이 씀)  </h6>
+        <h6 class="canvas_div" title='excel_js_search'>JS > search : <span style="color:blueviolet">시작위치 지정안됨,</span> 찾기, 정규식, 없으면 -1, 있으면 위치(첫글자 0부터)   </h6>
+        <h6 class="canvas_div" title='excel_js_indexOf'>JS > indexOf : 찾기, 정규식X, 문자열로 찾는다, 뒤에서부터 검색 가능, 많이 사용, 없으면 -1, 있으면 위치(첫글자 0부터)  </h6>
+        <h6 class="canvas_div" title='excel_js_split'>JS > split : 찾기, 정규식, 구분문자의 개수를 구할수 있다.   </h6>
+        <h6 class="canvas_div" title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
+        <h6 class="canvas_div" title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
+        <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
+        <h6 class="canvas_div" title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='excel_js_선긋기와위치'>JS > 선긋기, 캔버스, 위치, 좌표</h6>
+        <h6 class="canvas_div" title='excel_js_캔버스흐림현상'>JS > 캔버스 흐림 현상, 그림영역과 관련됨</h6>
+        <h6 class="canvas_div" title='excel_js_모바일이벤트자료'>JS > 모바일이벤트자료, 마우스, 터치, 연습, 임시, 메모</h6>
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_JS2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='JS2_객체Object_JSON_기본' style="color:blueviolet">JS2 > 객체Object_JSON_기본</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h6>
+        <h6 class="canvas_div" title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
+        <h6 class="canvas_div" title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
+        <h6 class="canvas_div" title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
+        <h6 class="canvas_div" title='JS2_마우스이벤트'>JS2 > mouse, 마우스, 이벤트</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
+        <h6 class="canvas_div" title='JS2_getComputedStyle'>JS2 > getComputedStyle 사용법, 정보, 속성관련 몇개</h6>
+
+      </div>
+      <div>
+        <h6 class="canvas_div" title="_03_개념정리_파순03_속성변경">속성추가, 속성변경, 속성존재 확인, style</h6>
+        <h6 class="canvas_div" title="_03_개념정리_파순05_queryselector특징">querySelector, querySelectorAll (요소선택)</h6>
+        <h6 class="canvas_div" title="_03_개념정리_파순06_onclick함수">html에서 onclick="function () { };"</h6>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="htmlJavascript전체_JS3"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title="_04_javascript_파순01_코딩작성규칙">js 코드 작성시 규칙들? 에러처리</h6>
+        <h6 class="canvas_div" title="_04_javascript_파순02_기본정보margin0auto등">margin 0 outo,length,ComputedStyle,스크롤</h6>
+        <h6 class="canvas_div" title="_04_javascript_파순03_함수중단">함수중단 return, 시작script에 return??</h6>
+        <h6 class="canvas_div" title="_04_javascript_파순04_배열과보이는ul가로맞추기">배열과 보이는ul가로맞추기</h6>
+        
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_JS4"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='JS_CANVAS선긋기txt'>JS_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
+        <h6 class="canvas_div" title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
+        <h6 class="canvas_div" title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
+        <h6 class="canvas_div" title='JS_textarea내용의탭으로구분여러줄가공'>JS_textarea내용의탭으로구분여러줄가공</h6>
+        <h6 class="canvas_div" title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
+        <h6 class="canvas_div" title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
+      </div>
+      <div>
+        <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(1);==>12.1, 반올림</h6>
+        <h6>메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1</h6>
+        <h6>메모_#split:줄바꿈정보=문자열.split('\n'); 탭으로분리정보=문자열.split('\t');</h6>
+        <h6>메모_#정규식 : 3.121px의 경우 소수점까지 사라져 숫자만 추출시 ==> 3121이 된다.</h6>
+        <h6>메모_#left#substring : '3.121px'.substring(0,5) ==> 3.121 (숫자.toFixed(0)==>정수)</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='JS_웹페이지이동'><a href="https://www.daleseo.com/js-location/"
+          target="_blank">자바스크립트로 웹 페이지 이동하는 방법</a></h6>
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_form과map"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title="_04_javascript_from과map">from과 map, break(반복문벗어남), continue(다음반복으로)</h6>
+        <h6 class="canvas_div" title="_04_javascript_every와some">every, some</h6>
+        <h6 class="canvas_div" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
+        <h6 class="canvas_div" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
+        <h6 class="canvas_div" title="_04_javascript_배열중복제거">배열 중복 제거하는 3가지 방법</h6>
+        <h6 class="fw-bold"><a href="https://creativevista.tistory.com/entry/자바스크립트JavaScript-배열-완벽-가이드-배열-메소드와-활용법-총정리" target="_blank">자바스크립트 배열 완벽 가이드 : 여러가지 다 있음</a> </h6>
+        <h6 class="fw-bold"><a href="https://ruriruriya.tistory.com/226" target="_blank">[JavaScript] 자바스크립트 - Set과 Map 그리고 배열과 객체와의 차이점</a> </h6>
+      
+
+
+        
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet">리터럴 : index사용가능, 반복가능 => 문자열, 배열</h6>
+        <h6 class="canvas_div fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet">Set로 중복제거후 다시 배열로 변환하여 사용하면 된다.</h6>
+        <h6 class="canvas_div fw-bold" title='JS2_set교집합차집합합집합'>
+          <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set활용법</a>, 
+          Set 객체는 '집합'의 개념. 있나 없나 확인, index로 접근 안됨
+        </h6>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="개별카테고리" id="htmlJavascript전체_참고2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='참고_특수문자txt'>참고_특수문자.txt</h6>
+        <h6 class="canvas_div" title='참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt'>참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt</h6>
+        <h6 class="fw-bold" style="color:blueviolet">메모_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
+        <h6 class="fw-bold" style="color:blueviolet">메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
+        <h6 class="canvas_div" title='참고_클래스아이디숫자안됨txt'>참고_클래스아이디숫자안됨.txt</h6>
+        <h6 class="canvas_div" title='참고_메모장에서열면ancitxt'>참고_메모장에서열면anci.txt</h6>
+        <h6 class="canvas_div" title='참고_구글_그림에서데이터추출txt'>참고_구글_그림에서데이터추출.txt</h6>
+        <h6 class="canvas_div" title='참고_더하기_숫자_소수점_변수에러상황txt'>참고_더하기_숫자_소수점_변수에러상황.txt</h6>
+
+      </div>
+      <div>
+        <h6 class="canvas_div" title='height'>scrollHeight, clientHeight, offsetHeight</h6>
+        <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
+        <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
+        <h6><a href="https://2boki.tistory.com/129" target="_blank">[제이쿼리] load() 메소드 사용하여 다른 html의 값 가져오기</a></h6>
+        <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
+        <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
+        <h6><a href="https://kingofbackend.tistory.com/187" target="_blank">[Javascript]Json과 JavaScript Object의 차이점</a></h6>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="jQuery_설치와기초사용법">
+    <h5><a href="https://milku.tistory.com/84" target="_blank">jQuery_설치와기초사용법</a></h5>
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음" style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_03.png" alt="이미지없음" style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_05.png" alt="이미지없음" style="vertical-align: top;">
+    <br><br><br><br><br><br><br>
+  </div>
+  <div id="jQuery_문법리스트">
+    <h5><a href="https://soft91.tistory.com/9" target="_blank">JQuery - JQuery 기본문법</a></h5>
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_01.png" alt="이미지없음" style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_03.png" alt="이미지없음" style="vertical-align: top;">
+    <img src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+    <br><br><br><br><br><br><br>
+  </div>
+  
+  <div id="j쿼리"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <code style="font-weight: bold;">자바 : document.querySelector('#html파일이름').innerHtml</code>
+      <code style="font-weight: bold;text-indent: 15px;">j쿼리 : $('#html파일이름').html() => <span style="color:blueviolet">html() 빈 소괄호</span></code>
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <section id="_02_html_파순01_읽는순서">
+    <h4>1. 순서대로 읽되 script 만났을때, 에러코드 이후 실행 안되고 새롭게.</h4>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_01_읽는순서.png" alt="이미지없음">
+    <h4>2. 함수안의 변수가 script에 기본실행 변수이면 위치에 상관없이 인식됨.</h4>
+    <h4>3. script파일 읽어올때 실행되는 동작 (project ul 높이 변경)</h4>
+    <li>A. [F5]새로고침이나 html파일 링크로 이동시 script파일안의 함수를 제외한 모든 코드 실행됨.</li>
+    <li>B. project에 사용된 코드 : 여러개의 ul 높이를 비교하여 최대높이로 통일시키는 동작.</li>
+    <li>ul 높이 변경 실행 전,후 비교</li>
+    <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_02_ul높이전후.png" alt="이미지없음">
+    <h4>4. script파일 이벤트리스너 실행 과정</h4>
+    <li>A. 이벤트 감지하여 링크된 script파일에 정의된 내용을 실행한다.</li>
+    <li>B. 이벤트리스너란? html(화면)에서 일어난 일들을 감지하는 것.</li>
+    <li>C. 많은 이벤트 중에 'click' 이벤트 감지에 대해서 알아봄</li>
+    <li>D. 코드는 순서대로 실행된다는 것을 염두에 두고 이해하면 좋을 듯 하다.</li>
+    <li>E. 순서 : 이벤트감지할 변수지정 - 실행할 함수 만들기 - 이벤리스너 등록하기. </li>
+    <li>F. project에 사용된 이벤트리스너</li>
+    <br><br><br><br>
   </section>
 
   <div id="excel_js파일유의사항"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
@@ -1599,7 +1826,7 @@
         끝부분텍스트
       </code>
       <code class="fw-bold">• <span style="color:blueviolet">getElementsByTagName : 하나의 요소.getElementsByTagName, querySelectorAll 은 에러</span></code>
-      <code class="fw-bold">• 참고 : 1) document.querySelector('.??').getElementsByTagName('*').length : <span style="color:blueviolet">모든 태그를 도는데</span></code>
+      <code class="fw-bold">• 참고 : 1) document.querySelector('.클래스').getElementsByTagName('*').length : <span style="color:blueviolet">모든 태그를 도는데</span></code>
       <code class="fw-bold" style="text-indent: 68px;">2) 돌고 있는 Tag 의 previousSibling(이전 형제 노드, #comment, #text 포함) 의 </code>
       <code class="fw-bold" style="text-indent: 93px;">nodeNme='#text' 이면 앞쪽에 문자열이 있다는 의미. </code>
       <code class="fw-bold" style="text-indent: 68px;">3) 1), 2) 반복하면서 text 작업. 마지막 태그일때 nextSibling 의 nodeName='#text'이면 마지막 부분에 문자열이 있다</code>
@@ -2159,38 +2386,6 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-
-  <section id="_03_개념정리_파순02_선택자선택연습">
-    <h4>1.querySelectorAll(선택자표현), querySelector(선택자표현)으로 사용된다.</h4>
-    <br>
-    <h4>2.후손,자손,형제, 선택자 종류 및 표현방법</h4>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_02_선택자.png" alt="이미지없음">
-    <br>
-    <h4>3.후손(공백)과 자손(>) 선택 예제</h4>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_03_자손후손.png" alt="이미지없음">
-    <br>
-    <h4>4.같은레벨 형제(+, ~) 선택 예제</h4>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_04_형제.png" alt="이미지없음">
-    <br>
-    <h4>5.속성 선택자. [속성명], [속성명="속성값"]</h4>
-    <li>속성명과 속성값은 아무거나 "새롭게" 만들어도 된다.</li>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명1.png" alt="이미지없음">
-    <br>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명2.png" alt="이미지없음">
-    <br>
-    <h4 id="move6">&#9634; project 선택자 사용 참고</h4>
-    <h5>A. document.querySelector('#결과 > div > div:not(:nth-first-child) > #스크롤이동3'); </h5>
-    <h5>B. '스크롤이동3'을 변수로 받아야 하는 경우</h5>
-    <h5 class="li_들작">var 앞에문자열='#결과 > div > div:not(:nth-first-child) > ';</h5>
-    <h5 class="li_들작">var 아이디='#' + event.target.id;</h5>
-    <h5 class="li_들작">var 최종전달문자=앞에문자열 + 아이디;</h5>
-    <h5 class="li_들작">var 스크롤요소=document.querySelector(최종전달문자);</h5>
-    <h5 class="li_들작">또는</h5>
-    <h5 class="li_들작">var 아이디='#' + event.target.id; </h5>
-    <h5 class="li_들작">var 스크롤요소 = document.querySelector('#결과 > div > div:not(:nth-first-child) > ' + 아이디);</h5>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_06_스크롤이동선택자.png" alt="이미지없음">
-    <br><br><br><br>
-  </section>
 
   <section id="_03_개념정리_파순03_속성변경">
     <h4>1. setAttribute() : 속성을 정한다. getAttribute()  : 속성을 가져온다. (style 아님!!)</h4>
@@ -3015,14 +3210,14 @@
         끝부분텍스트
       </code>
       <h5 class="fw-bold">childNodes : 주석노드, 텍스트노드 포함, 첫번째 자식들만(첫번째 자식들 내부의 노드는 해당없음).</h5>
-      <code class="fw-bold">• document.querySelector('.??').childNodes[i].nodeName : 내부텍스트</code>
+      <code class="fw-bold">• document.querySelector('.클래스').childNodes[i].nodeName : 내부텍스트</code>
       <code class="fw-bold" style="text-indent: 15px;">childNodes : 첫번째 자식들. 자식들 내부의 노드는 제외됨. (children은 element요소만 해당)</code>
       <code class="fw-bold" style="text-indent: 15px;">nodeName : <span style="color:blueviolet">#text => innetText 안됨,</span> textContent</code>
       <code class="fw-bold" style="text-indent: 15px;">nodeName : SPAN => innetText, textContent</code>
       <h5 class="fw-bold">children : 주석노드X, 텍스트노드 X, 첫번째 자식들만(첫번째 자식들 내부의 노드는 해당없음).</h5>
       <h5 class="fw-bold">getElementsByTagName('*') : 주석노드X, 텍스트노드 X, 모든 태그(태그 내부의 태그 포함)</h5>
-      <code class="fw-bold">• 힌트 : document.querySelector('.??').getElementsByTagName('*').length</code>
-      <code class="fw-bold" style="text-indent: 15px;">힌트 : document.querySelector('.??').getElementsByTagName('*')[i].parentNode.nodeName</code>
+      <code class="fw-bold">• 힌트 : document.querySelector('.클래스').getElementsByTagName('*').length</code>
+      <code class="fw-bold" style="text-indent: 15px;">힌트 : document.querySelector('.클래스').getElementsByTagName('*')[i].parentNode.nodeName</code>
       <h5 class="fw-bold">기타 노드</h5>
       <code class="fw-bold">• parentNode: 부모 노드</code>
       <code class="fw-bold">• firstChild: 첫번째 자식 노드</code>
@@ -3048,225 +3243,6 @@
       <code class="fw-bold">• 요소 자체는 nodeValue로 접근이 안된다. null 반환, document.querySelector('.임시클래스').nodeValue</code>
       <code class="fw-bold" style="color:blueviolet">• 같은 레벨에 text노드 - 요소 - text노드 형식이면 text노드는 각각 구분된다.</code>
     </div>
-  </div>
-
-  <div id="CSS_1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">:nth-of-type(), :nth-child(), :first-child, :last-child</h5>
-      <code class="fw-bold">• .클래스:nth-of-type(1), div:nth-of-type(1)</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 순번은 해당 자식들 클래스, 아이디, 태그, 구분없는 순번!!</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 해당순번이 div일때, 클래스일때 작동함!!</code>
-      <code class="fw-bold">• ex : 11개의 자식이 있고 처음 자식이 div, 나머지 자식은 p 일때</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 세번째 자식 = 두번째 p 요소</code>
-      <code class="fw-bold">• ex : div > p:nth-child(3) 의 의미는</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 1.세번째 자식을 확인한다, 2.p태그이면 적용한다. <span style="color:blueviolet">"p태그중 세번째 p태그 아님!!!"</span></code>
-      <code class="fw-bold" style="color:blueviolet">• HTML의 구조에 따라 예상치 않게 적용될 수 있으니 참고바람.</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="CSS_엣지와크롬1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="CSS_background"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• 검색어 : 배경색, rgb, rgba, 그라데이션, 회전, 그림, 색상, 색깔</code>
-      <h5 class="fw-bold">색상 표현방법 : 1.이름(147개), 2.16진수, 3.rgb 또는 rgba, 4.hsl 또는 hsla</h5>
-      <code class="fw-bold" style="text-indent: 15px;">- 16진수 예)#00FF99, 숫자는 Red, Green, Blue 순서 (FF는 10진수 255) : #으로 시작하고 두자리씩 3개의 16진수로 색상표현</code>
-      <code class="fw-bold" style="text-indent: 15px;">- rgb(Red, Green, Blue) : Red, Green, Blue는 0~255 숫자, <span style="color:blueviolet">vs code 색깔부분 커서 올리면 rgb 확인 가능</span></code>
-      <code class="fw-bold" style="text-indent: 15px;">- rgba(Red, Green, Blue, 불투명도) : 불투명도 1 = 완전 진하게, 불투명도 0 = 흰색</code>
-      <div style="margin-bottom: 10px;">
-        <div class="d-inline-block" style="vertical-align: top;width:200px;">
-          <div style="background-color:aqua;border:1px solid black;text-align: center;margin-bottom: -1px;">aqua</div>
-          <div style="background-color:bisque;border:1px solid black;text-align: center;margin-bottom: -1px;">bisque</div>
-          <div style="background-color:beige;border:1px solid black;text-align: center;margin-bottom: -1px;">beige</div>
-        </div>
-        <div class="d-inline-block" style="vertical-align: top;width:200px;">
-          <div style="background-color:blueviolet;border:1px solid black;text-align: center;margin-bottom: -1px;">blueviolet</div>
-          <div style="background-color:blanchedalmond;border:1px solid black;text-align: center;margin-bottom: -1px;">blanchedalmond</div>
-          <div style="background-color:cornflowerblue;border:1px solid black;text-align: center;margin-bottom: -1px;">cornflowerblue</div>
-        </div>
-        <div class="d-inline-block" style="vertical-align: top;width:200px;">
-          <div style="background-color:chartreuse;border:1px solid black;text-align: center;margin-bottom: -1px;">chartreuse</div>
-          <div style="background-color:chocolate;border:1px solid black;text-align: center;margin-bottom: -1px;">chocolate</div>
-          <div style="background-color:hotpink;border:1px solid black;text-align: center;margin-bottom: -1px;">hotpink</div>
-        </div>
-        <div class="d-inline-block" style="vertical-align: top;width:200px;">
-          <div style="background-color:rgba(138,43,226,1);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,1)</div>
-          <div style="background-color:rgba(138,43,226,0);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,0)</div>
-          <div style="background-color:rgba(138,43,226,0.5);border:1px solid black;text-align: center;margin-bottom: -1px;">rgba(138,43,226,0.5)</div>
-        </div>
-      </div>
-      <h5 class="fw-bold">background</h5>
-      <code class="fw-bold">• background-image : url만, 그라데이션과 url같이는 쉼표(,)로 전달</code>
-      <code class="fw-bold" style="text-indent: 15px;">background-image:linear-gradient(rgba(0,0,255,0.5), rgba(0,0,255,0.5)), url(portal/images/문서연결_kim/소파.png)</code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold">• background-repeat: no-repeat; 기본은 빈곳 반복, repeat, repeat-x, repeat-y, round, space</code>
-      <div class="fw-bold" style="vertical-align: top; display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);">background-repeat: repeat</div>
-      <div class="fw-bold" style="vertical-align: top;display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: repeat-x;">
-        background-repeat: repeat-x<br>가로로만 반복, repeat-y는 세로로만 반복<br><span style="color:blue">원본그림 비율 유지</span> </div>
-      <div class="fw-bold" style="vertical-align: top;display: inline-block;width:270px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: round;">
-        background-repeat: round<br>div폭=그림폭<br>가로폭만큼 그림이 꽉차도록 할때.<br>세로는 반복됨<br>가로와 세로비율이 변할수 있음<br>폭이나 높이가 원본의 1.5이면 그림이 2개가 들어감. 그리고 여분은 
-        <br>그림을 늘리거나 줄여서 채움
-      </div>
-      <br><br>
-      <div class="fw-bold" style="border:1px solid black; vertical-align: top;display: inline-block;width:270px;height:192px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: space;">
-        background-repeat: space<br>글자처럼 취급되어<br>배분정렬처럼 된다<br>세로도 배분정렬처럼 된다.<br><br>원본그림 비율 유지
-        <br>폭이나 높이가 1.5이면 그림이 추가되지 않고 원본유지
-      </div>
-      <div class="fw-bold" style="border:1px solid black;vertical-align: top;display: inline-block;width:440px;height:200px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: space;">
-        background-repeat: space<br>글자처럼 취급되어, 배분정렬처럼 된다,<br>세로도 배분정렬처럼 된다.<br><br>원본그림 비율 유지
-        <br>폭이나 높이가 1.5이면 그림이 추가되지 않고 원본유지
-      </div>
-      <code class="fw-bold" style="color:blueviolet">• background-size : 1)auto 2)contain 3)cover 4)100px 100px 4)70% 70%</code>
-      <code class="fw-bold" style="text-indent: 15px;">1)auto : 원본유지, 요소가 작다면 그림의 일부가 보이게 됨.</code>
-      <code class="fw-bold" style="text-indent: 15px;">2)contain : 그림이 모두 들어오게 되는 size. 원본비율 유지 </code>
-      <code class="fw-bold" style="text-indent: 15px;">3)cover : 채워지지 않는 부분이 없도록 가로 또는 세로의 폭을 채움, 원본지율 유지</code>
-      <code class="fw-bold" style="text-indent: 15px;">4)크기 지정 : 요소 안에 들어갈 그림 크기 지정. 원본의 비율이 달라짐</code>
-      <code class="fw-bold" style="text-indent: 15px;">5)비율 지정 : 요소의 폭, 높이의 지정된 %만큼의 크기로 들어감. 원본의 비율이 달라짐</code>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold" style="color:blueviolet">그림 회전 방법 (요소)</h5>
-      <code class="fw-bold" style="color:blueviolet">1)transform속성은 요소를 변형할때 사용되며, rotate()함수를 사용하여 요소를 회전할 수 있다.</code>
-      <code class="fw-bold" style="text-indent: 15px;">-transform: rotate(90deg); 양수는 시계방향, 음수를 시계반대방향, 현상태에서 회전</code>
-      <code class="fw-bold" style="color:blueviolet;margin-bottom: 5px;">2)회전중심점 지정 : transform-origin: top left;</code><br><br>
-      <div class="fw-bold" style="border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image:url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
-        background-repeat:<br> no-repeat<br>
-      </div>
-      <div class="fw-bold" style="margin-left:10px;transform:rotate(40deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
-        background-repeat:<br> no-repeat<br>transform:rotate(40deg);
-      </div>
-      <div class="fw-bold" style="margin-left:80px; transform-origin:top left;transform:rotate(40deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
-        background-repeat:<br> no-repeat<br>transform:rotate(40deg);<br><span style="color:yellow">top left</span> 
-      </div>
-      <div class="fw-bold" style="transform-origin:top left;margin-left:1px;transform:rotate(90deg); border:1px solid black;vertical-align: top;display: inline-block;width:195px;height:97px;background-image: url(portal/images/문서연결_kim/소파.png);background-repeat: no-repeat;">
-        background-repeat:<br> no-repeat<br>transform:rotate(90deg);<br><span style="color:yellow">top left</span> 
-      </div><br><br><br>
-      
-      <br><br>
-
-
-
-    </div>
-  </div>
-
-  <div id="CSS_줄바꿈"><!-- 참고 -->
-    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold"><a
-          href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
-          target="_blank">자바스크립트로 오버플로 확인</a></h5>
-      <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
-      <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
-      <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
-      <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
-      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
-      <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
-      <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
-      <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
-      <h6 class="fw-bold">4. 줄바꿈 기준 : word-break, 기본값 normal, 상속 yes</h6>
-      <h6 style="text-indent: 23px;">CJK(Chinese - Japanese - Korean, 중국·일본·한국)는 일본어, 한국어, 중국어를 통틀어 이르는 말</h6>
-      <h6 style="text-indent: 23px;">normal : CJK 문자는 글자 기준(break-all)으로, CJK 이외의 문자는 단어 기준으로 줄바꿈합니다.</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
-        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며
-        공백이 늘어남)</h6>
-      <h6 style="text-indent: 23px;word-break:normal;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
-        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)</h6>
-      <h6 style="text-indent: 23px;word-break:normal;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을
-        맞추며 공백이 늘어남)</h6>
-      <h6 style="text-indent: 23px;">break-all : 글자 기준으로 줄바꿈합니다.</h6>
-      <h6 style="text-indent: 23px;">keep-all : 단어 기준으로 줄바꿈합니다.</h6>
-      <h6 style="text-indent: 23px;">initial : 기본값으로 설정합니다.</h6>
-      <h6 style="text-indent: 23px;">inherit : 부모 요소의 속성값을 상속받습니다.</h6>
-      <h6 class="fw-bold">5. 한 줄에 inline-block, inline 요소가 여러개 있을때 맨 윗단 정렬 ==> vertical-align:top;</h6>
-      <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
-    </div>
-    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
-
-    </div>
-    <br><br><br><br><br><br><br>
-  </div>
-
-  <div id="excel_js_속성선택자"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed src="portal/images/문서연결_엑셀VBA/CSS_특정상황_속성등_스타일.txt" width=910px height=900px style="border:1px solid black;">
-  </div>
-
-  <section id="_03_개념정리_파순01_요소속성선택자">
-    <h4>1.html요소(태그) 구조</h4>
-    <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_01_요소.png" alt="이미지없음">
-    <br><br><br><br>
-  </section>
-
-  <div id="CSS_이미지_배경에서_일부분만txt">
-    <embed src="portal/images/black_코딩등메모장/CSS_이미지_배경에서_일부분만.txt" width=910px height=900px style="border:1px solid black;">
-  </div>
-
-  <div id="htmlJavascript_kimhtml"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <code class="fw-bold">• kim.html header : 드롭다운 부트스트랩, 지운거</code>
-      <img src="portal/images/문서연결_엑셀VBA/kimhtml_드롭다운.png" alt="이미지없음">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="참고_특수문자txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
-  </div>
-  <div id="참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt" width=1000px height=870px>
-  </div>
-  <div id="참고_클래스아이디숫자안됨txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_클래스아이디숫자안됨.txt" width=1000px height=870px>
-  </div>
-  <div id="참고_메모장에서열면ancitxt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_메모장에서열면anci.txt" width=1000px height=870px>
-  </div>
-  <div id="참고_구글_그림에서데이터추출txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_구글_그림에서데이터추출.txt" width=1000px height=870px>
-  </div>
-  <div id="참고_더하기_숫자_소수점_변수에러상황txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-    <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_더하기_숫자_소수점_변수에러상황.txt" width=1000px height=870px>
   </div>
 
   <div id="height"><!-- 참고 -->
@@ -3412,7 +3388,7 @@
         
       </div>
       <div>
-
+        <h6 class="canvas_div" title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드, 스크롤 : data-bs-scroll='true' </h6>
       </div>
       <div>
 
@@ -3607,6 +3583,24 @@
     <br><br><br><br>
   </section>
 
+  <div id="기타전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=290px style="border:1px solid black;">
+      <img src="portal/images/문서연결_엑셀VBA/캔버스관련코드.png" alt="이미지없음">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold" style="text-indent: 23px;">부트스트랩 오프캔버스 스크롤 : <span style="color:blueviolet">data-bs-scroll="true"</span></h6>
+    </div>
+  </div>
+
   <div id="동영상편집_링크"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <code class="fw-bold">• <a href="https://m.blog.naver.com/jhk8967/222410305547" target="_blank">샷컷과 필모라X 사용 후기</a> </code>
@@ -3669,18 +3663,6 @@
       <div>
         <h6 class="canvas_div" title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
         <h6 class="canvas_div" title='excel_배열_RANGE'>배열_Range에서 > 배열을 Range에 적용시 어떻게 표시되는지</h6>
-      </div>
-      <div>
-
-      </div>
-    </div>
-
-    <div class="개별카테고리" id="excel캔버스전체_대기"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <div>
-
-      </div>
-      <div>
-
       </div>
       <div>
 

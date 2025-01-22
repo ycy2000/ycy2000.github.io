@@ -7,21 +7,7 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습() {
-
-
-  Set.prototype.isSuperset = function (subset) {
-    const supersetArr = [...this];
-    return [...subset].every(v => supersetArr.includes(v));}
-
-
-
-  const setA = new Set([1, 2, 3, 4]);
-  const setB = new Set([2, 4]);
-  
-  // setA가 setB의 상위 집합인지 확인한다.
-  console.log(setA.isSuperset(setB),); // true
-  // setB가 setA의 상위 집합인지 확인한다.
-  console.log(setB.isSuperset(setA)); // false
+console.log(document.querySelectorAll('body .?? div').length)
 
   
 }
@@ -1185,7 +1171,8 @@ var 리스너_header = document.querySelector('header');
 var 리스너_전체대체 = document.querySelector('#전체대체');//캔버스클릭시(e)
 var 리스너_excel캔버스전체 = document.querySelector('#excel캔버스전체');
 var 리스너_git관련전체 = document.querySelector('#git관련전체');
-var 리스너_htmlJavascript전체 = document.querySelector('#htmlJavascript전체');
+var 리스너_CSS전체 = document.querySelector('#CSS전체');
+var 리스너_Java전체 = document.querySelector('#Java전체');
 var 리스너_기타전체 = document.querySelector('#기타전체');
 
 function header_클릭시(e) {
@@ -1197,21 +1184,31 @@ function header_클릭시(e) {
   if (e.target.innerHTML == 'Excel,Vba') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='excel캔버스전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
     선택한캔버스_카테고리작성및_초기작업();
   }
   if (e.target.innerHTML == '깃_Code_부트') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='git관련전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
     선택한캔버스_카테고리작성및_초기작업();
   }
-  if (e.target.innerHTML == 'htmlJava') {//캔버스 들어가려면 클릭이 된다.
-    선택한캔버스id='htmlJavascript전체';
+  if (e.target.innerHTML == 'CSS') {//캔버스 들어가려면 클릭이 된다.
+    선택한캔버스id='CSS전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
+    선택한캔버스_카테고리작성및_초기작업();
+  }
+  if (e.target.innerHTML == 'Java') {//캔버스 들어가려면 클릭이 된다.
+    선택한캔버스id='Java전체';
+    console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
     선택한캔버스_카테고리작성및_초기작업();
   }
   if (e.target.innerHTML == '기타') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='기타전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
     선택한캔버스_카테고리작성및_초기작업();
   }
 }
@@ -1609,7 +1606,9 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 리스너_excel캔버스전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_git관련전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_git관련전체.addEventListener('change', 선택한캔버스_검색input_change시);
-리스너_htmlJavascript전체.addEventListener('click', 선택한캔버스클릭시);
-리스너_htmlJavascript전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_CSS전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_CSS전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_Java전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_Java전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_기타전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_기타전체.addEventListener('change', 선택한캔버스_검색input_change시);
