@@ -792,9 +792,9 @@
 
 <div id="CSS전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="htmlJavascript전체_html기본"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="htmlJavascript전체_css1">
       <div>
-        <h6 class="canvas_div" title="_02_html_파순02_엔티티">엔티티(entity) 문자, 특수문자</h6>
+        <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
         <h6 class="canvas_div" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
         <h6>text-indent : 상속됨</h6>  
         <h6>태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
@@ -807,7 +807,7 @@
 
       </div>
     </div>
-    <div class="개별카테고리" id="htmlJavascript전체_css"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="htmlJavascript전체_css2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
         <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
@@ -829,30 +829,50 @@
   </div>
 
   <!-- 개별카테고리 끝나면 개별 id 정보 -->
-  <section id="_02_html_파순02_엔티티">
-    <h4>1. entity, 특수문자, 코딩시... pre, 유니코드 https://blogpack.tistory.com/787</h4>
-    <pre style="font-size:20px;">
-    html 특수문자 : ... ①②③④⑤⑥⑦⑧⑨
-           < => &amp;lt;   > => &amp;gt;    공백 :  &amp;nbsp;     ▢ :  &amp;#9634;    ▸ :  &amp;#9656 ○
+  <div id="flex_align_text_align등실습"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class="d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">정렬은 자식요소에 영향을 미치는 것인데 자식요소에 적용하는 실수를 많이 하는것 같다.</h5>
+      <h5 class="fw-bold">div요소에 display:inline 설정하면 width나 height를 지정하여도 무시된다.</h5>
+      <h5 class="fw-bold">
+        <a style="color:blueviolet" href="https://codingeverybody.kr/css로-텍스트-가운데-정렬하기/" target="_blank">세로 가운데 정렬1</a>, 
+        <a style="color:blueviolet" href="https://webstoryboy.co.kr/1677" target="_blank"> text와 관련된 속성</a>과
+        <a style="color:blueviolet" href="https://jae-yoon.tistory.com/7" target="_blank"> vertical-align(수직정렬 아님)</a>
+      </h5>
+      <h5 class="fw-bold">스타일 : text- => <span style="font-size:16px;font-weight: normal;">나의 textcontent부분의 내용들에 관한 설정 (자식이 inline속성인 경우도 글자[text]로 취급)</span> </h5>
+      <h6>• span은 글자처럼 취급되므로 확인이 쉽게 span을 사용하여 예시 작성함</h6>
+      <h6>
+        <a style="color:blueviolet" href="https://codingeverybody.kr/css-text-shadow-속성-올바른-이해와-사용-방법/" target="_blank">• text-shadow : 그림자 효과</a>
+        : /* &#60;offset-x> | &#60;offset-y> | &#60;blur-radius> | &#60;color> */ 중첩시 콤마(,)로 구분
+      </h6>
+      
+      <div>
+        <div style="display:inline-block;width:200px;height:100px;border:1px solid black;vertical-align: top;">
+          <span>SPAN</span>
 
-           ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙ
+        </div>
+        <div style="display:inline-block;width:200px;height:100px;border:1px solid black;vertical-align: top;">
 
-    &lt;pre&gt; &lt;/pre&gt; : pre안의 내용은 html에서 보이는 스페이스와 엔터(줄바꿈)을 보이는대로 표시해준다.
-                   pre 태그안에서 여는태그만  &amp;lt;로 하면 많은부분 코드를 그대로 출력해줄수 있는듯.
+        </div>
+        <div style="display:inline-block;width:200px;height:100px;border:1px solid black;vertical-align: top;">
 
-    script : alert나, console.log의 화면출력되는 텍스트 줄바꿈 => '텍스트\n' 처럼 텍스트안에 '\n'을 텍스트값으로 전달 
+        </div>
 
-    script : 코드가 길어서 줄바꿈 => 엔터 치고 다음줄에서 + 로 연결.
-
-    html,css,script : 선택줄 또는 범위 주석으로 감싸거나 생성 => ctrl  + /
-                      선택줄 한줄 정보 지우기 => shift + delete
-                      범위선택안하고 => ctrl + c => 한줄 복사됨. 한줄은 드래그 안해도 됨.
-    </pre>
-    <h4>2. 엔티티(entity) 문자</h4>
-    <img src="portal/images/문서연결_PROJECT/02_html_파순02_엔티티_01_엔티티.png" alt="이미지없음">
-    <br><br><br><br>
-  </section>>
-
+      </div>
+      
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold">•</code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <a href="" target="_blank"></a>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <img src="" alt="이미지없음">
+    </div>
+  </div>   
+   
   <section id="_02_html_파순03_박스모델">
     <h4>1. 박스모델, box-sizing</h4>
     <img src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_01_박스모델.png" alt="이미지없음">

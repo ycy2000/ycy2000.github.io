@@ -17,7 +17,6 @@ function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
 
 
-
   var 캔버스관련자료none안_타겟element;
   var 결과부분 = document.querySelector('#전체대체');
   //다른곳 클릭하면 캔버스 그림이 지워지는 이유를 모르겠다.
@@ -1175,6 +1174,7 @@ var 리스너_CSS전체 = document.querySelector('#CSS전체');
 var 리스너_Java전체 = document.querySelector('#Java전체');
 var 리스너_기타전체 = document.querySelector('#기타전체');
 
+
 function header_클릭시(e) {
   //Offcanvas클릭은 영향없다. 다른것일때
   console.log('header_클릭시(e)');
@@ -1612,3 +1612,4 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 리스너_Java전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_기타전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_기타전체.addEventListener('change', 선택한캔버스_검색input_change시);
+
