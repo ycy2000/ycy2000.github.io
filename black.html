@@ -47,7 +47,7 @@
           <div class="d-inline-block" title="main과우측" style="text-decoration: underline;">main과우측</div>
 
           <button onclick="navbar_임시함수_click ()">임시함수</button>
-          <button onclick="무게와교섭임시적용();">무게&교섭적용</button><input style="width:120px;margin-left:3px;text-align: center;"
+          <button onclick="무게와교섭임시적용();">무게&교섭적용</button><input style="width:320px;margin-left:3px;text-align: center;"
             type="text" id="무게와교섭임시적용input">
           <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
           <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse"
@@ -299,8 +299,22 @@
     </div>
   </div>
   <div id="main과우측">
-    <div class="d-inline-block" id="main사이드">
-
+    <div class="d-inline-block" id="main사이드" style="white-space: normal;">
+      <li class="파일연결" title="S1_각성닌자" style="font-weight: bold;color:blueviolet">각성닌자 
+        <button id="닌자버튼" style="width:33px;" onclick="
+          if (document.querySelector('#닌자버튼').innerHTML=='줄임') {
+            document.querySelector('#main사이드').style.width='125px';
+            document.querySelector('#main사이드').style.whiteSpace='nowrap';
+            document.querySelector('#main사이드').style.overflow='hidden';
+            document.querySelector('#닌자버튼').innerHTML='넓힘'
+          } else {
+            document.querySelector('#main사이드').style.width='400px';
+            document.querySelector('#main사이드').style.whiteSpace='normal';
+            document.querySelector('#main사이드').style.overflow='visible';
+            document.querySelector('#닌자버튼').innerHTML='줄임'
+          }
+        ">줄임</button>
+      </li>
       <li class="파일연결" title="S1_인벤중범선증축표">인벤 : 중범선 중축표 [목표]</li>
       <li class="파일연결" title="S0_01_까주모음참고">까마귀주화 모음 참고</li>
       <li class="파일연결" title="S1_해상일퀘동선">해상일퀘 동선, 재료수급 png </li>
@@ -534,6 +548,16 @@
       <div id="S0_물교메모" style="border:1px solid black;">
         <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
         <embed id="embed부분" src="portal/images/black_문서/S0_물교메모.txt" width=1000px height=870px>
+      </div>
+      <div id="S1_각성닌자">
+        <h6>▢ <span style="font-weight: bold;color:blueviolet">번뜩이는 살의 (SHIFT+좌)</span>  : 주무기 발목베기 잠궈주면 스왑없이 발동</h6>
+        <h6>▢ <a href="https://www.youtube.com/watch?v=1Kk96wiUC7E&t=28s" target="_blank">각성닌자 스킬 활용, 루틴, 마컨 /BDO KR - Ninja Awakening Skill Usage Guide. Routine, Movements</a></h6>
+        <h6>▢ <a href="https://www.youtube.com/watch?v=EESY_7Qub0o" target="_blank">언제까지 겨드랑이 춤만 출거야??? ◀각성닌자 입문~초보 필수 가이드▶무빙&운영 기초 / [BDO] Ninja AWK guide for Beginner. movement.</a></h6>
+        <h6 style="text-indent: 19px;">각성닌자 기초무빙</h6>
+        <img src="portal/images/black_문서/S1_각성닌자기초무빙.png" alt="이미지없음">
+        <h6>▢ <a href="https://www.youtube.com/watch?v=Pkse96ZOUwA" target="_blank">[검은사막] 각성 닌자 무한 순환 사냥 콤보 ｜[BDO] Ninja AWK Infinite Circular PVE Combo</a></h6>
+        <img src="portal/images/black_문서/S1_각성닌자무한콤보.png" alt="이미지없음">
+        <br><br><br><br><br><br><br>
       </div>
       <div id="S1_인벤중범선증축표">
         <h5><a href="https://www.inven.co.kr/board/black/3584/52329" target="_blank">▢ 인벤 : 중범선 증축표 참고링크</a></h5>
