@@ -1,102 +1,9 @@
 function 연습() {
-  var 연습요소id='excel_js_속성선택자';
+  var 연습요소id='연습';
   var 연습요소=document.querySelector('#' + 연습요소id);
   document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
-  document.querySelector('#선택문서id').innerHTML=연습요소.id;
-  document.querySelector('#선택문서제목').innerHTML=document.querySelector('[title="' + 연습요소id + '"]').innerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
 
-
-  isDragging=false;
-  if (document.querySelector('#전체대체 #JS2_마우스이벤트')) {
-    //전체대체 처음누를때는, 전체대체클릭시(e)만 실행(마우스 뗄때), 다음 누를때 실행되고 뗄때 전체대체클릭시(e) 실행됨
-    //전체대체 처음누를때 이벤트등록만, 다음누를때 이벤트 실행
-
-    //?? 왜 : 누를때마다 실행이 누적되지?
-    //getEventListeners(document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div'))// : 콘솔창에서 확인, 이벤트 등록된 개수가 배열로 나온다.
-    //window.removeEventListener('message', testHandler) : 반복되는 함수에 이벤트 등록시 이거 안먹힘
-
-    var 리스너_마우스이벤트예제div=document.querySelector('#전체대체 #JS2_마우스이벤트 #마우스이벤트예제div');
-    function mousedownOrTouchstart(e) {
-      // 터치 이벤트인지 마우스 이벤트인지 확인
-      var isTouchEvent = e.type === 'touchstart';
-      var target = isTouchEvent ? e.touches[0].target : e.target;
-
-      if ((e.target.id).substr(0,7)!='마우스예제상자') {
-          return;
-      }
-
-      console.log('mousedown or touchstart 이벤트 시작');
-
-      var isDragging = true;
-      var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
-      var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
-      var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
-      var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
-
-      // 부모 요소의 경계를 확인 (마우스이벤트예제div)
-      var 부모_경계 = 리스너_마우스이벤트예제div.getBoundingClientRect();
-      var 상자_너비 = target.offsetWidth;
-      var 상자_높이 = target.offsetHeight;
-
-      function 마우스moveOrTouchmove(e) {
-          if (!isDragging) return;
-
-          // 화면 스크롤 방지 (모바일)
-          if (isTouchEvent) {
-              e.preventDefault();
-          }
-
-          // 터치 이벤트인지 마우스 이벤트인지 확인
-          var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
-          var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
-
-          var 첫마우스에서y이동거리 = move_y - 첫마우스y;
-          var 첫마우스에서x이동거리 = move_x - 첫마우스x;
-
-          // 새로운 위치 계산
-          var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
-          var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
-
-          // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
-          if (새로운_상자_위치_y < 0) {
-              새로운_상자_위치_y = 0;
-          }
-          if (새로운_상자_위치_x < 0) {
-              새로운_상자_위치_x = 0;
-          }
-          if (새로운_상자_위치_y + 상자_높이 > 부모_경계.height) {
-              새로운_상자_위치_y = 부모_경계.height - 상자_높이;
-          }
-          if (새로운_상자_위치_x + 상자_너비 > 부모_경계.width) {
-              새로운_상자_위치_x = 부모_경계.width - 상자_너비;
-          }
-
-          // 상자 위치 적용
-          target.style.top = 새로운_상자_위치_y + 'px';
-          target.style.left = 새로운_상자_위치_x + 'px';
-      }
-
-      function 마우스upOrTouchend() {
-          if (!isDragging) return;
-
-          console.log('마우스up 또는 터치end 이벤트 발생');
-          isDragging = false;
-
-          // 이벤트 제거
-          window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
-          window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
-      }
-
-      // 이벤트 추가
-      window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
-      window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
-    }
-
-  // mousedown과 touchstart 이벤트 모두 처리
-  리스너_마우스이벤트예제div.addEventListener('mousedown', mousedownOrTouchstart);
-  리스너_마우스이벤트예제div.addEventListener('touchstart', mousedownOrTouchstart);
-  }
 }
 
 function 전체대체클릭시(e) {
@@ -106,6 +13,7 @@ function 전체대체클릭시(e) {
     if (document.querySelector('#' + e.target.title)) {
       document.querySelector('#스티커_수품원_내용').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
       document.querySelector('#스티커_수품원').classList.remove('d-none');
+      // 스크롤 아래의 것 클릭시 안보이는 맨 위에 나타나므로 현재 화면 기준으로 나타나게 해야함
     }
   }
   if (document.querySelector('#전체대체 section')) {

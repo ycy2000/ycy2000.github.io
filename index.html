@@ -200,6 +200,47 @@
   </div>
 
   <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+  <div id="연습">
+    <h6>학명 부분에 글자가 없으면 좁아짐.. 글자의 가로만큼 폭이 정해짐..</h6>
+    <table class="table table-bordered border-primary">
+      <thead class="table-active">
+        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
+        <td>전산신청품명(한글/영문)[title]</td>
+        <td>영문품명(스티커)</td>
+        <td>학명</td>
+      </thead>
+      <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+        <tr>
+          <td>
+            <div class="d-inline-block td안div">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
+          <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
+        </tr>
+        <tr style="background-color:cyan;">
+          <td>
+            <div class="d-inline-block td안div">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+            <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
+            <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
+          <td>BUCCINUM UNDATUM</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td>
+            <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20240528_고등어">정보없음</button>
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
+          <td></td><!-- 학명 -->
+        </tr>
+       </tbody>
+    </table>
+  </div>
   <div id="라벨_칠레연어_10064"><!--기본빈서식-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10064, 학명 : Oncorhynchus Kisutch</h5>
@@ -376,8 +417,13 @@
       </div>
       <div>
         <h6 style="color:blueviolet;font-weight: bold;">[메모] 기본적으로 1년 2회점검에서 22년도부터 기본 1회 점검으로 바뀜</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 점검결과에 대한 시정명령 → 시전완료후 완료보고서 제출 : 1회 추가점검과 관련없음</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 점검결과에 대한 시정명령 → 시정완료후 완료보고서 제출 : 1회 추가점검과 관련없음</h6>
         <h6 style="color:blueviolet;font-weight: bold;">[메모] 검사신청 건에 대한 결과에 '부적합'이 발생하는 경우 1회 추가점검 (년2회)</h6>
+
+      </div>
+      <div>
+        <h6 style="font-weight: bold;">-- 등록공장 점검준비 --</h6>
+        <h6 style="font-weight: bold;text-indent: 15px;">1. 점검계획 공문이 날라옴, 공문 안와도 점검일자 조율 전화연락 옴</h6>
 
       </div>
 
@@ -584,6 +630,8 @@
       <embed src="portal/images/문서연결_수품원/_01_수산물_위생관리기준서.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
     </div>
   </section>
+  
+
 
   <section id="_02_covid_중국사이트">
     <div id="스크립트로ul추가"></div>
@@ -679,20 +727,25 @@
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 스티커내용이 같을때 최근 신청자료로 업데이트 할 것, 품명등 스티커내용이 조금이라도 다르면 기록 남길것</h6>
     <table class="table table-bordered border-primary">
       <thead class="table-active">
-        <td>한글품명(+메모) <span style="color:blueviolet;font-weight: bold;">[스티커 등 정보가 있으면, 클릭시 나타남]</span></td>
+        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
         <td>전산신청품명(한글/영문)[title]</td>
         <td>영문품명(스티커)</td>
         <td>학명</td>
       </thead>
       <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190725_가자미">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
           <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr style="background-color:cyan;">
-          <td class="스티커정보" title="수품원스티커_20240327_고둥">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)
+          <td>
+            <div class="d-inline-block td안div">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+            <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
             <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
           </td><!-- 한글품명(+메모) -->
           <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
@@ -700,31 +753,46 @@
           <td>BUCCINUM UNDATUM</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20240528_고등어">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20240528_고등어">정보없음</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
           <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190709_꽁치">2019.09.09 : 냉동 꽁치 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.09.09 : 냉동 꽁치 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190709_꽁치">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동꽁치,FROZEN MACKEREL PIKE</td><!-- 전산신청 영문품명 -->
           <td>FROZEN PACIFIC SAURY WHOLE ROUND</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190617_절단꽃게">2019.06.17 : 냉동 절단꽃게 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.06.17 : 냉동 절단꽃게 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190617_절단꽃게">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동게(꽃게,절단),FROZEN CUTTED SWIMMING CRAB</td><!-- 전산신청 영문품명 -->
           <td>FROZEN CUT SWIMMING CRAB</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20221215_날치알">2024.06.19 : 냉동 날치알 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2024.06.19 : 냉동 날치알 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20221215_날치알">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관">*냉동어란(날치알),FROZEN FLYING FISH ROE</td><!-- 전산신청 영문품명 -->
           <td>FROZEN FLYING FISH ROE</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20181120_돔">2018.11.20 : 냉동 돔 (KP-034, 중국, FAO 77)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2018.11.20 : 냉동 돔 (KP-034, 중국, FAO 77)</div> 
+            <button class="스티커정보" title="수품원스티커_20181120_돔">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관" onclick="
             if(document.querySelector('#td_수품원스티커_20181120_돔').classList.contains('d-none')) {
               document.querySelector('#td_수품원스티커_20181120_돔').classList.remove('d-none');
@@ -745,25 +813,36 @@
           <td>CAULOLATILUS PRINCEPS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190617_대구곤">2019.06.17 : 냉동 대구곤 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.06.17 : 냉동 대구곤 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190617_대구곤">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동곤이(대구),FROZEN COD MILT</td><!-- 전산신청 영문품명 -->
           <td>FROZEN PACIFIC COD MILT</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190617_명란">2019.06.17 : 냉동 명란 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.06.17 : 냉동 명란 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190617_명란">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동어란(명란),FROZEN ALASKA POLLACK ROE</td><!-- 전산신청 영문품명 -->
           <td>FROZEN ALASKA POLLACK ROE</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20211208_명태">2021.12.08 : 냉동 명태 (KP-034, 중국, FAO 61)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2021.12.08 : 냉동 명태 (KP-034, 중국, FAO 61)</div> 
+            <button class="스티커정보" title="수품원스티커_20211208_명태">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관">*냉동명태,FROZEN ALASKA POLLACK</td><!-- 전산신청 영문품명 -->
           <td>FROZEN ALASKA POLLOCK H/G</td><!-- 영문품명(화주) -->
           <td>THERAGRA CHALCOGRAMMA</td><!-- 학명 -->
         </tr>
         <tr style="background-color:cyan;">
-          <td class="스티커정보" title="수품원스티커_20181207_민어">2018.12.07 : 냉동 민어 (KP-034, 중국, FAO-77)
+          <td>
+            <div class="d-inline-block td안div">2018.12.07 : 냉동 민어 (KP-034, 중국, FAO-77)</div> 
+            <button class="스티커정보" title="수품원스티커_20181207_민어">정보</button>
             <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
           </td><!-- 한글품명(+메모) -->
           <td title="수입통관" onclick="
@@ -791,7 +870,9 @@
           <td>UMBRINA RONCADOR</td><!-- 학명 -->
         </tr>
         <tr style="background-color:cyan;">
-          <td class="스티커정보" title="수품원스티커_20210118_방어">2021.01.18 : 냉동 방어 (KP-034, 중국, FAO 61)
+          <td>
+            <div class="d-inline-block td안div">2021.01.18 : 냉동 방어 (KP-034, 중국, FAO 61)</div> 
+            <button class="스티커정보" title="수품원스티커_20210118_방어">정보</button>
             <br>방어는 연근해산인 경우, 양식인지 아닌지 확인서 필요함
           </td><!-- 한글품명(+메모) -->
           <td title="연근해산">*냉동방어,FROZEN YELLOW TAIL</td><!-- 전산신청 영문품명 -->
@@ -799,13 +880,19 @@
           <td>SERIOLA QUINQUERADIATA</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20230824_방어">2023.08.24 : 냉동 방어 (KP-034, 중국, FAO 61)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2023.08.24 : 냉동 방어 (KP-034, 중국, FAO 61)</div> 
+            <button class="스티커정보" title="수품원스티커_20230824_방어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="연근해산">*냉동방어,FROZEN YELLOW TAIL</td><!-- 전산신청 영문품명 -->
           <td>FORZEN YELLOWTAIL ROUND</td><!-- 영문품명(화주) -->
           <td>SERIOLA QUINQUERADIATA</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20201014_북방대합조개살">2024.06.19 : 냉동 북방대합조개살 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2024.06.19 : 냉동 북방대합조개살 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20201014_북방대합조개살">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관" onclick="
             if(document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.contains('d-none')) {
               document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.remove('d-none');
@@ -830,7 +917,10 @@
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20201110_삼치">2023.10.25 : 냉동 삼치 (KP-034, 중국, FAO 61)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2023.10.25 : 냉동 삼치 (KP-034, 중국, FAO 61)</div> 
+            <button class="스티커정보" title="수품원스티커_20201110_삼치">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="연근해산" onclick="
             if(document.querySelector('#td_수품원스티커_20201110_삼치').classList.contains('d-none')) {
               document.querySelector('#td_수품원스티커_20201110_삼치').classList.remove('d-none');
@@ -854,25 +944,37 @@
           <td>SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20220922_삼치">2022.09.22 : 냉동 삼치 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2022.09.22 : 냉동 삼치 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20220922_삼치">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="연근해산">*냉동삼치,FROZEN JAPANESE SPANISH MACKEREL</td><!-- 전산신청 영문품명 -->
           <td style="font-size:14px;">FROZEN SPANISH MACKEREL WHOLE ROUND</td><!-- 영문품명(화주) -->
           <td>SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20230712_새우">2023.07.12 : 냉동 새우, 초밥용 홍새우살 아르헨티나산 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2023.07.12 : 냉동 새우, 초밥용 홍새우살 아르헨티나산 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20230712_새우">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관">*냉동새우살(적새우),FROZEN RED SHRIMP MEAT</td><!-- 전산신청 영문품명 -->
           <td>FROZEN ARGENTINE RED SHRIMP MEAT</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190617_아귀">2019.06.17 : 냉동 아귀 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.06.17 : 냉동 아귀 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190617_아귀">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동아귀,FROZEN MONKFISH</td><!-- 전산신청 영문품명 -->
           <td>FROZEN MONK FISH</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20211014_오징어연근해">2022.05.26 : 냉동 오징어, 연근해 (KP-034, 중국, FAO 61)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2022.05.26 : 냉동 오징어, 연근해 (KP-034, 중국, FAO 61)</div> 
+            <button class="스티커정보" title="수품원스티커_20211014_오징어연근해">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="연근해" onclick="
             if(document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.contains('d-none')) {
               document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.remove('d-none');
@@ -898,70 +1000,101 @@
           <td>TODARODES PACIFICUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20201216_오징어">2020.12.16 : 냉동 오징어, 무라오징어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2020.12.16 : 냉동 오징어, 무라오징어 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20201216_오징어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
           <td>FROZEN GIANT SQUID MEAT</td><!-- 영문품명(화주) -->
           <td>DOSIDICUS GIGAS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20210817_자숙동체오징어">2021.08.17 : 냉동 오징어, 무라오징어 동체(자숙) (KP-034, 중국, FAO 87)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2021.08.17 : 냉동 오징어, 무라오징어 동체(자숙) (KP-034, 중국, FAO 87)</div> 
+            <button class="스티커정보" title="수품원스티커_20210817_자숙동체오징어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어(동체,자숙),FROZEN SQUID BOILED(BODY)</td><!-- 전산신청 영문품명 -->
           <td>FROZEN BOILED GIANT SQUID FILLETS</td><!-- 영문품명(화주) -->
           <td>DOSIDICUS GIGAS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20191025_오징어다리">2019.10.25 : 냉동 오징어 다리, 무라오징어 다리 (KP-034, 중국, FAO-87 [페루])</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.10.25 : 냉동 오징어 다리, 무라오징어 다리 (KP-034, 중국, FAO-87 [페루])</div> 
+            <button class="스티커정보" title="수품원스티커_20191025_오징어다리">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어(다리),FROZEN SQUID(LEG)</td><!-- 전산신청 영문품명 -->
           <td>FROZEN GIANT SQUID TENTACLES</td><!-- 영문품명(화주) -->
           <td>DOSIDICUS GIGAS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190305_오징어입살">2022.04.25 : 냉동 오징어, 무라오징어 족살 (KP-034, 중국, FAO 87)<br>
-          <span style="color:blueviolet;font-weight: bold;">전산 품명 없어서 '냉동오징어'로 신청함</span>
+          <td>
+            <div class="d-inline-block td안div">2022.04.25 : 냉동 오징어, 무라오징어 족살 (KP-034, 중국, FAO 87)</div> 
+            <button class="스티커정보" title="수품원스티커_20190305_오징어입살">정보</button>
+            <br><span style="color:blueviolet;font-weight: bold;">전산 품명 없어서 '냉동오징어'로 신청함</span>
           </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
           <td>FROZEN SQUID NECK</td><!-- 영문품명(화주) -->
           <td>DOSIDICUS GIGAS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190305_오징어입살">2021.08.17 : 냉동 오징어 입살, 무라오징어 입살 (KP-034, 중국, FAO 87)</span>
+          <td>
+            <div class="d-inline-block td안div">2021.08.17 : 냉동 오징어 입살, 무라오징어 입살 (KP-034, 중국, FAO 87)</div> 
+            <button class="스티커정보" title="수품원스티커_20190305_오징어입살">정보</button>
           </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어(입살),FROZEN SQUID MOUTH MEAT</td><!-- 전산신청 영문품명 -->
           <td>FROZEN SQUID MOUTH</td><!-- 영문품명(화주) -->
           <td>DOSIDICUS GIGAS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20210721_오징어다리">2021.07.21 : 냉동 오징어 다리, 포크오징어 다리 (KP-034, 중국, FAO-41)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2021.07.21 : 냉동 오징어 다리, 포크오징어 다리 (KP-034, 중국, FAO-41)</div> 
+            <button class="스티커정보" title="수품원스티커_20210721_오징어다리">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어(다리),FROZEN SQUID(LEG)</td><!-- 전산신청 영문품명 -->
           <td>FROZEN ILLEX SQUID TENTACLE</td><!-- 영문품명(화주) -->
           <td>ILLEX ARGENTINUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20211029_오징어">2021.10.29 : 냉동 오징어 , 포크오징어 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2021.10.29 : 냉동 오징어 , 포크오징어 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20211029_오징어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
           <td>FROZEN ILLEX SQUID</td><!-- 영문품명(화주) -->
           <td>ILLEX ARGENTINUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20211013_오징어">2021.10.13 : 냉동 오징어 , 포크오징어 (KP-034, 중국, FAO-41)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2021.10.13 : 냉동 오징어 , 포크오징어 (KP-034, 중국, FAO-41)</div> 
+            <button class="스티커정보" title="수품원스티커_20211013_오징어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
           <td>FROZEN SQUID</td><!-- 영문품명(화주) -->
           <td>ILLEX ARGENTINUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190822_연어">2019.08.22 : 냉동 연어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20190822_연어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동연어(태평양은연어), FROZEN CHHO SALMON</td><!-- 전산신청 영문품명 -->
           <td>FROZEN SALMON COHO</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20191008_연어">2019.08.22 : 냉동 연어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20191008_연어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동연어(F), FROZEN SALMON FILLET</td><!-- 전산신청 영문품명 -->
           <td style="font-size: 14px;">FROZEN ATLANTIC SALMON FILLET TRIM D</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20230712_연어">2019.08.22 : 냉동 연어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20230712_연어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title="수입통관" onclick="
             if(document.querySelector('#td_수품원스티커_20230712_연어').classList.contains('d-none')) {
               document.querySelector('#td_수품원스티커_20230712_연어').classList.remove('d-none');
@@ -988,37 +1121,55 @@
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190617_열빙어">2019.06.17 : 냉동 열빙어 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.06.17 : 냉동 열빙어 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190617_열빙어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동빙어(열빙어),FROZEN CAPELIN</td><!-- 전산신청 영문품명 -->
           <td>FROZEN CAPELIN</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20220211_열빙어">2022.02.11 : 냉동 열빙어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2022.02.11 : 냉동 열빙어 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20220211_열빙어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동빙어(열빙어),FROZEN CAPELIN</td><!-- 전산신청 영문품명 -->
           <td>FROZEN CAPELIN</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20190617_임연수어">2019.06.17 : 냉동 임연수어 (KVN-044, 베트남)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2019.06.17 : 냉동 임연수어 (KVN-044, 베트남)</div> 
+            <button class="스티커정보" title="수품원스티커_20190617_임연수어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동임연수어,FROZEN ATKA MACKEREL</td><!-- 전산신청 영문품명 -->
           <td>FROZEN ATKA MACKEREL</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20230523_장어">2023.05.23 : 냉동 장어 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2023.05.23 : 냉동 장어 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20230523_장어">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동장어(붕장어,F),FROZEN CONGER EEL FILLET</td><!-- 전산신청 영문품명 -->
           <td>FROZEN CONGER EEL FILLET</td><!-- 영문품명(화주) -->
           <td>MURAENESOX CINEREUS</td><!-- 학명 -->
         </tr>
         <tr>
-          <td class="스티커정보" title="수품원스티커_20230201_청어알">2023.02.01 : 냉동 청어알 (KTH-026, 태국)</td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div">2023.02.01 : 냉동 청어알 (KTH-026, 태국)</div> 
+            <button class="스티커정보" title="수품원스티커_20230201_청어알">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td>*냉동어란(청어알),FROZEN HERRING ROE</td><!-- 전산신청 영문품명 -->
           <td>FROZEN HERRING ROE</td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
         </tr>
         <tr>
-          <td></td><!-- 한글품명(+메모) -->
+          <td>
+            <div class="d-inline-block td안div"></div> 
+            <button class="스티커정보" title="">정보</button>
+          </td><!-- 한글품명(+메모) -->
           <td title=""></td><!-- 전산신청 영문품명 -->
           <td></td><!-- 영문품명(화주) -->
           <td></td><!-- 학명 -->
@@ -3054,7 +3205,8 @@
     </div>
     <div class="개별카테고리" id="전달사항공문발행물전체_보세구역전달사항"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
       <div>
-        <h6 class="canvas_div" title="_07_보세구역전달사항" >★보세구역전달사항</>   
+        <h6 class="canvas_div" title="_07_보세구역전달사항" >★보세구역전달사항 일부 모음</h6>
+        <h6 class="canvas_div" title="_07_보세구역전달사항_특별점검팀연락처" >보세구역 특별점검팀 연락처 2025.02.03</h6>
       </div>
     </div>
     <div class="개별카테고리" id="전달사항공문발행물전체_부산본부세관공문"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
@@ -3109,6 +3261,13 @@
 
 
     <br><br><br><br>
+  </section>
+
+  <section id="_07_보세구역전달사항_특별점검팀연락처">
+    <div id="스크립트로ul추가"></div>
+    <h4 id="move1" class="목차">&#9634; _07_보세구역전달사항_특별점검팀연락처</h4>
+    <embed src="portal/images/문서연결_세관및유니패스/_07_보세구역전달사항_특별점검팀연락처.pdf" 
+    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
   </section>
 
   <section id="_07_본부세관관련공문등">
