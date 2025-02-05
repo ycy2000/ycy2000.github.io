@@ -200,47 +200,6 @@
   </div>
 
   <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-  <div id="연습">
-    <h6>학명 부분에 글자가 없으면 좁아짐.. 글자의 가로만큼 폭이 정해짐..</h6>
-    <table class="table table-bordered border-primary">
-      <thead class="table-active">
-        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
-        <td>전산신청품명(한글/영문)[title]</td>
-        <td>영문품명(스티커)</td>
-        <td>학명</td>
-      </thead>
-      <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-        <tr>
-          <td>
-            <div class="d-inline-block td안div">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
-            <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
-          <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
-        </tr>
-        <tr style="background-color:cyan;">
-          <td>
-            <div class="d-inline-block td안div">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
-            <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
-            <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
-          <td>BUCCINUM UNDATUM</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
-            <button class="스티커정보" title="수품원스티커_20240528_고등어">정보없음</button>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-       </tbody>
-    </table>
-  </div>
   <div id="라벨_칠레연어_10064"><!--기본빈서식-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10064, 학명 : Oncorhynchus Kisutch</h5>
@@ -403,9 +362,6 @@
         <h6 class="canvas_div" title="_03_수품원_수출검사_가공일지">창고 가공일지 (작성방법) <span style="color:blueviolet;font-weight: bold;">(같은년도는 누적하여 작성, 년도가 바뀌면 새롭게 작성시작)</span></h6>
         <h6>[메모]베트남 검사 기한 : 평일7일째 되는날까지</h6>
         <h6>[메모]금요일은 방문검사 없음 (EX:목요일, 금요일 신청은 월요일 방문검사)</h6>
-        <h6 class="canvas_div" title="_03_수품원_방어수매확인서">[방어의 수매확인서 등] 준비서류 및 확인사항</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 연근해산의 경우 선동이 아니고 육동인경우 등록시설이어야함</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 육동인 경우 등록시설이라면 그곳의 가공일지도 있어야함</h6>
       </div>
 
 
@@ -455,14 +411,19 @@
     <div class="개별카테고리" id="수품원전체_수출품목정보"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
       <div>
         <h6 style="color:blueviolet;font-weight: bold;">-- 한글품명, 전산신청시 영문품명, 스티커 영문품명, 학명등 정보 --</h6>
-        <h6>[메모] 중국은 학명을 넣어야한다.</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
         <h6 class="canvas_div" title="_02_수출품목정보_오징어" style="color:blueviolet;font-weight: bold;">-- ★ 신청품목 정보 (스티커 등 문서연결 보기) (click=>div) --</h6>
       </div>
 
     </div>
     <div class="개별카테고리" id="수품원전체_특이사항"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-
+      <h6>[메모] 양식인지 아닌지 알려줘야하는 품목 : 방어, </h6>
+      <h6 class="canvas_div" title="_03_수품원_방어수매확인서">[방어의 수매확인서 등] 준비서류 및 확인사항</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">[메모] 연근해산의 경우 선동이 아니고 육동인경우 등록시설이어야함</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">[메모] 육동인 경우 등록시설이라면 그곳의 가공일지도 있어야함</h6>
+      <h6 class="canvas_div" title="_03_수품원_CK청어알">수품원에서 : CK 청어알에 대해서 섭취방법을 물어보는 경우</h6>
+      <h6>[메모] 중국은 학명을 넣어야한다.</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
+      <h6>[메모] </h6>
 
     </div>
   </div>
@@ -607,13 +568,6 @@
     <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_가공일지_01.png" alt="이미지없음">
   </section>
   
-  <section id="_03_수품원_방어수매확인서">
-    <div id="스크립트로ul추가"></div>
-    <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
-    <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
-    <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
   <section id="_01_수산물_위생관리기준서">
     <h5 style="color:blueviolet;font-weight: bold;">★ 냉동창고는 I.공통 기준만 충족하면 됩니다.</h5>
     <h5>수산물의 생산.가공시설 위생관리기준 (점검기준은 위생관리기준과 같다. 참고할것)</h5>
@@ -725,7 +679,7 @@
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020년부터 중국, KP-034(CKOR18PP1805010017) 형식으로 기재하여야함, 가공일지, 스티커. (CKOR18PP1805010017=중국사이트 등록번호)</h6>
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 스티커내용이 같을때 최근 신청자료로 업데이트 할 것, 품명등 스티커내용이 조금이라도 다르면 기록 남길것</h6>
-    <table class="table table-bordered border-primary">
+    <table class="table-bordered border-primary"><!-- table 클래스 뺌. flex 속성으로 폭조정 잘 못하겠음 -->
       <thead class="table-active">
         <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
         <td>전산신청품명(한글/영문)[title]</td>
@@ -1176,6 +1130,20 @@
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <section id="_03_수품원_방어수매확인서">
+    <div id="스크립트로ul추가"></div>
+    <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
+    <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
+    <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+  </section>
+
+  <section id="_03_수품원_CK청어알">
+    <div id="스크립트로ul추가"></div>
+    <h5>▢ 청어알 섭취방법, CK 최승우과장(20250205), 수출담당 김소은</h5>
+    <h5>▢ CK 최승우과장 수품원에 답변내용</h5>
+    <h6>- 어묵 재료로 들어가는데 어묵 제조 과정에서 재료들을 가열하여 반죽상태로 만드는 공정이 있다.</h6>
   </section>
 
   <div id="수품원스티커_20190725_가자미">

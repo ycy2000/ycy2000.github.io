@@ -791,6 +791,245 @@
 </div>
 
 <div id="CSS전체_관련자료none" class="d-none 모든검색">
+  <div id="연습">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold">• <a href="https://otiklo.tistory.com/16" target="_blank">[CSS 기초] 06. CSS 테이블 꾸미기 (Table)</a></h6>
+      <h6>• 부트스트랩 : 가로칸 td 여러개일때 안의 글자수?에 따라 폭이 자동 조정되는듯</h6>
+      <h6 style="text-indent: 12px;">- table-bordered(선) border-primary(선색) : 내용만큼 폭 차지, 내용없는곳 최소폭</h6>
+      <h6 style="text-indent: 12px;">- table : padding, 폭 100%에서 flex 적용되는듯, flex로 인해서 폭조정을 잘 못함(실력부족)</h6>
+      <h6 style="text-indent: 12px;">- table-active : 색깔, thead에 넣으면 한줄 전체, td에 넣으면 해당 td만</h6>
+      <h6 style="text-indent: 12px;">- col-1 같은 클래스로 폭 조정, 4칸짜리에 모두 col-1을 주면 결과적으로 3/12씩 차지, 하나만 col-1 주면 나머지 3칸 나눠가짐</h6>
+
+      <h6>• 부트스트랩 없이 table 자체</h6>
+      <h6 style="text-indent: 12px;">- 가로두칸 차지 : &#60;td colspan="2"&#62;, 세로두칸 차지 : &#60;td rowspan="2"&#62;</h6>
+      <h6 style="text-indent: 12px;">- width="100%", colspan="2", rowspan="2", border="1"(선 두께),</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6>• table table-bordered border-primary : table를 넣은상태</h6>
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td rowspan="3">sdfsfdsdfsdfsdfsdfsd</td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td class="col-2"></td><!-- 한글품명(+메모) -->
+            <td class="col-2"></td><!-- 전산신청 영문품명 -->
+            <td class="col-2"></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+      <h6>• table table-bordered border-primary : table를 넣은상태, thead에 table-active를 뺀상태</h6>
+      <table class="table table-bordered border-primary">
+        <thead>
+          <td class="table-active">sdfsfd</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="d-inline-block border border-danger border">1</div> 
+              <div class="d-inline-block">1</div> 
+              <div class="d-inline-block"></div> 
+              <div class="d-inline-block"></div> 
+              <div class="d-inline-block"></div> 
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+              <button title="수품원스티커_20190725_가자미"></button>
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="d-inline-block"></div> 
+              <button title="수품원스티커_20240327_고둥"></button>
+              <br>
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+              <button title="수품원스티커_20240528_고등어"></button>
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
+          <td>전산신청품명(한글/영문)[title]</td>
+          <td>영문품명(스티커)</td>
+          <td>학명</td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+              <button title="수품원스티커_20190725_가자미">정보</button>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
+            <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+              <button title="수품원스티커_20240327_고둥">정보</button>
+              <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
+            <td>BUCCINUM UNDATUM</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="d-inline-block">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+              <button title="수품원스티커_20240528_고등어">정보없음</button>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"></h5>
+      <span style="color:blueviolet"></span>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">•</code>
+      <code class="fw-bold" style="color:blueviolet"></code>
+    </div>
+    <h6>학명 부분에 글자가 없으면 좁아짐.. 글자의 가로만큼 폭이 정해짐..</h6>
+    <table class="table table-bordered border-primary">
+      <thead class="table-active">
+        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
+        <td>전산신청품명(한글/영문)[title]</td>
+        <td>영문품명(스티커)</td>
+        <td>학명</td>
+      </thead>
+      <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+        <tr>
+          <td>
+            <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+            <button title="수품원스티커_20190725_가자미">정보</button>
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
+          <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
+        </tr>
+        <tr style="background-color:cyan;">
+          <td>
+            <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+            <button title="수품원스티커_20240327_고둥">정보</button>
+            <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
+          <td>BUCCINUM UNDATUM</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td>
+            <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+            <button title="수품원스티커_20240528_고등어">정보없음</button>
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
+          <td></td><!-- 학명 -->
+        </tr>
+       </tbody>
+    </table>
+  </div>
+
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="htmlJavascript전체_css1">
       <div>

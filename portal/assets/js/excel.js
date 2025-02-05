@@ -7,9 +7,13 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습() {
-console.log(document.querySelectorAll('body .?? div').length)
+  var 결과부분 = document.querySelector('#전체대체');
+  var 선택한캔버스관련자료none안_타겟element; 
+  선택한캔버스관련자료none안_타겟element = document.querySelector('#연습');
 
-  
+  결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
+  document.querySelector('#선택문서제목').innerHTML=선택한캔버스관련자료none안_타겟element.title;
+
 }
 
 
