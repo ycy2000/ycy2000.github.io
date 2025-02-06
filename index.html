@@ -675,38 +675,67 @@
     <embed src="portal/images/문서연결_수품원/_02_해관hs코드미기재.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
   </section>
 
-  <section id="_02_수출품목정보_오징어">
+  <div id="_02_수출품목정보_오징어" style="width:100%">
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020년부터 중국, KP-034(CKOR18PP1805010017) 형식으로 기재하여야함, 가공일지, 스티커. (CKOR18PP1805010017=중국사이트 등록번호)</h6>
     <h6 style="color:blueviolet;font-weight: bold;">[메모] 스티커내용이 같을때 최근 신청자료로 업데이트 할 것, 품명등 스티커내용이 조금이라도 다르면 기록 남길것</h6>
 
-    <table class="table-bordered border-primary"><!-- table 클래스 뺌. flex 속성으로 폭조정 잘 못하겠음 -->
-      <thead class="table-active">
-        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
-        <td>전산신청품명(한글/영문)[title]</td>
-        <td>영문품명(스티커)</td>
-        <td>학명</td>
-      </thead>
+    <div class="table-bordered border-primary"><!-- table 클래스 뺌. flex 속성으로 폭조정 잘 못하겠음 -->
+      <div class="table_한줄">
+        <div>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</div>
+        <div>전산신청품명(한글/영문)[title]</div>
+        <div>영문품명(스티커)</div>
+        <div>학명</div>
+      </div>
+      <div class="table_한줄">
+        <div>
+          <div class="d-inline-block td안div">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+          <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
+        </div><!-- 한글품명(+메모) -->
+        <div>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</div><!-- 전산신청 영문품명 -->
+        <div>FROZEN YELLOW FIN SOLE</div><!-- 영문품명(화주) -->
+        <div></div><!-- 학명 -->
+      </div>
+      <div class="table_한줄" style="background-color:cyan;">
+        <div>
+          <div class="d-inline-block td안div">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+          <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
+          <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+        </div><!-- 한글품명(+메모) -->
+        <div>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</div><!-- 전산신청 영문품명 -->
+        <div>FROZEN RAW WHELK MEAT</div><!-- 영문품명(화주) -->
+        <div>BUCCINUM UNDATUM</div><!-- 학명 -->
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
+      <div class="table_한줄">
+
+      </div>
       <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-        <tr>
-          <td>
-            <div class="d-inline-block td안div">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
-            <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr style="background-color:cyan;">
-          <td>
-            <div class="d-inline-block td안div">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
-            <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
-            <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
-          <td>BUCCINUM UNDATUM</td><!-- 학명 -->
-        </tr>
+
+
         <tr>
           <td>
             <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
@@ -1130,8 +1159,8 @@
           <td></td><!-- 학명 -->
         </tr>
       </tbody>
-    </table>
-  </section>
+    </div>
+  </div>
 
   <section id="_03_수품원_방어수매확인서">
     <div id="스크립트로ul추가"></div>
