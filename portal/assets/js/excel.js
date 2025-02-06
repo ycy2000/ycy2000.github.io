@@ -9,7 +9,7 @@ function png와text사용확인() {
 function 연습() {
   var 결과부분 = document.querySelector('#전체대체');
   var 선택한캔버스관련자료none안_타겟element; 
-  선택한캔버스관련자료none안_타겟element = document.querySelector('#연습');
+  선택한캔버스관련자료none안_타겟element = document.querySelector('#_02_html_boxsizing예제');
 
   결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
   document.querySelector('#선택문서제목').innerHTML=선택한캔버스관련자료none안_타겟element.title;

@@ -1031,12 +1031,14 @@
   </div>
 
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="htmlJavascript전체_css1">
+    <div class="개별카테고리" id="htmlJavascript전체_선별">
       <div>
         <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
         <h6 class="canvas_div" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
-        <h6>text-indent : 상속됨</h6>  
-        <h6>태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
+        <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 줄넘김(white-space), table, flex, 양쪽정렬</h6>
+        <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        <h6>[메모] text-indent : 상속됨</h6>  
+        <h6>[메모] 태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
         <h6 class="canvas_div" title="_01_project_파순01_파일제목규칙">파일제목 규칙, 줄바꿈, 코딩(변수)합의</h6>
       </div>
       <div>
@@ -1050,7 +1052,7 @@
       <div>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
         <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
-        <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+
         
       </div>
       <div>
@@ -1062,6 +1064,18 @@
       </div>
       <div>
         <h6 class="canvas_div" title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="htmlJavascript전체_table등"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <div>
+        <h6 class="canvas_div" title='CSS_TABLE'>table, 표</h6>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+
       </div>
     </div>
 
@@ -1141,6 +1155,239 @@
     <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position5.png" alt="이미지없음">
     <br><br><br><br>
   </section>
+
+  <div id="_02_html_boxsizing예제"><!-- 참고 -->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold">• box-sizing: content-box(기본값); ==> content 영역 <span style="color:blueviolet">외곽으로 적용됨 (커질수 있음)</span></h6>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">기본 content-box</div>
+      <div style="display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:content-box;border:10px solid red;font-size: 13px;">기본 + border</div>
+      
+      <h6 class="fw-bold">• box-sizing: border-box; ==> border, padding이 안쪽으로 적용됨, 예시는 height 20px</h6>
+      <h6 style="text-indent: 15px;">- content 영역은 좌,상에 적용된 만큼 오른쪽, 아래로 밀려남 (content가 밀려난 공간은 차지 안함 [겹침주의]) </h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">1) padding, border 합이 height 보다 작을때</h6>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box;border:1px solid red;font-size: 13px;">border-box</div>
+      <div style="display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box;border:10px solid red;font-size: 13px;">border 10px</div>
+      <div style="display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:15px solid red;border-bottom:2px solid red; font-size: 13px;">위15px, 아래2px </div>
+      <br><br>
+
+      <h6 class="fw-bold" style="text-indent: 15px;">2) border 합이 height를 초과할때</h6>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; height:25px;background-color: red; font-size: 13px;">높이25px </div>
+      <div style="display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:25px solid red;border-bottom:10px solid yellow; font-size: 13px;">위25px, 아래10px </div>
+      <div style="display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:10px solid red;border-bottom:25px solid yellow; font-size: 13px;">위10px, 아래25px </div>
+      <div style="display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:10px solid red;border-bottom:35px solid yellow; font-size: 13px;">위10px, 아래35px </div>
+
+      <h6 class="fw-bold" style="text-indent: 15px;">3) border 합이 height를 초과할때 + padding 10px 적용</h6>
+      <div style="padding:10px; margin-left:17px; display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; height:25px;background-color: red; font-size: 13px;">높이25px </div>
+      <div style="padding:10px;display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:25px solid red;border-bottom:10px solid yellow; font-size: 13px;">위25px, 아래10px </div>
+      <div style="padding:10px;display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:10px solid red;border-bottom:25px solid yellow; font-size: 13px;">위10px, 아래25px </div>
+      <div style="padding:10px;display:inline-block;height:20px;vertical-align: top;width:150px;box-sizing:border-box; border-top:10px solid red;border-bottom:35px solid yellow; font-size: 13px;">위10px, 아래35px </div>
+
+      <h6 class="fw-bold" style="color:blueviolet">• 부모요소의 width를 100px로 하려고할때는 box-sizing:content-box 지정할 것 (기본값)</h6>
+
+      <h6 class="fw-bold">• 부모요소의 width를 150px안에 75px자식 두개</h6>
+      <h6 class="fw-bold" style="text-indent: 17px;">=>자식은 box-sizing: border-box + 패딩과 보더값이 height초과하지 않게 지정</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">1) 자식이 content-box이면 border 1px때문에 초과되어 줄바꿈, </h6>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+      </div><br><br>
+      <h6 class="fw-bold" style="text-indent: 15px;">2) 1)자식요소에 margin조정해보았다. box-sizing:content-box</h6>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">
+        <div style="margin-left:-10px; display: inline-block;width:75px;border:1px solid black">75px;</div>
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+      </div>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+        <div style="margin-left:-10px; display: inline-block;width:75px;border:1px solid black">75px;</div>
+      </div>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+        <div style="margin-left:-4px; display: inline-block;width:75px;border:1px solid black">75px;</div>
+      </div>
+      <div style="margin-left:4px; display: inline-block;font-size: 13px;"> 마진 -4px 일때 올라옴 => 공백이 2px인듯</div>
+      <br><br>
+
+      <h6 class="fw-bold" style="text-indent: 15px;">3) 1)의 부모에 <span style="color:blueviolet">white-space:nowarp</span> 적용하면 부모폭을 벗어나 줄바꿈 하지 않는다.</h6>
+      <div style="white-space:nowrap; margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+        <div style="display: inline-block;width:75px;border:1px solid black">75px;</div>
+      </div><br><br>
+      <h6 class="fw-bold" style="text-indent: 15px;">4) 자식이 border-box이면 정확히 들어감, 그러나 코딩시 div 사이에 공백이 있으면 오바됨 </h6>
+      <h6 class="fw-bold" style="text-indent: 30px;">- 처음과 끝은 공백적용 안되는듯</h6>
+      <h6 class="fw-bold" style="text-indent: 30px;">- 내부의 요소들 사이에 적용되는듯</h6>
+      <h6 class="fw-bold" style="text-indent: 30px;">- 태그사이에 공백있을때, 마진 -4px 일때 올라오는데 딱 맞지 않음</h6>
+      <h6 class="fw-bold" style="text-indent: 30px;">- 결론 : 내부의 요소들의 태그사이에 공백을 없애주고 한줄로 작성해야되는듯</h6>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;"><div style="box-sizing:border-box; display: inline-block;width:75px;border:1px solid black">75px;</div><div style="box-sizing:border-box;display: inline-block;width:75px;border:1px solid black">75px;</div></div>
+      <div style="margin-left:17px; display:inline-block;height:20px;vertical-align: top; width:150px;box-sizing:content-box;border:1px solid red;font-size: 13px;">
+        <div style="margin-right:-4px; box-sizing:border-box; display: inline-block;width:75px;border:1px solid black">75px;</div>
+        <div style="box-sizing:border-box;display: inline-block;width:75px;border:1px solid black">75px;</div>
+      </div>
+    </div>
+
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold">• table-layout:auto(기본값) : width가 지정된 상태에서, 콘텐츠 내용일 길어질때 너비가 달라짐</h6>
+      <h6 class="fw-bold">• table-layout:fixed : width가 지정된 상태에서, 셀 너비를 고정</h6>
+      <h6 class="fw-bold">• 부모에 display:table, 자식에 display:table-cell, table-layout:fixed, table-layout:auto(기본값)</h6>
+      <h6 class="fw-bold" style="text-indent: 12px;">부모의 넓이에 자식이 배분됨. 부모넓이 지정 필요. display:table;;width:100%;</h6>
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">지정하지 않음</div>
+        <div style="border:2px solid red;">
+          <div class="d-inline-block" style="border:1px solid black;">1</div>
+          <div class="d-inline-block" style="border:1px solid black;">2</div>
+          <div class="d-inline-block" style="border:1px solid black;">3</div>
+          <div class="d-inline-block" style="border:1px solid black;">4</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">부모에 display:table 만</div>
+        <div style="border:2px solid red;">자식들에 영향없음</div>
+        <div style="display:table;border:2px solid red;width:100%;">
+          <div class="d-inline-block" style="border:1px solid black;">1</div>
+          <div class="d-inline-block" style="border:1px solid black;">2</div>
+          <div class="d-inline-block" style="border:1px solid black;">3</div>
+          <div class="d-inline-block" style="border:1px solid black;">4</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식이 1개요소면 100%차지</div>
+        <div style="display:table;border:2px solid red;width:100%;">
+          <div style="border:1px solid black;display:table-cell">1</div>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식이 여러개면 글자수에 따라</div>
+        <div style="border:2px solid red;">비율이 정해짐. 조정이 안됨</div>
+        <div style="display:table;border:2px solid red;width:100%;">
+          <div style="border:1px solid black;display:table-cell">1</div>
+          <div style="border:1px solid black;display:table-cell">22222</div>
+          <div style="border:1px solid black;display:table-cell">3</div>
+          <div style="border:1px solid black;display:table-cell">4</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식의 width를 20%로하면</div>
+        <div style="border:2px solid red;">content가 숫자면 조정안됨</div>
+        <div style="display:table;border:2px solid red;width:100%;">
+          <div style="border:1px solid black;display:table-cell;width:20%">1</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">22222222</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">3</div>
+          <div style="border:1px solid black;display:table-cell;">4</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식의 width를 20%로하면</div>
+        <div style="border:2px solid red;">content가 문자열이면 조정됨 </div>
+        <div style="display:table;border:2px solid red;width:100%;">
+          <div style="border:1px solid black;display:table-cell;width:20%">1</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">1213444ㄴ22문자열22222222222222222222222222222222문자열</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">3</div>
+          <div style="border:1px solid black;display:table-cell;">4</div>
+        </div>
+      </div>
+      <h6 class="fw-bold" style="color:blueviolet;margin-top:5px;">• 숫자와 문자열 섞여있으면 숫자는 줄바꿈이 안됨?? 예상치 않은 결과가 있겠다.</h6>
+
+      <br>
+      <h6 class="fw-bold">• table-layout:fixed 지정시: width가 지정된 상태에서, 셀 너비를 고정</h6>
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식이 여러개면 글자수에 따라</div>
+        <div style="border:2px solid red;">비율이 정해짐. 조정이 안됨</div>
+        <div style="display:table;border:2px solid red;width:100%;table-layout: fixed;">
+          <div style="border:1px solid black;display:table-cell">1</div>
+          <div style="border:1px solid black;display:table-cell">22222</div>
+          <div style="border:1px solid black;display:table-cell">3</div>
+          <div style="border:1px solid black;display:table-cell">4</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식의 width를 20%로하면</div>
+        <div style="border:2px solid red;">content가 숫자면 조정안됨</div>
+        <div style="display:table;border:2px solid red;width:100%;table-layout: fixed;">
+          <div style="border:1px solid black;display:table-cell;width:20%">1</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">22222222</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">3</div>
+          <div style="border:1px solid black;display:table-cell;">4</div>
+        </div>
+      </div>
+
+      <div class="d-inline-block col-3 align-top">
+        <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
+        <div style="border:2px solid red;">자식의 width를 20%로하면</div>
+        <div style="border:2px solid red;">content가 문자열이면 조정됨 </div>
+        <div style="display:table;border:2px solid red;width:100%;table-layout: fixed;">
+          <div style="border:1px solid black;display:table-cell;width:20%">1</div>
+          <div style="border:1px solid black;display:table-cell;width:20%;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">1213444ㄴ22문자열22222222222222222222222222222222문자열</div>
+          <div style="border:1px solid black;display:table-cell;width:20%">3</div>
+          <div style="border:1px solid black;display:table-cell;">4</div>
+        </div>
+      </div>
+
+      <h6 class="fw-bold">• content 길이가 초과되면 부모의 크기를 벗어남. </h6>
+      <h6 class="fw-bold">• 아니면 각 컨텐트의 비율을 계산하여 적용됨 (글자수) </h6>
+      <h6 class="fw-bold">• 참고 : 1. white-space:nowrap으로 줄바꿈 하지 않게하고, 2. overflow:hidden으로 넘침을 숨기고,</h6>
+      <h6 class="fw-bold">• 참고 : 3. [선택]text-overflow:ellipsis 넘치는 텍스트를 ...으로 처리한다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet">• display:table-cell일때 안됨 => white-space: nowrap; overflow: hidden; text-overflow:ellipsis;</h6>
+      <br>
+      
+    </div>
+
+
+  </div>
+
+  <div id="CSS_줄바꿈"><!-- 참고 -->
+    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"><a
+          href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
+          target="_blank">자바스크립트로 오버플로 확인</a></h5>
+      <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
+      <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
+      <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
+      <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
+      <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
+      <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
+      <h6 class="fw-bold">4. 줄바꿈 기준 : word-break, 기본값 normal, 상속 yes</h6>
+      <h6 style="text-indent: 23px;">CJK(Chinese - Japanese - Korean, 중국·일본·한국)는 일본어, 한국어, 중국어를 통틀어 이르는 말</h6>
+      <h6 style="text-indent: 23px;">normal : CJK 문자는 글자 기준(break-all)으로, CJK 이외의 문자는 단어 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
+        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며
+        공백이 늘어남)</h6>
+      <h6 style="text-indent: 23px;word-break:normal;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
+        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)</h6>
+      <h6 style="text-indent: 23px;word-break:normal;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을
+        맞추며 공백이 늘어남)</h6>
+      <h6 style="text-indent: 23px;">break-all : 글자 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;">keep-all : 단어 기준으로 줄바꿈합니다.</h6>
+      <h6 style="text-indent: 23px;">initial : 기본값으로 설정합니다.</h6>
+      <h6 style="text-indent: 23px;">inherit : 부모 요소의 속성값을 상속받습니다.</h6>
+      <h6 class="fw-bold">5. 한 줄에 inline-block, inline 요소가 여러개 있을때 맨 윗단 정렬 ==> vertical-align:top;</h6>
+      <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
+      <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
+        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+    <br><br><br><br><br><br><br>
+  </div>
 
   <div id="CSS_1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -1366,49 +1613,6 @@
     </div>
   </div>
 
-  <div id="CSS_줄바꿈"><!-- 참고 -->
-    <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold"><a
-          href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
-          target="_blank">자바스크립트로 오버플로 확인</a></h5>
-      <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
-      <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
-      <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
-      <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
-      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
-      <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
-      <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
-      <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
-      <h6 class="fw-bold">4. 줄바꿈 기준 : word-break, 기본값 normal, 상속 yes</h6>
-      <h6 style="text-indent: 23px;">CJK(Chinese - Japanese - Korean, 중국·일본·한국)는 일본어, 한국어, 중국어를 통틀어 이르는 말</h6>
-      <h6 style="text-indent: 23px;">normal : CJK 문자는 글자 기준(break-all)으로, CJK 이외의 문자는 단어 기준으로 줄바꿈합니다.</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
-        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 keep-all : 단어기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을 맞추며
-        공백이 늘어남)</h6>
-      <h6 style="text-indent: 23px;word-break:normal;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글 기본값이 글자기준이라고 했는데
-        예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)</h6>
-      <h6 style="text-indent: 23px;word-break:normal;text-align:justify;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (이것은 break-all : 글자기준)(추가로 배분정렬 적용 : text-align:justify; 양끝단을
-        맞추며 공백이 늘어남)</h6>
-      <h6 style="text-indent: 23px;">break-all : 글자 기준으로 줄바꿈합니다.</h6>
-      <h6 style="text-indent: 23px;">keep-all : 단어 기준으로 줄바꿈합니다.</h6>
-      <h6 style="text-indent: 23px;">initial : 기본값으로 설정합니다.</h6>
-      <h6 style="text-indent: 23px;">inherit : 부모 요소의 속성값을 상속받습니다.</h6>
-      <h6 class="fw-bold">5. 한 줄에 inline-block, inline 요소가 여러개 있을때 맨 윗단 정렬 ==> vertical-align:top;</h6>
-      <h6 class="fw-bold">6. 요소내 줄간격 ==> line-height:20px; 아래 20px와 30px 예시, 줄과 줄사이의 거리</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;line-height:20px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:20px;)</h6>
-      <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
-        기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
-    </div>
-    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
-
-    </div>
-    <br><br><br><br><br><br><br>
-  </div>
-
   <div id="excel_js_속성선택자"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <embed src="portal/images/문서연결_엑셀VBA/CSS_특정상황_속성등_스타일.txt" width=910px height=900px style="border:1px solid black;">
   </div>
@@ -1454,6 +1658,245 @@
     <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_06_스크롤이동선택자.png" alt="이미지없음">
     <br><br><br><br>
   </section>
+
+  <div id="CSS_TABLE">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold">• <a href="https://otiklo.tistory.com/16" target="_blank">[CSS 기초] 06. CSS 테이블 꾸미기 (Table)</a></h6>
+      <h6>• 부트스트랩 : 가로칸 td 여러개일때 안의 글자수?에 따라 폭이 자동 조정되는듯</h6>
+      <h6 style="text-indent: 12px;">- table-bordered(선) border-primary(선색) : 내용만큼 폭 차지, 내용없는곳 최소폭</h6>
+      <h6 style="text-indent: 12px;">- table : padding, 폭 100%에서 flex 적용되는듯, flex로 인해서 폭조정을 잘 못함(실력부족)</h6>
+      <h6 style="text-indent: 12px;">- table-active : 색깔, thead에 넣으면 한줄 전체, td에 넣으면 해당 td만</h6>
+      <h6 style="text-indent: 12px;">- col-1 같은 클래스로 폭 조정, 4칸짜리에 모두 col-1을 주면 결과적으로 3/12씩 차지, 하나만 col-1 주면 나머지 3칸 나눠가짐</h6>
+
+      <h6>• 부트스트랩 없이 table 자체</h6>
+      <h6 style="text-indent: 12px;">- 가로두칸 차지 : &#60;td colspan="2"&#62;, 세로두칸 차지 : &#60;td rowspan="2"&#62;</h6>
+      <h6 style="text-indent: 12px;">- width="100%", colspan="2", rowspan="2", border="1"(선 두께),</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6>• table table-bordered border-primary : table를 넣은상태</h6>
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td rowspan="3">sdfsfdsdfsdfsdfsdfsd</td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td class="col-2"></td><!-- 한글품명(+메모) -->
+            <td class="col-2"></td><!-- 전산신청 영문품명 -->
+            <td class="col-2"></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+      <h6>• table table-bordered border-primary : table를 넣은상태, thead에 table-active를 뺀상태</h6>
+      <table class="table table-bordered border-primary">
+        <thead>
+          <td class="table-active">sdfsfd</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td></td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="d-inline-block border border-danger border">1</div> 
+              <div class="d-inline-block">1</div> 
+              <div class="d-inline-block"></div> 
+              <div class="d-inline-block"></div> 
+              <div class="d-inline-block"></div> 
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+              <button title="수품원스티커_20190725_가자미"></button>
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="d-inline-block"></div> 
+              <button title="수품원스티커_20240327_고둥"></button>
+              <br>
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="d-inline-block"></div> 
+              <button title="수품원스티커_20240528_고등어"></button>
+            </td><!-- 한글품명(+메모) -->
+            <td></td><!-- 전산신청 영문품명 -->
+            <td></td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+
+      <table class="table table-bordered border-primary">
+        <thead class="table-active">
+          <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
+          <td>전산신청품명(한글/영문)[title]</td>
+          <td>영문품명(스티커)</td>
+          <td>학명</td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+              <button title="수품원스티커_20190725_가자미">정보</button>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
+            <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+              <button title="수품원스티커_20240327_고둥">정보</button>
+              <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
+            <td>BUCCINUM UNDATUM</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="d-inline-block">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+              <button title="수품원스티커_20240528_고등어">정보없음</button>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+         </tbody>
+      </table>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold"></h5>
+      <span style="color:blueviolet"></span>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">•</code>
+      <code class="fw-bold" style="color:blueviolet"></code>
+    </div>
+    <h6>학명 부분에 글자가 없으면 좁아짐.. 글자의 가로만큼 폭이 정해짐..</h6>
+    <table class="table table-bordered border-primary">
+      <thead class="table-active">
+        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
+        <td>전산신청품명(한글/영문)[title]</td>
+        <td>영문품명(스티커)</td>
+        <td>학명</td>
+      </thead>
+      <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+        <tr>
+          <td>
+            <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+            <button title="수품원스티커_20190725_가자미">정보</button>
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
+          <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
+        </tr>
+        <tr style="background-color:cyan;">
+          <td>
+            <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+            <button title="수품원스티커_20240327_고둥">정보</button>
+            <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
+          <td>BUCCINUM UNDATUM</td><!-- 학명 -->
+        </tr>
+        <tr>
+          <td>
+            <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+            <button title="수품원스티커_20240528_고등어">정보없음</button>
+          </td><!-- 한글품명(+메모) -->
+          <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
+          <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
+          <td></td><!-- 학명 -->
+        </tr>
+       </tbody>
+    </table>
+  </div>
 
   <div id="참고_특수문자txt"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
