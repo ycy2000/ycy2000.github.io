@@ -13,6 +13,7 @@ function 전체대체클릭시(e) {
     if (document.querySelector('#' + e.target.title)) {
       document.querySelector('#스티커_수품원_내용').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
       document.querySelector('#스티커_수품원').classList.remove('d-none');
+      document.querySelector('#스티커_수품원').style.top=(window.scrollY + parseInt(45)) + 'px';
       // 스크롤 아래의 것 클릭시 안보이는 맨 위에 나타나므로 현재 화면 기준으로 나타나게 해야함
     }
   }

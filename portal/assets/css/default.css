@@ -1,15 +1,21 @@
 @charset "UTF-8";
 /* #_02_수출품목정보_오징어 table width 1800 */
 /* #_02_수출품목정보_오징어 table {width:1830px;} */
-.td안div {width:650px;}/* td안에 div와 button이 있음 */
 .스티커정보 {border-radius: 5px;border:1px solid black; background-color:cadetblue}/* button */
-#_02_수출품목정보_오징어 .table_한줄 {width:1800px;}
-#_02_수출품목정보_오징어 .table_한줄 > div {height:40px;vertical-align: top;padding-top:5px;padding-left:4px; display:inline-block;margin-right:-5px;margin-bottom:-1px; border: 1px solid black;}
+#_02_수출품목정보_오징어 table {table-layout: fixed; width:1830px;font-size:15px;}
+#_02_수출품목정보_오징어 td {white-space: normal;padding:5px;}
+.div와버튼양쪽정렬 {display:flex;justify-content: space-between;}
+#_02_수출품목정보_오징어 thead td:nth-of-type(1), #_02_수출품목정보_오징어 tr td:nth-of-type(1) {width:700px;}
+#_02_수출품목정보_오징어 thead td:nth-of-type(2), #_02_수출품목정보_오징어 tr td:nth-of-type(2) {width:450px;}
+#_02_수출품목정보_오징어 thead td:nth-of-type(3), #_02_수출품목정보_오징어 tr td:nth-of-type(3) {width:350px;}
+/*  
+#_02_수출품목정보_오징어 .table_한줄 > div {vertical-align: top;padding-top:5px;padding-bottom:5px; padding-left:4px; 
+    display:inline-block;margin-right:-5px;margin-bottom:-1px; border: 1px solid black;}
 #_02_수출품목정보_오징어 .table_한줄 > div:nth-of-type(1) {width:700px;}
 #_02_수출품목정보_오징어 .table_한줄 > div:nth-of-type(2) {width:400px;}
 #_02_수출품목정보_오징어 .table_한줄 > div:nth-of-type(3) {width:400px;}
 #_02_수출품목정보_오징어 .table_한줄 > div:nth-of-type(4) {width:400px;}
-
+*/
 
 /* 전체글꼴 */
 body, pre {font-family: 'Noto Serif KR', serif;}

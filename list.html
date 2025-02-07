@@ -29,6 +29,7 @@
         <button type="button" class="btn btn-light active 카테고리">예정</button>
         <button type="button" class="btn btn-light 카테고리">완료</button>
         <button type="button" class="btn btn-light 카테고리">면허,운송</button>
+        <button type="button" class="btn btn-light 카테고리">메모</button>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
@@ -50,6 +51,37 @@
 <!-- 안에 textarea를 넣던지, input들을 넣던지. -->
 <div id="PNG셑팅" class="d-none">
 
+</div>
+<div id="PNG셑팅에들어갈메모" class="d-none">
+  <!-- 챗gpt달력 -->
+  <div class="달력두개모음">
+    <div class="calendar">
+      <div class="header">
+          <button>◀</button>
+          <div id="monthYear"></div>
+          <button>▶</button>
+      </div>
+      <div class="header" style="margin:0px 13px;font-weight: bold;"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+      <div class="d-none 공휴일수기기록쉼표로구분"></div>
+      <div class="days" id="days"></div>
+    </div>
+    <div class="calendar2">
+      <div class="header2">
+          <button>◀</button>
+          <div id="monthYear2"></div>
+          <button>▶</button>
+      </div>
+      <div class="header" style="margin:0px 13px;font-weight: bold;"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+      <div class="d-none 공휴일수기기록쉼표로구분"></div>
+      <div class="days2" id="days2"></div>
+    </div>
+  </div>
+  <div id="메모div">
+    <div>2월12일 수요일 : MH고등어 선적, KCTC 2대, 1400개씩 두대</div>
+    <div>2월13일 목요일 : CK 북방 1000개, 청어알 564개, 수출검사 신청후 1주일째 되는날</div>
+    <div>2월14일 금요일 : CK 청어알 1110개, 수출검사 신청후 1주일째 되는날</div>
+    <div>2월말 ~ 3월초 : 등록공장 점검</div>
+  </div>
 </div>
 <div id="풀기셑팅" class="d-none">
 
@@ -153,6 +185,81 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
 <script src="portal/assets/js/list.js"></script>
+<!-- 챗gpt달력 -->
+<script>
+  const daysContainer = document.getElementById("days");
+  const monthYear = document.getElementById("monthYear");
+  let currentDate = new Date();
+
+  function renderCalendar() {
+    console.log('renderCalendar()')
+      daysContainer.innerHTML = "";
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      monthYear.textContent = `${year}년 ${month + 1}월`;
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+      const today = new Date();
+      const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+
+      for (let i = 0; i < firstDay; i++) {
+          const emptyCell = document.createElement("div");
+          daysContainer.appendChild(emptyCell);
+      }
+
+      for (let day = 1; day <= lastDate; day++) {
+          const dayCell = document.createElement("div");
+          dayCell.className = "day";
+          dayCell.textContent = day;
+          if (isCurrentMonth && day === today.getDate()) {
+              dayCell.classList.add("today");
+          }
+          daysContainer.appendChild(dayCell);
+      }
+  }
+
+   renderCalendar();
+  // 두번째 달력
+  const daysContainer2 = document.getElementById("days2");
+  const monthYear2 = document.getElementById("monthYear2");
+  let currentDate2 = new Date();
+  currentDate2 = new Date(currentDate2.getFullYear(),currentDate2.getMonth()+1,1);
+
+
+
+
+  function renderCalendar2() {
+    console.log('renderCalendar2()')
+      daysContainer2.innerHTML = "";
+      const year2 = currentDate2.getFullYear();
+      const month2 = currentDate2.getMonth();
+      monthYear2.textContent = `${year2}년 ${month2 + 1}월`;
+
+      const firstDay2 = new Date(year2, month2, 1).getDay();
+      const lastDate2 = new Date(year2, month2 + 1, 0).getDate();
+      const today2 =  new Date(currentDate2.getFullYear(),currentDate2.getMonth()+1,1);
+
+      const isCurrentMonth2 = today2.getFullYear() === year2 && today2.getMonth() === month2;
+
+      for (let i = 0; i < firstDay2; i++) {
+          const emptyCell2 = document.createElement("div");
+          daysContainer2.appendChild(emptyCell2);
+      }
+
+      for (let day2 = 1; day2 <= lastDate2; day2++) {
+          const dayCell2 = document.createElement("div");
+          dayCell2.className = "day";
+          dayCell2.textContent = day2;
+          if (isCurrentMonth2 && day2 === today2.getDate()) {
+              dayCell2.classList.add("today");
+          }
+          daysContainer2.appendChild(dayCell2);
+      }
+  }
+  renderCalendar2();
+
+</script>
 </body>
 
 </html>

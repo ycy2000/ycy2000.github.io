@@ -79,6 +79,12 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_면허운송.png" alt="이미지없음">';
   }
+  if (e.target.innerHTML=='메모') {
+    console.log('PNG_면허운송_셑팅')
+    document.querySelector('#풀기셑팅').classList.add('d-none');
+    document.querySelector('#PNG셑팅').classList.remove('d-none');
+    document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#PNG셑팅에들어갈메모').innerHTML;
+  }
 }
 function 리스너_head_button_group더블클릭이벤트(e) {
   console.log('더블클릭:클릭 실행후 더블클릭 실행됨')
