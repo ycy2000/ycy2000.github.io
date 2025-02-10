@@ -5,6 +5,7 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 
 #메모div > div {padding:3px;}
+#메모div > div > div {display: inline-block;vertical-align: top;}
 #메모div > div > button {display:inline-block; border:1px solid black; border-radius: 3px;margin-right:3px;padding:0;}
 #메모div > div > button:nth-of-type(1) {width:80px;}
 #메모div > div > button:nth-of-type(2) {width:70px;}
