@@ -73,9 +73,11 @@ renderCalendar2();
 //메모 관련 달력 끝..  
 //메모 관련, #메모div > div > button:nth-of-type(1)에 날짜가 있을때 달력에 표시
 function 첫번째버튼날짜있을때댤력에표시() {
-  var 첫번째버튼들 = document.querySelectorAll('#메모div > div > button:nth-of-type(1)');
-  for (var i=0; i<첫번째버튼들.length; i++) {
-    console.log(첫번째버튼들[i].innerHTML)
+  var 메모날짜버튼들 = document.querySelectorAll('#메모div > div > button:nth-of-type(1)');
+  var 메모정보배열=[];
+  //날짜가 있으면(?월?일 일로 끝남) 다음 button에 요일넣기, 
+  for (var i=0; i<메모날짜버튼들.length; i++) {
+    console.log(메모날짜버튼들[i].innerHTML)
     //달력월, 달력일, 버튼월, 버튼일 / 버튼 월 일을 배열에 담아놓고, 달력 순회하여 표시하도록 코딩
   }
 
