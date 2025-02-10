@@ -1,3 +1,88 @@
+//메모 관련 달력
+const daysContainer = document.getElementById("days");
+const monthYear = document.getElementById("monthYear");
+let currentDate = new Date();
+
+function renderCalendar() {
+  console.log('renderCalendar()')
+    daysContainer.innerHTML = "";
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    monthYear.textContent = `${year}년 ${month + 1}월`;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+
+    for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement("div");
+        daysContainer.appendChild(emptyCell);
+    }
+
+    for (let day = 1; day <= lastDate; day++) {
+        const dayCell = document.createElement("div");
+        dayCell.className = "day";
+        dayCell.textContent = day;
+        if (isCurrentMonth && day === today.getDate()) {
+            dayCell.classList.add("today");
+        }
+        daysContainer.appendChild(dayCell);
+    }
+}
+
+  renderCalendar();
+// 두번째 달력
+const daysContainer2 = document.getElementById("days2");
+const monthYear2 = document.getElementById("monthYear2");
+let currentDate2 = new Date();
+currentDate2 = new Date(currentDate2.getFullYear(),currentDate2.getMonth()+1,1);
+
+
+
+
+function renderCalendar2() {
+  console.log('renderCalendar2()')
+    daysContainer2.innerHTML = "";
+    const year2 = currentDate2.getFullYear();
+    const month2 = currentDate2.getMonth();
+    monthYear2.textContent = `${year2}년 ${month2 + 1}월`;
+
+    const firstDay2 = new Date(year2, month2, 1).getDay();
+    const lastDate2 = new Date(year2, month2 + 1, 0).getDate();
+    const today2 =  new Date(currentDate2.getFullYear(),currentDate2.getMonth()+1,1);
+
+    const isCurrentMonth2 = today2.getFullYear() === year2 && today2.getMonth() === month2;
+
+    for (let i = 0; i < firstDay2; i++) {
+        const emptyCell2 = document.createElement("div");
+        daysContainer2.appendChild(emptyCell2);
+    }
+
+    for (let day2 = 1; day2 <= lastDate2; day2++) {
+        const dayCell2 = document.createElement("div");
+        dayCell2.className = "day";
+        dayCell2.textContent = day2;
+        if (isCurrentMonth2 && day2 === today2.getDate()) {
+            dayCell2.classList.add("today");
+        }
+        daysContainer2.appendChild(dayCell2);
+    }
+}
+renderCalendar2();
+//메모 관련 달력 끝..  
+//메모 관련, #메모div > div > button:nth-of-type(1)에 날짜가 있을때 달력에 표시
+function 첫번째버튼날짜있을때댤력에표시() {
+  var 첫번째버튼들 = document.querySelectorAll('#메모div > div > button:nth-of-type(1)');
+  for (var i=0; i<첫번째버튼들.length; i++) {
+    console.log(첫번째버튼들[i].innerHTML)
+    //달력월, 달력일, 버튼월, 버튼일 / 버튼 월 일을 배열에 담아놓고, 달력 순회하여 표시하도록 코딩
+  }
+
+}
+첫번째버튼날짜있을때댤력에표시();
+//메모 관련 끝..  
+
 //가로 한줄씩 : var 줄바꿈정보=문자열.split('\n');, 한줄안의 셀들 :줄바꿈한줄정보=줄바꿈정보[i].split('\t');
 function 풀기_리스트() {
   console.log('풀기_리스트()')

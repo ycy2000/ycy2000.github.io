@@ -4,7 +4,12 @@
 body, pre {font-family: 'Noto Serif KR', serif;}
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 
-#메모div {padding:15px;}
+#메모div > div {padding:3px;}
+#메모div > div > button {display:inline-block; border:1px solid black; border-radius: 3px;margin-right:3px;padding:0;}
+#메모div > div > button:nth-of-type(1) {width:80px;}
+#메모div > div > button:nth-of-type(2) {width:70px;}
+.달력우측메모 {display: inline-block;vertical-align: top;height:355px}
+#PNG셑팅 {white-space: nowrap;}
 /* 달력 */
 .days > div:nth-child(7n), .days > div:nth-child(7n+1), .days2 > div:nth-child(7n), .days2 > div:nth-child(7n+1) {font-weight: bold;color:red;}
 .calendar, .calendar2 {width: 350px; display:inline-block;margin: auto;border: 1px solid #ccc;padding: 10px;border-radius: 10px;box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);}
