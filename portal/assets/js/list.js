@@ -74,11 +74,66 @@ renderCalendar2();
 //메모 관련, #메모div > div > button:nth-of-type(1)에 날짜가 있을때 달력에 표시
 function 첫번째버튼날짜있을때댤력에표시() {
   var 메모날짜버튼들 = document.querySelectorAll('#메모div > div > button:nth-of-type(1)');
-  var 메모정보배열=[];
+  var 메모날짜정보배열=[]; //2_11
+  var 월index, 일index, 월, 일, 진행, 버튼문자열;
+  var 오늘 = new Date();
+  var 요일관련오늘년=오늘.getFullYear();
+  var 요일관련오늘월=오늘.getMonth()+1;
+  var 메모날짜년도;
+  var 오늘월_일 = (오늘.getMonth()+1) + '_' + 오늘.getDate();
+
+  //요일넣기
+  const 요일들 = ["일","월","화","수","목","금","토"];
+  var 메모날짜;
   //날짜가 있으면(?월?일 일로 끝남) 다음 button에 요일넣기, 
   for (var i=0; i<메모날짜버튼들.length; i++) {
-    console.log(메모날짜버튼들[i].innerHTML)
-    //달력월, 달력일, 버튼월, 버튼일 / 버튼 월 일을 배열에 담아놓고, 달력 순회하여 표시하도록 코딩
+    버튼문자열=메모날짜버튼들[i].innerHTML;
+    월index=버튼문자열.indexOf('월'); //없으면 -1, 처음에 나오면 0
+    일index=버튼문자열.indexOf('일'); //없으면 -1, 처음에 나오면 0
+    if (월index>0) {월=버튼문자열.substring(0,월index)} else {월='숫자아님'}
+    if (일index>0) {일=버튼문자열.substring(월index+1,일index)} else {일='숫자아님'}
+    if (isNaN(월) || isNaN(일)) {진행=false;} else {진행=true;}
+    if (진행) {
+      메모날짜정보배열.push(월 + '_' + 일);
+      //console.log(월 + '_' + 일 + ' / ' + 오늘월_일)
+      if ((월 + '_' + 일)==오늘월_일) {
+        메모날짜버튼들[i].classList.add('js오늘메모');
+        메모날짜버튼들[i].nextElementSibling.classList.add('js오늘메모');
+        메모날짜버튼들[i].nextElementSibling.nextElementSibling.classList.add('js오늘메모');
+      }
+      //요일넣기
+      if (요일관련오늘월==1 && (월==11 || 월==12)) {
+        메모날짜년도=요일관련오늘년-1;
+        메모날짜=new Date(메모날짜년도,월,일);
+        요일=요일들[메모날짜.getDay()];
+        메모날짜버튼들[i].nextElementSibling.innerHTML=요일 + '요일';
+      } else if (요일관련오늘월==12 && (월==1 || 월==2)) {
+        메모날짜년도=요일관련오늘년+1;
+        메모날짜=new Date(메모날짜년도,월,일);
+        요일=요일들[메모날짜.getDay()];
+        메모날짜버튼들[i].nextElementSibling.innerHTML=요일 + '요일';
+      } else {
+        메모날짜년도=요일관련오늘년;
+        메모날짜=new Date(메모날짜년도,월,일);
+        요일=요일들[메모날짜.getDay()];
+        메모날짜버튼들[i].nextElementSibling.innerHTML=요일 + '요일';
+      }
+    }
+    //console.log('메모날짜버튼개수 : ' + 메모날짜버튼들.length + ', 월index : ' + 월index + ', 일index : ' + 일index + ', 진행 : ' + 진행 + ', 월 : ' + 월 + ', 일 : ' + 일)
+  }
+  var 달력년월=document.querySelector('#monthYear').innerHTML;
+  var 달력월=달력년월.substring(달력년월.indexOf('년')+1,달력년월.indexOf('월')).trim();
+  var 현재날짜확인;
+  for (var i=0; i<document.querySelectorAll('#days > div').length; i++) {
+    현재날짜확인=달력월 + '_' + document.querySelectorAll('#days > div')[i].innerHTML;
+    if (메모날짜정보배열.indexOf(현재날짜확인)>-1) {
+      document.querySelectorAll('#days > div')[i].classList.add('js메모있는날짜달력표시');
+    }
+  }
+  var 달력년월=document.querySelector('#monthYear2').innerHTML;
+  var 달력월=달력년월.substring(달력년월.indexOf('년')+1,달력년월.indexOf('월')).trim();
+  for (var i=0; i<document.querySelectorAll('#days2 > div').length; i++) {
+    
   }
 
 }
