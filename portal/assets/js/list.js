@@ -87,6 +87,9 @@ function 첫번째버튼날짜있을때댤력에표시() {
   var 메모날짜;
   //날짜가 있으면(?월?일 일로 끝남) 다음 button에 요일넣기, 
   for (var i=0; i<메모날짜버튼들.length; i++) {
+    if (메모날짜버튼들[i].nextElementSibling.nextElementSibling.innerHTML.trim()=='') {
+      메모날짜버튼들[i].nextElementSibling.nextElementSibling.innerHTML='_';
+    }
     버튼문자열=메모날짜버튼들[i].innerHTML;
     월index=버튼문자열.indexOf('월'); //없으면 -1, 처음에 나오면 0
     일index=버튼문자열.indexOf('일'); //없으면 -1, 처음에 나오면 0
@@ -130,10 +133,14 @@ function 첫번째버튼날짜있을때댤력에표시() {
       document.querySelectorAll('#days > div')[i].classList.add('js메모있는날짜달력표시');
     }
   }
+
   var 달력년월=document.querySelector('#monthYear2').innerHTML;
   var 달력월=달력년월.substring(달력년월.indexOf('년')+1,달력년월.indexOf('월')).trim();
   for (var i=0; i<document.querySelectorAll('#days2 > div').length; i++) {
-    
+    현재날짜확인=달력월 + '_' + document.querySelectorAll('#days2 > div')[i].innerHTML;
+    if (메모날짜정보배열.indexOf(현재날짜확인)>-1) {
+      document.querySelectorAll('#days2 > div')[i].classList.add('js메모있는날짜달력표시');
+    }
   }
 
 }
