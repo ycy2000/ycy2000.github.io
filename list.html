@@ -77,13 +77,9 @@
     </div>
   </div>
   
-  <div id="메모div" style="position: absolute;left:355px;"><!-- 날짜 오른쪽 BUTTON은 값이 있어도 바뀜(요일), div안에 버튼두개와 div(메모) -->
-    <div><button>2월12일</button><button></button>
-      <div> 입고예정 : SI홀푸드 : 달고기 21KG 73</div>
-    </div>
-    <div><button>2월12일</button><button></button>
-      <div> 입고예정 : CK : 날치알 5종, 618</div>
-    </div>
+  <div id="메모div" style="position: absolute;left:355px;">
+    <!-- div 안에 button2개(날짜와 요일)와 div(메모내용) -->
+    <!-- 날짜 오른쪽 BUTTON은 값이 있어도 첫번째버튼이 날짜형식이면 js로 바뀜(요일) -->
     <div><button>2월13일</button><button>목요일</button>
       <div> 
         태명수산 : 포장박스는 수요일에 온다고함. 태명 사장님<br>
@@ -93,6 +89,8 @@
     </div>
     <div><button>2월19일</button><button></button>
       <div> 
+        <span style="color:blueviolet;font-weight: bold;">오전 9시반에 작업해달라고 요청 옴 (CK김소은)</span><br>
+        <span style="color:blueviolet;font-weight: bold;">사진찍으러 직원 온다고 함</span><br>
         CK 선적 오전. 2대. 수요일 오전<br>
         1대 : 청어알 564 + 북방대합 1000<br>
         1대 : 청어알 1110<br>
@@ -100,12 +98,6 @@
     </div>
     <div><button>2월말 ~ </button><button>3월초</button>
       <div> 등록공장 점검</div>
-    </div>
-    <div><button>2월말</button><button>까지</button>
-      <div style="background-color: yellow;"> 보세구역 운영상황 보고</div>
-    </div>
-    <div><button>2월28일</button><button></button>
-      <div style="background-color: yellow;"> 보세구역 운영상황 보고</div>
     </div>
     <div><button>_</button><button>_</button>
       <div> </div> 
@@ -118,8 +110,15 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
-  <div id="메모div우측" style="position: absolute;left:1200px;width:650px;height:915px;border:1px solid black;"><!-- 날짜 오른쪽 BUTTON은 값이 있어도 바뀜(요일)  -->
-
+  <div class="메모div우측" style="position: absolute;left:1200px;width:650px;height:915px;">
+    <div style="border:1px solid black;padding:5px;margin-bottom:5px;">
+      <div class="fw-bold"><span style="color:blueviolet;">(250212) '(주)헤아림'으로 입고, 명태 H/G 700개씩 입고예정 (JH핸들링)</div>
+    </div>
+    <div style="border:1px solid black;padding:5px;">
+      <div class="fw-bold"><span style="color:blueviolet;">[완료] </span>25년도 보세구역 운영상황의 보고, 제출일자 : 2월12일, 두군데 메일보냄</div>
+      <div class="fw-bold">• 자율관리 보세구역 자율점검표 제출, <span style="color:blueviolet;">4월1일부터 15일까지 범위에 제출</span></div>
+      <div style="text-indent: 15px;">- 재고조사보고</div>
+    </div>
   </div>
 </div>
 
