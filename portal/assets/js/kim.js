@@ -80,10 +80,6 @@ function 가구만들기() {
   공통켤때위치있는거메모div내_가구배치()
 }
 
-function 임시_일신집구조불러오기() {
-  document.querySelector('#메모').innerHTML=document.querySelector('#일신집구조전체').outerHTML;
-  document.querySelector('#메모').classList.remove('d-none');
-}
 function 임시_집구조불러오기() {
   document.querySelector('#메모').innerHTML=document.querySelector('#집구조전체').outerHTML;
   document.querySelector('#메모').classList.remove('d-none');
@@ -295,14 +291,6 @@ function 메모div내_집구조전체(e) {
     }
   }
 
-
-
-
-
-
-
-
-
 //색칠보기에  .색칠보기_페이지 1개 있는데 9개 추가
 일단다숨기기();
 document.querySelector('#기본보기').classList.remove('d-none');
@@ -324,121 +312,6 @@ function 전세계약시주의사항() {
   document.querySelector('#메모').classList.remove('d-none');
 }
 
-function 임시_일신집구조켤때캔버스그리기() {
-  console.log('집구조켤때 한번 그리기')
-  var 캔버스 = document.querySelector('#메모 #집구조캔버스');
-  var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
-  // DPR 정보 가져오기
-  var dpr = window.devicePixelRatio;
-  // 캔버스 요소의 크기 가져오기
-  var rect = 캔버스.getBoundingClientRect();
-  캔버스.width = rect.width * dpr;
-  캔버스.height = rect.height * dpr;
-
-  var 가로=0, 세로=0, X좌표, Y좌표;
-  var 숫자보정값=0.1;
-  // scale() 함수를 사용하여 캔버스 유닛 크기 보정
-  그리기.scale(dpr, dpr);
-  그리기.font = "bold 10pt '맑은 고딕'";
-  그리기.textBaseline="top"; //top, middle, bottom, alphabetic, hanging, ideo graphic
-  그리기.fillStyle = 'black'; //채워지는 색깔, fillText도 채우기임
-  그리기.textAlign = 'center';
-  그리기.strokeStyle='black'; // 선 말고 사각형으로채우기
-  그리기.lineWidth='1';
-
-  //컴퓨터방 : 가로 2250, 세로 3000
-  그리기.fillStyle = 'gray';
-  가로=2250*숫자보정값;세로=3000*숫자보정값;X좌표=100;Y좌표=20;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('컴퓨터방',X좌표+30,Y좌표+10);
-  
-  //싱크대 : 가로 2250, 세로 700
-  그리기.fillStyle = 'rgb(221, 235, 150)';//누런색
-  가로=2250*숫자보정값;세로=700*숫자보정값;X좌표=340;Y좌표=20;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('싱크대',X좌표+30,Y좌표+10);
-
-  //냉장고 놓은 공간 : 가로 2250, 세로 2300
-  그리기.fillStyle = 'gray';
-  가로=2250*숫자보정값;세로=2300*숫자보정값;X좌표=340;Y좌표=90;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('공간',X좌표+30,Y좌표+10);
-
-  //큰방 : 가로 3090, 세로 3630
-  그리기.fillStyle = 'gray';
-  가로=3090*숫자보정값;세로=3630*숫자보정값;X좌표=100;Y좌표=335;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('큰방',X좌표+30,Y좌표+10);
-
-  //거실 : 가로 4380, 세로 2180
-  그리기.fillStyle = 'gray';
-  가로=4380*숫자보정값;세로=2180*숫자보정값;X좌표=423;Y좌표=480;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('거실',X좌표+200,Y좌표+10);
-
-  //전실과 신발장 : 문쪽으로 900, 신발장까지 1000, 신발장500 (), 벽은 150인듯, 벽 포함 1500이니 먼저하고 선을 덮어씀
-  그리기.fillStyle = 'rgb(221, 235, 150)';//누런색
-  가로=900*숫자보정값;세로=1500*숫자보정값;X좌표=655;Y좌표=320;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('신발장',X좌표+30,Y좌표+10);
-  그리기.fillText('현관',X좌표+30,Y좌표+80);
-  그리기.fillStyle = 'gray';
-  그리기.fillRect(X좌표,Y좌표+50,가로,3,);//신발장과 현관 구분선
-
-  //거실과 붙은 현관 벽 선 : 가로 2060, 세로 100(선폭)
-  그리기.fillStyle = 'black';
-  가로=2060*숫자보정값;세로=100*숫자보정값;X좌표=655;Y좌표=470;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-
-  //화장실,세탁실 : 
-  그리기.fillStyle = 'gray';
-  가로=1680*숫자보정값;세로=3000*숫자보정값;X좌표=578;Y좌표=20;
-  그리기.fillRect(X좌표,Y좌표,가로,세로,);
-  그리기.fillStyle='black';
-  그리기.fillText('세탁실',X좌표+30,Y좌표+10);
-  그리기.fillText('화장실',X좌표+30,Y좌표+150);
-  그리기.fillStyle = 'black';
-  그리기.fillRect(X좌표,Y좌표+100,가로,1,);//세탁실과 화장실 구분선
-
-  그리기.textAlign = 'left';
-  그리기.fillText('컴퓨터방 : 가로 2250, 세로 3000',1300,20);
-  그리기.fillText('큰방 : 가로 3090, 세로 3630',1300,50);
-  그리기.fillText('거실 : 가로 4380, 세로 2180',1300,80);
-
-
-
-
-  
-  //가로 세로 100마다 점찍기
-  var 점가로=0, 점세로=790;
-  그리기.fillStyle='red'
-  그리기.lineWidth=1;
-  for (var i=0; i<36; i++) {
-    점가로+=50; 
-    그리기.beginPath();
-    그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
-    그리기.fill();
-    그리기.stroke();
-    그리기.fillText(점가로,점가로,점세로-20);
-  }
-  var 점가로=50, 점세로=0;
-  그리기.fillStyle='red'
-  그리기.lineWidth=1;
-  for (var i=0; i<15; i++) {
-    점세로+=50; 
-    그리기.beginPath();
-    그리기.arc(점가로, 점세로, 2, 0, 2*Math.PI);
-    그리기.fill();
-    그리기.stroke();
-    그리기.fillText(점세로,점가로-20,점세로-7);
-  }
-}
 function 임시_집구조켤때캔버스그리기() {
   console.log('집구조켤때 한번 그리기')
   var 캔버스 = document.querySelector('#메모 #집구조캔버스');
