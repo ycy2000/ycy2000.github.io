@@ -1069,6 +1069,7 @@ var 다음btn='';
   }
   선택회차다음번호='<div>' + 다음btn + '</div>';
 
+if (1==2) {  // 세희가 지워달라고 한 곳
   회귀제목='<div></div><div><span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span></div>'
 
   for (var i=0; i<회귀번호들.length; i++) {
@@ -1095,7 +1096,7 @@ var 다음btn='';
   }
   회귀전체=회귀제목 + 각회귀누적;
   document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=회귀전체;
-
+}
 
   // 100회귀 고정이었는데 선택할수 있는 버튼 추가
 var 회귀선택버튼div;
