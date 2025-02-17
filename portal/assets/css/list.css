@@ -25,7 +25,7 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 
 .js메모있는날짜달력표시:not([class~='today']) {background-color: blue;color:white;font-weight: bold;}
 .js메모있는날짜달력표시[class~='today'] {background-color: blue;font-weight: bold;}
-.js오늘메모 {background-color: aqua;}
+.js오늘메모 {background-color:chartreuse;}
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {
     cursor: pointer;

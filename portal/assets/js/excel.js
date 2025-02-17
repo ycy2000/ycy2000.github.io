@@ -9,7 +9,7 @@ function png와text사용확인() {
 function 연습() {
   console.log('연습()')
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = '탁구_1장자탁구클럽';
+  var 연습제목설정이것만 = '탁구_메모';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
