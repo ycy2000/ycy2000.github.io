@@ -54,7 +54,7 @@
 </div>
 <div id="PNG셑팅에들어갈메모" class="d-none">
   <!-- 챗gpt달력 -->
-  <div class="달력두개모음" style="position: absolute;">
+  <div class="달력두개모음" style="position: absolute;left:1500px;top:250px;">
     <div class="calendar">
       <div class="header">
           <button>◀</button>
@@ -77,61 +77,65 @@
     </div>
   </div>
   
-  <div id="메모div" style="position: absolute;left:355px;">
+  <div id="메모div" style="position: absolute;">
     <!-- div 안에 button2개(날짜와 요일)와 div(메모내용) -->
     <!-- 날짜 오른쪽 BUTTON은 값이 있어도 첫번째버튼이 날짜형식이면 js로 바뀜(요일) background-color:chartreuse-->
-    <div><button>2월18일</button><button></button>
-      <div>
-        MH수산 수출검사 : 1320 + 680<br>
-        1/15 생물고등어 20kg 녹 1320 7F <br>
-        1/19 생물고등어 20kg 녹 680 4F <br>
-        <span style="color:blueviolet;font-weight: bold;">600개는 스마일, 20~21일(목~금)</span><br>
-        <span style="color:blueviolet;font-weight: bold;">1400개는 풀작업으로 포딩 로얄, 24~26일 예정(월~수)</span>
+    <!-- id=달력날짜기준, 1일일때 안바뀌고 달력날짜기준의 날짜를 참고로 달력이 바뀐다. -->
+    <!--★★★★★★ .연두바탕보라글자, .보라글자, .테두리, .마진탑3 -->
+    <div><button id="달력날짜기준">2월18일</button><button></button>
+      <div class="일별메모모두감싸기">
+        <div>MH수산 수출검사 : 1320 + 680.....  1/15 생물고등어 20kg 녹 1320 7F, 1/19 생물고등어 20kg 녹 680 4F</div><br>
+        <div>
+          <span class="보라글자">600개는 스마일, 20~21일(목~금)......</span>
+          <span class="보라글자">1400개는 풀작업으로 포딩 로얄, 24~26일 예정(월~수)</span>
+        </div>
       </div>
     </div>
     <div><button>2월19일</button><button></button>
-      <div> SI홀푸드 : 18일에서 19일로 변경 (아침에 와 있을것)<br>
-        <img src="portal/images/문서연결_리스트/20250218입고예정.png" alt="이미지없음">
-
+      <div class="일별메모모두감싸기">
+        <div>SI홀푸드 : 18일에서 19일로 변경 (아침에 와 있을것)... 15품목 1417</div>
       </div>
     </div>
     <div><button>2월19일</button><button></button>
-      <div> 자갈치수산 오징어채 4KG 귀채 600 <br>
-        (태명) 코스트코리아로 입고, 고등어 비닐 300개, 박스갈이 <br>
+      <div class="일별메모모두감싸기">
+        <div class="테두리"> 자갈치수산 오징어채 4KG 귀채 600</div> <div class="테두리">(태명) 코스트코리아로 입고, 고등어 비닐 300개, 박스갈이</div>
+        <br>
+        <div class="테두리 마진탑3">자갈치수산 관련, 다른 화주로 오징어채 4kg 1700+? 있을지도</div>
       </div>
     </div>
     <div><button>2월19일</button><button></button>
-      <div>
-        선명 : MADRID EXPRESS, 19일 수 19시, 6대. 머스크(3일), 하파그(3일)<br>
-        <span style="background-color:chartreuse; color:blueviolet;font-weight: bold;">목요일 저녁까지 갇다 놓고 금요일에 하는게 안전(축산물)</span><br>
-        MAEUSSZ778579	대상 주식회사	MMAU1408985	닭다리살	1,985 <br>
-        MAEU248103996	마이푸드	MNBU0330304	닭장각	1,568 <br>
-        MAEU248246495	마이푸드	MNBU4065370	닭다리살	1,960 <br>
-        MAEU246635993	수월한	MMAU1413261	닭발	2,300 <br>
-        MAEUJBS256166	오케이푸드	MWCU5249877	닭다리살	1,952 <br>
-        HLCUSCL241243994	씨케이글로벌	HLBU9551816	연어	840 <br>
+      <div class="일별메모모두감싸기">
+        <div>
+          선명 : MADRID EXPRESS, 19일 수 19시, 6대. 머스크(3일), 하파그(3일)<br>
+          <span class="span연두바탕보라글자">목요일 저녁까지 갇다 놓고 금요일에 하는게 안전(축산물)</span><br>
+          MAEUSSZ778579	대상 주식회사	MMAU1408985	닭다리살	1,985 <br>
+          MAEU248103996	마이푸드	MNBU0330304	닭장각	1,568 <br>
+          MAEU248246495	마이푸드	MNBU4065370	닭다리살	1,960 <br>
+          MAEU246635993	수월한	MMAU1413261	닭발	2,300 <br>
+          MAEUJBS256166	오케이푸드	MWCU5249877	닭다리살	1,952 <br>
+          HLCUSCL241243994	씨케이글로벌	HLBU9551816	연어	840 <br>
+        </div>
       </div>
     </div>
     <div><button>2월20일</button><button></button>
-      <div> 
-        <span style="color:blueviolet;font-weight: bold;">오전 8시반에 작업해달라고 요청 옴 (CK김소은)</span><br>
-        <span style="color:blueviolet;font-weight: bold;">사진찍으러 직원 온다고 함</span><br>
-        CK 선적 오전. 2대. 목요일 08:30, 11:30까지 완료 요청<br>
-        1대 : 청어알 564 + 북방대합 1000<br>
-        1대 : 청어알 1110<br>
+      <div class="일별메모모두감싸기">
+        <div> 
+          <span style="color:blueviolet;font-weight: bold;">오전 8시반에 작업해달라고 요청 옴 (CK김소은)</span><br>
+          <span style="color:blueviolet;font-weight: bold;">사진찍으러 직원 온다고 함</span><br>
+          CK 선적 오전. 2대. 목요일 08:30, 11:30까지 완료 요청<br>
+          1대 : 청어알 564 + 북방대합 1000<br>
+          1대 : 청어알 1110<br>
+        </div>
       </div>
     </div>
     <div><button>2월말 ~ </button><button>3월초</button>
       <div> 등록공장 점검</div>
     </div>
-    <div><button>_</button><button>_</button>
-      <div> </div> 
-    </div>
-    <div><button>_</button><button>_</button>
-      <div></div> 
-    </div>
-    <div><button>_</button><button>_</button>
-      <div></div> 
+    <div><button>2월20일</button><button></button>
+      <div class="일별메모모두감싸기">
+        <div> 
+        </div>
+      </div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>

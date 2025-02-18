@@ -1,7 +1,16 @@
 //메모 관련 달력
 const daysContainer = document.getElementById("days");
 const monthYear = document.getElementById("monthYear");
-let currentDate = new Date();
+
+var 임시오늘날짜=new Date();
+var 임시오늘년=임시오늘날짜.getFullYear();
+var 임시오늘월=임시오늘날짜.getMonth();
+var id달력날짜기준월=document.querySelector('#달력날짜기준').innerHTML.substring(0,document.querySelector('#달력날짜기준').innerHTML.indexOf('월'))*1 -1;
+if (임시오늘월<3 && id달력날짜기준월>8) {임시오늘년=임시오늘년-1}
+if (임시오늘월>8 && id달력날짜기준월<3) {임시오늘년=임시오늘년+1}
+
+let currentDate = new Date(임시오늘년,id달력날짜기준월,1);
+// let currentDate = new Date() new Date(2025,0,1)=>1월1일일;
 
 function renderCalendar() {
   console.log('renderCalendar()')
@@ -35,7 +44,7 @@ function renderCalendar() {
 // 두번째 달력
 const daysContainer2 = document.getElementById("days2");
 const monthYear2 = document.getElementById("monthYear2");
-let currentDate2 = new Date();
+let currentDate2 = currentDate;
 currentDate2 = new Date(currentDate2.getFullYear(),currentDate2.getMonth()+1,1);
 
 
@@ -102,7 +111,6 @@ function 첫번째버튼날짜있을때댤력에표시() {
       if ((월 + '_' + 일)==오늘월_일) {
         메모날짜버튼들[i].classList.add('js오늘메모');
         메모날짜버튼들[i].nextElementSibling.classList.add('js오늘메모');
-        메모날짜버튼들[i].nextElementSibling.nextElementSibling.classList.add('js오늘메모');
       }
       //요일넣기
       if (요일관련오늘월==1 && (월==11 || 월==12)) {

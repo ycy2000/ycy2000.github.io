@@ -4,12 +4,16 @@
 body, pre {font-family: 'Noto Serif KR', serif;}
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 
-#메모div > div {padding:3px;font-weight: bold;}
+#메모div > div {padding:3px;font-weight: bold;border-bottom:1px solid black;}
 #메모div > div > div {display: inline-block;vertical-align: top;}
 #메모div > div > button {display:inline-block; border:1px solid black; border-radius: 3px;margin-right:3px;padding:0;}
 #메모div > div > button:nth-of-type(1) {width:80px;}
 #메모div > div > button:nth-of-type(2) {width:70px;}
-#메모div > div > div {border:1px solid black; border-radius: 5px;padding:0px 5px;}/* 메모내용부분 */
+.일별메모모두감싸기 > div {display:inline-block;padding-left:5px;padding-right:5px;vertical-align: top;}
+.연두바탕보라글자 {background-color:chartreuse; color:blueviolet;font-weight: bold;}
+.마진탑3 {margin-top:3px;}
+.보라글자 {color:blueviolet;}
+.테두리 {border:1px solid black;border-radius: 5px;}
 #PNG셑팅 {white-space: nowrap;}
 .메모div우측 > div > div {white-space: normal;}
 /* 달력 */
