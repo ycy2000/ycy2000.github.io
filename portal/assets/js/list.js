@@ -195,11 +195,15 @@ function 리스너_head_button_group클릭이벤트(e) {
     console.log('선사_셑팅')
     document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#선사와CY관련').innerHTML;
+    if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {document.querySelector('#두개중선사관련').classList.remove('d-none')}
+    if (document.querySelector('#두개중CY관련').classList.contains('d-none')) {} else {document.querySelector('#두개중CY관련').classList.remove('d-none')}
   }
   if (e.target.innerHTML=='CY') {
     console.log('CY_셑팅')
     document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#선사와CY관련').innerHTML;
+    if (document.querySelector('#두개중CY관련').classList.contains('d-none')) {document.querySelector('#두개중CY관련').classList.remove('d-none')}
+    if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else {document.querySelector('#두개중선사관련').classList.remove('d-none')}
   }
 }
 function 리스너_head_button_group더블클릭이벤트(e) {
