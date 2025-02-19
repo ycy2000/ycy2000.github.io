@@ -30,6 +30,8 @@
         <button type="button" class="btn btn-light 카테고리">완료</button>
         <button type="button" class="btn btn-light 카테고리">면허,운송</button>
         <button type="button" class="btn btn-light 카테고리">메모</button>
+        <button type="button" class="btn btn-light 카테고리">선사</button>
+        <button type="button" class="btn btn-light 카테고리">CY</button>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
@@ -47,11 +49,7 @@
   <!-- position:absolute -->
 </header>
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
-<!-- id="리스너용해역사진관련" id="main과우측" id="전체대체" 중 하나만?? 본다-->
-<!-- 안에 textarea를 넣던지, input들을 넣던지. -->
-<div id="PNG셑팅" class="d-none">
-
-</div>
+<div id="PNG셑팅" class="d-none"></div>
 <div id="PNG셑팅에들어갈메모" class="d-none">
   <!-- 챗gpt달력 -->
   <div class="달력두개모음" style="position: absolute;left:1150px;top:600px;">
@@ -93,18 +91,6 @@
     </div>
     <div><button>2월19일</button><button></button>
       <div class="일별메모모두감싸기">
-        <div>SI홀푸드 : 18일에서 19일로 변경 (아침에 와 있을것)... 15품목 1417</div>
-      </div>
-    </div>
-    <div><button>2월19일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div class="테두리"> 자갈치수산 오징어채 4KG 귀채 600</div> <div class="테두리">(태명) 코스트코리아로 입고, 고등어 비닐 300개, 박스갈이</div>
-        <br>
-        <div class="테두리 마진탑3">자갈치수산 관련, 다른 화주로 오징어채 4kg 1700+? 있을지도</div>
-      </div>
-    </div>
-    <div><button>2월19일</button><button></button>
-      <div class="일별메모모두감싸기">
         <div>
           선명 : MADRID EXPRESS, 19일 수 19시, 6대. 머스크(3일), 하파그(3일)<br>
           <span class="span연두바탕보라글자">목요일 저녁까지 갇다 놓고 금요일에 하는게 안전(축산물)</span><br>
@@ -115,6 +101,11 @@
           MAEUJBS256166	오케이푸드	MWCU5249877	닭다리살	1,952 <br>
           HLCUSCL241243994	씨케이글로벌	HLBU9551816	연어	840 <br>
         </div>
+      </div>
+    </div>
+    <div><button>2월20일</button><button></button>
+      <div class="일별메모모두감싸기">
+        <div>자갈치수산 오징어채 귀채 4kg : 2000 + 3~500개</div>
       </div>
     </div>
     <div><button>2월20일</button><button></button>
@@ -139,6 +130,7 @@
     </div>
     <div><button></button><button></button>
       <div class="일별메모모두감싸기">
+        <div></div>
       </div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -154,99 +146,21 @@
     </div>
   </div>
 </div>
-
-<div id="풀기셑팅" class="d-none">
-
-</div>
-
-<div id="풀기형식" class="d-none">
-  <!--(머리글포함)BL부터 포딩까지 15칸 -->
-  <div id="풀기_리스트_왼쪽">B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	면허	운송	선사	포딩
-    _341410050613	씨에이치씨	TSTU8204035	새우	1,000 	신선대	6/2	1			20 				
-    ONEYSCLE07515300	씨케이글로벌	BMOU9844616	홍합살	2,299 	EZ신항.국제	6/3	1				(주)이지트랜스	이지	엠에스씨코리아(주)	
-    COHESYH91624922	JH트레이딩	JHTU5266978	가자미	5,000 	면허	6/4	1				(주)에이치유로지스틱스	HU	코스코쉬핑한국(주)	(주)보나미시스템
-    SAIPUS202403004380	SM트레이딩	OOLU6235530	오징어	1,200 	693	6/4	1	6/7	07:35		(주)코리아브이로지스틱스	이지	코스코쉬핑라인스 한국 주식회사	(주)카고파트너코리아
-    ONEYGYEE06238400	ATP글로벌	OTPU6382920	새우	1,584 	694	6/5	1	6/6	08:40		(주)케이씨티시	SS신항	오션네트워크익스프레스코리아(주)	KCTC.국제
-    TM224050988F	우원홀딩스	BMOU8718017	새우	942 	695	6/5	1	6/7	05:50	20 	(주)에스에스물류	SS	동진상선(주)	주식회사 골드웨이
-    HDMUBKKA97724000	뉴아시아	TCLU1300398	닭날개	1,950 	696	6/5	2	6/5	16:48		롯데글로벌로지스(주)	HU	장금상선(주)	
-    HLCUIT1240316220	대상네트웍스	HLXU8735077	닭다리살	1,917 	697	6/5	2	6/7	08:01		(주)소진	금경	오션네트워크익스프레스코리아(주)	
-    ONEYSCLE08591800	동림수산	ONEU9076092	연어	828 	국제	5/31	1							
-    ONEYSCLE08456800	동림수산	SEGU9852666	연어	848 	국제	6/1	1							
-    ONEYSCLE08590700	동림수산	ONEU9133464	연어	845 	국제	6/1	1							
-    DLPMC00071219	동림수산	TTNU8335035	연어	891 	BNCT,검색기	6/3	1				(주)엠익스프레스		씨엠에이씨지엠	바로로지스 주식회사
-    MAEUJBS221218	동원홈푸드	MNBU4222782	닭다리살	1,942 	신항만	6/5	2				(주)한타특수운송	SS신항	한국머스크(주)	
-    NSSLLCBSC2400499	뉴아시아	TEMU9539107	닭날개	1,925 	신선대	6/5	2							
-    VAPPUS202404004429	SM트레이딩	SEKU9183734	오징어	1,200 	BCT	6/6	1							
-    VAPPUS34620A	바이킹마켓	PCIU6029608	오징어	1,200 	BCT	6/6	1							
-    MEDUSF426754	대상네트웍스	SEGU9997870	닭다리살	1,980 	신항만	6/7	2							
-    MEDUSF427117	대상네트웍스	MEDU9751279	닭다리살	1,980 	신항만	6/7	2							
-    MEDUSF427158	대상네트웍스	MSCU7308347	닭다리살	1,980 	신항만	6/7	2							
-    ONEYSGZE03818700	씨케이글로벌	TCLU1918489	새우	1,286 	한진	6/7	1			20 				
-    ONEYSAOE11364802	마이푸드	TTNU8477765	닭다리살	1,960 	현대신항	6/9	2							
-    COSU6380486450	수월한	OERU4008499	닭다리살	1,960 	BNCT	6/9	2							
-    ONEYSGZE04821900	씨케이글로벌	ONEU8002496	새우	1,286 	한진	6/9	1			20 				
-    MAEUJBS222208	대상네트웍스	MNBU3312011	닭다리살	1,958 	신항만	6/10	2							
-    MAEUJBS222223	동원홈푸드	MCAU6002920	닭다리살	1,907 	신항만	6/10	2							
-    MAEUJBS222238	동원홈푸드	MNBU3970141	닭다리살	1,944 	신항만	6/10	2							
-    MAEUJBS222241	동원홈푸드	SUDU8183139	닭다리살	1,958 	신항만	6/10	2							
-    EGLV001400196459	세현	EMCU5383717	오징어	1,300 		6/10	1							
-    MAEU238099783	씨케이글로벌	MMAU1239340	열빙어알	1,110 	신항만	6/11	1							
-    MEDUEX613304	씨케이글로벌	MSDU9812448	북방대합	550 	국제	6/13	1							
-    MEDUEX613445	씨케이글로벌	MSDU9812448	열빙어 등	1,536 		6/13	1							
-    MAEUSSZ766048	대상네트웍스	MNBU0525522	닭다리살	1,980 	신항만	6/15	2							
-    COSU6382035700	씨케이글로벌	TEMU9559058	청어알	1,110 	BNCT	6/15	1							
-    MAEUSSZ765975	현대코퍼	MNBU4385352	닭다리살	1,980 	신항만	6/15	2							
-    MAEUJBS223696	대상네트웍스	MNBU4253530	닭다리살	1,958 		6/17	2							
-    ONEYSAOE12607907	동원홈푸드	OTPU6289680	닭다리살	1,930 		6/17	2							
-    SNG0422378	오션스글로벌	TRIU8101854	오징어	1,235 		6/24	1							
-    MAEU237694476	BM트레이딩	MNBU0135313	문어	1,824 		6/27	1							
-    ONEYSAOE16423904	대성무역	FSCU5859934	닭다리살	1,957 	현대신항	6/29	2							
-    HDMUSAOA16145304	마이푸드	HDMU5566142	닭다리살	1,960 			2							
-    MEDUE8162228	대상네트웍스	SZLU9584926	닭다리살	1,948 		입항 미정	2							
-    MEDUSF421037	대상네트웍스	TTNU8489302	닭다리살	1,980 	?	입항 미정	2							
-    MEDUE8097143	대한제당	DFOU6122263	닭다리살	1,980 	?	입항 미정	2							
-    HDMUSAOA45204801	수월한	HDMU5533405	닭다리살	1,960 			2							
-    GDSHOM240069	우원홀딩스	SEKU9386639	새우	970 			1			20 				
-    NYD072405070	천부수산	SEGU9653870	절단주꾸미	2,198 			1			20 				
-    HDMUSGNA14694800	우원홀딩스	TEXU9030073	빵가루새우	951 	면허	6/7	1			20 				
-                                
+<div id="선사와CY관련" class="d-none"><!-- id="선사와cy관련모두wrap" -->
+  <div id="선사와cy관련모두wrap">
+    <div id="왼쪽고정복사자료">
+왼쪽고정복사자료
     </div>
-  <!--리스트시트 : 출고/입고 4주간 부터 요약정보 -->
-  <div id="풀기_리스트_정리">출고/입고 4주간	
-    1일 7/5	5일줄
-    15,609 	50.7 
-    16,894 	54.9 
-    내국제외	
-    구분	대수
-    수산	23
-    축산	23
-    합계	46
-      
-    화주별 요약	
-    화주	대수
-    대상네트웍스	9
-    씨케이글로벌	7
-    동원홈푸드	5
-    동림수산	4
-    SM트레이딩	2
-    우원홀딩스	2
-    뉴아시아	2
-    마이푸드	2
-    수월한	2
-    씨에이치씨	1
-    JH트레이딩	1
-    ATP글로벌	1
-    바이킹마켓	1
-    세현	1
-    현대코퍼	1
-    오션스글로벌	1
-    BM트레이딩	1
-    대성무역	1
-    대한제당	1
-    천부수산	1
-    합계	46
+    <div id="오른쪽두개중하나">
+      <div id="두개중선사관련" class="d-none">
+두개중 선사관련
+      </div>
+      <div id="두개중CY관련" class="d-none">
+        두개중 CY 관련
+      </div>
     </div>
-  <!--삭제됨 : 입항관리시트 : A~L(도착항) -->  
+
+  </div>
 </div>
 
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
