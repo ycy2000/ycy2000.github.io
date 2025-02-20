@@ -115,31 +115,123 @@
   </div>
 </div>
 <div id="선사와CY관련" class="d-none"><!-- id="선사와cy관련모두wrap" -->
+  <div class="d-none" id="입항관리화주컨복붙자료">
+    주은수산	ACLU1030040
+    마이푸드	MNBU0330304
+    씨케이	BMOU9239662
+    씨케이	TEMU9482193
+    현대코퍼	MSCU7405476
+    대상	HMMU5483690
+    수월한	MMAU1413261
+    MJ씨푸드	TRIU6823842
+    우원	SEKU904989
+    해솔무역	MNBU3645732
+    SM무역	SZLU9626744
+    에프원에프앤비	CRLU1408277
+  </div>
+  <div class="d-none" id="입항관리선명부터상세내용">
+    COSCO FOS	COHECAS35825923	언티7부두	(셔틀)02/20(목)02시접안 16시 출항 예정(D/O정리 X)
+    MADRID EXPRESS	MAEU248103996	신항만	02/21(금)오후 도착 , 03/01(토)회수마감(회수 미정)
+    ZHONG GU PENG LAI	KMTCSUB2353086	허치슨	02/21(금)조출1오전1 , 03/01(토)회수마감(회수 미정)
+    ZHONG GU PENG LAI	KMTCSUB2354087	허치슨	02/21(금)조출1오전1 , 03/01(토)회수마감(회수 미정)
+    MSC MIRJAM	MEDURG981711	신항만	02/21(금)조출 , 03/01(토)회수마감(회수 미정)
+    HYUNDAI COLOMBO	BR04508324	현대신항	02/12(수) 19시 CY반입됨.(D/O정리 X)
+    MADRID EXPRESS	MAEU246635993	신항만	02/20(목) 14시 CY반입됨.(D/O정리 X)
+    EASLINE OSAKA	EASEO2507YB036	감만	02/21(금)03시접안 13시 출항 에정
+    POS HOCHIMINH	INFHCM2502015	신선대	02/21(금)03시접안 익일 05시 출항 예정(D/O정리 X)
+    MAERSK ESMERALDAS	MAEU249323453	신항만	02/21(금)05시접안 익일 16시 출항 예정(D/O정리 X)
+    COSCO SHIPPING SAKURA	SNG0452708	BNCT	02/21(금)13시접안 익일 13시 출항 예정(D/O정리 X)
+    COSCO SHIPPING SAKURA	SNG0451909	BNCT	02/21(금)13시접안 익일 13시 출항 예정(D/O정리 X)
+  </div>
   <div id="선사와cy관련모두wrap" style="margin-left:5px;">
     <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
-      <div>빈칸없이 녹색에 복붙 - 풀기실행시 아래에 들어감</div>
-      <div class="자료붙여넣기">
-        <input id="원본화주와컨" type="text"><button onclick="풀기_화주와컨()" style="margin-right:30px;">화주+컨,풀기</button>
-        <input id="원본선명과BL" type="text"><button onclick="풀기_선명과BL()">선명+BL,풀기</button>
-      </div>
-      <div class="머리글"><button>화주</button><button>컨.NO</button><button>선명</button><button>BL.NO</button></div>
-      <div class="자료풀림결과"><!-- 한줄을 div안에 span 3개? -->
-        <div><span>글로벌씨푸드</span><span>ONEU8009839</span><span>KMTC SHANGHAI</span><span>ONEYSGNF26298500fg</span></div>
+      <div class="머리글"><button>화주</button><button>컨.NO</button><button>선명</button><button>BL.NO</button><button>상세앞부분</button></div>
+      <div id="자료풀림결과"><!-- js로 한줄을 div안에 span 4개? -->
       </div>
     </div>
     <div id="오른쪽두개중하나" class="d-inline-block" style="vertical-align: top;">
       <div id="두개중선사관련" class="d-none">
-        <div>선사 : 조회규칙이 있음, 조회정보 <button class="선사CY조회조건버튼">B/L</button><button class="선사CY조회조건버튼">컨</button><button class="선사CY조회조건버튼">선명</button></div>
-        <div id="개별선사머리글">
-          <div>선사</div>
+        <div>선하증권(B/L) 번호 특징 : 대부분 선사(carrier)의 영문 이니셜로 시작합니다</div>
+        <div>선사마다, 선사부호라는 걸 가지고 있는데. 이 선사부호가 비엘번호의 제일 처음 4자가 되는 경우가 대부분 입니다. </div>
+        <div><a class="fw-bold" style="color:blueviolet" href="https://swanpark.tistory.com/entry/터미널선사코드및관세청선사부호" target="_blank">선사 홈페이지에서, 비엘 트레킹 참고. BL번호 앞부분 참고만</a>  </div>
+        <div class="선사부호버튼">
+          <div><div>선사코드</div><div>선사부호</div><div>운항성박회사명(한글)</div></div>
+          <div><div>APL</div><div>APLU</div><div>씨엠에이씨지엠코리아(주)</div></div>
+          <div><div>CNC</div><div>CCAS</div><div>씨엠에이씨지엠코리아(주)</div></div>
+          <div><div>BNM</div><div>BNAM</div><div>두우해운(주)</div></div>
+          <div><div>DKO</div><div>BNMI</div><div>(주)보나미시스템</div></div>
+          <div><div>CCL</div><div>CCNK</div><div>씨씨엔아이</div></div>
+          <div><div>CKL</div><div>CKCO</div><div>천경해운(주)</div></div>
+          <div><div>CMA</div><div>CMAL</div><div>씨엠에이씨지엠</div></div>
+          <div><div>COH</div><div>COHE</div><div>코스코쉬핑한국(주)</div></div>
+          <div><div>_</div><div>COKO</div><div>코스코쉬핑한국(주)</div></div>
+          <div><div>_</div><div>COSI</div><div>코스코쉬핑한국(주)</div></div>
+          <div><div>COS</div><div>COSN</div><div>코스코쉬핑라인즈한국 주식회사</div></div>
+          <div><div>COS</div><div>COSU</div><div>코스코쉬핑라인즈한국 주식회사</div></div>
+          <div><div>CSA</div><div>CSAV</div><div>씨에스에이브이라인, 노라시아</div></div>
+          <div><div>CSC</div><div>_</div><div>차이나쉬핑</div></div>
+          <div><div>CSL</div><div>_</div><div>차이나쉬핑</div></div>
+          <div><div>DJS</div><div>DJSC</div><div>동진상선(주)</div></div>
+          <div><div>_</div><div>DOSC</div><div>두우해운(주)</div></div>
+          <div><div>DWH</div><div>DWIC</div><div>두우해운(주)</div></div>
+          <div><div>DOW</div><div>DOWO</div><div>두우해운(주)</div></div>
+          <div><div>DYS</div><div>DYSL</div><div>동영해운(주)</div></div>
+          <div><div>EAS</div><div>EASK</div><div>이에이에스쉽핑코리아(주)</div></div>
+          <div><div>EMC</div><div>EMSK</div><div>에미레이트 쉬핑 라인</div></div>
+          <div><div>EMC</div><div>EVER</div><div>(주)에버그린코리아</div></div>
+          <div><div>FEO</div><div>FSCO</div><div>페스코라인즈코리아 주식회사</div></div>
+          <div><div>FSC</div><div>_</div><div>중국해운</div></div>
+          <div><div>FSL</div><div>_</div><div>소패스트코리아</div></div>
+          <div><div>GBH</div><div>GBHS</div><div>(주)동신선박에이전시</div></div>
         </div>
-        <div class="개별선사">
-          <div>머스크</div>
+        <div class="선사부호버튼">
+          <div><div>선사코드</div><div>선사부호</div><div>운항성박회사명(한글)</div></div>
+          <div><div>HAS</div><div>HASL</div><div>흥아라인 주식회사</div></div>
+          <div><div>HMM</div><div>HDMU</div><div>에이치엠엠(주)</div></div>
+          <div><div>HLC</div><div>HLCU</div><div>하파그로이드코리아(주)</div></div>
+          <div><div>HSD</div><div>HSDG</div><div>할브르크수드코리아(주)</div></div>
+          <div><div>IAL</div><div>IALU</div><div>인터아시아 라인</div></div>
+          <div><div>JJS</div><div>JJSG</div><div>두우해운(주)</div></div>
+          <div><div>KKL</div><div>KKLU</div><div>K라인마리타임코리아</div></div>
+          <div><div>KMD</div><div>KMTC</div><div>고려해운(주)</div></div>
+          <div><div>EAS</div><div>LMCK</div><div>이에이에스쉽핑코리아(주)</div></div>
+          <div><div>MAE</div><div>MAEU</div><div>한국머스크(주)</div></div>
+          <div><div>MIS</div><div>MISC</div><div>동신상선(주)</div></div>
+          <div><div>MOL</div><div>MOLU</div><div>엠오엘코리아주식회사</div></div>
+          <div><div>MSC</div><div>MSCU</div><div>엠에스씨코리아(주)</div></div>
+          <div><div>NOL</div><div>NOLS</div><div>두우 해운</div></div>
+          <div><div>NSL</div><div>NSSL</div><div>남성해운주식회사</div></div>
+          <div><div>NYK</div><div>NYKS</div><div>엔와이케이라인</div></div>
+          <div><div>ONE</div><div>ONEY</div><div>오션네크워크익스크레스코리아(주)</div></div>
+          <div><div>OOL</div><div>OOLU</div><div>(주)오오씨엘코리아</div></div>
+          <div><div>PCL</div><div>PCLU</div><div>범주해운(주)</div></div>
+          <div><div>PCS</div><div>PCSL</div><div>동영해운(주)</div></div>
+          <div><div>PIL</div><div>PILK</div><div>피아이엠코리아(주)</div></div>
+          <div><div>POL</div><div>POBU</div><div>팬오션(주)</div></div>
+          <div><div>SIT</div><div>SCLK</div><div>에스아이티씨컨테이너 라인스(주)</div></div>
+          <div><div>SFK</div><div>SFKL</div><div>(주)소패스트쉬핑리미티드</div></div>
+          <div><div>SJS</div><div>SHJS</div><div>두우해운(주)</div></div>
+          <div><div>SML</div><div>SMLM</div><div>에스엠상선 주식회사</div></div>
+          <div><div>SKR</div><div>SNKO</div><div>장금상선(주)</div></div>
         </div>
-
+        <div class="선사부호버튼">
+          <div><div>선사코드</div><div>선사부호</div><div>운항성박회사명(한글)</div></div>
+          <div><div>SOF</div><div>SOFL</div><div>소패스트 쉬핑(중통해운)</div></div>
+          <div><div>SSL</div><div>SSLF</div><div>소패스트 쉬핑 리미티드</div></div>
+          <div><div>SWL</div><div>SSLK</div><div>스와이어 쉬핑 라인(동진선박)</div></div>
+          <div><div>SSN</div><div>SSNT</div><div>(주)선스코어스앤티</div></div>
+          <div><div>SUI</div><div>SUIL</div><div>(주)소패스트코리아</div></div>
+          <div><div>TCL</div><div>TCLC</div><div>두우해운(주)</div></div>
+          <div><div>TMS</div><div>TMSC</div><div>두우해운(주)</div></div>
+          <div><div>TSL</div><div>TSLU</div><div>덕상티에스라인(주)</div></div>
+          <div><div>YML</div><div>YMLU</div><div>양밍해운(주)</div></div>
+          <div><div>YML</div><div>YMPR</div><div>양밍한국(주)</div></div>
+          <div><div>YML</div><div>YMJA</div><div>양밍해운</div></div>
+          <div><div>ZIM</div><div>ZIMU</div><div>짐 이스라엘 네비게이션</div></div>
+        </div>
       </div>
       <div id="두개중CY관련" class="d-none">
-        <div>CY : 조회규칙이 있음, 조회정보 <button class="선사CY조회조건버튼">B/L</button><button class="선사CY조회조건버튼">컨</button><button class="선사CY조회조건버튼">선명</button></div>
+        <div>CY : </div>
 
       </div>
     </div>

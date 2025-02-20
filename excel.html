@@ -1464,8 +1464,9 @@
       <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
       <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
       <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
+      <h6 style="text-indent: 23px;"><u style="font-weight: bold;color:blueviolet">normal인 경우, inline-block 일때 여러줄이면 아래로 커지니, height를 지정해주어야함.</u></h6>
       <h6 class="fw-bold">2. 넘기지 않을때 넘치는 부분 처리</h6>
-      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden;</h6>
+      <h6 style="text-indent: 23px;">넘치는곳 숨김 ==> overflow:hidden; <u style="font-weight: bold;color:blueviolet">가로한줄일때 숨김은 inline-block 후에 overflow:hidden;</u></h6>
       <h6 style="text-indent: 23px;">넘치는곳 숨김 + ... 처리 ==> overflow:hidden; text-overflow:ellipsis;</h6>
       <h6 class="fw-bold">3. 문장정렬 text-align ==> left,right,center,justify양쪽정렬,start,end</h6>
       <h6 style="text-indent: 23px;">줄바꿈 기준이 단어이기 때문에 균등분할시 길이가 큰 단어가 넘어갈때 공백이 커진다.(보통 영문의 경우)</h6>
@@ -2393,7 +2394,7 @@
       <code class="fw-bold" style="text-indent: 35px;">console.log(문자열.split('문자열')[1]) // 빈문자열, <span style="color:blueviolet">구분문자가 '예제'이면 결과는 length는 3, 값은 '문자열'</span></code>
       <code class="fw-bold" style="color:blueviolet">4)2),3)에 따라 구분문자열이 1개인 경우 2개 배열 <span style="color:blueviolet">(좌우가 비어도 하나씩 배열에 담긴다) </span></code>
       <code class="fw-bold" style="color:blueviolet">5)구분문자의 개수는, 문자열.split('문자열').length - 1</code>
-      
+      <code class="fw-bold" style="color:blueviolet">6)정규식으로 입력받는다. 마침표(.) \\., 탭 : \t, 줄바꿈 \r\n => 엑셀 범위 복붙 자료에 활용</code>
       
       
       

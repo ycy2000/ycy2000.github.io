@@ -211,22 +211,39 @@ function 리스너_head_button_group클릭이벤트(e) {
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else {document.querySelector('#두개중선사관련').classList.remove('d-none')}
   }
 }
-function 리스너_head_button_group더블클릭이벤트(e) {
-  console.log('더블클릭:클릭 실행후 더블클릭 실행됨')
-  if (e.target.innerHTML=='리스트') {
-    풀기_리스트();
-  }
-}
-function 풀기_화주와컨() {
+function 풀기() {
   // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
-  var 원본텍스트=document.querySelector('#원본화주와컨').value;
-  var 원본탭분리텍스트배열=원본텍스트.join(' ');
-  console.log(원본탭분리텍스트배열)
+  //탭 : \t, 줄바꿈 \n : split는 정규식으로 입력받는다.
+  var 화주컨원본텍스트=document.querySelector('#입항관리화주컨복붙자료').innerHTML;
+  var 화주컨텍스트_줄바꿈split=화주컨원본텍스트.split('\n');
+  var 화주컨텍스트_줄바꿈split = 화주컨텍스트_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
 
-  document.querySelector('#원본화주와컨').value='';
+  var 선명부터상세내용원본텍스트=document.querySelector('#입항관리선명부터상세내용').innerHTML;
+  var 선명부터상세내용텍스트_줄바꿈split=선명부터상세내용원본텍스트.split('\n');
+  var 선명부터상세내용텍스트_줄바꿈split = 선명부터상세내용텍스트_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
+
+  var 반복횟수=화주컨텍스트_줄바꿈split.length;
+  if (선명부터상세내용텍스트_줄바꿈split.length < 반복횟수) {반복횟수=선명부터상세내용텍스트_줄바꿈split.length} //작은것 기준준
+  //마지막 배열이 0 이다, 이거 피해야함함
+  var 자료풀림결과=document.querySelector('#자료풀림결과');
+  자료풀림결과.innerHTML='';
+  for (var i=0; i<반복횟수-1; i++) {
+    var div안span4='';
+    div안span4='<span>' + 화주컨텍스트_줄바꿈split[i].split('\t')[0] + '</span>'
+    div안span4+='<span>' + 화주컨텍스트_줄바꿈split[i].split('\t')[1] + '</span>'
+    div안span4+='<span>' + 선명부터상세내용텍스트_줄바꿈split[i].split('\t')[0] + '</span>'
+    div안span4+='<span>' + 선명부터상세내용텍스트_줄바꿈split[i].split('\t')[1] + '</span>'
+    div안span4+='<span contenteditable>' + 선명부터상세내용텍스트_줄바꿈split[i].split('\t')[3] + '</span>'
+    div안span4='<div>' + div안span4 + '</div>'
+    자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
+  }
+
+
+
+
+
 } 
-
+풀기()
 
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
-리스너_head_button_group.addEventListener('dblclick', 리스너_head_button_group더블클릭이벤트);
 
