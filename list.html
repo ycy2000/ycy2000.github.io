@@ -28,6 +28,7 @@
         <button type="button" class="btn btn-light 카테고리">리스트</button>
         <button type="button" class="btn btn-light active 카테고리">예정</button>
         <button type="button" class="btn btn-light 카테고리">완료</button>
+        <button type="button" class="btn btn-light 카테고리">입항관리</button>
         <button type="button" class="btn btn-light 카테고리">면허,운송</button>
         <button type="button" class="btn btn-light 카테고리">메모</button>
         <button type="button" class="btn btn-light 카테고리">선사</button>
@@ -80,53 +81,20 @@
     <!-- 날짜 오른쪽 BUTTON은 값이 있어도 첫번째버튼이 날짜형식이면 js로 바뀜(요일) background-color:chartreuse-->
     <!-- id=달력날짜기준, 1일일때 안바뀌고 달력날짜기준의 날짜를 참고로 달력이 바뀐다. -->
     <!--★★★★★★ .연두바탕보라글자, .보라글자, .테두리, .마진탑3 -->
-    <div><button id="달력날짜기준">2월18일</button><button></button>
+    <div><button id="달력날짜기준">2월21일</button><button></button>
       <div class="일별메모모두감싸기">
-        <div>MH수산 수출검사 : 1320 + 680.....  1/15 생물고등어 20kg 녹 1320 7F, 1/19 생물고등어 20kg 녹 680 4F</div><br>
-        <div>
-          <span class="보라글자">600개는 스마일, 20~21일(목~금)......</span>
-          <span class="보라글자">1400개는 풀작업으로 포딩 로얄, 24~26일 예정(월~수)</span>
-        </div>
+        <div>입고예정 : 자갈치수산 오징어채 4KG 귀채 2000개</div><br>
+        <div>입고예정 : CK 내국 6가지 648개</div><br>
+        <div>입고예정 : SI홀푸드 삼치 80-100 5K 353</div><br>
+        <div>입고예정 : SI홀푸드 한치할복 20K 21</div><br>
+        <div>입고예정 : SI홀푸드 삼치포 40G 10KG 53</div><br>
       </div>
     </div>
-    <div><button>2월19일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div>
-          선명 : MADRID EXPRESS, 19일 수 19시, 6대. 머스크(3일), 하파그(3일)<br>
-          <span class="span연두바탕보라글자">목요일 저녁까지 갇다 놓고 금요일에 하는게 안전(축산물)</span><br>
-          MAEUSSZ778579	대상 주식회사	MMAU1408985	닭다리살	1,985 <br>
-          MAEU248103996	마이푸드	MNBU0330304	닭장각	1,568 <br>
-          MAEU248246495	마이푸드	MNBU4065370	닭다리살	1,960 <br>
-          MAEU246635993	수월한	MMAU1413261	닭발	2,300 <br>
-          MAEUJBS256166	오케이푸드	MWCU5249877	닭다리살	1,952 <br>
-          HLCUSCL241243994	씨케이글로벌	HLBU9551816	연어	840 <br>
-        </div>
-      </div>
-    </div>
-    <div><button>2월20일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div>자갈치수산 오징어채 귀채 4kg : 2000 + 3~500개</div>
-      </div>
-    </div>
-    <div><button>2월20일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div> 
-          <span style="color:blueviolet;font-weight: bold;">오전 8시반에 작업해달라고 요청 옴 (CK김소은)</span><br>
-          <span style="color:blueviolet;font-weight: bold;">사진찍으러 직원 온다고 함</span><br>
-          CK 선적 오전. 2대. 목요일 08:30, 11:30까지 완료 요청<br>
-          1대 : 청어알 564 + 북방대합 1000<br>
-          1대 : 청어알 1110<br>
-        </div>
-      </div>
-    </div>
-    <div><button>2월21일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div>2F 박정주 휴가, 주식회사 디케이통상	OOLU2751621870, ㈜오케이푸드	MAEUJBS256166 <span class="연두바탕보라글자">목요일에 입고</span>
-        </div>
-      </div>
-    </div>
+
     <div><button>2월말 ~ </button><button>3월초</button>
-      <div> 등록공장 점검</div>
+      <div class="일별메모모두감싸기">
+        <div>등록공장 점검</div>
+      </div>
     </div>
     <div><button></button><button></button>
       <div class="일별메모모두감싸기">
@@ -147,18 +115,27 @@
   </div>
 </div>
 <div id="선사와CY관련" class="d-none"><!-- id="선사와cy관련모두wrap" -->
-  <div id="선사와cy관련모두wrap">
+  <div id="선사와cy관련모두wrap" style="margin-left:5px;">
     <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
-      <div>빈칸없이 (첫줄은 붙여넣고 BL/컨/선명 클릭시 뿌리기 or 목록클릭시 셑팅)</div>
-      <div class="자료붙여넣기"><input type="text"><input type="text"><input type="text"></div>
-      <div class="실행버튼"><button>B/L.NO</button><button>컨.NO</button><button>선명</button></div>
-      <div class="자료풀림결과">
-        <div><span>HLCUSCL241243994</span></div><div><span>MNBU0330304</span></div><div><spanp>MADRID EXPRESS</spanp></div>
+      <div>빈칸없이 녹색에 복붙 - 풀기실행시 아래에 들어감</div>
+      <div class="자료붙여넣기">
+        <input id="원본화주와컨" type="text"><button onclick="풀기_화주와컨()" style="margin-right:30px;">화주+컨,풀기</button>
+        <input id="원본선명과BL" type="text"><button onclick="풀기_선명과BL()">선명+BL,풀기</button>
+      </div>
+      <div class="머리글"><button>화주</button><button>컨.NO</button><button>선명</button><button>BL.NO</button></div>
+      <div class="자료풀림결과"><!-- 한줄을 div안에 span 3개? -->
+        <div><span>글로벌씨푸드</span><span>ONEU8009839</span><span>KMTC SHANGHAI</span><span>ONEYSGNF26298500fg</span></div>
       </div>
     </div>
     <div id="오른쪽두개중하나" class="d-inline-block" style="vertical-align: top;">
       <div id="두개중선사관련" class="d-none">
         <div>선사 : 조회규칙이 있음, 조회정보 <button class="선사CY조회조건버튼">B/L</button><button class="선사CY조회조건버튼">컨</button><button class="선사CY조회조건버튼">선명</button></div>
+        <div id="개별선사머리글">
+          <div>선사</div>
+        </div>
+        <div class="개별선사">
+          <div>머스크</div>
+        </div>
 
       </div>
       <div id="두개중CY관련" class="d-none">

@@ -181,6 +181,11 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_완료.png" alt="이미지없음">';
   }
+  if (e.target.innerHTML=='입항관리') {
+    console.log('PNG_완료_셑팅')
+    document.querySelector('#PNG셑팅').classList.remove('d-none');
+    document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_입항관리.png" alt="이미지없음">';
+  }
   if (e.target.innerHTML=='면허,운송') {
     console.log('PNG_면허운송_셑팅')
     document.querySelector('#PNG셑팅').classList.remove('d-none');
@@ -212,6 +217,15 @@ function 리스너_head_button_group더블클릭이벤트(e) {
     풀기_리스트();
   }
 }
+function 풀기_화주와컨() {
+  // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
+  var 원본텍스트=document.querySelector('#원본화주와컨').value;
+  var 원본탭분리텍스트배열=원본텍스트.join(' ');
+  console.log(원본탭분리텍스트배열)
+
+  document.querySelector('#원본화주와컨').value='';
+} 
+
 
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
 리스너_head_button_group.addEventListener('dblclick', 리스너_head_button_group더블클릭이벤트);
