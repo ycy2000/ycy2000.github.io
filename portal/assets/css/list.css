@@ -31,13 +31,21 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 .js메모있는날짜달력표시[class~='today'] {background-color: blue;font-weight: bold;}
 .js오늘메모 {background-color:chartreuse;}
 
+
+body {
+	transform: skew(-0.05deg);
+}
+
+#선사와cy관련모두wrap {font-size: 13px; font-weight: bold;}
 .머리글 > button, #자료풀림결과 > div > span {display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;}
-.머리글 > button:nth-of-type(1), #자료풀림결과 > div > span:nth-of-type(1) {width:140px;}
-.머리글 > button:nth-of-type(2), #자료풀림결과 > div > span:nth-of-type(2) {width:135px;}
+.머리글 > button:nth-of-type(1), #자료풀림결과 > div > span:nth-of-type(1) {width:100px;}
+.머리글 > button:nth-of-type(2), #자료풀림결과 > div > span:nth-of-type(2) {width:120px;}
 .머리글 > button:nth-of-type(3), #자료풀림결과 > div > span:nth-of-type(3) {width:190px;}
-.머리글 > button:nth-of-type(4), #자료풀림결과 > div > span:nth-of-type(4) {width:190px;}
-.머리글 > button:nth-of-type(5), #자료풀림결과 > div > span:nth-of-type(5) {width:450px;}
-#자료풀림결과 > div > span {white-space: normal;overflow: hidden;height:30px;display:inline-block;vertical-align: top;}
+.머리글 > button:nth-of-type(4), #자료풀림결과 > div > span:nth-of-type(4) {width:160px;}
+.머리글 > button:nth-of-type(5), #자료풀림결과 > div > span:nth-of-type(5) {width:75px;}
+.머리글 > button:nth-of-type(6), #자료풀림결과 > div > span:nth-of-type(6) {width:175px;}
+#자료풀림결과 > div > span:nth-of-type(5):hover {width:450px;}
+#자료풀림결과 > div > span {white-space:nowrap;overflow: hidden;height:30px;display:inline-block;vertical-align: top;}
 
 .선사부호버튼 {display: inline-block;vertical-align: top;}
 .선사부호버튼 > div > div {border:1px solid black;display:inline-block;width:240px;margin-right:-1px;text-align: start;padding:2px;}

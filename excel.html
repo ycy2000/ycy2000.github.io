@@ -1158,7 +1158,7 @@
       <div>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
         <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
-        <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h6>
+        <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격,탭으로분리,줄바꿈으로분리,split</h6>
         <h6>[메모] text-indent : 상속됨</h6>  
         <h6>[메모] 태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
         <h6 class="canvas_div" title="_01_project_파순01_파일제목규칙">파일제목 규칙, 줄바꿈, 코딩(변수)합의</h6>
@@ -1494,8 +1494,10 @@
       <h6 style="text-indent: 23px;word-break:keep-all;line-height:30px;">• 단어기준 keep-all과 글자기준 break-all 예시 : 한글
         기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
     </div>
-    <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
-
+    <div class=" d-inline-block align-top" style="width:1000px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold">1. 탭으로 분리된 것 : split("\t"), 탭문자 자체를 넣어도 됨 [excel에서 범위복사후 vsCode에 붙여넣었을때 가로]</h6>
+      <h6 class="fw-bold">2. 줄바꿈 된 것 : split("\n"),  [excel에서 범위복사후 vsCode에 붙여넣었을때 세로]</h6>
+      <h6 style="text-indent: 20px;">var 줄바꿈배열=문자열.split('\n') : 줄바꿈 배열로 분리 후 => 줄바꿈배열[0].split('\t')[1] : 탭으로분리된것 두번째꺼</h6>
     </div>
     <br><br><br><br><br><br><br>
   </div>
