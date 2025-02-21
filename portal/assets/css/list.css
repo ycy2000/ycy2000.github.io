@@ -54,6 +54,8 @@ body {
 .선사부호버튼 > div > div:nth-of-type(1) {width:60px;}
 .선사부호버튼 > div > div:nth-of-type(2) {width:70px;}
 .선사부호버튼 > div > div:nth-of-type(3) {width:230px;}
+.선사부호버튼 > div > div:nth-of-type(4) {width:50px;}/* 선사메모*/
+.선사부호버튼 > div > div:nth-of-type(4):hover {width:450px;white-space: normal;}/* 선사메모*/
 
 .선사CY조회조건버튼 {border:1px solid black; border-radius: 5px;display:inline-block;width:70px;margin-right:5px;}
 #왼쪽고정복사자료 {margin-right:5px;}
