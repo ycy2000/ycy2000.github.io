@@ -211,6 +211,12 @@ function 리스너_head_button_group클릭이벤트(e) {
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else {document.querySelector('#두개중선사관련').classList.remove('d-none')}
   }
 }
+function 입항관리BM복붙자료풀기() {
+  //div,input 하면 줄바꿈 \n이 없다?
+  console.log('입항관리BM복붙자료풀기()')
+  document.querySelector('#입항관리화주부터상세까지12').innerHTML=document.querySelector('#복붙textarea').value;
+  풀기();
+}
 function 풀기() {
   // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
   //탭 : \t, 줄바꿈 \n : split는 정규식으로 입력받는다.
@@ -234,11 +240,7 @@ function 풀기() {
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
     }
   }
-
-
-
-
-
+  document.querySelector('#복붙textarea').value='';
 } 
 풀기()
 
