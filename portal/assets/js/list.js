@@ -261,7 +261,7 @@ function 풀기() {
   자료풀림결과.innerHTML='';
   //1.화주,2.컨,4.상세,6.운송,7.물품,9.선명,10.BL,11.도착항,12.상세원본
   for (var i=0; i<입항관리화주부터상세까지12_줄바꿈split.length-1; i++) {
-    if (입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0].trim().length!=0) {
+    //if (입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0].trim().length!=0) { 리스트에 활용시 첫 정보가 비어 있을수 있는데 건너뛴다..
       var div안span4='';
       div안span4='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[1] + '</span>'
@@ -270,7 +270,7 @@ function 풀기() {
       div안span4+='<span contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</span>'
       div안span4='<div>' + div안span4 + '</div>'
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
-    }
+
   }
   document.querySelector('#복붙textarea').value='';
 } 
