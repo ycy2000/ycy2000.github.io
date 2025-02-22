@@ -211,6 +211,39 @@ function 리스너_head_button_group클릭이벤트(e) {
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else {document.querySelector('#두개중선사관련').classList.remove('d-none')}
   }
 }
+
+function 단어검색() {
+  console.log('단어검색click()');
+  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
+  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
+  }
+  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
+  var 검색할문자 = document.querySelector('#검색input').value.toUpperCase(); 
+  if (document.querySelector('#검색input').value == '') { return; }
+
+  var 찾는값=document.querySelector('#검색input').value; 
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
+
+  //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
+  var 검색결과포함id배열=[];
+  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
+
+  //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
+  var 검색할클래스들 = document.querySelectorAll('.검색 > div > *');
+
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+    console.log(검색할클래스들[i].innerHTML.toUpperCase())
+    if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      검색결과포함id배열.push(검색할클래스들[i].id);
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=
+        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
+    }
+  }
+}
 function 입항관리BM복붙자료풀기() {
   //div,input 하면 줄바꿈 \n이 없다?
   console.log('입항관리BM복붙자료풀기()')
@@ -234,8 +267,7 @@ function 풀기() {
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[1] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[8] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</span>'
-      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</span>'
-      div안span4+='<span contenteditable></span>'
+      div안span4+='<span contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</span>'
       div안span4='<div>' + div안span4 + '</div>'
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
     }
@@ -245,4 +277,3 @@ function 풀기() {
 풀기()
 
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
-

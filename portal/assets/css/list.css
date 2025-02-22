@@ -42,9 +42,10 @@ body {
 .머리글 > button:nth-of-type(2), #자료풀림결과 > div > span:nth-of-type(2) {width:120px;}
 .머리글 > button:nth-of-type(3), #자료풀림결과 > div > span:nth-of-type(3) {width:190px;}
 .머리글 > button:nth-of-type(4), #자료풀림결과 > div > span:nth-of-type(4) {width:160px;}
-.머리글 > button:nth-of-type(5), #자료풀림결과 > div > span:nth-of-type(5) {width:75px;}
-.머리글 > button:nth-of-type(6), #자료풀림결과 > div > span:nth-of-type(6) {width:175px;}
-#자료풀림결과 > div > span:nth-of-type(5):hover {width:450px;}
+.머리글 > button:nth-of-type(5), #자료풀림결과 > div > span:nth-of-type(5) {width:450px;}
+
+.검색결과바탕색 {background-color:chocolate;}
+
 #자료풀림결과 > div > span {white-space:nowrap;overflow: hidden;height:30px;display:inline-block;vertical-align: top;}
 
 .선사부호버튼 {display: inline-block;vertical-align: top;}
@@ -55,7 +56,8 @@ body {
 .선사부호버튼 > div > div:nth-of-type(2) {width:70px;}
 .선사부호버튼 > div > div:nth-of-type(3) {width:230px;}
 .선사부호버튼 > div > div:nth-of-type(4) {width:50px;}/* 선사메모*/
-.선사부호버튼 > div > div:nth-of-type(4):hover {width:450px;white-space: normal;}/* 선사메모*/
+.선사부호버튼왼쪽 > div > div:nth-of-type(4):hover {width:450px;white-space: normal;}/* 선사메모*/
+.선사부호버튼오른쪽 > div > div:nth-of-type(4):hover {width:450px;white-space: normal;margin-left:-400px;z-index: 9999;background-color:aqua;}/* 선사메모*/
 
 .선사CY조회조건버튼 {border:1px solid black; border-radius: 5px;display:inline-block;width:70px;margin-right:5px;}
 #왼쪽고정복사자료 {margin-right:5px;}
