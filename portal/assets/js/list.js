@@ -156,7 +156,6 @@ function 첫번째버튼날짜있을때댤력에표시() {
 //메모 관련 끝..  
 
 //시작시 작동코드
-document.querySelector('#PNG셑팅').classList.remove('d-none');
 document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_예정.png" alt="이미지없음">';
 
 var 리스너_head_button_group=document.querySelector('#head_button_group');
@@ -166,46 +165,42 @@ function 리스너_head_button_group클릭이벤트(e) {
   }
   if(e.target.classList.contains('카테고리')) {e.target.classList.add('active')}
 
+  if (e.target.innerHTML=='리스트DDDD') {
+    console.log('PNG_리스트_셑팅')
+    document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_리스트.png" alt="이미지없음">';
+  }
   if (e.target.innerHTML=='리스트') {
     console.log('PNG_리스트_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
-    document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_리스트.png" alt="이미지없음">';
+    document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#리스트풀기관련').innerHTML;
   }
   if (e.target.innerHTML=='예정') {
     console.log('PNG_예정_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_예정.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='완료') {
     console.log('PNG_완료_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_완료.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='입항관리') {
     console.log('PNG_완료_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_입항관리.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='면허,운송') {
     console.log('PNG_면허운송_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_면허운송.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='메모') {
     console.log('PNG_면허운송_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#PNG셑팅에들어갈메모').innerHTML;
   }
   if (e.target.innerHTML=='선사') {
     console.log('선사_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#선사와CY관련').innerHTML;
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {document.querySelector('#두개중선사관련').classList.remove('d-none')}
     if (document.querySelector('#두개중CY관련').classList.contains('d-none')) {} else {document.querySelector('#두개중CY관련').classList.remove('d-none')}
   }
   if (e.target.innerHTML=='CY') {
     console.log('CY_셑팅')
-    document.querySelector('#PNG셑팅').classList.remove('d-none');
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#선사와CY관련').innerHTML;
     if (document.querySelector('#두개중CY관련').classList.contains('d-none')) {document.querySelector('#두개중CY관련').classList.remove('d-none')}
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else {document.querySelector('#두개중선사관련').classList.remove('d-none')}
@@ -244,20 +239,62 @@ function 단어검색() {
     }
   }
 }
+function 리스트1부터요약까지복붙자료풀기() {
+  //div,input 하면 줄바꿈 \n이 없다?
+  console.log('리스트1부터요약까지복붙자료풀기()')
+  document.querySelector('#리스트원본1부터요약까지').innerHTML=document.querySelector('#리스트복붙textarea').value;
+  리스트풀기();
+}
+function 리스트풀기() {
+  // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
+  //탭 : \t, 줄바꿈 \n : split는 정규식으로 입력받는다.
+  var 리스트텍스트=document.querySelector('#리스트1부터요약까지').innerHTML;
+  var 리스트줄바꿈split=리스트텍스트.split('\n');
+
+  var 자료풀림결과=document.querySelector('#리스트자료풀림결과');
+  자료풀림결과.innerHTML='';
+
+  for (var i=0; i<리스트줄바꿈split.length-1; i++) {
+      var div안span4='';
+      div안span4='<span>' + 리스트줄바꿈split[i].split('\t')[0] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[1] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[2] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[3] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[4] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[5] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[6] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[7] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[8] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[9] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[10] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[11] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[12] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[13] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[14] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[15] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[16] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[17] + '</span>'
+      div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[18] + '</span>'
+      div안span4='<div>' + div안span4 + '</div>'
+      자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
+
+  }
+  document.querySelector('#리스트복붙textarea').value='';
+}
 function 입항관리BM복붙자료풀기() {
   //div,input 하면 줄바꿈 \n이 없다?
   console.log('입항관리BM복붙자료풀기()')
-  document.querySelector('#입항관리화주부터상세까지12').innerHTML=document.querySelector('#복붙textarea').value;
-  풀기();
+  document.querySelector('#입항관리도크부터도착항까지').innerHTML=document.querySelector('#입항관리복붙textarea').value;
+  입항관리풀기();
 }
-function 풀기() {
+function 입항관리풀기() {
   // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
   //탭 : \t, 줄바꿈 \n : split는 정규식으로 입력받는다.
-  var 입항관리화주부터상세까지12텍스트=document.querySelector('#입항관리화주부터상세까지12').innerHTML;
+  var 입항관리화주부터상세까지12텍스트=document.querySelector('#입항관리도크부터도착항까지').innerHTML;
   var 입항관리화주부터상세까지12_줄바꿈split=입항관리화주부터상세까지12텍스트.split('\n');
   // var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
   //마지막 배열이 0 이다, 이거 피해야함함
-  var 자료풀림결과=document.querySelector('#자료풀림결과');
+  var 자료풀림결과=document.querySelector('#입항관리자료풀림결과');
   자료풀림결과.innerHTML='';
   //1.화주,2.컨,4.상세,6.운송,7.물품,9.선명,10.BL,11.도착항,12.상세원본
   for (var i=0; i<입항관리화주부터상세까지12_줄바꿈split.length-1; i++) {
@@ -265,15 +302,33 @@ function 풀기() {
       var div안span4='';
       div안span4='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[1] + '</span>'
-      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[8] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[2] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[3] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[4] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[6] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</span>'
-      div안span4+='<span contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</span>'
       div안span4='<div>' + div안span4 + '</div>'
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
 
   }
-  document.querySelector('#복붙textarea').value='';
+  document.querySelector('#입항관리복붙textarea').value='';
 } 
-풀기()
+입항관리풀기()
+리스트풀기()
 
+
+var 리스너png셑팅=document.querySelector('#PNG셑팅');
+function png셑팅click(e) {
+  //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
+  console.log('png셑팅click(e)')
+  if (document.querySelector('.js한줄색칠있음')) {document.querySelector('.js한줄색칠있음').classList.remove('js한줄색칠있음')} //있으면 지움
+
+  if (e.target.parentNode.parentNode.id=='입항관리자료풀림결과') {e.target.parentNode.classList.add('js한줄색칠있음');return;}
+
+
+
+}
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
+리스너png셑팅.addEventListener('click', png셑팅click);
