@@ -172,6 +172,7 @@ function 리스너_head_button_group클릭이벤트(e) {
   if (e.target.innerHTML=='리스트') {
     console.log('리스트_셑팅')
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#리스트풀기관련').innerHTML;
+    리스트풀기()
   }
   if (e.target.innerHTML=='예정') {
     console.log('PNG_예정_셑팅')
@@ -194,6 +195,7 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#선사와CY관련').innerHTML;
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {document.querySelector('#두개중선사관련').classList.remove('d-none')}
     if (document.querySelector('#두개중CY관련').classList.contains('d-none')) {} else {document.querySelector('#두개중CY관련').classList.remove('d-none')}
+    입항관리풀기()
   }
   if (e.target.innerHTML=='CY') {
     console.log('CY_셑팅')

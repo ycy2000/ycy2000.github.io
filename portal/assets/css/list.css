@@ -85,6 +85,12 @@ body {
 .선사CY조회조건버튼 {border:1px solid black; border-radius: 5px;display:inline-block;width:70px;margin-right:5px;}
 #왼쪽고정복사자료 {margin-right:5px;}
 
+.선사링크 {margin:5px 0px;}
+.선사링크 > div > div {border:1px solid black;font-size:16px;display:inline-block;margin-bottom:-1px;padding:2px 4px;height:30px;vertical-align: top;}
+.선사링크 > div > div:nth-of-type(1) {width:200px;margin-right:-5px;border-right:none;}
+.선사링크 > div > div:nth-of-type(2) {width:60px;margin-right:-5px;border-right:none}
+.선사링크 > div > div:nth-of-type(3) {width:700px;font-size:13px;}
+
 .js한줄색칠있음 > * {background-color:chartreuse;}
 .js시간노랑 {background-color:yellow;}
 
