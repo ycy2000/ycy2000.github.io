@@ -44,9 +44,10 @@ body {
 #입항관리자료풀림결과 > div > span:nth-of-type(4) {width:80px;}
 #입항관리자료풀림결과 > div > span:nth-of-type(5) {width:450px;}
 #입항관리자료풀림결과 > div > span:nth-of-type(6) {width:110px;}
-#입항관리자료풀림결과 > div > span:nth-of-type(7) {width:110px;}
+#입항관리자료풀림결과 > div > span:nth-of-type(7) {width:80px;}/* 물품 */
 #입항관리자료풀림결과 > div > span:nth-of-type(8) {width:200px;}
 #입항관리자료풀림결과 > div > span:nth-of-type(9) {width:150px;}
+#입항관리자료풀림결과 > div > span:nth-of-type(10) {width:70px;}/* 도착항 */
 
 #리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
 #리스트자료풀림결과 > div > span {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
@@ -85,6 +86,7 @@ body {
 #왼쪽고정복사자료 {margin-right:5px;}
 
 .js한줄색칠있음 > * {background-color:chartreuse;}
+.js시간노랑 {background-color:yellow;}
 
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {

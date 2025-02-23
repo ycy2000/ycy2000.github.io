@@ -170,7 +170,7 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_리스트.png" alt="이미지없음">';
   }
   if (e.target.innerHTML=='리스트') {
-    console.log('PNG_리스트_셑팅')
+    console.log('리스트_셑팅')
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#리스트풀기관련').innerHTML;
   }
   if (e.target.innerHTML=='예정') {
@@ -181,10 +181,6 @@ function 리스너_head_button_group클릭이벤트(e) {
     console.log('PNG_완료_셑팅')
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_완료.png" alt="이미지없음">';
   }
-  if (e.target.innerHTML=='입항관리') {
-    console.log('PNG_완료_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_입항관리.png" alt="이미지없음">';
-  }
   if (e.target.innerHTML=='면허,운송') {
     console.log('PNG_면허운송_셑팅')
     document.querySelector('#PNG셑팅').innerHTML='<img src="portal/images/문서연결_리스트/PNG_면허운송.png" alt="이미지없음">';
@@ -193,7 +189,7 @@ function 리스너_head_button_group클릭이벤트(e) {
     console.log('PNG_면허운송_셑팅')
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#PNG셑팅에들어갈메모').innerHTML;
   }
-  if (e.target.innerHTML=='선사') {
+  if (e.target.innerHTML=='입항관리') {
     console.log('선사_셑팅')
     document.querySelector('#PNG셑팅').innerHTML=document.querySelector('#선사와CY관련').innerHTML;
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {document.querySelector('#두개중선사관련').classList.remove('d-none')}
@@ -236,19 +232,22 @@ function 리스트단어검색() {
       }
     }
   }
+  if (document.querySelectorAll('.검색결과바탕색').length==0) {
+    alert('검색결과 없음')
+  }
 }
-function 단어검색() {
-  console.log('단어검색click()');
+function 입항관리단어검색() {
+  console.log('입항관리단어검색click()');
   //추가 : 검색결과바탕색 클래스 TEXT만 남기기
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
   for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
     검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
   }
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-  var 검색할문자 = document.querySelector('#검색input').value.toUpperCase(); 
-  if (document.querySelector('#검색input').value == '') { return; }
+  var 검색할문자 = document.querySelector('#입항관리검색input').value.toUpperCase(); 
+  if (document.querySelector('#입항관리검색input').value == '') { return; }
 
-  var 찾는값=document.querySelector('#검색input').value; 
+  var 찾는값=document.querySelector('#입항관리검색input').value; 
   var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
 
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
@@ -259,7 +258,6 @@ function 단어검색() {
   var 검색할클래스들 = document.querySelectorAll('.검색 > div > *');
 
   for (var i = 0; i < 검색할클래스들.length; i++) {
-    console.log(검색할클래스들[i].innerHTML.toUpperCase())
     if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색결과포함id배열.push(검색할클래스들[i].id);
       if (검색할문자!=' ') {
@@ -267,6 +265,9 @@ function 단어검색() {
         검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
       }
     }
+  }
+  if (document.querySelectorAll('.검색결과바탕색').length==0) {
+    alert('검색결과 없음')
   }
 }
 function 리스트1부터요약까지복붙자료풀기() {
@@ -304,7 +305,11 @@ function 리스트풀기() {
       div안span4+='<span>' + 리스트줄바꿈split[i].split('\t')[22] + '</span>' 
       div안span4='<div>' + div안span4 + '</div>'
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
-
+  }
+  for (var i=0; i<리스트줄바꿈split.length-1; i++) {
+    if (자료풀림결과.children[i].children[13].innerHTML=='리스트시트기준열') {
+      자료풀림결과.children[i+1].children[13].classList.add('js시간노랑');
+    }
   }
   document.querySelector('#리스트복붙textarea').value='';
 }
@@ -336,6 +341,7 @@ function 입항관리풀기() {
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</span>'
       div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</span>'
+      div안span4+='<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</span>' //도착항
       div안span4='<div>' + div안span4 + '</div>'
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
 
@@ -347,16 +353,47 @@ function 입항관리풀기() {
 
 
 var 리스너png셑팅=document.querySelector('#PNG셑팅');
-function 선사js한줄색칠있음clear() {
-  var 개수 = document.querySelectorAll('#선사자료풀림결과 .js한줄색칠있음').length;
+function 입항관리에없는목록색칠() {
+  var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
   for (i=0; i<개수; i++) {
-    document.querySelectorAll('#선사자료풀림결과 .js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
+    document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
+  }
+  //입항관리자료는 전체문자열로 받아서 처리해야한다.
+  var 입항관리전체문자열=document.querySelector('#입항관리도크부터도착항까지').innerHTML;
+  var 입항관리줄바꿈개수=입항관리전체문자열.split('\n');
+  var 입항관리bl_컨_결합문자열=[];//컨_bl, 공백이 있을수 있지만 _ 는 있다. undefined 또는 공백
+  for (var i=0; i<입항관리줄바꿈개수.length; i++) {
+    입항관리bl_컨_결합문자열.push(입항관리줄바꿈개수[i].split('\t')[2] + '!' + 입항관리줄바꿈개수[i].split('\t')[10])
+  }
+  //배열을 다시 ! 로 join하여 하나의 문자열로 만든다. (컨과 bl이 느낌표로 결합된 하나의 문자열이 됨됨)
+  입항관리bl_컨_결합문자열=입항관리bl_컨_결합문자열.join('!');
+
+  var 리스트bl_컨_배열=[];
+  var 리스트목록한줄div=document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 > div');
+  var 리스트목록개수=리스트목록한줄div.length;
+  for (var i=0; i<리스트목록개수; i++) {
+    //console.log(리스트목록한줄div[i].children[2].innerHTML) : BL
+    //console.log(리스트목록한줄div[i].children[4].innerHTML) : 컨
+    var 비엘=리스트목록한줄div[i].children[2].innerHTML;
+    var 컨=리스트목록한줄div[i].children[4].innerHTML;
+    if (비엘=='B/LNO.' || (비엘=='' && 컨=='')) {continue;} //다음반복문으로
+    //문자열.indexOf('찾는문자열') 없으면 -1
+    if (입항관리bl_컨_결합문자열.indexOf(비엘)>-1 || 입항관리bl_컨_결합문자열.indexOf(컨)>-1) {
+      //컨이나 bl중 하나라도 맞으면 건너뜀
+    } else {
+      //console.log('없음 : ' + 비엘 + ', ' + 컨)
+      리스트목록한줄div[i].classList.add('js한줄색칠있음');
+    }
+
+
+
   }
 }
-function 리스트js한줄색칠있음clear() {
-  var 개수 = document.querySelectorAll('#리스트자료풀림결과 .js한줄색칠있음').length;
+
+function 공통한줄색칠있음clear() {
+  var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
   for (i=0; i<개수; i++) {
-    document.querySelectorAll('#리스트자료풀림결과 .js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
+    document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
 function png셑팅click(e) {

@@ -28,10 +28,9 @@
         <button type="button" class="btn btn-light 카테고리">리스트</button>
         <button type="button" class="btn btn-light active 카테고리">예정</button>
         <button type="button" class="btn btn-light 카테고리">완료</button>
-        <button type="button" class="btn btn-light 카테고리">입항관리</button>
         <button type="button" class="btn btn-light 카테고리">면허,운송</button>
         <button type="button" class="btn btn-light 카테고리">메모</button>
-        <button type="button" class="btn btn-light 카테고리">선사</button>
+        <button type="button" class="btn btn-light 카테고리">입항관리</button>
         <button type="button" class="btn btn-light 카테고리">CY</button>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -127,8 +126,8 @@
       <textarea id="리스트복붙textarea" contenteditable style="height:29px;width:50px; resize: none;vertical-align: top;"></textarea>
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#리스트검색input').value=''; 리스트단어검색()">단어검색</button>
       <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="리스트js한줄색칠있음clear()">색칠clear</button>
-
+      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
+      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
     </div>
     <div id="리스트자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
     </div>
@@ -137,7 +136,7 @@
 </div>
 <!-- ★★★★★★ 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <div class="d-none" id="리스트1부터요약까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	메모2	리스트시트기준열	
-  1	○	SNG0452708	(유)SM무역	SZLU9626744	오징어	1,200 	SS신항.BNCT	2/21	1				SNG0452708	COSCO SHIPPING SAKUR	25COSU0021I-2011-	1,200 	24,450.00 	2025.02.21	SS신항.BNCT			
+  1	○	SNG0452708	(유)SM무역	SZLU9626744	오징어	1,200 	SS신항.BNCT	2/21	1				SNG0452708	COSCO SHIPPING SAKUR	25COSU0021I-2011-	1,200 	24,450.00 	2025.02.21	SS신항.BNCT		02/23 일 14:49	
   1	○	SNG0451909	에프원에프앤비	CRLU1408277	홍어	995 	신세기(SS신항).BNCT	2/21	1				SNG0451909	COSCO SHIPPING SAKUR	25COSU0021I-2030-	995 	24,239.00 	2025.02.21	신세기(SS신항).BNCT		조회정보	반입NO:운송사.도착항
   1	○	EASEO2507YB036	엠제이씨푸드	TRIU6823842	명태포	1,000 	동원로엑스.감만	2/21	1			20 	EASEO2507YB036	EASLINE OSAKA	25EASKS012I-7803-0001	1,000 	10,800.00 	2025.02.21	동원로엑스.감만		적재	57 
   1	○	MAEU249323453	해솔무역	MNBU3645732	민어조기	2,300 	SS신항.신항만	2/21	1				MAEU249323453	MAERSK ESMERALDAS	25MAEU0130I-1116-	2,300 	24,610.00 	2025.02.21	SS신항.신항만		4,617 	3줄
@@ -147,8 +146,8 @@
   1	○	SSZ1570932G	대성무역	CGMU6587900	닭장각	1,568 	챔프(EZ신항).BNCT	2/21	2				SSZ1570932G	COSCO SHIPPING SAKUR	25COSU0021I-2020-	1,568 	24,304.00 	2025.02.21	챔프(EZ신항).BNCT			
   1	○	MEDUE8560942	수월한	TTNU8460103	닭다리살	1,958 	천일	2/21	2				MEDUE8560942	MSC QINGDAO	25MSCU5038I-0012-	1,958 	24,583.50 	2025.02.21	천일		출고/입고 4주간	
   2	○	MAEUJBS257376	동원홈푸드	MNBU4260632	닭다리살	1,958 		2/21	2				MAEUJBS257376	MSC INGY	25MSCU2026I-1437-	1,958 	24,486.88 	2025.02.21			1일 7/5	5일줄
-  2	○	MAEUJBS257468	동원홈푸드	MNBU4048686	닭다리살	1,958 		2/21	2				MAEUJBS257468	MSC INGY	25MSCU2026I-1445-	1,958 	24,486.83 	2025.02.21			12,602 	40.9 
-  2	○	MAEUJBS257565	수월한	MSWU0055611	닭다리살	1,939 	2/21금05시	2/21	2				MAEUJBS257565	MSC INGY	25MSCU2026I-1450-	1,939 	24,344.75 	2025.02.21	2/21금05시		15,418 	50.1 
+  2	○	MAEUJBS257468	동원홈푸드	MNBU4048686	닭다리살	1,958 		2/21	2				MAEUJBS257468	MSC INGY	25MSCU2026I-1445-	1,958 	24,486.83 	2025.02.21			12,714 	41.3 
+  2	○	MAEUJBS257565	수월한	MSWU0055611	닭다리살	1,939 	2/21금05시	2/21	2				MAEUJBS257565	MSC INGY	25MSCU2026I-1450-	1,939 	24,344.75 	2025.02.21	2/21금05시		14,997 	48.7 
   2	○	HLCURI4241213707	수월한	HLBU9209146	닭고기	1,917 	면허	2/23	2				HLCURI4241213707	LIMA EXPRESS	25HLCU8016I-6519-	1,917 	23,962.50 	2025.02.23			내국제외	
   2	○	HLCURI4241213762	수월한	HLBU6132884	닭고기	1,960 	면허	2/23	2				HLCURI4241213762	LIMA EXPRESS	25HLCU8016I-6521-	1,960 	24,500.00 	2025.02.23			구분	대수
   2	○	HDMUSGNA10412300	우원홀딩스	HMMU5202410	새우	931 		2/23	1			20 	HDMUSGNA10412300	ONE BLUE JAY	25ONEY0219I-7004-	931 	7,261.80 	2025.02.23			수산	18
@@ -174,7 +173,8 @@
   _		HLCUPN4250167801	더맛하	HLBU9697354	닭다리	1,950 		4/2	2												상창	1
   _		MEDUHI151067	대상	BMOU9228009	닭다리	1,985 		미정	2												대상	1
   _		MEDUHI143015	동원홈푸드	CRLU1192254	닭다리	1,958 		미정	2												합계	38
-  _		MEDUE8572384	수월한	TEMU9398987	닭다리	1,960 	국제	미정	2										국제			  
+  _		MEDUE8572384	수월한	TEMU9398987	닭다리	1,960 	국제	미정	2										국제			
+
 </div>
 
 
@@ -200,8 +200,8 @@
     15	마이푸드	MNBU4065370	2/20(목)완	02/20(목)오전 도착 , 02/27(목)회수마감(회수 미정)		EZ신항	작업완료	-2	MADRID EXPRESS	MAEU248246495	신항만	02/20(목)오전 도착 , 02/27(목)회수마감(회수 미정)
     10-앞	우원	SZLU3607290	2/18(화)완	02/18(화)오전 도착 , 02/28(금)회수마감(회수 계획 있음)		SS북항(ONE)	작업완료	-2	STARSHIP MERCURY	TM225020057F	신선대	02/18(화)오전 도착 , 02/28(금)회수마감(회수 계획 있음)
     11-앞	우원	SZLU3638732	2/18(화)완	02/18(화)오전 도착 , 02/28(금)회수마감(회수 계획 있음)		SS북항(ONE)	작업완료	-2	STARSHIP MERCURY	TM225020058F	신선대	02/18(화)오전 도착 , 02/28(금)회수마감(회수 계획 있음)
-    _												
-    _				반출 예정 컨테이너		운송사	물품	정렬	선명	B/L	도착항	상세내용
+                            
+    _	화주	컨테이너	작업순서	반출 예정 컨테이너		운송사	물품	정렬	선명	B/L	도착항	상세내용
     1	씨케이	SKRU1900090	2/24작업	02/24(월)오전 도착 , 03/01(토)회수마감(회수 계획 있음)		J&J	1836	-1	SAWASDEE DENEB	SNKO190250101884	신선대	02/24(월)오전 도착 , 03/01(토)회수마감(회수 계획 있음)
     2	SM무역	SZLU9626744	2/24작업	02/22(토)오전 도착 , 02/26(수)회수마감(회수 미정)		SS신항	오징어 1200	-1	COSCO SHIPPING SAKURA	SNG0452708	BNCT	02/22(토)오전 도착 , 02/26(수)회수마감(회수 미정)
     3	해솔무역	MNBU3645732	2/24작업	02/22(토)오전 도착 , 03/03(월)회수마감(회수 미정)		SS신항	민어 2300	-1	MAERSK ESMERALDAS	MAEU249323453	신항만	02/22(토)오전 도착 , 03/03(월)회수마감(회수 미정)
@@ -244,9 +244,9 @@
       <div style="font-size: 16px;margin-bottom:5px;">
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:300px;" onclick="입항관리BM복붙자료풀기()">오른쪽에,입항관리B:M 복붙후 클릭 셑팅</button>
         <textarea id="입항관리복붙textarea" contenteditable style="height:29px;width:50px; resize: none;vertical-align: top;"></textarea>
-        <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#입항관리검색input').value=''; 단어검색()">단어검색</button>
+        <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#입항관리검색input').value=''; 입항관리단어검색()">단어검색</button>
         <input id="입항관리검색input" type="text" style="width:100px;" onchange="입항관리단어검색()">
-        <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="선사js한줄색칠있음clear()">색칠clear</button>
+        <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>        
       </div>
       <div id="입항관리자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
       </div>
@@ -254,10 +254,15 @@
     <div id="오른쪽두개중하나" class="d-inline-block" style="vertical-align: top;">
       <div id="두개중선사관련" class="d-none">
         <div><span style="color:blueviolet;font-weight: bold;">한 선박에 여러선사 가능(공동운항),</span> 선명이 KMTC로 되어 있어도 여러 선사가 사용할 수 있다. </div>
-        <div>선사가 포딩 또는 화주와 계약하면 O/BL + 포딩이 화주와 계약하면 H/BL 발행 : 이 경우 진행정보에 O/BL 과 H/BL 두개가 뜬다. </div>
-        <div>선사조회시 O/BL 로. H/BL은 O/BL(선사가 포딩에 발행), H/BL 이 화주에 발행한것,하나의 O/BL에 여러 H/BL가능</div>
+        <div>선사가 포딩 또는 화주와 계약하면 O/BL + 포딩이 화주와 계약하면 H/BL 발행 : 이 경우 진행정보에 O/BL 과 H/BL 두개다 표시된다. </div>
         <div>선하증권(B/L) 번호 특징 : 대부분 선사(carrier)의 영문 이니셜로 시작함.</div>
         <div>선사마다, 선사부호라는 걸 가지고 있는데. 이 선사부호가 비엘번호의 제일 처음 4자가 되는 경우가 대부분.</div>
+
+        <div>
+          <button></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
+        </div>
+
+
         <div><a class="fw-bold" style="color:blueviolet" href="https://swanpark.tistory.com/entry/터미널선사코드및관세청선사부호" target="_blank">선사 홈페이지에서, 비엘 트레킹 참고. BL번호 앞부분 참고만</a>  </div>
         <div class="선사부호버튼 선사부호버튼왼쪽 검색">
           <div><div>정보수집</div><div>선사부호</div><div>운항선박회사명(한글)</div><div class="선사메모">부정확정보메모</div></div>
