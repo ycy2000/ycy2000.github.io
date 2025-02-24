@@ -47,9 +47,6 @@ const monthYear2 = document.getElementById("monthYear2");
 let currentDate2 = currentDate;
 currentDate2 = new Date(currentDate2.getFullYear(), currentDate2.getMonth() + 1, 1);
 
-
-
-
 function renderCalendar2() {
   console.log('renderCalendar2()')
   daysContainer2.innerHTML = "";
@@ -82,6 +79,7 @@ renderCalendar2();
 //메모 관련 달력 끝..  
 //메모 관련, #메모div > div > button:nth-of-type(1)에 날짜가 있을때 달력에 표시
 function 첫번째버튼날짜있을때댤력에표시() {
+  console.log('첫번째버튼날짜있을때댤력에표시()')
   var 메모날짜버튼들 = document.querySelectorAll('#메모div > div > button:nth-of-type(1)');
   var 메모날짜정보배열 = []; //2_11
   var 월index, 일index, 월, 일, 진행, 버튼문자열;
@@ -102,8 +100,9 @@ function 첫번째버튼날짜있을때댤력에표시() {
     버튼문자열 = 메모날짜버튼들[i].innerHTML;
     월index = 버튼문자열.indexOf('월'); //없으면 -1, 처음에 나오면 0
     일index = 버튼문자열.indexOf('일'); //없으면 -1, 처음에 나오면 0
-    if (월index > 0) { 월 = 버튼문자열.substring(0, 월index) } else { 월 = '숫자아님' }
+    if (월index > 0) { 월 = 버튼문자열.substring(0, 월index)*1} else { 월 = '숫자아님' }
     if (일index > 0) { 일 = 버튼문자열.substring(월index + 1, 일index) } else { 일 = '숫자아님' }
+
     if (isNaN(월) || isNaN(일)) { 진행 = false; } else { 진행 = true; }
     if (진행) {
       메모날짜정보배열.push(월 + '_' + 일);
@@ -112,20 +111,20 @@ function 첫번째버튼날짜있을때댤력에표시() {
         메모날짜버튼들[i].classList.add('js오늘메모');
         메모날짜버튼들[i].nextElementSibling.classList.add('js오늘메모');
       }
-      //요일넣기
+      //요일넣기. new Date(2025,0,1) : 2025년1월1일일
       if (요일관련오늘월 == 1 && (월 == 11 || 월 == 12)) {
         메모날짜년도 = 요일관련오늘년 - 1;
-        메모날짜 = new Date(메모날짜년도, 월, 일);
+        메모날짜 = new Date(메모날짜년도, 월-1, 일);
         요일 = 요일들[메모날짜.getDay()];
         메모날짜버튼들[i].nextElementSibling.innerHTML = 요일 + '요일';
       } else if (요일관련오늘월 == 12 && (월 == 1 || 월 == 2)) {
         메모날짜년도 = 요일관련오늘년 + 1;
-        메모날짜 = new Date(메모날짜년도, 월, 일);
+        메모날짜 = new Date(메모날짜년도, 월-1, 일);
         요일 = 요일들[메모날짜.getDay()];
         메모날짜버튼들[i].nextElementSibling.innerHTML = 요일 + '요일';
       } else {
         메모날짜년도 = 요일관련오늘년;
-        메모날짜 = new Date(메모날짜년도, 월, 일);
+        메모날짜 = new Date(메모날짜년도, 월-1, 일);
         요일 = 요일들[메모날짜.getDay()];
         메모날짜버튼들[i].nextElementSibling.innerHTML = 요일 + '요일';
       }
@@ -359,7 +358,6 @@ function 입항관리풀기() {
 }
 입항관리풀기()
 리스트풀기()
-
 
 var 리스너png셑팅 = document.querySelector('#PNG셑팅');
 function 입항관리에없는목록색칠() {
