@@ -131,7 +131,7 @@
       <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
-      <span style="margin-left:20px;font-size:13px;font-weight: bold;">클릭한 곳이 복사되어 CTRL+V 누르면 붙여넣기 되는 상태</span>
+      <span style="margin-left:20px;font-size:13px;font-weight: bold;" class="d-none">클릭한 곳이 복사되어 CTRL+V 누르면 붙여넣기 되는 상태</span>
     </div>
     <div id="리스트자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
     </div>
@@ -254,7 +254,7 @@
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#입항관리검색input').value=''; 입항관리단어검색()">단어검색</button>
         <input id="입항관리검색input" type="text" style="width:100px;" onchange="입항관리단어검색()">
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>        
-        <span style="margin-left:20px;font-size:13px;">클릭한 곳이 복사되어 CTRL+V 누르면 붙여넣기 되는 상태</span>
+        <span style="margin-left:20px;font-size:13px;" class="d-none">클릭한 곳이 복사되어 CTRL+V 누르면 붙여넣기 되는 상태</span>
       </div>
       <div id="입항관리자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
       </div>
