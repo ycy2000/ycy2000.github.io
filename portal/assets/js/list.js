@@ -351,7 +351,7 @@ function 입항관리풀기() {
   }
   for (var i=0; i<입항관리화주부터상세까지12_줄바꿈split.length-1; i++) {
     if (자료풀림결과.children[i].children[6].innerHTML=='물품') {
-      자료풀림결과.children[i].children[7].classList.add('js시간노랑');
+      자료풀림결과.children[i].children[8].classList.add('js시간노랑');
       break;
     }
   }
