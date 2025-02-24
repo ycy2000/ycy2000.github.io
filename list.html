@@ -131,6 +131,7 @@
       <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
+      <span style="margin-left:20px;font-size:13px;font-weight: bold;">클릭한 곳이 복사되어 CTRL+V 누르면 붙여넣기 되는 상태</span>
     </div>
     <div id="리스트자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
     </div>
@@ -236,6 +237,16 @@
 <div id="선사와CY관련" class="d-none"><!-- id="선사와cy관련모두wrap" -->
   <!-- 1.화주,2.컨,4.상세,6.운송,7.물품,9.선명,10.BL,11.도착항,12.상세원본 : 이거 div에 넣으면 인식한다-->
   <div id="선사와cy관련모두wrap" style="margin-left:5px;">
+    <div id="클릭png선사선명" class="d-none" style="position: absolute;">
+      <div style="background-color: white;"><div style="border:1px solid black;border-radius: 5px;display:inline-block;font-size:20px;" 
+        onclick="document.querySelector('#클릭png선사선명').classList.add('d-none');">닫기</div></div>
+      <img src="portal/images/문서연결_리스트/클릭png선사선명.png" style="border:1px solid black;" alt="이미지없음">
+    </div>
+    <div id="클릭반입일기준" class="d-none" style="position: absolute;">
+      <div style="background-color: white;"><div style="border:1px solid black;border-radius: 5px;display:inline-block;font-size:20px;" 
+        onclick="document.querySelector('#클릭반입일기준').classList.add('d-none');">닫기</div></div>
+      <img src="portal/images/문서연결_리스트/클릭반입일기준.png" style="border:1px solid black;" alt="이미지없음">
+    </div>
     <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
       <div style="font-size: 16px;margin-bottom:5px;">
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:300px;" onclick="입항관리BM복붙자료풀기()">오른쪽에,입항관리A:M 복붙후 클릭 셑팅</button>
@@ -243,19 +254,16 @@
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#입항관리검색input').value=''; 입항관리단어검색()">단어검색</button>
         <input id="입항관리검색input" type="text" style="width:100px;" onchange="입항관리단어검색()">
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>        
+        <span style="margin-left:20px;font-size:13px;">클릭한 곳이 복사되어 CTRL+V 누르면 붙여넣기 되는 상태</span>
       </div>
       <div id="입항관리자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
       </div>
     </div>
     <div id="오른쪽두개중하나" class="d-inline-block" style="vertical-align: top;">
       <div id="두개중선사관련" class="d-none">
-        <div><span style="color:blueviolet;font-weight: bold;">한 선박에 여러선사 가능(공동운항),</span> 컨테이너가 오는동안 선박(선명)이 바뀐다.  </div>
-        <div>선사가 포딩 또는 화주와 계약하면 O/BL + 포딩이 화주와 계약하면 H/BL 발행 : 이 경우 진행정보에 O/BL 과 H/BL 두개다 표시된다. </div>
-        <div>선하증권(B/L) 번호 특징 : 대부분 선사(carrier)의 영문 이니셜로 시작함.</div>
-        <div>선사마다, 선사부호라는 걸 가지고 있는데. 이 선사부호가 비엘번호의 제일 처음 4자가 되는 경우가 대부분.</div>
-        <div style="color:blueviolet;font-weight: bold;">관세청 진행정보의 '선사'란의 정보가 아니라 ★ O/BL ★ 번호로 확인하는게 정확한것 같다. </div>
-        <div style="color:blueviolet;font-weight: bold;">COSCO에서 검색되는 것이라도 입항시 선사가 KMTC면 화물관리번호는 KMTC찍힌다. </div>
-        <div style="color:blueviolet;font-weight: bold;">컨테이너가 이리저리 옮겨지므로 마지막 배의 선사가 진행정보에 기재되는것 같다. </div>
+        <div style="color:blueviolet;font-weight: bold;border:1px solid black;border-radius: 5px;display:inline-block;width:370px;padding-left:5px;" onclick="document.querySelector('#클릭png선사선명').classList.remove('d-none');">
+          선사, 선명이 화물진행정보와 다른 경우는 흔하다. 이유는? 클릭
+        </div>
         <div class="선사링크">
           <div>
             <div>선사 링크</div> 
@@ -408,6 +416,10 @@
         </div>
       </div>
       <div id="두개중CY관련" class="d-none">
+        <div style="color:blueviolet;font-weight: bold;border:1px solid black;border-radius: 5px;display:inline-block;width:370px;padding-left:5px;" 
+        onclick="document.querySelector('#클릭반입일기준').classList.remove('d-none');">
+          수입화물 컨테이너의 반입일은 양하시간 기준이 아니다. 클릭
+        </div>
         <div>CY : </div>
 
       </div>

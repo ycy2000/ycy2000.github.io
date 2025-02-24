@@ -427,3 +427,62 @@ function png셑팅click(e) {
 }
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
 리스너png셑팅.addEventListener('click', png셑팅click);
+
+
+if ('연습'=='하는중') {
+  document.addEventListener("copy", function (event) {
+    // 현재 선택한 요소 가져오기
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return;
+
+    // 선택한 요소에서 HTML 가져오기
+    const range = selection.getRangeAt(0);
+    const selectedHtml = range.cloneContents();
+
+    // 선택된 HTML이 테이블 포함 여부 확인
+    const tables = selectedHtml.querySelectorAll("table");
+    if (tables.length === 0) return; // 테이블이 없으면 기본 복사 기능 유지
+
+    // 테이블 데이터를 엑셀 형식으로 변환
+    let tableText = "";
+    tables.forEach((table) => {
+        const rows = table.querySelectorAll("tr");
+        rows.forEach((row) => {
+            const cells = row.querySelectorAll("th, td");
+            let rowText = [];
+            cells.forEach((cell) => {
+                rowText.push(cell.innerText.trim()); // 셀 내부 텍스트만 가져오기
+            });
+            tableText += rowText.join("\t") + "\n"; // 탭으로 열 구분, 줄바꿈으로 행 구분
+        });
+        tableText += "\n"; // 여러 개의 테이블이 있을 경우 구분
+    });
+
+    // 클립보드 데이터 설정
+    event.preventDefault();
+    event.clipboardData.setData("text/plain", tableText);
+  });
+
+  
+
+  //마우스 뗄때까지 선택된게 모두 해당. 요소하나 클릭시에는 하나고 두개걸치면 가로 줄 전체가되고, 아래위 걸치면 아래위 다 된다.
+  //이상하네.. 엑셀에 붙여넣으면 보이는대로의 범위만 가져온다.
+  //e.target.innerText가 어떤건지, 드래그한 범위를 타겟으로 잡는다?
+  var 리스너_PNG셑팅=document.querySelector('#PNG셑팅');
+  function 클릭요소텍스트복사상태(e) {
+    console.log(e.target.innerText)
+    navigator.clipboard.writeText(e.target.innerText);
+  }
+  리스너_PNG셑팅.addEventListener('click',클릭요소텍스트복사상태)
+
+
+
+}
+
+
+
+
+
+
+
+
