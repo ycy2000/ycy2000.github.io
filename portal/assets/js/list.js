@@ -311,6 +311,7 @@ function 리스트풀기() {
   for (var i=0; i<리스트줄바꿈split.length-1; i++) {
     if (자료풀림결과.children[i].children[13].innerHTML=='리스트시트기준열') {
       자료풀림결과.children[i+1].children[13].classList.add('js시간노랑');
+      break;
     }
   }
   document.querySelector('#리스트복붙textarea').value='';
@@ -347,6 +348,12 @@ function 입항관리풀기() {
       div안span4='<div>' + div안span4 + '</div>'
       자료풀림결과.innerHTML=자료풀림결과.innerHTML+div안span4;
 
+  }
+  for (var i=0; i<입항관리화주부터상세까지12_줄바꿈split.length-1; i++) {
+    if (자료풀림결과.children[i].children[6].innerHTML=='물품') {
+      자료풀림결과.children[i].children[7].classList.add('js시간노랑');
+      break;
+    }
   }
   document.querySelector('#입항관리복붙textarea').value='';
 } 
