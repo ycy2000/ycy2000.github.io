@@ -1148,7 +1148,7 @@
         <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
+        
       </div>
       <div>
 
@@ -1456,26 +1456,45 @@
 
   </div>
   <div id="textarea내용의탭으로구분여러줄가공">
-    <h5 class="fw-bold" style="color:blueviolet">★EXCEL 셀범위 복사 붙여넣기시, \t(탭), \n(줄바꿈)★ </h5>
-    <h6 class="fw-bold" style="color:blueviolet">[#예시 : 엑셀범위 2칸 X 2칸, 1_1, 1_2, 2_1, 2_2 텍스트가 담긴 범위를 복붙했을때 예시]</h6>
-    <h6 class="fw-bold" style="color:blueviolet">★ 화면에 복붙하면 요소.innerHTML, 또는 요소.value에 대입시키지 않으면 변화가 없다.</h6>
-    <h6 class="fw-bold" style="color:blueviolet">★ textarea 의 경우 화면에 보이는 값은 value다.</h6>
-    <h6 class="fw-bold" style="color:blueviolet">★ textarea value값을 innerHTML에 넣고 사용하려면, (요소.innerHTML=요소.value)로 대입시키기.</h6>
-    <h6 class="fw-bold">vsCode에서 직접 div안에 복붙하면 편집화면의 공백으로, 공백 length가 추가된다. 결과.trim() 으로 좌우공백을 지워주자.</h6>
-    <h6 class="fw-bold">1. &#60;textarea id="user-comment" rows="6" cols="22" placeholder="textarea">&#60;/textarea></h6>
-    <h6 class="fw-bold" style="text-indent: 17px;">고정할때 style="resize:none"</h6>
-    <br>
-    <h6 class="fw-bold">2. &#60;input type="text" value="입력값"> : &#60;input value="입력값"> : &#60;input></h6>
-    <h6 class="fw-bold" style="text-indent: 18px;">- input 화면에서 복붙해도 줄바꿈이 공백하나로 인식됨 </h6>
-    <h6 class="fw-bold" style="text-indent: 18px;">- 탭(\t)으로 split 하면 마지막 문자열과 다음줄 첫문자열이 하나의 배열로 잡힌다.</h6>
-    <br>
-    <h6 class="fw-bold">※ 탭으로 분리된 것 : split("\t"), 탭문자 자체를 넣어도 됨 [excel에서 범위복사후 vsCode에 붙여넣었을때 가로]</h6>
-    <h6 class="fw-bold">※ 줄바꿈 된 것 : split("\n"), [excel에서 범위복사후 vsCode에 붙여넣었을때 세로]</h6>
-    <h6 class="fw-bold" style="color:blueviolet">※ var 줄바꿈배열=문자열.split('\n') : 줄바꿈 배열로 분리 후 => 줄바꿈배열[0].split('\t')[1] : 탭으로분리된것 두번째꺼</h6>
-    <br>
-    <h6 class="fw-bold" style="color:blueviolet">&#60;div contenteditable> : 편집 가능하게 됨. span 등 </h6>
-   
-    <br><br><br><br><br><br><br>
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <div style="display: inline-block;vertical-align: top;">
+        <img src="portal/images/문서연결_엑셀VBA/엑셀범위복사상태.png" alt="이미지없음">
+      </div>
+      <h6 class="fw-bold" style="color:blueviolet;"">★ innerText 를 기준으로 하면 탭과 줄바꿈이 모두 없어진다. ★ => innerHTML 로 할것!!</h6>
+      <h6 class="fw-bold"">1-1.span태그 inline 속성 : \t 분리안됨. \n 분리안됨. \r\n 분리안됨</h6>
+      <h6 class="fw-bold"">1-2.span태그 inline-block 속성 : \t 분리안됨. \n 분리안됨. \r\n 분리안됨</h6>
+      <span id="연습2" style="display: inline-block;" contenteditable="">첫줄(a1)	첫줄(b1)
+        두번째줄(a2)	두번째줄(b2)</span>
+
+      <br>
+      <button onclick="연습2()">연습2() 실행</button>  
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold" style="color:blueviolet">★EXCEL 셀범위 복사 붙여넣기시, \t(탭), \n(줄바꿈)★..... ★click, copy 브라우저 text 가공★ </h5>
+      <h6 class="fw-bold" style="color:blueviolet">[#예시 : 엑셀범위 2칸 X 2칸, 1_1, 1_2, 2_1, 2_2 텍스트가 담긴 범위를 복붙했을때 예시]</h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ 화면에 복붙하면 요소.innerHTML, 또는 요소.value에 대입시키지 않으면 변화가 없다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ textarea 의 경우 화면에 보이는 값은 value다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ textarea value값을 innerHTML에 넣고 사용하려면, (요소.innerHTML=요소.value)로 대입시키기.</h6>
+      <h6 class="fw-bold">★ textarea : resize:none</h6>
+      <h6 class="fw-bold">★ 브라우저의 textarea, input : 자체로 붙여넣을수 있는 상태, 안되는 요소는 contenteditable 속성 추가해주면 됨</h6>
+      <h6 class="fw-bold">★ vsCode에서 직접 div안에 복붙하면 편집화면의 공백으로, 공백 length가 추가된다. 결과.trim() 으로 좌우공백을 지워주자.</h6>
+      <br>
+      <h6 class="fw-bold">1. &#60;textarea id="user-comment" rows="6" cols="22" placeholder="textarea">&#60;/textarea></h6>
+
+      <br>
+      <h6 class="fw-bold">2. &#60;input type="text" value="입력값"> : &#60;input value="입력값"> : &#60;input></h6>
+      <h6 class="fw-bold" style="text-indent: 18px;">- input 화면에서 복붙해도 줄바꿈이 공백하나로 인식됨 </h6>
+      <h6 class="fw-bold" style="text-indent: 18px;">- 탭(\t)으로 split 하면 마지막 문자열과 다음줄 첫문자열이 하나의 배열로 잡힌다.</h6>
+      <br>
+      <h6 class="fw-bold">※ 탭으로 분리된 것 : split("\t"), 탭문자 자체를 넣어도 됨 [excel에서 범위복사후 vsCode에 붙여넣었을때 가로]</h6>
+      <h6 class="fw-bold">※ 줄바꿈 된 것 : split("\n"), [excel에서 범위복사후 vsCode에 붙여넣었을때 세로]</h6>
+      <h6 class="fw-bold" style="color:blueviolet">※ var 줄바꿈배열=문자열.split('\n') : 줄바꿈 배열로 분리 후 => 줄바꿈배열[0].split('\t')[1] : 탭으로분리된것 두번째꺼</h6>
+      <br>
+      <h6 class="fw-bold" style="color:blueviolet">&#60;div contenteditable> : 편집 가능하게 됨. span 등 </h6>
+     
+      <br><br><br><br><br><br><br>
+    </div>
   </div>
 
   <div id="CSS_줄바꿈"><!-- 참고 -->
@@ -2078,9 +2097,10 @@
 
 <div id="Java전체_관련자료none" class="d-none 모든검색">
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="Java전체_node선택등"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+    <div class="개별카테고리" id="Java전체_선별"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div" title='excel_js_HTML노드'>노드 </h6>
+        <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
+        <h6 class="canvas_div fw-bold" title='excel_js_HTML노드'>노드 </h6>
       </div>
       <div>
 

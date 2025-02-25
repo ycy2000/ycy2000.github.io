@@ -7,6 +7,19 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습2() {
+  var 요소=document.querySelector('#연습2');
+  var 텍스트=요소.innerHTML;
+  var 줄바꿈배열=텍스트.split('\n');
+  var 줄바꿈배열엑셀=텍스트.split('\r\n');
+  var 탭분리배열=텍스트.split('\t');
+
+  console.log(줄바꿈배열)
+  console.log(줄바꿈배열엑셀)
+  console.log(탭분리배열)
+
+  console.log('length : ' + 줄바꿈배열.length)
+  console.log('length : ' + 줄바꿈배열엑셀.length)
+  console.log('length : ' + 탭분리배열.length)
 
 }
 function 연습() {
