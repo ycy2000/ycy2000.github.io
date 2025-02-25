@@ -25,13 +25,14 @@
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <button type="button" class="btn btn-light 카테고리">리스트</button>
         <button type="button" class="btn btn-light active 카테고리">예정</button>
         <button type="button" class="btn btn-light 카테고리">완료</button>
         <button type="button" class="btn btn-light 카테고리">면허,운송</button>
         <button type="button" class="btn btn-light 카테고리">메모</button>
+        <button type="button" class="btn btn-light 카테고리" style="margin-left:20px;">리스트</button>
         <button type="button" class="btn btn-light 카테고리">입항관리</button>
         <button type="button" class="btn btn-light 카테고리">CY</button>
+        <span style="margin-left:20px;font-size:15px;font-weight: bold;">'리스트,입항관리' 클릭한곳은 복사됨 (BL,컨 등) CTRL+V 붙여넣기됨</span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
@@ -126,11 +127,11 @@
     <div style="font-size: 16px;margin-bottom:5px;">
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:320px;" onclick="리스트1부터요약까지복붙자료풀기()">오른쪽에,리스트시트A:AB 복붙후 클릭 셑팅</button>
       <textarea id="리스트복붙textarea" contenteditable style="height:29px;width:50px; resize: none;vertical-align: top;"></textarea>
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#리스트검색input').value=''; 리스트단어검색()">단어검색</button>
+      <button title="단어검색 초기화" class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#리스트검색input').value=''; 리스트단어검색()">단어검색</button>
       <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
-      <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀에 붙여넣으면 표 형태로 붙여넣기 됨</span>
+      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
+      <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
     </div>
     <div id="리스트자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
     </div>
@@ -138,7 +139,7 @@
 
 </div>
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
-<div class="d-none" id="리스트1부터요약까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	메모2	리스트시트기준열	
+<div class="d-none" id="리스트1부터20피트구분까지만">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	메모2	리스트시트기준열	
   1	○	SNG0451565	롯데상사	CXRU1246308	연어	840 		2/21	1				SNG0451565	COSCO SHIPPING SAKUR	25COSU0021I-2024-	840 	23,000.00 	2025.02.21	SS(BNCT)	CSCL ASIA(CMA CGM)	02/25 화 16:20	
   1	○	SNG0451567	롯데상사	CGMU5264760	연어	840 		2/21	1				SNG0451567	COSCO SHIPPING SAKUR	25COSU0021I-2025-	840 	23,000.00 	2025.02.21	SS(BNCT)	CSCL ASIA(CMA CGM)	조회정보	반입NO:운송사.도착항
   1	○	HDMUSAOA62056300	아스트로스	HMMU5487000	닭발	1,500 	현대신항	2/23	2				HDMUSAOA62056300	HYUNDAI PREMIUM	25HDMUA101I-0003-	1,500 	23,602.50 	2025.02.23	현대신항	HYUNDAI PREMIUM	적재	57 
@@ -254,10 +255,10 @@
       <div style="font-size: 16px;margin-bottom:5px;">
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:300px;" onclick="입항관리BM복붙자료풀기()">오른쪽에,입항관리A:M 복붙후 클릭 셑팅</button>
         <textarea id="입항관리복붙textarea" contenteditable style="height:29px;width:50px; resize: none;vertical-align: top;"></textarea>
-        <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#입항관리검색input').value=''; 입항관리단어검색()">단어검색</button>
+        <button title="단어검색 초기화" class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#입항관리검색input').value=''; 입항관리단어검색()">단어검색</button>
         <input id="입항관리검색input" type="text" style="width:100px;" onchange="입항관리단어검색()">
         <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>        
-        <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀에 붙여넣으면 표 형태로 붙여넣기 됨</span>
+        <span style="margin-left:10px;font-size:15px;font-weight: bold;">★이곳 정보는 엑셀에 붙여넣기 금지 (도크부분 칸수 유동적, 반출예정부분만 복붙 가능)★</span>
       </div>
       <div id="입항관리자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
       </div>

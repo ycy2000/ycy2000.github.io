@@ -42,12 +42,14 @@ body {
 #입항관리자료풀림결과 tr > td:nth-of-type(2) {width:80px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(3) {width:110px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(4) {width:80px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(5) {width:450px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(6) {width:110px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(7) {width:80px;}/* 물품 */
-#입항관리자료풀림결과 tr > td:nth-of-type(8) {width:200px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(9) {width:150px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(10) {width:70px;}/* 도착항 */
+#입항관리자료풀림결과 tr > td:nth-of-type(5) {width:400px;}
+#입항관리자료풀림결과 tr > td:nth-of-type(6) {width:10px;}/* 상세우측 빈칸 */
+#입항관리자료풀림결과 tr > td:nth-of-type(7) {width:110px;}
+#입항관리자료풀림결과 tr > td:nth-of-type(8) {width:80px;}/* 물품 */
+#입항관리자료풀림결과 tr > td:nth-of-type(9) {width:20px;}/* -2 */
+#입항관리자료풀림결과 tr > td:nth-of-type(10) {width:150px;}/* 선명 */
+#입항관리자료풀림결과 tr > td:nth-of-type(11) {width:150px;}
+#입항관리자료풀림결과 tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
 
 #리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
 #리스트자료풀림결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
@@ -60,12 +62,10 @@ body {
 #리스트자료풀림결과  tr > td:nth-of-type(7) {width:50px;}
 #리스트자료풀림결과  tr > td:nth-of-type(8) {width:120px;}/* 반입 no */
 #리스트자료풀림결과  tr > td:nth-of-type(9) {width:40px;}
-#리스트자료풀림결과  tr > td:nth-of-type(10) {width:40px;}/* 구분 */
+#리스트자료풀림결과  tr > td:nth-of-type(10) {width:20px;}/* 구분 */
 #리스트자료풀림결과  tr > td:nth-of-type(11) {width:40px;}
-#리스트자료풀림결과  tr > td:nth-of-type(12) {width:30px;}
-#리스트자료풀림결과  tr > td:nth-of-type(13) {width:180px;}/* 선명 */
-#리스트자료풀림결과  tr > td:nth-of-type(14) {width:100px;}
-#리스트자료풀림결과  tr > td:nth-of-type(15) {width:40px;}
+#리스트자료풀림결과  tr > td:nth-of-type(12) {width:40px;}
+#리스트자료풀림결과  tr > td:nth-of-type(13) {width:180px;}/*20피트구분 시간입력 및 선명 등 메모  */
 
 .검색결과바탕색 {background-color:chocolate;}
 
