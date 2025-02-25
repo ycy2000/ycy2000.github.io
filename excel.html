@@ -1461,6 +1461,7 @@
         <img src="portal/images/문서연결_엑셀VBA/엑셀범위복사상태.png" alt="이미지없음">
       </div>
       <h6 class="fw-bold" style="color:blueviolet;"">★ innerText 를 기준으로 하면 탭과 줄바꿈이 모두 없어진다. length=1 <span style="background-color: chartreuse;color:black;">★ => innerHTML 로 할것!!</span></h6>
+      <h6 class="fw-bold" style="color:blueviolet;"">★ vsCode에서 탭을 누르면 두칸 공백(실제 탭이 들어가지는 않음), 엑셀범위 복붙하면 가로 셀과 셀사이에 탭(\t)이 들어감. </h6>
       <h6 class="fw-bold">1. span태그 inline 속성, inline-block 속성 : \t 분리. \n 분리. <span style="color:blueviolet">(\r\n 분리안됨 : 일단 안씀)</span></h6>
       <img src="portal/images/문서연결_엑셀VBA/엑셀범위텍스트split.png" alt="이미지없음">
       <br>
@@ -1478,6 +1479,20 @@
         두번째줄(a2)	두번째줄(b2)</span>
 
       <br>
+      <table>
+      <tbody>
+      <tr><td>dsf</td>
+      <td>df</td>
+      <td>sdf</td>
+      <td>sdf</td>
+      <td>sdf</td></tr>
+      <tr><td>dsf</td>
+        <td>df</td>
+        <td>sdf</td>
+        <td>sdf</td>
+        <td>sdf</td></tr>
+      </tbody>
+      </table>
       <button onclick="연습2()">연습2() 실행</button>  
 
     </div>

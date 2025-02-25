@@ -222,7 +222,8 @@ function 리스트단어검색() {
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
 
   //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
-  var 검색할클래스들 = document.querySelectorAll('.검색 > div > *');
+  //var 검색할클래스들 = document.querySelectorAll('.검색 > div > *');
+  var 검색할클래스들 = document.querySelectorAll('.검색 td');
 
   for (var i = 0; i < 검색할클래스들.length; i++) {
     if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
@@ -256,7 +257,7 @@ function 입항관리단어검색() {
   // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
 
   //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
-  var 검색할클래스들 = document.querySelectorAll('.검색 > div > *');
+  var 검색할클래스들 = document.querySelectorAll('.검색 tr');
 
   for (var i = 0; i < 검색할클래스들.length; i++) {
     if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
@@ -286,33 +287,39 @@ function 리스트풀기() {
   var 자료풀림결과 = document.querySelector('#리스트자료풀림결과');
   자료풀림결과.innerHTML = '';
 
+  //div안에 span에서  tr안에 td로 변경해보자 (복붙할때 엑셀에 테이블형식으로 되는지 확인인)
   for (var i = 0; i < 리스트줄바꿈split.length - 1; i++) {
     var div안span4 = '';
-    div안span4 = '<span>' + 리스트줄바꿈split[i].split('\t')[0] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[1] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[2] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[3] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[4] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[5] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[6] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[7] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[8] + '</span>' //9 : 구분(축산수산구분 제외외)
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[10] + '</span>' //도착일
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[11] + '</span>' //도착시간
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[12] + '</span>' //구분(20,40피트), 13 화찰 제외
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[20] + '</span>' //메모2
+    div안span4 = '<td>' + 리스트줄바꿈split[i].split('\t')[0] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[3] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[4] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[5] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[6] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[7] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[8] + '</td>' //9 : 구분(축산수산구분 제외외)
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //도착일
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[11] + '</td>' //도착시간
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[12] + '</td>' //구분(20,40피트), 13 화찰 제외
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //메모2
 
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[21] + '</span>'
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[22] + '</span>'
-    div안span4 = '<div>' + div안span4 + '</div>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[21] + '</td>'
+    div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[22] + '</td>'
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
   }
-  for (var i = 0; i < 리스트줄바꿈split.length - 1; i++) {
-    if (자료풀림결과.children[i].children[13].innerHTML == '리스트시트기준열') {
-      자료풀림결과.children[i + 1].children[13].classList.add('js시간노랑');
+  자료풀림결과.innerHTML='<table><tbody>' + 자료풀림결과.innerHTML + '</tbody></table>'
+
+  자료풀림결과=document.querySelectorAll('#리스트자료풀림결과 tr');
+
+  for (var i = 0; i < 자료풀림결과.length; i++) {
+    if (자료풀림결과[i].children[13].innerHTML == '리스트시트기준열') {
+      자료풀림결과[i + 1].children[13].classList.add('js시간노랑');
       break;
     }
   }
+
   document.querySelector('#리스트복붙textarea').value = '';
 }
 function 입항관리BM복붙자료풀기() {
@@ -334,23 +341,26 @@ function 입항관리풀기() {
   for (var i = 0; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
     //if (입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0].trim().length!=0) { 리스트에 활용시 첫 정보가 비어 있을수 있는데 건너뛴다..
     var div안span4 = '';
-    div안span4 = '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[1] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[2] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[3] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[4] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[6] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</span>'
-    div안span4 += '<span>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</span>' //도착항
-    div안span4 = '<div>' + div안span4 + '</div>'
+    div안span4 = '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[3] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[4] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[6] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
-
   }
-  for (var i = 0; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
-    if (자료풀림결과.children[i].children[6].innerHTML == '물품') {
-      자료풀림결과.children[i].children[7].classList.add('js시간노랑');
+  자료풀림결과.innerHTML='<table><tbody>' + 자료풀림결과.innerHTML + '</tbody></table>'
+
+  자료풀림결과=document.querySelectorAll('#입항관리자료풀림결과 tr');
+
+  for (var i = 0; i < 자료풀림결과.length; i++) {
+    if (자료풀림결과[i].children[6].innerHTML == '물품') {
+      자료풀림결과[i].children[7].classList.add('js시간노랑');
       break;
     }
   }
@@ -376,7 +386,8 @@ function 입항관리에없는목록색칠() {
   입항관리bl_컨_결합문자열 = 입항관리bl_컨_결합문자열.join('!');
 
   var 리스트bl_컨_배열 = [];
-  var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 > div');
+  //var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 > div');
+  var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 tr');
   var 리스트목록개수 = 리스트목록한줄div.length;
   for (var i = 0; i < 리스트목록개수; i++) {
     //console.log(리스트목록한줄div[i].children[2].innerHTML) : BL
@@ -406,80 +417,19 @@ function 공통한줄색칠있음clear() {
 function png셑팅click(e) {
   //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
-  if (e.target.parentNode.parentNode.id == '입항관리자료풀림결과') {
+  if (e.target.parentNode.tagName == 'TR') {
     if (e.target.parentNode.classList.contains('js한줄색칠있음')) {
       e.target.parentNode.classList.remove('js한줄색칠있음'); return;
     } else {
       e.target.parentNode.classList.add('js한줄색칠있음'); return;
     }
   }
-  if (e.target.parentNode.parentNode.id == '리스트자료풀림결과') {
-    if (e.target.parentNode.classList.contains('js한줄색칠있음')) {
-      console.log('js한줄색칠있음')
-      e.target.parentNode.classList.remove('js한줄색칠있음'); return;
-    } else {
-      console.log('js한줄색칠xxx없을때')
-      e.target.parentNode.classList.add('js한줄색칠있음'); return;
-    }
-  }
+
 
 
 }
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
 리스너png셑팅.addEventListener('click', png셑팅click);
-
-
-if ('연습'=='하는중') {
-  document.addEventListener("copy", function (event) {
-    // 현재 선택한 요소 가져오기
-    const selection = window.getSelection();
-    if (!selection.rangeCount) return;
-
-    // 선택한 요소에서 HTML 가져오기
-    const range = selection.getRangeAt(0);
-    const selectedHtml = range.cloneContents();
-
-    // 선택된 HTML이 테이블 포함 여부 확인
-    const tables = selectedHtml.querySelectorAll("table");
-    if (tables.length === 0) return; // 테이블이 없으면 기본 복사 기능 유지
-
-    // 테이블 데이터를 엑셀 형식으로 변환
-    let tableText = "";
-    tables.forEach((table) => {
-        const rows = table.querySelectorAll("tr");
-        rows.forEach((row) => {
-            const cells = row.querySelectorAll("th, td");
-            let rowText = [];
-            cells.forEach((cell) => {
-                rowText.push(cell.innerText.trim()); // 셀 내부 텍스트만 가져오기
-            });
-            tableText += rowText.join("\t") + "\n"; // 탭으로 열 구분, 줄바꿈으로 행 구분
-        });
-        tableText += "\n"; // 여러 개의 테이블이 있을 경우 구분
-    });
-
-    // 클립보드 데이터 설정
-    event.preventDefault();
-    event.clipboardData.setData("text/plain", tableText);
-  });
-
-  
-
-  //마우스 뗄때까지 선택된게 모두 해당. 요소하나 클릭시에는 하나고 두개걸치면 가로 줄 전체가되고, 아래위 걸치면 아래위 다 된다.
-  //이상하네.. 엑셀에 붙여넣으면 보이는대로의 범위만 가져온다.
-  //e.target.innerText가 어떤건지, 드래그한 범위를 타겟으로 잡는다?
-  var 리스너_PNG셑팅=document.querySelector('#PNG셑팅');
-  function 클릭요소텍스트복사상태(e) {
-    console.log(e.target.innerText)
-    navigator.clipboard.writeText(e.target.innerText);
-  }
-  리스너_PNG셑팅.addEventListener('click',클릭요소텍스트복사상태)
-
-
-
-}
-
-
 
 
 
