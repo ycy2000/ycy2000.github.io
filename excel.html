@@ -1460,10 +1460,21 @@
       <div style="display: inline-block;vertical-align: top;">
         <img src="portal/images/문서연결_엑셀VBA/엑셀범위복사상태.png" alt="이미지없음">
       </div>
-      <h6 class="fw-bold" style="color:blueviolet;"">★ innerText 를 기준으로 하면 탭과 줄바꿈이 모두 없어진다. ★ => innerHTML 로 할것!!</h6>
-      <h6 class="fw-bold"">1-1.span태그 inline 속성 : \t 분리안됨. \n 분리안됨. \r\n 분리안됨</h6>
-      <h6 class="fw-bold"">1-2.span태그 inline-block 속성 : \t 분리안됨. \n 분리안됨. \r\n 분리안됨</h6>
-      <span id="연습2" style="display: inline-block;" contenteditable="">첫줄(a1)	첫줄(b1)
+      <h6 class="fw-bold" style="color:blueviolet;"">★ innerText 를 기준으로 하면 탭과 줄바꿈이 모두 없어진다. length=1 <span style="background-color: chartreuse;color:black;">★ => innerHTML 로 할것!!</span></h6>
+      <h6 class="fw-bold">1. span태그 inline 속성, inline-block 속성 : \t 분리. \n 분리. <span style="color:blueviolet">(\r\n 분리안됨 : 일단 안씀)</span></h6>
+      <img src="portal/images/문서연결_엑셀VBA/엑셀범위텍스트split.png" alt="이미지없음">
+      <br>
+      <h6 class="fw-bold" style="text-indent: 15px;">- \n 개별값을 \t 로 split할수 있고, 하나의 배열에 넣으려면 \n을 \t로 변경한 후에 split 하면 된다.</h6>
+      <code style="color:blueviolet;display: inline-block;text-indent: 25px;" class="fw-bold">텍스트.replace(/\n/gim,'\t').split('\t') : </code>
+      <span style="color:black;font-weight: bold;">g플래그 없으면 하나만 바뀜. g모두 i 대소문자 구분안함, m 여러행 검색</span>
+      <br><br>
+      <h6 class="fw-bold" style="text-indent: 15px;">- 좌우 공백 제거하려면, map함수 사용(배열이 각 요소를 순회하여 콜백함수를 적용한 결과를 모아 새로운 배열을 반환하는 함수)</h6>
+
+
+
+
+
+      <span id="연습2" style="display: inline;" contenteditable="">첫줄(a1)	첫줄(b1)
         두번째줄(a2)	두번째줄(b2)</span>
 
       <br>

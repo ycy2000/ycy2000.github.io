@@ -300,7 +300,7 @@ function 리스트풀기() {
     div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[10] + '</span>' //도착일
     div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[11] + '</span>' //도착시간
     div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[12] + '</span>' //구분(20,40피트), 13 화찰 제외
-    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[14] + '</span>' //선명
+    div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[20] + '</span>' //메모2
 
     div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[21] + '</span>'
     div안span4 += '<span>' + 리스트줄바꿈split[i].split('\t')[22] + '</span>'
