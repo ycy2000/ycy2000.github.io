@@ -7,6 +7,7 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습2() {
+
   var 요소=document.querySelector('#연습2');
   var 텍스트=요소.innerHTML;
   var 줄바꿈배열=텍스트.split('\n');
