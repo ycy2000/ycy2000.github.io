@@ -25,13 +25,14 @@
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <button type="button" class="btn btn-light active 카테고리">예정</button>
-        <button type="button" class="btn btn-light 카테고리">완료</button>
+        <button type="button" class="btn btn-light active 카테고리">예정png</button>
+        <button type="button" class="btn btn-light 카테고리">완료png</button>
         <button type="button" class="btn btn-light 카테고리">면허,운송</button>
         <button type="button" class="btn btn-light 카테고리">메모</button>
         <button type="button" class="btn btn-light 카테고리" style="margin-left:20px;">리스트</button>
         <button type="button" class="btn btn-light 카테고리">입항관리</button>
         <button type="button" class="btn btn-light 카테고리">CY</button>
+        <button type="button" class="btn btn-light 카테고리">축산예정</button>
         <span style="margin-left:20px;font-size:15px;font-weight: bold;">'리스트,입항관리' 클릭한곳은 복사됨 (BL,컨 등) CTRL+V 붙여넣기됨</span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -119,7 +120,7 @@
     </div>
   </div>
 </div>
-
+<div id="축산예정관련" class="d-none"></div>
 
 <div id="리스트풀기관련" class="d-none">
   <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
@@ -132,7 +133,15 @@
       <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
       <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
     </div>
-    <div id="리스트자료풀림결과" class="검색"><!-- js로 한줄을 div안에 span 4개? -->
+
+    <div id="클릭파일" class="d-none"></div>
+
+
+    <div id="리스트자료풀림결과" class="검색 d-inline-block" style="vertical-align: top;"><!-- js로 한줄을 div안에 span 4개? -->
+    </div>
+    <div style="vertical-align: top;font-size:15px;font-weight: bold;margin-left:10px;" class="d-inline-block">
+      <div>클릭한곳 내용 (복사상태)</div>
+      <div id="클릭복사본" style="border:1px solid black;padding:2px 5px;" class="d-inline-block"></div>
     </div>
   </div>
 
@@ -140,7 +149,7 @@
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <div id="리스트자료풀림결과js복사본" class="d-none"></div>
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="리스트1부터Z열메모2까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	02/26 수 16:50	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	메모2
+<div class="d-none" id="리스트1부터Z열메모2까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	02/26 수 21:38
   1	○	NSSLBKBSC2500072	우원홀딩스	TEXU9027146	갑오징어	1,600 		2/25	1			20 	NSSLBKBSC2500072	KMTC BANGKOK	25KMTC0759I-3009-	1,600 	8,000.00 	2025.02.26	SS북항(신선대)	남성,신선대,프리,3/7
   1	○	COSU6405042407	수월한	TXGU9018781	닭다리	1,960 		2/25	2				COSU6405042407	CMA CGM DALILA	25CMAL0103I-3004-	1,960 	24,500.00 	2025.02.25	에이스	CMA CGM DALILA
   1	○	COSU6405042408	수월한	OERU4168542	닭다리	1,960 		2/25	2				COSU6405042408	CMA CGM DALILA	25CMAL0103I-3052-	1,960 	24,500.00 	2025.02.25	에이스	CMA CGM DALILA
@@ -150,7 +159,7 @@
       EGLV731500002369	(유)SM무역	EMCU5448401	오징어	1,200 		2/27	1											
       HLCUSCL250116640	동원산업	HLXU8795923	연어	827 		2/28	1											
       ONEYSCLE00804500	씨케이글로벌	FSCU5808006	홍합살	2,300 		2/28	1											
-      KMTCSUB2351631	씨케이글로벌	TEMU9481793	새우	1,800 		3/1	1											허치슨감만,KMTC INCHEON
+      KMTCSUB2351631	씨케이글로벌	TEMU9481793	새우	1,800 		3/1	1											허치슨감만,KMTC INCHEON!허치슨감만,KMTC INCHEON!허치슨감만,KMTC INCHEON!
       KMTCSUB2351631A	씨케이글로벌	TEMU9481793	새우	10 		3/1	1											허치슨감만,KMTC INCHEON
       KMTCSUB2354637	씨케이글로벌	FSCU5870208	새우	3,500 		3/1	1											허치슨감만,KMTC INCHEON
       STPUSR25021255	(주)우원	TSTU8202454	새우	1,000 		3/2	1			BL끝:1255,1265 헷갈림								WAN HAI 322, SONG TAN LOGISTICS
@@ -228,6 +237,9 @@
   34	대성무역	MEDU9801929	작업미정	미정		?????	닭(브라질)		확인안함	MEDUSF542055	확인안함	미정  
 </div>   
 
+<div class="d-none" id="축산예정ctrl_a_z열까지">
+
+</div>
 
 
 <div id="선사와CY관련" class="d-none"><!-- id="선사와cy관련모두wrap" -->

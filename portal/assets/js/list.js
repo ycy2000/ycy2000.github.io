@@ -173,11 +173,11 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#리스트풀기관련').innerHTML;
     리스트풀기()
   }
-  if (e.target.innerHTML == '예정') {
+  if (e.target.innerHTML == '예정png') {
     console.log('PNG_예정_셑팅')
     document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/PNG_예정.png" alt="이미지없음">';
   }
-  if (e.target.innerHTML == '완료') {
+  if (e.target.innerHTML == '완료png') {
     console.log('PNG_완료_셑팅')
     document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/PNG_완료.png" alt="이미지없음">';
   }
@@ -188,6 +188,11 @@ function 리스너_head_button_group클릭이벤트(e) {
   if (e.target.innerHTML == '메모') {
     console.log('PNG_면허운송_셑팅')
     document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#PNG셑팅에들어갈메모').innerHTML;
+  }
+  if (e.target.innerHTML == '축산예정') {
+    console.log('축산예정_셑팅')
+    document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#축산예정관련련').innerHTML;
+    축산예정풀기()
   }
   if (e.target.innerHTML == '입항관리') {
     console.log('선사_셑팅')
@@ -302,18 +307,18 @@ function 리스트풀기() {
     length최대와차이=length최대-리스트줄바꿈split[i].split('\t').length;
     if (length최대와차이==1) {
       div안span4 = '<td></td>'
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[0] + '</td>'
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[1] + '</td>'
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[2] + '</td>'
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[3] + '</td>'
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[4] + '</td>'
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[5] + '</td>'
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[6] + '</td>'
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[7] + '</td>'
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[8] + '</td>' //입항일
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //구분(축산수산구분 제외외)
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[0] + '</td>' //도착일
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[7] + '</td>' //입항일
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[8] + '</td>' //구분(축산수산구분 제외외)
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //도착일
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //도착시간
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[11] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //구분(20,40피트), 13 화찰 제외
   
       div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -331,7 +336,7 @@ function 리스트풀기() {
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[7] + '</td>' //구분(축산수산구분 제외외)
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[8] + '</td>' //도착일
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //도착시간
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //구분(20,40피트), 13 화찰 제외
   
       div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -349,7 +354,7 @@ function 리스트풀기() {
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //구분(축산수산구분 제외외)
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //도착일
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[11] + '</td>' //도착시간
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[12] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //구분(20,40피트), 13 화찰 제외
   
       div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -512,21 +517,6 @@ function 리스트단독입항관리맨에표시() {
 
   var 입항관리머리글='<table><tbody><tr><td>도크</td><td>화주</td><td>컨테이너</td><td>작업순서</td><td>상세내용 참조</td><td></td><td>운송사</td><td>물품</td><td></td><td class="js시간노랑">' + 시간 + '</td><td>B/L</td><td>도착항</td><td>상세내용</td><td></td></tr></tbody></table>';
   자료풀림결과.innerHTML='<table><tbody>' + 입항관리머리글 + 자료풀림결과.innerHTML + '</tbody></table>'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 }
 function 입항관리에없는목록색칠() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
@@ -560,9 +550,6 @@ function 입항관리에없는목록색칠() {
       //console.log('없음 : ' + 비엘 + ', ' + 컨)
       리스트목록한줄div[i].classList.add('js한줄색칠있음');
     }
-
-
-
   }
 }
 
@@ -576,12 +563,72 @@ function png셑팅click(e) {
   //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
   if (e.target.parentNode.tagName == 'TR') {
-    navigator.clipboard.writeText(e.target.innerHTML)
     if (e.target.parentNode.classList.contains('js한줄색칠있음')) {
-      e.target.parentNode.classList.remove('js한줄색칠있음'); return;
+      e.target.parentNode.classList.remove('js한줄색칠있음');
     } else {
-      e.target.parentNode.classList.add('js한줄색칠있음'); return;
+      e.target.parentNode.classList.add('js한줄색칠있음');
     }
+
+    navigator.clipboard.writeText(e.target.innerHTML)
+    var 복사텍스트=e.target.innerHTML;
+    document.querySelector('#클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');
+    var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;
+
+    //규칙 : 시작부분에 [PDF파일이름] 형태로 입력해놓으면 어디서든
+    //[pdf, [png, [txt,로 시작되는것이 있으면 "클릭파일"에 파일을 넣는다.
+    var 열기위치=0;
+    var 닫기위치=0;
+    열기위치=복사텍스트.indexOf('[');
+    닫기위치=복사텍스트.indexOf(']');
+
+    if (열기위치==-1 || 닫기위치==-1 || 열기위치>닫기위치) {return;}
+
+    var 파일이름=복사텍스트.substring(열기위치+1,닫기위치-열기위치);
+    console.log(복사텍스트)
+    console.log(파일이름)
+    var 바꿀문자열="[" + 파일이름 + "]";
+
+
+    var 버튼문자열='<button onclick="클릭파일d_none()">닫기</button><br>';
+
+    if (복사텍스트.indexOf('[PNG')>-1) { //정규식 어렵다 다른방식으로로
+      //왼쪽에 표시되는 파일부분
+      var 대체문자열='<img src="portal/images/문서연결_리스트/' + 파일이름 + '.png" style="border:1px solid black;" alt="이미지없음">'
+      document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
+      //파일보기로 변경한 복사내용
+      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '_파일보기/닫기</button>')
+      return;
+    }
+
+    if (복사텍스트.indexOf('[PDF')>-1) { //정규식 어렵다 다른방식으로로
+      //왼쪽에 표시되는 파일부분
+      var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width=1010px height=1000px/ dataset.searchdata="기본가로700"/>'
+      document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
+      //파일보기로 변경한 복사내용
+      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '_파일보기/닫기</button>')
+      return;
+    }
+
+
+
+
+
+
+
+
+
+
+
+  }
+}
+function 클릭파일d_none() {
+  document.querySelector('#PNG셑팅 #클릭파일').classList.add('d-none');
+}
+function 클릭파일d_none제거() {
+  if (document.querySelector('#PNG셑팅 #클릭파일').classList.contains('d-none')) {
+    document.querySelector('#PNG셑팅 #클릭파일').classList.remove('d-none');
+  } else {
+    document.querySelector('#PNG셑팅 #클릭파일').classList.add('d-none');
   }
 }
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);

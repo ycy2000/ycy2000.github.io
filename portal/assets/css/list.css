@@ -96,6 +96,9 @@ body {
 .js한줄색칠있음 > * {background-color:chartreuse;}
 .js시간노랑 {background-color:yellow;}
 
+#클릭파일 {position:absolute;background-color: white;border:1px solid black; border-radius: 5px;display:inline-block;}
+#클릭파일 button, #클릭복사본 button {border:1px solid black; border-radius: 5px;font-weight: bold;}
+
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {
     cursor: pointer;
