@@ -423,8 +423,8 @@ function 입항관리풀기() {
 리스트풀기()
 
 var 리스너png셑팅 = document.querySelector('#PNG셑팅');
-function 리스트단독입항관리맨아래에추가() {
-  console.log('리스트단독입항관리맨아래에추가()')
+function 리스트단독입항관리맨에표시() {
+  console.log('리스트단독입항관리맨에표시()')
   //입항관리자료는 전체문자열로 받아서 처리해야한다.
   var 입항관리전체문자열 = document.querySelector('#입항관리도크부터도착항우측까지').innerHTML;
   var 입항관리줄바꿈개수 = 입항관리전체문자열.split('\n');
@@ -495,7 +495,9 @@ function 리스트단독입항관리맨아래에추가() {
     div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
   }
-  자료풀림결과.innerHTML='<table><tbody>' + 자료풀림결과.innerHTML + '</tbody></table>'
+  var 입항관리머리글='';
+  입항관리머리글=''
+  자료풀림결과.innerHTML='<table><tbody>' + 입항관리머리글 + 자료풀림결과.innerHTML + '</tbody></table>'
 
 
 
