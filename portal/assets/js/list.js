@@ -275,13 +275,13 @@ function 입항관리단어검색() {
 function 리스트1부터요약까지복붙자료풀기() {
   //div,input 하면 줄바꿈 \n이 없다?
   console.log('리스트1부터요약까지복붙자료풀기()')
-  document.querySelector('#리스트1부터20피트구분까지만').innerHTML = document.querySelector('#리스트복붙textarea').value;
+  document.querySelector('#리스트1부터Z열메모2까지').innerHTML = document.querySelector('#리스트복붙textarea').value;
   리스트풀기();
 }
 function 리스트풀기() {
   // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
   //탭 : \t, 줄바꿈 \n : split는 정규식으로 입력받는다.
-  var 리스트텍스트 = document.querySelector('#리스트1부터20피트구분까지만').innerHTML;
+  var 리스트텍스트 = document.querySelector('#리스트1부터Z열메모2까지').innerHTML;
   var 리스트줄바꿈split = 리스트텍스트.split('\n');
 
   var 자료풀림결과 = document.querySelector('#리스트자료풀림결과');
@@ -470,7 +470,7 @@ function 리스트단독입항관리맨에표시() {
       단독담기배열.push(단독배열push문자열);
     }
   }
-  if (단독담기배열.length==0) {return;}
+  if (단독담기배열.length==0) {alert('단독 없음!'); return;}
   //console.log(단독담기배열) : 입항관리에 단독만 표시되도록 코딩
 
   var 자료풀림결과 = document.querySelector('#입항관리자료풀림결과');
