@@ -120,7 +120,19 @@
     </div>
   </div>
 </div>
-<div id="축산예정관련" class="d-none"></div>
+<div id="축산예정관련" class="d-none">
+  <div style="font-size: 16px;margin-bottom:5px;">
+    
+    <span id="축산기록시간은수기로해야함" style="margin-left:300px;font-weight: bold;">2/26(목) : </span>
+
+    <button title="단어검색 초기화" class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#리스트검색input').value=''; 리스트단어검색()">단어검색</button>
+    <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
+    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
+    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
+    <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
+  </div>
+  <div id="축산예정자료풀기결과"></div>
+</div>
 
 <div id="리스트풀기관련" class="d-none">
   <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
@@ -236,9 +248,23 @@
   33	대상	BMOU9228009	작업미정	미정		?????	닭(브라질)		확인안함	MEDUHI151067	확인안함	미정
   34	대성무역	MEDU9801929	작업미정	미정		?????	닭(브라질)		확인안함	MEDUSF542055	확인안함	미정  
 </div>   
-
-<div class="d-none" id="축산예정ctrl_a_z열까지">
-
+<!--1순번,2화주,3BL,4컨,5수량,6중량,7판매원,8입고예정,9이름,10입고층,11입항예정,12주의,13가공장번호,14계육,15AU다리살,
+    16스티커발주상태,17수출국,18가공일,19메모,20화찰BL,21화찰선명,22화물관리,23화찰수량,24화찰중량,25화찰입항 -->
+<div class="d-none" id="머리글제외_a열제외_축산예정_b_z열까지">1	수월한 주식회사	COSU6405042407	TXGU9018781	1,960	23520		2/27	녹	2층	2/25		S.I.F-3125	계육	AU다리살	일월년(읽는법)	브라질	2024.12.10~14		COSU6405042407	CMA CGM DALILA	25CMAL0103I-3004-	1,960 	24,500.00 	2025.02.25
+  2	수월한 주식회사	COSU6405042408	OERU4168542	1,960	23520		2/27	만	4층	2/25		S.I.F-3125	계육	AU다리살	일월년(읽는법)	브라질	2024.12.10~13		COSU6405042408	CMA CGM DALILA	25CMAL0103I-3052-	1,960 	24,500.00 	2025.02.25
+  3	대상㈜유통씨아이씨	BR04508324	HMMU5483690	1,980	23760			LA		2/12		S.I.F-802	계육	CO다리살		브라질	2024.12.12,13,16							
+  4	수월한 주식회사	MAEUJBS258175	MMAU1092829	1,958	23496					3/2		S.I.F-2485	계육	SR다리살		브라질	2024.12.30~2025.1.7							
+  5	㈜동원홈푸드	MAEUJBS258040	SUDU9002430	1,958	23496	오케이푸드				3/2	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.8,9							
+  6	주식회사 마이푸드	SSZ1578269B	CGMU9297124	1,960	23520					3/3		S.I.F-3125	계육	AU다리살		브라질	2024.12.11~16							
+  7	수월한 주식회사	HLCUIT1250102985	HLBU9541736	1,958	23496					3/8	20-25G	S.I.F-2172	계육	SR조각정육		브라질	2024.11.16~12.27							
+  8	㈜대성무역	COSU6407154940	TTNU8679215	1,958	23496					3/22	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.10							
+  9	㈜더맛있는하루	HLCUPN4250162428	HLBU9315338	1,950	23400					3/22		S.I.F-1860	계육	CA다리살		브라질	2024.12.9~2025.1.17							
+  10	주식회사 아스트로스	HDMUSAOA85816600	HDMU5519515	1,500	22500	디케이통상				3/23		S.I.F-2212	계육	VI닭발		브라질	2025.1.9~16							
+  11	주식회사 아스트로스	COSU6453325310	SEGU9516595	1,960	23520					3/29		S.I.F-3125	계육	AU다리살		브라질	2024.12.28,2025.1.6,7							
+  12	㈜더맛있는하루	HLCUPN4250167801	HLBU9697354	1,950	23400					4/2		S.I.F-4166	계육	CA다리살		브라질	2025.1.10~21							
+  13	대상㈜유통씨아이씨	MEDUHI151067	BMOU9228009	1,985	23820					미정		S.I.F-1001	계육	PA다리살		브라질	2024.11.7~2025.1.8							
+  14	㈜대성무역	MEDUSF542055	MEDU9801929	1,960	23520					미정		S.I.F-3125	계육	AU다리살		브라질	2024.1.11,13							
+  15	㈜동원홈푸드	MEDUHI143015	CRLU1192254	1,958	23496	오케이푸드				미정	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.3,4							
 </div>
 
 

@@ -164,10 +164,6 @@ function 리스너_head_button_group클릭이벤트(e) {
   }
   if (e.target.classList.contains('카테고리')) { e.target.classList.add('active') }
 
-  if (e.target.innerHTML == '리스트DDDD') {
-    console.log('PNG_리스트_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/PNG_리스트.png" alt="이미지없음">';
-  }
   if (e.target.innerHTML == '리스트') {
     console.log('리스트_셑팅')
     document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#리스트풀기관련').innerHTML;
@@ -191,7 +187,7 @@ function 리스너_head_button_group클릭이벤트(e) {
   }
   if (e.target.innerHTML == '축산예정') {
     console.log('축산예정_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#축산예정관련련').innerHTML;
+    document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#축산예정관련').innerHTML;
     축산예정풀기()
   }
   if (e.target.innerHTML == '입항관리') {
@@ -424,8 +420,58 @@ function 입항관리풀기() {
   }
   document.querySelector('#입항관리복붙textarea').value = '';
 }
+function 축산예정풀기() {
+  var 원본텍스트 = document.querySelector('#머리글제외_a열제외_축산예정_b_z열까지').innerHTML;
+  var 원본_줄바꿈split = 원본텍스트.split('\n');
+  // var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
+  //마지막 배열이 0 이다, 이거 피해야함함
+  var 자료풀림결과 = document.querySelector('#축산예정자료풀기결과');
+  자료풀림결과.innerHTML = '';
+  //1순번,2화주,3BL,4컨,5수량,6중량,7판매원,8입고예정,9이름,10입고층,11입항예정,12주의,13가공장번호,14계육,15AU다리살,
+  //16스티커발주상태,17수출국,18가공일,19메모,20화찰BL,21화찰선명,22화물관리,23화찰수량,24화찰중량,25화찰입항
+  for (var i = 0; i < 원본_줄바꿈split.length - 1; i++) {
+    var div안span4 = '';
+    div안span4 = '<td>' + 원본_줄바꿈split[i].split('\t')[0] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[3] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[4] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[5] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[6] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[7] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[8] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[9] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[10] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[11] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[12] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[13] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[14] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[15] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[16] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[17] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[18] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[19] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[20] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[21] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[22] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[23] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[24] + '</td>'
+    div안span4 += '<td></td>' //빈칸(상세원본복사쉽도록)
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
+  }
+  //1순번,2화주,3BL,4컨,5수량,6중량,7판매원,8입고예정,9이름,10입고층,11입항예정,12주의,13가공장번호,14계육,15AU다리살,
+  //16스티커발주상태,17수출국,18가공일,19메모,20화찰BL,21화찰선명,22화물관리,23화찰수량,24화찰중량,25화찰입항
+
+  var 축산예정머리글='<table><tbody><tr><td>순번</td><td>화주</td><td>BL.NO</td><td>컨테이너</td><td>수량</td><td>중량</td><td>판매원</td><td>입고예정</td>' +
+                    '<td>이름</td><td>입고층</td><td>입항예정</td><td>주의</td><td>가공장번호</td><td>품종</td><td>브랜드</td><td>스티커발주</td>' + 
+                    '<td>수출국</td><td>가공일</td><td>메모</td><td>화찰BL</td><td>화찰선명</td><td>화물관리</td><td>화찰수량</td>' + 
+                    '<td>화찰중량</td><td>화찰입항</td><td>복사기준</td></tr></tbody></table>';
+  자료풀림결과.innerHTML=축산예정머리글+자료풀림결과.innerHTML;
+}
 입항관리풀기()
 리스트풀기()
+축산예정풀기()
 
 var 리스너png셑팅 = document.querySelector('#PNG셑팅');
 function 리스트단독입항관리맨에표시() {
@@ -552,7 +598,6 @@ function 입항관리에없는목록색칠() {
     }
   }
 }
-
 function 공통한줄색칠있음clear() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
   for (i = 0; i < 개수; i++) {
