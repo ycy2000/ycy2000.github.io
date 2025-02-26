@@ -456,7 +456,7 @@ function 리스트단독입항관리맨아래에추가() {
       단독배열push문자열.push(리스트목록한줄div[i].children[3].innerHTML.trim());//1화주
       단독배열push문자열.push(리스트목록한줄div[i].children[4].innerHTML.trim());//2컨
       단독배열push문자열.push('작업미정');//3작업순서
-      단독배열push문자열.push(리스트목록한줄div[i].children[8].innerHTML.trim());//4상세. 리스트 입항일 값 넣는다
+      단독배열push문자열.push('_' + 리스트목록한줄div[i].children[8].innerHTML.trim());//4상세. 리스트 입항일 값 넣는다
       단독배열push문자열.push('');//5빈칸
       단독배열push문자열.push('');//6운송사
       단독배열push문자열.push(리스트목록한줄div[i].children[5].innerHTML.trim() + ' ' + 리스트목록한줄div[i].children[6].innerHTML.trim());//7물품, 품명 & 수량 넣는다
@@ -464,7 +464,7 @@ function 리스트단독입항관리맨아래에추가() {
       단독배열push문자열.push(리스트목록한줄div[i].children[12].innerHTML.trim());//9선사(20피트표시에 선사메모사용)
       단독배열push문자열.push(리스트목록한줄div[i].children[2].innerHTML.trim());//10BL
       단독배열push문자열.push(리스트목록한줄div[i].children[7].innerHTML.trim());//11도착항
-      단독배열push문자열.push(리스트목록한줄div[i].children[8].innerHTML.trim());//12상세원본, 리스트 입항일 값 넣는다
+      단독배열push문자열.push('_' + 리스트목록한줄div[i].children[8].innerHTML.trim());//12상세원본, 리스트 입항일 값 넣는다
 
       단독배열push문자열=단독배열push문자열.join('\t');//탭으로 묶는다. 나중에 분리하여 사용할것이다
       단독담기배열.push(단독배열push문자열);
