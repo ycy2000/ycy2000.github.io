@@ -275,7 +275,7 @@ function 입항관리단어검색() {
 function 리스트1부터요약까지복붙자료풀기() {
   //div,input 하면 줄바꿈 \n이 없다?
   console.log('리스트1부터요약까지복붙자료풀기()')
-  document.querySelector('#리스트1부터요약까지').innerHTML = document.querySelector('#리스트복붙textarea').value;
+  document.querySelector('#리스트1부터20피트구분까지만').innerHTML = document.querySelector('#리스트복붙textarea').value;
   리스트풀기();
 }
 function 리스트풀기() {
@@ -323,13 +323,13 @@ function 리스트풀기() {
 function 입항관리BM복붙자료풀기() {
   //div,input 하면 줄바꿈 \n이 없다?
   console.log('입항관리BM복붙자료풀기()')
-  document.querySelector('#입항관리도크부터도착항까지').innerHTML = document.querySelector('#입항관리복붙textarea').value;
+  document.querySelector('#입항관리도크부터도착항우측까지').innerHTML = document.querySelector('#입항관리복붙textarea').value;
   입항관리풀기();
 }
 function 입항관리풀기() {
   // document.querySelector('#원본화주와컨').value=document.querySelector('#원본화주와컨').value;
   //탭 : \t, 줄바꿈 \n : split는 정규식으로 입력받는다.
-  var 입항관리화주부터상세까지12텍스트 = document.querySelector('#입항관리도크부터도착항까지').innerHTML;
+  var 입항관리화주부터상세까지12텍스트 = document.querySelector('#입항관리도크부터도착항우측까지').innerHTML;
   var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12텍스트.split('\n');
   // var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
   //마지막 배열이 0 이다, 이거 피해야함함
@@ -351,6 +351,8 @@ function 입항관리풀기() {
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
+    div안span4 += '<td></td>' //빈칸(상세원본복사쉽도록)
     div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
   }
@@ -376,7 +378,7 @@ function 입항관리에없는목록색칠() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
   //입항관리자료는 전체문자열로 받아서 처리해야한다.
-  var 입항관리전체문자열 = document.querySelector('#입항관리도크부터도착항까지').innerHTML;
+  var 입항관리전체문자열 = document.querySelector('#입항관리도크부터도착항우측까지').innerHTML;
   var 입항관리줄바꿈개수 = 입항관리전체문자열.split('\n');
   var 입항관리bl_컨_결합문자열 = [];//컨_bl, 공백이 있을수 있지만 _ 는 있다. undefined 또는 공백
   for (var i = 0; i < 입항관리줄바꿈개수.length; i++) {

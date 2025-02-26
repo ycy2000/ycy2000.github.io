@@ -50,6 +50,8 @@ body {
 #입항관리자료풀림결과 tr > td:nth-of-type(10) {width:150px;}/* 선명 */
 #입항관리자료풀림결과 tr > td:nth-of-type(11) {width:150px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
+#입항관리자료풀림결과 tr > td:nth-of-type(13) {width:20px;}/* 상세내용원본 */
+#입항관리자료풀림결과 tr > td:nth-of-type(14) {width:20px;}/* 빈칸,상세내용원본복사쉽도록 */
 
 #리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
 #리스트자료풀림결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
