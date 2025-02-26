@@ -45,9 +45,9 @@ body {
 #입항관리자료풀림결과 tr > td:nth-of-type(5) {width:400px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(6) {width:10px;}/* 상세우측 빈칸 */
 #입항관리자료풀림결과 tr > td:nth-of-type(7) {width:110px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(8) {width:80px;}/* 물품 */
+#입항관리자료풀림결과 tr > td:nth-of-type(8) {width:100px;}/* 물품 */
 #입항관리자료풀림결과 tr > td:nth-of-type(9) {width:20px;}/* -2 */
-#입항관리자료풀림결과 tr > td:nth-of-type(10) {width:150px;}/* 선명 */
+#입항관리자료풀림결과 tr > td:nth-of-type(10) {width:180px;}/* 선명 */
 #입항관리자료풀림결과 tr > td:nth-of-type(11) {width:150px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
 #입항관리자료풀림결과 tr > td:nth-of-type(13) {width:20px;}/* 상세내용원본 */

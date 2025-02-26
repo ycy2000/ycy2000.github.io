@@ -412,7 +412,7 @@ function 입항관리풀기() {
   자료풀림결과=document.querySelectorAll('#입항관리자료풀림결과 tr');
 
   for (var i = 0; i < 자료풀림결과.length; i++) {
-    if (자료풀림결과[i].children[7].innerHTML == '물품') {
+     if (자료풀림결과[i].children[7].innerHTML == '물품') {
       자료풀림결과[i].children[9].classList.add('js시간노랑');
       break;
     }
@@ -495,10 +495,23 @@ function 리스트단독입항관리맨에표시() {
     div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
   }
-  var 입항관리머리글='';
-  입항관리머리글=''
-  자료풀림결과.innerHTML='<table><tbody>' + 입항관리머리글 + 자료풀림결과.innerHTML + '</tbody></table>'
+  const 요일들 = ["일", "월", "화", "수", "목", "금", "토"];
+  var today = new Date();   
+  var hours = ('0' + today.getHours()).slice(-2); 
+  var minutes = ('0' + today.getMinutes()).slice(-2);
+  var seconds = ('0' + today.getSeconds()).slice(-2); 
 
+  var year = today.getFullYear();
+  var month = ('0' + (today.getMonth() + 1)).slice(-2);
+  var day = ('0' + today.getDate()).slice(-2);
+
+  var 요일=요일들[today.getDay()];
+  var dateString = year + '-' + month  + '-' + day;
+
+  var 시간=month  + '/' + day + ' ' + 요일 + ' '  + hours + ':' + minutes
+
+  var 입항관리머리글='<table><tbody><tr><td>도크</td><td>화주</td><td>컨테이너</td><td>작업순서</td><td>상세내용 참조</td><td></td><td>운송사</td><td>물품</td><td></td><td class="js시간노랑">' + 시간 + '</td><td>B/L</td><td>도착항</td><td>상세내용</td><td></td></tr></tbody></table>';
+  자료풀림결과.innerHTML='<table><tbody>' + 입항관리머리글 + 자료풀림결과.innerHTML + '</tbody></table>'
 
 
 
