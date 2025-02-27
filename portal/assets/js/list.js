@@ -1,3 +1,14 @@
+  var user = navigator.userAgent;
+  var is_mobile = false;
+  
+  if( user.indexOf("iPhone") > -1 
+      || user.indexOf("Android") > -1 
+      || user.indexOf("iPad") > -1
+      || user.indexOf("iPod") > -1
+  ) {
+      is_mobile = true;
+  }
+
 //메모 관련 달력
 const daysContainer = document.getElementById("days");
 const monthYear = document.getElementById("monthYear");
@@ -660,18 +671,14 @@ function png셑팅click(e) {
       //왼쪽에 표시되는 파일부분
       console.log(파일이름);
 
-
-      window.open(`portal/images/문서연결_리스트/${파일이름}.pdf`, '_blank');
-
-      return;
-
-
-
-
       var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1010px" height="1000px/" dataset.searchdata="기본가로700">'
       document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
       //파일보기로 변경한 복사내용
-      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
+      if (is_mobile) {//새창에서 열기
+        window.open(`portal/images/문서연결_리스트/${파일이름}.pdf`, '_blank');
+      } else {
+        document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
+      }
       return;
     }
 
