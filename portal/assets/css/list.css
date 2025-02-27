@@ -72,8 +72,8 @@ body {
 #축산예정자료풀기결과 {font-size: 13px; font-weight: bold;}
 #축산예정자료풀기결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
 #축산예정자료풀기결과  tr > td:nth-of-type(1) {width:20px;}
-#축산예정자료풀기결과  tr > td:nth-of-type(2) {width:110px;}
-#축산예정자료풀기결과  tr > td:nth-of-type(3) {width:140px;}
+#축산예정자료풀기결과  tr > td:nth-of-type(2) {width:140px;}
+#축산예정자료풀기결과  tr > td:nth-of-type(3) {width:150px;}
 #축산예정자료풀기결과  tr > td:nth-of-type(4) {width:110px;} /* 컨*/
 #축산예정자료풀기결과  tr > td:nth-of-type(5) {width:50px;}
 #축산예정자료풀기결과  tr > td:nth-of-type(6) {width:50px;}

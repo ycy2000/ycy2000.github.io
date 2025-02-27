@@ -567,6 +567,9 @@ function 리스트단독입항관리맨에표시() {
   var 입항관리머리글='<table><tbody><tr><td>도크</td><td>화주</td><td>컨테이너</td><td>작업순서</td><td>상세내용 참조</td><td></td><td>운송사</td><td>물품</td><td></td><td class="js시간노랑">' + 시간 + '</td><td>B/L</td><td>도착항</td><td>상세내용</td><td></td></tr></tbody></table>';
   자료풀림결과.innerHTML='<table><tbody>' + 입항관리머리글 + 자료풀림결과.innerHTML + '</tbody></table>'
 }
+function 축산예정_입항관리에없는목록색칠() {
+
+}
 function 입항관리에없는목록색칠() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
   for (i = 0; i < 개수; i++) {
@@ -617,7 +620,10 @@ function png셑팅click(e) {
       e.target.parentNode.classList.add('js한줄색칠있음');
     }
 
-    navigator.clipboard.writeText(e.target.innerHTML)
+    //navigator.clipboard.writeText(e.target.innerHTML)
+    //모바일에서 '클립보드에 복사되었어요.' 안뜨게
+    navigator.clipboard.writeText(e.target.innerHTML).then(() => {})
+
     var 복사텍스트=e.target.innerHTML;
     document.querySelector('#클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');
     var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;

@@ -128,7 +128,7 @@
     <button title="단어검색 초기화" class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#리스트검색input').value=''; 리스트단어검색()">단어검색</button>
     <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
     <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
-    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
+    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="축산예정_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠"></button>
     <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
   </div>
   <div id="축산예정자료풀기결과"></div>
@@ -161,7 +161,7 @@
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <div id="리스트자료풀림결과js복사본" class="d-none"></div>
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="리스트1부터Z열메모2까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	02/27 목 10:57
+<div class="d-none" id="리스트1부터Z열메모2까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	02/27 목 11:06
   2		ZIMUSNC811170	GK교역	JXLU5128442	오징어	1,200 	BCT	2/23	1										BCT,ZIM MOUNT RAINIER	
   2		HLCUSCL250105936	씨케이글로벌	HLBU9075026	연어	840 	국제	2/26	1										국제	
       BR04508324	대상 주식회사	HMMU5483690	닭다리살	1,980 	현대신항	2/12	2										현대신항	
@@ -181,7 +181,7 @@
       KMTCSGN5676816	씨케이글로벌	SEGU9338512	갑오징어등	600 		3/3	1			20 								KMTC JAKARTA(KMTC)
       ONEYSGZF01055600	씨케이글로벌	ONEU9010388	백합등	1,345 	선명:TIHANG?(안보임)	3/3	1											
       ONEYSGZF01055601	씨케이글로벌	ONEU9010388	북방대합	907 	선명:TIHANG?(안보임)	3/3	1											
-      VAPPUS202501004844	(유)SM무역	OTPU6492059	오징어	1,200 		3/4	1											
+      VAPPUS202501004844	(유)SM무역	OTPU6492059	오징어	1,200 		3/4	1											[PDF_SM무역4844]
       TM225020642F	우원홀딩스	HMMU5203818	새우	999 		3/4	1			20 								[PDF_우원_0304_STPUSR25021255]!YM WISH V.048E, STAPIMEX
       HLCUIT1250102985	수월한	HLBU9541736	닭다리	1,958 		3/8	2											
       MAEU250009517	해솔무역	MMAU1073428	조기	2,325 		3/10	1											
