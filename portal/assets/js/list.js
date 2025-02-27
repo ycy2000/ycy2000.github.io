@@ -628,9 +628,7 @@ function png셑팅click(e) {
 
     if (열기위치==-1 || 닫기위치==-1 || 열기위치>닫기위치) {return;}
 
-    var 파일이름=복사텍스트.substring(열기위치+1,닫기위치-열기위치);
-    console.log(복사텍스트)
-    console.log(파일이름)
+    var 파일이름=복사텍스트.substring(열기위치+1,닫기위치-열기위치).trim(); //파일이름 맞는데 인식이 안되기도함?
     var 바꿀문자열="[" + 파일이름 + "]";
 
 
@@ -638,19 +636,21 @@ function png셑팅click(e) {
 
     if (복사텍스트.indexOf('[PNG')>-1) { //정규식 어렵다 다른방식으로로
       //왼쪽에 표시되는 파일부분
+      console.log(파일이름);
       var 대체문자열='<img src="portal/images/문서연결_리스트/' + 파일이름 + '.png" style="border:1px solid black;" alt="이미지없음">'
       document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
       //파일보기로 변경한 복사내용
-      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '_파일보기/닫기</button>')
+      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
       return;
     }
 
     if (복사텍스트.indexOf('[PDF')>-1) { //정규식 어렵다 다른방식으로로
       //왼쪽에 표시되는 파일부분
-      var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width=1010px height=1000px/ dataset.searchdata="기본가로700"/>'
+      console.log(파일이름);
+      var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">'
       document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
       //파일보기로 변경한 복사내용
-      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '_파일보기/닫기</button>')
+      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
       return;
     }
 
