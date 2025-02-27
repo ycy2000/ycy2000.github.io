@@ -421,7 +421,7 @@ function 입항관리풀기() {
   document.querySelector('#입항관리복붙textarea').value = '';
 }
 function 축산예정풀기() {
-  var 원본텍스트 = document.querySelector('#머리글제외_a열제외_축산예정_b_z열까지').innerHTML;
+  var 원본텍스트 = document.querySelector('#머리글제외_a열제외_축산예정_b_aa시간열까지').innerHTML;
   var 원본_줄바꿈split = 원본텍스트.split('\n');
   // var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
   //마지막 배열이 0 이다, 이거 피해야함함
@@ -456,7 +456,10 @@ function 축산예정풀기() {
     div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[22] + '</td>'
     div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[23] + '</td>'
     div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[24] + '</td>'
-    div안span4 += '<td></td>' //빈칸(상세원본복사쉽도록)
+    if (i==0) {
+      document.querySelector('#축산기록시간은수기로해야함').innerHTML=원본_줄바꿈split[i].split('\t')[25]
+    }
+    //div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[25] + '</td>' //시간) : 엑셀에 넣으면 시간이 지워지니 표시안함
     div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
   }
@@ -466,7 +469,7 @@ function 축산예정풀기() {
   var 축산예정머리글='<table><tbody><tr><td>순번</td><td>화주</td><td>BL.NO</td><td>컨테이너</td><td>수량</td><td>중량</td><td>판매원</td><td>입고예정</td>' +
                     '<td>이름</td><td>입고층</td><td>입항예정</td><td>주의</td><td>가공장번호</td><td>품종</td><td>브랜드</td><td>스티커발주</td>' + 
                     '<td>수출국</td><td>가공일</td><td>메모</td><td>화찰BL</td><td>화찰선명</td><td>화물관리</td><td>화찰수량</td>' + 
-                    '<td>화찰중량</td><td>화찰입항</td><td>복사기준</td></tr></tbody></table>';
+                    '<td>화찰중량</td><td>화찰입항</td></tr></tbody></table>';
   자료풀림결과.innerHTML=축산예정머리글+자료풀림결과.innerHTML;
 }
 입항관리풀기()
@@ -647,7 +650,7 @@ function png셑팅click(e) {
     if (복사텍스트.indexOf('[PDF')>-1) { //정규식 어렵다 다른방식으로로
       //왼쪽에 표시되는 파일부분
       console.log(파일이름);
-      var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">'
+      var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1010px" height="1000px/" dataset.searchdata="기본가로700">'
       document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
       //파일보기로 변경한 복사내용
       document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
