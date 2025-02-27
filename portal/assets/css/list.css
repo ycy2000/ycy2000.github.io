@@ -63,7 +63,7 @@ body {
 #리스트자료풀림결과  tr > td:nth-of-type(6) {width:60px;}
 #리스트자료풀림결과  tr > td:nth-of-type(7) {width:50px;}
 #리스트자료풀림결과  tr > td:nth-of-type(8) {width:120px;}/* 반입 no */
-#리스트자료풀림결과  tr > td:nth-of-type(9) {width:40px;}
+#리스트자료풀림결과  tr > td:nth-of-type(9) {width:40px;text-align: center;}
 #리스트자료풀림결과  tr > td:nth-of-type(10) {width:20px;}/* 구분 */
 #리스트자료풀림결과  tr > td:nth-of-type(11) {width:40px;}
 #리스트자료풀림결과  tr > td:nth-of-type(12) {width:40px;}

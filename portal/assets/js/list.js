@@ -6,7 +6,7 @@
       || user.indexOf("iPad") > -1
       || user.indexOf("iPod") > -1
   ) {
-      is_mobile = true;
+      is_mobile = true; // 깃허브도 데스트탑 아닌걸로, 로컬 작업때만 false
   }
 
 //메모 관련 달력
