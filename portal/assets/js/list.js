@@ -579,7 +579,42 @@ function 리스트단독입항관리맨에표시() {
   자료풀림결과.innerHTML='<table><tbody>' + 입항관리머리글 + 자료풀림결과.innerHTML + '</tbody></table>'
 }
 function 축산예정_입항관리에없는목록색칠() {
+  var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
+  for (i = 0; i < 개수; i++) {
+    document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
+  }
+  //입항관리자료는 전체문자열로 받아서 처리해야한다.
+  var 입항관리전체문자열 = document.querySelector('#입항관리도크부터도착항우측까지').innerHTML;
+  var 입항관리줄바꿈개수 = 입항관리전체문자열.split('\n');
+  var 입항관리bl_컨_결합문자열 = [];//컨_bl, 공백이 있을수 있지만 _ 는 있다. undefined 또는 공백
+  for (var i = 0; i < 입항관리줄바꿈개수.length; i++) {
+    입항관리bl_컨_결합문자열.push(입항관리줄바꿈개수[i].split('\t')[2] + '!' + 입항관리줄바꿈개수[i].split('\t')[10])
+  }
+  //배열을 다시 ! 로 join하여 하나의 문자열로 만든다. (컨과 bl이 느낌표로 결합된 하나의 문자열이 됨됨)
+  입항관리bl_컨_결합문자열 = 입항관리bl_컨_결합문자열.join('!');
 
+  var 리스트bl_컨_배열 = [];
+  var 없는거개수=0;
+  //변수 그냥 사용 : #리스트자료풀림결과 를 #축산예정자료풀기결과 로 변경하여...
+  //var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 > div');
+  var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #축산예정자료풀기결과 tr');
+  var 리스트목록개수 = 리스트목록한줄div.length;
+  for (var i = 0; i < 리스트목록개수; i++) {
+    //console.log(리스트목록한줄div[i].children[2].innerHTML) : BL
+    //console.log(리스트목록한줄div[i].children[4].innerHTML) : 컨
+    var 비엘 = 리스트목록한줄div[i].children[2].innerHTML;
+    var 컨 = 리스트목록한줄div[i].children[3].innerHTML;
+    if (비엘 == 'B/LNO.' || (비엘 == '' && 컨 == '')) { continue; } //다음반복문으로
+    //문자열.indexOf('찾는문자열') 없으면 -1
+    if (입항관리bl_컨_결합문자열.indexOf(비엘) > -1 || 입항관리bl_컨_결합문자열.indexOf(컨) > -1) {
+      //컨이나 bl중 하나라도 맞으면 건너뜀
+    } else {
+      //console.log('없음 : ' + 비엘 + ', ' + 컨)
+      리스트목록한줄div[i].classList.add('js한줄색칠있음');
+      없는거개수+=1;
+    }
+  }
+  if (없는거개수==0) {alert('모두 입항관리에 있음')}
 }
 function 입항관리에없는목록색칠() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
@@ -597,6 +632,7 @@ function 입항관리에없는목록색칠() {
   입항관리bl_컨_결합문자열 = 입항관리bl_컨_결합문자열.join('!');
 
   var 리스트bl_컨_배열 = [];
+  var 없는거개수=0;
   //var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 > div');
   var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #리스트자료풀림결과 tr');
   var 리스트목록개수 = 리스트목록한줄div.length;
@@ -612,8 +648,10 @@ function 입항관리에없는목록색칠() {
     } else {
       //console.log('없음 : ' + 비엘 + ', ' + 컨)
       리스트목록한줄div[i].classList.add('js한줄색칠있음');
+      없는거개수+=1;
     }
   }
+  if (없는거개수==0) {alert('모두 입항관리에 있음')}
 }
 function 공통한줄색칠있음clear() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;

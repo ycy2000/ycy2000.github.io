@@ -124,12 +124,12 @@
 <div id="축산예정관련" class="d-none">
   <div style="font-size: 16px;margin-bottom:5px;">
     
-    <span id="축산기록시간은수기로해야함" style="margin-left:300px;font-weight: bold;"></span>
+    <button id="축산기록시간은수기로해야함" style="margin-left:300px;font-weight: bold;border:1px solid black; border-radius: 5px;" class="js시간노랑 "></button>
 
     <button title="단어검색 초기화" class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="document.querySelector('#리스트검색input').value=''; 리스트단어검색()">단어검색</button>
     <input id="리스트검색input" type="text" style="width:100px;" onchange="리스트단어검색()">
     <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
-    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="축산예정_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠"></button>
+    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="축산예정_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
     <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
   </div>
   <div id="축산예정자료풀기결과"></div>
@@ -163,7 +163,7 @@
 <div id="리스트자료풀림결과js복사본" class="d-none"></div>
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
 <div class="d-none" id="리스트1부터Z열메모2까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	메모	02/27 목 15:48
-  1	○	HLCUSCL250105936	씨케이글로벌	HLBU9075026	연어	840 	국제	2/26	1				HLCUSCL250105936	MSC CHIYO	25MSCU6032I-6004-	840 	24,477.20 	2025.02.27	국제	하파그-MSC
+  1	○	HLCUSCL250105936	씨케이글로벌	HLBU9075026	연어	840 	국제	2/26	1				HLCUSCL250105936	MSC CHIYO	25MSCU6032I-6004-	840 	24,477.20 	2025.02.27	국제	[PNG_예정]하파그-MSC
   1	○	HLCUSCL250116640	동원산업	HLXU8795923	연어	827 	신국제	2/28	1				HLCUSCL250116640	MSC CHIYO	25MSCU6032I-6008-	827 	24,317.07 	2025.02.27	신국제	신세기기업면허,국제,MSC, 하파그에서 조회됨
   1	○	BR04508324	대상 주식회사	HMMU5483690	닭다리살	1,980 	현대신항	2/12	2				BR04508324	HYUNDAI COLOMBO	25HDMUA080I-0003-0001	1,980 	24,840.00 	2025.02.11	현대신항	HDMUSAOA24329200 - BR04508324!PSA신항만 2/12 반입됨
   2		EGLV731500002369	(유)SM무역	EMCU5448401	오징어	1,200 	에버그린	2/27	1										에버그린	에버그린 선사정보 선적시 선명 XIN LOS ANGELES 172W ! 도착시 선명 EVER CLEVER 0088-068N ! 맞는지 확인 3월6일
@@ -510,9 +510,6 @@
   </div>
 </div>
 
-  <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
-  role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
-  <span>Top</span></a>
 <!-- 부트스트랩.body 맨 마지막에.. -->
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
