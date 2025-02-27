@@ -611,6 +611,9 @@ function 공통한줄색칠있음clear() {
   }
 }
 function png셑팅click(e) {
+  // 대부분의 모바일 브라우저(특히 iOS Safari, Chrome)는 <embed> 태그를 제대로 지원하지 않아요.
+  // iOS에서는 PDF.js 같은 외부 뷰어 없이 PDF를 <embed>로 직접 표시할 수 없어요.
+
   //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
   if (e.target.parentNode.tagName == 'TR') {
@@ -656,6 +659,15 @@ function png셑팅click(e) {
     if (복사텍스트.indexOf('[PDF')>-1) { //정규식 어렵다 다른방식으로로
       //왼쪽에 표시되는 파일부분
       console.log(파일이름);
+
+
+      window.open(`portal/images/문서연결_리스트/${파일이름}.pdf`, '_blank');
+
+      return;
+
+
+
+
       var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1010px" height="1000px/" dataset.searchdata="기본가로700">'
       document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
       //파일보기로 변경한 복사내용
