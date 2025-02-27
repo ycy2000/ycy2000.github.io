@@ -38,7 +38,7 @@ body {
 
 #선사와cy관련모두wrap {font-size: 13px; font-weight: bold;}
 #입항관리자료풀림결과 tr > td {height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
-#입항관리자료풀림결과 tr > td:nth-of-type(1) {width:30px;}
+#입항관리자료풀림결과 tr > td:nth-of-type(1) {width:30px;text-align: center;}
 #입항관리자료풀림결과 tr > td:nth-of-type(2) {width:80px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(3) {width:110px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(4) {width:80px;}
@@ -52,6 +52,8 @@ body {
 #입항관리자료풀림결과 tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
 #입항관리자료풀림결과 tr > td:nth-of-type(13) {width:20px;}/* 상세내용원본 */
 #입항관리자료풀림결과 tr > td:nth-of-type(14) {width:20px;}/* 빈칸,상세내용원본복사쉽도록 */
+
+#오른쪽리스트메모2만 tr > td {width:100px;height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
 
 #리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
 #리스트자료풀림결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}

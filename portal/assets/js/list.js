@@ -204,8 +204,8 @@ function 리스너_head_button_group클릭이벤트(e) {
   if (e.target.innerHTML == '입항관리') {
     console.log('선사_셑팅')
     document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#선사와CY관련').innerHTML;
-    if (document.querySelector('#두개중선사관련').classList.contains('d-none')) { document.querySelector('#두개중선사관련').classList.remove('d-none') }
-    if (document.querySelector('#두개중CY관련').classList.contains('d-none')) { } else { document.querySelector('#두개중CY관련').classList.remove('d-none') }
+    if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else { document.querySelector('#두개중선사관련').classList.add('d-none') }
+    if (document.querySelector('#두개중CY관련').classList.contains('d-none')) { } else { document.querySelector('#두개중CY관련').classList.add('d-none') }
     입항관리풀기()
   }
   if (e.target.innerHTML == 'CY') {
@@ -215,75 +215,38 @@ function 리스너_head_button_group클릭이벤트(e) {
     if (document.querySelector('#두개중선사관련').classList.contains('d-none')) { } else { document.querySelector('#두개중선사관련').classList.remove('d-none') }
   }
 }
-function 리스트단어검색() {
-  console.log('리스트단어검색click()');
-  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
+function 단어검색() {
+  console.log('공통단어검색click()');
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
   for (var i = 0; i < 검색결과바탕색_클래스들.length; i++) {
     검색결과바탕색_클래스들[i].outerHTML = 검색결과바탕색_클래스들[i].innerHTML;
   }
-  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-  var 검색할문자 = document.querySelector('#리스트검색input').value.toUpperCase();
-  if (document.querySelector('#리스트검색input').value == '') { return; }
-
-  var 찾는값 = document.querySelector('#리스트검색input').value;
-  var 정규식내부 = new RegExp('(?![^<]*>)' + 찾는값, 'ig')
-
-  //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
-  var 검색결과포함id배열 = [];
-  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
-
-  //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
-  //var 검색할클래스들 = document.querySelectorAll('.검색 > div > *');
+  if (document.querySelector('#PNG셑팅 #축산예정검색input')) { var 검색할문자 = document.querySelector('#축산예정검색input').value.toUpperCase();}
+  if (document.querySelector('#PNG셑팅 #리스트검색input')) { var 검색할문자 = document.querySelector('#리스트검색input').value.toUpperCase();}
+  if (document.querySelector('#PNG셑팅 #입항관리검색input')) { var 검색할문자 = document.querySelector('#입항관리검색input').value.toUpperCase();}
+  if (검색할문자 == '') { return; }
+  var 클래스부여결과='<span class="검색결과바탕색">' + 검색할문자 + '</span>';
   var 검색할클래스들 = document.querySelectorAll('.검색 td');
-
   for (var i = 0; i < 검색할클래스들.length; i++) {
-    if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      검색결과포함id배열.push(검색할클래스들[i].id);
-      if (검색할문자 != ' ') {
-        검색할클래스들[i].innerHTML =
-          검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
-      }
+    var 전체문자열=검색할클래스들[i].innerHTML.toUpperCase();
+    if (전체문자열.indexOf(검색할문자)==-1) { continue; }
+    var 스플릿=[]; // 없으면 0 있으면 2개이상상, 전체일치. 수월한 주식회사 : 월한 으로 split 하면 '수' ' 주식회사'
+    스플릿=전체문자열.split(검색할문자);
+    if (스플릿.length==0) {continue;} 
+    var 전체길이=전체문자열.length;
+    if (스플릿[0].length>0) {var 왼쪽문자열=전체문자열.substring(0,전체문자열.indexOf(검색할문자))} else {var 왼쪽문자열=''}
+    if (전체문자열.length==왼쪽문자열.length + 검색할문자.length) {
+      var 오른쪽문자열=''
+    } else {
+      var 오른쪽문자열=전체문자열.substring(왼쪽문자열.length+검색할문자.length,전체문자열.length)
     }
+    검색할클래스들[i].innerHTML=왼쪽문자열 + 클래스부여결과 + 오른쪽문자열;
   }
-  if (document.querySelectorAll('.검색결과바탕색').length == 0) {
-    alert('검색결과 없음')
-  }
+  if (document.querySelector('#PNG셑팅 #축산예정검색input')) {document.querySelector('#축산예정검색input').value=''}
+  if (document.querySelector('#PNG셑팅 #리스트검색input')) {document.querySelector('#리스트검색input').value=''}
+  if (document.querySelector('#PNG셑팅 #입항관리검색input')) {document.querySelector('#입항관리검색input').value=''}
 }
-function 입항관리단어검색() {
-  console.log('입항관리단어검색click()');
-  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
-  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
-  for (var i = 0; i < 검색결과바탕색_클래스들.length; i++) {
-    검색결과바탕색_클래스들[i].outerHTML = 검색결과바탕색_클래스들[i].innerHTML;
-  }
-  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-  var 검색할문자 = document.querySelector('#입항관리검색input').value.toUpperCase();
-  if (document.querySelector('#입항관리검색input').value == '') { return; }
 
-  var 찾는값 = document.querySelector('#입항관리검색input').value;
-  var 정규식내부 = new RegExp('(?![^<]*>)' + 찾는값, 'ig')
-
-  //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
-  var 검색결과포함id배열 = [];
-  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
-
-  //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
-  var 검색할클래스들 = document.querySelectorAll('.검색 tr');
-
-  for (var i = 0; i < 검색할클래스들.length; i++) {
-    if (검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      검색결과포함id배열.push(검색할클래스들[i].id);
-      if (검색할문자 != ' ') {
-        검색할클래스들[i].innerHTML =
-          검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
-      }
-    }
-  }
-  if (document.querySelectorAll('.검색결과바탕색').length == 0) {
-    alert('검색결과 없음')
-  }
-}
 function 리스트1부터요약까지복붙자료풀기() {
   //div,input 하면 줄바꿈 \n이 없다?
   console.log('리스트1부터요약까지복붙자료풀기()')
@@ -396,8 +359,8 @@ function 입항관리풀기() {
   var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12텍스트.split('\n');
   // var 입항관리화주부터상세까지12_줄바꿈split = 입항관리화주부터상세까지12_줄바꿈split.filter(function(item) {return item !== null && item !== undefined && item !== '';});
   //마지막 배열이 0 이다, 이거 피해야함함
-  var 자료풀림결과 = document.querySelector('#입항관리자료풀림결과');
-  자료풀림결과.innerHTML = '';
+  var 입관자료풀림결과 = document.querySelector('#입항관리자료풀림결과');
+  입관자료풀림결과.innerHTML = '';
   //1.화주,2.컨,4.상세,6.운송,7.물품,9.선명,10.BL,11.도착항,12.상세원본
   for (var i = 0; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
     //if (입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0].trim().length!=0) { 리스트에 활용시 첫 정보가 비어 있을수 있는데 건너뛴다..
@@ -417,19 +380,55 @@ function 입항관리풀기() {
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
     div안span4 += '<td></td>' //빈칸(상세원본복사쉽도록)
     div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
-    자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
+    입관자료풀림결과.innerHTML = 입관자료풀림결과.innerHTML + div안span4;
   }
-  자료풀림결과.innerHTML='<table><tbody>' + 자료풀림결과.innerHTML + '</tbody></table>'
+  입관자료풀림결과.innerHTML='<table><tbody>' + 입관자료풀림결과.innerHTML + '</tbody></table>'
 
-  자료풀림결과=document.querySelectorAll('#입항관리자료풀림결과 tr');
+  입관자료풀림결과=document.querySelectorAll('#입항관리자료풀림결과 tr');
 
-  for (var i = 0; i < 자료풀림결과.length; i++) {
-     if (자료풀림결과[i].children[7].innerHTML == '물품') {
-      자료풀림결과[i].children[9].classList.add('js시간노랑');
+  for (var i = 0; i < 입관자료풀림결과.length; i++) {
+     if (입관자료풀림결과[i].children[7].innerHTML == '물품') {
+      입관자료풀림결과[i].children[9].classList.add('js시간노랑');
       break;
     }
   }
   document.querySelector('#입항관리복붙textarea').value = '';
+
+  //리스트시트 메모2부분 만들기
+  var 메모2자료풀림결과=document.querySelector('#오른쪽리스트메모2만');
+  메모2자료풀림결과.innerHTML='';
+  for (var i = 0; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
+    var div안span4 = '';
+    if (i==0) {
+      div안span4 = '<table><tbody><tr><td>리스트메모내용</td></tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    } else {
+      div안span4 = '<table><tbody><tr><td></td></tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    }
+
+    메모2자료풀림결과.innerHTML = 메모2자료풀림결과.innerHTML + div안span4;
+  }
+  메모2자료풀림결과.innerHTML='<table><tbody>' + 메모2자료풀림결과.innerHTML + '</tbody></table>'
+  
+  //
+  var 메모2자료풀림결과=document.querySelectorAll('#오른쪽리스트메모2만 td');
+  var 리스트_컨_bl_메모2_배열=[];
+  var 컨, 비엘, 메모2 ;
+  for (var i=0; i<document.querySelectorAll('#리스트자료풀림결과js복사본 tr').length; i++) {
+    컨=document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[4].innerHTML.trim();
+    비엘=document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[2].innerHTML.trim();
+    메모2=document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[12].innerHTML.trim();
+    if ((컨.length>0 || 비엘.length) && 메모2.length>0) {
+      리스트_컨_bl_메모2_배열.push(컨 + '#' + 비엘  + '#' + 메모2)
+    }
+  }
+
+  for (var i = 1; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
+    //배열이 각 3가지 정보를 담고 있는데, 입항관리의 bl과 컨 중에 하나라도 있으면 메모부분을 가지고 온다.
+   
+
+
+  }
+  
 }
 function 축산예정풀기() {
   var 원본텍스트 = document.querySelector('#머리글제외_a열제외_축산예정_b_aa시간열까지').innerHTML;
@@ -483,8 +482,8 @@ function 축산예정풀기() {
                     '<td>화찰중량</td><td>화찰입항</td></tr></tbody></table>';
   자료풀림결과.innerHTML=축산예정머리글+자료풀림결과.innerHTML;
 }
-입항관리풀기()
 리스트풀기()
+입항관리풀기()
 축산예정풀기()
 
 var 리스너png셑팅 = document.querySelector('#PNG셑팅');
@@ -740,6 +739,24 @@ function 클릭파일d_none제거() {
     document.querySelector('#PNG셑팅 #클릭파일').classList.remove('d-none');
   } else {
     document.querySelector('#PNG셑팅 #클릭파일').classList.add('d-none');
+  }
+}
+function 정보수집on_off() {
+  if (document.querySelector('#오른쪽정보수집부분').classList.contains('d-none')) {
+    document.querySelector('#오른쪽정보수집부분').classList.remove('d-none');
+    document.querySelector('#왼쪽선사링크부분').setAttribute('style','margin-right:0px')
+  } else {
+    document.querySelector('#오른쪽정보수집부분').classList.add('d-none');
+    document.querySelector('#왼쪽선사링크부분').setAttribute('style','margin-right:1500px')
+  }
+}
+function 선사on_off() {
+  if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {
+    document.querySelector('#두개중선사관련').classList.remove('d-none');
+    document.querySelector('#왼쪽고정복사자료').setAttribute('style','margin-right:10px')
+  } else {
+    document.querySelector('#두개중선사관련').classList.add('d-none');
+    document.querySelector('#왼쪽고정복사자료').setAttribute('style','margin-right:1500px')
   }
 }
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
