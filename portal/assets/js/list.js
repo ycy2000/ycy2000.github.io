@@ -282,7 +282,15 @@ function 리스트풀기() {
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[8] + '</td>' //구분(축산수산구분 제외외)
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //도착일
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //도착시간
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[11] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[12] + '</td>' //입관운.도코딩
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[13] + '</td>' //내메모
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[14] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[15] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[16] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[17] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //화찰입항
   
       div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -300,7 +308,15 @@ function 리스트풀기() {
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[7] + '</td>' //구분(축산수산구분 제외외)
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[8] + '</td>' //도착일
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //도착시간
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[11] + '</td>' //입관운.도코딩
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[12] + '</td>' //내메모
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[13] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[14] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[15] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[16] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[17] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //화찰입항
   
       div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -318,7 +334,15 @@ function 리스트풀기() {
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[9] + '</td>' //구분(축산수산구분 제외외)
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[10] + '</td>' //도착일
       div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[11] + '</td>' //도착시간
-      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[12] + '</td>' //구분(20,40피트), 13 화찰 제외
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[13] + '</td>' //입관운.도코딩
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[14] + '</td>' //내메모
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[15] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[16] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[17] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //
+      div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //화찰입항
   
       div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -421,7 +445,7 @@ function 입항관리풀기() {
   for (var i=0; i<document.querySelectorAll('#리스트자료풀림결과js복사본 tr').length; i++) {
     리스트bl.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[2].innerHTML.trim());
     리스트컨.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[4].innerHTML.trim());
-    리스트메모2.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[12].innerHTML.trim());
+    리스트메모2.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[14].innerHTML.trim());
   }
 
   for (var i = 1; i < 리스트bl.length; i++) {
