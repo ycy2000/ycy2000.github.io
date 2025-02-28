@@ -204,15 +204,9 @@ function 리스너_head_button_group클릭이벤트(e) {
   if (e.target.innerHTML == '입항관리') {
     console.log('선사_셑팅')
     document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#선사와CY관련').innerHTML;
-    if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {} else { document.querySelector('#두개중선사관련').classList.add('d-none') }
-    if (document.querySelector('#두개중CY관련').classList.contains('d-none')) { } else { document.querySelector('#두개중CY관련').classList.add('d-none') }
-    입항관리풀기()
-  }
-  if (e.target.innerHTML == 'CY') {
-    console.log('CY_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#선사와CY관련').innerHTML;
-    if (document.querySelector('#두개중CY관련').classList.contains('d-none')) { document.querySelector('#두개중CY관련').classList.remove('d-none') }
-    if (document.querySelector('#두개중선사관련').classList.contains('d-none')) { } else { document.querySelector('#두개중선사관련').classList.remove('d-none') }
+    입항관리풀기();
+    일단none숨겨();
+
   }
 }
 function 단어검색() {
@@ -362,14 +356,21 @@ function 입항관리풀기() {
   var 입관자료풀림결과 = document.querySelector('#입항관리자료풀림결과');
   입관자료풀림결과.innerHTML = '';
   //1.화주,2.컨,4.상세,6.운송,7.물품,9.선명,10.BL,11.도착항,12.상세원본
+  
+  //메모2관련 입항관리의 컨,bl 배열담기
+  var 입관bl=[], 입관컨=[];
+
+
   for (var i = 0; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
     //if (입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0].trim().length!=0) { 리스트에 활용시 첫 정보가 비어 있을수 있는데 건너뛴다..
+    입관bl.push(입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10].trim())
+    입관컨.push(입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[2].trim())
     var div안span4 = '';
     div안span4 = '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[0] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[1] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[2] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[3] + '</td>'
-    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[4] + '</td>'
+    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[4] + '</td>'//상세참조
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[5] + '</td>' //빈칸
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[6] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</td>'
@@ -377,8 +378,12 @@ function 입항관리풀기() {
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
-    div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
-    div안span4 += '<td></td>' //빈칸(상세원본복사쉽도록)
+    div안span4 += '<td contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
+    if (i==0) {
+      div안span4 += '<td>복사</td>' //빈칸(상세원본복사쉽도록)
+    } else {
+      div안span4 += '<td></td>' //빈칸(상세원본복사쉽도록)
+    }
     div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
     입관자료풀림결과.innerHTML = 입관자료풀림결과.innerHTML + div안span4;
   }
@@ -409,21 +414,27 @@ function 입항관리풀기() {
   }
   메모2자료풀림결과.innerHTML='<table><tbody>' + 메모2자료풀림결과.innerHTML + '</tbody></table>'
   
-  //
+  //위에서 입관bl, 입관컨 배열이 있음
   var 메모2자료풀림결과=document.querySelectorAll('#오른쪽리스트메모2만 td');
-  var 리스트_컨_bl_메모2_배열=[];
-  var 컨, 비엘, 메모2 ;
+
+  var 리스트bl=[], 리스트컨=[], 리스트메모2=[];
   for (var i=0; i<document.querySelectorAll('#리스트자료풀림결과js복사본 tr').length; i++) {
-    컨=document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[4].innerHTML.trim();
-    비엘=document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[2].innerHTML.trim();
-    메모2=document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[12].innerHTML.trim();
-    if ((컨.length>0 || 비엘.length) && 메모2.length>0) {
-      리스트_컨_bl_메모2_배열.push(컨 + '#' + 비엘  + '#' + 메모2)
-    }
+    리스트bl.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[2].innerHTML.trim());
+    리스트컨.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[4].innerHTML.trim());
+    리스트메모2.push(document.querySelectorAll('#리스트자료풀림결과js복사본 tr')[i].children[12].innerHTML.trim());
   }
 
-  for (var i = 1; i < 입항관리화주부터상세까지12_줄바꿈split.length - 1; i++) {
-    //배열이 각 3가지 정보를 담고 있는데, 입항관리의 bl과 컨 중에 하나라도 있으면 메모부분을 가지고 온다.
+  for (var i = 1; i < 리스트bl.length; i++) {
+    //입항관리의 bl이나 컨중 일치하면 넣는다.
+    if (입관bl.indexOf(리스트bl[i])>-1) {
+      메모2자료풀림결과[입관bl.indexOf(리스트bl[i])].innerHTML=리스트메모2[i];
+      continue;
+    } 
+    if (입관컨.indexOf(리스트컨[i])>-1) {
+      메모2자료풀림결과[입관컨.indexOf(리스트컨[i])].innerHTML=리스트메모2[i];
+      continue;
+    } 
+    //console.log('리스트bl개수 : ' + 리스트bl.length + ' 개 중에 BL:' + 리스트bl[i] + ' 위치 : ' + '입관bl개수 : ' + 입관bl.length + ' 개 중에' + 입관bl.indexOf(리스트bl[i]))
    
 
 
@@ -664,13 +675,14 @@ function png셑팅click(e) {
 
   //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
+  //리스트메모내용과 독립되어 움직인다 연동하도록 하고싶다
   if (e.target.parentNode.tagName == 'TR') {
+    console.log(e.target.parentNode.parentNode.parentNode.parentNode.id)
     if (e.target.parentNode.classList.contains('js한줄색칠있음')) {
-      e.target.parentNode.classList.remove('js한줄색칠있음');
+      e.target.parentNode.classList.remove('js한줄색칠있음');     
     } else {
       e.target.parentNode.classList.add('js한줄색칠있음');
     }
-
     //navigator.clipboard.writeText(e.target.innerHTML)
     //모바일에서 '클립보드에 복사되었어요.' 안뜨게
     navigator.clipboard.writeText(e.target.innerHTML).then(() => {})
@@ -750,13 +762,17 @@ function 정보수집on_off() {
     document.querySelector('#왼쪽선사링크부분').setAttribute('style','margin-right:1500px')
   }
 }
+function 일단none숨겨() {
+  for (var i=0; i<document.querySelectorAll('.일단none').length; i++) {
+    if (document.querySelectorAll('.일단none')[i].classList.contains('d-none')) {} else {document.querySelectorAll('.일단none')[i].classList.add('d-none')}
+  }
+}
 function 선사on_off() {
-  if (document.querySelector('#두개중선사관련').classList.contains('d-none')) {
-    document.querySelector('#두개중선사관련').classList.remove('d-none');
-    document.querySelector('#왼쪽고정복사자료').setAttribute('style','margin-right:10px')
+  console.log('선사on_off()')
+  if (document.querySelector('#표시_오른쪽1선사와자료수집').classList.contains('d-none')) {
+    document.querySelector('#표시_오른쪽1선사와자료수집').classList.remove('d-none');
   } else {
-    document.querySelector('#두개중선사관련').classList.add('d-none');
-    document.querySelector('#왼쪽고정복사자료').setAttribute('style','margin-right:1500px')
+    document.querySelector('#표시_오른쪽1선사와자료수집').classList.add('d-none');
   }
 }
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
