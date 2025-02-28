@@ -180,17 +180,17 @@ function 리스너_head_button_group클릭이벤트(e) {
     document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#리스트풀기관련').innerHTML;
     리스트풀기()
   }
-  if (e.target.innerHTML == '예정png') {
+  if (e.target.innerHTML == '예정png') {//모바일에서 파일이름이 _로 시작되면 안되는듯
     console.log('PNG_예정_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/_예정.png" alt="이미지없음">';
+    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A예정.png" alt="이미지없음">';
   }
   if (e.target.innerHTML == '완료png') {
     console.log('PNG_완료_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/_완료.png" alt="이미지없음">';
+    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A완료.png" alt="이미지없음">';
   }
   if (e.target.innerHTML == '면허,운송') {
     console.log('PNG_면허운송_셑팅')
-    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/_면허운송.png" alt="이미지없음">';
+    document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A면허운송.png" alt="이미지없음">';
   }
   if (e.target.innerHTML == '메모') {
     console.log('PNG_면허운송_셑팅')
