@@ -150,7 +150,6 @@
 
     <div id="클릭파일" class="d-none"></div>
 
-
     <div id="리스트자료풀림결과" class="검색 d-inline-block" style="vertical-align: top;"><!-- js로 한줄을 div안에 span 4개? -->
     </div>
     <div style="vertical-align: top;font-size:15px;font-weight: bold;margin-left:10px;" class="d-inline-block">
@@ -298,13 +297,22 @@
           onclick="단어검색();document.querySelector('#입항관리검색input').value=''; ">단어검색</button>
           <input id="입항관리검색input" type="text" style="width:100px;" onchange="단어검색()">
           <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>        
-          <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" 
+          <button class="btn btn-light 카테고리" style="font-size:13px;height:30px;padding:0 5px;width:133px;margin-left:5px;background-color:yellow;font-weight: bold;" 
           onclick="리스트단독입항관리맨에표시()" title="리스트 단독목록 입항관리 맨 아래에 추가">리스트 단독 가져오기</button>
           <button class="btn btn-light 카테고리" style="position: absolute; height:20px;font-size:13px;padding:0 5px;width:90px;left:1280px;" onclick="선사on_off()">선사ON/OFF</button>
         </div>
+        <div id="입관클릭파일" class="d-none"></div>
+
         <div>
           <div id="입항관리자료풀림결과" class="d-inline-block 검색" style="vertical-align: top;margin-right:5px;"><!-- js로 한줄을 div안에 span 4개? -->
           </div>
+          <div id="상세내용편집상태div">
+            <button onclick="상세내용편집상태on_off()">상세내용편집상태on/off</button>
+            <button id="편집상태표시">편집 OFF 상태(복사용이)</button>
+          </div>
+
+          <button id="입관클릭파일닫기" onclick="입관복사정보토글()">X</button>
+          <div id="입관클릭복사본"></div>
           <div id="오른쪽리스트메모2만" class="d-inline-block" style="vertical-align: top;">
   
           </div>

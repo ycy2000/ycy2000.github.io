@@ -378,7 +378,7 @@ function 입항관리풀기() {
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</td>'
     div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
-    div안span4 += '<td contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
+    div안span4 += '<td class="class상세편집토글">' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
     if (i==0) {
       div안span4 += '<td>복사</td>' //빈칸(상세원본복사쉽도록)
     } else {
@@ -435,9 +435,6 @@ function 입항관리풀기() {
       continue;
     } 
     //console.log('리스트bl개수 : ' + 리스트bl.length + ' 개 중에 BL:' + 리스트bl[i] + ' 위치 : ' + '입관bl개수 : ' + 입관bl.length + ' 개 중에' + 입관bl.indexOf(리스트bl[i]))
-   
-
-
   }
   
 }
@@ -676,8 +673,10 @@ function png셑팅click(e) {
   //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
   //리스트메모내용과 독립되어 움직인다 연동하도록 하고싶다
+  var 작동위치=''
   if (e.target.parentNode.tagName == 'TR') {
     console.log(e.target.parentNode.parentNode.parentNode.parentNode.id)
+    작동위치=e.target.parentNode.parentNode.parentNode.parentNode.id;
     if (e.target.parentNode.classList.contains('js한줄색칠있음')) {
       e.target.parentNode.classList.remove('js한줄색칠있음');     
     } else {
@@ -688,8 +687,16 @@ function png셑팅click(e) {
     navigator.clipboard.writeText(e.target.innerHTML).then(() => {})
 
     var 복사텍스트=e.target.innerHTML;
-    document.querySelector('#클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');
-    var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;
+
+    if (작동위치=='') {alert('작동위치=="" 종료됨'); return;}
+
+    if (작동위치=='리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
+    if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
+    if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
+
+    if (작동위치=='리스트자료풀림결과') {var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;}
+    if (작동위치=='입항관리자료풀림결과') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
+    if (작동위치=='오른쪽리스트메모2만') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
 
     //규칙 : 시작부분에 [PDF파일이름] 형태로 입력해놓으면 어디서든
     //[pdf, [png, [txt,로 시작되는것이 있으면 "클릭파일"에 파일을 넣는다.
@@ -703,16 +710,24 @@ function png셑팅click(e) {
     var 파일이름=복사텍스트.substring(열기위치+1,닫기위치-열기위치).trim(); //파일이름 맞는데 인식이 안되기도함?
     var 바꿀문자열="[" + 파일이름 + "]";
 
-
-    var 버튼문자열='<button onclick="클릭파일d_none()">닫기</button><br>';
+    if (작동위치=='리스트자료풀림결과') {var 버튼문자열='<button onclick="클릭파일d_none()">닫기</button><br>';}
+    if (작동위치=='입항관리자료풀림결과') {var 버튼문자열='<button onclick="입관클릭파일d_none()">닫기</button><br>';}
+    if (작동위치=='오른쪽리스트메모2만') {var 버튼문자열='<button onclick="입관클릭파일d_none()">닫기</button><br>';}
 
     if (복사텍스트.indexOf('[PNG')>-1) { //정규식 어렵다 다른방식으로로
       //왼쪽에 표시되는 파일부분
       console.log(파일이름);
       var 대체문자열='<img src="portal/images/문서연결_리스트/' + 파일이름 + '.png" style="border:1px solid black;" alt="이미지없음">'
-      document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
+
+      if (작동위치=='리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;}
+      if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
+      if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
+
       //파일보기로 변경한 복사내용
-      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
+      if (작동위치=='리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')}
+      if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
+      if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
+      
       return;
     }
 
@@ -721,36 +736,40 @@ function png셑팅click(e) {
       console.log(파일이름);
 
       var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1010px" height="1000px/" dataset.searchdata="기본가로700">'
-      document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;      
+      if (작동위치=='리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;}
+      if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
+      if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
+
       //파일보기로 변경한 복사내용
       if (is_mobile) {//새창에서 열기
         window.open(`portal/images/문서연결_리스트/${파일이름}.pdf`, '_blank');
       } else {
-        document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')
+        if (작동위치=='리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')}
+        if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
+        if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
       }
       return;
     }
-
-
-
-
-
-
-
-
-
-
-
   }
 }
 function 클릭파일d_none() {
   document.querySelector('#PNG셑팅 #클릭파일').classList.add('d-none');
+}
+function 입관클릭파일d_none() {
+  document.querySelector('#PNG셑팅 #입관클릭파일').classList.add('d-none');
 }
 function 클릭파일d_none제거() {
   if (document.querySelector('#PNG셑팅 #클릭파일').classList.contains('d-none')) {
     document.querySelector('#PNG셑팅 #클릭파일').classList.remove('d-none');
   } else {
     document.querySelector('#PNG셑팅 #클릭파일').classList.add('d-none');
+  }
+}
+function 입관클릭파일d_none제거() {
+  if (document.querySelector('#PNG셑팅 #입관클릭파일').classList.contains('d-none')) {
+    document.querySelector('#PNG셑팅 #입관클릭파일').classList.remove('d-none');
+  } else {
+    document.querySelector('#PNG셑팅 #입관클릭파일').classList.add('d-none');
   }
 }
 function 정보수집on_off() {
@@ -773,6 +792,31 @@ function 선사on_off() {
     document.querySelector('#표시_오른쪽1선사와자료수집').classList.remove('d-none');
   } else {
     document.querySelector('#표시_오른쪽1선사와자료수집').classList.add('d-none');
+  }
+}
+function 상세내용편집상태on_off() {
+  console.log('상세내용편집상태on_off()')
+  var 요소들=document.querySelectorAll('#PNG셑팅 .class상세편집토글');
+  if (document.querySelector('#PNG셑팅 #편집상태표시').innerHTML=='편집 ON 상태(복사불편)') {
+    for (var i=0; i<요소들.length; i++) {
+      요소들[i].setAttribute('contenteditable','false')
+    }
+    document.querySelector('#PNG셑팅 #편집상태표시').innerHTML='편집 OFF 상태(복사용이)'
+    return;
+  }
+  for (var i=0; i<요소들.length; i++) {
+    요소들[i].setAttribute('contenteditable','true')
+  }
+  document.querySelector('#PNG셑팅 #편집상태표시').innerHTML='편집 ON 상태(복사불편)'
+}
+function 입관복사정보토글() {
+  console.log('입관복사정보토글()')
+  if (document.querySelector('#PNG셑팅 #입관클릭파일닫기').innerHTML=='X') {
+    document.querySelector('#PNG셑팅 #입관클릭복사본').classList.add('d-none');
+    document.querySelector('#PNG셑팅 #입관클릭파일닫기').innerHTML='O'
+  } else {
+    document.querySelector('#PNG셑팅 #입관클릭복사본').classList.remove('d-none');
+    document.querySelector('#PNG셑팅 #입관클릭파일닫기').innerHTML='X'
   }
 }
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);

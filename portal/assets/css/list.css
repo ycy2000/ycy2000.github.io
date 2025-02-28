@@ -38,12 +38,12 @@ body {
 
 #입항관리관련고정, #오른쪽정보수집부분 {font-size: 13px; font-weight: bold;}
 #입항관리자료풀림결과 tr > td {height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
-#입항관리자료풀림결과 tr > td:nth-of-type(1) {width:30px;text-align: center;}
-#입항관리자료풀림결과 tr > td:nth-of-type(2) {width:80px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(3) {width:110px;}
+#입항관리자료풀림결과 tr > td:nth-of-type(1) {width:20px;text-align: center;}
+#입항관리자료풀림결과 tr > td:nth-of-type(2) {width:70px;}
+#입항관리자료풀림결과 tr > td:nth-of-type(3) {width:100px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(4) {width:70px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(5) {width:10px;}/* 상세참조 */
-#입항관리자료풀림결과 tr > td:nth-of-type(6) {width:10px;}/* 상세우측 빈칸 */
+#입항관리자료풀림결과 tr > td:nth-of-type(5) {width:5px;}/* 상세참조 */
+#입항관리자료풀림결과 tr > td:nth-of-type(6) {width:5px;}/* 상세우측 빈칸 */
 #입항관리자료풀림결과 tr > td:nth-of-type(7) {width:110px;}
 #입항관리자료풀림결과 tr > td:nth-of-type(8) {width:60px;}/* 물품 */
 #입항관리자료풀림결과 tr > td:nth-of-type(9) {width:20px;}/* -2 */
@@ -127,8 +127,15 @@ body {
 .js한줄색칠있음 > * {background-color:chartreuse;}
 .js시간노랑 {background-color:yellow;}
 
-#클릭파일 {position:absolute;background-color: white;border:1px solid black; border-radius: 5px;display:inline-block;}
-#클릭파일 button, #클릭복사본 button {border:1px solid black; border-radius: 5px;font-weight: bold;}
+#클릭파일, #입관클릭파일닫기, #입관클릭파일 {position:absolute;background-color: white;border:1px solid black; border-radius: 5px;display:inline-block;}
+#입관클릭복사본 {position:absolute;background-color:beige;border:1px solid black; border-radius: 5px;display:inline-block;}
+#클릭파일 button, #클릭복사본 button, #입관클릭복사본 button {border:1px solid black; border-radius: 5px;font-weight: bold;}
+
+#입관클릭복사본 {left:1301px;top:111px;padding:3px 5px;}
+#입관클릭파일닫기 {left:1400px;top:87px;background-color: yellow;}
+#상세내용편집상태div {position:absolute;left:855px;top:61px;}
+#상세내용편집상태div button {font-weight: bold; border:1px solid black; border-radius: 5px;display:inline-block;}
+#편집상태표시 {background-color:yellow;}
 
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {
