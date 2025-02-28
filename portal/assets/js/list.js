@@ -166,7 +166,7 @@ function 첫번째버튼날짜있을때댤력에표시() {
 //메모 관련 끝..  
 
 //시작시 작동코드
-document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/_예정.png" alt="이미지없음">';
+document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A예정.png" alt="이미지없음">';
 
 var 리스너_head_button_group = document.querySelector('#head_button_group');
 function 리스너_head_button_group클릭이벤트(e) {
