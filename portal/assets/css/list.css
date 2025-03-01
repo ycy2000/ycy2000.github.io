@@ -160,6 +160,18 @@ body {
 #상세내용편집상태div {position:absolute;left:855px;top:61px;}
 #상세내용편집상태div button {font-weight: bold; border:1px solid black; border-radius: 5px;display:inline-block;}
 #편집상태표시 {background-color:yellow;}
+.수정 {background-color:yellow;}
+.선사선명on_off {position: absolute; height:20px;font-size:13px;padding:0 5px;width:90px;left:1280px;}
+.cy_on_off {position: absolute; height:20px;font-size:13px;padding:0 5px;width:90px;left:1380px;}
+.리스트단독입항맨아래에추가 {font-size:13px;height:30px;padding:0 5px;width:133px;margin-left:5px;background-color:yellow;font-weight: bold;}
+.공통한줄색칠있음clear {height:30px;padding:0 5px;width:80px;margin-left:20px;}
+
+
+.cy들 {margin:5px 0px;}
+.cy들 > div > div {border:1px solid black;font-size:16px;display:inline-block;margin-bottom:-1px;padding:2px 4px;height:30px;vertical-align: top;}
+.cy들 > div > div:nth-of-type(1) {width:200px;font-size:13px;margin-right:-5px;border-right:none;}
+.cy들 > div > div:nth-of-type(2) {width:50px;font-size:13px;margin-right:-5px;border-right:none}
+.cy들 > div > div:nth-of-type(3) {width:700px;font-size:13px;}
 
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {

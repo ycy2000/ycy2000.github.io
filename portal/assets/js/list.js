@@ -250,9 +250,18 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     var 수정할곳=document.querySelectorAll('#입항관리독립수정가능정보 tr');
     var 수정된요소=document.querySelectorAll('#PNG셑팅 #입항관리자료풀림결과 tr');
     for (var i=0; i<수정된요소.length; i++) {
-      수정할곳[i].children[9].innerHTML=수정된요소[i].children[9].innerHTML
-      수정할곳[i].children[11].innerHTML=수정된요소[i].children[11].innerHTML
-      수정할곳[i].children[12].innerHTML=수정된요소[i].children[12].innerHTML
+      if (수정할곳[i].children[9].innerHTML!=수정된요소[i].children[9].innerHTML){
+          수정할곳[i].children[9].innerHTML=수정된요소[i].children[9].innerHTML
+          수정할곳[i].children[13].classList.add('수정')
+      }
+      if (수정할곳[i].children[11].innerHTML!=수정된요소[i].children[11].innerHTML){
+          수정할곳[i].children[11].innerHTML=수정된요소[i].children[11].innerHTML
+         수정할곳[i].children[13].classList.add('수정')
+      }
+      if (수정할곳[i].children[12].innerHTML!=수정된요소[i].children[12].innerHTML){
+         수정할곳[i].children[12].innerHTML=수정된요소[i].children[12].innerHTML
+         수정할곳[i].children[13].classList.add('수정')
+      }
     }
 
   }
@@ -848,12 +857,23 @@ function 일단none숨겨() {
 }
 function 선사on_off() {
   console.log('선사on_off()')
+  일단none숨겨()
   if (document.querySelector('#표시_오른쪽1선사와자료수집').classList.contains('d-none')) {
     document.querySelector('#표시_오른쪽1선사와자료수집').classList.remove('d-none');
   } else {
     document.querySelector('#표시_오른쪽1선사와자료수집').classList.add('d-none');
   }
 }
+function cy_on_off() {
+  console.log('cy_on_off()')
+  일단none숨겨()
+  if (document.querySelector('#표시_오른쪽2CY자료수집').classList.contains('d-none')) {
+    document.querySelector('#표시_오른쪽2CY자료수집').classList.remove('d-none');
+  } else {
+    document.querySelector('#표시_오른쪽2CY자료수집').classList.add('d-none');
+  }
+}
+
 function 상세내용편집상태on_off() {
   console.log('상세내용편집상태on_off()')
   var 요소들=document.querySelectorAll('#PNG셑팅 .class상세편집토글');
