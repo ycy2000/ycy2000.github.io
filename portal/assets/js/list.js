@@ -250,6 +250,8 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     var 수정할곳=document.querySelectorAll('#입항관리독립수정가능정보 tr');
     var 수정된요소=document.querySelectorAll('#PNG셑팅 #입항관리자료풀림결과 tr');
     for (var i=0; i<수정된요소.length; i++) {
+      수정할곳[i].children[9].innerHTML=수정된요소[i].children[9].innerHTML
+      수정할곳[i].children[11].innerHTML=수정된요소[i].children[11].innerHTML
       수정할곳[i].children[12].innerHTML=수정된요소[i].children[12].innerHTML
     }
 
@@ -400,10 +402,10 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[6] + '</td>'
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</td>'
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[8] + '</td>' //-2
-      div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>'
+      div안span4 += '<td class="class상세편집토글" contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>' //선명
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</td>'
-      div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
-      div안span4 += '<td class="class상세편집토글">' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
+      div안span4 += '<td class="class상세편집토글" contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
+      div안span4 += '<td class="class상세편집토글" contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
       if (i==0) {
         div안span4 += '<td>복사</td>' //빈칸(상세원본복사쉽도록)
       } else {
