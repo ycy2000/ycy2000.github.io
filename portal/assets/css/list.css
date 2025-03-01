@@ -38,46 +38,62 @@ body {
 
 #입항관리관련고정, #오른쪽정보수집부분 {font-size: 13px; font-weight: bold;}
 #입항관리자료풀림결과 tr > td {height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
-#입항관리자료풀림결과 tr > td:nth-of-type(1) {width:20px;text-align: center;}
-#입항관리자료풀림결과 tr > td:nth-of-type(2) {width:70px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(3) {width:105px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(4) {width:70px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(5) {width:5px;}/* 상세참조 */
-#입항관리자료풀림결과 tr > td:nth-of-type(6) {width:5px;}/* 상세우측 빈칸 */
-#입항관리자료풀림결과 tr > td:nth-of-type(7) {width:100px;}/* 운송사 */
-#입항관리자료풀림결과 tr > td:nth-of-type(8) {width:60px;}/* 물품 */
-#입항관리자료풀림결과 tr > td:nth-of-type(9) {width:20px;}/* -2 */
-#입항관리자료풀림결과 tr > td:nth-of-type(10) {width:150px;}/* 선명 */
-#입항관리자료풀림결과 tr > td:nth-of-type(11) {width:150px;}
-#입항관리자료풀림결과 tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
-#입항관리자료풀림결과 tr > td:nth-of-type(13) {width:350px;}/* 상세내용원본 */
-#입항관리자료풀림결과 tr > td:nth-of-type(14) {width:40px;}/* 빈칸,상세내용원본복사쉽도록 */
+/* 입관td기본, 입관td최소화  */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(1) {width:20px;text-align: center;}
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(2) {width:70px;}
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(3) {width:105px;}
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(4) {width:70px;}
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(5) {width:5px;}/* 상세참조 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(6) {width:5px;}/* 상세우측 빈칸 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(7) {width:100px;}/* 운송사 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(8) {width:60px;}/* 물품 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(9) {width:20px;}/* -2 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(10) {width:150px;}/* 선명 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(11) {width:150px;}
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(13) {width:350px;}/* 상세내용원본 */
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(14) {width:40px;}/* 빈칸,상세내용원본복사쉽도록 */
+
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(1) {width:5px;text-align: center;}
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(2) {width:5px;}
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(3) {width:105px;}
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(4) {width:5px;}
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(5) {width:5px;}/* 상세참조 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(6) {width:5px;}/* 상세우측 빈칸 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(7) {width:5px;}/* 운송사 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(8) {width:5px;}/* 물품 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(9) {width:20px;}/* -2 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(10) {width:150px;}/* 선명 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(11) {width:150px;}
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(12) {width:70px;}/* 도착항 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(13) {width:350px;}/* 상세내용원본 */
+#입항관리자료풀림결과[class~="입관td최소화"] tr > td:nth-of-type(14) {width:40px;}/* 빈칸,상세내용원본복사쉽도록 */
 
 #오른쪽리스트메모2만 tr > td {width:250px;height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
 
-#리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
-#리스트자료풀림결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
-#리스트자료풀림결과  tr > td:nth-of-type(1) {width:15px;}
-#리스트자료풀림결과  tr > td:nth-of-type(2) {width:20px;}
-#리스트자료풀림결과  tr > td:nth-of-type(3) {width:150px;}
-#리스트자료풀림결과  tr > td:nth-of-type(4) {width:80px;}
-#리스트자료풀림결과  tr > td:nth-of-type(5) {width:110px;}/* 컨 */
-#리스트자료풀림결과  tr > td:nth-of-type(6) {width:60px;}
-#리스트자료풀림결과  tr > td:nth-of-type(7) {width:50px;text-align: center;}
-#리스트자료풀림결과  tr > td:nth-of-type(8) {width:5px;}/* 반입 no */
-#리스트자료풀림결과  tr > td:nth-of-type(9) {width:40px;text-align: center;}
-#리스트자료풀림결과  tr > td:nth-of-type(10) {width:20px;}/* 구분 */
-#리스트자료풀림결과  tr > td:nth-of-type(11) {width:40px;}
-#리스트자료풀림결과  tr > td:nth-of-type(12) {width:40px;}
-#리스트자료풀림결과  tr > td:nth-of-type(13) {width:20px;}/*20피트구분 시간입력 및 선명 등 메모  */
-#리스트자료풀림결과  tr > td:nth-of-type(14) {width:80px;}
-#리스트자료풀림결과  tr > td:nth-of-type(15) {width:300px;}
-#리스트자료풀림결과  tr > td:nth-of-type(16) {width:5px;}
-#리스트자료풀림결과  tr > td:nth-of-type(17) {width:5px;}
-#리스트자료풀림결과  tr > td:nth-of-type(18) {width:5px;}
-#리스트자료풀림결과  tr > td:nth-of-type(19) {width:5px;}
-#리스트자료풀림결과  tr > td:nth-of-type(20) {width:5px;}
-#리스트자료풀림결과  tr > td:nth-of-type(21) {width:40px;}
+#PNG셑팅내부_리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(1) {width:15px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(2) {width:20px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(3) {width:150px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(4) {width:80px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(5) {width:110px;}/* 컨 */
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(6) {width:60px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(7) {width:50px;text-align: center;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(8) {width:5px;}/* 반입 no */
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(9) {width:40px;text-align: center;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(10) {width:20px;}/* 구분 */
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(11) {width:40px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(12) {width:40px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(13) {width:20px;}/*20피트구분 시간입력 및 선명 등 메모  */
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(14) {width:80px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(15) {width:300px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(16) {width:5px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(17) {width:5px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(18) {width:5px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(19) {width:5px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(20) {width:5px;}
+#PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(21) {width:40px;}
 
 #축산예정자료풀기결과 {font-size: 13px; font-weight: bold;}
 #축산예정자료풀기결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
@@ -139,8 +155,8 @@ body {
 #입관클릭복사본 {position:absolute;background-color:beige;border:1px solid black; border-radius: 5px;display:inline-block;}
 #클릭파일 button, #클릭복사본 button, #입관클릭복사본 button {border:1px solid black; border-radius: 5px;font-weight: bold;}
 
-#입관클릭복사본 {left:1216px;top:111px;padding:3px 5px;}
-#입관클릭파일닫기 {left:1400px;top:87px;background-color: yellow;}
+#입관클릭복사본 {top:21px;padding:3px 5px;}
+#입관클릭파일닫기 {left:100px;top:-2px;background-color: yellow;}
 #상세내용편집상태div {position:absolute;left:855px;top:61px;}
 #상세내용편집상태div button {font-weight: bold; border:1px solid black; border-radius: 5px;display:inline-block;}
 #편집상태표시 {background-color:yellow;}
