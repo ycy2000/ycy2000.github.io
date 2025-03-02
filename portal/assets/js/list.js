@@ -526,7 +526,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
                       '<td>화찰중량</td><td>화찰입항</td></tr></tbody></table>';
     자료풀림결과.innerHTML=축산예정머리글+자료풀림결과.innerHTML;
   }
-  전체변수_원본텍스트 = document.querySelector('#원본text_리스트1부터Z열메모2까지').innerHTML;
+  전체변수_원본텍스트 = document.querySelector('#원본text_리스트1부터U열까지').innerHTML;
   텍스트를_테이블형식으로_리스트풀기()
     //리스트단독 입항관리에 넣을때 사용할 요소다
     //document.querySelector('#리스트독립수정가능정보').innerHTML=document.querySelector('#PNG셑팅내부_리스트자료풀림결과').outerHTML;
@@ -689,8 +689,6 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     if (없는거개수==0) {alert('모두 입항관리에 있음')}
   }
 }
-
-
 function 단어검색() {
   console.log('공통단어검색click()');
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
@@ -723,11 +721,7 @@ function 단어검색() {
   if (document.querySelector('#PNG셑팅 #입항관리검색input')) {document.querySelector('#입항관리검색input').value=''}
 }
 
-
-
-
 var 리스너png셑팅 = document.querySelector('#PNG셑팅');
-
 
 function 공통한줄색칠있음clear() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
@@ -741,7 +735,7 @@ function png셑팅click(e) {
 
   //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
-  //리스트메모내용과 독립되어 움직인다 연동하도록 하고싶다
+  //리스트메모내용과 (width:250px) 독립되어 움직인다 연동하도록 하고싶다
   var 작동위치=''
   if (e.target.parentNode.tagName == 'TR') {
     console.log(e.target.parentNode.parentNode.parentNode.parentNode.id)
@@ -769,12 +763,24 @@ function png셑팅click(e) {
 
     //규칙 : 시작부분에 [PDF파일이름] 형태로 입력해놓으면 어디서든
     //[pdf, [png, [txt,로 시작되는것이 있으면 "클릭파일"에 파일을 넣는다.
+
     var 열기위치=0;
     var 닫기위치=0;
     열기위치=복사텍스트.indexOf('[');
     닫기위치=복사텍스트.indexOf(']');
 
-    if (열기위치==-1 || 닫기위치==-1 || 열기위치>닫기위치) {return;}
+    if (열기위치==-1 || 닫기위치==-1 || 열기위치>닫기위치) {
+      //입관클릭복사본 width 250 초과시 초과된만큼 maring-left 음수적용 // 여기서 pdf 없을때 한번 있을떄 한번 총 3번
+      if (작동위치!='PNG셑팅내부_리스트자료풀림결과') {
+        document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:0px') // 초기화
+        var 요소정보=window.getComputedStyle(document.querySelector('#PNG셑팅 #입관클릭복사본'));
+        var 요소width숫자만=parseFloat(요소정보.width);
+        if (요소width숫자만>250) {
+          document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:' +(250-요소width숫자만) + 'px')
+        }
+      }
+      return;
+    }
 
     var 파일이름=복사텍스트.substring(열기위치+1,닫기위치-열기위치).trim(); //파일이름 맞는데 인식이 안되기도함?
     var 바꿀문자열="[" + 파일이름 + "]";
@@ -796,7 +802,17 @@ function png셑팅click(e) {
       if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')}
       if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
       if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
-      
+
+      //입관클릭복사본 width 250 초과시 초과된만큼 maring-left 음수적용 // 여기서 pdf 없을때 한번 있을떄 한번 총 3번
+      if (작동위치!='PNG셑팅내부_리스트자료풀림결과') {
+        document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:0px') // 초기화
+        var 요소정보=window.getComputedStyle(document.querySelector('#PNG셑팅 #입관클릭복사본'));
+        var 요소width숫자만=parseFloat(요소정보.width);
+        if (요소width숫자만>250) {
+          document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:' +(250-요소width숫자만) + 'px')
+        }
+      }
+
       return;
     }
 
@@ -816,6 +832,15 @@ function png셑팅click(e) {
         if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')}
         if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
         if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
+      }
+      //입관클릭복사본 width 250 초과시 초과된만큼 maring-left 음수적용 // 여기서 pdf 없을때 한번 있을떄 한번 총 3번
+      if (작동위치!='PNG셑팅내부_리스트자료풀림결과') {
+        document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:0px') // 초기화
+        var 요소정보=window.getComputedStyle(document.querySelector('#PNG셑팅 #입관클릭복사본'));
+        var 요소width숫자만=parseFloat(요소정보.width);
+        if (요소width숫자만>250) {
+          document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:' +(250-요소width숫자만) + 'px')
+        }
       }
       return;
     }
