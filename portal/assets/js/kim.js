@@ -1208,6 +1208,7 @@ function 신규회귀변경() {
 //새로고침시 진행되는 코드 끝..
 
 function 선택회차날짜와당번넣기() {
+  //추가중 : 왼쪽 회귀번호 색칠 (당번 6개와 같은번호)
 
   var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
   var 회차개수=Number(당번전체.length/9);
@@ -1216,13 +1217,18 @@ function 선택회차날짜와당번넣기() {
   var index에서빼기=0;
   var 시작배열값=(회차개수-selectedindex-1-index에서빼기)*9;
   document.querySelector('#span_날짜').innerHTML=당번전체[시작배열값+1]; //날짜
+  //당번일치색칠관련 1줄
+  var 색칠할숫자들=[];
   for (var i=0; i<7; i++) {
     document.querySelectorAll('#span_날짜 ~ button')[i+1].innerHTML=당번전체[시작배열값+2+i]; //날짜
+    //당번일치색칠관련 1줄
+    if (i<6) {색칠할숫자들.push(당번전체[시작배열값+2+i])}
   }  
-  //새로고침시 회귀와 미출수부분 코드와 유사; 
-  
 
-
+//당번일치색칠관련 
+for (var i=0; i<document.querySelectorAll('.js당번일치색칠').length;i++) {
+  document.querySelectorAll('.js당번일치색칠')[0].classList.remove('js당번일치색칠')
+}
 //위, 최근회차 설정 
 
 var 미출수전체='';
@@ -1376,9 +1382,7 @@ var 회귀제목='';
 var 회귀btn='';
 var 다음btn='';
 
-
-
-  //새로고침시 회귀와 미출수부분 코드와 유사; 단독 : 최근회차가아닐때 설정된회차 다음회차 당번넣기
+//새로고침시 회귀와 미출수부분 코드와 유사; 단독 : 최근회차가아닐때 설정된회차 다음회차 당번넣기
 var 신규회귀값=Number(document.querySelector('#회귀수입력').value);//지워지기전에
 if (selectedindex!==0) {
   시작배열값=(회차개수 - selectedindex )*9;
@@ -1434,8 +1438,18 @@ for (var i=0; i<회귀번호들.length; i++) {
     회귀btn+='<button>' + 회귀번호들[i] + '</button>';//날짜
 
   } else {
-        //숫자부분
-    회귀btn+='<button>' + 회귀번호들[i] + '</button>'; 
+    //숫자부분
+    //색칠할숫자들.indexOf()>-1 : 3~8까지, 9는 보너스볼. js당번일치색칠
+    if (i==8 || i==18 || i==28 || i==38 || i==48) {
+      회귀btn+='<button>' + 회귀번호들[i] + '</button>'; //원래한줄 
+    } else {
+      if (색칠할숫자들.indexOf(회귀번호들[i])>-1) {
+        회귀btn+='<button class="js당번일치색칠">' + 회귀번호들[i] + '</button>'; //원래한줄
+      } else {
+        회귀btn+='<button>' + 회귀번호들[i] + '</button>'; //원래한줄
+      }
+    }
+    //회귀btn+='<button>' + 회귀번호들[i] + '</button>'; 원래한줄
   }
 
   if (i==9 || i==19 || i==29 || i==39 || i==49) {
@@ -1480,7 +1494,7 @@ document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=회
       var 백회귀btn='';
       var 백누적=0;
       백회귀제목=회귀선택버튼div + '<div></div><div><span>회귀</span><span>회차</span><span>날짜</span><span>1st</span><span>2st</span><span>3st</span><span>4st</span><span>5st</span><span>6st</span><span>B</span></div>'
-    
+
       for (var i=0; i<백회귀번호들.length; i++) {
         if ((i % 9)==0) {
           백누적=Number(백누적+신규회귀값);
@@ -1488,12 +1502,21 @@ document.querySelector('#id_번호입력아래당첨번호숨김').innerHTML=회
           백회귀btn+='<button>' + 백회귀번호들[i] + '회</button>'; 
         } else if ((i % 9)==1) {
           백회귀btn+='<button class="span_날짜">' + 백회귀번호들[i] + '</button>';//날짜
-        } else {
+        } else if ((i % 9)>1 && (i % 9)<8) {
           //숫자부분
-          백회귀btn+='<button>' + 백회귀번호들[i] + '</button>'; 
+          //색칠할숫자들.indexOf()>-1 : 3~8까지, 9는 보너스볼. js당번일치색칠
+          if ((i % 9)>1 && (i % 9)<8) {
+            if (색칠할숫자들.indexOf(백회귀번호들[i])>-1) {
+              백회귀btn+='<button class="js당번일치색칠">' + 백회귀번호들[i] + '</button>'; //원래한줄
+            } else {
+              백회귀btn+='<button>' + 백회귀번호들[i] + '</button>'; //원래한줄
+            }
+          }
+          //백회귀btn+='<button>' + 백회귀번호들[i] + '</button>'; //원래한줄
         }
     
         if ((i % 9)==8) {
+          백회귀btn+='<button>' + 백회귀번호들[i] + '</button>';
           if (i==8) {각백회귀누적='<div>' + 백회귀btn + '</div>'}
           if (i!==8) {각백회귀누적=각백회귀누적 + '<div>' + 백회귀btn + '</div>'}
         }

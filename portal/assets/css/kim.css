@@ -96,3 +96,5 @@
 .집구조 div:nth-child(14) {width:55px;text-align: center;border:1px solid black;margin-right:-1px;margin-bottom:-1px;}
 
 #집구조그림테두리 div {border: none}
+
+.js당번일치색칠 {background-color: yellow;}
