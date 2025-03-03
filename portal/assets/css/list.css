@@ -169,6 +169,7 @@ body {
 #상세내용편집상태div button {font-weight: bold; border:1px solid black; border-radius: 5px;display:inline-block;}
 #편집상태표시 {background-color:yellow;}
 .수정 {background-color:yellow;}
+.관세청 {position: absolute; background-color:yellow; font-weight: bold; height:20px;font-size:13px;padding:0 5px;width:60px;left:1210px;}
 .선사선명on_off {position: absolute; height:20px;font-size:13px;padding:0 5px;width:90px;left:1280px;}
 .cy_on_off {position: absolute; height:20px;font-size:13px;padding:0 5px;width:90px;left:1380px;}
 .리스트단독입항맨아래에추가 {font-size:13px;height:30px;padding:0 5px;width:133px;margin-left:5px;background-color:yellow;font-weight: bold;}
