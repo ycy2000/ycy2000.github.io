@@ -203,7 +203,6 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
     }
     if (e.target.innerHTML == '예정png') {//모바일에서 파일이름이 _로 시작되면 안되는듯
       전체변수_이전탭='else'
-      리스트또는입항관리수정분적용()
       console.log('PNG_예정_셑팅')
       document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A예정.png" alt="이미지없음">';
     }
