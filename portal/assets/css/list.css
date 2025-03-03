@@ -6,7 +6,7 @@ body, pre {font-family: 'Noto Serif KR', serif;}
 
 #메모div > div {padding:3px;font-weight: bold;border-bottom:1px solid black;}
 #메모div > div > div {display: inline-block;vertical-align: top;}
-#메모div > div > button {display:inline-block; border:1px solid black; border-radius: 3px;margin-right:3px;padding:0;}
+#메모div > div > button, #표시_오른쪽2CY자료수집 button {display:inline-block; border:1px solid black; border-radius: 3px;margin-right:3px;padding:0;}
 #메모div > div > button:nth-of-type(1) {width:80px;}
 #메모div > div > button:nth-of-type(2) {width:70px;}
 .일별메모모두감싸기 > div {display:inline-block;padding-left:5px;padding-right:5px;vertical-align: top;}
@@ -151,13 +151,21 @@ body {
 .js한줄색칠있음 > * {background-color:chartreuse;}
 .js시간노랑 {background-color:yellow;}
 
+
+
+
+
 #클릭파일, #입관클릭파일닫기, #입관클릭파일 {z-index: 9999; position:absolute;background-color: white;border:1px solid black; border-radius: 5px;display:inline-block;}
 #입관클릭복사본 {position:absolute;background-color:beige;border:1px solid black; border-radius: 5px;display:inline-block;}
 #클릭파일 button, #클릭복사본 button, #입관클릭복사본 button {border:1px solid black; border-radius: 5px;font-weight: bold;}
 
 #입관클릭복사본 {top:21px;padding:3px 5px;}
 #입관클릭파일닫기 {left:100px;top:-2px;background-color: yellow;}
-#상세내용편집상태div {position:absolute;left:830px;top:61px;}
+#상세내용편집상태div {position:absolute;left:830px;top:61px;} 
+
+
+
+
 #상세내용편집상태div button {font-weight: bold; border:1px solid black; border-radius: 5px;display:inline-block;}
 #편집상태표시 {background-color:yellow;}
 .수정 {background-color:yellow;}
@@ -168,10 +176,10 @@ body {
 
 
 .cy들 {margin:5px 0px;}
-.cy들 > div > div {border:1px solid black;font-size:16px;display:inline-block;margin-bottom:-1px;padding:2px 4px;height:30px;vertical-align: top;}
-.cy들 > div > div:nth-of-type(1) {width:200px;font-size:13px;margin-right:-5px;border-right:none;}
-.cy들 > div > div:nth-of-type(2) {width:50px;font-size:13px;margin-right:-5px;border-right:none}
-.cy들 > div > div:nth-of-type(3) {width:700px;font-size:13px;}
+.cy들 > div > div > div {border:1px solid black;font-size:16px;display:inline-block;margin-bottom:-1px;padding:2px 4px;height:30px;vertical-align: top;}
+.cy들 > div > div > div:nth-of-type(1) {width:200px;font-size:13px;margin-right:-5px;border-right:none;}
+.cy들 > div > div > div:nth-of-type(2) {width:50px;font-size:13px;margin-right:-5px;border-right:none}
+.cy들 > div > div > div:nth-of-type(3) {width:800px;font-size:13px;}
 
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {

@@ -233,6 +233,8 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
       document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#탭_입항관리관련_wrap용도_none').innerHTML;
       입항관리_탭클릭시_가져오기()
       일단none숨겨();
+      document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.remove('d-none')
+      
     }
     if (e.target.innerHTML == '메_모') {
       전체변수_이전탭='else'
@@ -731,10 +733,13 @@ function 공통한줄색칠있음clear() {
 }
 function png셑팅click(e) {
   // 대부분의 모바일 브라우저(특히 iOS Safari, Chrome)는 <embed> 태그를 제대로 지원하지 않아요.
-  // iOS에서는 PDF.js 같은 외부 뷰어 없이 PDF를 <embed>로 직접 표시할 수 없어요.
-
-  //nodeName(BODY), parentNode : BODY가 되면 작동하지 않는다. break; 탈출, continue; 다음반복문, 5번 상위로 검사하면 충분할것같아서 5로 함함
   console.log('png셑팅click(e)')
+  
+  if (e.target.classList.contains('입관파일넣기')) {
+    console.log('e.target.classList.contains(입관파일넣기)')
+    document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=document.querySelector('#' + e.target.title).innerHTML
+    document.querySelector('#PNG셑팅 #입관클릭파일').classList.remove('d-none')
+  }
   //리스트메모내용과 (width:250px) 독립되어 움직인다 연동하도록 하고싶다
   var 작동위치=''
   if (e.target.parentNode.tagName == 'TR') {
@@ -882,20 +887,22 @@ function 일단none숨겨() {
 }
 function 선사on_off() {
   console.log('선사on_off()')
-  일단none숨겨()
-  if (document.querySelector('#표시_오른쪽1선사와자료수집').classList.contains('d-none')) {
-    document.querySelector('#표시_오른쪽1선사와자료수집').classList.remove('d-none');
+  if (document.querySelector('#PNG셑팅 #표시_오른쪽1선사와자료수집').classList.contains('d-none')) {
+    document.querySelector('#PNG셑팅 #표시_오른쪽1선사와자료수집').classList.remove('d-none');
+    document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.add('d-none');
   } else {
-    document.querySelector('#표시_오른쪽1선사와자료수집').classList.add('d-none');
+    document.querySelector('#PNG셑팅 #표시_오른쪽1선사와자료수집').classList.add('d-none');
+    document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.add('d-none');
   }
 }
 function cy_on_off() {
   console.log('cy_on_off()')
-  일단none숨겨()
-  if (document.querySelector('#표시_오른쪽2CY자료수집').classList.contains('d-none')) {
-    document.querySelector('#표시_오른쪽2CY자료수집').classList.remove('d-none');
+  if (document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.contains('d-none')) {
+    document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.remove('d-none');
+    document.querySelector('#PNG셑팅 #표시_오른쪽1선사와자료수집').classList.add('d-none');
   } else {
-    document.querySelector('#표시_오른쪽2CY자료수집').classList.add('d-none');
+    document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.add('d-none');
+    document.querySelector('#PNG셑팅 #표시_오른쪽1선사와자료수집').classList.add('d-none');
   }
 }
 
