@@ -382,10 +382,11 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       }
     }
     자료풀림결과.innerHTML='<table><tbody>' + 자료풀림결과.innerHTML + '</tbody></table>'
-  
-    for (var i = 0; i < 자료풀림결과.length; i++) {
-      if (자료풀림결과[i].children[11].innerHTML == '도착시간') {
-        자료풀림결과[i].children[12].classList.add('js시간노랑');
+
+    var 시간노랑확인요소=document.querySelectorAll('#리스트독립수정가능정보 tr')
+    for (var i = 0; i < 시간노랑확인요소.length; i++) {
+      if (시간노랑확인요소[i].children[11].innerHTML == '도착시간') {
+        시간노랑확인요소[i].children[14].classList.add('js시간노랑');
         break;
       }
     }
@@ -435,7 +436,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     }
     입관자료풀림결과.innerHTML='<table><tbody>' + 입관자료풀림결과.innerHTML + '</tbody></table>'
   
-    입관자료풀림결과=document.querySelectorAll('#입항관리자료풀림결과 tr');
+    입관자료풀림결과=document.querySelectorAll('#입항관리독립수정가능정보 tr');
   
     for (var i = 0; i < 입관자료풀림결과.length; i++) {
        if (입관자료풀림결과[i].children[7].innerHTML == '물품') {
@@ -443,6 +444,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         break;
       }
     }
+
     document.querySelector('#입항관리복붙textarea').value = '';
   
     //리스트시트 메모2부분 만들기
@@ -971,13 +973,10 @@ function 파일리스트() {
 
   var 소구분태그생성1=document.createElement('div');  소구분태그생성1.setAttribute('class','소구분1');
   var 소구분태그생성2=document.createElement('div');  소구분태그생성2.setAttribute('class','소구분2');
-  var 소구분태그생성3=document.createElement('div');  소구분태그생성3.setAttribute('class','소구분3');
-  var 소구분태그생성4=document.createElement('div');  소구분태그생성4.setAttribute('class','소구분4');
-  var 파일이름태그생성1, 파일이름태그생성2, 파일이름태그생성3, 파일이름태그생성4;
-  var 머리글태그생성1, 머리글태그생성2, 머리글태그생성3, 머리글태그생성4;
+  var 파일이름태그생성1, 파일이름태그생성2;
+  var 머리글태그생성1, 머리글태그생성2;
   var 파일이름='';
 
-  var 파일순환결과종합=[];
   const fileInput = document.querySelector('#file_input');
   fileInput.addEventListener('change', 파일돌때마다실행);
     function 파일돌때마다실행() {//소구분태그생성1, 소구분태그생성2 완성
@@ -987,8 +986,6 @@ function 파일리스트() {
 
           파일이름태그생성1=document.createElement('div');
           파일이름=각파일.name.substring(0,각파일.name.indexOf('.'))
-
-          파일순환결과종합.push(파일이름);//소구분태그생성3, 소구분태그생성4 작업시 필요
 
           파일이름태그생성1.textContent=파일이름;
           소구분태그생성1.appendChild(파일이름태그생성1);
@@ -1011,56 +1008,18 @@ function 파일리스트() {
       소구분태그생성2.prepend(머리글태그생성2);
     } 
   //여기까지 파일순환 끝
-  for (var i=0; i<리스트메모.length; i++) {
-    // [PNG..] [PDF..] 형식이 있는 곳만 작업. 머리글태그생성3 에 넣고, 머리글태그생성4에는 문서연결_리스트에 있는지 확인
-    if (리스트메모[i].children[14].innerHTML.indexOf('[')>-1 &&
-        리스트메모[i].children[14].innerHTML.indexOf(']')>-1 &&
-        (리스트메모[i].children[14].innerHTML.indexOf(']') - 리스트메모[i].children[14].innerHTML.indexOf('['))>0) { //있다면 빈거만든다
-        파일이름=리스트메모[i].children[14].innerHTML.substring(리스트메모[i].children[14].innerHTML.indexOf('[')+1,리스트메모[i].children[14].innerHTML.indexOf(']'));
-        파일이름태그생성3=document.createElement('div');
-        파일이름태그생성3.textContent=파일이름;
-        소구분태그생성3.appendChild(파일이름태그생성3)
-
-
-        console.log(파일이름 + ' : ' + 파일순환결과종합.indexOf(파일이름))
-
-        if (파일순환결과종합.indexOf(파일이름)>-1) {//문서연결_리스트에 있으면
-          파일이름태그생성4=document.createElement('div');
-          파일이름태그생성4.textContent='문서연결_리스트에 있음';
-          소구분태그생성4.appendChild(파일이름태그생성4)
-        } else {
-          파일이름태그생성4=document.createElement('div');
-          파일이름태그생성4.textContent='X';
-          소구분태그생성4.appendChild(파일이름태그생성4)
-        }
-    }
-  }
-  머리글태그생성3=document.createElement('div');
-  머리글태그생성3.textContent='리스트 메모 모두';
-  소구분태그생성3.prepend(머리글태그생성3);
-
-  머리글태그생성4=document.createElement('div');
-  머리글태그생성4.textContent='문서연결_리스트에 있는지';
-  소구분태그생성4.prepend(머리글태그생성4);
-
   전체감싸기태그.appendChild(소구분태그생성1)
   전체감싸기태그.appendChild(소구분태그생성2)
-  전체감싸기태그.appendChild(소구분태그생성3)
-  전체감싸기태그.appendChild(소구분태그생성4)
-
   document.querySelector('#PNG셑팅').appendChild(전체감싸기태그);
 }
 function 파일리스트후속() {
   //파일순환전에 다른코드를 다 실행하기때문에.... 파일순환 결과를 사용할 수 없음
+  console.log('파일리스트후속()')
+  var 마지막에넣을곳=document.querySelector('#PNG셑팅 .jspdfpng외부')
+  console.log(document.querySelector('#PNG셑팅 .jspdfpng외부').innerHTML)
 
-  //전체감싸기태그 안에 마지막으로, 소구분태그생성1, 소구분태그생성2, 소구분태그생성3, 소구분태그생성4 넣는다 
-  //  소구분태그생성1 : 누적이 끝난 파일이름태그생성1 을 넣는다. 
-  //    파일이름태그생성1 의 머리글 부분은 반복구문시 선택적이므로 누적 끝나고 prepend로 앞에 넣는다.
-  //var 리스트독립수정가능정보메모통합 결과는 먼저 필요하다.
-  //var 파일이름은 외부에 한번, 내부에서 지우고 갖고오고 여러번 한다.
-  //프로시저 내부의 프로시저의 변수에서 상위 프로시저에 지정된 변수를 사용할수 있다.
-  console.log('파일리스트()')
-  document.querySelector('#PNG셑팅').innerHTML='';//마지막에 넣을 곳
+
+  return;
   var 리스트메모=document.querySelectorAll('#리스트독립수정가능정보 tr');
   var 리스트독립수정가능정보메모통합=[];
   for (var i=0; i<리스트메모.length; i++) {
