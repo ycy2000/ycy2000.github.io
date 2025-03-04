@@ -218,7 +218,6 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
     if (e.target.innerHTML == '라벨') {
       전체변수_이전탭='else'
       console.log('라벨_셑팅')
-      document.querySelector('#PNG셑팅').classList.add('d-none')
     }
     if (e.target.innerHTML == '리스트') {//위에 코드가 먼저 실행되니 수정분이 적용되는것이다.
       전체변수_이전탭='리스트'
