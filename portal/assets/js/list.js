@@ -1011,9 +1011,9 @@ function 파일리스트() {
   전체감싸기태그.appendChild(소구분태그생성2)
   document.querySelector('#PNG셑팅').appendChild(전체감싸기태그);
 }
-function 파일리스트후속() {
+function 파일선택후속() {
   //파일순환전에 다른코드를 다 실행하기때문에.... 파일순환 결과를 사용할 수 없음
-  console.log('파일리스트후속()')
+  console.log('파일선택후속()')
   var 마지막에넣을곳=document.querySelector('#PNG셑팅 .jspdfpng외부')
   console.log(document.querySelector('#PNG셑팅 .jspdfpng외부').innerHTML)
 
