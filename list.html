@@ -25,15 +25,17 @@
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <button type="button" class="btn btn-light active 카테고리">예정png</button>
-        <button type="button" class="btn btn-light 카테고리">완료png</button>
-        <button type="button" class="btn btn-light 카테고리">면허,운송</button>
-        <button type="button" class="btn btn-light 카테고리">메모</button>
-        <button type="button" class="btn btn-light 카테고리" style="margin-left:20px;">리스트</button>
-        <button type="button" class="btn btn-light 카테고리">입항관리</button>
-        <button type="button" class="btn btn-light 카테고리">축산예정</button>
-        <button type="button" class="btn btn-light 카테고리">메_모</button>
-        <span style="margin-left:20px;font-size:15px;font-weight: bold;">'리스트,입항관리' 클릭한곳은 복사됨 (BL,컨 등) CTRL+V 붙여넣기됨</span>
+        <button type="button" class="btn btn-light active 카테고리 카테좁게">예정</button>
+        <button type="button" class="btn btn-light 카테고리 카테좁게">완료</button>
+        <button type="button" class="btn btn-light 카테고리 카테좁게">운송</button>
+        <button type="button" class="btn btn-light 카테고리 카테좁게">메모</button>
+        <button type="button" class="btn btn-light 카테고리 카테좁게" data-bs-toggle="offcanvas" data-bs-target="#라벨등전체" aria-controls="offcanvasBottom">라벨</button>
+        <button type="button" class="btn btn-light 카테고리 카테기본" style="margin-left:20px;">리스트</button>
+        <button type="button" class="btn btn-light 카테고리 카테기본">입항관리</button>
+        <button type="button" class="btn btn-light 카테고리 카테기본">축산예정</button>
+        <button type="button" class="btn btn-light 카테고리 카테기본">메_모</button>
+        <span style="margin-left:20px;font-size:15px;font-weight: bold;">[PDF][PNG]대괄호파일 검색.(문서연결_리스트 폴더).</span>
+        <input onclick="파일리스트();" type="file" id="file_input" webkitdirectory>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
@@ -52,6 +54,9 @@
 </header>
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
 <div id="PNG셑팅"></div>
+<div class="file_list_container d-none">
+  <li><div>사용중인html파일</div><div>경로만</div><div>파일이름 </div></li>
+</div>
 <div id="리스트독립수정가능정보" class="d-none"></div><!-- 초기정보로 시작 및 js로 브라우저에서 수정사항 반영 -->
 <div id="입항관리독립수정가능정보" class="d-none"></div><!-- 초기정보로 시작 및 js로 브라우저에서 수정사항 반영 -->
 
@@ -125,103 +130,154 @@
 </div>
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="원본text_리스트1부터U열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	입관운.도코딩	03/04 화 07:45	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항
-  1		_310510010858	우원홀딩스	SZLU2010187	새우	1,009 	감만	2/28	1			20 	감만	TS LINES ! 진행정보 선명 : BHUDTHI BHUM ! 진행정보 선사 : RCL FEEDER PTE LTD						
-  1		ONEYSCLF00804500	씨케이글로벌	FSCU5808006	홍합살	2,300 	BNCT	3/2	1				BNCT	[PNG_0302_씨케이_ONEY_4500]ONE조회,BCT,3/2!HUMBOLDT EXPRESS						
-  1		STPUSR25021255	(주)우원	TSTU8202454	새우	1,000 	BPT감만	3/3	1				BPT감만	[PDF_0302_우원_STPUSR25021255]!WAN HAI 322, SONG TAN LOGISTICS						
-  1		KMTCSUB2351631	씨케이글로벌	TEMU9481793	새우	1,800 	허치슨감만	3/3	1				허치슨감만	허치슨감만 3/1,KMTC INCHEON						
-  1		KMTCSUB2351631A	씨케이글로벌	TEMU9481793	새우	10 	허치슨감만	3/3	1				신감만허치슨	허치슨감만 3/1,KMTC INCHEON						
-  1		KMTCSUB2354637	씨케이글로벌	FSCU5870208	새우	3,500 	허치슨감만	3/3	1				허치슨감만	허치슨감만 3/1,KMTC INCHEON						
-  2	○	ONEYSGZF01055600	씨케이글로벌	ONEU9010388	백합등	1,345 	한진신항	3/4	1				이지스.한진신항		ONEYSGZF01055600	TIHAMA	25HLCU8025I-7448-	1,345 	18,045.80 	2025.03.03
-  2	○	ONEYSGZF01055601	씨케이글로벌	ONEU9010388	북방대합	907 	선명:TIHANG?(안보임)	3/4	1				이지스.한진신항		ONEYSGZF01055601	TIHAMA	25HLCU8025I-7449-	907 	4,732.80 	2025.03.03
-  3		MAEUJBS258040	동원홈푸드	SUDU9002430	닭다리살	1,958 	신자유	3/2	2				신자유	3/2 BCT, 선명 : GSL DOROTHEA 						
-  3		SSZ1578269B	마이푸드	CGMU9297124	닭다리	1,960 	BNCT	3/2	2				BNCT	CMA, CMA CGM BUZIOS						
-  3		MAEUJBS258175	수월한	MMAU1092829	닭다리	1,958 	신자유	3/2	2				신자유	3/2 BCT, 선명 : GSL DOROTHEA 						
-  3		COSU6405467204	수월한	CXRU1491558	닭다리	1,917 	BNCT	3/3	2				BNCT							
-  3		KMTCSGN5673735	씨케이글로벌	SEKU9402257	새우	649 	BPT신선대	3/3	1			20 	BPT신선대	[PDF_0303_씨케이AN]						
-  3		KMTCSGN5676816	씨케이글로벌	SEGU9338512	갑오징어등	600 	BPT신선대	3/3	1			20 	BPT신선대	KMTC JAKARTA(KMTC)						
-      TM225020642F	우원홀딩스	HMMU5203818	새우	999 	현대신항	3/4	1			20 	현대신항							
-      EGLV731500002369	(유)SM무역	EMCU5448401	오징어	1,200 	동원글로벌	3/6	1				동원글로벌	에버그린 선사정보 선적시 선명 XIN LOS ANGELES 172W ! 도착시 선명 EVER CLEVER 0088-068N ! 맞는지 확인 3월6일						
-      SSZ1584468B	대상	CGMU4907538	닭다리	1,980 	BNCT	3/6	2				BNCT	[PDF_0306_대상468B]. 사:CMA						
-      MEDUHI143015	동원홈푸드	CRLU1192254	닭다리	1,958 	BCT	3/6	2				BCT							
-      HLCUIT1250102985	수월한	HLBU9541736	닭다리	1,958 	신국제	3/6	2				신국제							
-      ZIMUSNC811170	GK교역	JXLU5128442	오징어	1,200 	BCT	3/8	1				BCT							
-      VAPPUS202501004844	(유)SM무역	OTPU6492059	오징어	1,200 		3/10	1					[PDF_SM무역4844]						
-      COSU6404528630	DK통상	CBHU2842416	닭다리	1,916 	BNCT	3/11	2				BNCT	[PDF_0310_디케이8630]						
-      COSU6407154940	대성무역	TTNU8679215	닭다리	1,958 	BNCT	3/11	2				BNCT							
-      HLCUPN4250167801	더맛하	HLBU9697354	닭다리	1,950 	신국제	3/11	2				신국제							
-      MAEU250009517	해솔무역	MMAU1073428	조기	2,325 		3/11	1											
-      DLPMC00084179	삼영수산	UACU4803646	오징어	1,225 	BNCT	3/14	1				BNCT	[PDF_0304_삼영]H B/L : HLCUSCL250116650, 하파그						
-      DLPMC00084182	삼영수산	HLBU6141994	오징어	1,225 	BNCT	3/14	1				BNCT	H B/L : HLCUSCL250116683, 하파그						
-      COSU6404528410	DK통상	FBIU5373411	닭다리	1,916 	BNCT	3/15	2				BNCT	[PDF_0310_디케이8410]						
-      910516340001	상창	SEGU9972830	아귀	1,100 		3/15	1											
-      MEDUHI151067	대상	BMOU9228009	닭다리	1,985 		3/20	2											
-      HLCUPN4250162428	더맛하	HLBU9315338	닭다리	1,950 		3/22	2											
-      HDMUSAOA85816600	아스트로스	HDMU5519515	닭발	1,500 		3/23	2											
-      COSU6453325310	아스트로스	SEGU9516595	닭다리살	1,960 		4/5	2											
-      LMM0511649	삼영수산	SZLU9867063	오징어	1,100 		4/10	1					CMA,CMA CGM BOLDNESS						
-      MEDUSF542055	대성무역	MEDU9801929	닭다리	1,960 		5/5	2											  
+<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	입관운.도코딩	03/04 화 15:58	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
+  1	○	STPUSR25021255	(주)우원	TSTU8202454	새우	1,000 	SS북항.BPT감만	3/3	1				SS북항.BPT감만	TS LINE. WAN HAI 322, FREE 3/6,	STPUSR25021255	WAN HAI 322	25IALKPJ30I-1002-0001	1,000 	9,910.00 	2025.03.03	03/04 화 15:58	
+  1	○	HASLS22250200343	우원홀딩스	SEGU9954890	??	1,300 	SS북항.BPT신선대	3/3	1			20 	SS북항.BPT신선대	흥아.KMTC JAKARTA.신선대. FREE 3/14	HASLS22250200343	KMTC JAKARTA	25KMTC0769I-2074-	1,300 	5,200.00 	2025.03.03	조회정보	
+  1		KMTCSGN5676816	씨케이글로벌	SEGU9338512	갑오징어등	600 	EZ북항.BPT신선대	3/5	1			20 	EZ북항.BPT신선대	KMTC JAKARTA(KMTC)							적재	57 
+  1	○	MAEUJBS258040	동원홈푸드	SUDU9002430	닭다리살	1,958 	한타(SS신항).신자유	3/2	2				한타(SS신항).신자유	3/2 BCT, 선명 : GSL DOROTHEA 	MAEUJBS258040	GSL DOROTHEA	25MAEU0162I-1236-	1,958 	24,486.79 	2025.03.02	4,617 	3줄
+  1	○	SSZ1578269B	마이푸드	CGMU9297124	닭다리	1,960 	EZ신항.BNCT	3/2	2				EZ신항.BNCT	CMA, CMA CGM BUZIOS	SSZ1578269B	CMA CGM TANYA	25CMAL0120I-2082-	1,960 	24,500.00 	2025.03.02	6,156 	4줄
+  1	○	MAEUJBS258175	수월한	MMAU1092829	닭다리	1,958 	한타(SS신항).신자유	3/2	2				한타(SS신항).신자유	3/2 BCT, 선명 : GSL DOROTHEA 	MAEUJBS258175	GSL DOROTHEA	25MAEU0162I-1246-	1,958 	24,583.29 	2025.03.02	7,695 	5줄
+  1	○	COSU6405467204	수월한	CXRU1491558	닭다리	1,917 	ACE.BNCT	3/3	2				ACE.BNCT		COSU6405467204	COSCO SHIPPING ORCHI	25COSU0022I-3085-	1,917 	23,962.50 	2025.03.03	9,234 	6줄
+  2	○	SSTLBDNF5709480	세현	PHRU5210197	오징어	2,183 	팬스타.다목적항	3/2	1				팬스타.다목적항		SSTLBDNF5709480	PANSTAR GENIE	25SSPSB709I-0020-	2,183 	49,000.00 	2025.03.02		
+  2		KMTCSGN5673735	씨케이글로벌	SEKU9402257	새우	649 	J&J.BPT신선대	3/3	1			20 	J&J.BPT신선대	[PDF_0303_씨케이AN]							출고/입고 4주간	
+  2	○	ONEYSGZF01055600	씨케이글로벌	ONEU9010388	백합등	1,345 	EZ신항.한진신항	3/3	1				EZ신항.한진신항		ONEYSGZF01055600	TIHAMA	25HLCU8025I-7448-	1,345 	18,045.80 	2025.03.03	1일 7/5	5일줄
+  2	○	ONEYSGZF01055601	씨케이글로벌	ONEU9010388	북방대합	907 	선명:TIHANG?(안보임)	3/3	1				이지스.한진신항		ONEYSGZF01055601	TIHAMA	25HLCU8025I-7449-	907 	4,732.80 	2025.03.03	12,016 	39.0 
+  2	○	TM225020642F	우원홀딩스	HMMU5203818	새우	999 	SS신항(HMM).현대신항	3/4	1			20 	SS신항(HMM).현대신항		TM225020642F	YM WISH	25YMJA0044I-0008-0001	999 	16,483.50 	2025.03.04	15,297 	49.7 
+  2		KMTCXMN0612565	씨에이치씨	FBIU5593756	새우	1,800 	허치슨감만	3/5	1				허치슨감만	[PDF_0304_CHC]KMTC PUSAN							내국제외	
+      EGLV731500002369	(유)SM무역	EMCU5448401	오징어	1,200 	동원글로벌	3/6	1				동원글로벌	에버그린 선사정보 선적시 선명 XIN LOS ANGELES 172W ! 도착시 선명 EVER CLEVER 0088-068N ! 맞는지 확인 3월6일							구분	대수
+      MEDUHI143015	동원홈푸드	CRLU1192254	닭다리	1,958 	BCT	3/6	2				BCT								수산	18
+      HLCUIT1250102985	수월한	HLBU9541736	닭다리	1,958 	신국제	3/6	2				신국제								축산	21
+      SSZ1584468B	대상	CGMU4907538	닭다리	1,980 	BNCT	3/7	2				BNCT	[PDF_0306_대상468B]. 사:CMA							합계	39
+      DOLBKC2508E109	하나교역	BMOU9781544	다슬기	1,600 	인터7부두	3/7	1				인터7부두	XINGDA SHIPPING, Shipper:donggang shuangyuan food								
+      ZIMUSNC811170	GK교역	JXLU5128442	오징어	1,200 	BCT	3/8	1				BCT								화주별 요약	
+      NSSLBKBSC2500093	뉴아시아	SZLU9935471	닭날개	1,950 	BPT신선대	3/9	2				BPT신선대	PANCON BRIDGE. 신선대							화주	대수
+      NSSLLCBSC2500108	대성무역	SZLU9934829	닭날개	1,925 	BPT신선대	3/9	2				BPT신선대	PANCON BRIDGE. 신선대							씨케이글로벌	4
+      VAPPUS202501004844	(유)SM무역	OTPU6492059	오징어	1,200 	BCT	3/10	1				BCT	[PDF_SM무역4844]							아스트로스	4
+      COSU6404528630	DK통상	CBHU2842416	닭다리	1,916 	BNCT	3/11	2				BNCT	[PDF_0310_디케이8630]							동원홈푸드	3
+      COSU6407154940	대성무역	TTNU8679215	닭다리	1,958 	BNCT	3/11	2				BNCT								수월한	3
+      HLCUPN4250167801	더맛하	HLBU9697354	닭다리	1,950 	신국제	3/11	2				신국제								대성무역	3
+      MAEU250009517	해솔무역	MMAU1073428	조기	2,325 	신자유	3/11	1				신자유								삼영수산	3
+      HDMUSAOA02235900	아스트로스	HMMU5431968	닭다리살	1,875 	한진신항	3/13	2				한진신항	HMM HANBADA							우원홀딩스	2
+      DLPMC00084179	삼영수산	UACU4803646	오징어	1,225 	BNCT	3/14	1				BNCT	[PDF_0304_삼영]H B/L : HLCUSCL250116650, 하파그							(유)SM무역	2
+      DLPMC00084182	삼영수산	HLBU6141994	오징어	1,225 	BNCT	3/14	1				BNCT	H B/L : HLCUSCL250116683, 하파그							대상	2
+      COSU6404528410	DK통상	FBIU5373411	닭다리	1,916 	BNCT	3/15	2				BNCT	[PDF_0310_디케이8410]							DK통상	2
+      MAEUJBS259147	동원홈푸드	MNBU0649230	닭다리살	1,958 	신자유	3/15	2				신자유								더맛하	2
+      HDMUSAOA55864100	아스트로스	TCLU1310457	닭다리살	1,875 	현대신항	3/15	2				현대신항	HYUNDAI PARAMOUNT							(주)우원	1
+      MEDUHI151067	대상	BMOU9228009	닭다리	1,985 		3/20	2												마이푸드	1
+      HLCUPN4250162428	더맛하	HLBU9315338	닭다리	1,950 	신국제	3/22	2				신국제								세현	1
+      HDMUSAOA85816600	아스트로스	HDMU5519515	닭발	1,500 		3/23	2												씨에이치씨	1
+      COSU6453325310	아스트로스	SEGU9516595	닭다리살	1,960 		4/5	2												하나교역	1
+      LMM0511649	삼영수산	SZLU9867063	오징어	1,100 		4/10	1					CMA,CMA CGM BOLDNESS							GK교역	1
+      MEDUSF542055	대성무역	MEDU9801929	닭다리	1,960 		5/5	2												뉴아시아	1
+      910516340001	상창	SEGU9972830	아귀	1,100 			1												해솔무역	1
+                                            상창	1
+                                            합계	39  
 </div>
-<div class="d-none" id="원본text_입항관리도크부터도착항우측까지">도크	화주	컨테이너	작업순서	상세내용 참조		운송사	물품		03/04 화 07:45	B/L	도착항	상세내용
+<div class="d-none" id="원본text_입항관리도크부터도착항우측까지">도크	화주	컨테이너	작업순서	상세내용 참조		운송사	물품		03/04 화 15:58	B/L	도착항	상세내용
   1												
-  14												
-  15	수월한	TEMU9398987	2/25(화)완	02/26(수)10시접안 익일 14시 출항 예정(D/O정리 X)		천일정기화뭏	닭(브라질)		MSC LYSE V	MEDUE8572384	국제	02/26(수)10시접안 익일 14시 출항 예정(D/O정리 X)
+  2												
+  3												
+  4												
+  5												
+  6												
+  7												
+  8												
+  9	우원	SZLU2010187	작업완료	03/04(화)!오후 도착 , 03/10(월)회수마감(회수 미정)		SS북항	작업완료	-1	BHUDTHI BHUM	310510010858	감만	03/04(화)!오후 도착 , 03/10(월)회수마감(회수 미정)
+  10												
+  11												
+  12												
+  13												
+  14	씨케이	FSCU5808006	작업완료	03/04(화)!오전 도착 , 03/12(수)회수마감(회수 미정)		EZ신항	작업완료	-1	HUMBOLDT EXPRESS 2448W	ONEYSCLF00804500	BNCT	03/04(화)!오전 도착 , 03/12(수)회수마감(회수 미정)
+  15	수월한	TEMU9398987	2/25(화)완	02/26(수)10시접안 익일 14시 출항 예정(D/O정리 X)		천일정기화뭏	작업완료		MSC LYSE V	MEDUE8572384	국제	02/26(수)10시접안 익일 14시 출항 예정(D/O정리 X)
   _												
   _	화주	컨테이너	작업순서	반출 예정 컨테이너		운송사	물품	정렬	선명	B/L	도착항	상세내용
-  1	우원홀딩스	SZLU2010187	작업미정	02/28(금)3/1출항.TS.LINE, 		?????	1009	-1	BHUDTHI BHUM	_310510010858	감만	02/28(금)3/1출항.TS.LINE, 
-  2	씨케이	FSCU5808006	작업미정	03/02(일)CY 조회 안됨, ONE 컨조회 3/2 23시 BNCT		?????	홍합 2300	-1	HUMBOLDT EXPRESS 2448W	ONEYSCLE00804500	BNCT	03/02(일)CY 조회 안됨, ONE 컨조회 3/2 23시 BNCT
-  3	씨케이글로벌	TEMU9481793	작업미정	03/03(월)02시접안,3일23시출항		?????	1800	-1	KMTC INCHEON	KMTCSUB2351631	허치슨감만	03/03(월)02시접안,3일23시출항
-  4	씨케이글로벌	TEMU9481793	작업미정	03/03(월)02시접안,3일23시출항		?????	10	-1	KMTC INCHEON	KMTCSUB2351631A	허치슨감만	03/03(월)02시접안,3일23시출항
-  5	씨케이글로벌	FSCU5870208	작업미정	03/03(월)02시접안,3일23시출항		?????	3500	-1	KMTC INCHEON	KMTCSUB2354637	허치슨감만	03/03(월)02시접안,3일23시출항
-  6	(주)우원	TSTU8202454	작업미정	03/03(월)09시접안,4일04시출항.		?????	1000	-1	WAN HAI 322	STPUSR25021255	BPT감만	03/03(월)09시접안,4일04시출항.
-  7	수월한	MMAU1092829	작업미정	03/02(일)16시접안,4일05시출항.		?????	닭(브라질)	0	GSL DOROTHEA	MAEUJBS258175	신자유	03/02(일)16시접안,4일05시출항.
-  8	동원홈푸드	SUDU9002430	작업미정	03/02(일)16시접안,4일05시출항.		?????	닭(브라질)	0	GSL DOROTHEA	MAEUJBS258040	신자유	03/02(일)16시접안,4일05시출항.
-  9	마이푸드	CGMU9297124	작업미정	03/02(일)17시접안,3일23시출항.		?????	1960	0	CMA CGM TANYA	SSZ1578269B	BNCT	03/02(일)17시접안,3일23시출항.
-  10	씨케이글로벌	SEKU9402257	작업미정	03/03(월)12시접안,4일12시출항.		?????	649	0	KOTA GAYA	KMTCSGN5673735	BPT신선대	03/03(월)12시접안,4일12시출항.
-  11	수월한	CXRU1491558	작업미정	03/03(월)13시접안,4일14시출항.		?????	닭(브라질)	0	COSCO SHIPPING ORCHID	COSU6405467204	BNCT	03/03(월)13시접안,4일14시출항.
-  12	우원홀딩스	HMMU5203818	작업미정	03/04(화)10시접안,5일04시출항.		?????	999	0	YM WISH	TM225020642F	현대신항	03/04(화)10시접안,5일04시출항.
-  13	씨케이글로벌	ONEU9010388	작업미정	03/04(화)10시접안,6일06시출항.		?????	1345	0	TIHAMA	ONEYSGZF01055600	한진신항	03/04(화)10시접안,6일06시출항.
-  14	씨케이글로벌	ONEU9010388	작업미정	03/04(화)10시접안,6일06시출항.		?????	907	0	TIHAMA	ONEYSGZF01055601	한진신항	03/04(화)10시접안,6일06시출항.
-  15	씨케이글로벌	SEGU9338512	작업미정	03/05(수)00시접안,6일01시출항.		?????	600		KMTC JAKARTA	KMTCSGN5676816	BPT신선대	03/05(수)00시접안,6일01시출항.
-  16	동원홈푸드	CRLU1192254	작업미정	03/06(목)03시접안,6일23시출항.		?????	닭(브라질)		MSC APOLLO	MEDUHI143015	BCT	03/06(목)03시접안,6일23시출항.
-  17	SM무역	EMCU5448401	작업미정	03/06(목)06시접안,7일04시출항.		?????	1200		EVER CLEVER(KTH)	EGLV731500002369	동원글로벌	03/06(목)06시접안,7일04시출항.
-  18	수월한	HLBU9541736	작업미정	03/06(목)10시접안,6일20시출항.		?????	닭(브라질)		ONE COLUMBA	HLCUIT1250102985	신국제	03/06(목)10시접안,6일20시출항.
-  19	대상	CGMU4907538	작업미정	03/06(목)22시접안,7일23시출항.		?????	닭(브라질)		CMA CGM LEGACY	SSZ1584468B	BNCT	03/06(목)22시접안,7일23시출항.
-  20	GK교역	JXLU5128442	작업미정	03/08(토)14시접안,9일14시출항.		?????	1200		ZIM MOUNT DENALI	ZIMUSNC811170	BCT	03/08(토)14시접안,9일14시출항.
-  21	SM무역	OTPU6492059	작업미정	03/10(월)양밍조회(아르헨티나)		?????(양밍)	1200		WAN HAI 625	VAPPUS202501004844	확인안함	03/10(월)양밍조회(아르헨티나)
-  22	해솔무역	MMAU1073428	작업미정	03/11(화)06시.머스크.BUSAN NEW PORT TERMINAL		?????	조기 2325		MAERSK EDINBURGH	MAEU250009517	확인안함	03/11(화)06시.머스크.BUSAN NEW PORT TERMINAL
-  23	DK통상	CBHU2842416	작업미정	03/11(화)14시접안,13일02시출항.		?????	닭(브라질)		CMA CGM RODOLPHE	COSU6404528630	BNCT	03/11(화)14시접안,13일02시출항.
-  24	대성무역	TTNU8679215	작업미정	03/11(화)14시접안,13일02시출항.		?????	닭(브라질)		CMA CGM RODOLPHE	COSU6407154940	BNCT	03/11(화)14시접안,13일02시출항.
-  25	더맛하	HLBU9697354	작업미정	03/11(화)17시접안,12일03시출항.		?????	닭(브라질)		MSC VICTORIA	HLCUPN4250167801	신국제	03/11(화)17시접안,12일03시출항.
-  26	삼영수산	HLBU6141994	작업미정	03/14(금)04시접안,15일08시출항.		?????	1225		ERVING	HLCUSCL250116683	BNCT	03/14(금)04시접안,15일08시출항.
-  27	삼영수산	UACU4803646	작업미정	03/14(금)04시접안,15일08시출항.		?????	1225		ERVING	HLCUSCL250116650	BNCT	03/14(금)04시접안,15일08시출항.
-  28	삼창	SEGU9972830	작업미정	03/15(토)03시.SITC.입항예정		?????(SITC)	1100		EVER FIT V	910516340001	확인안함	03/15(토)03시.SITC.입항예정
-  29	DK통상	FBIU5373411	작업미정	03/15(토)22시접안,17일01시출항.		?????	닭(브라질)		COSCO PRIDE	COSU6404528410	BNCT	03/15(토)22시접안,17일01시출항.
-  30	대상	BMOU9228009	작업미정	03/20(목)MSC.MSC SHUBA.T상하이3/6TRANS		?????	닭(브라질)		MSC SHUBA	MEDUHI151067	확인안함	03/20(목)MSC.MSC SHUBA.T상하이3/6TRANS
-  31	더맛하	HLBU9315338	작업미정	03/22(토)입항예정.하파그.ONE SPARKLE		?????	닭(브라질)		ONE SPARKLE	HLCUPN4250162428	확인안함	03/22(토)입항예정.하파그.ONE SPARKLE
-  32	아스트로스	HDMU5519515	작업미정	03/23(일)입항예정		?????	닭(브라질)		확인안함	HDMUSAOA85816600	확인안함	03/23(일)입항예정
-  33	아스트로스	SEGU9516595	작업미정	04/05(토)04시입항예정.코스코		?????	닭(브라질)		COSCO SHIPPING JASMINE	COSU6453325310	확인안함	04/05(토)04시입항예정.코스코
-  34	삼영수산	SZLU9867063	작업미정	04/10(목)입항예정		?????	1100		확인안함	LMM0511649	확인안함	04/10(목)입항예정
-  35	대성무역	MEDU9801929	작업미정	05/05(월)MSC.		?????	닭(브라질)		MSC IRINA	MEDUSF542055	확인안함	05/05(월)MSC.  
+  1	수월한	CXRU1491558	3/5작업	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)		ACE	닭(브라질)	-1	COSCO SHIPPING ORCHID	COSU6405467204	BNCT	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)
+  2	축지	SEGU9338512	3/5작업	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)		EZ북항	600	-1	KMTC JAKARTA	KMTCSGN5676816	BPT신선대	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)
+  3	마이푸드	CGMU9297124	3/5작업	03/04(화)!오후 도착 , 03/07(금)회수마감(회수 미정)		EZ신항	1960	-1	CMA CGM TANYA	SSZ1578269B	BNCT	03/04(화)!오후 도착 , 03/07(금)회수마감(회수 미정)
+  4	우원	TSTU8202454	3/5작업	03/05(수)조출 , 03/12(수)회수마감(회수 미정)		SS북항	1000	-1	WAN HAI 322	STPUSR25021255	BPT감만	03/05(수)조출 , 03/12(수)회수마감(회수 미정)
+  5	우원	SEGU9954890	3/5작업	03/05(수)조출 , 03/12(수)회수마감(회수 미정)		SS북항	1300	-1	KMTC JAKARTA	HASLS22250200343	BPT신선대	03/05(수)조출 , 03/12(수)회수마감(회수 미정)
+  6	수월한	MMAU1092829	3/5작업	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)		한타(SS신항)	닭(브라질)	-1	GSL DOROTHEA	MAEUJBS258175	신자유	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)
+  7	동원홈푸드	SUDU9002430	3/5작업	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)		한타(SS신항)	닭(브라질)	-1	GSL DOROTHEA	MAEUJBS258040	신자유	03/05(수)!오전 도착 , 03/11(화)회수마감(회수 미정)
+  8	씨케이	SEKU9402257	작업미정	03/03(월)!12시접안,4일23시출항.		J&J	649	0	KOTA GAYA	KMTCSGN5673735	BPT신선대	03/03(월)!12시접안,4일23시출항.
+  9	우원	HMMU5203818	작업미정	03/04(화)13시접안,5일07시출항.		SS신항(HMM)	999	0	YM WISH	TM225020642F	현대신항	03/04(화)13시접안,5일07시출항.
+  10	CK(2건)	ONEU9010388	작업미정	03/04(화)15시접안,6일17시출항.		EZ신항	1345	0	TIHAMA	ONEYSGZF01055600	한진신항	03/04(화)15시접안,6일17시출항.
+  11	세현(2대)	PHRU5210197	작업미정	03/04(화)오후 도착 , 03/08(토)회수마감(회수 미정)		팬스타	1091	0	PANSTAR GENIE	SSTLBDNF5709480	다목적항	03/04(화)오후 도착 , 03/08(토)회수마감(회수 미정)
+  12	세현(2대)	PHRU5230399	작업미정	03/04(화)오후 도착 , 03/08(토)회수마감(회수 미정)		팬스타	1091	0	PANSTAR GENIE	SSTLBDNF5709480	다목적항	03/04(화)오후 도착 , 03/08(토)회수마감(회수 미정)
+  13	CHC	FBIU5593756	작업미정	03/05(수)!01시접안,5일18시출항.		?????	1800	0	KMTC PUSAN	KMTCXMN0612565	허치슨감만	03/05(수)!01시접안,5일18시출항.
+  14	동원홈푸드	CRLU1192254	작업미정	03/06(목)!19시접안,6일15시출항.		?????	닭(브라질)		MSC APOLLO	MEDUHI143015	BCT	03/06(목)!19시접안,6일15시출항.
+  15	SM무역	EMCU5448401	작업미정	03/06(목)07시접안,7일00시출항.		?????	1200		EVER CLEVER(KTH)	EGLV731500002369	동원글로벌	03/06(목)07시접안,7일00시출항.
+  16	수월한	HLBU9541736	작업미정	03/06(목)10시접안,6일20시출항.		?????	닭(브라질)		ONE COLUMBA	HLCUIT1250102985	신국제	03/06(목)10시접안,6일20시출항.
+  17	대상	CGMU4907538	작업미정	03/07(금)01시접안,8일06시출항.		?????	닭(브라질)		CMA CGM LEGACY	SSZ1584468B	BNCT	03/07(금)01시접안,8일06시출항.
+  18	하나교역	BMOU9781544	작업미정	03/07(금)18시접안,6일08시출항.		?????	1600		YONG SHENG	DOLBKC2508E109	인터7부두	03/07(금)18시접안,6일08시출항.
+  19	GK교역	JXLU5128442	작업미정	03/08(토)14시접안,9일14시출항.		?????	1200		ZIM MOUNT DENALI	ZIMUSNC811170	BCT	03/08(토)14시접안,9일14시출항.
+  20	뉴아시아	SZLU9935471	작업미정	03/09(일)13시접안,10일10시출항.		?????	닭(태국)		PANCON BRIDGE	NSSLBKBSC2500093	BPT신선대	03/09(일)13시접안,10일10시출항.
+  21	대성무역	SZLU9934829	작업미정	03/09(일)13시접안,10일10시출항.		?????	닭(태국)		PANCON BRIDGE	NSSLLCBSC2500108	BPT신선대	03/09(일)13시접안,10일10시출항.
+  22	SM무역	OTPU6492059	작업미정	03/10(월)12시접안,11일00시출항.		?????(양밍)	1200		WAN HAI 625	VAPPUS202501004844	BCT	03/10(월)12시접안,11일00시출항.
+  23	해솔무역	MMAU1073428	작업미정	03/11(화)07시접안,12일15시출항.		?????	조기 2325		MAERSK EDINBURGH	MAEU250009517	신자유	03/11(화)07시접안,12일15시출항.
+  24	DK통상	CBHU2842416	작업미정	03/11(화)14시접안,13일02시출항.		?????	닭(브라질)		CMA CGM RODOLPHE	COSU6404528630	BNCT	03/11(화)14시접안,13일02시출항.
+  25	대성무역	TTNU8679215	작업미정	03/11(화)14시접안,13일02시출항.		?????	닭(브라질)		CMA CGM RODOLPHE	COSU6407154940	BNCT	03/11(화)14시접안,13일02시출항.
+  26	더맛하	HLBU9697354	작업미정	03/11(화)17시접안,12일03시출항.		?????	닭(브라질)		MSC VICTORIA	HLCUPN4250167801	신국제	03/11(화)17시접안,12일03시출항.
+  27	아스트로스	HMMU5431968	작업미정	03/13(목)04시접안,14일18시출항.		?????	닭(브라질)		HMM HANBADA	HDMUSAOA02235900	한진신항	03/13(목)04시접안,14일18시출항.
+  28	삼영수산	HLBU6141994	작업미정	03/14(금)08시접안,15일12시출항.		?????	1225		ERVING	HLCUSCL250116683	BNCT	03/14(금)08시접안,15일12시출항.
+  29	삼영수산	UACU4803646	작업미정	03/14(금)08시접안,15일12시출항.		?????	1225		ERVING	HLCUSCL250116650	BNCT	03/14(금)08시접안,15일12시출항.
+  30	동원홈푸드	MNBU0649230	작업미정	03/15(토)09시접안,16일10시출항.		?????	닭(브라질)		MSC ZOE	MAEUJBS259147	신자유	03/15(토)09시접안,16일10시출항.
+  31	아스트로스	TCLU1310457	작업미정	03/15(토)10시접안,16일01시출항.		?????	닭(브라질)		HYUNDAI PARAMOUNT	HDMUSAOA55864100	현대신항	03/15(토)10시접안,16일01시출항.
+  32	DK통상	FBIU5373411	작업미정	03/15(토)14시접안,16일23시출항.		?????	닭(브라질)		COSCO PRIDE	COSU6404528410	BNCT	03/15(토)14시접안,16일23시출항.
+  33	대상	BMOU9228009	작업미정	03/20(목)MSC.MSC SHUBA.T상하이3/6TRANS		?????	닭(브라질)		MSC SHUBA	MEDUHI151067	확인안함	03/20(목)MSC.MSC SHUBA.T상하이3/6TRANS
+  34	더맛하	HLBU9315338	작업미정	03/22(토)10시접안,22일20시출항.		?????	닭(브라질)		ONE SPARKLE	HLCUPN4250162428	신국제	03/22(토)10시접안,22일20시출항.
+  35	아스트로스	HDMU5519515	작업미정	03/23(일)입항예정		?????	닭(브라질)		확인안함	HDMUSAOA85816600	확인안함	03/23(일)입항예정
+  36	아스트로스	SEGU9516595	작업미정	04/05(토)04시입항예정.코스코		?????	닭(브라질)		COSCO SHIPPING JASMINE	COSU6453325310	확인안함	04/05(토)04시입항예정.코스코
+  37	삼영수산	SZLU9867063	작업미정	04/10(목)입항예정		?????	1100		확인안함	LMM0511649	확인안함	04/10(목)입항예정
+  38	대성무역	MEDU9801929	작업미정	05/05(월)MSC.		?????	닭(브라질)		MSC IRINA	MEDUSF542055	확인안함	05/05(월)MSC.
+  39	삼창	SEGU9972830	작업미정	1900-01-00		?????(SITC)	1100		EVER FIT V	910516340001	확인안함	  
 </div>   
 <!--1순번,2화주,3BL,4컨,5수량,6중량,7판매원,8입고예정,9이름,10입고층,11입항예정,12주의,13가공장번호,14계육,15AU다리살,
     16스티커발주상태,17수출국,18가공일,19메모,20화찰BL,21화찰선명,22화물관리,23화찰수량,24화찰중량,25화찰입항 -->
-<div class="d-none" id="원본text_머리글제외_a열제외_축산예정_b_aa시간열까지">1	수월한 주식회사	COSU6405467204	CXRU1491558	1,917	23004					3/2		S.I.F-601	계육	AU다리살		브라질	2024.12.5~19								03/01 토 20:33
-  2	수월한 주식회사	MAEUJBS258175	MMAU1092829	1,958	23496					3/2		S.I.F-2485	계육	SR다리살		브라질	2024.12.30~2025.1.7								
-  3	㈜동원홈푸드	MAEUJBS258040	SUDU9002430	1,958	23496	오케이푸드				3/2	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.8,9								
-  4	주식회사 마이푸드	SSZ1578269B	CGMU9297124	1,960	23520					3/3		S.I.F-3125	계육	AU다리살		브라질	2024.12.11~16								
-  5	대상㈜유통씨아이씨	SSZ1584468B	CGMU4907538	1,980	23760					3/6		S.I.F-103	계육	SA다리살		브라질	202412.28~2025.1.6								
-  6	수월한 주식회사	HLCUIT1250102985	HLBU9541736	1,958	23496					3/8	20-25G	S.I.F-2172	계육	SR조각정육		브라질	2024.11.16~12.27								
-  7	㈜디케이통상 (동일)	COSU6404528410	FBIU5373411	1,916	22992					3/10		S.I.F-3404	계육	SU다리살		브라질	2025.1.2~3								
-  8	㈜디케이통상 (동일)	COSU6404528630	CBHU2842416	1,916	22992					3/10		S.I.F-3404	계육	SU다리살		브라질	2024.12.24~26								
-  9	㈜대성무역	COSU6407154940	TTNU8679215	1,958	23496					3/22	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.10								
-  10	㈜더맛있는하루	HLCUPN4250162428	HLBU9315338	1,950	23400					3/22		S.I.F-1860	계육	CA다리살		브라질	2024.12.9~2025.1.17								
-  11	주식회사 아스트로스	HDMUSAOA85816600	HDMU5519515	1,500	22500	디케이통상				3/23		S.I.F-2212	계육	VI닭발		브라질	2025.1.9~16								
-  12	주식회사 아스트로스	COSU6453325310	SEGU9516595	1,960	23520					3/29		S.I.F-3125	계육	AU다리살		브라질	2024.12.28,2025.1.6,7								
-  13	㈜더맛있는하루	HLCUPN4250167801	HLBU9697354	1,950	23400					4/2		S.I.F-4166	계육	CA다리살		브라질	2025.1.10~21								
-  14	대상㈜유통씨아이씨	MEDUHI151067	BMOU9228009	1,985	23820							S.I.F-1001	계육	PA다리살		브라질	2024.11.7~2025.1.8								
-  15	㈜대성무역	MEDUSF542055	MEDU9801929	1,960	23520							S.I.F-3125	계육	AU다리살		브라질	2024.1.11,13								
-  16	㈜동원홈푸드	MEDUHI143015	CRLU1192254	1,958	23496	오케이푸드					200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.3,4								  
+<div class="d-none" id="원본text_머리글제외_a열제외_축산예정_b_aa시간열까지">1	수월한 주식회사	COSU6405467204	CXRU1491558	1,917	23004		3/5	남	3층	3/5		S.I.F-601	계육	AU다리살	일월년(읽는법)	브라질	2024.12.5~19		COSU6405467204	COSCO SHIPPING ORCHID	25CoSU0022i-3085	1,917 	23,962.50 	2025.03.03	03/04 화 15:58
+  2	수월한 주식회사	MAEUJBS258175	MMAU1092829	1,958	23496		3/5	효	4층	3/5		S.I.F-2485	계육	SR다리살	년월일(읽는법)	브라질	2024.12.30~2025.1.7		MAEUJBS258175	GSL DOROTHEA	25MAEU0162i-1246	1,958 	24,583.29 	2025.03.02	
+  4	주식회사 마이푸드	SSZ1578269B	CGMU9297124	1,960	23520		3/5	랑	4층	3/4		S.I.F-3125	계육	AU다리살	일월년(읽는법)	브라질	2024.12.11~16		SSZ1578269B	CMA CGM TANYA	25CMAL0120i-2082	1,960 	24,500.00 	2025.03.02	
+  3	㈜동원홈푸드	MAEUJBS258040	SUDU9002430	1,958	23496	오케이푸드	3/5	DD	3층	3/5	200GUP	S.I.F-1215	계육	SR다리살	년월일(읽는법)	브라질	2025.1.8,9		MAEUJBS258040	GSL DOROTHEA	25MAEU0162i-1236	1,958 	24,486.79 	2025.03.02	
+  6	수월한 주식회사	HLCUIT1250102985	HLBU9541736	1,958	23496			MB		3/6	20-25G	S.I.F-2172	계육	SR조각정육		브라질	2024.11.16~12.27		HLCUIT1250102985						
+  16	㈜동원홈푸드	MEDUHI143015	CRLU1192254	1,958	23496	오케이푸드				3/6	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.3,4		MEDUHI143015						
+  5	대상㈜유통씨아이씨	SSZ1584468B	CGMU4907538	1,980	23760			폭		3/7		S.I.F-103	계육	SA다리살		브라질	202412.28~2025.1.6		SSZ1584468B						
+  20	주식회사 뉴아시아 (동일)	NSSLBKBSC2500093	SZLU9935471	1,950	23400					3/9	"975
+  975"	EST-369	계육	"미들윙35/45G
+  윙스틱45/55G"		태국	2025.1.17,18,20~25,27								
+  9	㈜대성무역	COSU6407154940	TTNU8679215	1,958	23496			72		3/11	200GUP	S.I.F-1215	계육	SR다리살		브라질	2025.1.10		COSU6407154940						
+  13	㈜더맛있는하루	HLCUPN4250167801	HLBU9697354	1,950	23400					3/11		S.I.F-4166	계육	CA다리살		브라질	2025.1.10~21		HLCUPN4250167801						
+  8	㈜디케이통상 (동일)	COSU6404528630	CBHU2842416	1,916	22992			낭		3/11		S.I.F-3404	계육	SU다리살		브라질	2024.12.24~26		COSU6404528630						
+  18	주식회사 아스트로스	HDMUSAOA02235900	HMMU5431968	1,875	22500					3/13	30/40G	S.I.F-2212	계육	VI조각정육		브라질	2024.12.9~2025.1.9								
+  17	㈜동원홈푸드	MAEUJBS259147	MNBU0649230	1,958	23496	오케이푸드		MC		3/15	200GUP	S.I.F-777	계육	SR다리살		브라질	2025.1.10~14		MAEUJBS259147						
+  7	㈜디케이통상 (동일)	COSU6404528410	FBIU5373411	1,916	22992			190		3/15		S.I.F-3404	계육	SU다리살		브라질	2025.1.2~3		COSU6404528410						
+  19	주식회사 아스트로스	HDMUSAOA55864100	TCLU1310457	1,875	22500					3/15	30/40G	S.I.F-2212	계육	VI조각정육		브라질	2025.1.3~17								
+  14	대상㈜유통씨아이씨	MEDUHI151067	BMOU9228009	1,985	23820					3/20		S.I.F-1001	계육	PA다리살		브라질	2024.11.7~2025.1.8		MEDUHI151067						
+  10	㈜더맛있는하루	HLCUPN4250162428	HLBU9315338	1,950	23400					3/22		S.I.F-1860	계육	CA다리살		브라질	2024.12.9~2025.1.17		HLCUPN4250162428						
+  11	주식회사 아스트로스	HDMUSAOA85816600	HDMU5519515	1,500	22500	디케이통상				3/23		S.I.F-2212	계육	VI닭발		브라질	2025.1.9~16		HDMUSAOA85816600						
+  12	주식회사 아스트로스	COSU6453325310	SEGU9516595	1,960	23520					4/5		S.I.F-3125	계육	AU다리살		브라질	2024.12.28,2025.1.6,7		COSU6453325310						
+  15	㈜대성무역	MEDUSF542055	MEDU9801929	1,960	23520					5/5		S.I.F-3125	계육	AU다리살		브라질	2024.1.11,13		MEDUSF542055						
+  21	㈜대성무역	NSSLLCBSC2500108	SZLU9934829	1,925	23100					3/9		EST-70	계육	LT다리살20/30G		태국	2025.1.28,29								  
+</div>
+
+<div style="height:500px;" class="offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1" id="라벨등전체" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header p-1" style="white-space: nowrap;">
+    <div class="캔버스header">
+      <h6 class="offcanvas-title">초기화</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든제목보기</h6><!--click동작-->
+      <h6 class="offcanvas-title">모든카테고리</h6> <!--click동작-->            
+      <h6 class="d-inline-block">파일검색</h6><!-- 동작없음-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <h6 class="canvas검색input_clear">clear</h6><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <div class="js카테고리생성 d-inline-block"></div>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
 </div>
 
 <div id="탭_축산예정관련_wrap용도_none" class="d-none">
@@ -229,12 +285,12 @@
     
     <button id="축산기록시간은수기로해야함" style="margin-left:300px;font-weight: bold;border:1px solid black; border-radius: 5px;" class="js시간노랑 "></button>
 
-    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
+    <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
     title="()?[] 등의 특수문자 ==> ( 의 경우 \( 로 표현하면 검색된다. 종료후 \ 삭제 js코드 포함됨"
     onclick="단어검색();document.querySelector('#축산예정검색input').value=''; ">단어검색</button>
     <input id="축산예정검색input" type="text" style="width:100px;" onchange="단어검색()">
-    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
-    <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="축산예정_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
+    <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
+    <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="축산예정_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
     <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
   </div>
   <div id="축산예정자료풀기결과" class="검색 d-inline-block" style="vertical-align: top;"></div>
@@ -242,14 +298,14 @@
 <div id="탭_리스트풀기관련_wrap용도_none" class="d-none">
   <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
     <div style="font-size: 16px;margin-bottom:5px;">
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:320px;" onclick="리스트1부터요약까지복붙자료풀기()">오른쪽에,리스트시트A:Z 복붙후 클릭 셑팅</button>
+      <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:320px;" onclick="리스트1부터요약까지복붙자료풀기()">오른쪽에,리스트시트A:Z 복붙후 클릭 셑팅</button>
       <textarea id="리스트복붙textarea" contenteditable style="height:29px;width:50px; resize: none;vertical-align: top;"></textarea>
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
+      <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
       title="()?[] 등의 특수문자 ==> ( 의 경우 \( 로 표현하면 검색된다. 종료후 \ 삭제 js코드 포함됨"
       onclick="단어검색();document.querySelector('#리스트검색input').value=''; ">단어검색</button>
       <input id="리스트검색input" type="text" style="width:100px;" onchange="단어검색()">
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
-      <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="리스트_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
+      <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" onclick="공통한줄색칠있음clear()">색칠clear</button>
+      <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:200px;margin-left:20px;background-color:yellow;font-weight: bold;" onclick="리스트_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠</button>
       <span style="margin-left:20px;font-size:15px;font-weight: bold;">드래그 복사후 엑셀 셀 클릭후 우클릭, 붙여넣기 옵션 : "주변 서식에 맞추기 (M)" (표 형태로)</span>
     </div>
 
@@ -306,17 +362,17 @@
     <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
       <div id="표시_입항관리푸는거" class="d-inline-block" style="vertical-align: top;">
         <div style="font-size: 16px;margin-bottom:5px;">
-          <button class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:300px;" onclick="입항관리BM복붙자료풀기()">오른쪽에,입항관리A:M 복붙후 클릭 셑팅</button>
+          <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:300px;" onclick="입항관리BM복붙자료풀기()">오른쪽에,입항관리A:M 복붙후 클릭 셑팅</button>
           <textarea id="입항관리복붙textarea" contenteditable style="height:29px;width:50px; resize: none;vertical-align: top;"></textarea>
-          <button title="단어검색 초기화" class="btn btn-light 카테고리" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
+          <button title="단어검색 초기화" class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
           title="()?[] 등의 특수문자 ==> ( 의 경우 \( 로 표현하면 검색된다. 종료후 \ 삭제 js코드 포함됨"
           onclick="단어검색();document.querySelector('#입항관리검색input').value=''; ">단어검색</button>
           <input id="입항관리검색input" type="text" style="width:100px;" onchange="단어검색()">
-          <button class="btn btn-light 카테고리 공통한줄색칠있음clear" onclick="공통한줄색칠있음clear()">색칠clear</button>        
-          <button class="btn btn-light 카테고리 리스트단독입항맨아래에추가" onclick="리스트단독입항관리맨에추가()" title="리스트 단독목록 입항관리 맨 아래에 추가">리스트 단독 가져오기</button>
-          <button class="btn btn-light 카테고리 관세청"><a href="https://unipass.customs.go.kr/csp/index.do" target="_blank">관세청</a></button>
-          <button class="btn btn-light 카테고리 선사선명on_off" onclick="선사on_off()">선사ON/OFF</button>
-          <button class="btn btn-light 카테고리 cy_on_off" onclick="cy_on_off()">CY_ON/OFF</button>
+          <button class="btn btn-light 카테고리 카테기본 공통한줄색칠있음clear" onclick="공통한줄색칠있음clear()">색칠clear</button>        
+          <button class="btn btn-light 카테고리 카테기본 리스트단독입항맨아래에추가" onclick="리스트단독입항관리맨에추가()" title="리스트 단독목록 입항관리 맨 아래에 추가">리스트 단독 가져오기</button>
+          <button class="btn btn-light 카테고리 카테기본 관세청"><a href="https://unipass.customs.go.kr/csp/index.do" target="_blank">관세청</a></button>
+          <button class="btn btn-light 카테고리 카테기본 선사선명on_off" onclick="선사on_off()">선사ON/OFF</button>
+          <button class="btn btn-light 카테고리 카테기본 cy_on_off" onclick="cy_on_off()">CY_ON/OFF</button>
         </div>
         
         <div>

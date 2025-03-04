@@ -195,23 +195,17 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
       if (전체변수_이전탭=='리스트') {리스트수정분적용()}
       if (전체변수_이전탭=='입항관리') {입항관리수정분적용()}
     }
-
-    if (e.target.innerHTML == '리스트') {//위에 코드가 먼저 실행되니 수정분이 적용되는것이다.
-      전체변수_이전탭='리스트'
-      document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#탭_리스트풀기관련_wrap용도_none').innerHTML;
-      리스트_탭클릭시_가져오기()
-    }
-    if (e.target.innerHTML == '예정png') {//모바일에서 파일이름이 _로 시작되면 안되는듯
+    if (e.target.innerHTML == '예정') {//모바일에서 파일이름이 _로 시작되면 안되는듯
       전체변수_이전탭='else'
       console.log('PNG_예정_셑팅')
       document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A예정.png" alt="이미지없음">';
     }
-    if (e.target.innerHTML == '완료png') {
+    if (e.target.innerHTML == '완료') {
       전체변수_이전탭='else'
       console.log('PNG_완료_셑팅')
       document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A완료.png" alt="이미지없음">';
     }
-    if (e.target.innerHTML == '면허,운송') {
+    if (e.target.innerHTML == '운송') {
       전체변수_이전탭='else'
       console.log('PNG_면허운송_셑팅')
       document.querySelector('#PNG셑팅').innerHTML = '<img src="portal/images/문서연결_리스트/A면허운송.png" alt="이미지없음">';
@@ -221,11 +215,15 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
       console.log('PNG_메모_셑팅')
       document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#탭_메모_wrap용도_none').innerHTML;
     }
-    if (e.target.innerHTML == '축산예정') {
+    if (e.target.innerHTML == '라벨') {
       전체변수_이전탭='else'
-      console.log('축산예정_셑팅')
-      document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#탭_축산예정관련_wrap용도_none').innerHTML;
-      텍스트를_테이블형식으로_축산예정풀기()
+      console.log('라벨_셑팅')
+      document.querySelector('#PNG셑팅').classList.add('d-none')
+    }
+    if (e.target.innerHTML == '리스트') {//위에 코드가 먼저 실행되니 수정분이 적용되는것이다.
+      전체변수_이전탭='리스트'
+      document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#탭_리스트풀기관련_wrap용도_none').innerHTML;
+      리스트_탭클릭시_가져오기()
     }
     if (e.target.innerHTML == '입항관리') {
       전체변수_이전탭='입항관리'
@@ -233,7 +231,12 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
       입항관리_탭클릭시_가져오기()
       일단none숨겨();
       document.querySelector('#PNG셑팅 #표시_오른쪽2CY자료수집').classList.remove('d-none')
-      
+    }
+    if (e.target.innerHTML == '축산예정') {
+      전체변수_이전탭='else'
+      console.log('축산예정_셑팅')
+      document.querySelector('#PNG셑팅').innerHTML = document.querySelector('#탭_축산예정관련_wrap용도_none').innerHTML;
+      텍스트를_테이블형식으로_축산예정풀기()
     }
     if (e.target.innerHTML == '메_모') {
       전체변수_이전탭='else'
@@ -315,6 +318,8 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[17] + '</td>' //
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //화찰입항
+        div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //요약1/2
+        div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[21] + '</td>' //요약2/2
     
         div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
         자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -341,6 +346,8 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[16] + '</td>' //
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[17] + '</td>' //
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //화찰입항
+        div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //요약1/2
+        div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //요약2/2
     
         div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
         자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -367,6 +374,8 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[18] + '</td>' //
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //화찰입항
+        div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[21] + '</td>' //요약1/2
+        div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[22] + '</td>' //요약2/2
     
         div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
         자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
@@ -527,7 +536,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
                       '<td>화찰중량</td><td>화찰입항</td></tr></tbody></table>';
     자료풀림결과.innerHTML=축산예정머리글+자료풀림결과.innerHTML;
   }
-  전체변수_원본텍스트 = document.querySelector('#원본text_리스트1부터U열까지').innerHTML;
+  전체변수_원본텍스트 = document.querySelector('#원본text_리스트1부터w요약열까지').innerHTML;
   텍스트를_테이블형식으로_리스트풀기()
     //리스트단독 입항관리에 넣을때 사용할 요소다
     //document.querySelector('#리스트독립수정가능정보').innerHTML=document.querySelector('#PNG셑팅내부_리스트자료풀림결과').outerHTML;
@@ -939,6 +948,208 @@ function 상세내용폭변경토글() {
     document.querySelector('#PNG셑팅 #입항관리자료풀림결과').classList.remove('입관td최소화');
     document.querySelector('#PNG셑팅 #입항관리자료풀림결과').classList.add('입관td기본');
   }
+}
+function 파일리스트() {
+  //파일순환전에 다른코드를 다 실행하기때문에.... 파일순환 결과를 사용할 수 없음
+
+  //전체감싸기태그 안에 마지막으로, 소구분태그생성1, 소구분태그생성2, 소구분태그생성3, 소구분태그생성4 넣는다 
+  //  소구분태그생성1 : 누적이 끝난 파일이름태그생성1 을 넣는다. 
+  //    파일이름태그생성1 의 머리글 부분은 반복구문시 선택적이므로 누적 끝나고 prepend로 앞에 넣는다.
+  //var 리스트독립수정가능정보메모통합 결과는 먼저 필요하다.
+  //var 파일이름은 외부에 한번, 내부에서 지우고 갖고오고 여러번 한다.
+  //프로시저 내부의 프로시저의 변수에서 상위 프로시저에 지정된 변수를 사용할수 있다.
+  console.log('파일리스트()')
+  document.querySelector('#PNG셑팅').innerHTML='';//마지막에 넣을 곳
+  var 리스트메모=document.querySelectorAll('#리스트독립수정가능정보 tr');
+  var 리스트독립수정가능정보메모통합=[];
+  for (var i=0; i<리스트메모.length; i++) {
+    리스트독립수정가능정보메모통합.push(리스트메모[i].children[14].innerHTML);
+  }
+  리스트독립수정가능정보메모통합=리스트독립수정가능정보메모통합.join('!');
+
+  var 전체감싸기태그=document.createElement('div');  전체감싸기태그.setAttribute('class','jspdfpng외부');
+
+  var 소구분태그생성1=document.createElement('div');  소구분태그생성1.setAttribute('class','소구분1');
+  var 소구분태그생성2=document.createElement('div');  소구분태그생성2.setAttribute('class','소구분2');
+  var 소구분태그생성3=document.createElement('div');  소구분태그생성3.setAttribute('class','소구분3');
+  var 소구분태그생성4=document.createElement('div');  소구분태그생성4.setAttribute('class','소구분4');
+  var 파일이름태그생성1, 파일이름태그생성2, 파일이름태그생성3, 파일이름태그생성4;
+  var 머리글태그생성1, 머리글태그생성2, 머리글태그생성3, 머리글태그생성4;
+  var 파일이름='';
+
+  var 파일순환결과종합=[];
+  const fileInput = document.querySelector('#file_input');
+  fileInput.addEventListener('change', 파일돌때마다실행);
+    function 파일돌때마다실행() {//소구분태그생성1, 소구분태그생성2 완성
+      const 탐색기에서선택한폴더 = fileInput.files; //파일들이 모두 담겨있다.
+      for (const 각파일 of 탐색기에서선택한폴더) {
+        if (각파일.name.substring(0,3)=='PDF' || 각파일.name.substring(0,3)=='PNG') {
+
+          파일이름태그생성1=document.createElement('div');
+          파일이름=각파일.name.substring(0,각파일.name.indexOf('.'))
+
+          파일순환결과종합.push(파일이름);//소구분태그생성3, 소구분태그생성4 작업시 필요
+
+          파일이름태그생성1.textContent=파일이름;
+          소구분태그생성1.appendChild(파일이름태그생성1);
+
+          파일이름태그생성2=document.createElement('div');
+          if (리스트독립수정가능정보메모통합.indexOf('[' + 파일이름 + ']')>-1) { //있다면 빈거만든다
+            파일이름태그생성2.textContent='O';
+          } else {
+            파일이름태그생성2.textContent='리스트메모에없음';
+          }
+          소구분태그생성2.appendChild(파일이름태그생성2);
+        }
+      } //반복구문 끝
+      머리글태그생성1=document.createElement('div');
+      머리글태그생성1.textContent='문서연결_리스트';
+      소구분태그생성1.prepend(머리글태그생성1);
+
+      머리글태그생성2=document.createElement('div');
+      머리글태그생성2.textContent='리스트메모에 있는지';
+      소구분태그생성2.prepend(머리글태그생성2);
+    } 
+  //여기까지 파일순환 끝
+  for (var i=0; i<리스트메모.length; i++) {
+    // [PNG..] [PDF..] 형식이 있는 곳만 작업. 머리글태그생성3 에 넣고, 머리글태그생성4에는 문서연결_리스트에 있는지 확인
+    if (리스트메모[i].children[14].innerHTML.indexOf('[')>-1 &&
+        리스트메모[i].children[14].innerHTML.indexOf(']')>-1 &&
+        (리스트메모[i].children[14].innerHTML.indexOf(']') - 리스트메모[i].children[14].innerHTML.indexOf('['))>0) { //있다면 빈거만든다
+        파일이름=리스트메모[i].children[14].innerHTML.substring(리스트메모[i].children[14].innerHTML.indexOf('[')+1,리스트메모[i].children[14].innerHTML.indexOf(']'));
+        파일이름태그생성3=document.createElement('div');
+        파일이름태그생성3.textContent=파일이름;
+        소구분태그생성3.appendChild(파일이름태그생성3)
+
+
+        console.log(파일이름 + ' : ' + 파일순환결과종합.indexOf(파일이름))
+
+        if (파일순환결과종합.indexOf(파일이름)>-1) {//문서연결_리스트에 있으면
+          파일이름태그생성4=document.createElement('div');
+          파일이름태그생성4.textContent='문서연결_리스트에 있음';
+          소구분태그생성4.appendChild(파일이름태그생성4)
+        } else {
+          파일이름태그생성4=document.createElement('div');
+          파일이름태그생성4.textContent='X';
+          소구분태그생성4.appendChild(파일이름태그생성4)
+        }
+    }
+  }
+  머리글태그생성3=document.createElement('div');
+  머리글태그생성3.textContent='리스트 메모 모두';
+  소구분태그생성3.prepend(머리글태그생성3);
+
+  머리글태그생성4=document.createElement('div');
+  머리글태그생성4.textContent='문서연결_리스트에 있는지';
+  소구분태그생성4.prepend(머리글태그생성4);
+
+  전체감싸기태그.appendChild(소구분태그생성1)
+  전체감싸기태그.appendChild(소구분태그생성2)
+  전체감싸기태그.appendChild(소구분태그생성3)
+  전체감싸기태그.appendChild(소구분태그생성4)
+
+  document.querySelector('#PNG셑팅').appendChild(전체감싸기태그);
+}
+function 파일리스트후속() {
+  //파일순환전에 다른코드를 다 실행하기때문에.... 파일순환 결과를 사용할 수 없음
+
+  //전체감싸기태그 안에 마지막으로, 소구분태그생성1, 소구분태그생성2, 소구분태그생성3, 소구분태그생성4 넣는다 
+  //  소구분태그생성1 : 누적이 끝난 파일이름태그생성1 을 넣는다. 
+  //    파일이름태그생성1 의 머리글 부분은 반복구문시 선택적이므로 누적 끝나고 prepend로 앞에 넣는다.
+  //var 리스트독립수정가능정보메모통합 결과는 먼저 필요하다.
+  //var 파일이름은 외부에 한번, 내부에서 지우고 갖고오고 여러번 한다.
+  //프로시저 내부의 프로시저의 변수에서 상위 프로시저에 지정된 변수를 사용할수 있다.
+  console.log('파일리스트()')
+  document.querySelector('#PNG셑팅').innerHTML='';//마지막에 넣을 곳
+  var 리스트메모=document.querySelectorAll('#리스트독립수정가능정보 tr');
+  var 리스트독립수정가능정보메모통합=[];
+  for (var i=0; i<리스트메모.length; i++) {
+    리스트독립수정가능정보메모통합.push(리스트메모[i].children[14].innerHTML);
+  }
+  리스트독립수정가능정보메모통합=리스트독립수정가능정보메모통합.join('!');
+
+  var 전체감싸기태그=document.createElement('div');  전체감싸기태그.setAttribute('class','jspdfpng외부');
+
+  var 소구분태그생성1=document.createElement('div');  소구분태그생성1.setAttribute('class','소구분1');
+  var 소구분태그생성2=document.createElement('div');  소구분태그생성2.setAttribute('class','소구분2');
+  var 소구분태그생성3=document.createElement('div');  소구분태그생성3.setAttribute('class','소구분3');
+  var 소구분태그생성4=document.createElement('div');  소구분태그생성4.setAttribute('class','소구분4');
+  var 파일이름태그생성1, 파일이름태그생성2, 파일이름태그생성3, 파일이름태그생성4;
+  var 머리글태그생성1, 머리글태그생성2, 머리글태그생성3, 머리글태그생성4;
+  var 파일이름='';
+
+  var 파일순환결과종합=[];
+  const fileInput = document.querySelector('#file_input');
+  fileInput.addEventListener('change', 파일돌때마다실행);
+    function 파일돌때마다실행() {//소구분태그생성1, 소구분태그생성2 완성
+      const 탐색기에서선택한폴더 = fileInput.files; //파일들이 모두 담겨있다.
+      for (const 각파일 of 탐색기에서선택한폴더) {
+        if (각파일.name.substring(0,3)=='PDF' || 각파일.name.substring(0,3)=='PNG') {
+
+          파일이름태그생성1=document.createElement('div');
+          파일이름=각파일.name.substring(0,각파일.name.indexOf('.'))
+
+          파일순환결과종합.push(파일이름);//소구분태그생성3, 소구분태그생성4 작업시 필요
+
+          파일이름태그생성1.textContent=파일이름;
+          소구분태그생성1.appendChild(파일이름태그생성1);
+
+          파일이름태그생성2=document.createElement('div');
+          if (리스트독립수정가능정보메모통합.indexOf('[' + 파일이름 + ']')>-1) { //있다면 빈거만든다
+            파일이름태그생성2.textContent='O';
+          } else {
+            파일이름태그생성2.textContent='리스트메모에없음';
+          }
+          소구분태그생성2.appendChild(파일이름태그생성2);
+        }
+      } //반복구문 끝
+      머리글태그생성1=document.createElement('div');
+      머리글태그생성1.textContent='문서연결_리스트';
+      소구분태그생성1.prepend(머리글태그생성1);
+
+      머리글태그생성2=document.createElement('div');
+      머리글태그생성2.textContent='리스트메모에 있는지';
+      소구분태그생성2.prepend(머리글태그생성2);
+    } 
+  //여기까지 파일순환 끝
+  for (var i=0; i<리스트메모.length; i++) {
+    // [PNG..] [PDF..] 형식이 있는 곳만 작업. 머리글태그생성3 에 넣고, 머리글태그생성4에는 문서연결_리스트에 있는지 확인
+    if (리스트메모[i].children[14].innerHTML.indexOf('[')>-1 &&
+        리스트메모[i].children[14].innerHTML.indexOf(']')>-1 &&
+        (리스트메모[i].children[14].innerHTML.indexOf(']') - 리스트메모[i].children[14].innerHTML.indexOf('['))>0) { //있다면 빈거만든다
+        파일이름=리스트메모[i].children[14].innerHTML.substring(리스트메모[i].children[14].innerHTML.indexOf('[')+1,리스트메모[i].children[14].innerHTML.indexOf(']'));
+        파일이름태그생성3=document.createElement('div');
+        파일이름태그생성3.textContent=파일이름;
+        소구분태그생성3.appendChild(파일이름태그생성3)
+
+
+        console.log(파일이름 + ' : ' + 파일순환결과종합.indexOf(파일이름))
+
+        if (파일순환결과종합.indexOf(파일이름)>-1) {//문서연결_리스트에 있으면
+          파일이름태그생성4=document.createElement('div');
+          파일이름태그생성4.textContent='문서연결_리스트에 있음';
+          소구분태그생성4.appendChild(파일이름태그생성4)
+        } else {
+          파일이름태그생성4=document.createElement('div');
+          파일이름태그생성4.textContent='X';
+          소구분태그생성4.appendChild(파일이름태그생성4)
+        }
+    }
+  }
+  머리글태그생성3=document.createElement('div');
+  머리글태그생성3.textContent='리스트 메모 모두';
+  소구분태그생성3.prepend(머리글태그생성3);
+
+  머리글태그생성4=document.createElement('div');
+  머리글태그생성4.textContent='문서연결_리스트에 있는지';
+  소구분태그생성4.prepend(머리글태그생성4);
+
+  전체감싸기태그.appendChild(소구분태그생성1)
+  전체감싸기태그.appendChild(소구분태그생성2)
+  전체감싸기태그.appendChild(소구분태그생성3)
+  전체감싸기태그.appendChild(소구분태그생성4)
+
+  document.querySelector('#PNG셑팅').appendChild(전체감싸기태그);
 }
 
 리스너_head_button_group.addEventListener('click', 리스너_head_button_group클릭이벤트);
