@@ -43,6 +43,8 @@ function 연습() {
 }
 
 
+
+
 function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
 
