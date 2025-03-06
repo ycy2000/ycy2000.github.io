@@ -914,6 +914,21 @@ function cy_on_off() {
     document.querySelector('#PNG셑팅 #표시_오른쪽1선사와자료수집').classList.add('d-none');
   }
 }
+function 리스트메모onoff() {
+  console.log('리스트메모onoff()')
+  if (document.querySelector('#메모외곽').classList.contains('d-none')) {
+    document.querySelector('#PNG셑팅 #메모외곽').classList.remove('d-none');
+    document.querySelector('#리스트메모onoff').innerHTML='메모off '
+    document.querySelector('#표시_오른쪽2CY자료수집').style.marginLeft='-50px' 
+    document.querySelector('#표시_오른쪽1선사와자료수집').style.marginLeft='-50px' 
+    
+  } else {
+    document.querySelector('#메모외곽').classList.add('d-none');
+    document.querySelector('#리스트메모onoff').innerHTML='메모on '
+    document.querySelector('#표시_오른쪽2CY자료수집').style.marginLeft='0px' 
+    document.querySelector('#표시_오른쪽1선사와자료수집').style.marginLeft='0px' 
+  }
+}
 
 function 상세내용편집상태on_off() {
   console.log('상세내용편집상태on_off()')
