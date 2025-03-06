@@ -161,7 +161,7 @@ if (1==1) {//달력부분 및 초기화
         document.querySelectorAll('#days2 > div')[i].classList.add('js메모있는날짜달력표시');
       }
     }
-  
+
   }
   첫번째버튼날짜있을때댤력에표시();
   //메모 관련 끝..  
@@ -181,6 +181,21 @@ if (1==1) {//리스너_head_button_group클릭이벤트(e)
     for (var i = 0; i < document.querySelectorAll('.카테고리').length; i++) {
       document.querySelectorAll('.카테고리')[i].classList.remove('active');
     }
+
+    //자료보관 : 리스트,입항관리 클래스부여 등 그대로 보관하고 다른탭으로 넘어가려면, 전체변수_이전탭 이 리스트나 입항관리일때때
+    if (전체변수_이전탭=='리스트') {
+      if (document.querySelector('#PNG셑팅 #PNG셑팅내부_리스트자료풀림결과')) {
+          document.querySelector('#리스트독립수정가능정보').innerHTML=document.querySelector('#PNG셑팅 #PNG셑팅내부_리스트자료풀림결과').innerHTML
+      }
+    }
+    if (전체변수_이전탭=='입항관리') {
+      if (document.querySelector('#PNG셑팅 #입항관리자료풀림결과')) {
+        document.querySelector('#입항관리독립수정가능정보').innerHTML=document.querySelector('#PNG셑팅 #입항관리자료풀림결과').innerHTML
+      }
+    }
+
+
+    //자료보관 끝>>>>
 
     if (e.target.classList.contains('카테고리')) { e.target.classList.add('active') }
 
@@ -259,11 +274,11 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       }
       if (수정할곳[i].children[11].innerHTML!=수정된요소[i].children[11].innerHTML){
           수정할곳[i].children[11].innerHTML=수정된요소[i].children[11].innerHTML
-         수정할곳[i].children[13].classList.add('수정')
+          수정할곳[i].children[13].classList.add('수정')
       }
       if (수정할곳[i].children[12].innerHTML!=수정된요소[i].children[12].innerHTML){
-         수정할곳[i].children[12].innerHTML=수정된요소[i].children[12].innerHTML
-         수정할곳[i].children[13].classList.add('수정')
+          수정할곳[i].children[12].innerHTML=수정된요소[i].children[12].innerHTML
+          수정할곳[i].children[13].classList.add('수정')
       }
     }
 
@@ -421,10 +436,10 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[6] + '</td>'
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[7] + '</td>'
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[8] + '</td>' //-2
-      div안span4 += '<td class="class상세편집토글" contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>' //선명
+      div안span4 += '<td class="class상세편집토글">' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[9] + '</td>' //선명
       div안span4 += '<td>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[10] + '</td>'
-      div안span4 += '<td class="class상세편집토글" contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
-      div안span4 += '<td class="class상세편집토글" contenteditable>' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
+      div안span4 += '<td class="class상세편집토글">' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[11] + '</td>' //도착항
+      div안span4 += '<td class="class상세편집토글">' + 입항관리화주부터상세까지12_줄바꿈split[i].split('\t')[12] + '</td>' //상세내용원본
       if (i==0) {
         div안span4 += '<td>복사</td>' //빈칸(상세원본복사쉽도록)
       } else {
@@ -568,38 +583,127 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     var 입항관리bl_컨_결합문자열 = 입항관리수정결과.innerText;
     var 단독담기배열=[];
     var 리스트메모2=[];
+    var 오늘날짜 = new Date();
+    var 오늘년 = 오늘날짜.getFullYear();
+    var 월,일,요일;
     //var 리스트목록한줄div = document.querySelectorAll('#PNG셑팅 #PNG셑팅내부_리스트자료풀림결과 tr');
     var 리스트목록한줄div = document.querySelectorAll('#리스트독립수정가능정보 tr');
     var 리스트목록개수 = 리스트목록한줄div.length;
     for (var i = 0; i < 리스트목록개수; i++) {
       var 비엘 = 리스트목록한줄div[i].children[2].innerHTML.trim();
       var 컨 = 리스트목록한줄div[i].children[4].innerHTML.trim();
-      if (비엘 == 'B/LNO.' || (비엘 == '' && 컨 == '')) { continue; } //다음반복문으로
-      //문자열.indexOf('찾는문자열') 없으면 -1
-      if (입항관리bl_컨_결합문자열.indexOf(비엘) > -1 || 입항관리bl_컨_결합문자열.indexOf(컨) > -1) {
-        //컨이나 bl중 하나라도 맞으면 건너뜀
-      } else {
-        var 단독배열push문자열=[]; //일단배열에 담아 가공한다.
-        리스트메모2.push(리스트목록한줄div[i].children[14].innerHTML.trim());
-  
-        //입항관리 뿌리는것 : 0도크,1화주,2컨,3작업순서,4상세,5,빈칸,6운송사,7,물품,8빈칸,9선사,10BL,11상세원본
-        단독배열push문자열.push(100);//0도크,순번부분
-        단독배열push문자열.push(리스트목록한줄div[i].children[3].innerHTML.trim());//1화주
-        단독배열push문자열.push(리스트목록한줄div[i].children[4].innerHTML.trim());//2컨
-        단독배열push문자열.push('작업미정');//3작업순서
-        단독배열push문자열.push('_' + 리스트목록한줄div[i].children[8].innerHTML.trim());//4상세. 리스트 입항일 값 넣는다
-        단독배열push문자열.push('');//5빈칸
-        단독배열push문자열.push('');//6운송사
-        단독배열push문자열.push(리스트목록한줄div[i].children[5].innerHTML.trim() + ' ' + 리스트목록한줄div[i].children[6].innerHTML.trim());//7물품, 품명 & 수량 넣는다
-        단독배열push문자열.push('');//8빈칸
-        단독배열push문자열.push(리스트목록한줄div[i].children[12].innerHTML.trim());//9선사(20피트표시에 선사메모사용)
-        단독배열push문자열.push(리스트목록한줄div[i].children[2].innerHTML.trim());//10BL
-        단독배열push문자열.push(리스트목록한줄div[i].children[7].innerHTML.trim());//11도착항
-        단독배열push문자열.push('_' + 리스트목록한줄div[i].children[8].innerHTML.trim());//12상세원본, 리스트 입항일 값 넣는다
-  
-        단독배열push문자열=단독배열push문자열.join('\t');//탭으로 묶는다. 나중에 분리하여 사용할것이다
-        단독담기배열.push(단독배열push문자열);
+      if (비엘 == 'B/LNO.' || 컨 == '' || 입항관리bl_컨_결합문자열.indexOf(컨) > -1) { continue; } //다음반복문으로
+
+      var 단독배열push문자열=[]; //일단배열에 담아 가공한다.
+
+      리스트메모2.push(리스트목록한줄div[i].children[14].innerHTML.trim()); // 메모부분은 별도로 담아둔다다
+
+      //★★입항관리에 넣을 정보를 가공해야함★★
+      //리스트목록한줄div[i].children[13] : 입관운.도코딩 (도착항,운송사 정보 혼재, 점(.)이있으면 두개로 분리 좌(운송사),우(도착항))
+      //                                                 값이 있는데 점이없다면 도착항만 있다.
+      //리스트목록한줄div[i].children[16] : 선명
+      //리스트목록한줄div[i].children[8] : 날짜아니면 "미정", 날짜면 "03/06(목)입항예정" 형태로 가공
+      //리스트목록한줄div[i].children[10] : 도착일부분에 선사를 넣을수 있다. (:)가 없고 값이 있으면 선사 =>운송사(선사), 또는 ?????(선사)로 사용됨
+      var 선명;
+      if (리스트목록한줄div[i].children[16].innerHTML.trim().length==0) {선명='확인안함'; } else { 선명=리스트목록한줄div[i].children[16].innerHTML.trim()}
+
+      //입항일=미정, 입항일=쓰여진대로, 입항일=날짜(입항예정) 형식이 될수 있다.
+
+      var 입항일,입항일검사; //연관성 없지만 입항일은 변경값으로 전달.
+      const 요일들 = ["일", "월", "화", "수", "목", "금", "토"]; // 요일 = 요일들[메모날짜.getDay()]; 입항일=new Date(2025,"0","1"); 1월1일
+      입항일검사=리스트목록한줄div[i].children[8].innerHTML.trim();
+      if (입항일검사.length==0 || 입항일검사.length=="미정") {
+        입항일="미정"; // else if 조건은 일단 값이있는 경우다.
+        } else if (입항일검사.indexOf('/')>-1 && 입항일검사.split('/').length==2) {// / 가 하나만 있는경우.. 날짜일가능성 많음.
+          월=입항일검사.substring(0,입항일검사.indexOf('/')-1);
+          일=입항일검사.substring(입항일검사.indexOf('/')+1,입항일검사.length);
+          if (!isNaN(월) && !isNaN(일)) {//둘다 숫자면 날짜로 보자
+            if (월>0 && 월<13 && 일 > 0 && 일 < 32 ) { //한번더 확인
+              if (오늘날짜.getMonth()<3 && 월>9) {오늘년=오늘년-1}
+              if (오늘날짜.getMonth()>8 && 월<4) {오늘년=오늘년+1}
+              입항일검사=new Date(오늘년,월-1,일);
+              요일=요일들[입항일검사.getDay()]
+              월=입항일검사.getMonth()+1;
+              일=입항일검사.getDay();
+              if (월.length==1) {월='0' + 월}
+              if (일.length==1) {일='0' + 일}
+              입항일=월 + '/' + 일 + '(입항예정)'
+            }
+          }
+        } else {
+        입항일=입항일검사; //미정도 아니고 공백도 아니고 날짜도 아니면 있는그대로 쓴다.
       }
+
+      //        리스트에 선사(도착일위치에)가 있는경우 : 1)운송사가 없으면 : ?????(선사). 2)운송사 있으면 : 운송사(선사) 로 전달 
+      var 운송사,도착항,선사; //연관성 있는 것들. 선사 10, 운.도 13, 운.도 단독은 도착항 
+      var 운도검사;
+      선사=리스트목록한줄div[i].children[10].innerHTML.trim();
+      if (선사.length>0) {선사='(' + 선사 + ')'} //지정없으면 선사는 공백이 된다.
+      운도검사=리스트목록한줄div[i].children[13].innerHTML.trim();//점이 있으면 두개로 분리
+      if (운도검사.indexOf('.')>-1) {
+            if (선사.length>0) {
+              운송사=운도검사.substring(0,운도검사.indexOf('.')-1) + 선사
+            } else {
+              운송사=운도검사.substring(0,운도검사.indexOf('.')-1)
+            }
+            도착항=운도검사.substring(운도검사.indexOf('.')+1,운도검사.length)
+      } else { // 점이 없을때. 공백 또는 값 있을때 
+        if (운도검사.length==0) {
+            if (선사.length>0) {
+              운송사='?????' + 선사;
+            } else {
+              운송사='?????'
+            }
+            도착항='확인안함'
+        } else { //하나의 값만 있을때는 도착항이다.
+            운송사='?????'
+            도착항='운도검사'
+        }
+      }
+      //★★입항관리에 넣을 정보를 가공해야함★★끝
+
+      //현재 입항일이 공백으로 나타난다.
+      console.log('선명 : ' + 선명)
+      console.log('입항일 : ' + 입항일)
+      console.log('선사 : ' + 선사)
+      console.log('운송사 : ' + 운송사)
+      console.log('운도검사 : ' + 운도검사)
+
+      console.log('선명 : ' + 리스트목록한줄div[i].children[16].innerHTML.trim())
+      console.log('입항일 : ' + 리스트목록한줄div[i].children[8].innerHTML.trim())
+      console.log('선사 : ' + 리스트목록한줄div[i].children[10].innerHTML.trim())
+      console.log('운도검사 : ' + 리스트목록한줄div[i].children[13].innerHTML.trim())
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //입항관리 뿌리는것 : 0도크,1화주,2컨,3작업순서,4상세,5,빈칸,6운송사,7,물품,8빈칸,9선사,10BL,11상세원본
+      단독배열push문자열.push(100);//0도크,순번부분
+      단독배열push문자열.push(리스트목록한줄div[i].children[3].innerHTML.trim());//1화주
+      단독배열push문자열.push(리스트목록한줄div[i].children[4].innerHTML.trim());//2컨
+      단독배열push문자열.push('작업미정');//3작업순서
+      단독배열push문자열.push('_' + 리스트목록한줄div[i].children[8].innerHTML.trim());//4상세. 리스트 입항일 값 넣는다
+      단독배열push문자열.push('');//5빈칸
+      단독배열push문자열.push(운송사 + 선사);//6운송사 + 선사있으면 (선사) + 하기
+      단독배열push문자열.push(리스트목록한줄div[i].children[5].innerHTML.trim() + ' ' + 리스트목록한줄div[i].children[6].innerHTML.trim());//7물품, 품명 & 수량 넣는다
+      단독배열push문자열.push('');//8빈칸
+      단독배열push문자열.push(선명);//9선명
+      단독배열push문자열.push(리스트목록한줄div[i].children[2].innerHTML.trim());//10BL
+      단독배열push문자열.push(도착항);//11도착항
+      단독배열push문자열.push(입항일);//12상세원본, 리스트 입항일 값 넣는다
+
+      단독배열push문자열=단독배열push문자열.join('\t');//탭으로 묶는다. 나중에 분리하여 사용할것이다
+      단독담기배열.push(단독배열push문자열);
+
     }
     if (단독담기배열.length==0) {alert('단독 없음!'); return;} else {alert(단독담기배열.length + ' 건. 맨 아래 추가')}
     //console.log(단독담기배열) : 입항관리에 단독만 표시되도록 코딩
@@ -629,8 +733,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     console.log('메모2부분')
     //리스트시트 메모2부분 만들기
     var 메모2자료풀림결과=document.querySelector('#PNG셑팅 #오른쪽리스트메모2만');
-    console.log(리스트메모2)
-    for (var i = 0; i < 리스트메모2.length; i++) {
+     for (var i = 0; i < 리스트메모2.length; i++) {
       var div안span4 = '';
       div안span4 = '<table><tbody><tr><td>' + 리스트메모2[i] + '</td></tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
       메모2자료풀림결과.innerHTML = 메모2자료풀림결과.innerHTML + div안span4;
