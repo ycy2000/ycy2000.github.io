@@ -7,27 +7,15 @@ function png와text사용확인() {
   document.querySelector('#전체대체').classList.remove('d-none');
 }
 function 연습2() {
-
-  var 요소=document.querySelector('#연습2');
-  var 텍스트=요소.innerHTML;
-  var 줄바꿈배열=텍스트.split('\n');
-  var 줄바꿈배열엑셀=텍스트.split('\r\n');
-  var 탭분리배열=텍스트.split('\t');
-  var 모두탭으로=텍스트.replace(/\n/gim,'\t').split('\t') 
-  //g플래그 없으면 하나만 바뀜. g모두 i 대소문자 구분안함, m 여러행의 문자열 검색
-
-  console.log(줄바꿈배열)
-  console.log(줄바꿈배열엑셀)
-  console.log(탭분리배열)
-  console.log(모두탭으로)
-
-  console.log('length : ' + 줄바꿈배열.length + ', 줄바꿈배열')
-  console.log('length : ' + 줄바꿈배열엑셀.length + ', 줄바꿈배열엑셀')
-  console.log('length : ' + 탭분리배열.length + ', 탭분리배열')
-  console.log('length : ' +모두탭으로.length + ', 모두탭으로')
-
+var 날짜=new Date(2025,3,28)
+console.log(날짜.getDay)
 }
 function 연습() {
+  var 날짜=new Date(2025,3,28)
+console.log(isNaN(날짜))
+
+
+return;
   console.log('연습()')
   var 결과부분 = document.querySelector('#전체대체');
   var 연습제목설정이것만 = 'textarea내용의탭으로구분여러줄가공';

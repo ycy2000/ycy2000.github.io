@@ -615,7 +615,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       if (입항일검사.length==0 || 입항일검사.length=="미정") {
         입항일="미정"; // else if 조건은 일단 값이있는 경우다.
         } else if (입항일검사.indexOf('/')>-1 && 입항일검사.split('/').length==2) {// / 가 하나만 있는경우.. 날짜일가능성 많음.
-          월=입항일검사.substring(0,입항일검사.indexOf('/')-1);
+          월=입항일검사.substring(0,입항일검사.indexOf('/'));
           일=입항일검사.substring(입항일검사.indexOf('/')+1,입항일검사.length);
           if (!isNaN(월) && !isNaN(일)) {//둘다 숫자면 날짜로 보자
             if (월>0 && 월<13 && 일 > 0 && 일 < 32 ) { //한번더 확인
@@ -624,21 +624,22 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
               입항일검사=new Date(오늘년,월-1,일);
               요일=요일들[입항일검사.getDay()]
               월=입항일검사.getMonth()+1;
-              일=입항일검사.getDay();
-              if (월.length==1) {월='0' + 월}
-              if (일.length==1) {일='0' + 일}
-              입항일=월 + '/' + 일 + '(입항예정)'
+              일=입항일검사.getDate();
+              // 숫자.length 는 사용이 안된다.
+              if (월<10) {월='0' + 월}
+              if (일<10) {일='0' + 일}
+              입항일=월 + '/' + 일 + '(' + 요일 + ')입항예정'
             }
           }
         } else {
         입항일=입항일검사; //미정도 아니고 공백도 아니고 날짜도 아니면 있는그대로 쓴다.
       }
-
       //        리스트에 선사(도착일위치에)가 있는경우 : 1)운송사가 없으면 : ?????(선사). 2)운송사 있으면 : 운송사(선사) 로 전달 
       var 운송사,도착항,선사; //연관성 있는 것들. 선사 10, 운.도 13, 운.도 단독은 도착항 
       var 운도검사;
-      선사=리스트목록한줄div[i].children[10].innerHTML.trim();
-      if (선사.length>0) {선사='(' + 선사 + ')'} //지정없으면 선사는 공백이 된다.
+      선사=리스트목록한줄div[i].children[10].innerHTML.trim(); //선사로 쓰일때는 문자열넣겠지만... 도착일은 날짜고 숫자이다.
+      //console.log('공백이나 문자열일때 true : ' + isNaN(선사)) 날짜일때 false
+      if (isNaN(선사)) {선사='(' + 선사 + ')'} //공백이나 문자열(선사)일때, 지정업으면 공백이된다.
       운도검사=리스트목록한줄div[i].children[13].innerHTML.trim();//점이 있으면 두개로 분리
       if (운도검사.indexOf('.')>-1) {
             if (선사.length>0) {
@@ -657,34 +658,10 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
             도착항='확인안함'
         } else { //하나의 값만 있을때는 도착항이다.
             운송사='?????'
-            도착항='운도검사'
+            도착항=운도검사
         }
       }
       //★★입항관리에 넣을 정보를 가공해야함★★끝
-
-      //현재 입항일이 공백으로 나타난다.
-      console.log('선명 : ' + 선명)
-      console.log('입항일 : ' + 입항일)
-      console.log('선사 : ' + 선사)
-      console.log('운송사 : ' + 운송사)
-      console.log('운도검사 : ' + 운도검사)
-
-      console.log('선명 : ' + 리스트목록한줄div[i].children[16].innerHTML.trim())
-      console.log('입항일 : ' + 리스트목록한줄div[i].children[8].innerHTML.trim())
-      console.log('선사 : ' + 리스트목록한줄div[i].children[10].innerHTML.trim())
-      console.log('운도검사 : ' + 리스트목록한줄div[i].children[13].innerHTML.trim())
-
-
-
-
-
-
-
-
-
-
-
-
 
       //입항관리 뿌리는것 : 0도크,1화주,2컨,3작업순서,4상세,5,빈칸,6운송사,7,물품,8빈칸,9선사,10BL,11상세원본
       단독배열push문자열.push(100);//0도크,순번부분
@@ -694,7 +671,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       단독배열push문자열.push('_' + 리스트목록한줄div[i].children[8].innerHTML.trim());//4상세. 리스트 입항일 값 넣는다
       단독배열push문자열.push('');//5빈칸
       단독배열push문자열.push(운송사 + 선사);//6운송사 + 선사있으면 (선사) + 하기
-      단독배열push문자열.push(리스트목록한줄div[i].children[5].innerHTML.trim() + ' ' + 리스트목록한줄div[i].children[6].innerHTML.trim());//7물품, 품명 & 수량 넣는다
+      단독배열push문자열.push(리스트목록한줄div[i].children[6].innerHTML.trim() + ' ' + 리스트목록한줄div[i].children[5].innerHTML.trim());//7 수량 띄우고 물품
       단독배열push문자열.push('');//8빈칸
       단독배열push문자열.push(선명);//9선명
       단독배열push문자열.push(리스트목록한줄div[i].children[2].innerHTML.trim());//10BL
