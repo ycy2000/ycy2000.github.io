@@ -238,7 +238,7 @@
   </div>
   <div class="개별카테고리" id="기타전체_녹화">
     <div>
-      <h6 class="fw-bold">XBOX 검색하여 알아보기. [윈도우 + ALT + R] 녹화시작, 녹화중지 => 파일은 동영상 - 캡쳐 폴더에 있음</h6>
+      <h6 class="fw-bold">XBOX 검색하여 알아보기.  윈도우 + G (XBOX)열기, [윈도우 + ALT + R] 녹화시작, 녹화중지 => 파일은 동영상 - 캡쳐 폴더에 있음</h6>
     </div>
     <div>
 
@@ -1472,29 +1472,6 @@
       <h6 class="fw-bold" style="text-indent: 15px;">- 좌우 공백 제거하려면, map함수 사용(배열이 각 요소를 순회하여 콜백함수를 적용한 결과를 모아 새로운 배열을 반환하는 함수)</h6>
 
 
-
-
-
-      <span id="연습2" style="display: inline;" contenteditable="">첫줄(a1)	첫줄(b1)
-        두번째줄(a2)	두번째줄(b2)</span>
-
-      <br>
-      <table>
-      <tbody>
-      <tr><td>dsf</td>
-      <td>df</td>
-      <td>sdf</td>
-      <td>sdf</td>
-      <td>sdf</td></tr>
-      <tr><td>dsf</td>
-        <td>df</td>
-        <td>sdf</td>
-        <td>sdf</td>
-        <td>sdf</td></tr>
-      </tbody>
-      </table>
-      <button onclick="연습2()">연습2() 실행</button>  
-
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <h5 class="fw-bold" style="color:blueviolet">★EXCEL 셀범위 복사 붙여넣기시, \t(탭), \n(줄바꿈)★..... ★click, copy 브라우저 text 가공★ </h5>
@@ -2127,6 +2104,7 @@
       <div>
         <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
         <h6 class="canvas_div fw-bold" title='excel_js_HTML노드'>노드 </h6>
+        <h6 class="canvas_div" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
       </div>
       <div>
 
@@ -4123,6 +4101,24 @@
     </div>
   </div>
 
+  <div id="excel_InStrRev"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">InStr([Start], String1, String2, [Compare]) : 문자열에서 부분 문자열 위치 찾기</h5>
+      <h6 style="text-indent: 23px;">- [Start]: 선택적 매개변수로, 문자열을 검색할 시작 위치를 나타내는 정수입니다. 기본값은 1로, 문자열의 시작부터 검색</h6>
+      <h6 style="text-indent: 23px;">- [String1]: 검색 대상 문자열입니다.</h6>
+      <h6 style="text-indent: 23px;">- [String2]: 검색할 부분 문자열입니다.</h6>
+      <h6 style="text-indent: 23px;">- [Compare]: 기본값은 vbBinaryCompare로 대소문자를 구분합니다. 구분안함은 vbTextCompare</h6>
+
+      <code class="fw-bold">• </code>
+      <code class="fw-bold"></code>
+      <span style="color:blueviolet"></span>
+      <h6></h6>
+      <h6 style="text-indent: 23px;"></h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
   <div id="height"><!-- 참고 -->
     <h6>• margin 값은 공통적으로 포함하지 않는다.</h6>
     <h6>• clientHeight : content영역 + padding 영역, <u><b>border 제외, scroll 아래 제외</b></u></h6>
@@ -4516,7 +4512,6 @@
         <h6 class="canvas_div" title='vba변수선언'>vba 변수1 > 선언, 변수이름 규칙, 데이터형(Type), 프로시저</h6>
         <h6 class="canvas_div" title='vba변수2'>vba 변수2 > As 데이터형(Type), Type들</h6>
         <h6 class="canvas_div" title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf), chr</h6>
-        <h6 class="canvas_div" title='excel_InStrRev'>작성중 InStr, InStrRev 찾기</h6>
         <h6 class="canvas_div" title='excel_search'>작성중 Search 찾기</h6>
         <h6 class="canvas_div" title='excel_find'>Find찾기, Replace바꾸기</h6>
         <h6 class="canvas_div" title='excel_column'>Column > ColumnWidth, 열숨기기/보기, Join, Split, Array</h6>
@@ -5676,7 +5671,7 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-
+  
   <div id="excel_find"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">find로 찾지못한 변수는 Nothing 상태이다.</h5>

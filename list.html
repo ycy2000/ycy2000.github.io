@@ -29,7 +29,9 @@
         <button type="button" class="btn btn-light 카테고리 카테좁게">완료</button>
         <button type="button" class="btn btn-light 카테고리 카테좁게">운송</button>
         <button type="button" class="btn btn-light 카테고리 카테좁게">메모</button>
+        <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. 
         <button type="button" class="btn btn-light 카테고리 카테좁게" data-bs-toggle="offcanvas" data-bs-target="#라벨등전체" aria-controls="offcanvasBottom">라벨</button>
+        -->
         <button type="button" class="btn btn-light 카테고리 카테기본" style="margin-left:20px;">리스트</button>
         <button type="button" class="btn btn-light 카테고리 카테기본">입항관리</button>
         <button type="button" class="btn btn-light 카테고리 카테기본">축산예정</button>
@@ -91,19 +93,7 @@
     <!-- 날짜 오른쪽 BUTTON은 값이 있어도 첫번째버튼이 날짜형식이면 js로 바뀜(요일) background-color:chartreuse-->
     <!-- id=달력날짜기준, 1일일때 안바뀌고 달력날짜기준의 날짜를 참고로 달력이 바뀐다. -->
     <!--★★★★★★ .연두바탕보라글자, .보라글자, .테두리, .마진탑3 -->
-    <button id="달력날짜기준" class="d-none">2월27일</button>
-    <div><button>2월27일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div class="테두리">수산물검사 : 오션트레이딩(씨케이) 3/11 열빙어 100개, 7층 (스티커 작업분)</div>
-      </div>
-    </div>
-    <div><button>2월28일</button><button></button>
-      <div class="일별메모모두감싸기">
-        <div style="background-color:yellow;border:1px solid black;border-radius: 5px;;">25.1.3 입고 수월한 MEDUE8541827, 폐기1개후, 전량반출 1844개 <br>
-        남은중량 : 23152.08, 수입신고중량 : 23152, ===> 0.08 안맞아서 반출신고 안되는상태 (대흥기업통화 금 17시)
-        </div>
-      </div>
-    </div>
+    <button id="달력날짜기준" class="d-none">3월1일</button>
     <div><button>3월12일</button><button></button>
       <div class="일별메모모두감싸기">
         <div style="background-color: cadetblue;border:1px solid black;border-radius: 5px;;">등록공장 점검, 오후</div>
@@ -129,57 +119,59 @@
 </div>
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분		03/07 금 15:39	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
-  1		HDMUSGNA75657500	우원홀딩스	HMMU5203361	새우	1,000 	HPNT	3/4	1			20 	HPNT			YM WISH					03/07 금 15:39	
-  1		EGLV731500002369	(유)SM무역	EMCU5448401	오징어	1,200 	DGT	3/6	1				DGT			EVER CLEVER(KTH)					조회정보	
-  1	○	DOLBKC2508E109	하나교역	BMOU9781544	다슬기	1,600 	 인터7부두	3/7	1	3/7	15:32		 인터7부두		DOLBKC2508E109	YONG SHENG 158	25DWICB508I-0010-0001	1,600 	19,000.00 	2025.03.06	적재	57 
-  1	○	SITRRIPU031923	씨케이글로벌	FBIU7503068	새우	1,800 	HU.BPT감만	3/10	1			20 	HU.BPT감만		SITRRIPU031923	SITC HONGKONG	25SCLK2039I-0020-	1,800 	5,400.00 	2025.03.08	4,617 	3줄
-  1		ZIMUSNC811170	GK교역	JXLU5128442	오징어	1,200 	BCT	3/9	1				BCT			ZIM MOUNT DENALI					6,156 	4줄
-  1		KMTCSUB2358706	씨케이글로벌	TTNU8789275	새우	1,800 	J&J.BCT	3/10	1				J&J.BCT			KMTC SHIMIZU(BCT)					7,695 	5줄
-  1	○	SSZ1584468B	대상	CGMU4907538	닭다리	1,980 	챔프(EZ신항).BNCT	3/8	2				챔프(EZ신항).BNCT		SSZ1584468B	CMA CGM LEGACY	25CMAL0133I-2091-	1,980 	24,948.00 	2025.03.06	9,234 	6줄
-  1	○	ONEYRICF29634700	포쉐프	OTPU6357450	돈육	1,000 	SS신항.HJNC	3/10	2				SS신항.HJNC		ONEYRICF29634700	UNAYZAH EXPRESS	25HLCU8020I-5057-	1,960 	18,940.20 	2025.03.07		
-  1		HLCUIT1250102985	수월한	HLBU9541736	닭다리	1,958 	ACE.PNIT	3/10	2				ACE.PNIT			BUENOS AIRES EXPRESS					출고/입고 4주간	
-      NSSLBKBSC2500093	뉴아시아	SZLU9935471	닭날개	1,950 	BPT신선대	3/9	2				BPT신선대			PANCON BRIDGE					1일 7/5	5일줄
-      NSSLLCBSC2500108	대성무역	SZLU9934829	닭날개	1,925 	BPT신선대	3/9	2				BPT신선대			PANCON BRIDGE					12,449 	40.4 
-      NSSLLCBSC2500101	마이푸드	SZLU9370797	닭다리살	1,925 	BPT신선대	3/9	2				BPT신선대			PANCON BRIDGE					13,875 	45.1 
-      SMLMBKK5A0716100	우원홀딩스	SZLU3612661	초오징어	735 	BPT신선대	3/9	1			20 	BPT신선대			PANCON BRIDGE					내국제외	
-      HDMUBKKA29602800	뉴아시아	HMMU5424362	닭다리살	1,925 	HPNT	3/11	2				HPNT			INFERRO					구분	대수
-      HDMUBKKA29602801	마이푸드	HMMU5452446	닭다리살	1,925 	HPNT	3/11	2				HPNT			INFERRO					수산	18
-      DLPMC00084179	삼영수산	UACU4803646	오징어	1,225 	BNCT	3/11	1				BNCT			ERVING					축산	32
-      DLPMC00084182	삼영수산	HLBU6141994	오징어	1,225 	BNCT	3/11	1				BNCT			ERVING					합계	50
-      ONEYSCLF01401600	씨케이글로벌	SZLU9547970	홍합살	2,400 	PNIT	3/11	1				PNIT			MSC TAYLOR						
-      VAPPUS202501004844	(유)SM무역	OTPU6492059	오징어	1,200 	?????(양밍).BCT	3/12	1				?????(양밍).BCT			WAN HAI 625					화주별 요약	
-      COSU6404528630	DK통상	CBHU2842416	닭다리	1,916 	BNCT	3/12	2				BNCT			CMA CGM RODOLPHE					화주	대수
-      COSU6407154940	대성무역	TTNU8679215	닭다리	1,958 	BNCT	3/12	2				BNCT			CMA CGM RODOLPHE					씨케이글로벌	5
-      SNKO190250101953	씨케이글로벌	SEKU9004762	새우	1,757 	BPT신선대	3/12	1			20 	BPT신선대			SAWASDEE ALTAIR					아스트로스	5
-      MAEU250009517	해솔무역	MMAU1073428	조기	2,325 	PNC	3/12	1				PNC			MAERSK EDINBURGH					수월한	4
-      HLCUPN4250167801	더맛하	HLBU9697354	닭다리	1,950 	PNIT	3/13	2				PNIT			MSC VICTORIA					대상 주식회사	4
-      MEDUHI143015	동원홈푸드	CRLU1192254	닭다리	1,958 	BCT	3/13	2				BCT			MSC APOLLO					대성무역	3
-      COSU6404528410	DK통상	FBIU5373411	닭다리	1,916 	BNCT	3/15	2				BNCT			COSCO PRIDE					삼영수산	3
-      HDMUSAOA94776003	대상 주식회사	TCLU1309055	닭다리살	1,960 	HPNT	3/15	2	HMM			HPNT			HYUNDAI PARAMOUNT					이마트	3
-      MAEUJBS259147	동원홈푸드	MNBU0649230	닭다리살	1,958 	PNC	3/15	2				PNC			MSC ZOE					우원홀딩스	2
-      HDMUSAOA40472900	수월한	TEMU9690303	닭다리살	1,917 	HPNT	3/15	2				HPNT			HYUNDAI PARAMOUNT					(유)SM무역	2
-      HDMUSAOA94776006	수월한	HMMU5447558	닭다리살	1,960 	HPNT	3/15	2				HPNT			HYUNDAI PARAMOUNT					하나교역	2
-      HDMUSAOA02235900	아스트로스	HMMU5431968	닭다리살	1,875 	HJNC	3/15	2				HJNC			HMM HANBADA					GK교역	2
-      HDMUSAOA55864100	아스트로스	TCLU1310457	닭다리살	1,875 	HPNT	3/15	2				HPNT			HYUNDAI PARAMOUNT					대상	2
-      HDMUSAOA85816600	아스트로스	HDMU5519515	닭발	1,500 	HJNC	3/15	2				HJNC			HMM HANBADA					뉴아시아	2
-      MEDUHI151067	대상	BMOU9228009	닭다리	1,985 	PNIT	3/17	2				PNIT			MSC BEATRICE					마이푸드	2
-      HDMUSAOA75620700	수월한	HMMU5428820	닭다리살	1,960 	HPNT	3/17	2				HPNT			HYUNDAI PRESTIGE					DK통상	2
-      VAPPUS202502004873	GK교역	YMLU5411780	오징어	1,200 	?????(양밍).BCT	3/18	1				?????(양밍).BCT			WAN HAI 612					더맛하	2
-      HLCUPN4250162428	더맛하	HLBU9315338	닭다리	1,950 	PNIT	3/22	2				PNIT			ONE SPARKLE					동원홈푸드	2
-      MAEUJBS260882	이마트	MNBU0676771	닭다리살	1,941 	PNC	3/22	2				PNC			MSC DITTE					포쉐프	1
-      COSU6453325310	아스트로스	SEGU9516595	닭다리살	1,960 	BNCT	3/29	2				BNCT			COSCO SHIPPING JASMINE					해솔무역	1
-      MAEUSSZ780940	대상 주식회사	MNBU0231620	닭다리살	1,980 	PNC	3/30	2				PNC			MSC REEF					상창	1
-      MAEUSSZ780958	대상 주식회사	SUDU8065310	닭다리살	1,980 	PNC	3/30	2				PNC			MSC REEF					합계	50
+<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	03/10 월 17:14	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
+  1	○	SSTLBDNF5710482	세현	PHRU5230660	오징어	1,127 	반이부ㅐ	3/8	1				운도BVA		SSTLBDNF5710482	PANSTAR GENIE	25SSPSB710I-0019-0001	5,637 	124,040.00 	2025.03.08	03/10 월 17:14	
+  1		SSTLBDNF5710482	세현	BMOU9722963	오징어	1,127 	다목적항	3/8	1				다목적항			PANSTAR GENIE					조회정보	
+  1		SSTLBDNF5710482	세현	BMOU9767248	오징어	1,127 	다목적항	3/8	1				다목적항			PANSTAR GENIE					적재	57 
+  1		SSTLBDNF5710482	세현	PHRU5210089	오징어	1,127 	다목적항	3/8	1				다목적항			PANSTAR GENIE					4,617 	3줄
+  1		SSTLBDNF5710482	세현	PHRU5230655	오징어	1,129 	다목적항	3/8	1				다목적항			PANSTAR GENIE					6,156 	4줄
+  1	○	NSSLBKBSC2500093	뉴아시아	SZLU9935471	닭날개	1,950 	BPT신선대	3/9	2				BPT신선대		NSSLBKBSC2500093	PANCON BRIDGE	25PCLUBK03I-3005-	1,950 	24,375.00 	2025.03.08	7,695 	5줄
+  1		NSSLLCBSC2500108	대성무역	SZLU9934829	닭날개	1,925 	BPT신선대	3/9	2				BPT신선대			PANCON BRIDGE					9,234 	6줄
+      NSSLLCBSC2500101	마이푸드	SZLU9370797	닭다리살	1,925 	BPT신선대	3/9	2				BPT신선대			PANCON BRIDGE						
+      SMLMBKK5A0716100	우원홀딩스	SZLU3612661	초오징어	735 	BPT신선대	3/10	1			20 	BPT신선대			PANCON BRIDGE					출고/입고 4주간	
+      HDMUBKKA29602800	뉴아시아	HMMU5424362	닭다리살	1,925 	HPNT	3/11	2				HPNT			INFERRO					1일 7/5	5일줄
+      HDMUBKKA29602801	마이푸드	HMMU5452446	닭다리살	1,925 	HPNT	3/11	2				HPNT			INFERRO					12,474 	40.5 
+      DLPMC00084179	삼영수산	UACU4803646	오징어	1,225 	BNCT	3/11	1				BNCT			ERVING					12,841 	41.7 
+      DLPMC00084182	삼영수산	HLBU6141994	오징어	1,225 	BNCT	3/11	1				BNCT			ERVING					내국제외	
+      ONEYSCLF01401600	씨케이글로벌	SZLU9547970	홍합살	2,400 	PNIT	3/11	1				PNIT			MSC TAYLOR					구분	대수
+      VAPPUS202501004844	(유)SM무역	OTPU6492059	오징어	1,200 	?????.BCT	3/12	1	양밍			?????.BCT			WAN HAI 625					수산	20
+      COSU6404528630	DK통상	CBHU2842416	닭다리	1,916 	BNCT	3/12	2				BNCT			CMA CGM RODOLPHE					축산	31
+      COSU6407154940	대성무역	TTNU8679215	닭다리	1,958 	BNCT	3/12	2				BNCT			CMA CGM RODOLPHE					합계	51
+      SNKO190250101953	씨케이글로벌	SEKU9004762	새우	1,757 	BPT신선대	3/12	1			20 	BPT신선대			SAWASDEE ALTAIR						
+      COSU6407154949	오케이푸드	SZLU9213057	닭다리살	1,958 	BNCT	3/12	2				BNCT			COSCO SHIPPING ROSE					화주별 요약	
+      MAEU250009517	해솔무역	MMAU1073428	조기	2,325 	PNC	3/12	1				PNC			MAERSK EDINBURGH					화주	대수
+      MEDUE8689634	현대코퍼	TRIU8758725	닭다리살	1,980 		3/12	2				BCT			MSC ASTRID					세현	5
+      HLCUPN4250167801	더맛하	HLBU9697354	닭다리	1,950 	PNIT	3/13	2				PNIT			MSC VICTORIA					아스트로스	5
+      MEDUHI143015	동원홈푸드	CRLU1192254	닭다리	1,958 	BCT	3/13	2				BCT			MSC APOLLO					대상 주식회사	4
+      DOLWBYS2509E509	해솔무역	TEMU9169379	아귀	2,120 		3/13	1	XINGDA SIPPING			인터7부두			YONG SHENG 158					수월한	4
+      COSU6404528410	DK통상	FBIU5373411	닭다리	1,916 	BNCT	3/15	2				BNCT			COSCO PRIDE					대성무역	3
+      HDMUSAOA94776003	대상 주식회사	TCLU1309055	닭다리살	1,960 	?????.HPNT	3/15	2	HMM			?????.HPNT			HYUNDAI PARAMOUNT					삼영수산	3
+      MAEUJBS259147	동원홈푸드	MNBU0649230	닭다리살	1,958 	PNC	3/15	2				PNC			MSC ZOE					씨케이글로벌	3
+      _910516340001	상창	SEGU9972830	아귀	1,100 	BCT	3/15	1				BCT			EVER FIT					이마트	3
+      HDMUSAOA40472900	수월한	TEMU9690303	닭다리살	1,917 	HPNT	3/15	2				HPNT			HYUNDAI PARAMOUNT					우원홀딩스	2
+      HDMUSAOA94776006	수월한	HMMU5447558	닭다리살	1,960 	HPNT	3/15	2				HPNT			HYUNDAI PARAMOUNT					GK교역	2
+      YMJAB951081931	수월한	YMLU5402407	닭다리살	1,960 		3/15	2	양밍						COSCO SHIPPING MEXICO					뉴아시아	2
+      HDMUSAOA02235900	아스트로스	HMMU5431968	닭다리살	1,875 	HJNC	3/15	2				HJNC			HMM HANBADA					마이푸드	2
+      HDMUSAOA55864100	아스트로스	TCLU1310457	닭다리살	1,875 	HPNT	3/15	2				HPNT			HYUNDAI PARAMOUNT					DK통상	2
+      HDMUSAOA85816600	아스트로스	HDMU5519515	닭발	1,500 	HJNC	3/15	2				HJNC			HMM HANBADA					해솔무역	2
+      MAEU720652301	현대코퍼	MNBU0589384	닭다리살	1,980 		3/15	2				PNC			MSC ZOE					현대코퍼	2
+      MAEUSSZ781300	대상 주식회사	MNBU0028085	닭다리살	1,980 	PNC	3/16	2				PNC			GSL CHRISTEL ELISABETH					더맛하	2
+      MEDUHI151067	대상	BMOU9228009	닭다리	1,985 	PNIT	3/17	2				PNIT			MSC BEATRICE					동원홈푸드	2
+      HDMUSAOA75620700	수월한	HMMU5428820	닭다리살	1,960 	HPNT	3/17	2				HPNT			HYUNDAI PRESTIGE					(유)SM무역	1
+      VAPPUS202502004873	GK교역	YMLU5411780	오징어	1,200 	?????.BCT	3/18	1	양밍			?????.BCT			WAN HAI 612					오케이푸드	1
+      HLCUPN4250162428	더맛하	HLBU9315338	닭다리	1,950 	PNIT	3/22	2				PNIT			ONE SPARKLE					상창	1
+      MAEUJBS260882	이마트	MNBU0676771	닭다리살	1,941 	PNC	3/22	2				PNC			MSC DITTE					대상	1
+      COSU6453325310	아스트로스	SEGU9516595	닭다리살	1,960 	BNCT	3/29	2				BNCT			COSCO SHIPPING JASMINE					씨에이치씨	1
+      MAEUSSZ780940	대상 주식회사	MNBU0231620	닭다리살	1,980 	PNC	3/30	2				PNC			MSC REEF					하나교역	1
+      MAEUSSZ780958	대상 주식회사	SUDU8065310	닭다리살	1,980 	PNC	3/30	2				PNC			MSC REEF					합계	54
       MAEUJBS261630	이마트	MMAU1099058	닭다리살	1,939 	PNC	3/30	2				PNC			MSC REEF						
       _24330051535	씨케이글로벌	HLBU6119780	피뿔고동	2,200 	HJNC	4/3	1				HJNC			YM WARMTH						
-      MAEUSSZ781300	대상 주식회사	MNBU0028085	닭다리살	1,980 		4/6	2							GSL CHRISTEL						
       LMM0511649	삼영수산	SZLU9867063	오징어	1,100 		4/10	1							CMA,CMA CGM BOLDNESS						
       COSU6409068300	이마트	FBIU5055719	닭다리살	1,955 		4/19	2							KOTA PUSAKA						
-      SSZ1600580	아스트로스	TXGU9006121	닭발	1,500 		5/1	2	CMA						CMA CGM AMAZON						
-      MEDUSF542055	대성무역	MEDU9801929	닭다리	1,960 	DGT	5/5	2				DGT			MSC IRINA						
-      _910516340001	상창	SEGU9972830	아귀	1,100 		미정	1							EVER FIT V						
-      ??	하나교역	BMOU9502491	다슬기등	1,830 			1													  
+      SSZ1600580	아스트로스	TXGU9006121		1,500 		5/1														
+      MEDUSF542055	대성무역	MEDU9801929		1,960 		5/5														
+      ??	하나교역	BMOU9502491		1,830 		미정														
+      041FX00516	씨에이치씨	SZLU2049912		929 		3/13														  
 </div>
 <div class="d-none" id="원본text_입항관리도크부터도착항우측까지">도크	화주	컨테이너	작업순서	상세내용 참조		운송사	물품		03/07 금 15:39	B/L	도착항	상세내용
   1												
