@@ -248,6 +248,7 @@
     </div>
   </div>
   <!-- 카테고리 끝났으면 아래는 개별파일 -->
+
   <div id="탁구_메모"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold">스윙으로 탁구를 쳐라 : 공에 따라 스윙을 입력하고 출력하라. (많은 구질 경험 필요)</h6>
@@ -1500,6 +1501,62 @@
     </div>
   </div>
 
+  <div id="연습DIV">
+    PANCON BRIDGE	SMLMBKK5A0716100
+    INFERRO	HDMUBKKA29602801
+  </div>
+  
+  <div id="html_text_content_탭과줄바꿈">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold">참고 : vsCode편집중 탭을 누르면 \t 가 아니라 공백이 들어간다(탭 누를때 공백 몇칸 넣을지 설정된대로)</h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">1. innerHTML, textContent : 모든 공백 length로 계산됨, 줄바꿈도 문자열 하나로 계산</h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">2. 문자열.trim() : 좌우의 공백과 줄바꿈문자열을 지워준다.</h6>
+      <h6 class="fw-bold">참고 : 엑셀 범위 복붙하면 가로는 탭(\t)이 삽입되고, 세로는 줄바꿈(\n)이 삽입된다. 탭과 줄바꿈 문자열이 들어있다.<span style="color:blueviolet">★이 경우★</span></h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">1. 태그에서 한줄 엔터치고 넣으면 줄바꿈이 들어간 상태.</h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">2. 엑셀범위 붙여넣으면 태그에서 엔터쳤을때 기본위치에 배치되는데 왼쪽에 공백이 있음</h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">3. <span style="color:blueviolet">★문자열.trim()★</span> 해주면 좌우에 있는 공백과 줄바꿈문자열을 없애준다.</h6>
+      <h6 class="fw-bold">참고 : 탭으로 분리, 연습.innerHTML.split('\t')[1].length : 28 분석 </h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">-  SMLMBKK5A0716100(16) + 줄바꿈(1) + 공백(4) + INFERRO(7)</h6>
+      <h6 class="fw-bold"><a href="https://velog.io/@kim_unknown_/JavaScript-Difftext" target="_blank">[JavaScript] innerHTML, innerText, textContent 차이</a> 배열값으로는 별 차이 없다.</h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">1. innerHTML은 태그까지 같이 나온다는것 빼고 TEXT값만 있을때는 배열값에는 차이 없다.</h6>
+      <br>
+      <h6 class="fw-bold">• innerHTML 사용시 JS스크립트 코드 전달이 가능하여 악의적인 접근시 위험할 수 있다.  </h6>
+      <h6 class="fw-bold">• innerText 는 display:none 등의 속성의 영향을 받아 계산할 것이 많다고 한다.  </h6>
+      <h6 class="fw-bold">• textContent 는 문자열만 다루므로 가볍다고 한다.</h6>
+      <br>
+      <h6 class="fw-bold">• textContent, innerText로는, <span style="color:blueviolet"> 요소.innerText='&lt;p&gt;innerText로 이렇게 전달가능&lt;/p&gt;'</span></h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- innerHTML로 확인해보면 정규식 표현 문자열로 표현되어 있다.</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- 해당값을 innerHTML 전달하면 p태그안의 문장만 보인다.</h6>
+      
+
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <img src="portal/images/문서연결_엑셀VBA/html_text_content_탭과줄바꿈.png" alt="이미지없음">
+
+    </div>
+  </div>
+  
+  <div id="화살표함수등">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+
+
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold">화살표 함수 (Arrow Function)는 ES6 (ECMAScript 2015)에서 도입된 새로운 함수 선언 방식이다.</h6>
+      <h6 class="fw-bold">기존의 함수 선언 방식인 function 키워드 대신 화살표 (=>)를 사용하여 더 짧고 간결하게 함수를 정의할 수 있다.</h6>
+      <h6 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-자바스크립트-화살표-함수-정리" target="_blank">자바스크립트 화살표 함수 사용법 총정리</a></h6>
+      <h6 class="fw-bold"><a href="" target="_blank"></a></h6>
+      <h6 class="fw-bold"><a href="" target="_blank"></a></h6>
+      <h6 class="fw-bold"><a href="" target="_blank"></a></h6>
+      <h6 class="fw-bold"><a href="" target="_blank"></a></h6>
+      <h6 class="fw-bold"><a href="" target="_blank"></a></h6>
+      <h6 class="fw-bold"><a href="" target="_blank"></a></h6>
+    </div>
+  </div>
+
   <div id="CSS_줄바꿈"><!-- 참고 -->
     <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
       <h5 class="fw-bold"><a
@@ -2103,8 +2160,11 @@
     <div class="개별카테고리" id="Java전체_선별"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
+        <h6 class="canvas_div fw-bold" title='html_text_content_탭과줄바꿈'>innerHTML, innerText, textContent, \t, \n, 문자열.trim(); 하는 이유</h6>
+        <h6 class="canvas_div fw-bold" title='화살표함수등'>화살표함수, 함수변수,  </h6>
         <h6 class="canvas_div fw-bold" title='excel_js_HTML노드'>노드 </h6>
-        <h6 class="canvas_div" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
+        <h6 class="canvas_div fw-bold" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
+        <h6 class="canvas_div fw-bold" title='연습DIV'>연습div</h6>
       </div>
       <div>
 

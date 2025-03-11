@@ -9,16 +9,21 @@ function png와text사용확인() {
 function 연습2() {
 var 날짜=new Date(2025,3,28)
 console.log(날짜.getDay)
+var 날짜=new Date(2025,3,28)
+console.log(isNaN(날짜))
 }
 function 연습() {
-  var 날짜=new Date(2025,3,28)
-console.log(isNaN(날짜))
+var 연습=document.querySelector('#연습DIV');
+연습.textContent='<p>innerText로 이렇게 전달가능</p>'
+console.log(연습.innerHTML)
 
 
-return;
-  console.log('연습()')
+
+
+//return;
+//  console.log('연습()')
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'textarea내용의탭으로구분여러줄가공';
+  var 연습제목설정이것만 = '연습DIV';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
