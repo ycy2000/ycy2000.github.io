@@ -13,9 +13,14 @@ var 날짜=new Date(2025,3,28)
 console.log(isNaN(날짜))
 }
 function 연습() {
-var 연습=document.querySelector('#연습DIV');
-연습.textContent='<p>innerText로 이렇게 전달가능</p>'
-console.log(연습.innerHTML)
+  const numbers = [1, 2, 2, 3, 4, 4, 5];
+
+  const uniqueNumbers = numbers.filter((arr1,ele,index) => {
+      // 현재 요소가 이전에 등장하지 않은 경우만 true를 반환
+      return index.indexOf(arr1) === ele;
+  });
+  
+  console.log(uniqueNumbers); // 출력: [1, 2, 3, 4, 5]
 
 
 
@@ -1083,24 +1088,10 @@ function textarea정보에서html파일이름추출() {
       document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(5)').innerHTML=카운트;
       document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
     }
-
-
-
-
-
-
-
+  }
+  console.log('마지막')  
 }
 
-console.log('마지막')
-
-
-
-
-   
-
-  
-}
 function 파일리스트_연습() {
   //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
   const fileInput = document.querySelector('#연습_file_input');
