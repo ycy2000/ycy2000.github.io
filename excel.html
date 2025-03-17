@@ -1439,7 +1439,7 @@
         <div style="border:2px solid red;">+ 자식에 display:table-cell</div>
         <div style="border:2px solid red;">자식의 width를 20%로하면</div>
         <div style="border:2px solid red;">content가 문자열이면 조정됨 </div>
-        <div style="display:table;border:2px solid red;width:100%;table-layout: fixed;">
+        <div style="display:table;border:2px solid red;width:100%;table-layout: fixed;border-collapse:collapse;">
           <div style="border:1px solid black;display:table-cell;width:20%">1</div>
           <div style="border:1px solid black;display:table-cell;width:20%;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">1213444ㄴ22문자열22222222222222222222222222222222문자열</div>
           <div style="border:1px solid black;display:table-cell;width:20%">3</div>
@@ -1447,11 +1447,17 @@
         </div>
       </div>
 
-
       <h6 class="fw-bold">• 참고 : 1. white-space:nowrap으로 줄바꿈 하지 않게하고, 2. overflow:hidden으로 넘침을 숨기고,</h6>
       <h6 class="fw-bold">• 참고 : 3. [선택]text-overflow:ellipsis 넘치는 텍스트를 ...으로 처리한다.</h6>
-      <br>
-      
+
+      <h6 class="fw-bold"><a href="https://mygumi.tistory.com/425" target="_blank">[CSS]display:table속성 링크</a></h6>
+      <h6 class="fw-bold">• display:table; table 태그처럼 사용, display:table-row; tr 태그처럼 사용, display:table-cell; td 태그처럼 사용</h6>
+      <h6 class="fw-bold">• table-layout:auto; cell 내용에 따라 너비가 정해짐</h6>
+      <h6 class="fw-bold">• border-collapse:collapse; table,cells의 테두리 겹침(합침)<span style="color:blueviolet"> [부모에 지정 - 자식에 모두 적용됨]</span></h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- table에서는 셀간(가로) margin 적용이 안됨</h6>
+      <h6 class="fw-bold">• table-row(가로 줄)을 겹쳐 하나의 선으로 보이게 하려면 border_bottom 조정(각각 줄마다 지정)</h6>
+      <h6 class="fw-bold">• vertical-align:middle; 셀 내부를 수직 정렬할 수 있다. inline, table-clee 박스 요소에만 적용된다.</h6>
+      <h6 class="fw-bold">• white-space:nowrap; 줄바꿈 없음. 셀 내부의 텍스트가 다음 라인으로 개행되서 수직으로 나오는 것을 방지.</h6>
     </div>
 
 
