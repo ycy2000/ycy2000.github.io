@@ -13,6 +13,31 @@ var 날짜=new Date(2025,3,28)
 console.log(isNaN(날짜))
 }
 function 연습() {
+
+var 임시=document.querySelector('#전체대체');
+console.log(임시.__proto__)
+  return;
+function Animal(name) {
+    this.name = name;
+}
+Animal.prototype.speak = function() {
+    return `${this.name} makes a noise.`;
+};
+Animal.p
+function Dog(name) {
+    Animal.call(this, name);
+}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+Dog.prototype.speak = function() {
+    return `${this.name} barks.`;
+};
+
+const dog = new Dog('Rex');
+console.log(dog.speak()); // "Rex barks."
+
+
+  return;
   const numbers = [1, 2, 2, 3, 4, 4, 5];
 
   const uniqueNumbers = numbers.filter((arr1,ele,index) => {
