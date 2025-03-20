@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>야구</title>
+  <title>야구2</title>
   <!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link href="portal/assets/css/야구.css" rel="stylesheet">
+  <link href="portal/assets/css/야구2.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body style="margin-left:5px;">
   <div id="가능한조합" style="position: absolute;left:850px;font-size:20px;top:40px;white-space:nowrap;"></div>
+  <div id="사용법" class="d-none" style="position: absolute;left:850px;font-size:20px;top:40px;white-space:nowrap;border:1px solid black;background-color: white;padding:5px;">
+    dfsfsdfsf <br><br><br><br><br><br><br><br><br><br>sdfsdfs
+  </div>
   <div style="display:inline-block" id="기회">
     <button id="왼쪽토글" onclick="왼쪽토글()" style="z-index: 9999;">메모토글</button>
     <button id="왼쪽지우기" onclick="왼쪽지우기()" style="z-index: 9999;">내용지우기</button>
@@ -18,15 +21,17 @@
 
     <div style="position: absolute;left:845px;font-size:20px;">가능한조합.length : <button id="가능한조합개수만" style="font-size: 20px;"></button></div>
 
-
     <div id="선택" style="position: absolute;left:250px;top:20px;">
       <button onclick="계산()" style="background-color: chartreuse;">계산</button>
       <button onclick="숫자내림초기화()" style="background-color: chartreuse;">숫자내림초기화</button>
       <button>현재기록중 1개 clear</button> 
-      <button onclick="사용법()">사용법</button>
-      <button onclick="다시()" style="margin-left:30px;">다시</button> 
+      <button>사용법</button>
+      <button style="margin-left:30px;">다시</button> 
       <button style="border:none;"><a href="kim.html">kim.html</a></button> <span id="필터링결과포함숫자"></span><br>
-      <span>선택, 가능한 조합에서 제외할 숫자 내림</span><br>
+      <span title="추가기능 : 두칸중, 아래 클릭시 숫자가 올라가거나 내려감. 
+      내려간 숫자가 포함된 조합은 오른쪽 조합결과에서 제외됨.
+      내려간 숫자가 주황색이면 계산()한 결과이고. 제외수개념이고 
+      아니면 강제로 내려본 숫자임">위 숫자 클릭시, C색칠부분에 숫자가 하나씩 기록됨[title]</span><br>
       <div class="두줄">
         <div class="입력">0</div><div class="토글"></div>
       </div><div class="두줄">
@@ -71,18 +76,7 @@
       </div><div class="두줄">
         <div class="포함">9</div><div class="포함토글"></div>
       </div>
-      <br><br><br>
-      <div id="랜덤번호">랜덤번호(설정후 맞추기 할때)<br>
-        <div></div><div></div><div></div><div></div><span id="숨겨진랜덤번호" style="display:none"></span> 
-        <!-- 랜덤번호가 XXXX BS직접입력 / 랜덤번호 있음 BS 계산()시 입력됨 -->
-        <br> <button id="랜덤번호정보">랜덤번호가 XXXX BS직접입력</button><br><br>
-      </div>
-      <div id="버튼4개">
-        <button id="랜덤번호직접입력">기회입력상태</button>
-        <button>랜덤번호지움</button><br><br>
-        <button>랜덤번호생성</button> 
-        <button>번호보기/숨기기</button>
-      </div>
+      <br><br><br><br>
       <div id="없어야할번호">
         <div>없어야할 번호</div><div id="없어야할번호결과" style="font-size:20px; font-weight: bold;"></div> <span style="margin-left: 20px;">순서 확정된 번호</span>
       </div>
@@ -93,12 +87,21 @@
         <div class="순서확정"></div>
         <div class="순서확정"></div>
       </div>
+      <div id="랜덤번호">랜덤번호(설정후 맞추기 할때)<br>
+        <div></div><div></div><div></div><div></div><span id="숨겨진랜덤번호" style="display:none"></span> 
+        <!-- 랜덤번호가 XXXX BS직접입력 / 랜덤번호 있음 BS 계산()시 입력됨 -->
+      </div>
+      <div id="버튼4개">
+        <button onclick="랜덤번호지움()">랜덤번호지움</button><br>
+        <button onclick="랜덤번호생성()">랜덤번호생성</button><br> 
+        <button onclick="랜덤번호보기숨기기()">번호보기/숨기기</button>
+      </div>
 
     </div>
     <div><span style="width:122px;display:inline-block;text-align: center;">기회 10번</span><span>B</span><span style="margin-left:14px;">S</span></div>
     <div class="기회" id="기회0"><div>0</div><div>1</div><div>2</div><div>3</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
-    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치"></span><span class="위치일치"></span><span id="초기화시기록중클래스부여" class="기록중">C</span></div>
-    <div class="기회" id="기회2"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
+    <div class="기회" id="기회1"><div>6</div><div>7</div><div>8</div><div>9</div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
+    <div class="기회" id="기회2"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</spanclass=></div>
     <div class="기회" id="기회3"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회4"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
     <div class="기회" id="기회5"><div></div><div></div><div></div><div></div><span class="숫자일치"></span><span class="위치일치"></span><span>C</span></div>
@@ -133,8 +136,9 @@
   </div>
   <div>일치분만 추출</div>
   <div id="조합제거실행초기화" onclick="조합제거실행초기화()">조합제거초기화</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
-<script src="portal/assets/js/야구.js"></script>
+<script src="portal/assets/js/야구2.js"></script>
 </body>
 </html>
