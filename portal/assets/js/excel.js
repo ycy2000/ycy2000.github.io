@@ -1,12 +1,24 @@
-function png와text사용확인() {
-  var 연습요소id='기타전체_파일내용';
-  var 연습요소=document.querySelector('#' + 연습요소id);
-  document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
-  document.querySelector('#선택문서id').innerHTML=연습요소.id;
-  document.querySelector('#선택문서제목').innerHTML=document.querySelector('[title="' + 연습요소id + '"]').innerHTML;
-  document.querySelector('#전체대체').classList.remove('d-none');
+function 연습개인적정리png_토글() {
+  console.log(this)
+  //this.내가만드는거='내가만드는거'
+  //for (속성 in this) console.log(속성);
 }
+
+function 개인적정리png_토글(아이디) {
+  //규칙 : 아이디는 png가 들어있는 div. png파일이름은
+  var 아이디=아이디;
+
+  if (document.querySelector(`#${아이디}`).classList.contains('d-none')) {
+    document.querySelector(`#${아이디}`).classList.remove('d-none');
+  } else {
+    document.querySelector(`#${아이디}`).classList.add('d-none')
+  }
+
+}
+
 function 연습2() {
+
+
 var 날짜=new Date(2025,3,28)
 console.log(날짜.getDay)
 var 날짜=new Date(2025,3,28)
@@ -14,44 +26,9 @@ console.log(isNaN(날짜))
 }
 function 연습() {
 
-var 임시=document.querySelector('#전체대체');
-console.log(임시.__proto__)
+
+ 
   return;
-function Animal(name) {
-    this.name = name;
-}
-Animal.prototype.speak = function() {
-    return `${this.name} makes a noise.`;
-};
-Animal.p
-function Dog(name) {
-    Animal.call(this, name);
-}
-Dog.prototype = Object.create(Animal.prototype);
-Dog.prototype.constructor = Dog;
-Dog.prototype.speak = function() {
-    return `${this.name} barks.`;
-};
-
-const dog = new Dog('Rex');
-console.log(dog.speak()); // "Rex barks."
-
-
-  return;
-  const numbers = [1, 2, 2, 3, 4, 4, 5];
-
-  const uniqueNumbers = numbers.filter((arr1,ele,index) => {
-      // 현재 요소가 이전에 등장하지 않은 경우만 true를 반환
-      return index.indexOf(arr1) === ele;
-  });
-  
-  console.log(uniqueNumbers); // 출력: [1, 2, 3, 4, 5]
-
-
-
-
-//return;
-//  console.log('연습()')
   var 결과부분 = document.querySelector('#전체대체');
   var 연습제목설정이것만 = '연습DIV';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
@@ -64,7 +41,14 @@ console.log(dog.speak()); // "Rex barks."
 
 
 }
-
+function png와text사용확인() {
+  var 연습요소id='기타전체_파일내용';
+  var 연습요소=document.querySelector('#' + 연습요소id);
+  document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
+  document.querySelector('#선택문서id').innerHTML=연습요소.id;
+  document.querySelector('#선택문서제목').innerHTML=document.querySelector('[title="' + 연습요소id + '"]').innerHTML;
+  document.querySelector('#전체대체').classList.remove('d-none');
+}
 
 
 

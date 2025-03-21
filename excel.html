@@ -2180,6 +2180,11 @@
         <h6 class="fw-bold">***filter <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-filter-함수-완벽-가이드" target="_blank">링크</a></h6>
         <h6 class="fw-bold">*reduce <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-reduce-함수-완벽-가이드" target="_blank">링크</a></h6>
         <h6 class="fw-bold">*callback, 콜백함수 <a href="https://www.freecodecamp.org/korean/news/https-www-freecodecamp-org-news-javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/" target="_blank">링크</a></h6>
+        <h6 class="canvas_div fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>
+        <h6 class="canvas_div fw-bold" title="js_물음표사용법">물음표(?)사용예. document.querySelector(`#기회${i} .숫자일치`)?.innerHTML</h6>
+        <h6 class="canvas_div fw-bold" title="js_if의조건값true_false">js_if의조건값true_false + 물음표(?)사용예.</h6>
+        <h6 class="canvas_div fw-bold" title="js_반복문종류">js_반복문종류 [키워드:자바스크립트 반복문 종류]</h6>
+        
       </div>
       <div>
 
@@ -2191,18 +2196,21 @@
 
     <div class="개별카테고리" id="Java전체_기초이해"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
+        <h6 class="canvas_div fw-bold" title='java_개인적정리_1_자료형'>me.1 자료형,</h6>
+
+          
       </div>
       <div>
+
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
         <h6 class="fw-bold"><a href="https://radait.tistory.com/4" target="_blank">링크:객체지향언어란?[특징,장점,단점,종류].객체Object.자바의 절반은 객체</a></h6>
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">Object prototypes, 프로토타입 기반 언어?</a></h6>
         <h6 class="fw-bold">검색대기 : 템플릿</h6>
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">링크:Object</a></h6>
         <h6 class="fw-bold"><a href="https://f-lab.kr/insight/understanding-javascript-prototype-20250114?gad_source=1&gclid=Cj0KCQjwkN--BhDkARIsAD_mnIoUfpzrV45HkMxOsWmygp4Rw2cJhq8JVK-wB_BhmSmDHU6hdDXwmvwaAqHsEALw_wcB" target="_blank">링크:★프로토타입이란 무엇인가?</a></h6>
         <h6 class="fw-bold"><a href="https://codingwanee.tistory.com/entry/JavaScript-프로토타입-prototype" target="_blank">링크:프로토타입</a></h6>
-      </div>
-      <div>
-
       </div>
     </div>
 
@@ -2424,6 +2432,111 @@
     <li>F. project에 사용된 이벤트리스너</li>
     <br><br><br><br>
   </section>
+
+  <div id="js_빽틱사용법">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold">• 빽틱사용법 : 문자열처럼 쓰면서, 변수(결과값 표현됨)를 넣을수 있다.
+        <button onclick="if (document.querySelector('#js_빽틱사용법_png').classList.contains('d-none')) {
+        document.querySelector('#js_빽틱사용법_png').classList.remove('d-none')} else {
+        document.querySelector('#js_빽틱사용법_png').classList.add('d-none')
+        }">보기</button>
+      <div id="js_빽틱사용법_png" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_빽틱사용법.png" alt="이미지없음"></div>
+      </h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+  
+  <div id="js_물음표사용법">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold">• 에러가 나지 않게 한다. 없는 요소를 변수로 지정하면 null이고 접근하면 에러가 난다.</h6>
+      <code class="fw-bold" style="text-indent: 15px;">var 없는요소=document.querySelector('#없는요소');</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(없는요소) ==> null</code>
+      <code class="fw-bold" style="text-indent: 15px;">console.log(없는요소.innerHTML) ==> error 난다</code>
+      <h6 class="fw-bold">• console.log(없는요소?.innerHTML) : undefined, 물음표를 넣으면 요소선택 시점에 에러이면 undefined를 retrun한다</h6>
+      <code class="fw-bold" style="text-indent: 15px;">innerHTML에 접근하지 않고 undefined를 return한다</code>
+      <br>
+      <h6 class="fw-bold">• const 숫자일치 = 없는요소?.innerHTML || '0';</h6>
+      <code class="fw-bold" style="text-indent: 15px;">- a or b : a b 둘다 true면 첫번째 값 return;</code>
+      <code class="fw-bold" style="text-indent: 15px;">- a or b : a가 undefined이면 b값</code>
+      <code class="fw-bold" style="text-indent: 15px;">- a or b : 둘다 undefined이면 undefined</code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="js_if의조건값true_false">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5 class="fw-bold">if (조건) : 조건이 값인 경우 0=false, 공백=false, 0이 아닌 숫자나 문자열은 true</h5>
+      <code class="fw-bold" style="line-height: 23px;">
+      var 공백='';<br>
+      if (공백=='') {console.log(true)} else {console.log(false)} // true (조건이 맞다)<br>
+      if (공백) {console.log(true)} else {console.log(false)} // false<br>
+      if (공백 || 0) {console.log(true)} else {console.log(false)} // false, 공백이나 0 이다<br>
+      if (공백 || 0 || '0') {console.log(true)} else {console.log(false)} // true, 문자열 '0'은 문자다.<br>
+      var 문자열0='0';<br>
+      if (문자열0) {console.log(true)} else {console.log(false)} // true, 숫자0이 아닌 문자열0<br>
+      if (문자열0*1) {console.log(true)} else {console.log(false)} // false, 곱해서 숫자0이 되었음<br>
+      if (parseInt(문자열0)) {console.log(true)} else {console.log(false)} // false, 숫자0이 되었음<br>
+      if (문자열0==0) {console.log(true)} else {console.log(false)} // true, 조건이고, 형식을 구분하지 않아 같은것으로 인식<br>
+      if (문자열0===0) {console.log(true)} else {console.log(false)} // false, 조건이고, 형식을 구분하여 다르다고 인식
+      </code>
+
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• </code>
+      <span style="color:blueviolet"></span>
+      <h6 class="fw-bold">•</h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
+
+  <div id="js_반복문종류">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• </code>
+      <span style="color:blueviolet"></span>
+      <h6 class="fw-bold">•</h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>  
+
+  <div id="java_개인적정리_1_자료형">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank">• 문법과 자료형</a></h6>
+      <button onclick="개인적정리png_토글('개인적정리png_자료형')">자료형</button>
+      <a href="https://codingeverybody.kr/자바스크립트-typeof-연산자-데이터-타입-확인하기/" target="_blank">링크</a>
+      <div id="개인적정리png_자료형" class="d-none"><img src="portal/images/문서연결_엑셀VBA/개인적정리png_자료형.png" alt="이미지없음"></div>
+      <br>
+      <button onclick="연습개인적정리png_토글()">연습</button>
+
+      <h5 class="fw-bold"></h5>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <code class="fw-bold">• </code>
+      <span style="color:blueviolet"></span>
+      <h6 class="fw-bold">•</h6>
+      <h6 style="text-indent: 23px;"></h6>
+      <code class="fw-bold">• </code>
+      <code class="fw-bold" style="text-indent: 15px;"></code>
+      <img src="" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    </div>
+  </div>
   
   <div id="java기초_소개">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -2434,15 +2547,9 @@
         <a href="https://ko.javascript.info/alert-prompt-confirm" target="_blank">• alert, prompt, confirm을 이용한 상호작용,</a>
       </h6>
       <h6 class="fw-bold">• 따옴표는 세 종류가 있습니다.
-        <button onclick="if (document.querySelector('#js_따옴표종류_png').classList.contains('d-none')) {
-          document.querySelector('#js_따옴표종류_png').classList.remove('d-none')} else {
-          document.querySelector('#js_따옴표종류_png').classList.add('d-none')
-          }">보기</button>
+        <button onclick="개인적정리png_토글('js_따옴표종류_png')">보기</button>
           <a href="https://ko.javascript.info/operators" target="_blank">• 문자열 숫자 더하기,</a>
-          <button onclick="if (document.querySelector('#js_문자열숫자더하기_png').classList.contains('d-none')) {
-          document.querySelector('#js_문자열숫자더하기_png').classList.remove('d-none')} else {
-          document.querySelector('#js_문자열숫자더하기_png').classList.add('d-none')
-          }">보기</button>
+          <button onclick="개인적정리png_토글('js_문자열숫자더하기_png')">보기</button>
         <div id="js_따옴표종류_png" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_따옴표종류.png" alt="이미지없음"></div>
         <div id="js_문자열숫자더하기_png" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_문자열숫자더하기.png" alt="이미지없음"></div>
       </h6>
@@ -3862,7 +3969,16 @@
       <code class="fw-bold" style="text-indent: 15px;">* trim(문자열) : 문자열 좌우공백 제거. ' 문자열    '.trim()</code>
       <br>
       <h5 class="fw-bold">const 기회숫자 = Array.from(기회).map(div => parseInt(div.innerHTML.trim(), 10));</h5>
-
+      <code class="fw-bold">• div요소안의 값만 가져와 배열로 만든 결과를 반환한다.</code>
+      <code class="fw-bold" style="color:blueviolet;text-decoration: underline;">• Array.from(기회).map 대신에 기회.map 써도 된다.</code>
+      <br>
+      <h5 class="fw-bold">Array.from(배열).map(변수 => 명령문들[가공]);과 filter는 유사한가?
+        <button onclick="if (document.querySelector('#js_map과filter유사한가').classList.contains('d-none')) {
+          document.querySelector('#js_map과filter유사한가').classList.remove('d-none')} else {
+          document.querySelector('#js_map과filter유사한가').classList.add('d-none')
+          }">보기</button>
+      </h5>
+      <div id="js_map과filter유사한가" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_map과filter유사한가.png" alt="이미지없음"></div>
 
       <code class="fw-bold">• </code>
       <h5 class="fw-bold"></h5>
