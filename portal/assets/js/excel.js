@@ -1,36 +1,27 @@
-function 연습개인적정리png_토글() {
-  console.log(this)
-  //this.내가만드는거='내가만드는거'
-  //for (속성 in this) console.log(속성);
-}
-
-function 개인적정리png_토글(아이디) {
-  //규칙 : 아이디는 png가 들어있는 div. png파일이름은
-  var 아이디=아이디;
-
-  if (document.querySelector(`#${아이디}`).classList.contains('d-none')) {
-    document.querySelector(`#${아이디}`).classList.remove('d-none');
-  } else {
-    document.querySelector(`#${아이디}`).classList.add('d-none')
-  }
-
+function 개인정리png(요소) {
+  //요소:html에서 this, 요소.title=개인적정리png_자료형.png
+  var src값='portal/images/문서연결_엑셀VBA/' + 요소.title;
+  document.querySelector('#js개인정리png들어갈곳 img').src=src값;
+  document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
 }
 
 function 연습2() {
-
-
-var 날짜=new Date(2025,3,28)
-console.log(날짜.getDay)
-var 날짜=new Date(2025,3,28)
-console.log(isNaN(날짜))
+  function dk(type) {
+    this.type = type;
+  }
+  
+  dk.prototype.만듬 = function () {
+    return this.type;
+  };
+  
+  const cat = new dk("Cat");
+  console.log(cat.만듬()); // Cat
+  
 }
 function 연습() {
 
-
- 
-  return;
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = '연습DIV';
+  var 연습제목설정이것만 = 'java_개인적정리_1_자료형';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);

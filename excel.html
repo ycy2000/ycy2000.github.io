@@ -36,7 +36,7 @@
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
         <button onclick="png와text사용확인()">png와text사용확인</button>
-        <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <button onclick="연습()">연습()</button> <button onclick="연습2()">연습2()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -2196,7 +2196,10 @@
 
     <div class="개별카테고리" id="Java전체_기초이해"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div fw-bold" title='java_개인적정리_1_자료형'>me.1 자료형,</h6>
+        <h6 class="canvas_div fw-bold" title='java_개인적정리_1_자료형'>[me]일단 모든것(객체)은 자료형이 있다고 이해하자, 변수는 인스턴스?</h6>
+
+        <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
+        
 
           
       </div>
@@ -2517,14 +2520,29 @@
 
   <div id="java_개인적정리_1_자료형">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank">• 문법과 자료형</a></h6>
-      <button onclick="개인적정리png_토글('개인적정리png_자료형')">자료형</button>
-      <a href="https://codingeverybody.kr/자바스크립트-typeof-연산자-데이터-타입-확인하기/" target="_blank">링크</a>
-      <div id="개인적정리png_자료형" class="d-none"><img src="portal/images/문서연결_엑셀VBA/개인적정리png_자료형.png" alt="이미지없음"></div>
-      <br>
-      <button onclick="연습개인적정리png_토글()">연습</button>
+      <h6 class="fw-bold">
+        • <button title="개인적정리png_자료형.png" onclick="개인정리png(this)">객체,</button> 
+        인스턴스, prototype, __proto__, class, 생성자, new, this, 자료형, typeOf, for 속성 in 객체, 객체 리터럴</h6>
+      <h6 class="fw-bold">•생성자 함수,</h6>
+      
+      <div style="height:300px;border:1px solid black;margin-right:5px;">
+        <h6 class="fw-bold 개인정리" style="left:300px;top:100px;background-color: white;">모두 객체이다.</h6>
+      </div>
 
-      <h5 class="fw-bold"></h5>
+      <!-- src="portal/images/문서연결_엑셀VBA/개인적정리png_자료형.png" -->
+      <div id="js개인정리png들어갈곳" onclick="document.querySelector('#js개인정리png들어갈곳').classList.add('d-none')" title="클릭하면 d-none">
+        <img src="" alt="이미지없음">
+      </div>
+
+
+      <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank">• 문법과 자료형</a></h6>
+      <button title="개인적정리png_자료형.png" onclick="개인정리png(this)">자료형</button> 
+      <a href="https://codingeverybody.kr/자바스크립트-typeof-연산자-데이터-타입-확인하기/" target="_blank">링크</a>
+
+      <br>
+
+
+      
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold">• </code>
       <span style="color:blueviolet"></span>
@@ -2535,6 +2553,24 @@
       <img src="" alt="이미지없음">
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold">자바스크립트의 모든 함수는 자동으로 prototype 속성을 가집니다. 이는 해당 함수를 생성자로 사용할 때 유용합니다.</h6>
+      <h6 class="fw-bold">자바스크립트는 프로토타입 기반(prototype-based) 객체지향 언어입니다. 이는 클래스 기반(class-based) 언어와는 다른 방식으로 객체 상속을 구현한다는 의미입니다.</h6>
+      <h6 class="fw-bold">**프로토타입(Prototype)**은 자바스크립트에서 객체가 다른 객체로부터 속성과 메서드를 상속받는 메커니즘입니다. 모든 객체는 prototype이라는 숨겨진 링크를 가지고 있으며, 이를 통해 다른 객체의 속성과 메서드를 공유할 수 있습니다.</h6>
+      <h6 class="fw-bold">객체에서 특정 프로퍼티나 메서드를 찾을 때, 자바스크립트는 다음과 같은 과정을 거칩니다.
+
+        해당 객체에 직접 속성이 존재하는지 확인한다.
+        없으면 해당 객체의 [[Prototype]](즉, __proto__)을 따라 부모 객체를 찾는다.
+        그래도 없으면 그 부모 객체의 [[Prototype]]을 따라 계속 탐색한다.
+        최종적으로 Object.prototype까지 찾고도 없으면 undefined를 반환한다.
+        이 과정을 **프로토타입 체인(prototype chain)**이라고 합니다.</h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
+      <h6 class="fw-bold"></h6>
     </div>
   </div>
   

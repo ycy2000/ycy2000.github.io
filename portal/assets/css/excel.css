@@ -36,5 +36,7 @@ code {display: block; color:black;margin-bottom:5px;}
 #결과표_전체 textarea {display:inline-block;height:26px;width:140px;resize:none;margin-bottom:-7px;margin-left:-30px;}
 .src있음 {background-color: yellow;}
 
+.개인정리 {position: absolute;border:1px solid black; display: inline-block;}
+
 
 
