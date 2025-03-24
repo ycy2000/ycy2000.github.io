@@ -1,18 +1,8 @@
-class 개인class {
-  //class : 포괄범위를 정하여 기능이 추가되면 추가하면 편하다.
-  //constructor {인수, 인수} : 인수, 인스턴스=new 인스턴스(인수, 인수);
-  //속성=속성, 메서드=function() {}, 인스턴스.속성; 인스턴스.메서드()
-
-  constructor(타이틀) {
-    this.타이틀 = 타이틀;
-  }
-  png셑팅= function() {
-    var src값='portal/images/문서연결_엑셀VBA/' + this.title;
-    document.querySelector('#js개인정리png들어갈곳 img').src=src값;
-    document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
-  }
-
-  속성="속성"
+function 개인정리png(e) {
+  console.log(e.target)
+  var src값='portal/images/문서연결_엑셀VBA/' + e.title
+  document.querySelector('#js개인정리png들어갈곳 img').src=src값;
+  document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
 }
 
 
