@@ -1,9 +1,20 @@
-function 개인정리png(요소) {
-  //요소:html에서 this, 요소.title=개인적정리png_자료형.png
-  var src값='portal/images/문서연결_엑셀VBA/' + 요소.title;
-  document.querySelector('#js개인정리png들어갈곳 img').src=src값;
-  document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
+class 개인class {
+  //class : 포괄범위를 정하여 기능이 추가되면 추가하면 편하다.
+  //constructor {인수, 인수} : 인수, 인스턴스=new 인스턴스(인수, 인수);
+  //속성=속성, 메서드=function() {}, 인스턴스.속성; 인스턴스.메서드()
+
+  constructor(타이틀) {
+    this.타이틀 = 타이틀;
+  }
+  png셑팅= function() {
+    var src값='portal/images/문서연결_엑셀VBA/' + this.title;
+    document.querySelector('#js개인정리png들어갈곳 img').src=src값;
+    document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
+  }
+
+  속성="속성"
 }
+
 
 function 연습2() {
   function dk(type) {
