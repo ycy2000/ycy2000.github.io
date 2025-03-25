@@ -1,6 +1,21 @@
 function 개인정리png(e) {
-  console.log(e.target)
-  var src값='portal/images/문서연결_엑셀VBA/' + e.title
+  var 문서제목;
+  console.log(typeof this)
+  //console.log(Object.prototype.toString.call(this).slice(8, -1))
+  console.log(Object.prototype.toString.call(this))
+  var a={};
+  console.log(typeof a)
+  console.log(Object.prototype.toString(this))
+
+
+
+  if (typeof e === 'string') { // '파일이름을 넣었을때'
+    문서제목=e;
+  }
+  if (typeof e === 'object') { // 'this를 넣었을때'
+    문서제목=e.title;
+  }
+  var src값='portal/images/문서연결_엑셀VBA/' + 문서제목;
   document.querySelector('#js개인정리png들어갈곳 img').src=src값;
   document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
 }
