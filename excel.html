@@ -2183,7 +2183,7 @@
       </div>
       <div>
         <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
-        <h6 class="canvas_div fw-bold" title="js_typeof_tostring_call">typeof, Object.toString() </h6>
+        <h6 class="canvas_div fw-bold" title="js_typeof_tostring_call">canvas_div <a href="https://minify.tistory.com/33" target="_blank">typeof, Object.prototype.toString.call()</a> </h6>
         <h6 class="canvas_div fw-bold" title='java_개인적정리_1_자료형'>[me]용어들. js_프로토타입기반, 객체지향, 인수, 인자</h6>
 
         <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
@@ -2452,7 +2452,13 @@
 
   <div id="js_typeof_tostring_call">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h6 class="fw-bold">• </h6>
+      <h6 class="fw-bold">• typeof : 배열과 객체도 object로 표시하여, 일반 배열의 경우를 체크할 수 없고 </h6>
+      <h6 class="fw-bold" style="text-indent: 10px;">DOM이나 기타 상황에서 type of로 체크하는 데에는 한계가 있다. </h6>
+      <h6 class="fw-bold">• Object.prototype.toString 메소드는 객체를 나타내는 문자열을 반환한다. </h6>
+      <h6 class="fw-bold" style="text-indent: 10px;">toString.call() 메소드를 사용하면 모든 타입의 타입 값을 알 수 있다.</h6>
+      <br>
+      <h6 class="fw-bold">Object.prototype.toString.call(변수); // [object Function]typeof function () {};  // function</h6>
+      <h6 class="fw-bold">Object.prototype.toString.call(function () {}); // [object Function]typeof function () {};  // function</h6>
       <a href="https://mu-mu-syo.tistory.com/49" target="_blank">링크</a>
       <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" target="_blank">링크</a>
     </div>
@@ -2643,7 +2649,7 @@
            
       </h6>
       <code class="fw-bold" style="text-indent: 15px;">- this를 이해하려면 prototype, 프로토타입체인(상속체인), 생성자, 객체, 인스턴스 등의 이해가 필요하다.</code>
-      <h6 class="fw-bold">• 이벤트리스터를 사용하지 않고 함수가 등록된 요소의 title값을 사용하려고 할때 예시</h6>
+      <h6 class="fw-bold">• 이벤트리스너를 사용하지 않고 함수가 등록된 요소의 title값을 사용하려고 할때 예시</h6>
       <code class="fw-bold" style="text-indent: 15px;">&#60;button title="개인적정리png_자료형.png" onclick="개인정리png(this)">자료형&#60;/button> </code>
       <code class="fw-bold" style="text-indent: 15px;">- this는 해당 함수를 호출한 객체인 button요소를 가리킨다.</code>
       <code class="fw-bold" style="text-indent: 15px;">- button안의 속성 onclick에 들어있는 함수의 인자로 this를 전달하면 이때 this는 자신(함수 개인정리png(this)</code>

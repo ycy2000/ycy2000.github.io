@@ -1,12 +1,21 @@
 function 개인정리png(e) {
+  //onclick에 개인정리png(this) => this는 요소, function 개인정리png(e)에서 e가 요소가 됨
+  //onclick에 개인정리png(문자열) => type
+  var 타입typeof=typeof e;
+  var 타입proto=Object.prototype.toString.call(e).slice(8, -1);
+  console.log('typeof : ' + 타입typeof + ', proto : ' + 타입proto)
   var 문서제목;
   console.log(typeof this)
   //console.log(Object.prototype.toString.call(this).slice(8, -1))
+  class Classss {}
+  console.log(typeof Classss)
+  console.log(Object.prototype.toString.call(개인정리png))
   console.log(Object.prototype.toString.call(this))
   var a={};
   console.log(typeof a)
   console.log(Object.prototype.toString(this))
-
+  console.log(Object.prototype.toString.call(this))
+  console.log(this.toString())
 
 
   if (typeof e === 'string') { // '파일이름을 넣었을때'
@@ -20,24 +29,40 @@ function 개인정리png(e) {
   document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
 }
 
-
 function 연습2() {
-  function dk(type) {
-    this.type = type;
-  }
-  
-  dk.prototype.만듬 = function () {
-    return this.type;
-  };
-  
-  const cat = new dk("Cat");
-  console.log(cat.만듬()); // Cat
+  console.dir(연습2.prototype.toString.call(연습2))
+  연습2.a="ddd"
+
+
+
+
+
+  return 연습2.a;
+  var 배열=[1,2,3];
+  var 객체={"ㅇㅇ":1,1:3}
+  console.log(Array.prototype.toString.call(배열))
+  console.log(String.prototype.toString.call('ddd'))
+  console.log(Object.prototype.toString.call(배열))
+  console.log(Object.prototype.toString(배열))
+  console.log(Object.toString())
+  console.log(배열.toString())
+  console.log(Object.prototype.toString.call(객체))
+  console.log(Object.prototype.toString(객체))
+  console.log(객체.__proto__)
+  console.log(객체.__proto__.toString())
+  console.log(객체.__proto__.toString.call(객체))
+  console.log(배열.__proto__)
+  console.log(배열.__proto__.toString())
+  console.log(배열.__proto__.toString.call(객체))
+  console.log(배열.__proto__.toString.call(배열))
   
 }
+console.log(연습2.a)
+
 function 연습() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'java_개인적정리_1_자료형';
+  var 연습제목설정이것만 = 'js_typeof_tostring_call';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
