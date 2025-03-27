@@ -2184,7 +2184,6 @@
       </div>
       <div>
         <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
-        <h6 class="canvas_div fw-bold" title="js_typeof_tostring_call">canvas_div <a href="https://minify.tistory.com/33" target="_blank">typeof, Object.prototype.toString.call()</a> </h6>
         <h6 class="canvas_div fw-bold" title='java_개인적정리_1_자료형'>[me]용어들. js_프로토타입기반, 객체지향, 인수, 인자</h6>
 
         <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
@@ -2442,28 +2441,65 @@
     <br><br><br><br>
   </section>
   
-  <div id="js_큰틀에서이해하기1">
+  <div id="js_자료형을먼저알아야겠다">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h6 class="fw-bold">• </h6>
-
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-  <div id="js_typeof_tostring_call">
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h6 class="fw-bold">• typeof : 배열과 객체도 object로 표시하여, 일반 배열의 경우를 체크할 수 없고 </h6>
-      <h6 class="fw-bold" style="text-indent: 10px;">DOM이나 기타 상황에서 type of로 체크하는 데에는 한계가 있다. </h6>
-      <h6 class="fw-bold">• Object.prototype.toString 메소드는 객체를 나타내는 문자열을 반환한다. </h6>
-      <h6 class="fw-bold" style="text-indent: 10px;">toString.call() 메소드를 사용하면 모든 타입의 타입 값을 알 수 있다.</h6>
+      <h6 class="fw-bold"><a href="https://minify.tistory.com/33" target="_blank">자료형</a> string, number, boolean 등은 객체가 아니지만 객체화된다. 래퍼객체 new String(문자열) => object</h6>
+      <div class="자료형표">
+        <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
+        <code><div>class C__ {}</div><div>[object Function]</div><div>function</div></code>
+        <code><div>''</div><div>[object String]</div><div>string</div></code>
+        <code class="자료형표색칠"><div>new String()</div><div>[object String]</div><div>object</div></code>
+        <code><div>1</div><div>[object Number]</div><div>number</div></code>
+        <code class="자료형표색칠"><div>new Number()</div><div>[object Number]</div><div>object</div></code>
+        <code><div>NaN</div><div>[object Number]</div><div>number</div></code>
+        <code><div>Infinity</div><div>[object Number]</div><div>number</div></code>
+        <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
+        <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
+        <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
+        <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
+        <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
+        <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>
+        <code class="자료형표색칠"><div>Math</div><div>[object Math]</div><div>object</div></code>
+        <code class="자료형표색칠"><div>/test/i</div><div>[object RegExp]</div><div>object</div></code>
+        <code><div>function () {}</div><div>[object Function]</div><div>function</div></code>
+        <code class="자료형표색칠"><div>document</div><div>[object HTMLDocument]</div><div>object</div></code>
+        <code class="자료형표색칠"><div>버튼태그</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
+      </div>
+      <h6 class="fw-bold" style="margin-top:5px;">1) Object.prototype.toString 메소드는 객체를 나타내는 문자열을 반환한다. </h6>
+      <h6 class="fw-bold">2) Object.prototype.toString.call() 메소드를 사용하면 모든 타입의 타입 값을 알 수 있다.</h6>
+      <h6 class="fw-bold">3) 1),2)같은 값을 나타낼수도 있지만 타입을 알려면 2)번 사용</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">일단, 'Object.prototype = 변수'로 개념을 잡아두겠다.</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">예시: var 배열=[1,2,3] //call(여기는값을넣어야한다)</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;"><div style="display:inline-block; width:450px;">- console.log(Object.prototype.toString.call(배열))</div><div style="display:inline-block; width:150px;">[object Array]</div></h6>
+      <h6 class="fw-bold" style="text-indent: 15px;"><div style="display:inline-block; width:450px;">- console.log(Object.prototype.toString(배열))</div><div style="display:inline-block; width:150px;">[object Object]</div></h6>
+      <h6 class="fw-bold" style="text-indent: 15px;"><div style="display:inline-block; width:450px;">- console.log(Object.prototype.toString())</div><div style="display:inline-block; width:150px;">[object Object]</div>Object.prototype 객체의 자료형<div></div></h6>
+      <h6 class="fw-bold" style="text-indent: 15px;"><div style="display:inline-block; width:450px;">- console.log(배열.toString())</div><div style="display:inline-block; width:150px;">1,2,3</div></h6>
+      <h6 class="fw-bold" style="text-indent: 15px;"><div style="display:inline-block; width:450px;">- console.log(배열.toString.call(배열))</div><div style="display:inline-block; width:150px;">1,2,3</div></h6>
+      <h6 class="fw-bold">4) [object Function] 부분에서 object는 객체를 통틀어 말하는것으로 객체의 한 종류로써의 object와는 다른의미이다.</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">자료형인 Function만 추출하는 코드 : <code style="color:blueviolet;display:inline"> Object.prototype.toString.call(target).slice(8, -1);</code></h6>
       <br>
-      <h6 class="fw-bold">Object.prototype.toString.call(변수); // [object Function]typeof function () {};  // function</h6>
-      <h6 class="fw-bold">Object.prototype.toString.call(function () {}); // [object Function]typeof function () {};  // function</h6>
-      <a href="https://mu-mu-syo.tistory.com/49" target="_blank">링크</a>
-      <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" target="_blank">링크</a>
+      <h6 class="fw-bold">보충정보 
+        <a href="https://velog.io/@h0ngwon/Javascript-proto-vs-prototype-차이" target="">[Javascript] Javascript __proto__ vs prototype 차이</a>
+        <a href="https://gabojok.tistory.com/132" target="" style="margin-left:20px;">프로토타입 ( prototype ) 과 __proto__ 차이 명확하다</a>
+      </h6>
+      <h6 class="fw-bold">보충정보 <a href="https://velog.io/@jangws/자바스크립트에서-proto-VS.-prototype-비교" target="">자바스크립트에서 __proto__ VS. prototype 비교</a></h6>
+      <h6 class="fw-bold">보충정보 <a href="https://codingwanee.tistory.com/entry/entry/JavaScript-프로토타입-prototype" target="">[JavaScript] 프로토타입 객체와 prototype, __proto__</a></h6>
+      <h6 class="fw-bold">보충정보 <a href="https://www.howdy-mj.me/javascript/prototype-and-proto" target="">프로토타입: [[Prototype]], __proto__, prototype 프로퍼티</a></h6>
+      <h6 class="fw-bold">보충정보 <a href="https://ko.javascript.info/prototype-methods" target="">프로토타입 메서드와 __proto__가 없는 객체</a></h6>
+      <h6 class="fw-bold">자바스크립트의 모든 함수는 자동으로 prototype 속성을 가집니다. 이는 해당 함수를 생성자로 사용할 때 유용합니다. </h6>
+      <h6 class="fw-bold">prototype은 일반 속성과 다르다</h6>
+      <h6 class="fw-bold">보통의 속성(Property)은 객체에 직접 존재하지만, prototype은 함수 객체의 특별한 속성입니다.</h6>
+      <h6 class="fw-bold">console.log(Person.prototype); // { constructor: ƒ Person() }</h6>
+      <h6 class="fw-bold">**생성자(Constructor)**는 새로운 객체를 만들고 초기화하는 역할을 하는 특별한 함수입니다. </h6>
+      <h6 class="fw-bold">1. 객체의 최상위에는 Object가 있다. 자료형의 object와는 다른개념이니 따로 이해할것. </h6>
+      <h6 class="fw-bold" style="color:blueviolet">2. 객체라하면 앞으로 class, function(), [], {}, new(생성자) 함수 등 속성을 가진 객체를 지칭하는 경우가 많다.</h6>
+      <h6 class="fw-bold">3. 객체는 여러 속성을 가질수 있고 속성은 key-value 또는 key-메서드 이다. </h6>
+      <h6 class="fw-bold">4. 내장객체는 여러 속성과 메서드가 정의되어 있고</h6>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold"></h6>
+
+      
     </div>
   </div>
 
@@ -2553,7 +2589,7 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide" target="_blank">Mdn web docs</a></h6>
       <h6 class="fw-bold">
-        • <button title="개인적정리png_자료형.png" onclick="개인정리png(this)">객체,</button> 
+        • <button title="들어갈id:img파일이름:java_개인적정리_1_자료형_png들어갈곳:개인적정리png_자료형.png" onclick="개인정리png(this)">객체,</button> 
         <a href="https://velog.io/@bami/Javascript-인수와-인자" target="_blank">인수Argument,인자Parameter</a>
         <a href="https://cocobi.tistory.com/82#google_vignette" target="_blank">인수,인자</a>
         인스턴스, prototype, __proto__, class, 생성자, new, this, 자료형, typeOf, for 속성 in 객체, 객체 리터럴</h6>
@@ -2564,13 +2600,13 @@
       </div>
 
       <!-- src="portal/images/문서연결_엑셀VBA/개인적정리png_자료형.png" -->
-      <div id="js개인정리png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" title="클릭하면 d-none">
+      <div id="java_개인적정리_1_자료형_png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" title="클릭하면 d-none">
         <img src="" alt="이미지없음">
       </div>
 
 
       <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank">• 문법과 자료형</a></h6>
-      <button title="개인적정리png_자료형.png" onclick="개인정리png(this)">자료형</button> 
+
       <a href="https://codingeverybody.kr/자바스크립트-typeof-연산자-데이터-타입-확인하기/" target="_blank">링크</a>
 
       <br>

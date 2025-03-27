@@ -1,68 +1,38 @@
 function 개인정리png(e) {
   //onclick에 개인정리png(this) => this는 요소, function 개인정리png(e)에서 e가 요소가 됨
-  //onclick에 개인정리png(문자열) => type
+  //onclick에 개인정리png(문자열) => typeof e = string, button이면 object
+  //<button title="들어갈id:img파일이름:java_개인적정리_1_자료형_개인정리png들어갈곳:개인적정리png_자료형.png"
+  //  title을 split하면 [2]=들어갈곳id, [3]=파일이름
   var 타입typeof=typeof e;
-  var 타입proto=Object.prototype.toString.call(e).slice(8, -1);
-  console.log('typeof : ' + 타입typeof + ', proto : ' + 타입proto)
-  var 문서제목;
-  console.log(typeof this)
-  //console.log(Object.prototype.toString.call(this).slice(8, -1))
-  class Classss {}
-  console.log(typeof Classss)
-  console.log(Object.prototype.toString.call(개인정리png))
-  console.log(Object.prototype.toString.call(this))
-  var a={};
-  console.log(typeof a)
-  console.log(Object.prototype.toString(this))
-  console.log(Object.prototype.toString.call(this))
-  console.log(this.toString())
-
+  var 타입proto=Object.prototype.toString.call(e).slice(8, -1); //그냥 확인용
+  //console.log('typeof : ' + 타입typeof + ', proto : ' + 타입proto)
+  var 파일이름, 들어갈곳id;
 
   if (typeof e === 'string') { // '파일이름을 넣었을때'
-    문서제목=e;
+    파일이름=e;
   }
   if (typeof e === 'object') { // 'this를 넣었을때'
-    문서제목=e.title;
+    파일이름=e.title.split(':')[3];
+    들어갈곳id=e.title.split(':')[2];
   }
-  var src값='portal/images/문서연결_엑셀VBA/' + 문서제목;
-  document.querySelector('#js개인정리png들어갈곳 img').src=src값;
-  document.querySelector('#js개인정리png들어갈곳').classList.remove('d-none');
+  var src값='portal/images/문서연결_엑셀VBA/' + 파일이름;
+  document.querySelector(`#${들어갈곳id} img`).src=src값;
+  document.querySelector(`#${들어갈곳id}`).classList.remove('d-none');
 }
 
 function 연습2() {
-  console.dir(연습2.prototype.toString.call(연습2))
-  연습2.a="ddd"
-
-
-
-
-
-  return 연습2.a;
-  var 배열=[1,2,3];
-  var 객체={"ㅇㅇ":1,1:3}
-  console.log(Array.prototype.toString.call(배열))
-  console.log(String.prototype.toString.call('ddd'))
-  console.log(Object.prototype.toString.call(배열))
-  console.log(Object.prototype.toString(배열))
-  console.log(Object.toString())
-  console.log(배열.toString())
-  console.log(Object.prototype.toString.call(객체))
-  console.log(Object.prototype.toString(객체))
-  console.log(객체.__proto__)
-  console.log(객체.__proto__.toString())
-  console.log(객체.__proto__.toString.call(객체))
-  console.log(배열.__proto__)
-  console.log(배열.__proto__.toString())
-  console.log(배열.__proto__.toString.call(객체))
-  console.log(배열.__proto__.toString.call(배열))
+  var aa={a:1,b:2}
+  
+  연습2.prototype.aa='df'
   
 }
-console.log(연습2.a)
+
+
 
 function 연습() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'js_typeof_tostring_call';
+  var 연습제목설정이것만 = 'js_자료형을먼저알아야겠다';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
