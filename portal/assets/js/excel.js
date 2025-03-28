@@ -1,9 +1,14 @@
 function 개인정리png(e) {
+  //<button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_this점key이름.png:없음" onclick="개인정리png(this)">'this.key이름'</button>
+  //<div id="js_자료형을먼저알아야겠다_설명" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none"><img src="" alt="이미지없음">
+  //<!-- js로 아래에 들어갈 요소가 들어갈수 있음 --></div>
   //onclick에 개인정리png(this) => this는 요소, function 개인정리png(e)에서 e가 요소가 됨
   //onclick에 개인정리png(문자열) => typeof e = string, button이면 object
-  //<button title="들어갈id:img파일이름:java_개인적정리_1_자료형_개인정리png들어갈곳:개인적정리png_자료형.png"
-  //  title을 split하면 [2]=들어갈곳id, [3]=파일이름
-  var 타입typeof=typeof e;
+  //<button title="들어갈id:img파일이름:가져올요소:java_개인적정리_1_자료형_png들어갈곳:개인적정리png_자료형.png:없음"
+  //   [0]들어갈id:[1]img파일이름:[2]가져올요소: =>자료설명
+  //   [3]java_개인적정리_1_자료형_png들어갈곳:[4]개인적정리png_자료형.png:[5]없음
+  //title을 split하면 [3]=들어갈곳id,[4]=png파일이름,[5]추가할 요소 (나중 위해)
+  var 타입typeof=typeof e; //요소이면 object 문자열이면 string
   var 타입proto=Object.prototype.toString.call(e).slice(8, -1); //그냥 확인용
   //console.log('typeof : ' + 타입typeof + ', proto : ' + 타입proto)
   var 파일이름, 들어갈곳id;
@@ -12,19 +17,43 @@ function 개인정리png(e) {
     파일이름=e;
   }
   if (typeof e === 'object') { // 'this를 넣었을때'
-    파일이름=e.title.split(':')[3];
-    들어갈곳id=e.title.split(':')[2];
+    파일이름=e.title.split(':')[4];
+    들어갈곳id=e.title.split(':')[3];
   }
   var src값='portal/images/문서연결_엑셀VBA/' + 파일이름;
   document.querySelector(`#${들어갈곳id} img`).src=src값;
   document.querySelector(`#${들어갈곳id}`).classList.remove('d-none');
 }
 
+
+const Person = {
+  "name": "Alice",
+  "공  백":"공백",
+  age: 25,
+  "123t": 35,
+  job: "Developer",
+  greet: function() {
+      console.log(`Hello, my name is ${this.name}`);
+  },
+  sound() {
+    console.log("Some sound...");
+  },
+  속성으로리터럴객체: {
+    내부속성:"내부",
+    내부2:"_",
+    sound2() {console.log("sound2")},
+    sound3: function() {console.log("value에 함수")}
+  }
+};
+
+//const person = { ... } 외부에서 새로운 속성 또는 메서드 추가 됨
+Person.새로운key = function() {console.log('새로운메서드')}
+Person.새로운key(); // 새로운메서드
+
+
+
 function 연습2() {
-  var aa={a:1,b:2}
-  
-  연습2.prototype.aa='df'
-  
+
 }
 
 
@@ -32,7 +61,7 @@ function 연습2() {
 function 연습() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'js_자료형을먼저알아야겠다';
+  var 연습제목설정이것만 = 'js_객체는속성과메서드를포함하는데이터의집합';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);

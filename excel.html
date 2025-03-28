@@ -2175,7 +2175,9 @@
     <div class="개별카테고리" id="Java전체_기초이해"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6 class="fw-bold" style="color:blueviolet">--- 큰틀에서 이해하기 ---</h6>
-        <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">typeof, Object.prototype.toString.call()</a></h6>
+        <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명</h6>
+        <h6 class="canvas_div fw-bold" title="js_객체는속성과메서드를포함하는데이터의집합">2) 객체 : [], {}, 함수(function, class)</h6>
+        <h6 class="fw-bold">생성자함수(new)는 function 함수 또는 class 함수를 new 로 호출하여 만든다.</h6>
         <h6 class="canvas_div fw-bold" title="js_큰틀에서이해하기1">객체(속성[key,value]), 변수,인수-인자, 자료형</h6>
 
         
@@ -2444,6 +2446,7 @@
   <div id="js_자료형을먼저알아야겠다">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold"><a href="https://minify.tistory.com/33" target="_blank">자료형</a> string, number, boolean 등은 객체가 아니지만 객체화된다. 래퍼객체 new String(문자열) => object</h6>
+      <h6 class="fw-bold">자료형 : 변수에 저장되는 데이터의 형태, 즉 변수에 객체 타입의 데이터를 저장하면 그 변수는 객체가 됩니다.</h6>
       <div class="자료형표">
         <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
         <code><div>class C__ {}</div><div>[object Function]</div><div>function</div></code>
@@ -2456,6 +2459,7 @@
         <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
         <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
         <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
+        <code>null이 object로 나오는것은 버그 (객체가 아니다), 객체(Object) 는 속성(Property)과 메서드(Method)를 포함하는 데이터의 집합.</code>
         <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
         <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
         <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>
@@ -2497,9 +2501,72 @@
       <h6 class="fw-bold">4. 내장객체는 여러 속성과 메서드가 정의되어 있고</h6>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h6 class="fw-bold"></h6>
+      <h5 class="fw-bold">객체(Object) 는 속성(Property)과 메서드(Method)를 포함하는 데이터의 집합.</h5>
+      <h6 class="fw-bold">1) Function : 함수. function() {} 로 정의되는 객체. name 속성, length 속성(매개변수 개수).</h6>
+      <h6 class="fw-bold">2) Object : 객체 리터럴. {} 로 정의되는 객체.</h6>
+      <h6 class="fw-bold">3) Array : [] 로 정의되는 객체. 속성 : index, name, length. 메서드 : filter(), forEach() 등</h6>
+      <h6 class="fw-bold">4) Function(class) : class 클래스명 {} 로 정의되는 객체. 클래스 문법이 있다.
+        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_class는함수.png:없음" onclick="개인정리png(this)">class는 함수</button>
+        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_일급객체.png:없음" onclick="개인정리png(this)">일급객체,함수는 객체</button>
+      </h6>
+      <h6 class="fw-bold">5) 문자열(string)은 객체가 아니지만 String 객체(object)로 정의하면 객체가 된다</h6>
+      <h6 class="fw-bold" style="text-indent: 20px;">문자열을 객체화 하지 않고도 String 객체의 속성과 메서드를 사용할수 있는데 </h6>
+      <h6 class="fw-bold" style="text-indent: 20px;">자바스크립트 자체에서 사용하는 순간에 객체화(래퍼객체) 시켜준다 </h6>
+      <h6 class="fw-bold">6) 여러 객체가 있다. 
+        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_내장객체등.png:없음" onclick="개인정리png(this)">내장객체 등</button>
+      </h6>
+      <div id="js_자료형을먼저알아야겠다_설명" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none">
+        <img src="" alt="이미지없음"><!-- js로 아래에 들어갈 요소가 들어갈수 있음 -->
+      </div>
 
-      
+      <br>
+      <h6 class="fw-bold">1) 속성(Property)은 key:value의 쌍으로 표현하고, value 위치에는 함수, 객체, 기본값 등이 가능하다</h6>
+      <h6 class="fw-bold" style="text-indent:20px;">메소드는 메소드이름() {...} 또는 메소드이름: function() {...}으로 표현한다.</h6>
+      <h6 class="fw-bold">2) '객체.속성이름'으로 value를 확인할 수 있고, value위치에 객체가 있다면 '객체.속성이름.속성이름'으로 접근가능</h6>
+      <h6 class="fw-bold">3) vlaue위치에 함수가 있는경우, '객체.속성'은 함수의 문자열이고, 동작을 가져오려면 ()를 넣어야된다. '객체.속성()'</h6>
+      <h6 class="fw-bold" style="color:blueviolet">4) 객체는 속성을 추가, 변경할 수 있다. 객체가 되면 자료형의 하나가 되고 해당 자료형의 속성과 기능을 상속받는다.</h6>
+      <h6 class="fw-bold">5) 생성된 객체의 기능과 속성을 상속받는 객체의 복사본(원할때마다 만들수있다)을 인스턴스라 한다.</h6>
+      <h6 class="fw-bold" style="text-indent:20px;">변수명='new 객체' 형식으로 만든다. <span style="color:blueviolet"> new를 생성자 함수라고 한다.</span></h6>
+      <br>
+      <h6 class="fw-bold">1) {} 리터럴객체는 속성(key:value, key:메소드)를 직접 정의, 리터럴객체 내부의 this는(메서드 정의때만 사용) 자신을 가리킴</h6>
+      <h6 class="fw-bold" style="text-indent:20px;">리터럴객체의 내부에서 value위치에서 key값을 사용할수 없음 => 
+        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_this점key이름.png:없음" onclick="개인정리png(this)">'this.key이름'</button>
+         으로 사용할것 
+      </h6>
+      <h6 class="fw-bold" style="text-indent:20px;">value에 key값을 그대로 쓰면 전역변수 위치에서 찾게된다.</h6>
+      <br>
+      <h6 class="fw-bold">1) 함수객체(function) 정의 => var 함수객체의인스턴스 = new 함수객체(a,b...); <span style="color:blueviolet">new 를 통한 인스턴스 생성을 생성자함수라 함.</span></h6>
+      <h6 class="fw-bold" style="text-indent:20px;">함수객체 내부의 변수는 자신만의 동작을 위한 것이고 속성과 무관하다.</h6>
+      <h6 class="fw-bold" style="text-indent:20px;">함수객체는 단순동작 정의하여 호출하여 사용하거나. 인스턴스를 생성하여 사용.</h6>
+      <h6 class="fw-bold">2) 함수객체 정의할때 내부에서 사용되는 this는 자신을 호출할 '함수객체의인스턴스'를 가리킨다.</h6>
+      <h6 class="fw-bold">3) 함수도 객체이므로 속성을 만들수 있다. 내부에서 this.속성명=value; 또는</h6>
+      <h6 class="fw-bold" style="text-indent:20px;">함수객체 생성후, 외부에서, 함수객체명.새로운속성=vlaue; value는 메소드, 객체, 값 등</h6>
+      <h6 class="fw-bold" style="color:blueviolet;">4) class는 고유한 문법을 가진다. 사용자정의함수라고 생각하면 된다.</h6>
+      <br>
+      <h6 class="fw-bold">1) 객체는 자신의 자료형에 따라 정의된 기능<span style="color:blueviolet;">(속성)</span>을 담은 prototype속성(속성과 약간 다르다?)을 가진다.</h6>
+      <h6 class="fw-bold">2) 객체.portotype.새로운속성=vlaue;로 새로운 속성을 정의할 수 있다.</h6>
+    </div>
+  </div>
+
+  <div id="js_객체는속성과메서드를포함하는데이터의집합">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <img src="portal/images/문서연결_엑셀VBA/object_array차이점.png" alt="이미지없음">
+      <div style="display:inline-block;vertical-align: top;">
+        <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="">객체에 대해 알아보자</a><br>
+        자료형의 하나인데 <br>왜 객체 객체 하나. <br>속성, 메소드(동작)등을 <br>활용가능 하니까. <br>
+        <span class="fw-bold">리터럴객체(object),</span><br><span class="fw-bold">배열(array),</span><br>
+        <span class="fw-bold">함수(function),</span><br><span class="fw-bold">클래스(class)의</span><br>
+        <span class="fw-bold">문법 및 사용법을</span><br><span class="fw-bold">알아야함</span>
+      </div>
+      <br>
+      <h6 class="fw-bold">일반객체 : 중괄호 { } 로 정의, object 또는 리터럴 객체, 속성(Property)과 메서드(Method)를 포함하는 데이터의 집합</h6>
+      <img src="portal/images/문서연결_엑셀VBA/object객체만들기예시.png" alt="이미지없음">
+      <div style="display:inline-block">
+
+      </div>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
     </div>
   </div>
 
@@ -2589,7 +2656,7 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide" target="_blank">Mdn web docs</a></h6>
       <h6 class="fw-bold">
-        • <button title="들어갈id:img파일이름:java_개인적정리_1_자료형_png들어갈곳:개인적정리png_자료형.png" onclick="개인정리png(this)">객체,</button> 
+        • <button title="들어갈id:img파일이름:가져올요소:java_개인적정리_1_자료형_png들어갈곳:개인적정리png_자료형.png:없음" onclick="개인정리png(this)">객체,</button> 
         <a href="https://velog.io/@bami/Javascript-인수와-인자" target="_blank">인수Argument,인자Parameter</a>
         <a href="https://cocobi.tistory.com/82#google_vignette" target="_blank">인수,인자</a>
         인스턴스, prototype, __proto__, class, 생성자, new, this, 자료형, typeOf, for 속성 in 객체, 객체 리터럴</h6>
@@ -2600,8 +2667,8 @@
       </div>
 
       <!-- src="portal/images/문서연결_엑셀VBA/개인적정리png_자료형.png" -->
-      <div id="java_개인적정리_1_자료형_png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" title="클릭하면 d-none">
-        <img src="" alt="이미지없음">
+      <div id="java_개인적정리_1_자료형_png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')">
+        <img src="" alt="이미지없음"><!-- js로 아래에 들어갈 요소가 들어갈수 있음 -->
       </div>
 
 
