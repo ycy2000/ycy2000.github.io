@@ -25,36 +25,19 @@ function 개인정리png(e) {
   document.querySelector(`#${들어갈곳id}`).classList.remove('d-none');
 }
 
-
-const Person = {
-  "name": "Alice",
-  "공  백":"공백",
-  age: 25,
-  "123t": 35,
-  job: "Developer",
-  greet: function() {
-      console.log(`Hello, my name is ${this.name}`);
-  },
-  sound() {
-    console.log("Some sound...");
-  },
-  속성으로리터럴객체: {
-    내부속성:"내부",
-    내부2:"_",
-    sound2() {console.log("sound2")},
-    sound3: function() {console.log("value에 함수")}
-  }
-};
-
-//const person = { ... } 외부에서 새로운 속성 또는 메서드 추가 됨
-Person.새로운key = function() {console.log('새로운메서드')}
-Person.새로운key(); // 새로운메서드
-
-
-
 function 연습2() {
+  const person = {이름 : "길동", 성 : "홍"};
+  let 프로토타입=Object.getPrototypeOf(person);
+  console.log( 프로토타입.keys);
+  console.log( 프로토타입.toString());
+  for (let 키 in 프로토타입) {console.log(키);}
+  for (let 키 of 프로토타입.keys()) {console.log(키);}
+  for (let 키 in 프로토타입.__proto__) {console.log(키);}
+  for (let 키 in 프로토타입) {console.log(키);}
 
 }
+
+
 
 
 

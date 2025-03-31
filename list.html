@@ -93,12 +93,16 @@
     <!-- 날짜 오른쪽 BUTTON은 값이 있어도 첫번째버튼이 날짜형식이면 js로 바뀜(요일) background-color:chartreuse-->
     <!-- id=달력날짜기준, 1일일때 안바뀌고 달력날짜기준의 날짜를 참고로 달력이 바뀐다. -->
     <!--★★★★★★ .연두바탕보라글자, .보라글자, .테두리, .마진탑3 -->
-    <button id="달력날짜기준" class="d-none">3월1일</button>
-    <div><button>4월15일</button><button></button>
+    <button id="달력날짜기준" class="d-none">4월1일</button>
+    <img src="portal/images/문서연결_리스트/입고예정_4월중순_7동일.png" style="border:1px solid black;" alt="이미지없음"><br>
+    <div><button>4월1일</button><button></button>
       <div class="일별메모모두감싸기">
-        <div class="연두바탕보라글자 테두리">입고예정 : 4월 중순</div>
-        <br>
-        <img src="portal/images/문서연결_리스트/입고예정_4월중순_7동일.png" style="border:1px solid black;" alt="이미지없음">
+        <div class="연두바탕보라글자 테두리">입고예정 : 7동일 8826, 빠르면 4/1(화) 오후, 또는 4/2(수) </div>
+      </div>
+    </div>
+    <div><button>4월4일</button><button></button>
+      <div class="일별메모모두감싸기">
+        <div>선적예정 : 25/3/1 MH수산 생물고등어 녹 2번 B/T, 5F:1140, 6F:1008 중 1400개 <br>스마일</div>
       </div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -116,56 +120,52 @@
 </div>
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	03/28 금 16:36	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
-  1		SITRRIPU032506	씨케이글로벌	SITU6655867	새우	1,670 	BPT감만	3/28	1			20 	BPT감만			SITC HONGKONG					03/28 금 16:36	
-  1		NSSLBKBSC2500133	동일	TEMU9474330	주꾸미	3,650 	허치슨감만	3/29	1				허치슨감만			SM JAKARTA					조회정보	
-  1		KMTCBKK3599664	한국축지	SZLU2018510	게맛살	1,100 	BPT신선대	3/29	1			20 	BPT신선대			KMTC JAKARTA					적재	57 
-  1		026F509434	씨에이치씨	SZLU9923906	새우	1,800 	BPT감만	3/31	1				BPT감만			WAN HAI 322					4,617 	3줄
-  1		HLCUPN4250167801	더맛하	HLBU9697354	닭다리	1,950 	챔프(EZ신항).PNC	3/29	2				챔프(EZ신항).PNC			YOKOHAMA EXPRESS					6,156 	4줄
-  1		HLCUIT1250121477	현대코퍼	HLBU9366253	닭다리살	1,980 	챔프(EZ신항).PNC	3/29	2				챔프(EZ신항).PNC			YOKOHAMA EXPRESS					7,695 	5줄
-  1		NSSLLCBSC2500189	뉴아시아	BMOU9875319	닭날개	1,950 	ACE.허치슨감만	3/31	2				ACE.허치슨감만			KMTC NAGOYA					9,234 	6줄
-  1		NSSLLCBSC2500190	뉴아시아	OTPU6291218	닭날개	1,950 	ACE.허치슨감만	3/31	2				ACE.허치슨감만			KMTC NAGOYA						
-      MAEU249427046	BM트레이딩	MWCU6859051	문어	1,617 	PNC	3/29	1				PNC			MAERSK SAN VICENTE					출고/입고 4주간	
-      KMTCLCH5125136	마이푸드	SEGU9593966	닭다리	1,925 	허치슨감만	3/29					허치슨감만			KMTC SINGAPORE					1일 7/5	5일줄
-      KMTCNBO8655333	세현	SEKU9041513	오징어채	800 	허치슨감만	3/29	1			40 	허치슨감만			PEGASUS GRACE					13,966 	45.4 
-      SAO500019302	수월한	PCIU6132540	닭다리살	1,917 	BPT신선대	3/29	2				BPT신선대			NYK ISABEL					10,811 	35.1 
-      ONEYSGNF35345500	우원홀딩스	KKTU6083324	새우	930 	BPT신선대	3/29	1			20 	BPT신선대			NYK ISABEL					내국제외	
-      MAEUJBS260882	이마트	MNBU0676771	닭다리살	1,941 	PNC	3/29	2				PNC			MSC DITTE					구분	대수
-      HLCUPN4250162428	더맛하	HLBU9315338	닭다리	1,950 	PNIT	3/30	2				PNIT			MSC JULIETTE					수산	29
-      CKCOLCH0044024	동일냉장	FBIU5109986	닭고기	1,940 	허치슨감만	3/30	2				허치슨감만			KMTC PUSAN					축산	30
-      HLCUIT1250200235	마이푸드	BMOU9739647	닭다리	1,958 	PNIT	3/30					PNIT			MSC JULIETTE					합계	59
-      ONEYRICF57713600	씨케이글로벌	SZLU9526236	분홍새우	4,536 	HJNC	3/30	1				HJNC			ONE FOCUS						
-      HDMUSGNA20657900	우원홀딩스	HMMU5202895	새우	702 	HPNT	3/30	1			20 	HPNT			SEASPAN FALCON					화주별 요약	
-      VAPPUS202502004873	GK교역	YMLU5411780	오징어	1,200 	?????(양밍).DGT	3/31	1	양밍			?????(양밍).DGT			WAN HAI 612(BCT)					화주	대수
-      KMTCSUB2369511	씨케이글로벌	CAIU5530026	새우	1,800 	허치슨감만	3/31	1				허치슨감만			KMTC INCHEON					수월한	7
-      KMTCSUB2369531	씨케이글로벌	TTNU8787821	새우	1,800 	허치슨감만	3/31	1				허치슨감만			KMTC INCHEON					씨케이글로벌	5
-      YMJAI490538405	우원홀딩스	SZLU2065744	새우	701 	BPT감만	3/31	1			20 	BPT감만			WAN HAI 322					대상 주식회사	5
-      MAEU249302198	동원산업	MNBU3779834	고등어	1,200 	PNC	4/1	1				PNC			MSC HAMBURG					이마트	4
-      HASLS22250300340	뉴아시아	SKRU9906849	닭날개	1,950 		4/2	2							KWANGYANG VOVAGER					세계로무역	4
-      COSU6408063652	수월한	SZLU9481321	닭다리살	1,917 		4/2	2							COSCO SHIPPING MEXICO					삼영수산	4
-      COSU6408064995	수월한	FBIU5607741	닭다리살	1,960 		4/2	2							COSCO SHIPPING MEXICO					뉴아시아	3
-      COSU6408064997	수월한	FBIU5564845	닭다리살	1,917 		4/2	2							COSCO SHIPPING MEXICO					우원홀딩스	3
-      COSU6408065066	수월한	SEGU9483275	닭다리살	1,960 		4/2	2							COSCO SHIPPING MEXICO					SM무역	3
-      COSU6408065067	수월한	OERU4249388	닭다리살	1,960 		4/2	2							COSCO SHIPPING MEXICO					대성무역	3
-      CNT0268388	해심트레이딩	TEMU9179865	게	3,252 	BNCT	4/2	1				BNCT			CMA CGM TENERE					아스트로스	3
-      YMJAC987030123	SM무역	YMLU5473205	오징어	1,200 	BCT	4/3					BCT			KOTA MANZANILLO					한국축지	2
-      _24330051535	씨케이글로벌	HLBU6119780	피뿔고동	2,200 	?????(하파).HJNC	4/3	1	하파			?????(하파).HJNC			YM WARMTH					더맛하	2
-      ONEYSCLF04379903	아이씨인터	FSCU5821604	연어	900 	PNIT	4/3	1				PNIT			MSC NOA ARIELA					현대코퍼	2
-      DJSCSGN250001782	한국축지	DJLU5900211	갑오징어	1,050 	BPT신선대	4/3	1			20 	BPT신선대			PEGASUS PROTO					마이푸드	2
+<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	03/31 월 16:15	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
+  1		SITRRIPU032506	씨케이글로벌	SITU6655867	새우	1,670 	BPT감만	3/28	1			20 	BPT감만			SITC HONGKONG					03/31 월 16:15	
+  1	○	KMTCBKK3599664	한국축지	SZLU2018510	게맛살	1,100 	BPT신선대	3/29	1			20 	BPT신선대		KMTCBKK3599664	KMTC JAKARTA	25KMTC1043I-0085-	1,100 	11,640.00 	2025.03.29	조회정보	
+  1		VAPPUS202502004873	GK교역	YMLU5411780	오징어	1,200 	?????(양밍).DGT	3/31	1	양밍			?????(양밍).DGT			WAN HAI 612(BCT)					적재	57 
+  1		ONEYSCLF04379903	아이씨인터	FSCU5821604	연어	900 	PNIT	3/31	1				PNIT			MSC NOA ARIELA					4,617 	3줄
+  1	○	KMTCLCH5125136	마이푸드	SEGU9593966	닭다리	1,925 	허치슨감만	3/29	2				허치슨감만		KMTCLCH5125136	KMTC SINGAPORE	25KMTC1029I-0105-	1,925 	24,640.00 	2025.03.29	6,156 	4줄
+  1	○	MAEUJBS260882	이마트	MNBU0676771	닭다리살	1,941 	PNC	3/29	2				PNC		MAEUJBS260882	MSC DITTE	25MSCU2048I-1327-	1,941 	24,238.38 	2025.03.29	7,695 	5줄
+  2	○	SAO500019302	수월한	PCIU6132540	닭다리살	1,917 	BPT신선대	3/29	2				BPT신선대		SAO500019302	NYK ISABEL	25ONEY0361I-0005-	1,917 	23,962.50 	2025.03.29	9,234 	6줄
+  2	○	CKCOLCH0044024	동일냉장	FBIU5109986	닭고기	1,940 	허치슨감만	3/30	2				허치슨감만		CKCOLCH0044024	KMTC PUSAN	25KMTC1155I-2022-	1,940 	24,444.00 	2025.03.31		
+  2		026F509434	씨에이치씨	SZLU9923906	새우	1,800 	BPT감만	3/31	1				BPT감만			WAN HAI 322					출고/입고 4주간	
+      MAEU249427046	BM트레이딩	MWCU6859051	문어	1,617 	PNC	3/29	1				PNC			MAERSK SAN VICENTE					1일 7/5	5일줄
+      KMTCNBO8655333	세현	SEKU9041513	오징어채	800 	허치슨감만	3/29	1			40 	허치슨감만			PEGASUS GRACE					14,185 	46.1 
+      ONEYSGNF35345500	우원홀딩스	KKTU6083324	새우	930 	BPT신선대	3/29	1			20 	BPT신선대			NYK ISABEL					11,100 	36.1 
+      HLCUPN4250162428	더맛하	HLBU9315338	닭다리	1,950 	PNIT	3/30	2				PNIT			MSC JULIETTE					내국제외	
+      HLCUIT1250200235	마이푸드	BMOU9739647	닭다리	1,958 	PNIT	3/30					PNIT			MSC JULIETTE					구분	대수
+      ONEYRICF57713600	씨케이글로벌	SZLU9526236	분홍새우	4,536 	HJNC	3/30	1				HJNC			ONE FOCUS					수산	29
+      HDMUSGNA20657900	우원홀딩스	HMMU5202895	새우	702 	HPNT	3/30	1			20 	HPNT			SEASPAN FALCON					축산	29
+      KMTCSUB2369511	씨케이글로벌	CAIU5530026	새우	1,800 	허치슨감만	3/31	1				허치슨감만			KMTC INCHEON					합계	58
+      KMTCSUB2369531	씨케이글로벌	TTNU8787821	새우	1,800 	허치슨감만	3/31	1				허치슨감만			KMTC INCHEON						
+      YMJAI490538405	우원홀딩스	SZLU2065744	새우	701 	BPT감만	3/31	1			20 	BPT감만			WAN HAI 322					화주별 요약	
+      MAEU249302198	동원산업	MNBU3779834	고등어	1,200 	PNC	4/1	1				PNC			MSC HAMBURG					화주	대수
+      HASLS22250300340	뉴아시아	SKRU9906849	닭날개	1,950 		4/2	2							KWANGYANG VOVAGER					수월한	7
+      COSU6408063652	수월한	SZLU9481321	닭다리살	1,917 		4/2	2							COSCO SHIPPING MEXICO					대상 주식회사	6
+      COSU6408064995	수월한	FBIU5607741	닭다리살	1,960 		4/2	2							COSCO SHIPPING MEXICO					씨케이글로벌	5
+      COSU6408064997	수월한	FBIU5564845	닭다리살	1,917 		4/2	2							COSCO SHIPPING MEXICO					이마트	4
+      COSU6408065066	수월한	SEGU9483275	닭다리살	1,960 		4/2	2							COSCO SHIPPING MEXICO					세계로무역	4
+      COSU6408065067	수월한	OERU4249388	닭다리살	1,960 		4/2	2							COSCO SHIPPING MEXICO					삼영수산	4
+      CNT0268388	해심트레이딩	TEMU9179865	게	3,252 	BNCT	4/2	1				BNCT			CMA CGM TENERE					우원홀딩스	3
+      YMJAC987030123	SM무역	YMLU5473205	오징어	1,200 	BCT	4/3					BCT			KOTA MANZANILLO					SM무역	3
+      YMJAI493330952	씨에이치씨	SZLU2067388	새우	929 		4/3	1			20 				YM INITIATIVE					대성무역	3
+      _24330051535	씨케이글로벌	HLBU6119780	피뿔고동	2,200 	?????(하파).HJNC	4/3	1	하파			?????(하파).HJNC			YM WARMTH					아스트로스	3
+      DJSCSGN250001782	한국축지	DJLU5900211	갑오징어	1,050 	BPT신선대	4/3	1			20 	BPT신선대			PEGASUS PROTO					한국축지	2
       ONEYSAOF03279803	대상 주식회사	FBIU5256143	닭다리살	1,980 	PNIT	4/5	2				PNIT			CMA CGM XIAMEN					GK교역	2
-      MAEUSSZ780940	대상 주식회사	MNBU0231620	닭다리살	1,980 	PNC	4/6	2				PNC			MSC REEF					동일	1
-      MAEUSSZ780958	대상 주식회사	SUDU8065310	닭다리살	1,980 	PNC	4/6	2				PNC			MSC REEF					씨에이치씨	1
-      MAEUSSZ781300	대상 주식회사	MNBU0028085	닭다리살	1,980 	PNC	4/6	2				PNC			GSL CHRISTEL ELISABETH					BM트레이딩	1
-      MAEUJBS262421	대성무역	MNBU3815510	닭다리살	1,954 	PNC	4/6	2				PNC			GSL CHRISTEL ELISABETH					세현	1
-      HLCUPN4250164445	수월한	HLBU9979337	닭다리살	1,858 	PNIT	4/6	2				PNIT			MSC GAYANE					동일냉장	1
-      MAEUJBS261630	이마트	MMAU1099058	닭다리살	1,939 	PNC	4/6	2				PNC			MSC REEF					동원산업	1
-      MEDUP3809530	세계로무역	MEDU9156928	오징어	1,176 	PNC	4/7	1				PNC			MARSA PRIDE					해심트레이딩	1
-      MEDUP3809530	세계로무역	TRIU8993597	오징어	1,170 	PNC	4/7	1				PNC			MARSA PRIDE					아이씨인터	1
-      MEDUP3809555	세계로무역	TRIU8613444	오징어	1,186 	PNC	4/7	1				PNC			MARSA PRIDE					합계	62
-      MEDUP3809555	세계로무역	MSCU7462563	오징어	1,175 	PNC	4/7	1				PNC			MARSA PRIDE						
-      LMM0511649	삼영수산	SZLU9867063	오징어	1,100 	BNCT	4/10	1				BNCT			CMA CGM XIAMEN						
-      HDMUSAOA59753700	아스트로스	HMMU5470497	닭발	1,500 		4/13	2							HYUNDAI JUPITER						
-      VAPPUS202503004905	GK교역	OTPU6687636	오징어	1,200 	?????(완하이)._	4/15	1	완하이			?????(완하이)._			KOTA CEMPAKA						
+      MAEUSSZ780940	대상 주식회사	MNBU0231620	닭다리살	1,980 	PNC	4/6	2				PNC			MSC REEF					마이푸드	2
+      MAEUSSZ780958	대상 주식회사	SUDU8065310	닭다리살	1,980 	PNC	4/6	2				PNC			MSC REEF					씨에이치씨	2
+      MAEUSSZ781300	대상 주식회사	MNBU0028085	닭다리살	1,980 	PNC	4/6	2				PNC			GSL CHRISTEL ELISABETH					아이씨인터	1
+      MAEUJBS262421	대성무역	MNBU3815510	닭다리살	1,954 	PNC	4/6	2				PNC			GSL CHRISTEL ELISABETH					동일냉장	1
+      HLCUPN4250164445	수월한	HLBU9979337	닭다리살	1,858 	PNIT	4/6	2				PNIT			MSC GAYANE					BM트레이딩	1
+      MAEUJBS261630	이마트	MMAU1099058	닭다리살	1,939 	PNC	4/6	2				PNC			MSC REEF					세현	1
+      MEDUP3809530	세계로무역	MEDU9156928	오징어	1,176 	PNC	4/7	1				PNC			MARSA PRIDE					더맛하	1
+      MEDUP3809530	세계로무역	TRIU8993597	오징어	1,170 	PNC	4/7	1				PNC			MARSA PRIDE					동원산업	1
+      MEDUP3809555	세계로무역	TRIU8613444	오징어	1,186 	PNC	4/7	1				PNC			MARSA PRIDE					뉴아시아	1
+      MEDUP3809555	세계로무역	MSCU7462563	오징어	1,175 	PNC	4/7	1				PNC			MARSA PRIDE					해심트레이딩	1
+      LMM0511649	삼영수산	SZLU9867063	오징어	1,100 	BNCT	4/10	1				BNCT			CMA CGM XIAMEN					참트레이딩	1
+      HDMUSAOA59753700	아스트로스	HMMU5470497	닭발	1,500 		4/13	2							HYUNDAI JUPITER					현대코퍼	1
+      VAPPUS202503004905	GK교역	OTPU6687636	오징어	1,200 	?????(완하이)._	4/15	1	완하이			?????(완하이)._			KOTA CEMPAKA					합계	60
       VAPPUS202503004892	SM무역	OTPU6691560	오징어	1,200 	?????(완하이)._	4/15	1	완하이			?????(완하이)._			KOTA CEMPAKA						
       COSU6409068300	이마트	FBIU5055719	닭다리	1,955 		4/19	2							COSCO FORTUNE						
       VAPPUS202502004887	SM무역	OTPU6690901	오징어	1,200 	?????(완하이).HJNC	4/20	1	완하이			?????(완하이).HJNC			YM MOBILITY						
@@ -177,6 +177,8 @@
       MAEUJBS262899	이마트	SUDU5294817	닭다리	1,953 		5/6	2							MSC LEANNE						
       COSU6411358099	아스트로스	BMOU9272737	닭근위	1,568 		5/10	2							COSCO SHIPPING LOTUS						
       MEDUSF531637	대성무역	MEDU9029013	닭다리살	1,960 		5/25	2							MSC CARUELA						
+      COSU6408489027	대상 주식회사	TEMU9307349	닭다리살	1,980 			2							CMA CGM BAHIA						
+      MAEU251317333	참트레이딩	MNBU3771751	닭다리살	1,916 			2							MAERSK LIRQUEN						
       MEDUE8726451	대상 주식회사	MEDU9821925	닭다리살	1,980 		미정	2							MSC MADHU B						
       MEDUE8704227	현대코퍼	OTPU6569546	닭다리살	1,980 		미정	2							SEASPAN OSPREY						  
 </div>

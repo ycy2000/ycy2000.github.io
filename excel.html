@@ -2174,10 +2174,21 @@
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="Java전체_기초이해"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="fw-bold" style="color:blueviolet">--- 큰틀에서 이해하기 ---</h6>
-        <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명</h6>
-        <h6 class="canvas_div fw-bold" title="js_객체는속성과메서드를포함하는데이터의집합">2) 객체 : [], {}, 함수(function, class)</h6>
-        <h6 class="fw-bold">생성자함수(new)는 function 함수 또는 class 함수를 new 로 호출하여 만든다.</h6>
+        <h6 class="fw-bold" style="color:blueviolet">--- 큰틀에서 이해하기, 객체는 속성과 메서드를 포함하는 데이터의 집합 ---</h6>
+        <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
+          <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
+        </h6>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
+        <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 반복문 관련 ★ prototype 맛보기</h6>
+        <h6 class="canvas_div fw-bold" title="js_object객체_array객체">2) 리터럴 객체, object : { }, 3) array 객체 : [ ], key는 index </h6>
+        <h6 class="canvas_div fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
+        <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다.</h6>
+
+
+        
+        <br>
+        <h6 class="canvas_div fw-bold" title="js_클래스객체">★ 사용자정의 객체 : new { }객체, new class객체, 생성자 함수 방식 new 함수</h6>
+        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체'로 객체의 인스턴스를 만든다.</h6>
         <h6 class="canvas_div fw-bold" title="js_큰틀에서이해하기1">객체(속성[key,value]), 변수,인수-인자, 자료형</h6>
 
         
@@ -2548,28 +2559,88 @@
     </div>
   </div>
 
-  <div id="js_객체는속성과메서드를포함하는데이터의집합">
+  <div id="js_속성접근법">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <img src="portal/images/문서연결_엑셀VBA/object_array차이점.png" alt="이미지없음">
-      <div style="display:inline-block;vertical-align: top;">
-        <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="">객체에 대해 알아보자</a><br>
-        자료형의 하나인데 <br>왜 객체 객체 하나. <br>속성, 메소드(동작)등을 <br>활용가능 하니까. <br>
-        <span class="fw-bold">리터럴객체(object),</span><br><span class="fw-bold">배열(array),</span><br>
-        <span class="fw-bold">함수(function),</span><br><span class="fw-bold">클래스(class)의</span><br>
-        <span class="fw-bold">문법 및 사용법을</span><br><span class="fw-bold">알아야함</span>
-      </div>
-      <br>
-      <h6 class="fw-bold">일반객체 : 중괄호 { } 로 정의, object 또는 리터럴 객체, 속성(Property)과 메서드(Method)를 포함하는 데이터의 집합</h6>
+      <img src="portal/images/문서연결_엑셀VBA/object_array차이점.png" alt="이미지없음"><br>
       <img src="portal/images/문서연결_엑셀VBA/object객체만들기예시.png" alt="이미지없음">
-      <div style="display:inline-block">
 
-      </div>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h5 class="fw-bold">리터럴 객체 { } 의, key:value 에서 key에 접근 : 점(.)표기법, 대괄호([ ]) 표기법</h5>
+      <h6 class="fw-bold">★ "name": "Alice" => key는 문자열로 인식하는데 따옴표를 생략해도 인식한다. (따옴표 입력의 불편 해소를 위해서)</h6>
+      <h6 class="fw-bold">★ key값의 제한사항</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- "공   백  " :  공백이 있으면 반드시 따옴표로 감싸야한다. - "123t" : 숫자로 시작하면 반드시 따옴표로 감싸야한다.</h6>
+      <h6 class="fw-bold">1) value에 함수 : const 리터럴 = {함수 : function 콘솔() {console.log('함수 콘솔')}} <span style="color:blueviolet">=> 리터럴.함수(); or 리터럴['함수']();</span></h6>
+      <h6 class="fw-bold">2) vlaue에 변수 : function 콘솔() {console.log('함수 콘솔')}; const 리터럴 = {함수 : 콘솔} <span style="color:blueviolet">=> 리터럴.함수(); or 리터럴['함수']();</span></h6>
+      <h6 class="fw-bold">3) 속성(key:value)에 메서드 : const 리터럴 = {함수() {console.log('함수 콘솔')}} <span style="color:blueviolet">=> 리터럴.함수(); or 리터럴['함수']();</span></h6>
+      <h6 class="fw-bold">4) function과 메서드 둘다 <span style="color:blueviolet">console.log(리터럴.함수) => ƒ 함수() {console.log('함수 콘솔')}</span></h6> 
+      <h6 class="fw-bold">★ <span style="color:blueviolet">콘솔메서드의 값으로 동작을 넣으면 console.log(리터럴.함수()) => 값으로 전달된 동작을 실행하고, undefined 출력됨</span></h6> 
+      <br>
+      <h5 class="fw-bold">객체.속성 을 통해서 value 값에 접근하는 방법 <span style="color:blueviolet">(key에 변수 사용할때 [변수명]:value = 계산된 속성명)</span></h5>
+      <h6 class="fw-bold">1) 점(.)표기법 : key에 따옴표가 없어도 되는 속성이름일때 사용가능</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- 객체.key : 따옴표 없이 key값만 전달 => 따옴표 있어야되는것은 안된다는 의미</h6>
+      <h6 class="fw-bold">2) 대괄호([ ])표기법 : 다 된다. </h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- 따옴표를 넣어야 된다. 객체["key이름"].</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- 문자열인 변수를 넣어도 된다.</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">- const person = {name: "Alice"}; var 문자열="name"; console.log(person[문자열]); // Alice</h6>
+      <br>
+      <h5 class="fw-bold">Array 객체 [ ] 는, 대괄호([ ]) 표기법만 가능</h5>
+      <h6 class="fw-bold">1) 배열 = [1, 2, {name:"Alice"}] 안은 value값이다 value에는 객체, 함수도 가능하다. </h6>
+      <h6 class="fw-bold">2) 1)을 보면 key값이 없다. key값에 해당하는 것이 index이고 내부적으로 관리된다.</h6>
+      <h6 class="fw-bold">3) 참고로 배열[1] 대신에 배열["1"]도 된다. => key는 문자열이라는??</h6>
+      <h6 class="fw-bold">★ Alice : 배열[2].name => Alice, 배열[2](3번째값이 리터럴 객체 { }) 의 key인 name에 접근 : 점(.) 표기법</h6>
+      <h6 class="fw-bold">★ Alice : 배열[2]["name"] => Alice, 배열[2](3번째값이 리터럴 객체 { }) 의 key인 name에 접근 : 대괄호[ ] 표기법</h6>
+      <br>
+      <h5 class="fw-bold">객체.메서드 => 메서드의 문자열, 객체.메서드() => 메서드를 실행한 결과</h5>
+      <h6 class="fw-bold">value 에 함수는 '함수전체' 또는 '함수이름' 가능.</h6>
+      <h6 class="fw-bold">1) const person = [1, 2, {name:'Alice'},<span style="color:blueviolet">function 콘솔() {console.log('함수 콘솔')}</span> ]</h6>
+      <h6 class="fw-bold">2) function 콘솔() {console.log('함수 콘솔')}; const person = [1, 2, {name:'Alice'},<span style="color:blueviolet">콘솔</span> ]</h6>
+      <h6 class="fw-bold">★ value에 함수전체코드 들어갈수 있고, 외부에서 정의한 함수이름(이름만)으로 들어갈수있다.</h6>
+      <h6 class="fw-bold">3) console.log(person[3]) // ƒ 콘솔() {console.log('함수 콘솔')}</h6>
+      <h6 class="fw-bold">4) person[3]() // 함수 콘솔</h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ 배열의 key는 index이므로 person['콘솔']()은 사용할 수 없다.</h6>
+    </div>
+  </div>
+
+  <div id="js_객체관련반복문">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold" style="color:blueviolet">★ 객체(인스턴스아님)와 함수에는 prototype 객체가 있고 prototype객체에 속성(기능)들이 있다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ '객체.prototype.속성'으로 접근가능,  객체.prototype.속성 = vlaue 로 속성 추가 및 수정 가능.</h6>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
     </div>
   </div>
 
+  <div id="js_object객체_array객체">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+
+  <div id="js_함수객체">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+  
+  <div id="js_클래스객체">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold" style="color:blueviolet">★ 자바스크립트에서 class는 내부적으로 **프로토타입(prototype)**을 기반으로 동작합니다. </h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ 즉, class는 단순히 **프로토타입 기반 상속을 더 편리하게 작성할 수 있도록 도와주는 문법(syntactic sugar)**일 뿐이며, </h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ 실제 동작 방식은 기존 프로토타입 패턴과 동일합니다.</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+ 
   <div id="js_빽틱사용법">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold">• 빽틱사용법 : 문자열처럼 쓰면서, 변수(결과값 표현됨)를 넣을수 있다.
