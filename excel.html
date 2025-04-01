@@ -2179,17 +2179,16 @@
           <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
         </h6>
         <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
-        <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 반복문 관련 ★ prototype 맛보기</h6>
-        <h6 class="canvas_div fw-bold" title="js_object객체_array객체">2) 리터럴 객체, object : { }, 3) array 객체 : [ ], key는 index </h6>
+        <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
         <h6 class="canvas_div fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
-        <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다.</h6>
+        <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
+        <h6 class="canvas_div fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
 
 
         
         <br>
-        <h6 class="canvas_div fw-bold" title="js_클래스객체">★ 사용자정의 객체 : new { }객체, new class객체, 생성자 함수 방식 new 함수</h6>
-        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체'로 객체의 인스턴스를 만든다.</h6>
-        <h6 class="canvas_div fw-bold" title="js_큰틀에서이해하기1">객체(속성[key,value]), 변수,인수-인자, 자료형</h6>
+        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>
+        <h6 class="fw-bold">객체(속성[key,value]), 변수,인수-인자, 자료형</h6>
 
         
 
@@ -2517,18 +2516,16 @@
       <h6 class="fw-bold">2) Object : 객체 리터럴. {} 로 정의되는 객체.</h6>
       <h6 class="fw-bold">3) Array : [] 로 정의되는 객체. 속성 : index, name, length. 메서드 : filter(), forEach() 등</h6>
       <h6 class="fw-bold">4) Function(class) : class 클래스명 {} 로 정의되는 객체. 클래스 문법이 있다.
-        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_class는함수.png:없음" onclick="개인정리png(this)">class는 함수</button>
-        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_일급객체.png:없음" onclick="개인정리png(this)">일급객체,함수는 객체</button>
+        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_class는함수.png:없음" onclick="개인정리png(this)" class="png버튼">class는 함수</button>
+        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_일급객체.png:없음" onclick="개인정리png(this)" class="png버튼">일급객체,함수는 객체</button>
       </h6>
       <h6 class="fw-bold">5) 문자열(string)은 객체가 아니지만 String 객체(object)로 정의하면 객체가 된다</h6>
       <h6 class="fw-bold" style="text-indent: 20px;">문자열을 객체화 하지 않고도 String 객체의 속성과 메서드를 사용할수 있는데 </h6>
       <h6 class="fw-bold" style="text-indent: 20px;">자바스크립트 자체에서 사용하는 순간에 객체화(래퍼객체) 시켜준다 </h6>
       <h6 class="fw-bold">6) 여러 객체가 있다. 
-        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_내장객체등.png:없음" onclick="개인정리png(this)">내장객체 등</button>
+        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_내장객체등.png:없음" onclick="개인정리png(this)" class="png버튼">내장객체 등</button>
       </h6>
-      <div id="js_자료형을먼저알아야겠다_설명" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none">
-        <img src="" alt="이미지없음"><!-- js로 아래에 들어갈 요소가 들어갈수 있음 -->
-      </div>
+      <div id="js_자료형을먼저알아야겠다_설명" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none"></div>
 
       <br>
       <h6 class="fw-bold">1) 속성(Property)은 key:value의 쌍으로 표현하고, value 위치에는 함수, 객체, 기본값 등이 가능하다</h6>
@@ -2541,7 +2538,7 @@
       <br>
       <h6 class="fw-bold">1) {} 리터럴객체는 속성(key:value, key:메소드)를 직접 정의, 리터럴객체 내부의 this는(메서드 정의때만 사용) 자신을 가리킴</h6>
       <h6 class="fw-bold" style="text-indent:20px;">리터럴객체의 내부에서 value위치에서 key값을 사용할수 없음 => 
-        <button title="들어갈id:img파일이름:가져올요소:js_자료형을먼저알아야겠다_설명:개인적정리png_this점key이름.png:없음" onclick="개인정리png(this)">'this.key이름'</button>
+        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_this점key이름.png:없음" onclick="개인정리png(this)" class="png버튼">'this.key이름'</button>
          으로 사용할것 
       </h6>
       <h6 class="fw-bold" style="text-indent:20px;">value에 key값을 그대로 쓰면 전역변수 위치에서 찾게된다.</h6>
@@ -2604,19 +2601,67 @@
 
   <div id="js_객체관련반복문">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h6 class="fw-bold" style="color:blueviolet">★ 객체(인스턴스아님)와 함수에는 prototype 객체가 있고 prototype객체에 속성(기능)들이 있다.</h6>
-      <h6 class="fw-bold" style="color:blueviolet">★ '객체.prototype.속성'으로 접근가능,  객체.prototype.속성 = vlaue 로 속성 추가 및 수정 가능.</h6>
+      <h6 class="fw-bold">iterable(반복가능한객체)</h6><br>
+      <h5 class="fw-bold">for (let key in 객체) {...} => key를 순회함 <span style="font-size:16px;color:blueviolet;"> Objcet = { } = 객체 리터럴 = 일반객체  </span> </h5>
+      <div style="display:inline-block;vertical-align: top;">
+        <h6 class="fw-bold" style="color:blueviolet">예제 : const person = {이름 : "길동", 성 : "홍"}; person["이름"], person["성"] 으로 value 확인</h6>
+        <h6 class="fw-bold">1) Object 는 iterable 객체가 아니다. length 속성이 없다. <span style="color:blueviolet;">console.log(person.length) // undefined</span></h6>
+        <h6 class="fw-bold">2) for (let 키 in person) console.log(키);  <span style="color:blueviolet;">(실행문이 한줄인 경우 { } 생략 가능)</span></h6>
+        <h6 class="fw-bold" style="text-indent: 20px">for (let 키 in person) {console.log(키);} // 1.이름, 2.성</h6>
+        <h6 class="fw-bold" style="text-indent: 20px">for (let 키 in person) {console.log(`${key}: ${person[key]}`);} // 1.이름: 길동, 2.성: 홍</h6>
+        <h6 class="fw-bold">3) Object 메서드 중 3개만</h6>
+        <code class="fw-bold" style="text-indent: 20px">• Object.keys(obj) → 객체의 키 배열 반환</code>
+        <code class="fw-bold" style="text-indent: 35px">- console.log(Object.keys(person)) // (2) ['이름', '성']</code>
+        <code class="fw-bold" style="text-indent: 20px">• Object.values(obj) → 객체의 값 배열 반환</code>
+        <code class="fw-bold" style="text-indent: 35px">- console.log(Object.values(person)) // (2) ['길동', '홍']</code>
+        <code class="fw-bold" style="text-indent: 20px">• Object.entries(obj) → [key, value] 쌍의 배열 반환</code>
+        <code class="fw-bold" style="text-indent: 35px">- console.log(Object.entries(person)) // (2) [Array(2), Array(2)]</code>
+        <code class="fw-bold" style="text-indent: 50px">console.log(Object.entries(person)[0]) // (2) ['이름', '길동']</code>
+        <code class="fw-bold" style="text-indent: 50px">console.log(Object.entries(person)[1]) // (2) ['성', '홍']</code>
+        <br>
+        <h6 class="fw-bold">★ Array(iterable(반복가능한객체))에서는 안쓴다는데 for (let 키 in 배열) { ... }; 다음과 같이 된다. 순서가 보장이 안된다고 함</h6>
+        <h6 class="fw-bold" style="color:blueviolet">예제 : const person = ["길동","홍"]; console.log(person.length) // 2</h6>
+        <h6 class="fw-bold" style="text-indent: 20px">for (let 키 in person) console.log(`${키}: ${person[키]}`); // 0: 길동, 1: 홍</h6>
+        <code class="fw-bold" style="text-indent: 20px">• Object.keys(obj) → 객체의 키 배열 반환</code>
+        <code class="fw-bold" style="text-indent: 35px">- console.log(Object.keys(person)) // (2) ['0', '1'] => index 가 문자열로 넘어감</code>
+        <code class="fw-bold" style="text-indent: 20px">• Object.values(obj) → 객체의 값 배열 반환</code>
+        <code class="fw-bold" style="text-indent: 35px">- console.log(Object.values(person)) // (2) ['길동', '홍'] => 배열의 값 value</code>
+        <code class="fw-bold" style="text-indent: 20px">• Object.entries(obj) → [key, value] 쌍의 배열 반환</code>
+        <code class="fw-bold" style="text-indent: 35px">- console.log(Object.entries(person)) // (2) [Array(2), Array(2)]</code>
+        <code class="fw-bold" style="text-indent: 50px">console.log(Object.entries(person)[0]) // (2) ['0', '길동']</code>
+        <code class="fw-bold" style="text-indent: 50px">console.log(Object.entries(person)[1]) // (2) ['1', '홍']</code>
+
+
+
+        
+      </div>
+
+
+
+
+
+      <br>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-
-    </div>
-  </div>
-
-  <div id="js_object객체_array객체">
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6 class="fw-bold">기본반복문, 반복횟수를 지정 : const arr = [10, 20, 30]; for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }</h6><br>
+      <h6 class="fw-bold">iterable(반복가능한객체)에 사용할 수 있는 반복문 (객체 Object { }는 iterable객체가 아니므로 쓸 수 없다)</h6><br>
+      <h6 class="fw-bold"><span style="color:blueviolet;">for (let vlaue of arr) { ... }</span> => 배열요소 값(value)을 가져온다. (key 아님, 배열에서 key는 index다)</h6>
+      <h6 class="fw-bold" style="color:blueviolet;text-indent: 20px">예제 : const arr = [10, 20, 30]; </h6>
+      <code class="fw-bold" style="text-indent: 20px">for (let value of arr) { console.log(value); } // 10, 20, 30</code>
+      <br>
+      <h6 class="fw-bold"><span style="color:blueviolet;">arr.forEach( ( value, index, arr) => { ... } );</span> 콜백 함수를 사용하여 요소를 반복 처리합니다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet;text-indent: 20px">콜백함수 : ( ) => { ... } : 인수가 하나면 ( ) 생략가능, 동작을 실행하는 것이다. 배열을 반환하지 않는다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet;text-indent: 20px">(value, index, arr) : 값만(value), 인덱스만(_,index), 자신배열만(_,_,arr), 값 없이 쉼표 찍으면 에러남 </h6>
+      <br>
+      <h6 class="fw-bold">콜백 함수로 배열의 값을 변경하여 원본은 그대로 두고 새로운 결과값을 담은 배열을 반환하는 메서드</h6>
+      <h6 class="fw-bold"><span style="color:blueviolet;">arr.map( value => { ... } );</span> arr.map 대신에 Array.form(arr).map 도 된다. Array.form(arr)는 arr 배열을 가져온다는 뜻</h6>
+      <code class="fw-bold" style="text-indent: 20px">• const newArr = arr.map(value => value * 2);</code>
+      <code class="fw-bold" style="text-indent: 35px">console.log(newArr); // [20, 40, 60]</code>
+      <br>
+      <h6 class="fw-bold"><span style="color:blueviolet;">arr.filter( value => { ... } );</span> 조건에 맞는 배열만 추출하고 원본배열은 그대로 두고 결과배열을 반환한다.</h6>
+      <code class="fw-bold" style="text-indent: 20px">• const filteredArr = arr.filter(value => value > 15);</code>
+      <code class="fw-bold" style="text-indent: 35px">console.log(filteredArr); // [20, 30]</code>
+      <img src="portal/images/문서연결_엑셀VBA/js_객체관련반복문요약.png" alt="이미지없음" style="vertical-align: top;margin-right:5px;"></img>
 
     </div>
   </div>
@@ -2635,6 +2680,16 @@
       <h6 class="fw-bold" style="color:blueviolet">★ 자바스크립트에서 class는 내부적으로 **프로토타입(prototype)**을 기반으로 동작합니다. </h6>
       <h6 class="fw-bold" style="color:blueviolet">★ 즉, class는 단순히 **프로토타입 기반 상속을 더 편리하게 작성할 수 있도록 도와주는 문법(syntactic sugar)**일 뿐이며, </h6>
       <h6 class="fw-bold" style="color:blueviolet">★ 실제 동작 방식은 기존 프로토타입 패턴과 동일합니다.</h6>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+  
+  <div id="js_prototype">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold" style="color:blueviolet">★ 객체(인스턴스아님)와 함수에는 prototype 객체가 있고 prototype객체에 속성(기능)들이 있다.</h6>
+      <h6 class="fw-bold" style="color:blueviolet">★ '객체.prototype.속성'으로 접근가능,  객체.prototype.속성 = vlaue 로 속성 추가 및 수정 가능.</h6>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
@@ -2727,7 +2782,8 @@
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide" target="_blank">Mdn web docs</a></h6>
       <h6 class="fw-bold">
-        • <button title="들어갈id:img파일이름:가져올요소:java_개인적정리_1_자료형_png들어갈곳:개인적정리png_자료형.png:없음" onclick="개인정리png(this)">객체,</button> 
+        • <button title="java_개인적정리_1_자료형_png들어갈곳:개인적정리png_자료형.png:없음" 
+        onclick="개인정리png(this)" class="png버튼">객체,</button> 
         <a href="https://velog.io/@bami/Javascript-인수와-인자" target="_blank">인수Argument,인자Parameter</a>
         <a href="https://cocobi.tistory.com/82#google_vignette" target="_blank">인수,인자</a>
         인스턴스, prototype, __proto__, class, 생성자, new, this, 자료형, typeOf, for 속성 in 객체, 객체 리터럴</h6>
@@ -2738,9 +2794,7 @@
       </div>
 
       <!-- src="portal/images/문서연결_엑셀VBA/개인적정리png_자료형.png" -->
-      <div id="java_개인적정리_1_자료형_png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')">
-        <img src="" alt="이미지없음"><!-- js로 아래에 들어갈 요소가 들어갈수 있음 -->
-      </div>
+      <div id="java_개인적정리_1_자료형_png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')"></div>
 
 
       <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank">• 문법과 자료형</a></h6>

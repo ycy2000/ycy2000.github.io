@@ -37,6 +37,7 @@ code {display: block; color:black;margin-bottom:5px;}
 .src있음 {background-color: yellow;}
 
 .개인정리 {position: absolute;border:1px solid black; display: inline-block;}
+.png버튼 {border:1px solid black;border-radius: 4px;}
 
 .자료형표 > code {margin-bottom:-1px;}
 .자료형표 > code > div {display:inline-block;border:1px solid black;padding:0px 2px;margin-right:-1px;white-space: nowrap;font-weight: bold;}
