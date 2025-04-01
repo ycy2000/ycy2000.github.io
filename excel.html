@@ -2180,6 +2180,8 @@
         </h6>
         <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
         <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
+        <h6 class="canvas_div fw-bold" title="js_object객체">2) 객체(Object = { }), 리터럴 객체</h6>
+        <h6 class="canvas_div fw-bold" title="js_array객체">3) Array 객체</h6>
         <h6 class="canvas_div fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
         <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
         <h6 class="canvas_div fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
@@ -2604,12 +2606,15 @@
       <h6 class="fw-bold">iterable(반복가능한객체)</h6><br>
       <h5 class="fw-bold">for (let key in 객체) {...} => key를 순회함 <span style="font-size:16px;color:blueviolet;"> Objcet = { } = 객체 리터럴 = 일반객체  </span> </h5>
       <div style="display:inline-block;vertical-align: top;">
+        <h6 class="fw-bold">for...in은 프로토타입 속성까지 포함하므로, 구별이 필요할 때는 hasOwnProperty()를 사용.</h6>
+        <h6 class="fw-bold">배열에서도 사용 가능하며, 인덱스가 문자열로 반환됨.</h6>
         <h6 class="fw-bold" style="color:blueviolet">예제 : const person = {이름 : "길동", 성 : "홍"}; person["이름"], person["성"] 으로 value 확인</h6>
         <h6 class="fw-bold">1) Object 는 iterable 객체가 아니다. length 속성이 없다. <span style="color:blueviolet;">console.log(person.length) // undefined</span></h6>
         <h6 class="fw-bold">2) for (let 키 in person) console.log(키);  <span style="color:blueviolet;">(실행문이 한줄인 경우 { } 생략 가능)</span></h6>
         <h6 class="fw-bold" style="text-indent: 20px">for (let 키 in person) {console.log(키);} // 1.이름, 2.성</h6>
         <h6 class="fw-bold" style="text-indent: 20px">for (let 키 in person) {console.log(`${key}: ${person[key]}`);} // 1.이름: 길동, 2.성: 홍</h6>
         <h6 class="fw-bold">3) Object 메서드 중 3개만</h6>
+        <code class="fw-bold" style="text-indent: 20px">• Object.keys()는 객체 자신의 속성만 반환하고, 상속된(프로토타입의) 속성은 제외됩니다.</code>
         <code class="fw-bold" style="text-indent: 20px">• Object.keys(obj) → 객체의 키 배열 반환</code>
         <code class="fw-bold" style="text-indent: 35px">- console.log(Object.keys(person)) // (2) ['이름', '성']</code>
         <code class="fw-bold" style="text-indent: 20px">• Object.values(obj) → 객체의 값 배열 반환</code>
@@ -2631,16 +2636,11 @@
         <code class="fw-bold" style="text-indent: 50px">console.log(Object.entries(person)[0]) // (2) ['0', '길동']</code>
         <code class="fw-bold" style="text-indent: 50px">console.log(Object.entries(person)[1]) // (2) ['1', '홍']</code>
 
-
+        <h6 class="fw-bold" style="color:blueviolet">Array.prototype의 기본 제공 메서드(map, filter, forEach 등)는 enumerable: false 이므로 </h6>
+        <h6 class="fw-bold" style="color:blueviolet">for...in이나 Object.keys()에서 보이지 않습니다.</h6>
 
         
       </div>
-
-
-
-
-
-      <br>
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <h6 class="fw-bold">기본반복문, 반복횟수를 지정 : const arr = [10, 20, 30]; for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }</h6><br>
@@ -2662,6 +2662,24 @@
       <code class="fw-bold" style="text-indent: 20px">• const filteredArr = arr.filter(value => value > 15);</code>
       <code class="fw-bold" style="text-indent: 35px">console.log(filteredArr); // [20, 30]</code>
       <img src="portal/images/문서연결_엑셀VBA/js_객체관련반복문요약.png" alt="이미지없음" style="vertical-align: top;margin-right:5px;"></img>
+
+    </div>
+  </div>
+
+  <div id="js_object객체">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+
+  <div id="js_array객체">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
     </div>
   </div>
