@@ -4,6 +4,7 @@ function 개인정리png(e) {
   var 타입typeof=typeof e; //요소이면 object 문자열이면 string
   var 타입proto=Object.prototype.toString.call(e).slice(8, -1); //그냥 확인용
   //console.log('typeof : ' + 타입typeof + ', proto : ' + 타입proto)
+  //<img src="portal/images/문서연결_엑셀VBA/" alt="이미지없음"></img>';
   var 파일이름, 들어갈곳id, 들어갈요소id;
 
   if (typeof e === 'string') { // '파일이름을 넣었을때'
@@ -30,15 +31,12 @@ function 개인정리png(e) {
 }
 
 function 연습2() {
-  function Parent() {
-    this.ownProperty = "I am own property";
-  }
-  Parent.prototype.inheritedProperty = "I am inherited property";
-  
-  const obj = new Parent();
-  const proto = Object.getPrototypeOf(obj);
-  console.log(Object.keys(proto)); // ['inheritedProperty']
+let 변수 = [{이름:'길동', 성:'홍'}, 1]
 
+
+for (let 요소 of 변수) {
+  console.log(typeof 요소)
+}
 
 }
 
@@ -49,7 +47,7 @@ function 연습2() {
 function 연습() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'js_객체관련반복문';
+  var 연습제목설정이것만 = 'java_구조분해할당';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
