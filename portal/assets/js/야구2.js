@@ -1,5 +1,6 @@
 let 결과=[];//기회정보만의 결과
 let 최종결과=[];
+첫번째빈C색칠();
 
 function 중복제거모든조합() {
   var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -58,10 +59,15 @@ function 계산() {
     if (유효) 결과.push(조합);
   })
   최종결과=결과;
+  console.log('최종결과.length : ' + 최종결과.length)
+  //제외할숫자 내리거나 올린 후 계산()할것이기 때문에 : 
 
 
   
 
+  첫번째빈C색칠();
+}
+function 첫번째빈C색칠() {
   //C 부분 설정 : 빈곳이 있으면 첫번째 빈곳에 .js기록중 넣기
   document.querySelector('.js기록중')?.classList.remove('js기록중'); //? 없으면 작동안함
   for (var i=0; i<document.querySelectorAll('.기회').length; i++) {
@@ -69,7 +75,7 @@ function 계산() {
     if (기회[0].innerHTML=='' || 기회[1].innerHTML=='' || 기회[2].innerHTML=='' || 기회[3].innerHTML=='' || 기회[4].innerHTML=='' || 기회[5].innerHTML=='') {
       기회[6].classList.add('js기록중'); break;
     }
-  }  
+  } 
 }
 function 계산_기회계산만적용() {
   //기회계산을 제외한 다른 조건을 초기화하고 계산();
