@@ -31,12 +31,13 @@ function 개인정리png(e) {
 }
 
 function 연습2() {
-let 변수 = [{이름:'길동', 성:'홍'}, 1]
 
+  var 배열=[1,2,3];
+  var 복사=[...배열];
+  console.log(복사)
+  배열[0]=5
+  console.log(복사)
 
-for (let 요소 of 변수) {
-  console.log(typeof 요소)
-}
 
 }
 

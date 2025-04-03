@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.왼쪽, .중간, .오른쪽 {display:inline-block;vertical-align: top;}
+.가능숫자하나, .기회 {margin-bottom:3px;}
+.가능숫자하나 *, .기회 * {display:inline-block;height:30px;width:30px;border:1px solid black;margin-right:-1px;vertical-align: top;text-align: center;}
+.두줄 {height:50px;width:50px;font-size: 30px;display: inline-block;margin-right:1px;vertical-align: top;}
+.두줄 div, .확정가정 div, #랜덤번호 div {height:50px;width:50px;font-size: 30px;border:1px solid black;text-align: center;margin-bottom:-1px;}
+.숫자일치 {margin-right:10px;display: inline-block;background-color: cadetblue;}
+.위치일치 {margin-right:10px;display: inline-block;background-color: cadetblue;}
+.js기록중 {background-color: blueviolet;}
+.js제외 {background-color: chocolate;}
+.실행버튼들 > button {border:1px solid black;border-radius: 5px;margin:5px 0px;}
+.실행버튼들 > button:nth-of-type(1) {margin-right:40px;margin-left:20px;}
+
+
