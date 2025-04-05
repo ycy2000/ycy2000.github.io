@@ -25,7 +25,7 @@ function 중복제거모든조합() {
 let 모든조합=중복제거모든조합();
 
 function 계산() {
-  결과=[]; 최종결과=[];
+  결과=[];
   //1.기회정보 정의 : {기회번호, 숫자일치, 위치일치}, parseInt(), 값이 없거나 문자열로 시작되면 NaN
   var 기회들=[], 기회숫자=[], 숫자일치, 위치일치;
   for (var i=0; i<document.querySelectorAll('.기회').length; i++) {
@@ -133,25 +133,43 @@ function 계산() {
       }
     }
   }
-
-
-
-
-
-
-
-  //포함, 제외, 위치특정 필터링
-  결과.forEach(조합 => {
-
-  })
-
-
-  
   document.querySelector('#없어야할번호').innerHTML=기회계산제외수;
   document.querySelector('#포함해야할번호').innerHTML=기회계산포함수;
-  document.querySelector('#결과수').innerHTML=결과.length;
+
+  최종결과=결과;
+  최종결과표시();
   첫번째빈C색칠();
 }
+function 최종결과표시() {
+  document.querySelector('#결과수').innerHTML=최종결과.length;
+  document.querySelector('#js결과배열').innerHTML='';
+  var div4=document.querySelector('#숨김번호4');//안에 div안에 div4개
+  var 번호4넣을곳=document.querySelectorAll('#숨김번호4 > div > div');
+  var 번호넣기;
+  var 카운트=0, 누적='';
+
+  for (var 번호4 of 최종결과) {
+    카운트+=1;
+    for (var i=0; i<4; i++) {
+      번호4넣을곳[i].innerHTML=번호4[i];
+    }
+    누적=누적+div4.innerHTML; //div 안에 div4개
+    if (카운트 % 30 == 0) {
+      //감싸기 + 숨김번호4에 추가 후 누적정보 초기화
+      누적='<div>' + 누적 + '</div>';
+      document.querySelector('#js결과배열').innerHTML+=누적;
+      누적='';
+    }
+    if (카운트 % 30 != 0 && 카운트==최종결과.length) {
+      //30개 미만인경우나 30배수 초과인경우, 
+      //감싸기 + 숨김번호4에 추가 후 누적정보 초기화
+      누적='<div>' + 누적 + '</div>';
+      document.querySelector('#js결과배열').innerHTML+=누적;
+      누적='';
+    }
+  }
+}
+
 function 첫번째빈C색칠() {
   //C 부분 설정 : 빈곳이 있으면 첫번째 빈곳에 .js기록중 넣기
   document.querySelector('.js기록중')?.classList.remove('js기록중'); //? 없으면 작동안함
