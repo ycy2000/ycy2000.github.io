@@ -101,6 +101,30 @@
         </div>
       </div>
     </div>
+    <div id="랜덤" style="margin-top:5px;border:1px solid black;padding:5px;margin-top:5px;padding-bottom:10px;white-space: nowrap;">
+      <div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+             랜덤번호<br> 맞추기 모드
+          </label>
+        </div>
+      </div>
+      <div>
+        <div>
+          <button onclick="연습()">생성</button> <button>지움</button>
+        </div>
+        <div>
+          <button>보기</button> <button>숨기기</button>
+        </div>
+      </div>
+      <div>
+        <div style="margin-left:60px;">랜덤번호</div><div id="숨겨진랜덤번호" class="d-none"></div>
+        <div id="랜덤번호">
+          <div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+    </div>
     <div style="width:510px;border:1px solid black;margin-top:5px;padding:5px;white-space: normal;">
       예시번호 : 4536<br>
       0123 : 1B <br>
@@ -109,11 +133,12 @@
       4503 : 1B 2S => 0이 3,4위치에서 모두 볼이거나 없다고 보이는데 확정이 안되는 이유?><br><br><br><br><br><br><br>
 
     </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
   <div class="오른쪽">
     <div>결과 : <span id="결과수"></span></div>
     <div id="숨김번호4" class="d-none"><div><div></div><div></div><div></div><div></div></div></div>
-    <div id="js결과배열"></div>
+    <div id="가능한조합"></div>
 
   </div>
 </div>  

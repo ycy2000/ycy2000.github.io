@@ -1,7 +1,12 @@
 let 결과=[];//기회정보만의 결과
 let 최종결과=[];
 첫번째빈C색칠();
-
+function 랜덤번호맞추기모드확인() {
+  if (document.querySelector('.form-check-input')?.checked) {console.log('체크')} else {console.log('false');return;}
+  if (document.querySelector('#숨겨진랜덤번호').innerHTML=='') {랜덤번호생성();}//랜덤번호 없으면 생성한다.
+  //기회번호 4개에 대해서 B S 기록한다.
+  랜덤번호있을때_SB기록();
+}
 function 중복제거모든조합() {
   var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   var result = [];
@@ -23,8 +28,89 @@ function 중복제거모든조합() {
   return result;
 }
 let 모든조합=중복제거모든조합();
+function 연습() {
+  console.log(document.querySelector('.form-check-input').checked)
+}
+function 랜덤번호생성() {
+  var 랜덤배열10개=[];
+  var 확정배열4개=[];
+  var 최대값인덱스;
+  for (var i=0; i<10; i++) {
+    랜덤배열10개.push(Math.random());
+  }
+  for (var 추출=0; 추출<4; 추출++) {
+    최대값인덱스=랜덤배열10개.indexOf(Math.max(...랜덤배열10개));
+    랜덤배열10개[최대값인덱스]=-1;//다음최대값 추출위해 -1로 변경해둠, 최소값 0이 여러개 나올수 있으므로
+    확정배열4개.push(최대값인덱스);
+  }
+  //console.log(확정배열4개)
+  document.querySelector('#숨겨진랜덤번호').innerHTML=확정배열4개.join(',');
+  //기본적으로 * 로 표시
+  for (i=0; i<4; i++) {
+    document.querySelectorAll('#랜덤번호 div')[i].innerHTML='*';
+  }
+}
+function 랜덤번호보기() {
+  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
+  var 랜덤번호span값배열=랜덤번호span값.split(',');
+  for (var i=0; i<4; i++) {
+    if (랜덤번호span값=='') {
+      document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
+    } else {
+      document.querySelectorAll('#랜덤번호 > div')[i].innerHTML=랜덤번호span값배열[i];
+    }
+  }
+}
+function 랜덤번호숨기기() {
+  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
+  for (var i=0; i<4; i++) {
+    if (랜덤번호span값=='') {
+      document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
+    } else {
+      document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='*';
+    }
+  }
+}
+function 랜덤번호지움() {
+  document.querySelector('#숨겨진랜덤번호').innerHTML='';
+  for (var i=0; i<4; i++) {
+    document.querySelectorAll('#랜덤번호 > div')[i].innerHTML='';
+  }
+}
+function 랜덤번호있을때_SB기록() {
+  console.log(' 랜덤번호있을때_SB기록()')
+  //숫자일치,위치일치 클래스 값 제거
+  for (var i=0; i<document.querySelectorAll('.숫자일치').length; i++) {
+    document.querySelectorAll('.숫자일치')[i].innerHTML='';
+    document.querySelectorAll('.위치일치')[i].innerHTML='';
+  }
 
+  var 랜덤번호span값=document.querySelector('#숨겨진랜덤번호').innerHTML;
+  var 랜덤번호span값배열=[];
+  랜덤번호span값배열=랜덤번호span값.split(',');
+
+  for (var i=0; i<10; i++) {
+    var 볼=0, 스트=0;
+    var 현재기회div4개=document.querySelectorAll('#기회' + i + ' *'); 
+
+    if (현재기회div4개[0].innerHTML=='' && 현재기회div4개[1].innerHTML=='' && 현재기회div4개[2].innerHTML=='' && 현재기회div4개[3].innerHTML=='') {
+      //console.log('모두공란이면 continue')
+      continue;
+    }
+
+    for (var t=0; t<4; t++) {
+      //console.log('랜덤번호span값배열[t] : ' + 랜덤번호span값배열[t] + ' == ' + 현재기회div4개[t].innerHTML)
+      //console.log(랜덤번호span값배열[t] == 현재기회div4개[t].innerHTML)
+      if (랜덤번호span값배열[t]==현재기회div4개[t].innerHTML) {스트+=1;}
+      if (랜덤번호span값배열[t]!=현재기회div4개[t].innerHTML && 랜덤번호span값배열.includes(현재기회div4개[t].innerHTML)) {볼+=1;}
+    }
+
+    if (볼!=0) {현재기회div4개[4].innerHTML=볼;}
+    if (스트!=0) {현재기회div4개[5].innerHTML=스트;}
+  }
+} 
 function 계산() {
+  랜덤번호맞추기모드확인()
   결과=[];
   //1.기회정보 정의 : {기회번호, 숫자일치, 위치일치}, parseInt(), 값이 없거나 문자열로 시작되면 NaN
   var 기회들=[], 기회숫자=[], 숫자일치, 위치일치;
@@ -142,7 +228,7 @@ function 계산() {
 }
 function 최종결과표시() {
   document.querySelector('#결과수').innerHTML=최종결과.length;
-  document.querySelector('#js결과배열').innerHTML='';
+  document.querySelector('#가능한조합').innerHTML='';
   var div4=document.querySelector('#숨김번호4');//안에 div안에 div4개
   var 번호4넣을곳=document.querySelectorAll('#숨김번호4 > div > div');
   var 번호넣기;
@@ -157,19 +243,18 @@ function 최종결과표시() {
     if (카운트 % 30 == 0) {
       //감싸기 + 숨김번호4에 추가 후 누적정보 초기화
       누적='<div>' + 누적 + '</div>';
-      document.querySelector('#js결과배열').innerHTML+=누적;
+      document.querySelector('#가능한조합').innerHTML+=누적;
       누적='';
     }
     if (카운트 % 30 != 0 && 카운트==최종결과.length) {
       //30개 미만인경우나 30배수 초과인경우, 
       //감싸기 + 숨김번호4에 추가 후 누적정보 초기화
       누적='<div>' + 누적 + '</div>';
-      document.querySelector('#js결과배열').innerHTML+=누적;
+      document.querySelector('#가능한조합').innerHTML+=누적;
       누적='';
     }
   }
 }
-
 function 첫번째빈C색칠() {
   //C 부분 설정 : 빈곳이 있으면 첫번째 빈곳에 .js기록중 넣기
   document.querySelector('.js기록중')?.classList.remove('js기록중'); //? 없으면 작동안함
@@ -202,6 +287,16 @@ function 계산_기회계산만적용() {
 }
 
 var 바디=document.querySelector('body');
+var 리스너가능한조합=document.querySelector('#가능한조합');
+function 가능한조합click(e) {
+  console.log('가능한조합click(e) : ' + e.target.innerHTML*1)
+  if (e.target.innerHTML=='') {return;}
+  var 기록중index=document.querySelector('.js기록중').parentElement.id.substring(2, 3)*1;//인데스2부터 3번째까지
+  for (var i=0; i<4; i++) {
+    document.querySelectorAll('#기회' + 기록중index + ' *')[i].innerHTML=e.target.parentElement.children[i].innerHTML*1;
+  }
+  첫번째빈C색칠();
+}
 function 바디클릭이벤트(e) {
   //입력, 입력토글, 포함, 포함토글 기능 안씀.
   if (e.target.classList.contains('입력')) {
@@ -242,5 +337,22 @@ function 바디클릭이벤트(e) {
     if (입력숫자==4) {e.target.innerHTML=''};
     if (입력숫자!=4 && 입력숫자!='') {e.target.innerHTML=parseInt(e.target.innerHTML, 10)+1};
   }
+  if (e.target.innerHTML=='생성') {
+    console.log('바디이벤트 : 생성')
+    랜덤번호생성();
+  }
+  if (e.target.innerHTML=='지움') {
+    console.log('바디이벤트 : 지움')
+    랜덤번호지움();
+  }
+  if (e.target.innerHTML=='보기') {
+    console.log('바디이벤트 : 보기')
+    랜덤번호보기();
+  }
+  if (e.target.innerHTML=='숨기기') {
+    console.log('바디이벤트 : 숨기기')
+    랜덤번호숨기기();
+  }
 }
 바디.addEventListener('click',바디클릭이벤트);
+리스너가능한조합.addEventListener('click', 가능한조합click);
