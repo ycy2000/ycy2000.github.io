@@ -25,82 +25,6 @@
       <div class="기회" id="기회8"><div></div><div></div><div></div><div></div><button class="숫자일치"></button><button class="위치일치"></button><span>C</span></div>
       <div class="기회" id="기회9"><div></div><div></div><div></div><div></div><button class="숫자일치"></button><button class="위치일치"></button><span>C</span></div>
     </div>
-    <div style="display:inline-block" id="가능">
-      <div>가능 번호(흰색)</div>
-      <div class="가능숫자하나"><div>0</div><div>0</div><div>0</div><div>0</div></div>
-      <div class="가능숫자하나"><div>1</div><div>1</div><div>1</div><div>1</div></div>
-      <div class="가능숫자하나"><div>2</div><div>2</div><div>2</div><div>2</div></div>
-      <div class="가능숫자하나"><div>3</div><div>3</div><div>3</div><div>3</div></div>
-      <div class="가능숫자하나"><div>4</div><div>4</div><div>4</div><div>4</div></div>
-      <div class="가능숫자하나"><div>5</div><div>5</div><div>5</div><div>5</div></div>
-      <div class="가능숫자하나"><div>6</div><div>6</div><div>6</div><div>6</div></div>
-      <div class="가능숫자하나"><div>7</div><div>7</div><div>7</div><div>7</div></div>
-      <div class="가능숫자하나"><div>8</div><div>8</div><div>8</div><div>8</div></div>
-      <div class="가능숫자하나"><div>9</div><div>9</div><div>9</div><div>9</div></div>
-    </div>
-  </div>
-  <div class="중간">
-    <div class="실행버튼들">
-      <button onclick="계산_기회계산만적용()" style="display: inline-block;width:70px;background-color: chartreuse;">계산</button> 
-      <button>C 부분 지움</button> <button>기회계산만적용</button> 
-      <button style="background-color: chartreuse;"><a href="야구2.html">다시하기</a></button>
-    </div>
-    <span>숫자입력. 아래 색칠숫자는 계산상 없어야할 번호, 내린 숫자 제외됨</span><br>
-    <div class="두줄">
-      <div class="입력">0</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">1</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">2</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">3</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">4</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">5</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">6</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">7</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">8</div><div class="입력토글"></div>
-    </div><div class="두줄">
-      <div class="입력">9</div><div class="입력토글"></div>
-    </div>
-    <div style="margin-top:55px;">아래 색칠숫자는 계산상 있어야할 번호, 내린 숫자 포함된것만 추출됨</div>
-    <div class="두줄">
-      <div class="포함">0</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">1</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">2</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">3</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">4</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">5</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">6</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">7</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">8</div><div class="포함토글"></div>
-    </div><div class="두줄">
-      <div class="포함">9</div><div class="포함토글"></div>
-    </div><br><br><br><br>
-    <div id="포함제외확정">
-      <div>
-        <div><div>없어야할 번호</div><div id="없어야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
-        <div><div>포함해야하는 번호</div><div id="포함해야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
-      </div>
-      <div>
-        <div style="margin-left:28px;">순서 확정된 번호</div>
-        <div id="순서확정된번호">
-          <div></div><div></div><div></div><div></div>
-        </div>
-      </div>
-    </div>
     <div id="랜덤" style="margin-top:5px;border:1px solid black;padding:5px;margin-top:5px;padding-bottom:10px;white-space: nowrap;">
       <div>
         <div class="form-check">
@@ -125,13 +49,68 @@
         </div>
       </div>
     </div>
-    <div style="width:510px;border:1px solid black;margin-top:5px;padding:5px;white-space: normal;">
-      예시번호 : 4536<br>
-      0123 : 1B <br>
-      6789 : 1B <br>
-      6530 : 1B 2S<br>
-      4503 : 1B 2S => 0이 3,4위치에서 모두 볼이거나 없다고 보이는데 확정이 안되는 이유?><br><br><br><br><br><br><br>
-
+  </div>
+  <div class="중간">
+    <div class="실행버튼들">
+      <button onclick="계산_기회계산만적용()" style="display: inline-block;width:70px;background-color: chartreuse;">계산</button> 
+      <button>C 부분 지움</button> 
+      <button style="background-color: chartreuse;"><a href="야구2.html">다시하기</a></button>
+    </div>
+    <span>숫자입력. 아래 색칠숫자는 계산상 없어야할 번호</span><br>
+    <span>위에 색칠숫자는 계산상 포함해야하는 번호</span><br>
+    <div class="두줄">
+      <div class="입력">0</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">1</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">2</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">3</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">4</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">5</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">6</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">7</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">8</div><div class="입력토글"></div>
+    </div><div class="두줄">
+      <div class="입력">9</div><div class="입력토글"></div>
+    </div>
+    <br><br><br><br>
+    <div id="포함제외확정">
+      <div>
+        <div><div>없어야할 번호</div><div id="없어야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
+        <div><div>포함해야하는 번호</div><div id="포함해야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
+      </div>
+      <div>
+        <div style="margin-left:28px;">순서 확정된 번호</div>
+        <div id="순서확정된번호">
+          <div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:inline-block;margin-top:10px;" id="가능">
+      <div>가능 번호(흰색)</div>
+      <div class="가능숫자하나"><div>0</div><div>0</div><div>0</div><div>0</div></div>
+      <div class="가능숫자하나"><div class="js노랑">1</div><div>1</div><div>1</div><div>1</div></div>
+      <div class="가능숫자하나"><div>2</div><div>2</div><div>2</div><div>2</div></div>
+      <div class="가능숫자하나"><div>3</div><div>3</div><div>3</div><div>3</div></div>
+      <div class="가능숫자하나"><div>4</div><div>4</div><div>4</div><div>4</div></div>
+      <div class="가능숫자하나"><div>5</div><div>5</div><div>5</div><div>5</div></div>
+      <div class="가능숫자하나"><div>6</div><div>6</div><div>6</div><div>6</div></div>
+      <div class="가능숫자하나"><div>7</div><div>7</div><div>7</div><div>7</div></div>
+      <div class="가능숫자하나"><div>8</div><div>8</div><div>8</div><div>8</div></div>
+      <div class="가능숫자하나"><div>9</div><div>9</div><div>9</div><div>9</div></div>
+    </div>
+    <div style="display: inline-block;vertical-align: top;margin-top:10px;">
+      <div>&#60;== 주황색은 클릭이 안되고,</div>
+      <div style="text-indent: 40px;">클릭이 적용되면 노랑색이 되고,</div>
+      <div style="text-indent: 40px;">해당위치에 해당번호가 있는것만</div>
+      <div style="text-indent: 40px;">선별되어 보여줌</div>
+      <div style="text-indent: 40px;font-weight: bold;">계산(); 실행시 초기화됨</div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>

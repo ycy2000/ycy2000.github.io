@@ -176,36 +176,25 @@ function 계산() {
     if (결과.join(',').indexOf(i) == -1) {기회계산제외수.push(i);}
   }
   //   1)기회계산제외수는 아래로 무조건 내리고 색칠한다.(결과 조합에는 이미 기회계산에서 제외되어있다)
-  var 내려진제외수=[];
   for (var i=0; i<10; i++) {//위 입력, 아래 입력토글
     document.querySelectorAll('.입력토글')[i].classList.remove('js표시');
     if (기회계산제외수.includes(i)) { //내리고 색칠
       document.querySelectorAll('.입력')[i].innerHTML='';
       document.querySelectorAll('.입력토글')[i].innerHTML=i;
       document.querySelectorAll('.입력토글')[i].classList.add('js표시');
-    } else {
-      if (document.querySelectorAll('.입력토글')[i].innerHTML!='' && document.querySelectorAll('.입력토글')[i].innerHTML==i) {내려진제외수.push(i);}
     }
   }
-  //   2)기회계산제외수가 아닌 내려진 숫자를 제외한다.
-  for (var i=0; i<내려진제외수.length; i++) {
-    결과=결과.filter(번호4 => !번호4.includes(내려진제외수[i]))
-  }
-
   //기회계산 포함수 : 결과에 모두 들어있는 숫자
   var 기회계산포함수=[];
   for (var i=0; i<10; i++) {
     if (결과.length > 0 && 결과.filter(번호4 => 번호4.includes(i)).length==결과.length) {기회계산포함수.push(i)}
   }
-  var 내려진포함수=[];
-  for (var i=0; i<10; i++) {//위 포함, 아래 포함토글
-    document.querySelectorAll('.포함토글')[i].classList.remove('js표시');
+  for (var i=0; i<10; i++) {//위에 색칠(포함수)
+    document.querySelectorAll('.입력')[i].classList.remove('js표시');
     if (기회계산포함수.includes(i)) { //내리고 색칠
-      document.querySelectorAll('.포함')[i].innerHTML='';
-      document.querySelectorAll('.포함토글')[i].innerHTML=i;
-      document.querySelectorAll('.포함토글')[i].classList.add('js표시');
-    } else {
-      if (document.querySelectorAll('.포함토글')[i].innerHTML!='' && document.querySelectorAll('.포함토글')[i].innerHTML==i) {내려진포함수.push(i);}
+      document.querySelectorAll('.입력토글')[i].innerHTML='';
+      document.querySelectorAll('.입력')[i].innerHTML=i;
+      document.querySelectorAll('.입력')[i].classList.add('js표시');
     }
   }
   // 순서확정된번호 : 기회계산포함수에서...
@@ -268,17 +257,15 @@ function 첫번째빈C색칠() {
 function 기회정보제외_초기화() {
   for (var i=0; i<10; i++) {
     document.querySelectorAll('.입력')[i].innerHTML=i;
+    document.querySelectorAll('.입력')[i].classList.remove('js표시');
     document.querySelectorAll('.입력토글')[i].innerHTML='';
     document.querySelectorAll('.입력토글')[i].classList.remove('js표시');
-
-    document.querySelectorAll('.포함')[i].innerHTML=i;
-    document.querySelectorAll('.포함토글')[i].innerHTML='';
-    document.querySelectorAll('.포함토글')[i].classList.remove('js표시');
 
     document.querySelector('#없어야할번호').innerHTML='';
     document.querySelector('#포함해야할번호').innerHTML='';
   }
   for (var i=0; i<4; i++) {document.querySelectorAll('#순서확정된번호 > div')[i].innerHTML=''}
+  for (var i=0; i<document.querySelectorAll('.가능숫자하나 > div').length; i++) {document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js노랑')}
 }
 function 계산_기회계산만적용() {
   //기회계산을 제외한 다른 조건을 초기화하고 계산();
@@ -288,6 +275,37 @@ function 계산_기회계산만적용() {
 
 var 바디=document.querySelector('body');
 var 리스너가능한조합=document.querySelector('#가능한조합');
+var 리스너가능=document.querySelector('#가능');
+function 가능click(e) {
+  //주황일때 작동안함, 노랑일때 노랑지움, 흰색일때 해당위치에 해당번호인것만 
+  if (!e.target.parentElement.classList.contains('가능숫자하나')) {console.log('부모가 가능숫자하나 아님');return;}
+  var 몇번째위치인가; //무조건있다.
+  e.target.classList.add('js임시');
+  for (var i=0; i<4; i++) {
+    if (e.target.parentElement.children[i].classList.contains('js임시')) {몇번째위치인가=i+1}
+  }
+  e.target.classList.remove('js임시');
+  //일단 js노랑 있으면 지운다.
+  console.log(document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)[class~="js노랑"]').length)
+  console.log(document.querySelectorAll('.가능숫자하나 > div:nth-of-type(2)[class~="js노랑"]').length)
+  
+
+  if (e.target.classList.contains('js가능제외')) {
+
+  }
+  
+  js노랑인가=e.target.classList.contains('js노랑');
+  console.log('몇번째위치인가 : ' + 몇번째위치인가)
+
+
+  var 확인1=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)');
+  for (var i=0; i<확인1.length; i++) {
+
+  }
+
+  
+
+}
 function 가능한조합click(e) {
   console.log('가능한조합click(e) : ' + e.target.innerHTML*1)
   if (e.target.innerHTML=='') {return;}
@@ -301,24 +319,28 @@ function 바디클릭이벤트(e) {
   //입력, 입력토글, 포함, 포함토글 기능 안씀.
   if (e.target.classList.contains('입력')) {
     console.log('바디이벤트 : class 입력 click')
-    var 숫자=e.target.innerHTML;
+    //var 숫자=e.target.innerHTML; 변경
+    var 숫자;
+    e.target.classList.add('js임시');
+    for (var i=0; i<document.querySelectorAll('.입력').length; i++) {
+      if (document.querySelectorAll('.입력')[i].classList.contains('js임시')) {숫자=i}
+    }  
+    e.target.classList.remove('js임시');
+    //var 숫자=e.target.innerHTML; 변경 끝
     var c자식=document.querySelector('.js기록중').parentElement.children;
     for (var i=0; i<4; i++) {//같은게 있으면 지움
-      if (숫자.length==1 && c자식[i].innerHTML.length==1 && 숫자==c자식[i].innerHTML) {
+      if (!isNaN(숫자) && c자식[i].innerHTML.length==1 && 숫자==c자식[i].innerHTML) {
         c자식[i].innerHTML=''; 
         return;
       }
     }
     for (var i=0; i<4; i++) {//빈곳있으면 넣음
-      if (숫자.length==1 && c자식[i].innerHTML=='') {
+      if (!isNaN(숫자) && c자식[i].innerHTML=='') {
         c자식[i].innerHTML=숫자;
         return;
       }
     }
     alert ('번호가 가득 찻습니다')
-  }
-  if (e.target.innerHTML=='기회계산만적용') {
-    계산_기회계산만적용();
   }
   if (e.target.innerHTML=='C') {
     console.log('바디이벤트 : C 부분 클릭시')
@@ -356,3 +378,4 @@ function 바디클릭이벤트(e) {
 }
 바디.addEventListener('click',바디클릭이벤트);
 리스너가능한조합.addEventListener('click', 가능한조합click);
+리스너가능.addEventListener('click', 가능click);
