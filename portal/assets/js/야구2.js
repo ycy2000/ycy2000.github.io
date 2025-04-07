@@ -286,9 +286,13 @@ function 가능click(e) {
   }
   e.target.classList.remove('js임시');
   //일단 js노랑 있으면 지운다.
-  console.log(document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)[class~="js노랑"]').length)
-  console.log(document.querySelectorAll('.가능숫자하나 > div:nth-of-type(2)[class~="js노랑"]').length)
+  if (document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`).length) {
+    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');  
+  }
+
+
   
+
 
   if (e.target.classList.contains('js가능제외')) {
 
