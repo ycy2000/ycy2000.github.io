@@ -280,14 +280,23 @@ function 가능click(e) {
   //주황일때 작동안함, 노랑일때 노랑지움, 흰색일때 해당위치에 해당번호인것만 
   if (!e.target.parentElement.classList.contains('가능숫자하나')) {console.log('부모가 가능숫자하나 아님');return;}
   var 몇번째위치인가; //무조건있다.
+  var js가능제외인가;
+  var js노랑어딘가있나;
   e.target.classList.add('js임시');
   for (var i=0; i<4; i++) {
     if (e.target.parentElement.children[i].classList.contains('js임시')) {몇번째위치인가=i+1}
   }
   e.target.classList.remove('js임시');
-  //일단 js노랑 있으면 지운다.
+  //js노랑이 어딘가에 있으면, 클릭한것이 js노랑이 있으면 지운다. 아니면 지우고 클릭한곳에 js노랑 넣는다
   if (document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`).length) {
-    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');  
+    if (e.target.classList.contains('js노랑')) {
+      e.target.classList.remove('js노랑')
+    } else {
+      document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');  
+      e.target.classList.add('js노랑')
+    }
+  } else {//js노랑이 없으면
+    e.target.classList.add('js노랑')
   }
 
 
