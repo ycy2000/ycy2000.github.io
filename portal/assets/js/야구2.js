@@ -1,5 +1,6 @@
 let 결과=[];//기회정보만의 결과
 let 최종결과=[];
+let js노랑결과=[];
 첫번째빈C색칠();
 function 랜덤번호맞추기모드확인() {
   if (document.querySelector('.form-check-input')?.checked) {console.log('체크')} else {console.log('false');return;}
@@ -277,6 +278,7 @@ var 바디=document.querySelector('body');
 var 리스너가능한조합=document.querySelector('#가능한조합');
 var 리스너가능=document.querySelector('#가능');
 function 가능click(e) {
+  js노랑결과=결과;
   //주황일때 작동안함, 노랑일때 노랑지움, 흰색일때 해당위치에 해당번호인것만 
   if (!e.target.parentElement.classList.contains('가능숫자하나')) {console.log('부모가 가능숫자하나 아님');return;}
   var 몇번째위치인가; //무조건있다.
@@ -289,46 +291,103 @@ function 가능click(e) {
   var 타겟이js가능제외인가=false;
   if (e.target.classList.contains('js가능제외')) {타겟이js가능제외인가=true}
 
-  var js노랑있나=false; //length가 0 이 가능하다.
+  var js노랑있나=false; //length가 0 (false) 이 가능하다.
   if (document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`).length) {js노랑있나=true;}
-
-
-
-
-
-
-
-  //js노랑이 어딘가에 있으면, 클릭한것이 js노랑이 있으면 지운다. 아니면 지우고 클릭한곳에 js노랑 넣는다
-  if (document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`).length) {
-    if (e.target.classList.contains('js노랑')) {
-      e.target.classList.remove('js노랑')
-    } else {
-      document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');  
-      e.target.classList.add('js노랑')
-    }
-  } else {//js노랑이 없으면
+  //작동순위 
+  //1.js가능제외이면 아무작동안한다.
+  //2.흰색이면, 클릭한곳 js노랑 넣고, js노랑이 있으면 지우고 js노랑 넣는다 
+  if (타겟이js가능제외인가) {return;}
+  if (js노랑있나 && e.target.classList.contains('js노랑')) {
+    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');
+   } else if (js노랑있나 && !e.target.classList.contains('js노랑')) {
+    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');
+    e.target.classList.add('js노랑')
+  } else {
     e.target.classList.add('js노랑')
   }
-
-
   
+  //js노랑이 없으면 종료하는것이 아니라(있다가 없어진 경우)
+  //if (document.querySelectorAll(`[class~="js노랑"]`).length) {} else {
+  //  console.log('js노랑 개수 : ' + document.querySelectorAll(`[class~="js노랑"]`).length + ' 종료')
+  //  return;
+  //}
+  //js노랑이 있으면 filter
+  var 노랑1st,노랑2st,노랑3st,노랑4st;
+  노랑1st=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)[class~="js노랑"]').length;
+  노랑2st=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(2)[class~="js노랑"]').length;
+  노랑3st=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(3)[class~="js노랑"]').length;
+  노랑4st=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(4)[class~="js노랑"]').length;
+  //console.log('노랑1st : ' + 노랑1st  + ', 노랑2st : ' +  노랑2st + ', 노랑3st : ' + 노랑3st + ', 노랑4st : ' + 노랑4st )
 
-
-  if (e.target.classList.contains('js가능제외')) {
-
+  //몇번째위치인가 ==> (숫자임) 세로 몇번쨰 위치인가로 사용됨
+  if (노랑1st) {
+    var 검사10개=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)');
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)[class~="js노랑"]')[0].classList.add('js임시');
+    for (var i=0; i<10; i++) {
+      if (검사10개[i].classList.contains('js임시')) {몇번째위치인가=i}
+    }
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)[class~="js노랑"]')[0].classList.remove('js임시');
+    js노랑결과=js노랑결과.filter(번호4 => 번호4[0]==몇번째위치인가);
   }
-  
-  js노랑인가=e.target.classList.contains('js노랑');
-  console.log('몇번째위치인가 : ' + 몇번째위치인가)
-
-
-  var 확인1=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(1)');
-  for (var i=0; i<확인1.length; i++) {
-
+  if (노랑2st) {
+    var 검사10개=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(2)');
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(2)[class~="js노랑"]')[0].classList.add('js임시');
+    for (var i=0; i<10; i++) {
+      if (검사10개[i].classList.contains('js임시')) {몇번째위치인가=i}
+    }
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(2)[class~="js노랑"]')[0].classList.remove('js임시');
+    js노랑결과=js노랑결과.filter(번호4 => 번호4[1]==몇번째위치인가);
+  }
+  if (노랑3st) {
+    var 검사10개=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(3)');
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(3)[class~="js노랑"]')[0].classList.add('js임시');
+    for (var i=0; i<10; i++) {
+      if (검사10개[i].classList.contains('js임시')) {몇번째위치인가=i}
+    }
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(3)[class~="js노랑"]')[0].classList.remove('js임시');
+    js노랑결과=js노랑결과.filter(번호4 => 번호4[2]==몇번째위치인가);
+  }
+  if (노랑4st) {
+    var 검사10개=document.querySelectorAll('.가능숫자하나 > div:nth-of-type(4)');
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(4)[class~="js노랑"]')[0].classList.add('js임시');
+    for (var i=0; i<10; i++) {
+      if (검사10개[i].classList.contains('js임시')) {몇번째위치인가=i}
+    }
+    document.querySelectorAll('.가능숫자하나 > div:nth-of-type(4)[class~="js노랑"]')[0].classList.remove('js임시');
+    js노랑결과=js노랑결과.filter(번호4 => 번호4[3]==몇번째위치인가);
   }
 
-  
+  //------결과에 대해서 가능번호는 해당위치에 없는 것을 색칠하도록 한다.
+  var 없는번호1st=[],없는번호2st=[],없는번호3st=[],없는번호4st=[];
+  for (var i=0; i<4; i++) {
+    for (내부=0; 내부<10; 내부++) {
+      if (js노랑결과.filter(번호4 => 번호4[i]==내부).length==0) {
+        if (i==0) {없는번호1st.push(내부)}
+        if (i==1) {없는번호2st.push(내부)}
+        if (i==2) {없는번호3st.push(내부)}
+        if (i==3) {없는번호4st.push(내부)}
+      }
+    }
+  }
+  var 가능숫자하나=document.querySelectorAll('.가능숫자하나'); //다음 활용위해 재 정의 ... 없어야할번호에서 한번더 활용됨
+  for (var i=0; i<document.querySelectorAll('.가능숫자하나 > div').length; i++) {
+    document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js가능제외');
+  }
+  for (var i=0; i<없는번호1st.length; i++) {
+    가능숫자하나[없는번호1st[i]].children[0].classList.add('js가능제외');
+  }
+  for (var i=0; i<없는번호2st.length; i++) {
+    가능숫자하나[없는번호2st[i]].children[1].classList.add('js가능제외');
+  }
+  for (var i=0; i<없는번호3st.length; i++) {
+    가능숫자하나[없는번호3st[i]].children[2].classList.add('js가능제외');
+  }
+  for (var i=0; i<없는번호4st.length; i++) {
+    가능숫자하나[없는번호4st[i]].children[3].classList.add('js가능제외');
+  }
 
+  최종결과=js노랑결과;
+  최종결과표시();
 }
 function 가능한조합click(e) {
   console.log('가능한조합click(e) : ' + e.target.innerHTML*1)
