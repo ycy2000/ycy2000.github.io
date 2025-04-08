@@ -507,6 +507,44 @@ function 바디클릭이벤트(e) {
     console.log('바디이벤트 : 숨기기')
     랜덤번호숨기기();
   }
+  if (e.target.innerHTML=='다시하기') {
+    console.log('바디이벤트 : 다시하기')
+    //계산() 내부에 js가능제외 지우는것 있다. 계산을 누르기 전 상태이긴한데....
+    for (var i=0; i<10; i++) {
+      document.querySelectorAll('.입력')[i].innerHTML=i;
+      document.querySelectorAll('.입력')[i].classList.remove('js표시');
+      document.querySelectorAll('.입력토글')[i].innerHTML='';
+      document.querySelectorAll('.입력토글')[i].classList.remove('js표시');
+
+      document.querySelectorAll(`#기회${i} > div`)[0].innerHTML='';
+      document.querySelectorAll(`#기회${i} > div`)[1].innerHTML='';
+      document.querySelectorAll(`#기회${i} > div`)[2].innerHTML='';
+      document.querySelectorAll(`#기회${i} > div`)[3].innerHTML='';
+      document.querySelectorAll('.숫자일치')[i].innerHTML='';
+      document.querySelectorAll('.위치일치')[i].innerHTML='';
+
+      document.querySelector('#없어야할번호').innerHTML='';
+      document.querySelector('#포함해야할번호').innerHTML='';
+    }
+    document.querySelectorAll(`#기회${0} > div`)[0].innerHTML=0;
+    document.querySelectorAll(`#기회${0} > div`)[1].innerHTML=1;
+    document.querySelectorAll(`#기회${0} > div`)[2].innerHTML=2;
+    document.querySelectorAll(`#기회${0} > div`)[3].innerHTML=3;
+    document.querySelectorAll(`#기회${1} > div`)[0].innerHTML=6;
+    document.querySelectorAll(`#기회${1} > div`)[1].innerHTML=7;
+    document.querySelectorAll(`#기회${1} > div`)[2].innerHTML=8;
+    document.querySelectorAll(`#기회${1} > div`)[3].innerHTML=9;
+    for (var i=0; i<4; i++) {document.querySelectorAll('#순서확정된번호 > div')[i].innerHTML=''}
+    for (var i=0; i<document.querySelectorAll('.가능숫자하나 > div').length; i++) {
+      document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js노랑');
+      document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js가능제외');
+    }
+    for (var i=0; i<10; i++) {document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.remove('js노랑');
+    }
+    document.querySelector('#숨겨진랜덤번호').innerHTML=''; 
+    for (var i=0; i<4; i++) {document.querySelectorAll('#랜덤번호 > div')[i].innerHTML=''}
+    첫번째빈C색칠();
+  }
 }
 바디.addEventListener('click',바디클릭이벤트);
 리스너가능한조합.addEventListener('click', 가능한조합click);
