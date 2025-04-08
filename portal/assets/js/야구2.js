@@ -1,9 +1,10 @@
 let 결과=[];//기회정보만의 결과
 let 최종결과=[];
 let js노랑결과=[];
+let js포함결과=[];
 첫번째빈C색칠();
 function 랜덤번호맞추기모드확인() {
-  if (document.querySelector('.form-check-input')?.checked) {console.log('체크')} else {console.log('false');return;}
+  if (document.querySelector('.form-check-input')?.checked) {console.log('체크')} else {return;}
   if (document.querySelector('#숨겨진랜덤번호').innerHTML=='') {랜덤번호생성();}//랜덤번호 없으면 생성한다.
   //기회번호 4개에 대해서 B S 기록한다.
   랜덤번호있을때_SB기록();
@@ -256,6 +257,7 @@ function 첫번째빈C색칠() {
   } 
 }
 function 기회정보제외_초기화() {
+  //계산() 내부에 js가능제외 지우는것 있다. 계산을 누르기 전 상태이긴한데....
   for (var i=0; i<10; i++) {
     document.querySelectorAll('.입력')[i].innerHTML=i;
     document.querySelectorAll('.입력')[i].classList.remove('js표시');
@@ -267,6 +269,8 @@ function 기회정보제외_초기화() {
   }
   for (var i=0; i<4; i++) {document.querySelectorAll('#순서확정된번호 > div')[i].innerHTML=''}
   for (var i=0; i<document.querySelectorAll('.가능숫자하나 > div').length; i++) {document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js노랑')}
+  for (var i=0; i<10; i++) {document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.remove('js노랑');
+  }
 }
 function 계산_기회계산만적용() {
   //기회계산을 제외한 다른 조건을 초기화하고 계산();
@@ -277,35 +281,51 @@ function 계산_기회계산만적용() {
 var 바디=document.querySelector('body');
 var 리스너가능한조합=document.querySelector('#가능한조합');
 var 리스너가능=document.querySelector('#가능');
-function 가능click(e) {
-  js노랑결과=결과;
-  //주황일때 작동안함, 노랑일때 노랑지움, 흰색일때 해당위치에 해당번호인것만 
-  if (!e.target.parentElement.classList.contains('가능숫자하나')) {console.log('부모가 가능숫자하나 아님');return;}
-  var 몇번째위치인가; //무조건있다.
-  e.target.classList.add('js임시');
-  for (var i=0; i<4; i++) {
-    if (e.target.parentElement.children[i].classList.contains('js임시')) {몇번째위치인가=i+1}
+var 리스너포함선택=document.querySelector('#포함선택');
+function 결과에포함선택정보적용() {
+  var 포함수=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함수.push(i+1)}
   }
-  e.target.classList.remove('js임시');
-
-  var 타겟이js가능제외인가=false;
-  if (e.target.classList.contains('js가능제외')) {타겟이js가능제외인가=true}
-
-  var js노랑있나=false; //length가 0 (false) 이 가능하다.
-  if (document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`).length) {js노랑있나=true;}
-  //작동순위 
-  //1.js가능제외이면 아무작동안한다.
-  //2.흰색이면, 클릭한곳 js노랑 넣고, js노랑이 있으면 지우고 js노랑 넣는다 
-  if (타겟이js가능제외인가) {return;}
-  if (js노랑있나 && e.target.classList.contains('js노랑')) {
-    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');
-   } else if (js노랑있나 && !e.target.classList.contains('js노랑')) {
-    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');
-    e.target.classList.add('js노랑')
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함수.push(0)}
+  console.log('포함수 : [' + 포함수 + ']')
+  console.log('최종결과.length : ' + 최종결과.length)
+  for (var i=0; i<포함수.length; i++) {
+    최종결과=최종결과.filter(번호4 => 번호4.includes(포함수[i]))
+  }
+  //결과에가능정보적용() 마지막에 있는것 : 최종결과=js노랑결과; 최종결과표시();
+  최종결과표시();
+}
+function 포함선택click(e) {
+  //초기값 최종결과를 살릴수 있는 방법은?
+  if (!e.target.parentElement.parentElement.id=='포함선택번호10') {return;}
+  if (e.target.classList.contains('js노랑')) {
+    e.target.classList.remove('js노랑');
   } else {
-    e.target.classList.add('js노랑')
+    e.target.classList.add('js노랑');
   }
-  
+  if (e.target.innerHTML=='초기화') {
+    for (var i=0; i<10; i++) {
+      document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.remove('js노랑');
+    }
+    e.target.classList.remove('js노랑');
+  }
+  결과에가능정보적용(); //마지막에   최종결과=js노랑결과; 최종결과표시();
+  var 포함번호=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
+  }
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
+  for (var i=0; i<포함번호.length; i++) {
+    최종결과=최종결과.filter(번호4 => 번호4.includes(포함번호[i]))
+  }
+  최종결과표시();
+}
+function 결과에가능정보적용() {
+  console.log('결과.length:' + 결과.length + ', 최종결과.length:' + 최종결과.length)
+  js노랑결과=결과;
+  var 몇번째위치인가;
+
   //js노랑이 없으면 종료하는것이 아니라(있다가 없어진 경우)
   //if (document.querySelectorAll(`[class~="js노랑"]`).length) {} else {
   //  console.log('js노랑 개수 : ' + document.querySelectorAll(`[class~="js노랑"]`).length + ' 종료')
@@ -389,6 +409,35 @@ function 가능click(e) {
   최종결과=js노랑결과;
   최종결과표시();
 }
+function 가능click(e) {
+  //주황일때 작동안함, 노랑일때 노랑지움, 흰색일때 해당위치에 해당번호인것만 
+  if (!e.target.parentElement.classList.contains('가능숫자하나')) {console.log('부모가 가능숫자하나 아님');return;}
+  var 몇번째위치인가; //무조건있다.
+  e.target.classList.add('js임시');
+  for (var i=0; i<4; i++) {
+    if (e.target.parentElement.children[i].classList.contains('js임시')) {몇번째위치인가=i+1}
+  }
+  e.target.classList.remove('js임시');
+
+  var 타겟이js가능제외인가=false;
+  if (e.target.classList.contains('js가능제외')) {타겟이js가능제외인가=true}
+
+  var js노랑있나=false; //length가 0 (false) 이 가능하다.
+  if (document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`).length) {js노랑있나=true;}
+  //작동순위 
+  //1.js가능제외이면 아무작동안한다.
+  //2.흰색이면, 클릭한곳 js노랑 넣고, js노랑이 있으면 지우고 js노랑 넣는다 
+  if (타겟이js가능제외인가) {return;}
+  if (js노랑있나 && e.target.classList.contains('js노랑')) {
+    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');
+   } else if (js노랑있나 && !e.target.classList.contains('js노랑')) {
+    document.querySelectorAll(`.가능숫자하나 > div:nth-of-type(${몇번째위치인가})[class~="js노랑"]`)[0].classList.remove('js노랑');
+    e.target.classList.add('js노랑')
+  } else {
+    e.target.classList.add('js노랑')
+  }
+  결과에가능정보적용();
+}
 function 가능한조합click(e) {
   console.log('가능한조합click(e) : ' + e.target.innerHTML*1)
   if (e.target.innerHTML=='') {return;}
@@ -462,3 +511,4 @@ function 바디클릭이벤트(e) {
 바디.addEventListener('click',바디클릭이벤트);
 리스너가능한조합.addEventListener('click', 가능한조합click);
 리스너가능.addEventListener('click', 가능click);
+리스너포함선택.addEventListener('click', 포함선택click);
