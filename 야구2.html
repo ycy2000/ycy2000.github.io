@@ -57,8 +57,7 @@
       <button style="background-color: chartreuse;">다시하기</button>
       <a href="kim.html">kim.html</a>
     </div>
-    <span>숫자입력. 아래 색칠숫자는 계산상 없어야할 번호</span><br>
-    <span>위에 색칠숫자는 계산상 포함해야하는 번호</span><br>
+    <span>숫자입력. 위색칠:포함수, 아래색칠:제외수</span><br>
     <div class="두줄">
       <div class="입력">0</div><div class="입력토글"></div>
     </div><div class="두줄">
@@ -80,19 +79,7 @@
     </div><div class="두줄">
       <div class="입력">9</div><div class="입력토글"></div>
     </div>
-    <br><br><br><br>
-    <div id="포함제외확정">
-      <div>
-        <div><div>없어야할 번호</div><div id="없어야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
-        <div><div>포함해야하는 번호</div><div id="포함해야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
-      </div>
-      <div>
-        <div style="margin-left:28px;">순서 확정된 번호</div>
-        <div id="순서확정된번호">
-          <div></div><div></div><div></div><div></div>
-        </div>
-      </div>
-    </div>
+    <br><br><br>
     <div style="display:inline-block;margin-top:10px;" id="가능">
       <div>가능 번호(흰색)</div>
       <div class="가능숫자하나"><div>0</div><div>0</div><div>0</div><div>0</div></div>
@@ -106,25 +93,40 @@
       <div class="가능숫자하나"><div>8</div><div>8</div><div>8</div><div>8</div></div>
       <div class="가능숫자하나"><div>9</div><div>9</div><div>9</div><div>9</div></div>
     </div>
-    <div style="display: inline-block;vertical-align: top;margin-top:10px;">
-      <div>&#60;== 주황색은 클릭이 안되고,</div>
-      <div style="text-indent: 40px;">클릭이 적용되면 노랑색이 되고,</div>
-      <div style="text-indent: 40px;">해당위치에 해당번호가 있는것만</div>
-      <div style="text-indent: 40px;">선별되어 보여줌</div>
-      <div style="text-indent: 40px;font-weight: bold;">계산(); 실행시 초기화됨</div>
-      <div id="포함선택" style="margin-left:40px;">
-        <br>
-        <div>위치 상관없이 </div>
-        <div>포함하는 숫자만</div>
-        <div>선별하기 </div>
-        <div id="포함선택번호10">
-          <div><div>1</div><div>2</div><div>3</div></div>
-          <div><div>4</div><div>5</div><div>6</div></div>
-          <div><div>7</div><div>8</div><div>9</div></div>
-          <div><div>0</div><div style="width:89px;">초기화</div></div>
+    <div style="display:inline-block;vertical-align: top;">
+      <div id="포함제외확정" style="display:inline-block;vertical-align: top;">
+        <div>
+          <div style="margin-left:28px;margin-top:10px;">순서 확정된 번호</div>
+          <div id="순서확정된번호" style="margin-bottom:5px;">
+            <div></div><div></div><div></div><div></div>
+          </div>
+        </div><br>
+        <div>
+          <div><div>없어야할 번호</div><div id="없어야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
+          <div><div>포함해야하는 번호</div><div id="포함해야할번호" style="padding-left:5px; font-size: 23px;font-weight: bold;"></div></div>
         </div>
       </div>
+      <br>
+      <div style="display: inline-block;vertical-align: top;margin-top:10px;">
+        <div id="포함선택">
+          <div>위치 상관없이 포함하는 숫자만 선별하기</div>
+          <div id="포함선택번호10" style="margin-left:80px;">
+            <div><div>1</div><div>2</div><div>3</div></div>
+            <div><div>4</div><div>5</div><div>6</div></div>
+            <div><div>7</div><div>8</div><div>9</div></div>
+            <div><div>0</div><div style="width:89px;">초기화</div></div>
+          </div>
+        </div>
+        <br>
+        <div>&#60;== 주황색은 클릭이 안되고,</div>
+        <div style="text-indent: 40px;">클릭이 적용되면 노랑색이 되고,</div>
+        <div style="text-indent: 40px;">해당위치에 해당번호가 있는것만</div>
+        <div style="text-indent: 40px;">선별되어 보여줌</div>
+        <div style="text-indent: 40px;font-weight: bold;">계산(); 실행시 초기화됨</div>
+
+      </div>
     </div>
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>

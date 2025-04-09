@@ -1,0 +1,13 @@
+@charset "UTF-8";
+body, pre {font-family: 'Noto Serif KR', serif;}
+header {position:fixed;width:100%;}
+#whole > div {vertical-align: top;}
+
+/* 코딩 임시 */
+.당첨정보 div, #당번숨김 {display: inline-block; border:1px solid black;}
+.당첨정보 div:nth-of-type(1) {width:50px;}
+.당첨정보 div:nth-of-type(2) {width:100px;}
+.당첨정보 div:nth-of-type(3) {width:180px;}
+.당첨정보 div:nth-of-type(4) {width:40px;}
+
+/* 코딩 임시 끝 */
