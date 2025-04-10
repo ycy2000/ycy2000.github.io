@@ -4,10 +4,35 @@ header {position:fixed;width:100%;}
 #whole > div {vertical-align: top;}
 
 /* 코딩 임시 */
-.당첨정보 div, #당번숨김 {display: inline-block; border:1px solid black;}
-.당첨정보 div:nth-of-type(1) {width:50px;}
-.당첨정보 div:nth-of-type(2) {width:100px;}
-.당첨정보 div:nth-of-type(3) {width:180px;}
-.당첨정보 div:nth-of-type(4) {width:40px;}
+body {white-space: nowrap;}
+.카테고리 {display: inline-block;vertical-align: top;}
+.당첨정보 {margin-bottom:-1px;}
+.당첨정보 > div {display: inline-block; border:1px solid black;text-align: center;margin-right:-1px;}
+.당첨정보 > div:nth-of-type(1) {width:50px;}
+.당첨정보 > div:nth-of-type(2) {width:100px;}
+.당첨정보 > div:nth-of-type(4) {width:25px;background-color: cadetblue;}
+.당번만 > div {display: inline-block; border-right:1px solid black;text-align: center;margin-right:-1px;width:25px;font-weight: bold;}
+
+#분석자료_선택회차 > div {display: inline-block; border:1px solid black;text-align: center;margin-right:-1px;}
+#분석자료_선택회차 > div:nth-of-type(1) {width:88px;} /* 년도2자리 날짜부분 */
+#분석자료_선택회차 > div:nth-of-type(3) {width:25px;background-color: cadetblue;} /* 보볼부분 */
+/* .당번만 > div */
+#분석자료_선택회차 > div:nth-of-type(2) > div {display: inline-block; border-right:1px solid black;text-align: center;margin-right:-1px;width:25px;font-weight: bold;}
+
+#분석자료_표_상_js > div {margin-bottom:-1px;}
+#분석자료_표_상_js > div div {display: inline-block;text-align: center;height:24px;vertical-align: top;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div {border:1px solid black;margin-right:-1px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {background-color:chartreuse;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:85px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {width:30px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;}
+#분석자료_표_상_js > div > div:nth-of-type(2) > div {width:24px;border:1px solid black;margin-right:-1px;}
+#분석자료_표_상_js > div:nth-of-type(1) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
+
+.다섯개씩번갈아색칠 div:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
+.다섯개씩번갈아색칠 div:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}
+.다섯개씩번갈아색칠 div:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
+.다섯개씩번갈아색칠 div:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) {background-color:rgb(196, 169, 137);}
+.분석자료_고정등번호색칠 {background-color: blueviolet;}
 
 /* 코딩 임시 끝 */

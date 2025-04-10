@@ -14,12 +14,71 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="머리글">머리글</div>
-<select id="회차select" class="d-inline-block" onchange="회차select_change();"></select>
-<div class="카테고리 d-inline-block" id="임시카테고리" onclick="SS()">onclick="SS()"</div><br>
+<div id="변수" class="d-none">
+  <div id="당번변수_초기화시_5주">
+    <div id="당번_변수_당번"></div>
+    <div id="당번_변수_5주0출"></div>
+    <div id="당번_변수_5주1출"></div>
+    <div id="당번_변수_5주2출"></div>
+    <div id="당번_변수_5주3출이상"></div>
+    <div id="당번_변수_10주0출"></div>
+    <div id="당번_변수_15주0출"></div>
+  </div>
+  <div id="당번변수_초기화시_30주">
+    <div id="당번_변수_30주0출"></div>
+    <div id="당번_변수_30주1출"></div>
+    <div id="당번_변수_30주2출"></div>
+    <div id="당번_변수_30주3출"></div>
+    <div id="당번_변수_30주4출"></div>
+    <div id="당번_변수_30주5출"></div>
+    <div id="당번_변수_30주6출"></div>
+    <div id="당번_변수_30주7출"></div>
+    <div id="당번_변수_30주8출"></div>
+    <div id="당번_변수_30주9출"></div>
+    <div id="당번_변수_30주10출"></div>
+    <div id="당번_변수_30주11출"></div>
+    <div id="당번_변수_30주12출"></div>
+  </div>
+  <div id="분석자료변수_초기화시_5주">
+    <div id="분석자료_변수_당번"></div>
+    <div id="분석자료_변수_5주0출"></div>
+    <div id="분석자료_변수_5주1출"></div>
+    <div id="분석자료_변수_5주2출"></div>
+    <div id="분석자료_변수_5주3출이상"></div>
+    <div id="분석자료_변수_10주0출"></div>
+    <div id="분석자료_변수_15주0출"></div>
+  </div>
+
+</div>   <!-- 전역변수는 메모리 많이 잡아먹는다하여...  -->
+<div id="머리글" style="height:30px;margin:10px;border-bottom:1px solid black;">
+  <div class="form-check d-inline-block" onchange="당번_보기숨기기();">
+    <input class="form-check-input" type="checkbox" value="" id="check_당번" checked>
+    <label class="form-check-label" for="check_당번">당번</label>
+  </div>
+  <div class="form-check d-inline-block" onchange="분석자료_보기숨기기();" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="check_분석자료" checked>
+    <label class="form-check-label" for="check_분석자료">분석자료</label>
+  </div>
+</div>
+<div id="당번가공" class="d-none"></div>
+<div id="당번" class="카테고리">
+  <div id="당번_다음회차"></div>
+  <select id="당번_회차select" class="d-inline-block" onchange="당번_회차select_change();" style="margin:5px 0"></select>
+  <span>회차 선택</span>
+  <div id="당번_불러온당첨정보"></div>
+</div>
+<div id="분석자료" class="카테고리">
+  <div id="분석자료_다음회차" title="js로"></div>
+  <select id="분석자료_회차select" class="d-inline-block" onchange="분석자료_회차select_change();" style="margin:5px 0"></select>
+  <div id="분석자료_선택회차" class="d-inline-block" title="js로"></div>
+  <div id="분석자료_표_상_js"></div>
+  <div id="분석자료_표_하_js"></div>
+</div>
 
 
-<div id="당번숨김">
+
+
+<div id="당번숨김" class="d-none">
   <div>
     <div class='당첨정보'><div>1</div><div>2002-12-07</div><div class='당번만'>10_23_29_33_35_40_</div><div>16</div></div><div class='당첨정보'><div>2</div><div>2002-12-14</div><div class='당번만'>9_13_21_25_32_42_</div><div>2</div></div><div class='당첨정보'><div>3</div><div>2002-12-21</div><div class='당번만'>11_16_19_21_27_31_</div><div>30</div></div><div class='당첨정보'><div>4</div><div>2002-12-28</div><div class='당번만'>14_27_30_31_40_42_</div><div>2</div></div><div class='당첨정보'><div>5</div><div>2003-01-04</div><div class='당번만'>16_24_29_40_41_42_</div><div>3</div></div>
     <div class='당첨정보'><div>6</div><div>2003-01-11</div><div class='당번만'>14_15_26_27_40_42_</div><div>34</div></div><div class='당첨정보'><div>7</div><div>2003-01-18</div><div class='당번만'>2_9_16_25_26_40_</div><div>42</div></div><div class='당첨정보'><div>8</div><div>2003-01-25</div><div class='당번만'>8_19_25_34_37_39_</div><div>9</div></div><div class='당첨정보'><div>9</div><div>2003-02-01</div><div class='당번만'>2_4_16_17_36_39_</div><div>14</div></div><div class='당첨정보'><div>10</div><div>2003-02-08</div><div class='당번만'>9_25_30_33_41_44_</div><div>6</div></div>
