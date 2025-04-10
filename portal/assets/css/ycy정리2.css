@@ -16,10 +16,13 @@ body {white-space: nowrap;}
 #분석자료_선택회차 > div {display: inline-block; border:1px solid black;text-align: center;margin-right:-1px;}
 #분석자료_선택회차 > div:nth-of-type(1) {width:88px;} /* 년도2자리 날짜부분 */
 #분석자료_선택회차 > div:nth-of-type(3) {width:25px;background-color: cadetblue;} /* 보볼부분 */
+#분석자료숨김버튼 > button, #XO플마 > button {border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
+.분석버튼숨김 {background-color: darkcyan;}
 /* .당번만 > div */
 #분석자료_선택회차 > div:nth-of-type(2) > div {display: inline-block; border-right:1px solid black;text-align: center;margin-right:-1px;width:25px;font-weight: bold;}
 
 #분석자료_표_상_js > div {margin-bottom:-1px;}
+#분석자료_표_상_js > div:nth-of-type(4), #분석자료_표_상_js > div:nth-of-type(7), #분석자료_표_상_js > div:nth-of-type(11) {margin-bottom:0px;}
 #분석자료_표_상_js > div div {display: inline-block;text-align: center;height:24px;vertical-align: top;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div {border:1px solid black;margin-right:-1px;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {background-color:chartreuse;}

@@ -17,6 +17,8 @@
 <div id="변수" class="d-none">
   <div id="당번변수_초기화시_5주">
     <div id="당번_변수_당번"></div>
+    <div id="당번_변수_이웃"></div>
+    <div id="당번_변수_당번이웃"></div>
     <div id="당번_변수_5주출"></div>
     <div id="당번_변수_5주0출"></div>
     <div id="당번_변수_5주1출"></div>
@@ -42,6 +44,8 @@
   </div>
   <div id="분석자료변수_초기화시_5주">
     <div id="분석자료_변수_당번"></div>
+    <div id="분석자료_변수_이웃"></div>
+    <div id="분석자료_변수_당번이웃"></div>
     <div id="분석자료_변수_5주출"></div>
     <div id="분석자료_변수_5주0출"></div>
     <div id="분석자료_변수_5주1출"></div>
@@ -61,6 +65,7 @@
     <input class="form-check-input" type="checkbox" value="" id="check_분석자료" checked>
     <label class="form-check-label" for="check_분석자료">분석자료</label>
   </div>
+  <button onclick="연습()">연습</button>
 </div>
 <div id="당번가공" class="d-none"></div>
 <div id="당번" class="카테고리">
@@ -73,6 +78,13 @@
   <div id="분석자료_다음회차" title="js로"></div>
   <select id="분석자료_회차select" class="d-inline-block" onchange="분석자료_회차select_change();" style="margin:5px 0"></select>
   <div id="분석자료_선택회차" class="d-inline-block" title="js로"></div>
+  <div id="XO플마" class="d-inline-block">
+    <button onclick="분석자료_회차플러스()">+</button><button onclick="분석자료_회차마이너스()">-</button><button>X</button><button>O</button>
+  </div>
+  <div id="분석자료숨김버튼" class="d-inline-block">
+    <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button>
+    <button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button>
+  </div>
   <div id="분석자료_표_상_js"></div>
   <div id="분석자료_표_하_js"></div>
 </div>

@@ -3,6 +3,50 @@ var 회차index=document.querySelector('#당번_회차select').value; //회차�
 분석자료표만들기_상();
 당번_회차select_change();
 분석자료_회차select_change();
+var 리스너_분석자료=document.querySelector('#분석자료');
+function 리스너_분석자료_click(e) {
+  if (e.target.parentElement.id=='분석자료숨김버튼') {
+    if (e.target.classList.contains('분석버튼숨김')) {
+      e.target.classList.remove('분석버튼숨김');
+      document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.remove('d-none')
+    } else {
+      e.target.classList.add('분석버튼숨김');
+      document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.add('d-none')
+    }
+  }
+  if (e.target.parentElement.id=='XO플마') {
+    if (e.target.innerHTML=='X') {
+      for (var i=0; i<document.querySelector('#분석자료_표_상_js').children.length; i++) {
+        document.querySelector('#분석자료_표_상_js').children[i].classList.add('d-none');
+      }
+      for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
+        document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.add('분석버튼숨김');
+      }
+    }
+    if (e.target.innerHTML=='O') {
+      for (var i=0; i<document.querySelector('#분석자료_표_상_js').children.length; i++) {
+        document.querySelector('#분석자료_표_상_js').children[i].classList.remove('d-none');
+      }
+      for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
+        document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.remove('분석버튼숨김');
+      }
+    }
+  }
+}
+function 분석자료_회차마이너스() {
+  console.log('분석자료_회차빼기()')
+  var 선택회차=parseInt(document.querySelector('#분석자료_회차select').value);
+  document.querySelector('#분석자료_회차select').value=선택회차-1;
+  분석자료_회차select_change()
+}
+function 분석자료_회차플러스() {
+  console.log('분석자료_회차빼기()')
+  var 선택회차=parseInt(document.querySelector('#분석자료_회차select').value);
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
+  if (당첨정보.length==선택회차) {alert('가장 최근 회차입니다.'); return;}
+  document.querySelector('#분석자료_회차select').value=선택회차+1;
+  분석자료_회차select_change()
+}
 function 연습() {
   console.log(document.querySelector('#당번_변수_5주0출').innerHTML)
   console.log(document.querySelector('#당번_변수_5주1출').innerHTML)
@@ -20,12 +64,13 @@ function 분석자료표만들기_상() {
   for (var 외부=0; 외부<20; 외부++) {
     var 가로한줄=document.createElement('div');
     var 번호선택_추출_c=document.createElement('div');
-    var 번호선택배열=['번호선택↓','당번','이웃수','당번+이웃','5주출','5주0출','5주1출','5주2출','5주3출','10주미출','15주미출','피해서번호']
+    var 번호선택배열=['번호선택↓','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출','피해서번호']
     for (var i=0; i<3; i++) {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다.
       if (i==0) {div요소.textContent=번호선택배열[외부]}
       if (i==1 && 외부==0) {div요소.textContent='출'}
-      if (i==2) {div요소.textContent='C'}
+      if (i==2 && 외부==0) {div요소.textContent='C'}
+      if (i==2 && 외부!=0) {div요소.textContent=외부}
       번호선택_추출_c.appendChild(div요소);
     }
     var 번호45=document.createElement('div');
@@ -140,7 +185,6 @@ function 당번_회차select_change() {
   당번_변수_30주번호정보();
   당번_변수_이월이웃간격();
 }
-
 function 당번_변수_이월이웃간격() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
   if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
@@ -149,13 +193,29 @@ function 당번_변수_이월이웃간격() {
 }
 function 분석자료_변수_5주번호정보() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
-  var 당번=[]; _5주출=[], _5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[], _5주번호들배열='', _10주번호들배열='', _15주번호들배열='';
+  var 당번=[]; 이웃=[], 당번이웃=[],_5주출=[], _5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[], _5주번호들배열='', _10주번호들배열='', _15주번호들배열='';
   if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
   for (var i=0; i<5; i++) {_5주번호들배열+=당첨정보[회차index-4+i].children[2].innerHTML}
   _5주번호들배열=_5주번호들배열.substring(0,_5주번호들배열.length-1) //마지막 _ 하나 지움
   _5주번호들배열=_5주번호들배열.split('_');
   //console.log('_5주번호들배열 : ' + _5주번호들배열);
   for (var i=0; i<6; i++) {당번.push(당첨정보[회차index].children[2].innerHTML.split('_')[i]);}
+  for (var i=0; i<6; i++) {
+    if (당번[i]==1) {
+      var 검토2=45, 검토1=2;
+      if(당번.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
+    } else if (당번[i]==45) {
+      var 검토2=44, 검토1=1;
+      if(당번.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
+    } else {
+      var 검토2=parseInt(당번[i])+1, 검토1=parseInt(당번[i])-1;
+      if(당번.filter(번호 => 번호==번호+1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==번호-1).length==0) {이웃.push(검토2)};
+    }
+  }
+  당번이웃=[...당번, ...이웃]
   for (var i=0; i<45; i++) {
     if (_5주번호들배열.filter(번호 => 번호==i+1).length>=1) {_5주출.push(i+1)}
     if (_5주번호들배열.filter(번호 => 번호==i+1).length==0) {_5주0출.push(i+1)}
@@ -163,6 +223,7 @@ function 분석자료_변수_5주번호정보() {
     if (_5주번호들배열.filter(번호 => 번호==i+1).length==2) {_5주2출.push(i+1)}
     if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
   }
+  console.log('5주0출 : ' + _5주0출)
   var _10주번호들배열=[];
   for (var i=0; i<10; i++) {_10주번호들배열+=당첨정보[회차index-9+i].children[2].innerHTML}
   _10주번호들배열=_10주번호들배열.substring(0,_10주번호들배열.length-1) //마지막 _ 하나 지움
@@ -170,7 +231,7 @@ function 분석자료_변수_5주번호정보() {
   for (var i=0; i<45; i++) {
     if (_10주번호들배열.filter(번호 => 번호==i+1).length==0) {_10주0출.push(i+1)}
   }
-  for (var i=0; i<10; i++) {_15주번호들배열+=당첨정보[회차index-14+i].children[2].innerHTML}
+  for (var i=0; i<14; i++) {_15주번호들배열+=당첨정보[회차index-14+i].children[2].innerHTML}
   _15주번호들배열=_15주번호들배열.substring(0,_15주번호들배열.length-1) //마지막 _ 하나 지움
   _15주번호들배열=_15주번호들배열.split('_');
   for (var i=0; i<45; i++) {
@@ -178,6 +239,8 @@ function 분석자료_변수_5주번호정보() {
   }
   //        --- 값이 없으면 join이 안된다.
   if(당번.length>0) document.querySelector('#분석자료_변수_당번').innerHTML=당번.join(',');
+  if(이웃.length>0) document.querySelector('#분석자료_변수_이웃').innerHTML=이웃.join(',');
+  if(당번이웃.length>0) document.querySelector('#분석자료_변수_당번이웃').innerHTML=당번이웃.join(',');
   if(_5주출.length>0) document.querySelector('#분석자료_변수_5주출').innerHTML=_5주출.join(',');
   if(_5주0출.length>0) document.querySelector('#분석자료_변수_5주0출').innerHTML=_5주0출.join(',');
   if(_5주1출.length>0) document.querySelector('#분석자료_변수_5주1출').innerHTML=_5주1출.join(',');
@@ -191,34 +254,51 @@ function 분석자료_변수_5주번호정보() {
     document.querySelector('#분석자료_표_상_js').children[1].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[1].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-
-  //        이웃수, 당번+이웃
-
-
-  for (var i=0; i<_5주출.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_5주출').innerHTML.split(',');
+  for (var i=0; i<이웃.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_이웃').innerHTML.split(',');
+    document.querySelector('#분석자료_표_상_js').children[2].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
+    document.querySelector('#분석자료_표_상_js').children[2].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
+  }
+ 
+  for (var i=0; i<당번이웃.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_당번이웃').innerHTML.split(',');
+    document.querySelector('#분석자료_표_상_js').children[3].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
+    document.querySelector('#분석자료_표_상_js').children[3].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
+  }
+  for (var i=0; i<_15주0출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_15주0출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[4].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[4].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-  for (var i=0; i<_5주0출.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_5주0출').innerHTML.split(',');
+  for (var i=0; i<_10주0출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_10주0출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[5].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[5].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-  for (var i=0; i<_5주1출.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_5주1출').innerHTML.split(',');
+  for (var i=0; i<_5주0출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_5주0출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[6].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[6].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-  for (var i=0; i<_5주2출.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_5주2출').innerHTML.split(',');
+  for (var i=0; i<_5주출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_5주출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[7].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[7].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-  for (var i=0; i<_5주3출이상.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_5주3출이상').innerHTML.split(',');
+  for (var i=0; i<_5주1출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_5주1출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[8].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[8].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
+  }
+  for (var i=0; i<_5주2출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_5주2출').innerHTML.split(',');
+    document.querySelector('#분석자료_표_상_js').children[9].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
+    document.querySelector('#분석자료_표_상_js').children[9].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
+  }
+  for (var i=0; i<_5주3출이상.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_5주3출이상').innerHTML.split(',');
+    document.querySelector('#분석자료_표_상_js').children[10].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
+    document.querySelector('#분석자료_표_상_js').children[10].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
 }
 function 당번_변수_5주번호정보() {
@@ -298,9 +378,6 @@ function 당번_변수_30주번호정보() {
   if(_30주11출.length>0) document.querySelector('#당번_변수_30주11출').innerHTML=_30주11출.join(',');
   if(_30주12출.length>0) document.querySelector('#당번_변수_30주12출').innerHTML=_30주12출.join(',');
 }
-
-
-
 function 옵션생성() {
   var 당첨정보=document.querySelectorAll('.당첨정보');
   var 옵션html;
@@ -321,9 +398,15 @@ function 당번_변수_초기화() {
   }
 }
 function 분석자료_고정등번호색칠_클래스지우기() {
-  for (var i=0; i<document.querySelectorAll('.분석자료_고정번호등색칠').length; i++) {
+  var 반복개수=document.querySelectorAll('.분석자료_고정등번호색칠').length;
+  for (var i=0; i<반복개수; i++) {
     //지울때마다 하나씩 줄어들기 때문에 [0]만 계속 지우면 된다.
-    document.querySelectorAll('.분석자료_고정번호등색칠')[0].innerHTML='';
-    document.querySelectorAll('.분석자료_고정번호등색칠')[0].classList.remove('분석자료_고정번호등색칠');
+    document.querySelectorAll('.분석자료_고정등번호색칠')[0].innerHTML='';
+    document.querySelectorAll('.분석자료_고정등번호색칠')[0].classList.remove('분석자료_고정등번호색칠');
   }
 }
+function 연습() {
+
+  분석자료_고정등번호색칠_클래스지우기()
+}
+리스너_분석자료.addEventListener('click',리스너_분석자료_click)
