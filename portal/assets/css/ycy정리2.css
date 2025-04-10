@@ -26,13 +26,13 @@ body {white-space: nowrap;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:85px;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {width:30px;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;}
-#분석자료_표_상_js > div > div:nth-of-type(2) > div {width:24px;border:1px solid black;margin-right:-1px;}
+#분석자료_표_상_js > div > div:nth-of-type(2) > div {width:24px;border:1px solid black;margin-right:-1px;font-weight: bold;}
 #분석자료_표_상_js > div:nth-of-type(1) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
 
 .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
 .다섯개씩번갈아색칠 div:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}
 .다섯개씩번갈아색칠 div:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
 .다섯개씩번갈아색칠 div:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) {background-color:rgb(196, 169, 137);}
-.분석자료_고정등번호색칠 {background-color: blueviolet;}
+.분석자료_고정등번호색칠 {background-color:chartreuse;}
 
 /* 코딩 임시 끝 */

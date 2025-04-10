@@ -185,7 +185,9 @@ function 분석자료_변수_5주번호정보() {
   if(_15주0출.length>0) document.querySelector('#분석자료_변수_15주0출').innerHTML=_15주0출.join(',');
   //표에 색칠하기
   for (var i=0; i<당번.length; i++) {
-
+    var 색칠숫자들=document.querySelector('#분석자료_변수_당번').innerHTML.split(',');
+    document.querySelector('#분석자료_표_상_js').children[1].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
+    document.querySelector('#분석자료_표_상_js').children[1].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
 }
 function 당번_변수_5주번호정보() {
@@ -288,6 +290,7 @@ function 당번_변수_초기화() {
 function 분석자료_고정등번호색칠_클래스지우기() {
   for (var i=0; i<document.querySelectorAll('.분석자료_고정번호등색칠').length; i++) {
     //지울때마다 하나씩 줄어들기 때문에 [0]만 계속 지우면 된다.
+    document.querySelectorAll('.분석자료_고정번호등색칠')[0].innerHTML='';
     document.querySelectorAll('.분석자료_고정번호등색칠')[0].classList.remove('분석자료_고정번호등색칠');
   }
 }
