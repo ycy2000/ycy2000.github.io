@@ -54,16 +54,35 @@
     <div id="분석자료_변수_10주0출"></div>
     <div id="분석자료_변수_15주0출"></div>
   </div>
+  <div id="분석자료변수_초기화시_30주">
+    <div id="분석자료_변수_30주0출"></div>
+    <div id="분석자료_변수_30주1출"></div>
+    <div id="분석자료_변수_30주2출"></div>
+    <div id="분석자료_변수_30주3출"></div>
+    <div id="분석자료_변수_30주4출"></div>
+    <div id="분석자료_변수_30주5출"></div>
+    <div id="분석자료_변수_30주6출"></div>
+    <div id="분석자료_변수_30주7출"></div>
+    <div id="분석자료_변수_30주8출"></div>
+    <div id="분석자료_변수_30주9출"></div>
+    <div id="분석자료_변수_30주10출"></div>
+    <div id="분석자료_변수_30주11출"></div>
+    <div id="분석자료_변수_30주12출"></div>
+  </div>
 
 </div>   <!-- 전역변수는 메모리 많이 잡아먹는다하여...  -->
 <div id="머리글" style="height:30px;margin:10px;border-bottom:1px solid black;">
   <div class="form-check d-inline-block" onchange="당번_보기숨기기();">
-    <input class="form-check-input" type="checkbox" value="" id="check_당번" checked>
+    <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_당번" checked title="당번">
     <label class="form-check-label" for="check_당번">당번</label>
   </div>
   <div class="form-check d-inline-block" onchange="분석자료_보기숨기기();" style="margin-left:10px;">
-    <input class="form-check-input" type="checkbox" value="" id="check_분석자료" checked>
+    <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_분석자료" checked title="분석자료">
     <label class="form-check-label" for="check_분석자료">분석자료</label>
+  </div>
+  <div class="form-check d-inline-block" onchange="사진_보기숨기기();" style="margin-left:10px;">
+    <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_사진" title="사진">
+    <label class="form-check-label" for="check_사진">사진</label>
   </div>
   <button onclick="연습()">연습</button>
 </div>
@@ -71,22 +90,29 @@
 <div id="당번" class="카테고리">
   <div id="당번_다음회차"></div>
   <select id="당번_회차select" class="d-inline-block" onchange="당번_회차select_change();" style="margin:5px 0"></select>
-  <span>회차 선택</span>
+  <span style="display:inline-block;margin-top:5px;">회차 선택</span>
   <div id="당번_불러온당첨정보"></div>
 </div>
 <div id="분석자료" class="카테고리">
-  <div id="분석자료_다음회차" title="js로"></div>
+  <div id="분석자료_다음회차" class="d-inline-block" title="js로"></div><br>
   <select id="분석자료_회차select" class="d-inline-block" onchange="분석자료_회차select_change();" style="margin:5px 0"></select>
   <div id="분석자료_선택회차" class="d-inline-block" title="js로"></div>
   <div id="XO플마" class="d-inline-block">
-    <button onclick="분석자료_회차플러스()">+</button><button onclick="분석자료_회차마이너스()">-</button><button>X</button><button>O</button>
+    <button onclick="분석자료_회차플러스()">+</button> <button onclick="분석자료_회차마이너스()">-</button> <button>X</button> <button>O</button>
   </div>
-  <div id="분석자료숨김버튼" class="d-inline-block">
-    <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button>
-    <button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button>
+  <div id="분석자료숨김버튼" class="d-inline-block"><!-- 버튼에 class="분석버튼숨김" 클래스  -->
+    <button>1</button> <button>2</button> <button>3</button>
+    <button class="분석버튼숨김">4</button> <button class="분석버튼숨김">5</button> <button class="분석버튼숨김">6</button>
+    <button>7</button> <button>8</button> <button>9</button> <button>10</button>
+    <button class="분석버튼숨김">11</button> <button class="분석버튼숨김">12</button> <button class="분석버튼숨김">13</button> <button class="분석버튼숨김">14</button> <button class="분석버튼숨김">15</button>
+    <button class="분석버튼숨김">16</button> <button class="분석버튼숨김">17</button> <button class="분석버튼숨김">18</button> <button class="분석버튼숨김">19</button>
   </div>
   <div id="분석자료_표_상_js"></div>
   <div id="분석자료_표_하_js"></div>
+</div>
+<div id="사진" class="카테고리">
+  <img src="portal/images/문서연결_kim/사진.png" alt="이미지없음">
+
 </div>
 
 

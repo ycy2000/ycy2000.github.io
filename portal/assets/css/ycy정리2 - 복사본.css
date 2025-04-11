@@ -1,0 +1,72 @@
+@charset "UTF-8";
+body, pre {font-family: 'Noto Serif KR', serif;}
+header {position:fixed;width:100%;}
+#whole > div {vertical-align: top;}
+
+/* 코딩 임시 */
+body {white-space: nowrap;}
+
+.카테고리 {display: inline-block;vertical-align: top;}
+#당번 .당첨정보 {margin-bottom:-1px;}
+/* #당번 .당첨정보 > div:nth-of-type(1) 회차, (2)날짜, (3)당번만 class, (4)보볼 */
+#당번 .당첨정보 div {vertical-align: top;height:34px;}
+#당번 .당첨정보 > div:nth-of-type(1) {width:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+
+#당번 .당첨정보 > div {display: inline-block; border:1px solid black;text-align: center;margin-right:-1px;}
+#당번 .당첨정보 > div:nth-of-type(1) {width:50px;}
+#당번 .당첨정보 > div:nth-of-type(2) {width:100px;}
+#당번 .당첨정보 > div:nth-of-type(4) {width:25px;background-color: cadetblue;}
+#당번 .당번만 > div {display: inline-block; border-right:1px solid black;text-align: center;margin-right:-1px;width:25px;font-weight: bold;}
+
+#분석자료_선택회차 > div {display: inline-block; border:1px solid black;text-align: center;margin-right:-1px;}
+#분석자료_선택회차 > div:nth-of-type(1) {width:88px;} /* 년도2자리 날짜부분 */
+#분석자료_선택회차 > div:nth-of-type(3) {width:25px;background-color: cadetblue;} /* 보볼부분 */
+#XO플마 {margin-right:5px;}
+#분석자료숨김버튼 > button, #XO플마 > button {margin-right:-5px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
+#분석자료숨김버튼 > button:nth-of-type(3), #분석자료숨김버튼 > button:nth-of-type(6), #분석자료숨김버튼 > button:nth-of-type(10) {margin-right:0px;}
+.분석버튼숨김 {background-color: darkcyan;}
+/* .당번만 > div */
+#분석자료_선택회차 > div:nth-of-type(2) > div {display: inline-block; border-right:1px solid black;text-align: center;margin-right:-1px;width:25px;font-weight: bold;}
+
+#분석자료_표_상_js > div {margin-bottom:-1px;}
+#분석자료_표_상_js > div:nth-of-type(4), #분석자료_표_상_js > div:nth-of-type(7), #분석자료_표_상_js > div:nth-of-type(11) {margin-bottom:0px;}
+#분석자료_표_상_js > div div {display: inline-block;text-align: center;height:24px;vertical-align: top;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div {border:1px solid black;margin-right:-1px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {background-color:chartreuse;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:85px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {width:30px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;}
+#분석자료_표_상_js > div > div:nth-of-type(2) > div {width:24px;border:1px solid black;margin-right:-1px;font-weight: bold;}
+#분석자료_표_상_js > div:nth-of-type(1) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
+/*  */
+#분석자료_표_하_js > div {display: inline-block;vertical-align: top;text-align: center;}
+#분석자료_표_하_js > div:nth-of-type(1) > div > div {border:1px solid black; width:143px;margin-bottom:-1px;margin-right:-1px;height:24px;}/* 순번~30주간  */
+#분석자료_표_하_js > div:nth-of-type(2) > div {margin-bottom:-1px;}/* 45한줄  */
+#분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(8) {margin-bottom:0px;}/* 45한줄  */
+#분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(5n+9) {margin-bottom:0px;}/* 45한줄  */
+#분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
+#분석자료_표_하_js > div:nth-of-type(2) > div > div 
+{vertical-align: top; display: inline-block; width:24px;height:24px; border:1px solid black;margin-right:-1px;font-weight: bold;}/* 45각각  */
+/*  */
+.다섯개씩번갈아색칠 div:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
+.다섯개씩번갈아색칠 div:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}
+.다섯개씩번갈아색칠 div:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
+.다섯개씩번갈아색칠 div:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) {background-color:rgb(196, 169, 137);}
+.분석자료_고정등번호색칠 {background-color:cadetblue;}
+
+/* 코딩 임시 끝 */
+[title='1'], [title='2'], [title='3'], [title='4'], [title='5'],
+[title='6'], [title='7'], [title='8'], [title='9']
+{background-color: yellow;border-radius: 20px;}
+[title='10'],[title='11'], [title='12'], [title='13'], [title='14'], 
+[title='15'],[title='16'], [title='17'], [title='18'], [title='19']
+{background-color:cornflowerblue;border-radius: 20px;}
+[title='20'],[title='21'], [title='22'], [title='23'], [title='24'], 
+[title='25'],[title='26'], [title='27'], [title='28'], [title='29']
+{background-color:red ;border-radius: 20px;}
+[title='30'],[title='31'], [title='32'], [title='33'], [title='34'], 
+[title='35'],[title='36'], [title='37'], [title='38'], [title='39']
+{background-color:gray;border-radius: 20px;}
+[title='40'],[title='41'], [title='42'], [title='43'], [title='44'], 
+[title='45']
+{background-color:green;border-radius: 20px;}

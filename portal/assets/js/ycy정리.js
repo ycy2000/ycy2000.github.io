@@ -625,7 +625,7 @@ function 바디클릭시동작설정(e) {
     document.querySelector('#흐름_간격').classList.add('d-none');
     document.querySelector('#흐름_간격당당첨').classList.add('d-none');
 
-    document.querySelector('#세로구분_분석자료_전체').classList.remove('d-none');
+    //document.querySelector('#세로구분_분석자료_전체').classList.remove('d-none');
     return;
   }
   if (e.target.innerHTML == '추출된번호') {
