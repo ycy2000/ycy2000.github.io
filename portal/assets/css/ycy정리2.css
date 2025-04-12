@@ -63,6 +63,9 @@ body {white-space: nowrap;}
 {vertical-align: top; display: inline-block; width:24px;height:24px; border:1px solid black;margin-right:-1px;font-weight: bold;}/* 45각각  */
 #분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
 #분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
+#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div {background-color: rgb(224, 176, 141);}
+#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸_있다면다음회차 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
+#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸_있다면다음회차 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
 #분석자료_표_하_js .다섯칸div전체 .다섯칸 {margin-top:-1px;height:24px;}
 #분석자료_표_하_js .다섯칸div전체 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
 #분석자료_표_하_js .다섯칸div전체 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}

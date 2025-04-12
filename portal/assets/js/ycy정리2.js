@@ -50,17 +50,16 @@ function 분석자료_회차플러스() {
   분석자료_회차select_change()
 }
 function 연습() {
-  console.log(document.querySelector('#당번_변수_5주0출').innerHTML)
-  console.log(document.querySelector('#당번_변수_5주1출').innerHTML)
-  console.log(document.querySelector('#당번_변수_5주2출').innerHTML)
-  console.log(document.querySelector('#당번_변수_5주3출이상').innerHTML)
-  console.log(document.querySelector('#당번_변수_10주0출').innerHTML)
-  console.log(document.querySelector('#당번_변수_15주0출').innerHTML)
-  console.log('30주0출 : ' + document.querySelector('#당번_변수_30주0출').innerHTML)
-  console.log(document.querySelector('#당번_변수_30주1출').innerHTML)
-  console.log(document.querySelector('#당번_변수_30주2출').innerHTML)
-  console.log(document.querySelector('#당번_변수_30주3출').innerHTML)
-  console.log(document.querySelector('#당번_변수_30주40출').innerHTML)
+  var 다섯칸머리글div=document.createElement('div'); //머리글 위에꺼(다음회차 있을때), 머리글 2번사용
+  다섯칸머리글div.setAttribute('class','다섯칸머리글');
+  var 내부다섯칸맞추기=document.createElement('div');
+  내부다섯칸맞추기.setAttribute('class','다섯칸');
+  for (var i=0; i<5; i++) {
+    var 가로한줄=document.createElement('div');
+    가로한줄.textContent=다섯칸제목[i];
+    내부다섯칸맞추기.appendChild(가로한줄)
+  }
+  다섯칸머리글div.appendChild(내부다섯칸맞추기)
 }
 function 분석자료표만들기_하() {
   //왼쪽과 오른쪽 구분하여 작성
@@ -79,17 +78,19 @@ function 분석자료표만들기_하() {
   }
 
   var 왼쪽전체=document.createElement('div'); //
-/*
-  var 왼쪽1=document.createElement('div');
-  var 제목배열=['순번','30주간','1~5주','6~10주','11~15주','16~20주','21~25주','26~30주'];
-  for (var i=0; i<8; i++) {
+
+  var 다섯칸머리글div=document.createElement('div'); //머리글 위에꺼(다음회차 있을때), 머리글 2번사용
+  다섯칸머리글div.setAttribute('class','다섯칸_있다면다음회차');
+  var 내부다섯칸맞추기=document.createElement('div');
+  내부다섯칸맞추기.setAttribute('class','다섯칸');
+  for (var i=0; i<5; i++) {
     var 가로한줄=document.createElement('div');
-    가로한줄.textContent=제목배열[i];
-    왼쪽1.appendChild(가로한줄);
+    내부다섯칸맞추기.appendChild(가로한줄)
   }
-  왼쪽전체.appendChild(왼쪽1);
-  */ 
-  var 다섯칸머리글div=document.createElement('div');
+  다섯칸머리글div.appendChild(내부다섯칸맞추기)
+  왼쪽전체.appendChild(다섯칸머리글div);
+
+  var 다섯칸머리글div=document.createElement('div'); //머리글 위에꺼(다음회차 있을때), 머리글 2번사용
   다섯칸머리글div.setAttribute('class','다섯칸머리글');
   var 내부다섯칸맞추기=document.createElement('div');
   내부다섯칸맞추기.setAttribute('class','다섯칸');
@@ -131,7 +132,9 @@ function 분석자료표만들기_상() {
       번호선택_추출_c.appendChild(div요소);
     }
     var 번호45=document.createElement('div');
-    if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
+    //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
+    번호45.setAttribute('class','다섯개씩번갈아색칠');
+
     for (var i=1; i<46; i++) {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
       번호45.appendChild(div요소);
@@ -284,10 +287,48 @@ function 분석자료_변수_5주번호정보_내부_미출부터이월수개수
       if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
     }
     var 이월=0, 출0=0, 출1=0, 출2=0, 출3이상=0;
+    for (var i=0; i<6;i++) {출0+=_5주0출.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {출1+=_5주1출.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {출2+=_5주2출.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {출3이상+=_5주3출이상.filter(번호 => 번호==당번[i]).length;}
     for (var i=0; i<6;i++) {이월+=전회차당번.filter(번호 => 번호==당번[i]).length;}
+    document.querySelectorAll('.다섯칸div전체 .다섯칸')[반복].children[0].innerHTML=출0;
+    document.querySelectorAll('.다섯칸div전체 .다섯칸')[반복].children[1].innerHTML=출1;
+    document.querySelectorAll('.다섯칸div전체 .다섯칸')[반복].children[2].innerHTML=출2;
+    document.querySelectorAll('.다섯칸div전체 .다섯칸')[반복].children[3].innerHTML=출3이상;
     document.querySelectorAll('.다섯칸div전체 .다섯칸')[반복].children[4].innerHTML=이월;
-
-
+  }
+  if (회차index==당첨정보.length-1) {
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[0].children[0].innerHTML='';
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[0].children[1].innerHTML='';
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[0].children[2].innerHTML='';
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[0].children[3].innerHTML='';
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[0].children[4].innerHTML='';
+    return;}
+  for (var 반복=0; 반복<1; 반복++) {
+    var _5주번호들배열='', 당번=[]; 전회차당번=[], _5주0출=[], _5주1출=[], _5주2출=[], _5주3출이상=[];
+    for (var i=0; i<6; i++) {당번.push(당첨정보[회차index+1].children[2].innerHTML.split('_')[i]);}
+    for (var i=0; i<6; i++) {전회차당번.push(당첨정보[회차index+1-1].children[2].innerHTML.split('_')[i]);}
+    for (var i=0; i<5; i++) {_5주번호들배열+=당첨정보[회차index-5+i+1].children[2].innerHTML}
+    _5주번호들배열=_5주번호들배열.substring(0,_5주번호들배열.length-1) //마지막 _ 하나 지움
+    _5주번호들배열=_5주번호들배열.split('_');
+    for (var i=0; i<45; i++) {
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length==0) {_5주0출.push(i+1)}
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length==1) {_5주1출.push(i+1)}
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length==2) {_5주2출.push(i+1)}
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
+    }
+    var 이월=0, 출0=0, 출1=0, 출2=0, 출3이상=0;
+    for (var i=0; i<6;i++) {출0+=_5주0출.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {출1+=_5주1출.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {출2+=_5주2출.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {출3이상+=_5주3출이상.filter(번호 => 번호==당번[i]).length;}
+    for (var i=0; i<6;i++) {이월+=전회차당번.filter(번호 => 번호==당번[i]).length;}
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[0].innerHTML=출0;
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[1].innerHTML=출1;
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[2].innerHTML=출2;
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[3].innerHTML=출3이상;
+    document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[4].innerHTML=이월;
   }
 
 
