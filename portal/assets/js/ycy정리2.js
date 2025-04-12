@@ -79,7 +79,7 @@ function 분석자료표만들기_하() {
   }
 
   var 왼쪽전체=document.createElement('div'); //
-
+/*
   var 왼쪽1=document.createElement('div');
   var 제목배열=['순번','30주간','1~5주','6~10주','11~15주','16~20주','21~25주','26~30주'];
   for (var i=0; i<8; i++) {
@@ -88,14 +88,18 @@ function 분석자료표만들기_하() {
     왼쪽1.appendChild(가로한줄);
   }
   왼쪽전체.appendChild(왼쪽1);
+  */ 
   var 다섯칸머리글div=document.createElement('div');
   다섯칸머리글div.setAttribute('class','다섯칸머리글');
+  var 내부다섯칸맞추기=document.createElement('div');
+  내부다섯칸맞추기.setAttribute('class','다섯칸');
   var 다섯칸제목=[0,1,2,3,'이월']
   for (var i=0; i<5; i++) {
     var 가로한줄=document.createElement('div');
     가로한줄.textContent=다섯칸제목[i];
-    다섯칸머리글div.appendChild(가로한줄)
+    내부다섯칸맞추기.appendChild(가로한줄)
   }
+  다섯칸머리글div.appendChild(내부다섯칸맞추기)
   왼쪽전체.appendChild(다섯칸머리글div);
 
   var 다섯칸div전체=document.createElement('div');
@@ -215,6 +219,7 @@ function 당번_회차select_change() {
   var 넣을곳=document.querySelector('#당번_불러온당첨정보');
   넣을곳.innerHTML='';
   console.log('옵션값 : ' + document.querySelector('#당번_회차select').value + ', 회차index : ' + 회차index + ',당첨정보.length : ' + 당첨정보.length);
+  document.querySelector('#당번_선택회차날짜').innerHTML=당첨정보[회차index].children[1].innerHTML;
   //다음회차 있으면 #당번_다음회차 정보 셑팅
   if (당첨정보[회차index+1]) {
     var 가공결과='';
@@ -259,6 +264,32 @@ function 당번_변수_이월이웃간격() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
   if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
   var 당번=[], 이월=[],이웃=[], 간격=[];
+
+}
+function 분석자료_변수_5주번호정보_내부_미출부터이월수개수_표_하() {
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
+  //현재회차보다 한회차 전의 정보다 : _5주출=[], _5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[]
+  if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
+  for (var 반복=0; 반복<15; 반복++) {
+    var _5주번호들배열='', 당번=[]; 전회차당번=[], _5주0출=[], _5주1출=[], _5주2출=[], _5주3출이상=[];
+    for (var i=0; i<6; i++) {당번.push(당첨정보[회차index-반복].children[2].innerHTML.split('_')[i]);}
+    for (var i=0; i<6; i++) {전회차당번.push(당첨정보[회차index-반복-1].children[2].innerHTML.split('_')[i]);}
+    for (var i=0; i<5; i++) {_5주번호들배열+=당첨정보[회차index-5+i-반복].children[2].innerHTML}
+    _5주번호들배열=_5주번호들배열.substring(0,_5주번호들배열.length-1) //마지막 _ 하나 지움
+    _5주번호들배열=_5주번호들배열.split('_');
+    for (var i=0; i<45; i++) {
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length==0) {_5주0출.push(i+1)}
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length==1) {_5주1출.push(i+1)}
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length==2) {_5주2출.push(i+1)}
+      if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
+    }
+    var 이월=0, 출0=0, 출1=0, 출2=0, 출3이상=0;
+    for (var i=0; i<6;i++) {이월+=전회차당번.filter(번호 => 번호==당번[i]).length;}
+    document.querySelectorAll('.다섯칸div전체 .다섯칸')[반복].children[4].innerHTML=이월;
+
+
+  }
+
 
 }
 function 분석자료_변수_5주번호정보() {
@@ -372,6 +403,7 @@ function 분석자료_변수_5주번호정보() {
     document.querySelector('#분석자료_표_상_js').children[10].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[10].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
+  분석자료_변수_5주번호정보_내부_미출부터이월수개수_표_하();
 }
 function 당번_변수_5주번호정보() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');

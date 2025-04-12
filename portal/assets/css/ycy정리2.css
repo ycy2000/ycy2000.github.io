@@ -13,7 +13,9 @@ body {white-space: nowrap;}
 #당번 #당번_불러온당첨정보 .당첨정보, #당번_다음회차 .당첨정보 {margin-bottom:-1px;text-align: center;}
 #당번 #당번_불러온당첨정보 .당첨정보 div,  #당번_다음회차 .당첨정보 div {display: inline-block;}/* #당번 .당첨정보 > div:nth-of-type(1) 회차, (2)날짜, (3)당번만 class, (4)보볼 */
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(1), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(1) {width:40px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
-#당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(2), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(2) {width:100px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
+
+#당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(2), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(2) {display:none; width:100px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
+
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(3) > div, #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(3) > div {width:34px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(4), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(4) {width:34px;height:34px;border:1px solid gray;padding-top:3px;}
 #당번 #당번_불러온당첨정보 > div:nth-child(odd) > *:not(:last-child):not([class*='색칠용버튼']) {background-color:bisque;color:blue;}
@@ -39,7 +41,6 @@ body {white-space: nowrap;}
 #분석자료숨김버튼 > button:nth-of-type(3), #분석자료숨김버튼 > button:nth-of-type(6), #분석자료숨김버튼 > button:nth-of-type(10) {margin-right:0px;}
 .분석버튼숨김 {background-color: darkcyan;}
 /* .당번만 > div */
-
 #분석자료_표_상_js > div {margin-bottom:-1px;}
 #분석자료_표_상_js > div:nth-of-type(4), #분석자료_표_상_js > div:nth-of-type(7), #분석자료_표_상_js > div:nth-of-type(11) {margin-bottom:0px;}
 #분석자료_표_상_js > div div {display: inline-block;text-align: center;height:24px;vertical-align: top;}
@@ -47,21 +48,21 @@ body {white-space: nowrap;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {background-color:chartreuse;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:85px;}
 #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {width:30px;}
-#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;}
+#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;margin-right:0px;}
 #분석자료_표_상_js > div > div:nth-of-type(2) > div {width:24px;border:1px solid black;margin-right:-1px;font-weight: bold;}
 #분석자료_표_상_js > div:nth-of-type(1) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
 /*  */
-#분석자료_표_하_js > div {display: inline-block;vertical-align: top;text-align: center;}
-#분석자료_표_하_js > div:nth-of-type(1) > div:nth-of-type(1) > div {border:1px solid black; width:143px;margin-bottom:-1px;margin-right:-1px;height:24px;}/* 순번~30주간  */
+#분석자료_표_하_js div {vertical-align: top;font-weight: bold;}
+#분석자료_표_하_js > div {display: inline-block;text-align: center;}
 #분석자료_표_하_js > div:nth-of-type(2) > div {margin-bottom:-1px;}/* 45한줄  */
+#분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(1) {margin-bottom:0px;}/* 45한줄  */
 #분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(8) {margin-bottom:0px;}/* 45한줄  */
 #분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(5n+9) {margin-bottom:0px;}/* 45한줄  */
 #분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
 #분석자료_표_하_js > div:nth-of-type(2) > div > div 
 {vertical-align: top; display: inline-block; width:24px;height:24px; border:1px solid black;margin-right:-1px;font-weight: bold;}/* 45각각  */
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 {margin-top:1px;}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 > div:last-child {width:40px;border-right:2px solid black;}
+#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
+#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
 #분석자료_표_하_js .다섯칸div전체 .다섯칸 {margin-top:-1px;height:24px;}
 #분석자료_표_하_js .다섯칸div전체 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
 #분석자료_표_하_js .다섯칸div전체 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
