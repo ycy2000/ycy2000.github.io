@@ -692,6 +692,7 @@ function 분석자료_삼십회표_js작성() {
   //표만들기(머리글)
   var 최대값_30회출=Math.max(...삼십회출45배열);
   var 머리글=document.createElement('div');
+  머리글.setAttribute('class','삼십회머리글div')
   var 가로한줄=document.createElement('div');
   for (var i=0; i<최대값_30회출+2; i++) {
     var div요소=document.createElement('div');
@@ -720,7 +721,6 @@ function 분석자료_삼십회표_js작성() {
       if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
     }
   }
-  console.log('세로몇줄인가 : ' + 세로몇줄인가)
   //      빈 서식 만들기
   for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
     var 가로한줄=document.createElement('div');
@@ -735,7 +735,6 @@ function 분석자료_삼십회표_js작성() {
   //      빈 서식에 값 넣기
   for (var i=0; i<가로폭.length; i++) {
     if (가로폭[i]) {
-      console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
       for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
         document.querySelectorAll('.장미수div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
       }
@@ -760,7 +759,6 @@ function 분석자료_삼십회표_js작성() {
       if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
     }
   }
-  console.log('세로몇줄인가 : ' + 세로몇줄인가)
   //      빈 서식 만들기
   for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
     var 가로한줄=document.createElement('div');
