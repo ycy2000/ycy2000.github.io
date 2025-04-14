@@ -7,6 +7,82 @@ var 회차index=document.querySelector('#당번_회차select').value; //회차�
 분석자료_회차select_change();
 var 리스너_분석자료=document.querySelector('#분석자료');
 function 리스너_분석자료_click(e) {
+  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='a') || (e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='b')) {
+    var 분석버튼숨김클래스개수=0;
+    var 다음요소=e.target;
+    for (var i=0; i<3; i++) {
+      다음요소=다음요소.nextElementSibling;
+      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수==0) {
+      for (var i=0; i<3; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.add('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
+      }
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수!=0) {
+      for (var i=0; i<3; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.remove('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
+      }
+    }
+
+    return;
+  }
+  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='c')) {
+    var 분석버튼숨김클래스개수=0;
+    var 다음요소=e.target;
+    for (var i=0; i<4; i++) {
+      다음요소=다음요소.nextElementSibling;
+      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수==0) {
+      for (var i=0; i<4; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.add('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
+      }
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수!=0) {
+      for (var i=0; i<4; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.remove('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
+      }
+    }
+    return;
+  }
+  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='d')) {
+    var 분석버튼숨김클래스개수=0;
+    var 다음요소=e.target;
+    for (var i=0; i<9; i++) {
+      다음요소=다음요소.nextElementSibling;
+      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수==0) {
+      for (var i=0; i<9; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.add('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
+      }
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수!=0) {
+      for (var i=0; i<9; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.remove('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
+      }
+    }
+    return;
+  }
   if (e.target.parentElement.id=='분석자료숨김버튼') {
     if (e.target.classList.contains('분석버튼숨김')) {
       e.target.classList.remove('분석버튼숨김');
@@ -15,6 +91,7 @@ function 리스너_분석자료_click(e) {
       e.target.classList.add('분석버튼숨김');
       document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.add('d-none')
     }
+    return;
   }
   if (e.target.parentElement.id=='XO플마') {
     if (e.target.innerHTML=='X') {
@@ -23,6 +100,8 @@ function 리스너_분석자료_click(e) {
       }
       for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
         document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.add('분석버튼숨김');
+        var 값=document.querySelectorAll('#분석자료숨김버튼 button')[i].innerHTML;
+        if (값=='a' || 값=='b' || 값=='c' || 값=='d') {document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.remove('분석버튼숨김');}
       }
     }
     if (e.target.innerHTML=='O') {
@@ -146,9 +225,10 @@ function 분석자료표만들기_상() {
   }
   for (var i=0; i<45; i++) {document.querySelectorAll('#분석자료_표_상_js > div')[0].children[1].children[i].innerHTML=i+1}
   //다 만들고 난 후에 숨김할것 처리
-  for (var 외부=1; 외부<20; 외부++) {
-    if (document.querySelectorAll('#분석자료숨김버튼 button')[외부-1].classList.contains('분석버튼숨김')) {
-      document.querySelector('#분석자료_표_상_js').children[외부].classList.add('d-none');
+  var 요소=document.querySelectorAll('#분석자료숨김버튼 button');
+  for (var i=0; i<요소.length; i++) {
+    if (요소[i].classList.contains('분석버튼숨김')) {
+      document.querySelector('#분석자료_표_상_js').children[요소[i].innerHTML].classList.add('d-none');
     }
   }
 }
@@ -157,6 +237,13 @@ function 사진_보기숨기기() {
     document.querySelector('#사진').classList.remove('d-none')
   } else {
     document.querySelector('#사진').classList.add('d-none')
+  }
+}
+function 사진_보기숨기기2() {
+  if (document.querySelector('#check_사진2').checked) {
+    document.querySelector('#사진2').classList.remove('d-none')
+  } else {
+    document.querySelector('#사진2').classList.add('d-none')
   }
 }
 function 분석자료_보기숨기기() {
@@ -171,6 +258,13 @@ function 당번_보기숨기기() {
     document.querySelector('#당번').classList.remove('d-none')
   } else {
     document.querySelector('#당번').classList.add('d-none')
+  }
+}
+function 삼십회_보기숨기기() {
+  if (document.querySelector('#check_삼십회').checked) {
+    document.querySelector('#분석자료_삼십회표').classList.remove('d-none')
+  } else {
+    document.querySelector('#분석자료_삼십회표').classList.add('d-none')
   }
 }
 function 분석자료_회차select_change() {
@@ -215,6 +309,7 @@ function 분석자료_회차select_change() {
   분석자료_고정등번호색칠_클래스지우기();
   분석자료_변수_5주번호정보();
   분석자료_변수_30주번호정보();
+  분석자료_삼십회표_js작성();
 }
 function 당번_회차select_change() {
   회차index=parseInt(document.querySelector('#당번_회차select').value)-1; //parseInt(), 값전달 안하거나 공백은 NaN
@@ -335,7 +430,7 @@ function 분석자료_변수_5주번호정보_내부_미출부터이월수개수
 }
 function 분석자료_변수_5주번호정보() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
-  var 당번=[]; 이웃=[], 당번이웃=[],_5주출=[], _5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[];
+  var 당번=[]; 이웃=[], 당번이웃=[],_5주출=[], _5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[], _5에서10주0출=[],_10에서15주0출=[];
   // _5주번호들배열='', _10주번호들배열='', _15주번호들배열='';
   if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
   var _5주번호들배열='';
@@ -367,19 +462,19 @@ function 분석자료_변수_5주번호정보() {
     if (_5주번호들배열.filter(번호 => 번호==i+1).length==2) {_5주2출.push(i+1)}
     if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
   }
-  var _10주번호들배열=[];
-  for (var i=0; i<10; i++) {_10주번호들배열+=당첨정보[회차index-9+i].children[2].innerHTML}
-  _10주번호들배열=_10주번호들배열.substring(0,_10주번호들배열.length-1) //마지막 _ 하나 지움
-  _10주번호들배열=_10주번호들배열.split('_');
+  var _5에서10주번호들배열=[];
+  for (var i=0; i<10; i++) {_5에서10주번호들배열+=당첨정보[회차index-9+i].children[2].innerHTML}
+  _5에서10주번호들배열=_5에서10주번호들배열.substring(0,_5에서10주번호들배열.length-1) //마지막 _ 하나 지움
+  _5에서10주번호들배열=_5에서10주번호들배열.split('_');
   for (var i=0; i<45; i++) {
-    if (_10주번호들배열.filter(번호 => 번호==i+1).length==0) {_10주0출.push(i+1)}
+    if (_5에서10주번호들배열.filter(번호 => 번호==i+1).length==0) {_5에서10주0출.push(i+1)}
   }
-  var _15주번호들배열=[];
-  for (var i=0; i<15; i++) {_15주번호들배열+=당첨정보[회차index-14+i].children[2].innerHTML}
-  _15주번호들배열=_15주번호들배열.substring(0,_15주번호들배열.length-1) //마지막 _ 하나 지움
-  _15주번호들배열=_15주번호들배열.split('_');
+  var _10에서15주번호들배열=[];
+  for (var i=0; i<15; i++) {_10에서15주번호들배열+=당첨정보[회차index-14+i].children[2].innerHTML}
+  _10에서15주번호들배열=_10에서15주번호들배열.substring(0,_10에서15주번호들배열.length-1) //마지막 _ 하나 지움
+  _10에서15주번호들배열=_10에서15주번호들배열.split('_');
   for (var i=0; i<45; i++) {
-    if (_15주번호들배열.filter(번호 => 번호==i+1).length==0) {_15주0출.push(i+1)}
+    if (_10에서15주번호들배열.filter(번호 => 번호==i+1).length==0) {_10에서15주0출.push(i+1)}
   }
   //        --- 값이 없으면 join이 안된다.
   if(당번.length>0) document.querySelector('#분석자료_변수_당번').innerHTML=당번.join(',');
@@ -390,8 +485,8 @@ function 분석자료_변수_5주번호정보() {
   if(_5주1출.length>0) document.querySelector('#분석자료_변수_5주1출').innerHTML=_5주1출.join(',');
   if(_5주2출.length>0) document.querySelector('#분석자료_변수_5주2출').innerHTML=_5주2출.join(',');
   if(_5주3출이상.length>0) document.querySelector('#분석자료_변수_5주3출이상').innerHTML=_5주3출이상.join(',');
-  if(_10주0출.length>0) document.querySelector('#분석자료_변수_10주0출').innerHTML=_10주0출.join(',');
-  if(_15주0출.length>0) document.querySelector('#분석자료_변수_15주0출').innerHTML=_15주0출.join(',');
+  if(_10주0출.length>0) document.querySelector('#분석자료_변수_5에서10주0출').innerHTML=_5에서10주0출.join(',');
+  if(_15주0출.length>0) document.querySelector('#분석자료_변수_10에서15주0출').innerHTML=_10에서15주0출.join(',');
   //표에 색칠하기
   for (var i=0; i<당번.length; i++) {
     var 색칠숫자들=document.querySelector('#분석자료_변수_당번').innerHTML.split(',');
@@ -409,13 +504,13 @@ function 분석자료_변수_5주번호정보() {
     document.querySelector('#분석자료_표_상_js').children[3].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[3].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-  for (var i=0; i<_15주0출.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_15주0출').innerHTML.split(',');
+  for (var i=0; i<_10에서15주0출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_10에서15주0출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[4].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[4].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
-  for (var i=0; i<_10주0출.length; i++) {
-    var 색칠숫자들=document.querySelector('#분석자료_변수_10주0출').innerHTML.split(',');
+  for (var i=0; i<_5에서10주0출.length; i++) {
+    var 색칠숫자들=document.querySelector('#분석자료_변수_5에서10주0출').innerHTML.split(',');
     document.querySelector('#분석자료_표_상_js').children[5].children[1].children[색칠숫자들[i]-1].classList.add('분석자료_고정등번호색칠');
     document.querySelector('#분석자료_표_상_js').children[5].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
@@ -558,6 +653,239 @@ function 분석자료_변수_30주번호정보() {
       document.querySelector('#분석자료_표_하_js').children[1].children[분석당번30개+9].children[당번[당번반복]-1].innerHTML=당번[당번반복];
     }
   }
+}
+function 분석자료_삼십회표_js작성() {
+  document.querySelector('#분석자료_삼십회표_js').innerHTML='';
+  var 삼십회출45배열=[];
+  var 요소=document.querySelector('#분석자료_표_하_js').children[1].children[1].children;
+  for (var i=0; i<요소.length; i++) {삼십회출45배열.push(요소[i].innerHTML)}
+  var 오주미출전체=[];
+  var 요소=document.querySelector('#분석자료_변수_5주0출');
+  if (요소.innerHTML!='') {
+    for (var i=0; i<요소.innerHTML.split(',').length; i++) {
+      오주미출전체.push(요소.innerHTML.split(',')[i])
+    }
+  }
+  var 장미수=[];
+  var 요소=document.querySelector('#분석자료_변수_5에서10주0출');
+  if (요소.innerHTML!='') {
+    for (var i=0; i<요소.innerHTML.split(',').length; i++) {
+      장미수.push(요소.innerHTML.split(',')[i])
+    }
+  }
+  var 오주미출전체set=new Set([...오주미출전체])
+  var 장미수set=new Set([...장미수])
+  var 오주미출만=오주미출전체set.difference(장미수set)
+  오주미출만=[...오주미출만]
+  var 출1=[];
+  if (document.querySelector('#분석자료_변수_5주1출').innerHTML!='') {
+    출1=document.querySelector('#분석자료_변수_5주1출').innerHTML.split(',');
+  }
+  var 출2=[];
+  if (document.querySelector('#분석자료_변수_5주2출').innerHTML!='') {
+    출2=document.querySelector('#분석자료_변수_5주2출').innerHTML.split(',');
+  }
+  var 출3이상=[];
+  if (document.querySelector('#분석자료_변수_5주3출이상').innerHTML!='') {
+    출3이상=document.querySelector('#분석자료_변수_5주3출이상').innerHTML.split(',');
+  }
+  //표만들기(머리글)
+  var 최대값_30회출=Math.max(...삼십회출45배열);
+  var 머리글=document.createElement('div');
+  var 가로한줄=document.createElement('div');
+  for (var i=0; i<최대값_30회출+2; i++) {
+    var div요소=document.createElement('div');
+    if (i==0) {div요소.innerText='횟수'};
+    if (i!=0) {div요소.innerText=i-1};
+    가로한줄.appendChild(div요소);
+  }
+  머리글.appendChild(가로한줄);
+  document.querySelector('#분석자료_삼십회표_js').appendChild(머리글);
+  //표만들기 : 장미수 부분
+  var 장미수div=document.createElement('div');
+  장미수div.setAttribute('class','장미수div')
+  var 가로폭 = new Array(최대값_30회출+1);//안의 숫자가 배열 개수다. 배열값이 누적되면 '_'로 연결됨
+  for (var i=0; i<장미수.length; i++) {
+    var 삼십주출횟수= 삼십회출45배열[장미수[i]-1];
+    //가로폭[삼십주출횟수] : 없으면(처음이면) undefined
+    if (가로폭[삼십주출횟수]) {
+      가로폭[삼십주출횟수]=가로폭[삼십주출횟수] + '_' + 장미수[i];
+    } else {
+      가로폭[삼십주출횟수]=장미수[i];
+    }
+  }
+  var 세로몇줄인가=0;
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
+    }
+  }
+  console.log('세로몇줄인가 : ' + 세로몇줄인가)
+  //      빈 서식 만들기
+  for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
+    var 가로한줄=document.createElement('div');
+    for (var i=0; i<최대값_30회출+2; i++) {
+      var div요소=document.createElement('div');
+      if (i==0) {div요소.innerText='장미'};
+      가로한줄.appendChild(div요소);
+    }
+    장미수div.appendChild(가로한줄);
+    document.querySelector('#분석자료_삼십회표_js').appendChild(장미수div);
+  }
+  //      빈 서식에 값 넣기
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
+      for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
+        document.querySelectorAll('.장미수div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
+      }
+    }
+  }
+  //표만들기 : 출1 부분
+  var 출1div=document.createElement('div');
+  출1div.setAttribute('class','출1div')
+  var 가로폭 = new Array(최대값_30회출+1);//안의 숫자가 배열 개수다. 배열값이 누적되면 '_'로 연결됨
+  for (var i=0; i<출1.length; i++) {
+    var 삼십주출횟수= 삼십회출45배열[출1[i]-1];
+    //가로폭[삼십주출횟수] : 없으면(처음이면) undefined
+    if (가로폭[삼십주출횟수]) {
+      가로폭[삼십주출횟수]=가로폭[삼십주출횟수] + '_' + 출1[i];
+    } else {
+      가로폭[삼십주출횟수]=출1[i];
+    }
+  }
+  var 세로몇줄인가=0;
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
+    }
+  }
+  console.log('세로몇줄인가 : ' + 세로몇줄인가)
+  //      빈 서식 만들기
+  for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
+    var 가로한줄=document.createElement('div');
+    for (var i=0; i<최대값_30회출+2; i++) {
+      var div요소=document.createElement('div');
+      if (i==0) {div요소.innerText='출1'};
+      가로한줄.appendChild(div요소);
+    }
+    출1div.appendChild(가로한줄);
+    document.querySelector('#분석자료_삼십회표_js').appendChild(출1div);
+  }
+  //      빈 서식에 값 넣기
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
+      for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
+        document.querySelectorAll('.출1div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
+      }
+    }
+  }
+  //표만들기 : 출2 부분
+  var 출2div=document.createElement('div');
+  출2div.setAttribute('class','출2div')
+  var 가로폭 = new Array(최대값_30회출+1);//안의 숫자가 배열 개수다. 배열값이 누적되면 '_'로 연결됨
+  for (var i=0; i<출2.length; i++) {
+    var 삼십주출횟수= 삼십회출45배열[출1[i]-1];
+    //가로폭[삼십주출횟수] : 없으면(처음이면) undefined
+    if (가로폭[삼십주출횟수]) {
+      가로폭[삼십주출횟수]=가로폭[삼십주출횟수] + '_' + 출2[i];
+    } else {
+      가로폭[삼십주출횟수]=출2[i];
+    }
+  }
+  var 세로몇줄인가=0;
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
+    }
+  }
+  console.log('세로몇줄인가 : ' + 세로몇줄인가)
+  //      빈 서식 만들기
+  for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
+    var 가로한줄=document.createElement('div');
+    for (var i=0; i<최대값_30회출+2; i++) {
+      var div요소=document.createElement('div');
+      if (i==0) {div요소.innerText='출2'};
+      가로한줄.appendChild(div요소);
+    }
+    출2div.appendChild(가로한줄);
+    document.querySelector('#분석자료_삼십회표_js').appendChild(출2div);
+  }
+  //      빈 서식에 값 넣기
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
+      for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
+        document.querySelectorAll('.출2div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
+      }
+    }
+  }
+    //표만들기 : 출3이상 부분
+    var 출3이상div=document.createElement('div');
+    출3이상div.setAttribute('class','출3이상div')
+    var 가로폭 = new Array(최대값_30회출+1);//안의 숫자가 배열 개수다. 배열값이 누적되면 '_'로 연결됨
+    for (var i=0; i<출3이상.length; i++) {
+      var 삼십주출횟수= 삼십회출45배열[출1[i]-1];
+      //가로폭[삼십주출횟수] : 없으면(처음이면) undefined
+      if (가로폭[삼십주출횟수]) {
+        가로폭[삼십주출횟수]=가로폭[삼십주출횟수] + '_' + 출3이상[i];
+      } else {
+        가로폭[삼십주출횟수]=출3이상[i];
+      }
+    }
+    var 세로몇줄인가=0;
+    for (var i=0; i<가로폭.length; i++) {
+      if (가로폭[i]) {
+        if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
+      }
+    }
+    console.log('세로몇줄인가 : ' + 세로몇줄인가)
+    //      빈 서식 만들기
+    for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
+      var 가로한줄=document.createElement('div');
+      for (var i=0; i<최대값_30회출+2; i++) {
+        var div요소=document.createElement('div');
+        if (i==0) {div요소.innerText='출3↑'};
+        가로한줄.appendChild(div요소);
+      }
+      출3이상div.appendChild(가로한줄);
+      document.querySelector('#분석자료_삼십회표_js').appendChild(출3이상div);
+    }
+    //      빈 서식에 값 넣기
+    for (var i=0; i<가로폭.length; i++) {
+      if (가로폭[i]) {
+        console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
+        for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
+          document.querySelectorAll('.출3이상div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
+        }
+      }
+    }
+
+
+
+
+  return;
+  var 장미수div=document.createElement('div');
+  var 가로한줄=document.createElement('div');
+  var 가로몇줄인가=0;
+  for (var i=0; i<최대값_30회출+2; i++) {
+
+  }
+  머리글.appendChild(가로한줄);
+  document.querySelector('#분석자료_삼십회표_js').appendChild(머리글);
+
+
+  //장미수, 오주미출만, 1출, 2출, 3출이상
+  return;
+  document.querySelector('#분석자료_삼십회표_js').appendChild(머리글);
+  if (장미수.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(장미수div);}
+  if (오주미출만.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(오주미출만div);}
+  if (출1.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(출1div);}
+  if (출2.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(출2div);}
+  if (출3이상.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(출3이상div);}
+
+
 }
 function 당번_변수_30주번호정보() { 
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');

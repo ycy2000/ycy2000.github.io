@@ -38,7 +38,7 @@ body {white-space: nowrap;}
 
 #XO플마 {margin-right:5px;}
 #분석자료숨김버튼 > button, #XO플마 > button {margin-right:-5px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
-#분석자료숨김버튼 > button:nth-of-type(3), #분석자료숨김버튼 > button:nth-of-type(6), #분석자료숨김버튼 > button:nth-of-type(10) {margin-right:0px;}
+#분석자료숨김버튼 > button:nth-of-type(4),#분석자료숨김버튼 > button:nth-of-type(8),#분석자료숨김버튼 > button:nth-of-type(13) {margin-right:0px;}
 .분석버튼숨김 {background-color: darkcyan;}
 /* .당번만 > div */
 #분석자료_표_상_js > div {margin-bottom:-1px;}
@@ -76,6 +76,12 @@ body {white-space: nowrap;}
 .다섯개씩번갈아색칠 div:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
 .다섯개씩번갈아색칠 div:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) {background-color:rgb(196, 169, 137);}
 .분석자료_고정등번호색칠 {background-color:cadetblue;}
+
+/* #분석자료_삼십회표_js > div(머리글,1출,,) > div(가로한줄감쌈) > div(개별div,두번쨰부터 회수) */
+#분석자료_삼십회표_js > div > div {margin-bottom:-1px;}
+#분석자료_삼십회표_js > div > div > div {display: inline-block; width:24px;height:24px; border:1px solid black;text-align: center;vertical-align: top;margin-right:-1px;}
+#분석자료_삼십회표_js > div > div > div:nth-of-type(1) {width:40px;}
+
 
 
 /* 코딩 임시 끝 */

@@ -51,8 +51,8 @@
     <div id="분석자료_변수_5주1출"></div>
     <div id="분석자료_변수_5주2출"></div>
     <div id="분석자료_변수_5주3출이상"></div>
-    <div id="분석자료_변수_10주0출"></div>
-    <div id="분석자료_변수_15주0출"></div>
+    <div id="분석자료_변수_5에서10주0출"></div>
+    <div id="분석자료_변수_10에서15주0출"></div>
   </div>
   <div id="분석자료변수_초기화시_30주">
     <div id="분석자료_변수_30주0출"></div>
@@ -84,6 +84,10 @@
     <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_사진" title="사진">
     <label class="form-check-label" for="check_사진">사진</label>
   </div>
+  <div class="form-check d-inline-block" onchange="사진_보기숨기기2();" style="margin-left:10px;">
+    <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_사진2" title="사진2">
+    <label class="form-check-label" for="check_사진2">사진</label>
+  </div>
   <button onclick="연습()">연습</button>
 </div>
 <div id="당번가공" class="d-none"></div>
@@ -95,19 +99,31 @@
   <div id="당번_불러온당첨정보"></div>
 </div>
 <div id="분석자료" class="카테고리">
-  <div id="분석자료_표_왼쪽" style="width:300px;border:1px solid black; height:300px;vertical-align: top;" class="d-inline-block"></div>
+  <div id="분석자료_삼십회표" class="d-inline-block" style="vertical-align: top;">
+    <div class="d-inline-block">30회 출현 빈도</div><br>
+    <div id="분석자료_삼십회표_js">
+      
+    </div>
+    <br>
+    <img src="portal/images/문서연결_kim/사진2.png" alt="이미지없음">
+  </div>
   <div class="d-inline-block">
-    <div id="분석자료_다음회차" class="d-inline-block" title="js로"></div><br>
+    <div id="분석자료_다음회차" class="d-inline-block" title="js로" style="margin-right:5px;"></div>
+    <div class="form-check d-inline-block" onchange="삼십회_보기숨기기();">
+      <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_삼십회" checked title="분석자료_삼십회표">
+      <label class="form-check-label" for="check_삼십회">30회</label>
+    </div>
+    <br>
     <select id="분석자료_회차select" class="d-inline-block" onchange="분석자료_회차select_change();" style="margin:5px 0"></select>
     <div id="분석자료_선택회차" class="d-inline-block" title="js로"></div>
     <div id="XO플마" class="d-inline-block">
       <button onclick="분석자료_회차플러스()">+</button> <button onclick="분석자료_회차마이너스()">-</button> <button>X</button> <button>O</button>
     </div>
     <div id="분석자료숨김버튼" class="d-inline-block"><!-- 버튼에 class="분석버튼숨김" 클래스  -->
-      <button>1</button> <button class="분석버튼숨김">2</button> <button class="분석버튼숨김">3</button>
-      <button>4</button> <button>5</button> <button>6</button>
-      <button>7</button> <button>8</button> <button>9</button> <button>10</button>
-      <button class="분석버튼숨김">11</button> <button class="분석버튼숨김">12</button> <button class="분석버튼숨김">13</button> <button class="분석버튼숨김">14</button> <button class="분석버튼숨김">15</button>
+      <button>a</button> <button>1</button> <button class="분석버튼숨김">2</button> <button class="분석버튼숨김">3</button>
+      <button>b</button> <button>4</button> <button>5</button> <button>6</button>
+      <button>c</button> <button>7</button> <button>8</button> <button>9</button> <button>10</button>
+      <button>d</button> <button class="분석버튼숨김">11</button> <button class="분석버튼숨김">12</button> <button class="분석버튼숨김">13</button> <button class="분석버튼숨김">14</button> <button class="분석버튼숨김">15</button>
       <button class="분석버튼숨김">16</button> <button class="분석버튼숨김">17</button> <button class="분석버튼숨김">18</button> <button class="분석버튼숨김">19</button>
     </div>
     <div id="분석자료_표_상_js"></div>
@@ -116,7 +132,11 @@
 </div>
 <div id="사진" class="카테고리">
   <img src="portal/images/문서연결_kim/사진.png" alt="이미지없음">
-
+</div>
+<div id="사진2" class="카테고리">
+  <img src="portal/images/black_문서/임시사진_분석자료.png" alt="이미지없음"><br>
+  <img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음"><br>
+  <img src="portal/images/black_문서/임시사진_분석자료3.png" alt="이미지없음">
 </div>
 
 
