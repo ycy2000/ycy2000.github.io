@@ -88,14 +88,22 @@ function 리스너_분석자료_click(e) {
     //1.클릭한 횟수부분이 색칠되어 있는경우, 2.색칠이 없는경우, 
     document.querySelector('#클릭요소정보').innerHTML='삼십회횟수기록';
     document.querySelector('#클릭번호').innerHTML=document.querySelector('#분석자료_변수_30주' + e.target.innerHTML + '출').innerHTML.split(',').join('_');
+    //삼십회횟수기록 단독작업
     if (e.target.classList.contains('색칠')) {
       for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
         document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
       }
       document.querySelector('#클릭번호').innerHTML='';
+    } else {
+      if (!document.querySelector('#누적').checked) {document.querySelector('#색칠할번호들').innerHTML='';}
+      var 클릭번호=document.querySelector('#클릭번호').innerHTML.split('_'); //리스너_분석자료_click(e)에서 횟수같은 번호들이 넘어감
+      for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
+        document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
+      }
+      for (var i=0; i<클릭번호.length; i++) {
+        document.querySelectorAll('#삼십회횟수기록 > div')[클릭번호[i]-1].classList.add('색칠');
+      }
     }
-
-    색칠할번호들_색칠하기_분석자료30횟수();
     return;
   }
   if (e.target.parentElement.id=='분석자료숨김버튼') {
@@ -1042,7 +1050,7 @@ function 버튼45감싸기_click(e) {
     중복제거=[...중복제거];
     document.querySelector('#색칠할번호들').innerHTML=중복제거.join('_');
     var 색칠할번호들=document.querySelector('#색칠할번호들').innerHTML.split('_'); //비어있어도 length는 이고, [0]의 length는 0이다
-    색칠할번호들_색칠하기_분석자료30횟수();
+
   }
 }
 function 색칠할번호들_clear() {
@@ -1051,37 +1059,6 @@ function 색칠할번호들_clear() {
   document.querySelector('#클릭요소정보').innerHTML='';
 
 }
-function 색칠할번호들_색칠하기_분석자료30횟수() {
-  //특수한 경우다 : 빈도기록부분에서만 기록????
-
-
-
-
-
-
-
-
-
-  return;
-  //분석자료30횟수 부분을 클릭했을때만 작동하도록 (색칠있으면 색칠해제, 없으면 같은횟수 색칠) 
-  //번호는 넣는다. 삼십회횟수기록
-  console.log('  색칠할번호들_색칠하기_분석자료30횟수()')
-  if (!document.querySelector('#누적').checked) {document.querySelector('#색칠할번호들').innerHTML='';}
-  var 기존번호=document.querySelector('#색칠할번호들').innerHTML.split('_');
-  var 클릭번호=document.querySelector('#클릭번호').innerHTML.split('_');
-  if (기존번호[0]=='') {var 중복제거=new Set([...클릭번호]);} else {var 중복제거=new Set([...기존번호,...클릭번호]);}
-  중복제거=[...중복제거];
-  document.querySelector('#색칠할번호들').innerHTML=중복제거.join('_');
-  var 색칠할번호들=document.querySelector('#색칠할번호들').innerHTML.split('_'); //비어있어도 length는 이고, [0]의 length는 0이다
-  //분석자료표에 같은횟수만 색칠하는 동작, 번호는 별개로 색칠할번호들 조건에 따라 누적 또는 단독 셑팅되었음.
-  for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
-    document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
-  }
-  for (var i=0; i<클릭번호.length; i++) {
-    document.querySelectorAll('#삼십회횟수기록 > div')[클릭번호[i]-1].classList.add('색칠');
-  }
-}
-
   function mousedownOrTouchstart(e) {
     // 터치 이벤트인지 마우스 이벤트인지 확인
     var isTouchEvent = e.type === 'touchstart';
