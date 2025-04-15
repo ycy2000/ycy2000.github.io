@@ -7,6 +7,7 @@ var 회차index=document.querySelector('#당번_회차select').value; //회차�
 분석자료_회차select_change();
 var 리스너_분석자료=document.querySelector('#분석자료');
 function 리스너_분석자료_click(e) {
+  console.log('리스너_분석자료_click(e)')
   if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='a') || (e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='b')) {
     var 분석버튼숨김클래스개수=0;
     var 다음요소=e.target;
@@ -83,6 +84,20 @@ function 리스너_분석자료_click(e) {
     }
     return;
   }
+  if (e.target.parentElement.id=='삼십회횟수기록') {
+    //1.클릭한 횟수부분이 색칠되어 있는경우, 2.색칠이 없는경우, 
+    document.querySelector('#클릭요소정보').innerHTML='삼십회횟수기록';
+    document.querySelector('#클릭번호').innerHTML=document.querySelector('#분석자료_변수_30주' + e.target.innerHTML + '출').innerHTML.split(',').join('_');
+    if (e.target.classList.contains('색칠')) {
+      for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
+        document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
+      }
+      document.querySelector('#클릭번호').innerHTML='';
+    }
+
+    색칠할번호들_색칠하기_분석자료30횟수();
+    return;
+  }
   if (e.target.parentElement.id=='분석자료숨김버튼') {
     if (e.target.classList.contains('분석버튼숨김')) {
       e.target.classList.remove('분석버튼숨김');
@@ -129,16 +144,9 @@ function 분석자료_회차플러스() {
   분석자료_회차select_change()
 }
 function 연습() {
-  var 다섯칸머리글div=document.createElement('div'); //머리글 위에꺼(다음회차 있을때), 머리글 2번사용
-  다섯칸머리글div.setAttribute('class','다섯칸머리글');
-  var 내부다섯칸맞추기=document.createElement('div');
-  내부다섯칸맞추기.setAttribute('class','다섯칸');
-  for (var i=0; i<5; i++) {
-    var 가로한줄=document.createElement('div');
-    가로한줄.textContent=다섯칸제목[i];
-    내부다섯칸맞추기.appendChild(가로한줄)
-  }
-  다섯칸머리글div.appendChild(내부다섯칸맞추기)
+  console.log([].join('_').length);
+
+
 }
 function 분석자료표만들기_하() {
   //왼쪽과 오른쪽 구분하여 작성
@@ -148,6 +156,7 @@ function 분석자료표만들기_하() {
     var 번호선택_추출_c=document.createElement('div');
     var 번호45=document.createElement('div');
     if (외부!=1) {번호45.setAttribute('class','다섯개씩번갈아색칠')}
+    if (외부==1) {번호45.setAttribute('id','삼십회횟수기록')}
     for (var i=1; i<46; i++) {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
       if (외부==0 || 외부==8) {div요소.innerText=i}
@@ -201,7 +210,7 @@ function 분석자료표만들기_상() {
   for (var 외부=0; 외부<20; 외부++) {
     var 가로한줄=document.createElement('div');
     var 번호선택_추출_c=document.createElement('div');
-    var 번호선택배열=['번호선택↓','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출','피해서번호']
+    var 번호선택배열=['번호선택↓','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출']
     for (var i=0; i<3; i++) {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다.
       if (i==0) {div요소.textContent=번호선택배열[외부]}
@@ -230,6 +239,27 @@ function 분석자료표만들기_상() {
     if (요소[i].classList.contains('분석버튼숨김')) {
       document.querySelector('#분석자료_표_상_js').children[요소[i].innerHTML].classList.add('d-none');
     }
+  }
+}
+function 버튼45감싸기_보기숨기기() {
+  if (document.querySelector('#check_번호45감싸기').checked) {
+    document.querySelector('#버튼45감싸기').classList.remove('d-none')
+  } else {
+    document.querySelector('#버튼45감싸기').classList.add('d-none')
+  }
+}
+function 버튼45_2st_보기숨기기() {
+  if (document.querySelector('#버튼45_2st').checked) {
+    document.querySelector('#id_버튼45_2st').classList.remove('d-none')
+  } else {
+    document.querySelector('#id_버튼45_2st').classList.add('d-none')
+  }
+}
+function 버튼45_3st_보기숨기기() {
+  if (document.querySelector('#버튼45_3st').checked) {
+    document.querySelector('#id_버튼45_3st').classList.remove('d-none')
+  } else {
+    document.querySelector('#id_버튼45_3st').classList.add('d-none')
   }
 }
 function 사진_보기숨기기() {
@@ -316,7 +346,6 @@ function 당번_회차select_change() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
   var 넣을곳=document.querySelector('#당번_불러온당첨정보');
   넣을곳.innerHTML='';
-  console.log('옵션값 : ' + document.querySelector('#당번_회차select').value + ', 회차index : ' + 회차index + ',당첨정보.length : ' + 당첨정보.length);
   document.querySelector('#당번_선택회차날짜').innerHTML=당첨정보[회차index].children[1].innerHTML;
   //다음회차 있으면 #당번_다음회차 정보 셑팅
   if (당첨정보[회차index+1]) {
@@ -740,6 +769,44 @@ function 분석자료_삼십회표_js작성() {
       }
     }
   }
+  //표만들기 : 오주미출만 부분
+  var 오주미출만div=document.createElement('div');
+  오주미출만div.setAttribute('class','오주미출만div')
+  var 가로폭 = new Array(최대값_30회출+1);//안의 숫자가 배열 개수다. 배열값이 누적되면 '_'로 연결됨
+  for (var i=0; i<오주미출만.length; i++) {
+    var 삼십주출횟수= 삼십회출45배열[오주미출만[i]-1];
+    //가로폭[삼십주출횟수] : 없으면(처음이면) undefined
+    if (가로폭[삼십주출횟수]) {
+      가로폭[삼십주출횟수]=가로폭[삼십주출횟수] + '_' + 오주미출만[i];
+    } else {
+      가로폭[삼십주출횟수]=오주미출만[i];
+    }
+  }
+  var 세로몇줄인가=0;
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
+    }
+  }
+  //      빈 서식 만들기
+  for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
+    var 가로한줄=document.createElement('div');
+    for (var i=0; i<최대값_30회출+2; i++) {
+      var div요소=document.createElement('div');
+      if (i==0) {div요소.innerText='출0'};
+      가로한줄.appendChild(div요소);
+    }
+    오주미출만div.appendChild(가로한줄);
+    document.querySelector('#분석자료_삼십회표_js').appendChild(오주미출만div);
+  }
+  //      빈 서식에 값 넣기
+  for (var i=0; i<가로폭.length; i++) {
+    if (가로폭[i]) {
+      for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
+        document.querySelectorAll('.오주미출만div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
+      }
+    }
+  }
   //표만들기 : 출1 부분
   var 출1div=document.createElement('div');
   출1div.setAttribute('class','출1div')
@@ -773,7 +840,6 @@ function 분석자료_삼십회표_js작성() {
   //      빈 서식에 값 넣기
   for (var i=0; i<가로폭.length; i++) {
     if (가로폭[i]) {
-      console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
       for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
         document.querySelectorAll('.출1div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
       }
@@ -798,7 +864,6 @@ function 분석자료_삼십회표_js작성() {
       if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
     }
   }
-  console.log('세로몇줄인가 : ' + 세로몇줄인가)
   //      빈 서식 만들기
   for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
     var 가로한줄=document.createElement('div');
@@ -813,7 +878,6 @@ function 분석자료_삼십회표_js작성() {
   //      빈 서식에 값 넣기
   for (var i=0; i<가로폭.length; i++) {
     if (가로폭[i]) {
-      console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
       for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
         document.querySelectorAll('.출2div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
       }
@@ -838,7 +902,6 @@ function 분석자료_삼십회표_js작성() {
         if (가로폭[i].split('_').length > 세로몇줄인가) {세로몇줄인가=가로폭[i].split('_').length}
       }
     }
-    console.log('세로몇줄인가 : ' + 세로몇줄인가)
     //      빈 서식 만들기
     for (var 세로반복=0; 세로반복<세로몇줄인가; 세로반복++) {
       var 가로한줄=document.createElement('div');
@@ -853,7 +916,6 @@ function 분석자료_삼십회표_js작성() {
     //      빈 서식에 값 넣기
     for (var i=0; i<가로폭.length; i++) {
       if (가로폭[i]) {
-        console.log('i : ' + i + ', ' + 가로폭[i].split('_') + ', length : ' + 가로폭[i].split('_').length)
         for (반복=0; 반복<가로폭[i].split('_').length; 반복++) {
           document.querySelectorAll('.출3이상div > div')[반복].children[i+1].innerHTML=가로폭[i].split('_')[반복];
         }
@@ -960,8 +1022,124 @@ function 카테고리보기() {
     }
   }
 }
-function 연습() {
-
-  분석자료_고정등번호색칠_클래스지우기()
-}
 리스너_분석자료.addEventListener('click',리스너_분석자료_click)
+
+  
+var 버튼45감싸기=document.querySelector('#버튼45감싸기');
+function 버튼45감싸기_click(e) {
+  console.log('버튼45감싸기_click(e)')
+  //색칠하기()는 : 색칠할번호들의 문자열을 색칠하는데 1)선택한 45표, 2)색칠하도록 설정한 곳....
+  //버튼45감싸기_click(e)는 : 색칠할번호들 셑팅하는것 이후 연속적으로 색칠하기() 실행하는것
+  //아무거나 눌러도 작동되므로 예상치않은 동작이 들어가지 않도록 하자
+  //색칠되는것은 최종적으로 class 적용이다
+  if (e.target.parentElement.id=='끝수' && e.target.nodeName=='BUTTON') {
+    console.log('  버튼45감싸기_click(e) -- 끝수 버튼 클릭')
+    document.querySelector('#클릭번호').innerHTML=document.querySelector('#끝수' + e.target.innerHTML).innerHTML;
+    if (!document.querySelector('#누적').checked) {document.querySelector('#색칠할번호들').innerHTML='';}
+    var 기존번호=document.querySelector('#색칠할번호들').innerHTML.split('_');
+    var 클릭번호=document.querySelector('#끝수' + e.target.innerHTML).innerHTML.split('_');
+    if (기존번호[0]=='') {var 중복제거=new Set([...클릭번호]);} else {var 중복제거=new Set([...기존번호,...클릭번호]);}
+    중복제거=[...중복제거];
+    document.querySelector('#색칠할번호들').innerHTML=중복제거.join('_');
+    var 색칠할번호들=document.querySelector('#색칠할번호들').innerHTML.split('_'); //비어있어도 length는 이고, [0]의 length는 0이다
+    색칠할번호들_색칠하기_분석자료30횟수();
+  }
+}
+function 색칠할번호들_clear() {
+  document.querySelector('#색칠할번호들').innerHTML='';
+  document.querySelector('#클릭번호').innerHTML='';
+  document.querySelector('#클릭요소정보').innerHTML='';
+
+}
+function 색칠할번호들_색칠하기_분석자료30횟수() {
+  //특수한 경우다 : 빈도기록부분에서만 기록????
+
+
+
+
+
+
+
+
+
+  return;
+  //분석자료30횟수 부분을 클릭했을때만 작동하도록 (색칠있으면 색칠해제, 없으면 같은횟수 색칠) 
+  //번호는 넣는다. 삼십회횟수기록
+  console.log('  색칠할번호들_색칠하기_분석자료30횟수()')
+  if (!document.querySelector('#누적').checked) {document.querySelector('#색칠할번호들').innerHTML='';}
+  var 기존번호=document.querySelector('#색칠할번호들').innerHTML.split('_');
+  var 클릭번호=document.querySelector('#클릭번호').innerHTML.split('_');
+  if (기존번호[0]=='') {var 중복제거=new Set([...클릭번호]);} else {var 중복제거=new Set([...기존번호,...클릭번호]);}
+  중복제거=[...중복제거];
+  document.querySelector('#색칠할번호들').innerHTML=중복제거.join('_');
+  var 색칠할번호들=document.querySelector('#색칠할번호들').innerHTML.split('_'); //비어있어도 length는 이고, [0]의 length는 0이다
+  //분석자료표에 같은횟수만 색칠하는 동작, 번호는 별개로 색칠할번호들 조건에 따라 누적 또는 단독 셑팅되었음.
+  for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
+    document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
+  }
+  for (var i=0; i<클릭번호.length; i++) {
+    document.querySelectorAll('#삼십회횟수기록 > div')[클릭번호[i]-1].classList.add('색칠');
+  }
+}
+
+  function mousedownOrTouchstart(e) {
+    // 터치 이벤트인지 마우스 이벤트인지 확인
+    var isTouchEvent = e.type === 'touchstart';
+    var target=document.querySelector('#버튼45감싸기');
+    var isDragging = true;
+    var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0;
+    var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0;
+    //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
+    //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+    //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+    var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+    var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+    // 부모 요소의 경계를 확인 (마우스이벤트예제div)
+    var 부모_경계 = 버튼45감싸기.getBoundingClientRect();
+    var 상자_너비 = target.offsetWidth;
+    var 상자_높이 = target.offsetHeight;
+    function 마우스moveOrTouchmove(e) {
+        if (!isDragging) return;
+        // 화면 스크롤 방지 (모바일)
+        if (isTouchEvent) {
+            e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
+            //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+        }
+        // 터치 이벤트인지 마우스 이벤트인지 확인
+        var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+        var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+        var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+        var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+        // 새로운 위치 계산
+        var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+        var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+        // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+        if (새로운_상자_위치_y < 0) {
+            새로운_상자_위치_y = 0;
+        }
+        if (새로운_상자_위치_x < 0) {
+            새로운_상자_위치_x = 0;
+        }
+        // 상자 위치 적용
+        target.style.top = 새로운_상자_위치_y + 'px';
+        target.style.left = 새로운_상자_위치_x + 'px';
+    }
+    function 마우스upOrTouchend() {
+        if (!isDragging) return;
+        isDragging = false;
+        // 이벤트 제거
+        window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+        window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+    }
+    // 이벤트 추가
+    window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+    window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+  }
+  // mousedown과 touchstart 이벤트 모두 처리
+  버튼45감싸기.addEventListener('mousedown', mousedownOrTouchstart);
+  버튼45감싸기.addEventListener('touchstart', mousedownOrTouchstart);
+  버튼45감싸기.addEventListener('click', 버튼45감싸기_click);
+
+
+
+  //메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);

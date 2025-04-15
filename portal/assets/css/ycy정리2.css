@@ -58,7 +58,7 @@ body {white-space: nowrap;}
 #분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(1) {margin-bottom:0px;}/* 45한줄  */
 #분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(8) {margin-bottom:0px;}/* 45한줄  */
 #분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(5n+9) {margin-bottom:0px;}/* 45한줄  */
-#분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(2) > div {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
+#분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(2) > div:not([class~="색칠"]) {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
 #분석자료_표_하_js > div:nth-of-type(2) > div > div 
 {vertical-align: top; display: inline-block; width:24px;height:24px; border:1px solid black;margin-right:-1px;font-weight: bold;}/* 45각각  */
 #분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
@@ -79,10 +79,20 @@ body {white-space: nowrap;}
 
 /* #분석자료_삼십회표_js > div(머리글,1출,,) > div(가로한줄감쌈) > div(개별div,두번쨰부터 회수) */
 #분석자료_삼십회표_js > div > div {margin-bottom:-1px;}
-#분석자료_삼십회표_js > div > div > div {display: inline-block; width:24px;height:24px; border:1px solid gray;text-align: center;vertical-align: top;margin-right:-1px;}
+#분석자료_삼십회표_js > div > div > div {display: inline-block; width:24px;height:24px; border:1px solid gray;text-align: center;vertical-align: top;margin-right:-1px;font-weight: bold;}
 #분석자료_삼십회표_js > div > div > div:nth-of-type(1) {width:40px;}
 /* .삼십회머리글div, .장미수div, .출1div, .출2div, .출3이상div,*/
+#분석자료_삼십회표_js > div:nth-of-type(2n+1) {background-color:rgb(231, 218, 218);margin-bottom:1px;margin-top:1px;}
 
+#id_버튼45_check {border:1px solid black;padding:3px;background-color: white;margin-bottom:-1px;}
+#버튼45오른쪽 {border:1px solid black;padding:3px;background-color: white;margin-left:-5px;vertical-align: top;}
+#버튼45오른쪽 button {border:1px solid black;}
+#버튼45오른쪽 > #끝수 > button {margin-right:-1px;}
+#버튼45오른쪽 > #끝수 > span {display:inline-block;margin-right:3px;}
+#id_버튼45_1st, #id_버튼45_2st, #id_버튼45_3st {border:1px solid black;padding:6px;background-color: white;margin-bottom:-1px;}
+#id_버튼45_1st button, #id_버튼45_2st button, #id_버튼45_3st button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+
+.색칠 {border-radius: 24px;background-color:cornflowerblue;}
 
 
 
