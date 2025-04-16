@@ -798,6 +798,8 @@ function 분석자료_삼십회표_js작성() {
   }
   var 오주미출전체set=new Set([...오주미출전체])
   var 장미수set=new Set([...장미수])
+  console.log(오주미출전체set)
+  console.log(장미수set)
   var 오주미출만=오주미출전체set.difference(장미수set)
   오주미출만=[...오주미출만]
   var 출1=[];
