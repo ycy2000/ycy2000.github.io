@@ -70,7 +70,7 @@ body {white-space: nowrap;}
 #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div > div:nth-of-type(1) > div/* 왼쪽(안에3개), 오른쪽(안에45개) div */
 {height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;}
 #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div > div:nth-of-type(2) > div /* 왼쪽(안에3개), 오른쪽(안에45개) div */
-{width:24px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;}
+{width:24px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
 
 #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {background-color:chartreuse;}
 #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:85px;}
@@ -83,6 +83,24 @@ body {white-space: nowrap;}
 {display: inline-block;text-align: center;height:24px;vertical-align: top;}
 #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:nth-of-type(1) > div:nth-of-type(2) > div 
 {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
+
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div > div:nth-of-type(2) .다섯개씩번갈아색칠 > div 
+{display: inline-block;border:1px solid black;height:24px;width:24px;margin-right:-1px;text-align: center;font-weight: bold;}
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) 
+{background-color: bisque;}
+
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),
+#분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) 
+{background-color:rgb(196, 169, 137);}
+
+.분석자료_고정등번호색칠 {background-color:cadetblue;}
 
 
 
