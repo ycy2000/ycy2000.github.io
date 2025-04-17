@@ -94,20 +94,30 @@ function 리스너_분석자료_click(e) {
       }
     } else {
       //1.클릭한 횟수부분이 색칠되어 있는경우, 2.색칠이 없는경우, 
-      document.querySelector('#클릭요소정보').innerHTML='삼십회횟수기록';
-      document.querySelector('#클릭번호').innerHTML=document.querySelector('#분석자료_변수_30주' + e.target.innerHTML + '출').innerHTML.split(',').join(',');
+      document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_30주' + e.target.innerHTML + '출').innerHTML.split(',').join(',');
       
-      var 클릭번호=document.querySelector('#클릭번호').innerHTML.split(','); //리스너_분석자료_click(e)에서 횟수같은 번호들이 넘어감
+      var 클릭번호들=document.querySelector('#클릭번호들').innerHTML.split(','); //리스너_분석자료_click(e)에서 횟수같은 번호들이 넘어감
+      document.querySelector('#클릭번호정보').innerHTML='30회 ' + e.target.innerHTML + '회출 번호들, ' + 클릭번호들.length + '개'
       for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
         document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
       }
-      for (var i=0; i<클릭번호.length; i++) {
-        document.querySelectorAll('#삼십회횟수기록 > div')[클릭번호[i]-1].classList.add('색칠');
+      for (var i=0; i<클릭번호들.length; i++) {
+        document.querySelectorAll('#삼십회횟수기록 > div')[클릭번호들[i]-1].classList.add('색칠');
       }
     }
-    클릭번호처리();
+    클릭번호들처리();
     return;
   }
+  if (e.target.innerHTML=='당번') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_당번').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='이웃수') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_이웃').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='당번+이웃') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_당번이웃').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='15주미출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_10에서15주0출').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='10주미출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_5에서10주0출').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='5주0출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_5주0출').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='5주출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_5주출').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='5주1출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_5주1출').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='5주2출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_5주2출').innerHTML;클릭번호들처리();}
+  if (e.target.innerHTML=='5주3출') {document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_5주3출이상').innerHTML;클릭번호들처리();}
   if (e.target.parentElement.id=='분석자료숨김버튼') {
     if (e.target.classList.contains('분석버튼숨김')) {
       e.target.classList.remove('분석버튼숨김');
@@ -219,7 +229,6 @@ function 분석자료표만들기_하() {
   document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
 }
 function 버튼45관련만들기() {
-  var 오른쪽45=document.createElement('div');
   for (var 외부=0; 외부<1; 외부++) {
     var 번호45=document.createElement('div');
     번호45.setAttribute('class','다섯개씩번갈아색칠')
@@ -227,71 +236,18 @@ function 버튼45관련만들기() {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
       번호45.appendChild(div요소);
     }
-    오른쪽45.appendChild(번호45);
   }
-  document.querySelector('#버튼45오른쪽단독_안에_색칠할번호들').appendChild(번호45)
-
-  var 오른쪽45=document.createElement('div');
-  for (var 외부=0; 외부<1; 외부++) {
-    var 번호45=document.createElement('div');
-    번호45.setAttribute('class','다섯개씩번갈아색칠')
-    for (var i=1; i<46; i++) {
-      var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-      번호45.appendChild(div요소);
-    }
-    오른쪽45.appendChild(번호45);
+  document.querySelector('#버튼45오른쪽단독_안에_keep').innerHTML=번호45.innerHTML;
+  document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들').innerHTML=번호45.innerHTML;
+  document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들').innerHTML=번호45.innerHTML;
+  document.querySelector('#버튼45오른쪽단독_안에_셑팅1_2_중복번호들').innerHTML=번호45.innerHTML;
+  document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').innerHTML=번호45.innerHTML;
+  document.querySelector('#버튼45오른쪽단독_안에_순번').innerHTML=번호45.innerHTML;
+  for (var i=0; i<45; i++) {document.querySelectorAll('#버튼45오른쪽단독_안에_순번 > div')[i].innerHTML=i+1}
+  console.log(document.querySelectorAll('#버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄').length)
+  for (var i=0; i<document.querySelectorAll('#버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄').length; i++) {
+    document.querySelectorAll('#버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄')[i].children[0].children[0].innerHTML=0;
   }
-  document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들').appendChild(번호45)
-
-  var 오른쪽45=document.createElement('div');
-  for (var 외부=0; 외부<1; 외부++) {
-    var 번호45=document.createElement('div');
-    번호45.setAttribute('class','다섯개씩번갈아색칠')
-    for (var i=1; i<46; i++) {
-      var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-      div요소.textContent='23'
-      번호45.appendChild(div요소);
-    }
-    오른쪽45.appendChild(번호45);
-  }
-  document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들').appendChild(번호45)
-
-  var 오른쪽45=document.createElement('div');
-  for (var 외부=0; 외부<1; 외부++) {
-    var 번호45=document.createElement('div');
-    번호45.setAttribute('class','다섯개씩번갈아색칠')
-    for (var i=1; i<46; i++) {
-      var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-      번호45.appendChild(div요소);
-    }
-    오른쪽45.appendChild(번호45);
-  }
-  document.querySelector('#버튼45오른쪽단독_안에_셑팅1_2_중복번호들').appendChild(번호45)
-
-  var 오른쪽45=document.createElement('div');
-  for (var 외부=0; 외부<1; 외부++) {
-    var 번호45=document.createElement('div');
-    번호45.setAttribute('class','다섯개씩번갈아색칠')
-    for (var i=1; i<46; i++) {
-      var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-      번호45.appendChild(div요소);
-    }
-    오른쪽45.appendChild(번호45);
-  }
-  document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').appendChild(번호45)
-
-  var 오른쪽45=document.createElement('div');
-  for (var 외부=0; 외부<1; 외부++) {
-    var 번호45=document.createElement('div');
-    번호45.setAttribute('class','다섯개씩번갈아색칠')
-    for (var i=1; i<46; i++) {
-      var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-      div요소.innerText=i;
-      번호45.appendChild(div요소);
-    }
-    오른쪽45.appendChild(번호45);
-  }
-  document.querySelector('#버튼45오른쪽단독_안에_순번').appendChild(번호45)
 }
 function 분석자료표만들기_상() {
   for (var 외부=0; 외부<20; 외부++) {
@@ -316,6 +272,7 @@ function 분석자료표만들기_상() {
     }
     가로한줄.appendChild(번호선택_추출_c);
     가로한줄.appendChild(번호45);
+    가로한줄.setAttribute('class','js클릭번호')
 
     document.querySelector('#분석자료_표_상_js').appendChild(가로한줄);
   }
@@ -798,8 +755,6 @@ function 분석자료_삼십회표_js작성() {
   }
   var 오주미출전체set=new Set([...오주미출전체])
   var 장미수set=new Set([...장미수])
-  console.log(오주미출전체set)
-  console.log(장미수set)
   var 오주미출만=오주미출전체set.difference(장미수set)
   오주미출만=[...오주미출만]
   var 출1=[];
@@ -1127,71 +1082,77 @@ function 버튼45감싸기_click(e) {
   console.log('버튼45감싸기_click(e)')
   if (e.target.parentElement.id=='끝수' && e.target.nodeName=='BUTTON') {
     console.log('  버튼45감싸기_click(e) -- 끝수 버튼 클릭')
-    document.querySelector('#클릭번호').innerHTML=document.querySelector('#끝수' + e.target.innerHTML).innerHTML;
-    클릭번호처리();
+    document.querySelector('#클릭번호들').innerHTML=document.querySelector('#끝수' + e.target.innerHTML).innerHTML;
+    클릭번호들처리();
   }
-  if (e.target.parentElement.id=='대조45버튼6개' && e.target.nodeName=='BUTTON') { 
-    if (e.target.innerHTML==1) {var 숨길2개=0} //두번째는 div안에 순서
-    if (e.target.innerHTML==2) {var 숨길2개=1}
-    if (e.target.innerHTML==3) {var 숨길2개=2}
-    if (document.querySelectorAll('#버튼45오른쪽단독 > div')[숨길2개].classList.contains('d-none')) {
-      document.querySelectorAll('#버튼45오른쪽단독 > div')[숨길2개].classList.remove('d-none')
-      //document.querySelectorAll('#버튼45오른쪽단독 > div:nth-of-type(5) > div')[숨길2개].classList.remove('d-none')
-    } else {
-      document.querySelectorAll('#버튼45오른쪽단독 > div')[숨길2개].classList.add('d-none')
-      //document.querySelectorAll('#버튼45오른쪽단독 > div:nth-of-type(5) > div')[숨길2개].classList.add('d-none')
-    }
-  }
+
 
   
 }
 function 버튼45오른쪽단독_click(e) {
   console.log('버튼45오른쪽단독_click(e)')
 }
-function 클릭번호처리() {
-  var 클릭번호배열=document.querySelector('#클릭번호').innerHTML.split(',');
-  if (클릭번호배열[0]=='') {console.log('클릭번호배열[0]==공백 : ' + 클릭번호배열[0]=='');return;}
+function 클릭번호들처리() {
+  var 클릭번호들배열=document.querySelector('#클릭번호들').innerHTML.split(',');
+  if (클릭번호들배열[0]=='') {console.log('클릭번호들배열[0]==공백 : ' + 클릭번호들배열[0]=='');return;}
+  document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').parentElement.children[0].children[0].innerHTML=클릭번호들배열.length;
   for (var i=0; i<45; i++) {
-    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div > div')[i].innerHTML='';
-    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div > div')[i].classList.remove('클릭색칠')
+    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[i].innerHTML='';
+    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[i].classList.remove('색칠')
   }
-  for (var i=0; i<클릭번호배열.length; i++) {
-    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div > div')[클릭번호배열[i]-1].innerHTML=클릭번호배열[i];
-    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div > div')[클릭번호배열[i]-1].classList.add('클릭색칠');
+  for (var i=0; i<클릭번호들배열.length; i++) {
+    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[클릭번호들배열[i]-1].innerHTML=클릭번호들배열[i];
+    document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[클릭번호들배열[i]-1].classList.add('색칠');
   }
   //누적체크 : 색칠할번호들 합침
+  if(document.querySelector('#keep').checked) {var 체크된곳번호들=document.querySelector('#keep번호들');var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_keep');}
+  if(document.querySelector('#셑팅1').checked) {var 체크된곳번호들=document.querySelector('#셑팅1번호들');var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들');}
+  if(document.querySelector('#셑팅2').checked) {var 체크된곳번호들=document.querySelector('#셑팅2번호들');var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들');}
+  
   if (document.querySelector('#누적').checked) {
-    var 기존배열=document.querySelector('#색칠할번호들').innerHTML.split(',');
-    console.log('기존배열 : ' + 기존배열)
-    for (var i=0; i<클릭번호배열.length; i++) {
-      document.querySelectorAll('#버튼45오른쪽단독_안에_색칠할번호들 > div > div')[클릭번호배열[i]-1].innerHTML=클릭번호배열[i];
-      document.querySelectorAll('#버튼45오른쪽단독_안에_색칠할번호들 > div > div')[클릭번호배열[i]-1].classList.add('클릭색칠');
+    var 기존배열=체크된곳번호들.innerHTML.split(',');
+    if (기존배열[0]!='') {var 누적배열=new Set([...클릭번호들배열,...기존배열])}
+    if (기존배열[0]=='') {var 누적배열=new Set([...클릭번호들배열])}
+    누적배열=[...누적배열]
+    console.log('누적배열 : ' + 누적배열)
+    for (var i=0; i<누적배열.length; i++) {
+      console.log('누적배열[i]-1 : ' + (누적배열[i]-1))
+      색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
+      색칠할곳.children[누적배열[i]-1].classList.add('색칠');
     }
   }
-
-
+}
+function 킵_보기숨기기(e) {
+  var 버튼들=document.querySelectorAll('.설명_왼쪽div_버튼5개 > button');
+  if (e.classList.contains('js숨김')) {e.classList.remove('js숨김')} else {e.classList.add('js숨김')}
+  for (var i=0; i<버튼들.length; i++) {
+    if (버튼들[i].classList.contains('js숨김')) {
+      document.querySelectorAll('.설명_첫번째div > .설명_가로한줄')[i].classList.add('d-none')
+    } else {
+      document.querySelectorAll('.설명_첫번째div > .설명_가로한줄')[i].classList.remove('d-none')
+    }
+  }
+  
 }
 function 색칠할번호들_clear() {
-  document.querySelector('#색칠할번호들').innerHTML='';
-  document.querySelector('#클릭번호').innerHTML='';
-  document.querySelector('#클릭요소정보').innerHTML='';
+  document.querySelector('#클릭번호들').innerHTML='';
+  버튼45관련만들기();
 
 }
 function 셑팅토글(e) {
   console.log('셑팅토글(e)')
-  if (e.title=='버튼45오른쪽단독_안에_셑팅1_번호들') {
-    if (e.checked==true) {
-      document.querySelector('#셑팅2').checked=false;
-    } else {
-      document.querySelector('#셑팅2').checked=true;
-    }
+  e.checked=true;
+  if (e.id=='keep') {
+    document.querySelector('#셑팅1').checked=false;
+    document.querySelector('#셑팅2').checked=false;
   }
-  if (e.title=='버튼45오른쪽단독_안에_셑팅2_번호들') {
-    if (e.checked==true) {
-      document.querySelector('#셑팅1').checked=false;
-    } else {
-      document.querySelector('#셑팅1').checked=true;
-    }
+  if (e.id=='셑팅1') {
+    document.querySelector('#keep').checked=false;
+    document.querySelector('#셑팅2').checked=false;
+  }
+  if (e.id=='셑팅2') {
+    document.querySelector('#keep').checked=false;
+    document.querySelector('#셑팅1').checked=false;
   }
 }
   function mousedownOrTouchstart(e) {
