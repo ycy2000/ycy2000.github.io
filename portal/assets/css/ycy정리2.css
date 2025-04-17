@@ -135,6 +135,7 @@ body {white-space: nowrap;}
 .색칠 {border-radius: 24px;background-color:cornflowerblue;}
 
 /* #버튼45오른쪽단독 > div => 버튼,div,div(아이디있고 안에 .다섯개씩번갈아색칠 안에 div45 */
+#버튼45오른쪽단독 {padding:5px;background-color: white;}
 #버튼45오른쪽단독 > .설명_첫번째div {background-color: white;margin-bottom:-2px;}
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄 {margin-bottom:-2px;} /* 위쪽 가로한줄이고 안에 div 2개(왼쪽은 버튼과 div1개, 오른쪽은 div안에 버튼45 */
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄:last-child > .설명_왼쪽div > div:nth-of-type(1) {width:149px;}
@@ -153,16 +154,22 @@ body {white-space: nowrap;}
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄 > div:nth-of-type(2) > div 
 {display:inline-block; width:24px;height:24px;border:1px solid black;vertical-align: top;margin-right:-1px;}
 
-#버튼45오른쪽단독 > .설명_두번째div {background-color: white; border:1px solid black;padding:3px;font-weight: bold;}
+#버튼45오른쪽단독 > .설명_두번째div {background-color: white; border:1px solid black;padding:3px;font-weight: bold;width:1223px;}
 #버튼45오른쪽단독 > .설명_두번째div > div {display: inline-block;}
-#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 {margin-left:10px;}
-#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > button {margin-right:-1px;border:1px solid black;font-weight: bold;}
-#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > span {display:inline-block;margin-right:3px;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > div {vertical-align: top;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > div {margin-left:10px;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > div:nth-of-type(1) {margin-bottom:5px;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > div > button {margin-right:-1px;width:30px; border:1px solid black;font-weight: bold;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > div > span 
+{margin-right:-1px;border:1px solid black;vertical-align: top; height:28px;font-weight: bold;display: inline-block;width:40px;text-align: center;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > div > span:nth-of-type(1) {background-color: chartreuse;}
+#버튼45오른쪽단독 > .설명_두번째div > .설명_가로한줄 > #끝수 > div > span:nth-of-type(2) {width:30px;margin-right:7px;}
 
 #버튼45오른쪽단독 > #메모장 > div {display: inline-block;vertical-align: top;margin-right:-5px;}
-#버튼45오른쪽단독 > #메모장 > div > button {border:1px solid black;width:24px;}
+#버튼45오른쪽단독 > #메모장 > div > button {border:1px solid black;width:34px;height:34px;margin-right:-1px;}
 #버튼45오른쪽단독 > #메모장 > div > div
-{font-weight:bold;padding:4px;background-color: white;border:1px solid black;display: inline-block;width:400px;margin-right:-4px;vertical-align: top;}
+{font-weight:bold;padding:4px;background-color: white;border:1px solid black;display: inline-block;width:375.5px;margin-right:-6px;vertical-align: top;}
+.js끝수버튼 {background-color: chocolate;}
 
 .js숨김 {background-color: chocolate;}
 /* .버튼45오른쪽단독_별도style > div:nth-of-type(1) {width:110px;} */

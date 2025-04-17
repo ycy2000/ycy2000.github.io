@@ -240,12 +240,11 @@ function 버튼45관련만들기() {
   document.querySelector('#버튼45오른쪽단독_안에_keep').innerHTML=번호45.innerHTML;
   document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들').innerHTML=번호45.innerHTML;
   document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들').innerHTML=번호45.innerHTML;
-  document.querySelector('#버튼45오른쪽단독_안에_셑팅1_2_중복번호들').innerHTML=번호45.innerHTML;
+  document.querySelector('#버튼45오른쪽단독_안에_셑팅3_번호들').innerHTML=번호45.innerHTML;
   document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').innerHTML=번호45.innerHTML;
   document.querySelector('#버튼45오른쪽단독_안에_순번').innerHTML=번호45.innerHTML;
   for (var i=0; i<45; i++) {document.querySelectorAll('#버튼45오른쪽단독_안에_순번 > div')[i].innerHTML=i+1}
-  console.log(document.querySelectorAll('#버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄').length)
-  for (var i=0; i<document.querySelectorAll('#버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄').length; i++) {
+  for (var i=0; i<5; i++) { //6으로하면 순번부분 1도 0이 된다.
     document.querySelectorAll('#버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄')[i].children[0].children[0].innerHTML=0;
   }
 }
@@ -1080,16 +1079,47 @@ var 버튼45감싸기=document.querySelector('#버튼45감싸기');
 var 버튼45오른쪽단독=document.querySelector('#버튼45오른쪽단독');
 function 버튼45감싸기_click(e) {
   console.log('버튼45감싸기_click(e)')
-  if (e.target.parentElement.id=='끝수' && e.target.nodeName=='BUTTON') {
+  if (e.target.parentElement.parentElement.id=='끝수' && e.target.nodeName=='BUTTON') {
     console.log('  버튼45감싸기_click(e) -- 끝수 버튼 클릭')
-    document.querySelector('#클릭번호들').innerHTML=document.querySelector('#끝수' + e.target.innerHTML).innerHTML;
+    if (e.target.classList.contains('js끝수버튼')) {e.target.classList.remove('js끝수버튼')} else {e.target.classList.add('js끝수버튼')}
+  }
+  if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='끝수') {
+    console.log('  버튼45감싸기_click(e) -- 끝수 셑팅')
+    var 전달문자열='';
+    for (var i=0; i<10; i++) {
+      if (document.querySelectorAll('#끝수 > div:nth-of-type(1) button')[i].classList.contains('js끝수버튼')) {
+        전달문자열+=document.querySelector(`#끝수${i}`).innerHTML + ',';
+      }
+    }
+    if (전달문자열!='') {document.querySelector('#클릭번호들').innerHTML=전달문자열.substring(0,전달문자열.length-1)} else {return;}
     클릭번호들처리();
   }
-}
-function 버튼45오른쪽단독_click(e) {
-  console.log('버튼45오른쪽단독_click(e)')
+  if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='30주') {
+    console.log('  버튼45감싸기_click(e) -- 30주 셑팅')
+    var 전달문자열='';
+    for (var i=0; i<10; i++) {
+      if (document.querySelectorAll('#끝수 > div:nth-of-type(2) button')[i].classList.contains('js끝수버튼')) {
+        전달문자열+=document.querySelector(`#분석자료_변수_30주${i}출`).innerHTML + ',';
+      }
+    }
+    if (전달문자열!='') {document.querySelector('#클릭번호들').innerHTML=전달문자열.substring(0,전달문자열.length-1)} else {return;}
+    클릭번호들처리();
+  }
+  if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='C' && e.target.previousElementSibling.innerHTML=='끝수') {
+    console.log('  버튼45감싸기_click(e) -- 끝수 셑팅 C')
+    for (var i=0; i<10; i++) {
+      document.querySelectorAll('#끝수 > div:nth-of-type(1) > button')[i].classList.remove('js끝수버튼')
+    }
+  }
+  if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='C' && e.target.previousElementSibling.innerHTML=='30주') {
+    console.log('  버튼45감싸기_click(e) -- 끝수 셑팅 C')
+    for (var i=0; i<10; i++) {
+      document.querySelectorAll('#끝수 > div:nth-of-type(2) > button')[i].classList.remove('js끝수버튼')
+    }
+  }
 }
 function 클릭번호들처리() {
+  // html에 기록된 번호들을 처리하는 로직이다.   
   var 클릭번호들배열=document.querySelector('#클릭번호들').innerHTML.split(',');
   if (클릭번호들배열[0]=='') {console.log('클릭번호들배열[0]==공백 : ' + 클릭번호들배열[0]=='');return;}
   document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').parentElement.children[0].children[0].innerHTML=클릭번호들배열.length;
@@ -1117,13 +1147,45 @@ function 클릭번호들처리() {
     var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들');
     var 숫자기록할곳=색칠할곳.parentElement.children[0].children[0];
   }
+  if(document.querySelector('#셑팅3').checked) {
+    var 체크된곳번호들=document.querySelector('#셑팅3번호들');
+    var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅3_번호들');
+    var 숫자기록할곳=색칠할곳.parentElement.children[0].children[0];
+  }
   
   //숫자기록할곳의 초기화가 있어야되나???
   if (document.querySelector('#누적').checked) {
+    console.log('누적일때')
     var 기존배열=체크된곳번호들.innerHTML.split(',');
     if (기존배열[0]!='') {var 누적배열=new Set([...클릭번호들배열,...기존배열])}
     if (기존배열[0]=='') {var 누적배열=new Set([...클릭번호들배열])}
     누적배열=[...누적배열]
+    체크된곳번호들.innerHTML=누적배열; //
+    if (누적배열[0]=='') {return;}
+    for (var i=0; i<45; i++) {
+      색칠할곳.children[i].innerHTML='';
+      색칠할곳.children[i].classList.remove('색칠');
+    }
+    for (var i=0; i<누적배열.length; i++) {
+      색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
+      색칠할곳.children[누적배열[i]-1].classList.add('색칠');
+    }
+    숫자기록할곳.innerHTML=누적배열.length;
+    return;
+  }
+  //누적 아닐때  
+  if (!document.querySelector('#누적').checked) {
+    console.log('누적아닐때')
+    체크된곳번호들.innerHTML=''; // 기존꺼 지우고 덮어쓸 예정 
+    var 기존배열=체크된곳번호들.innerHTML.split(',');
+    if (기존배열[0]!='') {var 누적배열=new Set([...클릭번호들배열,...기존배열])}
+    if (기존배열[0]=='') {var 누적배열=new Set([...클릭번호들배열])}
+    누적배열=[...누적배열]
+    if (누적배열[0]=='') {return;}
+    for (var i=0; i<45; i++) {
+      색칠할곳.children[i].innerHTML='';
+      색칠할곳.children[i].classList.remove('색칠');
+    }
     for (var i=0; i<누적배열.length; i++) {
       색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
       색칠할곳.children[누적배열[i]-1].classList.add('색칠');
@@ -1154,14 +1216,22 @@ function 셑팅토글(e) {
   if (e.id=='keep') {
     document.querySelector('#셑팅1').checked=false;
     document.querySelector('#셑팅2').checked=false;
+    document.querySelector('#셑팅3').checked=false;
   }
   if (e.id=='셑팅1') {
     document.querySelector('#keep').checked=false;
     document.querySelector('#셑팅2').checked=false;
+    document.querySelector('#셑팅3').checked=false;
   }
   if (e.id=='셑팅2') {
     document.querySelector('#keep').checked=false;
     document.querySelector('#셑팅1').checked=false;
+    document.querySelector('#셑팅3').checked=false;
+  }
+  if (e.id=='셑팅3') {
+    document.querySelector('#keep').checked=false;
+    document.querySelector('#셑팅1').checked=false;
+    document.querySelector('#셑팅2').checked=false;
   }
 }
   function mousedownOrTouchstart(e) {
@@ -1278,7 +1348,3 @@ function 셑팅토글(e) {
   버튼45오른쪽단독.addEventListener('mousedown', mousedownOrTouchstart2);
   버튼45오른쪽단독.addEventListener('touchstart', mousedownOrTouchstart2);
   버튼45오른쪽단독.addEventListener('click', 버튼45감싸기_click);
-
-
-
-  //메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
