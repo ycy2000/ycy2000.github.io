@@ -1085,9 +1085,6 @@ function 버튼45감싸기_click(e) {
     document.querySelector('#클릭번호들').innerHTML=document.querySelector('#끝수' + e.target.innerHTML).innerHTML;
     클릭번호들처리();
   }
-
-
-  
 }
 function 버튼45오른쪽단독_click(e) {
   console.log('버튼45오른쪽단독_click(e)')
@@ -1105,21 +1102,33 @@ function 클릭번호들처리() {
     document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[클릭번호들배열[i]-1].classList.add('색칠');
   }
   //누적체크 : 색칠할번호들 합침
-  if(document.querySelector('#keep').checked) {var 체크된곳번호들=document.querySelector('#keep번호들');var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_keep');}
-  if(document.querySelector('#셑팅1').checked) {var 체크된곳번호들=document.querySelector('#셑팅1번호들');var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들');}
-  if(document.querySelector('#셑팅2').checked) {var 체크된곳번호들=document.querySelector('#셑팅2번호들');var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들');}
+  if(document.querySelector('#keep').checked) {
+    var 체크된곳번호들=document.querySelector('#keep번호들');
+    var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_keep');
+    var 숫자기록할곳=색칠할곳.parentElement.children[0].children[0];
+  }
+  if(document.querySelector('#셑팅1').checked) {
+    var 체크된곳번호들=document.querySelector('#셑팅1번호들');
+    var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들');
+    var 숫자기록할곳=색칠할곳.parentElement.children[0].children[0];
+  }
+  if(document.querySelector('#셑팅2').checked) {
+    var 체크된곳번호들=document.querySelector('#셑팅2번호들');
+    var 색칠할곳=document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들');
+    var 숫자기록할곳=색칠할곳.parentElement.children[0].children[0];
+  }
   
+  //숫자기록할곳의 초기화가 있어야되나???
   if (document.querySelector('#누적').checked) {
     var 기존배열=체크된곳번호들.innerHTML.split(',');
     if (기존배열[0]!='') {var 누적배열=new Set([...클릭번호들배열,...기존배열])}
     if (기존배열[0]=='') {var 누적배열=new Set([...클릭번호들배열])}
     누적배열=[...누적배열]
-    console.log('누적배열 : ' + 누적배열)
     for (var i=0; i<누적배열.length; i++) {
-      console.log('누적배열[i]-1 : ' + (누적배열[i]-1))
       색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
       색칠할곳.children[누적배열[i]-1].classList.add('색칠');
     }
+    숫자기록할곳.innerHTML=누적배열.length;
   }
 }
 function 킵_보기숨기기(e) {
