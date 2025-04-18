@@ -252,13 +252,14 @@ function 분석자료표만들기_상() {
   for (var 외부=0; 외부<20; 외부++) {
     var 가로한줄=document.createElement('div');
     var 번호선택_추출_c=document.createElement('div');
-    var 번호선택배열=['번호선택↓','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출']
-    for (var i=0; i<3; i++) {
+    var 번호선택배열=['번호선택','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출']
+    for (var i=0; i<4; i++) {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다.
       if (i==0) {div요소.textContent=번호선택배열[외부]}
-      if (i==1 && 외부==0) {div요소.textContent='출'}
-      if (i==2 && 외부==0) {div요소.textContent='C'}
-      if (i==2 && 외부!=0) {div요소.textContent=외부}
+      if (i==1 && 외부==0) {div요소.textContent='수'}
+      if (i==2 && 외부==0) {div요소.textContent='출'}
+      if (i==3 && 외부==0) {div요소.textContent='C'}
+      if (i==3 && 외부!=0) {div요소.textContent=외부}
       번호선택_추출_c.appendChild(div요소);
     }
     var 번호45=document.createElement('div');
@@ -305,6 +306,20 @@ function 버튼45_3st_보기숨기기() {
     document.querySelector('#id_버튼45_3st').classList.add('d-none')
   }
 }
+function 빈도30개수_보기숨기기() {
+  if (document.querySelector('#빈도개수').checked) {
+    document.querySelector('#숨기기_분석자료_빈도_개수').classList.remove('d-none')
+  } else {
+    document.querySelector('#숨기기_분석자료_빈도_개수').classList.add('d-none')
+  }
+}
+function 빈도30당첨_보기숨기기() {
+  if (document.querySelector('#빈도당첨').checked) {
+    document.querySelector('#숨기기_분석자료_빈도_당첨').classList.remove('d-none')
+  } else {
+    document.querySelector('#숨기기_분석자료_빈도_당첨').classList.add('d-none')
+  }
+}
 function 사진_보기숨기기() {
   if (document.querySelector('#check_사진').checked) {
     document.querySelector('#사진').classList.remove('d-none')
@@ -321,9 +336,9 @@ function 사진_보기숨기기2() {
 }
 function 분석자료_보기숨기기() {
   if (document.querySelector('#check_분석자료').checked) {
-    document.querySelector('#분석자료').classList.remove('d-none')
+    document.querySelector('#숨기기_분석자료').classList.remove('d-none')
   } else {
-    document.querySelector('#분석자료').classList.add('d-none')
+    document.querySelector('#숨기기_분석자료').classList.add('d-none')
   }
 }
 function 대조45_보기숨기기() {
@@ -345,6 +360,13 @@ function 삼십회_보기숨기기() {
     document.querySelector('#분석자료_삼십회표').classList.remove('d-none')
   } else {
     document.querySelector('#분석자료_삼십회표').classList.add('d-none')
+  }
+}
+function 삼십회빈도_보기숨기기() {
+  if (document.querySelector('#check_삼십회빈도').checked) {
+    document.querySelector('#분석자료_삼십회빈도').classList.remove('d-none')
+  } else {
+    document.querySelector('#분석자료_삼십회빈도').classList.add('d-none')
   }
 }
 function 분석자료_회차select_change() {
@@ -390,6 +412,8 @@ function 분석자료_회차select_change() {
   분석자료_변수_5주번호정보();
   분석자료_변수_30주번호정보();
   분석자료_삼십회표_js작성();
+  분석자료_삼십회빈도_js작성();
+  분석자료_삼십회빈도개수_js작성();
 }
 function 당번_회차select_change() {
   회차index=parseInt(document.querySelector('#당번_회차select').value)-1; //parseInt(), 값전달 안하거나 공백은 NaN
@@ -504,8 +528,6 @@ function 분석자료_변수_5주번호정보_내부_미출부터이월수개수
     document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[3].innerHTML=출3이상;
     document.querySelectorAll('.다섯칸_있다면다음회차 .다섯칸')[반복].children[4].innerHTML=이월;
   }
-
-
 }
 function 분석자료_변수_5주번호정보() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
@@ -566,6 +588,15 @@ function 분석자료_변수_5주번호정보() {
   if(_5주3출이상.length>0) document.querySelector('#분석자료_변수_5주3출이상').innerHTML=_5주3출이상.join(',');
   if(_10주0출.length>0) document.querySelector('#분석자료_변수_5에서10주0출').innerHTML=_5에서10주0출.join(',');
   if(_15주0출.length>0) document.querySelector('#분석자료_변수_10에서15주0출').innerHTML=_10에서15주0출.join(',');
+  //표에 개수 넣기
+  var 요소들=document.querySelectorAll('#분석자료변수_초기화시_5주 > div'); // 1,2,3,7 형식의 텍스트
+  for (var i=0; i<요소들.length; i++) {
+    if (요소들[i].innerHTML.split(',')[0]=='') {
+      document.querySelectorAll('#분석자료_표_상_js > .js클릭번호')[i+1].children[0].children[1].innerHTML=0;
+    } else {
+      document.querySelectorAll('#분석자료_표_상_js > .js클릭번호')[i+1].children[0].children[1].innerHTML=요소들[i].innerHTML.split(',').length;
+    }
+  }
   //표에 색칠하기
   for (var i=0; i<당번.length; i++) {
     var 색칠숫자들=document.querySelector('#분석자료_변수_당번').innerHTML.split(',');
@@ -768,6 +799,18 @@ function 분석자료_삼십회표_js작성() {
   if (document.querySelector('#분석자료_변수_5주3출이상').innerHTML!='') {
     출3이상=document.querySelector('#분석자료_변수_5주3출이상').innerHTML.split(',');
   }
+  //표만들기(머리글위에개수)
+  var 최대값_30회출=Math.max(...삼십회출45배열);
+  var 머리글위에=document.createElement('div');
+  머리글위에.setAttribute('class','삼십회머리글위에div')
+  var 가로한줄=document.createElement('div');
+  for (var i=0; i<최대값_30회출+2; i++) {
+    var div요소=document.createElement('div');
+    if (i==0) {div요소.innerText='개수'};
+    가로한줄.appendChild(div요소);
+  }
+  머리글위에.appendChild(가로한줄);
+  document.querySelector('#분석자료_삼십회표_js').appendChild(머리글위에);
   //표만들기(머리글)
   var 최대값_30회출=Math.max(...삼십회출45배열);
   var 머리글=document.createElement('div');
@@ -971,31 +1014,95 @@ function 분석자료_삼십회표_js작성() {
         }
       }
     }
-
-
-
-
-  return;
-  var 장미수div=document.createElement('div');
-  var 가로한줄=document.createElement('div');
-  var 가로몇줄인가=0;
-  for (var i=0; i<최대값_30회출+2; i++) {
-
+    //분석자료_변수_30주번호정보();실행되었으므로 
+    var 삼십회빈도배열=[];
+    document.querySelectorAll('#분석자료 > div:nth-of-type(3) > #분석자료_표_하_js > ' + 
+    'div:nth-of-type(2) > #삼십회횟수기록 > div').forEach(div => 삼십회빈도배열.push(div.innerHTML));
+    for (var i=0; i<document.querySelectorAll('.삼십회머리글위에div > div > div').length; i++) {
+      if (i==0) {continue;}
+      document.querySelectorAll('.삼십회머리글위에div > div > div')[i].innerHTML=
+      삼십회빈도배열.filter(횟수 => 횟수==(i-1)).length;
+    }
+}
+function 분석자료_삼십회빈도_js작성() {
+  //2,3,4,5,6,합계
+  var 머리글html='<div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div title="3,4,5합계임">합</div></div>'
+  document.querySelector('#분석자료_삼십회빈도_js').innerHTML=머리글html;
+  var 빈줄html='<div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
+  for (var i=0; i<15; i++) {
+    document.querySelector('#분석자료_삼십회빈도_js').innerHTML+=빈줄html;
   }
-  머리글.appendChild(가로한줄);
-  document.querySelector('#분석자료_삼십회표_js').appendChild(머리글);
-
-
-  //장미수, 오주미출만, 1출, 2출, 3출이상
-  return;
-  document.querySelector('#분석자료_삼십회표_js').appendChild(머리글);
-  if (장미수.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(장미수div);}
-  if (오주미출만.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(오주미출만div);}
-  if (출1.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(출1div);}
-  if (출2.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(출2div);}
-  if (출3이상.length>0) {document.querySelector('#분석자료_삼십회표_js').appendChild(출3이상div);}
-
-
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
+  for (var i=1; i<16; i++) {
+    var 당번배열=당첨정보[parseInt(회차index)-i+1].children[2].innerHTML;
+    당번배열=당번배열.substring(0,당번배열.length-1).split(','); //현재회차 당번부터
+    var _30주번호들배열=''
+    for (var 내부=0; 내부<30; 내부++) {
+      //if (내부<4) {console.log(당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML)}
+      //if (내부==4) {console.log('5번째 : ' + 당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML)}
+      _30주번호들배열+=당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML;
+    }
+    _30주번호들배열=_30주번호들배열.substring(0,_30주번호들배열.length-1) //마지막 , 하나 지움
+    _30주번호들배열=_30주번호들배열.split(',');
+    //2,3,4,5,6,합계 작성, 당번(2)가 _30주번호들배열 에서 몇개인가==>
+    var 일=0, 이=0, 삼=0, 사=0, 오=0, 육=0, 칠=0, 합계=0, 합계=[];
+    for (var 내부=0; 내부<당번배열.length; 내부++) {
+      var 개수=_30주번호들배열.filter(번호 => 번호==당번배열[내부]).length;
+      if (개수==1) {일+=1};if (개수==2) {이+=1};if (개수==3) {삼+=1};if (개수==4) {사+=1};if (개수==5) {오+=1};if (개수==6) {육+=1};if (개수==7) {칠+=1};;
+      합계=삼+사+오;
+    }
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[0].innerHTML=일;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[1].innerHTML=이;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[2].innerHTML=삼;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[3].innerHTML=사;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[4].innerHTML=오;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[5].innerHTML=육;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[6].innerHTML=칠;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[7].innerHTML=합계;
+  }
+}
+function 분석자료_삼십회빈도개수_js작성() {
+  //2,3,4,5,6,합계
+  var 머리글html='<div><div>회차</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div title="2,3,4,5,6합계임">합</div></div>'
+  document.querySelector('#분석자료_삼십회23456개수_js').innerHTML=머리글html;
+  var 빈줄html='<div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
+  for (var i=0; i<15; i++) {
+    document.querySelector('#분석자료_삼십회23456개수_js').innerHTML+=빈줄html;
+  }
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
+  for (var i=1; i<16; i++) {
+    var _30주번호들배열=''
+    for (var 내부=0; 내부<30; 내부++) {
+      //if (내부<4) {console.log(당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML)}
+      //if (내부==4) {console.log('5번째 : ' + 당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML)}
+      _30주번호들배열+=당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML;
+    }
+    _30주번호들배열=_30주번호들배열.substring(0,_30주번호들배열.length-1) //마지막 , 하나 지움
+    _30주번호들배열=_30주번호들배열.split(',');
+    //번호위치에 빈도수 넣기
+    var 빈도45=[];
+    for (var 내부=0; 내부<45; 내부++) {
+      빈도45.push(_30주번호들배열.filter(번호 => 번호==내부+1).length)
+    }
+    var 일=0, 이=0, 삼=0, 사=0, 오=0, 육=0, 칠=0, 합계=0;
+    일=빈도45.filter(번호 => 번호==1).length;
+    이=빈도45.filter(번호 => 번호==2).length;
+    삼=빈도45.filter(번호 => 번호==3).length;
+    사=빈도45.filter(번호 => 번호==4).length;
+    오=빈도45.filter(번호 => 번호==5).length;
+    육=빈도45.filter(번호 => 번호==6).length;
+    칠=빈도45.filter(번호 => 번호==7).length;
+    합계=이+삼+사+오+육;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[0].innerHTML=회차index-i+1;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[1].innerHTML=일;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[2].innerHTML=이;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[3].innerHTML=삼;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[4].innerHTML=사;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[5].innerHTML=오;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[6].innerHTML=육;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[7].innerHTML=칠;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[8].innerHTML=합계;
+  }
 }
 function 당번_변수_30주번호정보() { 
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
@@ -1099,10 +1206,13 @@ function 버튼45감싸기_click(e) {
     var 전달문자열='';
     for (var i=0; i<10; i++) {
       if (document.querySelectorAll('#끝수 > div:nth-of-type(2) button')[i].classList.contains('js끝수버튼')) {
-        전달문자열+=document.querySelector(`#분석자료_변수_30주${i}출`).innerHTML + ',';
+        if (!document.querySelector(`#분석자료_변수_30주${i}출`).innerHTML=='') {
+          전달문자열+=document.querySelector(`#분석자료_변수_30주${i}출`).innerHTML + ',';
+        }
       }
     }
     if (전달문자열!='') {document.querySelector('#클릭번호들').innerHTML=전달문자열.substring(0,전달문자열.length-1)} else {return;}
+    console.log('전달문자열 : ' + 전달문자열)
     클릭번호들처리();
   }
   if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='C' && e.target.previousElementSibling.innerHTML=='끝수') {
@@ -1121,7 +1231,7 @@ function 버튼45감싸기_click(e) {
 function 클릭번호들처리() {
   // html에 기록된 번호들을 처리하는 로직이다.   
   var 클릭번호들배열=document.querySelector('#클릭번호들').innerHTML.split(',');
-  if (클릭번호들배열[0]=='') {console.log('클릭번호들배열[0]==공백 : ' + 클릭번호들배열[0]=='');return;}
+  console.log('클릭번호들배열 : ' + 클릭번호들배열)
   document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').parentElement.children[0].children[0].innerHTML=클릭번호들배열.length;
   for (var i=0; i<45; i++) {
     document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[i].innerHTML='';
@@ -1154,44 +1264,29 @@ function 클릭번호들처리() {
   }
   
   //숫자기록할곳의 초기화가 있어야되나???
+  //  if (document.querySelector('#누적').checked) {
+  var 기존배열=체크된곳번호들.innerHTML.split(',');
   if (document.querySelector('#누적').checked) {
-    console.log('누적일때')
-    var 기존배열=체크된곳번호들.innerHTML.split(',');
     if (기존배열[0]!='') {var 누적배열=new Set([...클릭번호들배열,...기존배열])}
     if (기존배열[0]=='') {var 누적배열=new Set([...클릭번호들배열])}
     누적배열=[...누적배열]
     체크된곳번호들.innerHTML=누적배열; //
-    if (누적배열[0]=='') {return;}
-    for (var i=0; i<45; i++) {
-      색칠할곳.children[i].innerHTML='';
-      색칠할곳.children[i].classList.remove('색칠');
-    }
-    for (var i=0; i<누적배열.length; i++) {
-      색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
-      색칠할곳.children[누적배열[i]-1].classList.add('색칠');
-    }
-    숫자기록할곳.innerHTML=누적배열.length;
-    return;
-  }
-  //누적 아닐때  
-  if (!document.querySelector('#누적').checked) {
-    console.log('누적아닐때')
-    체크된곳번호들.innerHTML=''; // 기존꺼 지우고 덮어쓸 예정 
-    var 기존배열=체크된곳번호들.innerHTML.split(',');
-    if (기존배열[0]!='') {var 누적배열=new Set([...클릭번호들배열,...기존배열])}
-    if (기존배열[0]=='') {var 누적배열=new Set([...클릭번호들배열])}
+  } else {
+    var 누적배열=new Set([...클릭번호들배열]);
     누적배열=[...누적배열]
-    if (누적배열[0]=='') {return;}
-    for (var i=0; i<45; i++) {
-      색칠할곳.children[i].innerHTML='';
-      색칠할곳.children[i].classList.remove('색칠');
-    }
-    for (var i=0; i<누적배열.length; i++) {
-      색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
-      색칠할곳.children[누적배열[i]-1].classList.add('색칠');
-    }
-    숫자기록할곳.innerHTML=누적배열.length;
+    체크된곳번호들.innerHTML=누적배열; //
   }
+  if (누적배열[0]=='') {return;}
+  for (var i=0; i<45; i++) {
+    색칠할곳.children[i].innerHTML='';
+    색칠할곳.children[i].classList.remove('색칠');
+  }
+  for (var i=0; i<누적배열.length; i++) {
+    색칠할곳.children[누적배열[i]-1].innerHTML=누적배열[i];
+    색칠할곳.children[누적배열[i]-1].classList.add('색칠');
+  }
+  숫자기록할곳.innerHTML=누적배열.length;
+  체크된곳번호들.innerHTML=누적배열;
 }
 function 킵_보기숨기기(e) {
   var 버튼들=document.querySelectorAll('.설명_왼쪽div_버튼5개 > button');
@@ -1233,6 +1328,28 @@ function 셑팅토글(e) {
     document.querySelector('#셑팅1').checked=false;
     document.querySelector('#셑팅2').checked=false;
   }
+}
+function 색칠하기(e) {
+  // e : id="버튼45오른쪽단독_안에_keep"
+  var 색칠할번호들=document.querySelector(`#${e}`).innerHTML.split(',');
+  if (색칠할번호들[0]=='') {console.log('색칠할번호들[0]==""; return;');return;}
+  //   색칠 체크 하나씩 확인하고 색칠
+  if (document.querySelector('#삼십회빈도').checked) { //분석자료_삼십회표_js
+    var 색칠할곳가로한줄=document.querySelectorAll('#분석자료_삼십회표_js > div > div');
+      for (var i=2; i<색칠할곳가로한줄.length; i++) {
+        for (var 가로=1; 가로<색칠할곳가로한줄[i].children.length; 가로++) {
+          색칠할곳가로한줄[i].children[가로].classList.remove('js색칠30회표');
+          if (색칠할곳가로한줄[i].children[가로].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳가로한줄[i].children[가로].innerHTML).length!=0) {
+            색칠할곳가로한줄[i].children[가로].classList.add('js색칠30회표')
+          }
+        }
+     }
+  }
+
+  if (document.querySelector('#당번표').checked) {
+
+  }
+
 }
   function mousedownOrTouchstart(e) {
     // 터치 이벤트인지 마우스 이벤트인지 확인
