@@ -493,13 +493,6 @@ function 당번_회차select_change() {
   당번_변수_초기화();
   당번_변수_5주번호정보();
   당번_변수_30주번호정보();
-  당번_변수_이월이웃간격();
-}
-function 당번_변수_이월이웃간격() {
-  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
-  if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
-  var 당번=[], 이월=[],이웃=[], 간격=[];
-
 }
 function 분석자료_변수_5주번호정보_내부_미출부터이월수개수_표_하() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
@@ -684,44 +677,6 @@ function 분석자료_변수_5주번호정보() {
     document.querySelector('#분석자료_표_상_js').children[10].children[1].children[색칠숫자들[i]-1].innerHTML=색칠숫자들[i];
   }
   분석자료_변수_5주번호정보_내부_미출부터이월수개수_표_하();
-}
-function 당번_변수_5주번호정보() {
-  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
-  var 당번=[]; _5주출=[],_5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[], _5주번호들배열='', _10주번호들배열='', _15주번호들배열='';
-  if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
-  for (var i=0; i<5; i++) {_5주번호들배열+=당첨정보[회차index-4+i].children[2].innerHTML}
-  _5주번호들배열=_5주번호들배열.substring(0,_5주번호들배열.length-1) //마지막 , 하나 지움
-  _5주번호들배열=_5주번호들배열.split(',');
-  //console.log('_5주번호들배열 : ' + _5주번호들배열);
-  for (var i=0; i<6; i++) {당번.push(당첨정보[회차index].children[2].innerHTML.split(',')[i]);}
-  for (var i=0; i<45; i++) {
-    if (_5주번호들배열.filter(번호 => 번호==i+1).length>=1) {_5주출.push(i+1)}
-    if (_5주번호들배열.filter(번호 => 번호==i+1).length==0) {_5주0출.push(i+1)}
-    if (_5주번호들배열.filter(번호 => 번호==i+1).length==1) {_5주1출.push(i+1)}
-    if (_5주번호들배열.filter(번호 => 번호==i+1).length==2) {_5주2출.push(i+1)}
-    if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
-  }
-  for (var i=0; i<10; i++) {_10주번호들배열+=당첨정보[회차index-9+i].children[2].innerHTML}
-  _10주번호들배열=_10주번호들배열.substring(0,_10주번호들배열.length-1) //마지막 _ 하나 지움
-  _10주번호들배열=_10주번호들배열.split(',');
-  for (var i=0; i<45; i++) {
-    if (_10주번호들배열.filter(번호 => 번호==i+1).length==0) {_10주0출.push(i+1)}
-  }
-  for (var i=0; i<10; i++) {_15주번호들배열+=당첨정보[회차index-14+i].children[2].innerHTML}
-  _15주번호들배열=_15주번호들배열.substring(0,_15주번호들배열.length-1) //마지막 _ 하나 지움
-  _15주번호들배열=_15주번호들배열.split(',');
-  for (var i=0; i<45; i++) {
-    if (_15주번호들배열.filter(번호 => 번호==i+1).length==0) {_15주0출.push(i+1)}
-  }
-  //        --- 값이 없으면 join이 안된다.
-  if(당번.length>0) document.querySelector('#당번_변수_당번').innerHTML=당번.join(',');
-  if(_5주출.length>0) document.querySelector('#당번_변수_5주출').innerHTML=_5주출.join(',');
-  if(_5주0출.length>0) document.querySelector('#당번_변수_5주0출').innerHTML=_5주0출.join(',');
-  if(_5주1출.length>0) document.querySelector('#당번_변수_5주1출').innerHTML=_5주1출.join(',');
-  if(_5주2출.length>0) document.querySelector('#당번_변수_5주2출').innerHTML=_5주2출.join(',');
-  if(_5주3출이상.length>0) document.querySelector('#당번_변수_5주3출').innerHTML=_5주3출이상.join(',');
-  if(_10주0출.length>0) document.querySelector('#당번_변수_10주0출').innerHTML=_10주0출.join(',');
-  if(_15주0출.length>0) document.querySelector('#당번_변수_15주0출').innerHTML=_15주0출.join(',');
 }
 function 분석자료_변수_30주번호정보() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
@@ -1144,6 +1099,76 @@ function 분석자료_삼십회빈도개수_js작성() {
     document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[10].innerHTML=합계;
   }
 }
+function 당번_변수_5주번호정보() {
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
+  var 당번=[]; _5주출=[],_5주0출=[],  _5주1출=[],  _5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[], _5주번호들배열='', _10주번호들배열='', _15주번호들배열='';
+  if (회차index>28 && !isNaN(회차index)) {} else {console.log('회차index>29 && !isNaN(회차index); return') ;return;}
+  for (var i=0; i<5; i++) {_5주번호들배열+=당첨정보[회차index-4+i].children[2].innerHTML}
+  _5주번호들배열=_5주번호들배열.substring(0,_5주번호들배열.length-1) //마지막 , 하나 지움
+  _5주번호들배열=_5주번호들배열.split(',');
+  //이웃;
+  var 이웃=[]; 이웃이월=[];
+  for (var i=0; i<6; i++) {당번.push(당첨정보[회차index].children[2].innerHTML.split(',')[i]);}
+  for (var i=0; i<6; i++) {
+    if (당번[i]==1) {
+      var 검토2=45, 검토1=2;
+      if(당번.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
+    } else if (당번[i]==45) {
+      var 검토2=44, 검토1=1;
+      if(당번.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
+    } else {
+      var 검토2=parseInt(당번[i])+1, 검토1=parseInt(당번[i])-1;
+      if(당번.filter(번호 => 번호==번호+1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==번호-1).length==0) {이웃.push(검토2)};
+    }
+  }
+  이웃이월=new Set([...당번, ...이웃])
+  이웃이월=[...이웃이월]
+  //console.log('_5주번호들배열 : ' + _5주번호들배열);
+  for (var i=0; i<45; i++) {
+    if (_5주번호들배열.filter(번호 => 번호==i+1).length>=1) {_5주출.push(i+1)}
+    if (_5주번호들배열.filter(번호 => 번호==i+1).length==0) {_5주0출.push(i+1)}
+    if (_5주번호들배열.filter(번호 => 번호==i+1).length==1) {_5주1출.push(i+1)}
+    if (_5주번호들배열.filter(번호 => 번호==i+1).length==2) {_5주2출.push(i+1)}
+    if (_5주번호들배열.filter(번호 => 번호==i+1).length>=3) {_5주3출이상.push(i+1)}
+  }
+  for (var i=0; i<10; i++) {_10주번호들배열+=당첨정보[회차index-9+i].children[2].innerHTML}
+  _10주번호들배열=_10주번호들배열.substring(0,_10주번호들배열.length-1) //마지막 _ 하나 지움
+  _10주번호들배열=_10주번호들배열.split(',');
+  for (var i=0; i<45; i++) {
+    if (_10주번호들배열.filter(번호 => 번호==i+1).length==0) {_10주0출.push(i+1)}
+  }
+  for (var i=0; i<10; i++) {_15주번호들배열+=당첨정보[회차index-14+i].children[2].innerHTML}
+  _15주번호들배열=_15주번호들배열.substring(0,_15주번호들배열.length-1) //마지막 _ 하나 지움
+  _15주번호들배열=_15주번호들배열.split(',');
+  for (var i=0; i<45; i++) {
+    if (_15주번호들배열.filter(번호 => 번호==i+1).length==0) {_15주0출.push(i+1)}
+  }
+  //        --- 값이 없으면 join이 안된다.
+  if(당번.length>0) document.querySelector('#당번_변수_당번').innerHTML=당번.join(',');
+  if(이웃.length>0) document.querySelector('#당번_변수_이웃').innerHTML=이웃.join(',');
+  if(이웃이월.length>0) document.querySelector('#당번_변수_당번이웃').innerHTML=이웃이월.join(',');
+  if(_5주출.length>0) document.querySelector('#당번_변수_5주출').innerHTML=_5주출.join(',');
+  if(_5주0출.length>0) document.querySelector('#당번_변수_5주0출').innerHTML=_5주0출.join(',');
+  if(_5주1출.length>0) document.querySelector('#당번_변수_5주1출').innerHTML=_5주1출.join(',');
+  if(_5주2출.length>0) document.querySelector('#당번_변수_5주2출').innerHTML=_5주2출.join(',');
+  if(_5주3출이상.length>0) document.querySelector('#당번_변수_5주3출').innerHTML=_5주3출이상.join(',');
+  if(_10주0출.length>0) document.querySelector('#당번_변수_10주0출').innerHTML=_10주0출.join(',');
+  if(_15주0출.length>0) document.querySelector('#당번_변수_15주0출').innerHTML=_15주0출.join(',');
+  
+  document.querySelectorAll('#당번_오주연결버튼 > div')[1].children[1].innerHTML=당번.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[2].children[1].innerHTML=이웃.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[3].children[1].innerHTML=이웃이월.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[4].children[1].innerHTML=_5주출.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[5].children[1].innerHTML=_5주0출.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[6].children[1].innerHTML=_5주1출.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[7].children[1].innerHTML=_5주2출.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[8].children[1].innerHTML=_5주3출이상.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[9].children[1].innerHTML=_10주0출.length;
+  document.querySelectorAll('#당번_오주연결버튼 > div')[10].children[1].innerHTML=_15주0출.length;
+}
 function 당번_변수_30주번호정보() { 
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
   var _30주번호들배열='', _30주0출=[], _30주1출=[], _30주2출=[], _30주3출=[], _30주4출=[], _30주5출=[];
@@ -1181,6 +1206,20 @@ function 당번_변수_30주번호정보() {
   if(_30주10출.length>0) document.querySelector('#당번_변수_30주10출').innerHTML=_30주10출.join(',');
   if(_30주11출.length>0) document.querySelector('#당번_변수_30주11출').innerHTML=_30주11출.join(',');
   if(_30주12출.length>0) document.querySelector('#당번_변수_30주12출').innerHTML=_30주12출.join(',');
+
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[1].children[1].innerHTML=_30주0출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[2].children[1].innerHTML=_30주1출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[3].children[1].innerHTML=_30주2출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[4].children[1].innerHTML=_30주3출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[5].children[1].innerHTML=_30주4출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[6].children[1].innerHTML=_30주5출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[7].children[1].innerHTML=_30주6출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[8].children[1].innerHTML=_30주7출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[9].children[1].innerHTML=_30주8출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[10].children[1].innerHTML=_30주9출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[11].children[1].innerHTML=_30주10출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[12].children[1].innerHTML=_30주11출.length;
+  document.querySelectorAll('#당번_삼십주연결버튼 > div')[13].children[1].innerHTML=_30주12출.length;
 }
 function 옵션생성() {
   var 당첨정보=document.querySelectorAll('.당첨정보');
@@ -1221,9 +1260,18 @@ function 카테고리보기() {
 }
 리스너_분석자료.addEventListener('click',리스너_분석자료_click)
 
-  
+var 리스너_당번오른쪽=  document.querySelector('#당번_오른쪽');
 var 버튼45감싸기=document.querySelector('#버튼45감싸기');
 var 버튼45오른쪽단독=document.querySelector('#버튼45오른쪽단독');
+function 리스너_당번오른쪽_click(e) {
+  console.log('리스너_당번오른쪽_click(e)')
+  document.querySelector('#js당번_색칠할번호들').innerHTML=''; //중복가능하게 배열로 전달할까? 
+  if (e.target.tagName=='BUTTON' && e.target.title!='') {console.log(e.target.title);}else {return;}
+  //당번쪽에 색칠한다. #js당번_색칠할번호들 은 당번 전용이다.
+  //회차가 바뀌면 5주미출수가 달라지는것을 반영할수 있나?
+
+
+}
 function 버튼45감싸기_click(e) {
   console.log('버튼45감싸기_click(e)')
   if (e.target.parentElement.parentElement.id=='끝수' && e.target.nodeName=='BUTTON') {
@@ -1570,3 +1618,4 @@ function 색칠하기(e) {
   버튼45오른쪽단독.addEventListener('mousedown', mousedownOrTouchstart2);
   버튼45오른쪽단독.addEventListener('touchstart', mousedownOrTouchstart2);
   버튼45오른쪽단독.addEventListener('click', 버튼45감싸기_click);
+  리스너_당번오른쪽.addEventListener('click',리스너_당번오른쪽_click)
