@@ -6,6 +6,14 @@ var 회차index=document.querySelector('#당번_회차select').value; //회차�
 카테고리보기();
 당번_회차select_change();
 분석자료_회차select_change();
+번호45_3개_title넣기();
+function 번호45_3개_title넣기() {
+  for (var i=1; i<4; i++) {
+    for (var 내부=0; 내부<45; 내부++) {
+      document.querySelectorAll(`#id_버튼45_${i}st > div > button`)[내부].setAttribute('title',document.querySelectorAll(`#id_버튼45_${i}st > div > button`)[내부].innerHTML)
+    }
+  }
+}
 var 리스너_분석자료=document.querySelector('#분석자료');
 function 리스너_분석자료_click(e) {
   console.log('리스너_분석자료_click(e)')
@@ -97,7 +105,6 @@ function 리스너_분석자료_click(e) {
       document.querySelector('#클릭번호들').innerHTML=document.querySelector('#분석자료_변수_30주' + e.target.innerHTML + '출').innerHTML.split(',').join(',');
       
       var 클릭번호들=document.querySelector('#클릭번호들').innerHTML.split(','); //리스너_분석자료_click(e)에서 횟수같은 번호들이 넘어감
-      document.querySelector('#클릭번호정보').innerHTML='30회 ' + e.target.innerHTML + '회출 번호들, ' + 클릭번호들.length + '개'
       for (var i=0; i<document.querySelectorAll('#삼십회횟수기록 > div').length; i++) {
         document.querySelectorAll('#삼십회횟수기록 > div')[i].classList.remove('색칠');
       }
@@ -149,6 +156,27 @@ function 리스너_분석자료_click(e) {
     }
   }
 }
+function 당번_회차플러스() {
+  console.log('당번_회차플러스()')
+  var 선택회차=parseInt(document.querySelector('#당번_회차select').value);
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
+  if (당첨정보.length==선택회차) {alert('가장 최근 회차입니다.'); return;}
+  document.querySelector('#당번_회차select').value=선택회차+1;
+  당번_회차select_change()
+}
+function 당번_회차마이너스() {
+  console.log('당번료_회차빼기()')
+  var 선택회차=parseInt(document.querySelector('#당번_회차select').value);
+  document.querySelector('#당번_회차select').value=선택회차-1;
+  당번_회차select_change()
+}
+function 당번_색칠clear() {
+  console.log('당번_색칠clear()')
+  var 색칠할곳div=document.querySelectorAll('#당번_불러온당첨정보 .당번만 > div');
+  for (var i=0; i<색칠할곳div.length; i++) {
+    색칠할곳div[i].classList.remove('번호45색칠');
+  }
+}
 function 분석자료_회차마이너스() {
   console.log('분석자료_회차빼기()')
   var 선택회차=parseInt(document.querySelector('#분석자료_회차select').value);
@@ -158,7 +186,6 @@ function 분석자료_회차마이너스() {
 function 분석자료_회차플러스() {
   console.log('분석자료_회차빼기()')
   var 선택회차=parseInt(document.querySelector('#분석자료_회차select').value);
-  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
   if (당첨정보.length==선택회차) {alert('가장 최근 회차입니다.'); return;}
   document.querySelector('#분석자료_회차select').value=선택회차+1;
   분석자료_회차select_change()
@@ -355,6 +382,14 @@ function 당번_보기숨기기() {
     document.querySelector('#당번').classList.add('d-none')
   }
 }
+
+function 당번_오른쪽_보기숨기기() {
+  if (document.querySelector('#check_당번오른쪽').checked) {
+    document.querySelector('#당번_오른쪽').classList.remove('d-none')
+  } else {
+    document.querySelector('#당번_오른쪽').classList.add('d-none')
+  }
+}
 function 삼십회_보기숨기기() {
   if (document.querySelector('#check_삼십회').checked) {
     document.querySelector('#분석자료_삼십회표').classList.remove('d-none')
@@ -420,7 +455,6 @@ function 당번_회차select_change() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
   var 넣을곳=document.querySelector('#당번_불러온당첨정보');
   넣을곳.innerHTML='';
-  document.querySelector('#당번_선택회차날짜').innerHTML=당첨정보[회차index].children[1].innerHTML;
   //다음회차 있으면 #당번_다음회차 정보 셑팅
   if (당첨정보[회차index+1]) {
     var 가공결과='';
@@ -685,7 +719,7 @@ function 당번_변수_5주번호정보() {
   if(_5주0출.length>0) document.querySelector('#당번_변수_5주0출').innerHTML=_5주0출.join(',');
   if(_5주1출.length>0) document.querySelector('#당번_변수_5주1출').innerHTML=_5주1출.join(',');
   if(_5주2출.length>0) document.querySelector('#당번_변수_5주2출').innerHTML=_5주2출.join(',');
-  if(_5주3출이상.length>0) document.querySelector('#당번_변수_5주3출이상').innerHTML=_5주3출이상.join(',');
+  if(_5주3출이상.length>0) document.querySelector('#당번_변수_5주3출').innerHTML=_5주3출이상.join(',');
   if(_10주0출.length>0) document.querySelector('#당번_변수_10주0출').innerHTML=_10주0출.join(',');
   if(_15주0출.length>0) document.querySelector('#당번_변수_15주0출').innerHTML=_15주0출.join(',');
 }
@@ -1026,14 +1060,14 @@ function 분석자료_삼십회표_js작성() {
 }
 function 분석자료_삼십회빈도_js작성() {
   //2,3,4,5,6,합계
-  var 머리글html='<div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div title="3,4,5합계임">합</div></div>'
+  var 머리글html='<div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div title="3,4,5합계임">합</div></div>'
   document.querySelector('#분석자료_삼십회빈도_js').innerHTML=머리글html;
-  var 빈줄html='<div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
-  for (var i=0; i<15; i++) {
+  var 빈줄html='<div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
+  for (var i=0; i<20; i++) {
     document.querySelector('#분석자료_삼십회빈도_js').innerHTML+=빈줄html;
   }
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
-  for (var i=1; i<16; i++) {
+  for (var i=1; i<21; i++) {
     var 당번배열=당첨정보[parseInt(회차index)-i+1].children[2].innerHTML;
     당번배열=당번배열.substring(0,당번배열.length-1).split(','); //현재회차 당번부터
     var _30주번호들배열=''
@@ -1045,32 +1079,34 @@ function 분석자료_삼십회빈도_js작성() {
     _30주번호들배열=_30주번호들배열.substring(0,_30주번호들배열.length-1) //마지막 , 하나 지움
     _30주번호들배열=_30주번호들배열.split(',');
     //2,3,4,5,6,합계 작성, 당번(2)가 _30주번호들배열 에서 몇개인가==>
-    var 일=0, 이=0, 삼=0, 사=0, 오=0, 육=0, 칠=0, 합계=0, 합계=[];
+    var 영=0, 일=0, 이=0, 삼=0, 사=0, 오=0, 육=0, 칠=0, 팔=0, 합계=0, 합계=[];
     for (var 내부=0; 내부<당번배열.length; 내부++) {
       var 개수=_30주번호들배열.filter(번호 => 번호==당번배열[내부]).length;
-      if (개수==1) {일+=1};if (개수==2) {이+=1};if (개수==3) {삼+=1};if (개수==4) {사+=1};if (개수==5) {오+=1};if (개수==6) {육+=1};if (개수==7) {칠+=1};;
+      if (개수==0) {영+=1};if (개수==1) {일+=1};if (개수==2) {이+=1};if (개수==3) {삼+=1};if (개수==4) {사+=1};if (개수==5) {오+=1};if (개수==6) {육+=1};if (개수==7) {칠+=1};if (개수==8) {팔+=1};
       합계=삼+사+오;
     }
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[0].innerHTML=일;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[1].innerHTML=이;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[2].innerHTML=삼;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[3].innerHTML=사;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[4].innerHTML=오;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[5].innerHTML=육;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[6].innerHTML=칠;
-    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[7].innerHTML=합계;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[0].innerHTML=영;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[1].innerHTML=일;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[2].innerHTML=이;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[3].innerHTML=삼;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[4].innerHTML=사;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[5].innerHTML=오;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[6].innerHTML=육;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[7].innerHTML=칠;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[8].innerHTML=팔;
+    document.querySelectorAll('#분석자료_삼십회빈도_js > div')[i].children[9].innerHTML=합계;
   }
 }
 function 분석자료_삼십회빈도개수_js작성() {
   //2,3,4,5,6,합계
-  var 머리글html='<div><div>회차</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div title="2,3,4,5,6합계임">합</div></div>'
+  var 머리글html='<div><div>회차</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div title="2,3,4,5,6합계임">합</div></div>'
   document.querySelector('#분석자료_삼십회23456개수_js').innerHTML=머리글html;
-  var 빈줄html='<div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
-  for (var i=0; i<15; i++) {
+  var 빈줄html='<div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
+  for (var i=0; i<20; i++) {
     document.querySelector('#분석자료_삼십회23456개수_js').innerHTML+=빈줄html;
   }
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
-  for (var i=1; i<16; i++) {
+  for (var i=1; i<20; i++) {
     var _30주번호들배열=''
     for (var 내부=0; 내부<30; 내부++) {
       //if (내부<4) {console.log(당첨정보[parseInt(회차index)-i-내부].children[2].innerHTML)}
@@ -1084,7 +1120,8 @@ function 분석자료_삼십회빈도개수_js작성() {
     for (var 내부=0; 내부<45; 내부++) {
       빈도45.push(_30주번호들배열.filter(번호 => 번호==내부+1).length)
     }
-    var 일=0, 이=0, 삼=0, 사=0, 오=0, 육=0, 칠=0, 합계=0;
+    var 영=0, 일=0, 이=0, 삼=0, 사=0, 오=0, 육=0, 칠=0, 팔=0, 합계=0;
+    영=빈도45.filter(번호 => 번호==0).length;
     일=빈도45.filter(번호 => 번호==1).length;
     이=빈도45.filter(번호 => 번호==2).length;
     삼=빈도45.filter(번호 => 번호==3).length;
@@ -1092,16 +1129,19 @@ function 분석자료_삼십회빈도개수_js작성() {
     오=빈도45.filter(번호 => 번호==5).length;
     육=빈도45.filter(번호 => 번호==6).length;
     칠=빈도45.filter(번호 => 번호==7).length;
-    합계=이+삼+사+오+육;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[0].innerHTML=회차index-i+1;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[1].innerHTML=일;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[2].innerHTML=이;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[3].innerHTML=삼;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[4].innerHTML=사;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[5].innerHTML=오;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[6].innerHTML=육;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[7].innerHTML=칠;
-    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i].children[8].innerHTML=합계;
+    팔=빈도45.filter(번호 => 번호==8).length;
+    합계=영+일+이+삼+사+오+육+칠+팔;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[0].innerHTML=회차index-i+1;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[1].innerHTML=영;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[2].innerHTML=일;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[3].innerHTML=이;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[4].innerHTML=삼;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[5].innerHTML=사;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[6].innerHTML=오;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[7].innerHTML=육;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[8].innerHTML=칠;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[9].innerHTML=팔;
+    document.querySelectorAll('#분석자료_삼십회23456개수_js > div')[i+1].children[10].innerHTML=합계;
   }
 }
 function 당번_변수_30주번호정보() { 
@@ -1227,11 +1267,40 @@ function 버튼45감싸기_click(e) {
       document.querySelectorAll('#끝수 > div:nth-of-type(2) > button')[i].classList.remove('js끝수버튼')
     }
   }
+  if (e.target.classList.contains('클릭번호로내보내기')) {
+    console.log('  버튼45감싸기_click(e) -- e.target.classList.contains(클릭번호로내보내기)')
+    var 번호확인요소=document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button');
+    if (document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' .번호45색칠').length) {
+      console.log('색칠있음진행')
+    } else {
+      console.log('색칠없음. 종료'); return;
+    }
+    var 색칠할번호들=[];
+    for (var i=0; i<45; i++) {
+      if (번호확인요소[i].classList.contains('번호45색칠')) {색칠할번호들.push(번호확인요소[i].title)}
+    }
+    document.querySelector('#클릭번호들').innerHTML=색칠할번호들;
+    클릭번호들처리();
+  }
+  if (e.target.classList.contains('버튼45_clear')) {
+    console.log('  버튼45감싸기_click(e) -- e.target.classList.contains(버튼45_clear)')
+    var 번호확인요소=document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button');
+    var 색칠할번호들=[];
+    for (var i=0; i<45; i++) {
+      번호확인요소[i].classList.remove('번호45색칠');
+    }
+  }
+  if (e.target.parentElement.parentElement.classList.contains('버튼45css') && e.target.nodeName=='BUTTON') {
+    if (e.target.classList.contains('번호45색칠')) {
+      e.target.classList.remove('번호45색칠');
+    } else {
+      e.target.classList.add('번호45색칠');
+    }
+  }
 }
 function 클릭번호들처리() {
   // html에 기록된 번호들을 처리하는 로직이다.   
   var 클릭번호들배열=document.querySelector('#클릭번호들').innerHTML.split(',');
-  console.log('클릭번호들배열 : ' + 클릭번호들배열)
   document.querySelector('#버튼45오른쪽단독_안에_클릭번호들').parentElement.children[0].children[0].innerHTML=클릭번호들배열.length;
   for (var i=0; i<45; i++) {
     document.querySelectorAll('#버튼45오른쪽단독_안에_클릭번호들 > div')[i].innerHTML='';
@@ -1347,7 +1416,43 @@ function 색칠하기(e) {
   }
 
   if (document.querySelector('#당번표').checked) {
+    var 색칠할곳div=document.querySelectorAll('#당번_불러온당첨정보 .당번만 > div');
+    for (var i=0; i<색칠할곳div.length; i++) {
+      색칠할곳div[i].classList.remove('번호45색칠');
+      if (색칠할곳div[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳div[i].innerHTML).length!=0) {
+        색칠할곳div[i].classList.add('번호45색칠')
+      }
+    }
+  }
 
+  if (document.querySelector('#사오1ST').checked) {
+    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_1st > div > button');
+    for (var i=0; i<색칠할곳버튼.length; i++) {
+      색칠할곳버튼[i].classList.remove('번호45색칠');
+      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
+        색칠할곳버튼[i].classList.add('번호45색칠')
+      }
+    }
+  }
+
+  if (document.querySelector('#사오2ST').checked) {
+    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_2st > div > button');
+    for (var i=0; i<색칠할곳버튼.length; i++) {
+      색칠할곳버튼[i].classList.remove('번호45색칠');
+      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
+        색칠할곳버튼[i].classList.add('번호45색칠')
+      }
+    }
+  }
+
+  if (document.querySelector('#사오3ST').checked) {
+    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_3st > div > button');
+    for (var i=0; i<색칠할곳버튼.length; i++) {
+      색칠할곳버튼[i].classList.remove('번호45색칠');
+      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
+        색칠할곳버튼[i].classList.add('번호45색칠')
+      }
+    }
   }
 
 }

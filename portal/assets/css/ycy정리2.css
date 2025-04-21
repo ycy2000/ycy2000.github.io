@@ -13,17 +13,28 @@ body {white-space: nowrap;}
 #당번 #당번_불러온당첨정보 .당첨정보, #당번_다음회차 .당첨정보 {margin-bottom:-1px;text-align: center;}
 #당번 #당번_불러온당첨정보 .당첨정보 div,  #당번_다음회차 .당첨정보 div {display: inline-block;}/* #당번 .당첨정보 > div:nth-of-type(1) 회차, (2)날짜, (3)당번만 class, (4)보볼 */
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(1), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(1) {width:40px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
+#당번_플마클리어버튼 > button {border:1px solid black; border-radius: 5px; display: inline-block; width:30px; margin-right:5px;vertical-align: top;margin-top:5px;}
+#당번_플마클리어버튼 > button:nth-of-type(3) {width:55px;}
+.버튼45_span {margin-top:10px;}
+.버튼45_span > span {padding:3px;border:1px solid black; border-radius: 5px; margin-right:5px;vertical-align: top;}
 
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(2), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(2) {display:none; width:100px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
 
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(3) > div, #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(3) > div {width:34px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(4), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(4) {width:34px;height:34px;border:1px solid gray;padding-top:3px;}
-#당번 #당번_불러온당첨정보 > div:nth-child(odd) > *:not(:last-child):not([class*='색칠용버튼']) {background-color:bisque;color:blue;}
+#당번 #당번_불러온당첨정보 > div:nth-child(odd) > *:not(:last-child):not([class*='번호45색칠']) {background-color:bisque;color:blue;}
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(4) {background-color: rgb(100, 237, 214);}
 #당번 #당번_불러온당첨정보 .당첨정보 .당번만 > div {font-weight: bold;}
 
 #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(4) {background-color: rgb(100, 237, 214);}
 #당번 #당번_다음회차 .당첨정보 .당번만 > div {font-weight: bold;}
+
+#당번 #당번_오주연결버튼 > div, #당번 #당번_삼십주연결버튼 > div {margin-bottom:-1px;}
+#당번 #당번_오주연결버튼 > div > button:nth-of-type(1) {border:1px solid black; display:inline-block; width:70px;height:30px;margin-right:-1px;}
+#당번 #당번_오주연결버튼 > div > button:nth-of-type(2) {border:1px solid black; display:inline-block; width:30px;height:30px;}
+#당번 #당번_삼십주연결버튼 > div > button:nth-of-type(1) {border:1px solid black; display:inline-block; width:40px;height:30px;margin-right:-1px;}
+#당번 #당번_삼십주연결버튼 > div > button:nth-of-type(2) {border:1px solid black; display:inline-block; width:30px;height:30px;}
+
 
 #XO플마 {margin-right:5px;}
 #분석자료숨김버튼 > button, #XO플마 > button {margin-right:-5px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
@@ -67,33 +78,40 @@ body {white-space: nowrap;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div /*가로 div들*/
 {display: inline-block; width:24px;height:24px; border:1px solid gray;text-align: center;vertical-align: top;margin-right:-1px;font-weight: bold;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div {margin-bottom:-1px;}
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(2),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(5) {margin-right:0px;}
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(3),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(6) {margin-right:0px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(1),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(6),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(11) {margin-bottom:0px;}
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(11),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(16) {margin-bottom:0px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(8) {width:30px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(1),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(7),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(8),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(9),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(10),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(11)
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(11),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(17),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(18),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(19),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(20),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div:nth-of-type(21)
 {background-color:rgb(231, 218, 218)}
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(3),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(4),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(5),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(8)
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(6),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회빈도_js > div > div:nth-of-type(10)
 {background-color: bisque;}
 
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div /*가로 div들*/
 {display: inline-block; width:24px;height:24px; border:1px solid gray;text-align: center;vertical-align: top;margin-right:-1px;font-weight: bold;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div {margin-bottom:-1px;}
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(3),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(6) {margin-right:0px;}
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(4),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(7) {margin-right:0px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(1),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(6),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(11) {margin-bottom:0px;}
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(11),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(16) {margin-bottom:0px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(1) {width:40px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(9) {width:30px;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(1),
@@ -101,12 +119,17 @@ body {white-space: nowrap;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(8),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(9),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(10),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(11)
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(11),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(17),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(18),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(19),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(20),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div:nth-of-type(21)
 {background-color:rgb(231, 218, 218)}
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(4),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(5),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(6),
-#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(9)
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(7),
+#분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(11)
 {background-color: bisque;}
 
 
@@ -206,7 +229,7 @@ body {white-space: nowrap;}
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄 > .설명_왼쪽div > div {width:110px;}
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄 > .설명_왼쪽div_버튼5개 > div {width:73px;}
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄 > div:nth-of-type(2) > div 
-{display:inline-block; width:24px;height:24px;border:1px solid black;vertical-align: top;margin-right:-1px;}
+{display:inline-block; width:23px;height:24px;border:1px solid black;vertical-align: top;margin-right:-1px;}
 
 #버튼45오른쪽단독 > .설명_두번째div {background-color: white; border:1px solid black;padding:3px;font-weight: bold;width:1223px;}
 #버튼45오른쪽단독 > .설명_두번째div > div {display: inline-block;}
@@ -227,74 +250,21 @@ body {white-space: nowrap;}
 .js끝수버튼 {background-color: chocolate;}
 
 .js숨김 {background-color: chocolate;}
-/* .버튼45오른쪽단독_별도style > div:nth-of-type(1) {width:110px;} */
-/* #버튼45오른쪽단독 > div > #버튼45오른쪽단독_안에_색칠할번호들 > .다섯개씩번갈아색칠 > div {} */
-
-/* .버튼45오른쪽단독_별도style > div {display: inline-block; margin-bottom:1px;height:24px;vertical-align: top;margin-right:-1px;border:1px solid black;} */
-
-
-
-
-
-
-/* .당번만 > div 
-
-
-#분석자료_표_하_js div {vertical-align: top;font-weight: bold;}
-#분석자료_표_하_js > div {display: inline-block;text-align: center;}
-#분석자료_표_하_js > div:nth-of-type(2) > div {margin-bottom:-1px;}
-#분석자료_표_하_js > div:nth-of-type(2) > div:nth-of-type(1) {margin-bottom:0px;}
-#분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(8) {margin-bottom:0px;}
-#분석자료_표_하_js > div:nth-of-type(2) > div:nth-child(5n+9) {margin-bottom:0px;}
-
-#분석자료_표_하_js > div:nth-of-type(2) > div > div 
-{vertical-align: top; display: inline-block; width:24px;height:24px; border:1px solid black;margin-right:-1px;font-weight: bold;}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸머리글 .다섯칸 > div {background-color: rgb(224, 176, 141);}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸_있다면다음회차 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
-#분석자료_표_하_js > div:nth-of-type(1) > .다섯칸_있다면다음회차 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
-#분석자료_표_하_js .다섯칸div전체 .다섯칸 {margin-top:-1px;height:24px;}
-#분석자료_표_하_js .다섯칸div전체 .다섯칸 > div {display: inline-block;border:1px solid black;height:24px;width:27px;margin-right:-1px;}
-#분석자료_표_하_js .다섯칸div전체 .다섯칸 > div:last-child {width:40px;border-right:2px solid black;}
-#분석자료_표_하_js .다섯칸div전체 .다섯칸:nth-child(5n) {margin-bottom:1px;}
-
-.다섯개씩번갈아색칠 > div {display: inline-block;border:1px solid black;height:24px;width:24px;margin-right:-1px;text-align: center;font-weight: bold;}
-.다섯개씩번갈아색칠 div:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
-.다섯개씩번갈아색칠 div:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}
-.다섯개씩번갈아색칠 div:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
-.다섯개씩번갈아색칠 div:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 div:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) {background-color:rgb(196, 169, 137);}
-
-/*
-
-
-
-
-#버튼45오른쪽단독 * {vertical-align: top;}
-#버튼45오른쪽단독 > div:nth-of-type(1), #버튼45오른쪽단독 > div:nth-of-type(2), #버튼45오른쪽단독 > div:nth-of-type(3), #버튼45오른쪽단독 > div:nth-of-type(4), #버튼45오른쪽단독 > div:nth-of-type(5), #버튼45오른쪽단독 > div:nth-of-type(6) 
-{background-color: white;margin-bottom:-5px;padding:0px;}
-#버튼45오른쪽단독 > div > button {display: inline-block; margin-bottom:1px;height:27px;vertical-align: top;margin-right:-1px;border:1px solid black;}
-
-
-
-.클릭색칠 {border-radius: 24px;background-color:cornflowerblue;}
-
-*/
 
 
 /* 코딩 임시 끝 */
-.색칠용버튼[title='1'], .색칠용버튼[title='2'], .색칠용버튼[title='3'], .색칠용버튼[title='4'], .색칠용버튼[title='5'],
-.색칠용버튼[title='6'], .색칠용버튼[title='7'], .색칠용버튼[title='8'], .색칠용버튼[title='9']
+.번호45색칠[title='1'], .번호45색칠[title='2'], .번호45색칠[title='3'], .번호45색칠[title='4'], .번호45색칠[title='5'],
+.번호45색칠[title='6'], .번호45색칠[title='7'], .번호45색칠[title='8'], .번호45색칠[title='9']
 {background-color: yellow;border-radius: 20px;}
-.색칠용버튼[title='10'],.색칠용버튼[title='11'], .색칠용버튼[title='12'], .색칠용버튼[title='13'], .색칠용버튼[title='14'], 
-.색칠용버튼[title='15'],.색칠용버튼[title='16'], .색칠용버튼[title='17'], .색칠용버튼[title='18'], .색칠용버튼[title='19']
+.번호45색칠[title='10'],.번호45색칠[title='11'], .번호45색칠[title='12'], .번호45색칠[title='13'], .번호45색칠[title='14'], 
+.번호45색칠[title='15'],.번호45색칠[title='16'], .번호45색칠[title='17'], .번호45색칠[title='18'], .번호45색칠[title='19']
 {background-color:cornflowerblue;border-radius: 20px;}
-.색칠용버튼[title='20'],.색칠용버튼[title='21'], .색칠용버튼[title='22'], .색칠용버튼[title='23'], .색칠용버튼[title='24'], 
-.색칠용버튼[title='25'],.색칠용버튼[title='26'], .색칠용버튼[title='27'], .색칠용버튼[title='28'], .색칠용버튼[title='29']
+.번호45색칠[title='20'],.번호45색칠[title='21'], .번호45색칠[title='22'], .번호45색칠[title='23'], .번호45색칠[title='24'], 
+.번호45색칠[title='25'],.번호45색칠[title='26'], .번호45색칠[title='27'], .번호45색칠[title='28'], .번호45색칠[title='29']
 {background-color:red ;border-radius: 20px;}
-.색칠용버튼[title='30'],.색칠용버튼[title='31'], .색칠용버튼[title='32'], .색칠용버튼[title='33'], .색칠용버튼[title='34'], 
-.색칠용버튼[title='35'],.색칠용버튼[title='36'], .색칠용버튼[title='37'], .색칠용버튼[title='38'], .색칠용버튼[title='39']
+.번호45색칠[title='30'],.번호45색칠[title='31'], .번호45색칠[title='32'], .번호45색칠[title='33'], .번호45색칠[title='34'], 
+.번호45색칠[title='35'],.번호45색칠[title='36'], .번호45색칠[title='37'], .번호45색칠[title='38'], .번호45색칠[title='39']
 {background-color:gray;border-radius: 20px;}
-.색칠용버튼[title='40'],.색칠용버튼[title='41'], .색칠용버튼[title='42'], .색칠용버튼[title='43'], .색칠용버튼[title='44'], 
-.색칠용버튼[title='45']
+.번호45색칠[title='40'],.번호45색칠[title='41'], .번호45색칠[title='42'], .번호45색칠[title='43'], .번호45색칠[title='44'], 
+.번호45색칠[title='45']
 {background-color:green;border-radius: 20px;}
