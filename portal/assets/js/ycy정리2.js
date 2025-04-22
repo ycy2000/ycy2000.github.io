@@ -1,9 +1,13 @@
-var 색칠하기유형='';
-function 작성중_change시_색칠하기() {
-  //1. 색칠할정보 요소에는 '5주미출수_1,2,3,4,5_끝수4' 형태이고 숫자를 풀어서 색칠할숫자들 요소에 넣는다.
-  //2. change시???
-
-
+var 전체변수클릭번호정보문자열='';
+function 클릭번호정보문자열만들기() {
+  //누적이 아닐때 #클릭번호정보 공백으로 해둔다. 
+  if (!document.querySelector('#누적').checked) {document.querySelector('#클릭번호정보').innerHTML='';}  //change
+  if (document.querySelector('#클릭번호정보').innerHTML!='') {
+    전체변수클릭번호정보문자열=document.querySelector('#클릭번호정보').innerHTML + ',' + 전체변수클릭번호정보문자열
+  }//change
+  전체변수클릭번호정보문자열=전체변수클릭번호정보문자열.split(',');
+  전체변수클릭번호정보문자열=new Set(전체변수클릭번호정보문자열);전체변수클릭번호정보문자열=[...전체변수클릭번호정보문자열];//change
+  document.querySelector('#클릭번호정보').innerHTML=전체변수클릭번호정보문자열;//change
 }
 옵션생성();
 var 회차index=document.querySelector('#당번_회차select').value; //회차번호보다 1 작다. 옵션생성() 앞에 있어도 된다. 함수를 먼저 하는듯
@@ -1323,42 +1327,35 @@ function 버튼45감싸기_click(e) {
   }
   if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='끝수') {
     console.log('  버튼45감싸기_click(e) -- 끝수 셑팅')
-    var 클릭번호정보문자열=''; //change
+    전체변수클릭번호정보문자열='';//change
     var 전달문자열='';
     for (var i=0; i<10; i++) {
       if (document.querySelectorAll('#끝수 > div:nth-of-type(1) button')[i].classList.contains('js끝수버튼')) {
         전달문자열+=document.querySelector(`#끝수${i}`).innerHTML + ',';
-        if (클릭번호정보문자열=='') {클릭번호정보문자열=`끝수${i}`} else {클릭번호정보문자열+=',' + `끝수${i}`} //change
+        if (전체변수클릭번호정보문자열=='') {전체변수클릭번호정보문자열=`끝수${i}`} else {전체변수클릭번호정보문자열+=',' + `끝수${i}`} //change
       }
     }
     if (전달문자열!='') {document.querySelector('#클릭번호들').innerHTML=전달문자열.substring(0,전달문자열.length-1)} else {return;}
-    //누적이 아닐때 #클릭번호정보 공백으로 해둔다. 
-    if (!document.querySelector('#누적').checked) {document.querySelector('#클릭번호정보').innerHTML='';}  //change
-    if (document.querySelector('#클릭번호정보').innerHTML!='') {클릭번호정보문자열=document.querySelector('#클릭번호정보').innerHTML + ',' + 클릭번호정보문자열}//change
-    클릭번호정보문자열=클릭번호정보문자열.split(',');
-    클릭번호정보문자열=new Set(클릭번호정보문자열);클릭번호정보문자열=[...클릭번호정보문자열];//change
-    document.querySelector('#클릭번호정보').innerHTML=클릭번호정보문자열;//change
+    클릭번호정보문자열만들기();
+    console.log('전달문자열 : ' + 전달문자열)
     클릭번호들처리();
   }
   if (e.target.parentElement.parentElement.id=='끝수' && e.target.innerHTML=='30주') {
     console.log('  버튼45감싸기_click(e) -- 30주 셑팅')
-    var 클릭번호정보문자열=''; //change
+    전체변수클릭번호정보문자열='';//change
     var 전달문자열='';
     for (var i=0; i<10; i++) {
       if (document.querySelectorAll('#끝수 > div:nth-of-type(2) button')[i].classList.contains('js끝수버튼')) {
         if (!document.querySelector(`#분석자료_변수_30주${i}출`).innerHTML=='') {
           전달문자열+=document.querySelector(`#분석자료_변수_30주${i}출`).innerHTML + ',';
-          if (클릭번호정보문자열=='') {클릭번호정보문자열=`분석자료_변수_30주${i}출`} else {클릭번호정보문자열+=',' + `분석자료_변수_30주${i}출`} //change
+          if (전체변수클릭번호정보문자열=='') {
+            전체변수클릭번호정보문자열=`분석자료_변수_30주${i}출`} else {전체변수클릭번호정보문자열+=',' + `분석자료_변수_30주${i}출`
+          } //change
         }
       }
     }
     if (전달문자열!='') {document.querySelector('#클릭번호들').innerHTML=전달문자열.substring(0,전달문자열.length-1)} else {return;}
-    //누적이 아닐때 #클릭번호정보 공백으로 해둔다. 
-    if (!document.querySelector('#누적').checked) {document.querySelector('#클릭번호정보').innerHTML='';}  //change
-    if (document.querySelector('#클릭번호정보').innerHTML!='') {클릭번호정보문자열=document.querySelector('#클릭번호정보').innerHTML + ',' + 클릭번호정보문자열}//change
-    클릭번호정보문자열=클릭번호정보문자열.split(',');
-    클릭번호정보문자열=new Set(클릭번호정보문자열);클릭번호정보문자열=[...클릭번호정보문자열];//change
-    document.querySelector('#클릭번호정보').innerHTML=클릭번호정보문자열;//change
+    클릭번호정보문자열만들기()
     console.log('전달문자열 : ' + 전달문자열)
     클릭번호들처리();
   }
