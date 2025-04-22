@@ -103,7 +103,7 @@
   </div>
 
 </div>   <!-- 전역변수는 메모리 많이 잡아먹는다하여...  -->
-<div id="js당번_색칠할번호들" class="d-none"></div> <!-- 당번전용....  -->
+<div id="change시_색칠할번호들" class="d-none"></div> <!-- 당번전용....  -->
 <div id="keep번호들" class="d-none"></div>
 <div id="셑팅1번호들" class="d-none"></div>
 <div id="셑팅2번호들" class="d-none"></div>
@@ -143,6 +143,19 @@
           <label class="form-check-label" for="누적">누적</label>
         </div>
         <button style="border:1px solid black;" onclick="색칠할번호들_clear()">번호clear</button>
+        
+        <br>
+
+        <div style="border-top:1px solid black;">
+          <div class="form-check d-inline-block" style="margin-left:5px;">
+            <input class="form-check-input" type="checkbox" value="" checked id="당번_change시_특수색칠">
+            <label class="form-check-label" for="당번_change시_특수색칠">당번_change시_특수색칠</label>
+          </div>
+          <div class="form-check d-inline-block" style="margin-left:5px;">
+            <input class="form-check-input" type="checkbox" value="" checked id="분석자료_change시_특수색칠">
+            <label class="form-check-label" for="분석자료_change시_특수색칠">분석자료_change시_특수색칠</label>
+          </div>
+        </div>
       </div>
       <div class="왼쪽의두번째줄">
         <div class="d-inline-block">색칠할곳</div>
@@ -172,8 +185,9 @@
       <div><span>끝수</span><span>C</span><button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></div>
       <div><span>30주</span><span>C</span><button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></div>
     </div>
-    <div class="오른쪽">
-      
+    <div class="오른쪽" style="width:285px;white-space: normal;font-size:13px;font-weight:bold;margin-right:0px;">
+      <span onclick="document.querySelector('#클릭번호정보').innerHTML=''">(change시) 클릭번호정보 Clear: </span>
+      <span  id="클릭번호정보"></span>
     </div>
   </div>
   <div id="메모장">
@@ -199,6 +213,7 @@
         <input class="form-check-input 카테고리보기input" type="checkbox" value="" checked id="버튼45_3st" title="id_버튼45_3st">
         <label class="form-check-label" for="버튼45_3st">3st</label>
       </div>
+      <div class="d-inline-block" id="중복및차집합"><button>23중복</button><button>2-3</button><button>3-2</button></div>
     </div>
     <div id="id_버튼45_1st" class="버튼45css">
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
@@ -207,7 +222,8 @@
       <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
       <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
       <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-      <div><button>43</button><button>44</button><button>45</button><span class="중복23">23중복</span><span class="빼기23">2-3</span><span class="빼기32">3-2</span></div>
+      <div><button>43</button><button>44</button><button>45</button><span id="선택_id_버튼45_1st" class="js선택_id_버튼45" onclick="선택_id_버튼45(this)"></span>
+        <span style="vertical-align: top;margin-left:5px;margin-top:8px;display:inline-block">당번기능</span></div>
       <div class="버튼45_span"><span class="버튼45_clear">Clear</span><span class="클릭번호로내보내기">내보내기=>클릭번호들</span></div>
     </div>
     <div id="id_버튼45_2st" class="버튼45css">
@@ -217,7 +233,8 @@
       <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
       <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
       <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-      <div><button>43</button><button>44</button><button>45</button></div>
+      <div><button>43</button><button>44</button><button>45</button><span id="선택_id_버튼45_2st" onclick="선택_id_버튼45(this)"></span>
+        <span style="vertical-align: top;margin-left:5px;margin-top:8px;display:inline-block">당번기능</span></div>
       <div class="버튼45_span"><span class="버튼45_clear">Clear</span><span class="클릭번호로내보내기">내보내기=>클릭번호들</span></div>
     </div>
     <div id="id_버튼45_3st" class="버튼45css">
@@ -227,7 +244,8 @@
       <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
       <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
       <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-      <div><button>43</button><button>44</button><button>45</button></div>
+      <div><button>43</button><button>44</button><button>45</button><span id="선택_id_버튼45_3st" onclick="선택_id_버튼45(this)"></span>
+        <span style="vertical-align: top;margin-left:5px;margin-top:8px;display:inline-block">당번기능</span></div>
       <div class="버튼45_span"><span class="버튼45_clear">Clear</span><span class="클릭번호로내보내기">내보내기=>클릭번호들</span></div>
     </div>
   </div>
@@ -286,32 +304,32 @@
     <div>
       <div class="d-inline-block" id="당번_오주연결버튼">
         <div>5주 관련</div>
-        <div><button title="당번_변수_당번">당번</button><button></button></div>
-        <div><button title="당번_변수_이웃">이웃</button><button></button></div>
-        <div><button title="당번_변수_당번이웃">당번이웃</button><button></button></div>
-        <div><button title="당번_변수_5주출">5주출</button><button></button></div>
-        <div><button title="당번_변수_5주0출">5주0출</button><button></button></div>
-        <div><button title="당번_변수_5주1출">5주0출</button><button></button></div>
-        <div><button title="당번_변수_5주2출">5주0출</button><button></button></div>
-        <div><button title="당번_변수_5주3출">5주3출</button><button></button></div>
-        <div><button title="당번_변수_10주0출">10주0출</button><button></button></div>
-        <div><button title="당번_변수_15주0출">15주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_당번">당번</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_이웃">이웃</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_당번이웃">당번이웃</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주출">5주출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주0출">5주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주1출">5주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주2출">5주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주3출">5주3출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_10주0출">10주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_15주0출">15주0출</button><button></button></div>
       </div>
       <div class="d-inline-block" id="당번_삼십주연결버튼">
         <div>30주 관련</div>
-        <div><button title="당번_변수_30주0출">0</button><button></button></div>
-        <div><button title="당번_변수_30주1출">1</button><button></button></div>
-        <div><button title="당번_변수_30주2출">2</button><button></button></div>
-        <div><button title="당번_변수_30주3출">3</button><button></button></div>
-        <div><button title="당번_변수_30주4출">4</button><button></button></div>
-        <div><button title="당번_변수_30주5출">5</button><button></button></div>
-        <div><button title="당번_변수_30주6출">6</button><button></button></div>
-        <div><button title="당번_변수_30주7출">7</button><button></button></div>
-        <div><button title="당번_변수_30주8출">8</button><button></button></div>
-        <div><button title="당번_변수_30주9출">9</button><button></button></div>
-        <div><button title="당번_변수_30주10출">10</button><button></button></div>
-        <div><button title="당번_변수_30주11출">11</button><button></button></div>
-        <div><button title="당번_변수_30주12출">12</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주0출">0</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주1출">1</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주2출">2</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주3출">3</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주4출">4</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주5출">5</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주6출">6</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주7출">7</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주8출">8</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주9출">9</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주10출">10</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주11출">11</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주12출">12</button><button></button></div>
       </div>
       <div title="줄바꿈용"></div>
       <div>두번째중</div>
@@ -328,13 +346,13 @@
   </div>
   <div id="분석자료_삼십회빈도" class="d-inline-block" style="vertical-align: top;">
     <div id="숨기기_분석자료_빈도_개수">
-      <div class="d-inline-block">직전회차 30회 23456 개수</div><br>
+      <div class="d-inline-block">30회 숫자 개수</div><br>
       <div id="분석자료_삼십회23456개수_js">
         
       </div>
     </div>
     <div id="숨기기_분석자료_빈도_당첨">
-      <div class="d-inline-block">30회 당번출현 개수</div><br>
+      <div class="d-inline-block" title="이전회차 30히 출현 빈도표에서의 결과">다음회차 있을때 당번출현 개수</div><br>
       <div id="분석자료_삼십회빈도_js">
         
       </div>

@@ -48,6 +48,10 @@ body {white-space: nowrap;}
 #버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_1st > div > button,
 #버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_2st > div > button,
 #버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_3st > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+#버튼45감싸기 #중복및차집합 > button  {padding:3px;border:1px solid black; border-radius: 5px; margin-right:5px;vertical-align: top;}
+#선택_id_버튼45_1st:not([class~="js선택_id_버튼45"]), #선택_id_버튼45_2st:not([class~="js선택_id_버튼45"]), #선택_id_버튼45_3st:not([class~="js선택_id_버튼45"])
+ {display:inline-block;height:30px;width:30px;border:1px solid black;border-radius: 24px;margin-top:5px;margin-left:5px;}
+.js선택_id_버튼45  {display:inline-block;height:30px;width:30px;border:5px solid black;border-radius: 24px;margin-top:5px;margin-left:5px;background-color: chartreuse;}
 
 #버튼45감싸기 > #버튼45중간 {border:1px solid black;padding:3px;background-color: white;margin-left:-5px;vertical-align: top;}
 #버튼45감싸기 > #버튼45중간 > div > #번호clear {margin-right:-1px;border:1px solid black;margin-right:5px;}
@@ -231,7 +235,7 @@ body {white-space: nowrap;}
 #버튼45오른쪽단독 > .설명_첫번째div > .설명_가로한줄 > div:nth-of-type(2) > div 
 {display:inline-block; width:23px;height:24px;border:1px solid black;vertical-align: top;margin-right:-1px;}
 
-#버튼45오른쪽단독 > .설명_두번째div {background-color: white; border:1px solid black;padding:3px;font-weight: bold;width:1223px;}
+#버튼45오른쪽단독 > .설명_두번째div {background-color: white; border:1px solid black;padding:3px;font-weight: bold;width:1178px;}
 #버튼45오른쪽단독 > .설명_두번째div > div {display: inline-block;}
 #버튼45오른쪽단독 > .설명_두번째div > div {vertical-align: top;}
 #버튼45오른쪽단독 > .설명_두번째div > .왼쪽 > .왼쪽의첫줄 {border-bottom:1px solid black;margin-bottom:5px;}
