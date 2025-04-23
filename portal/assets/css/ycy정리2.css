@@ -135,6 +135,7 @@ body {white-space: nowrap;}
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(7),
 #분석자료 > #분석자료_삼십회빈도 #분석자료_삼십회23456개수_js > div > div:nth-of-type(11)
 {background-color: bisque;}
+.메모메모 {border:1px solid black;margin-top:5px;padding:4px;white-space:normal;word-break:break-all;font-weight: bold;font-size: 14px;}
 
 
 /* #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div => 가로한줄안에, 1st_div는 번호선택↓,출,C, 2st_div는 class다섯개번갈아색칠 안에div45개 */
