@@ -1,4 +1,25 @@
 @charset "UTF-8";
+#우원원본풀기js > div {display: inline-block;margin-right:5px;vertical-align: top;border:2px solid black;}
+#우원원본풀기js table {margin-bottom:-1px;}
+#우원원본풀기js tr td {border:1px solid black;}
+#우원원본풀기js > div:nth-of-type(1) tr td:nth-of-type(1) {width:150px}
+#우원원본풀기js > div:nth-of-type(2) tr td:nth-of-type(1) {width:120px}
+#우원원본풀기js > div:nth-of-type(3) tr td:nth-of-type(1) {width:110px}
+#우원원본풀기js > div:nth-of-type(4) tr td:nth-of-type(1) {width:135px}
+#우원원본풀기js > div:nth-of-type(5) tr td:nth-of-type(1) {width:170px}
+#우원원본풀기js tr td:nth-of-type(2) {width:105px}
+#우원원본풀기js > div:nth-of-type(2) tr td:nth-of-type(2) {width:110px}
+#우원원본풀기js > div:nth-of-type(3) tr td:nth-of-type(2) {width:100px}
+#우원원본풀기js > div:nth-of-type(4) tr td:nth-of-type(2) {width:90px}
+#우원원본풀기js > div:nth-of-type(5) tr td:nth-of-type(2) {width:100px}
+#우원원본풀기js tr td:nth-of-type(3) {width:100px}
+#우원원본풀기js > div:nth-of-type(3) tr td:nth-of-type(3) {width:75px}
+#우원원본풀기js > div:nth-of-type(4) tr td:nth-of-type(3) {width:75px}
+#우원원본풀기js > div:nth-of-type(5) tr td:nth-of-type(3) {width:85px}
+#우원원본풀기js tr td:nth-of-type(4) {width:35px}
+
+
+
 code {display: block; color:black;margin-bottom:5px;}
 .offcanvas-title {background-color: blanchedalmond;}
 .캔버스바디 .js모든파일리스트div {display: inline-block;width:915px;vertical-align: top;}

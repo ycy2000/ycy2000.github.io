@@ -382,6 +382,98 @@ function 전체대체마진top조정() {
   document.querySelector('#전체대체').style.marginTop=(header현재높이-header한줄높이) + 'px';
 
 }
+function 우원풀기() {
+  console.log('우원풀기()')
+  var 원본텍스트 = document.querySelector('#우원원본').innerHTML;
+  var 원본_줄바꿈split = 원본텍스트.split('\n');
+  document.querySelector('#우원원본풀기js').innerHTML='';
+  var 우원원본풀기js = document.querySelector('#우원원본풀기js');
+  var 머리글='<table><tbody><tr><td>품명</td><td>규격</td><td>표시</td><td>kg</td></tr></tbody></table>';
+
+  var 자료풀림결과 = '';
+  for (var i = 2; i < 34; i++) {
+    var div안span4 = '';
+    div안span4 = '<td>' + 원본_줄바꿈split[i].split('\t')[0] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[3] + '</td>'
+    //div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[25] + '</td>' //시간) : 엑셀에 넣으면 시간이 지워지니 표시안함
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    자료풀림결과+=div안span4;
+  }
+  자료풀림결과='<div>' + 머리글 + 자료풀림결과 + '</div>'
+  우원원본풀기js.innerHTML=우원원본풀기js.innerHTML+자료풀림결과;
+
+  var 자료풀림결과 = '';
+  for (var i = 34; i < 65; i++) {
+    var div안span4 = '';
+    if (i==42) {
+    div안span4 = '<td>빅버터플라이 <br>브레디드 쉬림프</td>'
+    } else {
+    div안span4 = '<td>' + 원본_줄바꿈split[i].split('\t')[0] + '</td>'
+    }
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[3] + '</td>'
+    //div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[25] + '</td>' //시간) : 엑셀에 넣으면 시간이 지워지니 표시안함
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    자료풀림결과+=div안span4;
+  }
+  자료풀림결과='<div>' + 머리글 + 자료풀림결과 + '</div>'
+  우원원본풀기js.innerHTML=우원원본풀기js.innerHTML+자료풀림결과;
+
+  var 자료풀림결과 = '';
+  for (var i = 65; i < 97; i++) {
+    var div안span4 = '';
+    div안span4 = '<td>' + 원본_줄바꿈split[i].split('\t')[0] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[3] + '</td>'
+    //div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[25] + '</td>' //시간) : 엑셀에 넣으면 시간이 지워지니 표시안함
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    자료풀림결과+=div안span4;
+  }
+  자료풀림결과='<div>' + 머리글 + 자료풀림결과 + '</div>'
+  우원원본풀기js.innerHTML=우원원본풀기js.innerHTML+자료풀림결과;
+
+  var 자료풀림결과 = '';
+  for (var i = 97; i < 129; i++) {
+    var div안span4 = '';
+    div안span4 = '<td>' + 원본_줄바꿈split[i].split('\t')[0] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[3] + '</td>'
+    //div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[25] + '</td>' //시간) : 엑셀에 넣으면 시간이 지워지니 표시안함
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    자료풀림결과+=div안span4;
+  }
+  자료풀림결과='<div>' + 머리글 + 자료풀림결과 + '</div>'
+  우원원본풀기js.innerHTML=우원원본풀기js.innerHTML+자료풀림결과;
+
+  var 자료풀림결과 = '';
+  for (var i = 129; i < 원본_줄바꿈split.length - 1; i++) {
+    var div안span4 = '';
+    if (i==134) {
+    div안span4 = '<td>코코넛 버터플라이 <br>브레디드 쉬림프</td>'}  else if(i==147) {
+    div안span4 = '<td>탈각새우 <br>(아르헨티나 붉은새우)</td>'
+    }
+    else {
+    div안span4 = '<td>' + 원본_줄바꿈split[i].split('\t')[0] + '</td>'
+    }
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[1] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[2] + '</td>'
+    div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[3] + '</td>'
+    //div안span4 += '<td>' + 원본_줄바꿈split[i].split('\t')[25] + '</td>' //시간) : 엑셀에 넣으면 시간이 지워지니 표시안함
+    div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
+    자료풀림결과+=div안span4;
+  }
+  자료풀림결과='<div>' + 머리글 + 자료풀림결과 + '</div>'
+  우원원본풀기js.innerHTML=우원원본풀기js.innerHTML+자료풀림결과;
+  return;
+  for (var i = 1; i < 원본_줄바꿈split.length - 1; i++) {
+  }
+
+}
 function 선택한캔버스클릭시(e) {
   console.log('선택한캔버스클릭시(e)')
   console.log('  선택한캔버스 : ' + 선택한캔버스id)
@@ -399,6 +491,18 @@ function 선택한캔버스클릭시(e) {
         document.querySelectorAll('#' + 선택한캔버스id + ' .카테고리실행')[i].classList.remove('현재카테고리');//카테고리 버튼들 색칠클래스 제거
       }
       document.querySelector('[title=' + e.target.title + ']').classList.add('현재카테고리');//선택한 카테고리 버튼 색칠클래스 제거
+    }
+
+    //우원전용
+    if (e.target.classList.contains('canvas_div') && e.target.title=='라벨_우원품명') {
+      console.log('캔버스바디의 목록을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅')
+      선택한캔버스관련자료none안_타겟element = document.querySelector('#' + e.target.title);
+      결과부분.innerHTML = 선택한캔버스관련자료none안_타겟element.outerHTML;
+      document.querySelector('#선택문서id').innerHTML=e.target.title;
+      document.querySelector('#선택문서제목').innerHTML=e.target.innerHTML;
+      //우원전용
+      우원풀기();
+      전체대체마진top조정();
     }
 
     //캔버스바디의 목옥을 눌렀을때 : canvas_div 클래스 있으면 타이틀을 id로하는 div를 셑팅
