@@ -509,6 +509,8 @@ function 바디클릭이벤트(e) {
   }
   if (e.target.innerHTML=='다시하기') {
     console.log('바디이벤트 : 다시하기')
+    document.querySelector('#결과수').innerHTML=0;
+    document.querySelector('#가능한조합').innerHTML='';
     //계산() 내부에 js가능제외 지우는것 있다. 계산을 누르기 전 상태이긴한데....
     for (var i=0; i<10; i++) {
       document.querySelectorAll('.입력')[i].innerHTML=i;
