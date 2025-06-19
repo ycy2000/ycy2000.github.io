@@ -1,7 +1,8 @@
 //리뉴얼
 if ('초기작업'=='초기작업') {
   var 변경할페이지='';
-  var 색칠할번호들=[];
+  var 색칠할번호들노랑및일반=[];
+  var 색칠할번호들주황=[];
   document.querySelector('#회귀결과정보수').value=50;
   var 색칠유형='';
   var 회차selectedIndex=0;
@@ -266,6 +267,9 @@ function 회차변경실행() {
   }
 }
 function 색칠해제() {//class 제거 : 본인색칠, 왼쪽색칠
+  var 색칠할번호들노랑및일반=[];
+  var 색칠할번호들주황=[];
+  var 색칠유형='';
   var 본인색칠요소=document.querySelectorAll('.본인색칠');
   var 본인색칠개수=본인색칠요소.length;
   if (본인색칠요소.length>0) {
@@ -302,7 +306,8 @@ function 색칠유형대로색칠() {
   if (색칠유형=='') {return;}//색칠 버튼 누를때 색칠유형 설정.
   console.log('색칠유형대로색칠()')
   var 있다면본인색칠할요소를포함하는p요소들;
-  색칠할번호들=[];
+  //색칠할번호들노랑및일반=[];
+  //색칠할번호들주황=[];
   if (색칠유형=='색칠유형_최근회차'||색칠유형=='색칠유형_미출수5주'||색칠유형=='색칠유형_미출수10주'||색칠유형=='색칠유형_미출수15주'||
   색칠유형=='색칠유형_오주0출수'||색칠유형=='색칠유형_오주1출수'||색칠유형=='색칠유형_오주2출수'||색칠유형=='색칠유형_오주3출수'||
   색칠유형=='색칠유형_오주4출수'||색칠유형=='색칠유형_오주5출수') {
@@ -314,7 +319,7 @@ function 색칠유형대로색칠() {
         if (있다면본인색칠할요소를포함하는p요소들[i].classList.contains('색칠제외') || 있다면본인색칠할요소를포함하는p요소들[i].innerHTML=='') {
           //색칠제외 클래스가 있거나 공백을때 push하지 않는다.
         } else {
-          색칠할번호들.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
+          색칠할번호들노랑및일반.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
           있다면본인색칠할요소를포함하는p요소들[i].classList.add('본인색칠');
         }
       }
@@ -327,21 +332,21 @@ function 색칠유형대로색칠() {
     console.log('색칠유형대로색칠()')
     for (var i=0; i<있다면본인색칠할요소를포함하는p요소들.length; i++) {
       if (있다면본인색칠할요소를포함하는p요소들[i].classList=='') {
-        색칠할번호들.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
+        색칠할번호들노랑및일반.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
       }
     }
     //오른쪽 색칠 : 배치_오른쪽_회차선택과_조회_선택회차당번, 배치_오른쪽_5_10_15주미출수, 배치_오른쪽_5주출수
     var 오른쪽=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+      if (색칠할번호들노랑및일반.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
     오른쪽=document.querySelectorAll('#배치_오른쪽_5_10_15주미출수 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+      if (색칠할번호들노랑및일반.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
     오른쪽=document.querySelectorAll('#배치_오른쪽_5주출수 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+      if (색칠할번호들노랑및일반.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
   }
   //추가, 주황누르면 주황으로 누적되도록
@@ -351,21 +356,21 @@ function 색칠유형대로색칠() {
     console.log('피할번호연계 클래스 수 : ' + document.querySelectorAll('.피할번호연계').length)
     for (var i=0; i<있다면본인색칠할요소를포함하는p요소들.length; i++) {
       if (있다면본인색칠할요소를포함하는p요소들[i].classList.contains('피할번호연계')) {
-        색칠할번호들.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
+        색칠할번호들노랑및일반.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
       }
     }
     //오른쪽 색칠 : 배치_오른쪽_회차선택과_조회_선택회차당번, 배치_오른쪽_5_10_15주미출수, 배치_오른쪽_5주출수
     var 오른쪽=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+      if (색칠할번호들노랑및일반.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
     오른쪽=document.querySelectorAll('#배치_오른쪽_5_10_15주미출수 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+      if (색칠할번호들노랑및일반.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
     오른쪽=document.querySelectorAll('#배치_오른쪽_5주출수 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
+      if (색칠할번호들노랑및일반.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠')}
     }
   }
   if (색칠유형=='색칠유형_주황색번호색칠') {
@@ -376,38 +381,55 @@ function 색칠유형대로색칠() {
       if (있다면본인색칠할요소를포함하는p요소들[i].classList.contains('피할번호연계') || 있다면본인색칠할요소를포함하는p요소들[i].classList=='') {
 
       } else {
-        색칠할번호들.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
+        색칠할번호들주황.push(있다면본인색칠할요소를포함하는p요소들[i].innerHTML);
       }
     }
     //오른쪽 색칠 : 배치_오른쪽_회차선택과_조회_선택회차당번, 배치_오른쪽_5_10_15주미출수, 배치_오른쪽_5주출수
     var 오른쪽=document.querySelectorAll('#배치_오른쪽_회차선택과_조회_선택회차당번 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠주황')}
+      if (색칠할번호들주황.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠주황')}
     }
     오른쪽=document.querySelectorAll('#배치_오른쪽_5_10_15주미출수 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠주황')}
+      if (색칠할번호들주황.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠주황')}
     }
     오른쪽=document.querySelectorAll('#배치_오른쪽_5주출수 p');
     for (var i=0; i<오른쪽.length; i++) {
-      if (색칠할번호들.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠주황')}
+      if (색칠할번호들주황.find(element => element==오른쪽[i].innerHTML)) {오른쪽[i].classList.add('본인색칠주황')}
     }
   }
 
   //왼쪽색칠은 공통이 될듯 : 색칠할번호들이 둘중 하나가 되어버린다.
   var 몇개=0;
-  console.log('색칠할번호들 : ' + 색칠할번호들)
-  if (색칠할번호들[0]) {
+  console.log('색칠할번호들노랑및일반 : ' + 색칠할번호들노랑및일반)
+  if (색칠할번호들노랑및일반[0]) {
     var 왼쪽div안10개p전체=document.querySelectorAll('.왼쪽당번 p');//0회귀,1회차,2날짜, 9보볼
     for (var i=0; i<왼쪽div안10개p전체.length; i++) {
       if (((i+1) % 10) > 3) {//나머지 : 1회귀,2회차,3날짜, 0보볼
-        if (색칠할번호들.find(element => element==왼쪽div안10개p전체[i].innerHTML)) {
+        if (색칠할번호들노랑및일반.find(element => element==왼쪽div안10개p전체[i].innerHTML)) {
           몇개+=1;
-          if (색칠유형=='색칠유형_주황색번호색칠') {
-           왼쪽div안10개p전체[i].classList.add('왼쪽색칠주황');
-          } else {
-           왼쪽div안10개p전체[i].classList.add('왼쪽색칠');
-          }
+          왼쪽div안10개p전체[i].classList.add('왼쪽색칠');
+        }
+      }
+      if ((i+1) % 10 == 0) {
+        if (몇개>0) {
+          // 왼쪽div안10개p전체[i].nextElementSibling.innerHTML=몇개 + '개'; ==> 몇개 부분
+          몇개=0;
+        } else {
+
+        }
+      }
+    }
+  }
+  var 몇개=0;
+  console.log('색칠할번호들주황 : ' + 색칠할번호들주황)
+  if (색칠할번호들주황[0]) {
+    var 왼쪽div안10개p전체=document.querySelectorAll('.왼쪽당번 p');//0회귀,1회차,2날짜, 9보볼
+    for (var i=0; i<왼쪽div안10개p전체.length; i++) {
+      if (((i+1) % 10) > 3) {//나머지 : 1회귀,2회차,3날짜, 0보볼
+        if (색칠할번호들주황.find(element => element==왼쪽div안10개p전체[i].innerHTML)) {
+          몇개+=1;
+          왼쪽div안10개p전체[i].classList.add('왼쪽색칠주황');
         }
       }
       if ((i+1) % 10 == 0) {
