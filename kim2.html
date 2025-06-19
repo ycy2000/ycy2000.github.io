@@ -64,7 +64,7 @@
 </header>
 
 
-<div style="height:50px;"></div><!-- header와 띄우기용 -->
+<div style="height:50px;margin-bottom:3px;"></div><!-- header와 띄우기용 -->
 
 <div style="position: absolute;top:50px;width:1205px;border:1px solid black;"></div>
 
@@ -140,24 +140,47 @@
     </div>
     <div id="배치_오른쪽_5주출수">
     </div>
-    <div id="js피해서색칠" style="position: absolute;top:550px; margin-top:5px;width:330px; display: inline-block;">
-      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><br>
-      <button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><br>
-      <button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button><br>
-      <button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button><br>
-      <button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button><br>
-      <button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button><br>
-      <button>43</button><button>44</button><button style="width:46px;">45</button>
-      <span id="색칠유형_노란색번호색칠" style="line-height: 20px;">노란색<br>색칠</span>
-      <span id="색칠유형_주황색번호색칠" style="line-height: 20px;">주황색<br>색칠</span>
-      <span id="색칠유형_흰색번호색칠" style="line-height: 20px;">흰색<br>색칠</span>
-      <div style="margin-top:10px;">
-        <span type="button" class="btn btn-primary" onclick="최근번호피해서색칠()">최근번호피해서색칠</span>
-        <span type="button" class="btn btn-primary">?</span>
+    <div style="position: absolute;top:550px;">
+      <div>보기/숨기기 
+        <button class="보기숨기기" style="border:1px solid black;">피해서번호</button>
+        <button class="보기숨기기" style="border:1px solid black;margin-left:-1px;">일반색칠</button>
+      </div>
+      <div id="js피해서색칠" class="d-inline-block" style="margin-right:10px;">
+        <div>피해서번호색칠 전용</div>
+        <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><br>
+        <button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><br>
+        <button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button><br>
+        <button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button><br>
+        <button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button><br>
+        <button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button><br>
+        <button>43</button><button>44</button><button style="width:46px;">45</button>
+        <span id="색칠유형_노란색번호색칠" style="line-height: 20px;">노란색<br>색칠</span>
+        <span id="색칠유형_주황색번호색칠" style="line-height: 20px;">주황색<br>색칠</span>
+        <span id="색칠유형_노랑주황색칠해제" style="line-height: 20px;">색칠<br>해제</span>
+        <div style="margin-top:10px;" class="d-none" title="일단봉인">
+          <span type="button" class="btn btn-primary" onclick="최근번호피해서색칠()">피해서색칠</span>
+          <span type="button" class="btn btn-primary">?</span>
+        </div>
+      </div>
+      <div id="js피해서색칠우측" class="d-inline-block">
+        <div>일반색칠 전용</div>
+        <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><br>
+        <button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><br>
+        <button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button><br>
+        <button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button><br>
+        <button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button><br>
+        <button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button><br>
+        <button>43</button><button>44</button><button style="width:46px;">45</button>
+        <div style="margin-top:10px;" class="d-none" title="일단봉인">
+          <span type="button" class="btn btn-primary" onclick="최근번호피해서색칠()">최근번호피해서색칠</span>
+          <span type="button" class="btn btn-primary">?</span>
+        </div>
       </div>
     </div>
+
+
     <div id="js피해서색칠_우측" style="margin-top:5px;display: inline-block;vertical-align: top;">
-      <div id="js피해서색칠_우측_다음회차" class="왼쪽당번"><P>다음</P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><h6></h6></div>
+      <div id="js피해서색칠_우측_다음회차" class="왼쪽당번"><P>다음</P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P></P><P class="제외"></P><span id="색칠유형_다음" style="border:1px solid black;">색칠</span></div>
       <div>몇개 피할번호에서</div>
       <div>몇개 피할번호연계에서</div>
       <div>몇개 흰색에서</div>
@@ -166,16 +189,6 @@
       <div id="js피해서색칠_우측_5주출수">
       </div>
     </div>
-  </div>
-</div>
-
-<div class="페이지" id="페이지2" class="p-2 d-flex container-fluid" style="margin:0 auto;">
-  <div id="페이지2_왼쪽">
-    <div id="번호종류들">
-      <div><input style="width:180px;" type = "text" value="추출할 번호들"><span style="width:90px;border:1px solid black;">추출할 개수</span><span></span></div><!--머리글한줄, 나머지는 번호관련-->
-      <div><input style="width:180px;" type = "text" value="자유롭게 선택한 번호"><span>3</span><button>증</button><button>감</button><span style="display:inline-block; width:300px;border:1px solid black;">07_10_23_29_33_35_40_16_07_10_23_29_33_35_40_16_07_10_23_29_33_35_40_16_07_10_23_29_33_35_40_16</span></div><!--머리글한줄, 나머지는 번호관련-->
-    </div>
-
   </div>
 </div>
 

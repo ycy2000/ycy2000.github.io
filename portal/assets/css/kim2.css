@@ -10,16 +10,24 @@ p {border:1px solid gray;}
 
 #id_배치_왼쪽_회귀변경 > button {height:30px;background-color: rgb(100, 237, 214);margin-left:-5px;border:1px solid black;}
 #id_배치_왼쪽_회귀변경 > button:nth-of-type(4) {margin-left:-6px;}
-
 .modal_body button, #js피해서색칠 button {width:50px; height:50px;margin-right:-6px;margin-bottom:-2px; padding:0;}
 #modal_왼쪽 > div > span, #js피해서색칠 > div > span {padding-top:3px;}
 #js피해서색칠 > span:nth-of-type(1) {width:50px;height:45px;vertical-align: bottom;background-color: yellow;margin-left:8px;text-align: left;}
 #js피해서색칠 > span:nth-of-type(2) {width:50px;height:45px;vertical-align: bottom;background-color:peru;margin-left:8px;text-align: left;}
 #js피해서색칠 > span:nth-of-type(3) {width:50px;height:45px;vertical-align: bottom;background-color:white;margin-left:8px;text-align: left;border:1px solid black;}
-#modal_왼쪽 > div > span:nth-of-type(1) {width:130px;}
-#modal_왼쪽 > div > span:nth-of-type(2) {width:130px;}
 #js피해서색칠 > div > span:nth-of-type(1) {width:170px;}
 #js피해서색칠 > div > span:nth-of-type(2) {width:130px;}
+
+#js피해서색칠우측 button {width:50px; height:50px;margin-right:-6px;margin-bottom:-2px; padding:0;}
+#js피해서색칠우측 > div > span {padding-top:3px;}
+#js피해서색칠우측 > span:nth-of-type(1) {width:50px;height:45px;vertical-align: bottom;background-color: yellow;margin-left:8px;text-align: left;}
+#js피해서색칠우측 > span:nth-of-type(2) {width:50px;height:45px;vertical-align: bottom;background-color:peru;margin-left:8px;text-align: left;}
+#js피해서색칠우측 > span:nth-of-type(3) {width:50px;height:45px;vertical-align: bottom;background-color:white;margin-left:8px;text-align: left;border:1px solid black;}
+#js피해서색칠우측 > div > span:nth-of-type(1) {width:170px;}
+#js피해서색칠우측 > div > span:nth-of-type(2) {width:130px;}
+
+#modal_왼쪽 > div > span:nth-of-type(1) {width:130px;}
+#modal_왼쪽 > div > span:nth-of-type(2) {width:130px;}
 
 #임시 > div > span {padding-top:3px;}
 #임시 > div > span:nth-of-type(1) {width:130px;}
@@ -29,6 +37,9 @@ p {border:1px solid gray;}
 .선택 {background-color: blue;} /* 클래스 동시에 있으면, 나중에 나온게 적용*/
 .왼쪽색칠 {background-color:yellow;}
 .본인색칠 {background-color:yellow;}
+/* 추가 할것 : 왼쪽색칠주황, 본인색칠주황,  */
+.왼쪽색칠주황 {background-color:chocolate;}
+.본인색칠주황 {background-color:chocolate;}
 .피할번호 {background-color:chocolate;}
 .피할번호연계 {background-color:yellow;}
 .회차select우측스팬 {border:1px solid black;height:27px;font-size: 12px;margin-left:10px;width:30px;}
