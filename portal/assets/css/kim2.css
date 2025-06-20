@@ -3,10 +3,10 @@ span, p, h6 {display:inline-block;margin:0;margin-right:-1px;padding:0;
   height:30px;width:30px;vertical-align: top;padding-top:2px;text-align:center;margin-bottom:-1px;}
 h6 {width:50px;font-size: 14px;padding-top:5px;}
 p {border:1px solid gray;}
-#span_날짜 ~ p:nth-of-type(10), .왼쪽당번 > p:nth-of-type(10n) {background-color: aqua;}
-.왼쪽당번 > span:nth-of-type(10n+1), .왼쪽당번 > p:nth-of-type(10n+1) {width:60px;}
-.왼쪽당번 > span:nth-of-type(10n+2), .왼쪽당번 > p:nth-of-type(10n+2) {width:60px;}
-.왼쪽당번 > span:nth-of-type(10n+3), .왼쪽당번 > p:nth-of-type(10n+3) {width:100px;}
+#span_날짜 ~ p:nth-of-type(4), .왼쪽당번 > p:nth-of-type(4n) {background-color: aqua;}
+.왼쪽당번 > span:nth-of-type(10n+1), .왼쪽당번 > p:nth-of-type(4n+1) {width:60px;}
+.왼쪽당번 > span:nth-of-type(10n+2), .왼쪽당번 > p:nth-of-type(4n+2) {width:60px;}
+.왼쪽당번 > span:nth-of-type(10n+3), .왼쪽당번 > p:nth-of-type(4n+3) {width:100px;}
 
 #id_배치_왼쪽_회귀변경 > button {height:30px;background-color: rgb(100, 237, 214);margin-left:-5px;border:1px solid black;}
 #id_배치_왼쪽_회귀변경 > button:nth-of-type(4) {margin-left:-6px;}
@@ -35,11 +35,12 @@ p {border:1px solid gray;}
 
 .선택연계 {background-color:yellow;}
 .선택 {background-color: blue;} /* 클래스 동시에 있으면, 나중에 나온게 적용*/
-.왼쪽색칠 {background-color:yellow;}
-.본인색칠 {background-color:yellow;}
-/* 추가 할것 : 왼쪽색칠주황, 본인색칠주황,  */
-.왼쪽색칠주황 {background-color:chocolate;}
-.본인색칠주황 {background-color:chocolate;}
+.색칠묶음div {display:inline-block;vertical-align: top;}
+
+/* 일반또는노랑, 주황단독, 겹침표시 */
+.일반또는노랑 {background-color:yellow;}
+.주황단독 {background-color:chocolate;}
+.겹침표시 {background-color: rgb(100, 237, 214);}
 .피할번호 {background-color:chocolate;}
 .피할번호연계 {background-color:yellow;}
 .회차select우측스팬 {border:1px solid black;height:27px;font-size: 12px;margin-left:10px;width:30px;}
