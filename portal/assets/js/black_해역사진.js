@@ -304,6 +304,7 @@ function 계산_배와장비무게() {
   document.querySelector('#과적계산_천').value = (여유무게과적쪽 / 1000).toFixed(1);
   //나의무게쪽 계산
   var 나의무게 = 0;
+  console.log(document.querySelector('#나의무게계산_900').value)
   document.querySelector('#선원과장비무게나의무게쪽').value = 선원과장비무게일반쪽;
   나의무게 += Number(document.querySelector('#선원과장비무게나의무게쪽').value);
   나의무게 += Number(document.querySelector('#나의무게계산_800').value) * 800;
@@ -316,10 +317,6 @@ if (document.querySelector('#해역_물품단계')) {
   계산_배와장비무게()
 }
 function navbar_임시함수_click() {
-  let str = document.querySelector('#JS_search_find_match사용법').innerText;
-  console.log(str.length);
-  console.log(str.match('검색할버튼클래스들'));
-
 
 }
 
