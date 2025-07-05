@@ -1,22 +1,22 @@
 // document.querySelector('#적재가능일반무게').value=document.querySelector('#점진무게').title;
-document.querySelector('#적재가능일반무게').value = 26100;//새로고침시 무게 용맹무게??
+document.querySelector('#적재가능일반무게').value = 25100;//새로고침시 무게 용맹무게??
 function 교섭력계산() {
   var 일회교섭력 = Number(document.querySelector('#일회교섭력').value);
   if (isNaN(일회교섭력)) { 일회교섭력 = 0 }
   //곱하는값은 인풋 오른쪽 형제 
   document.querySelector('#계산_재갱1회당').value = (일회교섭력 * (4.30022)).toFixed(0);
 
-  document.querySelector('#계산_하코저가').value = 20609;
-  document.querySelector('#계산_더코').value = 25504;
-  document.querySelector('#계산_하코').value = 30659;
-  document.querySelector('#계산_대양저가').value = 32594;
-  document.querySelector('#계산_대양고가').value = 40743;
+  document.querySelector('#계산_하코저가').value = 20580;
+  document.querySelector('#계산_더코').value = 25468;
+  document.querySelector('#계산_하코').value = 30615;
+  document.querySelector('#계산_대양저가').value = 32548;
+  document.querySelector('#계산_대양고가').value = 40685;
 
   document.querySelector('#계산_하코4종').value = Number(document.querySelector('#계산_하코저가').value * 2)
     + Number(document.querySelector('#계산_더코').value) + Number(document.querySelector('#계산_하코').value);
   document.querySelector('#계산_대양8종').value = document.querySelector('#계산_대양저가').value * 3 + document.querySelector('#계산_대양고가').value * 5;
-  document.querySelector('#계산_하코와대양합').value = 10033 + Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양8종').value);
-  document.querySelector('#계산_사단까주').value = 15161;
+  document.querySelector('#계산_하코와대양합').value = Number(document.querySelector('#계산_하코4종').value) + Number(document.querySelector('#계산_대양8종').value);
+  document.querySelector('#계산_사단까주').value = 15139;
   document.querySelector('#계산_사단까주8개').value = (document.querySelector('#계산_사단까주').value * 8).toFixed(0);
 
   document.querySelector('#계산_차감후교섭의일갱개수').value = (Number(document.querySelector('#차감후교섭력').value) / 일회교섭력).toFixed(3);
@@ -280,7 +280,7 @@ function 계산_배와장비무게() {
   //일반쪽 계산
   var 적재가능일반무게 = document.querySelector('#적재가능일반무게').value; //html에 기록
   document.querySelector('#적재가능과적무게').value = 적재가능일반무게 * 1.7;
-  var 선원과장비무게일반쪽 = 10; //장비무게,해원석
+  var 선원과장비무게일반쪽 = 11; //장비무게,해원석,낚시대
   선원과장비무게일반쪽 += 200 * Number(document.querySelector('#선원_순수+button').innerHTML);
   선원과장비무게일반쪽 += 300 * Number(document.querySelector('#선원_현실+button').innerHTML);
   선원과장비무게일반쪽 += 300 * Number(document.querySelector('#선원_자신+button').innerHTML);
