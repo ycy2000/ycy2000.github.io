@@ -1,5 +1,5 @@
 function 연습() {
-  var 연습요소id='_02_수출품목정보_오징어';
+  var 연습요소id='_07_대장게시등_대장작성방법';
   var 연습요소=document.querySelector('#' + 연습요소id);
   document.querySelector('#전체대체').innerHTML=연습요소.outerHTML;
   document.querySelector('#전체대체').classList.remove('d-none');
