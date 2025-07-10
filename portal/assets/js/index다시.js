@@ -18,6 +18,7 @@ function 전체대체클릭시(e) {
     }
   }
   if (document.querySelector('#전체대체 section')) {
+    // 같은 아이디가 두개가 있고 두번쨰로 이동한다
       if (e.target.id.substr(0,4)=='move' && document.querySelectorAll('#전체대체 section #' + e.target.id)) {
         var 스크롤요소들=document.querySelectorAll('#전체대체 section #' + e.target.id);
         var 절대좌표 = window.scrollY + 스크롤요소들[1].getBoundingClientRect().top;
