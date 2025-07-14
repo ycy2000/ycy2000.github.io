@@ -47,47 +47,18 @@
           </a>
           <ul class="dropdown-menu" style="width:500px;">
             <li><a class="dropdown-item" onclick="실행_흐름만들기()">[실행]흐름 만들기</a></li>
-            <div class="form-check d-inline-block" onchange="사진_보기숨기기();" style="margin-left:10px;">
-              <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_사진" title="사진">
-              <label class="form-check-label" for="check_사진">사진</label>
-            </div>
-            <div class="form-check d-inline-block" onchange="사진_보기숨기기2();" style="margin-left:10px;">
-              <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_사진2" title="사진2">
-              <label class="form-check-label" for="check_사진2">사진</label>
-            </div>
-            <button onclick="연습()">연습</button>
-            <button type="button" onclick="임시함수set관련()">임시함수SET관련</button> 
             <!-- <li><hr class="dropdown-divider"></li> -->
           </ul>
         </li>
-
-        <div id="머리글" style="display:inline-block">
-          <button onclick="세로_모두숨기기();">숨김</button>
-          <div class="form-check d-inline-block">
-            <input class="form-check-input 보기숨기기input" type="checkbox" value="" checked id="check_색칠" title="칠_left">
-            <label class="form-check-label" for="check_색칠" title="칠_left">색칠</label>
-          </div>
-          <div class="form-check d-inline-block" style="margin-left:10px;">
-            <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_당번" checked title="세로구분_당번_전체">
-            <label class="form-check-label" for="check_당번" title="세로구분_당번_전체">당번</label>
-          </div>
-          <div class="form-check d-inline-block" style="margin-left:10px;">
-            <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_흐름" title="세로구분_흐름_전체">
-            <label class="form-check-label" for="check_흐름" title="세로구분_흐름_전체">흐름</label>
-          </div>
-          <div class="form-check d-inline-block" style="margin-left:10px;">
-            <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_분석자료" title="세로구분_분석자료_전체">
-            <label class="form-check-label" for="check_분석자료" title="세로구분_분석자료_전체">분석자료</label>
-          </div>
-          <div class="form-check d-inline-block" style="margin-left:10px;">
-            <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_추출" title="세로구분_추출된번호_전체">
-            <label class="form-check-label" for="check_추출" title="세로구분_추출된번호_전체">추출</label>
-          </div>
-          <div class="form-check d-inline-block" style="margin-left:10px;">
-            <input class="form-check-input 카테고리보기input" type="checkbox" value="" id="check_추출결과" title="세로구분_추출된번호필터링_전체">
-            <label class="form-check-label" for="check_추출결과" title="세로구분_추출된번호필터링_전체">추출결과</label>
-          </div>
-        </div>
+        <button type="button">칠_관련,당번</button>
+        <button type="button">흐름_</button>
+        <button type="button">분석자료</button>
+        <button class="d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
+        <button type="button">추출된번호</button>
+        <button type="button">필터링된번호들</button>
+        <button type="button">임시사진_분석자료</button>
+        <button type="button">코딩메모</button>
+        <button type="button" onclick="임시함수set관련()">임시함수SET관련</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header p-1">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">보기/숨기기 버튼들, 기타</h5>
@@ -180,6 +151,8 @@
       </div>
       <div style="border-bottom:1px solid black;margin-bottom:5px;">
         <div class="d-inline-block">색칠할번호</div>
+        <button title="흐름" style="width:40px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+        <button title="출수제목" style="width:90px;margin-left:5px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수제목</button>
         <div id="칠_현재색칠할번호_정보와개수"></div>
       </div>
       <div id="칠_modal-body" class="modal-body d-inline-block"><!-- 1 ~ 45 -->
@@ -231,20 +204,28 @@
     </div>
 
     <div id="칠_right_출수제목">
-      <button style="width:130px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0">선택색칠 → 분석자료색칠</button><br>
+      <button title="흐름" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+      <button title="출수제목" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수</button>
+      <button style="width:45px;font-size:14px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_둘다숨기기()">숨기기</button><br>
+      <button style="width:65px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
+      <button style="width:65px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button><br>
+      <button style="width:165px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0">선택색칠1 분석자료색칠</button><br>
       <button onclick="오주전();">5</button>
       <button onclick="십주전();">10</button>
       <button onclick="십오주전();">15</button>
-      <button onclick="이십주전();">20</button><br>
-      <div id="칠_right_흐름" style="width:135px;display: inline-block;vertical-align: top;" class="d-none">
-        <div style="text-indent: 30px;font-weight: bold;display:inline-block;margin-top:5px;">흐름보기/숨기기</div><br>
-        <ul id="칠_흐름_ul"><!--#세로구분_흐름_전체 각id를 innerHTML로 스크립트로 가져옴 <li><a class="dropdown-item">흐름_삼이일</a></li>-->
-        </ul>
-      </div>      
+      <button onclick="이십주전();">20</button>
       <ul id="칠_색칠할번호선택_ul"><!--#색칠용번호들 각id를 innerHTML로 스크립트로 가져옴 <li><a class="dropdown-item">오주미출수</a></li>-->
       </ul>
     </div>
-
+    <div id="칠_right_흐름" style="width:135px;display: inline-block;vertical-align: top;" class="d-none">
+      <button title="흐름" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_흐름보기()">흐름</button>
+      <button title="출수제목" style="width:40px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_출수제목보기()">출수</button>
+      <button style="width:45px;font-size:14px;" type="button" class="btn btn-secondary p-0" onclick="흐름또는출수제목중_둘다숨기기()">숨기기</button><br>
+      <button style="width:65px;font-size: 14px;" type="button" class="btn btn-secondary p-0">칠숨김</button>
+      <button style="width:65px;font-size: 14px;margin-bottom:3px;" type="button" class="btn btn-secondary p-0 당번숨김두개">당번숨김</button>
+      <ul id="칠_흐름_ul"><!--#세로구분_흐름_전체 각id를 innerHTML로 스크립트로 가져옴 <li><a class="dropdown-item">흐름_삼이일</a></li>-->
+      </ul>
+    </div>
   </div>
 
   <div id="세로구분_당번_전체" class="d-inline-block">

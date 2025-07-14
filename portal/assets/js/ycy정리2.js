@@ -126,6 +126,16 @@ var 리스너_분석자료=document.querySelector('#분석자료');
 당번_회차select_change();
 분석자료_회차select_change();
 번호45_3개_title넣기();
+당번회차중에_분석자료회차있으면_클래스부여();
+function 당번회차중에_분석자료회차있으면_클래스부여() {
+  if (document.querySelector('#당번_불러온당첨정보 .당번회차중에_분석자료회차있으면_클래스부여')) {document.querySelector('.당번회차중에_분석자료회차있으면_클래스부여').classList.remove('당번회차중에_분석자료회차있으면_클래스부여')};
+  console.log('당번회차 : ' + document.querySelector('#당번_회차select').value + ', 분석자료회차 : ' + document.querySelector('#분석자료_회차select').value)
+  var 차이=document.querySelector('#당번_회차select').value - document.querySelector('#분석자료_회차select').value;
+  console.log('차이 : ' + 차이)
+  if (차이<0) {console.log('차이<0 이면 return;');return;}
+  document.querySelectorAll('#당번_불러온당첨정보 .당첨정보')[차이].children[0].classList.add('당번회차중에_분석자료회차있으면_클래스부여');
+
+}
 function 번호45_3개_title넣기() {
   for (var i=1; i<4; i++) {
     for (var 내부=0; 내부<45; 내부++) {
@@ -641,6 +651,7 @@ function 분석자료_회차select_change() {
   분석자료_삼십회빈도_js작성();
   분석자료_삼십회빈도개수_js작성();
   change시_색칠하기();
+  당번회차중에_분석자료회차있으면_클래스부여();
 }
 function 당번_회차select_change() {
   회차index=parseInt(document.querySelector('#당번_회차select').value)-1; //parseInt(), 값전달 안하거나 공백은 NaN
@@ -686,6 +697,7 @@ function 당번_회차select_change() {
   당번_변수_5주번호정보();
   당번_변수_30주번호정보();
   change시_색칠하기();
+  당번회차중에_분석자료회차있으면_클래스부여();  
 }
 function 분석자료_변수_5주번호정보_내부_미출부터이월수개수_표_하() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
@@ -826,11 +838,11 @@ function 분석자료_변수_5주번호정보() {
   if(_15주0출.length>0) document.querySelector('#분석자료_변수_10에서15주0출').innerHTML=_10에서15주0출.join(',');
   //표에 개수 넣기
   var 요소들=document.querySelectorAll('#분석자료변수_초기화시_5주 > div'); // 1,2,3,7 형식의 텍스트
-  for (var i=0; i<요소들.length; i++) {
+  for (var i=1; i<요소들.length; i++) {
     if (요소들[i].innerHTML.split(',')[0]=='') {
-      document.querySelectorAll('#분석자료_표_상_js > .js클릭번호')[i+1].children[0].children[1].innerHTML=0;
+      document.querySelectorAll('#분석자료_표_상_js > .js클릭번호')[i].children[0].children[1].innerHTML=0;
     } else {
-      document.querySelectorAll('#분석자료_표_상_js > .js클릭번호')[i+1].children[0].children[1].innerHTML=요소들[i].innerHTML.split(',').length;
+      document.querySelectorAll('#분석자료_표_상_js > .js클릭번호')[i].children[0].children[1].innerHTML=요소들[i].innerHTML.split(',').length;
     }
   }
   //표에 색칠하기

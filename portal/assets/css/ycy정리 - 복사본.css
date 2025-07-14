@@ -1,0 +1,144 @@
+@charset "UTF-8";
+body, pre {font-family: 'Noto Serif KR', serif;}
+header {position:fixed;width:100%;}
+#whole > div {vertical-align: top;}
+
+#세로구분_당번 {background-color: bisque;padding-left:5px;padding-right:5px;}
+.하위div안버튼7개까지css > div > button, .버튼45css > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+.하위div안버튼7개까지css > div > span {background-color: white; display:inline-block;line-height: 34px;text-align: center; width:60px;height:34px;border:1px solid gray;margin-right:5px;margin-bottom:-1px;}
+.하위div안버튼7개까지css > div > button:nth-of-type(7) {background-color: rgb(100, 237, 214);}
+
+.흐름div안버튼7개까지css > div:not([class~='높이낮춤']) > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+.높이낮춤 button {font-size: 14px;text-align: center;padding:0; vertical-align: top; width:34px;height:25px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+
+.파란색글자 {font-style : italic;color: blue;}
+#당번_전체 > div:nth-child(odd) > *:not(:last-child):not([class*='색칠용버튼']) {background-color:bisque;color:blue;}
+
+.흐름내부div_button > div:nth-child(odd) > button:not([class*='간격클릭클래스']) {background-color:bisque;color:blue;}
+
+#당번_회차날짜조회묶음 {height:34px;}
+#당번_회차날짜조회묶음 a, #칠_부분 * {height:30px;width:40px; padding:0; padding-top:1px;margin-left:5px;}/* 회차 플러스 마이너스 버튼 */
+
+.색칠선택span기본css {display: inline-block; width:24px;height:24px;border-radius: 24px;margin:5px; border:1px solid gray;}
+.색칠선택span {display: inline-block; vertical-align: top;padding-top:5px;}
+.색칠선택span선택css {border:8px solid blue;}
+.피해서3종_선택번호 {background-color: green;}
+.피해서3종_피해서번호 {background-color: yellow;}
+
+/* 분석자료 한정 독립적으로 작성 : 복붙했을때 사용될수 있도록 */
+.흐름내부div_button > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+#분석자료_당번_회차날짜조회묶음 {margin-bottom:5px;}
+#분석자료_당번 {margin-left:5px;margin-right:5px;}
+#분석자료_당번 button:nth-of-type(7) {background-color: aqua;}
+#분석자료_여러45칸 > div > span:nth-of-type(2) {text-align: center;padding:0}
+#분석자료_여러45칸_복사본 > div {margin-top:-2px;}
+
+#칠_right_출수제목, #칠_right_흐름 {width:135px;display: inline-block;vertical-align: top;}
+
+#세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div {height:23px;margin-bottom:-1px;}
+#필터링조건표_전체 > div:not([id*='id_임시버튼45']) > div {height:23px;margin-bottom:-1px;}
+
+#세로구분_추출된번호_전체 {margin-left:5px;}
+#추출된번호_30개씩무한누적 > div {display: inline-block; margin-right:5px;vertical-align: top;}
+#추출된번호_30개씩무한누적 > div > div {margin-bottom:1px;margin-right:5px;}
+#추출된번호_30개씩무한누적 > div > div button
+{vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
+
+#세로구분_분석자료_전체 > div:not([id*='id_임시버튼45']) > div button, #필터링조건표_전체 > div > div:not([id*='id_복사본버튼45']) > div button  
+{vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
+.다섯개씩번갈아색칠 button:nth-of-type(10n+1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+2):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+3):not([class*='분석자료_고정등번호색칠']),
+.다섯개씩번갈아색칠 button:nth-of-type(10n+4):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n+5):not([class*='분석자료_고정등번호색칠']) {background-color: bisque;}
+.다섯개씩번갈아색칠 button:nth-of-type(10n):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n-1):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n-2):not([class*='분석자료_고정등번호색칠']),
+.다섯개씩번갈아색칠 button:nth-of-type(10n-3):not([class*='분석자료_고정등번호색칠']),.다섯개씩번갈아색칠 button:nth-of-type(10n-4):not([class*='분석자료_고정등번호색칠']) {background-color:rgb(196, 169, 137);}
+.분석자료_순번버튼css button {vertical-align: top;border:1px solid black;background-color: peru; margin-right:-1px;margin-bottom:-1px;color:blue;font-weight: bold;}
+.분석자료_하위div안버튼7개까지css span, .분석자료_순번버튼css span, #분석자료_당번 span, .분석자료_하위div안버튼7개까지css input 
+{display:inline-block; width:88px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}
+.분석자료_순번버튼css span:nth-of-type(3) {width:30px;font-size: 13px;}/* 필터링조건표용 */
+.분석자료_순번버튼css span:nth-of-type(4) {width:35px;font-size: 13px;background-color:cornflowerblue;}/* 필터링조건표용 */
+.분석자료_하위div안버튼7개까지css span:nth-of-type(2) {background-color:chartreuse;}/* 필터링조건표용 */
+.분석자료_하위div안버튼7개까지css input {width:30px;text-align: center;}
+.분석자료_하위div안버튼7개까지css input:nth-of-type(3) {width:300px;text-align: left;}
+.분석자료_하위div안버튼7개까지css input:nth-of-type(4) {width:653px;text-align: left;}
+
+
+#분석자료_당번_있다면다음회차 span, #추출된번호_당번_있다면다음회차 span, #추출된번호_당번 span {display:inline-block; width:88px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}
+#분석자료_당번_있다면다음회차 span:nth-of-type(2), #추출된번호_당번_있다면다음회차 span:nth-of-type(2), #추출된번호_당번 span:nth-of-type(2) {width:88px;}
+#분석자료_당번_있다면다음회차 button, #추출된번호_당번_있다면다음회차 button, #추출된번호_당번 button {vertical-align: top; width:23px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;padding:0px;}
+#분석자료_당번_있다면다음회차 button:nth-of-type(7), #추출된번호_당번_있다면다음회차 button:nth-of-type(7), #추출된번호_당번 button:nth-of-type(7) {background-color: aqua;}
+
+.분석자료_하위div안버튼7개까지css span:nth-of-type(2), .분석자료_순번버튼css span:nth-of-type(2) {width:30px;}
+.분석자료_순번버튼css span:nth-of-type(2) {font-size:13px;padding:0;}
+#세로구분_분석자료_전체, #필터링조건표_전체  {margin-left:5px;}
+.분석자료_고정등번호색칠 {background-color: blueviolet;}
+.분석자료_고정등번호색칠_30주합계 {background-color:cornflowerblue;}
+
+.분석자료_색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
+.분석자료_피해서3종_선택번호 {background-color: green;}
+.분석자료_피해서3종_피해서번호 {background-color: yellow;}
+
+#분석자료_30회차당번_제목 > div > span:nth-of-type(1), #분석자료_30회차당번 > div > span:nth-of-type(1)
+{display:inline-block; width:139px;height:23px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;vertical-align: top;padding-left:4px;}
+#분석자료_30회차당번_제목 > div:nth-of-type(1) > button {color:blue;background-color: peru;font-weight: bold;}
+
+#id_임시버튼45 {padding-top:6px;padding-bottom:6px;}
+#id_임시버튼45 button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+#id_임시버튼45 span, #넣기번호메모 span
+{display: inline-block;width:55px;margin-right:5px; height:24px;border-radius: 4px;border:1px solid gray;text-align: center;}
+#id_임시버튼45 > div > span:nth-of-type(1) {width:50px;vertical-align: middle;margin-top:6px;}
+#id_임시버튼45 > div > span:nth-of-type(2) {width:75px;vertical-align: middle;margin-top:6px;}
+#id_임시버튼45 span:nth-of-type(1), #id_임시버튼45 span:nth-of-type(2) {width:115px;margin-top:5px;margin-bottom:3px;}
+
+/* #필터링조건표_전체 > div > div:not([id*='id_복사본버튼45']) > div button */
+#id_복사본버튼45 {padding-top:6px;padding-bottom:6px;}
+#id_복사본버튼45 button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+#id_복사본버튼45 span
+{display: inline-block;width:55px;margin-right:5px; height:24px;border-radius: 4px;border:1px solid gray;text-align: center;}
+#id_복사본버튼45 > div > span:nth-of-type(1) {width:50px;vertical-align: middle;margin-top:6px;}
+#id_복사본버튼45 > div > span:nth-of-type(2) {width:75px;vertical-align: middle;margin-top:6px;}
+#id_복사본버튼45 span:nth-of-type(1), #id_복사본버튼45 span:nth-of-type(2) {width:115px;margin-top:5px;margin-bottom:3px;}
+
+.현재번호div체크 {background-color:brown;border-radius: 23px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.사오색칠 {background-color: blueviolet;}
+.색칠용버튼 {background-color: blueviolet;border-radius: 20px;}
+.간격클릭클래스 {background-color:chartreuse;border-radius: 20px;}
+
+
+
+.당번_span_한개 {border-radius: 20px;}/* 번호색칠 index와 같은 곳에 회차에 당번 회차 동그라미용 */
+
+.모달회차표시 {background-color:blueviolet;border-radius: 20px;}
+.색칠용버튼[title='1'], .색칠용버튼[title='2'], .색칠용버튼[title='3'], .색칠용버튼[title='4'], .색칠용버튼[title='5'],
+.색칠용버튼[title='6'], .색칠용버튼[title='7'], .색칠용버튼[title='8'], .색칠용버튼[title='9']
+{background-color: yellow;border-radius: 20px;}
+.색칠용버튼[title='10'],.색칠용버튼[title='11'], .색칠용버튼[title='12'], .색칠용버튼[title='13'], .색칠용버튼[title='14'], 
+.색칠용버튼[title='15'],.색칠용버튼[title='16'], .색칠용버튼[title='17'], .색칠용버튼[title='18'], .색칠용버튼[title='19']
+{background-color:cornflowerblue;border-radius: 20px;}
+.색칠용버튼[title='20'],.색칠용버튼[title='21'], .색칠용버튼[title='22'], .색칠용버튼[title='23'], .색칠용버튼[title='24'], 
+.색칠용버튼[title='25'],.색칠용버튼[title='26'], .색칠용버튼[title='27'], .색칠용버튼[title='28'], .색칠용버튼[title='29']
+{background-color:red ;border-radius: 20px;}
+.색칠용버튼[title='30'],.색칠용버튼[title='31'], .색칠용버튼[title='32'], .색칠용버튼[title='33'], .색칠용버튼[title='34'], 
+.색칠용버튼[title='35'],.색칠용버튼[title='36'], .색칠용버튼[title='37'], .색칠용버튼[title='38'], .색칠용버튼[title='39']
+{background-color:gray;border-radius: 20px;}
+.색칠용버튼[title='40'],.색칠용버튼[title='41'], .색칠용버튼[title='42'], .색칠용버튼[title='43'], .색칠용버튼[title='44'], 
+.색칠용버튼[title='45']
+{background-color:green;border-radius: 20px;}
+.absolute {position:absolute;}
+
+
+
+
+
+
