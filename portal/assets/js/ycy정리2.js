@@ -620,6 +620,7 @@ function 당번_흐름만들기() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보 .당번만');
   document.querySelector('#흐름_이월 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_홀짝 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_간격내림차순 > div:nth-of-type(4)').innerHTML = '';
@@ -633,8 +634,9 @@ function 당번_흐름만들기() {
     var 흐름_삼이일_미출 = 0, 흐름_삼이일_1출 = 0, 흐름_삼이일_2출 = 0, 흐름_삼이일_3출이상 = 0;
     var 흐름_삼이일_innerHTML = '';
     var 흐름_이월_innerHTML = '';
-    var 흐름_이월개수 = 0;    
-
+    var 흐름_홀짝_innerHTML = '';
+    var 흐름_연번_innerHTML = '';
+    var 흐름_이월개수 = 0;
     var 문자열=''; //1,2,3,4,5, : 마지막에 쉼표가 있음
     for (var i=0; i<5; i++) {
       문자열+=당첨정보[회차index-i-1-당번정보].innerHTML;
@@ -646,6 +648,18 @@ function 당번_흐름만들기() {
     if (회차index!=(당첨정보.length-1-당번정보)) {
        간격용_다음회차_보볼제외=당첨정보[회차index-당번정보+1].innerHTML.substring(0,당첨정보[회차index-당번정보+1].innerHTML.length-1).split(',');
     }
+    //홀짝
+    var 홀수개수=0;
+    for (var i=0; i<6; i++) {if (현재회차_보볼제외[i] % 2 == 1) {홀수개수+=1}}
+    흐름_홀짝_innerHTML += '<button>' + 홀수개수 + '</button>'+'<button>' + (6-홀수개수) + '</button>';
+    흐름_홀짝_innerHTML = '<div>' + 흐름_홀짝_innerHTML + '</div>';   
+    document.querySelector('#흐름_홀짝 > div:nth-of-type(4)').innerHTML += 흐름_홀짝_innerHTML; 
+    //연번
+    var 연번최대값=0; 
+    if (당번정보==0) { //미리 전체를 돌아보고 최대값을 알아둔다, 처음 한번만
+
+    }
+
     //이월수;
     for (var i = 0; i < 6; i++) {
       if (현재회차_보볼제외.filter(element => 현재회차제외_최근번호_보볼제외[i] == element).length > 0) { 흐름_이월개수 += 1; }
