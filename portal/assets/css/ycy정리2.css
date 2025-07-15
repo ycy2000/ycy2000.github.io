@@ -37,6 +37,8 @@ body {white-space: nowrap;}
 #당번 #당번_삼십주연결버튼 > div > button:nth-of-type(1) {border:1px solid black; display:inline-block; width:40px;height:30px;margin-right:-1px;}
 #당번 #당번_삼십주연결버튼 > div > button:nth-of-type(2) {border:1px solid black; display:inline-block; width:30px;height:30px;}
 
+#세로구분_흐름_전체 button {height:34px;width:34px;border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding:0;}
+
 
 #XO플마 {margin-right:5px;}
 #분석자료숨김버튼 > button, #XO플마 > button {margin-right:-5px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
@@ -151,7 +153,8 @@ body {white-space: nowrap;}
 #분석자료 > div:nth-of-type(3) > #분석자료_표_상_js > div > div:nth-of-type(2) > div /* 왼쪽(안에3개), 오른쪽(안에45개) div */
 {width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
 
-#분석자료 > div:nth-of-type(3) > #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {background-color:chartreuse;}
+#분석자료 > div:nth-of-type(3) > #분석자료_표_상_js > div > div:nth-of-type(1) > button {
+  width:31px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;background-color:chartreuse;}
 #분석자료 > div:nth-of-type(3) > #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:65px;}
 #분석자료 > div:nth-of-type(3) > #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {width:30px;}
 #분석자료 > div:nth-of-type(3) > #분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;}

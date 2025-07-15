@@ -122,16 +122,16 @@ var 리스너_분석자료=document.querySelector('#분석자료');
 분석자료표만들기_상();
 분석자료표만들기_하();
 버튼45관련만들기();
-카테고리보기();
 당번_회차select_change();
 분석자료_회차select_change();
 번호45_3개_title넣기();
 당번회차중에_분석자료회차있으면_클래스부여();
+check된대로보기숨기기();
 function 당번회차중에_분석자료회차있으면_클래스부여() {
   if (document.querySelector('#당번_불러온당첨정보 .당번회차중에_분석자료회차있으면_클래스부여')) {document.querySelector('.당번회차중에_분석자료회차있으면_클래스부여').classList.remove('당번회차중에_분석자료회차있으면_클래스부여')};
-  console.log('당번회차 : ' + document.querySelector('#당번_회차select').value + ', 분석자료회차 : ' + document.querySelector('#분석자료_회차select').value)
+  //console.log('당번회차 : ' + document.querySelector('#당번_회차select').value + ', 분석자료회차 : ' + document.querySelector('#분석자료_회차select').value)
   var 차이=document.querySelector('#당번_회차select').value - document.querySelector('#분석자료_회차select').value;
-  console.log('차이 : ' + 차이)
+  //console.log('차이 : ' + 차이)
   if (차이<0) {console.log('차이<0 이면 return;');return;}
   document.querySelectorAll('#당번_불러온당첨정보 .당첨정보')[차이].children[0].classList.add('당번회차중에_분석자료회차있으면_클래스부여');
 
@@ -479,8 +479,14 @@ function 분석자료표만들기_상() {
       var div요소=document.createElement('div'); // div 요소 변수에 담는다.
       if (i==0) {div요소.textContent=번호선택배열[외부]}
       if (i==1 && 외부==0) {div요소.textContent='수'}
+
+      if (i==2) {div요소=document.createElement('button');}
       if (i==2 && 외부==0) {div요소.textContent='출'}
+      if (i==2 && 외부!=0) {div요소.setAttribute('class','카운팅')}      //녹색부분에 카운팅 클래스 넣기
+
       if (i==3 && 외부==0) {div요소.textContent='C'}
+      if (i==3 && 외부!=0) {div요소.setAttribute('class','앞요소값clear')}
+
       if (i==3 && 외부!=0) {div요소.textContent=외부}
       번호선택_추출_c.appendChild(div요소);
     }
@@ -507,103 +513,10 @@ function 분석자료표만들기_상() {
     }
   }
 }
-function 버튼45감싸기_보기숨기기() {
-  if (document.querySelector('#check_번호45감싸기').checked) {
-    document.querySelector('#버튼45감싸기').classList.remove('d-none')
-  } else {
-    document.querySelector('#버튼45감싸기').classList.add('d-none')
-  }
-}
-function 버튼45_2st_보기숨기기() {
-  if (document.querySelector('#버튼45_2st').checked) {
-    document.querySelector('#id_버튼45_2st').classList.remove('d-none')
-  } else {
-    document.querySelector('#id_버튼45_2st').classList.add('d-none')
-  }
-}
-function 버튼45_3st_보기숨기기() {
-  if (document.querySelector('#버튼45_3st').checked) {
-    document.querySelector('#id_버튼45_3st').classList.remove('d-none')
-  } else {
-    document.querySelector('#id_버튼45_3st').classList.add('d-none')
-  }
-}
-function 빈도표_보기숨기기() {
-  if (document.querySelector('#빈도표').checked) {
-    document.querySelector('#분석자료_삼십회표').classList.remove('d-none')
-  } else {
-    document.querySelector('#분석자료_삼십회표').classList.add('d-none')
-  }
-}
-function 빈도30개수_보기숨기기() {
-  if (document.querySelector('#빈도개수').checked) {
-    document.querySelector('#숨기기_분석자료_빈도_개수').classList.remove('d-none')
-  } else {
-    document.querySelector('#숨기기_분석자료_빈도_개수').classList.add('d-none')
-  }
-}
-function 빈도30당첨_보기숨기기() {
-  if (document.querySelector('#빈도당첨').checked) {
-    document.querySelector('#숨기기_분석자료_빈도_당첨').classList.remove('d-none')
-  } else {
-    document.querySelector('#숨기기_분석자료_빈도_당첨').classList.add('d-none')
-  }
-}
-function 사진_보기숨기기() {
-  if (document.querySelector('#check_사진').checked) {
-    document.querySelector('#사진').classList.remove('d-none')
-  } else {
-    document.querySelector('#사진').classList.add('d-none')
-  }
-}
-function 사진_보기숨기기2() {
-  if (document.querySelector('#check_사진2').checked) {
-    document.querySelector('#사진2').classList.remove('d-none')
-  } else {
-    document.querySelector('#사진2').classList.add('d-none')
-  }
-}
-function 분석자료_보기숨기기() {
-  if (document.querySelector('#check_분석자료').checked) {
-    document.querySelector('#숨기기_분석자료').classList.remove('d-none')
-  } else {
-    document.querySelector('#숨기기_분석자료').classList.add('d-none')
-  }
-}
-function 대조45_보기숨기기() {
-  if (document.querySelector('#대조45').checked) {
-    document.querySelector('#버튼45오른쪽단독').classList.remove('d-none')
-  } else {
-    document.querySelector('#버튼45오른쪽단독').classList.add('d-none')
-  }
-}
-function 당번_보기숨기기() {
-  if (document.querySelector('#check_당번').checked) {
-    document.querySelector('#당번').classList.remove('d-none')
-  } else {
-    document.querySelector('#당번').classList.add('d-none')
-  }
-}
-function 당번_오른쪽_보기숨기기() {
-  if (document.querySelector('#check_당번오른쪽').checked) {
-    document.querySelector('#당번_오른쪽').classList.remove('d-none')
-  } else {
-    document.querySelector('#당번_오른쪽').classList.add('d-none')
-  }
-}
-function 삼십회_보기숨기기() {
-  if (document.querySelector('#check_삼십회').checked) {
-    document.querySelector('#분석자료_삼십회표').classList.remove('d-none')
-  } else {
-    document.querySelector('#분석자료_삼십회표').classList.add('d-none')
-  }
-}
-function 삼십회빈도_보기숨기기() {
-  if (document.querySelector('#check_삼십회빈도').checked) {
-    document.querySelector('#분석자료_삼십회빈도').classList.remove('d-none')
-  } else {
-    document.querySelector('#분석자료_삼십회빈도').classList.add('d-none')
-  }
+function 체크this활용(e) {
+  //div안에 input label 구조활용
+  if (e.children[0].checked && document.querySelector('#' + e.children[0].title)) {document.querySelector('#' + e.children[0].title).classList.remove('d-none')}
+  if (!e.children[0].checked && document.querySelector('#' + e.children[0].title)) {document.querySelector('#' + e.children[0].title).classList.add('d-none')}
 }
 function 분석자료_회차select_change() {
   회차index=parseInt(document.querySelector('#분석자료_회차select').value)-1; //parseInt(), 값전달 안하거나 공백은 NaN
@@ -697,7 +610,145 @@ function 당번_회차select_change() {
   당번_변수_5주번호정보();
   당번_변수_30주번호정보();
   change시_색칠하기();
-  당번회차중에_분석자료회차있으면_클래스부여();  
+  당번회차중에_분석자료회차있으면_클래스부여();
+  당번_흐름만들기();
+}
+function 당번_흐름만들기() {
+  console.log('당번_흐름만들기()');
+  //전체변수_당번전체, 8개중 2-7 6개번호(보볼제외)
+  회차index=parseInt(document.querySelector('#당번_회차select').value)-1; //parseInt(), 값전달 안하거나 공백은 NaN
+  var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보 .당번만');
+  document.querySelector('#흐름_이월 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_간격내림차순 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_간격당당첨내림차순 > div:nth-of-type(4)').innerHTML = '';
+  for (var 당번정보 = 0; 당번정보 < 30; 당번정보++) {
+    var 현재회차제외_오주간번호_보볼제외 = []; //5*6개=30개
+    var 현재회차제외_최근번호_보볼제외 = []; //이전화차 6개
+    var 현재회차_보볼제외 = []; //현재회차 6개
+    var 간격용_다음회차_보볼제외 = []; //다음회차 6개
+    var 나머지;
+    var 흐름_삼이일_미출 = 0, 흐름_삼이일_1출 = 0, 흐름_삼이일_2출 = 0, 흐름_삼이일_3출이상 = 0;
+    var 흐름_삼이일_innerHTML = '';
+    var 흐름_이월_innerHTML = '';
+    var 흐름_이월개수 = 0;    
+
+    var 문자열=''; //1,2,3,4,5, : 마지막에 쉼표가 있음
+    for (var i=0; i<5; i++) {
+      문자열+=당첨정보[회차index-i-1-당번정보].innerHTML;
+    } 
+    문자열=문자열.substring(0,문자열.length-1); //마지막 쉼표 제외
+    현재회차제외_오주간번호_보볼제외=문자열.split(',');
+    현재회차제외_최근번호_보볼제외=당첨정보[회차index-1-당번정보].innerHTML.substring(0,당첨정보[회차index-1-당번정보].innerHTML.length-1).split(',');
+    현재회차_보볼제외=당첨정보[회차index-당번정보].innerHTML.substring(0,당첨정보[회차index-당번정보].innerHTML.length-1).split(',');
+    if (회차index!=(당첨정보.length-1-당번정보)) {
+       간격용_다음회차_보볼제외=당첨정보[회차index-당번정보+1].innerHTML.substring(0,당첨정보[회차index-당번정보+1].innerHTML.length-1).split(',');
+    }
+    //이월수;
+    for (var i = 0; i < 6; i++) {
+      if (현재회차_보볼제외.filter(element => 현재회차제외_최근번호_보볼제외[i] == element).length > 0) { 흐름_이월개수 += 1; }
+    }
+    흐름_이월_innerHTML += '<button>' + 흐름_이월개수 + '</button>';
+    흐름_이월_innerHTML = '<div>' + 흐름_이월_innerHTML + '</div>';   
+    document.querySelector('#흐름_이월 > div:nth-of-type(4)').innerHTML += 흐름_이월_innerHTML;    
+    //흐름_삼이일_미출=0, 흐름_삼이일_1출=0, 흐름_삼이일_2출=0, 흐름_삼이일_3출이상=0;
+    for (var i = 0; i < 6; i++) {
+      if (현재회차제외_오주간번호_보볼제외.filter(element => 현재회차_보볼제외[i] == element).length == 0) { 흐름_삼이일_미출 += 1; }
+      if (현재회차제외_오주간번호_보볼제외.filter(element => 현재회차_보볼제외[i] == element).length == 1) { 흐름_삼이일_1출 += 1; }
+      if (현재회차제외_오주간번호_보볼제외.filter(element => 현재회차_보볼제외[i] == element).length == 2) { 흐름_삼이일_2출 += 1; }
+      if (현재회차제외_오주간번호_보볼제외.filter(element => 현재회차_보볼제외[i] == element).length > 2) { 흐름_삼이일_3출이상 += 1; }
+    }
+    흐름_삼이일_innerHTML += '<button>' + 흐름_삼이일_미출 + '</button>';
+    흐름_삼이일_innerHTML += '<button>' + 흐름_삼이일_1출 + '</button>';
+    흐름_삼이일_innerHTML += '<button>' + 흐름_삼이일_2출 + '</button>';
+    흐름_삼이일_innerHTML += '<button>' + 흐름_삼이일_3출이상 + '</button>';
+    흐름_삼이일_innerHTML = '<div>' + 흐름_삼이일_innerHTML + '</div>';
+    document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML += 흐름_삼이일_innerHTML;
+    //흐름_간격
+    현재회차_보볼제외.sort((a, t) => a - t);
+    현재회차제외_최근번호_보볼제외.sort((a, t) => a - t);
+
+    var 간격1, 간격2, 간격3, 간격4, 간격5, 간격6, 당첨1, 당첨2, 당첨3, 당첨4, 당첨5, 당첨6;
+    var 간격_innerHTML = '', 간격당당첨_innerHTML = '';
+    간격1 = 현재회차_보볼제외[1] - 현재회차_보볼제외[0] - 1;
+    간격2 = 현재회차_보볼제외[2] - 현재회차_보볼제외[1] - 1;
+    간격3 = 현재회차_보볼제외[3] - 현재회차_보볼제외[2] - 1;
+    간격4 = 현재회차_보볼제외[4] - 현재회차_보볼제외[3] - 1;
+    간격5 = 현재회차_보볼제외[5] - 현재회차_보볼제외[4] - 1;
+    간격6 = (45 - 현재회차_보볼제외[5]) + (현재회차_보볼제외[0] - 1);
+    if (회차index == 당첨정보.length-1 && 당번정보 == 0) {
+      당첨1 = '_', 당첨2 = '_', 당첨3 = '_', 당첨4 = '_', 당첨5 = '_', 당첨6 = '_';
+      console.log('건너뜀 : if (회차index == 당첨정보.length-1 && 당번정보 == 0)')
+    } else {
+      당첨1 = 간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[0])) && (element < Number(현재회차_보볼제외[1])))).length;
+      당첨2 = 간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[1])) && (element < Number(현재회차_보볼제외[2])))).length;
+      당첨3 = 간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[2])) && (element < Number(현재회차_보볼제외[3])))).length;
+      당첨4 = 간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[3])) && (element < Number(현재회차_보볼제외[4])))).length;
+      당첨5 = 간격용_다음회차_보볼제외.filter(element => ((element > Number(현재회차_보볼제외[4])) && (element < Number(현재회차_보볼제외[5])))).length;
+      당첨6 = 간격용_다음회차_보볼제외.filter(element => element > Number(현재회차_보볼제외[5])).length + 간격용_다음회차_보볼제외.filter(element => element < Number(현재회차_보볼제외[0])).length;
+      //console.log('간격용_다음회차_보볼제외 : ' + 간격용_다음회차_보볼제외)
+      //console.log('현재회차_보볼제외 : ' + 현재회차_보볼제외)
+      //console.log('당번정보' + 당번정보 + ', 당첨 : ' + 당첨1 + ' ,' + 당첨2 + ' ,' + 당첨3 + ' ,' + 당첨4 + ' ,' + 당첨5 + ' ,' + 당첨6)
+    }
+    간격_innerHTML += '<button title="0">' + 간격1 + '</button>';
+    간격_innerHTML += '<button title="1">' + 간격2 + '</button>';
+    간격_innerHTML += '<button title="2">' + 간격3 + '</button>';
+    간격_innerHTML += '<button title="3">' + 간격4 + '</button>';
+    간격_innerHTML += '<button title="4">' + 간격5 + '</button>';
+    간격_innerHTML += '<button title="5">' + 간격6 + '</button>';
+    간격_innerHTML = '<div>' + 간격_innerHTML + '</div>';
+    document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML += 간격_innerHTML;
+    간격당당첨_innerHTML += '<button title="0">' + 당첨1 + '</button>';
+    간격당당첨_innerHTML += '<button title="1">' + 당첨2 + '</button>';
+    간격당당첨_innerHTML += '<button title="2">' + 당첨3 + '</button>';
+    간격당당첨_innerHTML += '<button title="3">' + 당첨4 + '</button>';
+    간격당당첨_innerHTML += '<button title="4">' + 당첨5 + '</button>';
+    간격당당첨_innerHTML += '<button title="5">' + 당첨6 + '</button>';
+    간격당당첨_innerHTML = '<div>' + 간격당당첨_innerHTML + '</div>';
+    document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML += 간격당당첨_innerHTML;
+    //흐름_간격 내림차순
+    var 내림차순간격_innerHTML = '', 내림차순간격당당첨_innerHTML = '';
+    var 간격배열 = [간격1, 간격2, 간격3, 간격4, 간격5, 간격6];
+    var 당첨배열 = [당첨1, 당첨2, 당첨3, 당첨4, 당첨5, 당첨6];
+    var 내림차순간격배열 = [];
+    var 내림차순당첨배열 = [];
+    var 내림차순의원간격인덱스 = [];
+    for (var i = 0; i < 6; i++) {
+      내림차순간격배열.push(Math.max(...간격배열));
+      내림차순당첨배열.push(당첨배열[간격배열.indexOf(Math.max(...간격배열))]);
+      내림차순의원간격인덱스.push(간격배열.indexOf(Math.max(...간격배열)));
+      간격배열[간격배열.indexOf(Math.max(...간격배열))] = -1;
+    }
+    if (회차index == 당첨정보.length-1 && 당번정보 == 0) {
+      당첨1 = '_', 당첨2 = '_', 당첨3 = '_', 당첨4 = '_', 당첨5 = '_', 당첨6 = '_';
+      // console.log('당번정보 : ' + 당번정보)
+    } else {
+      당첨1 = 내림차순당첨배열[0];
+      당첨2 = 내림차순당첨배열[1];
+      당첨3 = 내림차순당첨배열[2];
+      당첨4 = 내림차순당첨배열[3];
+      당첨5 = 내림차순당첨배열[4];
+      당첨6 = 내림차순당첨배열[5];
+    }
+    내림차순간격_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[0] + '">' + 내림차순간격배열[0] + '</button>';
+    내림차순간격_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[1] + '">' + 내림차순간격배열[1] + '</button>';
+    내림차순간격_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[2] + '">' + 내림차순간격배열[2] + '</button>';
+    내림차순간격_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[3] + '">' + 내림차순간격배열[3] + '</button>';
+    내림차순간격_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[4] + '">' + 내림차순간격배열[4] + '</button>';
+    내림차순간격_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[5] + '">' + 내림차순간격배열[5] + '</button>';
+    내림차순간격_innerHTML = '<div>' + 내림차순간격_innerHTML + '</div>';
+    document.querySelector('#흐름_간격내림차순 > div:nth-of-type(4)').innerHTML += 내림차순간격_innerHTML;
+    내림차순간격당당첨_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[0] + '">' + 당첨1 + '</button>';
+    내림차순간격당당첨_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[1] + '">' + 당첨2 + '</button>';
+    내림차순간격당당첨_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[2] + '">' + 당첨3 + '</button>';
+    내림차순간격당당첨_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[3] + '">' + 당첨4 + '</button>';
+    내림차순간격당당첨_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[4] + '">' + 당첨5 + '</button>';
+    내림차순간격당당첨_innerHTML += '<button ' + 'title="' + 내림차순의원간격인덱스[5] + '">' + 당첨6 + '</button>';
+    내림차순간격당당첨_innerHTML = '<div>' + 내림차순간격당당첨_innerHTML + '</div>';
+    document.querySelector('#흐름_간격당당첨내림차순 > div:nth-of-type(4)').innerHTML += 내림차순간격당당첨_innerHTML;
+  }
 }
 function 분석자료_변수_5주번호정보_내부_미출부터이월수개수_표_하() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보');
@@ -1335,18 +1386,19 @@ function 당번_변수_5주번호정보() {
   for (var i=0; i<6; i++) {
     if (당번[i]==1) {
       var 검토2=45, 검토1=2;
-      if(당번.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
-      if(당번.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
+      if(당번.filter(번호 => 번호==검토1).length==0 && 이웃.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0 && 이웃.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
     } else if (당번[i]==45) {
       var 검토2=44, 검토1=1;
-      if(당번.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
-      if(당번.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
+      if(당번.filter(번호 => 번호==검토1).length==0 && 이웃.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0 && 이웃.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
     } else {
       var 검토2=parseInt(당번[i])+1, 검토1=parseInt(당번[i])-1;
-      if(당번.filter(번호 => 번호==번호+1).length==0) {이웃.push(검토1)};
-      if(당번.filter(번호 => 번호==번호-1).length==0) {이웃.push(검토2)};
+      if(당번.filter(번호 => 번호==검토1).length==0 && 이웃.filter(번호 => 번호==검토1).length==0) {이웃.push(검토1)};
+      if(당번.filter(번호 => 번호==검토2).length==0 && 이웃.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
     }
   }
+  console.log('이웃 : ' + 이웃)
   이웃이월=new Set([...당번, ...이웃])
   이웃이월=[...이웃이월]
   //console.log('_5주번호들배열 : ' + _5주번호들배열);
@@ -1474,10 +1526,12 @@ function 분석자료_고정등번호색칠_클래스지우기() {
     document.querySelectorAll('.분석자료_고정등번호색칠')[0].classList.remove('분석자료_고정등번호색칠');
   }
 }
-function 카테고리보기() {
-  for (var i=0; i<document.querySelectorAll('.카테고리보기input').length; i++) {
-    if (!document.querySelectorAll('.카테고리보기input')[i].checked) {
-      document.querySelector('#' + document.querySelectorAll('.카테고리보기input')[i].title).classList.add('d-none')
+function check된대로보기숨기기() {
+  for (var i=0; i<document.querySelectorAll('.check클래스').length; i++) {
+    if (!document.querySelectorAll('.check클래스')[i].checked) {
+      if (document.querySelector('#' + document.querySelectorAll('.check클래스')[i]?.title)) {
+         document.querySelector('#' + document.querySelectorAll('.check클래스')[i].title).classList.add('d-none')
+      }
     }
   }
 }
@@ -1486,6 +1540,7 @@ function 카테고리보기() {
 var 리스너_당번오른쪽=  document.querySelector('#당번_오른쪽');
 var 버튼45감싸기=document.querySelector('#버튼45감싸기');
 var 버튼45오른쪽단독=document.querySelector('#버튼45오른쪽단독');
+var 리스너_바디=document.querySelector('body');
 function 리스너_당번오른쪽_click(e) {
   console.log('리스너_당번오른쪽_click(e)')
   if (e.target.classList.contains('타이틀은아이디')) {
@@ -1702,6 +1757,19 @@ function 선택_id_버튼45(e) {
   document.querySelector('#' + e.id).classList.add('js선택_id_버튼45');
 
 }
+function 리스너_바디_click(e) {
+  //Number('') : 공백이면 0, 숫자있고 좌우 공백은 숫자 추출됨. 숫자 사이에공백은 안됨. 문자열 섞이면 안됨
+  if (e.target.classList.contains('카운팅')) {
+    console.log('리스너_바디_click(e) : 카운팅 클래스 있을때')
+    var 현재=Number(e.target.innerHTML);
+    if (isNaN(현재)) {alert('현재 숫자 아님(공백은 0)');return;}
+    if (현재==6) {e.target.innerHTML=''} else {e.target.innerHTML=현재+1;}
+  }
+  if (e.target.classList.contains('앞요소값clear')) {
+    console.log('리스너_바디_click(e) : 앞요소값clear 클래스 있을때')
+    e.target.previousElementSibling.innerHTML='';
+  }
+}
   function mousedownOrTouchstart(e) {
     // 터치 이벤트인지 마우스 이벤트인지 확인
     var isTouchEvent = e.type === 'touchstart';
@@ -1817,3 +1885,4 @@ function 선택_id_버튼45(e) {
   버튼45오른쪽단독.addEventListener('touchstart', mousedownOrTouchstart2);
   버튼45오른쪽단독.addEventListener('click', 버튼45감싸기_click);
   리스너_당번오른쪽.addEventListener('click',리스너_당번오른쪽_click)
+  리스너_바디.addEventListener('click',리스너_바디_click)  
