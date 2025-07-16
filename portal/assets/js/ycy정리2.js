@@ -636,6 +636,7 @@ function 당번_흐름만들기() {
     var 흐름_삼이일_innerHTML = '';
     var 흐름_이월_innerHTML = '';
     var 흐름_이웃_innerHTML = '';
+    var 흐름_이웃full_innerHTML = '';
     var 흐름_홀짝_innerHTML = '';
     var 흐름_연번_innerHTML = '';
     var 문자열=''; //1,2,3,4,5, : 마지막에 쉼표가 있음
@@ -805,22 +806,22 @@ function 당번_흐름만들기() {
 
 
 
-    
-    ///////////// 이웃full 추가하고있음
-    for (var 이웃관련내부=0; 이웃관련내부<이웃당첨최대값+1; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
+
+    ///////////// 이웃full 추가하고있음, 이웃full최대값, 이웃저장_중복제거_모음30,흐름_이웃full_innerHTML,#흐름_이웃수full
+    for (var 이웃관련내부=0; 이웃관련내부<이웃full최대값+1; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
       if (이웃관련내부==0) {
-        흐름_이웃_innerHTML+='<button>' + 이웃수개수저장30[당번정보] + '</button>'
+        흐름_이웃full_innerHTML+='<button>' + 이웃수개수저장30[당번정보] + '</button>'
       } else {
         if (이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1]==undefined) {
-          흐름_이웃_innerHTML+='<button></button>'
+          흐름_이웃full_innerHTML+='<button></button>'
         } else {
-          흐름_이웃_innerHTML+='<button>' + 이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1] +'</button>'
+          흐름_이웃full_innerHTML+='<button>' + 이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1] +'</button>'
         }
       }//
 
     }
-    흐름_이웃_innerHTML = '<div>' + 흐름_이웃_innerHTML + '</div>';   
-    document.querySelector('#흐름_이웃수 > div:nth-of-type(4)').innerHTML += 흐름_이웃_innerHTML;
+    흐름_이웃full_innerHTML = '<div>' + 흐름_이웃full_innerHTML + '</div>';   
+    document.querySelector('#흐름_이웃수full > div:nth-of-type(4)').innerHTML += 흐름_이웃full_innerHTML;
 
     //흐름_삼이일_미출=0, 흐름_삼이일_1출=0, 흐름_삼이일_2출=0, 흐름_삼이일_3출이상=0;
     for (var i = 0; i < 6; i++) {
