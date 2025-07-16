@@ -620,6 +620,7 @@ function 당번_흐름만들기() {
   var 당첨정보=document.querySelectorAll('#당번숨김 .당첨정보 .당번만');
   document.querySelector('#흐름_이월 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_삼이일 > div:nth-of-type(4)').innerHTML = '';
+  document.querySelector('#흐름_연번 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_홀짝 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_간격 > div:nth-of-type(4)').innerHTML = '';
   document.querySelector('#흐름_간격당당첨 > div:nth-of-type(4)').innerHTML = '';
@@ -634,10 +635,11 @@ function 당번_흐름만들기() {
     var 흐름_삼이일_미출 = 0, 흐름_삼이일_1출 = 0, 흐름_삼이일_2출 = 0, 흐름_삼이일_3출이상 = 0;
     var 흐름_삼이일_innerHTML = '';
     var 흐름_이월_innerHTML = '';
+    var 흐름_이웃_innerHTML = '';
     var 흐름_홀짝_innerHTML = '';
     var 흐름_연번_innerHTML = '';
-    var 흐름_이월개수 = 0;
     var 문자열=''; //1,2,3,4,5, : 마지막에 쉼표가 있음
+    //var 연번저장30=[]; //내부에 넣어야됨. 당번정보 돌면서 사라짐
     for (var i=0; i<5; i++) {
       문자열+=당첨정보[회차index-i-1-당번정보].innerHTML;
     } 
@@ -655,18 +657,144 @@ function 당번_흐름만들기() {
     흐름_홀짝_innerHTML = '<div>' + 흐름_홀짝_innerHTML + '</div>';   
     document.querySelector('#흐름_홀짝 > div:nth-of-type(4)').innerHTML += 흐름_홀짝_innerHTML; 
     //연번
-    var 연번최대값=0; 
     if (당번정보==0) { //미리 전체를 돌아보고 최대값을 알아둔다, 처음 한번만
-
+      var 연번최대값=0;  //내부에 넣어야됨. 당번정보 돌면서 사라짐
+      var 연번저장30=[];
+      for (var 연번관련=0; 연번관련<30; 연번관련++) {
+        var 연번관련_현재회차=당첨정보[회차index-연번관련].innerHTML.substring(0,당첨정보[회차index-연번관련].innerHTML.length-1).split(',');
+        문자열='';
+        if (연번관련_현재회차[0]==1 && 연번관련_현재회차[5]==45) {문자열+='45,1'}
+        for (var 연번관련내부=0; 연번관련내부<5; 연번관련내부++) {
+          if (Number(연번관련_현재회차[연번관련내부+1])-Number(연번관련_현재회차[연번관련내부])==1) {
+            if (문자열.length==0) {
+              문자열=Number(연번관련_현재회차[연번관련내부]) + ',' + Number(연번관련_현재회차[연번관련내부+1])
+            } else {
+              문자열+=',' + Number(연번관련_현재회차[연번관련내부]) + ',' + Number(연번관련_현재회차[연번관련내부+1])
+            }
+          }
+        }
+        문자열=문자열.split(',');
+        문자열=new Set([...문자열]); //중복제거
+        문자열=[...문자열]; //배열로 전환
+        문자열.sort((a, t) => a - t); //오름차순 정렬
+        if (연번최대값<문자열.length) {연번최대값=문자열.length}
+        연번저장30.push(문자열.join(','));
+      }
     }
-
+    //                     연번 innerHTML 작성은 나와서 
+    for (var 연번관련내부=0; 연번관련내부<연번최대값; 연번관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
+      if (연번저장30[당번정보].split(',').length==1 || 연번저장30[당번정보].split(',')[연번관련내부]==undefined) {
+        흐름_연번_innerHTML+='<button></button>'
+      } else {
+        흐름_연번_innerHTML+='<button>' + 연번저장30[당번정보].split(',')[연번관련내부] +'</button>'
+      }
+    }
+    흐름_연번_innerHTML = '<div>' + 흐름_연번_innerHTML + '</div>';   
+    document.querySelector('#흐름_연번 > div:nth-of-type(4)').innerHTML += 흐름_연번_innerHTML;
     //이월수;
-    for (var i = 0; i < 6; i++) {
-      if (현재회차_보볼제외.filter(element => 현재회차제외_최근번호_보볼제외[i] == element).length > 0) { 흐름_이월개수 += 1; }
+    if (당번정보==0) { //미리 전체를 돌아보고 최대값을 알아둔다, 처음 한번만
+      var 이월최대값=0;  //내부에 넣어야됨. 당번정보 돌면서 사라짐
+      var 이월저장30=[];
+      for (var 이월관련=0; 이월관련<30; 이월관련++) {
+        var 이월관련_현재회차=당첨정보[회차index-이월관련].innerHTML.substring(0,당첨정보[회차index-이월관련].innerHTML.length-1).split(',');
+        var 이월관련_이전회차=당첨정보[회차index-이월관련-1].innerHTML.substring(0,당첨정보[회차index-이월관련-1].innerHTML.length-1).split(',');
+        문자열='';
+        for (var 이월관련내부=0; 이월관련내부<6; 이월관련내부++) {
+          //console.log('filter : ' + 이월관련_현재회차.filter(element => 이월관련_이전회차[이월관련내부] == element).length)
+          if (이월관련_현재회차.filter(element => 이월관련_이전회차[이월관련내부] == element).length == 1) {
+            if(문자열.length==0) {문자열=이월관련_이전회차[이월관련내부];} else {문자열+=',' + 이월관련_이전회차[이월관련내부]}
+          }
+        }
+        문자열=문자열.split(',');
+        문자열=new Set([...문자열]); //중복제거
+        문자열=[...문자열]; //배열로 전환
+        문자열.sort((a, t) => a - t); //오름차순 정렬
+        //console.log('문자열(이월수) : ' + 문자열 + ', length : ' + 문자열.length)
+        if (이월최대값<문자열.length) {이월최대값=문자열.length}
+        이월저장30.push(문자열.join('_'));
+      }
     }
-    흐름_이월_innerHTML += '<button>' + 흐름_이월개수 + '</button>';
+    //                     이월 innerHTML 작성은 나와서 
+    for (var 이월관련내부=0; 이월관련내부<이월최대값; 이월관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
+      if (이월저장30[당번정보].split('_')[이월관련내부]==undefined) {
+        흐름_이월_innerHTML+='<button></button>'
+      } else {
+        흐름_이월_innerHTML+='<button>' + 이월저장30[당번정보].split('_')[이월관련내부] +'</button>'
+      }
+    }
     흐름_이월_innerHTML = '<div>' + 흐름_이월_innerHTML + '</div>';   
-    document.querySelector('#흐름_이월 > div:nth-of-type(4)').innerHTML += 흐름_이월_innerHTML;    
+    document.querySelector('#흐름_이월 > div:nth-of-type(4)').innerHTML += 흐름_이월_innerHTML;
+
+    //이웃수;
+    if (당번정보==0) { //미리 전체를 돌아보고 최대값을 알아둔다, 처음 한번만
+      var 이웃당첨최대값=0;
+      //var 이웃저장중복허용=[]; //내부에 넣어야됨, 돌때마다 초기화 되어야함
+      var 이웃저장_중복제거_모음30=[];
+      //var 이웃저장_중복제거=[];//내부에 넣어야됨, 돌때마다 초기화 되어야함
+      var 이웃당첨개수저장30=[];
+      var 이웃수개수저장30=[];
+      var 이웃수당첨번호저장30=[];
+      //30회 돌았을때의 정보를 미리 알아둔다
+      for (var 이웃관련=0; 이웃관련<30; 이웃관련++) {
+        var 이웃관련_현재회차=당첨정보[회차index-이웃관련].innerHTML.substring(0,당첨정보[회차index-이웃관련].innerHTML.length-1).split(',');
+        var 이웃관련_이전회차=당첨정보[회차index-이웃관련-1].innerHTML.substring(0,당첨정보[회차index-이웃관련-1].innerHTML.length-1).split(',');
+        var 이웃저장중복허용=[]; //내부에 넣어야됨, 돌때마다 초기화 되어야함
+        var 이웃저장_중복제거=[];//내부에 넣어야됨, 돌때마다 초기화 되어야함        
+        문자열='';
+        for (var 이웃수구하기=0; 이웃수구하기<6; 이웃수구하기++) {
+          //좌우번호 일단 다 넣는다
+          if (이웃관련_이전회차[이웃수구하기]==1) {
+              이웃저장중복허용.push(45);이웃저장중복허용.push(2);
+            } else if (이웃관련_이전회차[이웃수구하기]==45) {
+              이웃저장중복허용.push(44);이웃저장중복허용.push(1);
+            } else {
+              이웃저장중복허용.push(Number(이웃관련_이전회차[이웃수구하기])-1);
+              이웃저장중복허용.push(Number(이웃관련_이전회차[이웃수구하기])+1);
+          }
+        }
+        for (var 이웃수구하기=0; 이웃수구하기<이웃저장중복허용.length; 이웃수구하기++) {
+          //좌우번호 전체에서 당번이 아닌것만 문자열 로 추출
+          if (이웃관련_이전회차.filter(element => 이웃저장중복허용[이웃수구하기] == element).length == 0) {
+            이웃저장_중복제거.push(이웃저장중복허용[이웃수구하기]);
+          }
+        }
+        이웃저장_중복제거_모음30.push(이웃저장_중복제거.join('_'))
+        이웃수개수저장30.push(이웃저장_중복제거.length)
+
+        문자열='';//초기화
+        for (var 당첨수구하기=0; 당첨수구하기<6; 당첨수구하기++) {
+          //당첨번호만 구하기
+          if (이웃저장_중복제거.filter(element => 이웃관련_현재회차[당첨수구하기] == element).length > 0) {
+            if(문자열.length==0) {문자열=이웃관련_현재회차[당첨수구하기];} else {문자열+=',' + 이웃관련_현재회차[당첨수구하기]}
+          }
+        }
+        문자열=문자열.split(',');//배열로 변환
+        문자열=new Set([...문자열]); //중복제거
+        문자열=[...문자열]; //배열로 전환
+        문자열.sort((a, t) => a - t); //오름차순 정렬
+        if (문자열[0]=='') {이웃당첨개수저장30.push('')} else {이웃당첨개수저장30.push(문자열.length)}
+        이웃수당첨번호저장30.push(문자열.join('_'));
+
+        //console.log('문자열(이웃수) : ' + 문자열 + ', length : ' + 문자열.length)
+        if (이웃당첨최대값<문자열.length) {이웃당첨최대값=문자열.length}
+      }
+    }
+    //                     이웃 innerHTML 작성은 나와서 
+    for (var 이웃관련내부=0; 이웃관련내부<이웃당첨최대값+1; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
+      if (이웃관련내부==0) {
+        흐름_이웃_innerHTML+='<button>' + 이웃수개수저장30[당번정보] + '</button>'
+      } else {
+        if (이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1]==undefined) {
+          흐름_이웃_innerHTML+='<button></button>'
+        } else {
+          흐름_이웃_innerHTML+='<button>' + 이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1] +'</button>'
+        }
+      }
+
+    }
+    흐름_이웃_innerHTML = '<div>' + 흐름_이웃_innerHTML + '</div>';   
+    document.querySelector('#흐름_이웃수 > div:nth-of-type(4)').innerHTML += 흐름_이웃_innerHTML;
+
     //흐름_삼이일_미출=0, 흐름_삼이일_1출=0, 흐름_삼이일_2출=0, 흐름_삼이일_3출이상=0;
     for (var i = 0; i < 6; i++) {
       if (현재회차제외_오주간번호_보볼제외.filter(element => 현재회차_보볼제외[i] == element).length == 0) { 흐름_삼이일_미출 += 1; }
@@ -1412,7 +1540,7 @@ function 당번_변수_5주번호정보() {
       if(당번.filter(번호 => 번호==검토2).length==0 && 이웃.filter(번호 => 번호==검토2).length==0) {이웃.push(검토2)};
     }
   }
-  console.log('이웃 : ' + 이웃)
+  //console.log('이웃 : ' + 이웃)
   이웃이월=new Set([...당번, ...이웃])
   이웃이월=[...이웃이월]
   //console.log('_5주번호들배열 : ' + _5주번호들배열);
