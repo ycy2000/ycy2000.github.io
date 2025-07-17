@@ -1,4 +1,111 @@
 var 전체변수클릭번호정보문자열='';
+function 피_노_흰(e) {
+  if (document.querySelector('#선택_id_버튼45_1st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_1st'}
+  if (document.querySelector('#선택_id_버튼45_2st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_2st'}
+  if (document.querySelector('#선택_id_버튼45_3st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_3st'}
+  var 버튼들 = document.querySelectorAll(선택id + ' button');
+  for (var i=0; i<45; i++) {
+    버튼들[i].classList.remove('번호45색칠');
+    버튼들[i].classList.remove('피해서번호노랑');
+    버튼들[i].classList.remove('피해서번호흰색');
+  }  
+  //피해서번호_배열의 숫자만 노란색으로 색칠
+  if (e.innerHTML=='피') {var 색칠할번호_배열=document.querySelector('#피해서_선택번호').innerHTML.split(',');}
+  if (e.innerHTML=='노') {var 색칠할번호_배열=document.querySelector('#피해서_노랑').innerHTML.split(',');}
+  if (e.innerHTML=='흰') {var 색칠할번호_배열=document.querySelector('#피해서_흰색').innerHTML.split(',');}
+  if (색칠할번호_배열[0]=='') {console.log('색칠할번호배열[0]==공백이면 return;');return;}
+  for (var i = 0; i < 색칠할번호_배열.length; i++) {
+    버튼들[Number(색칠할번호_배열[i])-1].classList.add('번호45색칠')
+  }
+  //keep번호에 넣기, 지우기 먼저
+  document.querySelector('#keep번호들').innerHTML=색칠할번호_배열.join(',');
+  document.querySelector('#버튼45오른쪽단독_안에_keep').previousElementSibling.children[0].innerHTML=0;
+  for (var i=0; i<45; i++) {
+    document.querySelectorAll('#버튼45오른쪽단독_안에_keep div')[i].classList.remove('색칠');
+    document.querySelectorAll('#버튼45오른쪽단독_안에_keep div')[i].innerHTML='';
+  }
+  for (var i=0; i<색칠할번호_배열.length; i++) {
+    document.querySelectorAll('#버튼45오른쪽단독_안에_keep div')[Number(색칠할번호_배열[i]-1)].classList.add('색칠');
+    document.querySelectorAll('#버튼45오른쪽단독_안에_keep div')[Number(색칠할번호_배열[i]-1)].innerHTML=색칠할번호_배열[i];
+  }
+  document.querySelector('#버튼45오른쪽단독_안에_keep').previousElementSibling.children[0].innerHTML=색칠할번호_배열.length;
+}
+function 피해서3종() {
+  if (document.querySelector('#선택_id_버튼45_1st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_1st'}
+  if (document.querySelector('#선택_id_버튼45_2st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_2st'}
+  if (document.querySelector('#선택_id_버튼45_3st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_3st'}
+
+  var 초기화=false;
+  if (document.querySelectorAll(선택id + ' .피해서번호노랑').length>0 || document.querySelectorAll(선택id + ' .피해서번호흰색').length>0) {초기화=true;}
+  var 버튼들 = document.querySelectorAll(선택id + ' button');
+  for (var i=0; i<45; i++) {
+    //버튼들[i].classList.remove('번호45색칠');
+    버튼들[i].classList.remove('피해서번호노랑');
+    버튼들[i].classList.remove('피해서번호흰색');
+  }
+  if (초기화) {
+    document.querySelector('#피해서_선택번호').innerHTML=''; 
+    document.querySelector('#피해서_노랑').innerHTML=''; 
+    document.querySelector('#피해서_흰색').innerHTML=''; 
+    return;
+  }
+  var 색칠45색칠된번호 = [];
+  for (var i = 0; i < 45; i++) {
+    if (버튼들[i].classList.contains('번호45색칠')) { 색칠45색칠된번호.push(i + 1) }
+  }
+  if (색칠45색칠된번호.length==0) {alert('선택된번호가 없어서 피해서3종 중단'); return;}
+  //피할번호 있으면 작동, 몫과 나머지 구해놓기
+  var 몫 = [];
+  var 나머지 = [];
+  for (var i = 0; i < 45; i++) {
+    if (버튼들[i].classList.contains('번호45색칠')) {
+      몫.push(Math.floor(i / 7));
+      나머지.push(i % 7);
+    }
+  }
+  var 피해서번호_배열 = [];
+  for (var i = 0; i < 45; i++) {
+    // console.log('번호 ' + (i+1) + ' 의 몫 : ' + Math.floor(i / 7) + ' 개수 : ' + 몫.filter(element => element==Math.floor(i / 7)).length)
+    if (몫.filter(element => element == Math.floor(i / 7)).length == 0) { 피해서번호_배열.push(i + 1) }
+    if (나머지.filter(element => element == (i % 7)).length == 0) { 피해서번호_배열.push(i + 1) }
+  }
+  피해서번호_배열 = new Set(피해서번호_배열); //중복제거 배열아님
+  피해서번호_배열 = [...피해서번호_배열];//배열로 전환
+  var 흰색_배열 = [];
+  for (var i = 1; i < 46; i++) {
+    if (피해서번호_배열.filter(element => element == i).length == 0 && 색칠45색칠된번호.filter(element => element == i).length == 0) { 흰색_배열.push(i) }
+  }
+  //피해서번호_배열의 숫자만 노란색으로 색칠
+  for (var i = 0; i < 피해서번호_배열.length; i++) {
+    버튼들[Number(피해서번호_배열[i])-1].classList.add('피해서번호노랑')
+  }
+  //흰색_배열의 숫자만 흰색으로 색칠
+  for (var i = 0; i < 흰색_배열.length; i++) {
+    버튼들[Number(흰색_배열[i])-1].classList.add('피해서번호흰색')
+  }
+  document.querySelector('#피해서_선택번호').innerHTML=색칠45색칠된번호.join(','); 
+  document.querySelector('#피해서_노랑').innerHTML=피해서번호_배열.join(','); 
+  document.querySelector('#피해서_흰색').innerHTML=흰색_배열.join(','); 
+}
+function 분석자료_11에서20_keep번호셑팅(e) {
+  var 색칠할번호들=document.querySelector('#keep번호들').innerHTML.split(',');
+  if (색칠할번호들[0]=='') {console.log('#keep번호들,색칠할번호들[0]==""; return;');return;}
+  for (var i=0; i<45; i++) { //일단 지운다
+    e.parentElement.nextElementSibling.children[i].classList.remove('분석자료_고정등번호색칠');
+    e.parentElement.nextElementSibling.children[i].innerHTML='';
+  }
+  //부모의 오른쪽형제 안의 div > 45개 div
+  for (var i=0; i<색칠할번호들.length; i++) {
+    e.parentElement.nextElementSibling.children[Number(색칠할번호들[i])-1].classList.add('분석자료_고정등번호색칠');
+    e.parentElement.nextElementSibling.children[Number(색칠할번호들[i])-1].innerHTML=색칠할번호들[i];
+  }
+}
+function keep셑팅초기화(e) {
+  for (var i=0; i<45; i++) { //일단 지운다
+    e.parentElement.nextElementSibling.children[i].classList.remove('분석자료_고정등번호색칠');
+    e.parentElement.nextElementSibling.children[i].innerHTML='';
+  }
+}
 function 클릭번호정보문자열만들기() {
   //누적이 아닐때 #클릭번호정보 공백으로 해둔다. 
   if (!document.querySelector('#누적').checked) {document.querySelector('#클릭번호정보').innerHTML='';}  //change
@@ -488,6 +595,12 @@ function 분석자료표만들기_상() {
       if (i==3 && 외부!=0) {div요소.setAttribute('class','앞요소값clear')}
 
       if (i==3 && 외부!=0) {div요소.textContent=외부}
+      //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
+      if (외부>10) {
+        if (i==0) {div요소.setAttribute('onclick','분석자료_11에서20_keep번호셑팅(this)')}
+        if (i==0) {div요소.setAttribute('contenteditable','true')}
+        if (i==1) {div요소.setAttribute('onclick','keep셑팅초기화(this)')}
+      }
       번호선택_추출_c.appendChild(div요소);
     }
     var 번호45=document.createElement('div');
@@ -741,8 +854,35 @@ function 당번_흐름만들기() {
                   var 이웃관련_현재회차=당첨정보[회차index-이웃관련].innerHTML.substring(0,당첨정보[회차index-이웃관련].innerHTML.length-1).split(',');
                   var 이웃관련_이전회차=당첨정보[회차index-이웃관련-1].innerHTML.substring(0,당첨정보[회차index-이웃관련-1].innerHTML.length-1).split(',');
                   var 이웃저장중복허용=[]; //내부에 넣어야됨, 돌때마다 초기화 되어야함
-                  var 이웃저장_중복제거=[];//내부에 넣어야됨, 돌때마다 초기화 되어야함        
+                  var 이웃저장_중복제거=[];//내부에 넣어야됨, 돌때마다 초기화 되어야함    
+                  var 단독_현재회차중복허용=[];    
+                  var 단독_현재회차중복제거=[];   
                   문자열='';
+
+                  if (이웃관련==0) {
+                    //단독.현재회차이웃수구하기
+                    for (var 이웃수구하기=0; 이웃수구하기<6; 이웃수구하기++) {
+                      //좌우번호 일단 다 넣는다
+                      if (이웃관련_현재회차[이웃수구하기]==1) {
+                          단독_현재회차중복허용.push(45);단독_현재회차중복허용.push(2);
+                        } else if (이웃관련_현재회차[이웃수구하기]==45) {
+                          단독_현재회차중복허용.push(44);단독_현재회차중복허용.push(1);
+                        } else {
+                          단독_현재회차중복허용.push(Number(이웃관련_현재회차[이웃수구하기])-1);
+                          단독_현재회차중복허용.push(Number(이웃관련_현재회차[이웃수구하기])+1);
+                      }
+                    }
+                    for (var 이웃수구하기=0; 이웃수구하기<단독_현재회차중복허용.length; 이웃수구하기++) {
+                      //좌우번호 전체에서 당번이 아닌것만 문자열 로 추출
+                      if (이웃관련_현재회차.filter(element => 단독_현재회차중복허용[이웃수구하기] == element).length == 0) {
+                        단독_현재회차중복제거.push(단독_현재회차중복허용[이웃수구하기]);
+                      }
+                    }
+                    이웃저장_중복제거_모음30.push(단독_현재회차중복제거.join('_'))
+                    이웃수개수저장30.push(단독_현재회차중복제거.length)
+                    //단독 끝   
+                  }
+
                   for (var 이웃수구하기=0; 이웃수구하기<6; 이웃수구하기++) {
                     //좌우번호 일단 다 넣는다
                     if (이웃관련_이전회차[이웃수구하기]==1) {
@@ -783,42 +923,24 @@ function 당번_흐름만들기() {
                 }
               }
     //                     이웃 innerHTML 작성은 나와서 
-    for (var 이웃관련내부=0; 이웃관련내부<이웃당첨최대값+1; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
-      if (이웃관련내부==0) {
-        흐름_이웃_innerHTML+='<button>' + 이웃수개수저장30[당번정보] + '</button>'
-      } else {
-        if (이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1]==undefined) {
+    for (var 이웃관련내부=0; 이웃관련내부<이웃당첨최대값; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
+        if (이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부]==undefined) {
           흐름_이웃_innerHTML+='<button></button>'
         } else {
-          흐름_이웃_innerHTML+='<button>' + 이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1] +'</button>'
+          흐름_이웃_innerHTML+='<button>' + 이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부] +'</button>'
         }
-      }
-
     }
     흐름_이웃_innerHTML = '<div>' + 흐름_이웃_innerHTML + '</div>';   
     document.querySelector('#흐름_이웃수 > div:nth-of-type(4)').innerHTML += 흐름_이웃_innerHTML;
     
-
-
-
-
-
-
-
-
-
     ///////////// 이웃full 추가하고있음, 이웃full최대값, 이웃저장_중복제거_모음30,흐름_이웃full_innerHTML,#흐름_이웃수full
-    for (var 이웃관련내부=0; 이웃관련내부<이웃full최대값+1; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
-      if (이웃관련내부==0) {
-        흐름_이웃full_innerHTML+='<button>' + 이웃수개수저장30[당번정보] + '</button>'
-      } else {
-        if (이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1]==undefined) {
-          흐름_이웃full_innerHTML+='<button></button>'
+    for (var 이웃관련내부=0; 이웃관련내부<이웃full최대값; 이웃관련내부++) { //split는 1 인 경우 1, 빈문자열인 경우 1
+        if (이웃관련내부==0) {흐름_이웃full_innerHTML+='<button>' + 이웃수개수저장30[당번정보] + '</button>'}
+        if (이웃저장_중복제거_모음30[당번정보].split('_')[이웃관련내부]) {
+          흐름_이웃full_innerHTML+='<button>' + 이웃저장_중복제거_모음30[당번정보].split('_')[이웃관련내부] +'</button>'
         } else {
-          흐름_이웃full_innerHTML+='<button>' + 이웃수당첨번호저장30[당번정보].split('_')[이웃관련내부-1] +'</button>'
+          흐름_이웃full_innerHTML+='<button></button>'
         }
-      }//
-
     }
     흐름_이웃full_innerHTML = '<div>' + 흐름_이웃full_innerHTML + '</div>';   
     document.querySelector('#흐름_이웃수full > div:nth-of-type(4)').innerHTML += 흐름_이웃full_innerHTML;
@@ -1797,6 +1919,8 @@ function 버튼45감싸기_click(e) {
     var 색칠할번호들=[];
     for (var i=0; i<45; i++) {
       번호확인요소[i].classList.remove('번호45색칠');
+      번호확인요소[i].classList.remove('피해서번호노랑');
+      번호확인요소[i].classList.remove('피해서번호흰색');
     }
   }
   if (e.target.parentElement.parentElement.classList.contains('버튼45css') && e.target.nodeName=='BUTTON') {

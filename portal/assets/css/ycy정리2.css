@@ -38,6 +38,7 @@ body {white-space: nowrap;}
 #당번 #당번_삼십주연결버튼 > div > button:nth-of-type(2) {border:1px solid black; display:inline-block; width:30px;height:30px;}
 
 #세로구분_흐름_전체 button {height:34px;width:34px;border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding:0;}
+#흐름_이웃수full > div:nth-of-type(4) > div > button:first-child {background-color: white;font-weight: bold;}
 
 
 #XO플마 {margin-right:5px;}
@@ -52,7 +53,7 @@ body {white-space: nowrap;}
 #버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_1st > div > button,
 #버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_2st > div > button,
 #버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_3st > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
-#버튼45감싸기 #중복및차집합 > button  {padding:3px;border:1px solid black; border-radius: 5px; margin-right:5px;vertical-align: top;}
+#버튼45감싸기 #중복및차집합 button  {height:25px; padding:0px 3px;border:1px solid black; border-radius: 5px; margin-right:5px;vertical-align: top;}
 #선택_id_버튼45_1st:not([class~="js선택_id_버튼45"]), #선택_id_버튼45_2st:not([class~="js선택_id_버튼45"]), #선택_id_버튼45_3st:not([class~="js선택_id_버튼45"])
  {display:inline-block;height:30px;width:30px;border:1px solid black;border-radius: 24px;margin-top:5px;margin-left:5px;}
 .js선택_id_버튼45  {display:inline-block;height:30px;width:30px;border:5px solid black;border-radius: 24px;margin-top:5px;margin-left:5px;background-color: chartreuse;}
@@ -278,3 +279,5 @@ body {white-space: nowrap;}
 .번호45색칠[title='40'],.번호45색칠[title='41'], .번호45색칠[title='42'], .번호45색칠[title='43'], .번호45색칠[title='44'], 
 .번호45색칠[title='45']
 {background-color:green;border-radius: 20px;}
+.피해서번호흰색 {background-color: white;}
+.피해서번호노랑 {background-color: yellow;}

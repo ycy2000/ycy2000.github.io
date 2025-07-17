@@ -109,6 +109,10 @@
 
 </div>   <!-- 전역변수는 메모리 많이 잡아먹는다하여...  -->
 <div id="change시_색칠할번호들" class="d-none"></div> <!-- 당번전용....  -->
+<div id="피해서_선택번호" class="d-none"></div>
+<div id="피해서_노랑" class="d-none"></div>
+<div id="피해서_흰색" class="d-none"></div>
+
 <div id="keep번호들" class="d-none"></div>
 <div id="셑팅1번호들" class="d-none"></div>
 <div id="셑팅2번호들" class="d-none"></div>
@@ -210,15 +214,20 @@
 <div id="버튼45감싸기" style="position: absolute;top:50px;left:275px;">
   <div id="버튼45왼쪽" class="d-inline-block" style="vertical-align: top;">
     <div id="id_버튼45_check">
-      <div class="form-check d-inline-block" onchange="버튼45_2st_보기숨기기();">
-        <input class="form-check-input check클래스" type="checkbox" value="" checked id="버튼45_2st" title="id_버튼45_2st">
-        <label class="form-check-label" for="버튼45_2st">2st</label>
+      <div class="d-inline-block" style="margin-right:5px;">
+        <div class="form-check" onchange="체크this활용(this);">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="버튼45_2st" title="id_버튼45_2st">
+          <label class="form-check-label" for="버튼45_2st">2st</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="버튼45_3st" title="id_버튼45_3st">
+          <label class="form-check-label" for="버튼45_3st">3st</label>
+        </div>
       </div>
-      <div class="form-check d-inline-block" onchange="버튼45_3st_보기숨기기();">
-        <input class="form-check-input check클래스" type="checkbox" value="" checked id="버튼45_3st" title="id_버튼45_3st">
-        <label class="form-check-label" for="버튼45_3st">3st</label>
+      <div class="d-inline-block" id="중복및차집합" style="vertical-align: top;">
+        <div style="margin-bottom:5px;"><button onclick="피해서3종()" title="피해서 생성 상태라면 초기화 된다.">피해서생성</button><button onclick="피_노_흰(this)">피</button><button onclick="피_노_흰(this)">노</button><button onclick="피_노_흰(this)">흰</button></div>
+        <div><button>_</button><button>_</button><button>_</button></div>     
       </div>
-      <div class="d-inline-block" id="중복및차집합"><button>23중복</button><button>2-3</button><button>3-2</button></div>
     </div>
     <div id="id_버튼45_1st" class="버튼45css">
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
@@ -344,19 +353,19 @@
           <label class="form-check-label" for="check_흐름_이월">이월</label>
         </div>
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이웃수" title="흐름_이웃수">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수" title="흐름_이웃수">
           <label class="form-check-label" for="check_흐름_이웃수">이웃수</label>
         </div>
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이웃수full" title="흐름_이웃수full">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수full" title="흐름_이웃수full">
           <label class="form-check-label" for="check_흐름_이웃수full">이웃수full</label>
         </div>
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_삼이일" title="흐름_삼이일">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_삼이일" title="흐름_삼이일">
           <label class="form-check-label" for="check_흐름_삼이일">삼이일</label>
         </div>
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_연번" title="흐름_연번">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_연번" title="흐름_연번">
           <label class="form-check-label" for="check_흐름_연번">연번</label>
         </div>
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
@@ -372,11 +381,11 @@
           <label class="form-check-label" for="check_흐름_간격당당첨">간격당당첨</label>
         </div>
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_간격내림차순" title="흐름_간격내림차순">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순" title="흐름_간격내림차순">
           <label class="form-check-label" for="check_흐름_간격내림차순">내림차순간격</label>
         </div>       
         <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_간격당당첨내림차순" title="흐름_간격당당첨내림차순">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격당당첨내림차순" title="흐름_간격당당첨내림차순">
           <label class="form-check-label" for="check_흐름_간격당당첨내림차순">내림차순간격당당첨</label>
         </div>                                   
       </div>
@@ -392,16 +401,16 @@
       <div></div>
     </div>
     <div id="흐름_이웃수" class="d-inline-block" style="vertical-align: top;">
-      <div style="margin-bottom:-2px;">이전회차의 이웃수</div>
-      <div>개수 및 당첨숫자</div>
-      <div><button>개수</button></div>
+      <div style="margin-bottom:-2px;">이전이웃수</div>
+      <div>당첨숫자</div>
+      <div><button>_</button></div>
       <!-- 네번째 div안에 삼이일 정보 넣는 형식-->
       <div></div>
     </div>
     <div id="흐름_이웃수full" class="d-inline-block" style="vertical-align: top;">
-      <div style="margin-bottom:-2px;">_</div>
-      <div>이웃수 full</div>
-      <div><button>번호</button></div>
+      <div style="margin-bottom:-2px;">왼쪽은 이전화차 이웃수의 당첨개수</div>
+      <div>이웃수 full (현재이웃수)</div>
+      <div><button>개수</button><button>번호</button></div>
       <!-- 네번째 div안에 삼이일 정보 넣는 형식-->
       <div></div>
     </div>
@@ -468,7 +477,7 @@
       <label class="form-check-label" for="check_빈도개수">30회개수</label>
     </div>
     <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
-      <input class="form-check-input check클래스" type="checkbox" value="" id="check_빈도당첨" title="숨기기_분석자료_빈도_당첨">
+      <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_빈도당첨" title="숨기기_분석자료_빈도_당첨">
       <label class="form-check-label" for="check_빈도당첨">30회당첨</label>
     </div>    
     <div class="메모메모" contenteditable spellcheck="false">
