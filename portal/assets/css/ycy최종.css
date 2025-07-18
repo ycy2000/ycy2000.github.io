@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body, pre {font-family: 'Noto Serif KR', serif;}
 header {position:fixed;width:100%;}
-#whole > div {vertical-align: top;}
+div {vertical-align: top;}
 body {white-space: nowrap;}
 
 .분류 {display:inline-block;}
