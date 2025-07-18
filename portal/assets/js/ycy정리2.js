@@ -1,4 +1,41 @@
+옵션생성();
+var 회차index=document.querySelector('#당번_회차select').value; //회차번호보다 1 작다. 옵션생성() 앞에 있어도 된다. 함수를 먼저 하는듯
+var 리스너_분석자료=document.querySelector('#분석자료');
+분석자료표만들기_상();
+분석자료표만들기_하();
+버튼45관련만들기();
+당번_회차select_change();
+분석자료_회차select_change();
+번호45_3개_title넣기();
+당번회차중에_분석자료회차있으면_클래스부여();
+check된대로보기숨기기();
+십일에서이십메모따라움직이기초기셑팅();
+function 십일에서이십메모따라움직이기초기셑팅() {
+  var 버튼45오른쪽단독top숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.top.replace(/px/g, '')) || 0;
+  var 버튼45오른쪽높이추출위한정보가져오기=window.getComputedStyle(document.querySelector('#버튼45오른쪽단독'));
+  버튼45오른쪽높이추출위한정보가져오기=버튼45오른쪽높이추출위한정보가져오기.height.replace(/px/g, '') || 0;
+  var 버튼45오른쪽단독left숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.left.replace(/px/g, '')) || 0;
+  document.querySelector('#십일에서이십메모따라움직이기').style.left=Number(버튼45오른쪽단독left숫자) + 'px';
+  document.querySelector('#십일에서이십메모따라움직이기').style.top=Number(버튼45오른쪽단독top숫자) + Number(버튼45오른쪽높이추출위한정보가져오기) - 5 + 'px';
+  if (document.querySelector('#버튼45오른쪽단독').classList.contains('d-none')) {
+    document.querySelector('#십일에서이십메모따라움직이기').classList.add('d-none');
+    }else {
+    document.querySelector('#십일에서이십메모따라움직이기').classList.remove('d-none');
+  }
+}
+
+function 연습() {
+
+
+}
 var 전체변수클릭번호정보문자열='';
+function 십일에서20메모있으면셑팅() {
+  var 십일에서이십메모=document.querySelector('#십일에서이십메모').innerHTML.trim().split('_');
+  if (십일에서이십메모[0].trim().length==0) {console.log('십일에서이십메모[0].trim().length==0 , return');return;}
+
+
+
+}
 function 피_노_흰(e) {
   if (document.querySelector('#선택_id_버튼45_1st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_1st'}
   if (document.querySelector('#선택_id_버튼45_2st').classList.contains('js선택_id_버튼45')) {var 선택id='#id_버튼45_2st'}
@@ -175,6 +212,7 @@ function 클릭번호들처리() {
   }
   숫자기록할곳.innerHTML=누적배열.length;
   체크된곳번호들.innerHTML=누적배열;
+  document.querySelector('#현재번호').innerHTML= 누적배열.join(',');
 }
 function change시_색칠하기() {
   console.log('change시_색칠하기()')
@@ -223,17 +261,6 @@ function change시_색칠하기() {
   //클릭번호 위치와 체크위치가 변하도록 해야한다.
   색칠하기('change시_색칠할번호들');
 }
-옵션생성();
-var 회차index=document.querySelector('#당번_회차select').value; //회차번호보다 1 작다. 옵션생성() 앞에 있어도 된다. 함수를 먼저 하는듯
-var 리스너_분석자료=document.querySelector('#분석자료');
-분석자료표만들기_상();
-분석자료표만들기_하();
-버튼45관련만들기();
-당번_회차select_change();
-분석자료_회차select_change();
-번호45_3개_title넣기();
-당번회차중에_분석자료회차있으면_클래스부여();
-check된대로보기숨기기();
 function 당번회차중에_분석자료회차있으면_클래스부여() {
   if (document.querySelector('#당번_불러온당첨정보 .당번회차중에_분석자료회차있으면_클래스부여')) {document.querySelector('.당번회차중에_분석자료회차있으면_클래스부여').classList.remove('당번회차중에_분석자료회차있으면_클래스부여')};
   //console.log('당번회차 : ' + document.querySelector('#당번_회차select').value + ', 분석자료회차 : ' + document.querySelector('#분석자료_회차select').value)
@@ -491,13 +518,6 @@ function 분석자료_회차플러스() {
   if (당첨정보.length==선택회차) {alert('가장 최근 회차입니다.'); return;}
   document.querySelector('#분석자료_회차select').value=선택회차+1;
   분석자료_회차select_change()
-}
-function 연습() {
-
-    console.log(document.querySelector('#버튼45오른쪽단독_안에_셑팅1_번호들').outerHTML)
-    console.log(document.querySelector('#버튼45오른쪽단독_안에_셑팅2_번호들').outerHTML)
-
-
 }
 function 분석자료표만들기_하() {
   //왼쪽과 오른쪽 구분하여 작성
@@ -1830,7 +1850,6 @@ function check된대로보기숨기기() {
 리스너_분석자료.addEventListener('click',리스너_분석자료_click)
 
 var 리스너_당번오른쪽=  document.querySelector('#당번_오른쪽');
-var 버튼45감싸기=document.querySelector('#버튼45감싸기');
 var 버튼45오른쪽단독=document.querySelector('#버튼45오른쪽단독');
 var 리스너_바디=document.querySelector('body');
 function 리스너_당번오른쪽_click(e) {
@@ -1846,6 +1865,7 @@ function 리스너_당번오른쪽_click(e) {
 }
 function 버튼45감싸기_click(e) {
   console.log('버튼45감싸기_click(e)')
+   십일에서이십메모따라움직이기초기셑팅()
   if (e.target.parentElement.parentElement.id=='끝수' && e.target.nodeName=='BUTTON') {
     console.log('  버튼45감싸기_click(e) -- 끝수 버튼 클릭')
     if (e.target.classList.contains('js끝수버튼')) {e.target.classList.remove('js끝수버튼')} else {e.target.classList.add('js끝수버튼')}
@@ -2064,26 +2084,30 @@ function 리스너_바디_click(e) {
     e.target.previousElementSibling.innerHTML='';
   }
 }
+var 버튼45감싸기=document.querySelector('#버튼45감싸기');
   function mousedownOrTouchstart(e) {
     // 터치 이벤트인지 마우스 이벤트인지 확인
-    var isTouchEvent = e.type === 'touchstart';
+    var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
+    console.log('e.type : ' + e.type)
     var target=document.querySelector('#버튼45감싸기');
-    var isDragging = true;
-    var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0;
-    var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0;
+    var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
+    // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
+
+    var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0; //top은 12px 처럼 나타나는데 px를 뺀 숫자만 추출함
+    var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0; // || 0 은 추출실패하여 에러나 undefined인 경우 0을 추출함
     //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
     //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
     //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
-    var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
-    var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
-    // 부모 요소의 경계를 확인 (마우스이벤트예제div)
+    var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY; //e.touches[0].clientY는 모바일에서 pc의 e.clientY의 값이다.
+    var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX; //물음표는 isTouchEvent가 true일때 : 앞쪽꺼, false일때 : 뒤쪽꺼로 설정
+    // 부모 요소의 경계를 확인 (마우스이벤트예제div), 이거 안씀, 드래그 한계범위 설정시 사용
     var 부모_경계 = 버튼45감싸기.getBoundingClientRect();
     var 상자_너비 = target.offsetWidth;
     var 상자_높이 = target.offsetHeight;
     function 마우스moveOrTouchmove(e) {
         if (!isDragging) return;
         // 화면 스크롤 방지 (모바일)
-        if (isTouchEvent) {
+        if (isTouchEvent) { //모바일에서 작동하는것
             e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
             //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
         }
@@ -2096,6 +2120,7 @@ function 리스너_바디_click(e) {
         var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
         var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
         // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+        // 부모_경계, 상자-너비, 상자_높이 적용하지 않았으니 경계조건은 제한이 없는 상태이다.
         if (새로운_상자_위치_y < 0) {
             새로운_상자_위치_y = 0;
         }
@@ -2105,14 +2130,18 @@ function 리스너_바디_click(e) {
         // 상자 위치 적용
         target.style.top = 새로운_상자_위치_y + 'px';
         target.style.left = 새로운_상자_위치_x + 'px';
+        console.log('마우스무브좌표이동')
     }
+
     function 마우스upOrTouchend() {
+      console.log('마우스 뗏을때 리스터 해제')
         if (!isDragging) return;
         isDragging = false;
         // 이벤트 제거
         window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
         window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
     }
+
     // 이벤트 추가
     window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
     window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);

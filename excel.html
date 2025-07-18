@@ -36,7 +36,7 @@
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
         <button onclick="png와text사용확인()">png와text사용확인</button>
-        <button onclick="연습()">연습()</button> <button onclick="연습2()">연습2()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <button onclick="연습()">특정id편집</button> <button onclick="연습2()">연습2()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -2221,7 +2221,7 @@
 
     <div class="개별카테고리" id="Java전체_선별"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-
+        <h6 class="canvas_div fw-bold" title="js_배열split와join참고">js_배열split와join참고</h6>
         
       </div>
       <div>
@@ -2266,7 +2266,6 @@
       <div>
         <h6 class="canvas_div" title='excel_js_선긋기와위치'>JS > 선긋기, 캔버스, 위치, 좌표</h6>
         <h6 class="canvas_div" title='excel_js_캔버스흐림현상'>JS > 캔버스 흐림 현상, 그림영역과 관련됨</h6>
-        <h6 class="canvas_div" title='excel_js_모바일이벤트자료'>JS > 모바일이벤트자료, 마우스, 터치, 연습, 임시, 메모</h6>
       </div>
     </div>
 
@@ -2737,6 +2736,26 @@
 
     </div>
   </div>
+
+  <div id="js_배열split와join참고">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h6 class="fw-bold">join</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">join은 배열.join 으로 사용해야한다</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">var join결과=[].join(',') : join결과 : , join결과.length : 0, join결과[0] : undefined, join결과[1] : undefined</h6>
+      <br>
+      <h6 class="fw-bold">split</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">split는 문자열.split로 사용해야한다</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;">var split결과=''.split(',') : split결과 : , split결과.length : 1, split결과[0] : , split결과[1] : undefined</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">split는 빈문자열인경우에도(또는 구분문자 없는 문자열이 있는경우에도) length는 1이다.</h6>
+      <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">★ length=1 && split결과[0]='' ==> 결과가 없는 경우</h6>
+
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+
+    </div>
+  </div>
+
+  
  
   <div id="js_빽틱사용법">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -3671,21 +3690,6 @@
     </div>
   </div>
 
-  <div id="excel_js_모바일이벤트자료">
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">실습id : JS2_마우스이벤트, 실습제목 : JS2 > mouse, 마우스, 이벤트</h5>
-
-      
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-
-  </div>
-
   <div id="참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY">
     <h5 class="fw-bold">참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h5>
     <h6>• 대괄호 []로 묶여있음, const cars = ["Saab","Volvo","BMW"];</h6>
@@ -3763,21 +3767,6 @@
 <!-- touch-action: none; /* 모바일에서 기본 터치 동작 비활성화 */; -->
   <div id="JS2_마우스이벤트">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <div id="마우스이벤트예제div" style="height:70px;border: 1px solid black;margin-right:10px;position: relative;touch-action: none;">
-        <div id="마우스예제상자1" style="position: absolute;top:10px;left:100px; display:inline-block;width:50px;height:50px;border:1px solid black;">예제<br>상자</div>
-      </div>
-      <h6>1. <span style="color:blueviolet">전체대체클릭시(e)에 마우스 이벤트 걸면,</span> 예제상자 클릭시, 마우스가 떼어질때 - 전체대체클릭시(e)가 실행되면서</h6>
-      <h6 style="text-indent: 22px;"><span style="color:blueviolet">이벤트 등록만 될 뿐, </span>바로 움직이지 않는다.</h6>
-      <h6>2. <span style="color:blueviolet">즉시 사용할 수 있게 하려면, </span>(연습 함수도 마찬가지) 해당요소가 '#전체대체'에 셑팅될 때, <span style="color:blueviolet">이벤트 등록.</span></h6>
-
-
-      
-
-
-      <code class="fw-bold"><a href="https://velog.io/@heeyoon1302/sd-zxl0vswn" target="_blank">이벤트 리스너의 재생성을 방지하는 방법, removeEventListner가 먹지를 않는 경우</a></code>
-      <code class="fw-bold"><a href="https://dkrnfls.tistory.com/284" target="_blank">Javascript mouseup, mousedown, mousemove, touchstart, touchend, touchmove</a> </code>
-      <code class="fw-bold"><a href="https://blog.rightbrain.co.kr/?p=11693" target="_blank">신입 웹디자이너를 위한 크롬 개발자도구 활용법 Part 1</a> </code>
-      <code class="fw-bold"><a href="https://jjong-factory.tistory.com/80" target="_blank">[Javascript] mobile touch Event</a> </code>
       <code class="fw-bold"><span  onclick="
         if (document.querySelector('#클릭시이미지토글').classList.contains('d-none')) {
           document.querySelector('#클릭시이미지토글').classList.remove('d-none');
@@ -3788,7 +3777,7 @@
       <img id="클릭시이미지토글" class="d-none" src="portal/images/문서연결_엑셀VBA/preventDefault작동하지않는이유.png" alt="이미지없음">
       <h5 class="fw-bold">마우스이벤트 종류</h5>
       <code class="fw-bold">1. click(이전에 mousedown 이벤트 발생) : element를 클릭했을 때(버튼을 눌렀다가 떼었을 때) </code>
-      <code class="fw-bold">2. mousedown : element에 마우스 버튼을 눌렀을 때 </code>
+      <code class="fw-bold">2. mousedown : element에 마우스 버튼을 눌렀을 때</code>
       <code class="fw-bold">3. mouseup(다음에 click 이벤트 발생) : element에 눌렀던 마우스 버튼을 떼었을 때 </code>
       <code class="fw-bold">4. dbclick :  </code>
       <code class="fw-bold">5. mousemove : element에서 움직였을 때 (리스너로 등록된 element) </code>
@@ -3798,6 +3787,8 @@
       <code class="fw-bold">9. mouseleave : mouseout과 같다. 버블링이 발생하지 않는다.?? </code>
       <code class="fw-bold">10. contextmenu : 마우스 오른쪽 버튼을 눌렀을 때. mousedown-mouseup 발생후 contextmemu 이벤트 발생 </code>
       <code class="fw-bold">11. dbclick : mousedown-mouseup-click-mousedown-mouseup-click 후에 dbclick 실행 </code>
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       <code class="fw-bold" style="color:blueviolet">※ 주의 </code>
       <code class="fw-bold" style="text-indent: 15px;">- <span style="color:blueviolet">버블링 : 자식의 이벤트가 부모에도 전달되는 것.(자식이벤트발생-부모이벤트발생...)</span></code>
       <code class="fw-bold" style="text-indent: 15px;">- 요소 안에서 누르고(mousedown발생), 요소 밖으로 드래그하여 떼면 <span style="color:blueviolet">'mouseup과 click 발생하지 않음'</span></code>
@@ -3811,27 +3802,17 @@
       <h5 class="fw-bold">모바일에서는 다르다, touchstart, touchend, touchmove 등</h5>
       <code class="fw-bold">• 모바일에서 click : touch up & down, mouse up & down 이 실행된다.</code>
       <code class="fw-bold">• touch(모바일만) : display를 touch 했을때,  up, down, move 등이 이벤트</code>
-      <code class="fw-bold">• </code>
-
-
-      <code class="fw-bold"> </code>
-
-
-
-
-
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
     </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-
+    <br><br><img src="portal/images/문서연결_엑셀VBA/마우스이벤트코드.png" alt="이미지없음">
+    <div style="display:inline-block;vertical-align: top;">
+      <h6 class="fw-bold">1. 움직이고자 하는 요소에 이벤트리스너 걸고, mousedown 함수 등록한다.</h6>
+      <h6 class="fw-bold">2. 1.의 함수 안에, 윈도우에 리스너 걸고, mousemove시 좌표변화에 따라 새로운 좌표로 변경하는 동작</h6>
+      <h6 class="fw-bold">2. 1.의 함수 안에, 윈도우에 리스너 걸고, mouseup시 1의 함수안에 등록한 2종의 리스너 해제하는 동작</h6>
+      <h6 class="fw-bold">※ 이유 : 다른곳 눌르고 드래그하여 해당 요소에 마우스 포인터가 이동하게 되면 </h6>
+      <h6 class="fw-bold" style="text-indent: 23px;">mousemove이벤트 상태가 감지되고, mouseup도 동작하게 된다 </h6>
     </div>
+    
+    <br><br><br><br><br><br><br><br><br><br>
   </div>
 
   <div id="JS2_요소추가_APPENDCHILD">

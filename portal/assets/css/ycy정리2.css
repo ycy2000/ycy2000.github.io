@@ -257,7 +257,7 @@ body {white-space: nowrap;}
 #버튼45오른쪽단독 > #메모장 > div {display: inline-block;vertical-align: top;margin-right:-5px;}
 #버튼45오른쪽단독 > #메모장 > div > button {border:1px solid black;width:34px;height:34px;margin-right:-1px;}
 #버튼45오른쪽단독 > #메모장 > div > div
-{font-weight:bold;padding:4px;background-color: white;border:1px solid black;display: inline-block;width:375.5px;margin-right:-6px;vertical-align: top;}
+{font-weight:bold;padding:4px;background-color: white;border:1px solid black;display: inline-block;width:361.2px;margin-right:-6px;vertical-align: top;}
 .js끝수버튼 {background-color: chocolate;}
 
 .js숨김 {background-color: chocolate;}

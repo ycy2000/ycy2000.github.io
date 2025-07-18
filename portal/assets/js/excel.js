@@ -32,11 +32,9 @@ function 개인정리png(e) {
 
 function 연습2() {
 
-  var 배열=[1,2,3];
-  var 복사=[...배열];
-  console.log(복사)
-  배열[0]=5
-  console.log(복사)
+  var split결과=''.split(',')
+  console.log('split결과 : ' + split결과 + ', split결과.length : ' + split결과.length)
+  console.log('split결과[0] : ' + split결과[0] + ', split결과[1] : ' + split결과[1])
 
 
 }
@@ -48,7 +46,7 @@ function 연습2() {
 function 연습() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'java_구조분해할당';
+  var 연습제목설정이것만 = 'JS2_마우스이벤트';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
