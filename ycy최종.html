@@ -14,64 +14,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<body>
+<body style="margin-left:5px;">
 <div id="머리글" style="height:30px;margin:10px;border-bottom:1px solid black;">
+  <button id="이동" style="border:1px solid black; border-radius: 5px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button>
+  <div id="이동하기" style="position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px;" class="d-none">
+    <div style="margin-bottom:5px;">
+      <button onclick="document.querySelector('#이동하기').classList.add('d-none')" style="border:1px solid black; border-radius: 5px;">닫기</button>
+      <div class="form-check d-inline-block">
+        <input class="form-check-input" type="radio" name="radioDefault" id="앞에" checked>
+        <label class="form-check-label" for="앞에">앞에</label>
+      </div>
+      <div class="form-check d-inline-block">
+        <input class="form-check-input" type="radio" name="radioDefault" id="뒤에">
+        <label class="form-check-label" for="뒤에">뒤에</label>
+      </div>
+      <button onclick="이동하기()" style="border:1px solid black; border-radius: 5px;">이동하기</button>
+    </div>
+
+    <div class="d-inline-block" style="margin-right:10px;">
+      <div style="border:1px solid black;margin-bottom:5px;">이동할div_id</div>
+      <div id="이동할div리스트" style="border:1px solid black">
+
+      </div>
+    </div>
+    <div class="d-inline-block">
+      <div style="border:1px solid black;margin-bottom:5px;">이동할위치div_id</div>
+      <div id="이동할위치div리스트" style="border:1px solid black">
+
+      </div>
+    </div>    
+
+  </div>
   <div class="form-check d-inline-block" onchange="체크this활용(this);">
-    <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_당번과흐름">
+    <input class="form-check-input check클래스" type="checkbox" value="" id="check_당번과흐름" checked>
     <label class="form-check-label">당번 및 간격</label><!--  for="check_당번과흐름" js로 부여됨 -->
   </div>
   <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_분석자료30빈도">
+    <input class="form-check-input check클래스" type="checkbox" value="" id="check_분석자료30빈도" checked>
     <label class="form-check-label">분석자료30회</label>
   </div>
   <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input check클래스" type="checkbox" value="" id="check_분석자료45칸">
+    <input class="form-check-input check클래스" type="checkbox" value="" id="check_분석자료45칸" checked>
     <label class="form-check-label" for="check_분석자료45칸">분석자료45칸</label>
   </div>
   <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input check클래스" type="checkbox" value="" id="check_코드" title="코드">
+    <input class="form-check-input check클래스" type="checkbox" value="" id="check_코드">
     <label class="form-check-label" for="check_코드">코드</label>
   </div>
   <button onclick="연습()">연습</button>
   <span>현재누적번호 : </span><span id="현재번호"></span>
 </div>
 <div id="당번과흐름" class="분류 d-none">
-  <div id="당번_다음회차"></div>
-  <select id="당번_회차select" class="d-inline-block" onchange="회차change설정(this);" style="margin:5px 0"></select>
-
-  <div id="당번_플마클리어오른쪽버튼" class="d-inline-block">
-    <button onclick="당번_회차플러스()">+</button> <button onclick="당번_회차마이너스()">-</button> <button onclick="당번_색칠clear()">Clear</button>
-    <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;">
-      <input class="form-check-input check클래스" type="checkbox" value="" id="check_당번오른쪽" checked title="당번_오른쪽">
-      <label class="form-check-label" for="check_당번오른쪽">오른쪽</label>
+  <div id="당번전체" class="소분류">
+    <div id="당번_다음회차" class="당번8칸">
+    </div>
+    <select id="당번_회차select" class="d-inline-block" onchange="회차change설정();" style="margin:5px 0"></select>
+    <div id="당번_플마클리어오른쪽버튼" class="d-inline-block" style="margin-top:5px;">
+      <button id="당번플러스" onclick="회차change설정();">+</button> <button id="당번마이너스" onclick="회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
+      <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_당번_특수분류숫자선택" checked>
+        <label class="form-check-label" for="check_당번_특수분류숫자선택">오른쪽</label>
+      </div>
+    </div>
+    <div id="당번_불러온당첨정보" class="당번8칸"></div>
+  </div>
+  <div id="당번_특수분류숫자선택" style="width:185px;"  class="소분류 d-none">
+    <div>
+      <div class="d-inline-block" id="당번_오주연결버튼">
+        <div>5주 관련</div>
+        <div><button class="타이틀은아이디" title="당번_변수_당번">당번</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_이웃">이웃</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_당번이웃">당번이웃</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주출">5주출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주0출">5주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주1출">5주1출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주2출">5주2출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_5주3출">5주3출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_10주0출">10주0출</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_15주0출">15주0출</button><button></button></div>
+      </div>
+      <div class="d-inline-block" id="당번_삼십주연결버튼">
+        <div>30주 관련</div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주0출">0</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주1출">1</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주2출">2</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주3출">3</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주4출">4</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주5출">5</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주6출">6</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주7출">7</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주8출">8</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주9출">9</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주10출">10</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주11출">11</button><button></button></div>
+        <div><button class="타이틀은아이디" title="당번_변수_30주12출">12</button><button></button></div>
+      </div>
+      <div title="줄바꿈용"></div>
+      <div id="흐름들보기숨기기">
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름전체">
+          <label class="form-check-label">흐름전체</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이월">
+          <label class="form-check-label">이월</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수">
+          <label class="form-check-label">이웃수</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수full">
+          <label class="form-check-label">이웃수full</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_삼이일">
+          <label class="form-check-label">삼이일</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_연번">
+          <label class="form-check-label">연번</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_홀짝">
+          <label class="form-check-label">홀짝</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격">
+          <label class="form-check-label">간격</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격당당첨개수">
+          <label class="form-check-label">간격당당첨</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순">
+          <label class="form-check-label">내림차순간격</label>
+        </div>       
+        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
+          <label class="form-check-label">내림차순간격당당첨</label>
+        </div>                                   
+      </div>
     </div>
   </div>
-  <div id="당번_불러온당첨정보"></div>
+  <div id="흐름전체" class="소분류 d-none">
+    <div id="흐름_이월" class="소분류 d-none">흐름_이월</div>
+    <div id="흐름_이웃수" class="소분류 d-none">흐름_이웃수</div>
+    <div id="흐름_이웃수full" class="소분류 d-none">흐름_이웃수full</div>
+    <div id="흐름_삼이일" class="소분류 d-none">흐름_삼이일</div>
+    <div id="흐름_연번" class="소분류 d-none">흐름_연번</div>
+    <div id="흐름_홀짝" class="소분류 d-none">흐름_홀짝</div>
+    <div id="흐름_간격" class="소분류 d-none">흐름_간격</div>
+    <div id="흐름_간격당당첨개수" class="소분류 d-none">흐름_간격당당첨개수</div>
+    <div id="흐름_간격내림차순" class="소분류 d-none">흐름_간격내림차순</div>
+    <div id="흐름_간격내림차순당첨개수" class="소분류 d-none">흐름_간격내림차순당첨개수</div>
+
+  </div>
 
 
 
 
 
-  <textarea id="메모" spellcheck="false" style="resize:both">
-sdfdsfsdf
-  </textarea>
 </div>
 <div id="분석자료30빈도" class="분류 d-none">분석자료30빈도</div>
 <div id="분석자료45칸" class="분류 d-none">
-    <select id="분석자료_회차select" class="d-inline-block" onchange="회차change설정(this);" style="margin:5px 0"></select>
-    분석자료45칸
+  <div id="분석자료_다음회차" class="당번8칸">
+  </div>
+  <select id="분석자료_회차select" class="d-inline-block" onchange="회차change설정();" style="margin:5px 0"></select>
+  <div id="분석자료_플마오른쪽버튼" class="d-inline-block" style="margin-top:5px;">
+    <button id="분석플러스" onclick="회차change설정();">+</button> <button id="분석마이너스" onclick="회차change설정();">-</button> 
+  </div>
 </div>
+
+
+
+
 <div id="코드" class="분류 d-none">
   <!-- onclick ==>  코드_클릭한정보call에 가져와 셑팅-->
-  <div>
+  <div class="d-inline-block">
     <div>제목 클릭</div>
-    <div onclick="document.querySelector('#코드_클릭한정보call').innerHTML=document.querySelector('#코드_j쿼리로바꾸기').innerHTML">
-       function check_초기설정(), function 체크this활용(e), function 회차select옵션생성()
+    <div class="코드제목들">
+      <button onclick="코드셑팅(this)" title="#코드_j쿼리로바꾸기">
+        • check_초기설정(), 체크this활용(e), 회차select옵션생성()
+      </button>
     </div>
-
-
   </div>
-  <div id="코드_클릭한정보call"></div>
+  <div id="코드_클릭한정보call" class="d-inline-block"></div>
   <div class="d-none"><!-- &#60; < -->
     <div id="코드_j쿼리로바꾸기"><img src="portal/images/black_문서/코드_check_초기설정.png" alt="이미지없음"></div>    
 
@@ -182,7 +311,7 @@ sdfdsfsdf
   </div>
 </div>
 <div id="당번숨김" class="d-none"><!--1176_2025-06-14_7_9_11_21_30_35_29_ : 마지막에 _ 로 끝남, 기록중에 많으면 저장중으로 옮김 -->
-  <div id="당번숨김_안에_저장중">
+  <div id="당번숨김_안에_저장중">보정,
 1_2002-12-07_10_23_29_33_35_40_16,2_2002-12-14_9_13_21_25_32_42_2,3_2002-12-21_11_16_19_21_27_31_30,4_2002-12-28_14_27_30_31_40_42_2,5_2003-01-04_16_24_29_40_41_42_3,
 6_2003-01-11_14_15_26_27_40_42_34,7_2003-01-18_2_9_16_25_26_40_42,8_2003-01-25_8_19_25_34_37_39_9,9_2003-02-01_2_4_16_17_36_39_14,10_2003-02-08_9_25_30_33_41_44_6,
 11_2003-02-15_1_7_36_37_41_42_14,12_2003-02-22_2_11_21_25_39_45_44,13_2003-03-01_22_23_25_37_38_42_26,14_2003-03-08_2_6_12_31_33_40_15,15_2003-03-15_3_4_16_30_31_37_13,
@@ -422,6 +551,7 @@ sdfdsfsdf
   </div><!-- 당번숨김_안에_저장중과 기록중의 마지막은 쉼표(,) -->
   <div id="당번숨김_안에_기록중">
 1176_2025-06-14_7_9_11_21_30_35_29,1177_2025-06-21_3_7_15_16_19_43_21,1178_2025-06-28_5_6_11_27_43_44_17,1179_2025-07-05_3_16_18_24_40_44_21,1180_2025-07-12_6_12_18_37_40_41_3,
+1181_2025-07-19_8_10_14_20_33_41_28,
   </div>
 </div>
 
