@@ -81,6 +81,13 @@ function 회차change설정() {
         document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML='_';
       }
     }
+    //30회분 번호
+    for (var 삼십번=0; 삼십번<30; 삼십번++) {
+      for (var i=0; i<8; i++) {
+        if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=범용당번배열[회차-삼십번].split('_')[i]} 
+        if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=범용당번배열[회차-삼십번].split('_')[i+1]} 
+      }
+    }
     //5주변수, 30주변수 넣기
     document.querySelector('#당번_변수_당번').innerHTML=당번.join(',');
     document.querySelector('#당번_변수_이웃').innerHTML=당번.join(',');
@@ -106,23 +113,31 @@ function 회차change설정() {
     document.querySelector('#당번_변수_30주11출').innerHTML=삼십_11.join(',');
     document.querySelector('#당번_변수_30주12출').innerHTML=삼십_12.join(',');
     //오른쪽에 오주관련개수 넣기, 30주관련 개수 넣기
-
-    //30칸 위치
-    for (var 삼십회=0; 삼십회<30; 삼십회++) {
-      for (var i=0; i<8; i++) {
-        if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십회+1) + ') > div > div')[i].innerHTML=범용당번배열[회차-삼십회].split('_')[i]} 
-        if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십회+1) + ') > div > div')[i].innerHTML=범용당번배열[회차-삼십회].split('_')[i+1]} 
-      }
-    }
-
-    
-    
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(2) > button:nth-of-type(2)').innerHTML=당번.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(3) > button:nth-of-type(2)').innerHTML=당번.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(4) > button:nth-of-type(2)').innerHTML=당번.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(5) > button:nth-of-type(2)').innerHTML=_5주출.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(6) > button:nth-of-type(2)').innerHTML=_5주0출.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(7) > button:nth-of-type(2)').innerHTML=_5주1출.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(8) > button:nth-of-type(2)').innerHTML=_5주2출.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(9) > button:nth-of-type(2)').innerHTML=_5주3출이상.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(10) > button:nth-of-type(2)').innerHTML=_10주0출.length;
+    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(11) > button:nth-of-type(2)').innerHTML=_15주0출.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(2) > button:nth-of-type(2)').innerHTML=삼십_00.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(3) > button:nth-of-type(2)').innerHTML=삼십_01.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(4) > button:nth-of-type(2)').innerHTML=삼십_02.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(5) > button:nth-of-type(2)').innerHTML=삼십_03.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(6) > button:nth-of-type(2)').innerHTML=삼십_04.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(7) > button:nth-of-type(2)').innerHTML=삼십_05.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(8) > button:nth-of-type(2)').innerHTML=삼십_06.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(9) > button:nth-of-type(2)').innerHTML=삼십_07.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(10) > button:nth-of-type(2)').innerHTML=삼십_08.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(11) > button:nth-of-type(2)').innerHTML=삼십_09.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(12) > button:nth-of-type(2)').innerHTML=삼십_10.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(13) > button:nth-of-type(2)').innerHTML=삼십_11.length;
+    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=삼십_12.length;
   }
-
-
-
 }
-
 
 function 고정html_구조생성() {
   const 당번한줄html=`<div><div class="당번회차" style="display:inline-block"><div style="display:inline-block"></div></div><div 
