@@ -1,13 +1,15 @@
 $('#당번숨김_안에_저장중').append($('#당번숨김_안에_기록중').html());
 document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\n/g, '');// \n 제거
 document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\s*/g, '');// 공백 제거
+var 당번만추출한배열=[];
+$('#당번숨김_안에_저장중').html().split(',').forEach(요소=> {당번만추출한배열.push(요소)})
 check_초기설정();
 회차select옵션생성();
 고정html_구조생성();
 var 설정유형='당번' //당번 또는 분석
 var 최근회차=document.querySelectorAll('#당번_회차select option').length-1;
 var 아이디='당번_회차select';
-var 회차=document.querySelectorAll('#당번_회차select option').length-1;
+var 회차=최근회차;
 회차change설정(); //처음에 e를 인식못하여서...
 var 바디=document.querySelector('body');
 
@@ -22,8 +24,13 @@ function 색칠_1_동작설정() {
 }
 function 색칠_2_설정대로색칠동작() {
 }
-
 function 회차change설정() {
+  var 변수명=[];
+  document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명.push(요소.classList.value); console.log(요소.classList.value)})
+  
+
+}
+function 회차change설정_보류() {
   if (아이디=='당번플러스') {if (회차>최근회차) {alert('최근회차입니다');return;}}
   if (아이디=='분석플러스') {if (회차>최근회차) {alert('최근회차입니다');return;}}
 
@@ -31,7 +38,7 @@ function 회차change설정() {
   if (설정유형=='분석') {document.querySelector('#분석자료_회차select').value=회차;}
   var 범용당번배열=$('#당번숨김_안에_저장중').html().split(','); 범용당번배열.pop(); //마지막 배열값 제거(빈거)
 
-  var 당번=[],_5주출=[],_5주0출=[],_5주1출=[],_5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[];
+  var 당번=[],_이웃=[],_당번플러스이웃=[],_5주출=[],_5주0출=[],_5주1출=[],_5주2출=[], _5주3출이상=[], _10주0출=[],_15주0출=[];
   var 삼십_00=[],삼십_01=[],삼십_02=[],삼십_03=[],삼십_04=[],삼십_05=[],삼십_06=[],삼십_07=[],삼십_08=[],삼십_09=[],삼십_10=[],삼십_11=[],삼십_12=[];
   var 삼십주번호들=[], 오주번호들=[], 십주번호들=[], 십오주번호들=[];
   for (var i=0; i<30; i++) {
@@ -138,6 +145,119 @@ function 회차change설정() {
     document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=삼십_12.length;
   }
 }
+function 회차change설정_GPT() {
+  if (['당번플러스', '분석플러스'].includes(아이디) && 회차 > 최근회차) {
+    alert('최근회차입니다');
+    return;
+  }
+
+  const selectId = 설정유형 === '당번' ? '#당번_회차select' : '#분석자료_회차select';
+  document.querySelector(selectId).value = 회차;
+
+  const 범용당번배열 = $('#당번숨김_안에_저장중').html().split(',').filter(Boolean);
+  const 당번 = [], 오주 = [], 십주 = [], 십오주 = [], 삼십주 = [];
+
+  for (let i = 0; i < 30; i++) {
+    for (let j = 2; j < 8; j++) {
+      const 번호 = 범용당번배열[Number(회차) - i]?.split('_')[j]?.trim();
+      if (!번호) continue;
+      if (i === 0) 당번.push(번호);
+      if (i < 5) 오주.push(번호);
+      if (i < 10) 십주.push(번호);
+      if (i < 15) 십오주.push(번호);
+      삼십주.push(번호);
+    }
+  }
+
+  const 결과 = Array.from({ length: 45 }, (_, i) => {
+    const 번호 = (i + 1).toString();
+    const 오 = 오주.filter(x => x === 번호).length;
+    const 십 = 십주.filter(x => x === 번호).length;
+    const 십오 = 십오주.filter(x => x === 번호).length;
+    const 삼십 = 삼십주.filter(x => x === 번호).length;
+
+    return {
+      번호,
+      _5주출: 오 > 0,
+      _5주0출: 오 === 0,
+      _5주1출: 오 === 1,
+      _5주2출: 오 === 2,
+      _5주3출이상: 오 > 2,
+      _10주0출: 십 === 0,
+      _15주0출: 십오 === 0,
+      [`삼십_${삼십.toString().padStart(2, '0')}`]: true
+    };
+  });
+
+  // 결과 분류
+  const 분류 = {
+    당번,
+    _5주출: [], _5주0출: [], _5주1출: [], _5주2출: [], _5주3출이상: [],
+    _10주0출: [], _15주0출: [],
+    삼십: Array.from({ length: 13 }, () => [])
+  };
+
+  결과.forEach(({ 번호, ...flags }) => {
+    for (const key in flags) {
+      if (flags[key]) {
+        if (key.startsWith('삼십_')) {
+          const idx = parseInt(key.split('_')[1]);
+          if (분류.삼십[idx]) 분류.삼십[idx].push(번호);
+        } else {
+          분류[key].push(번호);
+        }
+      }
+    }
+  });
+
+  if (설정유형 === '당번') {
+    // 다음회차 정보
+    const 다음회차 = 범용당번배열[회차 + 1]?.split('_') || [];
+    const cells = document.querySelectorAll('#당번_다음회차 > div > div > div');
+    cells.forEach((cell, i) => {
+      cell.innerHTML = 다음회차.length ? (i === 0 ? 다음회차[i] : 다음회차[i + 1]) : '_';
+    });
+
+    // 변수 업데이트 헬퍼
+    const 변수 = (id, 값) => document.querySelector(id).innerHTML = 값.join(',');
+
+    변수('#당번_변수_당번', 분류.당번);
+    변수('#당번_변수_이웃', 분류.당번);
+    변수('#당번_변수_당번이웃', 분류.당번);
+    변수('#당번_변수_5주출', 분류._5주출);
+    변수('#당번_변수_5주0출', 분류._5주0출);
+    변수('#당번_변수_5주1출', 분류._5주1출);
+    변수('#당번_변수_5주2출', 분류._5주2출);
+    변수('#당번_변수_5주3출', 분류._5주3출이상);
+    변수('#당번_변수_10주0출', 분류._10주0출);
+    변수('#당번_변수_15주0출', 분류._15주0출);
+
+    분류.삼십.forEach((배열, i) => {
+      변수(`#당번_변수_30주${i}출`, 배열);
+    });
+
+    const 갯수설정 = (sel, 값들) => {
+      document.querySelector(sel).innerHTML = 값들.length;
+    };
+
+    // 버튼 갯수 출력
+    const base = '#당번_오주연결버튼 > div:nth-of-type';
+    갯수설정(`${base}(2) > button:nth-of-type(2)`, 분류.당번);
+    갯수설정(`${base}(3) > button:nth-of-type(2)`, 분류.당번);
+    갯수설정(`${base}(4) > button:nth-of-type(2)`, 분류.당번);
+    갯수설정(`${base}(5) > button:nth-of-type(2)`, 분류._5주출);
+    갯수설정(`${base}(6) > button:nth-of-type(2)`, 분류._5주0출);
+    갯수설정(`${base}(7) > button:nth-of-type(2)`, 분류._5주1출);
+    갯수설정(`${base}(8) > button:nth-of-type(2)`, 분류._5주2출);
+    갯수설정(`${base}(9) > button:nth-of-type(2)`, 분류._5주3출이상);
+    갯수설정(`${base}(10) > button:nth-of-type(2)`, 분류._10주0출);
+    갯수설정(`${base}(11) > button:nth-of-type(2)`, 분류._15주0출);
+
+    분류.삼십.forEach((배열, i) => {
+      갯수설정(`#당번_삼십주연결버튼 > div:nth-of-type(${i + 2}) > button:nth-of-type(2)`, 배열);
+    });
+  }
+}
 
 function 고정html_구조생성() {
   const 당번한줄html=`<div><div class="당번회차" style="display:inline-block"><div style="display:inline-block"></div></div><div 
@@ -172,8 +292,8 @@ function 체크this활용(e) {
   const $i = $(e).children('input'), id = '#' + $i.attr('id').slice(6);
   $(id).toggleClass('d-none', !$i.prop('checked'));
 }
-function 회차select옵션생성() {
-  let 옵션 = $('#당번숨김_안에_저장중').html().split(',').slice(0, -1).reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
+function 회차select옵션생성() {//마지막 하나 제거하려면 .slice(0, -1)
+  let 옵션 = $('#당번숨김_안에_저장중').html().split(',').reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
   $('#당번_회차select, #분석자료_회차select').html(옵션);
 }
 function check_초기설정() {
