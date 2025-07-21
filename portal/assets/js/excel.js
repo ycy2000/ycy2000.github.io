@@ -31,12 +31,15 @@ function 개인정리png(e) {
 }
 
 function 연습2() {
+  var 연습변수='초기값';
+  var 괄호결과=(연습변수='변경값','2',document.querySelector('body'));
+  console.log('연습변수 : ' + 연습변수) //연습변수가 변경됨
+  console.log(괄호결과) //괄호결과는 마지막 코드의 결과
 
-  var split결과=''.split(',')
-  console.log('split결과 : ' + split결과 + ', split결과.length : ' + split결과.length)
-  console.log('split결과[0] : ' + split결과[0] + ', split결과[1] : ' + split결과[1])
+  괄호결과=(연습변수='변경값','2','마지막코드');
+  console.log(괄호결과) //괄호결과는 마지막 코드의 결과
 
-
+  //1. 세미콜론 ; 은 문장종료자이고, 표현식에 들어가면 안된다. 
 }
 
 

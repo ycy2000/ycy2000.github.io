@@ -1,32 +1,35 @@
-$('#당번숨김_안에_저장중').append($('#당번숨김_안에_기록중').html());
-document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\n/g, '');// \n 제거
-document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\s*/g, '');// 공백 제거
-var 당번만추출한배열=[];
-$('#당번숨김_안에_저장중').html().split(',').forEach(요소=> {당번만추출한배열.push(요소)})
-check_초기설정();
-회차select옵션생성();
-고정html_구조생성();
-var 설정유형='당번' //당번 또는 분석
-var 최근회차=document.querySelectorAll('#당번_회차select option').length-1;
-var 아이디='당번_회차select';
-var 회차=최근회차;
-회차change설정(); //처음에 e를 인식못하여서...
-var 바디=document.querySelector('body');
+if ('초기설정' == '초기설정') {
+  $('#당번숨김_안에_저장중').append($('#당번숨김_안에_기록중').html());
+  document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\n/g, '');// \n 제거
+  document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\s*/g, '');// 공백 제거
+  var 당번만추출한배열=[];
+  $('#당번숨김_안에_저장중').html().split(',').forEach(요소=> {당번만추출한배열.push(요소)}) //당번만추출한배열[0]=='보정' (회차와 일치하도록 됨)
+  var 변수명순서대로=[];
+  document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명순서대로.push(요소.classList.value); console.log(요소.classList.value)})
+  check_초기설정();
+  회차select옵션생성();
+  고정html_구조생성();
+  if ('1==1') {//bode클릭시(아이디, 설정유형_아이딩따라 설정됨, 초기설정을 한다)
+    var 아이디='당번_회차select';
+    var 설정유형_아이디에따라='당번' //당번 또는 분석
+    var 최근회차=document.querySelectorAll('#당번_회차select option').length-1;
+    var 회차=최근회차;
+  }
+  회차change설정(); //처음에 e를 인식못하여서...
+}
+var 리스너_바디=document.querySelector('body');
 
 
 
 function 연습() {
-  let arr=[1,2,3]
-  let arr2=[1,2,3]
-  console.log(arr + arr2);
+console.log(('true','dfsdftrue'))
 }
 function 색칠_1_동작설정() {
 }
 function 색칠_2_설정대로색칠동작() {
 }
 function 회차change설정() {
-  var 변수명=[];
-  document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명.push(요소.classList.value); console.log(요소.classList.value)})
+
   
 
 }
@@ -275,7 +278,7 @@ function 이동하기() {
   if (!$from.length || !$to.length) return alert('둘다선택되어야함');
   if ($from.text() === $to.text()) return alert('둘은달라야함');
   const f = $from.text(), t = $to.text(), dir = $('#앞에').prop('checked') ? 'Before' : 'After';
-  console.log(`${f}, ${t}, 어디로 : ${dir === 'Before' ? '앞에' : '뒤에'}`);
+  console.log(`이동하기 : ${f} => ${t}, ${dir === 'Before' ? '앞에' : '뒤에'}`);
   $('#' + f)[`insert${dir}`]('#' + t);
 }
 function 이동클릭관련(e) {
@@ -301,10 +304,13 @@ function check_초기설정() {
     $(this).next('label').attr('for', this.id);
     this.checked && $('#' + this.id.slice(6)).removeClass('d-none');
   });
-  const html = $('.분류').map((_, el) => `<div onclick="이동클릭관련(this)">${el.id}</div>`).get().join('');
+  //const html = $('.분류').map((_, el) => `<div onclick="이동클릭관련(this)">${el.id}</div>`).get().join('');
+  const html = $('.분류').map((_, el) => `<div>${el.id}</div>`).get().join('');
   $('#이동할위치div리스트, #이동할div리스트').html(html);
 }
-function 바디이벤트리스너(e) {
+function 리스너_바디_click(e) {
+  //var 아이디='당번_회차select';
+  //var 설정유형_아이디에따라='당번체인지' //당번체인지, 당번플러스, 당번마이너스, 분석체인지, 분석플러스, 분석마이너스
   //회차change설정(e)이 시작하면서는 e 를 캐치하지 못하여 변수를 바디리스너에서 받아오기로 하였다.
   if (e.target.id=='당번플러스' || e.target.id=='당번마이너스' || e.target.id=='당번_회차select') {설정유형='당번'; 아이디=e.target.id;}
   if (e.target.id=='당번플러스') {회차=Number(document.querySelector('#당번_회차select').value)+1;}
@@ -315,5 +321,11 @@ function 바디이벤트리스너(e) {
   if (e.target.id=='분석플러스') {회차=Number(document.querySelector('#분석자료_회차select').value)+1;}
   if (e.target.id=='분석마이너스') {회차=Number(document.querySelector('#분석자료_회차select').value)-1;}
   if (e.target.id=='분석자료_회차select') {회차=Number(document.querySelector('#분석자료_회차select').value);}
+
+  if (['이동할div리스트','이동할위치div리스트'].includes(e.target.parentElement.id)) { //이동 클릭 관련
+     e.target.classList.contains('active') ? 
+     e.target.classList.remove('active') : 
+     (e.target.parentElement.querySelector('.active')?.classList.remove('active'), e.target.classList.add('active'));
+  }
 }
-바디.addEventListener('mousedown',바디이벤트리스너);
+리스너_바디.addEventListener('mousedown',리스너_바디_click);
