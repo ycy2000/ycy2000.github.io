@@ -65,7 +65,7 @@ function 회차change설정() {
   if (1==1) { //2. 변수에 들어갈 번호들 작성, 공통으로 작성 (다음에 설정유형별로 들어가는 곳이 달라짐)
               //변수에 들어갈 번호들 작성 : document.querySelector('#' + 설정유형 + ' #' + 변수명순서대로[0]) 
               //                       == document.querySelector('#당번변수 #공통변수_다음당번')
-    //공통 변수명순서대로 : 초기화 후 값넣기, 당번관련 개수넣기에는 0 공통변수_다음당번 이 없다.
+    //공통 변수명순서대로 : 초기화 후 값넣기, #당번_오주삼십주개수 에는 0 공통변수_다음당번 이 없다. 
     변수명순서대로.forEach(변수명 => {
       document.querySelector(`#${설정유형} .${변수명}`).innerHTML='';
     } )
@@ -147,6 +147,32 @@ function 회차change설정() {
       document.querySelector(`#${설정유형} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
 
       //#당번_오주삼십주개수 .
+      if (설정유형=='당번변수') {
+        변수명순서대로.forEach(변수명 => {
+          document.querySelector(`#당번_오주삼십주개수 .${변수명}`).innerHTML=''; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
+        } )
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[4]}`).innerHTML=오주출.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[5]}`).innerHTML=오주미출.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[6]}`).innerHTML=오주1출.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[7]}`).innerHTML=오주2출.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[8]}`).innerHTML=오주3출.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[9]}`).innerHTML=십주미출.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[10]}`).innerHTML=십오주미출.length;
+
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[11]}`).innerHTML=삼십_00.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[12]}`).innerHTML=삼십_01.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[13]}`).innerHTML=삼십_02.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[14]}`).innerHTML=삼십_03.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[15]}`).innerHTML=삼십_04.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[16]}`).innerHTML=삼십_05.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[17]}`).innerHTML=삼십_06.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[18]}`).innerHTML=삼십_07.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[19]}`).innerHTML=삼십_08.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[20]}`).innerHTML=삼십_09.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[21]}`).innerHTML=삼십_10.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[22]}`).innerHTML=삼십_11.length;
+        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[23]}`).innerHTML=삼십_12.length;  
+      }
   }
 
 

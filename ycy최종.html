@@ -78,6 +78,85 @@
     </div>
     <div id="당번_불러온당첨정보" class="당번8칸"></div>
   </div>
+  <div id="당번_오주삼십주개수" class="소분류">
+    <div class="d-inline-block" id="당번_오주연결버튼">
+      <div>5주 관련</div>
+      <div class="d-none"><button>변수짝맞춤으로임시로넣음</button><button class="공통변수_다음당번"></button></div>
+      <div><button>당번</button><button class="공통변수_당번"></button></div>
+      <div><button>이웃</button><button class="공통변수_이웃"></button></div>
+      <div><button>당번이웃</button><button class="공통변수_당번이웃"></button></div>
+      <div><button>5주출</button><button class="공통변수_5주출"></button></div>
+      <div><button>5주0출</button><button class="공통변수_5주0출"></button></div>
+      <div><button>5주1출</button><button class="공통변수_5주1출"></button></div>
+      <div><button>5주2출</button><button class="공통변수_5주2출"></button></div>
+      <div><button>5주3출</button><button class="공통변수_5주3출"></button></div>
+      <div><button>10주0출</button><button class="공통변수_10주0출"></button></div>
+      <div><button>15주0출</button><button class="공통변수_15주0출"></button></div>
+    </div>
+    <div class="d-inline-block" id="당번_삼십주연결버튼">
+      <div>30주 관련</div>
+      <div><button>0</button><button class="공통변수_30주0출"></button></div>
+      <div><button>1</button><button class="공통변수_30주1출"></button></div>
+      <div><button>2</button><button class="공통변수_30주2출"></button></div>
+      <div><button>3</button><button class="공통변수_30주3출"></button></div>
+      <div><button>4</button><button class="공통변수_30주4출"></button></div>
+      <div><button>5</button><button class="공통변수_30주5출"></button></div>
+      <div><button>6</button><button class="공통변수_30주6출"></button></div>
+      <div><button>7</button><button class="공통변수_30주7출"></button></div>
+      <div><button>8</button><button class="공통변수_30주8출"></button></div>
+      <div><button>9</button><button class="공통변수_30주9출"></button></div>
+      <div><button>10</button><button class="공통변수_30주10출"></button></div>
+      <div><button>11</button><button class="공통변수_30주11출"></button></div>
+      <div><button>12</button><button class="공통변수_30주12출"></button></div>
+    </div>
+    <div title="줄바꿈용"></div>
+    <div id="흐름들보기숨기기">
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름전체">
+        <label class="form-check-label">흐름전체</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이월">
+        <label class="form-check-label">이월</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수">
+        <label class="form-check-label">이웃수</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수full">
+        <label class="form-check-label">이웃수full</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_삼이일">
+        <label class="form-check-label">삼이일</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_연번">
+        <label class="form-check-label">연번</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_홀짝">
+        <label class="form-check-label">홀짝</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격">
+        <label class="form-check-label">간격</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격당당첨개수">
+        <label class="form-check-label">간격당당첨</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순">
+        <label class="form-check-label">내림차순간격</label>
+      </div>       
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
+        <label class="form-check-label">내림차순간격당당첨</label>
+      </div>                                   
+    </div>
+  </div>
   <div id="흐름전체" class="소분류 d-none">
     <div id="흐름_이월" class="소분류 d-none">흐름_이월</div>
     <div id="흐름_이웃수" class="소분류 d-none">흐름_이웃수</div>
@@ -228,84 +307,6 @@
       <div id="셑팅2번호들" class="d-none"></div>
       <div id="셑팅3번호들" class="d-none"></div>
       <div id="클릭번호들" class="d-none"></div>
-    </div>
-  </div>
-  <div id="당번_오주삼십주개수">
-    <div class="d-inline-block" id="당번_오주연결버튼">
-      <div>5주 관련</div>
-      <div><button>당번</button><button class="공통변수_당번"></button></div>
-      <div><button>이웃</button><button class="공통변수_이웃"></button></div>
-      <div><button>당번이웃</button><button class="공통변수_당번이웃"></button></div>
-      <div><button>5주출</button><button class="공통변수_5주출"></button></div>
-      <div><button>5주0출</button><button class="공통변수_5주0출"></button></div>
-      <div><button>5주1출</button><button class="공통변수_5주1출"></button></div>
-      <div><button>5주2출</button><button class="공통변수_5주2출"></button></div>
-      <div><button>5주3출</button><button class="공통변수_5주3출"></button></div>
-      <div><button>10주0출</button><button class="공통변수_10주0출"></button></div>
-      <div><button>15주0출</button><button class="공통변수_15주0출"></button></div>
-    </div>
-    <div class="d-inline-block" id="당번_삼십주연결버튼">
-      <div>30주 관련</div>
-      <div><button>0</button><button class="공통변수_30주0출"></button></div>
-      <div><button>1</button><button class="공통변수_30주1출"></button></div>
-      <div><button>2</button><button class="공통변수_30주2출"></button></div>
-      <div><button>3</button><button class="공통변수_30주3출"></button></div>
-      <div><button>4</button><button class="공통변수_30주4출"></button></div>
-      <div><button>5</button><button class="공통변수_30주5출"></button></div>
-      <div><button>6</button><button class="공통변수_30주6출"></button></div>
-      <div><button>7</button><button class="공통변수_30주7출"></button></div>
-      <div><button>8</button><button class="공통변수_30주8출"></button></div>
-      <div><button>9</button><button class="공통변수_30주9출"></button></div>
-      <div><button>10</button><button class="공통변수_30주10출"></button></div>
-      <div><button>11</button><button class="공통변수_30주11출"></button></div>
-      <div><button>12</button><button class="공통변수_30주12출"></button></div>
-    </div>
-    <div title="줄바꿈용"></div>
-    <div id="흐름들보기숨기기">
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름전체">
-        <label class="form-check-label">흐름전체</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이월">
-        <label class="form-check-label">이월</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수">
-        <label class="form-check-label">이웃수</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수full">
-        <label class="form-check-label">이웃수full</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_삼이일">
-        <label class="form-check-label">삼이일</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_연번">
-        <label class="form-check-label">연번</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_홀짝">
-        <label class="form-check-label">홀짝</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격">
-        <label class="form-check-label">간격</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격당당첨개수">
-        <label class="form-check-label">간격당당첨</label>
-      </div>
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순">
-        <label class="form-check-label">내림차순간격</label>
-      </div>       
-      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
-        <label class="form-check-label">내림차순간격당당첨</label>
-      </div>                                   
     </div>
   </div>
 </div>
