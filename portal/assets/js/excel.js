@@ -30,26 +30,19 @@ function 개인정리png(e) {
   }
 }
 
-function 연습2() {
-  var 연습변수='초기값';
-  var 괄호결과=(연습변수='변경값','2',document.querySelector('body'));
-  console.log('연습변수 : ' + 연습변수) //연습변수가 변경됨
-  console.log(괄호결과) //괄호결과는 마지막 코드의 결과
-
-  괄호결과=(연습변수='변경값','2','마지막코드');
-  console.log(괄호결과) //괄호결과는 마지막 코드의 결과
-
-  //1. 세미콜론 ; 은 문장종료자이고, 표현식에 들어가면 안된다. 
+function 연습() {
+  console.log($('.aa'))
+  $('.aa').html( function(index, oldhtml) {console.log(oldhtml)})
 }
 
 
 
 
 
-function 연습() {
+function 특정id편집() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'JS2_마우스이벤트';
+  var 연습제목설정이것만 = 'js_html순환';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);

@@ -69,7 +69,7 @@
     <div id="당번_다음회차" class="당번8칸">
     </div>
     <select id="당번_회차select" class="d-inline-block" onchange="회차change설정();" style="margin:5px 0"></select>
-    <div id="당번_플마클리어오른쪽버튼" class="d-inline-block" style="margin-top:5px;">
+    <div id="당번_플마클리어버튼" class="d-inline-block" style="margin-top:5px;">
       <button id="당번플러스" onclick="회차change설정();">+</button> <button id="당번마이너스" onclick="회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
       <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;">
         <input class="form-check-input check클래스" type="checkbox" value="" id="check_당번_특수분류숫자선택" checked>
@@ -77,189 +77,6 @@
       </div>
     </div>
     <div id="당번_불러온당첨정보" class="당번8칸"></div>
-  </div>
-  <div id="당번_특수분류숫자선택" style="width:185px;"  class="소분류 d-none">
-    <div id="변수숨김" class="d-none">
-      <div id="당번변수">
-        <div class="공통변수_다음당번"></div>
-        <div class="공통변수_당번"></div>
-        <div class="공통변수_이웃"></div>
-        <div class="공통변수_당번이웃"></div>
-        <div class="공통변수_5주출"></div>
-        <div class="공통변수_5주0출"></div>
-        <div class="공통변수_5주1출"></div>
-        <div class="공통변수_5주2출"></div>
-        <div class="공통변수_5주3출"></div>
-        <div class="공통변수_10주0출"></div>
-        <div class="공통변수_15주0출"></div>
-
-        <div class="공통변수_30주0출"></div>
-        <div class="공통변수_30주1출"></div>
-        <div class="공통변수_30주2출"></div>
-        <div class="공통변수_30주3출"></div>
-        <div class="공통변수_30주4출"></div>
-        <div class="공통변수_30주5출"></div>
-        <div class="공통변수_30주6출"></div>
-        <div class="공통변수_30주7출"></div>
-        <div class="공통변수_30주8출"></div>
-        <div class="공통변수_30주9출"></div>
-        <div class="공통변수_30주10출"></div>
-        <div class="공통변수_30주11출"></div>
-        <div class="공통변수_30주12출"></div>
-      </div>
-      <div id="분석자료변수">
-        <div class="공통변수_다음당번"></div>
-        <div class="공통변수_당번"></div>
-        <div class="공통변수_이웃"></div>
-        <div class="공통변수_당번이웃"></div>
-        <div class="공통변수_5주출"></div>
-        <div class="공통변수_5주0출"></div>
-        <div class="공통변수_5주1출"></div>
-        <div class="공통변수_5주2출"></div>
-        <div class="공통변수_5주3출"></div>
-        <div class="공통변수_10주0출"></div>
-        <div class="공통변수_15주0출"></div>
-
-        <div class="공통변수_30주0출"></div>
-        <div class="공통변수_30주1출"></div>
-        <div class="공통변수_30주2출"></div>
-        <div class="공통변수_30주3출"></div>
-        <div class="공통변수_30주4출"></div>
-        <div class="공통변수_30주5출"></div>
-        <div class="공통변수_30주6출"></div>
-        <div class="공통변수_30주7출"></div>
-        <div class="공통변수_30주8출"></div>
-        <div class="공통변수_30주9출"></div>
-        <div class="공통변수_30주10출"></div>
-        <div class="공통변수_30주11출"></div>
-        <div class="공통변수_30주12출"></div>
-      </div>
-      <div id="고정변수">
-        <div id="단번대">1,2,3,4,5,6,7,8,9</div>
-        <div id="십번대">10,11,12,13,14,15,16,17,18,19</div>
-        <div id="이십번대">20,21,22,23,24,25,26,27,28,29</div>
-        <div id="삼십번대">30,31,32,33,34,35,36,37,38,39</div>
-        <div id="사십번대">40,41,42,43,44,45</div>
-        <div id="가로1라인">1,2,3,4,5,6,7</div>
-        <div id="가로2라인">8,9,10,11,12,13,14</div>
-        <div id="가로3라인">15,16,17,18,19,20,21</div>
-        <div id="가로4라인">22,23,24,25,26,27,28</div>
-        <div id="가로5라인">29,30,31,32,33,34,35</div>
-        <div id="가로6라인">36,37,38,39,40,41,42</div>
-        <div id="가로7라인">43,44,45</div>
-        <div id="세로1라인">1,8,15,22,29,36,43</div>
-        <div id="세로2라인">2,9,16,23,30,37,44</div>
-        <div id="세로3라인">3,10,17,24,31,38,45</div>
-        <div id="세로4라인">4,11,18,25,32,39</div>
-        <div id="세로5라인">5,12,19,26,33,40</div>
-        <div id="세로6라인">6,13,20,27,34,41</div>
-        <div id="세로7라인">7,14,21,28,35,42</div>
-        <div id="끝수0">10,20,30,40</div>
-        <div id="끝수1">1,11,21,31,41</div>
-        <div id="끝수2">2,12,22,32,42</div>
-        <div id="끝수3">3,13,23,33,43</div>
-        <div id="끝수4">4,14,24,34,44</div>
-        <div id="끝수5">5,15,25,35,45</div>
-        <div id="끝수6">6,16,26,36</div>
-        <div id="끝수7">7,17,27,37</div>
-        <div id="끝수8">8,18,28,38</div>
-        <div id="끝수9">9,19,29,39</div>
-      </div>
-      <div id="id_버튼45_변수">
-        <div id="id_버튼45_1st_변수"></div>
-        <div id="id_버튼45_2st_변수"></div>
-        <div id="id_버튼45_3st_변수"></div>
-      </div>
-      <div>
-        <div id="change시_색칠할번호들" class="d-none"></div> <!-- 당번전용....  -->
-        <div id="피해서_선택번호" class="d-none"></div>
-        <div id="피해서_노랑" class="d-none"></div>
-        <div id="피해서_흰색" class="d-none"></div>
-        <div id="keep번호들" class="d-none"></div>
-        <div id="셑팅1번호들" class="d-none"></div>
-        <div id="셑팅2번호들" class="d-none"></div>
-        <div id="셑팅3번호들" class="d-none"></div>
-        <div id="클릭번호들" class="d-none"></div>
-      </div>
-    </div>
-    <div>
-      <div class="d-inline-block" id="당번_오주연결버튼">
-        <div>5주 관련</div>
-        <div><button class="타이틀은아이디" title="당번_변수_당번">당번</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_이웃">이웃</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_당번이웃">당번이웃</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_5주출">5주출</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_5주0출">5주0출</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_5주1출">5주1출</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_5주2출">5주2출</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_5주3출">5주3출</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_10주0출">10주0출</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_15주0출">15주0출</button><button></button></div>
-      </div>
-      <div class="d-inline-block" id="당번_삼십주연결버튼">
-        <div>30주 관련</div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주0출">0</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주1출">1</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주2출">2</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주3출">3</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주4출">4</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주5출">5</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주6출">6</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주7출">7</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주8출">8</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주9출">9</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주10출">10</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주11출">11</button><button></button></div>
-        <div><button class="타이틀은아이디" title="당번_변수_30주12출">12</button><button></button></div>
-      </div>
-      <div title="줄바꿈용"></div>
-      <div id="흐름들보기숨기기">
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름전체">
-          <label class="form-check-label">흐름전체</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이월">
-          <label class="form-check-label">이월</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수">
-          <label class="form-check-label">이웃수</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수full">
-          <label class="form-check-label">이웃수full</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_삼이일">
-          <label class="form-check-label">삼이일</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_연번">
-          <label class="form-check-label">연번</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_홀짝">
-          <label class="form-check-label">홀짝</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격">
-          <label class="form-check-label">간격</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격당당첨개수">
-          <label class="form-check-label">간격당당첨</label>
-        </div>
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순">
-          <label class="form-check-label">내림차순간격</label>
-        </div>       
-        <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
-          <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
-          <label class="form-check-label">내림차순간격당당첨</label>
-        </div>                                   
-      </div>
-    </div>
   </div>
   <div id="흐름전체" class="소분류 d-none">
     <div id="흐름_이월" class="소분류 d-none">흐름_이월</div>
@@ -285,7 +102,7 @@
   <div id="분석자료_다음회차" class="당번8칸">
   </div>
   <select id="분석자료_회차select" class="d-inline-block" onchange="회차change설정();" style="margin:5px 0"></select>
-  <div id="분석자료_플마오른쪽버튼" class="d-inline-block" style="margin-top:5px;">
+  <div id="분석자료_플마버튼" class="d-inline-block" style="margin-top:5px;">
     <button id="분석플러스" onclick="회차change설정();">+</button> <button id="분석마이너스" onclick="회차change설정();">-</button> 
   </div>
 </div>
@@ -309,7 +126,189 @@
 
   </div>
 </div>
+<div id="당번및분석_숫자들숨김" style="width:185px;"  class="d-none">
+  <div id="변수숨김" class="d-none">
+    <div id="당번변수">
+      <div class="공통변수_다음당번"></div>
+      <div class="공통변수_당번"></div>
+      <div class="공통변수_이웃"></div>
+      <div class="공통변수_당번이웃"></div>
+      <div class="공통변수_5주출"></div>
+      <div class="공통변수_5주0출"></div>
+      <div class="공통변수_5주1출"></div>
+      <div class="공통변수_5주2출"></div>
+      <div class="공통변수_5주3출"></div>
+      <div class="공통변수_10주0출"></div>
+      <div class="공통변수_15주0출"></div>
 
+      <div class="공통변수_30주0출"></div>
+      <div class="공통변수_30주1출"></div>
+      <div class="공통변수_30주2출"></div>
+      <div class="공통변수_30주3출"></div>
+      <div class="공통변수_30주4출"></div>
+      <div class="공통변수_30주5출"></div>
+      <div class="공통변수_30주6출"></div>
+      <div class="공통변수_30주7출"></div>
+      <div class="공통변수_30주8출"></div>
+      <div class="공통변수_30주9출"></div>
+      <div class="공통변수_30주10출"></div>
+      <div class="공통변수_30주11출"></div>
+      <div class="공통변수_30주12출"></div>
+    </div>
+    <div id="분석자료변수">
+      <div class="공통변수_다음당번"></div>
+      <div class="공통변수_당번"></div>
+      <div class="공통변수_이웃"></div>
+      <div class="공통변수_당번이웃"></div>
+      <div class="공통변수_5주출"></div>
+      <div class="공통변수_5주0출"></div>
+      <div class="공통변수_5주1출"></div>
+      <div class="공통변수_5주2출"></div>
+      <div class="공통변수_5주3출"></div>
+      <div class="공통변수_10주0출"></div>
+      <div class="공통변수_15주0출"></div>
+
+      <div class="공통변수_30주0출"></div>
+      <div class="공통변수_30주1출"></div>
+      <div class="공통변수_30주2출"></div>
+      <div class="공통변수_30주3출"></div>
+      <div class="공통변수_30주4출"></div>
+      <div class="공통변수_30주5출"></div>
+      <div class="공통변수_30주6출"></div>
+      <div class="공통변수_30주7출"></div>
+      <div class="공통변수_30주8출"></div>
+      <div class="공통변수_30주9출"></div>
+      <div class="공통변수_30주10출"></div>
+      <div class="공통변수_30주11출"></div>
+      <div class="공통변수_30주12출"></div>
+    </div>
+    <div id="고정변수">
+      <div id="단번대">1,2,3,4,5,6,7,8,9</div>
+      <div id="십번대">10,11,12,13,14,15,16,17,18,19</div>
+      <div id="이십번대">20,21,22,23,24,25,26,27,28,29</div>
+      <div id="삼십번대">30,31,32,33,34,35,36,37,38,39</div>
+      <div id="사십번대">40,41,42,43,44,45</div>
+      <div id="가로1라인">1,2,3,4,5,6,7</div>
+      <div id="가로2라인">8,9,10,11,12,13,14</div>
+      <div id="가로3라인">15,16,17,18,19,20,21</div>
+      <div id="가로4라인">22,23,24,25,26,27,28</div>
+      <div id="가로5라인">29,30,31,32,33,34,35</div>
+      <div id="가로6라인">36,37,38,39,40,41,42</div>
+      <div id="가로7라인">43,44,45</div>
+      <div id="세로1라인">1,8,15,22,29,36,43</div>
+      <div id="세로2라인">2,9,16,23,30,37,44</div>
+      <div id="세로3라인">3,10,17,24,31,38,45</div>
+      <div id="세로4라인">4,11,18,25,32,39</div>
+      <div id="세로5라인">5,12,19,26,33,40</div>
+      <div id="세로6라인">6,13,20,27,34,41</div>
+      <div id="세로7라인">7,14,21,28,35,42</div>
+      <div id="끝수0">10,20,30,40</div>
+      <div id="끝수1">1,11,21,31,41</div>
+      <div id="끝수2">2,12,22,32,42</div>
+      <div id="끝수3">3,13,23,33,43</div>
+      <div id="끝수4">4,14,24,34,44</div>
+      <div id="끝수5">5,15,25,35,45</div>
+      <div id="끝수6">6,16,26,36</div>
+      <div id="끝수7">7,17,27,37</div>
+      <div id="끝수8">8,18,28,38</div>
+      <div id="끝수9">9,19,29,39</div>
+    </div>
+    <div id="id_버튼45_변수">
+      <div id="id_버튼45_1st_변수"></div>
+      <div id="id_버튼45_2st_변수"></div>
+      <div id="id_버튼45_3st_변수"></div>
+    </div>
+    <div>
+      <div id="change시_색칠할번호들" class="d-none"></div> <!-- 당번전용....  -->
+      <div id="피해서_선택번호" class="d-none"></div>
+      <div id="피해서_노랑" class="d-none"></div>
+      <div id="피해서_흰색" class="d-none"></div>
+      <div id="keep번호들" class="d-none"></div>
+      <div id="셑팅1번호들" class="d-none"></div>
+      <div id="셑팅2번호들" class="d-none"></div>
+      <div id="셑팅3번호들" class="d-none"></div>
+      <div id="클릭번호들" class="d-none"></div>
+    </div>
+  </div>
+  <div id="당번_오주삼십주개수">
+    <div class="d-inline-block" id="당번_오주연결버튼">
+      <div>5주 관련</div>
+      <div><button>당번</button><button class="공통변수_당번"></button></div>
+      <div><button>이웃</button><button class="공통변수_이웃"></button></div>
+      <div><button>당번이웃</button><button class="공통변수_당번이웃"></button></div>
+      <div><button>5주출</button><button class="공통변수_5주출"></button></div>
+      <div><button>5주0출</button><button class="공통변수_5주0출"></button></div>
+      <div><button>5주1출</button><button class="공통변수_5주1출"></button></div>
+      <div><button>5주2출</button><button class="공통변수_5주2출"></button></div>
+      <div><button>5주3출</button><button class="공통변수_5주3출"></button></div>
+      <div><button>10주0출</button><button class="공통변수_10주0출"></button></div>
+      <div><button>15주0출</button><button class="공통변수_15주0출"></button></div>
+    </div>
+    <div class="d-inline-block" id="당번_삼십주연결버튼">
+      <div>30주 관련</div>
+      <div><button>0</button><button class="공통변수_30주0출"></button></div>
+      <div><button>1</button><button class="공통변수_30주1출"></button></div>
+      <div><button>2</button><button class="공통변수_30주2출"></button></div>
+      <div><button>3</button><button class="공통변수_30주3출"></button></div>
+      <div><button>4</button><button class="공통변수_30주4출"></button></div>
+      <div><button>5</button><button class="공통변수_30주5출"></button></div>
+      <div><button>6</button><button class="공통변수_30주6출"></button></div>
+      <div><button>7</button><button class="공통변수_30주7출"></button></div>
+      <div><button>8</button><button class="공통변수_30주8출"></button></div>
+      <div><button>9</button><button class="공통변수_30주9출"></button></div>
+      <div><button>10</button><button class="공통변수_30주10출"></button></div>
+      <div><button>11</button><button class="공통변수_30주11출"></button></div>
+      <div><button>12</button><button class="공통변수_30주12출"></button></div>
+    </div>
+    <div title="줄바꿈용"></div>
+    <div id="흐름들보기숨기기">
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름전체">
+        <label class="form-check-label">흐름전체</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_흐름_이월">
+        <label class="form-check-label">이월</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수">
+        <label class="form-check-label">이웃수</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_이웃수full">
+        <label class="form-check-label">이웃수full</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_삼이일">
+        <label class="form-check-label">삼이일</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_연번">
+        <label class="form-check-label">연번</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_홀짝">
+        <label class="form-check-label">홀짝</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격">
+        <label class="form-check-label">간격</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격당당첨개수">
+        <label class="form-check-label">간격당당첨</label>
+      </div>
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순">
+        <label class="form-check-label">내림차순간격</label>
+      </div>       
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
+        <label class="form-check-label">내림차순간격당당첨</label>
+      </div>                                   
+    </div>
+  </div>
+</div>
 <div id="당번숨김" class="d-none"><!--1176_2025-06-14_7_9_11_21_30_35_29_ : 마지막에 _ 로 끝남, 기록중에 많으면 저장중으로 옮김 -->
   <div id="당번숨김_안에_저장중">보정,
 1_2002-12-07_10_23_29_33_35_40_16,2_2002-12-14_9_13_21_25_32_42_2,3_2002-12-21_11_16_19_21_27_31_30,4_2002-12-28_14_27_30_31_40_42_2,5_2003-01-04_16_24_29_40_41_42_3,

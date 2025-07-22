@@ -36,7 +36,7 @@
         <button>특문</button> 
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#기타전체" aria-controls="offcanvasBottom">기타</button>
         <button onclick="png와text사용확인()">png와text사용확인</button>
-        <button onclick="연습()">특정id편집</button> <button onclick="연습2()">연습2()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <button onclick="특정id편집()">특정id편집</button> <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -2225,6 +2225,8 @@
         <h6 class="canvas_div fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
         <h6 class="canvas_div fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
         <h6 class="canvas_div fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
+        <h6 class="canvas_div fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>        
+        <h6 class="canvas_div fw-bold" title="js_html순환">html 순환</h6>
       </div>
       <div>
         <h6 class="fw-bold">*arr.sort([compareFunction]) : compareFunction 정렬 순서를 정의하는 함수 <a href="https://hianna.tistory.com/409" target="_blank">링크</a></h6>
@@ -2233,7 +2235,7 @@
         <h6 class="fw-bold">***filter <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-filter-함수-완벽-가이드" target="_blank">링크</a></h6>
         <h6 class="fw-bold">*reduce <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-reduce-함수-완벽-가이드" target="_blank">링크</a></h6>
         <h6 class="fw-bold">*callback, 콜백함수 <a href="https://www.freecodecamp.org/korean/news/https-www-freecodecamp-org-news-javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/" target="_blank">링크</a></h6>
-        <h6 class="canvas_div fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>
+        
         <h6 class="canvas_div fw-bold" title="js_물음표사용법">물음표(?)사용예. document.querySelector(`#기회${i} .숫자일치`)?.innerHTML</h6>
         <h6 class="canvas_div fw-bold" title="js_if의조건값true_false">js_if의조건값true_false + 물음표(?)사용예.</h6>
         <h6 class="canvas_div fw-bold" title="js_반복문종류">js_반복문종류 [키워드:자바스크립트 반복문 종류]</h6>
@@ -2900,22 +2902,45 @@
     </div>
   </div>
 
-  
-
   <div id="js_빽틱사용법">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h6 class="fw-bold">• 빽틱사용법 : 문자열처럼 쓰면서, 변수(결과값 표현됨)를 넣을수 있다.
-        <button onclick="if (document.querySelector('#js_빽틱사용법_png').classList.contains('d-none')) {
-        document.querySelector('#js_빽틱사용법_png').classList.remove('d-none')} else {
-        document.querySelector('#js_빽틱사용법_png').classList.add('d-none')
-        }">보기</button>
-      <div id="js_빽틱사용법_png" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_빽틱사용법.png" alt="이미지없음"></div>
-      </h6>
+      <h6 class="fw-bold">• 빽틱사용법 : 문자열처럼 쓰면서, 변수(결과값 표현됨)를 넣을수 있다.</h6>
+      <img src="portal/images/문서연결_엑셀VBA/js_빽틱사용법.png" alt="이미지없음">
+    </div>
+    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <h6>• 자바스크립트 코드 작성시 html 구분을 전달할때</h6>
+      <h6 style="text-indent: 15px;">document.querySelector('#연습').innerHTML=`\n</h6>
+      <h6 style="text-indent: 44px;">&#60;code class="fw-bold" style="text-indent: 15px;"> [ 0,1,2,3 ], 2, 1&#60;/code>\n</h6>
+      <h6 style="text-indent: 44px;">&#60;code class="fw-bold" style="text-indent: 15px;"> [ 6,7,8,9 ], 0, 3&#60;/code>`</h6>
+    </div>
+  </div>
+  <div id="js_html순환">
+    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h5>• $('#아이디').html(function(index, oldHtml) { ... }) : 배열로 인식되어 배열개수만큼 반복된다.</h5>
+      <code>• document.querySelectorAll('.item').forEach(function(el, index) {  el.innerHTML = index + ': ' + el.innerHTML; } )</code>
+      <h6 style="text-indent: 15px;">jQuery의 .html(function) 콜백에서 첫 번째 인자(index)는 생략할 수 없습니다.</h6>
+      <h6 style="text-indent: 15px;">function(index, html)	표준 사용</h6>
+      <h6 style="text-indent: 15px;">function(_, html)	index 무시할 때 깔끔하게 쓰는 관용형</h6>
+      <h6 style="text-indent: 15px;">function(html)	❌ 안 됨 — 첫 인자(index)로 잘못 해석됨</h6>
+      <br>
+      <code style="text-indent: 15px;">&#60;code class="aa"> 첫번째 &#60;/code>`</code>
+      <code style="text-indent: 15px;">&#60;code class="aa"> 두번째 &#60;/code>`</code>
+      <code style="text-indent: 15px;">&#60;code class="aa"> 세번째 &#60;/code>`</code>
+      <br>
+      <code style="text-indent: 15px;">$('.aa').html( function(index, oldhtml) {console.log(oldhtml)}) => 첫번째, 두번째, 세번째 출력</code>
+
+
+
+      
+
+
     </div>
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
     </div>
-  </div>
+  </div>  
+
+  
   
   <div id="js_물음표사용법">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -3369,7 +3394,8 @@
 
   <div id="excel_js_정규식"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-정규식-RegExp-누구나-이해하기-쉽게-정리" target="_blank">정규 표현식 링크</a> match정보 참고 </h5>
+      <h5 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-정규식-RegExp-누구나-이해하기-쉽게-정리" target="_blank">정규 표현식 링크</a> 
+        match정보 참고 <span style="font-size:16px;">줄바꿈(\n)과 모든 공백(\s*), \s 정확히 모든 공백 문자 (탭, 띄어쓰기 등)</span></h5>
       <code class="fw-bold" style="color:blueviolet">출처: https://inpa.tistory.com/entry/JS-📚-정규식-RegExp-누구나-이해하기-쉽게-정리 [Inpa Dev 👨‍💻:티스토리]</code>
       <h5 class="fw-bold">정규식 Regular Expression, 문자열에서 특정 문자 조합을 찾기 위한 패턴, 정규식도 객체다 </h5>
       <code class="fw-bold">• 정규식도 객채로서, RegExp의 exec()와 test() 매서드를 사용할 수 있습니다.</code>

@@ -1,36 +1,156 @@
+var 초기화='초기화';
 if ('초기설정' == '초기설정') {
   $('#당번숨김_안에_저장중').append($('#당번숨김_안에_기록중').html());
-  document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\n/g, '');// \n 제거
-  document.querySelector('#당번숨김_안에_저장중').innerHTML=document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\s*/g, '');// 공백 제거
-  var 당번만추출한배열=[];
-  $('#당번숨김_안에_저장중').html().split(',').forEach(요소=> {당번만추출한배열.push(요소)}) //당번만추출한배열[0]=='보정' (회차와 일치하도록 됨)
+  document.querySelector('#당번숨김_안에_저장중').innerHTML=
+  document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\n|\s/g, '') //→ 줄바꿈(\n)과 모든 띄워쓰기(공백 및 탭 등)(\s)을 한 번에 제거
+  var 회차별배열=[];
+  $('#당번숨김_안에_저장중').html().split(',').forEach(요소=> {회차별배열.push(요소)}) //당번만추출한배열[0]=='보정' (회차와 일치하도록 됨)
   var 변수명순서대로=[];
-  document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명순서대로.push(요소.classList.value); console.log(요소.classList.value)})
+  document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명순서대로.push(요소.classList[0]);
+    //console.log(요소.classList[0]);
+  })
   check_초기설정();
   회차select옵션생성();
   고정html_구조생성();
   if ('1==1') {//bode클릭시(아이디, 설정유형_아이딩따라 설정됨, 초기설정을 한다)
     var 아이디='당번_회차select';
-    var 설정유형_아이디에따라='당번' //당번 또는 분석
+    var 설정유형='당번변수' //당번변수 또는 분석자료변수
     var 최근회차=document.querySelectorAll('#당번_회차select option').length-1;
     var 회차=최근회차;
   }
   회차change설정(); //처음에 e를 인식못하여서...
+  초기화=''; //초기화때, 회차change설정() 할때, 분석자료관련 번호들도 넣는다. 
 }
 var 리스너_바디=document.querySelector('body');
 
 
 
 function 연습() {
-console.log(('true','dfsdftrue'))
+  var 배열=[1,2,3,4,5,6,7,8,9]
+  var 배열2=[1,2,3,4,5,6,7,8,9]
+  var 배열3=배열+배열2
+  console.log(배열3)
 }
 function 색칠_1_동작설정() {
 }
 function 색칠_2_설정대로색칠동작() {
 }
 function 회차change설정() {
+  //console.log('설정유형 : ' + 설정유형 + ' ,회차 : ' + 회차 + ' , 최근회차 : ' + 최근회차)
+  if (회차>최근회차) {console.log('회차가 최근회차보다 크면 종료'); return;}
+  if (1==1) { //1. 당번8칸채우기(30회분), 다음회차 채우기, 설정유형별로 회차 적용하기
+    if (설정유형=='분석자료변수') {document.querySelector('#분석자료_회차select').value=회차}
+    if (설정유형=='당번변수') {//당번8칸 채우기
+      document.querySelector('#당번_회차select').value=회차
+      //다음회차 위치
+      if (회차별배열[회차+1]) {
+        for (var i=0; i<8; i++) {
+          if (i==0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[회차+1].split('_')[i]} 
+          if (i>0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[회차+1].split('_')[i+1]} 
+        }
+      } else {
+        for (var i=0; i<8; i++) {
+          document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML='_';
+        }
+      }
+      //30회분 번호
+      for (var 삼십번=0; 삼십번<30; 삼십번++) {
+        for (var i=0; i<8; i++) {
+          if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[회차-삼십번].split('_')[i]} 
+          if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[회차-삼십번].split('_')[i+1]} 
+        }
+      }
+    }
+  }
+  if (1==1) { //2. 변수에 들어갈 번호들 작성, 공통으로 작성 (다음에 설정유형별로 들어가는 곳이 달라짐)
+              //변수에 들어갈 번호들 작성 : document.querySelector('#' + 설정유형 + ' #' + 변수명순서대로[0]) 
+              //                       == document.querySelector('#당번변수 #공통변수_다음당번')
+    //공통 변수명순서대로 : 초기화 후 값넣기, 당번관련 개수넣기에는 0 공통변수_다음당번 이 없다.
+    변수명순서대로.forEach(변수명 => {
+      document.querySelector(`#${설정유형} .${변수명}`).innerHTML='';
+    } )
+    console.log('설정유형 : ' + 설정유형 + ' , 변수명순서대로[0] : ' + 변수명순서대로[0])
+    if (i==0 && 회차==최근회차) {document.querySelector(`#${설정유형} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
+    if (i==0 && 회차!=최근회차) {document.querySelector(`#${설정유형} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
+    document.querySelector(`#${설정유형} .${변수명순서대로[1]}`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',') //1 공통변수_당번
+    var 좌우수=[], 이웃수=[];
+    회차별배열[회차].split('_').slice(2,8).forEach(숫자 => {
+      if (숫자==1) {좌우수.push(45); 좌우수.push(2);} 
+      if (숫자==45) {좌우수.push(44); 좌우수.push(1);} 
+      if (숫자>1 && 숫자<45) {좌우수.push(Number(숫자)-1); 좌우수.push(Number(숫자)+1);} 
+    })
+    좌우수=new Set(좌우수); 좌우수=[...좌우수]
+    좌우수.forEach(숫자 => {
+      if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {이웃수.push(숫자)}
+    })
+    document.querySelector(`#${설정유형} .${변수명순서대로[2]}`).innerHTML=이웃수.join(','); //2 공통변수_이웃
+    document.querySelector(`#${설정유형} .${변수명순서대로[3]}`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',') + ',' + 이웃수.join(','); //3 공통변수_당번이웃
+    var 오주당번모음=[], 십주당번모음=[], 십오주당번모음=[],삼십주당번모음=[];
+    for (var i=0;i<30; i++) {
+      if (i<5) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {오주당번모음.push(번호)} )}
+      if (i<10) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십주당번모음.push(번호)} )}
+      if (i<15) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십오주당번모음.push(번호)} )}
+      if (i<30) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {삼십주당번모음.push(번호)} )}
+    }
+    /* 
+    0 공통변수_다음당번  1 공통변수_당번  2 공통변수_이웃  3 공통변수_당번이웃  4 공통변수_5주출  5 공통변수_5주0출  6 공통변수_5주1출  
+    7 공통변수_5주2출   8 공통변수_5주3출  9 공통변수_10주0출  10 공통변수_15주0출  11 공통변수_30주0출  12 공통변수_30주1출  
+    13 공통변수_30주2출  14 공통변수_30주3출  15 공통변수_30주4출  16 공통변수_30주5출  17 공통변수_30주6출  18 공통변수_30주7출 
+    19 공통변수_30주8출  20 공통변수_30주9출  21 공통변수_30주10출  22 공통변수_30주11출  23 공통변수_30주12출
+    */
+    var 오주출=[],오주미출=[],오주1출=[],오주2출=[],오주3출=[],십주미출=[],십오주미출=[];
+    var 삼십_00=[],삼십_01=[],삼십_02=[],삼십_03=[],삼십_04=[],삼십_05=[],삼십_06=[],삼십_07=[],삼십_08=[],삼십_09=[],삼십_10=[],삼십_11=[],삼십_12=[];
+    for (var i=0; i<45; i++) {
+      var 오주출개수=오주당번모음.filter( 번호 => 번호==(i+1) ).length;
+      if (오주출개수>0) {오주출.push(i+1)}
+      if (오주출개수==0) {오주미출.push(i+1)}
+      if (오주출개수==1) {오주1출.push(i+1)}
+      if (오주출개수==2) {오주2출.push(i+1)}
+      if (오주출개수>2) {오주3출.push(i+1)}
+      if (십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십주미출.push(i+1)}
+      if (십오주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십오주미출.push(i+1)}
 
-  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {삼십_00.push(i+1)}
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==1) {삼십_01.push(i+1)}
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==2) {삼십_02.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==3) {삼십_03.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==4) {삼십_04.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==5) {삼십_05.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==6) {삼십_06.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==7) {삼십_07.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==8) {삼십_08.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==9) {삼십_09.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==10) {삼십_10.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==11) {삼십_11.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==12) {삼십_12.push(i+1)}  
+    }
+      document.querySelector(`#${설정유형} .${변수명순서대로[4]}`).innerHTML=오주출.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[5]}`).innerHTML=오주미출.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[6]}`).innerHTML=오주1출.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[7]}`).innerHTML=오주2출.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[8]}`).innerHTML=오주3출.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[9]}`).innerHTML=십주미출.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[10]}`).innerHTML=십오주미출.join(',');
+
+      document.querySelector(`#${설정유형} .${변수명순서대로[11]}`).innerHTML=삼십_00.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[12]}`).innerHTML=삼십_01.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[13]}`).innerHTML=삼십_02.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[14]}`).innerHTML=삼십_03.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[15]}`).innerHTML=삼십_04.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[16]}`).innerHTML=삼십_05.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[17]}`).innerHTML=삼십_06.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[18]}`).innerHTML=삼십_07.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[19]}`).innerHTML=삼십_08.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[20]}`).innerHTML=삼십_09.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[21]}`).innerHTML=삼십_10.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[22]}`).innerHTML=삼십_11.join(',');
+      document.querySelector(`#${설정유형} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
+
+      //#당번_오주삼십주개수 .
+  }
+
+
+
 
 }
 function 회차change설정_보류() {
@@ -309,18 +429,17 @@ function check_초기설정() {
   $('#이동할위치div리스트, #이동할div리스트').html(html);
 }
 function 리스너_바디_click(e) {
+  console.log('리스너_바디_click(e)')
   //var 아이디='당번_회차select';
   //var 설정유형_아이디에따라='당번체인지' //당번체인지, 당번플러스, 당번마이너스, 분석체인지, 분석플러스, 분석마이너스
   //회차change설정(e)이 시작하면서는 e 를 캐치하지 못하여 변수를 바디리스너에서 받아오기로 하였다.
-  if (e.target.id=='당번플러스' || e.target.id=='당번마이너스' || e.target.id=='당번_회차select') {설정유형='당번'; 아이디=e.target.id;}
+  if (['당번플러스','당번마이너스','당번_회차select'].includes(e.target.id)) {설정유형='당번변수'; 아이디=e.target.id;}
   if (e.target.id=='당번플러스') {회차=Number(document.querySelector('#당번_회차select').value)+1;}
   if (e.target.id=='당번마이너스') {회차=Number(document.querySelector('#당번_회차select').value)-1;}
-  if (e.target.id=='당번_회차select') {회차=Number(document.querySelector('#당번_회차select').value);}
-
-  if (e.target.id=='분석플러스' || e.target.id=='분석마이너스' || e.target.id=='분석자료_회차select') {설정유형='분석';아이디=e.target.id;}
+  if (['분석플러스','분석마이너스','분석자료_회차select'].includes(e.target.id)) {설정유형='분석자료변수';아이디=e.target.id;}
   if (e.target.id=='분석플러스') {회차=Number(document.querySelector('#분석자료_회차select').value)+1;}
   if (e.target.id=='분석마이너스') {회차=Number(document.querySelector('#분석자료_회차select').value)-1;}
-  if (e.target.id=='분석자료_회차select') {회차=Number(document.querySelector('#분석자료_회차select').value);}
+  if (['당번_회차select','분석자료_회차select'].includes(e.target.id)) {회차=Number(document.querySelector('#' + e.target.id).value);}
 
   if (['이동할div리스트','이동할위치div리스트'].includes(e.target.parentElement.id)) { //이동 클릭 관련
      e.target.classList.contains('active') ? 
