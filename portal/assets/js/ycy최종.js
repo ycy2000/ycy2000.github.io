@@ -1,29 +1,27 @@
-var 초기화='초기화';
 if ('초기설정' == '초기설정') {
+  //양이 많아서 숨길것을 위로 두고 기록중인것을 아래로 두는데 합쳐야되기 때문에..... 합친후 '회차별배열'에 모든배열을 담는다.
   $('#당번숨김_안에_저장중').append($('#당번숨김_안에_기록중').html());
   document.querySelector('#당번숨김_안에_저장중').innerHTML=
   document.querySelector('#당번숨김_안에_저장중').innerHTML.replace(/\n|\s/g, '') //→ 줄바꿈(\n)과 모든 띄워쓰기(공백 및 탭 등)(\s)을 한 번에 제거
   var 회차별배열=[];
   $('#당번숨김_안에_저장중').html().split(',').forEach(요소=> {회차별배열.push(요소)}) //당번만추출한배열[0]=='보정' (회차와 일치하도록 됨)
-  var 변수명순서대로=[];
-  document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명순서대로.push(요소.classList[0]);
-    //console.log(요소.classList[0]);
-  })
-  check_초기설정();
+
+  //변수명순서대로 : 5주출관련, 30주출관련 정보가 여러번 쓰이기때문에 순서를 사용하기위함. forEach에서 체이닝이 안되어서 
+  var 변수명순서대로=[];document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명순서대로.push(요소.classList[0]);})
+
+  check_초기설정();//모두숨김상태에서 input checked 인 것만 d-none 제거
   회차select옵션생성();
+
+  //당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
   고정html_구조생성();
-  if ('1==1') {//bode클릭시(아이디, 설정유형_아이딩따라 설정됨, 초기설정을 한다)
-    var 아이디='당번_회차select';
-    var 설정유형='당번변수' //당번변수 또는 분석자료변수
+
     var 최근회차=document.querySelectorAll('#당번_회차select option').length-1;
     var 회차=최근회차;
-  }
-  회차change설정(); //처음에 e를 인식못하여서...
-  초기화=''; //초기화때, 회차change설정() 할때, 분석자료관련 번호들도 넣는다. 
+
+  당번_회차change설정();
+  분석자료_회차change설정();
 }
 var 리스너_바디=document.querySelector('body');
-
-
 
 function 연습() {
   var 배열=[1,2,3,4,5,6,7,8,9]
@@ -35,45 +33,37 @@ function 색칠_1_동작설정() {
 }
 function 색칠_2_설정대로색칠동작() {
 }
-function 회차change설정() {
-  //console.log('설정유형 : ' + 설정유형 + ' ,회차 : ' + 회차 + ' , 최근회차 : ' + 최근회차)
-  if (회차>최근회차) {console.log('회차가 최근회차보다 크면 종료'); return;}
-  if (1==1) { //1. 당번8칸채우기(30회분), 다음회차 채우기, 설정유형별로 회차 적용하기
-    if (설정유형=='분석자료변수') {document.querySelector('#분석자료_회차select').value=회차}
-    if (설정유형=='당번변수') {//당번8칸 채우기
-      document.querySelector('#당번_회차select').value=회차
-      //다음회차 위치
-      if (회차별배열[회차+1]) {
-        for (var i=0; i<8; i++) {
-          if (i==0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[회차+1].split('_')[i]} 
-          if (i>0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[회차+1].split('_')[i+1]} 
+function 분석자료_회차change설정() {
+  console.log('분석자료_회차change설정()')
+  document.querySelector('#분석자료_회차select').value=Number(회차);
+  if (회차>최근회차) {console.log('회차가 최근회차보다 크면 종료'); 회차=회차-1;document.querySelector('#분석자료_회차select').value=Number(회차); return;} //회차=회차-1 ==> 원래대로 돌림
+  if (1==1) { //1. 당번8칸채우기(30회분), 다음회차 채우기(둘다), 설정유형별로 회차 적용하기
+    //당번8칸 채우기
+    //다음회차 위치
+    if (회차별배열[Number(회차)+1]) {
+        for (var i=0; i<9; i++) {
+          document.querySelectorAll('#분석자료_다음회차 > div')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i]; 
         }
       } else {
-        for (var i=0; i<8; i++) {
-          document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML='_';
+        for (var i=0; i<9; i++) {//회차부터 9종
+         document.querySelectorAll('#분석자료_다음회차 > div')[i].innerHTML='_';
         }
-      }
-      //30회분 번호
-      for (var 삼십번=0; 삼십번<30; 삼십번++) {
-        for (var i=0; i<8; i++) {
-          if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[회차-삼십번].split('_')[i]} 
-          if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[회차-삼십번].split('_')[i+1]} 
-        }
-      }
     }
+      for (var i=1; i<9; i++) {//날짜부터 번호 8종
+        document.querySelectorAll('#분석자료_선택회차 > div')[i-1].innerHTML=회차별배열[Number(회차)].split('_')[i];
+      }
   }
-  if (1==1) { //2. 변수에 들어갈 번호들 작성, 공통으로 작성 (다음에 설정유형별로 들어가는 곳이 달라짐)
-              //변수에 들어갈 번호들 작성 : document.querySelector('#' + 설정유형 + ' #' + 변수명순서대로[0]) 
-              //                       == document.querySelector('#당번변수 #공통변수_다음당번')
-    //공통 변수명순서대로 : 초기화 후 값넣기, #당번_오주삼십주개수 에는 0 공통변수_다음당번 이 없다. 
+
+  if (1==1) { 
+    //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
+    var 부모id='#분석자료변수';
     변수명순서대로.forEach(변수명 => {
-      document.querySelector(`#${설정유형} .${변수명}`).innerHTML='';
+      document.querySelector(`#분석자료변수 .${변수명}`).innerHTML='';
     } )
-    console.log('설정유형 : ' + 설정유형 + ' , 변수명순서대로[0] : ' + 변수명순서대로[0])
-    if (i==0 && 회차==최근회차) {document.querySelector(`#${설정유형} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
-    if (i==0 && 회차!=최근회차) {document.querySelector(`#${설정유형} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
-    document.querySelector(`#${설정유형} .${변수명순서대로[1]}`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',') //1 공통변수_당번
-    var 좌우수=[], 이웃수=[];
+    if (i==0 && 회차==최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
+    if (i==0 && 회차!=최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
+    var 좌우수=[], 이웃수=[],당번=[],이웃당번=[];
+    당번=회차별배열[회차].split('_').slice(2,8);
     회차별배열[회차].split('_').slice(2,8).forEach(숫자 => {
       if (숫자==1) {좌우수.push(45); 좌우수.push(2);} 
       if (숫자==45) {좌우수.push(44); 좌우수.push(1);} 
@@ -83,8 +73,7 @@ function 회차change설정() {
     좌우수.forEach(숫자 => {
       if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {이웃수.push(숫자)}
     })
-    document.querySelector(`#${설정유형} .${변수명순서대로[2]}`).innerHTML=이웃수.join(','); //2 공통변수_이웃
-    document.querySelector(`#${설정유형} .${변수명순서대로[3]}`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',') + ',' + 이웃수.join(','); //3 공통변수_당번이웃
+    이웃당번=(당번.join(',') + ',' + 이웃수.join(',')).split(',');
     var 오주당번모음=[], 십주당번모음=[], 십오주당번모음=[],삼십주당번모음=[];
     for (var i=0;i<30; i++) {
       if (i<5) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {오주당번모음.push(번호)} )}
@@ -124,55 +113,207 @@ function 회차change설정() {
       if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==11) {삼십_11.push(i+1)}  
       if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==12) {삼십_12.push(i+1)}  
     }
-      document.querySelector(`#${설정유형} .${변수명순서대로[4]}`).innerHTML=오주출.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[5]}`).innerHTML=오주미출.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[6]}`).innerHTML=오주1출.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[7]}`).innerHTML=오주2출.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[8]}`).innerHTML=오주3출.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[9]}`).innerHTML=십주미출.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[10]}`).innerHTML=십오주미출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.join(',');
 
-      document.querySelector(`#${설정유형} .${변수명순서대로[11]}`).innerHTML=삼십_00.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[12]}`).innerHTML=삼십_01.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[13]}`).innerHTML=삼십_02.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[14]}`).innerHTML=삼십_03.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[15]}`).innerHTML=삼십_04.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[16]}`).innerHTML=삼십_05.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[17]}`).innerHTML=삼십_06.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[18]}`).innerHTML=삼십_07.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[19]}`).innerHTML=삼십_08.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[20]}`).innerHTML=삼십_09.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[21]}`).innerHTML=삼십_10.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[22]}`).innerHTML=삼십_11.join(',');
-      document.querySelector(`#${설정유형} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
 
-      //#당번_오주삼십주개수 .
-      if (설정유형=='당번변수') {
-        변수명순서대로.forEach(변수명 => {
-          document.querySelector(`#당번_오주삼십주개수 .${변수명}`).innerHTML=''; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
-        } )
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[4]}`).innerHTML=오주출.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[5]}`).innerHTML=오주미출.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[6]}`).innerHTML=오주1출.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[7]}`).innerHTML=오주2출.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[8]}`).innerHTML=오주3출.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[9]}`).innerHTML=십주미출.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[10]}`).innerHTML=십오주미출.length;
+    //#당번_오주삼십주개수 .
+    부모id='#당번_오주삼십주개수';
 
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[11]}`).innerHTML=삼십_00.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[12]}`).innerHTML=삼십_01.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[13]}`).innerHTML=삼십_02.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[14]}`).innerHTML=삼십_03.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[15]}`).innerHTML=삼십_04.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[16]}`).innerHTML=삼십_05.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[17]}`).innerHTML=삼십_06.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[18]}`).innerHTML=삼십_07.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[19]}`).innerHTML=삼십_08.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[20]}`).innerHTML=삼십_09.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[21]}`).innerHTML=삼십_10.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[22]}`).innerHTML=삼십_11.length;
-        document.querySelector(`#당번_오주삼십주개수 .${변수명순서대로[23]}`).innerHTML=삼십_12.length;  
+    변수명순서대로.forEach(변수명 => {
+      document.querySelector(`#당번_오주삼십주개수 .${변수명}`).innerHTML=''; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
+      //forEach안에서는 삼항연산은 쓸수있다. 체이닝은 쓸수없다.
+    } )
+    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.length;
+    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.length;
+    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.length;
+    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.length;
+
+    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.length;
+    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.length;
+    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.length;
+    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.length;
+    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.length;
+    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.length;
+    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.length;
+    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.length;
+    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.length;
+    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.length;
+    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.length;
+    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.length;
+    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.length;  
+
+  }
+
+}
+function 당번_회차change설정() {
+  console.log('당번_회차change설정()')
+  document.querySelector('#당번_회차select').value=Number(회차);
+  if (회차>최근회차) {console.log('회차가 최근회차보다 크면 종료'); 회차=회차-1;document.querySelector('#당번_회차select').value=Number(회차); return;} //회차=회차-1 ==> 원래대로 돌림
+  if (1==1) { //1. 당번8칸채우기(30회분), 다음회차 채우기(둘다), 설정유형별로 회차 적용하기
+    //당번8칸 채우기
+    //다음회차 위치
+    if (회차별배열[Number(회차)+1]) {
+      for (var i=0; i<8; i++) {
+        if (i==0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i]} 
+        if (i>0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i+1]} 
       }
+    } else {
+      for (var i=0; i<8; i++) {
+        document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML='_';
+      }
+    }
+    //30회분 번호
+    for (var 삼십번=0; 삼십번<30; 삼십번++) {
+      for (var i=0; i<8; i++) {
+        if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[Number(회차)-삼십번].split('_')[i]} 
+        if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[Number(회차)-삼십번].split('_')[i+1]} 
+      }
+    } 
+  }
+  if (1==1) { 
+    //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
+    var 부모id='#당번변수';
+    변수명순서대로.forEach(변수명 => {
+      document.querySelector(`#당번변수 .${변수명}`).innerHTML='';
+    } )
+    if (i==0 && 회차==최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
+    if (i==0 && 회차!=최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
+    var 좌우수=[], 이웃수=[],당번=[],이웃당번=[];
+    당번=회차별배열[회차].split('_').slice(2,8);
+    회차별배열[회차].split('_').slice(2,8).forEach(숫자 => {
+      if (숫자==1) {좌우수.push(45); 좌우수.push(2);} 
+      if (숫자==45) {좌우수.push(44); 좌우수.push(1);} 
+      if (숫자>1 && 숫자<45) {좌우수.push(Number(숫자)-1); 좌우수.push(Number(숫자)+1);} 
+    })
+    좌우수=new Set(좌우수); 좌우수=[...좌우수]
+    좌우수.forEach(숫자 => {
+      if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {이웃수.push(숫자)}
+    })
+    이웃당번=(당번.join(',') + ',' + 이웃수.join(',')).split(',');
+    var 오주당번모음=[], 십주당번모음=[], 십오주당번모음=[],삼십주당번모음=[];
+    for (var i=0;i<30; i++) {
+      if (i<5) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {오주당번모음.push(번호)} )}
+      if (i<10) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십주당번모음.push(번호)} )}
+      if (i<15) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십오주당번모음.push(번호)} )}
+      if (i<30) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {삼십주당번모음.push(번호)} )}
+    }
+    /* 
+    0 공통변수_다음당번  1 공통변수_당번  2 공통변수_이웃  3 공통변수_당번이웃  4 공통변수_5주출  5 공통변수_5주0출  6 공통변수_5주1출  
+    7 공통변수_5주2출   8 공통변수_5주3출  9 공통변수_10주0출  10 공통변수_15주0출  11 공통변수_30주0출  12 공통변수_30주1출  
+    13 공통변수_30주2출  14 공통변수_30주3출  15 공통변수_30주4출  16 공통변수_30주5출  17 공통변수_30주6출  18 공통변수_30주7출 
+    19 공통변수_30주8출  20 공통변수_30주9출  21 공통변수_30주10출  22 공통변수_30주11출  23 공통변수_30주12출
+    */
+    var 오주출=[],오주미출=[],오주1출=[],오주2출=[],오주3출=[],십주미출=[],십오주미출=[];
+    var 삼십_00=[],삼십_01=[],삼십_02=[],삼십_03=[],삼십_04=[],삼십_05=[],삼십_06=[],삼십_07=[],삼십_08=[],삼십_09=[],삼십_10=[],삼십_11=[],삼십_12=[];
+    for (var i=0; i<45; i++) {
+      var 오주출개수=오주당번모음.filter( 번호 => 번호==(i+1) ).length;
+      if (오주출개수>0) {오주출.push(i+1)}
+      if (오주출개수==0) {오주미출.push(i+1)}
+      if (오주출개수==1) {오주1출.push(i+1)}
+      if (오주출개수==2) {오주2출.push(i+1)}
+      if (오주출개수>2) {오주3출.push(i+1)}
+      if (십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십주미출.push(i+1)}
+      if (십오주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십오주미출.push(i+1)}
+
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {삼십_00.push(i+1)}
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==1) {삼십_01.push(i+1)}
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==2) {삼십_02.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==3) {삼십_03.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==4) {삼십_04.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==5) {삼십_05.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==6) {삼십_06.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==7) {삼십_07.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==8) {삼십_08.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==9) {삼십_09.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==10) {삼십_10.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==11) {삼십_11.push(i+1)}  
+      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==12) {삼십_12.push(i+1)}  
+    }
+    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.join(',');
+
+    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.join(',');
+    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
+
+    //#당번_오주삼십주개수 .
+    부모id='#당번_오주삼십주개수';
+
+    변수명순서대로.forEach(변수명 => {
+      document.querySelector(`#당번_오주삼십주개수 .${변수명}`).innerHTML=''; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
+      //forEach안에서는 삼항연산은 쓸수있다. 체이닝은 쓸수없다.
+    } )
+    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.length;
+    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.length;
+    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.length;
+    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.length;
+    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.length;
+
+    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.length;
+    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.length;
+    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.length;
+    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.length;
+    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.length;
+    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.length;
+    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.length;
+    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.length;
+    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.length;
+    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.length;
+    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.length;
+    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.length;
+    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.length;  
+
   }
 
 
@@ -294,129 +435,73 @@ function 회차change설정_보류() {
     document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML=삼십_12.length;
   }
 }
-function 회차change설정_GPT() {
-  if (['당번플러스', '분석플러스'].includes(아이디) && 회차 > 최근회차) {
-    alert('최근회차입니다');
-    return;
-  }
-
-  const selectId = 설정유형 === '당번' ? '#당번_회차select' : '#분석자료_회차select';
-  document.querySelector(selectId).value = 회차;
-
-  const 범용당번배열 = $('#당번숨김_안에_저장중').html().split(',').filter(Boolean);
-  const 당번 = [], 오주 = [], 십주 = [], 십오주 = [], 삼십주 = [];
-
-  for (let i = 0; i < 30; i++) {
-    for (let j = 2; j < 8; j++) {
-      const 번호 = 범용당번배열[Number(회차) - i]?.split('_')[j]?.trim();
-      if (!번호) continue;
-      if (i === 0) 당번.push(번호);
-      if (i < 5) 오주.push(번호);
-      if (i < 10) 십주.push(번호);
-      if (i < 15) 십오주.push(번호);
-      삼십주.push(번호);
-    }
-  }
-
-  const 결과 = Array.from({ length: 45 }, (_, i) => {
-    const 번호 = (i + 1).toString();
-    const 오 = 오주.filter(x => x === 번호).length;
-    const 십 = 십주.filter(x => x === 번호).length;
-    const 십오 = 십오주.filter(x => x === 번호).length;
-    const 삼십 = 삼십주.filter(x => x === 번호).length;
-
-    return {
-      번호,
-      _5주출: 오 > 0,
-      _5주0출: 오 === 0,
-      _5주1출: 오 === 1,
-      _5주2출: 오 === 2,
-      _5주3출이상: 오 > 2,
-      _10주0출: 십 === 0,
-      _15주0출: 십오 === 0,
-      [`삼십_${삼십.toString().padStart(2, '0')}`]: true
-    };
-  });
-
-  // 결과 분류
-  const 분류 = {
-    당번,
-    _5주출: [], _5주0출: [], _5주1출: [], _5주2출: [], _5주3출이상: [],
-    _10주0출: [], _15주0출: [],
-    삼십: Array.from({ length: 13 }, () => [])
-  };
-
-  결과.forEach(({ 번호, ...flags }) => {
-    for (const key in flags) {
-      if (flags[key]) {
-        if (key.startsWith('삼십_')) {
-          const idx = parseInt(key.split('_')[1]);
-          if (분류.삼십[idx]) 분류.삼십[idx].push(번호);
-        } else {
-          분류[key].push(번호);
-        }
-      }
-    }
-  });
-
-  if (설정유형 === '당번') {
-    // 다음회차 정보
-    const 다음회차 = 범용당번배열[회차 + 1]?.split('_') || [];
-    const cells = document.querySelectorAll('#당번_다음회차 > div > div > div');
-    cells.forEach((cell, i) => {
-      cell.innerHTML = 다음회차.length ? (i === 0 ? 다음회차[i] : 다음회차[i + 1]) : '_';
-    });
-
-    // 변수 업데이트 헬퍼
-    const 변수 = (id, 값) => document.querySelector(id).innerHTML = 값.join(',');
-
-    변수('#당번_변수_당번', 분류.당번);
-    변수('#당번_변수_이웃', 분류.당번);
-    변수('#당번_변수_당번이웃', 분류.당번);
-    변수('#당번_변수_5주출', 분류._5주출);
-    변수('#당번_변수_5주0출', 분류._5주0출);
-    변수('#당번_변수_5주1출', 분류._5주1출);
-    변수('#당번_변수_5주2출', 분류._5주2출);
-    변수('#당번_변수_5주3출', 분류._5주3출이상);
-    변수('#당번_변수_10주0출', 분류._10주0출);
-    변수('#당번_변수_15주0출', 분류._15주0출);
-
-    분류.삼십.forEach((배열, i) => {
-      변수(`#당번_변수_30주${i}출`, 배열);
-    });
-
-    const 갯수설정 = (sel, 값들) => {
-      document.querySelector(sel).innerHTML = 값들.length;
-    };
-
-    // 버튼 갯수 출력
-    const base = '#당번_오주연결버튼 > div:nth-of-type';
-    갯수설정(`${base}(2) > button:nth-of-type(2)`, 분류.당번);
-    갯수설정(`${base}(3) > button:nth-of-type(2)`, 분류.당번);
-    갯수설정(`${base}(4) > button:nth-of-type(2)`, 분류.당번);
-    갯수설정(`${base}(5) > button:nth-of-type(2)`, 분류._5주출);
-    갯수설정(`${base}(6) > button:nth-of-type(2)`, 분류._5주0출);
-    갯수설정(`${base}(7) > button:nth-of-type(2)`, 분류._5주1출);
-    갯수설정(`${base}(8) > button:nth-of-type(2)`, 분류._5주2출);
-    갯수설정(`${base}(9) > button:nth-of-type(2)`, 분류._5주3출이상);
-    갯수설정(`${base}(10) > button:nth-of-type(2)`, 분류._10주0출);
-    갯수설정(`${base}(11) > button:nth-of-type(2)`, 분류._15주0출);
-
-    분류.삼십.forEach((배열, i) => {
-      갯수설정(`#당번_삼십주연결버튼 > div:nth-of-type(${i + 2}) > button:nth-of-type(2)`, 배열);
-    });
-  }
-}
 
 function 고정html_구조생성() {
-  const 당번한줄html=`<div><div class="당번회차" style="display:inline-block"><div style="display:inline-block"></div></div><div 
-  class="당번만" style="display:inline-block"><div></div><div></div><div></div><div></div><div></div><div></div></div><div 
-  class="보볼" style="display:inline-block"><div></div></div></div>`
+  const 당번한줄html=`<div><div class="당번회차 d-inline-block"><div></div></div><div 
+  class="당번만 d-inline-block"><div></div><div></div><div></div><div></div><div></div><div></div></div><div 
+  class="보볼 d-inline-block"><div></div></div></div>`
   document.querySelector('#당번_다음회차').innerHTML=당번한줄html;
-  document.querySelector('#분석자료_다음회차').innerHTML=당번한줄html;  
   for (var i=0; i<30; i++) {
   document.querySelector('#당번_불러온당첨정보').innerHTML+=당번한줄html;
   }
+  //id="분석자료_표_상_js"
+  if ('분석자료_표_상_js'=='분석자료_표_상_js') {
+    for (var 외부=0; 외부<20; 외부++) {
+      var 가로한줄=document.createElement('div');
+      var 번호선택_추출_c=document.createElement('div');
+      var 번호선택배열=['번호선택','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출']
+      for (var i=0; i<4; i++) {
+        var div요소=document.createElement('div'); // div 요소 변수에 담는다.
+        if (i==0) {div요소.textContent=번호선택배열[외부]}
+        if (i==1 && 외부==0) {div요소.textContent='수'}
+
+        if (i==2) {div요소=document.createElement('button');}
+        if (i==2 && 외부==0) {div요소.textContent='출'}
+        if (i==2 && 외부!=0) {div요소.setAttribute('class','카운팅')}      //녹색부분에 카운팅 클래스 넣기
+
+        if (i==3 && 외부==0) {div요소.textContent='C'}
+        if (i==3 && 외부!=0) {div요소.setAttribute('class','앞요소값clear')}
+
+        if (i==3 && 외부!=0) {div요소.textContent=외부}
+        //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
+        if (외부>10) {
+          if (i==0) {div요소.setAttribute('onclick','분석자료_11에서20_keep번호셑팅(this)')}
+          if (i==0) {div요소.setAttribute('contenteditable','true')}
+          if (i==1) {div요소.setAttribute('onclick','keep셑팅초기화(this)')}
+        }
+        번호선택_추출_c.appendChild(div요소);
+      }
+      var 번호45=document.createElement('div');
+      //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
+      번호45.setAttribute('class','다섯개씩번갈아색칠');
+
+      for (var i=1; i<46; i++) {
+        var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
+        번호45.appendChild(div요소);
+      }
+      가로한줄.appendChild(번호선택_추출_c);
+      가로한줄.appendChild(번호45);
+      가로한줄.setAttribute('class','js클릭번호')
+
+      document.querySelector('#분석자료_표_상_js').appendChild(가로한줄);
+    } //20회반복 끝
+
+    for (var i=0; i<45; i++) {document.querySelectorAll('#분석자료_표_상_js > div')[0].children[1].children[i].innerHTML=i+1}
+    //다 만들고 난 후에 숨김할것 처리
+    var 요소=document.querySelectorAll('#분석자료숨김버튼 button');
+    for (var i=0; i<요소.length; i++) {
+      if (요소[i].classList.contains('분석버튼숨김')) {
+        document.querySelector('#분석자료_표_상_js').children[요소[i].innerHTML].classList.add('d-none');
+      }
+    }
+  }
+
+
+
+
+
+
+
 }
 
 function 이동하기() {
@@ -456,16 +541,122 @@ function check_초기설정() {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
-  //var 아이디='당번_회차select';
-  //var 설정유형_아이디에따라='당번체인지' //당번체인지, 당번플러스, 당번마이너스, 분석체인지, 분석플러스, 분석마이너스
-  //회차change설정(e)이 시작하면서는 e 를 캐치하지 못하여 변수를 바디리스너에서 받아오기로 하였다.
-  if (['당번플러스','당번마이너스','당번_회차select'].includes(e.target.id)) {설정유형='당번변수'; 아이디=e.target.id;}
-  if (e.target.id=='당번플러스') {회차=Number(document.querySelector('#당번_회차select').value)+1;}
-  if (e.target.id=='당번마이너스') {회차=Number(document.querySelector('#당번_회차select').value)-1;}
-  if (['분석플러스','분석마이너스','분석자료_회차select'].includes(e.target.id)) {설정유형='분석자료변수';아이디=e.target.id;}
-  if (e.target.id=='분석플러스') {회차=Number(document.querySelector('#분석자료_회차select').value)+1;}
-  if (e.target.id=='분석마이너스') {회차=Number(document.querySelector('#분석자료_회차select').value)-1;}
-  if (['당번_회차select','분석자료_회차select'].includes(e.target.id)) {회차=Number(document.querySelector('#' + e.target.id).value);}
+  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='a') || (e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='b')) {
+    var 분석버튼숨김클래스개수=0;
+    var 다음요소=e.target;
+    for (var i=0; i<3; i++) {
+      다음요소=다음요소.nextElementSibling;
+      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수==0) {
+      for (var i=0; i<3; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.add('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
+      }
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수!=0) {
+      for (var i=0; i<3; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.remove('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
+      }
+    }
+
+    return;
+  }
+  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='c')) {
+    var 분석버튼숨김클래스개수=0;
+    var 다음요소=e.target;
+    for (var i=0; i<4; i++) {
+      다음요소=다음요소.nextElementSibling;
+      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수==0) {
+      for (var i=0; i<4; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.add('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
+      }
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수!=0) {
+      for (var i=0; i<4; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.remove('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
+      }
+    }
+    return;
+  }
+  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='d')) {
+    var 분석버튼숨김클래스개수=0;
+    var 다음요소=e.target;
+    for (var i=0; i<9; i++) {
+      다음요소=다음요소.nextElementSibling;
+      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수==0) {
+      for (var i=0; i<9; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.add('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
+      }
+    }
+    다음요소=e.target;
+    if (분석버튼숨김클래스개수!=0) {
+      for (var i=0; i<9; i++) {
+        다음요소=다음요소.nextElementSibling;
+        다음요소.classList.remove('분석버튼숨김');
+        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
+      }
+    }
+    return;
+  }
+  if (e.target.parentElement.id=='분석자료숨김버튼') {
+    if (e.target.classList.contains('분석버튼숨김')) {
+      e.target.classList.remove('분석버튼숨김');
+      document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.remove('d-none')
+    } else {
+      e.target.classList.add('분석버튼숨김');
+      document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.add('d-none')
+    }
+    return;
+  }
+  if (e.target.parentElement.id=='분석자료_플마버튼') {
+    if (e.target.innerHTML=='X') {
+      for (var i=0; i<document.querySelector('#분석자료_표_상_js').children.length; i++) {
+        document.querySelector('#분석자료_표_상_js').children[i].classList.add('d-none');
+      }
+      for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
+        document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.add('분석버튼숨김');
+        var 값=document.querySelectorAll('#분석자료숨김버튼 button')[i].innerHTML;
+        if (값=='a' || 값=='b' || 값=='c' || 값=='d') {document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.remove('분석버튼숨김');}
+      }
+    }
+    if (e.target.innerHTML=='O') {
+      for (var i=0; i<document.querySelector('#분석자료_표_상_js').children.length; i++) {
+        document.querySelector('#분석자료_표_상_js').children[i].classList.remove('d-none');
+      }
+      for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
+        document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.remove('분석버튼숨김');
+      }
+    }
+  }
+  if (e.target.classList.contains('카운팅')) {
+    console.log('리스너_바디_click(e) : 카운팅 클래스 있을때')
+    var 현재=Number(e.target.innerHTML);
+    if (isNaN(현재)) {alert('현재 숫자 아님(공백은 0)');return;}
+    if (현재==6) {e.target.innerHTML=''} else {e.target.innerHTML=현재+1;}
+  }
+  if (e.target.classList.contains('앞요소값clear')) {
+    console.log('리스너_바디_click(e) : 앞요소값clear 클래스 있을때')
+    e.target.previousElementSibling.innerHTML='';
+  }
 
   if (['이동할div리스트','이동할위치div리스트'].includes(e.target.parentElement.id)) { //이동 클릭 관련
      e.target.classList.contains('active') ? 

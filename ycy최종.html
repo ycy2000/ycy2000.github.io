@@ -50,7 +50,7 @@
     <label class="form-check-label">당번 및 간격</label><!--  for="check_당번과흐름" js로 부여됨 -->
   </div>
   <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input check클래스" type="checkbox" value="" id="check_분석자료30빈도" checked>
+    <input class="form-check-input check클래스" type="checkbox" value="" id="check_분석자료30빈도전체" checked>
     <label class="form-check-label">분석자료30회</label>
   </div>
   <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-left:10px;">
@@ -64,22 +64,41 @@
   <button onclick="연습()">연습</button>
   <span>현재누적번호 : </span><span id="현재번호"></span>
 </div>
+<div id="코드" class="분류 d-none">
+  <!-- onclick ==>  코드_클릭한정보call에 가져와 셑팅-->
+  <div class="d-inline-block" style="margin-right:10px;">
+    <div>제목 클릭</div>
+    <div class="코드제목들">
+      <button onclick="코드셑팅(this)" title="#코드_체크this활용설명">• check_초기설정(), 체크this활용(e), 회차select옵션생성()</button>
+    </div>
+  </div>
+  <div id="코드_클릭한정보call" class="d-inline-block"></div>
+  <div class="d-none"><!-- &#60; < -->
+    <div id="코드_체크this활용설명">
+      <h5>function check_초기설정()</h5>
+      <h6 style="text-indent: 15px;">• 클래스 : 분류, 소분류 는 d-inline-block을 부여하기 위함이고, 가독성을 위해 부여하였다</h6>
+      <h6 style="text-indent: 15px;">• 화면에 보이는 div들은 모두 d-none 으로 숨겨져 있고</h6>
+      <h6 style="text-indent: 25px;">초기화시 : '.check클래스'를 순환하면서 checked인 경우 id를 추출하여 d-none 제거하게 된다.</h6>
+    </div>    
+
+  </div>
+</div>
 <div id="당번과흐름" class="분류 d-none">
   <div id="당번전체" class="소분류">
     <div id="당번_다음회차" class="당번8칸">
     </div>
-    <select id="당번_회차select" class="d-inline-block" onchange="회차change설정();" style="margin:5px 0"></select>
+    <select id="당번_회차select" class="d-inline-block" onchange="회차=this.value;당번_회차change설정();" style="margin:5px 0"></select>
     <div id="당번_플마클리어버튼" class="d-inline-block" style="margin-top:5px;">
-      <button id="당번플러스" onclick="회차change설정();">+</button> <button id="당번마이너스" onclick="회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
+      <button id="당번플러스" onclick="회차=Number(회차)+1;당번_회차change설정();">+</button> <button id="당번마이너스" onclick="회차=Number(회차)-1;당번_회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
       <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;">
-        <input class="form-check-input check클래스" type="checkbox" value="" id="check_당번_특수분류숫자선택" checked>
-        <label class="form-check-label" for="check_당번_특수분류숫자선택">오른쪽</label>
+        <input class="form-check-input check클래스" type="checkbox" value="" id="check_당번_오주삼십주개수" checked>
+        <label class="form-check-label" for="check_당번_오주삼십주개수">오른쪽</label>
       </div>
     </div>
     <div id="당번_불러온당첨정보" class="당번8칸"></div>
   </div>
   <div id="당번_오주삼십주개수" class="소분류">
-    <div class="d-inline-block" id="당번_오주연결버튼">
+    <div class="소분류" id="당번_오주연결버튼">
       <div>5주 관련</div>
       <div class="d-none"><button>변수짝맞춤으로임시로넣음</button><button class="공통변수_다음당번"></button></div>
       <div><button>당번</button><button class="공통변수_당번"></button></div>
@@ -93,7 +112,7 @@
       <div><button>10주0출</button><button class="공통변수_10주0출"></button></div>
       <div><button>15주0출</button><button class="공통변수_15주0출"></button></div>
     </div>
-    <div class="d-inline-block" id="당번_삼십주연결버튼">
+    <div class="소분류" id="당번_삼십주연결버튼">
       <div>30주 관련</div>
       <div><button>0</button><button class="공통변수_30주0출"></button></div>
       <div><button>1</button><button class="공통변수_30주1출"></button></div>
@@ -157,7 +176,7 @@
       </div>                                   
     </div>
   </div>
-  <div id="흐름전체" class="소분류 d-none">
+  <div id="흐름전체" class="d-none 소분류">
     <div id="흐름_이월" class="소분류 d-none">흐름_이월</div>
     <div id="흐름_이웃수" class="소분류 d-none">흐름_이웃수</div>
     <div id="흐름_이웃수full" class="소분류 d-none">흐름_이웃수full</div>
@@ -168,43 +187,74 @@
     <div id="흐름_간격당당첨개수" class="소분류 d-none">흐름_간격당당첨개수</div>
     <div id="흐름_간격내림차순" class="소분류 d-none">흐름_간격내림차순</div>
     <div id="흐름_간격내림차순당첨개수" class="소분류 d-none">흐름_간격내림차순당첨개수</div>
-
-  </div>
-
-
-
-
-
-</div>
-<div id="분석자료30빈도" class="분류 d-none">분석자료30빈도</div>
-<div id="분석자료45칸" class="분류 d-none">
-  <div id="분석자료_다음회차" class="당번8칸">
-  </div>
-  <select id="분석자료_회차select" class="d-inline-block" onchange="회차change설정();" style="margin:5px 0"></select>
-  <div id="분석자료_플마버튼" class="d-inline-block" style="margin-top:5px;">
-    <button id="분석플러스" onclick="회차change설정();">+</button> <button id="분석마이너스" onclick="회차change설정();">-</button> 
   </div>
 </div>
 
 
+<div id="분석자료30빈도전체" class="분류 d-none">
+  <div id="분석자료_삼십회표" class="소분류">
+    <div class="d-inline-block">30회 출현 빈도 (횟수에 기능)</div><br>
+    <div id="분석자료_삼십회표_js">
+      
+    </div>
+    <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
+      <input class="form-check-input check클래스" type="checkbox" value="" id="check_삼십빈도개수">
+      <label class="form-check-label">30회개수</label>
+    </div>
+    <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
+      <input class="form-check-input check클래스" type="checkbox" value="" id="check_삼십빈도당첨">
+      <label class="form-check-label">30회당첨</label>
+    </div>    
+    <div class="메모메모" contenteditable spellcheck="false">
+      <br><br><br><br><br>
+    </div>    
+  </div>
 
-
-<div id="코드" class="분류 d-none">
-  <!-- onclick ==>  코드_클릭한정보call에 가져와 셑팅-->
-  <div class="d-inline-block">
-    <div>제목 클릭</div>
-    <div class="코드제목들">
-      <button onclick="코드셑팅(this)" title="#코드_j쿼리로바꾸기">
-        • check_초기설정(), 체크this활용(e), 회차select옵션생성()
-      </button>
+  <div id="삼십빈도개수" class="d-none 소분류">
+    <div class="d-inline-block">30회 숫자 개수</div><br>
+    <div id="분석자료_삼십회23456개수_js">
+      
+    </div>
+    <div class="메모메모" contenteditable spellcheck="false">
+    <br><br><br><br><br><br>
     </div>
   </div>
-  <div id="코드_클릭한정보call" class="d-inline-block"></div>
-  <div class="d-none"><!-- &#60; < -->
-    <div id="코드_j쿼리로바꾸기"><img src="portal/images/black_문서/코드_check_초기설정.png" alt="이미지없음"></div>    
-
+  <div id="삼십빈도당첨" class="d-none 소분류">
+    <div class="d-inline-block" title="이전회차 30히 출현 빈도표에서의 결과">다음회차 있을때 당번출현 개수</div><br>
+    <div id="분석자료_삼십회빈도_js">
+      
+    </div>
+    <div class="메모메모" contenteditable spellcheck="false">
+    <br><br><br><br><br><br>
+    </div>
   </div>
+
 </div>
+<div id="분석자료45칸" class="분류 d-none">
+  <div id="분석자료_다음회차"><div style="margin-right:5px;"></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <select id="분석자료_회차select" class="d-inline-block" onchange="회차=this.value;분석자료_회차change설정();" style="margin:5px 0"></select>
+  <div id="분석자료_선택회차" class="d-inline-block"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div id="분석자료_플마버튼" class="d-inline-block" style="margin-top:5px;">
+    <button id="분석플러스" onclick="회차=Number(회차)+1;분석자료_회차change설정();">+</button> <button id="분석마이너스" onclick="회차=Number(회차)-1;분석자료_회차change설정();">-</button> 
+    <button style="margin-left:5px;">X</button> <button>O</button>
+  </div>
+  <div id="분석자료숨김버튼" class="d-inline-block" style="margin-top:5px;margin-left:5px;"><!-- 버튼에 class="분석버튼숨김" 클래스  -->
+    <button>a</button> <button>1</button> <button class="분석버튼숨김">2</button> <button class="분석버튼숨김">3</button>
+    <button>b</button> <button>4</button> <button>5</button> <button>6</button>
+    <button>c</button> <button>7</button> <button>8</button> <button>9</button> <button>10</button>
+    <button>d</button> <button class="분석버튼숨김">11</button> <button class="분석버튼숨김">12</button> <button class="분석버튼숨김">13</button> <button class="분석버튼숨김">14</button> <button class="분석버튼숨김">15</button>
+    <button class="분석버튼숨김">16</button> <button class="분석버튼숨김">17</button> <button class="분석버튼숨김">18</button> <button class="분석버튼숨김">19</button>
+  </div>
+  <div id="분석자료_표_상_js"></div>
+  <div id="분석자료_표_하_js"></div>
+</div>
+
+
+
+
+
+
+
 <div id="당번및분석_숫자들숨김" style="width:185px;"  class="d-none">
   <div id="변수숨김" class="d-none">
     <div id="당번변수">
