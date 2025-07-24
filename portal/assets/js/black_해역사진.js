@@ -328,6 +328,16 @@ var 리스너_header = document.querySelector('header');
 var 리스너_캔버스전체 = document.querySelector('#캔버스전체');
 function header_클릭시(e) {
   console.log('header_클릭시(e)');
+  if (e.target.innerHTML == '세찌낚시') {
+    document.querySelector('#해역_물품단계_대체부분').innerHTML = document.querySelector('#해역관련자료none #세찌낚시').outerHTML;
+    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.remove('d-none');
+  }  
+  if (e.target.innerHTML == '특화') {
+    document.querySelector('#해역_물품단계_대체부분').innerHTML = document.querySelector('#해역관련자료none #특화').outerHTML;
+    document.querySelector('#해역_물품단계_고정').classList.add('d-none');
+    document.querySelector('#해역_물품단계_대체부분').classList.remove('d-none');
+  }   
   if (e.target.id == '해역사진보기') {
     보기셑팅유형 = '해역사진초기값'
     console.log('보기셑팅유형 : ' + 보기셑팅유형);
