@@ -53,7 +53,7 @@ body {white-space: nowrap;}
 {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
 
 #분석자료_표_상_js > div > div:nth-of-type(2) .다섯개씩번갈아색칠 > div 
-{display: inline-block;border:1px solid black;height:24px;width:24px;margin-right:-1px;text-align: center;font-weight: bold;}
+{width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
 #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
 #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+2):not(.분석):not(.분석덧칠),
 #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+3):not(.분석):not(.분석덧칠),
@@ -68,7 +68,34 @@ body {white-space: nowrap;}
 #분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-4):not(.분석):not(.분석덧칠) 
 {background-color:rgb(196, 169, 137);}
 
+/* 분석자료_표_하_js */
+#분석자료_표_하_js > div {display: inline-block;}
+#분석자료_표_하_js > div:first-child {width:166px;} /* 임시조정 */
+#분석자료_표_하_js  .다섯개씩번갈아색칠 {margin-bottom:-1px;}
+#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(1) {margin-bottom:0px;}
+#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(9) {margin-bottom:0px;margin-top:1px;}
+#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(14), #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(19),
+#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(24), #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(29), 
+#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(34)
+{margin-bottom:0px;}
+#분석자료_표_하_js  .다섯개씩번갈아색칠 > div, #삼십회횟수기록 > div
+{width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;text-align: center;}
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+2):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+3):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+4):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+5):not(.분석):not(.분석덧칠) 
+{background-color: bisque;}
 
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-1):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-2):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-3):not(.분석):not(.분석덧칠),
+#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-4):not(.분석):not(.분석덧칠) 
+{background-color:rgb(196, 169, 137);}
+
+.분석:not(.분석덧칠) {background-color:cadetblue;}
+.분석덧칠 {background-color:yellow;}
 
 .코드제목들 > button {border:none;border-bottom:1px solid black; height:30px;display:block;background-color: white;}
 .코드제목들 > button:hover {background-color: cadetblue;}

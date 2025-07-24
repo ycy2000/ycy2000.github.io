@@ -53,9 +53,141 @@ function 분석자료_회차change설정() {
         document.querySelectorAll('#분석자료_선택회차 > div')[i-1].innerHTML=회차별배열[Number(회차)].split('_')[i];
       }
   }
+  if (1==1) { //#당번_오주삼십주개수 작성 및 변수에 값 넣기, //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
+    var 부모id='#분석자료변수';
+    변수명순서대로.forEach(변수명 => {document.querySelector(`${부모id} .${변수명}`).innerHTML='';
+    } )
+    if (i==0 && 회차==최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
+    if (i==0 && 회차!=최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
+    var 좌우수=[], 이웃수=[];
+    당번=회차별배열[회차].split('_').slice(2,8);
+    document.querySelector(`${부모id} .공통변수_당번`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',');
+    document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',')+',';
+    
+    회차별배열[회차].split('_').slice(2,8).forEach(숫자 => {
+      if (숫자==1) {좌우수.push(45); 좌우수.push(2);} 
+      if (숫자==45) {좌우수.push(44); 좌우수.push(1);} 
+      if (숫자>1 && 숫자<45) {좌우수.push(Number(숫자)-1); 좌우수.push(Number(숫자)+1);} 
+    })
+    좌우수=new Set(좌우수); 좌우수=[...좌우수]
+    좌우수.forEach(숫자 => {
+      if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {
+          document.querySelector(`${부모id} .공통변수_이웃`).innerHTML+=숫자 + ',';
+          document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML+=숫자 + ',';
+      };
+    })
 
+    var 오주당번모음=[], 십주당번모음=[], 십오주당번모음=[],삼십주당번모음=[];
+    for (var i=0;i<30; i++) {
+      if (i<5) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {오주당번모음.push(번호)} )}
+      if (i<10) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십주당번모음.push(번호)} )}
+      if (i<15) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십오주당번모음.push(번호)} )}
+      if (i<30) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {삼십주당번모음.push(번호)} )}
+    }
+    /* 
+    0 공통변수_다음당번  1 공통변수_당번  2 공통변수_이웃  3 공통변수_당번이웃  4 공통변수_5주출  5 공통변수_5주0출  6 공통변수_5주1출  
+    7 공통변수_5주2출   8 공통변수_5주3출  9 공통변수_10주0출  10 공통변수_15주0출  11 공통변수_30주0출  12 공통변수_30주1출  
+    13 공통변수_30주2출  14 공통변수_30주3출  15 공통변수_30주4출  16 공통변수_30주5출  17 공통변수_30주6출  18 공통변수_30주7출 
+    19 공통변수_30주8출  20 공통변수_30주9출  21 공통변수_30주10출  22 공통변수_30주11출  23 공통변수_30주12출
+    */
+    for (var i=0; i<45; i++) {
+      var 오주출개수=오주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      var 숫자=i+1;
+      if (오주출개수>0) {
+          document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML+=숫자 + ',';
+      }
+      if (오주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML+=숫자 + ',';
+      }
+      if (오주출개수==1) {
+          document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML+=숫자 + ',';
+      }
+      if (오주출개수==2) {
+          document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML+=숫자 + ',';
+      }
+      if (오주출개수>2) {
+          document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML+=숫자 + ',';
+      }
+      var 십주출개수=십주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      var 십오주출개수=십오주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      if (십주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML+=숫자 + ',';
+      }
+      if (십오주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML+=숫자 + ',';
+      }
 
+      var 삼십주출개수=삼십주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      if (삼십주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==1) {
+          document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==2) {
+          document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==3) {
+          document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==4) {
+          document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==5) {
+          document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==6) {
+          document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==7) {
+          document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==8) {
+          document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=숫자 + ',';
+      }
+      if (삼십주출개수==9) {
+          document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==10) {
+          document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==11) {
+          document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML+=숫자 + ',';
+      }
+      if (삼십주출개수==12) {
+          document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML+=숫자 + ',';
+      }
+    }
+    변수명순서대로.forEach(변수명 => {
+      var 요소확인=document.querySelector(`${부모id} .${변수명}`);
+      if (요소확인.innerHTML.slice(-1)==','){요소확인.innerHTML=요소확인.innerHTML.slice(0,-1)} //마지막이 쉼표(,)이면 쉼표삭제
+    } )
+  }
+  //10가지 번호 색칠하기 (분석 클래스 부여). 색칠하기전에 분석 클래스 제거, 분석덧칠 클래스 제거 
+  var 개수=document.querySelectorAll('#분석자료_표_상_js .분석').length;
+  for (var i=0; i<개수; i++) {
+    document.querySelectorAll('#분석자료_표_상_js .분석')[0].innerHTML='';//이것이 remove보다 앞에와야함
+    document.querySelectorAll('#분석자료_표_상_js .분석')[0].classList.remove('분석');
+  }
 
+  var 개수=document.querySelectorAll('#분석자료_표_상_js .분석덧칠').length;
+  for (var i=0; i<개수; i++) {
+    document.querySelectorAll('#분석자료_표_상_js .분석덧칠')[0].innerHTML='';//이것이 remove보다 앞에와야함
+    document.querySelectorAll('#분석자료_표_상_js .분석덧칠')[0].classList.remove('분석덧칠');
+  }
+
+  var 색칠요소이름='#분석자료_표_상_js .다섯개씩번갈아색칠'
+  var class10종=['.공통변수_당번','.공통변수_이웃','.공통변수_당번이웃','.공통변수_15주0출','.공통변수_10주0출',
+                 '.공통변수_5주0출','.공통변수_5주출','.공통변수_5주1출','.공통변수_5주2출','.공통변수_5주3출']
+  for (var i=0; i<10; i++) {
+    document.querySelector(`#분석자료변수 ${class10종[i]}`).innerHTML.split(',').forEach( (element,index,array) => {
+    //console.log((i+1) + '번째 ,element,index,array : ' + element + ', ' + index + ', [' + array + ']')
+      if (element!='') { // 공백문자열 가지고 왔을때 length는 1 이고 Number(element)에서 에러남
+        document.querySelectorAll(`${색칠요소이름}`)[i+1].children[Number(element)-1].classList.add('분석');
+        document.querySelectorAll(`${색칠요소이름}`)[i+1].children[Number(element)-1].innerHTML=element;
+      } 
+    });
+  }
 }
 function 당번_회차change설정() {
   console.log('당번_회차change설정()')
@@ -379,7 +511,7 @@ function 고정html_구조생성() {
   }
   //id="분석자료_표_상_js"
   if ('분석자료_표_상_js'=='분석자료_표_상_js') {
-    for (var 외부=0; 외부<20; 외부++) {
+    for (var 외부=0; 외부<20; 외부++) { //처음 20칸
       var 가로한줄=document.createElement('div');
       var 번호선택_추출_c=document.createElement('div');
       var 번호선택배열=['번호선택','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출']
@@ -428,7 +560,73 @@ function 고정html_구조생성() {
       }
     }
   }
+  //id="분석자료_표_하_js"
+  if ('분석자료_표_하_js'=='분석자료_표_하_js') {
+    //왼쪽과 오른쪽 구분하여 작성
+    if ('오른쪽'=='오른쪽') {
+      var 오른쪽45=document.createElement('div');
+      for (var 외부=0; 외부<39; 외부++) {
+        var 가로한줄=document.createElement('div');
+        var 번호선택_추출_c=document.createElement('div');
+        var 번호45=document.createElement('div');
+        if (외부!=1) {번호45.setAttribute('class','다섯개씩번갈아색칠')}
+        if (외부==1) {번호45.setAttribute('id','삼십회횟수기록')}
+        for (var i=1; i<46; i++) {
+          var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
+          if (외부==0 || 외부==8) {div요소.innerText=i}
+          번호45.appendChild(div요소);
+        }
+        오른쪽45.appendChild(번호45);
+      }
+    }
 
+    if ('왼쪽'=='왼 쪽') {
+      var 왼쪽전체=document.createElement('div'); //
+
+      var 다섯칸머리글div=document.createElement('div'); //머리글 위에꺼(다음회차 있을때), 머리글 2번사용
+      다섯칸머리글div.setAttribute('class','다섯칸_있다면다음회차');
+      var 내부다섯칸맞추기=document.createElement('div');
+      내부다섯칸맞추기.setAttribute('class','다섯칸');
+      for (var i=0; i<5; i++) {
+        var 가로한줄=document.createElement('div');
+        내부다섯칸맞추기.appendChild(가로한줄)
+      }
+      다섯칸머리글div.appendChild(내부다섯칸맞추기)
+      왼쪽전체.appendChild(다섯칸머리글div);
+
+      var 다섯칸머리글div=document.createElement('div'); //머리글 위에꺼(다음회차 있을때), 머리글 2번사용
+      다섯칸머리글div.setAttribute('class','다섯칸머리글');
+      var 내부다섯칸맞추기=document.createElement('div');
+      내부다섯칸맞추기.setAttribute('class','다섯칸');
+      var 다섯칸제목=[0,1,2,3,'이월']
+      for (var i=0; i<5; i++) {
+        var 가로한줄=document.createElement('div');
+        가로한줄.textContent=다섯칸제목[i];
+        내부다섯칸맞추기.appendChild(가로한줄)
+      }
+      다섯칸머리글div.appendChild(내부다섯칸맞추기)
+      왼쪽전체.appendChild(다섯칸머리글div);
+
+      var 다섯칸div전체=document.createElement('div');
+      다섯칸div전체.setAttribute('class','다섯칸div전체');
+      for (var 다섯칸만들기반복=0; 다섯칸만들기반복<15; 다섯칸만들기반복++) {
+        var 다섯칸div=document.createElement('div');
+        다섯칸div.setAttribute('class','다섯칸');
+        for (var i=0; i<5; i++) {
+          var 가로한줄=document.createElement('div');
+          다섯칸div.appendChild(가로한줄)
+        }
+        다섯칸div전체.appendChild(다섯칸div)
+      }
+      왼쪽전체.appendChild(다섯칸div전체);
+      //왼쪽전체.setAttribute('class','d-none'); //숨겨본다
+      document.querySelector('#분석자료_표_하_js').appendChild(왼쪽전체)
+    }
+
+
+    document.querySelector('#분석자료_표_하_js').appendChild(가로한줄) //빈 div 한개 넣어둠, 왼쪽 만들기 건너뜀, css 가져오기위함
+    document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
+  }
 
 
 
