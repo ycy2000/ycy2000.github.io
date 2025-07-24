@@ -175,6 +175,16 @@ if (1==1) {//전체변수
   var 전체변수_원본텍스트='';
 
 }
+function 메모셑팅(e) {
+  if (e.classList.contains('제목선택')) {
+    document.querySelector('#코드_call').innerHTML='';
+    document.querySelector('.제목 .제목선택')?.classList.remove('제목선택');
+    return;
+  }
+  document.querySelector('#코드_call').innerHTML=document.querySelector(e.title).outerHTML;
+  document.querySelector('.제목 .제목선택')?.classList.remove('제목선택');
+  e.classList.add('제목선택');
+}
 if (1==1) {//리스너_head_button_group클릭이벤트(e)
   var 리스너_head_button_group = document.querySelector('#head_button_group');
   function 리스너_head_button_group클릭이벤트(e) {

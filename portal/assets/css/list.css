@@ -4,6 +4,8 @@
 /* 전체글꼴 */
 body, pre {font-family: 'Noto Serif KR', serif;}
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
+.제목 h6 {border:none; border-bottom:1px solid black;display:block;margin-bottom:5px;}
+.제목선택 {background-color: aqua;}
 
 #메모div > div {padding:3px;font-weight: bold;border-bottom:1px solid black;}
 #메모div > div > div {display: inline-block;vertical-align: top;}

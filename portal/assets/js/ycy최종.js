@@ -54,123 +54,7 @@ function 분석자료_회차change설정() {
       }
   }
 
-  if (1==1) { 
-    //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
-    var 부모id='#분석자료변수';
-    변수명순서대로.forEach(변수명 => {
-      document.querySelector(`#분석자료변수 .${변수명}`).innerHTML='';
-    } )
-    if (i==0 && 회차==최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
-    if (i==0 && 회차!=최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
-    var 좌우수=[], 이웃수=[],당번=[],이웃당번=[];
-    당번=회차별배열[회차].split('_').slice(2,8);
-    회차별배열[회차].split('_').slice(2,8).forEach(숫자 => {
-      if (숫자==1) {좌우수.push(45); 좌우수.push(2);} 
-      if (숫자==45) {좌우수.push(44); 좌우수.push(1);} 
-      if (숫자>1 && 숫자<45) {좌우수.push(Number(숫자)-1); 좌우수.push(Number(숫자)+1);} 
-    })
-    좌우수=new Set(좌우수); 좌우수=[...좌우수]
-    좌우수.forEach(숫자 => {
-      if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {이웃수.push(숫자)}
-    })
-    이웃당번=(당번.join(',') + ',' + 이웃수.join(',')).split(',');
-    var 오주당번모음=[], 십주당번모음=[], 십오주당번모음=[],삼십주당번모음=[];
-    for (var i=0;i<30; i++) {
-      if (i<5) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {오주당번모음.push(번호)} )}
-      if (i<10) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십주당번모음.push(번호)} )}
-      if (i<15) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {십오주당번모음.push(번호)} )}
-      if (i<30) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {삼십주당번모음.push(번호)} )}
-    }
-    /* 
-    0 공통변수_다음당번  1 공통변수_당번  2 공통변수_이웃  3 공통변수_당번이웃  4 공통변수_5주출  5 공통변수_5주0출  6 공통변수_5주1출  
-    7 공통변수_5주2출   8 공통변수_5주3출  9 공통변수_10주0출  10 공통변수_15주0출  11 공통변수_30주0출  12 공통변수_30주1출  
-    13 공통변수_30주2출  14 공통변수_30주3출  15 공통변수_30주4출  16 공통변수_30주5출  17 공통변수_30주6출  18 공통변수_30주7출 
-    19 공통변수_30주8출  20 공통변수_30주9출  21 공통변수_30주10출  22 공통변수_30주11출  23 공통변수_30주12출
-    */
-    var 오주출=[],오주미출=[],오주1출=[],오주2출=[],오주3출=[],십주미출=[],십오주미출=[];
-    var 삼십_00=[],삼십_01=[],삼십_02=[],삼십_03=[],삼십_04=[],삼십_05=[],삼십_06=[],삼십_07=[],삼십_08=[],삼십_09=[],삼십_10=[],삼십_11=[],삼십_12=[];
-    for (var i=0; i<45; i++) {
-      var 오주출개수=오주당번모음.filter( 번호 => 번호==(i+1) ).length;
-      if (오주출개수>0) {오주출.push(i+1)}
-      if (오주출개수==0) {오주미출.push(i+1)}
-      if (오주출개수==1) {오주1출.push(i+1)}
-      if (오주출개수==2) {오주2출.push(i+1)}
-      if (오주출개수>2) {오주3출.push(i+1)}
-      if (십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십주미출.push(i+1)}
-      if (십오주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십오주미출.push(i+1)}
 
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {삼십_00.push(i+1)}
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==1) {삼십_01.push(i+1)}
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==2) {삼십_02.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==3) {삼십_03.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==4) {삼십_04.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==5) {삼십_05.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==6) {삼십_06.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==7) {삼십_07.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==8) {삼십_08.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==9) {삼십_09.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==10) {삼십_10.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==11) {삼십_11.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==12) {삼십_12.push(i+1)}  
-    }
-    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.join(',');
-
-    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
-
-    //#당번_오주삼십주개수 .
-    부모id='#당번_오주삼십주개수';
-
-    변수명순서대로.forEach(변수명 => {
-      document.querySelector(`#당번_오주삼십주개수 .${변수명}`).innerHTML=''; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
-      //forEach안에서는 삼항연산은 쓸수있다. 체이닝은 쓸수없다.
-    } )
-    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.length;
-    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.length;
-    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.length;
-    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.length;
-
-    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.length;
-    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.length;
-    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.length;
-    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.length;
-    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.length;
-    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.length;
-    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.length;
-    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.length;
-    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.length;
-    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.length;
-    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.length;
-    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.length;
-    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.length;  
-
-  }
 
 }
 function 당번_회차change설정() {
@@ -198,16 +82,22 @@ function 당번_회차change설정() {
       }
     } 
   }
-  if (1==1) { 
-    //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
-    var 부모id='#당번변수';
+  if (1==1) { //#당번_오주삼십주개수 작성 및 변수에 값 넣기, //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
+    var 부모id='#당번변수', 개수id='#당번_오주삼십주개수';
     변수명순서대로.forEach(변수명 => {
-      document.querySelector(`#당번변수 .${변수명}`).innerHTML='';
+      document.querySelector(`${부모id} .${변수명}`).innerHTML='';
+      document.querySelector(`${개수id} .${변수명}`).innerHTML=0; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
+      //forEach안에서는 삼항연산은 쓸수있다. 체이닝은 쓸수없다.
     } )
     if (i==0 && 회차==최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML='_,_,_,_,_,_'}//0 공통변수_다음당번
     if (i==0 && 회차!=최근회차) {document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].split('_').slice(2,8).join(',')} //0 공통변수_다음당번
-    var 좌우수=[], 이웃수=[],당번=[],이웃당번=[];
+    var 좌우수=[], 이웃수=[];
     당번=회차별배열[회차].split('_').slice(2,8);
+    document.querySelector(`${부모id} .공통변수_당번`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',');
+    document.querySelector(`${개수id} .공통변수_당번`).innerHTML=6;
+    document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML=회차별배열[회차].split('_').slice(2,8).join(',')+',';
+    document.querySelector(`${개수id} .공통변수_당번이웃`).innerHTML=6;
+    
     회차별배열[회차].split('_').slice(2,8).forEach(숫자 => {
       if (숫자==1) {좌우수.push(45); 좌우수.push(2);} 
       if (숫자==45) {좌우수.push(44); 좌우수.push(1);} 
@@ -215,9 +105,14 @@ function 당번_회차change설정() {
     })
     좌우수=new Set(좌우수); 좌우수=[...좌우수]
     좌우수.forEach(숫자 => {
-      if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {이웃수.push(숫자)}
+      if (!회차별배열[회차].split('_').slice(2,8).includes(숫자)) {
+          document.querySelector(`${부모id} .공통변수_이웃`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .공통변수_이웃`).innerHTML=Number(document.querySelector(`${개수id} .공통변수_이웃`).innerHTML)+1;
+          document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .공통변수_당번이웃`).innerHTML=Number(document.querySelector(`${개수id} .공통변수_당번이웃`).innerHTML)+1;
+      };
     })
-    이웃당번=(당번.join(',') + ',' + 이웃수.join(',')).split(',');
+
     var 오주당번모음=[], 십주당번모음=[], 십오주당번모음=[],삼십주당번모음=[];
     for (var i=0;i<30; i++) {
       if (i<5) {회차별배열[회차-i].split('_').slice(2,8).forEach( 번호 => {오주당번모음.push(번호)} )}
@@ -231,94 +126,132 @@ function 당번_회차change설정() {
     13 공통변수_30주2출  14 공통변수_30주3출  15 공통변수_30주4출  16 공통변수_30주5출  17 공통변수_30주6출  18 공통변수_30주7출 
     19 공통변수_30주8출  20 공통변수_30주9출  21 공통변수_30주10출  22 공통변수_30주11출  23 공통변수_30주12출
     */
-    var 오주출=[],오주미출=[],오주1출=[],오주2출=[],오주3출=[],십주미출=[],십오주미출=[];
-    var 삼십_00=[],삼십_01=[],삼십_02=[],삼십_03=[],삼십_04=[],삼십_05=[],삼십_06=[],삼십_07=[],삼십_08=[],삼십_09=[],삼십_10=[],삼십_11=[],삼십_12=[];
     for (var i=0; i<45; i++) {
-      var 오주출개수=오주당번모음.filter( 번호 => 번호==(i+1) ).length;
-      if (오주출개수>0) {오주출.push(i+1)}
-      if (오주출개수==0) {오주미출.push(i+1)}
-      if (오주출개수==1) {오주1출.push(i+1)}
-      if (오주출개수==2) {오주2출.push(i+1)}
-      if (오주출개수>2) {오주3출.push(i+1)}
-      if (십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십주미출.push(i+1)}
-      if (십오주당번모음.filter( 번호 => 번호==(i+1)).length==0) {십오주미출.push(i+1)}
+      var 오주출개수=오주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      var 숫자=i+1;
+      if (오주출개수>0) {
+          document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[4]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[4]}`).innerHTML)+1;
+      }
+      if (오주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[5]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[5]}`).innerHTML)+1;
+      }
+      if (오주출개수==1) {
+          document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[6]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[6]}`).innerHTML)+1;
+      }
+      if (오주출개수==2) {
+          document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[7]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[7]}`).innerHTML)+1;
+      }
+      if (오주출개수>2) {
+          document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[8]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[8]}`).innerHTML)+1;
+      }
+      var 십주출개수=십주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      var 십오주출개수=십오주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      if (십주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[9]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[9]}`).innerHTML)+1;
+      }
+      if (십오주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[10]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[10]}`).innerHTML)+1;
+      }
 
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==0) {삼십_00.push(i+1)}
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==1) {삼십_01.push(i+1)}
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==2) {삼십_02.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==3) {삼십_03.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==4) {삼십_04.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==5) {삼십_05.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==6) {삼십_06.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==7) {삼십_07.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==8) {삼십_08.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==9) {삼십_09.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==10) {삼십_10.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==11) {삼십_11.push(i+1)}  
-      if (삼십주당번모음.filter( 번호 => 번호==(i+1)).length==12) {삼십_12.push(i+1)}  
+      var 삼십주출개수=삼십주당번모음.filter( 숫자 => 숫자==(i+1) ).length;
+      if (삼십주출개수==0) {
+          document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[11]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[11]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==1) {
+          document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[12]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[12]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==2) {
+          document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[13]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[13]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==3) {
+          document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[14]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[14]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==4) {
+          document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[15]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[15]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==5) {
+          document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[16]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[16]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==6) {
+          document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[17]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[17]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==7) {
+          document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[18]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[18]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==8) {
+          document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[19]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[19]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==9) {
+          document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[20]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[20]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==10) {
+          document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[21]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[21]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==11) {
+          document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[22]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[22]}`).innerHTML)+1;
+      }
+      if (삼십주출개수==12) {
+          document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML+=숫자 + ',';
+          document.querySelector(`${개수id} .${변수명순서대로[23]}`).innerHTML=Number(document.querySelector(`${개수id} .${변수명순서대로[23]}`).innerHTML)+1;
+      }
     }
-    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.join(',');
-
-    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.join(',');
-    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.join(',');
-
-    //#당번_오주삼십주개수 .
-    부모id='#당번_오주삼십주개수';
-
     변수명순서대로.forEach(변수명 => {
-      document.querySelector(`#당번_오주삼십주개수 .${변수명}`).innerHTML=''; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
-      //forEach안에서는 삼항연산은 쓸수있다. 체이닝은 쓸수없다.
+      var 요소확인=document.querySelector(`${부모id} .${변수명}`);
+      if (요소확인.innerHTML.slice(-1)==','){요소확인.innerHTML=요소확인.innerHTML.slice(0,-1)} //마지막이 쉼표(,)이면 쉼표삭제
     } )
-    document.querySelector(`${부모id} .${변수명순서대로[1]}`).innerHTML=당번.length;
-    document.querySelector(`${부모id} .${변수명순서대로[2]}`).innerHTML=이웃수.length;
-    document.querySelector(`${부모id} .${변수명순서대로[3]}`).innerHTML=이웃당번.length;
-    document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML=오주출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML=오주미출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML=오주1출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML=오주2출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML=오주3출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML=십주미출.length;
-    document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML=십오주미출.length;
-
-    document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML=삼십_00.length;
-    document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML=삼십_01.length;
-    document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML=삼십_02.length;
-    document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML=삼십_03.length;
-    document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML=삼십_04.length;
-    document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML=삼십_05.length;
-    document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML=삼십_06.length;
-    document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML=삼십_07.length;
-    document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML=삼십_08.length;
-    document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML=삼십_09.length;
-    document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML=삼십_10.length;
-    document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML=삼십_11.length;
-    document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML=삼십_12.length;  
 
   }
+  //-------------- 흐름
 
 
 
 
+}
+function gpt() {
+  for (let i = 0; i < 45; i++) {
+  const 숫자 = i + 1;
+
+  const 출현정보 = [
+    { 출개수: 오주당번모음.filter(n => n === 숫자).length, 인덱스: [4, 5, 6, 7, 8], 기준: [v => v > 0, v => v == 0, v => v == 1, v => v == 2, v => v > 2] },
+    { 출개수: 십주당번모음.filter(n => n === 숫자).length, 인덱스: [9], 기준: [v => v == 0] },
+    { 출개수: 십오주당번모음.filter(n => n === 숫자).length, 인덱스: [10], 기준: [v => v == 0] },
+    {
+      출개수: 삼십주당번모음.filter(n => n === 숫자).length,
+      인덱스: Array.from({ length: 13 }, (_, k) => 11 + k), // 11 ~ 23
+      기준: Array.from({ length: 13 }, (_, k) => v => v === k) // 출현개수 0~12까지
+    }
+  ];
+
+  출현정보.forEach(({ 출개수, 인덱스, 기준 }) => {
+    기준.forEach((조건, idx) => {
+      if (조건(출개수)) {
+        const 변수명 = 변수명순서대로[인덱스[idx]];
+        document.querySelector(`${부모id} .${변수명}`).innerHTML += 숫자 + ',';
+        const 개수셀 = document.querySelector(`${개수id} .${변수명}`);
+        개수셀.innerHTML = Number(개수셀.innerHTML) + 1;
+      }
+    });
+  });
+}
 }
 function 회차change설정_보류() {
   if (아이디=='당번플러스') {if (회차>최근회차) {alert('최근회차입니다');return;}}

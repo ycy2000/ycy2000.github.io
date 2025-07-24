@@ -93,11 +93,18 @@
     <!-- 날짜 오른쪽 BUTTON은 값이 있어도 첫번째버튼이 날짜형식이면 js로 바뀜(요일) background-color:chartreuse-->
     <!-- id=달력날짜기준, 1일일때 안바뀌고 달력날짜기준의 날짜를 참고로 달력이 바뀐다. -->
     <!--★★★★★★  class="연두바탕보라글자"  class="보라글자" class="테두리" class="마진탑3"  -->
-    <button id="달력날짜기준" class="d-none">6월1일</button>
+    <button id="달력날짜기준" class="d-none">7월1일</button>
+    <div><button>7월24일</button><button></button>
+      <div class="일별메모모두감싸기">
+        청호관세사무소 977-8585 소세지 검역대상 11kg, 1650개,  단일size 비용문의 <br>
+        노조 : 상하차 256(카톤), 400(case), 3가지이상이면 상하차+128 => (256 * 수량) * 1.2 (20%추가) <br>
+        보관료 : 상하차 200 * 수량, 보관료 파레트당 400, 선별비 없음
+      </div>
+
+    </div>
     <div><button>월일</button><button></button>
       <div class="일별메모모두감싸기"></div>
     </div>
-
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
   <div class="메모div우측" style="position: absolute;left:1250px;width:600px;height:915px;">
@@ -557,9 +564,23 @@
     </div>
   </div>
 </div>
-<div id="탭_메_모관련_wrap용도_none" class="d-none">
-  메모관련
+<div id="탭_메_모관련_wrap용도_none" class="d-none" style="white-space:nowrap;">
+  <!-- onclick ==>  코드_클릭한정보call에 가져와 셑팅-->
+  <div class="d-inline-block 제목" style="margin-right:10px;margin-left:10px;vertical-align: top;">
+    <div>제목 클릭</div>
+    <div>
+      <h6 onclick="메모셑팅(this)" title="#코드_보관료">• 보관료</h6>
+    </div>
+  </div>
+  <div id="코드_call" class="d-inline-block" style="margin-right:10px;vertical-align: top;"></div>
 
+  <div class="d-none"><!-- &#60; < -->
+    <div id="코드_보관료">
+      <h5>보관료</h5>
+      <img src="portal/images/문서연결_리스트/보관료.png" alt="이미지없음">
+    </div>    
+
+  </div>
 </div>
 
 <!-- 부트스트랩.body 맨 마지막에.. -->
