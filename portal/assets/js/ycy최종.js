@@ -188,6 +188,17 @@ function 분석자료_회차change설정() {
       } 
     });
   }
+
+  //#분석자료_표_하_js : 30회 횟수기록 45개(#삼십회횟수기록), 5주간 출횟수 6번, 30회 당번색칠
+  //#분석자료_표_하_js : 30회 횟수기록 45개(#삼십회횟수기록)
+  document.querySelectorAll('#삼십회횟수기록 div').forEach ( (element,index,arrar) => {
+    element.innerHTML=삼십주당번모음.filter( 번호 => 번호==(index+1) ).length;
+  } );
+  //5주간 출횟수 6번 : 삼십주당번모음 slice로?
+
+
+
+
 }
 function 당번_회차change설정() {
   console.log('당번_회차change설정()')
@@ -622,8 +633,6 @@ function 고정html_구조생성() {
       //왼쪽전체.setAttribute('class','d-none'); //숨겨본다
       document.querySelector('#분석자료_표_하_js').appendChild(왼쪽전체)
     }
-
-
     document.querySelector('#분석자료_표_하_js').appendChild(가로한줄) //빈 div 한개 넣어둠, 왼쪽 만들기 건너뜀, css 가져오기위함
     document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
   }
