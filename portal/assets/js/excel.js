@@ -31,8 +31,25 @@ function 개인정리png(e) {
 }
 
 function 연습() {
-  console.log($('.aa'))
-  $('.aa').html( function(index, oldhtml) {console.log(oldhtml)})
+let 배열=[];
+//key부분을 따옴표로 감싸지 않는경우 따옴표가 있는것으로 간주됨.
+let 리터럴1 = { 'a': 1, 'b': 2 };배열.push(리터럴1);
+let 리터럴2 = { 'c': 3, 'b': ['b1','b2','b3'] };배열.push(리터럴2);
+let 리터럴3 = { e:5, b: function () {console.log('리터럴3.b()')} };배열.push(리터럴3);
+console.log(리터럴3.b()); //38행에서 실행되는 것으로 나온다. 동작은 함수 선언된 곳에서 하는듯.
+console.log(리터럴3.b);
+리터럴3.b();
+console.log(배열);
+
+//각배열 또는 (각배열) 로 인수를 전달하면 각배열은 객체리터럴
+for (let 각배열 of 배열) {console.log(각배열);} 
+
+//객체리터럴의 key를 참조하려면 소괄호 {} 안에 넣어야 된다.
+//배열값 자체(객체리터럴) 또는 배열값의 key 선택사항인듯.
+//for문 안에서 key값은 따옴표로 감싸면 안됨, 
+//따라서 리터럴에서 'A C'같은 것을 전달할 수 없다.
+//key가 없는 경우 undefined
+for (let {a,b,c} of 배열) {console.log(a + ', ' + b + ', ' + c)}
 }
 
 
@@ -42,7 +59,7 @@ function 연습() {
 function 특정id편집() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'js_html순환';
+  var 연습제목설정이것만 = 'js_target과currenttarget';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
@@ -66,7 +83,6 @@ function png와text사용확인() {
 
 function 전체대체클릭시(e) {
   console.log('전체대체클릭시(e)');
-
 
   var 캔버스관련자료none안_타겟element;
   var 결과부분 = document.querySelector('#전체대체');
