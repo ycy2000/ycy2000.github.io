@@ -98,6 +98,9 @@ body {white-space: nowrap;}
 .분석:not(.분석덧칠) {background-color:cadetblue;}
 .분석덧칠 {background-color:yellow;}
 
+#분석자료_삼십회표_js > div > div {text-align: center; width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
+#분석자료_삼십회표_js > div > div:nth-of-type(1) {width:35px;}
+
 .코드제목들 > button {border:none;border-bottom:1px solid black; height:30px;display:block;background-color: white;}
 .코드제목들 > button:hover {background-color: cadetblue;}
 .코드제목들 > button[class*="active"] {background-color:aqua;}
