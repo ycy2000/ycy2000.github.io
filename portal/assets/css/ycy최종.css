@@ -79,6 +79,8 @@ body {white-space: nowrap;}
 #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(24), #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(29), 
 #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(34)
 {margin-bottom:0px;}
+
+#분석자료_표_하_js > div:first-child > div {height:24px;margin-right:3px;text-align:right; font-weight:bold;}
 #분석자료_표_하_js  .다섯개씩번갈아색칠 > div, #삼십회횟수기록 > div
 {width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;text-align: center;}
 #분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
@@ -98,8 +100,49 @@ body {white-space: nowrap;}
 .분석:not(.분석덧칠) {background-color:cadetblue;}
 .분석덧칠 {background-color:yellow;}
 
-#분석자료_삼십회표_js > div > div {text-align: center; width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
+#분석자료_삼십회표_js > div:not(:nth-child(1)):not(:nth-child(2)):not(.첫장미):not(.첫출0):not(.첫출1):not(.첫출2):not(.첫출3) {margin-top:-1px;}
+#분석자료_삼십회표_js > div > div {text-align: center; width:24px;height:24px;display:inline-block; border:1px solid gray;margin-right:-1px;vertical-align: top;font-weight: bold;}
 #분석자료_삼십회표_js > div > div:nth-of-type(1) {width:35px;}
+#분석자료_삼십회표_js > div:nth-of-type(1) {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회표_js > div:nth-of-type(2) {background-color:chartreuse;}
+.장미:not(.분석):not(.분석덧칠), .출1:not(.분석):not(.분석덧칠), .출3:not(.분석):not(.분석덧칠), 
+.첫장미:not(.분석):not(.분석덧칠), .첫출1:not(.분석):not(.분석덧칠), .첫출3:not(.분석):not(.분석덧칠) {background-color: rgb(231, 218, 218)}
+
+#분석자료_삼십회23456개수_js > div > div, #분석자료_삼십회당첨개수_js > div > div 
+{text-align: center; width:24px;height:24px;display:inline-block; border:1px solid gray;margin-right:-1px;vertical-align: top;font-weight: bold;}
+#분석자료_삼십회23456개수_js > div > div:first-child {width:45px;}
+#분석자료_삼십회23456개수_js > div {margin-bottom:-1px;}
+#분석자료_삼십회23456개수_js > div:nth-of-type(1), #분석자료_삼십회23456개수_js > div:nth-of-type(6),
+#분석자료_삼십회23456개수_js > div:nth-of-type(11), #분석자료_삼십회23456개수_js > div:nth-of-type(16) {margin-bottom:0px;}
+#분석자료_삼십회23456개수_js > div:first-child {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회23456개수_js > div:nth-of-type(7), #분석자료_삼십회23456개수_js > div:nth-of-type(8), 
+#분석자료_삼십회23456개수_js > div:nth-of-type(9), #분석자료_삼십회23456개수_js > div:nth-of-type(10),
+#분석자료_삼십회23456개수_js > div:nth-of-type(11) {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회23456개수_js > div:nth-of-type(17), #분석자료_삼십회23456개수_js > div:nth-of-type(18), 
+#분석자료_삼십회23456개수_js > div:nth-of-type(19), #분석자료_삼십회23456개수_js > div:nth-of-type(20),
+#분석자료_삼십회23456개수_js > div:nth-of-type(21) {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회23456개수_js > div > div:nth-of-type(5), #분석자료_삼십회23456개수_js > div > div:nth-of-type(6),
+#분석자료_삼십회23456개수_js > div > div:nth-of-type(7),#분석자료_삼십회23456개수_js > div > div:last-child,
+#분석자료_삼십회23456개수_js > div > div:nth-of-type(1) {background-color: bisque;}
+
+#분석자료_삼십회당첨개수_js > div {margin-bottom:-1px;}
+#분석자료_삼십회당첨개수_js > div:nth-of-type(1), #분석자료_삼십회당첨개수_js > div:nth-of-type(6),
+#분석자료_삼십회당첨개수_js > div:nth-of-type(11), #분석자료_삼십회당첨개수_js > div:nth-of-type(16) {margin-bottom:0px;}
+#분석자료_삼십회당첨개수_js > div:first-child {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회당첨개수_js > div:nth-of-type(7), #분석자료_삼십회당첨개수_js > div:nth-of-type(8), 
+#분석자료_삼십회당첨개수_js > div:nth-of-type(9), #분석자료_삼십회당첨개수_js > div:nth-of-type(10),
+#분석자료_삼십회당첨개수_js > div:nth-of-type(11) {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회당첨개수_js > div:nth-of-type(17), #분석자료_삼십회당첨개수_js > div:nth-of-type(18), 
+#분석자료_삼십회당첨개수_js > div:nth-of-type(19), #분석자료_삼십회당첨개수_js > div:nth-of-type(20),
+#분석자료_삼십회당첨개수_js > div:nth-of-type(21) {background-color: rgb(231, 218, 218)}
+#분석자료_삼십회당첨개수_js > div > div:nth-of-type(4), #분석자료_삼십회당첨개수_js > div > div:nth-of-type(5),
+#분석자료_삼십회당첨개수_js > div > div:nth-of-type(6),#분석자료_삼십회당첨개수_js > div > div:last-child
+{background-color: bisque;}
+.메모메모 {border:1px solid black;margin-top:5px;padding:4px;white-space:normal;word-break:break-all;font-weight: bold;font-size: 14px;}
+
+
+
+
 
 .코드제목들 > button {border:none;border-bottom:1px solid black; height:30px;display:block;background-color: white;}
 .코드제목들 > button:hover {background-color: cadetblue;}
