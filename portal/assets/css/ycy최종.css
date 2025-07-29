@@ -1,172 +1,32 @@
 @charset "UTF-8";
-body, pre {font-family: 'Noto Serif KR', serif;}
-header {position:fixed;width:100%;}
-* {vertical-align: top;}
-body {white-space: nowrap;}
-/* .특수 : 특수 클래스가 아닌것으로 css작성, 특수클래스 + 색칠클래스 두개 부여하여 특수한 상황의 css 작성 */
-.분류, .소분류 {display:inline-block;}
-.당번8칸 > div {margin-top:-1px;text-align: center;font-weight: bold;}
-.당번만 > div, .보볼 > div {width:24px; height: 24px; border:1px solid black;display:inline-block;margin-right:-1px;}
-.당번회차 > div {width:50px;height: 24px; border:1px solid black;display:inline-block;}
-.당번회차 {margin-right:-1px;}
-#당번_오주연결버튼 > div > button:nth-of-type(1) {border: 1px solid black;height:25px;width:70px;margin-right:-1px;margin-top:-1px;}
-#당번_오주연결버튼 > div > button:nth-of-type(2) {border: 1px solid black;height:25px;width:35px;margin-top:-1px;}
-#당번_삼십주연결버튼 > div > button:nth-of-type(1) {border: 1px solid black;height:25px;width:40px;margin-right:-1px;margin-top:-1px;}
-#당번_삼십주연결버튼 > div > button:nth-of-type(2) {border: 1px solid black;height:25px;width:35px;margin-top:-1px;}
-#당번_플마클리어버튼 > button {border: 1px solid black;border-radius: 5px;}
+body {font-family: 'Noto Serif KR', serif;}
+body * {vertical-align: top;} button {margin-right:-1px;border:1px solid black;} div {margin-bottom:-1px;}
+/* 부트스트랩:border-1, 마진:m-0에서5, mx(가로),my,mt(위),mb(아래),ml(왼쪽),mr(오른쪽) */
+#이동하기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px; top:100px;left:300px;}
+#이동하기 .active {background-color: cadetblue;}
+.radius5 {border-radius: 5px;}
+.코드제목들 > button {display:block;background-color: white;border:none;border-bottom:1px solid black;}/* button => block, 밑줄만 */
 
-#분석자료_선택회차 > div, #분석자료_다음회차 > div {font-weight: bold;text-align: center; width:26px; height: 26px; border:1px solid black;display:inline-block;margin-right:-1px;margin-top:5px;}
-#분석자료_다음회차 > div:nth-of-type(1) {width:56px;}
-#분석자료_다음회차 > div:nth-of-type(2), #분석자료_선택회차 > div:nth-of-type(1) {width:90px;}
-#분석자료_다음회차 > button {border: 1px solid black;border-radius: 5px;margin-top:5px;}
-
-#분석자료_플마버튼 > button {border: 1px solid black;border-radius: 5px;}
-#분석자료숨김버튼 button {border:1px solid black; border-radius: 5px;}
+/*  */
 
 
-#분석자료숨김버튼 > button, #분석자료_플마버튼 > button {margin-right:-5px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
-#분석자료숨김버튼 > button:nth-of-type(4),#분석자료숨김버튼 > button:nth-of-type(8),#분석자료숨김버튼 > button:nth-of-type(13) {margin-right:0px;}
-.분석버튼숨김 {background-color: darkcyan;}
-
-/* #분석자료 > div:nth-of-type(2) > #분석자료_표_상_js > div => 가로한줄안에, 1st_div는 번호선택↓,출,C, 2st_div는 class다섯개번갈아색칠 안에div45개 */
-#분석자료_표_상_js > div {margin-bottom:-1px;}
-#분석자료_표_상_js > div > div {display: inline-block;}
-#분석자료_표_상_js > .js클릭번호 > div:nth-of-type(1) > div:not(:first-child) {text-align: center;}
-
-#분석자료_표_상_js > div > div:nth-of-type(1) {margin-right:-1px;}/* 좌우 div간격 -1 좁힘 */
-#분석자료_표_상_js > div > div:nth-of-type(1) > div/* 왼쪽(안에3개), 오른쪽(안에45개) div */
-{height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;}
-#분석자료_표_상_js > div > div:nth-of-type(2) > div /* 왼쪽(안에3개), 오른쪽(안에45개) div */
-{width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
-
-#분석자료_표_상_js > div > div:nth-of-type(1) > button {
-  width:31px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;background-color:chartreuse;}
-#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(1) {width:80px;}
-#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(2) {width:30px;}
-#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(3) {width:30px;}
-#분석자료_표_상_js > div > div:nth-of-type(1) > div:nth-of-type(4) {width:30px;margin-right:0px;}
-#분석자료_표_상_js > div:nth-of-type(4), 
-#분석자료_표_상_js > div:nth-of-type(7), 
-#분석자료_표_상_js > div:nth-of-type(11) {margin-bottom:0px;}
-#분석자료_표_상_js > div > div:nth-of-type(2) > div /* 두번째 번호 45개 div부분 */
-{display: inline-block;text-align: center;height:24px;vertical-align: top;}
-#분석자료_표_상_js > div:nth-of-type(1) > div:nth-of-type(2) > div 
-{font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
-
-#분석자료_표_상_js > div > div:nth-of-type(2) .다섯개씩번갈아색칠 > div 
-{width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;}
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+2):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+3):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+4):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+5):not(.분석):not(.분석덧칠) 
-{background-color: bisque;}
-
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-1):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-2):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-3):not(.분석):not(.분석덧칠),
-#분석자료_표_상_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-4):not(.분석):not(.분석덧칠) 
-{background-color:rgb(196, 169, 137);}
-
-/* 분석자료_표_하_js */
-#분석자료_표_하_js > div {display: inline-block;}
-#분석자료_표_하_js > div:first-child {width:166px;} /* 임시조정 */
-#분석자료_표_하_js  .다섯개씩번갈아색칠 {margin-bottom:-1px;}
-#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(1) {margin-bottom:0px;}
-#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(9) {margin-bottom:0px;margin-top:1px;}
-#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(14), #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(19),
-#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(24), #분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(29), 
-#분석자료_표_하_js  .다섯개씩번갈아색칠:nth-of-type(34)
-{margin-bottom:0px;}
-
-#분석자료_표_하_js > div:first-child > div {height:24px;margin-right:3px;text-align:right; font-weight:bold;}
-#분석자료_표_하_js  .다섯개씩번갈아색칠 > div, #삼십회횟수기록 > div
-{width:23px;height:24px;display:inline-block; border:1px solid black;margin-right:-1px;vertical-align: top;font-weight: bold;text-align: center;}
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+2):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+3):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+4):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n+5):not(.분석):not(.분석덧칠) 
-{background-color: bisque;}
-
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-1):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-2):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-3):not(.분석):not(.분석덧칠),
-#분석자료_표_하_js > div:not(:first-child) > .다섯개씩번갈아색칠 div:nth-of-type(10n-4):not(.분석):not(.분석덧칠) 
-{background-color:rgb(196, 169, 137);}
-
-.분석:not(.분석덧칠) {background-color:cadetblue;}
-.분석덧칠 {background-color:yellow;}
-
-#분석자료_삼십회표_js > div:not(:nth-child(1)):not(:nth-child(2)):not(.첫장미):not(.첫출0):not(.첫출1):not(.첫출2):not(.첫출3) {margin-top:-1px;}
-#분석자료_삼십회표_js > div > div {text-align: center; width:24px;height:24px;display:inline-block; border:1px solid gray;margin-right:-1px;vertical-align: top;font-weight: bold;}
-#분석자료_삼십회표_js > div > div:nth-of-type(1) {width:35px;}
-#분석자료_삼십회표_js > div:nth-of-type(1) {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회표_js > div:nth-of-type(2) {background-color:chartreuse;}
-.장미:not(.분석):not(.분석덧칠), .출1:not(.분석):not(.분석덧칠), .출3:not(.분석):not(.분석덧칠), 
-.첫장미:not(.분석):not(.분석덧칠), .첫출1:not(.분석):not(.분석덧칠), .첫출3:not(.분석):not(.분석덧칠) {background-color: rgb(231, 218, 218)}
-
-#분석자료_삼십회23456개수_js > div > div, #분석자료_삼십회당첨개수_js > div > div 
-{text-align: center; width:24px;height:24px;display:inline-block; border:1px solid gray;margin-right:-1px;vertical-align: top;font-weight: bold;}
-#분석자료_삼십회23456개수_js > div > div:first-child {width:45px;}
-#분석자료_삼십회23456개수_js > div {margin-bottom:-1px;}
-#분석자료_삼십회23456개수_js > div:nth-of-type(1), #분석자료_삼십회23456개수_js > div:nth-of-type(6),
-#분석자료_삼십회23456개수_js > div:nth-of-type(11), #분석자료_삼십회23456개수_js > div:nth-of-type(16) {margin-bottom:0px;}
-#분석자료_삼십회23456개수_js > div:first-child {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회23456개수_js > div:nth-of-type(7), #분석자료_삼십회23456개수_js > div:nth-of-type(8), 
-#분석자료_삼십회23456개수_js > div:nth-of-type(9), #분석자료_삼십회23456개수_js > div:nth-of-type(10),
-#분석자료_삼십회23456개수_js > div:nth-of-type(11) {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회23456개수_js > div:nth-of-type(17), #분석자료_삼십회23456개수_js > div:nth-of-type(18), 
-#분석자료_삼십회23456개수_js > div:nth-of-type(19), #분석자료_삼십회23456개수_js > div:nth-of-type(20),
-#분석자료_삼십회23456개수_js > div:nth-of-type(21) {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회23456개수_js > div > div:nth-of-type(5), #분석자료_삼십회23456개수_js > div > div:nth-of-type(6),
-#분석자료_삼십회23456개수_js > div > div:nth-of-type(7),#분석자료_삼십회23456개수_js > div > div:last-child,
-#분석자료_삼십회23456개수_js > div > div:nth-of-type(1) {background-color: bisque;}
-
-#분석자료_삼십회당첨개수_js > div {margin-bottom:-1px;}
-#분석자료_삼십회당첨개수_js > div:nth-of-type(1), #분석자료_삼십회당첨개수_js > div:nth-of-type(6),
-#분석자료_삼십회당첨개수_js > div:nth-of-type(11), #분석자료_삼십회당첨개수_js > div:nth-of-type(16) {margin-bottom:0px;}
-#분석자료_삼십회당첨개수_js > div:first-child {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회당첨개수_js > div:nth-of-type(7), #분석자료_삼십회당첨개수_js > div:nth-of-type(8), 
-#분석자료_삼십회당첨개수_js > div:nth-of-type(9), #분석자료_삼십회당첨개수_js > div:nth-of-type(10),
-#분석자료_삼십회당첨개수_js > div:nth-of-type(11) {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회당첨개수_js > div:nth-of-type(17), #분석자료_삼십회당첨개수_js > div:nth-of-type(18), 
-#분석자료_삼십회당첨개수_js > div:nth-of-type(19), #분석자료_삼십회당첨개수_js > div:nth-of-type(20),
-#분석자료_삼십회당첨개수_js > div:nth-of-type(21) {background-color: rgb(231, 218, 218)}
-#분석자료_삼십회당첨개수_js > div > div:nth-of-type(4), #분석자료_삼십회당첨개수_js > div > div:nth-of-type(5),
-#분석자료_삼십회당첨개수_js > div > div:nth-of-type(6),#분석자료_삼십회당첨개수_js > div > div:last-child
-{background-color: bisque;}
-.메모메모 {border:1px solid black;margin-top:5px;padding:4px;white-space:normal;word-break:break-all;font-weight: bold;font-size: 14px;}
-
-
-
-
-
-.코드제목들 > button {border:none;border-bottom:1px solid black; height:30px;display:block;background-color: white;}
-.코드제목들 > button:hover {background-color: cadetblue;}
-.코드제목들 > button[class*="active"] {background-color:aqua;}
-.코드제목들 > button[class*="active"] {background-color:aqua;}
-#이동할위치div리스트 > div[class*="active"] {background-color:cadetblue;}
-#이동할div리스트 > div[class*="active"] {background-color:cadetblue;}
 
 
 /* 코딩 임시 끝 */
-.번호45색칠[title='1'], .번호45색칠[title='2'], .번호45색칠[title='3'], .번호45색칠[title='4'], .번호45색칠[title='5'],
-.번호45색칠[title='6'], .번호45색칠[title='7'], .번호45색칠[title='8'], .번호45색칠[title='9']
-{background-color: yellow;border-radius: 20px;}
-.번호45색칠[title='10'],.번호45색칠[title='11'], .번호45색칠[title='12'], .번호45색칠[title='13'], .번호45색칠[title='14'], 
-.번호45색칠[title='15'],.번호45색칠[title='16'], .번호45색칠[title='17'], .번호45색칠[title='18'], .번호45색칠[title='19']
-{background-color:cornflowerblue;border-radius: 20px;}
-.번호45색칠[title='20'],.번호45색칠[title='21'], .번호45색칠[title='22'], .번호45색칠[title='23'], .번호45색칠[title='24'], 
-.번호45색칠[title='25'],.번호45색칠[title='26'], .번호45색칠[title='27'], .번호45색칠[title='28'], .번호45색칠[title='29']
-{background-color:red ;border-radius: 20px;}
-.번호45색칠[title='30'],.번호45색칠[title='31'], .번호45색칠[title='32'], .번호45색칠[title='33'], .번호45색칠[title='34'], 
-.번호45색칠[title='35'],.번호45색칠[title='36'], .번호45색칠[title='37'], .번호45색칠[title='38'], .번호45색칠[title='39']
-{background-color:gray;border-radius: 20px;}
-.번호45색칠[title='40'],.번호45색칠[title='41'], .번호45색칠[title='42'], .번호45색칠[title='43'], .번호45색칠[title='44'], 
-.번호45색칠[title='45']
-{background-color:green;border-radius: 20px;}
 .피해서번호흰색 {background-color: white;}
 .피해서번호노랑 {background-color: yellow;}
+.분석[title='1'], .분석[title='2'], .분석[title='3'], .분석[title='4'], .분석[title='5'],
+.분석[title='6'], .분석[title='7'], .분석[title='8'], .분석[title='9']
+{background-color: yellow;border-radius: 20px;}
+.분석[title='10'],.분석[title='11'], .분석[title='12'], .분석[title='13'], .분석[title='14'], 
+.분석[title='15'],.분석[title='16'], .분석[title='17'], .분석[title='18'], .분석[title='19']
+{background-color:cornflowerblue;border-radius: 20px;}
+.분석[title='20'],.분석[title='21'], .분석[title='22'], .분석[title='23'], .분석[title='24'], 
+.분석[title='25'],.분석[title='26'], .분석[title='27'], .분석[title='28'], .분석[title='29']
+{background-color:red ;border-radius: 20px;}
+.분석[title='30'],.분석[title='31'], .분석[title='32'], .분석[title='33'], .분석[title='34'], 
+.분석[title='35'],.분석[title='36'], .분석[title='37'], .분석[title='38'], .분석[title='39']
+{background-color:gray;border-radius: 20px;}
+.분석[title='40'],.분석[title='41'], .분석[title='42'], .분석[title='43'], .분석[title='44'], 
+.분석[title='45']
+{background-color:green;border-radius: 20px;}

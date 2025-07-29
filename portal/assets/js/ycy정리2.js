@@ -10,6 +10,7 @@ var 리스너_분석자료=document.querySelector('#분석자료');
 당번회차중에_분석자료회차있으면_클래스부여();
 check된대로보기숨기기();
 십일에서이십메모따라움직이기초기셑팅();
+check_초기설정();
 function 십일에서이십메모따라움직이기초기셑팅() {
   var 버튼45오른쪽단독top숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.top.replace(/px/g, '')) || 0;
   var 버튼45오른쪽높이추출위한정보가져오기=window.getComputedStyle(document.querySelector('#버튼45오른쪽단독'));
@@ -1863,6 +1864,70 @@ function 리스너_당번오른쪽_click(e) {
     }
   }
 }
+function 색칠하기(e) {
+  var 색칠할번호들=document.querySelector(`#${e}`).innerHTML.split(',');
+  if (색칠할번호들[0]=='') {console.log('색칠할번호들[0]==""; return;');return;}
+  //   색칠 체크 하나씩 확인하고 색칠
+  if (document.querySelector('#삼십회빈도').checked) { //분석자료_삼십회표_js
+    var 색칠할곳가로한줄=document.querySelectorAll('#분석자료_삼십회표_js > div > div');
+      for (var i=2; i<색칠할곳가로한줄.length; i++) {
+        for (var 가로=1; 가로<색칠할곳가로한줄[i].children.length; 가로++) {
+          색칠할곳가로한줄[i].children[가로].classList.remove('js색칠30회표');
+          if (색칠할곳가로한줄[i].children[가로].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳가로한줄[i].children[가로].innerHTML).length!=0) {
+            색칠할곳가로한줄[i].children[가로].classList.add('js색칠30회표')
+          }
+        }
+     }
+  }
+
+  if (document.querySelector('#당번표').checked) {
+    var 색칠할곳div=document.querySelectorAll('#당번_불러온당첨정보 .당번만 > div');
+    for (var i=0; i<색칠할곳div.length; i++) {
+      색칠할곳div[i].classList.remove('번호45색칠');
+      if (색칠할곳div[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳div[i].innerHTML).length!=0) {
+        색칠할곳div[i].classList.add('번호45색칠')
+      }
+    }
+    var 색칠할곳div=document.querySelectorAll('#당번_다음회차 .당번만 > div');
+    for (var i=0; i<색칠할곳div.length; i++) {
+      색칠할곳div[i].classList.remove('번호45색칠');
+      if (색칠할곳div[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳div[i].innerHTML).length!=0) {
+        색칠할곳div[i].classList.add('번호45색칠')
+      }
+    }
+  }
+
+  if (document.querySelector('#사오1ST').checked) {
+    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_1st > div > button');
+    for (var i=0; i<색칠할곳버튼.length; i++) {
+      색칠할곳버튼[i].classList.remove('번호45색칠');
+      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
+        색칠할곳버튼[i].classList.add('번호45색칠')
+      }
+    }
+  }
+
+  if (document.querySelector('#사오2ST').checked) {
+    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_2st > div > button');
+    for (var i=0; i<색칠할곳버튼.length; i++) {
+      색칠할곳버튼[i].classList.remove('번호45색칠');
+      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
+        색칠할곳버튼[i].classList.add('번호45색칠')
+      }
+    }
+  }
+
+  if (document.querySelector('#사오3ST').checked) {
+    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_3st > div > button');
+    for (var i=0; i<색칠할곳버튼.length; i++) {
+      색칠할곳버튼[i].classList.remove('번호45색칠');
+      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
+        색칠할곳버튼[i].classList.add('번호45색칠')
+      }
+    }
+  }
+
+}
 function 버튼45감싸기_click(e) {
   console.log('버튼45감싸기_click(e)')
    십일에서이십메모따라움직이기초기셑팅()
@@ -1999,70 +2064,7 @@ function 셑팅토글(e) {
     document.querySelector('#셑팅2').checked=false;
   }
 }
-function 색칠하기(e) {
-  var 색칠할번호들=document.querySelector(`#${e}`).innerHTML.split(',');
-  if (색칠할번호들[0]=='') {console.log('색칠할번호들[0]==""; return;');return;}
-  //   색칠 체크 하나씩 확인하고 색칠
-  if (document.querySelector('#삼십회빈도').checked) { //분석자료_삼십회표_js
-    var 색칠할곳가로한줄=document.querySelectorAll('#분석자료_삼십회표_js > div > div');
-      for (var i=2; i<색칠할곳가로한줄.length; i++) {
-        for (var 가로=1; 가로<색칠할곳가로한줄[i].children.length; 가로++) {
-          색칠할곳가로한줄[i].children[가로].classList.remove('js색칠30회표');
-          if (색칠할곳가로한줄[i].children[가로].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳가로한줄[i].children[가로].innerHTML).length!=0) {
-            색칠할곳가로한줄[i].children[가로].classList.add('js색칠30회표')
-          }
-        }
-     }
-  }
 
-  if (document.querySelector('#당번표').checked) {
-    var 색칠할곳div=document.querySelectorAll('#당번_불러온당첨정보 .당번만 > div');
-    for (var i=0; i<색칠할곳div.length; i++) {
-      색칠할곳div[i].classList.remove('번호45색칠');
-      if (색칠할곳div[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳div[i].innerHTML).length!=0) {
-        색칠할곳div[i].classList.add('번호45색칠')
-      }
-    }
-    var 색칠할곳div=document.querySelectorAll('#당번_다음회차 .당번만 > div');
-    for (var i=0; i<색칠할곳div.length; i++) {
-      색칠할곳div[i].classList.remove('번호45색칠');
-      if (색칠할곳div[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳div[i].innerHTML).length!=0) {
-        색칠할곳div[i].classList.add('번호45색칠')
-      }
-    }
-  }
-
-  if (document.querySelector('#사오1ST').checked) {
-    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_1st > div > button');
-    for (var i=0; i<색칠할곳버튼.length; i++) {
-      색칠할곳버튼[i].classList.remove('번호45색칠');
-      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
-        색칠할곳버튼[i].classList.add('번호45색칠')
-      }
-    }
-  }
-
-  if (document.querySelector('#사오2ST').checked) {
-    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_2st > div > button');
-    for (var i=0; i<색칠할곳버튼.length; i++) {
-      색칠할곳버튼[i].classList.remove('번호45색칠');
-      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
-        색칠할곳버튼[i].classList.add('번호45색칠')
-      }
-    }
-  }
-
-  if (document.querySelector('#사오3ST').checked) {
-    var 색칠할곳버튼=document.querySelectorAll('#id_버튼45_3st > div > button');
-    for (var i=0; i<색칠할곳버튼.length; i++) {
-      색칠할곳버튼[i].classList.remove('번호45색칠');
-      if (색칠할곳버튼[i].innerHTML!='' && 색칠할번호들.filter(번호 => 번호==색칠할곳버튼[i].innerHTML).length!=0) {
-        색칠할곳버튼[i].classList.add('번호45색칠')
-      }
-    }
-  }
-
-}
 function 선택_id_버튼45(e) {
   document.querySelector('#선택_id_버튼45_1st').classList.remove('js선택_id_버튼45');
   document.querySelector('#선택_id_버튼45_2st').classList.remove('js선택_id_버튼45');
@@ -2083,6 +2085,38 @@ function 리스너_바디_click(e) {
     console.log('리스너_바디_click(e) : 앞요소값clear 클래스 있을때')
     e.target.previousElementSibling.innerHTML='';
   }
+  if (['이동할div리스트','이동할위치div리스트'].includes(e.target.parentElement.id)) { //이동 클릭 관련
+     e.target.classList.contains('active') ? 
+     e.target.classList.remove('active') : 
+     (e.target.parentElement.querySelector('.active')?.classList.remove('active'), e.target.classList.add('active'));
+  }  
+}
+function 이동하기() {
+  const $from = $('#이동할div리스트 .active'), $to = $('#이동할위치div리스트 .active');
+  if (!$from.length || !$to.length) return alert('둘다선택되어야함');
+  if ($from.text() === $to.text()) return alert('둘은달라야함');
+  const f = $from.text(), t = $to.text(), dir = $('#앞에').prop('checked') ? 'Before' : 'After';
+  console.log(`이동하기 : ${f} => ${t}, ${dir === 'Before' ? '앞에' : '뒤에'}`);
+  $('#' + f)[`insert${dir}`]('#' + t);
+}
+function 이동클릭관련(e) {
+  e.classList.contains('active') ? e.classList.remove('active') :
+    (e.parentElement.querySelector('.active')?.classList.remove('active'), e.classList.add('active'));
+}
+function check_초기설정() {
+  $('.check클래스').each(function() {
+    $(this).next('label').attr('for', this.id);
+    this.checked && $('#' + this.id.slice(6)).removeClass('d-none');
+  });
+  //const html = $('.분류').map((_, el) => `<div onclick="이동클릭관련(this)">${el.id}</div>`).get().join('');
+  const html = $('.분류').map((_, el) => `<div>${el.id}</div>`).get().join('');
+  $('#이동할위치div리스트, #이동할div리스트').html(html);
+}
+function 코드셑팅(e) {
+  const $e = $(e);
+  if ($e.toggleClass('active').hasClass('active'))
+    $('#코드_클릭한정보call').html($($e.attr('title')).html());
+  else $('#코드_클릭한정보call').html('');
 }
 var 버튼45감싸기=document.querySelector('#버튼45감싸기');
   function mousedownOrTouchstart(e) {

@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <div id="변수" class="d-none">
@@ -210,17 +211,15 @@
     </div>
   </div>
 </div>
+<!--  -->
+<div id="십일에서이십메모따라움직이기" style="position: absolute;background-color: white;">
+  <div style="width:1178px;margin-top:-1px;font-weight: bold;border:1px solid black;margin:5px;" onclick="십일에서20메모있으면셑팅()">
+    11에서20,있으면셑팅(클릭) 한줄구분은 _ , (제목,번호,번호,...번호)204코드, 아래 1,2,3은 메모 clear : 아래는 드래그 되도록 코딩할것
+  </div>
+  <div style="width:1178px;margin-top:-1px;font-weight: bold;border:1px solid black;margin:5px;" id="십일에서이십메모"  contenteditable spellcheck="false">
 
-    <!--  -->
-    <div id="십일에서이십메모따라움직이기" style="position: absolute;background-color: white;">
-      <div style="width:1178px;margin-top:-1px;font-weight: bold;border:1px solid black;margin:5px;" onclick="십일에서20메모있으면셑팅()">
-        11에서20,있으면셑팅(클릭) 한줄구분은 _ , (제목,번호,번호,...번호)204코드, 아래 1,2,3은 메모 clear : 아래는 드래그 되도록 코딩할것
-      </div>
-      <div style="width:1178px;margin-top:-1px;font-weight: bold;border:1px solid black;margin:5px;" id="십일에서이십메모"  contenteditable spellcheck="false">
-
-      </div>
-    </div>
-
+  </div>
+</div>
 <div id="버튼45감싸기" style="position: absolute;top:50px;left:275px;">
   <div id="버튼45왼쪽" class="d-inline-block" style="vertical-align: top;">
     <div id="id_버튼45_check">
@@ -275,6 +274,35 @@
   </div>
 </div>
 <div id="머리글" style="height:30px;margin:10px;border-bottom:1px solid black;">
+  <button id="이동" style="border:1px solid black; border-radius: 5px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button>
+  <div id="이동하기" style="position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px; top:300px;left:300px;" class="d-none">
+    <div style="margin-bottom:5px;">
+      <button onclick="document.querySelector('#이동하기').classList.add('d-none')" style="border:1px solid black; border-radius: 5px;">닫기</button>
+      <div class="form-check d-inline-block">
+        <input class="form-check-input" type="radio" name="radioDefault" id="앞에" checked>
+        <label class="form-check-label" for="앞에">앞에</label>
+      </div>
+      <div class="form-check d-inline-block">
+        <input class="form-check-input" type="radio" name="radioDefault" id="뒤에">
+        <label class="form-check-label" for="뒤에">뒤에</label>
+      </div>
+      <button onclick="이동하기()" style="border:1px solid black; border-radius: 5px;">이동하기</button>
+    </div>
+
+    <div class="d-inline-block" style="margin-right:10px;">
+      <div style="border:1px solid black;margin-bottom:5px;">이동할div_id</div>
+      <div id="이동할div리스트" style="border:1px solid black">
+
+      </div>
+    </div>
+    <div class="d-inline-block">
+      <div style="border:1px solid black;margin-bottom:5px;">이동할위치div_id</div>
+      <div id="이동할위치div리스트" style="border:1px solid black">
+
+      </div>
+    </div>    
+
+  </div>  
   <div class="form-check d-inline-block" onchange="체크this활용(this);">
     <input class="form-check-input check클래스" type="checkbox" value="" checked id="check_당번" title="당번">
     <label class="form-check-label" for="check_당번">당번 및 간격</label>
@@ -312,7 +340,26 @@
   <span>현재누적번호 : </span><span id="현재번호"></span>
 </div>
 <div id="당번가공" class="d-none"></div>
-<div id="당번" class="카테고리">
+<div id="코드" class="카테고리 분류 d-none">
+  <!-- onclick ==>  코드_클릭한정보call에 가져와 셑팅-->
+  <div class="d-inline-block" style="margin-right:10px;">
+    <div>제목 클릭</div>
+    <div class="코드제목들">
+      <button onclick="코드셑팅(this)" title="#코드_체크this활용설명">• check_초기설정(), 체크this활용(e), 회차select옵션생성()</button>
+    </div>
+  </div>
+  <div id="코드_클릭한정보call" class="d-inline-block"></div>
+  <div class="d-none"><!-- &#60; < -->
+    <div id="코드_체크this활용설명">
+      <h5>function check_초기설정()</h5>
+      <h6 style="text-indent: 15px;">• 클래스 : 분류, 소분류 는 d-inline-block을 부여하기 위함이고, 가독성을 위해 부여하였다</h6>
+      <h6 style="text-indent: 15px;">• 화면에 보이는 div들은 모두 d-none 으로 숨겨져 있고</h6>
+      <h6 style="text-indent: 25px;">초기화시 : '.check클래스'를 순환하면서 checked인 경우 id를 추출하여 d-none 제거하게 된다.</h6>
+    </div>    
+
+  </div>
+</div>
+<div id="당번" class="카테고리 분류 d-none">
   <div class="d-inline-block">
     <div id="당번_다음회차"></div>
     <select id="당번_회차select" class="d-inline-block" onchange="당번_회차select_change();" style="margin:5px 0"></select>
@@ -481,7 +528,7 @@
   </div>
 
 </div>
-<div id="분석자료" class="카테고리">
+<div id="분석자료" class="카테고리 분류 d-none">
   <div id="분석자료_삼십회표" class="d-inline-block" style="vertical-align: top;">
     <div class="d-inline-block">30회 출현 빈도 (횟수에 기능)</div><br>
     <div id="분석자료_삼십회표_js">
@@ -538,32 +585,16 @@
     <div id="분석자료_표_하_js"></div>
   </div>
 </div>
-<div id="사진" class="카테고리">
+<div id="사진" class="카테고리 분류 d-none">
   <img src="portal/images/문서연결_kim/사진.png" alt="이미지없음">
 </div>
-<div id="사진2" class="카테고리">
+<div id="사진2" class="카테고리 분류 d-none">
   <img src="portal/images/black_문서/임시사진_분석자료.png" alt="이미지없음"><br>
   <img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음"><br>
   <img src="portal/images/black_문서/임시사진_분석자료3.png" alt="이미지없음">
 </div>
 
-<div id="코드" class="카테고리">
-  <!-- 왼쪽 제목, 오른쪽은 제목클릭하면 보여지는 것. 하나만 보이도록 코딩 -->
-  <div style="display:inline-block">
-    <div>제목 클릭</div>
-    <div title="코드_html구조">html 구조</div>
 
-
-  </div>
-  <div>
-    <div id="코드_html구조">
-      <h6></h6>
-
-    </div>
-
-  </div>
-
-</div>
 
 <div id="당번숨김" class="d-none">
   <div>

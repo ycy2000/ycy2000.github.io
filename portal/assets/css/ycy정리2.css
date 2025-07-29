@@ -1,5 +1,6 @@
 @charset "UTF-8";
 body, pre {font-family: 'Noto Serif KR', serif;}
+body * {vertical-align: top;}
 header {position:fixed;width:100%;}
 #whole > div {vertical-align: top;}
 
@@ -261,6 +262,13 @@ body {white-space: nowrap;}
 .js끝수버튼 {background-color: chocolate;}
 
 .js숨김 {background-color: chocolate;}
+
+.코드제목들 > button {border:none;border-bottom:1px solid black; height:30px;display:block;background-color: white;}
+.코드제목들 > button:hover {background-color: cadetblue;}
+.코드제목들 > button[class*="active"] {background-color:aqua;}
+.코드제목들 > button[class*="active"] {background-color:aqua;}
+#이동할위치div리스트 > div[class*="active"] {background-color:cadetblue;}
+#이동할div리스트 > div[class*="active"] {background-color:cadetblue;}
 
 
 /* 코딩 임시 끝 */
