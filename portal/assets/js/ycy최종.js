@@ -59,7 +59,7 @@ function 분석자료_삼십회표_js작성() {
 
   //가로한줄 만들어둠. outerHTML로 넣을것이다. 개수, 횟수 기본으로 넣어둔다.
   var 가로한줄=document.createElement('div'); //존재하는 요소에 들어가야 보인다
-  for (var i=0; i<출수최대값+2; i++) {var 내부div=document.createElement('div');가로한줄.appendChild(내부div);}
+  for (var i=0; i<출수최대값+2; i++) {var 내부div=document.createElement('button');가로한줄.appendChild(내부div);}
   document.querySelector('#분석자료_삼십회표_js').innerHTML+=가로한줄.outerHTML;
   document.querySelectorAll('#분석자료_삼십회표_js > div')[0].children[0].innerHTML='개수';
   for (var i=0; i<출수최대값+1; i++) {document.querySelectorAll('#분석자료_삼십회표_js > div')[0].children[i+1].innerHTML=0}
@@ -108,7 +108,7 @@ function 분석자료_삼십회빈도와개수_js작성() {
   document.querySelector('#분석자료_삼십회23456개수_js').innerHTML='';
   document.querySelector('#분석자료_삼십회당첨개수_js').innerHTML='';
   var 서식한줄복사본=document.querySelectorAll('#분석자료_삼십회표_js > div')[0].cloneNode(true);
-  var div=document.createElement('div');
+  var div=document.createElement('button');
   서식한줄복사본.appendChild(div);
   for (var i=0; i<서식한줄복사본.children.length; i++) {서식한줄복사본.children[i].innerHTML=0;}
   for (var i=0; i<21; i++) {document.querySelector('#분석자료_삼십회23456개수_js').innerHTML+=서식한줄복사본.outerHTML}
@@ -157,15 +157,15 @@ function 분석자료_회차change설정() {
     //다음회차 위치
     if (회차별배열[Number(회차)+1]) {
         for (var i=0; i<9; i++) {
-          document.querySelectorAll('#분석자료_다음회차 > div')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i]; 
+          document.querySelectorAll('#분석자료_다음회차 > button')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i]; 
         }
       } else {
         for (var i=0; i<9; i++) {//회차부터 9종
-         document.querySelectorAll('#분석자료_다음회차 > div')[i].innerHTML='_';
+         document.querySelectorAll('#분석자료_다음회차 > button')[i].innerHTML='_';
         }
     }
       for (var i=1; i<9; i++) {//날짜부터 번호 8종
-        document.querySelectorAll('#분석자료_선택회차 > div')[i-1].innerHTML=회차별배열[Number(회차)].split('_')[i];
+        document.querySelectorAll('#분석자료_선택회차 > button')[i-1].innerHTML=회차별배열[Number(회차)].split('_')[i];
       }
   }
   if (1==1) { //#당번_오주삼십주개수 작성 및 변수에 값 넣기, //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
@@ -321,7 +321,7 @@ function 분석자료_회차change설정() {
 
   //#분석자료_표_하_js : 30회 횟수기록 45개(#삼십회횟수기록), 5주간 출횟수 6번, 30회 당번색칠
   //#분석자료_표_하_js : 30회 횟수기록 45개(#삼십회횟수기록)
-  document.querySelectorAll('#삼십회횟수기록 div').forEach ( (element,index,arrar) => {
+  document.querySelectorAll('#삼십회횟수기록 button').forEach ( (element,index,arrar) => {
     element.innerHTML=삼십주당번모음.filter( 번호 => 번호==(index+1) ).length;
   } );
   //5주간 출횟수 6번 : 삼십주당번모음 slice로?
@@ -364,19 +364,19 @@ function 당번_회차change설정() {
     //다음회차 위치
     if (회차별배열[Number(회차)+1]) {
       for (var i=0; i<8; i++) {
-        if (i==0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i]} 
-        if (i>0) {document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i+1]} 
+        if (i==0) {document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i]} 
+        if (i>0) {document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML=회차별배열[Number(회차)+1].split('_')[i+1]} 
       }
     } else {
       for (var i=0; i<8; i++) {
-        document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML='_';
+        document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML='_';
       }
     }
     //30회분 번호
     for (var 삼십번=0; 삼십번<30; 삼십번++) {
       for (var i=0; i<8; i++) {
-        if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[Number(회차)-삼십번].split('_')[i]} 
-        if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > div > div')[i].innerHTML=회차별배열[Number(회차)-삼십번].split('_')[i+1]} 
+        if (i==0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > span > button')[i].innerHTML=회차별배열[Number(회차)-삼십번].split('_')[i]} 
+        if (i>0) {document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번+1) + ') > span > button')[i].innerHTML=회차별배열[Number(회차)-삼십번].split('_')[i+1]} 
       }
     } 
   }
@@ -673,9 +673,9 @@ function 회차change설정_보류() {
 }
 
 function 고정html_구조생성() {
-  const 당번한줄html=`<div><div class="당번회차 d-inline-block"><div></div></div><div 
-  class="당번만 d-inline-block"><div></div><div></div><div></div><div></div><div></div><div></div></div><div 
-  class="보볼 d-inline-block"><div></div></div></div>`
+  const 당번한줄html=`<div><span class="당번회차 d-inline-block"><button></button></span><span 
+  class="당번만 d-inline-block"><button></button><button></button><button></button><button></button><button></button><button></button></span><span 
+  class="보볼 d-inline-block"><button></button></span></div>`
   document.querySelector('#당번_다음회차').innerHTML=당번한줄html;
   for (var i=0; i<30; i++) {
   document.querySelector('#당번_불러온당첨정보').innerHTML+=당번한줄html;
@@ -684,19 +684,20 @@ function 고정html_구조생성() {
   if ('분석자료_표_상_js'=='분석자료_표_상_js') {
     for (var 외부=0; 외부<20; 외부++) { //처음 20칸
       var 가로한줄=document.createElement('div');
-      var 번호선택_추출_c=document.createElement('div');
+      var 번호선택_추출_c=document.createElement('span');
       var 번호선택배열=['번호선택','당번','이웃수','당번+이웃','15주미출','10주미출','5주0출','5주출','5주1출','5주2출','5주3출']
       for (var i=0; i<4; i++) {
-        var div요소=document.createElement('div'); // div 요소 변수에 담는다.
-        if (i==0) {div요소.textContent=번호선택배열[외부]}
+        var div요소=document.createElement('span'); // div 요소 변수에 담는다.
+        if (i==0) {div요소.textContent=번호선택배열[외부]; div요소.setAttribute('style','width:75px;height:24px; border:1px solid black;display:inline-block;margin-right:-1px;')}
         if (i==1 && 외부==0) {div요소.textContent='수'}
+        if (i==1) {div요소.setAttribute('style','width:30px; border:1px solid black;display:inline-block;margin-right:-1px;text-align:center;height:24px;')}
 
         if (i==2) {div요소=document.createElement('button');}
         if (i==2 && 외부==0) {div요소.textContent='출'}
         if (i==2 && 외부!=0) {div요소.setAttribute('class','카운팅')}      //녹색부분에 카운팅 클래스 넣기
 
-        if (i==3 && 외부==0) {div요소.textContent='C'}
-        if (i==3 && 외부!=0) {div요소.setAttribute('class','앞요소값clear')}
+        if (i==3 && 외부==0) {div요소=document.createElement('button');div요소.textContent='C'}
+        if (i==3 && 외부!=0) {div요소=document.createElement('button');div요소.setAttribute('class','앞요소값clear')}
 
         if (i==3 && 외부!=0) {div요소.textContent=외부}
         //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
@@ -707,12 +708,12 @@ function 고정html_구조생성() {
         }
         번호선택_추출_c.appendChild(div요소);
       }
-      var 번호45=document.createElement('div');
+      var 번호45=document.createElement('span');
       //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
       번호45.setAttribute('class','다섯개씩번갈아색칠');
 
       for (var i=1; i<46; i++) {
-        var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
+        var div요소=document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
         번호45.appendChild(div요소);
       }
       가로한줄.appendChild(번호선택_추출_c);
@@ -739,14 +740,15 @@ function 고정html_구조생성() {
     //왼쪽과 오른쪽 구분하여 작성
     if ('오른쪽'=='오른쪽') {
       var 오른쪽45=document.createElement('div');
+      오른쪽45.setAttribute('class','d-inline-block');
       for (var 외부=0; 외부<39; 외부++) {
         var 가로한줄=document.createElement('div');
-        var 번호선택_추출_c=document.createElement('div');
+        var 번호선택_추출_c=document.createElement('span');
         var 번호45=document.createElement('div');
         if (외부!=1) {번호45.setAttribute('class','다섯개씩번갈아색칠')}
         if (외부==1) {번호45.setAttribute('id','삼십회횟수기록')}
         for (var i=1; i<46; i++) {
-          var div요소=document.createElement('div'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
+          var div요소=document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
           if (외부==0 || 외부==8) {div요소.innerText=i}
           번호45.appendChild(div요소);
         }
@@ -756,23 +758,22 @@ function 고정html_구조생성() {
 
     if ('왼쪽'=='왼쪽') {
       var 왼쪽몇칸=document.createElement('div');
-      for (var 외부=0; 외부<39; 외부++) {
-        var 가로한줄=document.createElement('div');
-        var 번호선택_추출_c=document.createElement('div');
-        var 번호45=document.createElement('div');
-        if (외부==1) {
-          번호45.innerText='30주 출현 빈도';
-          //번호45.setAttribute('style','text-align:right; font-weight:bold;')
-        }
-        왼쪽몇칸.appendChild(번호45);
-      }
+      왼쪽몇칸.setAttribute('class','d-inline-block');
+      왼쪽몇칸.setAttribute('style','margin-right:-1px;');
+      var 번호45=document.createElement('div');
+      왼쪽몇칸.appendChild(번호45);
+      번호45.setAttribute('style','border:none;border-top:1px solid black;background-color:white; text-align:right;width:150px;height:24px;')
+      var 번호45=document.createElement('div');
+      번호45.setAttribute('style','border:none;background-color:white; text-align:right;width:150px;padding-right:5px;')
+      번호45.innerText='30주 출현 빈도';
+      왼쪽몇칸.appendChild(번호45);
     }
     document.querySelector('#분석자료_표_하_js').appendChild(왼쪽몇칸) //빈 div 한개 넣어둠, 왼쪽 만들기 건너뜀, css 가져오기위함
     document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
   }
   //색칠하기의 45칸 div 6번넣기
   var 색칠관련=document.querySelectorAll('.설명_가로한줄'); //두번째자식
-  var div45개=''; for (var i=0; i<45; i++) {div45개+='<div></div>'}
+  var div45개=''; for (var i=0; i<45; i++) {div45개+='<button></button>'}
   for (var i=0; i<색칠관련.length; i++) {색칠관련[i].children[1].innerHTML=div45개}
   for (var i=1; i<46; i++) {색칠관련[5].children[1].children[i-1].innerHTML=i}
 }

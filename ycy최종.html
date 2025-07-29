@@ -15,11 +15,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body style="margin-left:5px;">
-<div id="머리글" style="height:30px;margin:10px;border-bottom:1px solid black;">
-  <button id="이동" class="radius5" style="margin-right:5px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button>
+<div id="머리글" style="display:block;height:30px;margin:10px;border-bottom:1px solid black;">
+  <button id="이동" class="radius5" style="margin-right:5px;width:45px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button>
   <div id="이동하기" class="지정 d-none">
     <div style="margin-bottom:5px;">
-      <button onclick="document.querySelector('#이동하기').classList.add('d-none')" class="radius5">닫기</button>
+      <button onclick="document.querySelector('#이동하기').classList.add('d-none')" class="radius5" style="width:45px;">닫기</button>
       <span>
         <input class="form-check-input" type="radio" name="radioDefault" id="앞에" checked>
         <label class="form-check-label" for="앞에">앞에</label>
@@ -28,7 +28,7 @@
         <input class="form-check-input" type="radio" name="radioDefault" id="뒤에">
         <label class="form-check-label" for="뒤에">뒤에</label>
       </span>
-      <button onclick="이동하기()" class="radius5">이동하기</button>
+      <button onclick="이동하기()" class="radius5" style="width:80px;">이동하기</button>
     </div>
     <span style="width:150px;display:inline-block">
       <div style="border:1px solid black;">이동할div_id</div>
@@ -56,20 +56,20 @@
     <label class="form-check-label">코드</label>
   </span>
   <span onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45오른쪽단독" checked>
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45오른쪽단독">
     <label class="form-check-label">색칠</label>
   </span>  
-  <button onclick="연습()">연습</button>
+  <button onclick="연습()" style="width:45px;">연습</button>
   <span>현재누적번호 : </span><span id="현재번호">[분석:30회3출]+[숫자:2,3,4,5,6]</span>
 </div>
 <div id="버튼45오른쪽단독"  class="d-none" style="position: absolute;top:600px;left:523px;">
   <div class="설명_첫번째div">
-    <div class="설명_가로한줄"><div class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><div>keep</div></div><div class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_keep"></div></div>
-    <div class="설명_가로한줄"><div class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅1번호들')">색칠</button><div>셑팅1</div></div><div class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅1_번호들"></div></div>
-    <div class="설명_가로한줄"><div class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅2번호들')">색칠</button><div>셑팅2</div></div><div class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅2_번호들"></div></div>
-    <div class="설명_가로한줄"><div class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅3번호들')">색칠</button><div>셑팅3</div></div><div class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅3_번호들"></div></div>
-    <div class="설명_가로한줄"><div class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('클릭번호들')">색칠</button><div>클릭번호들</div></div><div class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_클릭번호들"></div></div>
-    <div class="설명_가로한줄"><div class="설명_왼쪽div_버튼5개"><button onclick="킵_보기숨기기(this)">1</button><button onclick="킵_보기숨기기(this)">2</button><button onclick="킵_보기숨기기(this)">3</button><button onclick="킵_보기숨기기(this)">4</button><button onclick="킵_보기숨기기(this)">5</button><div>순번</div></div><div class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_순번"></div></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><span>keep</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_keep"></span></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅1번호들')">색칠</button><span>셑팅1</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅1_번호들"></span></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅2번호들')">색칠</button><span>셑팅2</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅2_번호들"></span></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅3번호들')">색칠</button><span>셑팅3</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅3_번호들"></span></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('클릭번호들')">색칠</button><span>클릭번호들</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_클릭번호들"></span></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div_버튼5개"><button onclick="킵_보기숨기기(this)">1</button><button onclick="킵_보기숨기기(this)">2</button><button onclick="킵_보기숨기기(this)">3</button><button onclick="킵_보기숨기기(this)">4</button><button onclick="킵_보기숨기기(this)">5</button><button>순번</button></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_순번"></span></div>
   </div>
   <div class="설명_두번째div"  style="border:1px solid black;font-weight: bold;">
     <div class="왼쪽 d-inline-block" style="margin-top:5px;">
@@ -156,13 +156,11 @@
 </div>
 <div id="코드" class="이동리스트 숨김리스트 d-none">
   <!-- onclick ==>  코드_클릭한정보call에 가져와 셑팅-->
-  <div class="d-inline-block" style="margin-right:10px;">
+  <div class="코드제목들 d-inline-block" style="margin-right:10px;">
     <div>제목 클릭</div>
-    <div class="코드제목들">
-      <button onclick="코드셑팅(this)" title="#코드_체크this활용설명">• check_초기설정(), 체크this활용(e), 회차select옵션생성()</button>
-      <button onclick="코드셑팅(this)" title="#코드_css관련1">• css관련</button>
-      <button onclick="코드셑팅(this)" title="#코드_코드메모1">• 코드메모1</button>
-    </div>
+    <div onclick="코드셑팅(this)" title="#코드_체크this활용설명">• check_초기설정(), 체크this활용(e), 회차select옵션생성()</div>
+    <div onclick="코드셑팅(this)" title="#코드_css관련1">• css관련</div>
+    <div onclick="코드셑팅(this)" title="#코드_코드메모1">• 코드메모1</div>
   </div>
   <div id="코드_클릭한정보call" class="d-inline-block"></div>
   <div class="d-none"><!-- &#60; < -->
@@ -197,7 +195,7 @@
   </div>
 </div>
 <div id="당번과흐름" class="이동리스트 숨김리스트 d-none">
-  <div id="당번전체" class="숨김리스트">
+  <div id="당번전체" class="숨김리스트 d-inline-block">
     <div id="당번_다음회차" class="당번8칸">
     </div>
     <select id="당번_회차select" class="d-inline-block" onchange="회차=this.value;당번_회차change설정();" style="margin:5px 0"></select>
@@ -210,8 +208,8 @@
     </div>
     <div id="당번_불러온당첨정보" class="당번8칸"></div>
   </div>
-  <div id="당번_오주삼십주개수" class="숨김리스트">
-    <div class="소분류" id="당번_오주연결버튼">
+  <div id="당번_오주삼십주개수" class="숨김리스트 d-inline-block">
+    <span class="소분류 d-inline-block" id="당번_오주연결버튼">
       <div>5주 관련</div>
       <div class="d-none"><button>변수짝맞춤으로임시로넣음</button><button class="공통변수_다음당번"></button></div>
       <div><button>당번</button><button class="공통변수_당번"></button></div>
@@ -224,8 +222,8 @@
       <div><button>5주3출</button><button class="공통변수_5주3출"></button></div>
       <div><button>10주0출</button><button class="공통변수_10주0출"></button></div>
       <div><button>15주0출</button><button class="공통변수_15주0출"></button></div>
-    </div>
-    <div class="소분류" id="당번_삼십주연결버튼">
+    </span>
+    <span class="소분류 d-inline-block" id="당번_삼십주연결버튼">
       <div>30주 관련</div>
       <div><button>0</button><button class="공통변수_30주0출"></button></div>
       <div><button>1</button><button class="공통변수_30주1출"></button></div>
@@ -240,7 +238,7 @@
       <div><button>10</button><button class="공통변수_30주10출"></button></div>
       <div><button>11</button><button class="공통변수_30주11출"></button></div>
       <div><button>12</button><button class="공통변수_30주12출"></button></div>
-    </div>
+    </span>
     <div title="줄바꿈용"></div>
     <div id="흐름들보기숨기기">
       <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
@@ -289,23 +287,23 @@
       </div>                                   
     </div>
   </div>
-  <div id="흐름전체" class="d-none 숨김리스트">
-    <div id="흐름_이월" class="숨김리스트 d-none">흐름_이월</div>
-    <div id="흐름_이웃수" class="숨김리스트 d-none">흐름_이웃수</div>
-    <div id="흐름_이웃수full" class="숨김리스트 d-none">흐름_이웃수full</div>
-    <div id="흐름_삼이일" class="숨김리스트 d-none">흐름_삼이일</div>
-    <div id="흐름_연번" class="숨김리스트 d-none">흐름_연번</div>
-    <div id="흐름_홀짝" class="숨김리스트 d-none">흐름_홀짝</div>
-    <div id="흐름_간격" class="숨김리스트 d-none">흐름_간격</div>
-    <div id="흐름_간격당당첨개수" class="숨김리스트 d-none">흐름_간격당당첨개수</div>
-    <div id="흐름_간격내림차순" class="숨김리스트 d-none">흐름_간격내림차순</div>
-    <div id="흐름_간격내림차순당첨개수" class="숨김리스트 d-none">흐름_간격내림차순당첨개수</div>
+  <div id="흐름전체" class="d-none 숨김리스트 d-inline-block">
+    <span id="흐름_이월" class="숨김리스트 d-none">흐름_이월</span>
+    <span id="흐름_이웃수" class="숨김리스트 d-none">흐름_이웃수</span>
+    <span id="흐름_이웃수full" class="숨김리스트 d-none">흐름_이웃수full</span>
+    <span id="흐름_삼이일" class="숨김리스트 d-none">흐름_삼이일</span>
+    <span id="흐름_연번" class="숨김리스트 d-none">흐름_연번</span>
+    <span id="흐름_홀짝" class="숨김리스트 d-none">흐름_홀짝</span>
+    <span id="흐름_간격" class="숨김리스트 d-none">흐름_간격</span>
+    <span id="흐름_간격당당첨개수" class="숨김리스트 d-none">흐름_간격당당첨개수</span>
+    <span id="흐름_간격내림차순" class="숨김리스트 d-none">흐름_간격내림차순</span>
+    <span id="흐름_간격내림차순당첨개수" class="숨김리스트 d-none">흐름_간격내림차순당첨개수</span>
   </div>
 </div>
 
 
 <div id="분석자료30빈도전체" class="이동리스트 숨김리스트 d-none">
-  <div id="분석자료_삼십회표" class="숨김리스트">
+  <div id="분석자료_삼십회표" class="숨김리스트 d-inline-block">
     <div class="d-inline-block">30회 출현 빈도 (횟수에 기능)</div><br>
     <div id="분석자료_삼십회표_js">
       
@@ -323,7 +321,7 @@
     </div>    
   </div>
 
-  <div id="삼십빈도개수" class="d-none 숨김리스트">
+  <div id="삼십빈도개수" class="d-none 숨김리스트 d-inline-block">
     <div class="d-inline-block">30회 숫자 개수</div><br>
     <div id="분석자료_삼십회23456개수_js">
       
@@ -332,7 +330,7 @@
     <br><br><br><br><br><br>
     </div>
   </div>
-  <div id="삼십빈도당첨" class="d-none 숨김리스트">
+  <div id="삼십빈도당첨" class="d-none 숨김리스트 d-inline-block">
     <div class="d-inline-block" title="이전회차 30히 출현 빈도표에서의 결과">다음회차 있을때 당번출현 개수</div><br>
     <div id="분석자료_삼십회당첨개수_js">
       
@@ -343,22 +341,20 @@
   </div>
 
 </div>
-<div id="분석자료45칸" class="이동리스트 숨김리스트 d-none"  style="margin-bottom:300px;">
-  <div id="분석자료_다음회차"><div style="margin-right:5px;"></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-    <button>5주출6번</button> <button>30주간당번</button> <button>30주간출횟수</button>
+<div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;">
+  <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
+    <button style="width:80px;">5주출6번</button> <button style="width:90px;">30주간당번</button> <button style="width:100px;">30주간출횟수</button>
   </div>
   <select id="분석자료_회차select" class="d-inline-block" onchange="회차=this.value;분석자료_회차change설정();" style="margin:5px 0"></select>
-  <div id="분석자료_선택회차" class="d-inline-block"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div id="분석자료_선택회차" class="d-inline-block" style="margin-top:5px;"><button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
   <div id="분석자료_플마버튼" class="d-inline-block" style="margin-top:5px;">
-    <button id="분석플러스" onclick="회차=Number(회차)+1;분석자료_회차change설정();">+</button> <button id="분석마이너스" onclick="회차=Number(회차)-1;분석자료_회차change설정();">-</button> 
-    <button style="margin-left:5px;">X</button> <button>O</button>
+    <button id="분석플러스" onclick="회차=Number(회차)+1;분석자료_회차change설정();">+</button><button id="분석마이너스" onclick="회차=Number(회차)-1;분석자료_회차change설정();">-</button><button style="margin-left:5px;">X</button><button>O</button>
   </div>
   <div id="분석자료숨김버튼" class="d-inline-block" style="margin-top:5px;margin-left:5px;"><!-- 버튼에 class="분석버튼숨김" 클래스  -->
-    <button>a</button> <button>1</button> <button class="분석버튼숨김">2</button> <button class="분석버튼숨김">3</button>
-    <button>b</button> <button>4</button> <button>5</button> <button>6</button>
-    <button>c</button> <button>7</button> <button>8</button> <button>9</button> <button>10</button>
-    <button>d</button> <button class="분석버튼숨김">11</button> <button class="분석버튼숨김">12</button> <button class="분석버튼숨김">13</button> <button class="분석버튼숨김">14</button> <button class="분석버튼숨김">15</button>
-    <button class="분석버튼숨김">16</button> <button class="분석버튼숨김">17</button> <button class="분석버튼숨김">18</button> <button class="분석버튼숨김">19</button>
+    <button>a</button><button>1</button><button class="분석버튼숨김">2</button><button class="분석버튼숨김">3</button>
+    <button>b</button><button>4</button><button>5</button><button>6</button>
+    <button>c</button><button>7</button><button>8</button><button>9</button><button>10</button>
+    <button>d</button><button class="분석버튼숨김">11</button><button class="분석버튼숨김">12</button><button class="분석버튼숨김">13</button><button class="분석버튼숨김">14</button><button class="분석버튼숨김">15</button><button class="분석버튼숨김">16</button><button class="분석버튼숨김">17</button><button class="분석버튼숨김">18</button><button class="분석버튼숨김">19</button>
   </div>
   <div id="분석자료_표_상_js"></div>
   <div id="분석자료_표_하_js"></div>
