@@ -20,16 +20,195 @@ if ('초기설정' == '초기설정') {
 
   당번_회차change설정();
   분석자료_회차change설정();
+  따라가기위치설정();
+  var 숨김버튼값='';
 }
 var 리스너_바디=document.querySelector('body');
 var 색칠하기=document.querySelector('#버튼45오른쪽단독');
 
 function 연습() {
-  var 배열=[1,2,3,4,5,6,7,8,9]
-  var 배열2=[1,2,3,4,5,6,7,8,9]
-  var 배열3=배열+배열2
-  console.log(배열3)
+ // 버튼 텍스트 수집
+  const 버튼문자열 = Array.from(document.querySelectorAll('#분석자료숨김버튼 > button')).map(btn => btn.innerText);
+  버튼문자열.push('30주간당번', '5주출6번', '30주간출횟수');
+
+  // 각 버튼에 대응하는 div 인덱스 배열
+  const index별작업_요소 = [
+    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], // 0~19까지 (X~19)
+    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], // O
+    [1,2,3],[1],[2],[3],[4,5,6],[4],[5],[6],
+    [7,8,9,10],[7],[8],[9],[10],
+    [11,12,13,14,15,16,17,18,19],[11],[12],[13],[14],[15],[16],[17],[18],[19],
+    [1],[2,3,4,5,6,7],
+    [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
+  ];
+
+  const index = 버튼문자열.indexOf(숨김버튼값);
+  if (index === -1) return console.warn('버튼문자열에 숨김버튼값 없음');
+
+  const 대상index들 = index별작업_요소[index];
+  const 상단요소들 = document.querySelectorAll('#분석자료_표_상_js > div');
+  const 하단요소들 = document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div');
+  const 대상요소들 = (index < 25) ? 상단요소들 : 하단요소들;
+
+  // 현재 대상 중 d-none 개수 파악
+  const d_none개수 = 대상index들.filter(i => 대상요소들[i].classList.contains('d-none')).length;
+  const 모두숨김상태 = d_none개수 === 대상index들.length;
+
+  대상index들.forEach(i => {
+    const el = 대상요소들[i];
+
+    // 상단 영역 처리
+    if (index < 25) {
+      if (숨김버튼값 === 'X') el.classList.add('d-none');
+      else if (숨김버튼값 === 'O') el.classList.remove('d-none');
+      else el.classList.toggle('d-none', !모두숨김상태); // 토글
+
+
+    }
+
+    // 하단 영역 처리 (index 25 ~ 27)
+    else if (index >= 25 && index < 28) {
+      el.classList.toggle('d-none', !모두숨김상태);
+
+      if (index === 25) {
+        const titleEl = document.querySelector('#분석자료_표_하_js > div:nth-of-type(1) > div:nth-of-type(2)');
+        titleEl.innerText = 모두숨김상태 ? '' : '30주 출현 빈도';
+      }
+    }
+  });
+
+  console.log(`index: ${index}, 대상개수: ${대상index들.length}, d-none: ${d_none개수}`);
 }
+function 따라가기위치설정() {
+  var 버튼45오른쪽단독top숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.top.replace(/px/g, '')) || 0;
+  var 버튼45오른쪽높이추출위한정보가져오기=window.getComputedStyle(document.querySelector('#버튼45오른쪽단독'));
+  버튼45오른쪽높이추출위한정보가져오기=버튼45오른쪽높이추출위한정보가져오기.height.replace(/px/g, '') || 0;
+  var 버튼45오른쪽단독left숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.left.replace(/px/g, '')) || 0;
+  document.querySelector('#따라가기').style.left=Number(버튼45오른쪽단독left숫자)-5 + 'px';
+  document.querySelector('#따라가기').style.top=Number(버튼45오른쪽단독top숫자) + Number(버튼45오른쪽높이추출위한정보가져오기) - 3 + 'px';
+  if (document.querySelector('#버튼45오른쪽단독').classList.contains('d-none')) {
+    document.querySelector('#따라가기').classList.add('d-none');
+    }else {
+    document.querySelector('#따라가기').classList.remove('d-none');
+  }
+}
+function 분석자료_삼십회표3종_작성_미완성() {
+
+}
+function 분석자료숨김버튼처리() {
+  console.log('분석자료숨김버튼처리()')
+  //초기화때는 고정html_구조생성() 동작시 버튼에 '분석자료숨김'클래스 있으면 찾아가사 d-none 넣는 동작이 있다.
+  //다음부터는 : 요소에 d-none 상태에 따라 버튼에 '분석자료숨김'클래스 부여한다.
+  //X,O는 클래스부여 안한다.
+  //클래스 제거후 실제 요소 확인하여 부여함
+  if (숨김버튼값 == '') {return console.warn("숨김버튼값=='' ");}
+  const 상단관련버튼들=document.querySelectorAll('#분석자료숨김버튼 > button');
+  const 하단관련버튼들 = document.querySelectorAll('#분석자료_다음회차 > button');
+  if (['30주간당번','5주출6번','30주간출횟수'].includes(숨김버튼값)) {
+    var 타겟버튼들 = Array.from(하단관련버튼들).slice(9, 12);
+  } else {
+    var 타겟버튼들 = 상단관련버튼들;
+  }
+  //타겟버튼들.forEach((버튼, 인덱스) => {버튼.classList.remove('분석버튼숨김');});
+
+
+  const 상단요소들 = document.querySelectorAll('#분석자료_표_상_js > div');
+  const 하단요소들 = document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div');
+  if (['30주간당번','5주출6번','30주간출횟수'].includes(숨김버튼값)) 
+  {var 대상요소들 = 상단요소들;} else {var 대상요소들 = 하단요소들;}
+}
+function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던것
+  //버튼문자열 (25) ['X', 'O', 'a', '1', '2', '3', 'b', '4', '5', '6', 'c', '7', '8', '9', '10', 'd', '11', '12', '13', '14', '15', '16', '17', '18', '19']
+  const 버튼문자열 = Array.from(document.querySelectorAll('#분석자료숨김버튼 > button')).map(btn => btn.innerText);
+  버튼문자열.push('30주간당번','5주출6번','30주간출횟수');
+
+  // 각 버튼에 대응하는 div 인덱스 배열 : 실제 한줄 요소에 d-none 있는지 여부에 따름. 위 버튼 색칠은 별개다.
+  const index별작업_요소 = [
+    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], // 0~19까지 (X~19)
+    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], // O
+    [1,2,3],[1],[2],[3],[4,5,6],[4],[5],[6],
+    [7,8,9,10],[7],[8],[9],[10],
+    [11,12,13,14,15,16,17,18,19],[11],[12],[13],[14],[15],[16],[17],[18],[19],
+    [1],[2,3,4,5,6,7],
+    [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
+  ];
+
+  const index = 버튼문자열.indexOf(숨김버튼값);
+  if (index === -1) { 숨김버튼값=''; return console.warn('버튼문자열에 숨김버튼값 없음');}
+  const 대상index들 = index별작업_요소[index];
+  const 상단요소들 = document.querySelectorAll('#분석자료_표_상_js > div');
+  const 하단요소들 = document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div');
+  const 대상요소들 = (index < 25) ? 상단요소들 : 하단요소들;
+
+  // 현재 대상 중 d-none 개수 파악
+  const d_none개수 = 대상index들.filter(i => 대상요소들[i].classList.contains('d-none')).length;
+  const 모두숨김상태 = d_none개수 === 대상index들.length;
+
+  대상index들.forEach(i => {
+    const el = 대상요소들[i];
+    // 상단 영역 처리 : toggle( '클래스명', true) , true면 무조건 넣고(감추고), false면 무조건 삭제(보이게)한다
+    if (index < 25) {
+      if (숨김버튼값 === 'X') el.classList.add('d-none');
+      else if (숨김버튼값 === 'O') el.classList.remove('d-none');
+      else el.classList.toggle('d-none', !모두숨김상태); // 토글
+    }
+    // 하단 영역 처리 (index 25 ~ 27)
+    else if (index >= 25 && index < 28) {
+      el.classList.toggle('d-none', !모두숨김상태);
+      if (index === 25) {
+        const titleEl = document.querySelector('#분석자료_표_하_js > div:nth-of-type(1) > div:nth-of-type(2)');
+        titleEl.innerText = !모두숨김상태 ? '' : '30주 출현 빈도';
+      }
+    }
+  });
+  //분석자료숨김버튼처리
+  //초기화때는 고정html_구조생성() 동작시 버튼에 '분석버튼숨김'클래스 있으면 찾아가사 d-none 넣는 동작이 있다.
+  //다음부터는 : 요소에 d-none 상태에 따라 버튼에 '분석버튼숨김'클래스 부여한다.
+  //X,O는 클래스부여 안한다.
+  //클래스 제거후 실제 요소 확인하여 부여함
+  const 하단관련버튼들 = Array.from(document.querySelectorAll('#분석자료_다음회차 > button')).slice(9, 12);
+  하단관련버튼들.forEach(요소 => 요소.classList.remove('분석버튼숨김'))
+  var 하단확인할곳 = [1,2,9]
+  하단관련버튼들.forEach((요소,인덱스) => {
+    if (하단요소들[하단확인할곳[인덱스]].classList.contains('d-none')) {요소.classList.add('분석버튼숨김')}
+  })
+  //상단, X,O,a,b,c,d 상단확인정보[0] : 'X'(이름),1(이름위치),0(slice왼쪽값),19(slice오른쪽값) [slice오른쪽왼쪽은 이름위치 제외]
+  var 상단확인정보 = [['X',1]]
+  for (var i=0; i<6; i++) {
+    var 상단관련버튼들변동됨 = document.querySelectorAll('#분석자료숨김버튼 > button');
+
+
+  }
+  
+  
+
+  /*
+    [1,2,3],[1],[2],[3],[4,5,6],[4],[5],[6],
+    [7,8,9,10],[7],[8],[9],[10],
+    [11,12,13,14,15,16,17,18,19],[11],[12],[13],[14],[15],[16],[17],[18],[19],
+  */ 
+
+  상단관련버튼들변동됨.forEach((요소,인덱스) => {//a,b,c,d 모두 d-none일때 분석버튼숨김
+
+
+  })  
+
+
+}
+
+
+
+if ('임시'=='임   시') {
+
+}
+
+
+
+
+
+
+
+
 function 색칠_1_동작설정() {
 }
 function 색칠_2_설정대로색칠동작() {
@@ -808,6 +987,14 @@ function 코드셑팅(e) {
 function 체크this활용(e) {
   const $i = $(e).children('input'), id = '#' + $i.attr('id').slice(6);
   $(id).toggleClass('d-none', !$i.prop('checked'));
+  console.log(id)
+  if (id=='#버튼45오른쪽단독') {
+    if(document.querySelector('#버튼45오른쪽단독').classList.contains('d-none')) {
+      document.querySelector('#따라가기').classList.add('d-none');
+    } else {
+      document.querySelector('#따라가기').classList.remove('d-none');
+    }
+  }
 }
 function 회차select옵션생성() {//마지막 하나 제거하려면 .slice(0, -1)
   let 옵션 = $('#당번숨김_안에_저장중').html().split(',').reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
@@ -819,162 +1006,12 @@ function 색칠하기_click(e) {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
-  if (e.target.innerHTML=='5주출6번') {
-    var 플러스=0;
-    if (e.target.classList.contains('분석버튼숨김')) {
-      e.target.classList.remove('분석버튼숨김');
-      for (var i=0;i<6; i++) {
-        document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div')[2+플러스].classList.remove('d-none');
-        플러스++;
-      }
-    } else {
-      e.target.classList.add('분석버튼숨김');
-      for (var i=0;i<6; i++) {
-        document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div')[2+플러스].classList.add('d-none');
-        플러스++;
-      }
-    }
-    return;
+  if (e.target.parentElement.id=='분석자료숨김버튼' || e.target.parentElement.id=='분석자료_다음회차') {
+    숨김버튼값=e.target.innerText; 분석자료_버튼클릭시_상하_숨김동작();
   }
-  if (e.target.innerHTML=='30주간당번') {
-    var 플러스=0;
-    if (e.target.classList.contains('분석버튼숨김')) {
-      e.target.classList.remove('분석버튼숨김');
-      for (var i=0;i<31; i++) {
-        document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div')[8+플러스].classList.remove('d-none');
-        플러스++;
-      }
-    } else {
-      e.target.classList.add('분석버튼숨김');
-      for (var i=0;i<31; i++) {
-        document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div')[8+플러스].classList.add('d-none');
-        플러스++;
-      }
-    }
-    return;
-  }
-  if (e.target.innerHTML=='30주간출횟수') {
-    var 플러스=0;
-    if (e.target.classList.contains('분석버튼숨김')) {
-      e.target.classList.remove('분석버튼숨김');
-      for (var i=0;i<1; i++) {
-        document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div')[1+플러스].classList.remove('d-none');
-        플러스++;
-      }
-    } else {
-      e.target.classList.add('분석버튼숨김');
-      for (var i=0;i<1; i++) {
-        document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div')[1+플러스].classList.add('d-none');
-        플러스++;
-      }
-    }
-    return;
-  } 
-  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='a') || (e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='b')) {
-    var 분석버튼숨김클래스개수=0;
-    var 다음요소=e.target;
-    for (var i=0; i<3; i++) {
-      다음요소=다음요소.nextElementSibling;
-      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
-    }
-    다음요소=e.target;
-    if (분석버튼숨김클래스개수==0) {
-      for (var i=0; i<3; i++) {
-        다음요소=다음요소.nextElementSibling;
-        다음요소.classList.add('분석버튼숨김');
-        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
-      }
-    }
-    다음요소=e.target;
-    if (분석버튼숨김클래스개수!=0) {
-      for (var i=0; i<3; i++) {
-        다음요소=다음요소.nextElementSibling;
-        다음요소.classList.remove('분석버튼숨김');
-        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
-      }
-    }
-    return;
-  }
-  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='c')) {
-    var 분석버튼숨김클래스개수=0;
-    var 다음요소=e.target;
-    for (var i=0; i<4; i++) {
-      다음요소=다음요소.nextElementSibling;
-      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
-    }
-    다음요소=e.target;
-    if (분석버튼숨김클래스개수==0) {
-      for (var i=0; i<4; i++) {
-        다음요소=다음요소.nextElementSibling;
-        다음요소.classList.add('분석버튼숨김');
-        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
-      }
-    }
-    다음요소=e.target;
-    if (분석버튼숨김클래스개수!=0) {
-      for (var i=0; i<4; i++) {
-        다음요소=다음요소.nextElementSibling;
-        다음요소.classList.remove('분석버튼숨김');
-        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
-      }
-    }
-    return;
-  }
-  if ((e.target.parentElement.id=='분석자료숨김버튼' && e.target.innerHTML=='d')) {
-    var 분석버튼숨김클래스개수=0;
-    var 다음요소=e.target;
-    for (var i=0; i<9; i++) {
-      다음요소=다음요소.nextElementSibling;
-      if (다음요소.classList.contains('분석버튼숨김')) {분석버튼숨김클래스개수+=1;}
-    }
-    다음요소=e.target;
-    if (분석버튼숨김클래스개수==0) {
-      for (var i=0; i<9; i++) {
-        다음요소=다음요소.nextElementSibling;
-        다음요소.classList.add('분석버튼숨김');
-        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.add('d-none')
-      }
-    }
-    다음요소=e.target;
-    if (분석버튼숨김클래스개수!=0) {
-      for (var i=0; i<9; i++) {
-        다음요소=다음요소.nextElementSibling;
-        다음요소.classList.remove('분석버튼숨김');
-        document.querySelector('#분석자료_표_상_js').children[다음요소.innerHTML].classList.remove('d-none')
-      }
-    }
-    return;
-  }
-  if (e.target.parentElement.id=='분석자료숨김버튼') {
-    if (e.target.classList.contains('분석버튼숨김')) {
-      e.target.classList.remove('분석버튼숨김');
-      document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.remove('d-none')
-    } else {
-      e.target.classList.add('분석버튼숨김');
-      document.querySelector('#분석자료_표_상_js').children[e.target.innerHTML].classList.add('d-none')
-    }
-    return;
-  }
-  if (e.target.parentElement.id=='분석자료_플마버튼') {
-    if (e.target.innerHTML=='X') {
-      for (var i=0; i<document.querySelector('#분석자료_표_상_js').children.length; i++) {
-        document.querySelector('#분석자료_표_상_js').children[i].classList.add('d-none');
-      }
-      for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
-        document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.add('분석버튼숨김');
-        var 값=document.querySelectorAll('#분석자료숨김버튼 button')[i].innerHTML;
-        if (값=='a' || 값=='b' || 값=='c' || 값=='d') {document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.remove('분석버튼숨김');}
-      }
-    }
-    if (e.target.innerHTML=='O') {
-      for (var i=0; i<document.querySelector('#분석자료_표_상_js').children.length; i++) {
-        document.querySelector('#분석자료_표_상_js').children[i].classList.remove('d-none');
-      }
-      for (var i=0; i<document.querySelectorAll('#분석자료숨김버튼 button').length; i++) {
-        document.querySelectorAll('#분석자료숨김버튼 button')[i].classList.remove('분석버튼숨김');
-      }
-    }
-  }
+
+
+
   if (e.target.classList.contains('카운팅')) {
     console.log('리스너_바디_click(e) : 카운팅 클래스 있을때')
     var 현재=Number(e.target.innerHTML);
@@ -1038,11 +1075,10 @@ function 리스너_바디_click(e) {
         // 상자 위치 적용
         target.style.top = 새로운_상자_위치_y + 'px';
         target.style.left = 새로운_상자_위치_x + 'px';
-        console.log('마우스무브좌표이동')
     }
 
     function 마우스upOrTouchend() {
-      console.log('마우스 뗏을때 리스터 해제')
+      따라가기위치설정();
         if (!isDragging) return;
         isDragging = false;
         // 이벤트 제거

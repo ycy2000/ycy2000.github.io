@@ -4,6 +4,7 @@ body * {vertical-align: top;} button {margin-right:-1px;border:1px solid black;w
 body > div {display:inline-block}
 /* 부트스트랩:border-1, 마진:m-0에서5, mx(가로),my,mt(위),mb(아래),ml(왼쪽),mr(오른쪽) */
 #이동하기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px; top:100px;left:300px;}
+#따라가기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px;}
 #이동하기 .active {background-color: cadetblue;}
 .radius5 {border-radius: 5px;}
 .당번회차 > button {width:40px;}
@@ -11,12 +12,17 @@ body > div {display:inline-block}
 #당번_삼십주연결버튼 > div > button:nth-of-type(1) {width:28px;} #당번_삼십주연결버튼 > div > button:nth-of-type(2) {width:28px;}
 #분석자료_삼십회표_js > div > button:nth-of-type(1) {width:40px;}
 #분석자료_삼십회23456개수_js > div > button:nth-of-type(1) {width:40px;}
+
+.설명_왼쪽div * {border:1px solid black;display:inline-block}/* button, button, span */
+.설명_왼쪽div > button:nth-of-type(1) {width:34px;} .설명_왼쪽div > button:nth-of-type(2) {width:45px;} 
+.설명_왼쪽div > span:nth-of-type(1) {width:85px;text-align: center;height:24px;margin-right:-1px;}
+.설명_왼쪽div_버튼5개 > button:nth-of-type(6) {width:47px;}
 /*  */
 
 
 
 
-
+.분석버튼숨김 {background-color: darkcyan;}
 /* 마지막에 배치해야된다 */
 .코드제목들 > div:not(:first-child) {display:block;background-color: white;border-bottom:1px solid black;margin-bottom:0px;}/* button => block, 밑줄만 */
 
