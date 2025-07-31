@@ -26,6 +26,7 @@ if ('초기설정' == '초기설정') {
 var 리스너_바디=document.querySelector('body');
 var 색칠하기=document.querySelector('#버튼45오른쪽단독');
 
+
 function 연습() {
  // 버튼 텍스트 수집
   const 버튼문자열 = Array.from(document.querySelectorAll('#분석자료숨김버튼 > button')).map(btn => btn.innerText);
@@ -95,29 +96,8 @@ function 따라가기위치설정() {
 function 분석자료_삼십회표3종_작성_미완성() {
 
 }
-function 분석자료숨김버튼처리() {
-  console.log('분석자료숨김버튼처리()')
-  //초기화때는 고정html_구조생성() 동작시 버튼에 '분석자료숨김'클래스 있으면 찾아가사 d-none 넣는 동작이 있다.
-  //다음부터는 : 요소에 d-none 상태에 따라 버튼에 '분석자료숨김'클래스 부여한다.
-  //X,O는 클래스부여 안한다.
-  //클래스 제거후 실제 요소 확인하여 부여함
-  if (숨김버튼값 == '') {return console.warn("숨김버튼값=='' ");}
-  const 상단관련버튼들=document.querySelectorAll('#분석자료숨김버튼 > button');
-  const 하단관련버튼들 = document.querySelectorAll('#분석자료_다음회차 > button');
-  if (['30주간당번','5주출6번','30주간출횟수'].includes(숨김버튼값)) {
-    var 타겟버튼들 = Array.from(하단관련버튼들).slice(9, 12);
-  } else {
-    var 타겟버튼들 = 상단관련버튼들;
-  }
-  //타겟버튼들.forEach((버튼, 인덱스) => {버튼.classList.remove('분석버튼숨김');});
-
-
-  const 상단요소들 = document.querySelectorAll('#분석자료_표_상_js > div');
-  const 하단요소들 = document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div');
-  if (['30주간당번','5주출6번','30주간출횟수'].includes(숨김버튼값)) 
-  {var 대상요소들 = 상단요소들;} else {var 대상요소들 = 하단요소들;}
-}
 function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던것
+  console.log('분석자료_버튼클릭시_상하_숨김동작() : ' + 숨김버튼값)
   //버튼문자열 (25) ['X', 'O', 'a', '1', '2', '3', 'b', '4', '5', '6', 'c', '7', '8', '9', '10', 'd', '11', '12', '13', '14', '15', '16', '17', '18', '19']
   const 버튼문자열 = Array.from(document.querySelectorAll('#분석자료숨김버튼 > button')).map(btn => btn.innerText);
   버튼문자열.push('30주간당번','5주출6번','30주간출횟수');
@@ -141,8 +121,8 @@ function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던�
   const 대상요소들 = (index < 25) ? 상단요소들 : 하단요소들;
 
   // 현재 대상 중 d-none 개수 파악
-  const d_none개수 = 대상index들.filter(i => 대상요소들[i].classList.contains('d-none')).length;
-  const 모두숨김상태 = d_none개수 === 대상index들.length;
+  var d_none개수 = 대상index들.filter(i => 대상요소들[i].classList.contains('d-none')).length;
+  var 모두숨김상태 = d_none개수 === 대상index들.length;
 
   대상index들.forEach(i => {
     const el = 대상요소들[i];
@@ -172,28 +152,28 @@ function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던�
   하단관련버튼들.forEach((요소,인덱스) => {
     if (하단요소들[하단확인할곳[인덱스]].classList.contains('d-none')) {요소.classList.add('분석버튼숨김')}
   })
-  //상단, X,O,a,b,c,d 상단확인정보[0] : 'X'(이름),1(이름위치),0(slice왼쪽값),19(slice오른쪽값) [slice오른쪽왼쪽은 이름위치 제외]
-  var 상단확인정보 = [['X',1]]
-  for (var i=0; i<6; i++) {
-    var 상단관련버튼들변동됨 = document.querySelectorAll('#분석자료숨김버튼 > button');
+  //상단, X,O,a,b,c,d 상단확인정보[0], 상단요소들
+  var 상단관련버튼들 = Array.from(document.querySelectorAll('#분석자료숨김버튼 > button'));
+  상단관련버튼들.forEach(요소 => 요소.classList.remove('분석버튼숨김'))
+  //상단확인정보 : 'X'(이름),0(slice왼쪽값),19(slice오른쪽값),실제요소index시작) 실제요소=상단요소들
+  var 상단확인정보 = [['버튼 : a인덱스,slice시작,slice끝',2,3,6,'요소 : slice시작, slice끝', 1,4],
+                     ['버튼 : b인덱스,slice시작,slice끝',6,7,10,'요소 : slice시작, slice끝', 4,7],
+                     ['버튼 : c인덱스,slice시작,slice끝',10,11,15,'요소 : slice시작, slice끝', 7,11],
+                     ['버튼 : d인덱스,slice시작,slice끝',15,16,25,'요소 : slice시작, slice끝', 11,20] ]
+  상단확인정보.forEach ((element,ind) => {
+    var 상단요소slice=Array.from(상단요소들).slice(상단확인정보[ind][5],상단확인정보[ind][6])
+    d_none개수 = 상단요소slice.filter(i => i.classList.contains('d-none')).length;
+    모두숨김상태 = d_none개수 === 상단요소slice.length;
 
+    var 시작=Number(상단확인정보[ind][2]);
+    상단요소slice.forEach ( (i,상단index) => {
+      if (i.classList.contains('d-none')) {상단관련버튼들[시작].classList.add('분석버튼숨김');}
+      시작++; //조건이 안맞아도 더해져야한다
+    });
 
-  }
-  
-  
+    if (모두숨김상태) {상단관련버튼들[상단확인정보[ind][1]].classList.add('분석버튼숨김')}
 
-  /*
-    [1,2,3],[1],[2],[3],[4,5,6],[4],[5],[6],
-    [7,8,9,10],[7],[8],[9],[10],
-    [11,12,13,14,15,16,17,18,19],[11],[12],[13],[14],[15],[16],[17],[18],[19],
-  */ 
-
-  상단관련버튼들변동됨.forEach((요소,인덱스) => {//a,b,c,d 모두 d-none일때 분석버튼숨김
-
-
-  })  
-
-
+  });
 }
 
 
@@ -941,7 +921,7 @@ function 고정html_구조생성() {
       왼쪽몇칸.setAttribute('style','margin-right:-1px;');
       var 번호45=document.createElement('div');
       왼쪽몇칸.appendChild(번호45);
-      번호45.setAttribute('style','border:none;border-top:1px solid black;background-color:white; text-align:right;width:150px;height:24px;')
+      번호45.setAttribute('style','border:none;border-top:1px solid black;background-color:white; text-align:right;width:162px;height:24px;')
       var 번호45=document.createElement('div');
       번호45.setAttribute('style','border:none;background-color:white; text-align:right;width:150px;padding-right:5px;')
       번호45.innerText='30주 출현 빈도';
@@ -1034,7 +1014,7 @@ function 리스너_바디_click(e) {
     // 터치 이벤트인지 마우스 이벤트인지 확인
     var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
     console.log('e.type : ' + e.type)
-    var target=document.querySelector('#버튼45오른쪽단독');
+    var target=색칠하기;//#버튼45오른쪽단독
     var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
     // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
 
@@ -1079,67 +1059,13 @@ function 리스너_바디_click(e) {
 
     function 마우스upOrTouchend() {
       따라가기위치설정();
-        if (!isDragging) return;
+        //if (!isDragging) return;
         isDragging = false;
         // 이벤트 제거
         window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
         window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
     }
 
-    // 이벤트 추가
-    window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
-    window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
-  }
-  // mousedown과 touchstart 이벤트 모두 처리
-  function mousedownOrTouchstart2(e) {
-    // 터치 이벤트인지 마우스 이벤트인지 확인
-    var isTouchEvent = e.type === 'touchstart';
-    var target=document.querySelector('#버튼45오른쪽단독');
-    var isDragging = true;
-    var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0;
-    var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0;
-    //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
-    //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
-    //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
-    var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
-    var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
-    // 부모 요소의 경계를 확인 (마우스이벤트예제div)
-    var 부모_경계 = 버튼45감싸기.getBoundingClientRect();
-    var 상자_너비 = target.offsetWidth;
-    var 상자_높이 = target.offsetHeight;
-    function 마우스moveOrTouchmove(e) {
-        if (!isDragging) return;
-        // 화면 스크롤 방지 (모바일)
-        if (isTouchEvent) {
-            e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
-            //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
-        }
-        // 터치 이벤트인지 마우스 이벤트인지 확인
-        var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
-        var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
-        var 첫마우스에서y이동거리 = move_y - 첫마우스y;
-        var 첫마우스에서x이동거리 = move_x - 첫마우스x;
-        // 새로운 위치 계산
-        var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
-        var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
-        // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
-        if (새로운_상자_위치_y < 0) {
-            새로운_상자_위치_y = 0;
-        }
-        if (새로운_상자_위치_x < 0) {
-            새로운_상자_위치_x = 0;
-        }
-        // 상자 위치 적용
-        target.style.top = 새로운_상자_위치_y + 'px';
-        target.style.left = 새로운_상자_위치_x + 'px';
-    }
-    function 마우스upOrTouchend() {
-        if (!isDragging) return;
-        isDragging = false;
-        // 이벤트 제거
-        window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
-        window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
-    }
     // 이벤트 추가
     window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
     window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
