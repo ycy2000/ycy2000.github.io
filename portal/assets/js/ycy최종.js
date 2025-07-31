@@ -176,19 +176,6 @@ function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던�
   });
 }
 
-
-
-if ('임시'=='임   시') {
-
-}
-
-
-
-
-
-
-
-
 function 색칠_1_동작설정() {
 }
 function 색칠_2_설정대로색칠동작() {
@@ -920,8 +907,9 @@ function 고정html_구조생성() {
       왼쪽몇칸.setAttribute('class','d-inline-block');
       왼쪽몇칸.setAttribute('style','margin-right:-1px;');
       var 번호45=document.createElement('div');
+      번호45.innerText='keep셑팅↔초기화'
+      번호45.setAttribute('style','border:none;border-top:1px solid black;background-color:white; text-align:left;width:162px;height:24px;')
       왼쪽몇칸.appendChild(번호45);
-      번호45.setAttribute('style','border:none;border-top:1px solid black;background-color:white; text-align:right;width:162px;height:24px;')
       var 번호45=document.createElement('div');
       번호45.setAttribute('style','border:none;background-color:white; text-align:right;width:150px;padding-right:5px;')
       번호45.innerText='30주 출현 빈도';
@@ -1001,8 +989,10 @@ function 리스너_바디_click(e) {
   if (e.target.classList.contains('앞요소값clear')) {
     console.log('리스너_바디_click(e) : 앞요소값clear 클래스 있을때')
     e.target.previousElementSibling.innerHTML='';
+    if (!e.target.parentElement.parentElement.classList.contains('분석자료_표_상_지울곳')) {
+      e.target.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML='';
+    }
   }
-
   if (['이동할div리스트','이동할위치div리스트'].includes(e.target.parentElement.id)) { //이동 클릭 관련
     console.log('이동할 항목 클릭')
      e.target.classList.contains('active') ? 

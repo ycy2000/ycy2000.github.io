@@ -2,11 +2,11 @@
 body {font-family: 'Noto Serif KR', serif;white-space: nowrap;}
 body * {vertical-align: top;} button {margin-right:-1px;border:1px solid black;width:24px;height:24px;padding:0px;} div {margin-bottom:-1px;}
 body > div {display:inline-block}
-/* 부트스트랩:border-1, 마진:m-0에서5, mx(가로),my,mt(위),mb(아래),ml(왼쪽),mr(오른쪽) */
+/* #머리글 */
 #이동하기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px; top:100px;left:300px;}
 #따라가기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px;}
 #이동하기 .active {background-color: cadetblue;}
-.radius5 {border-radius: 5px;}
+/* #당번과흐름 (js로 .당번회차, .당번만, .보볼) */
 .당번회차 > button {width:40px;}
 #당번_오주연결버튼 > div > button:nth-of-type(1) {width:65px;} #당번_오주연결버튼 > div > button:nth-of-type(2) {width:28px;}
 #당번_삼십주연결버튼 > div > button:nth-of-type(1) {width:28px;} #당번_삼십주연결버튼 > div > button:nth-of-type(2) {width:28px;}
@@ -37,7 +37,7 @@ body > div {display:inline-block}
 #분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-4):not(.분석):not(.분석덧칠)
 {background-color:rgb(196, 169, 137);}
 
-
+/* #버튼45오른쪽단독 */
 
 .분석 {background-color:cadetblue;}
 .분석덧칠 {background-color:cornflowerblue;}
