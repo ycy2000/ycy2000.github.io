@@ -28,57 +28,12 @@ var 색칠하기=document.querySelector('#버튼45오른쪽단독');
 
 
 function 연습() {
- // 버튼 텍스트 수집
-  const 버튼문자열 = Array.from(document.querySelectorAll('#분석자료숨김버튼 > button')).map(btn => btn.innerText);
-  버튼문자열.push('30주간당번', '5주출6번', '30주간출횟수');
-
-  // 각 버튼에 대응하는 div 인덱스 배열
-  const index별작업_요소 = [
-    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], // 0~19까지 (X~19)
-    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], // O
-    [1,2,3],[1],[2],[3],[4,5,6],[4],[5],[6],
-    [7,8,9,10],[7],[8],[9],[10],
-    [11,12,13,14,15,16,17,18,19],[11],[12],[13],[14],[15],[16],[17],[18],[19],
-    [1],[2,3,4,5,6,7],
-    [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
-  ];
-
-  const index = 버튼문자열.indexOf(숨김버튼값);
-  if (index === -1) return console.warn('버튼문자열에 숨김버튼값 없음');
-
-  const 대상index들 = index별작업_요소[index];
-  const 상단요소들 = document.querySelectorAll('#분석자료_표_상_js > div');
-  const 하단요소들 = document.querySelectorAll('#분석자료_표_하_js > div:nth-of-type(2) > div');
-  const 대상요소들 = (index < 25) ? 상단요소들 : 하단요소들;
-
-  // 현재 대상 중 d-none 개수 파악
-  const d_none개수 = 대상index들.filter(i => 대상요소들[i].classList.contains('d-none')).length;
-  const 모두숨김상태 = d_none개수 === 대상index들.length;
-
-  대상index들.forEach(i => {
-    const el = 대상요소들[i];
-
-    // 상단 영역 처리
-    if (index < 25) {
-      if (숨김버튼값 === 'X') el.classList.add('d-none');
-      else if (숨김버튼값 === 'O') el.classList.remove('d-none');
-      else el.classList.toggle('d-none', !모두숨김상태); // 토글
+  var 변수=document.querySelector('#버튼45오른쪽단독');
+  변수.setAttribute('class','d d d d d d d d')
+  console.log(변수.classList)
 
 
-    }
 
-    // 하단 영역 처리 (index 25 ~ 27)
-    else if (index >= 25 && index < 28) {
-      el.classList.toggle('d-none', !모두숨김상태);
-
-      if (index === 25) {
-        const titleEl = document.querySelector('#분석자료_표_하_js > div:nth-of-type(1) > div:nth-of-type(2)');
-        titleEl.innerText = 모두숨김상태 ? '' : '30주 출현 빈도';
-      }
-    }
-  });
-
-  console.log(`index: ${index}, 대상개수: ${대상index들.length}, d-none: ${d_none개수}`);
 }
 function 따라가기위치설정() {
   var 버튼45오른쪽단독top숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.top.replace(/px/g, '')) || 0;
@@ -86,7 +41,7 @@ function 따라가기위치설정() {
   버튼45오른쪽높이추출위한정보가져오기=버튼45오른쪽높이추출위한정보가져오기.height.replace(/px/g, '') || 0;
   var 버튼45오른쪽단독left숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.left.replace(/px/g, '')) || 0;
   document.querySelector('#따라가기').style.left=Number(버튼45오른쪽단독left숫자)-5 + 'px';
-  document.querySelector('#따라가기').style.top=Number(버튼45오른쪽단독top숫자) + Number(버튼45오른쪽높이추출위한정보가져오기) - 3 + 'px';
+  document.querySelector('#따라가기').style.top=Number(버튼45오른쪽단독top숫자) + Number(버튼45오른쪽높이추출위한정보가져오기) - 5 + 'px';
   if (document.querySelector('#버튼45오른쪽단독').classList.contains('d-none')) {
     document.querySelector('#따라가기').classList.add('d-none');
     }else {
@@ -236,7 +191,7 @@ function 분석자료_삼십회표_js작성() {
       if (기록후최대값>이전최대값) { //제목만 추가된 빈한줄 추가
         document.querySelector('#분석자료_삼십회표_js').innerHTML+=가로한줄.outerHTML;
         if (기록후최대값==1) {
-          document.querySelector('#분석자료_삼십회표_js > div:last-child').setAttribute('class',배열제목[배열대체]+ ', 첫' + 배열제목[배열대체]);
+          document.querySelector('#분석자료_삼십회표_js > div:last-child').setAttribute('class','첫' + 배열제목[배열대체] + ' ' + 배열제목[배열대체]);
           } else {
           document.querySelector('#분석자료_삼십회표_js > div:last-child').setAttribute('class',배열제목[배열대체])
         }
@@ -500,6 +455,7 @@ function 분석자료_회차change설정() {
   }
   분석자료_삼십회표_js작성();
   분석자료_삼십회빈도와개수_js작성();
+  분석및당번change후_색칠번호변경();
 }
 function 당번_회차change설정() {
   console.log('당번_회차change설정()')
@@ -662,8 +618,8 @@ function 당번_회차change설정() {
       var 요소확인=document.querySelector(`${부모id} .${변수명}`);
       if (요소확인.innerHTML.slice(-1)==','){요소확인.innerHTML=요소확인.innerHTML.slice(0,-1)} //마지막이 쉼표(,)이면 쉼표삭제
     } )
-    //.당번만 > div : title넣기
-    var 요소들=document.querySelectorAll('.당번만 > div');
+    //.당번만 > button : title넣기
+    var 요소들=document.querySelectorAll('.당번만 > button');
     for (var i=0; i<요소들.length; i++) {
       요소들[i].setAttribute('title',요소들[i].innerHTML)
     }
@@ -673,7 +629,7 @@ function 당번_회차change설정() {
 
 
 
-
+  분석및당번change후_색칠번호변경();
 }
 function gpt() {
   for (let i = 0; i < 45; i++) {
@@ -819,9 +775,9 @@ function 회차change설정_보류() {
 }
 
 function 고정html_구조생성() {
-  const 당번한줄html=`<div><span class="당번회차 d-inline-block"><button></button></span><span 
+  const 당번한줄html=`<div><span class="당번회차 d-inline-block"><button style="width:45px;font-weight:lighter;"></button></span><span 
   class="당번만 d-inline-block"><button></button><button></button><button></button><button></button><button></button><button></button></span><span 
-  class="보볼 d-inline-block"><button></button></span></div>`
+  class="보볼 d-inline-block"><button style="font-weight:lighter;"></button></span></div>`
   document.querySelector('#당번_다음회차').innerHTML=당번한줄html;
   for (var i=0; i<30; i++) {
   document.querySelector('#당번_불러온당첨정보').innerHTML+=당번한줄html;
@@ -968,9 +924,48 @@ function 회차select옵션생성() {//마지막 하나 제거하려면 .slice(0
   let 옵션 = $('#당번숨김_안에_저장중').html().split(',').reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
   $('#당번_회차select, #분석자료_회차select').html(옵션);
 }
+function 분석및당번change후_색칠번호변경() {
+  //keep번호들, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 변경체크되어 있을때
 
+}
 function 색칠하기_click(e) {
 
+}
+function 킵_보기숨기기(e) {
+  var 버튼들=document.querySelectorAll('.설명_왼쪽div_버튼5개 > button');
+  if (e.classList.contains('js숨김')) {e.classList.remove('js숨김')} else {e.classList.add('js숨김')}
+  for (var i=0; i<버튼들.length; i++) {
+    if (버튼들[i].classList.contains('js숨김')) {
+      document.querySelectorAll('.설명_첫번째div > .설명_가로한줄')[i].classList.add('d-none')
+    } else {
+      document.querySelectorAll('.설명_첫번째div > .설명_가로한줄')[i].classList.remove('d-none')
+    }
+  }
+  
+}
+function 셑팅토글(e) {
+  console.log('셑팅토글(e)')
+  e.checked=true;
+  if (e.id=='keep') {
+    document.querySelector('#셑팅1').checked=false;
+    document.querySelector('#셑팅2').checked=false;
+    document.querySelector('#셑팅3').checked=false;
+  }
+  if (e.id=='셑팅1') {
+    document.querySelector('#keep').checked=false;
+    document.querySelector('#셑팅2').checked=false;
+    document.querySelector('#셑팅3').checked=false;
+  }
+  if (e.id=='셑팅2') {
+    document.querySelector('#keep').checked=false;
+    document.querySelector('#셑팅1').checked=false;
+    document.querySelector('#셑팅3').checked=false;
+  }
+  if (e.id=='셑팅3') {
+    document.querySelector('#keep').checked=false;
+    document.querySelector('#셑팅1').checked=false;
+    document.querySelector('#셑팅2').checked=false;
+  }
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')

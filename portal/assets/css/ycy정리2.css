@@ -13,7 +13,8 @@ body {white-space: nowrap;}
 #당번 * {vertical-align: top;}
 #당번 #당번_불러온당첨정보 .당첨정보, #당번_다음회차 .당첨정보 {margin-bottom:-1px;text-align: center;}
 #당번 #당번_불러온당첨정보 .당첨정보 div,  #당번_다음회차 .당첨정보 div {display: inline-block;}/* #당번 .당첨정보 > div:nth-of-type(1) 회차, (2)날짜, (3)당번만 class, (4)보볼 */
-#당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(1):not([class='당번회차중에_분석자료회차있으면_클래스부여']), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(1) {width:40px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
+#당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(1):not([class='당번회차중에_분석자료회차있으면_클래스부여']), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(1) 
+{width:40px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
 #당번_플마클리어버튼 > button {border:1px solid black; border-radius: 5px; display: inline-block; width:30px; margin-right:5px;vertical-align: top;margin-top:5px;}
 #당번_플마클리어버튼 > button:nth-of-type(3) {width:55px;}
 .버튼45_span {margin-top:10px;}
@@ -23,7 +24,8 @@ body {white-space: nowrap;}
 
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(3) > div, #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(3) > div {width:34px;height:34px;border:1px solid gray;padding-top:3px;margin-right:-1px;}
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(4), #당번 #당번_다음회차 .당첨정보 > div:nth-of-type(4) {width:34px;height:34px;border:1px solid gray;padding-top:3px;}
-#당번 #당번_불러온당첨정보 > div:nth-child(odd) > *:not(:last-child):not([class*='번호45색칠']):not([class='당번회차중에_분석자료회차있으면_클래스부여']) {background-color:bisque;color:blue;}
+#당번 #당번_불러온당첨정보 > div:nth-child(odd) > *:not(:last-child):not([class*='번호45색칠']):not([class='당번회차중에_분석자료회차있으면_클래스부여']) 
+{background-color:bisque;color:blue;}
 #당번 #당번_불러온당첨정보 .당첨정보 > div:nth-of-type(4) {background-color: rgb(100, 237, 214);}
 #당번 #당번_불러온당첨정보 .당첨정보 .당번만 > div {font-weight: bold;}
 

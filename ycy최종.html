@@ -16,14 +16,16 @@
 </head>
 <body style="margin-left:5px;">
 <div id="머리글" style="display:block;height:30px;margin:10px;border-bottom:1px solid black;">
-  <div id="따라가기" class="d-none" style="top:830px;left:518px;"><!--top:830px;left:518px; 처음에 auto 문제-->
+  <div id="따라가기" class="d-none" style="top:825px;left:518px;width:1256px;"><!--top:830px;left:518px; 처음에 auto 문제-->
     <div class="d-inline-block">
-      <button onclick="document.querySelector('#편집1').innerHTML=''">1</button><button onclick="document.querySelector('#편집2').innerHTML=''">2</button><button onclick="document.querySelector('#편집3').innerHTML=''">3</button>
+      <button onclick="document.querySelector('#편집1').innerHTML=''" class="d-block" style="margin-bottom:-1px;">1</button>
+      <button onclick="document.querySelector('#편집2').innerHTML=''" class="d-block" style="margin-bottom:-1px;">2</button>
+      <button onclick="document.querySelector('#편집3').innerHTML=''" class="d-block">3</button>
     </div>
     <div class="d-inline-block">
-      <div contenteditable spellcheck="false" id="편집1" class="d-inline-block"></div>
-      <div contenteditable spellcheck="false" id="편집2" class="d-inline-block"></div>
-      <div contenteditable spellcheck="false" id="편집3" class="d-inline-block"></div>
+      <div contenteditable spellcheck="false" id="편집1"></div>
+      <div contenteditable spellcheck="false" id="편집2"></div>
+      <div contenteditable spellcheck="false" id="편집3"></div>
     </div>
   </div>
   <button id="이동" class="radius5" style="margin-right:5px;width:45px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button>
@@ -82,11 +84,47 @@
 </div>
 <div id="버튼45오른쪽단독"  class="d-none" style="position: absolute;top:600px;left:523px;background-color: white;">
   <div class="설명_첫번째div">
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><span>keep</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_keep"></span></div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅1번호들')">색칠</button><span>셑팅1</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅1_번호들"></span></div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅2번호들')">색칠</button><span>셑팅2</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅2_번호들"></span></div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅3번호들')">색칠</button><span>셑팅3</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅3_번호들"></span></div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('클릭번호들')">색칠</button><span>클릭번호들</span></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_클릭번호들"></span></div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><span>keep</span>
+        <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
+          <input class="form-check-input" type="checkbox" value="" id="keep변경">
+          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+        </div>
+      </span>
+      <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_keep"></span>
+    </div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅1번호들')">색칠</button><span>셑팅1</span>
+        <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
+          <input class="form-check-input" type="checkbox" value="" id="keep변경">
+          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+        </div>
+      </span>
+      <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅1_번호들"></span>
+    </div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅2번호들')">색칠</button><span>셑팅2</span>
+        <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
+          <input class="form-check-input" type="checkbox" value="" id="keep변경">
+          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+        </div>
+      </span>
+      <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅2_번호들"></span>
+    </div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅3번호들')">색칠</button><span>셑팅3</span>
+        <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
+          <input class="form-check-input" type="checkbox" value="" id="keep변경">
+          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+        </div>
+      </span>
+      <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅3_번호들">
+      </span>
+    </div>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('클릭번호들')">색칠</button><span>클릭번호들</span>
+        <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
+          <input class="form-check-input" type="checkbox" value="" id="keep변경">
+          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+        </div>
+      </span>
+      <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_클릭번호들"></span>
+    </div>
     <div class="설명_가로한줄"><span class="설명_왼쪽div_버튼5개"><button onclick="킵_보기숨기기(this)">1</button><button onclick="킵_보기숨기기(this)">2</button><button onclick="킵_보기숨기기(this)">3</button><button onclick="킵_보기숨기기(this)">4</button><button onclick="킵_보기숨기기(this)">5</button><button>순번</button></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_순번"></span></div>
   </div>
   <div class="설명_두번째div"  style="border:1px solid black;font-weight: bold;">
@@ -111,24 +149,11 @@
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="누적">
-          <label class="form-check-label" for="누적">누적</label>
+          <label class="form-check-label" for="누적" style="background-color: chocolate;">누적</label>
         </div>
         <button style="border:1px solid black;width:80px;padding:0px 5px;" onclick="색칠할번호들_clear()">번호clear</button>
-        
-        <br>
-
-        <div style="border-top:1px solid black;padding:3px 0px;">
-          <div class="form-check d-inline-block" style="margin-left:5px;">
-            <input class="form-check-input" type="checkbox" value="" checked id="당번_change시_특수색칠">
-            <label class="form-check-label" for="당번_change시_특수색칠">당번_change시_특수색칠</label>
-          </div>
-          <div class="form-check d-inline-block" style="margin-left:5px;">
-            <input class="form-check-input" type="checkbox" value="" checked id="분석자료_change시_특수색칠">
-            <label class="form-check-label" for="분석자료_change시_특수색칠">분석자료_change시_특수색칠</label>
-          </div>
-        </div>
       </div>
-      <div class="왼쪽의두번째줄" style="border-top:1px solid black;padding:3px 0px;padding-left:5px;">
+      <div class="왼쪽의두번째줄" style="border-top:1px solid black;border-bottom:1px solid black;padding:3px 0px;padding-left:5px;">
         <div class="d-inline-block">색칠할곳</div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="삼십회빈도" checked class="색칠할곳input">
@@ -151,14 +176,28 @@
           <label class="form-check-label" for="사오3ST">45_3ST</label>
         </div>
       </div>
+      <div class="왼쪽의두번째줄" style="padding:3px 0px;padding-left:5px;">_
+      </div>
     </div>
     <div id="끝수" class="d-inline-block" style="margin-top:5px;">
       <div><span>끝수</span><span>C</span><button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></div>
       <div><span>30주</span><span>C</span><button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></div>
-    </div>
-    <div class="오른쪽 d-inline-block" style="width:285px;white-space: normal;font-size:13px;font-weight:bold;margin-right:0px;">
-      <span onclick="document.querySelector('#클릭번호정보').innerHTML=''">(change시) 클릭번호정보 Clear: </span>
-      <span  id="클릭번호정보"></span>
+      <div id="셑팅번호설명보기" style="display:block;border:1px solid black;width:140px;text-align: center;" onclick="
+      document.querySelector('#셑팅번호설명보기').classList.add('d-none');
+      document.querySelector('#셑팅번호설명').classList.remove('d-none');
+      따라가기위치설정();">셑팅번호설명보기
+      </div>
+      <div id="셑팅번호설명" class="d-none" style="display:block;">
+        <div onclick="
+          document.querySelector('#셑팅번호설명').classList.add('d-none');
+          document.querySelector('#셑팅번호설명보기').classList.remove('d-none');
+          따라가기위치설정();"><span>keep:</span>
+        </div>
+        <div><span>셑팅1:</span></div>
+        <div><span>셑팅2:</span></div>
+        <div><span>셑팅3:</span></div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -209,7 +248,7 @@
     <select id="당번_회차select" class="d-inline-block" onchange="회차=this.value;당번_회차change설정();" style="margin:5px 0"></select>
     <div id="당번_플마클리어버튼" class="d-inline-block" style="margin-top:5px;">
       <button id="당번플러스" onclick="회차=Number(회차)+1;당번_회차change설정();">+</button> <button id="당번마이너스" onclick="회차=Number(회차)-1;당번_회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
-      <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;">
+      <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;margin-left:10px;">
         <input class="form-check-input 체크input" type="checkbox" value="" id="check_당번_오주삼십주개수" checked>
         <label class="form-check-label">오른쪽</label>
       </div>
@@ -349,7 +388,7 @@
   </div>
 
 </div>
-<div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;">
+<div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;margin-left:10px;">
   <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
     <button style="width:95px;">30주간당번</button> <button style="width:75px;">5주출6번</button> <button style="width:110px;">30주간출횟수</button>
   </div>
