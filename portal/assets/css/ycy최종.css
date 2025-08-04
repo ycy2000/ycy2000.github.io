@@ -78,7 +78,7 @@ body > div {display:inline-block}
 /*  */
 #분석자료숨김버튼 > button, #분석자료_플마버튼 > button {height:30px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
 
-#삼십회횟수기록 > button:not(.분석):not(.분석덧칠) {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
+#삼십회횟수기록 > button:not(.삼십회횟수같은거) {font-weight: bold;color:blueviolet;background-color: rgb(224, 176, 141);}
 .js클릭번호 > span:nth-of-type(1) > button:nth-of-type(1) {background-color: chartreuse;font-weight: bold;}
 .js클릭번호 > span:nth-of-type(1) > *:not(:first-child) {width:30px;}
 .다섯개씩번갈아색칠 > button {font-weight: bold;}
@@ -104,8 +104,43 @@ body > div {display:inline-block}
 {margin-right:-1px;border:1px solid black;vertical-align: top; height:25px;font-weight: bold;display: inline-block;width:40px;text-align: center;}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > span:nth-of-type(1) {background-color: chartreuse;}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > span:nth-of-type(2) {width:30px;background-color:chocolate;}
+.선택45 {background-color:chocolate;}
 #편집1, #편집2, #편집3 {border:1px solid black;display:inline-block;width:403px;white-space:normal;padding:4px;font-weight: bold;}
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n+2):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n+3):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n+4):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n+5):not(.분석):not(.분석덧칠)
+{background-color: bisque;}
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n-1):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n-2):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n-3):not(.분석):not(.분석덧칠),
+.설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n-4):not(.분석):not(.분석덧칠)
+{background-color:rgb(196, 169, 137);}
+.삼십회횟수같은거 {background-color: chartreuse; border-radius: 10px;}
 
+#버튼45감싸기 > #버튼45왼쪽 > #id_버튼45_check {border:1px solid black;padding:3px;background-color: white;margin-bottom:-1px;}
+#버튼45감싸기 > #버튼45왼쪽 > #버튼45의1st,
+#버튼45감싸기 > #버튼45왼쪽 > #버튼45의2st,
+#버튼45감싸기 > #버튼45왼쪽 > #버튼45의3st {border:1px solid black;padding:6px;background-color: white;margin-bottom:-1px;}
+#버튼45감싸기 > #버튼45왼쪽 > #버튼45의1st > div > button,
+#버튼45감싸기 > #버튼45왼쪽 > #버튼45의2st > div > button,
+#버튼45감싸기 > #버튼45왼쪽 > #버튼45의3st > div > button {vertical-align: top; width:34px;height:34px;border:1px solid gray;margin-right:-1px;margin-bottom:-1px;}
+#버튼45감싸기 #중복및차집합 button  {height:25px; padding:0px 3px;border:1px solid black; border-radius: 5px; margin-right:5px;vertical-align: top;}
+#버튼45감싸기 #중복및차집합 > div:nth-of-type(1) > button:nth-of-type(1) {width:85px;} 
+#선택_id_버튼45_1st:not([class~="js선택_id_버튼45"]), #선택_id_버튼45_2st:not([class~="js선택_id_버튼45"]), #선택_id_버튼45_3st:not([class~="js선택_id_버튼45"])
+ {display:inline-block;height:30px;width:30px;border:1px solid black;border-radius: 24px;margin-top:5px;margin-left:5px;}
+.js선택_id_버튼45  {display:inline-block;height:30px;width:30px;border:5px solid black;border-radius: 24px;margin-top:5px;margin-left:5px;background-color: chartreuse;}
+
+#버튼45감싸기 > #버튼45중간 {border:1px solid black;padding:3px;background-color: white;margin-left:-5px;vertical-align: top;}
+#버튼45감싸기 > #버튼45중간 > div > #번호clear {margin-right:-1px;border:1px solid black;margin-right:5px;}
+#버튼45감싸기 > #버튼45중간 > div > #대조45버튼6개 > button {margin-right:-1px;border:1px solid black;}
+.띄우기 {margin-left:255px;}
+
+
+/* #코드 */
+#코드_클릭한정보call * {font-weight: bold;}
 
 
 

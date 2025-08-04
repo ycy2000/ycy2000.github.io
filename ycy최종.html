@@ -64,13 +64,17 @@
     <label class="form-check-label">분석자료45칸</label>
   </span>
   <span onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_코드">
-    <label class="form-check-label">코드</label>
-  </span>
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45감싸기">
+    <label class="form-check-label">버튼45</label>
+  </span>  
   <span onchange="체크this활용(this);" style="margin-left:10px;">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45오른쪽단독">
     <label class="form-check-label">색칠</label>
   </span>
+  <span onchange="체크this활용(this);" style="margin-left:10px;">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_코드">
+    <label class="form-check-label">코드</label>
+  </span>  
   <span onchange="체크this활용(this);" style="margin-left:10px;">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_사진">
     <label class="form-check-label">사진</label>
@@ -82,45 +86,103 @@
   <button onclick="연습()" style="width:45px;">연습</button>
   <span>현재누적번호 : </span><span id="현재번호">[분석:30회3출]+[숫자:2,3,4,5,6]</span>
 </div>
+<div id="버튼45감싸기" class="d-none" style="position: absolute;top:47px;left:260px;background-color: white;">
+  <div id="버튼45왼쪽" class="d-inline-block" style="vertical-align: top;">
+    <div id="id_버튼45_check">
+      <div class="d-inline-block" style="margin-right:5px;">
+        <div class="form-check" onchange="체크this활용(this);">
+          <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45의2st">
+          <label class="form-check-label">2st</label>
+        </div>
+        <div class="form-check" onchange="체크this활용(this);">
+          <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45의3st">
+          <label class="form-check-label">3st</label>
+        </div>
+      </div>
+      <div class="d-inline-block" id="중복및차집합" style="vertical-align: top;">
+        <div style="margin-bottom:5px;"><button onclick="피해서3종()" title="피해서 생성 상태라면 초기화 된다.">피해서생성</button><button onclick="피_노_흰(this)">피</button><button onclick="피_노_흰(this)">노</button><button onclick="피_노_흰(this)">흰</button></div>
+        <div><button>_</button><button>_</button><button>_</button><button style="width:55px;" onclick="
+        if (document.querySelector('#당번_오주삼십주개수').classList.contains('띄우기')) {
+          document.querySelector('#당번_오주삼십주개수').classList.remove('띄우기');
+        } else  {document.querySelector('#당번_오주삼십주개수').classList.add('띄우기');}
+        
+        ">띄우기</button></div>     
+      </div>
+    </div>
+    <div id="버튼45의1st" class="버튼45css">
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button><span id="선택_버튼45의1st" class="js선택_id_버튼45" onclick="선택_id_버튼45(this)"></span>
+        <span style="vertical-align: top;margin-left:5px;margin-top:8px;display:inline-block">당번기능</span></div>
+      <div class="버튼45_span"><span class="버튼45_clear">Clear</span><span class="클릭번호로내보내기">내보내기=>클릭번호들</span></div>
+    </div>
+    <div id="버튼45의2st" class="버튼45css d-none">
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button><span id="선택_id_버튼45_2st" onclick="선택_id_버튼45(this)"></span>
+        <span style="vertical-align: top;margin-left:5px;margin-top:8px;display:inline-block">당번기능</span></div>
+      <div class="버튼45_span"><span class="버튼45_clear">Clear</span><span class="클릭번호로내보내기">내보내기=>클릭번호들</span></div>
+    </div>
+    <div id="버튼45의3st" class="버튼45css d-none">
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button><span id="선택_id_버튼45_3st" onclick="선택_id_버튼45(this)"></span>
+        <span style="vertical-align: top;margin-left:5px;margin-top:8px;display:inline-block">당번기능</span></div>
+      <div class="버튼45_span"><span class="버튼45_clear">Clear</span><span class="클릭번호로내보내기">내보내기=>클릭번호들</span></div>
+    </div>
+  </div>
+</div>
 <div id="버튼45오른쪽단독"  class="d-none" style="position: absolute;top:600px;left:523px;background-color: white;">
   <div class="설명_첫번째div">
     <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><span>keep</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
-          <input class="form-check-input" type="checkbox" value="" id="keep변경">
-          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+          <input class="form-check-input 체크input" type="checkbox" value="" id="keep변경">
+          <label class="form-check-label" style="border:none">변경</label>
         </div>
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_keep"></span>
     </div>
     <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅1번호들')">색칠</button><span>셑팅1</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
-          <input class="form-check-input" type="checkbox" value="" id="keep변경">
-          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+          <input class="form-check-input 체크input" type="checkbox" value="" id="셑팅1변경">
+          <label class="form-check-label" style="border:none">변경</label>
         </div>
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅1_번호들"></span>
     </div>
     <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅2번호들')">색칠</button><span>셑팅2</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
-          <input class="form-check-input" type="checkbox" value="" id="keep변경">
-          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+          <input class="form-check-input 체크input" type="checkbox" value="" id="셑팅2변경">
+          <label class="form-check-label" style="border:none">변경</label>
         </div>
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅2_번호들"></span>
     </div>
     <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('셑팅3번호들')">색칠</button><span>셑팅3</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
-          <input class="form-check-input" type="checkbox" value="" id="keep변경">
-          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+          <input class="form-check-input 체크input" type="checkbox" value="" id="셑팅3변경">
+          <label class="form-check-label" style="border:none">변경</label>
         </div>
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅3_번호들">
       </span>
     </div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('클릭번호들')">색칠</button><span>클릭번호들</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('클릭번호들')">색칠</button><span style="background-color:chocolate;">클릭번호들</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
-          <input class="form-check-input" type="checkbox" value="" id="keep변경">
-          <label class="form-check-label" for="keep변경" style="border:none">변경</label>
+          <input class="form-check-input 체크input" type="checkbox" value="" id="클릭번호들변경">
+          <label class="form-check-label" style="border:none">변경</label>
         </div>
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_클릭번호들"></span>
@@ -132,6 +194,7 @@
       <div class="왼쪽의첫줄">
         <div class="d-inline-block" style="padding-left:5px;">셑팅위치</div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
+          <!-- 여기부터 input에 체크input부여하면 에러난다. for 해주기 -->
           <input class="form-check-input" type="checkbox" value="" checked onchange="셑팅토글(this);" id="keep">
           <label class="form-check-label" for="keep">keep</label>
         </div>
@@ -149,7 +212,7 @@
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="누적">
-          <label class="form-check-label" for="누적" style="background-color: chocolate;">누적</label>
+          <label class="form-check-label" style="background-color: chocolate;" for="누적">누적</label>
         </div>
         <button style="border:1px solid black;width:80px;padding:0px 5px;" onclick="색칠할번호들_clear()">번호clear</button>
       </div>
@@ -157,23 +220,23 @@
         <div class="d-inline-block">색칠할곳</div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="삼십회빈도" checked class="색칠할곳input">
-          <label class="form-check-label" for="삼십회빈도">30회빈도</label>
+          <label class="form-check-label">30회빈도</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="당번표">
-          <label class="form-check-label" for="당번표">당번표</label>
+          <label class="form-check-label">당번표</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="사오1ST">
-          <label class="form-check-label" for="사오1ST">45_1ST</label>
+          <label class="form-check-label">45_1ST</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="사오2ST">
-          <label class="form-check-label" for="사오2ST">45_2ST</label>
+          <label class="form-check-label">45_2ST</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="사오3ST">
-          <label class="form-check-label" for="사오3ST">45_3ST</label>
+          <label class="form-check-label">45_3ST</label>
         </div>
       </div>
       <div class="왼쪽의두번째줄" style="padding:3px 0px;padding-left:5px;">_
@@ -207,7 +270,7 @@
     <div>제목 클릭</div>
     <div onclick="코드셑팅(this)" title="#코드_체크this활용설명">• check_초기설정(), 체크this활용(e), 회차select옵션생성()</div>
     <div onclick="코드셑팅(this)" title="#코드_css관련1">• css관련</div>
-    <div onclick="코드셑팅(this)" title="#코드_코드메모1">• 코드메모1</div>
+    <div onclick="코드셑팅(this)" title="#코드_코드메모1">• .체크input 클래스는 'd-none' 관련만 부여한다.</div>
   </div>
   <div id="코드_클릭한정보call" class="d-inline-block"></div>
   <div class="d-none"><!-- &#60; < -->
@@ -227,10 +290,13 @@
       
       <h6 style="text-indent: 25px;"></h6>
     </div>
-    <div id="코드_코드메모1">
+    <div id="코드_코드메모1" style="font-weight: bold;">
       <h5></h5>
       <h6 style="text-indent: 15px;">• 이동리스트 : 머리글(큰부류), 숨김리스트(이동리스트 포함, 하위 숨김 포함)</h6>
-      <h6 style="text-indent: 15px;">• </h6>
+      <h6 style="text-indent: 15px;">• .체크input : 고정html_구조생성및_초기설정() 에서, check_초기설정 : .체크input checked인것 d-none제거(보이게), .분류 인것 이동리스트에 추가</h6>
+      <h6 style="text-indent: 25px;">1) .체크input 클래스가 있는 input 요소의 다음으로 오는 label에 속성 부여 : for를 input의 id로 (클릭 연동됨)</h6>
+      <h6 style="text-indent: 25px;">2) check_ + 숨길id 형식으로 input의 id가 이루어져 있다. input이 checked 이면 'd-none' 제거 (보이게 한다)</h6>
+      <h6 style="text-indent: 25px;">3) 'd-none' 제거 아닌 경우, input요소에 .체크input 클래스 부여하면 에러난다.</h6>
       <h6 style="text-indent: 25px;"></h6>
     </div>
     <div id="코드_">
@@ -363,8 +429,7 @@
       <input class="form-check-input 체크input" type="checkbox" value="" id="check_삼십빈도당첨">
       <label class="form-check-label">30회당첨</label>
     </div>    
-    <div class="메모메모" contenteditable spellcheck="false">
-      <br><br><br><br><br>
+    <div class="메모메모" style="border:1px solid gray;" contenteditable spellcheck="false">
     </div>    
   </div>
 
@@ -373,8 +438,7 @@
     <div id="분석자료_삼십회23456개수_js">
       
     </div>
-    <div class="메모메모" contenteditable spellcheck="false">
-    <br><br><br><br><br><br>
+    <div class="메모메모" style="border:1px solid gray;width:272px;" contenteditable spellcheck="false">
     </div>
   </div>
   <div id="삼십빈도당첨" class="d-none 숨김리스트 d-inline-block">
@@ -382,8 +446,7 @@
     <div id="분석자료_삼십회당첨개수_js">
       
     </div>
-    <div class="메모메모" contenteditable spellcheck="false">
-    <br><br><br><br><br><br>
+    <div class="메모메모" style="border:1px solid gray;width:233px;" contenteditable spellcheck="false">
     </div>
   </div>
 
@@ -514,14 +577,14 @@
     </div>
     <div>
       <div id="change시_색칠할번호들" class="d-none"></div> <!-- 당번전용....  -->
-      <div id="피해서_선택번호" class="d-none"></div>
-      <div id="피해서_노랑" class="d-none"></div>
-      <div id="피해서_흰색" class="d-none"></div>
-      <div id="keep번호들" class="d-none"></div>
-      <div id="셑팅1번호들" class="d-none"></div>
-      <div id="셑팅2번호들" class="d-none"></div>
-      <div id="셑팅3번호들" class="d-none"></div>
-      <div id="클릭번호들" class="d-none"></div>
+      <div id="피해서_선택번호"></div>
+      <div id="피해서_노랑"></div>
+      <div id="피해서_흰색"></div>
+      <div id="keep번호들_변수포함"></div><div id="keep번호들"></div>
+      <div id="셑팅1번호들_변수포함"></div><div id="셑팅1번호들"></div>
+      <div id="셑팅2번호들_변수포함"></div><div id="셑팅2번호들"></div>
+      <div id="셑팅3번호들_변수포함"></div><div id="셑팅3번호들"></div>
+      <div id="클릭번호들_변수포함"></div><div id="클릭번호들"></div>
     </div>
   </div>
 </div>

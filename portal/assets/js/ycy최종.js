@@ -9,14 +9,12 @@ if ('초기설정' == '초기설정') {
   //변수명순서대로 : 5주출관련, 30주출관련 정보가 여러번 쓰이기때문에 순서를 사용하기위함. forEach에서 체이닝이 안되어서 
   var 변수명순서대로=[];document.querySelectorAll('#당번변수 > div').forEach(요소=> {변수명순서대로.push(요소.classList[0]);})
 
-  check_초기설정();//모두숨김상태에서 input checked 인 것만 d-none 제거
-  회차select옵션생성();
-
-  //당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
-  고정html_구조생성();
+  //회차select옵션생성, check_초기설정, 당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
+  고정html_구조생성및_초기설정();
 
     var 최근회차=document.querySelectorAll('#당번_회차select option').length-1;
     var 회차=최근회차;
+    var 드래그이동요소=document.querySelector('#버튼45오른쪽단독');
 
   당번_회차change설정();
   분석자료_회차change설정();
@@ -24,8 +22,8 @@ if ('초기설정' == '초기설정') {
   var 숨김버튼값='';
 }
 var 리스너_바디=document.querySelector('body');
-var 색칠하기=document.querySelector('#버튼45오른쪽단독');
-
+var 드래그이동_버튼45오른쪽단독=document.querySelector('#버튼45오른쪽단독');
+var 드래그이동_버튼45감싸기=document.querySelector('#버튼45감싸기');
 
 function 연습() {
   var 변수=document.querySelector('#버튼45오른쪽단독');
@@ -34,6 +32,9 @@ function 연습() {
 
 
 
+}
+function 색칠하기(전달문자) {
+  console.log('색칠하기 : ' + 전달문자)
 }
 function 따라가기위치설정() {
   var 버튼45오른쪽단독top숫자=parseInt(document.querySelector('#버튼45오른쪽단독').style.top.replace(/px/g, '')) || 0;
@@ -774,7 +775,19 @@ function 회차change설정_보류() {
   }
 }
 
-function 고정html_구조생성() {
+function 고정html_구조생성및_초기설정() {
+  //회차select옵션생성
+  let 옵션 = $('#당번숨김_안에_저장중').html().split(',').reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
+  $('#당번_회차select, #분석자료_회차select').html(옵션);
+
+  //check_초기설정 : .체크input checked인것 d-none제거(보이게), .분류 인것 이동리스트에 추가
+  $('.체크input').each(function() {
+    $(this).next('label').attr('for', this.id);
+    this.checked && $('#' + this.id.slice(6))?.removeClass('d-none');
+  });
+  const html = $('.이동리스트').map((_, el) => `<div>${el.id}</div>`).get().join('');
+  $('#이동할위치div리스트, #이동할div리스트').html(html);
+
   const 당번한줄html=`<div><span class="당번회차 d-inline-block"><button style="width:45px;font-weight:lighter;"></button></span><span 
   class="당번만 d-inline-block"><button></button><button></button><button></button><button></button><button></button><button></button></span><span 
   class="보볼 d-inline-block"><button style="font-weight:lighter;"></button></span></div>`
@@ -892,16 +905,6 @@ function 이동클릭관련(e) {
   e.classList.contains('active') ? e.classList.remove('active') :
     (e.parentElement.querySelector('.active')?.classList.remove('active'), e.classList.add('active'));
 }
-function check_초기설정() {
-  //.체크input checked인것 d-none제거(보이게), .분류 인것 이동리스트에 추가
-  $('.체크input').each(function() {
-    $(this).next('label').attr('for', this.id);
-    this.checked && $('#' + this.id.slice(6)).removeClass('d-none');
-  });
-  //const html = $('.이동리스트').map((_, el) => `<div onclick="이동클릭관련(this)">${el.id}</div>`).get().join('');
-  const html = $('.이동리스트').map((_, el) => `<div>${el.id}</div>`).get().join('');
-  $('#이동할위치div리스트, #이동할div리스트').html(html);
-}
 function 코드셑팅(e) {
   const $e = $(e);
   if ($e.toggleClass('active').hasClass('active'))
@@ -920,17 +923,12 @@ function 체크this활용(e) {
     }
   }
 }
-function 회차select옵션생성() {//마지막 하나 제거하려면 .slice(0, -1)
-  let 옵션 = $('#당번숨김_안에_저장중').html().split(',').reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
-  $('#당번_회차select, #분석자료_회차select').html(옵션);
-}
+
 function 분석및당번change후_색칠번호변경() {
   //keep번호들, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 변경체크되어 있을때
 
 }
-function 색칠하기_click(e) {
 
-}
 function 킵_보기숨기기(e) {
   var 버튼들=document.querySelectorAll('.설명_왼쪽div_버튼5개 > button');
   if (e.classList.contains('js숨김')) {e.classList.remove('js숨김')} else {e.classList.add('js숨김')}
@@ -969,12 +967,21 @@ function 셑팅토글(e) {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
+  if (e.target.parentElement.id=='삼십회횟수기록') {
+    if (e.target.classList.contains('삼십회횟수같은거')) {
+       Array.from($('#삼십회횟수기록').children()).forEach(요소 => {요소.classList.remove('삼십회횟수같은거')});
+       return;
+    }
+    Array.from($('#삼십회횟수기록').children()).forEach(요소 => {요소.classList.remove('삼십회횟수같은거')});
+    Array.from($('#삼십회횟수기록').children()).forEach(요소 => {if(요소.innerHTML==e.target.innerHTML) {요소.classList.add('삼십회횟수같은거')}})
+  }
+  if (e.target.parentElement.classList.contains('설명_왼쪽div') && ['keep','셑팅1','셑팅2','셑팅3'].includes(e.target.innerHTML)) {
+    console.log('keep, 셑팅1, 셑팅2, 셑팅3 인 경우')
+    
+  }
   if (e.target.parentElement.id=='분석자료숨김버튼' || e.target.parentElement.id=='분석자료_다음회차') {
     숨김버튼값=e.target.innerText; 분석자료_버튼클릭시_상하_숨김동작();
   }
-
-
-
   if (e.target.classList.contains('카운팅')) {
     console.log('리스너_바디_click(e) : 카운팅 클래스 있을때')
     var 현재=Number(e.target.innerHTML);
@@ -995,67 +1002,127 @@ function 리스너_바디_click(e) {
      (e.target.parentElement.querySelector('.active')?.classList.remove('active'), e.target.classList.add('active'));
   }
 }
-  function mousedownOrTouchstart(e) {
-    // 터치 이벤트인지 마우스 이벤트인지 확인
-    var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
-    console.log('e.type : ' + e.type)
-    var target=색칠하기;//#버튼45오른쪽단독
-    var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
-    // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
+function mousedownOrTouchstart(e) {
+  // 터치 이벤트인지 마우스 이벤트인지 확인
+  var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
+  console.log('e.type : ' + e.type)
+  var target=드래그이동_버튼45오른쪽단독;//#버튼45오른쪽단독
+  var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
+  // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
 
-    var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0; //top은 12px 처럼 나타나는데 px를 뺀 숫자만 추출함
-    var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0; // || 0 은 추출실패하여 에러나 undefined인 경우 0을 추출함
-    //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
-    //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
-    //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
-    var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY; //e.touches[0].clientY는 모바일에서 pc의 e.clientY의 값이다.
-    var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX; //물음표는 isTouchEvent가 true일때 : 앞쪽꺼, false일때 : 뒤쪽꺼로 설정
-    // 부모 요소의 경계를 확인 (마우스이벤트예제div), 이거 안씀, 드래그 한계범위 설정시 사용
-    var 부모_경계 = target.getBoundingClientRect();
-    var 상자_너비 = target.offsetWidth;
-    var 상자_높이 = target.offsetHeight;
-    function 마우스moveOrTouchmove(e) {
-        if (!isDragging) return;
-        // 화면 스크롤 방지 (모바일)
-        if (isTouchEvent) { //모바일에서 작동하는것
-            e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
-            //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
-        }
-        // 터치 이벤트인지 마우스 이벤트인지 확인
-        var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
-        var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
-        var 첫마우스에서y이동거리 = move_y - 첫마우스y;
-        var 첫마우스에서x이동거리 = move_x - 첫마우스x;
-        // 새로운 위치 계산
-        var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
-        var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
-        // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
-        // 부모_경계, 상자-너비, 상자_높이 적용하지 않았으니 경계조건은 제한이 없는 상태이다.
-        if (새로운_상자_위치_y < 0) {
-            새로운_상자_위치_y = 0;
-        }
-        if (새로운_상자_위치_x < 0) {
-            새로운_상자_위치_x = 0;
-        }
-        // 상자 위치 적용
-        target.style.top = 새로운_상자_위치_y + 'px';
-        target.style.left = 새로운_상자_위치_x + 'px';
-    }
-
-    function 마우스upOrTouchend() {
-      따라가기위치설정();
-        //if (!isDragging) return;
-        isDragging = false;
-        // 이벤트 제거
-        window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
-        window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
-    }
-
-    // 이벤트 추가
-    window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
-    window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+  var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0; //top은 12px 처럼 나타나는데 px를 뺀 숫자만 추출함
+  var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0; // || 0 은 추출실패하여 에러나 undefined인 경우 0을 추출함
+  //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
+  //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+  //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+  var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY; //e.touches[0].clientY는 모바일에서 pc의 e.clientY의 값이다.
+  var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX; //물음표는 isTouchEvent가 true일때 : 앞쪽꺼, false일때 : 뒤쪽꺼로 설정
+  // 부모 요소의 경계를 확인 (마우스이벤트예제div), 이거 안씀, 드래그 한계범위 설정시 사용
+  var 부모_경계 = target.getBoundingClientRect();
+  var 상자_너비 = target.offsetWidth;
+  var 상자_높이 = target.offsetHeight;
+  function 마우스moveOrTouchmove(e) {
+      if (!isDragging) return;
+      // 화면 스크롤 방지 (모바일)
+      if (isTouchEvent) { //모바일에서 작동하는것
+          e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
+          //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+      }
+      // 터치 이벤트인지 마우스 이벤트인지 확인
+      var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+      var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+      var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+      var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+      // 새로운 위치 계산
+      var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+      var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+      // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+      // 부모_경계, 상자-너비, 상자_높이 적용하지 않았으니 경계조건은 제한이 없는 상태이다.
+      if (새로운_상자_위치_y < 0) {
+          새로운_상자_위치_y = 0;
+      }
+      if (새로운_상자_위치_x < 0) {
+          새로운_상자_위치_x = 0;
+      }
+      // 상자 위치 적용
+      target.style.top = 새로운_상자_위치_y + 'px';
+      target.style.left = 새로운_상자_위치_x + 'px';
   }
+
+  function 마우스upOrTouchend() {
+    따라가기위치설정();
+      //if (!isDragging) return;
+      isDragging = false;
+      // 이벤트 제거
+      window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+      window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+  }
+
+  // 이벤트 추가
+  window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+  window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+}
+function mousedownOrTouchstart2(e) {
+  // 터치 이벤트인지 마우스 이벤트인지 확인
+  var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
+  console.log('e.type : ' + e.type)
+  var target=드래그이동_버튼45감싸기;//#버튼45오른쪽단독
+  var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
+  // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
+
+  var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0; //top은 12px 처럼 나타나는데 px를 뺀 숫자만 추출함
+  var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0; // || 0 은 추출실패하여 에러나 undefined인 경우 0을 추출함
+  //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
+  //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+  //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+  var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY; //e.touches[0].clientY는 모바일에서 pc의 e.clientY의 값이다.
+  var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX; //물음표는 isTouchEvent가 true일때 : 앞쪽꺼, false일때 : 뒤쪽꺼로 설정
+  // 부모 요소의 경계를 확인 (마우스이벤트예제div), 이거 안씀, 드래그 한계범위 설정시 사용
+  var 부모_경계 = target.getBoundingClientRect();
+  var 상자_너비 = target.offsetWidth;
+  var 상자_높이 = target.offsetHeight;
+  function 마우스moveOrTouchmove(e) {
+      if (!isDragging) return;
+      // 화면 스크롤 방지 (모바일)
+      if (isTouchEvent) { //모바일에서 작동하는것
+          e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
+          //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+      }
+      // 터치 이벤트인지 마우스 이벤트인지 확인
+      var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+      var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+      var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+      var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+      // 새로운 위치 계산
+      var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+      var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+      // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+      // 부모_경계, 상자-너비, 상자_높이 적용하지 않았으니 경계조건은 제한이 없는 상태이다.
+      if (새로운_상자_위치_y < 0) {
+          새로운_상자_위치_y = 0;
+      }
+      if (새로운_상자_위치_x < 0) {
+          새로운_상자_위치_x = 0;
+      }
+      // 상자 위치 적용
+      target.style.top = 새로운_상자_위치_y + 'px';
+      target.style.left = 새로운_상자_위치_x + 'px';
+  }
+
+  function 마우스upOrTouchend() {
+      //if (!isDragging) return;
+      isDragging = false;
+      // 이벤트 제거
+      window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+      window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+  }
+
+  // 이벤트 추가
+  window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+  window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+}
 리스너_바디.addEventListener('mousedown',리스너_바디_click);
-색칠하기.addEventListener('mousedown', mousedownOrTouchstart);
-색칠하기.addEventListener('touchstart', mousedownOrTouchstart);
-색칠하기.addEventListener('click', 색칠하기_click);
+드래그이동_버튼45오른쪽단독.addEventListener('mousedown', mousedownOrTouchstart);
+드래그이동_버튼45오른쪽단독.addEventListener('touchstart', mousedownOrTouchstart);
+드래그이동_버튼45감싸기.addEventListener('mousedown', mousedownOrTouchstart2);
+드래그이동_버튼45감싸기.addEventListener('touchstart', mousedownOrTouchstart2);
