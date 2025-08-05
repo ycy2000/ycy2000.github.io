@@ -146,7 +146,7 @@
 </div>
 <div id="버튼45오른쪽단독"  class="d-none" style="position: absolute;top:600px;left:523px;background-color: white;">
   <div class="설명_첫번째div">
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><span>keep</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('keep번호들')">색칠</button><span class="초코">keep</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
           <input class="form-check-input 체크input" type="checkbox" value="" id="keep변경">
           <label class="form-check-label" style="border:none">변경</label>
@@ -189,26 +189,26 @@
     </div>
     <div class="설명_가로한줄"><span class="설명_왼쪽div_버튼5개"><button onclick="킵_보기숨기기(this)">1</button><button onclick="킵_보기숨기기(this)">2</button><button onclick="킵_보기숨기기(this)">3</button><button onclick="킵_보기숨기기(this)">4</button><button onclick="킵_보기숨기기(this)">5</button><button>순번</button></span><span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_순번"></span></div>
   </div>
-  <div class="설명_두번째div"  style="border:1px solid black;font-weight: bold;">
+  <div class="설명_두번째div"  style="border:1px solid black;font-weight: bold;width:1256px;">
     <div class="왼쪽 d-inline-block" style="margin-top:5px;">
       <div class="왼쪽의첫줄">
         <div class="d-inline-block" style="padding-left:5px;">셑팅위치</div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <!-- 여기부터 input에 체크input부여하면 에러난다. for 해주기 -->
-          <input class="form-check-input" type="checkbox" value="" checked onchange="셑팅토글(this);" id="keep">
-          <label class="form-check-label" for="keep">keep</label>
+          <input class="form-check-input" type="checkbox" value="" checked onchange="셑팅토글(this);" id="keep_input">
+          <label class="form-check-label" for="keep_input">keep</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅1">
-          <label class="form-check-label" for="셑팅1">셑팅1</label>
+          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅1_input">
+          <label class="form-check-label" for="셑팅1_input">셑팅1</label>
         </div>
         <div class="form-check d-inline-block"  style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅2">
-          <label class="form-check-label" for="셑팅2">셑팅2</label>
+          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅2_input">
+          <label class="form-check-label" for="셑팅2_input">셑팅2</label>
         </div>
         <div class="form-check d-inline-block"  style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅3">
-          <label class="form-check-label" for="셑팅3">셑팅3</label>
+          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅3_input">
+          <label class="form-check-label" for="셑팅3_input">셑팅3</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="누적">
@@ -254,13 +254,13 @@
         <div onclick="
           document.querySelector('#셑팅번호설명').classList.add('d-none');
           document.querySelector('#셑팅번호설명보기').classList.remove('d-none');
-          따라가기위치설정();"><span>keep:</span>
+          따라가기위치설정();"><span>keep:</span><span id="keep번호들_변수포함"></span><span id="keep번호들" class="d-none"></span>
         </div>
-        <div><span>셑팅1:</span></div>
-        <div><span>셑팅2:</span></div>
-        <div><span>셑팅3:</span></div>
+        <div><span>셑팅1:</span><span id="셑팅1번호들_변수포함"></span><span id="셑팅1번호들" class="d-none"></span></div>
+        <div><span>셑팅2:</span><span id="셑팅2번호들_변수포함"></span><span id="셑팅2번호들" class="d-none"></span></div>
+        <div><span>셑팅3:</span><span id="셑팅3번호들_변수포함"></span><span id="셑팅3번호들" class="d-none"></span></div>
+        <div><span>클릭번호들:</span><span id="클릭번호들_변수포함"></span><span id="클릭번호들" class="d-none"></span></div>
       </div>
-
     </div>
   </div>
 </div>

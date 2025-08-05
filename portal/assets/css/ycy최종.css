@@ -38,15 +38,18 @@ body > div {display:inline-block}
 
 /* #분석자료_삼십회표_js */
 #분석자료_삼십회표_js > div > button:nth-of-type(1) {width:40px;}
-#분석자료_삼십회표_js > div > button {border:1px solid gray; font-weight: bold;}
-#분석자료_삼십회표_js > div:nth-of-type(1) > button {background-color:rgb(231, 218, 218)}
-#분석자료_삼십회표_js > div:nth-of-type(2) > button {background-color:chartreuse;margin-top:1px;}
-#분석자료_삼십회표_js .장미 > button, #분석자료_삼십회표_js .출1 > button, #분석자료_삼십회표_js .출3 > button {background-color:rgb(231, 218, 218)}
+#분석자료_삼십회표_js > div > button {font-weight: bold;}
+#분석자료_삼십회표_js > div > button:not(.분석):not(.분석덧칠) {border:1px solid gray;}
+#분석자료_삼십회표_js > div:nth-of-type(1) > button:not(.분석):not(.분석덧칠) {background-color:rgb(231, 218, 218)}
+#분석자료_삼십회표_js > div:nth-of-type(2) > button {margin-top:1px;}
+#분석자료_삼십회표_js > div:nth-of-type(2) > button:not(.분석):not(.분석덧칠) {background-color:chartreuse;}
+#분석자료_삼십회표_js .장미 > button:not(.분석):not(.분석덧칠), #분석자료_삼십회표_js .출1 > button:not(.분석):not(.분석덧칠), 
+#분석자료_삼십회표_js .출3 > button:not(.분석):not(.분석덧칠) {background-color:rgb(231, 218, 218)}
 .첫장미, .첫출0, .첫출1, .첫출2, .첫출3 {margin-top:1px;}
 #분석자료_삼십회표_js > div > button:nth-of-type(5),#분석자료_삼십회표_js > div > button:nth-of-type(8)
 {margin-left:1px;}
-#분석자료_삼십회표_js > div > button:nth-of-type(5), #분석자료_삼십회표_js > div > button:nth-of-type(6),
-#분석자료_삼십회표_js > div > button:nth-of-type(7)
+#분석자료_삼십회표_js > div > button:nth-of-type(5):not(.분석):not(.분석덧칠), #분석자료_삼십회표_js > div > button:nth-of-type(6):not(.분석):not(.분석덧칠),
+#분석자료_삼십회표_js > div > button:nth-of-type(7):not(.분석):not(.분석덧칠)
 {background-color: bisque;}
 /* #분석자료_삼십회23456개수_js */
 #분석자료_삼십회23456개수_js > div > button:nth-of-type(1) {width:40px;}
@@ -143,6 +146,7 @@ body > div {display:inline-block}
 #코드_클릭한정보call * {font-weight: bold;}
 
 
+/* #분석자료_삼십회표_js > div:not(:first-child):not(:nth-of-type(2)) > button {color:aliceblue} */
 
 
 
@@ -152,8 +156,7 @@ body > div {display:inline-block}
 
 
 
-
-
+.초코 {background-color: chocolate;}
 .js숨김 {background-color: chocolate;}
 .분석 {background-color:cadetblue;}
 .분석덧칠 {background-color:cornflowerblue;}
