@@ -31,26 +31,69 @@ function 연습() {
   var 변수 = document.querySelector('#버튼45오른쪽단독');
   변수.setAttribute('class', 'd d d d d d d d')
 }
-function 색칠하기(전달문자) {
-  console.log('색칠하기 : ' + 전달문자)
-  document.querySelector('#클릭번호들_변수포함').innerHTML = 전달문자;
-  var 변수 = ['keep_input/#keep번호들_변수포함', '셑팅1_input/#셑팅1번호들_변수포함', 
-              '셑팅2_input/#셑팅2번호들_변수포함', '셑팅3_input/#셑팅3번호들_변수포함'];
-  var 체크index='';
+function 색칠하기(색칠아이디) {
+  console.log('선택 : ' + 색칠아이디)
+  var 색칠할번호들=document.querySelector(색칠아이디).innerHTML.split(',');
+  console.log(색칠할번호들)
+}
+function 색칠할번호들_clear() {
+  var 변수 = ['#keep번호들_변수포함/#keep번호들', '#셑팅1번호들_변수포함/#셑팅1번호들', 
+              '#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3번호들_변수포함/#셑팅3번호들',
+              '#클릭번호들_변수포함/#클릭번호들'];
   변수.forEach((문자열, 인덱스) => {
-    if (document.querySelector('#' + 문자열.split('/')[0]).checked) { 체크index = 인덱스 }
+    document.querySelector(문자열.split('/')[0]).innerHTML='';
+    document.querySelector(문자열.split('/')[1]).innerHTML='';
   });
-  var 기록할곳=document.querySelector(변수[체크index].split('/')[1]);
+}
+function 색칠셑팅(색칠문자열) {
+  console.log('색칠셑팅 : ' + 색칠문자열)
+  document.querySelector('#클릭번호들_변수포함').innerHTML = 색칠문자열;
+  //[0]색칠할번호들 정하기, [1]변경여부 판단, [2]변수포함 번호, [3]번호로 변환된곳
+  var 변수 = ['#keep_input/#keep변경/#keep번호들_변수포함/#keep번호들', '#셑팅1_input/#셑팅1변경/#셑팅1번호들_변수포함/#셑팅1번호들', 
+              '#셑팅2_input/#셑팅2변경/#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3_input/#셑팅3변경/#셑팅3번호들_변수포함/#셑팅3번호들',
+              '_/#클릭번호들변경/#클릭번호들_변수포함/#클릭번호들'];
+  var 체크index='';
+  //색칠할번호들 정하기
+  변수.forEach((문자열, 인덱스) => {if (document.querySelector(문자열.split('/')[0])?.checked) {체크index = 인덱스 ;};});
+  //색칠할곳으로선택된 곳이면,, 아니면,,
+  var 선택한곳변수형식=document.querySelector(변수[체크index].split('/')[2]);
   if (document.querySelector('#누적').checked) {
-        if (기록할곳.innerHTML.split(',').includes(전달문자)) {
+        if (선택한곳변수형식.innerHTML.split(',').includes(색칠문자열)) {
           //같은게 있으면 안쓴다
         } else {
-          if (기록할곳.innerHTML=='') 기록할곳.innerHTML=전달문자;
-          else 기록할곳.innerHTML+=','+전달문자;
+          if (선택한곳변수형식.innerHTML=='') 선택한곳변수형식.innerHTML=색칠문자열;
+          else 선택한곳변수형식.innerHTML+=','+색칠문자열;
         }
     } else { //누적체크 해제일때
-      기록할곳.innerHTML=전달문자;
+      선택한곳변수형식.innerHTML=색칠문자열;
   }
+  // 변경체크 확인하는데 : 선택한곳은 상관없이 변경하고 나머지 변경체크한곳은 변경한다.
+  var 풀기완료문자열;
+  var 숫자로푼요소;
+  변수.forEach((문자열, 인덱스) => {
+    풀기완료문자열='';
+    숫자로푼요소=document.querySelector(문자열.split('/')[3]);
+    if (document.querySelector(문자열.split('/')[1]).checked || 문자열.split('/')[2]==변수[체크index].split('/')[2]) {
+      //변경
+      document.querySelector(문자열.split('/')[3]).innerHTML='';//초기화 시켜둔다.
+      document.querySelector(문자열.split('/')[2]).innerHTML.split(',').forEach ( 숫자또는문자 => {
+
+        console.log(문자열.split('/')[3]);
+
+
+
+      });
+
+
+
+
+
+
+
+    }
+  });
+
+  색칠문자열=''; //초기화
 }
 
 function 분석자료_삼십회표3종_작성_미완성() {
@@ -1008,7 +1051,7 @@ function 리스너_바디_click(e) {
       e.target.classList.add('선택');
       색칠id = '#분석자료변수'; 색칠class = ' .공통변수_30주' + e.target.innerHTML + '출';
       색칠문자열 = 색칠id + 색칠class;
-      색칠하기(색칠문자열);
+      색칠셑팅(색칠문자열);
     }
   }
   if (e.target.parentElement.id == '삼십회횟수기록') {
