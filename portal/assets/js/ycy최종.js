@@ -72,11 +72,19 @@ function 셑팅2_번호45오른쪽_변경() {
   });
 }
 function 색칠하기(색칠아이디) {
-  // keep, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 변경하거나 그대로 
-  // 색칠아이디 번호들 색칠, 색칠할곳 체크 된 곳들 . 분석 클래스 부여
-  console.log('선택 : ' + 색칠아이디)
-  var 색칠할번호들=document.querySelector(색칠아이디).innerHTML.split(',');
-  console.log(색칠할번호들)
+  var 체크확인배열=['#keep_input','#셑팅1_input','#셑팅2_input','#셑팅3_input']
+  var 색칠할번호배열=['#keep_input','#셑팅1_input','#셑팅2_input','#셑팅3_input']
+  var 인덱스;
+  체크확인배열.forEach ( (아이디,y) => {
+    if (document.querySelector(아이디).checked) {인덱스=y}
+  });
+  var 색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
+  var 색칠할곳체크배열=['#삼십회빈도','#당번표','#사오1ST','#사오2ST','#사오3ST'];
+  var 색칠할곳id배열=['#분석자료_삼십회표_js > div:not(:first-child):not(:nth-of-type(2)) > button',
+                   '.당번만 > button'];
+
+
+
 }
 
 
@@ -668,155 +676,8 @@ function 당번_회차change설정() {
 
   셑팅2_번호45오른쪽_변경();
 }
-function gpt() {
-  for (let i = 0; i < 45; i++) {
-    const 숫자 = i + 1;
-
-    const 출현정보 = [
-      { 출개수: 오주당번모음.filter(n => n === 숫자).length, 인덱스: [4, 5, 6, 7, 8], 기준: [v => v > 0, v => v == 0, v => v == 1, v => v == 2, v => v > 2] },
-      { 출개수: 십주당번모음.filter(n => n === 숫자).length, 인덱스: [9], 기준: [v => v == 0] },
-      { 출개수: 십오주당번모음.filter(n => n === 숫자).length, 인덱스: [10], 기준: [v => v == 0] },
-      {
-        출개수: 삼십주당번모음.filter(n => n === 숫자).length,
-        인덱스: Array.from({ length: 13 }, (_, k) => 11 + k), // 11 ~ 23
-        기준: Array.from({ length: 13 }, (_, k) => v => v === k) // 출현개수 0~12까지
-      }
-    ];
-
-    출현정보.forEach(({ 출개수, 인덱스, 기준 }) => {
-      기준.forEach((조건, idx) => {
-        if (조건(출개수)) {
-          const 변수명 = 변수명순서대로[인덱스[idx]];
-          document.querySelector(`${부모id} .${변수명}`).innerHTML += 숫자 + ',';
-          const 개수셀 = document.querySelector(`${개수id} .${변수명}`);
-          개수셀.innerHTML = Number(개수셀.innerHTML) + 1;
-        }
-      });
-    });
-  }
-}
-function 회차change설정_보류() {
-  if (아이디 == '당번플러스') { if (회차 > 최근회차) { alert('최근회차입니다'); return; } }
-  if (아이디 == '분석플러스') { if (회차 > 최근회차) { alert('최근회차입니다'); return; } }
-
-  if (설정유형 == '당번') { document.querySelector('#당번_회차select').value = 회차; }
-  if (설정유형 == '분석') { document.querySelector('#분석자료_회차select').value = 회차; }
-  var 범용당번배열 = $('#당번숨김_안에_저장중').html().split(','); 범용당번배열.pop(); //마지막 배열값 제거(빈거)
-
-  var 당번 = [], _이웃 = [], _당번플러스이웃 = [], _5주출 = [], _5주0출 = [], _5주1출 = [], _5주2출 = [], _5주3출이상 = [], _10주0출 = [], _15주0출 = [];
-  var 삼십_00 = [], 삼십_01 = [], 삼십_02 = [], 삼십_03 = [], 삼십_04 = [], 삼십_05 = [], 삼십_06 = [], 삼십_07 = [], 삼십_08 = [], 삼십_09 = [], 삼십_10 = [], 삼십_11 = [], 삼십_12 = [];
-  var 삼십주번호들 = [], 오주번호들 = [], 십주번호들 = [], 십오주번호들 = [];
-  for (var i = 0; i < 30; i++) {
-    for (var 추출 = 2; 추출 < 8; 추출++) {
-      if (i == 0) { 당번.push(범용당번배열[Number(회차) - i].split('_')[추출].trim()) }
-      if (i < 5) { 오주번호들.push(범용당번배열[Number(회차) - i].split('_')[추출].trim()) }
-      if (i < 10) { 십주번호들.push(범용당번배열[Number(회차) - i].split('_')[추출].trim()) }
-      if (i < 15) { 십오주번호들.push(범용당번배열[Number(회차) - i].split('_')[추출].trim()) }
-      삼십주번호들.push(범용당번배열[Number(회차) - i].split('_')[추출].trim())
-    }
-  }
-  for (i = 0; i < 45; i++) {
-    var 오주출개수 = 오주번호들.filter(번호 => 번호 == (i + 1)).length;
-    var 십주0출개수 = 십주번호들.filter(번호 => 번호 == (i + 1)).length;
-    var 십오주0출개수 = 십오주번호들.filter(번호 => 번호 == (i + 1)).length;
-    var 삼십주출개수 = 삼십주번호들.filter(번호 => 번호 == (i + 1)).length;
-    if (오주출개수 == 0) { _5주0출.push((i + 1)) }
-    if (오주출개수 > 0) { _5주출.push((i + 1)) }
-    if (오주출개수 == 1) { _5주1출.push((i + 1)) }
-    if (오주출개수 == 2) { _5주2출.push((i + 1)) }
-    if (오주출개수 > 2) { _5주3출이상.push((i + 1)) }
-    if (십주0출개수 == 0) { _10주0출.push((i + 1)) }
-    if (십오주0출개수 == 0) { _15주0출.push((i + 1)) }
-    if (삼십주출개수 == 0) { 삼십_00.push((i + 1)) }
-    if (삼십주출개수 == 1) { 삼십_01.push((i + 1)) }
-    if (삼십주출개수 == 2) { 삼십_02.push((i + 1)) }
-    if (삼십주출개수 == 3) { 삼십_03.push((i + 1)) }
-    if (삼십주출개수 == 4) { 삼십_04.push((i + 1)) }
-    if (삼십주출개수 == 5) { 삼십_05.push((i + 1)) }
-    if (삼십주출개수 == 6) { 삼십_06.push((i + 1)) }
-    if (삼십주출개수 == 7) { 삼십_07.push((i + 1)) }
-    if (삼십주출개수 == 8) { 삼십_08.push((i + 1)) }
-    if (삼십주출개수 == 9) { 삼십_09.push((i + 1)) }
-    if (삼십주출개수 == 10) { 삼십_10.push((i + 1)) }
-    if (삼십주출개수 == 11) { 삼십_11.push((i + 1)) }
-    if (삼십주출개수 == 12) { 삼십_12.push((i + 1)) }
-  }
-  if (설정유형 == '당번') {
-    //다음회차 위치
-    if (범용당번배열[회차 + 1]) {
-      for (var i = 0; i < 8; i++) {
-        if (i == 0) { document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML = 범용당번배열[회차 + 1].split('_')[i] }
-        if (i > 0) { document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML = 범용당번배열[회차 + 1].split('_')[i + 1] }
-      }
-    } else {
-      for (var i = 0; i < 8; i++) {
-        document.querySelectorAll('#당번_다음회차 > div > div > div')[i].innerHTML = '_';
-      }
-    }
-    //30회분 번호
-    for (var 삼십번 = 0; 삼십번 < 30; 삼십번++) {
-      for (var i = 0; i < 8; i++) {
-        if (i == 0) { document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번 + 1) + ') > div > div')[i].innerHTML = 범용당번배열[회차 - 삼십번].split('_')[i] }
-        if (i > 0) { document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번 + 1) + ') > div > div')[i].innerHTML = 범용당번배열[회차 - 삼십번].split('_')[i + 1] }
-      }
-    }
-    //5주변수, 30주변수 넣기
-    document.querySelector('#당번_변수_당번').innerHTML = 당번.join(',');
-    document.querySelector('#당번_변수_이웃').innerHTML = 당번.join(',');
-    document.querySelector('#당번_변수_당번이웃').innerHTML = 당번.join(',');
-    document.querySelector('#당번_변수_5주출').innerHTML = _5주출.join(',');
-    document.querySelector('#당번_변수_5주0출').innerHTML = _5주0출.join(',');
-    document.querySelector('#당번_변수_5주1출').innerHTML = _5주1출.join(',');
-    document.querySelector('#당번_변수_5주2출').innerHTML = _5주2출.join(',');
-    document.querySelector('#당번_변수_5주3출').innerHTML = _5주3출이상.join(',');
-    document.querySelector('#당번_변수_10주0출').innerHTML = _10주0출.join(',');
-    document.querySelector('#당번_변수_15주0출').innerHTML = _15주0출.join(',');
-    document.querySelector('#당번_변수_30주0출').innerHTML = 삼십_00.join(',');
-    document.querySelector('#당번_변수_30주1출').innerHTML = 삼십_01.join(',');
-    document.querySelector('#당번_변수_30주2출').innerHTML = 삼십_02.join(',');
-    document.querySelector('#당번_변수_30주3출').innerHTML = 삼십_03.join(',');
-    document.querySelector('#당번_변수_30주4출').innerHTML = 삼십_04.join(',');
-    document.querySelector('#당번_변수_30주5출').innerHTML = 삼십_05.join(',');
-    document.querySelector('#당번_변수_30주6출').innerHTML = 삼십_06.join(',');
-    document.querySelector('#당번_변수_30주7출').innerHTML = 삼십_07.join(',');
-    document.querySelector('#당번_변수_30주8출').innerHTML = 삼십_08.join(',');
-    document.querySelector('#당번_변수_30주9출').innerHTML = 삼십_09.join(',');
-    document.querySelector('#당번_변수_30주10출').innerHTML = 삼십_10.join(',');
-    document.querySelector('#당번_변수_30주11출').innerHTML = 삼십_11.join(',');
-    document.querySelector('#당번_변수_30주12출').innerHTML = 삼십_12.join(',');
-    //오른쪽에 오주관련개수 넣기, 30주관련 개수 넣기
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(2) > button:nth-of-type(2)').innerHTML = 당번.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(3) > button:nth-of-type(2)').innerHTML = 당번.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(4) > button:nth-of-type(2)').innerHTML = 당번.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(5) > button:nth-of-type(2)').innerHTML = _5주출.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(6) > button:nth-of-type(2)').innerHTML = _5주0출.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(7) > button:nth-of-type(2)').innerHTML = _5주1출.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(8) > button:nth-of-type(2)').innerHTML = _5주2출.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(9) > button:nth-of-type(2)').innerHTML = _5주3출이상.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(10) > button:nth-of-type(2)').innerHTML = _10주0출.length;
-    document.querySelector('#당번_오주연결버튼 > div:nth-of-type(11) > button:nth-of-type(2)').innerHTML = _15주0출.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(2) > button:nth-of-type(2)').innerHTML = 삼십_00.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(3) > button:nth-of-type(2)').innerHTML = 삼십_01.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(4) > button:nth-of-type(2)').innerHTML = 삼십_02.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(5) > button:nth-of-type(2)').innerHTML = 삼십_03.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(6) > button:nth-of-type(2)').innerHTML = 삼십_04.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(7) > button:nth-of-type(2)').innerHTML = 삼십_05.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(8) > button:nth-of-type(2)').innerHTML = 삼십_06.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(9) > button:nth-of-type(2)').innerHTML = 삼십_07.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(10) > button:nth-of-type(2)').innerHTML = 삼십_08.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(11) > button:nth-of-type(2)').innerHTML = 삼십_09.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(12) > button:nth-of-type(2)').innerHTML = 삼십_10.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(13) > button:nth-of-type(2)').innerHTML = 삼십_11.length;
-    document.querySelector('#당번_삼십주연결버튼 > div:nth-of-type(14) > button:nth-of-type(2)').innerHTML = 삼십_12.length;
-  }
-}
 
 
-
-function 분석및당번change후_색칠번호변경() {
-  //keep번호들, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 변경체크되어 있을때
-
-}
 
 function 킵_보기숨기기(e) {
   var 버튼들 = document.querySelectorAll('.설명_왼쪽div_버튼5개 > button');
@@ -828,7 +689,7 @@ function 킵_보기숨기기(e) {
       document.querySelectorAll('.설명_첫번째div > .설명_가로한줄')[i].classList.remove('d-none')
     }
   }
-
+  따라가기위치설정()
 }
 
 
