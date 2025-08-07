@@ -14,9 +14,9 @@ if ('초기설정' == '초기설정') {
 
   var 최근회차 = document.querySelectorAll('#당번_회차select option').length - 1;
   var 회차 = 최근회차;
-  var 색칠id = '';
-  var 색칠class = '';
-  var 색칠문자열 = '';
+  var 전체변수색칠문자열 = '';
+  var 셑팅된곳변수포함id='#keep번호들_변수포함'
+  var 셑팅된곳숫자만id='#keep번호들'
 
   당번_회차change설정();
   분석자료_회차change설정();
@@ -31,70 +31,55 @@ function 연습() {
   var 변수 = document.querySelector('#버튼45오른쪽단독');
   변수.setAttribute('class', 'd d d d d d d d')
 }
+
+function 셑팅2_번호45오른쪽_변경() {
+  //색칠하기 : 변경cheched확인, 색칠할번호변수포함, 색칠할번호값, 색칠할곳
+  var 체크확인배열=['#keep변경','#셑팅1변경','#셑팅2변경','#셑팅3변경','#클릭번호들변경'];
+  var 변경할배열=['#keep번호들_변수포함','#셑팅1번호들_변수포함','#셑팅2번호들_변수포함','#셑팅3번호들_변수포함','#클릭번호들_변수포함']
+  var 색칠할번호배열=['#keep번호들','#셑팅1번호들','#셑팅2번호들','#셑팅3번호들','#클릭번호들']
+  var 색칠할곳배열=['#버튼45오른쪽단독_안에_keep번호들','#버튼45오른쪽단독_안에_셑팅1번호들','#버튼45오른쪽단독_안에_셑팅1번호들',
+                   '#버튼45오른쪽단독_안에_셑팅3번호들','#버튼45오른쪽단독_안에_클릭번호들']
+  //keep, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 각각 돌면서 변경체크인 경우, 기존숫자 지우고 #keep번호들  
+  //#keep번호들_변수포함 안의 문자열을 돌면서 숫자가 아니면 해당아이디의 innerHTML을 넣고 숫자면 숫자를  #keep번호들 내부에 넣는다
+  //변경체크가 아니면 : #keep번호들 의 번호를 사용한다.
+  var 색칠할번호요소,색칠할번호,색칠할곳;
+  체크확인배열.forEach ( (아이디,인덱스) => {
+    색칠할곳=document.querySelector(색칠할곳배열[인덱스])
+    if (document.querySelector(아이디).checked) {
+      색칠할번호요소=document.querySelector(색칠할번호배열[인덱스]);
+      색칠할번호요소.innerHTML='';//초기화
+      //색칠할번호 바꾸기
+      document.querySelector(변경할배열[인덱스]).innerHTML.split(',').forEach ( (문자열,인덱스,) => {
+        if (isNaN(문자열)) {
+          if (색칠할번호요소.innerHTML=='') {색칠할번호요소.innerHTML=document.querySelector(문자열).innerHTML;}
+          if (색칠할번호요소.innerHTML!='') {색칠할번호요소.innerHTML+=',' + document.querySelector(문자열).innerHTML;}
+        }
+        if (!isNaN(문자열)) {
+          if (색칠할번호요소.innerHTML=='') {색칠할번호요소.innerHTML=문자열;}
+          if (색칠할번호요소.innerHTML!='') {색칠할번호요소.innerHTML+=',' + 문자열;}
+        }
+      });
+    }
+    색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
+    for (var i=0; i<45; i++) {
+      색칠할곳.children[i].classList.remove('분석');
+      색칠할곳.children[i].innerHTML='';
+      if (색칠할번호.filter( 번호 => 번호==(i+1)).length>0) {
+        색칠할곳.children[i].classList.add('분석');
+        색칠할곳.children[i].innerHTML=i+1;
+      }
+    }
+  });
+}
 function 색칠하기(색칠아이디) {
+  // keep, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 변경하거나 그대로 
+  // 색칠아이디 번호들 색칠, 색칠할곳 체크 된 곳들 . 분석 클래스 부여
   console.log('선택 : ' + 색칠아이디)
   var 색칠할번호들=document.querySelector(색칠아이디).innerHTML.split(',');
   console.log(색칠할번호들)
 }
-function 색칠할번호들_clear() {
-  var 변수 = ['#keep번호들_변수포함/#keep번호들', '#셑팅1번호들_변수포함/#셑팅1번호들', 
-              '#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3번호들_변수포함/#셑팅3번호들',
-              '#클릭번호들_변수포함/#클릭번호들'];
-  변수.forEach((문자열, 인덱스) => {
-    document.querySelector(문자열.split('/')[0]).innerHTML='';
-    document.querySelector(문자열.split('/')[1]).innerHTML='';
-  });
-}
-function 색칠셑팅(색칠문자열) {
-  console.log('색칠셑팅 : ' + 색칠문자열)
-  document.querySelector('#클릭번호들_변수포함').innerHTML = 색칠문자열;
-  //[0]색칠할번호들 정하기, [1]변경여부 판단, [2]변수포함 번호, [3]번호로 변환된곳
-  var 변수 = ['#keep_input/#keep변경/#keep번호들_변수포함/#keep번호들', '#셑팅1_input/#셑팅1변경/#셑팅1번호들_변수포함/#셑팅1번호들', 
-              '#셑팅2_input/#셑팅2변경/#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3_input/#셑팅3변경/#셑팅3번호들_변수포함/#셑팅3번호들',
-              '_/#클릭번호들변경/#클릭번호들_변수포함/#클릭번호들'];
-  var 체크index='';
-  //색칠할번호들 정하기
-  변수.forEach((문자열, 인덱스) => {if (document.querySelector(문자열.split('/')[0])?.checked) {체크index = 인덱스 ;};});
-  //색칠할곳으로선택된 곳이면,, 아니면,,
-  var 선택한곳변수형식=document.querySelector(변수[체크index].split('/')[2]);
-  if (document.querySelector('#누적').checked) {
-        if (선택한곳변수형식.innerHTML.split(',').includes(색칠문자열)) {
-          //같은게 있으면 안쓴다
-        } else {
-          if (선택한곳변수형식.innerHTML=='') 선택한곳변수형식.innerHTML=색칠문자열;
-          else 선택한곳변수형식.innerHTML+=','+색칠문자열;
-        }
-    } else { //누적체크 해제일때
-      선택한곳변수형식.innerHTML=색칠문자열;
-  }
-  // 변경체크 확인하는데 : 선택한곳은 상관없이 변경하고 나머지 변경체크한곳은 변경한다.
-  var 풀기완료문자열;
-  var 숫자로푼요소;
-  변수.forEach((문자열, 인덱스) => {
-    풀기완료문자열='';
-    숫자로푼요소=document.querySelector(문자열.split('/')[3]);
-    if (document.querySelector(문자열.split('/')[1]).checked || 문자열.split('/')[2]==변수[체크index].split('/')[2]) {
-      //변경
-      document.querySelector(문자열.split('/')[3]).innerHTML='';//초기화 시켜둔다.
-      document.querySelector(문자열.split('/')[2]).innerHTML.split(',').forEach ( 숫자또는문자 => {
-
-        console.log(문자열.split('/')[3]);
 
 
-
-      });
-
-
-
-
-
-
-
-    }
-  });
-
-  색칠문자열=''; //초기화
-}
 
 function 분석자료_삼십회표3종_작성_미완성() {
 
@@ -179,10 +164,7 @@ function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던�
   });
 }
 
-function 색칠_1_동작설정() {
-}
-function 색칠_2_설정대로색칠동작() {
-}
+
 function 분석자료_삼십회표_js작성() {
   if ('출수최대값' == '출수최대값') {
     var 출수최대값 = 0;
@@ -254,6 +236,11 @@ function 분석자료_삼십회표_js작성() {
   }
   //두번째줄 div에 삼십회횟수기록 클래스 부여
   document.querySelectorAll('#분석자료_삼십회표_js > div')[1].classList.add('삼십회횟수기록2nddiv');
+  var 버튼들=document.querySelectorAll('#분석자료_삼십회표_js > div:nth-of-type(2) > button');
+  for (var i=1; i<버튼들.length; i++) {
+    버튼들[i].setAttribute('class','클릭번호로보냄');
+    버튼들[i].setAttribute('title','#분석자료변수 .공통변수_30주' + 버튼들[i].innerHTML + '출');
+  }
 }
 function 분석자료_삼십회빈도와개수_js작성() {
   document.querySelector('#분석자료_삼십회23456개수_js').innerHTML = '';
@@ -456,11 +443,11 @@ function 분석자료_회차change설정() {
   }
 
   var 색칠요소이름 = '#분석자료_표_상_js .다섯개씩번갈아색칠'
-  var class10종 = ['.공통변수_당번', '.공통변수_이웃', '.공통변수_당번이웃', '.공통변수_15주0출', '.공통변수_10주0출',
+  var 클래스열개 = ['.공통변수_당번', '.공통변수_이웃', '.공통변수_당번이웃', '.공통변수_15주0출', '.공통변수_10주0출',
     '.공통변수_5주0출', '.공통변수_5주출', '.공통변수_5주1출', '.공통변수_5주2출', '.공통변수_5주3출']
   for (var i = 0; i < 10; i++) {
-    var 현재배열 = document.querySelector(`#분석자료변수 ${class10종[i]}`).innerHTML.split(',');
-    document.querySelector(`#분석자료변수 ${class10종[i]}`).innerHTML.split(',').forEach((element, index, array) => {
+    var 현재배열 = document.querySelector(`#분석자료변수 ${클래스열개[i]}`).innerHTML.split(',');
+    document.querySelector(`#분석자료변수 ${클래스열개[i]}`).innerHTML.split(',').forEach((element, index, array) => {
       //console.log((i+1) + '번째 ,element,index,array : ' + element + ', ' + index + ', [' + array + ']')
       if (element != '') { // 공백문자열 가지고 왔을때 length는 1 이고 Number(element)에서 에러남
         document.querySelectorAll(`${색칠요소이름}`)[i + 1].children[Number(element) - 1].classList.add('분석');
@@ -506,7 +493,7 @@ function 분석자료_회차change설정() {
   }
   분석자료_삼십회표_js작성();
   분석자료_삼십회빈도와개수_js작성();
-  분석및당번change후_색칠번호변경();
+  셑팅2_번호45오른쪽_변경();
 }
 function 당번_회차change설정() {
   console.log('당번_회차change설정()')
@@ -679,8 +666,7 @@ function 당번_회차change설정() {
   //-------------- 흐름
 
 
-
-  분석및당번change후_색칠번호변경();
+  셑팅2_번호45오른쪽_변경();
 }
 function gpt() {
   for (let i = 0; i < 45; i++) {
@@ -854,12 +840,36 @@ function 킵_보기숨기기(e) {
 
 
 
+function 토글11에서20_셑팅과초기화(e) {
+  var 아이디=['#keep변경/#keep번호들','#셑팅1변경/#셑팅1번호들','#셑팅2변경/#셑팅2번호들','#셑팅3변경/#셑팅3번호들']
+  var 번호들;
+  아이디.forEach ( (값, 인덱스) => {
+    if (document.querySelector(값.split('/')[0]).checked) {번호들=document.querySelector(값.split('/')[1].innerHTML).split(',')}
+  });
+
+  console.log('번호들 : ' + 번호들)
 
 
 
+  if (e.previousElementSibling.innerHTML=='') {
+    //
+  }
+
+}
+function 색칠할번호들_clear() {
+  var 변수 = ['#keep번호들_변수포함/#keep번호들', '#셑팅1번호들_변수포함/#셑팅1번호들', 
+              '#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3번호들_변수포함/#셑팅3번호들',
+              '#클릭번호들_변수포함/#클릭번호들'];
+  변수.forEach((문자열, 인덱스) => {
+    document.querySelector(문자열.split('/')[0]).innerHTML='';
+    document.querySelector(문자열.split('/')[1]).innerHTML='';
+  });
+}
 function 셑팅토글(e) {
   console.log('셑팅토글(e)');
   const 설정IDs = ['keep_input', '셑팅1_input', '셑팅2_input', '셑팅3_input'];
+  const 셑팅 = ['#keep번호들_변수포함/#keep번호들', '#셑팅1번호들_변수포함/#셑팅1번호들',
+               '#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3번호들_변수포함/#셑팅3번호들'];
   const 설명들 = document.querySelectorAll('.설명_가로한줄');
 
   // 현재 클릭된 요소를 체크하고 나머지는 해제
@@ -870,6 +880,10 @@ function 셑팅토글(e) {
     if (e.id === id) {
       input.checked = true;
       설명대상?.classList.add('초코');
+      셑팅된곳변수포함id=셑팅[index].split('/')[0];
+      셑팅된곳숫자만id=셑팅[index].split('/')[1];
+      console.log('셑팅된곳변수포함id : ' + 셑팅된곳변수포함id)
+      console.log('셑팅된곳숫자만id : ' + 셑팅된곳숫자만id)
     } else {
       input.checked = false;
       설명대상?.classList.remove('초코');
@@ -877,6 +891,10 @@ function 셑팅토글(e) {
   });
 }
 function 고정html_구조생성및_초기설정() {
+  //타이틀넣기
+  var 요소=document.querySelectorAll('.버튼45css button');
+  for (var i=0; i<요소.length; i++) {요소[i].setAttribute('title',요소[i].innerHTML)}
+
   //회차select옵션생성
   let 옵션 = $('#당번숨김_안에_저장중').html().split(',').reverse().map(v => `<option>${v.split('_')[0]}</option>`).join('');
   $('#당번_회차select, #분석자료_회차select').html(옵션);
@@ -902,12 +920,16 @@ function 고정html_구조생성및_초기설정() {
       var 가로한줄 = document.createElement('div');
       var 번호선택_추출_c = document.createElement('span');
       var 번호선택배열 = ['번호선택', '당번', '이웃수', '당번+이웃', '15주미출', '10주미출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
+      var 타이틀배열 = ['없음', '당번', '이웃수', '당번+이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
       for (var i = 0; i < 4; i++) {
         var div요소 = document.createElement('span'); // div 요소 변수에 담는다.
         if (i == 0) { div요소.textContent = 번호선택배열[외부]; div요소.setAttribute('style', 'width:75px;height:24px; border:1px solid black;display:inline-block;margin-right:-1px;') }
         if (i == 1 && 외부 == 0) { div요소.textContent = '수' }
         if (i == 1) { div요소.setAttribute('style', 'width:30px; border:1px solid black;display:inline-block;margin-right:-1px;text-align:center;height:24px;') }
-
+        if (i==0 && 외부>0 && 외부<11) {
+          div요소.setAttribute('class','클릭번호로보냄');
+          div요소.setAttribute('title','#분석자료변수 .공통변수_'+타이틀배열[외부]);
+        }
         if (i == 2) { div요소 = document.createElement('button'); }
         if (i == 2 && 외부 == 0) { div요소.textContent = '출' }
         if (i == 2 && 외부 != 0) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기
@@ -918,9 +940,8 @@ function 고정html_구조생성및_초기설정() {
         if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
         //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
         if (외부 > 10) {
-          if (i == 0) { div요소.setAttribute('onclick', '분석자료_11에서20_keep번호셑팅(this)') }
           if (i == 0) { div요소.setAttribute('contenteditable', 'true') }
-          if (i == 1) { div요소.setAttribute('onclick', 'keep셑팅초기화(this)') }
+          if (i == 1) { div요소.setAttribute('onclick', '토글11에서20_셑팅과초기화(this)') }
         }
         번호선택_추출_c.appendChild(div요소);
       }
@@ -977,7 +998,7 @@ function 고정html_구조생성및_초기설정() {
       왼쪽몇칸.setAttribute('class', 'd-inline-block');
       왼쪽몇칸.setAttribute('style', 'margin-right:-1px;');
       var 번호45 = document.createElement('div');
-      번호45.innerText = 'keep셑팅↔초기화'
+      번호45.innerText = 'keep셑팅↔초기화(수)'
       번호45.setAttribute('style', 'border:none;border-top:1px solid black;background-color:white; text-align:left;width:162px;height:24px;')
       왼쪽몇칸.appendChild(번호45);
       var 번호45 = document.createElement('div');
@@ -1038,21 +1059,66 @@ function 따라가기위치설정() {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
-  if (e.target.parentElement.classList.contains('삼십회횟수기록2nddiv')) {
-    //1. #분석자료_삼십회표_js에서의 동작을 구분
-    //   a)분석, 분석덧칠, 클래스 지운다. b)(기존)선택클래스 지운다. c)선택클래스 넣는다. d)색칠물자열 정의한다.(이 경우 id와 클래스)
-    //2. 색칠하기(전달문자)
-    if (!isNaN(e.target.innerHTML)) {
-      var 개수 = document.querySelectorAll('#분석자료_삼십회표_js .분석').length;
-      for (var i = 0; i < 개수; i++) {
-        document.querySelectorAll('#분석자료_삼십회표_js .분석')[0].classList.remove('분석');
-      }
-      document.querySelector('#분석자료_삼십회표_js .선택')?.classList.remove('선택');
-      e.target.classList.add('선택');
-      색칠id = '#분석자료변수'; 색칠class = ' .공통변수_30주' + e.target.innerHTML + '출';
-      색칠문자열 = 색칠id + 색칠class;
-      색칠셑팅(색칠문자열);
+  if (['버튼45의1st','버튼45의2st','버튼45의3st'].includes(e.target.parentElement.parentElement.id) && e.target.tagName=='BUTTON') {
+    e.target.classList.toggle('분석')
+  }
+  if (['버튼45의1st','버튼45의2st','버튼45의3st'].includes(e.target.parentElement.parentElement.id) && e.target.innerHTML=='Clear') {
+    var 요소들=document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button');
+    for (var i=0; i<요소들.length; i++) {요소들[i].classList.remove('분석');}
+    document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들변수포함').innerHTML='';
+    document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML='';
+  }
+  if (e.target.classList.contains('클릭번호로보냄')) {
+    //e.target.title 생성해야하는 경우
+    if (e.target.innerHTML=='클릭번호로보내기') {
+      var 선택번호들=[];
+      Array.from(document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button')).forEach ( 요소 => {
+        if (요소.classList.contains('분석')) {선택번호들.push(요소.innerHTML)}
+      });
+      document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들변수포함').innerHTML=선택번호들.join(',');
+      document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML=선택번호들.join(',');
+      e.target.title='#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만';
     }
+    //공통
+    const 변수Selector = e.target.title;
+    const 클릭번호들El = document.querySelector('#클릭번호들');
+    const 클릭번호들_변수포함El = document.querySelector('#클릭번호들_변수포함');
+    const 셑팅된곳El = document.querySelector(셑팅된곳변수포함id);
+    const 셑팅된숫자El = document.querySelector(셑팅된곳숫자만id);
+    const 숫자들 = document.querySelector(변수Selector).innerHTML.split(',');
+
+    클릭번호들_변수포함El.innerHTML = 변수Selector;
+    클릭번호들El.innerHTML = 숫자들;
+
+    if (document.querySelector('#누적').checked) {
+      if (셑팅된곳El.innerHTML === '') {
+        if (숫자들[0].length > 0) {
+          셑팅된곳El.innerHTML = 변수Selector;
+          셑팅된숫자El.innerHTML = 숫자들;
+        }
+      } else {
+        if (숫자들[0].length > 0) {
+          셑팅된곳El.innerHTML += ',' + 변수Selector;
+          셑팅된숫자El.innerHTML += ',' + 숫자들;
+        } else {
+          셑팅된곳El.innerHTML += ',' + 변수Selector;
+        }
+      }
+    } else {
+      셑팅된곳El.innerHTML = 변수Selector;
+      셑팅된숫자El.innerHTML = 숫자들;
+    }
+
+    // 중복 제거
+    var 고유값 = [...new Set(셑팅된곳El.innerHTML.split(','))];
+    셑팅된곳El.innerHTML = 고유값.join(',');
+
+    var 고유값 = [...new Set(셑팅된숫자El.innerHTML.split(','))];
+    셑팅된숫자El.innerHTML = 고유값.join(',');
+
+    //45오른쪽단독 에 색칠하기
+    셑팅2_번호45오른쪽_변경();
+
   }
   if (e.target.parentElement.id == '삼십회횟수기록') {
     if (e.target.classList.contains('삼십회횟수같은거')) {

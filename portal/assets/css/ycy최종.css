@@ -140,6 +140,7 @@ body > div {display:inline-block}
 #버튼45감싸기 > #버튼45중간 > div > #번호clear {margin-right:-1px;border:1px solid black;margin-right:5px;}
 #버튼45감싸기 > #버튼45중간 > div > #대조45버튼6개 > button {margin-right:-1px;border:1px solid black;}
 .띄우기 {margin-left:255px;}
+.버튼45css > div:last-child > span {border:1px solid black;border-radius: 5px;display:inline-block;margin-top:5px;margin-right:5px; padding:0px 5px;}
 
 
 /* #코드 */
