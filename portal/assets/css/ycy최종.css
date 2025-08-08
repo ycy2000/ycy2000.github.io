@@ -19,7 +19,7 @@ body > div {display:inline-block}
 /* #당번전체 (js로 .당번회차, .당번만, .보볼) */
 #당번전체 {margin-right:5px;}
 #당번_불러온당첨정보 button {border:1px solid gray; font-weight: bold;width:30px;height:30px;}
-#당번_불러온당첨정보 > div:nth-of-type(odd) button:not(.분석):not(.분석덧칠) {background-color:bisque;color:blue;}
+#당번_불러온당첨정보 > div:nth-of-type(odd) button:not(.색칠) {background-color:bisque;color:blue;}
 #당번_다음회차 button {border:1px solid gray; font-weight: bold;width:30px;height:30px;}
 #당번_플마클리어버튼 > button {height:30px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
 
@@ -39,17 +39,17 @@ body > div {display:inline-block}
 /* #분석자료_삼십회표_js */
 #분석자료_삼십회표_js > div > button:nth-of-type(1) {width:40px;}
 #분석자료_삼십회표_js > div > button {font-weight: bold;}
-#분석자료_삼십회표_js > div > button:not(.분석):not(.분석덧칠) {border:1px solid gray;}
-#분석자료_삼십회표_js > div:nth-of-type(1) > button:not(.분석):not(.분석덧칠) {background-color:rgb(231, 218, 218)}
+#분석자료_삼십회표_js > div > button:not(.색칠) {border:1px solid gray;}
+#분석자료_삼십회표_js > div:nth-of-type(1) > button:not(.색칠) {background-color:rgb(231, 218, 218)}
 #분석자료_삼십회표_js > div:nth-of-type(2) > button {margin-top:1px;}
-#분석자료_삼십회표_js > div:nth-of-type(2) > button:not(.분석):not(.분석덧칠) {background-color:chartreuse;}
-#분석자료_삼십회표_js .장미 > button:not(.분석):not(.분석덧칠), #분석자료_삼십회표_js .출1 > button:not(.분석):not(.분석덧칠), 
-#분석자료_삼십회표_js .출3 > button:not(.분석):not(.분석덧칠) {background-color:rgb(231, 218, 218)}
+#분석자료_삼십회표_js > div:nth-of-type(2) > button:not(.색칠) {background-color:chartreuse;}
+#분석자료_삼십회표_js .장미 > button:not(.색칠), #분석자료_삼십회표_js .출1 > button:not(.색칠), 
+#분석자료_삼십회표_js .출3 > button:not(.색칠) {background-color:rgb(231, 218, 218)}
 .첫장미, .첫출0, .첫출1, .첫출2, .첫출3 {margin-top:1px;}
 #분석자료_삼십회표_js > div > button:nth-of-type(5),#분석자료_삼십회표_js > div > button:nth-of-type(8)
 {margin-left:1px;}
-#분석자료_삼십회표_js > div > button:nth-of-type(5):not(.분석):not(.분석덧칠), #분석자료_삼십회표_js > div > button:nth-of-type(6):not(.분석):not(.분석덧칠),
-#분석자료_삼십회표_js > div > button:nth-of-type(7):not(.분석):not(.분석덧칠)
+#분석자료_삼십회표_js > div > button:nth-of-type(5):not(.색칠), #분석자료_삼십회표_js > div > button:nth-of-type(6):not(.색칠),
+#분석자료_삼십회표_js > div > button:nth-of-type(7):not(.색칠)
 {background-color: bisque;}
 /* #분석자료_삼십회23456개수_js */
 #분석자료_삼십회23456개수_js > div > button:nth-of-type(1) {width:40px;}
@@ -58,11 +58,11 @@ body > div {display:inline-block}
 #분석자료_삼십회23456개수_js > div:nth-of-type(10n+8) > button, #분석자료_삼십회23456개수_js > div:nth-of-type(10n+9) > button,
 #분석자료_삼십회23456개수_js > div:nth-of-type(10n+10) > button, #분석자료_삼십회23456개수_js > div:nth-of-type(10n+11) > button
 {background-color:rgb(231, 218, 218)}
-#분석자료_삼십회23456개수_js > div > button:nth-of-type(4), #분석자료_삼십회23456개수_js > div > button:nth-of-type(5),
-#분석자료_삼십회23456개수_js > div > button:nth-of-type(6), #분석자료_삼십회23456개수_js > div > button:last-child
+#분석자료_삼십회23456개수_js > div > button:nth-of-type(5), #분석자료_삼십회23456개수_js > div > button:nth-of-type(6),
+#분석자료_삼십회23456개수_js > div > button:nth-of-type(7), #분석자료_삼십회23456개수_js > div > button:last-child
 {background-color: bisque;}
 #분석자료_삼십회23456개수_js > div:nth-of-type(1),#분석자료_삼십회23456개수_js > div:nth-of-type(6),#분석자료_삼십회23456개수_js > div:nth-of-type(11),
-#분석자료_삼십회23456개수_js > div:nth-of-type(15) {margin-bottom:0px;}
+#분석자료_삼십회23456개수_js > div:nth-of-type(16) {margin-bottom:0px;}
 #분석자료_삼십회23456개수_js > div > button:nth-of-type(5),#분석자료_삼십회23456개수_js > div > button:nth-of-type(8)
 {margin-left:1px;}
 /* #분석자료_삼십회당첨개수_js */
@@ -75,7 +75,7 @@ body > div {display:inline-block}
 #분석자료_삼십회당첨개수_js > div > button:nth-of-type(6), #분석자료_삼십회당첨개수_js > div > button:last-child
 {background-color: bisque;}
 #분석자료_삼십회당첨개수_js > div:nth-of-type(1),#분석자료_삼십회당첨개수_js > div:nth-of-type(6),#분석자료_삼십회당첨개수_js > div:nth-of-type(11),
-#분석자료_삼십회당첨개수_js > div:nth-of-type(15) {margin-bottom:0px;}
+#분석자료_삼십회당첨개수_js > div:nth-of-type(16) {margin-bottom:0px;}
 #분석자료_삼십회당첨개수_js > div > button:nth-of-type(4),#분석자료_삼십회당첨개수_js > div > button:nth-of-type(7)
 {margin-left:1px;}
 /*  */
@@ -168,18 +168,20 @@ body > div {display:inline-block}
 /* 코딩 임시 끝 */
 .피해서번호흰색 {background-color: white;}
 .피해서번호노랑 {background-color: yellow;}
-.분석[title='1'], .분석[title='2'], .분석[title='3'], .분석[title='4'], .분석[title='5'],
-.분석[title='6'], .분석[title='7'], .분석[title='8'], .분석[title='9']
+#분석자료_삼십회표_js .색칠 {border-color:gray}
+.색칠 {background-color:cadetblue;}
+.색칠[title='1'], .색칠[title='2'], .색칠[title='3'], .색칠[title='4'], .색칠[title='5'],
+.색칠[title='6'], .색칠[title='7'], .색칠[title='8'], .색칠[title='9']
 {background-color: yellow;border-radius: 20px;}
-.분석[title='10'],.분석[title='11'], .분석[title='12'], .분석[title='13'], .분석[title='14'], 
-.분석[title='15'],.분석[title='16'], .분석[title='17'], .분석[title='18'], .분석[title='19']
+.색칠[title='10'],.색칠[title='11'], .색칠[title='12'], .색칠[title='13'], .색칠[title='14'], 
+.색칠[title='15'],.색칠[title='16'], .색칠[title='17'], .색칠[title='18'], .색칠[title='19']
 {background-color:cornflowerblue;border-radius: 20px;}
-.분석[title='20'],.분석[title='21'], .분석[title='22'], .분석[title='23'], .분석[title='24'], 
-.분석[title='25'],.분석[title='26'], .분석[title='27'], .분석[title='28'], .분석[title='29']
+.색칠[title='20'],.색칠[title='21'], .색칠[title='22'], .색칠[title='23'], .색칠[title='24'], 
+.색칠[title='25'],.색칠[title='26'], .색칠[title='27'], .색칠[title='28'], .색칠[title='29']
 {background-color:red ;border-radius: 20px;}
-.분석[title='30'],.분석[title='31'], .분석[title='32'], .분석[title='33'], .분석[title='34'], 
-.분석[title='35'],.분석[title='36'], .분석[title='37'], .분석[title='38'], .분석[title='39']
+.색칠[title='30'],.색칠[title='31'], .색칠[title='32'], .색칠[title='33'], .색칠[title='34'], 
+.색칠[title='35'],.색칠[title='36'], .색칠[title='37'], .색칠[title='38'], .색칠[title='39']
 {background-color:gray;border-radius: 20px;}
-.분석[title='40'],.분석[title='41'], .분석[title='42'], .분석[title='43'], .분석[title='44'], 
-.분석[title='45']
+.색칠[title='40'],.색칠[title='41'], .색칠[title='42'], .색칠[title='43'], .색칠[title='44'], 
+.색칠[title='45']
 {background-color:green;border-radius: 20px;}

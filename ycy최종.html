@@ -146,7 +146,7 @@
 </div>
 <div id="버튼45오른쪽단독"  class="d-none" style="position: absolute;top:600px;left:523px;background-color: white;">
   <div class="설명_첫번째div">
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('#keep번호들')">색칠</button><span class="초코">keep</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠id='#keep번호들';색칠하기()">색칠</button><span class="초코">keep</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
           <input class="form-check-input" type="checkbox" value="" id="keep변경" checked>
           <label class="form-check-label" for="keep변경" style="border:none">변경</label>
@@ -154,7 +154,7 @@
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_keep번호들"></span>
     </div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('#셑팅1번호들')">색칠</button><span>셑팅1</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠id='#셑팅1번호들';색칠하기()">색칠</button><span>셑팅1</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
           <input class="form-check-input" type="checkbox" value="" id="셑팅1변경" checked>
           <label class="form-check-label" for="셑팅1변경" style="border:none">변경</label>
@@ -162,7 +162,7 @@
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅1번호들"></span>
     </div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('#셑팅2번호들')">색칠</button><span>셑팅2</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠id='#셑팅2번호들';색칠하기()">색칠</button><span>셑팅2</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
           <input class="form-check-input" type="checkbox" value="" id="셑팅2변경" checked>
           <label class="form-check-label" for="셑팅2변경" style="border:none">변경</label>
@@ -170,7 +170,7 @@
       </span>
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅2번호들"></span>
     </div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('#셑팅3번호들')">색칠</button><span>셑팅3</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠id='#셑팅3번호들';색칠하기()">색칠</button><span>셑팅3</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
           <input class="form-check-input" type="checkbox" value="" id="셑팅3변경" checked>
           <label class="form-check-label" for="셑팅3변경" style="border:none">변경</label>
@@ -179,7 +179,7 @@
       <span class="다섯개씩번갈아색칠" id="버튼45오른쪽단독_안에_셑팅3번호들">
       </span>
     </div>
-    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠하기('#클릭번호들')">색칠</button><span>클릭번호들</span>
+    <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠id='#클릭번호들';색칠하기()">색칠</button><span>클릭번호들</span>
         <div class="d-inline-block" style="width:60px;padding:0px 5px;margin-left:-4px;margin-right:-5px;">
           <input class="form-check-input" type="checkbox" value="" id="클릭번호들변경" checked>
           <label class="form-check-label" for="클릭번호들변경" style="border:none">변경</label>
@@ -196,19 +196,19 @@
         <div class="d-inline-block" style="padding-left:5px;">셑팅위치</div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <!-- 여기부터 input에 체크input부여하면 에러난다. for 해주기 -->
-          <input class="form-check-input" type="checkbox" value="" checked onchange="셑팅토글(this);" id="keep_input">
+          <input class="form-check-input" type="checkbox" value="" checked onchange="셑팅토글(0);" id="keep_input">
           <label class="form-check-label" for="keep_input">keep</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅1_input">
+          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(1);" id="셑팅1_input">
           <label class="form-check-label" for="셑팅1_input">셑팅1</label>
         </div>
         <div class="form-check d-inline-block"  style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅2_input">
+          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(2);" id="셑팅2_input">
           <label class="form-check-label" for="셑팅2_input">셑팅2</label>
         </div>
         <div class="form-check d-inline-block"  style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(this);" id="셑팅3_input">
+          <input class="form-check-input" type="checkbox" value="" onchange="셑팅토글(3);" id="셑팅3_input">
           <label class="form-check-label" for="셑팅3_input">셑팅3</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
@@ -221,23 +221,23 @@
         <div class="d-inline-block">색칠할곳</div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="삼십회빈도" checked class="색칠할곳input">
-          <label class="form-check-label">30회빈도</label>
+          <label class="form-check-label" for="삼십회빈도">30회빈도</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="당번표">
-          <label class="form-check-label">당번표</label>
+          <label class="form-check-label" for="당번표">당번표</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="사오1ST">
-          <label class="form-check-label">45_1ST</label>
+          <label class="form-check-label" for="사오1ST">45_1ST</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="사오2ST">
-          <label class="form-check-label">45_2ST</label>
+          <label class="form-check-label" for="사오2ST">45_2ST</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="사오3ST">
-          <label class="form-check-label">45_3ST</label>
+          <label class="form-check-label" for="사오3ST">45_3ST</label>
         </div>
       </div>
       <div class="왼쪽의두번째줄" style="padding:3px 0px;padding-left:5px;">_
@@ -255,12 +255,12 @@
         <div onclick="
           document.querySelector('#셑팅번호설명').classList.add('d-none');
           document.querySelector('#셑팅번호설명보기').classList.remove('d-none');
-          따라가기위치설정();"><span>keep:</span><span id="keep번호들_변수포함" class="d-none"></span><span id="keep번호들"></span>
+          따라가기위치설정();"><span>keep:</span><span id="keep번호들_변수포함"></span><span id="keep번호들"></span>
         </div>
-        <div><span>셑팅1:</span><span id="셑팅1번호들_변수포함" class="d-none"></span> <span id="셑팅1번호들"></span></div>
+        <div><span>셑팅1:</span><span id="셑팅1번호들_변수포함"></span> <span id="셑팅1번호들"></span></div>
         <div><span>셑팅2:</span><span id="셑팅2번호들_변수포함" class="d-none"></span> <span id="셑팅2번호들"></span></div>
         <div><span>셑팅3:</span><span id="셑팅3번호들_변수포함" class="d-none"></span> <span id="셑팅3번호들"></span></div>
-        <div><span>클릭번호들:</span><span id="클릭번호들_변수포함" class="d-none"></span> <span id="클릭번호들"></span></div>
+        <div><span>클릭번호들:</span><span id="클릭번호들_변수포함"></span> <span id="클릭번호들"></span></div>
       </div>
     </div>
   </div>
@@ -331,7 +331,7 @@
       <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_당번이웃">당번이웃</button><button class="공통변수_당번이웃"></button></div>
       <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주출">5주출</button><button class="공통변수_5주출"></button></div>
       <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주0출">5주0출</button><button class="공통변수_5주0출"></button></div>
-      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5즈1츨">5주1출</button><button class="공통변수_5주1출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주1출">5주1출</button><button class="공통변수_5주1출"></button></div>
       <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주2출">5주2출</button><button class="공통변수_5주2출"></button></div>
       <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주3출">5주3출</button><button class="공통변수_5주3출"></button></div>
       <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_10주0출">10주0출</button><button class="공통변수_10주0출"></button></div>
@@ -355,6 +355,10 @@
     </span>
     <div title="줄바꿈용"></div>
     <div id="흐름들보기숨기기">
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_당번전체">
+        <label class="form-check-label">당번</label>
+      </div>      
       <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
         <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_흐름전체">
         <label class="form-check-label">흐름전체</label>
@@ -402,7 +406,7 @@
     </div>
   </div>
   <div id="흐름전체" class="d-none 숨김리스트 d-inline-block">
-    <span id="흐름_이월" class="숨김리스트 d-none">흐름_이월</span>
+    <span id="흐름_이월" class="숨김리스트 d-none">흐름_이월<br><img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음"></span>
     <span id="흐름_이웃수" class="숨김리스트 d-none">흐름_이웃수</span>
     <span id="흐름_이웃수full" class="숨김리스트 d-none">흐름_이웃수full</span>
     <span id="흐름_삼이일" class="숨김리스트 d-none">흐름_삼이일</span>
@@ -472,7 +476,9 @@
   <div id="분석자료_표_하_js"></div>
 </div>
 <div id="사진" class="이동리스트 숨김리스트 d-none" style="position: absolute;top:500px;left:23px;background-color: white;">
-  <img src="portal/images/문서연결_kim/사진_1.png" alt="이미지없음">
+  <img src="portal/images/black_문서/임시사진_분석자료.png" alt="이미지없음"><br>
+  <img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음"><br>
+  <img src="portal/images/black_문서/임시사진_분석자료3.png" alt="이미지없음">
 </div>
 <div id="사진2" class="이동리스트 숨김리스트 d-none">
 

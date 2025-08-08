@@ -17,6 +17,7 @@ if ('초기설정' == '초기설정') {
   var 전체변수색칠문자열 = '';
   var 셑팅된곳변수포함id='#keep번호들_변수포함'
   var 셑팅된곳숫자만id='#keep번호들'
+  var 색칠id='';
 
   당번_회차change설정();
   분석자료_회차change설정();
@@ -28,64 +29,10 @@ var 드래그이동_버튼45오른쪽단독 = document.querySelector('#버튼45�
 var 드래그이동_버튼45감싸기 = document.querySelector('#버튼45감싸기');
 
 function 연습() {
-  var 변수 = document.querySelector('#버튼45오른쪽단독');
-  변수.setAttribute('class', 'd d d d d d d d')
+  색칠해제()
 }
 
-function 셑팅2_번호45오른쪽_변경() {
-  //색칠하기 : 변경cheched확인, 색칠할번호변수포함, 색칠할번호값, 색칠할곳
-  var 체크확인배열=['#keep변경','#셑팅1변경','#셑팅2변경','#셑팅3변경','#클릭번호들변경'];
-  var 변경할배열=['#keep번호들_변수포함','#셑팅1번호들_변수포함','#셑팅2번호들_변수포함','#셑팅3번호들_변수포함','#클릭번호들_변수포함']
-  var 색칠할번호배열=['#keep번호들','#셑팅1번호들','#셑팅2번호들','#셑팅3번호들','#클릭번호들']
-  var 색칠할곳배열=['#버튼45오른쪽단독_안에_keep번호들','#버튼45오른쪽단독_안에_셑팅1번호들','#버튼45오른쪽단독_안에_셑팅1번호들',
-                   '#버튼45오른쪽단독_안에_셑팅3번호들','#버튼45오른쪽단독_안에_클릭번호들']
-  //keep, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 각각 돌면서 변경체크인 경우, 기존숫자 지우고 #keep번호들  
-  //#keep번호들_변수포함 안의 문자열을 돌면서 숫자가 아니면 해당아이디의 innerHTML을 넣고 숫자면 숫자를  #keep번호들 내부에 넣는다
-  //변경체크가 아니면 : #keep번호들 의 번호를 사용한다.
-  var 색칠할번호요소,색칠할번호,색칠할곳;
-  체크확인배열.forEach ( (아이디,인덱스) => {
-    색칠할곳=document.querySelector(색칠할곳배열[인덱스])
-    if (document.querySelector(아이디).checked) {
-      색칠할번호요소=document.querySelector(색칠할번호배열[인덱스]);
-      색칠할번호요소.innerHTML='';//초기화
-      //색칠할번호 바꾸기
-      document.querySelector(변경할배열[인덱스]).innerHTML.split(',').forEach ( (문자열,인덱스,) => {
-        if (isNaN(문자열)) {
-          if (색칠할번호요소.innerHTML=='') {색칠할번호요소.innerHTML=document.querySelector(문자열).innerHTML;}
-          if (색칠할번호요소.innerHTML!='') {색칠할번호요소.innerHTML+=',' + document.querySelector(문자열).innerHTML;}
-        }
-        if (!isNaN(문자열)) {
-          if (색칠할번호요소.innerHTML=='') {색칠할번호요소.innerHTML=문자열;}
-          if (색칠할번호요소.innerHTML!='') {색칠할번호요소.innerHTML+=',' + 문자열;}
-        }
-      });
-    }
-    색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
-    for (var i=0; i<45; i++) {
-      색칠할곳.children[i].classList.remove('분석');
-      색칠할곳.children[i].innerHTML='';
-      if (색칠할번호.filter( 번호 => 번호==(i+1)).length>0) {
-        색칠할곳.children[i].classList.add('분석');
-        색칠할곳.children[i].innerHTML=i+1;
-      }
-    }
-  });
-}
-function 색칠하기(색칠아이디) {
-  var 체크확인배열=['#keep_input','#셑팅1_input','#셑팅2_input','#셑팅3_input']
-  var 색칠할번호배열=['#keep_input','#셑팅1_input','#셑팅2_input','#셑팅3_input']
-  var 인덱스;
-  체크확인배열.forEach ( (아이디,y) => {
-    if (document.querySelector(아이디).checked) {인덱스=y}
-  });
-  var 색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
-  var 색칠할곳체크배열=['#삼십회빈도','#당번표','#사오1ST','#사오2ST','#사오3ST'];
-  var 색칠할곳id배열=['#분석자료_삼십회표_js > div:not(:first-child):not(:nth-of-type(2)) > button',
-                   '.당번만 > button'];
 
-
-
-}
 
 
 
@@ -502,6 +449,7 @@ function 분석자료_회차change설정() {
   분석자료_삼십회표_js작성();
   분석자료_삼십회빈도와개수_js작성();
   셑팅2_번호45오른쪽_변경();
+  색칠하기();
 }
 function 당번_회차change설정() {
   console.log('당번_회차change설정()')
@@ -675,6 +623,7 @@ function 당번_회차change설정() {
 
 
   셑팅2_번호45오른쪽_변경();
+  색칠하기();
 }
 
 
@@ -702,54 +651,143 @@ function 킵_보기숨기기(e) {
 
 
 function 토글11에서20_셑팅과초기화(e) {
-  var 아이디=['#keep변경/#keep번호들','#셑팅1변경/#셑팅1번호들','#셑팅2변경/#셑팅2번호들','#셑팅3변경/#셑팅3번호들']
-  var 번호들;
-  아이디.forEach ( (값, 인덱스) => {
-    if (document.querySelector(값.split('/')[0]).checked) {번호들=document.querySelector(값.split('/')[1].innerHTML).split(',')}
-  });
-
-  console.log('번호들 : ' + 번호들)
-
-
-
-  if (e.previousElementSibling.innerHTML=='') {
-    //
+  console.log('토글11에서20_셑팅과초기화(e)')
+  var 체크확인배열=['#keep_input','#셑팅1_input','#셑팅2_input','#셑팅3_input']
+  var 색칠할번호배열=['#keep번호들','#셑팅1번호들','#셑팅2번호들','#셑팅3번호들','#클릭번호들']
+  var 인덱스=-1;
+  if (색칠할번호배열.includes(색칠id)) {인덱스=색칠할번호배열.indexOf(색칠id)} else {
+      체크확인배열.forEach ( (아이디,y) => {
+        if (document.querySelector(아이디).checked) {인덱스=y}
+      });
   }
+  var 번호들=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
+  console.log(번호들)
+  var 사오칸=e.parentElement.nextElementSibling.children;
+  var 색칠있나=false;
+  for (var i=0; i<45; i++) {
+    if (사오칸[i].classList.contains('분석')) {색칠있나=true;}
+    if (색칠있나) {break;}
+  }
+  for (var i=0; i<45; i++) {
+    사오칸[i].classList.remove('분석');사오칸[i].innerHTML='';
+    if (!색칠있나) {
+        if (번호들.filter( 번호 => 번호==(i+1)).length) {사오칸[i].classList.add('분석');사오칸[i].innerHTML=i+1; }
+    }
+  }
+  if (!색칠있나) {
+    if(번호들[0].length>0) {e.innerHTML=번호들.length;}
+    e.previousElementSibling.title=document.querySelector(셑팅된곳변수포함id).innerHTML;  
+  }
+  if (색칠있나) {e.previousElementSibling.title='';e.previousElementSibling.innerHTML='';e.nextElementSibling.innerHTML='';e.innerHTML=''}
+}
+function 셑팅2_번호45오른쪽_변경() {
+  //색칠하기 : 변경cheched확인, 색칠할번호변수포함, 색칠할번호값, 색칠할곳
+  var 체크확인배열=['#keep변경','#셑팅1변경','#셑팅2변경','#셑팅3변경','#클릭번호들변경'];
+  var 변경할배열=['#keep번호들_변수포함','#셑팅1번호들_변수포함','#셑팅2번호들_변수포함','#셑팅3번호들_변수포함','#클릭번호들_변수포함']
+  var 색칠할번호배열=['#keep번호들','#셑팅1번호들','#셑팅2번호들','#셑팅3번호들','#클릭번호들']
+  var 색칠할곳배열=['#버튼45오른쪽단독_안에_keep번호들','#버튼45오른쪽단독_안에_셑팅1번호들','#버튼45오른쪽단독_안에_셑팅2번호들',
+                   '#버튼45오른쪽단독_안에_셑팅3번호들','#버튼45오른쪽단독_안에_클릭번호들']
+  //keep, 셑팅1, 셑팅2, 셑팅3, 클릭번호들 : 각각 돌면서 변경체크인 경우, 기존숫자 지우고 #keep번호들  
+  //#keep번호들_변수포함 안의 문자열을 돌면서 숫자가 아니면 해당아이디의 innerHTML을 넣고 숫자면 숫자를  #keep번호들 내부에 넣는다
+  //변경체크가 아니면 : #keep번호들 의 번호를 사용한다.
 
+  var 색칠할번호요소,색칠할번호,색칠할곳;
+  체크확인배열.forEach ( (아이디,인덱스) => {
+    색칠할곳=document.querySelector(색칠할곳배열[인덱스])
+    색칠할번호요소=document.querySelector(색칠할번호배열[인덱스]);
+    if (document.querySelector(아이디).checked && 색칠할번호요소.innerHTML!='') {
+      색칠할번호요소.innerHTML='';//초기화
+      //색칠할번호 바꾸기
+      document.querySelector(변경할배열[인덱스]).innerHTML.split(',').forEach ( (문자열,인덱스2,) => {
+        //두번반복하는 이유
+        if (문자열.substring(0,1)=='#') {
+          if (색칠할번호요소.innerHTML=='') {색칠할번호요소.innerHTML=document.querySelector(문자열).innerHTML;}
+          if (색칠할번호요소.innerHTML!='') {색칠할번호요소.innerHTML+=',' + document.querySelector(문자열).innerHTML;}
+        }
+        if (문자열.substring(0,1)!='#') {
+          if (색칠할번호요소.innerHTML=='') {색칠할번호요소.innerHTML=문자열;}
+          if (색칠할번호요소.innerHTML!='') {색칠할번호요소.innerHTML+=',' + 문자열;}
+        }
+      });
+    }
+    //번호가 두번씩 기록되는 이유?
+    var 값=색칠할번호요소.innerHTML.split(',');값=new Set(값);값=[...값];색칠할번호요소.innerHTML=값.join(',');
+
+
+
+    색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
+    for (var i=0; i<45; i++) {
+      색칠할곳.children[i].classList.remove('분석');
+      색칠할곳.children[i].innerHTML='';
+      if (색칠할번호.filter( 번호 => 번호==(i+1)).length>0) {
+        색칠할곳.children[i].classList.add('분석');
+        색칠할곳.children[i].innerHTML=i+1;
+      }
+    }
+  });
+}
+function 색칠하기() {
+  var 체크확인배열=['#keep_input','#셑팅1_input','#셑팅2_input','#셑팅3_input']
+  var 색칠할번호배열=['#keep번호들','#셑팅1번호들','#셑팅2번호들','#셑팅3번호들','#클릭번호들']
+  var 인덱스=-1;
+  if (색칠할번호배열.includes(색칠id)) {인덱스=색칠할번호배열.indexOf(색칠id)} else {
+      체크확인배열.forEach ( (아이디,y) => {
+        if (document.querySelector(아이디).checked) {인덱스=y}
+      });
+  }
+  //색칠해제
+  색칠해제();
+  if (인덱스==-1) {return;}
+  var 색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
+  var 색칠할곳체크배열=['#삼십회빈도','#당번표','#사오1ST','#사오2ST','#사오3ST'];
+  var 색칠할곳id배열=['#분석자료_삼십회표_js > div:not(:first-child):not(:nth-of-type(2)) > button',
+                     '.당번만 > button','#버튼45의1st button','#버튼45의2st button','#버튼45의3st button'];
+  var 버튼들;
+  색칠할곳id배열.forEach ( (아이디,인덱스) => {
+    if (document.querySelector(색칠할곳체크배열[인덱스]).checked) {
+        버튼들=document.querySelectorAll(아이디);
+        for (var i=0; i<버튼들.length; i++) {
+          if (버튼들[i].innerHTML!='' && 색칠할번호.includes(버튼들[i].innerHTML)) {
+            버튼들[i].classList.add('색칠');
+          }
+        }
+    }
+  });
+}
+function 색칠해제() {
+  var 개수=document.querySelectorAll('.색칠');
+  for (var i=0; i<개수.length; i++) {
+    if (!['버튼45의1st','버튼45의2st','버튼45의3st'].includes(개수[i].parentElement.parentElement.id)) {
+       개수[i].classList.remove('색칠')
+    }
+  }
 }
 function 색칠할번호들_clear() {
   var 변수 = ['#keep번호들_변수포함/#keep번호들', '#셑팅1번호들_변수포함/#셑팅1번호들', 
               '#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3번호들_변수포함/#셑팅3번호들',
               '#클릭번호들_변수포함/#클릭번호들'];
+  var 색칠할곳배열=['#버튼45오른쪽단독_안에_keep번호들','#버튼45오른쪽단독_안에_셑팅1번호들','#버튼45오른쪽단독_안에_셑팅2번호들',
+                   '#버튼45오른쪽단독_안에_셑팅3번호들','#버튼45오른쪽단독_안에_클릭번호들']
   변수.forEach((문자열, 인덱스) => {
     document.querySelector(문자열.split('/')[0]).innerHTML='';
     document.querySelector(문자열.split('/')[1]).innerHTML='';
+    var 개수=document.querySelector(색칠할곳배열[인덱스]).children;
+    for (var i=0; i<개수.length; i++) {개수[i].innerHTML='';개수[i].classList.remove('분석')}
   });
+  색칠해제();
+  색칠id='';
 }
-function 셑팅토글(e) {
+function 셑팅토글(인덱스) {
   console.log('셑팅토글(e)');
-  const 설정IDs = ['keep_input', '셑팅1_input', '셑팅2_input', '셑팅3_input'];
+  const 체크확인 = ['#keep_input', '#셑팅1_input', '#셑팅2_input', '#셑팅3_input'];
+  체크확인.forEach ( (아이디) => {document.querySelector(아이디).checked=false;});
+  document.querySelector(체크확인[인덱스]).checked=true;
+
   const 셑팅 = ['#keep번호들_변수포함/#keep번호들', '#셑팅1번호들_변수포함/#셑팅1번호들',
                '#셑팅2번호들_변수포함/#셑팅2번호들', '#셑팅3번호들_변수포함/#셑팅3번호들'];
-  const 설명들 = document.querySelectorAll('.설명_가로한줄');
-
-  // 현재 클릭된 요소를 체크하고 나머지는 해제
-  설정IDs.forEach((id, index) => {
-    const input = document.getElementById(id);
-    const 설명대상 = 설명들[index]?.children[0]?.children[2];
-    
-    if (e.id === id) {
-      input.checked = true;
-      설명대상?.classList.add('초코');
-      셑팅된곳변수포함id=셑팅[index].split('/')[0];
-      셑팅된곳숫자만id=셑팅[index].split('/')[1];
-      console.log('셑팅된곳변수포함id : ' + 셑팅된곳변수포함id)
-      console.log('셑팅된곳숫자만id : ' + 셑팅된곳숫자만id)
-    } else {
-      input.checked = false;
-      설명대상?.classList.remove('초코');
-    }
-  });
+  셑팅된곳변수포함id=셑팅[인덱스].split('/')[0];셑팅된곳숫자만id=셑팅[인덱스].split('/')[1];
+  console.log(셑팅된곳변수포함id)
+  console.log(셑팅된곳숫자만id)
 }
 function 고정html_구조생성및_초기설정() {
   //타이틀넣기
@@ -780,8 +818,8 @@ function 고정html_구조생성및_초기설정() {
     for (var 외부 = 0; 외부 < 20; 외부++) { //처음 20칸
       var 가로한줄 = document.createElement('div');
       var 번호선택_추출_c = document.createElement('span');
-      var 번호선택배열 = ['번호선택', '당번', '이웃수', '당번+이웃', '15주미출', '10주미출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
-      var 타이틀배열 = ['없음', '당번', '이웃수', '당번+이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
+      var 번호선택배열 = ['번호선택', '당번', '이웃', '당번이웃', '15주미출', '10주미출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
+      var 타이틀배열 = ['없음', '당번', '이웃', '당번이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
       for (var i = 0; i < 4; i++) {
         var div요소 = document.createElement('span'); // div 요소 변수에 담는다.
         if (i == 0) { div요소.textContent = 번호선택배열[외부]; div요소.setAttribute('style', 'width:75px;height:24px; border:1px solid black;display:inline-block;margin-right:-1px;') }
@@ -920,31 +958,51 @@ function 따라가기위치설정() {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
+  if (['버튼45의1st','버튼45의2st','버튼45의3st'].includes(e.target.parentElement.parentElement.id) && e.target.innerHTML=='콜') {
+    console.log('콜')
+    var 인덱스;
+    var 배열=['#keep_input/#keep번호들','#셑팅2_input/#셑팅1번호들','#셑팅2_input/#셑팅2번호들','#셑팅2_input/#셑팅3번호들']
+    배열.forEach ( (문자열,y) => {
+      if (document.querySelector(문자열.split('/')[0]).checked) {인덱스=y}
+    });
+    var 선택번호들=document.querySelector(배열[인덱스].split('/')[1]).innerHTML.split(',');
+    var 기록할요소=document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button');
+    console.log(기록할요소.length)
+    for (var i=0; i<기록할요소.length; i++) {
+      기록할요소[i].classList.remove('색칠');
+      if (선택번호들.includes(기록할요소[i].innerHTML)) {기록할요소[i].classList.add('색칠');}
+    }
+    document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들변수포함').innerHTML=선택번호들;
+    document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML=선택번호들;
+    return;
+  }
   if (['버튼45의1st','버튼45의2st','버튼45의3st'].includes(e.target.parentElement.parentElement.id) && e.target.tagName=='BUTTON') {
-    e.target.classList.toggle('분석')
+    e.target.classList.toggle('색칠')
   }
   if (['버튼45의1st','버튼45의2st','버튼45의3st'].includes(e.target.parentElement.parentElement.id) && e.target.innerHTML=='Clear') {
     var 요소들=document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button');
-    for (var i=0; i<요소들.length; i++) {요소들[i].classList.remove('분석');}
+    for (var i=0; i<요소들.length; i++) {요소들[i].classList.remove('색칠');}
     document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들변수포함').innerHTML='';
     document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML='';
   }
   if (e.target.classList.contains('클릭번호로보냄')) {
     //e.target.title 생성해야하는 경우
-    if (e.target.innerHTML=='클릭번호로보내기') {
+    console.log('클릭번호로보내기 class 있을때')
+    if (e.target.innerHTML=='클릭번호로보내기') {//버튼45의1st','버튼45의2st','버튼45의3st
       var 선택번호들=[];
       Array.from(document.querySelectorAll('#' + e.target.parentElement.parentElement.id + ' button')).forEach ( 요소 => {
-        if (요소.classList.contains('분석')) {선택번호들.push(요소.innerHTML)}
+        if (요소.classList.contains('색칠')) {선택번호들.push(요소.innerHTML)}
       });
       document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들변수포함').innerHTML=선택번호들.join(',');
       document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML=선택번호들.join(',');
       e.target.title='#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만';
     }
     //공통
-    const 변수Selector = e.target.title;
+    console.log(e.target.title)
+    const 변수Selector = e.target.title; //숫자가 들어있는 id
     const 클릭번호들El = document.querySelector('#클릭번호들');
     const 클릭번호들_변수포함El = document.querySelector('#클릭번호들_변수포함');
-    const 셑팅된곳El = document.querySelector(셑팅된곳변수포함id);
+    const 셑팅된곳El = document.querySelector(셑팅된곳변수포함id); //정해져있음 keep번호들, 셑팅1번호들, 셑팅2번호들, 셑팅3번호들 중에 하나
     const 셑팅된숫자El = document.querySelector(셑팅된곳숫자만id);
     const 숫자들 = document.querySelector(변수Selector).innerHTML.split(',');
 
@@ -952,7 +1010,7 @@ function 리스너_바디_click(e) {
     클릭번호들El.innerHTML = 숫자들;
 
     if (document.querySelector('#누적').checked) {
-      if (셑팅된곳El.innerHTML === '') {
+      if (셑팅된곳El.innerHTML == '') {
         if (숫자들[0].length > 0) {
           셑팅된곳El.innerHTML = 변수Selector;
           셑팅된숫자El.innerHTML = 숫자들;
@@ -979,6 +1037,7 @@ function 리스너_바디_click(e) {
 
     //45오른쪽단독 에 색칠하기
     셑팅2_번호45오른쪽_변경();
+    색칠하기();
 
   }
   if (e.target.parentElement.id == '삼십회횟수기록') {
@@ -1015,7 +1074,7 @@ function 리스너_바디_click(e) {
 function mousedownOrTouchstart(e) {
   // 터치 이벤트인지 마우스 이벤트인지 확인
   var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
-  console.log('e.type : ' + e.type)
+  //console.log('e.type : ' + e.type)
   var target = 드래그이동_버튼45오른쪽단독;//#버튼45오른쪽단독
   var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
   // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
