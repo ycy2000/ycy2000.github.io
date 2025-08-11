@@ -224,7 +224,7 @@
           <label class="form-check-label" for="삼십회빈도">30회빈도</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" id="당번표">
+          <input class="form-check-input" type="checkbox" value="" id="당번표" checked>
           <label class="form-check-label" for="당번표">당번표</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
@@ -364,6 +364,10 @@
         <label class="form-check-label">흐름전체</label>
       </div>
       <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
+        <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_흐름_기본">
+        <label class="form-check-label">여러흐름</label>
+      </div>      
+      <div class="form-check" onchange="체크this활용(this);"  style="margin-left:10px;">
         <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_흐름_이월">
         <label class="form-check-label">이월</label>
       </div>
@@ -406,6 +410,58 @@
     </div>
   </div>
   <div id="흐름전체" class="d-none 숨김리스트 d-inline-block">
+    <span id="흐름_기본" class="숨김리스트 d-none">
+      <div>여러흐름 모음</div>
+      <span id="칸_간격과삼이일" style="margin-right:5px;">
+        <div id="칸_간격과삼이일_위">
+          <div><span></span><span></span><span style="width:105px;">5주 출</span></div>
+          <div><span></span><span>간격</span><span>미출</span><span>1</span><span>2</span><span>3</span></div>
+        </div>
+        <br>
+        <div id="칸_간격과삼이일_아래">
+          <div><span></span><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
+        </div>
+        <div>
+          <div onchange="체크this활용(this);" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox" value="" id="check_칸_삼십회" checked>
+            <label class="form-check-label" for="check_칸_삼십회">여러_30회</label>
+          </div>
+          <div onchange="체크this활용(this);" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox" value="" id="check_칸_이월이웃수" checked>
+            <label class="form-check-label" for="check_칸_이월이웃수">이월이웃번호대</label>
+          </div>  
+        </div>
+      </span>
+      <span id="칸_삼십회">
+        <div id="칸_삼십회_위">
+          <div><span style="width:157px;">30회</span></div>
+          <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span style="font-size:11px;">기타</span></div>
+        </div>
+        <br>
+        <div id="칸_삼십회_아래">
+          <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
+        </div>
+      </span>
+      <span id="칸_이월이웃수">
+        <div id="칸_이월이웃수_위" class="d-inline-block">
+          <div><span style="width:79px;">이전회차</span></div>
+          <div><span style="width:79px;">이월/이웃수</span></div>
+        </div>
+        <div id="칸_이월이웃수_위_번호대" class="d-inline-block" style="margin-left:17px;">
+          <div><span>단번</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
+          <div><span></span><span></span><span></span><span></span><span></span></div>
+        </div>        
+        <br><br>
+        <div id="칸_이월이웃수_아래">
+          <div id="칸_이웃수_아래" style="display: inline-block;">
+            <div style="font-size:13px;font-weight: bold;"><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="color:blueviolet">당첨</span><span style="color:blueviolet">개수</span><span>이월</span><span>이웃</span><span>합</span></div>
+          </div>
+        </div>
+
+      </span>
+      <span id="칸_십번대"></span>
+
+    </span>
     <span id="흐름_이월" class="숨김리스트 d-none">흐름_이월<br><img src="portal/images/black_문서/임시사진_분석자료2.png" alt="이미지없음"></span>
     <span id="흐름_이웃수" class="숨김리스트 d-none">흐름_이웃수</span>
     <span id="흐름_이웃수full" class="숨김리스트 d-none">흐름_이웃수full</span>

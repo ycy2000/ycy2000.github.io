@@ -790,6 +790,37 @@ function 셑팅토글(인덱스) {
   console.log(셑팅된곳숫자만id)
 }
 function 고정html_구조생성및_초기설정() {
+  //#칸_간격과삼이일_위,#칸_간격과삼이일_아래,#칸_삼십회_위,#칸_삼십회_아래
+  var 칸_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  var 칸_별도html=`<div><span style="width:53px;">숫자개수</span><span></span><span></span><span></span><span></span></div>`
+  var 칸_이월이웃수html=`<div><span></span><span></span><span></span></div>`
+  var 칸_번호대html='<div><span></span><span></span><span></span><span></span><span></span></div>'
+  var 칸_아이디=['#칸_간격과삼이일_위','#칸_삼십회_위','#칸_이월이웃수_위','#칸_이월이웃수_위_번호대'];
+  for (var i=0; i<7; i++) {
+    칸_아이디.forEach ( (칸_id,칸_index) => {
+      if (칸_id=='#칸_이월이웃수_위') {document.querySelector(칸_id).innerHTML+=칸_이월이웃수html;}
+      else if (칸_id=='#칸_이월이웃수_위_번호대') {document.querySelector(칸_id).innerHTML+=칸_번호대html;}
+      else {
+        if (칸_id=='#칸_간격과삼이일_위' && i==6) {document.querySelector(칸_id).innerHTML+=칸_별도html;} 
+        else {
+          document.querySelector(칸_id).innerHTML+=칸_html;
+       }
+      }
+
+    });
+  }
+  var 칸_이웃수_아래html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  var 칸_아이디=['#칸_간격과삼이일_아래','#칸_삼십회_아래','#칸_이웃수_아래'];
+  for (var i=0; i<20; i++) {
+    칸_아이디.forEach ( (칸_id,칸_index) => {
+      if (칸_id=='#칸_이웃수_아래') {document.querySelector(칸_id).innerHTML+=칸_이웃수_아래html;}
+      else {
+        if (칸_id=='#칸_간격과삼이일_위' && i==6) {document.querySelector(칸_id).innerHTML+=칸_별도html;} 
+        else {document.querySelector(칸_id).innerHTML+=칸_html;}
+      }
+    });
+  }
+
   //타이틀넣기
   var 요소=document.querySelectorAll('.버튼45css button');
   for (var i=0; i<요소.length; i++) {요소[i].setAttribute('title',요소[i].innerHTML)}
