@@ -31,6 +31,8 @@ body > div {display:inline-block}
 #칸_이월이웃수_위 > div > span, #칸_이월수_아래 > div > span, #칸_이웃수_아래 > div > span, #칸_이월이웃수_위_번호대 > div > span
  {display: inline-block;border:1px solid black;width:27px;height:22px;vertical-align: top;padding-top:1px;
   font-size:12px;font-weight: bold;text-align: center;margin-right:-1px;}
+#칸_가로세로 span  {display: inline-block;border:1px solid black;width:24px;height:24px;vertical-align: top;padding-top:1px;
+  font-size:12px;font-weight: bold;text-align: center;margin-right:-1px;}
 #칸_간격과삼이일_위 > div:last-child > span,#칸_삼십회_위 > div:last-child > span,#칸_이월이웃수_위 > div:last-child > span
  {background-color: rgb(231, 214, 193);}
 #칸_이월이웃수_위 > div:not(:last-child) > span:not(:first-child) {background-color:rgb(218, 218, 122);}
@@ -42,6 +44,15 @@ body > div {display:inline-block}
 #칸_이웃수_아래 > div > span:nth-of-type(7) {background-color:yellow}
 #칸_이웃수_아래 > div > span:nth-of-type(8) {background-color:darkcyan}
 #칸_이웃수_아래 > div > span:nth-of-type(9) {background-color: rgb(216, 206, 206);}
+#칸_가로세로_세로 > div:nth-of-type(2) > span,#칸_가로세로_세로 > div:nth-of-type(3) > span,#칸_가로세로_세로 > div:nth-of-type(4) > span,
+#칸_가로세로_세로 > div:nth-of-type(5) > span,#칸_가로세로_세로 > div:nth-of-type(6) > span,#칸_가로세로_세로 > div:nth-of-type(7) > span,
+#칸_가로세로_세로 > div:nth-of-type(8) > span {background-color:yellow}
+
+
+
+
+
+
 
 
 

@@ -820,6 +820,15 @@ function 고정html_구조생성및_초기설정() {
       }
     });
   }
+  var 칸_세로27_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  var 칸_가로10_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  for (var i=0; i<17; i++) {
+    document.querySelector('#칸_가로세로_세로').innerHTML+=칸_세로27_html;
+  }
+  for (var i=0; i<7; i++) {
+    document.querySelector('#칸_가로세로_가로').innerHTML+=칸_가로10_html;
+  }
+
 
   //타이틀넣기
   var 요소=document.querySelectorAll('.버튼45css button');
