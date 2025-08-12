@@ -468,6 +468,8 @@ function 당번_회차change설정() {
     //여러흐름중 당번 : 값 초기화, 마지막 개수는 나중에
     var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
     Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
+    var 요소=document.querySelectorAll('#칸_삼십회_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
+    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
 
     //30회분 번호
     for (var 삼십번 = 0; 삼십번 < 30; 삼십번++) {
