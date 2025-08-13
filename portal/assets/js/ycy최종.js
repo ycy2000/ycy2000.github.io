@@ -214,7 +214,7 @@ function 분석자료_삼십회빈도와개수_js작성() {
   var 머리글 = document.querySelector('#분석자료_삼십회당첨개수_js > div:first-child');
   for (var i = 0; i < 머리글.children.length; i++) {
     if (i < 머리글.children.length - 1) { 머리글.children[i].innerHTML = i }
-    if (i == 머리글.children.length - 1) { 머리글.children[i].innerHTML = '합' }
+    if (i == 머리글.children.length - 1) { 머리글.children[i].innerHTML = '합'; 머리글.children[i].setAttribute('title','2~7의 합계') }
   }
   var 출횟수 = document.querySelectorAll('#분석자료_삼십회23456개수_js > div');
   var 당첨개수 = document.querySelectorAll('#분석자료_삼십회당첨개수_js > div');
@@ -234,7 +234,9 @@ function 분석자료_삼십회빈도와개수_js작성() {
     }
     당첨개수[i].children[당첨개수[i].children.length - 1].innerHTML = 0;
     for (var 합계 = 0; 합계 < 당첨개수[i].children.length - 2; 합계++) {
-      당첨개수[i].children[당첨개수[i].children.length - 1].innerHTML = Number(당첨개수[i].children[당첨개수[i].children.length - 1].innerHTML) + Number(당첨개수[i].children[합계 + 1].innerHTML);
+      if (합계>0 && 합계<6) {
+        당첨개수[i].children[당첨개수[i].children.length - 1].innerHTML = Number(당첨개수[i].children[당첨개수[i].children.length - 1].innerHTML) + Number(당첨개수[i].children[합계 + 1].innerHTML);
+      }
     }
   }
 }
@@ -451,9 +453,112 @@ function 분석자료_회차change설정() {
 function 당번_회차change설정() {
   console.log('당번_회차change설정()')
   document.querySelector('#당번_회차select').value = Number(회차);
+  var 당번 = 회차별배열[회차].split('_').slice(2, 8);
   if (회차 > 최근회차) { console.log('회차가 최근회차보다 크면 종료'); 회차 = 회차 - 1; document.querySelector('#당번_회차select').value = Number(회차); return; } //회차=회차-1 ==> 원래대로 돌림
-  if (1 == 1) { //1. 당번8칸채우기(30회분), 다음회차 채우기(둘다), 설정유형별로 회차 적용하기
-    //당번8칸 채우기
+  if (1 == 1) { //여러흐름
+    //여러흐름중 당번 : 값 초기화, 마지막 개수는 나중에
+    var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
+    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
+    var 요소=document.querySelectorAll('#칸_삼십회_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
+    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
+    var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span');
+    for (var i = 2; i < 6; i++) {
+      //마지막 4개 : 일단 0 기록
+      요소[i-1].innerHTML=0;
+    }
+    var 요소=document.querySelectorAll('#칸_삼십회_위 > div:last-child > span');
+    for (var i = 1; i < 7; i++) {
+      //마지막 6개 : 일단 0 기록, 30회
+      요소[i-1].innerHTML=0;
+    }
+    for (var i = 2; i < 8; i++) {
+        var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div > span:nth-of-type(1)');
+        요소[i].innerHTML=회차별배열[Number(회차)].split('_')[i];
+
+        var 간격;
+        var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div > span:nth-of-type(2)');            
+        if (i==7) {간격=Number(회차별배열[Number(회차)].split('_')[2])-
+                        Number(회차별배열[Number(회차)].split('_')[7])+45-1} 
+                        else {
+                    간격=Number(회차별배열[Number(회차)].split('_')[i+1])- 
+                        Number(회차별배열[Number(회차)].split('_')[i])-1
+                  }
+        요소[i].innerHTML=간격;
+    }
+    //여러흐름중 당번 : 당번에 대해서 미출, 1,2,3출 위치에 각각 다시 기록 및 숫자개수 카운팅...여러흐름용_이전오주당번모음
+    //          var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span');
+    var 여러흐름용_이전오주당번모음=[], 여러흐름용_이전삼십주당번모음=[];
+    for (var i = 0; i < 31; i++) {
+      if (i>0 && i < 6) { 회차별배열[회차 - i].split('_').slice(2, 8).forEach(번호 => { 여러흐름용_이전오주당번모음.push(번호) }) }
+      if (i>0 && i < 31) { 회차별배열[회차 - i].split('_').slice(2, 8).forEach(번호 => { 여러흐름용_이전삼십주당번모음.push(번호) }) }
+    }    
+    var 오주출수;
+    for (var i=0; i<6; i++) {
+      오주출수=여러흐름용_이전오주당번모음.filter( 번호 => 번호==당번[i]).length;
+      //console.log('당번[i] : ' + 당번[i] + ',' + 오주출수)
+      if (오주출수>3) {오주출수=3}
+      document.querySelectorAll('#칸_간격과삼이일_위 > div:nth-of-type(' + (3+i) + ') > span')[2+오주출수].innerHTML=당번[i];
+      document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span')[1+오주출수].innerHTML=
+      Number(document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span')[1+오주출수].innerHTML) + 1;
+    }
+    var 삼십주출수;
+    for (var i=0; i<6; i++) {
+      삼십주출수=여러흐름용_이전삼십주당번모음.filter( 번호 => 번호==당번[i]).length;
+      if (삼십주출수<2 || 삼십주출수>6) {삼십주출수=7} //7==기타의 위치
+      document.querySelectorAll('#칸_삼십회_위 > div:nth-of-type(' + (3+i) + ') > span')[삼십주출수-2].innerHTML=당번[i];
+      document.querySelectorAll('#칸_삼십회_위 > div:last-child > span')[삼십주출수-2].innerHTML=
+      Number(document.querySelectorAll('#칸_삼십회_위 > div:last-child > span')[삼십주출수-2].innerHTML) + 1;
+    }
+    //번호대, 삼이일20주간, 2345620주간, 당번이월20주간
+    for (var 이십주=0; 이십주<20; 이십주++) {
+      var 당번=회차별배열[회차 - 이십주].split('_').slice(2, 8); //당 회차
+      var 오주당번모음 = [], 십주당번모음 = [], 십오주당번모음 = [], 삼십주당번모음 = []; //이전부터 
+      for (var i = 0; i < 30; i++) {
+        if (i < 5) { 회차별배열[회차 - i - 이십주 -1].split('_').slice(2, 8).forEach(번호 => { 오주당번모음.push(번호) }) }
+        if (i < 10) { 회차별배열[회차 - i - 이십주 -1].split('_').slice(2, 8).forEach(번호 => { 십주당번모음.push(번호) }) }
+        if (i < 15) { 회차별배열[회차 - i - 이십주 -1].split('_').slice(2, 8).forEach(번호 => { 십오주당번모음.push(번호) }) }
+        if (i < 30) { 회차별배열[회차 - i - 이십주 -1].split('_').slice(2, 8).forEach(번호 => { 삼십주당번모음.push(번호) }) }
+      }
+      var 장미321=document.querySelectorAll('#칸_간격과삼이일_아래 > div:nth-of-type(' + (이십주+2) + ') > span'); //첫span 비어있음
+      Array.from(장미321).forEach ( (요소,인덱스) => {if (인덱스>0) {요소.innerHTML=0}});//일단 0 기록
+      당번.forEach ( (번호,인덱스) => { 
+        if (십주당번모음.filter (일치 => 일치==번호).length==0) {장미321[1].innerHTML=Number(장미321[1].innerHTML)+1}
+        if (오주당번모음.filter (일치 => 일치==번호).length==0) {장미321[2].innerHTML=Number(장미321[2].innerHTML)+1}
+        if (오주당번모음.filter (일치 => 일치==번호).length==1) {장미321[3].innerHTML=Number(장미321[3].innerHTML)+1}
+        if (오주당번모음.filter (일치 => 일치==번호).length==2) {장미321[4].innerHTML=Number(장미321[4].innerHTML)+1}
+        if (오주당번모음.filter (일치 => 일치==번호).length>2) {장미321[5].innerHTML=Number(장미321[5].innerHTML)+1}
+      });
+      var 삼십회=document.querySelectorAll('#칸_삼십회_아래 > div:nth-of-type(' + (이십주+2) + ') > span');
+      Array.from(삼십회).forEach ( (요소,인덱스) => 요소.innerHTML=0);//일단 0 기록
+      var 개수;
+      당번.forEach ( (번호,인덱스) => { 
+        개수=삼십주당번모음.filter ( m => m==번호 ).length;
+        if (개수>1 && 개수<7) {삼십회[개수-2].innerHTML=Number(삼십회[개수-2].innerHTML)+1}
+        if (개수>1 && 개수<7) {삼십회[5].innerHTML=Number(삼십회[5].innerHTML)+1}
+      });
+      var 이월이웃=document.querySelectorAll('#칸_이웃수_아래 > div:nth-of-type(' + (이십주+2) + ') > span'); //첫span 비어있음
+      var 이전당번=회차별배열[회차 - 이십주-1].split('_').slice(2, 8);
+      var 이전이웃=[];
+      var 왼쪽, 오른쪽;
+      이전당번.forEach (번호 => {
+        if (번호==1) {왼쪽=45; 오르쪽=2;};if (번호==45) {왼쪽=44; 오르쪽=1;};if (번호!=45 && 번호!=1) {왼쪽=Number(번호)-1; 오르쪽=Number(번호)+1;};
+        //왼쪽, 오른쪽 : 이전당번에 포함되지않는다, 이전이웃에 포함되지 않는다. => push
+        if (이전당번.contains(왼쪽) || 이전이웃.contains(왼쪽)) {} else {이전이웃.push(왼쪽)};
+        if (이전당번.contains(오른) || 이전이웃.contains(오른쪽)) {} else {이전이웃.push(오른쪽)};
+      });
+      Array.from(이월이웃).forEach ( (요소,인덱스) => {if (인덱스<6) {요소.innerHTML=당번[인덱스]}}); //일단 당번 기록
+      Array.from(이월이웃).forEach ( (요소,인덱스) => {
+
+      });
+
+
+
+
+
+
+    } //for 닫음
+  }//if 닫음
+  if (1 == 1) { //#당번_오주삼십주개수 작성 및 변수에 값 넣기, //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
     //다음회차 위치
     if (회차별배열[Number(회차) + 1]) {
       for (var i = 0; i < 8; i++) {
@@ -465,44 +570,13 @@ function 당번_회차change설정() {
         document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML = '_';
       }
     }
-    //여러흐름중 당번 : 값 초기화, 마지막 개수는 나중에
-    var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
-    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
-    var 요소=document.querySelectorAll('#칸_삼십회_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
-    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
-
     //30회분 번호
     for (var 삼십번 = 0; 삼십번 < 30; 삼십번++) {
       for (var i = 0; i < 8; i++) { // 기존꺼다 건드리지 말것
-        //여러흐름중 당번
-        if (삼십번==0 && i>1 && i<8) {//i==2~7
-          var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div > span:nth-of-type(1)');
-          요소[i].innerHTML=회차별배열[Number(회차) - 삼십번].split('_')[i];
-
-          var 간격;
-          var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div > span:nth-of-type(2)');            
-          if (i==7) {간격=Number(회차별배열[Number(회차) - 삼십번].split('_')[2])-
-                          Number(회차별배열[Number(회차) - 삼십번].split('_')[7])+45-1} 
-                          else {
-                     간격=Number(회차별배열[Number(회차) - 삼십번].split('_')[i+1])- 
-                          Number(회차별배열[Number(회차) - 삼십번].split('_')[i])-1
-                    }
-          요소[i].innerHTML=간격;
-          //마지막 4개 : 일단 0 기록
-          var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span');
-          if (i<6) {요소[i-1].innerHTML=0;}//2부터
-          //마지막 6개 : 일단 0 기록, 30회
-          var 요소=document.querySelectorAll('#칸_삼십회_위 > div:last-child > span');
-          if (i<8) {요소[i-2].innerHTML=0;}//2부터
-        
-        }//여러흐름중 당번
-        
         if (i == 0) { document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번 + 1) + ') > span > button')[i].innerHTML = 회차별배열[Number(회차) - 삼십번].split('_')[i] }
         if (i > 0) { document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번 + 1) + ') > span > button')[i].innerHTML = 회차별배열[Number(회차) - 삼십번].split('_')[i + 1] }
       }
-    }
-  }
-  if (1 == 1) { //#당번_오주삼십주개수 작성 및 변수에 값 넣기, //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
+    }    
     var 부모id = '#당번변수', 개수id = '#당번_오주삼십주개수';
     변수명순서대로.forEach(변수명 => {
       document.querySelector(`${부모id} .${변수명}`).innerHTML = '';
@@ -512,7 +586,6 @@ function 당번_회차change설정() {
     if (i == 0 && 회차 == 최근회차) { document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = '_,_,_,_,_,_' }//0 공통변수_다음당번
     if (i == 0 && 회차 != 최근회차) { document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = 회차별배열[회차 + 1].split('_').slice(2, 8).join(',') } //0 공통변수_다음당번
     var 좌우수 = [], 이웃수 = [];
-    당번 = 회차별배열[회차].split('_').slice(2, 8);
     document.querySelector(`${부모id} .공통변수_당번`).innerHTML = 회차별배열[회차].split('_').slice(2, 8).join(',');
     document.querySelector(`${개수id} .공통변수_당번`).innerHTML = 6;
     document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML = 회차별배열[회차].split('_').slice(2, 8).join(',') + ',';
@@ -533,9 +606,8 @@ function 당번_회차change설정() {
       };
     })
 
-    var 오주당번모음 = [], 십주당번모음 = [], 십오주당번모음 = [], 삼십주당번모음 = [], 여러흐름용_이전오주당번모음=[];
+    var 오주당번모음 = [], 십주당번모음 = [], 십오주당번모음 = [], 삼십주당번모음 = [];
     for (var i = 0; i < 30; i++) {
-      if (i>0 && i < 6) { 회차별배열[회차 - i].split('_').slice(2, 8).forEach(번호 => { 여러흐름용_이전오주당번모음.push(번호) }) }
       if (i < 5) { 회차별배열[회차 - i].split('_').slice(2, 8).forEach(번호 => { 오주당번모음.push(번호) }) }
       if (i < 10) { 회차별배열[회차 - i].split('_').slice(2, 8).forEach(번호 => { 십주당번모음.push(번호) }) }
       if (i < 15) { 회차별배열[회차 - i].split('_').slice(2, 8).forEach(번호 => { 십오주당번모음.push(번호) }) }
@@ -639,19 +711,7 @@ function 당번_회차change설정() {
       var 요소확인 = document.querySelector(`${부모id} .${변수명}`);
       if (요소확인.innerHTML.slice(-1) == ',') { 요소확인.innerHTML = 요소확인.innerHTML.slice(0, -1) } //마지막이 쉼표(,)이면 쉼표삭제
     })
-    //여러흐름중 당번 : 당번에 대해서 미출, 1,2,3출 위치에 각각 다시 기록 및 숫자개수 카운팅...여러흐름용_이전오주당번모음
-    //          var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span');
-    var 오주출수;
-    for (var i=0; i<6; i++) {
-      오주출수=여러흐름용_이전오주당번모음.filter( 번호 => 번호==당번[i]).length;
-      console.log('당번[i] : ' + 당번[i] + ',' + 오주출수)
-      if (오주출수>3) {오주출수=3}
-      document.querySelectorAll('#칸_간격과삼이일_위 > div:nth-of-type(' + (3+i) + ') > span')[2+오주출수].innerHTML=당번[i];
-      document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span')[1+오주출수].innerHTML=
-      Number(document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span')[1+오주출수].innerHTML) + 1;
-    }
-    console.log(당번)
-    console.log(여러흐름용_이전오주당번모음)
+
 
 
     //.당번만 > button : title넣기
@@ -835,7 +895,6 @@ function 고정html_구조생성및_초기설정() {
           document.querySelector(칸_id).innerHTML+=칸_html;
        }
       }
-
     });
   }
   var 칸_이웃수_아래html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
