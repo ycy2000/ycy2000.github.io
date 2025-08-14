@@ -18,6 +18,9 @@ function 개인정리png(e) {
   var src값='portal/images/문서연결_엑셀VBA/' + 파일이름;
 
   if (document.querySelector(`#${들어갈곳id}`)) {document.querySelector(`#${들어갈곳id}`).innerHTML=''}
+  if (!document.querySelector(`#${들어갈곳id}`).classList.contains('d-none')) {
+    document.querySelector(`#${들어갈곳id}`).classList.add('d-none'); return;
+  }
 
   if (파일이름!='없음') {
     console.log('파일이름 : ' + 파일이름)
@@ -31,7 +34,19 @@ function 개인정리png(e) {
 }
 
 function 연습() {
+  Array.from([1,2,3,4]).forEach ( (요소,index,array) => {
+    console.log(요소 + ',' + index + ', [' + array + ']');
+  });
 
+  Array.from([1,2,3,4], (element,인덱스) => element*3).forEach ( (요소,index,array) => {
+    console.log(요소 + ',' + index + ', [' + array + ']');
+  });
+
+  Array.from([1,2,3,4], (el) => {
+    if (el>2) {return '3,4'};if (el<3) {return '1,2'};
+  }).forEach ( (요소,index,array) => {
+    console.log(요소 + ',' + index + ', [' + array + ']');
+  });
 }
 
 
@@ -41,7 +56,7 @@ function 연습() {
 function 특정id편집() {
 
   var 결과부분 = document.querySelector('#전체대체');
-  var 연습제목설정이것만 = 'js_target과currenttarget';
+  var 연습제목설정이것만 = 'java_Array_from';
   var 연습시제목직접입력=document.querySelector('#선택문서제목');
   var 선택한캔버스관련자료none안_타겟element; 
   선택한캔버스관련자료none안_타겟element = document.querySelector('#' + 연습제목설정이것만);
