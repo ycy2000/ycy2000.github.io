@@ -29,11 +29,6 @@ var 드래그이동_버튼45오른쪽단독 = document.querySelector('#버튼45�
 var 드래그이동_버튼45감싸기 = document.querySelector('#버튼45감싸기');
 
 function 연습() {
-  var 요소들={};
-  요소들[0]='1st'
-  //console.log(Object.prototype.toString.call(요소들))
-console.log(요소들['0'])
-console.log(요소들.length)
 
 
 
