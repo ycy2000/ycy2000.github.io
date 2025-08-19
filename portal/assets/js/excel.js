@@ -1222,6 +1222,7 @@ var 리스너_excel캔버스전체 = document.querySelector('#excel캔버스전�
 var 리스너_git관련전체 = document.querySelector('#git관련전체');
 var 리스너_CSS전체 = document.querySelector('#CSS전체');
 var 리스너_Java전체 = document.querySelector('#Java전체');
+var 리스너_파이썬전체 = document.querySelector('#파이썬전체');
 var 리스너_기타전체 = document.querySelector('#기타전체');
 
 
@@ -1251,6 +1252,12 @@ function header_클릭시(e) {
   }
   if (e.target.innerHTML == 'Java') {//캔버스 들어가려면 클릭이 된다.
     선택한캔버스id='Java전체';
+    console.log('  선택한캔버스id : ' + 선택한캔버스id);
+    document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
+    선택한캔버스_카테고리작성및_초기작업();
+  }
+    if (e.target.innerHTML == '파이썬') {//캔버스 들어가려면 클릭이 된다.
+    선택한캔버스id='파이썬전체';
     console.log('  선택한캔버스id : ' + 선택한캔버스id);
     document.querySelector('#캔버스이름').innerHTML=선택한캔버스id;
     선택한캔버스_카테고리작성및_초기작업();
@@ -1660,6 +1667,8 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 리스너_CSS전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_Java전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_Java전체.addEventListener('change', 선택한캔버스_검색input_change시);
+리스너_파이썬전체.addEventListener('click', 선택한캔버스클릭시);
+리스너_파이썬전체.addEventListener('change', 선택한캔버스_검색input_change시);
 리스너_기타전체.addEventListener('click', 선택한캔버스클릭시);
 리스너_기타전체.addEventListener('change', 선택한캔버스_검색input_change시);
 
