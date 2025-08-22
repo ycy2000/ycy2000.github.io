@@ -1162,7 +1162,9 @@
   <div class="카테고리모음"><!--캔버스바디에 들어간다-->
     <div class="개별카테고리" id="htmlJavascript전체_선별">
       <div>
-
+        <h6 class="canvas_div fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
+        <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
+        <h6 class="canvas_div fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
       </div>
       <div>
         
@@ -1174,12 +1176,10 @@
     <div class="개별카테고리" id="htmlJavascript전체_css2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
         <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
-        <h6 class="canvas_div fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
-        <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
         <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
-        <h6 class="canvas_div" title='CSS_줄바꿈'>CSS > 줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격,탭으로분리,줄바꿈으로분리,split</h6>
         <h6>[메모] text-indent : 상속됨</h6>  
+        <h6>[메모] 탭으로분리 split("\t"), 줄바꿈 된 것 split('\n')</h6>  
         <h6>[메모] 태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
         <h6 class="canvas_div" title="_01_project_파순01_파일제목규칙">파일제목 규칙, 줄바꿈, 코딩(변수)합의</h6>
         
@@ -1588,9 +1588,32 @@
 
   <div id="CSS_줄바꿈"><!-- 참고 -->
     <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold"><a
-          href="https://velog.io/@rkio/Javascript-text-overflow-ellipsis-%ED%99%9C%EC%84%B1-%EC%97%AC%EB%B6%80%EB%A5%BC-JS%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
-          target="_blank">자바스크립트로 오버플로 확인</a></h5>
+      <h5 class="fw-bold">부모의 width 그리고 자식의 width 차지 (ex : 줄바꿈 금지할 경우)</h5>
+      <h6 class="fw-bold">1. 부모의 width가 100px (또는 inline-block 속성), 자식이 block 속성일때 width가 100px 된다. </h6> 
+      <h6 class="fw-bold">2. block속성도 width 지정 가능. 단지 오른쪽에 다른 div등이 오지 못한다. (줄바꿈 된다)</h6>
+      <h6 class="fw-bold">3. style="display:inline-block;width:100px; border:1px solid black;"</h6>  
+      <h6 class="fw-bold" style="text-indent: 18px;">첫번째 두번쨰는 기본 => width 초과시 줄바꿈 됨 // 세번째는 white-space:nowrap;vertical-align: top;</h6>  
+      <h6 class="fw-bold" style="text-indent: 18px;">마지막은 자식의 70px 부분에 white-space:nowrap;</h6>  
+      <div style="display:inline-block;width:100px; border:1px solid black;">
+        <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:70px;">70px</h6>
+        <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:70px;">70px</h6>
+      </div>
+      <div style="display:inline-block;width:100px; border:1px solid black;margin-right:30px;">
+        <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:120px;">120px</h6>
+        <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:70px;">70px</h6>
+      </div>==> 세번째
+      <div style="display:inline-block;width:100px; border:1px solid black;white-space:nowrap;vertical-align: top;">
+        <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:120px;">120px</h6>
+        <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:160px;height:30px;">
+          <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:70px;">50px</h6>
+          <h6 class="fw-bold d-inline-block" style="border:1px solid black;width:70px;">50px</h6>
+          
+        </h6>
+      </div>
+      <br><br><br>
+
+      
+
       <h5 class="fw-bold">줄바꿈_배분정렬과wordBreak_overflow_nowarp_whitespace_aligntop_요소내줄간격</h5>
       <h6 class="fw-bold">1. p등 문장 길어질때 처리. ★본인과 자식에게 모두 적용됨.</h6>
       <h6 style="text-indent: 23px;">넘김 ==> white-space:normal; 넘기지 않음 ==> white-space:nowrap; </h6>
@@ -1625,10 +1648,6 @@
         기본값이 글자기준이라고 했는데 예시예시예시예시예시예시긴단어가걸릴때확연히알수있다 (line-height:30px;)</h6>
     </div>
     <div class=" d-inline-block align-top" style="width:1000px;border-right:1px solid black;white-space:normal;">
-      <h6 class="fw-bold">1. 탭으로 분리된 것 : split("\t"), 탭문자 자체를 넣어도 됨 [excel에서 범위복사후 vsCode에 붙여넣었을때 가로]</h6>
-      <h6 class="fw-bold">2. 줄바꿈 된 것 : split("\n"),  [excel에서 범위복사후 vsCode에 붙여넣었을때 세로]</h6>
-      <h6 style="text-indent: 20px;">var 줄바꿈배열=문자열.split('\n') : 줄바꿈 배열로 분리 후 => 줄바꿈배열[0].split('\t')[1] : 탭으로분리된것 두번째꺼</h6>
-
 
     </div>
     <br><br><br><br><br><br><br>
