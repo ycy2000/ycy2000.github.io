@@ -43,6 +43,7 @@ body {
 #입항관리자료풀림결과 tr > td {height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
 /* 입관td기본, 입관td최소화  */
 #입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(1) {width:20px;text-align: center;}
+#입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(1) {width:20px;text-align: center;}
 #입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(2) {width:70px;}
 #입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(3) {width:105px;}
 #입항관리자료풀림결과[class~="입관td기본"] tr > td:nth-of-type(4) {width:70px;}
@@ -75,6 +76,21 @@ body {
 #오른쪽리스트메모2만 tr > td {width:250px;height:22px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
 
 #PNG셑팅내부_리스트자료풀림결과 {font-size: 13px; font-weight: bold;}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(1) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(2) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(3) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(4) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(5) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(6) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(7) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(8) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(9) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(10) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(11) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(12) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(13) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(14) {background-color: rgb(228, 207, 207);}
+#PNG셑팅내부_리스트자료풀림결과 .그레이 td:nth-of-type(15) {background-color: rgb(228, 207, 207);}
 #PNG셑팅내부_리스트자료풀림결과  tr > td {height:21px; display:inline-block; border:1px solid black;margin-right:-1px;margin-bottom:-1px;padding-left:3px;overflow: hidden;vertical-align: top;}
 #PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(1) {width:15px;}
 #PNG셑팅내부_리스트자료풀림결과  tr > td:nth-of-type(2) {width:20px;}

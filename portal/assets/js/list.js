@@ -344,7 +344,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[19] + '</td>' //화찰입항
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //요약1/2
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[21] + '</td>' //요약2/2
-    
+
         div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
         자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
       }
@@ -400,7 +400,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[20] + '</td>' //화찰입항
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[21] + '</td>' //요약1/2
         div안span4 += '<td>' + 리스트줄바꿈split[i].split('\t')[22] + '</td>' //요약2/2
-    
+
         div안span4 = '<table><tbody><tr>' + div안span4 + '</tr></tbody></table>'//이게 안들어가면 안되는데 왜인지 모르겠다.
         자료풀림결과.innerHTML = 자료풀림결과.innerHTML + div안span4;
       }
@@ -413,6 +413,11 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
         시간노랑확인요소[i].children[14].classList.add('js시간노랑');
         break;
       }
+    }
+    var 요소=document.querySelectorAll('#리스트독립수정가능정보 table')
+    for (var i=0; i<요소.length; i++) {
+      console.log(Math.round(((i+2) / 10)) % 2)
+      if (Math.round(((i+3) / 10)) % 2 ==0 && i>1) {요소[i].classList.add('그레이')}
     }
       document.querySelector('#리스트복붙textarea').value = '';
   }
