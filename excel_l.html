@@ -29,7 +29,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <button type="button">기타</button>
-      <button type="button" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" title="#사용법">사용법</button>
+      <!-- onclick 실행후 캔버스가 열린다. id대표캔버스 셑팅을하면 된다. -->
+      <button type="button" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" title="#사용법" onclick="캔버스초기셑팅(this)">사용법</button>
       <button type="button" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" title="#CSS">CSS</button>
       <button type="button" title="#html특수문자_click" onclick="document.querySelector('#전체대체').innerHTML
       =document.querySelector(this.title).outerHTML">특문</button>
@@ -52,7 +53,7 @@
 
 <div id="전체대체" style="margin-left:10px;white-space: nowrap;"></div>
 
-<div class="offcanvas offcanvas-bottom" tabindex="-1" id="대표캔버스" aria-labelledby="offcanvasBottomLabel" data-bs-scroll="true" style="height:450px;">
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="대표캔버스" aria-labelledby="offcanvasBottomLabel" data-bs-backdrop="true" data-bs-scroll="true" style="height:450px;">
   <div class="offcanvas-header p-1">
     <div class="캔버스header">
       <span class="캔버스바디_초기화">초기화</span><!--click동작-->
@@ -120,8 +121,7 @@
       <h6 style="text-indent: 30px;">aria-controls="offcanvasBottom" : 캔버스가 나타나는 위치 (Bottom은 아래엣 위로 올라옴)</h6>
       <h6 style="text-indent: 30px;">기본적으로 캔버스 이외 배경이 흐리게되고 흐린부분 스크롤이 안되게 되어 있다.</h6>
       <h6 style="text-indent: 45px;">스크롤 되도록 : data-bs-scroll="true"  == 기본값(설정없어도) false</h6>
-      <h6 style="text-indent: 45px;">흐린 배경 제거 : data-bs-backdrop="false"  == 기본값(설정없어도) true</h6>
-      <h6 style="text-indent: 45px;">흐린 배경 제거 : data-bs-backdrop="false"  == 기본값(설정없어도) true</h6>
+      <h6 style="text-indent: 45px;">배경클릭시 닫기 : data-bs-backdrop="true"  == true(흐림+닫힘), false(흰색+안닫힘), static(흐리게 + 안닫힘)</h6>
       <br>
       <h6 style="text-indent: 15px;">캔버스의 header 끝부분 X 닫는곳</h6>
       <h6 style="text-indent: 30px;">class="btn-close" : 버튼에 X표시 밑 스타일, data-bs-dismiss="offcanvas" : 캔버스 닫는기능 활성화, aria-label="Close" : 모름</h6>
