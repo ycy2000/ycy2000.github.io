@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'><!-- 나눔고딕 추가.. -->
+<!-- STYLE에 : font-family: 'Noto Sans', sans-serif;  -->
+<!-- head 안에.. -->
+<!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--업무참고 css-->
+<link href="portal/assets/css/default.css" rel="stylesheet">
+<link href="portal/assets/css/excel_l.css" rel="stylesheet">
+<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<!--제이쿼리 코드 사용할수 있게함 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div id="html파일이름" style="display:none">excel.html</div>
+<div id="head_button_group" style="white-space: nowrap;">
+  <nav class="navbar bg-body-tertiary pt-1 m-0" style="text-align: left;background-color: rgb(241, 235, 235);">
+    <div> <!-- navbar navbar-toggler는 있어야겠고, 내부에선 배분정렬이 되어서 div로 감쌌음 -->
+      <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" style="margin-left:5px;"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button type="button">기타</button>
+      <button type="button" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" title="#사용법">사용법</button>
+      <button type="button" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" title="#CSS">CSS</button>
+      <button type="button" title="#html특수문자_click" onclick="document.querySelector('#전체대체').innerHTML
+      =document.querySelector(this.title).outerHTML">특문</button>
+      <button type="button" title="#부트_캔버스" onclick="document.querySelector('#전체대체').innerHTML
+      =document.querySelector(this.title).outerHTML">대체</button>
+      <button type="button" onclick="document.querySelector('#전체대체').innerHTML=''">대체clear</button>
+      <span>canvas : </span><span id="캔버스이름"></span><span>, ID : </span><span></span><span>, 제목 : </span><span></span>
+      <div style="padding:10px;" title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="dropdown-item" href="list.html">List</a>
+        <a class="dropdown-item" href="black.html">Black</a>
+        <a class="dropdown-item" href="kim.html">Kim</a>
+        <a class="dropdown-item" href="it.html">it</a>
+        <a class="dropdown-item" href="ycy정리.html">ycy</a>
+        <a class="dropdown-item" href="index.html">세관</a>
+      </div>  
+    </div>
+
+  </nav>
+</div>
+
+<div id="전체대체" style="margin-left:10px;white-space: nowrap;"></div>
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="대표캔버스" aria-labelledby="offcanvasBottomLabel" data-bs-scroll="true" style="height:450px;">
+  <div class="offcanvas-header p-1">
+    <div class="캔버스header">
+      <span class="캔버스바디_초기화">초기화</span><!--click동작-->
+      <span class="캔버스바디_모든제목보기">모든제목보기</span><!--click동작-->
+      <span class="캔버스바디_모든카테고리">모든카테고리</span=> <!--click동작-->            
+      <span class="d-inline-block">파일검색</span><!-- 동작없음, 보이는것은 innertext이고, title=파일명을 조회하므로 innertext도 title과 유사하게 코딩!!-->
+      <input class="canvas검색input" type = "text"><!-- change 동작-->
+      <span class="canvas검색input_clear">clear</span><!--click동작-->
+      <button class="캔버스바디_카테고리숨김">&lt;&lt;</button> <button class="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
+      <span class="js카테고리생성"></span>
+
+      <!--아래 button은 #캔버스관련자료none #canvas카테고리모음 > .canvas카테고리 의 각 id를 찾아서 생성하도록 코딩할것 -->
+
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- 숨겨진상태에서 하나만 보이게하는 용도! 검색결과도 같은 형식 17개 h6-->
+  <div class="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
+  </div>
+</div>
+
+
+
+
+
+
+<!-- id="사용법_body" : id대표캔버스의 바디에 들어감 -->
+<div class="d-none" title="설명:사용법관련">
+  <div id="사용법_body" class="세로3줄">
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+  </div>
+
+  <!-- 위치관계없이 전체대체에 들어갈 개별ID -->
+  <div id="html특수문자_click">
+    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+
+    <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
+      <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+      <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
+      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
+      <br>
+      <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
+    </div>
+    <div style="display: inline-block;padding:5px;">
+      <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
+    </div>
+
+  </div>
+  <div id="부트_캔버스" class="세로두줄">
+    <div>
+      <h6 class="fw-bold">canvas : 버튼누르면 캔버스가 나옴</h6>
+      <h6 style="text-indent: 15px;">버튼과 캔버스는 떨어져 있어도 상관없는데, header태그 안에 버튼이 있으면 안되는듯 (버그인듯)</h6>
+      <h6 style="text-indent: 15px;">버튼과 캔버스는 떨어져 있어도 상관없는데, header태그 안에 버튼이 있으면 안되는듯 (버그인듯)</h6>
+      <h6 style="text-indent: 15px;">버튼과 관련</h6>
+      <h6 style="text-indent: 30px;">data-bs-toggle="offcanvas" : 기능 사용을 위해 꼭 필요, 기능을 사용한다는 의미</h6>
+      <h6 style="text-indent: 30px;">data-bs-target="#offcanvasBottom" : 토글되는 캔버스의 ID</h6>
+      <h6 style="text-indent: 30px;">aria-controls="offcanvasBottom" : 캔버스가 나타나는 위치 (Bottom은 아래엣 위로 올라옴)</h6>
+      <h6 style="text-indent: 30px;">기본적으로 캔버스 이외 배경이 흐리게되고 흐린부분 스크롤이 안되게 되어 있다.</h6>
+      <h6 style="text-indent: 45px;">스크롤 되도록 : data-bs-scroll="true"  == 기본값(설정없어도) false</h6>
+      <h6 style="text-indent: 45px;">흐린 배경 제거 : data-bs-backdrop="false"  == 기본값(설정없어도) true</h6>
+      <h6 style="text-indent: 45px;">흐린 배경 제거 : data-bs-backdrop="false"  == 기본값(설정없어도) true</h6>
+      <br>
+      <h6 style="text-indent: 15px;">캔버스의 header 끝부분 X 닫는곳</h6>
+      <h6 style="text-indent: 30px;">class="btn-close" : 버튼에 X표시 밑 스타일, data-bs-dismiss="offcanvas" : 캔버스 닫는기능 활성화, aria-label="Close" : 모름</h6>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      <h6></h6>
+      <h6></h6>
+
+    </div>
+    <div>
+      <h6 class="fw-bold"></h6>
+      <h6 style="text-indent: 15px;">캔버스의 header 끝부분 X 닫는곳</h6>
+    </div>
+  </div>
+</div>
+
+<div class="d-none" title="설명:css관련">
+  <div id="CSS_body" class="세로3줄">
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+  </div>
+
+  <!-- 위치관계없이 전체대체에 들어갈 개별ID -->
+  <div id="css_white_space" class="세로두줄">
+    <div>
+      <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/CSS/white-space" target="_blank">white-space 상속됨</a> </h6>
+      <h6></h6>
+      <h6></h6>
+
+    </div>
+    <div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- top -->
+<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
+role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
+<span>Top</span></a>
+<!-- 부트스트랩.body 맨 마지막에.. -->
+<!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+<script src="portal/assets/js/excel_l.js"></script>
+</body>
+
+</html>
