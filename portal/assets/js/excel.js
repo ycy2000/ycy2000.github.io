@@ -1,3 +1,18 @@
+//코드정리작업 메모
+//1. 캔버스는 하나면 된다. 캔버스바디에 들어갈 div넣을때 필요한 버튼만 생성하면 된다.
+//2. 
+
+
+
+
+
+
+
+
+
+//-----코드정리작업 모메 끝
+
+
 function 개인정리png(e) {
   //<div id="js_객체관련반복문_png들어갈곳" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none"></div>
   //<button title="들어갈곳id:없음(이름.png):없음(요소id)" onclick="개인정리png(this)"></button>
@@ -244,7 +259,6 @@ function 전체대체클릭시(e) {
     var 그리기 = 캔버스.getContext("2d"); //2d그림객체생성
     그리기.clearRect(0,0,캔버스.width,캔버스.height);
   }
-
   if (e.target.innerHTML=='그리기2') {
     console.log('e.target.innerHTML==그리기2')
     var 캔버스 = document.querySelector('#전체대체 #선긋기와위치2');
@@ -702,20 +716,6 @@ function 전체대체클릭시(e) {
     그리기.fillText('C.(400,100)',650,247);
     그리기.fillText('D.(400,150)',665,310);
     그리기.fillText('반지름이 작으면 오른쪽으로 이동할 것이고...',650,330);
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
   }
   if (e.target.innerHTML=='그리기12') {
     console.log('e.target.innerHTML==그리기12')
@@ -944,8 +944,6 @@ function 전체대체클릭시(e) {
 
 
 }
-
-
 function 파일리스트() {
   console.log('파일리스트()')
   //다음 두 변수 정의할때, #전체대체로 들어갔을때 정의해야 됨.
@@ -1211,9 +1209,6 @@ function 파일리스트_연습() {
           }
       }
 }
-
-
-
 var 선택한캔버스id='없음';
 var 이전캔버스id='없음';
 var 리스너_header = document.querySelector('header');
@@ -1445,67 +1440,6 @@ function 선택한캔버스클릭시(e) {
 
   }
 }
-
-function 원본_선택한캔버스_검색input_change시(e) {
-  console.log('캔버스_검색value_change시');
-  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
-  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
-  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
-    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
-  }
-  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
-  var 검색할문자 = document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value.toUpperCase(); 
-  if (document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value == '') { return; }
-
-  var 찾는값=document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value; 
-  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
-
-  //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
-  var 검색결과포함id배열=[];
-  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none > [id]');
-
-
-  //var 검색할클래스들 = document.querySelectorAll('.모든검색 > [id]');
-  var 검색할클래스들 = document.querySelectorAll('[id]'); //전체대체꺼 색칠위해
-
-
-  console.log(선택한캔버스id + ', id있는것개수 : ' + 검색할클래스들.length)  
-  for (var i = 0; i < 검색할클래스들.length; i++) {
-  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
-
-    //if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-    console.log('검색할클래스들[i].id : ' + 검색할클래스들[i].id)
-    console.log('찾는값 : "' + 찾는값 + '", 존재여부')
-
-
-    if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      검색결과포함id배열.push(검색할클래스들[i].id);
-      if (검색할문자!=' ') {
-        검색할클래스들[i].innerHTML=
-        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
-      }
-    }
-  }
-  //예전코드 대비 추가 1 끝
-
-  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
-  var 검색할클래스들 = document.querySelectorAll('.모든검색 .개별카테고리 > div > h6');
-  var 내부html = '';
-  for (var i = 0; i < 검색할클래스들.length; i++) {
-  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
-    if (검색결과포함id배열.includes(검색할클래스들[i].title) || 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
-      if (검색할문자!=' ') {
-        검색할클래스들[i].innerHTML=검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
-      }
-      내부html += 검색할클래스들[i].outerHTML;
-      //제목부분과, 해당아이디 div가 있으면 그 내부의 모든 검색문자에 바탕색
-    }  
-  }
-  if (내부html == '') { alert('없음'); return; }
-  document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
-  document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;
-}
-
 function 선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
   //추가 : 검색결과바탕색 클래스 TEXT만 남기기
@@ -1571,11 +1505,7 @@ function 선택한캔버스_검색input_change시(e) {
   document.querySelector('#' + 선택한캔버스id + ' .캔버스바디').innerHTML = 내부html;
   document.querySelector('#' + 선택한캔버스id + ' .canvas검색input').value = 검색할문자;
 }
-
-
-
 폼컨트롤이벤트_단독기능보라_클래스부여();
-
 function 폼컨트롤이벤트_단독기능보라_클래스부여() {//html켤때 동작, 전체대체로 outerhtml복사될 예정
   console.log('폼컨트롤이벤트_단독기능보라_클래스부여()');
   let 모든control이름들=[]; //let arr1 = [];let arr2 = new Array();
@@ -1655,7 +1585,6 @@ function 폼컨트롤이벤트_컨트롤이름클릭시같은이름노랑색칠(
 
   }
 }
-
 리스너_header.addEventListener('click', header_클릭시);
 리스너_전체대체.addEventListener('click', 전체대체클릭시);
 //리스너를 이것 저것으로 변경이 안됨??
