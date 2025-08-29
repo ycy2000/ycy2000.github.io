@@ -4,6 +4,7 @@
 
 
 //-----코드정리작업 모메 끝
+var 리스너_바디=document.querySelector('body');
 function 캔버스클릭(e) {
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
   if (document.querySelector('#현재캔버스이름').innerHTML==e.title) {console.log('reutrn;');return;}
@@ -22,10 +23,10 @@ function 카테고리배치(e) {
   console.log('카테고리배치(e)')
   document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + e.innerHTML).outerHTML
 }
-var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
-  if (e.target.parentElement.parentElement.classList.contains('개별카테고리') && e.taget.title.trim().length>0) {
-    if (document.querySelector('#' + e.target.title)) {document.querySelector('#전체대체').innerHTML=document.querySelector('#' + e.target.title).outerHTML}
+  //캔버스바디 클릭 h6의 타이틀과 같은 id를 가진 요소를 전체대체에 셑팅
+  if (e.target.parentElement.parentElement.classList.contains('개별카테고리') && e.target.title.trim().length>0 && document.querySelector('#' + e.target.title)) {
+    document.querySelector('#전체대체').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
   }
 }
 리스너_바디.addEventListener('click',리스너_바디_click)
