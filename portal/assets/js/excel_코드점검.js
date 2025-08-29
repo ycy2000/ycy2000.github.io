@@ -5,7 +5,7 @@
 
 //-----코드정리작업 모메 끝
 var 리스너_바디=document.querySelector('body');
-function 캔버스클릭(e) {
+function 캔버스_연결버튼_클릭(e) {
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
   if (document.querySelector('#현재캔버스이름').innerHTML==e.title) {console.log('reutrn;');return;}
   document.querySelector('#현재캔버스이름').innerHTML=e.title;
