@@ -4,7 +4,7 @@
 #캔버스바디 {white-space: nowrap;}
 .개별카테고리 > div {display:inline-block; border-right:1px solid black; width:610px;vertical-align: top;}
 .개별카테고리 > div > h6 {overflow: hidden;}
-.개별카테고리 > div > h6:hover {overflow:visible; background-color: white;}
+.개별카테고리 > div > h6:hover {overflow:visible; white-space:wrap; background-color: yellow;}
 
 
 
