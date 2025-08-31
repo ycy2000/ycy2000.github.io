@@ -1,4 +1,13 @@
 // document.querySelector('#적재가능일반무게').value=document.querySelector('#점진무게').title;
+s1_교섭력계산()
+function s1_교섭력계산() {
+  var 일회교섭력=document.querySelector('#s1계산_1회교섭력').innerHTML*1;
+  Array.from(document.querySelectorAll('.s1계산')).forEach ( (요소,index,array) => {
+    if (index>0) {요소.children[2].innerHTML=Number(요소.children[1].innerHTML) / 일회교섭력};
+  })
+
+
+}
 document.querySelector('#적재가능일반무게').value = 25100;//새로고침시 무게 용맹무게??
 function 교섭력계산() {
   var 일회교섭력 = Number(document.querySelector('#일회교섭력').value);

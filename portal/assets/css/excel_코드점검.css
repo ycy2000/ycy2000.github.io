@@ -2,6 +2,7 @@
 #js카테고리생성 > button {margin-right:-2px;}
 /* .개별카테고리 > div : div가 3개이고, 세로 선긋기 2개 position: absolute;*/
 #캔버스바디 {white-space: nowrap;}
+.선택카테고리 {background-color: chocolate;}
 .개별카테고리 > div {display:inline-block; border-right:1px solid black; width:610px;vertical-align: top;}
 .개별카테고리 > div > h6 {overflow: hidden;}
 .개별카테고리 > div > h6:hover {overflow:visible; white-space:wrap; background-color: yellow;}

@@ -12,15 +12,21 @@ function 캔버스_연결버튼_클릭(e) {
   document.querySelector('#js카테고리생성').innerHTML='';
   var 카테고리들=document.querySelectorAll('#' + e.title + ' .개별카테고리'); if(카테고리들.length==0) {return;}
   
-  Array.from(카테고리들).forEach ( 요소 => {
+  Array.from(카테고리들).forEach ( (요소,index) => {
     var 버튼생성=document.createElement('button');
     버튼생성.setAttribute('onclick','카테고리배치(this)')
     버튼생성.innerText=요소.id;
     document.querySelector('#js카테고리생성').appendChild(버튼생성);
+    if (index==0) {     
+      document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + 요소.id).outerHTML;
+      버튼생성.setAttribute('class','선택카테고리');
+    }
   });
 }
 function 카테고리배치(e) {
   console.log('카테고리배치(e)')
+  document.querySelector('.선택카테고리').classList.remove('선택카테고리');
+  e.setAttribute('class','선택카테고리');
   document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + e.innerHTML).outerHTML
 }
 function 리스너_바디_click(e) {

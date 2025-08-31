@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.s1계산 {margin-bottom:-7px;}
+/* overflow: hidden 하면 높이가 커진다? */
+.s1계산 > span {border:1px solid black;margin-right:-1px;display:inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.s1계산 > span:nth-of-type(1) {width:140px;}
+.s1계산 > span:nth-of-type(2) {width:60px;}
+.s1계산 > span:nth-of-type(3) {width:100px;}
 code {display: block; color:black;margin-bottom:5px;}
 .offcanvas-title {background-color: blanchedalmond;}
 .캔버스바디 .js모든파일리스트div {display: inline-block;width:915px;vertical-align: top;}
