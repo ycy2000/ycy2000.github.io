@@ -10,6 +10,8 @@ code {color:black;display:block;}
 .개별카테고리 > div > h6:hover {overflow:visible; white-space:wrap; background-color: yellow;}
 .개별카테고리세로1 {display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:613px;}
 .개별카테고리세로2 {display:inline-block;position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:1227px;}
+.대체2줄 > div {display:inline-block;width:945px;}
+.대체2줄세로1 {display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:954px;}
 
 
 

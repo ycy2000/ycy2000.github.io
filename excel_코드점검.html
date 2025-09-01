@@ -32,14 +32,14 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:30px;padding:0px 5px;margin-top:-4px;">모음</button>
           <ul class="dropdown-menu" style="margin-top:10px;">
             <div class="d-inline-block"><!-- div 하나 더 하면 오른쪽에 생김(활용가능) -->
-              <li><a class="dropdown-item" type="button" onclick="캔버스_연결버튼_클릭(this)" title="메모" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">캔버스 : 메모</a></li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="메모" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">캔버스 : 메모</a></li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="excel_vba"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >Excel,Vba</a></li>
               <li><a class="dropdown-item" onclick="png와text사용확인()">png와text사용확인</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </div>
           </ul>
         </div>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="설명"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >설명</button>
-        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="excel_vba"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >Excel,Vba</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="깃_Code_부트" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">깃_Code_부트</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="CSS" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">CSS</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="JAVA" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">Java</button>
@@ -1657,6 +1657,17 @@
 </div>
 <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
 <div id="깃_Code_부트" class="d-none 캔버스">
+  <div class="개별카테고리" id="git추가기능">
+    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+    <div>
+      <h6 class="fw-bold" title="깃허브_댓글_giscus">giscus</h6>
+      
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+  </div>  
   <div class="개별카테고리" id="github">
     <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
     <div>
@@ -1696,7 +1707,6 @@
       <h6 title='_05_git_파순02_01_vscodeGitAddCommit'>_05_git_파순02_01_vscodeGitAddCommit</h6>
     </div>
   </div>
-
   <div class="개별카테고리" id="vsCode">
     <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
     <div>
@@ -1719,7 +1729,6 @@
       
     </div>
   </div>
-
   <div class="개별카테고리" id="nodejs">
     <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
     <div>
@@ -1734,7 +1743,6 @@
 
     </div>
   </div>
-
   <div class="개별카테고리" id="Bootstrap">
     <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
     <div>
@@ -1752,6 +1760,17 @@
   </div>
 </div>
 <div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
+  <div id="깃허브_댓글_giscus" class="대체2줄">
+    <h6 class="대체2줄세로1"></h6>
+    <div>
+      <h6><a href="https://hleecaster.github.io/posts/github_blog_giscus/" target="_blank">GitHub 블로그에 댓글 기능 추가하기 (giscus)</a> </h6>
+    </div>
+    <div>ㄴㅇㄹㄴㅇㄹ</div>
+
+  </div>
+
+
+  
   <section id="_05_git_깃관련_큰틀에서">
     <img src="portal/images/문서연결_엑셀VBA/_05_git_깃관련_큰틀에서.png" alt="이미지없음">
     <h5 class="fw-bold"><a href="https://namu.wiki/w/Git" target="_blank">Git, 나무위키</a></h5>

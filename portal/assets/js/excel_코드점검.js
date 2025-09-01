@@ -5,7 +5,7 @@
 
 //-----코드정리작업 모메 끝
 function 특정id편집() {
-  var 이것만id='구조_1'
+  var 이것만id='깃허브_댓글_giscus'
   document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 이것만id).outerHTML;
 }
 function 보숨토글(e) {
