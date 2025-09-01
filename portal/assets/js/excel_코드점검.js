@@ -4,6 +4,15 @@
 
 
 //-----코드정리작업 모메 끝
+function 특정id편집() {
+  var 이것만id='구조_1'
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 이것만id).outerHTML;
+}
+function 보숨토글(e) {
+  let 요소=document.querySelector('#' + e.title);
+  요소.classList.toggle('d-none');
+  if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}
+}
 var 리스너_바디=document.querySelector('body');
 function 캔버스_연결버튼_클릭(e) {
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
