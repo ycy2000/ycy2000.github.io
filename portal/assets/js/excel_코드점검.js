@@ -1,12 +1,13 @@
+let 전체변수h6title='';
 //코드정리작업 메모
 //1. 캔버스는 하나면 된다. 캔버스바디에 들어갈 div넣을때 필요한 버튼만 생성하면 된다.
-//2. 
+//2. 이벤트리스너에 연결된 함수에는 웬만하면 기능을 넣지 말자.
 
 
 //-----코드정리작업 모메 끝
 function 특정id편집() {
-  var 이것만id='깃허브_댓글_giscus'
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 이것만id).outerHTML;
+  전체변수h6title ='구조_1' //원래는 h6의 title이다.
+  전체대체에셑팅();
 }
 function 보숨토글(e) {
   let 요소=document.querySelector('#' + e.title);
@@ -38,10 +39,28 @@ function 카테고리배치(e) {
   e.setAttribute('class','선택카테고리');
   document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + e.innerHTML).outerHTML
 }
+function 전체대체에셑팅() {
+  //캔버스바디의 h5을 클릭했을때와 같이, + header부분 캔버스, id, 제목 넣는것을 같이 구현해보자.
+  //1. 카테고리 안의 h6을 클릭할때 title이 가지고올 요소의 id 이고, 카테고리 복사본이 캔버스바디에 들어있는 경우를 고려하면
+  //   모든 title을 찾은후 마지막요소를 선택하면 원본의 위치이다.
+  //2. 캔버스이름은 1.의 위치에서 부모의 부모의 id 이다.
+  //3. id 는 title이다, 제목은 title을 가진 요소의 innerHTML이다
+  var 아이디=전체변수h6title.trim(); 
+  if (아이디.length==0) {console.log('아이디.length==0'); return;}
+  if (!document.querySelector('#' + 아이디)) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
+  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
+  title요소들마지막=title요소들마지막[title요소들마지막.length-1];
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
+  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.id;
+  document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
+  document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
+}
 function 리스너_바디_click(e) {
-  //캔버스바디 클릭 h6의 타이틀과 같은 id를 가진 요소를 전체대체에 셑팅
-  if (e.target.parentElement.parentElement.classList.contains('개별카테고리') && e.target.title.trim().length>0 && document.querySelector('#' + e.target.title)) {
-    document.querySelector('#전체대체').innerHTML=document.querySelector('#' + e.target.title).outerHTML;
+  //캔버스바디 안의 h6 클릭시 : title을 id로 갖는 요소가 있을때 전체대체에 가져옴 (조건 : )
+  if (e.target.parentElement.parentElement.classList.contains('개별카테고리')) {
+    console.log('리스너_바디_click(e) : 전체변수h6title = ' + e.target.title);
+    전체변수h6title=e.target.title;
+    전체대체에셑팅();
   }
 }
 리스너_바디.addEventListener('click',리스너_바디_click)

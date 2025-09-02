@@ -32,9 +32,13 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:30px;padding:0px 5px;margin-top:-4px;">모음</button>
           <ul class="dropdown-menu" style="margin-top:10px;">
             <div class="d-inline-block"><!-- div 하나 더 하면 오른쪽에 생김(활용가능) -->
-              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="메모" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">캔버스 : 메모</a></li>
-              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="excel_vba"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >Excel,Vba</a></li>
-              <li><a class="dropdown-item" onclick="png와text사용확인()">png와text사용확인</a></li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="excel_vba"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >캔버스 : Excel,Vba</a></li>
+              <li><a class="dropdown-item" onclick="전체변수h6title='캔버스_개별카테고리_h6의title과id순서';전체대체에셑팅();">
+                ID : 캔버스_개별카테고리_h6의title과id순서 <span style="color:blueviolet">[설명]</span></a>
+              </li>
+              <li><a class="dropdown-item" onclick="캔버스_개별카테고리_h6의title과id순서()">ID : 캔버스_개별카테고리_h6의title과id순서 <span style="color:blueviolet">[함수기능 포함]</span></a></li>
+              <li><a class="dropdown-item">ID : img폴더의자료사용현황 <span style="color:blueviolet">[설명]</span></a></li>
+              <li><a class="dropdown-item" onclick="img폴더의자료사용현황()">ID : img폴더의자료사용현황 <span style="color:blueviolet">[함수기능 포함]</span></a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </div>
           </ul>
@@ -97,11 +101,10 @@
   <div id="캔버스바디" class="offcanvas-body small p-1" style="font-size: 16px;overflow-y: scroll;"><!-- 스크립트로 불러옴-->
   </div>
 </div>
-
 <!-- id서식 빈것 하나 -->
 <div class="d-none id서식">
   <div id="">
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+    <div>
       <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -111,57 +114,613 @@
       <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
     </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="설명" class="d-none 캔버스">
-  <div class="개별카테고리" id="html구조">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="fw-bold" style="color:blueviolet">-- 이 html기본구조 --</h6>
-      <h6 class="fw-bold" title='구조_1'>1. CSS, 보이는곳, 숨겨진곳, 숨겨진곳에서 복사하여 보이는곳에 가져오는곳 </h6>
-      <h6 class="fw-bold" title='구조_2'>2. 전체대체 안에 들어가는 id의 outHTML : 세로두줄, 세로세줄</h6>
-      <h6 class="fw-bold" title='구조_3'>3. 전체대체 안에 들어가는 id의 outHTML : &#60;section> 태그 사용시 move기능</h6>
-      <h6 class="fw-bold" title='구조_4'>4. 캔버스바디 안에 들어가는 id의 outHTML : 세로3줄, 구분선2개 position: absolute</h6>
-      <h6 class="fw-bold" title='구조_5'>5. white-space: nowrap; 상속, 해제가 필요할때 설정 h6</h6>
-    </div>
-    <div>
-      <h6 class="fw-bold" style="color:blueviolet">-- 이 html 주요 함수 --</h6>
-      <h6 class="fw-bold" title='구조_토글'>function 보기_숨기기toggle(e)</h6>
-    </div>
     <div>
     </div>
   </div>
 </div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
-  <div id="구조_1">
-    <div>
-      <h6 class="fw-bold" style="color:blueviolet"><button class="보숨토글버튼" onclick="보숨토글(this)" title="보기_숨기기toggle">보기</button> • function 보기_숨기기toggle(e) </h6>
-      <div id="보기_숨기기toggle" class="d-none"><img src="portal/images/문서연결_엑셀VBA/보숨토글.png" alt="이미지없음"></div>
-      <h5 class="fw-bold">CSS, 보이는곳, 숨겨진곳, 숨겨진곳에서 복사하여 보이는곳에 가져오는곳 </h5>
-      <h6 class="fw-bold">• css : body {white-space: nowrap;} 줄바꿈 normal <span style="color:blueviolet">상속됨</span></h6>
-      <h6 class="fw-bold" style="text-indent: 10px;">(강제줄바꿈 안하면) 부모의 width를 초과하게 되는 경우 줄바꿈 안됨.</h6>
-      <h6 class="fw-bold">1. 보이는곳 : &#60;header>, &#60;div id="전체대체">, &#60;div id="대표캔버스"></h6>
-      <h6 class="fw-bold">2. 숨겨진곳 : &#60;div id="각캔버스이름" class="d-none 캔버스">, 전체대체에 들어갈 id 정보</h6>
-      <h6 class="fw-bold">3. 숨겨진곳 정보중 :  &#60;div class="캔버스header"> 내부의 &#60;span id="js카테고리생성"> 안에 들어갈 정보</h6>
-      <h6 class="fw-bold" style="text-indent: 10px;">'class가 개별카테고리'일때의 id : &#60;div class="개별카테고리" id="html구조"></h6>
-      <h6 class="fw-bold">4. 숨겨진곳 정보중 :  &#60;div id="캔버스바디">에 들어갈 정보</h6>
-      <code class="fw-bold" style="text-indent: 18px;">클릭하였는데 공백제거한 id가 공백이 아닐때, : 문자열.trim()!=''</code>
-      <code class="fw-bold" style="text-indent: 18px;">해당아이디(들)의 마지막 요소 ==> &#60;div id="캔버스바디"> 안에 outerHTML 형태로 넣는다.</code>
+<div class="d-none 캔버스관련모두감싸기">
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="설명" class="d-none 캔버스">
+    <div class="개별카테고리" id="html구조">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" style="color:blueviolet">-- 이 html기본구조 --</h6>
+        <h6 class="fw-bold" title='구조_1'>1. CSS, 보이는곳, 숨겨진곳, 숨겨진곳에서 복사하여 보이는곳에 가져오는곳 </h6>
+        <h6 class="fw-bold" title='구조_2'>2. 전체대체 안에 들어가는 id의 outHTML : 세로두줄, 세로세줄</h6>
+        <h6 class="fw-bold" title='구조_3'>3. 전체대체 안에 들어가는 id의 outHTML : &#60;section> 태그 사용시 move기능</h6>
+        <h6 class="fw-bold" title='구조_4'>4. 캔버스바디 안에 들어가는 id의 outHTML : 세로3줄, 구분선2개 position: absolute</h6>
+        <h6 class="fw-bold" title='구조_5'>5. white-space: nowrap; 상속, 해제가 필요할때 설정 h6</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold" style="color:blueviolet">-- 이 html 주요 함수 --</h6>
+        <h6 class="fw-bold" title='구조_토글'>function 보기_숨기기toggle(e)</h6>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="개별카테고리" id="사용된함수">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title='캔버스_개별카테고리_h6의title과id순서'>캔버스_개별카테고리_h6의title과id순서 </h6>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="excel_vba" class="d-none 캔버스">
+    <div class="개별카테고리" id="도형_그림_폼">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title='도형_종류와만들기'>도형 > 종류, 만들기</h6>
+        <h6 title='도형_종류확인'>도형 > 도형 종류 확인 Type, Dim 도형 As Shape : Set 도형 = 1개의 도형</h6>
+        <h6 title='도형_선택'>도형 > 도형의 선택/삭제, 도형 선택 vba 코딩 참고 </h6>
+        <h6 title='도형_위치확인과다중선택예제'>도형 > 위치확인, 다중선택 예제</h6>
+        <h6 title='도형_내용분석'>도형 > 내용확인, 분석</h6>
+      </div>
+      <div> 
+        <h6 title='그림_화면복사'>그림 > 화면복사 방법, 폼에 그림으로 넣었을때 어떻게 보이는지</h6>
+        <h6 title='그림_화면복사코딩'>그림 > <span style="color:blueviolet">vba코딩,</span> 범위를 그림으로 복사후 폴더에 저장, Insert, LoadPicture, Export</h6>
+
+      </div>
+      <div>
+        <h6 title='폼_위치'>폼 > 폼위치, Top, Left</h6>
+        <h6 title='폼_컨트롤이벤트동작들'>폼 > Control 이벤트 동작들, 컨트롤, Initialize, Activate</h6>
+        <h6 title='폼_control관련_1'>폼 > Control관련_1, 유형, 이름, 속성종류 <span style="color:blueviolet">MsgBox TypeName(컨트롤)</span></h6>
+        <h6 title='폼_control_공통위주'>폼 > Control > <span style="color:blueviolet">공통위주</span>로 TextBox 속성으로 확인, 한영전환, <span style="color:blueviolet">IME모드</span></h6>
+        <h6 title='폼_control_image'>폼 > Control > Image, 폼 내 Image 넣기</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="변수_개별함수1">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title='vba변수선언'>vba 변수1 > 선언, 변수이름 규칙, 데이터형(Type), 프로시저</h6>
+        <h6 title='vba변수2'>vba 변수2 > As 데이터형(Type), Type들</h6>
+        <h6 title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf), chr</h6>
+        <h6 title='excel_search'>작성중 Search 찾기</h6>
+        <h6 title='excel_find'>Find찾기, Replace바꾸기</h6>
+        <h6 title='excel_column'>Column > ColumnWidth, 열숨기기/보기, Join, Split, Array</h6>
+        <h6 title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
+      </div>
+      <div>
+        <h6 title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
+        <h6 title='excel_배열_RANGE'>배열_Range에서 > 배열을 Range에 적용시 어떻게 표시되는지</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold"><a href="https://m.blog.naver.com/tnsqo1126/221701659683" target="_blank">엑셀 vba를 통해 pdf 파일을 열고 싶습니다.</a></h6>
+        <h6 class="fw-bold">pdf.Microsoft ActiveX Data oBJECTS 2.8 Library 참조. ODBC... 모르겠다.</h6>
+        <h6 class="fw-bold"><a href="https://stat-and-news-by-daragon9.tistory.com/entry/엑셀VBA-하이퍼링크-삽입하기-hyperlinksadd" target="_blank">PDF..하이퍼링크로가능?</a> </h6>
+      </div>
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="깃_Code_부트" class="d-none 캔버스">
+    <div class="개별카테고리" id="git추가기능">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title="깃허브_댓글_giscus">giscus</h6>
+        
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>  
+    <div class="개별카테고리" id="github">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 분산 버전관리 시스템 <span style="color:black">[PC에 설치]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 로컬저장소와 원격저장소 사이에서 파일을 관리한다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub : 원격저장소 서비스업체 중 하나, <span style="color:black">[가입필요]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub : 파일 관리용, 홈페이지 관리용 등, <span style="color:black">홈페이지 무료용량 사용하기 위함 홈페이지 무료용량 사용하기 위함</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : 여러 유용한 addOn 추가 설치 필요 <span style="color:black">[PC에 설치]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : html, css, js 편집프로그램 중 하나, <span style="color:black">[git 명령 사용 가능]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 두군데 로컬컴퓨터에서 gitHub 원격저장소와 파일 동기화하여 사용중</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 컴퓨터꺼 gitHub에 올리기 : add-commit-push(동기화), 셑트다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub꺼 컴퓨터에 가져오기 : git pull origin main</h6>
+        <h6 style="font-weight: bold;">-- 필요한 만큼의 기본적인 사용법만 알고자 한다 -- </h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 기본 사용 방법 --</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_깃관련_큰틀에서'>[깃-로컬 깃폴더-gitHub 원격저장소, 큰틀에서 이해해보기]</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_설치'>1. 처음 셑팅 : git 프로그램 컴퓨터에 <a href="https://sfida.tistory.com/46" target="_blank">설치하기(링크)</a>. 설치후 <span style="color:blueviolet">'Git Bash'</span> 사용법</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_깃허브가입하기'>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용), 원격저장소 주소확인</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_연동설정'>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 연동설정</h6>
+        <h6 class="fw-bold">4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 플러그인</h6>
+        <h6 class="fw-bold">5. 주요명령어 : add, commit, push, pull 사용법</h6>
+        <h6 class="fw-bold">6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법 <span style="color:blueviolet;font-weight: bold;">(지켜야 할 것들)</span></h6>
+        <h6 class="fw-bold">7. gitHub 원격저장소의 복사본 만들기(clone)</h6>
+        <h6 class="fw-bold">8. gitHub에서 레포지터리(원격저장소) 삭제하기</h6>
+        <h6 class="fw-bold">9. gitHub에서 레포지터리(원격저장소) 새로만들고 파일올리기</h6>
+        <h6 style="color:blueviolet;" class="fw-bold">10. 동기화 중, 발생할 수 있는 여러 경우들 대처방법</h6>
+        <h6 class="fw-bold">11. 기타 : 주요명령어 외에는 이해가 안된다.</h6>
+      </div>
+      <div>
+        <h6 title='_05_git_파순01_01_깃관련' style="font-weight: bold;">★ git [설치부터 사용방법, git, gitHub, vsCode] <span style="color:blueviolet">click</span></h6>
+        <h6 style="font-weight: bold;">Visual Studio Code 프로그램 깔려있다면 깃폴더 가져와서 편집 </h6>
+        <h6 style="font-weight: bold;">add, commit, push를 vsCode프로그램에서 하는 방법</h6>
+        <h6>전체변경 : ctrl + shift + L</h6>
+        <h6>https://usingu.co.kr/frontend/git/한컴퓨터에서 여러계정</h6>
+        <h6 title='_05_git_깃관련_설치방법' style="color:blueviolet;font-weight: bold;">git의 이해, git 설치방법, gitHub 사용법, vsCode 등 정보 링크</h6>
+        <h6 title='_05_git_파순02_01_vscodeGitAddCommit'>_05_git_파순02_01_vscodeGitAddCommit</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="vsCode">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6><a href="https://wikidocs.net/137959" target="_blank">설치 및 Exetnsion(확장기능)</a></h6>
+        <h6>Korean Language Pack for Visual Studio</h6>
+        <h6>Material Theme && Material Icon Theme</h6>
+        <h6>Bracket Pair Colorizer 2 : 대괄호, 중괄호, 소괄호 색깔 입해줌</h6>
+        <h6>indent-rainbow : 들여쓰기(indent)할 때 무지개 색으로 구분해줌</h6>
+        
+      </div>
+      <div>
+        <h6><a href="https://onsil-thegreenhouse.tistory.com/entry/Visual-Studio-Code에서-Javascript-실행하는-개발-환경-구축" target="_blank">Visual Studio Code에서 Javacript 실행하는 개발 환경 구축</a></h6>
+        <h6><a href="https://velog.io/@remon/개발-기본-지식-Node.js란" target="_blank">Node.js가 뭔가요</a></h6>
+      </div>
+      <div>
+        <h6><a href="https://wikidocs.net/137962" target="_blank">디버깅</a></h6>
+        <h6><a href="https://post.hometex.kr/114#google_vignette" target="_blank">js 코드오류 찾기</a></h6>
+        <h6><a href="https://to06109.tistory.com/20" target="_blank">환경설정: (1) Nodejs 설치 후 VScode 터미널에서 실행불가 오류</a></h6>
+        <h6><a href="https://medium.com/@sym1945/visual-studio-code에서-npm으로-javascript-라이브러리-설치하기-11790a97fff9" target="_blank">Visual Studio Code에서 npm으로 javascript 라이브러리 설치하기</a></h6>
+        
+      </div>
+    </div>
+    <div class="개별카테고리" id="nodejs">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="font-weight: bold;"><a href="https://systorage.tistory.com/entry/Tistory-Nodejs를-활용한-티스토리-글-작성-시-Github에-commit-하는-방법" target="_blank">Tistory-Nodejs를-활용한-티스토리-글-작성-시-Github에-commit-하는-방법</a></h6>
+
+        
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="Bootstrap">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
+        <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
+
+        
+      </div>
+      <div>
+        <h6 title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드, 스크롤 : data-bs-scroll='true' </h6>
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="CSS" class="d-none 캔버스">
+    <div class="카테고리모음"><!--캔버스바디에 들어간다-->
+      <div class="개별카테고리" id="선별">
+        <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+        <div>
+          <h6 class="canvas_div fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
+          <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
+          <h6 class="canvas_div fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
+        </div>
+        <div>
+          
+        </div>
+        <div>
+
+        </div>
+      </div>
+      <div class="개별카테고리" id="css2">
+        <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+        <div>
+          <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
+          <h6 title='CSS_1'>:nth, css </h6>
+          <h6 title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
+          <h6>[메모] text-indent : 상속됨</h6>  
+          <h6>[메모] 탭으로분리 split("\t"), 줄바꿈 된 것 split('\n')</h6>  
+          <h6>[메모] 태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
+          <h6 title="_01_project_파순01_파일제목규칙">파일제목 규칙, 줄바꿈, 코딩(변수)합의</h6>
+          
+        </div>
+        <div>
+          <h6 title='excel_js_속성선택자'>CSS > 속성선택자 </h6>
+          <h6 title="_03_개념정리_파순01_요소속성선택자">요소(태그), 속성, 선택자</h6>
+          <h6 title="CSS_이미지_배경에서_일부분만txt">CSS_이미지_배경에서_일부분만.txt</h6>
 
 
+          
+        </div>
+        <div>
+          <h6 title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
+          <h6 class="canvas_div fw-bold" title="_class">Set은 클래스중 하나, class란? 함수와 유사한듯, 엑셀로 치면 사용자지정함수?</h6>
+        </div>
+      </div>
+      <div class="개별카테고리" id="table등">
+        <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+        <div>
+          <h6 title='CSS_TABLE'>table, 표</h6>
+
+        </div>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="JAVA" class="d-none 캔버스">
+    <div class="개별카테고리" id="기초이해">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_클틀에서이해하기">--- 큰틀에서 이해하기, 객체는 속성과 메서드를 포함하는 데이터의 집합 click!---</h6>
+        <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
+          <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
+        </h6>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
+        <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
+        <h6 class="canvas_div fw-bold" title="js_object객체">2) 객체(Object = { }), 리터럴 객체</h6>
+        <h6 class="canvas_div fw-bold" title="js_array객체">3) Array 객체</h6>
+
+
+        <h6 class="canvas_div fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
+        <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
+        <h6 class="canvas_div fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
+        <br>
+        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>       
+      </div>
+      <div>
+        <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
+        <h6 class="fw-bold">[메모] true, false를 더하기 하면 true는 1, false는 0이다. true + true + false = 2</h6>
+        <h6 class="canvas_div fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
+        <h6 class="canvas_div fw-bold" title='JS2_set교집합차집합합집합'>
+          <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set활용법</a>, 
+          Set 객체는 '집합'의 개념. 있나 없나 확인, index로 접근 안됨
+        </h6>
+        <h6 class="canvas_div fw-bold" title='java_개인적정리_argument'>객체(속성[key,value]), 변수, 매개변수(인수,parameter), argument(인자)</h6>
+        <h6 class="canvas_div fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
+
+
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold d-inline-block" title='java_야구계산함수' style="background-color: chartreuse;">야구 계산()함수에 구조분해할당 등</h6>
+        <h6 class="canvas_div fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
+        <h6 class="fw-bold"><a href="https://radait.tistory.com/4" target="_blank">링크:객체지향언어란?[특징,장점,단점,종류].객체Object.자바의 절반은 객체</a></h6>
+        <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">Object prototypes, 프로토타입 기반 언어?</a></h6>
+        <h6 class="fw-bold">검색대기 : 템플릿</h6>
+        <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">링크:Object</a></h6>
+        <h6 class="fw-bold"><a href="https://f-lab.kr/insight/understanding-javascript-prototype-20250114?gad_source=1&gclid=Cj0KCQjwkN--BhDkARIsAD_mnIoUfpzrV45HkMxOsWmygp4Rw2cJhq8JVK-wB_BhmSmDHU6hdDXwmvwaAqHsEALw_wcB" target="_blank">링크:★프로토타입이란 무엇인가?</a></h6>
+        <h6 class="fw-bold"><a href="https://codingwanee.tistory.com/entry/JavaScript-프로토타입-prototype" target="_blank">링크:프로토타입</a></h6>
+        <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
+        <h6 class="canvas_div fw-bold" title='java_onclick에this'>onclick속성에 함수(this)전달 및 활용. 이때 this는 요소를 가리킴. <a href="https://inpa.tistory.com/entry/JS-📚-this-총정리" target="_blank">this링크</a>   </h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="jv선별">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="canvas_div fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
+        <h6 class="canvas_div fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
+
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title='java_fetch'>Fetch</h6>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="JS">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold">*arr.sort([compareFunction]) : compareFunction 정렬 순서를 정의하는 함수 <a href="https://hianna.tistory.com/409" target="_blank">링크</a></h6>
+        <h6 class="fw-bold">*find, filter <a href="https://codesign.tistory.com/81" target="_blank">링크</a></h6>
+        <h6 class="fw-bold">**filter <a href="https://codingeverybody.kr/자바스크립트-filter-함수/" target="_blank">링크</a></h6>
+        <h6 class="fw-bold">***filter <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-filter-함수-완벽-가이드" target="_blank">링크</a></h6>
+        <h6 class="fw-bold">*reduce <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-reduce-함수-완벽-가이드" target="_blank">링크</a></h6>
+        <h6 class="fw-bold">*callback, 콜백함수 <a href="https://www.freecodecamp.org/korean/news/https-www-freecodecamp-org-news-javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/" target="_blank">링크</a></h6>
+        
+        <h6 class="canvas_div fw-bold" title="js_물음표사용법">물음표(?)사용예. document.querySelector(`#기회${i} .숫자일치`)?.innerHTML</h6>
+        <h6 class="canvas_div fw-bold" title="js_if의조건값true_false">js_if의조건값true_false + 물음표(?)사용예.</h6>
+        <h6 class="canvas_div fw-bold" title="js_반복문종류">js_반복문종류 [키워드:자바스크립트 반복문 종류]</h6>
+        <h6 class="canvas_div fw-bold" title="js_배열split와join참고">js_배열split와join참고</h6>
+        <h6 class="canvas_div fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
+        <h6 class="canvas_div fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
+        <h6 class="canvas_div fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
+        <h6 class="canvas_div fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>        
+        <h6 class="canvas_div fw-bold" title="js_html순환">html 순환</h6>
+        <h6 class="canvas_div fw-bold" title="js_for_in반복문_객체리터럴">반복문(객체리터럴) : for (key in obj) {...}</h6>
+        <h6 class="canvas_div fw-bold" title="js_for_of반복문_배열">반복문(배열) : for (각배열값 of 배열) {...}, 주의:각배열값이 객체리터럴인 경우</h6>
+        <h6 class="canvas_div fw-bold" title="js_forEach반복문_배열">반복문(배열) : arr.forEach( ( value, index, arr) => { ... } );</h6>
+        <h6 title='excel_js파일유의사항'>JS > 유의사항 : 클릭이벤트, e.target, 검색, innerText, innerHTML,outerHTML, </h6>
+        <h6 title='excel_js_scroll'>JS > scroll : 위치, 찾기, 좌표,   </h6>
+        <h6 style="color:blueviolet">JS > 정보 : 찾기, search, split, match, 정규식, indexOf(정규식 안씀, 값으로 검색, 뒤에서 검색 가능, 많이 씀)  </h6>
+        <h6 title='excel_js_search'>JS > search : <span style="color:blueviolet">시작위치 지정안됨,</span> 찾기, 정규식, 없으면 -1, 있으면 위치(첫글자 0부터)   </h6>
+        <h6 title='excel_js_indexOf'>JS > indexOf : 찾기, 정규식X, 문자열로 찾는다, 뒤에서부터 검색 가능, 많이 사용, 없으면 -1, 있으면 위치(첫글자 0부터)  </h6>
+        <h6 title='excel_js_split'>JS > split : 찾기, 정규식, 구분문자의 개수를 구할수 있다.   </h6>
+        <h6 title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
+        <h6 title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
+        <h6 title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
+        <h6 class="canvas_div fw-bold" title='html_text_content_탭과줄바꿈'>innerHTML, innerText, textContent, \t, \n, 문자열.trim(); 하는 이유</h6>
+        <h6 class="canvas_div fw-bold" title='화살표함수등'>화살표함수, 함수변수,  </h6>
+        <h6 class="canvas_div fw-bold" title='excel_js_HTML노드'>노드 </h6>
+        <h6 class="canvas_div fw-bold" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
+        <h6 class="canvas_div fw-bold" title='연습DIV'>연습div</h6>
+        <h6 title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
+        <h6 title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
+      </div>
+      <div>
+        <h6 title='excel_js_선긋기와위치'>JS > 선긋기, 캔버스, 위치, 좌표</h6>
+        <h6 title='excel_js_캔버스흐림현상'>JS > 캔버스 흐림 현상, 그림영역과 관련됨</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="JS2">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title='JS2_객체Object_JSON_기본' style="color:blueviolet">JS2 > 객체Object_JSON_기본</h6>
+        <h6 title='참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h6>
+        <h6 title='참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h6>
+        <h6 title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
+        <h6 title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
+        <h6 title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
+        <h6 title='JS2_마우스이벤트'>JS2 > mouse, 마우스, 이벤트</h6>
+      </div>
+      <div>
+        <h6 title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
+        <h6 title='JS2_getComputedStyle'>JS2 > getComputedStyle 사용법, 정보, 속성관련 몇개</h6>
+
+      </div>
+      <div>
+        <h6 title="_03_개념정리_파순03_속성변경">속성추가, 속성변경, 속성존재 확인, style</h6>
+        <h6 title="_03_개념정리_파순05_queryselector특징">querySelector, querySelectorAll (요소선택)</h6>
+        <h6 title="_03_개념정리_파순06_onclick함수">html에서 onclick="function () { };"</h6>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="JS3">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_04_javascript_파순01_코딩작성규칙">js 코드 작성시 규칙들? 에러처리</h6>
+        <h6 title="_04_javascript_파순02_기본정보margin0auto등">margin 0 outo,length,ComputedStyle,스크롤</h6>
+        <h6 title="_04_javascript_파순03_함수중단">함수중단 return, 시작script에 return??</h6>
+        <h6 title="_04_javascript_파순04_배열과보이는ul가로맞추기">배열과 보이는ul가로맞추기</h6>
+        
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="JS4">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title='JS_CANVAS선긋기txt'>JS_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
+        <h6 title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
+        <h6 title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
+        <h6 title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
+        <h6 title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
+      </div>
+      <div>
+        <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(1);==>12.1, 반올림</h6>
+        <h6>메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1</h6>
+        <h6>메모_#split:줄바꿈정보=문자열.split('\n'); 탭으로분리정보=문자열.split('\t');</h6>
+        <h6>메모_#정규식 : 3.121px의 경우 소수점까지 사라져 숫자만 추출시 ==> 3121이 된다.</h6>
+        <h6>메모_#left#substring : '3.121px'.substring(0,5) ==> 3.121 (숫자.toFixed(0)==>정수)</h6>
+      </div>
+      <div>
+        <h6 title='JS_웹페이지이동'><a href="https://www.daleseo.com/js-location/"
+          target="_blank">자바스크립트로 웹 페이지 이동하는 방법</a></h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="form과map">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_04_javascript_every와some">every, some</h6>
+        <h6 title="_04_javascript_배열중복제거">배열 중복 제거하는 3가지 방법</h6>
+        <h6 class="fw-bold"><a href="https://creativevista.tistory.com/entry/자바스크립트JavaScript-배열-완벽-가이드-배열-메소드와-활용법-총정리" target="_blank">자바스크립트 배열 완벽 가이드 : 여러가지 다 있음</a> </h6>
+        <h6 class="fw-bold"><a href="https://ruriruriya.tistory.com/226" target="_blank">[JavaScript] 자바스크립트 - Set과 Map 그리고 배열과 객체와의 차이점</a> </h6>
       
+
+
+        
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet">리터럴 : index사용가능, 반복가능 => 문자열, 배열</h6>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="j쿼리">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6>메모 : 구글에 jQuery cdn 이런거 검색하면 나오는 사이트가 있습니다.</h6>
+        <h6>메모 : 거기서 jQuery 3.x 버전 &#123;script&#125; 태그를 찾아서 여러분들 html 파일에 복붙</h6>
+        <h6>메모 : header 부분에 넣고 사용. 아래에 넣으면 위에서는 사용 안됨.</h6>
+        <h6 title="_02_html_파순01_읽는순서">html 읽는순서 (script, 리스너포함)</h6>
+        <h6 style="font-weight: bold;">메모 : 구문 : $(선택자).동작함수(); <span style="color:blueviolet">innerHtml 없고 html()</span> </h6>
+        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text();  => 현재값, </h6>
+        <h6 style="font-weight: bold;">// 예시// $('#myDiv').text('Hello, jQuery!'); => 값 변경</h6>
+        <h6 title="j쿼리">(내부에 링크) jQurey는 자바스크립트 querySelectorAll 같은거 짧게 바꿔주는거</h6>
+      </div>
+      <div>
+        <h6 title="jQuery_설치와기초사용법">jQuery_설치와기초사용법</h6>
+        <h6 title="jQuery_문법리스트">jQuery_문법리스트</h6>
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="참고2">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title='참고_특수문자txt'>참고_특수문자.txt</h6>
+        <h6 title='참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt'>참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt</h6>
+        <h6 class="fw-bold" style="color:blueviolet">메모_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
+        <h6 class="fw-bold" style="color:blueviolet">메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
+        <h6 title='참고_클래스아이디숫자안됨txt'>참고_클래스아이디숫자안됨.txt</h6>
+        <h6 title='참고_메모장에서열면ancitxt'>참고_메모장에서열면anci.txt</h6>
+        <h6 title='참고_구글_그림에서데이터추출txt'>참고_구글_그림에서데이터추출.txt</h6>
+        <h6 title='참고_더하기_숫자_소수점_변수에러상황txt'>참고_더하기_숫자_소수점_변수에러상황.txt</h6>
+
+      </div>
+      <div>
+        <h6 title='height'>scrollHeight, clientHeight, offsetHeight</h6>
+        <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
+        <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
+        <h6><a href="https://2boki.tistory.com/129" target="_blank">[제이쿼리] load() 메소드 사용하여 다른 html의 값 가져오기</a></h6>
+        <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
+        <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
+        <h6><a href="https://kingofbackend.tistory.com/187" target="_blank">[Javascript]Json과 JavaScript Object의 차이점</a></h6>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="통합" class="d-none 캔버스">
+    <div class="개별카테고리" id="파이썬1">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="font-weight: bold;"></h6>
+        <h6 style="font-weight: bold;"><a href="https://velog.io/@qazws78941/Flutter-Firebase-Storage-1" target="_blank">Firebase-Storage</a></h6>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="개별카테고리" id="파이썬2">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="개별카테고리" id="파이썬정보수집">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="canvas_div fw-bold" title='파이썬_정보수집'>정보수집</h6>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="기타" class="d-none 캔버스">
+    <div class="개별카테고리" id="탁구">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold canvas_div" title='탁구_메모'>탁구 메모</h6>
+        <h6 class="canvas_div fw-bold" title='출처밝히는방법'>링크</h6>
+        <h6 class="fw-bold canvas_div" title='탁구_사사이'>(상대라켓과 상대스윙)보는것 40%, 자세만드는과정 40%, 스윙20%(본능적으로 된다)</h6>
+        <h6 class="fw-bold canvas_div" title='탁구_1장자탁구클럽'>[탁구레슨] (포핸드) 커트볼드라이브 라켓'각'만 바꿔 걸었을 뿐인데..#장자탁구클럽</h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="샷컷">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="canvas_div fw-bold" title='동영상편집_링크'>동영상편집 정보 링크</h6>
+        <h6 class="canvas_div fw-bold" title='샷컷_1'>프로젝트폴더 변경,</h6>
+        <h6 class="canvas_div fw-bold" title='샷컷_움짤처럼또는겹치기가능한가'>움짤처럼또는겹치기가능한가</h6>
+        <h6 class="canvas_div fw-bold" title='샷컷_화면의일부분만다시편집가능한가'>화면의일부분만다시편집가능한가</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title='샷컷_무료음원'>샷컷 무료음원 등 자료구하기, 기타 링크</h6>
+        <h6 class="canvas_div fw-bold" title='샷컷_사용법정리_처음화면편집레이아웃'>샷컷 처음화면 : 편집 레이아웃 용어부터 </h6>
+        <h6 class="canvas_div fw-bold" title='샷컷_사용법정리_타임라인1'>타임라인편집 : 재생목록(비디오,오디오,자막), 자르기, 페이드</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title='샷컷_임시편집정보'>샷컷 임시편집 정보</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="jt기타">
+      <h6 class="canvas_div fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
+      <h6 class="canvas_div fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
+      <h6 class="canvas_div fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
+    </div>
+    <div class="개별카테고리" id="jtJS">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="임시">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="canvas_div fw-bold" title='임시_휴가등'>임시_휴가등</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title=''>예제</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div fw-bold" title=''>예제</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="녹화">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold">XBOX 검색하여 알아보기.  윈도우 + G (XBOX)열기, [윈도우 + ALT + R] 녹화시작, 녹화중지 => 파일은 동영상 - 캡쳐 폴더에 있음</h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 모든 ID-->
+<div class="d-none 모든id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
+  <div id="캔버스_개별카테고리_h6의title과id순서" class="대체2줄">
+    <h6 class="대체2줄세로1h6"></h6>
+    <div>
+      <h5 class="fw-bold"></h5>
       <code class="fw-bold">• </code>
       <code class="fw-bold" style="text-indent: 15px;"></code>
       <code class="fw-bold"></code>
       <span style="color:blueviolet"></span>
       <h6></h6>
-      <h6 class="fw-bold"></h6>
       <h6 style="text-indent: 23px;"></h6>
       <img src="" alt="이미지없음">
     </div>
+    <div>
+    </div>
+  </div>
+  
+  <div id="구조_1" class="대체2줄">
+    <h6 style="text-align: center;"><img src="portal/images/문서연결_엑셀VBA/EXCEL구조1.png" alt="이미지없음"></h6>
+    <h6 style="text-align: center;"><img src="portal/images/문서연결_엑셀VBA/EXCEL구조2.png" alt="이미지없음"></h6>
   </div>
   <div id="구조_토글">
     <div>
@@ -190,56 +749,6 @@
       <img src="" alt="이미지없음">
     </div>
   </div>
-
-  
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="excel_vba" class="d-none 캔버스">
-  <div class="개별카테고리" id="도형_그림_폼">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title='도형_종류와만들기'>도형 > 종류, 만들기</h6>
-      <h6 title='도형_종류확인'>도형 > 도형 종류 확인 Type, Dim 도형 As Shape : Set 도형 = 1개의 도형</h6>
-      <h6 title='도형_선택'>도형 > 도형의 선택/삭제, 도형 선택 vba 코딩 참고 </h6>
-      <h6 title='도형_위치확인과다중선택예제'>도형 > 위치확인, 다중선택 예제</h6>
-      <h6 title='도형_내용분석'>도형 > 내용확인, 분석</h6>
-    </div>
-    <div> 
-      <h6 title='그림_화면복사'>그림 > 화면복사 방법, 폼에 그림으로 넣었을때 어떻게 보이는지</h6>
-      <h6 title='그림_화면복사코딩'>그림 > <span style="color:blueviolet">vba코딩,</span> 범위를 그림으로 복사후 폴더에 저장, Insert, LoadPicture, Export</h6>
-
-    </div>
-    <div>
-      <h6 title='폼_위치'>폼 > 폼위치, Top, Left</h6>
-      <h6 title='폼_컨트롤이벤트동작들'>폼 > Control 이벤트 동작들, 컨트롤, Initialize, Activate</h6>
-      <h6 title='폼_control관련_1'>폼 > Control관련_1, 유형, 이름, 속성종류 <span style="color:blueviolet">MsgBox TypeName(컨트롤)</span></h6>
-      <h6 title='폼_control_공통위주'>폼 > Control > <span style="color:blueviolet">공통위주</span>로 TextBox 속성으로 확인, 한영전환, <span style="color:blueviolet">IME모드</span></h6>
-      <h6 title='폼_control_image'>폼 > Control > Image, 폼 내 Image 넣기</h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="변수_개별함수1">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title='vba변수선언'>vba 변수1 > 선언, 변수이름 규칙, 데이터형(Type), 프로시저</h6>
-      <h6 title='vba변수2'>vba 변수2 > As 데이터형(Type), Type들</h6>
-      <h6 title='vba주요문자열'>주요 문자열 코드 > 큰따옴표, 엔터, 줄바꿈(vblf), chr</h6>
-      <h6 title='excel_search'>작성중 Search 찾기</h6>
-      <h6 title='excel_find'>Find찾기, Replace바꾸기</h6>
-      <h6 title='excel_column'>Column > ColumnWidth, 열숨기기/보기, Join, Split, Array</h6>
-      <h6 title='copy_cut_paste'>copy_cut_paste,카피_컷_붙여넣기</h6>
-    </div>
-    <div>
-      <h6 title='excel_배열_선언'>배열_선언 > 셀범위, Array, Ubound, Lbound, Split, Join, Transpose</h6>
-      <h6 title='excel_배열_RANGE'>배열_Range에서 > 배열을 Range에 적용시 어떻게 표시되는지</h6>
-    </div>
-    <div>
-      <h6 class="fw-bold"><a href="https://m.blog.naver.com/tnsqo1126/221701659683" target="_blank">엑셀 vba를 통해 pdf 파일을 열고 싶습니다.</a></h6>
-      <h6 class="fw-bold">pdf.Microsoft ActiveX Data oBJECTS 2.8 Library 참조. ODBC... 모르겠다.</h6>
-      <h6 class="fw-bold"><a href="https://stat-and-news-by-daragon9.tistory.com/entry/엑셀VBA-하이퍼링크-삽입하기-hyperlinksadd" target="_blank">PDF..하이퍼링크로가능?</a> </h6>
-    </div>
-  </div>
-</div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
   <div id="vba변수선언">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"><span style="color:blueviolet">프로시저 : 명령문의 집합 </span>Private Sub(현재 모듈에서 호출가능), Sub(프로젝트 전역에서 호출가능) </h5>
@@ -295,7 +804,6 @@
       <h5 class="fw-bold">변수에 값을 대입시, Let(생략 가능), Set(생략시 에러 : <span style="color:blueviolet">개체일때 Set 생락하면 안된다는 의미</span>)</h5>
     </div>
   </div>
-
   <div id="vba변수2">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"></h5>
@@ -310,7 +818,6 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-
   <div id="도형_종류와만들기">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">참고사항</h5>
@@ -383,7 +890,6 @@
 
     </div>
   </div>
-
   <div id="도형_종류확인">
     <div class="d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">도형의 종류를 Type번호 또는, MsoShapeType 으로 확인내기 (종류 참고)</h5>
@@ -438,7 +944,6 @@
       <br>
     </div>
   </div>
-
   <div id="도형_선택">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <img src="portal/images/문서연결_엑셀VBA/도형_그림선택예제.png" alt="이미지없음" style="position: absolute;left:765px;">
@@ -515,7 +1020,6 @@
       <br>
     </div>
   </div>
-
   <div id="도형_위치확인과다중선택예제">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">선택한범위 안의 도형 선택. select는 이전 선택 해제됨. 다중선택은 select (False)</h5>
@@ -550,7 +1054,6 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-
   <div id="도형_내용분석">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">자동 매크로 기록으로 텍스트상자 만들기 예시</h5>
@@ -606,7 +1109,6 @@
       <h6 style="text-indent: 23px;"></h6>
     </div>
   </div>
-
   <div id="폼_위치">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">도형과 폼의 위치 확인 (참고:도형의 시작위치는 셀편집화면기준, 폼은 다르다)</h5>
@@ -659,7 +1161,6 @@
       <h6 style="text-indent: 23px;"></h6>
     </div>
   </div>
-
   <div id="폼_컨트롤이벤트동작들">
     <h5 class="fw-bold">UserForm은 이름이 아니라 UserForm, 다른 컨트롤은 (부여된)이름. <span style="color:blueviolet">고유이벤트 보라색칠, 이벤트이름 클릭시 : 같은 이름 '노랑 색칠' 및 설명 생성</span></h5>
     <div style="display:inline-block;" class="폼control이벤트">
@@ -1120,7 +1621,6 @@
 
     </div>
   </div>
-
   <div id="폼_control관련_1">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">폼 내 Control (폼 안의 것들) For Each 컨트롤 In Me.Controls => 프레임 안의 컨트롤도 돈다.(모두)</h5>
@@ -1147,7 +1647,6 @@
       <img src="portal/images/문서연결_엑셀VBA/폼control속성이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
     </div>
   </div>
-
   <div id="폼_control_image">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">안되는 것</h5>
@@ -1184,7 +1683,6 @@
 
     </div>
   </div>
-
   <div id="폼_control_공통위주">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <img src="portal/images/문서연결_엑셀VBA/excel_control_textbox.png" alt="이미지없음" style="position: absolute;left:607px;">
@@ -1241,7 +1739,6 @@
 
     </div>
   </div>  
-
   <div id="그림_화면복사">
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <div class="d-inline-block align-top">
@@ -1260,7 +1757,6 @@
     <br>
     <img src="portal/images/문서연결_엑셀VBA/그림_화면복사활용1.png" alt="이미지없음">
   </div>
-
   <div id="그림_화면복사코딩">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <code class="fw-bold">• 시트에 그림 삽입 : <span style="color:blueviolet">ActiveSheet.Pictures.Insert(파일경로 & 파일이름)</span> : 바탕화면에 있는 사진 예, 경로 모두 설정 </code>
@@ -1315,7 +1811,6 @@
       <img src="portal/images/문서연결_엑셀VBA/그림_화면복사코딩매크로실행과정.png" alt="이미지없음">
     </div>
   </div>
-
   <div id="copy_cut_paste">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <code class="fw-bold">카피 : ActiveSheet.Paste '모두(셀선택상태로, PasteSpecial의 초기값, 모두_연산없음_빈셀도복사_행열바꿈없음) </code>
@@ -1359,7 +1854,6 @@
       <img src="portal/images/문서연결_엑셀VBA/excel_copy_2.png" alt="이미지없음">
     </div>
   </div>
-
   <div id="vba주요문자열">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold"></h5>
@@ -1381,7 +1875,6 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-  
   <div id="excel_find">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">find로 찾지못한 변수는 Nothing 상태이다.</h5>
@@ -1450,7 +1943,6 @@
       <code>	       '찾았을때 코드	</code>
     </div>
   </div>
-
   <div id="excel_column">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">column 숨기기/보기, 폭 지정하기 <span style="color:blueviolet">(셀 하나만 지정해도 된다)</span></h5>
@@ -1513,7 +2005,6 @@
     <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
     </div>
   </div>
-
   <div id="excel_배열_선언">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold">Array 사용방법</h5>
@@ -1595,7 +2086,6 @@
 
     </div>
   </div>
-
   <div id="excel_배열_RANGE">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h5 class="fw-bold" style="color:blueviolet">배열은 Range에서 어떻게 표식되는지? : Vba 예시 코드</h5>
@@ -1638,7 +2128,6 @@
       <code class="fw-bold" style="color:blueviolet">• 가로 한줄짜리 배열만!!?? Range가 세로로 여러줄인 경우 반복된다.</code>
     </div>
   </div>
-  
   <div id="html특수문자_click">
     <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
 
@@ -1654,112 +2143,6 @@
     </div>
 
   </div>
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="깃_Code_부트" class="d-none 캔버스">
-  <div class="개별카테고리" id="git추가기능">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="fw-bold" title="깃허브_댓글_giscus">giscus</h6>
-      
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-  </div>  
-  <div class="개별카테고리" id="github">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 분산 버전관리 시스템 <span style="color:black">[PC에 설치]</span></h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 로컬저장소와 원격저장소 사이에서 파일을 관리한다.</h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub : 원격저장소 서비스업체 중 하나, <span style="color:black">[가입필요]</span></h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub : 파일 관리용, 홈페이지 관리용 등, <span style="color:black">홈페이지 무료용량 사용하기 위함 홈페이지 무료용량 사용하기 위함</span></h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : 여러 유용한 addOn 추가 설치 필요 <span style="color:black">[PC에 설치]</span></h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : html, css, js 편집프로그램 중 하나, <span style="color:black">[git 명령 사용 가능]</span></h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] 두군데 로컬컴퓨터에서 gitHub 원격저장소와 파일 동기화하여 사용중</h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] 컴퓨터꺼 gitHub에 올리기 : add-commit-push(동기화), 셑트다.</h6>
-      <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub꺼 컴퓨터에 가져오기 : git pull origin main</h6>
-      <h6 style="font-weight: bold;">-- 필요한 만큼의 기본적인 사용법만 알고자 한다 -- </h6>
-    </div>
-    <div>
-      <h6 style="color:blueviolet;font-weight: bold;">-- 기본 사용 방법 --</h6>
-      <h6 class="canvas_div fw-bold" title='_05_git_깃관련_큰틀에서'>[깃-로컬 깃폴더-gitHub 원격저장소, 큰틀에서 이해해보기]</h6>
-      <h6 class="canvas_div fw-bold" title='_05_git_설치'>1. 처음 셑팅 : git 프로그램 컴퓨터에 <a href="https://sfida.tistory.com/46" target="_blank">설치하기(링크)</a>. 설치후 <span style="color:blueviolet">'Git Bash'</span> 사용법</h6>
-      <h6 class="canvas_div fw-bold" title='_05_git_깃허브가입하기'>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용), 원격저장소 주소확인</h6>
-      <h6 class="canvas_div fw-bold" title='_05_git_연동설정'>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 연동설정</h6>
-      <h6 class="fw-bold">4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 플러그인</h6>
-      <h6 class="fw-bold">5. 주요명령어 : add, commit, push, pull 사용법</h6>
-      <h6 class="fw-bold">6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법 <span style="color:blueviolet;font-weight: bold;">(지켜야 할 것들)</span></h6>
-      <h6 class="fw-bold">7. gitHub 원격저장소의 복사본 만들기(clone)</h6>
-      <h6 class="fw-bold">8. gitHub에서 레포지터리(원격저장소) 삭제하기</h6>
-      <h6 class="fw-bold">9. gitHub에서 레포지터리(원격저장소) 새로만들고 파일올리기</h6>
-      <h6 style="color:blueviolet;" class="fw-bold">10. 동기화 중, 발생할 수 있는 여러 경우들 대처방법</h6>
-      <h6 class="fw-bold">11. 기타 : 주요명령어 외에는 이해가 안된다.</h6>
-    </div>
-    <div>
-      <h6 title='_05_git_파순01_01_깃관련' style="font-weight: bold;">★ git [설치부터 사용방법, git, gitHub, vsCode] <span style="color:blueviolet">click</span></h6>
-      <h6 style="font-weight: bold;">Visual Studio Code 프로그램 깔려있다면 깃폴더 가져와서 편집 </h6>
-      <h6 style="font-weight: bold;">add, commit, push를 vsCode프로그램에서 하는 방법</h6>
-      <h6>전체변경 : ctrl + shift + L</h6>
-      <h6>https://usingu.co.kr/frontend/git/한컴퓨터에서 여러계정</h6>
-      <h6 title='_05_git_깃관련_설치방법' style="color:blueviolet;font-weight: bold;">git의 이해, git 설치방법, gitHub 사용법, vsCode 등 정보 링크</h6>
-      <h6 title='_05_git_파순02_01_vscodeGitAddCommit'>_05_git_파순02_01_vscodeGitAddCommit</h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="vsCode">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6><a href="https://wikidocs.net/137959" target="_blank">설치 및 Exetnsion(확장기능)</a></h6>
-      <h6>Korean Language Pack for Visual Studio</h6>
-      <h6>Material Theme && Material Icon Theme</h6>
-      <h6>Bracket Pair Colorizer 2 : 대괄호, 중괄호, 소괄호 색깔 입해줌</h6>
-      <h6>indent-rainbow : 들여쓰기(indent)할 때 무지개 색으로 구분해줌</h6>
-      
-    </div>
-    <div>
-      <h6><a href="https://onsil-thegreenhouse.tistory.com/entry/Visual-Studio-Code에서-Javascript-실행하는-개발-환경-구축" target="_blank">Visual Studio Code에서 Javacript 실행하는 개발 환경 구축</a></h6>
-      <h6><a href="https://velog.io/@remon/개발-기본-지식-Node.js란" target="_blank">Node.js가 뭔가요</a></h6>
-    </div>
-    <div>
-      <h6><a href="https://wikidocs.net/137962" target="_blank">디버깅</a></h6>
-      <h6><a href="https://post.hometex.kr/114#google_vignette" target="_blank">js 코드오류 찾기</a></h6>
-      <h6><a href="https://to06109.tistory.com/20" target="_blank">환경설정: (1) Nodejs 설치 후 VScode 터미널에서 실행불가 오류</a></h6>
-      <h6><a href="https://medium.com/@sym1945/visual-studio-code에서-npm으로-javascript-라이브러리-설치하기-11790a97fff9" target="_blank">Visual Studio Code에서 npm으로 javascript 라이브러리 설치하기</a></h6>
-      
-    </div>
-  </div>
-  <div class="개별카테고리" id="nodejs">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 style="font-weight: bold;"><a href="https://systorage.tistory.com/entry/Tistory-Nodejs를-활용한-티스토리-글-작성-시-Github에-commit-하는-방법" target="_blank">Tistory-Nodejs를-활용한-티스토리-글-작성-시-Github에-commit-하는-방법</a></h6>
-
-      
-    </div>
-    <div>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="Bootstrap">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
-      <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
-
-      
-    </div>
-    <div>
-      <h6 title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드, 스크롤 : data-bs-scroll='true' </h6>
-    </div>
-    <div>
-      
-    </div>
-  </div>
-</div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
   <div id="깃허브_댓글_giscus" class="대체2줄">
     <h6 class="대체2줄세로1"></h6>
     <div>
@@ -1783,9 +2166,6 @@
     <div>ㄴㅇㄹㄴㅇㄹ</div>
 
   </div>
-
-
-  
   <section id="_05_git_깃관련_큰틀에서">
     <img src="portal/images/문서연결_엑셀VBA/_05_git_깃관련_큰틀에서.png" alt="이미지없음">
     <h5 class="fw-bold"><a href="https://namu.wiki/w/Git" target="_blank">Git, 나무위키</a></h5>
@@ -2138,66 +2518,6 @@
       <h6 class="fw-bold" style="text-indent: 23px;">부트스트랩 오프캔버스 스크롤 : <span style="color:blueviolet">data-bs-scroll="true"</span></h6>
     </div>
   </div>
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="CSS" class="d-none 캔버스">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다-->
-    <div class="개별카테고리" id="선별">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-        <h6 class="canvas_div fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
-        <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
-        <h6 class="canvas_div fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
-      </div>
-      <div>
-        
-      </div>
-      <div>
-
-      </div>
-    </div>
-    <div class="개별카테고리" id="css2">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-        <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
-        <h6 title='CSS_1'>:nth, css </h6>
-        <h6 title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
-        <h6>[메모] text-indent : 상속됨</h6>  
-        <h6>[메모] 탭으로분리 split("\t"), 줄바꿈 된 것 split('\n')</h6>  
-        <h6>[메모] 태그, 아이디, 클래스 클릭후, ctrl 누르면, 스타일 적용이 있는경우 밑줄표시됨, vsCode기능 깔면..</h6>  
-        <h6 title="_01_project_파순01_파일제목규칙">파일제목 규칙, 줄바꿈, 코딩(변수)합의</h6>
-        
-      </div>
-      <div>
-        <h6 title='excel_js_속성선택자'>CSS > 속성선택자 </h6>
-        <h6 title="_03_개념정리_파순01_요소속성선택자">요소(태그), 속성, 선택자</h6>
-        <h6 title="CSS_이미지_배경에서_일부분만txt">CSS_이미지_배경에서_일부분만.txt</h6>
-
-
-        
-      </div>
-      <div>
-        <h6 title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
-        <h6 class="canvas_div fw-bold" title="_class">Set은 클래스중 하나, class란? 함수와 유사한듯, 엑셀로 치면 사용자지정함수?</h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="table등">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-        <h6 title='CSS_TABLE'>table, 표</h6>
-
-      </div>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
   <div id="연습">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold">• <a href="https://otiklo.tistory.com/16" target="_blank">[CSS 기초] 06. CSS 테이블 꾸미기 (Table)</a></h6>
@@ -3398,245 +3718,7 @@
   <div id="참고_더하기_숫자_소수점_변수에러상황txt">
     <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_더하기_숫자_소수점_변수에러상황.txt" width=1000px height=870px>
   </div>
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="JAVA" class="d-none 캔버스">
-  <div class="개별카테고리" id="기초이해">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_클틀에서이해하기">--- 큰틀에서 이해하기, 객체는 속성과 메서드를 포함하는 데이터의 집합 click!---</h6>
-      <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
-        <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
-      </h6>
-      <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
-      <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
-      <h6 class="canvas_div fw-bold" title="js_object객체">2) 객체(Object = { }), 리터럴 객체</h6>
-      <h6 class="canvas_div fw-bold" title="js_array객체">3) Array 객체</h6>
 
-
-      <h6 class="canvas_div fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
-      <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
-      <h6 class="canvas_div fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
-      <br>
-      <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>       
-    </div>
-    <div>
-      <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
-      <h6 class="fw-bold">[메모] true, false를 더하기 하면 true는 1, false는 0이다. true + true + false = 2</h6>
-      <h6 class="canvas_div fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
-      <h6 class="canvas_div fw-bold" title='JS2_set교집합차집합합집합'>
-        <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set활용법</a>, 
-        Set 객체는 '집합'의 개념. 있나 없나 확인, index로 접근 안됨
-      </h6>
-      <h6 class="canvas_div fw-bold" title='java_개인적정리_argument'>객체(속성[key,value]), 변수, 매개변수(인수,parameter), argument(인자)</h6>
-      <h6 class="canvas_div fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
-
-
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold d-inline-block" title='java_야구계산함수' style="background-color: chartreuse;">야구 계산()함수에 구조분해할당 등</h6>
-      <h6 class="canvas_div fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
-      <h6 class="fw-bold"><a href="https://radait.tistory.com/4" target="_blank">링크:객체지향언어란?[특징,장점,단점,종류].객체Object.자바의 절반은 객체</a></h6>
-      <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">Object prototypes, 프로토타입 기반 언어?</a></h6>
-      <h6 class="fw-bold">검색대기 : 템플릿</h6>
-      <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">링크:Object</a></h6>
-      <h6 class="fw-bold"><a href="https://f-lab.kr/insight/understanding-javascript-prototype-20250114?gad_source=1&gclid=Cj0KCQjwkN--BhDkARIsAD_mnIoUfpzrV45HkMxOsWmygp4Rw2cJhq8JVK-wB_BhmSmDHU6hdDXwmvwaAqHsEALw_wcB" target="_blank">링크:★프로토타입이란 무엇인가?</a></h6>
-      <h6 class="fw-bold"><a href="https://codingwanee.tistory.com/entry/JavaScript-프로토타입-prototype" target="_blank">링크:프로토타입</a></h6>
-      <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
-      <h6 class="canvas_div fw-bold" title='java_onclick에this'>onclick속성에 함수(this)전달 및 활용. 이때 this는 요소를 가리킴. <a href="https://inpa.tistory.com/entry/JS-📚-this-총정리" target="_blank">this링크</a>   </h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="jv선별">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="canvas_div fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
-      <h6 class="canvas_div fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
-
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" title='java_fetch'>Fetch</h6>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="JS">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="fw-bold">*arr.sort([compareFunction]) : compareFunction 정렬 순서를 정의하는 함수 <a href="https://hianna.tistory.com/409" target="_blank">링크</a></h6>
-      <h6 class="fw-bold">*find, filter <a href="https://codesign.tistory.com/81" target="_blank">링크</a></h6>
-      <h6 class="fw-bold">**filter <a href="https://codingeverybody.kr/자바스크립트-filter-함수/" target="_blank">링크</a></h6>
-      <h6 class="fw-bold">***filter <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-filter-함수-완벽-가이드" target="_blank">링크</a></h6>
-      <h6 class="fw-bold">*reduce <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-reduce-함수-완벽-가이드" target="_blank">링크</a></h6>
-      <h6 class="fw-bold">*callback, 콜백함수 <a href="https://www.freecodecamp.org/korean/news/https-www-freecodecamp-org-news-javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/" target="_blank">링크</a></h6>
-      
-      <h6 class="canvas_div fw-bold" title="js_물음표사용법">물음표(?)사용예. document.querySelector(`#기회${i} .숫자일치`)?.innerHTML</h6>
-      <h6 class="canvas_div fw-bold" title="js_if의조건값true_false">js_if의조건값true_false + 물음표(?)사용예.</h6>
-      <h6 class="canvas_div fw-bold" title="js_반복문종류">js_반복문종류 [키워드:자바스크립트 반복문 종류]</h6>
-      <h6 class="canvas_div fw-bold" title="js_배열split와join참고">js_배열split와join참고</h6>
-      <h6 class="canvas_div fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
-      <h6 class="canvas_div fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
-      <h6 class="canvas_div fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
-      <h6 class="canvas_div fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>        
-      <h6 class="canvas_div fw-bold" title="js_html순환">html 순환</h6>
-      <h6 class="canvas_div fw-bold" title="js_for_in반복문_객체리터럴">반복문(객체리터럴) : for (key in obj) {...}</h6>
-      <h6 class="canvas_div fw-bold" title="js_for_of반복문_배열">반복문(배열) : for (각배열값 of 배열) {...}, 주의:각배열값이 객체리터럴인 경우</h6>
-      <h6 class="canvas_div fw-bold" title="js_forEach반복문_배열">반복문(배열) : arr.forEach( ( value, index, arr) => { ... } );</h6>
-      <h6 title='excel_js파일유의사항'>JS > 유의사항 : 클릭이벤트, e.target, 검색, innerText, innerHTML,outerHTML, </h6>
-      <h6 title='excel_js_scroll'>JS > scroll : 위치, 찾기, 좌표,   </h6>
-      <h6 style="color:blueviolet">JS > 정보 : 찾기, search, split, match, 정규식, indexOf(정규식 안씀, 값으로 검색, 뒤에서 검색 가능, 많이 씀)  </h6>
-      <h6 title='excel_js_search'>JS > search : <span style="color:blueviolet">시작위치 지정안됨,</span> 찾기, 정규식, 없으면 -1, 있으면 위치(첫글자 0부터)   </h6>
-      <h6 title='excel_js_indexOf'>JS > indexOf : 찾기, 정규식X, 문자열로 찾는다, 뒤에서부터 검색 가능, 많이 사용, 없으면 -1, 있으면 위치(첫글자 0부터)  </h6>
-      <h6 title='excel_js_split'>JS > split : 찾기, 정규식, 구분문자의 개수를 구할수 있다.   </h6>
-      <h6 title='excel_js_match'>JS > match, str.match(regexp); regexp(정규식패턴), 있는지 없는지, 개수 </h6>
-      <h6 title='excel_js_정규식'>JS > 정규식 Regular Expression, regexp(정규식패턴) 문자열에서 특정 문자 조합을 찾기 위한 패턴</h6>
-      <h6 title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
-      <h6 class="canvas_div fw-bold" title='html_text_content_탭과줄바꿈'>innerHTML, innerText, textContent, \t, \n, 문자열.trim(); 하는 이유</h6>
-      <h6 class="canvas_div fw-bold" title='화살표함수등'>화살표함수, 함수변수,  </h6>
-      <h6 class="canvas_div fw-bold" title='excel_js_HTML노드'>노드 </h6>
-      <h6 class="canvas_div fw-bold" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
-      <h6 class="canvas_div fw-bold" title='연습DIV'>연습div</h6>
-      <h6 title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
-      <h6 title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
-    </div>
-    <div>
-      <h6 title='excel_js_선긋기와위치'>JS > 선긋기, 캔버스, 위치, 좌표</h6>
-      <h6 title='excel_js_캔버스흐림현상'>JS > 캔버스 흐림 현상, 그림영역과 관련됨</h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="JS2">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title='JS2_객체Object_JSON_기본' style="color:blueviolet">JS2 > 객체Object_JSON_기본</h6>
-      <h6 title='참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_01_ARRAY</h6>
-      <h6 title='참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_02_OBJECT</h6>
-      <h6 title='참고_ARRAY_OBJECT_JSON_구분정리_03_JSON'>JS2 > 참고_ARRAY_OBJECT_JSON_구분정리_03_JSON</h6>
-      <h6 title='Sibling_Node_Element_tagName은대문자_TARGET순번확인'>JS2 > Sibling_Node_Element_tagName은대문자_TARGET순번확인</h6>
-      <h6 title='참고_오버레이_이미지사진띄우기_각도_드래곤'>JS2 > 참고_오버레이_이미지사진띄우기_각도_드래곤프로그램</h6>
-      <h6 title='JS2_마우스이벤트'>JS2 > mouse, 마우스, 이벤트</h6>
-    </div>
-    <div>
-      <h6 title='JS2_요소추가_APPENDCHILD'>JS2 > 요소추가, append, appendChild, 요소생성, createElement, 속성추가, setAttribute</h6>
-      <h6 title='JS2_getComputedStyle'>JS2 > getComputedStyle 사용법, 정보, 속성관련 몇개</h6>
-
-    </div>
-    <div>
-      <h6 title="_03_개념정리_파순03_속성변경">속성추가, 속성변경, 속성존재 확인, style</h6>
-      <h6 title="_03_개념정리_파순05_queryselector특징">querySelector, querySelectorAll (요소선택)</h6>
-      <h6 title="_03_개념정리_파순06_onclick함수">html에서 onclick="function () { };"</h6>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="JS3">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title="_04_javascript_파순01_코딩작성규칙">js 코드 작성시 규칙들? 에러처리</h6>
-      <h6 title="_04_javascript_파순02_기본정보margin0auto등">margin 0 outo,length,ComputedStyle,스크롤</h6>
-      <h6 title="_04_javascript_파순03_함수중단">함수중단 return, 시작script에 return??</h6>
-      <h6 title="_04_javascript_파순04_배열과보이는ul가로맞추기">배열과 보이는ul가로맞추기</h6>
-      
-    </div>
-    <div>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="JS4">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title='JS_CANVAS선긋기txt'>JS_CANVAS선긋기.txt <a href="https://m.blog.naver.com/hj_kim97/222558910338" target="_blank">링크 : canvas 선긋기</a></h6>
-      <h6 title='JS_input_value_숫자표현결과_조건표현인자'>JS_input_value_숫자표현결과_조건표현인자</h6>
-      <h6 title='JS_이벤트리스너_이벤트종류_작동순서'>JS_이벤트리스너_이벤트종류_작동순서</h6>
-      <h6 title='JS_search_find_match사용법'>JS_search_find_match(대소문자구분,구분없이)사용법</h6>
-      <h6 title='JS_문자열자르기_substr_substring_slice'>JS_문자열자르기_substr_substring_slice</h6>
-    </div>
-    <div>
-      <h6>메모_#숫자:기록할값.toFixed(0);==>정수, 기록할값.toFixed(1);==>12.1, 반올림</h6>
-      <h6>메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1</h6>
-      <h6>메모_#split:줄바꿈정보=문자열.split('\n'); 탭으로분리정보=문자열.split('\t');</h6>
-      <h6>메모_#정규식 : 3.121px의 경우 소수점까지 사라져 숫자만 추출시 ==> 3121이 된다.</h6>
-      <h6>메모_#left#substring : '3.121px'.substring(0,5) ==> 3.121 (숫자.toFixed(0)==>정수)</h6>
-    </div>
-    <div>
-      <h6 title='JS_웹페이지이동'><a href="https://www.daleseo.com/js-location/"
-        target="_blank">자바스크립트로 웹 페이지 이동하는 방법</a></h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="form과map">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title="_04_javascript_every와some">every, some</h6>
-      <h6 title="_04_javascript_배열중복제거">배열 중복 제거하는 3가지 방법</h6>
-      <h6 class="fw-bold"><a href="https://creativevista.tistory.com/entry/자바스크립트JavaScript-배열-완벽-가이드-배열-메소드와-활용법-총정리" target="_blank">자바스크립트 배열 완벽 가이드 : 여러가지 다 있음</a> </h6>
-      <h6 class="fw-bold"><a href="https://ruriruriya.tistory.com/226" target="_blank">[JavaScript] 자바스크립트 - Set과 Map 그리고 배열과 객체와의 차이점</a> </h6>
-    
-
-
-      
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" style="color:blueviolet">리터럴 : index사용가능, 반복가능 => 문자열, 배열</h6>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="j쿼리">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6>메모 : 구글에 jQuery cdn 이런거 검색하면 나오는 사이트가 있습니다.</h6>
-      <h6>메모 : 거기서 jQuery 3.x 버전 &#123;script&#125; 태그를 찾아서 여러분들 html 파일에 복붙</h6>
-      <h6>메모 : header 부분에 넣고 사용. 아래에 넣으면 위에서는 사용 안됨.</h6>
-      <h6 title="_02_html_파순01_읽는순서">html 읽는순서 (script, 리스너포함)</h6>
-      <h6 style="font-weight: bold;">메모 : 구문 : $(선택자).동작함수(); <span style="color:blueviolet">innerHtml 없고 html()</span> </h6>
-      <h6 style="font-weight: bold;">// 예시// $('#myDiv').text();  => 현재값, </h6>
-      <h6 style="font-weight: bold;">// 예시// $('#myDiv').text('Hello, jQuery!'); => 값 변경</h6>
-      <h6 title="j쿼리">(내부에 링크) jQurey는 자바스크립트 querySelectorAll 같은거 짧게 바꿔주는거</h6>
-    </div>
-    <div>
-      <h6 title="jQuery_설치와기초사용법">jQuery_설치와기초사용법</h6>
-      <h6 title="jQuery_문법리스트">jQuery_문법리스트</h6>
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="참고2">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 title='참고_특수문자txt'>참고_특수문자.txt</h6>
-      <h6 title='참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt'>참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt</h6>
-      <h6 class="fw-bold" style="color:blueviolet">메모_src에파일이름안넣으면파일탐색기처럼모두나옴</h6>
-      <h6 class="fw-bold" style="color:blueviolet">메모_클래스나 아이디에에 하이픈은 되는데, js에서는 하이픈 인식안됨</h6>
-      <h6 title='참고_클래스아이디숫자안됨txt'>참고_클래스아이디숫자안됨.txt</h6>
-      <h6 title='참고_메모장에서열면ancitxt'>참고_메모장에서열면anci.txt</h6>
-      <h6 title='참고_구글_그림에서데이터추출txt'>참고_구글_그림에서데이터추출.txt</h6>
-      <h6 title='참고_더하기_숫자_소수점_변수에러상황txt'>참고_더하기_숫자_소수점_변수에러상황.txt</h6>
-
-    </div>
-    <div>
-      <h6 title='height'>scrollHeight, clientHeight, offsetHeight</h6>
-      <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
-      <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
-      <h6><a href="https://2boki.tistory.com/129" target="_blank">[제이쿼리] load() 메소드 사용하여 다른 html의 값 가져오기</a></h6>
-      <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
-      <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
-      <h6><a href="https://kingofbackend.tistory.com/187" target="_blank">[Javascript]Json과 JavaScript Object의 차이점</a></h6>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-</div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
   <div id="jQuery_설치와기초사용법">
     <h5><a href="https://milku.tistory.com/84" target="_blank">jQuery_설치와기초사용법</a></h5>
     <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음" style="vertical-align: top;">
@@ -6158,41 +6240,7 @@
       <img src="" alt="이미지없음">
     </div>
   </div>
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="통합" class="d-none 캔버스">
-  <div class="개별카테고리" id="파이썬1">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 style="font-weight: bold;"></h6>
-      <h6 style="font-weight: bold;"><a href="https://velog.io/@qazws78941/Flutter-Firebase-Storage-1" target="_blank">Firebase-Storage</a></h6>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-  </div>
-  <div class="개별카테고리" id="파이썬2">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-  </div>
-  <div class="개별카테고리" id="파이썬정보수집">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="canvas_div fw-bold" title='파이썬_정보수집'>정보수집</h6>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-  </div>
-</div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
+
   <div id="파이썬_정보수집">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold"><a href="https://wikidocs.net/7" target="_blank">점프투 파이썬</a></h6>
@@ -6215,78 +6263,7 @@
       <img src="" alt="이미지없음">        
     </div>
   </div>
-</div>
-<!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
-<div id="기타" class="d-none 캔버스">
-  <div class="개별카테고리" id="탁구">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="fw-bold canvas_div" title='탁구_메모'>탁구 메모</h6>
-      <h6 class="canvas_div fw-bold" title='출처밝히는방법'>링크</h6>
-      <h6 class="fw-bold canvas_div" title='탁구_사사이'>(상대라켓과 상대스윙)보는것 40%, 자세만드는과정 40%, 스윙20%(본능적으로 된다)</h6>
-      <h6 class="fw-bold canvas_div" title='탁구_1장자탁구클럽'>[탁구레슨] (포핸드) 커트볼드라이브 라켓'각'만 바꿔 걸었을 뿐인데..#장자탁구클럽</h6>
-    </div>
-    <div>
 
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="샷컷">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="canvas_div fw-bold" title='동영상편집_링크'>동영상편집 정보 링크</h6>
-      <h6 class="canvas_div fw-bold" title='샷컷_1'>프로젝트폴더 변경,</h6>
-      <h6 class="canvas_div fw-bold" title='샷컷_움짤처럼또는겹치기가능한가'>움짤처럼또는겹치기가능한가</h6>
-      <h6 class="canvas_div fw-bold" title='샷컷_화면의일부분만다시편집가능한가'>화면의일부분만다시편집가능한가</h6>
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" title='샷컷_무료음원'>샷컷 무료음원 등 자료구하기, 기타 링크</h6>
-      <h6 class="canvas_div fw-bold" title='샷컷_사용법정리_처음화면편집레이아웃'>샷컷 처음화면 : 편집 레이아웃 용어부터 </h6>
-      <h6 class="canvas_div fw-bold" title='샷컷_사용법정리_타임라인1'>타임라인편집 : 재생목록(비디오,오디오,자막), 자르기, 페이드</h6>
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" title='샷컷_임시편집정보'>샷컷 임시편집 정보</h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="jt기타">
-    <h6 class="canvas_div fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
-    <h6 class="canvas_div fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
-    <h6 class="canvas_div fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
-  </div>
-  <div class="개별카테고리" id="jtJS">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-
-    </div>
-  </div>
-  <div class="개별카테고리" id="임시">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="canvas_div fw-bold" title='임시_휴가등'>임시_휴가등</h6>
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" title=''>예제</h6>
-    </div>
-    <div>
-      <h6 class="canvas_div fw-bold" title=''>예제</h6>
-    </div>
-  </div>
-  <div class="개별카테고리" id="녹화">
-    <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-    <div>
-      <h6 class="fw-bold">XBOX 검색하여 알아보기.  윈도우 + G (XBOX)열기, [윈도우 + ALT + R] 녹화시작, 녹화중지 => 파일은 동영상 - 캡쳐 폴더에 있음</h6>
-    </div>
-    <div>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-</div>
-<div class="d-none id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
   <div id="탁구_메모">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
       <h6 class="fw-bold">스윙으로 탁구를 쳐라 : 공에 따라 스윙을 입력하고 출력하라. (많은 구질 경험 필요)</h6>
