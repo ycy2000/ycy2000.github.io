@@ -5,6 +5,9 @@ let 전체변수h6title='';
 
 
 //-----코드정리작업 모메 끝
+function 연습() {
+  console.log(document.querySelectorAll('#dfsdfsd').length)
+}
 function 특정id편집() {
   전체변수h6title ='구조_1' //원래는 h6의 title이다.
   전체대체에셑팅();
