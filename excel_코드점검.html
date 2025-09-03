@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="portal/assets/js/excel_코드점검.js"></script>시작시,이벤트리스너 인식못한다. 켜지고 난후 사용엔 무리 없다. body 안에 마지막에 배치 -->
+<script src="portal/assets/js/excel_코드점검_그리기등별도.js"></script>
 </head>
 <body>
 <div id="html파일이름" style="display:none">excel.html</div>
@@ -32,11 +34,11 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:30px;padding:0px 5px;margin-top:-4px;">모음</button>
           <ul class="dropdown-menu" style="margin-top:10px;">
             <div class="d-inline-block"><!-- div 하나 더 하면 오른쪽에 생김(활용가능) -->
-              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="excel_vba"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >캔버스 : Excel,Vba</a></li>
-              <li><a class="dropdown-item" onclick="전체변수h6title='캔버스_개별카테고리_h6의title과id순서';전체대체에셑팅();">
-                ID : 캔버스_개별카테고리_h6의title과id순서 <span style="color:blueviolet">[설명]</span></a>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="excel_vba" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >캔버스 : Excel,Vba</a></li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >캔버스 : 정보</a></li>
+              <li><a class="dropdown-item" onclick="전체변수h6title='설명_캔버스_개별카테고리_h6의title과id순서';전체대체에셑팅();">
+                ID : 캔버스_개별카테고리_h6의title과id순서 <span style="color:blueviolet">[사용법]</span></a>
               </li>
-              <li><a class="dropdown-item" onclick="캔버스_개별카테고리_h6의title과id순서()">ID : 캔버스_개별카테고리_h6의title과id순서 <span style="color:blueviolet">[함수기능 포함]</span></a></li>
               <li><a class="dropdown-item">ID : img폴더의자료사용현황 <span style="color:blueviolet">[설명]</span></a></li>
               <li><a class="dropdown-item" onclick="img폴더의자료사용현황()">ID : img폴더의자료사용현황 <span style="color:blueviolet">[함수기능 포함]</span></a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -50,7 +52,9 @@
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통합" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">파이썬</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="기타" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">기타</button>
         <button onclick="document.querySelector('#전체대체').innerHTML=document.querySelector('#html특수문자_click').outerHTML;">특문</button> 
-        <button onclick="특정id편집()">특정id편집</button> <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <button onclick="특정id편집()">특정id</button> 
+        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">특정캔버스</button>
+        <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
         <div title="숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다.★버튼은 맨 앞에 있다." class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -79,7 +83,7 @@
 
 <div class="d-none" style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
 
-<div id="전체대체" class="col-11" style="margin-left:10px;">
+<div id="전체대체" style="margin-left:10px;">
 </div>
 
 <!-- 대표캔버스 -->
@@ -122,6 +126,21 @@
 </div>
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="정보" class="d-none 캔버스">
+    <div class="개별카테고리" id="링크및메모">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold">-- 정보 --</h6>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
   <div id="설명" class="d-none 캔버스">
     <div class="개별카테고리" id="html구조">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
@@ -135,7 +154,7 @@
       </div>
       <div>
         <h6 class="fw-bold" style="color:blueviolet">-- 이 html 주요 함수 --</h6>
-        <h6 class="fw-bold" title='구조_토글'>function 보기_숨기기toggle(e)</h6>
+        <h6 class="fw-bold" title='설명_캔버스_개별카테고리_h6의title과id순서'>사용법 : 캔버스_개별카테고리_h6의title과id순서</h6>
       </div>
       <div>
       </div>
@@ -143,7 +162,7 @@
     <div class="개별카테고리" id="사용된함수">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title='캔버스_개별카테고리_h6의title과id순서'>캔버스_개별카테고리_h6의title과id순서 </h6>
+
       </div>
       <div>
       </div>
@@ -704,13 +723,44 @@
 
 <!-- 모든 ID-->
 <div class="d-none 모든id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
-  <div id="캔버스_개별카테고리_h6의title과id순서" class="대체2줄">
+  <div id="설명_캔버스_개별카테고리_h6의title과id순서">
+    <div class="대체2줄">
+      <div>
+        <h6 class="fw-bold">• 캔버스_개별카테고리_h6의title과id순서 필요성</h6>
+        <h6 style="text-indent: 23px;">1-1. 캔버스에서 id와 연결된 h6의 위치 : .캔버스관련모두감싸기 > .캔버스 > .개별카테고리 > div > h6 </h6>
+        <h6 style="text-indent: 23px;">1-2. 1-1 중에서 title을 가진 요소</h6>
+        <h6 style="text-indent: 23px;">2. .모든id모음위치자유 > [id] : 첫번째 자식요소중 id가 있는 요소</h6>
+      </div>
+      <div>
+        <h5 class="fw-bold"></h5>
+        <code class="fw-bold">• </code>
+        <code class="fw-bold" style="text-indent: 15px;"></code>
+        <code class="fw-bold"></code>
+        <span style="color:blueviolet"></span>
+        <h6></h6>
+        <h6></h6>
+        <h6 style="text-indent: 23px;"></h6>
+        <img src="" alt="이미지없음">
+      </div>
+    </div>
+    <div style="position: relative;border-bottom:1px solid rgb(201, 188, 188);"><button onclick="캔버스_개별카테고리_h6의title과id순서()">
+      .캔버스 - .개별카테고리 - h6:[title]
+    </button></div>    
+    <h6 class="대체2줄세로1h6"></h6>
+
+    <div>
+      <div><span>id개수 : </span><span id="id개수"></span></div>
+      <div id="id나열" class="d-inline-block">
+
+      </div>
+
+      
+    </div>
+
+  </div>
+  <div id="동작_캔버스_개별카테고리_h6의title과id순서" class="대체2줄">
     <h6 class="대체2줄세로1h6"></h6>
     <div>
-      <h6 class="fw-bold">• 캔버스_개별카테고리_h6의title과id순서 필요성</h6>
-      <h6 style="text-indent: 23px;">1. 캔버스별 h6의title이 있는것 나열, 우측에 id 가 있는지 여부 표시</h6>
-      <h6 style="text-indent: 23px;">2. 모든 id 순서대로 나열, 우측에 캔버스이름 기록(없으면 없다고) : 순서를 맞추고 싶을수 있다.</h6>
-      <h6 class="fw-bold">• 캔버스_개별카테고리_h6의title과id순서 함수구현 아이디어</h6>
     </div>
     <div>
       <h5 class="fw-bold"></h5>
@@ -724,7 +774,6 @@
       <img src="" alt="이미지없음">
     </div>
   </div>
-  
   <div id="구조_1" class="대체2줄">
     <h6 style="text-align: center;"><img src="portal/images/문서연결_엑셀VBA/EXCEL구조1.png" alt="이미지없음"></h6>
     <h6 style="text-align: center;"><img src="portal/images/문서연결_엑셀VBA/EXCEL구조2.png" alt="이미지없음"></h6>

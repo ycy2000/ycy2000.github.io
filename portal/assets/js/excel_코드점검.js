@@ -6,10 +6,11 @@ let 전체변수h6title='';
 
 //-----코드정리작업 모메 끝
 function 연습() {
-  console.log(document.querySelectorAll('#dfsdfsd').length)
+  캔버스_개별카테고리_h6의title과id순서()
 }
+
 function 특정id편집() {
-  전체변수h6title ='구조_1' //원래는 h6의 title이다.
+  전체변수h6title ='설명_캔버스_개별카테고리_h6의title과id순서' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 보숨토글(e) {
@@ -54,7 +55,8 @@ function 전체대체에셑팅() {
   var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
   title요소들마지막=title요소들마지막[title요소들마지막.length-1];
   document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
-  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.id;
+  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.parentElement.id;
+  document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
   document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
 }
