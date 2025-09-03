@@ -32,7 +32,12 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     요소.children[0].setAttribute('style','width:' + Math.max(...첫번째width) + 'px');
     요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px');
   });
-
   //h6의 title 부분
-  var 캔버스=Array.from(document.querySelectorAll('.캔버스'), (요소,index) => 요소.id);
+  var h6정보3종=[];
+  var h6정보=Array.from(document.querySelectorAll('.개별카테고리 > div > [title]'));
+  h6정보.forEach ( (요소,인덱스,array) => {
+    h6정보3종.push({요소,인덱스,array})
+
+  })
+  console.log(h6정보3종)
 }
