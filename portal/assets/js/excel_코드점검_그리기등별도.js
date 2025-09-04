@@ -1,5 +1,47 @@
 function image폴더클릭_파일사용현황파악() {
-
+  //'파일선택' 클릭하면 파일리스트 추출완료시 change 감지됨
+  var 이벤트감지=document.querySelector('#file_input');
+  var 기록할곳=document.querySelector('#js파일리스트기록');
+  //**webkitRelativePath**라는 속성에 상위 폴더명부터 파일까지의 상대 경로가 포함됩니다.
+  //webkitRelativePath는 브라우저(주로 크롬, 엣지, 오페라 등)에서만 지원됩니다.
+  //상위 폴더 이름은 첫 번째 파일의 webkitRelativePath를 /로 분리하면 됩니다.
+  function 함수내파일리스트가공() {
+    var 파일리스트배열=이벤트감지.files;
+    var split개수=[];
+    Array.from(파일리스트배열).forEach ( (file,index,arr) => {
+      if (index==0) {
+        var div=document.createElement('div');
+        var span=document.createElement('span');
+        span.innerText= 'src경로';
+        div.appendChild(span);
+        var span=document.createElement('span');
+        span.innerText= '사용된html(횟수)';
+        div.appendChild(span);
+        기록할곳.appendChild(div);
+      }
+      var div=document.createElement('div');
+      var span=document.createElement('span');
+      span.innerText= 'portal/' + file.webkitRelativePath;
+      div.appendChild(span);
+      var span=document.createElement('span');
+      span.innerText= '_';
+      div.appendChild(span);
+      기록할곳.appendChild(div);
+    })
+    //폭조정
+    //========== 실행 다 하고, 이벤트 발생시 이벤트함수 실행하므로, 폭조정을 이벤트 함수안에 넣어야 된다  
+    var 첫번째width=[];
+    var 두번째width=[];
+    Array.from(document.querySelectorAll('#js파일리스트기록 > div')).forEach ( (요소,index,array) => {
+      if (요소.children.length>0) {첫번째width.push(요소.children[0].clientWidth)};
+      if (요소.children.length>1) {두번째width.push(요소.children[1].clientWidth)};
+    });
+    Array.from(document.querySelectorAll('#js파일리스트기록 > div')).forEach ( (요소,index,array) => {
+      if (요소.children.length>0) {요소.children[0].setAttribute('style','width:' + Math.max(...첫번째width) + 'px')};
+      if (요소.children.length>1) {요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px')};
+    });
+  }
+  이벤트감지.addEventListener('change',함수내파일리스트가공)
 }
 function 캔버스_개별카테고리_h6의title과id순서() {
   //id나열

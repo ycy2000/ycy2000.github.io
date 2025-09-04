@@ -778,7 +778,7 @@
     <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
     <h6 class="fw-bold">
       <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">보기</button>
-        • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 3종만 찾아서 추출한다.
+        • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 기타 모둔 파일 이름을 추출한다.
     </h6>
     <div id="파일리스트설명2" class="d-none 대체2줄">
       <div style="border-right:1px solid rgb(201, 188, 188);">
@@ -799,11 +799,16 @@
     </div>
     <div style="border-bottom:1px solid rgb(201, 188, 188);"></div>
     <div>
-      <div style="display: inline-block;">
-        <div><span></span><span></span><span></span><span></span><span></span></div>
-
+      <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
+      <div style="display: inline-block;vertical-align: top;">
+        <div>
+          <input style="width:210px;" type="file" webkitdirectory onclick="image폴더클릭_파일사용현황파악();" id="file_input"> 
+          <span style="color:blueviolet">function image폴더클릭_파일사용현황파악()</span>
+        </div>
+        <div id="js파일리스트기록">
+        </div>
       </div>
-      <div style="display: inline-block;">
+      <div style="display: inline-block;vertical-align: top;">
 
       </div>
 
@@ -6745,173 +6750,6 @@
       <h6 class="fw-bold"></h6>
       <h6 style="text-indent: 23px;"></h6>
     </div>
-
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <h5 class="fw-bold">image폴더를 선택하였을 경우</h5>
-      <input onclick="파일리스트_연습();" type="file" id="연습_file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트_연습() : 폴더를 선택하였을 경우</span>
-      <div class="연습_file_list_container"></div>
-      
-    </div>
-
-  </div>
-  <div id="기타전체_파일내용">
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 class="fw-bold">textarea에 html 내용복사하여 src="portal/images/...." 이용하는 코드.</h5>
-      <code class="fw-bold">• html파일마다 있다 : &#60;div id="html파일이름" style="display:none">index.html&#60;/div> </code>
-      <code class="fw-bold">1) &#60;input type="file"  webkitdirectory&#62; 에서 'images'폴더 선택하여 모든 파일리스트 출력해놓기.</code>
-      <input onclick="파일리스트();" type="file" id="file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트() : 'images' 폴더를 선택해야 한다.</span>
-      <code class="fw-bold" style="text-indent: 15px;">- 묶음으로 형제 3개, ⓐ 경로, ⓑ 사용중인 html 파일이름, ⓒ 파일이름 : ⓑ는 새로운 함수로 넣는다.</code>
-
-
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      <code class="fw-bold">2) textarea 1개? 여러개?에 html내용 복붙해놓고 1)의 경로 src가 있으면 ⓑ에 'id=html파일이름'의 innerText를 기록</code>
-      <code class="fw-bold" style="text-indent: 15px;">- 여러번 실행시, html파일이름이 같은게 있으면 건너뛰는 코드. 줄바꿈 코드</code>
-      <code class="fw-bold">• 태그안에 src="portal/images/문서연결_엑셀VBA/html파일들캡쳐.png"로 기록되어 있더라도</code>
-      <code class="fw-bold" style="text-indent: 15px;">요소로 접근시, 요소.src=file:///C:/Users/COM/Documents/git_project/ycy2000.github.io/portal/images/%EB%AC%B8%EC%84%9</code>
-      <code class="fw-bold" style="text-indent: 15px;">C%EC%97%B0%EA%B2%B0_%EC%97%91%EC%85%80VBA/html%ED%8C%8C%EC%9D%BC%EB%93%A4%EC%BA%A1%EC%B3%90.png</code>
-      <code class="fw-bold" style="color:blueviolet;">• 쓰여진대로 가지고오기 힌트 : document.getElementById("imgTag").getAttribute("src")</code>
-      
-    </div>
-    <h5 class="fw-bold"><div style="display:inline-block;font-size: 14px;margin-left:33px;">파악된 html 리스트 참고 : excel.html, black.html, fishexe.html, index.html, it.html, kim.html, kim2.html, list.html, memo.html, sunsa_cy.html, ycy정리.html</div></h5>
-    <h5 class="fw-bold">결과표 <div id="파악된html리스트" style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </div></h5>
-    <div id="결과표_전체" style="margin-bottom:5px;">
-      <div id="결과표_현재html" class="결과표">
-        <div class="제목">
-          <div>_</div>
-          <div>원본정보</div>
-          <div>html파일</div>
-          <div>src개수</div>
-          <div>사용중개수</div>
-          <div>src=""</div>
-        </div>
-        <div class="결과">
-          <div>X</div>
-          <div>현재html</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-        </div>
-      </div>
-      <div id="결과표_textarea1" class="결과표">
-        <div class="제목">
-          <div onclick="document.querySelector('#전체대체 #결과표_textarea1 textarea').value=''">_</div>
-          <div>원본정보</div>
-          <div>html파일</div>
-          <div>src개수</div>
-          <div>사용중개수</div>
-          <div>src=""</div>
-        </div>
-        <div class="결과">
-          <textarea rows="1" spellcheck="false"></textarea>
-          <div>textarea</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-        </div>
-      </div>
-      <div id="결과표_textarea2" class="결과표">
-        <div class="제목">
-          <div onclick="document.querySelector('#전체대체 #결과표_textarea2 textarea').value=''">_</div>
-          <div>원본정보</div>
-          <div>html파일</div>
-          <div>src개수</div>
-          <div>사용중개수</div>
-          <div>src=""</div>
-        </div>
-        <div class="결과">
-          <textarea rows="1" spellcheck="false"></textarea>
-          <div>textarea</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-        </div>
-      </div>
-      <div id="결과표_textarea3" class="결과표">
-        <div class="제목">
-          <div onclick="document.querySelector('#전체대체 #결과표_textarea3 textarea').value=''">_</div>
-          <div>원본정보</div>
-          <div>html파일</div>
-          <div>src개수</div>
-          <div>사용중개수</div>
-          <div>src=""</div>
-        </div>
-        <div class="결과">
-          <textarea rows="1" spellcheck="false"></textarea>
-          <div>textarea</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-        </div>
-      </div>
-      <div id="결과표_textarea4" class="결과표">
-        <div class="제목">
-          <div onclick="document.querySelector('#전체대체 #결과표_textarea4 textarea').value=''">_</div>
-          <div>원본정보</div>
-          <div>html파일</div>
-          <div>src개수</div>
-          <div>사용중개수</div>
-          <div>src=""</div>
-        </div>
-        <div class="결과">
-          <textarea rows="1" spellcheck="false"></textarea>
-          <div>textarea</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-        </div>
-      </div>
-      <div id="결과표_textarea5" class="결과표">
-        <div class="제목">
-          <div onclick="document.querySelector('#전체대체 #결과표_textarea5 textarea').value=''">_</div>
-          <div>원본정보</div>
-          <div>html파일</div>
-          <div>src개수</div>
-          <div>사용중개수</div>
-          <div>src=""</div>
-        </div>
-        <div class="결과">
-          <textarea rows="1" spellcheck="false"></textarea>
-          <div>textarea</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-          <div>_</div>
-        </div>
-      </div>
-
-    </div>
-    <button onclick="파일리스트결과폭조정();" style="border:1px solid black; margin-bottom:3px;margin-left:22px;">2) 파일리스트결과폭조정();</button>
-    <span>경로는, images폴더 선택했다고 가정하고 앞에 'portal/'추가함</span>
-    <button onclick="textarea정보에서html파일이름추출();" style="border:1px solid black; margin-bottom:3px;margin-left:22px;">3) 현재 html파일 작업후, textarea정보에서html파일이름추출();</button>
-    <div class="file_list_container">
-      <li><div>사용중인html파일</div><div>경로만</div><div>파일이름 </div></li>
-    </div>
-  </div>
-  <div id="기타전체_png와txt">
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-
-      <code class="fw-bold"></code>
-      <h6 style="text-indent: 15px;color:blueviolet;"></h6>
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-
-      
-    </div>
-
   </div>
   <div id="동영상편집_링크">
     <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
