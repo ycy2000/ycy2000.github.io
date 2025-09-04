@@ -39,8 +39,9 @@
               <li><a class="dropdown-item" onclick="전체변수h6title='설명_캔버스_개별카테고리_h6의title과id순서';전체대체에셑팅();">
                 ID : 캔버스_개별카테고리_h6의title과id순서 <span style="color:blueviolet">[사용법]</span></a>
               </li>
-              <li><a class="dropdown-item">ID : img폴더의자료사용현황 <span style="color:blueviolet">[설명]</span></a></li>
-              <li><a class="dropdown-item" onclick="img폴더의자료사용현황()">ID : img폴더의자료사용현황 <span style="color:blueviolet">[함수기능 포함]</span></a></li>
+              <li><a class="dropdown-item" onclick="전체변수h6title='설명_image폴더의자료사용현황';전체대체에셑팅();">
+                ID : imagg폴더의자료사용현황 <span style="color:blueviolet">[사용법]</span></a>
+              </li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </div>
           </ul>
@@ -95,8 +96,8 @@
       <span class="offcanvas-title">모든제목보기</span><!--click동작-->
       <span class="offcanvas-title">모든카테고리</span> <!--click동작-->            
       <span class="d-inline-block">파일검색</span><!-- 동작없음-->
-      <input class="canvas검색input" type = "text"><!-- change 동작-->
-      <span id="canvas검색input_clear">clear</span><!--click동작-->
+      <input id="canvas검색input" type = "text" onchange="선택한캔버스_검색input_change시(this)"><!-- change 동작-->
+      <span id="canvas검색input_clear" onclick="검색input결과초기화()">clear</span><!--click동작-->
       <button id="캔버스바디_카테고리숨김">&lt;&lt;</button> <button id="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
       <span id="js카테고리생성" class="d-inline-block"></span>
     </div>
@@ -126,11 +127,17 @@
 </div>
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="검색결과캔버스" class="d-none 캔버스">
+    <div class="개별카테고리"  id="검색결과js">
+      <div id="검색결과누적js">
+      </div>
+    </div>
+  </div>
   <div id="정보" class="d-none 캔버스">
     <div class="개별카테고리" id="링크및메모">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold">-- 정보 --</h6>
+        <h6 class="fw-bold"><a href="https://codingeverybody.kr/자바스크립트-for-in-문/" target="_blank">자바스크립트-for-in-문</a></h6>
 
       </div>
       <div>
@@ -155,14 +162,17 @@
       <div>
         <h6 class="fw-bold" style="color:blueviolet">-- 이 html 주요 함수 --</h6>
         <h6 class="fw-bold" title='설명_캔버스_개별카테고리_h6의title과id순서'>사용법 : 캔버스_개별카테고리_h6의title과id순서</h6>
+        <h6 class="fw-bold" title='설명_image폴더의자료사용현황'>사용법 : imagg폴더의자료사용현황</h6>
+
+        
       </div>
       <div>
       </div>
     </div>
-    <div class="개별카테고리" id="사용된함수">
+    <div class="개별카테고리" id="프로그램">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-
+        <h6 class="fw-bold" title='자바스크립트개요'>자바스크립트개요</h6>
       </div>
       <div>
       </div>
@@ -382,6 +392,21 @@
     <div class="개별카테고리" id="기초이해">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold">1) 객체라는 단어 이해. 자료형, 자료형의 구조, type</h6>
+        <h6 class="fw-bold">2) 반복과 순회를 구분할수 있나? 무엇을 기준으로(사용하여) 반복(순회)하는가?</h6>
+      </div>
+      <div>
+
+
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="jv선별">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
         <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_클틀에서이해하기">--- 큰틀에서 이해하기, 객체는 속성과 메서드를 포함하는 데이터의 집합 click!---</h6>
         <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
           <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
@@ -396,7 +421,10 @@
         <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
         <h6 class="canvas_div fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
         <br>
-        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>       
+        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>    
+        <h6 class="canvas_div fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
+        <h6 class="canvas_div fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
+        <h6 class="canvas_div fw-bold" title='java_fetch'>Fetch</h6>
       </div>
       <div>
         <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
@@ -409,12 +437,11 @@
         <h6 class="canvas_div fw-bold" title='java_개인적정리_argument'>객체(속성[key,value]), 변수, 매개변수(인수,parameter), argument(인자)</h6>
         <h6 class="canvas_div fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
 
-
       </div>
       <div>
         <h6 class="canvas_div fw-bold d-inline-block" title='java_야구계산함수' style="background-color: chartreuse;">야구 계산()함수에 구조분해할당 등</h6>
         <h6 class="canvas_div fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
-        <h6 class="fw-bold"><a href="https://radait.tistory.com/4" target="_blank">링크:객체지향언어란?[특징,장점,단점,종류].객체Object.자바의 절반은 객체</a></h6>
+
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">Object prototypes, 프로토타입 기반 언어?</a></h6>
         <h6 class="fw-bold">검색대기 : 템플릿</h6>
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">링크:Object</a></h6>
@@ -422,21 +449,6 @@
         <h6 class="fw-bold"><a href="https://codingwanee.tistory.com/entry/JavaScript-프로토타입-prototype" target="_blank">링크:프로토타입</a></h6>
         <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
         <h6 class="canvas_div fw-bold" title='java_onclick에this'>onclick속성에 함수(this)전달 및 활용. 이때 this는 요소를 가리킴. <a href="https://inpa.tistory.com/entry/JS-📚-this-총정리" target="_blank">this링크</a>   </h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="jv선별">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-        <h6 class="canvas_div fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
-        <h6 class="canvas_div fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
-
-      </div>
-      <div>
-        <h6 class="canvas_div fw-bold" title='java_fetch'>Fetch</h6>
-
-      </div>
-      <div>
-
       </div>
     </div>
     <div class="개별카테고리" id="JS">
@@ -747,16 +759,75 @@
     </div>    
     <div>
       <div class="d-inline-block" style="vertical-align: top;">
-        <span>왼쪽의 id와 연결안된것은 노랑색 표시,  title개수 : </span><span id="title개수"></span><span>, html의 순서대로 기록되는 듯</span>
-        <div id="title나열"></div>
-      </div>
-      <div class="d-inline-block" style="vertical-align: top;">
         <span>오른쪽의 title과 연결안된것은 노랑색 표시, id개수 : </span><span id="id개수"></span>
         <div id="id나열"></div>
+      </div>
+      <div class="d-inline-block" style="vertical-align: top;">
+        <span>왼쪽의 id와 연결안된것은 노랑색 표시,  title개수 : </span><span id="title개수"></span><span>, html의 순서대로 기록되는 듯</span>
+        <div id="title나열"></div>
       </div>
     </div>
 
   </div>
+  <div id="설명_image폴더의자료사용현황">
+    <h6 class="fw-bold">
+      <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">보기</button>
+        • onclick 함수 없다고 가정할때
+    </h6>
+    <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
+    <h6 class="fw-bold">
+      <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">보기</button>
+        • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 3종만 찾아서 추출한다.
+    </h6>
+    <div id="파일리스트설명2" class="d-none 대체2줄">
+      <div style="border-right:1px solid rgb(201, 188, 188);">
+        <h6>1. 폴더 선택하기 전에, 'onclick함수' 실행됨</h6>
+        <h6>2. '폴더선택 후 업로드 한 결과 발생시' 함수 내부에 이벤트리스너를 등록해 두면 'change'로 감지한다.</h6>
+        <h6>3. 다음 정보를 'change' 함수에서 사용한다. </h6>
+        <h6 style="text-indent: 15px;">a) 인풋요소(change 감지 확인요소) : const fileInput = document.querySelector('#file_input');</h6>
+        <h6 style="text-indent: 15px;">b) 모든 파일리스트(배열) : const selectedDirectories = fileInput.files;</h6>
+        <h6 style="text-indent: 15px;">c) 하나씩 확인하며 코딩 : for (const file of selectedDirectories) {...코딩}</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳에 src값이 들어간다.</h6>
+        <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳에 src값이 들어간다.</h6>
+      </div>
+    </div>
+    <div style="border-bottom:1px solid rgb(201, 188, 188);"></div>
+    <div>
+      <div style="display: inline-block;">
+        <div><span></span><span></span><span></span><span></span><span></span></div>
+
+      </div>
+      <div style="display: inline-block;">
+
+      </div>
+
+    </div>
+  </div>
+  <div id="자바스크립트개요"  class="대체2줄">
+    <h6 class="대체2줄세로1h6"></h6>
+    <div>
+      <h6 class="fw-bold">• 자바스크립트 특징 및 평가 나열</h6>
+      <h6 style="text-indent: 15px;">1. 사실상 현재까지 웹 브라우저에서 사용할 수 있는 유일한 언어이다.</h6>
+      <h6 style="text-indent: 15px;">2. 웹 브라우저에서 제공되는 DOM API를 사용하게 된다. (HTML, CSS)</h6>
+      <h6 style="text-indent: 15px;">3. 이렇게 작동한다... 이런 개념이 잘 없다? </h6>
+      <h6 class="fw-bold">• <a href="https://helloworld-88.tistory.com/21" target="_blank">[Open API] 오픈 API 란?</a> API는 Application Programming Interface의 약어로, 서로 다른 두 소프트웨어 프로그램이 데이터를 주고받고 상호작용할 수 있도록 하는 약속 또는 규약입니다.
+        마치 식당의 메뉴판처럼, API는 특정 기능을 제공하는 서비스가 어떤 방식으로 요청을 받고 어떤 방식으로 응답을 반환하는지를 명시하며,
+      </h6>
+      <h6 class="fw-bold">• API사용법 : API Key 발급 방법 <button class="보숨토글버튼" onclick="보숨토글(this)" title="API_Key_발급방법">보기</button> </h6>
+      <div id="API_Key_발급방법" class="d-none"><img src="portal/images/문서연결_엑셀VBA/API_Key_발급방법.png" alt="이미지없음"></div>
+      <h6 class="fw-bold">• <a href="https://jeong-pro.tistory.com/143" target="_blank">공공데이터포털 OPEN API 사용하는 방법 (API키 발급 과정부터 개발 문서 확인, 자바코드로 Response 받아보기까지 example)</a> </h6>
+
+
+
+       
+    </div>
+    <div>
+    </div>
+  </div>
+  
+  
   <div id="동작_캔버스_개별카테고리_h6의title과id순서" class="대체2줄">
     <h6 class="대체2줄세로1h6"></h6>
     <div>
@@ -3900,17 +3971,18 @@
       <h6 class="fw-bold">2) Object : 객체 리터럴. {} 로 정의되는 객체.</h6>
       <h6 class="fw-bold">3) Array : [] 로 정의되는 객체. 속성 : index, name, length. 메서드 : filter(), forEach() 등</h6>
       <h6 class="fw-bold">4) Function(class) : class 클래스명 {} 로 정의되는 객체. 클래스 문법이 있다.
-        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_class는함수.png:없음" onclick="개인정리png(this)" class="png버튼">class는 함수</button>
-        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_일급객체.png:없음" onclick="개인정리png(this)" class="png버튼">일급객체,함수는 객체</button>
+        <button title="개인적정리png_class는함수" onclick="보숨토글(this)" class="png버튼">class는 함수</button>
+        <button title="개인적정리png_일급객체" onclick="보숨토글(this)" class="png버튼">일급객체,함수는 객체</button>
       </h6>
+      <div id="개인적정리png_class는함수" class="d-none"><img src="portal/images/문서연결_엑셀VBA/개인적정리png_class는함수.png" alt="이미지없음"></div>
+      <div id="개인적정리png_일급객체" class="d-none"><img src="portal/images/문서연결_엑셀VBA/개인적정리png_일급객체.png" alt="이미지없음"></div>
       <h6 class="fw-bold">5) 문자열(string)은 객체가 아니지만 String 객체(object)로 정의하면 객체가 된다</h6>
       <h6 class="fw-bold" style="text-indent: 20px;">문자열을 객체화 하지 않고도 String 객체의 속성과 메서드를 사용할수 있는데 </h6>
       <h6 class="fw-bold" style="text-indent: 20px;">자바스크립트 자체에서 사용하는 순간에 객체화(래퍼객체) 시켜준다 </h6>
       <h6 class="fw-bold">6) 여러 객체가 있다. 
-        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_내장객체등.png:없음" onclick="개인정리png(this)" class="png버튼">내장객체 등</button>
+        <button title="개인적정리png_내장객체등" onclick="보숨토글(this)" class="png버튼">내장객체 등</button>
       </h6>
-      <div id="js_자료형을먼저알아야겠다_설명" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none"></div>
-
+      <div id="개인적정리png_내장객체등" class="d-none"><img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음"></div>
       <br>
       <h6 class="fw-bold">1) 속성(Property)은 key:value의 쌍으로 표현하고, value 위치에는 함수, 객체, 기본값 등이 가능하다</h6>
       <h6 class="fw-bold" style="text-indent:20px;">메소드는 메소드이름() {...} 또는 메소드이름: function() {...}으로 표현한다.</h6>
@@ -3922,10 +3994,11 @@
       <br>
       <h6 class="fw-bold">1) {} 리터럴객체는 속성(key:value, key:메소드)를 직접 정의, 리터럴객체 내부의 this는(메서드 정의때만 사용) 자신을 가리킴</h6>
       <h6 class="fw-bold" style="text-indent:20px;">리터럴객체의 내부에서 value위치에서 key값을 사용할수 없음 => 
-        <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_this점key이름.png:없음" onclick="개인정리png(this)" class="png버튼">'this.key이름'</button>
+        <button title="개인적정리png_this점key이름" onclick="보숨토글(this)" class="png버튼">'this.key이름'</button>
          으로 사용할것 
       </h6>
       <h6 class="fw-bold" style="text-indent:20px;">value에 key값을 그대로 쓰면 전역변수 위치에서 찾게된다.</h6>
+      <div id="개인적정리png_this점key이름" class="d-none"><img src="portal/images/문서연결_엑셀VBA/개인적정리png_this점key이름.png" alt="이미지없음"></div>
       <br>
       <h6 class="fw-bold">1) 함수객체(function) 정의 => var 함수객체의인스턴스 = new 함수객체(a,b...); <span style="color:blueviolet">new 를 통한 인스턴스 생성을 생성자함수라 함.</span></h6>
       <h6 class="fw-bold" style="text-indent:20px;">함수객체 내부의 변수는 자신만의 동작을 위한 것이고 속성과 무관하다.</h6>
@@ -4037,9 +4110,9 @@
       <h6 class="fw-bold"><span style="color:blueviolet;">arr.map( value => { ... } );</span> arr.map 대신에 Array.form(arr).map 도 된다. Array.form(arr)는 arr 배열을 가져온다는 뜻</h6>
       <code class="fw-bold" style="text-indent: 20px">• const newArr = arr.map(value => value * 2);</code>
       <code class="fw-bold" style="text-indent: 35px">console.log(newArr); // [20, 40, 60]
-        <button title="js_객체관련반복문_맵과필터유사한가:js_map과filter유사한가.png:없음"onclick="개인정리png(this)" class="png버튼">map과 filter 유사한가</button>
+        <button title="js_map과filter유사한가" onclick="보숨토글(this)" class="png버튼">map과 filter 유사한가</button>
       </code>
-      <div id="js_객체관련반복문_맵과필터유사한가" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none"></div>
+      <div id="js_map과filter유사한가" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_map과filter유사한가.png" alt="이미지없음"></div>
       <br>
       <h6 class="fw-bold"><span style="color:blueviolet;">arr.filter( value => { ... } );</span> 조건에 맞는 배열만 추출하고 원본배열은 그대로 두고 결과배열을 반환한다.</h6>
       <code class="fw-bold" style="text-indent: 20px">• const filteredArr = arr.filter(value => value > 15);</code>
@@ -4636,9 +4709,9 @@
         <a href="https://ko.javascript.info/alert-prompt-confirm" target="_blank">• alert, prompt, confirm을 이용한 상호작용,</a>
       </h6>
       <h6 class="fw-bold">• 따옴표는 세 종류가 있습니다.
-        <button onclick="개인적정리png_토글('js_따옴표종류_png')">보기</button>
+        <button onclick="보숨토글(this)" title="js_따옴표종류_png">보기</button>
           <a href="https://ko.javascript.info/operators" target="_blank">• 문자열 숫자 더하기,</a>
-          <button onclick="개인적정리png_토글('js_문자열숫자더하기_png')">보기</button>
+          <button onclick="보숨토글(this)" title="js_문자열숫자더하기_png">보기</button>
         <div id="js_따옴표종류_png" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_따옴표종류.png" alt="이미지없음"></div>
         <div id="js_문자열숫자더하기_png" class="d-none"><img src="portal/images/문서연결_엑셀VBA/js_문자열숫자더하기.png" alt="이미지없음"></div>
       </h6>

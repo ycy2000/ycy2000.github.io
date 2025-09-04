@@ -1,3 +1,6 @@
+function image폴더클릭_파일사용현황파악() {
+
+}
 function 캔버스_개별카테고리_h6의title과id순서() {
   //id나열
   var 아이디=Array.from(document.querySelectorAll('.모든id모음위치자유 > [id]'), (요소,index) => 요소.id); 
@@ -53,9 +56,9 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     카운트+=1;
     if (카운트==1) {
       var div=document.createElement('div');
-      Array.from({length:3}).forEach ( (ele,내부index) => {
+      Array.from({length:4}).forEach ( (ele,내부index) => {
         var span=document.createElement('span');
-        span.innerText=['캔버스id','카테고리id','title'][내부index];
+        span.innerText=['캔버스id','카테고리id','title','innerTEXT'][내부index];
         div.appendChild(span);
       })
       넣을곳.appendChild(div);
@@ -67,23 +70,30 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     var span=document.createElement('span');
     span.innerText=카테고리id; 
     div.appendChild(span);
+    //아이디와 innerTEXT가 공백일때 _ 로 대체 (높이)
     var span=document.createElement('span');
-    span.innerText=title; 
+    span.innerText=title=='' ? '_':title; 
     if (!아이디.includes(title)) {span.setAttribute('class','노랑바탕색')}
+    div.appendChild(span);
+    var span=document.createElement('span');
+    span.innerText=document.querySelector('[title="' + title + '"]').innerText=='' ? '_':document.querySelector('[title="' + title + '"]').innerText; 
     div.appendChild(span);
     넣을곳.appendChild(div);
   };
   var 첫번째width=[];
   var 두번째width=[];
   var 세번째width=[];
+  var 네번째width=[];
   Array.from(document.querySelectorAll('#title나열 > div')).forEach ( (요소,index,array) => {
     첫번째width.push(요소.children[0].clientWidth);
     두번째width.push(요소.children[1].clientWidth);
     세번째width.push(요소.children[2].clientWidth);
+    네번째width.push(요소.children[3].clientWidth);
   });
   Array.from(document.querySelectorAll('#title나열 > div')).forEach ( (요소,index,array) => {
     요소.children[0].setAttribute('style','width:' + Math.max(...첫번째width) + 'px');
     요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px');
     요소.children[2].setAttribute('style','width:' + Math.max(...세번째width) + 'px');
+    요소.children[3].setAttribute('style','width:' + Math.max(...네번째width) + 'px');
   });
 }

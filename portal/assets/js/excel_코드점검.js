@@ -10,13 +10,76 @@ function 연습() {
 }
 
 function 특정id편집() {
-  전체변수h6title ='설명_캔버스_개별카테고리_h6의title과id순서' //원래는 h6의 title이다.
+  전체변수h6title ='설명_image폴더의자료사용현황' //원래는 h6의 title이다.
   전체대체에셑팅();
+}
+function 검색input결과초기화() {
+  console.log('검색input결과초기화()');
+  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
+  }
+}
+function 선택한캔버스_검색input_change시(e) {
+  console.log('캔버스_검색value_change시');
+  //추가 : 검색결과바탕색 클래스 TEXT만 남기기
+  var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
+  for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
+    검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
+  }
+  //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
+  var 검색할문자 = document.querySelector('#canvas검색input').value.toUpperCase(); 
+  if (document.querySelector('#canvas검색input').value == '') { return; }
+
+  var 찾는값=document.querySelector('#canvas검색input').value; 
+  var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
+
+  //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
+  var 검색결과포함id배열=[];
+  //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
+  var 검색할클래스들 = document.querySelectorAll('.모든id모음위치자유 > [id]');
+  console.log('id있는것개수 : ' + 검색할클래스들.length)  
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+    if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      검색결과포함id배열.push(검색할클래스들[i].id);
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=
+        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
+    }
+  }
+  // title의 innerHTML에 찾는값 있을때 타이틀을 '검색결과포함id배열[]에 추가 내부 값 색칠
+  var 검색할클래스들 = document.querySelectorAll('.개별카테고리 > div > [title]');
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+    if (검색할클래스들[i].title!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
+      검색결과포함id배열.push(검색할클래스들[i].title);
+      if (검색할문자!=' ') {
+        검색할클래스들[i].innerHTML=
+        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+      }
+    }
+  }
+  //검색결과포함id배열[] 고유값 추출 var uniqueArray = [...new Set(myArray)]
+  검색결과포함id배열=[...new Set(검색결과포함id배열)];
+
+  // 해당 캔버스관련만 : var 검색할클래스들 = document.querySelectorAll('#' + 선택한캔버스id + '_관련자료none .개별카테고리 > div > h6');
+  var 검색할클래스들 = document.querySelectorAll('.개별카테고리 > div > [title]');
+  var 내부html = '';
+  for (var i = 0; i < 검색할클래스들.length; i++) {
+  //예전코드 대비 추가 2 : if 조건 조정, 검색할클래스들의 title이 검색결과포함id배열 에 있으면 추가하는 코드는 먼저 진행하도록 한다  
+    if (검색결과포함id배열.includes(검색할클래스들[i].title)) {
+      내부html += 검색할클래스들[i].outerHTML;
+    }  
+  }
+  if (내부html == '') { alert('없음'); return; }
+  document.querySelector('#검색결과누적js').innerHTML = 내부html;
+  document.querySelector('#캔버스바디').innerHTML = document.querySelector('#검색결과js').outerHTML;
+  document.querySelector('#canvas검색input').value = 검색할문자;
 }
 function 보숨토글(e) {
   let 요소=document.querySelector('#' + e.title);
-  요소.classList.toggle('d-none');
-  if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}
+  요소.classList.toggle('d-none'); // 보기, 숨기기 외 글자이면 건드리지 않는다.
+  if (!['보기','숨기기'].includes(e.innerHTML)) {} else {if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}}
 }
 var 리스너_바디=document.querySelector('body');
 function 캔버스_연결버튼_클릭(e) {

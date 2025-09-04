@@ -954,7 +954,6 @@ function 파일리스트() {
 
   //리스너 등록할때 #전체대체로 들어갔을때 등록해야 됨. change는 파일명이 추가될때마다 실행됨.
   fileInput.addEventListener('change', displaySelectedDirectories);
-
       function displaySelectedDirectories() {
 
         const selectedDirectories = fileInput.files; //파일들이 모두 담겨있다.
@@ -978,13 +977,6 @@ function 파일리스트() {
   
           fileListContainer.appendChild(li태그생성);
         }
-
-
-
-
-
-
-
       } 
 }
 function 파일리스트결과폭조정() {
