@@ -392,21 +392,6 @@
     <div class="개별카테고리" id="기초이해">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold">1) 객체라는 단어 이해. 자료형, 자료형의 구조, type</h6>
-        <h6 class="fw-bold">2) 반복과 순회를 구분할수 있나? 무엇을 기준으로(사용하여) 반복(순회)하는가?</h6>
-      </div>
-      <div>
-
-
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-    <div class="개별카테고리" id="jv선별">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
         <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_클틀에서이해하기">--- 큰틀에서 이해하기, 객체는 속성과 메서드를 포함하는 데이터의 집합 click!---</h6>
         <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">1) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
           <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
@@ -424,6 +409,22 @@
         <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>    
         <h6 class="canvas_div fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
         <h6 class="canvas_div fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
+        <h6 class="fw-bold">1) 객체라는 단어 이해. 자료형, 자료형의 구조, type</h6>
+        <h6 class="fw-bold">2) 반복과 순회를 구분할수 있나? 무엇을 기준으로(사용하여) 반복(순회)하는가?</h6>
+      </div>
+      <div>
+
+
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="jv선별">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+
         <h6 class="canvas_div fw-bold" title='java_fetch'>Fetch</h6>
       </div>
       <div>
@@ -789,8 +790,11 @@
         <h6 style="text-indent: 15px;">c) 하나씩 확인하며 코딩 : for (const file of selectedDirectories) {...코딩}</h6>
       </div>
       <div>
-        <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳에 src값이 들어간다.</h6>
-        <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳에 src값이 들어간다.</h6>
+        <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+        <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+        <h6 class="fw-bold" style="color:blueviolet">• 공통적으로 src=" 로 시작하고 " 로 끝나는곳에 안에 src값이 들어간다.</h6>
+        <h6 class="fw-bold" style="color:blueviolet">• 그러한 값들의 출현횟수를 정규식으로 표현하면 ==> var 출현횟수 = 원본정보text.match(/src="*"/ig).length; </h6>
+        <h6 class="fw-bold" style="color:blueviolet">• 문자열이 하나이상인 것을 표현하면 ==> 원본정보text.match(/src="?*"/ig).length; </h6>
       </div>
     </div>
     <div style="border-bottom:1px solid rgb(201, 188, 188);"></div>
