@@ -22,6 +22,14 @@ code {color:black;display:block;}
 .노랑바탕색 {background-color: yellow;} /* 캔버스_개별카테고리_h6의title과id순서 */
 .검색결과바탕색 {background-color:chocolate;}
 
+/* #js_자료형을먼저알아야겠다 */
+.자료형표 > code {margin-bottom:-1px;}
+.자료형표 > code > div {display:inline-block;border:1px solid black;padding:0px 2px;margin-right:-1px;white-space: nowrap;font-weight: bold;}
+.자료형표 > code > div:nth-last-of-type(1) {width:150px;}
+.자료형표 > code > div:nth-last-of-type(2) {width:300px;}
+.자료형표 > code > div:nth-last-of-type(3) {width:150px;}
+.자료형표색칠 > div {background-color: cadetblue;}
+
 
 body, pre {font-family: 'Noto Serif KR', serif;}
 /* top 으로 이동하는 버튼*/
