@@ -121,11 +121,13 @@
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
   <div id="설명" class="d-none 캔버스">
-    <div class="개별카테고리" id="html구조">
+    <div class="개별카테고리" id="설명_설명">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
       </div>
       <div>
+        <h6 class="fw-bold" title="설명_문제점">문제점</h6>
+        <h6 class="fw-bold">x</h6>
       </div>
       <div>
       </div>
@@ -135,7 +137,19 @@
 
 
 <!-- 모든 ID-->
-<div class="d-none 모든id모음위치자유"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
+<div class="d-none 모든id모음"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
+  <div id="설명_문제점">
+    <h6>h6클릭에서 body클릭이벤트이고 parentElement를 사용하는데 html을 벗어날수도 있다.</h6>
+    <h6>따라서 .모든id모음 안에 id가 있고.....</h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+  </div>
   <div id="설명_캔버스_개별카테고리_h6의title과id순서">
     <div class="대체2줄">
       <div>
@@ -347,6 +361,21 @@
 
     </div>
   </div>
+  <div id="html특수문자_click">
+    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+
+    <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
+      <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+      <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
+      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
+      <br>
+      <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
+    </div>
+    <div style="display: inline-block;padding:5px;">
+      <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
+    </div>
+
+  </div>  
 </div>
 
 <!-- TOP -->
