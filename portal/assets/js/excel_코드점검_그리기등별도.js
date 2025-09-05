@@ -1,4 +1,216 @@
+function textarea정보에서html파일이름추출() {
+  if (document.querySelector('#js모든파일webkitRelativePath').innerHTML=='') {alert('image폴더클릭_파일사용현황파악() 실행 후 사용할 것'); return;}
+
+  var 모든파일webkitRelativePath = document.querySelector('#js모든파일webkitRelativePath').innerHTML.split(','); //image폴더클릭_파일사용현황파악() 에서 작성됨
+  // Path문자열형식 : portal/images/문서연결_엑셀VBA/API_Key_발급방법.png <> src="Path문자열"
+
+  var 리스트정보div들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
+
+  //정규식 (HTML 태그 안의 src 속성만, 내부 경로만)
+  //<[^>]+src="([^"]+)"[^>]*>/ig
+  //<[^>]+ → 여는 태그 시작 (<img, <script, <iframe 등)
+  //src="([^"]+)" → src="...내용..." 에서 내용만 캡처
+  //[^>]*> → 태그 끝날 때까지
+  //  match 결과는 value 그대로 사용하면 되고
+  //  matchAll : 결과가 2가지 정보를 가진 배열이다 다른 여러 정보도 있다: [0]match결과 <img src="경로">, [1]macthall결과 경로 
+
+  if ('현재html' == '현재html') {
+    var 미사용누적 = document.querySelector('#결과표_현재html_미사용src'); 미사용누적.innerHTML='';
+    var 검색할text = document.querySelector('body').innerHTML;
+    var html파일이름=document.querySelector('#html파일이름').innerText;   
+    var 카운트정보요소=document.querySelector('#전체대체 #결과표_현재html .결과');
+    // HTML 태그 안의 src 속성만 추출 (내부 경로만)
+    var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]+)"[^>]*>/ig)];
+    //var 찾은src들 = [...검색할text.match(/<*[^>]+src="([^"]+)"[^>]*>/ig)];
+    var 사용src=0, 공백src=0, 미사용src=0;
+    if (찾은src들) { // 있으면, 1.모든파일webkitRelativePath 에 있을때 : html이름표시, 2.없을때 : 미사용누적 에 누적
+      찾은src들.forEach ( (value,index,arr) => {
+        //value[0] : <img src=\"portal/images/문서연결_엑셀VBA/파일리스트설명.png\" alt=\"이미지없음\">
+        //value[1] : portal/images/문서연결_엑셀VBA/파일리스트설명.png
+        if (value[1].length==0) {공백src+=1;}
+        else { // 경로가 있을때
+          if (모든파일webkitRelativePath.includes(value[1])) {
+            사용src+=1;
+            var index플러스1=모든파일webkitRelativePath.indexOf(value[1])+1;
+            if (리스트정보div들[index플러스1].children[0].innerHTML=='_') {
+              리스트정보div들[index플러스1].children[0].innerHTML=html파일이름;
+            } else {
+              리스트정보div들[index플러스1].children[0].innerHTML+='<br>' + html파일이름;
+            }
+            리스트정보div들[index플러스1].children[0].classList.add('src있음');
+          } else {
+            미사용src+=1;
+            var div = document.createElement('div');
+            div.innerText=value[1];
+            미사용누적.appendChild(div);
+          }
+        }
+      }); //찾은src들.forEach
+    }
+    카운트정보요소.children[2].innerHTML=html파일이름; //html 파일이름
+    카운트정보요소.children[3].innerHTML=찾은src들.length; //값있는src개수
+    카운트정보요소.children[4].innerHTML=사용src; //사용중개수
+    카운트정보요소.children[5].innerHTML=미사용src; //미사용개수
+    카운트정보요소.children[6].innerHTML=공백src; //src=""
+  }
+
+  //textarea 정보 관련
+  var textarea관련=document.querySelectorAll('#전체대체 .textarea결과만');
+  var 미사용누적id=['결과표_textarea1_미사용src','결과표_textarea2_미사용src','결과표_textarea3_미사용src','결과표_textarea4_미사용src','결과표_textarea5_미사용src'];
+  var 카운트정보요소id=['#전체대체 #결과표_textarea1 .결과','#전체대체 #결과표_textarea2 .결과','#전체대체 #결과표_textarea3 .결과','#전체대체 #결과표_textarea4 .결과','#전체대체 #결과표_textarea5 .결과'];
+  var 검색할text요소id=['#전체대체 #결과표_textarea1 textarea','#전체대체 #결과표_textarea2 textarea','#전체대체 #결과표_textarea3 textarea','#전체대체 #결과표_textarea4 textarea','#전체대체 #결과표_textarea5 textarea'];
+  for (var i=0; i<textarea관련.length; i++) {
+    var 미사용누적 = document.querySelector('#' + 미사용누적id[i]); 미사용누적.innerHTML='';
+    var 검색할text = document.querySelector(검색할text요소id[i]).value.substring(document.querySelector(검색할text요소id[i]).value.indexOf('body')+4,document.querySelector(검색할text요소id[i]).value.length)
+        var html이름추출관련문자열='id="html파일이름" style="display:none">';
+        var html추출시작index=검색할text.indexOf(html이름추출관련문자열) + html이름추출관련문자열.length;
+        var html추출끝index=검색할text.indexOf('<',html추출시작index);
+        //"문자열".substring(startIndex, endIndex);0부터, 1부터
+        원본정보text에서추출된html파일이름=검색할text.substring(html추출시작index,html추출끝index)
+    var html파일이름 = 검색할text.substring(html추출시작index,html추출끝index);    
+    var 카운트정보요소 = document.querySelector(카운트정보요소id[i]);
+    // HTML 태그 안의 src 속성만 추출 (내부 경로만)
+    var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]+)"[^>]*>/ig)];
+    //var 찾은src들 = [...검색할text.match(/<*[^>]+src="([^"]+)"[^>]*>/ig)];
+    var 사용src=0, 공백src=0, 미사용src=0;
+    if (찾은src들) { // 있으면, 1.모든파일webkitRelativePath 에 있을때 : html이름표시, 2.없을때 : 미사용누적 에 누적
+      찾은src들.forEach ( (value,index,arr) => {
+        //value[0] : <img src=\"portal/images/문서연결_엑셀VBA/파일리스트설명.png\" alt=\"이미지없음\">
+        //value[1] : portal/images/문서연결_엑셀VBA/파일리스트설명.png
+        if (value[1].length==0) {공백src+=1;}
+        else { // 경로가 있을때
+          if (모든파일webkitRelativePath.includes(value[1])) {
+            사용src+=1;
+            var index플러스1=모든파일webkitRelativePath.indexOf(value[1])+1;
+            if (리스트정보div들[index플러스1].children[0].innerHTML=='_') {
+              리스트정보div들[index플러스1].children[0].innerHTML=html파일이름;
+            } else {
+              리스트정보div들[index플러스1].children[0].innerHTML+='<br>' + html파일이름;
+            }
+            리스트정보div들[index플러스1].children[0].classList.add('src있음');
+          } else {
+            미사용src+=1;
+            var div = document.createElement('div');
+            div.innerText=value[1];
+            미사용누적.appendChild(div);
+          }
+        }
+      }); //찾은src들.forEach
+    }
+    카운트정보요소.children[2].innerHTML=html파일이름; //html 파일이름
+    카운트정보요소.children[3].innerHTML=찾은src들.length; //값있는src개수
+    카운트정보요소.children[4].innerHTML=사용src; //사용중개수
+    카운트정보요소.children[5].innerHTML=미사용src; //미사용개수
+    카운트정보요소.children[6].innerHTML=공백src; //src=""
+  }
+
+
+
+
+
+}
+function textarea정보에서html파일이름추출_keep() {
+  console.log('textarea정보에서html파일이름추출()')
+  var 리스트정보li들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
+  //현재 html body.innerHTML에서 
+  var src, 카운트=0, html의값있는src개수, 원본정보text, 파악된html들정보요소, 원본정보text에서추출된html파일이름;
+  파악된html들정보요소=document.querySelector('#파악된html리스트');
+  원본정보text=document.querySelector('body').innerHTML;
+  원본정보text에서추출된html파일이름=document.querySelector('#html파일이름').innerText;
+
+  if (1==1) {
+    if (파악된html들정보요소.innerText.indexOf(원본정보text에서추출된html파일이름)>-1 && 리스트정보li들.length>1) {
+      //html파일이름이 있고, 파일을 읽어온 상태 = 추출안해도됨
+      console.log('현재html작업 건너뜀 : html파일이름이 있고, 파일을 읽어온 상태')
+    } else if(리스트정보li들.length==0) {
+      //파일을 읽어온 상태가 아니면 = 추출안해도됨
+      console.log('현재html작업 건너뜀 : 파일을 읽어온 상태가 아니면 = 추출안해도됨')
+    } else {
+      //for문은 파일리스트 부분에 사용된 html파일이름 적는것
+      for (var i=1; i<리스트정보li들.length; i++) { //0==>1 머리글 제외
+        리스트정보li들[i].classList.add('임시표시클래스');
+        src=document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(2)').innerHTML
+          + document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(3)').innerHTML
+        if (document.querySelector('body').innerHTML.indexOf('src="' + src + '"')>-1) {//있으면
+          카운트+=1;
+          if(document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML=='_') {//없음 ==> _
+            document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML = 원본정보text에서추출된html파일이름;
+            document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').classList.add('src있음');
+          } else { // 하나 이상 있을때
+            document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML =document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML +  '<br>' + 원본정보text에서추출된html파일이름;
+          }
+        } 
+        리스트정보li들[i].classList.remove('임시표시클래스');
+      }
+      html의값있는src개수=document.querySelectorAll('body [src]').length-document.querySelectorAll('body [src=""]').length;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(3)').innerHTML=원본정보text에서추출된html파일이름;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(4)').innerHTML=html의값있는src개수;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(5)').innerHTML=카운트;
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트; //미사용 개수
+      document.querySelector('#결과표_현재html .결과 > div:nth-child(7)').innerHTML=document.querySelectorAll('body [src=""]').length;
+      카운트=0;
+      var 자식요소=document.createElement('span');
+      자식요소.textContent=원본정보text에서추출된html파일이름;
+      파악된html들정보요소.appendChild(자식요소);
+    }
+  }
+
+  //#결과표_전체 내의 textarea만큼 반복
+  var textarea들=document.querySelectorAll('#전체대체 #결과표_전체 textarea');
+  for (var 고정=0; 고정<textarea들.length; 고정++) {
+    var src, 카운트=0, html의값있는src개수, 원본정보text, 파악된html들정보요소, 원본정보text에서추출된html파일이름;
+    파악된html들정보요소=document.querySelector('#파악된html리스트');
+    원본정보text=textarea들[고정].value.substring(textarea들[고정].value.indexOf('body')+4,textarea들[고정].value.length)
+    var 추출관련문자열='id="html파일이름" style="display:none">';
+    var html추출시작index=원본정보text.indexOf(추출관련문자열) + 추출관련문자열.length;
+    var html추출끝index=원본정보text.indexOf('<',html추출시작index);
+    //"문자열".substring(startIndex, endIndex);0부터, 1부터
+    원본정보text에서추출된html파일이름=원본정보text.substring(html추출시작index,html추출끝index)
+
+    console.log('원본정보text에서추출된html파일이름 : ' + 원본정보text에서추출된html파일이름)
+    
+    if (원본정보text.match(/src="*"/ig)) {//없으면 null 인데 length 물어보면 에러?
+      html의값있는src개수=원본정보text.match(/src="*"/ig).length; 
+    } else {
+      html의값있는src개수=0;
+    }
+    
+
+    if (파악된html들정보요소.innerHTML.indexOf(원본정보text에서추출된html파일이름)>-1 || 리스트정보li들.length==1 || html의값있는src개수==0) {
+      //건너뜀
+    } else {
+      if (html추출끝index>-1 && 원본정보text에서추출된html파일이름.length>5) {
+        document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(3)').innerHTML=원본정보text에서추출된html파일이름;
+        document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(4)').innerHTML=html의값있는src개수;
+        파악된html들정보요소.innerHTML=파악된html들정보요소.innerHTML + ', ' + 원본정보text에서추출된html파일이름;
+      }
+      for (var i=1; i<리스트정보li들.length; i++) {// 0 ==> 1
+        리스트정보li들[i].classList.add('임시표시클래스');
+        src=document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(2)').innerHTML
+          + document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(3)').innerHTML
+        if (원본정보text.indexOf('src="' + src + '"')>-1) {//있으면
+          카운트+=1;
+          if(document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML=='_') {
+            document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML = 원본정보text에서추출된html파일이름;
+            document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').classList.add('src있음');
+          } else { // 하나 이상 있을때
+            document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML =document.querySelector('#전체대체 .임시표시클래스 > span:nth-child(1)').innerHTML +  '<br>' + 원본정보text에서추출된html파일이름;
+          }
+        } 
+        리스트정보li들[i].classList.remove('임시표시클래스');
+      }
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(5)').innerHTML=카운트;
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(6)').innerHTML=html의값있는src개수 - 카운트;
+      document.querySelector('#전체대체 #결과표_textarea' + (고정+1) + ' .결과 > div:nth-child(6)').innerHTML=원본정보text.match(/src=""/ig).length; ;
+    }
+  }
+  alert('마지막')  
+}
 function image폴더클릭_파일사용현황파악() {
+  //textarea정보에서html파일이름추출() 에서 사용할것 : 모든파일리스트(#js모든파일리스트 내부에 , 로 구분)
+  document.querySelector('#js모든파일webkitRelativePath').innerHTML='';
+  var 모든파일webkitRelativePath=[];
+
   //'파일선택' 클릭하면 파일리스트 추출완료시 change 감지됨
   var 이벤트감지=document.querySelector('#file_input');
   var 기록할곳=document.querySelector('#js파일리스트기록');
@@ -9,36 +221,47 @@ function image폴더클릭_파일사용현황파악() {
     var 파일리스트배열=이벤트감지.files;
     var split개수=[];
     Array.from(파일리스트배열).forEach ( (file,index,arr) => {
+      모든파일webkitRelativePath.push('portal/' + file.webkitRelativePath);
       if (index==0) {
         var div=document.createElement('div');
         var span=document.createElement('span');
-        span.innerText= 'src경로';
+        span.innerText= '사용중인html';
         div.appendChild(span);
         var span=document.createElement('span');
-        span.innerText= '사용된html(횟수)';
+        span.innerText= '경로만';
+        div.appendChild(span);
+        var span=document.createElement('span');
+        span.innerText= '파일이름';
         div.appendChild(span);
         기록할곳.appendChild(div);
       }
       var div=document.createElement('div');
       var span=document.createElement('span');
-      span.innerText= 'portal/' + file.webkitRelativePath;
+      span.innerText= '_';
       div.appendChild(span);
       var span=document.createElement('span');
-      span.innerText= '_';
+      span.innerText= 'portal/' + file.webkitRelativePath.split('/').slice(0,file.webkitRelativePath.split('/').length-1).join('/') + '/';
+      div.appendChild(span);
+      var span=document.createElement('span');
+      span.innerText= file.name;
       div.appendChild(span);
       기록할곳.appendChild(div);
     })
+    document.querySelector('#js모든파일webkitRelativePath').innerHTML=모든파일webkitRelativePath.join(',');
     //폭조정
     //========== 실행 다 하고, 이벤트 발생시 이벤트함수 실행하므로, 폭조정을 이벤트 함수안에 넣어야 된다  
     var 첫번째width=[];
     var 두번째width=[];
+    var 세번째width=[];
     Array.from(document.querySelectorAll('#js파일리스트기록 > div')).forEach ( (요소,index,array) => {
       if (요소.children.length>0) {첫번째width.push(요소.children[0].clientWidth)};
       if (요소.children.length>1) {두번째width.push(요소.children[1].clientWidth)};
+      if (요소.children.length>2) {세번째width.push(요소.children[2].clientWidth)};
     });
     Array.from(document.querySelectorAll('#js파일리스트기록 > div')).forEach ( (요소,index,array) => {
       if (요소.children.length>0) {요소.children[0].setAttribute('style','width:' + Math.max(...첫번째width) + 'px')};
       if (요소.children.length>1) {요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px')};
+      if (요소.children.length>2) {요소.children[2].setAttribute('style','width:' + Math.max(...세번째width) + 'px')};
     });
   }
   이벤트감지.addEventListener('change',함수내파일리스트가공)

@@ -1,18 +1,16 @@
 let 전체변수h6title='';
-//코드정리작업 메모
-//1. 캔버스는 하나면 된다. 캔버스바디에 들어갈 div넣을때 필요한 버튼만 생성하면 된다.
-//2. 이벤트리스너에 연결된 함수에는 웬만하면 기능을 넣지 말자.
-
-
-//-----코드정리작업 모메 끝
-function 연습() {
-  캔버스_개별카테고리_h6의title과id순서()
-}
-
 function 특정id편집() {
   전체변수h6title ='설명_image폴더의자료사용현황' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
+function 연습() {
+  var 리스트정보li들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
+  console.log(리스트정보li들.length)
+}
+
+
+
+
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
@@ -107,11 +105,6 @@ function 카테고리배치(e) {
   document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + e.innerHTML).outerHTML
 }
 function 전체대체에셑팅() {
-  //캔버스바디의 h5을 클릭했을때와 같이, + header부분 캔버스, id, 제목 넣는것을 같이 구현해보자.
-  //1. 카테고리 안의 h6을 클릭할때 title이 가지고올 요소의 id 이고, 카테고리 복사본이 캔버스바디에 들어있는 경우를 고려하면
-  //   모든 title을 찾은후 마지막요소를 선택하면 원본의 위치이다.
-  //2. 캔버스이름은 1.의 위치에서 부모의 부모의 id 이다.
-  //3. id 는 title이다, 제목은 title을 가진 요소의 innerHTML이다
   var 아이디=전체변수h6title.trim(); 
   if (아이디.length==0) {console.log('아이디.length==0'); return;}
   if (!document.querySelector('#' + 아이디)) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
