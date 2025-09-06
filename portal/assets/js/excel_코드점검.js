@@ -3,6 +3,18 @@ function 특정id편집() {
   전체변수h6title ='설명_image폴더의자료사용현황' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
+function 전체대체에셑팅() {
+  var 아이디=전체변수h6title.trim(); 
+  if (아이디.length==0) {console.log('아이디.length==0'); return;}
+  if (!document.querySelector('#' + 아이디)) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
+  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
+  title요소들마지막=title요소들마지막[title요소들마지막.length-1];
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
+  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.parentElement.id;
+  document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
+  document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
+  document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
+}
 function 연습() {
   var 리스트정보li들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
   console.log(리스트정보li들.length)
@@ -79,7 +91,7 @@ function 보숨토글(e) {
   요소.classList.toggle('d-none'); // 보기, 숨기기 외 글자이면 건드리지 않는다.
   if (!['보기','숨기기'].includes(e.innerHTML)) {} else {if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}}
 }
-var 리스너_바디=document.querySelector('body');
+
 function 캔버스_연결버튼_클릭(e) {
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
   if (document.querySelector('#현재캔버스이름').innerHTML==e.title) {console.log('reutrn;');return;}
@@ -104,22 +116,13 @@ function 카테고리배치(e) {
   e.setAttribute('class','선택카테고리');
   document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + e.innerHTML).outerHTML
 }
-function 전체대체에셑팅() {
-  var 아이디=전체변수h6title.trim(); 
-  if (아이디.length==0) {console.log('아이디.length==0'); return;}
-  if (!document.querySelector('#' + 아이디)) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
-  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
-  title요소들마지막=title요소들마지막[title요소들마지막.length-1];
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
-  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.parentElement.id;
-  document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
-  document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
-  document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
-}
+
+var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
+      console.log('리스너_바디_click(e) : 전체변수h6title = ' + e.target.title);
   //캔버스바디 안의 h6 클릭시 : title을 id로 갖는 요소가 있을때 전체대체에 가져옴 (조건 : )
   if (e.target.parentElement.parentElement.classList.contains('개별카테고리')) {
-    console.log('리스너_바디_click(e) : 전체변수h6title = ' + e.target.title);
+
     전체변수h6title=e.target.title;
     전체대체에셑팅();
   }

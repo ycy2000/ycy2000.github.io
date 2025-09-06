@@ -10,10 +10,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <!--업무참고 css-->
 <link href="portal/assets/css/excel_코드점검.css" rel="stylesheet">
-<!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
+<!--구글폰트 font-family: 'Noto Serif KR', serif;>-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--구글폰트 font-family: 'Noto Serif KR', serif;>  Tracking Prevention blocked access to storage for <URL>. 뜬다
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--<script src="portal/assets/js/excel_코드점검.js"></script>시작시,이벤트리스너 인식못한다. 켜지고 난후 사용엔 무리 없다. body 안에 마지막에 배치 -->
 <script src="portal/assets/js/excel_코드점검_그리기등별도.js"></script>
@@ -45,7 +47,7 @@
           </ul>
         </div>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="설명"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >설명</button>
-        <button onclick="document.querySelector('#전체대체').innerHTML=document.querySelector('#html특수문자_click').outerHTML;">특문</button> 
+        <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">특정캔버스</button>
         <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
@@ -100,24 +102,6 @@
   </div>
 </div>
 <!-- id서식 빈것 하나 -->
-<div class="d-none id서식">
-  <div id="">
-    <div>
-
-    </div>
-    <div>
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 class="fw-bold"></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-  </div>
-</div>
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
   <div id="설명" class="d-none 캔버스">
