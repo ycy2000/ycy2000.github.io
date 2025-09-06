@@ -885,7 +885,7 @@ function 임시_집구조켤때캔버스그리기() {
   }
 }
 
-var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
+var 당번전체=(document.querySelector('#숨김정보_당번전체').innerHTML+document.querySelector('#숨김정보_당번전체기록중').innerHTML).trim().split('_');
 var 회차select안옵션html;
 var 회차개수=Number(당번전체.length/9);
 for (var i=0; i<회차개수; i++) {
