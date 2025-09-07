@@ -1211,7 +1211,8 @@ function 신규회귀변경() {
 function 선택회차날짜와당번넣기() {
   //추가중 : 왼쪽 회귀번호 색칠 (당번 6개와 같은번호)
 
-  var 당번전체=document.querySelector('#숨김정보_당번전체').innerHTML.trim().split('_');
+  var 당번전체=(document.querySelector('#숨김정보_당번전체').innerHTML.trim() +
+              document.querySelector('#숨김정보_당번전체기록중').innerHTML.trim()).split('_');
   var 회차개수=Number(당번전체.length/9);
   var selectedindex=document.querySelector('#회차select').selectedIndex;
   //selectedindex 마지막회차가 0 이다. 선택회차의 회차는 : 당번전체.length - 9 - 보정값
