@@ -828,7 +828,11 @@ function 단어검색() {
 }
 
 var 리스너png셑팅 = document.querySelector('#PNG셑팅');
-
+function 보숨토글(e) {
+  let 요소=document.querySelector('#' + e.title);
+  요소.classList.toggle('d-none'); // 보기, 숨기기 외 글자이면 건드리지 않는다.
+  if (!['보기','숨기기'].includes(e.innerHTML)) {} else {if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}}
+}
 function 공통한줄색칠있음clear() {
   var 개수 = document.querySelectorAll('.js한줄색칠있음').length;
   for (i = 0; i < 개수; i++) {
