@@ -26,7 +26,7 @@ code {color:black;display:block;}
 .결과표, .제목, .결과 {display: inline-block;}
 .제목 {width:120;text-align: center;}
 .결과 {width:110px;text-align: center;margin-left:-5px;border-left:none;}
-.제목 > div, .결과 > div {border:1px solid black;margin-bottom:-1px;}
+.제목 > div, .결과 > div {border:1px solid black;margin-bottom:-1px;height:26px;}
 #결과표_전체 textarea {display:inline-block;height:26px;width:140px;resize:none;margin-bottom:-7px;margin-left:-30px;}
 .src있음 {background-color: yellow;}
 .미사용src {border:1px solid black; background-color:white;position: absolute;display:block;}

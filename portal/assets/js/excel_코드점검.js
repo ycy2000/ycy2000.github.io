@@ -4,20 +4,30 @@ function 특정id편집() {
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
+  //1.전체대체에 id를 셑팅하는 동작
   var 아이디=전체변수h6title.trim(); 
   if (아이디.length==0) {console.log('아이디.length==0'); return;}
-  if (!document.querySelector('#' + 아이디)) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
-  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
-  title요소들마지막=title요소들마지막[title요소들마지막.length-1];
+  if (!document.querySelector('#' + 아이디)) {console.log('해당 id 요소가 없음(null'); return;}
   document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
+
+  //2.id를 title로 갖는것이 있는지 확인(캔버스에서 title이 있는[id와 연결된 title]이 있는 h6 클릭시)
+  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
+  if (title요소들마지막.length==0) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
+
+  //3.있다면 캔버스 :    5번째가 BODY(4번째까지 올라갈때까지 body가 나오면 종료), 캔버스안의 h6이면 5번째 부모에서 BODY태그 만난다.
+  title요소들마지막=title요소들마지막[title요소들마지막.length-1]; // 마지막꺼에서 캔버스 클래스에서 id를 추출할 수 있다. 캔버스 안에 들어가면 이 부분이 없다
+  var 부모요소=title요소들마지막.parentElement;
+  for (var i=0; i<4; i++) {if(부모요소.tagName=='BODY') {console.log('BODY');return;};부모요소=부모요소.parentElement;}
+
+  //캔버스 안에서 h6클릭했을때 header에 캔버스이름, id, 제목 넣는 경우
+  //3단계위 부모: class=캔버스, 4단계위 부모:id=캔버스바디
   document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.parentElement.id;
   document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
   document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
 }
 function 연습() {
-  var 리스트정보li들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
-  console.log(리스트정보li들.length)
+
 }
 
 
@@ -119,10 +129,12 @@ function 카테고리배치(e) {
 
 var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
-      console.log('리스너_바디_click(e) : 전체변수h6title = ' + e.target.title);
-  //캔버스바디 안의 h6 클릭시 : title을 id로 갖는 요소가 있을때 전체대체에 가져옴 (조건 : )
-  if (e.target.parentElement.parentElement.classList.contains('개별카테고리')) {
-
+  var 부모요소=e.target; //자신이 body일수 있으므로 자신부터 확인함 4 => 5
+  var 부모태그확인=true;
+  for (var i=0; i<5; i++) {if(부모요소.tagName=='BODY') {//console.log('0~4까지확인 i=' + i + ', BODY');
+    부모태그확인=false;break;};부모요소=부모요소.parentElement;}
+  //캔버스바디 안의 h6 클릭시 : title을 id로 갖는 요소가 있을때 전체대체에 가져옴 (위치조건 : 부모태그확인[에러만 방지 100%위치 확인 안됨 ex)더 안쪽의 요소일때])
+  if (부모태그확인 && e.target.parentElement.parentElement.classList.contains('개별카테고리')) {
     전체변수h6title=e.target.title;
     전체대체에셑팅();
   }
