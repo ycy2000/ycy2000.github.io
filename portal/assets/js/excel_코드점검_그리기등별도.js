@@ -25,7 +25,6 @@ function textarea정보에서html파일이름추출() {
     // HTML 태그 안의 src 속성만 추출 (내부 경로만)
     //var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]+)"[^>]*>/ig)]; //사이에 1글자 이상이어야 가져옴
     var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]*)"[^>]*>/ig)]; //사이에 공백이어도 가져옴
-
     
     //console.log('찾은src들[0] : ' + 찾은src들[0]) 0,1이 같다. 하나민 두번나오는 이유?
     //console.log('찾은src들[1] : ' + 찾은src들[1])

@@ -257,11 +257,13 @@
       </div>    
       <div>
         <div class="d-inline-block" style="vertical-align: top;">
-          <span>html에서 id추출, 오른쪽의 title과 연결안된것은 노랑색 표시, <br> id개수 : </span><span id="id개수"></span>
+          <span>html에서 id추출, 오른쪽의 title과 연결안된것은 노랑색 표시, <br> 
+            노랑색칠은 카테고리내 h6 안에 title에 없다는 것. <br>
+            id개수 : </span><span id="id개수"></span>
           <div id="id나열"></div>
         </div>
         <div class="d-inline-block" style="vertical-align: top;text-align: left;">
-          <span>왼쪽의 id와 연결안된것은 노랑색 표시,  html의 순서대로 기록되는 듯 <br> title개수 : </span><span id="title개수"></span><span></span>
+          <span>왼쪽의 id와 연결안된것은 노랑색 표시,  <br>html의 순서대로 기록되는 듯 <br> title개수 : </span><span id="title개수"></span><span></span>
           <div id="title나열"></div>
         </div>
       </div>
@@ -295,8 +297,17 @@
       </div>
       <div style="border-bottom:1px solid rgb(201, 188, 188);margin-bottom:5px;"></div>
       <div>
-        <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
-        <h6 class="fw-bold">• '미사용개수' 는 html 안에 src로 기록되어 있지만 파일이 없는 경우이다. 클릭하면 리스트를 볼수 있다.(d-none 클래스 toggle)</h6>
+        <div class="d-inline-block" style="vertical-align: top;">
+          <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
+          <h6 class="fw-bold">• '미사용개수' 는 html 안에 src로 기록되어 있지만 파일이 없는 경우이다. 클릭하면 리스트를 볼수 있다.(d-none 클래스 toggle)</h6>
+          <h6 class="fw-bold">• function textarea정보에서html파일이름추출() 에서 특정 src(처음꺼 한번만)가 2회 기록되어서 [0] 배열 무시하도록 코딩했음</h6>          
+        </div>
+        <div class="d-inline-block" style="margin-left:10px;vertical-align: top;">
+          <h6 class="fw-bold">• 아래는 src[0], src[1]의 값이 기록되도록 했음. 같으면 안되는데 같이 나온다.... </h6>
+          <h6 class="fw-bold">• <span style="color:blueviolet">찾은src들[0] : </span> <span id="js찾은src1"></span></h6>
+          <h6 class="fw-bold">• <span style="color:blueviolet">찾은src들[1] : </span> <span id="js찾은src2"></span></h6>
+        </div>        
+
         <h5 class="fw-bold">결과표 <div style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </div>
           <div id="파악된html리스트" style="display:inline-block;font-size: 14px;"></div>
         </h5>
