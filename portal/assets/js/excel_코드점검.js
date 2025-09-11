@@ -92,8 +92,7 @@ function 선택한캔버스_검색input_change시(e) {
     }  
   }
   if (내부html == '') { alert('없음'); return; }
-  document.querySelector('#검색결과누적js').innerHTML = 내부html;
-  document.querySelector('#캔버스바디').innerHTML = document.querySelector('#검색결과js').outerHTML;
+  document.querySelector('#캔버스바디').innerHTML = 내부html;
   document.querySelector('#canvas검색input').value = 검색할문자;
 }
 function 보숨토글(e) {

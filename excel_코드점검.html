@@ -42,6 +42,10 @@
               <li><a class="dropdown-item" onclick="전체변수h6title='설명_image폴더의자료사용현황';전체대체에셑팅();">
                 ID : image폴더의자료사용현황 <span style="color:blueviolet">[사용법]</span></a>
               </li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" 
+                title="깃_Code_부트"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" 
+                aria-controls="offcanvasBottom">캔버스 : git_Code_부트</a>
+              </li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </div>
           </ul>
@@ -117,249 +121,534 @@
       </div>
     </div>
   </div>
+  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="깃_Code_부트" class="d-none 캔버스">
+    <div class="개별카테고리" id="github">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 분산 버전관리 시스템 <span style="color:black">[PC에 설치]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] git 프로그램 : 로컬저장소와 원격저장소 사이에서 파일을 관리한다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub : 원격저장소 서비스업체 중 하나, <span style="color:black">[가입필요]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub : 파일 관리용, 홈페이지 관리용 등, <span style="color:black">홈페이지 무료용량 사용하기 위함</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : 여러 유용한 addOn 추가 설치 필요 <span style="color:black">[PC에 설치]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] vsCode 프로그램 : html, css, js 편집프로그램 중 하나, <span style="color:black">[git 명령 사용 가능]</span></h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 두군데 로컬컴퓨터에서 gitHub 원격저장소와 파일 동기화하여 사용중</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 컴퓨터꺼 gitHub에 올리기 : add-commit-push(동기화), 셑트다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] gitHub꺼 컴퓨터에 가져오기 : git pull origin main</h6>
+        <h6 style="font-weight: bold;">-- 필요한 만큼의 기본적인 사용법만 알고자 한다 -- </h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 기본 사용 방법 --</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_깃관련_큰틀에서'>[깃-로컬 깃폴더-gitHub 원격저장소, 큰틀에서 이해해보기]</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_설치'>1. 처음 셑팅 : git 프로그램 컴퓨터에 <a href="https://sfida.tistory.com/46" target="_blank">설치하기(링크)</a>. 설치후 <span style="color:blueviolet">'Git Bash'</span> 사용법</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_깃허브가입하기'>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용), 원격저장소 주소확인</h6>
+        <h6 class="canvas_div fw-bold" title='_05_git_연동설정'>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 연동설정</h6>
+        <h6 class="fw-bold">4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 플러그인</h6>
+        <h6 class="fw-bold">5. 주요명령어 : add, commit, push, pull 사용법</h6>
+        <h6 class="fw-bold">6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법 <span style="color:blueviolet;font-weight: bold;">(지켜야 할 것들)</span></h6>
+        <h6 class="fw-bold">7. gitHub 원격저장소의 복사본 만들기(clone)</h6>
+        <h6 class="fw-bold">8. gitHub에서 레포지터리(원격저장소) 삭제하기</h6>
+        <h6 class="fw-bold">9. gitHub에서 레포지터리(원격저장소) 새로만들고 파일올리기</h6>
+        <h6 style="color:blueviolet;" class="fw-bold">10. 동기화 중, 발생할 수 있는 여러 경우들 대처방법</h6>
+        <h6 class="fw-bold">11. 기타 : 주요명령어 외에는 이해가 안된다.</h6>
+      </div>
+      <div>
+        <h6 class="canvas_div" title='_05_git_파순01_01_깃관련' style="font-weight: bold;">★ git [설치부터 사용방법, git, gitHub, vsCode] <span style="color:blueviolet">click</span></h6>
+        <h6 style="font-weight: bold;">Visual Studio Code 프로그램 깔려있다면 깃폴더 가져와서 편집 </h6>
+        <h6 style="font-weight: bold;">add, commit, push를 vsCode프로그램에서 하는 방법</h6>
+        <h6>전체변경 : ctrl + shift + L</h6>
+        <h6>https://usingu.co.kr/frontend/git/한컴퓨터에서 여러계정</h6>
+        <h6 class="canvas_div" title='_05_git_깃관련_설치방법' style="color:blueviolet;font-weight: bold;">git의 이해, git 설치방법, gitHub 사용법, vsCode 등 정보 링크</h6>
+        <h6 class="canvas_div" title='_05_git_파순02_01_vscodeGitAddCommit'>_05_git_파순02_01_vscodeGitAddCommit</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="vsCode">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6><a href="https://wikidocs.net/137959" target="_blank">설치 및 Exetnsion(확장기능)</a></h6>
+        <h6>Korean Language Pack for Visual Studio</h6>
+        <h6>Material Theme && Material Icon Theme</h6>
+        <h6>Bracket Pair Colorizer 2 : 대괄호, 중괄호, 소괄호 색깔 입해줌</h6>
+        <h6>indent-rainbow : 들여쓰기(indent)할 때 무지개 색으로 구분해줌</h6>
+        
+      </div>
+      <div>
+        <h6><a href="https://onsil-thegreenhouse.tistory.com/entry/Visual-Studio-Code에서-Javascript-실행하는-개발-환경-구축" target="_blank">Visual Studio Code에서 Javacript 실행하는 개발 환경 구축</a></h6>
+        <h6><a href="https://velog.io/@remon/개발-기본-지식-Node.js란" target="_blank">Node.js가 뭔가요</a></h6>
+      </div>
+      <div>
+        <h6><a href="https://wikidocs.net/137962" target="_blank">디버깅</a></h6>
+        <h6><a href="https://post.hometex.kr/114#google_vignette" target="_blank">js 코드오류 찾기</a></h6>
+        <h6><a href="https://to06109.tistory.com/20" target="_blank">환경설정: (1) Nodejs 설치 후 VScode 터미널에서 실행불가 오류</a></h6>
+        <h6><a href="https://medium.com/@sym1945/visual-studio-code에서-npm으로-javascript-라이브러리-설치하기-11790a97fff9" target="_blank">Visual Studio Code에서 npm으로 javascript 라이브러리 설치하기</a></h6>
+        
+      </div>
+    </div>
+    <div class="개별카테고리" id="nodejs">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="font-weight: bold;"><a href="https://systorage.tistory.com/entry/Tistory-Nodejs를-활용한-티스토리-글-작성-시-Github에-commit-하는-방법" target="_blank">Tistory-Nodejs를-활용한-티스토리-글-작성-시-Github에-commit-하는-방법</a></h6>
+
+        
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="Bootstrap">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
+        <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
+
+        
+      </div>
+      <div>
+        <h6 class="canvas_div" title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드, 스크롤 : data-bs-scroll='true' </h6>
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <!-- 모든 ID-->
-<div class="d-none 모든id모음"><!-- 아래 : 순서관계없지만, 되도록 바로위 캔버스 관련 id들 -->
-  <div id="설명_문제점">
-    <h6>h6클릭에서 body클릭이벤트이고 parentElement를 사용하는데 html을 벗어날수도 있다.</h6>
-    <h6>따라서 .모든id모음 안에 id가 있고.....</h6>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
-  </div>
-  <div id="설명_캔버스_개별카테고리_h6의title과id순서">
-    <div class="대체2줄">
-      <div>
-        <h6 class="fw-bold">• 캔버스_개별카테고리_h6의title과id순서 필요성</h6>
-        <h6 style="text-indent: 23px;">1-1. 캔버스에서 id와 연결된 h6의 위치 : .캔버스관련모두감싸기 > .캔버스 > .개별카테고리 > div > h6 </h6>
-        <h6 style="text-indent: 23px;">1-2. 1-1 중에서 title을 가진 요소</h6>
-        <h6 style="text-indent: 23px;">2. .모든id모음위치자유 > [id] : 첫번째 자식요소중 id가 있는 요소</h6>
+<div class="d-none 모든id모음"><!-- 아래 : 순서관계없지만, div(캔버스별로 title표시후 감싸거나, 그냥 감싸거나) 안에 div(id)들어가도록 -->
+  <div title="'설명">
+    <div id="설명_문제점">
+      <h6>h6클릭에서 body클릭이벤트이고 parentElement를 사용하는데 html을 벗어날수도 있다.</h6>
+      <h6>따라서 .모든id모음 안에 id가 있고.....</h6>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+    </div>
+    <div id="설명_캔버스_개별카테고리_h6의title과id순서">
+      <div class="대체2줄">
+        <div>
+          <h6 class="fw-bold">• 캔버스_개별카테고리_h6의title과id순서 필요성</h6>
+          <h6 style="text-indent: 23px;">1-1. 캔버스에서 id와 연결된 h6의 위치 : .캔버스관련모두감싸기 > .캔버스 > .개별카테고리 > div > h6 </h6>
+          <h6 style="text-indent: 23px;">1-2. 1-1 중에서 title을 가진 요소</h6>
+          <h6 style="text-indent: 23px;">2. .모든id모음위치자유 > [id] : 첫번째 자식요소중 id가 있는 요소</h6>
+        </div>
+        <div>
+          <h5 class="fw-bold"></h5>
+          <code class="fw-bold">• </code>
+          <code class="fw-bold" style="text-indent: 15px;"></code>
+          <code class="fw-bold"></code>
+          <span style="color:blueviolet"></span>
+          <h6></h6>
+          <h6></h6>
+          <h6 style="text-indent: 23px;"></h6>
+          <img src="" alt="이미지없음">
+        </div>
       </div>
+      <div style="position: relative;border-bottom:1px solid rgb(201, 188, 188);"><button onclick="캔버스_개별카테고리_h6의title과id순서()">
+        .캔버스 - .개별카테고리 - h6:[title]</button>
+      </div>    
       <div>
+        <div class="d-inline-block" style="vertical-align: top;">
+          <span>html에서 id추출, 오른쪽의 title과 연결안된것은 노랑색 표시, <br> id개수 : </span><span id="id개수"></span>
+          <div id="id나열"></div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;text-align: left;">
+          <span>왼쪽의 id와 연결안된것은 노랑색 표시,  html의 순서대로 기록되는 듯 <br> title개수 : </span><span id="title개수"></span><span></span>
+          <div id="title나열"></div>
+        </div>
+      </div>
+    </div>
+    <div id="설명_image폴더의자료사용현황">
+      <h6 class="fw-bold">
+        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">보기</button>
+          • onclick 함수 없다고 가정할때
+      </h6>
+      <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
+      <h6 class="fw-bold">
+        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">보기</button>
+          • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 기타 모둔 파일 이름을 추출한다.
+      </h6>
+      <div id="파일리스트설명2" class="d-none 대체2줄">
+        <div style="border-right:1px solid rgb(201, 188, 188);">
+          <h6>1. 폴더 선택하기 전에, 'onclick함수' 실행됨</h6>
+          <h6>2. '폴더선택 후 업로드 한 결과 발생시' 함수 내부에 이벤트리스너를 등록해 두면 'change'로 감지한다.</h6>
+          <h6>3. 다음 정보를 'change' 함수에서 사용한다. </h6>
+          <h6 style="text-indent: 15px;">a) 인풋요소(change 감지 확인요소) : const fileInput = document.querySelector('#file_input');</h6>
+          <h6 style="text-indent: 15px;">b) 모든 파일리스트(배열) : const selectedDirectories = fileInput.files;</h6>
+          <h6 style="text-indent: 15px;">c) 하나씩 확인하며 코딩 : for (const file of selectedDirectories) {...코딩}</h6>
+        </div>
+        <div>
+          <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 공통적으로 src=" 로 시작하고 " 로 끝나는곳에 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 그러한 값들의 출현횟수를 정규식으로 표현하면 ==> var 출현횟수 = 원본정보text.match(/src="*"/ig).length; </h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 문자열이 하나이상인 것을 표현하면 ==> 원본정보text.match(/src="?*"/ig).length; </h6>
+        </div>
+      </div>
+      <div style="border-bottom:1px solid rgb(201, 188, 188);margin-bottom:5px;"></div>
+      <div>
+        <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
+        <h6 class="fw-bold">• '미사용개수' 는 html 안에 src로 기록되어 있지만 파일이 없는 경우이다. 클릭하면 리스트를 볼수 있다.(d-none 클래스 toggle)</h6>
+        <h5 class="fw-bold">결과표 <div style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </div>
+          <div id="파악된html리스트" style="display:inline-block;font-size: 14px;"></div>
+        </h5>
+        <div style="display: inline-block;vertical-align: top;">
+          <div style="margin-bottom:5px;">
+            <input style="width:210px;" type="file" webkitdirectory onclick="image폴더클릭_파일사용현황파악();" id="file_input"> 
+            <span style="color:blueviolet">function image폴더클릭_파일사용현황파악()</span>
+            <button class="보숨토글버튼" style="width:280px;margin-left:10px;" onclick="textarea정보에서html파일이름추출()">textarea정보에서html파일이름추출()</button>
+          </div>
+          <div id="결과표_전체" style="margin-bottom:5px;">
+            <div id="결과표_현재html" class="결과표">
+              <div class="제목">
+                <div>_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_현재html_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_현재html_미사용src"></span>              
+              </div>
+              <div class="결과">
+                <div>X</div>
+                <div>현재html</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea1" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea1 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea1_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea1_미사용src">sdfsdfsdfsdf</span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+
+            <div id="결과표_textarea2" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea2 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea2_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea2_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea3" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea3 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea3_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea3_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea4" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea4 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea4_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea4_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea5" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea5 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea5_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea5_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>          
+          </div>
+          <div id="js파일리스트기록">
+          </div>
+        </div>
+        <div style="display: inline-block;vertical-align: top;">
+
+        </div>
+
+      </div>
+    </div>
+    <div id="html특수문자_click">
+      <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+
+      <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
+        <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+        <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
+        <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
+        <br>
+        <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
+      </div>
+      <div style="display: inline-block;padding:5px;">
+        <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
+      </div>
+
+    </div> 
+  </div>
+
+  <div title="git관련전체">
+    <section id="_05_git_깃관련_큰틀에서">
+      <img src="portal/images/문서연결_엑셀VBA/_05_git_깃관련_큰틀에서.png" alt="이미지없음">
+      <h5 class="fw-bold"><a href="https://namu.wiki/w/Git" target="_blank">Git, 나무위키</a></h5>
+      <img src="portal/images/문서연결_엑셀VBA/_05_git_깃_구동원리나무위키.png" alt="이미지없음">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+    <section id="_05_git_설치">
+      <h4>▢ git 프로그램을 설치하고, 우클릭하면 'Git Bash'를 실행하는 메뉴가 생긴다.</h4>
+      <h4>▢ 'Git Bash' 프로그램으로 로컬깃폴더(로컬저장소)와 원격저장소(gitHub 레포지터리)를 관리한다.</h4>
+      <h4>▢ 'Git Bash'를 실행하고, 실행창에서 명령어 실행할 수 있다.</h4>
+      <br>
+      <h4>▢ git으로 관리할 폴더로 설정하기 (원격저장소 연결은 별개이다)</h4>
+      <img src="portal/images/문서연결_PROJECT/05_git_처음git관리폴더설정.png" alt="이미지없음">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <h4>1. git 기본 설명 </h4>
+      <h5>▸ 로컬의 원격저장소 이름이 'master'인데 'main'으로(다른이름도 된다) 바꾸려면 </h5>
+      <h5 class="li_들작">'Git Bash' 실행창에서 : git remote rename &#60;기존 이름&#62; &#60;변경할 이름&#62;을 입력, git remote rename master main </h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
+      <br>
+      <h4>2. git 설치후 <u><bold>"git bash"</bold></u> 명령창 사용하여 이름과 이메일 등록은 한번만 하면된다. </h4>
+      <li>이름과 이메일은 누가 push 했는지 로그에 뜨는 정보</li>
+      <li>global을 추가하면 다른 깃폴더를 만들때 기본적으로 적용되므로 개별적으로 설정할 필요가 없어진다.</li>
+      <li>git 폴더마다 따로 지정할 수 있고 다른 설정도 많지만  global user.name과 global user.email만 설정하겠다.</li>
+      <li>git 설치후,  global user.name과 global user.email 설정</li>
+      <h5 class="li_들작">▸ global user.name 등록 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.name "ycy2000"</h5>
+      <h5 class="li_들작">▸ user.name 확인 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.name ==> 등록된 것 없다면 공백, 있다면 ycy2000</h5>
+      <h5 class="li_들작">▸ user.email 등록 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email "ycy2000@naver.com"</h5>
+      <h5 class="li_들작">▸ user.email 확인 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email ==>  ==> 등록된 것 없다면 공백, 있다면 ycy2000@naver.com</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+    <section id="_05_git_깃허브가입하기">
+      <h4><a href="https://docs.github.com/ko/get-started/start-your-journey/creating-an-account-on-github" target="_blank">GitHub에서 계정 생성하기 [링크]</a></h4>
+      <h5>1. ID : XXX2XXX@naver.com, PW : dXXXXXXXX8</h5>
+      <br>
+      <h4>원격저장소(레포지터리) 만들기 (파일용, 블로그용 중 블로그용)</h4>
+      <h5>▸ REDEME 파일 만들지 않고 만들면 비어있는 저장소가 되어, 컴퓨터에서 full로 땡기지 않아도 된다.</h5>
+      <h5>▸ 연결할 원격저장소 주소는 : 만들고 난 후에 확인 가능</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
+      <br>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소생성.png" alt="이미지없음">
+      <br>
+      <h4>원격저장소(레포지터리) 주소확인</h4>
+      <h5>▸ 만들어진 레포지터리 클릭</h5>
+      <h5>▸ 원격저장소 주소(https://github.com/ycy2000.github.io.git)와 홈페이지이동 주소는 별개다</h5>
+      <h5>▸ 홈페이지 주소는 : ycy2000.github.io 입력하면, https://ycy2000.github.io 입력한 것과 같이 된다.</h5>
+      <h5 class="h5_번들작"> index.html이 있으면, ycy2000.github.io/index.html, 또는 https://ycy2000.github.io/index.html 로 입력한 것과 같다.</h5>
+      <h5 class="h5_번들작"> html파일이름을 알고 있다면 index.html 대신 파일이름을 입력하면 이동한다.</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
+      <br>
+      <h5>▸ 원격저장소 주소확인 <span style="color:blueviolet;font-size: 16px;font-weight: bold;">(Git Bash 실행창에서 연결할 때 : git remote add origin "https://github.com/ycy2000.github.io.git")</span></h5>
+      <h5 class="h5_번들작 fw-bold">※ 끝에 점git (.git)이 있다.</h5>
+      <h5 class="h5_번들작">① Code 클릭, ② Local 클릭</h5>
+      <h5 class="h5_번들작">③ 주소부분 : 끝부분이 숨겨져 있을수가 있으니 주의</h5>
+      <h5 class="h5_번들작">④ 클릭하면 주소가 복사되고, ctrl+v로 붙여넣을수 있는 상태가 된다.</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github주소확인.png" alt="이미지없음">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+    <section id="_05_git_연동설정">
+      <h4 class="fw-bold" style="color:blueviolet">-- 깃허브 원격저장소와, 로컬컴퓨터의 깃폴더 연동시키기,  [처음 연결작업] --</h4>
+      <h4 class="fw-bold">1. 로컬에 정보 있음 - 원격저장소에 정보없음 </h4>
+      <h4 class="fw-bold">2. 로컬에 정보 없음 - 원격저장소에 정보없음 </h4>
+      <h4>4. git 시작, 로컬폴더와 gitHub 원격저장소 연결, 정보 올리기. gitHub 원격저장소가 비어있을때 예시.</h4>
+      <h5>A. git init (해당 폴더를 git을 활용해서 관리하겠다는 선언), 한번만 하면된다. 해제하려면 숨김폴더 .git을 삭제하면 된다. </h5>
+      <h5 class="fw-bold">Git Bash에서 원격 저장소 삭제 명령 : git remote remove &#60;저장소 이름&#62;</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
+      <br>
+      <h5>B. 원격저장소 연결. 연결확인 방법. 연결해제 방법.</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
+    </section>
+    <section id="_05_git_깃관련_설치방법">
+      <h5 class="fw-bold"><a href="https://sfida.tistory.com/46" target="_blank">깃 설치방법 링크</a></h5>
+      <h5 class="fw-bold"><a href="https://namu.wiki/w/Git" target="_blank">Git, 나무위키</a></h5>
+      <h5 class="fw-bold"><a href="https://hyeju-dev.tistory.com/entry/GitGitHub-Git-Commit-Convention-깃-커밋-규칙" target="_blank">깃-커밋-규칙</a></h5>
+      <h5 class="fw-bold"><a href="https://compogetters.tistory.com/entry/git깃허브-저장소-초기화init-커밋commit-머지merge-과정-한-번에-살펴보기#google_vignette" target="_blank">entry/git깃허브-저장소-초기화init-커밋commit-머지merge-과정-한-번에-살펴보기</a></h5>
+      <h5 class="fw-bold"><a href="https://www.inflearn.com/course/git-github-원리부터-차근차근-근본깃무료" target="_blank">Git & GitHub, 원리부터 차근차근 - 근본깃</a></h5>
+      <h5 class="fw-bold"><a href="https://www.freecodecamp.org/korean/news/git-fetch-vs-pull/" target="_blank">fetch, pull 명령어,</a></h5>
+      <h5 class="fw-bold"><a href="https://velog.io/@msung99/push-브랜치-깃플로우-pull" target="_blank">fetch, pull 차이점, merge</a></h5>
+      <h5 class="fw-bold"><a href="https://velog.io/@henotony/git-명령-취소되돌리기" target="_blank">git 명령 취소(되돌리기)</a></h5>
+      <h5 class="fw-bold"><a href="https://blog.hwahae.co.kr/all/tech/tech-tech/9507" target="_blank">브랜치 전략 수립을 위한 전문가의 조언들</a></h5>
+      <h5 class="fw-bold"><a href="https://uiandwe.tistory.com/388" target="_blank">소스 프리징 현상</a></h5>
+      
+    </section>
+    <section id="_05_git_파순01_01_깃관련">
+      <h5 class="li_들작들작">$ git clone "https://github.com/ycy2000/exer.git"</h5>
+      <code>※ 순서도 <span style="color:blueviolet;font-weight: bold;">click</span></code>
+      <code id="move1">1. 처음 셑팅 : git 프로그램 컴퓨터에 설치하기. gitHub와 연동은 나중에. <a href="https://sfida.tistory.com/46" target="_blank">git 프로그램 컴퓨터에 설치하기 링크</a></code>
+      <code>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용)</code>
+      <code>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 레포지터리(원격저장소) 연동설정</code>
+      <code>4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 프러그인 프로그램들</code>
+      <code>5. 주요명령어 : add, commit, push, pull 사용법</code>
+      <code>6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법</code>
+      <code>7. clone 복사본 가져오기, gitHub에서 레포지터리(원격저장소) 삭제하기</code>
+      <h6 style="color:blueviolet;font-weight: bold;text-indent: 19px;">8. 발생할 수 있는 여러 경우들 대처방법</h6>
+      <code>9. 기타 : 주요명령어 외에는 이해가 안된다.</code>
+      <br>
+      <h5 id="move1">1. 처음 셑팅 : git 프로그램 컴퓨터에 설치하기. gitHub와 연동은 나중에.</h5>
+      <code>a) 다운로드 사이트 이동 : 구글에서 'GIT'으로 검색하면 다운로드 사이트 주소 : <a href="https://git-scm.com" target="_blank">https://git-scm.com</a></code>
+
+
+
+
+      <h4>▢ git 프로그램을 설치하고, 우클릭하면 'Git Bash'를 실행하는 메뉴가 생긴다.</h4>
+      <h4>▢ 'Git Bash'를 실행하고, 실행창에서 명령어 실행할 수 있다.</h4>
+      <h4>1. git 기본 설명 </h4>
+      <h5>▸ 로컬의 원격저장소 이름이 'master'인데 'main'으로(다른이름도 된다) 바꾸려면 </h5>
+      <h5 class="li_들작">'Git Bash' 실행창에서 : git remote rename &#60;기존 이름&#62; &#60;변경할 이름&#62;을 입력, git remote rename master main </h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
+      <br>
+      <h4>2. git 설치후 <u><bold>"git bash"</bold></u> 명령창 사용하여 이름과 이메일 등록은 한번만 하면된다. </h4>
+      <li>이름과 이메일은 누가 push 했는지 로그에 뜨는 정보</li>
+      <li>global을 추가하면 다른 깃폴더를 만들때 기본적으로 적용되므로 개별적으로 설정할 필요가 없어진다.</li>
+      <li>git 폴더마다 따로 지정할 수 있고 다른 설정도 많지만  global user.name과 global user.email만 설정하겠다.</li>
+      <li>git 설치후,  global user.name과 global user.email 설정</li>
+      <h5 class="li_들작">▸ global user.name 등록 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.name "ycy2000"</h5>
+      <h5 class="li_들작">▸ user.name 확인 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.name ==> 등록된 것 없다면 공백, 있다면 ycy2000</h5>
+      <h5 class="li_들작">▸ user.email 등록 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email "ycy2000@naver.com"</h5>
+      <h5 class="li_들작">▸ user.email 확인 명령어</h5>
+      <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email ==>  ==> 등록된 것 없다면 공백, 있다면 ycy2000@naver.com</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
+      <br><br><br><br><br><br><br><br><br><br>
+      <br>
+      <h4>4. git 시작, 로컬폴더와 gitHub 원격저장소 연결, 정보 올리기. gitHub 원격저장소가 비어있을때 예시.</h4>
+      <h5>A. git init (해당 폴더를 git을 활용해서 관리하겠다는 선언), 한번만 하면된다. 해제하려면 숨김폴더 .git을 삭제하면 된다. </h5>
+      <h5 class="fw-bold">Git Bash에서 원격 저장소 삭제 명령 : git remote remove &#60;저장소 이름&#62;</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
+      <br>
+      <h5>B. 원격저장소 연결. 연결확인 방법. 연결해제 방법.</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
+      <br>
+      <h5>C. 정보 주고 받기, add, commit, push</h5>
+      <img src="portal/images/문서연결_PROJECT/05_git_파순01_07_주고받기.png" alt="이미지없음">
+      <br>
+      <h4>5. clone</h4>
+      <li>깃허브에 저장소에 정보가 있는 경우 땡겨오고 싶을때.</li>
+      <h5 class="li_들작">$ git clone "https://github.com/ycy2000/exer.git"</h5>
+      <h5 class="li_들작">그러면 현재폴더에 원격저장소이름의 폴더가 생기면서 그 폴더 안에 깃폴더와 내용물이 담겨있다."</h5>
+      <h5 class="li_들작">폴더안에 폴더가 깃폴더인데.... 하나더 루트폴더에서 git init없이 clone 하면되는건가??</h5>
+      <br><br><br><br>
+    </section>
+    <section id="_05_git_파순02_01_vscodeGitAddCommit">
+      <h5>git add . ==> git commit -m "메세지" ==> git push origin master : 로컬에서 원격에 올리기</h5>
+      <h5>로컬 빈폴더 git init, git remote add origin "https://github.com/ycy2000/ycy2000.github.io.git",</h5>
+      <h5>git pull origin master : 가지고오기</h5>
+      <h5>document.body.offsetWidth : 화면넓이 갤탭s7fe 1205 >> 1210보다 작아지면?</h5>
+      <h5>document.body.clientWidth : 화면넓이</h5>
+      <h5>document.body.scrollWidth : 화면보다 넓은 것이 있을때 넓이</h5>
+
+      <img src="" alt="이미지없음">
+      <br><br><br><br>
+    </section>
+    <div id="기타전체_캔버스관련코드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <embed src="portal/images/문서연결_엑셀VBA/캔버스관련코드.txt" width=915px height=290px style="border:1px solid black;">
+        <img src="portal/images/문서연결_엑셀VBA/캔버스관련코드.png" alt="이미지없음">
         <h5 class="fw-bold"></h5>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
         <code class="fw-bold"></code>
         <span style="color:blueviolet"></span>
         <h6></h6>
-        <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
         <img src="" alt="이미지없음">
       </div>
-    </div>
-    <div style="position: relative;border-bottom:1px solid rgb(201, 188, 188);"><button onclick="캔버스_개별카테고리_h6의title과id순서()">
-      .캔버스 - .개별카테고리 - h6:[title]</button>
-    </div>    
-    <div>
-      <div class="d-inline-block" style="vertical-align: top;">
-        <span>오른쪽의 title과 연결안된것은 노랑색 표시, id개수 : </span><span id="id개수"></span>
-        <div id="id나열"></div>
-      </div>
-      <div class="d-inline-block" style="vertical-align: top;">
-        <span>왼쪽의 id와 연결안된것은 노랑색 표시,  title개수 : </span><span id="title개수"></span><span>, html의 순서대로 기록되는 듯</span>
-        <div id="title나열"></div>
+      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+        <h6 class="fw-bold" style="text-indent: 23px;">부트스트랩 오프캔버스 스크롤 : <span style="color:blueviolet">data-bs-scroll="true"</span></h6>
       </div>
     </div>
   </div>
-  <div id="설명_image폴더의자료사용현황">
-    <h6 class="fw-bold">
-      <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">보기</button>
-        • onclick 함수 없다고 가정할때
-    </h6>
-    <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
-    <h6 class="fw-bold">
-      <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">보기</button>
-        • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 기타 모둔 파일 이름을 추출한다.
-    </h6>
-    <div id="파일리스트설명2" class="d-none 대체2줄">
-      <div style="border-right:1px solid rgb(201, 188, 188);">
-        <h6>1. 폴더 선택하기 전에, 'onclick함수' 실행됨</h6>
-        <h6>2. '폴더선택 후 업로드 한 결과 발생시' 함수 내부에 이벤트리스너를 등록해 두면 'change'로 감지한다.</h6>
-        <h6>3. 다음 정보를 'change' 함수에서 사용한다. </h6>
-        <h6 style="text-indent: 15px;">a) 인풋요소(change 감지 확인요소) : const fileInput = document.querySelector('#file_input');</h6>
-        <h6 style="text-indent: 15px;">b) 모든 파일리스트(배열) : const selectedDirectories = fileInput.files;</h6>
-        <h6 style="text-indent: 15px;">c) 하나씩 확인하며 코딩 : for (const file of selectedDirectories) {...코딩}</h6>
-      </div>
-      <div>
-        <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
-        <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
-        <h6 class="fw-bold" style="color:blueviolet">• 공통적으로 src=" 로 시작하고 " 로 끝나는곳에 안에 src값이 들어간다.</h6>
-        <h6 class="fw-bold" style="color:blueviolet">• 그러한 값들의 출현횟수를 정규식으로 표현하면 ==> var 출현횟수 = 원본정보text.match(/src="*"/ig).length; </h6>
-        <h6 class="fw-bold" style="color:blueviolet">• 문자열이 하나이상인 것을 표현하면 ==> 원본정보text.match(/src="?*"/ig).length; </h6>
-      </div>
-    </div>
-    <div style="border-bottom:1px solid rgb(201, 188, 188);margin-bottom:5px;"></div>
-    <div>
-      <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
-      <h6 class="fw-bold">• '미사용개수' 는 html 안에 src로 기록되어 있지만 파일이 없는 경우이다. 클릭하면 리스트를 볼수 있다.(d-none 클래스 toggle)</h6>
-      <h5 class="fw-bold">결과표 <div id="파악된html리스트" style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </div></h5>
-      <div style="display: inline-block;vertical-align: top;">
-        <div style="margin-bottom:5px;">
-          <input style="width:210px;" type="file" webkitdirectory onclick="image폴더클릭_파일사용현황파악();" id="file_input"> 
-          <span style="color:blueviolet">function image폴더클릭_파일사용현황파악()</span>
-          <button class="보숨토글버튼" style="width:280px;margin-left:10px;" onclick="textarea정보에서html파일이름추출()">textarea정보에서html파일이름추출()</button>
-        </div>
-        <div id="js모든파일webkitRelativePath" class="d-none"></div>
-        <div id="결과표_전체" style="margin-bottom:5px;">
-          <div id="결과표_현재html" class="결과표">
-            <div class="제목">
-              <div>_</div>
-              <div>원본정보</div>
-              <div>html파일</div>
-              <div>값있는src개수</div>
-              <div>사용중개수</div>
-              <div style="background-color:yellow;" onclick="document.querySelector('#결과표_현재html_미사용src').classList.toggle('d-none')">미사용개수</div>
-              <div>src=""</div>
-              <span class="미사용src d-none" id="결과표_현재html_미사용src"></span>              
-            </div>
-            <div class="결과">
-              <div>X</div>
-              <div>현재html</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-            </div>
-          </div>
-          <div id="결과표_textarea1" class="결과표 textarea결과만">
-            <div class="제목">
-              <div onclick="document.querySelector('#전체대체 #결과표_textarea1 textarea').value=''">_</div>
-              <div>원본정보</div>
-              <div>html파일</div>
-              <div>값있는src개수</div>
-              <div>사용중개수</div>
-              <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea1_미사용src').classList.toggle('d-none')">미사용개수</div>
-              <div>src=""</div>
-              <span class="미사용src d-none" id="결과표_textarea1_미사용src">sdfsdfsdfsdf</span>
-            </div>
-            <div class="결과">
-              <textarea rows="1" spellcheck="false"></textarea>
-              <div>textarea</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-            </div>
-          </div>
 
-          <div id="결과표_textarea2" class="결과표 textarea결과만">
-            <div class="제목">
-              <div onclick="document.querySelector('#전체대체 #결과표_textarea2 textarea').value=''">_</div>
-              <div>원본정보</div>
-              <div>html파일</div>
-              <div>값있는src개수</div>
-              <div>사용중개수</div>
-              <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea2_미사용src').classList.toggle('d-none')">미사용개수</div>
-              <div>src=""</div>
-              <span class="미사용src d-none" id="결과표_textarea2_미사용src"></span>
-            </div>
-            <div class="결과">
-              <textarea rows="1" spellcheck="false"></textarea>
-              <div>textarea</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-            </div>
-          </div>
-          <div id="결과표_textarea3" class="결과표 textarea결과만">
-            <div class="제목">
-              <div onclick="document.querySelector('#전체대체 #결과표_textarea3 textarea').value=''">_</div>
-              <div>원본정보</div>
-              <div>html파일</div>
-              <div>값있는src개수</div>
-              <div>사용중개수</div>
-              <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea3_미사용src').classList.toggle('d-none')">미사용개수</div>
-              <div>src=""</div>
-              <span class="미사용src d-none" id="결과표_textarea3_미사용src"></span>
-            </div>
-            <div class="결과">
-              <textarea rows="1" spellcheck="false"></textarea>
-              <div>textarea</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-            </div>
-          </div>
-          <div id="결과표_textarea4" class="결과표 textarea결과만">
-            <div class="제목">
-              <div onclick="document.querySelector('#전체대체 #결과표_textarea4 textarea').value=''">_</div>
-              <div>원본정보</div>
-              <div>html파일</div>
-              <div>값있는src개수</div>
-              <div>사용중개수</div>
-              <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea4_미사용src').classList.toggle('d-none')">미사용개수</div>
-              <div>src=""</div>
-              <span class="미사용src d-none" id="결과표_textarea4_미사용src"></span>
-            </div>
-            <div class="결과">
-              <textarea rows="1" spellcheck="false"></textarea>
-              <div>textarea</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-            </div>
-          </div>
-          <div id="결과표_textarea5" class="결과표 textarea결과만">
-            <div class="제목">
-              <div onclick="document.querySelector('#전체대체 #결과표_textarea5 textarea').value=''">_</div>
-              <div>원본정보</div>
-              <div>html파일</div>
-              <div>값있는src개수</div>
-              <div>사용중개수</div>
-              <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea5_미사용src').classList.toggle('d-none')">미사용개수</div>
-              <div>src=""</div>
-              <span class="미사용src d-none" id="결과표_textarea5_미사용src"></span>
-            </div>
-            <div class="결과">
-              <textarea rows="1" spellcheck="false"></textarea>
-              <div>textarea</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-              <div>_</div>
-            </div>
-          </div>          
-        </div>
-        <div id="js파일리스트기록">
-        </div>
-      </div>
-      <div style="display: inline-block;vertical-align: top;">
 
-      </div>
 
-    </div>
-  </div>
-  <div id="html특수문자_click">
-    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
 
-    <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
-      <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
-      <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
-      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
-      <br>
-      <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
-    </div>
-    <div style="display: inline-block;padding:5px;">
-      <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
-    </div>
 
-  </div>  
+
+
+
+
+
+  
 </div>
 
 <!-- TOP -->

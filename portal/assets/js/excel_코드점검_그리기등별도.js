@@ -1,10 +1,12 @@
 function textarea정보에서html파일이름추출() {
-  if (document.querySelector('#js모든파일webkitRelativePath').innerHTML=='') {alert('image폴더클릭_파일사용현황파악() 실행 후 사용할 것'); return;}
+  if (document.querySelector('#전체대체 #js파일리스트기록').children.length<2) {alert('image폴더클릭_파일사용현황파악() 실행 후 사용할 것'); return;}
+  var 모든파일webkitRelativePath=Array.from(document.querySelectorAll('#js파일리스트기록 > div:not(:first-child)'));
+  모든파일webkitRelativePath=모든파일webkitRelativePath.map( value => value=value.children[1].innerHTML + value.children[2].innerHTML)
+  // Path문자열형식 : portal/images/문서연결_엑셀VBA/API_Key_발급방법.png <> src="Path문자열"
+  //이미 기록된것은 건너뛰도록한다
+  var 파악된html리스트=document.querySelector('#파악된html리스트').innerHTML.split(',');
+  var 리스트정보div들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
 
-  var 모든파일webkitRelativePath = document.querySelector('#js모든파일webkitRelativePath').innerHTML.split(','); //image폴더클릭_파일사용현황파악() 에서 작성됨
-  // Path문자열형식 : portal/images/문서연결_엑셀VBA/API_Key_발급방법.png <> src="Path문자열"
-
-  var 리스트정보div들=document.querySelectorAll('#전체대체 #js파일리스트기록 > div');
 
   //정규식 (HTML 태그 안의 src 속성만, 내부 경로만)
   //<[^>]+src="([^"]+)"[^>]*>/ig
@@ -13,47 +15,57 @@ function textarea정보에서html파일이름추출() {
   //[^>]*> → 태그 끝날 때까지
   //  match 결과는 value 그대로 사용하면 되고
   //  matchAll : 결과가 2가지 정보를 가진 배열이다 다른 여러 정보도 있다: [0]match결과 <img src="경로">, [1]macthall결과 경로 
+  var html파일이름=document.querySelector('#html파일이름').innerText;   
+  if (파악된html리스트.indexOf(html파일이름)==-1) {
 
-  if ('현재html' == '현재html') {
     var 미사용누적 = document.querySelector('#결과표_현재html_미사용src'); 미사용누적.innerHTML='';
     var 검색할text = document.querySelector('body').innerHTML;
-    var html파일이름=document.querySelector('#html파일이름').innerText;   
+
     var 카운트정보요소=document.querySelector('#전체대체 #결과표_현재html .결과');
     // HTML 태그 안의 src 속성만 추출 (내부 경로만)
-    var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]+)"[^>]*>/ig)];
+    //var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]+)"[^>]*>/ig)]; //사이에 1글자 이상이어야 가져옴
+    var 찾은src들 = [...검색할text.matchAll(/<[^>]+src="([^"]*)"[^>]*>/ig)]; //사이에 공백이어도 가져옴
+
+    
+    //console.log('찾은src들[0] : ' + 찾은src들[0]) 0,1이 같다. 하나민 두번나오는 이유?
+    //console.log('찾은src들[1] : ' + 찾은src들[1])
+    //console.log('찾은src들[2] : ' + 찾은src들[2])
+    //console.log('찾은src들[2] : ' + 찾은src들[3])
+
     //var 찾은src들 = [...검색할text.match(/<*[^>]+src="([^"]+)"[^>]*>/ig)];
     var 사용src=0, 공백src=0, 미사용src=0;
     if (찾은src들) { // 있으면, 1.모든파일webkitRelativePath 에 있을때 : html이름표시, 2.없을때 : 미사용누적 에 누적
       찾은src들.forEach ( (value,index,arr) => {
-        console.log(value[1])
         //value[0] : <img src=\"portal/images/문서연결_엑셀VBA/파일리스트설명.png\" alt=\"이미지없음\">
         //value[1] : portal/images/문서연결_엑셀VBA/파일리스트설명.png
         if (value[1].length==0) {공백src+=1;}
         else { // 경로가 있을때
-          if (모든파일webkitRelativePath.indexOf(value[1]) !== -1) {
-            if (value[1]=='portal/images/문서연결_엑셀VBA/파일리스트설명.png') {console.log(모든파일webkitRelativePath.filter( e => e=='portal/images/문서연결_엑셀VBA/파일리스트설명.png').length)}
-
-//portal/images/문서연결_엑셀VBA/파일리스트설명.png') { //이게 왜 2번 나오지?
-
-            사용src+=1;
-            var index플러스1=모든파일webkitRelativePath.indexOf(value[1])+1;
-            if (리스트정보div들[index플러스1].children[0].innerHTML=='_') {
-              리스트정보div들[index플러스1].children[0].innerHTML=html파일이름;
-            } else {
-              리스트정보div들[index플러스1].children[0].innerHTML+='<br>' + html파일이름;
-            }
-            리스트정보div들[index플러스1].children[0].classList.add('src있음');
+          if (index==0) {
+           //console.log('찾은src들[0] : ' + 찾은src들[0]) 0,1이 같다. 하나민 두번나오는 이유?
           } else {
-            미사용src+=1;
-            var div = document.createElement('div');
-            div.innerText=value[1];
-            미사용누적.appendChild(div);
+            if (모든파일webkitRelativePath.indexOf(value[1]) !== -1) {
+              사용src+=1;
+              var index플러스1=모든파일webkitRelativePath.indexOf(value[1])+1;
+              console.log('index : ' + index + ', path : ' + value[1] + ', ' + 리스트정보div들[index플러스1].children[0].innerHTML)
+              if (리스트정보div들[index플러스1].children[0].innerHTML=='') {
+                리스트정보div들[index플러스1].children[0].innerHTML=html파일이름;
+              } else {
+                리스트정보div들[index플러스1].children[0].innerHTML+='<br>' + html파일이름;
+              }
+              리스트정보div들[index플러스1].children[0].classList.add('src있음');
+            } else {
+              미사용src+=1;
+              var div = document.createElement('div');
+              div.innerText=value[1];
+              미사용누적.appendChild(div);
+            }
           }
+
         }
       }); //찾은src들.forEach
     }
     카운트정보요소.children[2].innerHTML=html파일이름; //html 파일이름
-    카운트정보요소.children[3].innerHTML=찾은src들.length; //값있는src개수
+    카운트정보요소.children[3].innerHTML=찾은src들.length-1-공백src; //값있는src개수
     카운트정보요소.children[4].innerHTML=사용src; //사용중개수
     카운트정보요소.children[5].innerHTML=미사용src; //미사용개수
     카운트정보요소.children[6].innerHTML=공백src; //src=""
@@ -84,10 +96,10 @@ function textarea정보에서html파일이름추출() {
         //value[1] : portal/images/문서연결_엑셀VBA/파일리스트설명.png
         if (value[1].length==0) {공백src+=1;}
         else { // 경로가 있을때
-          if (모든파일webkitRelativePath.includes(value[1])) {
+          if (모든파일webkitRelativePath.indexOf(value[1]) !== -1) {
             사용src+=1;
             var index플러스1=모든파일webkitRelativePath.indexOf(value[1])+1;
-            if (리스트정보div들[index플러스1].children[0].innerHTML=='_') {
+            if (리스트정보div들[index플러스1].children[0].innerHTML=='') {
               리스트정보div들[index플러스1].children[0].innerHTML=html파일이름;
             } else {
               리스트정보div들[index플러스1].children[0].innerHTML+='<br>' + html파일이름;
@@ -110,10 +122,8 @@ function textarea정보에서html파일이름추출() {
   }
 }
 function image폴더클릭_파일사용현황파악() {
-  //textarea정보에서html파일이름추출() 에서 사용할것 : 모든파일리스트(#js모든파일리스트 내부에 , 로 구분)
-  document.querySelector('#js모든파일webkitRelativePath').innerHTML='';
+  document.querySelector('#파악된html리스트').innerHTML='';
   var 모든파일webkitRelativePath=[];
-
   //'파일선택' 클릭하면 파일리스트 추출완료시 change 감지됨
   var 이벤트감지=document.querySelector('#file_input');
   var 기록할곳=document.querySelector('#js파일리스트기록');
@@ -125,7 +135,7 @@ function image폴더클릭_파일사용현황파악() {
     var split개수=[];
     Array.from(파일리스트배열).forEach ( (file,index,arr) => {
       모든파일webkitRelativePath.push('portal/' + file.webkitRelativePath);
-      if (index==0) {
+      if (index==0) {//제목부분
         var div=document.createElement('div');
         var span=document.createElement('span');
         span.innerText= '사용중인html';
@@ -140,7 +150,7 @@ function image폴더클릭_파일사용현황파악() {
       }
       var div=document.createElement('div');
       var span=document.createElement('span');
-      span.innerText= '_';
+      //span.innerText= '_';
       div.appendChild(span);
       var span=document.createElement('span');
       span.innerText= 'portal/' + file.webkitRelativePath.split('/').slice(0,file.webkitRelativePath.split('/').length-1).join('/') + '/';
@@ -150,19 +160,16 @@ function image폴더클릭_파일사용현황파악() {
       div.appendChild(span);
       기록할곳.appendChild(div);
     })
-    document.querySelector('#js모든파일webkitRelativePath').innerHTML=모든파일webkitRelativePath.join(',');
-    //폭조정
+     //폭조정
     //========== 실행 다 하고, 이벤트 발생시 이벤트함수 실행하므로, 폭조정을 이벤트 함수안에 넣어야 된다  
     var 첫번째width=[];
     var 두번째width=[];
     var 세번째width=[];
     Array.from(document.querySelectorAll('#js파일리스트기록 > div')).forEach ( (요소,index,array) => {
-      if (요소.children.length>0) {첫번째width.push(요소.children[0].clientWidth)};
       if (요소.children.length>1) {두번째width.push(요소.children[1].clientWidth)};
       if (요소.children.length>2) {세번째width.push(요소.children[2].clientWidth)};
     });
     Array.from(document.querySelectorAll('#js파일리스트기록 > div')).forEach ( (요소,index,array) => {
-      if (요소.children.length>0) {요소.children[0].setAttribute('style','width:' + Math.max(...첫번째width) + 'px')};
       if (요소.children.length>1) {요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px')};
       if (요소.children.length>2) {요소.children[2].setAttribute('style','width:' + Math.max(...세번째width) + 'px')};
     });
@@ -170,10 +177,8 @@ function image폴더클릭_파일사용현황파악() {
   이벤트감지.addEventListener('change',함수내파일리스트가공)
 }
 function 캔버스_개별카테고리_h6의title과id순서() {
-  //id나열
-  var 아이디=Array.from(document.querySelectorAll('.모든id모음위치자유 > [id]'), (요소,index) => 요소.id); 
-  var h6정보=Array.from(document.querySelectorAll('.개별카테고리 > div > [title]'));
-  var 타이틀=Array.from(document.querySelectorAll('.개별카테고리 > div > [title]'), (요소,index) => 요소.title); 
+  //왼쪽 : id나열
+  var 아이디=Array.from(document.querySelectorAll('.모든id모음 > div > [id]'), (요소,index) => 요소.id); 
   var 넣을곳=document.querySelector('#id나열');넣을곳.innerHTML='';
   document.querySelector('#id개수').innerHTML=아이디.length;
   아이디.forEach ( (value,index,array) => {
@@ -186,15 +191,16 @@ function 캔버스_개별카테고리_h6의title과id순서() {
       })
       넣을곳.appendChild(div);
     }
-    var div=document.createElement('div');
-    var span=document.createElement('span');
-    span.innerText=index + 1; //value는 id
-    div.appendChild(span);
-    var span=document.createElement('span');
-    span.innerText=value; //value는 id
-    if (!타이틀.includes(value)) {span.setAttribute('class','노랑바탕색')}
-    div.appendChild(span);
-    넣을곳.appendChild(div);
+    if (value.length!=0) {
+      var div=document.createElement('div');
+      var span=document.createElement('span');
+      span.innerText=index + 1; //value는 id
+      div.appendChild(span);
+      var span=document.createElement('span');
+      span.innerText=value; //value는 id
+      div.appendChild(span);
+      넣을곳.appendChild(div);
+    }
   });
   var 첫번째width=[];
   var 두번째width=[];
@@ -206,7 +212,10 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     요소.children[0].setAttribute('style','width:' + Math.max(...첫번째width) + 'px');
     요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px');
   });
+
   //h6의 title 부분 : {캔버스id,카테고리id,title} 따오기
+  var h6정보=Array.from(document.querySelectorAll('.캔버스관련모두감싸기 .개별카테고리 > div > [title]'));
+  var 넣을곳=document.querySelector('#title나열');넣을곳.innerHTML='';
   var 캔버스id, 카테고리id, title;
   var h6정보3종=[];
   // 위에 정의 : var h6정보=Array.from(document.querySelectorAll('.개별카테고리 > div > [title]'));
@@ -241,7 +250,6 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     //아이디와 innerTEXT가 공백일때 _ 로 대체 (높이)
     var span=document.createElement('span');
     span.innerText=title=='' ? '_':title; 
-    if (!아이디.includes(title)) {span.setAttribute('class','노랑바탕색')}
     div.appendChild(span);
     var span=document.createElement('span');
     span.innerText=document.querySelector('[title="' + title + '"]').innerText=='' ? '_':document.querySelector('[title="' + title + '"]').innerText; 
@@ -263,5 +271,16 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     요소.children[1].setAttribute('style','width:' + Math.max(...두번째width) + 'px');
     요소.children[2].setAttribute('style','width:' + Math.max(...세번째width) + 'px');
     요소.children[3].setAttribute('style','width:' + Math.max(...네번째width) + 'px');
+  });
+
+  //서로 없는 정보에     if (!아이디.includes(title)) {span.setAttribute('class','노랑바탕색')}
+  var 타이틀=Array.from(document.querySelectorAll('.캔버스관련모두감싸기 .개별카테고리 > div > [title]'), (요소,index) => 요소.title); 
+  var id요소=document.querySelectorAll('#id나열 > div:not(:first-child)');
+  Array.from(id요소).forEach ( (요소, index, arr) => {
+    if (타이틀.indexOf(요소.children[1].innerHTML)==-1) {요소.children[1].classList.add('노랑바탕색')}
+  });
+  var title요소=document.querySelectorAll('#title나열 > div:not(:first-child)');
+  Array.from(title요소).forEach ( (요소, index, arr) => {
+    if (아이디.indexOf(요소.children[2].innerHTML)==-1) {요소.children[2].classList.add('노랑바탕색')}
   });
 }
