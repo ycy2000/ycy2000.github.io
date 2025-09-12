@@ -14,10 +14,16 @@ code {color:black;display:block;}
 .대체2줄세로1h6 {position: absolute; border-right:1px solid rgb(201, 188, 188);height:900px;left:954px;}
 #id나열 > div > span, #title나열 > div > span, #js파일리스트기록 > div > span {border:1px solid black;display: inline-block;}
 #id나열 > div > span:nth-of-type(1), #title나열 > div > span:nth-of-type(1) {padding:0px 4px; text-align: center;}/* width는 js로*/
-#js파일리스트기록 > div > span:nth-of-type(1) {padding:0px 4px;width:170px;height:26px;vertical-align: top;}
+#js파일리스트기록 > div > span:nth-of-type(1) {padding:0px 4px;width:170px;vertical-align: top;}
 #id나열 > div > span:nth-of-type(2), #title나열 > div > span:nth-of-type(2), #js파일리스트기록 > div > span:nth-of-type(2) {padding:0px 4px;}/* width는 js로*/
 #title나열 > div > span:nth-of-type(3), #js파일리스트기록 > div > span:nth-of-type(3) {padding:0px 4px;}/* width는 js로*/
 #title나열 > div > span:nth-of-type(4), #js파일리스트기록 > div > span:nth-of-type(4) {padding:0px 4px;}/* width는 js로*/
+
+.폼control이벤트 {border:1px solid black;padding:0 5px;vertical-align: top;width:138px;background-color: cadetblue;}
+.폼control이벤트 > code:first-child {border-bottom:1px solid black;font-size:20px;}
+.폼컨트롤이벤트_단독기능보라_클래스 {color:blueviolet;}
+.폼컨트롤이벤트_단독기능노랑_클래스 {color:yellow;}
+.폼컨트롤이벤트_모두포함브라운_클래스 {color:brown;}
 
 .보숨토글버튼 {border:1px solid black;display: inline-block; width:60px;padding:3px 0px;}
 .노랑바탕색 {background-color: yellow;} /* 캔버스_개별카테고리_h6의title과id순서 */

@@ -12,7 +12,7 @@ function 전체대체에셑팅() {
 
   //2.id를 title로 갖는것이 있는지 확인(캔버스에서 title이 있는[id와 연결된 title]이 있는 h6 클릭시)
   var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
-  if (title요소들마지막.length==0) {console.log('해당title을 id로 갖는 요소가 없음(null'); return;}
+  if (title요소들마지막.length==0) {console.log('해당title을 id로 갖는 요소가 없음. \n캔버스,ID,제목 관련 건너뜀'); return;}
 
   //3.있다면 캔버스 :    5번째가 BODY(4번째까지 올라갈때까지 body가 나오면 종료), 캔버스안의 h6이면 5번째 부모에서 BODY태그 만난다.
   title요소들마지막=title요소들마지막[title요소들마지막.length-1]; // 마지막꺼에서 캔버스 클래스에서 id를 추출할 수 있다. 캔버스 안에 들어가면 이 부분이 없다
@@ -27,6 +27,11 @@ function 전체대체에셑팅() {
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
 }
 function 연습() {
+  var id=document.querySelectorAll('.캔버스')
+  //console.log(Object.prototype.toString.call(id));//[object NodeList]
+  //console.log(Object.prototype.toString.call(id));//[object Array]
+  var ddd = Array.from(document.querySelectorAll('.캔버스'), e => e.classList[0])
+  console.log(ddd)
 
 }
 

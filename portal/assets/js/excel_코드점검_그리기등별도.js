@@ -68,6 +68,7 @@ function textarea정보에서html파일이름추출() {
     카운트정보요소.children[4].innerHTML=사용src; //사용중개수
     카운트정보요소.children[5].innerHTML=미사용src; //미사용개수
     카운트정보요소.children[6].innerHTML=공백src; //src=""
+    document.querySelector('#파악된html리스트').innerHTML+=',' + html파일이름;
   }
 
   //textarea 정보 관련
@@ -149,7 +150,7 @@ function image폴더클릭_파일사용현황파악() {
       }
       var div=document.createElement('div');
       var span=document.createElement('span');
-      //span.innerText= '_';
+      span.innerText= '_';
       div.appendChild(span);
       var span=document.createElement('span');
       span.innerText= 'portal/' + file.webkitRelativePath.split('/').slice(0,file.webkitRelativePath.split('/').length-1).join('/') + '/';
