@@ -271,7 +271,7 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_정리된사이트">--- js 정리된 사이트---</h6>
-        <h6 class="canvas_div fw-bold" title="js_클틀에서이해하기">1)JavaScript는 흔히 프로토타입 기반 언어(prototype-based language)라 불립니다.</h6>
+        <h6 class="canvas_div fw-bold" title="js_클틀에서이해하기">1) prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩) __proto__ : 부모에 정의된 속성 정보들</h6>
       </div>
       <div>
 
@@ -2539,8 +2539,8 @@
     </div>
     <div id="js_클틀에서이해하기">
       <div>
-        <h6 class="fw-bold">prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩)__proto__ : 부모에 정의된 속성 정보들, 
-          typeof(객체) : 객체의 유형, <span style="color:blueviolet">Object.prototype.toString.call(객체) : object 객체의종류</span> 
+        <h6 class="fw-bold">prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩)__proto__ : 부모에 정의된 속성 정보들, typeof(객체) : 객체의 유형
+          <span style="color:blueviolet">검색정보</span> 
           <button onclick="보숨토글(this)" title="js검색정보" class="보숨토글버튼">보기</button>
         </h6>
         <div class="d-none" id="js검색정보">
@@ -2558,11 +2558,16 @@
           
         </div>
         <h6 class="fw-bold">
-          <div class="d-inline-block">
+          <div class="d-inline-block align-top">
             <img src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
-            
           </div>
+          <div class="d-inline-block align-top">
+            <h6 class="fw-bold">
+              <span style="color:blueviolet">Object.prototype.toString.call(객체) : object 객체의종류</span> 
+              <button onclick="보숨토글(this)" title="js검색정보" class="보숨토글버튼">보기</button>
+            </h6>
 
+          </div>
         </h6>
 
         <h6></h6>
@@ -2642,17 +2647,24 @@
         <h6 class="fw-bold">2) Object : 객체 리터럴. {} 로 정의되는 객체.</h6>
         <h6 class="fw-bold">3) Array : [] 로 정의되는 객체. 속성 : index, name, length. 메서드 : filter(), forEach() 등</h6>
         <h6 class="fw-bold">4) Function(class) : class 클래스명 {} 로 정의되는 객체. 클래스 문법이 있다.
-          <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_class는함수.png:없음" onclick="개인정리png(this)" class="png버튼">class는 함수</button>
-          <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_일급객체.png:없음" onclick="개인정리png(this)" class="png버튼">일급객체,함수는 객체</button>
+          <button title="js_자료형을먼저알아야겠다_설명" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">class는 함수</button>
+          <button title="개인적정리png_일급객체" onclick="보숨토글(this)" class="보숨토글버튼" style="width:170px;">일급객체,함수는 객체</button>
         </h6>
         <h6 class="fw-bold">5) 문자열(string)은 객체가 아니지만 String 객체(object)로 정의하면 객체가 된다</h6>
         <h6 class="fw-bold" style="text-indent: 20px;">문자열을 객체화 하지 않고도 String 객체의 속성과 메서드를 사용할수 있는데 </h6>
         <h6 class="fw-bold" style="text-indent: 20px;">자바스크립트 자체에서 사용하는 순간에 객체화(래퍼객체) 시켜준다 </h6>
         <h6 class="fw-bold">6) 여러 객체가 있다. 
-          <button title="js_자료형을먼저알아야겠다_설명:개인적정리png_내장객체등.png:없음" onclick="개인정리png(this)" class="png버튼">내장객체 등</button>
+          <button title="개인적정리png_내장객체등" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">내장객체 등</button>
         </h6>
-        <div id="js_자료형을먼저알아야겠다_설명" onclick="document.querySelector(`#${this.id}`).classList.add('d-none')" class="d-none"></div>
-
+        <div id="js_자료형을먼저알아야겠다_설명" class="d-none">
+          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_class는함수.png" alt="이미지없음">
+        </div>
+        <div id="개인적정리png_일급객체" class="d-none">
+          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_일급객체.png" alt="이미지없음">
+        </div>
+        <div id="개인적정리png_내장객체등" class="d-none">
+          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
+        </div>
         <br>
         <h6 class="fw-bold">1) 속성(Property)은 key:value의 쌍으로 표현하고, value 위치에는 함수, 객체, 기본값 등이 가능하다</h6>
         <h6 class="fw-bold" style="text-indent:20px;">메소드는 메소드이름() {...} 또는 메소드이름: function() {...}으로 표현한다.</h6>
