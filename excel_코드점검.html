@@ -63,10 +63,10 @@
         <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">특정캔버스</button>
-        <button onclick="연습()">연습()</button> <span class="fw-bold">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <button onclick="연습()">연습()</button> <span class="fw-bold" onclick="document.querySelector('#전체대체').innerHTML=''">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" title="이모티콘"></div>       
+    
       </div>
     </div>
   </nav>
@@ -85,7 +85,7 @@
       <span class="offcanvas-title">초기화</span><!--click동작-->
       <span class="offcanvas-title">모든제목보기</span><!--click동작-->
       <span class="offcanvas-title">모든카테고리</span> <!--click동작-->            
-      <span class="d-inline-block">파일검색</span><!-- 동작없음-->
+      <span class="d-inline-block" onclick="선택한캔버스_검색input_change시(document.querySelector('#canvas검색input'))">파일검색</span><!-- 동작없음-->
       <input id="canvas검색input" type = "text" onchange="선택한캔버스_검색input_change시(this)"><!-- change 동작-->
       <span id="canvas검색input_clear" onclick="검색input결과초기화()">clear</span><!--click동작-->
       <button id="캔버스바디_카테고리숨김">&lt;&lt;</button> <button id="캔버스바디_카테고리숨김해제">&gt;&gt;</button> <!--click동작-->
@@ -271,14 +271,15 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_정리된사이트">--- js 정리된 사이트---</h6>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_클틀에서이해하기">--- 큰틀에서 이해하기, 객체는 속성과 메서드를 포함하는 데이터의 집합 click!---</h6>
+        <h6 class="canvas_div fw-bold" title="js_클틀에서이해하기">1)JavaScript는 흔히 프로토타입 기반 언어(prototype-based language)라 불립니다.</h6>
+      </div>
+      <div>
+
+
         <h6 class="canvas_div fw-bold">1) js는 객체(변수)를 다룬다. 객체는 자료형을 가진다. 자료형마다 메소드(동작)가 다르다(고유의 동작이 있다).</h6>
         <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">2) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
           <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
         </h6>
-      </div>
-      <div>
-
         <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
         <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
         <h6 class="canvas_div fw-bold" title="js_object객체">2) 객체(Object = { }), 리터럴 객체</h6>
@@ -2529,18 +2530,47 @@
     </section>
 
     <div id="js_정리된사이트">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <div>
 
       </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <div>
 
       </div>
     </div>
     <div id="js_클틀에서이해하기">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <div>
+        <h6 class="fw-bold">prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩)__proto__ : 부모에 정의된 속성 정보들, 
+          typeof(객체) : 객체의 유형, <span style="color:blueviolet">Object.prototype.toString.call(객체) : object 객체의종류</span> 
+          <button onclick="보숨토글(this)" title="js검색정보" class="보숨토글버튼">보기</button>
+        </h6>
+        <div class="d-none" id="js검색정보">
+          <h6 class="fw-bold">1) 객체의 종류별로 prototype 속성이 있고, 그 안에 미리 정의해 놓은 속성과 값(메소드)가 있다. </h6>
+
+
+          <h6 class="fw-bold"><a href="https://velog.io/@pds0309/Javascript-Prototype-기본-이해하기" target="_blank">JavaScript는 흔히 프로토타입 기반 언어(prototype-based language)라 불립니다.</a> </h6>
+
+          <h6 class="fw-bold"><a href="https://wikidocs.net/251884" target="_blank"> 프로토타입의 기본 개념과 사용법</a> </h6>
+          <h6 class="fw-bold"><a href="https://stir.tistory.com/314" target="_blank">[JavaScript] 프로토타입 쓰는 이유, 목적 그리고 사용법</a> </h6>
+          <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">프로토타입 기반 언어?</a> </h6>
+          <h6 class="fw-bold"><a href="https://velog.io/@thumb_hyeok/프로토타입의-장점은-무엇일까" target="_blank">프로토타입의 장점은 무엇일까?</a> </h6>
+          <h6 class="fw-bold"><a href="https://ko.javascript.info/constructor-new" target="_blank">new 연산자와 생성자 함수</a> </h6>
+
+          
+        </div>
+        <h6 class="fw-bold">
+          <div class="d-inline-block">
+            <img src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
+            
+          </div>
+
+        </h6>
+
+        <h6></h6>
+
+        
 
       </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <div>
 
       </div>
     </div>

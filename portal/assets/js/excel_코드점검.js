@@ -26,24 +26,135 @@ function 전체대체에셑팅() {
   document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
 }
+
+
 function 연습() {
-  var id=document.querySelectorAll('.캔버스')
-  //console.log(Object.prototype.toString.call(id));//[object NodeList]
-  //console.log(Object.prototype.toString.call(id));//[object Array]
-  var ddd = Array.from(document.querySelectorAll('.캔버스'), e => e.classList[0])
-  console.log(ddd)
+//객체.__proto__ : 상위객체에 정의된 속성, 객체.prototype : 본인에게 정의된 속성
+var 배열=new Array(1,2,3); console.log(배열.prototype) // undefined
+var 배열=[1,2,3];          console.log(배열.prototype) // undefined
+console.log(Array.prototype)
+console.log(배열[0])
 
+console.log(Object.prototype.toString.call(Array.prototype))
+console.log(Object.prototype.toString.call(배열.__proto__))
+console.log(Object.prototype.toString.call(배열))
+
+
+return;
+
+
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    console.log(`안녕하세요, 저는 ${this.name}입니다.`);
+  }
+  두번째() {
+    console.log(`두번째입니다.`);
+  }
 }
+console.log(Person.prototype)
+console.log(typeof(Person.prototype))
+console.log(Person.__proto__)
+console.log(typeof(Person.__proto__))
+console.log(Person.__proto__.__proto__)
+console.log(Person.__proto__.__proto__.constructor)
+console.log(Person.__proto__.__proto__.constructor.assign)
+console.log(Person.__proto__.__proto__.constructor.assign.length)
+console.log(Person.__proto__.__proto__.constructor.assign.name)
 
+var 임시배열=[1,2,3];
+console.log(임시배열.prototype)
+console.log(임시배열.__proto__)
+var 임시배열=new Array();
+console.log(임시배열.prototype)
+console.log(임시배열.__proto__)
 
+  return;
+  console.log([1,2,3].prototype)
+  var aaaa=[1,2,3]
+  console.log(aaaa)
+  console.log(aaaa.prototype)
+  console.log(aaaa.__proto__)
+  console.log(Array.prototype)
+  console.log(Array.prototype.hasOwnProperty())
+  console.log(Array.prototype.hasOwnProperty())
+  console.log(aaaa.__proto__==Array.prototype)
+console.log(Object.getOwnPropertyNames(Object.__proto__));
+console.log(Object.getOwnPropertyNames(Object.__proto__)[0]);
+console.log(Object.getOwnPropertyNames(Object.__proto__)[1]);
+console.log(Object.getOwnPropertyNames(Object.__proto__)[2]);
+console.log(Object.getOwnPropertyNames(Object.prototype));
+Object.prototype.aaa='aaa'
+console.log(Object.getOwnPropertyNames(Object.prototype.hasOwnProperty));
+console.log(Object.getOwnPropertyNames(Object.prototype)[0]);
+var 요소들=document.querySelectorAll('.캔버스');
+console.log(요소들);
+console.log(Object.getOwnPropertyNames(요소들));
+console.log(요소들.__proto__);
+요소들.aa='aa'
+console.log(요소들.aa);
+console.log(Object.getOwnPropertyNames(요소들));
+console.log(요소들.__proto__);
+console.log(Object.getOwnPropertyNames(Array.prototype));
+console.log(Object.getOwnPropertyNames(Array.__proto__));
+console.log(Object.getOwnPropertyNames(Array.__proto__.__proto__));
+console.log(Object.getOwnPropertyNames([1,2,3]));
+console.log(Object.getOwnPropertyNames([1,2,3].__proto__));
+console.log(Object.getOwnPropertyNames([1,2,3].__proto__.entries));
+  return;
+var obj = {hello: 'world'};
+console.log(obj)
+var obj = ['hello','world'];
+console.log(obj)
+var obj = 'hello';
+console.log(obj)
+var obj = '1';
+console.log(obj)
+var obj = 1;
+console.log(obj)
 
+var obj = {hello: 'world'};
+console.log(obj.__proto__.constructor)
+var obj = ['hello','world'];
+console.log(obj.__proto__.constructor)
+var obj = 'hello';
+console.log(obj.__proto__.constructor)
+var obj = '1';
+console.log(obj.__proto__.constructor)
+var obj = 1;
+console.log(obj.__proto__.constructor)
+console.log(obj.__proto__.__proto__.constructor)
 
+console.log(Object.prototype.constructor)
+console.log(Object.__proto__.constructor)
+
+var obj = {hello: 'world'};
+console.log(obj.__proto__)
+var obj = ['hello','world'];
+console.log(obj.__proto__)
+var obj = 'hello';
+console.log(obj.__proto__)
+var obj = '1';
+console.log(obj.__proto__)
+var obj = 1;
+console.log(obj.__proto__)
+console.log(obj.__proto__.__proto__)
+console.log(obj.__proto__.__proto__.__proto__)
+
+console.log(Object.prototype.constructor)
+console.log(Object.__proto__.constructor)
+}
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
   for (var i=0; i<검색결과바탕색_클래스들.length; i++) {
     검색결과바탕색_클래스들[i].outerHTML=검색결과바탕색_클래스들[i].innerHTML;
   }
+  document.querySelector('#canvas검색input').value='';
 }
 function 선택한캔버스_검색input_change시(e) {
   console.log('캔버스_검색value_change시');
@@ -68,8 +179,9 @@ function 선택한캔버스_검색input_change시(e) {
     if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색결과포함id배열.push(검색할클래스들[i].id);
       if (검색할문자!=' ') {
-        검색할클래스들[i].innerHTML=
-        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+        검색할클래스들[i].innerHTML = 검색할클래스들[i].innerHTML.replace(new RegExp(`(?![^<]*>)${검색할문자}`, 'ig'),m => `<span class="검색결과바탕색">${m}</span>`);
+        //검색할클래스들[i].innerHTML= 검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+        //m은 찾은 텍스트(대소문자 포함) 그대로 들어옵니다. 이렇게 하면 하이라이트가 원래 입력된 대소문자 형태를 유지합니다.
       }
     }
   }
@@ -79,8 +191,8 @@ function 선택한캔버스_검색input_change시(e) {
     if (검색할클래스들[i].title!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
       검색결과포함id배열.push(검색할클래스들[i].title);
       if (검색할문자!=' ') {
-        검색할클래스들[i].innerHTML=
-        검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
+        검색할클래스들[i].innerHTML = 검색할클래스들[i].innerHTML.replace(new RegExp(`(?![^<]*>)${검색할문자}`, 'ig'),m => `<span class="검색결과바탕색">${m}</span>`);
+        //검색할클래스들[i].innerHTML= 검색할클래스들[i].innerHTML.replace(정규식내부, '<span class="검색결과바탕색">' + 찾는값 + '</span>');
       }
     }
   }
@@ -97,7 +209,8 @@ function 선택한캔버스_검색input_change시(e) {
     }  
   }
   if (내부html == '') { alert('없음'); return; }
-  document.querySelector('#캔버스바디').innerHTML = 내부html;
+  //부모의 부모 class=개별카테고리 형식 맞춤
+  document.querySelector('#캔버스바디').innerHTML = '<div class="개별카테고리"><div>' + 내부html + '</div></div>';
   document.querySelector('#canvas검색input').value = 검색할문자;
 }
 function 보숨토글(e) {
