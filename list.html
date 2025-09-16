@@ -94,6 +94,9 @@
     <!-- id=달력날짜기준, 1일일때 안바뀌고 달력날짜기준의 날짜를 참고로 달력이 바뀐다. -->
     <!--★★★★★★  class="연두바탕보라글자"  class="보라글자" class="테두리" class="마진탑3"  -->
     <button id="달력날짜기준" class="d-none">9월1일</button>
+    <div><button>9월18일</button><button></button>
+      <div class="일별메모모두감싸기">오후2시, 수품원에서 경태 오징어 2팬 가지러 옴</div>
+    </div>
     <div><button>월일</button><button></button>
       <div class="일별메모모두감싸기"></div>
     </div>
@@ -127,41 +130,39 @@
 </div>
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	09/11 목 16:21	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
-1	○	ONEYSCLF20826400	동천씨푸드	TLLU1203457	오징어	1,200 	SS신항.HJNC	9/10	1				SS신항.HJNC		ONEYSCLF20826400	ONE SPLENDOUR	25ONEY1119I-2020-	1,200 	24,720.00 	2025.09.10	09/11 목 16:21	
-1		041FX03942	씨에이치씨	WHLU7424486	새우	896 	SS북항.BPT감만	9/12	1			20 	SS북항.BPT감만			WAN HAI 289					조회정보	
-1		341510052746	우원홀딩스	TSTU8204307	새우	930 	SS북항.BPT감만	9/12	1			20 	SS북항.BPT감만	D/O.		INTERASIA ELEVATE					적재	57 
-1		341510052807	우원홀딩스	TSTU8520115	새우	1,035 	SS북항.BPT감만	9/12	1			40 	SS북항.BPT감만	D/O.		INTERASIA ELEVATE					4617	3줄
-1	○	ONEYSAOF33796812	대성무역	TLLU7007390	닭다리살	1,960 	HU(나모).DGT	9/10	2	9/11	13:02		HU(나모).DGT		ONEYSAOF33796812	NYK RUMINA	25ONEY1059I-5016-	1,960 	24,500.00 	2025.09.10	6,156 	4줄
-1			경태	5동일	포크오징어	13,260 		9/12	3												7,695 	5줄
-		COSU6421812610	대상 주식회사	SEGU9495580	닭다리살	1,916 	챔프(EZ신항).BNCT	9/7	2				챔프(EZ신항).BNCT			CMA CGM MISSOURI					9,234 	6줄
-		COSU6421817700	대상 주식회사	TXGU9018360	닭다리살	1,916 	챔프(EZ신항).BNCT	9/7	2				챔프(EZ신항).BNCT			CMA CGM MISSOURI						
-		COSU6422971636	수월한	OERU4220574	닭다리살	1,917 	ACE.BNCT	9/7	2				ACE.BNCT			CMA CGM MISSOURI					출고/입고 4주간	
-		HDMUSAOA29990808	수월한	HMMU5535474	닭다리살	1,917 	HPNT	9/10	2				HPNT			HYUNDAI PLATINUM					1일 7/5	5일줄
-		MAEUJBS277649	대성무역	MNBU4213585	닭다리살	1,958 	PNC	9/12	2				PNC			MAERSK EUREKA					12,306 	40
-		ONEYSAOF33796811	수월한	OTPU6382405	닭다리살	1,960 		9/12	2							NYK RUMINA 					9,999 	32.5
-		MAEUJBS277779	이마트	MNBU0222589	닭다리살	1,958 	PNC	9/12	2				PNC			MAERSK EUREKA					내국제외	
-		MEDUHI390723	수월한	CRLU1191664	닭다리살	1,958 	PNIT	9/13	2				PNIT			MSC CANCUN IV					구분	대수
-		MEDUFJ631946	씨케이글로벌	SZLU9282079	주꾸미등	1,571 	PNIT	9/13	1				PNIT			MSC CANCUN IV					수산	7
-		MEDUFJ632035	씨케이글로벌	SZLU9282079	북방대합	339 	PNIT	9/13	1				PNIT			MSC CANCUN IV					축산	26
-		XMN5A1237600	씨에이치씨	FBIU5229852	새우	1,800 	허치슨감만	9/14	1				허치슨감만			SM TOKYO					합계	33
-		SAO500572503	대성무역	FBIU5241380	닭장각	1,568 	BPT신선대	9/15	2				BPT신선대			STARSHIP MERCURY						
-		SAO500572500	수월한	CAAU4069051	닭다리살	1,960 	BPT신선대	9/15	2				BPT신선대			STARSHIP MERCURY					화주별 요약	
-		MAEUJBS279938	이마트	SUDU8207307	닭다리살	1,946 		9/16	2												화주	대수
-		MEDUHI370485	이마트	TTNU8732942	닭다리살	1,953 	PNIT	9/17	2				PNIT			MSC GINA					수월한	12
-		MEDUHI388511	이마트	TTNU8721167	닭다리살	1,958 	PNIT	9/17	2				PNIT			MSC GINA					대상 주식회사	4
-		HDMUSAOA56220202	수월한	HMMU5522348	닭다리살	1,960 	DGT	9/18	2				DGT			REN JIAN 20(SX2)					이마트	4
-		MAEUSSZ790399	대상 주식회사	MNBU0354353	닭다리살	1,980 		9/20	2												대성무역	3
-		ONEYSAOF39071704	수월한	ONEU9266446	닭다리살	1,960 	DGT	9/20	2				DGT			NYK DAEDALUS(SX2)					씨에이치씨	2
-		MAEUSSZ789940	현대코퍼	MNBU0679050	닭다리살	1,980 		9/20	2												우원홀딩스	2
-		MAEUSSZ789941	현대코퍼	MNBU3453940	닭다리살	1,980 		9/20	2												씨케이글로벌	2
-		COSU6424573985	수월한	FBIU5615541	닭다리살	1,960 		9/21	2							COSCO FAITH					현대코퍼	2
-		COSU6453392880	수월한	SZLU9420964	닭다리살	1,960 		9/21	2							COSCO FAITH					동천씨푸드	1
-		MAEUJBS277037	수월한	MNBU3139863	닭다리살	1,958 		9/23	2												경태	1
-		MAEUJBS277775	수월한	MNBU4133535	닭다리살	1,958 		9/23	2												아스트로스	1
-		MAEUJBS278703	수월한	SUDU8046007	닭다리살	1,860 		9/23	2												합계	34
-		ONEYSAOF39358810	아스트로스	TLLU1122062	닭근위	1,568 		9/25	2							DELPHINUS						
-		ONEYSAOF40192300	대상 주식회사	KKFU6728239	닭다리살	1,980 		미정	2													
+<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	09/16 화 16:56	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
+1		HASLS21250801445	우원홀딩스	HALU8502650	파인애플	1,543 	허치슨감만	9/16	1				허치슨감만			SAWASDEE CAPELLA					09/16 화 16:56	
+1	○	HASLS21250802757	우원홀딩스	SEGU9997000	새우	1,370 	SS북항.BPT신선대	9/17	1			20 	SS북항.BPT신선대		HASLS21250802757	SAWASDEE ALTAIR	25SNKO3454I-2040-	1,370 	8,768.00 	2025.09.17	조회정보	
+2	○	MEDUFX665070	현대코퍼	MEDU9028594	닭다리살	1,980 	천일정기화물.BCT	9/15	2				천일정기화물.BCT		MEDUFX665070	MSC FOLEGANDROS VI	25MSCU6224I-0006-	1,980 	24,948.00 	2025.09.15	적재	57 
+2	○	SAO500572503	대성무역	FBIU5241380	닭장각	1,568 	챔프(EZ북항).BPT신선대	9/17	2				챔프(EZ북항).BPT신선대		SAO500572503	STARSHIP MERCURY	25NSSLI039I-0018-	1,568 	24,304.00 	2025.09.15	4617	3줄
+2		SAO500572500	수월한	CAAU4069051	닭다리살	1,960 	ACE.BPT신선대	9/17	2				ACE.BPT신선대			STARSHIP MERCURY					6,156 	4줄
+		ONEYSAOF37484615	대성무역	IKSU2522613	닭다리살	1,960 	DGT	9/18	2				DGT			REN JIAN 20(SX2)					7,695 	5줄
+		SMLMBKK5A4629100	마이푸드	FBIU5230299	닭다리살	1,925 	BPT신선대	9/18	2				BPT신선대			STARSHIP URSA					9,234 	6줄
+		HDMUSAOA56220202	수월한	HMMU5522348	닭다리살	1,960 	DGT	9/18	2				DGT			REN JIAN 20(SX2)						
+		MAEUSSZ790399	대상 주식회사	MNBU0354353	닭다리살	1,980 	PNC	9/20	2				PNC			HT CAPRICORN					출고/입고 4주간	
+		MAEUJBS277649	대성무역	MNBU4213585	닭다리살	1,958 	PNC	9/20	2				PNC			MAERSK ESMERALDAS					1일 7/5	5일줄
+		MAEUJBS277037	수월한	MNBU3139863	닭다리살	1,958 	PNC	9/20	2				PNC			MAERSK ESMERALDAS					12,379 	40.2
+		MAEUJBS277775	수월한	MNBU4133535	닭다리살	1,958 	PNC	9/20	2				PNC			MAERSK ESMERALDAS					11,211 	36.4
+		ONEYSAOF39071704	수월한	ONEU9266446	닭다리살	1,960 	DGT	9/20	2				DGT			NYK DAEDALUS(SX2)					내국제외	
+		MAEUJBS277799	오케이푸드	MNBU3003497	닭다리살	1,958 	PNC	9/20	2				PNC			MAERSK ESMERALDAS					구분	대수
+		MAEUJBS277809	오케이푸드	MMAU1133050	닭다리살	1,958 	PNC	9/20	2				PNC			MAERSK ESMERALDAS					수산	3
+		MAEUJBS277779	이마트	MNBU0222589	닭다리살	1,958 	PNC	9/20	2				PNC			MAERSK ESMERALDAS					축산	29
+		MAEUSSZ789940	현대코퍼	MNBU0679050	닭다리살	1,980 	PNC	9/20	2				PNC			HT CAPRICORN					합계	32
+		MAEUSSZ789941	현대코퍼	MNBU3453940	닭다리살	1,980 	PNC	9/20	2				PNC			HT CAPRICORN						
+		ONEYSAOF41171800	현대코퍼	FSCU5833610	닭다리살	1,980 	DGT	9/20	2				DGT			NYK DAEDALUS(SX2)					화주별 요약	
+		MEDUFJ693631	씨케이글로벌	TEMU9338210	주꾸미 등	2,044 	PNIT	9/22	1				PNIT			MSC STACEY					화주	대수
+		COSU6421817710	대상 주식회사	DFOU6154086	닭다리살	1,916 	BNCT	9/23	2				BNCT			COSCO FAITH					수월한	8
+		MAEUJBS282051	대성무역	TTNU8988256	닭다리살	1,958 	BNCT	9/23	2				BNCT			COSCO FAITH					현대코퍼	4
+		COSU6424573985	수월한	FBIU5615541	닭다리살	1,960 	BNCT	9/23	2				BNCT			COSCO FAITH					대성무역	4
+		COSU6453392880	수월한	SZLU9420964	닭다리살	1,960 	BNCT	9/23	2				BNCT			COSCO FAITH					오케이푸드	4
+		MAEUJBS278897	오케이푸드	MNBU3887660	닭다리살	1,939 	PNC	9/23	2				PNC			MAERSK ALTAIR					이마트	4
+		MEDUHI377621	오케이푸드	TEMU9379502	닭다리살	1,958 	PNC	9/23	2				PNC			MSC LEO VI					대상 주식회사	3
+		MEDUHI370485	이마트	TTNU8732942	닭다리살	1,953 	PNIT	9/23	2				PNIT			MSC GINA					우원홀딩스	2
+		MEDUHI388511	이마트	TTNU8721167	닭다리살	1,958 	PNIT	9/23	2				PNIT			MSC GINA					마이푸드	1
+		MAEUJBS278703	수월한	SUDU8046007	닭다리살	1,860 	PNC	9/25	2				PNC			AMBITION					씨케이글로벌	1
+		MAEUJBS279938	이마트	SUDU8207307	닭다리살	1,946 	PNC	9/25	2				PNC			AMBITION					아스트로스	1
+		ONEYSAOF39358810	아스트로스	TLLU1122062	닭근위	1,568 	DGT	9/27	2				DGT			DELPHINUS C(SX2)					합계	32
+		ONEYSAOF40192300	대상 주식회사	KKFU6728239	닭다리살	1,980 		미정	2							MSC SHUBA B 						
 </div>
 <div class="d-none" id="원본text_입항관리도크부터도착항우측까지">도크	화주	컨테이너	작업순서	상세내용 참조		운송사	물품		06/05 목 16:15	B/L	도착항	상세내용
 </div>   

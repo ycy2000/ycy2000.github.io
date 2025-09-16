@@ -270,7 +270,10 @@
     <div class="개별카테고리" id="기초이해">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet" title="js_정리된사이트">--- js 정리된 사이트---</h6>
+        <h6 class="canvas_div fw-bold" style="color:blueviolet">--- js 정리---</h6>
+        <h6 class="canvas_div fw-bold" title="js_클래스기반언어">1) 클래스기반언어 == 프로토타입, 객체의 표현구조, 정의된 객체(Object, Array,...)</h6>
+        <h6 class="canvas_div fw-bold" title="js_사용자정의함수">2) 사용자정의함수(class, Function), 생성자 함수(new 사용), 프로토타입 체인</h6>
+        <br><br><br><br><br>
         <h6 class="canvas_div fw-bold" title="js_클틀에서이해하기">1) prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩) __proto__ : 부모에 정의된 속성 정보들</h6>
       </div>
       <div>
@@ -2528,47 +2531,186 @@
       <li>F. project에 사용된 이벤트리스너</li>
       <br><br><br><br>
     </section>
-
-    <div id="js_정리된사이트">
+    <div id="js_클래스기반언어" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
       <div>
-
+        <h6 class="fw-bold">1. 클래스 기반 언어는 객체 지향 프로그래밍(OOP)의 한 스타일로</h6>
+        <h6 class="띄움20">a) 클래스는 동작과 속성을 정의해 놓은 설계도같은 것이고, 객체를 만드는 기계같은 것이다.</h6>
+        <h6 class="띄움20">b) 클래스는 통해서 만들어진 객체는 인스턴스(instance)라고 부른다.</h6>
+        <h6 class="띄움20">c) 인스턴스(instance)는 자신을 만든 클래스에 정의된 동작과 속성을 상속한다.</h6>
+        <h6 class="fw-bold 띄움20" style="color:blueviolet">d) 자바스크립트에서 어떤 객체에 정의된 속성과 동작들의 집합을 prototype 이라고 한다.</h6>
+        <h6 class="fw-bold 띄움20" style="color:blueviolet">e) 상속에 대해서 '프로토타입 체인'에서 설명하고 있고, 정의 되어있는 객체와 그 속성과 동작을 알아보자.</h6>
+        <br>
+        <h6 class="fw-bold">2. 변수나 인스턴스는 거의 대부분 어떤 객체의 prototype(정의된 동작 및 속성)을 상속받게 되는데</h6>
+        <h6 class="fw-bold 띄움20" style="color:blueviolet">★ 변수.속성, 변수.메소드, 인스턴스.속성, 인스턴스.메소드, 형식으로 사용하게 된다.★</h6>
+        <h6 class="fw-bold 띄움20" style="color:blueviolet">정확한 의미를 구분하는게 중요하지만, 변수와 인스턴스도 객체(객체의 prototype을 상속함)라고 해도 무방하다. </h6>
+        <h6 class="fw-bold 띄움20">변수와 인스턴스에서 변수.__proto__(밑줄 두개씩) 으로 확인하면 상속한 객체의 prototype을 확인할 수 있다.</h6>
+        <br>
+        <h6 class="fw-bold">3. 객체의 구조 (Object, Array 등 정의된 객체의 구조... { 속성:값, 속성:값,...} 값은 원시값이나 메서드 객체 모두 가능)</h6>
+        <img src="portal/images/문서연결_엑셀VBA/object_array차이점.png" alt="이미지없음"><br>
+        <img src="portal/images/문서연결_엑셀VBA/object객체만들기예시.png" alt="이미지없음"><br><br>
+        <h5 class="fw-bold">리터럴 객체 { } 의, key:value 에서 key에 접근 : 점(.)표기법, 대괄호([ ]) 표기법</h5>
+        <h6 class="fw-bold">★ "name": "Alice" => key는 문자열로 인식하는데 따옴표를 생략해도 인식한다. (따옴표 입력의 불편 해소를 위해서)</h6>
+        <h6 class="fw-bold">★ key값의 제한사항</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- "공   백  " :  공백이 있으면 반드시 따옴표로 감싸야한다. - "123t" : 숫자로 시작하면 반드시 따옴표로 감싸야한다.</h6>
+        <h6 class="fw-bold">1) value에 함수 : const 리터럴 = {함수 : function 콘솔() {console.log('함수 콘솔')}} <span style="color:blueviolet">=> 리터럴.함수(); or 리터럴['함수']();</span></h6>
+        <h6 class="fw-bold">2) vlaue에 변수 : function 콘솔() {console.log('함수 콘솔')}; const 리터럴 = {함수 : 콘솔} <span style="color:blueviolet">=> 리터럴.함수(); or 리터럴['함수']();</span></h6>
+        <h6 class="fw-bold">3) 속성(key:value)에 메서드 : const 리터럴 = {함수() {console.log('함수 콘솔')}} <span style="color:blueviolet">=> 리터럴.함수(); or 리터럴['함수']();</span></h6>
+        <h6 class="fw-bold">4) function과 메서드 둘다 <span style="color:blueviolet">console.log(리터럴.함수) => ƒ 함수() {console.log('함수 콘솔')}</span></h6> 
+        <h6 class="fw-bold">★ <span style="color:blueviolet">콘솔메서드의 값으로 동작을 넣으면 console.log(리터럴.함수()) => 값으로 전달된 동작을 실행하고, undefined 출력됨</span></h6> 
+        <br>
+        <h5 class="fw-bold">객체.속성 을 통해서 value 값에 접근하는 방법 <span style="color:blueviolet">(key에 변수 사용할때 [변수명]:value = 계산된 속성명)</span></h5>
+        <h6 class="fw-bold">1) 점(.)표기법 : key에 따옴표가 없어도 되는 속성이름일때 사용가능</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- 객체.key : 따옴표 없이 key값만 전달 => 따옴표 있어야되는것은 안된다는 의미</h6>
+        <h6 class="fw-bold">2) 대괄호([ ])표기법 : 다 된다. </h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- 따옴표를 넣어야 된다. 객체["key이름"].</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- 문자열인 변수를 넣어도 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- const person = {name: "Alice"}; var 문자열="name"; console.log(person[문자열]); // Alice</h6>
+        <br>
+        <h5 class="fw-bold">Array 객체 [ ] 는, 대괄호([ ]) 표기법만 가능 (??숫자로 시작해서??)</h5>
+        <h6 class="fw-bold">1) 배열 = [1, 2, {name:"Alice"}] 안은 value값이다 value에는 객체, 함수도 가능하다. </h6>
+        <h6 class="fw-bold">2) 1)을 보면 key값이 없다. key값에 해당하는 것이 index이고 내부적으로 관리된다.</h6>
+        <h6 class="fw-bold">3) 참고로 배열[1] 대신에 배열["1"]도 된다. => key는 문자열이라는??</h6>
+        <h6 class="fw-bold">★ Alice : 배열[2].name => Alice, 배열[2](3번째값이 리터럴 객체 { }) 의 key인 name에 접근 : 점(.) 표기법</h6>
+        <h6 class="fw-bold">★ Alice : 배열[2]["name"] => Alice, 배열[2](3번째값이 리터럴 객체 { }) 의 key인 name에 접근 : 대괄호[ ] 표기법</h6>
+        <br>
+        <h5 class="fw-bold">객체.메서드 => 메서드의 문자열, 객체.메서드() => 메서드를 실행한 결과</h5>
+        <h6 class="fw-bold">value 에 함수는 '함수전체' 또는 '함수이름' 가능.</h6>
+        <h6 class="fw-bold">1) const person = [1, 2, {name:'Alice'},<span style="color:blueviolet">function 콘솔() {console.log('함수 콘솔')}</span> ]</h6>
+        <h6 class="fw-bold">2) function 콘솔() {console.log('함수 콘솔')}; const person = [1, 2, {name:'Alice'},<span style="color:blueviolet">콘솔</span> ]</h6>
+        <h6 class="fw-bold">★ value에 함수전체코드 들어갈수 있고, 외부에서 정의한 함수이름(이름만)으로 들어갈수있다.</h6>
+        <h6 class="fw-bold">3) console.log(person[3]) // ƒ 콘솔() {console.log('함수 콘솔')}</h6>
+        <h6 class="fw-bold">4) person[3]() // 함수 콘솔</h6>
+        <h6 class="fw-bold" style="color:blueviolet">★ 배열의 key는 index이므로 person['콘솔']()은 사용할 수 없다.</h6>
       </div>
       <div>
+        <h6 class="fw-bold">3. <button title="개인적정리png_내장객체등" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 종류</button>
+          정의되어 있는 객체의 종류, 정의된 내용은 <span style="color:blueviolet">console.log(객체.prototype)</span> 으로 확인 가능.           
+        </h6>
+        <h6 class="fw-bold 띄움20" style="color:blueviolet"><button title="id자료형표" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 이름</button>
+          객체의 이름 확인 : Object.prototype.toString.call(자료) ==> <span style="color:black">[object Function] 형태로 나오게 되는데</span>
+        </h6>
+        <h6 style="text-indent: 126px;">'Function' 만 추출하려면 Object.prototype.toString.call(자료).slice(8, -1);</h6>
+        <h6 class="fw-bold" style="text-indent: 126px;">변수나 인스턴스인 경우, 상속받은 객체의 객체이름이 출력된다. 거의 모두 정의된 객체 중 하나에 속하게 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 126px;color:blueviolet">최상위 객체는 Object(오브젝트)이다. {....}</h6>
+        <div id="개인적정리png_내장객체등" class="d-none">
+          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
+        </div>
+        <div class="자료형표 d-none" id="id자료형표">
+          <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
+          <code><div>class C__ {}</div><div>[object Function]</div><div>function</div></code>
+          <code><div>''</div><div>[object String]</div><div>string</div></code>
+          <code class="자료형표색칠"><div>new String()</div><div>[object String]</div><div>object</div></code>
+          <code><div>1</div><div>[object Number]</div><div>number</div></code>
+          <code class="자료형표색칠"><div>new Number()</div><div>[object Number]</div><div>object</div></code>
+          <code><div>NaN</div><div>[object Number]</div><div>number</div></code>
+          <code><div>Infinity</div><div>[object Number]</div><div>number</div></code>
+          <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
+          <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
+          <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
+          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
+          <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>Math</div><div>[object Math]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>/test/i</div><div>[object RegExp]</div><div>object</div></code>
+          <code><div>function () {}</div><div>[object Function]</div><div>function</div></code>
+          <code class="자료형표색칠"><div>document</div><div>[object HTMLDocument]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>버튼태그</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
+        </div>
+        <h6 class="fw-bold">4. prototype의 속성들은 Array객체에 정의된 속성중 하나인 forEach 등에서 나타나지 않는다.</h6>
+        <h6 class="fw-bold 띄움20">비열거(enumerable: false) 속성을 가지고 있다. <span style="color:blueviolet"> Object.getOwnPropertyNames(자료) 메서드는 비열거 속성 반환.</span></h6>
+        <h6 class="fw-bold 띄움20">Object.getOwnPropertyNames(자료) ==> 결과 : 배열에 속성이름이 담김.</h6>
+        <h6 class="fw-bold 띄움20" style="color:blueviolet">console.log(Object.getOwnPropertyNames(Array.prototype));</h6>
+        <div>
+          <h6 class="fw-bold">5. Array객체의 prototype 예시 <span class="d-inline-block" style="text-indent: 150px;">Object 객체의 prototype 예시</span>
+          </h6>
+          <img src="portal/images/문서연결_엑셀VBA/array_prototype.png" alt="이미지없음" class="align-top d-inline-block">
+          <div  class="align-top d-inline-block" style="margin-left:85px;">
+            <img src="portal/images/문서연결_엑셀VBA/object_prototype.png" alt="이미지없음">
+            <br><br>
+            <h6 class="fw-bold">console.log(Object.getOwnPropertyNames(Object.prototype));</h6>
+            <img src="portal/images/문서연결_엑셀VBA/object_prototypeget.png" alt="이미지없음">
+
+
+          </div>
+        </div>
+
+
 
       </div>
     </div>
-    <div id="js_클틀에서이해하기">
+    <div id="js_사용자정의함수" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
       <div>
-        <h6 class="fw-bold">prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩)__proto__ : 부모에 정의된 속성 정보들, typeof(객체) : 객체의 유형
+        <h6 class="fw-bold">객체의 생성방법 1. 객체 리터럴(Object Literal) 방식 </h6>
+        <h6 class="fw-bold">객체의 생성방법 2. 객체 생성자(Object Constructor) 방식 </h6>
+        <h6 class="fw-bold">객체의 생성방법 3. 함수 생성자(Function Constructor) 방식 </h6>
+        <h6 class="fw-bold">객체의 생성방법 4. class 문법(ES6에 추가된 class) 방식 : 함수 생성자라고 보면 되겠다. 문법만 다름 </h6>
+        <h6 class="fw-bold">객체의 생성방법 1. prototype을 가지는 객체의 생성. <span style="color:blueviolet">(인스턴스 생성하기 위함)</span> </h6>
+
+
+
+
+
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <h6 class="fw-bold">4. 사용자정의 함수(class, function) 또는 생성자(new) 통해 생성된 객체는 '인스턴스'라고 한다. </h6>
+        <h6 class="띄움20">a) 이 경우 Function 객체에 정의된 prototype을 상속받는다.(정의된 기능 사용 가능)</h6>
+        <h6 class="띄움20">b) 인스턴스이름.__proto__(밑줄 두개씩) == Function.prototype</h6>
+
+
+        <h6 class="fw-bold">2. 객체의 '프로토타입'은 정의된 객체의 이름을 말한다. (Object[최상위 객체], Function, Array, String, Math) </h6>
+        <h6 class="띄움20">a) Function.prototype, Object.prototype..... 모든 종류의 객체를 object라고도 한다.</h6>
+        <h6 class="fw-bold">3. Function 형식은 아니지만, 클래스도 정의되어 있는 객체이며 Function 객체이다.</h6>
+        <h6 class="fw-bold">4. 클래스는 Function 이고, 클래스를 통해 생성된 객체는 instance이다. 와 생성자 키워드인 new를 사용하여 객체를 만들면</h6>
+        <h6 class="띄움20"></h6>
+      </div>
+      <div>
+        <h6 class="fw-bold">1) 객체의 종류별로 prototype 속성이 있고, 그 안에 미리 정의해 놓은 속성과 값(메소드)가 있다. </h6>
+        <h6 class="fw-bold"><a href="https://velog.io/@pds0309/Javascript-Prototype-기본-이해하기" target="_blank">JavaScript는 흔히 프로토타입 기반 언어(prototype-based language)라 불립니다.</a> </h6>
+        <h6 class="fw-bold"><a href="https://wikidocs.net/251884" target="_blank"> 프로토타입의 기본 개념과 사용법</a> </h6>
+        <h6 class="fw-bold"><a href="https://stir.tistory.com/314" target="_blank">[JavaScript] 프로토타입 쓰는 이유, 목적 그리고 사용법</a> </h6>
+        <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">프로토타입 기반 언어?</a> </h6>
+        <h6 class="fw-bold"><a href="https://velog.io/@thumb_hyeok/프로토타입의-장점은-무엇일까" target="_blank">프로토타입의 장점은 무엇일까?</a> </h6>
+        <h6 class="fw-bold"><a href="https://ko.javascript.info/constructor-new" target="_blank">new 연산자와 생성자 함수</a> </h6>
+        <h6 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-Prototype-%EC%99%84%EC%A0%84-%EC%A0%95%EB%B3%B5-%E2%9D%97" target="_blank">[JS] 프로토타입(Prototype) 개념 완전 정복</a> </h6>
+        <h6 class="fw-bold"><a href="https://victorydntmd.tistory.com/51" target="_blank">생성자 함수</a> </h6>
+        <h6 class="fw-bold"><a href="https://creativevista.tistory.com/entry/자바스크립트자바스크립트-객체-완벽-가이드-선언-사용법-복사" target="_blank">객체 생성</a> </h6>
+        <h6 class="fw-bold"><a href="https://any-ting.tistory.com/130" target="_blank">객체생성 2</a> </h6>
+        <h6 class="fw-bold"><a href="https://velog.io/@bungbuung/%EA%B0%9D%EC%B2%B4-%EC%83%9D%EC%84%B1%EC%9D%98-%EB%A7%88%EB%B2%95-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Class-%EC%A0%95%EB%A6%AC" target="_blank">객체 생성의 마법: 자바스크립트 Class 정리</a> </h6>
+        
+        <img src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
+      </div>
+    </div>
+    <div id="js_클틀에서이해하기" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6 class="fw-bold">★객체[속성과 값(또는 메소드)], ★prototype, ★prototype체인, (밑줄 두개씩)__proto__ : 상위객체에 정의된 속성 정보들, typeof(객체) : 객체의 유형
           <span style="color:blueviolet">검색정보</span> 
           <button onclick="보숨토글(this)" title="js검색정보" class="보숨토글버튼">보기</button>
         </h6>
         <div class="d-none" id="js검색정보">
-          <h6 class="fw-bold">1) 객체의 종류별로 prototype 속성이 있고, 그 안에 미리 정의해 놓은 속성과 값(메소드)가 있다. </h6>
 
-
-          <h6 class="fw-bold"><a href="https://velog.io/@pds0309/Javascript-Prototype-기본-이해하기" target="_blank">JavaScript는 흔히 프로토타입 기반 언어(prototype-based language)라 불립니다.</a> </h6>
-
-          <h6 class="fw-bold"><a href="https://wikidocs.net/251884" target="_blank"> 프로토타입의 기본 개념과 사용법</a> </h6>
-          <h6 class="fw-bold"><a href="https://stir.tistory.com/314" target="_blank">[JavaScript] 프로토타입 쓰는 이유, 목적 그리고 사용법</a> </h6>
-          <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">프로토타입 기반 언어?</a> </h6>
-          <h6 class="fw-bold"><a href="https://velog.io/@thumb_hyeok/프로토타입의-장점은-무엇일까" target="_blank">프로토타입의 장점은 무엇일까?</a> </h6>
-          <h6 class="fw-bold"><a href="https://ko.javascript.info/constructor-new" target="_blank">new 연산자와 생성자 함수</a> </h6>
-
-          
         </div>
         <h6 class="fw-bold">
           <div class="d-inline-block align-top">
             <img src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
           </div>
           <div class="d-inline-block align-top">
-            <h6 class="fw-bold">
-              <span style="color:blueviolet">Object.prototype.toString.call(객체) : object 객체의종류</span> 
-              <button onclick="보숨토글(this)" title="js검색정보" class="보숨토글버튼">보기</button>
-            </h6>
+            <h6 class="fw-bold"></h6>
 
           </div>
         </h6>
+        <h6 class="fw-bold">
+          <span style="color:blueviolet">Object.prototype.toString.call(객체) : object 객체의종류</span> 
+          <button onclick="보숨토글(this)" title="js_객체의종류" class="보숨토글버튼">보기</button>
+        </h6>
+        <div class="d-none" id="js_객체의종류">
+
+        </div>
 
         <h6></h6>
 
@@ -2596,7 +2738,7 @@
           <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
           <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
           <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
-          <code>null이 object로 나오는것은 버그 (객체가 아니다), 객체(Object) 는 속성(Property)과 메서드(Method)를 포함하는 데이터의 집합.</code>
+          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
           <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
           <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
           <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>

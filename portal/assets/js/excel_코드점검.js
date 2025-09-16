@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='설명_image폴더의자료사용현황' //원래는 h6의 title이다.
+  전체변수h6title ='js_사용자정의함수' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,124 +29,10 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
-//객체.__proto__ : 상위객체에 정의된 속성, 객체.prototype : 본인에게 정의된 속성
-var 배열=new Array(1,2,3); console.log(배열.prototype) // undefined
-var 배열=[1,2,3];          console.log(배열.prototype) // undefined
-console.log(Array.prototype)
-console.log(배열[0])
-
-console.log(Object.prototype.toString.call(Array.prototype))
-console.log(Object.prototype.toString.call(배열.__proto__))
-console.log(Object.prototype.toString.call(배열))
-
-
-return;
-
-
-
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-  greet() {
-    console.log(`안녕하세요, 저는 ${this.name}입니다.`);
-  }
-  두번째() {
-    console.log(`두번째입니다.`);
-  }
-}
-console.log(Person.prototype)
-console.log(typeof(Person.prototype))
-console.log(Person.__proto__)
-console.log(typeof(Person.__proto__))
-console.log(Person.__proto__.__proto__)
-console.log(Person.__proto__.__proto__.constructor)
-console.log(Person.__proto__.__proto__.constructor.assign)
-console.log(Person.__proto__.__proto__.constructor.assign.length)
-console.log(Person.__proto__.__proto__.constructor.assign.name)
-
-var 임시배열=[1,2,3];
-console.log(임시배열.prototype)
-console.log(임시배열.__proto__)
-var 임시배열=new Array();
-console.log(임시배열.prototype)
-console.log(임시배열.__proto__)
-
-  return;
-  console.log([1,2,3].prototype)
-  var aaaa=[1,2,3]
-  console.log(aaaa)
-  console.log(aaaa.prototype)
-  console.log(aaaa.__proto__)
-  console.log(Array.prototype)
-  console.log(Array.prototype.hasOwnProperty())
-  console.log(Array.prototype.hasOwnProperty())
-  console.log(aaaa.__proto__==Array.prototype)
-console.log(Object.getOwnPropertyNames(Object.__proto__));
-console.log(Object.getOwnPropertyNames(Object.__proto__)[0]);
-console.log(Object.getOwnPropertyNames(Object.__proto__)[1]);
-console.log(Object.getOwnPropertyNames(Object.__proto__)[2]);
 console.log(Object.getOwnPropertyNames(Object.prototype));
-Object.prototype.aaa='aaa'
-console.log(Object.getOwnPropertyNames(Object.prototype.hasOwnProperty));
-console.log(Object.getOwnPropertyNames(Object.prototype)[0]);
-var 요소들=document.querySelectorAll('.캔버스');
-console.log(요소들);
-console.log(Object.getOwnPropertyNames(요소들));
-console.log(요소들.__proto__);
-요소들.aa='aa'
-console.log(요소들.aa);
-console.log(Object.getOwnPropertyNames(요소들));
-console.log(요소들.__proto__);
-console.log(Object.getOwnPropertyNames(Array.prototype));
-console.log(Object.getOwnPropertyNames(Array.__proto__));
-console.log(Object.getOwnPropertyNames(Array.__proto__.__proto__));
-console.log(Object.getOwnPropertyNames([1,2,3]));
-console.log(Object.getOwnPropertyNames([1,2,3].__proto__));
-console.log(Object.getOwnPropertyNames([1,2,3].__proto__.entries));
-  return;
-var obj = {hello: 'world'};
-console.log(obj)
-var obj = ['hello','world'];
-console.log(obj)
-var obj = 'hello';
-console.log(obj)
-var obj = '1';
-console.log(obj)
-var obj = 1;
-console.log(obj)
 
-var obj = {hello: 'world'};
-console.log(obj.__proto__.constructor)
-var obj = ['hello','world'];
-console.log(obj.__proto__.constructor)
-var obj = 'hello';
-console.log(obj.__proto__.constructor)
-var obj = '1';
-console.log(obj.__proto__.constructor)
-var obj = 1;
-console.log(obj.__proto__.constructor)
-console.log(obj.__proto__.__proto__.constructor)
 
-console.log(Object.prototype.constructor)
-console.log(Object.__proto__.constructor)
 
-var obj = {hello: 'world'};
-console.log(obj.__proto__)
-var obj = ['hello','world'];
-console.log(obj.__proto__)
-var obj = 'hello';
-console.log(obj.__proto__)
-var obj = '1';
-console.log(obj.__proto__)
-var obj = 1;
-console.log(obj.__proto__)
-console.log(obj.__proto__.__proto__)
-console.log(obj.__proto__.__proto__.__proto__)
-
-console.log(Object.prototype.constructor)
-console.log(Object.__proto__.constructor)
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
@@ -166,6 +52,7 @@ function 선택한캔버스_검색input_change시(e) {
   //innerHTML로 검색한다. 메모도 검색해야하니까. 처음에만 두번표시한다?
   var 검색할문자 = document.querySelector('#canvas검색input').value.toUpperCase(); 
   if (document.querySelector('#canvas검색input').value == '') { return; }
+  document.querySelector('#캔버스바디').innerHTML='';
 
   var 찾는값=document.querySelector('#canvas검색input').value; 
   var 정규식내부= new RegExp('(?![^<]*>)' + 찾는값, 'ig')
@@ -173,7 +60,7 @@ function 선택한캔버스_검색input_change시(e) {
   //예전코드 대비 추가 1 : id(공백도 있으니 유의) 요소의 innerHTML에 검색문자 있을때 id 를 배열에 담기.
   var 검색결과포함id배열=[];
   //id의 innerHTML에 찾는값 있을때 '아이디추출', 내부 값 색칠
-  var 검색할클래스들 = document.querySelectorAll('.모든id모음위치자유 > [id]');
+  var 검색할클래스들 = document.querySelectorAll('.모든id모음 > div > [id]');
   console.log('id있는것개수 : ' + 검색할클래스들.length)  
   for (var i = 0; i < 검색할클래스들.length; i++) {
     if (검색할클래스들[i].id!='' && 검색할클래스들[i].innerHTML.toUpperCase().search(검색할문자) > -1) {
@@ -209,6 +96,7 @@ function 선택한캔버스_검색input_change시(e) {
     }  
   }
   if (내부html == '') { alert('없음'); return; }
+
   //부모의 부모 class=개별카테고리 형식 맞춤
   document.querySelector('#캔버스바디').innerHTML = '<div class="개별카테고리"><div>' + 내부html + '</div></div>';
   document.querySelector('#canvas검색input').value = 검색할문자;
