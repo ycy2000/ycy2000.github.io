@@ -163,10 +163,10 @@
       </div>
       <div>
         <h6 style="color:blueviolet;font-weight: bold;">-- 기본 사용 방법 --</h6>
-        <h6 class="canvas_div fw-bold" title='_05_git_깃관련_큰틀에서'>[깃-로컬 깃폴더-gitHub 원격저장소, 큰틀에서 이해해보기]</h6>
-        <h6 class="canvas_div fw-bold" title='_05_git_설치'>1. 처음 셑팅 : git 프로그램 컴퓨터에 <a href="https://sfida.tistory.com/46" target="_blank">설치하기(링크)</a>. 설치후 <span style="color:blueviolet">'Git Bash'</span> 사용법</h6>
-        <h6 class="canvas_div fw-bold" title='_05_git_깃허브가입하기'>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용), 원격저장소 주소확인</h6>
-        <h6 class="canvas_div fw-bold" title='_05_git_연동설정'>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 연동설정</h6>
+        <h6 class="fw-bold" title='_05_git_깃관련_큰틀에서'>[깃-로컬 깃폴더-gitHub 원격저장소, 큰틀에서 이해해보기]</h6>
+        <h6 class="fw-bold" title='_05_git_설치'>1. 처음 셑팅 : git 프로그램 컴퓨터에 <a href="https://sfida.tistory.com/46" target="_blank">설치하기(링크)</a>. 설치후 <span style="color:blueviolet">'Git Bash'</span> 사용법</h6>
+        <h6 class="fw-bold" title='_05_git_깃허브가입하기'>2. 처음 셑팅 : gitHub 가입하기, 레포지터리 생성(블로그용), 원격저장소 주소확인</h6>
+        <h6 class="fw-bold" title='_05_git_연동설정'>3. 처음 셑팅 : git 프로그램에서 컴퓨터와 gitHub 원격저장소 연동설정</h6>
         <h6 class="fw-bold">4. 처음 셑팅 : 여러가지 에디터 중에서, Visual Studio Code 설치 (vsCode), 플러그인</h6>
         <h6 class="fw-bold">5. 주요명령어 : add, commit, push, pull 사용법</h6>
         <h6 class="fw-bold">6. 두대의 컴퓨터에 같은 레포지터리(원격저장소) 연동방법 <span style="color:blueviolet;font-weight: bold;">(지켜야 할 것들)</span></h6>
@@ -270,45 +270,59 @@
     <div class="개별카테고리" id="기초이해">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet">--- js 정리---</h6>
-        <h6 class="canvas_div fw-bold" title="js_클래스기반언어">1) 클래스기반언어 == 프로토타입, 객체의 표현구조, 정의된 객체(Object, Array,...)</h6>
-        <h6 class="canvas_div fw-bold" title="js_사용자정의함수">2) 사용자정의함수(class, Function), 생성자 함수(new 사용), 프로토타입 체인</h6>
+        <h6 class="fw-bold" style="color:blueviolet">--- js 정리 *표시는 div와 연결x---</h6>
+        <h6 class="fw-bold">1) *JavaScript는 완전한 객체 지향 언어입니다. 흔히 객체 지향 개념은 다음과 같은 요소를 갖고 있습니다.</h6>
+        <h6 class="fw-bold 띄움20">*•클래스, •객체, •메소드, •속성, •캡슐화, •집합, •재사용, •상속, •변형</h6>
+        <h6 class="fw-bold" style="color:blueviolet" title="js설명_객체변수자료형">2) 객체, 객체의 표현방식, 객체의 속성중 하나인 prototype, 상속, 변수, 자료형</h6>
+        <h6 class="fw-bold">3) *JavaScript는 흔히 프로토타입 기반 언어라 하는데 모든 기능이 여기 정의되어 있음.</h6>
+        <h6 class="fw-bold" style="color:blueviolet" title="js설명_객체의종류">4) 정의되어 있는 객체[종류], 사용자가 정의한 객체, prototype은 객체의 기능정보.</h6>
+        <h6 class="fw-bold">객체의 이름 확인 : <span style="color:blueviolet">Object.prototype.toString.call(자료).slice(8, -1);</span></h6>
+        <h6 class="fw-bold">객체의 prototype 속성 확인 : <span style="color:blueviolet">Object.getOwnPropertyNames(자료); 자료 예 : Array.prototype</span></h6>
+        <h6 class="fw-bold">4) </h6>
+        
+
+
+        <h6 class="fw-bold">5) JavaScript는 흔히 프로토타입 기반 언어라 하는데 모든 기능이 여기 정의되어 있음.</h6>
+        <h6 class="fw-bold" title="js_클래스기반언어">1) ㅇㄹㄴㅇㄹJavaScript는 흔히 프로토타입 기반 언어라 하는데 클래스기반 언어에서의 클래스와 유사하다고 설명한다.</h6>
+        <h6 class="fw-bold" title="js_클래스기반언어">2) </h6>
+        <h6 class="fw-bold" title="js_사용자정의함수">2) 사용자정의함수(class, Function), 생성자 함수(new 사용), 프로토타입 체인</h6>
         <br><br><br><br><br>
-        <h6 class="canvas_div fw-bold" title="js_클틀에서이해하기">1) prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩) __proto__ : 부모에 정의된 속성 정보들</h6>
+        <h6>클래스기반 언어에서 클래스란? 검색어</h6>
+        <h6 class="fw-bold" title="js_클틀에서이해하기">1) prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩) __proto__ : 부모에 정의된 속성 정보들</h6>
       </div>
       <div>
 
 
-        <h6 class="canvas_div fw-bold">1) js는 객체(변수)를 다룬다. 객체는 자료형을 가진다. 자료형마다 메소드(동작)가 다르다(고유의 동작이 있다).</h6>
-        <h6 class="canvas_div fw-bold" title="js_자료형을먼저알아야겠다">2) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
+        <h6 class="fw-bold">1) js는 객체(변수)를 다룬다. 객체는 자료형을 가진다. 자료형마다 메소드(동작)가 다르다(고유의 동작이 있다).</h6>
+        <h6 class="fw-bold" title="js_자료형을먼저알아야겠다">2) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
           <a href="https://velog.io/@surim014/웹을-움직이는-근육-JavaScript란-무엇인가-part-7-Object-35k01xmdfp" target="_blank">객체에 대해 알아보자</a>
         </h6>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
-        <h6 class="canvas_div fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
-        <h6 class="canvas_div fw-bold" title="js_object객체">2) 객체(Object = { }), 리터럴 객체</h6>
-        <h6 class="canvas_div fw-bold" title="js_array객체">3) Array 객체</h6>
+        <h6 class="fw-bold" style="color:blueviolet;" title="js_속성접근법">2),3) 속성(key:value), 메서드(속성자리에), vlaue에는 값 객체 변수 모두올수 있다.</h6>
+        <h6 class="fw-bold" title="js_객체관련반복문">2) 3) 보기 전에 반복문 먼저 알아보자. 2)객체(Object = { }), 3)Array</h6>
+        <h6 class="fw-bold" title="js_object객체">2) 객체(Object = { }), 리터럴 객체</h6>
+        <h6 class="fw-bold" title="js_array객체">3) Array 객체</h6>
 
 
-        <h6 class="canvas_div fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
-        <h6 class="canvas_div fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
-        <h6 class="canvas_div fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
+        <h6 class="fw-bold" title="js_함수객체">5) 함수(function) 객체 : function, 동작 정의, 인자를 받을수 있음. </h6>
+        <h6 class="fw-bold" title="js_클래스객체">6) class : 함수(function)로 분류됨, 문법이 있다. 사용자정의 객체</h6>
+        <h6 class="fw-bold" title="js_prototype">★ prototype 어렵다? 알때까지는 맛보기로만 </h6>
         <br>
-        <h6 class="canvas_div fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>  
+        <h6 class="fw-bold" title="js_new생성자함수1">★ 생성자함수(new) : '인스턴스이름 = new 객체({ }, class, 함수이름 등)</h6>  
       </div>
       <div>
         <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
         <h6 class="fw-bold">[메모] true, false를 더하기 하면 true는 1, false는 0이다. true + true + false = 2</h6>
-        <h6 class="canvas_div fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
-        <h6 class="canvas_div fw-bold" title='JS2_set교집합차집합합집합'>
+        <h6 class="fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
+        <h6 class="fw-bold" title='JS2_set교집합차집합합집합'>
           <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set활용법</a>, 
           Set 객체는 '집합'의 개념. 있나 없나 확인, index로 접근 안됨
         </h6>
-        <h6 class="canvas_div fw-bold" title='java_개인적정리_argument'>객체(속성[key,value]), 변수, 매개변수(인수,parameter), argument(인자)</h6>
-        <h6 class="canvas_div fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
+        <h6 class="fw-bold" title='java_개인적정리_argument'>객체(속성[key,value]), 변수, 매개변수(인수,parameter), argument(인자)</h6>
+        <h6 class="fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
 
 
-        <h6 class="canvas_div fw-bold d-inline-block" title='java_야구계산함수' style="background-color: chartreuse;">야구 계산()함수에 구조분해할당 등</h6>
-        <h6 class="canvas_div fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
+        <h6 class="fw-bold d-inline-block" title='java_야구계산함수' style="background-color: chartreuse;">야구 계산()함수에 구조분해할당 등</h6>
+        <h6 class="fw-bold" title='java기초_소개'>자바스크립트 소개,</h6>
         <h6 class="fw-bold"><a href="https://radait.tistory.com/4" target="_blank">링크:객체지향언어란?[특징,장점,단점,종류].객체Object.자바의 절반은 객체</a></h6>
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes" target="_blank">Object prototypes, 프로토타입 기반 언어?</a></h6>
         <h6 class="fw-bold">검색대기 : 템플릿</h6>
@@ -316,18 +330,18 @@
         <h6 class="fw-bold"><a href="https://f-lab.kr/insight/understanding-javascript-prototype-20250114?gad_source=1&gclid=Cj0KCQjwkN--BhDkARIsAD_mnIoUfpzrV45HkMxOsWmygp4Rw2cJhq8JVK-wB_BhmSmDHU6hdDXwmvwaAqHsEALw_wcB" target="_blank">링크:★프로토타입이란 무엇인가?</a></h6>
         <h6 class="fw-bold"><a href="https://codingwanee.tistory.com/entry/JavaScript-프로토타입-prototype" target="_blank">링크:프로토타입</a></h6>
         <h6 class="fw-bold">*없는속성 접근 : 함수에서는 error, prototype __proto__ class object에서는 undefined</h6>
-        <h6 class="canvas_div fw-bold" title='java_onclick에this'>onclick속성에 함수(this)전달 및 활용. 이때 this는 요소를 가리킴. <a href="https://inpa.tistory.com/entry/JS-📚-this-총정리" target="_blank">this링크</a>   </h6>
+        <h6 class="fw-bold" title='java_onclick에this'>onclick속성에 함수(this)전달 및 활용. 이때 this는 요소를 가리킴. <a href="https://inpa.tistory.com/entry/JS-📚-this-총정리" target="_blank">this링크</a>   </h6>
       </div>
     </div>
     <div class="개별카테고리" id="선별">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="canvas_div fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
-        <h6 class="canvas_div fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
+        <h6 class="fw-bold" title='java_검색용어'>검색용어 ex)배열의 메소드</h6>
+        <h6 class="fw-bold" title='java_Array_from'>Array.from : 특정 객체를 변환하여 새로운 배열을 생성한다.</h6>
 
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title='java_fetch'>Fetch</h6>
+        <h6 class="fw-bold" title='java_fetch'>Fetch</h6>
 
       </div>
       <div>
@@ -344,18 +358,18 @@
         <h6 class="fw-bold">*reduce <a href="https://bdhyuk.tistory.com/entry/JAVASCRIPT-자바스크립트-reduce-함수-완벽-가이드" target="_blank">링크</a></h6>
         <h6 class="fw-bold">*callback, 콜백함수 <a href="https://www.freecodecamp.org/korean/news/https-www-freecodecamp-org-news-javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/" target="_blank">링크</a></h6>
         
-        <h6 class="canvas_div fw-bold" title="js_물음표사용법">물음표(?)사용예. document.querySelector(`#기회${i} .숫자일치`)?.innerHTML</h6>
-        <h6 class="canvas_div fw-bold" title="js_if의조건값true_false">js_if의조건값true_false + 물음표(?)사용예.</h6>
-        <h6 class="canvas_div fw-bold" title="js_반복문종류">js_반복문종류 [키워드:자바스크립트 반복문 종류]</h6>
-        <h6 class="canvas_div fw-bold" title="js_배열split와join참고">js_배열split와join참고</h6>
-        <h6 class="canvas_div fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
-        <h6 class="canvas_div fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
-        <h6 class="canvas_div fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
-        <h6 class="canvas_div fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>        
-        <h6 class="canvas_div fw-bold" title="js_html순환">html 순환</h6>
-        <h6 class="canvas_div fw-bold" title="js_for_in반복문_객체리터럴">반복문(객체리터럴) : for (key in obj) {...}</h6>
-        <h6 class="canvas_div fw-bold" title="js_for_of반복문_배열">반복문(배열) : for (각배열값 of 배열) {...}, 주의:각배열값이 객체리터럴인 경우</h6>
-        <h6 class="canvas_div fw-bold" title="js_forEach반복문_배열">반복문(배열) : arr.forEach( ( value, index, arr) => { ... } );</h6>
+        <h6 class="fw-bold" title="js_물음표사용법">물음표(?)사용예. document.querySelector(`#기회${i} .숫자일치`)?.innerHTML</h6>
+        <h6 class="fw-bold" title="js_if의조건값true_false">js_if의조건값true_false + 물음표(?)사용예.</h6>
+        <h6 class="fw-bold" title="js_반복문종류">js_반복문종류 [키워드:자바스크립트 반복문 종류]</h6>
+        <h6 class="fw-bold" title="js_배열split와join참고">js_배열split와join참고</h6>
+        <h6 class="fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
+        <h6 class="fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
+        <h6 class="fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
+        <h6 class="fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>        
+        <h6 class="fw-bold" title="js_html순환">html 순환</h6>
+        <h6 class="fw-bold" title="js_for_in반복문_객체리터럴">반복문(객체리터럴) : for (key in obj) {...}</h6>
+        <h6 class="fw-bold" title="js_for_of반복문_배열">반복문(배열) : for (각배열값 of 배열) {...}, 주의:각배열값이 객체리터럴인 경우</h6>
+        <h6 class="fw-bold" title="js_forEach반복문_배열">반복문(배열) : arr.forEach( ( value, index, arr) => { ... } );</h6>
         <h6 class="canvas_div" title='excel_js파일유의사항'>JS > 유의사항 : 클릭이벤트, e.target, 검색, innerText, innerHTML,outerHTML, </h6>
         <h6 class="canvas_div" title='excel_js_scroll'>JS > scroll : 위치, 찾기, 좌표,   </h6>
         <h6 style="color:blueviolet">JS > 정보 : 찾기, search, split, match, 정규식, indexOf(정규식 안씀, 값으로 검색, 뒤에서 검색 가능, 많이 씀)  </h6>
@@ -367,12 +381,12 @@
         <h6 class="canvas_div" title='excel_js_substr등'>JS > concat, join, +, trim, replace, replaceAll, slice, substr, substring, slice</h6>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
-        <h6 class="canvas_div fw-bold" title='html_text_content_탭과줄바꿈'>innerHTML, innerText, textContent, \t, \n, 문자열.trim(); 하는 이유</h6>
-        <h6 class="canvas_div fw-bold" title='화살표함수등'>화살표함수, 함수변수,  </h6>
-        <h6 class="canvas_div fw-bold" title='excel_js_HTML노드'>노드 </h6>
-        <h6 class="canvas_div fw-bold" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
-        <h6 class="canvas_div fw-bold" title='연습DIV'>연습div</h6>
+        <h6 class="fw-bold" title='textarea내용의탭으로구분여러줄가공'>textarea, input, contenteditable, split<span style="color:blueviolet;">★ECXEL 범위 복붙 탭/줄바꿈★</span></h6>
+        <h6 class="fw-bold" title='html_text_content_탭과줄바꿈'>innerHTML, innerText, textContent, \t, \n, 문자열.trim(); 하는 이유</h6>
+        <h6 class="fw-bold" title='화살표함수등'>화살표함수, 함수변수,  </h6>
+        <h6 class="fw-bold" title='excel_js_HTML노드'>노드 </h6>
+        <h6 class="fw-bold" title='excel_InStrRev'>EXCEL : InStr, InStrRev 찾기</h6>
+        <h6 class="fw-bold" title='연습DIV'>연습div</h6>
         <h6 class="canvas_div" title='excel_js_검색단어바탕색예제'>코드 :  검색단어 결과에 바탕색 칠하는 방법, 선택한캔버스_검색input_change시(e)</h6>
         <h6 class="canvas_div" title='excel_js_펑션_상위단계확인'>코드 : 클릭이벤트 요소 안의 요소 클릭시 상위단계 확인</h6>
       </div>
@@ -454,7 +468,7 @@
         
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet">리터럴 : index사용가능, 반복가능 => 문자열, 배열</h6>
+        <h6 class="fw-bold" style="color:blueviolet">리터럴 : index사용가능, 반복가능 => 문자열, 배열</h6>
 
       </div>
       <div>
@@ -514,9 +528,9 @@
     <div class="개별카테고리" id="css선별">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="canvas_div fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
-        <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
-        <h6 class="canvas_div fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
+        <h6 class="fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
+        <h6 class="fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
+        <h6 class="fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
       </div>
       <div>
         
@@ -528,7 +542,7 @@
     <div class="개별카테고리" id="css2">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
+        <h6 class="fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
         <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
         <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
         <h6>[메모] text-indent : 상속됨</h6>  
@@ -547,7 +561,7 @@
       </div>
       <div>
         <h6 class="canvas_div" title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
-        <h6 class="canvas_div fw-bold" title="_class">Set은 클래스중 하나, class란? 함수와 유사한듯, 엑셀로 치면 사용자지정함수?</h6>
+        <h6 class="fw-bold" title="_class">Set은 클래스중 하나, class란? 함수와 유사한듯, 엑셀로 치면 사용자지정함수?</h6>
       </div>
     </div>
     <div class="개별카테고리" id="table등">
@@ -568,7 +582,7 @@
     <div class="개별카테고리" id="기타전체_탁구">
       <div>
         <h5 class="fw-bold canvas_div" title='탁구_메모'>탁구 메모</h6>
-        <h6 class="canvas_div fw-bold" title='출처밝히는방법'>링크</h6>
+        <h6 class="fw-bold" title='출처밝히는방법'>링크</h6>
         <h6 class="fw-bold canvas_div" title='탁구_사사이'>(상대라켓과 상대스윙)보는것 40%, 자세만드는과정 40%, 스윙20%(본능적으로 된다)</h6>
         <h6 class="fw-bold canvas_div" title='탁구_1장자탁구클럽'>[탁구레슨] (포핸드) 커트볼드라이브 라켓'각'만 바꿔 걸었을 뿐인데..#장자탁구클럽</h6>
       </div>
@@ -581,34 +595,34 @@
     </div>
     <div class="개별카테고리" id="기타전체_샷컷"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <div>
-        <h6 class="canvas_div fw-bold" title='동영상편집_링크'>동영상편집 정보 링크</h6>
-        <h6 class="canvas_div fw-bold" title='샷컷_1'>프로젝트폴더 변경,</h6>
-        <h6 class="canvas_div fw-bold" title='샷컷_움짤처럼또는겹치기가능한가'>움짤처럼또는겹치기가능한가</h6>
-        <h6 class="canvas_div fw-bold" title='샷컷_화면의일부분만다시편집가능한가'>화면의일부분만다시편집가능한가</h6>
+        <h6 class="fw-bold" title='동영상편집_링크'>동영상편집 정보 링크</h6>
+        <h6 class="fw-bold" title='샷컷_1'>프로젝트폴더 변경,</h6>
+        <h6 class="fw-bold" title='샷컷_움짤처럼또는겹치기가능한가'>움짤처럼또는겹치기가능한가</h6>
+        <h6 class="fw-bold" title='샷컷_화면의일부분만다시편집가능한가'>화면의일부분만다시편집가능한가</h6>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title='샷컷_무료음원'>샷컷 무료음원 등 자료구하기, 기타 링크</h6>
-        <h6 class="canvas_div fw-bold" title='샷컷_사용법정리_처음화면편집레이아웃'>샷컷 처음화면 : 편집 레이아웃 용어부터 </h6>
-        <h6 class="canvas_div fw-bold" title='샷컷_사용법정리_타임라인1'>타임라인편집 : 재생목록(비디오,오디오,자막), 자르기, 페이드</h6>
+        <h6 class="fw-bold" title='샷컷_무료음원'>샷컷 무료음원 등 자료구하기, 기타 링크</h6>
+        <h6 class="fw-bold" title='샷컷_사용법정리_처음화면편집레이아웃'>샷컷 처음화면 : 편집 레이아웃 용어부터 </h6>
+        <h6 class="fw-bold" title='샷컷_사용법정리_타임라인1'>타임라인편집 : 재생목록(비디오,오디오,자막), 자르기, 페이드</h6>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title='샷컷_임시편집정보'>샷컷 임시편집 정보</h6>
+        <h6 class="fw-bold" title='샷컷_임시편집정보'>샷컷 임시편집 정보</h6>
       </div>
     </div>
     <div class="개별카테고리" id="기타전체_기타"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
-      <h6 class="canvas_div fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
-      <h6 class="canvas_div fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
-      <h6 class="canvas_div fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
+      <h6 class="fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
+      <h6 class="fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
+      <h6 class="fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
     </div>
     <div class="개별카테고리" id="기타전체_임시">
       <div>
-        <h6 class="canvas_div fw-bold" title='임시_휴가등'>임시_휴가등</h6>
+        <h6 class="fw-bold" title='임시_휴가등'>임시_휴가등</h6>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title=''>예제</h6>
+        <h6 class="fw-bold" title=''>예제</h6>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title=''>예제</h6>
+        <h6 class="fw-bold" title=''>예제</h6>
       </div>
     </div>
     <div class="개별카테고리" id="기타전체_녹화">
@@ -2531,6 +2545,106 @@
       <li>F. project에 사용된 이벤트리스너</li>
       <br><br><br><br>
     </section>
+    <div id="js설명_객체변수자료형" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6 class="fw-bold">자료 : 변수, 객체(ex:Array, Array.prototype,1, '1','문자열',,,) </h6>
+        <h6 class="fw-bold">Object.prototype.toString.call(자료) : <span style="color:blueviolet">어떤 객체의 기능(prototype)을 상속 받았는지. (내장)객체이름(인스턴스 아님)</span> </h6>
+        <h6 class="띄움20">[object Array] 의미 : 최상위 객체이름은 Object이고 부모객체는 Array이다.</h6>
+        <h6 class="fw-bold">typeof(자료) : 자료의 형태, var a = new String('문자') ==> object, var b = '문자' ==> string, 자료형표
+          <button onclick="보숨토글(this)" title="js설명_객체변수자료형_자료형표" class="보숨토글버튼">보기</button>
+        </h6>
+        <div class="자료형표 d-none" id="js설명_객체변수자료형_자료형표" style="margin-bottom:5px;">
+          <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
+          <code><div>class C__ {}</div><div>[object Function]</div><div>function</div></code>
+          <code><div>''</div><div>[object String]</div><div>string</div></code>
+          <code class="자료형표색칠"><div>new String()</div><div>[object String]</div><div>object</div></code>
+          <code><div>1</div><div>[object Number]</div><div>number</div></code>
+          <code class="자료형표색칠"><div>new Number()</div><div>[object Number]</div><div>object</div></code>
+          <code><div>NaN</div><div>[object Number]</div><div>number</div></code>
+          <code><div>Infinity</div><div>[object Number]</div><div>number</div></code>
+          <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
+          <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
+          <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
+          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
+          <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>Math</div><div>[object Math]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>/test/i</div><div>[object RegExp]</div><div>object</div></code>
+          <code><div>function () {}</div><div>[object Function]</div><div>function</div></code>
+          <code class="자료형표색칠"><div>document</div><div>[object HTMLDocument]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>버튼태그</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
+        </div>
+        <h6 class="fw-bold">1. 변수는 객체를 담을수 있고, 다른 모든 값을 담을수 있다. typeof(변수) : 변수의 자료형을 알수 있다.</h6>
+        <h6 class="fw-bold 띄움20">a) undedined : 객체는 있는데 값이 할당되지 않은상태. [object Undefined] 정의된 객체가 아니다. 상속도 없다.</h6>
+        <h6 class="fw-bold 띄움20">b) null : 객체 자체가 없다. 찾아봤는데 없다?</h6>
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div id="js설명_객체의종류">
+      <div class="대체2줄" style="border-bottom:1px solid rgb(201, 188, 188)">
+        <div style="border-right:1px solid rgb(201, 188, 188)">
+          <h6 class="fw-bold">1) 변수는 어느객체의 prototype을 상속받거나 null(정의되지 않은 상태)이다. 상속받는다는 것은 기능을 이용 및 접근할수 있다는 것.</h6>
+          <code class="띄움20">var 변수=1; Object.prototype.toString.call(변수) ==> [object Number], Object.getOwnPropertyNames(변수) ==> [] (빈 배열)</code>
+          <h6 class="띄움20">a) 일단 Object.prototype.toString.call(변수) 자체로 <span style="color:blueviolet">상위객체의 기능을 사용하였다.</span> </h6>
+          <h6 class="띄움20" style="color:blueviolet">b) [object Number] : 담아보니 Number 형식의 객체이다 ==> Number 객체로 정의됨 ==> Number.prototype 기능 상속함.</h6>
+          <h6 class="띄움20">c) [] (빈 배열) : 변수 자체에 정의된 기능은 없다.</h6>
+          <h6 class="띄움20">d) ★ var 변수=new Number(1); new를 통하여 객체를 생성하면 변수는 [object Number], Number.prototype 기능 상속함.</h6>
+          <h6 class="띄움41">var 변수=1; 여기서 내부적으로 new Number(1);가 작동함.</h6>
+          <h6 class="띄움41">Number 객체를 사용한 또다른 객체의 생성이고 이렇게 생성된 객체를 인스턴스라고 부른다.</h6>
+          <h6 class="fw-bold">2) 객체를 통해 생성된 객체를 인스턴스라고 한다. 변수도 객체를 가리키고 있으므로 객체이다.</h6>
+          <h6 class="fw-bold">3) prototype 체인의 이해. 객체는 자신의 정보와 기능을 prototype 속성에 담는다.</h6>
+          <h6 class="띄움20">자바스크립트의 내장객체 중 최상위 객체는 Object이고, 하위 객체는 상위객체의 prototype(정의된 기능)도 상속받는다.</h6>
+          <h6 class="fw-bold">4) Object 객체의 속성 예시. 6),7)활용</h6>
+          <code class="띄움20">console.log(Object.prototype.toString.call(Object)); ==> [object Function]</code>
+          <code class="띄움20">객체 자체는 함수유형이다? 객체의 prototype은 Object 유형이다?</code>
+          <code class="띄움20">console.log(Object.getOwnPropertyNames(Object));</code>
+          <code class="띄움20">(26) ['length', 'name', <span style="color:blueviolet;font-weight: bold;">'prototype'</span>, 'assign', 'getOwnPropertyDescriptor', 'getOwnPropertyDescriptors', </code>
+          <code class="띄움20">'getOwnPropertyNames', 'getOwnPropertySymbols', 'hasOwn', 'is', 'preventExtensions', 'seal', 'create', </code>
+        </div>
+        <div>
+          <code class="띄움20">'defineProperties', 'defineProperty', 'freeze', 'getPrototypeOf', 'setPrototypeOf', 'isExtensible', 'isFrozen', </code>
+          <code class="띄움20">'isSealed', 'keys', 'entries', 'fromEntries', 'values', 'groupBy']</code>          
+          <h6 class="fw-bold">5) Object 객체의 속성중 하나인 prototype의 속성 예시. 6),7)활용</h6>
+          <code class="띄움20">console.log(Object.prototype.toString.call(Object.prototype)); ==> [object Object]</code>
+          <code class="띄움20">객체 자체는 함수유형이다? 객체의 prototype은 Object 유형이다?</code>
+          <code class="띄움20">console.log(Object.getOwnPropertyNames(Object.prototype));</code>
+          <code class="띄움20">(12) ['constructor', '__defineGetter__', '__defineSetter__', <span style="color:blueviolet;font-weight: bold;">'hasOwnProperty'</span>, '__lookupGetter__', '__lookupSetter__', </code>
+          <code class="띄움20">'isPrototypeOf', 'propertyIsEnumerable', 'toString', 'valueOf', '__proto__', 'toLocaleString']</code>
+          <h6 class="fw-bold">6) 객체의 이름 확인 : Object.prototype.toString.call(자료).slice(8, -1);</h6>
+          <h6 class="띄움20">a) Object. ==> 객체의 속성에 접근한다(. 점)</h6>
+          <h6 class="띄움20">b) prototype. ==> 속성 중 하나인 prototype 객체의 속성에 접근한다(. 점)</h6>
+          <h6 class="띄움20">c) toString. ==> prototype 객체의 속성중 toString 속성에 접근한다(. 점)</h6>
+          <h6 class="띄움20">d) call. ==> toString 속성의 속성중 하나인 call 속성에 접근한다 (. 점. 동작은 메소드라고 부른다.)</h6>
+          <h6 class="띄움20">e) (자료) ==> 자료는 객체를 넣는곳이다. 자료의 유형을 문자열로 출력한다.</h6>
+          <h6 class="띄움20">f) slice(8,-1) ==> 배열이면 [object Array] 형태로 나오는데 Array 부분만 추출</h6>
+          <h6 class="fw-bold">7) 객체의 prototype 속성 확인 : Object.getOwnPropertyNames(자료); 자료 예 : Array.prototype</h6>
+          <h6 class="띄움20">속성의 이름들이 배열에 담긴형태로 반환된다.</h6>
+        </div>
+      </div>
+      <h6 class="fw-bold" style="margin-top:5px;"><button title="개인적정리png_내장객체등" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 종류</button>
+        정의되어 있는 객체의 종류, 정의된 내용은 <span style="color:blueviolet">console.log(객체.prototype)</span> 으로 확인 가능.
+        <span>자바스크립트 내장객체 위주. 간단한 String객체 먼저.</span>
+      </h6>
+      <div id="개인적정리png_내장객체등" class="d-none">
+        <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
+      </div>
+      <div class="d-inline-block">
+        <code>var 문자열 = new String('비어있으면 빈 String객체, 값을 넣으면 값이 넣어진 객체')</code>
+        <code>console.log(Object.prototype.toString.call(문자열)); ==> [object String]</code>
+        <code>변수 '문자열'이 String객체를 통하여 생성된 인스턴스이므로 기능을 보려면 변수 자체가 아니라, String 객체에서 확인해야함</code>
+        <code>console.log(Object.getOwnPropertyNames(String.prototype)); ==> 52종이 배열에 담김. String객체의 속성중 prototype속성(기능 정보)</code>
+        <code>52종 중, String.prototype.constructor 결과는 6개 ['length', 'name', 'prototype', 'fromCharCode', 'fromCodePoint', 'raw']</code>
+      </div>
+    </div>
+
     <div id="js_클래스기반언어" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
@@ -5519,9 +5633,9 @@
     <div class="카테고리모음"><!--캔버스바디에 들어간다-->
       <div class="개별카테고리" id="htmlJavascript전체_선별">
         <div>
-          <h6 class="canvas_div fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
-          <h6 class="canvas_div fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
-          <h6 class="canvas_div fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
+          <h6 class="fw-bold" title="_02_html_파순03_박스모델">박스모델, box-sizing, dispaly, position</h6>
+          <h6 class="fw-bold" title="_02_html_boxsizing예제">boxsizing 예제, 부모에 display:table + 자식에 display:table-cell</h6>
+          <h6 class="fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
         </div>
         <div>
           
@@ -5532,7 +5646,7 @@
       </div>
       <div class="개별카테고리" id="htmlJavascript전체_css2"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
         <div>
-          <h6 class="canvas_div fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
+          <h6 class="fw-bold" title="flex_align_text_align등실습">★ flex, align, text-align등실습</h6>
           <h6 class="canvas_div" title='CSS_1'>:nth, css </h6>
           <h6 class="canvas_div" title='CSS_background'>CSS > background-color, background-image, background-repeat</h6>
           <h6>[메모] text-indent : 상속됨</h6>  
@@ -5551,7 +5665,7 @@
         </div>
         <div>
           <h6 class="canvas_div" title="_03_개념정리_파순02_선택자선택연습" style="font-weight: bold;">** 선택자, 선택연습 **</h6>
-          <h6 class="canvas_div fw-bold" title="_class">Set은 클래스중 하나, class란? 함수와 유사한듯, 엑셀로 치면 사용자지정함수?</h6>
+          <h6 class="fw-bold" title="_class">Set은 클래스중 하나, class란? 함수와 유사한듯, 엑셀로 치면 사용자지정함수?</h6>
         </div>
       </div>
       <div class="개별카테고리" id="htmlJavascript전체_table등"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->

@@ -29,6 +29,7 @@ code {color:black;display:block;}
 .노랑바탕색 {background-color: yellow;} /* 캔버스_개별카테고리_h6의title과id순서 */
 .검색결과바탕색 {background-color:chocolate;}
 .띄움20 {text-indent: 20px;}
+.띄움41 {text-indent: 41px;}
 
 .결과표, .제목, .결과 {display: inline-block;}
 .제목 {width:120;text-align: center;}

@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_사용자정의함수' //원래는 h6의 title이다.
+  전체변수h6title ='js설명_객체변수자료형' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,7 +29,59 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
+  var 클래스=class c {};
+  console.log(Object.prototype.toString.call(클래스)); // [object Function]
+  console.log(클래스.__proto__);                       // ƒ () { [native code] } 
+
+  var 문자열='문자열';
+  console.log(Object.prototype.toString.call(문자열));
+  console.log(문자열.__proto__);
+
+  var 난=NaN;
+  console.log(Object.prototype.toString.call(난));
+  console.log(난.__proto__);
+
+
+
+
+  return;
+  Object.새로운속성='ㅇㅇㅇ'
+  console.log(Object.새로운속성)
+  console.log(Object.getOwnPropertyNames(Object));
+
+  var 객체={}
+  객체.prototype={'일번':1,'이번':2}
+  console.log(객체.prototype)
+  console.log(객체.__proto__)
+  console.log(Object.getOwnPropertyNames(객체))
+
+
+
+  return;
+console.log(Object.getOwnPropertyNames(String))
+console.log(Object.getOwnPropertyNames(String.prototype))
+
+var 문자열 = new String('비어있으면 빈 String객체, 값을 넣으면 값이 넣어진 객체');
+console.log(문자열)
+console.log(문자열.length)
+console.log(Object.prototype.toString.call(문자열));
+console.log(typeof(문자열));
+
+var 문자열 = '비어있으면 빈 String객체, 값을 넣으면 값이 넣어진 객체';
+console.log(문자열)
+console.log(문자열.length)
+console.log(typeof(문자열));
+
+return;  
+console.log(Object.prototype.toString.call(Object))
+console.log(Object.getOwnPropertyNames(Object));
+console.log(Object.getOwnPropertyNames(Object).length);
+console.log(Object.prototype.toString.call(Object.prototype))
 console.log(Object.getOwnPropertyNames(Object.prototype));
+console.log(Object.getOwnPropertyNames(Object.prototype).length);
+console.log(Object.prototype.constructor);
+console.log(Object.constructor);
+
 
 
 
