@@ -29,6 +29,20 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
+  function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const p = new Person('Alice', 30);
+console.log(p)
+
+
+
+
+
+
+  return;
   var 클래스=class c {};
   console.log(Object.prototype.toString.call(클래스)); // [object Function]
   console.log(클래스.__proto__);                       // ƒ () { [native code] } 
