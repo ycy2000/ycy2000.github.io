@@ -29,111 +29,33 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
+console.log(Object.prototype.toString.call(Object));  // [object Function]
+console.log(Object.prototype.toString.call(Array));  // [object Function]
+console.log(Object.prototype.toString.call(String));  // [object Function]
+console.log(Object.prototype.toString.call(Function));  // [object Function]
 
+console.log(Object.prototype.toString.call(Object.prototype));  // [object Object]
+console.log(Object.prototype.toString.call(Array.prototype));  // [object Array]
+console.log(Object.prototype.toString.call(String.prototype));  // [object String]
+console.log(Object.prototype.toString.call(Function.prototype));  // [object Function]
 
+let 배열 = [1,2,3];
+console.log(배열);                                  // (3) [1,2,3]
+console.log(Object.prototype.toString.call(배열));  // [object Array]
+console.log(Object.getOwnPropertyNames(배열));      // (4) ['0','1','2','length']
+console.log(typeof(배열));                          // object
 
-  console.log(Object);
-  console.log(Object.prototype.toString.call(Object));
-  console.log(Object.getOwnPropertyNames(Object));
-  console.log(typeof(Object));
-  console.log(Object.prototype);
-  console.log(Object.getOwnPropertyNames(Object.prototype));
-  console.log(Object.prototype.toString.call(Object.prototype));
-  console.log(typeof(Object.prototype));
+let 객체 = {학교:'중학교', 성별:'남'};
+console.log(객체);                                  // {학교: '중학교', 성별: '남'}
+console.log(Object.prototype.toString.call(객체));  // [object Object]
+console.log(Object.getOwnPropertyNames(객체));      // ['학교', '성별']
+console.log(typeof(객체));                          // object
 
-  console.log(Array);
-  console.log(Array.prototype);
-  console.log(Object.getOwnPropertyNames(Array));
-  console.log(Object.getOwnPropertyNames(Array.prototype));
-  console.log(typeof(Array));
-  console.log(Object.prototype.toString.call(Array));
-  console.log(Object.prototype.toString.call(Array.prototype));
-
-return;
-let 자료 = {순번1:'사과', 순번2:230, 순번3:'바나나'};
-console.log(typeof(자료))
-console.log(Object.prototype.toString.call(자료))
-
-return;
-  let 객체1={
-    a:'첫',
-    b:'둘',
-    prototype:{
-      프로토1:'프로토1',
-      프로토2:'프로토2',
-    }
-  }
-console.log(객체1.prototype)
-console.log(객체1 instanceof Array)
-console.log(객체1 instanceof Object)
-console.log(Array instanceof Object)
-console.log(Object instanceof Object)
-delete 객체1.a;
-console.log(객체1);
-
-
-
-
-
-
-
-  return;
-  var 클래스=class c {};
-  console.log(Object.prototype.toString.call(클래스)); // [object Function]
-  console.log(클래스.__proto__);                       // ƒ () { [native code] } 
-
-  var 문자열='문자열';
-  console.log(Object.prototype.toString.call(문자열));
-  console.log(문자열.__proto__);
-
-  var 난=NaN;
-  console.log(Object.prototype.toString.call(난));
-  console.log(난.__proto__);
-
-
-
-
-  return;
-  Object.새로운속성='ㅇㅇㅇ'
-  console.log(Object.새로운속성)
-  console.log(Object.getOwnPropertyNames(Object));
-
-  var 객체={}
-  객체.prototype={'일번':1,'이번':2}
-  console.log(객체.prototype)
-  console.log(객체.__proto__)
-  console.log(Object.getOwnPropertyNames(객체))
-
-
-
-  return;
-console.log(Object.getOwnPropertyNames(String))
-console.log(Object.getOwnPropertyNames(String.prototype))
-
-var 문자열 = new String('비어있으면 빈 String객체, 값을 넣으면 값이 넣어진 객체');
-console.log(문자열)
-console.log(문자열.length)
-console.log(Object.prototype.toString.call(문자열));
-console.log(typeof(문자열));
-
-var 문자열 = '비어있으면 빈 String객체, 값을 넣으면 값이 넣어진 객체';
-console.log(문자열)
-console.log(문자열.length)
-console.log(typeof(문자열));
-
-return;  
-console.log(Object.prototype.toString.call(Object))
-console.log(Object.getOwnPropertyNames(Object));
-console.log(Object.getOwnPropertyNames(Object).length);
-console.log(Object.prototype.toString.call(Object.prototype))
-console.log(Object.getOwnPropertyNames(Object.prototype));
-console.log(Object.getOwnPropertyNames(Object.prototype).length);
-console.log(Object.prototype.constructor);
-console.log(Object.constructor);
-
-
-
-
+let 숫자 = 1;
+console.log(숫자);                                  // 1
+console.log(Object.prototype.toString.call(숫자));  // [object Number]
+console.log(Object.getOwnPropertyNames(숫자));      // []
+console.log(typeof(숫자));                          // number
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
