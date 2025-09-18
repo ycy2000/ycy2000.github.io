@@ -32,7 +32,6 @@ function 연습() {
 
 
 
-
   console.log(Object);
   console.log(Object.prototype.toString.call(Object));
   console.log(Object.getOwnPropertyNames(Object));
