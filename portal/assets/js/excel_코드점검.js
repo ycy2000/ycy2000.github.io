@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js설명_객체변수자료형' //원래는 h6의 title이다.
+  전체변수h6title ='js주요개념' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,13 +29,49 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
-  function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
 
-const p = new Person('Alice', 30);
-console.log(p)
+
+
+
+  console.log(Object);
+  console.log(Object.prototype.toString.call(Object));
+  console.log(Object.getOwnPropertyNames(Object));
+  console.log(typeof(Object));
+  console.log(Object.prototype);
+  console.log(Object.getOwnPropertyNames(Object.prototype));
+  console.log(Object.prototype.toString.call(Object.prototype));
+  console.log(typeof(Object.prototype));
+
+  console.log(Array);
+  console.log(Array.prototype);
+  console.log(Object.getOwnPropertyNames(Array));
+  console.log(Object.getOwnPropertyNames(Array.prototype));
+  console.log(typeof(Array));
+  console.log(Object.prototype.toString.call(Array));
+  console.log(Object.prototype.toString.call(Array.prototype));
+
+return;
+let 자료 = {순번1:'사과', 순번2:230, 순번3:'바나나'};
+console.log(typeof(자료))
+console.log(Object.prototype.toString.call(자료))
+
+return;
+  let 객체1={
+    a:'첫',
+    b:'둘',
+    prototype:{
+      프로토1:'프로토1',
+      프로토2:'프로토2',
+    }
+  }
+console.log(객체1.prototype)
+console.log(객체1 instanceof Array)
+console.log(객체1 instanceof Object)
+console.log(Array instanceof Object)
+console.log(Object instanceof Object)
+delete 객체1.a;
+console.log(객체1);
+
 
 
 
