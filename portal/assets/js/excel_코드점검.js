@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js주요개념' //원래는 h6의 title이다.
+  전체변수h6title ='js자료형객체변수' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,6 +29,33 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
+
+
+  function abc() {console.log('반환');return 1;}
+  console.log(typeof(abc));
+  console.log(typeof(abc()));
+
+  let 연습=function () {}
+    연습.속성='ㅇㅇㅇ'
+  console.log(연습);
+  console.log(연습.속성);
+
+  let 문자열='문자열';
+
+  console.log(문자열);
+  문자열.속성='ㅇㅇㅇ'
+  console.log(문자열.속성);
+
+  console.log(typeof(Object));
+  console.log(typeof(Object()));
+  console.log(typeof(abc));
+  console.log(typeof(abc()));
+
+  return;
+let aaa=document.querySelector('#dkdkdkdk');
+console.log(aaa);
+
+
 console.log(Object.prototype.toString.call(Object));  // [object Function]
 console.log(Object.prototype.toString.call(Array));  // [object Function]
 console.log(Object.prototype.toString.call(String));  // [object Function]

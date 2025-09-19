@@ -270,16 +270,30 @@
     <div class="개별카테고리" id="기초이해">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" style="color:blueviolet">--- js 정리---</h6>
-        <h6 class="fw-bold" title="js참고자료링크">JavaScript는 완전한 객체 지향 언어입니다. 객체를 다룬다. <span style="color:blueviolet">모든 참고자료 링크</span> </h6>
-        <h6 class="fw-bold" title="js주요개념">주요개념 : 자료형, 변수, 객체는 자료형 중 하나, 프로토타입의 상속(기능의 상속)</h6>
-        <h6 class="fw-bold">1) 자료형, 변수(변수에는 모든 자료형을 담을 수 있다), <span style="color:blueviolet">let 변수=어떤자료;</span> </h6>
-        <h6 class="fw-bold">2) 객체, 객체의 표현식, { key:value, key2:value2,...}, 프로퍼티, key, 값과 메서드.</h6>
-        <h6 class="fw-bold">3) </h6>
+        <h6 class="fw-bold" style="color:blueviolet">--- 기본 몸풀기 개념 정리 ---</h6>
+        <h6 class="fw-bold" title="js자료형객체변수">1) 객체(프로퍼티가 있다), 자료형, typeof(자료) : 자료 = 변수의 값</h6>
+        <h6 class="fw-bold">2) 생성자 함수인 내장객체는 인스턴스를 생성한다. (개념적 분류)</h6>
 
 
-
-
+        <br><br><br><br><br><br>
+        <h6 class="fw-bold" style="color:blueviolet">--- js 기본개념 정리 ---</h6>
+        <h6 class="fw-bold" title="js참고자료링크">JavaScript는 완전한 객체 지향 언어입니다. <u>★객체★</u>를 다룬다. <span style="color:blueviolet">모든 참고자료 링크</span> </h6>
+        <h6 class="fw-bold">1) '변수에 담긴 값'은 자료형을 가진다. 원시형, 함수형(object 와 function)</h6>
+        <h6 class="fw-bold">2) 객체의 특징 : 프로퍼티==속성(key:value 의 쌍)를 가질 수 있다.</h6>
+        <h6 class="fw-bold">일반객체 { } : 일반객체는 new Object(); 가 내부적으로 실행된다.</h6>
+        <h6 class="fw-bold">함수(동작을 정의 한 것)형 객체 (속성을 만들수도 있다는 점.)</h6>
+        <h6 class="fw-bold">class문법(함수형 객체의 속성정의를 다듬었다)</h6>
+        <h6 class="fw-bold">함수이름 ==> 내부의 코드 문자열, 함수이름() ==> 내부의 코드 문자열을 실행하라.</h6>
+        <h6 class="fw-bold">4) 프로그램에 미리 정의한 '내장객체'는 함수이다. == 동작을 정의함</h6>
+        <h6 class="fw-bold">5) new 로 호출할 수 있는 내장객체는 '생성자 함수'라고 한다.</h6>
+        <h6 class="fw-bold">6) function, class도 new를 사용해 인스턴스를 만든다.</h6>
+        <h6 class="fw-bold">7) 생성자 함수를 사용해 생성한 객체를 인스턴스라한다.</h6>
+        <h6 class="fw-bold">8) new 에 의한 객체생성 과정은 생략될 수 있다.</h6>
+        <h6 class="fw-bold">9) 생성자 함수는 생성자 객체의 기능(prototype)을 인스턴스에 물려준다. (상속)</h6>
+        <h6 class="fw-bold">10) Object.prototype.toString.call(자료); 어떤 생성자객체의 기능을 상속받았는지</h6>
+        <h6 class="fw-bold">prototype, [[prototype]], 내장객체와 인스턴스가 확실해 분리되어 이해가 되는가</h6>
+      </div>
+      <div>
         <br><br><br><br><br>
         <h6 class="fw-bold" style="color:blueviolet" title="js설명_객체의표현">2) 객체, 객체의 표현방식, 객체의 속성중 하나인 prototype, 상속, 변수, 자료형</h6>
 
@@ -299,9 +313,6 @@
         <br><br><br><br><br>
         <h6>클래스기반 언어에서 클래스란? 검색어</h6>
         <h6 class="fw-bold" title="js_클틀에서이해하기">1) prototype, prototype체인, 객체의 종류, 속성과 값(또는 메소드), (밑줄 두개씩) __proto__ : 부모에 정의된 속성 정보들</h6>
-      </div>
-      <div>
-
 
         <h6 class="fw-bold">1) js는 객체(변수)를 다룬다. 객체는 자료형을 가진다. 자료형마다 메소드(동작)가 다르다(고유의 동작이 있다).</h6>
         <h6 class="fw-bold" title="js_자료형을먼저알아야겠다">2) 자료형을 먼저 알아야겠다. <a href="https://minify.tistory.com/33" target="_blank">자료형 링크</a> 객체 맛보기 설명
@@ -2555,6 +2566,53 @@
       <li>F. project에 사용된 이벤트리스너</li>
       <br><br><br><br>
     </section>
+    <div id="js자료형객체변수" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <code>• 객체(Object) 는 속성(Property) 또는, 메서드(Method)를 포함하는 데이터의 집합.</code>
+        <h6 class="fw-bold">• 레거시코드 : 오래된 코드에 오류가 있지만 수정이 불가능하게 된 것.</h6>
+        <h6 class="fw-bold">• null은 속성과 메서드가 없는데 object 자료형으로 나타나는것은 잘못됨(레거시 코드)</h6>
+        <div class="js자료형객체변수자료형표 d-inline-block"style="margin-bottom:5px;">
+          <code><div>자료</div><div>typeof 자료</div></code>
+          <code><div>undefined</div><div>undefined</div></code>
+          <code class="자료형표색칠"><div>null</div><div>object</div></code>
+          <code><div>''</div><div>string</div></code>
+          <code><div>1</div><div>number</div></code>
+          <code><div>NaN</div><div>number</div></code>
+          <code><div>Infinity</div><div>number</div></code>
+          <code><div>true</div><div>boolean</div></code>
+          <code style="background-color: chocolate;"><div>function () {}</div><div>function</div></code>
+          <code style="background-color: chocolate;"><div>class C__ {}</div><div>function</div></code>
+          <code style="background-color:darkgoldenrod"><div>new String()</div><div>object</div></code>
+          <code style="background-color:darkgoldenrod;"><div>new Number()</div><div>object</div></code>
+          <code class="자료형표색칠"><div>[]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>{}</div><div>object</div></code>
+          <code class="자료형표색칠"><div>new Date()</div><div>object</div></code>
+          <code class="자료형표색칠"><div>Math</div><div>object</div></code>
+          <code class="자료형표색칠"><div>/test/i</div><div>object</div></code>
+          <code class="자료형표색칠"><div>document</div><div>object</div></code>
+          <code class="자료형표색칠"><div>버튼태그</div><div>object</div></code>        
+        </div>
+        <div class="d-inline-block fw-bold align-top" style="margin-left:-5px;">
+          <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;">비고</code>
+          <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:155px;">원시값(Primitive) <br>불변(immutable) 값,  <br>하나의 값만 저장 </code>
+          <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:243px;">
+            객체형 <br> 여러 값 <br>(프로퍼티, 메서드)을 <br>묶어 저장, 참조 타입 <br><br>function 객체에 <br>속성을 추가할 수 <br>있다는 것을 확인<br>{}과 방식이 다름
+            <br><br>래퍼객체(숫자,문자)
+          </code>
+        </div>
+        <div class="d-inline-block fw-bold align-top" style="margin-left:5px;">
+          <code class="fw-bold">• let 변수; ==> 변수를 선언만 하였을때</code>
+          <code class="fw-bold 띄움20" style="margin-bottom:10px;">내부적으로 변수값에 undefined 를 설정함.</code>
+          <code class="fw-bold">• let 변수 = document.querySelector('#없는아이디');</code>
+          <code class="fw-bold 띄움20"> ==> 찾아봤지만 없을때</code>
+          <code class="fw-bold 띄움20">내부적으로 변수값에 null 을 설정함.</code>
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </div>
     <div id="js참고자료링크" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
@@ -2582,11 +2640,55 @@
 
       </div>
     </div>
+    <div id="js객체" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+
     <div id="js주요개념" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
-        <h6 class="fw-bold">1. 자바스크립트에서는 8가지의 자료형을 사용한다. <span style="color:blueviolet">변수에는 모든 자료형을 담을수 있다.</span> </h6>
-        <h6 class="fw-bold">2. <span style="color:blueviolet">변수에는 모든 자료형을 담을수 있다. 객체에서 key:value의 value에도 모든 자료형을 지정할 수 있다.</span></h6>
+        <h6 class="fw-bold">1. 변수, 변수에 담긴 값의 자료형(8종), typeof 자료, 또는 typeof(자료),  <span style="color:blueviolet">객체형은 자료형 중에 하나 (object, function)</span></h6>
+        <h6 class="fw-bold 띄움20 ">자바스크립트에서는 8가지의 자료형을 사용한다. <span style="color:blueviolet">변수에는 모든 자료형을 담을수 있다.</span> </h6>
+        <h6 class="fw-bold">
+          <button onclick="보숨토글(this)" title="js주요개념_자료형표" class="보숨토글버튼">보기</button>
+          보기/숨기기, 자료형 typeof 자료, Object.prototype.toString.call(자료) ==> 어떤 생성자 함수의 인스턴스인지 확인
+        </h6>
+        <div id="js주요개념_자료형표" class="d-none 자료형표">
+          <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
+          <code><div>let 자료 = class C__ {};</div><div>[object Function]</div><div>function</div></code>
+          <code><div>let 자료 = '';</div><div>[object String]</div><div>string</div></code>
+          <code class="자료형표색칠"><div>let 자료 = new String();</div><div>[object String]</div><div>object</div></code>
+          <code><div>let 자료 = 1;</div><div>[object Number]</div><div>number</div></code>
+          <code class="자료형표색칠"><div>let 자료 = new Number();</div><div>[object Number]</div><div>object</div></code>
+          <code><div>let 자료 = NaN;</div><div>[object Number]</div><div>number</div></code>
+          <code><div>let 자료 = Infinity;</div><div>[object Number]</div><div>number</div></code>
+          <code><div>let 자료 = true;</div><div>[object Boolean]</div><div>boolean</div></code>
+          <code><div>let 자료 = undefined;</div><div>[object Undefined]</div><div>undefined</div></code>
+          <code class="자료형표색칠"><div>let 자료 = null;</div><div>[object Null]</div><div>object</div></code>
+          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
+          <code class="자료형표색칠"><div>let 자료 = [];</div><div>[object Array]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>let 자료 = {};</div><div>[object Object]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>let 자료 = new Date();</div><div>[object Date]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>let 자료 = Math;</div><div>[object Math]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>let 자료 = /test/i;</div><div>[object RegExp]</div><div>object</div></code>
+          <code><div>let 자료 = function () {};</div><div>[object Function]</div><div>function</div></code>
+          <code class="자료형표색칠"><div>let 자료 = document;</div><div>[object HTMLDocument]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>let 자료 = document.querySelector('button');</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
+        </div>
+        <h6><img src="portal/images/문서연결_엑셀VBA/자료형8종.png" alt="이미지없음" style="margin-left:20px;"></h6>
+
+
+
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+
         <h6 class="fw-bold">3. 자료형. 확인 : typeof 자료, 또는 typeof(자료)</h6>
         <h6 class="fw-bold 띄움20 blueviolet">객체형을 제외한 다른 자료형은 문자열이든 숫자든 한 가지만 표현할 수 있기 때문에 원시(primitive) 자료형이라 부릅니다.</h6>
         <h6 class="fw-bold 띄움20 blueviolet">원시자료형은 그대로 쓸 수 있고, 객체형 자료는 미리 정의된 객체의 기능을 상속받은 객체(인스턴스)를 생성하여 사용한다.</h6>  
@@ -2613,39 +2715,18 @@
 
       </div>
       <div>
-        <h6 class="fw-bold">
-          <button onclick="보숨토글(this)" title="js주요개념_자료형표" class="보숨토글버튼">보기</button>
-          보기/숨기기, 자료형 typeof 자료, (prototype을 상속받은)객체명 Object.prototype.toString.call(자료)        
-        </h6>
+
         <h6 class="fw-bold">console.log(Object.getOwnPropertyNames(자료)); //자료: Object, Object.prototype, 변수 ==> 자료 자신의 속성 리스트 </h6>  
         <h6 class="fw-bold">내장객체의 속성들이 '셀수있음?'속성이 false로 되어 있지만 볼수있게 해 준다.</h6>
         <h6 class="fw-bold">
           <button onclick="보숨토글(this)" title="js주요개념_내장객체" class="보숨토글버튼">보기</button>
           <span class="fw-bold blueviolet">객체라고 할때, 나는 프로그램에 미리 정의된 객체(주로 내장객체)라는 의미로 사용하겠다.</span>    
         </h6>
-        <div id="js주요개념_자료형표" class="d-none 자료형표">
-          <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
-          <code><div>let 자료 = class C__ {};</div><div>[object Function]</div><div>function</div></code>
-          <code><div>let 자료 = '';</div><div>[object String]</div><div>string</div></code>
-          <code class="자료형표색칠"><div>let 자료 = new String();</div><div>[object String]</div><div>object</div></code>
-          <code><div>let 자료 = 1;</div><div>[object Number]</div><div>number</div></code>
-          <code class="자료형표색칠"><div>let 자료 = new Number();</div><div>[object Number]</div><div>object</div></code>
-          <code><div>let 자료 = NaN;</div><div>[object Number]</div><div>number</div></code>
-          <code><div>let 자료 = Infinity;</div><div>[object Number]</div><div>number</div></code>
-          <code><div>let 자료 = true;</div><div>[object Boolean]</div><div>boolean</div></code>
-          <code><div>let 자료 = undefined;</div><div>[object Undefined]</div><div>undefined</div></code>
-          <code class="자료형표색칠"><div>let 자료 = null;</div><div>[object Null]</div><div>object</div></code>
-          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
-          <code class="자료형표색칠"><div>let 자료 = [];</div><div>[object Array]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>let 자료 = {};</div><div>[object Object]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>let 자료 = new Date();</div><div>[object Date]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>let 자료 = Math;</div><div>[object Math]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>let 자료 = /test/i;</div><div>[object RegExp]</div><div>object</div></code>
-          <code><div>let 자료 = function () {};</div><div>[object Function]</div><div>function</div></code>
-          <code class="자료형표색칠"><div>let 자료 = document;</div><div>[object HTMLDocument]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>let 자료 = document.querySelector('button');</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
-        </div>
+
         <div id="js주요개념_내장객체" class="d-none">
+          <div>
+
+          </div>
           <h6 class="fw-bold 띄움20">프로그램에 미리 정의된 객체 : 내장객체는 prototype 속성에 미리 정의된 기능들이 있고.을 상속받아 사용할 수 있다.</h6>
           <h6 class="fw-bold 띄움20">객체라는 단어는 개념적 단어이고, 영어의 번역에서 객체의 한 종류인 Object(최상위 객체)와 혼동되기도 한다.</h6>
           <div style="margin-left:20px;">

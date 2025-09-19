@@ -45,12 +45,15 @@ code {color:black;display:block;}
 .미사용src > div {text-align: left;}
 
 /* #js_자료형을먼저알아야겠다 */
-.자료형표 > code {margin-bottom:-1px;}
-.자료형표 > code > div {display:inline-block;border:1px solid black;padding:0px 2px;margin-right:-1px;white-space: nowrap;font-weight: bold;}
+.자료형표 > code, .js자료형객체변수자료형표 > code {margin-bottom:-1px;}
+.자료형표 > code > div, .js자료형객체변수자료형표 > code > div
+ {display:inline-block;border:1px solid black;padding:0px 2px;margin-right:-1px;white-space: nowrap;font-weight: bold;}
 .자료형표 > code > div:nth-of-type(1) {width:400px;}
 .자료형표 > code > div:nth-of-type(2) {width:300px;}
 .자료형표 > code > div:nth-of-type(3) {width:150px;}
 .자료형표색칠 > div {background-color: cadetblue;}
+.js자료형객체변수자료형표 > code > div:nth-of-type(1) {width:130px;}
+.js자료형객체변수자료형표 > code > div:nth-of-type(2) {width:100px;}
 
 
 body, pre {font-family: 'Noto Serif KR', serif;}
