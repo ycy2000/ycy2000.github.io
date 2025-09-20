@@ -272,7 +272,8 @@
       <div>
         <h6 class="fw-bold" style="color:blueviolet">--- 기본 몸풀기 개념 정리 ---</h6>
         <h6 class="fw-bold" title="js자료형객체변수">1) 객체(프로퍼티가 있다), 자료형, typeof(자료) : 자료 = 변수의 값</h6>
-        <h6 class="fw-bold">2) 생성자 함수인 내장객체는 인스턴스를 생성한다. (개념적 분류)</h6>
+        <h6 class="fw-bold" title="js내장객체">2) typeof의 자료형중 object와 function으로 분류되는 내장객체 보기</h6>
+
 
 
         <br><br><br><br><br><br>
@@ -295,8 +296,6 @@
       </div>
       <div>
         <br><br><br><br><br>
-        <h6 class="fw-bold" style="color:blueviolet" title="js설명_객체의표현">2) 객체, 객체의 표현방식, 객체의 속성중 하나인 prototype, 상속, 변수, 자료형</h6>
-
         <h6 class="fw-bold" style="color:blueviolet" title="js설명_객체변수자료형">2) 객체, 객체의 표현방식, 객체의 속성중 하나인 prototype, 상속, 변수, 자료형</h6>
         <h6 class="fw-bold">3) *JavaScript는 흔히 프로토타입 기반 언어라 하는데 모든 기능이 여기 정의되어 있음.</h6>
         <h6 class="fw-bold" style="color:blueviolet" title="js설명_객체의종류">4) 정의되어 있는 객체[종류], 사용자가 정의한 객체, prototype은 객체의 기능정보.</h6>
@@ -2686,6 +2685,93 @@
         <br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>
+    <div id="js내장객체" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6> 
+          자바스크립트에서 new 연산자는 **생성자 함수(클래스)**를 호출해 새 인스턴스 객체를 만들 때만 사용합니다. <br>
+하지만 모든 내장 객체에 new를 붙이는 것이 맞지는 않으며,  <br>
+new를 쓰면 에러가 나는 경우도 있습니다.  <br>
+
+아래는 내장 객체를 기준으로 new 사용 여부를 정리한 표입니다.   <br>
+          new 필요: 인스턴스가 필수인 “클래스형” 빌트인 (Date, Map, Set, TypedArray, Error 등). <br>
+
+new 선택: 함수 호출과 동일하게 동작하는 몇몇 생성자(Array, RegExp, Error 등). <br>
+
+new 금지: Math, JSON, Reflect, Atomics, Symbol, BigInt 등 비함수 또는 함수지만 생성자 아님. <br>
+
+
+
+
+
+</h6>
+
+
+
+        <br><br><br><br><br>
+        <h6 class="fw-bold" style="margin-top:5px;"><button title="개인적정리png_내장객체등" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 종류</button>
+          정의되어 있는 내장객체의 종류, 생성자 함수 부류는, 자신의 기능에 접근하는 링크를 부여한 객체(인스턴스)를 생성한다.
+        </h6>
+        <h6 class="fw-bold" style="color:blueviolet"><button title="id자료형표" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 이름</button>
+          객체의 이름 확인 : Object.prototype.toString.call(자료) ==> <span style="color:black">[object Function] 형태로 나오게 되는데</span>
+        </h6>
+        <h6 style="text-indent: 106px;">'Function' 만 추출하려면 Object.prototype.toString.call(자료).slice(8, -1);</h6>
+        <h6 class="fw-bold" style="text-indent: 106px;">변수나 인스턴스인 경우, 상속받은 객체의 객체이름이 출력된다. 거의 모두 정의된 객체 중 하나에 속하게 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 106px;color:blueviolet">최상위 객체는 Object(오브젝트)이다. {....}</h6>
+        <div id="개인적정리png_내장객체등" class="d-none">
+          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
+        </div>
+        <div class="자료형표 d-none" id="id자료형표">
+          <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
+          <code><div>class C__ {}</div><div>[object Function]</div><div>function</div></code>
+          <code><div>''</div><div>[object String]</div><div>string</div></code>
+          <code class="자료형표색칠"><div>new String()</div><div>[object String]</div><div>object</div></code>
+          <code><div>1</div><div>[object Number]</div><div>number</div></code>
+          <code class="자료형표색칠"><div>new Number()</div><div>[object Number]</div><div>object</div></code>
+          <code><div>NaN</div><div>[object Number]</div><div>number</div></code>
+          <code><div>Infinity</div><div>[object Number]</div><div>number</div></code>
+          <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
+          <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
+          <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
+          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
+          <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>Math</div><div>[object Math]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>/test/i</div><div>[object RegExp]</div><div>object</div></code>
+          <code><div>function () {}</div><div>[object Function]</div><div>function</div></code>
+          <code class="자료형표색칠"><div>document</div><div>[object HTMLDocument]</div><div>object</div></code>
+          <code class="자료형표색칠"><div>버튼태그</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
+        </div>
+        <div id="개인적정리png_내장객체등" class="d-none">
+          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div id="js참고자료링크" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
@@ -2939,11 +3025,6 @@
         <h6 class="fw-bold">7. 인스턴스 생성 방법(내부적 생성 로직?), 인스턴스 == 객체를 통해 만들어진 객체, 인스턴스도 객체이다</h6>
         <h6 class="fw-bold">8. 프로토타입, 인스턴스, 프로토타입 상속</h6>
       </div>
-    </div>
-    <div id="js설명_객체의표현" class="대체2줄">
-      <h6 class="대체2줄세로1h6"></h6>
-      <div></div>
-      <div></div>
     </div>
     <div id="js설명_객체변수자료형" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
