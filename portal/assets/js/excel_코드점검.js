@@ -30,31 +30,12 @@ function 전체대체에셑팅() {
 
 function 연습() {
 
+function 연습1() {console.log('ddd'); return console.log('ddd');};
+console.log(연습1());
 
-  function abc() {console.log('반환');return 1;}
-  console.log(typeof(abc));
-  console.log(typeof(abc()));
 
-  let 연습=function () {}
-    연습.속성='ㅇㅇㅇ'
-  console.log(연습);
-  console.log(연습.속성);
-
-  let 문자열='문자열';
-
-  console.log(문자열);
-  문자열.속성='ㅇㅇㅇ'
-  console.log(문자열.속성);
-
-  console.log(typeof(Object));
-  console.log(typeof(Object()));
-  console.log(typeof(abc));
-  console.log(typeof(abc()));
 
   return;
-let aaa=document.querySelector('#dkdkdkdk');
-console.log(aaa);
-
 
 console.log(Object.prototype.toString.call(Object));  // [object Function]
 console.log(Object.prototype.toString.call(Array));  // [object Function]
@@ -71,18 +52,6 @@ console.log(배열);                                  // (3) [1,2,3]
 console.log(Object.prototype.toString.call(배열));  // [object Array]
 console.log(Object.getOwnPropertyNames(배열));      // (4) ['0','1','2','length']
 console.log(typeof(배열));                          // object
-
-let 객체 = {학교:'중학교', 성별:'남'};
-console.log(객체);                                  // {학교: '중학교', 성별: '남'}
-console.log(Object.prototype.toString.call(객체));  // [object Object]
-console.log(Object.getOwnPropertyNames(객체));      // ['학교', '성별']
-console.log(typeof(객체));                          // object
-
-let 숫자 = 1;
-console.log(숫자);                                  // 1
-console.log(Object.prototype.toString.call(숫자));  // [object Number]
-console.log(Object.getOwnPropertyNames(숫자));      // []
-console.log(typeof(숫자));                          // number
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');

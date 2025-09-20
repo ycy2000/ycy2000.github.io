@@ -2569,48 +2569,121 @@
     <div id="js자료형객체변수" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
-        <code>• 객체(Object) 는 속성(Property) 또는, 메서드(Method)를 포함하는 데이터의 집합.</code>
         <h6 class="fw-bold">• 레거시코드 : 오래된 코드에 오류가 있지만 수정이 불가능하게 된 것.</h6>
-        <h6 class="fw-bold">• null은 속성과 메서드가 없는데 object 자료형으로 나타나는것은 잘못됨(레거시 코드)</h6>
-        <div class="js자료형객체변수자료형표 d-inline-block"style="margin-bottom:5px;">
-          <code><div>자료</div><div>typeof 자료</div></code>
-          <code><div>undefined</div><div>undefined</div></code>
-          <code class="자료형표색칠"><div>null</div><div>object</div></code>
-          <code><div>''</div><div>string</div></code>
-          <code><div>1</div><div>number</div></code>
-          <code><div>NaN</div><div>number</div></code>
-          <code><div>Infinity</div><div>number</div></code>
-          <code><div>true</div><div>boolean</div></code>
-          <code style="background-color: chocolate;"><div>function () {}</div><div>function</div></code>
-          <code style="background-color: chocolate;"><div>class C__ {}</div><div>function</div></code>
-          <code style="background-color:darkgoldenrod"><div>new String()</div><div>object</div></code>
-          <code style="background-color:darkgoldenrod;"><div>new Number()</div><div>object</div></code>
-          <code class="자료형표색칠"><div>[]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>{}</div><div>object</div></code>
-          <code class="자료형표색칠"><div>new Date()</div><div>object</div></code>
-          <code class="자료형표색칠"><div>Math</div><div>object</div></code>
-          <code class="자료형표색칠"><div>/test/i</div><div>object</div></code>
-          <code class="자료형표색칠"><div>document</div><div>object</div></code>
-          <code class="자료형표색칠"><div>버튼태그</div><div>object</div></code>        
-        </div>
-        <div class="d-inline-block fw-bold align-top" style="margin-left:-5px;">
-          <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;">비고</code>
-          <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:155px;">원시값(Primitive) <br>불변(immutable) 값,  <br>하나의 값만 저장 </code>
-          <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:243px;">
-            객체형 <br> 여러 값 <br>(프로퍼티, 메서드)을 <br>묶어 저장, 참조 타입 <br><br>function 객체에 <br>속성을 추가할 수 <br>있다는 것을 확인<br>{}과 방식이 다름
-            <br><br>래퍼객체(숫자,문자)
-          </code>
+        <h6 class="fw-bold" style="text-indent: 10px;;">개념을 이해하려고할때 오류가 있을때 레거시코드라고 이해하고 넘어가자.</h6>
+        <br>
+        <h5 class="fw-bold">변수</h5>
+        <h6 class="fw-bold">1. 변수를 선언만 하면 자료형 중 하나인 'undefined'를 프로그램에서 자동으로 대입시킨다.</h6>
+        <h6 class="fw-bold">2. 변수에 정하지 못하는 값을 넣으면 자료형 중 하나인 'null'을 프로그램에서 자동으로 대입시킨다. </h6>
+        <br>
+        <h5 class="fw-bold">함수 선언 방법, 함수는 실행문의 집합이다.</h5>
+        <h6 class="fw-bold">1. function 함수이름 (매개변수, 매개변수,...) { 실행문; } : 매개변수는 없을수도 있다.</h6>
+        <h6 class="fw-bold">2. let 함수이름 = function (매개변수, 매개변수,...) { 실행문; } : 매개변수는 없을수도 있다.</h6>
+        <br>
+        <h5 class="fw-bold">예시함수) function 예제 () {console.log('실행문')};</h5>
+        <h6 class="fw-bold">1-1. typeof로 함수이름만 전달하면</h6>
+        <h6 class="fw-bold" style="text-indent: 32px;">typeof 예제 ==> function 이 출력된다. 자료형이 function 이라는 것. </h6>
+        <h6 class="fw-bold">1-2. console.log로 함수이름만 전달하면</h6>
+        <h6 class="fw-bold" style="text-indent: 32px;">console.log(예제) ==> function 예제 () {console.log('실행문')} 이 출력된다. 코드 자체 </h6>
+        <h6 class="fw-bold" style="text-indent: 32px;">※ '함수의 호출'은 console.log(예제()) ==> undefined 이다. 함수자체의 실행문은 실행된다. </h6>
+        <h6 class="fw-bold" style="text-indent: 32px;">※ console.log 에서는, typeof 와 달리 return 값을 표시하지 않는다.</h6>
+        <h6 class="fw-bold blueviolet">2-1. 함수의 호출 : 함수명 (), 함수명 (매개변수1, 매개변수2,..) 매개변수는 없을수 있다. </h6>
+        <h6 class="fw-bold blueviolet">2-2. 함수를 호출하면 실행문이 실행된다. </h6>
+        <h6 class="fw-bold">2-3. '함수의 호출'을 typeof에 전달하면 실행문에 return값에 따라 자료형이 달라진다.</h6>
+        <h6 class="fw-bold" style="text-indent: 32px;">a) return값이 없으면 : function 리턴값없음 () { 실행문; }</h6>
+        <h6 class="fw-bold" style="text-indent: 52px;">typeof( 리턴값없음() ) ==> undefined</h6>
+        <h6 class="fw-bold" style="text-indent: 32px;">b) return값이 있으면 : function 리턴값있음 () { 실행문; return '1'} // 리턴값은 아무거나 된다 Array, 1, { },...</h6>
+        <h6 class="fw-bold" style="text-indent: 52px;">typeof( 리턴값있음() ) ==> string // '1'이 문자열이므로 string 이 출력된다.</h6>
+        <br>
+        <h6 class="fw-bold">★중요★ 내장객체인 Object, Array, String, 등은 함수의 이름이다. </h6>
+        <h6 class="fw-bold">★중요★ 내장객체인 Object 함수의 호출문은 new Object() 인데, 함수의 return값이 { }로 정의되어 있기때문에 </h6>
+        <h6 class="fw-bold" style="text-indent: 68px;">리턴값이 대입되어, typeof(Object()) ==> object 가 된다. 다른 값을 리턴하면 다르게 될수도 있었겠다.</h6>
+        <br>
+        <h6 class="fw-bold blueviolet">※ 생성자함수 new Object()가 어떤동작을 하는지 따로 작성하자.   </h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 23px;">prototype(속성)에 접근할수 있는 링크를 인스턴스의 [[prototype]]에 상속함</h6>
+        <h6><img src="portal/images/문서연결_엑셀VBA/자료형8종1.png" alt="이미지없음" style="margin-left:20px;"></h6>
+      </div>
+      <div>
+        <h5 class="fw-bold">typeof(변수) 또는 typeof 변수 ==> 변수의 데이터타입을 알려줌.</h5>
+        <h6 class="fw-bold">1. 자바스크립트에서 데이터타입은 8종이다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 기본형(원시형) 6종 : 단일값. number, string, boolean, null, undefined, symbol</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 객체형 2종 : 속성을 가질수 있다. object, function (function은 object로 표시되어야 맞는것같지만 레거시코드이다)</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- function 으로 표시되어서 오히려 더 편리하다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 객체형은 속성과 메서드를 가질수 있다는 큰 특징을 이해하고, 기본객체의 표현식(객체리터럴)과 함수표현식을 알아두자.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 새로생긴 class 문법은 함수표현식을 정비한 것이다.</h6>
+        <div style="margin-left:20px;">
+          <div class="js자료형객체변수자료형표 d-inline-block align-top"style="margin-bottom:5px;">
+            <code><div>자료</div><div>typeof 자료</div></code>
+            <code><div>undefined</div><div>undefined</div></code>
+            <code><div>''</div><div>string</div></code>
+            <code><div>1</div><div>number</div></code>
+            <code><div>NaN</div><div>number</div></code>
+            <code><div>Infinity</div><div>number</div></code>
+            <code><div>true</div><div>boolean</div></code>
+          </div>
+          <div class="d-inline-block fw-bold align-top" style="margin-left:-5px;">
+            <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;">비고</code>
+            <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:133px;">원시값(Primitive) <br>불변(immutable) 값,  <br>하나의 값만 저장 </code>
+          </div>
+          <div class="js자료형객체변수자료형표 d-inline-block"style="margin-bottom:5px;">
+            <code><div>자료</div><div>typeof 자료</div></code>
+            <code class="자료형표색칠"><div>null</div><div>object</div></code>
+            <code class="자료형표색칠"><div>[]</div><div>object</div></code>
+            <code class="자료형표색칠"><div>{}</div><div>object</div></code>
+            <code class="자료형표색칠"><div>new Date()</div><div>object</div></code>
+            <code class="자료형표색칠"><div>Math</div><div>object</div></code>
+            <code class="자료형표색칠"><div>/test/i</div><div>object</div></code>
+            <code class="자료형표색칠"><div>document</div><div>object</div></code>
+            <code class="자료형표색칠"><div>버튼태그</div><div>object</div></code>    
+            <code><div class="blueviolet">function () {}</div><div class="blueviolet">function</div></code>
+            <code><div class="blueviolet">class C__ {}</div><div class="blueviolet">function</div></code>
+            <code><div style="background-color:darkgoldenrod">new String()</div><div style="background-color:darkgoldenrod">object</div></code>
+            <code><div style="background-color:darkgoldenrod">new Number()</div><div style="background-color:darkgoldenrod">object</div></code>
+          </div>
+          <div class="d-inline-block fw-bold align-top" style="margin-left:-5px;">
+            <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:287px;">
+              <span style="background-color: cadetblue;">object</span>와  <span style="background-color: chocolate;">function</span><br> 여러 값, (프로퍼티, 메서드)을 
+              <br>묶어 저장, 참조 타입 <br>함수이름만 전달 ==> function
+              <br><br><span style="background-color: chocolate;">function 객체</span>에 <br>(프로퍼티, 메서드)을 추가할 수 <br>있다는 것을 확인할 것.<br>{}과 방식이 다름
+              <br><br><span style="background-color: darkgoldenrod;">래퍼객체</span> 원시형인 숫자, 문자를 그대로 <br>사용하지 않고 배열처럼 다뤄야할때
+              <br>기능을 활용하기 위하여 자료형 변환
+            </code>
+          </div>
         </div>
         <div class="d-inline-block fw-bold align-top" style="margin-left:5px;">
           <code class="fw-bold">• let 변수; ==> 변수를 선언만 하였을때</code>
           <code class="fw-bold 띄움20" style="margin-bottom:10px;">내부적으로 변수값에 undefined 를 설정함.</code>
           <code class="fw-bold">• let 변수 = document.querySelector('#없는아이디');</code>
           <code class="fw-bold 띄움20"> ==> 찾아봤지만 없을때</code>
-          <code class="fw-bold 띄움20">내부적으로 변수값에 null 을 설정함.</code>
+          <code class="fw-bold 띄움20" style="margin-bottom:10px;">내부적으로 변수값에 null 을 설정함.</code>
+          <code class="fw-bold blueviolet">--------------- 함수 정의 방법 두가지 ---------------</code>
+          <code class="fw-bold">1) function 함수1 () { 실행할 코드; };</code>
+          <code class="fw-bold" style="margin-bottom:10px;">2) let 함수2 =  function () { '코드' };</code>
+          <code class="fw-bold blueviolet">--------------- 함수의 '이름만' 전달할때 ------------</code>
+          <code class="fw-bold">1) <span class="blueviolet"> 함수의 이름만 넣으면 실행은 되지 않고, 문자열을 반환한다.</span></code>
+          <code class="fw-bold" style="text-indent: 23px;">console.log(함수2) ==> f () {'코드'}</code>
+          <code class="fw-bold">2) <span class="blueviolet">함수의 이름만 넣으면 typeof(함수명) ==> function 이다.</span></code>
+          <code class="fw-bold" style="text-indent: 23px;margin-bottom:10px;">함수는 객체이고 자료형은 function 으로 표시된다.</code>
+          <code class="fw-bold blueviolet">------ 함수명() : 함수명과 함께 괄호를 넣으면 실행문이 된다. ------</code>
+          <code class="fw-bold">1) <span class="blueviolet"> 함수안에 return 값이 없으면, 코드만 실행하게 되는 것이다.</span></code>
+          <code class="fw-bold" style="text-indent: 23px;">이 경우 typeof(함수2()) ==> undefined 가 된다.</code>
+          <code class="fw-bold">2) 함수안에 return문으로 함수의 결과를 리턴할 수 있다.</code>
+          <code class="fw-bold" style="text-indent: 23px;margin-bottom:10px;">이 경우 typeof(함수2()) ==> return 값에 따름.</code>
+          <code class="fw-bold blueviolet">------ 함수의 리턴값 예시  ------</code>
+          <code class="fw-bold">1) function 리턴1 () {return Function}; typeof(리턴1()) ==> function </span></code>
+          <code class="fw-bold" style="margin-bottom:10px;">2) function 리턴2 () {return '문자열'}; typeof(리턴2()) ==> string </span></code>
         </div>
-      </div>
-      <div>
-
+        <code class="fw-bold blueviolet">------ 내장객체는 함수인데 주요 return값 예시  ------</code>
+        <code class="fw-bold">※ <span class="blueviolet">객체를 생성하여 반환</span>한다고 하여 생성자 함수라고 한다. ※ 생성자함수 표현식은 : new 내장객체(); 이다.</code>
+        <code class="fw-bold">※ <span class="blueviolet">이렇게 생성된 객체를 '인스턴스'라고 한다.</span></code>
+        <code class="fw-bold">1) let 리터럴객체 = new Object(); console.log(리터럴객체) ==> { }, console.log(typeof(리터럴객체)) ==> object </code>
+        <code class="fw-bold">2) let 배열객체 = new Array(); console.log(배열객체) ==> [ ], console.log(typeof(배열객체)) ==> object</code>
+        <code class="fw-bold blueviolet" style="margin-bottom:10px;">3) class 와 Function 은 따로 설명하겠다. console.log(typeof(함수객체)) ==> function</code>
+        <code class="fw-bold blueviolet">---- 실제로는, 1) let 객체리터럴 = { }; 2) let 배열객체 = [ ]; 형식을 사용한다.  ------</code>
+        <code class="fw-bold">※ 내부적으로 생성자함수를 사용하여 객체를 생성하는 동작을 하게 된다.</code>
+        <code class="fw-bold">※ 생성자 함수의 또다른 중요한 동작은, 생성자객체의 기능을 만들어지는 인스턴스에 상속한다.</code>
+        <code class="fw-bold" style="text-indent: 23px;">ex) Object 객체의 prototype 속성(기능)에 접근할 수 있는 링크를 인스턴스에 생성 [[prototype]] 부분</code>
+        <br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>
     <div id="js참고자료링크" class="대체3줄">
@@ -2634,6 +2707,7 @@
       <div>
         <h6 class="fw-bold"><a href="https://ko.javascript.info/instanceof" target="_blank">'instanceof'로 클래스 확인하기</a> </h6>
         <h6 class="fw-bold"><a href="https://peach-hzz.tistory.com/156" target="_blank">데이터 타입 확인</a> </h6>
+        <h6 class="fw-bold"><a href="https://ko.javascript.info/function-object" target="_blank">객체로서의 함수와 기명 함수 표현식</a> </h6>
 
       </div>
       <div>
