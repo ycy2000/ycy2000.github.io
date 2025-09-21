@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js내장객체' //원래는 h6의 title이다.
+  전체변수h6title ='js객체리터럴' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,12 +29,56 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
+function 생성자함수(파라) {
+  this.파라미터=파라;
+  this.인스턴스속성 = '인스턴스 전용';   // 인스턴스에 붙음
+  생성자함수.정적속성   = '함수 자체 속성';  // 함수(생성자)에 붙음
+  this.결과 = function () {return console.log(파라);}
 
-function 연습1() {console.log('ddd'); return console.log('ddd');};
-console.log(연습1());
+  };
+const 인스턴스 = new 생성자함수('파라전달');
+인스턴스.외부추가= function () {return '외부추가'; }
+console.log(인스턴스.파라미터); 
+console.log(인스턴스); 
+console.log(인스턴스.결과); 
+console.log(인스턴스.결과()); 
+console.log(인스턴스.외부추가); 
+console.log(인스턴스.외부추가()); 
+
+        
 
 
 
+
+
+  return;
+    console.log(typeof(undefined));
+    console.log(typeof(null));
+  let 변수 = document.querySelector('#없는아이디');
+  console.log(typeof(변수123));
+  console.log(Math);
+  console.log(Object.getOwnPropertyNames(Math.abs));
+console.log(Object.getOwnPropertyNames(Function));
+console.log(Object.getOwnPropertyNames(Array));
+console.log(Object.getOwnPropertyNames(Function.prototype));
+console.log(Object);
+console.log(Array);
+console.log(Function);
+console.log(String);
+console.log(Object());
+console.log(Array());
+console.log(Function());
+console.log(String());
+console.log(Object.prototype);
+console.log(Array.prototype);
+console.log(Function.prototype);
+console.log(String.prototype);
+console.log(new Object({1:12,2:'dd'}));
+console.log(new Array(1,2,[1,2,3],{}));
+console.log(new String('121 gkdk'));
+console.log(Object({1:12,2:'dd'}));
+console.log(Array(1,2,[1,2,3],{}));
+console.log(String('121 gkdk'));
   return;
 
 console.log(Object.prototype.toString.call(Object));  // [object Function]

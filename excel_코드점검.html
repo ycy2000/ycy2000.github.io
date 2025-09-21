@@ -270,29 +270,25 @@
     <div class="개별카테고리" id="기초이해">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" style="color:blueviolet">--- 기본 몸풀기 개념 정리 ---</h6>
-        <h6 class="fw-bold" title="js자료형객체변수">1) 객체(프로퍼티가 있다), 자료형, typeof(자료) : 자료 = 변수의 값</h6>
-        <h6 class="fw-bold" title="js내장객체">2) typeof의 자료형중 object와 function으로 분류되는 내장객체 보기</h6>
+        <h6 class="fw-bold" title="js자료형객체변수">1. 변수의 값은 자료형을 가진다 : a)원시타입, b)객체타입(참조형), typeof 변수</h6>
+        <h6 class="fw-bold" title="js객체리터럴">2-1. 기본객체 Object의 표현방법 : 객체리터럴 { }, key:value(속성) 부여 방법.</h6>
 
-
-
-        <br><br><br><br><br><br>
-        <h6 class="fw-bold" style="color:blueviolet">--- js 기본개념 정리 ---</h6>
-        <h6 class="fw-bold" title="js참고자료링크">JavaScript는 완전한 객체 지향 언어입니다. <u>★객체★</u>를 다룬다. <span style="color:blueviolet">모든 참고자료 링크</span> </h6>
-        <h6 class="fw-bold">1) '변수에 담긴 값'은 자료형을 가진다. 원시형, 함수형(object 와 function)</h6>
-        <h6 class="fw-bold">2) 객체의 특징 : 프로퍼티==속성(key:value 의 쌍)를 가질 수 있다.</h6>
-        <h6 class="fw-bold">일반객체 { } : 일반객체는 new Object(); 가 내부적으로 실행된다.</h6>
-        <h6 class="fw-bold">함수(동작을 정의 한 것)형 객체 (속성을 만들수도 있다는 점.)</h6>
-        <h6 class="fw-bold">class문법(함수형 객체의 속성정의를 다듬었다)</h6>
-        <h6 class="fw-bold">함수이름 ==> 내부의 코드 문자열, 함수이름() ==> 내부의 코드 문자열을 실행하라.</h6>
-        <h6 class="fw-bold">4) 프로그램에 미리 정의한 '내장객체'는 함수이다. == 동작을 정의함</h6>
-        <h6 class="fw-bold">5) new 로 호출할 수 있는 내장객체는 '생성자 함수'라고 한다.</h6>
-        <h6 class="fw-bold">6) function, class도 new를 사용해 인스턴스를 만든다.</h6>
-        <h6 class="fw-bold">7) 생성자 함수를 사용해 생성한 객체를 인스턴스라한다.</h6>
-        <h6 class="fw-bold">8) new 에 의한 객체생성 과정은 생략될 수 있다.</h6>
-        <h6 class="fw-bold">9) 생성자 함수는 생성자 객체의 기능(prototype)을 인스턴스에 물려준다. (상속)</h6>
-        <h6 class="fw-bold">10) Object.prototype.toString.call(자료); 어떤 생성자객체의 기능을 상속받았는지</h6>
-        <h6 class="fw-bold">prototype, [[prototype]], 내장객체와 인스턴스가 확실해 분리되어 이해가 되는가</h6>
+        <br><br><br><br><br><br><br><br><br><br>
+        <h6 class="fw-bold" title="js함수리터럴">2-2. 함수객체 function 표현방법 : 함수리터럴, key:value(속성) 부여 방법.</h6>
+        <h6 class="fw-bold" title="js_Object객체의속성">3-1. 내장객체 Object 의 속성. { }객체(인스턴스)를 생성하는 생성자함수 new Object()</h6>
+        <h6 class="fw-bold" title="js_Array객체의속성">3-2. 내장객체 Array 의 속성. [ ]객체(인스턴스)를 생성하는 생성자함수 new Array()</h6>
+        <h6 class="fw-bold" title="js_Function객체의속성">3-3. 내장객체 Function 의 속성. 함수객체(인스턴스)를 생성하는 new 함수이름()</h6>
+        <h6 class="fw-bold" title="js_class문법">3-4. 함수객체(인스턴스)를 생성하는 class 문법 new class이름() : 새로생김</h6>
+        <h6 class="fw-bold" title="js_Object객체의prototype의속성">4-1. 내장객체 Object 속성중 prototype 속성에 정의된 속성(기능).</h6>
+        <h6 class="fw-bold" title="js_Array객체의prototype의속성">4-2. 내장객체 Array  속성중 prototype 속성에 정의된 속성(기능).</h6>
+        <h6 class="fw-bold" title="js_Function객체의prototype의속성">4-2. 내장객체 Function 속성중 prototype 속성에 정의된 속성(기능).</h6>
+        <h6 class="fw-bold" style="color:blueviolet">--- protptype 체인, prototype 상속 ---</h6>
+        <h6 class="fw-bold">5-1. Object 의 인스턴스가 Object.prototype을 상속받아 자신의 속성처럼 사용함.</h6>
+        <h6 class="fw-bold">5-2. Array 의 인스턴스가 Array.prototype을 상속받아 자신의 속성처럼 사용함.</h6>
+        <h6 class="fw-bold">5-3. Function 의 인스턴스가 Function.prototype을 상속받아 자신의 속성처럼 사용함.</h6>
+        <h6 class="fw-bold">6. 인스턴스는 상위객체의 prototype도 상속받아 자신의 속성처럼 사용함.</h6>
+        <h6 class="fw-bold">7. 인스턴스가 상속받은 prototype의 첫번째 객체 이름. </h6>
+        <h6 class="fw-bold">8. Object.prototype.toString.call(자료), Object.getOwnPropertyNames(자료)</h6>
       </div>
       <div>
         <br><br><br><br><br>
@@ -2570,43 +2566,48 @@
       <div>
         <h6 class="fw-bold">• 레거시코드 : 오래된 코드에 오류가 있지만 수정이 불가능하게 된 것.</h6>
         <h6 class="fw-bold" style="text-indent: 10px;;">개념을 이해하려고할때 오류가 있을때 레거시코드라고 이해하고 넘어가자.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;;">하나의 값을 가지는 원시타입 자료인 null 이, typeof(null) ==> object 인 것은 레거시 코드.</h6>
         <br>
         <h5 class="fw-bold">변수</h5>
-        <h6 class="fw-bold">1. 변수를 선언만 하면 자료형 중 하나인 'undefined'를 프로그램에서 자동으로 대입시킨다.</h6>
+        <h6 class="fw-bold">1. let 변수이름; 변수를 선언만 하면 자료형 중 하나인 'undefined'를 프로그램에서 자동으로 대입시킨다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">let 변수이름 = undefined; typeof(undefined) ==> undefined</h6>
         <h6 class="fw-bold">2. 변수에 정하지 못하는 값을 넣으면 자료형 중 하나인 'null'을 프로그램에서 자동으로 대입시킨다. </h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">let 변수이름 = document.querySelector('#없는아이디'); let 변수이름 = null; typeof(null) ==> object</h6>
         <br>
-        <h5 class="fw-bold">함수 선언 방법, 함수는 실행문의 집합이다.</h5>
-        <h6 class="fw-bold">1. function 함수이름 (매개변수, 매개변수,...) { 실행문; } : 매개변수는 없을수도 있다.</h6>
-        <h6 class="fw-bold">2. let 함수이름 = function (매개변수, 매개변수,...) { 실행문; } : 매개변수는 없을수도 있다.</h6>
+        <h5 class="fw-bold">typeof 자료 : 자료에 '함수 호출'문을 전달하면 자료형이 무엇이 될지는 함수의 return값에 따른다.</h5>
+        <h6 class="fw-bold">1. 함수 코드를 실행한다. 2. 코드를 다 실행했는데 return값이 없다 ==> 값으로 undefined 설정됨 </h6>
+        <h6 class="fw-bold">3. return 1; ==> number, return {  }; ==> object, return [ ]; ==> object, return 함수명; ==> function, return '문자; ==> string</h6>
         <br>
-        <h5 class="fw-bold">예시함수) function 예제 () {console.log('실행문')};</h5>
-        <h6 class="fw-bold">1-1. typeof로 함수이름만 전달하면</h6>
-        <h6 class="fw-bold" style="text-indent: 32px;">typeof 예제 ==> function 이 출력된다. 자료형이 function 이라는 것. </h6>
-        <h6 class="fw-bold">1-2. console.log로 함수이름만 전달하면</h6>
-        <h6 class="fw-bold" style="text-indent: 32px;">console.log(예제) ==> function 예제 () {console.log('실행문')} 이 출력된다. 코드 자체 </h6>
-        <h6 class="fw-bold" style="text-indent: 32px;">※ '함수의 호출'은 console.log(예제()) ==> undefined 이다. 함수자체의 실행문은 실행된다. </h6>
-        <h6 class="fw-bold" style="text-indent: 32px;">※ console.log 에서는, typeof 와 달리 return 값을 표시하지 않는다.</h6>
-        <h6 class="fw-bold blueviolet">2-1. 함수의 호출 : 함수명 (), 함수명 (매개변수1, 매개변수2,..) 매개변수는 없을수 있다. </h6>
-        <h6 class="fw-bold blueviolet">2-2. 함수를 호출하면 실행문이 실행된다. </h6>
-        <h6 class="fw-bold">2-3. '함수의 호출'을 typeof에 전달하면 실행문에 return값에 따라 자료형이 달라진다.</h6>
-        <h6 class="fw-bold" style="text-indent: 32px;">a) return값이 없으면 : function 리턴값없음 () { 실행문; }</h6>
-        <h6 class="fw-bold" style="text-indent: 52px;">typeof( 리턴값없음() ) ==> undefined</h6>
-        <h6 class="fw-bold" style="text-indent: 32px;">b) return값이 있으면 : function 리턴값있음 () { 실행문; return '1'} // 리턴값은 아무거나 된다 Array, 1, { },...</h6>
-        <h6 class="fw-bold" style="text-indent: 52px;">typeof( 리턴값있음() ) ==> string // '1'이 문자열이므로 string 이 출력된다.</h6>
+        <h5 class="fw-bold">내장객체는 함수이고 return값(인스턴스)이 있다. Object : { }, Array : [ ],... </h5>
+        <h6 class="fw-bold">1. 만약 함수이자 (내장)객체인 Object가, 호출 Object() 하였을때 return 값이 '문자'라면 typeof 결과는 string 이었을 것이다.</h6>
         <br>
-        <h6 class="fw-bold">★중요★ 내장객체인 Object, Array, String, 등은 함수의 이름이다. </h6>
+        <h5 class="fw-bold">함수 호출 방법, 함수명과 괄호를 같이 전달 : 함수명 () 또는 함수명 (파라미터1, 파라미터2,,,) </h5>
+        <br>
+        <h6 class="fw-bold">★중요★ 내장객체인 Object, Array, String, 등은 함수의 이름이다. 함수이름이기 때문에</h6>
+        <h6 class="fw-bold" style="text-indent: 68px;">typeof(Object) ==> function 이 된다. </h6>
         <h6 class="fw-bold">★중요★ 내장객체인 Object 함수의 호출문은 new Object() 인데, 함수의 return값이 { }로 정의되어 있기때문에 </h6>
-        <h6 class="fw-bold" style="text-indent: 68px;">리턴값이 대입되어, typeof(Object()) ==> object 가 된다. 다른 값을 리턴하면 다르게 될수도 있었겠다.</h6>
+        <h6 class="fw-bold" style="text-indent: 68px;">리턴값이 대입되어, typeof( {  } ) ==> object, typeof(Object()) ==> object 가 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 68px;">리턴값에 따른것이고, 다른 값을 리턴하면 다르게 될수도 있었겠다.</h6>
         <br>
-        <h6 class="fw-bold blueviolet">※ 생성자함수 new Object()가 어떤동작을 하는지 따로 작성하자.   </h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 23px;">prototype(속성)에 접근할수 있는 링크를 인스턴스의 [[prototype]]에 상속함</h6>
-        <h6><img src="portal/images/문서연결_엑셀VBA/자료형8종1.png" alt="이미지없음" style="margin-left:20px;"></h6>
+        <code class="fw-bold blueviolet">------ 내장객체는 함수인데 주요 return값 예시  ------</code>
+        <code class="fw-bold">※ <span class="blueviolet">객체를 생성하여 반환</span>한다고 하여 생성자 함수라고 한다. ※ 생성자함수 표현식은 : new 내장객체(); 이다.</code>
+        <code class="fw-bold">※ <span class="blueviolet">이렇게 생성된 객체를 '인스턴스'라고 한다.</span></code>
+        <code class="fw-bold">1) let 리터럴객체 = new Object(); console.log(리터럴객체) ==> { }, console.log(typeof(리터럴객체)) ==> object </code>
+        <code class="fw-bold">2) let 배열객체 = new Array(); console.log(배열객체) ==> [ ], console.log(typeof(배열객체)) ==> object</code>
+        <code class="fw-bold blueviolet" style="margin-bottom:10px;">3) class 와 Function 은 따로 설명하겠다. console.log(typeof(함수객체)) ==> function</code>
+        <code class="fw-bold blueviolet">---- 실제로는, 1) let 객체리터럴 = { }; 2) let 배열객체 = [ ]; 형식을 사용한다.  ------</code>
+        <code class="fw-bold">※ 내부적으로 생성자함수를 사용하여 객체를 생성하는 동작을 하게 된다.</code>
+        <code class="fw-bold">※ 생성자 함수의 또다른 중요한 동작은, 생성자객체의 기능을 만들어지는 인스턴스에 상속한다.</code>
+        <code class="fw-bold" style="text-indent: 23px;">ex) Object 객체의 prototype 속성(기능)에 접근할 수 있는 링크를 인스턴스에 생성 [[prototype]] 부분</code>
       </div>
       <div>
         <h5 class="fw-bold">typeof(변수) 또는 typeof 변수 ==> 변수의 데이터타입을 알려줌.</h5>
         <h6 class="fw-bold">1. 자바스크립트에서 데이터타입은 8종이다.</h6>
         <h6 class="fw-bold" style="text-indent: 10px;">- 기본형(원시형) 6종 : 단일값. number, string, boolean, null, undefined, symbol</h6>
         <h6 class="fw-bold" style="text-indent: 10px;">- 객체형 2종 : 속성을 가질수 있다. object, function (function은 object로 표시되어야 맞는것같지만 레거시코드이다)</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">  결과가 function ==> 함수이름만, 클래스이름만, function () {}, class C__ {}</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">  결과가 object ==> 일반 객체 { }, 배열 [ ], Date, RegExp, Map, Set 등</h6>
+
         <h6 class="fw-bold" style="text-indent: 10px;">- function 으로 표시되어서 오히려 더 편리하다.</h6>
         <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 객체형은 속성과 메서드를 가질수 있다는 큰 특징을 이해하고, 기본객체의 표현식(객체리터럴)과 함수표현식을 알아두자.</h6>
         <h6 class="fw-bold" style="text-indent: 10px;">- 새로생긴 class 문법은 함수표현식을 정비한 것이다.</h6>
@@ -2624,7 +2625,11 @@
             <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;">비고</code>
             <code style="border:1px solid black;margin-bottom:-1px;padding:0px 5px;;height:133px;">원시값(Primitive) <br>불변(immutable) 값,  <br>하나의 값만 저장 </code>
           </div>
-          <div class="js자료형객체변수자료형표 d-inline-block"style="margin-bottom:5px;">
+          <div class="js자료형객체변수자료형표 d-inline-block" style="margin-bottom:5px;position: relative;">
+            <div style="position: absolute;top:199px;left:-212px;font-weight: bold;">
+              <code style="border-bottom:1px solid black;">함수이름만 전달할때도 같다.</code>
+              <code style="border-bottom:1px solid black;">class이름만 전달할때도 같다.</code>
+            </div>
             <code><div>자료</div><div>typeof 자료</div></code>
             <code class="자료형표색칠"><div>null</div><div>object</div></code>
             <code class="자료형표색칠"><div>[]</div><div>object</div></code>
@@ -2650,11 +2655,6 @@
           </div>
         </div>
         <div class="d-inline-block fw-bold align-top" style="margin-left:5px;">
-          <code class="fw-bold">• let 변수; ==> 변수를 선언만 하였을때</code>
-          <code class="fw-bold 띄움20" style="margin-bottom:10px;">내부적으로 변수값에 undefined 를 설정함.</code>
-          <code class="fw-bold">• let 변수 = document.querySelector('#없는아이디');</code>
-          <code class="fw-bold 띄움20"> ==> 찾아봤지만 없을때</code>
-          <code class="fw-bold 띄움20" style="margin-bottom:10px;">내부적으로 변수값에 null 을 설정함.</code>
           <code class="fw-bold blueviolet">--------------- 함수 정의 방법 두가지 ---------------</code>
           <code class="fw-bold">1) function 함수1 () { 실행할 코드; };</code>
           <code class="fw-bold" style="margin-bottom:10px;">2) let 함수2 =  function () { '코드' };</code>
@@ -2663,7 +2663,7 @@
           <code class="fw-bold" style="text-indent: 23px;">console.log(함수2) ==> f () {'코드'}</code>
           <code class="fw-bold">2) <span class="blueviolet">함수의 이름만 넣으면 typeof(함수명) ==> function 이다.</span></code>
           <code class="fw-bold" style="text-indent: 23px;margin-bottom:10px;">함수는 객체이고 자료형은 function 으로 표시된다.</code>
-          <code class="fw-bold blueviolet">------ 함수명() : 함수명과 함께 괄호를 넣으면 실행문이 된다. ------</code>
+          <code class="fw-bold blueviolet">------ 함수명() : 함수명과 함께 괄호를 넣으면 함수가 호출되어 코드가 실행된다. ------</code>
           <code class="fw-bold">1) <span class="blueviolet"> 함수안에 return 값이 없으면, 코드만 실행하게 되는 것이다.</span></code>
           <code class="fw-bold" style="text-indent: 23px;">이 경우 typeof(함수2()) ==> undefined 가 된다.</code>
           <code class="fw-bold">2) 함수안에 return문으로 함수의 결과를 리턴할 수 있다.</code>
@@ -2672,97 +2672,109 @@
           <code class="fw-bold">1) function 리턴1 () {return Function}; typeof(리턴1()) ==> function </span></code>
           <code class="fw-bold" style="margin-bottom:10px;">2) function 리턴2 () {return '문자열'}; typeof(리턴2()) ==> string </span></code>
         </div>
-        <code class="fw-bold blueviolet">------ 내장객체는 함수인데 주요 return값 예시  ------</code>
-        <code class="fw-bold">※ <span class="blueviolet">객체를 생성하여 반환</span>한다고 하여 생성자 함수라고 한다. ※ 생성자함수 표현식은 : new 내장객체(); 이다.</code>
-        <code class="fw-bold">※ <span class="blueviolet">이렇게 생성된 객체를 '인스턴스'라고 한다.</span></code>
-        <code class="fw-bold">1) let 리터럴객체 = new Object(); console.log(리터럴객체) ==> { }, console.log(typeof(리터럴객체)) ==> object </code>
-        <code class="fw-bold">2) let 배열객체 = new Array(); console.log(배열객체) ==> [ ], console.log(typeof(배열객체)) ==> object</code>
-        <code class="fw-bold blueviolet" style="margin-bottom:10px;">3) class 와 Function 은 따로 설명하겠다. console.log(typeof(함수객체)) ==> function</code>
-        <code class="fw-bold blueviolet">---- 실제로는, 1) let 객체리터럴 = { }; 2) let 배열객체 = [ ]; 형식을 사용한다.  ------</code>
-        <code class="fw-bold">※ 내부적으로 생성자함수를 사용하여 객체를 생성하는 동작을 하게 된다.</code>
-        <code class="fw-bold">※ 생성자 함수의 또다른 중요한 동작은, 생성자객체의 기능을 만들어지는 인스턴스에 상속한다.</code>
-        <code class="fw-bold" style="text-indent: 23px;">ex) Object 객체의 prototype 속성(기능)에 접근할 수 있는 링크를 인스턴스에 생성 [[prototype]] 부분</code>
         <br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>
-    <div id="js내장객체" class="대체2줄">
+    <div id="js객체리터럴" class="대체2줄">
+      <h6 class="blueviolet" style="margin-bottom:0px; text-align: center;border-bottom:1px solid rgb(201, 188, 188)">원시형 자료(null, undefined, number, string, boolean, bigint, symbol)와 달리 객체형 자료(typeof 자료 ==> object, functoin)는 <span style="color:black;font-weight:bold;">속성을 가질수 있다</span>는 특징이 있다.</h6>
       <h6 class="대체2줄세로1h6"></h6>
       <div>
-        <h6> 
-          자바스크립트에서 new 연산자는 **생성자 함수(클래스)**를 호출해 새 인스턴스 객체를 만들 때만 사용합니다. <br>
-하지만 모든 내장 객체에 new를 붙이는 것이 맞지는 않으며,  <br>
-new를 쓰면 에러가 나는 경우도 있습니다.  <br>
+        <h6 class="fw-bold" style="margin-top:5px;">• key와 value의 쌍에서, 1) value에 함수가 오면 key와 value의 쌍을 '메소드'라하고,</h6>
+        <h6 class="fw-bold" style="text-indent: 175px;">2) value가 함수가 아니면 key와 value의 쌍을 '프러퍼티'라한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 175px;border-bottom:1px solid rgb(201, 188, 188);padding-bottom:5px;">3) key와 value의 쌍을 '속성', key를 '속성명', value를 '속성값'이라 한다.</h6>
 
-아래는 내장 객체를 기준으로 new 사용 여부를 정리한 표입니다.   <br>
-          new 필요: 인스턴스가 필수인 “클래스형” 빌트인 (Date, Map, Set, TypedArray, Error 등). <br>
+        <h5 class="fw-bold" style="position: relative;">자료형 object, 기본객체(객체리터럴) 생성방법 : { key1:value1, key2:value2,..., }</h5>
+        <pre class="fw-bold" style="position: absolute; border:1px solid black; left:450px;top:240px;width:500px;">
+ • key:vlaue 의 쌍을 속성(프러퍼티)이라 한다.
+ • vlaue 에 함수가 오면 속성을 다른이름으로 메소드라 한다.
+ • key 부분 : 속성명, value부분 : 속성값
+ • key 부분 : 속성명
+   1. "name"처럼 문자열로 기록하는게 원칙이지만 따옴표를 생략할 수 있다.
+   2. 따옴표를 꼭 해야하는 경우
+      - 숫자로 시작되는 경우,
+      - 문자열 사이에 공백이 있는 경우,
+      - 문자열에 하이픈 - 이 있는 경우 등</pre>
+        <pre class="fw-bold" style="position: absolute; border:1px solid black; left:450px;top:440px;width:500px;">
+ • { } Object 객체는 new Object() 함수에 의해 생성되는 인스턴스이다.
+ • 인스턴스 자신을 생성한 객체는 무엇인가?
+   - console.log(Object.prototype.toString.call(user)); ==> [object Object]
+ • 인스턴스 user 자신의 속성 보기.
+ • Object.getOwnPropertyNames(user) : 자신의 속성이름을 배열형태로 반환;
+   (12) ['name', '공  백', '123t', '_밑줄', 'age', 'isAdmin', '하이-픈', 
+   'hobbies', 'address', '함수이름', 'greet', '밖에서추가']
+   - 인스턴스에서 직접 정의한 속성들만 나온다.
+</pre>
+        <code class="fw-bold" style="padding-left:5px;color:blueviolet; position: absolute; border:1px solid black; left:450px;top:620px;width:500px;">
+          객체형의 특징인 '속성을 가질수 있다'는 점을 확인
+        </code>
 
-new 선택: 함수 호출과 동일하게 동작하는 몇몇 생성자(Array, RegExp, Error 등). <br>
-
-new 금지: Math, JSON, Reflect, Atomics, Symbol, BigInt 등 비함수 또는 함수지만 생성자 아님. <br>
-
-
-
-
-
-</h6>
-
-
-
-        <br><br><br><br><br>
-        <h6 class="fw-bold" style="margin-top:5px;"><button title="개인적정리png_내장객체등" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 종류</button>
-          정의되어 있는 내장객체의 종류, 생성자 함수 부류는, 자신의 기능에 접근하는 링크를 부여한 객체(인스턴스)를 생성한다.
-        </h6>
-        <h6 class="fw-bold" style="color:blueviolet"><button title="id자료형표" onclick="보숨토글(this)" class="보숨토글버튼" style="width:100px;">객체의 이름</button>
-          객체의 이름 확인 : Object.prototype.toString.call(자료) ==> <span style="color:black">[object Function] 형태로 나오게 되는데</span>
-        </h6>
-        <h6 style="text-indent: 106px;">'Function' 만 추출하려면 Object.prototype.toString.call(자료).slice(8, -1);</h6>
-        <h6 class="fw-bold" style="text-indent: 106px;">변수나 인스턴스인 경우, 상속받은 객체의 객체이름이 출력된다. 거의 모두 정의된 객체 중 하나에 속하게 된다.</h6>
-        <h6 class="fw-bold" style="text-indent: 106px;color:blueviolet">최상위 객체는 Object(오브젝트)이다. {....}</h6>
-        <div id="개인적정리png_내장객체등" class="d-none">
-          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
-        </div>
-        <div class="자료형표 d-none" id="id자료형표">
-          <code><div>자료</div><div>Object.prototype.toString.call(자료)</div><div>typeof 자료</div></code>
-          <code><div>class C__ {}</div><div>[object Function]</div><div>function</div></code>
-          <code><div>''</div><div>[object String]</div><div>string</div></code>
-          <code class="자료형표색칠"><div>new String()</div><div>[object String]</div><div>object</div></code>
-          <code><div>1</div><div>[object Number]</div><div>number</div></code>
-          <code class="자료형표색칠"><div>new Number()</div><div>[object Number]</div><div>object</div></code>
-          <code><div>NaN</div><div>[object Number]</div><div>number</div></code>
-          <code><div>Infinity</div><div>[object Number]</div><div>number</div></code>
-          <code><div>true</div><div>[object Boolean]</div><div>boolean</div></code>
-          <code><div>undefined</div><div>[object Undefined]</div><div>undefined</div></code>
-          <code class="자료형표색칠"><div>null</div><div>[object Null]</div><div>object</div></code>
-          <code>객체(Object) 는 속성(Property)과, 값 및 메서드(Method)를 포함하는 데이터의 집합.</code>
-          <code class="자료형표색칠"><div>[]</div><div>[object Array]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>{}</div><div>[object Object]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>new Date()</div><div>[object Date]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>Math</div><div>[object Math]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>/test/i</div><div>[object RegExp]</div><div>object</div></code>
-          <code><div>function () {}</div><div>[object Function]</div><div>function</div></code>
-          <code class="자료형표색칠"><div>document</div><div>[object HTMLDocument]</div><div>object</div></code>
-          <code class="자료형표색칠"><div>버튼태그</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
-        </div>
-        <div id="개인적정리png_내장객체등" class="d-none">
-          <img src="portal/images/문서연결_엑셀VBA/개인적정리png_내장객체등.png" alt="이미지없음">
-        </div>
+        <pre class="fw-bold">
+const user = {
+  name: "홍길동", "공  백": "공백", "123t": 35, _밑줄: '_밑줄', age: 30, isAdmin: false, "하이-픈": "하이-픈",
+  hobbies: ["reading", "traveling"],
+  // 객체 속성 (중첩 객체)
+  address: { city: "서울", zipCode: "12345"},
+  // 함수(메서드) 속성, 함수이름 : function () {...}
+  함수이름: function () { console.log('함수이름 : function() {}')},
+  // 함수(메서드) 속성 단축표기
+  greet () {console.log(`안녕하세요, 저는 ${this.name}입니다.`);},
+};
+user.밖에서추가 = function () { console.log('밖에서 추가') };
+// 속성 접근
+console.log(user);                         // { 전체 코드 }
+console.log(user.name);                // 홍길동
+console.log(user["공  백"]);            // 공백
+console.log(user["123t"]);              // 35
+console.log(user._밑줄);                // 밑줄
+console.log(user["하이-픈"]);         // 하이-픈
+console.log(user.age);                  // 35
+console.log(user.isAdmin);         // false
+console.log(user.hobbies);         // (2) ['reading', 'traveling']
+console.log(user.address);         // {city: '서울', zipCode: '12345'}
+console.log(user.address.city);  // 서울
+console.log(user.밖에서추가);   // ƒ () { console.log('밖에서 추가') }
+user.greet();                           // 안녕하세요, 저는 홍길동입니다.
+user.밖에서추가();                   // 밖에서 추가
+console.log(user.함수이름)     // ƒ () { console.log('함수이름 : function() {}')}
+console.log(user.greet);        // ƒ greet () {console.log(`안녕하세요, 저는 ${this.name}입니다.`);}
+        </pre>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
       <div>
+        <h6 class="fw-bold" style="margin-top:5px;">• value에는 모든 자료형이 가능하기 때문에 '객체형'자료가 오는경우 또다시 '속성명'에 접근 할 수 있다.
+        <h6 class="fw-bold">• key:함수 ==> 함수명 : function () { 실행문; } </h6>
+        <h6 class="fw-bold" style="text-indent: 5px; margin-left:-5px; border-bottom:1px solid rgb(201, 188, 188);padding-bottom:5px;">
+          • 함수명 () { 실행문; } : 위와 같음. 속성명은 '함수명', 속성값은 함수 function () { 실행문; }
+        </h6>
+        <h5 class="fw-bold">함수형 객체 생성방법, 생성자함수 중 function 객체 사용 : 새로생긴 class 문법은 이 방식을 다듬은 것.</h5>
+        <code class="fw-bold d-inline-block" style="padding-left:5px;padding-right:5px;color:blueviolet; border:1px solid black;margin-bottom:5px;">객체형의 특징인 '속성을 가질수 있다'는 점을 확인</code>
+        <h6 class="fw-bold">• 함수 내부에 실행문은 무엇이든 가능하니, 함수에 속성을 만들수 있는지 알아본다.</h6>
+        <pre class="fw-bold">
+this를 이용한 생성자 패턴
+
+만약 new로 호출해 인스턴스를 만들면서 함수 객체 자체에도 속성을 붙이고 싶다면,
+
+function 연습1() {
+  this.인스턴스속성 = '인스턴스 전용';   // 인스턴스에 붙음
+  연습1.정적속성   = '함수 자체 속성';  // 함수(생성자)에 붙음
+}
+const obj = new 연습1();
+console.log(obj.인스턴스속성); // '인스턴스 전용'
+console.log(연습1.정적속성);   // '함수 자체 속성'
+
+this.인스턴스속성 → new로 만든 객체 인스턴스의 프로퍼티
+
+연습1.정적속성 → 생성자 함수 자체의 정적(“클래스 수준”) 프로퍼티
+        </pre>
+        <code class="fw-bold"></code>
+        <code class="fw-bold"></code>
+        <code class="fw-bold"></code>
+        <code class="fw-bold"></code>
+        <code class="fw-bold"></code>
+        <code class="fw-bold"></code>
 
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2791,6 +2803,7 @@ new 금지: Math, JSON, Reflect, Atomics, Symbol, BigInt 등 비함수 또는 �
         
       </div>
       <div>
+        <h6 class="fw-bold"><a href="https://junghyeonsu.com/posts/Function/" target="_blank">함수</a> </h6>
         <h6 class="fw-bold"><a href="https://ko.javascript.info/instanceof" target="_blank">'instanceof'로 클래스 확인하기</a> </h6>
         <h6 class="fw-bold"><a href="https://peach-hzz.tistory.com/156" target="_blank">데이터 타입 확인</a> </h6>
         <h6 class="fw-bold"><a href="https://ko.javascript.info/function-object" target="_blank">객체로서의 함수와 기명 함수 표현식</a> </h6>
@@ -2800,16 +2813,6 @@ new 금지: Math, JSON, Reflect, Atomics, Symbol, BigInt 등 비함수 또는 �
 
       </div>
     </div>
-    <div id="js객체" class="대체2줄">
-      <h6 class="대체2줄세로1h6"></h6>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-
     <div id="js주요개념" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
