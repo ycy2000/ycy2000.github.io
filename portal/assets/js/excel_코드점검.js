@@ -29,23 +29,17 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
-function 생성자함수(파라) {
-  this.파라미터=파라;
-  this.인스턴스속성 = '인스턴스 전용';   // 인스턴스에 붙음
-  생성자함수.정적속성   = '함수 자체 속성';  // 함수(생성자)에 붙음
-  this.결과 = function () {return console.log(파라);}
 
-  };
-const 인스턴스 = new 생성자함수('파라전달');
-인스턴스.외부추가= function () {return '외부추가'; }
-console.log(인스턴스.파라미터); 
-console.log(인스턴스); 
-console.log(인스턴스.결과); 
-console.log(인스턴스.결과()); 
-console.log(인스턴스.외부추가); 
-console.log(인스턴스.외부추가()); 
 
-        
+let 객체 = { key1: '값1', key2: '값2', key3: '값3', };
+//console.log(Object.keys(객체));   //(3) ['key1', 'key2', 'key3']
+//console.log(Object.values(객체)); //(3) ['값1', '값2', '값3']
+//console.log(Object.entries(객체)); //(3) [ ['key1', '값1'], ['key1', '값1'], ['key1', '값1'] ]
+
+
+// (엔트리) => 엔트리[0] 부분 : 맵핑, 반복값에 대해 => 첫번째값만 배열에 다시 담은 결과물로 재설정함
+Object.entries(객체).forEach ( e => console.log(e[0]));
+Array.from( Object.entries(객체), (엔트리) => 엔트리[0]);
 
 
 
@@ -91,11 +85,11 @@ console.log(Object.prototype.toString.call(Array.prototype));  // [object Array]
 console.log(Object.prototype.toString.call(String.prototype));  // [object String]
 console.log(Object.prototype.toString.call(Function.prototype));  // [object Function]
 
-let 배열 = [1,2,3];
-console.log(배열);                                  // (3) [1,2,3]
-console.log(Object.prototype.toString.call(배열));  // [object Array]
-console.log(Object.getOwnPropertyNames(배열));      // (4) ['0','1','2','length']
-console.log(typeof(배열));                          // object
+let 배열22= [1,2,3];
+console.log(배열22);                                  // (3) [1,2,3]
+console.log(Object.prototype.toString.call(배열22));  // [object Array]
+console.log(Object.getOwnPropertyNames(배열22));      // (4) ['0','1','2','length']
+console.log(typeof(배열22));                          // object
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
