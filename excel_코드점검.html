@@ -273,7 +273,9 @@
         <h6 class="fw-bold" title="js자료형객체변수">1. 변수의 값은 자료형을 가진다 : a)원시타입, b)객체타입(참조형), typeof 변수</h6>
         <h6 class="fw-bold" title="js객체리터럴">2-1. 기본객체 Object의 표현방법 : 객체리터럴 { }, 속성부여, 반복문.</h6>
         <h6 class="fw-bold" title="js함수리터럴">2-2. 함수객체 function 표현방법 : 함수리터럴, key:value(속성) 부여 방법.</h6>
-        <h6 class="fw-bold" title="js객체속성개수">Object.keys, Object.values, Object.entries</h6>
+        <h6 class="fw-bold" title="js객체속성개수">속성을 내부에서 지정, 외부에서 지정. Object.keys, Object.values, Object.entries</h6>
+        <h6 class="fw-bold" title="js_Array생성자와프로토타입">3-1. 생성자함수 Array (내장함수 == 내장객체 Array 객체), prototype</h6>
+        <h6 class="fw-bold" title="js_Object생성자와프로토타입">3-2. 생성자함수 Object (내장함수 == 내장객체 Array 객체), prototype</h6>
 
         <br><br><br><br><br><br><br><br><br><br>
 
@@ -3005,6 +3007,7 @@ console.log(person.속성이름만); // 속성이름만
     this.인스턴스속성2 = 이름;
     this.인사 = function () { 
       console.log('저는 ' + this.인스턴스속성1 + ' ' + this.인스턴스속성2 + '입니다.')}
+      // ★ 파라미터가 아닌, 속성이름을 써야한다 ★
     };
   let 홍길동 = new 생성자함수이름('홍','길동');
   console.log(생성자함수이름.속성1); // 값1 (생성자함수이름 함수의 속성이다.)
@@ -3024,8 +3027,209 @@ console.log(person.속성이름만); // 속성이름만
         </div>
       </div>
     </div>
+    <div id="js_Array생성자와프로토타입">
+      <div class="d-inline-block align-top" style="width:610px; border-right:1px solid rgb(201, 188, 188)">
+        <h6 class="fw-bold">• Object.prototype.toString.call(Array) 의미</h6>
+        <h6 style="text-indent: 15px;" class="blueviolet">- 인스턴스가 생성자함수에 의해서 prototype을 상속받은 객체의 이름</h6>
+        <h6 style="text-indent: 15px;">- 자체로써 생성자객체인 경우도 같다.</h6>
+        <h6 class="fw-bold">• Array 객체는 내장객체로써 함수이다.</h6>
+        <h6 style="text-indent: 15px;">- typeof(Array) // function, 함수이므로</h6>
+        <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Array) // [object Function]</h6>
+        <h6 style="text-indent: 15px;" class="blueviolet">- 함수는 Function 객체의 prototype을 상속받는다.</h6>
+        <h6 class="fw-bold">• Array() : 함수를 실행하면 배열을 반환한다 [ ] </h6>
+        <h6 style="text-indent: 15px;">- typeof(Array()) // object, 함수실행결과가 [ ] 생성이므로</h6>
+        <h6 style="text-indent: 15px;">- typeof( [ ] ) // object</h6>
+        <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Array()) // [object Array]</h6>
+        <h6 style="text-indent: 15px;">- Object.prototype.toString.call( [ ] ) // [object Array]</h6>
+        <h6 style="text-indent: 15px;" class="blueviolet">- Array함수 실행결과인 배열객체 [ ]는 Array객체의 prototype을 상속받는다.</h6>
+        <h6 class="fw-bold">• Array 객체의 속성 : Object.getOwnPropertyNames(Array) </h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+console.log(Object.getOwnPropertyNames(Array));
+(7) ['length', 'name', 'prototype', 'isArray', 'from', 'fromAsync', 'of']
+0: "length"            // 1
+1: "name"             // Array </pre>
+        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">2: "prototype" <b style="margin-left:17px;"></b> // [at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, find: ƒ, …]</div>
+        <pre class="fw-bold" style="margin-left:15px;">
+3: "isArray"         // f isArray() { [native code] }
+4: "from"             // f from() { [native code] }
+5: "fromAsync"   // f fromAsync() { [native code] }
+6: "of"                 // f of() { [native code] }
+length: 7
+[[Prototype]]: Array(0) // Object.prototype.toString.call(Array())      </pre>
+        <h6 class="fw-bold">• Array객체의 인스턴스 생성, let 배열 = new Array(); 또는 let 배열 = [ ];</h6>
+        <h6 style="text-indent: 15px;">- let 배열 = [ ]; 이렇게들 쓴다. 생성자 함수를 실행하는 동작이 안보일 뿐이다.</h6>
+        <h6 style="text-indent: 15px;">- Array 생성자 함수의 <span style="color:blueviolet;font-weight: bold;">"인스턴스"</span> 는 </h6>
+        <h6 style="text-indent: 25px;">Array객체의 prototype속성 내부에 정의된 속성들을</h6>
+        <h6 style="text-indent: 25px;">인스턴스 자신의 속성처럼 사용할 수 있다. (prototype 상속)</h6>
+        <h6 class="fw-bold">• let 배열 = [ ]; 배열.자체속성1 = '자체값1'; 배열.자체속성2 = '자체값2';</h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+console.log(배열.자체속성1); // 자체값1
+console.log(배열.자체속성2); // 자체값2
+
+------ Array의 인스턴스는, 상속받은 Array.prototype의 속성을 자신의 속성처럼 사용 ------
+배열.push('사과');
+배열.push(12);
+배열.push('배');
+배열.push('12');
+배열.자체속성3='자체값3'
+console.log(배열); // (4) ['사과', 12, '배', '12', 자체속성1: '자체값1', 자체속성2: '자체값2']
+★ '사과'의 key는 0, 12의 key는 1, 자체값1의 key는 자체속성1, 
+     length는 key가 숫자인것만 카운트한다.
+
+------ 살펴보기 ------
+
+(4) ['사과', 12, '배', '12', 자체속성1: '자체값1', 자체속성2: '자체값2', 자체속성3: '자체값3']
+0: "사과"
+1: 12
+2: "배"
+3: "12"
+자체속성1: "자체값1"
+자체속성2: "자체값2"
+자체속성3: "자체값3"
+length: 4
+[[Prototype]]: Array(0)
+
+console.log(Object.getOwnPropertyNames(배열));
+ // (8) ['0', '1', '2', '3', 'length', '자체속성1', '자체속성2', '자체속성3']
+
+console.log(Object.keys(배열));
+ // (7) ['0', '1', '2', '3', '자체속성1', '자체속성2', '자체속성3']
+
+console.log(Object.values(배열));
+ // (7) ['사과', 12, '배', '12', '자체값1', '자체값2', '자체값3']
+
+console.log(Object.entries(배열));
+ // (7) [ ['0', '사과'], ['1', 12],... ]        </pre>
+      </div>
+      <div class="d-inline-block align-top">
+        <pre class="fw-bold d-inline-block align-top">
+// 화살표 함수
+find((element) => { /* … */ })
+find((element[, index]) => { /* … */ })
+find((element[, index[, array]]) => { /* … */ })       </pre>
+        <pre class="fw-bold d-inline-block align-top">
+// 콜백 함수
+find(callbackFn)
+find(callbackFn[, thisArg])    </pre>
+        <pre class="fw-bold d-inline-block align-top">
+// 인라인 콜백 함수
+find(function (element) { /* … */ })
+find(function (element[, index]) { /* … */ })
+find(function (element[, index[, array]]) { /* … */ })
+find(function (element[, index[, array]]) { /* … */ }[, thisArg])</pre>
+        <h6 class="fw-bold">• Array.prototype 에 정의된 속성들. <span style="color:blueviolet">Array객체의 속성도 알아둘것. form, isArray, 맵핑함수</span> </h6>
+        <h6 class="fw-bold">• console.log(Object.getOwnPropertyNames(Array.prototype));</h6>
+        <h6 style="text-indent: 15px;">- 속성들의 이름이 배열로 담겨 반환된다. 속성들을 나열한 것이다.</h6>
+        <h6 style="text-indent: 15px;color:blueviolet;position: relative;">- 대부분은 '배열인스턴스.속성' 형태로 쓰는 함수들이다.</h6>
+        <h6 class="fw-bold">• 예제 : let 배열 = [ '사과', '배', '바나나', 1, '12' ]; let 배열2 = [ 'A', 'B' ]; 변수 '배열', '배열2'는 Array객체의 인스턴스.</h6>
+        <h6 style="text-indent: 15px;color:blueviolet;position: relative;font-weight: bold;">- 아래는 console.log(Array.prototype); 아래에서 [ ]는 생략가능, 
+          콜백(callback)은 '(ele) => 실행문' 실행문이 여러줄이면 { 코드; 코드; }, 판단문이면 { } 괄호 쓰면 안되는듯. true, false</h6>
+        <pre class="fw-bold 우측꺼다" style="position: absolute; margin-left:15px;left:900px;">
+배열.at(-1) : '12' 마지막값 , 배열.at(1) : '배' 두번째꺼 
+배열.concat(배열2,'직접') : (8) ['사과', '배', '바나나', 1, '12', 'A', 'B', '직접'] 배열이면 안의 값들, 값이면 값을 기본배열에 추가
+배열.constructor : ƒ Array() { [native code] }, 본인(인스턴스)를 만들 생성자함수 객체
+array.copyWithin(target, start, end) : target(0부터) - 붙여넣기할 위치, start(0부터) - 복사 시작위치, 포함 O, 기본값:0, end(1부터) - 복사종료 위치, 포함 X, 기본값:arr.length.
+덮어쓰기 (쓸일이 없을듯)
+배열.copyWithin(1,3,5) : 3,5 = 1, '12'  1위치(배)부터 1, '12'로 덮어쓰고 남은 1, '12' 그대로 둔다 [ '사과', 1, '12', 1, '12' ]
+for (let ele of 배열.entries()) {console.log(ele)} 출력 [0, '사과'], 출력 [1, '배'], 출력 [2, '바나나'], 출력 [3, 1], 출력 [4, '12']
+for (let [key, value] of 배열.entries()) { 코딩 }
+콜백함수로 true false 전달받는다. 모든요소가 조건을 충족하는지 검사. 
+let 모두맞는지확인 = 배열.every( value => typeof(value)=='string' );   // false
+let 모두맞는지확인2 = 배열2.every( value => typeof(value)=='string' ); // true
+arr.fill(value[, start[, end]])
+arr.filter(callback(element[, index[, array]])[, thisArg]) -- element - 배열의 현재 요소, index(Optional) - 배열의 현재 요소의 인덱스, array(Optional) - 호출한 배열, thisArg(Optional) - callback함수를 실행할때 this로 사용되는 값
+배열을 순서대로 불러 각 요소에 대해 callback 함수을 실행하고 결과가 true인 요소들만으로 이루어진 새로운 배열을 반환합니다. 
+let 필터링결과 = 배열.filter( (ele) => ele.length==2 ); //(2) ['사과', '12'] { ele.length==2 }처럼 중괄호 하지 말것. 조건판단.
+arr.find(callbackFn[, thisArg]) : 배열의 find() 함수는 배열에서 콜백 함수의 조건을 만족하는 첫 번째 요소를 반환합니다. 없으면 undefined
+let 찾은요소 = 배열.find( ele => typeof(ele)=='number') // 1, 찾은요소 = 배열.find( ele => typeof(ele)=='function') // undefined
+find 대신에 findIndex : 찾으면 index == 3, 못찾으면 -1 출력
+역순으로 값을 찾는다.
+역순으로 찾아서 인덱스를 출력한다.
+배열 평탄화하기. flat() 은 브라우저에 최적화가 되있지 않은 상태이므로, [].concat() 을 사용하는 것이 속도면에서 더 유리하다.
+ƒ 
+forEach(callbackFn) / forEach(callbackFn, thisArg) / 배열.forEach( (요소) => { console.log(요소);} ); // 요소마다 코드를 한번씩 실핸한다. true false 판단 아님
+배열.includes('없다') : false,  includes 메서드는 배열이나 문자열에 특정한 값을 포함하는지 여부를 확인하는 메서드다. boolean 타입의 값을 리턴한다.
+배열.indexOf('없다') : 없으면 -1, 있으면 첫번째값 인덱스 출력.
+arr.join(), arr.join(separator), separator없으면 join(',')처럼 작동.
+let 배열= [1,2]; 배열.추가='추가'; 
+Object객체의 자체기능을 사용하면 일반배열로 출력된다. console.log(Object.keys(배열)); // (3) ['0', '1', '추가']
+Array객체의 console.log(배열.keys()); // Array Iterator {}, 반복가능한 객체로 표시되고 for .. of 구문으로 확인해야한다.
+for (let key of 배열.keys()) {console.log(key)} // 0, 1 (push로 추가된 것만 나온다)
+없으면 -1, 있으면 마지맊값 인덱스 출력.
+ƒ 
+map(callbackFn) / map(callbackFn, thisArg) / 링크 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map 
+
+ƒ 
+ƒ 
+ƒ 
+ƒ 
+ƒ 
+ƒ 
+
+        </pre>
+        <pre class="fw-bold" style="margin-left:15px;">
+at: ƒ at()
+concat: ƒ concat()
+constructor: ƒ Array()
+copyWithin: ƒ copyWithin()
 
 
+entries: ƒ entries()
+
+every: ƒ every()
+
+
+fill: ƒ fill()
+filter: ƒ filter()
+
+
+find: ƒ find()
+
+findIndex: ƒ findIndex()
+findLast: ƒ findLast()
+findLastIndex: ƒ findLastIndex()
+flat: ƒ flat()
+flatMap: ƒ flatMap()
+forEach: ƒ forEach()
+includes: ƒ includes()
+indexOf: ƒ indexOf()
+join: ƒ join()
+keys: ƒ keys()
+
+
+lastIndexOf: ƒ lastIndexOf()
+
+length: 0
+map: ƒ map()
+pop: ƒ pop()
+push: ƒ push()
+reduce: ƒ reduce()
+reduceRight: ƒ reduceRight()
+reverse: ƒ reverse()
+shift: ƒ shift()
+slice: ƒ slice()
+some: ƒ some()
+sort: ƒ sort()
+splice: ƒ splice()
+toLocaleString: ƒ toLocaleString()
+toReversed: ƒ toReversed()
+toSorted: ƒ toSorted()
+toSpliced: ƒ toSpliced()
+toString: ƒ toString()
+unshift: ƒ unshift()
+values: ƒ values()
+with: ƒ with()
+Symbol(Symbol.iterator): ƒ values()
+Symbol(Symbol.unscopables):
+{at: true, copyWithin: true, entries: true, fill: true, find: true, …}
+[[Prototype]]: Object
+        </pre>
+
+
+        
+
+      </div>
+    </div>
 
 
 

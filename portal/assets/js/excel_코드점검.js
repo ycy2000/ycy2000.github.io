@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js객체속성개수' //원래는 h6의 title이다.
+  전체변수h6title ='js_Array생성자와프로토타입' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,16 +29,14 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
-  let 생성자함수이름 = function (성, 이름) { 
-    생성자함수이름.속성1 = '값1';  // 내부속성
-    생성자함수이름.속성2 = '값2';  // 내부속성
-    this.인스턴스속성1 = 성;
-    this.인스턴스속성2 = 이름;
-    this.인사 = function () { console.log('저는 ' + this.인스턴스속성1 + ' ' + this.인스턴스속성2 + '입니다.')}
-  };
-  let 성변수 = '홍'; let 이름변수 = '길동';
-  let 홍길동 = new 생성자함수이름(성변수,이름변수);
-  홍길동.인사();
+
+let 배열= [1,2]; 배열.추가='추가';
+for (let key of 배열.keys()) {console.
+  log(key)}
+
+  return;
+
+
 
 
 
