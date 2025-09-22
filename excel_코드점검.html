@@ -273,6 +273,7 @@
         <h6 class="fw-bold" title="js자료형객체변수">1. 변수의 값은 자료형을 가진다 : a)원시타입, b)객체타입(참조형), typeof 변수</h6>
         <h6 class="fw-bold" title="js객체리터럴">2-1. 기본객체 Object의 표현방법 : 객체리터럴 { }, 속성부여, 반복문.</h6>
         <h6 class="fw-bold" title="js함수리터럴">2-2. 함수객체 function 표현방법 : 함수리터럴, key:value(속성) 부여 방법.</h6>
+        <h6 class="fw-bold" title="js객체속성개수">Object.keys, Object.values, Object.entries</h6>
 
         <br><br><br><br><br><br><br><br><br><br>
 
@@ -2907,7 +2908,122 @@ console.log(person.속성이름만); // 속성이름만
         </div>
       </div>
     </div>
+    <div id="js객체속성개수">
+      <h6 class="fw-bold">1. Object.keys : 속성의 key값들을 배열에 담아준다. 2. Object.values : 속성의 value값들을 배열에 담아준다.
+          3. Object.entries : [key, value] 형식으로 값을 배열에 담아준다. 각 값들은 값이 2개인 배열이다.</h6>
+      <div class="대체3줄" style="position: relative;border-top:1px solid rgb(201, 188, 188)">
+        <h6 class="대체3줄세로1h6"></h6>
+        <h6 class="대체3줄세로2h6"></h6>
+        <div>
+          <h6 class="fw-bold">기본객체 Object, 객체리터럴 { } 내부에서 속성지정</h6>
+          <pre class="fw-bold">
+  let 객체이름 = {
+    속성1: '값1', 속성2: '값2', 속성1: '값3', 속성2: '값4',
+  }
+  console.log(객체이름); // {속성1: '값3', 속성2: '값4'}
+          </pre>
+          <h6 class="fw-bold" style="margin-top:5px;">기본객체 Object, 객체리터럴 { } 외부에서 속성지정</h6>
+          <pre class="fw-bold">
+  let 객체이름 = { };
+    객체이름.속성1 = '값1';
+    객체이름.속성2 = '값1';
+    객체이름.속성1 = '값3';
+    객체이름.속성2 = '값4';
 
+  console.log(객체이름); // {속성1: '값3', 속성2: '값4'}          </pre>
+        </div>
+        <div>
+          <h6 class="fw-bold">기본객체 Object, 속성이름이 같을때는 속성값을 새롭게 지정하는 것과 같다</h6>
+          <h6 class="fw-bold">Object.keys(자료) : 속성의 key값들을 배열로 돌려줌.</h6>
+          <h6 class="fw-bold">Object.values(자료) : 속성의 value값들을 배열로 돌려줌.</h6>
+          <h6 class="fw-bold">Object.entries(자료) : 속성의 [key, value]들을 배열로 돌려줌.</h6>
+          <br>
+          <h6 class="fw-bold">Object.keys(자료).length : 같은속성은 하나만 카운트</h6>
+          <h6 class="fw-bold">Object.values(자료).length : 같은속성은 하나만 카운트</h6>
+          <h6 class="fw-bold">Object.entries(자료).length : 같은속성은 하나만 카운트</h6>
+          <br>
+          <h6 class="fw-bold">console.log(객체이름); // {속성1: '값3', 속성2: '값4'}</h6>
+          <h6 class="fw-bold" style="text-indent: 15px;">- 생성자 함수 Object가 정리해서 결과 나타내 주는듯 하다.</h6>
+          
+        </div>
+        <div>
+        </div>
+      </div>
+
+      <div class="대체3줄" style="position: relative;border-top:1px solid rgb(201, 188, 188)">
+        <div>
+          <h6 class="fw-bold">• 함수객체 function 내부에서 속성지정</h6>
+          <h6 class="fw-bold" style="text-indent: 15px;">- 함수가 호출되지 않으면 속성이 부여되지 않는 것을 확인</h6>
+          <pre class="fw-bold">
+  let 함수이름 = function () {
+    함수이름.속성1 = '값1';
+    함수이름.속성2 = '값2';
+    함수이름.속성1 = '값3';
+    함수이름.속성2 = '값4';
+  }
+  console.log(함수이름.속성1); // undefined
+  console.log(Object.keys(함수이름)); // [ ]
+  console.log(Object.values(함수이름)); // [ ]
+  console.log(Object.entries(함수이름)); // [ ]</pre>
+          <h6 class="fw-bold">• 함수객체 function 외부에서 속성지정</h6>
+          <h6 class="fw-bold" style="text-indent: 15px;">- 외부에서 속성을 지정하면 반영이 된다는 것을 확인 </h6>
+          <pre class="fw-bold">
+  let 함수이름 = function () {  };
+    함수이름.속성1 = '값1';
+    함수이름.속성2 = '값2';
+    함수이름.속성1 = '값3';
+    함수이름.속성2 = '값4';
+  console.log(함수이름.속성1); // 값3
+  console.log(Object.keys(함수이름)); // ['속성1', '속성2']
+  console.log(Object.values(함수이름)); // ['값3', '값4']
+  console.log(Object.entries(함수이름)); // [ ['속성1', '값3'], ['속성2', '값4'] ]</pre>
+        </div>
+        <div>
+          <h6 class="fw-bold">• 함수객체 function 내부에서 지정한 속성을 부여하려면 함수를 호출하여야 한다.</h6>
+          <h6 class="fw-bold">• 함수 외부에서 지정한 속성은 지정이 되지만,  </h6>
+          <h6 class="fw-bold">• 함수 내부의 내용은 함수가 호출되어야 읽으면서 지정된다. </h6>
+          <h6 class="fw-bold">• 함수이름(), new Object(), 함수이름과 함께 괄호를 전달하면 함수를 호출하는 것이다. </h6>
+          <pre class="fw-bold">
+  let 함수이름 = function () { 함수이름.속성1 = '값1';  함수이름.속성2 = '값2'; };
+  함수이름(); // 함수를 호출함. 내부코드 읽으면서 내부의 속성 지정됨.
+
+  console.log(함수이름.속성1); // 속성3
+  console.log(Object.keys(함수이름)); // ['속성1', '속성2']
+  console.log(Object.values(함수이름)); // ['값3', '값4']
+  console.log(Object.entries(함수이름)); // [ ['속성1', '값3'], ['속성2', '값4'] ]</pre>
+          <h6 class="fw-bold">• new를 통하여 인스턴스를 만들때, 인스턴스의 속성</h6>
+          <h6 class="fw-bold">• 생성자함수 내부의 코드에서 인스턴스의 속성으로 사용될 것의 표현식</h6>
+          <h6 class="fw-bold blueviolet" style="text-indent: 15px;">- 함수이름.속성명 대신에, this.속성명 </h6>
+          <h6 class="fw-bold blueviolet" style="text-indent: 15px;">- 내부에서 정의하고, 생성자 함수 호출시 코드를 읽으면서 적용됨. </h6>
+        </div>
+        <div>
+          <pre class="fw-bold">
+  let 생성자함수이름 = function (성, 이름) { 
+    생성자함수이름.속성1 = '값1';  // 내부속성
+    생성자함수이름.속성2 = '값2';  // 내부속성
+    this.인스턴스속성1 = 성;        //'인스턴스속성1'은 속성명으로 문자열이다.
+    this.인스턴스속성2 = 이름;
+    this.인사 = function () { 
+      console.log('저는 ' + this.인스턴스속성1 + ' ' + this.인스턴스속성2 + '입니다.')}
+    };
+  let 홍길동 = new 생성자함수이름('홍','길동');
+  console.log(생성자함수이름.속성1); // 값1 (생성자함수이름 함수의 속성이다.)
+  console.log(홍길동.속성1);             // undefined (생성자함수이름 함수의 속성이다.)
+  console.log(홍길동.인스턴스속성1); // 홍
+  홍길동.인사();                                 // 저는 홍 길동입니다.
+  console.log(Object.keys(홍길동));    // ['인스턴스속성1', '인스턴스속성2', '인사']
+  console.log(Object.values(홍길동));  // ['홍', '길동', ƒ]
+  console.log(Object.entries(홍길동));
+   // (3) [ ['인스턴스속성1', '홍'], ['인스턴스속성2', '길동'], ['인사', ƒ] ]
+
+  ----------------- 파라미터에 변수를 전달하는 방식 예시 ------------------------------
+  let 성변수 = '홍'; let 이름변수 = '길동';
+  let 홍길동2 = new 생성자함수이름(성변수,이름변수);
+  홍길동2.인사();                                 // 저는 홍 길동입니다.
+          </pre>
+        </div>
+      </div>
+    </div>
 
 
 

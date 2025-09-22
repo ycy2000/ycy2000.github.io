@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js객체리터럴' //원래는 h6의 title이다.
+  전체변수h6title ='js객체속성개수' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -29,13 +29,30 @@ function 전체대체에셑팅() {
 
 
 function 연습() {
+  let 생성자함수이름 = function (성, 이름) { 
+    생성자함수이름.속성1 = '값1';  // 내부속성
+    생성자함수이름.속성2 = '값2';  // 내부속성
+    this.인스턴스속성1 = 성;
+    this.인스턴스속성2 = 이름;
+    this.인사 = function () { console.log('저는 ' + this.인스턴스속성1 + ' ' + this.인스턴스속성2 + '입니다.')}
+  };
+  let 성변수 = '홍'; let 이름변수 = '길동';
+  let 홍길동 = new 생성자함수이름(성변수,이름변수);
+  홍길동.인사();
 
 
-let 객체 = { key1: '값1', key2: '값2', key3: '값3', };
-//console.log(Object.keys(객체));   //(3) ['key1', 'key2', 'key3']
-//console.log(Object.values(객체)); //(3) ['값1', '값2', '값3']
-//console.log(Object.entries(객체)); //(3) [ ['key1', '값1'], ['key1', '값1'], ['key1', '값1'] ]
 
+
+
+
+  return;
+let 객체 = { key1: '값1', key2: '값2', key3: '값3',key1: '값4', key2: '값5', key3: '값6', };
+console.log(Object.keys(객체));   //(3) ['key1', 'key2', 'key3']
+console.log(Object.values(객체)); //(3) ['값1', '값2', '값3']
+console.log(Object.entries(객체)); //(3) [ ['key1', '값1'], ['key1', '값1'], ['key1', '값1'] ]
+console.log(Object.keys(객체).length);   //(3) ['key1', 'key2', 'key3']
+console.log(Object.values(객체).length); //(3) ['값1', '값2', '값3']
+console.log(Object.entries(객체).length); //(3) [ ['key1', '값1'], ['key1', '값1'], ['key1', '값1'] ]
 
 // (엔트리) => 엔트리[0] 부분 : 맵핑, 반복값에 대해 => 첫번째값만 배열에 다시 담은 결과물로 재설정함
 Object.entries(객체).forEach ( e => console.log(e[0]));
