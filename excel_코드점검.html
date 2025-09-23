@@ -3056,7 +3056,7 @@ console.log(Object.getOwnPropertyNames(Array));
 5: "fromAsync"   // f fromAsync() { [native code] }
 6: "of"                 // f of() { [native code] }
 length: 7
-[[Prototype]]: Array(0) // Object.prototype.toString.call(Array())      </pre>
+[[Prototype]]: Array(0)   </pre>
         <h6 class="fw-bold">• Array객체의 인스턴스 생성, let 배열 = new Array(); 또는 let 배열 = [ ];</h6>
         <h6 style="text-indent: 15px;">- let 배열 = [ ]; 이렇게들 쓴다. 생성자 함수를 실행하는 동작이 안보일 뿐이다.</h6>
         <h6 style="text-indent: 15px;">- Array 생성자 함수의 <span style="color:blueviolet;font-weight: bold;">"인스턴스"</span> 는 </h6>
@@ -3248,30 +3248,62 @@ Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: tr
         <h6 class="fw-bold">• Object.prototype.toString.call(Array) 의미</h6>
         <h6 style="text-indent: 15px;" class="blueviolet">- 인스턴스가 생성자함수에 의해서 prototype을 상속받은 객체의 이름</h6>
         <h6 style="text-indent: 15px;">- 자체로써 생성자객체인 경우도 같다.</h6>
-        <h6 class="fw-bold">• Array 객체는 내장객체로써 함수이다.</h6>
-        <h6 style="text-indent: 15px;">- typeof(Array) // function, 함수이므로</h6>
-        <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Array) // [object Function]</h6>
-        <h6 style="text-indent: 15px;" class="blueviolet">- 함수는 Function 객체의 prototype을 상속받는다.</h6>
-        <h6 class="fw-bold">• Array() : 함수를 실행하면 배열을 반환한다 [ ] </h6>
-        <h6 style="text-indent: 15px;">- typeof(Array()) // object, 함수실행결과가 [ ] 생성이므로</h6>
-        <h6 style="text-indent: 15px;">- typeof( [ ] ) // object</h6>
-        <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Array()) // [object Array]</h6>
-        <h6 style="text-indent: 15px;">- Object.prototype.toString.call( [ ] ) // [object Array]</h6>
-        <h6 style="text-indent: 15px;" class="blueviolet">- Array함수 실행결과인 배열객체 [ ]는 Array객체의 prototype을 상속받는다.</h6>
-        <h6 class="fw-bold">• Array 객체의 속성 : Object.getOwnPropertyNames(Array) </h6>
+        <h6 class="fw-bold">• Object 객체는 내장객체로써 함수이다.</h6>
+        <h6 style="text-indent: 15px;">- typeof(Object) // function, 함수이므로</h6>
+        <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Object) // [object Function]</h6>
+        <h6 style="text-indent: 15px;" class="blueviolet">- Object객체는 Object 객체의 prototype을 상속받는다.</h6>
+        <h6 class="fw-bold">• Object() : 함수를 실행하면 객체을 반환한다 { } </h6>
+        <h6 style="text-indent: 15px;">- typeof(Object()) // object, 함수실행결과가 [ ] 생성이므로</h6>
+        <h6 style="text-indent: 15px;">- typeof( { } ) // object</h6>
+        <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Object()) // [object Object]</h6>
+        <h6 style="text-indent: 15px;">- Object.prototype.toString.call( { } ) // [object Object]</h6>
+        <h6 style="text-indent: 15px;" class="blueviolet">- Object함수 실행결과인 객체 { }는 Object객체의 prototype을 상속받는다.</h6>
+        <h6 class="fw-bold">• Object 객체의 속성 : Object.getOwnPropertyNames(Object) </h6>
         <pre class="fw-bold" style="margin-left:15px;">
-console.log(Object.getOwnPropertyNames(Array));
-(7) ['length', 'name', 'prototype', 'isArray', 'from', 'fromAsync', 'of']
-0: "length"            // 1
-1: "name"             // Array </pre>
+console.log(Object.getOwnPropertyNames(Object));
+(26) ['length', 'name', 'prototype', 'assign', 'getOwnPropertyDescriptor', 
+'getOwnPropertyDescriptors', 'getOwnPropertyNames', 'getOwnPropertySymbols', 
+'hasOwn', 'is', 'preventExtensions', 'seal', 'create', 'defineProperties', 
+'defineProperty', 'freeze', 'getPrototypeOf', 'setPrototypeOf', 'isExtensible', 
+'isFrozen', 'isSealed', 'keys', 'entries', 'fromEntries', 'values', 'groupBy']
+0: "length"
+1: "name"</pre>
         <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">2: "prototype" <b style="margin-left:17px;"></b> // [at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, find: ƒ, …]</div>
         <pre class="fw-bold" style="margin-left:15px;">
-3: "isArray"         // f isArray() { [native code] }
-4: "from"             // f from() { [native code] }
-5: "fromAsync"   // f fromAsync() { [native code] }
-6: "of"                 // f of() { [native code] }
-length: 7
-[[Prototype]]: Array(0) // Object.prototype.toString.call(Array())      </pre>
+3: "assign"
+4: "getOwnPropertyDescriptor"
+5: "getOwnPropertyDescriptors"</pre>
+        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">6: "getOwnPropertyNames"</div>
+        <pre class="fw-bold" style="margin-left:15px;">
+7: "getOwnPropertySymbols"
+8: "hasOwn"
+9: "is"
+10: "preventExtensions"
+11: "seal"
+12: "create"
+13: "defineProperties"
+14: "defineProperty"
+15: "freeze"
+16: "getPrototypeOf"
+17: "setPrototypeOf"
+18: "isExtensible"
+19: "isFrozen"
+20: "isSealed"
+21: "keys"
+22: "entries"
+23: "fromEntries"
+24: "values"
+25: "groupBy"
+length: 26
+[[Prototype]]: Array(0)</pre>
+
+
+
+
+<br><br><br><br><br><br><br><br>
+
+
+
         <h6 class="fw-bold">• Array객체의 인스턴스 생성, let 배열 = new Array(); 또는 let 배열 = [ ];</h6>
         <h6 style="text-indent: 15px;">- let 배열 = [ ]; 이렇게들 쓴다. 생성자 함수를 실행하는 동작이 안보일 뿐이다.</h6>
         <h6 style="text-indent: 15px;">- Array 생성자 함수의 <span style="color:blueviolet;font-weight: bold;">"인스턴스"</span> 는 </h6>

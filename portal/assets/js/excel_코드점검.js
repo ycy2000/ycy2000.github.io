@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_Array생성자와프로토타입' //원래는 h6의 title이다.
+  전체변수h6title ='js_Object생성자와프로토타입' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,8 +28,8 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-let 배열=[1,3,2];
-console.log(배열.Symbol)
+
+console.log(Object.getOwnPropertyNames(Object));
 
   return;
 //함수표현식 : 위치에 관계없이 저장되어 어디서든 호출가능
