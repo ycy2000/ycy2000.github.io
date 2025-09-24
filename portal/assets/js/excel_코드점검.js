@@ -28,8 +28,8 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-  const 객체 = {성:'홍',이름:'길동'};
-  for (let val of 객체) { onsole.log(val);}
+  console.log(Object.getOwnPropertyNames(Object));
+
 
 
 //name ,  [object String] ,  string ,  name  :  Alice

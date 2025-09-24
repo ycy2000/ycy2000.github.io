@@ -3442,9 +3442,22 @@ set __proto__: ƒ __proto__()
         <h6 style="text-indent: 15px;">- iterable : 열거가능한, 객체는 열거가능한 것이 아니다.</h6>
         <br>
         <h6 class="fw-bold">• 객체의 반복문 : for (let 속성명 in 객체) { 코드 }; 속성명을 가지고 온다</h6>
-        <h6 style="text-indent: 15px;">- 여기서 속성이란 보통 <span style="color:blueviolet">인스턴스 자신의 속성</span>이다.</h6>
-        <h6 style="text-indent: 15px;">- for (let 속성명 in Object) : 생성자함수 객체 자신을 넣었다면,</h6>
+        <h6 style="text-indent: 15px;">- enumerable: true 만, 셀수 있는 = true 만 가지고 온다.</h6>
+        <h6 style="text-indent: 15px;">- Object객체의 기본 설정 속성은, enumerable: flase로 되어있다.</h6>
+        <h6 style="text-indent: 15px;">- Object.임시 = '임시';  for (let 속성명 in Object) {console.log(속성명)};</h6>
+        <h6 style="text-indent: 15px;">- 여기서 속성이란 보통 <span style="color:blueviolet">인스턴스 자신의 속성</span>(값)이다.</h6>
+        <h6 style="text-indent: 26px;">위 코드를 돌리면 '임시' 하나만 출력된다.</h6> 
+        <h6 style="text-indent: 15px;">- Object 기본 속성이 enumerable: false 예시</h6>
+        <h6 style="text-indent: 26px;">console.log(Object.getOwnPropertyDescriptor(Object, 'create'));</h6>
+        <h6 style="text-indent: 26px;">{writable: true, <span style="color:blueviolet">enumerable: false</span>, configurable: true, value: ƒ}</h6>
+        <br>
         <h6 class="fw-bold">• 배열에도 쓸수 있다 : for (let value in 배열) { 코드 }; 값을 가지고 온다.</h6>
+        <br>
+        <h6 class="fw-bold">• Object, Array, Array.prototype 등 내장객체의 속성을 확인하려면</h6>
+        <h6 style="text-indent: 15px;">- Object.getOwnPropertyNames(자료)</h6>
+        <h6 style="text-indent: 15px;">- console.log(Object.getOwnPropertyNames(Object));</h6>
+        <h6 style="text-indent: 26px;">enumerable: false 속성과 관계없이 속성을 배열에 담아 반환한다.</h6>
+
 
       </div>
       <div>
