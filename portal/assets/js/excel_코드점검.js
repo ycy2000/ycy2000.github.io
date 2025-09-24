@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_Object생성자와프로토타입' //원래는 h6의 title이다.
+  전체변수h6title ='js_반복문관련간단정보' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,110 +28,18 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
+  const 객체 = {성:'홍',이름:'길동'};
+  for (let val of 객체) { onsole.log(val);}
 
-console.log(Object.getOwnPropertyNames(Object));
 
-  return;
-//함수표현식 : 위치에 관계없이 저장되어 어디서든 호출가능
-function 함수표현식() { '코드' }
-
-//익명함수1 : 함수를 변수에 담는다. 선언이전에 호출안됨.
-//익명함수() : 호출하면 함수를 실행하는데 '함수이름'이 없어도 실행된다.
-//이름이 필요없기 때문에 이름을 안넣는다.
-let 익명함수 = function 함수이름 () { '코드' };
-let 익명함수2 = function () { '코드' };
-
-// function () { '코드' } : 변수에 담지 않으면 이런식으로는 에러난다.
-// 화살표함수 : 익명함수의 다른 표현법
-// () => {console.log('화살표함수')} : 이런식으로는 에러난다.
-// function () { console.log('익명') } : 이런식으로는 에러난다.
-// 전체를 괄호에 넣으면 변수처럼 사용가능
-// 문장의 마지막(;)을 표시하지 않으면 에러날수 있다.
-// 명령이 한줄이면 { }생략가능. 
-(() => {console.log('화살표함수')}); // 호출이 아니다. 아무런 동작이 없다.
-(() => console.log('화살표함수'))(); // '화살표함수', 괄호로 호출
-(() => {console.log('화살표함수')})(); // '화살표함수', 괄호로 호출
-(function () { console.log('익명') }); // 호출이 아니다. 아무런 동작이 없다.
-(function () { console.log('익명') })(); // '익명', 괄호로 호출
+//name ,  [object String] ,  string ,  name  :  Alice
+//age ,  [object String] ,  object ,  age  :  String {'new S'}
+//greet ,  [object Function] ,  function ,  greet  :  ƒ () { console.log("Hi!");}
+//객체값 ,  [object Object] ,  object ,  객체값  :  {내부1: '내부1', 내부2: '내부2'}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  return;
-let 객체 = { key1: '값1', key2: '값2', key3: '값3',key1: '값4', key2: '값5', key3: '값6', };
-console.log(Object.keys(객체));   //(3) ['key1', 'key2', 'key3']
-console.log(Object.values(객체)); //(3) ['값1', '값2', '값3']
-console.log(Object.entries(객체)); //(3) [ ['key1', '값1'], ['key1', '값1'], ['key1', '값1'] ]
-console.log(Object.keys(객체).length);   //(3) ['key1', 'key2', 'key3']
-console.log(Object.values(객체).length); //(3) ['값1', '값2', '값3']
-console.log(Object.entries(객체).length); //(3) [ ['key1', '값1'], ['key1', '값1'], ['key1', '값1'] ]
-
-// (엔트리) => 엔트리[0] 부분 : 맵핑, 반복값에 대해 => 첫번째값만 배열에 다시 담은 결과물로 재설정함
-Object.entries(객체).forEach ( e => console.log(e[0]));
-Array.from( Object.entries(객체), (엔트리) => 엔트리[0]);
-
-
-
-
-
-  return;
-    console.log(typeof(undefined));
-    console.log(typeof(null));
-  let 변수 = document.querySelector('#없는아이디');
-  console.log(typeof(변수123));
-  console.log(Math);
-  console.log(Object.getOwnPropertyNames(Math.abs));
-console.log(Object.getOwnPropertyNames(Function));
-console.log(Object.getOwnPropertyNames(Array));
-console.log(Object.getOwnPropertyNames(Function.prototype));
-console.log(Object);
-console.log(Array);
-console.log(Function);
-console.log(String);
-console.log(Object());
-console.log(Array());
-console.log(Function());
-console.log(String());
-console.log(Object.prototype);
-console.log(Array.prototype);
-console.log(Function.prototype);
-console.log(String.prototype);
-console.log(new Object({1:12,2:'dd'}));
-console.log(new Array(1,2,[1,2,3],{}));
-console.log(new String('121 gkdk'));
-console.log(Object({1:12,2:'dd'}));
-console.log(Array(1,2,[1,2,3],{}));
-console.log(String('121 gkdk'));
-  return;
-
-console.log(Object.prototype.toString.call(Object));  // [object Function]
-console.log(Object.prototype.toString.call(Array));  // [object Function]
-console.log(Object.prototype.toString.call(String));  // [object Function]
-console.log(Object.prototype.toString.call(Function));  // [object Function]
-
-console.log(Object.prototype.toString.call(Object.prototype));  // [object Object]
-console.log(Object.prototype.toString.call(Array.prototype));  // [object Array]
-console.log(Object.prototype.toString.call(String.prototype));  // [object String]
-console.log(Object.prototype.toString.call(Function.prototype));  // [object Function]
-
-let 배열22= [1,2,3];
-console.log(배열22);                                  // (3) [1,2,3]
-console.log(Object.prototype.toString.call(배열22));  // [object Array]
-console.log(Object.getOwnPropertyNames(배열22));      // (4) ['0','1','2','length']
-console.log(typeof(배열22));                          // object
+  
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');

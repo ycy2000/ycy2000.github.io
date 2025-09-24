@@ -277,6 +277,9 @@
         <h6 class="fw-bold" title="js_Array생성자와프로토타입">3-1. 생성자함수 Array (내장함수 == 내장객체 Array 객체), prototype</h6>
         <h6 class="fw-bold" title="js_Object생성자와프로토타입">3-2. 생성자함수 Object (내장함수 == 내장객체 Array 객체), prototype</h6>
         <h6 class="fw-bold blueviolet" title="js_callback함수">-- 익명함수, 화살표함수, 매개변수, mapFn(맵핑함수), callbackFn(콜백함수) --</h6>
+        <h6 class="fw-bold" title="js_반복문관련간단정보">4-1. 반복문 관련 간단 정보</h6>
+        <h6 class="fw-bold" title="js_객체반복문">4-1. 객체 { } 반복문, 속성이름 받아옴 : for (let 속성명 in 객체) { 코드 }</h6>
+        <h6 class="fw-bold blueviolet" title="js_구조분해맛보기">-- 구조분해 맛보기, ['홍','길동'] 배열은 { 0:'홍', 1:'길동', length:2 } for - in(객체반복)</h6>
 
         <br><br><br><br><br><br><br><br><br><br>
 
@@ -3237,10 +3240,6 @@ Symbol(Symbol.iterator): ƒ values()
 Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}
 [[Prototype]]: Object
         </pre>
-
-
-        
-
       </div>
     </div>
     <div id="js_Object생성자와프로토타입">
@@ -3253,33 +3252,72 @@ Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: tr
         <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Object) // [object Function]</h6>
         <h6 style="text-indent: 15px;" class="blueviolet">- Object객체는 Object 객체의 prototype을 상속받는다.</h6>
         <h6 class="fw-bold">• Object() : 함수를 실행하면 객체을 반환한다 { } </h6>
-        <h6 style="text-indent: 15px;">- typeof(Object()) // object, 함수실행결과가 [ ] 생성이므로</h6>
+        <h6 style="text-indent: 15px;">- typeof(Object()) // object, 함수실행결과가 { } 생성이므로</h6>
         <h6 style="text-indent: 15px;">- typeof( { } ) // object</h6>
         <h6 style="text-indent: 15px;">- Object.prototype.toString.call(Object()) // [object Object]</h6>
         <h6 style="text-indent: 15px;">- Object.prototype.toString.call( { } ) // [object Object]</h6>
         <h6 style="text-indent: 15px;" class="blueviolet">- Object함수 실행결과인 객체 { }는 Object객체의 prototype을 상속받는다.</h6>
+      </div>
+      <div class="d-inline-block align-top">
         <h6 class="fw-bold">• Object 객체의 속성 : Object.getOwnPropertyNames(Object) </h6>
+        <pre class="fw-bold 우측꺼다" style="position: absolute; margin-left:15px;left:860px;margin-top:-5px;">
+1
+Object
+ƒ
+const copiedObj = Object.assign({}, obj); obj의 카피본 생성.   let 연습 = { a:1, b:{내부:'내부'}};  let 카피=Object.assign({},연습);
+카피.b.내부='내부변경';  console.log(연습);  console.log(카피); 연습,카피 둘다 : {내부: '내부변경'} 으로 바뀜. 첫 속성 변경은 따로됨.
+Symbol 제외, Object.getOwnPropertyDescriptor(자료, 속성이름); 하나의 속성의 설명만 반환
+let 객체 = {속성1:'값'}; console.log(Object.getOwnPropertyDescriptor(객체, '속성1')); {value: '값', writable: true, enumerable: true, configurable: true}
+Symbol 제외, Object.getOwnPropertyDescriptors(자료); 가지고 있는 모든 속성들의 설명자를 반환받고 싶은 객체, 속성의 설명 반환
+예시 하나만) assign: {writable: true, enumerable: false, configurable: true, value: ƒ}
+Symbol 제외, Object.getOwnPropertyNames(자료); 자료(객체)의 속성리스트 배열에 담아 반환.
+심볼 기회되면 알아보자
+Object.hasOwn(obj, prop); 속성이 있나없나. console.log(Object.hasOwn(Object, 'hasOwn')); true, 없으면 false
+Object.is(자료1, 자료2); 일치여부 true false, 일치여부가 또 파고들면 어렵다. 1. 엄격한 등호 ( 흔히 우리가 아는 === ) 2. 느슨한 등호 ( 흔히 우리가 아는 == ) 3. 그리고 Object.is()   
+Object.preventExtensions(객체); 객체의 속성추가 안되게 함. 속성의 값에 있는 속성은 가능. 속성의 삭제는 가능
+Object.seal(객체) 메서드는 객체를 밀봉합니다. 객체를 밀봉하면 그 객체에는 새로운 속성을 추가할 수 없고, 현재 존재하는 모든 속성을 설정 불가능 상태로 만들어줍니다. 
+하지만 쓰기 가능한 속성의 값은 밀봉 후에도 변경할 수 있습니다(역자 주 : 바로 이 점이 Object.freeze()와의 차이라고 할 수 있습니다).
+ƒ
+ƒ
+ƒ
+ƒ
+console.log(Object.getPrototypeOf(Object())); Object(function) 말고 { }, [ ], '문자', 12 같은 object 전달.(문자와 숫자는 객체로 변환됨)
+ƒ
+ƒ
+ƒ
+ƒ
+{key:value} 객체에서 key값만 배열에 담아 반환. let 객체 = { 성:'홍', 이름:'길동'}; console.log(Object.keys(객체)); (2) ['성', '이름']
+객체에서 key:value ==> [key,value] 형태로 배열에 담아 반환. let 객체 = { 성:'홍', 이름:'길동'}; 
+console.log(Object.entries(객체)); (2) [Array(2), Array(2)] == [ ['성', '홍'], ['이름', '길동'] ]
+ƒ
+{key:value} 객체에서 value값만 배열에 담아 반환.</pre>
+        <div style="color:blueviolet;font-weight: bold;font-size:14px;position: absolute;left:877px; top:695px;">
+          keys, values, entries : ['홍','길동'] 같은 배열에서 key는 index, value는 '홍','길동'
+        </div>
+        <pre class="fw-bold 우측꺼다" style="position: absolute; left:877px;top:710px;">
+ƒ
+        </pre>
+
         <pre class="fw-bold" style="margin-left:15px;">
-console.log(Object.getOwnPropertyNames(Object));
-(26) ['length', 'name', 'prototype', 'assign', 'getOwnPropertyDescriptor', 
-'getOwnPropertyDescriptors', 'getOwnPropertyNames', 'getOwnPropertySymbols', 
-'hasOwn', 'is', 'preventExtensions', 'seal', 'create', 'defineProperties', 
-'defineProperty', 'freeze', 'getPrototypeOf', 'setPrototypeOf', 'isExtensible', 
-'isFrozen', 'isSealed', 'keys', 'entries', 'fromEntries', 'values', 'groupBy']
 0: "length"
 1: "name"</pre>
-        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">2: "prototype" <b style="margin-left:17px;"></b> // [at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, find: ƒ, …]</div>
+        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">2: "prototype"</div>
         <pre class="fw-bold" style="margin-left:15px;">
 3: "assign"
+
 4: "getOwnPropertyDescriptor"
-5: "getOwnPropertyDescriptors"</pre>
-        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">6: "getOwnPropertyNames"</div>
+
+5: "getOwnPropertyDescriptors"
+
+</pre>
+        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-16px;text-indent:15px;">6: "getOwnPropertyNames"</div>
         <pre class="fw-bold" style="margin-left:15px;">
 7: "getOwnPropertySymbols"
 8: "hasOwn"
 9: "is"
 10: "preventExtensions"
 11: "seal"
+
 12: "create"
 13: "defineProperties"
 14: "defineProperty"
@@ -3288,202 +3326,46 @@ console.log(Object.getOwnPropertyNames(Object));
 17: "setPrototypeOf"
 18: "isExtensible"
 19: "isFrozen"
-20: "isSealed"
-21: "keys"
-22: "entries"
+20: "isSealed"</pre>
+        <div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-15px;text-indent:15px;">21: "keys"</div>
+        <pre class="fw-bold" style="margin-left:15px;"></pre>
+<div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-18px;text-indent:15px;">22: "entries"</div>
+<pre class="fw-bold" style="margin-left:15px;margin-top:3px;">
+
+
 23: "fromEntries"
-24: "values"
+</pre>
+<div style="color:blueviolet;font-weight: bold;font-size:14px;margin-top:-12px;text-indent:15px;">24: "values"</div>
+<pre class="fw-bold" style="margin-left:15px;">
+
+
 25: "groupBy"
 length: 26
 [[Prototype]]: Array(0)</pre>
 
-
-
-
-<br><br><br><br><br><br><br><br>
-
-
-
-        <h6 class="fw-bold">• Array객체의 인스턴스 생성, let 배열 = new Array(); 또는 let 배열 = [ ];</h6>
-        <h6 style="text-indent: 15px;">- let 배열 = [ ]; 이렇게들 쓴다. 생성자 함수를 실행하는 동작이 안보일 뿐이다.</h6>
-        <h6 style="text-indent: 15px;">- Array 생성자 함수의 <span style="color:blueviolet;font-weight: bold;">"인스턴스"</span> 는 </h6>
-        <h6 style="text-indent: 25px;">Array객체의 prototype속성 내부에 정의된 속성들을</h6>
-        <h6 style="text-indent: 25px;">인스턴스 자신의 속성처럼 사용할 수 있다. (prototype 상속)</h6>
-        <h6 class="fw-bold">• let 배열 = [ ]; 배열.자체속성1 = '자체값1'; 배열.자체속성2 = '자체값2';</h6>
-        <pre class="fw-bold" style="margin-left:15px;">
-console.log(배열.자체속성1); // 자체값1
-console.log(배열.자체속성2); // 자체값2
-
------- Array의 인스턴스는, 상속받은 Array.prototype의 속성을 자신의 속성처럼 사용 ------
-배열.push('사과');
-배열.push(12);
-배열.push('배');
-배열.push('12');
-배열.자체속성3='자체값3'
-console.log(배열); // (4) ['사과', 12, '배', '12', 자체속성1: '자체값1', 자체속성2: '자체값2']
-★ '사과'의 key는 0, 12의 key는 1, 자체값1의 key는 자체속성1, 
-     length는 key가 숫자인것만 카운트한다.
-
------- 살펴보기 ------
-
-(4) ['사과', 12, '배', '12', 자체속성1: '자체값1', 자체속성2: '자체값2', 자체속성3: '자체값3']
-0: "사과"
-1: 12
-2: "배"
-3: "12"
-자체속성1: "자체값1"
-자체속성2: "자체값2"
-자체속성3: "자체값3"
-length: 4
-[[Prototype]]: Array(0)
-
-console.log(Object.getOwnPropertyNames(배열));
- // (8) ['0', '1', '2', '3', 'length', '자체속성1', '자체속성2', '자체속성3']
-
-console.log(Object.keys(배열));
- // (7) ['0', '1', '2', '3', '자체속성1', '자체속성2', '자체속성3']
-
-console.log(Object.values(배열));
- // (7) ['사과', 12, '배', '12', '자체값1', '자체값2', '자체값3']
-
-console.log(Object.entries(배열));
- // (7) [ ['0', '사과'], ['1', 12],... ]        </pre>
-      </div>
-      <div class="d-inline-block align-top">
-        <h6 class="fw-bold">• Array.prototype 에 정의된 속성들. <span style="color:blueviolet">Array객체의 속성도 알아둘것. form, isArray, 맵핑함수</span> </h6>
-        <h6 class="fw-bold">• console.log(Object.getOwnPropertyNames(Array.prototype));</h6>
+        <h6 class="fw-bold">• Object.prototype 에 정의된 속성들.</h6>
+        <h6 class="fw-bold">• console.log(Object.getOwnPropertyNames(Object.prototype));</h6>
         <h6 style="text-indent: 15px;">- 속성들의 이름이 배열로 담겨 반환된다. 속성들을 나열한 것이다.</h6>
-        <h6 style="text-indent: 15px;color:blueviolet;position: relative;">- 대부분은 '배열인스턴스.속성' 형태로 쓰는 함수들이다.</h6>
-        <h6 class="fw-bold">• 예제 : let 배열 = [ '사과', '배', '바나나', 1, '12' ]; let 배열2 = [ 'A', 'B' ]; 변수 '배열', '배열2'는 Array객체의 인스턴스.</h6>
-        <h6 style="text-indent: 15px;color:blueviolet;position: relative;font-weight: bold;">- 아래는 console.log(Array.prototype); 아래에서 [ ]는 생략가능, 
-          콜백(callback)은 '(ele) => 실행문' 실행문이 여러줄이면 { 코드; 코드; }, 판단문이면 { } 괄호 쓰면 안되는듯. true, false</h6>
-        <pre class="fw-bold 우측꺼다" style="position: absolute; margin-left:15px;left:900px;">
-배열.at(-1) : '12' 마지막값 , 배열.at(1) : '배' 두번째꺼 
-배열.concat(배열2,'직접') : (8) ['사과', '배', '바나나', 1, '12', 'A', 'B', '직접'] 배열이면 안의 값들, 값이면 값을 기본배열에 추가
-배열.constructor : ƒ Array() { [native code] }, 본인(인스턴스)를 만들 생성자함수 객체
-array.copyWithin(target, start, end) : target(0부터) - 붙여넣기할 위치, start(0부터) - 복사 시작위치, 포함 O, 기본값:0, 
---- 덮어쓰기 (쓸일이 없을듯) end(1부터) - 복사종료 위치, 포함 X, 기본값:arr.length. 
-배열.copyWithin(1,3,5) : 3,5 = 1, '12'  1위치(배)부터 1, '12'로 덮어쓰고 남은 1, '12' 그대로 둔다 [ '사과', 1, '12', 1, '12' ]
-for (let ele of 배열.entries()) {console.log(ele)} 출력 [0, '사과'], 출력 [1, '배'], 출력 [2, '바나나'], 출력 [3, 1], 출력 [4, '12']
-for (let [key, value] of 배열.entries()) { 코딩 }
-콜백함수로 true false 전달받는다. 모든요소가 조건을 충족하는지 검사. 
-let 모두맞는지확인 = 배열.every( value => typeof(value)=='string' );   // false
-let 모두맞는지확인2 = 배열2.every( value => typeof(value)=='string' ); // true
-arr.fill(value[, start[, end]]). 같은값으로 채우기, 지정하지 않으면 0 으로 채움.
-arr.filter(callback(element[, index[, array]])[, thisArg]) -- element - 배열의 현재 요소, index(Optional) - 배열의 현재 요소의 인덱스, array(Optional) 
-- 호출한 배열, thisArg(Optional) - callback함수를 실행할때 this로 사용되는 값
-배열을 순서대로 불러 각 요소에 대해 callback 함수을 실행하고 결과가 true인 요소들만으로 이루어진 새로운 배열을 반환합니다. 
-let 필터링결과 = 배열.filter( (ele) => ele.length==2 ); //(2) ['사과', '12'] { ele.length==2 }처럼 중괄호 하지 말것. 조건판단.
-arr.find(callbackFn[, thisArg]) : 배열의 find() 함수는 배열에서 콜백 함수의 조건을 만족하는 첫 번째 요소를 반환합니다. 없으면 undefined
-let 찾은요소 = 배열.find( ele => typeof(ele)=='number') // 1, 찾은요소 = 배열.find( ele => typeof(ele)=='function') // undefined
-find 대신에 findIndex : 찾으면 index == 3, 못찾으면 -1 출력
-역순으로 값을 찾는다.
-역순으로 찾아서 인덱스를 출력한다.
-배열 평탄화하기. flat() 은 브라우저에 최적화가 되있지 않은 상태이므로, [].concat() 을 사용하는 것이 속도면에서 더 유리하다.
-ƒ 
-forEach(callbackFn) / forEach(callbackFn, thisArg) / 배열.forEach( (요소) => { console.log(요소);} ); // 요소마다 코드를 한번씩 실핸한다. true false 판단 아님
-배열.includes('없다') : false,  includes 메서드는 배열이나 문자열에 특정한 값을 포함하는지 여부를 확인하는 메서드다. boolean 타입의 값을 리턴한다.
-배열.indexOf('없다') : 없으면 -1, 있으면 첫번째값 인덱스 출력.
-arr.join(), arr.join(separator), separator없으면 join(',')처럼 작동.
-let 배열= [1,2]; 배열.추가='추가'; 
-Object객체의 자체기능을 사용하면 일반배열로 출력된다. console.log(Object.keys(배열)); // (3) ['0', '1', '추가']
-Array객체의 console.log(배열.keys()); // Array Iterator {}, 반복가능한 객체로 표시되고 for .. of 구문으로 확인해야한다.
-for (let key of 배열.keys()) {console.log(key)} // 0, 1 (push로 추가된 것만 나온다)
-없으면 -1, 있으면 마지맊값 인덱스 출력.
-ƒ 
-map(callbackFn) / map(callbackFn, thisArg) / 링크 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map 
-배열 끝에 값 제거 : let 배열pop = 배열.pop(); console.log(배열pop); => 12, console.log(배열); => (4) ['사과', '배', '바나나', 1]
-배열 끝에 값 추가 : 배열.push('푸쉬'); console.log(배열); => (6) ['사과', '배', '바나나', 1, '12', '푸쉬']
-arr.reduce(<콜백 함수>, <초기값>); 자바스크립트 배열의 reduce() 사용법 링크 https://www.daleseo.com/js-array-reduce/
-콜백 함수에는 총 4개의 인자가 넘어오는데, 대부분의 경우에는 첫 2개의 인자만 필요합니다.
-accumulator: 이전 요소를 상대로 콜백 함수를 실행한 결과 (누적자)
-currentValue: 현재 요소의 값
-currentIndex: 현재 요소의 인덱스
-array: reduce() 메서드를 호출하는 배열
-ƒ 
-arr.reverse(); 역순으로 정렬
-배열 첫 값 제거 : 끝에 값 제거하는 pop 참고
-(원본은 유지) arr.slice([begin[, end]]), begin:0부터, end:1부터, (2)=end값 부터 끝까지, (-1):끝에서부터 한개, (-2):끝에서부터 두개 
-every 참고, 하나라도 참이면 true.
-arr.sort([compareFunction]); arr.sort((a, b) => a - b);  https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-★원본배열이 정렬되어 버린다. 내부적으로 문자열로 변환하여 비교한다. 값이 { } 이면 [object Object]가 출력된다....
-원본변경. arr.splice(start[, deleteCount[, item1[, item2[, ...]]]])  https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-start:0부터, deleteCount:삭제할개수, ietm1(추가할꺼), item2(추가할꺼)...
-deleteCount=0이면 삭제없이 item 추가 가능. ? 원하는 위치꺼 삭제 또는 삭제 안하고 그자리에 삽입할 수 있다
-ƒ 
-console.log([1, , 3].toReversed()); // [3, undefined, 1], toReversed()의 반환 값은 절대 희소 배열이 아닙니다. 빈 슬롯은 반환된 배열에서 undefined가 됩니다.
-원본은 변경되지 않는다. https://www.daleseo.com/js-sort-to-sorted/
-원본은 변경되지 않는다.
-문자열로 변환.
-unshift(추가할요소); 맨 처음 위치에 요소삽입, push와 반대개념
-Iterator반환(반복가능한것), let 배열=[1,3,2]; for (let 요소 of 배열.values()) {console.log(요소)} // 1,3,2
-배열값중 하나 변경? https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/with
-ƒ        </pre>
-        <pre class="fw-bold" style="margin-left:15px;">
-at: ƒ at()
-concat: ƒ concat()
-constructor: ƒ Array()
-copyWithin: ƒ copyWithin()
-
-
-entries: ƒ entries()
-
-every: ƒ every()
-
-
-fill: ƒ fill()
-filter: ƒ filter()
-
-
-
-find: ƒ find()
-
-findIndex: ƒ findIndex()
-findLast: ƒ findLast()
-findLastIndex: ƒ findLastIndex()
-flat: ƒ flat()
-flatMap: ƒ flatMap()
-forEach: ƒ forEach()
-includes: ƒ includes()
-indexOf: ƒ indexOf()
-join: ƒ join()
-keys: ƒ keys()
-
-
-lastIndexOf: ƒ lastIndexOf()
-
-length: 0
-map: ƒ map()
-pop: ƒ pop()
-push: ƒ push()
-reduce: ƒ reduce()
-
-
-
-
-
-reduceRight: ƒ reduceRight()
-reverse: ƒ reverse()
-shift: ƒ shift()
-slice: ƒ slice()
-some: ƒ some()
-sort: ƒ sort() ★★
-
-splice: ƒ splice()
-
-
-toLocaleString: ƒ toLocaleString()
-toReversed: ƒ toReversed()
-toSorted: ƒ toSorted()
-toSpliced: ƒ toSpliced()
-toString: ƒ toString()
-unshift: ƒ unshift()
-values: ƒ values()
-with: ƒ with()
-Symbol(Symbol.iterator): ƒ values()
-Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}
-[[Prototype]]: Object
+        <pre class="fw-bold" style="position: absolute;left:1000px;" data="오른쪽">
+ƒ Object()
         </pre>
+        <pre class="fw-bold" style="margin-left:15px;">
+constructor: 
+hasOwnProperty: ƒ hasOwnProperty()
+isPrototypeOf: ƒ isPrototypeOf()
+propertyIsEnumerable: ƒ propertyIsEnumerable()
+toLocaleString: ƒ toLocaleString()
+toString: ƒ toString()
+valueOf: ƒ valueOf()
+__defineGetter__: ƒ __defineGetter__()
+__defineSetter__: ƒ __defineSetter__()
+__lookupGetter__: ƒ __lookupGetter__()
+__lookupSetter__: ƒ __lookupSetter__()
+__proto__: (...)
+get __proto__: ƒ __proto__()
+set __proto__: ƒ __proto__()
+        </pre>
+
 
 
         
@@ -3549,6 +3431,155 @@ Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: tr
       <div>
       </div>
     </div>
+    <div id="js_반복문관련간단정보" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 객체{ }를 for (let a of 객체) 구문 돌리면,</h6>
+        <h6 style="text-indent: 15px;">- const 객체 = {성:'홍',이름:'길동'};</h6>
+        <h6 style="text-indent: 28px;">for (let val of 객체) { onsole.log(val);}</h6>    
+        <h6 style="text-indent: 15px;">- Uncaught TypeError: 객체 is not iterable</h6>
+        <h6 style="text-indent: 15px;">- iterable : 열거가능한, 객체는 열거가능한 것이 아니다.</h6>
+        <br>
+        <h6 class="fw-bold">• 객체의 반복문 : for (let 속성명 in 객체) { 코드 }; 속성명을 가지고 온다</h6>
+        <h6 style="text-indent: 15px;">- 여기서 속성이란 보통 <span style="color:blueviolet">인스턴스 자신의 속성</span>이다.</h6>
+        <h6 style="text-indent: 15px;">- for (let 속성명 in Object) : 생성자함수 객체 자신을 넣었다면,</h6>
+        <h6 class="fw-bold">• 배열에도 쓸수 있다 : for (let value in 배열) { 코드 }; 값을 가지고 온다.</h6>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div id="js_객체반복문" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 객체 { } 반복문, 속성이름 받아옴 : for (let 속성명 in 객체) { 코드 } </h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+  const 객체 = {
+    name: "Alice", age: new String('new S'),
+    greet: function() { console.log("Hi!");},
+    객체값: { 내부1: '내부1', 내부2: '내부2'},
+  };
+  for (let 속성명 in 객체) { 
+    console.log(속성명, ', ',
+      Object.prototype.toString.call(객체[속성명]), ', ', 
+      typeof(객체[속성명]), ', ', ' : ', 객체[속성명]
+    ); 
+  } // 객체[속성명], 변수이므로 .접근이 안됨. [ ]접근법
+출력1 : name ,  [object String] ,  string ,   :  Alice
+출력2 : age ,  [object String] ,  object ,   :  String {'new S'}
+출력3 : greet ,  [object Function] ,  function ,   :  ƒ () { console.log("Hi!");}
+출력4 : 객체값 ,  [object Object] ,  object ,   :  {내부1: '내부1', 내부2: '내부2'}
+
+[object Object] 부분 설명
+console.log(객체['객체값']);        // {내부1: '내부1', 내부2: '내부2'}
+console.log('' + 객체['객체값']);   // [object Object]
++ 연산자는 문자열 연결을 수행하므로, 오른쪽의 값이 객체일 경우 
+자동으로 문자열로 변환하려고 합니다.
+자바스크립트에서 객체가 문자열로 변환될 때는 toString() 메서드를 호출하는데,
+기본 객체(Object)의 toString() 기본 구현은 "[object Object]"를 반환합니다
+이 값은 객체 타입이므로 문자열 연결 시 toString() → "[object Object]"로 변환되는 것입니다.
+
+객체를 문자열로 변환할 때 JSON 포맷 등을 사용하면 됩니다.
+console.log(속성명 + ' : ' + JSON.stringify(객체2[속성명]));
+
+또는 여러 값을 ,로 나눠 console.log에 직접 전달하면
+문자열 변환이 강제되지 않아서 원본 객체가 그대로 출력됩니다.
+
+console.log(속성명, ':', 객체2[속성명]);
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">• 배열도 쓸 수 있다. index가 아니라 값을 가지고 온다. : for (let 값 in 배열) { 코드 } </h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+const 배열 = [1,2,3,'가','나']
+for (let val in 배열) { 
+  console.log(val);
+}
+
+      </div>
+    </div>
+    <div id="js_구조분해맛보기" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 배열 [ ]은 객체 { } 모두 typeof(자료) == object </h6>
+        <h6 class="fw-bold">• 배열 [ ]은 객체 { } 형태의 자료의 변형이다.</h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+let 배열 = ['홍','길동'];
+console.log(배열.length); // 2
+let 객체리터럴 = {0:'홍', 1:'길동'};
+console.log(객체리터럴.length); // undefined
+객체리터럴 = {0:'홍', 1:'길동', length:20};
+console.log(객체리터럴.length); // 20 (지정하는 대로 나옴)
+-- Object.prototype에는 length 속성이 없다.
+-- 예제에서는 자체속성을 지정한 것이다.
+
+//Object.keys(배열)로 확인해보면 key로 index 값이 들어온다.
+//Object.values(배열)로 확인해보면 value로 값이 들어온다.
+//Object.entries(배열)로 [0,'홍'] [1,'길동']이 들어온다.
+
+[정리해보면]
+1. 배열 [ ]은 Array생성자 함수가 객체 { }형식의 자료를 변형시킨다.
+   a) value값에 순서대로 key를 설정하는데 0부터 부여한다.
+   b) 대괄호 [ ]안에는 value 값만 표시한다.
+   c) Array.prototype에는 length 속성이 있어서 value의 개수를 반환한다.        </pre>
+        <h6 class="fw-bold">• { }에서 key:value 대신에 '변수이름'으로 전달할 수 있다. </h6>  
+        <pre class="fw-bold" style="margin-left:15px;">
+let 성 = '홍';  let 이름 = '길동';
+let 객체리터럴 = { 성, 이름 }; 
+console.log(객체리터럴); // {성: '홍', 이름: '길동'}        </pre>
+
+      </div>
+      <div>
+        <h6 class="fw-bold">• 구조분해할당 : 변수가 어떤 자료인지 확인하는게 중요하다. </h6>
+        <h6 class="fw-bold">• 구조분해 할당 예제 </h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+  const 객체 = {
+    name: "Alice", age: new String('new S'),
+    greet: function() { console.log("Hi!");},
+    객체값: { 내부1: '내부1', 내부2: '내부2'},
+  };
+  for (let 속성명 in 객체) { 
+    console.log(속성명, ', ',
+      Object.prototype.toString.call(객체[속성명]), ', ', 
+      typeof(객체[속성명]), ', ', ' : ', 객체[속성명]
+    ); 
+  } // 객체[속성명], 변수이므로 .접근이 안됨. [ ]접근법
+출력1 : name ,  [object String] ,  string ,   :  Alice
+출력2 : age ,  [object String] ,  object ,   :  String {'new S'}
+출력3 : greet ,  [object Function] ,  function ,   :  ƒ () { console.log("Hi!");}
+출력4 : 객체값 ,  [object Object] ,  object ,   :  {내부1: '내부1', 내부2: '내부2'}
+
+[object Object] 부분 설명
+console.log(객체['객체값']);        // {내부1: '내부1', 내부2: '내부2'}
+console.log('' + 객체['객체값']);   // [object Object]
++ 연산자는 문자열 연결을 수행하므로, 오른쪽의 값이 객체일 경우 
+자동으로 문자열로 변환하려고 합니다.
+자바스크립트에서 객체가 문자열로 변환될 때는 toString() 메서드를 호출하는데,
+기본 객체(Object)의 toString() 기본 구현은 "[object Object]"를 반환합니다
+이 값은 객체 타입이므로 문자열 연결 시 toString() → "[object Object]"로 변환되는 것입니다.
+
+객체를 문자열로 변환할 때 JSON 포맷 등을 사용하면 됩니다.
+console.log(속성명 + ' : ' + JSON.stringify(객체2[속성명]));
+
+또는 여러 값을 ,로 나눠 console.log에 직접 전달하면
+문자열 변환이 강제되지 않아서 원본 객체가 그대로 출력됩니다.
+
+console.log(속성명, ':', 객체2[속성명]);
+        </pre>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    
     <div id="js참고자료링크" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
