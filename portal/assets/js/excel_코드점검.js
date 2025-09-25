@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_반복문관련간단정보' //원래는 h6의 title이다.
+  전체변수h6title ='js_구조분해맛보기' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,15 +28,13 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-  console.log(Object.getOwnPropertyNames(Object));
 
+  let 배열속에객체 = [ [1,2],{ 순번: 1, 값: 'A'},  { 값: 'AB'}, 12 ]
 
-
-//name ,  [object String] ,  string ,  name  :  Alice
-//age ,  [object String] ,  object ,  age  :  String {'new S'}
-//greet ,  [object Function] ,  function ,  greet  :  ƒ () { console.log("Hi!");}
-//객체값 ,  [object Object] ,  object ,  객체값  :  {내부1: '내부1', 내부2: '내부2'}
-
+  for (let [첫번째꺼,두번째꺼,세번째꺼] of 배열속에객체) {
+    console.log(첫번째꺼);
+  }
+  // ==> 
 
 
   

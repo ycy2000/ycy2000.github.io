@@ -277,8 +277,8 @@
         <h6 class="fw-bold" title="js_Array생성자와프로토타입">3-1. 생성자함수 Array (내장함수 == 내장객체 Array 객체), prototype</h6>
         <h6 class="fw-bold" title="js_Object생성자와프로토타입">3-2. 생성자함수 Object (내장함수 == 내장객체 Array 객체), prototype</h6>
         <h6 class="fw-bold blueviolet" title="js_callback함수">-- 익명함수, 화살표함수, 매개변수, mapFn(맵핑함수), callbackFn(콜백함수) --</h6>
-        <h6 class="fw-bold" title="js_반복문관련간단정보">4-1. 반복문 관련 간단 정보</h6>
-        <h6 class="fw-bold" title="js_객체반복문">4-1. 객체 { } 반복문, 속성이름 받아옴 : for (let 속성명 in 객체) { 코드 }</h6>
+        <h6 class="fw-bold" title="js_반복문관련간단정보">4-1. iterable, enumerable, 객체반복 for .. in, for .. of</h6>
+        <h6 class="fw-bold" title="js_console플러스연산자">4-2. console.log(값,값)과 console.log(값 + 값) 참고 : + 연산자에 대해서</h6>
         <h6 class="fw-bold blueviolet" title="js_구조분해맛보기">-- 구조분해 맛보기, ['홍','길동'] 배열은 { 0:'홍', 1:'길동', length:2 } for - in(객체반복)</h6>
 
         <br><br><br><br><br><br><br><br><br><br>
@@ -2533,8 +2533,7 @@
       <img src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
       <br><br><br><br><br><br><br>
     </div>
-    
-    <div id="j쿼리"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+    <div id="j쿼리">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <code style="font-weight: bold;">자바 : document.querySelector('#html파일이름').innerHtml</code>
         <code style="font-weight: bold;text-indent: 15px;">j쿼리 : $('#html파일이름').html() => <span style="color:blueviolet">html() 빈 소괄호</span></code>
@@ -2550,7 +2549,6 @@
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
     </div>
-
     <section id="_02_html_파순01_읽는순서">
       <h4>1. 순서대로 읽되 script 만났을때, 에러코드 이후 실행 안되고 새롭게.</h4>
       <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_01_읽는순서.png" alt="이미지없음">
@@ -3435,39 +3433,74 @@ set __proto__: ƒ __proto__()
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">• 객체{ }를 for (let a of 객체) 구문 돌리면,</h6>
+        <h6 class="fw-bold">• 
+          <a href="" target="_blank">반복 가능한(iterable, 이터러블) 객체 </a> and  
+          <a href="" target="_blank">열거 가능한, enumerable: true</a>
+        </h6>
+        <pre class="fw-bold" style="margin-left: 15px;">
+	                     뜻	                  함수	                      뜻	
+Iterable	       반복 가능한	for (value of arr)  순회하면서 값에 접근할 수 있는가 	
+Enumerable	열거 가능한 	for ( key in obj)	  객체의 key에 접근할 수 있는가	
+	          	                   타입	                             예시
+Iterable	         iterator 객체가 있는 데이터 타입	Array, map, set,nodeList, String
+Enumerable  객체 타입	                                 Object
+
+iterator(반복자) 
+링크 : https://inpa.tistory.com/entry/GOF-💠-반복자Iterator-패턴-완벽-마스터하기 </pre>
+        <h6 class="fw-bold">• 객체의 반복문은 2가지; for, for .. in, for .. of</h6>
+        <pre class="fw-bold" style="margin-left: 15px;">
+- 인스턴스 자체의 속성을 반복할수 있다. prototype 상속받은 속성은 받아오지 않는다.
+- 그리고 내장객체 자체에 대해서는 자신의 속성이 있지만 그 속성들에 대해서
+  열거가능 속성을 false로 지정해 놓아서(enumerale: false)
+  for .. of, for .. in 구문으로는 받아오지 못하도록 하였다.
+  [하나만 확인]
+  console.log(Object.getOwnPropertyDescriptor(Array,'from'));
+  {writable: true, enumerable: false, configurable: true, value: ƒ}</pre>
+        <h6 class="fw-bold">• 기본객체의 속성에 대한 반복은,  </h6>
+        <h6 class="fw-bold" style="text-indent: 12px;">Object.getOwnPropertyNames(자료) 반환값(배열)을 사용한다.</h6>
+        <h6 style="text-indent: 15px;">- 개념 공부이지 잘 사용하지는 않을듯?</h6>
+        <pre class="fw-bold" style="margin-left: 15px;">
+- Object.getOwnPropertyNames(Object) : Object의 속성이름을 배열에 담아 반환
+- Object.getOwnPropertyNames(Array.prototype) : 
+   Array 객체의 prototype속성에 담긴 속성들의 이름을 배열에 담아 반환       
+- Object.keys(객체) : key값을 배열에 담아 반환
+- Object.values(객체) : value값을 배열에 담아 반환 
+- Object.entries(객체) : 각각 [key,vlaue] 형태로 배열에 담아 반환. </pre>
+        <h6 class="fw-bold">• 기본객체 { key:value } Object의 반복문 : for .. in</h6>
+        <pre class="fw-bold" style="margin-left: 15px;">
+- { }는 iterable(이터러블, 반복가능한) 객체가 아니다.
+- key(속성명)을 가져오는 for (let key in 객체)를 사용한다.
+- { }는 iterable 반복문인 for (let 속성 of 객체) 사용시 에러난다.</pre>
+        <div style="text-indent: 25px;font-size:14px;font-weight: bold;margin-top:-18px;">Uncaught TypeError: 객체 is not <span style="color:blueviolet;font-weight: bold;">iterable</span></div>
+        <br>
+        <h6 class="fw-bold">• 객체{ }를 for (let a of 객체) 구문 돌리면, <span style="color:blueviolet;font-weight: bold;">'반복'가능</span>한, 객체의 값을 가지고 온다.</h6>
         <h6 style="text-indent: 15px;">- const 객체 = {성:'홍',이름:'길동'};</h6>
         <h6 style="text-indent: 28px;">for (let val of 객체) { onsole.log(val);}</h6>    
-        <h6 style="text-indent: 15px;">- Uncaught TypeError: 객체 is not iterable</h6>
-        <h6 style="text-indent: 15px;">- iterable : 열거가능한, 객체는 열거가능한 것이 아니다.</h6>
+        <h6 style="text-indent: 15px;">- Uncaught TypeError: 객체 is not <span style="color:blueviolet;font-weight: bold;">iterable</span></h6>
+        <h6 style="text-indent: 15px;">- 객체리터럴 { } 객체는 반복가능한 것이 아니다.</h6>
         <br>
-        <h6 class="fw-bold">• 객체의 반복문 : for (let 속성명 in 객체) { 코드 }; 속성명을 가지고 온다</h6>
-        <h6 style="text-indent: 15px;">- enumerable: true 만, 셀수 있는 = true 만 가지고 온다.</h6>
-        <h6 style="text-indent: 15px;">- Object객체의 기본 설정 속성은, enumerable: flase로 되어있다.</h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold">• 객체의 반복문 : for (let key in 객체) { 코드 }; key(속성명)을 가지고 온다</h6>
+        <h6 style="text-indent: 15px;">- enumerable: true 만, 인스턴스의 key(속성)만 가지고옴</h6>
+        <h6 style="text-indent: 15px;">- Object객체의 기본설정 속성은, enumerable: flase로 되어있다.</h6>
         <h6 style="text-indent: 15px;">- Object.임시 = '임시';  for (let 속성명 in Object) {console.log(속성명)};</h6>
         <h6 style="text-indent: 15px;">- 여기서 속성이란 보통 <span style="color:blueviolet">인스턴스 자신의 속성</span>(값)이다.</h6>
         <h6 style="text-indent: 26px;">위 코드를 돌리면 '임시' 하나만 출력된다.</h6> 
-        <h6 style="text-indent: 15px;">- Object 기본 속성이 enumerable: false 예시</h6>
-        <h6 style="text-indent: 26px;">console.log(Object.getOwnPropertyDescriptor(Object, 'create'));</h6>
-        <h6 style="text-indent: 26px;">{writable: true, <span style="color:blueviolet">enumerable: false</span>, configurable: true, value: ƒ}</h6>
         <br>
         <h6 class="fw-bold">• 배열에도 쓸수 있다 : for (let value in 배열) { 코드 }; 값을 가지고 온다.</h6>
+        <h6 style="text-indent: 15px;">- 배열도 key(index)를 가지고 있다. </h6>
+        <h6 style="text-indent: 15px;">- 배열의 표현식이 [ 값1, 값2,...]이므로 값을 가지고 온다.</h6>
         <br>
         <h6 class="fw-bold">• Object, Array, Array.prototype 등 내장객체의 속성을 확인하려면</h6>
         <h6 style="text-indent: 15px;">- Object.getOwnPropertyNames(자료)</h6>
         <h6 style="text-indent: 15px;">- console.log(Object.getOwnPropertyNames(Object));</h6>
         <h6 style="text-indent: 26px;">enumerable: false 속성과 관계없이 속성을 배열에 담아 반환한다.</h6>
-
-
       </div>
-      <div>
 
-      </div>
-      <div>
-
-      </div>
     </div>
-    <div id="js_객체반복문" class="대체3줄">
+    <div id="js_console플러스연산자" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -3489,7 +3522,7 @@ set __proto__: ƒ __proto__()
 출력3 : greet ,  [object Function] ,  function ,   :  ƒ () { console.log("Hi!");}
 출력4 : 객체값 ,  [object Object] ,  object ,   :  {내부1: '내부1', 내부2: '내부2'}
 
-[object Object] 부분 설명
+<span style="color:blueviolet;font-weight: blod;">console.log에서 객체를 + 연산자로 연결시 [object Object]로 표시되는 것 설명</span> 
 console.log(객체['객체값']);        // {내부1: '내부1', 내부2: '내부2'}
 console.log('' + 객체['객체값']);   // [object Object]
 + 연산자는 문자열 연결을 수행하므로, 오른쪽의 값이 객체일 경우 
@@ -3508,88 +3541,67 @@ console.log(속성명, ':', 객체2[속성명]);
         </pre>
       </div>
       <div>
-        <h6 class="fw-bold">• 배열도 쓸 수 있다. index가 아니라 값을 가지고 온다. : for (let 값 in 배열) { 코드 } </h6>
-        <pre class="fw-bold" style="margin-left:15px;">
-const 배열 = [1,2,3,'가','나']
-for (let val in 배열) { 
-  console.log(val);
-}
-
       </div>
     </div>
     <div id="js_구조분해맛보기" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">• 배열 [ ]은 객체 { } 모두 typeof(자료) == object </h6>
-        <h6 class="fw-bold">• 배열 [ ]은 객체 { } 형태의 자료의 변형이다.</h6>
-        <pre class="fw-bold" style="margin-left:15px;">
-let 배열 = ['홍','길동'];
-console.log(배열.length); // 2
-let 객체리터럴 = {0:'홍', 1:'길동'};
-console.log(객체리터럴.length); // undefined
-객체리터럴 = {0:'홍', 1:'길동', length:20};
-console.log(객체리터럴.length); // 20 (지정하는 대로 나옴)
--- Object.prototype에는 length 속성이 없다.
--- 예제에서는 자체속성을 지정한 것이다.
+        <h6 class="fw-bold">• 기본적인 객체 { }, 배열 [ ] 하나씩</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">let 객체 = { 성: '홍', 이름: '길동'};  let 배열 = ['홍', '길동'];</h6>
+        <br>
+        <h6 class="fw-bold">• 변수를 지정하고 객체 안에 변수를, 배열 안에 변수를 넣어보자.</h6>
+        <pre class="fw-bold" style="margin-left: 5px;">
+  let 성 = '홍'; let 이름 = '길동';
+  let 객체 = { 성, 이름 };
+  console.log(객체); // {성: '홍', 이름: '길동'}
+  let 배열 = [ 성, 이름 ];
+  console.log(배열); // (2) ['홍', '길동']
 
-//Object.keys(배열)로 확인해보면 key로 index 값이 들어온다.
-//Object.values(배열)로 확인해보면 value로 값이 들어온다.
-//Object.entries(배열)로 [0,'홍'] [1,'길동']이 들어온다.
+  // ★ '변수 = 값' 표현에서 변수는 key, 값은 value와 같다.
+  // 객첵리터럴{ }에 변수를 넣으면 key:value쌍의 값으로 들어가고.
+  // 배열 [ ]에 변수를 넣으면 value값으로 들어간다.        </pre>
+        <h6 class="fw-bold">• for .. in 구문은 기본객체의 { } 속성명을 받는다. 구조분해와 무관한듯?</h6>
+        <h6 class="fw-bold">• '구조분해'에서 '구조'란,</h6>
+        <pre class="fw-bold" style="margin-left: 5px;">
+- 기본객체 { } Object객체의 구조 : { key:value, key2:value2 }
+- 배열 [ ]의 구조 : [ 값1, 값2 ];
+- 객체 { }의 value에는 문자열, 숫자, 배열, 객체{ }, 함수(메서드) 모두 가능.
+- 배열 [ ]의 값에는 문자열, 숫자, 배열, 객체{ }, 함수(메서드) 모두 가능.        </pre>
 
-[정리해보면]
-1. 배열 [ ]은 Array생성자 함수가 객체 { }형식의 자료를 변형시킨다.
-   a) value값에 순서대로 key를 설정하는데 0부터 부여한다.
-   b) 대괄호 [ ]안에는 value 값만 표시한다.
-   c) Array.prototype에는 length 속성이 있어서 value의 개수를 반환한다.        </pre>
-        <h6 class="fw-bold">• { }에서 key:value 대신에 '변수이름'으로 전달할 수 있다. </h6>  
-        <pre class="fw-bold" style="margin-left:15px;">
-let 성 = '홍';  let 이름 = '길동';
-let 객체리터럴 = { 성, 이름 }; 
-console.log(객체리터럴); // {성: '홍', 이름: '길동'}        </pre>
 
       </div>
       <div>
-        <h6 class="fw-bold">• 구조분해할당 : 변수가 어떤 자료인지 확인하는게 중요하다. </h6>
-        <h6 class="fw-bold">• 구조분해 할당 예제 </h6>
-        <pre class="fw-bold" style="margin-left:15px;">
-  const 객체 = {
-    name: "Alice", age: new String('new S'),
-    greet: function() { console.log("Hi!");},
-    객체값: { 내부1: '내부1', 내부2: '내부2'},
-  };
-  for (let 속성명 in 객체) { 
-    console.log(속성명, ', ',
-      Object.prototype.toString.call(객체[속성명]), ', ', 
-      typeof(객체[속성명]), ', ', ' : ', 객체[속성명]
-    ); 
-  } // 객체[속성명], 변수이므로 .접근이 안됨. [ ]접근법
-출력1 : name ,  [object String] ,  string ,   :  Alice
-출력2 : age ,  [object String] ,  object ,   :  String {'new S'}
-출력3 : greet ,  [object Function] ,  function ,   :  ƒ () { console.log("Hi!");}
-출력4 : 객체값 ,  [object Object] ,  object ,   :  {내부1: '내부1', 내부2: '내부2'}
+        <h6 class="fw-bold">• for .. of 구문에서 구조분해가 사용된다.</h6>
+        <h6 class="fw-bold">• 예제1</h6>
+        <pre class="fw-bold" style="margin-left: 5px;">
+  let 배열속에객체 = [ { 순번: 1, 값: 'A'}, [1,2], { 값: 'AB'}, 12 ]
 
-[object Object] 부분 설명
-console.log(객체['객체값']);        // {내부1: '내부1', 내부2: '내부2'}
-console.log('' + 객체['객체값']);   // [object Object]
-+ 연산자는 문자열 연결을 수행하므로, 오른쪽의 값이 객체일 경우 
-자동으로 문자열로 변환하려고 합니다.
-자바스크립트에서 객체가 문자열로 변환될 때는 toString() 메서드를 호출하는데,
-기본 객체(Object)의 toString() 기본 구현은 "[object Object]"를 반환합니다
-이 값은 객체 타입이므로 문자열 연결 시 toString() → "[object Object]"로 변환되는 것입니다.
+  1) 객체의 값을 그대로 받을때,
+      for (let value of 배열속에객체) {console.log(value)};
+        - { 순번: 1, 값: 'A'}
+        - [1,2]
+        - { 값: 'AB'}
+        - 12
 
-객체를 문자열로 변환할 때 JSON 포맷 등을 사용하면 됩니다.
-console.log(속성명 + ' : ' + JSON.stringify(객체2[속성명]));
+  2) 구조를 표현하였을때 : 객체의 속성이 '값'인 것만 받아옴.
+     없으면 undefined.
+     ★ 구조가 다른 배열 [ ], 값 12 를 받아도 에러는 안난다.
+      for (let {값} of 배열속에객체) {console.log(값)};
+        - A                // { 순번: 1, 값: 'A'}에서 값: 'A'부분 있음
+        - undefined  // [1,2] key=index다. key값이 '값'인것 없음.
+        - AB              // { 값: 'AB'}
+        - undefined  // 12
 
-또는 여러 값을 ,로 나눠 console.log에 직접 전달하면
-문자열 변환이 강제되지 않아서 원본 객체가 그대로 출력됩니다.
-
-console.log(속성명, ':', 객체2[속성명]);
+  3) 구조를 표현하였을때 : 받는값을 배열 [ ]로 지정하였을때는
+     구조가 안맞는 정보(배열이 아닌경우)를 받았을 경우 에러난다.
+      for (let [첫번째값, 두번째값, 세번째값] of 배열속에객체) {console.log(값)};
+        - Uncaught TypeError: .for is not iterable  // { 순번: 1, 값: 'A'}에서 에러
+        - 만약 [1,2]를 가장먼저 만나면 코드가 실행된다.
+        - [ ], [,두번째] 이렇게 값을 안넣으면 에러난다.
         </pre>
-
       </div>
       <div>
-
       </div>
     </div>
     
