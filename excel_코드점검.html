@@ -3409,39 +3409,22 @@ set __proto__: ƒ __proto__()
         <h6 style="text-indent: 15px;">- 기본객체 { }는 이터러블이 아니다.</h6>
         <h6 style="text-indent: 27px;">for (let value of {객체리터럴}) { 코드 } 사용안된다.</h6>
         <br>
-        <h6 class="fw-bold">• 객체의 반복문은 2가지</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">1) for (let key in 객체리터럴) { 코드 } </h6>
-        <h6 class="fw-bold" style="text-indent: 30px;">- 객체리터럴 { key: value }의 key갑을 가지고 온다. </h6>
-        <h6 class="fw-bold" style="text-indent: 30px;">- 배열을 사용하면 key값으로 index번호를 가지고 온다. </h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">2) for (let vlaue of 이터러블객체) { 코드 } </h6>
-        <h6 class="fw-bold" style="text-indent: 30px;">- 이터러블 객체는, 보통 배열 [ ], arraylike(유사배열) 이다. </h6>
-        <h6 class="fw-bold" style="text-indent: 30px;">- 객체리터럴 { }은 이터러블이 아니라서 에러난다. </h6>
-        <h6 class="fw-bold" style="text-indent: 45px;">Uncaught TypeError: 객체 is not <span style="color:blueviolet;font-weight: bold;">iterable</span> </h6>
-        <br><br><br><br><br><br><br><br><br>
-
-        <h6 class="fw-bold">• 기본객체의 속성에 대한 반복은,  </h6>
-        <h6 class="fw-bold" style="text-indent: 12px;">Object.getOwnPropertyNames(자료) 반환값(배열)을 사용한다.</h6>
-        <h6 style="text-indent: 15px;">- 개념 공부이지 잘 사용하지는 않을듯?</h6>
-      </div>
-      <div>
-        <h6 class="fw-bold">• 객체의 반복문은 2가지</h6>
-        <h6 class="fw-bold">• 객체의 반복문 : for (let key in 객체리터럴) { 코드 }; key(속성명)을 가지고 온다</h6>
-        <h6 style="text-indent: 15px;">- enumerable: true 만, 인스턴스의 key(속성)만 가지고옴</h6>
-        <h6 style="text-indent: 15px;">- Object객체의 기본설정 속성은, enumerable: flase로 되어있다.</h6>
-        <h6 style="text-indent: 15px;">- Object.임시 = '임시';  for (let 속성명 in Object) {console.log(속성명)};</h6>
-        <h6 style="text-indent: 15px;">- 여기서 속성이란 보통 <span style="color:blueviolet">인스턴스 자신의 속성</span>(값)이다.</h6>
-        <h6 style="text-indent: 26px;">위 코드를 돌리면 '임시' 하나만 출력된다.</h6> 
+        <h6 class="fw-bold">• (여러가지 정보를 담을수 있는) 객체의 반복문은 2가지</h6>
         <br>
-        <h6 class="fw-bold">• 배열에도 쓸수 있다 : for (let key in 배열) { 코드 }; key(index번호)를 가지고 온다.</h6>
+        <h6 class="fw-bold">• for (let key in 객체리터럴) { 코드 } : 객체리터럴 { } 기본객체의 반복문</h6>
+        <br>
+        <h6 class="fw-bold">• for (let key in 배열) { 코드 } : 배열에도 쓸수 있다</h6>
         <h6 style="text-indent: 15px;">- 배열도 key(index)를 가지고 있다. </h6>
         <pre class="fw-bold" style="margin-left:15px;">
   let 배열 = [ [1,2],[3,4,5], [1] ]
   for (let key in 배열) {
   console.log(key);  } // ==> 0, 1, 2 출력됨        </pre>
-        <h6 class="fw-bold">• Object, Array, Array.prototype 등 내장객체의 속성을 확인하려면</h6>
-        <h6 style="text-indent: 15px;">- Object.getOwnPropertyNames(자료)</h6>
-        <h6 style="text-indent: 15px;">- console.log(Object.getOwnPropertyNames(Object));</h6>
-        <h6 style="text-indent: 26px;">enumerable: false 속성과 관계없이 속성을 배열에 담아 반환한다.</h6>
+        <h6 class="fw-bold">• for (let value of 이터러블객체) { 코드 } : 이터러블객체의 반복문</h6>
+        <h6 style="text-indent: 15px;">- 기본객체 { }는 이터러블이 아니라서 에러난다. </h6>
+        <h6 style="text-indent: 30px;">Uncaught TypeError: 객체 is not <span style="color:blueviolet;font-weight: bold;">iterable</span> </h6>
+      </div>
+      <div>
+
       </div>
 
     </div>
