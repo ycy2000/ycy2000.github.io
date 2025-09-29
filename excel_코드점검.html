@@ -285,16 +285,12 @@
         <h6 class="fw-bold" title="js_사용자정의함수">4. (작성중) 사용자정의함수(class, Function), 생성자 함수(new 사용)</h6>
       </div>
       <div>
+        <h6 class="fw-bold" title="js_빽틱사용법">• 빽틱(``)사용법, `${변수}`, 삼항연산자</h6>  
 
       </div>
       <div>
         <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
-        <h6 class="fw-bold">[메모] true, false를 더하기 하면 true는 1, false는 0이다. true + true + false = 2</h6>
-        <h6 class="fw-bold" title='중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
-        <h6 class="fw-bold" title='JS2_set교집합차집합합집합'>
-          <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank" style="color:blueviolet;font-weight: bold;"> Set활용법</a>, 
-          Set 객체는 '집합'의 개념. 있나 없나 확인, index로 접근 안됨
-        </h6>
+        <h6 class="fw-bold" title='js_set객체' style="color:blueviolet">배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
         <h6 class="fw-bold" title='java_개인적정리_argument'>객체(속성[key,value]), 변수, 매개변수(인수,parameter), argument(인자)</h6>
         <h6 class="fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
 
@@ -343,7 +339,7 @@
         <h6 class="fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
         <h6 class="fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
         <h6 class="fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
-        <h6 class="fw-bold" title="js_빽틱사용법">빽틱(`)사용법. ${변수}. 문자열 안에서 변수 사용<a href="https://hasumang.tistory.com/33" target="_blank">링크</a></h6>        
+      
         <h6 class="fw-bold" title="js_html순환">html 순환</h6>
         <h6 class="fw-bold" title="js_for_in반복문_객체리터럴">반복문(객체리터럴) : for (key in obj) {...}</h6>
         <h6 class="fw-bold" title="js_for_of반복문_배열">반복문(배열) : for (각배열값 of 배열) {...}, 주의:각배열값이 객체리터럴인 경우</h6>
@@ -3995,6 +3991,31 @@ console.log(속성명, ':', 객체2[속성명]);
         <img src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
       </div>
     </div>
+
+    <div id="js_빽틱사용법" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 빽틱을 사용하는 표을 '템플릿 리터럴'이라고 부른다.</h6>
+        <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 큰따옴표 작은따옴표와 달리 <span style="color:blueviolet">빽틱 안에는</span> '띄어쓰기, 줄바꿈' 등이 그대로  전달가능.</h6>
+        <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 빽틱 안에서 딸러기호와 변수를 사용할 수 있다.</h6>
+        <code class="fw-bold" style="text-indent: 10px;">let 이름 = '길동'; let 문자열 = `이름은 ${이름} 입니다.`</code>
+        <br>
+        <h6 class="fw-bold">• <span style="color:blueviolet">${ }안에는 변수, 삼항연산자가</span> 가능하다. </h6>
+        <pre class="fw-bold" style="margin-left:10px;">
+let 변수 = ( 1 > 0 ) ? '맞다' : '아니다';
+let 빽틱 = `가부판단 : ${변수}`;
+console.log(빽틱); // 가부판단 : 맞다
+빽틱=`딸라안에 직접 삼항연산자 : ${( 1 > 0 ) ? '맞다' : '아니다'}`
+console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
+        </pre>
+
+        
+
+      </div>
+      <div>
+
+      </div>
+    </div>
     <div id="js_for_of반복문_배열">
       <div style="margin-left: 250px;">
         <h5 class="fw-bold">각 배열자체 또는 각 배열의 키를 반복하여 가져온다 : for 각배열 of 전체배열 { ... }</h5>
@@ -4176,18 +4197,6 @@ console.log(속성명, ':', 객체2[속성명]);
       </div>
     </div>
 
-    <div id="js_빽틱사용법">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold">• 빽틱사용법 : 문자열처럼 쓰면서, 변수(결과값 표현됨)를 넣을수 있다.</h6>
-        <img src="portal/images/문서연결_엑셀VBA/js_빽틱사용법.png" alt="이미지없음">
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h6>• 자바스크립트 코드 작성시 html 구분을 전달할때</h6>
-        <h6 style="text-indent: 15px;">document.querySelector('#연습').innerHTML=`\n</h6>
-        <h6 style="text-indent: 44px;">&#60;code class="fw-bold" style="text-indent: 15px;"> [ 0,1,2,3 ], 2, 1&#60;/code>\n</h6>
-        <h6 style="text-indent: 44px;">&#60;code class="fw-bold" style="text-indent: 15px;"> [ 6,7,8,9 ], 0, 3&#60;/code>`</h6>
-      </div>
-    </div>
     <div id="js_html순환">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5>• $('#아이디').html(function(index, oldHtml) { ... }) : 배열로 인식되어 배열개수만큼 반복된다.</h5>
@@ -5988,130 +5997,91 @@ console.log(속성명, ':', 객체2[속성명]);
     </div>
 
     
-    <div id="중복제거는OBJECT_OBJECT를ARRAY로변환_정렬_set객체">
-      <div class=" d-inline-block align-top " style="width:800px;border-right:1px solid black;white-space:normal;">
-        <h6 class="fw-bold" style="color:blueviolet">Set은 클래스가 아니라 JavaScript의 내장 생성자 함수입니다. 배열의 중복을 제거한 값들의 집합을 반환합니다.</h6>
-        <h6 class="fw-bold" style="color:blueviolet">결과 예시로 {1,2,3} 은 Object객체처럼 key:value의 쌍이 아니다 => key를 순회하는 for .. in 을 사용할 수 없다.</h6>
+    <div id="js_set객체" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+let 셑 = new Set([1,1,2,2,3,3,4]);
+console.log(셑); // // Set(4) {1, 2, 3, 4}
+console.log(typeof 셑); // object
+console.log(Object.prototype.toString.call(셑)); // [object Set]
+console.log(셑.length); // undefined
+
+for (let val of 셑) {console.log(val)} // 1, 2, 3, 4 ... for  (let val in 셑) 안됨
+
+let 배열로 = [...셑];
+console.log(배열로); [1,2,3,4]
+
+셑.forEach((v1, v2, set) => {console.log(v1, v2, set)}); // forEach 된다.
+
+셑.add(1).add(10); // 값 추가, 하나 또는 여러개 한번에
+console.log(셑); // Set(5) {1, 2, 3, 4, 10}, 있는거 무시됨(1)
+
+<span style="color:blueviolet">셑.add([1]).add([1]); // 원시값이 아니면 [ ]등, 유일한 값으로 취급</span> 
+console.log(셑); // Set(7) {1, 2, 3, 4, 10, [1], [1]}
+
+let 추가 = [2];
+셑.add(추가).add(추가).add(추가); // 살아있는 변수를 계속 추가하면 하나만 인정
+console.log(셑); // Set(8) {1, 2, 3, 4, 10, [1], [1], [2]}
+
+// 변수가 새로 지정되므로 유일한 값으로 인정
+let 초기값 = 0; let 셑 = new Set();
+for (let i=0; i&#60;4; i++) {셑.add(초기값);초기값+=1;}
+console.log(셑); // Set(4) {0, 1, 2, 3}
+
+// delete
+let 변수1='a'; 변수2='b';
+let 셑 = new Set([1,2,[3],변수1,변수2]);
+// 셑.delete(1).delete(2); 이거 안됨
+console.log(셑.delete(1));
+console.log(셑.delete(2));
+console.log(셑.delete([3])); // false
+console.log(셑.delete(변수1)); // 변수1 대신에 'a'가능
+console.log(셑.delete(변수2)); // 변수2 대신에 'b'가능
+console.log(셑);
+
+console.log(셑.has(1)); // true
+console.log(셑.has([3])); // false
+console.log(셑.size); // 5
+
+let set = new Set(["oranges", "apples", "bananas"]);
+1.for(let value of set) {alert(value);}
+2.for(let key of set.keys()) {alert(key);}
+3.for(let value of set.values()) {alert(value);}
+4.for(let entry of set.entries()) {alert(entry);} // [value, value]
+// 짝을 맞추기 위함인 듯
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">1. let 셑 = new Set([1,1,2,2,3,3,4]); 배열의 중복을 제거한 Set 객체</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 반복문 : for (let val of 셑) { 코드 }</h6>
+        <h6 style="text-indent: 10px;">- 배열처럼 접근 안됨. ex) 셑[0]</h6>
         <br>
-        <h5 class="fw-bold">1.배열의 중복제거 : 한줄번호누적배열=new Set(배열);</h5>
-        <h6 style="text-indent: 23px;">중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,</h6>
-        <h6 style="text-indent: 23px;">SET으로 중복제거하면 Array가 아니라 Set객체(집합)가 되어서 객체[0]처럼 <span style="color:blueviolet;font-weight: bold;">배열처럼은 사용안됨</span></h6>
-        <h6 style="text-indent: 23px;">배열 : [3,2,2,'4'], set객체 : {3,2,'4'} <span style="color:blueviolet;font-weight: bold;">key를 가져오는 for .. in 은 안되고, 요소를 가져오는 for .. of 는 된다.</span></h6>
-        <h6 style="text-indent: 23px;">요소를 순회하는 forEach 된다</h6>
-        <h6 style="text-indent: 23px;">const mySet = new Set([1, 2, 3, 3]); // { 1, 2, 3 } 중복된 값(3)은 자동으로 제거됨</h6>
-        <h6 style="text-indent: 23px;">mySet.forEach((요소) => {console.log(요소)}) // 구문, 객체.forEach( (value,index,arr) => { ... } )</h6>
-        
-        
-        <h5 class="fw-bold">2.새로운배열=[...Set객체]; 전개연산자(...)은 객체의 요소를 배열에 담아 배열을 반환한다</h5>
-        <h6 style="text-indent: 23px;">※ Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환하였습니다.
-          <h5 class="fw-bold">3. 정렬 : 한줄번호누적배열.sort((a,t) => a-t);</h5>
-          <h5 class="fw-bold">4. set <span style="color:blueviolet;font-weight: bold;font-size:16px;">문자열, 생생시 변수명은 찾지만, [ ], { } 등은 모두 다른것으로 간주됨</span></h5>
-          <h6 style="text-indent: 23px;">※ set.add(value) : 값 추가 </h6>
-          <h6 style="text-indent: 23px;">※ set.delete(value) : 값 제거, <span style="color:blueviolet;font-weight: bold;">배열인 경우 생성시의 변수로 delete만 됨. 배열을 그대로 넣어도 무시됨.</span></h6>
-          <h6 style="text-indent: 44px;color:blueviolet;font-weight: bold;">배열을 변수로 중복 추가하면 나머지 무시되고, [1,2]처럼 배열자체는 여러번 넣어도 새로운 것으로 간주됨</h6>
-          <h6 style="text-indent: 44px;">호출 시점에 셋 내에 값이 있어서 제거에 성공하면 true, 아니면 false를 반환한다.</h6>
-          <h6 style="text-indent: 23px;" class="fw-bold">※ set.has(value) : Set 내에 값이 존재하면 true, 아니면 false를 반환 ★★★
-          </h6>
-          <h6 style="text-indent: 23px;">※ set.size : Set에 몇 개의 값이 있는지 세준다.</h6>
-          <h5 class="fw-bold">5. set 반복문 사용방법</h5>
-          <code style="margin-left:10px;">let set = new Set(["oranges", "apples", "bananas"]);</code>
-          <code style="margin-left:10px;">1.for(let value of set) {alert(value);}</code>
-          <code style="margin-left:10px;">2.for(let key of set.keys()) {alert(key);}</code>
-          <code style="margin-left:10px;">3.for(let value of set.values()) {alert(value);}</code>
-          <code style="margin-left:10px;">무슨말인지?</code>
-          <code style="margin-left:10px;">set.keys() : Set 내의 모든 값을 포함하는 이터러블 객체를 반환</code>
-          <code style="margin-left:10px;">set.values() : set.keys와 동일한 작업을 합니다. 맵과의 호환성을 위해 만들어진 메서드이다</code>
-          <code
-            style="margin-left:10px;">set.entries() : Set 내의 각 값을 이용해 만든 [value, value] 배열을 포함하는 이터러블 객체를 반환. 맵과의 호환성을 위해 만들어졌습니다.</code>
-          <code style="margin-left:10px;"></code>
+        <h6 class="fw-bold">2. 전개연산자(...)로 다시 배열로 변환후 사용한다.</h6>
+        <h6 style="text-indent: 10px;">- let 배열로 = [...셑]; // [1,2,3,4]</h6>
+        <br>
+        <h6 class="fw-bold">3. 셑.forEach((v1, v2, set) => {console.log(v1, v2, set)});</h6>
+        <h6 style="text-indent: 10px;">- forEach가 되는데 보통은 ( val, index, arr )인데</h6>
+        <h6 style="text-indent: 20px;">짝을 맞추기 위함인듯, 매개변수가 ( v1, v2, set )이다.</h6>
+        <h6 style="text-indent: 20px;">v1과 v2는 같은 값이다.</h6>
+        <br>
+        <h6 class="fw-bold">3. 추가 : 셑.add(1).add(10); // 값 추가, 하나 또는 여러개 한번에</h6>
+        <h6 style="text-indent: 10px;">- console.log(셑); // Set(5) {1, 2, 3, 4, 10}, 있는거 무시됨(1)</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 셑.add([1]).add([1]); // 원시값이 아니면 [ ]등, 유일한 값으로 취급</h6>
+        <h6 style="text-indent: 23px;">console.log(셑); // Set(5) {1, 2, 3, 4, 10, [1], [1]}</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- let 추가 = [2];</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 셑.add(추가).add(추가).add(추가); // 살아있는 변수를 계속 추가하면 하나만 인정</h6>
+        <h6 style="text-indent: 23px;">console.log(셑); // Set(8) {1, 2, 3, 4, 10, [1], [1], [2]}</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 변수가 새로 지정되면 유일한 값으로 인정</h6>
+        <pre class="fw-bold" style="margin-left:22px;">
+let 초기값 = 0; let 셑 = new Set();
+for (let i=0; i&#60;4; i++) { 셑.add(초기값); 초기값+=1; }
+console.log(셑); // Set(4) {0, 1, 2, 3}        </pre>
+        <h6 class="fw-bold">4. 모두삭제는 set.clear(), 하나삭제(delete), has(형식일치), size : 왼쪽 참조</h6>
       </div>
-      <div class=" d-inline-block align-top" style="width:750px;border-right:1px solid black;white-space:normal;">
-        <h5 class="fw-bold">4. set</h5>
-        <h6 style="text-indent: 23px;">※ 세트(set)는 한마디로 순서가 없는 중복되지 않은 데이터의 집합인데요. </h6>
-        <h6 style="text-indent: 23px;">※ 배열(array)과 차이점을 이해하는 것이 무엇보다 중요합니다.</h6>
-        <h6 style="text-indent: 23px;">※ 배열은 데이터를 순서있게 저장합니다. </h6>
-        <h6 style="text-indent: 23px;">※ 그래서 인덱스(index)를 통해서 특정 위치에 저장되어 있는 데이터에 접근이 가능하죠. </h6>
-        <h6 style="text-indent: 23px;">※ 그리고 배열에는 동일한 값을 여러 번 저장할 수 있습니다.</h6>
-        <h6 style="text-indent: 23px;">※ 값이 동일하더라도 인덱스가 틀리기 때문에 데이터의 중복이 문제되지 않습니다.</h6>
-        <h6 style="text-indent: 23px;">※ 반면에 세트는 얼핏 보기에는 배열과 비슷해보일 수 있지만 사실 결이 아주 다른 자료구조입니다.</h6>
-        <h6 style="text-indent: 23px;">※ 우선 세트는 데이터를 순서없이 저장합니다. </h6>
-        <h6 style="text-indent: 23px;">※ 따라서 배열처럼 인덱스를 통해서 접근할 수가 없습니다.</h6>
-        <h6 style="text-indent: 23px;">※ 그리고 세트는 중복된 데이터를 허용하지 않습니다.</h6>
-        <h6 style="text-indent: 23px;">※ 즉, 기존에 세트에 있는 값을 또 추가하면 아무 효력이 발생하지 않습니다.</h6>
-        <h6 style="text-indent: 23px;">※ 자바스크립트에서 Set는 클래스(class)이므로 </h6>
-        <h6 style="text-indent: 44px;">new 키워드와 생성자를 사용하여 객체를 생성할 수 있습니다.</h6>
-        <h6 style="text-indent: 23px;">※ const set = new Set(); // Set(0) {size: 0}</h6>
-        <h6 style="text-indent: 23px;">※ 위와 같이 생성자의 인자로 아무 것도 넘기지 않으면 빈 세트가 만들어지며,</h6>
-        <h6 style="text-indent: 23px;">※ 아래와 같이 배열을 인수로 넘기면 배열에 담긴 값으로 세트가 만들어집니다.</h6>
-        <h6 style="text-indent: 23px;">※ const numSet = new Set([1, 2, 3]); // Set(3) {1, 2, 3}</h6>
-        <h6 style="text-indent: 23px;">※ 값 추가</h6>
-        <h6 style="text-indent: 23px;">※ 세트에 새로운 값을 추가할 때는 add() 메서드를 사용하는데요</h6>
-        <h6 style="text-indent: 23px;">※ 위에서 설명드린 것처럼 세트에는 중복된 값이 추가되지 않으며, 유일한 값만 저장됩니다.</h6>
-        <h6 style="text-indent: 23px;">※ set.add(1); // Set(1) {1}</h6>
-        <h6 style="text-indent: 23px;">※ set.add("A"); // Set(2) {1, 'A'}</h6>
-        <h6 style="text-indent: 23px;">※ set.add(true); // Set(3) {1, 'A', true}</h6>
-        <h6 style="text-indent: 23px;">※ 참고로 add() 메서드는 값을 추가한 후에 세트를 반환하기 때문에 </h6>
-        <h6 style="text-indent: 23px;">※ 아래와 같이 연쇄적으로 호출할 수도 있습니다.</h6>
-        <h6 style="text-indent: 23px;">※ set.add(1).add("A").add(true); // Set(3) {1, 'A', true}</h6>
-        <h6 style="text-indent: 23px;">※ 값 삭제</h6>
-        <h6 style="text-indent: 23px;">※ Set의 delete() 메서드를 사용하면 세트로 부터 특정 값을 삭제할 수 있는데요</h6>
-        <h6 style="text-indent: 23px;">※ delete() 메서드에 인자로 넘기는 값이 세트에 존재하여 성공적으로 삭제하였다면 </h6>
-        <h6 style="text-indent: 23px;">※ true를 반환하고, 해당 값이 세트에 존재하지 않아서 삭제에 실패하였다면 false를 반환합니다.</h6>
-        <h6 style="text-indent: 23px;">※ set.delete(1); // true, set.delete(2); // false</h6>
-
-      </div>
-      <br><br><br><br><br><br><br>
-    </div>
-
-    <div id="JS2_set교집합차집합합집합">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h5 class="fw-bold"><a href="https://romantech.tistory.com/1149" target="_blank">이터러블 링크</a> ... 
-          <span style="font-size:16px;font-weight: bold;">반복가능한, 문자열(O), 배열(O), Object(X), Set객체(X)</span>
-          <a href="https://wonjaetech.tistory.com/entry/자바스크립트-Set" target="_blank">Set 링크</a> ...
-          <a href="https://poiemaweb.com/es6-class" target="_blank">더 자세한 Set 링크</a> 
-        </h5>
-        <h5 class="fw-bold">Set 객체는 중복되지 않는 유일한 값들의 집합입니다.</h5>
-        <h6 style="text-indent: 15px;">• 몇번째의 갑이 무엇인지 접근할 수 없다.</h6>
-        <h6 style="text-indent: 15px;font-weight: bold;color:blueviolet">• 순환은 할 수 있다.</h6>
+      <div>
         <h6 style="text-indent: 15px;font-weight: bold;">★ 교집할, 차집합, 합집합 구할수 있고 결과를 배열로 변환하여 활용할 수 있다.</h6>
-
-        <h5 class="fw-bold">개수확인 :  set.size = 10; // 무시된다. console.log(set.size); // 3 </h5>
-        <h5 class="fw-bold">요소추가 : Set.prototype.add 메서드 사용</h5>
-        <h6 style="text-indent: 23px;">add 메서드는 새로운 요소가 추가된 Set 객체를 반환하기 때문에 </h6>
-        <h6 style="text-indent: 23px;">add 메서드를 호출한후 메서드 체이닝(메서드를 연속적으로 호출)이 가능합니다.</h6>
-        <h6 style="text-indent: 23px;font-weight: bold;">set.add(1); set.add(2); => 왼쪽 두개 명령을 하나로 set.add(1).add(2)</h6>
-        <h6 style="text-indent: 23px;font-weight: bold;">set.add(2).add(2).add(2) : 같은 값은 추가되지 않는다. set.add(2) 와 같다.</h6>
-
-        <h5 class="fw-bold">존재여부 확인 : set.has() => 형식이 모두 일치해야 같은 값으로 인식</h5>
-        <h6 style="text-indent: 23px;font-weight: bold;">var set=new Set(['아이','러브','유',4])</h6>
-        <h6 style="text-indent: 23px;font-weight: bold;">console.log(set.has(4)); // true, console.log(set.has(4)); // true</h6>
-        <h6 style="text-indent: 23px;font-weight: bold;">console.log(set.has('4')); // false, console.log(set.has('4' * 1)); // true</h6>
-
-        <h5 class="fw-bold">단일값을 중복이 제거된 상태로 저장, <span style="color:blueviolet">Set 객체는 배열과는 다르다. 결과가 중괄호 { } 다.</span> </h5>
-        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">• Set 객체는 또한 Object 객체와도 다른것이 {1, 2, 3} 처럼 key가 없다. 요소(value)만 있다.</code>
-        <code class="fw-bold" style="text-indent: 15px;">• var 배열1=[1,2,3,4]; 배열2=[3,4,5,6]; 배열3=[1,2,3,4];</code>
-        <code class="fw-bold" style="text-indent: 28px;">표현1 : var set=new Set([배열1,배열2,배열3]); </code>
-        <code class="fw-bold" style="text-indent: 28px;">표현2 : var set=new Set(); set=new Set.add(배열1).add(배열2).add(배열3); </code>
-        <code class="fw-bold" style="text-indent: 28px;">console.log(set); // Set(3) {Array(4),Array(4),Array(4)} => 배열은 값이 같아도 다른걸로 본다? </code>
-        
-        <h5 class="fw-bold">모두삭제는 set.clear(), 하나 삭제 : index를 사용할수 없으므로, 값을 전달해야한다.</h5>
-        <code class="fw-bold" style="text-indent: 15px;">• set.delete(배열2); => 생성시 전달된 배열변수이름으로 지우면 지워지지만,</code>
-        <code class="fw-bold" style="text-indent: 15px;">• var 이름변경=배열2; set.delete(이름변경); => 생성시 배열변수 이름이 아니면 무시됨</code>
-        <code class="fw-bold" style="text-indent: 15px;">• set.delete([3,4,5,6]); => [3,4,5,6]이 있어도 배열은 다 다른것으로 보기때문에 무시된다. (없는것으로 인식)</code>
-        
-
-        <h5 class="fw-bold">요소 순회하기 : const set = new Set([1, 2, 3]); set.forEach((v, v2, set) => console.log(v, v2, set));</h5>
-        <code class="fw-bold" style="text-indent: 15px;">변수 v : 현재 순회 중인 요소값, 변수 v2 : 현재 순회 중인 요소값, 변수 set : 현재 순회 중인 Set 객체 자체</code>
-        <code class="fw-bold" style="text-indent: 15px;">console.log(v, v2, set) : // 1 1 Set(3) {1, 2, 3}, // 2 2 Set(3) {1, 2, 3}, // 2 3 Set(3) {1, 2, 3}</code>
-        <code class="fw-bold" style="text-indent: 15px;">v, v2가 같은 이유는 Array.prototype.forEach 메서드와의 인터페이스를 통일하기 위함.</code>
-        
-        <h5 class="fw-bold">요소 순회하기 : const set = new Set([1, 2, 3]); for (const value of set) { console.log(value); }</h5>
-
-        
-
-        
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">없어도되는? Set.prototype.intersection = function(set) { } 부분은 원리 설명인듯??</h5>
         <code style="text-indent: 15px;">교집합 : Set.prototype.intersection = function(set) &#123; return new Set([...this].filter(v => set.has(v))); &#125;</code>
         <code style="text-indent: 15px;">합집합 : Set.prototype.union = function (set) { return new Set([...this, ...set]); };</code>
@@ -6141,8 +6111,13 @@ console.log(속성명, ':', 객체2[속성명]);
         <code style="text-indent: 15px;">console.log(setB.isSuperset(setA)); // false</code>
         
         <h5 class="fw-bold">★ 모두 단일 값을 가진 집합일때만 비교 가능함. 배열속의 배열은 모두 다르게 인식함.</h5>
+
+
       </div>
+      <br><br><br><br><br><br><br>
     </div>
+
+
 
     <div id="excel_js_HTML노드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">

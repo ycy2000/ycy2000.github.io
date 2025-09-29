@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_반복문관련간단정보' //원래는 h6의 title이다.
+  전체변수h6title ='js_set객체' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,15 +28,12 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
+let set = new Set(["oranges", "apples", "bananas"]);
 
-  let 배열 = [ [1,2],[3,4,5], [1] ]
-  for (let key in 배열) {
-    console.log(key);
-  }
-  // ==> 
+set.clear();
+console.log(set)
 
 
-  
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
