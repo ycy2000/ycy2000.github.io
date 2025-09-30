@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_callback함수' //원래는 h6의 title이다.
+  전체변수h6title ='js_array_from' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,11 +28,10 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-// 구문에서 맵핑 함수, 콜백함수는 실행한다는 구문의 약속이 있어서 실행하는 것이다.
-// () => '화살표함수 값' : 자체로는 실행이 아니고 var 함수 = function () {return '화살표함수 값'}
-// 으로, 
-console.log( () => '화살표함수 값');
-console.log( (() => '화살표함수 값')());
+let 변수=document.querySelectorAll('#js_callback함수 pre');
+console.log(변수);
+console.log(Object.prototype.toString.call(변수));
+console.log(Object.getOwnPropertyNames(변수));
 
 }
 function 검색input결과초기화() {

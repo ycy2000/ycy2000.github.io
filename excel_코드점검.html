@@ -3354,7 +3354,19 @@ set __proto__: ƒ __proto__()
         <h6 class="fw-bold">• Array.from([1,2,3], (ele) => ele*2).forEach(callbackFn)</h6>
         <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- Array.from([1,2,3], (ele) => ele*2) // (3) [2, 4, 6]</h6>
         <br>
-        <h6 class="fw-bold">• 화살표함수는 값으로 취급되</h6>
+        <h6 class="fw-bold">• 화살표함수는 실행값은 '값'으로 취급된다.</h6>
+        <pre class="fw-bold" style="margin-left:10px;">
+function 임시 () {return '임시'};
+let 변수= 임시;
+console.log(변수); // ƒ 임시 () {return '임시'}
+변수= 임시();
+console.log(변수); // '임시'
+
+// 화살표함수 표현식은 문자열로 취급된다.
+console.log( () => '화살표함수 값'); // () => '화살표함수 값'
+// 화살표함수를 괄호로 감싸면 '함수이름'처럼 사용 가능. ( )로 실행가능
+console.log( (() => '화살표함수 값')()); // '화살표함수 값'
+        </pre>
       </div>
       <div>
         <h6 class="fw-bold">• 맵핑에서 리턴값 : 배열에 담을 새로운 값</h6>
@@ -3376,6 +3388,12 @@ console.log(새로운배열); // (3) [undefined, undefined, undefined]
 console.log(새로운배열); // (3) [false, true, true]
 새로운배열 =  Array.from( 배열, (val, index, arr) => {return val*2});
 console.log(새로운배열); // (3) [2, 4, 6]
+        </pre>
+        <h6 class="fw-bold blueviolet">• return 값!! 예시</h6>
+        <pre class="fw-bold" style="margin-left:10px;">
+function 임시 () {return '임시'};
+let 임시함수를_실행한후_return값 = 임시();
+console.log(임시함수를_실행한후_return값); // 임시
         </pre>
 
       </div>
@@ -5898,18 +5916,26 @@ console.log(셑); // Set(4) {0, 1, 2, 3}        </pre>
         <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn) : mapFn결과를 담아 반환</h6>
         <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn, thisArg) : mapFn결과를 담아 반환 </h6>
         <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- arrayLike : 배열이든, 배열처럼 반복가능한 객체.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- mapFn : 함수가 와야한다. 화살표함수가온다.(함수이름도 가능은하다)</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- mapFn : 함수가 와야한다. 보통 화살표함수가온다.(함수이름도 가능은하다)</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">return 값이 있는 함수가 와야 한다는 뜻이다.</h6>
+        <pre class="fw-bold" style="margin-left:23px;">
+function 임시 () {return 3};
+let 변수 = Array.from([1,2,3], 임시)
+console.log(변수); // (3) [3, 3, 3] </pre>
+
         <h6 class="fw-bold blueviolet" style="text-indent: 20px;">mapFn : (ele, index, arr) => { ..코드.. }</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수를 요소반복마다 실행한다.</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수가 화살표함수이면 다음 규칙이 있다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 30px;">사용취지에 맞게 코드를 작성할것</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수를 요소반복마다 실행한다. 함수의 경우 () 없이 이름을 넣어야함.</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">ele, index, arr 이름은 임의로 바꿔도 된다.</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">ele : 반복되어 셑팅된 현재요소</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">index : 순번값</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">arr : arrayLike</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- return 값이 없을때, 코드가 동작이면 undefined, 값이면 값,  </h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">판단이면 true or false를 배열에 담는다.</h6>
         <br>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">----- arrayLike -----</h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
         <h6 class="fw-bold">• [1,2,3].forEach(callbackFn)</h6>
         <h6 class="fw-bold" style="text-indent: 10px;">[1,2,3].forEach(callbackFn, thisArg)</h6>
         <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- callbackFn : (ele, index, arr) => { ..코드.. }</h6>
@@ -5917,12 +5943,6 @@ console.log(셑); // Set(4) {0, 1, 2, 3}        </pre>
         <br>
         <h6 class="fw-bold">• Array.from([1,2,3], (ele) => ele*2).forEach(callbackFn)</h6>
         <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- Array.from([1,2,3], (ele) => ele*2) // (3) [2, 4, 6]</h6>
-      </div>
-      <div>
-
-      </div>
-      <div>
-
       </div>
     </div>
 
