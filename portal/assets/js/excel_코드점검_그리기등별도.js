@@ -46,7 +46,7 @@ function textarea정보에서html파일이름추출() {
               사용src+=1;
               var index플러스1=모든파일webkitRelativePath.indexOf(value[1])+1;
               console.log('index : ' + index + ', path : ' + value[1] + ', ' + 리스트정보div들[index플러스1].children[0].innerHTML)
-              if (리스트정보div들[index플러스1].children[0].innerHTML=='') {
+              if (리스트정보div들[index플러스1].children[0].innerHTML=='_') {
                 리스트정보div들[index플러스1].children[0].innerHTML=html파일이름;
               } else {
                 리스트정보div들[index플러스1].children[0].innerHTML+='<br>' + html파일이름;
