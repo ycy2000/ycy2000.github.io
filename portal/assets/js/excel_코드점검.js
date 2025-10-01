@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_array_from' //원래는 h6의 title이다.
+  전체변수h6title ='js_정렬_필터_인덱스찾기' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,10 +28,12 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-let 변수=document.querySelectorAll('#js_callback함수 pre');
-console.log(변수);
-console.log(Object.prototype.toString.call(변수));
-console.log(Object.getOwnPropertyNames(변수));
+let 배열= ['나',2,-2,-22,'가'];
+console.log(배열.sort());
+console.log(배열.sort((a,b) => a-b));
+let 배열2= [-2,2,-22,'가','나'];
+console.log(배열2.sort());
+console.log(배열2.sort((a,b) => a-b));
 
 }
 function 검색input결과초기화() {

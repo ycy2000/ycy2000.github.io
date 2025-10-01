@@ -289,9 +289,11 @@
         <h6 class="fw-bold" title="js_빽틱사용법">• 빽틱(``)사용법, `${변수}`, 삼항연산자(조건, OR ||, AND &&) </h6>  
         <h6 class="fw-bold" title='js_set객체' style="color:blueviolet">• 배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
         <h6 class="fw-bold blueviolet" title="js_array_from">-- Array.from : 배열로 변환, arrayLike : 배열이거나 배열로 변환 가능한 객체 --</h6>
+        <h6 class="fw-bold" title="js_배열_forEach">-- arr.forEach(callbackFn[, thisArg]), 반복--</h6>
+        <h6 class="fw-bold" title="js_정렬_필터_인덱스찾기">-- 배열의 정렬, 필터, 인덱스찾기--</h6>
       </div>
       <div>
-        <h6 class="fw-bold">--- 이해하기 단어 ---</h6>
+
       </div>
     </div>
     <div class="개별카테고리" id="선별">
@@ -5924,29 +5926,79 @@ let 변수 = Array.from([1,2,3], 임시)
 console.log(변수); // (3) [3, 3, 3] </pre>
 
         <h6 class="fw-bold blueviolet" style="text-indent: 20px;">mapFn : (ele, index, arr) => { ..코드.. }</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수를 요소반복마다 실행한다. 함수의 경우 () 없이 이름을 넣어야함.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수를 요소반복마다 실행한다. 함수의 경우 ( ) 없이 이름을 넣어야함.</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">ele, index, arr 이름은 임의로 바꿔도 된다.</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">ele : 반복되어 셑팅된 현재요소</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">index : 순번값</h6>
         <h6 class="fw-bold" style="text-indent: 30px;">arr : arrayLike</h6>
-        <br>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">----- arrayLike -----</h6>
       </div>
       <div>
 
       </div>
       <div>
-        <h6 class="fw-bold">• [1,2,3].forEach(callbackFn)</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">[1,2,3].forEach(callbackFn, thisArg)</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- callbackFn : (ele, index, arr) => { ..코드.. }</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">배열은 그대로 두고, 반복요소마다 정의된 코드를 돌린다는 의미.</h6>
-        <br>
-        <h6 class="fw-bold">• Array.from([1,2,3], (ele) => ele*2).forEach(callbackFn)</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- Array.from([1,2,3], (ele) => ele*2) // (3) [2, 4, 6]</h6>
+
       </div>
     </div>
 
-
+    <div id="js_배열_forEach" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• arr.forEach(callbackFn)</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">arr.forEach(callbackFn, thisArg)</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- callbackFn : (ele, index, arr) => { ..코드.. }</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">배열은 그대로 두고, 반복요소마다 정의된 코드를 돌린다는 의미.</h6>
+      </div>
+    </div>
+    
+    <div id="js_정렬_필터_인덱스찾기" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• arr.sort([compareFunction])</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 비교함수 compareFunction이 생략되면 유니코드 순서대로 오름차순 정렬이다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 비교함수는 1, 0, -1 셋 중 하나의 값을 리턴하여야 한다.</h6>
+        <br>
+        <h6 class="fw-bold">• arr.sort( (a,b) => a-b ) : 비교함수 (a,b) => a-b 의미</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자에 음수(-)기호가 붙은경우 등도 숫자로 인식하여 숫자에 관하여 비교한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- (a, b) : a 와 b가 비교되는 두 요소라면</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- => a-b : a-b의 결과에 따라 다음과 같이 정렬된다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">숫자면 문자열보다 앞에오고 숫자끼리 비교일때 양수이면 위치 바꾼다.</h6>
+        <br>
+        <h6 class="fw-bold">• 예시 : let 배열= ['나', 2, 1,-2,-1,'-2','-1','가','a','A']; 10개 요소 아홉번 비교</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 1번째 값 '나' : 우측 모두와 비교하였을때 밀려서 마지막으로 간다.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">[2, 1,-2,-1,'-2','-1','가','a','A',<span style="color:blueviolet">'나'</span>]</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 1번째 값 2 : (2-1), (2- -2)... 숫자끼리 뺏을때 양수일때 위치 바꿈</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">[1,-2,-1,'-2','-1',<span style="color:blueviolet">2</span>,'가','a','A','나']</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 3번째 값 1 : (1- -2), (1- -1)... 숫자끼리 뺏을때 양수일때 위치 바꿈</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">[-2,-1,'-2','-1', <span style="color:blueviolet">1</span>, 2,'가','a','A','나']</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 4번째 값 -2 : 음수 또는 0 이므로 변동 없음.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">[<span style="color:blueviolet">-2</span>,-1,'-2','-1', 1, 2, '가', 'a', 'A', '나']</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 5번째 값 -1 : -2 에서 (-1 -2) 양수이므로 위치 바꿈</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">[-2,'-2',<span style="color:blueviolet">-1</span>,'-1', 1, 2, '가', 'a', 'A', '나']</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 숫자 끝나고 나머지는 유니코드 순서대로 정렬됨.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">[ -2, '-2', -1, '-1', 1, 2, 'A', 'a', '가', '나']</h6>
+        <br>
+        <h6 class="fw-bold">• 배열.sort( ) : 특수문자, 숫자, 영문 대소문자, 한글 순서대로 정렬됨.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">1) 문자열로 변환한 값을 정렬한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">2) 음수(-)기도호 특수문자이다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">3) 비교함수 적용시 음수(-)가 달린 숫자는 숫자로 분류됨.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">4) 배열.sort( ) 이것으로는 숫자의 정렬이 안된다.</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">5) sort를 실행하면 원본도 바뀐다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">예시) let 배열= ['나', 2, 1,-2,-1,'-2','-1','가', 'a', 'A', '$', '-'];</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- console.log(배열.sort());</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">(12) ['$', '-', -1, '-1', -2, '-2', 1, 2, 'A', 'a', '가', '나']</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- console.log(배열.sort((a,b) => a-b ));</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">(12) ['$', '-', -2, '-2', -1, '-1', 1, 2, 'A', 'a', '가', '나']</h6>
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold"><a href="https://noirstar.tistory.com/359" target="_blank">[Javascript] sort() 동작 방식 (내부 알고리즘)</a></h6>
+        <h6 class="blueviolet fw-bold"><a href="https://gobae.tistory.com/157" target="_blank">[자바스크립트] sort함수는 왜 숫자를 이상하게 정렬할까?</a></h6>
+      </div>
+      <div>
+        
+      </div>
+    </div>
     <div id="excel_js_HTML노드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold"></h5>
