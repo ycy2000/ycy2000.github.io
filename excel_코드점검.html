@@ -5955,15 +5955,26 @@ console.log(변수); // (3) [3, 3, 3] </pre>
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">• arr.sort([compareFunction])</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 비교함수 compareFunction이 생략되면 유니코드 순서대로 오름차순 정렬이다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 비교함수는 1, 0, -1 셋 중 하나의 값을 리턴하여야 한다.</h6>
+        <h6 class="fw-bold">• arr.sort( ) : 유니코드 순서대로 정렬한다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자도 문자열로 변환하여 유니코드 순서대로 정렬한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 음수(-)기호는 특수문자로 취급된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 특수문자, 숫자, 영문대소문자, 한글 순서대로 정렬한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">let 배열= ['가', '나', 1, -1, 'a', 'A', '$', '-'];</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">console.log(배열.sort( )); // <span style="color:blueviolet">(8) ['$', '-', -1, 1, 'A', 'a', '가', '나']</span></h6>
         <br>
-        <h6 class="fw-bold">• arr.sort( (a,b) => a-b ) : 비교함수 (a,b) => a-b 의미</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자에 음수(-)기호가 붙은경우 등도 숫자로 인식하여 숫자에 관하여 비교한다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- (a, b) : a 와 b가 비교되는 두 요소라면</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- => a-b : a-b의 결과에 따라 다음과 같이 정렬된다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">숫자면 문자열보다 앞에오고 숫자끼리 비교일때 양수이면 위치 바꾼다.</h6>
+        <h6 class="fw-bold">• arr.sort([compareFunction]) : compareFunction는 비교함수.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 비교함수 compareFunction이 두개의 인수를 가진다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 비교함수는 1, 0, -1 셋 중 하나의 값을 리턴하여야 한다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 두 값의 비교 결과가 양수이면 둘의 순서가 바뀐다.</h6>
+        <br>
+        <h6 class="fw-bold">• arr.sort( (a,b) => a-b ) : 비교함수 (a,b) => a-b 의미, 숫자 오름차순</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자일때, 두 값의 비교결과가 양수일때 순서가 바뀌는 원리를 이용한다. </h6>
+
+        (8) ['가', '나', -1, 1, 'a', 'A', '$', '-']
+        <br>
+        <h6 class="fw-bold">• arr.sort( (a,b) => b-a ) : 비교함수 (a,b) => a-b 의미, 숫자 내림차순</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자일때, 두 값의 비교결과가 양수일때 순서가 바뀌는 원리를 이용한다. </h6>
+
         <br>
         <h6 class="fw-bold">• 예시 : let 배열= ['나', 2, 1,-2,-1,'-2','-1','가','a','A']; 10개 요소 아홉번 비교</h6>
         <h6 class="fw-bold" style="text-indent: 10px;">- 1번째 값 '나' : 우측 모두와 비교하였을때 밀려서 마지막으로 간다.</h6>

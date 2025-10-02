@@ -28,13 +28,9 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-let 배열= ['나',2,-2,-22,'가'];
-console.log(배열.sort());
-console.log(배열.sort((a,b) => a-b));
-let 배열2= [-2,2,-22,'가','나'];
-console.log(배열2.sort());
-console.log(배열2.sort((a,b) => a-b));
-
+let 배열= ['가','나',1,-1,'a','A','$','-'];
+console.log(배열.sort( (a,b) => a-b )); // (8) ['$', '-', -1, 1, 'A', 'a', '가', '나']
+console.log(배열.sort( (a,b) => b-a )); // (8) ['$', '-', -1, 1, 'A', 'a', '가', '나']
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
