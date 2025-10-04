@@ -6004,10 +6004,26 @@ console.log(배열.sort((a,b) => {
         </pre>
       </div>
       <div>
+        <h6 class="fw-bold">• arr.filter(callbackFn[, thisArg]), callbackFn(element[, index[, array]])</h6>
+        <h6 class="fw-bold">• filter((element[, index[, array]]) => { /* … */ })</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- { /* … */ } 형식이면 내부에서 return해야하며,</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 한줄구문인경우 { }생략할 수 있음.</h6>
+        <br>
+        <h6 class="fw-bold">• callbackFn 콜백함수는 true 또는 false를 리턴하도록 작성.</h6>
+        <br>
+        <h6 class="fw-bold">• 조건에 맞는 요소를 담은 새로운 배열 반환</h6>
+        <pre class="fw-bold" style="margin-left:17px;">
+let 배열=['a','b','c','A','B','C'];
+let 필터=배열.filter( (ele,index,arr) => ele > 'a');
+console.log(필터); // (2) ['b', 'c']
 
+필터=배열.filter( (ele,index,arr) => {
+  return ele.toUpperCase() > 'A';
+});
+console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
       </div>
       <div>
-        
+
       </div>
     </div>
     <div id="excel_js_HTML노드"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
