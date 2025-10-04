@@ -28,9 +28,18 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-let 배열= ['가','나',1,-1,'a','A','$','-'];
-console.log(배열.sort( (a,b) => a-b )); // (8) ['$', '-', -1, 1, 'A', 'a', '가', '나']
-console.log(배열.sort( (a,b) => b-a )); // (8) ['$', '-', -1, 1, 'A', 'a', '가', '나']
+let 배열=['a','b','c','A','B','C'];
+console.log(배열.sort()); // (6) ['A', 'B', 'C', 'a', 'b', 'c']
+
+배열=['a','b','c','A','B','C'];
+console.log(배열.sort((a,b) => {
+  let _1st=a.toUpperCase();
+  let _2st=b.toUpperCase();
+  if (_1st > _2st) {return 1}
+  //if (_1st == _2st) {return 0} // 생략 가능
+  if (_1st < _2st) {return -1}
+})); //(6) ['a', 'A', 'b', 'B', 'c', 'C']
+
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');

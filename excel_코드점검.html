@@ -5955,56 +5955,56 @@ console.log(변수); // (3) [3, 3, 3] </pre>
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">• arr.sort( ) : 유니코드 순서대로 정렬한다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자도 문자열로 변환하여 유니코드 순서대로 정렬한다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 음수(-)기호는 특수문자로 취급된다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 특수문자, 숫자, 영문대소문자, 한글 순서대로 정렬한다.</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">let 배열= ['가', '나', 1, -1, 'a', 'A', '$', '-'];</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">console.log(배열.sort( )); // <span style="color:blueviolet">(8) ['$', '-', -1, 1, 'A', 'a', '가', '나']</span></h6>
+        <h6 class="fw-bold">• true*1=1, true+true=2, false*1=0, false+false=0</h6>
         <br>
         <h6 class="fw-bold">• arr.sort([compareFunction]) : compareFunction는 비교함수.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 비교함수 compareFunction이 두개의 인수를 가진다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 비교함수는 1, 0, -1 셋 중 하나의 값을 리턴하여야 한다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 두 값의 비교 결과가 양수이면 둘의 순서가 바뀐다.</h6>
         <br>
-        <h6 class="fw-bold">• arr.sort( (a,b) => a-b ) : 비교함수 (a,b) => a-b 의미, 숫자 오름차순</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자일때, 두 값의 비교결과가 양수일때 순서가 바뀌는 원리를 이용한다. </h6>
+        <h6 class="fw-bold">• arr.sort( ) : 비교수식이 없을때 유니코드 순서대로 정렬한다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자는 문자열로 변환하여 비교하기때문에 '2' > '1111' = true다</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 음수기호(-)는 특수기호이다. '-1'은 특수기호 다음에 1일 뿐이다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 특수문자, 숫자, 영문대소문자, 한글 순서대로 정렬한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 비교결과 리턴값 : true는 return 1; 같으면 return 0; false면 return -1;</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 비교결과가 양수일때(true의 1 또는 숫자일때는 양수) 두 값의 순서를 바군다.</h6>
+        <br>
+        <h6 class="fw-bold">• 숫자에만 해당하는 arr.sort((a,b) => a-b) : 숫자 오름차순 정렬</h6>
+        <h6 class="fw-bold">• 숫자에만 해당하는 arr.sort((a,b) => b-a) : 숫자 내림차순 정렬</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 음수기호(-)붙은 숫자를 음수로 '111'은 '백십일'로 숫자로 정의한 후 비교한다.</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자만 비교하는데, 숫자를 만난부분부터 숫자를 모두 몰아주는 듯 하다.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">let 배열=['나',3,2,'가',-1,0];</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">console.log(배열.sort((a,b)=>a-b)); // (6) ['나', -1, 0, 2, 3, '가']</h6>
+        <br>
+        <h6 class="fw-bold">• 음수기호 숫자, 음수기호 문자열, 문자열, 숫자 등이 섞여 있으면 생각대로 안될수도.</h6>
+        <pre class="fw-bold" style="margin-left:17px;">
+let 배열=['-나',-3,-2,'-가',-1,0];
+console.log(배열.sort());  //(6) [-1, -2, -3, '-가', '-나', 0]
+배열=['-나',-2,-3,'-가',-1,0];
+console.log(배열.sort((a,b)=>a-b)); //(6) ['-나', -3, -2, '-가', -1, 0]
+배열=['-나',3,2,'-가',-1,0];
+console.log(배열.sort((a,b)=>a-b)); //(6) ['-나', -1, 0, 2, 3, '-가']
+배열= [-1, '-가', '-나', 0, 2, 3]
+console.log(배열.sort((a,b)=>a-b)); //(6) [-1, '-가', '-나', 0, 2, 3]
+배열= [1, '-가', '-나', 0, 2, 3]
+console.log(배열.sort((a,b)=>a-b)); //(6) [1, '-가', '-나', 0, 2, 3]
+        </pre>
+        <h6 class="fw-bold">• 기본정렬+숫자정렬은 : arr.sort().sort((a,b) => a-b)</h6>
+        <br>
+        <h6 class="fw-bold">• 대소문자 구별없이 정렬할때 비교수식 예시(return값)</h6>
+        <pre class="fw-bold" style="margin-left:17px;">
+let 배열=['a','b','c','A','B','C'];
+console.log(배열.sort()); // (6) ['A', 'B', 'C', 'a', 'b', 'c']
 
-        (8) ['가', '나', -1, 1, 'a', 'A', '$', '-']
-        <br>
-        <h6 class="fw-bold">• arr.sort( (a,b) => b-a ) : 비교함수 (a,b) => a-b 의미, 숫자 내림차순</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- 숫자일때, 두 값의 비교결과가 양수일때 순서가 바뀌는 원리를 이용한다. </h6>
-
-        <br>
-        <h6 class="fw-bold">• 예시 : let 배열= ['나', 2, 1,-2,-1,'-2','-1','가','a','A']; 10개 요소 아홉번 비교</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 1번째 값 '나' : 우측 모두와 비교하였을때 밀려서 마지막으로 간다.</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">[2, 1,-2,-1,'-2','-1','가','a','A',<span style="color:blueviolet">'나'</span>]</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 1번째 값 2 : (2-1), (2- -2)... 숫자끼리 뺏을때 양수일때 위치 바꿈</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">[1,-2,-1,'-2','-1',<span style="color:blueviolet">2</span>,'가','a','A','나']</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 3번째 값 1 : (1- -2), (1- -1)... 숫자끼리 뺏을때 양수일때 위치 바꿈</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">[-2,-1,'-2','-1', <span style="color:blueviolet">1</span>, 2,'가','a','A','나']</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 4번째 값 -2 : 음수 또는 0 이므로 변동 없음.</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">[<span style="color:blueviolet">-2</span>,-1,'-2','-1', 1, 2, '가', 'a', 'A', '나']</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 5번째 값 -1 : -2 에서 (-1 -2) 양수이므로 위치 바꿈</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">[-2,'-2',<span style="color:blueviolet">-1</span>,'-1', 1, 2, '가', 'a', 'A', '나']</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 숫자 끝나고 나머지는 유니코드 순서대로 정렬됨.</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">[ -2, '-2', -1, '-1', 1, 2, 'A', 'a', '가', '나']</h6>
-        <br>
-        <h6 class="fw-bold">• 배열.sort( ) : 특수문자, 숫자, 영문 대소문자, 한글 순서대로 정렬됨.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">1) 문자열로 변환한 값을 정렬한다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">2) 음수(-)기도호 특수문자이다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">3) 비교함수 적용시 음수(-)가 달린 숫자는 숫자로 분류됨.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">4) 배열.sort( ) 이것으로는 숫자의 정렬이 안된다.</h6>
-        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">5) sort를 실행하면 원본도 바뀐다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">예시) let 배열= ['나', 2, 1,-2,-1,'-2','-1','가', 'a', 'A', '$', '-'];</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- console.log(배열.sort());</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">(12) ['$', '-', -1, '-1', -2, '-2', 1, 2, 'A', 'a', '가', '나']</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- console.log(배열.sort((a,b) => a-b ));</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">(12) ['$', '-', -2, '-2', -1, '-1', 1, 2, 'A', 'a', '가', '나']</h6>
+배열=['a','b','c','A','B','C'];
+console.log(배열.sort((a,b) => {
+  let _1st=a.toUpperCase();
+  let _2st=b.toUpperCase();
+  if (_1st > _2st) {return 1}
+  //if (_1st == _2st) {return 0} // 생략 가능
+  if (_1st < _2st) {return -1}
+})); //(6) ['a', 'A', 'b', 'B', 'c', 'C']
+        </pre>
       </div>
       <div>
-        <h6 class="blueviolet fw-bold"><a href="https://noirstar.tistory.com/359" target="_blank">[Javascript] sort() 동작 방식 (내부 알고리즘)</a></h6>
-        <h6 class="blueviolet fw-bold"><a href="https://gobae.tistory.com/157" target="_blank">[자바스크립트] sort함수는 왜 숫자를 이상하게 정렬할까?</a></h6>
+
       </div>
       <div>
         
