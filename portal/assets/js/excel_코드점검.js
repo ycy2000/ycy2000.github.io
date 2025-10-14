@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_정렬_필터_인덱스찾기' //원래는 h6의 title이다.
+  전체변수h6title ='java_Array_from' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 전체대체에셑팅() {
@@ -28,14 +28,12 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
-let 배열=['a','b','c','A','B','C'];
-let 필터=배열.filter( (ele,index,arr) => ele > 'a');
-console.log(필터); // (2) ['b', 'c']
+  let 배열= [,,,3,4];
+  let array_from=Array.from(배열);
+  console.log(배열); //(5) [undefined, undefined, undefined, 3, 4]
+  array_from.forEach( (ele,index,arr) => {console.log(ele)}); // undefined, undefined, undefined, 3, 4 출력
 
-필터=배열.filter( (ele,index,arr) => {
-  return ele.toUpperCase() > 'A';
-});
-console.log(필터); // (4) ['b', 'c', 'B', 'C']
+
 
 
 }
