@@ -28,6 +28,29 @@ function 전체대체에셑팅() {
 }
 
 function 연습() {
+  let 변수={0:'1',1:'1',2:'2',length:3};
+  //변수.forEach ( (요소,index,컬렉션) => {console.log(요소)});
+  Array.from(변수).forEach ( (요소,index,컬렉션) => {console.log(요소)});
+  // div 안에 3개의 span이 있는 html컬렉션을 변수에 담아보자.
+  // span안에는 다음과 같이 문자열이 쓰여져 있다 : span1, span2, span3 
+  let html컬렉션=document.querySelectorAll('#html컬렉션예시 > span');
+  console.log(html컬렉션[0]); // <span>span1</span>
+
+
+  // 1. 배열로 변환하지 않고 배열의 메소드 사용. (forEach)
+  html컬렉션.forEach ( (요소,index,컬렉션) => {console.log(요소.innerHTML)});
+
+
+
+
+
+
+
+
+
+
+  return;
+
   let 배열= [,,,3,4];
   let array_from=Array.from(배열);
   console.log(배열); //(5) [undefined, undefined, undefined, 3, 4]
