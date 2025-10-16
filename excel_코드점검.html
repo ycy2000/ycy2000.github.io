@@ -273,21 +273,22 @@
         <h6 class="fw-bold" title="js_사용자정의함수">4. (작성중) 사용자정의함수(class, Function), 생성자 함수(new 사용)</h6>
       </div>
       <div>
-        <h6 class="fw-bold blueviolet" title="js_callback함수">-- 익명함수, 화살표함수, 매개변수, mapFn(맵핑함수), callbackFn(콜백함수) --</h6>
-        <h6 class="fw-bold blueviolet" title="js_반복문관련간단정보">-- iterable(순회가능), enumerable(열거가능), { }의 속성명 반복 for .. in, 이터러블 반복 for .. of --</h6>
-        <h6 class="fw-bold blueviolet" title="js_console플러스연산자">-- console.log(값,값)과 console.log(값 + 값) 참고 : + 연산자에 대해서 --</h6>
-        <h6 class="fw-bold blueviolet" title="js_구조분해맛보기" style="background-color: yellow;">-- 구조분해 맛보기 (반복문에서 요소가 아닌 요소의 구조를 가지고옴)--</h6>
+        <h6 class="fw-bold" title="js_console플러스연산자">console.log(값,값)과 console.log(값 + 값) 참고 : + 연산자에 대해서</h6>
+        <h6 class="fw-bold" title="js_callback함수">익명함수, 화살표함수, 매개변수, mapFn(맵핑함수), callbackFn(콜백함수)</h6>
+        <h6 class="fw-bold" title='java_Array_from'>※(아래※과같이) Array.from, 배열.forEach 참고사항, 유사배열객체</h6>
+        <h6 class="fw-bold">※ arraylike : 1) 배열 [ ], 2) Set객체, 3) Map객체, 4) 유사배열객체, 5) NodeList 등</h6>
+        <h6 class="fw-bold" title="js_반복문관련간단정보">반복문과 iterable(순회가능), enumerable(열거가능)</h6>
+        <h6 class="fw-bold" title="js_구조분해맛보기">반복문에서 구조분해 맛보기</h6>
         <h6 class="fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
         <h6 class="fw-bold" title="js_빽틱사용법">• 빽틱(``)사용법, 딸라표기법 `${변수}`, 삼항연산자, ||(OR), &&(AND), ? 물음표 </h6>  
         <h6 class="fw-bold" title='js_set객체' style="color:blueviolet">• 배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
-        <h6 class="fw-bold" title='java_Array_from'>Array.from, 배열.forEach 참고사항, 유사배열객체</h6>
+
         <h6 class="fw-bold" title="js_정렬_필터_인덱스찾기">-- 배열의 정렬, 필터, 인덱스찾기--</h6>
 
       </div>
       <div>
-        <h6 class="fw-bold blueviolet">-- 중간꺼 제목 다시 정리해보기 --</h6>
-        <h6 class="fw-bold">NodeList, HTMLCollection 등은 Array객체가 아니라 document객체에 의해서 생성된다.</h6>
-        <h6 class="fw-bold">arraylike : 1) 배열 [ ], 2) Set객체, 3) Map객체, 4) 유사배열객체, NodeList, HTMLCollection</h6>
+
+
         <h6 class="fw-bold"></h6>
         <h6 class="fw-bold blueviolet"></h6>
         <h6 class="fw-bold blueviolet"></h6>
@@ -3290,11 +3291,12 @@ set __proto__: ƒ __proto__()
       <h6 class="대체3줄세로2h6"></h6>
       <div>
         <h5 class="fw-bold">- 모두 함수인데, 표현방식에 따라 다르게 부른다. - </h5>
-        <h6 class="fw-bold">• 선억적함수(함수선언문, 함수표현식), 익명함수(함수표현식), 화살표함수 </h6>
+        <h6 class="fw-bold">• 선언적함수(함수선언문, 함수표현식), 익명함수(함수표현식), 화살표함수 </h6>
         <h6 class="fw-bold" style="text-indent: 10px;">1. 선언적함수(함수선언문) : function 함수이름( ) { '코드' }; </h6>
         <img src="portal/images/문서연결_엑셀VBA/일반함수구조.png" alt="이미지없음" style="margin-left:10px;border:1px solid black;"><br>
         <h6 class="fw-bold" style="text-indent: 10px;">[출처] : https://velog.io/@boyeon_jeong/자바스크립트-함수 </h6>
         <h6 style="text-indent: 10px;">- 매개변수(파라미터, 인자) : 함수 정의할때, 인수 : 함수 호출할때</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 함수의 매개변수(파라미터)도 변수이므로 모든값이 올 수 있다. </h6>
         <br>
         <h6 class="fw-bold" style="text-indent: 10px;">2. 선언적함수(함수표현식) : let 함수이름 = function ( ) { '코드' }; </h6>
         <h6 style="text-indent: 30px;">- 변수이름에 함수이름을 적고... = 다음에 함수이름이 없다.</h6>
@@ -3305,102 +3307,46 @@ set __proto__: ƒ __proto__()
         <h6 style="text-indent: 30px;">- ( ) => { '코드' };</h6>
         <h6 style="text-indent: 30px;">- ( ) => 한줄코드; // 코드가 한줄일때는 { } 생략 가능.</h6>
         <br>
-        <h5 class="fw-bold">- 모두 함수인데, 표현방식에 따라 다르게 부른다. - </h5>
+        <h6 class="fw-bold" style="text-indent: 10px;">4. 세가지 같은 결과 예시 </h6>
+        <pre class="fw-bold" style="margin-left: 20px;">
+  function 함수선언_콘솔출력 () {console.log('함수선언_콘솔출력')};
+  함수선언_콘솔출력();
 
-        <pre class="fw-bold">
-선언적 함수: function 키워드로 함수를 정의하고 이름을 붙인 함수입니다. 
-함수 이름으로 호출할 수 있습니다. 
-익명 함수: 이름을 가지지 않는 함수로, 주로 함수 표현식으로 
-변수에 할당하거나 다른 함수의 인자로 전달하는 데 사용됩니다. 
-화살표 함수: => 문법을 사용하여 function 키워드를 사용하는 함수의 간결한 버전입니다. 
-특히 콜백 함수나 간단한 함수를 정의할 때 유용합니다. 
-콜백 함수: 다른 함수의 인자로 전달되어, 특정 이벤트가 발생하거나 작업이 완료된 후에 
-실행되는 함수입니다. 
-즉시 실행 함수: 함수를 정의함과 동시에 즉시 실행되는 함수입니다. 
-주로 변수 범위를 제한하거나 IIFE(Immediately Invoked Function Expression) 
-패턴을 구현하는 데 사용됩니다. 
+  let 변수_콘솔출력 = function () {console.log('변수_콘솔출력')};
+  변수_콘솔출력();
+
+  // 화살표함수 : () => {console.log('화살표함수_콘솔출력')}
+  // 화살표함수 리터럴을 괄호로 감싸고 ( )로 실행
+  (() => {console.log('화살표함수_콘솔출력')})();
         </pre>
-
-
-
-
-
-        <h6 class="fw-bold">• 익명함수 : let 익명함수 = function () { '코드' }; // 익명함수 function () { '코드' };</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">let 익명함수 = function 이름() { '코드' }; // 이렇게도 되지만 이름이 필요없는 경우다.</h6>
-        <h6 class="fw-bold">• 화살표함수 : () => 한줄코드, 또는 () => { 여러줄 또는 한줄 }</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">함수호출을 함수이름()처럼 하듯이 전체를 괄호로 묶으면 함수이름처럼 사용 가능하다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">함수이름을 전달하는 곳에, () => 한줄코드, 또는 () => { 여러줄 또는 한줄 } 전달</h6>
-        <br>
-        <h6 class="fw-bold">• function (파라미터1, 파라미터2) { } : 함수가 값을 받아와서 사용해야하는 경우,</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">받아올 값을 괄호 안에 넣을수 있는데, 매개변수(파라미터)라고 부른다.</h6>
-        <h6 class="fw-bold">• 함수의 매개변수(파라미터)도 변수이므로 모든값이 올 수 있다. </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">매개변수로는 값, 객체, 배열, 함수이름  등 모두 올 수 있다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">함수이름() 형태의 함수의 호출을 넣을수는 없다.</h6>
-        <br>
-        <h6 class="fw-bold">• <span class="blueviolet">콜백함수</span> : 함수의 매개변수로 함수가 쓰일때 이 함수를 <span class="blueviolet">콜백함수</span>라 부른다.</h6>
-        <pre class="fw-bold">
-    function 콜백 () { return '콜백리턴'; }
-    function name(콜백함수, 값) {
-      console.log(`'` + 콜백함수() + `'은 콜백()을 실행한 '` + 값 + `'이다.`)
-    };
-    name(콜백, '결과'); // '콜백리턴'은 콜백()을 실행한 '결과'이다.
-    //name 함수의 파라미터로 사용된다면 '콜백'을 콜백함수라 부른다.        </pre>
-        <h6 class="fw-bold">• 내장객체의 함수설명에서 'mapFn', 'callbackFn'등을 볼수 있는데, </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">콜백함수라는 의미이고 함수내부의 파라미터에 전달되는 함수이다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">콜백함수도 파라미터를 가질수 있는데, 내장객체의 경우</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">약속된 위치에 약속된 정보인 경우가 대부분이다.</h6>
-        <br>
       </div>
       <div>
-        <h5 class="fw-bold">- 콜백함수 : 함수의 매개변수로 전달되는 함수 -</h5>
-        <h6 class="fw-bold">1) 구문을 보면 mapFn, callbackFn 이라는 것이 보이는데 콜백함수를 뜻한다.</h6>
-        <h6 class="fw-bold">2) 예시1 : Array.from(arrayLike, mapFn)</h6>
-        <h6 style="text-indent: 20px;">- Array객체의 속성인 from은 함수이고 배열(arrayLike)의 각 요소를 돌면서</h6>
-        <h6 style="text-indent: 32px;">a) 콜백함수(mapFn)을 실행하여,</h6>
-        <h6 style="text-indent: 32px;">b) 콜백함수의 return 값을 새로운 배열에 담아 반환한다.</h6>
-        <h6 style="text-indent: 32px;">※ 콜백함수는 함수선언식, 익명함수, 화살표함수 등의 표현식이며,</h6>
-        <h6 style="text-indent: 52px;">실행문(괄호)이 오는 것이 아니다.</h6>
-        <h6 class="blueviolet fw-bold" style="text-indent: 32px;">c) 코드는 코드대로 실행하며, 중요한 것은 return 값을 저장한다는 것!! </h6>
-
-
-
-
-
-
-
-        <br><br><br><br><br><br><br><br>
-        <h6 class="fw-bold">• <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from" target="_blank">Array.from(arrayLike) : 배열자체 반환</a> </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn) : mapFn결과를 담아 반환</h6>
+        <h5 class="fw-bold">- <a href="https://inpa.tistory.com/entry/JS-📚-자바스크립트-콜백-함수" target="_blank">콜백함수</a> : 함수가 매개변수에 위치할때 '콜백함수'라 한다. -</h5>
+        <h6 class="fw-bold">1) 구문을 보면 mapFn, callbackFn 이라는 것이 보이는데 </h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">함수의 파라미터(매개변수)에 위치하는 함수이므로 콜백함수를 뜻한다.</h6>
+        <h6 class="fw-bold">2) mapFn : return 값을 생성하는 함수, 매핑용도, 매핑함수</h6>
+        <h6 class="fw-bold">3) callbackFn : 실행할 함수, 실행 용도, 콜백함수</h6>
+        <h6 class="fw-bold">4) mapFn(매핑함수) 예시 : Array.from(arrayLike, mapFn, thisArg)</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">※ 배열객체가 되어 배열 메소드를 모두 사용할수 있게 된다.</h6>
+        <h6 style="text-indent: 20px;">Array객체의 속성인 from은 함수이고 매개변수를 3개까지 가질수 있다.</h6>
+        <h6 style="text-indent: 20px;">a) 첫번째 매개변수(생략불가) : arrayLike</h6>
+        <h6 style="text-indent: 20px;">b) 두번째 매개변수(생략가능) : mapFn (함수 : 매개변수에 있으니 콜백함수)</h6>
+        <h6 style="text-indent: 20px;">c) thisArg(생략가능) : mapFn 실행 시에 this로 사용할 값.</h6>
+        <h6 style="text-indent: 20px;">d) Array.from([1,2,3]) ==> [1,2,3] 배열이 된다.
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">e) Array.from([1,2,3], (ele, index, arr) => ele*2) ==> [2,4,6] 배열이 된다.
+        <h6 style="text-indent: 38px;">- mapFn위치에 '(ele, index, arr) => ele*2'가 왔다.</h6>
+        <h6 style="text-indent: 38px;">- 가. 화살표함수이며 한줄코드이므로 { }가 생략되었다.</h6>
+        <h6 style="text-indent: 38px;">- 가.의 경우 결과값은 return 값이 된다.</h6>
+        <h6 style="text-indent: 38px;">- { ele*2 } 로 입력하면 [undefined, undefined, undefined] 배열이 된다.</h6>
+        <h6 style="text-indent: 38px;">- { return ele*2 } 로 입력하면 [2,4,6] 배열이 된다.</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">f) Array.form 의 매개변수로 오는 콜백함수는 3개의 매개변수를 가질수 있다.</h6>
+        <h6 style="text-indent: 38px;">- ele:순회중인 값, index:순회중인 index, arr:배열 자체</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">g) 매핑함수 mapFn 이 있는 경우 return 값을 담은 새로운 배열이 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">ex) 사용예시 : 여러 코드 실행후 return 값 설정.</h6>
         <br>
-        <h6 class="fw-bold">• Array.from에서 콜백함수를 mapFn(맵핑함수)라고 부르는 이유는 </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- arrayLike배열에서 필요한 값만 가져와 새로운 배열을 만드는데,</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">이런 과정을 '맵핑'이라고 하기때문에 '맵핑함수'라고 표현하는것이다.</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- arrayLike객체의 요소를 하나씩 불러와 함수를 각각 실행하는 맵핑함수이다.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- mapFn 예 :(val[,index[,arr]]) => 리턴값 코드</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">(val) => 코드 : val값은 있어야하고 나머지는 선택사항</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">리턴값이 없으면 코드를 실행한 후 undefined 리턴한다.</h6>
-        <br>
-        <h6 class="fw-bold">• [1,2,3].forEach(callbackFn)</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">[1,2,3].forEach(callbackFn, thisArg)</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- callbackFn : (ele, index, arr) => { ..코드.. }</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">배열은 그대로 두고, 반복요소마다 정의된 코드를 돌린다는 의미.</h6>
-        <br>
-        <h6 class="fw-bold">• Array.from([1,2,3], (ele) => ele*2).forEach(callbackFn)</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- Array.from([1,2,3], (ele) => ele*2) // (3) [2, 4, 6]</h6>
-        <br>
-        <h6 class="fw-bold">• 화살표함수는 실행값은 '값'으로 취급된다.</h6>
-        <pre class="fw-bold" style="margin-left:10px;">
-function 임시 () {return '임시'};
-let 변수= 임시;
-console.log(변수); // ƒ 임시 () {return '임시'}
-변수= 임시();
-console.log(변수); // '임시'
-
-// 화살표함수 표현식은 문자열로 취급된다.
-console.log( () => '화살표함수 값'); // () => '화살표함수 값'
-// 화살표함수를 괄호로 감싸면 '함수이름'처럼 사용 가능. ( )로 실행가능
-console.log( (() => '화살표함수 값')()); // '화살표함수 값'
-        </pre>
+        <h6 class="fw-bold">6) callbackFn(콜백함수) 예시 : [1,2,3].forEach(callbackFn, thisArg)</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">- callbackFn : (ele, index, arr) => { ..코드.. }</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">- 배열은 그대로 두고, 반복요소마다 정의된 코드를 돌린다는 의미.</h6>
       </div>
       <div>
         <h6 class="fw-bold">• 맵핑에서 리턴값 : 배열에 담을 새로운 값</h6>

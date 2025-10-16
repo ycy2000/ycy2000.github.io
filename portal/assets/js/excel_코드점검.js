@@ -6,12 +6,8 @@ function 특정id편집() {
 
 
 function 연습() {
-  console.log(Object.prototype.toString.call(document.querySelectorAll('div'))); //[object NodeList]
-  console.log(Object.prototype.toString.call(document.querySelectorAll('div')[0].children)); //[object NodeList]
-  console.log(Object.prototype.toString.call(document.querySelectorAll('#js설명_객체변수자료형 h6'))); //[object NodeList]
-  console.log(Object.prototype.toString.call(document.querySelector('#js설명_객체변수자료형'))); //[object NodeList]
-  console.log(Object.prototype.toString.call(document.querySelector('#js설명_객체변수자료형').children)); //[object NodeList]
-
+  let dd=Array.from([1,2,3], (ele,index,arr) => {return ele*2});
+  console.log(dd);
 
 
 
