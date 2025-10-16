@@ -1,7 +1,21 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='java_Array_from' //원래는 h6의 title이다.
+  전체변수h6title ='js_callback함수' //원래는 h6의 title이다.
   전체대체에셑팅();
+}
+
+
+function 연습() {
+  console.log(Object.prototype.toString.call(document.querySelectorAll('div'))); //[object NodeList]
+  console.log(Object.prototype.toString.call(document.querySelectorAll('div')[0].children)); //[object NodeList]
+  console.log(Object.prototype.toString.call(document.querySelectorAll('#js설명_객체변수자료형 h6'))); //[object NodeList]
+  console.log(Object.prototype.toString.call(document.querySelector('#js설명_객체변수자료형'))); //[object NodeList]
+  console.log(Object.prototype.toString.call(document.querySelector('#js설명_객체변수자료형').children)); //[object NodeList]
+
+
+
+
+
 }
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작
@@ -25,40 +39,6 @@ function 전체대체에셑팅() {
   document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
   document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
-}
-
-function 연습() {
-  let 변수={0:'1',1:'1',2:'2',length:3};
-  //변수.forEach ( (요소,index,컬렉션) => {console.log(요소)});
-  Array.from(변수).forEach ( (요소,index,컬렉션) => {console.log(요소)});
-  // div 안에 3개의 span이 있는 html컬렉션을 변수에 담아보자.
-  // span안에는 다음과 같이 문자열이 쓰여져 있다 : span1, span2, span3 
-  let html컬렉션=document.querySelectorAll('#html컬렉션예시 > span');
-  console.log(html컬렉션[0]); // <span>span1</span>
-
-
-  // 1. 배열로 변환하지 않고 배열의 메소드 사용. (forEach)
-  html컬렉션.forEach ( (요소,index,컬렉션) => {console.log(요소.innerHTML)});
-
-
-
-
-
-
-
-
-
-
-  return;
-
-  let 배열= [,,,3,4];
-  let array_from=Array.from(배열);
-  console.log(배열); //(5) [undefined, undefined, undefined, 3, 4]
-  array_from.forEach( (ele,index,arr) => {console.log(ele)}); // undefined, undefined, undefined, 3, 4 출력
-
-
-
-
 }
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
