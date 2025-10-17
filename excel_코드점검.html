@@ -4394,24 +4394,25 @@ console.log(변수); // (3) [3, 3, 3] </pre>
       <h6 class="대체2줄세로1h6"></h6>
       <div>
         <h6 class="fw-bold">※ arraylike : 1) 배열 [ ], 2) Set객체, 3) Map객체, 4) 유사배열객체, 5) NodeList 등</h6>
-        <h6 class="fw-bold">※ 기본적으로 forEach 메소드를 가지고 있어서 사용가능</h6>
+        <h6 class="blueviolet fw-bold">※ 기본적으로 forEach 메소드는 가지고 있어서 사용가능</h6>
+        <h6 class="blueviolet fw-bold">※ 'length' 또는 'size' 속성이 있어 개수를 알 수 있다.</h6>
         <h6 class="fw-bold">※ Array.form(arraylike) 메소드로 배열로 변환하면 Array 메소드를 사용할 수 있다.</h6>
         <h6 class="fw-bold">※ Array.form(arraylike) </h6>
         <h6 class="fw-bold">• 상속받는 prototype 확인 : Object.prototype.toString.call(자료)</h6>
         <pre class="fw-bold">
-    let 배열=[1,2,3];
+    let <span class="blueviolet">배열</span>=[1,2,3];
     console.log('배열 : ',Object.prototype.toString.call(배열), ' ',배열);
-    let Set객체=new Set([2,2,3,1,1]);
+    let <span class="blueviolet">Set객체</span>=new Set([2,2,3,1,1]);
     console.log('Set객체 : ',Object.prototype.toString.call(Set객체), ' ',Set객체);
-    let Map객체 = new Map([ // 2차원 key, value 형태의 배열
+    let <span class="blueviolet">Map객체</span> = new Map([ // 2차원 key, value 형태의 배열
         ['a',1],
         ['a1',2],
         ['b',3]
     ])
     console.log('Map객체 : ',Object.prototype.toString.call(Map객체), ' ',Map객체);
-    let 요소의children=document.querySelector('#arrayLike예시').children;
+    let <span class="blueviolet">요소의children</span>=document.querySelector('#arrayLike예시').children;
     console.log('요소의children : ',Object.prototype.toString.call(요소의children), ' ',요소의children);
-    let nodeList=document.querySelectorAll('#arrayLike예시 span');
+    let <span class="blueviolet">nodeList</span>=document.querySelectorAll('#arrayLike예시 span');
     console.log('nodeList : ',Object.prototype.toString.call(nodeList), ' ',nodeList);
 
     -- console.log 결과 모음 --
@@ -4423,18 +4424,18 @@ console.log(변수); // (3) [3, 3, 3] </pre>
     -- console.log 결과 모음 끝--
 
     console.log(Object.getOwnPropertyNames(Array.prototype));
-    (40) ['length', 'constructor', 'at', 'concat', 'copyWithin', 'fill', 'find', 'findIndex', 'findLast', 'findLastIndex', 'lastIndexOf', 'pop', 'push', 
+    (40) [<span class="blueviolet"><u>'length',</u></span> 'constructor', 'at', 'concat', 'copyWithin', 'fill', 'find', 'findIndex', 'findLast', 'findLastIndex', 'lastIndexOf', 'pop', 'push', 
             'reverse', 'shift', 'unshift', 'slice', 'sort', 'splice', 'includes', 'indexOf', 'join', 'keys', 'entries', 'values', <span class="blueviolet"><u>'forEach',</u></span> 'filter', 'flat', 
             'flatMap', 'map', 'every', 'some', 'reduce', 'reduceRight', 'toReversed', 'toSorted', 'toSpliced', 'with', 'toLocaleString', 'toString']
     console.log(Object.getOwnPropertyNames(Set.prototype));
     (17) ['constructor', 'has', 'add', 'delete', 'difference', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'intersection', 'isSubsetOf', 'isSupersetOf', 
-            'isDisjointFrom', 'size', 'symmetricDifference', 'union', 'values', 'keys']
+            'isDisjointFrom', <span class="blueviolet"><u>'size',</u></span> 'symmetricDifference', 'union', 'values', 'keys']
     console.log(Object.getOwnPropertyNames(Map.prototype));
-    (11) ['constructor', 'get', 'set', 'has', 'delete', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'keys', 'size', 'values']
+    (11) ['constructor', 'get', 'set', 'has', 'delete', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'keys', <span class="blueviolet"><u>'size',</u></span> 'values']
     console.log(Object.getOwnPropertyNames(HTMLCollection.prototype));
-    (4) ['length', 'item', 'namedItem', 'constructor']
+    (4) [<span class="blueviolet"><u>'length',</u></span> 'item', 'namedItem', 'constructor']
     console.log(Object.getOwnPropertyNames(NodeList.prototype));
-    (7) ['entries', 'keys', 'values', <span class="blueviolet"><u>'forEach',</u></span> 'length', 'item', 'constructor']
+    (7) ['entries', 'keys', 'values', <span class="blueviolet"><u>'forEach',</u></span> <span class="blueviolet"><u>'length',</u></span> 'item', 'constructor']
         </pre>
         <h6 class="fw-bold">1) let 배열 = [1,2,3];</h6>
         <h6 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-자료형-Map-🚩-정리">Map객체</a></h6>
