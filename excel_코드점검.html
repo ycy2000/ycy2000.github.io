@@ -269,16 +269,16 @@
         <h6 class="fw-bold" title="js객체속성개수">속성을 내부에서 지정, 외부에서 지정. Object.keys, Object.values, Object.entries</h6>
         <h6 class="fw-bold" title="js_Array생성자와프로토타입">3-1. 생성자함수 Array (내장함수 == 내장객체 Array 객체), prototype</h6>
         <h6 class="fw-bold" title="js_Object생성자와프로토타입">3-2. 생성자함수 Object (내장함수 == 내장객체 Array 객체), prototype</h6>
+        <h6 class="blueviolet fw-bold" title="js_속성에관하여">※ 생성자함수의 속성, prototype, 인스턴스의 속성, 순회가능(iterable), 열거가능</h6>
 
         <h6 class="fw-bold" title="js_사용자정의함수">4. (작성중) 사용자정의함수(class, Function), 생성자 함수(new 사용)</h6>
       </div>
       <div>
         <h6 class="fw-bold" title="js_console플러스연산자">console.log(값,값)과 console.log(값 + 값) 참고 : + 연산자에 대해서</h6>
         <h6 class="fw-bold" title="js_callback함수">익명함수, 화살표함수, 매개변수, mapFn(맵핑함수), callbackFn(콜백함수)</h6>
-        <h6 class="fw-bold" title='java_유사배열객체'>※ arraylike : 1) 배열 [ ], 2) Set객체, 3) Map객체, 4) 유사배열객체, 5) NodeList 등</h6>
-        <h6 class="fw-bold" title='java_Array_from'>※ (아래※과같이) Array.from(arrayLike) : arrayLike를 배열로 변환한다.</h6>
-        <h6 class="fw-bold" title="js_반복문관련간단정보">※ 반복문과 iterable(순회가능), enumerable(열거가능)</h6>
-        <h6 class="fw-bold" title="js_구조분해맛보기">반복문에서 구조분해 맛보기</h6>
+        <h6 class="fw-bold" title='java_유사배열객체'>※ arraylike : 유사배열과(Set객체, Map객체, NodeList등) 유사배열 객체</h6>
+        <h6 class="fw-bold" title='java_Array_from'>※ (위※과같이) Array.from(arrayLike) : arrayLike를 배열로 변환한다.</h6>
+        <h6 class="blueviolet fw-bold" title="js_구조분해맛보기">반복문에서 구조분해 맛보기, 변수명을 속성이름(key), 변수에 대입된 값을 값(value)</h6>
         <h6 class="fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
         <h6 class="fw-bold" title="js_빽틱사용법">• 빽틱(``)사용법, 딸라표기법 `${변수}`, 삼항연산자, ||(OR), &&(AND), ? 물음표 </h6>  
         <h6 class="fw-bold" title='js_set객체' style="color:blueviolet">• 배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
@@ -3286,6 +3286,103 @@ set __proto__: ƒ __proto__()
 
       </div>
     </div>
+    <div id="js_속성에관하여" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 생성자함수 중에서 Array함수에 대해서만 이해해보자. 함수도 객체이다. </h6>
+        <h6 class="fw-bold">1) 생성자 함수에 의해서 만들어진 객체를 '인스턴스'라 부른다.</h6>
+        <h6 class="fw-bold">2) 다음 두가지의 결과는 같다. [1,2,3]을 변수에 담으면 '배열1'처럼 생성자 함수에 의해 인스턴스가 생성된다.</h6>
+        <pre class="fw-bold" style="margin-left:20px;"> let 배열1 = new Array(1,2,3); console.log(배열1); // (3) [1, 2, 3]
+ let 배열2 = [1,2,3]; console.log(배열2); //(3) [1, 2, 3]        </pre>
+        <h6 class="fw-bold">3) 인스턴스가 되면 자신을 생성한 생상자함수(여기선 Array함수 객체)의 속성중에, </h6>
+        <h6 class="fw-bold" style="margin-left:20px;">prototype에 정의된 속성(기능))들을 자신의 속성처럼 쓸 수 있다. (forEach, filter, map,..등등)</h6>
+        <br>
+        <h6 class="fw-bold">4) (이해를 돕는 표현일뿐) 배열 [1,2,3]을 객체리터럴(key:value)로 표현하면, { 0:1, 1:2, 2:3, length:3 }</h6>
+        <pre class="fw-bold" style="margin-left:20px;">배열 내부의 1,2,3은 값(value)이고 속성은 0,1,2 이다.
+세번째 값에 접근하려면, 배열[2] => 속성이 숫자이므로 점(.)표기법이 아닌 대괄호 [ ]접근법을 사용하는 것이다.       </pre>
+        <h6 class="fw-bold">5) 객체의 속성을 배열에 담아 반환하는 Object.getOwnPropertyNames(자료)</h6>
+        <h6 class="fw-bold" style="margin-left:20px;">console.log(Object.getOwnPropertyNames(Array)); </h6>
+        <h6 class="fw-bold" style="margin-left:20px;">//(7) ['length', 'name', 'prototype', 'isArray', 'from', 'fromAsync', 'of']</h6>
+        <br>
+        <h6 class="fw-bold">5-1) 배열인스턴스에 적용해보면</h6>
+        <h6 class="fw-bold" style="margin-left:20px;">console.log(Object.getOwnPropertyNames([1,2,3])); </h6>
+        <h6 class="fw-bold" style="margin-left:20px;">(4) ['0', '1', '2', 'length']</h6>
+        <br>
+        <h6 class="fw-bold">5-2) 속성의 정보를 알려주는 Object.getOwnPropertyDescriptor(객체,'속성명')</h6>   
+        <h6 class="fw-bold" style="margin-left:20px;">console.log(Object.getOwnPropertyDescriptor(Array,'prototype'));</h6>     
+        <h6 class="fw-bold" style="margin-left:20px;">// {value: Array(0), writable: false, <span class="blueviolet">enumerable: false,</span> configurable: false}</h6>
+        <br>
+        <h6 class="fw-bold" style="margin-left:20px;">console.log(Object.getOwnPropertyDescriptor([1,2,3],'0'));</h6>     
+        <h6 class="fw-bold" style="margin-left:20px;">// {value: 1, writable: true, <span class="blueviolet">enumerable: true,</span> configurable: true}</h6>        
+        <h6 class="blueviolet fw-bold" style="margin-left:20px;">console.log(Object.getOwnPropertyDescriptor([,,3],'0')); // undefined</h6>
+        
+        <br>
+        <h6 class="fw-bold" style="margin-left:20px;">console.log(Object.getOwnPropertyDescriptor([1,2,3],'length'));</h6>     
+        <h6 class="fw-bold" style="margin-left:20px;">// {value: 3, writable: true, <span class="blueviolet">enumerable: false,</span> configurable: false}</h6>        
+        <br>
+        <h6 class="fw-bold">6) (열거가능)enumerable:true 인것만 반복문에서 불러온다.</h6>
+        <h6 class="fw-bold" style="margin-left:20px;">5-1) 에서 [1,2,3]의 속성은 [0,1,2,length] 네가지인데 length 는 enumerable: false이므로 </h6>
+      </div>
+      <div>
+        <h6 class="fw-bold">• 이터러블과 유사 배열</h6>
+        <h6 class="fw-bold" style="margin-left:10px;">1) 비슷해 보이지만 아주 다른 용어 두 가지가 있습니다. 헷갈리지 않으려면 두 용어를 잘 이해하고 있어야 합니다.</h6>
+        <h6 class="fw-bold" style="margin-left:10px;">2) 배열이 아닌 객체가 있는데, 이 객체가 어떤 것들의 컬렉션(목록, 집합 등)을 나타내고 있는 경우</h6>
+        <h6 class="fw-bold" style="margin-left:30px;">이터러블(<a href="https://ko.javascript.info/iterable" target="_blank">iterable</a>) 은 위에서 설명한 바와 같이 메서드 Symbol.iterator가 구현된 객체입니다.</h6>
+        <h6 class="fw-bold" style="margin-left:10px;">3) 유사 배열(array-like) 은 인덱스와 length 프로퍼티가 있어서 배열처럼 보이는 객체입니다.</h6>
+        <br>
+        <h6 class="fw-bold">• 결론 : 반복문에서는 자신의 속성중에서 열거가능(enumerable)인 것만 불러온다.</h6>
+        <br>
+        <h6 class="fw-bold">• 결론 : 인스턴스는 자신을 생성한 생성자함수의 prototype의 속성을 자신의 속성처럼 접근할 수가 있지만 자신의 속성은 아니다.</h6>
+
+      </pre>
+
+
+      </div>
+    </div>
+    <div id="js_console플러스연산자" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 객체 { } 반복문, 속성이름 받아옴 : for (let 속성명 in 객체) { 코드 } </h6>
+        <pre class="fw-bold" style="margin-left:15px;">
+  const 객체 = {
+    name: "Alice", 
+    age: new String('new S'),
+    greet: function() { console.log("Hi!");},
+    객체값: { 내부1: '내부1', 내부2: '내부2'},
+  };
+  for (let 속성명 in 객체) { 
+    console.log(속성명, ', ',
+      Object.prototype.toString.call(객체[속성명]), ', ', 
+      typeof(객체[속성명]), ', ', ' : ', 객체[속성명]
+    ); 
+  } // 객체[속성명], 변수이므로 .접근이 안됨. [ ]접근법
+출력1 : name ,  [object String] ,  string ,   :  Alice
+출력2 : age ,  [object String] ,  object ,   :  String {'new S'}
+출력3 : greet ,  [object Function] ,  function ,   :  ƒ () { console.log("Hi!");}
+출력4 : 객체값 ,  [object Object] ,  object ,   :  {내부1: '내부1', 내부2: '내부2'}
+
+<span style="color:blueviolet;font-weight: blod;">console.log에서 객체를 + 연산자로 연결시 [object Object]로 표시되는 것 설명</span> 
+console.log(객체['객체값']);        // {내부1: '내부1', 내부2: '내부2'}
+console.log('' + 객체['객체값']);   // [object Object]
++ 연산자는 문자열 연결을 수행하므로, 오른쪽의 값이 객체일 경우 
+자동으로 문자열로 변환하려고 합니다.
+자바스크립트에서 객체가 문자열로 변환될 때는 toString() 메서드를 호출하는데,
+기본 객체(Object)의 toString() 기본 구현은 "[object Object]"를 반환합니다
+이 값은 객체 타입이므로 문자열 연결 시 toString() → "[object Object]"로 변환되는 것입니다.
+
+객체를 문자열로 변환할 때 JSON 포맷 등을 사용하면 됩니다.
+console.log(속성명 + ' : ' + JSON.stringify(객체2[속성명]));
+
+또는 여러 값을 ,로 나눠 console.log에 직접 전달하면
+문자열 변환이 강제되지 않아서 원본 객체가 그대로 출력됩니다.
+
+console.log(속성명, ':', 객체2[속성명]);
+        </pre>
+      </div>
+      <div>
+      </div>
+    </div>
     <div id="js_callback함수" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
@@ -3378,118 +3475,174 @@ console.log(임시함수를_실행한후_return값); // 임시
 
       </div>
     </div>
-    <div id="js_반복문관련간단정보" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6>
-      <h6 class="대체3줄세로2h6"></h6>
+    <div id="java_유사배열객체" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
       <div>
-        <h6 class="fw-bold">• 열거 가능한(enumerable) : 속성의 한가지.</h6>
-        <h6 style="text-indent: 15px;">- 내장객체나 내장객체.prototype의 속성은 enumeralbe: flase로 되어 있어서</h6>
-        <h6 style="text-indent: 27px;">반복문으로는 가지고 올 수 없다.</h6>
-        <h6 style="text-indent: 15px;">- 속성의 설명을 볼수 있는 구문.</h6>
-        <code style="text-indent: 27px;">console.log(Object.getOwnPropertyDescriptor(Array,'from'));</code>
-        <code style="text-indent: 27px;">{writable: true, enumerable: false, configurable: true, value: ƒ}</code>
-        <br>
-        <h6 class="fw-bold">• enumeralbe: flase로 되어 있는 내장객체의 속성을 보는 방법</h6>
-        <h6 style="text-indent: 15px;">- 정보를 배열로 변환하여 반환해주는 명령 사용후 <u>'반환받은 배열을 사용한다'.</u></h6>
-        <code style="text-indent: 27px;">Object.getOwnPropertyNames(Object) : Object의 속성이름을 배열에 담아 반환</code>
-        <code style="text-indent: 27px;">Object.getOwnPropertyNames(Array.prototype) :   </code>
-        <code style="text-indent: 40px;">Array 객체의 prototype속성에 담긴 속성들의 이름을 배열에 담아 반환</code>
-        <code style="text-indent: 27px;">Object.keys(객체) : key값을 배열에 담아 반환</code>
-        <code style="text-indent: 27px;">Object.values(객체) : value값을 배열에 담아 반환 </code>
-        <code style="text-indent: 27px;">Object.entries(객체) : 각각 [key,vlaue] 형태로 배열에 담아 반환. </code>
-        <code style="text-indent: 27px;"></code>
-        <br>
-        <h6 class="fw-bold">• 이터러블(iterable) 객체 : 순회하면서 값에 접근할 수 있는객체.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 15px;">- for (let value of 이터러블객체) { 코드 } : 구문으로 반복할 수 있다.</h6>
-        <h6 style="text-indent: 15px;">- 기본객체 { }는 이터러블이 아니다.</h6>
-        <h6 style="text-indent: 27px;">for (let value of {객체리터럴}) { 코드 } 사용안된다.</h6>
-        <br>
-        <h6 class="fw-bold">• (여러가지 정보를 담을수 있는) 객체의 반복문은 2가지</h6>
-        <br>
-        <h6 class="fw-bold">• for (let key in 객체리터럴) { 코드 } : 객체리터럴 { } 기본객체의 반복문</h6>
-        <br>
-        <h6 class="fw-bold">• for (let key in 배열) { 코드 } : 배열에도 쓸수 있다</h6>
-        <h6 style="text-indent: 15px;">- 배열도 key(index)를 가지고 있다. </h6>
-        <pre class="fw-bold" style="margin-left:15px;">
-  let 배열 = [ [1,2],[3,4,5], [1] ]
-  for (let key in 배열) {
-  console.log(key);  } // ==> 0, 1, 2 출력됨        </pre>
-        <h6 class="fw-bold">• for (let value of 이터러블객체) { 코드 } : 이터러블객체의 반복문</h6>
-        <h6 style="text-indent: 15px;">- 기본객체 { }는 이터러블이 아니라서 에러난다. </h6>
-        <h6 style="text-indent: 30px;">Uncaught TypeError: 객체 is not <span style="color:blueviolet;font-weight: bold;">iterable</span> </h6>
-      </div>
-      <div>
+        <h6 class="fw-bold">※ arraylike : 1) 배열 [ ], 2) Set객체, 3) Map객체, 4) 유사배열객체, 5) NodeList 등 + 유사배열객체</h6>
+        <h6 class="blueviolet fw-bold">※ 기본적으로 forEach 메소드는 가지고 있어서 사용가능</h6>
+        <h6 class="blueviolet fw-bold">※ 'length' 또는 'size' 속성이 있어서, Array.from(arraylike) 실행시 length로 쓰인다.</h6>
+        <h6 class="fw-bold">※ Array.form(arraylike) 메소드로 배열로 변환하면 Array 메소드를 사용할 수 있다.</h6>
+        <h6 class="fw-bold">• 상속받는 prototype 확인 : Object.prototype.toString.call(자료)</h6>
+        <pre class="fw-bold">
+    let <span class="blueviolet">배열</span>=[1,2,3];
+    console.log('배열 : ',Object.prototype.toString.call(배열), ' ',배열);
+    let <span class="blueviolet">Set객체</span>=new Set([2,2,3,1,1]);
+    console.log('Set객체 : ',Object.prototype.toString.call(Set객체), ' ',Set객체);
+    let <span class="blueviolet">Map객체</span> = new Map([ ['a',1], ['a1',2], ['b',3] ]) // 2차원 key, value 형태의 배열
+    console.log('Map객체 : ',Object.prototype.toString.call(Map객체), ' ',Map객체);
+    let <span class="blueviolet">요소의children</span>=document.querySelector('#arrayLike예시').children;
+    console.log('요소의children : ',Object.prototype.toString.call(요소의children), ' ',요소의children);
+    let <span class="blueviolet">nodeList</span>=document.querySelectorAll('#arrayLike예시 span');
+    console.log('nodeList : ',Object.prototype.toString.call(nodeList), ' ',nodeList);
 
-      </div>
-      <div>
+    -- console.log 결과 모음 --
+    배열 :  [object Array]   (3) [1, 2, 3]
+    Set객체 :  [object Set]   Set(3) {2, 3, 1}
+    Map객체 :  [object Map]   Map(3) {'a' => 1, 'a1' => 2, 'b' => 3}
+    요소의children :  [object HTMLCollection]   HTMLCollection(3) [span, span, span]
+    nodeList :  [object NodeList]   NodeList(3) [span, span, span]
+    -- console.log 결과 모음 끝--
 
-      </div>
-    </div>
-    <div id="js_console플러스연산자" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6>
-      <h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold">• 객체 { } 반복문, 속성이름 받아옴 : for (let 속성명 in 객체) { 코드 } </h6>
-        <pre class="fw-bold" style="margin-left:15px;">
-  const 객체 = {
-    name: "Alice", 
-    age: new String('new S'),
-    greet: function() { console.log("Hi!");},
-    객체값: { 내부1: '내부1', 내부2: '내부2'},
-  };
-  for (let 속성명 in 객체) { 
-    console.log(속성명, ', ',
-      Object.prototype.toString.call(객체[속성명]), ', ', 
-      typeof(객체[속성명]), ', ', ' : ', 객체[속성명]
-    ); 
-  } // 객체[속성명], 변수이므로 .접근이 안됨. [ ]접근법
-출력1 : name ,  [object String] ,  string ,   :  Alice
-출력2 : age ,  [object String] ,  object ,   :  String {'new S'}
-출력3 : greet ,  [object Function] ,  function ,   :  ƒ () { console.log("Hi!");}
-출력4 : 객체값 ,  [object Object] ,  object ,   :  {내부1: '내부1', 내부2: '내부2'}
-
-<span style="color:blueviolet;font-weight: blod;">console.log에서 객체를 + 연산자로 연결시 [object Object]로 표시되는 것 설명</span> 
-console.log(객체['객체값']);        // {내부1: '내부1', 내부2: '내부2'}
-console.log('' + 객체['객체값']);   // [object Object]
-+ 연산자는 문자열 연결을 수행하므로, 오른쪽의 값이 객체일 경우 
-자동으로 문자열로 변환하려고 합니다.
-자바스크립트에서 객체가 문자열로 변환될 때는 toString() 메서드를 호출하는데,
-기본 객체(Object)의 toString() 기본 구현은 "[object Object]"를 반환합니다
-이 값은 객체 타입이므로 문자열 연결 시 toString() → "[object Object]"로 변환되는 것입니다.
-
-객체를 문자열로 변환할 때 JSON 포맷 등을 사용하면 됩니다.
-console.log(속성명 + ' : ' + JSON.stringify(객체2[속성명]));
-
-또는 여러 값을 ,로 나눠 console.log에 직접 전달하면
-문자열 변환이 강제되지 않아서 원본 객체가 그대로 출력됩니다.
-
-console.log(속성명, ':', 객체2[속성명]);
+    console.log(Object.getOwnPropertyNames(<span class="blueviolet">Array.prototype</span>));
+    (40) [<span class="blueviolet"><u>'length',</u></span> 'constructor', 'at', 'concat', 'copyWithin', 'fill', 'find', 'findIndex', 'findLast', 'findLastIndex', 'lastIndexOf', 'pop', 'push', 
+            'reverse', 'shift', 'unshift', 'slice', 'sort', 'splice', 'includes', 'indexOf', 'join', 'keys', 'entries', 'values', <span class="blueviolet"><u>'forEach',</u></span> 'filter', 'flat', 
+            'flatMap', 'map', 'every', 'some', 'reduce', 'reduceRight', 'toReversed', 'toSorted', 'toSpliced', 'with', 'toLocaleString', 'toString']
+    console.log(Object.getOwnPropertyNames(<span class="blueviolet">Set.prototype</span>));
+    (17) ['constructor', 'has', 'add', 'delete', 'difference', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'intersection', 'isSubsetOf', 'isSupersetOf', 
+            'isDisjointFrom', <span class="blueviolet"><u>'size',</u></span> 'symmetricDifference', 'union', 'values', 'keys']
+    console.log(Object.getOwnPropertyNames(<span class="blueviolet">Map.prototype</span>));
+    (11) ['constructor', 'get', 'set', 'has', 'delete', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'keys', <span class="blueviolet"><u>'size',</u></span> 'values']
+    console.log(Object.getOwnPropertyNames(<span class="blueviolet">HTMLCollection.prototype</span>));
+    (4) [<span class="blueviolet"><u>'length',</u></span> 'item', 'namedItem', 'constructor']
+    console.log(Object.getOwnPropertyNames(<span class="blueviolet">NodeList.prototype</span>));
+    (7) ['entries', 'keys', 'values', <span class="blueviolet"><u>'forEach',</u></span> <span class="blueviolet"><u>'length',</u></span> 'item', 'constructor']
         </pre>
       </div>
       <div>
+        <h6 class="fw-bold">• 먼저 Array객체의 메소드 중 forEach : arr.forEach(callbackFn)</h6>
+        <h6 style="text-indent: 12px;">값이 비어있으면 callbackFn(콜백함수)를 실행하지 않고 건너뛴다.</h6>
+        <h6 style="text-indent: 12px;">[,,2].forEach( (ele,index,arr) => console.log(ele) ) // 2 (한번만 출력됨)</h6>
+        <h6 style="text-indent: 12px;">1) undefined 값이 있으면 값이 있는것이다.</h6>
+        <h6 style="text-indent: 30px;">[undefined,undefined,2].forEach( (ele,index,arr) => console.log(ele) ) // undefined, undefined, 2</h6>
+        <h6 style="text-indent: 12px;">2) null 값이 있으면 값이 있는것이다.</h6>
+        <h6 style="text-indent: 30px;">[null,null,2].forEach( (ele,index,arr) => console.log(ele) ) // null, null, 2</h6>
+        <br>
+        <h6 class="fw-bold">• 유사배열 객체(array-like objects) : length 프로퍼티(속성이 있고)와 인덱스 된 요소(key값이 0,1,2,...형태)를 가지고 있는 객체</h6>        
+        <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 유사배열(Map, Set, NodeList 등)과 달리 객체리터럴(Object객체)이므로 forEach속성도 없다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 예시 { 3:"사과", 0:"바나나", 종류:"과일", length:5 }</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- 중요한 것은 length:5 부분이다. 배열로 변환하는 Array.from(arrayLike) 메소드에 대입하면</h6>
+        <h6 class="fw-bold" style="text-indent: 23px;">1) length 만큼 반복하여 key값을 찾는데 찾을 key값은 0,1,2,3... 순서다. length가 5이므로, 0,1,2,3,4를 찾게 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 23px;">2) 배열로 변환해보자 : Array.from( { 3:"사과", 0:"바나나", 종류:"과일", length:5 } )</h6>
+        <h6 class="fw-bold" style="text-indent: 23px;">3) 다음과 같은 배열이 반환된다 : ['바나나', undefined, undefined, '사과', undefined]</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 23px;">4) Set객체, Map객체, HTMLCollection, NodeList등이 배열로 변환될때도 위와 같이</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 43px;">length(size) 만큼 0,1,2 순서대로 배열에 담아서 반환한다고 이해하면 되겠다.</h6>
+        <br>
+        <h6 class="fw-bold">• Array.form(배열), Array.form(arrayLike)를 사용하면,</h6>
+        <h6 style="text-indent: 12px;">1) 배열로 변환하여 배열의 메소드를 유용하게 사용할 수 있다.</h6>
+        <h6 style="text-indent: 12px;">2) 배열에 빈값을 만들지 않으므로(비었으면 undefined로 채워줌) forEach 의 콜백함수를 건너뛰는 일이 없어진다. (결과 예상 가능)</h6>
+        <br>
+      </div>
+    </div>
+    <div id="java_Array_from" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">• mapFn(맵핑함수) 부분이 유용하다. 새로운 배열을 반환할 수 있다.</h6>
+        <h6 class="fw-bold">• Array.from(arrayLike) : 배열자체 반환 </h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn) : mapFn결과를 담아 반환</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn, thisArg) : mapFn결과를 담아 반환 </h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- arrayLike : 배열이든, 배열처럼 반복가능한 객체. 유사배열 객체</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- mapFn : 함수가 와야한다. 보통 화살표함수가온다.(함수이름도 가능은하다)</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">return 값이 있는 함수가 와야 한다는 뜻이다.</h6>
+        <pre class="fw-bold" style="margin-left:23px;">
+function 임시 () {return 3};
+let 변수 = Array.from([1,2,3], 임시)
+console.log(변수); // (3) [3, 3, 3] </pre>
+        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">mapFn : (ele, index, arr) => { ..코드.. }</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수를 요소반복마다 실행한다. 함수의 경우 ( ) 없이 이름을 넣어야함.</h6>
+        <h6 class="fw-bold" style="text-indent: 30px;">ele, index, arr 이름은 임의로 바꿔도 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 30px;">★구문에서 약속된 매개변수 순서, ele : 반복되어 셑팅된 현재요소, index : 순번값, arr : arrayLike</h6>
+        <pre class="fw-bold" style="margin-left:23px;margin-top:10px;">
+&#60;div id="예시">
+  &#60;span title="span1">첫번째span.innerHTML&#60;/span>
+  &#60;span title="span2">두번째span.innerHTML&#60;/span>
+  &#60;span title="span3">세번째span.innerHTML&#60;/span>  
+&#60;/div> </pre>
+        <div id="예시" class="d-none">
+          <span title="span1">첫번째span.innerHTML</span>
+          <span title="span2">두번째span.innerHTML</span>
+          <span title="span3">세번째span.innerHTML</span> 
+        </div>
+        <h6 class="fw-bold blueviolet">• 맵핑예시 : return값을 새로운 배열에 담아 반환. Array.from(arrayLike, mapFn), mapFn : (ele, index, arr) => { ..코드.. }</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">1) 한줄코드인 경우, { }생략할 수 있고, return값이 된다. 'title'만 따로 담은 배열을 반환 받는 코드, 화살표 함수 사용</h6>
+        <pre class="fw-bold" style="margin-left:23px;margin-top:10px;">
+  let 배열 = Array.from( document.querySelector('#예시').children, (e) => e.title );
+  console.log(배열); // (3) ['span1', 'span2', 'span3']</pre>
+        <h6 class="fw-bold" style="text-indent: 10px;">2) return 사용하여.'title'만 따로 담은 배열을 반환 받는 코드 (return은 { } 안에서 사용 가능), 화살표 함수 사용</h6>
+        <pre class="fw-bold" style="margin-left:23px;margin-top:10px;">
+  let 배열 = Array.from( document.querySelector('#예시').children, (e) => { return e.title } );
+  console.log(배열); // (3) ['span1', 'span2', 'span3']</pre>
+        <h6 class="fw-bold" style="text-indent: 10px;">3) 콜백함수에 익명함수 사용 예</h6>
+        <pre class="fw-bold" style="margin-left:23px;margin-top:10px;">
+  let 배열 = Array.from( document.querySelector('#예시').children, function (e) { return e.title} );
+  console.log(배열); // (3) ['span1', 'span2', 'span3']</pre>
+        <h6 class="fw-bold" style="text-indent: 10px;">4) 콜백함수에 함수선언문 사용 예 (구문에 따라 이름이 있든 없든 실행되는 것이다)</h6>
+        <pre class="fw-bold" style="margin-left:23px;margin-top:10px;">
+  let 배열 = Array.from( document.querySelector('#예시').children, function 아무이름 (e) { return e.title} );
+  console.log(배열); // (3) ['span1', 'span2', 'span3']</pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">4) mapFn(매핑함수) 예시 : Array.from(arrayLike, mapFn, thisArg)</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">※ 배열객체가 되어 배열 메소드를 모두 사용할수 있게 된다.</h6>
+        <h6 style="text-indent: 20px;">Array객체의 속성인 from은 함수이고 매개변수를 3개까지 가질수 있다.</h6>
+        <h6 style="text-indent: 20px;">a) 첫번째 매개변수(생략불가) : arrayLike</h6>
+        <h6 style="text-indent: 20px;">b) 두번째 매개변수(생략가능) : mapFn (함수 : 매개변수에 있으니 콜백함수)</h6>
+        <h6 style="text-indent: 20px;">c) thisArg(생략가능) : mapFn 실행 시에 this로 사용할 값.</h6>
+        <h6 style="text-indent: 20px;">d) Array.from([1,2,3]) ==> [1,2,3] 배열이 된다.
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">e) Array.from([1,2,3], (ele, index, arr) => ele*2) ==> [2,4,6] 배열이 된다.
+        <h6 style="text-indent: 38px;">- mapFn위치에 '(ele, index, arr) => ele*2'가 왔다.</h6>
+        <h6 style="text-indent: 38px;">- 가. 화살표함수이며 한줄코드이므로 { }가 생략되었다.</h6>
+        <h6 style="text-indent: 38px;">- 가.의 경우 결과값은 return 값이 된다.</h6>
+        <h6 style="text-indent: 38px;">- { ele*2 } 로 입력하면 [undefined, undefined, undefined] 배열이 된다.</h6>
+        <h6 style="text-indent: 38px;">- { return ele*2 } 로 입력하면 [2,4,6] 배열이 된다.</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">f) Array.form 의 매개변수로 오는 콜백함수는 3개의 매개변수를 가질수 있다.</h6>
+        <h6 style="text-indent: 38px;">- ele:순회중인 값, index:순회중인 index, arr:배열 자체</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">g) 매핑함수 mapFn 이 있는 경우 return 값을 담은 새로운 배열이 된다.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">ex) 사용예시 : 여러 코드 실행후 return 값 설정.</h6>
       </div>
     </div>
     <div id="js_구조분해맛보기" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">• 기본적인 객체 { }, 배열 [ ] 하나씩</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">let 객체 = { 성: '홍', 이름: '길동'};  let 배열 = ['홍', '길동'];</h6>
+        <h6 class="fw-bold">※ 예시에 사용할 변수 두개를 설정한다. : <span class="blueviolet">let 성 = '홍'; let 이름 = '길동';</span></h6>
+        <h6 class="fw-bold">1) Object객체의 <span class="blueviolet">key:value쌍 대신에 변수이름만 대입</span> 해보자.</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">let 객체 = { 성, 이름 };  </h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">console.log(객체); // {성: '홍', 이름: '길동'}</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 15px;">※ '변수명'은 key, '값'은 value와 같다. : 객체리터럴 내부의 구조에 맞게 풀어진다.</h6>
         <br>
-        <h6 class="fw-bold">• 변수를 지정하고 객체 안에 변수를, 배열 안에 변수를 넣어보자.</h6>
-        <pre class="fw-bold" style="margin-left: 5px;">
-  let 성 = '홍'; let 이름 = '길동';
-  let 객체 = { 성, 이름 };
-  console.log(객체); // {성: '홍', 이름: '길동'}
-  let 배열 = [ 성, 이름 ];
-  console.log(배열); // (2) ['홍', '길동']
-
-  // ★ '변수 = 값' 표현에서 변수는 key, 값은 value와 같다.
-  // 객첵리터럴{ }에 변수를 넣으면 key:value쌍의 값으로 들어가고.
-  // 배열 [ ]에 변수를 넣으면 value값으로 들어간다.        </pre>
-
-
-
+        <h6 class="fw-bold">2) <span class="blueviolet">Array객체 내부에 변수이름을 대입</span> 해보자.</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">let 배열 = [ 성, 이름 ];  </h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">console.log(배열); // (2) ['홍', '길동']</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 15px;">※ 변수에 대입된 값(value)이 들어간다 : 배열 내부의 구조에 맞게 value값</h6>
+        <br>
+        <h6 class="fw-bold">※ 반복문 : 1) for ( let 속성명 in 객체리터럴 ) { 코드 }; // 객체 { } 의 key 순회, </h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">객체리터럴 { }은 iterable(순회가능) 객체가 아니다.</h6>
+        <h6 class="fw-bold">※ 반복문 : 2) for ( let 값 of iterable객체) { 코드 }; </h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">iterable(순회가능) 객체의 값 순회</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 20px;">객체리터럴 { }을 for of 구문에 넣으면 에러메세지 : not iterable 이라는 메세지 </h6>
+        <h6 class="fw-bold">※ 반복문 : 3) for ( let i=0; i&#60;10; i++ ) { 코드 }; // 반복횟수 지정, 기타 반복문 </h6>
+        <br>
+        <h6 class="fw-bold">※ for ( let 값 of iterable객체) { 코드 } </h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">유사배열(arraylike)에 사용가능한 것을 확인하였음.</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">Map객체, Set객체, NodeList, HTMLCollection 등</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">1) Set객체 : let <span class="blueviolet">Set객체</span>=new Set([2,2,3,1,1]); [object Set] Set(3) {2, 3, 1}</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">2) Map객체 : let <span class="blueviolet">Map객체</span> = new Map([ ['a',1], ['a1',2], ['b',3] ]); </h6>
+        <h6 class="fw-bold" style="text-indent: 40px;">[object Map]   Map(3) {'a' => 1, 'a1' => 2, 'b' => 3}</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">3) HTMLCollection객체</h6>
+        <h6 class="fw-bold" style="text-indent: 40px;">let <span class="blueviolet">요소의children</span>=document.querySelector('#예시').children;</h6>
+        <h6 class="fw-bold" style="text-indent: 40px;">[object HTMLCollection]   HTMLCollection(3) [span, span, span]</h6>
+        <h6 class="fw-bold" style="text-indent: 20px;">4) NodeList객체 : let <span class="blueviolet">nodeList</span>=document.querySelectorAll('#예시 span'); </h6>
+        <h6 class="fw-bold" style="text-indent: 40px;">[object NodeList]   NodeList(3) [span, span, span]</h6>
       </div>
       <div>
         <h6 class="fw-bold">• for (let 변수 of iterable객체)에서, 변수 위치에 모든 자료가 가능하다. </h6>
@@ -3521,13 +3674,127 @@ console.log(속성명, ':', 객체2[속성명]);
         - [ ], [,두번째] 이렇게 값을 안넣으면 에러난다.
 
   3-2) 받는값이 모두 배열 [ ]일때는, 해당 위치에 값이 없으면 undefined
-        - [1] 하나가 담긴 배열인데 세번째값을 표현하면 undefined
-        </pre>
-      </div>
-      <div>
+        - [1] 하나가 담긴 배열인데 세번째값을 표현하면 undefined </pre>
+        <h6 class="fw-bold">--------------------------------------------------------------------------</h6>
+        <h6 class="fw-bold">• forEach와 달리, for - of 반복문은 빈 값을 받아도 코드가 실행된다.</h6>
+        <pre class="fw-bold" style="margin-left: 5px;">
+  let 배열=[,,3];
+  배열.forEach( (e) => { console.log(e)} ); // 3 한번만 출력됨
+
+  for (let i of 배열) {
+    console.log(i, ', i==null : ', i==null, ', i==undefined : ', i==undefined )
+  } // 세번 모두 출력됨
+  // 1) undefined ', i==null : ' true ', i==undefined : ' true
+  // 2) undefined ', i==null : ' true ', i==undefined : ' true
+  // 3) 3         <span style="margin-left:2px;"></span>      ', i==null : ' false ', i==undefined : ' false
+
+
+</pre>
       </div>
     </div>
-    
+    <div id="java_구조분해할당">
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당 (Destructuring Assignment)</h6>
+        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당은 배열이나 객체에서 필요한 값을 쉽게 추출하여 변수에 할당하는 문법입니다.</h6>
+        <br>
+        <h6 class="fw-bold">• 챗지피티 : 자바스크립트, 1) for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }, </h6>
+        <h6 class="fw-bold" style="text-indent: 12px;">2) for (const ( 기회숫자, 위치일치, 숫자일치 ) of 기회들) { ... }, 1)과 2)의 차이점은?</h6>
+        <img src="portal/images/문서연결_엑셀VBA/js_구조분해할당.png" alt="이미지없음">
+        <br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold" style="color:blueviolet">챗지피티 : 구조분해할당 </h5>
+        <h6 class="fw-bold">• 배열의 구조 분해 할당에서는 대괄호 [] 를 사용합니다.</h6>
+        <h6 class="fw-bold" style="color:blueviolet;text-indent: 12px;">배열은 원본객체의 순서와 같아야 할당되고, 할당하는 속성이름은 자유롭게 정하면 된다.</h6>
+        <code class="fw-bold" style="text-indent: 15px;">const numbers = [1, 2, 3]; // 구조 분해 할당  const [a, b, c] = numbers;</code>
+        <code class="fw-bold" style="text-indent: 15px;">console.log(a); // 1, console.log(b); // 2, console.log(c); // 3</code>
+        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">변수를 3개 설정한것과 같다. let a=1, let b=2, let c=3</h6>
+        <br>
+        <code class="fw-bold" style="text-indent: 15px;">const numbers = [10, 20, 30, 40, 50]; const [first, , third] = numbers;</code>
+        <code class="fw-bold" style="text-indent: 15px;">console.log(first); // 10, console.log(third); // 30</code>
+        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">원하는 위치를 가지고 올수 있음, 쉼표(,)로 건너뛸수 있음</h6>
+        <br>
+        <code class="fw-bold" style="text-indent: 15px;">const numbers = [1, 2, 3, 4, 5]; const [first, second, ...rest] = numbers;</code>
+        <code class="fw-bold" style="text-indent: 15px;">console.log(first); // 1, console.log(second); // 2, console.log(rest); // [3, 4, 5]</code>
+        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">나머지 요소 할당 rest연산자(...), ...변수명</h6>
+        <br>
+        <h6 class="fw-bold">• 객체(Object) 구조 분해 할당. 객체의 구조 분해 할당에서는 중괄호 { } 를 사용합니다.</h6>
+        <h6 class="fw-bold" style="color:blueviolet;text-indent: 12px;">객체는 원본객체의 속성이름과 할당하려는 속성이름이 같아야한다. 순서는 상관없다.</h6>
+        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
+          <h6 class="fw-bold" style="color:blueviolet">기본예제</h6>
+          <code class="fw-bold">const user = { name: "Alice", age: 25, city: "Seoul" };</code>
+          <code class="fw-bold">const { name, age, city } = user;</code>
+          <code class="fw-bold">console.log(name); // Alice</code>
+          <code class="fw-bold">console.log(age); // 25</code>
+          <code class="fw-bold">console.log(city); // Seoul</code>
+        </div>
+        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;margin-bottom:5px;">
+          <h6 class="fw-bold" style="color:blueviolet">변수 이름 변경 (별칭 설정) (속성명: 새 변수명)</h6>
+          <code class="fw-bold">const user = { name: "Bob", age: 30 };</code>
+          <code class="fw-bold">const { name: userName, age: userAge } = user;</code>
+          <code class="fw-bold">console.log(userName); // Bob</code>
+          <code class="fw-bold">console.log(userAge); // 30</code>
+          <br>
+        </div>
+        <br>
+        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;margin-bottom:5px;">
+          <h6 class="fw-bold" style="color:blueviolet">만약 객체에 해당 속성이 없을 경우, 기본값을 설정할 수 있음.</h6>
+          <code class="fw-bold">const user = { name: "Charlie" };</code>
+          <code class="fw-bold">const { name, age = 20 } = user;</code>
+          <code class="fw-bold">console.log(name); // Charlie</code>
+          <code class="fw-bold">console.log(age); // 20  (user 객체에 없어서 기본값 사용)</code>
+          <code class="fw-bold"></code>
+        </div>
+        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
+          <h6 class="fw-bold" style="color:blueviolet">중첩 객체 구조 분해, 객체 안에 객체가 있을 경우, </h6>
+          <h6 class="fw-bold" style="color:blueviolet">중첩 구조 분해를 사용할 수 있습니다.</h6>
+          <code class="fw-bold">const person = {name: "David",</code>
+          <code class="fw-bold">address: {city: "New York",zip: "10001"}};</code>
+          <code class="fw-bold">// 중첩 구조 분해 할당</code>
+          <code class="fw-bold">const { name, address: { city, zip } } = person;</code>
+          <code class="fw-bold">console.log(name); // David</code>
+          <code class="fw-bold">console.log(city); // New York</code>
+          <code class="fw-bold">console.log(zip); // 10001</code>
+          <code class="fw-bold">✅ address 자체는 할당되지 않음.</code>
+        </div>
+        <div style="display:inline-block">
+          <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
+            <h6 class="fw-bold" style="color:blueviolet">함수에서 구조 분해 할당 사용</h6>
+            <h6 class="fw-bold" style="color:blueviolet">함수의 매개변수에서도 구조 분해 할당을 사용할 수 있습니다.</h6>
+            
+            <code class="fw-bold">function printUser({ name, age }) {</code>
+            <code class="fw-bold">console.log(`이름: ${name}, 나이: ${age}`);}</code><br>
+            <code class="fw-bold">const user = { name: "Emma", age: 28 };</code>
+            <code class="fw-bold">printUser(user);</code>
+            <code class="fw-bold">✅ 함수 내부에서 user.name, user.age를 직접 접근하는 대신, 바로 구조 분해 가능.</code>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <div id="js_빽틱사용법" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <h6 class="fw-bold">• 빽틱을 사용하는 표을 '템플릿 리터럴'이라고 부른다.</h6>
+        <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 큰따옴표 작은따옴표와 달리 <span style="color:blueviolet">빽틱 안에는</span> '띄어쓰기, 줄바꿈' 등이 그대로  전달가능.</h6>
+        <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 빽틱 안에서 딸러기호와 변수를 사용할 수 있다.</h6>
+        <code class="fw-bold" style="text-indent: 10px;">let 이름 = '길동'; let 문자열 = `이름은 ${이름} 입니다.`</code>
+        <br>
+        <h6 class="fw-bold">• <span style="color:blueviolet">${ }안에는 변수, 삼항연산자가</span> 가능하다. </h6>
+        <pre class="fw-bold" style="margin-left:10px;">
+let 변수 = ( 1 > 0 ) ? '맞다' : '아니다';
+let 빽틱 = `가부판단 : ${변수}`;
+console.log(빽틱); // 가부판단 : 맞다
+빽틱=`딸라안에 직접 삼항연산자 : ${( 1 > 0 ) ? '맞다' : '아니다'}`
+console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
+        </pre>
+
+        
+
+      </div>
+      <div>
+
+      </div>
+    </div>
     <div id="js참고자료링크" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
@@ -3984,30 +4251,7 @@ console.log(속성명, ':', 객체2[속성명]);
       </div>
     </div>
 
-    <div id="js_빽틱사용법" class="대체2줄">
-      <h6 class="대체2줄세로1h6"></h6>
-      <div>
-        <h6 class="fw-bold">• 빽틱을 사용하는 표을 '템플릿 리터럴'이라고 부른다.</h6>
-        <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 큰따옴표 작은따옴표와 달리 <span style="color:blueviolet">빽틱 안에는</span> '띄어쓰기, 줄바꿈' 등이 그대로  전달가능.</h6>
-        <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 빽틱 안에서 딸러기호와 변수를 사용할 수 있다.</h6>
-        <code class="fw-bold" style="text-indent: 10px;">let 이름 = '길동'; let 문자열 = `이름은 ${이름} 입니다.`</code>
-        <br>
-        <h6 class="fw-bold">• <span style="color:blueviolet">${ }안에는 변수, 삼항연산자가</span> 가능하다. </h6>
-        <pre class="fw-bold" style="margin-left:10px;">
-let 변수 = ( 1 > 0 ) ? '맞다' : '아니다';
-let 빽틱 = `가부판단 : ${변수}`;
-console.log(빽틱); // 가부판단 : 맞다
-빽틱=`딸라안에 직접 삼항연산자 : ${( 1 > 0 ) ? '맞다' : '아니다'}`
-console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
-        </pre>
 
-        
-
-      </div>
-      <div>
-
-      </div>
-    </div>
     <div id="js_for_of반복문_배열">
       <div style="margin-left: 250px;">
         <h5 class="fw-bold">각 배열자체 또는 각 배열의 키를 반복하여 가져온다 : for 각배열 of 전체배열 { ... }</h5>
@@ -4265,217 +4509,6 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
     </div>
-
-    <div id="java_구조분해할당">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당 (Destructuring Assignment)</h6>
-        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당은 배열이나 객체에서 필요한 값을 쉽게 추출하여 변수에 할당하는 문법입니다.</h6>
-        <br>
-        <h6 class="fw-bold">• 챗지피티 : 자바스크립트, 1) for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }, </h6>
-        <h6 class="fw-bold" style="text-indent: 12px;">2) for (const ( 기회숫자, 위치일치, 숫자일치 ) of 기회들) { ... }, 1)과 2)의 차이점은?</h6>
-        <img src="portal/images/문서연결_엑셀VBA/js_구조분해할당.png" alt="이미지없음">
-        <br><br><br><br><br><br><br><br><br><br><br>
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h5 class="fw-bold" style="color:blueviolet">챗지피티 : 구조분해할당 </h5>
-        <h6 class="fw-bold">• 배열의 구조 분해 할당에서는 대괄호 [] 를 사용합니다.</h6>
-        <h6 class="fw-bold" style="color:blueviolet;text-indent: 12px;">배열은 원본객체의 순서와 같아야 할당되고, 할당하는 속성이름은 자유롭게 정하면 된다.</h6>
-        <code class="fw-bold" style="text-indent: 15px;">const numbers = [1, 2, 3]; // 구조 분해 할당  const [a, b, c] = numbers;</code>
-        <code class="fw-bold" style="text-indent: 15px;">console.log(a); // 1, console.log(b); // 2, console.log(c); // 3</code>
-        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">변수를 3개 설정한것과 같다. let a=1, let b=2, let c=3</h6>
-        <br>
-        <code class="fw-bold" style="text-indent: 15px;">const numbers = [10, 20, 30, 40, 50]; const [first, , third] = numbers;</code>
-        <code class="fw-bold" style="text-indent: 15px;">console.log(first); // 10, console.log(third); // 30</code>
-        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">원하는 위치를 가지고 올수 있음, 쉼표(,)로 건너뛸수 있음</h6>
-        <br>
-        <code class="fw-bold" style="text-indent: 15px;">const numbers = [1, 2, 3, 4, 5]; const [first, second, ...rest] = numbers;</code>
-        <code class="fw-bold" style="text-indent: 15px;">console.log(first); // 1, console.log(second); // 2, console.log(rest); // [3, 4, 5]</code>
-        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet">나머지 요소 할당 rest연산자(...), ...변수명</h6>
-        <br>
-        <h6 class="fw-bold">• 객체(Object) 구조 분해 할당. 객체의 구조 분해 할당에서는 중괄호 { } 를 사용합니다.</h6>
-        <h6 class="fw-bold" style="color:blueviolet;text-indent: 12px;">객체는 원본객체의 속성이름과 할당하려는 속성이름이 같아야한다. 순서는 상관없다.</h6>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
-          <h6 class="fw-bold" style="color:blueviolet">기본예제</h6>
-          <code class="fw-bold">const user = { name: "Alice", age: 25, city: "Seoul" };</code>
-          <code class="fw-bold">const { name, age, city } = user;</code>
-          <code class="fw-bold">console.log(name); // Alice</code>
-          <code class="fw-bold">console.log(age); // 25</code>
-          <code class="fw-bold">console.log(city); // Seoul</code>
-        </div>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;margin-bottom:5px;">
-          <h6 class="fw-bold" style="color:blueviolet">변수 이름 변경 (별칭 설정) (속성명: 새 변수명)</h6>
-          <code class="fw-bold">const user = { name: "Bob", age: 30 };</code>
-          <code class="fw-bold">const { name: userName, age: userAge } = user;</code>
-          <code class="fw-bold">console.log(userName); // Bob</code>
-          <code class="fw-bold">console.log(userAge); // 30</code>
-          <br>
-        </div>
-        <br>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;margin-bottom:5px;">
-          <h6 class="fw-bold" style="color:blueviolet">만약 객체에 해당 속성이 없을 경우, 기본값을 설정할 수 있음.</h6>
-          <code class="fw-bold">const user = { name: "Charlie" };</code>
-          <code class="fw-bold">const { name, age = 20 } = user;</code>
-          <code class="fw-bold">console.log(name); // Charlie</code>
-          <code class="fw-bold">console.log(age); // 20  (user 객체에 없어서 기본값 사용)</code>
-          <code class="fw-bold"></code>
-        </div>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
-          <h6 class="fw-bold" style="color:blueviolet">중첩 객체 구조 분해, 객체 안에 객체가 있을 경우, </h6>
-          <h6 class="fw-bold" style="color:blueviolet">중첩 구조 분해를 사용할 수 있습니다.</h6>
-          <code class="fw-bold">const person = {name: "David",</code>
-          <code class="fw-bold">address: {city: "New York",zip: "10001"}};</code>
-          <code class="fw-bold">// 중첩 구조 분해 할당</code>
-          <code class="fw-bold">const { name, address: { city, zip } } = person;</code>
-          <code class="fw-bold">console.log(name); // David</code>
-          <code class="fw-bold">console.log(city); // New York</code>
-          <code class="fw-bold">console.log(zip); // 10001</code>
-          <code class="fw-bold">✅ address 자체는 할당되지 않음.</code>
-        </div>
-        <div style="display:inline-block">
-          <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
-            <h6 class="fw-bold" style="color:blueviolet">함수에서 구조 분해 할당 사용</h6>
-            <h6 class="fw-bold" style="color:blueviolet">함수의 매개변수에서도 구조 분해 할당을 사용할 수 있습니다.</h6>
-            
-            <code class="fw-bold">function printUser({ name, age }) {</code>
-            <code class="fw-bold">console.log(`이름: ${name}, 나이: ${age}`);}</code><br>
-            <code class="fw-bold">const user = { name: "Emma", age: 28 };</code>
-            <code class="fw-bold">printUser(user);</code>
-            <code class="fw-bold">✅ 함수 내부에서 user.name, user.age를 직접 접근하는 대신, 바로 구조 분해 가능.</code>
-          </div>
-        </div>
-      </div>
-    </div>  
-    <div id="java_Array_from" class="대체2줄">
-      <h6 class="대체2줄세로1h6"></h6>
-      <div>
-        <h6 class="fw-bold">• Array.from(arrayLike) : 배열자체 반환 </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn) : mapFn결과를 담아 반환</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">Array.from(arrayLike, mapFn, thisArg) : mapFn결과를 담아 반환 </h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- arrayLike : 배열이든, 배열처럼 반복가능한 객체.</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 10px;">- mapFn : 함수가 와야한다. 보통 화살표함수가온다.(함수이름도 가능은하다)</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">return 값이 있는 함수가 와야 한다는 뜻이다.</h6>
-        <pre class="fw-bold" style="margin-left:23px;">
-function 임시 () {return 3};
-let 변수 = Array.from([1,2,3], 임시)
-console.log(변수); // (3) [3, 3, 3] </pre>
-        <h6 class="fw-bold blueviolet" style="text-indent: 20px;">mapFn : (ele, index, arr) => { ..코드.. }</h6>
-        <h6 class="fw-bold" style="text-indent: 20px;">mapFn 함수를 요소반복마다 실행한다. 함수의 경우 ( ) 없이 이름을 넣어야함.</h6>
-        <h6 class="fw-bold" style="text-indent: 30px;">ele, index, arr 이름은 임의로 바꿔도 된다.</h6>
-        <h6 class="fw-bold" style="text-indent: 30px;">ele : 반복되어 셑팅된 현재요소, index : 순번값, arr : arrayLike</h6>
-        <br>
-        <h6 class="fw-bold" style="color:blueviolet;">★length만큼 반복한다, 인덱스된key를 검색하여 값을 가져온다, 값이 없으면 forEach는 건너뛴다. 검토하기</h6>
-        <h6 style="text-indent: 15px;">1. 배열이 아니거나, length가 없는 경우나, 유사배열객체가 아닌 경우 빈 배열 반환.</h6>
-        <h6 class="fw-bold" style="text-indent: 30px;color:blueviolet;">- let 배열=Array.from( { m:'m', 2:'a',1:'b',2:'c'} );  console.log(배열); // [ ]</h6>
-        <h6 style="text-indent: 15px;">2. ★ length가 있고, key가 문자열 key가 숫자 섞여 있는 경우</h6>
-        <h6 class="fw-bold" style="text-indent: 30px;color:blueviolet;">- let 배열=Array.from( { m:'m', 2:'a',1:'b',2:'c',length:5} );  </h6>
-        <h6 class="fw-bold" style="text-indent: 40px;color:blueviolet;">console.log(배열); // (5) [undefined, 'b', 'c', undefined, undefined]</h6>
-        <h6 class="fw-bold" style="text-indent: 40px;">a) length만큼 반복하는데 key값이 0,1,2...가 있는지 순서대로 검색한다.</h6>
-        <h6 class="fw-bold" style="text-indent: 40px;">b) key값이 없으면(0, 3, 4 가 없다) 값을 undefined로 설정한다.(null이 아니다, 값이 있는게 된다)</h6>
-        <h6 class="fw-bold" style="text-indent: 40px;">c) key값 2는 두개가 있는데 어느것이 마지막인지는 모른다, 다만 마지막꺼로 대체된다.(순서 미보장 맞는지 모르겠음)</h6>
-        <br>
-        <h6 class="fw-bold">• forEach에서 value가 없으면 건너뛰는 것과, Array.form에서 값이 없으면 undefined를 넣어주는 것 예시</h6>
-        <h6 style="text-indent: 15px;">let 배열= [,,,3,4];</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;color:blueviolet;">1) 배열.forEach( (ele,index,arr) => {console.log(ele)}); // 3,4출력 (값 있는것만 코드 실행)</h6>
-        <h6 class="fw-bold" style="text-indent: 35px;">console.log(배열); //(5) [empty × 3, 3, 4]</h6>  
-        <h6 class="fw-bold" style="text-indent: 15px;">2) Array.from은 값이 없으면 undefined를 넣어준다.</h6>
-        <h6 class="fw-bold" style="text-indent: 35px;color:blueviolet;">let array_from=Array.from(배열);</h6> 
-        <h6 class="fw-bold" style="text-indent: 35px;color:blueviolet;">console.log(array_from); //(5) [undefined, undefined, undefined, 3, 4]</h6>  
-        <h6 class="fw-bold" style="text-indent: 35px;color:blueviolet;">array_from.forEach( (ele,index,arr) => {console.log(ele)}); // undefined, undefined, undefined, 3, 4 출력</h6>         
-        <br>
-        <h6 class="fw-bold">• 따라서 4회 반복만을 위해서는 값이 있는 배열을 넣어야하므로</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">1) Array.from(Array(4)).forEach를 사용하거나</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">2) Array(4).fill().forEach를 사용한다. fill()은 에서 인수로 채우거나 인수가 없으면 0으로 채워준다.</h6>
-      </div>
-      <div>
-
-      </div>
-    </div>
-    <div id="java_유사배열객체" class="대체2줄">
-      <h6 class="대체2줄세로1h6"></h6>
-      <div>
-        <h6 class="fw-bold">※ arraylike : 1) 배열 [ ], 2) Set객체, 3) Map객체, 4) 유사배열객체, 5) NodeList 등</h6>
-        <h6 class="blueviolet fw-bold">※ 기본적으로 forEach 메소드는 가지고 있어서 사용가능</h6>
-        <h6 class="blueviolet fw-bold">※ 'length' 또는 'size' 속성이 있어 개수를 알 수 있다.</h6>
-        <h6 class="fw-bold">※ Array.form(arraylike) 메소드로 배열로 변환하면 Array 메소드를 사용할 수 있다.</h6>
-        <h6 class="fw-bold">※ Array.form(arraylike) </h6>
-        <h6 class="fw-bold">• 상속받는 prototype 확인 : Object.prototype.toString.call(자료)</h6>
-        <pre class="fw-bold">
-    let <span class="blueviolet">배열</span>=[1,2,3];
-    console.log('배열 : ',Object.prototype.toString.call(배열), ' ',배열);
-    let <span class="blueviolet">Set객체</span>=new Set([2,2,3,1,1]);
-    console.log('Set객체 : ',Object.prototype.toString.call(Set객체), ' ',Set객체);
-    let <span class="blueviolet">Map객체</span> = new Map([ // 2차원 key, value 형태의 배열
-        ['a',1],
-        ['a1',2],
-        ['b',3]
-    ])
-    console.log('Map객체 : ',Object.prototype.toString.call(Map객체), ' ',Map객체);
-    let <span class="blueviolet">요소의children</span>=document.querySelector('#arrayLike예시').children;
-    console.log('요소의children : ',Object.prototype.toString.call(요소의children), ' ',요소의children);
-    let <span class="blueviolet">nodeList</span>=document.querySelectorAll('#arrayLike예시 span');
-    console.log('nodeList : ',Object.prototype.toString.call(nodeList), ' ',nodeList);
-
-    -- console.log 결과 모음 --
-    배열 :  [object Array]   (3) [1, 2, 3]
-    Set객체 :  [object Set]   Set(3) {2, 3, 1}
-    Map객체 :  [object Map]   Map(3) {'a' => 1, 'a1' => 2, 'b' => 3}
-    요소의children :  [object HTMLCollection]   HTMLCollection(3) [span, span, span]
-    nodeList :  [object NodeList]   NodeList(3) [span, span, span]
-    -- console.log 결과 모음 끝--
-
-    console.log(Object.getOwnPropertyNames(Array.prototype));
-    (40) [<span class="blueviolet"><u>'length',</u></span> 'constructor', 'at', 'concat', 'copyWithin', 'fill', 'find', 'findIndex', 'findLast', 'findLastIndex', 'lastIndexOf', 'pop', 'push', 
-            'reverse', 'shift', 'unshift', 'slice', 'sort', 'splice', 'includes', 'indexOf', 'join', 'keys', 'entries', 'values', <span class="blueviolet"><u>'forEach',</u></span> 'filter', 'flat', 
-            'flatMap', 'map', 'every', 'some', 'reduce', 'reduceRight', 'toReversed', 'toSorted', 'toSpliced', 'with', 'toLocaleString', 'toString']
-    console.log(Object.getOwnPropertyNames(Set.prototype));
-    (17) ['constructor', 'has', 'add', 'delete', 'difference', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'intersection', 'isSubsetOf', 'isSupersetOf', 
-            'isDisjointFrom', <span class="blueviolet"><u>'size',</u></span> 'symmetricDifference', 'union', 'values', 'keys']
-    console.log(Object.getOwnPropertyNames(Map.prototype));
-    (11) ['constructor', 'get', 'set', 'has', 'delete', 'clear', 'entries', <span class="blueviolet"><u>'forEach',</u></span> 'keys', <span class="blueviolet"><u>'size',</u></span> 'values']
-    console.log(Object.getOwnPropertyNames(HTMLCollection.prototype));
-    (4) [<span class="blueviolet"><u>'length',</u></span> 'item', 'namedItem', 'constructor']
-    console.log(Object.getOwnPropertyNames(NodeList.prototype));
-    (7) ['entries', 'keys', 'values', <span class="blueviolet"><u>'forEach',</u></span> <span class="blueviolet"><u>'length',</u></span> 'item', 'constructor']
-        </pre>
-        <h6 class="fw-bold">1) let 배열 = [1,2,3];</h6>
-        <h6 class="fw-bold"><a href="https://inpa.tistory.com/entry/JS-📚-자료형-Map-🚩-정리">Map객체</a></h6>
-        <div id="arrayLike예시" class="d-none"><span>span1</span><span>span2</span><span>span3</span></div>
-
-
-        
-      </div>
-      <div>
-        <h6 class="fw-bold">• 먼저 Array객체의 속성중 forEach는 배열의 값을 반복하여 가져와서 코드를 실행하는데... </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">arr.forEach(callbackFn), arr.forEach( (ele, index, arr) => { ..코드.. } ), arr.forEach(callbackFn, thisArg)</h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">callbackFn : (ele, index, arr) => { ..코드.. } 배열은 그대로 두고, 반복요소마다 정의된 코드를 돌린다는 의미.</h6>
-        <h6 style="text-indent: 10px;">1) ['a','b',c'] : 기본객체와 비교하면, a,b,c는 value이고 key는 순서대로 0,1,2인 구조다. length:3 이 자동 계산됨.</h6>
-        <h6 style="text-indent: 30px;">- Array 생성자 prototype의 length속성에 인스턴스의 자료개수를 저장하는 동작이 있다</h6>
-        <h6 style="text-indent: 30px;">- 확인할 key값은 0부터 1,2,...로 약속됨</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 30px;">- 이해를 돕기위한 표현 : ['a','b',c'] ==>(왼쪽 배열의 정보를 객체리터럴로 표현해 보면) {0:'a', 1:'b', 2:'c', length:3}</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 30px;">- ★유사배열 객체라 할때 {0:'a', 1:'b', 2:'c', length:3} 이러한 형식이라 생각하고 이러한 형식을 배열로 변환해 준다고 생각하자</h6>
-        <h6 style="text-indent: 10px;">2) 가져올 값이 없거나(empty), <span class="blueviolet">'현재 순번과 일치하는 key'가 없으면(유사배열 객체)</span>  건너뛰어서 코드를 실행하지 않는다.</h6>
-        <h6 style="text-indent: 30px;">- [,,2].forEach( (ele,index,arr) => {console.log(index, ':', ele)}); // 2 ':' 2, 첫번째와 두번째를 건너뛴 것이다</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 30px;">- ★ length가 3인데, 3번을 반복하는데, key값이 0,1,2 인 값을 가져온다는 의미이다.</h6>
-        <h6 class="대체2줄세로1h6"></h6>
-        <br>
-        <h6 class="fw-bold">• 배열은 배열 기호 [ ]안에 value값만 넣어둔 것이고 key값은 0, 1, 2...인 것이다 라고 이해하자. </h6>
-        <h6 class="fw-bold" style="text-indent: 10px;">- 반복할때, length는 예를들어 2라면 key값이 두개 즉 0,1인 것을 찾는다고 이해하자.</h6>
-        <br>
-        <h6 class="fw-bold">• 유사배열 객체(array-like objects) : length 프로퍼티(속성이 있고)와 인덱스 된 요소(key값이 0,1,2,...형태)를 가지고 있는 객체</h6>
-        <h6 style="text-indent: 13px;">JS에서 querySelectorAll이나 document.body.children으로 엘리먼트를 가져오면 유사 배열 객체에 담겨서 온다.</h6>
-        <h6 style="text-indent: 13px;">리터럴 객체의 프로퍼티(key와 값의 쌍)가 하나(length:길이) 추가된 형태</h6>
-        <h6 style="text-indent: 13px;">length 값 만큼 프로퍼티를 배열에 담아온다. length:값 프로퍼티는 담을 배열에 포함되지 않는다.</h6>
-        <img src="portal/images/문서연결_엑셀VBA/js_유사배열객체.png" alt="이미지없음" style="margin-left:20px;"><br>
-        <h6 style="text-indent: 13px;">배열처럼 보이지만 사실 풀어보면 아래와 같이 된다. (객체릴터럴 객체)</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 13px;">{ 0:span, 1:span, 2:span, 3:span, 4:span, 5:span, length:6 }</h6>
-        <h6 class="fw-bold blueviolet" style="text-indent: 13px;">이대로는 배열의 메서드를 사용할 수 없다. forEach, map, filter, reduce 등</h6>
-        <h6 class="fw-bold" style="text-indent: 13px;">이런 경우, Array.from을 이용하여, 배열이거나 유사배열형식을 배열로 변환하여 배열의 메서드를 사용할 수 있다.</h6>
-        <div class="d-none" id="html컬렉션예시"><span>span1</span><span>span1</span><span>span1</span></div>
-      </div>
-
-    </div>
-    
-
     <div id="java_fetch">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h6 class="fw-bold"><a href="https://vincentb.tistory.com/entry/자바스크립트-Fetch-API-입문-코드-예제로-배우는-기초부터-실전까지" target="_blank">•Fetch API란?,</a></h6>

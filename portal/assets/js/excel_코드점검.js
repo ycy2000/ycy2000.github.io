@@ -1,31 +1,14 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='java_유사배열객체' //원래는 h6의 title이다.
+  전체변수h6title ='js_구조분해맛보기' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 
 
 function 연습() {
-  let 배열=[1,2,3];
-  console.log('배열 : ',Object.prototype.toString.call(배열), ' ',배열);
-  let Set객체=new Set([2,2,3,1,1]);
-  console.log('Set객체 : ',Object.prototype.toString.call(Set객체), ' ',Set객체);
-  let Map객체 = new Map([ // 2차원 key, value 형태의 배열
-      ['a',1],
-      ['a1',2],
-      ['b',3]
-  ])
-  console.log('Map객체 : ',Object.prototype.toString.call(Map객체), ' ',Map객체);
-  let 요소의children=document.querySelector('#arrayLike예시').children;
-  console.log('요소의children : ',Object.prototype.toString.call(요소의children), ' ',요소의children);
-  let nodeList=document.querySelectorAll('#arrayLike예시 span');
-  console.log('nodeList : ',Object.prototype.toString.call(nodeList), ' ',nodeList);
-
-  console.log(Object.getOwnPropertyNames(Array.prototype));
-  console.log(Object.getOwnPropertyNames(Set.prototype));
-  console.log(Object.getOwnPropertyNames(Map.prototype));
-  console.log(Object.getOwnPropertyNames(HTMLCollection.prototype));
-  console.log(Object.getOwnPropertyNames(NodeList.prototype));
+  let 배열=[,,3];
+  배열.forEach( (e) => { console.log(e)} );
+  for (let i of 배열) {console.log(i, ', i==null : ', i==null, ', i==undefined : ', i==undefined )}
 
 }
 function 전체대체에셑팅() {
