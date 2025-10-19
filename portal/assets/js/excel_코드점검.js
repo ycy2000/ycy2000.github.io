@@ -1,15 +1,20 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_구조분해맛보기' //원래는 h6의 title이다.
+  전체변수h6title ='java_구조분해할당' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 
 
 function 연습() {
-  let 배열=[,,3];
-  배열.forEach( (e) => { console.log(e)} );
-  for (let i of 배열) {console.log(i, ', i==null : ', i==null, ', i==undefined : ', i==undefined )}
-
+  let 기회들 = [ { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 2 }, 
+                 { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 } 
+              ];
+  for (let value of 기회들) {
+    console.log(value);
+    console.log('기회숫자 : ', value.기회숫자 );
+    console.log('숫자일치 : ', value.숫자일치 );
+    console.log('위치일치 : ', value.위치일치 );
+  }
 }
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작

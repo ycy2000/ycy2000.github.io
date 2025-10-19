@@ -279,7 +279,7 @@
         <h6 class="fw-bold" title='java_유사배열객체'>※ arraylike : 유사배열과(Set객체, Map객체, NodeList등) 유사배열 객체</h6>
         <h6 class="fw-bold" title='java_Array_from'>※ (위※과같이) Array.from(arrayLike) : arrayLike를 배열로 변환한다.</h6>
         <h6 class="blueviolet fw-bold" title="js_구조분해맛보기">반복문에서 구조분해 맛보기, 변수명을 속성이름(key), 변수에 대입된 값을 값(value)</h6>
-        <h6 class="fw-bold" title='java_구조분해할당'>구조분해할당 : for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }</h6>
+        <h6 class="fw-bold" title='java_구조분해할당'>구조분해할당, 야구 조합추출 코드에 활용된 구조분해</h6>
         <h6 class="fw-bold" title="js_빽틱사용법">• 빽틱(``)사용법, 딸라표기법 `${변수}`, 삼항연산자, ||(OR), &&(AND), ? 물음표 </h6>  
         <h6 class="fw-bold" title='js_set객체' style="color:blueviolet">• 배열의 중복제거시 Set 활용 : 중복제거=new Set(중복있는배열);. Set의 반복문</h6>
 
@@ -3676,7 +3676,7 @@ console.log(변수); // (3) [3, 3, 3] </pre>
   3-2) 받는값이 모두 배열 [ ]일때는, 해당 위치에 값이 없으면 undefined
         - [1] 하나가 담긴 배열인데 세번째값을 표현하면 undefined </pre>
         <h6 class="fw-bold">--------------------------------------------------------------------------</h6>
-        <h6 class="fw-bold">• forEach와 달리, for - of 반복문은 빈 값을 받아도 코드가 실행된다.</h6>
+        <h6 class="blueviolet fw-bold">• forEach와 달리, for - of 반복문은 빈 값을 받아도 코드가 실행된다.</h6>
         <pre class="fw-bold" style="margin-left: 5px;">
   let 배열=[,,3];
   배열.forEach( (e) => { console.log(e)} ); // 3 한번만 출력됨
@@ -3692,17 +3692,147 @@ console.log(변수); // (3) [3, 3, 3] </pre>
 </pre>
       </div>
     </div>
-    <div id="java_구조분해할당">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당 (Destructuring Assignment)</h6>
-        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당은 배열이나 객체에서 필요한 값을 쉽게 추출하여 변수에 할당하는 문법입니다.</h6>
-        <br>
-        <h6 class="fw-bold">• 챗지피티 : 자바스크립트, 1) for (const { 기회숫자, 위치일치, 숫자일치 } of 기회들) { ... }, </h6>
-        <h6 class="fw-bold" style="text-indent: 12px;">2) for (const ( 기회숫자, 위치일치, 숫자일치 ) of 기회들) { ... }, 1)과 2)의 차이점은?</h6>
-        <img src="portal/images/문서연결_엑셀VBA/js_구조분해할당.png" alt="이미지없음">
-        <br><br><br><br><br><br><br><br><br><br><br>
+    <div id="java_구조분해할당" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <div style="border-bottom:1px solid rgb(201, 188, 188)"></div>
+        <div style="position:absolute;left:482px; height:850px;border-right:1px solid rgb(201, 188, 188)"></div>         
+        <div>
+          <div style="display:inline-block;vertical-align: top;width:467px;">
+            <pre class="fw-bold">
+<span class="blueviolet">정답은 [2,3,4,5] 이다.</span> 
+<span class="blueviolet">숫자일치는 위치가 불일치한 숫자</span> 
+<span class="blueviolet">위치일치는 위치가 일치하는 숫자</span> 
+기회1 ~ 10까지 최대 10개 있을수 있고, 예시로 3개가 있다고 한다면
+기회1 : { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0 }
+기회2 : { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 }
+기회3 : { 기회숫자 : [8,9,4,5], 숫자일치 : 0, 위치일치 : 2 }
+
+3가지가 변수 '기회들'에 담긴다.
+
+let 기회들 = [ { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0 }, 
+                    { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 },
+                    { 기회숫자 : [8,9,4,5], 숫자일치 : 0, 위치일치 : 2 } 
+                  ]            </pre>
+            <h6 class="fw-bold">1) for (let value of 기회들) { 코드 } 구문 예시</h6>
+            <pre class="fw-bold" style="margin-left:10px;">
+  for (let value of 기회들) {
+    console.log(value);
+    console.log('기회숫자 : ', value.기회숫자 );
+    console.log('숫자일치 : ', value.숫자일치 );
+    console.log('위치일치 : ', value.위치일치 );
+  }
+  --------- 출력 예시 ---------
+  {기회숫자: Array(4), 숫자일치: 2, 위치일치: 2}
+  기회숫자 :  (4) [0, 1, 2, 3]
+  숫자일치 :  2
+  위치일치 :  0
+  {기회숫자: Array(4), 숫자일치: 0, 위치일치: 0}
+  기회숫자 :  (4) [6, 7, 8, 9]
+  숫자일치 :  0
+  위치일치 :  0
+  {기회숫자: Array(4), 숫자일치: 0, 위치일치: 0}
+  기회숫자 :  (4) [8, 9, 4, 5]
+  숫자일치 :  0
+  위치일치 :  2            </pre>
+            <h6 class="fw-bold">2) for (let { 기회숫자, 숫자일치, 위치일치 } of 기회들) { 코드 }</h6>
+            <h6 class="fw-bold" style="margin-left:20px;"> '기회숫자, 숫자일치, 위치일치'를 변수로 사용함</h6>
+            <h6 class="fw-bold" style="margin-left:20px;"> 구조분해 사용함. 오른쪽 코드 참고</h6>
+          </div>
+          <div style="display:inline-block;vertical-align: top;width:467px;">
+            <h6 class="fw-bold">※ 모든조합.length : 5040가지인데, 순서대로 3가지만 예시</h6>
+            <h6 class="fw-bold" style="margin-left:20px;">[4, 5, 6, 7], [2, 3, 4, 5], [0, 1, 2, 3]</h6>
+            <pre class="fw-bold" style="margin-left:10px;">
+• 정답이 있으면 기회i의 숫자일치, 위치일치 코드로 기록함.
+  정답이 없으면 기회i의 숫자일치, 위치일치 수동으로기록함.
+※ 3가지 기회 정보에 따라
+1) [4,5,6,7]은 
+
+
+
+
+
+
+
+
+
+• 모든조합의 각각의 '조합'에 대해서 기회들의 '기회숫자'들을 비교한다.
+• 모든조합의 각 조합을 정답과 비교한 결과 (숫자일치, 위치일치)
+  기회1, 기회2, 기회3 의 '기회숫자'와 비교결과 (숫자일치, 위치일치)
+  '숫자일치수', '위치일치수' 는 1)의 비교결과이다.
+   <span class="blueviolet">'숫자일치수!=숫자일치' 또는, '위치일치수!=위치일치'이면 유효=false</span>
+   <span class="blueviolet">모든기회(기회1, 기회2, 기회3,..) 다 일치하면 유효=true</span>
+1) 모든조합 중, [4,5,6,7] 검토
+   a) 기회1 : { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0 }
+              <span style="margin-left:0px"></span>모든조합의 1st [4,5,6,7]
+       위치일치수 = 0, 숫자일치수 = 0 (탈락)
+   b) 기회2 : { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 }
+              <span style="margin-left:0px"></span>모든조합의 1st [4,5,6,7]
+       위치일치수 = 0, 숫자일치수 = 0 (탈락)
+
+
+
+
+            </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>            
+          </div>
+        </div>
       </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      <div title="전에중 우측">
+        <h6 class="fw-bold">야구코드 1) 변수 '기회들'은 배열이고, 값으로 a) 객체리터럴(기회숫자), b) 숫자(숫자일치), c) 숫자(위치일치)를 담는다. </h6>
+        <pre class="fw-bold" style="margin-left:20px;">
+function 계산() {
+랜덤번호맞추기모드확인( )
+결과=[ ];
+//1.기회정보 정의 : {기회번호, 숫자일치, 위치일치}, parseInt(), 값이 없거나 문자열로 시작되면 NaN
+<span class="blueviolet">var 기회들=[ ], 기회숫자=[ ], 숫자일치, 위치일치;</span>
+for (var i=0; i &#60;document.querySelectorAll('.기회').length; i++) {
+  var 기회=document.querySelectorAll(`#기회${i} *`);
+  if (기회[0].innerHTML=='' || 기회[1].innerHTML=='' || 기회[2].innerHTML=='' || 기회[3].innerHTML=='') {continue;} else {}
+  for (var m=0; m &#60;기회.length; m++) {
+    <span class="blueviolet">기회숫자</span>=[parseInt(기회[0].innerHTML, 10),parseInt(기회[1].innerHTML, 10),
+                    parseInt(기회[2].innerHTML, 10),parseInt(기회[3].innerHTML, 10)]  
+    <span class="blueviolet">숫자일치</span>=parseInt(기회[4].innerHTML ? 기회[4].innerHTML : 0); //''이거나 0 이면 0,
+    <span class="blueviolet">위치일치</span>=parseInt(기회[5].innerHTML ? 기회[5].innerHTML : 0); //''이거나 0 이면 0,
+  }
+  <span class="blueviolet">기회들.push({기회숫자,숫자일치,위치일치})</span> 
+}          </pre>
+        <h6 style="margin-top:-15px;">---------- 위 코드는, 배열 '기회들'안에 값을 담는 작업 ------------------- </h6>
+        <h6 class="fw-bold">야구코드 2) for { 기회숫자, 숫자일치,, 위치일치 } of 기회들 { 코드 }; // 값 대신에 구조 { 기회숫자, 숫자일치,, 위치일치 }를 가져옴</h6>
+        <pre class="fw-bold" style="margin-left:20px;">
+  모든조합.forEach(조합 => {
+    let 유효 = true;
+    for (const { 기회숫자, 숫자일치, 위치일치 } of 기회들) {
+      let 위치일치수 = 0;
+      let 숫자일치수 = 0;
+      // 위치와 값이 모두 일치하는 개수
+      for (let i = 0; i < 4; i++) {if (조합[i] == 기회숫자[i]) {위치일치수++;}}
+      // 숫자만 일치하는 개수  
+      const 조합복사 = [...조합];     //-1값 넣어 변경되니까 복사본 사용
+      const 기회복사 = [...기회숫자]; //-1값 넣어 변경되니까 복사본 사용
+      for (let i = 0; i < 4; i++) {if (조합[i] == 기회숫자[i]) {조합복사[i] = -1; /*일치한 위치는 제외*/기회복사[i] = -1;}}    
+      숫자일치수 = 조합복사.filter(num => num !== -1 && 기회복사.includes(num)).length;
+      // 조건 불일치 시 필터링
+      if (위치일치수 != 위치일치 || 숫자일치수 != 숫자일치) {유효 = false;break;} //break는 for 문 나오는것
+    }
+    if (유효) 결과.push(조합);
+  })
+}          </pre>
+        <h6 style="margin-top:-15px;">---------- 위 코드는, for ~ of 구문에서 값이 아닌 구조를 가지고 오는 코드 ------------------- </h6>
+        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당 (Destructuring Assignment), <span style="color:black">'반복문에서 구조분해 맛보기' 참고</span> </h6>
+        <h6 class="fw-bold" style="color:blueviolet">구조 분해 할당은 배열이나 객체에서 필요한 값을 쉽게 추출하여 변수에 할당하는 문법입니다.</h6>
         <h5 class="fw-bold" style="color:blueviolet">챗지피티 : 구조분해할당 </h5>
         <h6 class="fw-bold">• 배열의 구조 분해 할당에서는 대괄호 [] 를 사용합니다.</h6>
         <h6 class="fw-bold" style="color:blueviolet;text-indent: 12px;">배열은 원본객체의 순서와 같아야 할당되고, 할당하는 속성이름은 자유롭게 정하면 된다.</h6>
@@ -3720,45 +3850,24 @@ console.log(변수); // (3) [3, 3, 3] </pre>
         <br>
         <h6 class="fw-bold">• 객체(Object) 구조 분해 할당. 객체의 구조 분해 할당에서는 중괄호 { } 를 사용합니다.</h6>
         <h6 class="fw-bold" style="color:blueviolet;text-indent: 12px;">객체는 원본객체의 속성이름과 할당하려는 속성이름이 같아야한다. 순서는 상관없다.</h6>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
-          <h6 class="fw-bold" style="color:blueviolet">기본예제</h6>
-          <code class="fw-bold">const user = { name: "Alice", age: 25, city: "Seoul" };</code>
-          <code class="fw-bold">const { name, age, city } = user;</code>
-          <code class="fw-bold">console.log(name); // Alice</code>
-          <code class="fw-bold">console.log(age); // 25</code>
-          <code class="fw-bold">console.log(city); // Seoul</code>
-        </div>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;margin-bottom:5px;">
-          <h6 class="fw-bold" style="color:blueviolet">변수 이름 변경 (별칭 설정) (속성명: 새 변수명)</h6>
-          <code class="fw-bold">const user = { name: "Bob", age: 30 };</code>
-          <code class="fw-bold">const { name: userName, age: userAge } = user;</code>
-          <code class="fw-bold">console.log(userName); // Bob</code>
-          <code class="fw-bold">console.log(userAge); // 30</code>
-          <br>
-        </div>
-        <br>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;margin-bottom:5px;">
-          <h6 class="fw-bold" style="color:blueviolet">만약 객체에 해당 속성이 없을 경우, 기본값을 설정할 수 있음.</h6>
-          <code class="fw-bold">const user = { name: "Charlie" };</code>
-          <code class="fw-bold">const { name, age = 20 } = user;</code>
-          <code class="fw-bold">console.log(name); // Charlie</code>
-          <code class="fw-bold">console.log(age); // 20  (user 객체에 없어서 기본값 사용)</code>
-          <code class="fw-bold"></code>
-        </div>
-        <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
-          <h6 class="fw-bold" style="color:blueviolet">중첩 객체 구조 분해, 객체 안에 객체가 있을 경우, </h6>
-          <h6 class="fw-bold" style="color:blueviolet">중첩 구조 분해를 사용할 수 있습니다.</h6>
-          <code class="fw-bold">const person = {name: "David",</code>
-          <code class="fw-bold">address: {city: "New York",zip: "10001"}};</code>
-          <code class="fw-bold">// 중첩 구조 분해 할당</code>
-          <code class="fw-bold">const { name, address: { city, zip } } = person;</code>
-          <code class="fw-bold">console.log(name); // David</code>
-          <code class="fw-bold">console.log(city); // New York</code>
-          <code class="fw-bold">console.log(zip); // 10001</code>
-          <code class="fw-bold">✅ address 자체는 할당되지 않음.</code>
-        </div>
-        <div style="display:inline-block">
-          <div style="display:inline-block;width:450px;border:1px solid black;vertical-align: top;padding:4px;">
+        <div title="왼쪽" style="display:inline-block;width:450px;vertical-align: top;">
+          <div style="border:1px solid black;margin-bottom:5px;padding:4px;">
+            <h6 class="fw-bold" style="color:blueviolet">기본예제</h6>
+            <code class="fw-bold">const user = { name: "Alice", age: 25, city: "Seoul" };</code>
+            <code class="fw-bold">const { name, age, city } = user;</code>
+            <code class="fw-bold">console.log(name); // Alice</code>
+            <code class="fw-bold">console.log(age); // 25</code>
+            <code class="fw-bold">console.log(city); // Seoul</code>
+          </div>
+          <div style="border:1px solid black;margin-bottom:5px;padding:4px;">
+            <h6 class="fw-bold" style="color:blueviolet">만약 객체에 해당 속성이 없을 경우, 기본값을 설정할 수 있음.</h6>
+            <code class="fw-bold">const user = { name: "Charlie" };</code>
+            <code class="fw-bold">const { name, age = 20 } = user;</code>
+            <code class="fw-bold">console.log(name); // Charlie</code>
+            <code class="fw-bold">console.log(age); // 20  (user 객체에 없어서 기본값 사용)</code>
+            <code class="fw-bold"></code>
+          </div>
+          <div style="border:1px solid black;margin-bottom:5px;padding:4px;">
             <h6 class="fw-bold" style="color:blueviolet">함수에서 구조 분해 할당 사용</h6>
             <h6 class="fw-bold" style="color:blueviolet">함수의 매개변수에서도 구조 분해 할당을 사용할 수 있습니다.</h6>
             
@@ -3766,7 +3875,36 @@ console.log(변수); // (3) [3, 3, 3] </pre>
             <code class="fw-bold">console.log(`이름: ${name}, 나이: ${age}`);}</code><br>
             <code class="fw-bold">const user = { name: "Emma", age: 28 };</code>
             <code class="fw-bold">printUser(user);</code>
-            <code class="fw-bold">✅ 함수 내부에서 user.name, user.age를 직접 접근하는 대신, 바로 구조 분해 가능.</code>
+            <code class="fw-bold">✅ 함수 내부에서 user.name, user.age를 직접 접근하는 대신,</code>
+            <code class="fw-bold">✅ 바로 구조 분해 가능.</code>
+          </div>
+        </div>
+        <div title="오른쪽" style="display:inline-block;width:450px;vertical-align: top;">
+          <div style="border:1px solid black;margin-bottom:5px;padding:4px;">
+            <h6 class="fw-bold" style="color:blueviolet">변수 이름 변경 (별칭 설정) (속성명: 새 변수명)</h6>
+            <code class="fw-bold">const user = { name: "Bob", age: 30 };</code>
+            <code class="fw-bold">const { name: userName, age: userAge } = user;</code>
+            <code class="fw-bold">console.log(userName); // Bob</code>
+            <code class="fw-bold">console.log(userAge); // 30</code>
+          </div>
+          <div style="border:1px solid black;margin-bottom:5px;padding:4px;">
+            <h6 class="fw-bold" style="color:blueviolet">중첩 객체 구조 분해, 객체 안에 객체가 있을 경우, </h6>
+            <h6 class="fw-bold" style="color:blueviolet">중첩 구조 분해를 사용할 수 있습니다.</h6>
+            <code class="fw-bold">const person = {</code>
+            <code class="fw-bold" style="margin-left:10px;">name: "David",</code>
+            <code class="fw-bold" style="margin-left:10px;">address: {</code>
+            <code class="fw-bold" style="margin-left:30px;">city: "New York",</code>
+            <code class="fw-bold" style="margin-left:30px;">zip: "10001"</code>
+            <code class="fw-bold" style="margin-left:10px;">}</code>
+            <code class="fw-bold">};</code>
+
+            <code class="fw-bold">// 중첩 구조 분해 할당</code>
+            <code class="fw-bold">const { name, address: { city, zip } } = person;</code>
+            <code class="fw-bold">console.log(name); // David</code>
+            <code class="fw-bold">console.log(city); // New York</code>
+            <code class="fw-bold">console.log(zip); // 10001</code>
+            <code class="fw-bold">✅ address 자체는 할당되지 않음.</code>
+            <code class="blueviolet fw-bold">✅ 최 말단의 속성이 할당 된다??</code>
           </div>
         </div>
       </div>

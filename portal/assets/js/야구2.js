@@ -30,6 +30,7 @@ function 중복제거모든조합() {
   return result;
 }
 let 모든조합=중복제거모든조합();
+console.log(모든조합[0],모든조합[1],모든조합[2]);
 function 연습() {
   console.log(document.querySelector('.form-check-input').checked)
 }
