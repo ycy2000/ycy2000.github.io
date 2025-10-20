@@ -3698,7 +3698,7 @@ console.log(변수); // (3) [3, 3, 3] </pre>
         <div style="border-bottom:1px solid rgb(201, 188, 188)"></div>
         <div style="position:absolute;left:482px; height:850px;border-right:1px solid rgb(201, 188, 188)"></div>         
         <div>
-          <div style="display:inline-block;vertical-align: top;width:467px;">
+          <div style="display:inline-block;vertical-align: top;width:467px;margin-left:5px;">
             <pre class="fw-bold">
 <span class="blueviolet">정답은 [2,3,4,5] 이다.</span> 
 <span class="blueviolet">숫자일치는 위치가 불일치한 숫자</span> 
@@ -3706,13 +3706,15 @@ console.log(변수); // (3) [3, 3, 3] </pre>
 기회1 ~ 10까지 최대 10개 있을수 있고, 예시로 3개가 있다고 한다면
 기회1 : { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0 }
 기회2 : { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 }
-기회3 : { 기회숫자 : [8,9,4,5], 숫자일치 : 0, 위치일치 : 2 }
+기회3 : { 기회숫자 : [8,9,5,4], 숫자일치 : 2, 위치일치 : 0 }
+기회4 : { 기회숫자 : [3,2,5,4], 숫자일치 : 4, 위치일치 : 0 }
 
-3가지가 변수 '기회들'에 담긴다.
+4가지가 변수 '기회들'에 담긴다.
 
 let 기회들 = [ { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0 }, 
                     { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 },
-                    { 기회숫자 : [8,9,4,5], 숫자일치 : 0, 위치일치 : 2 } 
+                    { 기회숫자 : [8,9,5,4], 숫자일치 : 2, 위치일치 : 0 } ,
+                    { 기회숫자 : [3,2,5,4], 숫자일치 : 4, 위치일치 : 0 } 
                   ]            </pre>
             <h6 class="fw-bold">1) for (let value of 기회들) { 코드 } 구문 예시</h6>
             <pre class="fw-bold" style="margin-left:10px;">
@@ -3732,7 +3734,11 @@ let 기회들 = [ { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0
   숫자일치 :  0
   위치일치 :  0
   {기회숫자: Array(4), 숫자일치: 0, 위치일치: 0}
-  기회숫자 :  (4) [8, 9, 4, 5]
+  기회숫자 :  (4) [8, 9, 5, 4]
+  숫자일치 :  2
+  위치일치 :  0
+  {기회숫자: Array(4), 숫자일치: 4, 위치일치: 0}
+  기회숫자 :  (4) [3, 2, 5, 4]
   숫자일치 :  0
   위치일치 :  2            </pre>
             <h6 class="fw-bold">2) for (let { 기회숫자, 숫자일치, 위치일치 } of 기회들) { 코드 }</h6>
@@ -3740,40 +3746,66 @@ let 기회들 = [ { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0
             <h6 class="fw-bold" style="margin-left:20px;"> 구조분해 사용함. 오른쪽 코드 참고</h6>
           </div>
           <div style="display:inline-block;vertical-align: top;width:467px;">
-            <h6 class="fw-bold">※ 모든조합.length : 5040가지인데, 순서대로 3가지만 예시</h6>
-            <h6 class="fw-bold" style="margin-left:20px;">[4, 5, 6, 7], [2, 3, 4, 5], [0, 1, 2, 3]</h6>
             <pre class="fw-bold" style="margin-left:10px;">
-• 정답이 있으면 기회i의 숫자일치, 위치일치 코드로 기록함.
-  정답이 없으면 기회i의 숫자일치, 위치일치 수동으로기록함.
-※ 3가지 기회 정보에 따라
-1) [4,5,6,7]은 
+• 정답이 있으면 기회i의 숫자일치, 위치일치를 정답과 비교하여 자동 기록.
+  정답이 없으면 기회i의 숫자일치, 위치일치 수동으로기록함.</pre>
+            <h6 class="fw-bold">※ 모든조합.length : 5040가지인데 4가지만 검토해보자.</h6>
+            <h6 class="fw-bold" style="margin-left:20px;">[0, 1, 2, 3], [4, 5, 0, 1], [5, 4, 3, 2], [2, 3, 4, 5]</h6>
+            <pre class="fw-bold">
+※ 4가지 기회 정보에 따라, 모든조합 5040개에 기회i와 같은지 검사한다.
+   모든 기회(여기서는 기회1,기회2,기회3)가 일치하면 결과배열에 담는다.
+※ 모든조합[0] : [0,1,2,3]에 대해서, 기회들과 비교하면,
+1) 모든조합 [0,1,2,3]은 기회1에서 탈락됨 (이유)
+         기회1 [0,1,2,3]이 <span class="blueviolet">숫자일치:2, 위치일치:0 인데, </span> 
+         기회1 [0,1,2,3]과 비교하였을때
+    모든조합 [0,1,2,3]은 <span class="blueviolet">숫자일치:4, 위치일치:0 이므로 false</span>
 
+2) 모든조합 [4,5,0,1]은 기회3에서 탈락됨 (이유)
+         기회1 [0,1,2,3]이 <span class="blueviolet">숫자일치:2, 위치일치:0 인데, </span>
+         기회1 [0,1,2,3]과 비교하였을때
+    모든조합 [4,5,0,1]은 <span class="blueviolet">숫자일치:2, 위치일치:0 이므로 ture</span>
 
+         기회2 [6,7,8,9]는 <span class="blueviolet">숫자일치:0, 위치일치:0 인데, </span>
+         기회2 [6,7,8,9]와 비교하였을때
+     모든조합 [4,5,0,1]은 <span class="blueviolet">숫자일치:0, 위치일치:0 이므로 ture</span>
 
+         기회3 [8,9,5,4]는 <span class="blueviolet">숫자일치:0, 위치일치:2 인데, </span>
+         기회3 [8,9,5,4]와 비교하였을때
+     모든조합 [5,4,3,2]은 <span class="blueviolet">숫자일치:2, 위치일치:0 이므로 false</span>
 
+3) <span class="blueviolet">모든조합 [5,4,3,2]는 모두 통과 (이유)</span>
+         기회1 [0,1,2,3]이 <span class="blueviolet">숫자일치:2, 위치일치:0 인데, </span>
+         기회1 [0,1,2,3]과 비교하였을때
+    모든조합 [5,4,3,2]는 <span class="blueviolet">숫자일치:2, 위치일치:0 이므로 ture</span>
 
+         기회2 [6,7,8,9]는 <span class="blueviolet">숫자일치:0, 위치일치:0 인데, </span>
+         기회2 [6,7,8,9]와 비교하였을때
+     모든조합 [5,4,3,2]는 <span class="blueviolet">숫자일치:0, 위치일치:0 이므로 ture</span>
 
+         기회3 [8,9,5,4]는 <span class="blueviolet">숫자일치:2, 위치일치:0 인데, </span>
+         기회3 [8,9,5,4]와 비교하였을때
+     모든조합 [5,4,3,2]는 <span class="blueviolet">숫자일치:2, 위치일치:0 이므로 true</span>
 
+         기회4 [3,2,5,4]는 <span class="blueviolet">숫자일치:4, 위치일치:0 인데, </span>
+         기회4 [3,2,5,4]와 비교하였을때
+     모든조합 [5,4,3,2]는 <span class="blueviolet">숫자일치:4, 위치일치:0 이므로 true</span>
 
+4) <span class="blueviolet">모든조합 [2,3,4,5]는 모두 통과 (이유)</span>
+         기회1 [0,1,2,3]이 <span class="blueviolet">숫자일치:2, 위치일치:0 인데, </span>
+         기회1 [0,1,2,3]과 비교하였을때
+    모든조합 [2,3,4,5]는 <span class="blueviolet">숫자일치:2, 위치일치:0 이므로 ture</span>
 
-• 모든조합의 각각의 '조합'에 대해서 기회들의 '기회숫자'들을 비교한다.
-• 모든조합의 각 조합을 정답과 비교한 결과 (숫자일치, 위치일치)
-  기회1, 기회2, 기회3 의 '기회숫자'와 비교결과 (숫자일치, 위치일치)
-  '숫자일치수', '위치일치수' 는 1)의 비교결과이다.
-   <span class="blueviolet">'숫자일치수!=숫자일치' 또는, '위치일치수!=위치일치'이면 유효=false</span>
-   <span class="blueviolet">모든기회(기회1, 기회2, 기회3,..) 다 일치하면 유효=true</span>
-1) 모든조합 중, [4,5,6,7] 검토
-   a) 기회1 : { 기회숫자 : [0,1,2,3], 숫자일치 : 2, 위치일치 : 0 }
-              <span style="margin-left:0px"></span>모든조합의 1st [4,5,6,7]
-       위치일치수 = 0, 숫자일치수 = 0 (탈락)
-   b) 기회2 : { 기회숫자 : [6,7,8,9], 숫자일치 : 0, 위치일치 : 0 }
-              <span style="margin-left:0px"></span>모든조합의 1st [4,5,6,7]
-       위치일치수 = 0, 숫자일치수 = 0 (탈락)
+         기회2 [6,7,8,9]는 <span class="blueviolet">숫자일치:0, 위치일치:0 인데, </span>
+         기회2 [6,7,8,9]와 비교하였을때
+     모든조합 [2,3,4,5]는 <span class="blueviolet">숫자일치:0, 위치일치:0 이므로 ture</span>
 
+         기회3 [8,9,5,4]는 <span class="blueviolet">숫자일치:2, 위치일치:0 인데, </span>
+         기회3 [8,9,5,4]와 비교하였을때
+     모든조합 [2,3,4,5]는 <span class="blueviolet">숫자일치:2, 위치일치:0 이므로 true</span>
 
-
-
-            </pre>
+         기회4 [3,2,5,4]는 <span class="blueviolet">숫자일치:4, 위치일치:0 인데, </span>
+         기회4 [3,2,5,4]와 비교하였을때
+     모든조합 [2,3,4,5]는 <span class="blueviolet">숫자일치:4, 위치일치:0 이므로 true</span>            </pre>
 
 
 
