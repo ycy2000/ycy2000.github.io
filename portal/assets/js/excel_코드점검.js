@@ -1,20 +1,16 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_배열split와join참고' //원래는 h6의 title이다.
+  전체변수h6title ='js_빽틱사용법' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 
 
 function 연습() {
-  let 결과=[1,2].join(',');
-  console.log(결과);
-  결과=[1,].join(',');
-  console.log(결과);
-  결과=[1,,].join(',');
-  console.log(결과);
-  결과=[1,,3].join(',');
-  console.log(결과);
-
+  // <div id='있는아이디'>있는아이디 innerHTML</div>
+  let 결과=document.querySelector('#없는아이디');
+  console.log(결과); // null
+  console.log(결과?.innerHTML);
+  //console.log(결과.innerHTML); // 에러남
 
 }
 function 전체대체에셑팅() {

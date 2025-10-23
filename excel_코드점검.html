@@ -316,8 +316,10 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title="js_배열split와join참고">배열.join => 문자열이 됨, 문자열.split => 배열이 됨</h6>
-        <h6 class="fw-bold" title="_04_javascript_물음표">물음표, or || 의미, 삼항연산자, 선택적연결, 무효화합체</h6>
-        <h6 class="fw-bold" title="_04_javascript_쉼표연산자">쉼표연산자, 삼항연산자, 물음표</h6>
+
+
+
+        <br><br><br><br><br><br><br><br>
         <h6 class="fw-bold" title="_04_javascript_foreach">결과.forEach, for (const { 변수1, 변수2, 변수3 } of 기회들)</h6>
       
         <h6 class="fw-bold" title="js_html순환">html 순환</h6>
@@ -3939,6 +3941,65 @@ for (var i=0; i &#60;document.querySelectorAll('.기회').length; i++) {
         </div>
       </div>
     </div>  
+    <div id="_04_javascript_물음표"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 class="fw-bold" class="fw-bold">const 숫자일치 = document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0';</h5>
+        <code class="fw-bold">• ?.(물음표 점) 선택적연결 구문이다 => || 은 "null, undefiend, false, 0, ''(빈문자열)"을 false로 인식하는데</code>
+        <code class="fw-bold" style="text-indent: 15px;">변수 '숫자일치'의 값이 0 이 온다면 false이므로 문자열 '0'이 선택된다.</code>
+        <br>
+        <h5 class="fw-bold" class="fw-bold" style="color:blueviolet">if … else if … else if … else => 삼항연산자로 표현</h5>
+        <div style="padding:10px; display:inline-block;margin-left:10px;font-weight: bold;margin-right:40px;border:1px solid black;">
+          <span>function example(…) {</span><br>
+          <span style="margin-left:15px;">if (condition1) { return value1; }</span><br>
+          <span style="margin-left:15px;">else if (condition2) { return value2; }</span><br>
+          <span style="margin-left:15px;">else if (condition3) { return value3; }</span><br>
+          <span style="margin-left:15px;">else { return value4; }</span><br>
+          <span>}</span>
+        </div>
+        <div style="vertical-align: top; padding:10px; display:inline-block;margin-left:10px;font-weight: bold;border:1px solid black;">
+          <span>function example(…) {</span><br>
+          <span style="margin-left:15px;">return condition1 ? value1</span><br>
+          <span style="margin-left:15px;">: condition2 ? value2</span><br>
+          <span style="margin-left:15px;">: condition3 ? value3</span><br>
+          <span style="margin-left:15px;">: value4;</span><br>
+          <span>}</span>
+        </div><br><br>
+      </div>
+      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+        <h5 class="fw-bold">무효화 합체 (Nullish Coalescing / ?? ) 알아보기 전에, || 를 먼저 알아보자</h5>
+        <code class="fw-bold" style="color:blueviolet">• || 예 => if (null || 3>0) { console.log('true') }</code>
+        <code class="fw-bold" style="color:blueviolet;color:blueviolet;text-indent: 15px;">(null || 3>0) : 둘다 false인 경우만 false, true가 있으면 true</code>
+        <code class="fw-bold" style="color:blueviolet;color:blueviolet;text-indent: 15px;">숫자 0 이 false로 인식함을 주의!!</code>
+        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || 3>0) ? console.log('true') : console.log('false'); // true (3>0)</code>
+        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || '0') ? console.log('true') : console.log('false'); // true (문자열 '0')</code>
+        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || 0) ? console.log('true') : console.log('false'); // false (슷지 0 은 false로 인식)</code>
+        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || '') ? console.log('true') : console.log('false'); // false ( 공백 ''은 false로 인식)</code>
+        <code class="fw-bold" style="color:blueviolet">• (null || 3 > 0)는 왼쪽값(null)을 확인하고 true이면 사용하고 false이면 오른쪽값을 사용한다.</code>
+        <code class="fw-bold" style="text-indent: 15px;">|| 사용시 왼쪽값을 false로 인식하는 경우 : null, undefiend, false, 0, ''(빈문자열)</code>      
+        <br>
+        <code class="fw-bold" style="color:blueviolet">• (null ?? 3 > 0)는 왼쪽값(null)을 확인하고 true이면 사용하고 false이면 오른쪽값을 사용한다.</code>
+        <code class="fw-bold" style="text-indent: 15px;">?? 사용시 왼쪽값을 false로 인식하는 경우 : null, undefiend</code>
+        <br>      
+        <h5 class="fw-bold">무효화 합체 (Nullish Coalescing / ??)  : 왼쪽값이 null이나 undefined인 경우 대체할 값 지정</h5>
+        <code class="fw-bold" style="color:blueviolet">• var 값 = null ?? '대체값'</code>
+        <code class="fw-bold" style="color:blueviolet">• null ?? '대체값' : 이부분이 무효값 처리 부분</code>
+        <br>
+        <h5 class="fw-bold">사용했던 예시 : 0~9 숫자인지 확인할때 숫자 0 이 false로 인식하였다..</h5>
+        <code class="fw-bold">• if ( 0 || true ) => 숫자 0 을 false로 인식하므로 true 조건이 된다.</code>
+        <code class="fw-bold">• if ( 0 ?? true ) => 숫자 0 을 true로 인식하므로 숫자 0 선택되어 if 안의 조건은 0 이되어 false 가 된다.</code>
+        <br>
+        <h5 class="fw-bold">if (조건) => 조건이 값인경우 값에 따라 판단, 조건이 조건인 경우 조건에 따라 판단</h5>
+        <code class="fw-bold">• if ( 0 ) {console.log('true조건')} else {console.log('false조건')} // 값이 0 이므로 false</code>
+        <code class="fw-bold">• if ( 0==0 ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true</code>
+        <code class="fw-bold">• if ( 0=='0' ) {console.log('true조건')} else {console.log('false조건')} // 형식을 따지지 않으므로 true</code>
+        <code class="fw-bold">• if ( 0==='0' ) {console.log('true조건')} else {console.log('false조건')} // 형식 불일치이므로 false</code>
+        <code class="fw-bold">• === (등호3개) 는 형식까지 일치해야하므로 숫자0과 문자열0은 형식이 같지 않아 false</code>
+        <code class="fw-bold">• </code>
+        <code class="fw-bold" style="text-indent: 15px;"></code>
+        <span style="color:blueviolet"></span>
+
+      </div>
+    </div>
     <div id="js_빽틱사용법" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
@@ -3948,7 +4009,7 @@ for (var i=0; i &#60;document.querySelectorAll('.기회').length; i++) {
         <h6 class="fw-bold">• <span style="color:blueviolet">코딩시</span>, 빽틱 안에서 딸러기호와 변수를 사용할 수 있다.</h6>
         <code class="fw-bold" style="text-indent: 10px;">let 이름 = '길동'; let 문자열 = `이름은 ${이름} 입니다.`</code>
         <br>
-        <h6 class="fw-bold">• <span style="color:blueviolet">${ }안에는 변수, 삼항연산자가</span> 가능하다. </h6>
+        <h6 class="fw-bold">• <span style="color:blueviolet">빽틱 안에서 ${ } : ${ }안에는 변수, 삼항연산자가</span> 가능하다. </h6>
         <pre class="fw-bold" style="margin-left:10px;">
 let 변수 = ( 1 > 0 ) ? '맞다' : '아니다';
 let 빽틱 = `가부판단 : ${변수}`;
@@ -3956,12 +4017,22 @@ console.log(빽틱); // 가부판단 : 맞다
 빽틱=`딸라안에 직접 삼항연산자 : ${( 1 > 0 ) ? '맞다' : '아니다'}`
 console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         </pre>
-
-        
+        <h6 class="fw-bold">• 삼항연산자 (Ternary Operator) </h6>
+        <h6 style="text-indent: 12px;">- Condition ? True일때 리턴값 : False일때 리턴값;</h6>
+        <h6 style="text-indent: 12px;">- 값으로 쓸 수 있다. 삼항연산자의 Condition에 삼항연산자 가능.</h6>
+        <h6 style="text-indent: 12px;">- Condition에 if 구문 안되고, 값 또는 조건 가능</h6>
+        <br>
+        <h6 class="fw-bold">• 삼항연산자에서 false가 되는 falsy한 Condition 값 </h6>
+        <h6 style="text-indent: 12px;">-false, null, NaN, 0, 비어있는 문자열 (""), 그리고 undefined가 있습니다.</h6>
 
       </div>
       <div>
-
+        <h6 class="fw-bold">• 선택적 연결(Optional Chaining) : 물음표 점 ?. (Conditoin에 활용 가능)</h6>
+        <h6 style="text-indent: 12px;">- 참조값이 null 이나 undefined 이면, error발생 대신, undefined를 return한다.</h6>
+        <h6 style="text-indent: 12px;">- let 결과=document.querySelector('#없는아이디'); // 해당 아이디가 없으면</h6>
+        <h6 style="text-indent: 25px;">console.log(결과); // null</h6>
+        <h6 style="text-indent: 25px;">console.log(결과.innerHTML); // 에러가 나는데</h6>
+        <h6 style="text-indent: 25px;">console.log(결과?.innerHTML); // ?. 으로 접근하면 undefined 리턴됨</h6>
       </div>
     </div>
     <div id="js참고자료링크" class="대체3줄">
@@ -4464,98 +4535,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
       </div>
     </div>
 
-    <div id="_04_javascript_물음표"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h5 class="fw-bold"><a href="https://joylee-developer.tistory.com/166" target="_blank">자바스크립트 코드, ? : , ? . , ??, || </a>, 물음표 콜론, 물음표 점, 물음표 두개, or 표시 ||</h5>
-        <h5 class="fw-bold">삼항 연산자 (Ternary Operator / ? : ),  * 변수 = 삼항연산자 형식으로 사용</h5>
-        <h5 class="fw-bold">false 이외의 falsy한 표현식에는 null, NaN, 0, 비어있는 문자열 (""), 그리고 undefined가 있습니다.</h5>
-        <code class="fw-bold">• 삼항연산자 (Ternary Operator / ? : ) => Condition ? True : False</code>
-        <code class="fw-bold">• if ... else 를 대체하는 연산자이다.</code>
-        <div style="padding:10px; display:inline-block;margin-left:10px;font-weight: bold;margin-right:40px;border:1px solid black;">
-          <span>if (3>0) {</span><br>
-          <span style="margin-left:15px;">console.log('3은 0보다 크다')</span><br>
-          <span style="margin-left:15px;">} else {</span><br>
-          <span style="margin-left:15px;">console.log('false')</span><br>
-          <span>}</span>
-        </div>
-        <div style="vertical-align: top; padding:10px; display:inline-block;margin-left:10px;font-weight: bold;border:1px solid black;">
-          <span>삼항연산자로 표현하면, 결과값을 변수로 두고, </span><br>
-          <span>변수=삼항연산자 형식으로 작성할 수 있다.</span><br>
-          <span style="margin-left:15px;">var 결과 = (3>0) ? console.log('3은 0보다 크다') : console.log('false');</span><br>
-          <span> //바로 표시됨, 실행됨</span><br>
-          <span style="margin-left:15px;">var 결과 = (3>0) ? (console.log('3은 0보다 크다')) : (console.log('false'));</span>
-        </div><br><br>
-        <h5 class="fw-bold">선택적 연결 (Optional Chaining / ?. ) : 물음표 점 ?.</h5>
-        <code class="fw-bold">• 참조값이 null 이나 undefined 이면, error발생 대신, undefined를 return한다.</code>
-        <code class="fw-bold" style="text-indent: 15px;">const adventurer = { name: 'Alice', cat: { name: 'Dinah' } };</code>
-        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">위 코드에 없는 dog 속성에 접근했을때.</code>
-        <code class="fw-bold" style="text-indent: 15px;">const dogName = adventurer.dog.name;</code>
-        <code class="fw-bold" style="text-indent: 15px;">console.log(dogName); // 결과는 error</code>
-        <code class="fw-bold" style="text-indent: 15px;">const dogName = adventurer.dog?.name; // ? (선택적연결) 사용시</code>
-        <code class="fw-bold" style="text-indent: 15px;">console.log(dogName); // 결과는 undefined</code>
-        <code class="fw-bold" style="text-indent: 15px;">?.(물음표 점)은 해당 속성에 접근하기 전에 null이나 undefined가 아닌지 검증한 후,</code>
-        <code class="fw-bold" style="text-indent: 15px;">다음 속성에 접근해 error를 막는다.</code>
-        <code class="fw-bold" style="text-indent: 15px;">let nestedProp = obj.first?.second; 는 임시변수가 생성되는 점을 제외하면, 아래 두줄코드와 동일하다.</code>
-        <code class="fw-bold" style="text-indent: 15px;">let temp = obj.first;</code>
-        <code class="fw-bold" style="text-indent: 15px;">let nestedProp = ((temp === null || temp === undefined) ? undefined : temp.second); // 삼항연산자</code>
-        <br>
-        <h5 class="fw-bold" class="fw-bold">const 숫자일치 = document.querySelector(`#기회${i} .숫자일치`)?.innerHTML || '0';</h5>
-        <code class="fw-bold">• ?.(물음표 점) 선택적연결 구문이다 => || 은 "null, undefiend, false, 0, ''(빈문자열)"을 false로 인식하는데</code>
-        <code class="fw-bold" style="text-indent: 15px;">변수 '숫자일치'의 값이 0 이 온다면 false이므로 문자열 '0'이 선택된다.</code>
-        <br>
-        <h5 class="fw-bold" class="fw-bold" style="color:blueviolet">if … else if … else if … else => 삼항연산자로 표현</h5>
-        <div style="padding:10px; display:inline-block;margin-left:10px;font-weight: bold;margin-right:40px;border:1px solid black;">
-          <span>function example(…) {</span><br>
-          <span style="margin-left:15px;">if (condition1) { return value1; }</span><br>
-          <span style="margin-left:15px;">else if (condition2) { return value2; }</span><br>
-          <span style="margin-left:15px;">else if (condition3) { return value3; }</span><br>
-          <span style="margin-left:15px;">else { return value4; }</span><br>
-          <span>}</span>
-        </div>
-        <div style="vertical-align: top; padding:10px; display:inline-block;margin-left:10px;font-weight: bold;border:1px solid black;">
-          <span>function example(…) {</span><br>
-          <span style="margin-left:15px;">return condition1 ? value1</span><br>
-          <span style="margin-left:15px;">: condition2 ? value2</span><br>
-          <span style="margin-left:15px;">: condition3 ? value3</span><br>
-          <span style="margin-left:15px;">: value4;</span><br>
-          <span>}</span>
-        </div><br><br>
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h5 class="fw-bold">무효화 합체 (Nullish Coalescing / ?? ) 알아보기 전에, || 를 먼저 알아보자</h5>
-        <code class="fw-bold" style="color:blueviolet">• || 예 => if (null || 3>0) { console.log('true') }</code>
-        <code class="fw-bold" style="color:blueviolet;color:blueviolet;text-indent: 15px;">(null || 3>0) : 둘다 false인 경우만 false, true가 있으면 true</code>
-        <code class="fw-bold" style="color:blueviolet;color:blueviolet;text-indent: 15px;">숫자 0 이 false로 인식함을 주의!!</code>
-        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || 3>0) ? console.log('true') : console.log('false'); // true (3>0)</code>
-        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || '0') ? console.log('true') : console.log('false'); // true (문자열 '0')</code>
-        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || 0) ? console.log('true') : console.log('false'); // false (슷지 0 은 false로 인식)</code>
-        <code class="fw-bold" style="text-indent: 15px;">var 확인 = (null || '') ? console.log('true') : console.log('false'); // false ( 공백 ''은 false로 인식)</code>
-        <code class="fw-bold" style="color:blueviolet">• (null || 3 > 0)는 왼쪽값(null)을 확인하고 true이면 사용하고 false이면 오른쪽값을 사용한다.</code>
-        <code class="fw-bold" style="text-indent: 15px;">|| 사용시 왼쪽값을 false로 인식하는 경우 : null, undefiend, false, 0, ''(빈문자열)</code>      
-        <br>
-        <code class="fw-bold" style="color:blueviolet">• (null ?? 3 > 0)는 왼쪽값(null)을 확인하고 true이면 사용하고 false이면 오른쪽값을 사용한다.</code>
-        <code class="fw-bold" style="text-indent: 15px;">?? 사용시 왼쪽값을 false로 인식하는 경우 : null, undefiend</code>
-        <br>      
-        <h5 class="fw-bold">무효화 합체 (Nullish Coalescing / ??)  : 왼쪽값이 null이나 undefined인 경우 대체할 값 지정</h5>
-        <code class="fw-bold" style="color:blueviolet">• var 값 = null ?? '대체값'</code>
-        <code class="fw-bold" style="color:blueviolet">• null ?? '대체값' : 이부분이 무효값 처리 부분</code>
-        <br>
-        <h5 class="fw-bold">사용했던 예시 : 0~9 숫자인지 확인할때 숫자 0 이 false로 인식하였다..</h5>
-        <code class="fw-bold">• if ( 0 || true ) => 숫자 0 을 false로 인식하므로 true 조건이 된다.</code>
-        <code class="fw-bold">• if ( 0 ?? true ) => 숫자 0 을 true로 인식하므로 숫자 0 선택되어 if 안의 조건은 0 이되어 false 가 된다.</code>
-        <br>
-        <h5 class="fw-bold">if (조건) => 조건이 값인경우 값에 따라 판단, 조건이 조건인 경우 조건에 따라 판단</h5>
-        <code class="fw-bold">• if ( 0 ) {console.log('true조건')} else {console.log('false조건')} // 값이 0 이므로 false</code>
-        <code class="fw-bold">• if ( 0==0 ) {console.log('true조건')} else {console.log('false조건')} // 조건이 true이므로 true</code>
-        <code class="fw-bold">• if ( 0=='0' ) {console.log('true조건')} else {console.log('false조건')} // 형식을 따지지 않으므로 true</code>
-        <code class="fw-bold">• if ( 0==='0' ) {console.log('true조건')} else {console.log('false조건')} // 형식 불일치이므로 false</code>
-        <code class="fw-bold">• === (등호3개) 는 형식까지 일치해야하므로 숫자0과 문자열0은 형식이 같지 않아 false</code>
-        <code class="fw-bold">• </code>
-        <code class="fw-bold" style="text-indent: 15px;"></code>
-        <span style="color:blueviolet"></span>
 
-      </div>
-    </div>
 
     <div id="_04_javascript_쉼표연산자">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
