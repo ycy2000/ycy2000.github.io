@@ -134,8 +134,10 @@ function 카테고리배치(e) {
 
 var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
-  if (e.target.id=='좌표예제') {
-      console.log(e.screenY);
+  if (e.target.id=='좌표예제') {//e.screenY == 요소.screenY????
+    let 요소좌표=document.querySelector('#좌표예제').getBoundingClientRect();
+      console.log(e.target.screenY,',',요소좌표.y);
+      console.log(e.target.screenX,',',요소좌표.X);
       console.log(e.pageY);
       console.log(e.clientY);
       console.log(e.offsetY);
