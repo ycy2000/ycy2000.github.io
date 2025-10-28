@@ -1,16 +1,14 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='js_빽틱사용법' //원래는 h6의 title이다.
+  전체변수h6title ='좌표' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
-
-
 function 연습() {
-  // <div id='있는아이디'>있는아이디 innerHTML</div>
-  let 결과=document.querySelector('#없는아이디');
-  console.log(결과); // null
-  console.log(결과?.innerHTML);
-  //console.log(결과.innerHTML); // 에러남
+  let 좌표예제=document.querySelector('#좌표예제');
+  console.log(좌표예제.clientHeight);
+  console.log(좌표예제.clientLeft);
+  console.log(좌표예제.clientTop);
+  console.log(좌표예제.clientWidth);
 
 }
 function 전체대체에셑팅() {
@@ -136,14 +134,39 @@ function 카테고리배치(e) {
 
 var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
+  if (e.target.id=='좌표예제') {
+      console.log(e.screenY);
+      console.log(e.pageY);
+      console.log(e.clientY);
+      console.log(e.offsetY);
+
+
+      //let 요소좌표=document.querySelector('#좌표예제').getBoundingClientRect();
+      //console.log(요소좌표);
+      //console.log(요소좌표.y);
+      //console.log(요소좌표.top);
+      //console.log(요소좌표.height);
+      //console.log(요소좌표.bottom);
+      
+      //console.log(요소좌표.left);
+      //console.log(요소좌표.width);
+      
+
+
+     return;
+    }
   var 부모요소=e.target; //자신이 body일수 있으므로 자신부터 확인함 4 => 5
   var 부모태그확인=true;
   for (var i=0; i<5; i++) {if(부모요소.tagName=='BODY') {//console.log('0~4까지확인 i=' + i + ', BODY');
     부모태그확인=false;break;};부모요소=부모요소.parentElement;}
   //캔버스바디 안의 h6 클릭시 : title을 id로 갖는 요소가 있을때 전체대체에 가져옴 (위치조건 : 부모태그확인[에러만 방지 100%위치 확인 안됨 ex)더 안쪽의 요소일때])
   if (부모태그확인 && e.target.parentElement.parentElement.classList.contains('개별카테고리')) {
+
     전체변수h6title=e.target.title;
     전체대체에셑팅();
   }
 }
-리스너_바디.addEventListener('click',리스너_바디_click)
+리스너_바디.addEventListener('click',리스너_바디_click);
+
+
+
