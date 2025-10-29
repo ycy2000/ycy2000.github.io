@@ -61,6 +61,7 @@
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="기타전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >기타</button>
         <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
         <button onclick="특정id편집()">특정id</button> 
+        <button id="임시이벤트">임시이벤트</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">특정캔버스</button>
         <button onclick="연습()">연습()</button> <span class="fw-bold" onclick="document.querySelector('#전체대체').innerHTML=''">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
@@ -295,6 +296,7 @@
       </div>
       <div>
         <h6 class="fw-bold" title="좌표">좌표</h6>
+        <h6 class="fw-bold" title="JS이벤트리스너">이벤트리스너, 인라인 onclick</h6>
 
         <h6 class="fw-bold"></h6>
         <h6 class="fw-bold blueviolet"></h6>
@@ -5962,14 +5964,14 @@ console.log(셑); // Set(4) {0, 1, 2, 3}        </pre>
     <div id="좌표" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
-        <div id="좌표예제" class="align-top" style="border:10px solid black;display:inline-block;width:300px;height:145px;margin:10px;padding:0px 5px;">
+        <div id="좌표예제" style="position:absolute; border:10px solid black;display:inline-block;width:300px;height:145px;padding:0px 5px;">
           요소id="좌표예제"<br>
+          position:absolute;<br>
           style="border:10px solid black;<br>
           display:inline-block;width:300px;<br>
-          height:145px;margin:10px;<br>
-          padding:0px 5px;"
+          height:145px;padding:0px 5px;"          
         </div>
-        <div class="d-inline-block fw-bold align-top">
+        <div class="d-inline-block fw-bold align-top" style="margin-left:315px;">
           getComputedStyle(document.querySelector('header')).height // 44px <br>
           <span class="blueviolet">요소의 맨 위를 클릭했다면,</span><br>
           e.screenY : 128 (테두리 맨 위의 위치)<br>
@@ -6017,9 +6019,99 @@ getBoundingClientRect()로 얻은 창 기준 좌표에 현재 스크롤 값을 �
         </pre>
       </div>
       <div>
+        <h5 class="fw-bold">[요소를 드래그하여 움직이게하려면]</h5>
+        <h6 class="fw-bold">※ 요소가 숨겨져 있으면 이벤트 등록해놓으면 load시 에러 메세지, 작동불능은 아님</h6>
+        <h6 class="fw-bold">※ 요소의 인라인에 onmousedown등록하여 함수 안에서 이벤트리스너 등록....??</h6>
+        <h6 class="fw-bold">1) 요소는 position:absolute(position:relative 상태의 부모요소가 기준점이다) 상태에서 top과 left로 위치조정</h6>
+        <h6 class="fw-bold">2) mousedown으로 시작한 후 - mousedown과 연결된 함수안에서, mousemove와 mouseup 이벤트리스너를 등록한다.</h6>
+        <h6 class="fw-bold" style="text-indent: 10px;">- </h6>
 
       </div>
     </div>
+    <div id="JS이벤트리스너" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">• <a href="https://tangoo91.tistory.com/31" target="_blank">이벤트의 핸들러와 리스너</a>, 이벤트를 '마우스의 동작 또는 상태'라고 쉽게 생각하자.</h6>
+        <h6 class="fw-bold">1) 이벤트 핸들러</h6>
+        <h6 class="blueviolet fw-bold" style="margin-left:20px">리스너와 달리, 이벤트가 e.target과 버블링(거품처럼 올라온다) 단계에서만 실행됨</h6>
+        <h6 style="margin-left:20px">- 하나의 요소에 하나의 이벤트 처리 가능.</h6>
+        <h6 style="margin-left:20px">a) HTML태그에 설정하거나</h6>
+        <h6 style="margin-left:38px">&#60;input onclick="파일리스트_연습();"</h6>
+        <h6 style="margin-left:20px">b) js코드에서</h6>
+        <h6 style="margin-left:41px">let 좌표예제=document.querySelector('#좌표예제');</h6>
+        <h6 style="margin-left:41px">좌표예제.onclick = 예제함수();</h6>
+        <h6 style="margin-left:41px">좌표예제.onclick = 예제함수2(); // 마지막꺼만 실행됨.</h6>
+        <h6 style="margin-left:41px">function 예제함수() { console.log('예제'); }</h6>
+        <h6 style="margin-left:41px">function 예제함수2() { console.log('예제2'); }</h6>
+        <br>
+        <h6 class="fw-bold">2) 이벤트 리스너 : addEventListener 메서드 사용</h6>
+        <h6 style="margin-left:20px">- 구문 : target.addEventListener(type, listner, useCapture);</h6>
+        <h6 style="margin-left:34px">target : 객체, 노드, 요소</h6>
+        <h6 style="margin-left:34px">type : onclick에서 on 제외 ==> 'click'</h6>
+        <h6 style="margin-left:80px">기존 이벤트 처리기 이름에서 on을 생략할 것</h6>
+        <h6 style="margin-left:34px">listner : 함수이름</h6>
+        <h6 style="margin-left:34px">useCapture : 생략시 default값 false</h6>
+        <h6 style="margin-left:80px">true : 캡쳐링 단계에서 이벤트 발생 (부모)</h6>
+        <h6 style="margin-left:80px">false : 버블링 단계에서 이벤트 발생 (최 말단 요소, e.target)</h6>
+        <h6 class="blueviolet fw-bold" style="margin-left:20px">- target.target == 3)에서 span, 최말단 요소</h6>
+        <br>
+        <h6 class="fw-bold">3) div 요소 안에 p 요소 안에 span 요소가 있다고 할때, span요소를 클릭하면 </h6>
+        <h6 style="margin-left:20px">- div, p, span에 각각 onclick 이벤트가 등록되었다고 한다면</h6>
+        <h6 style="margin-left:20px">- span > p > div 에 등록된 순서대로 함수가 실행된다.<span class="blueviolet fw-bold">(버블링, 이벤트 핸들러)</span></h6>
+        <h6 style="margin-left:20px">- 반대로 div > p > span 순서대로 함수가 실행된다면.<span class="blueviolet fw-bold">(캡쳐링)</span></h6>
+        <br>
+        <h6 class="fw-bold">• 버블링, 캡쳐링은 이벤트 어떤 순서로 전파되는지 설명하는 것이다.</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold">[이벤트리스너 등록시 중첩(등록되 함수를 2회,3회,... 반복해서 수행하는것)]</h6>
+        <h6 class="blueviolet fw-bold">※ 따라서 필요시 이벤트리스너를 지워줄 필요가 있다. </h6>
+        <h6 class="blueviolet fw-bold" style="margin-left:24px"> window.removeEventListener('click',함수이름) 메소드</h6>
+        <h6 class="fw-bold">1) 이벤트 핸들러와 달리 이벤트리스너는 하나의 이벤트에 여러함수를 등록할수있다.</h6>
+        <h6 style="margin-left:20px">- 이벤트핸들러는 마지막꺼만 실행되지만 이벤트리스너는 모두 실행된다.</h6>
+        <pre class="fw-bold" style="margin-left:20px">
+let 임시이벤트=document.querySelector('#임시이벤트');
+function 임시이벤트함수1(e) {console.log('임시1')}
+function 임시이벤트함수2(e) {console.log('임시2')}
+function 임시이벤트함수3(e) {console.log('임시3')}
+임시이벤트.addEventListener('click', 임시이벤트함수1); // 실행됨. 중첩예시 참고
+임시이벤트.addEventListener('click', 임시이벤트함수2); // 실행됨. 중첩예시 참고
+임시이벤트.addEventListener('click', 임시이벤트함수3); // 실행됨. 중첩예시 참고  </pre>
+        <h6 class="blueviolet fw-bold">※ js에서 전역 위치에 등록하면 문제가 없다. (중첩은 없다, 등록이 한번만 되었으므로)</h6>
+        <h6 class="blueviolet fw-bold">ex) click이벤트에 등록된 함수 내부에서 이벤트리스너 등록이 있는 경우</h6>
+        <h6 class="fw-bold">2) click이벤트에 등록된 함수내부에 다음과 같이 이벤트리스너를 추가한다면,</h6>
+        <pre class="fw-bold" style="margin-left:20px">
+let 임시이벤트=document.querySelector('#임시이벤트');
+function 임시이벤트함수1(e) {
+  console.log('임시1');
+  function 내부의이벤트에등록된함수() {console.log('내부의이벤트에등록된함수()')}
+  e.target.addEventListener('click',내부의이벤트에등록된함수);
+  <span class="blueviolet">//첫회차에서는 등록만되는것이고 2회차부터 실행되면서 누적된다.</span> 
+  <span class="blueviolet">//1)의 예시처럼 리스너등록이 1개씩 누적되어 누적된 만큼 실행되는 것이다.</span> 
+  <span class="blueviolet">//remove가 없다면 다음의 리스너가 추가된다는 뜻.</span>
+  <span class="blueviolet">//2회차시 : e.target.addEventListener('click',내부의이벤트에등록된함수);</span>
+  <span class="blueviolet">//3회차시 : e.target.addEventListener('click',내부의이벤트에등록된함수);</span>
+  내부의이벤트에등록된함수();
+  <span class="blueviolet">//다음처럼 remove해주면 중첩방지</span> 
+  e.target.removeEventListener('click',내부의이벤트에등록된함수);
+}
+임시이벤트.addEventListener('click', 임시이벤트함수1);       </pre>
+        <h6 class="blueviolet fw-bold">※ function 내부의이벤트에등록된함수(), 이 함수의 실행횟수가 1,2,3,4.. 늘어난다.</h6>
+        <br>
+        <h6 class="fw-bold">2) 의 경우는 '요소를 마우스로 드래그하여 이동하는 경우'에 필요하다.
+        <h6 style="margin-left:20px">- mousedown에 등록된 함수 안에, mousemove, mouseup이벤트가 등록되고 .</h6>
+        <h6 style="margin-left:30px">해당 이벤트 remove가 있어야한다. <span class="blueviolet fw-bold">isDragging(드래깅 중인가)</span></h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold">
+          <a href="https://nno3onn.tistory.com/entry/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B9%84%EA%B5%90-on-onclick-addEventListener" target="_blank">이벤트의 모든것</a>
+          <a style="margin-left:10px;" href="https://velog.io/@sang-mini/Javascript-event-%EB%8B%A4%EB%A3%A8%EA%B8%B0eventListener%EB%A5%BC-%EC%93%B0%EB%8A%94-%EC%9D%B4%EC%9C%A0" target="_blank">이벤트리스너 다루기</a>
+          <a style="margin-left:10px;" href="https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%A0%9C%EA%B1%B0-%ED%95%9C%EB%B2%88%EB%A7%8C-%EC%8B%A4%ED%96%89%EB%90%98%EA%B2%8C-%ED%95%98%EA%B8%B0-removeEventListener-once" target="_blank">이벤트리스너 제거, 한번만 실행방법</a>
+        
+        </h6>
+      </div>
+    </div>
+    
     
     <div id="js_정렬_필터_인덱스찾기" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>

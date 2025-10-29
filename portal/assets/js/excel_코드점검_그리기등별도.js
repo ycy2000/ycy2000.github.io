@@ -284,3 +284,4 @@ function 캔버스_개별카테고리_h6의title과id순서() {
     if (아이디.indexOf(요소.children[2].innerHTML)==-1) {요소.children[2].classList.add('노랑바탕색')}
   });
 }
+

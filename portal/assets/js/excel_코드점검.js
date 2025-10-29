@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='좌표' //원래는 h6의 title이다.
+  전체변수h6title ='JS이벤트리스너' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 연습() {
@@ -134,29 +134,7 @@ function 카테고리배치(e) {
 
 var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
-  if (e.target.id=='좌표예제') {//e.screenY == 요소.screenY????
-    let 요소좌표=document.querySelector('#좌표예제').getBoundingClientRect();
-      console.log(e.target.screenY,',',요소좌표.y);
-      console.log(e.target.screenX,',',요소좌표.X);
-      console.log(e.pageY);
-      console.log(e.clientY);
-      console.log(e.offsetY);
 
-
-      //let 요소좌표=document.querySelector('#좌표예제').getBoundingClientRect();
-      //console.log(요소좌표);
-      //console.log(요소좌표.y);
-      //console.log(요소좌표.top);
-      //console.log(요소좌표.height);
-      //console.log(요소좌표.bottom);
-      
-      //console.log(요소좌표.left);
-      //console.log(요소좌표.width);
-      
-
-
-     return;
-    }
   var 부모요소=e.target; //자신이 body일수 있으므로 자신부터 확인함 4 => 5
   var 부모태그확인=true;
   for (var i=0; i<5; i++) {if(부모요소.tagName=='BODY') {//console.log('0~4까지확인 i=' + i + ', BODY');
@@ -170,5 +148,15 @@ function 리스너_바디_click(e) {
 }
 리스너_바디.addEventListener('click',리스너_바디_click);
 
-
+let 임시이벤트=document.querySelector('#임시이벤트');
+function 임시이벤트함수1(e) {
+  console.log('임시1');
+  function 내부의이벤트에등록된함수() {console.log('내부의이벤트에등록된함수()')}
+  e.target.addEventListener('click',내부의이벤트에등록된함수);
+  //첫회차에서는 등록만되는것이고 2회차부터 실행되면서 누적된다.
+  내부의이벤트에등록된함수();
+  //다음처럼 remove해주면 중첩방지
+  e.target.removeEventListener('click',내부의이벤트에등록된함수);
+}
+임시이벤트.addEventListener('click', 임시이벤트함수1);
 
