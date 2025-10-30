@@ -285,3 +285,28 @@ function 캔버스_개별카테고리_h6의title과id순서() {
   });
 }
 
+
+
+function 요소마우스드래그_리스너등록() { // ※ 이거는 한번, #전체대체에 복사본을 가져오는데 복사본은 등록되지 않았으므로 지워지는거나 마찬가지다
+  console.log('요소마우스드래그_리스너등록()');
+  let 요소마우스드래그=document.querySelector('#요소마우스드래그'); // 1) mousedonw 등록
+  let is드래깅=true;
+  function 요소마우스드래그_mousedown(e) { // 1) mousedonw 등록
+
+
+    function 요소마우스드래그_mousemove(e) { // 2) mousemove 등록
+      if (!is드래깅) {return;} // up한 후에 움직이거나...
+      // 범위 제한이 있는경우 범위를 벗어났을때 move, up 리스너 삭제
+      console.log('mousemove');
+    }
+    function 요소마우스드래그_mouseup(e) {
+      console.log('mouseup');
+      // move, up 리스너 삭제
+    }
+    요소마우스드래그.addEventListener('mousemove',요소마우스드래그_mousemove); // 2) mousemove 등록
+    요소마우스드래그.addEventListener('mouseup',요소마우스드래그_mouseup); // 3) mouseup 등록
+  }
+  요소마우스드래그.addEventListener('mousedown',요소마우스드래그_mousedown); // 1) mousedonw 등록
+}
+
+

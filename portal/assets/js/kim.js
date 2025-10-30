@@ -3,6 +3,10 @@
 var 메모div내_집구조전체div가있을때만작동하는것=document.querySelector('#메모');
 function 공통켤때위치있는거메모div내_가구배치() {
   console.log('공통켤때위치있는거메모div내_가구배치()')
+
+   if (document.querySelector('#진동선').classList.contains('이벤트등록되었음')) {console.log('dddd');return;}
+   document.querySelector('#진동선').classList.add('이벤트등록되었음');
+
   var 집구조클래스들=document.querySelectorAll('#메모 .집구조');
   for (var i=0; i<집구조클래스들.length; i++) {
     집구조클래스들[i].id='집구조_구조물' + (i+1);
@@ -180,6 +184,10 @@ function 임시_집구조불러오기() {
 
 
   메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
+  if (document.querySelector('#진동선').classList.contains('이벤트등록되었음')) {console.log('true')} else {
+    console.log('false');
+    메모div내_집구조전체div가있을때만작동하는것.addEventListener('click',메모div내_집구조전체);
+  }
 }
 function 메모div내_집구조전체(e) {
   //document.querySelector('#메모 #집구조전체').style.whiteSpace='nowrap'

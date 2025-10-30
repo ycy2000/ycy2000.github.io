@@ -1,7 +1,9 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='JS이벤트리스너' //원래는 h6의 title이다.
+  전체변수h6title ='JS이벤트리스너2' //원래는 h6의 title이다.
   전체대체에셑팅();
+        //임시
+    if (전체변수h6title=='JS이벤트리스너2'){요소마우스드래그_리스너등록();}
 }
 function 연습() {
   let 좌표예제=document.querySelector('#좌표예제');
@@ -148,15 +150,5 @@ function 리스너_바디_click(e) {
 }
 리스너_바디.addEventListener('click',리스너_바디_click);
 
-let 임시이벤트=document.querySelector('#임시이벤트');
-function 임시이벤트함수1(e) {
-  console.log('임시1');
-  function 내부의이벤트에등록된함수() {console.log('내부의이벤트에등록된함수()')}
-  e.target.addEventListener('click',내부의이벤트에등록된함수);
-  //첫회차에서는 등록만되는것이고 2회차부터 실행되면서 누적된다.
-  내부의이벤트에등록된함수();
-  //다음처럼 remove해주면 중첩방지
-  e.target.removeEventListener('click',내부의이벤트에등록된함수);
-}
-임시이벤트.addEventListener('click', 임시이벤트함수1);
+
 
