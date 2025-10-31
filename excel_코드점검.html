@@ -6111,13 +6111,26 @@ function 임시이벤트함수1(e) {
           <a style="margin-left:10px;" href="https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%A0%9C%EA%B1%B0-%ED%95%9C%EB%B2%88%EB%A7%8C-%EC%8B%A4%ED%96%89%EB%90%98%EA%B2%8C-%ED%95%98%EA%B8%B0-removeEventListener-once" target="_blank">이벤트리스너 제거, 한번만 실행방법</a>
         
         </h6>
-        <h6 class="fw-bold" style="position: relative;">• js파일 script에 연결을 head에 하면 리스너 등록이 안된다?</h6>
-        <h6 class="fw-bold" style="position: relative;">• 리스너 등록된 요소의 복사본은 등록이 안되어 있는 상태이다.</h6>
-        <h6 class="fw-bold" style="position: relative;">• 요소를 마우스 드래그로 이동</h6>
+        <h6 class="fw-bold">• js파일 script에 연결을 head에 하면 리스너 등록이 안된다?</h6>
+        <h6 style="margin-left:10px">- 순서대로 읽으므로 body를 읽지않은 상태.</h6>
+        <h6 style="margin-left:10px">- js파일을 body 맨 마지막에 링크걸기</h6>
+        <h6 class="fw-bold">• 객체.addEventListener('click',실행할함수);</h6>
+        <h6 style="margin-left:10px">- 자체로써 실행문이고 같은 실행문을 여러번 만나면, 여러번 실행된다.</h6>
+        <h6 style="margin-left:10px">- 이벤트 핸들러(onclick)은 마지막꺼만 실행된다.</h6>
+        <h6 style="margin-left:10px" class="blueviolet fw-bold">- 따라서 window.removeEventListener 메소드로 지워줘야하는 경우가 생긴다.</h6>
+        <h6 style="margin-left:21px" class="blueviolet fw-bold">그런 경우 예시 : 요소를 마우스로 드래그하는 기능 구현시</h6>
+        <h6 class="fw-bold">• 요소를 마우스 드래그로 이동, position:absolute지정후 top,left값 변경으로 이동</h6>
+        <h6 style="margin-left:10px">- mousedown : 마우스를 눌렀을때</h6>
+        <h6 style="margin-left:10px">- mousemove : 마우스를 움직일때</h6>
+        <h6 style="margin-left:10px">- mousedup : 마우스를 뗏을때</h6>
+        <h6 class="fw-bold">• id="요소마우스드래그" div 안에 3개의 position:absolute 상자(빨강, 노랑, 블루)</h6>
+        <button style="border:1px solid black;margin-left:10px;margin-bottom:5px;" id="마우스down등록버튼" onclick="예제_마우스down이벤트등록(this)">id="요소마우스드래그"에 mousedown이벤트 등록실행</button> <span>_</span>
+        <h6 style="margin-left:10px">1) mousedown시 체크사항 <span class="blueviolet fw-bold">전역영역에 한번</span></h6>
+        <h6 style="margin-left:26px" class="blueviolet fw-bold">a) 색깔상자를 클릭했는지 <span style="color:black">(드래그 이동할 요소를 클릭했는지)</span> </h6>
         <div id="요소마우스드래그" style="border:1px solid black;height:100px;padding:10px;margin-right:20px;">
-          <div style="position:absolute;width:50px;height:50px;background-color:red;left:1250px;left:50px;" class="d-inline-block"></div>
-          <div style="position:absolute;width:50px;height:50px;background-color:yellow;left:1450px;left:250px;" class="d-inline-block"></div>
-          <div style="position:absolute;width:50px;height:50px;background-color:blueviolet;left:1650px;left:450px;" class="d-inline-block"></div>
+          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:red;left:1250px;left:50px;" class="d-inline-block"></div>
+          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:yellow;left:1450px;left:250px;" class="d-inline-block"></div>
+          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:blueviolet;left:1650px;left:450px;" class="d-inline-block"></div>
 
         </div>
       </div>
