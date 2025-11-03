@@ -6124,13 +6124,12 @@ function 임시이벤트함수1(e) {
         <h6 style="margin-left:10px">- mousemove : 마우스를 움직일때</h6>
         <h6 style="margin-left:10px">- mousedup : 마우스를 뗏을때</h6>
         <h6 class="fw-bold">• id="요소마우스드래그" div 안에 3개의 position:absolute 상자(빨강, 노랑, 블루)</h6>
-        <button style="border:1px solid black;margin-left:10px;margin-bottom:5px;" id="마우스down등록버튼" onclick="예제_마우스down이벤트등록(this)">id="요소마우스드래그"에 mousedown이벤트 등록실행</button> <span>_</span>
         <h6 style="margin-left:10px">1) mousedown시 체크사항 <span class="blueviolet fw-bold">전역영역에 한번</span></h6>
         <h6 style="margin-left:26px" class="blueviolet fw-bold">a) 색깔상자를 클릭했는지 <span style="color:black">(드래그 이동할 요소를 클릭했는지)</span> </h6>
-        <div id="요소마우스드래그" style="border:1px solid black;height:100px;padding:10px;margin-right:20px;">
-          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:red;left:1250px;left:50px;" class="d-inline-block"></div>
-          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:yellow;left:1450px;left:250px;" class="d-inline-block"></div>
-          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:blueviolet;left:1650px;left:450px;" class="d-inline-block"></div>
+        <div id="요소마우스드래그" style="border:1px solid black;height:100px;padding:10px;margin-right:20px;position: relative;">
+          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:red;left:1250px;left:50px;top:0px;" class="d-inline-block"></div>
+          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:yellow;left:1450px;left:250px;top:0px;" class="d-inline-block"></div>
+          <div class="드래그요소" style="position:absolute;width:50px;height:50px;background-color:blueviolet;left:1650px;left:450px;top:0px;" class="d-inline-block"></div>
 
         </div>
       </div>

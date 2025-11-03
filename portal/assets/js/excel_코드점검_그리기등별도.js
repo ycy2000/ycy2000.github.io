@@ -285,34 +285,85 @@ function 캔버스_개별카테고리_h6의title과id순서() {
   });
 }
 
-function 예제_마우스down이벤트등록(인라인this) {
-  //인라인this는 html 버튼태그
-  if (인라인this.nextElementSibling.innerHTML!='등록됨') {
-    인라인this.classList.add('등록됨');
-    인라인this.nextElementSibling.innerHTML='등록됨';
-    document.querySelector('#요소마우스드래그').addEventListener('mousedown',요소mousedown);
-  }
-}
 function 요소mousedown(e) {
-  let 기준요소=document.querySelector('#요소마우스드래그');
-  let 기준요소좌표=기준요소.getBoundingClientRect();
-  // 기준요소 x,left,y,top,bottom,right,width,height
-  let top_0_기준_x=기준요소좌표.x - window.scrollX;
-  let top_0_기준_y=기준요소좌표.y - window.scrollY;
-  // 기준점 : 스크롤시 변동됨. 요소의 TOP이 0 인 좌표.
-  // client기준 마우스포인터의 좌표는 : e.clientX, e.clientY
-  // 요소의 TOP값 : e.clientX - 
-  console.log(top_0_기준_x,',',top_0_기준_y);
+  // 터치 이벤트인지 마우스 이벤트인지 확인
+  var isTouchEvent = e.type === 'touchstart';
+  var target = isTouchEvent ? e.touches[0].target : e.target;
 
+  if (!e.target.classList.contains('드래그요소')) {return;}
+  console.log('mousedown or touchstart 이벤트 시작');
 
-  function 요소mousemove (e) {
+  var isDragging = true;
+  var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0;
+  var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0;
+
+  //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
+  //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+  //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+
+  var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+  var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+
+  // 부모 요소의 경계를 확인 (마우스이벤트예제div)
+  var 부모_경계 = document.querySelector('#요소마우스드래그').getBoundingClientRect();
+  var 상자_너비 = target.offsetWidth;
+  var 상자_높이 = target.offsetHeight;
+
+  function 마우스moveOrTouchmove(e) {
+      if (!isDragging) return;
+
+      console.log('마우스moveOrTouchmove(e)')
+
+      // 화면 스크롤 방지 (모바일)
+      if (isTouchEvent) {
+          e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
+          //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+      }
+
+      // 터치 이벤트인지 마우스 이벤트인지 확인
+      var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+      var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+
+      var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+      var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+
+      // 새로운 위치 계산
+      var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+      var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+
+      // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+      if (새로운_상자_위치_y < 0) {
+          새로운_상자_위치_y = 0;
+      }
+      if (새로운_상자_위치_x < 0) {
+          새로운_상자_위치_x = 0;
+      }
+      if (새로운_상자_위치_y + 상자_높이 > 부모_경계.height) {
+          새로운_상자_위치_y = 부모_경계.height - 상자_높이;
+      }
+      if (새로운_상자_위치_x + 상자_너비 > 부모_경계.width) {
+          새로운_상자_위치_x = 부모_경계.width - 상자_너비;
+      }
+
+      // 상자 위치 적용
+      target.style.top = 새로운_상자_위치_y + 'px';
+      target.style.left = 새로운_상자_위치_x + 'px';
   }
-  function 요소mouseup (e) {
+
+  function 마우스upOrTouchend() {
+      if (!isDragging) return;
+
+      console.log('마우스up 또는 터치end 이벤트 발생');
+      isDragging = false;
+
+      // 이벤트 제거
+      window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+      window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
   }
-  기준요소.addEventListener('mousemove',요소mousemove);
-  기준요소.addEventListener('mouseup',요소mouseup);
+
+  // 이벤트 추가
+  window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+  window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
 }
-
-
 
 

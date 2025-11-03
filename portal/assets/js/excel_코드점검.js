@@ -144,9 +144,11 @@ function 리스너_바디_click(e) {
 
     전체변수h6title=e.target.title;
     전체대체에셑팅();
+    if (전체변수h6title=='JS이벤트리스너2') {document.querySelector('#요소마우스드래그').addEventListener('mousedown',요소mousedown);}
   }
 }
 리스너_바디.addEventListener('click',리스너_바디_click);
+
 
 
 
