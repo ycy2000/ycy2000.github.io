@@ -1,0 +1,45 @@
+@charset "UTF-8";
+#head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
+
+#js카테고리생성 > button {margin-right:-2px;}
+/* .개별카테고리 > div : div가 3개이고, 세로 선긋기 2개 position: absolute;*/
+body {white-space: nowrap;}
+code {color:black;display:block;}
+.offcanvas-header {border-bottom:1px solid rgb(201, 188, 188)}
+.선택카테고리 {background-color: chocolate;}
+.개별카테고리 > div {display:inline-block; width:610px;vertical-align: top;}
+.개별카테고리 > div > h6 {overflow: hidden;}
+.개별카테고리 > div > h6:hover {overflow:visible; white-space:wrap; background-color: yellow;}
+.개별카테고리세로1 {display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:613px;}
+.개별카테고리세로2 {display:inline-block;position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:1227px;}
+.대체2줄 > div {display:inline-block;width:940px;vertical-align: top;}
+.대체2줄세로1h6 {position: absolute; border-right:1px solid rgb(201, 188, 188);height:900px;left:949px;}
+.대체3줄 > div {display:inline-block; width:610px;vertical-align: top;}
+.대체3줄세로1h6 {display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:613px;}
+.대체3줄세로2h6 {display:inline-block;position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:1227px;}
+
+
+
+
+
+
+#우원원본풀기js > div {display: inline-block;margin-right:5px;vertical-align: top;border:2px solid black;}
+#우원원본풀기js table {margin-bottom:-1px;}
+#우원원본풀기js tr td {border:1px solid black;}
+#우원원본풀기js > div:nth-of-type(1) tr td:nth-of-type(1) {width:150px}
+#우원원본풀기js > div:nth-of-type(2) tr td:nth-of-type(1) {width:120px}
+#우원원본풀기js > div:nth-of-type(3) tr td:nth-of-type(1) {width:110px}
+#우원원본풀기js > div:nth-of-type(4) tr td:nth-of-type(1) {width:135px}
+#우원원본풀기js > div:nth-of-type(5) tr td:nth-of-type(1) {width:170px}
+#우원원본풀기js tr td:nth-of-type(2) {width:105px}
+#우원원본풀기js > div:nth-of-type(2) tr td:nth-of-type(2) {width:110px}
+#우원원본풀기js > div:nth-of-type(3) tr td:nth-of-type(2) {width:100px}
+#우원원본풀기js > div:nth-of-type(4) tr td:nth-of-type(2) {width:90px}
+#우원원본풀기js > div:nth-of-type(5) tr td:nth-of-type(2) {width:100px}
+#우원원본풀기js tr td:nth-of-type(3) {width:100px}
+#우원원본풀기js > div:nth-of-type(3) tr td:nth-of-type(3) {width:75px}
+#우원원본풀기js > div:nth-of-type(4) tr td:nth-of-type(3) {width:75px}
+#우원원본풀기js > div:nth-of-type(5) tr td:nth-of-type(3) {width:85px}
+#우원원본풀기js tr td:nth-of-type(4) {width:35px}
+
+
