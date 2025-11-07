@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* 전체글꼴 */
+body, pre {font-family: 'Noto Serif KR', serif;}
 #head_button_group {background-color: rgb(247, 244, 241);z-index: 999;}
 
 #js카테고리생성 > button {margin-right:-2px;}
@@ -17,7 +19,36 @@ code {color:black;display:block;}
 .대체3줄 > div {display:inline-block; width:610px;vertical-align: top;}
 .대체3줄세로1h6 {display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:613px;}
 .대체3줄세로2h6 {display:inline-block;position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:1227px;}
+.폭_육십퍼 {width:60%; margin:0 auto;}
 
+#id나열 > div > span, #title나열 > div > span, #js파일리스트기록 > div > span {border:1px solid black;display: inline-block;}
+#id나열 > div > span:nth-of-type(1), #title나열 > div > span:nth-of-type(1) {padding:0px 4px; text-align: center;}/* width는 js로*/
+#js파일리스트기록 > div > span:nth-of-type(1) {padding:0px 4px;width:170px;vertical-align: top;}
+#id나열 > div > span:nth-of-type(2), #title나열 > div > span:nth-of-type(2), #js파일리스트기록 > div > span:nth-of-type(2) {padding:0px 4px;}/* width는 js로*/
+#title나열 > div > span:nth-of-type(3), #js파일리스트기록 > div > span:nth-of-type(3) {padding:0px 4px;}/* width는 js로*/
+#title나열 > div > span:nth-of-type(4), #js파일리스트기록 > div > span:nth-of-type(4) {padding:0px 4px;}/* width는 js로*/
+
+.폼control이벤트 {border:1px solid black;padding:0 5px;vertical-align: top;width:138px;background-color: cadetblue;}
+.폼control이벤트 > code:first-child {border-bottom:1px solid black;font-size:20px;}
+.폼컨트롤이벤트_단독기능보라_클래스 {color:blueviolet;}
+.폼컨트롤이벤트_단독기능노랑_클래스 {color:yellow;}
+.폼컨트롤이벤트_모두포함브라운_클래스 {color:brown;}
+
+.보숨토글버튼 {border:1px solid black;display: inline-block; width:60px;padding:3px 0px;}
+.노랑바탕색 {background-color: yellow;} /* 캔버스_개별카테고리_h6의title과id순서 */
+.검색결과바탕색 {background-color:chocolate;}
+.띄움20 {text-indent: 20px;}
+.띄움41 {text-indent: 41px;}
+.blueviolet {color:blueviolet}
+
+.결과표, .제목, .결과 {display: inline-block;}
+.제목 {width:120;text-align: center;}
+.결과 {width:110px;text-align: center;margin-left:-5px;border-left:none;}
+.제목 > div, .결과 > div {border:1px solid black;margin-bottom:-1px;height:26px;}
+#결과표_전체 textarea {display:inline-block;height:26px;width:140px;resize:none;margin-bottom:-7px;margin-left:-30px;}
+.src있음 {background-color: yellow;}
+.미사용src {border:1px solid black; background-color:white;position: absolute;display:block;}
+.미사용src > div {text-align: left;}
 
 
 
@@ -43,3 +74,13 @@ code {color:black;display:block;}
 #우원원본풀기js tr td:nth-of-type(4) {width:35px}
 
 
+/* top 으로 이동하는 버튼*/
+.back-to-top-css {
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    opacity: 0.5;
+    /* display: none; */
+}
+.back-to-top-css:hover {opacity: 1;}

@@ -9,7 +9,6 @@
 <!-- cdn으로 연결하여 css를 사용할수 있게 함.다운받아서 연결하는 방법도 있다.. -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <!--업무참고 css-->
-<link href="portal/assets/css/default.css" rel="stylesheet">
 <link href="portal/assets/css/index.css" rel="stylesheet">
 <!--구글폰트 font-family: 'Noto Serif KR', serif;> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +21,7 @@
 <header id="head_button_group" class="container-fluid">
   <nav class="navbar bg-body-tertiary pt-1 m-0" style="white-space: nowrap;">    
     <div class="container-fluid">
-      <div><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
+      <div style="white-space: nowrap;"><!--숨김아이콘버튼 누르면 id="navbarSupportedContent"보이게된다 -->
         <button class="navbar-toggler d-inline-block p-0 me-2" type="button" data-bs-toggle="collapse" 
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -58,8 +57,6 @@
     </div>
   </nav>
 </header>
-
-<div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
 <div id="스티커_수품원" class="d-none" style="position: absolute;background-color: white;border:1px solid black;">
   <button onclick="document.querySelector('#스티커_수품원').classList.add('d-none')">X</button>
   <div id="스티커_수품원_내용"></div>
@@ -89,104 +86,377 @@
 </div>
 
 
-<!-- 캔버스관련모두감싸기, 카테고리정보 -->
+<!-- 캔버스관련모두감싸기 안에, 캔버스ID별로 H6작성되어있음(구조지켜야함,H6의 위치), ID는 따로 아래에 있음 -->
 <div class="d-none 캔버스관련모두감싸기">
-  <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
   <div id="보세_유니패스전체" class="d-none 캔버스">
-    <div class="개별카테고리" id="보세유니패스전체_용어_고시_대장"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div class="개별카테고리" id="용어_고시_대장"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 특허보세구역 관련 알아야할 것들, 대장작성해야할 것들 --</h6>
-        <h6 class="canvas_div fw-bold" title="_07_대장게시등_게시사항" >특허장의 게시 등 : 간판, 안내문, 게시사항</h6>
-        <h6 class="canvas_div fw-bold" style="color:blueviolet;" title="_07_대장게시등_설명이필요한대장들">화물관련 대장 (종류) </h6>
+        <h6 title="_07_대장게시등_게시사항" >특허장의 게시 등 : 간판, 안내문, 게시사항</h6>
+        <h6 style="color:blueviolet;" title="_07_대장게시등_설명이필요한대장들">화물관련 대장 (종류) </h6>
       </div>
       <div>
       </div>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 용어 및 참고 --</h6>
-        <h6 class="canvas_div" title="_01_보세화물_01_보세화물" >통관, 보세화물, 관리화물 등 용어</h6>
-        <h6 class="canvas_div" title="_01_보세화물_02_반입및검사" >물품의 반입, 검사</h6>
-        <h6 class="canvas_div" title="_01_보세화물_02_식물" >식물. 염장와사비줄기 식물검역대상아닐수있다?</h6>
-        <h6 class="canvas_div" title="_01_보세화물_03_BL과DO등" >M/BL, H/BL, 선사 D/O, 포딩 D/O, 유산스</h6>
-        <h6 class="canvas_div" title="_01_보세화물_04_물품반입반출유형" >물품반입 유형, 물품반출 유형, 선용품 관련</h6>
-        <h6 class="canvas_div" title="_01_보세화물_05_미래" >미래소프트 보세프로그램</h6>
+        <h6 title="_01_보세화물_01_보세화물" >통관, 보세화물, 관리화물 등 용어</h6>
+        <h6 title="_01_보세화물_02_반입및검사" >물품의 반입, 검사</h6>
+        <h6 title="_01_보세화물_02_식물" >식물. 염장와사비줄기 식물검역대상아닐수있다?</h6>
+        <h6 title="_01_보세화물_03_BL과DO등" >M/BL, H/BL, 선사 D/O, 포딩 D/O, 유산스</h6>
+        <h6 title="_01_보세화물_04_물품반입반출유형" >물품반입 유형, 물품반출 유형, 선용품 관련</h6>
+        <h6 title="_01_보세화물_05_미래" >미래소프트 보세프로그램</h6>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 고시 --</h6>
-        <h6 class="canvas_div" title="_05_고시_01_pdf파일전체보기" >pdf파일전체보기</h6>
-        <h6 class="canvas_div" title="_05_고시_10_특허보세구역운영에관한고시" >특허보세구역운영에관한고시</h6>
-        <h6 class="canvas_div" title="_05_고시_20_자율관리보세구역운영에관한고시" >자율관리보세구역운영에관한고시</h6>
-        <h6 class="canvas_div" title="_05_고시_30_보세화물입출항하선하기및적재에관한고시" >보세화물입출항하선하기및적재에관한고시</h6>
-        <h6 class="canvas_div" title="_05_고시_40_보세화물관리에관한고시" >보세화물관리에관한고시</h6>
-        <h6 class="canvas_div" title="_05_고시_50_컨테이너관리에관한고시" >컨테이너관리에관한고시</h6>
-        <h6 class="canvas_div" title="_05_고시_60_관리대상화물관리에관한고시" >관리대상화물관리에관한고시</h6>
-        <h6 class="canvas_div" title="_05_고시_70_보세운송에관한고시" >보세운송에관한고시</h6>
+        <h6 title="_05_고시_01_pdf파일전체보기" >pdf파일전체보기</h6>
+        <h6 title="_05_고시_10_특허보세구역운영에관한고시" >특허보세구역운영에관한고시</h6>
+        <h6 title="_05_고시_20_자율관리보세구역운영에관한고시" >자율관리보세구역운영에관한고시</h6>
+        <h6 title="_05_고시_30_보세화물입출항하선하기및적재에관한고시" >보세화물입출항하선하기및적재에관한고시</h6>
+        <h6 title="_05_고시_40_보세화물관리에관한고시" >보세화물관리에관한고시</h6>
+        <h6 title="_05_고시_50_컨테이너관리에관한고시" >컨테이너관리에관한고시</h6>
+        <h6 title="_05_고시_60_관리대상화물관리에관한고시" >관리대상화물관리에관한고시</h6>
+        <h6 title="_05_고시_70_보세운송에관한고시" >보세운송에관한고시</h6>
       </div>
     </div>
-    <div class="개별카테고리" id="보세유니패스전체_유니패스_반출입"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div class="개별카테고리" id="유니패스_반출입"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="개별카테고리세로1"></h6><h6 class="개별카테고리세로2"></h6>
       <div>
-        <h6 class="canvas_div" title="_02_세관_01_조직도업무분장연락처" >세관 부호, 조직도, 업무분장, 연락처</h6>
-        <h6 class="canvas_div" title="_02_세관_02_유니패스란" >유니패스란? 로그인, 인증서등록, 화물조회</h6>
-        <h6 class="canvas_div" title="_02_세관_03_문서재수신" >문서재수신(1개월 내), 재고다운로드, ?고지서?</h6>
-        <h6 class="canvas_div" title="_02_세관_04_01_특허보세구역게시" >특허보세구역, 자율관리보세구역, 게시 의무</h6>
+        <h6 title="_02_세관_01_조직도업무분장연락처" >세관 부호, 조직도, 업무분장, 연락처</h6>
+        <h6 title="_02_세관_02_유니패스란" >유니패스란? 로그인, 인증서등록, 화물조회</h6>
+        <h6 title="_02_세관_03_문서재수신" >문서재수신(1개월 내), 재고다운로드, ?고지서?</h6>
+        <h6 title="_02_세관_04_01_특허보세구역게시" >특허보세구역, 자율관리보세구역, 게시 의무</h6>
       </div>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 반입신고, 반출신고 (전자문서) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순01_01문서수신" >보세프로그램으로 세관 유니패스 문서 수신하기</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순02_01반입등록" >보세화물 반입신고(등록, 송신, 수신, 확인)</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순03_반출관련" >보세화물 반출신고(등록, 송신, 수신, 확인)</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순04_내국화물" >내국화물 반입 및 반출신고, 오류처리 ★</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순08_전산재고조사" >X내국물품반출입신고 검증 및 전산재고조사</h6>
+        <h6 title="_06_반출입_파순01_01문서수신" >보세프로그램으로 세관 유니패스 문서 수신하기</h6>
+        <h6 title="_06_반출입_파순02_01반입등록" >보세화물 반입신고(등록, 송신, 수신, 확인)</h6>
+        <h6 title="_06_반출입_파순03_반출관련" >보세화물 반출신고(등록, 송신, 수신, 확인)</h6>
+        <h6 title="_06_반출입_파순04_내국화물" >내국화물 반입 및 반출신고, 오류처리 ★</h6>
+        <h6 title="_06_반출입_파순08_전산재고조사" >X내국물품반출입신고 검증 및 전산재고조사</h6>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 체화 (등록, 우편발송, 전산통고) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순05_체화등록통고" >체화등록, 체화통고, 통고서 출력</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순06_체화등록통고엑셀활용" >(체화) 반출통고서 출력 엑셀활용</h6>
+        <h6 title="_06_반출입_파순05_체화등록통고" >체화등록, 체화통고, 통고서 출력</h6>
+        <h6 title="_06_반출입_파순06_체화등록통고엑셀활용" >(체화) 반출통고서 출력 엑셀활용</h6>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 전자seal (1.관리화물, 2.보세운송 검사대상) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순07_관리화물전자SEAL" >전자seal(관리화물과 보세운송 검사대상)</h6>
+        <h6 title="_06_반출입_파순07_관리화물전자SEAL" >전자seal(관리화물과 보세운송 검사대상)</h6>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 보세운송차량기록지 (도착시간, 차량번호) --</h6>
-        <h6 class="canvas_div" title="_06_반출입_파순08_보세운송차량기록" >★보세운송차량 기록 및 확인</h6>
+        <h6 title="_06_반출입_파순08_보세운송차량기록" >★보세운송차량 기록 및 확인</h6>
       </div>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 반입이상보고, 반출입신고의 정정(정정 또는 삭제) 신청 --</h6>
-        <h6 class="canvas_div" title="_03_세관_01_유니패스업무_01_이상보고" >반입물품 이상보고 (첨부서류 사후제출)</h6>
-        <h6 class="canvas_div" title="_03_세관_02_반입정정" >보세화물 반입 정정 승인 신청</h6>
-        <h6 class="canvas_div" title="_03_세관_02_반출정정" >보세화물 반출 정정 승인 신청</h6>
+        <h6 title="_03_세관_01_유니패스업무_01_이상보고" >반입물품 이상보고 (첨부서류 사후제출)</h6>
+        <h6 title="_03_세관_02_반입정정" >보세화물 반입 정정 승인 신청</h6>
+        <h6 title="_03_세관_02_반출정정" >보세화물 반출 정정 승인 신청</h6>
       </div>
     </div>
-    <div class="개별카테고리" id="보세유니패스전체_미래소프트"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div class="개별카테고리" id="미래소프트"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="개별카테고리세로1"></h6><h6 class="개별카테고리세로2"></h6>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 중량체크, 검품정보, 미래소프트 즐겨찾기 --</h6>
-        <h6 class="canvas_div" title="_08_팔번_중량체크관련" >중량체크 방법 [계근정보 입력]</h6>
-        <h6 class="canvas_div" title="_08_팔번_중량체크관련엑셀파일사용법" >계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</h6>
-        <h6 class="canvas_div" title="_08_팔번_내국번호보는방법" >★ 내국번호는 입고내역×, 보는방법, 번호부여방식 등</h6>
-        <h6 class="canvas_div" title="_08_팔번_검품정보" >검품정보 전산에서 확인방법 (출입자일보에 입고일자 누락시)</h6>
-        <h6 class="canvas_div" title="_08_팔번_즐겨찾기" >영업프로그램 즐겨찾기 추가 삭제</h6>
+        <h6 title="_08_팔번_중량체크관련" >중량체크 방법 [계근정보 입력]</h6>
+        <h6 title="_08_팔번_중량체크관련엑셀파일사용법" >계근정보 입력후, 삼성웰스토리 중량체크 관련 업무순서</h6>
+        <h6 title="_08_팔번_내국번호보는방법" >★ 내국번호는 입고내역×, 보는방법, 번호부여방식 등</h6>
+        <h6 title="_08_팔번_검품정보" >검품정보 전산에서 확인방법 (출입자일보에 입고일자 누락시)</h6>
+        <h6 title="_08_팔번_즐겨찾기" >영업프로그램 즐겨찾기 추가 삭제</h6>
       </div>
       <div>
         <h6 style="color:blueviolet;" class="fw-bold" >-- 영업프로그램 --</h6>
-        <h6 class="canvas_div" title="_08_팔번_영업재고에통관수량등록" >영업재고에 "통관수량" 등록</h6>
-        <h6 class="canvas_div" title="_08_팔번_재고수정원산지부분" style="font-weight: bold;">재고정보수정(원산지부분 BL띄울때, 재고정보에 반영). 수정메뉴는 입고정보 수정이다</h6>
+        <h6 title="_08_팔번_영업재고에통관수량등록" >영업재고에 "통관수량" 등록</h6>
+        <h6 title="_08_팔번_재고수정원산지부분" style="font-weight: bold;">재고정보수정(원산지부분 BL띄울때, 재고정보에 반영). 수정메뉴는 입고정보 수정이다</h6>
       </div>
     </div>
-    <div class="개별카테고리" id="보세유니패스전체_세관에보고_제출"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div class="개별카테고리" id="세관에보고_제출"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <h6 class="개별카테고리세로1"></h6><h6 class="개별카테고리세로2"></h6>
       <div>
         <h6 style="color:blueviolet;font-weight: bold;">-- 1년기준 세관에 보고 사항 --</h6>
-        <h6 class="canvas_div" title="_04_세관_01_운영상황의보고" >1.특허보세구역 운영상황의 보고, 재고조사 보고 (자율점검표 제출시, 재고조사 보고일자 기재하여야 하므로, 제출일자를 기록해놓습니다)</h6>
-        <h6 class="canvas_div" title="_04_세관_01_자율관리보세구역자율점검표제출" >2.자율관리보세구역 자율점검표 제출</h6>
-        <h6 class="canvas_div" title="_04_세관_03_법규수행평가자료준비" >3.법규수행능력평가 자료 작성 및 제출 (전산)</h6>
+        <h6 title="_04_세관_01_운영상황의보고" >1.특허보세구역 운영상황의 보고, 재고조사 보고 (자율점검표 제출시, 재고조사 보고일자 기재하여야 하므로, 제출일자를 기록해놓습니다)</h6>
+        <h6 title="_04_세관_01_자율관리보세구역자율점검표제출" >2.자율관리보세구역 자율점검표 제출</h6>
+        <h6 title="_04_세관_03_법규수행평가자료준비" >3.법규수행능력평가 자료 작성 및 제출 (전산)</h6>
         <h6>법규준수도, 법규수행능력평가 점수 확인방법</h6>
-        <h6 class="canvas_div" title="_04_세관_04_특허갱신시" >특허갱신시 자료 작성 및 제출 (직접 제출)</h6>
+        <h6 title="_04_세관_04_특허갱신시" >특허갱신시 자료 작성 및 제출 (직접 제출)</h6>
       </div>
       <div>
       </div>
       <div>
-        <h6 class="canvas_div fw-bold" title="_04_세관_04_운영상황보고공문" >운영상황보고 공문 (25년도 보고함, 제출일자 : 2월12일, 두군데 메일)</h6>
-        <h6 class="canvas_div fw-bold" title="_04_세관_04_자율보세구역" >자율관리보세구역 운영상황 보고 (25년4월4일 제출)</h6>
+        <h6 title="_04_세관_04_운영상황보고공문" >운영상황보고 공문 (25년도 보고함, 제출일자 : 2월12일, 두군데 메일)</h6>
+        <h6 title="_04_세관_04_자율보세구역" >자율관리보세구역 운영상황 보고 (25년4월4일 제출)</h6>
       </div>
     </div>
   </div>
+  <div id="전달사항_공문_발행물전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="여보세요">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_07_09_대장관련_여보세요" >★세관 여!보세요 발행물 <span style="color:blueviolet" class="fw-bold">모음</span>  [관세법령교육에 활용]</h6>
+        <h6 title="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정" >★23년11월, <span style="color:blueviolet" class="fw-bold">특허심사평가항목배점조정</span></h6>
+        <h6><span style="color:blueviolet">[메모]23년4월 : </span>수입신고수리화물의 반출기한이 토요일이면? => 관세법 제8조(기간 및 기한의 계산), 토요일 또는 공휴일에
+        해당한 때에는 그 익일에 만료, 월요일까지 반출시 과태료 부과대상이 아님
+        </h6>
+        <h6><span style="color:blueviolet">[메모]23년4월 : 보세사등록취소 위반시 '특허보세구역 운영에 관한 고시' 제18조에 따라 행정제재(주의,경고) 대상</span>
+          <br>고시 17조 : 보세구역에 종사하는 직원을 채용 또는 면직한 때에는 즉시 세관장에게 보고 → 세관장은 보고 내용 확인 후 등록취소
+        </h6>
+        <h6><span style="color:blueviolet">[메모]23년5월 : 폐기물품 반출시, 반출신고를 당일에하지 않으면 과태료가 있음</span></h6>
+        <h6><span style="color:blueviolet">[메모]23년5월 : 반출통고 누락시 '보세구역 경고처분'</span></h6>
+        <h6><span style="color:blueviolet">[메모]23년6월 : 보세구역 정기점검 일정은,</span><br>
+        최소 7일 전에 통보하고, 작업량이 많은 시간대(월요일 또는 오전시간) 현장점검을 줄여 부담 최소화 하도록 노력.
+        </h6>
+        <h6><span style="color:blueviolet">[메모]23년6월 : 전자씰 해제법,</span><br>
+          1. 보세운송건사 전자씰 해제법 : 보세사가 봉인이상 여부 확인 후 (해제등록 후) 전자씰 해제 <br>
+          2. 관리대상화물 전자씰 해제법 : (확인 후 해제등록 한 뒤) 세관공무원 입회한 상태에서 지시에 따라 씰 해제 및 컨테이너 개장
+        </h6>
+        <h6><span style="color:blueviolet">[메모]23년6월 : CCTV 사용(조회) 권한 제공시 법규수행능력 점수 3점 부여!</span></h6>
+      </div>
+      <div>
+        <h6><span style="color:blueviolet">[메모]23년7월 : 반입신고 누락 주의</span><br>
+          관세법 제277조 제5항 제2호, 200만원 이하의 과태료처분 + 행정제재
+        </h6>
+        <h6><span style="color:blueviolet">[메모]23년8월★★ : 법령개정 정보, 컨테이너화물 하선장소 반입기간을 5일로 연장!!</span><br>
+          '보세화물 입출항 하선하기 및 적재에 관한 고시, 제19조 제1항, 하선(기)장소 반입의무기간'<br>
+          컨테이너 선박의 초대형화 및 부두 장치율 상승 등에 대응하여 컨테이너화물 하선장소 반입기간을 5일로 연장.
+        </h6>
+        <h6><span style="color:blueviolet">23년10월,11월★★ : 법령개정 정보, 시설높이 요건 삭제!! <b>(div)</b> </span><br>
+          '특허보세구역운영에관한 고시 제10조제1항제6호' 삭제<br>
+          지게차, 이동식 컨베이어 등 다양한 화물 상하차 수단이 활용되고 있는 여건을 반영하여<br>
+          민간에서 자율운영 가능하도록 시설높이 요건 삭제.
+        </h6>
+        <h6><span style="color:blueviolet" class="fw-bold">[메모]23년12월★★ : 보세사 및 직원!! 퇴사 등 미신고시 행정제재!!</span><br>
+          보세사 등록 : 물류협회<br>
+          보세사 퇴사 및 업무변경 신고 : 세관<br>
+          보세사 미등록 근무시 500만원 이하 벌금 (관세법276조 제5항)<br>
+          퇴사 및 직원변경 미신고시 행정제제 '주의' 처분 (특허보세구역 운영에 관한 고시 제18조 제1항 제1호)
+        </h6>
+        <h6><span style="color:blueviolet">[메모]24년1월 : 23년도 법규수행능력평가 결과 통보</span><br>
+          A등급(91개), B등급(49개), C등급 이하(10개), D등급 업체는 개선이행계획서 징구 후 관리예정
+        </h6>
+      </div>
+      <div>
+        <h6><span style="color:blueviolet" class="fw-bold">[메모]24년10월 : '보세창고 출입자 관리대장 양식 통일 안내'</span>
+          <br>
+          양식 출력이 필요한 분은 <u>yoboseyo@modoo.at</u>에서 다운받아 사용하십시오.
+        </h6>
+        <h6><span style="color:blueviolet" class="fw-bold">[메모]24년11월 발행분까지 내용 확인하였음</span>
+        </h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="보세구역전달사항">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_07_보세구역전달사항" >★보세구역전달사항 일부 모음</h6>
+        <h6 title="_07_보세구역전달사항_특별점검팀연락처" >보세구역 특별점검팀 연락처 2025.02.03</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="부산본부세관공문">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_07_본부세관관련공문등" >24.07.17, 28.08.08, CCTV접속정보 제공, CCTV관련 심사기준 추가사항(가감점 기준)</h6>
+        <h6 title="_07_보세운송등록차량확인프로그램" >24.12.23, 보세운송등록차량 확인시스템 사용여부 (가감점기준 아직)</h6>
+        <h6 title="_07_20250223_방화벽허용정책안내" >25.2.23, 2025.3.15개통예정... 방화벽허용정책관련 미래소프트에 확인함</h6>
+        <h6 title="_07_20250224_cctv대수와화소정보제공요청" >25.2.24, cctv대수와화소정보제공요청 (보세구역 전달사항)</h6>
+        <h6 title="_07_20250312_유니패스장비교체사업" >25.3.12, 유니패스 장비교체 사업, _07_20250223_방화벽허용정책안내 후속</h6>
+        <h6 title="_07_20250321_보세사업무대행신고서" >25.3.21, 보세사업무대행신고서 신설</h6>
+        <h6 title="_07_20250519_법규준수도제도개편설명회" >25.5.19, 법규준수도 제도 개편 설명회</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="식약청등공문">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_07_식약청등공문" >★식약청 등 공문</h6>
+      </div>
+      <div>
+        <h6 style="font-weight: bold;">-- 검역원, 방역본부</h6>
+        <h6 title="_07_수입식용축산물보관장검역시행장안전조치등협조요청" >20250703 수입식용축산물보관장 검역시행장 안전조치 등 협조요청</h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="다른지역세관공문">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_07_다른지역세관관련공문등" >★기타 다른지역 세관 관련 공문 (할당관세, 수입신고수리후 20일 이내 반출?)</h6>
+      </div>
+    </div>
+  </div>
+  <div id="수품원전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="등록공장">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 수산물 및 수산가공품의 검사 (위생관리기준서, 등록공장 개념은 나중에 나옴) --</h6>
+        <h6 title="_01_수산물_농수산물품질관리법제88조">1a. 농수산물 품질관리법 제88조 [검사를 받는 경우]</h6>
+        <h6 title="_01_수산물_수산물수산가공품검사기준에관한고시">1b. 수산물·수산가공품 검사기준에 관한 고시 [검사를 받는 경우, 표시기준]</h6>
+        <h6 style="text-indent: 15px;">[메모] 검사기준은 별표1, 별표1에 없는경우는 식품위생법 제7조에 정하여 고시한 </h6>
+        <h6 style="text-indent: 62px;">기준.규격 적용, 외국과의 협약 또는 검사신청인이 요구하는 기준이 있는</h6>
+        <h6 style="text-indent: 62px;">경우는 별도 또는 우선 적용할 수 있다. <span style="color:blueviolet;font-weight: bold;"> 별 내용 없음</span></h6>
+        <h6 title="_01_수산물_수산물수산가공품검사대상품목지정">2-1. [외국과의 협약에 따라] 검사를 받아야하는 대상 품목 지정</h6>
+        <h6 title="_01_수산물_수산물수산가공품검사대상품목세부내용">2-2. [외국과의 협약에 따라] 검사를 받아야하는 대상 품목 정보</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">-- a.수출하는 수산물을 보관하려면 '수출수산물등록시설'로 등록해야한다. ?? --</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">-- b.위생약정이 체결된 나라에 수산물을 수출하려면</h6>
+        <h6 style="color:blueviolet;font-weight: bold;text-indent: 33px;">a.에 더하여 각 약정체결나라별로 '등록시설로 등록'하여야 한다. --</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 등록하려면, 위생관리기준을 충족한 후 신청 > 검증 > 등록 순서 --</h6>
+        <h6 title="_01_수산물_수산물의생산가공시설위생관리기준">수산물의 생산.가공시설 위생관리기준 (+점검기준)</h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 수출수산물 검사 관련 등록공장(나라 간의 약정과 관련) --</h6>
+        <h6 title="_01_수품원_01_검사정보01" style="color:blueviolet;font-weight: bold;">☆수산물 수출검사 설명 (약정체결 국가 정보 등)</h6>
+        <h6 title="_01_수품원_02_약정체결아닌국가인경우">약정체결 아닌 국가인 경우 수출검사</h6>
+        <h6 title="_03_수품원_수출검사_화주교부">★화주 교부자료</h6>
+        <h6 title="_03_수품원_수출검사_실무참고_01">★신청,검사실무 참고</h6>
+        <h6 title="_03_수품원_수출검사_검사흐름도">약정체결/수출과정</h6>
+        <h6 title="_03_수출검사신청및확인방법">★수출검사 신청 및 확인 방법</h6>
+        <h6 title="_03_수품원_수출검사_검사신청_샘플">★자료 샘플 (전산신청 작성법) <span style="color:blueviolet"><u><b>생산량,검사량,재고량 기재방법 바뀜 [2024.02.27]</b></u></span></h6>
+        <h6 title="_03_수품원_수출검사_생산검사재고량기재방법바뀜" style="color:blueviolet;font-weight: bold;text-decoration: underline;">생산량,검사량,재고량 기재방법 바뀜[2024.02.27]</h6>
+        <h6 title="_03_수품원_수출검사_위임장">창고의 위임장 (작성방법)</h6>
+        <h6 title="_03_수품원_수출검사_가공일지">창고 가공일지 (작성방법) <span style="color:blueviolet;font-weight: bold;">(같은년도는 누적하여 작성, 년도가 바뀌면 새롭게 작성시작)</span></h6>
+        <h6 class="fw-bold">선상동결(삼치 등)은 그냥 신청하였음</h6>
+        <h6 class="fw-bold">육동은 동결한 곳의 가공일지 있어야함.(그곳이 등록공장이어야 함)</h6>
+        <h6>[메모]베트남 검사 기한 : 평일7일째 되는날까지</h6>
+        <h6>[메모]금요일은 방문검사 없음 (EX:목요일, 금요일 신청은 월요일 방문검사)</h6>
+      </div>
 
 
+    </div>
+    <div class="개별카테고리" id="기준서및점검정보">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 자체 위생관리기준서가 있어야하며...(위생관리기준 관련 문서) --</h6>
+        <h6 title="_01_수산물_위생관리기준서">[동일냉장의] 위생관리기준서 (위생관리기준과 크로스체크)</h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 기본적으로 1년 2회점검에서 22년도부터 기본 1회 점검으로 바뀜</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 점검결과에 대한 시정명령 → 시정완료후 완료보고서 제출 : 1회 추가점검과 관련없음</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 검사신청 건에 대한 결과에 '부적합'이 발생하는 경우 1회 추가점검 (년2회)</h6>
+
+      </div>
+      <div>
+        <h6 style="font-weight: bold;">-- 등록공장 점검준비 --</h6>
+        <h6 style="font-weight: bold;text-indent: 15px;">1. 점검계획 공문이 날라옴, 공문 안와도 점검일자 조율 전화연락 옴</h6>
+
+      </div>
+
+    </div>
+    <div class="개별카테고리" id="공문등">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 title="_01_등록공장점검2025년점검공문">등록공장점검 2025년 점검공문</h6>
+      </div>
+      <div>
+        <h6 title="_01_20250312_수산생물검역시행장점검처음">수산생물검역시행장 점검(처음) 2025년 3월 12일</h6>
+      </div>
+      <div>
+
+      </div>
+
+    </div>
+    <div class="개별카테고리" id="중국">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 등록공장 중, 중국관련 (등록, 변경 등을 중국 사이트에 해야함) --</h6>
+        <h6 title="_02_covid_중국사이트">사이트 알아보기 (로그인 등)</h6>
+        <h6 title="_02_covid_메모">제품등록 안되면 수출검사 안됨??</h6>
+        <h6 title="_02_covid_공문요청등경위">처음:업체정보(변경)등록요청 공문 등 경위</h6>
+        <h6 title="_02_covid_진행상태메모">진행상태 메모</h6>
+        <h6 title="_02_covid_업체정보등록매뉴얼">업체정보 (변경)등록 매뉴얼</h6>
+        <h6 title="_02_covid_업체정보등록내용">업체정보 (변경)등록 내용</h6>
+        <h6 title="_02_covid_제품등록설명회">(변경)등록 중에 제품등록만 따로 설명(설명회까지 함))</h6>
+        <h6 title="_02_covid_18분류외자체신청물품">(자료보관) 18개분류제품 외 자체신청물품</h6>
+        <h6 title="_02_covid_18분류외자체신청물품추가매뉴얼">(자료보관) 18개분류제품 외 자체신청물품 추가 매뉴얼</h6>
+        <h6 title="_02_covid_연장신청공문등경위">연장신청 공문 등 경위</h6>
+        <h6 title="_02_covid_연장신청매뉴얼">연장신청 매뉴얼</h6>
+      </div>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 등록일 2018년01월05일, 이전 갱신일 2022년말경, 만료일 2028년01월04일 (5년) --</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 연장신청은 만료일기준 '3~6개월 사이만 신청가능' --</h6>
+        <h6 title="_02_해관hs코드미기재"  style="color:red;font-weight: bold;">2024.12.16 중국해관, HS코드, CIQ코드, 학명, 최근 2년간 수출규모 기재 → 미기재</h6>
+      </div>
+
+
+    </div>
+    <div class="개별카테고리" id="수출품목정보">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 style="color:blueviolet;font-weight: bold;">-- 한글품명, 전산신청시 영문품명, 스티커 영문품명, 학명등 정보 --</h6>
+        <h6 title="_02_수출품목정보_오징어" style="color:blueviolet;font-weight: bold;">-- ★ 신청품목 정보 (스티커 등 문서연결 보기) (click=>div) --</h6>
+      </div>
+
+    </div>
+    <div class="개별카테고리" id="특이사항">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6>[메모] 양식인지 아닌지 알려줘야하는 품목 : 방어, </h6>
+        <h6 title="_03_수품원_방어수매확인서">[방어의 수매확인서 등] 준비서류 및 확인사항</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 연근해산의 경우 선동이 아니고 육동인경우 등록시설이어야함</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 육동인 경우 등록시설이라면 그곳의 가공일지도 있어야함</h6>
+        <h6 title="_03_수품원_CK청어알">수품원에서 : CK 청어알에 대해서 섭취방법을 물어보는 경우</h6>
+        <h6>[메모] 중국은 학명을 넣어야한다.</h6>
+        <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
+        <h6>[메모] </h6>
+      </div>
+      <div>
+        <h6 title="_20250401_중국수출시참다랑어자연산양식산표기">_20250401 참다랑어, 자연산, 양식산 표기 + 수협중앙회 검사표전</h6>
+        <h6 title="_20250517_오징어분말크릴새우수출희망수요조사">_20250517 수품원, 중국, 오징어분말 남극크릴새우 수출수요 조사</h6>
+      </div>
+      <div>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div id="기타전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="변경신청등">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title="_기타_대표자변경" >대표자 변경</h6>
+        <h6 class="fw-bold" title="_기타20250805_식물검역시행장신규신청" >수입식물류검역장소 신규신청</h6>        
+      </div>
+      <div>
+        <h6 class="fw-bold" title="검역시행장수의사실이동" >검역시행장 변경신청 : 수의사실 변경</h6>   
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="개별카테고리" id="기타전체_기타2">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title=''>title를 불러옴, 이곳은 자유롭게 작성 (타이틀 또는 검색어)</h6>
+        <h6 class="fw-bold" title=''>.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;}</h6>
+        <h6 class="fw-bold" title=''>.개별카테고리 > div 3개(3칸으로 맞춤, 1칸써도 됨) 안에 h6(title 불러옴)</h6>        
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="개별카테고리" id="기타전체_기타3">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title='_기타20250313_교육5종'>2023.03.13 : 상시근로자 사업장 1/4분기 산업안전보건교육 및 법정교육 시행의 건</h6>
+      </div>
+      <div></div>
+      <div>
+        <h6 class="fw-bold" title='설명_image폴더의자료사용현황'>설명_image폴더의자료사용현황</h6>
+        <h6 class="fw-bold" title='설명_캔버스_개별카테고리_h6의title과id순서'>설명_캔버스_개별카테고리_h6의title과id순서</h6>        
+      </div>
+    </div>
+  </div>
+  <div id="라벨등전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="라벨">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title='라벨_칠레연어_10064'>연어 칠레 10064. 1) 19/11/2024(DD/MM/YYYY)</h6>
+        <h6 class="fw-bold" title='라벨_칠레연어_10256'>연어 칠레 10256. 1) 05 AUG 2024</h6>
+        <h6 class="fw-bold" title='라벨_칠레연어_10673'>연어 칠레 10673. 1) 23 NOV 2024</h6>
+        <h6 class="fw-bold" title='라벨_칠레연어_10678'>연어 칠레 10678. 1) 26 NOV 2024</h6>
+        <h6 class="fw-bold" title='라벨_칠레연어_10708'>연어 칠레 10708. 1) 06/NOV/2024</h6>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="개별카테고리" id="우원품명">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title='라벨_우원품명'>2025.05.26 우원품명</h6>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </div>
-
-
-
 <!-- 모든 ID-->
 <div class="d-none 모든id모음"><!-- 아래 : 순서관계없지만, div(캔버스별로 title표시후 감싸거나, 그냥 감싸거나) 안에 div(id)들어가도록 -->
   <div title="보세_유니패스전체">
@@ -427,44 +697,60 @@
       <br><br><br><br>
     </section>
 
-    <section id="_07_대장게시등_게시사항">
-      <div id="스크립트로ul추가"></div>
+    <section id="_07_대장게시등_게시사항" class="폭_육십퍼">
       <h4 id="move1" class="목차">&#9634; 특허장의 게시 등</h4>
       <img src="portal/images/문서연결_세관및유니패스/07_대장게시등_게시사항.png" alt="이미지없음">
       <br><br><br><br>
     </section>
 
-    <section id="_07_대장게시등_설명이필요한대장들">
-      <div id="스크립트로ul추가"></div>
+    <section id="_07_대장게시등_설명이필요한대장들" class="폭_육십퍼">
+      <h5 id="move100" style="color:blueviolet">(기록전)표시가 뭔지 몰라 지웠는데, 자세하게 기록한것이 맨 아래에 있다. 자세하게 기록하겠다는 의미인듯</h5>
       <h5 id="move100" style="color:blueviolet">※ 세관봉인대 관리대장(별지 제12호서식), 세관봉인대 봉인물품 반입확인대장(별지 제5호서식), 알아보기 (정확한 검색이 안되어 스스로 해석해봄)</h5>    
+      <h6 style="margin-left:20px;">1. 세관봉인대 관리대장(별지 제12호서식)은 집접 시봉하는 입장에서 작성하는것인데 냉동창고에서는 관련이 없다.</h6>
+      <h6 style="margin-left:20px;">2. 세관봉인대 봉인물품 반입확인대장(별지 제5호서식)은 세관봉인대가 붙어있는것이 들어오면 기록하는것, 냉동창고에서 기록하는것이다.</h6>
+      <h6 style="margin-left:35px;">- 관리화물(전자씰)은 해제등록하는 것이고, 함께 채워져있는 세관씰이 세관봉인대이다??</h6>
+      <h6 style="margin-left:35px;">- 검색기대상이었다가 해제되어 들어오는경우 세관씰이 붙어있음.</h6>
       <h5>★ 유니패스 화물진행정보에 많은 정보가 있다, 현재의 상태를 알려준다. ★</h5>
       <h5>★ 고시 등에 서식이 없어도, 고시 등의 내용에 따라 작성해야하는 대장들이 있다 ★</h5>
-      <h4>[보세사제도 운영에 관한 고시] <span style="font-size:16px;font-weight:bold">클릭시 이동</span></h4>
+      <h5>★ 어느해의 점검시에 보고하라고 하였으나 몇년이 지나도록 보지않는 것들이 있다.(반송화물 반출보고서) ★</h5>
+      <h6 class="fw-bold" style="margin-left:26px">※ 보세창고에서 반송화물은 불합격품(수산생물) 등, 통관하지 않고 수출(반송)하는 경우인데</h6>
+      <h6 class="fw-bold" style="margin-left:46px"> 보세화물이므로 보세운송으로 이동하는데, 반송신고필증(반송신고수리)를 먼저 받아야 한다.</h6>
+      <h6 class="fw-bold" style="margin-left:46px"> '반송화물 반출보고서'서식을 못찾겠다. 보세화물특별점검팀에서 요청하는 자료였던가?</h6>
+      <h4>[보세사제도 운영에 관한 고시]</h4>
       <h5 id="move1">&#9634; 세관봉인대 관리대장(별지 제12호서식)</h5>
       <h6 style="color:blueviolet">※ 보세사가 작성 : 직접 시봉하는 입장과 봉인되어 반입되는 경우의 기록방법이 차이가 있음</h6>
       <h5 id="move2">&#9634; 환적화물 컨테이너적출입 관리대장(별지 제10호서식)</h5>
-      <h5 id="move3">&#9634; 내국물품 반출입 관리대장(별지 제8호서식) (기록전)</h5>
-      <h5 id="move4">&#9634; 보수작업 관리대장(별지 제9호서식) (기록전) </h5>
+      <h5 id="move3">&#9634; 내국물품 반출입 관리대장(별지 제8호서식) </h5>
+      <h5 id="move4">&#9634; 보수작업 관리대장(별지 제9호서식) </h5>
       <h6 style="color:blueviolet">※ (보세화물관리에 관한 고시에서 보수작업완료보고서 내역들 정리하는것)</h6>
+      <h6 style="color:blueviolet">※ 한글스티커 부착도 보수작업이지만, 자율관리보세구역이면 신청및 승인 생략</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">※ 원산지 부분을 건드리는 경우는 보수작업 신청 및 승인을 하여야 한다. 몇년이고 해당 작업이 없다.</h6>
       <h5 id="move5">&#9634; 장치물품 수입신고전 확인대장(별지 제11호서식)</h5>
-      <h5 id="move6">&#9634; 그 밖에 보세화물 관련규정에서 보세사의 직무로 정한 각종 대장 (기록전)</h5>
+      <h6 style="color:blueviolet">※ 반입작업할때 보는것은 해당이 안되고, <b><u>반입후 통관전에 검품하였을때</u></b> 기록하는 것이다.</h6>
+      <h5 id="move6">&#9634; 그 밖에 보세화물 관련규정에서 보세사의 직무로 정한 각종 대장</h5>
       <br>
       <h4>[보세화물관리에 관한 고시] <span style="font-size:16px;font-weight:bold">클릭시 이동</span></h4>
       <h5 id="move7">&#9634; 반입물품 이상 보고서(별지 제1호서식)</h5>
+      <h6 style="color:blueviolet">※ 이상보고 승인된 것을 확인 후에 반입을 잡야야 한다.</h6>
+      <h6 style="color:blueviolet">※ 세관의 요청자료 미비되면 10일이고 20일이고 반입을 못잡는다. 보세운속기간 연장하여야 한다.</h6>
+      <h6 style="color:blueviolet">※ 수정된BL인정, 수정된BL이 인보이스 팩킹 수정보다 어려운점을 인정하여 수정된BL과 팩킹으로 인정.</h6>
       <h5 id="move8">&#9634; 세관봉인대 봉인물품 반입확인대장(별지 제5호서식)</h5>
       <h6 style="color:blueviolet">※ 보세구역 운영인이 작성.</h6>
-      <h5 id="move9">&#9634; 보수작업 완료 보고서(별지 제22호서식) (기록전)</h5>
+      <h5 id="move9">&#9634; 보수작업 완료 보고서(별지 제22호서식)</h5>
       <h6 style="color:blueviolet">※ 신청자(화주)가 보세사의 확인도장 받고 세관에 보고, 보세창고는 완료보고서 보관, 보수작업관리대장 작성</h6>
-      <h5 id="move10">&#9634; 견품반출입대장(별지 제30호서식) (기록전)</h5>
+      <h6 style="color:blueviolet">※ 보수작업 관리대장(별지 제12호서식)과 짝을 이루는 서류이다.</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">※ 원산지 부분을 건드리는 경우는 보수작업 신청 및 승인을 하여야 한다. 몇년이고 해당 작업이 없다.</h6>
+      <h5 id="move10">&#9634; 견품반출입대장(별지 제30호서식)</h5>
+      <h6 style="color:blueviolet">※ 견품반출승인을 세관에서 받은경우 : 승인번호 기록, 승인서 보관, 반출내역 기록</h6>
+      <h6 style="color:blueviolet">※ 식약청 축산물 또는 수산물, 수품원 등에서 수거증을 배부한 경우는 견품반출승인을 받은 것으로 인정한다.</h6>
+      <h6 style="color:blueviolet;margin-left:22px;"> 이 경우, 수거증 보관 및 반출내역 기록 보관</h6>
       <h5 id="move11">&#9634; 보세운송차량기록지 : 고시에 있는 내용 근거</h5>
+      <h6 style="color:blueviolet">※ 운송사는 배차예정정보를 세관에 전송하여야한다. 전송하면 세관에서 보세창고로 정보를 날려준다.</h6>
+      <h6 style="color:blueviolet">※ 운송사에서 누락되는 것은 운송사와 세관 사이의 일이고, 창고는 도착하는 차량을 확인해야한다.</h6>
+      <h6 style="color:blueviolet">※ 운송사에 배차예정정보가 창고에 수신되지 않은 경우, 운송사에 컨번호와 반입일자를 알려주면서 차량번호를 물어보면 알려준다.</h6>
       <br>
       <h4>[보세화물 입출항 하선 하기 및 적재에 관한 고시] <span style="font-size:16px;font-weight:bold">클릭시 이동</span></h4>  
       <h5 id="move12">&#9634; 하선신고 물품 세관봉인대 관리대장(별지 제12호서식)</h5>
-
-
-
-
-      <br><br><br><br><br><br><br><br><br><br>
       <h5>&#9634; [규정] 보세구역 출입대장 (기록전)</h5>
       <h5>&#9634; [규정] 보세운송 도착대장 (기록전)</h5>
       <h5>&#9634; [규정] 반입이상보고 대장 (기록전)</h5>
@@ -2078,1818 +2364,1665 @@
       type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
     </section>
   </div>
-</div>
-
-
-
-
-
-
-
-
-<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="기타전체_관련자료none" id="htmlJavascript전체_관련자료none" id="탁구github전체_관련자료none"-->
-<!-- 위치찾기 참고정보 : 여기서 복사해서 ctrl+f  id="excel캔버스전체_관련자료none"-->
- <!-- 기본편집정보 위치찾기 : 기본빈서식 -->
-<div id="보세_유니패스전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-
-  </div>
-
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-
- 
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
+  <div title="전달사항_공문_발행물전체">
+    <div id="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정"><!--기본빈서식-->
+      <code class="fw-bold">• 여보세요 23년 11월 </code>
+      <img src="portal/images/문서연결_세관및유니패스/07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정.png" alt="이미지없음">
     </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
-</div>
-
-
-
-
- <div id="라벨등전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-    <div class="개별카테고리" id="라벨등전체_라벨"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <h6 class="canvas_div" title='라벨_칠레연어_10064'>연어 칠레 10064. 1) 19/11/2024(DD/MM/YYYY)</h6>
-      <h6 class="canvas_div" title='라벨_칠레연어_10256'>연어 칠레 10256. 1) 05 AUG 2024</h6>
-      <h6 class="canvas_div" title='라벨_칠레연어_10673'>연어 칠레 10673. 1) 23 NOV 2024</h6>
-      <h6 class="canvas_div" title='라벨_칠레연어_10678'>연어 칠레 10678. 1) 26 NOV 2024</h6>
-      <h6 class="canvas_div" title='라벨_칠레연어_10708'>연어 칠레 10708. 1) 06/NOV/2024</h6>
-    </div>
-    <div class="개별카테고리" id="라벨등전체_우원품명"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <h6 class="canvas_div" title='라벨_우원품명'>2025.05.26 우원품명</h6>
-    </div>
-  </div>
-
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-  <div id="라벨_칠레연어_10064"><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10064, 학명 : Oncorhynchus Kisutch</h5>
-      <h6>•정리_촬영:2025 02 03 === 19/11/2024, 18/11/2024, DD/MM/YYYY, ELABORATION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+    <section id="_07_09_대장관련_여보세요">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2023.4.1 창간 부산세관 보세화물 소식지 "여!보세요"</h4>
+      <h5>※ '보세화물취급방법 및 관세법관련 교육일지'에 교육내용에 추가하라고 하였음.</h5>
       <br>
-      <h6>사진_촬영:2025 02 03 === 19/11/2024, 18/11/2024, DD/MM/YYYY, ELABORATION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_동림은연어_10064_20250203.png" alt="이미지없음">
-      <br><br>
-    </div>
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-
-    </div>
-  </div>
-
-  <div id="라벨_칠레연어_10256"><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10256, 학명 : Oncorhynchus Kisutch</h5>
-      <h6>•정리_촬영:2025 01 20 === 05 AUG 2024, 04 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <h6>•정리_촬영:2025 01 21 === 12 AUG 2024, 11 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+      <h4 id="move1" class="목차">&#9634; 자료찾기</h4>
+      <h5>※ 부산본부세관 사이트 - 알림.소식 - 공지사항 - 부산본부세관공지사항 (3페이지 문의사항)</h5>
+      <embed src="portal/images/문서연결_세관및유니패스/07_여보세요202304_202405.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+      <br><br><br><br>
+    </section>
+    <section id="_07_보세구역전달사항">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2024.8.28 : 보세창고 출입자 관리대장 양식 변경 요청</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_출입자관리대장양식변경.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
       <br>
-      <h6>사진_촬영:2025 01 20 === 05 AUG 2024, 04 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_동림은연어_10256_20250120.png" alt="이미지없음">
-      <br><br>
-      <h6>사진_촬영:2025 01 21 === 12 AUG 2024, 11 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_동림은연어_10256_20250121.png" alt="이미지없음">
-      <br><br>
-    </div>
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-
-    </div>
-  </div>
-
-  <div id="라벨_칠레연어_10673"><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10673, 학명 : Oncorhynchus Kisutch</h5>
-      <h6>•정리_촬영:2025 02 03 === 23 NOV 2024, 22 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+      <h4 id="move2" class="목차">&#9634; 2024.8.27 : CCTV 자율점검 제출 요청 (사각지대)</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_CCTV자율점검.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
       <br>
-      <h6>사진_촬영:2025 02 03 === 23 NOV 2024, 22 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_동림은연어_10673_20250203.png" alt="이미지없음">
-      <br><br>
-    </div>
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-
-    </div>
-  </div>
-
-  <div id="라벨_칠레연어_10678"><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10678, 학명 : Oncorhynchus Kisutch</h5>
-      <h6>•정리_촬영:2025 01 21 === 26 NOV 2024, 25 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <h6>•정리_촬영:2025 01 10 === 27 NOV 2024, 26 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+      <h4 id="move3" class="목차">&#9634; 2024.10.18 : 보수작업승인신청 위반시</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_보수작업승인신청위반시.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+      <br><br><br><br><br>
+    </section>
+    <section id="_07_보세구역전달사항_특별점검팀연락처">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; _07_보세구역전달사항_특별점검팀연락처</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_보세구역전달사항_특별점검팀연락처.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_본부세관관련공문등">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2024.7.17 : CCTV 접속정보 요청 (현장중심 CCTV 13채널 제공함)</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_본부세관관련공문등_CCTV접속정보요청1.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
       <br>
-      <h6>사진_촬영:2025 01 21 === 26 NOV 2024, 25 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_동림은연어_10678_20250121.png" alt="이미지없음">
-      <br><br>
-      <h6>사진_촬영:2025 01 10 === 27 NOV 2024, 26 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
-      <img src="portal/images/문서연결_메모/연어라벨_칠레_10678.png" alt="이미지없음">
-      <br><br>
-    </div>
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-
-    </div>
-  </div>
-
-  <div id="라벨_칠레연어_10708"><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10708, 학명 : Oncorhynchus Kisutch</h5>
-      <h6>•정리_촬영:2024 12 26 === 06/NOV/2024, 06/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">롯데</span></h6>
-      <h6>•정리_촬영:2025 01 16 === 21/NOV/2024, 21/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">CK</span></h6>
+      <embed src="portal/images/문서연결_세관및유니패스/07_본부세관관련공문등_CCTV접속정보요청2.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
       <br>
-      <h6>사진_촬영:2024 12 26 === 06/NOV/2024, 06/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">롯데</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_롯데연어_10708_20251226.png" alt="이미지없음">
-      <br><br>
-      <h6>사진_촬영:2025 01 16 === 21/NOV/2024, 21/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">CK</span></h6>
-      <img src="portal/images/문서연결_메모/라벨_CK은연어_10708_20250116.png" alt="이미지없음">
-      <br><br>
-    </div>
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+      <h4 id="move2" class="목차">&#9634; 2024.8.8 : 특허 심사기준 관련 추가사항 (가감점 기준 등)</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_본부세관관련공문등_특허심사기준.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+      <br><br><br><br><br>
+    </section>
+    <section id="_07_보세운송등록차량확인프로그램">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2024.12.23 : 시스템 만들었는데 사용하기를 권유?</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_보세운송등록차량확인프로그램.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_20250223_방화벽허용정책안내">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 25.2.23, 2025.3.15개통예정... 방화벽허용정책관련 미래소프트에 확인함</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_20250223_방화벽허용정책안내.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_20250312_유니패스장비교체사업">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 25.3.12, 유니패스 장비교체 사업, _07_20250223_방화벽허용정책안내 후속</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_20250312_유니패스장비교체사업.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_20250321_보세사업무대행신고서">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 25.3.21, 보세사 업무대행 신고서 신설,</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_20250321_보세사업무대행신고서.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_20250519_법규준수도제도개편설명회">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 25.5.19, 법규준수도 제도 개편 설명회,</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_20250519_법규준수도제도개편설명회.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_20250224_cctv대수와화소정보제공요청">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 25.2.24, cctv대수와화소정보제공요청 (보세구역 전달사항)</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_20250224_cctv대수와화소정보제공요청.pdf" type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <section id="_07_식약청등공문">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2024.10.15 : 수입식품등 보관업 안전관리 안내서</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_수입식품등보관업안전관리안내서.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+      <br><br><br><br><br>
+    </section>
 
-    </div>
+    <section id="_07_수입식용축산물보관장검역시행장안전조치등협조요청">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2025.07.03 : 20250703 수입식용축산물보관장 검역시행장 안전조치 등 협조요청</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/_07_수입식용축산물보관장검역시행장안전조치등협조요청.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+      <br><br><br><br><br>
+    </section><section id="_07_다른지역세관관련공문등">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2024.8.26 : 서울세관, 사세 서울지점 반출입 자료 요청</h4>
+      <embed src="portal/images/문서연결_세관및유니패스/07_다른지역세관관련공문등_서울세관사세서울지점반출입자료.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+      <br><br><br><br><br>
+    </section><section id="_06_반출입_파순08_전산재고조사">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; </h4>
+      <br><br><br><br>
+    </section>
   </div>
-  <div id="라벨_우원품명"><!--기본빈서식-->
-    <div id="우원원본풀기js"></div>
-    <div id="우원원본" class="d-none">
-품명	규격	표시	Kg	비고
-감자말이새우	20g(4kg)	새우가공품	4	
-감자말이새우	30g(6kg)	새우가공품	6	
-갑오징어롤	2/3미(4kg)	씨푸드	4	
-갑오징어롤	3/5미(4kg)	씨푸드	4	
-갑오징어롤	5/7미(4kg)	씨푸드	4	
-갑오징어채	400g(4kg)	초밥·횟감	4	
-갑오징어홀크린	100/200(4kg)	씨푸드	4	
-갑오징어홀크린	200/300(4kg)	씨푸드	4	
-갑오징어홀크린	300/500(4kg)	씨푸드	4	
-노바시새우	20미(9.08kg)	새우	9.08	
-노바시새우	30미(6kg)	새우	6	
-노바시새우	40미(6kg)	새우	6	
-멘보샤	15g(4.8kg)	새우가공품	4.8	
-멘보샤	25g(5kg)	새우가공품	5	
-멘보샤	30g(6kg)	새우가공품	6	
-민물장어	2미	초밥·횟감	10	
-민물장어	6미	초밥·횟감	10	
-민물장어	8미	초밥·횟감	10	
-민물장어	10미	초밥·횟감	10	
-버터플라이 브레디드	25g(5kg)	새우가공품	5	
-브레디드 쉬림프	20g*10미	새우가공품	4	
-브레디드 쉬림프	20g*50미	새우가공품	6	
-브레디드 쉬림프	20g*30미	새우가공품	6	
-브레디드 쉬림프	30g(30%)	새우가공품	6	
-브레디드 쉬림프	30g(40%)	새우가공품	6	
-브레디드 쉬림프	50g*10미	새우가공품	5	
-브레디드 쉬림프	40g*10미	새우가공품	8	
-블랙타이거새우	10미/1.3kg	새우 	7.8	
-블랙타이거새우	12미/1.3kg	새우 	7.8	
-블랙타이거새우	15미/1.3kg	새우 	7.8	
-블랙타이거새우	18미/1.3kg	새우 	7.8	
-블랙타이거새우	20미/1.3kg	새우 	7.8	
-블랙타이거새우	25미/1.3kg	새우 	7.8	
-블랙타이거새우	30미/1.3kg	새우 	7.8	
-블랙타이거새우	40미/1.3kg	새우 	7.8	
-블랙타이거새우	8미/500g	새우 	5	
-블랙타이거새우	10미/500g	새우 	5	
-블랙타이거새우	12미/500g	새우 	5	
-블랙타이거새우	15미/500g	새우 	5	
-블랙타이거새우	20미/500g	새우 	5	
-빅버터플라이 브레디드 쉬림프	50g(5kg)	새우가공품	5	
-생새우살	26/30(1kg)	새우	10	
-생새우살	31/40(1kg)	새우	10	
-생새우살	51/70(900g)	새우	9	
-생새우살	71/90(900g)	새우	9	
-생새우살	31/50(200g)	새우	4	
-생새우살	51/70(200g)	새우	4	
-생새우살	71/90(200g)	새우	4	
-생새우살	26/30(10kg)	새우	10	
-생새우살	31/40(10kg)	새우	10	
-생새우살	31/50(10kg)	새우	10	
-생새우살	51/70(10kg)	새우	10	
-생새우살	71/90(10kg)	새우	10	
-에비카츠	100g(8kg)	새우가공품	8	
-에비카츠	80g(9.6kg)	새우가공품	9.6	
-에비카츠	60g(7.2kg)	새우가공품	7.2	
-에비카츠	50g(5kg)	새우가공품	5	
-이지필새우	16/20(900g)	새우	9	
-이지필새우	16/20(10kg)	새우	10	
-자숙새우살	100/200(200g)	새우	4	
-자숙새우살	200/300(200g)	새우	4	
-자숙새우살	100/200(10kg)	새우	10	
-자숙새우살	200/300(10kg)	새우	10	
-자숙칵테일	31/50(10kg)	새우	10	
-자숙칵테일	51/70(10kg)	새우	10	
-자숙칵테일	71/90(10kg)	새우	10	
-자숙칵테일	91/120(10kg)	새우	10	
-자숙칵테일	31/50(200g)	새우	4	
-자숙칵테일	51/70(200g)	새우	4	
-자숙칵테일	71/90(200g)	새우	4	
-초갑오징어	12g(9.6kg)	초밥·횟감	9.6	
-초갑오징어	10g(8kg)	초밥·횟감	8	
-초갑오징어	8g(6.4kg)	초밥·횟감	6.4	
-초갑오징어	6g(4.8kg)	초밥·횟감	4.8	
-초문어	10g(8kg)	초밥·횟감	8	
-초문어	8g(6.4kg)	초밥·횟감	6.4	
-초문어	6g(4.8kg)	초밥·횟감	4.8	
-초문어	5g(4kg)	초밥·횟감	4	
-초민물장어	8g(6.4kg)	초밥·횟감	6.4	
-초민물장어	6g(4.8kg)	초밥·횟감	4.8	
-초백미(NB)	16g(6.4kg)	초밥·횟감	6.4	
-초백미(NB)	14g(11.2kg)	초밥·횟감	11.2	
-초백미(NB)	12g(9.6kg)	초밥·횟감	9.6	
-초백미(NB)	10g(8kg)	초밥·횟감	8	
-초백미(NB)	8g(6.4kg)	초밥·횟감	6.4	
-초백미(NB)	6g(4.8kg)	초밥·횟감	4.8	
-초백미(하비코)	16g(6.4kg)	초밥·횟감	6.4	
-초백미(하비코)	14g(11.2kg)	초밥·횟감	11.2	
-초백미(하비코)	12g(9.6kg)	초밥·횟감	9.6	
-초백미(하비코)	10g(8kg)	초밥·횟감	8	
-초백미(하비코)	8g(6.4kg)	초밥·횟감	6.4	
-초백미(하비코)	6.5g(5.2kg)	초밥·횟감	5.2	
-초새우	8LH(4.4kg)	초밥·횟감	4.4	
-초새우	7LH(4kg)	초밥·횟감	4	
-초새우	6LH(3.6kg)	초밥·횟감	3.6	
-초새우	5LH(3.2kg)	초밥·횟감	3.2	
-초새우	4LH(2.8kg)	초밥·횟감	2.8	
-초새우	4L(3.2kg)	초밥·횟감	3.2	
-초새우	3L(2.7kg)	초밥·횟감	2.7	
-초새우	2L(2.8kg)	초밥·횟감	2.8	
-초새우	L(2.2kg)	초밥·횟감	2.2	
-초새우	M(3.2kg)	초밥·횟감	3.2	
-초솔방울구운한치	10g(8kg)	초밥·횟감	8	
-초솔방울구운한치	8g(6.4kg)	초밥·횟감	6.4	
-초솔방울구운한치	6g(4.8kg)	초밥·횟감	4.8	
-초아마에비	3L(4kg)	초밥·횟감	4	
-초아마에비	2L(3.2kg)	초밥·횟감	3.2	
-초아마에비	L(2.8kg)	초밥·횟감	2.8	
-초이까	8g(6.4kg)	초밥·횟감	6.4	
-초이까	6g(4.8kg)	초밥·횟감	4.8	
-초이까	5g(4kg)	초밥·횟감	4	
-초적새우	6L(3.2kg)	초밥·횟감	3.2	
-초적새우	5L(2.6kg)	초밥·횟감	2.6	
-초조미가리비	10g	초밥·횟감	8	
-초조미가리비	8g	초밥·횟감	6.4	
-초조미가리비	6g	초밥·횟감	4.8	
-초조미가리비	5g	초밥·횟감	4	
-초주꾸미	8g(6.4kg)	초밥·횟감	6.4	
-초주꾸미	6g(4.8kg)	초밥·횟감	4.8	
-초청미(NB)	12g(9.6kg)	초밥·횟감	9.6	
-초청미(NB)	10g(8kg)	초밥·횟감	8	
-초청미(NB)	8g(6.4kg)	초밥·횟감	6.4	
-초청미(NB)	6g(4.8kg)	초밥·횟감	4.8	
-초청미(하비코)	12g(9.6kg)	초밥·횟감	9.6	
-초청미(하비코)	10g(8kg)	초밥·횟감	8	
-초청미(하비코)	8g(6.4kg)	초밥·횟감	6.4	
-초청미(하비코)	6.5g(5.2kg)	초밥·횟감	5.2	
-초한치	10g(8kg)	초밥·횟감	8	
-초한치	8g(6.4kg)	초밥·횟감	6.4	
-초한치	6g(4.8kg)	초밥·횟감	4.8	
-초한치	5g(4kg)	초밥·횟감	4	
-초한치다리	6g(4.8kg)	초밥·횟감	4.8	
-코코넛 버터플라이 브레디드 쉬림프	25g(5kg)	새우가공품	5	
-타코와사비	1kg(12kg)	초밥·횟감	12	
-탈각새우	16/20(1.8kg)	새우	10.8	
-탈각새우	21/25(1.8kg)	새우	10.8	
-탈각새우	26/30(1.8kg)	새우	10.8	
-탈각새우	31/35(1.8kg)	새우	10.8	
-탈각새우	31/40(1.8kg)	새우	10.8	
-탈각새우	16/20(900g)	새우	9	
-탈각새우	21/25(900g)	새우	9	
-탈각새우	26/30(900g)	새우	9	
-탈각새우	31/40(900g)	새우	9	
-탈각새우	41/50(900g)	새우	9	
-탈각새우	31/40(10kg)	새우	10	
-탈각새우(아르헨티나 붉은새우)	16/20(4kg)	새우	4	
-탈각새우(인니)	16/20(1.8kg)	새우	10.8	
-탈각새우(인니)	21/25(1.8kg)	새우	10.8	
-탈각새우(인니)	26/30(1.8kg)	새우	10.8	
-탈각새우(인니)	31/35(1.8kg)	새우	10.8	
-탈각새우(인니)	31/40(1.8kg)	새우	10.8	
-통살새우볼	20g(5kg)	새우가공품	5	
-한치채	400g(4kg)	초밥·횟감	4	
-헤드온 브레디드 쉬림프	50g*10미	새우가공품	5	
-헤드온 브레디드 쉬림프	50g*6미	새우가공품	6	
-흰다리새우	15미/500g	새우 	5	
-흰다리새우	20미/500g	새우 	5	
-흰다리새우	25미/500g	새우 	5	
-흰다리새우	30미/500g	새우 	5	
-흰다리새우	40미/500g	새우 	5	
-흰다리새우	50미/500g	새우 	5	
+  <div title="수품원전체">
+
+    <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
+    <section id="_01_수산물_농수산물품질관리법제88조">
+      <h5>④ 검사의 일부... 생략할 수 있다.</h5>
+      <h6>④-1 : 지정해역에서.., 수산물이 생산되는 해역의 범위를 정하여 위생관리기준에 맞게 관리되는지...</h6>
+      <h6>④-2 : HACCP지정된 곳..</h6>
+      <h6>④-3 : 원양어어허가를 받은 어선..</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">※ 검사할 수 없는 상황이거나, 위생관리기준을 지킨다는 가정에서 검사항목의 일부를 하지 않는다??</h6>
+      <embed src="portal/images/문서연결_수품원/_01_수산물_농수산물품질관리법제88조.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_01_수산물_수산물수산가공품검사기준에관한고시">
+      <embed src="portal/images/문서연결_수품원/_01_수산물_수산물수산가공품검사기준에관한고시.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_01_수산물_수산물수산가공품검사대상품목지정">
+      <h5>수출수산물.수산가공품 검사 대상품목 지정 [시행 2023.2.28] [해양수산부고시 제2023-32호]</h5>
+      <h6>제1조(대상품목 지정) 농수산물 품질관리법 제88조제1항제2호에 따라 수출하는 수산물.수산가공품 중 검사를 받아야 하는 대상품목을 다음과 같이 지정한다.</h6>
+      <h6 style="color:blueviolet">※ 농수산물 품질관리법 제88조제1항제2호 : 외국과의 협약이나 수출 상대국의 요청에 따라 검사가 필요한 경우</h6>
+      <h6>• 대상국가 : 중화인민공화국(홍콩을 제외한다), 베트남사회주의공화국, 인도네시아공화국, 태국, 미합중국, 일본, 유럽연합, 러시아 및 에콰도르공화국</h6>
+      <h6>• 대상품목 : 수출하는 수산물.수산가공품 중, 별표에 규정한 국가별 세부 검사대상품목. </h6>
+      <h6 style="text-indent: 147px;">다만 원양어업허가를 받은 선박에서 포획 또는 채취하여 현지에서 수출하는 수산물.수산가공품을 그렇지 않다.</h6>  
+      <h6>• 비고 : 두 나라간 수출입 수산물 위생관리에 관한 약정서 </h6>
+    </section>
+
+    <section id="_01_수산물_수산물수산가공품검사대상품목세부내용">
+      <embed src="portal/images/문서연결_수품원/_01_수산물_수산물수산가공품검사대상품목세부내용.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_01_수산물_수산물의생산가공시설위생관리기준">
+      <h5 style="color:blueviolet;font-weight: bold;">★ 냉동창고는 I.공통 기준만 충족하면 됩니다.</h5>
+      <h5 style="color:blueviolet">'위생관리기준'을 골격으로하여 창고실정에 맞게 '위생관리기준서' 작성 및 준수 ==> 점검시 증명</h5>
+      <h5>수산물의 생산.가공시설 위생관리기준 (점검기준은 위생관리기준과 같다. 참고할것)</h5>
+      <h6>위생관리기준에 따라, 업체 실정에 맞는 '위생관리기준서'를 작성하고 지킨다 (점검시, 위생관리기준서를 토대로 검증한다)</h6>
+      <h6>C : 긴요(Critical), 위반이 없어야 한다. [HACCP의 경우 위반이 없어야 한다]</h6>
+      <h6>K : 중요(Key), 위반이 2개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
+      <h6>O : 그 밖의(Other), 위반이 3개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
+      <h6>S : 선택(Swing)</h6>
+      <h6>점검결과 표시방법 : 적합시 : O, 부적합시 : X, 적용할 수 없는 경우 : NA</h6>
+      <div style="display:inline-block;width:900px;">
+        <embed src="portal/images/문서연결_수품원/_01_수산물_수산물의생산가공시설위생관리기준.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
+      </div>
+      <div style="display:inline-block;width:900px;">
+        <embed src="portal/images/문서연결_수품원/_01_수산물_수산물의생산가공시설점검기준.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
+      </div>
+    </section>
+
+    <section id="_01_수품원_01_검사정보01">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 개요</h4>
+      <img src="portal/images/문서연결_수품원/01_수품원_01_검사정보01.png" alt="이미지없음">
+      <h4 id="move2" class="목차">▢ 동일냉장이 등록한 나라 (등록번호) : 중국, 베트남, 태국, 인도네시아</h4>
+      <li>중국 등록번호 : KP-034, 중국에서 관리하는 등록번호 : CKOR18PP1805010017 (스티커에 두개다 기재해야함)</li>
+      <li>태국 등록번호 : KTH-026</li>
+      <li>베트남 등록번호 : KVN-044</li>
+      <li>인도네시아 등록번호 : KID-024</li>
+      <h4 id="move3" class="목차">▢ 수품원에서 확인하는 필수정보 4가지 [화주에 교부자료] , 나머지는 화주의 필요에 따라 추가 가능</h4>
+      <li>가공장 주소 : 중국에는 상호와 주소를 함께 쓰는데 다른 나라의 경우 상호명만 쓰는 경우도 봤음, 다 쓰는걸로 안내?</li>
+      <li>등록번호 : 도착하는 나라의 등록번호</li>
+      <li>수출국(export contruy) : the republic of korea</li>
+      <li>품명 : 영문 품명</li>
+      <br><br><br><br>
+    </section>
+
+    <section id="_01_수품원_02_약정체결아닌국가인경우">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 동일냉장에 물품이 있는경우 화주가 직접 신청하면서 검사장소를 동일냉장으로 지정한 경우이다.</h4>
+      <h4 id="move2" class="목차">▢ 해당화주의 명의로 검사대상물의 재고확인서를 준비해 두었다가 검사원에게 제출하고 검사 입회한다.</h4>
+      <h5 class="목차"> 일본 등, 약정에서 제외된 물품이거나 어떤 경우에라도 화주가 검사신청하는 경우 검사장소가 동일냉장인 경우.</h5>
+      <h5 class="목차"> 약정에서 제외된 물품이거나 어떤 경우에라도 화주가 검사신청하는 경우 검사장소가 동일냉장인 경우.</h5>
+    </section>
+
+    <section id="_03_수품원_수출검사_화주교부">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 첫 신청때 화주가 요청하는 자료, 스티커 만들때 들어가는 창고 정보 (인쇄 가능)</h4>
+      <embed src="portal/images/문서연결_수품원/03_수품원_수출검사_화주교부.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_03_수품원_수출검사_실무참고_01">
+      <div id="스크립트로ul추가"></div>
+      <h4>▢ 신청,검사실무 참고. <b><u style="color:blueviolet">2023년 10월경부터 금요일은 현장(창고)방문을 하지 않는다.</u></b></h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_실무참고_01.png" alt="이미지없음">
+      <h5>?? 약정체결국가이지만 약정내용에 없는 경우, 예를 들어 자숙된 제품은 세균검사 등을 하지 않는다고 할때,</h5>
+      <h5>가공일지 및 위임장을 작성하여 ?????</h5>
+    </section>
+
+    <section id="_03_수품원_수출검사_검사흐름도">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move2" class="목차">▢ 수산물 수출검사 흐름도</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사흐름도_01.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사흐름도_02.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사흐름도_03.png" alt="이미지없음">
+    </section>
+
+    <section id="_03_수출검사신청및확인방법">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 수산물 품질관리원 주소:https://www.nfqs.go.kr/hpmg/ 아이디:dongil 비번(영어상태에서 한글치기): 동일1280 여기서 복사됨</h4>
+      <h4 id="move2" class="목차">▢ 2020-10-14부터, 위임장, 가공일지 원본제출대신 신청시 PDF파일로 대체, 가공일지 검사원 서명 생략</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_01.png" alt="이미지없음">
+      <h4 id="move3" class="목차">▢ 사이트변경된듯함</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_01_사이트변경대체.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_02.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_03.png" alt="이미지없음">
+      <h4 id="move4" class="목차">▢ 신청내역 확인방법</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_확인_01.png" alt="이미지없음">
+    </section>
+
+    <section id="_03_수품원_수출검사_검사신청_샘플">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 자료 샘플 (전산신청 작성법)</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_01.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_02.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_03.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_04.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_05.png" alt="이미지없음">
+    </section>
+
+    <section id="_03_수품원_수출검사_생산검사재고량기재방법바뀜">
+      <h4>▢ 2024.02.27신청분부터, 생산량, 검사량, 재고량 기재방법 바뀜</h4>
+      <h5>1. 재고량(미검사량)은 항상 '0'으로 기록함</h5>
+      <h5>2. 생산량 계 = 검사받을 중량</h5>
+      <h5>3. 검사량 계 = 검사받을 중량</h5>
+      <h5>4. 생산량 누계 = 기존생산량 + 검사받을 중량</h5>
+      <h5>5. 검사량 누계 = 기존검사량 + 검사받을 중량</h5>
+      <h5><img src="portal/images/문서연결_수품원/_03_수품원_수출검사_생산검사재고량기재방법바뀜.png" alt="이미지없음"></h5>
+      
+    </section>
+
+    <section id="_03_수품원_수출검사_위임장">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 창고 위임장 (작성방법)</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_위임장_01.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_위임장_02.png" alt="이미지없음">
+    </section>
+
+    <section id="_03_수품원_수출검사_가공일지">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 창고 가공일지 (작성방법) <span style="color:blueviolet;font-weight: bold;">(같은년도는 누적하여 작성, 년도가 바뀌면 새롭게 작성시작)</span></h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_가공일지_01.png" alt="이미지없음">
+    </section>
+    
+    <section id="_01_수산물_위생관리기준서">
+      <h5 style="color:blueviolet;font-weight: bold;">★ 냉동창고는 I.공통 기준만 충족하면 됩니다.</h5>
+      <h5>수산물의 생산.가공시설 위생관리기준 (점검기준은 위생관리기준과 같다. 참고할것)</h5>
+      <h6>위생관리기준에 따라, 업체 실정에 맞는 '위생관리기준서'를 작성하고 지킨다 (점검시, 위생관리기준서를 토대로 검증한다)</h6>
+      <h6>C : 긴요(Critical), 위반이 없어야 한다. [HACCP의 경우 위반이 없어야 한다]</h6>
+      <h6>K : 중요(Key), 위반이 2개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
+      <h6>O : 그 밖의(Other), 위반이 3개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
+      <h6>S : 선택(Swing)</h6>
+      <h6>점검결과 표시방법 : 적합시 : O, 부적합시 : X, 적용할 수 없는 경우 : NA</h6>
+      <div style="display:inline-block;width:900px;">
+        <embed src="portal/images/문서연결_수품원/_01_수산물_수산물의생산가공시설위생관리기준.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
+      </div>
+      <div style="display:inline-block;width:900px;">
+        <embed src="portal/images/문서연결_수품원/_01_수산물_위생관리기준서.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
+      </div>
+    </section>
+    
+    <section id="_01_등록공장점검2025년점검공문">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">_01_등록공장점검2025년점검공문</h4>
+      <embed src="portal/images/문서연결_수품원/_01_등록공장점검2025년점검공문.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+    
+    <section id="_01_20250312_수산생물검역시행장점검처음">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">_01_20250312_수산생물검역시행장점검처음</h4>
+      <embed src="portal/images/문서연결_수품원/_01_20250312_수산생물검역시행장점검처음.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_02_covid_중국사이트">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ covid_중국사이트, 중국해관 단일창구 사이트</h4>
+      <h5 style ="font-size:20PX;">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>										
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_001.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_002.png" alt="이미지없음">		
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_003.png" alt="이미지없음">		
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_004.png" alt="이미지없음">		
+    </section>
+
+    <section id="_02_covid_메모">
+      <div id="스크립트로ul추가"></div>
+      <h5>※ 골뱅이살의 경우 등록이 안되어 있었는데 중국 통관에 관하여 화주가 책임을 진다는 각서를 첨부하여 검사신청 하였음.</h5>
+    </section>
+
+    <section id="_02_covid_공문요청등경위">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 공문요청 등 경위</h4>
+      <embed src="portal/images/문서연결_수품원/02_수품원_단일창구_업체등록최초공문.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>	
+    </section>
+
+    <section id="_02_covid_진행상태메모">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">▢ 진행상태 메모</h4>
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_진행상태메모_01.png" alt="이미지없음">
+    </section>
+
+    <section id="_02_covid_업체정보등록매뉴얼">
+      <div id="스크립트로ul추가"></div>
+      <h5 id="move1" class="목차"">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
+      <h5 id="move2" class="목차"">2022.03.31.해외생산기업등록절차(맨 처음 아이디 일괄등록 해놓고 세부기업정보 등록하라는것)</h5>
+      <embed src="portal/images/문서연결_수품원/02_수품원_중국해외생산기업등록매뉴얼.pdf" type="application/pdf" width=1400px height=880px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_02_covid_업체정보등록내용">
+      <div id="스크립트로ul추가"></div>
+      <h5 id="move1" class="목차">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
+      <h5 id="move2" class="목차">연장신청아니고 업체정보 입력(변경에 해당한다)한 것 자세히, 참고 : 변경신청중일때 연장신청 안됨</h5>
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_001.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_01.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_02.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_02_1.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_03.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_신청내용_캡쳐_01.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_신청내용_캡쳐_02.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_신청내용_캡쳐_03.png" alt="이미지없음">
+    </section>
+
+    <section id="_02_covid_제품등록설명회">
+      <div id="스크립트로ul추가"></div>
+      <h5 id="move2" class="목차">수품원에서 제품등록에 관한 설명회를 개최함</h5>
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_01.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_02.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_03.png" alt="이미지없음">
+      <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_04.png" alt="이미지없음">
+      <embed src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_05.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_02_covid_18분류외자체신청물품">
+      <div id="스크립트로ul추가"></div>
+      <img class="png패딩" src="portal/images/문서연결_수품원/수품원_단일창구_18개부류외신청해당없음설명_01.png" alt="이미지없음">
+    </section>
+
+    <section id="_02_covid_18분류외자체신청물품추가매뉴얼">
+      <div id="스크립트로ul추가"></div>
+      <embed src="portal/images/문서연결_수품원/수품원_중국해외생산기업제품유형등록.pdf" type="application/pdf" width=1750px height=880px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_02_covid_연장신청공문등경위">
+      <div id="스크립트로ul추가"></div>
+      <h5>주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
+      <embed src="portal/images/문서연결_수품원/수품원_단일창구공문_20221102_01.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
+      <embed src="portal/images/문서연결_수품원/수품원_대조점검표_2장.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>										
+      <h5>2022.6.30까지 연장등록신청 안해서 영문사유서 제출함, 수품원에서 중국측에 양해구함</h5>
+      <embed src="portal/images/문서연결_수품원/수품원_단일창구_영문사유서_20221102.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>	
+    </section>
+
+    <section id="_02_covid_연장신청매뉴얼">
+      <div id="스크립트로ul추가"></div>
+      <h5 style ="font-size:20PX;">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
+      <embed src="portal/images/문서연결_수품원/02_수품원_단일창구_연장신청및만료일확인매뉴얼.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_02_해관hs코드미기재">
+      <div id="스크립트로ul추가"></div>
+      <embed src="portal/images/문서연결_수품원/_02_해관hs코드미기재.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <div id="_02_수출품목정보_오징어" style="width:100%">
+      <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020년부터 중국, KP-034(CKOR18PP1805010017) 형식으로 기재하여야함, 가공일지, 스티커. (CKOR18PP1805010017=중국사이트 등록번호)</h6>
+      <h6 style="color:blueviolet;font-weight: bold;">[메모] 스티커내용이 같을때 최근 신청자료로 업데이트 할 것, 품명등 스티커내용이 조금이라도 다르면 기록 남길것</h6>
+
+      <table class="table-bordered border-primary"><!-- table 클래스 뺌. flex 속성으로 폭조정 잘 못하겠음 -->
+        <thead>
+          <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
+          <td>전산신청품명(한글/영문)[title]</td>
+          <td>영문품명(스티커)</td>
+          <td>학명</td>
+        </thead>
+        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
+                <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
+              </div>
+              중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT <br></td><!-- 전산신청 영문품명 -->
+            <td>FROZEN RAW WHELK MEAT<br></td><!-- 영문품명(화주) -->
+            <td>BUCCINUM UNDATUM<br></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20240528_고등어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.09.09 : 냉동 꽁치 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190709_꽁치">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동꽁치,FROZEN MACKEREL PIKE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN PACIFIC SAURY WHOLE ROUND</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.06.17 : 냉동 절단꽃게 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190617_절단꽃게">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동게(꽃게,절단),FROZEN CUTTED SWIMMING CRAB</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN CUT SWIMMING CRAB</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2024.06.19 : 냉동 날치알 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20221215_날치알">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관">*냉동어란(날치알),FROZEN FLYING FISH ROE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN FLYING FISH ROE</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2018.11.20 : 냉동 돔 (KP-034, 중국, FAO 77)</div> 
+                <button class="스티커정보" title="수품원스티커_20181120_돔">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관" onclick="
+              if(document.querySelector('#td_수품원스티커_20181120_돔').classList.contains('d-none')) {
+                document.querySelector('#td_수품원스티커_20181120_돔').classList.remove('d-none');
+
+              } else {
+                document.querySelector('#td_수품원스티커_20181120_돔').classList.add('d-none')
+              }
+              ">*<span style="color:blueviolet;font-weight: bold;">click</span> ['TILE'로 검색한 수품원[대소문자구분] 품명정보]<br>
+              <div class="d-none" id="td_수품원스티커_20181120_돔">
+                냉동돔(지브라타일돔), FROZEN ZEBRA TILE FISH<br>
+                냉동돔(등흑점옥두어), FROZEN TILEFISH<br>
+                냉동돔(등흑점옥두어,F), FROZEN TILEFISH FILLET<br>
+                냉동돔(남방옥돔), FROZEN WARD'S TILEFISH<br>
+                냉동돔(지브라타일돔,F), FROZEN ZEBRA TILE FISH FILLET<br>
+              </div>
+            </td><!-- 전산신청 영문품명 -->
+            <td>FROZEN TILEFISH</td><!-- 영문품명(화주) -->
+            <td>CAULOLATILUS PRINCEPS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.06.17 : 냉동 대구곤 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190617_대구곤">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동곤이(대구),FROZEN COD MILT</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN PACIFIC COD MILT</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.06.17 : 냉동 명란 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190617_명란">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동어란(명란),FROZEN ALASKA POLLACK ROE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ALASKA POLLACK ROE</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.12.08 : 냉동 명태 (KP-034, 중국, FAO 61)</div> 
+                <button class="스티커정보" title="수품원스티커_20211208_명태">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관">*냉동명태,FROZEN ALASKA POLLACK</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ALASKA POLLOCK H/G</td><!-- 영문품명(화주) -->
+            <td>THERAGRA CHALCOGRAMMA</td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2018.12.07 : 냉동 민어 (KP-034, 중국, FAO-77)</div> 
+                <button class="스티커정보" title="수품원스티커_20181207_민어">정보</button>
+              </div>
+              중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관" onclick="
+              if(document.querySelector('#td_수품원스티커_20181207_민어').classList.contains('d-none')) {
+                document.querySelector('#td_수품원스티커_20181207_민어').classList.remove('d-none');
+
+              } else {
+                document.querySelector('#td_수품원스티커_20181207_민어').classList.add('d-none')
+              }
+              ">*<span style="color:blueviolet;font-weight: bold;">click</span> [수품원[대소문자구분] 품명정보, CROAKER]<br>
+              <div class="d-none" id="td_수품원스티커_20181207_민어">
+                냉동조기(참조기),FROZEN YELLOW CROAKER<br>
+                냉동조기(부세),FROZEN LARGE YELLOW CROAKER<br>
+                냉동민어(민어),FROZEN BROWN CROAKER<br>
+                냉동민어(흑조기),FROZEN BLACKMOUTH CROAKER<br>
+                냉동민어(보구치),FROZEN WHITE CROAKER<br>
+                냉동민어(꼬마민어),FROZEN CROAKER<br>
+                냉동민어(파마이석태),FROZEN PAMA CROAKER<br>
+                냉동민어(대두이석태),FROZEN BIG HEAD PENNAH CROAKER<br>
+                냉동민어(긴가이석태),FROZEN BOBO CROAKER<br>
+                등등....
+              </div>
+            </td><!-- 전산신청 영문품명 -->
+            <td>FROZEN YELLOW CROAKER</td><!-- 영문품명(화주) -->
+            <td>UMBRINA RONCADOR</td><!-- 학명 -->
+          </tr>
+          <tr style="background-color:cyan;">
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.01.18 : 냉동 방어 (KP-034, 중국, FAO 61)</div> 
+                <button class="스티커정보" title="수품원스티커_20210118_방어">정보</button>
+              </div>
+              방어는 연근해산인 경우, 양식인지 아닌지 확인서 필요함
+            </td><!-- 한글품명(+메모) -->
+            <td title="연근해산">*냉동방어,FROZEN YELLOW TAIL</td><!-- 전산신청 영문품명 -->
+            <td>FORZEN YELLOW TAIL</td><!-- 영문품명(화주) -->
+            <td>SERIOLA QUINQUERADIATA</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2023.08.24 : 냉동 방어 (KP-034, 중국, FAO 61)</div> 
+                <button class="스티커정보" title="수품원스티커_20230824_방어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="연근해산">*냉동방어,FROZEN YELLOW TAIL</td><!-- 전산신청 영문품명 -->
+            <td>FORZEN YELLOWTAIL ROUND</td><!-- 영문품명(화주) -->
+            <td>SERIOLA QUINQUERADIATA</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2024.06.19 : 냉동 북방대합조개살 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20201014_북방대합조개살">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관" onclick="
+              if(document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.contains('d-none')) {
+                document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.remove('d-none');
+
+              } else {
+                document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.add('d-none')
+              }
+              ">*<span style="color:blueviolet;font-weight: bold;">click</span> 냉동대합살(북방대합)<br>
+              <div class="d-none" id="td_수품원스티커_20201014_북방대합조개살">
+                냉동대합(북방대합),FROZEN SAKHALIN SURF CLAM<br>
+                냉동대합살(북방대합),FROZEN SAKHALIN SURF CLAM MEAT<br>
+                냉동대합살(북방대합,포장횟감),FROZEN SAKHALIN SURF CLAM MEAT<br>
+                냉동대합(북방대합,자숙),FROZEN BOILED SAKHALIN SURF CLAM<br>
+                냉동대합살(북방대합,자숙),FROZEN BOILED SAKHALIN SURF CLAM MEAT<br>
+                냉동대합살(북방대합,자숙,S),FROZEN BOILED SAKHALIN SURF CLAM MEAT SLICE<br>
+                냉동대합살(북방대합,자숙,S,포장횟감),FROZEN BOILED SAKHALIN SURF CLAM MEAT SLICE<br>
+                냉동대합살(북방대합,자숙,포장횟감),FROZEN SAKHALIN BOILED SURF CLAM<br>
+                냉동대합살(북방대합,자숙,횟감),FROZEN SAKHALIN BOILED SURF CLAM<br>
+              </div>
+            </td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ARCTIC SURF CLAM</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2023.10.25 : 냉동 삼치 (KP-034, 중국, FAO 61)</div> 
+                <button class="스티커정보" title="수품원스티커_20201110_삼치">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="연근해산" onclick="
+              if(document.querySelector('#td_수품원스티커_20201110_삼치').classList.contains('d-none')) {
+                document.querySelector('#td_수품원스티커_20201110_삼치').classList.remove('d-none');
+
+              } else {
+                document.querySelector('#td_수품원스티커_20201110_삼치').classList.add('d-none')
+              }
+              ">*<span style="color:blueviolet;font-weight: bold;">click</span> 냉동삼치<br>
+              <div class="d-none" id="td_수품원스티커_20201110_삼치">
+                냉동삼치,FORZEN JAPANESE SPANISH MACKEREL<br>
+                냉동삼치(F),FORZEN JAPANESE SPANISH MACKEREL FILLET<br>
+                냉동삼치(줄삼치,F),FROZEN BONITO FILLET<br>
+                냉동삼치(줄삼치),FROZEN STRIPED BONITO<br>
+                냉동삼치(동갈삼치),FROZEN NARROW-BARRED SPANISH MACKEREL<br>
+                냉동삼치(꼬지삼치),FROZEN WAHOO<br>
+                냉동삼치(비늘삼치),FROZEN BUTTERFLY MACKEREL<br>
+                냉동삼치(검정통삼치,F),FROZEN BARRACOUTA(F)
+              </div>
+            </td><!-- 전산신청 영문품명 -->
+            <td>FROZEN SPANISH MACKEREL</td><!-- 영문품명(화주) -->
+            <td>SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2022.09.22 : 냉동 삼치 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20220922_삼치">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="연근해산">*냉동삼치,FROZEN JAPANESE SPANISH MACKEREL</td><!-- 전산신청 영문품명 -->
+            <td style="font-size:14px;">FROZEN SPANISH MACKEREL WHOLE ROUND</td><!-- 영문품명(화주) -->
+            <td>SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2023.07.12 : 냉동 새우, 초밥용 홍새우살 아르헨티나산 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20230712_새우">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관">*냉동새우살(적새우),FROZEN RED SHRIMP MEAT</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ARGENTINE RED SHRIMP MEAT</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.06.17 : 냉동 아귀 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190617_아귀">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동아귀,FROZEN MONKFISH</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN MONK FISH</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2022.05.26 : 냉동 오징어, 연근해 (KP-034, 중국, FAO 61)</div> 
+                <button class="스티커정보" title="수품원스티커_20211014_오징어연근해">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="연근해" onclick="
+              if(document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.contains('d-none')) {
+                document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.remove('d-none');
+
+              } else {
+                document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.add('d-none')
+              }
+              ">*<span style="color:blueviolet;font-weight: bold;">click</span> 냉동오징어,FROZEN SQUID<br>
+              <div class="d-none" id="td_수품원스티커_20211014_오징어연근해">
+                냉동오징어(동체),FROZEN SQUID(TUBE)<br>
+                냉동오징어(동체,자숙),FROZEN SQUID BOILED(BODY)<br>
+                냉동오징어,FROZEN SQUID<br>
+                냉동오징어(자숙),FROZEN BOILED SQUID<br>
+                냉동오징어(지느러미),FROZEN SQUID FIN<br>
+                냉동오징어(지느러미,자숙),FROZEN BOILED SQUID FIN<br>
+                냉동오징어(입살),FROZEN SQUID MOUTH MEAT<br>
+                냉동오징어(머리살),FROZEN SQUID(HEAD MEAT)<br>
+                냉동오징어(다리),FROZEN SQUID(LEG)<br>
+                냉동오징어(다리,자숙),FROZEN BOILED SQUID(LEG)<br>
+              </div>
+            </td><!-- 전산신청 영문품명 -->
+            <td>FROZEN SQUID</td><!-- 영문품명(화주) -->
+            <td>TODARODES PACIFICUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2020.12.16 : 냉동 오징어, 무라오징어 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20201216_오징어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN GIANT SQUID MEAT</td><!-- 영문품명(화주) -->
+            <td>DOSIDICUS GIGAS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.08.17 : 냉동 오징어, 무라오징어 동체(자숙) (KP-034, 중국, FAO 87)</div> 
+                <button class="스티커정보" title="수품원스티커_20210817_자숙동체오징어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어(동체,자숙),FROZEN SQUID BOILED(BODY)</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN BOILED GIANT SQUID FILLETS</td><!-- 영문품명(화주) -->
+            <td>DOSIDICUS GIGAS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.10.25 : 냉동 오징어 다리, 무라오징어 다리 (KP-034, 중국, FAO-87 [페루])</div> 
+                <button class="스티커정보" title="수품원스티커_20191025_오징어다리">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어(다리),FROZEN SQUID(LEG)</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN GIANT SQUID TENTACLES</td><!-- 영문품명(화주) -->
+            <td>DOSIDICUS GIGAS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2022.04.25 : 냉동 오징어, 무라오징어 족살 (KP-034, 중국, FAO 87)</div> 
+                <button class="스티커정보" title="수품원스티커_20190305_오징어입살">정보</button>
+              </div>
+              <span style="color:blueviolet;font-weight: bold;">전산 품명 없어서 '냉동오징어'로 신청함</span>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN SQUID NECK</td><!-- 영문품명(화주) -->
+            <td>DOSIDICUS GIGAS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.08.17 : 냉동 오징어 입살, 무라오징어 입살 (KP-034, 중국, FAO 87)</div> 
+                <button class="스티커정보" title="수품원스티커_20190305_오징어입살">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어(입살),FROZEN SQUID MOUTH MEAT</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN SQUID MOUTH</td><!-- 영문품명(화주) -->
+            <td>DOSIDICUS GIGAS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.07.21 : 냉동 오징어 다리, 포크오징어 다리 (KP-034, 중국, FAO-41)</div> 
+                <button class="스티커정보" title="수품원스티커_20210721_오징어다리">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어(다리),FROZEN SQUID(LEG)</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ILLEX SQUID TENTACLE</td><!-- 영문품명(화주) -->
+            <td>ILLEX ARGENTINUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.10.29 : 냉동 오징어 , 포크오징어 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20211029_오징어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ILLEX SQUID</td><!-- 영문품명(화주) -->
+            <td>ILLEX ARGENTINUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2021.10.13 : 냉동 오징어 , 포크오징어 (KP-034, 중국, FAO-41)</div> 
+                <button class="스티커정보" title="수품원스티커_20211013_오징어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN SQUID</td><!-- 영문품명(화주) -->
+            <td>ILLEX ARGENTINUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20190822_연어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동연어(태평양은연어), FROZEN CHHO SALMON</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN SALMON COHO</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20191008_연어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동연어(F), FROZEN SALMON FILLET</td><!-- 전산신청 영문품명 -->
+            <td style="font-size: 14px;">FROZEN ATLANTIC SALMON FILLET TRIM D</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20230712_연어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td title="수입통관" onclick="
+              if(document.querySelector('#td_수품원스티커_20230712_연어').classList.contains('d-none')) {
+                document.querySelector('#td_수품원스티커_20230712_연어').classList.remove('d-none');
+
+              } else {
+                document.querySelector('#td_수품원스티커_20230712_연어').classList.add('d-none')
+              }
+              ">*<span style="color:blueviolet;font-weight: bold;">click</span> [수품원 품명정보 : 연어]<br>
+              <div class="d-none" id="td_수품원스티커_20230712_연어">
+                냉동연어,FROZEN SALMON<br>
+                냉동연어(훈제),FROZEN SMOKED SALMON<br>
+                냉동연어(F),FROZEN SALMON FILLET<br>
+                냉동연어(태평양곱사연어),FROZEN PINK SALMON<br>
+                냉동연어(태평양홍연어),FROZEN RED SALMON<br>
+                냉동연어(태평양왕연어),FROZEN KING SALMON<br>
+                냉동연어(대서양연어),FROZEN ALTANTIC SALMON<br>
+                냉동연어(대서양연어,F),FROZEN ALTANTIC SALMON FILLET<br>
+                냉동연어(태평양연어),FROZEN PACIFIC SALMON<br>
+                냉동연어(태평양은연어),FROZEN COHO SALMON<br>
+                냉동연어(태평양은연어,F),FROZEN COHO SALMON FILLET
+              </div>
+            </td><!-- 전산신청 영문품명 -->
+            <td style="font-size: 14px;">FROZEN ATLANTIC SALMON FILLET</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.06.17 : 냉동 열빙어 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190617_열빙어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동빙어(열빙어),FROZEN CAPELIN</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN CAPELIN</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2022.02.11 : 냉동 열빙어 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20220211_열빙어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동빙어(열빙어),FROZEN CAPELIN</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN CAPELIN</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2019.06.17 : 냉동 임연수어 (KVN-044, 베트남)</div> 
+                <button class="스티커정보" title="수품원스티커_20190617_임연수어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동임연수어,FROZEN ATKA MACKEREL</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN ATKA MACKEREL</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2023.05.23 : 냉동 장어 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20230523_장어">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동장어(붕장어,F),FROZEN CONGER EEL FILLET</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN CONGER EEL FILLET</td><!-- 영문품명(화주) -->
+            <td>MURAENESOX CINEREUS</td><!-- 학명 -->
+          </tr>
+          <tr>
+            <td>
+              <div class="div와버튼양쪽정렬">
+                <div class="d-inline-block">2023.02.01 : 냉동 청어알 (KTH-026, 태국)</div> 
+                <button class="스티커정보" title="수품원스티커_20230201_청어알">정보</button>
+              </div>
+            </td><!-- 한글품명(+메모) -->
+            <td>*냉동어란(청어알),FROZEN HERRING ROE</td><!-- 전산신청 영문품명 -->
+            <td>FROZEN HERRING ROE</td><!-- 영문품명(화주) -->
+            <td></td><!-- 학명 -->
+          </tr>
+        </tbody>
+      </table>
+      <br><br><br><br><br><br><br><br><br><br>
     </div>
 
-
-
-
-  </div>
- 
-
-
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-
+    <section id="_03_수품원_방어수매확인서">
+      <div id="스크립트로ul추가"></div>
+      <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
+      <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
+      <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
   
-</div>
-<div id="기타전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-    <div class="개별카테고리" id="기타전체_변경신청등"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <h6 class="canvas_div" title="_기타_대표자변경" >대표자 변경</h6>
-      <h6 class="canvas_div" title="_기타20250805_식물검역시행장신규신청" >수입식물류검역장소 신규신청</h6>
-    </div>
-    <div class="개별카테고리" id="기타전체_기타2"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <h6 class="canvas_div" title=''>title를 불러옴, 이곳은 자유롭게 작성 (타이틀 또는 검색어)</h6>
-      <h6 class="canvas_div" title=''>.개별카테고리 > div {display:inline-block; width:616px;vertical-align: top;}</h6>
-      <h6 class="canvas_div" title=''>.개별카테고리 > div 3개(3칸으로 맞춤, 1칸써도 됨) 안에 h6(title 불러옴)</h6>
-    </div>
-    <div class="개별카테고리" id="기타전체_기타3"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <h6 class="canvas_div" title='_기타20250313_교육5종'>2023.03.13 : 상시근로자 사업장 1/4분기 산업안전보건교육 및 법정교육 시행의 건</h6>
-    </div>
-  </div>
+    <section id="_20250401_중국수출시참다랑어자연산양식산표기">
+      <h6 style="color:blueviolet;font-weight: bold;">※ _2025.04.01 수협중앙회, 정부비축물품 출고시 검사표전 부착 잘하기</h6>
+      <embed src="portal/images/문서연결_수품원/_20250401_중국수출시참다랑어자연산양식산표기.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+          <h6 style="color:blueviolet;font-weight: bold;">※ _2025.04.01 중국 수출시, 참다랑어, 자연산, 양식산 표기</h6>
+      <embed src="portal/images/문서연결_수품원/_20250401_수협중앙회비축물품전표부착.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
 
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-  <section id="_기타_대표자변경">
-    <div id="스크립트로ul추가"></div>
-    <div>
-      <h4>2021년9월29일부터 대표자변경</h4>
-      <h5>세관</h5>
-      <h6>보세구역 운영자 법인 등기사항 변경 통보서 (명판, 직인), 법인등기부등본, </h6>
-      <h6>특허장사본, 자율관리사본, 사업자등록증(참고용)</h6>
-      <h6>위임장과 인감증명서는 달라고 안했음.</h6>
-      <h6>2021.9.29. 방문신청하였고 10월4일 대체휴일이라서 </h6>
-      <h6>30일날 받으러오라고 해서받으러갔음.</h6>
-<br>
-      <h5>구청</h5>
-      <h6>축산물보관업(별관3층, 경제진흥과, 220-4471) 법인등기부등본, 위임장(당일본),  </h6>
-      <h6>인감증명서, 허가증 원본, 신청서(직인,명판). (직인,명판 지참 혹시모르니). 5000원, </h6>
-      <h6>3일후 연락오면 가지러 오라고함. 우편으로 받으려면 신청을 해야한다고 함.</h6>
-      <h6>식품보존업4417(환경위생과), 서류는 위와 동일, 수수료는 없음. </h6>
-      <h6>민원실에서 도장받아서 갖다주고 조금기다리니 등록증 새로 발급해줌. </h6>
-<br>
-      <h5>식물 20250806 회원가입 다시함 ycy2000 dongil3368!</h5>
-      <h6>농림축산검역본부 영남지역본부 전자민원 : 아이디 ycy20001, 비번 !good1974, </h6>
-      <h6>개인회원 (법인으로 신청하면 마지막에 에러난다)</h6>
-      <h6>20210930 전자민원으로 신청 : 첨부파일 : 법인등기부등본, 사업자등록증</h6>
-      <h6>김태형주무관 010-9515-1394,600-6227, 전산신청했더니 틀린부분 자세히 가르쳐주었다. </h6>
-      <h6>검역장소명이 동일냉장(주)로 전산신청서상에 자동으로 떠서 보냈는데</h6>
-      <h6>지정서에 동일냉장보세창고로 되어있어서 일치하지 않으면 </h6>
-      <h6>나중에 입간판 다 바꿔야하는 경우가 생긴다고 지적해주고 </h6>
-      <h6>내아이디 비번 가르쳐주고 직접 수정해주었다</h6>
-      <h6>문자로 신청, 접수, 승인 순서대로 처리결과가 문자로 수신됨.</h6>
-      <h6>직접 받으러감. (중앙동2번출구, 롯데백화점 근처)</h6>
-<br>
-      <h5>수산물품질관리원</h5>
-      <h6>생산.가공시설 등록 변경신청서. 법인등기부등본. </h6>
-      <h6>명판.직인.주민등록번호 풀.영문 이름.</h6>
-      <h6>우편으로 받았다.</h6>
-<br>
-      <h5>수입식품등보관업</h5>
-      <h6>아이디(기업은 등록번호) : 20160004247, </h6>
-      <h6>비번: !good1974, 로그인 - 우리회사안전관리 - 민원</h6>
-      <h6>영업등록사항 변경 : 영업등록증, 변경사항을 확인할수 있는 서류, 기타, 시설배치도</h6>
-      <h6>전산으로 변경이 잘 안되서 문의했더니 서류첨부까지 되면 </h6>
-      <h6>서류첨부해서 어떻게든 신청만하면 확인하고 연락하면서 신청받겠다고 함. (이렇게 했다)</h6>
-      <h6>안되면 팩스로도 진행이 가능하다고 함. 602-6201.</h6>
-      <h6>직원이 신청시 위임장 있어야 된다고 fax : 0502 604 7960, tel:602-6236</h6>
-      <h6>2022.05.23영업등록증 영문발행 되지 않는다고 함.(602-6236)</h6>
-      <h6>식품안전나라에 로그인해서 출력해서 쓰면된다고 함. 기존등록증은</h6>
-<br>
-      <h5>검역시행장</h5>
-      <h6>우편20211005.부산광역시 중구 충장대로6 한진 R&D센터2층 </h6>
-      <h6>농림축산검역본부 영남지역본부 축산물위생검역과 검역시행장 담당자앞</h6>
-      <h6>신청서,사업자등록증,지정서원본 (+법인등기부등본,축산물보관업허가증 사본)</h6>
-      <h6>우편으로 받았다.</h6>
-      <h6>식물,수품원 건물과 따로, 세관골목</h6>
-      <h6>251104수의사실이전 변경신청관련 문의 : 신청서, 지정서원본, 기존 수의사실 평면도, 이전할 수의사실 평면도, 평면도는 그려서 제출하면 된다.</h6>
-      <h6>날짜 쓰지말고 제출하라고 하였음.</h6>
+    <section id="_20250517_오징어분말크릴새우수출희망수요조사">
+      <h6 style="color:blueviolet;font-weight: bold;">※ _20250517 수품원, 중국, 오징어분말 남극크릴새우 수출수요 조사</h6>
+      <embed src="portal/images/문서연결_수품원/_20250517_오징어분말크릴새우수출희망수요조사.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </section>
+
+    <section id="_03_수품원_CK청어알">
+      <div id="스크립트로ul추가"></div>
+      <h5>▢ 청어알 섭취방법, CK 최승우과장(20250205), 수출담당 김소은</h5>
+      <h5>▢ CK 최승우과장 수품원에 답변내용</h5>
+      <h6>- 어묵 재료로 들어가는데 어묵 제조 과정에서 재료들을 가열하여 반죽상태로 만드는 공정이 있다.</h6>
+    </section>
+
+    <div id="수품원스티커_20190725_가자미">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190725_가자미.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190802_갯장어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190802_갯장어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20221215_날치알">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20221215_날치알.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20240327_고둥">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20240327_고둥.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20240528_고등어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20240528_고등어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190709_꽁치">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190709_꽁치.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190617_절단꽃게">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_절단꽃게.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20181120_돔">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20181120_돔.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+    
+    <div id="수품원스티커_20190617_대구곤">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_대구곤.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20181207_민어">
+      <h5>▢ 중국에서 통보된 위험분석 면제품목에 열거되지 않아... 각서</h5>
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20181207_민어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190617_명란">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_명란.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20211208_명태">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20211208_명태.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20201014_북방대합조개살">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20201014_북방대합조개살.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20210118_방어">
+      <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
+      <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
+      <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20230824_방어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20230824_방어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20201110_삼치">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20201110_삼치.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20220922_삼치">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20220922_삼치.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20230712_새우">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20230712_새우.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190617_아귀">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_아귀.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20201216_오징어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20201216_오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20210817_자숙동체오징어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20210817_자숙동체오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20211014_오징어연근해">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20211014_오징어연근해.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20191025_오징어다리">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20191025_오징어다리.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190305_오징어입살">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190305_오징어입살.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20210721_오징어다리">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20210721_오징어다리.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20211029_오징어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20211029_오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20211013_오징어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20211013_오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190822_연어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190822_연어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20191008_연어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20191008_연어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20230712_연어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20230712_연어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190617_열빙어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_열빙어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20220211_열빙어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20220211_열빙어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20190617_임연수어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_임연수어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20230523_장어">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20230523_장어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+    <div id="수품원스티커_20230201_청어알">
+      <embed src="portal/images/문서연결_수품원/수품원스티커_20230201_청어알.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
+    </div>
+
+
+
+  </div>
+  <div title="기타전체">
+    <section id="_기타_대표자변경">
+      <div>
+        <h4>2021년9월29일부터 대표자변경</h4>
+        <h5>세관</h5>
+        <h6>보세구역 운영자 법인 등기사항 변경 통보서 (명판, 직인), 법인등기부등본, </h6>
+        <h6>특허장사본, 자율관리사본, 사업자등록증(참고용)</h6>
+        <h6>위임장과 인감증명서는 달라고 안했음.</h6>
+        <h6>2021.9.29. 방문신청하였고 10월4일 대체휴일이라서 </h6>
+        <h6>30일날 받으러오라고 해서받으러갔음.</h6>
+  <br>
+        <h5>구청</h5>
+        <h6>축산물보관업(별관3층, 경제진흥과, 220-4471) 법인등기부등본, 위임장(당일본),  </h6>
+        <h6>인감증명서, 허가증 원본, 신청서(직인,명판). (직인,명판 지참 혹시모르니). 5000원, </h6>
+        <h6>3일후 연락오면 가지러 오라고함. 우편으로 받으려면 신청을 해야한다고 함.</h6>
+        <h6>식품보존업4417(환경위생과), 서류는 위와 동일, 수수료는 없음. </h6>
+        <h6>민원실에서 도장받아서 갖다주고 조금기다리니 등록증 새로 발급해줌. </h6>
+  <br>
+        <h5>식물 20250806 회원가입 다시함 ycy2000 dongil3368!</h5>
+        <h6>농림축산검역본부 영남지역본부 전자민원 : 아이디 ycy20001, 비번 !good1974, </h6>
+        <h6>개인회원 (법인으로 신청하면 마지막에 에러난다)</h6>
+        <h6>20210930 전자민원으로 신청 : 첨부파일 : 법인등기부등본, 사업자등록증</h6>
+        <h6>김태형주무관 010-9515-1394,600-6227, 전산신청했더니 틀린부분 자세히 가르쳐주었다. </h6>
+        <h6>검역장소명이 동일냉장(주)로 전산신청서상에 자동으로 떠서 보냈는데</h6>
+        <h6>지정서에 동일냉장보세창고로 되어있어서 일치하지 않으면 </h6>
+        <h6>나중에 입간판 다 바꿔야하는 경우가 생긴다고 지적해주고 </h6>
+        <h6>내아이디 비번 가르쳐주고 직접 수정해주었다</h6>
+        <h6>문자로 신청, 접수, 승인 순서대로 처리결과가 문자로 수신됨.</h6>
+        <h6>직접 받으러감. (중앙동2번출구, 롯데백화점 근처)</h6>
+  <br>
+        <h5>수산물품질관리원</h5>
+        <h6>생산.가공시설 등록 변경신청서. 법인등기부등본. </h6>
+        <h6>명판.직인.주민등록번호 풀.영문 이름.</h6>
+        <h6>우편으로 받았다.</h6>
+  <br>
+        <h5>수입식품등보관업</h5>
+        <h6>아이디(기업은 등록번호) : 20160004247, </h6>
+        <h6>비번: !good1974, 로그인 - 우리회사안전관리 - 민원</h6>
+        <h6>영업등록사항 변경 : 영업등록증, 변경사항을 확인할수 있는 서류, 기타, 시설배치도</h6>
+        <h6>전산으로 변경이 잘 안되서 문의했더니 서류첨부까지 되면 </h6>
+        <h6>서류첨부해서 어떻게든 신청만하면 확인하고 연락하면서 신청받겠다고 함. (이렇게 했다)</h6>
+        <h6>안되면 팩스로도 진행이 가능하다고 함. 602-6201.</h6>
+        <h6>직원이 신청시 위임장 있어야 된다고 fax : 0502 604 7960, tel:602-6236</h6>
+        <h6>2022.05.23영업등록증 영문발행 되지 않는다고 함.(602-6236)</h6>
+        <h6>식품안전나라에 로그인해서 출력해서 쓰면된다고 함. 기존등록증은</h6>
+  <br>
+        <h5>검역시행장</h5>
+        <h6>우편20211005.부산광역시 중구 충장대로6 한진 R&D센터2층 </h6>
+        <h6>농림축산검역본부 영남지역본부 축산물위생검역과 검역시행장 담당자앞</h6>
+        <h6>중앙동 10번출구, 큰건물 2층, <span class="fw-bold">제출시 직접 갖다줌 </span> </h6>
+        <h6>신청서,사업자등록증,지정서원본 (+법인등기부등본,축산물보관업허가증 사본)</h6>
+        <h6>우편으로 받았다.</h6>
+        <br>
+        <br>
+        <h5>식물 : 수품원 건물과 따로, 세관골목</h5>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+      </div>  
+    </section>
+    <section id="_기타20250805_식물검역시행장신규신청" class="폭_육십퍼">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move3"  class="목차">3. 2025.08.05 수입식물류검역장소 신규 신청</h4>
+      <h5>A. 식물검역 온라인 민원시스템	(검색)</h5>
+      <h6 class="fw-bold blueviolet">※ 반입이 6개월동안 없으면 지정취소된다?  </h6> 
+      <img src="portal/images/문서연결_메모/식물검역사이트.png" alt="이미지없음">
+      <h5 class="li_들작" >※ 회원가입(본인인증) : 개인적으로 가입, 관할기관에 본부, 가입유형에 기업	</h5>
+      <h6 style="color:blueviolet">※ - 보세장치장부호가 조회되지 않는 경우에는 신청하시려는 담당기관에 보세장치장부호를 먼저 등록하신 후 신규 신청하시기 바랍니다.</h6>   
+      <h6>※ - 예시 화면의 보세장치장부호는 잘못된 정보이다. 03011597, 동일냉장(주)</h6>    
+      <h6>※ - '검역장소명'이 특허장의 '보세구역명칭'이라면 '동일냉장(주) 보세창고'라고 해야한다.</h6>    
+      <h6>★ 20250805신청후 다음날 현장점검시 잘못된 신청정보 바로잡으려고 하였고, 해당건 반려후 신규신청으로 다시 신청하였다.</h6>   
+      <img src="portal/images/문서연결_메모/식물검역장소신청내역.png" alt="이미지없음">
+      <h5 class="li_들작">※ 이동검사대, 조명, 온도보고, 창고본다.		</h5>
+      <h5 class="li_들작">※ 신청처리는 7일이지만 방문검사 협의(빠르면 다음날 올수 있음), 방문검사시 문제없으면 다음날에라도 입고가능		</h5>
+      <h5 class="li_들작">※ 2025.08.05 051)600-6227	</h5>   
       <br><br><br><br><br><br><br><br><br><br>
 
-    </div>  
-  </section>
-
-  <section id="_기타20250805_식물검역시행장신규신청">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move3"  class="목차">3. 2025.08.05 수입식물류검역장소 신규 신청</h4>
-    <h5>A. 식물검역 온라인 민원시스템	(검색)</h5>
-    <img src="portal/images/문서연결_메모/식물검역사이트.png" alt="이미지없음">
-    <h5 class="li_들작" >※ 회원가입(본인인증) : 개인적으로 가입, 관할기관에 본부, 가입유형에 기업	</h5>
-    <h6 style="color:blueviolet">※ - 보세장치장부호가 조회되지 않는 경우에는 신청하시려는 담당기관에 보세장치장부호를 먼저 등록하신 후 신규 신청하시기 바랍니다.</h6>   
-    <h6>※ - 예시 화면의 보세장치장부호는 잘못된 정보이다. 03011597, 동일냉장(주)</h6>    
-    <h6>※ - '검역장소명'이 특허장의 '보세구역명칭'이라면 '동일냉장(주) 보세창고'라고 해야한다.</h6>    
-    <h6>★ 20250805신청후 다음날 현장점검시 잘못된 신청정보 바로잡으려고 하였고, 해당건 반려후 신규신청으로 다시 신청하였다.</h6>   
-    <img src="portal/images/문서연결_메모/식물검역장소신청내역.png" alt="이미지없음">
-    <h5 class="li_들작">※ 이동검사대, 조명, 온도보고, 창고본다.		</h5>
-    <h5 class="li_들작">※ 신청처리는 7일이지만 방문검사 협의(빠르면 다음날 올수 있음), 방문검사시 문제없으면 다음날에라도 입고가능		</h5>
-    <h5 class="li_들작">※ 2025.08.05 051)600-6227	</h5>   
-    <br><br><br><br><br><br><br><br><br><br>
-
-  </section>
-
-  <section id="_기타20250313_교육5종">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2023.03.13 : 상시근로자 사업장 1/4분기 산업안전보건교육 및 법정교육 시행의 건</h4>
-    <embed src="portal/images/문서연결_기타/_기타20250313_교육5종.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-  
-</div>
-
-<div id="수품원전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 .개별카테고리는 제한없음. .개별카테고리 안에는 div(div안에 h6을 넣어야됨) 1~3개 제한(각각 세로로 나열됨)-->
-    <div class="개별카테고리" id="수품원전체_등록공장"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    </section>
+    <section id="검역시행장수의사실이동">
       <div>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 수산물 및 수산가공품의 검사 (위생관리기준서, 등록공장 개념은 나중에 나옴) --</h6>
-        <h6 class="canvas_div" title="_01_수산물_농수산물품질관리법제88조">1a. 농수산물 품질관리법 제88조 [검사를 받는 경우]</h6>
-        <h6 class="canvas_div" title="_01_수산물_수산물수산가공품검사기준에관한고시">1b. 수산물·수산가공품 검사기준에 관한 고시 [검사를 받는 경우, 표시기준]</h6>
-        <h6 style="text-indent: 15px;">[메모] 검사기준은 별표1, 별표1에 없는경우는 식품위생법 제7조에 정하여 고시한 </h6>
-        <h6 style="text-indent: 62px;">기준.규격 적용, 외국과의 협약 또는 검사신청인이 요구하는 기준이 있는</h6>
-        <h6 style="text-indent: 62px;">경우는 별도 또는 우선 적용할 수 있다. <span style="color:blueviolet;font-weight: bold;"> 별 내용 없음</span></h6>
-        <h6 class="canvas_div" title="_01_수산물_수산물수산가공품검사대상품목지정">2-1. [외국과의 협약에 따라] 검사를 받아야하는 대상 품목 지정</h6>
-        <h6 class="canvas_div" title="_01_수산물_수산물수산가공품검사대상품목세부내용">2-2. [외국과의 협약에 따라] 검사를 받아야하는 대상 품목 정보</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">-- a.수출하는 수산물을 보관하려면 '수출수산물등록시설'로 등록해야한다. ?? --</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">-- b.위생약정이 체결된 나라에 수산물을 수출하려면</h6>
-        <h6 style="color:blueviolet;font-weight: bold;text-indent: 33px;">a.에 더하여 각 약정체결나라별로 '등록시설로 등록'하여야 한다. --</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 등록하려면, 위생관리기준을 충족한 후 신청 > 검증 > 등록 순서 --</h6>
-        <h6 class="canvas_div" title="_01_수산물_수산물의생산가공시설위생관리기준">수산물의 생산.가공시설 위생관리기준 (+점검기준)</h6>
-      </div>
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 수출수산물 검사 관련 등록공장(나라 간의 약정과 관련) --</h6>
-        <h6 class="canvas_div" title="_01_수품원_01_검사정보01" style="color:blueviolet;font-weight: bold;">☆수산물 수출검사 설명 (약정체결 국가 정보 등)</h6>
-        <h6 class="canvas_div" title="_01_수품원_02_약정체결아닌국가인경우">약정체결 아닌 국가인 경우 수출검사</h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_화주교부">★화주 교부자료</h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_실무참고_01">★신청,검사실무 참고</h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_검사흐름도">약정체결/수출과정</h6>
-        <h6 class="canvas_div" title="_03_수출검사신청및확인방법">★수출검사 신청 및 확인 방법</h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_검사신청_샘플">★자료 샘플 (전산신청 작성법) <span style="color:blueviolet"><u><b>생산량,검사량,재고량 기재방법 바뀜 [2024.02.27]</b></u></span></h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_생산검사재고량기재방법바뀜" style="color:blueviolet;font-weight: bold;text-decoration: underline;">생산량,검사량,재고량 기재방법 바뀜[2024.02.27]</h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_위임장">창고의 위임장 (작성방법)</h6>
-        <h6 class="canvas_div" title="_03_수품원_수출검사_가공일지">창고 가공일지 (작성방법) <span style="color:blueviolet;font-weight: bold;">(같은년도는 누적하여 작성, 년도가 바뀌면 새롭게 작성시작)</span></h6>
-        <h6 class="fw-bold">선상동결(삼치 등)은 그냥 신청하였음</h6>
-        <h6 class="fw-bold">육동은 동결한 곳의 가공일지 있어야함.(그곳이 등록공장이어야 함)</h6>
-        <h6>[메모]베트남 검사 기한 : 평일7일째 되는날까지</h6>
-        <h6>[메모]금요일은 방문검사 없음 (EX:목요일, 금요일 신청은 월요일 방문검사)</h6>
+        <h4>2025년11월7일 검역시행장 변경신청</h4>
+        <h5 class="fw-bold">수의사실이동인데 검역시행장변경신청만 하였음</h5>
+        <h5>검역시행장 변경신청</h5>
+        <h6>251104수의사실이전 변경신청관련 문의 : 신청서, 지정서원본, 기존 수의사실 평면도, </h6>
+        <h6>이전할 수의사실 평면도, 평면도는 그려서 제출하면 된다.</h6>
+        <h6>날짜 쓰지말고 제출하라고 하였음. <span class="fw-bold">제출시 직접 갖다줌 </span></h6>
+        <h6>책상, 컴퓨터, 기자재 모두 구비한 상태로 신청하라는 취지.</h6>
       </div>
 
 
-    </div>
-    <div class="개별카테고리" id="수품원전체_기준서및점검정보"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 자체 위생관리기준서가 있어야하며...(위생관리기준 관련 문서) --</h6>
-        <h6 class="canvas_div" title="_01_수산물_위생관리기준서">[동일냉장의] 위생관리기준서 (위생관리기준과 크로스체크)</h6>
-      </div>
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 기본적으로 1년 2회점검에서 22년도부터 기본 1회 점검으로 바뀜</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 점검결과에 대한 시정명령 → 시정완료후 완료보고서 제출 : 1회 추가점검과 관련없음</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 검사신청 건에 대한 결과에 '부적합'이 발생하는 경우 1회 추가점검 (년2회)</h6>
 
-      </div>
-      <div>
-        <h6 style="font-weight: bold;">-- 등록공장 점검준비 --</h6>
-        <h6 style="font-weight: bold;text-indent: 15px;">1. 점검계획 공문이 날라옴, 공문 안와도 점검일자 조율 전화연락 옴</h6>
-
-      </div>
-
-    </div>
-
-    <div class="개별카테고리" id="수품원전체_공문등"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div fw-bold" title="_01_등록공장점검2025년점검공문">등록공장점검 2025년 점검공문</h6>
-      </div>
-      <div>
-        <h6 class="canvas_div fw-bold" title="_01_20250312_수산생물검역시행장점검처음">수산생물검역시행장 점검(처음) 2025년 3월 12일</h6>
-      </div>
-      <div>
-
-      </div>
-
-    </div>
-
-    <div class="개별카테고리" id="수품원전체_중국"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 등록공장 중, 중국관련 (등록, 변경 등을 중국 사이트에 해야함) --</h6>
-        <h6 class="canvas_div" title="_02_covid_중국사이트">사이트 알아보기 (로그인 등)</h6>
-        <h6 class="canvas_div" title="_02_covid_메모">제품등록 안되면 수출검사 안됨??</h6>
-        <h6 class="canvas_div" title="_02_covid_공문요청등경위">처음:업체정보(변경)등록요청 공문 등 경위</h6>
-        <h6 class="canvas_div" title="_02_covid_진행상태메모">진행상태 메모</h6>
-        <h6 class="canvas_div" title="_02_covid_업체정보등록매뉴얼">업체정보 (변경)등록 매뉴얼</h6>
-        <h6 class="canvas_div" title="_02_covid_업체정보등록내용">업체정보 (변경)등록 내용</h6>
-        <h6 class="canvas_div" title="_02_covid_제품등록설명회">(변경)등록 중에 제품등록만 따로 설명(설명회까지 함))</h6>
-        <h6 class="canvas_div" title="_02_covid_18분류외자체신청물품">(자료보관) 18개분류제품 외 자체신청물품</h6>
-        <h6 class="canvas_div" title="_02_covid_18분류외자체신청물품추가매뉴얼">(자료보관) 18개분류제품 외 자체신청물품 추가 매뉴얼</h6>
-        <h6 class="canvas_div" title="_02_covid_연장신청공문등경위">연장신청 공문 등 경위</h6>
-        <h6 class="canvas_div" title="_02_covid_연장신청매뉴얼">연장신청 매뉴얼</h6>
-      </div>
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 등록일 2018년01월05일, 이전 갱신일 2022년말경, 만료일 2028년01월04일 (5년) --</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 연장신청은 만료일기준 '3~6개월 사이만 신청가능' --</h6>
-        <h6 class="canvas_div" title="_02_해관hs코드미기재"  style="color:red;font-weight: bold;">2024.12.16 중국해관, HS코드, CIQ코드, 학명, 최근 2년간 수출규모 기재 → 미기재</h6>
-      </div>
-
-
-    </div>
-    <div class="개별카테고리" id="수품원전체_수출품목정보"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 style="color:blueviolet;font-weight: bold;">-- 한글품명, 전산신청시 영문품명, 스티커 영문품명, 학명등 정보 --</h6>
-        <h6 class="canvas_div" title="_02_수출품목정보_오징어" style="color:blueviolet;font-weight: bold;">-- ★ 신청품목 정보 (스티커 등 문서연결 보기) (click=>div) --</h6>
-      </div>
-
-    </div>
-    <div class="개별카테고리" id="수품원전체_특이사항"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6>[메모] 양식인지 아닌지 알려줘야하는 품목 : 방어, </h6>
-        <h6 class="canvas_div" title="_03_수품원_방어수매확인서">[방어의 수매확인서 등] 준비서류 및 확인사항</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 연근해산의 경우 선동이 아니고 육동인경우 등록시설이어야함</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 육동인 경우 등록시설이라면 그곳의 가공일지도 있어야함</h6>
-        <h6 class="canvas_div" title="_03_수품원_CK청어알">수품원에서 : CK 청어알에 대해서 섭취방법을 물어보는 경우</h6>
-        <h6>[메모] 중국은 학명을 넣어야한다.</h6>
-        <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
-        <h6>[메모] </h6>
-      </div>
-      <div>
-        <h6 class="canvas_div fw-bold" title="_20250401_중국수출시참다랑어자연산양식산표기">_20250401 참다랑어, 자연산, 양식산 표기 + 수협중앙회 검사표전</h6>
-        <h6 class="canvas_div fw-bold" title="_20250517_오징어분말크릴새우수출희망수요조사">_20250517 수품원, 중국, 오징어분말 남극크릴새우 수출수요 조사</h6>
-      </div>
-      <div>
-
-      </div>
-
-
-    </div>
-  </div>
-
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-  <section id="_01_수산물_농수산물품질관리법제88조">
-    <h5>④ 검사의 일부... 생략할 수 있다.</h5>
-    <h6>④-1 : 지정해역에서.., 수산물이 생산되는 해역의 범위를 정하여 위생관리기준에 맞게 관리되는지...</h6>
-    <h6>④-2 : HACCP지정된 곳..</h6>
-    <h6>④-3 : 원양어어허가를 받은 어선..</h6>
-    <h6 style="color:blueviolet;font-weight: bold;">※ 검사할 수 없는 상황이거나, 위생관리기준을 지킨다는 가정에서 검사항목의 일부를 하지 않는다??</h6>
-    <embed src="portal/images/문서연결_수품원/_01_수산물_농수산물품질관리법제88조.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_01_수산물_수산물수산가공품검사기준에관한고시">
-    <embed src="portal/images/문서연결_수품원/_01_수산물_수산물수산가공품검사기준에관한고시.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_01_수산물_수산물수산가공품검사대상품목지정">
-    <h5>수출수산물.수산가공품 검사 대상품목 지정 [시행 2023.2.28] [해양수산부고시 제2023-32호]</h5>
-    <h6>제1조(대상품목 지정) 농수산물 품질관리법 제88조제1항제2호에 따라 수출하는 수산물.수산가공품 중 검사를 받아야 하는 대상품목을 다음과 같이 지정한다.</h6>
-    <h6 style="color:blueviolet">※ 농수산물 품질관리법 제88조제1항제2호 : 외국과의 협약이나 수출 상대국의 요청에 따라 검사가 필요한 경우</h6>
-    <h6>• 대상국가 : 중화인민공화국(홍콩을 제외한다), 베트남사회주의공화국, 인도네시아공화국, 태국, 미합중국, 일본, 유럽연합, 러시아 및 에콰도르공화국</h6>
-    <h6>• 대상품목 : 수출하는 수산물.수산가공품 중, 별표에 규정한 국가별 세부 검사대상품목. </h6>
-    <h6 style="text-indent: 147px;">다만 원양어업허가를 받은 선박에서 포획 또는 채취하여 현지에서 수출하는 수산물.수산가공품을 그렇지 않다.</h6>  
-    <h6>• 비고 : 두 나라간 수출입 수산물 위생관리에 관한 약정서 </h6>
-  </section>
-
-  <section id="_01_수산물_수산물수산가공품검사대상품목세부내용">
-    <embed src="portal/images/문서연결_수품원/_01_수산물_수산물수산가공품검사대상품목세부내용.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_01_수산물_수산물의생산가공시설위생관리기준">
-    <h5 style="color:blueviolet;font-weight: bold;">★ 냉동창고는 I.공통 기준만 충족하면 됩니다.</h5>
-    <h5 style="color:blueviolet">'위생관리기준'을 골격으로하여 창고실정에 맞게 '위생관리기준서' 작성 및 준수 ==> 점검시 증명</h5>
-    <h5>수산물의 생산.가공시설 위생관리기준 (점검기준은 위생관리기준과 같다. 참고할것)</h5>
-    <h6>위생관리기준에 따라, 업체 실정에 맞는 '위생관리기준서'를 작성하고 지킨다 (점검시, 위생관리기준서를 토대로 검증한다)</h6>
-    <h6>C : 긴요(Critical), 위반이 없어야 한다. [HACCP의 경우 위반이 없어야 한다]</h6>
-    <h6>K : 중요(Key), 위반이 2개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
-    <h6>O : 그 밖의(Other), 위반이 3개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
-    <h6>S : 선택(Swing)</h6>
-    <h6>점검결과 표시방법 : 적합시 : O, 부적합시 : X, 적용할 수 없는 경우 : NA</h6>
-    <div style="display:inline-block;width:900px;">
-      <embed src="portal/images/문서연결_수품원/_01_수산물_수산물의생산가공시설위생관리기준.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
-    </div>
-    <div style="display:inline-block;width:900px;">
-      <embed src="portal/images/문서연결_수품원/_01_수산물_수산물의생산가공시설점검기준.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
-    </div>
-  </section>
-
-  <section id="_01_수품원_01_검사정보01">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 개요</h4>
-    <img src="portal/images/문서연결_수품원/01_수품원_01_검사정보01.png" alt="이미지없음">
-    <h4 id="move2" class="목차">▢ 동일냉장이 등록한 나라 (등록번호) : 중국, 베트남, 태국, 인도네시아</h4>
-    <li>중국 등록번호 : KP-034, 중국에서 관리하는 등록번호 : CKOR18PP1805010017 (스티커에 두개다 기재해야함)</li>
-    <li>태국 등록번호 : KTH-026</li>
-    <li>베트남 등록번호 : KVN-044</li>
-    <li>인도네시아 등록번호 : KID-024</li>
-    <h4 id="move3" class="목차">▢ 수품원에서 확인하는 필수정보 4가지 [화주에 교부자료] , 나머지는 화주의 필요에 따라 추가 가능</h4>
-    <li>가공장 주소 : 중국에는 상호와 주소를 함께 쓰는데 다른 나라의 경우 상호명만 쓰는 경우도 봤음, 다 쓰는걸로 안내?</li>
-    <li>등록번호 : 도착하는 나라의 등록번호</li>
-    <li>수출국(export contruy) : the republic of korea</li>
-    <li>품명 : 영문 품명</li>
-    <br><br><br><br>
-  </section>
-
-  <section id="_01_수품원_02_약정체결아닌국가인경우">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 동일냉장에 물품이 있는경우 화주가 직접 신청하면서 검사장소를 동일냉장으로 지정한 경우이다.</h4>
-    <h4 id="move2" class="목차">▢ 해당화주의 명의로 검사대상물의 재고확인서를 준비해 두었다가 검사원에게 제출하고 검사 입회한다.</h4>
-    <h5 class="목차"> 일본 등, 약정에서 제외된 물품이거나 어떤 경우에라도 화주가 검사신청하는 경우 검사장소가 동일냉장인 경우.</h5>
-    <h5 class="목차"> 약정에서 제외된 물품이거나 어떤 경우에라도 화주가 검사신청하는 경우 검사장소가 동일냉장인 경우.</h5>
-  </section>
-
-  <section id="_03_수품원_수출검사_화주교부">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 첫 신청때 화주가 요청하는 자료, 스티커 만들때 들어가는 창고 정보 (인쇄 가능)</h4>
-    <embed src="portal/images/문서연결_수품원/03_수품원_수출검사_화주교부.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_03_수품원_수출검사_실무참고_01">
-    <div id="스크립트로ul추가"></div>
-    <h4>▢ 신청,검사실무 참고. <b><u style="color:blueviolet">2023년 10월경부터 금요일은 현장(창고)방문을 하지 않는다.</u></b></h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_실무참고_01.png" alt="이미지없음">
-    <h5>?? 약정체결국가이지만 약정내용에 없는 경우, 예를 들어 자숙된 제품은 세균검사 등을 하지 않는다고 할때,</h5>
-    <h5>가공일지 및 위임장을 작성하여 ?????</h5>
-  </section>
-
-  <section id="_03_수품원_수출검사_검사흐름도">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move2" class="목차">▢ 수산물 수출검사 흐름도</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사흐름도_01.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사흐름도_02.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사흐름도_03.png" alt="이미지없음">
-  </section>
-
-  <section id="_03_수출검사신청및확인방법">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 수산물 품질관리원 주소:https://www.nfqs.go.kr/hpmg/ 아이디:dongil 비번(영어상태에서 한글치기): 동일1280 여기서 복사됨</h4>
-    <h4 id="move2" class="목차">▢ 2020-10-14부터, 위임장, 가공일지 원본제출대신 신청시 PDF파일로 대체, 가공일지 검사원 서명 생략</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_01.png" alt="이미지없음">
-    <h4 id="move3" class="목차">▢ 사이트변경된듯함</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_01_사이트변경대체.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_02.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_03.png" alt="이미지없음">
-    <h4 id="move4" class="목차">▢ 신청내역 확인방법</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_확인_01.png" alt="이미지없음">
-  </section>
-
-  <section id="_03_수품원_수출검사_검사신청_샘플">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 자료 샘플 (전산신청 작성법)</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_01.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_02.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_03.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_04.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_검사신청_샘플_05.png" alt="이미지없음">
-  </section>
-
-  <section id="_03_수품원_수출검사_생산검사재고량기재방법바뀜">
-    <h4>▢ 2024.02.27신청분부터, 생산량, 검사량, 재고량 기재방법 바뀜</h4>
-    <h5>1. 재고량(미검사량)은 항상 '0'으로 기록함</h5>
-    <h5>2. 생산량 계 = 검사받을 중량</h5>
-    <h5>3. 검사량 계 = 검사받을 중량</h5>
-    <h5>4. 생산량 누계 = 기존생산량 + 검사받을 중량</h5>
-    <h5>5. 검사량 누계 = 기존검사량 + 검사받을 중량</h5>
-    <h5><img src="portal/images/문서연결_수품원/_03_수품원_수출검사_생산검사재고량기재방법바뀜.png" alt="이미지없음"></h5>
+    </section>
     
-  </section>
-
-  <section id="_03_수품원_수출검사_위임장">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 창고 위임장 (작성방법)</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_위임장_01.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_위임장_02.png" alt="이미지없음">
-  </section>
-
-  <section id="_03_수품원_수출검사_가공일지">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 창고 가공일지 (작성방법) <span style="color:blueviolet;font-weight: bold;">(같은년도는 누적하여 작성, 년도가 바뀌면 새롭게 작성시작)</span></h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/03_수품원_수출검사_가공일지_01.png" alt="이미지없음">
-  </section>
-  
-  <section id="_01_수산물_위생관리기준서">
-    <h5 style="color:blueviolet;font-weight: bold;">★ 냉동창고는 I.공통 기준만 충족하면 됩니다.</h5>
-    <h5>수산물의 생산.가공시설 위생관리기준 (점검기준은 위생관리기준과 같다. 참고할것)</h5>
-    <h6>위생관리기준에 따라, 업체 실정에 맞는 '위생관리기준서'를 작성하고 지킨다 (점검시, 위생관리기준서를 토대로 검증한다)</h6>
-    <h6>C : 긴요(Critical), 위반이 없어야 한다. [HACCP의 경우 위반이 없어야 한다]</h6>
-    <h6>K : 중요(Key), 위반이 2개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
-    <h6>O : 그 밖의(Other), 위반이 3개 이하여야 한다. [HACCP의 경우 위반이 2개 이하여야 한다]</h6>
-    <h6>S : 선택(Swing)</h6>
-    <h6>점검결과 표시방법 : 적합시 : O, 부적합시 : X, 적용할 수 없는 경우 : NA</h6>
-    <div style="display:inline-block;width:900px;">
-      <embed src="portal/images/문서연결_수품원/_01_수산물_수산물의생산가공시설위생관리기준.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
-    </div>
-    <div style="display:inline-block;width:900px;">
-      <embed src="portal/images/문서연결_수품원/_01_수산물_위생관리기준서.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
-    </div>
-  </section>
-  
-  <section id="_01_등록공장점검2025년점검공문">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">_01_등록공장점검2025년점검공문</h4>
-    <embed src="portal/images/문서연결_수품원/_01_등록공장점검2025년점검공문.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-  
-  <section id="_01_20250312_수산생물검역시행장점검처음">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">_01_20250312_수산생물검역시행장점검처음</h4>
-    <embed src="portal/images/문서연결_수품원/_01_20250312_수산생물검역시행장점검처음.pdf" type="application/pdf" width=900px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_02_covid_중국사이트">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ covid_중국사이트, 중국해관 단일창구 사이트</h4>
-    <h5 style ="font-size:20PX;">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>										
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_001.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_002.png" alt="이미지없음">		
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_003.png" alt="이미지없음">		
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_covid_중국사이트_004.png" alt="이미지없음">		
-  </section>
-
-  <section id="_02_covid_메모">
-    <div id="스크립트로ul추가"></div>
-    <h5>※ 골뱅이살의 경우 등록이 안되어 있었는데 중국 통관에 관하여 화주가 책임을 진다는 각서를 첨부하여 검사신청 하였음.</h5>
-  </section>
-
-  <section id="_02_covid_공문요청등경위">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 공문요청 등 경위</h4>
-    <embed src="portal/images/문서연결_수품원/02_수품원_단일창구_업체등록최초공문.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>	
-  </section>
-
-  <section id="_02_covid_진행상태메모">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">▢ 진행상태 메모</h4>
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_진행상태메모_01.png" alt="이미지없음">
-  </section>
-
-  <section id="_02_covid_업체정보등록매뉴얼">
-    <div id="스크립트로ul추가"></div>
-    <h5 id="move1" class="목차"">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
-    <h5 id="move2" class="목차"">2022.03.31.해외생산기업등록절차(맨 처음 아이디 일괄등록 해놓고 세부기업정보 등록하라는것)</h5>
-    <embed src="portal/images/문서연결_수품원/02_수품원_중국해외생산기업등록매뉴얼.pdf" type="application/pdf" width=1400px height=880px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_02_covid_업체정보등록내용">
-    <div id="스크립트로ul추가"></div>
-    <h5 id="move1" class="목차">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
-    <h5 id="move2" class="목차">연장신청아니고 업체정보 입력(변경에 해당한다)한 것 자세히, 참고 : 변경신청중일때 연장신청 안됨</h5>
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_001.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_01.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_02.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_02_1.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구신청내용_03.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_신청내용_캡쳐_01.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_신청내용_캡쳐_02.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_신청내용_캡쳐_03.png" alt="이미지없음">
-  </section>
-
-  <section id="_02_covid_제품등록설명회">
-    <div id="스크립트로ul추가"></div>
-    <h5 id="move2" class="목차">수품원에서 제품등록에 관한 설명회를 개최함</h5>
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_01.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_02.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_03.png" alt="이미지없음">
-    <img class="png패딩" src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_04.png" alt="이미지없음">
-    <embed src="portal/images/문서연결_수품원/02_수품원_단일창구_제품등록만_05.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_02_covid_18분류외자체신청물품">
-    <div id="스크립트로ul추가"></div>
-    <img class="png패딩" src="portal/images/문서연결_수품원/수품원_단일창구_18개부류외신청해당없음설명_01.png" alt="이미지없음">
-  </section>
-
-  <section id="_02_covid_18분류외자체신청물품추가매뉴얼">
-    <div id="스크립트로ul추가"></div>
-    <embed src="portal/images/문서연결_수품원/수품원_중국해외생산기업제품유형등록.pdf" type="application/pdf" width=1750px height=880px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_02_covid_연장신청공문등경위">
-    <div id="스크립트로ul추가"></div>
-    <h5>주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
-    <embed src="portal/images/문서연결_수품원/수품원_단일창구공문_20221102_01.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
-    <embed src="portal/images/문서연결_수품원/수품원_대조점검표_2장.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>										
-    <h5>2022.6.30까지 연장등록신청 안해서 영문사유서 제출함, 수품원에서 중국측에 양해구함</h5>
-    <embed src="portal/images/문서연결_수품원/수품원_단일창구_영문사유서_20221102.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>	
-  </section>
-
-  <section id="_02_covid_연장신청매뉴얼">
-    <div id="스크립트로ul추가"></div>
-    <h5 style ="font-size:20PX;">주소:https://www.singlewindow.cn 아이디:CKOR18PP1805010017 비번:!dongil3368 여기서 복사됨</h5>
-    <embed src="portal/images/문서연결_수품원/02_수품원_단일창구_연장신청및만료일확인매뉴얼.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_02_해관hs코드미기재">
-    <div id="스크립트로ul추가"></div>
-    <embed src="portal/images/문서연결_수품원/_02_해관hs코드미기재.pdf" type="application/pdf" width=1150px height=880px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <div id="_02_수출품목정보_오징어" style="width:100%">
-    <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020.10.14 신청분부터 파일첨부 형식 (이전까지 검사원 도착시 원본제출)</h6>
-    <h6 style="color:blueviolet;font-weight: bold;">[메모] 2020년부터 중국, KP-034(CKOR18PP1805010017) 형식으로 기재하여야함, 가공일지, 스티커. (CKOR18PP1805010017=중국사이트 등록번호)</h6>
-    <h6 style="color:blueviolet;font-weight: bold;">[메모] 스티커내용이 같을때 최근 신청자료로 업데이트 할 것, 품명등 스티커내용이 조금이라도 다르면 기록 남길것</h6>
-
-    <table class="table-bordered border-primary"><!-- table 클래스 뺌. flex 속성으로 폭조정 잘 못하겠음 -->
-      <thead>
-        <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
-        <td>전산신청품명(한글/영문)[title]</td>
-        <td>영문품명(스티커)</td>
-        <td>학명</td>
-      </thead>
-      <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190725_가자미">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr style="background-color:cyan;">
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
-              <button class="스티커정보" title="수품원스티커_20240327_고둥">정보</button>
-            </div>
-            중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT <br></td><!-- 전산신청 영문품명 -->
-          <td>FROZEN RAW WHELK MEAT<br></td><!-- 영문품명(화주) -->
-          <td>BUCCINUM UNDATUM<br></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20240528_고등어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.09.09 : 냉동 꽁치 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190709_꽁치">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동꽁치,FROZEN MACKEREL PIKE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN PACIFIC SAURY WHOLE ROUND</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.06.17 : 냉동 절단꽃게 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190617_절단꽃게">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동게(꽃게,절단),FROZEN CUTTED SWIMMING CRAB</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN CUT SWIMMING CRAB</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2024.06.19 : 냉동 날치알 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20221215_날치알">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관">*냉동어란(날치알),FROZEN FLYING FISH ROE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN FLYING FISH ROE</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2018.11.20 : 냉동 돔 (KP-034, 중국, FAO 77)</div> 
-              <button class="스티커정보" title="수품원스티커_20181120_돔">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관" onclick="
-            if(document.querySelector('#td_수품원스티커_20181120_돔').classList.contains('d-none')) {
-              document.querySelector('#td_수품원스티커_20181120_돔').classList.remove('d-none');
-
-            } else {
-              document.querySelector('#td_수품원스티커_20181120_돔').classList.add('d-none')
-            }
-            ">*<span style="color:blueviolet;font-weight: bold;">click</span> ['TILE'로 검색한 수품원[대소문자구분] 품명정보]<br>
-            <div class="d-none" id="td_수품원스티커_20181120_돔">
-              냉동돔(지브라타일돔), FROZEN ZEBRA TILE FISH<br>
-              냉동돔(등흑점옥두어), FROZEN TILEFISH<br>
-              냉동돔(등흑점옥두어,F), FROZEN TILEFISH FILLET<br>
-              냉동돔(남방옥돔), FROZEN WARD'S TILEFISH<br>
-              냉동돔(지브라타일돔,F), FROZEN ZEBRA TILE FISH FILLET<br>
-            </div>
-          </td><!-- 전산신청 영문품명 -->
-          <td>FROZEN TILEFISH</td><!-- 영문품명(화주) -->
-          <td>CAULOLATILUS PRINCEPS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.06.17 : 냉동 대구곤 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190617_대구곤">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동곤이(대구),FROZEN COD MILT</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN PACIFIC COD MILT</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.06.17 : 냉동 명란 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190617_명란">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동어란(명란),FROZEN ALASKA POLLACK ROE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ALASKA POLLACK ROE</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.12.08 : 냉동 명태 (KP-034, 중국, FAO 61)</div> 
-              <button class="스티커정보" title="수품원스티커_20211208_명태">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관">*냉동명태,FROZEN ALASKA POLLACK</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ALASKA POLLOCK H/G</td><!-- 영문품명(화주) -->
-          <td>THERAGRA CHALCOGRAMMA</td><!-- 학명 -->
-        </tr>
-        <tr style="background-color:cyan;">
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2018.12.07 : 냉동 민어 (KP-034, 중국, FAO-77)</div> 
-              <button class="스티커정보" title="수품원스티커_20181207_민어">정보</button>
-            </div>
-            중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관" onclick="
-            if(document.querySelector('#td_수품원스티커_20181207_민어').classList.contains('d-none')) {
-              document.querySelector('#td_수품원스티커_20181207_민어').classList.remove('d-none');
-
-            } else {
-              document.querySelector('#td_수품원스티커_20181207_민어').classList.add('d-none')
-            }
-            ">*<span style="color:blueviolet;font-weight: bold;">click</span> [수품원[대소문자구분] 품명정보, CROAKER]<br>
-            <div class="d-none" id="td_수품원스티커_20181207_민어">
-              냉동조기(참조기),FROZEN YELLOW CROAKER<br>
-              냉동조기(부세),FROZEN LARGE YELLOW CROAKER<br>
-              냉동민어(민어),FROZEN BROWN CROAKER<br>
-              냉동민어(흑조기),FROZEN BLACKMOUTH CROAKER<br>
-              냉동민어(보구치),FROZEN WHITE CROAKER<br>
-              냉동민어(꼬마민어),FROZEN CROAKER<br>
-              냉동민어(파마이석태),FROZEN PAMA CROAKER<br>
-              냉동민어(대두이석태),FROZEN BIG HEAD PENNAH CROAKER<br>
-              냉동민어(긴가이석태),FROZEN BOBO CROAKER<br>
-              등등....
-            </div>
-          </td><!-- 전산신청 영문품명 -->
-          <td>FROZEN YELLOW CROAKER</td><!-- 영문품명(화주) -->
-          <td>UMBRINA RONCADOR</td><!-- 학명 -->
-        </tr>
-        <tr style="background-color:cyan;">
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.01.18 : 냉동 방어 (KP-034, 중국, FAO 61)</div> 
-              <button class="스티커정보" title="수품원스티커_20210118_방어">정보</button>
-            </div>
-            방어는 연근해산인 경우, 양식인지 아닌지 확인서 필요함
-          </td><!-- 한글품명(+메모) -->
-          <td title="연근해산">*냉동방어,FROZEN YELLOW TAIL</td><!-- 전산신청 영문품명 -->
-          <td>FORZEN YELLOW TAIL</td><!-- 영문품명(화주) -->
-          <td>SERIOLA QUINQUERADIATA</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2023.08.24 : 냉동 방어 (KP-034, 중국, FAO 61)</div> 
-              <button class="스티커정보" title="수품원스티커_20230824_방어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="연근해산">*냉동방어,FROZEN YELLOW TAIL</td><!-- 전산신청 영문품명 -->
-          <td>FORZEN YELLOWTAIL ROUND</td><!-- 영문품명(화주) -->
-          <td>SERIOLA QUINQUERADIATA</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2024.06.19 : 냉동 북방대합조개살 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20201014_북방대합조개살">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관" onclick="
-            if(document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.contains('d-none')) {
-              document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.remove('d-none');
-
-            } else {
-              document.querySelector('#td_수품원스티커_20201014_북방대합조개살').classList.add('d-none')
-            }
-            ">*<span style="color:blueviolet;font-weight: bold;">click</span> 냉동대합살(북방대합)<br>
-            <div class="d-none" id="td_수품원스티커_20201014_북방대합조개살">
-              냉동대합(북방대합),FROZEN SAKHALIN SURF CLAM<br>
-              냉동대합살(북방대합),FROZEN SAKHALIN SURF CLAM MEAT<br>
-              냉동대합살(북방대합,포장횟감),FROZEN SAKHALIN SURF CLAM MEAT<br>
-              냉동대합(북방대합,자숙),FROZEN BOILED SAKHALIN SURF CLAM<br>
-              냉동대합살(북방대합,자숙),FROZEN BOILED SAKHALIN SURF CLAM MEAT<br>
-              냉동대합살(북방대합,자숙,S),FROZEN BOILED SAKHALIN SURF CLAM MEAT SLICE<br>
-              냉동대합살(북방대합,자숙,S,포장횟감),FROZEN BOILED SAKHALIN SURF CLAM MEAT SLICE<br>
-              냉동대합살(북방대합,자숙,포장횟감),FROZEN SAKHALIN BOILED SURF CLAM<br>
-              냉동대합살(북방대합,자숙,횟감),FROZEN SAKHALIN BOILED SURF CLAM<br>
-            </div>
-          </td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ARCTIC SURF CLAM</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2023.10.25 : 냉동 삼치 (KP-034, 중국, FAO 61)</div> 
-              <button class="스티커정보" title="수품원스티커_20201110_삼치">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="연근해산" onclick="
-            if(document.querySelector('#td_수품원스티커_20201110_삼치').classList.contains('d-none')) {
-              document.querySelector('#td_수품원스티커_20201110_삼치').classList.remove('d-none');
-
-            } else {
-              document.querySelector('#td_수품원스티커_20201110_삼치').classList.add('d-none')
-            }
-            ">*<span style="color:blueviolet;font-weight: bold;">click</span> 냉동삼치<br>
-            <div class="d-none" id="td_수품원스티커_20201110_삼치">
-              냉동삼치,FORZEN JAPANESE SPANISH MACKEREL<br>
-              냉동삼치(F),FORZEN JAPANESE SPANISH MACKEREL FILLET<br>
-              냉동삼치(줄삼치,F),FROZEN BONITO FILLET<br>
-              냉동삼치(줄삼치),FROZEN STRIPED BONITO<br>
-              냉동삼치(동갈삼치),FROZEN NARROW-BARRED SPANISH MACKEREL<br>
-              냉동삼치(꼬지삼치),FROZEN WAHOO<br>
-              냉동삼치(비늘삼치),FROZEN BUTTERFLY MACKEREL<br>
-              냉동삼치(검정통삼치,F),FROZEN BARRACOUTA(F)
-            </div>
-          </td><!-- 전산신청 영문품명 -->
-          <td>FROZEN SPANISH MACKEREL</td><!-- 영문품명(화주) -->
-          <td>SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2022.09.22 : 냉동 삼치 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20220922_삼치">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="연근해산">*냉동삼치,FROZEN JAPANESE SPANISH MACKEREL</td><!-- 전산신청 영문품명 -->
-          <td style="font-size:14px;">FROZEN SPANISH MACKEREL WHOLE ROUND</td><!-- 영문품명(화주) -->
-          <td>SCOMBEROMORUS NIPHONIUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2023.07.12 : 냉동 새우, 초밥용 홍새우살 아르헨티나산 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20230712_새우">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관">*냉동새우살(적새우),FROZEN RED SHRIMP MEAT</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ARGENTINE RED SHRIMP MEAT</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.06.17 : 냉동 아귀 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190617_아귀">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동아귀,FROZEN MONKFISH</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN MONK FISH</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2022.05.26 : 냉동 오징어, 연근해 (KP-034, 중국, FAO 61)</div> 
-              <button class="스티커정보" title="수품원스티커_20211014_오징어연근해">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="연근해" onclick="
-            if(document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.contains('d-none')) {
-              document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.remove('d-none');
-
-            } else {
-              document.querySelector('#td_수품원스티커_20211014_오징어연근해').classList.add('d-none')
-            }
-            ">*<span style="color:blueviolet;font-weight: bold;">click</span> 냉동오징어,FROZEN SQUID<br>
-            <div class="d-none" id="td_수품원스티커_20211014_오징어연근해">
-              냉동오징어(동체),FROZEN SQUID(TUBE)<br>
-              냉동오징어(동체,자숙),FROZEN SQUID BOILED(BODY)<br>
-              냉동오징어,FROZEN SQUID<br>
-              냉동오징어(자숙),FROZEN BOILED SQUID<br>
-              냉동오징어(지느러미),FROZEN SQUID FIN<br>
-              냉동오징어(지느러미,자숙),FROZEN BOILED SQUID FIN<br>
-              냉동오징어(입살),FROZEN SQUID MOUTH MEAT<br>
-              냉동오징어(머리살),FROZEN SQUID(HEAD MEAT)<br>
-              냉동오징어(다리),FROZEN SQUID(LEG)<br>
-              냉동오징어(다리,자숙),FROZEN BOILED SQUID(LEG)<br>
-            </div>
-          </td><!-- 전산신청 영문품명 -->
-          <td>FROZEN SQUID</td><!-- 영문품명(화주) -->
-          <td>TODARODES PACIFICUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2020.12.16 : 냉동 오징어, 무라오징어 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20201216_오징어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN GIANT SQUID MEAT</td><!-- 영문품명(화주) -->
-          <td>DOSIDICUS GIGAS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.08.17 : 냉동 오징어, 무라오징어 동체(자숙) (KP-034, 중국, FAO 87)</div> 
-              <button class="스티커정보" title="수품원스티커_20210817_자숙동체오징어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어(동체,자숙),FROZEN SQUID BOILED(BODY)</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN BOILED GIANT SQUID FILLETS</td><!-- 영문품명(화주) -->
-          <td>DOSIDICUS GIGAS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.10.25 : 냉동 오징어 다리, 무라오징어 다리 (KP-034, 중국, FAO-87 [페루])</div> 
-              <button class="스티커정보" title="수품원스티커_20191025_오징어다리">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어(다리),FROZEN SQUID(LEG)</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN GIANT SQUID TENTACLES</td><!-- 영문품명(화주) -->
-          <td>DOSIDICUS GIGAS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2022.04.25 : 냉동 오징어, 무라오징어 족살 (KP-034, 중국, FAO 87)</div> 
-              <button class="스티커정보" title="수품원스티커_20190305_오징어입살">정보</button>
-            </div>
-            <span style="color:blueviolet;font-weight: bold;">전산 품명 없어서 '냉동오징어'로 신청함</span>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN SQUID NECK</td><!-- 영문품명(화주) -->
-          <td>DOSIDICUS GIGAS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.08.17 : 냉동 오징어 입살, 무라오징어 입살 (KP-034, 중국, FAO 87)</div> 
-              <button class="스티커정보" title="수품원스티커_20190305_오징어입살">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어(입살),FROZEN SQUID MOUTH MEAT</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN SQUID MOUTH</td><!-- 영문품명(화주) -->
-          <td>DOSIDICUS GIGAS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.07.21 : 냉동 오징어 다리, 포크오징어 다리 (KP-034, 중국, FAO-41)</div> 
-              <button class="스티커정보" title="수품원스티커_20210721_오징어다리">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어(다리),FROZEN SQUID(LEG)</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ILLEX SQUID TENTACLE</td><!-- 영문품명(화주) -->
-          <td>ILLEX ARGENTINUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.10.29 : 냉동 오징어 , 포크오징어 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20211029_오징어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ILLEX SQUID</td><!-- 영문품명(화주) -->
-          <td>ILLEX ARGENTINUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2021.10.13 : 냉동 오징어 , 포크오징어 (KP-034, 중국, FAO-41)</div> 
-              <button class="스티커정보" title="수품원스티커_20211013_오징어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="원양물어획 반입신고">*냉동오징어,FROZEN SQUID</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN SQUID</td><!-- 영문품명(화주) -->
-          <td>ILLEX ARGENTINUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20190822_연어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동연어(태평양은연어), FROZEN CHHO SALMON</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN SALMON COHO</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20191008_연어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동연어(F), FROZEN SALMON FILLET</td><!-- 전산신청 영문품명 -->
-          <td style="font-size: 14px;">FROZEN ATLANTIC SALMON FILLET TRIM D</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.08.22 : 냉동 연어 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20230712_연어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td title="수입통관" onclick="
-            if(document.querySelector('#td_수품원스티커_20230712_연어').classList.contains('d-none')) {
-              document.querySelector('#td_수품원스티커_20230712_연어').classList.remove('d-none');
-
-            } else {
-              document.querySelector('#td_수품원스티커_20230712_연어').classList.add('d-none')
-            }
-            ">*<span style="color:blueviolet;font-weight: bold;">click</span> [수품원 품명정보 : 연어]<br>
-            <div class="d-none" id="td_수품원스티커_20230712_연어">
-              냉동연어,FROZEN SALMON<br>
-              냉동연어(훈제),FROZEN SMOKED SALMON<br>
-              냉동연어(F),FROZEN SALMON FILLET<br>
-              냉동연어(태평양곱사연어),FROZEN PINK SALMON<br>
-              냉동연어(태평양홍연어),FROZEN RED SALMON<br>
-              냉동연어(태평양왕연어),FROZEN KING SALMON<br>
-              냉동연어(대서양연어),FROZEN ALTANTIC SALMON<br>
-              냉동연어(대서양연어,F),FROZEN ALTANTIC SALMON FILLET<br>
-              냉동연어(태평양연어),FROZEN PACIFIC SALMON<br>
-              냉동연어(태평양은연어),FROZEN COHO SALMON<br>
-              냉동연어(태평양은연어,F),FROZEN COHO SALMON FILLET
-            </div>
-          </td><!-- 전산신청 영문품명 -->
-          <td style="font-size: 14px;">FROZEN ATLANTIC SALMON FILLET</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.06.17 : 냉동 열빙어 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190617_열빙어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동빙어(열빙어),FROZEN CAPELIN</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN CAPELIN</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2022.02.11 : 냉동 열빙어 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20220211_열빙어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동빙어(열빙어),FROZEN CAPELIN</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN CAPELIN</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2019.06.17 : 냉동 임연수어 (KVN-044, 베트남)</div> 
-              <button class="스티커정보" title="수품원스티커_20190617_임연수어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동임연수어,FROZEN ATKA MACKEREL</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN ATKA MACKEREL</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2023.05.23 : 냉동 장어 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20230523_장어">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동장어(붕장어,F),FROZEN CONGER EEL FILLET</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN CONGER EEL FILLET</td><!-- 영문품명(화주) -->
-          <td>MURAENESOX CINEREUS</td><!-- 학명 -->
-        </tr>
-        <tr>
-          <td>
-            <div class="div와버튼양쪽정렬">
-              <div class="d-inline-block">2023.02.01 : 냉동 청어알 (KTH-026, 태국)</div> 
-              <button class="스티커정보" title="수품원스티커_20230201_청어알">정보</button>
-            </div>
-          </td><!-- 한글품명(+메모) -->
-          <td>*냉동어란(청어알),FROZEN HERRING ROE</td><!-- 전산신청 영문품명 -->
-          <td>FROZEN HERRING ROE</td><!-- 영문품명(화주) -->
-          <td></td><!-- 학명 -->
-        </tr>
-      </tbody>
-    </table>
-    <br><br><br><br><br><br><br><br><br><br>
-  </div>
-
-  <section id="_03_수품원_방어수매확인서">
-    <div id="스크립트로ul추가"></div>
-    <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
-    <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
-    <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
- 
-  <section id="_20250401_중국수출시참다랑어자연산양식산표기">
-    <h6 style="color:blueviolet;font-weight: bold;">※ _2025.04.01 수협중앙회, 정부비축물품 출고시 검사표전 부착 잘하기</h6>
-    <embed src="portal/images/문서연결_수품원/_20250401_중국수출시참다랑어자연산양식산표기.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-        <h6 style="color:blueviolet;font-weight: bold;">※ _2025.04.01 중국 수출시, 참다랑어, 자연산, 양식산 표기</h6>
-    <embed src="portal/images/문서연결_수품원/_20250401_수협중앙회비축물품전표부착.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_20250517_오징어분말크릴새우수출희망수요조사">
-    <h6 style="color:blueviolet;font-weight: bold;">※ _20250517 수품원, 중국, 오징어분말 남극크릴새우 수출수요 조사</h6>
-    <embed src="portal/images/문서연결_수품원/_20250517_오징어분말크릴새우수출희망수요조사.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </section>
-
-  <section id="_03_수품원_CK청어알">
-    <div id="스크립트로ul추가"></div>
-    <h5>▢ 청어알 섭취방법, CK 최승우과장(20250205), 수출담당 김소은</h5>
-    <h5>▢ CK 최승우과장 수품원에 답변내용</h5>
-    <h6>- 어묵 재료로 들어가는데 어묵 제조 과정에서 재료들을 가열하여 반죽상태로 만드는 공정이 있다.</h6>
-  </section>
-
-  <div id="수품원스티커_20190725_가자미">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190725_가자미.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190802_갯장어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190802_갯장어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20221215_날치알">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20221215_날치알.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20240327_고둥">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20240327_고둥.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20240528_고등어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20240528_고등어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190709_꽁치">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190709_꽁치.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190617_절단꽃게">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_절단꽃게.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20181120_돔">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20181120_돔.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-  
-  <div id="수품원스티커_20190617_대구곤">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_대구곤.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20181207_민어">
-    <h5>▢ 중국에서 통보된 위험분석 면제품목에 열거되지 않아... 각서</h5>
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20181207_민어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190617_명란">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_명란.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20211208_명태">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20211208_명태.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20201014_북방대합조개살">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20201014_북방대합조개살.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20210118_방어">
-    <h5 class="목차">▢ 방어같은 경우 연근해산인 경우, 양식인지 아닌지 확인해야하는 품목인데 어획증명서나 수매확인서가 있어야함.</h5>
-    <h5 class="목차">▢ 수출하려는 화주에게까지 소유권? 이동의 상세내역은 필요없고 어획증명서나 수매확인서만 있으면 됩니다.</h5>
-    <embed src="portal/images/문서연결_수품원/03_수품원_방어수매확인서.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20230824_방어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20230824_방어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20201110_삼치">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20201110_삼치.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20220922_삼치">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20220922_삼치.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20230712_새우">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20230712_새우.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190617_아귀">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_아귀.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20201216_오징어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20201216_오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20210817_자숙동체오징어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20210817_자숙동체오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20211014_오징어연근해">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20211014_오징어연근해.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20191025_오징어다리">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20191025_오징어다리.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190305_오징어입살">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190305_오징어입살.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20210721_오징어다리">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20210721_오징어다리.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20211029_오징어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20211029_오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20211013_오징어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20211013_오징어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190822_연어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190822_연어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20191008_연어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20191008_연어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20230712_연어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20230712_연어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190617_열빙어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_열빙어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20220211_열빙어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20220211_열빙어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20190617_임연수어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20190617_임연수어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20230523_장어">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20230523_장어.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
-  <div id="수품원스티커_20230201_청어알">
-    <embed src="portal/images/문서연결_수품원/수품원스티커_20230201_청어알.pdf" type="application/pdf" width=1150px height=1000px/ dataset.searchdata="기본가로700"/>
-  </div>
-
- 
-
-
-
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
-    </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-    </div>
-  </div>
-</div>
-
-
-
-<div id="전달사항_공문_발행물전체_관련자료none" class="d-none 모든검색">
-  <div class="카테고리모음"><!--캔버스바디에 들어간다 div 3개 제한(각각 세로로)-->
-    <div class="개별카테고리" id="전달사항공문발행물전체_여보세요"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_07_09_대장관련_여보세요" >★세관 여!보세요 발행물 <span style="color:blueviolet" class="fw-bold">모음</span>  [관세법령교육에 활용]</h6>
-        <h6 class="canvas_div" title="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정" >★23년11월, <span style="color:blueviolet" class="fw-bold">특허심사평가항목배점조정</span></h6>
-        <h6><span style="color:blueviolet">[메모]23년4월 : </span>수입신고수리화물의 반출기한이 토요일이면? => 관세법 제8조(기간 및 기한의 계산), 토요일 또는 공휴일에
-        해당한 때에는 그 익일에 만료, 월요일까지 반출시 과태료 부과대상이 아님
-        </h6>
-        <h6><span style="color:blueviolet">[메모]23년4월 : 보세사등록취소 위반시 '특허보세구역 운영에 관한 고시' 제18조에 따라 행정제재(주의,경고) 대상</span>
-          <br>고시 17조 : 보세구역에 종사하는 직원을 채용 또는 면직한 때에는 즉시 세관장에게 보고 → 세관장은 보고 내용 확인 후 등록취소
-        </h6>
-        <h6><span style="color:blueviolet">[메모]23년5월 : 폐기물품 반출시, 반출신고를 당일에하지 않으면 과태료가 있음</span></h6>
-        <h6><span style="color:blueviolet">[메모]23년5월 : 반출통고 누락시 '보세구역 경고처분'</span></h6>
-        <h6><span style="color:blueviolet">[메모]23년6월 : 보세구역 정기점검 일정은,</span><br>
-        최소 7일 전에 통보하고, 작업량이 많은 시간대(월요일 또는 오전시간) 현장점검을 줄여 부담 최소화 하도록 노력.
-        </h6>
-        <h6><span style="color:blueviolet">[메모]23년6월 : 전자씰 해제법,</span><br>
-          1. 보세운송건사 전자씰 해제법 : 보세사가 봉인이상 여부 확인 후 (해제등록 후) 전자씰 해제 <br>
-          2. 관리대상화물 전자씰 해제법 : (확인 후 해제등록 한 뒤) 세관공무원 입회한 상태에서 지시에 따라 씰 해제 및 컨테이너 개장
-        </h6>
-        <h6><span style="color:blueviolet">[메모]23년6월 : CCTV 사용(조회) 권한 제공시 법규수행능력 점수 3점 부여!</span></h6>
-      </div>
-      <div>
-        <h6><span style="color:blueviolet">[메모]23년7월 : 반입신고 누락 주의</span><br>
-          관세법 제277조 제5항 제2호, 200만원 이하의 과태료처분 + 행정제재
-        </h6>
-        <h6><span style="color:blueviolet">[메모]23년8월★★ : 법령개정 정보, 컨테이너화물 하선장소 반입기간을 5일로 연장!!</span><br>
-          '보세화물 입출항 하선하기 및 적재에 관한 고시, 제19조 제1항, 하선(기)장소 반입의무기간'<br>
-          컨테이너 선박의 초대형화 및 부두 장치율 상승 등에 대응하여 컨테이너화물 하선장소 반입기간을 5일로 연장.
-        </h6>
-        <h6 class="canvas_div" title="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정"><span style="color:blueviolet">23년10월,11월★★ : 법령개정 정보, 시설높이 요건 삭제!! <b>(div)</b> </span><br>
-          '특허보세구역운영에관한 고시 제10조제1항제6호' 삭제<br>
-          지게차, 이동식 컨베이어 등 다양한 화물 상하차 수단이 활용되고 있는 여건을 반영하여<br>
-          민간에서 자율운영 가능하도록 시설높이 요건 삭제.
-        </h6>
-        <h6><span style="color:blueviolet" class="fw-bold">[메모]23년12월★★ : 보세사 및 직원!! 퇴사 등 미신고시 행정제재!!</span><br>
-          보세사 등록 : 물류협회<br>
-          보세사 퇴사 및 업무변경 신고 : 세관<br>
-          보세사 미등록 근무시 500만원 이하 벌금 (관세법276조 제5항)<br>
-          퇴사 및 직원변경 미신고시 행정제제 '주의' 처분 (특허보세구역 운영에 관한 고시 제18조 제1항 제1호)
-        </h6>
-        <h6><span style="color:blueviolet">[메모]24년1월 : 23년도 법규수행능력평가 결과 통보</span><br>
-          A등급(91개), B등급(49개), C등급 이하(10개), D등급 업체는 개선이행계획서 징구 후 관리예정
-        </h6>
-      </div>
-      <div>
-        <h6><span style="color:blueviolet" class="fw-bold">[메모]24년10월 : '보세창고 출입자 관리대장 양식 통일 안내'</span>
+    <section id="_기타20250313_교육5종">
+      <div id="스크립트로ul추가"></div>
+      <h4 id="move1" class="목차">&#9634; 2023.03.13 : 상시근로자 사업장 1/4분기 산업안전보건교육 및 법정교육 시행의 건</h4>
+      <embed src="portal/images/문서연결_기타/_기타20250313_교육5종.pdf" 
+      type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
+    </section>
+    <div id="특문만따로" class="d-none 모든검색">  <!-- 특문만 따로 -->
+
+      <div id="html특수문자_click">
+        <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
+
+        <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
+          <h5>줄바꿈 &nbsp; ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
+          <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」(여백 : &#38;&#35;32;) (탭 : &#38;&#35;09;)</h5>
+          <h5 style="color:blueviolet;font-weight: bold;">※ Entity code (엔티티 코드) : 특수문자 표현</h5>
+          <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
           <br>
-          양식 출력이 필요한 분은 <u>yoboseyo@modoo.at</u>에서 다운받아 사용하십시오.
-        </h6>
-        <h6><span style="color:blueviolet" class="fw-bold">[메모]24년11월 발행분까지 내용 확인하였음</span>
-        </h6>
+          <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
+        </div>
+        <div style="display: inline-block;padding:5px;">
+          <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
+        </div>
+
       </div>
     </div>
-    <div class="개별카테고리" id="전달사항공문발행물전체_보세구역전달사항"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+    <div id="설명_캔버스_개별카테고리_h6의title과id순서">
+      <div class="대체2줄">
+        <div>
+          <h6 class="fw-bold">• 캔버스_개별카테고리_h6의title과id순서 필요성</h6>
+          <h6 style="text-indent: 23px;">1-1. 캔버스에서 id와 연결된 h6의 위치 : .캔버스관련모두감싸기 > .캔버스 > .개별카테고리 > div > h6 </h6>
+          <h6 style="text-indent: 23px;">1-2. 1-1 중에서 title을 가진 요소</h6>
+          <h6 style="text-indent: 23px;">2. .모든id모음위치자유 > [id] : 첫번째 자식요소중 id가 있는 요소</h6>
+        </div>
+        <div>
+          <h5 class="fw-bold"></h5>
+          <code class="fw-bold">• </code>
+          <code class="fw-bold" style="text-indent: 15px;"></code>
+          <code class="fw-bold"></code>
+          <span style="color:blueviolet"></span>
+          <h6></h6>
+          <h6></h6>
+          <h6 style="text-indent: 23px;"></h6>
+          <img src="" alt="이미지없음">
+        </div>
+      </div>
+      <div style="position: relative;border-bottom:1px solid rgb(201, 188, 188);"><button onclick="캔버스_개별카테고리_h6의title과id순서()">
+        .캔버스 - .개별카테고리 - h6:[title]</button>
+      </div>    
       <div>
-        <h6 class="canvas_div" title="_07_보세구역전달사항" >★보세구역전달사항 일부 모음</h6>
-        <h6 class="canvas_div" title="_07_보세구역전달사항_특별점검팀연락처" >보세구역 특별점검팀 연락처 2025.02.03</h6>
+        <div class="d-inline-block" style="vertical-align: top;">
+          <span>html에서 id추출, 오른쪽의 title과 연결안된것은 노랑색 표시, <br> 
+            노랑색칠은 카테고리내 h6 안에 title에 없다는 것. <br>
+            id개수 : </span><span id="id개수"></span>
+          <div id="id나열"></div>
+        </div>
+        <div class="d-inline-block" style="vertical-align: top;text-align: left;">
+          <span>왼쪽의 id와 연결안된것은 노랑색 표시,  <br>html의 순서대로 기록되는 듯 <br> title개수 : </span><span id="title개수"></span><span></span>
+          <div id="title나열"></div>
+        </div>
       </div>
     </div>
-    <div class="개별카테고리" id="전달사항공문발행물전체_부산본부세관공문"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_07_본부세관관련공문등" >24.07.17, 28.08.08, CCTV접속정보 제공, CCTV관련 심사기준 추가사항(가감점 기준)</h6>
-        <h6 class="canvas_div" title="_07_보세운송등록차량확인프로그램" >24.12.23, 보세운송등록차량 확인시스템 사용여부 (가감점기준 아직)</h6>
-        <h6 class="canvas_div" title="_07_20250223_방화벽허용정책안내" >25.2.23, 2025.3.15개통예정... 방화벽허용정책관련 미래소프트에 확인함</h6>
-        <h6 class="canvas_div" title="_07_20250224_cctv대수와화소정보제공요청" >25.2.24, cctv대수와화소정보제공요청 (보세구역 전달사항)</h6>
-        <h6 class="canvas_div" title="_07_20250312_유니패스장비교체사업" >25.3.12, 유니패스 장비교체 사업, _07_20250223_방화벽허용정책안내 후속</h6>
-        <h6 class="canvas_div" title="_07_20250321_보세사업무대행신고서" >25.3.21, 보세사업무대행신고서 신설</h6>
-        <h6 class="canvas_div" title="_07_20250519_법규준수도제도개편설명회" >25.5.19, 법규준수도 제도 개편 설명회</h6>
+    <div id="설명_image폴더의자료사용현황">
+      <h6 class="fw-bold">
+        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">보기</button>
+          • onclick 함수 없다고 가정할때
+      </h6>
+      <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
+      <h6 class="fw-bold">
+        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">보기</button>
+          • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 기타 모둔 파일 이름을 추출한다.
+      </h6>
+      <div id="파일리스트설명2" class="d-none 대체2줄">
+        <div style="border-right:1px solid rgb(201, 188, 188);">
+          <h6>1. 폴더 선택하기 전에, 'onclick함수' 실행됨</h6>
+          <h6>2. '폴더선택 후 업로드 한 결과 발생시' 함수 내부에 이벤트리스너를 등록해 두면 'change'로 감지한다.</h6>
+          <h6>3. 다음 정보를 'change' 함수에서 사용한다. </h6>
+          <h6 style="text-indent: 15px;">a) 인풋요소(change 감지 확인요소) : const fileInput = document.querySelector('#file_input');</h6>
+          <h6 style="text-indent: 15px;">b) 모든 파일리스트(배열) : const selectedDirectories = fileInput.files;</h6>
+          <h6 style="text-indent: 15px;">c) 하나씩 확인하며 코딩 : for (const file of selectedDirectories) {...코딩}</h6>
+        </div>
+        <div>
+          <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 공통적으로 src=" 로 시작하고 " 로 끝나는곳에 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 그러한 값들의 출현횟수를 정규식으로 표현하면 ==> var 출현횟수 = 원본정보text.match(/src="*"/ig).length; </h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 문자열이 하나이상인 것을 표현하면 ==> 원본정보text.match(/src="?*"/ig).length; </h6>
+        </div>
       </div>
-    </div>
-    <div class="개별카테고리" id="전달사항공문발행물전체_식약청등공문"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
+      <div style="border-bottom:1px solid rgb(201, 188, 188);margin-bottom:5px;"></div>
       <div>
-        <h6 class="canvas_div" title="_07_식약청등공문" >★식약청 등 공문</h6>
-      </div>
-      <div>
-        <h6 style="font-weight: bold;">-- 검역원, 방역본부</h6>
-        <h6 class="canvas_div" title="_07_수입식용축산물보관장검역시행장안전조치등협조요청" >20250703 수입식용축산물보관장 검역시행장 안전조치 등 협조요청</h6>
-      </div>
-    </div>
-    <div class="개별카테고리" id="전달사항공문발행물전체_다른지역세관공문"><!--id가 따지는데 _이후를 따옴. _ 없으면 전체 따옴 -->
-      <div>
-        <h6 class="canvas_div" title="_07_다른지역세관관련공문등" >★기타 다른지역 세관 관련 공문 (할당관세, 수입신고수리후 20일 이내 반출?)</h6>
+        <div class="d-inline-block" style="vertical-align: top;">
+          <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
+          <h6 class="fw-bold">• '미사용개수' 는 html 안에 src로 기록되어 있지만 파일이 없는 경우이다. 클릭하면 리스트를 볼수 있다.(d-none 클래스 toggle)</h6>
+          <h6 class="fw-bold">• function textarea정보에서html파일이름추출() 에서 특정 src(처음꺼 한번만)가 2회 기록되어서 [0] 배열 무시하도록 코딩했음</h6>          
+        </div>
+        <div class="d-inline-block" style="margin-left:10px;vertical-align: top;">
+          <h6 class="fw-bold">• 아래는 src[0], src[1]의 값이 기록되도록 했음. 같으면 안되는데 같이 나온다.... </h6>
+          <h6 class="fw-bold">• <span style="color:blueviolet">찾은src들[0] : </span> <span id="js찾은src1"></span></h6>
+          <h6 class="fw-bold">• <span style="color:blueviolet">찾은src들[1] : </span> <span id="js찾은src2"></span></h6>
+        </div>        
+
+        <h5 class="fw-bold">결과표 <div style="display:inline-block;font-size: 14px;">파악된 html 리스트 : </div>
+          <div id="파악된html리스트" style="display:inline-block;font-size: 14px;"></div>
+        </h5>
+        <div style="display: inline-block;vertical-align: top;">
+          <div style="margin-bottom:5px;">
+            <input style="width:210px;" type="file" webkitdirectory onclick="image폴더클릭_파일사용현황파악();" id="file_input"> 
+            <span style="color:blueviolet">function image폴더클릭_파일사용현황파악()</span>
+            <button class="보숨토글버튼" style="width:280px;margin-left:10px;" onclick="textarea정보에서html파일이름추출()">textarea정보에서html파일이름추출()</button>
+          </div>
+          <div id="결과표_전체" style="margin-bottom:5px;">
+            <div id="결과표_현재html" class="결과표">
+              <div class="제목">
+                <div>_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_현재html_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_현재html_미사용src"></span>              
+              </div>
+              <div class="결과">
+                <div>X</div>
+                <div>현재html</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea1" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea1 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea1_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea1_미사용src">sdfsdfsdfsdf</span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+
+            <div id="결과표_textarea2" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea2 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea2_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea2_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea3" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea3 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea3_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea3_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea4" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea4 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea4_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea4_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>
+            <div id="결과표_textarea5" class="결과표 textarea결과만">
+              <div class="제목">
+                <div onclick="document.querySelector('#전체대체 #결과표_textarea5 textarea').value=''">_</div>
+                <div>원본정보</div>
+                <div>html파일</div>
+                <div>값있는src개수</div>
+                <div>사용중개수</div>
+                <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea5_미사용src').classList.toggle('d-none')">미사용개수</div>
+                <div>src=""</div>
+                <span class="미사용src d-none" id="결과표_textarea5_미사용src"></span>
+              </div>
+              <div class="결과">
+                <textarea rows="1" spellcheck="false"></textarea>
+                <div>textarea</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+                <div>_</div>
+              </div>
+            </div>          
+          </div>
+          <div id="js파일리스트기록">
+          </div>
+        </div>
+        <div style="display: inline-block;vertical-align: top;">
+
+        </div>
+
       </div>
     </div>
   </div>
+  <div title="라벨등전체">
+    <div id="라벨_칠레연어_10064">
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10064, 학명 : Oncorhynchus Kisutch</h5>
+        <h6>•정리_촬영:2025 02 03 === 19/11/2024, 18/11/2024, DD/MM/YYYY, ELABORATION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <br>
+        <h6>사진_촬영:2025 02 03 === 19/11/2024, 18/11/2024, DD/MM/YYYY, ELABORATION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_동림은연어_10064_20250203.png" alt="이미지없음">
+        <br><br>
+      </div>
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
 
-  <!-- 카테고리 끝났으면 아래는 .카테고리모음 > .개별카테고리 > h6의 title 을 id로 가진 정보(불러올 정보) -->
-  <div id="_07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정"><!--기본빈서식-->
-    <code class="fw-bold">• 여보세요 23년 11월 </code>
-    <img src="portal/images/문서연결_세관및유니패스/07_09_대장관련_여보세요_23년11월특허심사평가항목배점조정.png" alt="이미지없음">
-  </div>
-
-  <section id="_07_09_대장관련_여보세요">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2023.4.1 창간 부산세관 보세화물 소식지 "여!보세요"</h4>
-    <h5>※ '보세화물취급방법 및 관세법관련 교육일지'에 교육내용에 추가하라고 하였음.</h5>
-    <br>
-    <h4 id="move1" class="목차">&#9634; 자료찾기</h4>
-    <h5>※ 부산본부세관 사이트 - 알림.소식 - 공지사항 - 부산본부세관공지사항 (3페이지 문의사항)</h5>
-    <embed src="portal/images/문서연결_세관및유니패스/07_여보세요202304_202405.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br><br><br><br>
-  </section>
-
-  <section id="_07_보세구역전달사항">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2024.8.28 : 보세창고 출입자 관리대장 양식 변경 요청</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_출입자관리대장양식변경.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-    <h4 id="move2" class="목차">&#9634; 2024.8.27 : CCTV 자율점검 제출 요청 (사각지대)</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_CCTV자율점검.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-    <h4 id="move3" class="목차">&#9634; 2024.10.18 : 보수작업승인신청 위반시</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_보수작업승인신청위반시.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-
-
-    <br><br><br><br>
-  </section>
-
-  <section id="_07_보세구역전달사항_특별점검팀연락처">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; _07_보세구역전달사항_특별점검팀연락처</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_보세구역전달사항_특별점검팀연락처.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-
-  <section id="_07_본부세관관련공문등">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2024.7.17 : CCTV 접속정보 요청 (현장중심 CCTV 13채널 제공함)</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_본부세관관련공문등_CCTV접속정보요청1.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-    <embed src="portal/images/문서연결_세관및유니패스/07_본부세관관련공문등_CCTV접속정보요청2.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-    <h4 id="move2" class="목차">&#9634; 2024.8.8 : 특허 심사기준 관련 추가사항 (가감점 기준 등)</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_본부세관관련공문등_특허심사기준.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-
-    <br><br><br><br>
-  </section>
-
-  <section id="_07_보세운송등록차량확인프로그램">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2024.12.23 : 시스템 만들었는데 사용하기를 권유?</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_보세운송등록차량확인프로그램.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-
-  <section id="_07_20250223_방화벽허용정책안내">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 25.2.23, 2025.3.15개통예정... 방화벽허용정책관련 미래소프트에 확인함</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_20250223_방화벽허용정책안내.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-  
-  <section id="_07_20250312_유니패스장비교체사업">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 25.3.12, 유니패스 장비교체 사업, _07_20250223_방화벽허용정책안내 후속</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_20250312_유니패스장비교체사업.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-  
-  <section id="_07_20250321_보세사업무대행신고서">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 25.3.21, 보세사 업무대행 신고서 신설,</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_20250321_보세사업무대행신고서.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-  
-  <section id="_07_20250519_법규준수도제도개편설명회">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 25.5.19, 법규준수도 제도 개편 설명회,</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_20250519_법규준수도제도개편설명회.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-
-  <section id="_07_20250224_cctv대수와화소정보제공요청">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 25.2.24, cctv대수와화소정보제공요청 (보세구역 전달사항)</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_20250224_cctv대수와화소정보제공요청.pdf" type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-  </section>
-
-  
-
-  <section id="_07_식약청등공문">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2024.10.15 : 수입식품등 보관업 안전관리 안내서</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_보세구역전달사항_수입식품등보관업안전관리안내서.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-
-
-    <br><br><br><br>
-  </section>
-
-  <section id="_07_수입식용축산물보관장검역시행장안전조치등협조요청">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2025.07.03 : 20250703 수입식용축산물보관장 검역시행장 안전조치 등 협조요청</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/_07_수입식용축산물보관장검역시행장안전조치등협조요청.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-
-
-    <br><br><br><br>
-  </section>
-
-  
-
-  <section id="_07_다른지역세관관련공문등">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; 2024.8.26 : 서울세관, 사세 서울지점 반출입 자료 요청</h4>
-    <embed src="portal/images/문서연결_세관및유니패스/07_다른지역세관관련공문등_서울세관사세서울지점반출입자료.pdf" 
-    type="application/pdf" width="1350px" height="1000px/" dataset.searchdata="기본가로700">
-    <br>
-
-    <br><br><br><br>
-  </section>
-
-  <section id="_06_반출입_파순08_전산재고조사">
-    <div id="스크립트로ul추가"></div>
-    <h4 id="move1" class="목차">&#9634; </h4>
-
-    <br><br><br><br>
-  </section>
-
-  <div id=""><!--기본빈서식-->
-    <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-      <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
-      <h5 class="fw-bold"></h5>
-      <code class="fw-bold">• </code>
-      <code class="fw-bold" style="text-indent: 15px;"></code>
-      <code class="fw-bold"></code>
-      <span style="color:blueviolet"></span>
-      <h6></h6>
-      <h6 style="text-indent: 23px;"></h6>
-      <img src="" alt="이미지없음">
+      </div>
     </div>
-    <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+    <div id="라벨_칠레연어_10256">
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10256, 학명 : Oncorhynchus Kisutch</h5>
+        <h6>•정리_촬영:2025 01 20 === 05 AUG 2024, 04 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <h6>•정리_촬영:2025 01 21 === 12 AUG 2024, 11 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <br>
+        <h6>사진_촬영:2025 01 20 === 05 AUG 2024, 04 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_동림은연어_10256_20250120.png" alt="이미지없음">
+        <br><br>
+        <h6>사진_촬영:2025 01 21 === 12 AUG 2024, 11 AUG 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_동림은연어_10256_20250121.png" alt="이미지없음">
+        <br><br>
+      </div>
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+      </div>
+    </div>
+    <div id="라벨_칠레연어_10673">
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10673, 학명 : Oncorhynchus Kisutch</h5>
+        <h6>•정리_촬영:2025 02 03 === 23 NOV 2024, 22 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <br>
+        <h6>사진_촬영:2025 02 03 === 23 NOV 2024, 22 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_동림은연어_10673_20250203.png" alt="이미지없음">
+        <br><br>
+      </div>
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+      </div>
+    </div>
+    <div id="라벨_칠레연어_10678">
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10678, 학명 : Oncorhynchus Kisutch</h5>
+        <h6>•정리_촬영:2025 01 21 === 26 NOV 2024, 25 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <h6>•정리_촬영:2025 01 10 === 27 NOV 2024, 26 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <br>
+        <h6>사진_촬영:2025 01 21 === 26 NOV 2024, 25 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_동림은연어_10678_20250121.png" alt="이미지없음">
+        <br><br>
+        <h6>사진_촬영:2025 01 10 === 27 NOV 2024, 26 NOV 2026, PRODUCTION DATE, BEST BEFORE <span style="font-weight: bold;color:blueviolet">동림</span></h6>
+        <img src="portal/images/문서연결_메모/연어라벨_칠레_10678.png" alt="이미지없음">
+        <br><br>
+      </div>
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+      </div>
+    </div>
+    <div id="라벨_칠레연어_10708"><!--기본빈서식-->
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+        <h5 style="font-weight: bold;color:blueviolet">칠레 연어 가공장 10708, 학명 : Oncorhynchus Kisutch</h5>
+        <h6>•정리_촬영:2024 12 26 === 06/NOV/2024, 06/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">롯데</span></h6>
+        <h6>•정리_촬영:2025 01 16 === 21/NOV/2024, 21/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">CK</span></h6>
+        <br>
+        <h6>사진_촬영:2024 12 26 === 06/NOV/2024, 06/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">롯데</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_롯데연어_10708_20251226.png" alt="이미지없음">
+        <br><br>
+        <h6>사진_촬영:2025 01 16 === 21/NOV/2024, 21/NOV/2026, Elabora date, Expire date <span style="font-weight: bold;color:blueviolet">CK</span></h6>
+        <img src="portal/images/문서연결_메모/라벨_CK은연어_10708_20250116.png" alt="이미지없음">
+        <br><br>
+      </div>
+      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
+
+      </div>
+    </div>
+    <div id="라벨_우원품명"><!--기본빈서식-->
+      <div id="우원원본풀기js"></div>
+      <div id="우원원본" class="d-none">
+  품명	규격	표시	Kg	비고
+  감자말이새우	20g(4kg)	새우가공품	4	
+  감자말이새우	30g(6kg)	새우가공품	6	
+  갑오징어롤	2/3미(4kg)	씨푸드	4	
+  갑오징어롤	3/5미(4kg)	씨푸드	4	
+  갑오징어롤	5/7미(4kg)	씨푸드	4	
+  갑오징어채	400g(4kg)	초밥·횟감	4	
+  갑오징어홀크린	100/200(4kg)	씨푸드	4	
+  갑오징어홀크린	200/300(4kg)	씨푸드	4	
+  갑오징어홀크린	300/500(4kg)	씨푸드	4	
+  노바시새우	20미(9.08kg)	새우	9.08	
+  노바시새우	30미(6kg)	새우	6	
+  노바시새우	40미(6kg)	새우	6	
+  멘보샤	15g(4.8kg)	새우가공품	4.8	
+  멘보샤	25g(5kg)	새우가공품	5	
+  멘보샤	30g(6kg)	새우가공품	6	
+  민물장어	2미	초밥·횟감	10	
+  민물장어	6미	초밥·횟감	10	
+  민물장어	8미	초밥·횟감	10	
+  민물장어	10미	초밥·횟감	10	
+  버터플라이 브레디드	25g(5kg)	새우가공품	5	
+  브레디드 쉬림프	20g*10미	새우가공품	4	
+  브레디드 쉬림프	20g*50미	새우가공품	6	
+  브레디드 쉬림프	20g*30미	새우가공품	6	
+  브레디드 쉬림프	30g(30%)	새우가공품	6	
+  브레디드 쉬림프	30g(40%)	새우가공품	6	
+  브레디드 쉬림프	50g*10미	새우가공품	5	
+  브레디드 쉬림프	40g*10미	새우가공품	8	
+  블랙타이거새우	10미/1.3kg	새우 	7.8	
+  블랙타이거새우	12미/1.3kg	새우 	7.8	
+  블랙타이거새우	15미/1.3kg	새우 	7.8	
+  블랙타이거새우	18미/1.3kg	새우 	7.8	
+  블랙타이거새우	20미/1.3kg	새우 	7.8	
+  블랙타이거새우	25미/1.3kg	새우 	7.8	
+  블랙타이거새우	30미/1.3kg	새우 	7.8	
+  블랙타이거새우	40미/1.3kg	새우 	7.8	
+  블랙타이거새우	8미/500g	새우 	5	
+  블랙타이거새우	10미/500g	새우 	5	
+  블랙타이거새우	12미/500g	새우 	5	
+  블랙타이거새우	15미/500g	새우 	5	
+  블랙타이거새우	20미/500g	새우 	5	
+  빅버터플라이 브레디드 쉬림프	50g(5kg)	새우가공품	5	
+  생새우살	26/30(1kg)	새우	10	
+  생새우살	31/40(1kg)	새우	10	
+  생새우살	51/70(900g)	새우	9	
+  생새우살	71/90(900g)	새우	9	
+  생새우살	31/50(200g)	새우	4	
+  생새우살	51/70(200g)	새우	4	
+  생새우살	71/90(200g)	새우	4	
+  생새우살	26/30(10kg)	새우	10	
+  생새우살	31/40(10kg)	새우	10	
+  생새우살	31/50(10kg)	새우	10	
+  생새우살	51/70(10kg)	새우	10	
+  생새우살	71/90(10kg)	새우	10	
+  에비카츠	100g(8kg)	새우가공품	8	
+  에비카츠	80g(9.6kg)	새우가공품	9.6	
+  에비카츠	60g(7.2kg)	새우가공품	7.2	
+  에비카츠	50g(5kg)	새우가공품	5	
+  이지필새우	16/20(900g)	새우	9	
+  이지필새우	16/20(10kg)	새우	10	
+  자숙새우살	100/200(200g)	새우	4	
+  자숙새우살	200/300(200g)	새우	4	
+  자숙새우살	100/200(10kg)	새우	10	
+  자숙새우살	200/300(10kg)	새우	10	
+  자숙칵테일	31/50(10kg)	새우	10	
+  자숙칵테일	51/70(10kg)	새우	10	
+  자숙칵테일	71/90(10kg)	새우	10	
+  자숙칵테일	91/120(10kg)	새우	10	
+  자숙칵테일	31/50(200g)	새우	4	
+  자숙칵테일	51/70(200g)	새우	4	
+  자숙칵테일	71/90(200g)	새우	4	
+  초갑오징어	12g(9.6kg)	초밥·횟감	9.6	
+  초갑오징어	10g(8kg)	초밥·횟감	8	
+  초갑오징어	8g(6.4kg)	초밥·횟감	6.4	
+  초갑오징어	6g(4.8kg)	초밥·횟감	4.8	
+  초문어	10g(8kg)	초밥·횟감	8	
+  초문어	8g(6.4kg)	초밥·횟감	6.4	
+  초문어	6g(4.8kg)	초밥·횟감	4.8	
+  초문어	5g(4kg)	초밥·횟감	4	
+  초민물장어	8g(6.4kg)	초밥·횟감	6.4	
+  초민물장어	6g(4.8kg)	초밥·횟감	4.8	
+  초백미(NB)	16g(6.4kg)	초밥·횟감	6.4	
+  초백미(NB)	14g(11.2kg)	초밥·횟감	11.2	
+  초백미(NB)	12g(9.6kg)	초밥·횟감	9.6	
+  초백미(NB)	10g(8kg)	초밥·횟감	8	
+  초백미(NB)	8g(6.4kg)	초밥·횟감	6.4	
+  초백미(NB)	6g(4.8kg)	초밥·횟감	4.8	
+  초백미(하비코)	16g(6.4kg)	초밥·횟감	6.4	
+  초백미(하비코)	14g(11.2kg)	초밥·횟감	11.2	
+  초백미(하비코)	12g(9.6kg)	초밥·횟감	9.6	
+  초백미(하비코)	10g(8kg)	초밥·횟감	8	
+  초백미(하비코)	8g(6.4kg)	초밥·횟감	6.4	
+  초백미(하비코)	6.5g(5.2kg)	초밥·횟감	5.2	
+  초새우	8LH(4.4kg)	초밥·횟감	4.4	
+  초새우	7LH(4kg)	초밥·횟감	4	
+  초새우	6LH(3.6kg)	초밥·횟감	3.6	
+  초새우	5LH(3.2kg)	초밥·횟감	3.2	
+  초새우	4LH(2.8kg)	초밥·횟감	2.8	
+  초새우	4L(3.2kg)	초밥·횟감	3.2	
+  초새우	3L(2.7kg)	초밥·횟감	2.7	
+  초새우	2L(2.8kg)	초밥·횟감	2.8	
+  초새우	L(2.2kg)	초밥·횟감	2.2	
+  초새우	M(3.2kg)	초밥·횟감	3.2	
+  초솔방울구운한치	10g(8kg)	초밥·횟감	8	
+  초솔방울구운한치	8g(6.4kg)	초밥·횟감	6.4	
+  초솔방울구운한치	6g(4.8kg)	초밥·횟감	4.8	
+  초아마에비	3L(4kg)	초밥·횟감	4	
+  초아마에비	2L(3.2kg)	초밥·횟감	3.2	
+  초아마에비	L(2.8kg)	초밥·횟감	2.8	
+  초이까	8g(6.4kg)	초밥·횟감	6.4	
+  초이까	6g(4.8kg)	초밥·횟감	4.8	
+  초이까	5g(4kg)	초밥·횟감	4	
+  초적새우	6L(3.2kg)	초밥·횟감	3.2	
+  초적새우	5L(2.6kg)	초밥·횟감	2.6	
+  초조미가리비	10g	초밥·횟감	8	
+  초조미가리비	8g	초밥·횟감	6.4	
+  초조미가리비	6g	초밥·횟감	4.8	
+  초조미가리비	5g	초밥·횟감	4	
+  초주꾸미	8g(6.4kg)	초밥·횟감	6.4	
+  초주꾸미	6g(4.8kg)	초밥·횟감	4.8	
+  초청미(NB)	12g(9.6kg)	초밥·횟감	9.6	
+  초청미(NB)	10g(8kg)	초밥·횟감	8	
+  초청미(NB)	8g(6.4kg)	초밥·횟감	6.4	
+  초청미(NB)	6g(4.8kg)	초밥·횟감	4.8	
+  초청미(하비코)	12g(9.6kg)	초밥·횟감	9.6	
+  초청미(하비코)	10g(8kg)	초밥·횟감	8	
+  초청미(하비코)	8g(6.4kg)	초밥·횟감	6.4	
+  초청미(하비코)	6.5g(5.2kg)	초밥·횟감	5.2	
+  초한치	10g(8kg)	초밥·횟감	8	
+  초한치	8g(6.4kg)	초밥·횟감	6.4	
+  초한치	6g(4.8kg)	초밥·횟감	4.8	
+  초한치	5g(4kg)	초밥·횟감	4	
+  초한치다리	6g(4.8kg)	초밥·횟감	4.8	
+  코코넛 버터플라이 브레디드 쉬림프	25g(5kg)	새우가공품	5	
+  타코와사비	1kg(12kg)	초밥·횟감	12	
+  탈각새우	16/20(1.8kg)	새우	10.8	
+  탈각새우	21/25(1.8kg)	새우	10.8	
+  탈각새우	26/30(1.8kg)	새우	10.8	
+  탈각새우	31/35(1.8kg)	새우	10.8	
+  탈각새우	31/40(1.8kg)	새우	10.8	
+  탈각새우	16/20(900g)	새우	9	
+  탈각새우	21/25(900g)	새우	9	
+  탈각새우	26/30(900g)	새우	9	
+  탈각새우	31/40(900g)	새우	9	
+  탈각새우	41/50(900g)	새우	9	
+  탈각새우	31/40(10kg)	새우	10	
+  탈각새우(아르헨티나 붉은새우)	16/20(4kg)	새우	4	
+  탈각새우(인니)	16/20(1.8kg)	새우	10.8	
+  탈각새우(인니)	21/25(1.8kg)	새우	10.8	
+  탈각새우(인니)	26/30(1.8kg)	새우	10.8	
+  탈각새우(인니)	31/35(1.8kg)	새우	10.8	
+  탈각새우(인니)	31/40(1.8kg)	새우	10.8	
+  통살새우볼	20g(5kg)	새우가공품	5	
+  한치채	400g(4kg)	초밥·횟감	4	
+  헤드온 브레디드 쉬림프	50g*10미	새우가공품	5	
+  헤드온 브레디드 쉬림프	50g*6미	새우가공품	6	
+  흰다리새우	15미/500g	새우 	5	
+  흰다리새우	20미/500g	새우 	5	
+  흰다리새우	25미/500g	새우 	5	
+  흰다리새우	30미/500g	새우 	5	
+  흰다리새우	40미/500g	새우 	5	
+  흰다리새우	50미/500g	새우 	5	
+      </div>
+
+
+
+
     </div>
   </div>
 </div>
 
-<div id="특문만따로" class="d-none 모든검색">  <!-- 특문만 따로 -->
 
-  <div id="html특수문자_click">
-    <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
 
-    <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
-      <h5>줄바꿈 &nbsp; ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
-      <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」(여백 : &#38;&#35;32;) (탭 : &#38;&#35;09;)</h5>
-      <h5 style="color:blueviolet;font-weight: bold;">※ Entity code (엔티티 코드) : 특수문자 표현</h5>
-      <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
-      <br>
-      <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
-    </div>
-    <div style="display: inline-block;padding:5px;">
-      <embed src="portal/images/문서연결_엑셀VBA/특문관련.txt" width=1000px height=780px style="border:1px solid black;">
-    </div>
-
-  </div>
-</div>
 
   <a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top-css" ondblclick="location.href='index.html'"
   role="button" title="Move Top" data-toggle="tooltip" data-placement="right">
