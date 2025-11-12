@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='_07_대장게시등_설명이필요한대장들' //원래는 h6의 title이다.
+  전체변수h6title ='점검결과_20251112' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 연습() {
