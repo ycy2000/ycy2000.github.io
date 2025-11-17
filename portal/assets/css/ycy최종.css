@@ -115,17 +115,17 @@ body > div {display:inline-block}
 .js클릭번호 > span:nth-of-type(1) > button:nth-of-type(1) {background-color: chartreuse;font-weight: bold;}
 .js클릭번호 > span:nth-of-type(1) > *:not(:first-child) {width:30px;}
 .다섯개씩번갈아색칠 > button {font-weight: bold;}
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+1):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+2):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+3):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+4):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+5):not(.분석):not(.분석덧칠)
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+1):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+2):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+3):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+4):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n+5):not(.분석):not(.분석덧칠):not(.다음당번표시)
 {background-color: bisque;}
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-1):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-2):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-3):not(.분석):not(.분석덧칠),
-#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-4):not(.분석):not(.분석덧칠)
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-1):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-2):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-3):not(.분석):not(.분석덧칠):not(.다음당번표시),
+#분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-4):not(.분석):not(.분석덧칠):not(.다음당번표시)
 {background-color:rgb(196, 169, 137);}
 
 /* #버튼45오른쪽단독 */
@@ -192,6 +192,7 @@ body > div {display:inline-block}
 .분석 {background-color:cadetblue;}
 .분석덧칠 {background-color:cornflowerblue;}
 .분석버튼숨김 {background-color: darkcyan;}
+.다음당번표시 {background-color: yellow;}
 /* 마지막에 배치해야된다 */
 .코드제목들 > div:not(:first-child) {display:block;background-color: white;border-bottom:1px solid black;margin-bottom:0px;}/* button => block, 밑줄만 */
 
