@@ -232,7 +232,7 @@ function 분석자료_삼십회빈도와개수_js작성() {
   var 머리글 = document.querySelector('#분석자료_삼십회당첨개수_js > div:first-child');
   for (var i = 0; i < 머리글.children.length; i++) {
     if (i < 머리글.children.length - 1) { 머리글.children[i].innerHTML = i }
-    if (i == 머리글.children.length - 1) { 머리글.children[i].innerHTML = '합'; 머리글.children[i].setAttribute('title','2~7의 합계') }
+    if (i == 머리글.children.length - 1) { 머리글.children[i].innerHTML = '합'; 머리글.children[i].setAttribute('title','2~6의 합계') }
   }
   var 출횟수 = document.querySelectorAll('#분석자료_삼십회23456개수_js > div');
   var 당첨개수 = document.querySelectorAll('#분석자료_삼십회당첨개수_js > div');
