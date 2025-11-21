@@ -416,7 +416,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
     }
     var 요소=document.querySelectorAll('#리스트독립수정가능정보 table')
     for (var i=0; i<요소.length; i++) {
-      console.log(Math.round(((i+2) / 10)) % 2)
+      //console.log(Math.round(((i+2) / 10)) % 2)
       if (Math.round(((i+3) / 10)) % 2 ==0 && i>1) {요소[i].classList.add('그레이')}
     }
       document.querySelector('#리스트복붙textarea').value = '';
