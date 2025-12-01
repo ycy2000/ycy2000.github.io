@@ -40,9 +40,12 @@ body > div {display:inline-block}
 #칸_간격과삼이일_아래 > div:first-child > span:not(:first-child) {font-weight: lighter; background-color: rgb(216, 206, 206);}
 #칸_간격과삼이일_아래 > div > span:first-child {border:none;}
 #칸_간격과삼이일_아래 > div > span:nth-child(2) {font-weight: lighter; background-color: rgb(216, 206, 206);}
-#칸_삼십회_아래 > div > span:last-child, #칸_삼십회_아래 > div:first-child > span { background-color: rgb(216, 206, 206);}
-#칸_이웃수_아래 > div > span:nth-of-type(7) {background-color:yellow}
-#칸_이웃수_아래 > div > span:nth-of-type(8) {background-color:darkcyan}
+#칸_삼십회_아래 > div > span:last-child, #칸_삼십회_아래 > div:first-child > span, #칸_삼십회_아래 > div > span:nth-of-type(2),
+ #칸_삼십회_아래 > div > span:nth-of-type(3), #칸_삼십회_아래 > div > span:nth-of-type(4) { background-color: rgb(216, 206, 206);}
+
+#칸_이웃수_아래 > div > span:nth-of-type(7), #칸_이웃수_아래 > div > .이월색칠 {background-color:yellow}
+#칸_이웃수_아래 > div > span:nth-of-type(8), #칸_이웃수_아래 > div > .이웃색칠 {background-color:darkcyan}
+
 #칸_이웃수_아래 > div > span:nth-of-type(9) {background-color: rgb(216, 206, 206);}
 #칸_가로세로_세로 > div:nth-of-type(2) > span,#칸_가로세로_세로 > div:nth-of-type(3) > span,#칸_가로세로_세로 > div:nth-of-type(4) > span,
 #칸_가로세로_세로 > div:nth-of-type(5) > span,#칸_가로세로_세로 > div:nth-of-type(6) > span,#칸_가로세로_세로 > div:nth-of-type(7) > span,
@@ -178,7 +181,6 @@ body > div {display:inline-block}
 
 
 /* #분석자료_삼십회표_js > div:not(:first-child):not(:nth-of-type(2)) > button {color:aliceblue} */ */
-
 
 
 

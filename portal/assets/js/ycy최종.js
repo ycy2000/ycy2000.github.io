@@ -625,9 +625,38 @@ function 당번_회차change설정() {
       if (!이전당번.includes(오른쪽) && !이전이웃.includes(오른쪽)) 이전이웃.push(오른쪽);
     });
 
-    // 일단 당번 기록(원 코드 동일 동작 유지)
-    이월이웃.forEach((el, idx) => { if (idx < DRAW_NUM_COUNT) el.innerHTML = 당번20[idx]; });
-    // 이후 이웃을 별도로 표시해야 한다면 여기서 DOM 위치 규칙에 맞게 채워주세요.
+    //----20회 반복중 한번이다.
+    // 1. 일단 당번 기록(원 코드 동일 동작 유지),
+    이월이웃.forEach((el, idx) => {
+      el.classList.remove('이월색칠');
+      el.classList.remove('이웃색칠');
+    });
+    이월이웃[6].innerHTML=0; 이월이웃[7].innerHTML=0; 이월이웃[8].innerHTML=0;
+    이월이웃.forEach((el, idx) => {
+      if (idx < DRAW_NUM_COUNT) {
+        el.innerHTML = 당번20[idx];//당번기록
+        if (이전당번.includes(당번20[idx])) {
+          el.classList.add('이월색칠');
+          이월이웃[6].innerHTML=Number(이월이웃[6].innerHTML)+1;
+        };
+        if (이전이웃.includes(당번20[idx])) {
+          el.classList.add('이웃색칠');
+          이월이웃[7].innerHTML=Number(이월이웃[7].innerHTML)+1;
+        };
+      };
+      이월이웃[8].innerHTML=Number(이월이웃[6].innerHTML)+Number(이월이웃[7].innerHTML)
+
+    });
+
+
+
+    // 2. 9개중 6개(당번)돌면서 이월색칠, 이웃색칠 클래스 부여, 클래스부여시 카운트
+
+
+
+
+
+    //const prev = getDrawNumbers(회차 - i);
   }
 
   // ===== 다음회차 버튼 영역 =====
