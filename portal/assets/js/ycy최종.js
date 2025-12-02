@@ -31,22 +31,11 @@ var 드래그이동_버튼45오른쪽단독 = document.querySelector('#버튼45�
 var 드래그이동_버튼45감싸기 = document.querySelector('#버튼45감싸기');
 
 function 연습() {
+  let 배열=[1,1,2,2,3,4];
+  let 중복제거배열 = (배열) => Array.from(new Set(배열));
+  let 곱하기2 = Array.from(중복제거배열(배열),(e) => e*2);
+  console.log(곱하기2); // [2,4,6,8]
 
-
-
-
-
-
-
-
-  return;
-  console.log(Object.prototype.toString.call(요소들))
-    요소들=Array.from(요소들);
-  요소들.forEach ( (element, key, 본체) => console.log(element + ',' + key + ',' + 본체))
-
-  console.log(Object.prototype.toString.call(요소들))
-  // 배열처럼 보이지만 사실 풀어보면 아래와같이 된다. (★ 마지막에 length:6 이 딸려옴)
-  // { 0:'span요소1', 1:'span요소2', 2:'span요소3', 3:'span요소4', 4:'span요소5', 5:'span요소6', length:6}
 
 }
 

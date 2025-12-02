@@ -189,6 +189,7 @@
         <h6>Material Theme && Material Icon Theme</h6>
         <h6>Bracket Pair Colorizer 2 : 대괄호, 중괄호, 소괄호 색깔 입해줌</h6>
         <h6>indent-rainbow : 들여쓰기(indent)할 때 무지개 색으로 구분해줌</h6>
+        <h6 class="fw-bold">기본html셑팅 빈곳에서 느낌표 탭, lang="ko"</h6>
         
       </div>
       <div>
@@ -301,6 +302,21 @@
         <h6 class="fw-bold blueviolet"></h6>
         <h6 class="fw-bold blueviolet"></h6>
         <h6 class="fw-bold blueviolet"></h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="팁">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title="js결과값사용">결과값 사용하는 코딩, let 결과배열 = (받는값) => {코드}, </h6>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+
       </div>
     </div>
     <div class="개별카테고리" id="선별">
@@ -483,7 +499,8 @@
         <h6 class="fw-bold" title='CSS_줄바꿈'>CSS > 줄바꿈_wordBreak_overflow_nowarp_whitespace_aligntop</h6>
       </div>
       <div>
-        
+        <h6 class="blueviolet fw-bold" title='CSS_적용순위'>CSS > 적용순위, 점수?</h6>
+        <h6 class="blueviolet fw-bold" title='CSS_작성팁'>CSS > 작성팁?</h6>
       </div>
       <div>
 
@@ -530,6 +547,7 @@
   </div>
   <div id="기타전체" class="d-none 캔버스">
     <div class="개별카테고리" id="탁구">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h5 class="fw-bold canvas_div" title='탁구_메모'>탁구 메모</h6>
         <h6 class="fw-bold" title='출처밝히는방법'>링크</h6>
@@ -544,6 +562,7 @@
       </div>
     </div>
     <div class="개별카테고리" id="샷컷"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title='동영상편집_링크'>동영상편집 정보 링크</h6>
         <h6 class="fw-bold" title='샷컷_1'>프로젝트폴더 변경,</h6>
@@ -560,11 +579,13 @@
       </div>
     </div>
     <div class="개별카테고리" id="기타"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <h6 class="fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
       <h6 class="fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
       <h6 class="fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
     </div>
     <div class="개별카테고리" id="임시">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title='임시_휴가등'>임시_휴가등</h6>
       </div>
@@ -576,6 +597,7 @@
       </div>
     </div>
     <div class="개별카테고리" id="녹화">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold">XBOX 검색하여 알아보기.  윈도우 + G (XBOX)열기, [윈도우 + ALT + R] 녹화시작, <br> 녹화중지 => 파일은 동영상 - 캡쳐 폴더에 있음</h6>
         <h6 class="fw-bold"><a href="https://www.easeus.co.kr/partition-manager-software/windows-11-update-not-enough-space.html" target="_blank">윈도우11 업데이트하는데 공간부족</a> </h6>
@@ -6147,6 +6169,26 @@ function 요소마우스드래그_리스너등록() { // ※ 이거는 한번, #
 
       </div>
     </div>
+    <div id="js결과값사용" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+매개변수(파라미터)도 변수이므로 모든값이 올 수 있다.
+  let 배열=[1,1,2,2,3,4];
+  let 중복제거배열 = (배열) => Array.from(new Set(배열));
+  let 곱하기2 = Array.from(중복제거배열(배열),(e) => e*2);
+  console.log(곱하기2); // [2,4,6,8]
+        </pre>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
     
     
     <div id="js_정렬_필터_인덱스찾기" class="대체3줄">
@@ -7080,6 +7122,99 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
 
       </div>
       <br><br><br><br><br><br><br>
+    </div>
+    
+    <div id="CSS_적용순위" class="대체3줄"><!-- 참고 -->
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">점수가 높은것이 적용된다?</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">!important : 무한대</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">인라인 선언 방식 : 1000점</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">id 선택자 : 100점</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">class 선택자 : 10점</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">태그선택자 : 1점</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">전체선택자 * : 0점</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">부정선택자 :not(p) : 0점</h6>
+        <pre>
+#예제아이디 {background-color:red}
+.예제클래스 {background-color:yellow} 순서와 관계없이 점수차이가 난다.       </pre>
+        <div style="display: inline-block; width:100px; height:100px;background-color: red;"></div>
+        <pre>
+#예제아이디 {background-color:red}
+.예제클래스 {background-color:yellow !important} !imporant는 인라인보다 우선하여 적용</pre>
+        <div style="display: inline-block; width:100px; height:100px;background-color: yellow;"></div>
+      </div>
+      <div>
+        <pre>
+점수 매기기 연습
+ 
+.list li.item
+ 이 선택자는 list 클래스의 하위 요소인 li중 클래스 이름이 item인 요소를 가리킵니다. 
+ 점수는 클래스 + 태그 + 클래스 = 10 + 1 + 10 = 21 점입니다. 
+
+.list li:hover
+ 이 선택자는 list 클래스의 하위 요소인 li에 가상 클래스 hover를 부여한 요소를 가리킵니다. 
+ 이때 가상 클래스 hover도 클래스와 동일한 점수를 가집니다. 
+ 점수는 클래스 + 태그 + 클래스 = 10 + 1 + 10 = 21 점입니다. 
+
+.box::before
+ 이 선택자는 box 클래스에 가상 요소 before를 가리킵니다. 
+ 일반적으로 요소는 태그로 취급하여 태그와 동일한 점수를 가집니다. 
+ 점수는 클래스 + 태그 = 10 + 1 = 11 점입니다. 
+
+#submit span
+ 이 선택자는 id가 submit인 요소의 하위 요소 중 span 태그를 가리킵니다.
+ 점수는 id + 태그 = 100 + 1 = 101 점입니다.
+
+header .menu li:nth-child(2)
+ 이 선택자는 header 태그의 하위 요소이면서, menu 클래스의 하위 요소 중 
+ li 태그의 가상 클래스 nth-child를 가리킵니다. 
+ nth-child 역시 가상 클래스이기 때문에 클래스와 동일한 점수를 가집니다. 
+ 점수는 태그 + 클래스 + 태그 + 클래스 = 1 + 10 + 1 + 10 = 22 점입니다. 
+
+:not(.box)
+ 부정 선택자는 점수로 계산하지 않습니다. 즉, 0점이라고 계산해도 무방합니다.
+ 점수는 부정 + 클래스 = 0 + 10 = 10 점입니다.
+        </pre>
+      </div>
+      <div>
+        <pre>
+&#60;div id="예제아이디">
+  &#60;div class="예제클래스노랑">&#60;/div>
+&#60;/div>
+
+.예제클래스노랑 {background-color: yellow;}
+#예제아이디 {display:inline-block;width:150px;height:150px;border:1px solid black}
+#예제아이디 > div {background-color: red;display:inline-block;width:100px;height:100px;}    </pre>
+        <div style="display:inline-block;width:150px;height:150px;border:1px solid black;">
+          <div style="background-color: red;display:inline-block;width:100px;height:100px;background-color: red;"></div>
+        </div>
+        <h6 class="fw-bold">.예제클래스노랑 이 적용되지 않은 이유는?</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">#예제아이디 > div : 아이디 태그 점수 101점</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">클래스 단독점수 10점 ==> 점수가 밀린다</h6>
+        <div style="display:inline-block;width:150px;height:150px;border:1px solid black;">
+          <div style="background-color: red;display:inline-block;width:100px;height:100px;background-color: yellow;"></div>
+        </div>
+        <h6 class="fw-bold">#예제아이디 > div에 background-color가 없으면 .예제클래스노랑 이 적용된다.</h6>
+      </div>
+    </div>
+    <div id="CSS_작성팁" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">틀을 숙지하고!!</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">1. 외곽에서는 내부에서 적용을 변경하지 않는것을 적용할것</h6>
+        <h6 class="fw-bold" style="text-indent: 30px;">- 테두리, 높이 등</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">2. 내부를 작성하는 경우 '.외곽 > .내부 형식이 아니라</h6>
+        <h6 class="fw-bold" style="text-indent: 30px;">- 독릭적이게 작성할것 (.내부), 외부표시는 메모로 할것</h6>
+        <h6 class="blueviolet fw-bold" style="text-indent: 15px;">3. 검토시 하나씩 집중할 수 있도록 하기 위함 (유지 보수)</h6>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+
     </div>
 
     <div id="CSS_1"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다-->

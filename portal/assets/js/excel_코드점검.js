@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='JS이벤트리스너2' //원래는 h6의 title이다.
+  전체변수h6title ='js결과값사용' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 연습() {
@@ -106,7 +106,6 @@ function 보숨토글(e) {
   요소.classList.toggle('d-none'); // 보기, 숨기기 외 글자이면 건드리지 않는다.
   if (!['보기','숨기기'].includes(e.innerHTML)) {} else {if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}}
 }
-
 function 캔버스_연결버튼_클릭(e) {
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
   if (document.querySelector('#현재캔버스이름').innerHTML==e.title) {console.log('reutrn;');return;}
@@ -131,10 +130,8 @@ function 카테고리배치(e) {
   e.setAttribute('class','선택카테고리');
   document.querySelector('#캔버스바디').innerHTML=document.querySelector('#' + e.innerHTML).outerHTML
 }
-
 var 리스너_바디=document.querySelector('body');
 function 리스너_바디_click(e) {
-
   var 부모요소=e.target; //자신이 body일수 있으므로 자신부터 확인함 4 => 5
   var 부모태그확인=true;
   for (var i=0; i<5; i++) {if(부모요소.tagName=='BODY') {//console.log('0~4까지확인 i=' + i + ', BODY');
