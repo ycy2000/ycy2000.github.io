@@ -4,11 +4,8 @@ function 특정id편집() {
   전체대체에셑팅();
 }
 function 연습() {
-  let 좌표예제=document.querySelector('#좌표예제');
-  console.log(좌표예제.clientHeight);
-  console.log(좌표예제.clientLeft);
-  console.log(좌표예제.clientTop);
-  console.log(좌표예제.clientWidth);
+  let 배열=[1,2,3,1,1,1].slice(1,4);
+  console.log(배열);
 
 }
 function 전체대체에셑팅() {
