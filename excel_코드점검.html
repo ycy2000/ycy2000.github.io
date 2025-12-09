@@ -102,13 +102,15 @@
     <div class="개별카테고리" id="도형_그림_폼">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold" title='도형_PASTE'>챗GPT, 도형 PASTE는 오류가 많다?</h6>
+
+      </div>
+      <div> 
         <h6 title='도형_종류와만들기'>도형 > 종류, 만들기</h6>
         <h6 title='도형_종류확인'>도형 > 도형 종류 확인 Type, Dim 도형 As Shape : Set 도형 = 1개의 도형</h6>
         <h6 title='도형_선택'>도형 > 도형의 선택/삭제, 도형 선택 vba 코딩 참고 </h6>
         <h6 title='도형_위치확인과다중선택예제'>도형 > 위치확인, 다중선택 예제</h6>
         <h6 title='도형_내용분석'>도형 > 내용확인, 분석</h6>
-      </div>
-      <div> 
         <h6 title='그림_화면복사'>그림 > 화면복사 방법, 폼에 그림으로 넣었을때 어떻게 보이는지</h6>
         <h6 title='그림_화면복사코딩'>그림 > <span style="color:blueviolet">vba코딩,</span> 범위를 그림으로 복사후 폴더에 저장, Insert, LoadPicture, Export</h6>
       </div>
@@ -711,6 +713,54 @@
         <img src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+      </div>
+    </div>
+    <div id="도형_PASTE" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+ActiveSheet.Paste 이 줄에서 가끔 오류 발생.
+원인 확률 1위는
+•직전에 Selection 상태가 다른 대상으로 넘어감
+•Cut된 객체가 존재하지 않음(이미 없어짐)
+•Paste 대상 Sheet가 ActiveSheet가 아니게 됨
+•메모리가 바뀌어서 Paste 버퍼 소실
+•Excel이 화면 업데이트 중이라 Selection이 깨짐
+•즉 VBA 자체 문제라기보다 Selection, Cut, Paste 방식의 구조적 취약성입니다.        </pre>
+        <h6 class="fw-bold">그래서 액셀에서 도형 생성 후 이동은 Paste 없이 좌표 세팅으로 처리해야 합니다.</h6>
+        <pre class="fw-bold">
+✔️ 해결방안(추천)
+
+아래 방식으로 바꾸면 Paste 오류 100% 사라집니다.
+
+🔄 바꾸기 전(문제 있는 방식)
+ActiveSheet.Shapes.AddShape(msoShapeOval, 10, 10, 10, 10).Select
+Selection.Cut
+ActiveSheet.Paste      '<--- 여기서 가끔 오류
+Selection.ShapeRange.ScaleWidth 1, msoFalse, msoScaleFromTopLeft
+
+🔄 바꾼 후(안정 방식)
+Dim shp As Shape
+Set shp = ActiveSheet.Shapes.AddShape(msoShapeOval, 10, 10, 10, 10)
+
+'도형 이동/사이즈 변경 (Paste 없음)
+shp.Width = shp.Width * 1      '축소/확대
+shp.Top = 위치
+shp.Left = 위치
+
+Paste 제거
+Selection 제거
+Cut 제거
+화면 상태 변화 영향 없음
+속도도 빨라짐
+        </pre>
+
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
       </div>
     </div>
 
