@@ -103,6 +103,7 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title='도형_PASTE'>챗GPT, 도형 PASTE는 오류가 많다?</h6>
+        <h6 class="fw-bold" title='도형_유의사항PASTE없이'>도형유의사항 PASTE 없이</h6>
 
       </div>
       <div> 
@@ -757,13 +758,146 @@ Cut 제거
 
       </div>
       <div>
+        <pre class="fw-bold">
+같은 도형을 4회 생성하여 각 각 다른셀에 위치시킬때 CUT/PASTE 안쓰는게 빠를까?
+결론부터 말씀드리면,
+✅ Cut/Paste를 안 쓰는 것이 훨씬 빠르고 안정적입니다.
+
+4개 생성처럼 적은 수라면 속도 차이는 미세하지만,
+Excel의 내부 처리 방식상 다음 이유 때문에 Cut/Paste가 더 느리고 위험합니다.
+
+📌 비교 분석
+1) Top/Left 직접이동 방식 (권장)
+Set shp = ActiveSheet.Shapes.AddShape(...)
+shp.Top = Range("A3").Top
+shp.Left = Range("A3").Left
+
+
+✔️ 빠른 이유
+도형 생성 후 좌표만 변경 (내부 연산이 매우 적음)
+Select가 없음
+화면 갱신 영향을 받지 않음
+이름 변경 없음
+메모리 이동 없음
+
+2) Cut/Paste 방식
+shp.Cut
+Range("A3").Select
+ActiveSheet.Paste
+
+❗ 느리고 위험한 이유
+
+Cut 수행 → 도형 삭제
+Paste 수행 → 도형 재생성
+Select 호출 (UI 이벤트 발생)
+Clipboard 사용 (불필요한 OS 호출)
+ScreenUpdating과 관련된 렉 발생
+도형 이름 변경 (추적 어려움)
+→ 즉, Cut/Paste는 2단계가 아니라 5단계 이상의 내부 작업을 수행합니다.
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+📌 VBA 코드 (CUT/PASTE 미사용 / Top-Left 방식)
+Sub 도형_4개_자동배치()
+
+    Dim shp As Shape
+    Dim arrCells As Variant
+    Dim i As Long
+    
+    '도형을 놓을 셀 목록
+    arrCells = Array("A3", "E6", "B10", "D15")
+    
+    '4개 도형 생성 반복
+    For i = LBound(arrCells) To UBound(arrCells)
+        
+        '도형 생성
+        Set shp = ActiveSheet.Shapes.AddShape(msoShapeOval, 1, 1, 20, 20)
+        
+        '셀 위치로 이동
+        With shp
+            .Left = Range(arrCells(i)).Left
+            .Top = Range(arrCells(i)).Top
+        End With
+        
+    Next i
+
+End Sub
+
+Sub 도형_4개_자동배치_실무형()
+
+    Dim shp As Shape
+    Dim arrCells As Variant
+    Dim arrText As Variant
+    Dim arrColor As Variant
+    Dim i As Long
+    
+    '도형 배치할 셀 위치
+    arrCells = Array("A3", "E6", "B10", "D15")
+    
+    '도형에 넣을 텍스트
+    arrText = Array("1", "2", "3", "4")
+    
+    '도형 색깔 (RGB값, 4종)
+    arrColor = Array(RGB(255, 153, 153), RGB(102, 255, 153), _
+                     RGB(153, 204, 255), RGB(255, 255, 153))
+    
+    '반복문으로 도형 생성
+    For i = LBound(arrCells) To UBound(arrCells)
+
+        '=== 도형 생성 ===
+        Set shp = ActiveSheet.Shapes.AddShape(msoShapeOval, 1, 1, 25, 25)
+        
+        With shp
+            
+            '=== 위치 이동 ===
+            .Left = Range(arrCells(i)).Left
+            .Top = Range(arrCells(i)).Top
+            
+            '=== 이름 지정 ===
+            .Name = "DOT_" & (i + 1)
+            
+            '=== 텍스트 표시 ===
+            .TextFrame.Characters.Text = arrText(i)
+            .TextFrame.HorizontalAlignment = xlHAlignCenter
+            .TextFrame.VerticalAlignment = xlVAlignCenter
+            .TextFrame.Characters.Font.Size = 9
+            
+            '=== 색깔 지정 ===
+            .Fill.ForeColor.RGB = arrColor(i)
+            .Line.Visible = msoFalse   '테두리 제거 원하면
+        End With
+        
+    Next i
+    
+End Sub
+        </pre>
+
+        
+      </div>
+    </div>
+    
+    <div id="도형_유의사항PASTE없이" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+도형은 다른시트에 생성가능. 
+  Dim ws As Worksheet
+  Dim shp As Shape
+  Dim 주소들 as String
+
+  Set ws = Worksheets("Sheet2")
+
+  Set shp = ws.Shapes.AddShape(msoShapeOval, 1, 1, 25, 25)
+        </pre>
+      </div>
+      <div>
         
       </div>
       <div>
         
       </div>
     </div>
-
     <div id="도형_종류와만들기">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold">참고사항</h5>
