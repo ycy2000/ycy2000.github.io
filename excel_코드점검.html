@@ -104,6 +104,9 @@
       <div>
         <h6 class="fw-bold" title='도형_PASTE'>챗GPT, 도형 PASTE는 오류가 많다?</h6>
         <h6 class="fw-bold" title='도형_유의사항PASTE없이'>도형유의사항 PASTE 없이</h6>
+        <h6 class="fw-bold" title='폼컨트롤인식'>각각 컨트롤에 작성하지 않고 폼컨트롤 인식</h6>
+        <h6 class="fw-bold" title='sub와function'>sub와 function 인수가 있는 형식</h6>
+        <h6 class="fw-bold blueviolet" title='sub와function'>화찰폼코딩정보</h6>
 
       </div>
       <div> 
@@ -898,6 +901,131 @@ End Sub
         
       </div>
     </div>
+    <div id="폼컨트롤인식" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">UserForm_Initialize에 폼켜면 버튼컬렉션</h6>
+        <pre class="fw-bold">
+Option Explicit
+Dim 버튼들 As Collection
+Private Sub UserForm_Initialize()
+    Dim ctl As Control
+    Dim btnClass As clsBtn <span class="blueviolet">' clsBtn 이름의 클래스 모듈</span> 
+    
+    Set 버튼들 = New Collection
+    
+    For Each ctl In Me.Controls
+        If Left(TypeName(ctl), 7) = "Command" Then
+            Set btnClass = New clsBtn
+            Set btnClass.cBtn = ctl
+            버튼들.Add btnClass
+        End If
+    Next ctl
+End Sub
+==============================
+clsBtn 이름의 클래스 모듈 내용
+Option Explicit
+Public WithEvents cBtn As MSForms.CommandButton
+
+Private Sub cBtn_Click()
+    Sheets("모듈").Range("A1") = cBtn.Caption
+    Debug.Print "컬렉션기능"
+End Sub
+        </pre>
+        <h6 class="fw-bold">버튼 자체의 코드 실행후, cBtn_Click 실행</h6>
+        <h6 class="fw-bold">이런 기능을 할 수 있는 변수형(클래스)을 하나 만드는 것 같다.</h6>
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    <div id="sub와function" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">Call 형식은 괄호안에 인수전달</h6>
+        <pre class="fw-bold">
+Sub 텍스트셑팅(ByVal 주소위치 As String, ByVal 기본텍스트 As String) ... End Sub
+Sub 연습(텍스트 As String, 숫자 As Byte)
+    MsgBox "텍스트 : " & 텍스트 & ", 숫자" & 숫자
+End Sub
+Sub 실행연습()
+    연습 "텍스트형식", 3
+End Sub
+Sub 실행연습()
+    Call 연습("텍스트형식", 3)
+End Sub
+        </pre>
+        <h6 class="fw-bold">Function 형식은 다른 sub 안에서 변수에 값 대입을 해야한다?</h6>
+        <h6 class="fw-bold">과정은 실행되니 결과</h6>
+        <pre class="fw-bold">
+Function 도형1_FN주소추출(ByVal 시트이름 As String, _
+                            ByVal 페이지 As Byte, _
+                            ByVal 주소위치 As String) As Variant
+   '자유롭게 코딩하다가
+   '도형1_FN주소추출=... 형식으로 지정하면 변수에 담을때 이 결과가 담긴다.
+End Function
+====================
+Sub 실행연습()
+    Dim 주소 as Boolean 'function결과가 Boolean 이었다
+    주소 = 도형1_FN주소추출("수산화찰", 2, "이름")
+    ' 실행코드는 실행되고 결과가 담긴다
+End Sub
+        </pre>
+
+
+        
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    <div id="화찰폼코딩정보" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+작동시트,페이지,주소위치 변경시 주소(vba) 주소확인Boolean 확정됨
+  작동시트가 "일반화찰"이 아니고 페이지가 3 이면  페이지 2로 변경
+  1)작동시트,페이지,주소위치는 모듈시트에 전달하는 코드로 전달한 후
+  <span class="blueviolet">2)Sub 주소관련정보셑팅( ) </span> 
+
+<span class="blueviolet">Sub 화찰_연결그림_셑팅된대로가져옴( ) </span> 
+  1) 작동시트, 페이지 변경시 후속 함수로 실행되는 경우가 많다.
+
+도형생성 관련
+  1)Sub 주소관련정보셑팅( ) === 도형생성이전 
+  <span class="blueviolet">===사전에 작성되어야 하는 정보, 클래스모듈 Private Sub cBtn_Click( ) 활용=== </span> 
+  <span class="blueviolet">===버튼클릭 감지, 각각의 컨트롤에 코드 입력하지 않고...=== </span> 
+  <span class="blueviolet">도형위치가 삼오백 아닌경우</span> 
+     생성위치, 도형이름(ex:채움사각형), 도형위치(ex:센터), 기본텍스트
+  <span class="blueviolet">도형위치가 삼오백</span> 
+     생성위치, 도형이름(ex:채움사각형), 도형위치(ex:센터), 기본텍스트, 삼오백우텍스트
+        </pre>
+        <h6 class="fw-bold"></h6>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+
+        </pre>
+
+
+        
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    
+    
+    
     <div id="도형_종류와만들기">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold">참고사항</h5>
