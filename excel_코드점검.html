@@ -925,6 +925,8 @@ End Sub
 clsBtn 이름의 클래스 모듈 내용
 Option Explicit
 Public WithEvents cBtn As MSForms.CommandButton
+<span class="blueviolet">여기선 커맨드버튼인데 구체적으로 설정해야한다고 한다. 컨트롤이라고는 안되네</span>
+<span class="blueviolet">커맨드버튼일때 afterupdate가 없다, textbox이면 있겠지?</span>
 
 Private Sub cBtn_Click()
     Sheets("모듈").Range("A1") = cBtn.Caption
@@ -935,14 +937,45 @@ End Sub
         <h6 class="fw-bold">이런 기능을 할 수 있는 변수형(클래스)을 하나 만드는 것 같다.</h6>
       </div>
       <div>
-        
+        <pre class="fw-bold">
+"Dim 반복 as Byte"에서 "반복"은 0에서 255사이의 정수인데. 
+
+"Byte"부분에 "클래스모듈이름"이 온다
+
+클래스모듈 생성하면 클래스모듈의 이름이 변수형의 이름으로 사용할수 있다.
+
+도형을 만들때 거의 동일한 동작인데 버튼이 24개 정도 되는데 예시에서는 커맨드버튼들의 집합을
+
+자료형 담아서 사용한다.
+
+========== 클래스모듈 ===========
+1) 클래스모듈 생성 : 결과적으로 클릭한 캐맨드버튼의 정보를 사용할 것이므로 변수 선언
+    Option Explicit
+    Public WithEvents cBtn As MSForms.CommandButton
+2) 클래스모듈 내부에 cBtn(커맨드버튼)을 눌렀을때의 동작을 정의함
+
+========== 모듈에서 클래스모듈(자료형) 사용 ===========
+    Dim btnClass As clsBtn ' clsBtn 이름의 클래스 모듈 
+    
+    Set 버튼들 = New Collection
+    
+    For Each ctl In Me.Controls
+        If Left(TypeName(ctl), 7) = "Command" Then
+            Set btnClass = New clsBtn
+            Set btnClass.cBtn = ctl
+            버튼들.Add btnClass
+        End If
+    Next ctl
+1) 위와 같이 폼 내의 커맨드버튼들을 클래스모듈의 이름에 담는다.
+2) 하나의 커맨드버튼이 클릭되었을때 클래스모듈의 정의대로 작동한다.
+        </pre>
       </div>
       <div>
         
       </div>
     </div>
     <div id="sub와function" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <h6 class="대체3줄세로1h6"></h6>
       <div>
         <h6 class="fw-bold">Call 형식은 괄호안에 인수전달</h6>
         <pre class="fw-bold">
@@ -973,16 +1006,204 @@ Sub 실행연습()
     ' 실행코드는 실행되고 결과가 담긴다
 End Sub
         </pre>
+      </div>
+      <div style="width:1220px;">
+        <pre class="fw-bold">
+Option Explicit
+Public WithEvents cBtn As MSForms.CommandButton
+Private Sub cBtn_Click()
+    Dim 시트이름 As String
+    시트이름 = ActiveSheet.Name
+    Dim 선택범위 As Range
+    On Error Resume Next
+    Set 선택범위 = Selection
+    On Error GoTo 0
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_화찰정보당겨오기", LookAt:=xlWhole)
+    Dim 페이지 As Byte
+    페이지 = 기준셀.Offset(2, 1)
+    
+    Select Case cBtn.Name
+    
+        ' ───────── 시트 선택 ─────────
+        Case "시트이름_수산"
+            cls_화찰_입력_작동시트 "수산화찰"
+            폼버튼색칠
+    
+        Case "시트이름_축산"
+            cls_화찰_입력_작동시트 "축산화찰"
+            폼버튼색칠
+    
+        Case "시트이름_일반"
+            cls_화찰_입력_작동시트 "일반화찰"
+            폼버튼색칠
+    
+        ' ───────── 페이지 ─────────
+        Case "CMD_페이지"
+            cls_화찰폼_페이지클릭 리스트화찰폼.CMD_페이지.Caption
+    
+        ' ───────── 도형 버튼 (패턴 처리) ─────────
+        Case _
+            "센터도형_채움원", "센터도형_채움없는원", "센터도형_채움사각형", "센터도형_채움없는사각형", "센터도형_사각형글자만", _
+            "암수도형_채움원", "암수도형_채움없는원", "암수도형_채움사각형", "암수도형_채움없는사각형", "암수도형_사각형글자만", _
+            "암수아래도형_채움원", "암수아래도형_채움없는원", "암수아래도형_채움사각형", "암수아래도형_채움없는사각형", "암수아래도형_사각형글자만", _
+            "품명우측도형_채움원", "품명우측도형_채움없는원", "품명우측도형_채움사각형", "품명우측도형_채움없는사각형", "품명우측도형_사각형글자만", _
+            "삼오백도형_채움원", "삼오백도형_채움없는원", "삼오백도형_채움사각형", "삼오백도형_채움없는사각형", "삼오백도형_사각형글자만"
+    
+            cls_도형유형클릭 cBtn.Name
+            폼버튼색칠
+            
+        ' ───────── 도형삭제 ─────────
+        Case "센터도형_삭제", "암수도형_삭제", "암수아래도형_삭제", "품명우측도형_삭제", "삼오백도형_삭제"
+            cls_화찰폼_생성위치별_도형삭제 cBtn.Name
+            
+    
+        ' ───────── 도형 수정위치 ─────────
+        Case "수정위치_일괄", "수정위치_1", "수정위치_2", "수정위치_3", "수정위치_4"
+            cls_화찰폼_수정위치변경 cBtn.Name
+            폼버튼색칠
+            
+        ' ───────── 화찰가져오기 위치 ─────────
+        Case "CMD_가져오기_일괄", "CMD_가져오기_1", "CMD_가져오기_2", "CMD_가져오기_3", "CMD_가져오기_4"
+            cls_화찰폼_화찰폼가져오기위치변경 cBtn.Name
+            폼버튼색칠
+            
+        ' ───────── "선택" 클릭 ─────────
+        Case "선택_센터", "선택_암수", "선택_암수아래", "선택_품명우측", "선택_삼오백", "선택_삼오백좌", "선택_삼오백우"
+            cls_화찰폼_선택클릭 cBtn.Name
+            폼버튼색칠
+        
+        ' ───────── 선택 참고, 단계 강제 설정후 단계정보 적용 ─────────
+        Case "CMD_토탈변경_1글자", "CMD_토탈변경_1글자", "CMD_토탈변경_1글자", "CMD_토탈변경_1글자", "CMD_토탈변경_1글자", _
+             "CMD_토탈변경_P", "CMD_토탈변경_PC"
+             'cls_화찰폼_선택한단계로도형변경 cBtn.Name
+    End Select
 
+    Sheets(시트이름).Select
+    On Error Resume Next
+    선택범위.Activate
+End Sub
+Sub cls_화찰폼_선택클릭(선택 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    기준셀.Offset(2, 10) = 선택 '폼의 선택정보 기본값 (C)
+End Sub
+Sub cls_화찰폼_화찰폼가져오기위치변경(수정위치 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_화찰정보당겨오기", LookAt:=xlWhole)
+    Dim 생성위치셀 As Range
+    Set 생성위치셀 = 기준셀.Offset(1, 0) '수정위치와 같다
+    If 수정위치 = "CMD_가져오기_일괄" Then
+       생성위치셀.Value = 0
+       
+       ElseIf 수정위치 Like "CMD_가져오기_[1-4]" Then
+       생성위치셀.Value = CInt(Right(수정위치, 1))
+    End If
+End Sub
+Sub cls_화찰폼_수정위치변경(수정위치 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    Dim 생성위치셀 As Range
+    Set 생성위치셀 = 기준셀.Offset(2, 5) '수정위치와 같다
+    If 수정위치 = "수정위치_일괄" Then
+       생성위치셀.Value = 0
+       
+       ElseIf 수정위치 Like "수정위치_[1-4]" Then
+       생성위치셀.Value = CInt(Right(수정위치, 1))
+    End If
+End Sub
+Sub cls_화찰폼_생성위치별_삼오백도형3종삭제(삭제클릭 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    Dim 시트이름 As String: 시트이름 = 기준셀.Offset(2, 0)
+    Dim 페이지 As Byte: 페이지 = 기준셀.Offset(2, 1)
+    Dim 생성위치 As Byte: 생성위치 = 기준셀.Offset(2, 5)
+    Dim 도형이름 As String
+    
+    Dim 반복 As Byte
+    For 반복 = 1 To 4
+        도형이름 = 시트이름 & "_" & 페이지 & "_" & Split(삭제클릭, "_")(0) & "_" & 반복 'Split(삭제클릭, "_")(0) : 센터도형_삭제 의 센터도형
+       
+        If 생성위치 = 0 Then
+           도형생성내부_1_특정이름도형삭제 시트이름, 도형이름
+        End If
+        
+        If 생성위치 = 반복 Then
+           도형생성내부_1_특정이름도형삭제 시트이름, 도형이름
+        End If
+    Next
+End Sub
+Sub cls_화찰폼_생성위치별_도형삭제(삭제클릭 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    Dim 시트이름 As String: 시트이름 = 기준셀.Offset(2, 0)
+    Dim 페이지 As Byte: 페이지 = 기준셀.Offset(2, 1)
+    Dim 생성위치 As Byte: 생성위치 = 기준셀.Offset(2, 5)
+    Dim 도형이름 As String
+    
+    Dim 반복 As Byte
+    For 반복 = 1 To 4
+        도형이름 = 시트이름 & "_" & 페이지 & "_" & Split(삭제클릭, "_")(0) & "_" & 반복 'Split(삭제클릭, "_")(0) : 센터도형_삭제 의 센터도형
+       
+        If 생성위치 = 0 Then
+           도형생성내부_1_특정이름도형삭제 시트이름, 도형이름
+        End If
+        
+        If 생성위치 = 반복 Then
+           도형생성내부_1_특정이름도형삭제 시트이름, 도형이름
+        End If
+    Next
+End Sub
+Sub cls_도형유형클릭(도형정보 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    기준셀.Offset(2, 2) = 도형정보
+    기준셀.Offset(2, 6) = 리스트화찰폼.Controls("T_" & Split(도형정보, "_")(0) & "텍스트").Value 'T_삼오백도형텍스트
+    기준셀.Offset(2, 7) = 리스트화찰폼.Controls("T_삼오백도형텍스트_우").Value
+    Select Case cBtn.Name
+       
+       Case "센터도형_채움원", "센터도형_채움없는원", "센터도형_채움사각형", "센터도형_채움없는사각형", "센터도형_사각형글자만"
+            기준셀.Offset(2, 10) = "선택_센터"
+       Case "암수도형_채움원", "암수도형_채움없는원", "암수도형_채움사각형", "암수도형_채움없는사각형", "암수도형_사각형글자만"
+            기준셀.Offset(2, 10) = "선택_암수"
+       Case "암수아래도형_채움원", "암수아래도형_채움없는원", "암수아래도형_채움사각형", "암수아래도형_채움없는사각형", "암수아래도형_사각형글자만"
+            기준셀.Offset(2, 10) = "선택_암수아래"
+       Case "품명우측도형_채움원", "품명우측도형_채움없는원", "품명우측도형_채움사각형", "품명우측도형_채움없는사각형", "품명우측도형_사각형글자만"
+            기준셀.Offset(2, 10) = "선택_품명우측"
+       Case "삼오백도형_채움원", "삼오백도형_채움없는원", "삼오백도형_채움사각형", "삼오백도형_채움없는사각형", "삼오백도형_사각형글자만"
+            기준셀.Offset(2, 10) = "선택_삼오백"
+       '선택_삼오백좌, 선택_삼오백우 ??
+    End Select
+    Call 화찰_주소관련정보셑팅
+    Call 코드집합_도형생성
+End Sub
 
+Sub cls_화찰_입력_작동시트(작동시트 As String)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    기준셀.Offset(2, 0) = 작동시트
+    Call 화찰_주소관련정보셑팅
+    Call 리스트화찰폼_연결그림_셑팅된대로가져옴
+End Sub
+Sub cls_화찰폼_페이지클릭(화찰폼페이지 As Byte)
+    Dim 기준셀 As Range
+    Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+    Dim 작동시트 As String: 작동시트 = 기준셀.Offset(2, 0)
+    Dim 페이지최대값 As Byte
+    If 작동시트 = "일반화찰" Then 페이지최대값 = 3 Else 페이지최대값 = 2
+    If 화찰폼페이지 = 페이지최대값 Then 기준셀.Offset(2, 1) = 1
+    If 화찰폼페이지 = 페이지최대값 Then 리스트화찰폼.CMD_페이지.Caption = 1
+    If 화찰폼페이지 < 페이지최대값 Then 기준셀.Offset(2, 1) = 화찰폼페이지 + 1
+    If 화찰폼페이지 < 페이지최대값 Then 리스트화찰폼.CMD_페이지.Caption = 화찰폼페이지 + 1
+    Call 화찰_주소관련정보셑팅
+    Call 리스트화찰폼_연결그림_셑팅된대로가져옴
+    리스트화찰폼.CMD_페이지.Caption = 기준셀.Offset(2, 1) '결과, 위에꺼와 다를수 있음
+End Sub
+
+        </pre>
         
       </div>
-      <div>
-        
-      </div>
-      <div>
-        
-      </div>
+
     </div>
     <div id="화찰폼코딩정보" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
