@@ -149,6 +149,7 @@
     <div class="개별카테고리" id="관세청API">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 title='API_REST'>API_REST</h6>
         <h6 title='관세청API_1'>관세청API_1</h6>
         <h6 title='관세청API_인증키'>관세청 OPEN API 화물통관진행정보조회 승인키:c290s255d192h253h000l090g5</h6>
       </div>
@@ -2586,6 +2587,78 @@ End Sub
       </div>
     </div>
     
+    <div id="API_REST" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        
+        <h6 class="fw-bold"><a href="https://cloudlog.kr/docs/programming/api/unipass-openapi-introduce/?utm_source=chatgpt.com" target="_blank">유니패스 오픈API 신청, 가이드 정보 통관정보 조회, 개인통관고유부호 검증</a> </h6>
+        <h6 class="fw-bold"><a href="https://khj93.tistory.com/entry/네트워크-REST-API란-REST-RESTful이란#google_vignette" target="_blank">네트워크-REST-API란-REST-RESTful이란</a> </h6>
+        <h6 class="fw-bold">RESE 방식 : 제공하는 URL에서 기능에 접근하여 자료요청하여 받아서 사용한다</h6>
+        <h6 class="fw-bold">1. OPEN API 제공하는 곳에서 인증키 발급받아 사용한다.</h6>
+        <h6 class="fw-bold">2. 관세청 OPEN API 발급</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- 서비스정보 : 통관진행정보(HBL,MBL,년도)</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">- 서비스정보 : 컨테이너내역(화물관리번호)</h6>
+        <h6 class="fw-bold">3. 자료요청과 받은자료</h6>
+        <pre class="fw-bold">
+
+    Dim http As Object
+    Dim xmlDoc As Object
+    Dim url As String
+    Dim apiKey As String
+    Dim blNo As String
+    Dim blYy As String
+    Dim tCnt As Long
+    Dim isFound As Boolean
+    Dim usedBL As String
+
+    Dim cntrNodes As Object
+    Dim rlbrNode As Object
+    Dim prgsNode As Object
+    Dim cargMtNoNode As Object
+    Dim 결과컨개수Node As Object
+    Dim i As Long
+
+    ' ===============================
+    ' 입력값
+    ' ===============================
+    blNo = Trim(Sheets("SHEET1").Range("A2").Value)   ' BL 번호
+    blYy = Trim(Sheets("SHEET1").Range("B2").Value)   ' 년도
+    apiKey = "c290s255d192h253h000l090g5"
+
+    If blNo = "" Or blYy = "" Then
+        MsgBox "BL번호 또는 년도가 비어 있습니다.", vbExclamation
+        Exit Sub
+    End If
+
+    ' 출력 초기화
+    Sheets("SHEET1").Range("c2:o2").ClearContents
+    Sheets("SHEET1").Range("G2:G13").ClearContents
+
+    Set http = CreateObject("MSXML2.XMLHTTP") '요청
+    Set xmlDoc = CreateObject("MSXML2.DOMDocument") '결과문서
+
+    ' ==================================================
+    ' 1?? HOUSE BL 로 먼저 조회
+    ' ==================================================
+    url = "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo" _
+        & "?crkyCn=" & apiKey _
+        & "&hblNo=" & blNo _
+        & "&blYy=" & blYy
+
+    http.Open "GET", url, False
+    http.send
+
+    xmlDoc.LoadXML http.responseText
+        </pre>
+
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
     <div id="관세청API_1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -2922,25 +2995,24 @@ BL 길이 짧음	HBL 가능성 ↑
       </div>
 
     </div>
-    <div id="관세청API_인증키" class="대체3줄">
-       <pre class="fw-bold">
-📌 관세청 화물통관진행정보조회 API 기본 URL ==> https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo   </pre>
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
+    <div id="관세청API_인증키" class="대체2줄">
+       <h6 class="대체2줄세로1h6"></h6>
+       <div>
+        <pre class="fw-bold">
+  📌 관세청 화물통관진행정보조회 API 기본 URL : 연계가이드 다운로드하여 확인
+  📌  ==> https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo 
+        가. REST 방식의 인증키 활용 
+        https://unipass.customs.go.kr:38010/ext/rest/statsSgnQry/retrieveStatsSgnBrkd?crkyCn=
+        00 인증키&statsSgnTp=부호코드 
+        나. OPEN API 호출 예시 
+        https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsI
+        nfo?crkyCn=0000000000042&blNo=11111111111111111111 
+  </pre>
         <h6 class="fw-bold">항목마다 인증키가 다름</h6>
         <h6 class="fw-bold">화물통관진행정보조회:c290s255d192h253h000l090g5</h6>
-
-
       </div>
       <div>
-
-
       </div>
-      <div>
-
-
-      </div>
-
     </div>
   </div>
   <div title="깃_Code_부트">
