@@ -2588,74 +2588,75 @@ End Sub
     </div>
     
     <div id="API_REST" class="대체3줄">
+      <h6 class="fw-bold"> 엑셀 vba <span class="blueviolet">요청url 완성 예시</span> : https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&hblNo=KHHBUS2511007&blYy=2025</h6>
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        
         <h6 class="fw-bold"><a href="https://cloudlog.kr/docs/programming/api/unipass-openapi-introduce/?utm_source=chatgpt.com" target="_blank">유니패스 오픈API 신청, 가이드 정보 통관정보 조회, 개인통관고유부호 검증</a> </h6>
         <h6 class="fw-bold"><a href="https://khj93.tistory.com/entry/네트워크-REST-API란-REST-RESTful이란#google_vignette" target="_blank">네트워크-REST-API란-REST-RESTful이란</a> </h6>
         <h6 class="fw-bold">RESE 방식 : 제공하는 URL에서 기능에 접근하여 자료요청하여 받아서 사용한다</h6>
         <h6 class="fw-bold">1. OPEN API 제공하는 곳에서 인증키 발급받아 사용한다.</h6>
-        <h6 class="fw-bold">2. 관세청 OPEN API 발급</h6>
+        <h6 class="fw-bold">2. 관세청 OPEN API 에서 필요한 기능에 대해 "인증키" 발급 받기</h6>
         <h6 class="fw-bold" style="text-indent: 15px;">- 서비스정보 : 통관진행정보(HBL,MBL,년도)</h6>
         <h6 class="fw-bold" style="text-indent: 15px;">- 서비스정보 : 컨테이너내역(화물관리번호)</h6>
-        <h6 class="fw-bold">3. 자료요청과 받은자료</h6>
+        <h6 class="fw-bold">4. 요청 url 완성 예</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">a) 서비스 url</h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">b) 서비스 정보 (예:화물통관진행정보)</h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">/retrieveCargCsclPrgsInfo (retrieve는 검색하다는 뜻)</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">c) 발급받은 서비스인증키 : </h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">?crkyCn=c290s255d192h253h000l090g5&hblNo=KHHBUS2511007</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">d) houseBL 전달 : </h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">&hblNo=KHHBUS2511007</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">e) BL발급년도 전달 : </h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">&blYy=2025</h6>
+        <h6 class="fw-bold blueviolet">5. 요청 url 완성 예시는 a,b,c,d,e를 합친 정보이다.</h6>
+        <h6 class="fw-bold">6. vba에서 자료요청~받은자료까지 표현코드 (오른쪽에 따로)</h6>
+        <h6 class="fw-bold">7. 결과문서</h6>
         <pre class="fw-bold">
-
-    Dim http As Object
-    Dim xmlDoc As Object
-    Dim url As String
-    Dim apiKey As String
-    Dim blNo As String
-    Dim blYy As String
-    Dim tCnt As Long
-    Dim isFound As Boolean
-    Dim usedBL As String
-
-    Dim cntrNodes As Object
-    Dim rlbrNode As Object
-    Dim prgsNode As Object
-    Dim cargMtNoNode As Object
-    Dim 결과컨개수Node As Object
-    Dim i As Long
-
-    ' ===============================
-    ' 입력값
-    ' ===============================
-    blNo = Trim(Sheets("SHEET1").Range("A2").Value)   ' BL 번호
-    blYy = Trim(Sheets("SHEET1").Range("B2").Value)   ' 년도
-    apiKey = "c290s255d192h253h000l090g5"
-
-    If blNo = "" Or blYy = "" Then
-        MsgBox "BL번호 또는 년도가 비어 있습니다.", vbExclamation
-        Exit Sub
-    End If
-
-    ' 출력 초기화
-    Sheets("SHEET1").Range("c2:o2").ClearContents
-    Sheets("SHEET1").Range("G2:G13").ClearContents
-
-    Set http = CreateObject("MSXML2.XMLHTTP") '요청
-    Set xmlDoc = CreateObject("MSXML2.DOMDocument") '결과문서
-
-    ' ==================================================
-    ' 1?? HOUSE BL 로 먼저 조회
-    ' ==================================================
-    url = "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo" _
-        & "?crkyCn=" & apiKey _
-        & "&hblNo=" & blNo _
-        & "&blYy=" & blYy
-
-    http.Open "GET", url, False
-    http.send
-
-    xmlDoc.LoadXML http.responseText
+&#60;cargCsclPrgsInfoQryRtnVo>&#60;tCnt>0&#60;/tCnt>&#60;/cargCsclPrgsInfoQryRtnVo>
+1. &#60;tCnt>0&#60;/tCnt> : 이부분은 하나만 존재, 진행정보 순번, 0 이면 조회결과가 없다.
+2. &#60;cargCsclPrgsInfoQryRtnVo> : 이부분은 적어도 1개 + 진행정보 순번만큼 더 존재한다
+3. 2.내부의 항목은 같은 이름을 쓰는 항목이 많다.
         </pre>
+        <cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
+<cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
+      </div>
+      <div>
+        <h6 class="fw-bold">6. vba에서 자료요청~받은자료까지 표현코드</h6>
+        <pre class="fw-bold">
+    Dim 서비스url As String
+    Dim 서비스정보 As String
+    Dim 화물진행정보서비스인증키 As String
+    Dim BL번호 As String
+    Dim 발급년도 As String
+    서비스url = "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry"
+    서비스정보 = "/retrieveCargCsclPrgsInfo"
+    화물진행정보서비스인증키 = "c290s255d192h253h000l090g5"
+    BL번호 = "KHHBUS2511007"
+    발급년도 = "2025"
 
-      </div>
-      <div>
+    Dim url As String
+        url = 서비스url & 서비스정보 & "?crkyCn=" & 화물진행정보서비스인증키 _
+            & "&hblNo=" & BL번호 _
+            & "&blYy=" & 발급년도
+            
+        Dim http As Object
+        Dim xmlDoc As Object
+        Set http = CreateObject("MSXML2.XMLHTTP") '요청
+        Set xmlDoc = CreateObject("MSXML2.DOMDocument") '결과문서
+
+        http.Open "GET", url, False
+        http.send
+
+        xmlDoc.LoadXML http.responseText
         
+        '여기서부터는 받은정보의 구조에 따라
+        </pre>
       </div>
       <div>
+        <pre class="fw-bold">
+xml.SelectSingleNode("//cntrNo").Text, 첫번째꺼만
+        </pre>
         
       </div>
     </div>

@@ -1,100 +1,17 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<script>
-
-// Input opportunities
-for (var i=0; i<10; i++) {
-  console.log(opportunities[0].candidate);
-console.log(opportunities[0].positionMatch);
-console.log(opportunities[0].numberMatch);
-}
-const opportunities = [
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-  { candidate: [], positionMatch: 0, numberMatch: 0 },
-];
-
-
-
-function findPossiblePasswords(opportunities) {
-  const allNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const possiblePasswords = [];
-
-  // Helper to count position matches
-  function countPositionMatches(password, candidate) {
-    return password.filter((num, idx) => num === candidate[idx]).length;
-  }
-
-  // Helper to count number matches (excluding position matches)
-  function countNumberMatches(password, candidate) {
-    return password.reduce((count, num, idx) => {
-      if (candidate.includes(num) && num !== candidate[idx]) {
-        return count + 1;
-      }
-      return count;
-    }, 0);
-  }
-
-  // Generate all permutations of 4 numbers from 0 to 9
-  function generatePermutations(arr, length) {
-    if (length === 1) return arr.map((n) => [n]);
-    const permutations = [];
-    for (let i = 0; i < arr.length; i++) {
-      const remaining = [...arr.slice(0, i), ...arr.slice(i + 1)];
-      const subPermutations = generatePermutations(remaining, length - 1);
-      subPermutations.forEach((perm) => permutations.push([arr[i], ...perm]));
-    }
-    return permutations;
-  }
-
-  const allPermutations = generatePermutations(allNumbers, 4);
-
-  // Filter permutations based on all opportunity conditions
-  for (const password of allPermutations) {
-    let isValid = true;
-
-    for (const { candidate, positionMatch, numberMatch } of opportunities) {
-      // Skip this opportunity if candidate length is not 4
-      if (candidate.length !== 4) {
-        continue;
-      }
-
-      const posMatches = countPositionMatches(password, candidate);
-      const numMatches = countNumberMatches(password, candidate);
-
-      if (posMatches !== positionMatch || numMatches !== numberMatch) {
-        isValid = false;
-        break;
-      }
-    }
-
-    if (isValid) possiblePasswords.push(password.join(""));
-  }
-
-  return possiblePasswords;
-}
-
-// Find all valid passwords
-const validPasswords = findPossiblePasswords(opportunities);
-
-// Output the results
-console.log("Possible passwords:", validPasswords);
-console.log("Total count:", validPasswords.length);
-
-
-</script>  
-
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cargCsclPrgsInfoQryRtnVo>
+  <ntceInfo></ntceInfo>
+  <cargCsclPrgsInfoQryVo>
+    <csclPrgsStts>수입신고전</csclPrgsStts>
+    <vydf>0012E</vydf><rlseDtyPridPassTpcd>N</rlseDtyPridPassTpcd><prnm>FROZEN ARGENTINE RED SHRIMP EASY PEEL  ETC</prnm><ldprCd>VNSGN</ldprCd>
+    <shipNat>PA</shipNat><blPt>S</blPt><dsprNm>부산신항</dsprNm><etprDt>20251221</etprDt><prgsStCd>CAGE12</prgsStCd><msrm>25</msrm><wghtUt>KG</wghtUt>
+    <dsprCd>KRBNP</dsprCd><cntrGcnt>1</cntrGcnt><cargTp>수입 일반화물</cargTp><shcoFlcoSgn>HDMU</shcoFlcoSgn><pckGcnt>834</pckGcnt>
+    <etprCstm>부산세관</etprCstm><shipNm>HMM MIRACLE</shipNm><hblNo></hblNo><prcsDttm>20251224141740</prcsDttm>
+    <frwrSgn></frwrSgn><spcnCargCd>RF</spcnCargCd><ttwg>9174</ttwg>
+    <ldprNm>Ho Chi Minh City</ldprNm><dclrDelyAdtxYn>N</dclrDelyAdtxYn><mtTrgtCargYnNm>N</mtTrgtCargYnNm>
+    <cargMtNo>25HDMUA653I0204</cargMtNo><cntrNo>TEXU9034762</cntrNo><mblNo>HDMUSGNA13851900</mblNo>
+    <blPtNm>Simple</blPtNm><lodCntyCd>VN</lodCntyCd><prgsStts>반출완료</prgsStts><shcoFlco>에이치엠엠(주)</shcoFlco>
+    <pckUt>CT</pckUt><shipNatNm>파나마</shipNatNm><agnc>에이치엠엠</agnc><frwrEntsConm></frwrEntsConm>
+  </cargCsclPrgsInfoQryVo>
+  <tCnt>9</tCnt>
+  <cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251224141740</prcsDttm><dclrNo>03077011250412985A</dclrNo><rlbrDttm>2025-12-24 14:16:58</rlbrDttm><wght>9174</wght><rlbrBssNo>030D1030F66025406914</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn>보세운송 반출</rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251224115657</prcsDttm><dclrNo>030D1030F66025406914</dclrNo><rlbrDttm>(도)03011597동일냉장(주</rlbrDttm><wght>9174</wght><rlbrBssNo>(주)에스에스물류</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 수리</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn></rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251224115424</prcsDttm><dclrNo>030D1030F66025406914</dclrNo><rlbrDttm></rlbrDttm><wght>9174</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 접수</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn></rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251221040940</prcsDttm><dclrNo>03077011250404653A</dclrNo><rlbrDttm>2025-12-21 04:08:20</rlbrDttm><wght>9174</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn>[부가사항] 에이치엠엠피에스에이신항만(주)의 장치기간은 최대 3 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn>입항 반입</rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251221024408</prcsDttm><dclrNo>25HDMUA653I00000001</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 운항정보 정정</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251221024408</prcsDttm><dclrNo>25HDMUA653I</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항보고 수리</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251219144031</prcsDttm><dclrNo>25030149767</dclrNo><rlbrDttm></rlbrDttm><wght>9174</wght><rlbrBssNo>하선반입기한:2025-12-26</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>하선신고 수리</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn></rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251218173739</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>9174</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 심사완료</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn></rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>에이치엠엠피에스에이신항만(주)</shedNm><prcsDttm>20251218163407</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>9174</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>834</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 제출</cargTrcnRelaBsopTpcd><pckUt>CT</pckUt><rlbrCn></rlbrCn><shedSgn>03077011</shedSgn></cargCsclPrgsInfoDtlQryVo></cargCsclPrgsInfoQryRtnVo>
