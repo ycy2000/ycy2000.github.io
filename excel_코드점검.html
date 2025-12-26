@@ -2587,9 +2587,9 @@ End Sub
       </div>
     </div>
     
-    <div id="API_REST" class="대체3줄">
+    <div id="API_REST" class="대체2줄">
       <h6 class="fw-bold"> 엑셀 vba <span class="blueviolet">요청url 완성 예시</span> : https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&hblNo=KHHBUS2511007&blYy=2025</h6>
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <h6 class="대체2줄세로1h6"></h6>
       <div>
         <h6 class="fw-bold"><a href="https://cloudlog.kr/docs/programming/api/unipass-openapi-introduce/?utm_source=chatgpt.com" target="_blank">유니패스 오픈API 신청, 가이드 정보 통관정보 조회, 개인통관고유부호 검증</a> </h6>
         <h6 class="fw-bold"><a href="https://khj93.tistory.com/entry/네트워크-REST-API란-REST-RESTful이란#google_vignette" target="_blank">네트워크-REST-API란-REST-RESTful이란</a> </h6>
@@ -2610,54 +2610,123 @@ End Sub
         <h6 class="fw-bold" style="text-indent: 15px;">e) BL발급년도 전달 : </h6>
         <h6 class="fw-bold" style="text-indent: 36px;">&blYy=2025</h6>
         <h6 class="fw-bold blueviolet">5. 요청 url 완성 예시는 a,b,c,d,e를 합친 정보이다.</h6>
-        <h6 class="fw-bold">6. vba에서 자료요청~받은자료까지 표현코드 (오른쪽에 따로)</h6>
-        <h6 class="fw-bold">7. 결과문서</h6>
+        <h6 class="fw-bold blueviolet">6. ★ vba에서 자료요청 : a)요청객체생성, b)요청방법, c)응답정보를 노드</h6>
         <pre class="fw-bold">
+    Const 화물진행정보_승인키 As String = "c290s255d192h253h000l090g5"
+    Dim http As Object, xmlDoc As Object
+    Set http = CreateObject("MSXML2.XMLHTTP") '요청하는 객체
+    Set xmlDoc = CreateObject("MSXML2.DOMDocument") '응답받은정보 객체(DOM객체)
+    Dim url As String
+
+    Dim BL번호 As String
+    Dim 년도 As String
+    Dim 서비스url As String
+    Dim 서비스명 As String
+    Dim 전달항목_승인키 As String
+    Dim 승인키 As String
+    Dim isHBL As Boolean 'mblNo또는 hblNo 중 하나를 전달하기 위한 변수
+
+    '=== 화물통관 진행정보 조회에서 항목은 4개이다. hblNo, mblNo, cargMtNo(화물관리번호),blYy(발급년도)
+    '=== BL번호와 년도만 사용할 것이다.
+    '=== hblNo인 경우 여러 하우스BL이 나올수 있다
+    
+    'bl분할 :ONEYRICFHA975600 분할되면 ONEYRICFHA975600 - ONEYRICFHA975600 + 관리번호 추가
+    'HASLS21251102033 - NSGS82512016
+    'A66FX05797 house bl, master bl 같음
+    'KHHBUS2511004 : house bl, 바다사랑 7대, 이것의 mbl은ONEYTPEF83544700(house bl 1건)
+    'HDMUSGNA17207600 : master bl, 1대
+    
+    BL번호 = "HDMUSGNA17207600" 'hblNo인지 mblNo인지 아직 모르는 상태
+    isHBL = False 'false는 mblNo에 전달, true는 hblNo에 전달
+    년도 = Year(Date) '현재년도와 년도-1 정보를 활용할 것이다.
+    서비스url = "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry"
+    서비스명 = "/retrieveCargCsclPrgsInfo" '화물통관진행정보, 서브스명은 / 로 접근하므로 / 을 붙였음
+    전달항목_승인키 = "?crkyCn="
+    승인키 = 화물진행정보_승인키
+
+    '====== mblNo 하나를 기본체크용으로 연습, IIf(isHBL, "&hblNo=", "&mblNo=")
+    '====== 1.현재 서비스명에 전달값은 : & + 전달항목이름 + = 전달항목값 형태이다, "&mblNo=" & BL번호
+    '====== 2.현재 서비스명에 여러전달값은 1.의 형태로 계속 붙이면 된다. and 조건이 될것이다.
+    url = 서비스url & 서비스명 & 전달항목_승인키 & 화물진행정보_승인키 & IIf(isHBL, "&hblNo=", "&mblNo=") & BL번호 _
+        & "&blYy=" & 년도
+
+    http.Open "GET", url, False '전송준비 : 전송값 셑팅
+    http.send '전송준비 값으로, 실제 전송
+    xmlDoc.LoadXML http.responseText '응답(XML)을 DOM으로 변환
+    '===== 설명 : http.Open "GET", url, False =====
+    '   이 코드는 **HTTP 통신을 시작하기 위한 “요청 설정 단계”**입니다.
+    '   아직 서버로 데이터를 보내지는 않았고, 어떤 방식으로 요청할지 준비만 해두는 단계입니다.
+    '   http.Open Method, URL, Async
+    '      Method   요청 방식 ("GET", "POST" 등), 현재 코드처럼 조회 API에는 거의 항상 GET 사용
+    '      "GET" 데이터 조회만 할 때 적합
+    '      URL  요청할 전체 주소
+    '      Async    비동기 여부 (True / False)
+    '      False 이 값은 동기 / 비동기 통신 여부를 결정합니다.
+    '         False = 동기(Synchronous) 요청을 보내고 응답이 올 때까지 코드가 멈춤 응답을 받은 뒤 다음 줄 실행
+    '         True 엑셀 VBA에서는 거의 사용 안 함
+    '다음 줄의 http.send에서 실제 전송이 됩니다.
+        </pre>
+
+        <cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
+<cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
+      </div>
+      <div>
+        <h6 class="fw-bold">7. 결과문서 (노드를 공부해야하나?, 처음 보고 적는것)</h6>
+        <pre class="fw-bold">
+  xmlDoc.ChildNodes.Length : 2, nodename은 xml, ★cargCsclPrgsInfoQryRtnVo★
+  조회결과 없어도 위 두개는 항상 존재
+  '===== 순회방법 ===='
+  Dim child As Object
+  For Each child In xmlDoc.ChildNodes
+      Debug.Print child.nodeName
+  Next
+
+  ★cargCsclPrgsInfoQryRtnVo★안에 &#60;tCnt>-1&#60;/tCnt> : 조회조건 안맞을때 -1
+  ★cargCsclPrgsInfoQryRtnVo★안에 &#60;tCnt>0&#60;/tCnt> : 조회결과 없을때 0
+  ★cargCsclPrgsInfoQryRtnVo★안에 &#60;tCnt>1&#60;/tCnt> : 조회결과 있을때 1은 적하목록제출 단계가 늘수록 + 됨
+
+  '===== &#60;tCnt>-1&#60;/tCnt> 접근방법 ===='
+  Dim node As Object
+  Set node = xmlDoc.SelectSingleNode("//tCnt") '여러개이면 첫번째로 나오는것
+  If Not node Is Nothing Then MsgBox "존재함"
+  //tCnt : 모든 후손노드에서 찾는다 모두 찾으려면 xmlDoc.SelectNodes("//tCnt")
+  ★ 관세청 응답자료에는 &#60;tCnt>1&#60;/tCnt>부분이 1개가 존재해서 이렇게 찾게 된다.
+  cargCsclPrgsInfoQryRtnVo 노드의 자식으로 tCnt 노드가 있다면 
+  debug.print xmlDoc.SelectSingleNode("//cargCsclPrgsInfoQryRtnVo/tCnt").text
+
+  xml첫자식으로 있다면 debug.print xmlDoc.SelectSingleNode("cargCsclPrgsInfoQryRtnVo").text '모든 텍스트 다 나옴
+
+  어딘지 알수 없지만 rlbrCn 노드의 값이 "보세운송 반출"인 것 :  
+  
+  Set 노드=xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']") 'SelectNodes로 찾을때는 못찾아도 Nothing이 아니고 length가 0이다
+  SelectSingleNode 사용시 뭐라하는데 잘 모르겠다. 잘 안된다 이거는.
+
+  바로 "//[rlbrCn='보세운송 반출']" 이거는 안된다. 규칙에 어긋난다.
+  XPath의 기본 규칙은:
+  축(axis) / 노드선택자 [조건]
+  xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']")
+
+  <span class="blueviolet"> 공백, 줄바꿈도 노드인데 "요소"인지 확인하려면 If childNode.nodeType = 1 Then</span>
+
+
+
+
+
+
+
+
+
+
+
+
 &#60;cargCsclPrgsInfoQryRtnVo>&#60;tCnt>0&#60;/tCnt>&#60;/cargCsclPrgsInfoQryRtnVo>
 1. &#60;tCnt>0&#60;/tCnt> : 이부분은 하나만 존재, 진행정보 순번, 0 이면 조회결과가 없다.
 2. &#60;cargCsclPrgsInfoQryRtnVo> : 이부분은 적어도 1개 + 진행정보 순번만큼 더 존재한다
 3. 2.내부의 항목은 같은 이름을 쓰는 항목이 많다.
         </pre>
-        <cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
-<cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
-      </div>
-      <div>
-        <h6 class="fw-bold">6. vba에서 자료요청~받은자료까지 표현코드</h6>
-        <pre class="fw-bold">
-    Dim 서비스url As String
-    Dim 서비스정보 As String
-    Dim 화물진행정보서비스인증키 As String
-    Dim BL번호 As String
-    Dim 발급년도 As String
-    서비스url = "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry"
-    서비스정보 = "/retrieveCargCsclPrgsInfo"
-    화물진행정보서비스인증키 = "c290s255d192h253h000l090g5"
-    BL번호 = "KHHBUS2511007"
-    발급년도 = "2025"
-
-    Dim url As String
-        url = 서비스url & 서비스정보 & "?crkyCn=" & 화물진행정보서비스인증키 _
-            & "&hblNo=" & BL번호 _
-            & "&blYy=" & 발급년도
-            
-        Dim http As Object
-        Dim xmlDoc As Object
-        Set http = CreateObject("MSXML2.XMLHTTP") '요청
-        Set xmlDoc = CreateObject("MSXML2.DOMDocument") '결과문서
-
-        http.Open "GET", url, False
-        http.send
-
-        xmlDoc.LoadXML http.responseText
-        
-        '여기서부터는 받은정보의 구조에 따라
-        </pre>
-      </div>
-      <div>
         <pre class="fw-bold">
 xml.SelectSingleNode("//cntrNo").Text, 첫번째꺼만
         </pre>
-        
       </div>
     </div>
     <div id="관세청API_1" class="대체3줄">
