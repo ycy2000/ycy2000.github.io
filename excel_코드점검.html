@@ -2698,7 +2698,8 @@ End Sub
 
   어딘지 알수 없지만 rlbrCn 노드의 값이 "보세운송 반출"인 것 :  
   
-  Set 노드=xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']") 'SelectNodes로 찾을때는 못찾아도 Nothing이 아니고 length가 0이다
+  Set 노드=xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']") 
+  SelectNodes로 찾을때는 못찾아도 Nothing이 아니고 length가 0이다
   SelectSingleNode 사용시 뭐라하는데 잘 모르겠다. 잘 안된다 이거는.
 
   바로 "//[rlbrCn='보세운송 반출']" 이거는 안된다. 규칙에 어긋난다.
@@ -2706,7 +2707,8 @@ End Sub
   축(axis) / 노드선택자 [조건]
   xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']")
 
-  <span class="blueviolet"> 공백, 줄바꿈도 노드인데 "요소"인지 확인하려면 If childNode.nodeType = 1 Then</span>
+  <span class="blueviolet"> 공백, 줄바꿈도 노드인데 "요소"인지 확인하려면 If childNode.nodeType = 1 Then</span>,xml=7
+  
 
 
 
