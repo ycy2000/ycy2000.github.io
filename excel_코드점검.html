@@ -2673,6 +2673,9 @@ End Sub
       <div>
         <h6 class="fw-bold">7. 결과문서 (노드를 공부해야하나?, 처음 보고 적는것)</h6>
         <pre class="fw-bold">
+  If http.Status &#60;> 200 Then Exit Function '조회실패시
+  Byte 대신 Long (XML 값은 문자열 기반)
+
   xmlDoc.ChildNodes.Length : 2, nodename은 xml, ★cargCsclPrgsInfoQryRtnVo★
   조회결과 없어도 위 두개는 항상 존재
   '===== 순회방법 ===='
