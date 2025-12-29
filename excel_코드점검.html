@@ -150,8 +150,9 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 title='API_REST'>API_REST</h6>
-        <h6 title='관세청API_1'>관세청API_1</h6>
-        <h6 title='관세청API_인증키'>관세청 OPEN API 화물통관진행정보조회 승인키:c290s255d192h253h000l090g5</h6>
+        <h6 title='관세청API_자바스크립트'>관세청API_자바스크립트</h6>
+        
+
       </div>
       <div>
 
@@ -2604,16 +2605,18 @@ End Sub
         <h6 class="fw-bold" style="text-indent: 15px;">b) 서비스 정보 (예:화물통관진행정보)</h6>
         <h6 class="fw-bold" style="text-indent: 36px;">/retrieveCargCsclPrgsInfo (retrieve는 검색하다는 뜻)</h6>
         <h6 class="fw-bold" style="text-indent: 15px;">c) 발급받은 서비스인증키 : </h6>
-        <h6 class="fw-bold" style="text-indent: 36px;">?crkyCn=c290s255d192h253h000l090g5&hblNo=KHHBUS2511007</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">d) houseBL 전달 : </h6>
-        <h6 class="fw-bold" style="text-indent: 36px;">&hblNo=KHHBUS2511007</h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">?crkyCn= & "c290s255d192h253h000l090g5"</h6>
+        <h6 class="fw-bold" style="text-indent: 15px;">d) houseBL 전달, masterBL 전달  </h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">&"hblNo="" & "bl번호", &"mblNo=" & "bl번호"</h6>
         <h6 class="fw-bold" style="text-indent: 15px;">e) BL발급년도 전달 : </h6>
-        <h6 class="fw-bold" style="text-indent: 36px;">&blYy=2025</h6>
+        <h6 class="fw-bold" style="text-indent: 36px;">&"blYy=" & 2025</h6>
         <h6 class="fw-bold blueviolet">5. 요청 url 완성 예시는 a,b,c,d,e를 합친 정보이다.</h6>
         <h6 class="fw-bold blueviolet">6. ★ vba에서 자료요청 : a)요청객체생성, b)요청방법, c)응답정보를 노드</h6>
         <pre class="fw-bold">
+    <span class="blueviolet"> 가끔 실시간 아닌듯 반영이 한참 느린 경우도 있었다.</span>
     Const 화물진행정보_승인키 As String = "c290s255d192h253h000l090g5"
-    Dim http As Object, xmlDoc As Object
+    Dim http As Object '== 전송객체 
+    Dim xmlDoc As Object '== 응답객체가 xml인경우 xml을 DOM객체에 담을 객체
     Set http = CreateObject("MSXML2.XMLHTTP") '요청하는 객체
     Set xmlDoc = CreateObject("MSXML2.DOMDocument") '응답받은정보 객체(DOM객체)
     Dim url As String
@@ -2666,428 +2669,177 @@ End Sub
     '         True 엑셀 VBA에서는 거의 사용 안 함
     '다음 줄의 http.send에서 실제 전송이 됩니다.
         </pre>
-
-        <cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
-<cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><tCnt>0</tCnt></cargCsclPrgsInfoQryRtnVo>
       </div>
       <div>
         <h6 class="fw-bold">7. 결과문서 (노드를 공부해야하나?, 처음 보고 적는것)</h6>
+          
+        <h6 class="fw-bold blueviolet" style="text-indent:17px">xmlDoc.LoadXML http.responseText '=== 응답받은 xml파일을 DOM객체에 담는다</h6>
+        <h6 class="fw-bold blueviolet" style="text-indent:17px">응답결과가 xml이고 xmlDoc에 담겨 DOM객체가 되었다고 가정하고</h6>
         <pre class="fw-bold">
   If http.Status &#60;> 200 Then Exit Function '조회실패시
-  Byte 대신 Long (XML 값은 문자열 기반)
+   
+  xmlDoc 구조 예시
+  &#60;?xml version="1.0" encoding="UTF-8" standalone="yes"?> '==xml파일이라는 표시이고 childNode.length 에는 포함된다'
+  &#60;cargCsclPrgsInfoQryRtnVo> '=== 모든 결과가 여기에 담긴다'
+    &#60;cargCsclPrgsInfoQryVo> 주요정보 &#60;cargCsclPrgsInfoQryVo>
+    &#60;tCnt>0&#60;/tCnt>
+    '====== tCmt 1 이면 적하목록제출, 진행단계 숫자이다 ======
+    &#60;cargCsclPrgsInfoDtlQryVo>진행단계만큼 있고, 내부에 태그가 있다 &#60;/cargCsclPrgsInfoDtlQryVo>
+  &#60;/cargCsclPrgsInfoQryRtnVo>
 
-  xmlDoc.ChildNodes.Length : 2, nodename은 xml, ★cargCsclPrgsInfoQryRtnVo★
-  조회결과 없어도 위 두개는 항상 존재
-  '===== 순회방법 ===='
+  '====== 노드찾기 및 표현 ======'
+  노드.NodeType :  element 1, 텍스트노드 3, 주석 8, &#60;?xml ...?> 7 처리명령
+  xmlDoc.childNode.length : xmlDoc 객체의 첫번째 자식 노드의 개수
   Dim child As Object
   For Each child In xmlDoc.ChildNodes
       Debug.Print child.nodeName
+      Debug.Print child.text '----- 모든 자손의 text가 합쳐진다, 하나의 노드인 경우만 단일노드값
   Next
+  child.Text      ' 👉 자손의 모든 텍스트를 합쳐서 출력, 텍스트노드에 접근되지 않는다
+  텍스트노드(공백, 줄바꿈), 주석노드(comment)에 접근하려면 child.ChildNodes 사용
+  순회하면서 type확인하여 사용
+  ex) 공백으로 시작했다고하면 : &#60;tCnt> &#60;/tCnt> , 노드.firstChild가 text노드, 그냥 노드.text는 자손의 모든 text
+  노드.nodeValue '해당 텍스트 노드만 출력, &#60;tCnt>&#60;/tCnt>처럼 비어있으면 null
 
   ★cargCsclPrgsInfoQryRtnVo★안에 &#60;tCnt>-1&#60;/tCnt> : 조회조건 안맞을때 -1
   ★cargCsclPrgsInfoQryRtnVo★안에 &#60;tCnt>0&#60;/tCnt> : 조회결과 없을때 0
   ★cargCsclPrgsInfoQryRtnVo★안에 &#60;tCnt>1&#60;/tCnt> : 조회결과 있을때 1은 적하목록제출 단계가 늘수록 + 됨
 
-  '===== &#60;tCnt>-1&#60;/tCnt> 접근방법 ===='
-  Dim node As Object
-  Set node = xmlDoc.SelectSingleNode("//tCnt") '여러개이면 첫번째로 나오는것
-  If Not node Is Nothing Then MsgBox "존재함"
-  //tCnt : 모든 후손노드에서 찾는다 모두 찾으려면 xmlDoc.SelectNodes("//tCnt")
-  ★ 관세청 응답자료에는 &#60;tCnt>1&#60;/tCnt>부분이 1개가 존재해서 이렇게 찾게 된다.
-  cargCsclPrgsInfoQryRtnVo 노드의 자식으로 tCnt 노드가 있다면 
-  debug.print xmlDoc.SelectSingleNode("//cargCsclPrgsInfoQryRtnVo/tCnt").text
+  '===== SelectSingleNode : 찾지못하면 Nothing ===='
+  Dim 찾는노드 As Object
+  Set 찾는노드 = xmlDoc.SelectSingleNode(xPath) : 자손(어디에 있던)중 만나는 첫번째꺼
+  If Not node Is Nothing Then : Nothing이 아니면, 있다는 뜻
 
-  xml첫자식으로 있다면 debug.print xmlDoc.SelectSingleNode("cargCsclPrgsInfoQryRtnVo").text '모든 텍스트 다 나옴
+  '===== SelectNodes : 찾지못하면 Nothing이 아니고 length가 0 이고, 0 인경우 첫번째꺼에 접근하면 에러난다 ===='
 
-  어딘지 알수 없지만 rlbrCn 노드의 값이 "보세운송 반출"인 것 :  
-  
-  Set 노드=xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']") 
-  SelectNodes로 찾을때는 못찾아도 Nothing이 아니고 length가 0이다
-  SelectSingleNode 사용시 뭐라하는데 잘 모르겠다. 잘 안된다 이거는.
+  '===== xPath 는 경로 문자열 ===== 
+    Dim node As Object
+    1)//노드이름 : 자손(어디에 있던)중 노드이름을 찾는다
+      Set node xmlDoc.SelectSingleNode("//tCnt") '여러개이면 첫번째로 나오는것
+    2)노드이름 또는 /노드이름 : 첫번째 자식에서 노드이름을 찾는다
+      Set node xmlDoc.SelectSingleNode("/tCnt") '첫번째 자식에 위치한 tCnt노드를 찾는다
+      Set node xmlDoc.SelectSingleNode("tCnt") '첫번째 자식에 위치한 tCnt노드를 찾는다
+    3)노드이름/노드이름2 : 첫번째 자식의 자식에서 노드이름2를 찾는다
+      Set node xmlDoc.SelectSingleNode("노드이름/노드이름2") 
+    4)노드이름//노드이름2 : 첫번째 자식의 자손에서 노드이름2를 찾는다
+      Set node xmlDoc.SelectSingleNode("노드이름//노드이름2") 
 
-  바로 "//[rlbrCn='보세운송 반출']" 이거는 안된다. 규칙에 어긋난다.
-  XPath의 기본 규칙은:
-  축(axis) / 노드선택자 [조건]
-  xmlDoc.SelectNodes("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']")
-
-  <span class="blueviolet"> 공백, 줄바꿈도 노드인데 "요소"인지 확인하려면 If childNode.nodeType = 1 Then</span>,xml=7
-  
-
-
-
-
-
-
-
-
-
-
-
-
-&#60;cargCsclPrgsInfoQryRtnVo>&#60;tCnt>0&#60;/tCnt>&#60;/cargCsclPrgsInfoQryRtnVo>
-1. &#60;tCnt>0&#60;/tCnt> : 이부분은 하나만 존재, 진행정보 순번, 0 이면 조회결과가 없다.
-2. &#60;cargCsclPrgsInfoQryRtnVo> : 이부분은 적어도 1개 + 진행정보 순번만큼 더 존재한다
-3. 2.내부의 항목은 같은 이름을 쓰는 항목이 많다.
-        </pre>
-        <pre class="fw-bold">
-xml.SelectSingleNode("//cntrNo").Text, 첫번째꺼만
+    ======= 조건 적용(덩어리) : 노드이름1[노드이름2='문자열'] =======.
+    ======= SelectNodes로 찾아야되는듯?  SelectSingleNode 사용시 뭐라하는데 잘 모르겠다. 잘 안된다 이거는.=======    
+    1)노드이름1[노드이름2='문자열'] : 노드이름1의 자식중에 노드이름2의 값이 '문자열'인 노드
+    2)'문자열' 사용 예시 : '*보세*'', '보세'라는 단어가 포함된 노드 
+    3) 어딘지 알수 없지만 rlbrCn 노드의 값이 "보세운송 반출"인 것 :  
+       Set 노드=xmlDoc.SelectSingleNode("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']") 
+    4) 바로 "//[rlbrCn='보세운송 반출']" 이거는 안된다. 규칙에 어긋난다.
+      XPath의 기본 규칙은:
+      축(axis) / 노드선택자 [조건]
+      xmlDoc.SelectSingleNode("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']")
+    <span class="blueviolet">5) 3)의 요소의 자식 rlbrDttm 접근</span>
+      <span class="blueviolet">xmlDoc.SelectSingleNode("//cargCsclPrgsInfoDtlQryVo[rlbrCn='보세운송 반출']/rlbrBssNo"</span>
+      <span class="blueviolet">또는 3)의 노드의 ChildNodes를 순회하여 nodename 값 확인해도 됨</span>
         </pre>
       </div>
     </div>
-    <div id="관세청API_1" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <pre class="fw-bold">
-결론부터 말씀드리면 엑셀에서 유니패스 웹화면을 직접 열어서 B/L 번호를 자동 조회해 
-A2, A3에 값을 가져오는 방식은 현실적으로 어렵거나 불가능합니다.
-대신 관세청에서 제공하는 유니패스 Open API를 사용하는 방법이 정석입니다.
-
-아래에서 이유 → 가능한 방법 → 실제 구현 예 순서로 설명드릴게요.
-
-1️⃣ 왜 웹페이지를 직접 긁어오면 안 될까?
-
-유니패스 사이트
-👉 https://unipass.customs.go.kr/csp/index.do
-
-이 사이트는 다음과 같은 자동화 차단 구조를 가지고 있습니다.
-
-로그인 / 세션 기반
-
-CAPTCHA(자동조회 방지)
-
-AJAX + 동적 렌더링
-
-로봇 차단 정책
-
-즉,
-
-VBA + IE
-
-VBA + Selenium
-
-WEBSERVICE 함수
-
-로 컨테이너번호 / 입항일을 안정적으로 가져오는 것은 거의 불가능합니다.
-(운 좋게 한두 번 되는 수준이지 실무 자동화는 ❌)
-
-2️⃣ 정석 해결책: 유니패스 Open API 사용 ✅
-
-관세청은 화물통관 정보 조회 Open API를 공식 제공하고 있습니다.
-
-✔ 제공 데이터
-
-B/L 번호
-
-컨테이너 번호
-
-입항일
-
-화물 진행 상태 등
-
-✔ 방식
-엑셀 → VBA → HTTP 요청 → XML/JSON 응답 → 셀에 출력
-
-3️⃣ 준비사항
-① 관세청 Open API 신청
-
-사이트: https://unipass.customs.go.kr/portal/openapi
-
-필요:
-
-회원가입
-
-서비스 신청
-
-인증키(ServiceKey) 발급
-
-인증키 없으면 조회 ❌
-        </pre>
-
-      </div>
-      <div>
-        <pre class="fw-bold">
-관세청 Open API 신청 및 인증키 발급에는 비용이 드는가?
-
-간단하게 정리하면 다음과 같습니다 👇
-
-✅ 관세청 유니패스 Open API 인증키 발급에는 별도의 비용이 들지 않습니다
-
-관세청이 제공하는 Open API는 무료로 신청 및 사용할 수 있습니다.
-실제로 공공데이터포털에서도 관련 Open API를 검색하면 “비용 부과 없음(무료)” 으로 표기되어 있습니다. 
-데이터.go
-
-📌 자세한 설명
-🔹 인증키 발급 방법
-
-유니패스 사이트에 가입한 뒤
-My 메뉴 → 서비스관리 → Open API 사용관리에서 API를 신청하면 인증키가 발급됩니다. 
-데이터.go
-
-🔹 비용 여부
-
-Open API는 무료로 제공되며 비용이 발생하지 않습니다. 
-데이터.go
-
-다만 정책에 따라 **트래픽 제한(호출량 제한)**이 있을 수 있고, 과도한 호출에는 제약이 걸릴 수 있습니다. 
-데이터.go
-
-⚠️ 참고 사항
-
-✔ 인증키 발급 자체는 무료이지만,
-
-유니패스 가입 및 Open API 신청 절차를 따로 진행해야 합니다. 
-데이터.go
-
-일부 API는 승인 대기가 있거나 이용 조건이 있을 수 있습니다. 
-데이터.go
-
-원하시면 **Open API 신청하는 단계별 가이드(사이트 메뉴 이동 버튼 예시 포함)**도 정리해 드릴까요?
-(한 번에 따라 하기 쉽게 안내)
-
-네
-
-좋습니다 👍
-아래는 **관세청 유니패스 Open API 신청 → 인증키 발급까지 “그대로 따라 하면 되는 단계별 가이드”**입니다.
-(엑셀 VBA 연동 기준으로 설명합니다)
-
-🔑 관세청 Open API 신청 & 인증키 발급 가이드
-1️⃣ 유니패스 회원가입 / 로그인
-
-접속
-👉 https://unipass.customs.go.kr
-
-상단 [로그인]
-
-개인 / 사업자 모두 가능
-
-기존 계정 있으면 바로 로그인
-
-계정이 없다면 회원가입 진행
-
-📌 주의
-
-실명 인증 필수
-
-API 신청은 본인 명의 계정으로만 가능
-
-2️⃣ Open API 메뉴 이동
-
-로그인 후 상단 메뉴 경로 👇
-
-[My 유니패스]
- → [Open API 관리]
-   → [Open API 이용신청]
-
-
-(메뉴 명칭은 약간 다를 수 있으나 “Open API” 포함된 메뉴입니다)
-
-3️⃣ 사용할 API 선택 (중요 ⭐)
-
-엑셀에서 B/L 번호 조회에 필요한 API는 보통 아래 중 하나입니다.
-
-✅ 추천 API
-
-화물통관 진행정보 조회 서비스
-
-B/L 번호로 조회 가능
-
-컨테이너번호
-
-입항일
-
-통관상태
-
-신청 화면에서
-☑ 서비스 선택
-☑ 사용 목적 간단히 작성
-
-예시:
-
-엑셀 VBA를 이용한 수입 화물 통관 진행 현황 관리
-
-4️⃣ 이용 신청서 작성
-
-보통 아래만 입력하면 됩니다.
-
-항목	입력 예
-사용 목적	내부 물류 관리
-시스템 유형	엑셀 / 내부 시스템
-예상 호출량	일 100건 이하
-사용 기간	제한 없음
-
-📌 요령
-
-“상업적 재판매” 표현 ❌
-
-“내부 업무 자동화” 표현 ⭕
-
-5️⃣ 승인 대기 (보통 매우 빠름)
-
-대부분 즉시 승인 또는
-
-길어도 1영업일 이내
-
-승인되면 다음 단계로 진행 가능
-
-6️⃣ 인증키(Service Key) 확인 🎯
-
-경로 👇
-
-[My 유니패스]
- → [Open API 관리]
-   → [인증키 관리 / 서비스 키]
-
-
-여기서 확인할 것 👇
-
-✅ ServiceKey (긴 문자열)
-
-✅ 사용 가능 상태
-
-✅ API 호출 URL
-
-7️⃣ 엑셀 VBA에 인증키 적용
-
-이제 이 부분만 본인 키로 교체하면 됩니다.
-
-Const SERVICE_KEY As String = "여기에_발급받은_인증키"
-
-
-✔ URL 인코딩 불필요 (그대로 사용)
-        </pre>
-
-      </div>
-      <div>
-        <pre class="fw-bold">
-⚠️ 자주 발생하는 문제
-❌ “조회 결과 없음”
-
-아직 입항 전 화물
-
-B/L 번호 오타
-
-마스터 B/L vs 하우스 B/L 차이
-
-❌ “서비스 키 오류”
-
-키 복사 시 공백 포함
-
-승인 전 키 사용
-
-🎁 다음 단계로 추천
-
-원하시면 다음까지 바로 정리해 드릴 수 있어요.
-
-✔ 승인 실패 시 대처 방법
-
-✔ API 호출 제한 회피 팁
-
-✔ 마스터/하우스 B/L 구분 처리
-
-✔ 실제 응답 XML 구조 설명
-
-✔ ERP/사내시스템 연계 구조
-
-👉 다음으로 궁금한 것 하나만 말씀 주세요.
-
-마스터/하우스 B/L 구분 처리
-
-아주 좋은 질문입니다 👍
-유니패스 조회에서 가장 많이 막히는 부분이 바로 “마스터 B/L(MBL) / 하우스 B/L(HBL)” 구분입니다.
-아래를 보시면 실무 기준으로 어떻게 처리해야 하는지 한 번에 정리됩니다.
-
-✅ 마스터 B/L / 하우스 B/L 구분 핵심 정리
-1️⃣ 용어부터 정확히
-구분	의미	유니패스 인식
-MBL (Master B/L)	선사 발행	✅ 거의 항상 조회 가능
-HBL (House B/L)	포워더 발행	⚠ 일부만 가능 / 종종 불가
-
-📌 유니패스는 기본적으로 “통관 기준 번호”를 조회합니다.
-→ 이 기준은 대부분 MBL입니다.
-
-2️⃣ 왜 HBL이 안 나오는가?
-
-유니패스 API 구조상:
-
-통관·적하목록·입항 정보
-➡ 선사 기준(= MBL) 으로 관리
-
-HBL은 내부 참조번호 성격
-
-따라서:
-
-🔹 HBL만 입력 → “조회 결과 없음” 빈번
-
-🔹 MBL 입력 → 컨테이너 / 입항일 / 상태 정상 조회
-
-3️⃣ 실무에서 쓰는 3가지 처리 전략 ⭐⭐⭐
-✅ 전략 1. “MBL 우선 조회” (가장 안정적)
-📌 방식
-
-사용자 입력: HBL 또는 MBL
-
-MBL로 변환 가능하면 변환
-
-API는 항상 MBL로 조회
-
-📌 추천 상황
-
-포워더 데이터 있음
-
-사내 시스템에 HBL↔MBL 매핑 있음
-
-✅ 전략 2. “자동 판별 → 실패 시 재시도” (엑셀 VBA 최적)
-📌 로직
-1) 입력 B/L로 조회
-2) 결과 있음 → 종료
-3) 결과 없음 → HBL로 판단
-4) MBL 입력 요청 or 보조조회
-
-📌 실무 장점
-
-사용자 개입 최소
-
-엑셀 자동화에 최적
-
-✅ 전략 3. “HBL 전용 API 분리” (고급)
-
-적하목록 상세 API
-
-신고번호 기반 조회
-
-ERP 연계 시 사용
-
-❗ 엑셀 단독 자동화에는 과함
-
-4️⃣ VBA 자동 판별 로직 (실무용)
-🔍 판별 기준 (현장 관행)
-기준	가능성
-BL 길이 짧음	HBL 가능성 ↑
-포워더 접두어	HBL 가능성 ↑
-선사 코드 (OOLU, MAEU 등)	MBL 가능성 ↑
-        </pre>
-
-      </div>
-
-    </div>
-    <div id="관세청API_인증키" class="대체2줄">
+    <div id="관세청API_자바스크립트" class="대체2줄">
        <h6 class="대체2줄세로1h6"></h6>
        <div>
         <pre class="fw-bold">
-  📌 관세청 화물통관진행정보조회 API 기본 URL : 연계가이드 다운로드하여 확인
-  📌  ==> https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo 
-        가. REST 방식의 인증키 활용 
-        https://unipass.customs.go.kr:38010/ext/rest/statsSgnQry/retrieveStatsSgnBrkd?crkyCn=
-        00 인증키&statsSgnTp=부호코드 
-        나. OPEN API 호출 예시 
-        https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsI
-        nfo?crkyCn=0000000000042&blNo=11111111111111111111 
-  </pre>
-        <h6 class="fw-bold">항목마다 인증키가 다름</h6>
-        <h6 class="fw-bold">화물통관진행정보조회:c290s255d192h253h000l090g5</h6>
-      </div>
-      <div>
-      </div>
+Sub 매크로1()
+
+    Dim http As Object, xmlDoc As Object
+    Set http = CreateObject("MSXML2.XMLHTTP")
+    Set xmlDoc = CreateObject("MSXML2.DOMDocument")
+    Dim url As String
+    url = "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/" _
+    & "retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&mblNo=SGN501734600&blYy=2025"
+
+    http.Open "GET", url, False
+    http.send
+    xmlDoc.LoadXML http.responseText
+    If http.Status <> 200 Then Exit Sub
+  Dim child As Object
+  Dim 내부child As Object
+  
+  Debug.Print "xmlDoc.ChildNodes.Length : " & xmlDoc.ChildNodes.Length
+  For Each child In xmlDoc.ChildNodes
+      Debug.Print "child.nodename : " & child.nodename & ", child.childNodes.Length : " & child.ChildNodes.Length
+      For Each 내부child In child.ChildNodes
+          Debug.Print "내부child.ChildNodes.length : " & 내부child.ChildNodes.Length & ", nodename : " _
+                            & 내부child.nodename & ", type : " & 내부child.NodeType
+          Debug.Print 내부child.Text
+      Next
+  Next
+End Sub
+
+아래 VBA 매크로의 기능을 JavaScript로 그대로 옮기면 핵심은 다음 3가지입니다.
+HTTP GET 요청, XML 문자열 파싱, 노드 순회하며 nodename / childNodes / text 출력
+
+<div style="position: absolute;left:310px">
+1️⃣ VBA 매크로가 하는 일 요약
+- 관세청 UNIPASS API에 GET 요청
+- XML 응답 수신
+- XML DOM으로 파싱
+- 최상위 노드 → 하위 노드 반복 순회
+- nodename, childNodes.Length, Text 출력
+</div>
+4️⃣ VBA ↔ JavaScript 1:1 대응표
+VBA	                          JavaScript
+MSXML2.XMLHTTP	      fetch / axios
+DOMDocument	            DOMParser
+LoadXML	                   parseFromString
+ChildNodes	                   childNodes
+NodeName	                   nodeName
+NodeType	                   nodeType
+Text	                         textContent
+Debug.Print	                  console.log
+        </pre>
+       </div>
+       <div>
+        <pre class="fw-bold">
+2️⃣ 브라우저 JavaScript 구현 (Fetch + DOMParser)
+&#60;script>
+async function 매크로1_JS() {
+  const url =
+    "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/" +
+    "retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&mblNo=SGN501734600&blYy=2025";
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) return;
+
+    const xmlText = await response.text();
+
+    // XML 파싱
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+    console.log("xmlDoc.childNodes.length :", xmlDoc.childNodes.length);
+
+    xmlDoc.childNodes.forEach(child => {
+      console.log(
+        `child.nodename : ${child.nodeName}, child.childNodes.length : ${child.childNodes.length}`
+      );
+
+      child.childNodes.forEach(innerChild => {
+        console.log(
+   `내부child.ChildNodes.length : ${innerChild.childNodes.length}, nodename : ${innerChild.nodeName}, type : ${innerChild.nodeType}`
+        );
+        console.log(innerChild.textContent);
+      });
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+매크로1_JS();
+&#60;/script>
+
+📌 VBA의 Debug.Print → JS에서는 console.log
+📌 NodeType 값은 VBA와 동일
+        </pre>
+       </div>
     </div>
   </div>
   <div title="깃_Code_부트">
