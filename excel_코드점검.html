@@ -8806,7 +8806,126 @@ PowerShell은 설정 후 사용,
 Git Bash는 익숙해진 뒤
         </pre>
       </div>
-      <div></div>
+      <div>
+        <pre class="fw-bold">
+Git Bash에서 Node.js / npm PATH 잡는 방법을 
+가장 흔한 2가지 설치 방식 기준으로 정리해 드릴게요.
+
+0️⃣ 먼저 상태 확인 (꼭 먼저!)
+
+Git Bash에서 아래부터 실행하세요:
+
+which node
+which npm
+
+결과 해석
+
+아무것도 안 나옴 → ❌ PATH 안 잡힘
+
+/c/Program Files/nodejs/node.exe → ✔️ 정상
+
+node는 나오고 npm은 안 나옴 → ⚠️ 일부만 잡힘
+
+1️⃣ 기본 설치 (Node 공식 설치 파일 사용한 경우) ✅ 가장 흔함
+
+Node.js를 보통 여기 설치합니다:
+
+C:\Program Files\nodejs\
+
+🔧 PATH 수동 추가 (권장 방법)
+① Git Bash 설정 파일 열기
+nano ~/.bashrc
+
+
+또는
+
+notepad ~/.bashrc
+
+② 맨 아래에 추가
+export PATH="$PATH:/c/Program\ Files/nodejs"
+
+
+⚠️ 공백(Program Files) 때문에 \ 필수
+
+③ 적용
+source ~/.bashrc
+
+④ 확인
+node -v
+npm -v
+
+2️⃣ nvm-windows 사용 중인 경우 ⚠️
+
+설치 경로 예:
+
+C:\Users\사용자명\AppData\Roaming\nvm
+
+Git Bash용 PATH 추가
+nano ~/.bashrc
+
+
+아래 추가:
+
+export NVM_HOME="/c/Users/사용자명/AppData/Roaming/nvm"
+export PATH="$NVM_HOME:$PATH"
+
+
+❗ 사용자명 반드시 본인 계정으로 변경
+
+적용:
+
+source ~/.bashrc
+
+
+확인:
+
+node -v
+
+3️⃣ npm만 안 될 때 (node는 되는데 npm은 안 됨)
+
+Git Bash에서는 npm.ps1을 안 쓰고
+👉 npm.cmd를 사용합니다.
+
+그래서 Node 설치 폴더 하나만 잡혀 있으면 됩니다:
+
+C:\Program Files\nodejs\
+
+
+이 폴더 안에:
+
+node.exe
+npm.cmd
+npx.cmd
+
+
+가 함께 있어야 합니다.
+
+4️⃣ 임시 해결 (지금 당장만 필요할 때)
+export PATH="$PATH:/c/Program Files/nodejs"
+
+
+⚠️ 터미널 닫으면 사라짐
+
+5️⃣ 흔한 실수 TOP 3 ❌
+
+C:\Program Files\nodejs 그대로 넣음 → ❌
+
+Program Files 공백 이스케이프 안 함 → ❌
+
+.bashrc 수정 후 source 안 함 → ❌
+
+추천 설정 (한 줄)
+export PATH="$PATH:/c/Program\ Files/nodejs"
+
+최종 요약
+
+Git Bash는 Windows PATH를 그대로 안 씀
+
+.bashrc에 Linux 스타일 경로로 직접 추가해야 함
+
+설정 후 node -v, npm -v로 확인
+        </pre>
+      </div>
     </div>
     <div id="개념_nodejs설치및사용법" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
