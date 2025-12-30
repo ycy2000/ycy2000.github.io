@@ -839,6 +839,56 @@ function 공통한줄색칠있음clear() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
+function 리스트_색칠한곳api정보call() {
+  let 색칠있음 = document.querySelectorAll('#PNG셑팅내부_리스트자료풀림결과 .js한줄색칠있음')
+  if (색칠있음.length=0) {return;}
+  for (let i=0; i<색칠있음.length; i++) {
+    //bl : 색칠있음[i].children[2].textContent
+    //입항일 : 색칠있음[i].children[8].textContent
+    //도착일 : 색칠있음[i].children[10].textContent
+    //도착시간 : 색칠있음[i].children[11].textContent
+    //메모 : 색칠있음[i].children[14].textContent 
+  }
+}
+async function 매크로1_JS() {
+  const url =
+    "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/" +
+    "retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&mblNo=SGN501734600&blYy=2025";
+
+  try {
+
+    const response = await fetch(url); // 여기서 에러?
+
+    if (!response.ok) return;
+
+    const xmlText = await response.text();
+
+    console.log(xmlText);
+
+    // XML 파싱
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+    console.log("xmlDoc.childNodes.length :", xmlDoc.childNodes.length);
+
+    xmlDoc.childNodes.forEach(child => {
+      console.log(
+        `child.nodename : ${child.nodeName}, child.childNodes.length : ${child.childNodes.length}`
+      );
+
+      child.childNodes.forEach(innerChild => {
+        console.log(
+   `내부child.ChildNodes.length : ${innerChild.childNodes.length}, nodename : ${innerChild.nodeName}, type : ${innerChild.nodeType}`
+        );
+        console.log(innerChild.textContent);
+      });
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+
 function png셑팅click(e) {
   // 대부분의 모바일 브라우저(특히 iOS Safari, Chrome)는 <embed> 태그를 제대로 지원하지 않아요.
   console.log('png셑팅click(e)')
@@ -866,13 +916,14 @@ function png셑팅click(e) {
 
     if (작동위치=='') {alert('작동위치=="" 종료됨'); return;}
 
-    if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
+    //if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
+    if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/,/gmi,'<br>');}
     if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
     if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
 
-    if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;}
-    if (작동위치=='입항관리자료풀림결과') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
-    if (작동위치=='오른쪽리스트메모2만') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
+    //if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;}
+    //if (작동위치=='입항관리자료풀림결과') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
+    //if (작동위치=='오른쪽리스트메모2만') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
 
     //규칙 : 시작부분에 [PDF파일이름] 형태로 입력해놓으면 어디서든
     //[pdf, [png, [txt,로 시작되는것이 있으면 "클릭파일"에 파일을 넣는다.
