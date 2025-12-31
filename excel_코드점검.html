@@ -571,7 +571,7 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title="개념_CORS">CORS(Cross-Origin Resource Sharing), 출처가 다른 리소스 공유</h6>
-        <h6 class="fw-bold">메모 : Node.js는 자바스크립트를 브라우저가 아닌 서버에서 사용할 수 있게 해주는 </h6>
+        <h6 class="fw-bold" title="개념_nodejs소개">Node.js 소개</h6>
         <h6 class="fw-bold" title="개념_nodejs설치및사용법">1. Node.js 설치부터 기본 사용. Node.js 삭제. GPT 검색</h6>
         <h6 class="fw-bold" title="개념_nodev_npmv" style="text-indent:15px">vscode 터미널에서 node -v, npm -v</h6>
         <h6 class="fw-bold" title="개념_express">2. npm install express 의미, 서버 만들어보기</h6>
@@ -579,6 +579,8 @@
 
       </div>
       <div>
+        <h6 class="fw-bold blueviolet">-------- Node.js 연습해보기 --------</h6>
+        <h6 class="fw-bold" title="연습_nodejs설치및사용법">1. Node.js 설치부터</h6>
       </div>
       <div>
       </div>
@@ -8651,6 +8653,7 @@ Python requests	❌ 미적용
 환경	CORS 적용, Excel VBA	❌, Postman	❌, Node.js	❌, 브라우저	✅
 
 1️⃣ 왜 관세청 사이트에서는 브라우저 호출이 되는가?
+(자신의 정보를 보여줌)
 관세청 UNIPASS 화면에서 조회할 때 흐름은 보통 이렇습니다.
 https://unipass.customs.go.kr
         ↓
@@ -8671,9 +8674,9 @@ Port	38010      </pre>
 </pre>
       </div>
       <div>
-        <h6 class="blueviolet fw-bold">CROS를 접하는 이유 : 엑셀VBA에서 되던 관세청 API를 활용이</h6>
+        <h6 class="blueviolet fw-bold">CORS를 접하는 이유 : 엑셀VBA에서 되던 관세청 API를 활용이</h6>
         <h6 class="blueviolet fw-bold">자바스크립트에서는 CROS정책으로 안됨</h6>
-        <h6 class="blueviolet fw-bold">★ 엑셀 vba는 CROS와 관련이 없다? LOCAL 서버를 통해서 통신이 이루저진다?</h6>
+        <h6 class="blueviolet fw-bold">★ 엑셀 vba는 CORS와 관련이 없다? LOCAL 서버를 통해서 통신이 이루저진다?</h6>
         <h6 class="blueviolet fw-bold">브라우저에서 요청이 서버에서 서버로 요청하는게 아니기 때문인가?</h6>
         <h6 class="blueviolet fw-bold">검색해보니 Node.js 깔고 Node.js로 요청하여 값을 받는 코드가 필요한듯</h6>
         <pre class="fw-bold">
@@ -8730,6 +8733,46 @@ fetch는 “브라우저에서 CORS 허용된 리소스”를 읽기 위한 도�
       </div>
     </div>
     
+    <div id="개념_nodejs소개" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <pre class="fw-bold">
+AI 개요
+Node.js는 크롬 V8 자바스크립트 엔진으로 빌드되어 브라우저 외부(서버, 데스크톱 등)에서 자바스크립트 코드를 실행할 수 있게 해주는 런타임 환경으로,
+이를 통해 자바스크립트로 프론트엔드뿐만 아니라 백엔드 개발까지 가능하게 하여 풀스택 개발을 쉽게 만들어주는 기술입니다. 
+비동기 논블로킹(Non-Blocking) I/O 모델을 기반으로 하여 빠르고 효율적인 성능을 제공하며, 
+npm 생태계를 통해 수많은 모듈과 라이브러리를 활용할 수 있어 높은 생산성을 자랑합니다. 
+주요 특징
+자바스크립트 런타임: 브라우저가 없어도 자바스크립트가 동작할 수 있는 환경을 제공하며, 웹 서버 구축, API 개발 등에 활용됩니다.
+V8 엔진 기반: 구글 크롬의 고성능 V8 엔진을 사용해 빠른 실행 속도를 자랑합니다.
+비동기 & 논블로킹: 여러 요청을 동시에 처리하며 자원 효율성을 높여줍니다 (이벤트 루프, 논블로킹 I/O).
+풀스택 개발: 프론트엔드와 백엔드 모두 자바스크립트로 개발할 수 있어 언어 통일이 가능합니다.
+방대한 생태계 (npm): npm(Node Package Manager)을 통해 전 세계 개발자들이 만든 다양한 패키지(모듈)를 쉽게 가져다 쓸 수 있습니다.
+경량 & 확장성: 가볍고 모듈화된 구조로 높은 성능과 확장성을 제공하여 대규모 애플리케이션 개발에 적합합니다. 
+주로 사용되는 분야
+웹 서버 구축 (Express.js, NestJS 등 프레임워크 활용)
+실시간 애플리케이션 (채팅, 게임 서버)
+API 서버 개발
+마이크로 서비스 아키텍처
+프론트엔드 빌드 도구 (Webpack, Vite 등) 
+
+npm?
+node.js를 설치하면 npm도 함께 설치된다. npm은 또 어떤 역할을 하는지 궁금해서 찾아봤다. 
+npm은 라이브러리와 패키지를 관리하는 저장소이다. 
+누군가 npm에 등록한 라이브러리를 설치하면 package.json이라는 파일에 생성된다. 
+참고로 npm은 Node Package Manager의 줄임말이다. 
+
+프론트 엔드 분야에서 자주 쓰이던 프로그래밍 언어 “Java Script”를 아시나요? 
+Java  script는 웹 브라우저와 애플리케이션 개발에 자주 활용되는 언어로 초급자들도 쉽게 학습할 수 있습니다. 
+또한, 언어 점유율이 높아 Python, Java와 함께 3대 프로그래밍 언어로 부르곤 합니다.
+
+과거에 Java Script는 프론트 엔드 분야에서만 실행되는 언어로 취급되었지만 
+Node.js라는 런타임 환경이 등장함에 따라 프론트엔드와 백엔드 모두를 아우르는 언어가 되었는데요. 
+이와 같은 Node.js의 등장은 웹 개발 내에 혁신을 일으켰으며 생산성을 향상시키는 원동력이 되어 주었습니다. 
+        </pre>
+      </div>
+      <div></div>
+    </div>
     <div id="개념_nodev_npmv" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -9106,6 +9149,161 @@ macOS에서 삭제하기 (수동 제거)
         
       </div>
     </div>
+    <div id="연습_nodejs설치및사용법" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+cmd 터미널에서
+C:\Users\COM\Documents\git_project\ycy2000.github.io>where node
+C:\Program Files\nodejs\node.exe
+
+C:\Users\COM\Documents\git_project\ycy2000.github.io>where npm
+C:\Program Files\nodejs\npm
+C:\Program Files\nodejs\npm.cmd
+
+mkdir my-porject 폴더 만들기
+C:\Users\COM\Documents\git_project\ycy2000.github.io>mkdir my-project
+cd my-porject 폴더 들어가기
+C:\Users\COM\Documents\git_project\ycy2000.github.io>cd my-project
+C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project>
+
+npm init
+npm init를 실행하면 현재 폴더에 package.json 파일이 생성됩니다.
+이 파일이 바로 해당 폴더 = 하나의 Node.js 프로젝트라는 기준이 됩니다.
+
+C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project>npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (my-project) '여기서 엔터 계속치면 '
+--- package.json 에 기록될 기본설정값들이 나타난다 ---
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+type: (commonjs)
+About to write to C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project\package.json:
+
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+Is this OK? (yes) '여기서 엔터치면 위 내용을 가진 파일 생성된다'
+
+또는 질문 없이 기본값으로 바로 만들고 싶으면:
+npm init -y
+C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project>npm init -y
+Wrote to C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project\package.json:
+
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": []
+}
+
+C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project></pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+package.json 파일 내용
+
+{
+  "name": "my-project",
+  <span class="blueviolet">프로젝트 이름, npm 패키지 이름 규칙을 따름, 소문자만 가능, 공백 ❌ (- 사용)
+  나중에 npm install 할 때 패키지 이름으로 사용됨
+  </span>
+  "version": "1.0.0",
+  <span class="blueviolet">프로젝트 버전, SemVer(유의적 버전) 규칙 사용, 메이저.마이너.패치, 1.0.0
+  📌 의미: Major: 큰 변경 (호환 안 됨), Minor: 기능 추가, Patch: 버그 수정
+  </span>
+  "description": "",
+  <span class="blueviolet">프로젝트 설명, npm에 배포 시 설명으로 표시됨
+  📌 예: "description": "간단한 할 일 관리 앱"
+  </span>
+  "main": "index.js",
+  <span class="blueviolet">프로젝트의 진입 파일
+  이 패키지를 다른 곳에서 require() 할 때 사용됨
+  📌 예: "main": "app.js"
+  ⚠️ 프론트엔드 프로젝트에서는 거의 안 씀
+  ⚠️ 라이브러리/백엔드에서 중요
+  </span>     vsCode에 파일내용보면 이곳 아래에 '디버그'표시가 있어서 눌러보면
+       다음과 같은 메세지가 있다. 파일이 없는 상태인데 그거때문인지
+       PS C:\Users\COM\Documents\git_project\ycy2000.github.io\my-project> npm run test
+       npm : 이 시스템에서 스크립트를 실행할 수 없으므로 C:\Program Files\nodejs\npm.ps1 파일을 로드할 수 없습니다. 
+       자세한 내용은 about_Execution_Policies(https://go.microsoft.com/fwlink/?LinkID=135170)를 참조하십시오.
+       위치 줄:1 문자:1
+       + npm run test
+       + ~~~
+       + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
+       + FullyQualifiedErrorId : UnauthorizedAccess
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  <span class="blueviolet"></span>
+  "author": "",
+  <span class="blueviolet"></span>
+  "license": "ISC",
+  <span class="blueviolet"></span>
+  "type": "commonjs"
+  <span class="blueviolet"></span>
+}
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"><a href="https://www.hostinger.com/kr/tutorials/what-is-node-js" target="_blank">Node.js란 무엇인가: 작동 원리와 시작 방법</a> </h6>
+        <pre class="fw-bold">
+Node.js로 애플리케이션 빌드 및 실행
+Node.js 애플리케이션을 빌드하는 단계는 다른 웹 개발과 유사합니다. 다음 단계를 수행하세요:
+
+● Node.js, NPM, VSCode 코드 편집기 및 Live Server 확장 프로그램을 설치합니다.
+
+● 프로젝트용 폴더를 생성합니다.  VSCode를 열고 → 파일 → 폴더 열기를 선택하여 새 디렉토리를 엽니다.
+
+● VSCode 터미널로 이동하여 다음 명령어를 실행하여 프로젝트용 구성 파일을 생성합니다:
+
+npm init
+
+● 필요한 정보를 입력합니다. 완료되면 VSCode 탐색 창에  package.json 파일이 표시됩니다. 
+
+● 메인 화면에서 새 파일을 선택하고 새로운 프로젝트 파일을 생성합니다. 예를 들어 app.js로 이름을 지정합니다.
+
+● 응용 프로그램 코드를 작성합니다. 테스트를 위해 간단한 Hello World 프로그램을 만들 수 있습니다. Ctrl + S를 눌러 저장합니다.
+VSCode 터미널에서 node를 실행한 후 JS 파일 이름을 입력하여 애플리케이션을 시작합니다:
+node app.js
+
+모든 작업이 완료되었습니다! 우리 시나리오에서는 웹 브라우저에 지정된 포트 번호와 함께 localhost 주소를 추가하여 애플리케이션에 액세스할 수 있습니다.
+        </pre>
+      </div>
+    </div>
+    
     <div id="파이썬_정보링크" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
