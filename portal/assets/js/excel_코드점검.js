@@ -1,13 +1,52 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='연습_nodejs설치및사용법' //원래는 h6의 title이다.
+  전체변수h6title ='개념_용어' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 연습() {
+  매크로1_JS();
+  return;
   let 배열=[1,2,3,1,1,1].slice(1,4);
   console.log(배열);
 
 }
+async function 매크로1_JS() {
+  const url =
+    "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/" +
+    "retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&mblNo=SGN501734600&blYy=2025";
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) return;
+
+    const xmlText = await response.text();
+
+    // XML 파싱
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+    console.log("xmlDoc.childNodes.length :", xmlDoc.childNodes.length);
+
+    xmlDoc.childNodes.forEach(child => {
+      console.log(
+        `child.nodename : ${child.nodeName}, child.childNodes.length : ${child.childNodes.length}`
+      );
+
+      child.childNodes.forEach(innerChild => {
+        console.log(
+   `내부child.ChildNodes.length : ${innerChild.childNodes.length}, nodename : ${innerChild.nodeName}, type : ${innerChild.nodeType}`
+        );
+        console.log(innerChild.textContent);
+      });
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
+//==== 메세지 ====
+//https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&mblNo=SGN501734600&blYy=2025' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작
   var 아이디=전체변수h6title.trim(); 
