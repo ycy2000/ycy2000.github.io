@@ -8886,7 +8886,43 @@ TypeScript → JavaScript로 변환
 빌드 =
 소스 코드 → 실행 가능한 형태로 만드는 과정
 
+6️⃣ 올바른 역할 분리 (정답 구조)
+구분	역할
+GitHub Pages	화면 제공
+Render	API 서버
+Express	요청 처리
+Node.js	서버 실행
+브라우저	요청 시작
 
+✅ 올바른 설정 (Express 기본)
+
+Build Command:
+
+npm install
+
+
+Start Command:
+
+node index.js
+
+5️⃣ 포트 관련 핵심 규칙 (중요 ⚠️)
+
+Express 코드에서는 반드시:
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
+
+
+📌 Render가 정해준 포트를 써야 함
+📌 하드코딩 ❌
+
+6️⃣ 한 문장으로 끝내기
+
+Build Command는 “설치·준비”,
+Start Command는 “서버 실행”이다.
+
+이걸 정확히 이해하셨다면
+Render 배포 실패의 80%는 이미 피하신 겁니다 👍
         </pre>
 
       </div>
