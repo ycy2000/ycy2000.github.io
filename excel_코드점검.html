@@ -570,19 +570,21 @@
     <div class="개별카테고리" id="통신">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="개념_용어">용어 : 웹, 웹 브라우저, 웹 서버, 웹 클라이언트, 하이퍼텍스트, http, https</h6>
-        <h6 class="fw-bold" title="개념_CORS">CORS(Cross-Origin Resource Sharing), 출처가 다른 리소스 공유</h6>
-        <h6 class="fw-bold" title="개념_render서버에서빌드와배포">render서버에서 빌드(Build)와 배포(Deploy)</h6>
-        <h6 class="fw-bold" title="개념_nodejs_express_render">엑셀 VBA 관세청API활용 구현. Nodejs, express. render 공인 서버</h6>
-
-
-
-      </div>
-      <div>
         <h6 class="fw-bold blueviolet">-------- Node.js 연습해보기 --------</h6>
         <h6 class="fw-bold" title="연습_nodejs설치및사용법">1. Node.js 설치부터</h6>
       </div>
       <div>
+        <h6 class="fw-bold" title="개념_용어">용어 : 웹, 웹 브라우저, 웹 서버, 웹 클라이언트, 하이퍼텍스트, http, https</h6>
+        <h6 class="fw-bold" title="개념_nodejs폴더개수">Node.js 프로젝트 폴더는 (보통) 서버당 하나이다.</h6>
+      </div>
+
+      <div>
+        <h6 class="fw-bold" title="개념_CORS">CORS(Cross-Origin Resource Sharing), 출처가 다른 리소스 공유</h6>
+
+        <br><br><br><br><br>
+        <h6 class="fw-bold" title="개념_CORS">CORS(Cross-Origin Resource Sharing), 출처가 다른 리소스 공유</h6>
+        <h6 class="fw-bold" title="개념_render서버에서빌드와배포">render서버에서 빌드(Build)와 배포(Deploy)</h6>
+        <h6 class="fw-bold" title="개념_nodejs_express_render">엑셀 VBA 관세청API활용 구현. Nodejs, express. render 공인 서버</h6>
         <h6 class="fw-bold"><a href="https://hyojun.tistory.com/entry/Nodejs-Nodejs-express를-사용한-서버-구성-시작하기" target="_blank">Nodejs-Nodejs-express를-사용한-서버-구성-시작하기</a> </h6>
         <h6 class="fw-bold"><a href="https://velog.io/@suzzang2/Render로-Node.js-백엔드-서버-배포하기" target="_blank">Render로 Node.js 백엔드 서버 배포하기 - 벨로그</a> </h6>
         <h6 class="fw-bold" title="연습_express와render서버">node.js express와 render서버 구축 차이</h6>
@@ -593,6 +595,7 @@
         <h6 class="fw-bold" title="개념_웹과브라우저와서버">WEB, 브라우저, 서버</h6>
         <h6 class="fw-bold"><a href="https://ddururiiiiiii.tistory.com/710" target="_blank">[개발일지#014] Render + Docker 배포 하기 (가입부터 배포까지)</a> </h6>
         <h6 class="fw-bold"><a href="https://itconquest.tistory.com/entry/NodeJS-Express-기본-개념-구조-익히기" target="_blank">[NodeJS & Express] 기본 개념, 구조 익히기</a> </h6>
+        <h6 class="fw-bold"><a href="https://velog.io/@sham/Fetch란-무엇인가" target="_blank">Fetch란 무엇인가</a> </h6>
 
       </div>
     </div>
@@ -8658,8 +8661,10 @@ header .menu li:nth-child(2)
 각각이 웹사이트는 여러 개의 웹 페이지(Web Page)로 이루어져 있습니다. 
 웹 페이지는 텍스트, 이미지, 동영상 등 다양한 형태의 정보를 포함하고 있으며, 
 링크를 통해 서로 연결되어 있습니다. 이로 인해 웹은 마치 거미줄과같은 구조를 갖습니다.  </pre>
-        <h6 class="fw-bold">웹 브라우저 </h6>
+        <h6 class="fw-bold">웹 브라우저 <span class="blueviolet">html이 공개됨(보안안됨), api를 통한 통신이 (자체)제한됨</span> </h6>
         <pre class="fw-bold">
+<span class="blueviolet">api를 통한 통신이 아닌 경우(링크를 통한 파일요청)는 제한X.</span>
+<span class="blueviolet">api를 통한 통신의 경우 서버측에서 CORS(출처가 다른 리소스 공유)설정을 하면 제한이 풀리지만..</span>
 사용자가 웹을 이용하기 위해 사용하는 프로그램으로, 웹 클라이언트 역할을 합니다.
 크롬(Chrome), 사파리(Safari), 엣지(Edge) 등이 있으며, 
 서버에 요청을 보내고 받은 데이터를 화면에 표시해 줍니다.   
@@ -8712,6 +8717,7 @@ HTTP는 클라이언트가 서버에 요청(request)을 보내고,
 서버는 해당 요청에 맞는 결과를 사용자에게 응답합니다.</pre>
       </div>
       <div>
+        <h6 class="fw-bold">HTTPS : 보안기능 추가됨</h6>
         <h6 class="fw-bold">라우팅(Routing) </h6>
         <pre class="fw-bold">
 패킷(Packet): 네트워크를 통해 전송되는 데이터의 단위입니다.
@@ -8811,6 +8817,13 @@ FIREWALL
 HTTP Request
 HTTP Response
         </pre>
+      </div>
+    </div>
+    
+    <div id="개념_nodejs폴더개수" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <img src="portal/images/문서연결_샷컷/개념_nodejs폴더트리.png" alt="이미지없음">
       </div>
     </div>
     <div id="개념_CORS" class="대체3줄">
