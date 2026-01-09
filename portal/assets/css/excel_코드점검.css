@@ -34,7 +34,7 @@ code {color:black;display:block;}
 .폼컨트롤이벤트_단독기능노랑_클래스 {color:yellow;}
 .폼컨트롤이벤트_모두포함브라운_클래스 {color:brown;}
 
-.보숨토글버튼 {border:1px solid black;display: inline-block; width:60px;padding:3px 0px;}
+.보숨토글버튼 {border:1px solid black;display: inline-block; width:30px;font-size:13px;text-align: center;}
 .노랑바탕색 {background-color: yellow;} /* 캔버스_개별카테고리_h6의title과id순서 */
 .검색결과바탕색 {background-color:chocolate;}
 .띄움20 {text-indent: 20px;}

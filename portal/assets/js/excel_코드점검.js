@@ -140,7 +140,7 @@ function 선택한캔버스_검색input_change시(e) {
 function 보숨토글(e) {
   let 요소=document.querySelector('#' + e.title);
   요소.classList.toggle('d-none'); // 보기, 숨기기 외 글자이면 건드리지 않는다.
-  if (!['보기','숨기기'].includes(e.innerHTML)) {} else {if (요소.classList.contains('d-none')) {e.innerHTML='보기'} else {e.innerHTML='숨기기'}}
+  if (요소.classList.contains('d-none')) {e.innerHTML='▼'} else {e.innerHTML='▲'}
 }
 function 캔버스_연결버튼_클릭(e) {
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
