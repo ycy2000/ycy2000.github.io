@@ -10019,23 +10019,57 @@ CDN도 결국 HTTP
   2. Node.js설치 자체로는 예를들어 vsCode를 설치한 것처럼 그 기능을 사용할수 있는 상태 
   3. 코드작성 편의를 위해 사용하는 여러 프로그램중 vsCode가 있다 
   4. 서버생성 =  요청처리 프로그램 작성
-  <span class="blueviolet">4. ★ 프로젝트 폴더 ★</span>
+  <span class="blueviolet">5. ★ 프로젝트 폴더 ★</span>
       이곳에 서버기능에 관한 내용들이 모두 담겨있다.
+      ex) 하나의 요청에 대한 응답을 받기까지 여러 단계를 거치는데 모든 단계를 다 담으려면
+      app.get('/api/containers', async (req, res) => {
+        // 인증 // 관세청 API 호출 // DB 저장 // 응답 생성
+      });
+      읽기 어려움, 테스트 불가, 재사용 불가, 기능 추가 시 충돌 👉 규모 커질수록 지옥
 
+      요청
+      ↓
+      Router      ← 길 안내
+      ↓
+      Controller ← 요청/응답
+      ↓
+      Service    ← 비즈니스 로직
+      ↓
+      DB / 외부 API
 
+      Router : URL만 본다, 로직 없음
+      router.get('/containers', controller.getContainers);
 
+      Controller : 요청 파싱, 응답 포맷
+      exports.getContainers = (req, res) => {
+        service.getContainers(req.query.no)
+          .then(data => res.json(data));
+      };
 
+      Service : 핵심 로직, 테스트 용이
+      exports.getContainers = async (no) => {
+        // 관세청 API 호출
+        // DB 저장
+        return result;
+      };
 
+      5️⃣ API와 라우팅을 나누는 진짜 이유 5가지
+      ① 가독성 : 파일 역할이 명확
+      ② 유지보수 : URL 변경 ≠ 로직 변경
+      ③ 테스트 : Service 단독 테스트 가능
+      ④ 재사용 : 다른 API에서도 동일 로직 사용
+      ⑤ 협업 : 사람 간 충돌 최소화
 
+      6️⃣ “작을 땐 굳이 나눠야 하나?”
+      👉 작을 땐 안 나눠도 됩니다
 
+      하지만 ❗
 
+      처음부터 나눠두면 커져도 안 무너진다
 
-      라이브러리 설치 등. (ex:express 등)
-      express는 Node.js에서 서버 구성을 좀 더 쉽게 할 수 있도록 해주는 프레임워크이다.
-  3. express는 npm으로 설치하는 서버구성과 관련된 코드를 쉽게 작성해준다
-      Node.js 자체적인 코드로는 서버구성 코드가 복잡하다.
-        </pre>
-        <pre class="fw-bold"></pre>
+      7️⃣ 한 줄 암기 문장
+      라우팅은 ‘어디로’
+      API 로직은 ‘무엇을’   </pre>
       </div>
     </div>
     
