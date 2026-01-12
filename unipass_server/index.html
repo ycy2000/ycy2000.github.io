@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UNIPASS 화물 진행정보</title>
+<style>
+table {
+ border-collapse: collapse;
+ width: 100%;
+ margin-top:10px;
+}
+th, td {
+ border:1px solid #999;
+ padding:6px;
+ text-align:left;
+}
+th {
+ background:#eee;
+}
+</style>
+</head>
+<body>
+
+<h3>UNIPASS 화물 진행정보 조회</h3>
+
+BL번호:
+<input id="blno" value="SGN501734600">
+년도:
+<input id="year" value="2025">
+
+<button onclick="call()">조회</button>
+
+<div id="basic"></div>
+<div id="detail"></div>
+
+<script>
+async function call() {
+    const blno = document.getElementById("blno").value;
+    const year = document.getElementById("year").value;
+
+    const res = await fetch(`/unipass?blno=${blno}&year=${year}`);
+    const xmlText = await res.text();
+
+    // XML 파싱
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml");
+
+    // 기본정보
+    const basicNode = xml.getElementsByTagName("cargCsclPrgsInfoQryVo")[0];
+    if (!basicNode) {
+        document.getElementById("basic").innerHTML = "조회 결과 없음";
+        return;
+    }
+
+    const fields = ["mblNo","hblNo","prgsStts","shipNm","arvlDt"];
+    let basicHtml = "<h4>기본 정보</h4><table><tr>";
+
+    fields.forEach(f => basicHtml += `<th>${f}</th>`);
+    basicHtml += "</tr><tr>";
+
+    fields.forEach(f => {
+        const v = basicNode.getElementsByTagName(f)[0]?.textContent || "";
+        basicHtml += `<td>${v}</td>`;
+    });
+    basicHtml += "</tr></table>";
+
+    document.getElementById("basic").innerHTML = basicHtml;
+
+    // 진행 이력
+    const detailNodes = xml.getElementsByTagName("cargCsclPrgsInfoDtlQryVo");
+    let detailHtml = "<h4>진행 이력</h4><table><tr><th>처리일시</th><th>상태</th><th>장소</th></tr>";
+
+    for (let i=0; i<detailNodes.length; i++) {
+        const n = detailNodes[i];
+        const dttm = n.getElementsByTagName("prcsDttm")[0]?.textContent || "";
+        const stts = n.getElementsByTagName("prgsStts")[0]?.textContent || "";
+        const place = n.getElementsByTagName("wkngPtNm")[0]?.textContent || "";
+
+        detailHtml += `<tr><td>${dttm}</td><td>${stts}</td><td>${place}</td></tr>`;
+    }
+    detailHtml += "</table>";
+
+    document.getElementById("detail").innerHTML = detailHtml;
+}
+</script>
+
+</body>
+</html>
