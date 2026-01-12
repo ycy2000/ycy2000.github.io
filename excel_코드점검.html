@@ -570,14 +570,15 @@
     <div class="개별카테고리" id="통신_Nodejs">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="개념_nodejs관련">개념 : 브라우저, 서버, 출처, URL, CORS, HTTP, 포트, API, Node.js</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련1">개념정리1</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련2">개념정리2</h6>
 
       </div>
       <div>
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">Fetch API 사용하기</a></h6>
+        <h6 class="fw-bold"><a href="https://velog.io/@eunjin/JavaScript-fetch-함수-쓰는-법-fetch-함수로-HTTP-요청하는-법" target="_blank">[JavaScript] fetch 함수 쓰는 법</a></h6>
         <h6 class="fw-bold blueviolet">-------- Node.js 연습해보기 --------</h6>
         <h6 class="fw-bold" title="연습_nodejs설치및사용법">1. Node.js 설치부터</h6>
-        <h6 class="fw-bold" title="개념_용어">용어 : 웹, 웹 브라우저, 웹 서버, 웹 클라이언트, 하이퍼텍스트, http, https</h6>
         <h6 class="fw-bold" title="개념_nodejs폴더개수">Node.js 프로젝트 폴더는 (보통) 서버당 하나이다.</h6>
       </div>
 
@@ -9416,16 +9417,92 @@ DB 통신: 데이터베이스 서버와 애플리케이션 서버가 JDBC/ODBC �
       </div>
     </div>
     
-    <div id="개념_nodejs관련" class="대체3줄">
+    <div id="개념_nodejs관련1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <h6 class="blueviolet fw-bold">웹 브라우저, CORS(Cross-Origin Resource Sharing)</h6>
         <pre class="fw-bold">
+- 웹페이지(HTML)를 보여주는 프로그램. 크롬, 엣지, 사파리 등
+- 개발자 도구에서 웹페이지, 정보이동(네트워크)등을 볼 수 있다. 
+  노출이 되면 안되는 정보가 올라가지 않도록 주의를 요한다.
+- <span class="blueviolet">브라우저에서 요청하는 정보에 대해서 보안상의 이유로 CORS정책이 있다.</span>
+- 브라우저는 동일출처가 아니면, CORS : 서로다른 출처의 리소스 공유 설정에서 해제설정이 필요</pre>
+        <h6 class="blueviolet fw-bold">URL(Uniform Resource Locator)의 구조 : 정보의 <u>고유한</u> 주소, URI(출처)</h6>
+        <pre class="fw-bold">
+URI(출처) : <span class="blueviolet">[프로토콜]://[호스트]:[포트]</span> 예 : https://api.example.com:443
+프로토콜 :	어떻게 통신할지, https://   호스트 :	누구에게 요청할지, api.example.com
+포트 :	어떤 문으로 들어갈지, :443      URI자체로 URL이 될 수 있다. 
+
+URL : 세부주소까지
+[프로토콜]://[호스트]:[포트]/[경로]?[쿼리]#프래그먼트
+예: https://api.example.com:443/v1/users?id=3#profile
+경로 :	무엇을 요청할지, /v1/Users 
+? : ?이후에 api통신에 필요한 정보
+쿼리 : api처리를 위한 변수값, ?id=3
+#프래그먼트
+
+2️⃣ 가장 기본적인 통신 프로토콜
+🌐 HTTP / HTTPS (웹 & API 통신)
+http://example.com
+https://api.example.com/users
+
+항목	설명
+http	평문 통신
+https	TLS 암호화 통신 (실무 표준)
+사용처	웹 페이지, REST API, CDN, SPA
+
+📌 API 호출 = HTTP 통신</pre>
+        <h6 class="blueviolet fw-bold">★ 서버 ↔ 서버 통신, CORS 개념 자체가 없음</h6>
+        <pre class="fw-bold">
+api통신이 아닌것(ex:링크,https://example.com)은 CORS정책이 없고,
+api통신(요청정보에 대한 로직처리가 있는것)은 브라우저의 요청인 경우에 CORS정책이 적용된다.
+
+<span class="blueviolet">CORS정책 자체가 브라우저에서 API통신을 요청할때 적용되므로,</span>
+브라우저의 통신객체 fetch 실행시 
+출처가 동일출처가 아니면 CORS에 막혀 정보를 얻을수 없는 경우가 대부분이고
+CORS정책으로 허용되는 서버(내 서버 또는 개발시에 내 컴퓨터에 설치하는 
+Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ 서버 통신'이 이루어지게 한다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">fetch('/api/customs') 설명</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">/api/customs 부분은 폴더의 경로가 아니라 "이러한 요청이 왔을때" 라는 의미이다.
+const app = express();
+// API 라우트, /api/customs 라는 요청이 왔을때 실행할 코드.
+app.get("/api/customs", (req, res) => { }</span>
+/api/customs2,3,4 형태로 여러개 설정하게 되겠다.
+
+1. 서버를 설치한 곳이 
+   C:/Users/COM/Documents/git_project/ycy2000.github.io/my-project 폴더라고 할때
+   /api에서 /는 'my-project'폴더를 가리키는 것이고 그곳이 서버이다.
+   'my-project'안에 서버의 동작을 정의해 놓았고 (server.js 파일 등)
+   개발시에 내 컴퓨터에 설치하는 express서버의 URL은 
+   https://localhost:3000(프로토콜,도메인:포트)이다.
+   server.js : 이름은 마음대로지만 여기에 서버시작 및 요청처리 프로그램을 작성하게 된다.
+   터미널에서 해달폴더안에서 node server.js 실행하면 서버가 실행되면서 요청을 처리하게 된다. 
+   이때 터미널을 끄면 서버도 꺼진다. 강제 종료는 ctrl + c 이다.
+
+2. 따라서 fetch('https://localhost:3000')는 해당서버(폴더)에서 
+    실행할 변수(/api/customs)를 표시한 것이고, 
+    최종 요청정보는 https://localhost:3000/api/customs이다. 이대로 써도 된다. 
+    <span class="blueviolet">실행되는 부분 : app.get("/api/customs", (req, res) => { }</span>
+    <span class="blueviolet">API요청이고,</span> ? 는 쿼리스트링 이고, API 요청은 ? 유무와 관계없이 
+    /api/... 같은 URL로 서버에 데이터 요청하면 모두 API 요청입니다.</span>
+
+3. 내컴퓨터의 서버를 이용할때는 나만 되는 것이고 (개발을 위해 임시로 사용하는 것)
+    모두가 사용할 수 있게 배포하려면 '공인서버'를 가지고 있어야한다. 
+    Render에서 무료서버 만들면 도메인(공인서버)을 얻을 수 있다. 
+    <span class="blueviolet">localhost:3000부분을 대체한다. EX : 내서버.onrender.com</span>
+    Render서버에서 나의 브라우저(깃허브 주소) URL을 CORS정책 허용하는 설정을 하게 된다.
+
+<span class="blueviolet">4. 따라서 관세청 API요청은 다음과 같다.</span>
 전체 구조 (로컬 개발용)
 [브라우저 (내 PC)]
-   │ ① fetch('/api/customs')
+   │ ① fetch('/api/customs'), 브라우저에서 (CORS해제해 놓은)내 서버
    ▼
 [Node.js Express 서버 (내 PC : localhost)]
-   │ ② 관세청 API 요청
+   │ ② 서버에서 - 관세청 API 요청
    ▼
 [관세청 Open API 서버]
    │ ③ 응답
@@ -9841,122 +9918,7 @@ URL, HTTP 메서드(GET, POST 등), 요청/응답 형식(JSON) 이 정해져 있
   발전시키기 용이합니다. 
   유연성: 다양한 클라이언트(웹, 모바일)와 서버가 동일한 API를 사용하며, 데이터 형식도 
   유연하게 변경할 수 있습니다. </pre>
-        <h6 class="fw-bold">용어 : 주소의 정체 : URI / URL 구조</h6>
-        <pre class="fw-bold">
-[프로토콜]://[호스트]:[포트]/[경로]?[쿼리]#프래그먼트
-예:
-https://api.example.com:443/v1/users?id=3#profile
-프로토콜 :	어떻게 통신할지
-호스트 :	누구에게 요청할지
-포트 :	어떤 문으로 들어갈지
-경로 :	무엇을 요청할지
-👉 핵심: :// 앞부분이 “통신 방식”을 결정합니다.
 
-2️⃣ 가장 기본적인 통신 프로토콜
-🌐 HTTP / HTTPS (웹 & API 통신)
-http://example.com
-https://api.example.com/users
-
-항목	설명
-http	평문 통신
-https	TLS 암호화 통신 (실무 표준)
-사용처	웹 페이지, REST API, CDN, SPA
-
-📌 API 호출 = HTTP 통신
-
-3️⃣ 로컬 파일 접근 : file://
-file:///C:/Users/me/test.html
-file:///Users/me/test.html (Mac)
-
-특징	설명
-서버 없음	내 컴퓨터 파일 시스템 직접 접근
-보안 제한	JS에서 API 호출 거의 불가
-사용처	로컬 테스트, 단순 파일 열기
-
-📌 브라우저에서 file://은 CORS·보안 제약이 매우 강함
-
-4️⃣ CDN에서 사용하는 주소 방식
-📦 CDN은 결국 HTTP(S)다
-https://cdn.jsdelivr.net/npm/vue@3
-https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
-
-포인트	설명
-별도 프로토콜 ❌	HTTP/HTTPS 그대로 사용
-목적	가까운 서버에서 빠르게 제공
-특징	캐싱 + 글로벌 분산
-
-👉 CDN ≠ 새로운 통신 방식
-👉 HTTP 통신의 최적화 구조
-
-5️⃣ 파일 전송 전용 프로토콜
-📁 FTP / SFTP
-ftp://ftp.example.com/file.txt
-sftp://user@server.com/path
-
-프로토콜	특징
-FTP	암호화 ❌
-SFTP	SSH 기반 암호화
-용도	서버 파일 업로드/다운로드
-
-📌 웹 API용은 아님
-
-6️⃣ 실시간 통신 (채팅, 알림 등)
-🔄 WebSocket
-ws://example.com/socket
-wss://example.com/socket
-
-항목	설명
-ws	비암호화
-wss	TLS 암호화
-특징	지속 연결 (양방향)
-사용처	채팅, 실시간 알림
-
-📌 HTTP로 연결 → WebSocket으로 업그레이드
-
-7️⃣ 데이터 전송 전용 주소 스킴
-📄 data:// (짧은 데이터 직접 포함)
-data:text/plain;base64,SGVsbG8=
-
-특징	설명
-서버 ❌	주소 자체가 데이터
-용도	이미지 인라인, 테스트
-8️⃣ 이메일 / 전화 / 앱 실행
-스킴	예시	의미
-mailto	mailto:test@test.com	이메일
-tel	tel:01012345678	전화
-sms	sms:01012345678	문자
-intent	intent://	모바일 앱 실행
-9️⃣ DB / 메시지 시스템 주소
-프로토콜	예시
-mongodb	mongodb://localhost:27017
-redis	redis://localhost:6379
-amqp	amqp://rabbitmq
-kafka	kafka://broker
-
-📌 브라우저용 아님
-📌 서버 ↔ 서버 통신
-
-🔟 주소 스킴 한눈에 정리
-목적	스킴
-웹/API	http://, https://
-로컬 파일	file://
-CDN	https://
-실시간	ws://, wss://
-파일 전송	ftp://, sftp://
-인라인 데이터	data:
-이메일/전화	mailto:, tel:
-DB/메시지	mongodb://, redis://
-🔑 핵심 개념 요약
-
-✅ 주소 = 통신 계약
-
-http → 서버에게 요청
-
-file → 로컬 파일 시스템
-
-ws → 실시간 통신
-
-CDN도 결국 HTTP
 </pre>
       </div>
       <div>
@@ -10072,19 +10034,16 @@ CDN도 결국 HTTP
       API 로직은 ‘무엇을’   </pre>
       </div>
     </div>
-    
-    <div id="개념_용어" class="대체3줄">
+    <div id="개념_nodejs관련2" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-
-
+ㅇㅇ
       </div>
       <div>
-        <pre class="fw-bold">
-FIREWALL
-HTTP Request
-HTTP Response
-        </pre>
+        
+      </div>
+      <div>
+        
       </div>
     </div>
     <div id="연습_nodejs설치및사용법" class="대체3줄">
