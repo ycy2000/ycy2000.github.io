@@ -37,8 +37,8 @@ BL번호:
 async function call() {
     const blno = document.getElementById("blno").value;
     const year = document.getElementById("year").value;
-
-    const res = await fetch(`/unipass?blno=${blno}&year=${year}`);
+    //const res = await fetch(`/unipass?blno=${blno}&year=${year}`);
+    const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
     const xmlText = await res.text();
 
     // XML 파싱

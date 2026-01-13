@@ -3,16 +3,16 @@ const path = require('path');
 
 const app = express();
 
-// index.html 제공
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// 출처제한 해제
-//app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   next();
+// index.html 제공, http://localhost:3000 주소창으로 접근시 node_custom.html 켜짐
+//app.get('/', (req, res) => { 
+//    res.sendFile(path.join(__dirname, 'node_custom.html'));
 //});
+
+// 출처제한 해제, 다른폴더에서 브라우저 파일 제공시 다른출처이다
+app.use((req, res, next) => {
+   res.setHeader("Access-Control-Allow-Origin", "*");
+   next();
+});
 
 // UNIPASS 중계
 app.get('/unipass', async (req, res) => {
