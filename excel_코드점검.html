@@ -571,12 +571,13 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install express, package.json</h6>
         <br><br><br><br><br><br><br><br>
         <h6 class="fw-bold" title="개념_nodejs정리안된거">개념_nodejs정리안된거</h6>
 
       </div>
       <div>
-        <h6 class="fw-bold">다음 단계(배포, GitHub Pages + 서버 분리)로 넘어가도 됩니다</h6>
+        <h6 class="fw-bold" title="연습_gpt물어보지않은것">연습_gpt물어보지않은것</h6>
         <h6 class="fw-bold"><a href="https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">Fetch API 사용하기</a></h6>
         <h6 class="fw-bold"><a href="https://velog.io/@eunjin/JavaScript-fetch-함수-쓰는-법-fetch-함수로-HTTP-요청하는-법" target="_blank">[JavaScript] fetch 함수 쓰는 법</a></h6>
         <h6 class="fw-bold blueviolet">-------- Node.js 연습해보기 --------</h6>
@@ -9468,20 +9469,6 @@ Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ �
         </pre>
       </div>
       <div>
-        <h6 class="blueviolet fw-bold">브라우저에서 서버로 통신이 이루어질때 CORS 해결이 필요하다. </h6>
-        <pre class="fw-bold">
-==== 브라우저가 서버에서 제공(http://로 시작)되고 있다는 전제 ====
-1. 동일출처(URI)가 아닐때 : [프로토콜]://[호스트]:[포트], [프로토콜]://[도메인]
-2. 브라우저가 출처가 서버포트와 다를때 (프로젝트 폴더 밖의 파일)</pre>
-        <h6 class="blueviolet fw-bold">★서버와의 통신이 가능한★  </h6>
-        <h6 class="fw-bold">“현재 실행 중인 웹페이지는 <span class="blueviolet">file:// 로 로컬 파일을 연 것이 아니라,</span> </h6>
-        <h6 class="fw-bold">http:// 프로토콜을 통해 <span class="blueviolet">서버에서 제공되는 페이지이다.</span>”</h6>
-        <pre class="fw-bold">
-구분	                 file:// 로 연 경우	                http:// 로 연 경우
-실행 위치	          로컬 파일 직접 실행	               웹 서버를 통해 실행
-CORS 제약	          매우 엄격하거나 fetch 제한	  정상적인 API 요청 가능
-Node.js 서버 연동    불가능 또는 제한      	        정상 동작
-관세청 API 호출	    브라우저에서 차단 가능성 큼	  서버 통해 정상 가능</pre>
         <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
         <pre class="fw-bold">
 1. 웹상에 API통신을 할 수 있는 서버를 모두 볼수 있게 배포하려면 도메인이 있어야 한다.
@@ -9498,6 +9485,7 @@ Node.js 서버 연동    불가능 또는 제한      	        정상 동작
 7. Node.js는 터미널(cmd등)에서 실행한다. 브라우저에서 실행하는게 아니라는 것. 
    서버구성이 완료되었다면 <span class="blueviolet">서버에서 실행한다</span>라고 이해한다.
 8. 따라서 Node.js 서버와 서버간의 통신이 이루어지게 된다.</pre>
+        <img src="portal/images/문서연결_샷컷/개념_nodejs관련1_이미지1.png" alt="이미지없음">
       </div>
       <div>
         <h6 class="blueviolet fw-bold">프로젝트 폴더</h6>
@@ -9505,20 +9493,131 @@ Node.js 서버 연동    불가능 또는 제한      	        정상 동작
 1. 임의의 위치에 서버구성을 위해 만든 폴더
 2. 폴더 자체가 서버라고 일단 이해한다. 내부에 모든 로직이 정의되어 있다.
    a) 서버를 켜고 켜진 상태로 유지, b) 요청이 들어오면 로직대로 실행한다. 
-<span class="blueviolet">3. 로직 예 : 요청 받기 - 요청을 로직대로 가공 - 목적지 서버에 요청 - 응답 받기 - 응답 처리</span>
+<span class="blueviolet">3. 브라우저의 요청 받기 - 요청을 로직대로 가공 - 목적지 서버에 요청 - 응답 받기 - 응답 처리</span>
 ==== 서버 만들기, <span class="blueviolet">프로젝트 폴더 안에서 터미널에서 하는 것</span> ====
 1. Node.js설치 : 환경이 만들어짐. 버전확인(어디서나) node -v
 2. npm init : 아무것도 없을때 한번만, package.json 파일이 생긴다.(npm 설치목록 및 기본정보)
 3. Node.js설치와 함께 설치된 npm 으로 필요한 패키지 설치
    a) (가장 먼저) npm install express : package.json
-       다음 함수 사용 가능해짐 (대표적인 것)
-        </pre>
-        <h6 class="blueviolet fw-bold">package.json파일 및 내부 내용 몇가지</h6>
+       다음 함수 사용 가능해짐 (대표적인 것)</pre>
+        <h6 class="blueviolet fw-bold">브라우저에서 서버로 통신이 이루어질때 CORS 해결이 필요하다. </h6>
         <pre class="fw-bold">
-          
+==== 브라우저가 서버에서 제공(http://로 시작)되고 있다는 전제 ====
+1. 동일출처(URI)가 아닐때 : [프로토콜]://[호스트]:[포트], [프로토콜]://[도메인]
+2. 브라우저가 출처가 서버포트와 다를때 (프로젝트 폴더 밖의 파일)</pre>
+        <h6 class="blueviolet fw-bold">★서버와의 통신이 가능한★  </h6>
+        <h6 class="fw-bold">“현재 실행 중인 웹페이지는 <span class="blueviolet">file:// 로 로컬 파일을 연 것이 아니라,</span> </h6>
+        <h6 class="fw-bold">http:// 프로토콜을 통해 <span class="blueviolet">서버에서 제공되는 페이지이다.</span>”</h6>
+        <pre class="fw-bold">
+✅ 왜 이 구분이 중요했는가
+구분	                  file:// 로 연 경우	                http:// 로 연 경우
+실행 위치	           로컬 파일 직접 실행	                웹 서버를 통해 실행
+CORS 제약	           매우 엄격하거나 fetch 제한	   정상적인 API 요청 가능
+Node.js 서버 연동     불가능 또는 제한	                정상 동작
+관세청 API 호출	     브라우저에서 차단 가능성 큼	   서버 통해 정상 가능
+✅ 결론
+지금 사용 중인 브라우저 페이지가 http:// 로 열려 있다면,
+file:// 문제와 CORS 문제의 대부분은 이미 해결된 상태입니다.
+따라서
+👉 “file://로 열어서 안 되는 상황은 아니다”
+라고 이해하시면 정확합니다.</pre>
       </div>
-
     </div>
+    <div id="개념_nodejs관련2" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">npm init -y</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">터미널에서 프로젝트 폴더에서 : npm init -y 실행하면</span>
+npm init 실행할땐 하나하나 엔터 쳐야되는데 -y하면 
+물어보지 않고 기본값으로 package.json 파일을 생성해준다.
+<span class="blueviolet">기존 값이 있다면 없는 값의 기본값만 적용시키는 듯 하다.</span>
+<span class="blueviolet">=== package.json 내부 코드 예시, dependencies는 패키지 설치 내역 ===</span>
+{
+  "name": "unipass_server",
+  "version": "1.0.0",
+  <span class="blueviolet">"private": true,</span>
+  "description": "",
+  <span class="blueviolet">"main": "server.js",</span>
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  <span class="blueviolet">"type": "commonjs",</span>
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}    </pre>
+        <h6 class="blueviolet fw-bold">npm install</h6>
+        <pre class="fw-bold">
+1. 터미널에서 npm install express 처럼 설치하지 않고, package.json파일 안에
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+  이렇게 북붙 하였다면, 설치한 것이 아닌 상태인데
+  <span class="blueviolet">npm install 은 dependencies 안에 항목들을 모두 설치해준다.</span></pre>
+        <h6 class="blueviolet fw-bold">node_modules 폴더</h6>
+        <pre class="fw-bold">
+dependencies 를 처음 설치하면 생긴다.
+dependencies 를 추가 설치할때마다 해당 패키지 사용시 필요한 파일들이 누적된다. 
+npm install 하면 최신항목으로 대체된다?
+ex) npm install express, npm install dotenv 등 </pre>
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">node_modules 폴더가 생기는 이유</h6>
+        <pre class="fw-bold">
+프로젝트에서 사용하는 외부 라이브러리(패키지)의 실제 코드가 저장되는 폴더이기 때문입니다.
+📌 조금 더 풀어서, Node.js 자체에는
+웹서버(express), HTTP요청(node-fetch), XML처리 등
+많은 기능이 기본으로 포함되어 있지 않습니다.
+그래서 필요한 기능을 npm으로 설치합니다.
+npm install express
+그러면 npm이 express 패키지 다운로드
+express가 필요로 하는 다른 패키지들도 함께 다운로드
+모두 node_modules 폴더에 저장</pre>
+        <h6 class="blueviolet fw-bold">package.json파일 및 내부 내용 몇가지 (내부에 주석 안됨)</h6>
+        <pre class="fw-bold">
+1. "private": true,
+2. "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
+  "scripts"는 npm 명령어 단축키 설정
+  <span class="blueviolet">node server.js = node start이다. 편리를 위한 나의 명령어?</span>
+  a) 두가지 동작을 담을 수도 있다.
+      "start": "cross-env PORT=3000 node server.js"
+      전역객체 prpcess의 속성 env의 속성으로 PORT를 생성하여 
+      3000 값을 대입시키고 node server.js를 실행시킨다.
+  b) corss-env PORT=3000 사용하기 위해, <span class="blueviolet">npm install cross-env --save-dev</span> 설치
+  c) server.js 코드로, const PORT = process.env.PORT || 3000;
+      process.env.PORT 가 설정되어 있으면 쓰고 없으면 || 3000 을 써라.
+      app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+      });
+  d) 왜 cross-env를 쓰는가? Mac/Linux/Windows등의 문법이 다른데 환경에 따라 보정해줌
+3. "main": "server.js", → 서버켜고 요청처리하는 코드가 있는 파일이름
+4. "type": "commonjs", → server.js 코드 작성 규칙, type없을때 기본값도 commonjs
+    또는 module <span class="blueviolet">어떤 문법을 사용할지 설정하는 것이다.</span>
+  a) commonjs 문법 : .js 파일을 require() 방식으로 해석하라는 뜻
+      const express = require("express");  // CommonJS 문법
+  b) (module) ES Module 최신방식 : .js 파일을 import 문법으로 해석
+      import express from "express";   // ES Module 문법
+  e) 최근 Node v20+ 환경에서 node-fetch 최신 버전은 ES Module 전용입니다.
+    commonjs문법을 사용하려면 <span class="blueviolet">npm install node-fetch@2</span> 설치</pre>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+
    
     <div id="개념_nodejs정리안된거" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
@@ -10090,6 +10189,16 @@ URL, HTTP 메서드(GET, POST 등), 요청/응답 형식(JSON) 이 정해져 있
       7️⃣ 한 줄 암기 문장
       라우팅은 ‘어디로’
       API 로직은 ‘무엇을’   </pre>
+      </div>
+    </div>
+    
+    <div id="연습_gpt물어보지않은것" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+다음 단계(배포, GitHub Pages + 서버 분리)로 넘어가도 됩니다
+개발용 / 배포용 포트를 따로 두는 방법 (.env 파일 방식)
+        </pre>
       </div>
     </div>
     <div id="연습_nodejs팁" class="대체3줄">
