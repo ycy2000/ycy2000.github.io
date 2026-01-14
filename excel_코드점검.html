@@ -571,9 +571,13 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1</h6>
-        <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install express, package.json</h6>
-        <h6 class="fw-bold" title="개념_nodejs관련3">개념정리 3, 프로젝트 폴더 구조, 엔트리포인트, 설치해야할 npm 패키지</h6>
-        <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 후 사용하는 주요 문법 1</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install, package.json</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련3">개념정리 3, 프로젝트 폴더 구조, npm 설치필요한것과 필요없는것</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 설치후 관련된 server.js 코드 익숙해지기</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련5">개념정리 5, api서버(프로젝트 폴더) 내부에 있는 html 페이지 제공</h6>
+
+
+        <h6 class="blueviolet fw-bold" title="개념_nodejs관련6">개념정리 5, npm install express 후 사용하는 주요 문법 1</h6>
 
         <br><br><br>
         <h6 class="fw-bold" title="연습_nodejs설치및사용법">1. Node.js 설치부터</h6>
@@ -9665,6 +9669,175 @@ express가 필요로 하는 다른 패키지들도 함께 다운로드
         <pre class="fw-bold"></pre>
       </div>
       <div>
+        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지2.png" alt="이미지없음"><br><br>
+        <h6 class="blueviolet fw-bold">● npm 설치는 server.js 내부에서 가져올수 있는 상태이다.</h6>
+        <pre class="fw-bold">
+     <span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서 사용하려면</span>
+     const express = require('express');   1)객체가져오기
+     const app = express();<span style="margin-left:95px;"></span>2)객체의 인스턴스 만들기 (prototype속성사용가능)
+        함수가 실행되면 속성들이 부여되어 속성을 쓸수 있게 되는 상태가 된다.
+        app.use()
+        app.get()
+        app.post()
+        app.listen()
+        app.set()
+        ..... </pre>
+        <h6 class="blueviolet fw-bold">● npm 설치없이</h6>
+        <pre class="fw-bold">
+     const path = require('path'); 는 npm으로 설치할 필요가 전혀 없습니다.
+
+     이유
+
+     path 는 Node.js에 기본으로 내장된 코어 모듈(Core Module) 입니다.
+     Node.js만 설치되어 있으면 바로 사용 가능합니다.
+
+     같은 내장 모듈 예시
+     require('fs');      // 파일 시스템
+     require('http');    // HTTP 서버
+     require('url');     // URL 처리
+     require('crypto');  // 암호화
+     require('os');      // 운영체제 정보  </pre>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div id="개념_nodejs관련4" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서</span>
+1. const express = require('express'); // npm에 등록된 패키지 이름, express를 가져옴
+2. const app = express();              // express 패키지가 제공하는 함수 실행
+    함수가 실행되면 속성들이 부여되어 속성을 쓸수 있게 되는 상태가 된다.
+    app.use(), app.get(), app.post(), app.listen(), app.set(), .....
+<span class="blueviolet">3. 1.객체생성, 2.객체의 메서드 생성</span>
+
+실무에서 진짜 매일 쓰는 건
+use / get / post / listen / set / static / json / urlencoded
+이 정도만 익숙해지면 충분합니다.</pre>
+<pre class="fw-bold" style="position: relative;">
+  <div style="position: absolute;left:280px;top:42px;">
+🟠 2군 (자주 등장)
+
+app.set(key, value)
+앱 설정값 저장 (예: view engine)
+
+app.get(key)
+설정값 조회
+
+app.engine()
+템플릿 엔진 등록
+
+app.use(express.static())
+정적 파일 서비스
+
+app.all(path, handler)
+모든 HTTP 메서드 처리
+
+app.route(path)
+체인형 라우팅</div>
+⭐ Express app 주요 메서드 Top 20
+
+🔴 1군 (거의 모든 프로젝트에서 사용)
+
+app.use()
+미들웨어 등록
+
+app.get(path, handler)
+GET 요청 라우팅
+
+app.post(path, handler)
+POST 요청 라우팅
+
+app.put(path, handler)
+PUT 요청 라우팅
+
+app.delete(path, handler)
+DELETE 요청 라우팅
+
+app.listen(port, callback)
+서버 실행
+
+app.use(express.json())
+JSON body 파싱 미들웨어
+
+app.use(express.urlencoded())
+form 데이터 파싱</pre>
+
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">● app.use(express.json()) 에서, use 와 static</h6>
+        <pre class="fw-bold">
+     express.static()   ← 패키지 레벨 유틸리티
+     app.use()          ← 앱 인스턴스 메서드
+     <span class="blueviolet">js에비유) static 는 express 객체의 속성. </span>
+     <span class="blueviolet">js에비유) use 는 app(express 객체의 인스턴스)가 상속받은 express 의 프로토타입 내부 속성</span> </pre>
+        <h6 class="blueviolet fw-bold">● server.js 코드, 기능사용 준비과정</h6>
+        <pre class="fw-bold">
+     const express = require('express');   1)객체가져오기
+     const app = express();<span style="margin-left:95px;"></span>2)객체의 인스턴스 만들기 (prototype속성사용가능)
+     <span class="blueviolet">★★ 예제코드에서 1), 2)는 있다는 가정하고 보자. ★★</span>
+     app.use(express.static('public'));<span style="margin-left:23px;"></span>3)인스턴스.속성 으로 사용</pre>
+        <h6 class="blueviolet fw-bold">● app.listen 은 한번만 실행, 서버 켜진 상태에서 변수가 메모리에 저장되어 있음</h6>
+        <pre class="fw-bold">
+      <span class="blueviolet">node server.js 실행시 console 1번만 실행됨</span>
+      node server.js 실행 시 터미널 출력
+      1. 시작
+      2. Express 로드 완료
+      3. 서버 실행중
+      4. 파일 끝
+
+      server.js 예시:
+
+      console.log("1. 시작");
+
+      const express = require("express");
+      const app = express();
+
+      console.log("2. Express 로드 완료");
+
+      app.get("/test", (req,res)=>{
+        console.log("요청 들어옴");
+        res.send("OK");
+      });
+
+      app.listen(3000, ()=>{
+        console.log("3. 서버 실행중");
+      });
+
+      console.log("4. 파일 끝");</pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">서버 켜진상태에서 요청들어오면</span>
+1. const express = require("express");
+    const app = express();
+    위 변수와 기타 다른 변수들은 node server.js 실행시 변수로 메모리에 상주한다.
+    변수는 서버가 종료되면 메모리에서 사라진다.
+2. 요청이 들어오면 다음구문만 실행하게 된다.
+    app.get("/test", (req,res)=>{
+      console.log("요청 들어옴");
+      res.send("OK");
+    });</pre>
+        <h6 class="blueviolet fw-bold">● app.post() → 라우팅, app.use() → 미들웨어(너무 다양하다)</h6>
+        <pre class="fw-bold">
+1. 이런 코드는 요청과 관련없이 실행되거나, 특정 요청일때 실행되거나
+2. 요청의 전처리 과정일수도 있고, 후처리 과정일수도 있다.
+    </pre>
+      </div>
+    </div>
+    <div id="개념_nodejs정리안된거" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+
+
+        <h6 class="blueviolet fw-bold">● server.js 내부 코드 중</h6>
+        
+        <pre class="fw-bold">
+const express = require('express'); // npm에 등록된 패키지 이름
+const app = express();              // express 패키지가 제공하는 함수 실행
+        </pre>
+
         <h6 class="fw-bold">server.js ← Node.js 서버 시작 파일 (엔트리 포인트), 로직 정의</h6>
         <h6 class="fw-bold">코드는 server.js 안에서 작성되는 코드라고 이해하면서 보면 된다.</h6>
         <h6 class="blueviolet fw-bold">==== 패키지별 사용가능 객체 및 사용법(포괄적 개념만) ====</h6>
@@ -9704,11 +9877,25 @@ app.post('/api/user', (req,res)=>{
     app.listen()	서버 실행
         </pre>
         <h6 class="fw-bold"></h6>
-      </div>
-    </div>
-    <div id="개념_nodejs정리안된거" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
+        <pre class="fw-bold">
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+app.get('/api/customs', (req, res) => {
+  res.json({ message: "관세청 API 호출 자리" });
+});
+
+app.listen(3000, () => {
+  console.log("서버 실행중 : http://localhost:3000");
+});
+npm install → node_modules 자동 생성
+
+npm publish → 이 폴더 전체가 패키지 단위
+
+app.use('/api/...') → routes 폴더로 연결
+        </pre>
         <h6 class="fw-bold">fetch('/api/customs') 설명</h6>
         <pre class="fw-bold">
 <span class="blueviolet">/api/customs 부분은 폴더의 경로가 아니라 "이러한 요청이 왔을때" 라는 의미이다.
@@ -10285,6 +10472,27 @@ URL, HTTP 메서드(GET, POST 등), 요청/응답 형식(JSON) 이 정해져 있
         <pre class="fw-bold">
 다음 단계(배포, GitHub Pages + 서버 분리)로 넘어가도 됩니다
 개발용 / 배포용 포트를 따로 두는 방법 (.env 파일 방식)
+
+필요할 때
+"이런 기능을 추가하고 싶은데 어떤 미들웨어를 쓰면 되나요?"
+라고 물어보시면
+최소 설명 + 정확한 코드로 바로 연결해 드릴게요.
+
+Express에서 미들웨어는 범위가 정말 넓고 종류도 많습니다.
+처음부터 전부 파고들면 오히려 흐름이 흐려집니다.
+
+지금까지 하신 질문들을 보면
+이미 핵심 구조( require → express() → app → use/get → next 흐름 )
+이 큰 뼈대는 완전히 잡히셨습니다.
+
+3) 미들웨어 기능 연결
+app.use(express.json());
+
+
+의미
+
+요청 Body에 JSON이 있으면
+req.body 로 변환해서 다음 핸들러에 전달
         </pre>
       </div>
     </div>
