@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='개념_nodejs관련2' //원래는 h6의 title이다.
+  전체변수h6title ='개념_nodejs관련3' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 연습() {
