@@ -570,21 +570,23 @@
     <div class="개별카테고리" id="통신_Nodejs">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1, 서버, 웹브라우저, URL, 프로젝트 폴더, CORS</h6>
         <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install, package.json</h6>
         <h6 class="fw-bold" title="개념_nodejs관련3">개념정리 3, 프로젝트 폴더 구조, npm 설치필요한것과 필요없는것</h6>
         <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 설치후 관련된 server.js 코드 익숙해지기</h6>
         <h6 class="fw-bold" title="개념_nodejs관련5">개념정리 메모, 나머지는 실제코드 중심</h6>
-        <h6 class="fw-bold" title="실습_nodejs관련01">01. 웹페이지 제공, 프로젝트 폴더내, 프로젝트 폴더 외부</h6>
-        <h6 class="fw-bold" title="실습_nodejs관련02">02. 한몸처럼 다루지만 정적서버와 api서버는 별개다. 지구 반대편에 있을수도 있다.</h6>
+        <h6 class="blueviolet fw-bold">--------------------------------------------------------------------</h6>
+        <h6 class="blueviolet fw-bold" title="개념_nodejs관련6">01. 한몸처럼 다루지만 정적서버와 api서버는 별개다. 브라우저 통신 개념 정리</h6>
+        <h6 class="fw-bold" title="실습_nodejs관련01">02. 웹페이지 제공, 프로젝트 폴더내, 프로젝트 폴더 외부, 깃허브 페이지</h6>
+        <h6 class="blueviolet fw-bold" title="실습_nodejs관련02">03. <u>★파라미터 약속★,</u> 미들웨어 next(); 구문없으면 경우에 따라 먹통이 된다.</h6>
 
 
 
                 <br><br><br>
-        <h6 class="fw-bold" title="개념_nodejs관련6">개념정리 5, api서버(프로젝트 폴더) 내부에 있는 html 페이지 제공</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련7">개념정리 5, api서버(프로젝트 폴더) 내부에 있는 html 페이지 제공</h6>
 
 
-        <h6 class="blueviolet fw-bold" title="개념_nodejs관련6">개념정리 5, npm install express 후 사용하는 주요 문법 1</h6>
+        <h6 class="blueviolet fw-bold" title="개념_nodejs관련8">개념정리 5, npm install express 후 사용하는 주요 문법 1</h6>
 
 
         <h6 class="fw-bold" title="연습_nodejs설치및사용법">1. Node.js 설치부터</h6>
@@ -9439,7 +9441,13 @@ DB 통신: 데이터베이스 서버와 애플리케이션 서버가 JDBC/ODBC �
     <div id="개념_nodejs관련1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="blueviolet fw-bold">웹 브라우저, CORS(Cross-Origin Resource Sharing)</h6>
+        <h6 class="blueviolet fw-bold">서버</h6>
+        <pre class="fw-bold">
+서버(server)는 클라이언트를 거쳐 네트워크를 통해 서비스하는 컴퓨터를 의미한다. 
+<span class="blueviolet">이름 그대로 번역해서 '제공자'라고 하면 와닿을 것이다</span>
+1. 정적서버 : 파일요청이 들어오면 파일을 그대로 보내줌 
+2. api서버 : 요청이 들어오면 요청에 따라 정해진 로직을 실행하여 결과를 반환. </pre>
+        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
         <pre class="fw-bold">
 - 웹페이지(HTML)를 보여주는 프로그램. 크롬, 엣지, 사파리 등
 - 개발자 도구에서 웹페이지, 정보이동(네트워크)등을 볼 수 있다. 
@@ -9475,15 +9483,15 @@ https	TLS 암호화 통신 (실무 표준)
         <pre class="fw-bold">
 api통신이 아닌것(ex:링크,https://example.com)은 CORS정책이 없고,
 api통신(요청정보에 대한 로직처리가 있는것)은 브라우저의 요청인 경우에 CORS정책이 적용된다.
-
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
 <span class="blueviolet">CORS정책 자체가 브라우저에서 API통신을 요청할때 적용되므로,</span>
 브라우저의 통신객체 fetch 실행시 
 출처가 동일출처가 아니면 CORS에 막혀 정보를 얻을수 없는 경우가 대부분이고
 CORS정책으로 허용되는 서버(내 서버 또는 개발시에 내 컴퓨터에 설치하는 
-Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ 서버 통신'이 이루어지게 한다.
-        </pre>
-      </div>
-      <div>
+Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ 서버 통신'이 이루어지게 한다. </pre>
         <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
         <pre class="fw-bold">
 1. 웹상에 API통신을 할 수 있는 서버를 모두 볼수 있게 배포하려면 도메인이 있어야 한다.
@@ -9843,6 +9851,80 @@ form 데이터 파싱</pre>
       </div>
 
     </div>
+    <div id="개념_nodejs관련6">
+      <div class="대체3줄">
+        <div>
+          <img src="portal/images/문서연결_샷컷/개념_nodejs관련6_이미지1.png" alt="이미지없음" style="position: absolute;top:280px;">
+          <h6 class="blueviolet fw-bold">● 정적서버와 api서버를 한몸처럼 다루어야하지만 둘은 결국 별개이다</h6>
+          <pre class="fw-bold">
+<span class="blueviolet">1. 서버(server)는 네트워크를 통해 서비스하는 컴퓨터, 주소예시 : http나 https로 시작</span> 
+2. 정적서버는 파일스스템의 경로와 유사한 url요청을 받으면 경로에 있는 파일을 그대로 제공한다.
+    내 컴퓨터의 폴더(C:\Users\COM\Documents\git_project\깃허브에올려놓은폴더)가 
+    깃허브 페이지에 올려져 있다면 
+    정적서버의 주소(URI)는 : https://ycy2000.github.io, [프로토콜]://도메인이름
+    출처(URI) : [프로토콜]://[호스트]:[포트], 
+    [호스트]:[포트]=도메인이름, ycy2000.github.io=도메인이름
+3. api서버에서 폴더를 지정하여 정적서버 기능을 하도록 하는 명령이 있다. 
+    app.use(express.static("public"));
+      </pre>
+        </div>
+        <div>
+          <h6 class="blueviolet fw-bold">● URI는 출처, URI 자체로 URL, URL 은 자료표현 문자열</h6>
+          <h6 class="blueviolet fw-bold">● URL 은 자료표현 문자열, 경로표현이 아닐수도있다.(AIP통신)</h6>
+          <pre class="fw-bold">
+     URL : [프로토콜]://[호스트]:[포트]/[경로]?[쿼리]#프래그먼트
+     URL : URI/[경로], 경로 라고 썻지만 API에서는 요청
+       정적서버에서는 [경로] 부분이 경로이다. 
+       API서버에서는 [경로] 부분은 변수이다. 
+       요청문자열이 [경로]문자열일때 어떻게 처리한다는 로직대로 처리한다. 
+       ?[쿼리] : AIP통신에서 인증키나 필요한 변수(퀘리스트링) 문자열
+       <span class="blueviolet">[경로]부분은 정적서버인지 API서버인지에 따라 완전 다르게 인식해야 한다.</span></pre>
+        </div>
+        <div>
+          <h6 class="blueviolet fw-bold">● 브라우저에서 웹페이지를 보고 있다는 것은 (주소가 http://로 시작)</h6>
+          <pre class="fw-bold">
+1. a) 주소창에 URL을 입력해 요청하였는데 요청받는 곳이 정적서버여서 요청받은 파일을 받았거나,
+    b) 링크를 클릭해서 URL을 요청하여 켜진 페이지거나 
+    c) 또는 API서버에 요청하여 정적서버를 제공하는 로직을 통해 열렸거나 
+        서버(프로젝트 폴더)내부에 존재하는 폴더를 정적서버처럼 사용할수 있게 함.
+        <span class="blueviolet">app.use(express.static("정적서버로제공할폴더이름"));</span>
+        <span class="blueviolet">이때는 API서버와 브라우저의 출처가 같다. CORS 검사 안함</span>
+        폴더는 어디에 있더라도 <span class="blueviolet">접근은, 출처/정적서버로제공할폴더이름/... 경로</span>
+2. 브라우저는 보안이 취약하다. 열린 페이지와 관련된 정적서버의 모든 내용이 공개된다. 
+3. CORS(다른출처의 자료허용) 정책은 브라우저를 통한 요청에 한해서 
+    <span class="blueviolet">서버와 브라우저의 출처가 다를때에 한해서, 서버에서 자료를 브라우저로 보낼때,</span> 
+    (보내는 서버에서)허용된 자료만 브라우저로 전송한다는 정책이다. 
+    브라우저가 서버에서 자료를 받을때 헤더를 먼저 읽는데, 
+    <span class="blueviolet">서버에서 허용하는 헤더를 포함시켰으면</span> 받고, 아니면 안받는다.</pre>
+          <h6 class="blueviolet fw-bold">● 브라우저는 URL만 보냄</h6>
+          <pre class="fw-bold">
+1. 브라우저가 express api 서버에 url 보냄
+2. express api 서버는 url을 가공하여 관세청 api서버와 통신 및 
+    결과를 express서버에서 받는다. 
+3. express서버는 관세청api서버에서 받은 응답을 브라우저에 전송하는데 
+   express서버에 CORS(다른 출처라도 보내주라) 고 설정하였다면 그 내용을 헤더에 포함하여 전송 
+4. 브라우저는 헤더를 확인하여 허용했다는 것이 확인되면 브라우저에서 응답을 받아 사용함</pre>
+          <h6 class="blueviolet fw-bold">★ 웹 페이지(정적 서버) 관련 추가, server.js 내 코드 등</h6>
+          <pre class="fw-bold">
+웹 브라우저는 HTML/JS 파일이 제공된 출처(origin)에서 실행된다.
+정적 파일은 다음 방식 중 하나로 제공될 수 있다.
+
+Express 서버에서 직접 제공
+→ 예: app.use(express.static("public"))
+→ 출처: http://localhost:3000
+
+별도의 정적 서버 사용
+→ 예: npx http-server
+→ 출처: http://localhost:8080
+
+배포된 정적 웹 페이지
+→ 예: Github Pages
+→ 출처: https://ycy2000.github.io
+
+정적 서버의 역할은 브라우저에 HTML / CSS / JS 파일을 전달하는 것뿐이다.</pre>
+        </div>
+      </div>
+    </div>
     <div id="실습_nodejs관련01" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -9902,12 +9984,136 @@ CORS 적용 안됨
     http://localhost:8080 → 자동으로 index.html 열림
     http://localhost:8080/index.html → 파일이름 입력해도 됨
 2. 파일이름이 index.html이 아닌 경우
-    http://localhost:8080/파일이름.html → 파일이름 입력
-        </pre>
+    http://localhost:8080/파일이름.html → 파일이름 입력 </pre>
+        <h6 class="blueviolet fw-bold">깃허브 페이지는 그 자체로 정적서버다.</h6>
       </div>
 
     </div>
-    
+    <div id="실습_nodejs관련02" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+- 미들웨어, 핸들러, next 모두 함수인데 역할에 따라 알기 쉽게 임의로 이름 지은것
+- 미들웨어 : 전처리, 핸들러 : 응답처리
+- next : next부분에 임의의 이름 가능하지만 협업 관련. 이 부분은 다음으로 넘어가는
+  함수라고 약속되어 있고 next() 하면 다음으로 넘긴다는 뜻이다.
+
+01. 미들웨어가 하나만 파라미터로 들어가 있으면 next(); 자동처리
+     app.use(express.static("public"));
+     public 폴더 안의 파일을
+     http://localhost:3000/파일명 으로 바로 접근 가능
+<span class="blueviolet">02. 첫번째 파라미터에 문자열이면 요청문자열로 인식, 해당요청시에만 작동</span>
+    app.use("/api", (req,res,next)=>{
+      console.log("API 요청만 통과");
+      next();
+    });
+03. 파라미터 제한은 없다. 순차적으로 실행한다.
+    app.use("/api", middleware1, middleware2, middleware3,...);
+04. 요청문자열이 없으면 무조건 실행하는 것.
+<span class="blueviolet">05. app.use("/api", (req,res,next)=>{ ... }); 의미
+     → /api 로 시작하는 요청에서만 실행, 시작하는 이니까 여러 경우일 수 있다.
+06. app.use("/", middleware); 의미 : 모든 경우에 실행한다는 뜻
+     → app.use("/", middleware); === app.use(middleware);</span>
+<span class="blueviolet">07. 함수내부에 미들웨어로 화살표 함수(콜백함수)가 오는 경우에는,</span>  
+   a) 화살표함수의 파라미터는 약속되어 있다. 
+   b) (req, res, next) : 요청 req, 응답 res, next next();
+   c) 에러처리 : app.use((err, req, res, next)=>{ ... });
+       파라미터가 4개면 Express가 “이건 에러 처리용이구나” 하고 인식합니다.
+       if (fn.length === 4) {// 에러 처리 미들웨어로 등록} else {// 일반 미들웨어로 등록}
+   d) app.use의 첫 번째 파라미터가 문자열이면 → 경로(path)로 해석한다</pre>
+
+        <h6 class="blueviolet fw-bold">server.js 서버코드는 요청이 오면 실제 요청을 처리하는</h6>
+        <pre class="fw-bold">
+app.get 구문에 들어가 처리 코드를 실행하기 전에 
+  1. app.use 같은 미들웨어(전처리 과정) 코드를 모두 확인(해당되면 실행)한다.
+  2. 1을 모두 확인하면 라우팅(요청 전달할곳 정하는 과정) 관련 코드를 모두 확인한다. 
+  3. 이러한 함수를 미들웨어라고 한다. 현재로써는 app.use 인것 같음 
+  <span class="blueviolet">4. app.use 코드에서 next(); 구문이 없으면 무한대기 상태. 먹통이 되는 경우가 있다.</span> </pre>
+        <h6 class="blueviolet fw-bold">비유하자면, app.use 등 미들웨어(전처리 과정)의 코드에서</h6>
+        <pre class="fw-bold">
+1. next(); → 다음 창구로 가세요.
+    이게 없으면 무한대기 상태. 먹통이 된다.
+2. 다만, next(); 가 없거나 next();전에 "업무 완료입니다"를 의미하는 코드 가만있으면
+    요청처리가 완료되어 다음 요청을 기다리는 상태가 된다.
+3. "업무 완료입니다"를 의미하는 코드.(응답을 끝낸다, 요청 처리 완료)
+    res.send(...), res.json(...), res.end(...), res.redirect(...)
+        </pre>
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">그리고 Express는 next()를 자동으로 호출해주지 않습니다.</h6>
+        <pre class="fw-bold">
+예시 1 — 화살표 함수
+app.use((req,res,next)=>{console.log("hi"); next();});
+예시 2 — 일반 함수 function myMiddleware(req,res,next){console.log("hi"); next();}
+app.use(myMiddleware); → 완전히 동일하게 동작합니다.
+app.use(m1, m2, m3); 요청이 들어오면, 요청 → m1 → m2 → m3 → 다음 라우터
+
+app.use(express.static("public")); 이것은 함수 express.static("public") 이것 내부에서 next(); 실행되나?
+
+네 🙂 정확히 그렇게 이해하시면 됩니다.
+
+이 코드
+app.use(express.static("public"));
+
+
+에서
+
+express.static("public")
+
+
+은 미들웨어 함수를 반환합니다.
+
+즉 내부적으로는 대략 이런 형태입니다.
+
+function staticMiddleware(req, res, next) {
+   // 파일 요청이면 파일 찾아서 보내줌
+   // 파일 없으면 next() 호출
+}
+
+실제 동작 방식
+1) 요청이 정적 파일과 일치하면
+/index.html → public/index.html 존재
+
+
+→ 파일을 읽어서
+→ res.sendFile()
+→ 응답 종료
+→ next() 호출 안 함 (더 갈 필요 없음)
+
+2) 요청 파일이 없으면
+/api/data → public/api/data 파일 없음
+
+
+→ next() 자동 호출
+→ 다음 미들웨어 / 라우터로 넘어감
+
+그래서 express.static 은
+
+✔ 내부에서 상황에 따라 res.send() 또는 next()를 자동 처리하는
+완성된 미들웨어 패키지
+
+입니다.
+
+그래서 가능한 구조
+app.use(express.static("public"));  // 정적파일 먼저 처리
+app.get("/api/data", handler);      // 정적파일 아니면 여기로 옴
+
+<span class="blueviolet">m1, m2, m3 에 각각 next();로 넘겨줘야 한다.</span></pre>
+        <h6 class="blueviolet fw-bold">app.use 실행코드에 <u>"화살표 함수(콜백함수)가 들어가 있으면"</u> </h6>
+        <pre class="fw-bold">
+<span class="blueviolet">★ 실행할 코드 내에 next(); 또는 응답완료 코드가 있어야 한다 ★</span> 
+app.use((req, res, next) => {
+   res.setHeader("Access-Control-Allow-Origin", "*");
+   next();
+});
+
+
+
+
+
+        </pre>
+      </div>
+    </div>
     <div id="개념_nodejs정리안된거" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
