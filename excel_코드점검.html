@@ -578,7 +578,9 @@
         <h6 class="blueviolet fw-bold">--------------------------------------------------------------------</h6>
         <h6 class="blueviolet fw-bold" title="개념_nodejs관련6">01. 한몸처럼 다루지만 정적서버와 api서버는 별개다. 브라우저 통신 개념 정리</h6>
         <h6 class="fw-bold" title="실습_nodejs관련01">02. 웹페이지 제공, 프로젝트 폴더내, 프로젝트 폴더 외부, 깃허브 페이지</h6>
-        <h6 class="blueviolet fw-bold" title="실습_nodejs관련02">03. <u>★파라미터 약속★,</u> 미들웨어 next(); 구문없으면 경우에 따라 먹통이 된다.</h6>
+        <h6 class="fw-bold" title="실습_nodejs관련011">03. 동기, 비동기, fetch, 체이닝문법과 async await 문법</h6>
+        <h6 class="blueviolet fw-bold" title="실습_nodejs관련02" style="text-decoration: underline;">04. ★요청 작업시 : server.js 파일을 선별적으로 읽는다??</h6>
+        <h6 class="fw-bold" title="실습_nodejs관련03">05. <span class="blueviolet">[실습]</span> 서버켜기, 정적서버에서 웹페이지 제공, <u>★요청 문자열★,</u></h6>
 
 
 
@@ -9989,19 +9991,74 @@ CORS 적용 안됨
       </div>
 
     </div>
+    <div id="실습_nodejs관련011" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">03. 동기, 비동기, fetch, 체이닝문법과 async await 문법</h6>
+        <pre class="fw-bold">
+- 동기 : 응답을 기다렸다고 받고 난 후 다음 작업 실행, 
+- 비동기 : 응답을 기다리지 않고 다음 작업 실행
+- 자바스크립트(브라우저) : 동기, 비동기 함수도 사용 가능.
+1. 자바스크립트(브라우저) 는 동기형인데 <span class="blueviolet"> "비동기 함수로 선언할때 async를 붙인다."</span>
+    async function call() {
+        const blno = document.getElementById("blno").value;
+        const year = document.getElementById("year").value;
+        //const res = await fetch(`/unipass?blno=${blno}&year=${year}`);
+        const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
+        const xmlText = await res.text();
+    }
+- fetch함수는 비동기 함수, fetch함수의 체이닝문법과 보기쉽게 바꾼 async await 문법
+        </pre>
+      </div>
+    </div>
     <div id="실습_nodejs관련02" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <pre class="fw-bold"></pre>
+      </div>
+    </div>
+    <div id="실습_nodejs관련03" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">미들웨어 next(); 구문없으면 경우에 따라 먹통이 된다.</h6>
         <pre class="fw-bold">
 - 미들웨어, 핸들러, next 모두 함수인데 역할에 따라 알기 쉽게 임의로 이름 지은것
 - 미들웨어 : 전처리, 핸들러 : 응답처리
 - next : next부분에 임의의 이름 가능하지만 협업 관련. 이 부분은 다음으로 넘어가는
   함수라고 약속되어 있고 next() 하면 다음으로 넘긴다는 뜻이다.
+  <span style="display: inline-block;border:1px solid black;width:570px;margin:10px 0px;">  미들웨어의 역할 : 코드 실행후 다음으로 넘어가는 next() 형식 
+  완성된 미들웨어 패키지 의미 : 미들웨어의 역할이 함수에 모두 들어 있다는 뜻 
+</span> 
+<span class="blueviolet">[ 참고 ] : app.use(express.static("public"));</span>
+  - 함수 express.static("public")는
+  - "public"이라는 폴더가 있으면 → 파일을 읽어서 → res.sendFile() → 응답 종료
+      → next() 호출 안 함 (더 갈 필요 없음)
+  - "public"이라는 폴더가 없으면 → next() 자동 호출
+  - 이렇게 코딩된 완성된 미들웨어 패키지이다.
+  <span class="blueviolet">그리고 Express는 next()를 자동으로 호출해주지 않습니다.</span>
+  app.use(m1, m2, m3); 요청이 들어오면, 요청 → m1 → m2 → m3 → 다음 라우터
+  <span class="blueviolet">m1, m2, m3 에 각각 내부에서 next();로 넘겨줘야 한다.</span>
+  <span style="display: inline-block;border:1px solid black;width:570px;margin:10px 0px;">  <span class="blueviolet">[화살표 함수와 일반함수 표현 익숙해지기]</span>
+  1. 파라미터에 '화살표 함수'와 '일반함수:server.js 내부에 선언후 사용' 
+      a) app.use((req,res,next)=>{
+        console.log("hi"); 
+        next();}
+        );
+      b) 일반함수 선언후 파라미터에 등록하여 사용 
+         - 일반함수 선언 
+           function myMiddleware(req,res,next){
+            console.log("hi"); next();
+          }
+         - 파라미터에 등록하여 사용 
+           app.use(myMiddleware);
+  2. 이것도 된다 : app.use((req,res,next)=>{console.log("hi"); next();});
+</span> </pre>
 
-01. 미들웨어가 하나만 파라미터로 들어가 있으면 next(); 자동처리
+      </div>
+      <div>
+        <pre class="fw-bold">
+01. 미들웨어만 파라미터로 들어가 있으면 무조건 실행. (미들웨어 어려개 가능)
      app.use(express.static("public"));
-     public 폴더 안의 파일을
-     http://localhost:3000/파일명 으로 바로 접근 가능
 <span class="blueviolet">02. 첫번째 파라미터에 문자열이면 요청문자열로 인식, 해당요청시에만 작동</span>
     app.use("/api", (req,res,next)=>{
       console.log("API 요청만 통과");
@@ -10028,7 +10085,7 @@ app.get 구문에 들어가 처리 코드를 실행하기 전에
   1. app.use 같은 미들웨어(전처리 과정) 코드를 모두 확인(해당되면 실행)한다.
   2. 1을 모두 확인하면 라우팅(요청 전달할곳 정하는 과정) 관련 코드를 모두 확인한다. 
   3. 이러한 함수를 미들웨어라고 한다. 현재로써는 app.use 인것 같음 
-  <span class="blueviolet">4. app.use 코드에서 next(); 구문이 없으면 무한대기 상태. 먹통이 되는 경우가 있다.</span> </pre>
+  <span class="blueviolet">4. app.use 코드에서 next(); 구문이 없으면 무한대기 상태. 먹통이 되는 경우가 있다.</span> 
         <h6 class="blueviolet fw-bold">비유하자면, app.use 등 미들웨어(전처리 과정)의 코드에서</h6>
         <pre class="fw-bold">
 1. next(); → 다음 창구로 가세요.
@@ -10036,29 +10093,8 @@ app.get 구문에 들어가 처리 코드를 실행하기 전에
 2. 다만, next(); 가 없거나 next();전에 "업무 완료입니다"를 의미하는 코드 가만있으면
     요청처리가 완료되어 다음 요청을 기다리는 상태가 된다.
 3. "업무 완료입니다"를 의미하는 코드.(응답을 끝낸다, 요청 처리 완료)
-    res.send(...), res.json(...), res.end(...), res.redirect(...)
-        </pre>
-      </div>
-      <div>
-        <pre class="fw-bold">
-<span class="blueviolet">[ 참고 ] : app.use(express.static("public"));</span>
-  - 함수 express.static("public")는
-  - "public"이라는 폴더가 있으면 → 파일을 읽어서 → res.sendFile() → 응답 종료
-      → next() 호출 안 함 (더 갈 필요 없음)
-  - "public"이라는 폴더가 없으면 → next() 자동 호출
-  - 이렇게 코딩된 완성된 미들웨어 패키지이다.
+    res.send(...), res.json(...), res.end(...), res.redirect(...)</pre>
 
-  그래서 가능한 구조
-  app.use(express.static("public"));  // 정적파일 먼저 처리
-  app.get("/api/data", handler);      // 정적파일 아니면 여기로 옴</pre>
-        <h6 class="blueviolet fw-bold">그리고 Express는 next()를 자동으로 호출해주지 않습니다.</h6>
-        <pre class="fw-bold">
-예시 1 — 화살표 함수
-app.use((req,res,next)=>{console.log("hi"); next();});
-예시 2 — 일반 함수 function myMiddleware(req,res,next){console.log("hi"); next();}
-app.use(myMiddleware); → 완전히 동일하게 동작합니다.
-app.use(m1, m2, m3); 요청이 들어오면, 요청 → m1 → m2 → m3 → 다음 라우터
-<span class="blueviolet">m1, m2, m3 에 각각 내부에서 next();로 넘겨줘야 한다.</span></pre>
         <h6 class="blueviolet fw-bold">app.use 실행코드에 <u>"화살표 함수(콜백함수)가 들어가 있으면"</u> </h6>
         <pre class="fw-bold">
 <span class="blueviolet">★ 실행할 코드 내에 next(); 또는 응답완료 코드가 있어야 한다 ★</span> 
@@ -10072,6 +10108,140 @@ app.use((req, res, next) => {
 
 
         </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+핵심
+
+fetch(url).then(...).then(...).catch(...);
+
+이런 메서드 체이닝 + 줄바꿈 문법은
+
+브라우저 JavaScript
+
+Node.js JavaScript
+
+둘 다 완전히 동일하게 동작합니다.
+
+즉
+fetch(url)
+  .then(...)
+  .then(...)
+  .catch(...);
+
+
+이 줄 나눔 표현은
+
+JavaScript 문법 규칙(Automatic Semicolon Insertion + 체이닝 문법)
+
+덕분에 가능한 것이지,
+Node.js만의 특별한 기능이 아닙니다.
+
+브라우저에서도 동일
+&#60;script>
+fetch(url)
+  .then(res => res.text())
+  .then(text => console.log(text))
+  .catch(err => console.log(err));
+&#60;/script>
+
+
+→ 브라우저에서도 똑같이 허용
+
+한 줄 정리
+
+Promise 체이닝 줄바꿈은 JavaScript 공통 문법이며
+Node.js 때문이 아니라 언어 자체가 허용하는 표현 방식이다.
+
+네.
+정확하게 본질을 짚으셨습니다.
+
+결론
+
+async / await 문법은 Promise 체이닝(.then())을 사람이 읽기 쉽게 바꾼 문법(Syntax Sugar) 입니다.
+
+다시 말하면
+방식	본질	목적
+.then().then().catch()	Promise 체이닝	원래 비동기 제어 방식
+async / await	Promise 체이닝을 풀어쓴 문법	가독성 향상
+
+→ 동작은 100% 동일
+
+비교
+Promise 체이닝
+fetch(url)
+  .then(response => response.text())
+  .then(text => JSON.parse(text))
+  .then(data => res.send(data))
+  .catch(err => res.status(500).send("에러"));
+
+async / await
+try {
+  const response = await fetch(url);
+  const text = await response.text();
+  const data = JSON.parse(text);
+  res.send(data);
+} catch(err) {
+  res.status(500).send("에러");
+}
+
+
+→ 읽기 흐름이 위 → 아래 직선형
+
+왜 필요했나?
+
+.then 체인은
+
+중첩되기 쉬움
+
+에러 처리 위치가 헷갈림
+
+긴 체인은 읽기 불편
+
+→ 그래서 async / await 도입
+
+중요한 점
+
+async / await 는 Promise 없이는 존재할 수 없습니다.
+내부적으로는 여전히 .then()이 돌아갑니다.
+
+한 줄 요약
+
+async / await = Promise 체이닝을 보기 좋게 적어주는 문법 설탕
+        </pre>
+      </div>
+    </div>
+    <div id="실습_nodejs관련03" class="대체3줄">
+      <div>
+        <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+        <div>
+        <h6 class="blueviolet fw-bold">서버 켜기</h6>
+        <pre class="fw-bold">
+1. 터미널을 열고 프로젝트 폴더로 이동후, 터미널에서 node server.js 실행 </pre>
+        <h6 class="blueviolet fw-bold">정적서버에서 웹페이지를 제공받는 것</h6>
+        <pre class="fw-bold">
+1. 깃허브페이지에서 웹페이지를 켠다. 주소창에 https://ycy2000.github.io/파일이름.html
+2. 프로젝트폴더에 있는 폴더이면 server.js에서 app.use(express.static("public"))
+    위코드가 있고 서버가 켜져있다면, 주소창에 http://localhost:3000/파일이름.html 로 접속
+3. 프로젝트폴더 바깥이면 서버(http://localhost:3000)가 켜진 상태에서
+    새로운 터미널을 열고 웹페이지가 있는 폴더로 이동한후 npx http-server . -p 8080 실행 
+    주소창에 http://localhost:8080/파일이름.html 로 접속
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold" style="position: absolute;border:1px solid black;display: inline-block;">
+  관세청 최종 요청 URL : 1 + 2 + 3 + 4 
+  1. URI(출처) : https://unipass.customs.go.kr:38010 
+  2. 서비스종류 : /ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo 
+  3. 승인키 : ?crkyCn=c290s255d192h253h000l090g5
+  4. 쿼리스트링 : &mblNo=${BLNO}&blYy=${year}`;  
+  <span class="blueviolet">※승인키를 노출시키지 않는 방식으로 해야함</span>      </pre>
+
+      </div>
+      <div>
+
+      </div>
+
       </div>
     </div>
     <div id="개념_nodejs정리안된거" class="대체3줄">
