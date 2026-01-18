@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 
@@ -14,7 +15,7 @@ app.get('/unipass', async (req, res) => {
       '/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo?';
 
     // 🔹 .env 에서 불러오기
-    const 승인키 = 승인키_통관진행정보;
+    const 승인키 = process.env.CUSTOM_KEY_CARGCSCL;
 
     const BLNO = req.query.blno;
     const year = req.query.year;

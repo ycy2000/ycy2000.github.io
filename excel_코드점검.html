@@ -581,7 +581,9 @@
         <h6 class="fw-bold" title="실습_nodejs관련011">03. 동기, 비동기, fetch, 체이닝문법과 async await 문법</h6>
         <h6 class="blueviolet fw-bold" title="실습_nodejs관련02" style="text-decoration: underline;">04. ★요청 작업시 : server.js 파일을 선별적으로 읽는다?? 미들웨어와 next()</h6>
         <h6 class="fw-bold" title="실습_nodejs관련03">05. 하지만 과거 커밋 기록에는 여전히 남아있음 → 키는 이미 노출된 것으로 간주. </h6>
-        <h6 class="fw-bold" title="실습_01">[실습01]</h6>
+        <h6 class="fw-bold" title="실습_01">[실습01] dotenv, 브라우저 url 출처부분, 생략시 / 는 브라우저 출처</h6>
+        <h6 class="fw-bold" title="실습_02">[실습02] response와 response.text, 응답이 JSON인지, XML인지, HTML인지</h6>
+        <h6 class="fw-bold" title="실습_03">[실습02] ★중요★ response 객체, 1) 내api서버에서, 2) 관세청api서버에서</h6>
 
 
 
@@ -10239,13 +10241,13 @@ GitHub는 비공개 저장소라도
         <div title="왼쪽독립적하나더" style="position: absolute;padding-top:5px;">
           <pre class="fw-bold">
 <span class="blueviolet" style="display:inline-block;">① npm install express : app.get, app.use 등 사용가능</span> 
-② 번부분 없이 대체하는 방법
-    - 설치 : npm install cors
+② 설치 : npm install cors
     - server.js 코드추가 
       const cors = require("cors");
       app.use(cors()); <span class="blueviolet">완성된 미들웨어 함수에 next() 포함</span>
     - res.setHeader("Access-Control-Allow-Origin", "*"); 
       이 역할 외에 기본값이 완전하게 설정된다.
+③ 설치 : npm install dotenv
 
 ※ 브라우저에서 내 api서버로 보내는 요청에는 승인키를 변수형태로 코딩하자.(보안)
 ※ 내 api서버에서 관세청에 보낼 완전한 url로 변환하여 내 api서버에서 다시 fetch로 요청한다.
@@ -10277,51 +10279,41 @@ async function call() {
 1. 'http://localhost:3000' 자신에게 요청하는 것인지 출처를 자신과 비교하고,
 2. 출처이후 물음표 나오기까지의 문자열 '/unipass'를 요청라우팅에 사용할 문자열로 받고,
 3. '?' 물음표 이후의 것은 req.qurey 객체에 속성과 값으로 저장한다. 
-4. 2.3.등을 활용하여 관세청에 보낼 url은 전혀 다를수도 있다.</span> 
-
-      
+4. 2.3.등을 활용하여 관세청에 보낼 url은 전혀 다를수도 있다.</span>       
         </div>
         <div style="position: absolute;left:170px;display: inline-block;width:440px;text-align: right;">
           <pre class="fw-bold">
-<span style="margin-top:28px;display:inline-block">객체가져오기← ①</span>
+<span style="margin-top:28px;display:inline-block">설치한 객체가져오기← ①</span>
 객체의 인스턴스 만들기 (prototype속성사용가능)← ①
+설치한 객체 가져오기← ②
 
 
-②
-②
-②
-②
+③
 
-
-←
-←
-←
-←
-←
-←
-←
-←
-←
-←
-←
-←ㅁ
-←
-←
-←
-          </pre>
+②
+ </pre>
           
         </div>
       </div>
       <div>
         <h6 class="blueviolet fw-bold">server.js 코드 ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h6>
+<pre class="fw-bold" style="left:900px;top:75px;width:320px; display:inline-block;position: absolute;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;">1. app.get 에서 "/api" => "/api" 요청일때만 작동
+2. app.use 에서 "/api" 
+   => "/api" 로 시작되는 요청일때만 작동.</pre> 
+<pre class="fw-bold" style="left:900px;top:160px;width:320px; display:inline-block;position: absolute;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;">③ .env 파일에 설정된 변수들을 사용할수 있게됨
+객체 : process.env 
+.env파일의 변수에 접근 : process.env.변수이름</pre> 
+<pre class="fw-bold" style="left:865px;top:440px;width:355px; display:inline-block;position: absolute;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;">브라우저에서 전달받은 문자열 req 에 대해서
+? 이후는 req.qurey 객체에 (여러속성인 경우 & 로 추가)
+"속성명"="속성값" 으로 해석 해놓은 상태다.</pre> 
         <pre class="fw-bold">
 const express = require('express');
+const app = express();
 const cors = require('cors');
 
 // 🔹 dotenv 로드 (맨 위에 위치)
 require('dotenv').config();
 
-const app = express();
 app.use(cors());
 
 // UNIPASS 중계 <span class="blueviolet">fetch.then(..).then(..).catch(..) 구문 대신, async await를 사용하는 구문</span>
@@ -10402,6 +10394,223 @@ app.listen(PORT, () => {
 </span>
         </pre>
 
+      </div>
+    </div>
+    <div id="실습_02" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">server.js 코드에서 + 웹브라우저에서 response 객체</h6>
+        <pre class="fw-bold">
+    const response = await fetch(url);
+    const text = await response.text();
+    res.send(text);</pre>
+        <h6 class="blueviolet fw-bold">1. response 객체는 정해진 골격이 있다.</h6>
+        <pre class="fw-bold">
+fetch()는 Promise<Response> 를 반환합니다.
+여기서 Response는 Fetch API 표준에 정의된 내장 클래스(인터페이스) 입니다.
+즉, **브라우저/런타임이 표준 스펙에 따라 생성한 객체 ⭕
+
+✅ response 객체의 고정된 골격 (주요 속성)
+response.status        // 숫자 HTTP 상태코드 (예: 200)
+response.statusText    // 상태 메시지 (예: "OK")
+response.ok            // status가 200~299이면 true
+response.url           // 요청한 최종 URL
+response.headers       // Headers 객체
+response.redirected    // 리다이렉트 여부
+response.type          // "basic", "cors", "opaque" 등
+response.body          // ReadableStream (원시 바디 스트림) <span class="blueviolet">읽혀지지 않은 상태</span> 
+<span class="blueviolet">우리가 실제로 다루는 것은 보통 body 자체가 아니라 body를 해석한 결과입니다.</span> 
+
+실무에서 "body 형태"라고 말할 때 보통은 다음 중 하나를 의미합니다:
+JSON 객체 (가장 흔함)
+문자열 (HTML / plain text)
+Blob / 파일
+ArrayBuffer (특수 바이너리)
+
+그리고 바디(response.body)를 읽기 위한 메서드 : 어떤방식으로 읽어라
+<span class="blueviolet">다음은 원시스트림을 읽는 방법이다.
+const text=response.text(); 에서 text 변수는 문자열이되고 
+const json=text.json(); x 이건 안된다. 원시스트림이 아니기 때문이다.
+또한 원시스트림은 한번만 읽을 수 있다.
+const text=response.text();
+const json=response.json(); 이렇게 연속으로 읽을 수 없다.</span>
+response.text()
+response.json()
+response.blob()
+response.arrayBuffer()
+response.formData()
+
+이 구조는 항상 동일합니다. ✅ 달라지는 것은 body 내용
+
+
+
+
+❌ res.send(response) 는 제대로 된 응답을 브라우저로 보낼 수 없습니다.
+✅ 반드시 response.text(), response.json(), response.body 등을 꺼내서 보내야 합니다.
+
+이유
+
+response 는 Fetch API의 Response 객체입니다.
+
+const response = await fetch(apiUrl);
+
+
+이 객체는
+
+상태코드
+
+헤더
+
+본문 스트림
+
+을 포함한 복합 객체이고,
+Express의 res.send() 는 문자열, Buffer, JSON, Stream 같은 실제 데이터를 보내야 합니다.
+
+만약 이렇게 하면?
+res.send(response);
+
+
+브라우저로는 다음과 같은 것이 날아갑니다:
+
+[object Response]
+
+
+즉, Response 객체를 문자열로 강제 변환한 결과만 전송됩니다.
+외부 API 데이터는 전혀 전달되지 않습니다.
+
+</pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">const text = await response.text(); 일단 response.body 의 내용을 text 로 읽어들인다.</span>
+1. {"name":"Kim","age":30} : JSON 형태의 문자
+2. XML 응답
+    &#60;?xml version="1.0" encoding="UTF-8"?>
+    &#60;response>
+      &#60;item>
+        &#60;hsCode>847130&#60;/hsCode>
+        &#60;taxRate>8&#60;/taxRate>
+      &#60;/item>
+    &#60;/response>
+3. &#60;!doctype html>&#60;html>...&#60;/html> : HTML 응답
+<span class="blueviolet">4. 그 문자열이 어떤 형식(JSON/XML/HTML)이냐에 따라 다음 파싱 방법이 달라진다</span></pre>
+        <h6 class="fw-bold">응답이 JSON 인지, XML 인지 파악하는 방법 </h6>
+        <pre class="fw-bold">
+현업에서는 HTTP 헤더(Content-Type) 로 판별하는 것이 정석입니다.
+✅ 1. 가장 정석적인 방법 — Content-Type 헤더 확인
+const res = await fetch(url);
+const contentType = res.headers.get("content-type");
+console.log(contentType);
+
+결과 예시
+응답 종류     Content-Type 값
+JSON	     application/json
+XML	     application/xml 또는 text/xml
+HTML	     text/html
+일반텍스트   text/plain
+
+사용 예
+if (contentType.includes("application/json")) {
+  <span class="blueviolet">const data = await res.json();</span> 
+}
+else if (contentType.includes("xml")) {
+  <span class="blueviolet">const text = await res.text();</span> 
+  
+  // XML 파싱
+}
+        </pre>
+
+      </div>
+      <div>
+
+
+      </div>
+    </div>
+    <div id="실습_03" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">server.js 코드에서 + 웹브라우저에서 response 객체</h6>
+        <h6 class="fw-bold">1. server.js 코드에서 res 객체</h6>
+        <pre class="fw-bold">
+[실습02]에 자세한 정보가 있음.
+1. server.js 코드에서 관세청api로부터 응답받은 정보 
+   const res = await fetch(url); 는
+   다음 정보를 가지고 있다.
+   res.status     
+   res.statusText 
+   res.ok         
+   res.url        
+   res.headers    
+   res.redirected 
+   res.type       
+   res.body       
+2. 1.의 정보를 그대로 브라우저로 보낼수 없다. 보낸다면 
+    문자열 : [object Response] 로 보내진다. 
+    res 객체의 body부분을 추출하여 보내게 된다 
+
+    body를 꺼낼때
+    await res.text();     // 문자열
+    await res.json();     // JSON 파싱
+    await res.blob();     // Blob
+    await res.arrayBuffer();
+
+    const text = await response.text();
+    res.send(text);
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">2. 여기는 브라우저 부분이다</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">※ 헷갈리는 부분 정리</span>
+  const res = await fetch(url);  <span class="blueviolet">server.js 코드에서 받은 res 객체</span>
+  - 이것의 답변에도 api 통신의 응답이므로 다음 정보를 가지고 있다.
+   res.status     
+   .....
+   res.body 
+   <span class="blueviolet">서로 변수이름이 같을뿐(다르게 해도 된다) 별개의 정보이다.</span>
+1. server.js에서 관세청api 응답에서 body부분을 꺼내서 보내준 것인데 
+2. 그 body부분을 server.js에서 브라우저로 보내는 res객체의 res.body에 넣었고 
+3. api통신의 응답객체이므로 res.status, ... , res.body 부분은 자체로 다시 붙어서 가는 것이다.
+</pre>
+        <h6 class="fw-bold">3. 최종적으로 브라우저에서 res.body부분을 꺼내서 가공하게 된다.</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">일단 server.js 에서는 const text=response.text(); res.send(text) 형식으로
+text 형식으로 브라우저로 보낸다. text가 브라우저의 응답객체.body에 들어가는 것이다.
+</span>
+<span class="blueviolet">그리고 '파싱'의 개념이 중요한데 xml도 문자열 형태로 넘어오게 되는데 
+DOM구조를 활용하려면 구조를 바꿔야한다. 
+JSON 형태도 문자열로 넘어왔지만 '객체.속성'을 사용하려면 구조를 바꿔야한다.
+구조를 바꿔주는(객체의 자료형을 바꾸는) 것을 파싱이라고 이해하겠다.
+</span>
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">"파싱"은 브라우저 단에서 하면 된다.</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">api의 응답이 어떤 형식인지 알고 있는 경우가 대부분이다.
+형식에 관해서는 응답객체의 헤더에 정보가 있는데...
+관세청에서 받은 헤더의 정보를 읽어서 다시 넣어서 보내야 정확하다...
+그렇지 않으면 내부적으로 임의로??</span>
+
+<span class="blueviolet">[body부분의 문자열에 따라 파싱하는 방법]</span>
+1. JSON형식일때 : {"name":"Kim","age":30} 
+    const res = await fetch("/api");
+    const text = await res.text();      // JSON 문자열 {"name":"Kim","age":30}
+    const data = JSON.parse(text);      // JSON 객체로 변환
+    // data.name => Kim
+    <span class="blueviolet">text 값이 JSON 형태가 아니면 에러</span>
+
+    ✅ 그래서 실무에서는 반드시 사전 체크
+    방법 1 — Content-Type으로 판별 (정석)
+    const ct = res.headers.get("content-type") || "";
+
+    if (ct.includes("application/json")) {
+      const data = await res.json();
+    } else {
+      const text = await res.text();
+      console.log("JSON 아님:", text);
+    }
+        </pre>
       </div>
     </div>
     <div id="개념_nodejs정리안된거" class="대체3줄">
