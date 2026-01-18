@@ -10234,9 +10234,13 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`서버 실행중 → http://localhost:${PORT}`);
 });
+<span class="fw-bold" style="width:580px;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;"><span class="blueviolet">단순히 .gitignore에 추가만 하면 이미 추적 중인 파일은 계속 Git에 남아있습니다.</span>
+  이때는 캐시에서 제거해야 합니다.
+
+  git rm --cached .env
+  git commit -m "Remove .env from git tracking"
+  그 후 .gitignore가 정상 작동합니다.</span>
         </pre>
-
-
       </div>
       <div>
         <pre class="fw-bold">
