@@ -21,4 +21,4 @@
 # /** matches 0 or more directories
 #doc/**/*.pdf 
 
-unipass_server/.env
+.env

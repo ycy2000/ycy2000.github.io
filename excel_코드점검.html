@@ -580,6 +580,7 @@
         <h6 class="fw-bold" title="실습_nodejs관련01">02. 웹페이지 제공, 프로젝트 폴더내, 프로젝트 폴더 외부, 깃허브 페이지</h6>
         <h6 class="fw-bold" title="실습_nodejs관련011">03. 동기, 비동기, fetch, 체이닝문법과 async await 문법</h6>
         <h6 class="blueviolet fw-bold" title="실습_nodejs관련02" style="text-decoration: underline;">04. ★요청 작업시 : server.js 파일을 선별적으로 읽는다?? 미들웨어와 next()</h6>
+        <h6 class="fw-bold" title="실습_nodejs관련03">05. 하지만 과거 커밋 기록에는 여전히 남아있음 → 키는 이미 노출된 것으로 간주. </h6>
         <h6 class="fw-bold" title="실습_01">[실습01]</h6>
 
 
@@ -10117,6 +10118,121 @@ res.end()</pre>
         <h6 class="fw-bold">● app.use('/') 는 "/ 로 시작하는 모든 요청 처리"</h6>
       </div>
     </div>
+    <div id="실습_nodejs관련03" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold"></h6>
+        <pre class="fw-bold">
+✅ 1) 완성된 표준 .gitignore 예시 (Node.js 프로젝트)
+
+프로젝트 루트에 .gitignore 파일을 만들고 아래 그대로 붙여 넣으면 됩니다.
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Build output
+dist/
+build/
+
+# IDE settings
+.vscode/
+.idea/
+
+# 기타 임시파일
+*.tmp
+*.temp
+
+
+
+
+
+
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+👉 핵심 포인트
+
+.env 와 .env.* → 모든 환경변수 파일 보호
+
+node_modules/ → 절대 Git에 올리지 않음
+
+✅ 2) GitHub에 실수로 올라간 .env 키 폐기 방법
+
+만약 이미 GitHub에 API 키가 올라갔다면
+그 키는 더 이상 안전하지 않으므로 반드시 폐기 + 재발급 해야 합니다.
+
+🔥 절차 순서
+① Git 저장소에서 .env 제거 (해당파일이 있는 곳으로 이동하여)
+git rm --cached .env
+git commit -m "Remove .env from repository"
+git push
+
+
+이제 GitHub에는 더 이상 .env 파일이 없습니다.
+하지만 과거 커밋 기록에는 여전히 남아있음 → 키는 이미 노출된 것으로 간주.
+
+② 관세청 UNIPASS 사이트에서 기존 승인키 폐기
+
+UNIPASS 개발자센터 로그인
+
+기존 승인키 사용중지 / 재발급
+
+새 승인키 발급
+
+(보안상 이 단계는 반드시 해야 합니다)
+
+③ 새 승인키를 로컬 .env에 등록
+UNIPASS_API_KEY=새로발급받은키
+
+④ 서버 재시작
+node server.js
+
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+✅ 3) 왜 꼭 폐기해야 하나?
+
+GitHub는 비공개 저장소라도
+
+협업자
+
+백업
+
+포크
+
+과거 커밋 열람
+
+등으로 키가 유출될 가능성이 있습니다.
+그래서 한 번이라도 Git에 올라갔으면 무조건 키 교체가 원칙입니다.
+
+💡 추가 보안 팁
+
+앞으로 API 키는 절대 브라우저 코드에 두지 않기
+
+.env는 항상 .gitignore에 포함
+
+운영 서버에도 .env만 따로 업로드
+        </pre>
+      </div>
+    </div>
+    
     <div id="실습_01" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -10235,11 +10351,10 @@ app.listen(PORT, () => {
     console.log(`서버 실행중 → http://localhost:${PORT}`);
 });
 <span class="fw-bold" style="width:580px;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;"><span class="blueviolet">단순히 .gitignore에 추가만 하면 이미 추적 중인 파일은 계속 Git에 남아있습니다.</span>
-  이때는 캐시에서 제거해야 합니다.
-
+  이때는 캐시에서 제거해야 합니다. git bash에서 해당파일이 있는 폴더로 이동하여
   git rm --cached .env
   git commit -m "Remove .env from git tracking"
-  그 후 .gitignore가 정상 작동합니다.</span>
+  그 후 .gitignore가 정상 작동합니다. git pull origin main 안해도 된다.</span>
         </pre>
       </div>
       <div>
