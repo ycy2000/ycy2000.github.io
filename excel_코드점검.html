@@ -10148,18 +10148,22 @@ async function call() {
       속성명=속성값, 여러개일때는 속성명=속성값&속성명=속성값 형식으로 &로 추가한다.
   <span class="blueviolet">3. 문자열을 자유롭게 사용할수 있다는 말이다.</span> 
   <span class="blueviolet">4. 브라우저의 '요청문자열'부분은  내 api서버의 app.get(요청문자열,(req, res) => {..} 에서</span> 
-      {..}부분에서 다시 관세청 api 서버로 보낼 fetch(url)함수의 url로 변형되어 요청된다.
-</span>          </pre>
-          <h6 class="fw-bold">.env 파일 사용법 (환경변수 설정)</h6>
-          <pre class="fw-bold">
-<span class="fw-bold" style="width:580px;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;"><span>1. 프로젝트 폴더 루트에 .env 파일 만들기</span>
-1. 패키지 설치 : npm install dotenv
-2. server.js 코드 상단에 : require('dotenv').config() 실행 
-    변수를 기억하고 사용할 수 있게 된다.
-    객체는 process.env, 변수는 .env파일내에 설정한 변수 
-3. 사용 : process.env.변수이름 
-4. gitignore 에 .env파일은 올리지 않도록 설정하기.
-</span>          </pre>
+      {..}부분에서 다시 관세청 api 서버로 보낼 fetch(url)함수의 url로 변형되어 요청된다.</span> 
+
+<span class="blueviolet fw-bold" style="font-size:16px;"> 브라우저의 fetch('/unipuss') 에서</span>
+<span class="fw-bold" style="width:580px;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;"><span>1. 정적서버에서 제공된 페이지이고 출처가 내 api서버와 다를때는</span>
+  - fetch('http://localhost:3000/unipass') 형식으로 full url을 입력해줘야한다.
+  - fetch('/') 의 의미는 fetch('현재출처/')라는 의미이다.</span> 
+
+<span class="blueviolet fw-bold">const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);</span>
+<span class="fw-bold" style="width:580px;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;"><span>1. 브라우저에서 위와같이 요청하면</span>
+<span class="blueviolet fw-bold">[ server.js 코드에서는] </span>
+1. 'http://localhost:3000' 자신에게 요청하는 것인지 출처를 자신과 비교하고,
+2. 출처이후 물음표 나오기까지의 문자열 '/unipass'를 요청라우팅에 사용할 문자열로 받고,
+3. '?' 물음표 이후의 것은 req.qurey 객체에 속성과 값으로 저장한다. 
+4. 2.3.등을 활용하여 관세청에 보낼 url은 전혀 다를수도 있다.</span> 
+
+      
         </div>
         <div style="position: absolute;left:170px;display: inline-block;width:440px;text-align: right;">
           <pre class="fw-bold">
@@ -10196,35 +10200,40 @@ async function call() {
         <h6 class="blueviolet fw-bold">server.js 코드 ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h6>
         <pre class="fw-bold">
 const express = require('express');
-const app = express();
+const cors = require('cors');
 
-// 출처제한 해제, 다른폴더에서 브라우저 파일 제공시 다른출처이다
-app.use((req, res, next) => {
-   res.setHeader("Access-Control-Allow-Origin", "*");
-   next();
-});
+// 🔹 dotenv 로드 (맨 위에 위치)
+require('dotenv').config();
+
+const app = express();
+app.use(cors());
 
 // UNIPASS 중계 <span class="blueviolet">fetch.then(..).then(..).catch(..) 구문 대신, async await를 사용하는 구문</span>
 app.get('/unipass', async (req, res) => {
     const 관세청출처 = 'https://unipass.customs.go.kr:38010';
-    const 관세청api서비스명_통관진행정보 = 
-        '/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo?';
-    const 관세청승인키 = 'c290s255d192h253h000l090g5';
+    const 관세청api서비스명_통관진행정보 =
+      '/ext/rest/cargCsclPrgsInfoQry/retrieveCargCsclPrgsInfo?';
+
+    // 🔹 .env 에서 불러오기
+    const 관세청승인키 = process.env.UNIPASS_API_KEY;
+
     const BLNO = req.query.blno;
     const year = req.query.year;
 
-    const url = `${관세청출처}${관세청api서비스명_통관진행정보}
-        crkyCn=${관세청승인키}&mblNo=${BLNO}&blYy=${year}`;
+    const url =
+      `${관세청출처}${관세청api서비스명_통관진행정보}` +
+      `crkyCn=${관세청승인키}&mblNo=${BLNO}&blYy=${year}`;
 
-    const response = await fetch(url);  // Node 내장 fetch
+    const response = await fetch(url);
     const text = await response.text();
     res.send(text);
 });
 
-app.listen(3000, () => {
-    console.log("서버 실행중 → http://localhost:3000");
+// 🔹 포트도 .env 사용 가능
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`서버 실행중 → http://localhost:${PORT}`);
 });
-
         </pre>
 
 
@@ -10259,6 +10268,18 @@ app.listen(3000, () => {
       blYy=${year} 형태로 완성. ${year}의 year 는 내부코드의 변수값 전달
 <span class="blueviolet">전달할 url 예시</span>
    출처
+</span> </pre>
+          <h6 class="fw-bold">.env 파일 사용법 (환경변수 설정)</h6>
+          <pre class="fw-bold">
+<span class="fw-bold" style="width:580px;border:1px solid black;display: inline-block;padding:3px;background-color: aqua;"><span>1. 프로젝트 폴더 루트에 .env 파일 만들기</span>
+1. 패키지 설치 : npm install dotenv
+2. server.js 코드 상단에 : require('dotenv').config() 실행 
+    변수를 기억하고 사용할 수 있게 된다.
+    객체는 process.env, 변수는 .env파일내에 설정한 변수 
+3. 사용 : process.env.변수이름 
+4. gitignore 에 .env파일은 올리지 않도록 설정하기.
+5. .env파일에서 공백을 감싸는게 아니면 따옴표로 묶지 않아도 된다. 
+6. 한글도되고 소문자도 되는데 배포중 깨지거나 협업의 문제라고 한다. 
 </span>
         </pre>
 
