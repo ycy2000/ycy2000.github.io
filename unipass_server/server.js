@@ -8,6 +8,19 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 
+//받을정보
+app.get('/a', async (req, res) => {
+  //url : http://localhost:3000/a?받을정보유형='+받을정보유형
+  let 받을정보유형=req.query.받을정보유형;
+  let 응답='';
+  console.log('받을정보유형 : ' + 받을정보유형);
+  if (받을정보유형=='문자열') {console.log('if 문자열');응답='그냥문자열'}
+  if (받을정보유형=='xml') {console.log('if xml');응답=`<?xml version="1.0" encoding="UTF-8"?><response><item>
+        <hsCode>847130</hsCode><taxRate>8</taxRate></item></response>`}
+  if (받을정보유형=='html') {console.log('if html');응답=`<!doctype html><html><body><h1>h1</h1></body></html>`}
+  if (받을정보유형=='json') {console.log('if json');응답='{"name":"Kim","age":30}'}
+  res.send(응답);
+});
 // UNIPASS 중계
 app.get('/unipass', async (req, res) => {
     const 관세청출처 = 'https://unipass.customs.go.kr:38010';

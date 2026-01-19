@@ -17,9 +17,43 @@ th, td {
 th {
  background:#eee;
 }
+.btn {display:inline-block;width:60px;height:25px;vertical-align: top;}
+#요청결과 > div > div {display:inline-block;border:1px solid black;height:25px;vertical-align: top;margin-right:-1px;margin-bottom:-1px;}
+#요청결과 > div > div:nth-child(1) {width:150px;}
+#요청결과 > div > div:nth-child(2) {width:150px;}
 </style>
 </head>
 <body>
+  <div>
+    내 api서버에서 브라우저로 보내는 response객체의 body에 담을 정보
+    <button class="btn" onclick="요청보내기(this)">문자열</button>
+    <button class="btn" onclick="요청보내기(this)">xml</button>
+    <button class="btn" onclick="요청보내기(this)">html</button>
+    <button class="btn" onclick="요청보내기(this)">json</button>
+  </div>
+  <div id="요청결과">
+    <div>const res=await fetch(<span id="span받을정보"></span>);</div>
+    <div><div>console.log(res) : </div><div id="consolelog_res"></div></div>
+    <div><div>response body 정보유형</div><div id="res_text"></div></div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h3>UNIPASS 화물 진행정보 조회</h3>
 
@@ -34,6 +68,17 @@ BL번호:
 <div id="detail"></div>
 
 <script>
+async function 요청보내기(요소) {
+  const 받을정보유형 =요소.innerHTML;
+  document.querySelector('#span받을정보').innerHTML=받을정보유형;
+  const res=await fetch('http://localhost:3000/a?받을정보유형='+받을정보유형);
+  document.querySelector('#consolelog_res').innerHTML=res;
+  document.querySelector('#res_text').innerHTML=res.text(); //promise  객체
+
+  
+
+
+}
 async function call() { 
     const blno = document.getElementById("blno").value;
     const year = document.getElementById("year").value;
