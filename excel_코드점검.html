@@ -576,6 +576,8 @@
         <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 설치후 관련된 server.js 코드 익숙해지기</h6>
         <h6 class="fw-bold" title="개념_nodejs관련5">개념정리 메모, 나머지는 실제코드 중심</h6>
         <h6 class="blueviolet fw-bold">--------------------------------------------------------------------</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련삽입1">Promise객체, asyne await는 Promise객체와 관련</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련삽입2">response객체, Node.js 내부객체</h6>
         <h6 class="blueviolet fw-bold" title="개념_nodejs관련6">01. 한몸처럼 다루지만 정적서버와 api서버는 별개다. 브라우저 통신 개념 정리</h6>
         <h6 class="fw-bold" title="실습_nodejs관련01">02. 웹페이지 제공, 프로젝트 폴더내, 프로젝트 폴더 외부, 깃허브 페이지</h6>
         <h6 class="fw-bold" title="실습_nodejs관련011">03. 동기, 비동기, fetch, 체이닝문법과 async await 문법</h6>
@@ -9854,6 +9856,104 @@ form 데이터 파싱</pre>
       <div>
         dff
       </div>
+    <div id="개념_nodejs관련삽입1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">1. Promise객체 : 응답을 기다리는 객체, 주로 통신요청 객체</h6>
+        <pre class="fw-bold">
+    <span class="blueviolet">Promise객체는 미래에 도착할 결과가 담긴 상자
+    Promise라는 상자에 담겨 있는 객체 
+    내부에 문자열이 있는데 사용하려면 포장지를 벗기는 과정이 필요하다.</span>
+    const res = fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);</pre>
+        <h6 class="fw-bold">2. Promise객체 자체를 console.log로 확인한다면.</h6>
+        <pre class="fw-bold">
+    1. const 응답 = fetch("/data"); 
+        console.log(응답); => Promise&#60;Response>
+        <span class="blueviolet">"response가 담긴" Promise 객체</span>
+    <span class="blueviolet">2.</span> const 응답 = fetch("/data")<span class="blueviolet">.then</span>(res => res.text());
+        console.log(응답); => Promise&#60;String>
+        <span class="blueviolet">"res.text()는 response의 body내용을 문자열로 변환한것"을 담은 Promise 객체</span>
+    3. const 문자열 = fetch(url).then(res => res.text()).then(text => text);
+        console.log(응답); => Promise&#60;String>
+    4. const 응답 = fetch("/data").then(res => console.log(res.text()));
+        <span class="blueviolet">★내부에서는 res.text()를 문자열로 보여줄수 있다.★</span>
+        3.은 console 표시동작만 있고 return 값이 없다
+        console.log(응답); => Promise&#60;void> 아무것도 담긴것이 없는 상자라는 뜻
+        <span class="blueviolet">상자에 아무것도 담기지 않은 Promise객체이다.</span></pre>
+        <h6 class="fw-bold">3. Promise객체에는 .then 메소드가 있다</h6>
+        <pre class="fw-bold">
+    <span class="blueviolet">2의2에서처럼, Promise라는 포장를 벗겨서 내부를 보고, 내부에서는 사용할 수 있다.</span>
+    그렇지만 변수에 담긴 결과는 결국 Promise 객체이다.</pre>
+        <h6 class="fw-bold">3. .then : 앞의 결과를 받고난 후에 후속작업을 한다는 의미이다.</h6>
+        <h6 class="fw-bold">4. .then 구문 예시</h6>
+        <pre class="fw-bold">
+    <span class="blueviolet">const 문자열 = fetch(url)
+    .then(res => res.text())
+    .then(text => text);</span>
+  
+async function call() {
+  const 파싱문자열 = await fetch(url)
+    .then(res => res.text())
+    .then(text => text);
+
+  // 여기서 파싱문자열 === 실제 문자열
+}
+왜 문자열이 되나?
+fetch(...) → Promise<Response>
+
+.then(res => res.text()) → Promise<String>
+
+.then(text => text) → Promise<String>
+
+await → 그 Promise가 resolve될 때까지 대기
+
+resolve된 문자열 값을 파싱문자열에 대입
+
+참고로 더 간단히도 가능
+js
+코드 복사
+const res = await fetch(url);
+const 파싱문자열 = await res.text();
+의미는 완전히 동일합니다.
+  
+  
+  </pre>
+
+
+
+
+
+
+
+
+
+        <h6 class="fw-bold">4. async await 문법은 Promise객체 표현을 "더" 유연하게 해주는 문법이다.</h6>
+        <pre class="fw-bold">
+    1. async : 함수앞에 붙이고, 함수내에서 await 를 사용할수 있다. 
+       사용하지 않고 그냥 .then 사용도 가능.
+       <span class="blueviolet">async function call() { 
+       const res = await fetch(url);
+       }
+      app.get('/unipass', async (req, res) => {
+         .....
+         const response = await fetch(url);
+         const text = await response.text();
+         res.send(text);
+      });</span>
+    2. Promise 객체가 아닌것에도 붙일수 있지만 안붙인거와 같은 상황 
+    3. await 사용해야만 하는 표현이 있다. 
+    res.then(  </pre>
+      </div>
+    </div>
+    <div id="개념_nodejs관련삽입2" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">response 객체</h6>
+        <pre class="fw-bold">
+
+
+
+        </pre>
 
     </div>
     <div id="개념_nodejs관련6">
@@ -11281,6 +11381,9 @@ app.use(express.json());
 요청 Body에 JSON이 있으면
 req.body 로 변환해서 다음 핸들러에 전달
         </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"><a href="https://www.inflearn.com/blogs/8023?gad_source=1&gad_campaignid=23467079245&gbraid=0AAAAADAClSDFj6VLDRXlS0fYHXF1XZtlI&gclid=Cj0KCQiAprLLBhCMARIsAEDhdPcSRsgLv6CpmbULyvGWIxpzP8UC3iZTm_hrSjqG6U0l-Kl-vzrVmMcaAgqIEALw_wcB" target="_blank">fetch와 axios 비교</a> </h6>
       </div>
     </div>
 
