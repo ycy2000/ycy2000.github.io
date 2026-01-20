@@ -577,6 +577,7 @@
         <h6 class="blueviolet fw-bold" title="통신_구현할것">01. 구현할것, 내api서버는 코드만, 정적서버는 깃허브, 통신객체, response객체</h6>
         <h6 class="fw-bold" title="통신_DOMParser">02. DOMParser, npm uninstall 패키지, server.js 코드변경시 서버 재시작</h6>
         <h6 class="blueviolet fw-bold" title="통신_npm설치와사용">03. npm 설치와 사용, a) npm install 패키지, b) server.js 에 패키지 로드 후 사용 </h6>
+        <h6 class="fw-bold" title="통신_xml다루기">04. 브라우저에서 xml다루기</h6>
 
 
 
@@ -9287,6 +9288,49 @@ npm 설치된 목록이
         <h6 class="fw-bold">npm install express</h6>
         <pre class="fw-bold">
         </pre>
+      </div>
+    </div>
+    <div id="통신_xml다루기" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+1. <span class="blueviolet">const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);</span> 
+2. <span class="blueviolet">const xmlText = await res.text();</span>
+3. 2가 xml이라면
+4. 파싱기능 함수 객체 생성
+    <span class="blueviolet">const parser = new DOMParser();</span> // 내장객체
+5. XMLDocument 객체로 변환 "text/xml" 중요, HTML이면 "text/html"
+    <span class="blueviolet">const xml = parser.parseFromString(xmlText, "text/xml"); </span>
+    → console.log(Object.prototype.toString.call(xml).slice(8, -1)); => XMLDocument
+    → 현재로써 이미 DOM객체이다. 
+<span class="blueviolet">엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다.  </span></pre>
+        <h6 class="blueviolet fw-bold">-------------------- NodeList 사용법 --------------------</h6>
+        <pre class="fw-bold">
+1. parentNode : 부모 노드
+2. childNodes : 자식 노드 리스트
+3. firstChild : 첫 번째 자식 노드
+4. lastChild : 마지막 자식 노드
+5. nextSibling : 다음 형제 노드
+6. previousSibling : 이전 형제 노드
+
+- &#60;cargTrcnRelaBsopTpcd>보세운송 신고 접수&#60;/cargTrcnRelaBsopTpcd>
+- &#60;cargTrcnRelaBsopTpcd>보세운송 신고 수리&#60;/cargTrcnRelaBsopTpcd>
+<span class="blueviolet fw-bold">태그이름이 'cargTrcnRelaBsopTpcd' 이고 textContent 가 '보세운송 신고 수리'인 요소</span>
+let nodes = xml.querySelectorAll("cargTrcnRelaBsopTpcd");
+let target = [...nodes].find(node => node.textContent.trim() === "보세운송 신고 수리");
+<span class="blueviolet fw-bold">#result > div > span:nth-of-type(2) 지울때</span>
+nodes = xml.querySelectorAll("#result > div > span:nth-of-type(2)");
+nodes.forEach( e => e.innerHTML='');
+
+
+
+        </pre>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
       </div>
     </div>
     

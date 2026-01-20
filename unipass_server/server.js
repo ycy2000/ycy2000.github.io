@@ -1,7 +1,6 @@
 
 const express = require('express');
 const cors = require('cors');
-const { DOMParser, XMLSerializer } = require('xmldom');
 
 // 🔹 dotenv 로드 (맨 위에 위치)
 require('dotenv').config();

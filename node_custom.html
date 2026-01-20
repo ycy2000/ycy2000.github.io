@@ -21,6 +21,11 @@ th {
 #요청결과 > div > div {padding:3px 5px; display:inline-block;border:1px solid black;height:25px;vertical-align: top;margin-right:-1px;margin-bottom:-1px;}
 #요청결과 > div > div:nth-child(1) {width:250px;}
 #요청결과 > div > div:nth-child(2) {width:250px;}
+#result > div > span {padding:2px 2px; height:20px; display:inline-block;border:1px solid black; margin-right:-1px; margin-bottom:-1px;vertical-align: top;}
+#result > div > span:nth-of-type(1) {width:70px;}
+#result > div > span:nth-of-type(2) {width:200px;}
+#result > div:nth-of-type(2) > span {background-color: aqua;}
+#result > div:nth-of-type(3) > span {background-color: aqua;}
 </style>
 </head>
 <body>
@@ -39,37 +44,136 @@ th {
     <div id="body문자열"></div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>UNIPASS 화물 진행정보 조회</h3>
+BL번호:<input id="blno" value="SGN501734600">년도:<input id="year" value="2025">
+<button onclick="call()">조회</button> <button onclick="call_xml()">call_xml()</button> <button onclick="임시()">임시</button>
+<div id="result" style="margin-top:5px;">
+  <div><span>진행정보</span><span></span></div>
+  <div><span>반출일시</span><span></span></div>
+  <div><span>면허</span><span></span></div>
+  <div><span>입항일시</span><span></span></div>
+  <div><span>cy</span><span></span></div>
+  <div><span>선사</span><span></span></div>
+  <div><span>선명</span><span></span></div>
+  <div><span>컨개수</span><span></span></div>
+  <div><span>컨번호</span><span></span></div>
+  <div><span>포딩</span><span></span></div>
 
-BL번호:
-<input id="blno" value="SGN501734600">
-년도:
-<input id="year" value="2025">
+  <div>
 
-<button onclick="call()">조회</button>
+  </div>
+</div>
+<div id="call_xml"></div>
 
-<div id="basic"></div>
-<div id="detail"></div>
 
 <script>
+function 임시() {
+  document.querySelectorAll("#result > div > span:nth-of-type(2)").forEach( e => e.innerHTML='');
+}
+async function call_xml() {
+  // (fetch 부분 생략 가능)
+    let xmlText=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><cargCsclPrgsInfoQryVo><csclPrgsStts>수입신고수리</csclPrgsStts><vydf>2511N</vydf><rlseDtyPridPassTpcd>N</rlseDtyPridPassTpcd><prnm>FROZEN SHRIMP</prnm><ldprCd>VNCLI</ldprCd><shipNat>LR</shipNat><blPt>S</blPt><dsprNm>부산항</dsprNm><etprDt>20251222</etprDt><prgsStCd>CAGE12</prgsStCd><msrm>0</msrm><wghtUt>KG</wghtUt><dsprCd>KRPUS</dsprCd><cntrGcnt>1</cntrGcnt><cargTp>수입 일반화물</cargTp><shcoFlcoSgn>NSSL</shcoFlcoSgn><pckGcnt>2373</pckGcnt><etprCstm>부산세관</etprCstm><shipNm>STARSHIP MERCURY</shipNm><hblNo></hblNo><prcsDttm>20260105111416</prcsDttm><frwrSgn></frwrSgn><spcnCargCd></spcnCargCd><ttwg>15188.8</ttwg><ldprNm>Cat Lai</ldprNm><dclrDelyAdtxYn>N</dclrDelyAdtxYn><mtTrgtCargYnNm>N</mtTrgtCargYnNm><cargMtNo>25NSSLL066I0013</cargMtNo><cntrNo>FBIU5685852</cntrNo><mblNo>SGN501734600</mblNo><blPtNm>Simple</blPtNm><lodCntyCd>VN</lodCntyCd><prgsStts>반출완료</prgsStts><shcoFlco>남성해운주식회사</shcoFlco><pckUt>GT</pckUt><shipNatNm>라이베리아</shipNatNm><agnc>남성해운(주)</agnc><frwrEntsConm></frwrEntsConm></cargCsclPrgsInfoQryVo><tCnt>44</tCnt><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105111416</prcsDttm><dclrNo>030115972600000021</dclrNo><rlbrDttm>2026-01-05 11:14:00</rlbrDttm><wght>6478.8</wght><rlbrBssNo>2356326010077M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105104232</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105102000</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105101823</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105094817</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105093122</prcsDttm><dclrNo>030115972600000010</dclrNo><rlbrDttm>2026-01-05 09:31:00</rlbrDttm><wght>380</wght><rlbrBssNo>2356326010024M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105093120</prcsDttm><dclrNo>030115972600000004</dclrNo><rlbrDttm>2026-01-05 09:31:00</rlbrDttm><wght>380</wght><rlbrBssNo>2356326010025M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105091918</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102154554</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102105314</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102104814</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094813</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094807</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094455</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094449</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102082254</prcsDttm><dclrNo>030115972600000001</dclrNo><rlbrDttm>2026-01-02 08:22:00</rlbrDttm><wght>760</wght><rlbrBssNo>2356325120864M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231143352</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231142230</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231132230</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231132225</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251229091751</prcsDttm><dclrNo>030115972500001769</dclrNo><rlbrDttm>2025-12-29 09:18:00</rlbrDttm><wght>1550</wght><rlbrBssNo>2356325120734M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251229085602</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226172651</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226171558</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226170419</prcsDttm><dclrNo>030115972500001763</dclrNo><rlbrDttm>2025-12-26 17:04:00</rlbrDttm><wght>5640</wght><rlbrBssNo>2356325120695M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226164554</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226090727</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172449</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172226</prcsDttm><dclrNo>11-2BA2025300893619-02</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>1530</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172225</prcsDttm><dclrNo>11-2BA2025300893619-01</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>9318</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172222</prcsDttm><dclrNo>11-2BA2025200891728-02</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>269.5</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172221</prcsDttm><dclrNo>11-2BA2025200891728-01</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>815.5</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224144955</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224141944</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224095850</prcsDttm><dclrNo>030115972500001521</dclrNo><rlbrDttm>2025-12-24 09:58:46</rlbrDttm><wght>15188.8</wght><rlbrBssNo>030D8030F66025406892</rlbrBssNo><bfhnGdncCn>[부가사항] 동일냉장(주)의 장치기간은 최대 6 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>보세운송 반입</rlbrCn><shedSgn>03011597/001</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251224071007</prcsDttm><dclrNo>03077016250523364A</dclrNo><rlbrDttm>2025-12-24 07:05:27</rlbrDttm><wght>15188.8</wght><rlbrBssNo>030D8030F66025406892</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>보세운송 반출</rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223162034</prcsDttm><dclrNo>030D8030F66025406892</dclrNo><rlbrDttm>(도)03011597동일냉장(주</rlbrDttm><wght>15188.8</wght><rlbrBssNo>(주)에스에스물류</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223161734</prcsDttm><dclrNo>030D8030F66025406892</dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 접수</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223003443</prcsDttm><dclrNo>03077016250517014A</dclrNo><rlbrDttm>2025-12-23 00:20:18</rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn>[부가사항] 신선대감만터미널(주) 신선대CY의 장치기간은 최대 3 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>입항 반입</rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251222170422</prcsDttm><dclrNo>25NSSLL066I00000001</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 운항정보 정정</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251222170421</prcsDttm><dclrNo>25NSSLL066I</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항보고 수리</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219160104</prcsDttm><dclrNo>25030149827</dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo>하선반입기한:2025-12-26</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>하선신고 수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219160028</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 심사완료</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219141042</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 제출</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo></cargCsclPrgsInfoQryRtnVo>`;
+  // 보기 좋게 들여쓰기 정리
+  const pretty = formatXML(xmlText);
+
+  document.querySelector('#call_xml').innerHTML =
+    `<pre>${pretty.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</pre>`;
+}
+
+// XML 들여쓰기 함수
+function formatXML(xml) {
+  let formatted = '';
+  let reg = /(>)(<)(\/*)/g;
+  xml = xml.replace(reg, '$1\r\n$2$3');
+  let pad = 0;
+  xml.split('\r\n').forEach(node => {
+    let indent = 0;
+    if (node.match(/.+<\/\w[^>]*>$/)) indent = 0;
+    else if (node.match(/^<\/\w/)) pad -= 1;
+    else if (node.match(/^<\w[^>]*[^\/]>.*$/)) indent = 1;
+
+    formatted += '  '.repeat(pad) + node + '\r\n';
+    pad += indent;
+  });
+  return formatted.trim();
+}
+
+async function call() { 
+  if (1=='response은후 코드를 위해 작동중지') {
+    const blno = document.getElementById("blno").value;
+    const year = document.getElementById("year").value;
+    // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;
+    const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
+    const xmlText = await res.text();
+  }
+
+    let xmlText=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><cargCsclPrgsInfoQryVo><csclPrgsStts>수입신고수리</csclPrgsStts><vydf>2511N</vydf><rlseDtyPridPassTpcd>N</rlseDtyPridPassTpcd><prnm>FROZEN SHRIMP</prnm><ldprCd>VNCLI</ldprCd><shipNat>LR</shipNat><blPt>S</blPt><dsprNm>부산항</dsprNm><etprDt>20251222</etprDt><prgsStCd>CAGE12</prgsStCd><msrm>0</msrm><wghtUt>KG</wghtUt><dsprCd>KRPUS</dsprCd><cntrGcnt>1</cntrGcnt><cargTp>수입 일반화물</cargTp><shcoFlcoSgn>NSSL</shcoFlcoSgn><pckGcnt>2373</pckGcnt><etprCstm>부산세관</etprCstm><shipNm>STARSHIP MERCURY</shipNm><hblNo></hblNo><prcsDttm>20260105111416</prcsDttm><frwrSgn></frwrSgn><spcnCargCd></spcnCargCd><ttwg>15188.8</ttwg><ldprNm>Cat Lai</ldprNm><dclrDelyAdtxYn>N</dclrDelyAdtxYn><mtTrgtCargYnNm>N</mtTrgtCargYnNm><cargMtNo>25NSSLL066I0013</cargMtNo><cntrNo>FBIU5685852</cntrNo><mblNo>SGN501734600</mblNo><blPtNm>Simple</blPtNm><lodCntyCd>VN</lodCntyCd><prgsStts>반출완료</prgsStts><shcoFlco>남성해운주식회사</shcoFlco><pckUt>GT</pckUt><shipNatNm>라이베리아</shipNatNm><agnc>남성해운(주)</agnc><frwrEntsConm></frwrEntsConm></cargCsclPrgsInfoQryVo><tCnt>44</tCnt><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105111416</prcsDttm><dclrNo>030115972600000021</dclrNo><rlbrDttm>2026-01-05 11:14:00</rlbrDttm><wght>6478.8</wght><rlbrBssNo>2356326010077M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105104232</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105102000</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105101823</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105094817</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105093122</prcsDttm><dclrNo>030115972600000010</dclrNo><rlbrDttm>2026-01-05 09:31:00</rlbrDttm><wght>380</wght><rlbrBssNo>2356326010024M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105093120</prcsDttm><dclrNo>030115972600000004</dclrNo><rlbrDttm>2026-01-05 09:31:00</rlbrDttm><wght>380</wght><rlbrBssNo>2356326010025M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105091918</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102154554</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102105314</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102104814</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094813</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094807</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094455</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094449</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102082254</prcsDttm><dclrNo>030115972600000001</dclrNo><rlbrDttm>2026-01-02 08:22:00</rlbrDttm><wght>760</wght><rlbrBssNo>2356325120864M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231143352</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231142230</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231132230</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231132225</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251229091751</prcsDttm><dclrNo>030115972500001769</dclrNo><rlbrDttm>2025-12-29 09:18:00</rlbrDttm><wght>1550</wght><rlbrBssNo>2356325120734M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251229085602</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226172651</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226171558</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226170419</prcsDttm><dclrNo>030115972500001763</dclrNo><rlbrDttm>2025-12-26 17:04:00</rlbrDttm><wght>5640</wght><rlbrBssNo>2356325120695M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226164554</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226090727</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172449</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172226</prcsDttm><dclrNo>11-2BA2025300893619-02</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>1530</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172225</prcsDttm><dclrNo>11-2BA2025300893619-01</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>9318</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172222</prcsDttm><dclrNo>11-2BA2025200891728-02</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>269.5</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172221</prcsDttm><dclrNo>11-2BA2025200891728-01</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>815.5</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224144955</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224141944</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224095850</prcsDttm><dclrNo>030115972500001521</dclrNo><rlbrDttm>2025-12-24 09:58:46</rlbrDttm><wght>15188.8</wght><rlbrBssNo>030D8030F66025406892</rlbrBssNo><bfhnGdncCn>[부가사항] 동일냉장(주)의 장치기간은 최대 6 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>보세운송 반입</rlbrCn><shedSgn>03011597/001</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251224071007</prcsDttm><dclrNo>03077016250523364A</dclrNo><rlbrDttm>2025-12-24 07:05:27</rlbrDttm><wght>15188.8</wght><rlbrBssNo>030D8030F66025406892</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>보세운송 반출</rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223162034</prcsDttm><dclrNo>030D8030F66025406892</dclrNo><rlbrDttm>(도)03011597동일냉장(주</rlbrDttm><wght>15188.8</wght><rlbrBssNo>(주)에스에스물류</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223161734</prcsDttm><dclrNo>030D8030F66025406892</dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 접수</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223003443</prcsDttm><dclrNo>03077016250517014A</dclrNo><rlbrDttm>2025-12-23 00:20:18</rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn>[부가사항] 신선대감만터미널(주) 신선대CY의 장치기간은 최대 3 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>입항 반입</rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251222170422</prcsDttm><dclrNo>25NSSLL066I00000001</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 운항정보 정정</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251222170421</prcsDttm><dclrNo>25NSSLL066I</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항보고 수리</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219160104</prcsDttm><dclrNo>25030149827</dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo>하선반입기한:2025-12-26</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>하선신고 수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219160028</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 심사완료</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219141042</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 제출</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo></cargCsclPrgsInfoQryRtnVo>`;
+    // XML 파싱
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml");
+    //엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다. <tCnt>44</tCnt>
+    // body처럼 let root=xml.documentElement; // <?xml부분 제외한 전체를 담은 태그
+    // xml에서는 innerHTML(X), textContent(O)
+    document.querySelectorAll("#result > div > span:nth-of-type(2)").forEach( e => e.innerHTML='');
+
+    let 결과정보제목들 =document.querySelectorAll("#result > div > span:nth-of-type(1)");
+
+    let 진행단계 = xml.querySelectorAll("tCnt")[0];
+    if (진행단계==null) { // 찾은거 첫번째
+      [...결과정보제목들].find(ele => ele.innerHTML === "진행정보").nextElementSibling.innerHTML="없음";return;
+    }
+    console.log('진행단계 : ', 진행단계);  // 44
+    
+    [...결과정보제목들].find(ele => ele.innerHTML === "진행정보").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > prgsStts").textContent;
+    [...결과정보제목들].find(ele => ele.innerHTML === "입항일시").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > prcsDttm").textContent;
+
+    //[...결과정보제목들].find(ele => ele.innerHTML === "cy").nextElementSibling.innerHTML=
+    //    xml.querySelector("cargCsclPrgsInfoQryVo > csclPrgsStts").textContent;
+    //<cargTrcnRelaBsopTpcd>입항적재화물목록 제출</cargTrcnRelaBsopTpcd> 의 부모의 자식노드중 sheNm
+
+    [...결과정보제목들].find(ele => ele.innerHTML === "선사").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shcoFlco").textContent;
+    [...결과정보제목들].find(ele => ele.innerHTML === "선명").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shipNm").textContent;
+    [...결과정보제목들].find(ele => ele.innerHTML === "컨개수").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrGcnt").textContent;
+    [...결과정보제목들].find(ele => ele.innerHTML === "컨번호").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrNo").textContent;
+    [...결과정보제목들].find(ele => ele.innerHTML === "포딩").nextElementSibling.innerHTML=
+        xml.querySelector("cargCsclPrgsInfoQryVo > frwrEntsConm").textContent;
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+  if (1=='response은후 코드를 위해 작동중지') {
+    let 결과문자열='xml 문서 노드의 자식요소 노드<br>';
+    for (let i=0; i<nodeList.length;i++) {
+      if(nodeList[i].nodeType==1) {
+        //결과문자열 += nodeList[i].nodeName + '<br>';
+        결과문자열 += nodeList[i].textContent + '<br>';
+      }
+    }
+    결과div.innerHTML=결과문자열;
+  }  
+
+}
+
 async function 요청보내기(요소) {
   const 받을정보유형 =요소.innerHTML;
   document.querySelector('#span받을정보').innerHTML=받을정보유형;
@@ -82,54 +186,6 @@ async function 요청보내기(요소) {
   
 
 
-}
-async function call() { 
-    const blno = document.getElementById("blno").value;
-    const year = document.getElementById("year").value;
-    // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;
-    const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
-    const xmlText = await res.text();
-
-    // XML 파싱
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlText, "text/xml");
-
-    // 기본정보
-    const basicNode = xml.getElementsByTagName("cargCsclPrgsInfoQryVo")[0];
-    if (!basicNode) {
-        document.getElementById("basic").innerHTML = "조회 결과 없음";
-        return;
-    }
-
-    const fields = ["mblNo","hblNo","prgsStts","shipNm","arvlDt"];
-    let basicHtml = "<h4>기본 정보</h4><table><tr>";
-
-    fields.forEach(f => basicHtml += `<th>${f}</th>`);
-    basicHtml += "</tr><tr>";
-
-    fields.forEach(f => {
-        const v = basicNode.getElementsByTagName(f)[0]?.textContent || "";
-        basicHtml += `<td>${v}</td>`;
-    });
-    basicHtml += "</tr></table>";
-
-    document.getElementById("basic").innerHTML = basicHtml;
-
-    // 진행 이력
-    const detailNodes = xml.getElementsByTagName("cargCsclPrgsInfoDtlQryVo");
-    let detailHtml = "<h4>진행 이력</h4><table><tr><th>처리일시</th><th>상태</th><th>장소</th></tr>";
-
-    for (let i=0; i<detailNodes.length; i++) {
-        const n = detailNodes[i];
-        const dttm = n.getElementsByTagName("prcsDttm")[0]?.textContent || "";
-        const stts = n.getElementsByTagName("prgsStts")[0]?.textContent || "";
-        const place = n.getElementsByTagName("wkngPtNm")[0]?.textContent || "";
-
-        detailHtml += `<tr><td>${dttm}</td><td>${stts}</td><td>${place}</td></tr>`;
-    }
-    detailHtml += "</table>";
-
-    document.getElementById("detail").innerHTML = detailHtml;
 }
 </script>
 
