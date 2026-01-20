@@ -570,8 +570,13 @@
     <div class="개별카테고리" id="통신_Nodejs">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1, 서버, 웹브라우저, URL, 프로젝트 폴더, CORS</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install, package.json</h6>
+        <h6 class="fw-bold" title="개념_nodejs관련3">개념정리 3, 프로젝트 폴더 구조, npm 설치필요한것과 필요없는것</h6>
+        <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 설치후 관련된 server.js 코드 익숙해지기</h6>
         <h6 class="blueviolet fw-bold" title="통신_구현할것">01. 구현할것, 내api서버는 코드만, 정적서버는 깃허브, 통신객체, response객체</h6>
-        <h6 class="fw-bold" title="통신_DOMParser">02. const xml = parser.parseFromString(xmlText, "text/xml");</h6>
+        <h6 class="fw-bold" title="통신_DOMParser">02. DOMParser, npm uninstall 패키지, server.js 코드변경시 서버 재시작</h6>
+        <h6 class="blueviolet fw-bold" title="통신_npm설치와사용">03. npm 설치와 사용, a) npm install 패키지, b) server.js 에 패키지 로드 후 사용 </h6>
 
 
 
@@ -594,10 +599,7 @@
       </div>
 
       <div>
-        <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1, 서버, 웹브라우저, URL, 프로젝트 폴더, CORS</h6>
-        <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install, package.json</h6>
-        <h6 class="fw-bold" title="개념_nodejs관련3">개념정리 3, 프로젝트 폴더 구조, npm 설치필요한것과 필요없는것</h6>
-        <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 설치후 관련된 server.js 코드 익숙해지기</h6>
+
         <h6 class="fw-bold" title="개념_nodejs관련5">개념정리 메모, 나머지는 실제코드 중심</h6>
         <h6 class="blueviolet fw-bold">--------------------------------------------------------------------</h6>
         <h6 class="fw-bold" title="개념_nodejs관련삽입1">Promise객체, asyne await는 Promise객체와 관련</h6>
@@ -8693,6 +8695,421 @@ header .menu li:nth-child(2)
     </div>
   </div>
   <div title="통신,서버전체">
+    <div id="개념_nodejs관련1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">서버</h6>
+        <pre class="fw-bold">
+서버(server)는 클라이언트를 거쳐 네트워크를 통해 서비스하는 컴퓨터를 의미한다. 
+<span class="blueviolet">이름 그대로 번역해서 '제공자'라고 하면 와닿을 것이다</span>
+1. 정적서버 : 파일요청이 들어오면 파일을 그대로 보내줌 
+2. api서버 : 요청이 들어오면 요청에 따라 정해진 로직을 실행하여 결과를 반환. </pre>
+        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
+        <pre class="fw-bold">
+- 웹페이지(HTML)를 보여주는 프로그램. 크롬, 엣지, 사파리 등
+- 개발자 도구에서 웹페이지, 정보이동(네트워크)등을 볼 수 있다. 
+  노출이 되면 안되는 정보가 올라가지 않도록 주의를 요한다.
+- <span class="blueviolet">브라우저에서 요청하는 정보에 대해서 보안상의 이유로 CORS정책이 있다.</span>
+- 브라우저는 동일출처가 아니면, CORS : 서로다른 출처의 리소스 공유 설정에서 해제설정이 필요</pre>
+        <h6 class="blueviolet fw-bold">URL(Uniform Resource Locator)의 구조 : 정보의 <u>고유한</u> 주소, URI(출처)</h6>
+        <pre class="fw-bold">
+URI(출처) : <span class="blueviolet">[프로토콜]://[호스트]:[포트]</span> 예 : https://api.example.com:443
+프로토콜 :	어떻게 통신할지, https://   호스트 :	누구에게 요청할지, api.example.com
+포트 :	어떤 문으로 들어갈지, :443      URI자체로 URL이 될 수 있다. 
+
+URL : 세부주소까지
+[프로토콜]://[호스트]:[포트]/[경로]?[쿼리]#프래그먼트
+예: https://api.example.com:443/v1/users?id=3#profile
+경로 :	무엇을 요청할지, /v1/Users 
+? : ?이후에 api통신에 필요한 정보
+쿼리 : api처리를 위한 변수값, ?id=3
+#프래그먼트
+
+2️⃣ 가장 기본적인 통신 프로토콜
+🌐 HTTP / HTTPS (웹 & API 통신)
+http://example.com
+https://api.example.com/users
+
+항목	설명
+http	평문 통신
+https	TLS 암호화 통신 (실무 표준)
+사용처	웹 페이지, REST API, CDN, SPA
+
+📌 API 호출 = HTTP 통신</pre>
+        <h6 class="blueviolet fw-bold">★ 서버 ↔ 서버 통신, CORS 개념 자체가 없음</h6>
+        <pre class="fw-bold">
+api통신이 아닌것(ex:링크,https://example.com)은 CORS정책이 없고,
+api통신(요청정보에 대한 로직처리가 있는것)은 브라우저의 요청인 경우에 CORS정책이 적용된다.
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">CORS정책 자체가 브라우저에서 API통신을 요청할때 적용되므로,</span>
+브라우저의 통신객체 fetch 실행시 
+출처가 동일출처가 아니면 CORS에 막혀 정보를 얻을수 없는 경우가 대부분이고
+CORS정책으로 허용되는 서버(내 서버 또는 개발시에 내 컴퓨터에 설치하는 
+Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ 서버 통신'이 이루어지게 한다. </pre>
+        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
+        <pre class="fw-bold">
+1. 웹상에 API통신을 할 수 있는 서버를 모두 볼수 있게 배포하려면 도메인이 있어야 한다.
+   [프로토콜]://[호스트]:[포트]에서 <span class="blueviolet">[호스트]:[포트]부분, 도메인</span> 
+2. 무료로 서버를 활용하려면 여러가지 방법 중 
+   Render사이트에서 도메인(공인주소)을 만들수 있다. 
+3. 2.를 활용하기 전에 개발단계에서 
+   <span class="blueviolet">서버역할을 하는 환경을 만들기 위해 Node.js를 활용한다.</span>
+4. Node.js를 내 컴퓨터에 설치하면 npm이 함께 설치되는데 
+    npm을 통해 필요한 패키지를 설치할수 있다. 
+5. Node.js는 환경일뿐이고 가장 중요한 설치 패키지인 express가 있다. 
+6. Express = Node.js에서 웹서버를 만드는 핵심 프레임워크이고
+   나머지 것들은 Express를 실행하고 관리하기 위한 보조 구성요소라고 이해한다.
+7. Node.js는 터미널(cmd등)에서 실행한다. 브라우저에서 실행하는게 아니라는 것. 
+   서버구성이 완료되었다면 <span class="blueviolet">서버에서 실행한다</span>라고 이해한다.
+8. 따라서 Node.js 서버와 서버간의 통신이 이루어지게 된다.</pre>
+        <img src="portal/images/문서연결_샷컷/개념_nodejs관련1_이미지1.png" alt="이미지없음">
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">프로젝트 폴더</h6>
+        <pre class="fw-bold">
+1. 임의의 위치에 서버구성을 위해 만든 폴더
+2. 폴더 자체가 서버라고 일단 이해한다. 내부에 모든 로직이 정의되어 있다.
+   a) 서버를 켜고 켜진 상태로 유지, b) 요청이 들어오면 로직대로 실행한다. 
+<span class="blueviolet">3. 브라우저의 요청 받기 - 요청을 로직대로 가공 - 목적지 서버에 요청 - 응답 받기 - 응답 처리</span>
+==== 서버 만들기, <span class="blueviolet">프로젝트 폴더 안에서 터미널에서 하는 것</span> ====
+1. Node.js설치 : 환경이 만들어짐. 버전확인(어디서나) node -v
+2. npm init : 아무것도 없을때 한번만, package.json 파일이 생긴다.(npm 설치목록 및 기본정보)
+3. Node.js설치와 함께 설치된 npm 으로 필요한 패키지 설치
+   a) (가장 먼저) npm install express : package.json
+       다음 함수 사용 가능해짐 (대표적인 것)</pre>
+        <h6 class="blueviolet fw-bold">브라우저에서 서버로 통신이 이루어질때 CORS 해결이 필요하다. </h6>
+        <pre class="fw-bold">
+==== 브라우저가 서버에서 제공(http://로 시작)되고 있다는 전제 ====
+1. 동일출처(URI)가 아닐때 : [프로토콜]://[호스트]:[포트], [프로토콜]://[도메인]
+2. 브라우저가 출처가 서버포트와 다를때 (프로젝트 폴더 밖의 파일)</pre>
+        <h6 class="blueviolet fw-bold">★서버와의 통신이 가능한★  </h6>
+        <h6 class="fw-bold">“현재 실행 중인 웹페이지는 <span class="blueviolet">file:// 로 로컬 파일을 연 것이 아니라,</span> </h6>
+        <h6 class="fw-bold">http:// 프로토콜을 통해 <span class="blueviolet">서버에서 제공되는 페이지이다.</span>”</h6>
+        <pre class="fw-bold">
+✅ 왜 이 구분이 중요했는가
+구분	                  file:// 로 연 경우	                http:// 로 연 경우
+실행 위치	           로컬 파일 직접 실행	                웹 서버를 통해 실행
+CORS 제약	           매우 엄격하거나 fetch 제한	   정상적인 API 요청 가능
+Node.js 서버 연동     불가능 또는 제한	                정상 동작
+관세청 API 호출	     브라우저에서 차단 가능성 큼	   서버 통해 정상 가능
+✅ 결론
+지금 사용 중인 브라우저 페이지가 http:// 로 열려 있다면,
+file:// 문제와 CORS 문제의 대부분은 이미 해결된 상태입니다.
+따라서
+👉 “file://로 열어서 안 되는 상황은 아니다”
+라고 이해하시면 정확합니다.</pre>
+      </div>
+    </div>
+    <div id="개념_nodejs관련2" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">npm init -y</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">터미널에서 프로젝트 폴더에서 : npm init -y 실행하면</span>
+npm init 실행할땐 하나하나 엔터 쳐야되는데 -y하면 
+물어보지 않고 기본값으로 package.json 파일을 생성해준다.
+<span class="blueviolet">기존 값이 있다면 없는 값의 기본값만 적용시키는 듯 하다.</span>
+<span class="blueviolet">=== package.json 내부 코드 예시, dependencies는 패키지 설치 내역 ===</span>
+{
+  <span class="blueviolet">"name": "unipass_server",</span>
+  "version": "1.0.0",
+  <span class="blueviolet">"private": true,</span>
+  "description": "",
+  <span class="blueviolet">"main": "server.js",</span>
+  <span class="blueviolet">"scripts":</span> {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  <span class="blueviolet">"keywords": [],</span>
+  "author": "",
+  "license": "ISC",
+  <span class="blueviolet">"type": "commonjs",</span>
+  <span class="blueviolet">"dependencies":</span> {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}    </pre>
+        <h6 class="blueviolet fw-bold">npm install</h6>
+        <pre class="fw-bold">
+1. 터미널에서 npm install express 처럼 설치하지 않고, package.json파일 안에
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+  이렇게 북붙 하였다면, 설치한 것이 아닌 상태인데
+  <span class="blueviolet">npm install 은 dependencies 안에 항목들을 모두 설치해준다.</span></pre>
+        <h6 class="blueviolet fw-bold">npm install 패키지</h6>
+        <h6 class="blueviolet fw-bold">패키지 사용하려면 server.js에서 패키지 불러와야함</h6>
+        <pre class="fw-bold">
+    1. const express = require('express');
+         패키지를 불러온다, 변수이름은 아무거나, <span class="blueviolet">패키지는 함수다.</span>
+    2. const app = express(); <span class="blueviolet">패키지는 객체의 인스턴스를 생성한다.</span>
+         패키지 함수를 실행하여 패키지함수의 인스턴스를 생성하면,
+         express 패키지 객체의 프로토타입의 함수들을 상속받는다. 
+    3. app.get(), app.use(), ... 상속받은 함수를 사용한다.
+    
+        </pre>
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">node_modules 폴더</h6>
+        <pre class="fw-bold">
+a) <span class="blueviolet">'npm install 패키지'</span> 를 설치하면 패키지에 필요한 파일들이 node_modules에 생성된다. 
+    폴더가 없으면 폴더생성 + 자료생성, 있으면 그 안에 자료가 생성된다.
+    '패키지 설치 = dependencies 를 추가' 할때마다 해당 패키지 사용시 필요한 파일들이 누적된다. 
+    npm install 하면 최신항목으로 대체된다?
+    ex) npm install express, npm install dotenv 등 </pre>
+        <h6 class="blueviolet fw-bold">node_modules 폴더가 생기는 이유</h6>
+        <pre class="fw-bold">
+프로젝트에서 사용하는 외부 라이브러리(패키지)의 실제 코드가 저장되는 폴더이기 때문입니다.
+📌 조금 더 풀어서, Node.js 자체에는
+웹서버(express), HTTP요청(node-fetch), XML처리 등
+많은 기능이 기본으로 포함되어 있지 않습니다.
+그래서 필요한 기능을 npm으로 설치합니다.
+npm install express
+그러면 npm이 express 패키지 다운로드
+express가 필요로 하는 다른 패키지들도 함께 다운로드
+모두 node_modules 폴더에 저장</pre>
+        <h6 class="blueviolet fw-bold">package.json파일 및 내부 내용 몇가지 (내부에 주석 안됨)</h6>
+        <pre class="fw-bold">
+1. "name": "unipass_server",
+  a) 현재 상태에서 없어도 됨, npm publish할때 이름 
+      npm 전체 저장소에서 이 이름은 유일해야 함
+      이미 존재하는 이름이면 publish 실패
+  b) npm 패키지 이름 규칙을 따름, 소문자만 가능, 공백 ❌ (- 사용)
+2. "private": true, 
+  a) 현재 상태에서 없어도 됨
+  b) 이 프로젝트를 npm에 공개 패키지로 배포하지 않겠다는 의미입니다.
+  c) npm publish 입력 즉시 : npm ERR! This package is marked as private
+     개인 프로젝트, 회사 내부 프로젝트, 서버 코드 프로젝트에는 거의 항상 true로 둡니다.
+     ✔ 지금 당신처럼 Node.js 서버(server.js) 프로젝트를 로컬에서만 돌리는 경우 
+     → 반드시 true 유지하는 것이 맞습니다.
+  d) publish하려면, 배포자(출처) → publish 전에 반드시 npm 계정 ID로 로그인
+      publish 기록에 계정명이 작성자(author) 로 남음
+  <span class="blueviolet">e) publish 되었다면 누구나 설치(복사본 가져옴) 가능 : npm install unipass_server</span>
+3. "main": "server.js",
+  a) 이 패키지를 다른 코드에서 require() 또는 import 할 때
+      기본 진입 파일(entry point) 이 무엇인지 알려주는 항목입니다.
+      예 : const app = require('your-package-name');
+      → 실제로는 server.js가 로드됨.
+  b) 다만 일반적인 로컬 서버 실행(node server.js) 에서는 사실상 큰 의미는 없습니다.
+      주로 라이브러리 패키지를 만들 때 중요합니다.
+      ✔ 현재 프로젝트에서는 있어도 되고 없어도 되는 항목.</pre>
+      </div>
+      <div>
+<pre class="fw-bold">
+4. "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
+  "scripts"는 npm 명령어 단축키 설정
+  <span class="blueviolet">node server.js = node start이다. 편리를 위한 나의 명령어?</span>
+  a) 두가지 동작을 담을 수도 있다.
+      "start": "cross-env PORT=3000 node server.js"
+      전역객체 prpcess의 속성 env의 속성으로 PORT를 생성하여 
+      3000 값을 대입시키고 node server.js를 실행시킨다.
+  b) corss-env PORT=3000 사용하기 위해, <span class="blueviolet">npm install cross-env --save-dev</span> 설치
+  c) server.js 코드로, const PORT = process.env.PORT || 3000;
+      process.env.PORT 가 설정되어 있으면 쓰고 없으면 || 3000 을 써라.
+      app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+      });
+  d) 왜 cross-env를 쓰는가? Mac/Linux/Windows등의 문법이 다른데 환경에 따라 보정해줌
+5. "type": "commonjs", → server.js 코드 작성 규칙, type없을때 기본값도 commonjs
+    또는 module <span class="blueviolet">어떤 문법을 사용할지 설정하는 것이다.</span>
+  a) commonjs 문법 : .js 파일을 require() 방식으로 해석하라는 뜻
+      const express = require("express");  // CommonJS 문법
+  b) (module) ES Module 최신방식 : .js 파일을 import 문법으로 해석
+      import express from "express";   // ES Module 문법
+  e) 최근 Node v20+ 환경에서 node-fetch 최신 버전은 ES Module 전용입니다.
+      commonjs문법을 사용하려면 <span class="blueviolet">npm install node-fetch@2</span> 설치
+6. "keywords": []
+  a) npm에 공개 배포할 경우 검색 키워드로 쓰입니다.
+  b) private 프로젝트에서는 아무 기능적 영향 없음. 그냥 비워둬도 됩니다. 
+7. "author": "",
+  a) 이 패키지를 만든 사람 정보, npm에 publish 할 경우 패키지 페이지에 표시됨
+  b) 형식 예시, "author": "Yang Chung Young <email@example.com>"
+8. "license": "ISC",
+  a) 이 패키지가 어떤 오픈소스 라이선스를 따르는지 표시
+  b) npm publish 시 필수 항목, "ISC" 의미
+      MIT와 거의 동일한 매우 자유로운 라이선스
+      "누구나 사용·수정·배포 가능, 책임 없음"
+      다른 흔한 값
+      MIT	가장 흔함, Apache-2.0	기업용 많이 사용, GPL-3.0	소스 공개 의무 있음
+<span class="blueviolet">7. "author": "", 8. "license": "ISC",다만 npm init 기본값으로 자동 들어간 것일 뿐이고,
+     지워도 Node 서버 동작에는 아무 영향 없습니다.</span>  </pre>
+      </div>
+    </div>   
+    <div id="개념_nodejs관련3" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">여러개 동시에 설치 : npm install express axios xml2js</h6>
+        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지1.png" alt="이미지없음">
+        <pre class="fw-bold"></pre>
+      </div>
+      <div>
+        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지2.png" alt="이미지없음"><br><br>
+        <h6 class="blueviolet fw-bold">● npm 설치는 server.js 내부에서 가져올수 있는 상태이다.</h6>
+        <pre class="fw-bold">
+     <span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서 사용하려면</span>
+     const express = require('express');   1)객체가져오기
+     const app = express();<span style="margin-left:95px;"></span>2)객체의 인스턴스 만들기 (prototype속성사용가능)
+        함수가 실행되면 속성들이 부여되어 속성을 쓸수 있게 되는 상태가 된다.
+        app.use()
+        app.get()
+        app.post()
+        app.listen()
+        app.set()
+        ..... </pre>
+        <h6 class="blueviolet fw-bold">● npm 설치없이</h6>
+        <pre class="fw-bold">
+     const path = require('path'); 는 npm으로 설치할 필요가 전혀 없습니다.
+
+     이유
+
+     path 는 Node.js에 기본으로 내장된 코어 모듈(Core Module) 입니다.
+     Node.js만 설치되어 있으면 바로 사용 가능합니다.
+
+     같은 내장 모듈 예시
+     require('fs');      // 파일 시스템
+     require('http');    // HTTP 서버
+     require('url');     // URL 처리
+     require('crypto');  // 암호화
+     require('os');      // 운영체제 정보  </pre>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div id="개념_nodejs관련4" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서</span>
+1. const express = require('express'); // npm에 등록된 패키지 이름, express를 가져옴
+2. const app = express();              // express 패키지가 제공하는 함수 실행
+    함수가 실행되면 속성들이 부여되어 속성을 쓸수 있게 되는 상태가 된다.
+    app.use(), app.get(), app.post(), app.listen(), app.set(), .....
+<span class="blueviolet">3. 1.객체생성, 2.객체의 메서드 생성</span>
+
+실무에서 진짜 매일 쓰는 건
+use / get / post / listen / set / static / json / urlencoded
+이 정도만 익숙해지면 충분합니다.</pre>
+<pre class="fw-bold" style="position: relative;">
+  <div style="position: absolute;left:280px;top:42px;">
+🟠 2군 (자주 등장)
+
+app.set(key, value)
+앱 설정값 저장 (예: view engine)
+
+app.get(key)
+설정값 조회
+
+app.engine()
+템플릿 엔진 등록
+
+app.use(express.static())
+정적 파일 서비스
+
+app.all(path, handler)
+모든 HTTP 메서드 처리
+
+app.route(path)
+체인형 라우팅</div>
+⭐ Express app 주요 메서드 Top 20
+
+🔴 1군 (거의 모든 프로젝트에서 사용)
+
+app.use()
+미들웨어 등록
+
+app.get(path, handler)
+GET 요청 라우팅
+
+app.post(path, handler)
+POST 요청 라우팅
+
+app.put(path, handler)
+PUT 요청 라우팅
+
+app.delete(path, handler)
+DELETE 요청 라우팅
+
+app.listen(port, callback)
+서버 실행
+
+app.use(express.json())
+JSON body 파싱 미들웨어
+
+app.use(express.urlencoded())
+form 데이터 파싱</pre>
+
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">● app.post() → 라우팅, app.use() → 미들웨어(너무 다양하다)</h6>
+        <pre class="fw-bold">
+    1. 이런 코드는 요청과 관련없이 실행되거나, 특정 요청일때 실행되거나
+    2. 요청의 전처리 과정일수도 있고, 후처리 과정일수도 있다. </pre>
+        <h6 class="blueviolet fw-bold">● app.use(express.json()) 에서, use 와 static</h6>
+        <pre class="fw-bold">
+     express.static()   ← 패키지 레벨 유틸리티
+     app.use()          ← 앱 인스턴스 메서드
+     <span class="blueviolet">js에비유) static 는 express 객체의 속성. </span>
+     <span class="blueviolet">js에비유) use 는 app(express 객체의 인스턴스)가 상속받은 express 의 프로토타입 내부 속성</span> </pre>
+        <h6 class="blueviolet fw-bold">● server.js 코드, 기능사용 준비과정</h6>
+        <pre class="fw-bold">
+     const express = require('express');   1)객체가져오기
+     const app = express();<span style="margin-left:95px;"></span>2)객체의 인스턴스 만들기 (prototype속성사용가능)
+     <span class="blueviolet">★★ 예제코드에서 1), 2)는 있다는 가정하고 보자. ★★</span>
+     app.use(express.static('public'));<span style="margin-left:23px;"></span>3)인스턴스.속성 으로 사용</pre>
+        <h6 class="blueviolet fw-bold">★★ 정리 ★★</h6>
+        <h6 class="blueviolet fw-bold">1. 터미널에서 : node server.js 실행하면 </h6>
+        <pre class="fw-bold">
+    server.js 내부 코드 전부 읽어들이는데
+    a) console.log("1. 시작"); 같은 코드는 실행되어 터미널에 출력된다.
+    b) 요청 처리 콜백 함수 내부 코드는 실행되지 않고 함수로 메모리에 기억된다.
+    c) 변수나 함수는 메모리에 기억된다. 
+    d) 단, app.listen(3000, ()=>{...} 이 부분은 실행한다. 
+      서버를 켜는 동작이며, 이후 요청 처리 대기상태로 유지
+
+    node server.js 실행
+    → 파일 전체 한번 실행
+    → 라우팅/미들웨어 함수들 메모리에 등록
+    → app.listen 실행 → 서버 대기
+    → 요청 들어오면 등록된 함수 실행
+
+    요청 처리 콜백 함수 내부 코드는 실행되지 않고,
+    함수 정의만 메모리에 등록된다.
+    실제 실행은 요청이 들어올 때이다.</pre>
+        <h6 class="blueviolet fw-bold">2. 서버가 켜진 상태에서 요청이 들어오면 ★★</h6>
+        <pre class="fw-bold">
+    a) server.js 코드 중, 등록된 미들웨어를 '순서대로' 확인 및 필요시 실행
+    b) a)가 끝나면 server.js 코드 중, '순서대로' 라우팅 테이블 관련 함수 확인 및 필요시 실행
+    c) server.js 코드 중, '순서대로' 라우팅된 곳의 get 함수에 등록된 핸들러 실행   </pre>
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold">🔹 app.use 는 어떤요청이더라도 검토는 들어간다.</h6><br>
+        <h6 class="blueviolet fw-bold">🔹 Express 내부 규칙</h6>
+        <pre class="fw-bold">
+    1. Express는 등록된 순서대로 매칭되는 것부터 실행하고,
+       응답이 끝나면 이후 체인은 실행되지 않는다.
+    2. res.send()로 응답을 끝내버림   
+    3. <span class="blueviolet">요청을 처리하는, app.get</span>(url, (req, res) => {..}); 에서 
+        (req, res) => {..} 부분은 다른 모양일수도 있는데 함수이다. 
+        이 부분을 '라우터 핸들러'라고 한다.
+        '라우터 핸들러'는 일반적으로 응답(res.send)으로 끝냄
+    <span class="blueviolet">4. res.send(), res.json(), res.end() 가 실행되면 요청은 종료된 것이다.</span> 
+        그 이후 next()는 호출하면 안 된다.
+        res.send() 순간 응답 종료, 브라우저에 이미 응답 전송 완료
+        next()를 호출해도 의미 없는 호출
+        심하면 "Can't set headers after they are sent" 에러 발생
+    <span class="blueviolet">5.next() 는 주로 어디서 실행되는가? => 미들웨어에서 주로 실행됩니다.</span>
+        </pre>
+      </div>
+    </div>
     <div id="통신_구현할것" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -8823,8 +9240,55 @@ const xml = parser.parseFromString(xmlText, "application/xml");
 const xml = parser.parseFromString(xmlText, "text/html");
         </pre>
       </div>
-    </div>
+      <div>
+        <h6 class="fw-bold">npm uninstall node-fetch xmldom</h6>
+        <pre class="fw-bold">
+npm 설치된 목록이 
+"dependencies": { 
+     "cors": "^2.8.5", 
+     "dotenv": "^17.2.3", 
+     "express": "^5.2.1", 
+     "node-fetch": "^3.3.2", 
+     "xmldom": "^0.6.0" 
+ } 일때"
+ dependencies": { 
+     "cors": "^2.8.5", 
+     "dotenv": "^17.2.3", 
+     "express": "^5.2.1", 
+ } 이런식으로 
+ package.json 파일에서 일부 지우고 npm install 하면 지워진것이 지워지나? => 아니요
 
+ npm uninstall node-fetch xmldom
+  → package.json에서도 제거
+  → node_modules에서도 제거   </pre>
+        <h6 class="fw-bold">npm install :  dependencies에 있는 패키지들을 설치한다.</h6>
+        <br>
+        <h6 class="fw-bold">실무에서 가장 많이 쓰는 정리 방식</h6>
+        <pre class="fw-bold" style="background-color: aqua;border:1px solid black;display:inline-block;width:400px;">
+    package.json 수정 →
+    rm -rf node_modules package-lock.json →  
+    npm install
+
+    이렇게 하면 의존성 상태가 100% 일치합니다.
+        </pre>
+
+
+
+
+      </div>
+      <div>
+        <h6 class="fw-bold">server.js 코드 변경시 서버 재시작 : 터미널에서 node server.js</h6>
+        <h6 class="fw-bold">정적서버 html관련 코드 변경시 : 주소창에서 F5 새로고침</h6>
+      </div>
+    </div>
+    <div id="통신_npm설치와사용" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">npm install express</h6>
+        <pre class="fw-bold">
+        </pre>
+      </div>
+    </div>
     
     <div id="통신_브라우저와내api" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
@@ -9612,412 +10076,7 @@ DB 통신: 데이터베이스 서버와 애플리케이션 서버가 JDBC/ODBC �
       </div>
     </div>
     
-    <div id="개념_nodejs관련1" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="blueviolet fw-bold">서버</h6>
-        <pre class="fw-bold">
-서버(server)는 클라이언트를 거쳐 네트워크를 통해 서비스하는 컴퓨터를 의미한다. 
-<span class="blueviolet">이름 그대로 번역해서 '제공자'라고 하면 와닿을 것이다</span>
-1. 정적서버 : 파일요청이 들어오면 파일을 그대로 보내줌 
-2. api서버 : 요청이 들어오면 요청에 따라 정해진 로직을 실행하여 결과를 반환. </pre>
-        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
-        <pre class="fw-bold">
-- 웹페이지(HTML)를 보여주는 프로그램. 크롬, 엣지, 사파리 등
-- 개발자 도구에서 웹페이지, 정보이동(네트워크)등을 볼 수 있다. 
-  노출이 되면 안되는 정보가 올라가지 않도록 주의를 요한다.
-- <span class="blueviolet">브라우저에서 요청하는 정보에 대해서 보안상의 이유로 CORS정책이 있다.</span>
-- 브라우저는 동일출처가 아니면, CORS : 서로다른 출처의 리소스 공유 설정에서 해제설정이 필요</pre>
-        <h6 class="blueviolet fw-bold">URL(Uniform Resource Locator)의 구조 : 정보의 <u>고유한</u> 주소, URI(출처)</h6>
-        <pre class="fw-bold">
-URI(출처) : <span class="blueviolet">[프로토콜]://[호스트]:[포트]</span> 예 : https://api.example.com:443
-프로토콜 :	어떻게 통신할지, https://   호스트 :	누구에게 요청할지, api.example.com
-포트 :	어떤 문으로 들어갈지, :443      URI자체로 URL이 될 수 있다. 
 
-URL : 세부주소까지
-[프로토콜]://[호스트]:[포트]/[경로]?[쿼리]#프래그먼트
-예: https://api.example.com:443/v1/users?id=3#profile
-경로 :	무엇을 요청할지, /v1/Users 
-? : ?이후에 api통신에 필요한 정보
-쿼리 : api처리를 위한 변수값, ?id=3
-#프래그먼트
-
-2️⃣ 가장 기본적인 통신 프로토콜
-🌐 HTTP / HTTPS (웹 & API 통신)
-http://example.com
-https://api.example.com/users
-
-항목	설명
-http	평문 통신
-https	TLS 암호화 통신 (실무 표준)
-사용처	웹 페이지, REST API, CDN, SPA
-
-📌 API 호출 = HTTP 통신</pre>
-        <h6 class="blueviolet fw-bold">★ 서버 ↔ 서버 통신, CORS 개념 자체가 없음</h6>
-        <pre class="fw-bold">
-api통신이 아닌것(ex:링크,https://example.com)은 CORS정책이 없고,
-api통신(요청정보에 대한 로직처리가 있는것)은 브라우저의 요청인 경우에 CORS정책이 적용된다.
-        </pre>
-      </div>
-      <div>
-        <pre class="fw-bold">
-<span class="blueviolet">CORS정책 자체가 브라우저에서 API통신을 요청할때 적용되므로,</span>
-브라우저의 통신객체 fetch 실행시 
-출처가 동일출처가 아니면 CORS에 막혀 정보를 얻을수 없는 경우가 대부분이고
-CORS정책으로 허용되는 서버(내 서버 또는 개발시에 내 컴퓨터에 설치하는 
-Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ 서버 통신'이 이루어지게 한다. </pre>
-        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
-        <pre class="fw-bold">
-1. 웹상에 API통신을 할 수 있는 서버를 모두 볼수 있게 배포하려면 도메인이 있어야 한다.
-   [프로토콜]://[호스트]:[포트]에서 <span class="blueviolet">[호스트]:[포트]부분, 도메인</span> 
-2. 무료로 서버를 활용하려면 여러가지 방법 중 
-   Render사이트에서 도메인(공인주소)을 만들수 있다. 
-3. 2.를 활용하기 전에 개발단계에서 
-   <span class="blueviolet">서버역할을 하는 환경을 만들기 위해 Node.js를 활용한다.</span>
-4. Node.js를 내 컴퓨터에 설치하면 npm이 함께 설치되는데 
-    npm을 통해 필요한 패키지를 설치할수 있다. 
-5. Node.js는 환경일뿐이고 가장 중요한 설치 패키지인 express가 있다. 
-6. Express = Node.js에서 웹서버를 만드는 핵심 프레임워크이고
-   나머지 것들은 Express를 실행하고 관리하기 위한 보조 구성요소라고 이해한다.
-7. Node.js는 터미널(cmd등)에서 실행한다. 브라우저에서 실행하는게 아니라는 것. 
-   서버구성이 완료되었다면 <span class="blueviolet">서버에서 실행한다</span>라고 이해한다.
-8. 따라서 Node.js 서버와 서버간의 통신이 이루어지게 된다.</pre>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs관련1_이미지1.png" alt="이미지없음">
-      </div>
-      <div>
-        <h6 class="blueviolet fw-bold">프로젝트 폴더</h6>
-        <pre class="fw-bold">
-1. 임의의 위치에 서버구성을 위해 만든 폴더
-2. 폴더 자체가 서버라고 일단 이해한다. 내부에 모든 로직이 정의되어 있다.
-   a) 서버를 켜고 켜진 상태로 유지, b) 요청이 들어오면 로직대로 실행한다. 
-<span class="blueviolet">3. 브라우저의 요청 받기 - 요청을 로직대로 가공 - 목적지 서버에 요청 - 응답 받기 - 응답 처리</span>
-==== 서버 만들기, <span class="blueviolet">프로젝트 폴더 안에서 터미널에서 하는 것</span> ====
-1. Node.js설치 : 환경이 만들어짐. 버전확인(어디서나) node -v
-2. npm init : 아무것도 없을때 한번만, package.json 파일이 생긴다.(npm 설치목록 및 기본정보)
-3. Node.js설치와 함께 설치된 npm 으로 필요한 패키지 설치
-   a) (가장 먼저) npm install express : package.json
-       다음 함수 사용 가능해짐 (대표적인 것)</pre>
-        <h6 class="blueviolet fw-bold">브라우저에서 서버로 통신이 이루어질때 CORS 해결이 필요하다. </h6>
-        <pre class="fw-bold">
-==== 브라우저가 서버에서 제공(http://로 시작)되고 있다는 전제 ====
-1. 동일출처(URI)가 아닐때 : [프로토콜]://[호스트]:[포트], [프로토콜]://[도메인]
-2. 브라우저가 출처가 서버포트와 다를때 (프로젝트 폴더 밖의 파일)</pre>
-        <h6 class="blueviolet fw-bold">★서버와의 통신이 가능한★  </h6>
-        <h6 class="fw-bold">“현재 실행 중인 웹페이지는 <span class="blueviolet">file:// 로 로컬 파일을 연 것이 아니라,</span> </h6>
-        <h6 class="fw-bold">http:// 프로토콜을 통해 <span class="blueviolet">서버에서 제공되는 페이지이다.</span>”</h6>
-        <pre class="fw-bold">
-✅ 왜 이 구분이 중요했는가
-구분	                  file:// 로 연 경우	                http:// 로 연 경우
-실행 위치	           로컬 파일 직접 실행	                웹 서버를 통해 실행
-CORS 제약	           매우 엄격하거나 fetch 제한	   정상적인 API 요청 가능
-Node.js 서버 연동     불가능 또는 제한	                정상 동작
-관세청 API 호출	     브라우저에서 차단 가능성 큼	   서버 통해 정상 가능
-✅ 결론
-지금 사용 중인 브라우저 페이지가 http:// 로 열려 있다면,
-file:// 문제와 CORS 문제의 대부분은 이미 해결된 상태입니다.
-따라서
-👉 “file://로 열어서 안 되는 상황은 아니다”
-라고 이해하시면 정확합니다.</pre>
-      </div>
-    </div>
-    <div id="개념_nodejs관련2" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="blueviolet fw-bold">npm init -y</h6>
-        <pre class="fw-bold">
-<span class="blueviolet">터미널에서 프로젝트 폴더에서 : npm init -y 실행하면</span>
-npm init 실행할땐 하나하나 엔터 쳐야되는데 -y하면 
-물어보지 않고 기본값으로 package.json 파일을 생성해준다.
-<span class="blueviolet">기존 값이 있다면 없는 값의 기본값만 적용시키는 듯 하다.</span>
-<span class="blueviolet">=== package.json 내부 코드 예시, dependencies는 패키지 설치 내역 ===</span>
-{
-  <span class="blueviolet">"name": "unipass_server",</span>
-  "version": "1.0.0",
-  <span class="blueviolet">"private": true,</span>
-  "description": "",
-  <span class="blueviolet">"main": "server.js",</span>
-  <span class="blueviolet">"scripts":</span> {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  <span class="blueviolet">"keywords": [],</span>
-  "author": "",
-  "license": "ISC",
-  <span class="blueviolet">"type": "commonjs",</span>
-  <span class="blueviolet">"dependencies":</span> {
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "node-fetch": "^3.3.2"
-  }
-}    </pre>
-        <h6 class="blueviolet fw-bold">npm install</h6>
-        <pre class="fw-bold">
-1. 터미널에서 npm install express 처럼 설치하지 않고, package.json파일 안에
-  "dependencies": {
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "node-fetch": "^3.3.2"
-  }
-  이렇게 북붙 하였다면, 설치한 것이 아닌 상태인데
-  <span class="blueviolet">npm install 은 dependencies 안에 항목들을 모두 설치해준다.</span></pre>
-      </div>
-      <div>
-        <h6 class="blueviolet fw-bold">node_modules 폴더</h6>
-        <pre class="fw-bold">
-a) <span class="blueviolet">'npm install 패키지'</span> 를 설치하면 패키지에 필요한 파일들이 node_modules에 생성된다. 
-    폴더가 없으면 폴더생성 + 자료생성, 있으면 그 안에 자료가 생성된다.
-    '패키지 설치 = dependencies 를 추가' 할때마다 해당 패키지 사용시 필요한 파일들이 누적된다. 
-    npm install 하면 최신항목으로 대체된다?
-    ex) npm install express, npm install dotenv 등 </pre>
-        <h6 class="blueviolet fw-bold">node_modules 폴더가 생기는 이유</h6>
-        <pre class="fw-bold">
-프로젝트에서 사용하는 외부 라이브러리(패키지)의 실제 코드가 저장되는 폴더이기 때문입니다.
-📌 조금 더 풀어서, Node.js 자체에는
-웹서버(express), HTTP요청(node-fetch), XML처리 등
-많은 기능이 기본으로 포함되어 있지 않습니다.
-그래서 필요한 기능을 npm으로 설치합니다.
-npm install express
-그러면 npm이 express 패키지 다운로드
-express가 필요로 하는 다른 패키지들도 함께 다운로드
-모두 node_modules 폴더에 저장</pre>
-        <h6 class="blueviolet fw-bold">package.json파일 및 내부 내용 몇가지 (내부에 주석 안됨)</h6>
-        <pre class="fw-bold">
-1. "name": "unipass_server",
-  a) 현재 상태에서 없어도 됨, npm publish할때 이름 
-      npm 전체 저장소에서 이 이름은 유일해야 함
-      이미 존재하는 이름이면 publish 실패
-  b) npm 패키지 이름 규칙을 따름, 소문자만 가능, 공백 ❌ (- 사용)
-2. "private": true, 
-  a) 현재 상태에서 없어도 됨
-  b) 이 프로젝트를 npm에 공개 패키지로 배포하지 않겠다는 의미입니다.
-  c) npm publish 입력 즉시 : npm ERR! This package is marked as private
-     개인 프로젝트, 회사 내부 프로젝트, 서버 코드 프로젝트에는 거의 항상 true로 둡니다.
-     ✔ 지금 당신처럼 Node.js 서버(server.js) 프로젝트를 로컬에서만 돌리는 경우 
-     → 반드시 true 유지하는 것이 맞습니다.
-  d) publish하려면, 배포자(출처) → publish 전에 반드시 npm 계정 ID로 로그인
-      publish 기록에 계정명이 작성자(author) 로 남음
-  <span class="blueviolet">e) publish 되었다면 누구나 설치(복사본 가져옴) 가능 : npm install unipass_server</span>
-3. "main": "server.js",
-  a) 이 패키지를 다른 코드에서 require() 또는 import 할 때
-      기본 진입 파일(entry point) 이 무엇인지 알려주는 항목입니다.
-      예 : const app = require('your-package-name');
-      → 실제로는 server.js가 로드됨.
-  b) 다만 일반적인 로컬 서버 실행(node server.js) 에서는 사실상 큰 의미는 없습니다.
-      주로 라이브러리 패키지를 만들 때 중요합니다.
-      ✔ 현재 프로젝트에서는 있어도 되고 없어도 되는 항목.</pre>
-      </div>
-      <div>
-<pre class="fw-bold">
-4. "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  }
-  "scripts"는 npm 명령어 단축키 설정
-  <span class="blueviolet">node server.js = node start이다. 편리를 위한 나의 명령어?</span>
-  a) 두가지 동작을 담을 수도 있다.
-      "start": "cross-env PORT=3000 node server.js"
-      전역객체 prpcess의 속성 env의 속성으로 PORT를 생성하여 
-      3000 값을 대입시키고 node server.js를 실행시킨다.
-  b) corss-env PORT=3000 사용하기 위해, <span class="blueviolet">npm install cross-env --save-dev</span> 설치
-  c) server.js 코드로, const PORT = process.env.PORT || 3000;
-      process.env.PORT 가 설정되어 있으면 쓰고 없으면 || 3000 을 써라.
-      app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-      });
-  d) 왜 cross-env를 쓰는가? Mac/Linux/Windows등의 문법이 다른데 환경에 따라 보정해줌
-5. "type": "commonjs", → server.js 코드 작성 규칙, type없을때 기본값도 commonjs
-    또는 module <span class="blueviolet">어떤 문법을 사용할지 설정하는 것이다.</span>
-  a) commonjs 문법 : .js 파일을 require() 방식으로 해석하라는 뜻
-      const express = require("express");  // CommonJS 문법
-  b) (module) ES Module 최신방식 : .js 파일을 import 문법으로 해석
-      import express from "express";   // ES Module 문법
-  e) 최근 Node v20+ 환경에서 node-fetch 최신 버전은 ES Module 전용입니다.
-      commonjs문법을 사용하려면 <span class="blueviolet">npm install node-fetch@2</span> 설치
-6. "keywords": []
-  a) npm에 공개 배포할 경우 검색 키워드로 쓰입니다.
-  b) private 프로젝트에서는 아무 기능적 영향 없음. 그냥 비워둬도 됩니다. 
-7. "author": "",
-  a) 이 패키지를 만든 사람 정보, npm에 publish 할 경우 패키지 페이지에 표시됨
-  b) 형식 예시, "author": "Yang Chung Young <email@example.com>"
-8. "license": "ISC",
-  a) 이 패키지가 어떤 오픈소스 라이선스를 따르는지 표시
-  b) npm publish 시 필수 항목, "ISC" 의미
-      MIT와 거의 동일한 매우 자유로운 라이선스
-      "누구나 사용·수정·배포 가능, 책임 없음"
-      다른 흔한 값
-      MIT	가장 흔함, Apache-2.0	기업용 많이 사용, GPL-3.0	소스 공개 의무 있음
-<span class="blueviolet">7. "author": "", 8. "license": "ISC",다만 npm init 기본값으로 자동 들어간 것일 뿐이고,
-     지워도 Node 서버 동작에는 아무 영향 없습니다.</span>  </pre>
-      </div>
-    </div>   
-    <div id="개념_nodejs관련3" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="blueviolet fw-bold">여러개 동시에 설치 : npm install express axios xml2js</h6>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지1.png" alt="이미지없음">
-        <pre class="fw-bold"></pre>
-      </div>
-      <div>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지2.png" alt="이미지없음"><br><br>
-        <h6 class="blueviolet fw-bold">● npm 설치는 server.js 내부에서 가져올수 있는 상태이다.</h6>
-        <pre class="fw-bold">
-     <span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서 사용하려면</span>
-     const express = require('express');   1)객체가져오기
-     const app = express();<span style="margin-left:95px;"></span>2)객체의 인스턴스 만들기 (prototype속성사용가능)
-        함수가 실행되면 속성들이 부여되어 속성을 쓸수 있게 되는 상태가 된다.
-        app.use()
-        app.get()
-        app.post()
-        app.listen()
-        app.set()
-        ..... </pre>
-        <h6 class="blueviolet fw-bold">● npm 설치없이</h6>
-        <pre class="fw-bold">
-     const path = require('path'); 는 npm으로 설치할 필요가 전혀 없습니다.
-
-     이유
-
-     path 는 Node.js에 기본으로 내장된 코어 모듈(Core Module) 입니다.
-     Node.js만 설치되어 있으면 바로 사용 가능합니다.
-
-     같은 내장 모듈 예시
-     require('fs');      // 파일 시스템
-     require('http');    // HTTP 서버
-     require('url');     // URL 처리
-     require('crypto');  // 암호화
-     require('os');      // 운영체제 정보  </pre>
-      </div>
-      <div>
-      </div>
-    </div>
-    <div id="개념_nodejs관련4" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <pre class="fw-bold">
-<span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서</span>
-1. const express = require('express'); // npm에 등록된 패키지 이름, express를 가져옴
-2. const app = express();              // express 패키지가 제공하는 함수 실행
-    함수가 실행되면 속성들이 부여되어 속성을 쓸수 있게 되는 상태가 된다.
-    app.use(), app.get(), app.post(), app.listen(), app.set(), .....
-<span class="blueviolet">3. 1.객체생성, 2.객체의 메서드 생성</span>
-
-실무에서 진짜 매일 쓰는 건
-use / get / post / listen / set / static / json / urlencoded
-이 정도만 익숙해지면 충분합니다.</pre>
-<pre class="fw-bold" style="position: relative;">
-  <div style="position: absolute;left:280px;top:42px;">
-🟠 2군 (자주 등장)
-
-app.set(key, value)
-앱 설정값 저장 (예: view engine)
-
-app.get(key)
-설정값 조회
-
-app.engine()
-템플릿 엔진 등록
-
-app.use(express.static())
-정적 파일 서비스
-
-app.all(path, handler)
-모든 HTTP 메서드 처리
-
-app.route(path)
-체인형 라우팅</div>
-⭐ Express app 주요 메서드 Top 20
-
-🔴 1군 (거의 모든 프로젝트에서 사용)
-
-app.use()
-미들웨어 등록
-
-app.get(path, handler)
-GET 요청 라우팅
-
-app.post(path, handler)
-POST 요청 라우팅
-
-app.put(path, handler)
-PUT 요청 라우팅
-
-app.delete(path, handler)
-DELETE 요청 라우팅
-
-app.listen(port, callback)
-서버 실행
-
-app.use(express.json())
-JSON body 파싱 미들웨어
-
-app.use(express.urlencoded())
-form 데이터 파싱</pre>
-
-      </div>
-      <div>
-        <h6 class="blueviolet fw-bold">● app.post() → 라우팅, app.use() → 미들웨어(너무 다양하다)</h6>
-        <pre class="fw-bold">
-    1. 이런 코드는 요청과 관련없이 실행되거나, 특정 요청일때 실행되거나
-    2. 요청의 전처리 과정일수도 있고, 후처리 과정일수도 있다. </pre>
-        <h6 class="blueviolet fw-bold">● app.use(express.json()) 에서, use 와 static</h6>
-        <pre class="fw-bold">
-     express.static()   ← 패키지 레벨 유틸리티
-     app.use()          ← 앱 인스턴스 메서드
-     <span class="blueviolet">js에비유) static 는 express 객체의 속성. </span>
-     <span class="blueviolet">js에비유) use 는 app(express 객체의 인스턴스)가 상속받은 express 의 프로토타입 내부 속성</span> </pre>
-        <h6 class="blueviolet fw-bold">● server.js 코드, 기능사용 준비과정</h6>
-        <pre class="fw-bold">
-     const express = require('express');   1)객체가져오기
-     const app = express();<span style="margin-left:95px;"></span>2)객체의 인스턴스 만들기 (prototype속성사용가능)
-     <span class="blueviolet">★★ 예제코드에서 1), 2)는 있다는 가정하고 보자. ★★</span>
-     app.use(express.static('public'));<span style="margin-left:23px;"></span>3)인스턴스.속성 으로 사용</pre>
-        <h6 class="blueviolet fw-bold">★★ 정리 ★★</h6>
-        <h6 class="blueviolet fw-bold">1. 터미널에서 : node server.js 실행하면 </h6>
-        <pre class="fw-bold">
-    server.js 내부 코드 전부 읽어들이는데
-    a) console.log("1. 시작"); 같은 코드는 실행되어 터미널에 출력된다.
-    b) 요청 처리 콜백 함수 내부 코드는 실행되지 않고 함수로 메모리에 기억된다.
-    c) 변수나 함수는 메모리에 기억된다. 
-    d) 단, app.listen(3000, ()=>{...} 이 부분은 실행한다. 
-      서버를 켜는 동작이며, 이후 요청 처리 대기상태로 유지
-
-    node server.js 실행
-    → 파일 전체 한번 실행
-    → 라우팅/미들웨어 함수들 메모리에 등록
-    → app.listen 실행 → 서버 대기
-    → 요청 들어오면 등록된 함수 실행
-
-    요청 처리 콜백 함수 내부 코드는 실행되지 않고,
-    함수 정의만 메모리에 등록된다.
-    실제 실행은 요청이 들어올 때이다.</pre>
-        <h6 class="blueviolet fw-bold">2. 서버가 켜진 상태에서 요청이 들어오면 ★★</h6>
-        <pre class="fw-bold">
-    a) server.js 코드 중, 등록된 미들웨어를 '순서대로' 확인 및 필요시 실행
-    b) a)가 끝나면 server.js 코드 중, '순서대로' 라우팅 테이블 관련 함수 확인 및 필요시 실행
-    c) server.js 코드 중, '순서대로' 라우팅된 곳의 get 함수에 등록된 핸들러 실행   </pre>
-      </div>
-      <div>
-        <h6 class="blueviolet fw-bold">🔹 app.use 는 어떤요청이더라도 검토는 들어간다.</h6><br>
-        <h6 class="blueviolet fw-bold">🔹 Express 내부 규칙</h6>
-        <pre class="fw-bold">
-    1. Express는 등록된 순서대로 매칭되는 것부터 실행하고,
-       응답이 끝나면 이후 체인은 실행되지 않는다.
-    2. res.send()로 응답을 끝내버림   
-    3. <span class="blueviolet">요청을 처리하는, app.get</span>(url, (req, res) => {..}); 에서 
-        (req, res) => {..} 부분은 다른 모양일수도 있는데 함수이다. 
-        이 부분을 '라우터 핸들러'라고 한다.
-        '라우터 핸들러'는 일반적으로 응답(res.send)으로 끝냄
-    <span class="blueviolet">4. res.send(), res.json(), res.end() 가 실행되면 요청은 종료된 것이다.</span> 
-        그 이후 next()는 호출하면 안 된다.
-        res.send() 순간 응답 종료, 브라우저에 이미 응답 전송 완료
-        next()를 호출해도 의미 없는 호출
-        심하면 "Can't set headers after they are sent" 에러 발생
-    <span class="blueviolet">5.next() 는 주로 어디서 실행되는가? => 미들웨어에서 주로 실행됩니다.</span>
-        </pre>
-
-
-      </div>
-    </div>
     <div id="개념_nodejs관련5" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
