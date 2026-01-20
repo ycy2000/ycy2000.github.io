@@ -570,7 +570,12 @@
     <div class="개별카테고리" id="통신_Nodejs">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="통신_구현할것">01. 구현할것, 내api서버는 코드만, 정적서버는 깃허브</h6>
+        <h6 class="blueviolet fw-bold" title="통신_구현할것">01. 구현할것, 내api서버는 코드만, 정적서버는 깃허브, 통신객체, response객체</h6>
+        <h6 class="fw-bold" title="통신_DOMParser">02. const xml = parser.parseFromString(xmlText, "text/xml");</h6>
+
+
+
+        <br><br><br><br><br>
         <h6 class="fw-bold" title="통신_브라우저와내api">[통신] 브라우저와 내api</h6>
 
 
@@ -8691,16 +8696,136 @@ header .menu li:nth-child(2)
     <div id="통신_구현할것" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">01. 구현할것, 내api서버는 코드만, 정적서버는 깃허브</h6>
+        <h6 class="fw-bold">01. 정적서버 : 브라우저에 웹페이지를 제공하는 서버</h6>
+        <h6 class="fw-bold">02. api서버 : 요청을 처리하는 코드를 작성해놓은 서버 (프로젝트 폴더)</h6>
+        <h6 class="fw-bold">03. 정적서버 제공유형</h6>
+        <pre class="fw-bold">
+  <span class="blueviolet">정적 서버의 역할은 브라우저에 HTML / CSS / JS 파일을 전달하는 것뿐이다.</span>
+
+  a) api서버(프로젝트 폴더) 내에 존재하는 폴더를 정적서버로 지정하여 제공
+      Express 서버에서 직접 제공하는 코드
+      <span class="blueviolet">→ 예: app.use(express.static("public"))</span>
+      → 출처: http://localhost:3000
+      → 이 경우 출처가 동일하여 CORS 정책이 적용안됨 
+  b) a)의 경우가 아닌 경우는 출처가 다르고 CORS 관련 코드 필요하다.  
+      배포된 정적 웹 페이지
+      → 예: Github Pages
+      <span class="blueviolet">→ 출처: https://ycy2000.github.io</span>
+      로컬에서 개발시 별도의 정적 서버 설정, 제공하고자하는 폴더에 들어가 터미널에서
+      <span class="blueviolet">→ 예: npx http-server . -p 8080</span>
+      → 출처: http://localhost:8080
+      <span class="blueviolet">[정적서버의 출처에서 파일시스템처럼 파일에 접근 가능]</span>
+      이후 주소창에 http://localhost:8080 으로 접근 (index.html 인 경우 자동 열림)
+      index.html이 아니고 다른파일이름.html 인 경우 
+      http://localhost:8080/다른파일이름.html 으로 접근
+      더 내부에 있어도 경로로 접근 가능 http://localhost:8080/a폴더/다른파일이름.html</pre>
+        <h6 class="fw-bold">04. 구현할것 : 내api서버는 코드만, 정적서버는 프로젝트폴더 외부</h6>
+        <pre class="blueviolet fw-bold">
+       차후에 정적서버는 깃허브페이지 주소로 접근하면 된다.
+       개발시 server.js 코드 변경시 → 서버 재시작
+       정적서버 파일 내용 수정시는 → 페이지 새로고침 (정적서버 재설정 필요 없음)</pre>
+       <img src="portal/images/문서연결_샷컷/통신_구현할것1.png" alt="이미지없음">
+       
 
       </div>
       <div>
-
+        <h6 class="blueviolet fw-bold">---------- 개념을 잡고 넘어가야하는 것들 ----------</h6>
+        <h6 class="fw-bold">01. response 객체</h6>
+        <pre class="fw-bold">
+[브라우저에서 response 객체 console.log 보기]
+<span class="blueviolet">const res=await fetch('http://localhost:3000/a?받을정보유형='+받을정보유형);
+console.log(res); => 브라우저 콘솔창에 Response 객체 확인</span>
+Response {
+  [[Prototype]] : Response => 자체 함수는 무엇이 있나, body를 읽는 함수만 보자
+    arrayBuffer: ƒ arrayBuffer()
+    blob : ƒ blob()
+    json : ƒ json()
+    text : ƒ text()
+  자체속성은 무엇이 있나.
+  type: 'cors', => 같은출처일때는 basic인것 같고, 아니면 'cors'일때 받는것 같다.
+  url : 'http://localhost:3000/a?...', => 브라우저에서 요청받은 url 
+  redirected : false,
+  status : 200,
+  ok : true,
+  body : (...) => 읽어와야하고 한번만 읽을수 있다? 
+  bodyUsed : false => body를 읽었는지 
+  headers : Headers{} => 메소드가 있다. 
+    <span class="blueviolet">headers의 정보중에서 'content-type'을 확인하려고 할때
+    자체 속성에 등록되지 않아서 메소드로 가져오게 되는 것이다.
+    - response.headers.get('content-type') : 속성처럼 접근할 수 없다 </span>
+    [[Prototype]] : Headers {} => 아래에 일부 메소드만 기록 
+      ▶ entries: f entries () => key와 value를 확인해보자
+          <span class="blueviolet">브라우저에서 
+          for (let [key, value] of res.headers.entries()) {
+           console.log(key,' : ', value);
+          }
+                                      출력 예시
+                                      content-length  :  15
+                                      content-type  :  text/html; charset=utf-8</span>
+                                  ▶ get: f () => content-type 의 내용을 확인해보자
+                                      <span class="blueviolet">브라우저에서 
+                                      const headers_content_type=res.headers.get('content-type');
+                                      console.log(headers_content_type);
+                                      출력 예시
+                                      text/html; charset=utf-8</span>
+        </pre>
       </div>
       <div>
+        <h6 class="fw-bold">★ 브라우저는 보통 response객체의 body를 읽어오는 것부터 시작한다.★</h6>
+        <pre class="fw-bold">
+1. body는 '일단은 문자열이다'. 
+<span class="blueviolet">2. 브라우저에서 'xml, html, 일반문자열, JSON' 중에 어떤형식으로 받아서 사용할지가 관건이다. 
+3. 만약 JSON 형태의 자료가 아닌데, const body파싱 = res.json(); => 에러</span>
+4. server.js 에서 res.send(응답); 보낼때 먼저 형식에 맞는 객체로 변환하여 보내면,
+    헤더에 어떤형태의 자료인지 기록된다.
+    단순히 따옴표 안에 넣으면 'text/html'로 기록된다.
+<span class="blueviolet">[브라우저에서는 const headers_content_type=res.headers.get('content-type'); 확인하여 활용]</span></pre>
+        <h6 class="blueviolet fw-bold">!한번 더 설명</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">[다음 메소드는 server.js 측에서, body에 담아서 response 객체를 '브라우저로' 보낸다 라는 뜻.]
+res.send(data)	문자열, 객체, 버퍼 content-type : 전송	타입에 따라 자동
+   문자열, xml, html => content-type : text/html
+   content-type 강제지정 : res.type('application/xml');
+res.json(obj)	JSON 전송 전용	content-type : application/json
+   res.set('Content-Type','application/json');
+   res.send(JSON.stringify(obj));를 합친 단축 메서드
+res.end()	본문 없이 응답 종료	없음</span>
 
+1. 브라우저측에서는 받은 response객체의 body는 문자열이다. 
+2. response객체의 headers 의 content-type에 기록된 문자열로 자료의 종류를 알수있다. 
+   강제로 엉뚱하게 보낼수도 있지만 일단은 참고할수있다.
+3. DOMParser : xml이나 html을 DOM 객체로 변환시켜 사용하는 것은 브라우저서 한다.</pre>
+        <h6 class="fw-bold">관세청의 response를 받아서 그 결과를 브라우저로 보낼때</h6>
+        <pre class="blueviolet fw-bold">
+내 api서버에서는 가공한 정보를 브라우저로 보내는 것이고 완전 별개이다.
+거의 모든 경우 관세청의 response 객체의 body text 정보를 내 api의 response 객체의 
+body에 그대로 넣거나 가공하여 넣어서 브라우저로 보내는 것이고 
+response 객체의 다른 정보(headers 의 content-type 정보 등)는 
+내 api서버에서 정하여 보내는 것이다.
+        </pre>
       </div>
     </div>
+    <div id="통신_DOMParser" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">브라우저에서 두번째인자 중요! content-type과 관련 x</h6>
+        <pre class="fw-bold">
+    // XML 파싱
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml");
+
+<span class="blueviolet">xml DOM 형식으로 바꿔라 (이후 xml 접근법으로 접근)</span>
+const xml = parser.parseFromString(xmlText, "text/xml");
+또는
+const xml = parser.parseFromString(xmlText, "application/xml");
+
+<span class="blueviolet">html DOM 형식으로 바꿔라 (이후 html 접근법으로 접근)</span>
+const xml = parser.parseFromString(xmlText, "text/html");
+        </pre>
+      </div>
+    </div>
+
+    
     <div id="통신_브라우저와내api" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
