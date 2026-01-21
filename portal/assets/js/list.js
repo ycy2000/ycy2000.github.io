@@ -871,6 +871,7 @@ async function call() {
 
     // textContent 권장, html, xml 공통 / 공백노드 섞일 경우 대시 .trim() 권장
     let 진행단계 = xml.querySelector("tCnt");
+    console.log('진행단계 : ', 진행단계)
     if (!진행단계) { // 찾은거 첫번째
       [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent="없음";return;
     }
