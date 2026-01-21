@@ -927,6 +927,8 @@ async function call() {
         xml.querySelector("cargCsclPrgsInfoQryVo > cntrNo").textContent;
     [...결과정보제목들].find(ele => ele.textContent === "포딩").nextElementSibling.textContent=
         xml.querySelector("cargCsclPrgsInfoQryVo > frwrEntsConm").textContent;
+
+    document.querySelector('#닫기').classList.remove('d-none');
 }
 
 async function 매크로1_JS() {
