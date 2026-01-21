@@ -173,6 +173,9 @@ if (1==1) {//전체변수
   var 전체변수_이전탭='예정png';
   var 전체변수_클릭한탭='';
   var 전체변수_원본텍스트='';
+  var now = new Date();	// 현재 날짜 및 시간
+  var year = now.getFullYear();	// 연도
+  document.querySelector('#year').textContent=year;
 
 }
 function 메모셑팅(e) {
@@ -419,7 +422,7 @@ if (1==1) {//초기화때 3종, 초기화때원본텍스트테이블형식으로
       //console.log(Math.round(((i+2) / 10)) % 2)
       if (Math.round(((i+3) / 10)) % 2 ==0 && i>1) {요소[i].classList.add('그레이')}
     }
-      document.querySelector('#리스트복붙textarea').value = '';
+
   }
   function 텍스트를_테이블형식으로_입항관리풀기() {
     console.log('초기화때입항관리풀기()')
@@ -839,17 +842,95 @@ function 공통한줄색칠있음clear() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
-function 리스트_색칠한곳api정보call() {
-  let 색칠있음 = document.querySelectorAll('#PNG셑팅내부_리스트자료풀림결과 .js한줄색칠있음')
-  if (색칠있음.length=0) {return;}
-  for (let i=0; i<색칠있음.length; i++) {
-    //bl : 색칠있음[i].children[2].textContent
-    //입항일 : 색칠있음[i].children[8].textContent
-    //도착일 : 색칠있음[i].children[10].textContent
-    //도착시간 : 색칠있음[i].children[11].textContent
-    //메모 : 색칠있음[i].children[14].textContent 
+async function call() { 
+  let 통신사용=false;
+  let xmlText;
+  if (통신사용) {
+    const blno = document.getElementById("blno").value;
+    const year = document.getElementById("year").value;
+    // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;
+    const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
+    xmlText = await res.text();
+  } else {
+    xmlText=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo><cargCsclPrgsInfoQryVo><csclPrgsStts>수입신고수리</csclPrgsStts><vydf>2511N</vydf><rlseDtyPridPassTpcd>N</rlseDtyPridPassTpcd><prnm>FROZEN SHRIMP</prnm><ldprCd>VNCLI</ldprCd><shipNat>LR</shipNat><blPt>S</blPt><dsprNm>부산항</dsprNm><etprDt>20251222</etprDt><prgsStCd>CAGE12</prgsStCd><msrm>0</msrm><wghtUt>KG</wghtUt><dsprCd>KRPUS</dsprCd><cntrGcnt>1</cntrGcnt><cargTp>수입 일반화물</cargTp><shcoFlcoSgn>NSSL</shcoFlcoSgn><pckGcnt>2373</pckGcnt><etprCstm>부산세관</etprCstm><shipNm>STARSHIP MERCURY</shipNm><hblNo></hblNo><prcsDttm>20260105111416</prcsDttm><frwrSgn></frwrSgn><spcnCargCd></spcnCargCd><ttwg>15188.8</ttwg><ldprNm>Cat Lai</ldprNm><dclrDelyAdtxYn>N</dclrDelyAdtxYn><mtTrgtCargYnNm>N</mtTrgtCargYnNm><cargMtNo>25NSSLL066I0013</cargMtNo><cntrNo>FBIU5685852</cntrNo><mblNo>SGN501734600</mblNo><blPtNm>Simple</blPtNm><lodCntyCd>VN</lodCntyCd><prgsStts>반출완료</prgsStts><shcoFlco>남성해운주식회사</shcoFlco><pckUt>GT</pckUt><shipNatNm>라이베리아</shipNatNm><agnc>남성해운(주)</agnc><frwrEntsConm></frwrEntsConm></cargCsclPrgsInfoQryVo><tCnt>44</tCnt><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105111416</prcsDttm><dclrNo>030115972600000021</dclrNo><rlbrDttm>2026-01-05 11:14:00</rlbrDttm><wght>6478.8</wght><rlbrBssNo>2356326010077M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105104232</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105102000</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105101823</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105094817</prcsDttm><dclrNo>2356326010077M</dclrNo><rlbrDttm></rlbrDttm><wght>6478.8</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>963</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105093122</prcsDttm><dclrNo>030115972600000010</dclrNo><rlbrDttm>2026-01-05 09:31:00</rlbrDttm><wght>380</wght><rlbrBssNo>2356326010024M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105093120</prcsDttm><dclrNo>030115972600000004</dclrNo><rlbrDttm>2026-01-05 09:31:00</rlbrDttm><wght>380</wght><rlbrBssNo>2356326010025M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260105091918</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102154554</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102105314</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102104814</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094813</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094807</prcsDttm><dclrNo>2356326010025M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094455</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102094449</prcsDttm><dclrNo>2356326010024M</dclrNo><rlbrDttm></rlbrDttm><wght>380</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>50</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20260102082254</prcsDttm><dclrNo>030115972600000001</dclrNo><rlbrDttm>2026-01-02 08:22:00</rlbrDttm><wght>760</wght><rlbrBssNo>2356325120864M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231143352</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231142230</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231132230</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251231132225</prcsDttm><dclrNo>2356325120864M</dclrNo><rlbrDttm></rlbrDttm><wght>760</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>100</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251229091751</prcsDttm><dclrNo>030115972500001769</dclrNo><rlbrDttm>2025-12-29 09:18:00</rlbrDttm><wght>1550</wght><rlbrBssNo>2356325120734M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251229085602</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226172651</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226171558</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226170419</prcsDttm><dclrNo>030115972500001763</dclrNo><rlbrDttm>2025-12-26 17:04:00</rlbrDttm><wght>5640</wght><rlbrBssNo>2356325120695M</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>수입신고 수리후 반출</rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226164554</prcsDttm><dclrNo>2356325120734M</dclrNo><rlbrDttm></rlbrDttm><wght>1550</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>310</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251226090727</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입신고수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172449</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 결재통보</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172226</prcsDttm><dclrNo>11-2BA2025300893619-02</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>1530</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172225</prcsDttm><dclrNo>11-2BA2025300893619-01</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>9318</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172222</prcsDttm><dclrNo>11-2BA2025200891728-02</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>269.5</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224172221</prcsDttm><dclrNo>11-2BA2025200891728-01</dclrNo><rlbrDttm>2025-12-24 00:00:00</rlbrDttm><wght>815.5</wght><rlbrBssNo>신청일자:25.12.24</rlbrBssNo><bfhnGdncCn>[부가사항] 최근 검사/검역 신청부터 결과 과정까지의 평균 소요시간은 25일 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>검사/검역 식품의약품(합격)</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224144955</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입(사용소비) 심사진행</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224141944</prcsDttm><dclrNo>2356325120695M</dclrNo><rlbrDttm></rlbrDttm><wght>5640</wght><rlbrBssNo>선민합동관세사무소</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>900</pckGcnt><cargTrcnRelaBsopTpcd>수입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03011597</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>동일냉장(주)</shedNm><prcsDttm>20251224095850</prcsDttm><dclrNo>030115972500001521</dclrNo><rlbrDttm>2025-12-24 09:58:46</rlbrDttm><wght>15188.8</wght><rlbrBssNo>030D8030F66025406892</rlbrBssNo><bfhnGdncCn>[부가사항] 동일냉장(주)의 장치기간은 최대 6 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>보세운송 반입</rlbrCn><shedSgn>03011597/001</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251224071007</prcsDttm><dclrNo>03077016250523364A</dclrNo><rlbrDttm>2025-12-24 07:05:27</rlbrDttm><wght>15188.8</wght><rlbrBssNo>030D8030F66025406892</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반출신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>보세운송 반출</rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223162034</prcsDttm><dclrNo>030D8030F66025406892</dclrNo><rlbrDttm>(도)03011597동일냉장(주</rlbrDttm><wght>15188.8</wght><rlbrBssNo>(주)에스에스물류</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223161734</prcsDttm><dclrNo>030D8030F66025406892</dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>보세운송 신고 접수</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251223003443</prcsDttm><dclrNo>03077016250517014A</dclrNo><rlbrDttm>2025-12-23 00:20:18</rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn>[부가사항] 신선대감만터미널(주) 신선대CY의 장치기간은 최대 3 개월 입니다.</bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>반입신고</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn>입항 반입</rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251222170422</prcsDttm><dclrNo>25NSSLL066I00000001</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 운항정보 정정</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm></shedNm><prcsDttm>20251222170421</prcsDttm><dclrNo>25NSSLL066I</dclrNo><rlbrDttm></rlbrDttm><wght></wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>0</pckGcnt><cargTrcnRelaBsopTpcd>입항보고 수리</cargTrcnRelaBsopTpcd><pckUt></pckUt><rlbrCn></rlbrCn><shedSgn></shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219160104</prcsDttm><dclrNo>25030149827</dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo>하선반입기한:2025-12-26</rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>하선신고 수리</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219160028</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 심사완료</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo><cargCsclPrgsInfoDtlQryVo><shedNm>신선대감만터미널(주) 신선대CY</shedNm><prcsDttm>20251219141042</prcsDttm><dclrNo></dclrNo><rlbrDttm></rlbrDttm><wght>15188.8</wght><rlbrBssNo></rlbrBssNo><bfhnGdncCn></bfhnGdncCn><wghtUt>KG</wghtUt><pckGcnt>2373</pckGcnt><cargTrcnRelaBsopTpcd>입항적재화물목록 제출</cargTrcnRelaBsopTpcd><pckUt>GT</pckUt><rlbrCn></rlbrCn><shedSgn>03077016</shedSgn></cargCsclPrgsInfoDtlQryVo></cargCsclPrgsInfoQryRtnVo>`;
+    // XML 파싱
   }
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml"); //현재 xml이 깨질 경우 조용히 실패할 수 있음.
+
+    //xml 파싱 오류 감지 추가 추천 (콘솔에 오류메세지 띄워줌)
+    if (xml.querySelector("parsererror")) {
+      console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
+      return;
+    }
+
+    //엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다. <tCnt>44</tCnt>
+    // body처럼 let root=xml.documentElement; // <?xml부분 제외한 전체를 담은 태그
+    // xml에서는 innerHTML(X), textContent(O, 이것은 html에도 가능, 공통)
+    document.querySelectorAll("#result > div > span:nth-of-type(2)").forEach( e => e.textContent='');
+
+    let 결과정보제목들 =document.querySelectorAll("#result > div > span:nth-of-type(1)");
+
+    // textContent 권장, html, xml 공통 / 공백노드 섞일 경우 대시 .trim() 권장
+    let 진행단계 = xml.querySelector("tCnt");
+    if (!진행단계) { // 찾은거 첫번째
+      [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent="없음";return;
+    }
+    //console.log('진행단계 : ', 진행단계);  // 44
+
+
+
+    
+    [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > prgsStts").textContent;
+
+    let 문자열 = ''; let node; // 반출일시, 면허, cy에 사용할 변수
+    // 면허(운송사)는 '보세운송 신고 접수'에 공란일수도 있다. 
+    // cargTrcnRelaBsopTpcd '보세운송 신고 수리' 같은레벨 rlbrBssNo
+    // rlbrCn '보세운송 반출' 같은레벨 <rlbrDttm>2025-12-24 07:05:27
+    // 면허와 반출시간은 접수에서 있는거 쓰고, 수리에서 덮어쓰느 형식
+
+    // 면허
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '보세운송 신고 접수');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrBssNo')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "면허").nextElementSibling.textContent=문자열;
+    }
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '보세운송 신고 수리');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrBssNo')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "면허").nextElementSibling.textContent=문자열;
+    }
+    // 반출일시
+    node=Array.from(xml.querySelectorAll('rlbrCn')).find(ele => ele.textContent === '보세운송 반출');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrDttm')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "반출일시").nextElementSibling.textContent=문자열;
+    }
+
+    let 숫자=xml.querySelector("cargCsclPrgsInfoQryVo > etprDt").textContent; //20260105
+    [...결과정보제목들].find(ele => ele.textContent === "입항일시").nextElementSibling.textContent=
+        `${숫자.slice(0,4)}-${숫자.slice(4,6)}-${숫자.slice(6,8)}`;
+
+    // <cargTrcnRelaBsopTpcd>'입항적재화물목록 제출' 같은레벨 shedNm 태그 tectContent
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '입항적재화물목록 제출');
+    if (node) {문자열=node.parentNode.querySelector('shedNm')?.textContent || '';}
+    [...결과정보제목들].find(ele => ele.textContent === "cy").nextElementSibling.textContent=문자열;
+
+    [...결과정보제목들].find(ele => ele.textContent === "선사").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shcoFlco").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "선명").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shipNm").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "컨개수").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrGcnt").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "컨번호").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrNo").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "포딩").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > frwrEntsConm").textContent;
+
+    document.querySelector('#닫기').classList.remove('d-none');
 }
+
 async function 매크로1_JS() {
   const url =
     "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/" +
@@ -900,114 +981,27 @@ function png셑팅click(e) {
   }
   //리스트메모내용과 (width:250px) 독립되어 움직인다 연동하도록 하고싶다
   var 작동위치=''
+
+  //리스트 목록 클릭 했을때 BL : 누른거에 부모의 3번째자식
   if (e.target.parentNode.tagName == 'TR') {
     console.log(e.target.parentNode.parentNode.parentNode.parentNode.id)
     작동위치=e.target.parentNode.parentNode.parentNode.parentNode.id;
     if (e.target.parentNode.classList.contains('js한줄색칠있음')) {
       e.target.parentNode.classList.remove('js한줄색칠있음');     
     } else {
+      Array.from(document.querySelectorAll('.js한줄색칠있음')).forEach ( ele => ele.classList.remove('js한줄색칠있음'));
       e.target.parentNode.classList.add('js한줄색칠있음');
     }
-    //navigator.clipboard.writeText(e.target.innerHTML)
-    //모바일에서 '클립보드에 복사되었어요.' 안뜨게
-    navigator.clipboard.writeText(e.target.innerHTML).then(() => {})
-
     var 복사텍스트=e.target.innerHTML;
 
     if (작동위치=='') {alert('작동위치=="" 종료됨'); return;}
 
-    //if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
-    if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/,/gmi,'<br>');}
-    if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
-    if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(/!/gmi,'<br>');}
-
-    //if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {var 복사텍스트=document.querySelector('#클릭복사본').innerHTML;}
-    //if (작동위치=='입항관리자료풀림결과') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
-    //if (작동위치=='오른쪽리스트메모2만') {var 복사텍스트=document.querySelector('#입관클릭복사본').innerHTML;}
-
-    //규칙 : 시작부분에 [PDF파일이름] 형태로 입력해놓으면 어디서든
-    //[pdf, [png, [txt,로 시작되는것이 있으면 "클릭파일"에 파일을 넣는다.
-
-    var 열기위치=0;
-    var 닫기위치=0;
-    열기위치=복사텍스트.indexOf('[');
-    닫기위치=복사텍스트.indexOf(']');
-
-    if (열기위치==-1 || 닫기위치==-1 || 열기위치>닫기위치) {
-      //입관클릭복사본 width 250 초과시 초과된만큼 maring-left 음수적용 // 여기서 pdf 없을때 한번 있을떄 한번 총 3번
-      if (작동위치!='PNG셑팅내부_리스트자료풀림결과') {
-        document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:0px') // 초기화
-        var 요소정보=window.getComputedStyle(document.querySelector('#PNG셑팅 #입관클릭복사본'));
-        var 요소width숫자만=parseFloat(요소정보.width);
-        if (요소width숫자만>250) {
-          document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:' +(250-요소width숫자만) + 'px')
-        }
-      }
-      return;
+    if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {
+      document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/,/gmi,'<br>');
+      document.querySelector('#blno').textContent=e.target.parentNode.children[2].textContent;
     }
 
-    var 파일이름=복사텍스트.substring(열기위치+1,닫기위치-열기위치).trim(); //파일이름 맞는데 인식이 안되기도함?
-    var 바꿀문자열="[" + 파일이름 + "]";
 
-    if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {var 버튼문자열='<button onclick="클릭파일d_none()">닫기</button><br>';}
-    if (작동위치=='입항관리자료풀림결과') {var 버튼문자열='<button onclick="입관클릭파일d_none()">닫기</button><br>';}
-    if (작동위치=='오른쪽리스트메모2만') {var 버튼문자열='<button onclick="입관클릭파일d_none()">닫기</button><br>';}
-
-    if (복사텍스트.indexOf('[PNG')>-1) { //정규식 어렵다 다른방식으로로
-      //왼쪽에 표시되는 파일부분
-      console.log(파일이름);
-      var 대체문자열='<img src="portal/images/문서연결_리스트/' + 파일이름 + '.png" style="border:1px solid black;" alt="이미지없음">'
-
-      if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;}
-      if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
-      if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
-
-      //파일보기로 변경한 복사내용
-      if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')}
-      if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
-      if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
-
-      //입관클릭복사본 width 250 초과시 초과된만큼 maring-left 음수적용 // 여기서 pdf 없을때 한번 있을떄 한번 총 3번
-      if (작동위치!='PNG셑팅내부_리스트자료풀림결과') {
-        document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:0px') // 초기화
-        var 요소정보=window.getComputedStyle(document.querySelector('#PNG셑팅 #입관클릭복사본'));
-        var 요소width숫자만=parseFloat(요소정보.width);
-        if (요소width숫자만>250) {
-          document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:' +(250-요소width숫자만) + 'px')
-        }
-      }
-
-      return;
-    }
-
-    if (복사텍스트.indexOf('[PDF')>-1) { //정규식 어렵다 다른방식으로로
-      //왼쪽에 표시되는 파일부분
-      console.log(파일이름);
-
-      var 대체문자열='<embed src="portal/images/문서연결_리스트/' + 파일이름 + '.pdf" type="application/pdf" width="1010px" height="1000px/" dataset.searchdata="기본가로700">'
-      if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭파일').innerHTML=버튼문자열 + 대체문자열;}
-      if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
-      if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭파일').innerHTML=버튼문자열 + 대체문자열;}
-
-      //파일보기로 변경한 복사내용
-      if (is_mobile) {//새창에서 열기
-        window.open(`portal/images/문서연결_리스트/${파일이름}.pdf`, '_blank');
-      } else {
-        if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="클릭파일d_none제거()">' + 파일이름 + '</button>')}
-        if (작동위치=='입항관리자료풀림결과') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
-        if (작동위치=='오른쪽리스트메모2만') {document.querySelector('#PNG셑팅 #입관클릭복사본').innerHTML=복사텍스트.replace(바꿀문자열,'<button onclick="입관클릭파일d_none제거()">' + 파일이름 + '</button>')}
-      }
-      //입관클릭복사본 width 250 초과시 초과된만큼 maring-left 음수적용 // 여기서 pdf 없을때 한번 있을떄 한번 총 3번
-      if (작동위치!='PNG셑팅내부_리스트자료풀림결과') {
-        document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:0px') // 초기화
-        var 요소정보=window.getComputedStyle(document.querySelector('#PNG셑팅 #입관클릭복사본'));
-        var 요소width숫자만=parseFloat(요소정보.width);
-        if (요소width숫자만>250) {
-          document.querySelector('#PNG셑팅 #입관클릭복사본').setAttribute('style','margin-left:' +(250-요소width숫자만) + 'px')
-        }
-      }
-      return;
-    }
   }
 }
 function 클릭파일d_none() {

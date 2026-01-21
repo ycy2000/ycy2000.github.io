@@ -578,6 +578,7 @@
         <h6 class="fw-bold" title="통신_DOMParser">02. DOMParser, npm uninstall 패키지, server.js 코드변경시 서버 재시작</h6>
         <h6 class="blueviolet fw-bold" title="통신_npm설치와사용">03. npm 설치와 사용, a) npm install 패키지, b) server.js 에 패키지 로드 후 사용 </h6>
         <h6 class="fw-bold" title="통신_xml다루기">04. 브라우저에서 xml다루기</h6>
+        <h6 class="fw-bold" title="통신_render서버구축">05. Render api 서버 구축 (도메인발급)</h6>
 
 
 
@@ -9291,7 +9292,7 @@ npm 설치된 목록이
       </div>
     </div>
     <div id="통신_xml다루기" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <h6 class="대체3줄세로1h6"></h6>
       <div>
         <pre class="fw-bold">
 1. <span class="blueviolet">const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);</span> 
@@ -9303,7 +9304,10 @@ npm 설치된 목록이
     <span class="blueviolet">const xml = parser.parseFromString(xmlText, "text/xml"); </span>
     → console.log(Object.prototype.toString.call(xml).slice(8, -1)); => XMLDocument
     → 현재로써 이미 DOM객체이다. 
-<span class="blueviolet">엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다.  </span></pre>
+<span class="blueviolet">엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다.  </span>
+
+<span class="blueviolet">파싱이 실행될때, xml을 문자열 그대로 전달할때 '&#60;?xml' 앞에 공백있으면 에러나고, 
+줄바꿈이 태그이름 관련한 곳에서 이루어지면 이후 코드 무시된다.</span> </pre>
         <h6 class="blueviolet fw-bold">-------------------- NodeList 사용법 --------------------</h6>
         <pre class="fw-bold">
 1. parentNode : 부모 노드
@@ -9321,19 +9325,152 @@ let target = [...nodes].find(node => node.textContent.trim() === "보세운송 �
 <span class="blueviolet fw-bold">#result > div > span:nth-of-type(2) 지울때</span>
 nodes = xml.querySelectorAll("#result > div > span:nth-of-type(2)");
 nodes.forEach( e => e.innerHTML='');
+<span class="blueviolet fw-bold">&#60;cargTrcnRelaBsopTpcd>입항적재화물목록 제출 같은레벨 shedNm 태그 tectContent</span>
 
+// xml 은 이미 XMLDocument 객체라고 가정
+const cNodes = xml.getElementsByTagName("c");
+let d = null;
 
+for (const cNode of cNodes) {
+  if (cNode.textContent.trim() === "입항") {
+    const parent = cNode.parentElement;     // 노드
+    const bNode = parent.getElementsByTagName("b")[0];
+    if (bNode) {
+      d = bNode.textContent.trim();
+    }
+    break; // 조건 만족하면 종료
+  }
+} </pre>
+        <h6 class="fw-bold">DOM 객체에서는 getElementById, querySelectorAll 등이 메소드를 사용할 수 있다.</h6>
+        <pre class="fw-bold">
+document는 HTML 문서의 최상위 DOM 객체이다.
+document.querySelector('#아이디')로 선택된 객체 역시 DOM 객체이다.
+따라서 다음처럼 하위 요소를 계속 탐색할 수 있다.
 
+<span class="blueviolet">let node = document.querySelector('#아이디');
+let 내부요소찾기 = node.querySelectorAll('div'); </span></pre>
+        <h6 class="blueviolet fw-bold">textContent 권장 (html, xml 공통)</h6>
+        <h6 class="fw-bold">.trim() 권장, 좌우에 공백 노드 섞일수 있으므로</h6>
+      </div>
+      <div style="width:1200px;position: relative;">
+        <div style="position: absolute; left:730px;">
+          <img src="portal/images/문서연결_샷컷/통신_xml다루기_01.png" alt="이미지없음">
+        </div>        
+        <pre class="fw-bold">
+async function call() { 
+  let 통신사용=false;
+  let xmlText;
+  if (통신사용) {
+    const blno = document.getElementById("blno").value;
+    const year = document.getElementById("year").value;
+    // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;
+    const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
+    xmlText = await res.text();
+  } else {
+    xmlText=`&#60;xml version="1.0" encoding="UTF-8" standalone="yes"?>`
+    // XML 파싱
+  }
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml"); //현재 xml이 깨질 경우 조용히 실패할 수 있음.
+
+    //xml 파싱 오류 감지 추가 추천 (콘솔에 오류메세지 띄워줌)
+    if (xml.querySelector("parsererror")) {
+      console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
+      return;
+    }
+
+    //엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다. &#60;tCnt>44&#60;/tCnt>
+    // body처럼 let root=xml.documentElement; // &#60;?xml부분 제외한 전체를 담은 태그
+    // xml에서는 innerHTML(X), textContent(O, 이것은 html에도 가능, 공통)
+    document.querySelectorAll("#result > div > span:nth-of-type(2)").forEach( e => e.textContent='');
+
+    let 결과정보제목들 =document.querySelectorAll("#result > div > span:nth-of-type(1)");
+
+    // textContent 권장, html, xml 공통 / 공백노드 섞일 경우 대시 .trim() 권장
+    let 진행단계 = xml.querySelector("tCnt");
+    if (!진행단계) { // 찾은거 첫번째
+      [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent="없음";return;
+    }
+    //console.log('진행단계 : ', 진행단계);  // 44
+        
+    [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > prgsStts").textContent;
+
+    let 문자열 = ''; let node; // 반출일시, 면허, cy에 사용할 변수
+    // 면허(운송사)는 '보세운송 신고 접수'에 공란일수도 있다. 
+    // cargTrcnRelaBsopTpcd '보세운송 신고 수리' 같은레벨 rlbrBssNo
+    // rlbrCn '보세운송 반출' 같은레벨 &#60;rlbrDttm>2025-12-24 07:05:27
+    // 면허와 반출시간은 접수에서 있는거 쓰고, 수리에서 덮어쓰느 형식
+
+    // 면허
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '보세운송 신고 접수');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrBssNo')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "면허").nextElementSibling.textContent=문자열;
+    }
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '보세운송 신고 수리');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrBssNo')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "면허").nextElementSibling.textContent=문자열;
+    }
+    // 반출일시
+    node=Array.from(xml.querySelectorAll('rlbrCn')).find(ele => ele.textContent === '보세운송 반출');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrDttm')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "반출일시").nextElementSibling.textContent=문자열;
+    }
+
+    let 숫자=xml.querySelector("cargCsclPrgsInfoQryVo > etprDt").textContent; //20260105
+    [...결과정보제목들].find(ele => ele.textContent === "입항일시").nextElementSibling.textContent=
+        `${숫자.slice(0,4)}-${숫자.slice(4,6)}-${숫자.slice(6,8)}`;
+
+    // &#60;cargTrcnRelaBsopTpcd>'입항적재화물목록 제출' 같은레벨 shedNm 태그 tectContent
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '입항적재화물목록 제출');
+    if (node) {문자열=node.parentNode.querySelector('shedNm')?.textContent || '';}
+    [...결과정보제목들].find(ele => ele.textContent === "cy").nextElementSibling.textContent=문자열;
+
+    [...결과정보제목들].find(ele => ele.textContent === "선사").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shcoFlco").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "선명").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shipNm").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "컨개수").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrGcnt").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "컨번호").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrNo").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "포딩").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > frwrEntsConm").textContent;
+
+    document.querySelector('#닫기').classList.remove('d-none');
+}
         </pre>
-      </div>
-      <div>
-
-      </div>
-      <div>
 
       </div>
     </div>
-    
+    <div id="통신_render서버구축" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+1. Render를 사용하려면 먼저 Render.com ( https://render.com/ )공식 사이트에서 회원가입을 해야 합니다. 
+    GitHub 계정으로 간단하게 연동할 수 있어서 편리하죠. 10초면 가능합니다.
+
+        </pre>
+
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+
     <div id="통신_브라우저와내api" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -9345,10 +9482,10 @@ nodes.forEach( e => e.innerHTML='');
 
       </div>
       <div>
-
+dsf
       </div>
       <div>
-
+sdf
       </div>
     </div>
 
