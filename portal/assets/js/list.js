@@ -843,7 +843,7 @@ function 공통한줄색칠있음clear() {
   }
 }
 async function call() { 
-  let 통신사용=false;
+  let 통신사용=true;
   let xmlText;
   if (통신사용) {
     const blno = document.getElementById("blno").value;
