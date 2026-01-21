@@ -878,7 +878,7 @@ async function call() {
       [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent="없음";return;
     }
     if (진행단계.textContent==0) {console.log('진행단계.textContent==0');return;}
-    //console.log('진행단계 : ', 진행단계);  // 44
+    console.log('진행단계 : ', 진행단계);  // 44
     
     [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent=
         xml.querySelector("cargCsclPrgsInfoQryVo > prgsStts").textContent;
