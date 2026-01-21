@@ -848,11 +848,10 @@ async function call() {
   if (통신사용) {
     const blno = document.getElementById("blno").value;
     const year = document.getElementById("year").value;
-    // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;
+    // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;https://github.com/ycy2000/dongil-server
+    //const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
     const res = await fetch(`https://dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
     xmlText = await res.text();
-  } else {
-    // XML 파싱
   }
     const parser = new DOMParser();
     const xml = parser.parseFromString(xmlText, "text/xml"); //현재 xml이 깨질 경우 조용히 실패할 수 있음.
