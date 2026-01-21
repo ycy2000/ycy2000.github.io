@@ -95,6 +95,8 @@ function formatXML(xml) {
 }
 
 async function call() { 
+  var 임시오늘날짜 = new Date();
+  document.getElementById("year").textContent=임시오늘날짜.getFullYear();
   let 통신사용=true;
   let xmlText;
   if (통신사용) {
