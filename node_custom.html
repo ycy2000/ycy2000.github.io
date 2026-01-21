@@ -154,6 +154,7 @@ async function call() {
     // 반출일시
     node=Array.from(xml.querySelectorAll('rlbrCn')).find(ele => ele.textContent === '보세운송 반출');
     if (node) {
+      console.log('보세운송 반출 있음')
       문자열=node.parentNode.querySelector('rlbrDttm')?.textContent || ''; // 안전하게
       [...결과정보제목들].find(ele => ele.textContent === "반출일시").nextElementSibling.textContent=문자열;
     }
