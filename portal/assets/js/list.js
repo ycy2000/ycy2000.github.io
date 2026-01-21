@@ -846,8 +846,8 @@ async function call() {
   let 통신사용=true;
   let xmlText;
   if (통신사용) {
-    const blno = document.getElementById("blno").value;
-    const year = document.getElementById("year").value;
+    const blno = document.getElementById("blno").textContent;
+    const year = document.getElementById("year").textContent;
     // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;https://github.com/ycy2000/dongil-server
     //const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
     const res = await fetch(`https://dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
