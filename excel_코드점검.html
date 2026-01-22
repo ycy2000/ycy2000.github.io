@@ -9503,33 +9503,78 @@ Render의 MCP 서버를 확인하거나 Render에서 에이전트를 구축하�
         <h6 class="fw-bold"></h6>
         <pre class="fw-bold">
 Render 서버에서도 GitHub 비공개(Private) 저장소(Repository)는 당연히 배포 가능합니다. 
-Render는 깃허브 계정을 연결하여 Public뿐만 아니라 본인이 접근 권한을 가진 모든 Private 저장소를 연동하여 배포할 수 있는 기능을 지원합니다. 
+Render는 깃허브 계정을 연결하여 Public뿐만 아니라 본인이 접근 권한을 가진 
+모든 Private 저장소를 연동하여 배포할 수 있는 기능을 지원합니다. 
 다음은 Private 저장소를 배포하는 방법과 주의사항입니다.
 1. Private 레포지토리 배포 방법
 Render에 로그인: Render 대시보드에 로그인합니다.
 서비스 생성: + New 버튼을 누르고 Web Service 또는 Static Site를 선택합니다.
-GitHub 연결: Git provider에서 GitHub을 선택합니다. 처음이라면 Render의 GitHub 앱을 설치하고 권한을 부여해야 합니다.
-저장소 선택: 연결된 계정 내에 있는 Private 레포지토리가 목록에 표시됩니다. 배포할 프로젝트를 선택합니다.
+GitHub 연결: Git provider에서 GitHub을 선택합니다. 
+처음이라면 Render의 GitHub 앱을 설치하고 권한을 부여해야 합니다.
+저장소 선택: 연결된 계정 내에 있는 Private 레포지토리가 목록에 표시됩니다. 
+배포할 프로젝트를 선택합니다.
 배포: 나머지는 Public 저장소와 동일하게 설정 후 Create를 누르면 배포됩니다. 
 2. 중요 체크사항
-권한 설정: Render가 사용자의 GitHub Private 저장소에 접근할 수 있도록, 처음 연동 시 Render GitHub App에 해당 레포지토리 접근 권한을 명시적으로 허용해야 합니다.
-환경 변수: 소스 코드에는 포함되지 않는 비밀키(API_KEY, DB 비밀번호 등)는 Render 설정의 Environment 섹션에 입력해야 합니다. 
+권한 설정: Render가 사용자의 GitHub Private 저장소에 접근할 수 있도록, 
+처음 연동 시 Render GitHub App에 해당 레포지토리 접근 권한을 명시적으로 허용해야 합니다.
+환경 변수: 소스 코드에는 포함되지 않는 비밀키(API_KEY, DB 비밀번호 등)는 
+Render 설정의 Environment 섹션에 입력해야 합니다. 
 3. "안 되는 것"이 아니라 "문제"가 생기는 경우
 만약 안 된다면 다음과 같은 이유일 수 있습니다.
 권한 부족: 레포지토리를 소유한 조직(Organization) 또는 계정이 Render에 권한을 주지 않은 경우.
-Git 서브모듈(Submodules): .gitmodules 파일에 다른 Private 서브모듈이 포함된 경우, Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니다. 
+Git 서브모듈(Submodules): .gitmodules 파일에 다른 Private 서브모듈이 포함된 경우, 
+Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니다. 
 결론적으로, GitHub과 연동하여 권한만 제대로 설정해주면 문제없이 사용할 수 있습니다.
         </pre>
       </div>
-      <div>
+      <div style="width:650px;">
         <h6 class="fw-bold"></h6>
         <pre class="fw-bold">
-- 우측에 Dashboard - 펜 모양 우측 Dongil은 Workspace 이름 설정하거 
+- 우측에 Dashboard - 펜 모양 우측 Dongil은 Workspace 이름 설정하거, 하나 있으면 삭제안되는듯
 - 왼쪽 메뉴에서 Projects 누르면 오른쪽에 Overview - My project에는 api서버(만든거)
 - 메뉴 이동은 위의 경로 클릭하여 루트로 이동가능, 펜 모양 누르면 첫 화면으로 이동
 
-- My project목록 우측에 ... 클릭하면 suspend 중지인듯 
-- My project 삭제 : 위에 펜모양 클릭하면 삭제 있음
+- My project목록 우측에 ... 클릭하면 suspend 중지인듯, 서비스 일단 중지 한다는 듯
+- My project 삭제 : 위에 펜모양 클릭하면 삭제 있음, 내부에 등록된 서비스들 모두 삭제 
+   개별적으로 삭제할때는 들어가서 우측 ... 클릭하여 들어가서 맨 아래에 있음 
+
+<span class="blueviolet">================= api서버 연결방법(dashboard에서) =================</span>
+1. https://dashboard.render.com 깃허브연동 및 구글에자동로그인 되어 있으면 자동으로 들어간다.
+2. 맨우측 '+ New' - 'Web Service' - 'Git Provider'
+3. 처음에 'Git Provider'에 레포지터리 항목이 없는데 'GitHub'들어가서 깃허브폴더 가지고올
+    권한을 주는 설정이 있다. install 하면 항목이 뜨게 된다. 
+    <span class="blueviolet">오래 기다려야 드는듯</span>
+4. 'Git Provider'에 보이는 깃허브 레포지터리 클릭 <span class="blueviolet">설정화면으로 들어간다</span>
+    - Name : fetch(도메인+api함수명+쿼리스트링) 중, 도메인예시 : https://Name.onrender.com 
+       Name에 해당하는 이름을 설정. 바꿔도 된다. 
+    - Project Optional : Add this web service to a project once it’s created. 
+       이 웹 서비스가 생성되면 프로젝트에 추가하세요.
+       모르겠어서 일단 건너뜀 
+    - Language : 언어, server.js 가 이떤언어로 작성되었는가. => Node 
+    - Branch : The Git branch to build and deploy. 구축 및 배포할 Git 브랜치. => main 
+    - Region : 한국이 없다. => 기본대로 Oregon(Us West)
+    - ★Root Directory★ : e. g. ser 라고 희미게 있다. 경로를 넣으라는 말 같다.
+       레포지터리에 바로 server.js 가 있다면 건너뜀. 
+       레포지터리에 특정폴더 안에 server.js가 있을때 특정폴더를 지정하는 과정. 
+       If set, Render runs commands from this directory instead of the repository root. 
+       Additionally, code changes outside of this directory do not trigger an auto-deploy. 
+       Most commonly used with a monorepo.
+       설정된 경우 Render는 리포지토리 루트 대신 이 디렉토리에서 명령을 실행합니다. 
+       또한 이 디렉토리 외부의 코드 변경은 자동 배포를 트리거하지 않습니다. 
+       가장 일반적으로 모노레포와 함께 사용됩니다.
+       <span class="blueviolet">dongil-server (server.js가 들어있는 폴더이름)</span>
+    - Build Command : render node.js서버에서 npm install 한다고 이해한다. 
+       'dongil-server/ $ yarn' 자동설정. 
+       'dongil-server/ ' 부분은 Root Directory에 의한것이고 
+       '$ yarn'은 npm install 기능인데 render 내부적으로 설치하는 것 포함하는 명령인듯 
+    - Start Command
+       Root Directory 설정 없을때는 'node server.js'였는데 
+       dongil-server/ $ yarn start (start => server.js 해야하나?) 
+    - Instance Type : 요금제선택 Free 클릭 
+    <span class="blueviolet">- Environment Variables : 환경변수 설정 (.env내용)</span>
+       직접입력 또는 Add from .env 
+    - Advanced 
+    - Deploy Web Serverc : 클릭하면 배포된다. 
         </pre>
       </div>
     </div>
