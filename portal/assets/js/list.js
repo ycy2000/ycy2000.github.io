@@ -859,7 +859,7 @@ function formatXML(xml) {
   return formatted.trim();
 }
 
-// ===== 메인 함수 =====
+// ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
 async function call() {
   document.querySelector('#닫기').classList.remove('d-none');
 
@@ -918,11 +918,26 @@ async function call() {
 
   const 결과정보제목들 = document.querySelectorAll(".XML항목");
 
-  // 헬퍼 함수: xml에서 값 가져와 화면 업데이트
+  // ===== 헬퍼 함수: 간단한 XML 값 세팅 =====
   function setText(selectorText, xmlSelector, formatFn) {
     const node = xml.querySelector(xmlSelector);
     let value = node ? node.textContent.trim() : '';
     if (formatFn) value = formatFn(value);
+    const target = [...결과정보제목들].find(ele => ele.textContent === selectorText);
+    if (target?.nextElementSibling) target.nextElementSibling.textContent = value;
+  }
+
+  // ===== 헬퍼 함수: cargTrcnRelaBsopTpcd 조건 검색 (보세운송 반출은 아님 rlbrCn)=====
+  function setTextByCargTrcn(conditionText, targetTag, selectorText) {
+    let targetNode = Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd'))
+      .find(ele => ele.textContent.trim() === conditionText);
+
+    if (conditionText=='보세운송 반출') {
+        targetNode = Array.from(xml.querySelectorAll('rlbrCn'))
+      .find(ele => ele.textContent.trim() === conditionText);
+    }  
+
+    const value = targetNode?.parentNode.querySelector(targetTag)?.textContent.trim() || '';
     const target = [...결과정보제목들].find(ele => ele.textContent === selectorText);
     if (target?.nextElementSibling) target.nextElementSibling.textContent = value;
   }
@@ -937,9 +952,11 @@ async function call() {
   }
 
   // ===== 항목별 값 설정 =====
-  setText("cy", "cargTrcnRelaBsopTpcd:contains('입항적재화물목록 제출') ~ shedNm");
-  setText("면허", "cargTrcnRelaBsopTpcd:contains('보세운송 신고 수리') ~ rlbrBssNo");
-  setText("반출일시", "rlbrCn:contains('보세운송 반출') ~ rlbrDttm");
+  setTextByCargTrcn('입항적재화물목록 제출', 'shedNm', 'cy');
+  setTextByCargTrcn('보세운송 신고 접수', 'rlbrBssNo', '면허');
+  setTextByCargTrcn('보세운송 신고 수리', 'rlbrBssNo', '면허'); // 덮어쓰기 가능
+  setTextByCargTrcn('보세운송 반출', 'rlbrDttm', '반출일시');
+
   setText("포딩", "cargCsclPrgsInfoQryVo > frwrEntsConm");
   setText("진행정보", "cargCsclPrgsInfoQryVo > prgsStts");
   setText("입항일", "cargCsclPrgsInfoQryVo > etprDt", val =>
@@ -950,6 +967,7 @@ async function call() {
   setText("컨개수", "cargCsclPrgsInfoQryVo > cntrGcnt");
   setText("컨번호", "cargCsclPrgsInfoQryVo > cntrNo");
 }
+
 async function call_keep() { 
   document.querySelector('#닫기').classList.remove('d-none');
 //fetch()의 Response 객체는 body를 단 한 번만 읽을 수 있는 스트림입니다.
@@ -1070,45 +1088,6 @@ async function call_keep() {
   if (targetNode) {문자열=targetNode.textContent.trim();} else {문자열=''}
   [...결과정보제목들].find(ele => ele.textContent === "컨번호").nextElementSibling.textContent=문자열;
 }
-
-async function 매크로1_JS() {
-  const url =
-    "https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry/" +
-    "retrieveCargCsclPrgsInfo?crkyCn=c290s255d192h253h000l090g5&mblNo=SGN501734600&blYy=2025";
-
-  try {
-
-    const response = await fetch(url); // 여기서 에러?
-
-    if (!response.ok) return;
-
-    const xmlText = await response.text();
-
-    console.log(xmlText);
-
-    // XML 파싱
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-
-    console.log("xmlDoc.childNodes.length :", xmlDoc.childNodes.length);
-
-    xmlDoc.childNodes.forEach(child => {
-      console.log(
-        `child.nodename : ${child.nodeName}, child.childNodes.length : ${child.childNodes.length}`
-      );
-
-      child.childNodes.forEach(innerChild => {
-        console.log(
-   `내부child.ChildNodes.length : ${innerChild.childNodes.length}, nodename : ${innerChild.nodeName}, type : ${innerChild.nodeType}`
-        );
-        console.log(innerChild.textContent);
-      });
-    });
-  } catch (e) {
-    console.error(e);
-  }
-}
-
 
 function png셑팅click(e) {
   // 대부분의 모바일 브라우저(특히 iOS Safari, Chrome)는 <embed> 태그를 제대로 지원하지 않아요.
