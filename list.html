@@ -248,21 +248,29 @@
     </div>
     <div id="닫기" class="d-none" style="position: absolute; background-color: white;padding:5px;padding-top:0px; border:1px solid black;">
       <div id="result" style="margin-top:5px;">
-        <div><span>진행정보</span><span></span></div>
-        <div><span>반출일시</span><span></span></div>
-        <div><span>면허</span><span></span></div>
-        <div><span>입항일시</span><span></span></div>
-        <div><span>cy</span><span></span></div>
-        <div><span>선사</span><span></span></div>
-        <div><span>선명</span><span></span></div>
-        <div><span>컨개수</span><span></span></div>
-        <div><span>컨번호</span><span></span></div>
-        <div><span>포딩</span><span></span></div>
-        <div><span onclick="document.querySelector('#닫기').classList.add('d-none')">닫기</span></div>
-        <div style="margin-top:5px;"><span>res.ok</span><span></span></div>
-        <div><span>res.status</span><span></span></div>
+        <div><span class="XML항목">진행정보</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">반출일시</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">면허</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">입항일</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">cy</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">선사</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">선명</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">컨개수</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">컨번호</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">포딩</span><span class="xmlInfo"></span></div>
+        <div>
+          <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
+          <span onclick="document.querySelector('#xml보기').classList.toggle('d-none')" style="background-color: aqua;margin-left:175px;width:120px;text-align: center;">xml보기/숨기기</span>
+        </div>
+        <div style="margin-top:5px;"><span>response</span><span id="tag_response" class="resInfo"></span></div>
+        <div><span>res.ok</span><span id="tag_resOk" class="resInfo"></span></div>
+        <div><span>res.status</span><span id="tag_resStatus" class="resInfo"></span></div>
+        <div><span>ContentType</span><span id="tag_ContentType" class="resInfo"></span></div>
+        <div><span>body</span><span id="body_to_json" class="resInfo"></span></div>
+        <div><span>tCnt</span><span id="tag_tCnt" class="resInfo"></span></div>
       </div>
     </div>
+    <div id="xml보기" class="d-none" style="position: absolute;top:510px;background-color: white;border:1px solid black;padding:5px;"></div>
     <div id="클릭파일" class="d-none"></div>
 
     <div id="PNG셑팅내부_리스트자료풀림결과" class="검색 d-inline-block" style="vertical-align: top;"><!-- js로 한줄을 div안에 span 4개? -->
