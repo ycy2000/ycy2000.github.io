@@ -9563,13 +9563,17 @@ Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니
        또한 이 디렉토리 외부의 코드 변경은 자동 배포를 트리거하지 않습니다. 
        가장 일반적으로 모노레포와 함께 사용됩니다.
        <span class="blueviolet">dongil-server (server.js가 들어있는 폴더이름)</span>
+
     - Build Command : render node.js서버에서 npm install 한다고 이해한다. 
        'dongil-server/ $ yarn' 자동설정. 
        'dongil-server/ ' 부분은 Root Directory에 의한것이고 
        '$ yarn'은 npm install 기능인데 render 내부적으로 설치하는 것 포함하는 명령인듯 
     - Start Command
        Root Directory 설정 없을때는 'node server.js'였는데 
-       dongil-server/ $ yarn start (start => server.js 해야하나?) 
+       dongil-server/ $ yarn start
+       <span class="blueviolet">배포하니 중단되어 이곳을 가리킨다. x Required. 수정 불가인듯하다.
+       "start": "node server.js" 되어 있다.
+       </span>
     - Instance Type : 요금제선택 Free 클릭 
     <span class="blueviolet">- Environment Variables : 환경변수 설정 (.env내용)</span>
        직접입력 또는 Add from .env 
