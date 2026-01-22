@@ -9521,23 +9521,24 @@ GitHub 연결: Git provider에서 GitHub을 선택합니다.
 Render 설정의 Environment 섹션에 입력해야 합니다. 
 3. "안 되는 것"이 아니라 "문제"가 생기는 경우
 만약 안 된다면 다음과 같은 이유일 수 있습니다.
-권한 부족: 레포지토리를 소유한 조직(Organization) 또는 계정이 Render에 권한을 주지 않은 경우.
+권한 부족: 레포지토리를 소유한 조직(Organization) 
+또는 계정이 Render에 권한을 주지 않은 경우.
 Git 서브모듈(Submodules): .gitmodules 파일에 다른 Private 서브모듈이 포함된 경우, 
 Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니다. 
-결론적으로, GitHub과 연동하여 권한만 제대로 설정해주면 문제없이 사용할 수 있습니다.
-        </pre>
-      </div>
-      <div style="width:650px;">
-        <h6 class="fw-bold"></h6>
+결론적으로, GitHub과 연동하여 권한만 제대로 설정해주면 문제없이 사용할 수 있습니다.</pre>
         <pre class="fw-bold">
-- 우측에 Dashboard - 펜 모양 우측 Dongil은 Workspace 이름 설정하거, 하나 있으면 삭제안되는듯
+- 우측에 Dashboard - 펜 모양 우측 Dongil은 Workspace 이름 설정하거, 
+   하나 있으면 삭제안되는듯
 - 왼쪽 메뉴에서 Projects 누르면 오른쪽에 Overview - My project에는 api서버(만든거)
 - 메뉴 이동은 위의 경로 클릭하여 루트로 이동가능, 펜 모양 누르면 첫 화면으로 이동
 
 - My project목록 우측에 ... 클릭하면 suspend 중지인듯, 서비스 일단 중지 한다는 듯
 - My project 삭제 : 위에 펜모양 클릭하면 삭제 있음, 내부에 등록된 서비스들 모두 삭제 
-   개별적으로 삭제할때는 들어가서 우측 ... 클릭하여 들어가서 맨 아래에 있음 
-
+   개별적으로 삭제할때는 들어가서 우측 ... 클릭하여 들어가서 맨 아래에 있음 </pre>
+      </div>
+      <div style="width:650px;">
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
 <span class="blueviolet">================= api서버 연결방법(dashboard에서) =================</span>
 1. https://dashboard.render.com 깃허브연동 및 구글에자동로그인 되어 있으면 자동으로 들어간다.
 2. 맨우측 '+ New' - 'Web Service' - 'Git Provider'
@@ -9571,7 +9572,8 @@ Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니
     - Start Command
        Root Directory 설정 없을때는 'node server.js'였는데 
        dongil-server/ $ yarn start
-       <span class="blueviolet">배포하니 중단되어 이곳을 가리킨다. x Required. 수정 불가인듯하다.
+       <span class="blueviolet">배포하니 중단되어 이곳을 가리킨다. x Required. 
+       yarn start 대신에 node server.js (클릭하면 목록이 뜬다)
        "start": "node server.js" 되어 있다.
        </span>
     - Instance Type : 요금제선택 Free 클릭 
@@ -9579,6 +9581,36 @@ Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니
        직접입력 또는 Add from .env 
     - Advanced 
     - Deploy Web Serverc : 클릭하면 배포된다. 
+
+==> Cloning from https://github.com/ycy2000/ycy2000.github.io
+==> Checking out commit 7c7d3bc067dba4869c830e8fc672c18cb4338fbe in branch main
+==> Using Node.js version 22.22.0 (default)
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'yarn'...
+yarn install v1.22.22
+info No lockfile found.
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 1.12s.
+==> Uploading build...
+==> Uploaded in 16.7s. Compression took 1.7s
+==> Build successful 🎉
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+==> Deploying...
+==> Running 'node server.js'
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 
+🛠️  run anywhere with `dotenvx run -- yourcommand`
+서버 실행중 → http://localhost:10000
+==> Your service is live 🎉
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://dongil-server.onrender.com
+==> 
+==> ///////////////////////////////////////////////////////////
         </pre>
       </div>
     </div>
