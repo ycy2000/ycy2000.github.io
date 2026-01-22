@@ -579,6 +579,14 @@
         <h6 class="blueviolet fw-bold" title="통신_npm설치와사용">03. npm 설치와 사용, a) npm install 패키지, b) server.js 에 패키지 로드 후 사용 </h6>
         <h6 class="fw-bold" title="통신_xml다루기">04. 브라우저에서 xml다루기</h6>
         <h6 class="fw-bold" title="통신_render서버구축">05. Render api 서버 구축 (도메인발급)</h6>
+        <h6 class="fw-bold" title="통신_객체의문법">06. 문법 : JSON, XML, HTML, 문자열</h6>
+        <h6 class="fw-bold" title="통신_response객체">07. response와 response.text, 응답이 JSON인지, XML인지, HTML인지</h6>
+        <h6 class="blueviolet fw-bold" title="통신_try_catch">08. try catch 알고보면 신세계, 유연하고 명확한 에러처리</h6>
+        <h6 class="blueviolet fw-bold" title="통신_관세청통신코드">09. 관세청 통신 코드 정리</h6>
+
+
+
+        <br><br><br><br><br>
         <h6 class="fw-bold"><a href="https://render.com/docs/your-first-deploy" target="_blank">https://render.com/docs/your-first-deploy</a></h6>
         
 
@@ -614,7 +622,7 @@
         <h6 class="blueviolet fw-bold" title="실습_nodejs관련02" style="text-decoration: underline;">04. ★요청 작업시 : server.js 파일을 선별적으로 읽는다?? 미들웨어와 next()</h6>
         <h6 class="fw-bold" title="실습_nodejs관련03">05. 하지만 과거 커밋 기록에는 여전히 남아있음 → 키는 이미 노출된 것으로 간주. </h6>
         <h6 class="fw-bold" title="실습_01">[실습01] dotenv, 브라우저 url 출처부분, 생략시 / 는 브라우저 출처</h6>
-        <h6 class="fw-bold" title="실습_02">[실습02] response와 response.text, 응답이 JSON인지, XML인지, HTML인지</h6>
+
         <h6 class="fw-bold" title="실습_03">[실습02] ★중요★ response 객체, 1) 내api서버에서, 2) 관세청api서버에서</h6>
                 <br><br><br>
         <h6 class="fw-bold" title="개념_nodejs관련7">개념정리 5, api서버(프로젝트 폴더) 내부에 있는 html 페이지 제공</h6>
@@ -9539,6 +9547,7 @@ Render의 GitHub 앱이 그 서브모듈까지 접근 권한이 있어야 합니
       <div style="width:650px;">
         <h6 class="fw-bold"></h6>
         <pre class="fw-bold">
+<span class="blueviolet">======= api통신은 바로 반영되는듯? 엑셀에서는 아주 늦게 반영되는듯? ======</span>
 <span class="blueviolet">================= api서버 연결방법(dashboard에서) =================</span>
 1. https://dashboard.render.com 깃허브연동 및 구글에자동로그인 되어 있으면 자동으로 들어간다.
 2. 맨우측 '+ New' - 'Web Service' - 'Git Provider'
@@ -9611,6 +9620,214 @@ Done in 1.12s.
 ==> Available at your primary URL https://dongil-server.onrender.com
 ==> 
 ==> ///////////////////////////////////////////////////////////
+        </pre>
+      </div>
+    </div>
+    <div id="통신_객체의문법" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">JSON객체 문법 : </h6>
+        <pre class="fw-bold">
+        </pre>
+      </div>
+    </div>
+    
+    <div id="통신_response객체" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">server.js 코드에서 + 웹브라우저에서 response 객체</h6>
+        <pre class="fw-bold">
+    const response = await fetch(url);
+    const text = await response.text();
+    res.send(text);</pre>
+        <h6 class="blueviolet fw-bold">1. response 객체는 정해진 골격이 있다.</h6>
+        <pre class="fw-bold">
+fetch()는 Promise<Response> 를 반환합니다.
+여기서 Response는 Fetch API 표준에 정의된 내장 클래스(인터페이스) 입니다.
+즉, **브라우저/런타임이 표준 스펙에 따라 생성한 객체 ⭕
+
+✅ response 객체의 고정된 골격 (주요 속성)
+response.status        // 숫자 HTTP 상태코드 (예: 200)
+response.statusText    // 상태 메시지 (예: "OK")
+response.ok            // status가 200~299이면 true
+response.url           // 요청한 최종 URL
+response.headers       // Headers 객체
+response.redirected    // 리다이렉트 여부
+response.type          // "basic", "cors", "opaque" 등
+response.body          // ReadableStream (원시 바디 스트림) <span class="blueviolet">읽혀지지 않은 상태</span> 
+<span class="blueviolet">우리가 실제로 다루는 것은 보통 body 자체가 아니라 body를 해석한 결과입니다.</span> 
+
+실무에서 "body 형태"라고 말할 때 보통은 다음 중 하나를 의미합니다:
+JSON 객체 (가장 흔함)
+문자열 (HTML / plain text)
+Blob / 파일
+ArrayBuffer (특수 바이너리)
+
+그리고 바디(response.body)를 읽기 위한 메서드 : 어떤방식으로 읽어라
+<span class="blueviolet">다음은 원시스트림을 읽는 방법이다.
+const text=response.text(); 에서 text 변수는 문자열이되고 
+const json=text.json(); x 이건 안된다. 원시스트림이 아니기 때문이다.
+또한 원시스트림은 한번만 읽을 수 있다.
+const text=response.text();
+const json=response.json(); 이렇게 연속으로 읽을 수 없다.</span>
+response.text()
+response.json()
+response.blob()
+response.arrayBuffer()
+response.formData()
+
+이 구조는 항상 동일합니다. ✅ 달라지는 것은 body 내용
+
+
+
+
+❌ res.send(response) 는 제대로 된 응답을 브라우저로 보낼 수 없습니다.
+✅ 반드시 response.text(), response.json(), response.body 등을 꺼내서 보내야 합니다.
+
+이유
+
+response 는 Fetch API의 Response 객체입니다.
+
+const response = await fetch(apiUrl);
+
+
+이 객체는
+
+상태코드
+
+헤더
+
+본문 스트림
+
+을 포함한 복합 객체이고,
+Express의 res.send() 는 문자열, Buffer, JSON, Stream 같은 실제 데이터를 보내야 합니다.
+
+만약 이렇게 하면?
+res.send(response);
+
+
+브라우저로는 다음과 같은 것이 날아갑니다:
+
+[object Response]
+
+
+즉, Response 객체를 문자열로 강제 변환한 결과만 전송됩니다.
+외부 API 데이터는 전혀 전달되지 않습니다.
+
+</pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">const text = await response.text(); 일단 response.body 의 내용을 text 로 읽어들인다.</span>
+1. {"name":"Kim","age":30} : JSON 형태의 문자
+2. XML 응답
+    &#60;?xml version="1.0" encoding="UTF-8"?>
+    &#60;response>
+      &#60;item>
+        &#60;hsCode>847130&#60;/hsCode>
+        &#60;taxRate>8&#60;/taxRate>
+      &#60;/item>
+    &#60;/response>
+3. &#60;!doctype html>&#60;html>...&#60;/html> : HTML 응답
+<span class="blueviolet">4. 그 문자열이 어떤 형식(JSON/XML/HTML)이냐에 따라 다음 파싱 방법이 달라진다</span></pre>
+        <h6 class="fw-bold">응답이 JSON 인지, XML 인지 파악하는 방법 </h6>
+        <pre class="fw-bold">
+현업에서는 HTTP 헤더(Content-Type) 로 판별하는 것이 정석입니다.
+✅ 1. 가장 정석적인 방법 — Content-Type 헤더 확인
+const res = await fetch(url);
+const contentType = res.headers.get("content-type");
+console.log(contentType);
+
+결과 예시
+응답 종류     Content-Type 값
+JSON	     application/json
+XML	     application/xml 또는 text/xml
+HTML	     text/html
+일반텍스트   text/plain
+
+사용 예
+if (contentType.includes("application/json")) {
+  <span class="blueviolet">const data = await res.json();</span> 
+}
+else if (contentType.includes("xml")) {
+  <span class="blueviolet">const text = await res.text();</span> 
+  
+  // XML 파싱
+}
+        </pre>
+
+      </div>
+      <div>
+
+
+      </div>
+    </div>
+    <div id="통신_try_catch" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">try...catch의 본래 목적, 이후 통신관련에 한정하여 본다.</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">실행 중 발생하는 **예외(에러)**를 잡아서 프로그램이 중단되지 않도록 처리하기 위한 문법</span>
+
+try...catch 구문은 통신을 시도할 때만 쓰는 것이 아니라, 프로그램 실행 중 발생할 수 있는 
+모든 오류(Exception)를 처리하기 위한 일반적인 오류 처리 구문입니다. 
+통신 코드에서도 많이 쓰이기 때문에 그렇게 느껴질 뿐이에요.
+
+<span class="blueviolet">❗ 하지만 try/catch 가 필요한 이유</span>
+1) 예상하지 못한 에러까지 잡는다
+try {
+  const res = await fetch(url); // 네트워크 오류 → 예외 발생
+  const data = await res.json(); // JSON 파싱 오류 → 예외 발생
+} catch(e) {
+  // 위 모든 예외를 한 번에 처리
+}
+
+if 문은 이런 예외를 잡지 못합니다.
+
+2) Promise reject 흐름을 받을 수 있다
+await fetch("없는도메인"); // 여기서 바로 예외
+
+
+→ if로는 체크할 res 자체가 없음
+→ try/catch 만 가능
+
+<span class="blueviolet">file:/// 파일시스템에서 열린 페이지에서도 통신 요청 및 응답은 받는다. 
+브라우저의 CORS정책에서 response 객체를 전달하지 않는다. </span>
+
+try {
+  일단 시도하여라.
+  -- 다음의 경우 catch 구문으로 이동하여라 -- 
+  1. 응답을 받았지만 res.ok=ture 가 아닌때, 
+  2. if (!res.ok) throw new Error(res.status); throw 로 던져졌을때, 
+      if (res.status==404) throw new Error(res.status); throw 로 던져졌을때, 
+      <span class="blueviolet">catch 에서 실행하고 싶을때 </span>
+      이때 catch(e)에서 e는 에러객체이고 res.status의 문자열은 에러 객체에담긴다. 
+      e.message : 404, e : Error 404
+      코드 진행시 throw를 만나면 
+} catch(e) {
+  
+}
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+- 에러 : scheme(스킴)형식 안맞으면 즉시 에러 및 중지 : gghttp// 잘못 입력
+- 에러 : url 의 출처부분 찾지 못하면 에러 및 중지 
+
+- 프로토콜://출처 까지 있음. try 에서 응답 : catch로 안가는 응답
+  a) 서버에 요청함수 없을때 => res.ok : false, res.status : 404
+
+        </pre>
+
+      </div>
+    </div>
+    <div id="통신_관세청통신코드" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+<span class="blueviolet"></span>
+
         </pre>
       </div>
     </div>
@@ -11049,136 +11266,7 @@ app.listen(PORT, () => {
 
       </div>
     </div>
-    <div id="실습_02" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold">server.js 코드에서 + 웹브라우저에서 response 객체</h6>
-        <pre class="fw-bold">
-    const response = await fetch(url);
-    const text = await response.text();
-    res.send(text);</pre>
-        <h6 class="blueviolet fw-bold">1. response 객체는 정해진 골격이 있다.</h6>
-        <pre class="fw-bold">
-fetch()는 Promise<Response> 를 반환합니다.
-여기서 Response는 Fetch API 표준에 정의된 내장 클래스(인터페이스) 입니다.
-즉, **브라우저/런타임이 표준 스펙에 따라 생성한 객체 ⭕
 
-✅ response 객체의 고정된 골격 (주요 속성)
-response.status        // 숫자 HTTP 상태코드 (예: 200)
-response.statusText    // 상태 메시지 (예: "OK")
-response.ok            // status가 200~299이면 true
-response.url           // 요청한 최종 URL
-response.headers       // Headers 객체
-response.redirected    // 리다이렉트 여부
-response.type          // "basic", "cors", "opaque" 등
-response.body          // ReadableStream (원시 바디 스트림) <span class="blueviolet">읽혀지지 않은 상태</span> 
-<span class="blueviolet">우리가 실제로 다루는 것은 보통 body 자체가 아니라 body를 해석한 결과입니다.</span> 
-
-실무에서 "body 형태"라고 말할 때 보통은 다음 중 하나를 의미합니다:
-JSON 객체 (가장 흔함)
-문자열 (HTML / plain text)
-Blob / 파일
-ArrayBuffer (특수 바이너리)
-
-그리고 바디(response.body)를 읽기 위한 메서드 : 어떤방식으로 읽어라
-<span class="blueviolet">다음은 원시스트림을 읽는 방법이다.
-const text=response.text(); 에서 text 변수는 문자열이되고 
-const json=text.json(); x 이건 안된다. 원시스트림이 아니기 때문이다.
-또한 원시스트림은 한번만 읽을 수 있다.
-const text=response.text();
-const json=response.json(); 이렇게 연속으로 읽을 수 없다.</span>
-response.text()
-response.json()
-response.blob()
-response.arrayBuffer()
-response.formData()
-
-이 구조는 항상 동일합니다. ✅ 달라지는 것은 body 내용
-
-
-
-
-❌ res.send(response) 는 제대로 된 응답을 브라우저로 보낼 수 없습니다.
-✅ 반드시 response.text(), response.json(), response.body 등을 꺼내서 보내야 합니다.
-
-이유
-
-response 는 Fetch API의 Response 객체입니다.
-
-const response = await fetch(apiUrl);
-
-
-이 객체는
-
-상태코드
-
-헤더
-
-본문 스트림
-
-을 포함한 복합 객체이고,
-Express의 res.send() 는 문자열, Buffer, JSON, Stream 같은 실제 데이터를 보내야 합니다.
-
-만약 이렇게 하면?
-res.send(response);
-
-
-브라우저로는 다음과 같은 것이 날아갑니다:
-
-[object Response]
-
-
-즉, Response 객체를 문자열로 강제 변환한 결과만 전송됩니다.
-외부 API 데이터는 전혀 전달되지 않습니다.
-
-</pre>
-      </div>
-      <div>
-        <pre class="fw-bold">
-<span class="blueviolet">const text = await response.text(); 일단 response.body 의 내용을 text 로 읽어들인다.</span>
-1. {"name":"Kim","age":30} : JSON 형태의 문자
-2. XML 응답
-    &#60;?xml version="1.0" encoding="UTF-8"?>
-    &#60;response>
-      &#60;item>
-        &#60;hsCode>847130&#60;/hsCode>
-        &#60;taxRate>8&#60;/taxRate>
-      &#60;/item>
-    &#60;/response>
-3. &#60;!doctype html>&#60;html>...&#60;/html> : HTML 응답
-<span class="blueviolet">4. 그 문자열이 어떤 형식(JSON/XML/HTML)이냐에 따라 다음 파싱 방법이 달라진다</span></pre>
-        <h6 class="fw-bold">응답이 JSON 인지, XML 인지 파악하는 방법 </h6>
-        <pre class="fw-bold">
-현업에서는 HTTP 헤더(Content-Type) 로 판별하는 것이 정석입니다.
-✅ 1. 가장 정석적인 방법 — Content-Type 헤더 확인
-const res = await fetch(url);
-const contentType = res.headers.get("content-type");
-console.log(contentType);
-
-결과 예시
-응답 종류     Content-Type 값
-JSON	     application/json
-XML	     application/xml 또는 text/xml
-HTML	     text/html
-일반텍스트   text/plain
-
-사용 예
-if (contentType.includes("application/json")) {
-  <span class="blueviolet">const data = await res.json();</span> 
-}
-else if (contentType.includes("xml")) {
-  <span class="blueviolet">const text = await res.text();</span> 
-  
-  // XML 파싱
-}
-        </pre>
-
-      </div>
-      <div>
-
-
-      </div>
-    </div>
     <div id="실습_03" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>

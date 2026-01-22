@@ -842,16 +842,133 @@ function 공통한줄색칠있음clear() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
+async function 임시코드() {
+  const res = await fetch(`https://dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
+  let xmlText = await res.text();
+  if (xmlText) {xmlText=`xml문자열`}
+
+}
+async function call_다시작성중() { 
+//fetch()의 Response 객체는 body를 단 한 번만 읽을 수 있는 스트림입니다.
+//body 소비 이후 Response 객체 접근 시도 자체가 에러를 던지는 경우가 있습니다
+//console.log(res.status);(된다) xmlText = await res.text(); console.log(res.status);(안된다) 미리 저장할것
+  const blno = document.getElementById("blno").textContent;
+  const year = document.getElementById("year").textContent;
+  let resok, resstatus; rescontenttype;
+  //-------- 브라우저에서 api서버에 요청하는 함수 관련 -------- 
+  try {
+    // res는 response 객체. res.status, res.ok : res.status 값이 200~299이면 true
+    // try에서 에러나면 멈추지 않고, 다음코드 상관없이 바로 catch구문으로 이동함. vba의 onerror resume next와 유사
+    // e 는 에러의 이유를 설명하는 내부 문자열이거나 throw한 객체 보통 Error(문자열또는 객체)로 보낸다. 에러설명이 되게
+    const res = await fetch(`https:/dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
+    resok=res.ok; resstatus=res.status;rescontenttype=res.headers.get("content-type");
+    console.log('try에서 res.ok : ' + resok)
+    console.log('try에서 res.status : ' + resstatus)
+    console.log('try에서 content-type : ' + rescontenttype)
+    if (!res.ok) throw new Error(res.status);
+    if (res.status==404) throw new Error(res.status);
+  } catch(e) {
+    console.log(e);
+  }
+
+  let xmlText = await res.text();
+
+
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml"); //현재 xml이 깨질 경우 조용히 실패할 수 있음.
+    //xml 파싱 오류 감지 추가 추천 (콘솔에 오류메세지 띄워줌)
+    if (xml.querySelector("parsererror")) {
+      console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
+      return;
+    }
+
+    //엑셀 vba(SelectSingleNode) 와 헷갈리지마라. xml.querySelector( ) 이렇게 쓰면 된다. <tCnt>44</tCnt>
+    // body처럼 let root=xml.documentElement; // <?xml부분 제외한 전체를 담은 태그
+    // xml에서는 innerHTML(X), textContent(O, 이것은 html에도 가능, 공통)
+    document.querySelectorAll("#result > div > span:nth-of-type(2)").forEach( e => e.textContent='');
+
+    let 결과정보제목들 =document.querySelectorAll("#result > div > span:nth-of-type(1)");
+
+    // textContent 권장, html, xml 공통 / 공백노드 섞일 경우 대시 .trim() 권장
+    let 진행단계 = xml.querySelector("tCnt");
+    if (!진행단계) { // 찾은거 첫번째
+      [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent="없음";return;
+    }
+    if (진행단계.textContent.trim()==0) {
+      console.log('<tCnt>0</tCnt> return');
+      [...결과정보제목들].find(ele => ele.textContent === "res.ok").nextElementSibling.textContent=res.ok;
+      document.querySelector('#닫기').classList.remove('d-none');
+      return;
+    }
+    
+    // 진행단계 0 일때
+    if (진행단계.textContent==0) {console.log('<tCnt>0</tCnt> return;'); return;}
+    [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > prgsStts").textContent;
+
+    let 문자열 = ''; let node; // 반출일시, 면허, cy에 사용할 변수
+    // 면허(운송사)는 '보세운송 신고 접수'에 공란일수도 있다. 
+    // cargTrcnRelaBsopTpcd '보세운송 신고 수리' 같은레벨 rlbrBssNo
+    // rlbrCn '보세운송 반출' 같은레벨 <rlbrDttm>2025-12-24 07:05:27
+    // 면허와 반출시간은 접수에서 있는거 쓰고, 수리에서 덮어쓰느 형식
+
+    // 면허
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '보세운송 신고 접수');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrBssNo')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "면허").nextElementSibling.textContent=문자열;
+    }
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '보세운송 신고 수리');
+    if (node) {
+      문자열=node.parentNode.querySelector('rlbrBssNo')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "면허").nextElementSibling.textContent=문자열;
+    }
+    // 반출일시
+    node=Array.from(xml.querySelectorAll('rlbrCn')).find(ele => ele.textContent === '보세운송 반출');
+    if (node) {
+      console.log('보세운송 반출 있음')
+      문자열=node.parentNode.querySelector('rlbrDttm')?.textContent || ''; // 안전하게
+      [...결과정보제목들].find(ele => ele.textContent === "반출일시").nextElementSibling.textContent=문자열;
+    }
+
+    let 숫자=xml.querySelector("cargCsclPrgsInfoQryVo > etprDt").textContent; //20260105
+    [...결과정보제목들].find(ele => ele.textContent === "입항일시").nextElementSibling.textContent=
+        `${숫자.slice(0,4)}-${숫자.slice(4,6)}-${숫자.slice(6,8)}`;
+
+    // <cargTrcnRelaBsopTpcd>'입항적재화물목록 제출' 같은레벨 shedNm 태그 tectContent
+    node=Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd')).find(ele => ele.textContent === '입항적재화물목록 제출');
+    if (node) {문자열=node.parentNode.querySelector('shedNm')?.textContent || '';}
+    [...결과정보제목들].find(ele => ele.textContent === "cy").nextElementSibling.textContent=문자열;
+
+    [...결과정보제목들].find(ele => ele.textContent === "선사").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shcoFlco").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "선명").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > shipNm").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "컨개수").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrGcnt").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "컨번호").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > cntrNo").textContent;
+    [...결과정보제목들].find(ele => ele.textContent === "포딩").nextElementSibling.textContent=
+        xml.querySelector("cargCsclPrgsInfoQryVo > frwrEntsConm").textContent;
+
+    document.querySelector('#닫기').classList.remove('d-none');
+}
 async function call() { 
+//fetch()의 Response 객체는 body를 단 한 번만 읽을 수 있는 스트림입니다.
+//body 소비 이후 Response 객체 접근 시도 자체가 에러를 던지는 경우가 있습니다
+//console.log(res.status);(된다) xmlText = await res.text(); console.log(res.status);(안된다) 미리 저장할것
   console.log('async function call()');
   let 통신사용=true;
-  let xmlText;
+  let xmlText, resok, resstatus;
   if (통신사용) {
     const blno = document.getElementById("blno").textContent;
     const year = document.getElementById("year").textContent;
     // 이곳이 localhost:3000 이면 http://localhost:3000 생략가능, 현재는 8080;https://github.com/ycy2000/dongil-server
     //const res = await fetch(`http://localhost:3000/unipass?blno=${blno}&year=${year}`);
     const res = await fetch(`https://dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
+    resok=res.ok; resstatus=res.status
+    console.log(resok);
+    console.log(resstatus);
     xmlText = await res.text();
   } else {
     xmlText=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cargCsclPrgsInfoQryRtnVo><ntceInfo></ntceInfo></cargCsclPrgsInfoQryRtnVo>`
@@ -878,8 +995,15 @@ async function call() {
     if (!진행단계) { // 찾은거 첫번째
       [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent="없음";return;
     }
-    if (진행단계.textContent==0) {console.log('진행단계.textContent==0');return;}
+    if (진행단계.textContent.trim()==0) {
+      console.log('<tCnt>0</tCnt> return');
+      [...결과정보제목들].find(ele => ele.textContent === "res.ok").nextElementSibling.textContent=res.ok;
+      document.querySelector('#닫기').classList.remove('d-none');
+      return;
+    }
     
+    // 진행단계 0 일때
+    if (진행단계.textContent==0) {console.log('<tCnt>0</tCnt> return;'); return;}
     [...결과정보제목들].find(ele => ele.textContent === "진행정보").nextElementSibling.textContent=
         xml.querySelector("cargCsclPrgsInfoQryVo > prgsStts").textContent;
 
