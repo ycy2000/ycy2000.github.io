@@ -26,7 +26,7 @@ app.get('/a', async (req, res) => {
   if (받을정보유형=='json') {console.log('if json');응답=JSON.stringify({"name":"Kim","age":30});res.json(응답);}
   
 });
-// UNIPASS 중계
+// UNIPASS 중계 화물진행정보
 app.get('/unipass', async (req, res) => {
     const 관세청출처 = 'https://unipass.customs.go.kr:38010';
     const 관세청api서비스명_통관진행정보 =
@@ -44,6 +44,25 @@ app.get('/unipass', async (req, res) => {
     const url =
       `${관세청출처}${관세청api서비스명_통관진행정보}` +
       `crkyCn=${승인키}&mblNo=${mblNo}&hblNo=${hblNo}&cargMtNo=${cargMtNo}&blYy=${blYy}`;
+
+    const response = await fetch(url);
+    const text = await response.text();
+    res.send(text);
+});
+// UNIPASS 중계 컨테이너번호
+app.get('/unipass/container', async (req, res) => {
+    const 관세청출처 = 'https://unipass.customs.go.kr:38010';
+    const 관세청api서비스명_컨테이너조회 =
+      '/ext/rest/cntrQryBrkdQry/retrieveCntrQryBrkd?';
+
+    // 🔹 .env 에서 불러오기
+    const 승인키 = process.env.CUSTOM_KEY_CONTAINER_SEARCH;
+
+    const cargMtNo = req.query.cargMtNo;
+
+    const url =
+      `${관세청출처}${관세청api서비스명_컨테이너조회}` +
+      `crkyCn=${승인키}&cargMtNo=${cargMtNo}`;
 
     const response = await fetch(url);
     const text = await response.text();

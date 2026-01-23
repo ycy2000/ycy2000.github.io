@@ -1,15 +1,21 @@
 @charset "UTF-8";
 #result > div > span {font-size:15px;font-weight: bold; padding:2px 2px; height:25px; display:inline-block;border:1px solid black; margin-right:-1px; margin-bottom:-1px;vertical-align: top;}
 #result > div > span:nth-of-type(1) {width:100px;}
-#result > div > span:nth-of-type(2) {width:300px;overflow:hidden;}
+#result > div > span:nth-of-type(2):not(#conNo) {width:300px;overflow:hidden;}
 #result > div:nth-of-type(2) > span {background-color: aqua;}
 #result > div:nth-of-type(3) > span {background-color: aqua;}
+
+#컨result > div > span {font-size:15px;font-weight: bold; padding:2px 2px; height:25px; display:inline-block;border:1px solid black; margin-right:-1px; margin-bottom:-1px;vertical-align: top;}
+#컨result > div > span:nth-of-type(1) {width:100px;}
+#컨result > div > span:nth-of-type(2) {width:300px;overflow:hidden;}
+
 #blspan {font-weight: bold;display: inline-block;width:75px;text-align: right;}
 #blno {padding-left:2px; padding-top:3px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:160px;height:30px; border:1px solid black;}
 #blYy {text-align: center;padding-top:3px;padding-left:0px;padding-right:0px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:40px;height:30px; border:1px solid black;}
 #year {text-align: center;padding-top:3px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:45px;height:30px; border:1px solid black;}
 #비엘변경 {text-align: center;padding-top:3px;padding-left:0px;padding-right:0px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:75px;height:30px; border:1px solid black;}
-
+#conNo {width:171px;display: inline-block;}
+#contSearch {width:130px;border:1px solid black;margin:0px;display:inline-block;font-weight: bold; font-size:14px;margin-bottom:-1px;}
 
 
 

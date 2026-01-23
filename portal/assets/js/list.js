@@ -903,11 +903,118 @@ function formatXML(xml) {
   return formatted.trim();
 }
 
+//CUSTOM_KEY_CONTAINER_SEARCH, /unipass/container
+async function cont_call() {
+  //(화물진행정보)닫기부분 닫아주기
+  document.querySelector('#닫기').classList.add('d-none');
+  document.querySelector('#xml보기').classList.add('d-none');
+
+  //
+  document.querySelector('#컨닫기').classList.remove('d-none');
+  if (document.querySelector('#cargMtNo').textContent=='') {alert('화물관리번호 없으면 안됨'); return;}
+
+  let cargMtNo=document.querySelector('#cargMtNo').textContent;
+
+  const tag_response = document.querySelector('#cnt_tag_response');
+  const tag_resOk = document.querySelector('#cnt_tag_resOk');
+  const tag_resStatus = document.querySelector('#cnt_tag_resStatus');
+  const tag_ContentType = document.querySelector('#cnt_tag_ContentType');
+  const body_to_json = document.querySelector('#cnt_body_to_json');
+  const tag_tCnt = document.querySelector('#cnt_tag_tCnt');
+
+  let xmlText = '';
+  let resStatus = 0;
+  let startTime = Date.now(); // 시작 시간 기록
+
+  //3초마다 관련
+  let seconds = 0;
+
+  // 3초마다 카운트 업데이트
+  const intervalId = setInterval(() => {
+    seconds += 3;
+    tag_response.textContent = `render서버 깨우는 중 ${seconds}초`;
+    console.log(tag_response.textContent);
+  }, 3000);
+
+try {
+  tag_response.textContent = 'try진입';
+  tag_response.textContent='render서버 깨우는 중 0초';
+  const res = await fetch(`https://dongil-server.onrender.com/unipass/container?cargMtNo=${cargMtNo}`);
+
+  // fetch가 끝나면 interval 멈추고 결과 표시
+  clearInterval(intervalId); //'render서버 깨우는 중 3초';
+
+  resStatus = res.status;
+  tag_response.textContent = '응답 받음';
+  tag_resOk.textContent = res.ok;
+  tag_resStatus.textContent = resStatus;
+  tag_ContentType.textContent = res.headers.get('content-type');
+
+  xmlText = await res.text(); // 404일때 컨테이너는 html 파일로 오네
+
+  //body_to_json.textContent = xmlText.substring(0, 38);
+  body_to_json.textContent = xmlText;
+
+  alert('응답이 온상태')
+
+  if (resStatus === 404) throw new Error('404 Not Found');
+
+  // ===== XML Pretty Print =====
+  const pretty = formatXML(xmlText);
+  
+  document.querySelector('#컨xml보기').innerHTML =
+    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+} catch (e) {
+  console.error(e);
+  tag_response.textContent = e.message || e;
+  body_to_json.textContent = 'catch(e) => 에러';
+    // 임시로
+  document.querySelector('#컨xml보기').innerHTML =
+    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+} finally {
+  // 정상/에러 상관없이 항상 실행
+  const endTime = Date.now();
+  const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
+  document.querySelector('#컨render지연').textContent = `render응답 : ${elapsedSec}초`;
+  // 임시로
+  document.querySelector('#컨xml보기').innerHTML =
+    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+}
+// ===== XML DOM 파싱 =====
+  if (!xmlText || !xmlText.trim()) {
+    console.error('응답 본문이 비어있음');
+    tag_response.textContent = '응답 본문 없음';
+    return;
+  }
+
+  // ===== XML DOM 파싱 =====
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(xmlText, "text/xml");
+
+  if (xml.querySelector("parsererror")) {
+    console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
+    tag_response.textContent = '응답왔지만 xml파싱 에러';
+    return;
+  }
+
+
+
+
+
+
+
+}
+
 // ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
 async function call() {
-  document.querySelector('#닫기').classList.remove('d-none');
-  //관세청 화물진행정보 : mblNo, hblNo, blYy, cargMtNo
+  //컨닫기부분 닫아주기, 및 초기화
+  document.querySelector('#컨닫기').classList.add('d-none');
+  document.querySelector('#컨xml보기').classList.add('d-none');
+  document.querySelectorAll('.컨resInfo').forEach(ele => ele.textContent = '');
+  document.querySelectorAll('.컨xmlInfo').forEach(ele => ele.textContent = '');
 
+  //관세청 화물진행정보 : mblNo, hblNo, blYy, cargMtNo
+  document.querySelector('#닫기').classList.remove('d-none');
   document.querySelectorAll('.resInfo').forEach(ele => ele.textContent = '');
   document.querySelectorAll('.xmlInfo').forEach(ele => ele.textContent = '');
 
@@ -1046,9 +1153,16 @@ try {
   setText("mblNo", "cargCsclPrgsInfoQryVo > mblNo");
   setText("hblNo", "cargCsclPrgsInfoQryVo > hblNo");
   setText("cargMtNo", "cargCsclPrgsInfoQryVo > cargMtNo");
+
+  //컨관련 정보 넣기
+  document.querySelector('#컨mblNo').textContent=document.querySelector('#mblNo').textContent;
+  document.querySelector('#컨hblNo').textContent=document.querySelector('#hblNo').textContent;
+  document.querySelector('#컨cargMtNo').textContent=document.querySelector('#cargMtNo').textContent;
+  document.querySelector('#컨개수').textContent=document.querySelector('#개수').textContent;
 }
 async function 컨번호api() { 
-  //화물관리번호로만 조회가능 - 없이
+  //화물진행정보가 조회된 화면에서 화물관리번호가 있으면 컨조회 클릭 화물관리번호로만 조회가능 - 없이
+
 }
 
 
