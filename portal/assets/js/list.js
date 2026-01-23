@@ -955,8 +955,6 @@ try {
   //body_to_json.textContent = xmlText.substring(0, 38);
   body_to_json.textContent = xmlText;
 
-  alert('응답이 온상태')
-
   if (resStatus === 404) throw new Error('404 Not Found');
 
   // ===== XML Pretty Print =====
@@ -968,17 +966,13 @@ try {
   console.error(e);
   tag_response.textContent = e.message || e;
   body_to_json.textContent = 'catch(e) => 에러';
-    // 임시로
-  document.querySelector('#컨xml보기').innerHTML =
-    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+  // 여기로 넘어오면 코드를 중단한다.
+  return;
 } finally {
   // 정상/에러 상관없이 항상 실행
   const endTime = Date.now();
   const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
   document.querySelector('#컨render지연').textContent = `render응답 : ${elapsedSec}초`;
-  // 임시로
-  document.querySelector('#컨xml보기').innerHTML =
-    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
 }
 // ===== XML DOM 파싱 =====
   if (!xmlText || !xmlText.trim()) {
@@ -996,6 +990,8 @@ try {
     tag_response.textContent = '응답왔지만 xml파싱 에러';
     return;
   }
+  tag_tCnt.textContent=xml.querySelector('tCnt').textContent;
+  //컨리스트지우고다시작성
 
 
 
@@ -1153,6 +1149,7 @@ try {
   setText("mblNo", "cargCsclPrgsInfoQryVo > mblNo");
   setText("hblNo", "cargCsclPrgsInfoQryVo > hblNo");
   setText("cargMtNo", "cargCsclPrgsInfoQryVo > cargMtNo");
+  console.log(xml.querySelectorAll('cargMtNo').length);
 
   //컨관련 정보 넣기
   document.querySelector('#컨mblNo').textContent=document.querySelector('#mblNo').textContent;

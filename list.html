@@ -282,9 +282,18 @@
         <div><span class="컨XML항목">cargMtNo</span><span class="컨xmlInfo" id="컨cargMtNo"></span></div>
         <div><span class="컨XML항목">컨테이너 개수</span><span class="컨xmlInfo" id="컨개수"></span></div>
         <div>
-          <span onclick="document.querySelector('#컨닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
+          <span onclick="document.querySelector('#컨닫기').classList.add('d-none');
+                         document.querySelector('#컨xml보기').classList.add('d-none')
+          " style="background-color: aqua;">닫기</span>
           <span style="width:171px;" id="컨render지연" class="resInfo"></span>
           <span onclick="document.querySelector('#컨xml보기').classList.toggle('d-none')" style="background-color: aqua;width:120px;text-align: center;">xml보기/숨기기</span>
+        </div>
+        <div id="컨리스트지우고다시작성">
+          <div><span>수량</span><span>컨번호</span></div>
+          <div><span>수량</span><span>컨번호</span></div>
+          <div><span>수량</span><span>컨번호</span></div>
+          <div><span>수량</span><span>컨번호</span></div>
+
         </div>
         <div style="margin-top:5px;"><span>response</span><span id="cnt_tag_response" class="resInfo"></span></div>
         <div><span>res.ok</span><span id="cnt_tag_resOk" class="컨resInfo"></span></div>
@@ -295,7 +304,7 @@
       </div>
     </div>
     <div id="xml보기" class="d-none" style="position: absolute;top:583px;background-color: white;border:1px solid black;padding:5px;"></div>
-    <div id="컨xml보기" class="d-none" style="position: absolute;top:583px;background-color: white;border:1px solid black;padding:5px;"></div>
+    <div id="컨xml보기" class="d-none" style="left:409px;position: absolute;background-color: white;border:1px solid black;padding:5px;"></div>
 
     <div id="클릭파일" class="d-none"></div>
 
