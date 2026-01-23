@@ -842,43 +842,7 @@ function 공통한줄색칠있음clear() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
-// ===== XML 들여쓰기 함수 =====
-function formatXML(xml) {
-  let formatted = '';
-  xml = xml.replace(/(>)(<)(\/*)/g, '$1\n$2$3'); // 줄바꿈 추가
-  let pad = 0;
-  xml.split('\n').forEach(node => {
-    let indent = 0;
-    if (node.match(/.+<\/\w[^>]*>$/)) indent = 0;
-    else if (node.match(/^<\/\w/)) pad -= 1;
-    else if (node.match(/^<\w[^>]*[^\/]>.*$/)) indent = 1;
-
-    formatted += '  '.repeat(pad) + node + '\n';
-    pad += indent;
-  });
-  return formatted.trim();
-}
-
-// ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
-async function call() {
-  document.querySelector('#닫기').classList.remove('d-none');
-
-  document.querySelectorAll('.resInfo').forEach(ele => ele.textContent = '');
-  document.querySelectorAll('.xmlInfo').forEach(ele => ele.textContent = '');
-
-  const blno = document.getElementById("blno").textContent;
-  const year = document.getElementById("year").textContent;
-
-  const tag_response = document.querySelector('#tag_response');
-  const tag_resOk = document.querySelector('#tag_resOk');
-  const tag_resStatus = document.querySelector('#tag_resStatus');
-  const tag_ContentType = document.querySelector('#tag_ContentType');
-  const body_to_json = document.querySelector('#body_to_json');
-  const tag_tCnt = document.querySelector('#tag_tCnt');
-
-  let xmlText = '';
-  let resStatus = 0;
-
+async function call관련임시보관() {
   try {
     tag_response.textContent = 'try진입 => render서버 깨우는 중';
     const res = await fetch(`https://dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
@@ -903,6 +867,119 @@ async function call() {
     console.error(e);
     tag_response.textContent = e.message || e;
     body_to_json.textContent = 'catch(e) => 에러';
+    return;
+  }
+}
+function blYy() {
+  let ele= document.querySelector('#year');
+  if (ele.textContent==year) {ele.textContent=year-1;} else {ele.textContent=year} 
+}
+function 비엘변경() {
+  let ele = document.querySelector('#비엘변경');
+  let blspan = document.querySelector('#blspan');
+  if (ele.textContent=='mblNo') {ele.textContent='hblNo';blspan.textContent='hblNo'} 
+  else if (ele.textContent=='hblNo') {ele.textContent='cargMtNo';blspan.textContent='cargMtNo'} 
+  else if (ele.textContent=='cargMtNo') {ele.textContent='mblNo';blspan.textContent='mblNo'} 
+
+}
+// ===== XML 들여쓰기 함수 =====
+function formatXML(xml) {
+
+  let formatted = '';
+  xml = xml.replace(/(>)(<)(\/*)/g, '$1\n$2$3'); // 줄바꿈 추가
+  let pad = 0;
+  xml.split('\n').forEach(node => {
+    let indent = 0;
+    if (node.match(/.+<\/\w[^>]*>$/)) indent = 0;
+    else if (node.match(/^<\/\w/)) pad -= 1;
+    else if (node.match(/^<\w[^>]*[^\/]>.*$/)) indent = 1;
+
+    formatted += '  '.repeat(pad) + node + '\n';
+    pad += indent;
+  });
+  //여기서 추가할것 : <div></div> 사이의 줄바꿈 제거
+  //formatted.replace(/<([\s\S]*?)<\/>/g, (match, content) => {content.replace(/(\r\n|\n|\r)/g, '');})
+  //
+  return formatted.trim();
+}
+
+// ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
+async function call() {
+  document.querySelector('#닫기').classList.remove('d-none');
+  //관세청 화물진행정보 : mblNo, hblNo, blYy, cargMtNo
+
+  document.querySelectorAll('.resInfo').forEach(ele => ele.textContent = '');
+  document.querySelectorAll('.xmlInfo').forEach(ele => ele.textContent = '');
+
+  let threeSelect=''; mblNo=''; hblNo=''; year=''; cargMtNo='';
+  threeSelect=document.querySelector('#blspan').textContent;
+  let searchNo=document.querySelector('#blno').textContent;
+  // mblNo, hblNo
+  if (threeSelect=='mblNo') {mblNo=searchNo}
+  if (threeSelect=='hblNo') {hblNo=searchNo}
+  if (threeSelect=='cargMtNo') {cargMtNo=searchNo}
+  year = document.getElementById("year").textContent;
+
+  const tag_response = document.querySelector('#tag_response');
+  const tag_resOk = document.querySelector('#tag_resOk');
+  const tag_resStatus = document.querySelector('#tag_resStatus');
+  const tag_ContentType = document.querySelector('#tag_ContentType');
+  const body_to_json = document.querySelector('#body_to_json');
+  const tag_tCnt = document.querySelector('#tag_tCnt');
+
+  let xmlText = '';
+  let resStatus = 0;
+  let startTime = Date.now(); // 시작 시간 기록
+
+  //3초마다 관련
+  let seconds = 0;
+
+  // 3초마다 카운트 업데이트
+  const intervalId = setInterval(() => {
+    seconds += 3;
+    tag_response.textContent = `render서버 깨우는 중 ${seconds}초`;
+    console.log(tag_response.textContent);
+  }, 3000);
+
+try {
+  //let threeSelect=''; mblNo=''; hblNo=''; year=''; cargMtNo='';
+  tag_response.textContent = 'try진입';
+  tag_response.textContent='render서버 깨우는 중 0초';
+  const res = await fetch(`https://dongil-server.onrender.com/unipass?mblNo=${mblNo}&hblNo=${hblNo}&blYy=${year}&cargMtNo=${cargMtNo}`);
+
+  // fetch가 끝나면 interval 멈추고 결과 표시
+  clearInterval(intervalId); //'render서버 깨우는 중 3초';
+
+  resStatus = res.status;
+  tag_response.textContent = '응답 받음';
+  tag_resOk.textContent = res.ok;
+  tag_resStatus.textContent = resStatus;
+  tag_ContentType.textContent = res.headers.get('content-type');
+
+  xmlText = await res.text();
+  body_to_json.textContent = xmlText.substring(0, 38);
+
+  if (resStatus === 404) throw new Error('404 Not Found');
+
+  // ===== XML Pretty Print =====
+  const pretty = formatXML(xmlText);
+  
+  document.querySelector('#xml보기').innerHTML =
+    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+} catch (e) {
+  console.error(e);
+  tag_response.textContent = e.message || e;
+  body_to_json.textContent = 'catch(e) => 에러';
+} finally {
+  // 정상/에러 상관없이 항상 실행
+  const endTime = Date.now();
+  const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
+  document.querySelector('#render지연').textContent = `render응답 : ${elapsedSec}초`;
+}
+// ===== XML DOM 파싱 =====
+  if (!xmlText || !xmlText.trim()) {
+    console.error('응답 본문이 비어있음');
+    tag_response.textContent = '응답 본문 없음';
     return;
   }
 
@@ -1118,6 +1195,8 @@ function png셑팅click(e) {
     if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {
       document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/,/gmi,'<br>');
       document.querySelector('#blno').textContent=e.target.parentNode.children[2].textContent;
+      document.querySelector('#비엘변경').textContent='mblNo';
+      document.querySelector('#blspan').textContent='mblNo';
     }
 
 

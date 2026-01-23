@@ -234,9 +234,11 @@
     <div style="font-size: 16px;margin-bottom:5px;">
       <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
       onclick="call();">api호출</button>
-      <span onclick="document.querySelector('#blno').textContent=''">BL.NO</span> <span contenteditable="true" id="blno" style="padding-left:2px; padding-top:3px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:160px;height:30px; border:1px solid black;"></span>
-      <span>년도</span> <span contenteditable="true" id="year" style="text-align: center;padding-top:3px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:45px;height:30px; border:1px solid black;"></span>
-      <span>HOUSE BL</span> 
+      <span id="blspan" onclick="document.querySelector('#blno').textContent=''">mblNo</span> 
+      <span contenteditable="true" id="blno"></span>
+      <button class="btn btn-light 카테고리 카테기본" onclick="blYy()" id="blYy">blYy</button> 
+      <span contenteditable="true" id="year"></span>
+      <button class="btn btn-light 카테고리 카테기본" onclick="비엘변경()" id="비엘변경">mblNo</button> 
       <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
       title="()?[] 등의 특수문자 ==> ( 의 경우 \( 로 표현하면 검색된다. 종료후 \ 삭제 js코드 포함됨"
       onclick="단어검색();document.querySelector('#리스트검색input').value=''; ">단어검색</button>
@@ -260,7 +262,8 @@
         <div><span class="XML항목">포딩</span><span class="xmlInfo"></span></div>
         <div>
           <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
-          <span onclick="document.querySelector('#xml보기').classList.toggle('d-none')" style="background-color: aqua;margin-left:175px;width:120px;text-align: center;">xml보기/숨기기</span>
+          <span style="width:171px;" id="render지연" class="resInfo"></span>
+          <span onclick="document.querySelector('#xml보기').classList.toggle('d-none')" style="background-color: aqua;width:120px;text-align: center;">xml보기/숨기기</span>
         </div>
         <div style="margin-top:5px;"><span>response</span><span id="tag_response" class="resInfo"></span></div>
         <div><span>res.ok</span><span id="tag_resOk" class="resInfo"></span></div>

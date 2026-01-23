@@ -34,13 +34,16 @@ app.get('/unipass', async (req, res) => {
 
     // 🔹 .env 에서 불러오기
     const 승인키 = process.env.CUSTOM_KEY_CARGCSCLPRGS;
+    // 브라우저에서 `https://dongil-server.onrender.com/unipass?mblNo=${mblNo}&hblNo=${hblNo}&blYy=${year}&cargMtNo=${cargMtNo}`);
 
-    const BLNO = req.query.blno;
-    const year = req.query.year;
+    const mblNo = req.query.mblNo;
+    const hblNo = req.query.hblNo;
+    const cargMtNo = req.query.cargMtNo;
+    const blYy= req.query.blYy;
 
     const url =
       `${관세청출처}${관세청api서비스명_통관진행정보}` +
-      `crkyCn=${승인키}&mblNo=${BLNO}&blYy=${year}`;
+      `crkyCn=${승인키}&mblNo=${mblNo}&hblNo=${hblNo}&cargMtNo=${cargMtNo}&blYy=${blYy}`;
 
     const response = await fetch(url);
     const text = await response.text();

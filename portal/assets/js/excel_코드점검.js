@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='통신_try_catch' //원래는 h6의 title이다.
+  전체변수h6title ='통신_xml문자열줄바꿈과들여쓰기' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 연습() {

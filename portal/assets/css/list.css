@@ -4,6 +4,15 @@
 #result > div > span:nth-of-type(2) {width:300px;overflow:hidden;}
 #result > div:nth-of-type(2) > span {background-color: aqua;}
 #result > div:nth-of-type(3) > span {background-color: aqua;}
+#blspan {font-weight: bold;display: inline-block;width:75px;text-align: right;}
+#blno {padding-left:2px; padding-top:3px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:160px;height:30px; border:1px solid black;}
+#blYy {text-align: center;padding-top:3px;padding-left:0px;padding-right:0px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:40px;height:30px; border:1px solid black;}
+#year {text-align: center;padding-top:3px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:45px;height:30px; border:1px solid black;}
+#비엘변경 {text-align: center;padding-top:3px;padding-left:0px;padding-right:0px; font-weight: bold; font-size:14px; vertical-align: top; display: inline-block;width:75px;height:30px; border:1px solid black;}
+
+
+
+
 
 .카테기본 {display:inline-block; width:90px; border:1px solid black;}
 .카테좁게 {display:inline-block; width:60px; border:1px solid black;}

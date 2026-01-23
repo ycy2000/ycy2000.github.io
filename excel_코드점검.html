@@ -582,7 +582,8 @@
         <h6 class="fw-bold" title="통신_객체의문법">06. 문법 : JSON, XML, HTML, 문자열</h6>
         <h6 class="fw-bold" title="통신_response객체">07. response와 response.text, 응답이 JSON인지, XML인지, HTML인지</h6>
         <h6 class="blueviolet fw-bold" title="통신_try_catch">08. try catch 알고보면 신세계, 유연하고 명확한 에러처리</h6>
-        <h6 class="blueviolet fw-bold" title="통신_관세청통신코드">09. 관세청 통신 코드 정리</h6>
+        <h6 class="blueviolet fw-bold" title="통신_xml문자열줄바꿈과들여쓰기">09. xml문자열 줄바꿈과 들여쓰기</h6>
+        <h6 class="blueviolet fw-bold" title="통신_관세청통신코드">10. 관세청 통신 코드 정리</h6>
 
 
 
@@ -9819,6 +9820,113 @@ try {
 
         </pre>
 
+      </div>
+    </div>
+    
+    <div id="통신_xml문자열줄바꿈과들여쓰기" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">기본</h6>
+        <pre class="fw-bold">
+function formatXML_보관(xml) {
+
+  let formatted = '';
+  xml = xml.replace(/(>)(<)(\/*)/g, '$1\n$2$3'); // 줄바꿈 추가
+  let pad = 0;
+  xml.split('\n').forEach(node => {
+    let indent = 0;
+    if (node.match(/.+<\/\w[^>]*>$/)) indent = 0;
+    else if (node.match(/^<\/\w/)) pad -= 1;
+    else if (node.match(/^<\w[^>]*[^\/]>.*$/)) indent = 1;
+
+    formatted += '  '.repeat(pad) + node + '\n';
+    pad += indent;
+  });
+  return formatted.trim();
+}
+
+
+메인코드안에서 
+  // ===== XML Pretty Print =====
+  const pretty = formatXML(xmlText);
+  
+  document.querySelector('#xml보기').innerHTML =
+    `&#60;pre style="font-size:14px;font-weight:bold;">${pretty.replace(/&#60;/g, "&lt;").replace(/>/g, "&gt;")}&#60;/pre>`;
+<span class="blueviolet"></span>
+
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">기본 코드에서</span>
+xml = xml.replace(/(>)(&#60;)(\/*)/g, '$1\n$2$3'); 플래그 g는 모든것을 찾아서 replace 한다는 의미
+정규식부분 : (>)(&#60;)(\/*) 괄호로묶은것이 그룹, $1, $2, $3 은 그룹을 의미 
+그룹표시는 그룹은 그대로 넣고 '$1\n$2$3' 에서 \n은 추추가할 문자열.
+세번째그룹 (\/*)에서 내부값 \/*에서 \는 특수문자일때 쓰는것으로 \/는 /를 의미 
+따라서 /*는 /로시작하는 모든것을 의미  
+
+<span class="blueviolet" style="font-size:16px">[실행1]</span>
+xml = xml.replace(/(>)(&#60;)(\/*)/g, '$1\n$2$3'); 말로 설명하면 
+1) /(>)(&#60;)(\/*)/g : '>&#60;/'부분(예시부분 파란색부분 밑줄)을 찾아서
+2) 첫번째그룹(>) + \n(줄바꿈) + 두번째그룹(&#60;) + 세번째그룹(/) 형태로 바꾸라는 말이다. 
+3) 줄바꿈을 넣으라는 말이다. <span class="blueviolet">기본코드에서 &#60;blPt>&#60;/blPt>부분의 줄바꿈은 내가 원하는 것 x</span>
+
+적용할 문자열 예시
+&#60;부모태그>&#60;shipNat>DK&#60;/shipNat>&#60;blPt<span class="blueviolet" style="font-size:20px;text-decoration: underline;">>&#60;/</span>blPt<span class="blueviolet" style="font-size:20px;text-decoration: underline;">>&#60;/</span>>부모태그>
+
+<span class="blueviolet" style="font-size:16px">[실행2]</span>
+&#60;부모태그> 다음에 줄바꿈과 들여쓰기는 xml.split('\n').forEach 구문에서 한다.
+1) xml.split('\n').forEach : 줄바꿈 했는데 줄바꿈기준으로 하나씩 담고 하나씩 코드를 실행한다.
+2) if (node.match(/.+&#60;\/\w[^>]*>$/)) indent = 0; => 들여쓰기 안함
+    좋아요! 주신 정규식
+    /.+&#60;\/\w[^>]*>$/ 를 조심스럽게 하나씩 분석해볼게요.
+    2️⃣ 각 부분
+    . : 줄바꿈 문자를 제외한 모든 문자
+    + : 1개 이상 반복
+    <span class="blueviolet">a) .+ =>  &#60; 나오기 전에 최소 1글자 이상 있고,</span>
+    <span class="blueviolet">b) &#60; =>  &#60; 나오고,</span>
+    <span class="blueviolet">c)\/ => / 나오고,</span>
+    <span class="blueviolet">d) \w => 문자열, \w 다음에 문자열 표현 나옴</span>
+    <span class="blueviolet">   \w[^>]* => ^>(>가 아닌) 문자열이 나오고(안나와도 됨 *)</span>
+    <span class="blueviolet">e)문자열$, >$ => > 로 끝난다는 의미</span>
+    3️⃣ 결합해서 의미
+    /.+&#60;\/\w[^>]*>$/ => 예시: &#60;div>hello&#60;/div>
+       먼저 &#60;부모태그> 다음에 &#60;div>hello&#60;/div> 이런형식이 오면 
+       
+
+        </pre>
+
+      </div>
+      <div>
+        <pre class="fw-bold">
+// ===== XML 들여쓰기 함수 =====
+function formatXML(xml) {
+  let formatted = '';
+
+  // 1. 기존 코드: xml = xml.replace(/(>)(<)(\/*)/g, '$1\n$2$3');
+  // 2. 새로운 코드: 내용 있는 태그 또는 바로 닫는 태그는 줄바꿈 하지 않음
+  xml = xml.replace(/>(<[^\/!?])/g, '>\n$1');
+
+  let pad = 0;
+  xml.split('\n').forEach(node => {
+    let indent = 0;
+
+    if (node.match(/.+<\/\w[^>]*>$/)) {
+      // 내용 있는 태그는 indent 없음
+      indent = 0;
+    } else if (node.match(/^<\/\w/)) {
+      pad -= 1; // 닫는 태그이면 레벨 감소
+    } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
+      indent = 1; // 열리는 태그이면서 바로 닫히지 않음
+    }
+
+    formatted += '  '.repeat(pad) + node + '\n';
+    pad += indent;
+  });
+
+  return formatted.trim();
+}
+        </pre>
       </div>
     </div>
     <div id="통신_관세청통신코드" class="대체3줄">
