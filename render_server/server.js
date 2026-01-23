@@ -19,7 +19,7 @@ app.get('/a', async (req, res) => {
     console.log('if xml');
     응답=`<?xml version="1.0" encoding="UTF-8"?><response><item>
         <hsCode>847130</hsCode><taxRate>8</taxRate></item></response>`;
-    res.send(응답);
+    res.send(응답); 
   }
     
   if (받을정보유형=='html') {console.log('if html');응답=`<!doctype html><html><body><h1>h1</h1></body></html>`;res.send(응답);}
