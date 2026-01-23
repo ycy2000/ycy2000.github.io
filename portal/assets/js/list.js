@@ -915,10 +915,10 @@ async function call() {
   threeSelect=document.querySelector('#blspan').textContent;
   let searchNo=document.querySelector('#blno').textContent;
   // mblNo, hblNo
-  if (threeSelect=='mblNo') {mblNo=searchNo}
-  if (threeSelect=='hblNo') {hblNo=searchNo}
-  if (threeSelect=='cargMtNo') {cargMtNo=searchNo}
-  year = document.getElementById("year").textContent;
+  if (threeSelect=='mblNo') {mblNo=searchNo.trim()}
+  if (threeSelect=='hblNo') {hblNo=searchNo.trim()}
+  if (threeSelect=='cargMtNo') {cargMtNo=searchNo.replace(/-/g, "").trim()}
+  year = document.getElementById("year").textContent.trim();
 
   const tag_response = document.querySelector('#tag_response');
   const tag_resOk = document.querySelector('#tag_resOk');
