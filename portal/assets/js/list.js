@@ -842,34 +842,6 @@ function 공통한줄색칠있음clear() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
-async function call관련임시보관() {
-  try {
-    tag_response.textContent = 'try진입 => render서버 깨우는 중';
-    const res = await fetch(`https://dongil-server.onrender.com/unipass?blno=${blno}&year=${year}`);
-
-    resStatus = res.status;
-    tag_response.textContent = '응답 받음';
-    tag_resOk.textContent = res.ok;
-    tag_resStatus.textContent = resStatus;
-    tag_ContentType.textContent = res.headers.get('content-type');
-
-    xmlText = await res.text();
-    body_to_json.textContent = xmlText.substring(0, 38);
-
-    if (resStatus === 404) throw new Error('404 Not Found');
-
-    // ===== XML Pretty Print =====
-    const pretty = formatXML(xmlText);
-    document.querySelector('#xml보기').innerHTML =
-      `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
-
-  } catch (e) {
-    console.error(e);
-    tag_response.textContent = e.message || e;
-    body_to_json.textContent = 'catch(e) => 에러';
-    return;
-  }
-}
 function blYy() {
   let ele= document.querySelector('#year');
   if (ele.textContent==year) {ele.textContent=year-1;} else {ele.textContent=year} 
@@ -880,7 +852,6 @@ function 비엘변경() {
   if (ele.textContent=='mblNo') {ele.textContent='hblNo';blspan.textContent='hblNo'} 
   else if (ele.textContent=='hblNo') {ele.textContent='cargMtNo';blspan.textContent='cargMtNo'} 
   else if (ele.textContent=='cargMtNo') {ele.textContent='mblNo';blspan.textContent='mblNo'} 
-
 }
 // ===== XML 들여쓰기 함수 =====
 function formatXML(xml) {
@@ -941,7 +912,7 @@ try {
   tag_response.textContent='render서버 깨우는 중 0초';
   const res = await fetch(`https://dongil-server.onrender.com/unipass/container?cargMtNo=${cargMtNo}`);
 
-  // fetch가 끝나면 interval 멈추고 결과 표시
+  // 통신 응답을 기다리는 동안 3초마다 업데이트
   clearInterval(intervalId); //'render서버 깨우는 중 3초';
 
   resStatus = res.status;
@@ -993,43 +964,44 @@ try {
   tag_tCnt.textContent=xml.querySelector('tCnt').textContent;
   //컨리스트지우고다시작성
 
-
-
-
-
-
-
 }
-
-// ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
-async function call() {
-  //컨닫기부분 닫아주기, 및 초기화
+function call_try전에() {
+  //d-none 추가 : #컨닫기, #컨xml보기
+  //d-none 삭제 : #닫기
+  //내부정보 지우기 : .컨resInfo, .컨resInfo, .resInfo, .xmlInfo
   document.querySelector('#컨닫기').classList.add('d-none');
   document.querySelector('#컨xml보기').classList.add('d-none');
   document.querySelectorAll('.컨resInfo').forEach(ele => ele.textContent = '');
-  document.querySelectorAll('.컨xmlInfo').forEach(ele => ele.textContent = '');
+  document.querySelectorAll('.컨resInfo').forEach(ele => ele.textContent = '');
 
-  //관세청 화물진행정보 : mblNo, hblNo, blYy, cargMtNo
   document.querySelector('#닫기').classList.remove('d-none');
   document.querySelectorAll('.resInfo').forEach(ele => ele.textContent = '');
   document.querySelectorAll('.xmlInfo').forEach(ele => ele.textContent = '');
-
-  let threeSelect=''; mblNo=''; hblNo=''; year=''; cargMtNo='';
+}
+// ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
+async function call() {
+  //d-none 추가 : #컨닫기, #컨xml, d-none 삭제 : #닫기, 내부정보 지우기 : .컨resInfo, .컨resInfo, .resInfo, .xmlInfo
+  call_try전에();
+  
+  //관세청 화물진행정보 : mblNo, hblNo, blYy, cargMtNo
+  let threeSelect='', mblNo='', hblNo='', year='', cargMtNo='';
   threeSelect=document.querySelector('#blspan').textContent;
-  let searchNo=document.querySelector('#blno').textContent;
+  let searchNo=document.querySelector('#blno').textContent; //3개중 하나다 mblNo, hblNo, cargMtNo
   // mblNo, hblNo
   if (threeSelect=='mblNo') {mblNo=searchNo.trim()}
   if (threeSelect=='hblNo') {hblNo=searchNo.trim()}
   if (threeSelect=='cargMtNo') {cargMtNo=searchNo.replace(/-/g, "").trim()}
   year = document.getElementById("year").textContent.trim();
 
-  const tag_response = document.querySelector('#tag_response');
-  const tag_resOk = document.querySelector('#tag_resOk');
-  const tag_resStatus = document.querySelector('#tag_resStatus');
-  const tag_ContentType = document.querySelector('#tag_ContentType');
-  const body_to_json = document.querySelector('#body_to_json');
-  const tag_tCnt = document.querySelector('#tag_tCnt');
-
+  // tag 요소들 한 번에 정리
+  const tags = {
+    response:    document.querySelector('#tag_response'),
+    resOk:       document.querySelector('#tag_resOk'),
+    resStatus:   document.querySelector('#tag_resStatus'),
+    contentType: document.querySelector('#tag_ContentType'),
+    bodyJson:    document.querySelector('#body_to_json'),
+    tCnt:        document.querySelector('#tag_tCnt')
+  };
   let xmlText = '';
   let resStatus = 0;
   let startTime = Date.now(); // 시작 시간 기록
@@ -1040,27 +1012,28 @@ async function call() {
   // 3초마다 카운트 업데이트
   const intervalId = setInterval(() => {
     seconds += 3;
-    tag_response.textContent = `render서버 깨우는 중 ${seconds}초`;
-    console.log(tag_response.textContent);
+    tags.response.textContent = `render서버 깨우는 중 ${seconds}초`;
+    console.log(tags.response.textContent);
   }, 3000);
 
 try {
   //let threeSelect=''; mblNo=''; hblNo=''; year=''; cargMtNo='';
-  tag_response.textContent = 'try진입';
-  tag_response.textContent='render서버 깨우는 중 0초';
+  tags.response.textContent = 'try진입';
+  tags.response.textContent='render서버 깨우는 중 0초';
   const res = await fetch(`https://dongil-server.onrender.com/unipass?mblNo=${mblNo}&hblNo=${hblNo}&blYy=${year}&cargMtNo=${cargMtNo}`);
 
   // fetch가 끝나면 interval 멈추고 결과 표시
   clearInterval(intervalId); //'render서버 깨우는 중 3초';
 
   resStatus = res.status;
-  tag_response.textContent = '응답 받음';
-  tag_resOk.textContent = res.ok;
-  tag_resStatus.textContent = resStatus;
-  tag_ContentType.textContent = res.headers.get('content-type');
+  tags.response.textContent = '응답 받음';
+  tags.resOk.textContent = res.ok;
+  tags.resStatus.textContent = resStatus;
+  tags.contentType.textContent = res.headers.get('content-type');
+  //tags_tCnt.textContent 이거는 xml 풀고난후에 결과가 있을때... 한참 아래에 나온다.
 
   xmlText = await res.text();
-  body_to_json.textContent = xmlText.substring(0, 38);
+  tags.bodyJson.textContent = xmlText.substring(0, 38);
 
   if (resStatus === 404) throw new Error('404 Not Found');
 
@@ -1069,20 +1042,20 @@ try {
   
   document.querySelector('#xml보기').innerHTML =
     `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
-} catch (e) {
-  console.error(e);
-  tag_response.textContent = e.message || e;
-  body_to_json.textContent = 'catch(e) => 에러';
-} finally {
-  // 정상/에러 상관없이 항상 실행
-  const endTime = Date.now();
+    const endTime = Date.now();
   const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
   document.querySelector('#render지연').textContent = `render응답 : ${elapsedSec}초`;
+  
+} catch (e) {
+  console.error(e);
+  tags.response.textContent = e.message || e;
+  return;
 }
+// ===== 여기부터는 try 성공시에만 실행 =====
 // ===== XML DOM 파싱 =====
   if (!xmlText || !xmlText.trim()) {
     console.error('응답 본문이 비어있음');
-    tag_response.textContent = '응답 본문 없음';
+    tags.response.textContent = '응답 본문 없음';
     return;
   }
 
@@ -1092,9 +1065,10 @@ try {
 
   if (xml.querySelector("parsererror")) {
     console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
-    tag_response.textContent = '응답왔지만 xml파싱 에러';
+    tags.response.textContent = '응답왔지만 xml파싱 에러';
     return;
   }
+
 
   const 결과정보제목들 = document.querySelectorAll(".XML항목");
 
@@ -1124,7 +1098,7 @@ try {
 
   // ===== tCnt 확인 =====
   const 진행단계 = xml.querySelector("tCnt")?.textContent.trim() || '0';
-  tag_tCnt.textContent = 진행단계;
+  tags.tCnt.textContent = 진행단계;
   if (진행단계 === '0') {
     const target = [...결과정보제목들].find(ele => ele.textContent === "진행정보");
     if (target?.nextElementSibling) target.nextElementSibling.textContent = "없음 (입항적하목록 제출전)";
