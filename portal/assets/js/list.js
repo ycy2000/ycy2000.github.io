@@ -842,7 +842,9 @@ function 공통한줄색칠있음clear() {
     document.querySelectorAll('.js한줄색칠있음')[0].classList.remove('js한줄색칠있음')
   }
 }
-function blYy() {
+
+
+function blYy오늘() {
   let ele= document.querySelector('#year');
   if (ele.textContent==year) {ele.textContent=year-1;} else {ele.textContent=year} 
 }
@@ -852,6 +854,14 @@ function 비엘변경() {
   if (ele.textContent=='mblNo') {ele.textContent='hblNo';blspan.textContent='hblNo'} 
   else if (ele.textContent=='hblNo') {ele.textContent='cargMtNo';blspan.textContent='cargMtNo'} 
   else if (ele.textContent=='cargMtNo') {ele.textContent='mblNo';blspan.textContent='mblNo'} 
+}
+function call_try전에() {
+  //d-none 삭제 : #닫기, 내부정보 지우기 : .resInfo, .xmlInfo
+  document.querySelector('#닫기').classList.remove('d-none');
+  document.querySelector('#컨2st부터').innerHTML=''; // 코드로 컨 2개 이상일때 넣는다.
+  //document.querySelector('#xml보기').classList.add('d-none'); // 현재상태대로 두기
+  document.querySelectorAll('#닫기 .resInfo').forEach(ele => ele.textContent = '');
+  document.querySelectorAll('#닫기 .xmlInfo').forEach(ele => ele.textContent = '');
 }
 // ===== XML 들여쓰기 함수 =====
 function formatXML(xml) {
@@ -875,268 +885,160 @@ function formatXML(xml) {
 }
 
 //CUSTOM_KEY_CONTAINER_SEARCH, /unipass/container
-async function cont_call() {
-  //(화물진행정보)닫기부분 닫아주기
-  document.querySelector('#닫기').classList.add('d-none');
-  document.querySelector('#xml보기').classList.add('d-none');
-
-  //
-  document.querySelector('#컨닫기').classList.remove('d-none');
-  if (document.querySelector('#cargMtNo').textContent=='') {alert('화물관리번호 없으면 안됨'); return;}
-
-  let cargMtNo=document.querySelector('#cargMtNo').textContent;
-
-  const tag_response = document.querySelector('#cnt_tag_response');
-  const tag_resOk = document.querySelector('#cnt_tag_resOk');
-  const tag_resStatus = document.querySelector('#cnt_tag_resStatus');
-  const tag_ContentType = document.querySelector('#cnt_tag_ContentType');
-  const body_to_json = document.querySelector('#cnt_body_to_json');
-  const tag_tCnt = document.querySelector('#cnt_tag_tCnt');
-
-  let xmlText = '';
-  let resStatus = 0;
-  let startTime = Date.now(); // 시작 시간 기록
-
-  //3초마다 관련
-  let seconds = 0;
-
-  // 3초마다 카운트 업데이트
-  const intervalId = setInterval(() => {
-    seconds += 3;
-    tag_response.textContent = `render서버 깨우는 중 ${seconds}초`;
-    console.log(tag_response.textContent);
-  }, 3000);
-
-try {
-  tag_response.textContent = 'try진입';
-  tag_response.textContent='render서버 깨우는 중 0초';
-  const res = await fetch(`https://dongil-server.onrender.com/unipass/container?cargMtNo=${cargMtNo}`);
-
-  // 통신 응답을 기다리는 동안 3초마다 업데이트
-  clearInterval(intervalId); //'render서버 깨우는 중 3초';
-
-  resStatus = res.status;
-  tag_response.textContent = '응답 받음';
-  tag_resOk.textContent = res.ok;
-  tag_resStatus.textContent = resStatus;
-  tag_ContentType.textContent = res.headers.get('content-type');
-
-  xmlText = await res.text(); // 404일때 컨테이너는 html 파일로 오네
-
-  //body_to_json.textContent = xmlText.substring(0, 38);
-  body_to_json.textContent = xmlText;
-
-  if (resStatus === 404) throw new Error('404 Not Found');
-
-  // ===== XML Pretty Print =====
-  const pretty = formatXML(xmlText);
+//  const res = await fetch(`https://dongil-server.onrender.com/unipass/container?cargMtNo=${cargMtNo}`);
+/**
+ * 통합 호출 함수
+ * @param {string} mode - 'info' (화물진행정보) 또는 'container' (컨테이너 상세)
+ */
+async function call(mode = 'info') {
+  if (mode === 'info') {call_try전에();};
   
-  document.querySelector('#컨xml보기').innerHTML =
-    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
-} catch (e) {
-  console.error(e);
-  tag_response.textContent = e.message || e;
-  body_to_json.textContent = 'catch(e) => 에러';
-  // 여기로 넘어오면 코드를 중단한다.
-  return;
-} finally {
-  // 정상/에러 상관없이 항상 실행
-  const endTime = Date.now();
-  const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
-  document.querySelector('#컨render지연').textContent = `render응답 : ${elapsedSec}초`;
-}
-// ===== XML DOM 파싱 =====
-  if (!xmlText || !xmlText.trim()) {
-    console.error('응답 본문이 비어있음');
-    tag_response.textContent = '응답 본문 없음';
-    return;
+  // 1. 공통 변수 추출
+  const threeSelect = document.querySelector('#blspan').textContent;
+  const searchNo = document.querySelector('#blno').textContent.trim();
+  const year = document.getElementById("year").textContent.trim();
+  
+  let mblNo = '', hblNo = '', cargMtNo = '';
+  if (threeSelect === 'mblNo') mblNo = searchNo;
+  if (threeSelect === 'hblNo') hblNo = searchNo;
+  if (threeSelect === 'cargMtNo') cargMtNo = searchNo.replace(/-/g, "");
+
+  // 컨테이너 모드일 때 필수값 체크
+  if (mode === 'container') {
+    cargMtNo = document.querySelector('#cargMtNo').textContent.replace('/-/g', "").trim();
+    if (!cargMtNo) { alert('화물관리번호가 필요합니다.'); return; }
+    document.querySelector('#컨2st부터').classList.remove('d-none');
   }
 
-  // ===== XML DOM 파싱 =====
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(xmlText, "text/xml");
-
-  if (xml.querySelector("parsererror")) {
-    console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
-    tag_response.textContent = '응답왔지만 xml파싱 에러';
-    return;
-  }
-  tag_tCnt.textContent=xml.querySelector('tCnt').textContent;
-  //컨리스트지우고다시작성
-
-}
-function call_try전에() {
-  //d-none 추가 : #컨닫기, #컨xml보기
-  //d-none 삭제 : #닫기
-  //내부정보 지우기 : .컨resInfo, .컨resInfo, .resInfo, .xmlInfo
-  document.querySelector('#컨닫기').classList.add('d-none');
-  document.querySelector('#컨xml보기').classList.add('d-none');
-  document.querySelectorAll('.컨resInfo').forEach(ele => ele.textContent = '');
-  document.querySelectorAll('.컨resInfo').forEach(ele => ele.textContent = '');
-
-  document.querySelector('#닫기').classList.remove('d-none');
-  document.querySelectorAll('.resInfo').forEach(ele => ele.textContent = '');
-  document.querySelectorAll('.xmlInfo').forEach(ele => ele.textContent = '');
-}
-// ===== 메인 함수 HDMUSAOA13363200 SSZ1711920 MEDUJJ157091 MEDUHI546837=====
-async function call() {
-  //d-none 추가 : #컨닫기, #컨xml, d-none 삭제 : #닫기, 내부정보 지우기 : .컨resInfo, .컨resInfo, .resInfo, .xmlInfo
-  call_try전에();
-  
-  //관세청 화물진행정보 : mblNo, hblNo, blYy, cargMtNo
-  let threeSelect='', mblNo='', hblNo='', year='', cargMtNo='';
-  threeSelect=document.querySelector('#blspan').textContent;
-  let searchNo=document.querySelector('#blno').textContent; //3개중 하나다 mblNo, hblNo, cargMtNo
-  // mblNo, hblNo
-  if (threeSelect=='mblNo') {mblNo=searchNo.trim()}
-  if (threeSelect=='hblNo') {hblNo=searchNo.trim()}
-  if (threeSelect=='cargMtNo') {cargMtNo=searchNo.replace(/-/g, "").trim()}
-  year = document.getElementById("year").textContent.trim();
-
-  // tag 요소들 한 번에 정리
   const tags = {
-    response:    document.querySelector('#tag_response'),
-    resOk:       document.querySelector('#tag_resOk'),
-    resStatus:   document.querySelector('#tag_resStatus'),
+    response: document.querySelector('#tag_response'),
+    resOk: document.querySelector('#tag_resOk'),
+    resStatus: document.querySelector('#tag_resStatus'),
+    type: document.querySelector('#tag_type'),
     contentType: document.querySelector('#tag_ContentType'),
-    bodyJson:    document.querySelector('#body_to_json'),
-    tCnt:        document.querySelector('#tag_tCnt')
+    bodyJson: document.querySelector('#body_to_json'),
+    tCnt: document.querySelector('#tag_tCnt')
   };
-  let xmlText = '';
-  let resStatus = 0;
-  let startTime = Date.now(); // 시작 시간 기록
 
-  //3초마다 관련
+  let xmlText = '';
+  let startTime = Date.now();
   let seconds = 0;
 
-  // 3초마다 카운트 업데이트
+  // 2. 서버 깨우기 인터벌
   const intervalId = setInterval(() => {
     seconds += 3;
     tags.response.textContent = `render서버 깨우는 중 ${seconds}초`;
-    console.log(tags.response.textContent);
   }, 3000);
 
-try {
-  //let threeSelect=''; mblNo=''; hblNo=''; year=''; cargMtNo='';
-  tags.response.textContent = 'try진입';
-  tags.response.textContent='render서버 깨우는 중 0초';
-  const res = await fetch(`https://dongil-server.onrender.com/unipass?mblNo=${mblNo}&hblNo=${hblNo}&blYy=${year}&cargMtNo=${cargMtNo}`);
+  try {
+    tags.response.textContent = 'render서버 깨우는 중 0초';
+    
+    // 모드에 따른 URL 분기
+    const url = mode === 'container' 
+      ? `https://dongil-server.onrender.com/unipass/container?cargMtNo=${cargMtNo}`
+      : `https://dongil-server.onrender.com/unipass?mblNo=${mblNo}&hblNo=${hblNo}&blYy=${year}&cargMtNo=${cargMtNo}`;
 
-  // fetch가 끝나면 interval 멈추고 결과 표시
-  clearInterval(intervalId); //'render서버 깨우는 중 3초';
+    const res = await fetch(url);
+    clearInterval(intervalId);
 
-  resStatus = res.status;
-  tags.response.textContent = '응답 받음';
-  tags.resOk.textContent = res.ok;
-  tags.resStatus.textContent = resStatus;
-  tags.contentType.textContent = res.headers.get('content-type');
-  //tags_tCnt.textContent 이거는 xml 풀고난후에 결과가 있을때... 한참 아래에 나온다.
+    // 3. 응답 헤더 정보 표시
+    tags.response.textContent = '응답 받음';
+    tags.resOk.textContent = res.ok;
+    tags.resStatus.textContent = res.status;
+    tags.type.textContent = res.type;
+    tags.contentType.textContent = res.headers.get('content-type');
 
-  xmlText = await res.text();
-  tags.bodyJson.textContent = xmlText.substring(0, 38);
+    xmlText = await res.text();
+    tags.bodyJson.textContent = xmlText.substring(0, 38);
 
-  if (resStatus === 404) throw new Error('404 Not Found');
+    if (!res.ok) throw new Error(`Error: ${res.status}`);
 
-  // ===== XML Pretty Print =====
-  const pretty = formatXML(xmlText);
-  
-  document.querySelector('#xml보기').innerHTML =
-    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
-    const endTime = Date.now();
-  const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
-  document.querySelector('#render지연').textContent = `render응답 : ${elapsedSec}초`;
-  
-} catch (e) {
-  console.error(e);
-  tags.response.textContent = e.message || e;
-  return;
+    // 4. XML Pretty Print
+    const pretty = formatXML(xmlText);
+ document.querySelector('#xml보기').innerHTML = 
+      `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+
+    const elapsedSec = ((Date.now() - startTime) / 1000).toFixed(1);
+    document.querySelector('#render지연').textContent = `render응답 : ${elapsedSec}초`;
+
+    // 5. XML 파싱 및 후처리
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml");
+    if (xml.querySelector("parsererror")) throw new Error("XML 파싱 오류");
+
+    const tCnt = xml.querySelector("tCnt")?.textContent.trim() || '0';
+    tags.tCnt.textContent = tCnt;
+
+    if (mode === 'container') {
+      handleContainerLogic(xml, tCnt); // 컨테이너 전용 로직
+    } else {
+      handleInfoLogic(xml, tCnt);      // 화물정보 전용 로직
+    }
+
+  } catch (e) {
+    clearInterval(intervalId);
+    console.error(e);
+    tags.response.textContent = e.message || e;
+  }
 }
-// ===== 여기부터는 try 성공시에만 실행 =====
-// ===== XML DOM 파싱 =====
-  if (!xmlText || !xmlText.trim()) {
-    console.error('응답 본문이 비어있음');
-    tags.response.textContent = '응답 본문 없음';
-    return;
+
+// --- 후처리 분리 함수들 ---
+
+function handleContainerLogic(xml, tCnt) {
+  let 컨번호들 = Array.from(xml.querySelectorAll('cntrNo'), ele => ele.textContent);
+  if (컨번호들.length < 1) return;
+
+  const parent = document.querySelector('#컨2st부터');
+  parent.innerHTML = '';
+  document.querySelector('#첫컨NO').textContent = 컨번호들[0];
+
+  for (let i = 1; i < 컨번호들.length; i++) {
+    const div = document.createElement('div');
+    div.innerHTML = `<span>컨번호${i + 1}</span><span>${컨번호들[i]}</span>`;
+    parent.appendChild(div);
   }
+}
 
-  // ===== XML DOM 파싱 =====
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(xmlText, "text/xml");
-
-  if (xml.querySelector("parsererror")) {
-    console.error("XML 파싱 오류", xml.querySelector("parsererror").textContent);
-    tags.response.textContent = '응답왔지만 xml파싱 에러';
-    return;
-  }
-
-
+function handleInfoLogic(xml, tCnt) {
   const 결과정보제목들 = document.querySelectorAll(".XML항목");
+  
+  const setText = (title, selector, filter) => {
+    const node = xml.querySelector(selector);
+    let val = node ? node.textContent.trim() : '';
+    if (filter) val = filter(val);
+    const target = [...결과정보제목들].find(e => e.textContent === title);
+    if (target?.nextElementSibling) target.nextElementSibling.textContent = val;
+    if (title=='cargMtNo') target.parentNode.childNodes[3].textContent = xml.querySelectorAll(selector).length;;
+  };
 
-  // ===== 헬퍼 함수: 간단한 XML 값 세팅 =====
-  function setText(selectorText, xmlSelector, formatFn) {
-    const node = xml.querySelector(xmlSelector);
-    let value = node ? node.textContent.trim() : '';
-    if (formatFn) value = formatFn(value);
-    const target = [...결과정보제목들].find(ele => ele.textContent === selectorText);
-    if (target?.nextElementSibling) target.nextElementSibling.textContent = value;
-  }
+  const setTextByCarg = (cond, tag, title) => {
+    let node = Array.from(xml.querySelectorAll(cond === '보세운송 반출' ? 'rlbrCn' : 'cargTrcnRelaBsopTpcd'))
+                    .find(e => e.textContent.trim() === cond);
+    const val = node?.parentNode.querySelector(tag)?.textContent.trim() || '';
+    const target = [...결과정보제목들].find(e => e.textContent === title);
+    if (target?.nextElementSibling) target.nextElementSibling.textContent = val;
+  };
 
-  // ===== 헬퍼 함수: cargTrcnRelaBsopTpcd 조건 검색 (보세운송 반출은 아님 rlbrCn)=====
-  function setTextByCargTrcn(conditionText, targetTag, selectorText) {
-    let targetNode = Array.from(xml.querySelectorAll('cargTrcnRelaBsopTpcd'))
-      .find(ele => ele.textContent.trim() === conditionText);
-
-    if (conditionText=='보세운송 반출') {
-        targetNode = Array.from(xml.querySelectorAll('rlbrCn'))
-      .find(ele => ele.textContent.trim() === conditionText);
-    }  
-
-    const value = targetNode?.parentNode.querySelector(targetTag)?.textContent.trim() || '';
-    const target = [...결과정보제목들].find(ele => ele.textContent === selectorText);
-    if (target?.nextElementSibling) target.nextElementSibling.textContent = value;
-  }
-
-  // ===== tCnt 확인 =====
-  const 진행단계 = xml.querySelector("tCnt")?.textContent.trim() || '0';
-  tags.tCnt.textContent = 진행단계;
-  if (진행단계 === '0') {
-    const target = [...결과정보제목들].find(ele => ele.textContent === "진행정보");
-    if (target?.nextElementSibling) target.nextElementSibling.textContent = "없음 (입항적하목록 제출전)";
+  if (tCnt === '0') {
+    setText("진행정보", "", () => "없음 (입항적하목록 제출전)");
     return;
   }
 
-  // ===== 항목별 값 설정 =====
-  setTextByCargTrcn('입항적재화물목록 제출', 'shedNm', 'cy');
-  setTextByCargTrcn('보세운송 신고 접수', 'rlbrBssNo', '면허');
-  setTextByCargTrcn('보세운송 신고 수리', 'rlbrBssNo', '면허'); // 덮어쓰기 가능
-  setTextByCargTrcn('보세운송 반출', 'rlbrDttm', '반출일시');
-
-  setText("포딩", "cargCsclPrgsInfoQryVo > frwrEntsConm");
-  setText("진행정보", "cargCsclPrgsInfoQryVo > prgsStts");
-  setText("입항일", "cargCsclPrgsInfoQryVo > etprDt", val =>
-    val.length === 8 ? `${val.slice(0, 4)}-${val.slice(4, 6)}-${val.slice(6, 8)}` : val
-  );
-  setText("선사", "cargCsclPrgsInfoQryVo > shcoFlco");
-  setText("선명", "cargCsclPrgsInfoQryVo > shipNm");
-  setText("컨개수", "cargCsclPrgsInfoQryVo > cntrGcnt");
-  setText("컨번호", "cargCsclPrgsInfoQryVo > cntrNo");
-  setText("mblNo", "cargCsclPrgsInfoQryVo > mblNo");
-  setText("hblNo", "cargCsclPrgsInfoQryVo > hblNo");
-  setText("cargMtNo", "cargCsclPrgsInfoQryVo > cargMtNo");
-  console.log(xml.querySelectorAll('cargMtNo').length);
-
-  //컨관련 정보 넣기
-  document.querySelector('#컨mblNo').textContent=document.querySelector('#mblNo').textContent;
-  document.querySelector('#컨hblNo').textContent=document.querySelector('#hblNo').textContent;
-  document.querySelector('#컨cargMtNo').textContent=document.querySelector('#cargMtNo').textContent;
-  document.querySelector('#컨개수').textContent=document.querySelector('#개수').textContent;
+  // 데이터 세팅
+  setTextByCarg('입항적재화물목록 제출', 'shedNm', 'cy');
+  setTextByCarg('보세운송 신고 수리', 'rlbrBssNo', '면허');
+  setTextByCarg('보세운송 반출', 'rlbrDttm', '반출일시');
+  setText("포딩", "frwrEntsConm");
+  setText("진행정보", "prgsStts");
+  setText("입항일", "etprDt", v => v.length === 8 ? `${v.slice(0,4)}-${v.slice(4,6)}-${v.slice(6,8)}` : v);
+  setText("선사", "shcoFlco");
+  setText("선명", "shipNm");
+  setText("컨개수", "cntrGcnt");
+  setText("컨번호", "cntrNo");
+  setText("mblNo", "mblNo");
+  setText("hblNo", "hblNo");
+  setText("cargMtNo", "cargMtNo");
 }
-async function 컨번호api() { 
-  //화물진행정보가 조회된 화면에서 화물관리번호가 있으면 컨조회 클릭 화물관리번호로만 조회가능 - 없이
-
-}
-
-
 function png셑팅click(e) {
   // 대부분의 모바일 브라우저(특히 iOS Safari, Chrome)는 <embed> 태그를 제대로 지원하지 않아요.
   console.log('png셑팅click(e)')

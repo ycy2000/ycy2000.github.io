@@ -232,10 +232,10 @@
   <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
     <div style="font-size: 16px;margin-bottom:5px;">
       <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
-      onclick="call();">api호출</button>
+      onclick="call('info');">api호출</button>
       <span id="blspan" onclick="document.querySelector('#blno').textContent=''">mblNo</span> 
       <span contenteditable="true" id="blno"></span>
-      <button class="btn btn-light 카테고리 카테기본" onclick="blYy()" id="blYy">blYy</button> 
+      <button class="btn btn-light 카테고리 카테기본" onclick="blYy오늘()" id="blYy">blYy</button> 
       <span contenteditable="true" id="year"></span>
       <button class="btn btn-light 카테고리 카테기본" onclick="비엘변경()" id="비엘변경">mblNo</button> 
       <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
@@ -256,12 +256,18 @@
         <div><span class="XML항목">cy</span><span class="xmlInfo"></span></div>
         <div><span class="XML항목">선사</span><span class="xmlInfo"></span></div>
         <div><span class="XML항목">선명</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">컨개수</span><span class="xmlInfo" id="개수"></span></div>
-        <div><span class="XML항목">컨번호</span><span class="xmlInfo" id="conNo"></span><button onclick="cont_call()" id="contSearch">컨테이너조회</button></div>
+        <div id="컨개수" class="독립css"><span class="XML항목">컨개수</span><span class="xmlInfo"></span><button onclick="call('container')" id="contSearch">컨테이너조회 (2대 이상일때)</button></div>
+        <div><span class="XML항목">컨번호</span><span class="xmlInfo" id="첫컨NO"></span></div>
+        <div id="컨2st부터" class="독립css d-none">
+          <div><span></span><span></span></div>
+          <div><span></span><span></span></div>
+
+        </div>
         <div><span class="XML항목">포딩</span><span class="xmlInfo"></span></div>
         <div><span class="XML항목">mblNo</span><span class="xmlInfo" id="mblNo"></span></div>
         <div><span class="XML항목">hblNo</span><span class="xmlInfo" id="hblNo"></span></div>
-        <div><span class="XML항목">cargMtNo</span><span class="xmlInfo" id="cargMtNo"></span></div>
+        <!--  id="cargMtNo" 에서는 class="xmlInfo" 없이 ==> 지워지면 안된다-->
+        <div id="화물관리번호" class="독립css"><span class="XML항목">cargMtNo</span><span id="cargMtNo"></span><span title="1개 초과시 여러 HOUSE BL 또는 BL분할">개수</span><span id="화물관리개수"></span></div>
         <div>
           <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
           <span style="width:171px;" id="render지연" class="resInfo"></span>
@@ -270,42 +276,13 @@
         <div style="margin-top:5px;"><span>response</span><span id="tag_response" class="resInfo"></span></div>
         <div><span>res.ok</span><span id="tag_resOk" class="resInfo"></span></div>
         <div><span>res.status</span><span id="tag_resStatus" class="resInfo"></span></div>
+        <div><span>res.type</span><span id="tag_type" class="resInfo"></span></div>
         <div><span>ContentType</span><span id="tag_ContentType" class="resInfo"></span></div>
         <div><span>body</span><span id="body_to_json" class="resInfo"></span></div>
         <div><span>tCnt</span><span id="tag_tCnt" class="resInfo"></span></div>
       </div>
     </div>
-    <div id="컨닫기" class="d-none" style="position: absolute; background-color: white;padding:5px;padding-top:0px; border:1px solid black;">
-      <div id="컨result" style="margin-top:5px;">
-        <div><span class="컨XML항목">mblNo</span><span class="컨xmlInfo" id="컨mblNo"></span></div>
-        <div><span class="컨XML항목">hblNo</span><span class="컨xmlInfo" id="컨hblNo"></span></div>
-        <div><span class="컨XML항목">cargMtNo</span><span class="컨xmlInfo" id="컨cargMtNo"></span></div>
-        <div><span class="컨XML항목">컨테이너 개수</span><span class="컨xmlInfo" id="컨개수"></span></div>
-        <div>
-          <span onclick="document.querySelector('#컨닫기').classList.add('d-none');
-                         document.querySelector('#컨xml보기').classList.add('d-none')
-          " style="background-color: aqua;">닫기</span>
-          <span style="width:171px;" id="컨render지연" class="resInfo"></span>
-          <span onclick="document.querySelector('#컨xml보기').classList.toggle('d-none')" style="background-color: aqua;width:120px;text-align: center;">xml보기/숨기기</span>
-        </div>
-        <div id="컨리스트지우고다시작성">
-          <div><span>수량</span><span>컨번호</span></div>
-          <div><span>수량</span><span>컨번호</span></div>
-          <div><span>수량</span><span>컨번호</span></div>
-          <div><span>수량</span><span>컨번호</span></div>
-
-        </div>
-        <div style="margin-top:5px;"><span>response</span><span id="cnt_tag_response" class="resInfo"></span></div>
-        <div><span>res.ok</span><span id="cnt_tag_resOk" class="컨resInfo"></span></div>
-        <div><span>res.status</span><span id="cnt_tag_resStatus" class="컨resInfo"></span></div>
-        <div><span>ContentType</span><span id="cnt_tag_ContentType" class="컨resInfo"></span></div>
-        <div><span>body</span><span id="cnt_body_to_json" class="컨resInfo"></span></div>
-        <div><span>tCnt</span><span id="cnt_tag_tCnt" class="컨resInfo"></span></div>
-      </div>
-    </div>
-    <div id="xml보기" class="d-none" style="position: absolute;top:583px;background-color: white;border:1px solid black;padding:5px;"></div>
-    <div id="컨xml보기" class="d-none" style="left:409px;position: absolute;background-color: white;border:1px solid black;padding:5px;"></div>
-
+    <div id="xml보기" class="d-none" style="position: absolute;left:410px;background-color: white;border:1px solid black;padding:5px;"></div>
     <div id="클릭파일" class="d-none"></div>
 
     <div id="PNG셑팅내부_리스트자료풀림결과" class="검색 d-inline-block" style="vertical-align: top;"><!-- js로 한줄을 div안에 span 4개? -->
