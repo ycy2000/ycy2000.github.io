@@ -863,6 +863,35 @@ function call_try전에() {
   document.querySelectorAll('#닫기 .resInfo').forEach(ele => ele.textContent = '');
   document.querySelectorAll('#닫기 .xmlInfo').forEach(ele => ele.textContent = '');
 }
+function last_반출시간_작업() {
+  console.log('last_반출시간_작업()');
+
+  const apiBL = document.querySelector('.apiBL');
+  if (!apiBL) {console.log('종료');return;}
+
+  // 원본 반출일시 문자열
+  let 반출일시 = document.querySelector('#apiBL용반출일시');
+  if (반출일시) {
+    반출일시=반출일시.textContent;
+    if (반출일시.length==0) return;
+  } else {return;} //'2026-01-24 06:59:15';
+
+  // 문자열 → Date 변환
+  const dt = new Date(반출일시.replace(' ', 'T'));
+
+  // 1시간 더하기
+  dt.setHours(dt.getHours() + 1);
+
+  // 날짜 포맷 (M/D)
+  const dateStr = `${dt.getMonth() + 1}/${dt.getDate()}`;
+
+  // 시간 포맷 (HH:mm)
+  const timeStr = dt.toTimeString().slice(0,5);
+
+  // 적용
+  apiBL.parentNode.children[10].textContent = dateStr;
+  apiBL.parentNode.children[11].textContent = timeStr;
+}
 // ===== XML 들여쓰기 함수 =====
 function formatXML(xml) {
 
@@ -977,8 +1006,9 @@ async function call(mode = 'info') {
 
   } catch (e) {
     clearInterval(intervalId);
-    console.error(e);
+    //console.error(e);
     tags.response.textContent = e.message || e;
+    return;
   }
 }
 
@@ -1001,14 +1031,14 @@ function handleContainerLogic(xml, tCnt) {
 
 function handleInfoLogic(xml, tCnt) {
   const 결과정보제목들 = document.querySelectorAll(".XML항목");
-  
   const setText = (title, selector, filter) => {
     const node = xml.querySelector(selector);
     let val = node ? node.textContent.trim() : '';
     if (filter) val = filter(val);
     const target = [...결과정보제목들].find(e => e.textContent === title);
     if (target?.nextElementSibling) target.nextElementSibling.textContent = val;
-    if (title=='cargMtNo') target.parentNode.childNodes[3].textContent = xml.querySelectorAll(selector).length;;
+    //추가
+    if (title=='cargMtNo') target.parentNode.childNodes[3].textContent = xml.querySelectorAll(selector).length;
   };
 
   const setTextByCarg = (cond, tag, title) => {
@@ -1038,6 +1068,8 @@ function handleInfoLogic(xml, tCnt) {
   setText("mblNo", "mblNo");
   setText("hblNo", "hblNo");
   setText("cargMtNo", "cargMtNo");
+
+  last_반출시간_작업();
 }
 function png셑팅click(e) {
   // 대부분의 모바일 브라우저(특히 iOS Safari, Chrome)는 <embed> 태그를 제대로 지원하지 않아요.
@@ -1066,10 +1098,14 @@ function png셑팅click(e) {
     if (작동위치=='') {alert('작동위치=="" 종료됨'); return;}
 
     if (작동위치=='PNG셑팅내부_리스트자료풀림결과') {
+      document.querySelector('#api호출').title='';
+      document.querySelector('.apiBL')?.classList.remove('apiBL');
       document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/,/gmi,'<br>');
       document.querySelector('#blno').textContent=e.target.parentNode.children[2].textContent;
       document.querySelector('#비엘변경').textContent='mblNo';
       document.querySelector('#blspan').textContent='mblNo';
+      //api정보 
+      e.target.classList.add('apiBL');
     }
 
 

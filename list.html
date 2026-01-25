@@ -232,9 +232,14 @@
   <div id="왼쪽고정복사자료" class="d-inline-block" style="vertical-align: top;">
     <div style="font-size: 16px;margin-bottom:5px;">
       <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
+      id="api호출" title=""
       onclick="call('info');">api호출</button>
-      <span id="blspan" onclick="document.querySelector('#blno').textContent=''">mblNo</span> 
-      <span contenteditable="true" id="blno"></span>
+      <span id="blspan" onclick="
+      document.querySelector('#blno').textContent='';
+      document.querySelector('#api호출').title='';
+      document.querySelector('.apiBL')?.classList.remove('.apiBL');
+      ">mblNo</span> 
+      <span contenteditable="true" id="blno" onchange="console.log('id=blno change ');"></span>
       <button class="btn btn-light 카테고리 카테기본" onclick="blYy오늘()" id="blYy">blYy</button> 
       <span contenteditable="true" id="year"></span>
       <button class="btn btn-light 카테고리 카테기본" onclick="비엘변경()" id="비엘변경">mblNo</button> 
@@ -250,7 +255,7 @@
     <div id="닫기" class="d-none" style="position: absolute; background-color: white;padding:5px;padding-top:0px; border:1px solid black;">
       <div id="result" style="margin-top:5px;">
         <div><span class="XML항목">진행정보</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">반출일시</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">반출일시</span><span class="xmlInfo" id="apiBL용반출일시"></span></div>
         <div><span class="XML항목">면허</span><span class="xmlInfo"></span></div>
         <div><span class="XML항목">입항일</span><span class="xmlInfo"></span></div>
         <div><span class="XML항목">cy</span><span class="xmlInfo"></span></div>
