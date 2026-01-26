@@ -583,7 +583,8 @@
         <h6 class="fw-bold" title="통신_response객체">07. response와 response.text, 응답이 JSON인지, XML인지, HTML인지</h6>
         <h6 class="blueviolet fw-bold" title="통신_try_catch">08. try catch 알고보면 신세계, 유연하고 명확한 에러처리</h6>
         <h6 class="blueviolet fw-bold" title="통신_xml문자열줄바꿈과들여쓰기">09. xml문자열 줄바꿈과 들여쓰기</h6>
-        <h6 class="blueviolet fw-bold" title="통신_관세청통신코드">10. 관세청 통신 코드 정리</h6>
+        <h6 class="blueviolet fw-bold" title="통신_랜더슬립방지">10. Render 서버 슬립 방지</h6>
+        <h6 class="blueviolet fw-bold" title="통신_관세청통신코드">11. 관세청 통신 코드 정리</h6>
 
 
 
@@ -668,7 +669,8 @@
         <h6 class="fw-bold" title="플로우_워크플로우">워크플로우</h6>
       </div>
       <div>
-        <h6 class="fw-bold" title="플로우_무료">워크플로우</h6>
+        <h6 class="fw-bold" title="플로우_processon">ProcessOn</h6>
+        
       </div>
       <div>
       </div>
@@ -9955,6 +9957,195 @@ function formatXML(xml) {
         </pre>
       </div>
     </div>
+    <div id="통신_랜더슬립방지" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">기본</h6>
+        <pre class="fw-bold">
+✅ 전체 구조
+[크론 스케줄러]
+      ↓ (10~15분마다 실행)
+[서버리스 함수]
+      ↓
+[내 사이트 URL GET 요청]
+      ↓
+서버 깨어있음 유지
+
+✅ 1. 핑 함수 코드 (이미 가진 코드)
+const https = require('https');
+
+exports.handler = async () => {
+  const url = 'https://yoursitehere.onrender.com';
+
+  return new Promise((resolve, reject) => {
+    const req = https.get(url, (res) => {
+      if (res.statusCode === 200) {
+        resolve({ statusCode: 200, body: 'OK' });
+      } else {
+        reject(new Error(`Status: ${res.statusCode}`));
+      }
+    });
+
+    req.on('error', reject);
+    req.end();
+  });
+};
+
+
+👉 URL만 본인 사이트로 바꾸면 끝
+
+✅ 2. 이 함수를 어디에 올리나?
+방법 A) Netlify Functions (가장 쉬움)
+
+깃허브에 코드 업로드
+
+Netlify 연결
+
+/netlify/functions/ping.js 로 저장
+
+방법 B) AWS Lambda
+
+Lambda 함수로 업로드
+
+방법 C) Vercel Serverless Function
+✅ 3. 자동 실행 (크론 설정)
+Netlify Scheduled Functions 예시
+
+netlify.toml
+
+[functions.ping]
+  schedule = "*/15 * * * *"  # 15분마다 실행
+
+✅ 4. 결과
+
+15분마다 내 사이트 자동 접속
+
+Render 서버 sleep 안 함
+
+첫 접속 느려지는 문제 해결
+
+✅ 운영 팁
+
+5~15분 간격이 적당
+
+너무 자주 하면 무료 플랜 제한 걸릴 수 있음
+
+상태코드 200 아니면 알림 보내도록 확장 가능
+
+✅ 한 줄 결론
+
+이 코드 + 크론 스케줄 = 무료 호스팅 서버 항상 깨어있음
+
+원하시면
+Render + Netlify 조합 기준으로
+👉 실제 폴더 구조
+👉 배포 순서
+👉 클릭 순서 스크린샷 단계
+
+까지 이어서 상세 가이드 만들어 드릴게요.
+
+
+
+
+좋습니다 🙂
+그럼 **Render에 올린 사이트를 Netlify로 자동 핑해서 안 잠들게 만드는 “실전 따라하기 가이드”**를 단계별로 정리해 드릴게요.
+(코드 거의 복붙 수준으로 진행 가능)
+
+🚀 Render + Netlify 자동 핑 구성 가이드
+1️⃣ 준비물
+
+Render에 이미 배포된 사이트
+예) https://myapp.onrender.com
+
+GitHub 계정
+
+Netlify 계정
+
+2️⃣ GitHub에 함수 저장
+📁 폴더 구조
+ping-keeper/
+ ├─ netlify/functions/
+ │    └─ ping.js
+ └─ netlify.toml
+
+📄 netlify/functions/ping.js
+const https = require('https');
+
+exports.handler = async () => {
+  const url = 'https://myapp.onrender.com'; // ← 본인 Render 주소
+
+  return new Promise((resolve, reject) => {
+    const req = https.get(url, (res) => {
+      if (res.statusCode === 200) {
+        resolve({ statusCode: 200, body: 'Render server is awake' });
+      } else {
+        reject(new Error(`Status Code: ${res.statusCode}`));
+      }
+    });
+
+    req.on('error', reject);
+    req.end();
+  });
+};
+
+📄 netlify.toml
+[functions.ping]
+  schedule = "*/15 * * * *" 
+
+
+👉 15분마다 실행
+(원하면 "*/10 * * * *" → 10분)
+
+3️⃣ GitHub에 업로드
+
+새 저장소 생성: ping-keeper
+
+위 구조 그대로 업로드
+
+4️⃣ Netlify 연결
+
+Netlify 로그인
+
+Add new site → Import from GitHub
+
+ping-keeper 저장소 선택
+
+Deploy 클릭
+
+끝.
+
+5️⃣ 동작 확인
+
+Netlify 메뉴 →
+Functions → ping → Invocations
+
+여기서 15분마다 실행 기록이 찍히면 성공
+
+6️⃣ 결과
+
+✔ Render 서버 슬립 방지
+✔ 첫 접속 대기시간 제거
+✔ 무료 플랜에서도 안정적
+
+⚙️ 유지보수 팁
+
+Render 주소 바뀌면 ping.js URL만 수정
+
+실행 간격 변경은 netlify.toml 숫자만 변경
+
+실패시 Slack/메일 알림도 추가 가능
+
+🎯 최종 요약
+
+GitHub에 코드 올림 → Netlify가 15분마다 실행 → Render 서버 자동 기상 유지
+
+필요하시면
+GitHub에 업로드할 ZIP 파일 형태로도 만들어 드릴까요?
+그대로 압축 풀어서 업로드만 하면 됩니다 🙂
+        </pre>
+      </div>
+    </div>
+    
     <div id="통신_관세청통신코드" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
@@ -12576,6 +12767,41 @@ req.body 로 변환해서 다음 핸들러에 전달
       <div>
         <h6 class="fw-bold"><a href="https://www.inflearn.com/blogs/8023?gad_source=1&gad_campaignid=23467079245&gbraid=0AAAAADAClSDFj6VLDRXlS0fYHXF1XZtlI&gclid=Cj0KCQiAprLLBhCMARIsAEDhdPcSRsgLv6CpmbULyvGWIxpzP8UC3iZTm_hrSjqG6U0l-Kl-vzrVmMcaAgqIEALw_wcB" target="_blank">fetch와 axios 비교</a> </h6>
       </div>
+      <div>
+        <pre class="fw-bold">
+// Source - https://stackoverflow.com/a
+// Posted by Yusuf
+// Retrieved 2026-01-26, License - CC BY-SA 4.0
+
+const https = require('https');
+
+exports.handler = async (event, context) => {
+ const url = 'https://yoursitehere.onrender.com';
+
+ return new Promise((resolve, reject) => {
+   const req = https.get(url, (res) => {
+     if (res.statusCode === 200) {
+       resolve({
+         statusCode: 200,
+         body: 'Server pinged successfully',
+       });
+     } else {
+       reject(
+         new Error(`Server ping failed with status code: ${res.statusCode}`)
+       );
+     }
+   });
+
+   req.on('error', (error) => {
+     reject(error);
+   });
+
+   req.end();
+ });
+};
+
+        </pre>
+      </div>
     </div>
 
     <div id="연습_nodejs설치및사용법" class="대체3줄">
@@ -12778,19 +13004,6 @@ Node.js, Express, 그리고 Render는 각각 기술 스택, 프레임워크, 호
         <pre class="fw-bold">
   제미나이3가 가장 똑똑하단다.
         </pre>
-
-
-      </div>
-      <div>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-    <div id="플로우_무료" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
         <h6 class="fw-bold">이미지생성 대표 : 소라, 베오, 그록, 나노바나나</h6>
         <h6 class="fw-bold">무료로 생성할 수 있는 서비스 (제한적)</h6>
         <pre class="fw-bold">
@@ -12798,15 +13011,35 @@ Node.js, Express, 그리고 Render는 각각 기술 스택, 프레임워크, 호
         </pre>
 
 
-
       </div>
       <div>
+        <pre class="fw-bold">
+플로우차트 그리기 프로그램 10종 소개
+EdrawMax
+draw.io
+Smartdraw
+Microsoft Visio
+LucidChart
+ClickCharts
+GitMind
+Cacoo
+miro
+canva
+        </pre>
         
       </div>
       <div>
         
       </div>
     </div>
+    <div id="플로우_processon" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+          https://www.processon.io/ko/blog/online-ai-flowchart-tool
+        </pre>
+      </div>
+    </div>    
     <div id="프롬프트_1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
