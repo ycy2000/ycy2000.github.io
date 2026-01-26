@@ -1,2 +1,5 @@
+[build]
+  functions = "netlify/functions"
+
 [functions.ping]
-  schedule = "*/15 * * * *" 
+  schedule = "*/15 * * * *"
