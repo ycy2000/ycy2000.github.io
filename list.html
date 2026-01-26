@@ -54,6 +54,42 @@
   <!-- position:absolute -->
 </header>
 <div style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
+    <div id="xml보기" class="d-none" style="position: absolute;left:410px;background-color: white;border:1px solid black;padding:5px;"></div>
+    <div id="닫기" class="d-none" style="position: absolute; background-color: white;padding:5px;padding-top:0px; border:1px solid black;">
+      <div id="result" style="margin-top:5px;">
+        <div><span class="XML항목">진행정보</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">반출일시</span><span class="xmlInfo" id="apiBL용반출일시"></span></div>
+        <div><span class="XML항목">면허</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">입항일</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">cy</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">선사</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">선명</span><span class="xmlInfo"></span></div>
+        <div id="컨개수" class="독립css"><span class="XML항목">컨개수</span><span class="xmlInfo"></span><button onclick="call('container')" id="contSearch">컨테이너조회 (2대 이상일때)</button></div>
+        <div><span class="XML항목">컨번호</span><span class="xmlInfo" id="첫컨NO"></span></div>
+        <div id="컨2st부터" class="독립css d-none">
+          <div><span></span><span></span></div>
+          <div><span></span><span></span></div>
+
+        </div>
+        <div><span class="XML항목">포딩</span><span class="xmlInfo"></span></div>
+        <div><span class="XML항목">mblNo</span><span class="xmlInfo" id="mblNo"></span></div>
+        <div><span class="XML항목">hblNo</span><span class="xmlInfo" id="hblNo"></span></div>
+        <!--  id="cargMtNo" 에서는 class="xmlInfo" 없이 ==> 지워지면 안된다-->
+        <div id="화물관리번호" class="독립css"><span class="XML항목">cargMtNo</span><span id="cargMtNo"></span><span title="1개 초과시 여러 HOUSE BL 또는 BL분할">개수</span><span id="화물관리개수"></span></div>
+        <div>
+          <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
+          <span style="width:171px;" id="render지연" class="resInfo"></span>
+          <span onclick="document.querySelector('#xml보기').classList.toggle('d-none')" style="background-color: aqua;width:120px;text-align: center;">xml보기/숨기기</span>
+        </div>
+        <div style="margin-top:5px;"><span>response</span><span id="tag_response" class="resInfo"></span></div>
+        <div><span>res.ok</span><span id="tag_resOk" class="resInfo"></span></div>
+        <div><span>res.status</span><span id="tag_resStatus" class="resInfo"></span></div>
+        <div><span>res.type</span><span id="tag_type" class="resInfo"></span></div>
+        <div><span>ContentType</span><span id="tag_ContentType" class="resInfo"></span></div>
+        <div><span>body</span><span id="body_to_json" class="resInfo"></span></div>
+        <div><span>tCnt</span><span id="tag_tCnt" class="resInfo"></span></div>
+      </div>
+    </div>
 <div id="PNG셑팅"></div>
 <div class="file_list_container d-none">
   <li><div>사용중인html파일</div><div>경로만</div><div>파일이름 </div></li>
@@ -258,42 +294,6 @@
       onclick="리스트_입항관리에없는목록색칠()" title="BL도 없고 CON도 없는것 색칠">입항관리에 없는 목록 색칠
       </button>
     </div>
-    <div id="닫기" class="d-none" style="position: absolute; background-color: white;padding:5px;padding-top:0px; border:1px solid black;">
-      <div id="result" style="margin-top:5px;">
-        <div><span class="XML항목">진행정보</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">반출일시</span><span class="xmlInfo" id="apiBL용반출일시"></span></div>
-        <div><span class="XML항목">면허</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">입항일</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">cy</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">선사</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">선명</span><span class="xmlInfo"></span></div>
-        <div id="컨개수" class="독립css"><span class="XML항목">컨개수</span><span class="xmlInfo"></span><button onclick="call('container')" id="contSearch">컨테이너조회 (2대 이상일때)</button></div>
-        <div><span class="XML항목">컨번호</span><span class="xmlInfo" id="첫컨NO"></span></div>
-        <div id="컨2st부터" class="독립css d-none">
-          <div><span></span><span></span></div>
-          <div><span></span><span></span></div>
-
-        </div>
-        <div><span class="XML항목">포딩</span><span class="xmlInfo"></span></div>
-        <div><span class="XML항목">mblNo</span><span class="xmlInfo" id="mblNo"></span></div>
-        <div><span class="XML항목">hblNo</span><span class="xmlInfo" id="hblNo"></span></div>
-        <!--  id="cargMtNo" 에서는 class="xmlInfo" 없이 ==> 지워지면 안된다-->
-        <div id="화물관리번호" class="독립css"><span class="XML항목">cargMtNo</span><span id="cargMtNo"></span><span title="1개 초과시 여러 HOUSE BL 또는 BL분할">개수</span><span id="화물관리개수"></span></div>
-        <div>
-          <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
-          <span style="width:171px;" id="render지연" class="resInfo"></span>
-          <span onclick="document.querySelector('#xml보기').classList.toggle('d-none')" style="background-color: aqua;width:120px;text-align: center;">xml보기/숨기기</span>
-        </div>
-        <div style="margin-top:5px;"><span>response</span><span id="tag_response" class="resInfo"></span></div>
-        <div><span>res.ok</span><span id="tag_resOk" class="resInfo"></span></div>
-        <div><span>res.status</span><span id="tag_resStatus" class="resInfo"></span></div>
-        <div><span>res.type</span><span id="tag_type" class="resInfo"></span></div>
-        <div><span>ContentType</span><span id="tag_ContentType" class="resInfo"></span></div>
-        <div><span>body</span><span id="body_to_json" class="resInfo"></span></div>
-        <div><span>tCnt</span><span id="tag_tCnt" class="resInfo"></span></div>
-      </div>
-    </div>
-    <div id="xml보기" class="d-none" style="position: absolute;left:410px;background-color: white;border:1px solid black;padding:5px;"></div>
     <div id="클릭파일" class="d-none"></div>
 
     <div id="PNG셑팅내부_리스트자료풀림결과" class="검색 d-inline-block" style="vertical-align: top;"><!-- js로 한줄을 div안에 span 4개? -->

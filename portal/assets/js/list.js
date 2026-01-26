@@ -1353,3 +1353,75 @@ function 파일선택후속() {
 
 
 
+
+
+var 드래그이동_버튼45감싸기 = document.querySelector('#닫기');
+function mousedownOrTouchstart2(e) {
+  // 터치 이벤트인지 마우스 이벤트인지 확인
+  var isTouchEvent = e.type === 'touchstart'; //pc일때 e.type는 mousedown이고, e.type === 'touchstart'는 false가 된다
+  console.log('e.type : ' + e.type)
+  var target = 드래그이동_버튼45감싸기;//#버튼45오른쪽단독
+  var isDragging = true; //드래그(move) 할 수 있으니 true로 설정해야함 아니면 move가 안됨
+  // isDragging 은 자동으로 감지된다. down시 true로 설정하지 않으면 움직이기 시작할때 false로 인식되어 move가 작동안함
+
+  var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/px/g, '')) || 0; //top은 12px 처럼 나타나는데 px를 뺀 숫자만 추출함
+  var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/px/g, '')) || 0; // || 0 은 추출실패하여 에러나 undefined인 경우 0을 추출함
+  //처음타겟TOP숫자, 처음타겟LEFT숫자 : 소수점자리가 큰 숫자로 바뀌는 것
+  //var 처음타겟TOP숫자 = parseInt(target.style.top.replace(/[^0-9]/g, '')) || 0;
+  //var 처음타겟LEFT숫자 = parseInt(target.style.left.replace(/[^0-9]/g, '')) || 0;
+  var 첫마우스y = isTouchEvent ? e.touches[0].clientY : e.clientY; //e.touches[0].clientY는 모바일에서 pc의 e.clientY의 값이다.
+  var 첫마우스x = isTouchEvent ? e.touches[0].clientX : e.clientX; //물음표는 isTouchEvent가 true일때 : 앞쪽꺼, false일때 : 뒤쪽꺼로 설정
+  // 부모 요소의 경계를 확인 (마우스이벤트예제div), 이거 안씀, 드래그 한계범위 설정시 사용
+  var 부모_경계 = target.getBoundingClientRect();
+  var 상자_너비 = target.offsetWidth;
+  var 상자_높이 = target.offsetHeight;
+  function 마우스moveOrTouchmove(e) {
+    if (!isDragging) return;
+    // 화면 스크롤 방지 (모바일)
+    if (isTouchEvent) { //모바일에서 작동하는것
+      e.preventDefault();//이거 에러나는듯, 검색 : preventDefault
+      //window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, {passive: false});
+    }
+    // 터치 이벤트인지 마우스 이벤트인지 확인
+    var move_y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+    var move_x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+    var 첫마우스에서y이동거리 = move_y - 첫마우스y;
+    var 첫마우스에서x이동거리 = move_x - 첫마우스x;
+    // 새로운 위치 계산
+    var 새로운_상자_위치_y = 처음타겟TOP숫자 + 첫마우스에서y이동거리;
+    var 새로운_상자_위치_x = 처음타겟LEFT숫자 + 첫마우스에서x이동거리;
+    // 경계 조건 설정 (상자 위치가 부모 요소를 벗어나지 않도록)
+    // 부모_경계, 상자-너비, 상자_높이 적용하지 않았으니 경계조건은 제한이 없는 상태이다.
+    if (새로운_상자_위치_y < 0) {
+      새로운_상자_위치_y = 0;
+    }
+    if (새로운_상자_위치_x < 0) {
+      새로운_상자_위치_x = 0;
+    }
+    // 상자 위치 적용
+    target.style.top = 새로운_상자_위치_y + 'px';
+    target.style.left = 새로운_상자_위치_x + 'px';
+  }
+
+  function 마우스upOrTouchend() {
+    //if (!isDragging) return;
+    isDragging = false;
+    // 이벤트 제거
+    window.removeEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove);
+    window.removeEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+  }
+
+  // 이벤트 추가
+  window.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', 마우스moveOrTouchmove, { passive: false });
+  window.addEventListener(isTouchEvent ? 'touchend' : 'mouseup', 마우스upOrTouchend);
+}
+드래그이동_버튼45감싸기.addEventListener('mousedown', mousedownOrTouchstart2);
+드래그이동_버튼45감싸기.addEventListener(
+  'touchstart',
+  mousedownOrTouchstart2,
+  { passive: false }
+);
+
+
+
+
