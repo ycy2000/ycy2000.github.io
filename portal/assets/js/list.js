@@ -920,9 +920,11 @@ function formatXML(xml) {
  * @param {string} mode - 'info' (화물진행정보) 또는 'container' (컨테이너 상세)
  */
 async function call(mode = 'info') {
+//사전작업
+  //1.call_try전에() : 요소기본셑팅
   if (mode === 'info') {call_try전에();};
-  
-  // 1. 공통 변수 추출
+  //2.fetch준비 및 정상 fetch후 사용할 변수 정의
+  //  - threeSelect : hBL,oBL,화물관리번호 중 어떤값이 입력되어 있는지 확인
   const threeSelect = document.querySelector('#blspan').textContent;
   const searchNo = document.querySelector('#blno').textContent.trim();
   const year = document.getElementById("year").textContent.trim();
@@ -997,6 +999,8 @@ async function call(mode = 'info') {
 
     const tCnt = xml.querySelector("tCnt")?.textContent.trim() || '0';
     tags.tCnt.textContent = tCnt;
+
+    if (tCnt==0) throw new Error(`Error: tCnt=0`);
 
     if (mode === 'container') {
       handleContainerLogic(xml, tCnt); // 컨테이너 전용 로직

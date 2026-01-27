@@ -241,12 +241,13 @@
     <div class="개별카테고리" id="Bootstrap">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
-        <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
 
         
       </div>
       <div>
+        <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
+        <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
+
         <h6 title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드, 스크롤 : data-bs-scroll='true' </h6>
       </div>
       <div>
@@ -557,6 +558,7 @@
       <div>
         <h6 title='CSS_TABLE'>table, 표</h6>
 
+
       </div>
       <div>
 
@@ -669,8 +671,19 @@
         <h6 class="fw-bold" title="플로우_워크플로우">워크플로우</h6>
       </div>
       <div>
-        <h6 class="fw-bold" title="플로우_processon">ProcessOn</h6>
+        <h6 class="fw-bold" title="플로우_processon"><a href="https://www.processon.io/ko/blog/online-ai-flowchart-tool" target="_blank">ProcessOn : 워크플로우 그리기만 (사이트에 저장됨)</a> </h6>
         
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="개별카테고리" id="통신js코드">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+
+      </div>
+      <div>
+        <h6 class="fw-bold" title="통신js코드_워크플로우">통신js코드_워크플로우</h6>
       </div>
       <div>
       </div>
@@ -746,20 +759,22 @@
     </div>
     <div class="개별카테고리" id="기타"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      
       <h6 class="fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
       <h6 class="fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
       <h6 class="fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
     </div>
-    <div class="개별카테고리" id="임시">
+    <div class="개별카테고리" id="html양식">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+
         <h6 class="fw-bold" title='임시_휴가등'>임시_휴가등</h6>
       </div>
       <div>
-        <h6 class="fw-bold" title=''>예제</h6>
+        <h6 class="fw-bold" title='양식_테이블'>양식_테이블, class 테이블테두리</h6>
       </div>
       <div>
-        <h6 class="fw-bold" title=''>예제</h6>
+
       </div>
     </div>
     <div class="개별카테고리" id="녹화">
@@ -3135,6 +3150,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
       <img src="" alt="이미지없음">
       <br><br><br><br>
     </section>
+
 
     <div id="기타전체_캔버스관련코드">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -8714,6 +8730,8 @@ header .menu li:nth-child(2)
       </table>
     </div>
 
+    
+
     <div id="참고_특수문자txt">
       <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
     </div>
@@ -8742,74 +8760,88 @@ header .menu li:nth-child(2)
     <div id="개념_nodejs관련1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="blueviolet fw-bold">서버</h6>
-        <pre class="fw-bold">
-서버(server)는 클라이언트를 거쳐 네트워크를 통해 서비스하는 컴퓨터를 의미한다. 
-<span class="blueviolet">이름 그대로 번역해서 '제공자'라고 하면 와닿을 것이다</span>
-1. 정적서버 : 파일요청이 들어오면 파일을 그대로 보내줌 
-2. api서버 : 요청이 들어오면 요청에 따라 정해진 로직을 실행하여 결과를 반환. </pre>
-        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
-        <pre class="fw-bold">
-- 웹페이지(HTML)를 보여주는 프로그램. 크롬, 엣지, 사파리 등
-- 개발자 도구에서 웹페이지, 정보이동(네트워크)등을 볼 수 있다. 
-  노출이 되면 안되는 정보가 올라가지 않도록 주의를 요한다.
-- <span class="blueviolet">브라우저에서 요청하는 정보에 대해서 보안상의 이유로 CORS정책이 있다.</span>
-- 브라우저는 동일출처가 아니면, CORS : 서로다른 출처의 리소스 공유 설정에서 해제설정이 필요</pre>
-        <h6 class="blueviolet fw-bold">URL(Uniform Resource Locator)의 구조 : 정보의 <u>고유한</u> 주소, URI(출처)</h6>
-        <pre class="fw-bold">
-URI(출처) : <span class="blueviolet">[프로토콜]://[호스트]:[포트]</span> 예 : https://api.example.com:443
-프로토콜 :	어떻게 통신할지, https://   호스트 :	누구에게 요청할지, api.example.com
-포트 :	어떤 문으로 들어갈지, :443      URI자체로 URL이 될 수 있다. 
+        <section class="info-card">
+          <h5 class="title-violet fw-bold">1. 서버(Server)란 무엇인가?</h5>
+          <div class="content-box">
+            <p>클라이언트를 거쳐 네트워크를 통해 서비스를 제공하는 컴퓨터 (제공자)</p>
+            <ul>
+              <li><strong>정적 서버:</strong> 요청받은 파일(HTML, 이미지 등)을 있는 그대로 전달</li>
+              <li><strong>API 서버:</strong> 요청에 따라 로직을 실행한 후 결과(데이터)를 반환</li>
+            </ul>
+          </div>
+        </section>
 
-URL : 세부주소까지
-[프로토콜]://[호스트]:[포트]/[경로]?[쿼리]#프래그먼트
-예: https://api.example.com:443/v1/users?id=3#profile
-경로 :	무엇을 요청할지, /v1/Users 
-? : ?이후에 api통신에 필요한 정보
-쿼리 : api처리를 위한 변수값, ?id=3
-#프래그먼트
+        <section class="info-card">
+          <h5 class="title-violet fw-bold">2. 주소 체계 : URI(출처) / URL(Uniform Resource Locator)</h5>
+          <div class="content-box">
+            <p class="code-style">https://api.example.com:443/v1/users?id=3#profile</p>
 
-2️⃣ 가장 기본적인 통신 프로토콜
-🌐 HTTP / HTTPS (웹 & API 통신)
-http://example.com
-https://api.example.com/users
+                    <table class="table-border">
+          <thead>
+            <tr><th></th><th></th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+            <table class="info-table">
+              <tr><th>프로토콜</th><td>https (통신 방식), 스킴</td></tr>
+              <tr><th>호스트</th><td>api.example.com (대상 주소)</td></tr>
+              <tr><th>포트</th><td>443 (접속 게이트)</td></tr>
+              <tr><th>경로/쿼리</th><td>/v1/users (상세 경로), ?id=3 (데이터 변수)</td></tr>
+              <tr><th>URI는</th><td>프로토콜://호스트:포트 = "출처", "호스트:포트"는 도메인 </td></tr>
+              <tr><th>경로는</th><td>API통신의 경우, 서버에서 get함수에서 사용되는 함수이름</td></tr>
+              <tr><th>쿼리는</th><td>(물음표)? 뒤에 변수1=변수값&변수2=변수값 형태로 get함수에서 사용됨</td></tr>
+              <tr><th>get 예시</th><td>app.get('경로', (req, res) => {req.query.변수2 로 사용}</td></tr>
+            </table>
+          </div>
+        </section>
 
-항목	설명
-http	평문 통신
-https	TLS 암호화 통신 (실무 표준)
-사용처	웹 페이지, REST API, CDN, SPA
+        <section class="info-card mt-3">
+          <h5 class="title-violet fw-bold">3. CORS 정책과 Node.js 사용 이유</h5>
+          <div class="content-box">
+            <blockquote>
+              <strong>CORS란?</strong> 브라우저에서 보안상 이유로 다른 출처의 API 호출을 막는 정책.
+              <br>※ 단, <strong>서버 ↔ 서버 통신</strong> 시에는 이 제약이 없습니다.
+            </blockquote>
+            <ol>
+              <li><strong>우회로 활용:</strong> 브라우저가 직접 호출하지 않고, <br>내 <strong>Node.js 서버</strong>를 거쳐 외부 API와 통신합니다.</li>
+              <li><strong>개발 환경 구축:</strong> 내 컴퓨터를 서버로 만들어 테스트하기 위해 <br>Node.js를 설치합니다.</li>
+              <li><strong>Express 활용:</strong> Node.js 환경에서 가장 쉽고 강력하게 <br>서버 기능을 구현하는 프레임워크입니다.</li>
+            </ol>
+          </div>
+        </section>
 
-📌 API 호출 = HTTP 통신</pre>
-        <h6 class="blueviolet fw-bold">★ 서버 ↔ 서버 통신, CORS 개념 자체가 없음</h6>
-        <pre class="fw-bold">
-api통신이 아닌것(ex:링크,https://example.com)은 CORS정책이 없고,
-api통신(요청정보에 대한 로직처리가 있는것)은 브라우저의 요청인 경우에 CORS정책이 적용된다.
-        </pre>
+        <section class="info-card">
+          <h5 class="title-violet fw-bold">4. 실행 환경의 차이</h5>
+          <table class="comparison-table">
+            <thead>
+              <tr><th>구분</th><th>file:// (로컬 실행)</th><th>http:// (서버 실행)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>CORS 제약</td><td>매우 엄격 (통신 불가)</td><td>설정 후 정상 통신 가능</td></tr>
+              <tr><td>API 호출</td><td>브라우저 차단 가능성 높음</td><td>서버 경유 시 정상 작동</td></tr>
+            </tbody>
+          </table>
+          <span class="fw-bold">file://(로컬실행) => 서버에서 cors허용하면 브라우저에서도 될수있다.</span>
+        </section>
       </div>
       <div>
-        <pre class="fw-bold">
-<span class="blueviolet">CORS정책 자체가 브라우저에서 API통신을 요청할때 적용되므로,</span>
-브라우저의 통신객체 fetch 실행시 
-출처가 동일출처가 아니면 CORS에 막혀 정보를 얻을수 없는 경우가 대부분이고
-CORS정책으로 허용되는 서버(내 서버 또는 개발시에 내 컴퓨터에 설치하는 
-Node.js express서버)로 fetch 요청을 하고, 내가 지정한 '서버 ↔ 서버 통신'이 이루어지게 한다. </pre>
-        <h6 class="blueviolet fw-bold">Node.js설치 및 npm으로 express 설치 등 사용하는 이유 </h6>
-        <pre class="fw-bold">
-1. 웹상에 API통신을 할 수 있는 서버를 모두 볼수 있게 배포하려면 도메인이 있어야 한다.
-   [프로토콜]://[호스트]:[포트]에서 <span class="blueviolet">[호스트]:[포트]부분, 도메인</span> 
-2. 무료로 서버를 활용하려면 여러가지 방법 중 
-   Render사이트에서 도메인(공인주소)을 만들수 있다. 
-3. 2.를 활용하기 전에 개발단계에서 
-   <span class="blueviolet">서버역할을 하는 환경을 만들기 위해 Node.js를 활용한다.</span>
-4. Node.js를 내 컴퓨터에 설치하면 npm이 함께 설치되는데 
-    npm을 통해 필요한 패키지를 설치할수 있다. 
-5. Node.js는 환경일뿐이고 가장 중요한 설치 패키지인 express가 있다. 
-6. Express = Node.js에서 웹서버를 만드는 핵심 프레임워크이고
-   나머지 것들은 Express를 실행하고 관리하기 위한 보조 구성요소라고 이해한다.
-7. Node.js는 터미널(cmd등)에서 실행한다. 브라우저에서 실행하는게 아니라는 것. 
-   서버구성이 완료되었다면 <span class="blueviolet">서버에서 실행한다</span>라고 이해한다.
-8. 따라서 Node.js 서버와 서버간의 통신이 이루어지게 된다.</pre>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs관련1_이미지1.png" alt="이미지없음">
+        <section class="info-card mt-3">
+          <h5 class="title-violet fw-bold">5. Node.js는 환경제공, npm은 환경 안에서 사용할 라이브러리 설치</h5>
+          <div class="content-box">
+            <blockquote>
+            <ol>
+              <li><strong>npm install express:</strong> 필요한 라이브러리 설치</li>
+              <li><strong>server.js 코드에서:</strong> <br>
+              a) const express = require('express'); 라이브러리 불러옴 <br>
+              b) const app = express(); 라이브러리의 prototype속성(함수) 부여 <br>
+              a) app.get('/a', async (req, res) => {..} 부여받은 함수중 get 함수 사용<br>
+              </li>
+            </ol>
+          </div>
+        </section>
       </div>
       <div>
         <h6 class="blueviolet fw-bold">프로젝트 폴더</h6>
@@ -13031,15 +13063,12 @@ canva
       <div>
         
       </div>
-    </div>
-    <div id="플로우_processon" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+    </div> 
+    <div id="통신js코드_워크플로우">
       <div>
-        <pre class="fw-bold">
-          https://www.processon.io/ko/blog/online-ai-flowchart-tool
-        </pre>
+        <img src="portal/images/문서연결_샷컷/통신js코드_워크플로우_01.png" alt="이미지없음">
       </div>
-    </div>    
+    </div>
     <div id="프롬프트_1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13342,6 +13371,41 @@ canva
       </div>
     </div>  
 
+    <div id="양식_테이블" class="대체2줄">
+      <h6 class="대체2줄세로1h6"></h6>
+      <div>
+        <!-- 빈서식 -->
+        <table class="table-border">
+          <thead>
+            <tr><th></th><th></th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <h6 class="fw-bold">1.table, 2-1.thead-tr-th, 2-2.tbody-tr-td</h6>
+        <pre class="fw-bold">
+- 기본 : 가장 큰 요소기준 같은 순서의 요소의 크기가 자동 지정됨
+- thead 부분은 자동으로 bold 처리됨 
+- 테두리와 패딩 
+- table에 클래스 .table-border : .table-border th, .table-border td {border:1px solid black;padding:3px;}
+        </pre>
+        <table class="table-border">
+          <thead>
+            <tr><th>구분</th><th>file:// (로컬 실행)</th><th>http:// (서버 실행)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CORS 제약</td><td>매우 엄격 (통신 불가)</td><td>설정 후 정상 통신 가능</td></tr>
+            <tr><td>API 호출</td><td>브라우저 차단 가능성 높음</td><td>서버 경유 시 정상 작동</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+
+      </div>
+
+    </div>  
     <div id="임시_휴가등">
       <div class=" d-inline-block align-top " style="white-space:nowrap;word-break:break-all;">
         <div class="d-inline-block" style="border:1px solid black; vertical-align: top;">

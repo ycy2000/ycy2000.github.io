@@ -4,6 +4,7 @@
 #예제아이디 {display:inline-block;width:150px;height:150px;border:1px solid black}
 #예제아이디 > div {display:inline-block;width:100px;height:100px;}
 
+.table-border th, .table-border td {border:1px solid black;padding:3px;}
 
 #js카테고리생성 > button {margin-right:-2px;}
 /* .개별카테고리 > div : div가 3개이고, 세로 선긋기 2개 position: absolute;*/
