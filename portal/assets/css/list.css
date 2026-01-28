@@ -1,4 +1,6 @@
 @charset "UTF-8";
+#닫기 {display:inline-block;width:411px; position: absolute; background-color: white;padding:5px;padding-top:0px; border:1px solid black;}
+#xml보기 {position: absolute;left:410px;background-color: white;border:1px solid black;padding:5px;}
 #result > div > span, #컨2st부터 > div > span {font-size:15px;font-weight: bold; padding:2px 2px; height:25px; display:inline-block;border:1px solid black; margin-right:-1px; margin-bottom:-1px;vertical-align: top;}
 #result > div:not(.독립css) > span:nth-of-type(1) {width:100px;}
 #result > div:not(.독립css) > span:nth-of-type(2) {width:300px;overflow:hidden;}
@@ -12,7 +14,10 @@
 #화물관리번호 > span:nth-of-type(4) {width:45px;text-align: center;}
 #컨개수 > span:nth-of-type(1) {width:100px;background-color: aqua;}
 #컨개수 > span:nth-of-type(2) {width:111px;background-color: aqua;}
+#내부call > span:nth-of-type(1) {width:100px;}
+#내부call > span:nth-of-type(2) {width:111px;}
 #contSearch {width:190px;border:1px solid black;margin:0px;display:inline-block;font-weight: bold; font-size:14px;margin-bottom:-1px;}
+#infoSearch {background-color:greenyellow; width:190px;border:1px solid black;margin:0px;display:inline-block;font-weight: bold; font-size:14px;margin-bottom:-1px;}
 
 
 #blspan {font-weight: bold;display: inline-block;width:75px;text-align: right;}

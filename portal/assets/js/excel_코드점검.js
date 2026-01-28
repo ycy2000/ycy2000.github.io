@@ -3,11 +3,26 @@ function 특정id편집() {
   전체변수h6title ='양식_테이블' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
+function 셑팅정보() {
+  전체변수h6title ='셑팅정보' //원래는 h6의 title이다.
+  전체대체에셑팅();
+}
+function 스타일보기_console() {
+  //함수위치 id="셑팅정보" 
+  let id='html특수문자_click'; //필요할때 요소에 임시 아이디 지정하여 연습에 함수 걸어서 보기
+  let 요소=document.querySelector('#'+id);
+  let 요소style=window.getComputedStyle(요소);
+  console.log('tagName : ', 요소.tagName);
+  console.log('classList : ', 요소.classList);
+  console.log('화면에 없는 요소이면?');
+  console.log('display height width border : ', 요소style.display,요소style.height,요소style.width,요소style.border);
+  console.log('padding top right bottom left : ', 요소style.paddingTop,요소style.paddingRight,요소style.paddingBottom,요소style.paddingLeft);
+  console.log('margin top right bottom left : ', 요소style.marginTop,요소style.marginRight,요소style.marginBottom,요소style.marginLeft);
+
+
+}
 function 연습() {
-  매크로1_JS();
-  return;
-  let 배열=[1,2,3,1,1,1].slice(1,4);
-  console.log(배열);
+
 
 }
 function 전체대체에셑팅() {
@@ -106,6 +121,8 @@ function 보숨토글(e) {
   if (요소.classList.contains('d-none')) {e.innerHTML='▼'} else {e.innerHTML='▲'}
 }
 function 캔버스_연결버튼_클릭(e) {
+  //이 함수 없어도 캔버스는 열린다. id="대표캔버스"
+  //이 함수는 대표캔버스 안의 내용을 셑팅하는 것이다.
   //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
   if (document.querySelector('#현재캔버스이름').innerHTML==e.title) {console.log('reutrn;');return;}
   document.querySelector('#현재캔버스이름').innerHTML=e.title;

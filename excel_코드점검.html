@@ -50,20 +50,26 @@
                 title="깃_Code_부트"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" 
                 aria-controls="offcanvasBottom">캔버스 : git_Code_부트</a>
               </li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" 
+                title="css전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" 
+                aria-controls="offcanvasBottom">캔버스 : CSS</a>
+              </li>
+              <li><a class="dropdown-item" onclick="캔버스_연결버튼_클릭(this)" 
+                title="기타전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" 
+                aria-controls="offcanvasBottom">캔버스 : 기타</a>
+              </li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </div>
           </ul>
         </div>
-        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="설명"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >설명</button>
-        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="관심"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >관심</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="java전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >JS</button>
-        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="css전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >CSS</button>
+        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="메모전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >메모</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
-        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="기타전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >기타</button>
         <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">특정캔버스</button>
-        <button onclick="연습()">연습()</button> <span class="fw-bold" onclick="document.querySelector('#전체대체').innerHTML=''">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
+        <button onclick="셑팅정보()">셑_팅</button> <button onclick="연습()">연습()</button> 
+        <span class="fw-bold" onclick="document.querySelector('#전체대체').innerHTML=''">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
       </div>
@@ -249,34 +255,6 @@
         <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
 
         <h6 title='기타전체_캔버스관련코드'>excel.html > 캔버스 관련 코드, 스크롤 : data-bs-scroll='true' </h6>
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div id="설명" class="d-none 캔버스">
-    <div class="개별카테고리" id="설명1">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-        <h6 class="fw-bold" title="설명_클래스">이 HTML에 사용된 CSS CLASS,</h6>
-      </div>
-      <div>
-      </div>
-      <div>
-      </div>
-
-    </div>
-
-  </div>
-  <div id="관심" class="d-none 캔버스">
-    <div class="개별카테고리" id="관심1">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-      <h6 class="fw-bold" title="ai">AI플랫폼</h6>
-      </div>
-      <div>
-        
       </div>
       <div>
         
@@ -505,6 +483,20 @@
         <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
         <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
         <h6><a href="https://kingofbackend.tistory.com/187" target="_blank">[Javascript]Json과 JavaScript Object의 차이점</a></h6>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+  <div id="메모전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="가끔필요">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold">함수 : function 스타일보기_console() ==> 연습안에 스타일보기_console(); return;</h6>
+      </div>
+      <div>
 
       </div>
       <div>
@@ -3172,52 +3164,6 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
 
 
   </div>
-  <div title="설명">
-    <div id="설명_클래스">
-      <div>
-        <img src="portal/images/문서연결_엑셀VBA/설명_클래스1.png" alt="이미지없음">
-      </div>
-    </div>
-  </div>
-  <div title="관심">
-    <div id="ai" class="대체2줄">
-      <h6 class="대체2줄세로1h6"></h6>
-      <div>
-        <pre class="fw-bold">
-AI 플랫폼은 머신러닝 모델을 개발하고 학습, 실행하기 위한 통합 기술 모음으로, 데이터 분석, 예측, 자동화 기능 등을 제공합니다. 
-이러한 플랫폼을 통해 기업이나 개발자는 AI 기술을 활용한 제품 및 서비스를 더 쉽고 빠르게 만들 수 있으며, 
-대표적인 예로는 마이크로소프트의 Azure, IBM 왓슨, 구글의 Vertex AI 등이 있습니다. 
-국내에서는 한국지능정보사회진흥원(NIA)이 운영하는 **AI 허브**와 같이 연구자와 개발자에게 AI 인프라를 제공하는 플랫폼도 있습니다. 
-
-AI 플랫폼의 주요 기능 및 종류
-머신러닝 및 AI 모델 개발: 지식 근로자가 AI 플랫폼 도구를 사용해 데이터를 더 빠르고 정확하게 분석하고 예측 모델을 만들 수 있습니다.
-MLOps(머신러닝 운영): 모델의 개발부터 배포, 운영까지 전 과정을 관리하는 기술이 통합되어 있습니다.
-다양한 서비스: 자연어 처리, 이미지 인식 등 특정 AI 기술을 활용한 제품이나 서비스를 개발하는 데 필요한 도구를 제공합니다.
-기업용 플랫폼: 기업 맞춤 AI 지식 관리, 에이전트, 차트 분석 등 폐쇄된 보안 환경에서 다양한 기능을 제공하는 기업용 플랫폼이 등장하고 있습니다.
-산업용 플랫폼: 산업 현장의 데이터를 수집하고 AI로 분석하여 이상 감지, 고장 예측 등을 수행하는 데 활용됩니다.
-엣지 AI 플랫폼: 사물 인터넷(IoT) 장치나 엣지 디바이스에서 AI를 실행하기 위한 플랫폼으로, Armv9과 같은 엣지 AI 플랫폼이 대표적입니다. 
-국내 AI 플랫폼 사례
-AI 허브: 과학기술정보통신부와 한국지능정보사회진흥원이 운영하며, AI 데이터, API, 컴퓨팅 자원 등을 제공하여 
-국민 누구나 활용할 수 있도록 지원합니다.
-카카오 AI 에이전트 플랫폼: 카카오는 행정안전부와 협력하여 카카오톡 내 'AI 국민비서' 같은 공공 서비스 혁신을 위한 플랫폼을 선보일 계획입니다.
-다글로: AI를 활용해 음성 및 텍스트를 자동으로 수집, 변환해주는 서비스로, PC와 모바일 환경 모두 지원합니다.
-에이아이플랫폼: 블록체인·빅데이터 기반의 인공지능 응용 소프트웨어를 개발하는 기업입니다. 
-
-언제든 최고의 Gemini
-
-Google Gemini
-https://www.gemini.google
-Google AI 최대한 활용하기 — Google AI를 최대한 활용해 소프트웨어 개발, 콘텐츠 제작, 조사에 혁신을 이루어보세요. 
-2.5 Pro와 Deep Research에 최고 수준으로 액세스하고 Veo 3.1로 동영상을 생성해 보세요.
-최상급 2.5 Pro 액세스 · 가장 강력한 AI 모델 사용하기 · Gemini for Business | Google
-        </pre>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-  </div>
   <div title="모음">
     <div id="설명_캔버스_개별카테고리_h6의title과id순서">
       <div class="대체2줄">
@@ -3440,6 +3386,44 @@ Google AI 최대한 활용하기 — Google AI를 최대한 활용해 소프트�
 
         </div>
 
+      </div>
+    </div>
+    <div id="셑팅정보" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="blueviolet fw-bold">대체3줄 html</h6>
+        <pre class="fw-bold">
+    &#60;div id="" class="대체3줄">
+      &#60;h6 class="대체3줄세로1h6">&#60;/h6>&#60;h6 class="대체3줄세로2h6">&#60;/h6>
+      &#60;div>
+        &#60;pre class="fw-bold">
+
+        &#60;/pre>
+      &#60;/div>
+      &#60;div>
+        &#60;pre class="fw-bold">
+          
+        &#60;/pre>
+      &#60;/div>
+      &#60;div>
+        &#60;pre class="fw-bold">
+          
+        &#60;/pre>
+      &#60;/div>
+    &#60;/div>
+
+        </pre>
+      </div>
+      <div>
+        <h6 class="blueviolet fw-bold" onclick="스타일보기_console()">id="스타일보기" (click) : 스타일보기_console()</h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+          
+        </pre>
       </div>
     </div>
     <div id="html특수문자_click">
