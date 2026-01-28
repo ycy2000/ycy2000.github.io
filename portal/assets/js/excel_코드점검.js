@@ -7,14 +7,17 @@ function 셑팅정보() {
   전체변수h6title ='셑팅정보' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
-function 스타일보기_console() {
-  //함수위치 id="셑팅정보" 
+function 스타일보기_alert() {
+  //함수위치 id="셑팅정보" 이미 있는 id를 넣거나 새로운 id를 넣고 여기도 같은걸로
   let id='html특수문자_click'; //필요할때 요소에 임시 아이디 지정하여 연습에 함수 걸어서 보기
   let 요소=document.querySelector('#'+id);
   let 요소style=window.getComputedStyle(요소);
+  //요소.style.top='11px' //세미콜론 넣으면 안됨
+  console.log('id : ', 요소.id);
   console.log('tagName : ', 요소.tagName);
   console.log('classList : ', 요소.classList);
-  console.log('화면에 없는 요소이면?');
+  console.log('화면에 없어도 나옴. style.으로 접근과 다름');
+  console.log('top : ', 요소.top);
   console.log('display height width border : ', 요소style.display,요소style.height,요소style.width,요소style.border);
   console.log('padding top right bottom left : ', 요소style.paddingTop,요소style.paddingRight,요소style.paddingBottom,요소style.paddingLeft);
   console.log('margin top right bottom left : ', 요소style.marginTop,요소style.marginRight,요소style.marginBottom,요소style.marginLeft);
