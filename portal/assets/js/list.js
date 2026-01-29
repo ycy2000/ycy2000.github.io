@@ -912,13 +912,6 @@ function formatXML(xml) {
   //
   return formatted.trim();
 }
-
-//CUSTOM_KEY_CONTAINER_SEARCH, /unipass/container
-//  const res = await fetch(`https://dongil-server.onrender.com/unipass/container?cargMtNo=${cargMtNo}`);
-/**
- * 통합 호출 함수
- * @param {string} mode - 'info' (화물진행정보) 또는 'container' (컨테이너 상세)
- */
 async function call(mode = 'info') {
 //사전작업
   //1.call_try전에() : 요소기본셑팅
@@ -934,7 +927,7 @@ async function call(mode = 'info') {
   if (threeSelect === 'hblNo') hblNo = searchNo;
   if (threeSelect === 'cargMtNo') cargMtNo = searchNo.replace(/-/g, "");
 
-  // 컨테이너 모드일 때 필수값 체크
+  // 컨테이너 모드일 때 필수값 체크, 컨 두번째부터 넣을 곳 d-none 제거
   if (mode === 'container') {
     cargMtNo = document.querySelector('#cargMtNo').textContent.replace('/-/g', "").trim();
     if (!cargMtNo) { alert('화물관리번호가 필요합니다.'); return; }
@@ -955,7 +948,7 @@ async function call(mode = 'info') {
   let startTime = Date.now();
   let seconds = 0;
 
-  // 2. 서버 깨우기 인터벌
+  // 2. 서버 깨우기 인터벌, 외부에 두면 html 끌때까지 돌아간다.
   const intervalId = setInterval(() => {
     seconds += 3;
     tags.response.textContent = `render서버 깨우는 중 ${seconds}초`;
@@ -970,7 +963,7 @@ async function call(mode = 'info') {
       : `https://dongil-server.onrender.com/unipass?mblNo=${mblNo}&hblNo=${hblNo}&blYy=${year}&cargMtNo=${cargMtNo}`;
 
     const res = await fetch(url);
-    clearInterval(intervalId);
+    clearInterval(intervalId); //응답시간 카운팅 on, 깨우는 동안도 응답이 이루어진 상태임
 
     // 3. 응답 헤더 정보 표시
     tags.response.textContent = '응답 받음';
@@ -978,6 +971,8 @@ async function call(mode = 'info') {
     tags.resStatus.textContent = res.status;
     tags.type.textContent = res.type;
     tags.contentType.textContent = res.headers.get('content-type');
+
+    // 3. 응답 헤더 정보 표시
 
     xmlText = await res.text();
     tags.bodyJson.textContent = xmlText.substring(0, 38);

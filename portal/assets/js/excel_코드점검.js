@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='gle_오팔따라하기1' //원래는 h6의 title이다.
+  전체변수h6title ='연습' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 
@@ -15,25 +15,25 @@ function 복사(id) {
 }
 function 셑팅정보() {
   전체변수h6title ='셑팅정보' //원래는 h6의 title이다.
+  document.querySelector('#선택문서id').textContent=전체변수h6title;
+  document.querySelector('#선택문서제목').textContent="태그복사, 태그 패딩과 마진 정보";
   전체대체에셑팅();
   //대체3줄을 복사상태로하기
-  복사('대체3줄코드');
+  //복사('대체3줄코드');
 }
-function 스타일보기_alert() {
-  //임시로 쓸 단어 는 '다이'
+function 스타일확인_콘솔() {
+  //임시로 쓸 단어 는 스타일확인
   //함수위치 id="셑팅정보" 이미 있는 id를 넣거나 새로운 id를 넣고 여기도 같은걸로
-  let id='html특수문자_click'; //필요할때 요소에 임시 아이디 지정하여 연습에 함수 걸어서 보기
+  let id='스타일확인'; //필요할때 요소에 임시 아이디 지정하여 연습에 함수 걸어서 보기
   let 요소=document.querySelector('#'+id);
   let 요소style=window.getComputedStyle(요소);
   //요소.style.top='11px' //세미콜론 넣으면 안됨
-  console.log('id : ', 요소.id);
-  console.log('tagName : ', 요소.tagName);
-  console.log('classList : ', 요소.classList);
-  console.log('화면에 없어도 나옴. style.으로 접근과 다름');
-  console.log('top : ', 요소.top);
-  console.log('display height width border : ', 요소style.display,요소style.height,요소style.width,요소style.border);
-  console.log('padding top right bottom left : ', 요소style.paddingTop,요소style.paddingRight,요소style.paddingBottom,요소style.paddingLeft);
-  console.log('margin top right bottom left : ', 요소style.marginTop,요소style.marginRight,요소style.marginBottom,요소style.marginLeft);
+  console.log('tagName : ', 요소.tagName,', id : ', 요소.id,', classList : ', 요소.classList);
+  console.log('lineHeight : ', 요소style.lineHeight);
+  console.log('font-size : ' + 요소style.fontSize,', height : ', 요소style.height, ', width : ',요소style.width);
+  console.log('padding   top : ', 요소style.paddingTop,' bottom : ', 요소style.paddingBottom ,' left : ', 요소style.paddingLeft,' right : ', 요소style.paddingRight);
+  console.log('margin   top : ', 요소style.marginTop,' bottom : ', 요소style.marginBottom ,' left : ', 요소style.marginLeft,' right : ', 요소style.marginRight);
+  console.log('================================================');
 
 
 }

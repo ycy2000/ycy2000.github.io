@@ -63,15 +63,13 @@
           </ul>
         </div>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="java전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >JS</button>
-        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="메모전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >메모</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="google전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >google</button>
         <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
+        <button onclick="셑팅정보()">셑_팅</button> 
+        <button onclick="스타일확인_콘솔()">style</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">특정캔버스</button>
-        <button onclick="셑팅정보()">셑_팅</button> 
-        <button onclick="스타일보기_alert()">style</button> 
-        <button onclick="특정id편집()">특정id</button> 
         <button onclick="연습()">연습()</button> 
         <span class="fw-bold" onclick="document.querySelector('#전체대체').innerHTML=''">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
@@ -480,26 +478,13 @@
 
       </div>
       <div>
-        <h6 title='height'>scrollHeight, clientHeight, offsetHeight</h6>
+        <h6 title="height">scrollHeight, clientHeight, offsetHeight</h6>
         <h6><a href="https://kyung-a.tistory.com/22" target="_blank">HTML 기초 | html anti-pattern 안티 패턴, 나쁜 습관</a></h6>
         <h6><a href="https://kyung-a.tistory.com/18" target="_blank">일반 HTML 파일에 HTML include/imports 하는 방법</a></h6>
         <h6><a href="https://2boki.tistory.com/129" target="_blank">[제이쿼리] load() 메소드 사용하여 다른 html의 값 가져오기</a></h6>
         <h6><a href="https://mebadong.tistory.com/132" target="_blank">[JS] html 안에 다른 html 파일 불러오기</a></h6>
         <h6><a href="https://nameybs.tistory.com/33" target="_blank">[Javascript]Array, Object, JSON구분 정리</a></h6>
         <h6><a href="https://kingofbackend.tistory.com/187" target="_blank">[Javascript]Json과 JavaScript Object의 차이점</a></h6>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-  </div>
-  <div id="메모전체" class="d-none 캔버스">
-    <div class="개별카테고리" id="가끔필요">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-      </div>
-      <div>
 
       </div>
       <div>
@@ -3394,7 +3379,6 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
       </div>
     </div>
     <div id="셑팅정보" class="대체3줄">
-      
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
         <h6 class="blueviolet fw-bold">대체3줄 html 
@@ -3425,11 +3409,43 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
     &#60;/div>
 
         </pre>
+        <h6 class="blueviolet fw-bold">table + 테두리 + 폭 자동(폭지정은 style로)
+          <button onclick="보숨토글(this)" title="table코드" class="보숨토글버튼">▼</button>
+          <button onclick="복사('table코드')">복사하기</button>
+        </h6>
+        <pre class="fw-bold">
+  table : 값이 없어도 값이 있는것처럼 높이가 유지됨. + 한줄 전체폭을 쓴다
+  table-bordered : tr(한줄)안의, th(굵게) td(일반)에 테두리를 그어준다.
+  table class="table-bordered border-dark"
+  한줄의 tr 안에, th쓰면 bold, td쓰면 일반
+  thead, tbody 구분없어도 됨. 가장 넓은 폭은 기준으로 지정됨 </pre>
+        <pre class="fw-bold d-none" id="table코드">
+&#60;table class="table-bordered thtd패딩">
+          &#60;tr>&#60;th style="width:100px;">&#60;/th>&#60;td style="width:100px;">&#60;/td>&#60;/tr>
+          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
+          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
+          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
+        &#60;/table></pre>
       </div>
       <div>
-        <pre class="fw-bold">
-          
-        </pre>
+        <h6 class="fw-bold">기본 font-size 16px 기준</h6>
+        <h6 class="fw-bold">P, ol, ul  : padding-left : 32px, margin-bottom : 16px </h6>
+        <table class="table-bordered thtd패딩">
+          <tr><th style="width:40px;"></th>
+              <td style="width:100px;">font-size</td>
+              <td style="width:100px;">height</td>
+              <td style="width:100px;">margin-bottom</td>
+          </tr>
+          <tr><th>h1</th><td>40</td><td>48</td><td>8</td></tr>
+          <tr><th>h2</th><td>32</td><td>38.4</td><td>8</td></tr>
+          <tr><th>h3</th><td>28</td><td>33.6</td><td>8</td></tr>
+          <tr><th>h4</th><td>24</td><td>28.8</td><td>8</td></tr>
+          <tr><th>h5</th><td>20</td><td>24</td><td>8</td></tr>
+          <tr><th>h6</th><td>16</td><td>19.2</td><td>8</td></tr>
+          <tr><th>pre</th><td>14</td><td>21</td><td>16</td></tr>
+          <tr><th>code</th><th>14</th><td>21</td><td>0 lineHeight:21px</td></tr>
+          <tr><th>span</th><th>16</th><td>24(block)</td><td>0 lineHeight:24px</td></tr>
+        </table>
       </div>
       <div>
         <pre class="fw-bold">
@@ -7330,6 +7346,9 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
       <h6 style="text-indent: 10px;">패딩과 테두리가 포함되며, "box-sizing" 모델 속성 값에 따라 패딩과 테두리 값이 제외될 수 있으므로 주의해야 합니다.</h6>
       <h6 style="text-indent: 10px;">요소가 감춤 상태인 경우 offsetHeight는 0을 반환합니다.</h6>
     </div>
+
+
+        
 
     <div id="htmlJavascript_번호추출">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
@@ -13128,7 +13147,7 @@ https://opal.google/ 여기 들어가면 "Your Opal apps"라고 이미 생성한
         <h6 class="fw-bold">Generate : 에이전트, 역할을 맡은 사람, 다양한 역할이 있다.</h6>
         <h6 class="fw-bold">Output : 결과물 보여주기.</h6>
         <h6 class="blueviolet fw-bold">영상제작 해보기</h6>
-        <h6 class="blueviolet fw-bold">Request Input : 아름다운 여성의 은근히 야한 상황 calling gemini-2.5-pro</h6>
+        <h6 class="blueviolet fw-bold">Request Input : 제목을 입력한다. calling gemini-2.5-pro</h6>
         <pre class="fw-bold">
 유튜브 컨텐츠 기획안: 은근한 매력 (Subtle Allure)
 채널 컨셉: 아름다운 여성의 일상 속에서 자연스럽게 드러나는 미묘한 섹시함과 매력을 고품질 영상미로 담아내는 채널. 과도한 노출이나 직접적인 표현 대신, 분위기, 디테일, 사운드를 통해 상상력을 자극하는 것을 목표로 함.
@@ -13215,6 +13234,9 @@ https://opal.google/ 여기 들어가면 "Your Opal apps"라고 이미 생성한
 카메라: 기지개를 켜는 동작은 슬로우 모션으로 처리되어 동작의 유려함과 티셔츠 사이로 비치는 신체 라인을 강조한다. 머리카락이 어깨 뒤로 넘어가면서 드러나는 목선과 쇄골 라인에 클로즈업. 잠에서 깬 지 얼마 되지 않아 살짝 부스스한 머리카락이 그녀의 얼굴을 감싸는 디테일도 놓치지 않는다. 피사계 심도를 얕게 설정하여 배경을 부드럽게 날리고 모델에게 시선을 집중시킨다.
 사운드: Lo-fi 재즈 BGM이 잔잔하게 깔리고, 창밖의 희미한 새소리, 이불이 살짝 바스락거리는 소리, 모델의 나지막한 한숨 소리 등 ASMR 현장음이 섬세하게 녹아들어 몰입감을 높인다.
         </pre>
+        <h6 class="fw-bold">
+
+        </h6>
       </div>
       <div>
         <h6 class="fw-bold">대본추출 에이전트 calling gemini-2.5-falsh </h6>

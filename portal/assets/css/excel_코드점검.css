@@ -1,10 +1,13 @@
 @charset "UTF-8";
-
+#스타일확인, #스타일확인1 {background-color: aqua;}
 .예제클래스노랑 {background-color: yellow;}
 #예제아이디 {display:inline-block;width:150px;height:150px;border:1px solid black}
 #예제아이디 > div {display:inline-block;width:100px;height:100px;}
 
-.table-border th, .table-border td {border:1px solid black;padding:3px;}
+.wd-80 {width:80px;}
+.wd-100 {width:100px;}
+.thtd패딩 th, .thtd패딩 td {padding:1px 3px;}
+.아쿠아 {background-color: aqua;}
 
 #js카테고리생성 > button {margin-right:-2px;}
 /* .개별카테고리 > div : div가 3개이고, 세로 선긋기 2개 position: absolute;*/
