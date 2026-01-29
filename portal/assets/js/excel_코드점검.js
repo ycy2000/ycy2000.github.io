@@ -138,14 +138,16 @@ function 보숨토글(e) {
   if (요소.classList.contains('d-none')) {e.innerHTML='▼'} else {e.innerHTML='▲'}
 }
 function 캔버스_연결버튼_클릭(e) {
-  //이 함수 없어도 캔버스는 열린다. id="대표캔버스"
-  //이 함수는 대표캔버스 안의 내용을 셑팅하는 것이다.
-  //#대표캔버스 열리기전에 작동한다. 1.e.title:'캔버스'이름, 2.
+  //이 함수 없어도 캔버스는 열린다. id="정보"이건
+  //현재캔버스를 누르면 빈 캔버스로 열리는 것은 공백=e.title이기때문이다.
+  //현재캔버스를 두번째 누른다면 if(카테고리들.length==0) {return;}
+  //all로 찾으면 아이디가 없어도 length가 0이된다.
   if (document.querySelector('#현재캔버스이름').innerHTML==e.title) {console.log('reutrn;');return;}
   document.querySelector('#현재캔버스이름').innerHTML=e.title;
   document.querySelector('#js카테고리생성').innerHTML='';
-  var 카테고리들=document.querySelectorAll('#' + e.title + ' .개별카테고리'); if(카테고리들.length==0) {return;}
-  
+
+  var 카테고리들=document.querySelectorAll('#' + e.title + ' .개별카테고리'); 
+  if(카테고리들.length==0) {return;}
   Array.from(카테고리들).forEach ( (요소,index) => {
     var 버튼생성=document.createElement('button');
     버튼생성.setAttribute('onclick','카테고리배치(this)')
