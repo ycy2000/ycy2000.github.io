@@ -1,7 +1,14 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='연습' //원래는 h6의 title이다.
+  전체변수h6title ='gle_정리1' //원래는 h6의 title이다.
   전체대체에셑팅();
+}
+function 이동배치(요소의타이틀,배치요소아이디) {
+  //오팔설명때문에 만듬. 요소의타이틀은 html에서 this이고 
+  let 내부복사=document.querySelector('#'+요소의타이틀.title);
+  let 목적지=document.querySelector('#'+배치요소아이디);
+  목적지.innerHTML=내부복사.innerHTML;
+  Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
 }
 
 function 복사(id) {

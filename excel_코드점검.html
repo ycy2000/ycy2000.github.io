@@ -680,7 +680,6 @@
       <div>
         <h6 class="fw-bold" title="오팔_ProcessOn">ProcessOn : 워크플로우 그리기만 (사이트에 저장됨)</h6>
         <h6 class="fw-bold" title="플로우_워크플로우">워크플로우</h6>
-        <h6 class="fw-bold" title="gle_오팔정보수집">정보수집, 첫화면</h6>
         <h6 class="fw-bold" title="gle_오팔따라하기1">정보수집, 따라해보기1</h6>
       </div>
       <div>
@@ -13103,16 +13102,6 @@ canva
         
       </div>
     </div> 
-    <div id="gle_오팔정보수집">
-      <div>
-        <h6 class="blueviolet fw-bold">오팔은 앱을 만드는 것이다. </h6>
-        <pre class="fw-bold">
-https://opal.google/ 여기 들어가면 "Your Opal apps"라고 이미 생성한 앱이 떠있고, 
-+ Create New 새로운 앱 생성 버튼이 있다.           </pre>
-
-        <img src="portal/images/문서연결_샷컷/gle오팔_1.png" alt="이미지없음">
-      </div>
-    </div>
     <div id="gle_오팔따라하기1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13234,36 +13223,90 @@ A woman in a slightly oversized white cotton t-shirt, slowly sitting up and stre
       <h6 class="대체3줄세로1h6"></h6>
       <div>
         <h6 class="blueviolet fw-bold">스페이스바 누른채 마우스 드래그하면 화면이 움직인다. </h6>
-        <h6 class="blueviolet fw-bold">오팔은 앱을 만드는 것이다. 오팔은 구글 오토플로우 라고도 한다. 처음 화면. </h6>
+        <h6 class="blueviolet fw-bold">기본 설명. 오팔은 앱을 만드는 도구이다. </h6>
         <pre class="fw-bold">
-- 오른쪽 preview 
-   완성된 앱을 실행시키는 곳. 
-   Untitled Opal app. 
-   Your AI conversational partner, ready to chat and assist.
-   제목 없는 오팔 앱.
-   당신의 AI 대화 상대가 대화하고 도울 준비가 되어 있습니다.
+1. 오팔은 구글 오토플로우 라고도 한다. https://opal.google/ 
+   처음 사용하려고 할 때, 구글로 시작하면 구글 드라이브에 Opal 폴더가 생긴다. 
+   Opal 폴더에 작성중인 앱이나 저장되 앱이 저장된다. 
+   서로 연동되어 양쪽 어딘가에서 삭제하면 서로 삭제된다. 
 
-- 오른쪽 Console 
-   왼쪽에 선택한 것에 대한 콘솔창 
+<span class="blueviolet">2. 오팔 메인화면은 내가 만든 앱과 샘플앱이 있다.</span> </pre>
 
-- 오른쪽 Step  
-   왼쪽에 선택한 것에 대한 
+        <h6 class="blueviolet fw-bold">우측상단 Remix : 샘플 클릭했을때 뜨는데 현재꺼 내꺼로 복사저장 </h6>
+        <h6 class="blueviolet fw-bold">우측상단 Share App : 내꺼일때 뜨는데 나를 방문했을때? 이거 퍼가기 허용? </h6>
+        <h6 class="blueviolet fw-bold">우측화면 먼저 : Preview, Console, Step, Theme </h6>
+        <pre class="fw-bold">
+1. Preview : 실행초기화, 실행하기, 앱화면이 나옴 
+2. Console : 앱 만들기 3종 정보가 배치되어 있고, 실제 실행시 앱의 실행상황을 볼 수 있다. 
+                   예를들어, 앱이 검색을 사용하는 모델과 결과를 받은 텍스트 등.
+                   <span class="blueviolet"><u>사용하려고 설정된 모델을 사용할 수 없으면 동작이 중단됨</u></span>
+3. Step : 왼쪽창에서 선택한 것에 대해 자세히 보기. 여기서 수정하면 왼쪽이 수정된다. 제목과 내용 
+4. Theme : 앱의 테마 변경, Randomize(다시 하나 생성), Upload(선택한거로 바꿈)
+    Generate a theme for your Opal app below. You can either provide a description 
+    of the theme you would like, or you can generate a random theme.
+    아래에서 오팔 앱의 테마를 생성하세요. 
+    원하는 테마에 대한 설명을 제공하거나 무작위 테마를 생성할 수 있습니다.</pre>
 
-- 오른쪽 Theme 
-   Generate a theme for your Opal app below. 
-   You can either provide a description of the theme you would like, 
-   or you can generate a random theme.
-   아래에서 오팔 앱의 테마를 생성하세요. 
-   원하는 테마에 대한 설명을 제공하거나 무작위 테마를 생성할 수 있습니다.
-   Themes for your Opal app : 오른쪽에 휴지통모양있는데? 
-   Randomize : 
-   Upload : 
+        <h6 class="blueviolet fw-bold">앱 만들기, User Input, Generate, Output, 드래그하여 내리면 생긴다. </h6>
+        <pre class="fw-bold">
+※ 워크플로우(실행순서도)를 작성하는것이라고 생각하면 된다. 
+<span class="blueviolet">※ User Input, Generate, Output</span>  
+1. User Input, 여러개가 배치될 수 있다.  
+   앱이 실행되기 위한 기본 조건이다. (조건을 적거나.., 주제를 적거나...)
+   - 완성된 앱을 사용할때 텍스트를 입력하고 실행하게 된다.
+   - 여러개이면 아마도 단계실행시 User Input을 만나면 입력하라고 뜰 것 같다.
+   - <span class="blueviolet">앱 구상의 시작이다.</span>
+2. Generate 
+   - 여러 ai에이전트들의 협업(ai에이전트 : ai프로그램들, 오디오, 비디오, 이미지, 챗GPT 등)
+   <span class="blueviolet">- generate 에서 여러 다양한 명령을 처리한다. </span>
+   - 적절한 프로프트와 처리할때 사용할 프로그램을 선택한다. 
+   - 선택한 프로그램이 요금제 제한, 또는 생성제한에 걸리면 사용할 수 없다. 
+3. Output : 결과로 화면에 표시될 내용을 넣는다.</pre>
+        <h6 class="blueviolet fw-bold">완성된 앱에 대한 한줄 설명 </h6>
+        <pre class="fw-bold">
+1.User Input 으로 '동물이름'을 넣으면 사진한장 만드는 앱이라고 하면 
+2.'동물이름'을 넣고 실행하면 된다. 
+      </div>
+      <div style="position: relative;">
+        <div id="step보기" style="position: absolute;left:500px;border:1px solid black;padding:5px;"></div>
+        <h6 class="blueviolet fw-bold">만드는 과정 예시 <u>(js, 요소클릭시 setp 셑팅)</u></h6>
+        <pre class="fw-bold">
+구글 오팔 Opal 완벽가이드 (+쇼츠자동화 프로젝트) 그림코끼리 AI 2025.11.21
+https://www.youtube.com/watch?v=J2-utZUP-Ig&list=WL&index=9
+00:00 인트로
+01:30 구글 Opal은 무엇인가?
+01:40 구글 오팔 실제 프로젝트로 개념 빠르게 이해하기
+05:25 실전 프로젝트: 유튜브 쇼츠 자동화하기
+05:30 사용자 질문 입력하기
+06:50 쇼츠 대본 생성하기
+09:45 대본을 음성으로 생성하기
+10:35 대본으로 장면마다 필요한 이미지 프롬프트 만들기
+13:00 각 장면마다 이미지 프롬프트를 나누기
+15:10 장면마다 나눈 이미지 프롬프트를 통해 이미지 생성하기
+16:48 이미지를 영상으로 생성하기
+18:20 대본, 음성, 이미지, 영상 모두 합치기 </pre>
+        <div id="gle_정리1_step_01">
+          <img src="portal/images/문서연결_샷컷/gle_정리1_01.png" alt="이미지없음"><br>
+          <button title="gle_정리1_step_01" onclick="이동배치(this,'step보기')">step</button> 
+          <button class='숨김' onclick="document.querySelector('#step보기').innerHTML=''">Clear</button>
+          <div class="숨김 d-none">
+            <pre class="fw-bold">
+아래 질문에 간단히 답해주세요. 
 
-- 여러 ai에이전트들의 협업(ai에이전트 : ai프로그램들, 오디오, 비디오, 이미지, 챗GPT 등)
-        </pre>
+1.어떤 주제로 쇼츠를 만들고 싶나요? 
+예제) 아침에 오이를 먹으면 생기는 변화 
+
+2.영상의 분위기/스타일을 입력하세요. 
+예제)실사풍, 시네마틱, 일본풍 애니메이션, 미니멀 이러스트 감성 
+
+            </pre>
+          </div>
+        </div>
+
+
       </div>
       <div>
-        <img src="portal/images/문서연결_샷컷/gle오팔_2.png" alt="이미지없음">
+
       </div>
     </div>
 
