@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='gle_정리1' //원래는 h6의 title이다.
+  전체변수h6title ='동기비동기_이벤트루프' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 이동배치(요소의타이틀,배치요소아이디) {
@@ -10,7 +10,15 @@ function 이동배치(요소의타이틀,배치요소아이디) {
   목적지.innerHTML=내부복사.innerHTML;
   Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
 }
+function 연습() {
+  const 타이틀=document.querySelector('[title="개념_nodejs관련1"');
+  console.log(타이틀.textContent);
+  console.log('일반콘솔');
+  
 
+
+
+}
 function 복사(id) {
   const text = document.getElementById(id).innerText;
   
@@ -44,10 +52,7 @@ function 스타일확인_콘솔() {
 
 
 }
-function 연습() {
 
-
-}
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작
   var 아이디=전체변수h6title.trim(); 
