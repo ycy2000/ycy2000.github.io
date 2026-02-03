@@ -566,7 +566,7 @@
         <h6 class="fw-bold" title="개념_nodejs관련1">개념정리 1, 서버, 웹브라우저, URL, 프로젝트 폴더, CORS</h6>
         <h6 class="fw-bold" title="개념_nodejs관련2">개념정리 2, npm init -y, npm install, package.json</h6>
         <h6 class="fw-bold" title="개념_nodejs관련3">개념정리 3, 프로젝트 폴더 구조, npm 설치필요한것과 필요없는것</h6>
-        <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, npm install express 설치후 관련된 server.js 코드 익숙해지기</h6>
+        <h6 class="blueviolet fw-bold" title="개념_nodejs관련4">개념정리 4, app.use, app.get ..., next()</h6>
         <h6 class="blueviolet fw-bold" title="통신_구현할것">01. 구현할것, 내api서버는 코드만, 정적서버는 깃허브, 통신객체, response객체</h6>
         <h6 class="fw-bold" title="통신_DOMParser">02. DOMParser, npm uninstall 패키지, server.js 코드변경시 서버 재시작</h6>
         <h6 class="blueviolet fw-bold" title="통신_npm설치와사용">03. npm 설치와 사용, a) npm install 패키지, b) server.js 에 패키지 로드 후 사용 </h6>
@@ -3403,12 +3403,6 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
           <button onclick="보숨토글(this)" title="table코드" class="보숨토글버튼">▼</button>
           <button onclick="복사('table코드')">복사하기</button>
         </h6>
-        <pre class="fw-bold">
-  table : 값이 없어도 값이 있는것처럼 높이가 유지됨. + 한줄 전체폭을 쓴다
-  table-bordered : tr(한줄)안의, th(굵게) td(일반)에 테두리를 그어준다.
-  table class="table-bordered border-dark"
-  한줄의 tr 안에, th쓰면 bold, td쓰면 일반
-  thead, tbody 구분없어도 됨. 가장 넓은 폭은 기준으로 지정됨 </pre>
         <pre class="fw-bold d-none" id="table코드">
 &#60;table class="table-bordered thtd패딩">
           &#60;tr>&#60;th style="width:100px;">&#60;/th>&#60;td style="width:100px;">&#60;/td>&#60;/tr>
@@ -8870,20 +8864,6 @@ header .menu li:nth-child(2)
             </ol>
           </div>
         </section>
-      </div>
-      <div>
-        <h6 class="blueviolet fw-bold">프로젝트 폴더</h6>
-        <pre class="fw-bold">
-1. 임의의 위치에 서버구성을 위해 만든 폴더
-2. 폴더 자체가 서버라고 일단 이해한다. 내부에 모든 로직이 정의되어 있다.
-   a) 서버를 켜고 켜진 상태로 유지, b) 요청이 들어오면 로직대로 실행한다. 
-<span class="blueviolet">3. 브라우저의 요청 받기 - 요청을 로직대로 가공 - 목적지 서버에 요청 - 응답 받기 - 응답 처리</span>
-==== 서버 만들기, <span class="blueviolet">프로젝트 폴더 안에서 터미널에서 하는 것</span> ====
-1. Node.js설치 : 환경이 만들어짐. 버전확인(어디서나) node -v
-2. npm init : 아무것도 없을때 한번만, package.json 파일이 생긴다.(npm 설치목록 및 기본정보)
-3. Node.js설치와 함께 설치된 npm 으로 필요한 패키지 설치
-   a) (가장 먼저) npm install express : package.json
-       다음 함수 사용 가능해짐 (대표적인 것)</pre>
         <h6 class="blueviolet fw-bold">브라우저에서 서버로 통신이 이루어질때 CORS 해결이 필요하다. </h6>
         <pre class="fw-bold">
 ==== 브라우저가 서버에서 제공(http://로 시작)되고 있다는 전제 ====
@@ -8909,7 +8889,7 @@ file:// 문제와 CORS 문제의 대부분은 이미 해결된 상태입니다.
     </div>
     <div id="개념_nodejs관련2" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
+      <div>       
         <h6 class="blueviolet fw-bold">npm init -y</h6>
         <pre class="fw-bold">
 <span class="blueviolet">터미널에서 프로젝트 폴더에서 : npm init -y 실행하면</span>
@@ -9056,6 +9036,21 @@ express가 필요로 하는 다른 패키지들도 함께 다운로드
         <pre class="fw-bold"></pre>
       </div>
       <div>
+        <h6 class="blueviolet fw-bold">프로젝트 폴더</h6>
+        <pre class="fw-bold">
+1. 임의의 위치에 서버구성을 위해 만든 폴더
+2. 폴더 자체가 서버라고 일단 이해한다. 내부에 모든 로직이 정의되어 있다.
+   a) 서버를 켜고 켜진 상태로 유지, b) 요청이 들어오면 로직대로 실행한다. 
+<span class="blueviolet">3. 브라우저의 요청 받기 - 요청을 로직대로 가공 - 목적지 서버에 요청 - 응답 받기 - 응답 처리</span>
+==== 서버 만들기, <span class="blueviolet">프로젝트 폴더 안에서 터미널에서 하는 것</span> ====
+1. Node.js설치 : 환경이 만들어짐. 버전확인(어디서나) node -v
+2. npm init : 아무것도 없을때 한번만, package.json 파일이 생긴다.(npm 설치목록 및 기본정보)
+3. Node.js설치와 함께 설치된 npm 으로 필요한 패키지 설치
+   a) (가장 먼저) npm install express : package.json
+       다음 함수 사용 가능해짐 (대표적인 것)</pre>
+
+      </div>
+      <div>
         <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지2.png" alt="이미지없음"><br><br>
         <h6 class="blueviolet fw-bold">● npm 설치는 server.js 내부에서 가져올수 있는 상태이다.</h6>
         <pre class="fw-bold">
@@ -9085,8 +9080,7 @@ express가 필요로 하는 다른 패키지들도 함께 다운로드
      require('crypto');  // 암호화
      require('os');      // 운영체제 정보  </pre>
       </div>
-      <div>
-      </div>
+
     </div>
     <div id="개념_nodejs관련4" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
@@ -9212,6 +9206,96 @@ form 데이터 파싱</pre>
         심하면 "Can't set headers after they are sent" 에러 발생
     <span class="blueviolet">5.next() 는 주로 어디서 실행되는가? => 미들웨어에서 주로 실행됩니다.</span>
         </pre>
+        <h6 class="blueviolet fw-bold">🔹 next()는</h6>
+        <pre class="fw-bold">
+    1. 다음 코드를 실행하라는 뜻이다. 
+    2. 미들웨어에서 주로 사용된다.
+    3. res.send() 등으로 응답이 완료되지 않았는데 next()가 없으면
+        짧은 답부터 하면 👉 아니요, 서버가 “멈추지는” 않습니다.
+        다만 그 요청(request) 하나가 끝나지 않고 매달린 상태로 남습니다.
+        조금 풀어서 설명해볼게요.
+        Express에서 요청 하나의 흐름
+        Express 미들웨어는 기본적으로 이런 구조죠:
+
+        (req, res, next) => {  // 처리  }
+
+        요청이 정상적으로 끝나는 방법은 딱 두 가지예요.
+
+        응답을 보냄
+
+        res.send()
+        res.json()
+        res.end()
+
+        다음 미들웨어로 넘김
+
+        next()
+
+        res.send()도 없고 next()도 없으면?
+        app.use((req, res, next) => {
+          console.log('여기까진 실행됨');
+          // 아무것도 안 함
+        });
+
+        이 경우:
+        ❌ 서버 프로세스가 멈춘다 → 아님
+        ❌ 이벤트 루프가 블로킹된다 → 아님
+        ✅ 해당 요청만 끝나지 않음
+        ✅ 클라이언트는 응답을 기다리다 타임아웃
+
+        즉,
+
+        서버는 살아있는데, 그 요청만 영원히 대기 상태
+        왜 이런 일이 생기냐면
+
+        Node/Express는
+        “이 요청이 끝났는지”를 개발자가 직접 알려줘야 하는 구조
+
+        res.send() → “응답 끝났어요”
+        next() → “다음 처리로 넘겨요”
+        이 둘 다 없으면 Express는
+        “아직 처리 중이구나” 하고 계속 기다립니다.
+
+        실제로 문제가 되는 경우 😱
+
+        이게 반복되면 이런 일이 생길 수 있어요:
+        동시 요청이 쌓임
+        커넥션 점유
+        로드밸런서 / 프록시에서 타임아웃
+        결국 서버가 느려지거나 뻗은 것처럼 보임
+        그래서 “멈춘 것처럼 느껴지는” 상황이 생기는 거죠.
+
+        흔한 실수 패턴
+        1️⃣ 조건 분기에서 응답 안 보낸 경우
+        if (error) {
+          res.status(400).send('error');
+        }
+        // else에서 아무것도 안 함 ❌
+
+        2️⃣ async/await + return 빠짐
+        app.get('/', async (req, res, next) => {
+          if (!user) {
+            res.status(401).send('no user');
+            // return 안 하면 아래 코드 실행될 수도 있음
+          }
+        });
+
+        안전한 규칙 하나만 기억하면 👍
+
+        모든 미들웨어는 반드시
+
+        res.xxx() 하거나
+
+        next() 하거나
+
+        둘 중 하나로 끝나야 한다
+
+        디버깅할 때는 이런 로그도 도움 돼요:
+
+        res.on('finish', () => {
+          console.log('response finished');
+        });
+</pre>
       </div>
     </div>
     <div id="통신_구현할것" class="대체3줄">
@@ -13303,7 +13387,7 @@ A woman in a slightly oversized white cotton t-shirt, slowly sitting up and stre
         <h6 class="blueviolet fw-bold">완성된 앱에 대한 한줄 설명 </h6>
         <pre class="fw-bold">
 1.User Input 으로 '동물이름'을 넣으면 사진한장 만드는 앱이라고 하면 
-2.'동물이름'을 넣고 실행하면 된다. 
+2.'동물이름'을 넣고 실행하면 된다. </pre>
       </div>
       <div style="position: relative;">
         <div id="step보기" style="position: absolute;left:500px;border:1px solid black;padding:5px;"></div>
