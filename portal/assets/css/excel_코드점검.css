@@ -1,4 +1,13 @@
 @charset "UTF-8";
+/* 📌 포인트 min-height → 내용이 길어지면 자동으로 다음 페이지로 넘어감*/
+/* 📌 box-sizing: border-box → padding 포함해서 정확히 A4 맞춤*/
+.a4출력용 {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  box-sizing: border-box;
+  background: white;
+}
 #스타일확인, #스타일확인1 {background-color: aqua;}
 .예제클래스노랑 {background-color: yellow;}
 #예제아이디 {display:inline-block;width:150px;height:150px;border:1px solid black}
