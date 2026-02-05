@@ -8,7 +8,6 @@
   box-sizing: border-box;
   background: white;
 }
-#스타일확인, #스타일확인1 {background-color: aqua;}
 .예제클래스노랑 {background-color: yellow;}
 #예제아이디 {display:inline-block;width:150px;height:150px;border:1px solid black}
 #예제아이디 > div {display:inline-block;width:100px;height:100px;}

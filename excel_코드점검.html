@@ -65,9 +65,9 @@
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="java전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >JS</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="google전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >google</button>
+        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="코드전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >코드</button>
         <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
         <button onclick="셑팅정보()">셑_팅</button> 
-        <button onclick="스타일확인_콘솔()">style</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">현재캔버스</button>
         <button onclick="연습()">연습()</button> 
@@ -718,32 +718,22 @@
       </div>
     </div>
   </div>
-  <div id="기타전체" class="d-none 캔버스">
-    <div class="개별카테고리" id="탁구">
+  <div id="코드전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="코드1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h5 class="fw-bold canvas_div" title='탁구_메모'>탁구 메모</h6>
-        <h6 class="fw-bold" title='출처밝히는방법'>링크</h6>
-        <h6 class="fw-bold canvas_div" title='탁구_사사이'>(상대라켓과 상대스윙)보는것 40%, 자세만드는과정 40%, 스윙20%(본능적으로 된다)</h6>
-        <h6 class="fw-bold canvas_div" title='탁구_1장자탁구클럽'>[탁구레슨] (포핸드) 커트볼드라이브 라켓'각'만 바꿔 걸었을 뿐인데..#장자탁구클럽</h6>
-      </div>
-      <div>
-
-      </div>
-      <div>
+        <h6 class="fw-bold" title="코드_프린트">코드 : 프린트 </h6>
 
       </div>
     </div>
+  </div>
+  <div id="기타전체" class="d-none 캔버스">
     <div class="개별카테고리" id="샷컷"><!--div3개는 세로, 각 안에 class="canvas_div", class="canvas_div", 또는 a링크, 또는 없음.-->
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title='동영상편집_링크'>동영상편집 정보 링크</h6>
-        <h6 class="fw-bold" title='샷컷_1'>프로젝트폴더 변경,</h6>
-        <h6 class="fw-bold" title='샷컷_움짤처럼또는겹치기가능한가'>움짤처럼또는겹치기가능한가</h6>
-        <h6 class="fw-bold" title='샷컷_화면의일부분만다시편집가능한가'>화면의일부분만다시편집가능한가</h6>
+
       </div>
       <div>
-        <h6 class="fw-bold" title='샷컷_무료음원'>샷컷 무료음원 등 자료구하기, 기타 링크</h6>
         <h6 class="fw-bold" title='샷컷_사용법정리_처음화면편집레이아웃'>샷컷 처음화면 : 편집 레이아웃 용어부터 </h6>
         <h6 class="fw-bold" title='샷컷_사용법정리_타임라인1'>타임라인편집 : 재생목록(비디오,오디오,자막), 자르기, 페이드</h6>
       </div>
@@ -3184,12 +3174,12 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
     </div>
     <div id="설명_image폴더의자료사용현황">
       <h6 class="fw-bold">
-        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">보기</button>
+        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">▼</button>
           • onclick 함수 없다고 가정할때
       </h6>
       <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
       <h6 class="fw-bold">
-        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">보기</button>
+        <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">▼</button>
           • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 기타 모둔 파일 이름을 추출한다.
       </h6>
       <div id="파일리스트설명2" class="d-none 대체2줄">
@@ -10134,7 +10124,6 @@ Done in 1.12s.
         </pre>
       </div>
     </div>
-    
     <div id="통신_response객체" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -10328,7 +10317,6 @@ try {
         <div><div></div><div></div></div>
       </div>
     </div>
-    
     <div id="통신_xml문자열줄바꿈과들여쓰기" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -10435,7 +10423,6 @@ function formatXML(xml) {
         </pre>
       </div>
     </div>
-   
     <div id="통신_관세청통신코드" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
@@ -10653,7 +10640,7 @@ try {
   const pretty = formatXML(xmlText);
   
   document.querySelector('#xml보기').innerHTML =
-    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+    `&#60;pre style="font-size:14px;font-weight:bold;">${pretty.replace(/&#60;/g, "&lt;").replace(/>/g, "&gt;")}&#60;/pre>`;
     const endTime = Date.now();
   const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
   document.querySelector('#render지연').textContent = `render응답 : ${elapsedSec}초`;
@@ -10688,7 +10675,7 @@ try {
   let 컨번호들 = xml.querySelectorAll('cntrNo');
   컨번호들=Array.from(xml.querySelectorAll('cntrNo'), ele => ele.textContent);
   console.log(컨번호들);
-  if (컨번호들.length<2) {return;}
+  if (컨번호들.length&#60;2) {return;}
   //컨리스트지우고다시작성
   let parent=document.querySelector('#컨2st부터');
   parent.innerHTML='';
@@ -10696,9 +10683,9 @@ try {
   document.querySelector('#첫컨NO').textContent=컨번호들[0];
   let 한줄='';
   let 순번=1;
-  for (let i=1; i<진행단계; i++) { //두번째 컨부터 넣는다.
+  for (let i=1; i&#60;진행단계; i++) { //두번째 컨부터 넣는다.
     순번+=1;
-    한줄=`<div>컨번호<span>${순번}</span><span>${컨번호들[i]}</span></div>`
+    한줄=`&#60;div>컨번호&#60;span>${순번}&#60;/span>&#60;span>${컨번호들[i]}&#60;/span>&#60;/div>`
     parent.innerHTML+=한줄;
   }
 }
@@ -10768,7 +10755,7 @@ console.log(res.type);
   const pretty = formatXML(xmlText);
   
   document.querySelector('#xml보기').innerHTML =
-    `<pre style="font-size:14px;font-weight:bold;">${pretty.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+    `&#60;pre style="font-size:14px;font-weight:bold;">${pretty.replace(/&#60;/g, "&lt;").replace(/>/g, "&gt;")}&#60;/pre>`;
     const endTime = Date.now();
   const elapsedSec = ((endTime - startTime) / 1000).toFixed(1); // 소수점 1자리
   document.querySelector('#render지연').textContent = `render응답 : ${elapsedSec}초`;
@@ -10856,7 +10843,6 @@ console.log(res.type);
         </pre>
       </div>
     </div>
-
     <div id="통신_브라우저와내api" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -10893,8 +10879,6 @@ sdf
         </pre>
       </div>
     </div>
-
-        
     <div id="통신준비_3" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -11083,8 +11067,6 @@ GitHub에 업로드할 ZIP 파일 형태로도 만들어 드릴까요?
         </pre>
       </div>
     </div>
-    
-
     <div id="개념_nodejs폴더개수" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -11194,7 +11176,6 @@ fetch는 “브라우저에서 CORS 허용된 리소스”를 읽기 위한 도�
         
       </div>
     </div>
-    
     <div id="개념_render서버에서빌드와배포" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
@@ -11801,7 +11782,6 @@ macOS에서 삭제하기 (수동 제거)
         
       </div>
     </div>
-    
     <div id="개념_웹과브라우저와서버" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -11850,8 +11830,6 @@ DB 통신: 데이터베이스 서버와 애플리케이션 서버가 JDBC/ODBC �
         
       </div>
     </div>
-    
-
     <div id="개념_nodejs관련5" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -12141,7 +12119,6 @@ CORS 적용 안됨
 8. 7은 fetch(url).then(코드).then(코드).catch(코드)); 이렇게 붙여도 된다. </pre>
       </div>
     </div>
-
     <div id="실습_nodejs관련02" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -12337,7 +12314,6 @@ GitHub는 비공개 저장소라도
         </pre>
       </div>
     </div>
-    
     <div id="실습_01" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -12499,7 +12475,6 @@ app.listen(PORT, () => {
 
       </div>
     </div>
-
     <div id="실습_03" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13226,7 +13201,6 @@ URL, HTTP 메서드(GET, POST 등), 요청/응답 형식(JSON) 이 정해져 있
       API 로직은 ‘무엇을’   </pre>
       </div>
     </div>
-    
     <div id="연습_gpt물어보지않은것" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13301,7 +13275,6 @@ exports.handler = async (event, context) => {
         </pre>
       </div>
     </div>
-
     <div id="연습_nodejs설치및사용법" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13456,7 +13429,6 @@ node app.js
         </pre>
       </div>
     </div>
-    
     <div id="연습_express와render서버" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
@@ -13496,6 +13468,25 @@ Node.js, Express, 그리고 Render는 각각 기술 스택, 프레임워크, 호
       </div>
     </div>
 
+    <div id="파이썬_정보링크" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=8_kYF1mcFIA" target="_blank">파이썬 이렇게 공부하면 백전백패! 혼자 제대로 공부하는 순서 3가지</a> </h6>
+        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=a335Q1dWDv4" target="_blank">파이썬 GUI 프로그램 만들기 기초 수강생 사례: 영양성분 계산기 공개</a> </h6>
+        <h6 class="fw-bold"><a href="https://cafe.naver.com/clsrn555" target="_blank">네이버블로그 : 파이썬으로 블로그 자동화 마스터하는 사람들</a> </h6>
+        <h6 class="fw-bold"><a href="https://blog.naver.com/kayoko79/223445812158" target="_blank">[코드몬스터랩] 2024년 초보자를 위한 42가지 흥미로운 파이썬 프로젝트 아이디어 및 주제</a> </h6>
+
+
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div title="google전체">
     <div id="오팔_ProcessOn" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13673,8 +13664,6 @@ A woman in a slightly oversized white cotton t-shirt, slowly sitting up and stre
         </pre>
       </div>
     </div>
-
-        
     <div id="gle_정리1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <div>
@@ -13871,13 +13860,6 @@ SF 클레이메이션 고양이
         </pre>
       </div>
     </div>
-
-        
-
-        
-
-        
-        
     <div id="플로우_통신js코드">
       <div>
         <img src="portal/images/문서연결_샷컷/통신js코드_워크플로우_01.png" alt="이미지없음">
@@ -13927,264 +13909,17 @@ SF 클레이메이션 고양이
         
       </div>
     </div>
-    
-    <div id="파이썬_정보링크" class="대체3줄">
+  </div>
+  <div title="코드전체">
+    <div id="코드_프린트" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=8_kYF1mcFIA" target="_blank">파이썬 이렇게 공부하면 백전백패! 혼자 제대로 공부하는 순서 3가지</a> </h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=a335Q1dWDv4" target="_blank">파이썬 GUI 프로그램 만들기 기초 수강생 사례: 영양성분 계산기 공개</a> </h6>
-        <h6 class="fw-bold"><a href="https://cafe.naver.com/clsrn555" target="_blank">네이버블로그 : 파이썬으로 블로그 자동화 마스터하는 사람들</a> </h6>
-        <h6 class="fw-bold"><a href="https://blog.naver.com/kayoko79/223445812158" target="_blank">[코드몬스터랩] 2024년 초보자를 위한 42가지 흥미로운 파이썬 프로젝트 아이디어 및 주제</a> </h6>
-
-
-      </div>
-      <div>
-        
-      </div>
-      <div>
-        
+        <pre class="fw-bold">
+        </pre>
       </div>
     </div>
-
-    <div id="">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h5 class="fw-bold"></h5>
-        <code class="fw-bold">• </code>
-        <code class="fw-bold" style="text-indent: 15px;"></code>
-        <code class="fw-bold"></code>
-        <span style="color:blueviolet"></span>
-        <h6></h6>
-        <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-      </div>
-    </div>
-
   </div>
   <div title="기타전체">
-    <div id="탁구_메모">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold">스윙으로 탁구를 쳐라 : 공에 따라 스윙을 입력하고 출력하라. (많은 구질 경험 필요)</h6>
-        <h6 class="fw-bold">(상대라켓과 상대스윙)보는것 40%, 자세만드는과정 40%, 스윙20%(본능적으로 된다)</h6>
-        <h6 class="fw-bold"><span>오는공에 </span><span style="background-color: chartreuse;">어떤각으로, 어떤 스윙 궤적으로, 힘을 얼마나 주어야 원하는 구질과 궤적이 되는가 </span></h6>
-        <h6 class="fw-bold"><span style="background-color: chartreuse;">공이 짧으면 플릭이나 치키타 : 공에 다가가서 스윙 시작자세후 힘 결정 (짧으면 각 조정이 90%, 힘은 달래야함)</span></h6>
-        <h6 class="fw-bold"><span style="background-color: chartreuse;">빠른공은 맨공이나 드라이브인데, 빽스윙시간이 없다. 단단하게 각도를 만들고 흡수후 방향 제시 및 누르는(각조정 + 약간의 전진) 힘</span></h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">- 누른다는 것은 수평 아래가 아니다. 스윙궤적에 따른 라켓 각 유지 및 약간의 누르는 각(드라이브 카운터)</h6>
-        <h6 class="fw-bold" style="color:blueviolet">원리를 이해하자. 공이 보내지고, 회전을 생성하는 원리. 달래야 하는 공을 본능적으로 인지해야함. 무조건 이렇게 칠거야는 안됨.</h6>
-        <br>
-        <h6 class="fw-bold">원리 생각 : 맨공, 오는힘, 상회전힘, 오르는 바운드, 정점즈음, 내려오는 바운드</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">- 라켓이 수평이나 다운되는 스윙은 안됨, 라켓이 뒤로 젖혀지는 각도는 안됨</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">- 어깨높이를 향해 앞으로 뻗는방향이면 30도즘 되는듯, 뻗으면서 각이 뒤집어지는 만큼 보정하려면</h6>
-        <h6 class="fw-bold" style="text-indent: 27px;color:blueviolet">수평에서 약간 떨어진 손목각도가 약간의 와이퍼처럼 + 수평방향이 되면서 손목이 펴지도록 보정</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">- 오르는 바운드는 끝을 더 눌러주는 느낌, 내려오는 바운드는 손목을 더 내려 탁 올려주는 느낌 추가</h6>
-        <h6 class="fw-bold" style="text-indent: 27px;color:blueviolet">일단 손목 내림은 타격각도에서 내려보는 것으로 하자. 핸들링 가능할때 안으로 꺽으면 파워에 도움되는지는 나중에</h6>
-        <br>
-        <h6 class="fw-bold">원리 생각 : 커트공, <span style="color:blueviolet">★ 타점,</span> 빽스핀정도, 오르는 바운드, 정점즈음, 내려오는 바운드</h6>
-        <h6 class="fw-bold" style="text-indent: 15px;">- 짧지 않은 커트공 타점 : 어깨를 넣고 비스듬히 틀고 스핀많으면 오른쪽 어깨로 각을 더 만들고, </h6>
-        <h6 class="fw-bold" style="text-indent: 27px;color:blueviolet">힘주거나 뒤로 빼는게 아님, 힘빼서 턱 늘어진 느낌 (타점까지 가파른 각도 만들기, 스핀 많으면 각만 조정, 연습된 스윙을 할것)</h6>
-        <h6 class="fw-bold" style="text-indent: 27px;"><span style="color:blueviolet">① 팔꿈치를 펴서 접으면서 치는데, 기본 포핸드 보다 약간 뒤쪽, 안쪽이 아니다,</span> <span>타격후 기본스트로크, 보내는 각도 유지</span></h6>
-        <h6 class="fw-bold" style="text-indent: 47px;">골반회전 + 오른쪽발이 밀어주는것은 골반회전에 힘을 주는것, ★ 오른발이 왼쪽으로 몸을 밀면 안됨.★</h6>
-        <h6 class="fw-bold" style="text-indent: 47px;">타격시까지 타점 고정되도록하고, 왼발로 무게중심이 가는것은 회전후의 탄성때문이지 의도된 중심이동이 아니다.</h6>
-        <h6 class="fw-bold" style="text-indent: 47px;color:blueviolet">시작에서 타점까지 가파른 각도를 만들기 위함이다. 타점으로 팔을 접으면서 던지는 느낌</h6>
-        <h6 class="fw-bold" style="text-indent: 47px;color:blueviolet">타점을 약간만 앞으로 가져가면 될 때(약간 짧을때), 왼발을 넣어주며 자세는 유지(앞으로 너무숙여지지 않게) 되며 스윙</h6>
-
-        <h6 class="fw-bold" style="text-indent: 15px;">- 타점이 앞쪽이면 앞으로 이동해야함, 아니면 커트해야함.</h6>
-        <br>
-
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/ggdXqIEBEFk" target="_blank">빽핸드 쇼트는 이렇게 연습하세요 : 앞으로 뻗으면 평행기준 라켓이 위로가는데 올라가면서 뒤집어지는 각을 보정하는것 같다.</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/LmVvFajOAbk" target="_blank">중심 이동의 오해와 진실 (빗맞는거) / 회전시 골반중심! 엉덩이 좌표가 많이 움직이면 그만큼 정확성 떨어짐(헛방)</a></h6>
-        <h6 style="text-indent: 15px;">• </h6>
-        <h6 style="text-indent: 28px;"></h6>
-        <h6 style="text-indent: 28px;"></h6>
-
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=l3IVg9Z471s" target="_blank"><span style="background-color: chocolate;color: chartreuse">★빽 내문제 이거네★</span> 앞스윙이 길면?? 백핸드가 문제가 아니라 스텝 문제야!!![#임창국코치]</a></h6>
-
-
-
-
-
-
-
-        <br><br><br><br><br><br><br><br><br><br>
-        ① ② ③ ④ ⑤ <br>
-        <h5 class="fw-bold"></h5>
-        <span style="color:blueviolet"></span>
-      </div>
-    </div>  
-
-    <div id="출처밝히는방법"><!--리스너용해역사진관련 d-none후 전체대체로 들어간다 width:925px-->
-      <div class=" d-inline-block align-top " style="width:625px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/anjLubPrCCM" target="_blank">고수가 되려면 이 연습 하루 10분씩</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/mADx7SIdAUg" target="_blank">짧은 공방 슬로우</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/uGoajPqd65U" target="_blank">★박자 맞추고 싶다면</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=OBt4hEMYDa0&t=373s" target="_blank">홍대 유망주 눌러버리기</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=KTG6HX1Wfsw" target="_blank">장지커 훈련법: 중거리 포핸드-백핸드 전환 훈련</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=JEdPF6pwLI0" target="_blank">황세준, 라켓위치를 알아라, 5분</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=Bz3cI5x65eU&t=145s" target="_blank">애매하게 짧게 뜬 커트? 앞으로 쭉, 5분</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=A5C-MteNsmo&t=113s" target="_blank">쉬신 연속드라이브 필수영상, 포핸드 백핸드 플릭 종합세트</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=k09XYoR_LN4&t=325s" target="_blank">쉬신 VS 판젠동 대박경기</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/7eT74j54yLs" target="_blank">변서영선수의 탑스핀</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/BOsBaZek4uA" target="_blank">탑스핀 거는중입니다만</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/YNjGowxjKB0" target="_blank">공과의거리조절, 손가락에 맞는게 거리가 안맞아서다??!!</a></h6>
-      </div>
-      <div class=" d-inline-block align-top" style="width:625px;border-right:1px solid black;white-space:normal;">
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/x-vXXJI-UBM" target="_blank">현역 랭킹 4위의 3구공격 꿀팁</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/dLS4aSAy6tk" target="_blank">드라이브 요령 3가지</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/8ZVSGSD692E" target="_blank">공방 슬로우</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/t7eZQdSuI5w" target="_blank">공방 슬로우2</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/6dyn5XyNP3E" target="_blank">랠리</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/8qkt5sFq8HY" target="_blank">랠리2</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/mF6uEJLhOaI" target="_blank">"포핸드 플릭" 자연스럽게 하는 방법</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/IpQ1w1-5Rms" target="_blank">커트가 강하면 더땡큐</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/t-msbmJIzqc" target="_blank">커트볼 스크로크와 드라이브 가장 큰 타이점은?</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/IJJ7_v-zpyg" target="_blank">"상대 드라이브" 스매싱으로 반격하는 방법</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=2p1O8Kkrb1I&list=WL&index=1&t=85s" target="_blank" style="background-color: chocolate;color:yellow">국가대표 탁구선수가 진지하게 치면 핸디가 의미있을까?. _ 국가대표 박찬혁 선수와의</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=yBvBu6ZhbaE&list=WL&index=2" target="_blank">"린시둥 백핸드 드라이브 🏓 중국 탁구 기술 | 슬로모션 분석 & 실전 활용"</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=BHsVoxr5yyc" target="_blank">오준성 vs 안재현 I 남자 단식 [2023 탁구 국가대표 1차 선발전] 2023.03.31</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=J1tC1kVJGH8&list=WL&index=3" target="_blank">탁구인이면 꼭 봐야할 시합영상 류시웬, 이토미마 경기</a></h6>
-        
-      </div>
-      <div class=" d-inline-block align-top" style="width:625px;border-right:1px solid black;white-space:normal;">
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=LcMWy_LcyLM" target="_blank">초구 후퇴성 커트볼에 대한 초구 공략법 : 3년전 김나영</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=NYOSMd0Pac8" target="_blank">포핸드, 백핸드 불규칙 드라이브 : 3년전 김나영</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/pxPIkOLP7Kc" target="_blank">빠르고 긴 서브</a></h6>
-        
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=l3IVg9Z471s" target="_blank">★빽 내문제 이거네★앞스윙이 길면?? 백핸드가 문제가 아니라 스텝 문제야!!![#임창국코치]</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/FYMEisyfk6M" target="_blank">절차탁마 플릭</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/yVu8crz2uLY" target="_blank">절차탁마 안정적으로 커트량 늘리는 법</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/GYxfT2_eTLE" target="_blank">선수 영상을 참고할 때 주의해야 할 점</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/FlqartfREjw" target="_blank">강한 커트서브 알면서도 네트에 걸리는 이유</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/shorts/ELKjz_PAjEo" target="_blank">빽스윙은 일부러 빼는게 아니야 / 라켓을 엉덩이 뒤에서 던지고 싶어요</a></h6>
-        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=XzGIOpU8PS8" target="_blank">커트(push)만 잘해도 하위부수는 쉽지[조타쿠나 롱 커트 레슨]</a></h6>
-      </div>
-    </div>  
-
-    <div id="탁구_사사이">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h5 class="fw-bold">메모해놓고 해보고 결과를 수정하거나 숙달할것(250212)</h5>
-        <h6 class="fw-bold">• 중립자세에서 : 팔꿈치가 오른쪽 앞에 있어야 전환이 됨. <span style="color:blueviolet" class="fw-bold">디펜스는 단단한벽 + 지긋이 호를 그리며 눌려주는 짧은 팔로스로</span></h6>
-        <h6 class="fw-bold">(40%) 중립자세에서 상대방 라켓을 보며 타격시점 공의 방향을 본다</h6>
-        <h6 style="text-indent: 15px;">- 정말로 예상이 된다면, 코스가 100%라면 파악이 빠를수도 있지만, 타격시점 공의 방향을 인지하는것이 FM</h6>
-        <h6 style="text-indent: 15px;">- <span style="color:blueviolet" class="fw-bold">포핸드는 타점이 빽핸드보다 뒤니까 빽핸드에 치우친 중림자세가 필요함</span></h6>
-        <h6 style="text-indent: 15px;">- 빠른공에 대해서. 스윙할 시간이 적으니 짧게 하되, <span style="color:blueviolet" class="fw-bold">정확한 각과 단단한 벽</span>을 만들어야 함. 숙달이 필요하다</h6>
-        <h6 style="text-indent: 28px;">① 빠르다고 경직되면 자세가 생각보다 앞에서 형성됨. 최소한 정상 타점에 벽을 만들어야함.</h6>
-        <h6 style="text-indent: 28px;">② 정상 짧은 스윙이 가능하면 45도 올리는 스윙 + 눌러줌, 정상타점에서 블로킹이면 짧은 호를 그리며 누르는 팔로스로</h6>
-        <h6 style="text-indent: 15px;color:blueviolet" class="fw-bold">★ 몸쪽이라면 절대! 경직되지 말자. 이미 자세가 잡혀있는 상태이니까!!... 가장 많이 실수하고 자책한다.</h6>
-        <h6 style="text-indent: 15px;color:blueviolet" class="fw-bold">★ 자세가 무너지지 않는게 최선!! 무너지더라도 본능적으로 정상자세의 스윙궤도 및 앞스윙각도가 되면 굿!!</h6>
-        <h6 style="text-indent: 15px;" class="fw-bold">★ <span style="color:blueviolet" class="fw-bold">포핸드는 어깨를 틀면서</span> 필요에 따라 어깨 각도 조정, 먼공이면 움직이면서 이 자세가 되어야함</h6>
-        <h6 style="text-indent: 35px;">자세를 완성하였는데 조금 더 공이 치우쳤다면, 또는 움직였어도 공이 좀 더 치우쳤다면 좌우 이동하면서 타격</h6>
-        <h5 class="fw-bold">빽핸드</h5>
-        <h6 style="text-indent: 15px;">- 빽쪽전환 공이 느려 시간이 있을때 드라이브를 하려고 할때 </h6>
-        <h6 style="text-indent: 28px;">① 공통 : </h6>
-        <h6 style="text-indent: 28px;">①</h6>
-
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        ① ② ③ ④ ⑤ <br>
-        <h5 class="fw-bold">검색 : 탁구 쉐이크 백핸드 기본자세, 자세 사진 구하는 중</h5>
-        <span style="color:blueviolet"></span>
-      </div>
-    </div>  
-
-    <div id="탁구_1장자탁구클럽">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold">• <a href="https://www.youtube.com/watch?v=SSslkJF7h_k&t=723s" target="_blank">[탁구레슨] 커트볼드라이브 라켓'각'만 바꿔 걸었을 뿐인데..#장자탁구클럽, 티티보스</a></h6>
-        <h6 class="fw-bold" style="color:blueviolet">[레슨] 라켓 각만 바꿔 컷트를 걸어봅시다</h6>
-        <h6 class="fw-bold">• 어깨를 너무 내리면</h6>
-        <h6 style="text-indent: 15px;">- 내린만큼 올라오는 시간, 밀리는 경우가 많고, 스윙이 허공으로 향할수 있다. 올라오면서 타점 흔들림. <span style="color:blueviolet;font-weight: bold;">손해만 막심</span></h6>
-        <h6 class="fw-bold">• 커트볼 포핸드 구분동작 참고 (일반 리턴공은 팔꿈치를 붙이는 동작이 생략된다고 생각하자) </h6>
-        <h6 style="text-indent: 15px;">① 팔꿈치를 (과하지 않게 중요 : 다음 동작때문) 붙이고 몸 뒤쪽으로 약간 뺀다 (스윙 시작 탄성)</h6>
-        <h6 style="text-indent: 15px;">② 한번에 이루어진다. 다리를 튕기고 골반을 튕기면서 시작하는데, 타격지점에서 공 높이에 따라 다리를 서든지 맞춘다. </h6>
-        <h6 style="text-indent: 35px;">추가로 팔을 뒤로빼는 스윙이 되어서는 안된다.(팔꿈치를 붙인 의미가 없어진다)</h6>
-        <h6 style="text-indent: 15px;">③ 시작과 동시에 기본동작의 팔꿈치 위치(주먹하나 여유, 편한자세, 경직되면 붙어서 스윙하니 주의)가 되는데 </h6>
-        <h6 style="text-indent: 35px;">동시 동작으로 팔꿈치 90도를 넘어서 펴진것을 접으면서 공을 채준다. 올리는 동작은 여기까지라고 보자.</h6>
-        <h6 style="text-indent: 35px;"><span style="color:blueviolet;font-weight: bold;">★ 타점 정확히(가장중요), 평행한 위치, 안맞으면 각이 안맞음. ★침착하게</span> </h6>
-        <h6 style="text-indent: 35px;"><span style="color:blueviolet;font-weight: bold;">컷트볼은 잔발후 세부조정 잔발이 필요, 조정 후 인데 짧으면 ★ 전진잔발로 타점 맞추기, 좌우잔발도 마찬가지</span> </h6>
-        <h6 style="text-indent: 35px;"><span style="color:blueviolet;font-weight: bold;">몸통과 골반회전이 너무 앞서지 않도록 주의!! 팔이 끌려나오면 안됨. 팔이 단단한 축이되어 채는것이 가장 중요</span> </h6>
-        <h6 style="text-indent: 35px;"><span style="color:blueviolet;font-weight: bold;">팔꿈치가 앞으로 나가면서 기본자세유지 중요.(공 방향 및 전진 힘 결정)</span> </h6>
-        <h6 style="text-indent: 35px;">짧게 당기거나 더 길게 뻗으면서 안으로 마무리하거나 더 들어올리는 동작 등은 포물선 조정(숙달시)</h6>
-        <h6 class="fw-bold">• 상대방이 컷트할때 임팩트를 많이 주는지 안주는지 봐야 (안주고 뜬공, 주고 뜬공)</h6>
-        <img src="portal/images/문서연결_샷컷/탁구_1장자탁구클럽_자세1.png" alt="이미지없음">
-        <br><br>
-        <h6 class="fw-bold">[대화] 정상공이 아닐때 중, 회전을 줄일거야...</h6>
-        <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 만약에 내가 회전을 줄일거야, 그럼 이 똑같은 스윙으론 공이 안 들어가겠지.</h6>
-        <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">뭐를 변화를 줄거야? 백스윙을 덜내릴거야~ 아니면 각을 숙일거야? 뭘 할거야? 선택이잖아.</h6>
-        <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 각을 숙일거야? 오케이</h6>
-        <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 이거는 각을 숙이는 느낌보다는 아까보다 공을 더 살살 친 느낌 아니야?</h6>
-        <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">각을 숙였으면(숙였어도) 똑같이 힘있게 끌어 올려도 되잖아.</h6>
-        <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">(레슨 중 조금후) 스윙을 너무 끊는다.</h6>
-        <h6 style="text-indent: 15px;font-weight: bold;">(둘~ 이런느낌으로 보내라는 뜻)</h6>
-        <img style="vertical-align: top;" src="portal/images/문서연결_샷컷/탁구_1장자탁구클럽_둘이런느낌.png" alt="이미지없음">
-        <div style="display:inline-block;vertical-align: top;width:400px;height:280px;">
-          <h6 style="text-indent: 15px;font-weight: bold;">학생 : 이것도 끌고가는 느낌이 있어야 되?</h6>
-          <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 그렇지. 지금처럼 회전을 주면서 가는거지.</h6>
-          <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 내려놓고, 투욱~</h6>
-          <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 봐봐, 회전이 없는 공이 낮게 갈 때도 있고</h6>
-          <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">회전이 없는 공이 높게 올 때도 있잖아</h6>
-          <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">여기에 따라서 변화를 주는 거잖아</h6>
-          <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : 떳다고 무조건 때리는 것이 아니라</h6>
-          <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">뜬공도 드라이브를 걸 수 있어야 되잖아.</h6>
-          <h6 style="text-indent: 60px;color:black;font-weight: bold;">그치? 그때 하는게. 아까처럼</h6>
-        </div>
-        <div style="display:table;border-collapse: collapse;width:99%;table-layout: fixed;margin-bottom:7px;">
-          <div style="display:table-cell;border:1px solid black;width:50%;">
-            <div>타점을 이렇게 공의 뒤쪽으로 잡느냐(낮은공)</div>
-            <img style="vertical-align: top;" src="portal/images/문서연결_샷컷/탁구_1장자탁구클럽_공의뒤쪽.png" alt="이미지없음">
-          </div>
-          <div style="display:table-cell;border:1px solid black;width:50%;">
-            <div>공의 위쪽으로 잡느냐의 차이잖아(높은공)</div>
-            <img style="vertical-align: top;" src="portal/images/문서연결_샷컷/탁구_1장자탁구클럽_공의위쪽.png" alt="이미지없음">
-          </div>
-
-        </div>
-        <h6 style="text-indent: 15px;color:red;font-weight: bold;">관장 : 빽스윙은 동일하다는 생각 하에서, 공에 어디를 맞추느냐에 따라서 다른거잖아 이거는</h6>
-        <h6 style="text-indent: 60px;color:red;font-weight: bold;">근데 만약에 백스윙도 바뀌고 각도 바뀌어버리면? 안되겠지? 두개가 변하는 거니까 스윙이.</h6>
-        <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : (회전 적은) 낮은공이야. 백스윙은 동일하게 내려놓은 다음에 공의 위쪽으로<i>(45도 같다)</i>, 그렇지 그런식으로.</h6>
-        <h6 style="text-indent: 60px;color:blueviolet;font-weight: bold;">그렇게 해야 임팩트가 들어가면서 낮은 공도 회전을 주면서 거는거잖아.</h6>
-        <img style="vertical-align: top;" src="portal/images/문서연결_샷컷/탁구_1장자탁구클럽_학생공의위쪽.png" alt="이미지없음">
-
-
-        <h6 style="text-indent: 15px;font-weight: bold;"><span style="background-color: chocolate;"> 스윙자세 잡았는데 짧을때 타점 맞추기 : 앞으로 움직이면서 스윙한다. </span></h6>
-        <div style="width:99%;border:1px solid black;">
-        </div>
-
-
-
-
-        <h6 style="text-indent: 15px;font-weight: bold;">학생 : </h6>
-
-
-
-        <h6 style="text-indent: 15px;color:blueviolet;font-weight: bold;">관장 : </h6>
-        <h6 style="text-indent: 15px;font-weight: bold;">학생 : </h6>
-
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h6 class="fw-bold">• 회전 많은공 : 공의 뒷면을 향해서 올라가야지. 팔 힘으로 안돼, 타점까지 뒤로 잡았는데 안되, 그럼 어떻게 해야돼?</h6>
-        <h6 style="text-indent: 15px;">① 다리힘을 아래쪽에서 위쪽으로 올라가면서 더 쓰던가, </h6>
-        <h6 style="text-indent: 15px;color:blueviolet;" class="fw-bold">② 아니면 공에 아래쪽[★라켓을 열어서 아래쪽이 맞는 각을 만든다]으로 들어와야지. 아래쪽을 향해서 위로 올라간다.</h6>
-        <h6 class="fw-bold">• <span style="background-color: chocolate;"> 어쩔수 없는 경우가 아니면 상체를 드는 스윙은 안좋다. 타점은 찾아가야한다. 뒤로도 앞으로도 옆으로도.</span></h6>
-        <h6 style="text-indent: 15px;">컷트볼은(시간이 있는볼) 자세잡은후 잔발로 미세조정까지 하는게 맞다.</h6>
-        <h6 class="fw-bold">• 기다리던가 들어오던가 선택이긴 한데, 어렵게 느껴지면 기다리고 할만하다 보이면 들어오면 되잖아.</h6>
-        <h6 class="fw-bold">★ 맞는 각만 바꾼다. 윗면, 뒷면, 아래면. 뒷면과 아래면은 스윙은 같다. 뒷스윙까지 해야 스윙이다.</h6>
-        <h6>=============================================================================================</h6>
-        <h5 class="fw-bold">잘 안되는 것</h5>
-        <h6 class="fw-bold">• 포핸드 컷트볼시, 주저 앉아서 자세가 탄탄하지 않다. ★ 자세 자체를 갖출수가 없다. <span style="background-color: chocolate;">다리자세에 힘을 줘보자.</span></h6>
-        <h6 style="text-indent: 15px;">① 타점을 맞추려 올라가야할때 올라가지 못한다.</h6>
-        <br><br><br><br><br><br><br><br><br>
-        ① ② ③ ④ ⑤ <br>
-        <h5 class="fw-bold"></h5>
-        <h6 class="fw-bold">• </h6>
-        <h6 style="text-indent: 15px;">-  </h6>
-        <h6 style="text-indent: 28px;"></h6>
-        <h6 style="text-indent: 35px;"></h6>
-        <span style="color:blueviolet"></span>
-      </div>
-    </div>  
-
     <div id="양식_테이블" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>
       <div>
@@ -14525,46 +14260,6 @@ SF 클레이메이션 고양이
       </div>
 
     </div>
-
-    <div id="동영상편집_링크">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <code class="fw-bold">• <a href="https://blog.naver.com/chsunspace/222526261933" target="_blank">샷컷 설치</a> </code>
-        <code class="fw-bold">• <a href="https://shotcut.org/howtos/getting-started/Shotcut%20%ED%95%9C%EA%B5%AD%EC%96%B4.pdf" target="_blank">샷컷 매뉴얼</a> </code>
-        <code class="fw-bold">• <a href="https://chulwoo81.tistory.com/849" target="_blank">프로젝트생성, 사용되는 영상 및 음원을 지우면 안됨, 위치만 기록됨</a> </code>
-        <code class="fw-bold">• <a href="https://www.youtube.com/watch?v=nYLkNC5y-3Q&t=647s" target="_blank">무료 영상편집 프로그램 샷컷(shotcut) 기초 사용법 | 초보 유튜버라면 쉽게 무료로 사용 가능한 샷컷으로 시작해 보세요!</a> </code>
-        <code class="fw-bold">• <a href="https://jejuazbang.tistory.com/8195" target="_blank">샷컷 사용법</a> </code>
-
-
-        <code class="fw-bold" style="text-indent: 15px;"></code>
-        <code class="fw-bold"></code>
-        <span style="color:blueviolet"></span>
-        <h6></h6>
-        <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <code class="fw-bold">• <a href="" target="_blank"></a> </code>
-      </div>
-    </div>
-    <div id="샷컷_1">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-    
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h6 style="text-indent: 13px;"></h6>
-        <h6></h6>
-        <span style="color:blueviolet"></span>
-        <code class="fw-bold"></code>
-        <img src="" alt="이미지없음">
-        <code class="fw-bold">• <a href="" target="_blank"></a> </code>
-      </div>
-    </div>
-
-    <div id="샷컷_무료음원">
-      <h6 class="fw-bold">• <a href="https://blog.naver.com/2132429/222537663782" target="_blank">영상 제작시 필요한 무료음원사이트 TOP3</a></h6>
-      <code class="fw-bold">• <a href="https://ajaelee.tistory.com/326" target="_blank">잔물결이 뭐야?</a> </code>
-    </div>
-
     <div id="샷컷_사용법정리_처음화면편집레이아웃">
       <img src="portal/images/문서연결_샷컷/샷컷사용법정리_처음화면_편집레이아웃_용어.png" alt="이미지없음">
       <br>

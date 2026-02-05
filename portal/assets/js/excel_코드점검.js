@@ -36,22 +36,6 @@ function 셑팅정보() {
   //대체3줄을 복사상태로하기
   //복사('대체3줄코드');
 }
-function 스타일확인_콘솔() {
-  //임시로 쓸 단어 는 스타일확인
-  //함수위치 id="셑팅정보" 이미 있는 id를 넣거나 새로운 id를 넣고 여기도 같은걸로
-  let id='스타일확인'; //필요할때 요소에 임시 아이디 지정하여 연습에 함수 걸어서 보기
-  let 요소=document.querySelector('#'+id);
-  let 요소style=window.getComputedStyle(요소);
-  //요소.style.top='11px' //세미콜론 넣으면 안됨
-  console.log('tagName : ', 요소.tagName,', id : ', 요소.id,', classList : ', 요소.classList);
-  console.log('lineHeight : ', 요소style.lineHeight);
-  console.log('font-size : ' + 요소style.fontSize,', height : ', 요소style.height, ', width : ',요소style.width);
-  console.log('padding   top : ', 요소style.paddingTop,' bottom : ', 요소style.paddingBottom ,' left : ', 요소style.paddingLeft,' right : ', 요소style.paddingRight);
-  console.log('margin   top : ', 요소style.marginTop,' bottom : ', 요소style.marginBottom ,' left : ', 요소style.marginLeft,' right : ', 요소style.marginRight);
-  console.log('================================================');
-
-
-}
 
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작
