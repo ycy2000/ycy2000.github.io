@@ -551,7 +551,6 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title="js메모_동기비동기">자바스크립트는 동기식이지만 비동기처럼 보인다.</h6>
-        <h6 class="fw-bold" title="js메모_a4">a4출력</h6>
 
       </div>
       <div>
@@ -722,7 +721,7 @@
     <div class="개별카테고리" id="코드1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="코드_프린트">코드 : 프린트 </h6>
+        <h6 class="fw-bold" title="코드_a4프린트">코드 : a4프린트 </h6>
 
       </div>
     </div>
@@ -8770,339 +8769,7 @@ header .menu li:nth-child(2)
         </pre>
       </div>
     </div>
-    <div id="js메모_a4" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <pre class="fw-bold">
-  웹에서 특정 div만 A4 용지 크기로 딱 맞게 출력하려면
-  핵심은 👉 CSS로 A4 크기 지정 + print 전용 스타일이에요.
 
-  아래 순서대로 하면 안정적으로 됩니다.
-
-  1️⃣ A4 용지 실제 크기부터 알기
-
-  A4는 210mm × 297mm 입니다.
-
-  브라우저 출력 CSS에서는 보통 mm 단위를 쓰는 게 가장 정확해요.
-
-  2️⃣ 출력할 div 크기 지정
-  <div id="a4출력용">
-    출력할 내용
-  </div>
-
-  #a4출력용 {
-    width: 210mm;
-    min-height: 297mm;
-    padding: 20mm;
-    box-sizing: border-box;
-    background: white;
-  }
-
-
-  📌 포인트
-
-  min-height → 내용이 길어지면 자동으로 다음 페이지로 넘어감
-
-  box-sizing: border-box → padding 포함해서 정확히 A4 맞춤
-
-  3️⃣ 출력 전용 CSS (@media print)
-
-  이게 제일 중요합니다 👇
-
-  @media print {
-    body {
-      margin: 0;
-    }
-
-    /* A4 용지 설정 */
-    @page {
-      size: A4;
-      margin: 0;
-    }
-
-    /* 출력할 div만 보이게 */
-    body * {
-      visibility: hidden;
-    }
-
-    #a4출력용,
-    #a4출력용 * {
-      visibility: visible;
-    }
-
-    #a4출력용 {
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-  }
-
-
-  이렇게 하면
-  ✅ 화면엔 다른 UI가 있어도
-  ✅ 출력할 때는 #a4출력용만 딱 출력
-
-  4️⃣ 출력 실행 (JS)
-  window.print();
-
-
-  보통 버튼에 이렇게 연결합니다:
-
-  <button onclick="window.print()">출력</button>
-
-  5️⃣ 여러 페이지 출력해야 할 때
-  .page {
-    page-break-after: always;
-  }
-
-  <div id="a4출력용">
-    <div class="page">1페이지 내용</div>
-    <div class="page">2페이지 내용</div>
-  </div>
-
-
-  📌 마지막 페이지엔 page-break-after 빼는 게 깔끔해요.
-
-  6️⃣ 자주 겪는 문제들
-  ❌ 출력이 잘리거나 작게 나옴
-
-  ➡ 프린터 설정에서 배율 100% / 여백 없음 / 실제 크기 선택
-
-  ❌ px로 했더니 브라우저마다 다름
-
-  ➡ mm 단위 사용이 정답
-
-  ❌ 배경색이 안 나옴
-
-  ➡ 출력 설정에서 배경 그래픽 인쇄 체크
-
-  ✔️ 실무에서 가장 안정적인 조합
-
-  width: 210mm
-
-  @page { size: A4 }
-
-  @media print로 출력 영역 제어
-
-  window.print()
-
-  원하시면
-
-  PDF로 저장용 스타일
-
-  헤더/푸터(페이지 번호)
-
-  회사 양식 / 계약서 / 리포트 템플릿
-
-  같은 것도 바로 예제 만들어줄게요.
-  지금 쓰는 목적이 문서 / 영수증 / 보고서 / 계약서 중 뭐예요?
-
-  </pre>
-      </div>
-      <div>
-        <pre class="fw-bold">
-오케이 👍
-“브라우저에서 PDF로 저장하는 A4 보고서용 스타일” 기준으로
-👉 실무에서 가장 많이 쓰는 깔끔 + 안정 조합 정리해줄게요.
-
-1️⃣ 기본 구조 (보고서 전용)
-<div id="a4출력용">
-  <header class="report-header">
-    <h1>보고서 제목</h1>
-    <p class="sub">2026.02</p>
-  </header>
-
-  <section class="content">
-    <h2>1. 개요</h2>
-    <p>보고서 내용...</p>
-  </section>
-
-  <footer class="report-footer">
-    <span class="page-number"></span>
-  </footer>
-</div>
-
-2️⃣ A4 PDF 기준 핵심 CSS
-✅ 화면 + PDF 공용 스타일
-#a4출력용 {
-  width: 210mm;
-  min-height: 297mm;
-  padding: 20mm;
-  box-sizing: border-box;
-
-  font-family: "Noto Sans KR", Arial, sans-serif;
-  font-size: 11pt;
-  line-height: 1.6;
-  color: #000;
-  background: #fff;
-}
-
-
-📌 11pt / 1.6 → 인쇄 가독성 최적
-
-3️⃣ PDF 저장 전용 print 스타일
-@media print {
-  @page {
-    size: A4;
-    margin: 0;
-  }
-
-  body {
-    margin: 0;
-  }
-
-  body * {
-    visibility: hidden;
-  }
-
-  #a4출력용,
-  #a4출력용 * {
-    visibility: visible;
-  }
-
-  #a4출력용 {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-}
-
-
-👉 PDF 저장 시 다른 UI 완전 제거
-
-4️⃣ 보고서용 헤더 / 푸터 스타일
-.report-header {
-  border-bottom: 2px solid #333;
-  margin-bottom: 10mm;
-  padding-bottom: 5mm;
-}
-
-.report-header h1 {
-  font-size: 18pt;
-  margin: 0;
-}
-
-.report-header .sub {
-  font-size: 10pt;
-  color: #666;
-}
-
-.report-footer {
-  position: fixed;
-  bottom: 10mm;
-  left: 20mm;
-  right: 20mm;
-  font-size: 9pt;
-  color: #999;
-  text-align: center;
-}
-
-5️⃣ 페이지 나누기 (보고서 핵심)
-섹션 단위 페이지 분리
-.section {
-  page-break-before: always;
-}
-
-<section class="section">
-  <h2>2. 상세 내용</h2>
-</section>
-
-표 / 이미지 잘림 방지
-table, img {
-  page-break-inside: avoid;
-}
-
-6️⃣ 페이지 번호 (PDF 저장 시)
-
-브라우저 PDF는 JS 페이지 번호가 안 먹힐 수 있어서
-CSS 카운터 방식이 가장 안정적입니다.
-
-@media print {
-  body {
-    counter-reset: page;
-  }
-
-  .page-number::after {
-    counter-increment: page;
-    content: "Page " counter(page);
-  }
-}
-
-
-📌 Chrome / Edge PDF 저장에서 정상 동작
-
-7️⃣ 출력 & PDF 저장 방법
-window.print();
-
-
-📎 PDF로 저장
-
-출력 버튼 클릭
-
-프린터 → PDF로 저장
-
-배율 → 100%
-
-여백 → 없음
-
-배경 그래픽 ✔ 체크
-
-8️⃣ 실무에서 자주 쓰는 보고서 옵션
-✔ 표 스타일
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid #ccc;
-  padding: 6px;
-}
-
-✔ 강조 박스
-.notice {
-  border-left: 4px solid #007acc;
-  background: #f5f9ff;
-  padding: 8px;
-  margin: 10px 0;
-}
-
-✔️ PDF 보고서 최종 베스트 조합
-
-단위: mm / pt
-
-A4: 210 × 297
-
-font-size: 10.5~11pt
-
-page-break-* 적극 사용
-
-프린터 설정: 100% / 여백 없음
-
-원하시면 다음도 바로 만들어줄 수 있어요 👇
-
-📊 보고서용 표/차트 레이아웃
-
-🏢 회사 로고 + 공식 보고서 템플릿
-
-📑 목차 + 자동 페이지 이동
-
-📄 표지 / 본문 / 부록 분리 구조
-
-지금 보고서가
-사내용 / 대외 제출 / 공공기관 / 제안서 중 어떤 용도예요?
-그에 맞게 더 다듬어줄게요.
-        </pre>
-
-      </div>
-      <div>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-
-
-    </div>
     <div id="개념_nodejs관련1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13911,12 +13578,272 @@ SF 클레이메이션 고양이
     </div>
   </div>
   <div title="코드전체">
-    <div id="코드_프린트" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
+    <div id="코드_a4프린트">
+      <div><button onclick="window.print()">출력</button></div>
+      <div class="a4크기 a4출력용">
         <pre class="fw-bold">
-        </pre>
+  .a4크기 {display: inline-block;vertical-align: top;border:1px solid black; width: 210mm; 
+               <span class="blueviolet">min-height: 297mm;</span> padding: 15mm; box-sizing: border-box; background: white;}
+    📌 포인트
+  min-height → 내용이 길어지면 자동으로 다음 페이지로 넘어감
+  box-sizing: border-box → padding 포함해서 정확히 A4 맞춤
+
+  웹에서 특정 div만 A4 용지 크기로 딱 맞게 출력하려면 핵심은 
+  👉 CSS로 A4 크기 지정 + print 전용 스타일이에요.
+
+  3️⃣ 출력 전용 CSS (@media print) 이게 제일 중요합니다 👇
+
+  @media print {
+    body {margin: 0;}
+    /* A4 용지 설정 */
+    @page {size: A4; margin: 0;}
+    /* 출력할 div만 보이게 */
+    body * {visibility: hidden;}
+    .a4출력용, .a4출력용 * {visibility: visible;}
+    .a4출력용 {position: absolute; left: 0; top: 0;}
+  }
+
+  이렇게 하면
+  ✅ 화면엔 다른 UI가 있어도 ✅ 출력할 때는 #a4출력용만 딱 출력
+
+  4️⃣ 출력 실행 (JS)  window.print();  보통 버튼에 이렇게 연결합니다:
+
+  &#60;button onclick="window.print()">출력&#60;/button>
+
+
+
+
+  5️⃣ 여러 페이지 출력해야 할 때
+  .page {
+    page-break-after: always;
+  }
+  <div id="a4출력용">
+    <div class="page">1페이지 내용</div>
+    <div class="page">2페이지 내용</div>
+  </div>
+  </pre>
       </div>
+      <div style="display: inline-block;vertical-align: top;height:297mm;border:1px solid black;">a4</div>
+      
+      <div class="a4크기">
+        <pre class="fw-bold">
+
+  📌 마지막 페이지엔 page-break-after 빼는 게 깔끔해요.
+
+  6️⃣ 자주 겪는 문제들
+  ❌ 출력이 잘리거나 작게 나옴
+
+  ➡ 프린터 설정에서 배율 100% / 여백 없음 / 실제 크기 선택
+
+  ❌ px로 했더니 브라우저마다 다름
+
+  ➡ mm 단위 사용이 정답
+
+  ❌ 배경색이 안 나옴
+
+  ➡ 출력 설정에서 배경 그래픽 인쇄 체크
+
+  ✔️ 실무에서 가장 안정적인 조합
+
+  width: 210mm
+
+  @page { size: A4 }
+
+  @media print로 출력 영역 제어
+
+  window.print()
+
+  원하시면
+
+  PDF로 저장용 스타일
+
+  헤더/푸터(페이지 번호)
+
+  회사 양식 / 계약서 / 리포트 템플릿
+
+  같은 것도 바로 예제 만들어줄게요.
+  지금 쓰는 목적이 문서 / 영수증 / 보고서 / 계약서 중 뭐예요?
+
+오케이 👍
+“브라우저에서 PDF로 저장하는 A4 보고서용 스타일” 기준으로
+👉 실무에서 가장 많이 쓰는 깔끔 + 안정 조합 정리해줄게요.
+
+
+
+2️⃣ A4 PDF 기준 핵심 CSS
+✅ 화면 + PDF 공용 스타일
+#a4출력용 {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  box-sizing: border-box;
+
+  font-family: "Noto Sans KR", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #000;
+  background: #fff;
+}
+
+
+📌 11pt / 1.6 → 인쇄 가독성 최적
+
+3️⃣ PDF 저장 전용 print 스타일
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #a4출력용,
+  #a4출력용 * {
+    visibility: visible;
+  }
+
+  #a4출력용 {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+
+👉 PDF 저장 시 다른 UI 완전 제거
+
+4️⃣ 보고서용 헤더 / 푸터 스타일
+.report-header {
+  border-bottom: 2px solid #333;
+  margin-bottom: 10mm;
+  padding-bottom: 5mm;
+}
+
+.report-header h1 {
+  font-size: 18pt;
+  margin: 0;
+}
+
+.report-header .sub {
+  font-size: 10pt;
+  color: #666;
+}
+
+.report-footer {
+  position: fixed;
+  bottom: 10mm;
+  left: 20mm;
+  right: 20mm;
+  font-size: 9pt;
+  color: #999;
+  text-align: center;
+}
+
+5️⃣ 페이지 나누기 (보고서 핵심)
+섹션 단위 페이지 분리
+.section {
+  page-break-before: always;
+}
+
+<section class="section">
+  <h2>2. 상세 내용</h2>
+</section>
+
+표 / 이미지 잘림 방지
+table, img {
+  page-break-inside: avoid;
+}
+
+6️⃣ 페이지 번호 (PDF 저장 시)
+
+브라우저 PDF는 JS 페이지 번호가 안 먹힐 수 있어서
+CSS 카운터 방식이 가장 안정적입니다.
+
+@media print {
+  body {
+    counter-reset: page;
+  }
+
+  .page-number::after {
+    counter-increment: page;
+    content: "Page " counter(page);
+  }
+}
+
+
+📌 Chrome / Edge PDF 저장에서 정상 동작
+
+7️⃣ 출력 & PDF 저장 방법
+window.print();
+
+
+📎 PDF로 저장
+
+출력 버튼 클릭
+
+프린터 → PDF로 저장
+
+배율 → 100%
+
+여백 → 없음
+
+배경 그래픽 ✔ 체크
+
+8️⃣ 실무에서 자주 쓰는 보고서 옵션
+✔ 표 스타일
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+
+✔ 강조 박스
+.notice {
+  border-left: 4px solid #007acc;
+  background: #f5f9ff;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+✔️ PDF 보고서 최종 베스트 조합
+
+단위: mm / pt
+
+A4: 210 × 297
+
+font-size: 10.5~11pt
+
+page-break-* 적극 사용
+
+프린터 설정: 100% / 여백 없음
+
+원하시면 다음도 바로 만들어줄 수 있어요 👇
+
+📊 보고서용 표/차트 레이아웃
+
+🏢 회사 로고 + 공식 보고서 템플릿
+
+📑 목차 + 자동 페이지 이동
+
+📄 표지 / 본문 / 부록 분리 구조
+
+지금 보고서가
+사내용 / 대외 제출 / 공공기관 / 제안서 중 어떤 용도예요?
+그에 맞게 더 다듬어줄게요.
+        </pre>
+
+      </div>
+
     </div>
   </div>
   <div title="기타전체">

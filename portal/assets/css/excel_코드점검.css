@@ -1,13 +1,26 @@
 @charset "UTF-8";
 /* 📌 포인트 min-height → 내용이 길어지면 자동으로 다음 페이지로 넘어감*/
 /* 📌 box-sizing: border-box → padding 포함해서 정확히 A4 맞춤*/
-.a4출력용 {
+.a4크기 {
+  display: inline-block;
+  vertical-align: top;
+  border:1px solid black;
   width: 210mm;
   min-height: 297mm;
-  padding: 20mm;
+  padding: 15mm;
   box-sizing: border-box;
   background: white;
 }
+@media print {
+  body {margin: 0;}
+  /* A4 용지 설정 */
+  @page {size: A4; margin: 0;}
+  /* 출력할 div만 보이게 */
+  body * {visibility: hidden;}
+  .a4출력용, .a4출력용 * {visibility: visible;}
+  .a4출력용 {position: absolute; left: 0; top: 0;}
+}
+
 .예제클래스노랑 {background-color: yellow;}
 #예제아이디 {display:inline-block;width:150px;height:150px;border:1px solid black}
 #예제아이디 > div {display:inline-block;width:100px;height:100px;}
