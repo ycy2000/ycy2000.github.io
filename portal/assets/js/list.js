@@ -850,10 +850,9 @@ function blYy오늘() {
 }
 function 비엘변경() {
   let ele = document.querySelector('#비엘변경');
-  let blspan = document.querySelector('#blspan');
-  if (ele.textContent=='mblNo') {ele.textContent='hblNo';blspan.textContent='hblNo'} 
-  else if (ele.textContent=='hblNo') {ele.textContent='cargMtNo';blspan.textContent='cargMtNo'} 
-  else if (ele.textContent=='cargMtNo') {ele.textContent='mblNo';blspan.textContent='mblNo'} 
+  if (ele.textContent=='mblNo') {ele.textContent='hblNo';} 
+  else if (ele.textContent=='hblNo') {ele.textContent='cargMtNo';} 
+  else if (ele.textContent=='cargMtNo') {ele.textContent='mblNo';} 
 }
 function call_try전에() {
   //d-none 삭제 : #닫기, 내부정보 지우기 : .resInfo, .xmlInfo
@@ -918,7 +917,7 @@ async function call(mode = 'info') {
   if (mode === 'info') {call_try전에();};
   //2.fetch준비 및 정상 fetch후 사용할 변수 정의
   //  - threeSelect : hBL,oBL,화물관리번호 중 어떤값이 입력되어 있는지 확인
-  const threeSelect = document.querySelector('#blspan').textContent;
+  const threeSelect = document.querySelector('#비엘변경').textContent;
   const searchNo = document.querySelector('#blno').textContent.trim();
   const year = document.getElementById("year").textContent.trim();
   
@@ -1101,13 +1100,9 @@ function png셑팅click(e) {
       document.querySelector('.apiBL')?.classList.remove('apiBL');
       document.querySelector('#PNG셑팅 #클릭복사본').innerHTML=복사텍스트.replace(/,/gmi,'<br>');
       document.querySelector('#blno').textContent=e.target.parentNode.children[2].textContent;
-      document.querySelector('#비엘변경').textContent='mblNo';
-      document.querySelector('#blspan').textContent='mblNo';
       //api정보 
       e.target.classList.add('apiBL');
     }
-
-
   }
 }
 function 클릭파일d_none() {

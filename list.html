@@ -77,7 +77,7 @@
         <!--  id="cargMtNo" 에서는 class="xmlInfo" 없이 ==> 지워지면 안된다-->
         <div id="화물관리번호" class="독립css"><span class="XML항목">cargMtNo</span><span id="cargMtNo" class="xmlInfo"></span><span title="1개 초과시 여러 HOUSE BL 또는 BL분할">개수</span><span id="화물관리개수"></span></div>
         <div>
-          <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color: aqua;">닫기</span>
+          <span onclick="document.querySelector('#닫기').classList.add('d-none')" style="background-color:greenyellow;">닫기</span>
           <span style="width:171px;" id="render지연" class="resInfo"></span>
           <span onclick="document.querySelector('#xml보기').classList.toggle('d-none')" style="background-color: aqua;width:120px;text-align: center;">xml보기/숨기기</span>
         </div>
@@ -160,47 +160,50 @@
 </div>
 <!-- ★★★★★★ 따로 빼 놔야한다. 복붙하면 첫칸 비어도 되는데, 여기서는 첫칸비우면 당겨진다. -->
 <!-- ★ 엑셀범위를 브라우저 textarea에 붙여넣으면 첫셀 비어도 제대로 되는데... HTML에 붙여놓은 자료는 처음셀이 비어있으면 당겨짐 -->
-<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	02/06 금 16:22	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
-1	○	MAEU261759447	동원산업	MNBU0430216	고등어	1,200 	PNC	2/6	1				PNC	면허?, CY : 부산신항만(주)자유무역지역, 컨진행 : 하선신고 수리완료, 선사 : 한국머스크(주)	MAEU261759447	NORDLEOPARD	26MAEU0080I-1002-	2,400 	49,980.00 	2026.02.06	02/06 금 16:22	
-1	○	HLCUSCL251233747	씨케이글로벌	TCLU1188816	연어	1,824 	PNIT	2/6	1				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 입항적재화물목록 제출, 선사 : 하파그로이드코리아(주)	HLCUSCL251233747	BUENOS AIRES EXPRESS	26HLCU9207I-6012-	1,824 	22,041.30 	2026.02.06	조회정보	
-1		KMTCSUB2467050	씨케이글로벌	SEGU9645150	새우	1,800 	DGT	2/6	1				DGT	면허?, CY : 신감만 한국허치슨(주) 컨테이너 보세창고, 컨진행 : 입항적재화물목록 운항정보 정정, 선사 : 고려해운(주)	KMTCSUB2467050	KMTC HOCHIMINH	26KMTC0509I-0222-	1,800 	21,600.00 	2026.02.06	적재	57 
-1		KMTCSUB2467068	씨케이글로벌	BMOU9240920	새우	1,800 	DGT	2/6	1				DGT	면허?, CY : 신감만 한국허치슨(주) 컨테이너 보세창고, 컨진행 : 입항적재화물목록 운항정보 정정, 선사 : 고려해운(주)	KMTCSUB2467068	KMTC HOCHIMINH	26KMTC0509I-0215-	1,800 	20,784.00 	2026.02.06	4,617 	3줄
-1	○	EASEO2605YB040	천부수산	TEMU9553810	가리비살	2,250 	BPT감만	2/6	1				BPT감만	면허?, CY : 신선대감만터미널(주) 감만CY, 컨진행 : 입항적재화물목록 심사완료, 선사 : 이에이에스쉽핑코리아(주), 포딩 : 주식회사 창생	EASEO2605YB040	EASLINE OSAKA	26EASKS008I-7822-0001	2,250 	24,990.00 	2026.02.06	6,156 	4줄
-1		PROHCM26010058	우원홀딩스	HDMU5227410	새우	920 		2/9	1	????		20 									7,695 	5줄
-1	○	MEDUHI536788	수월한	TEMU9094583	닭다리살	1,939 	천일정기화물.PNIT	2/3	2	2/6	11:25		천일정기화물.PNIT	천일정기화물자동차(주), CY : 부산신항국제터미널(주), 컨진행 : 보세운송 신고 수리, 선사 : 엠에스씨코리아(주)	MEDUHI536788	MSC QUITTERIE	26MSCU4045I-0037-	1,939 	24,344.72 	2026.02.03	9,234 	6줄
-1	○	MEDUHI539527	오케이푸드	TGHU9919053	닭다리살	1,958 	SS신항.PNIT	2/3	2	2/5	15:52		SS신항.PNIT	(주)에스에스물류, CY : 부산신항국제터미널(주), 컨진행 : 반출완료, 선사 : 엠에스씨코리아(주)	MEDUHI539527	MSC QUITTERIE	26MSCU4045I-0038-	1,958 	24,486.76 	2026.02.03		
-1	○	HLCUPN4251160326	디케이통상	HLBU9781378	닭발	1,567 	PNIT	2/6	2				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 입항적재화물목록 제출, 선사 : 하파그로이드코리아(주)	HLCUPN4251160326	BUENOS AIRES EXPRESS	26HLCU9207I-6113-	1,567 	24,304.17 	2026.02.06	출고/입고 4주간	
-1	○	HLCUPN4251167168	디케이통상	HLBU6173501	닭발	1,567 	PNIT	2/6	2				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 입항적재화물목록 제출, 선사 : 하파그로이드코리아(주)	HLCUPN4251167168	BUENOS AIRES EXPRESS	26HLCU9207I-6115-	1,567 	24,304.17 	2026.02.06	1일 7/5	5일줄
-3		EGLV360500183035	수월한	EMCU5375537	닭다리살	1,917 	DGT	1/29	2				DGT	면허?, CY : 동원글로벌터미널부산(주), 컨진행 : 반입완료, 선사 : (주)에버그린코리아	EGLV360500183035	EVER VERT	26EVER6797I-0449-	1,917 	23,962.50 	2026.01.29	15,376 	50
-3		HDMUSAOA24988100	수월한	BMOU9405357	닭다리살	1,917 	DGT	1/29	2				DGT	면허?, CY : 동원글로벌터미널부산(주), 컨진행 : 반입완료, 선사 : 오션네트워크익스프레스코리아(주)	HDMUSAOA24988100	MOL EXPERIENCE	26ONEY0117I-7019-	1,917 	23,962.50 	2026.01.29	11,732 	38.1
-3		HDMUSAOA48890200	수월한	TLLU1090181	닭다리살	1,917 	HPNT	1/29	2				HPNT	면허?, CY : 에이치엠엠피에스에이신항만(주), 컨진행 : 반입완료, 선사 : 에이치엠엠(주)	HDMUSAOA48890200	SEASPAN BEAUTY	26HDMUA012I-0626-	1,917 	23,962.50 	2026.01.29	내국제외	
-		HLCUSCL251271641	GK트레이딩	HLBU6305017	오징어	1,200 	PNIT	2/6	1				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 입항적재화물목록 제출, 선사 : 엠에스씨코리아(주)	HLCUSCL251271641	MSC NOA ARIELA	26MSCU6032I-6007-	1,200 	24,900.00 	2026.02.06	구분	대수
-		MAEU261759447	동원산업	MNBU4508821	고등어	1,200 	PNC	2/6	1				PNC	면허?, CY : 부산신항만(주)자유무역지역, 컨진행 : 하선신고 수리완료, 선사 : 한국머스크(주)	MAEU261759447	NORDLEOPARD	26MAEU0080I-1002-	2,400 	49,980.00 	2026.02.06	수산	23
-		MAEUJBS297692	수월한	SUDU9012830	닭다리살	1,929 	PNC	2/7	2				PNC			GRASMERE MAERSK					축산	30
-		MAEUJBS296787	이마트	MNBU4155447	닭다리살	1,939 	PNC	2/7	2				PNC			GRASMERE MAERSK					합계	53
-		SSZ1700526D	대상 주식회사	TRIU8966185	닭다리살	1,980 	BNCT	2/8	2				BNCT			CMA CGM MEKONG						
-		MEDUHI539121	수월한	SZLU9152898	닭다리살	1,911 	PNC	2/9	2				PNC			MSC GAYANE					화주별 요약	
-		HASLS22260101351	씨케이글로벌	SZLU9371453	새우	1,808 	BPT신선대	2/9	1				BPT신선대			KMTC PUSAN					화주	대수
-		HDMUSGNA09891802	우원홀딩스	HDMU5228504	새우	952 	HPNT	2/9	1			20 	HPNT			HMM MIRACLE					수월한	8
-		HDMUSGNA60084200	우원홀딩스	HDMU5227302	새우	820 	HPNT	2/9	1			20 	HPNT			HMM MIRACLE					씨케이글로벌	7
-		HDMUSGNA60084201	우원홀딩스	HDMU5226841	새우	1,005 	HPNT	2/9	1			20 	HPNT			HMM MIRACLE					이마트	5
-		SAO500947700	뉴아시아	CAAU4073410	닭다리살	1,960 	BPT신선대	2/10	2				BPT신선대			NYK ISABEL					우원홀딩스	4
-		SAO500947701	뉴아시아	FBIU5236770	닭다리살	1,960 	BPT신선대	2/10	2				BPT신선대			NYK ISABEL					대상 주식회사	4
-		MEDUR6237628	씨케이글로벌	SZLU9477933	날치알	1,479 	PNIT	2/10	1				PNIT			MSC BREMERHAVEN V					삼영수산	4
-		MEDUR6237644	씨케이글로벌	SZLU9477933	북방대합	483 	PNIT	2/10	1				PNIT			MSC BREMERHAVEN V					뉴아시아	3
-		HASLS22260102136	마이푸드	HALU8500750	닭다리	1,940 		2/11	2				?????.BPT신선대			PEGASUS PROTO					아스트로스	3
-		HDMUSAOA67353505	수월한	HDMU5620963	닭다리살	1,917 	HPNT	2/11	2				HPNT			HMM IVY					동원산업	2
-		SSZ1724657	아스트로스	TEMU9449554	닭발	1,500 	BNCT	2/11	2				BNCT			CMA CGM THORIUM					디케이통상	2
-		HLCUPN4251057415	대상 주식회사	TRIU8880245	닭발	1,567 	PNIT	2/12	2				PNIT			HUMBOLDT EXPRESS					대성무역	2
+<div class="d-none" id="원본text_리스트1부터w요약열까지">작성	면허	B/LNO.	화주	컨테이너NO.	품명	수량	반입NO.	입항일	구분	도착일	도착시간	구분	운.도VBA	02/09 월 17:00	화찰BL	화찰 선명	화물관리번호	화찰수량	화찰중량	화찰입항	리스트시트기준열	
+1		HLCUSCL251271641	GK트레이딩	HLBU6305017	오징어	1,200 	PNIT	2/7	1				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 반입완료, 선사 : 엠에스씨코리아(주)	HLCUSCL251271641	MSC NOA ARIELA	26MSCU6032I-6007-	1,200 	24,900.00 	2026.02.07	02/09 월 17:00	
+1	○	PROHCM26010058	우원홀딩스	HDMU5227410	새우	920 		2/9	1			20 		(주)에스에스물류, CY : 동일냉장(주), 컨진행 : 보세운송 신고 수리, 선사 : 에이치엠엠(주), 포딩 : 이산글로벌로지스틱주식회사	PROHCM26010058	HMM NURI	26HDMUA096I-0060-0001	920 	6,440.00 	2026.02.09	조회정보	
+1	○	EGLV360500183035	수월한	EMCU5375537	닭다리살	1,917 	DGT	1/29	2				DGT	동원로엑스㈜, CY : 동원글로벌터미널부산(주), 컨진행 : 보세운송 신고 수리, 선사 : (주)에버그린코리아	EGLV360500183035	EVER VERT	26EVER6797I-0449-	1,917 	23,962.50 	2026.01.29	적재	57 
+1	○	MAEUJBS297692	수월한	SUDU9012830	닭다리살	1,929 	PNC	2/7	2				PNC	(주)한타특수운송, CY : 부산신항만(주)자유무역지역, 컨진행 : 보세운송 신고 수리, 선사 : 한국머스크(주)	MAEUJBS297692	GRASMERE MAERSK	26MAEU0084I-1237-	1,929 	24,219.23 	2026.02.07	4,617 	3줄
+1		MAEUJBS296787	이마트	MNBU4155447	닭다리살	1,939 	PNC	2/7	2				PNC	면허?, CY : 부산신항만(주)자유무역지역, 컨진행 : 반입완료, 선사 : 한국머스크(주)	MAEUJBS296787	GRASMERE MAERSK	26MAEU0084I-1232-	1,939 	24,213.42 	2026.02.07	6,156 	4줄
+1	○	SSZ1700526D	대상 주식회사	TRIU8966185	닭다리살	1,980 	BNCT	2/8	2				BNCT	(주)골든로지텍, CY : (주)비엔씨티(CY), 컨진행 : 보세운송 신고 수리, 선사 : 씨엠에이씨지엠	SSZ1700526D	CMA CGM MEKONG	26CMAL0060I-2054-	1,980 	24,924.24 	2026.02.08	7,695 	5줄
+1			세현		포크오징어	3,242 		2/10	3												9,234 	6줄
+2		A66GX00600	씨에이치씨	IAAU8680399	새우	1,800 		2/9	1													
+2		HASLS22260101351	씨케이글로벌	SZLU9371453	새우	1,808 	BPT신선대	2/9	1				BPT신선대	면허?, CY : 신선대감만터미널(주) 신선대CY, 컨진행 : 입항적재화물목록 운항정보 정정, 선사 : 고려해운(주)	HASLS22260101351	KMTC PUSAN	26KMTC0495I-2064-	1,808 	21,696.00 	2026.02.09	출고/입고 4주간	
+2		MEDUR6237628	씨케이글로벌	SZLU9477933	날치알	1,479 	PNIT	2/9	1				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 하선신고 수리완료, 선사 : 엠에스씨코리아(주)	MEDUR6237628	MSC BREMERHAVEN V	26MSCU4079I-0220-	1,479 	22,027.20 	2026.02.09	1일 7/5	5일줄
+2		MEDUR6237644	씨케이글로벌	SZLU9477933	북방대합	483 	PNIT	2/9	1				PNIT	면허?, CY : 부산신항국제터미널(주), 컨진행 : 하선신고 수리완료, 선사 : 엠에스씨코리아(주)	MEDUR6237644	MSC BREMERHAVEN V	26MSCU4079I-0219-	483 	2,789.90 	2026.02.09	14,901 	48.4
+2		HDMUSGNA09891802	우원홀딩스	HDMU5228504	새우	952 	HPNT	2/9	1			20 	HPNT	면허?, CY : 에이치엠엠피에스에이신항만(주), 컨진행 : 하선신고 수리완료, 선사 : 에이치엠엠(주)	HDMUSGNA09891802	HMM MIRACLE	26HDMUA102I-0128-	952 	7,616.00 	2026.02.09	11,764 	38.2
+2		HDMUSGNA60084200	우원홀딩스	HDMU5227302	새우	820 	HPNT	2/9	1			20 	HPNT	면허?, CY : 에이치엠엠피에스에이신항만(주), 컨진행 : 하선신고 수리완료, 선사 : 에이치엠엠(주)	HDMUSGNA60084200	HMM MIRACLE	26HDMUA102I-0130-	820 	5,412.00 	2026.02.09	내국제외	
+2		HDMUSGNA60084201	우원홀딩스	HDMU5226841	새우	1,005 	HPNT	2/9	1			20 	HPNT	면허?, CY : 에이치엠엠피에스에이신항만(주), 컨진행 : 하선신고 수리완료, 선사 : 에이치엠엠(주)	HDMUSGNA60084201	HMM MIRACLE	26HDMUA102I-0131-	1,005 	8,040.00 	2026.02.09	구분	대수
+		HDMUSAOA24988100	수월한	BMOU9405357	닭다리살	1,917 	DGT	1/29	2				DGT	면허?, CY : 동원글로벌터미널부산(주), 컨진행 : 반입완료, 선사 : 오션네트워크익스프레스코리아(주)	HDMUSAOA24988100	MOL EXPERIENCE	26ONEY0117I-7019-	1,917 	23,962.50 	2026.01.29	수산	18
+		HDMUSAOA48890200	수월한	TLLU1090181	닭다리살	1,917 	HPNT	1/29	2				HPNT	면허?, CY : 에이치엠엠피에스에이신항만(주), 컨진행 : 반입완료, 선사 : 에이치엠엠(주)	HDMUSAOA48890200	SEASPAN BEAUTY	26HDMUA012I-0626-	1,917 	23,962.50 	2026.01.29	축산	36
+		MEDUHI539121	수월한	SZLU9152898	닭다리살	1,911 	PNC	2/9	2				PNC			MSC GAYANE					합계	54
+		SAO500947700	뉴아시아	CAAU4073410	닭다리살	1,960 	BPT신선대	2/10	2				BPT신선대			NYK ISABEL						
+		SAO500947701	뉴아시아	FBIU5236770	닭다리살	1,960 	BPT신선대	2/10	2				BPT신선대			NYK ISABEL					화주별 요약	
+		HASLS22260102136	마이푸드	HALU8500750	닭다리	1,940 		2/11	2				?????.BPT신선대			PEGASUS PROTO					화주	대수
+		HDMUSAOA67353505	수월한	HDMU5620963	닭다리살	1,917 	HPNT	2/11	2				HPNT			HMM IVY					수월한	14
+		MEDUE8955696	수월한	OTPU6596238	닭다리살	1,954 		2/11	2												이마트	5
+		MEDUFX951603	수월한	MEDU9101078	닭다리살	1,958 		2/11	2												씨케이글로벌	5
+		MEDUFX960938	수월한	MEDU9109741	닭다리살	1,917 		2/11	2												우원홀딩스	4
+		MEDUHI546860	수월한	FSCU5781498	닭다리살	1,960 		2/11	2												대상 주식회사	4
+		MEDUHI556752	수월한	MSDU9822092	닭발	1,531 		2/11	2												삼영수산	4
+		SNKO190260102053	씨케이글로벌	SEGU9996724	새우	1,000 		2/11	1			20 									뉴아시아	3
+		SSZ1724657	아스트로스	TEMU9449554	닭발	1,500 	BNCT	2/11	2				BNCT			CMA CGM THORIUM					아스트로스	3
+		HLCUPN4251057415	대상 주식회사	TRIU8880245	닭발	1,567 	PNIT	2/12	2				PNIT			HUMBOLDT EXPRESS					동원홈푸드	3
 		HLCUSCL251233590	아이씨코퍼	TCLU1180712	연어	860 	PNIT	2/12	1				PNIT			HUMBOLDT EXPRESS					씨에이치씨	2
-		MAEUSSZ798554	대상 주식회사	MNBU4304221	닭다리살	1,980 	PNC	2/13	2				PNC			MAERSK CAP JERVIS					천부수산	1
-		MEDUHI598226	수월한	TTNU8322275	닭다리	1,958 	PNIT	2/14	2				PNIT			MSC ANZU					오케이푸드	1
-		MEDUE8955670	이마트	FBIU5131819	닭다리살	1,947 	PNIT	2/14	2				PNIT			MSC LISBON IX					GK트레이딩	1
-		MEDUFX968342	이마트	TEMU9510628	닭다리살	1,939 		2/17	2							MSC SIYA B					마이푸드	1
-		OOCL2317300180	씨케이	FSCU5984155		1,382 		2/21	1							CMA CGM PRIDE					아이씨코퍼	1
-		AO6442854600	삼영수산	CXRU1498300	오징어	1,150 		2/25	1												씨케이	1
-		LMM0568901	삼영수산	CGMU5503320	오징어	1,100 		2/25	1							CMA CGM TAGE					현대그린	1
-		LMM0568903	삼영수산	SILU7010246	오징어	1,150 		2/25	1							CMA CGM TAGE					합계	53
+		MAEUSSZ798554	대상 주식회사	MNBU4304221	닭다리살	1,980 	PNC	2/13	2				PNC			MAERSK CAP JERVIS					대성무역	2
+		MEDUE8967691	수월한	MSDU9002452	닭다리살	1,958 		2/14	2												GK트레이딩	1
+		MEDUHI598226	수월한	TTNU8322275	닭다리	1,958 	PNIT	2/14	2				PNIT			MSC ANZU					세현	1
+		MEDUE8955670	이마트	FBIU5131819	닭다리살	1,947 	PNIT	2/14	2				PNIT			MSC LISBON IX					마이푸드	1
+		MEDUFX968342	이마트	TEMU9510628	닭다리살	1,939 		2/17	2							MSC SIYA B					아이씨코퍼	1
+		MAEUJBS298667	동원홈푸드	MNBU0563116	닭다리살	1,958 		2/21	2												씨케이	1
+		MAEUJBS298668	동원홈푸드	MNBU3130763	닭다리살	1,925 		2/21	2												현대그린	1
+		MAEUJBS298669	동원홈푸드	MMAU1053118	닭다리살	1,925 		2/21	2												합계	55
+		OOCL2317300180	씨케이	FSCU5984155		1,382 		2/21	1							CMA CGM PRIDE						
+		COSU6437468860	수월한	SZLU9407509	닭다리살	1,958 		2/23	2													
+		AO6442854600	삼영수산	CXRU1498300	오징어	1,150 		2/25	1													
+		LMM0568901	삼영수산	CGMU5503320	오징어	1,100 		2/25	1							CMA CGM TAGE						
+		LMM0568903	삼영수산	SILU7010246	오징어	1,150 		2/25	1							CMA CGM TAGE						
 		HLCUIT1251213904	대상 주식회사	SZLU6013538	닭다리살	1,986 		3/2	2							MAERSK SANA						
 		MEDUHI618073	아스트로스	TRLU1648274	닭발	1,500 		3/3	2													
 		ONEYSAOF71610904	대성무역	TTNU8791009	닭장각	1,568 		3/4	2							BANGKOK BRIDGE						
@@ -208,7 +211,6 @@
 		COSU6441499120	삼영수산	CXRU1508429	오징어	1,063 		3/7	1							XIN DA LIAN						
 		HLCUPN4251156750	현대그린	HLBU9956440	닭다리살	1,950 		3/7	2													
 		MEDUHI654086	아스트로스	MEDU9120782	닭발	1,500 		3/13	2													
-		A66GX00600	씨에이치씨	IAAU8680399	새우	1,800 			1													
 		YMJAI493335061	씨에이치씨	YMLU7436411	새우	896 			1			20 										
 		HDMUSAOA37377700	이마트	TEMU9679794				미정	2							BANGKOK BRIDGE						
 		MEDUFX992573	이마트	SZLU9307639				미정	2							MSC AVNI 						
@@ -265,15 +267,10 @@
       id="api호출" title=""
       onclick="call('info');">api호출</button>
       <span class="d-none" id="call_통신사전작업"></span>
-      <span id="blspan" onclick="
-      document.querySelector('#blno').textContent='';
-      document.querySelector('#api호출').title='';
-      document.querySelector('.apiBL')?.classList.remove('.apiBL');
-      ">mblNo</span> 
+      <button class="btn btn-light 카테고리 카테기본" onclick="비엘변경()" id="비엘변경">mblNo</button> 
       <span contenteditable="true" id="blno" onchange="console.log('id=blno change ');"></span>
       <button class="btn btn-light 카테고리 카테기본" onclick="blYy오늘()" id="blYy">blYy</button> 
       <span contenteditable="true" id="year"></span>
-      <button class="btn btn-light 카테고리 카테기본" onclick="비엘변경()" id="비엘변경">mblNo</button> 
       <button class="btn btn-light 카테고리 카테기본" style="height:30px;padding:0 5px;width:80px;margin-left:20px;" 
       title="()?[] 등의 특수문자 ==> ( 의 경우 \( 로 표현하면 검색된다. 종료후 \ 삭제 js코드 포함됨"
       onclick="단어검색();document.querySelector('#리스트검색input').value=''; ">단어검색</button>
