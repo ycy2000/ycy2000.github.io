@@ -66,7 +66,6 @@
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="google전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >google</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="코드전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >코드</button>
-        <button onclick="전체변수h6title='html특수문자_click';전체대체에셑팅();">특문</button> 
         <button onclick="셑팅정보()">셑_팅</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">현재캔버스</button>
@@ -721,7 +720,9 @@
     <div class="개별카테고리" id="코드1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold" title="코드_html메모리">코드 : html에 src는 메모리에 포함된다(많으면 메모리 부족) </h6>
         <h6 class="fw-bold" title="코드_a4프린트">코드 : a4프린트 </h6>
+        <h6 class="fw-bold" title="코드_문단구성">코드 : 문단구성 </h6>
 
       </div>
     </div>
@@ -3361,6 +3362,8 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
     <div id="셑팅정보" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ </h5>
+        <h5>⑬ ⑭ ⑮ ※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
         <h6 class="blueviolet fw-bold">대체3줄 html 
           <button onclick="보숨토글(this)" title="대체3줄코드" class="보숨토글버튼">▼</button>
           <button onclick="복사('대체3줄코드')">복사하기</button>
@@ -3422,26 +3425,9 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
         </table>
       </div>
       <div>
-        <pre class="fw-bold">
-          
-        </pre>
+
       </div>
     </div>
-    <div id="html특수문자_click" style="padding:10px;margin:10px;height:100px;width:100px;">
-      <button onclick="document.querySelector('#전체대체').innerHTML='';">닫기</button><br>
-
-      <div style="display: inline-block;background-color: white; border:1px solid black;padding:5px;">
-        <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮</h5>
-        <h5>※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
-        <img src="portal/images/문서연결_엑셀VBA/특문.png" alt="이미지없음" style="padding:0">
-        <br>
-        <a href="https://pracon.tistory.com/154"  target="_blank">출처 : https://pracon.tistory.com/154</a>
-      </div>
-      <div style="display: inline-block;padding:5px;">
-
-      </div>
-
-    </div> 
   </div>  
   <div title="jsva전체">
     <div id="jQuery_설치와기초사용법">
@@ -6329,7 +6315,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
           var 예제버튼=document.querySelector('#전체대체 #예제버튼');
           var 예제버튼정보=getComputedStyle(예제버튼);
 
-            console.log(예제버튼.styleText)
+            console.log(예제버튼.cssText)
             ">연습alert</button>
         </code>
         <code class="fw-bold" style="text-indent: 25px;">a) var 요소정보=요소.getComputedStyle();</code>
@@ -13578,6 +13564,42 @@ SF 클레이메이션 고양이
     </div>
   </div>
   <div title="코드전체">
+    <div id="코드_html메모리" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">excel_코드점검.html 메모리 : 443.4 MB </h6>
+        <h6 class="fw-bold">Visual Studio Code : 1302.4 MB, 두개로 84% </h6>
+        <pre class="fw-bold">
+VS Code는 내부적으로 Chromium Node.js V8 엔진 = 크롬 3~5탭. 
+구조적으로 메모리를 많이 잡아 먹는다
+2️⃣ 언어 서버 (Language Server)가 상주 JS / TS / Python / HTML 열면:
+실시간 문법 분석, 타입 추론자동 완성, 에러 체크, 👉 파일 안 건드려도 계속 돌아감
+특히: JavaScript / TypeScript, Python, Java ➡️ 메모리 상주형
+3️⃣ 확장(Extensions)이 진짜 범인 👿 이게 제일 큼.
+ESLint, Prettier, GitLens, Live Server, Docker, Python Extension, 
+👉 각각이 미니 서버 하나씩 띄움
+
+⚠️ 안 쓰는 확장 10개 = 메모리 수백 MB
+
+4️⃣ 워크스페이스 전체를 인덱싱
+폴더 열면 VS Code가:모든 파일 스캔, 심볼 인덱스 생성, Git 상태 추적, 
+👉 프로젝트 크면 자동으로 무거워짐
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
+        <pre class="fw-bold">
+img.src = img.dataset.src;
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>        
     <div id="코드_a4프린트">
       <div><button onclick="window.print()">출력</button></div>
       <div class="a4크기 a4출력용">

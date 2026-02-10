@@ -1,4 +1,36 @@
 let 전체변수h6title='';
+function data_src_Set () {
+  //embed, img : src 사용
+
+}
+function 전체대체에셑팅() {
+  //1.전체대체에 id를 셑팅하는 동작
+  var 아이디=전체변수h6title.trim(); 
+  if (아이디.length==0) {console.log('아이디.length==0'); return;}
+  if (!document.querySelector('#' + 아이디)) {console.log('해당 id 요소가 없음(null'); return;}
+  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
+
+  // data_src_Set ()
+  let src=document.querySelectorAll('#전체대체 [data-src]');
+  src.forEach ( ele => ele.src=ele.data-src);
+
+  //2.id를 title로 갖는것이 있는지 확인(캔버스에서 title이 있는[id와 연결된 title]이 있는 h6 클릭시)
+  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
+  if (title요소들마지막.length==0) {console.log('해당title을 id로 갖는 요소가 없음. 캔버스,ID,제목 관련 건너뜀',
+    '\nid를 직접 연결한 경우 등'); return;}
+
+  //3.있다면 캔버스 :    5번째가 BODY(4번째까지 올라갈때까지 body가 나오면 종료), 캔버스안의 h6이면 5번째 부모에서 BODY태그 만난다.
+  title요소들마지막=title요소들마지막[title요소들마지막.length-1]; // 마지막꺼에서 캔버스 클래스에서 id를 추출할 수 있다. 캔버스 안에 들어가면 이 부분이 없다
+  var 부모요소=title요소들마지막.parentElement;
+  for (var i=0; i<4; i++) {if(부모요소.tagName=='BODY') {console.log('BODY');return;};부모요소=부모요소.parentElement;}
+
+  //캔버스 안에서 h6클릭했을때 header에 캔버스이름, id, 제목 넣는 경우 ▲
+  //3단계위 부모: class=캔버스, 4단계위 부모:id=캔버스바디
+  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.parentElement.id;
+  document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
+  document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
+  document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
+}
 function 특정id편집() {
   전체변수h6title ='코드_a4프린트' //원래는 h6의 title이다.
   전체대체에셑팅();
@@ -11,13 +43,8 @@ function 이동배치(요소의타이틀,배치요소아이디) {
   Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
 }
 function 연습() {
-  const 타이틀=document.querySelector('[title="개념_nodejs관련1"');
-  console.log(타이틀.textContent);
-  console.log('일반콘솔');
-  
 
-
-
+  console.log(document.querySelector('#dddd').outerHTML);
 }
 function 복사(id) {
   const text = document.getElementById(id).innerText;
@@ -37,30 +64,7 @@ function 셑팅정보() {
   //복사('대체3줄코드');
 }
 
-function 전체대체에셑팅() {
-  //1.전체대체에 id를 셑팅하는 동작
-  var 아이디=전체변수h6title.trim(); 
-  if (아이디.length==0) {console.log('아이디.length==0'); return;}
-  if (!document.querySelector('#' + 아이디)) {console.log('해당 id 요소가 없음(null'); return;}
-  document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
 
-  //2.id를 title로 갖는것이 있는지 확인(캔버스에서 title이 있는[id와 연결된 title]이 있는 h6 클릭시)
-  var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');
-  if (title요소들마지막.length==0) {console.log('해당title을 id로 갖는 요소가 없음. 캔버스,ID,제목 관련 건너뜀',
-    '\nid를 직접 연결한 경우 등'); return;}
-
-  //3.있다면 캔버스 :    5번째가 BODY(4번째까지 올라갈때까지 body가 나오면 종료), 캔버스안의 h6이면 5번째 부모에서 BODY태그 만난다.
-  title요소들마지막=title요소들마지막[title요소들마지막.length-1]; // 마지막꺼에서 캔버스 클래스에서 id를 추출할 수 있다. 캔버스 안에 들어가면 이 부분이 없다
-  var 부모요소=title요소들마지막.parentElement;
-  for (var i=0; i<4; i++) {if(부모요소.tagName=='BODY') {console.log('BODY');return;};부모요소=부모요소.parentElement;}
-
-  //캔버스 안에서 h6클릭했을때 header에 캔버스이름, id, 제목 넣는 경우 ▲
-  //3단계위 부모: class=캔버스, 4단계위 부모:id=캔버스바디
-  document.querySelector('#캔버스이름').innerHTML=title요소들마지막.parentElement.parentElement.parentElement.id;
-  document.querySelector('#캔버스이름').title='개별카테고리 id : ' + title요소들마지막.parentElement.parentElement.id; //개별카테고리 id
-  document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
-  document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
-}
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
