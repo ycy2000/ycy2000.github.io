@@ -1,8 +1,4 @@
 let 전체변수h6title='';
-function data_src_Set () {
-  //embed, img : src 사용
-
-}
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작
   var 아이디=전체변수h6title.trim(); 
@@ -10,9 +6,9 @@ function 전체대체에셑팅() {
   if (!document.querySelector('#' + 아이디)) {console.log('해당 id 요소가 없음(null'); return;}
   document.querySelector('#전체대체').innerHTML=document.querySelector('#' + 아이디).outerHTML;
 
-  // data_src_Set ()
+  //embed, img : src 사용시 메모리 차지 많이하여... 필요시에만 넣기
   let src=document.querySelectorAll('#전체대체 [data-src]');
-  src.forEach ( ele => ele.src=ele.data-src);
+  src.forEach ( ele => ele.src=ele.dataset.src);
 
   //2.id를 title로 갖는것이 있는지 확인(캔버스에서 title이 있는[id와 연결된 title]이 있는 h6 클릭시)
   var title요소들마지막=document.querySelectorAll('[title="' + 아이디 +'"]');

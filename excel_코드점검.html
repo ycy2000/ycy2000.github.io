@@ -745,7 +745,7 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       
       <h6 class="fw-bold" title='기타전체_파일리스트'>기타전체 > 파일리스트, 디렉토리, input, preview </h6>
-      <h6 class="fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, src 유의, </h6>
+      <h6 class="fw-bold" title='기타전체_파일내용'>기타전체 > 파일리스트, 사용중인 파일 확인, data-src 유의, </h6>
       <h6 class="fw-bold" title='기타전체_png와txt'>기타전체 > png와 txt파일 사용중 확인 </h6>
     </div>
     <div class="개별카테고리" id="html양식">
@@ -794,7 +794,7 @@
         <code class="fw-bold" style="text-indent: 15px;">- Static(사전:정적인) : (변수)프로시저 안에서 선언, 프로시저 종료시 기억됨, 현재 프로시저에서만 해당</code>
         <code class="fw-bold" style="text-indent: 15px;">- Private(사전:사적인) : (프로시저) Private Sub 는 현재 모듈에서만 Call 가능  </code>
         <code class="fw-bold" style="text-indent: 15px;">- Public(사전:공공의) : (변수)프로시저 바깥에서 선언, 프로젝트 전역에서 사용 및 기억</code>
-        <img src="portal/images/문서연결_엑셀VBA/변수선언키워드.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/변수선언키워드.png" alt="이미지없음">
 
 
 
@@ -846,7 +846,7 @@
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -1425,7 +1425,7 @@ End Sub
         <h5 class="fw-bold">msoAutoShape 타입 도형(Type번호 1, 이름 AutoShape) 만들기 코드</h5>
         <code class="fw-bold">• ActiveSheet.Shapes.AddShape(MsoAutoShapeType[타입이름문자열],Left, Top, Width, Height).Select</code>
         <code class="fw-bold" style="color:blueviolet">• MsoAutoShapeType 부분에 숫자를 넣으면 생성되는, 해당인덱스의 도형(Type 번호가 아님), 예)1~137까지 된다.</code>
-        <img src="portal/images/문서연결_엑셀VBA/도형_1에서137.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/도형_1에서137.png" alt="이미지없음">
         <br><br>
         <h5 class="fw-bold">msoTextNpx 타입 도형(Type번호 17, 이름 Text Box) 만들기 코드</h5>
         <code class="fw-bold">• ActiveSheet.Shapes.AddTextbox(msoTextOrientationHorizontal, 266.25, 57.75, 80.25, 29.25).Select</code>
@@ -1509,7 +1509,7 @@ End Sub
 
     <div id="도형_선택">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <img src="portal/images/문서연결_엑셀VBA/도형_그림선택예제.png" alt="이미지없음" style="position: absolute;left:765px;">
+        <img data-src="portal/images/문서연결_엑셀VBA/도형_그림선택예제.png" alt="이미지없음" style="position: absolute;left:765px;">
         <h5 class="fw-bold">도형 선택1 (변수에 담을 때는 .Select 없이)</h5>
         <code class="fw-bold" style="color:blueviolet">• 인덱스 번호로 선택 : ActiveSheet.Shapes(1).Select '모든도형들 중, 첫번째 도형 선택</code>
         <code class="fw-bold" style="color:blueviolet">• Activesheet.Shapes.range(Array(배열))(1) : 모든도형들 중, 배열안의 도형들 중, 1번째 도형</code>
@@ -1685,7 +1685,7 @@ End Sub
         <code class="fw-bold" style="color:blueviolet">• 폼의 위치를 LEFT=0, TOP=0 으로 지정하였다.</code>
         <code class="fw-bold" style="color:blueviolet">• LEFT 시작값은 -5, TOP 시작값은 Application=-6, ActiveWindow=-5(테두리 제외 값인 듯)</code>
         <code class="fw-bold" style="color:blueviolet">★ 폼의 위치는 화면기준으로 생각하면 되겠다.</code>
-        <img src="portal/images/문서연결_엑셀VBA/도형_폼위치예시.png" alt="이미지없음" style="display:inline-block;margin-left:20px;">
+        <img data-src="portal/images/문서연결_엑셀VBA/도형_폼위치예시.png" alt="이미지없음" style="display:inline-block;margin-left:20px;">
 
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
@@ -2057,9 +2057,9 @@ End Sub
         <br>
         <code class="fw-bold" style="color:blueviolet">★ BeforeDragOver, BeforeDropOrPaste 코딩 예제. MouseMove - BeforeDragOver - BeforeDropOrPaste 순서로 작동</code>
         <code class="fw-bold" style="color:blueviolet">★ ListBox1 의 목록을 클릭and드래그하여 ListBox2에 끌어다 놓으면 ListBox2에 추가되는 코드</code>
-        <img src="portal/images/문서연결_엑셀VBA/BeforeDragOver관련코딩1.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/BeforeDragOver관련코딩1.png" alt="이미지없음">
         <br>
-        <img src="portal/images/문서연결_엑셀VBA/BeforeDragOver관련코딩_mousemove.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/BeforeDragOver관련코딩_mousemove.png" alt="이미지없음">
 
       </div>
       <div class=" d-inline-block align-top 이벤트작업code" style="width:925px;border-right:1px solid black;white-space:normal;">
@@ -2113,7 +2113,7 @@ End Sub
         <code class="fw-bold" style="text-indent: 15px;"- >KeyPress는 탭, 엔터, 화살표 등에는 이벤트가 발생하지 않으므로, KeyDown 이벤트를 사용하도록 하겠습니다.</code>
         <code class="fw-bold" style="text-indent: 15px;"- >설명 출처 : https://stat-and-news-by-daragon9.tistory.com/entry/엑셀VBA-텍스트-박스에-숫자만-입력되도록-하기</code>
           
-        <img src="portal/images/문서연결_엑셀VBA/폼컨트롤이벤트_keydown번호들.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/폼컨트롤이벤트_keydown번호들.png" alt="이미지없음">
         <code class="fw-bold" style="text-indent: 15px;"></code>
         <br>
         <code class="fw-bold 이벤트설명요소">• KeyPress : Private Sub ListBox2_KeyPress(ByVal KeyAscii As MSForms.ReturnInteger)</code>
@@ -2194,7 +2194,7 @@ End Sub
         <h5 class="fw-bold">폼 내 Control (폼 안의 것들) For Each 컨트롤 In Me.Controls => 프레임 안의 컨트롤도 돈다.(모두)</h5>
         <code class="fw-bold">• vba project 창 - 보기 - 도구상자 : 컨트롤의 종류 확인</code>
         <code class="fw-bold" style="text-indent: 15px;">- 아이콘 클릭(선택) - 폼 안에서 드래그하여 크기조정하면 생성됨</code>
-        <img src="portal/images/문서연결_엑셀VBA/폼control유형이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
+        <img data-src="portal/images/문서연결_엑셀VBA/폼control유형이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
         <br><br>
         <h5 class="fw-bold" style="color:blueviolet">★★ TypeName 확인</h5>
         <code class="fw-bold">Dim 컨트롤 As Control</code>
@@ -2205,14 +2205,14 @@ End Sub
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <!--  <img src="" alt="이미지없음"> -->
+        <!--  <img data-src="" alt="이미지없음"> -->
         
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">폼은 Form, Form 안에 것은 Control이다. Control 속성 확인 : vba project 창 - 보기 - 속성 창(W) 클릭</h5>
         <code class="fw-bold">• vba project 창 왼쪽에 속성 보기 창이 뜬다.</code>
         <code class="fw-bold">• Control 마다 속성이 같은것도 있고 다르다.</code>
-        <img src="portal/images/문서연결_엑셀VBA/폼control속성이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
+        <img data-src="portal/images/문서연결_엑셀VBA/폼control속성이미지.png" alt="이미지없음" style="display:inline-block;margin-left:10px;">
       </div>
     </div>
 
@@ -2223,7 +2223,7 @@ End Sub
         <code class="fw-bold">• 안됨 : 시트범위를 그림으로 복사 붙여넣은것을 - 복사하여 - vba projext에서 Image Control 선택후 붙여넣기</code>
         <br>
         <h5 class="fw-bold">Image 컨트롤에 이미지 고정</h5>
-        <img src="portal/images/문서연결_엑셀VBA/image고정예시1.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/image고정예시1.png" alt="이미지없음">
         <br><br>
         <h5 class="fw-bold">vba 코딩으로 Image Control에 LoadPicture(파일경로) 활용하여 Load 하기</h5>
         <code class="fw-bold">• Image1.Picture = LoadPicture(ThisWorkbook.Path & Application.PathSeparator & "챠트.jpg")</code>
@@ -2235,12 +2235,12 @@ End Sub
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <!--  <img src="" alt="이미지없음"> -->
+        <!--  <img data-src="" alt="이미지없음"> -->
         
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">Image Control에 PNG파일이 Load 안되는 것은?</h5>
-        <img src="portal/images/문서연결_엑셀VBA/엑셀png파일로딩안됨.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/엑셀png파일로딩안됨.png" alt="이미지없음">
         <code class="fw-bold">• 처음 png파일이었고 확장자만 다른것으로 바꿈 => 안됨	</code>
         <code class="fw-bold">• 처음 png파일이 아닌경우 확장자만 png로 바꿈 => 됨			</code>
         <code class="fw-bold">• 결론 : <span style="color:blueviolet">만들때 형식을 인식하고,</span> png파일은 안된다는 이야기?		</code>
@@ -2255,7 +2255,7 @@ End Sub
 
     <div id="폼_control_공통위주">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <img src="portal/images/문서연결_엑셀VBA/excel_control_textbox.png" alt="이미지없음" style="position: absolute;left:607px;">
+        <img data-src="portal/images/문서연결_엑셀VBA/excel_control_textbox.png" alt="이미지없음" style="position: absolute;left:607px;">
         <code class="fw-bold">• T1=TextBox 이름 예시</code>
         <h5 class="fw-bold">WordWrap, MultiLine (폼내 줄바꿈, Ctrl 또는 Shift + Enter)</h5>
         <code class="fw-bold">• WordWrap : T1내 글자가 길어서 폭을 넘길때 자동줄바꿈(True), 줄바꿈없음(False)</code>
@@ -2263,7 +2263,7 @@ End Sub
         <code class="fw-bold">• T1.WordWrap = False: T1.MultiLine = True <span style="color:blueviolet">'줄바꿈시 두개 적용</span></code>
         <br>
         <h5 class="fw-bold">IMEMode : 한글/영문모드, 숫자 또는 문자열로 적용</h5>
-        <img src="portal/images/문서연결_엑셀VBA/excel_control_textbox_한영.png" alt="이미지없음" style="display: inline-block;">
+        <img data-src="portal/images/문서연결_엑셀VBA/excel_control_textbox_한영.png" alt="이미지없음" style="display: inline-block;">
         <div style="display:inline-block;vertical-align: top;">
           <code class="fw-bold">• T1.IMEMode = fmIMEModeAlphaFull</code>
           <code class="fw-bold" style="text-indent: 15px;">또는 T1.IMEMode = 7</code>
@@ -2302,7 +2302,7 @@ End Sub
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <!--  <img src="" alt="이미지없음"> -->
+        <!--  <img data-src="" alt="이미지없음"> -->
         
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
@@ -2323,10 +2323,10 @@ End Sub
         </div>
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <img src="portal/images/문서연결_엑셀VBA/그림_화면복사활용2.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/그림_화면복사활용2.png" alt="이미지없음">
       </div>
       <br>
-      <img src="portal/images/문서연결_엑셀VBA/그림_화면복사활용1.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_엑셀VBA/그림_화면복사활용1.png" alt="이미지없음">
     </div>
 
     <div id="그림_화면복사코딩">
@@ -2377,10 +2377,10 @@ End Sub
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <code class="fw-bold" style="color:blueviolet">• 매크로 실행전 화면</code>
-        <img src="portal/images/문서연결_엑셀VBA/그림_화면복사코딩매크로실행전.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/그림_화면복사코딩매크로실행전.png" alt="이미지없음">
         <br><br>
         <code class="fw-bold" style="color:blueviolet">• 매크로 실행과정</code>
-        <img src="portal/images/문서연결_엑셀VBA/그림_화면복사코딩매크로실행과정.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/그림_화면복사코딩매크로실행과정.png" alt="이미지없음">
       </div>
     </div>
 
@@ -2424,7 +2424,7 @@ End Sub
         <code class="fw-bold">Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False</code>
         <code class="fw-bold">Application.CutCopyMode = False</code>
         <h6>엑셀에서 셀카피 후 목적지 셀 클릭하고 우클릭하면 다음 메뉴가 나온다.</h6>
-        <img src="portal/images/문서연결_엑셀VBA/excel_copy_2.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/excel_copy_2.png" alt="이미지없음">
       </div>
     </div>
 
@@ -2701,7 +2701,7 @@ End Sub
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">Vba 코딩 결과 참고.</h5>
         <code class="fw-bold" style="color:blueviolet">• 배열의 범위를 벗어나는 Range에는 '#N/A'(not available : 해당사항 없음) 표시.</code>
-        <img src="portal/images/문서연결_엑셀VBA/excel_배열_RANGE_vba예시코드.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/excel_배열_RANGE_vba예시코드.png" alt="이미지없음">
         <br><br>
         <code class="fw-bold" style="color:blueviolet">• 가로 한줄짜리 배열만!!?? Range가 세로로 여러줄인 경우 반복된다.</code>
       </div>
@@ -2963,9 +2963,9 @@ async function 매크로1_JS() {
   </div>
   <div title="깃_Code_부트">
     <section id="_05_git_깃관련_큰틀에서">
-      <img src="portal/images/문서연결_엑셀VBA/_05_git_깃관련_큰틀에서.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_엑셀VBA/_05_git_깃관련_큰틀에서.png" alt="이미지없음">
       <h5 class="fw-bold"><a href="https://namu.wiki/w/Git" target="_blank">Git, 나무위키</a></h5>
-      <img src="portal/images/문서연결_엑셀VBA/_05_git_깃_구동원리나무위키.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_엑셀VBA/_05_git_깃_구동원리나무위키.png" alt="이미지없음">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </section>
 
@@ -2975,12 +2975,12 @@ async function 매크로1_JS() {
       <h4>▢ 'Git Bash'를 실행하고, 실행창에서 명령어 실행할 수 있다.</h4>
       <br>
       <h4>▢ git으로 관리할 폴더로 설정하기 (원격저장소 연결은 별개이다)</h4>
-      <img src="portal/images/문서연결_PROJECT/05_git_처음git관리폴더설정.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_처음git관리폴더설정.png" alt="이미지없음">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <h4>1. git 기본 설명 </h4>
       <h5>▸ 로컬의 원격저장소 이름이 'master'인데 'main'으로(다른이름도 된다) 바꾸려면 </h5>
       <h5 class="li_들작">'Git Bash' 실행창에서 : git remote rename &#60;기존 이름&#62; &#60;변경할 이름&#62;을 입력, git remote rename master main </h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
       <br>
       <h4>2. git 설치후 <u><bold>"git bash"</bold></u> 명령창 사용하여 이름과 이메일 등록은 한번만 하면된다. </h4>
       <li>이름과 이메일은 누가 push 했는지 로그에 뜨는 정보</li>
@@ -2995,7 +2995,7 @@ async function 매크로1_JS() {
       <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email "ycy2000@naver.com"</h5>
       <h5 class="li_들작">▸ user.email 확인 명령어</h5>
       <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email ==>  ==> 등록된 것 없다면 공백, 있다면 ycy2000@naver.com</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </section>
 
@@ -3006,9 +3006,9 @@ async function 매크로1_JS() {
       <h4>원격저장소(레포지터리) 만들기 (파일용, 블로그용 중 블로그용)</h4>
       <h5>▸ REDEME 파일 만들지 않고 만들면 비어있는 저장소가 되어, 컴퓨터에서 full로 땡기지 않아도 된다.</h5>
       <h5>▸ 연결할 원격저장소 주소는 : 만들고 난 후에 확인 가능</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
       <br>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소생성.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소생성.png" alt="이미지없음">
       <br>
       <h4>원격저장소(레포지터리) 주소확인</h4>
       <h5>▸ 만들어진 레포지터리 클릭</h5>
@@ -3016,14 +3016,14 @@ async function 매크로1_JS() {
       <h5>▸ 홈페이지 주소는 : ycy2000.github.io 입력하면, https://ycy2000.github.io 입력한 것과 같이 된다.</h5>
       <h5 class="h5_번들작"> index.html이 있으면, ycy2000.github.io/index.html, 또는 https://ycy2000.github.io/index.html 로 입력한 것과 같다.</h5>
       <h5 class="h5_번들작"> html파일이름을 알고 있다면 index.html 대신 파일이름을 입력하면 이동한다.</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_03_github저장소클릭.png" alt="이미지없음">
       <br>
       <h5>▸ 원격저장소 주소확인 <span style="color:blueviolet;font-size: 16px;font-weight: bold;">(Git Bash 실행창에서 연결할 때 : git remote add origin "https://github.com/ycy2000.github.io.git")</span></h5>
       <h5 class="h5_번들작 fw-bold">※ 끝에 점git (.git)이 있다.</h5>
       <h5 class="h5_번들작">① Code 클릭, ② Local 클릭</h5>
       <h5 class="h5_번들작">③ 주소부분 : 끝부분이 숨겨져 있을수가 있으니 주의</h5>
       <h5 class="h5_번들작">④ 클릭하면 주소가 복사되고, ctrl+v로 붙여넣을수 있는 상태가 된다.</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_03_github주소확인.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_03_github주소확인.png" alt="이미지없음">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </section>
 
@@ -3034,10 +3034,10 @@ async function 매크로1_JS() {
       <h4>4. git 시작, 로컬폴더와 gitHub 원격저장소 연결, 정보 올리기. gitHub 원격저장소가 비어있을때 예시.</h4>
       <h5>A. git init (해당 폴더를 git을 활용해서 관리하겠다는 선언), 한번만 하면된다. 해제하려면 숨김폴더 .git을 삭제하면 된다. </h5>
       <h5 class="fw-bold">Git Bash에서 원격 저장소 삭제 명령 : git remote remove &#60;저장소 이름&#62;</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
       <br>
       <h5>B. 원격저장소 연결. 연결확인 방법. 연결해제 방법.</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
     </section>
 
     <section id="_05_git_깃관련_설치방법">
@@ -3079,7 +3079,7 @@ async function 매크로1_JS() {
       <h4>1. git 기본 설명 </h4>
       <h5>▸ 로컬의 원격저장소 이름이 'master'인데 'main'으로(다른이름도 된다) 바꾸려면 </h5>
       <h5 class="li_들작">'Git Bash' 실행창에서 : git remote rename &#60;기존 이름&#62; &#60;변경할 이름&#62;을 입력, git remote rename master main </h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_01_git.png" alt="이미지없음">
       <br>
       <h4>2. git 설치후 <u><bold>"git bash"</bold></u> 명령창 사용하여 이름과 이메일 등록은 한번만 하면된다. </h4>
       <li>이름과 이메일은 누가 push 했는지 로그에 뜨는 정보</li>
@@ -3094,19 +3094,19 @@ async function 매크로1_JS() {
       <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email "ycy2000@naver.com"</h5>
       <h5 class="li_들작">▸ user.email 확인 명령어</h5>
       <h5 class="li_들작">&nbsp;&nbsp;&nbsp; $ git config --global user.email ==>  ==> 등록된 것 없다면 공백, 있다면 ycy2000@naver.com</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_02_gitname등록.png" alt="이미지없음">
       <br><br><br><br><br><br><br><br><br><br>
       <br>
       <h4>4. git 시작, 로컬폴더와 gitHub 원격저장소 연결, 정보 올리기. gitHub 원격저장소가 비어있을때 예시.</h4>
       <h5>A. git init (해당 폴더를 git을 활용해서 관리하겠다는 선언), 한번만 하면된다. 해제하려면 숨김폴더 .git을 삭제하면 된다. </h5>
       <h5 class="fw-bold">Git Bash에서 원격 저장소 삭제 명령 : git remote remove &#60;저장소 이름&#62;</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_05_gitinit.png" alt="이미지없음">
       <br>
       <h5>B. 원격저장소 연결. 연결확인 방법. 연결해제 방법.</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_06_저장소연결.png" alt="이미지없음">
       <br>
       <h5>C. 정보 주고 받기, add, commit, push</h5>
-      <img src="portal/images/문서연결_PROJECT/05_git_파순01_07_주고받기.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/05_git_파순01_07_주고받기.png" alt="이미지없음">
       <br>
       <h4>5. clone</h4>
       <li>깃허브에 저장소에 정보가 있는 경우 땡겨오고 싶을때.</li>
@@ -3131,7 +3131,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
       <h5>document.body.clientWidth : 화면넓이</h5>
       <h5>document.body.scrollWidth : 화면보다 넓은 것이 있을때 넓이</h5>
 
-      <img src="" alt="이미지없음">
+      <img data-src="" alt="이미지없음">
       <br><br><br><br>
     </section>
   </div>
@@ -3153,7 +3153,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
           <h6></h6>
           <h6></h6>
           <h6 style="text-indent: 23px;"></h6>
-          <img src="" alt="이미지없음">
+          <img data-src="" alt="이미지없음">
         </div>
       </div>
       <div style="position: relative;border-bottom:1px solid rgb(201, 188, 188);"><button onclick="캔버스_개별카테고리_h6의title과id순서()">
@@ -3177,7 +3177,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
         <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명">▼</button>
           • onclick 함수 없다고 가정할때
       </h6>
-      <div id="파일리스트설명" class="d-none"><img src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
+      <div id="파일리스트설명" class="d-none"><img data-src="portal/images/문서연결_엑셀VBA/파일리스트설명.png" alt="이미지없음"></div>
       <h6 class="fw-bold">
         <button class="보숨토글버튼" onclick="보숨토글(this)" title="파일리스트설명2">▼</button>
           • onclick 함수 작동 설명, image 폴더 안에는 .png, .txt, .pdf 등의 파일이 있다. 기타 모둔 파일 이름을 추출한다.
@@ -3192,22 +3192,22 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
           <h6 style="text-indent: 15px;">c) 하나씩 확인하며 코딩 : for (const file of selectedDirectories) {...코딩}</h6>
         </div>
         <div>
-          <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
-          <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
-          <h6 class="fw-bold" style="color:blueviolet">• 공통적으로 src=" 로 시작하고 " 로 끝나는곳에 안에 src값이 들어간다.</h6>
-          <h6 class="fw-bold" style="color:blueviolet">• 그러한 값들의 출현횟수를 정규식으로 표현하면 ==> var 출현횟수 = 원본정보text.match(/src="*"/ig).length; </h6>
-          <h6 class="fw-bold" style="color:blueviolet">• 문자열이 하나이상인 것을 표현하면 ==> 원본정보text.match(/src="?*"/ig).length; </h6>
+          <h6 class="fw-bold">• .png 파일은 html에서 등록할때 : &#60;img data-src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold">• .txt 파일과 .pdf 파일은 html에서 등록할때 : &#60;embed data-src=" 로 시작하고 " 로 끝나는곳 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 공통적으로 data-src=" 로 시작하고 " 로 끝나는곳에 안에 src값이 들어간다.</h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 그러한 값들의 출현횟수를 정규식으로 표현하면 ==> var 출현횟수 = 원본정보text.match(/data-src="*"/ig).length; </h6>
+          <h6 class="fw-bold" style="color:blueviolet">• 문자열이 하나이상인 것을 표현하면 ==> 원본정보text.match(/data-src="?*"/ig).length; </h6>
         </div>
       </div>
       <div style="border-bottom:1px solid rgb(201, 188, 188);margin-bottom:5px;"></div>
       <div>
         <div class="d-inline-block" style="vertical-align: top;">
-          <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 src 값 대조하여 html 이름 기록</h6>
+          <h6 class="fw-bold">• '사용된html' 은 function 사용된html하나씩확인() : html전부 textarea에 붙여넣고 실행. 현황파악의 data-src 값 대조하여 html 이름 기록</h6>
           <h6 class="fw-bold">• '미사용개수' 는 html 안에 src로 기록되어 있지만 파일이 없는 경우이다. 클릭하면 리스트를 볼수 있다.(d-none 클래스 toggle)</h6>
-          <h6 class="fw-bold">• function textarea정보에서html파일이름추출() 에서 특정 src(처음꺼 한번만)가 2회 기록되어서 [0] 배열 무시하도록 코딩했음</h6>          
+          <h6 class="fw-bold">• function textarea정보에서html파일이름추출() 에서 특정 data-src(처음꺼 한번만)가 2회 기록되어서 [0] 배열 무시하도록 코딩했음</h6>          
         </div>
         <div class="d-inline-block" style="margin-left:10px;vertical-align: top;">
-          <h6 class="fw-bold">• 아래는 src[0], src[1]의 값이 기록되도록 했음. 같으면 안되는데 같이 나온다.... </h6>
+          <h6 class="fw-bold">• 아래는 data-src[0], data-src[1]의 값이 기록되도록 했음. 같으면 안되는데 같이 나온다.... </h6>
           <h6 class="fw-bold">• <span style="color:blueviolet">찾은src들[0] : </span> <span id="js찾은src1"></span></h6>
           <h6 class="fw-bold">• <span style="color:blueviolet">찾은src들[1] : </span> <span id="js찾은src2"></span></h6>
         </div>        
@@ -3230,7 +3230,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
                 <div>값있는src개수</div>
                 <div>사용중개수</div>
                 <div style="background-color:yellow;" onclick="document.querySelector('#결과표_현재html_미사용src').classList.toggle('d-none')">미사용개수</div>
-                <div>src=""</div>
+                <div>data-src=""</div>
                 <span class="미사용src d-none" id="결과표_현재html_미사용src"></span>              
               </div>
               <div class="결과">
@@ -3251,7 +3251,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
                 <div>값있는src개수</div>
                 <div>사용중개수</div>
                 <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea1_미사용src').classList.toggle('d-none')">미사용개수</div>
-                <div>src=""</div>
+                <div>data-src=""</div>
                 <span class="미사용src d-none" id="결과표_textarea1_미사용src">sdfsdfsdfsdf</span>
               </div>
               <div class="결과">
@@ -3273,7 +3273,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
                 <div>값있는src개수</div>
                 <div>사용중개수</div>
                 <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea2_미사용src').classList.toggle('d-none')">미사용개수</div>
-                <div>src=""</div>
+                <div>data-src=""</div>
                 <span class="미사용src d-none" id="결과표_textarea2_미사용src"></span>
               </div>
               <div class="결과">
@@ -3294,7 +3294,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
                 <div>값있는src개수</div>
                 <div>사용중개수</div>
                 <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea3_미사용src').classList.toggle('d-none')">미사용개수</div>
-                <div>src=""</div>
+                <div>data-src=""</div>
                 <span class="미사용src d-none" id="결과표_textarea3_미사용src"></span>
               </div>
               <div class="결과">
@@ -3315,7 +3315,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
                 <div>값있는src개수</div>
                 <div>사용중개수</div>
                 <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea4_미사용src').classList.toggle('d-none')">미사용개수</div>
-                <div>src=""</div>
+                <div>data-src=""</div>
                 <span class="미사용src d-none" id="결과표_textarea4_미사용src"></span>
               </div>
               <div class="결과">
@@ -3336,7 +3336,7 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
                 <div>값있는src개수</div>
                 <div>사용중개수</div>
                 <div style="background-color:yellow;" onclick="document.querySelector('#결과표_textarea5_미사용src').classList.toggle('d-none')">미사용개수</div>
-                <div>src=""</div>
+                <div>data-src=""</div>
                 <span class="미사용src d-none" id="결과표_textarea5_미사용src"></span>
               </div>
               <div class="결과">
@@ -3432,19 +3432,19 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
   <div title="jsva전체">
     <div id="jQuery_설치와기초사용법">
       <h5><a href="https://milku.tistory.com/84" target="_blank">jQuery_설치와기초사용법</a></h5>
-      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음" style="vertical-align: top;">
-      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
-      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_03.png" alt="이미지없음" style="vertical-align: top;">
-      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
-      <img src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_05.png" alt="이미지없음" style="vertical-align: top;">
+      <img data-src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_01.png" alt="이미지없음" style="vertical-align: top;">
+      <img data-src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img data-src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_03.png" alt="이미지없음" style="vertical-align: top;">
+      <img data-src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img data-src="portal/images/black_코딩등그림판/jQuery_설치와기초사용법_05.png" alt="이미지없음" style="vertical-align: top;">
       <br><br><br><br><br><br><br>
     </div>
     <div id="jQuery_문법리스트">
       <h5><a href="https://soft91.tistory.com/9" target="_blank">JQuery - JQuery 기본문법</a></h5>
-      <img src="portal/images/black_코딩등그림판/JQuery기본문법_01.png" alt="이미지없음" style="vertical-align: top;">
-      <img src="portal/images/black_코딩등그림판/JQuery기본문법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
-      <img src="portal/images/black_코딩등그림판/JQuery기본문법_03.png" alt="이미지없음" style="vertical-align: top;">
-      <img src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img data-src="portal/images/black_코딩등그림판/JQuery기본문법_01.png" alt="이미지없음" style="vertical-align: top;">
+      <img data-src="portal/images/black_코딩등그림판/JQuery기본문법_02.png" alt="이미지없음" style="vertical-align: top;"><br>
+      <img data-src="portal/images/black_코딩등그림판/JQuery기본문법_03.png" alt="이미지없음" style="vertical-align: top;">
+      <img data-src="portal/images/black_코딩등그림판/JQuery기본문법_04.png" alt="이미지없음" style="vertical-align: top;"><br>
       <br><br><br><br><br><br><br>
     </div>
     <div id="j쿼리">
@@ -3458,20 +3458,20 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
     </div>
     <section id="_02_html_파순01_읽는순서">
       <h4>1. 순서대로 읽되 script 만났을때, 에러코드 이후 실행 안되고 새롭게.</h4>
-      <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_01_읽는순서.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_01_읽는순서.png" alt="이미지없음">
       <h4>2. 함수안의 변수가 script에 기본실행 변수이면 위치에 상관없이 인식됨.</h4>
       <h4>3. script파일 읽어올때 실행되는 동작 (project ul 높이 변경)</h4>
       <li>A. [F5]새로고침이나 html파일 링크로 이동시 script파일안의 함수를 제외한 모든 코드 실행됨.</li>
       <li>B. project에 사용된 코드 : 여러개의 ul 높이를 비교하여 최대높이로 통일시키는 동작.</li>
       <li>ul 높이 변경 실행 전,후 비교</li>
-      <img src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_02_ul높이전후.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/02_html_파순01_읽는순서_02_ul높이전후.png" alt="이미지없음">
       <h4>4. script파일 이벤트리스너 실행 과정</h4>
       <li>A. 이벤트 감지하여 링크된 script파일에 정의된 내용을 실행한다.</li>
       <li>B. 이벤트리스너란? html(화면)에서 일어난 일들을 감지하는 것.</li>
@@ -4388,7 +4388,7 @@ console.log(속성명, ':', 객체2[속성명]);
         <h5 class="fw-bold">- 모두 함수인데, 표현방식에 따라 다르게 부른다. - </h5>
         <h6 class="fw-bold">• 선언적함수(함수선언문, 함수표현식), 익명함수(함수표현식), 화살표함수 </h6>
         <h6 class="fw-bold" style="text-indent: 10px;">1. 선언적함수(함수선언문) : function 함수이름( ) { '코드' }; </h6>
-        <img src="portal/images/문서연결_엑셀VBA/일반함수구조.png" alt="이미지없음" style="margin-left:10px;border:1px solid black;"><br>
+        <img data-src="portal/images/문서연결_엑셀VBA/일반함수구조.png" alt="이미지없음" style="margin-left:10px;border:1px solid black;"><br>
         <h6 class="fw-bold" style="text-indent: 10px;">[출처] : https://velog.io/@boyeon_jeong/자바스크립트-함수 </h6>
         <h6 style="text-indent: 10px;">- 매개변수(파라미터, 인자) : 함수 정의할때, 인수 : 함수 호출할때</h6>
         <h6 class="blueviolet fw-bold" style="text-indent: 10px;">- 함수의 매개변수(파라미터)도 변수이므로 모든값이 올 수 있다. </h6>
@@ -5047,7 +5047,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
           <code class="자료형표색칠"><div>let 자료 = document;</div><div>[object HTMLDocument]</div><div>object</div></code>
           <code class="자료형표색칠"><div>let 자료 = document.querySelector('button');</div><div>[object HTMLButtonElement]</div><div>object</div></code>        
         </div>
-        <h6><img src="portal/images/문서연결_엑셀VBA/자료형8종.png" alt="이미지없음" style="margin-left:20px;"></h6>
+        <h6><img data-src="portal/images/문서연결_엑셀VBA/자료형8종.png" alt="이미지없음" style="margin-left:20px;"></h6>
 
 
 
@@ -5146,7 +5146,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6 class="fw-bold 띄움41">내장객체에 정의해 놓은 기능들을 상속받아 사용할수 있게 </h6> 
         <h6 class="fw-bold 띄움20">c) Object.prototype, Array.prototype ... 에서, prototype은 함수객체의 속성 중 하나이다.</h6> 
         <h6 class="fw-bold 띄움20">a) </h6> 
-        <h6><img src="portal/images/문서연결_엑셀VBA/변수세가지.png" alt="이미지없음" style="margin-left:20px;"></h6>
+        <h6><img data-src="portal/images/문서연결_엑셀VBA/변수세가지.png" alt="이미지없음" style="margin-left:20px;"></h6>
 
 
 
@@ -5397,12 +5397,12 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <div>
           <h6 class="fw-bold">5. Array객체의 prototype 예시 <span class="d-inline-block" style="text-indent: 150px;">Object 객체의 prototype 예시</span>
           </h6>
-          <img src="portal/images/문서연결_엑셀VBA/array_prototype.png" alt="이미지없음" class="align-top d-inline-block">
+          <img data-src="portal/images/문서연결_엑셀VBA/array_prototype.png" alt="이미지없음" class="align-top d-inline-block">
           <div  class="align-top d-inline-block" style="margin-left:85px;">
-            <img src="portal/images/문서연결_엑셀VBA/object_prototype.png" alt="이미지없음">
+            <img data-src="portal/images/문서연결_엑셀VBA/object_prototype.png" alt="이미지없음">
             <br><br>
             <h6 class="fw-bold">console.log(Object.getOwnPropertyNames(Object.prototype));</h6>
-            <img src="portal/images/문서연결_엑셀VBA/object_prototypeget.png" alt="이미지없음">
+            <img data-src="portal/images/문서연결_엑셀VBA/object_prototypeget.png" alt="이미지없음">
 
 
           </div>
@@ -5440,7 +5440,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
       <div>
         <h6 class="fw-bold">1) 객체의 종류별로 prototype 속성이 있고, 그 안에 미리 정의해 놓은 속성과 값(메소드)가 있다. </h6>
 
-        <img src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_PROJECT/prototype체인.png" alt="이미지없음">
       </div>
     </div>
 
@@ -5513,12 +5513,12 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6 style="text-indent: 23px;"></h6>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
     </div>
     <div id="excel_js파일유의사항">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <img src="portal/images/문서연결_엑셀VBA/js예제.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/js예제.png" alt="이미지없음">
         <h5 class="fw-bold">"예제아이디의 문자열", 
           <span style="color:blueviolet">"예제아이디 내, span태그의 문자열"</span>
         </h5>
@@ -5541,7 +5541,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6 style="text-indent: 23px;"></h6>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -5549,7 +5549,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
 
     <div id="excel_js_scroll">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <img src="portal/images/문서연결_엑셀VBA/js_scroll.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/js_scroll.png" alt="이미지없음">
         <code class="fw-bold">if (선택이벤트설명요소) {</code>
         <code class="fw-bold" style="text-indent: 15px;">선택이벤트설명요소.classList.add('선택이벤트설명요소색칠');</code>
         <code class="fw-bold" style="text-indent: 15px;">var 절대좌표 = window.scrollY + 선택이벤트설명요소.getBoundingClientRect().top;</code>
@@ -5565,7 +5565,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -5587,7 +5587,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -5597,7 +5597,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold">문자열.indexOf(searchValue[, fromIndex]), 문자열.lastIndexOf(searchValue[, fromIndex])</h5>
         <code class="fw-bold">• 대소문자 구분없이 검색하려면 : 문자열.toLowerCase().indexOf('찾는문자열소문자');</code>
-        <img src="portal/images/문서연결_엑셀VBA/indexOf.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/indexOf.png" alt="이미지없음">
         <h5 class="fw-bold"></h5>
         <code class="fw-bold"></code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -5606,7 +5606,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
         <code class="fw-bold">• </code>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -5644,10 +5644,10 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <img src="portal/images/문서연결_엑셀VBA/split예제.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/split예제.png" alt="이미지없음">
       </div>
     </div>
 
@@ -5663,16 +5663,16 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold">• 일치하는 부분이 발견되면 해당 부분을 포함하는 배열을 반환하며,</code>
         <code class="fw-bold">• 일치하는 부분이 없으면 null 을 반환합니다.</code>
         <code class="fw-bold">• match() 함수의 매개변수가 없을 경우, 다시 말해 아무런 인자를 전달하지 않을 경우 배열에 빈 문자열("")을 반환합니다.</code>
-        <img src="portal/images/문서연결_엑셀VBA/match2.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/match2.png" alt="이미지없음">
         <code class="fw-bold">• 이메일 주소, 전화번호, URL과 같은 특정 패턴의 문자열을 검사할 때 유용합니다.</code>
         <code class="fw-bold" style="color:blueviolet">• 있나 없나 확인, 플래그g로 모두 찾으면 몇 개 있나 확인 가능 </code>
-        <img src="portal/images/문서연결_엑셀VBA/match.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/match.png" alt="이미지없음">
         <code class="fw-bold" style="color:blueviolet">• 바꾸기 : console.log(문자열.replace(문자패턴,'오렌지'));</code>
         <span style="color:blueviolet"></span>
         <h6></h6>
         <code class="fw-bold" style="text-indent: 15px;"></code>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
@@ -5698,7 +5698,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold">• var 문자열='abc12_abc123_abc1234'</code>
         <code class="fw-bold" style="text-indent: 15px;">var 문자패턴=/aBc\d{3}/i '설명 : \d=숫자, {3}=3개, i플래그=대소문자구분없음 </code>
         <code class="fw-bold" style="text-indent: 15px;">문자패턴 설명 : aBc로 시작되고(플래그i로 대소문자 구분이 없이), 연속으로 숫자 3개가 있는 문자열 </code>
-        <img src="portal/images/문서연결_엑셀VBA/정규식.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/정규식.png" alt="이미지없음">
         <code class="fw-bold">• m : 뒤에서 배울 입력 시작(^) 앵커나 입력 종료($) 앵커는 전체 문자열이 아닌 각 줄 별로 대응되게 만들어졌기 때문에, </code>
         <code class="fw-bold" style="text-indent: 15px;">만일 여러줄을 검색해야 한다면 m 플래그를 사용한다고 보면 된다</code>
         <br>
@@ -5708,11 +5708,11 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold" style="color:blueviolet">• 정규식에 문자열 전달시 내부적으로 자동으로 / /로 감싸게되니 / /를 넣지않도록 한다.</code>
         <br>
         <h5 class="fw-bold" style="font-size:19px;">변수사용 방법 : new RegEXP('문자열', '플래그')</h5>
-        <img src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
         <br><br>
         <h5 class="fw-bold">/regexr/i : ①/(시작,종료기호)  ②regexr(패턴표현)  ③/(시작,종료기호)  ④i(플래그)</h5>
         <br>
-        <img src="portal/images/문서연결_엑셀VBA/match3.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/match3.png" alt="이미지없음">
         <code class="fw-bold">• emailPattern : /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;</code>
         <code class="fw-bold">• phonePattern : /\d{3}-\d{4}-\d{4}/g;</code>
         <code class="fw-bold">• urlPattern : /\b(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-z]{2,})+(?:\/[^\s]*)?\b/g;</code>
@@ -5726,7 +5726,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
@@ -5735,7 +5735,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold">• ^문자열 : 문자열로 시작되는, 대괄호 안의 ^ ([^문자열]) : 각각의 문자열로 시작되지 않는 것 (제외)</code>
         <code class="fw-bold" style="text-indent: 15px;">ex : [^abc] : a 또는 b 또는 c 로 시작되지 않는 것, + : 앞에꺼(한글자 또는 그룹된것) 최소 한개 or 여러개</code>
         <code class="fw-bold" style="text-indent: 15px;">? : 없거나 or 최대 한개만, ^abc : abc로 시작되는 </code>
-        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- html태그패턴 : /<[^>]+>/g; => &#60;img src="" alt="이미지없음"></code>
+        <code class="fw-bold" style="text-indent: 15px;color:blueviolet">- html태그패턴 : /<[^>]+>/g; => &#60;img data-src="" alt="이미지없음"></code>
         <code class="fw-bold" style="text-indent: 30px;">< 로 시작되고 > 가 아닌거 최소한글자 후 > 로 끝나는것 플래그 g 모두</code>
 
         <code class="fw-bold">• \특수기호 : 특수기호 \* \^ \& \! \? 등, . 도 특수기호?, 대괄호 안은 or 의미 [abc] : "a" 또는 "b" 또는 "c" 를 포함하는</code>
@@ -5765,13 +5765,13 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
             </span>child span2찾기, 
           </span>시작2찾기 
         </code>
-        <img src="portal/images/문서연결_엑셀VBA/바탕색예제.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/바탕색예제.png" alt="이미지없음">
         <code class="fw-bold"">• html태그패턴 : /<[^>]+>/g; : 태그 형식 추출</code>
-        <img src="portal/images/문서연결_엑셀VBA/바탕색예제_태그형식추출.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/바탕색예제_태그형식추출.png" alt="이미지없음">
         <code class="fw-bold"">• html태그패턴 아닌것 : /(?![^<]*>)찾기/g; : 태그 형식 무시하고, '찾기' 추출</code>
         <code class="fw-bold" style="text-indent: 15px;">- [^<]부분을 [ ] 제외하면 안됨. 잘 모르겠다.</code>
         <code class="fw-bold" style="text-indent: 15px;">- '찾기' 부분 변수사용 방법 : 정규식을 객체로 사용</code>
-        <img src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
         <code class="fw-bold" style="text-indent: 45px;"></code>
         <code class="fw-bold"">• </code>
         <code class="fw-bold"">• </code>
@@ -5811,7 +5811,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
         <span style="color:blueviolet"></span>
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
@@ -5826,13 +5826,13 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold">2) innerHTML을 변경하여 사용해야하고, 바꿀값은 태그내의 내용을 제외하고 싶다면, <span style="color:blueviolet">정규식활용 </span></code>
         <br>
 
-        <img src="portal/images/문서연결_엑셀VBA/노드예제2.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/노드예제2.png" alt="이미지없음">
         <br>
 
 
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <img src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
         <code class="fw-bold"><!--주석노드-->
           시작부분텍스트(없으면 노드가 없음), 
           <span style="color:blueviolet">span텍스트 
@@ -5851,7 +5851,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold">• 참고 : 2) innerText를 변경하면 'innerHTML = 변경된 innerText'</code>
         <br>
         <h5 class="fw-bold">변수사용 참고</h5>
-        <img src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/정규식변수사용.png" alt="이미지없음">
         <br><br>
         <h5 class="fw-bold">방법결정 : 태그 안의 내용은 그냥 두고, text부분만 변경 replace(/정규식/igm,'바꿀값')</h5>
         <code class="fw-bold">• 플래그 i : 대소문자 구분없음, 플래그 g : 모두, 플래그 m : 행이 바뀌더라도 검색 계속 </code>
@@ -5865,7 +5865,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
 
       </div>
     </div>
@@ -5881,7 +5881,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
 
@@ -6035,14 +6035,14 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6 style="color:blueviolet;font-weight: bold;text-indent: 21px;"> 다음의 JavaScript(JavaScript) 코드를 사용하실 수 있습니다: radians = (Math.PI/180)*degrees.</h6>
         <h6>※ 이미지 넣기. 다음 코드는 두번 실행해야 이미지가 나온다.</h6>
         <h6 style="text-indent: 21px;">var 이미지객체=new Image();</h6>
-        <h6 style="text-indent: 21px;">이미지객체.src='portal/images/문서연결_엑셀VBA/원호.png';</h6>
+        <h6 style="text-indent: 21px;">이미지객체.data-src='portal/images/문서연결_엑셀VBA/원호.png';</h6>
         <h6 style="text-indent: 21px;">그리기.drawImage(이미지객체,0,0,100,100); //(이미지객체,x,y,width,height), 너비와 폭 생략 가능</h6>
         <h6>※ 이미지 넣기</h6>
         <h6 style="text-indent: 21px;">var 이미지객체=new Image();</h6>
-        <h6 style="text-indent: 21px;">이미지객체.src='portal/images/문서연결_엑셀VBA/원호.png';</h6>
+        <h6 style="text-indent: 21px;">이미지객체.data-src='portal/images/문서연결_엑셀VBA/원호.png';</h6>
         <h6 style="text-indent: 21px;color:blueviolet;font-weight: bold;">이미지객체.onload=function() {그리기.drawImage(이미지객체,0,0);}</h6>
         <h6>※ 베지어(Bezier) 곡선과 이차(Quadratic )곡선</h6>
-        <img src="portal/images/문서연결_엑셀VBA/베지어곡선.png" alt="이미지없음" style="display: inline-block;vertical-align: top;">
+        <img data-src="portal/images/문서연결_엑셀VBA/베지어곡선.png" alt="이미지없음" style="display: inline-block;vertical-align: top;">
         <div style="display: inline-block;background-color: aqua;width:700px;">
           <h6 style="color:blueviolet;font-weight: bold;">• 앞서 시작점을 설정한다 : 그리기.moveTo(x,y);</h6>
           <h6>• 이차(Quadratic )곡선 : quadraticCurveTo(cp1x, cp1y, x, y)</h6>
@@ -6102,7 +6102,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -6128,7 +6128,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6 class="fw-bold"> (엔터 또는 스페이스바 또는 텍스트=text 노드, 태그사이에 스페이스바나 엔터가 있으면 text로 인식된다.)</h6>
         <h6>• console.log(document.querySelector('#S1_해역사진').childNodes); </h6>
         <h6 style="text-indent: 23px;">NodeList(8) [text, div, comment, text, div, text, div, text]</h6>
-        <img style="position:absolute;left:600px;" src="portal/images/black_코딩등그림판/참고_S1_해역사진_childNodes.png" alt="이미지없음">
+        <img style="position:absolute;left:600px;" data-src="portal/images/black_코딩등그림판/참고_S1_해역사진_childNodes.png" alt="이미지없음">
         <h6 style="text-indent: 23px;">0 : text ==> 첫번째는 text노드, 다음 div사이의 엔터</h6>
         <h6 style="text-indent: 23px;">1 : div  ==> 두번째는 div이다</h6>
         <h6 style="text-indent: 23px;">2 : comment ==> 세번째 주석노드 : &lt;!-- fixed --&gt;부분</h6>
@@ -6165,7 +6165,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
             document.querySelector('#클릭시이미지토글').classList.add('d-none');
           }
           " style="color:blueviolet">[클릭시 img 토글]</span>kim.html > 메모div내_집구조전체(e) > preventDefault() 작동하지 않는이유 </code>
-        <img id="클릭시이미지토글" class="d-none" src="portal/images/문서연결_엑셀VBA/preventDefault작동하지않는이유.png" alt="이미지없음">
+        <img id="클릭시이미지토글" class="d-none" data-src="portal/images/문서연결_엑셀VBA/preventDefault작동하지않는이유.png" alt="이미지없음">
         <h5 class="fw-bold">마우스이벤트 종류</h5>
         <code class="fw-bold">1. click(이전에 mousedown 이벤트 발생) : element를 클릭했을 때(버튼을 눌렀다가 떼었을 때) </code>
         <code class="fw-bold">2. mousedown : element에 마우스 버튼을 눌렀을 때</code>
@@ -6194,7 +6194,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <code class="fw-bold">• 모바일에서 click : touch up & down, mouse up & down 이 실행된다.</code>
         <code class="fw-bold">• touch(모바일만) : display를 touch 했을때,  up, down, move 등이 이벤트</code>
       </div>
-      <br><br><img src="portal/images/문서연결_엑셀VBA/마우스이벤트코드.png" alt="이미지없음">
+      <br><br><img data-src="portal/images/문서연결_엑셀VBA/마우스이벤트코드.png" alt="이미지없음">
       <div style="display:inline-block;vertical-align: top;">
         <h6 class="fw-bold">1. 움직이고자 하는 요소에 이벤트리스너 걸고, mousedown 함수 등록한다.</h6>
         <h6 class="fw-bold">2. 1.의 함수 안에, 윈도우에 리스너 걸고, mousemove시 좌표변화에 따라 새로운 좌표로 변경하는 동작</h6>
@@ -6235,7 +6235,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <br>
         <code class="fw-bold">3. appendChild는 위의, <span style="color:blueviolet">ⓐ Node object 사용 예시</span> 형식으로만 사용 됨. 문자열을 넣을 수 없음. </code>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <!-- <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;"> -->
+        <!-- <embed id="embed부분" data-src="" width=1000px height=870px style="border:1px solid black;"> -->
         <h5 class="fw-bold"></h5>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -6243,7 +6243,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">요소에 속성 추가하기, element.setAttribute(속성명, 속성값); : <span style="color:blueviolet">속성명 아무거나 써도 됨</span></h5>
@@ -6333,7 +6333,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -6412,7 +6412,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
 
     <section id="_04_javascript_파순01_코딩작성규칙">
       <h4>1.javascript는 한줄씩 실행된다? 이것저것</h4>
-      <img src="portal/images/문서연결_PROJECT/04_javascript_파순01_코딩작성규칙_01_작성규칙이것저것.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/04_javascript_파순01_코딩작성규칙_01_작성규칙이것저것.png" alt="이미지없음">
       <h4>2. if (변수 !== null) {}</h4>
       <br><br><br><br>
     </section>
@@ -6535,7 +6535,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
     </section>
 
     <div id="JS_CANVAS선긋기txt">
-      <embed src="portal/images/black_코딩등메모장/JS_CANVAS선긋기.txt" width=920px height=1030px style="border:1px solid black;">
+      <embed data-src="portal/images/black_코딩등메모장/JS_CANVAS선긋기.txt" width=920px height=1030px style="border:1px solid black;">
     </div>  
 
     <div id="JS_input_value_숫자표현결과_조건표현인자">
@@ -6573,7 +6573,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
       <h5>▢ 같은 element에 각각 다른 이벤트를 걸수있다. ex)click, dbclick, change</h5>
       <h5>★★ 클릭한 요소의 순서 : e.target.classList.add해주고 찾는형식??</h5>
       <h5>▢ 이벤트리스너 이벤트 종류</h5>
-      <img src="portal/images/black_코딩등그림판/jQuery_이벤트리스너이벤트종류_01.png" alt="이미지없음" style="vertical-align: top;">
+      <img data-src="portal/images/black_코딩등그림판/jQuery_이벤트리스너이벤트종류_01.png" alt="이미지없음" style="vertical-align: top;">
       <br><br><br><br><br><br><br>
     </div>
     <div id="JS_search_find_match사용법">
@@ -6675,7 +6675,7 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <br>var result5 = str.slice(-4, 5); // 결과 : "스크립"
         <br>var result6 = str.slice(2, -1); // 결과 : "스크립"
       </code>
-        <img src="portal/images/black_코딩등그림판/JS_문자열자르기_substr_substring_slice_slice캡쳐.png" alt="이미지없음"
+        <img data-src="portal/images/black_코딩등그림판/JS_문자열자르기_substr_substring_slice_slice캡쳐.png" alt="이미지없음"
           style="vertical-align: top;">
       </div>
       <div style="width:800px;display:inline-block;border-left:1px solid black;margin-left:-5px;padding-left:5px;">
@@ -6797,17 +6797,17 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
     </section>
 
     <div id="JS2_getComputedStyle_토글이미지_속성관련메모몇개">
-      <embed src="portal/images/문서연결_엑셀VBA/JS_style제어_css제어_01.txt" width=920px height=1030px style="border:1px solid black;">
+      <embed data-src="portal/images/문서연결_엑셀VBA/JS_style제어_css제어_01.txt" width=920px height=1030px style="border:1px solid black;">
     </div>  
 
     <div id="_04_javascript_every와some">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold"><a href="https://niceman.tistory.com/78" target="_blank">every</a> </h5>
-        <img src="portal/images/문서연결_엑셀VBA/every.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/every.png" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">some</h5>
-        <img src="portal/images/문서연결_엑셀VBA/some.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/some.png" alt="이미지없음">
       </div>
     </div>
 
@@ -7232,7 +7232,7 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
     <div id="excel_js_HTML노드">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold"></h5>
-        <img src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/노드예제.png" alt="이미지없음">
         <code class="fw-bold">
           시작부분텍스트(없으면 노드가 없음), 
           <span style="color:blueviolet">span텍스트 
@@ -7314,7 +7314,7 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold">분석자료 - 번호추출</h5>
         <code class="fw-bold">• 분석자료 - 번호추출</code>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
         <h5 class="fw-bold"></h5>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -7322,12 +7322,12 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">추출된번호 - 필터링조건표</h5>
         <code class="fw-bold">• </code>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
         <h5 class="fw-bold"></h5>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -7335,7 +7335,7 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
     </div>
     
@@ -7349,7 +7349,7 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -7694,33 +7694,33 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
         <a href="" target="_blank"></a>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
     </div>   
     
     <section id="_02_html_파순03_박스모델">
       <h4>1. 박스모델, box-sizing</h4>
-      <img src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_01_박스모델.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_01_박스모델.png" alt="이미지없음">
       <br>
       <h4>2. dispaly</h4>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex0.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex0.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex1.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex1.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex2.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex2.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex3.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_02_flex3.png" alt="이미지없음">
       <br>
       <h4>3. position</h4>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position1.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position1.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position2.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position2.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position3.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position3.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position4.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position4.png" alt="이미지없음">
       <br>
-      <img class="png패딩" src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position5.png" alt="이미지없음">
+      <img class="png패딩" data-src="portal/images/문서연결_PROJECT/02_html_파순03_박스모델_03_position5.png" alt="이미지없음">
       <br><br><br><br>
     </section>
 
@@ -7923,12 +7923,12 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
     <div id="textarea내용의탭으로구분여러줄가공">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <div style="display: inline-block;vertical-align: top;">
-          <img src="portal/images/문서연결_엑셀VBA/엑셀범위복사상태.png" alt="이미지없음">
+          <img data-src="portal/images/문서연결_엑셀VBA/엑셀범위복사상태.png" alt="이미지없음">
         </div>
         <h6 class="fw-bold" style="color:blueviolet;"">★ innerText 를 기준으로 하면 탭과 줄바꿈이 모두 없어진다. length=1 <span style="background-color: chartreuse;color:black;">★ => innerHTML 로 할것!!</span></h6>
         <h6 class="fw-bold" style="color:blueviolet;"">★ vsCode에서 탭을 누르면 두칸 공백(실제 탭이 들어가지는 않음), 엑셀범위 복붙하면 가로 셀과 셀사이에 탭(\t)이 들어감. </h6>
         <h6 class="fw-bold">1. span태그 inline 속성, inline-block 속성 : \t 분리. \n 분리. <span style="color:blueviolet">(\r\n 분리안됨 : 일단 안씀)</span></h6>
-        <img src="portal/images/문서연결_엑셀VBA/엑셀범위텍스트split.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/엑셀범위텍스트split.png" alt="이미지없음">
         <br>
         <h6 class="fw-bold" style="text-indent: 15px;">- \n 개별값을 \t 로 split할수 있고, 하나의 배열에 넣으려면 \n을 \t로 변경한 후에 split 하면 된다.</h6>
         <code style="color:blueviolet;display: inline-block;text-indent: 25px;" class="fw-bold">텍스트.replace(/\n/gim,'\t').split('\t') : </code>
@@ -7998,7 +7998,7 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
 
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <img src="portal/images/문서연결_엑셀VBA/html_text_content_탭과줄바꿈.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/html_text_content_탭과줄바꿈.png" alt="이미지없음">
 
       </div>
     </div>
@@ -8199,7 +8199,7 @@ header .menu li:nth-child(2)
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -8267,7 +8267,7 @@ header .menu li:nth-child(2)
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold" style="color:blueviolet">그림 회전 방법 (요소)</h5>
@@ -8378,7 +8378,7 @@ header .menu li:nth-child(2)
 
     <div id="excel_js파일유의사항">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <img src="portal/images/문서연결_엑셀VBA/js예제.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/js예제.png" alt="이미지없음">
         <h5 class="fw-bold">"예제아이디의 문자열", 
           <span style="color:blueviolet">"예제아이디 내, span태그의 문자열"</span>
         </h5>
@@ -8401,24 +8401,24 @@ header .menu li:nth-child(2)
         <h6 style="text-indent: 23px;"></h6>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
     </div>
 
     <div id="excel_js_속성선택자">
-      <embed src="portal/images/문서연결_엑셀VBA/CSS_특정상황_속성등_스타일.txt" width=910px height=900px style="border:1px solid black;">
+      <embed data-src="portal/images/문서연결_엑셀VBA/CSS_특정상황_속성등_스타일.txt" width=910px height=900px style="border:1px solid black;">
     </div>
 
     <section id="_03_개념정리_파순01_요소속성선택자">
       <h4>1.html요소(태그) 구조</h4>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_01_요소.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_01_요소.png" alt="이미지없음">
       <br><br><br><br>
     </section>
 
     <div id="CSS_이미지_배경에서_일부분만txt">
-      <embed src="portal/images/black_코딩등메모장/CSS_이미지_배경에서_일부분만.txt" width=910px height=900px style="border:1px solid black;">
+      <embed data-src="portal/images/black_코딩등메모장/CSS_이미지_배경에서_일부분만.txt" width=910px height=900px style="border:1px solid black;">
     </div>
 
     <div id="_class">
@@ -8437,19 +8437,19 @@ header .menu li:nth-child(2)
       <h4>1.querySelectorAll(선택자표현), querySelector(선택자표현)으로 사용된다.</h4>
       <br>
       <h4>2.후손,자손,형제, 선택자 종류 및 표현방법</h4>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_02_선택자.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_02_선택자.png" alt="이미지없음">
       <br>
       <h4>3.후손(공백)과 자손(>) 선택 예제</h4>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_03_자손후손.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_03_자손후손.png" alt="이미지없음">
       <br>
       <h4>4.같은레벨 형제(+, ~) 선택 예제</h4>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_04_형제.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_04_형제.png" alt="이미지없음">
       <br>
       <h4>5.속성 선택자. [속성명], [속성명="속성값"]</h4>
       <li>속성명과 속성값은 아무거나 "새롭게" 만들어도 된다.</li>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명1.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명1.png" alt="이미지없음">
       <br>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명2.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_05_속성명2.png" alt="이미지없음">
       <br>
       <h4 id="move6">&#9634; project 선택자 사용 참고</h4>
       <h5>A. document.querySelector('#결과 > div > div:not(:nth-first-child) > #스크롤이동3'); </h5>
@@ -8461,7 +8461,7 @@ header .menu li:nth-child(2)
       <h5 class="li_들작">또는</h5>
       <h5 class="li_들작">var 아이디='#' + event.target.id; </h5>
       <h5 class="li_들작">var 스크롤요소 = document.querySelector('#결과 > div > div:not(:nth-first-child) > ' + 아이디);</h5>
-      <img src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_06_스크롤이동선택자.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_PROJECT/03_개념정리_파순01_요소속성선택자_06_스크롤이동선택자.png" alt="이미지없음">
       <br><br><br><br>
     </section>
 
@@ -8707,27 +8707,27 @@ header .menu li:nth-child(2)
     
 
     <div id="참고_특수문자txt">
-      <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
+      <embed style="border:1px solid black;background-color: white;" data-src="portal/images/black_코딩등메모장/참고_특수문자.txt" width=1000px height=870px>
     </div>
 
     <div id="참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화txt">
-      <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt" width=1000px height=870px>
+      <embed style="border:1px solid black;background-color: white;" data-src="portal/images/black_코딩등메모장/참고_코딩시불편함참고_ctrl_f활용위해_같은단어최소화.txt" width=1000px height=870px>
     </div>
 
     <div id="참고_클래스아이디숫자안됨txt">
-      <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_클래스아이디숫자안됨.txt" width=1000px height=870px>
+      <embed style="border:1px solid black;background-color: white;" data-src="portal/images/black_코딩등메모장/참고_클래스아이디숫자안됨.txt" width=1000px height=870px>
     </div>
 
     <div id="참고_메모장에서열면ancitxt">
-      <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_메모장에서열면anci.txt" width=1000px height=870px>
+      <embed style="border:1px solid black;background-color: white;" data-src="portal/images/black_코딩등메모장/참고_메모장에서열면anci.txt" width=1000px height=870px>
     </div>
 
     <div id="참고_구글_그림에서데이터추출txt">
-      <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_구글_그림에서데이터추출.txt" width=1000px height=870px>
+      <embed style="border:1px solid black;background-color: white;" data-src="portal/images/black_코딩등메모장/참고_구글_그림에서데이터추출.txt" width=1000px height=870px>
     </div>
     
     <div id="참고_더하기_숫자_소수점_변수에러상황txt">
-      <embed style="border:1px solid black;background-color: white;" src="portal/images/black_코딩등메모장/참고_더하기_숫자_소수점_변수에러상황.txt" width=1000px height=870px>
+      <embed style="border:1px solid black;background-color: white;" data-src="portal/images/black_코딩등메모장/참고_더하기_숫자_소수점_변수에러상황.txt" width=1000px height=870px>
     </div>
   </div>
   <div title="통신,서버전체">
@@ -9009,7 +9009,7 @@ express가 필요로 하는 다른 패키지들도 함께 다운로드
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
         <h6 class="blueviolet fw-bold">여러개 동시에 설치 : npm install express axios xml2js</h6>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지1.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지1.png" alt="이미지없음">
         <pre class="fw-bold"></pre>
       </div>
       <div>
@@ -9028,7 +9028,7 @@ express가 필요로 하는 다른 패키지들도 함께 다운로드
 
       </div>
       <div>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지2.png" alt="이미지없음"><br><br>
+        <img data-src="portal/images/문서연결_샷컷/개념_nodejs관련3_이미지2.png" alt="이미지없음"><br><br>
         <h6 class="blueviolet fw-bold">● npm 설치는 server.js 내부에서 가져올수 있는 상태이다.</h6>
         <pre class="fw-bold">
      <span class="blueviolet">npm install express 로 설치하였을때, server.js 내부에서 사용하려면</span>
@@ -9306,7 +9306,7 @@ form 데이터 파싱</pre>
        차후에 정적서버는 깃허브페이지 주소로 접근하면 된다.
        개발시 server.js 코드 변경시 → 서버 재시작
        정적서버 파일 내용 수정시는 → 페이지 새로고침 (정적서버 재설정 필요 없음)</pre>
-       <img src="portal/images/문서연결_샷컷/통신_구현할것1.png" alt="이미지없음">
+       <img data-src="portal/images/문서연결_샷컷/통신_구현할것1.png" alt="이미지없음">
        
 
       </div>
@@ -9517,7 +9517,7 @@ let 내부요소찾기 = node.querySelectorAll('div'); </span></pre>
       </div>
       <div style="width:1200px;position: relative;">
         <div style="position: absolute; left:730px;">
-          <img src="portal/images/문서연결_샷컷/통신_xml다루기_01.png" alt="이미지없음">
+          <img data-src="portal/images/문서연결_샷컷/통신_xml다루기_01.png" alt="이미지없음">
         </div>        
         <pre class="fw-bold">
 async function call() { 
@@ -10723,7 +10723,7 @@ GitHub에 업로드할 ZIP 파일 형태로도 만들어 드릴까요?
     <div id="개념_nodejs폴더개수" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <img src="portal/images/문서연결_샷컷/개념_nodejs폴더트리.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_샷컷/개념_nodejs폴더트리.png" alt="이미지없음">
       </div>
     </div>
     <div id="개념_CORS" class="대체3줄">
@@ -11593,7 +11593,7 @@ const 파싱문자열 = await res.text();
     <div id="개념_nodejs관련6">
       <div class="대체3줄">
         <div>
-          <img src="portal/images/문서연결_샷컷/개념_nodejs관련6_이미지1.png" alt="이미지없음" style="position: absolute;top:280px;">
+          <img data-src="portal/images/문서연결_샷컷/개념_nodejs관련6_이미지1.png" alt="이미지없음" style="position: absolute;top:280px;">
           <h6 class="blueviolet fw-bold">● 정적서버와 api서버를 한몸처럼 다루어야하지만 둘은 결국 별개이다</h6>
           <pre class="fw-bold">
 <span class="blueviolet">1. 서버(server)는 네트워크를 통해 서비스하는 컴퓨터, 주소예시 : http나 https로 시작</span> 
@@ -13409,7 +13409,7 @@ https://www.youtube.com/watch?v=J2-utZUP-Ig&list=WL&index=9
     <div id="gle_일단참고" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <img src="portal/images/문서연결_샷컷/gle_일단참고_01.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_샷컷/gle_일단참고_01.png" alt="이미지없음">
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
 여기는 **Opal의 Theme editor(테마 편집기)**야.
@@ -13515,7 +13515,7 @@ SF 클레이메이션 고양이
     </div>
     <div id="플로우_통신js코드">
       <div>
-        <img src="portal/images/문서연결_샷컷/통신js코드_워크플로우_01.png" alt="이미지없음">
+        <img data-src="portal/images/문서연결_샷컷/통신js코드_워크플로우_01.png" alt="이미지없음">
       </div>
     </div>
     <div id="프롬프트_1" class="대체3줄">
@@ -13589,7 +13589,7 @@ ESLint, Prettier, GitLens, Live Server, Docker, Python Extension,
       <div>
         <h6 class="fw-bold">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
         <pre class="fw-bold">
-img.src = img.dataset.src;
+img.data-src = img.dataset.data-src;
           
         </pre>
       </div>
@@ -13954,7 +13954,7 @@ page-break-* 적극 사용
         <h6 class="fw-bold" style="text-indent: 45px;color:blueviolet;">//탐색기에서 폴더를 선택했는데 FileList 객체 형태로 files 속성에 저장되는 형태 설명.</h6>
         <h6 class="fw-bold" style="text-indent: 45px;color:blueviolet;">//1. json형태 : &#123; 속성명 : 속성값 &#125;</h6>
         <h6 class="fw-bold" style="text-indent: 70px;color:blueviolet;">현재는 속성명이 0부터 순번(문자열 됨), 속성값은 json요소(file정보)</h6>
-        <img src="portal/images/문서연결_엑셀VBA/filelist객체.png" style="margin-left:55px;" alt="이미지없음">
+        <img data-src="portal/images/문서연결_엑셀VBA/filelist객체.png" style="margin-left:55px;" alt="이미지없음">
         <h6 class="fw-bold" style="text-indent: 45px;color:blueviolet;">//2. 첫번째꺼 선택방법(순번아닌 name): fileInput.files[0], fileInput.files['0']</h6>
         <h6 class="fw-bold" style="text-indent: 45px;color:blueviolet;">//3. 2.번의 속성명(name과 webkitRealtivePath)과 속성값 사용방법.</h6>
         <h6 class="fw-bold" style="text-indent: 74px;color:blueviolet;">fileInput.files[0].name ==>'08_검품확인_메뉴접근.png'</h6>
@@ -14049,7 +14049,7 @@ page-break-* 적극 사용
 
     <div id="기타전체_파일내용">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h5 class="fw-bold">textarea에 html 내용복사하여 src="portal/images/...." 이용하는 코드.</h5>
+        <h5 class="fw-bold">textarea에 html 내용복사하여 data-src="portal/images/...." 이용하는 코드.</h5>
         <code class="fw-bold">• html파일마다 있다 : &#60;div id="html파일이름" style="display:none">index.html&#60;/div> </code>
         <code class="fw-bold">1) &#60;input type="file"  webkitdirectory&#62; 에서 'images'폴더 선택하여 모든 파일리스트 출력해놓기.</code>
         <input onclick="파일리스트();" type="file" id="file_input" webkitdirectory> <span style="color:blueviolet">function 파일리스트() : 'images' 폴더를 선택해야 한다.</span>
@@ -14060,10 +14060,10 @@ page-break-* 적극 사용
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <code class="fw-bold">2) textarea 1개? 여러개?에 html내용 복붙해놓고 1)의 경로 src가 있으면 ⓑ에 'id=html파일이름'의 innerText를 기록</code>
         <code class="fw-bold" style="text-indent: 15px;">- 여러번 실행시, html파일이름이 같은게 있으면 건너뛰는 코드. 줄바꿈 코드</code>
-        <code class="fw-bold">• 태그안에 src="portal/images/문서연결_엑셀VBA/html파일들캡쳐.png"로 기록되어 있더라도</code>
-        <code class="fw-bold" style="text-indent: 15px;">요소로 접근시, 요소.src=file:///C:/Users/COM/Documents/git_project/ycy2000.github.io/portal/images/%EB%AC%B8%EC%84%9</code>
+        <code class="fw-bold">• 태그안에 data-src="portal/images/문서연결_엑셀VBA/html파일들캡쳐.png"로 기록되어 있더라도</code>
+        <code class="fw-bold" style="text-indent: 15px;">요소로 접근시, 요소.data-src=file:///C:/Users/COM/Documents/git_project/ycy2000.github.io/portal/images/%EB%AC%B8%EC%84%9</code>
         <code class="fw-bold" style="text-indent: 15px;">C%EC%97%B0%EA%B2%B0_%EC%97%91%EC%85%80VBA/html%ED%8C%8C%EC%9D%BC%EB%93%A4%EC%BA%A1%EC%B3%90.png</code>
-        <code class="fw-bold" style="color:blueviolet;">• 쓰여진대로 가지고오기 힌트 : document.getElementById("imgTag").getAttribute("src")</code>
+        <code class="fw-bold" style="color:blueviolet;">• 쓰여진대로 가지고오기 힌트 : document.getElementById("imgTag").getAttribute("data-src")</code>
         
       </div>
       <h5 class="fw-bold"><div style="display:inline-block;font-size: 14px;margin-left:33px;">파악된 html 리스트 참고 : excel.html, black.html, fishexe.html, index.html, it.html, kim.html, kim2.html, list.html, memo.html, sunsa_cy.html, ycy정리.html</div></h5>
@@ -14076,7 +14076,7 @@ page-break-* 적극 사용
             <div>html파일</div>
             <div>src개수</div>
             <div>사용중개수</div>
-            <div>src=""</div>
+            <div>data-src=""</div>
           </div>
           <div class="결과">
             <div>X</div>
@@ -14094,7 +14094,7 @@ page-break-* 적극 사용
             <div>html파일</div>
             <div>src개수</div>
             <div>사용중개수</div>
-            <div>src=""</div>
+            <div>data-src=""</div>
           </div>
           <div class="결과">
             <textarea rows="1" spellcheck="false"></textarea>
@@ -14112,7 +14112,7 @@ page-break-* 적극 사용
             <div>html파일</div>
             <div>src개수</div>
             <div>사용중개수</div>
-            <div>src=""</div>
+            <div>data-src=""</div>
           </div>
           <div class="결과">
             <textarea rows="1" spellcheck="false"></textarea>
@@ -14130,7 +14130,7 @@ page-break-* 적극 사용
             <div>html파일</div>
             <div>src개수</div>
             <div>사용중개수</div>
-            <div>src=""</div>
+            <div>data-src=""</div>
           </div>
           <div class="결과">
             <textarea rows="1" spellcheck="false"></textarea>
@@ -14148,7 +14148,7 @@ page-break-* 적극 사용
             <div>html파일</div>
             <div>src개수</div>
             <div>사용중개수</div>
-            <div>src=""</div>
+            <div>data-src=""</div>
           </div>
           <div class="결과">
             <textarea rows="1" spellcheck="false"></textarea>
@@ -14166,7 +14166,7 @@ page-break-* 적극 사용
             <div>html파일</div>
             <div>src개수</div>
             <div>사용중개수</div>
-            <div>src=""</div>
+            <div>data-src=""</div>
           </div>
           <div class="결과">
             <textarea rows="1" spellcheck="false"></textarea>
@@ -14210,9 +14210,9 @@ page-break-* 적극 사용
 
     </div>
     <div id="샷컷_사용법정리_처음화면편집레이아웃">
-      <img src="portal/images/문서연결_샷컷/샷컷사용법정리_처음화면_편집레이아웃_용어.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_샷컷/샷컷사용법정리_처음화면_편집레이아웃_용어.png" alt="이미지없음">
       <br>
-      <img src="portal/images/문서연결_샷컷/샷컷사용법정리_처음화면_편집레이아웃_용어_1.png" alt="이미지없음">
+      <img data-src="portal/images/문서연결_샷컷/샷컷사용법정리_처음화면_편집레이아웃_용어_1.png" alt="이미지없음">
     </div>
 
     <div id="샷컷_사용법정리_타임라인1">
@@ -14228,7 +14228,7 @@ page-break-* 적극 사용
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h6 class="fw-bold">• 편집중이던 저장된 mlt파일을 찾아 더블클릭하면 해당파일이 셑팅되어 프로그램 실행됨</h6>
@@ -14264,7 +14264,7 @@ page-break-* 적극 사용
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
@@ -14272,7 +14272,7 @@ page-break-* 적극 사용
 
     <div id=""><!--기본빈서식-->
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <embed id="embed부분" src="" width=1000px height=870px style="border:1px solid black;">
+        <embed id="embed부분" data-src="" width=1000px height=870px style="border:1px solid black;">
         <h5 class="fw-bold"></h5>
         <code class="fw-bold">• </code>
         <code class="fw-bold" style="text-indent: 15px;"></code>
@@ -14280,7 +14280,7 @@ page-break-* 적극 사용
         <span style="color:blueviolet"></span>
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
-        <img src="" alt="이미지없음">
+        <img data-src="" alt="이미지없음">
       </div>
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
