@@ -28,7 +28,7 @@ function 전체대체에셑팅() {
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
 }
 function 특정id편집() {
-  전체변수h6title ='코드_a4프린트' //원래는 h6의 title이다.
+  전체변수h6title ='코드_글꼴' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 이동배치(요소의타이틀,배치요소아이디) {

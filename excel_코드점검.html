@@ -720,6 +720,7 @@
     <div class="개별카테고리" id="코드1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold" title="코드_글꼴">코드 : 글꼴 </h6>
         <h6 class="fw-bold" title="코드_html메모리">코드 : html에 src는 메모리에 포함된다(많으면 메모리 부족) </h6>
         <h6 class="fw-bold" title="코드_a4프린트">코드 : a4프린트 </h6>
         <h6 class="fw-bold" title="코드_문단구성">코드 : 문단구성 </h6>
@@ -13564,6 +13565,49 @@ SF 클레이메이션 고양이
     </div>
   </div>
   <div title="코드전체">
+    
+    <div id="코드_글꼴" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">body {font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;} </h6>
+        <pre class="fw-bold">
+의미 정리
+body → 페이지 전체(기본 텍스트)에 적용
+font-family → 사용할 글꼴 목록을 우선순위 순서대로 지정
+
+폰트 적용 순서
+브라우저는 왼쪽부터 차례대로 확인해서 👉 사용 가능한 첫 번째 폰트를 씁니다.
+
+1. "Malgun Gothic" 윈도우 기본 한글 폰트 영문 이름
+2. "맑은 고딕" 같은 폰트지만 한글 이름
+3. 일부 환경에서 영문명이 안 먹힐 때 대비 Arial 거의 모든 OS에 있는 영문 폰트
+    한글은 별로 안 예쁘지만 fallback 용
+4. sans-serif 최후의 보험 시스템 기본 고딕체(어떤 환경에서도 최소한 깨지진 않음)
+
+왜 이렇게 여러 개를 쓰냐면?
+OS / 브라우저 / 언어 설정마다 👉 설치된 폰트 이름이 다를 수 있음
+
+특히 한글 폰트는 영문명/한글명 둘 다 넣는 게 안전
+
+한 줄 요약 💡 "Malgun Gothic이 있으면 쓰고, 없으면 맑은 고딕, 
+그것도 없으면 Arial, 최악의 경우 시스템 기본 고딕 써라"
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+
+        
     <div id="코드_html메모리" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -13589,9 +13633,10 @@ ESLint, Prettier, GitLens, Live Server, Docker, Python Extension,
       <div>
         <h6 class="fw-bold">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
         <pre class="fw-bold">
-img.data-src = img.dataset.data-src;
-          
-        </pre>
+img.data-src = img.dataset.data-src;</pre>
+        <h6 class="fw-bold">&#60;img data-src=""> 에서 data-src 부분은? img를 변수로 했을때</h6>
+        <pre class="fw-bold">
+1. 변수.id 처럼 요소의 기본 </pre>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
