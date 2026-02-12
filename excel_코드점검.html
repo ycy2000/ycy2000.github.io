@@ -66,7 +66,6 @@
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="google전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >google</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="코드전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >코드</button>
-        <button onclick="셑팅정보()">셑_팅</button> 
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">현재캔버스</button>
         <button onclick="연습()">연습()</button> 
@@ -720,8 +719,8 @@
     <div class="개별카테고리" id="코드1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="코드_글꼴">코드 : 글꼴 </h6>
-        <h6 class="fw-bold" title="코드_html메모리">코드 : html에 src는 메모리에 포함된다(많으면 메모리 부족) </h6>
+        <h6 class="fw-bold" title="코드_글꼴">글꼴, 특수문자(앤샵육공세미콜론), margin, 대체3줄, 테이블 </h6>
+        <h6 class="fw-bold" title="코드_html메모리">html에 src는 메모리에 포함된다, 태그는 임의로 만들어도된다. 속성은?? </h6>
         <h6 class="fw-bold" title="코드_a4프린트">코드 : a4프린트 </h6>
         <h6 class="fw-bold" title="코드_문단구성">코드 : 문단구성 </h6>
 
@@ -3360,75 +3359,6 @@ clone 명령이 내부적으로 init과 원격 연결, 최초 가져오기(fetch
         <div style="display: inline-block;vertical-align: top;">
 
         </div>
-
-      </div>
-    </div>
-    <div id="셑팅정보" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ </h5>
-        <h5>⑬ ⑭ ⑮ ※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
-        <h6 class="blueviolet fw-bold">대체3줄 html 
-          <button onclick="보숨토글(this)" title="대체3줄코드" class="보숨토글버튼">▼</button>
-          <button onclick="복사('대체3줄코드')">복사하기</button>
-        '셑_팅' 을 누르면 기본적으로 복사상태가 되게</h6>
-        <pre class="fw-bold d-none" id="대체3줄코드">
-&#60;div id="" class="대체3줄">
-      &#60;h6 class="대체3줄세로1h6">&#60;/h6>&#60;h6 class="대체3줄세로2h6">&#60;/h6>
-      &#60;div>
-        &#60;h6 class="fw-bold"> &#60;/h6>
-        &#60;pre class="fw-bold">
-
-        &#60;/pre>
-      &#60;/div>
-      &#60;div>
-        &#60;h6 class="fw-bold"> &#60;/h6>
-        &#60;pre class="fw-bold">
-          
-        &#60;/pre>
-      &#60;/div>
-      &#60;div>
-        &#60;h6 class="fw-bold"> &#60;/h6>
-        &#60;pre class="fw-bold">
-          
-        &#60;/pre>
-      &#60;/div>
-    &#60;/div>
-
-        </pre>
-        <h6 class="blueviolet fw-bold">table + 테두리 + 폭 자동(폭지정은 style로)
-          <button onclick="보숨토글(this)" title="table코드" class="보숨토글버튼">▼</button>
-          <button onclick="복사('table코드')">복사하기</button>
-        </h6>
-        <pre class="fw-bold d-none" id="table코드">
-&#60;table class="table-bordered thtd패딩">
-          &#60;tr>&#60;th style="width:100px;">&#60;/th>&#60;td style="width:100px;">&#60;/td>&#60;/tr>
-          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
-          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
-          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
-        &#60;/table></pre>
-      </div>
-      <div>
-        <h6 class="fw-bold">기본 font-size 16px 기준</h6>
-        <h6 class="fw-bold">P, ol, ul  : padding-left : 32px, margin-bottom : 16px </h6>
-        <table class="table-bordered thtd패딩">
-          <tr><th style="width:40px;"></th>
-              <td style="width:100px;">font-size</td>
-              <td style="width:100px;">height</td>
-              <td style="width:100px;">margin-bottom</td>
-          </tr>
-          <tr><th>h1</th><td>40</td><td>48</td><td>8</td></tr>
-          <tr><th>h2</th><td>32</td><td>38.4</td><td>8</td></tr>
-          <tr><th>h3</th><td>28</td><td>33.6</td><td>8</td></tr>
-          <tr><th>h4</th><td>24</td><td>28.8</td><td>8</td></tr>
-          <tr><th>h5</th><td>20</td><td>24</td><td>8</td></tr>
-          <tr><th>h6</th><td>16</td><td>19.2</td><td>8</td></tr>
-          <tr><th>pre</th><td>14</td><td>21</td><td>16</td></tr>
-          <tr><th>code</th><th>14</th><td>21</td><td>0 lineHeight:21px</td></tr>
-          <tr><th>span</th><th>16</th><td>24(block)</td><td>0 lineHeight:24px</td></tr>
-        </table>
-      </div>
-      <div>
 
       </div>
     </div>
@@ -7361,245 +7291,6 @@ console.log(필터); // (4) ['b', 'c', 'B', 'C']</pre>
 
   </div>
   <div title="CSS전체">
-    <div id="연습">
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6 class="fw-bold">• <a href="https://otiklo.tistory.com/16" target="_blank">[CSS 기초] 06. CSS 테이블 꾸미기 (Table)</a></h6>
-        <h6>• 부트스트랩 : 가로칸 td 여러개일때 안의 글자수?에 따라 폭이 자동 조정되는듯</h6>
-        <h6 style="text-indent: 12px;">- table-bordered(선) border-primary(선색) : 내용만큼 폭 차지, 내용없는곳 최소폭</h6>
-        <h6 style="text-indent: 12px;">- table : padding, 폭 100%에서 flex 적용되는듯, flex로 인해서 폭조정을 잘 못함(실력부족)</h6>
-        <h6 style="text-indent: 12px;">- table-active : 색깔, thead에 넣으면 한줄 전체, td에 넣으면 해당 td만</h6>
-        <h6 style="text-indent: 12px;">- col-1 같은 클래스로 폭 조정, 4칸짜리에 모두 col-1을 주면 결과적으로 3/12씩 차지, 하나만 col-1 주면 나머지 3칸 나눠가짐</h6>
-
-        <h6>• 부트스트랩 없이 table 자체</h6>
-        <h6 style="text-indent: 12px;">- 가로두칸 차지 : &#60;td colspan="2"&#62;, 세로두칸 차지 : &#60;td rowspan="2"&#62;</h6>
-        <h6 style="text-indent: 12px;">- width="100%", colspan="2", rowspan="2", border="1"(선 두께),</h6>
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-
-      </div>
-      <br><br><br><br><br><br><br><br><br><br><br>
-      <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h6>• table table-bordered border-primary : table를 넣은상태</h6>
-        <table class="table table-bordered border-primary">
-          <thead class="table-active">
-            <td rowspan="3">sdfsfdsdfsdfsdfsdfsd</td>
-            <td></td>
-            <td></td>
-          </thead>
-          <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-            <tr>
-              <td class="col-2"></td><!-- 한글품명(+메모) -->
-              <td class="col-2"></td><!-- 전산신청 영문품명 -->
-              <td class="col-2"></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr style="background-color:cyan;">
-              <td></td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr>
-              <td></td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-          </tbody>
-        </table>
-        <h6>• table table-bordered border-primary : table를 넣은상태, thead에 table-active를 뺀상태</h6>
-        <table class="table table-bordered border-primary">
-          <thead>
-            <td class="table-active">sdfsfd</td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </thead>
-          <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-            <tr>
-              <td></td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr style="background-color:cyan;">
-              <td></td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr>
-              <td></td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-          </tbody>
-        </table>
-        <table class="table table-bordered border-primary">
-          <thead class="table-active">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </thead>
-          <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-            <tr>
-              <td>
-                <div class="d-inline-block"></div> 
-              </td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr style="background-color:cyan;">
-              <td>
-                <div class="d-inline-block border border-danger border">1</div> 
-                <div class="d-inline-block">1</div> 
-                <div class="d-inline-block"></div> 
-                <div class="d-inline-block"></div> 
-                <div class="d-inline-block"></div> 
-              </td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block"></div> 
-              </td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-          </tbody>
-        </table>
-        <table class="table table-bordered border-primary">
-          <thead class="table-active">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </thead>
-          <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-            <tr>
-              <td>
-                <div class="d-inline-block"></div> 
-                <button title="수품원스티커_20190725_가자미"></button>
-              </td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr style="background-color:cyan;">
-              <td>
-                <div class="d-inline-block"></div> 
-                <button title="수품원스티커_20240327_고둥"></button>
-                <br>
-              </td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block"></div> 
-                <button title="수품원스티커_20240528_고등어"></button>
-              </td><!-- 한글품명(+메모) -->
-              <td></td><!-- 전산신청 영문품명 -->
-              <td></td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-          </tbody>
-        </table>
-
-        <table class="table table-bordered border-primary">
-          <thead class="table-active">
-            <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
-            <td>전산신청품명(한글/영문)[title]</td>
-            <td>영문품명(스티커)</td>
-            <td>학명</td>
-          </thead>
-          <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-            <tr>
-              <td>
-                <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
-                <button title="수품원스티커_20190725_가자미">정보</button>
-              </td><!-- 한글품명(+메모) -->
-              <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
-              <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
-              <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
-            </tr>
-            <tr style="background-color:cyan;">
-              <td>
-                <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
-                <button title="수품원스티커_20240327_고둥">정보</button>
-                <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
-              </td><!-- 한글품명(+메모) -->
-              <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
-              <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
-              <td>BUCCINUM UNDATUM</td><!-- 학명 -->
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
-                <button title="수품원스티커_20240528_고등어">정보없음</button>
-              </td><!-- 한글품명(+메모) -->
-              <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
-              <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
-              <td></td><!-- 학명 -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
-        <h5 class="fw-bold"></h5>
-        <span style="color:blueviolet"></span>
-        <code class="fw-bold" style="text-indent: 15px;"></code>
-        <code class="fw-bold">•</code>
-        <code class="fw-bold" style="color:blueviolet"></code>
-      </div>
-      <h6>학명 부분에 글자가 없으면 좁아짐.. 글자의 가로만큼 폭이 정해짐..</h6>
-      <table class="table table-bordered border-primary">
-        <thead class="table-active">
-          <td>한글품명(정보 클릭시 pdf자료 나타남, default.css .td폭조정)</td>
-          <td>전산신청품명(한글/영문)[title]</td>
-          <td>영문품명(스티커)</td>
-          <td>학명</td>
-        </thead>
-        <tbody><!-- 클릭시 연결문서 나오는것, 첫번째 td에,  class="스티커정보" title="수품원스티커_20181207_민어" -->
-          <tr>
-            <td>
-              <div class="d-inline-block">2019.07.25 : 냉동 각시가자미 (KVN-044, 베트남)</div> 
-              <button title="수품원스티커_20190725_가자미">정보</button>
-            </td><!-- 한글품명(+메모) -->
-            <td>*냉동가자미(각시가자미),FROZEN YELLOWFIN SOLE</td><!-- 전산신청 영문품명 -->
-            <td>FROZEN YELLOW FIN SOLE</td><!-- 영문품명(화주) -->
-            <td>ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</td><!-- 학명 -->
-          </tr>
-          <tr style="background-color:cyan;">
-            <td>
-              <div class="d-inline-block">2024.03.27 : 냉동 유럽물레고둥 (KP-034, 중국)</div> 
-              <button title="수품원스티커_20240327_고둥">정보</button>
-              <br>중국에서 통보된 위험분석 면제품목에 열거되어 있지 않은 학명
-            </td><!-- 한글품명(+메모) -->
-            <td>*냉동고둥살(골뱅이),FROZEN WHELK MEAT</td><!-- 전산신청 영문품명 -->
-            <td>FROZEN RAW WHELK MEAT</td><!-- 영문품명(화주) -->
-            <td>BUCCINUM UNDATUM</td><!-- 학명 -->
-          </tr>
-          <tr>
-            <td>
-              <div class="d-inline-block" style="width:795px">2024.05.28 : 냉동 고등어 (KVN-044, 베트남)</div> 
-              <button title="수품원스티커_20240528_고등어">정보없음</button>
-            </td><!-- 한글품명(+메모) -->
-            <td>*냉동고등어,FROZEN MACKEREL</td><!-- 전산신청 영문품명 -->
-            <td>FROZEN WHOLE ROUND MACKEREL</td><!-- 영문품명(화주) -->
-            <td></td><!-- 학명 -->
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
     <div class="카테고리모음"><!--캔버스바디에 들어간다-->
       <div class="개별카테고리" id="htmlJavascript전체_선별">
         <div>
@@ -8363,12 +8054,12 @@ header .menu li:nth-child(2)
             &lt;div>&lt;/div>
             &lt;div>&lt;/div>
 
-          선택자형식으로 : div>li[class="연습"]*3 을 입력하고 엔터치면
-                          div 안에 (클래스가 "연습")자식li 3개 완성됨
+          선택자형식으로 : div>li[class="연_습"]*3 을 입력하고 엔터치면
+                          div 안에 (클래스가 "연_습")자식li 3개 완성됨
             &lt;div>
-                &lt;li class="연습">&lt;/li>
-                &lt;li class="연습">&lt;/li>
-                &lt;li class="연습">&lt;/li>
+                &lt;li class="연_습">&lt;/li>
+                &lt;li class="연_습">&lt;/li>
+                &lt;li class="연_습">&lt;/li>
               &lt;/div>
           script : alert나, console.log의 화면출력되는 텍스트 줄바꿈 => '텍스트\n' 처럼 텍스트안에 '\n'을 텍스트값으로 전달 
       
@@ -13570,44 +13261,73 @@ SF 클레이메이션 고양이
   <div title="코드전체">
     
     <div id="코드_글꼴" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <h6 style="display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:750px;left:613px;"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <h5>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ </h5>
+        <h5>⑬ ⑭ ⑮ ※ ★ ● • ▢ ( < - &#38;&#35;60; )( > - &#38;&#35;62; ) ▸ ☞ \ Ø 「 」</h5>
+        <h6 class="blueviolet fw-bold">대체3줄 html 
+          <button onclick="보숨토글(this)" title="대체3줄코드" class="보숨토글버튼">▼</button>
+          <button onclick="복사('대체3줄코드')">복사하기</button>
+        '셑_팅' 을 누르면 기본적으로 복사상태가 되게</h6>
+        <pre class="fw-bold d-none" id="대체3줄코드">
+&#60;div id="" class="대체3줄">
+      &#60;h6 class="대체3줄세로1h6">&#60;/h6>&#60;h6 class="대체3줄세로2h6">&#60;/h6>
+      &#60;div>
+        &#60;h6 class="fw-bold"> &#60;/h6>
+        &#60;pre class="fw-bold">
+
+        &#60;/pre>
+      &#60;/div>
+      &#60;div>
+        &#60;h6 class="fw-bold"> &#60;/h6>
+        &#60;pre class="fw-bold">
+          
+        &#60;/pre>
+      &#60;/div>
+      &#60;div>
+        &#60;h6 class="fw-bold"> &#60;/h6>
+        &#60;pre class="fw-bold">
+          
+        &#60;/pre>
+      &#60;/div>
+    &#60;/div>
+
+        </pre>
+        <h6 class="blueviolet fw-bold">table + 테두리 + 폭 자동(폭지정은 style로)
+          <button onclick="보숨토글(this)" title="table코드" class="보숨토글버튼">▼</button>
+          <button onclick="복사('table코드')">복사하기</button>
+        </h6>
+        <pre class="fw-bold d-none" id="table코드">
+&#60;table class="table-bordered thtd패딩">
+          &#60;tr>&#60;th style="width:100px;">&#60;/th>&#60;td style="width:100px;">&#60;/td>&#60;/tr>
+          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
+          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
+          &#60;tr>&#60;th>&#60;/th>&#60;td>&#60;/td>&#60;/tr>
+        &#60;/table></pre>
+        <h6 class="fw-bold">기본 font-size 16px 기준</h6>
+        <h6 class="fw-bold">P, ol, ul  : padding-left : 32px, margin-bottom : 16px </h6>
+        <table class="table-bordered thtd패딩">
+          <tr><th style="width:40px;"></th>
+              <td style="width:100px;">font-size</td>
+              <td style="width:100px;">height</td>
+              <td style="width:100px;">margin-bottom</td>
+          </tr>
+          <tr><th>h1</th><td>40</td><td>48</td><td>8</td></tr>
+          <tr><th>h2</th><td>32</td><td>38.4</td><td>8</td></tr>
+          <tr><th>h3</th><td>28</td><td>33.6</td><td>8</td></tr>
+          <tr><th>h4</th><td>24</td><td>28.8</td><td>8</td></tr>
+          <tr><th>h5</th><td>20</td><td>24</td><td>8</td></tr>
+          <tr><th>h6</th><td>16</td><td>19.2</td><td>8</td></tr>
+          <tr><th>pre</th><td>14</td><td>21</td><td>16</td></tr>
+          <tr><th>code</th><th>14</th><td>21</td><td>0 lineHeight:21px</td></tr>
+          <tr><th>span</th><th>16</th><td>24(block)</td><td>0 lineHeight:24px</td></tr>
+        </table>
+        <br>
         <h6 class="fw-bold">body {font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;} </h6>
         <pre class="fw-bold">
-의미 정리
-body → 페이지 전체(기본 텍스트)에 적용
-font-family → 사용할 글꼴 목록을 우선순위 순서대로 지정
-따옴표는 공백이 있어서 묶어주는 역할
-
-폰트 적용 순서
-브라우저는 왼쪽부터 차례대로 확인해서 👉 사용 가능한 첫 번째 폰트를 씁니다.
-
-1. "Malgun Gothic" 윈도우 기본 한글 폰트 영문 이름
-2. "맑은 고딕" 같은 폰트지만 한글 이름
-3. 일부 환경에서 영문명이 안 먹힐 때 대비 Arial 거의 모든 OS에 있는 영문 폰트
-    한글은 별로 안 예쁘지만 fallback 용
-4. sans-serif 최후의 보험 시스템 기본 고딕체(어떤 환경에서도 최소한 깨지진 않음)
-
-왜 이렇게 여러 개를 쓰냐면?
-OS / 브라우저 / 언어 설정마다 👉 설치된 폰트 이름이 다를 수 있음
-
-특히 한글 폰트는 영문명/한글명 둘 다 넣는 게 안전
-
-한 줄 요약 💡 "Malgun Gothic이 있으면 쓰고, 없으면 맑은 고딕, 
-그것도 없으면 Arial, 최악의 경우 시스템 기본 고딕 써라"
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold" style="font-family: serif;">fallback : os기본(앞에꺼 없을때 마지막적용 보험용)</h6>
-        <h6 class="fw-bold" style="font-family: serif;">1) serif, 획 끝에 장식 있음 (명조 계열) 책, 에세이, 기사, 장문</h6>
-        <h6 class="fw-bold" style="font-family: 'Noto Serif KR';margin-left:15px;">'Noto Serif KR' 명조계열</h6>
-        <h6 class="fw-bold" style="font-family: 'Nanum Myeongjo';margin-left:15px;">'Nanum Myeongjo' 명조계열</h6>
-        <h6 class="fw-bold" style="font-family: sans-serif;">2) sans-serif 장식 없는 고딕 계열, 웹 UI, 블로그, 본문, 화면 가독성 최고</h6>
-        <h6 class="fw-bold" style="font-family: 'Noto Sans KR';margin-left:15px;">'Noto Sans KR' 고딕계열</h6>
-        <h6 class="fw-bold" style="font-family: Pretendard;margin-left:15px;">'Pretendard' 고딕계열</h6>
-        <h6 class="fw-bold" style="font-family: monospace;">3) bold, monospace, 고정폭, 코드, 터미널, 표 정렬</h6>
-        <h6 class="fw-bold" style="font-family: 'D2Coding';margin-left:15px;">bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
-        <h6 style="font-family: 'D2Coding';margin-left:15px;">no bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
+의미 정리 : 순서대로. 있는것 적용 마지막꺼를 fallback이라고 하는데 
+시스템에 무조건? 있는 글꼴이라서 최후의 보험용이다.        </pre>
+        <br><br><br><br><br><br><br>
         <h6 class="fw-bold">📝 한국 블로그용 글쓰기 CSS 추천</h6>
         <table class="table-bordered thtd패딩" style="font-size:14px;font-weight: bold;">
           <tr><th>용도</th><th>font-family (Fallback 포함)</th><th>제목</th><th>본문</th><th>LH</th><th>용도</th></tr>
@@ -13617,6 +13337,19 @@ OS / 브라우저 / 언어 설정마다 👉 설치된 폰트 이름이 다를 �
           <tr><th>기술 글 / 마크다운</th><td>'IBM Plex Sans KR', 'Noto Sans KR', sans-serif</td><td>24</td><td>15.5</td><td>1.7</td><td>코드 블록 포함, 깔끔한 기술 문서용</td></tr>
           <tr><th>code, pre</th><td>'D2Coding', monospace</td><td>24</td><td>15.5</td><td>1.7</td><td>코드 블록 포함, 깔끔한 기술 문서용</td></tr>
         </table>
+      </div>
+      <div>
+        <h6 class="fw-bold" style="font-family: serif;">fallback : os기본(앞에꺼 없을때 마지막적용 보험용)</h6>
+        <h6 class="fw-bold" style="font-family: serif;">1) serif, 획 끝에 장식 있음 (명조 계열) 책, 에세이, 기사, 장문</h6>
+        <h6 class="fw-bold" style="font-family: 'Noto Serif KR';margin-left:15px;">'Noto Serif KR' 명조계열</h6>
+        <h6 class="fw-bold" style="font-family: sans-serif;">2) sans-serif 장식 없는 고딕 계열, 웹 UI, 블로그, 본문, 화면 가독성 최고</h6>
+        <h6 class="fw-bold" style="font-family: 'Noto Sans KR';margin-left:15px;">'Noto Sans KR' 고딕계열</h6>
+        <h6 class="fw-bold" style="font-family: Pretendard;margin-left:15px;">'Pretendard' 고딕계열</h6>
+        <h6 class="fw-bold" style="font-family: monospace;">3) bold, monospace, 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 class="fw-bold" style="font-family: 'D2Coding';margin-left:15px;">bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 style="font-family: 'D2Coding';margin-left:15px;">no bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
+
+        <br>
         <pre class="fw-bold">
           
         </pre>
@@ -13670,14 +13403,40 @@ ESLint, Prettier, GitLens, Live Server, Docker, Python Extension,
 폴더 열면 VS Code가:모든 파일 스캔, 심볼 인덱스 생성, Git 상태 추적, 
 👉 프로젝트 크면 자동으로 무거워짐
         </pre>
+        <h6 class="blueviolet fw-bold">xml에서처럼 임의의 태그를 쓸수 있다. &#60;abCd>태그 abCd&#60;/abCd></h6>
+        <pre class="fw-bold">
+  let 연습=document.querySelector('abCd');
+  console.log(연습.innerHTML); ==> 태그 abCd        </pre>
+        <h6 class="blueviolet fw-bold">1. 요소의 속성중에 prototype으로 상속되는 속성</h6>
+        <pre class="fw-bold">
+  id, class 등등 ==> 요소.id, 요소.class 로 접근할 수 있다.        </pre>
+        <h6 class="blueviolet fw-bold">2. 상속되는 속성이 아닌 속성을 표현하면?? 1.처럼 접근은 안된다. getAttribute 활용</h6>
+        <pre class="fw-bold">
+  &#60;div abcd="임의의 속성">...&#60;/div>
+  let 연습=document.querySelector('[abcd]');
+  console.log(연습.innerHTML); //==> ...
+  <span class="blueviolet">console.log(연습.abcd); //==> undefined </span>
+  console.log(연습.id); //==> 공백출력 (prototype 상속)
+  <span class="blueviolet">console.log(연습.getAttribute('abcd'));</span>  //==> 임의의 속성   </pre>
+        <h6 class="blueviolet fw-bold">3. 하이픈(-)은 html에서는 속성이름에 사용가능, js에서는 하이픈 사용 일부 제한됨!!</h6>
+        <div id="연습" abcdef="html에서 하이픈 사용">하이픈 사용</div>
+        <pre class="fw-bold">
+  </pre>
       </div>
       <div>
-        <h6 class="fw-bold">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
+        <h6 class="blueviolet fw-bold">1. html에 src 걸면 로드되어 메모리를 차지하고 있다.</h6>
+        <h6 class="fw-bold 띄움20">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
+        <pre class="fw-bold 띄움20">
+img.data-src = img.dataset.data-src;
+  //embed, img : src 사용시 메모리 차지 많이하여... 필요시에만 넣기
+  let src=document.querySelectorAll('#전체대체 [data-src]');
+  src.forEach ( ele => ele.src=ele.dataset.src);</pre>
+        <h6 class="fw-bold">2. &#60;img data-src=""> 에서 data-src 부분은? </h6>
         <pre class="fw-bold">
-img.data-src = img.dataset.data-src;</pre>
-        <h6 class="fw-bold">&#60;img data-src=""> 에서 data-src 부분은? img를 변수로 했을때</h6>
-        <pre class="fw-bold">
-1. 변수.id 처럼 요소의 기본 </pre>
+1. 변수.id 처럼 요소가 가지고 있는 속성은 아니다. <span class="blueviolet">그러나!</span>
+2. 한글은 안되지만 자류롭게 임의의 속성을 만들고 값을 넣을수 있다. 
+   2.의 경우 요소.get
+3. 예시 let 연습= </pre>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>

@@ -1,4 +1,31 @@
 let 전체변수h6title='';
+function 특정id편집() {
+  전체변수h6title ='코드_html메모리' //원래는 h6의 title이다.
+  전체대체에셑팅();
+}
+function 이동배치(요소의타이틀,배치요소아이디) {
+  //오팔설명때문에 만듬. 요소의타이틀은 html에서 this이고 
+  let 내부복사=document.querySelector('#'+요소의타이틀.title);
+  let 목적지=document.querySelector('#'+배치요소아이디);
+  목적지.innerHTML=내부복사.innerHTML;
+  Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
+}
+function 연습() {
+  let 연습=document.querySelector('[abcd]');
+  console.log(연습.innerHTML); //==> ...
+  console.log(연습.abcd); //==> undefined 
+  console.log(연습.id); //==> 공백출력 (prototype 상속)
+  console.log(연습.getAttribute('abcd')); //==> 임의의 속성
+}
+function 복사(id) {
+  const text = document.getElementById(id).innerText;
+  
+  navigator.clipboard.writeText(text).then(() => {
+    //alert("복사되었습니다! Ctrl+V 로 붙여넣기 가능합니다.");
+  }).catch(err => {
+    console.error("복사 실패:", err);
+  });
+}
 function 전체대체에셑팅() {
   //1.전체대체에 id를 셑팅하는 동작
   var 아이디=전체변수h6title.trim(); 
@@ -27,40 +54,6 @@ function 전체대체에셑팅() {
   document.querySelector('#선택문서id').innerHTML=title요소들마지막.title;
   document.querySelector('#선택문서제목').innerHTML=title요소들마지막.innerHTML;
 }
-function 특정id편집() {
-  전체변수h6title ='코드_글꼴' //원래는 h6의 title이다.
-  전체대체에셑팅();
-}
-function 이동배치(요소의타이틀,배치요소아이디) {
-  //오팔설명때문에 만듬. 요소의타이틀은 html에서 this이고 
-  let 내부복사=document.querySelector('#'+요소의타이틀.title);
-  let 목적지=document.querySelector('#'+배치요소아이디);
-  목적지.innerHTML=내부복사.innerHTML;
-  Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
-}
-function 연습() {
-
-  console.log(document.querySelector('#dddd').outerHTML);
-}
-function 복사(id) {
-  const text = document.getElementById(id).innerText;
-  
-  navigator.clipboard.writeText(text).then(() => {
-    //alert("복사되었습니다! Ctrl+V 로 붙여넣기 가능합니다.");
-  }).catch(err => {
-    console.error("복사 실패:", err);
-  });
-}
-function 셑팅정보() {
-  전체변수h6title ='셑팅정보' //원래는 h6의 title이다.
-  document.querySelector('#선택문서id').textContent=전체변수h6title;
-  document.querySelector('#선택문서제목').textContent="태그복사, 태그 패딩과 마진 정보";
-  전체대체에셑팅();
-  //대체3줄을 복사상태로하기
-  //복사('대체3줄코드');
-}
-
-
 function 검색input결과초기화() {
   console.log('검색input결과초기화()');
   var 검색결과바탕색_클래스들 = document.querySelectorAll('.검색결과바탕색');
