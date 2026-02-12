@@ -726,6 +726,9 @@
         <h6 class="fw-bold" title="코드_문단구성">코드 : 문단구성 </h6>
 
       </div>
+      <div>
+        <h6 class="fw-bold" title="코드_임시정보">코드 : 임시정보 codex </h6>
+      </div>
     </div>
   </div>
   <div id="기타전체" class="d-none 캔버스">
@@ -13574,6 +13577,7 @@ SF 클레이메이션 고양이
 의미 정리
 body → 페이지 전체(기본 텍스트)에 적용
 font-family → 사용할 글꼴 목록을 우선순위 순서대로 지정
+따옴표는 공백이 있어서 묶어주는 역할
 
 폰트 적용 순서
 브라우저는 왼쪽부터 차례대로 확인해서 👉 사용 가능한 첫 번째 폰트를 씁니다.
@@ -13594,6 +13598,45 @@ OS / 브라우저 / 언어 설정마다 👉 설치된 폰트 이름이 다를 �
         </pre>
       </div>
       <div>
+        <h6 class="fw-bold" style="font-family: serif;">fallback : os기본(앞에꺼 없을때 마지막적용 보험용)</h6>
+        <h6 class="fw-bold" style="font-family: serif;">1) serif, 획 끝에 장식 있음 (명조 계열) 책, 에세이, 기사, 장문</h6>
+        <h6 class="fw-bold" style="font-family: 'Noto Serif KR';margin-left:15px;">'Noto Serif KR' 명조계열</h6>
+        <h6 class="fw-bold" style="font-family: 'Nanum Myeongjo';margin-left:15px;">'Nanum Myeongjo' 명조계열</h6>
+        <h6 class="fw-bold" style="font-family: sans-serif;">2) sans-serif 장식 없는 고딕 계열, 웹 UI, 블로그, 본문, 화면 가독성 최고</h6>
+        <h6 class="fw-bold" style="font-family: 'Noto Sans KR';margin-left:15px;">'Noto Sans KR' 고딕계열</h6>
+        <h6 class="fw-bold" style="font-family: Pretendard;margin-left:15px;">'Pretendard' 고딕계열</h6>
+        <h6 class="fw-bold" style="font-family: monospace;">3) bold, monospace, 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 class="fw-bold" style="font-family: 'D2Coding';margin-left:15px;">bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 style="font-family: 'D2Coding';margin-left:15px;">no bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 class="fw-bold">📝 한국 블로그용 글쓰기 CSS 추천</h6>
+        <table class="table-bordered thtd패딩" style="font-size:14px;font-weight: bold;">
+          <tr><th>용도</th><th>font-family (Fallback 포함)</th><th>제목</th><th>본문</th><th>LH</th><th>용도</th></tr>
+          <tr><th>장문 글쓰기 / 에세이</th><td>'Noto Serif KR', 'Nanum Myeongjo', serif</td><td>28</td><td>17</td><td>1.8</td><td>명조 계열, 신뢰감 있는 장문용</td></tr>
+          <tr><th>블로그 / 일반 글</th><td>'Pretendard', 'Noto Sans KR', system-ui, sans-serif</td><td>26</td><td>16</td><td>1.75</td><td>산세리프, 화면용 가독성 최적화</td></tr>
+          <tr><th>감성 글 / 브런치</th><td>'RIDIBatang', 'KoPub Batang', serif</td><td>30</td><td>18</td><td>1.9</td><td>전자책·에세이 감성</td></tr>
+          <tr><th>기술 글 / 마크다운</th><td>'IBM Plex Sans KR', 'Noto Sans KR', sans-serif</td><td>24</td><td>15.5</td><td>1.7</td><td>코드 블록 포함, 깔끔한 기술 문서용</td></tr>
+          <tr><th>code, pre</th><td>'D2Coding', monospace</td><td>24</td><td>15.5</td><td>1.7</td><td>코드 블록 포함, 깔끔한 기술 문서용</td></tr>
+        </table>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="코드_임시정보" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"><a href="https://www.youtube.com/watch?v=GJsx_FuiwNg&t=8s" target="_blank">codex 사용법</a> </h6>
+        <pre class="fw-bold">
+
+        </pre>
+      </div>
+      <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
           
@@ -13606,8 +13649,6 @@ OS / 브라우저 / 언어 설정마다 👉 설치된 폰트 이름이 다를 �
         </pre>
       </div>
     </div>
-
-        
     <div id="코드_html메모리" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>

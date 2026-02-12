@@ -87,7 +87,7 @@ code {color:black;display:block;}
 .js자료형객체변수자료형표 > code > div:nth-of-type(2) {width:100px;}
 
 
-body, pre {font-family: 'Noto Serif KR', serif;}
+body , pre{font-family: 'Noto Serif KR', serif;}
 /* top 으로 이동하는 버튼*/
 .back-to-top-css {
     cursor: pointer;
