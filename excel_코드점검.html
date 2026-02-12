@@ -13419,8 +13419,11 @@ ESLint, Prettier, GitLens, Live Server, Docker, Python Extension,
   console.log(연습.id); //==> 공백출력 (prototype 상속)
   <span class="blueviolet">console.log(연습.getAttribute('abcd'));</span>  //==> 임의의 속성   </pre>
         <h6 class="blueviolet fw-bold">3. 하이픈(-)은 html에서는 속성이름에 사용가능, js에서는 하이픈 사용 일부 제한됨!!</h6>
-        <div id="연습" abcdef="html에서 하이픈 사용">하이픈 사용</div>
+        <h6 class="blueviolet fw-bold">4. 1.처럼 접근가능한 예외, 태그안에서 'data- + 임의의이름'으로 속성을 부여하는 경우</h6>
         <pre class="fw-bold">
+ a) 규칙 : data- 이후에 예시, data-exe-name='임시속성값' 
+     exe-name에서 하이픈으로 구분되면 js에서는 Camal Case로 바꿔야한다. ==> exeName 
+ b) 접근 : &#60;div data-exe-name='임시속성값'>
   </pre>
       </div>
       <div>
