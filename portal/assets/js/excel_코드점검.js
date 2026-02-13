@@ -11,11 +11,8 @@ function 이동배치(요소의타이틀,배치요소아이디) {
   Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
 }
 function 연습() {
-  let 연습=document.querySelector('[abcd]');
-  console.log(연습.innerHTML); //==> ...
-  console.log(연습.abcd); //==> undefined 
-  console.log(연습.id); //==> 공백출력 (prototype 상속)
-  console.log(연습.getAttribute('abcd')); //==> 임의의 속성
+  console.log(document.querySelector('abcd').innerHTML);
+  console.log(document.querySelector('aBCd').innerHTML);
 }
 function 복사(id) {
   const text = document.getElementById(id).innerText;

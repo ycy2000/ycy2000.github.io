@@ -13401,16 +13401,23 @@ ESLint, Prettier, GitLens, Live Server, Docker, Python Extension,
 
 4️⃣ 워크스페이스 전체를 인덱싱
 폴더 열면 VS Code가:모든 파일 스캔, 심볼 인덱스 생성, Git 상태 추적, 
-👉 프로젝트 크면 자동으로 무거워짐
-        </pre>
-        <h6 class="blueviolet fw-bold">xml에서처럼 임의의 태그를 쓸수 있다. &#60;abCd>태그 abCd&#60;/abCd></h6>
+👉 프로젝트 크면 자동으로 무거워짐        </pre>
+        <h6 class="blueviolet fw-bold">1. html에 src 걸면 로드되어 메모리를 차지하고 있다. (d-none 관계없이)</h6>
+        <h6 class="fw-bold 띄움20">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
+        <pre class="fw-bold 띄움20">
+img.data-src = img.dataset.data-src;
+  //embed, img : src 사용시 메모리 차지 많이하여... 필요시에만 넣기
+  let src=document.querySelectorAll('#전체대체 [data-src]');
+  src.forEach ( ele => ele.src=ele.dataset.src);</pre>
+        <h6 class="blueviolet fw-bold">2. xml에서처럼 임의의 태그를 쓸수 있다. &#60;abCd>태그 abCd&#60;/abCd></h6>
         <pre class="fw-bold">
   let 연습=document.querySelector('abCd');
-  console.log(연습.innerHTML); ==> 태그 abCd        </pre>
-        <h6 class="blueviolet fw-bold">1. 요소의 속성중에 prototype으로 상속되는 속성</h6>
+  console.log(연습.innerHTML); ==> 태그 abCd
+  <span class="blueviolet">표준적으로 허용된 커스텀 태그는 반드시 - 포함, 소문자 권장, 대소문자 구분x</span>        </pre>
+        <h6 class="blueviolet fw-bold">3. 요소의 속성중에 prototype으로 상속되는 속성</h6>
         <pre class="fw-bold">
   id, class 등등 ==> 요소.id, 요소.class 로 접근할 수 있다.        </pre>
-        <h6 class="blueviolet fw-bold">2. 상속되는 속성이 아닌 속성을 표현하면?? 1.처럼 접근은 안된다. getAttribute 활용</h6>
+        <h6 class="blueviolet fw-bold">4. 상속되는 속성이 아닌 속성을 표현하면?? 1.처럼 접근은 안된다. getAttribute 활용</h6>
         <pre class="fw-bold">
   &#60;div abcd="임의의 속성">...&#60;/div>
   let 연습=document.querySelector('[abcd]');
@@ -13418,28 +13425,28 @@ ESLint, Prettier, GitLens, Live Server, Docker, Python Extension,
   <span class="blueviolet">console.log(연습.abcd); //==> undefined </span>
   console.log(연습.id); //==> 공백출력 (prototype 상속)
   <span class="blueviolet">console.log(연습.getAttribute('abcd'));</span>  //==> 임의의 속성   </pre>
-        <h6 class="blueviolet fw-bold">3. 하이픈(-)은 html에서는 속성이름에 사용가능, js에서는 하이픈 사용 일부 제한됨!!</h6>
-        <h6 class="blueviolet fw-bold">4. 1.처럼 접근가능한 예외, 태그안에서 'data- + 임의의이름'으로 속성을 부여하는 경우</h6>
-        <pre class="fw-bold">
- a) 규칙 : data- 이후에 예시, data-exe-name='임시속성값' 
-     exe-name에서 하이픈으로 구분되면 js에서는 Camal Case로 바꿔야한다. ==> exeName 
- b) 접근 : &#60;div data-exe-name='임시속성값'>
-  </pre>
       </div>
       <div>
-        <h6 class="blueviolet fw-bold">1. html에 src 걸면 로드되어 메모리를 차지하고 있다.</h6>
-        <h6 class="fw-bold 띄움20">필요해질때 src를 넣어서 이미지 등을 불러오는 코드가 필요. </h6>
-        <pre class="fw-bold 띄움20">
-img.data-src = img.dataset.data-src;
-  //embed, img : src 사용시 메모리 차지 많이하여... 필요시에만 넣기
-  let src=document.querySelectorAll('#전체대체 [data-src]');
-  src.forEach ( ele => ele.src=ele.dataset.src);</pre>
-        <h6 class="fw-bold">2. &#60;img data-src=""> 에서 data-src 부분은? </h6>
+        <h6 class="blueviolet fw-bold">5. 1.처럼 접근가능한 예외, 태그안에서 'data- + 임의의이름'으로 속성을 부여하는 경우</h6>
         <pre class="fw-bold">
-1. 변수.id 처럼 요소가 가지고 있는 속성은 아니다. <span class="blueviolet">그러나!</span>
-2. 한글은 안되지만 자류롭게 임의의 속성을 만들고 값을 넣을수 있다. 
-   2.의 경우 요소.get
-3. 예시 let 연습= </pre>
+ a) 규칙 : 임의의이름이 하이픈(-)이 포함되면 Camal Case로 바꿔서 접근한다. ==> exeName 
+ b) 약속 : Camal Case로 표현된 것을 속성처럼 사용할수 있다. 
+      다만, Camal Case로 표현된 속성은 dataset 속성의 속성으로 등록된 것으로 본다.
+ c) 접근 : &#60;div data-exe-name='임시속성값'>...&#60;/div>
+      let 연습=document.querySelector('[data-exe-name]');
+      console.log(연습.innerHTML); //==> ...
+      console.log(연습.dataset.exeName); //==> 임시속성값 </pre>
+        <h6 class="blueviolet fw-bold">6. ele.dataset.src 에러 방지 코드 필요 (다음 ※ 코드가 에러 안나는 이유)</h6>
+        <pre class="fw-bold">
+ a) data- 속성이 없으면, 연습.dataset.exe 처럼 없는 속성에 접근시 에러
+ b) data- 속성이 하나라도 있으면, 연습.dataset.exe 처럼 없는 속성에 접근시 undefined
+ <span class="blueviolet">※ let src=document.querySelectorAll('#전체대체 [data-src]'); 
+     src.forEach ( ele => ele.src=ele.dataset.src);</span>
+     - 에러는 나지 않는다. 없으면 forEach가 작동하지 않는다. 
+     - ele.src = undefined; 이 경우에도
+       브라우저가 src="undefined"로 바꾸거나 이미지 깨짐 (하지만 JS 에러는 아님)
+     - 안전하게 : if (ele.dataset.src) {ele.src = ele.dataset.src;} 
+        </pre>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
