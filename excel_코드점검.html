@@ -5548,7 +5548,24 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
 
     <div id="excel_js_split">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
-        <h5 class="fw-bold">문자열.split('구분문자') : 구분문자가 있으면 구분문자 제외하여 각각 배열에 담는다.</h5>
+        <h5 class="fw-bold">엑셀에서!! split(문자열,'구분문자')</h5>
+        <pre class="fw-bold">
+Dim 문자열 As String
+문자열 = Split(Range("O8").Value, ",")(0)
+1) 셀값이 비어있을때 Range("O8")로 접근하면 에러, 문자열이 아니기 때문. 
+    Value로 접근시 공백("")문자열이고 하나의 값을 가진 배열 
+2) 배열개수를 초과하여 접근시 에러. 
+<span class="blueviolet">3) Empty와 배열개수 초과한 접근 제어방법 </span> 
+   a. 헬퍼함수로 만들어서 부모함수에서 text값을 받고 내보낼때 false또는 배열을 내보내기
+   a. '배열개수' 확인, range객체.value로 접근(비어있을때 공백(""문자열 받기))
+      
+    Dim txt As String
+    Dim arr As Variant
+    Dim idx As Long
+
+        </pre>
+
+        <h5 class="fw-bold">JS에서!! 문자열.split('구분문자') : 구분문자가 있으면 구분문자 제외하여 각각 배열에 담는다.</h5>
         <code class="fw-bold" style="color:blueviolet">★ 대/소문자 구별</code>
         <code class="fw-bold" style="color:blueviolet">1)구분문자가 없으면 : 전체문자열이 문자열.split('구분문자')[0] 에 담긴다. length=1</code>
         <code class="fw-bold">2)구분문자가 1개이고 구분문자가 전체문자열과 같으면 : length=2 ([0],[1])</code>
