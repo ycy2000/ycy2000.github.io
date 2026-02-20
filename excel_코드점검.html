@@ -108,6 +108,7 @@
     <div class="개별카테고리" id="도형_그림_폼">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold" title='엑셀_파일점검'>엑셀 파일점검, 느려지는 이유 TOP7</h6>
         <h6 class="fw-bold" title='도형_PASTE'>챗GPT, 도형 PASTE는 오류가 많다?</h6>
         <h6 class="fw-bold" title='도형_유의사항PASTE없이'>도형유의사항 PASTE 없이</h6>
         <h6 class="fw-bold" title='폼컨트롤인식'>각각 컨트롤에 작성하지 않고 폼컨트롤 인식</h6>
@@ -854,6 +855,50 @@
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
     </div>
+    <div id="엑셀_파일점검" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+📉 엑셀이 느려지는 대표적인 원인 TOP 7
+1.UsedRange가 비정상적으로 커짐
+2.쓸모없는 ‘이름 정의(Name)’가 수십~수백 개
+3.사용하지 않는 스타일 폭증
+4.조건부 서식 과다
+5.수식이 전체 열(A:A) 단위로 걸려 있음
+6.숨겨진 시트 / 개체 / 도형 / 차트 잔존
+7.VBA에서 Select / Activate 남발
+👉 이 중 1~3번이 체감 속도의 80% 원인이야.
+
+1.UsedRange
+  a) 조건부서식 적용 범위: A:XFD (전체 열), 엑셀이 멈춘 것 같음
+      - 특히 무거운 조건부 서식 TOP 
+        =INDIRECT(A1), =OFFSET(A1,0,0), =TODAY()>A1, =NOW()
+  b) 테두리나 서식이나 색칠 등을 한번이라도 적용했다면 
+      그것을 지우더라도 usedrange가 된다.
+  c) 전체 행 또는 열을 일반 붙여넣기 (값으로 붙여넣기 추천)
+  <span class="blueviolet">d) usedrange 다이어트는 delete로!! clear나 clearcontent로는 안됨</span> 
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+Dim ws As Worksheet : Worksheet만
+Dim ws As Sheets : 챠트 + Worksheet
+Worksheets.Add : 활설화된 시트 앞에 삽입됨
+Set wsNew = Worksheets.Add(Before:=Worksheets(1)) : 삽입위치 지정
+Debug.Print wsNew.Name : 이름확인
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+
+        
     <div id="도형_PASTE" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
