@@ -105,6 +105,25 @@
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
   <div id="엑셀" class="d-none 캔버스">
+    <div class="개별카테고리" id="성능개선">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title='엑셀_성능개선1'>Dictionary : worksheetfunction.CountIf 대체, 속도 개선</h6>
+        <h6 class="fw-bold">메모 : Cells.Find("값"), cells 대신에 UsedRange.Find("값")</h6>
+        <h6 class="fw-bold">메모 : Cells.Find는 값이 없어도 모든 셀을 순회한다. 찾는값이 없으면 과부하</h6>
+        <h6 class="fw-bold">메모 : 1. Intersect(wsInput.UsedRange, wsInput.Range("C:C, K:K")).Replace " ", "", xlPart</h6>
+        <h6 class="fw-bold">메모 : 2. Replace 대상 셀 축소</h6>
+        <h6 class="fw-bold">메모 : 2. Application.Calculate, ActiveSheet.Calculate, Range("A1").Calculate</h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold" title='엑셀_코드속도체크'>코드속도 체크, 관련 셑팅(화면 업데이트 중지 등)</h6>
+        <h6 class="fw-bold" title='엑셀_코드개선1'>코드개선 : Sub 공통_입항관리단독_목록등기본셑팅()</h6>
+        <h6 class="fw-bold" title='엑셀_코드개선2'>코드개선 : 범위의 셀을 순회 대신에 배열에 담아 사용</h6>
+      </div>
+      <div>
+      </div>
+    </div>
     <div class="개별카테고리" id="도형_그림_폼">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
@@ -855,6 +874,389 @@
       <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
       </div>
     </div>
+    <div id="엑셀_코드속도체크" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+Sub MeasureSpeed()
+    Dim startTime As Double
+    Dim endTime As Double
+    Dim duration As Double
+
+    ' 1. 시작 시간 기록
+    startTime = Timer
+
+    ' --- 측정할 코드 시작 ---
+    Dim i As Long
+    For i = 1 To 1000000
+        ' 단순 반복 작업 예시
+    Next i
+    ' --- 측정할 코드 종료 ---
+
+    ' 2. 종료 시간 기록
+    endTime = Timer
+
+    ' 3. 소요 시간 계산 (종료 - 시작)
+    duration = endTime - startTime
+
+    ' 결과 출력 (소수점 2자리까지)
+    MsgBox "코드 실행 시간: " & Format(duration, "0.00") & "초"
+End Sub
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+Sub 파일점검_화면업데이트중지()
+    On Error GoTo CleanUp
+    Application.ScreenUpdating = False      ' 화면 업데이트 중지
+    Application.Calculation = xlCalculationManual ' 자동 계산 수동으로
+    Application.EnableEvents = False        ' 이벤트 발생 중지
+End Sub
+
+Sub 파일점검_화면업데이트중지_해제()
+    On Error GoTo CleanUp
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+    Application.EnableEvents = True
+End Sub
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="엑셀_코드개선1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">기존코드 </h6>
+        <pre class="fw-bold">
+Sub 공통_입항관리단독_목록등기본셑팅()
+'Sheets("모듈").Range("E3") = Me.Name '백업실행 프로시저에 필요 'LST_목록 라벨등 셑팅에 필요, 승환입력폼, 양_리스트폼, 입항정리폼 실행시 폼이름 입력됨
+'공통_입항관리단독 : 양_리스트폼, 입항정리폼
+Application.ScreenUpdating = False
+Dim 폼이름 As String
+폼이름 = Sheets("모듈").Range("E3")
+If 폼이름 <> "양_리스트폼" And 폼이름 <> "입항정리폼" Then
+   MsgBox "폼이름:모듈E3, 양_리스트폼, 입항정리폼만 작동" & vbLf & vbLf & "공통_입항관리단독_목록등기본셑팅"
+   Exit Sub
+End If
+ThisWorkbook.Activate 'ACTIVESHEET가 THISWORKBOOK의 시트가 되도록 함
+Dim 시트이름 As String
+시트이름 = ActiveSheet.Name
+Dim 기존선택셀 As Range
+On Error Resume Next
+Set 기존선택셀 = Selection
+On Error GoTo 0
+'컨과 BL부분 공백제거
+Sheets("입항관리").Range("c:c").Replace What:=" ", Replacement:="", LookAt:=xlPart
+Sheets("입항관리").Range("K:K").Replace What:=" ", Replacement:="", LookAt:=xlPart
+Sheets("리스트").Range("c:c").Replace What:=" ", Replacement:="", LookAt:=xlPart
+Sheets("리스트").Range("E:E").Replace What:=" ", Replacement:="", LookAt:=xlPart
+If 폼이름 = "양_리스트폼" Then
+     양_리스트폼.T_변경컨 = ""
+     양_리스트폼.T_목록BL = ""
+     양_리스트폼.T_목록컨 = ""
+     양_리스트폼.LBL_건수.Caption = ""
+     양_리스트폼.LST_목록.Clear
+     양_리스트폼.ComboBox1.Clear
+
+     '유동BL, 유동컨은 LST목록 클릭시 다른시트 BL과 컨을 나타내기위한 것.
+     양_리스트폼.LBL_유동BL = "입관BL"
+     양_리스트폼.LBL_유동컨 = "입관컨"
+     양_리스트폼.LBL_다른시트정보 = "리스트같은BL컨"
+
+     양_리스트폼.LST_목록.Clear
+     양_리스트폼.LBL_목록 = "입항관리 ○, 리스트 X. 색칠"
+     양_리스트폼.LBL_HEAD = "  ROW   BL NO.                      컨                    입항예정        화주          수량            BL개수"
+     양_리스트폼.LST_목록.ColumnCount = 7 '가로항목수
+     양_리스트폼.LST_목록.ColumnWidths = "21 pt;95 pt;70 pt;60 pt;49.95 pt;51 pt;20 pt"
+     '양_리스트폼.WIDTH = 935.25
+   ElseIf 폼이름 = "입항정리폼" Then
+     입항정리폼.T_변경컨 = ""
+     입항정리폼.T_목록BL = ""
+     입항정리폼.T_목록컨 = ""
+     입항정리폼.LBL_건수.Caption = ""
+     입항정리폼.LST_목록.Clear
+     입항정리폼.ComboBox1.Clear
+
+     '유동BL, 유동컨은 LST목록 클릭시 다른시트 BL과 컨을 나타내기위한 것.
+     입항정리폼.LBL_유동BL = "입관BL" '예정정보인경우 예정BL로 변경 별도추가
+     입항정리폼.LBL_유동컨 = "입관컨" '예정정보인경우 별도추가
+     입항정리폼.LBL_다른시트정보 = "리스트같은BL컨"
+
+     입항정리폼.LST_목록.Clear
+     입항정리폼.LBL_목록 = "입항관리 ○, 리스트 X. 색칠"
+     입항정리폼.LBL_HEAD = "  ROW   BL NO.                      컨                    입항예정        화주          수량            BL개수"
+     입항정리폼.LST_목록.ColumnCount = 7 '가로항목수
+     입항정리폼.LST_목록.ColumnWidths = "21 pt;95 pt;70 pt;60 pt;49.95 pt;51 pt;20 pt"
+     '입항정리폼.WIDTH = 935.25
+End If
+Sheets(시트이름).Select
+On Error Resume Next
+기존선택셀.Select
+
+End Sub
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">제미나이 개선코드 </h6>
+        <pre class="fw-bold">
+Sub 공통_입항관리단독_목록등기본셑팅_Optimized()
+    Dim targetForm As Object
+    Dim formName As String
+    Dim wsInput As Worksheet, wsList As Worksheet
+    
+    ' 성능 최적화 시작
+    With Application
+        .ScreenUpdating = False
+        .Calculation = xlCalculationManual
+        .EnableEvents = False
+    End With
+
+    ' 폼 이름 확인
+    formName = Sheets("모듈").Range("E3").Value
+    
+    ' 폼 개체 할당 (중복 코드 제거를 위한 로직)
+    On Error Resume Next
+    If formName = "양_리스트폼" Then
+        Set targetForm = 양_리스트폼
+    ElseIf formName = "입항정리폼" Then
+        Set targetForm = 입항정리폼
+    End If
+    On Error GoTo 0
+
+    If targetForm Is Nothing Then
+        MsgBox "유효한 폼이 실행 중이 아닙니다."
+        GoTo CleanUp
+    End If
+
+    ' 1. 공백 제거 최적화 (UsedRange 사용으로 속도 향상)
+    Set wsInput = Sheets("입항관리")
+    Set wsList = Sheets("리스트")
+    
+    ' 실제 데이터가 있는 영역만 공백 제거
+    Intersect(wsInput.UsedRange, wsInput.Range("C:C, K:K")).Replace " ", "", xlPart
+    Intersect(wsList.UsedRange, wsList.Range("C:C, E:E")).Replace " ", "", xlPart
+
+    ' 2. 폼 컨트롤 설정 (With 구문으로 통합)
+    With targetForm
+        .T_변경컨 = ""
+        .T_목록BL = ""
+        .T_목록컨 = ""
+        .LBL_건수.Caption = ""
+        .LST_목록.Clear
+        .ComboBox1.Clear
+
+        .LBL_유동BL = "입관BL"
+        .LBL_유동컨 = "입관컨"
+        .LBL_다른시트정보 = "리스트같은BL컨"
+        
+        .LBL_목록 = "입항관리 ○, 리스트 X. 색칠"
+        .LBL_HEAD = "  ROW    BL NO.                      컨                    입항예정        화주          수량            BL개수"
+        
+        With .LST_목록
+            .ColumnCount = 7
+            .ColumnWidths = "21 pt;95 pt;70 pt;60 pt;49.95 pt;51 pt;20 pt"
+        End With
+    End With
+
+CleanUp:
+    ' 설정 복구
+    With Application
+        .ScreenUpdating = True
+        .Calculation = xlCalculationAutomatic
+        .EnableEvents = True
+    End With
+End Sub
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+1. 주요 개선 사항 및 최적화 포인트
+① 개체 참조 최적화 (With 구문 활용)
+현재 코드는 양_리스트폼.속성, 입항정리폼.속성처럼 폼 이름을 반복해서 호출하고 있습니다. 
+With 구문을 사용하면 코드가 깔끔해질 뿐만 아니라, 
+VBA 엔진이 개체를 매번 다시 찾지 않아도 되어 실행 속도가 미세하게 빨라집니다.
+
+② 전체 열(C:C, K:K) 작업 방지
+Range("C:C").Replace처럼 열 전체를 대상으로 바꾸기 작업을 하면 
+엑셀이 시트의 끝(1,048,576행)까지 검사하게 됩니다. 
+**데이터가 있는 범위(UsedRange)**만 지정하여 작업 범위를 대폭 줄여야 합니다.
+
+③ 폼 개체의 동적 처리
+폼이름 변수를 문자열로 받아 If문으로 분기하는 대신, 
+UserForms 컬렉션이나 Object 변수를 활용하면 
+중복 코드를 제거하고 하나의 로직으로 통합할 수 있습니다.
+
+④ 화면 업데이트 및 이벤트 비활성화
+Application.ScreenUpdating = False를 사용하신 것은 좋습니다. 
+여기에 추가로 Calculation과 EnableEvents를 비활성화하면 
+시트 내에 수식이 많을 때 성능이 급격히 향상됩니다.
+        </pre>
+        <pre class="fw-bold">
+💡 추천하는 질문 방식 (Prompt) : 표 형태로 만들어 달라는 요청이 잘 안되었음.
+"위에서 분석한 **'요약된 변경 내용'**의 표 데이터를 바탕으로 HTML 코드를 작성해줘.
+1. 컬럼은 '항목', '기존 코드', '개선 코드', '기대 효과' 총 4개로 구성할 것.
+2. 첫 줄은 &#60;th>를 사용한 헤더 행으로 만들 것.
+3. 전체 구조는 &#60;table class="table-bordered thtd패딩"> 안에 넣어줘."</pre>
+        <table class="table-bordered thtd패딩">
+          <tr><th>항목</th><th>기존 코드</th><th>개선 코드</th><th>기대 효과</th></tr>
+          <tr><th>작업 범위</th><td>Range("C:C") (100만 행)</td><td>Intersect(UsedRange, ...)</td><td>불필요한 메모리 소모 및 지연 방지</td></tr>
+          <tr><th>코드 구조</th><td>If 폼1 Then... ElseIf 폼2 Then...</td><td>Set targetForm = ...</td><td>코드 길이 단축 및 유지보수 용이</td></tr>
+          <tr><th>ListBox 설정</th><td>개별 속성 반복 호출</td><td>With .LST_목록</td><td>가독성 향상 및 실행 속도 미세 개선</td></tr>
+          <tr><th>시스템 설</th><td>ScreenUpdating만 제어</td><td>Calculation, Events 추가 제어</td><td>데이터가 많을 때 성능 극대화</td></tr>
+        </table>
+
+      </div>
+    </div>
+    <div id="엑셀_코드개선2" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">기존 코드</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">Dim 원본컨범위 As Range
+Set 원본컨범위 = Sheets("입항관리").Range("C1", Sheets("입항관리").Cells(Rows.Count, "C").End(xlUp)) </span>
+
+1. with 사용
+Dim ws As Worksheet
+Dim 원본컨범위 As Range
+
+Set ws = Sheets("입항관리")
+With ws
+    ' Rows.Count 앞에 마침표(.)를 붙여 ws를 참조하게 합니다.
+    Set 원본컨범위 = .Range("C1", .Cells(.Rows.Count, "C").End(xlUp))
+End With
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+
+        </pre>
+      </div>
+      <div>
+
+      </div>
+    </div>
+        
+
+        
+    <div id="엑셀_성능개선1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">CountIf 대신 Dictionary의 Exists 사용 (대용량 데이터에서 수십 배 빠름)</span> 
+Dim dict As Object
+Set dict = CreateObject("Scripting.Dictionary")
+<span class="blueviolet">1. 정보 저장 방법 (Key & Item)</span>
+  ① .Add 메서드 (엄격한 저장)
+  이미 존재하는 키를 추가하려고 하면 에러가 발생합니다. 중복 체크가 엄격해야 할 때 사용합니다.
+  dict.Add "BL12345", "A화주"
+  dict.Add "BL67890", "B화주"
+
+  ② dict(Key) = Item 방식 (유연한 저장)
+  키가 없으면 새로 만들고, 있으면 기존 값을 덮어씁니다. 실무에서 가장 많이 쓰이는 방식입니다.
+  dict("BL12345") = "A화주"  '새로 생성
+  dict("BL12345") = "C화주"  '기존 "A화주"를 "C화주"로 변경
+
+<span class="blueviolet">3. Dictionary의 주요 특징 요약</span>
+  - 수만 건의 데이터에서도 특정 키를 찾는 속도가 O(1)에 가깝습니다.
+  - 유일성 : Key는 중복될 수 없습니다. (중복 제거에 탁월)
+  - 유연성 : Item에는 문자열, 숫자뿐만 아니라 배열이나 다른 객체도 담을 수 있습니다
+    <span class="blueviolet">Item 자리에 단순히 True뿐만 아니라 해당 행의 다른 정보(화주명, 수량 등)를 
+    배열로 묶어 저장할 수도 있습니다.</span>
+  - Dictionary의 Key는 대소문자를 구분합니다. 기본값. dict.CompareMode = 0
+    Dim dict As Object
+    Set dict = CreateObject("Scripting.Dictionary")
+    dict.CompareMode = 1 ' 1 = TextCompare (대소문자 구분 안 함)
+
+<span class="blueviolet">4. 정보 꺼내기 및 확인</span>
+  - Item 가져오기: 변수 = dict("키값")
+  - 존재 확인: If dict.Exists("키값") Then ... (매우 빠름)
+  - 개수 확인: dict.Count
+  - 삭제: dict.Remove("키값") 또는 전체삭제 dict.RemoveAll
+  - key를 담은 배열 반환 : let 배열 = dict.keys 
+
+<span class="blueviolet">5. Key가 없는 값을 호출하면 어떻게 되나요?</span>
+  - 이 부분이 Dictionary에서 가장 주의해야 할 특징입니다.
+  - Dictionary는 없는 Key를 호출하는 순간, 
+    그 Key를 즉시 새로 만들어버립니다. (Item은 빈 값으로 생성됨)
+  - 결과: 에러는 나지 않지만, dict.Count가 1 늘어나고 값은 공백("")이 나옵니다.
+  - 방지책: 반드시 .Exists 메서드로 먼저 확인해야 합니다.
+    If dict.Exists("있는키") Then
+    If Not dict.Exists("없는키") Then
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">6. Item 값으로 Key를 알 수 있는 방법</span>
+  - Dictionary는 기본적으로 **[Key -> Item]**의 단방향 구조입니다. 
+  - Item으로 Key를 찾는 "직접적인" 기능은 없습니다. 
+    따라서 전체를 뒤져보는 루프를 돌려야 합니다.
+    <span class="blueviolet">Dim k As Variant
+    For Each k In dict.Keys
+        ' k가 순서대로 키값을 가져옵니다.
+        Debug.Print "Key: " & k & ", Value: " & dict(k)
+    Next k</span>        </pre>
+        <h6 class="fw-bold">Dictionary의 Item에 **배열(Array)**을 담는 방식은 엑셀 자동화의 꽃이라고 ...</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">단독컨(key) & bl,수량등 여러정보를 담은 배열</span>
+Sub 다중정보저장()
+    Dim dict As Object
+    Set dict = CreateObject("Scripting.Dictionary")
+    dict.CompareMode = 1 ' 대소문자 구분 안 함
+    
+    ' Key: BL번호 / Item: Array(화주, 컨테이너, 수량)
+    dict.Add "BL1001", Array("제미나이 상사", "CONT1234567", 25)
+    dict.Add "BL1002", Array("VBA 물류", "CONT9876543", 10)
+    
+    ' 데이터 꺼내기
+    Dim 정보 As Variant
+    If dict.Exists("BL1001") Then
+        정보 = dict("BL1001") ' 배열을 통째로 받아옴
+        
+        MsgBox "화주명: " & 정보(0) & vbCrLf & _
+               "컨번호: " & 정보(1) & vbCrLf & _
+               "수량: " & 정보(2)
+    End If
+End Sub
+
+<span class="blueviolet">Keys를 1차원 배열처럼 가로로 뿌리기</span>
+Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Keys)
+<span class="blueviolet">Item이 값일때 1차원 배열처럼 가로로 뿌리기</span>
+Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Items)
+     </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">dict.Keys 는 배열이 아니고 함수이다.  </h6>
+        <pre class="fw-bold">
+  1. ()으로 실행하면 dict.Keys()(1) 배열이 되어 index 로 접근가능 
+  2. 자체를 변수에 담으면 let 키값모음 = dick.keys 배열을 반환한다. 
+  3. dict.Keys()(1) 방식의 치명적인 단점 (성능 문제)
+     작동은 하지만, 이 방식은 성능 면에서 매우 비효율적입니다. 
+     특히 반복문(For문) 안에서 사용할 때 문제가 커집니다.
+
+    ' ❌ 매우 나쁜 예 (성능 저하)
+    For i = 0 To dict.Count - 1
+        MsgBox dict.Keys()(i) ' 루프를 돌 때마다 "매번" 전체 키 배열을 새로 만듭니다.
+    Next i
+   만약 데이터가 10,000건이라면, 위 코드는 10,000건짜리 배열을 10,000번 만듭니다. 
+   (총 1억 개의 데이터를 처리하는 셈이 되어 엑셀이 멈출 수 있습니다.)
+        </pre>
+        <h6 class="blueviolet fw-bold">worksheetfunction.countif </h6>
+        <pre class="fw-bold">
+
+        </pre>
+      </div>
+    </div>
+
+        
     <div id="엑셀_파일점검" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
