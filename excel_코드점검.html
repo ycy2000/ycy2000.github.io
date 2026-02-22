@@ -108,7 +108,7 @@
     <div class="개별카테고리" id="성능개선">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title='엑셀_성능개선1'>Dictionary : worksheetfunction.CountIf 대체, 속도 개선</h6>
+        <h6 class="fw-bold" title='엑셀_성능개선1'>성능개선 : Dictionary, 배열관련 코드에서 transpose 사용 이유</h6>
         <h6 class="fw-bold">메모 : Cells.Find("값"), cells 대신에 UsedRange.Find("값")</h6>
         <h6 class="fw-bold">메모 : Cells.Find는 값이 없어도 모든 셀을 순회한다. 찾는값이 없으면 과부하</h6>
         <h6 class="fw-bold">메모 : 1. Intersect(wsInput.UsedRange, wsInput.Range("C:C, K:K")).Replace " ", "", xlPart</h6>
@@ -1144,9 +1144,6 @@ End With
 
       </div>
     </div>
-        
-
-        
     <div id="엑셀_성능개선1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -1154,16 +1151,21 @@ End With
 <span class="blueviolet">CountIf 대신 Dictionary의 Exists 사용 (대용량 데이터에서 수십 배 빠름)</span> 
 Dim dict As Object
 Set dict = CreateObject("Scripting.Dictionary")
+dict.CompareMode = 1 ' 1 = TextCompare (대소문자 구분 안 함),  기본 0 (대소문자 구분)
+
 <span class="blueviolet">1. 정보 저장 방법 (Key & Item)</span>
   ① .Add 메서드 (엄격한 저장)
   이미 존재하는 키를 추가하려고 하면 에러가 발생합니다. 중복 체크가 엄격해야 할 때 사용합니다.
   dict.Add "BL12345", "A화주"
   dict.Add "BL67890", "B화주"
 
-  ② dict(Key) = Item 방식 (유연한 저장)
+  <span class="blueviolet">② dict(Key) = Item 방식 (유연한 저장)</span>
   키가 없으면 새로 만들고, 있으면 기존 값을 덮어씁니다. 실무에서 가장 많이 쓰이는 방식입니다.
-  dict("BL12345") = "A화주"  '새로 생성
-  dict("BL12345") = "C화주"  '기존 "A화주"를 "C화주"로 변경
+  dict("BL1") = "A화주"  '새로 생성
+  dict("BL1") = "C화주"  '기존 "A화주"를 "C화주"로 변경
+  dict("BL3") = Array("제미나이 상사", "CONT1234567", 25)
+  Debug.Print dict("bl3")(0) '==> 제미나이 상사
+  Debug.Print dict("bl3")(1) '==> CONT1234567
 
 <span class="blueviolet">3. Dictionary의 주요 특징 요약</span>
   - 수만 건의 데이터에서도 특정 키를 찾는 속도가 O(1)에 가깝습니다.
@@ -1171,10 +1173,6 @@ Set dict = CreateObject("Scripting.Dictionary")
   - 유연성 : Item에는 문자열, 숫자뿐만 아니라 배열이나 다른 객체도 담을 수 있습니다
     <span class="blueviolet">Item 자리에 단순히 True뿐만 아니라 해당 행의 다른 정보(화주명, 수량 등)를 
     배열로 묶어 저장할 수도 있습니다.</span>
-  - Dictionary의 Key는 대소문자를 구분합니다. 기본값. dict.CompareMode = 0
-    Dim dict As Object
-    Set dict = CreateObject("Scripting.Dictionary")
-    dict.CompareMode = 1 ' 1 = TextCompare (대소문자 구분 안 함)
 
 <span class="blueviolet">4. 정보 꺼내기 및 확인</span>
   - Item 가져오기: 변수 = dict("키값")
@@ -1185,10 +1183,10 @@ Set dict = CreateObject("Scripting.Dictionary")
 
 <span class="blueviolet">5. Key가 없는 값을 호출하면 어떻게 되나요?</span>
   - 이 부분이 Dictionary에서 가장 주의해야 할 특징입니다.
-  - Dictionary는 없는 Key를 호출하는 순간, 
-    그 Key를 즉시 새로 만들어버립니다. (Item은 빈 값으로 생성됨)
+  - Dictionary는 없는 Key를 호출하는 순간, <span class="blueviolet">If dict("BL2") Then
+    그 Key를 즉시 새로 만들어버립니다. (Item은 빈 값으로 생성됨)</span>
   - 결과: 에러는 나지 않지만, dict.Count가 1 늘어나고 값은 공백("")이 나옵니다.
-  - 방지책: 반드시 .Exists 메서드로 먼저 확인해야 합니다.
+  - 추가 방지책: 반드시 .Exists 메서드로 먼저 확인해야 합니다.
     If dict.Exists("있는키") Then
     If Not dict.Exists("없는키") Then
         </pre>
@@ -1204,54 +1202,47 @@ Set dict = CreateObject("Scripting.Dictionary")
         ' k가 순서대로 키값을 가져옵니다.
         Debug.Print "Key: " & k & ", Value: " & dict(k)
     Next k</span>        </pre>
-        <h6 class="fw-bold">Dictionary의 Item에 **배열(Array)**을 담는 방식은 엑셀 자동화의 꽃이라고 ...</h6>
+        <h6 class="blueviolet fw-bold">dict.Keys 는</h6>
         <pre class="fw-bold">
-<span class="blueviolet">단독컨(key) & bl,수량등 여러정보를 담은 배열</span>
-Sub 다중정보저장()
-    Dim dict As Object
-    Set dict = CreateObject("Scripting.Dictionary")
-    dict.CompareMode = 1 ' 대소문자 구분 안 함
-    
-    ' Key: BL번호 / Item: Array(화주, 컨테이너, 수량)
-    dict.Add "BL1001", Array("제미나이 상사", "CONT1234567", 25)
-    dict.Add "BL1002", Array("VBA 물류", "CONT9876543", 10)
-    
-    ' 데이터 꺼내기
-    Dim 정보 As Variant
-    If dict.Exists("BL1001") Then
-        정보 = dict("BL1001") ' 배열을 통째로 받아옴
-        
-        MsgBox "화주명: " & 정보(0) & vbCrLf & _
-               "컨번호: " & 정보(1) & vbCrLf & _
-               "수량: " & 정보(2)
-    End If
-End Sub
-
-<span class="blueviolet">Keys를 1차원 배열처럼 가로로 뿌리기</span>
-Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Keys)
-<span class="blueviolet">Item이 값일때 1차원 배열처럼 가로로 뿌리기</span>
-Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Items)
-     </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold">dict.Keys 는 배열이 아니고 함수이다.  </h6>
-        <pre class="fw-bold">
-  1. ()으로 실행하면 dict.Keys()(1) 배열이 되어 index 로 접근가능 
-  2. 자체를 변수에 담으면 let 키값모음 = dick.keys 배열을 반환한다. 
+  1. 함수 객체(배열 아님)이고 For Each k In dict.Keys 순회 가능 
+  2. key를 배열에 담아 반환하는 함수이다. (1차원 배열)
+     let 배열 = dick.keys
+     let 배열 = dick.keys()
+     - 인수가 없는 경우 ()를 생략해도 함수 실행된다 () 넣기 추천
   3. dict.Keys()(1) 방식의 치명적인 단점 (성능 문제)
      작동은 하지만, 이 방식은 성능 면에서 매우 비효율적입니다. 
      특히 반복문(For문) 안에서 사용할 때 문제가 커집니다.
-
     ' ❌ 매우 나쁜 예 (성능 저하)
     For i = 0 To dict.Count - 1
         MsgBox dict.Keys()(i) ' 루프를 돌 때마다 "매번" 전체 키 배열을 새로 만듭니다.
-    Next i
-   만약 데이터가 10,000건이라면, 위 코드는 10,000건짜리 배열을 10,000번 만듭니다. 
-   (총 1억 개의 데이터를 처리하는 셈이 되어 엑셀이 멈출 수 있습니다.)
-        </pre>
-        <h6 class="blueviolet fw-bold">worksheetfunction.countif </h6>
-        <pre class="fw-bold">
+    Next i        </pre>
 
+      </div>
+      <div>
+        <h6 class="fw-bold">배열선언에서 ReDim Preserve 때문에!! 차원 변경</h6>
+        <pre class="fw-bold">
+ Dim 폼LIST용결과배열() As Variant
+<span class="blueviolet">'ReDim은 기존 정보 지우기 대문에 자유롭다.</span>
+ ReDim 폼LIST용결과배열(1 To 7, 1 To lastRow) ' 최대크기로 값 넣을 준비
+<span class="blueviolet">'ReDim Preserve는 값이 유지하며, 마지막 차원만 변경가능</span>
+ ReDim Preserve 폼LIST용결과배열(1 To 7, 1 To 결과카운트)
+
+결론
+배열의 1차원은 가로, 2차원은 세로이다. 일반적으로 세로로 이어지는 표와 같다.
+그러나 배열에서 마지막 차원 변경을 위하여 가로,세로에 담길 정보를
+차원을 서로 바꿔서 저장하는 경우가 많다.
+결과 도출후 행열을 바꾸는 transpose를 사용하게 된다.
+
+<span class="blueviolet">1차원은 가로인데 세로로 뿌리기</span>
+Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Keys)
+<span class="blueviolet">Item이 값일때 1차원 가로 배열을 세로로 뿌리기</span>
+Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Items)
+     </pre>
+        <h6 class="blueviolet fw-bold">Range를 배열에 저장, 순회하며 같은 열 여러정보 활용</h6>
+        <pre class="fw-bold">
+Dim vData As Variant '()괄호가 없다
+vData = ws.Range("A1:M" & lastRow).Value
+For i = 1 To UBound(vData, 1)
         </pre>
       </div>
     </div>
