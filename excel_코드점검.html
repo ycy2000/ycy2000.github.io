@@ -62,6 +62,7 @@
             </div>
           </ul>
         </div>
+        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="관리법전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >관리법</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="java전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >JS</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="google전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >google</button>
@@ -273,6 +274,38 @@
       <div>
         <h6 style="font-weight: bold;">[메모] Html, css, js 를 작성하지 않고 만들어진 것을 사용할 수 있다</h6>
         <h6 style="font-weight: bold;"><a href="https://velog.io/@bami/Bootstrap-부트스트랩-시작하기" target="_blank">Bootstrap-부트스트랩-시작하기</a></h6>
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div id="관리법전체" class="d-none 캔버스">
+    <div class="개별카테고리" id="생각방법">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold blueviolet" title="관리법_생각방법">생각방법 엑셀 vba</h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">---------------- gpt 프롬프트 ---------------- </h6>
+        <h6 class="fw-bold" title="관리법_gpt답변모드">1. 답변모드 : 엑셀vba코드, 개요부터 실전 일부</h6>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    <div class="개별카테고리" id="vba사용법">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold blueviolet" title="vba사용법_type">Type 인수정리</h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">---------------- gpt 프롬프트 ---------------- </h6>
+        <h6 class="fw-bold" title="관리법_gpt답변모드">1. 답변모드 : 엑셀vba코드, 개요부터 실전 일부</h6>
+        
       </div>
       <div>
         
@@ -5605,6 +5638,225 @@ console.log(빽틱); // 딸라안에 직접 삼항연산자 : 맞다
         <h6 class="fw-bold">8. 프로토타입, 인스턴스, 프로토타입 상속</h6>
       </div>
     </div>
+    
+    <div id="관리법_생각방법" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="vba사용법_type" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">배열 = ArrayReturnFast("입항관리", 3, 11, 7, "리스트", 5, 3, "배차", "DO", 3) </h6>
+        <pre class="fw-bold">
+Function ArrayReturnFast( _
+    ByVal mainStName As String, ByVal mainStConCol As Long, _
+    ByVal mainStBLCol As Long, ByVal 결과배열Col As Long, _
+    ByVal compareStName As String, ByVal compareConCol As Long, _
+    ByVal compareBLCol As Long, ByVal 배차시트 As String, _
+    ByVal DO시트 As String, ByVal DO배차BLcol As Long) As Variant</pre>
+        <h6 class="fw-bold">문제점 : 인수 전달이 너무 많다. Type 사용으로 인수 정리</h6>
+        <h6 class="blueviolet fw-bold">최종적으로 사용 : 배열 = ArrayReturnFast("입항관리")</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">1. 최상단에 인수의 자료형태만 정의</span>
+Public Type TSheetPolicy
+    mainStName As String
+    mainStConCol As Long
+    mainStBLCol As Long
+    
+    ListColCount As Long
+    CompareColCount As Long
+    
+    compareStName As String
+    compareConCol As Long
+    compareBLCol As Long
+    
+    dispatchSheetName As String
+    doSheetName As String
+    doDispatchBLCol As Long
+End Type
+
+<span class="blueviolet">2. 인수들의 값 셑팅</span>
+Public Function GetSheetPolicy(mainStName As String) As TSheetPolicy
+    
+    Dim p As TSheetPolicy
+    
+    p.mainStName = mainStName
+    p.dispatchSheetName = "배차"
+    p.doSheetName = "DO"
+    p.doDispatchBLCol = 3
+    
+    Select Case mainStName
+    
+        Case "예정"
+            p.mainStConCol = 5
+            p.mainStBLCol = 4
+            p.ListColCount = 7
+            p.CompareColCount = 13
+            p.compareStName = "입항관리"
+            p.compareConCol = 3
+            p.compareBLCol = 1
+            
+        Case "리스트"
+            p.mainStConCol = 5
+            p.mainStBLCol = 3
+            p.ListColCount = 7
+            p.CompareColCount = 17
+            p.compareStName = "입항관리"
+            p.compareConCol = 3
+            p.compareBLCol = 11
+            
+        Case "입항관리"
+            p.mainStConCol = 3
+            p.mainStBLCol = 11
+            p.ListColCount = 7
+            p.CompareColCount = 13
+            p.compareStName = "리스트"
+            p.compareConCol = 5
+            p.compareBLCol = 3
+            
+        Case Else
+            Err.Raise 1001, , "지원하지 않는 시트입니다."
+    
+    End Select
+    
+    GetSheetPolicy = p
+    
+End Function
+
+<span class="blueviolet">3. 인수들이 필요한 함수의 인수에 policy As TSheetPolicy 사용준비</span>
+Public Function GetSheetData(policy As TSheetPolicy) As variant
+  내부에서 policy.mainStName 형식으로 사용
+</pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="관리법_gpt답변모드" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+아키텍처(Architecture)는 특정 목적을 달성하기 위해 시스템의 구성 요소, 기능, 상호작용 방식, 
+그리고 전체적인 구조를 정의한 청사진입니다.         </pre>
+        <h6 class="fw-bold">✅ 📌 AI에게 효율적으로 요청하는 문장 공식, 필요시:다음단계 추천은 빼고</h6>
+        <pre class="fw-bold">
+1️⃣ 가장 강력한 기본 공식 : [대상] + [관점] + [범위 제한]
+- 이 코드 리팩토링 관점에서 구조만 분석해줘.
+- 이 함수 성능 관점에서 병목만 찾아줘.
+- 이 로직 가독성 관점에서 문제점만 알려줘.
+- 이 공식 하나면 80% 해결됩니다.
+<span class="blueviolet">- 다음단계 추천은 빼고</span>
+
+✅ 2️⃣ 정밀 공식 (추측 최소화용) : 목적 + 관점 + 제한 + 결과 형식
+목적: 유지보수성 개선
+관점: 구조 분리 중심
+제한: 동작 변경 금지
+결과: 분석만, 코드 재작성 금지
+이건 대형 코드에서 특히 강력합니다.
+
+✅ 3️⃣ 확장 차단 공식 (부담 줄이기용)
+“추가 제안 없이”
+“확장 설명 제외”
+“다음 단계 추천은 빼고”
+예:
+구조 문제만 말해줘. 추가 제안은 빼줘.
+오류 원인만 설명해줘.
+분석만 해줘. 개선안은 아직 필요 없어.
+이 한 줄이 노이즈를 크게 줄입니다.
+
+✅ 4️⃣ 깊이 조절 공식
+🔹 깊게
+가능한 개선 시나리오까지 포함해줘.
+구조 재설계까지 제안해줘.
+장기 유지보수 관점에서 봐줘.
+🔹 얕게
+핵심만. 5줄 이내로. 요약만.      </pre>
+      </div>
+      <div>
+        <pre class="fw-bold" style="position: relative;">
+<div style="position: absolute;left:300px">🎯 핵심 요약 (아주 중요)
+AI 질문 효율은 결국:
+① 관점 지정
+② 범위 제한
+③ 허용 범위 명확화
+이 세 개로 결정됩니다.</div>✅ 5️⃣ 실무용 리팩토링 질문 템플릿 (완성형)
+이 코드를 리팩토링 관점에서 분석해줘.
+우선 구조적 문제점만 정리해줘.
+동작은 유지되어야 한다.
+코드 재작성은 아직 하지 말 것.
+<span class="blueviolet">→ 거의 완벽한 1차 요청입니다. </span>        </pre>
+        <h6 class="fw-bold">기본 모드: 코칭 포함, 분석 모드: 확장 최소화, 설계 모드: 구조 제안 포함 </h6>
+        <pre class="fw-bold" style="position: relative;height:310px;">
+<div style="position: absolute;">1️⃣ 기본 모드 (코칭 포함)
+핵심 답변 제공
+필요한 경우 다음 단계 제안
+구조 개선 아이디어 가볍게 포함
+성장 방향까지 같이 제시
+👉 평소 질문은 자동으로 이 모드</div><div style="position: absolute;left:250px">2️⃣ 분석 모드 (확장 최소화)
+질문한 범위 안에서만 답변
+추가 아이디어 / 다음 단계 제안 없음
+구조 확장 언급 최소화
+“검토 중심” 답변
+👉 코드 점검, 오류 확인, 로직 검증할 때 추천
+사용 예: 분석 모드로 답해줘.</div>
+<div style="position: absolute;padding-top:150px;">3️⃣ 설계 모드 (구조 제안 포함)
+전체 흐름 재구성
+모듈 분리 방향 제안
+유지보수 관점 포함
+리팩토링 아이디어 적극 제시
+👉 구조 고민할 때 추천</div><div class="blueviolet" style="position: absolute;padding-top:150px;left:250px">대화라는 건 단순 정보 전달이 아니라:
+맥락 형성
+기대 조율
+반응 패턴 학습
+상대 스타일 적응
+이 네 가지가 계속 돌아가거든요.</div>        </pre>
+        <h6 class="fw-bold">요청사항을 조립하듯이 작성하면 될 것 같다.</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">예시 : </span>
+- 이 코드 성능과 가독성, 확장성 관점에서 분석해줘
+- .....
+<span class="blueviolet">결과배열 만드는 vba코드 질문 준비해보자</span>
+- 배열을 반환하는 엑셀 vba 코드를 만들려고 한다. 
+- 함수이름은 function 배열반환(인수1, 인수2, 인수3,..) as variant
+- 함수의 인수는 필요시 늘어날것이다.
+- 엑셀 시트 : 예정, 리스트, 입항관리 3개 시트 존재 
+
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">개별적으로 조립할 예시 </h6>
+        <pre class="fw-bold">
+- 코드 진행은 1."자료준비", 2."로직"으로 분리되도록 해줘.
+        </pre>
+      </div>
+    </div>
+        
 
     <div id="js설명_객체변수자료형" class="대체2줄">
       <h6 class="대체2줄세로1h6"></h6>

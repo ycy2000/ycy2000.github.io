@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='프롬프트_vba코드관련' //원래는 h6의 title이다.
+  전체변수h6title ='vba사용법_type' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 이동배치(요소의타이틀,배치요소아이디) {
