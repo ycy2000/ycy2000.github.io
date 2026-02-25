@@ -106,6 +106,7 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title='엑셀_프로젝트'>정보수집 : 파일은 채팅 나가면 사라짐, 프로젝트와 일반채팅, 모드, 모드(괄호추가)</h6>
+        <h6 class="fw-bold" title='엑셀_프로젝트1'>정보수집 : 리뷰 = 보는 것, 판단하는 것, 말해주는 것, 리팩토링 = 실제로 고치는 것</h6>
         <h6 class="fw-bold" title='엑셀_실전질문1'>실전질문 : 작동되는 코드는 리팩토링이다.</h6>
         <h6 class="fw-bold" title="엑셀_코드질문관련단어">질문에 필요한 개념 : 아키텍쳐, 워크플로우, 책임, 모드 등</h6>
         <h6 class="fw-bold" title='엑셀_질문방법수집1'>질문방법수집1</h6>
@@ -982,6 +983,652 @@ AI 질문 효율은 결국:
         </pre>
       </div>
     </div>
+    <div id="엑셀_프로젝트1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+리뷰 → 리팩토링 순서가 가장 자연스럽습니다.
+1.코드 리뷰: 문제를 발견한다. 2.리팩토링: 발견한 문제를 고친다
+현실에서는 이렇게 쓰여요:
+“이번 PR은 리팩토링 리뷰 위주로 볼게요” “리뷰 의견 반영해서 리팩토링 진행했습니다”
+
+[챗gpt에게 질문해봄] 
+엑셀 vba 코드에 관해 설명을 요청하는 경우에, 코드는 작동이 되는 상태라고 가정할때. 
+리팩토링을 청하는게 맞나요? 그리고 다음 요청사항이 적당한지도 알려주세요 
+[다음] 1. 성능 관점에서 개선할 부분 제안해줘. 2. 모듈화, 재사용(필요시 type 설정), 
+가독성 관점에서 먼저 코드 리팩토링. 3. 코드 진행 과정 설명 및 함수가 맡은 역할 간략히 설명
+
+[답변요약]
+✅ 동작은 유지하면서 품질 개선,즉, 이런 경우 가장 정확한 표현은:
+“VBA 코드 리뷰 및 리팩토링 요청” 또는 “유지보수/성능 관점 리팩토링”
+
+🛠 리팩토링이란? 👉 코드가 실제로 바뀜
+“같은 결과를 내되, 코드를 실제로 바꾸는 행위”
+함수 분리,변수명 변경,중복 제거,구조 재배치,<span class="blueviolet">Type / Enum / Class 도입</span> 
+With ws 블록 도입,배열로 한 번에 읽고 쓰기,에러 처리 공통 함수화,모듈 분리
+
+리팩토링 요청 “동작은 유지한 채 리팩토링해 주세요.”
+
+VBA 코드 리뷰 예
+Select / Activate 과다 사용,반복문 안에서 .Cells() 직접 접근
+전역 변수 남용,에러 처리 없음 👉 아직 코드 안 고침
+
+리뷰 요청 “이 VBA 코드에 대해 성능/가독성 관점에서 리뷰 부탁드립니다.”
+
+리뷰 + 리팩토링 “코드 리뷰 후, 제안 사항을 반영해 리팩토링까지 진행해 주세요.”
+        </pre>
+        <pre class="fw-bold">
+======== 코드를 제시하면서 다음과 같이 물어보았다.  ========
+올려놓은 gpt제공.xlsm 파일을 참고하여 코드 리뷰해줘. 
+코드는 올려놓은 파일의 "코드" 시트에 있어. 
+[코드 중에서 작동되는 함수] 
+1.배열 = M_FN_배열("입항관리", "리스트", "폼ListBox용배열") 
+2.배열 = M_FN_배열("리스트", "입항관리", "폼ListBox용배열") 
+[코드 중에서 작동중 에러가 발생하는 함수] 
+배열 = M_FN_배열("예정", "입항관리", "폼ListBox용배열") 
+[요청] 
+올려놓은 gpt제공.xlsm 파일을 참고하여 코드 리뷰해줘. 
+코드는 올려놓은 파일의 "코드" 시트에 있어. 
+함수 : 배열 = M_FN_배열("예정", "입항관리", "폼ListBox용배열") 에서 에러가 나는 이유와 
+필요한 사항을 리뷰해줘. 그리고 1. 2. 함수도 실행해보고 에러가 안나는것 맞는지도 확인해줘.
+
+[답변은]
+에러나는 위치와 왜 에러나는지 그리고 어떻게 고쳐야하는지 말해주었고.
+다음단계 추천은 에러부분과 관련된 내용이었다.
+원하시면:
+1️⃣ "M_FN_배열 완전 안정화 버전" 만들어드릴까요?
+2️⃣ 아니면 "설계 리팩토링 구조도" 만들어드릴까요?
+지금 구조는 잘 다듬으면 상당히 고급 아키텍처 됩니다.
+
+[에러 수정후에 "최종수정분 적용하니 작동이 잘됩니다" 라고 했더니]
+지금 구조 보면 김세희님 코드가 이미 “기능 구현 단계”는 넘었고
+“구조 안정화 단계”에 들어간 상태입니다.
+
+다음에 다듬을 포인트는 아마:
+<span class="blueviolet">딕셔너리 접근 통합,정책 객체 검증 강화,FN_배열에값추가 책임 축소</span> 
+정도일 가능성이 큽니다.필요하실 때 짧게 한 포인트씩 점검해봅시다 👍
+
+[헐 어떻게 알았대?]
+[딕셔너리 접근 통합,정책 객체 검증 강화,FN_배열에값추가 책임 축소에 대해서 <span class="blueviolet">리뷰해주세요</span>]
+이렇게 질문했더니 "리뷰해주세요"도 괜찮지만 문맥상 정확히는 <span class="blueviolet">코드 리뷰 + 설계 리팩토링</span>이란다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+[리뷰 및 설계리팩토링 관련 답변] ---- 오른쪽 끝에서 두번째 div에 기존코드 마지막 div에 수정된것...
+<span class="blueviolet">★★코드 수정 전 단계로써 문제점과 개선점을 나열해주었고 어떤방향으로 할지말하고 있다.★★</span>
+핵심 3가지 간단하고 정확하게 짚겠습니다.
+1️⃣ 딕셔너리 접근 통합 🔴 현재 문제 가능성 : 여러 곳에서 직접 dict(key) 접근
+     Exists 체크가 여기저기 흩어짐, 키 정책 변경 시 전체 수정 필요
+
+✅ 개선 방향 : 딕셔너리 직접 접근 금지 → 전용 함수 하나로 통합, 예:
+    Function GetBLCount(dict As Object, key As String) As Long
+        If dict.Exists(key) Then GetBLCount = dict(key) Else GetBLCount = 0
+
+✔ 안정성 상승 ✔ 수정 지점 1곳으로 축소 ✔ 유지보수 난이도 ↓ 👉 이건 “안전성 리팩토링” 단계
+
+2️⃣ 정책 객체 검증 강화 🔴 현재 상태 : 정책 객체는 컬럼 번호만 담고 있음. 
+      하지만:시트 존재 여부 확인 없음, 컬럼 유효성 확인 없음, main/compare 조합 검증 약함
+
+✅ 강화 방향 : Fn_GetSheetPolicy 내부에서 : 
+      시트 존재 검사, main = compare 금지, 허용 조합 테이블화, 예:
+      If Not SheetExists(mainStName) Then Err.Raise 2001
+      ✔ 정책이 “단순 데이터” → “검증된 설정 객체”로 승격 👉 이건 “설계 안정화 단계”
+
+3️⃣ FN_배열에값추가 책임 축소 : 이게 가장 중요합니다. 🔴 현재 가능성
+      FN_배열에값추가가:비교,딕셔너리 접근,배열 값 조립,조건 분기,
+      모드 분기,전부 담당할 가능성 큼 <span class="blueviolet">→ 책임 과다</span>
+
+✅ 이상적인 구조
+      FN_배열에값추가 는 오직:“값을 배열에 넣는 역할”만 담당
+      비교/계산은 밖에서 끝내고 여기엔 결과만 전달
+      예 구조:                       🎯 전체 정리
+<div style="position: relative;"><table class="table-bordered thtd패딩" style="position: absolute;left:300px;">
+          <tr><th>항목</th><td>현재 단계</td><td>목표</td></tr>
+          <tr><th>딕셔너리</th><td>접근 분산</td><td>통합</td></tr>
+          <tr><th>정책 객체</th><td>설정용</td><td>검증된 설정 객체</td></tr>
+          <tr><th>배열 추가 함수</th><td>복합 책임</td><td>단일 책임</td></tr>
+</table><table class="table-bordered thtd패딩">
+          <tr><th>1. 비교 판단 함수</th><td>✔ 테스트 쉬움</td></tr>
+          <tr><th>2. BL개수 계산 함수</th><td>✔ 디버깅 쉬움</td></tr>
+          <tr><th>3. 행 데이터 생성 함수</th><td>✔ 변경 파급 최소화</td></tr>
+          <tr><th>4. 배열에 추가 함수</th><td></td></tr>
+</table></div>👉 이건 “책임 분리 리팩토링”
+
+지금 양충영님은
+기능 구현 단계 → 구조 정리 단계 → 아키텍처 정제 단계로 정확히 잘 가고 있습니다.
+
+원하시면 다음 단계로:
+1️⃣ “현재 구조를 1단계 상위 아키텍처로 끌어올리는 구조도”
+2️⃣ 아니면 각 항목을 실제 코드 예시로 미니 리팩토링
+어느 쪽으로 가볼까요?
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+[다음 질문시 고민] 
+이렇게? ==> 핵심 3가지의 개선방향, 강화방향, 이상적인 구조 모두 적용하여 리팩토링 해줘
+
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+Option Explicit
+
+'=============================
+' 시트 정책 + 출력 매핑 정보 포함
+'=============================
+Public Type 인수로사용될변수객체
+    
+    mainStName As String
+    compareStName As String
+    
+    mainConCol As Long
+    mainBLCol As Long
+    
+    compareConCol As Long
+    compareBLCol As Long
+    
+    DOSheetName As String
+    BaechaSheetName As String
+    DOBaeBLCol As Long
+    
+    ListArrayCol As Long
+    PasteArrayCol As Long
+    
+    배열용도 As String
+    
+    '=========================
+    ' ?? ListBox용 출력 매핑 열정보
+    '=========================
+    ListBox용_BLCol As Long
+    ListBox용_ConCol As Long
+    ListBox용_DateCol As Long
+    ListBox용_CustCol As Long
+    ListBox용_QtyCol As Long
+    
+End Type
+
+
+'=============================
+' ?? 딕셔너리 묶음 (통합키 적용)
+'=============================
+Public Type TDictSet
+    dictCompare As Object
+    dictCompareBL As Object
+    dictBaechaDO As Object   'BL 기준 DO/배차 확인용
+End Type
+
+
+'=============================
+Sub BT_배열받아서결과지우기()
+    Sheets("리스트").Range("AV:BL").Clear
+End Sub
+
+
+Sub BT_배열받아서()
+    Call BT_배열받아서결과지우기
+    '단독이 0개면 배열이 0개가 되어버리는데.. 에러남 PRESERVE에서 차원재정의시 0 때문에
+    
+    Dim 배열 As Variant
+    ' "폼ListBox용배열"
+    '배열 = M_FN_배열("입항관리", "리스트", "폼ListBox용배열")
+    '배열 = M_FN_배열("리스트", "입항관리", "폼ListBox용배열")
+    배열 = M_FN_배열("예정", "입항관리", "폼ListBox용배열")
+    
+    If IsEmpty(배열) Then MsgBox "단독값이 없습니다": Exit Sub
+        
+    Sheets("리스트").Select
+    Range("AV1").Resize(UBound(배열, 2), UBound(배열, 1)) _
+        = Application.Transpose(배열)
+    
+End Sub
+
+
+'=========================================================
+' ?? 메인 배열 생성 함수
+'=========================================================
+Public Function M_FN_배열( _
+    mainStName As String, _
+    compareStName As String, _
+    배열용도 As String) As Variant
+    
+    Dim policy As 인수로사용될변수객체
+    policy = Fn_GetSheetPolicy(mainStName, compareStName, 배열용도)
+    
+    '====== 순회할 범위를 배열에 담아둠 =====
+    Dim vdata As Variant
+    vdata = FN_GetSheetData(policy)
+    
+    '====== 딕셔너리 구성 ======
+    Dim dictSet As TDictSet
+    dictSet = BuildDictionaries(policy)
+    
+    Dim vdataRow As Long
+    Dim conNo As String, blNo As String
+    Dim plusRow As Long
+    
+    Dim 용도에맞는배열() As Variant
+    
+    If 배열용도 = "폼ListBox용배열" Then
+        ReDim 용도에맞는배열(1 To policy.ListArrayCol, 1 To UBound(vdata, 1))
+    End If
+    If 배열용도 = "뿌리기용배열" Then
+        ReDim 용도에맞는배열(1 To policy.PasteArrayCol, 1 To UBound(vdata, 1))
+    End If
+    
+    For vdataRow = 1 To UBound(vdata, 1)
+        
+        conNo = vdata(vdataRow, policy.mainConCol)
+        blNo = vdata(vdataRow, policy.mainBLCol)
+        
+        '===== 단독판단 =====
+        If IsSingleContainer(conNo, blNo, dictSet) Then
+            
+            plusRow = plusRow + 1
+            
+            Call FN_배열에값추가( _
+                    vdata, _
+                    vdataRow, _
+                    plusRow, _
+                    용도에맞는배열, _
+                    policy, _
+                    dictSet, 배열용도)
+                    
+        End If
+        
+    Next vdataRow
+    
+    '★★단독이 없으면 차원재정의값 plusRow가 0 이되어 에러난다. empty 반환후 종료
+    If plusRow = 0 Then
+        M_FN_배열 = Empty
+        Exit Function
+    End If
+    
+    
+    If 배열용도 = "폼ListBox용배열" Then
+        ReDim Preserve 용도에맞는배열(1 To policy.ListArrayCol, 1 To plusRow)
+    End If
+    If 배열용도 = "뿌리기용배열" Then
+        ReDim Preserve 용도에맞는배열(1 To policy.PasteArrayCol, 1 To plusRow)
+    End If
+
+    M_FN_배열 = 용도에맞는배열
+    
+End Function
+
+
+'=========================================================
+' ?? 시트 정책 + 출력 매핑 정의
+'=========================================================
+Public Function Fn_GetSheetPolicy( _
+    mainStName As String, _
+    compareStName As String, _
+    배열용도 As String) As 인수로사용될변수객체
+    
+    Dim p As 인수로사용될변수객체
+    
+    p.mainStName = mainStName
+    p.compareStName = compareStName
+    p.배열용도 = 배열용도
+    
+    p.BaechaSheetName = "배차"
+    p.DOSheetName = "DO"
+    p.DOBaeBLCol = 3
+    
+    p.ListArrayCol = 7
+    
+    If compareStName = "리스트" Then p.PasteArrayCol = 17
+    If compareStName = "입항관리" Then p.PasteArrayCol = 13
+    
+    If mainStName = compareStName Then Err.Raise 1001, , "main과 비교시트 이름이 같습니다."
+    If compareStName = "예정" Then Err.Raise 1001, , "compareStName에 예정 이 올수없음."
+    
+    '=======================
+    ' main 시트 정의
+    '=======================
+    Select Case mainStName
+        
+        Case "예정"
+            p.mainConCol = 5
+            p.mainBLCol = 4
+            
+            p.ListBox용_BLCol = 4
+            p.ListBox용_ConCol = 5
+            p.ListBox용_DateCol = 12
+            p.ListBox용_CustCol = 3
+            p.ListBox용_QtyCol = 6
+            
+        Case "리스트"
+            p.mainConCol = 5
+            p.mainBLCol = 3
+            
+            p.ListBox용_BLCol = 3
+            p.ListBox용_ConCol = 5
+            p.ListBox용_DateCol = 9
+            p.ListBox용_CustCol = 4
+            p.ListBox용_QtyCol = 7
+            
+        Case "입항관리"
+            p.mainConCol = 3
+            p.mainBLCol = 11
+            
+            p.ListBox용_BLCol = 11
+            p.ListBox용_ConCol = 3
+            p.ListBox용_DateCol = 13
+            p.ListBox용_CustCol = 2
+            p.ListBox용_QtyCol = 8
+            
+        Case Else
+            Err.Raise 1001, , "지원하지 않는 시트입니다."
+            
+    End Select
+    
+    '=======================
+    ' compare 시트 정의
+    '=======================
+    Select Case compareStName
+        
+        Case "리스트"
+            p.compareConCol = 5
+            p.compareBLCol = 3
+            
+        Case "입항관리"
+            p.compareConCol = 3
+            p.compareBLCol = 11
+            
+        Case Else
+            Err.Raise 1001, , "지원하지 않는 시트입니다."
+            
+    End Select
+    
+    Fn_GetSheetPolicy = p
+    
+End Function
+
+
+'=========================================================
+' vData를 2차원 배열로 반환
+'=========================================================
+Public Function FN_GetSheetData(policy As 인수로사용될변수객체) As Variant
+    
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Worksheets(policy.mainStName)
+    
+    Dim lastRow As Long, lastCol As Long
+    
+    lastRow = ws.Cells(ws.Rows.Count, policy.mainConCol).End(xlUp).Row
+    lastCol = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
+    
+    FN_GetSheetData = ws.Range(ws.Cells(1, 1), ws.Cells(lastRow, lastCol)).Value
+    
+End Function
+'=========================================================
+' ?? 딕셔너리 구성
+'   1) dictCompare    : 컨+BL 통합키 (단독판단용)
+'   2) dictCompareBL  : BL별 개수 카운트용
+'   3) dictBaechaDO   : 배차/DO 존재여부 체크용
+'=========================================================
+Public Function BuildDictionaries(policy As 인수로사용될변수객체) As TDictSet
+    
+    Dim d As TDictSet
+    
+    '==============================
+    ' 딕셔너리 생성
+    '==============================
+    Set d.dictCompare = CreateObject("Scripting.Dictionary")
+    Set d.dictCompareBL = CreateObject("Scripting.Dictionary")
+    Set d.dictBaechaDO = CreateObject("Scripting.Dictionary")
+    
+    Dim ws As Worksheet
+    Dim vCon As Variant, vBL As Variant
+    Dim v As Variant
+    Dim r As Long
+    Dim lastRow As Long
+    Dim key값 As String
+    Dim blKey As String
+    
+    '====================================================
+    ' 1?? compare 시트 → 컨+BL 통합키 + BL 개수 카운트
+    '====================================================
+    Set ws = ThisWorkbook.Worksheets(policy.compareStName)
+    
+    lastRow = ws.Cells(ws.Rows.Count, policy.compareConCol).End(xlUp).Row
+    
+    ' 컨열과 BL열을 각각 배열로 가져옴 (속도 최적)
+    vCon = ws.Range(ws.Cells(1, policy.compareConCol), _
+                    ws.Cells(lastRow, policy.compareConCol)).Value
+                    
+    vBL = ws.Range(ws.Cells(1, policy.compareBLCol), _
+                   ws.Cells(lastRow, policy.compareBLCol)).Value
+    
+    For r = 1 To UBound(vCon, 1)
+        
+        key값 = CStr(vCon(r, 1)) & "|" & CStr(vBL(r, 1))
+        d.dictCompare(key값) = 1   '통합키 (존재여부만 중요)
+        
+        blKey = CStr(vBL(r, 1))
+        
+        If d.dictCompareBL.Exists(blKey) Then
+            d.dictCompareBL(blKey) = d.dictCompareBL(blKey) + 1
+        Else
+            d.dictCompareBL(blKey) = 1
+        End If
+        
+    Next r
+    
+    
+    '====================================================
+    ' 2?? 배차 시트 → BL 기준 저장
+    '====================================================
+    Set ws = ThisWorkbook.Worksheets(policy.BaechaSheetName)
+    
+    lastRow = ws.Cells(ws.Rows.Count, policy.DOBaeBLCol).End(xlUp).Row
+    v = ws.Range(ws.Cells(1, policy.DOBaeBLCol), _
+                 ws.Cells(lastRow, policy.DOBaeBLCol)).Value
+    
+    For r = 1 To UBound(v, 1)
+        d.dictBaechaDO(CStr(v(r, 1))) = 1
+    Next r
+    
+    
+    '====================================================
+    ' 3?? DO 시트 → BL 기준 누적
+    '====================================================
+    Set ws = ThisWorkbook.Worksheets(policy.DOSheetName)
+    
+    lastRow = ws.Cells(ws.Rows.Count, policy.DOBaeBLCol).End(xlUp).Row
+    v = ws.Range(ws.Cells(1, policy.DOBaeBLCol), _
+                 ws.Cells(lastRow, policy.DOBaeBLCol)).Value
+    
+    For r = 1 To UBound(v, 1)
+        d.dictBaechaDO(CStr(v(r, 1))) = 1
+    Next r
+    
+    '==============================
+    ' 최종 반환
+    '==============================
+    BuildDictionaries = d
+    
+End Function
+
+
+'=========================================================
+' ?? 단독판단
+'=========================================================
+Public Function IsSingleContainer( _
+    ByVal conNo As String, _
+    ByVal blNo As String, _
+    ByRef dictSet As TDictSet) As Boolean
+    
+    If conNo = "" Then Exit Function
+    If conNo = "입고및출고작업내용" Then Exit Function
+    If conNo = "컨테이너" Then Exit Function
+    If conNo = "컨테이너NO." Then Exit Function
+    
+    Dim key값 As String
+    key값 = conNo & "|" & blNo
+    
+    If dictSet.dictCompare.Exists(key값) Then Exit Function
+    If dictSet.dictBaechaDO.Exists(blNo) Then Exit Function
+    
+    IsSingleContainer = True
+    
+End Function
+
+
+'=========================================================
+' ?? 배열에 값 추가 (분기 제거 완료)
+'=========================================================
+Private Sub FN_배열에값추가( _
+    vdata As Variant, _
+    vdataRow As Long, _
+    plusRow As Long, _
+    ByRef 용도에맞는배열 As Variant, _
+    policy As 인수로사용될변수객체, _
+    ByRef dictSet As TDictSet, 배열용도 As String)
+    
+    'LISTARRAY(7) :
+    'ROW,BLNO,컨,입항예정,화주,수량,BL개수
+    
+    Dim BL개수 As Long
+    Dim 항목수 As Long
+    Dim 가지고올정보수 As Long
+    Dim blKey As String
+    
+    If 배열용도 = "폼ListBox용배열" Then
+    
+        용도에맞는배열(1, plusRow) = vdataRow
+        용도에맞는배열(2, plusRow) = vdata(vdataRow, policy.ListBox용_BLCol)
+        용도에맞는배열(3, plusRow) = vdata(vdataRow, policy.ListBox용_ConCol)
+        용도에맞는배열(4, plusRow) = vdata(vdataRow, policy.ListBox용_DateCol)
+        용도에맞는배열(5, plusRow) = vdata(vdataRow, policy.ListBox용_CustCol)
+        용도에맞는배열(6, plusRow) = vdata(vdataRow, policy.ListBox용_QtyCol)
+        
+        '★★배열 = M_FN_배열("예정", "입항관리", "폼ListBox용배열")
+        '입항관리BL모음에 예정의 BL이 없으면 에러... 단, 대입시에는 자동으로 생성되어 대입값을 ITEM으로 지정함
+        '기존 에러발생원인 : BL개수 = dictSet.dictCompareBL(vdata(vdataRow, policy.ListBox용_BLCol))
+        'Dim blKey As String 부터 첫 IF 구문까지로 수정 및 대체함
+
+        blKey = vdata(vdataRow, policy.ListBox용_BLCol)
+        
+        If dictSet.dictCompareBL.Exists(blKey) Then
+            BL개수 = dictSet.dictCompareBL(blKey)
+        Else
+            BL개수 = 0
+        End If
+        '====여기까지가 기존 에러발생원인 한줄짜리 코드 대채한것
+        
+        If BL개수 = 0 Then
+            용도에맞는배열(7, plusRow) = "단독"
+        Else
+            용도에맞는배열(7, plusRow) = BL개수 & "BL"
+        End If
+     End If
+     
+    If 배열용도 = "뿌리기용배열" Then
+       'compareStName에 따라 (리스트, 배차 2가지 경우)
+       '리스트            : A:공백, B:공백, C:BLNO, D:화주, E:컨번호, F:품명,        G:수량, H:공백, I:입항일, J,K,L,M,N,O,P:공백, Q:선명 (17개 정보)
+       '  mainStName 예정 :                 D열,    C열     E열       P열(SR다리살)  F열             L열 ----- 6개 가져옴
+       '리스트                : A:공백, B:공백, C:BLNO, D:화주, E:컨번호, F:품명,        G:수량, H:공백, I:입항일, J,K,L,M,N,O,P:공백, Q:선명 (17개 정보)
+       '  mainStName 입항관리 :                 K열     B열
+
+
+
+       '입항관리            :
+       '  mainStName 예정 :
+       '입항관리
+       '  mainStName 리스트
+       If policy.compareStName = "리스트" Then
+          항목수 = 17
+          If policy.mainStName = "예정" Then
+                용도에맞는배열(1, plusRow) = "" 'A:""
+                용도에맞는배열(2, plusRow) = "" 'B:""
+                용도에맞는배열(3, plusRow) = vdata(vdataRow, 4) 'C:BLno ---- 예정시트 d열(4)
+                용도에맞는배열(4, plusRow) = vdata(vdataRow, 3) 'D:화주
+                용도에맞는배열(5, plusRow) = vdata(vdataRow, 5) 'E:컨번호
+                용도에맞는배열(6, plusRow) = vdata(vdataRow, 16) 'F:품명(sr다리살)
+                용도에맞는배열(7, plusRow) = vdata(vdataRow, 6) 'G:수량
+                용도에맞는배열(8, plusRow) = "" 'H:""
+                용도에맞는배열(9, plusRow) = vdata(vdataRow, 9) 'I:입항일
+                용도에맞는배열(10, plusRow) = "" 'J:""
+                용도에맞는배열(11, plusRow) = "" 'K:""
+                용도에맞는배열(12, plusRow) = "" 'L:""
+                용도에맞는배열(13, plusRow) = "" 'M:""
+                용도에맞는배열(14, plusRow) = "" 'N:""  -------- 운.도VBA
+                용도에맞는배열(15, plusRow) = "" 'O:""
+                용도에맞는배열(16, plusRow) = "" 'P:""
+                용도에맞는배열(17, plusRow) = "" 'Q:선명 --- 예정시트에서는 선명 안가지고 옴
+          End If
+          If policy.mainStName = "입항관리" Then
+                용도에맞는배열(1, plusRow) = "" 'A:""
+                용도에맞는배열(2, plusRow) = "" 'B:""
+                용도에맞는배열(3, plusRow) = vdata(vdataRow, 11) 'C:BLno --- 입항관리 k열(11)
+                용도에맞는배열(4, plusRow) = vdata(vdataRow, 2) 'D:화주
+                용도에맞는배열(5, plusRow) = vdata(vdataRow, 3) 'E:컨번호
+                용도에맞는배열(6, plusRow) = "" 'F:품명 ------- 입항관리에서는 리스트시트로 가지고올 품명이 없다
+                용도에맞는배열(7, plusRow) = vdata(vdataRow, 8) 'G:수량   (수량 또는 닭(브라질)) ---- 일단 수량 부분에 가지고옴
+                용도에맞는배열(8, plusRow) = "" 'H:""
+                용도에맞는배열(9, plusRow) = vdata(vdataRow, 13) 'I:입항일 ---- 문자열 편집 필요
+                용도에맞는배열(10, plusRow) = "" 'J:""
+                용도에맞는배열(11, plusRow) = "" 'K:""
+                용도에맞는배열(12, plusRow) = "" 'L:""
+                용도에맞는배열(13, plusRow) = "" 'M:""
+                용도에맞는배열(14, plusRow) = "" 'N:""  -------- 운.도VBA
+                용도에맞는배열(15, plusRow) = "" 'O:""
+                용도에맞는배열(16, plusRow) = "" 'P:""
+                용도에맞는배열(17, plusRow) = vdata(vdataRow, 10) 'Q:선명 --- 예정시트에서는 선명 안가지고 옴-
+          End If
+       End If
+       If policy.compareStName = "입항관리" Then
+          항목수 = 13
+          If policy.mainStName = "예정" Then
+                용도에맞는배열(1, plusRow) = "" 'A:""
+                용도에맞는배열(2, plusRow) = "" 'B:화주
+                용도에맞는배열(3, plusRow) = "" 'C:컨번호
+                용도에맞는배열(4, plusRow) = "" 'D:""
+                용도에맞는배열(5, plusRow) = "" 'E:""
+                용도에맞는배열(6, plusRow) = "" 'F:""
+                용도에맞는배열(7, plusRow) = "" 'G:"" 운송사
+                용도에맞는배열(8, plusRow) = "" 'H:"" 물품 ------ 수량을 갖고오자
+                용도에맞는배열(9, plusRow) = "" 'I:""
+                용도에맞는배열(10, plusRow) = "" 'J:선명
+                용도에맞는배열(11, plusRow) = "" 'K:BLno
+                용도에맞는배열(12, plusRow) = "" 'L:도착항
+                용도에맞는배열(13, plusRow) = "" 'M:작업내용
+          End If
+          If policy.mainStName = "리스트" Then
+                용도에맞는배열(1, plusRow) = "" 'A:""
+                용도에맞는배열(2, plusRow) = "" 'B:화주
+                용도에맞는배열(3, plusRow) = "" 'C:컨번호
+                용도에맞는배열(4, plusRow) = "" 'D:""
+                용도에맞는배열(5, plusRow) = "" 'E:""
+                용도에맞는배열(6, plusRow) = "" 'F:""
+                용도에맞는배열(7, plusRow) = "" 'G:"" 운송사
+                용도에맞는배열(8, plusRow) = "" 'H:"" 물품 ------ 수량을 갖고오자
+                용도에맞는배열(9, plusRow) = "" 'I:""
+                용도에맞는배열(10, plusRow) = "" 'J:선명
+                용도에맞는배열(11, plusRow) = "" 'K:BLno
+                용도에맞는배열(12, plusRow) = "" 'L:도착항
+                용도에맞는배열(13, plusRow) = "" 'M:작업내용
+          End If
+       End If
+    End If
+     
+    
+End Sub
+
+
+
+
+
+        </pre>
+      </div>
+    </div>
+
+        
     <div id="엑셀_실전질문1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
