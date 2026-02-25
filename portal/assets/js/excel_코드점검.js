@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='엑셀_질문방법수집2' //원래는 h6의 title이다.
+  전체변수h6title ='엑셀_실전질문1' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 이동배치(요소의타이틀,배치요소아이디) {

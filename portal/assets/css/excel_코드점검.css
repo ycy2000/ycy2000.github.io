@@ -46,6 +46,7 @@ code {color:black;display:block;}
 .대체3줄 > div {display:inline-block; width:610px;vertical-align: top;}
 .대체3줄세로1h6 {display:inline-block; position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:613px;}
 .대체3줄세로2h6 {display:inline-block;position: absolute; border-right:1px solid rgb(201, 188, 188);height:1350px;left:1227px;}
+.대체3줄색칠한테두리 {background-color: burlywood;border:1px solid black;padding:4px;width:590px;}
 #id나열 > div > span, #title나열 > div > span, #js파일리스트기록 > div > span {border:1px solid black;display: inline-block;}
 #id나열 > div > span:nth-of-type(1), #title나열 > div > span:nth-of-type(1) {padding:0px 4px; text-align: center;}/* width는 js로*/
 #js파일리스트기록 > div > span:nth-of-type(1) {padding:0px 4px;width:170px;vertical-align: top;}
