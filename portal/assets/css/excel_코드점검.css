@@ -88,6 +88,9 @@ code {color:black;display:block;}
 .js자료형객체변수자료형표 > code > div:nth-of-type(1) {width:130px;}
 .js자료형객체변수자료형표 > code > div:nth-of-type(2) {width:100px;}
 
+/* 대체3줄 관련 */
+.테두리595 {border:1px solid black;width:595px;padding:4px;}
+.가로pre여러개div > pre {font-weight: bold; display: inline-block;border:1px solid black;margin-right:-6px;padding:4px;}
 
 body , pre{font-family: 'Noto Serif KR', serif;}
 /* top 으로 이동하는 버튼*/
