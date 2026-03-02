@@ -107,12 +107,11 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="blueviolet fw-bold" title='사고방법_gpt경향1'>gpt답변 : 기본 모드(코칭 포함), 분석 모드(확장 최소화), 설계 모드(구조 제안 포함)</h6>
-        <h6 class="blueviolet fw-bold" title='사고방법_gpt_개요'>gpt경향 : 맥락을 잃는 경우 예시. </h6>
-        <h6 class="blueviolet fw-bold" title='사고방법_gpt_개요2'>gpt경향 : 맥락이 끊어진 예시. </h6>
+        <h6 class="blueviolet fw-bold" title='사고방법_gpt_개요'>gpt경향 : 답변이 맥락을 잃는 경우 중단할것. </h6>
         <h6 class="blueviolet fw-bold" title='사고방법_개요'>gpt에게 질문할때 : 설계와 기능구현에서 사고방법(질문방법)을 달리해야한다.</h6>
         
         <h6 class="fw-bold" title='사고방법_단어정리1'>단어/이해정리1 : </h6>
-        <h6 class="fw-bold" title='사고방법_단어정리2'>단어/이해정리2 : (구조개선 관점) 아키텍쳐 관점에서 분석 / 리뷰 / 설계 해주세요.</h6>
+        <h6 class="fw-bold" title='사고방법_단어정리2'>단어/이해정리2 : </h6>
         <h6 class="fw-bold" title='사고방법_정리대기1'>정리대기원본 : </h6>
         <h6 class="fw-bold" title='사고방법_정리대기2'>정리대기원본 :1.vba 구체적인 이름 2.vba 작동보장, 리뷰(문제점 및 상태), 리팩토링(작동보장x), 아키텍쳐(구조 설계) </h6>
 
@@ -122,21 +121,28 @@
         <h6 class="fw-bold" title='사고방법_키워드1'>키워드1 : </h6>
         <h6 class="fw-bold" title='사고방법_gpt1'>gpt경향1 : </h6>
         <h6 class="fw-bold" title='사고방법_질문예시모음1'>실전예시1 : “아키텍쳐 분석 요청”이라고 하면 어떻게 진행되나요? </h6>
-        <h6 class="fw-bold" title='사고방법_질문예시모음3'>실전예시3 : 코드제공, 순서도제공, 특정부분 정책설정통합 방법</h6>
-
         <br><br><br><br><br>
 
       </div>
       <div>
         <h6 class="blueviolet fw-bold">======== vba 코드 질문은 한정적이다, 어느 단계인지 파악후 다음 단계로 ========</h6>
         <h6 class="fw-bold" title='사고방법_네이밍'>네이밍 : 계층(임의로 나누는 개념), 함수 이름으로 흐름을 알수 있는 네이밍</h6>
-        <h6 class="fw-bold" title='사고방법_맥락표현01'>질문1 : (구조개선) 아키텍쳐 관점에서 구조 진단 vs 단순 구조 진단</h6>
-        <h6 class="fw-bold" title='사고방법_맥락표현02'>질문2 : 코드작동 순서도 그려줘 + 원하는 범위 도출 질문</h6>
+        <h6 class="fw-bold" title='사고방법_맥락표현_이해01'>이해1 : (구조개선) 아키텍쳐 관점에서 구조 진단 vs 단순 구조 진단</h6>
+        <h6 class="fw-bold" title='사고방법_맥락표현_질문01'>질문1 : 코드작동 순서도 그려줘 + 원하는 범위 도출 질문</h6>
         <h6 class="fw-bold" title='사고방법_맥락표현03'>질문3 : Type, 같은 값을 사용하는 부분이 여러곳 여러함수에 흩어져 있을때</h6>
-        <br><br><br><br>
-        
-        <h6 class="fw-bold"></h6>
         <h6 class="fw-bold" title='사고방법_맥락표현22'>질문2 : 실전연습</h6>
+        <br><br><br><br>
+
+
+
+        <h6 class="fw-bold">구조 설계 방향 : (구조개선 관점) 아키텍쳐 관점에서 분석 / 리뷰 / 설계 해주세요.</h6>
+        <h6 class="fw-bold">구조 설계 방향 : 실전 질문, 설계도 도출(시그니처, )</h6>
+        <h6 class="fw-bold"></h6>
+        <h6 class="fw-bold"></h6>
+        <h6 class="fw-bold">부분적 수정 작동보장 : 정보 정리, "작동보장 X + 제안성격" 포함</h6>
+        <h6 class="fw-bold">부분적 수정 작동보장 : 실전 질문</h6>
+        <h6 class="fw-bold"></h6>
+
 
       </div>
       <div>
@@ -1034,133 +1040,102 @@ AI 질문 효율은 결국:
     <div id="사고방법_gpt_개요" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">요약 </h6>
-        <pre class="fw-bold">
--제어를 하지 않으면 추측하여 어쨋던지 답변을 낸다. 연쇄 오류의 시작. 이후의 채팅은 쓰레기다.
--gpt가 추측하게 허용하면 전체적인 변경권을 가진다. </pre>
-        <h6 class="fw-bold">★ 작동보장 안되는 단어, 추측을 유발하는 위험한 단어/표현 </h6>
-        <pre class="fw-bold">
-제안해줘. 검토해줘. 간결하게. 유연하게. 범용적으로. 유연하게. 범용적으로.
-"효율적으로" : 참조(Reference) 설정이 안 되어 있어 에러 발생 
-  - 추가라이브러리 설치가 필요한 함수사용 
-  <span class="blueviolet">- 참조금지 : 기본 내장 함수만 사용해줘 </span> 
-"간결하게" : 디버깅 불가능 및 Option Explict 위반
-"시그니처(함수 구조)를 망가뜨리는 상황"
-  - 통합해줘 : 여러개의 매개변수나 필수적인 인자값을 누락시키는 경우가 많습니다.
-"유연하게" : 매개변수 타입을 String 이나 Integer 대신 Variant 로 남발하게 되어...
-"범용적으로" : 특정시트를 가리키던 코드를 ActiveSheet 기반으로 바꾸면서...
-        </pre>
-
-        <pre class="fw-bold">
-2.내가 봐도 먼저 알아야할 정보가 있어도 물어보지 않고 결과를 내버린다. 
-   - 이것이 가장 문제다. 이때부터는 꼬였다고 봐도 된다. 
-3.그러나 나는 꼬인것도 모르고 처음의 상태인것으로 오해하고 대화를 이어간다. 
-   - 이때부터는 2.에서 꼬인 상태에서 더 꼬여가는 상황이 된다. 
-<span class="blueviolet">★ 코드를 막 제시했다고 안심하면 안된다.</span>
-<span class="blueviolet">★ 작동보장 안되는 의심 대답 : 제안, (변경) 개념, (해결) 전략,</span>
-<span style="color:crimson">★ 작동보장 안되는 의심 질문 : 검토!, 가능한것이면, </span>
-<span class="blueviolet">★ 작동이 안되면 다음단계 추가 제안은 절대 현혹되지 말것.</span>
-<span class="blueviolet">★ 항상 상기할것, 한번만 어긋나면 어긋난 전 단계에서 시작된것이 연쇄적으로 어긋남</span>
-
-내가 이렇다 저렇다 말했을때 내용중 되지도 않는 말을해도 
-그렇게 생각한 이유는 이러이러한것 때문입니다. 말을 해버린다. 
-
-<span class="blueviolet">결론 : 내가 원하는 결과물을 얻는 질문방법을 공부할것.AI는 대단한 능력이 있으니.</span>
-        </pre>
-        <h6 class="fw-bold">빡쳤던 대화 흐름 </h6>
-        <pre class="fw-bold">
-1. 엑셀파일과 모듈파일을 올려둔 상태에서 수정하고싶은 코드 범위를 알려주고 질문을 시작함.
+        <h6 class="fw-bold">● 질문마다 제어가 되도록 해야 한다. gpt가 답변에서 여러가지 사항을 고려하였는데</h6>
+        <h6 class="fw-bold" style="margin-left:20px;">여러가지 답변 항목 중 <span class="단어색칠">"제어나 정보가 없어서"</span> gpt가 <span class="단어색칠">추측에 의해 답변</span>하게 된다.</h6>
+        <div class="세로pre여러개div">
+          <pre>
+<span class="blueviolet">파일 제시후 대화를 이어가고 있는데 답변이 이상하다.</span>
+맥락이 끊어진 지점은 “파일 기반 대화 → 일반화된 코드 제시”로 넘어간 순간입니다.
+"간단히 말해 질문에서 추측이 들어갈 여지를 주는 순간"</pre>
+          <pre>
+🔎 어디서 맥락이 끊어졌나? 이 지점입니다:<span class="단어색칠">“완성형 코드로 주세요”</span>
+     그 순간 제가 기존 파일 구조를 100% 기준으로 재작성해야 했는데 일부 전제를 다시 가정</pre>
+        </div>
+        <div class="세로pre여러개div">
+          <pre>엑셀파일과 모듈파일을 올려둔 상태에서 수정하고싶은 코드 범위를 알려주고 질문을 시작함.
 [질문]
 업로드한 "단독컨배열.bas" 코드를 참고하세요. 
 코드 내부의 "★수정할부분시작" 에서 "수정할부분 끝★" 사이의 코드에 대한 질문입니다. 
-정책설정 변경을 통하여 한번의 반복문으로 대체할수 있는지 검토해주세요. 
-대체할 수 있다면 수정되는 내용이 있는 함수를 각각 전체코드로 표현해주세요.
-<span class="blueviolet">[결론적으로 이 질문에 작동되는 코드를 보장하지 않는 질문이었던것!!]</span>
-1."검토"라는 단어에서 "코드작동 보장"의 개념은 물건너 갔다. 
-2."대체할 수 있다면" 가능/불가능의 의미일뿐 "작동보장"의 의미가 아님. 
-
-------------- 엄청 길게 꼬인 대화를 진행하면서 관계없는 코드 남발하다가 ------------
-🎯 만약 당신 의도가 이것이라면
-기존 단독컨_Fn_배열 구조는 유지 배열 채우는 부분만 단일 반복문으로 단순화
-그렇다면 접근이 달라집니다. 이런 말도 나왔고 
-<span class="blueviolet">[왜 이렇게 됐나, 답이없다, 구구절절 이야기하다가 왜 이렇게 됐나는 질문의 의미있는 답이 왔음]</span>
-<span class="blueviolet">일단 진정하란다 ㅋㅋ.
-🎯 왜 이런 일이 생겼냐면 당신은 이렇게 질문했습니다:
-하나의 반복문으로 처리하되 기존 코드는 건드리지 않고 신규 정책을 만들어 기능만 완성하고 싶다
-그래서 저는
-완전히 독립된 새 엔진을 만들어 드렸습니다.
-하지만 그 경우 반드시 둘 중 하나를 해야 합니다:
-기존 단독컨_Fn_배열을 교체한다
-또는
-버튼에서 새 함수를 호출한다 그 연결 설명이 빠졌기 때문에 지금 혼란이 생긴 겁니다.</span> </pre>
+<span style="background-color:chocolate">정책설정 변경</span>을 통하여 한번의 반복문으로 대체할수 있는지 <span style="background-color:chocolate">검토</span>해주세요. 
+대체할 수 있다면 수정되는 내용이 있는 함수를 각각 전체코드로 표현해주세요.</pre>
+          <pre>
+🔎 다시 잘 읽어 보니 작동보장으로 이해할수 없을것 같긴하다.
+     1."정책설정 변경" 이 단어에서 <span class="단어색칠">구체적인 변경방법에 대한 정보가 없는데</span>
+         어쩃든지 예시로라도 정책설정 변경을 해버린다. 
+     2."검토"를 한다면 이미 작동보장 x, 실질적으로 제한사항이 없다.
+     3.추측 유발 단어 : 제안해줘. 검토해줘. 간결하게. 유연하게. 범용적으로. 유연하게. 
+                               범용적으로. 효율적으로(없는 참조 가져옴),</pre>
+        </div>
+        <div class="세로pre여러개div">
+          <pre>
+[질문 : 다시 읽어보니 작동보장의 의미가 아닌듯 하다.]
+하나의 반복문으로 처리하되 기존 코드는 건드리지 않고 신규 정책을 만들어 기능만 완성</pre>
+          <pre>
+🔎 "신규 정책"을 만든다, "기능만 완성" "기존 코드는 건드리지 않고" 모두 논리적으로 안맞네.
+     <span class="단어색칠">결론적으로 챗gpt 답변이 완전 어이가 없는 답변이었다.</span> </pre>
+        </div>
+        <h6 class="fw-bold">요약 </h6>
+        <pre class="fw-bold">
+-제어를 하지 않으면 추측하여 어쨋던지 답변을 낸다. 연쇄 오류의 시작. 이후의 채팅은 쓰레기다.
+<span class="단어색칠">-gpt가 추측하게 허용하면 전체적인 변경권을 가진다. </span></pre>
+        <h6 class="fw-bold">- 통합해줘 : 여러개의 매개변수나 필수적인 인자값을 누락시키는 경우가 많습니다.</h6>
+        <h6 class="fw-bold">- 유연하게 : 매개변수 타입을 String 이나 Integer 대신 Variant 로 남발하게 되어...</h6>
+        <h6 class="fw-bold">- 범용적으로 : 특정시트를 가리키던 코드를 ActiveSheet 기반으로 바꾸면서...</h6>
       </div>
       <div>
+        <h6 class="blueviolet fw-bold">표현의 의미 </h6>
         <pre class="fw-bold">
-하나의 반복문으로 처리하되 기존 코드는 건드리지 않고 신규 정책을 만들어 기능만 완성하고 싶다
-그래서 저는 완전히 독립된 새 엔진을 만들어 드렸습니다.
-<span class="blueviolet">나는 이 문장을 몇번을 읽어봐도 결론을 이해할 수 없지만 그렇다고 인정하고 보자
-자꾸 따지고 드니까 비슷한 내용의 다음 답변이 왔다. </span>
-당신의 요청이:기존 건드리지 말고 하나의 반복문으로 기능만 구현, 
-신규 정책 생성이었기 때문입니다.
-그래서 저는:👉 기존 시스템과 연결하지 않은👉 완전 독립 엔진을 제시했습니다.
-하지만⚠ “기존 호출부에 바로 꽂히지는 않는다”는 설명을 명확히 하지 않았습니다.
-이 부분은 제 설명 부족입니다.<span class="blueviolet">절대 반성없다. 사람이 잘못이긴 하지 뭐.</span></pre>
-        <h6 class="blueviolet fw-bold">자! 끝입니다. 그럼 이런 상황을 방지하려면 어떻게 질문해야 하나요? 나왔다. </h6>
-        <pre class="fw-bold">
-🔥 질문 방식 A (연결성 명시)
-기존 BT_배열받아서 버튼 코드를 수정하지 않고
-바로 교체 가능한 코드로 작성해주세요.
-🔥 질문 방식 B (시그니처 고정)
-기존 Public Sub 단독컨_Fn_배열(mainStName, compareStName, 배열용도)
-시그니처를 절대 변경하지 말고 내부만 수정해주세요.
-🔥 질문 방식 C (즉시 실행 가능 요구)
-붙여넣으면 바로 실행 가능한 완성형 코드로 주세요.
+• 함수 제시 후 버튼코드 수정 없이 : 그 함수를 감싼 표현방법만 유지 
+   - 내부에서 호출되는 코드의 인수 등은 해당 안됨. 
+   <span class="blueviolet">- 참고 : 호출 또는 실행되는 함수의 시그니처 유지 (인수 포함) </span>
+• 그냥 “이 함수 고쳐주세요”라고 하면
+ 🔹 함수 조각만 제시  호출부는 생략🔹 인수 설계는 사용자 책임 이렇게 될 가능성이 높습니다. 
+• 4️⃣ 앞으로 이렇게 질문하면 완벽합니다 다음 문장을 복붙해서 쓰셔도 됩니다:
+  기존 코드에 바로 붙여넣으면 실행 가능한 완성형 코드로 주세요.
+  필요한 호출 코드, 변수 선언, 인수 설계까지 포함해서 주세요.
+  기존 코드 구조도 고려해서 연결되게 작성해주세요.
 
-<span class="blueviolet">이 3가지 중 하나라도 포함되면 저는 반드시:</span> 
-함수 이름 유지,,인수 유지,,호출부 유지, 추가 연결 작업 필요 여부 명시를 하게 됩니다.
+  이렇게 하면 저는 설계 단계부터 연결 구조까지 설명. 기존 코드 흐름 분석후
+  “이건 추가로 필요합니다”라고 사전 경고까지 해야 합니다.</pre>
+        <div class="세로pre여러개div">
+          <pre>다음 중 하나라도 포함되면 
+함수 이름 유지,인수 유지,호출부 유지, 추가 연결 작업 필요 여부 명시를 하게 됩니다.</pre>
+          <pre>
+🔥 질문 방식 A (시그니처 고정)
+실행 및 호출되는 함수의 시그니처를 절대 변경하지 말고 내부만 수정해주세요.
+🔥 질문 방식 B (즉시 실행 가능 요구)
+붙여넣으면 바로 실행 가능한 완성형 코드로 주세요.</pre>
+        </div>
+        <h6 class="blueviolet fw-bold">질문 예시. 조립식으로 유연하게 사용할 것 </h6>
+        <div class="세로pre여러개div">
+          <pre style="background-color: white;">
+[조건 설명]
+- 업로드한 통합적용.xlsm파일과 코드는 단독컨.bas파일을 참고할것. 
+- 업로드한 파일을 읽을 수 없는 경우 답변을 중지할것.
+- 호출 또는 실행되는 함수는 기존 함수 시그니처 유지.
+[요청 설명]
+- 코드의 "★시작" 과 "★종료" 사이의 코드는 if 분기 4회가 있고,  
+   분기마다 vData 배열의 column 부분에 상수가 있다. 
+- if 분기 제거 및 vData 배열의 column 을 "type 구조체"에 정의하여 
+   코드의 "★시작" 과 "★종료" 사이의 코드를 하나의 반복문으로 만들어줘. 
+- 구현이 안되면 말하고, 필요한 정보가 있으면 말하세요
+- <span class="blueviolet">바로 붙여넣어 실행 가능해야 합니다</span></pre>
+          <pre><span class="blueviolet">"바로 붙여넣어 실행 가능해야 합니다" 확장버전</span>
+- 기존 코드에 바로 붙여넣으면 실행 가능한 완성형 코드로 주세요.
+- 필요한 호출 코드, 변수 선언, 인수 설계까지 포함해서 주세요.
+- 기존 코드 구조도 고려해서 연결되게 작성해주세요.
 
-5️⃣ 앞으로 가장 강력한 질문 템플릿
-앞으로 이런 리팩토링 상황에서는 이렇게 쓰세요:
+  이렇게 하면 gpt는 설계 단계부터 연결 구조까지 설명. 기존 코드 흐름 분석후
+  “이건 추가로 필요합니다”라고 사전 경고까지 해야 합니다.</pre>
+        </div>
 
-현재 코드 그대로 두고 기존 함수 시그니처 유지.
-호출부 수정 없이 내부만 단일 반복문 구조로 교체해주세요. 
-바로 붙여넣어 실행 가능해야 합니다.
-
-이렇게 쓰면 설계 방향이 100% 고정됩니다.
-
-1️⃣ “붙여넣으면 바로 실행 가능한 완성형 코드”의 의미
-이렇게 말하면 저는:
-✅ 필요한 모든 변수 선언 포함
-✅ 호출 코드 포함
-✅ 인수(매개변수) 설계 완료
-✅ 기존 코드와 연결 방식까지 정리
-✅ 바로 F5 눌러 실행 가능
-상태로 드려야 합니다.
-        </pre>
       </div>
       <div>
         <h6 class="fw-bold"></h6>
         <pre class="fw-bold">
-반대로
-그냥 “이 함수 고쳐주세요”라고 하면
-🔹 함수 조각만 제시
-🔹 기존 코드 구조는 사용자 환경에 맞춘다고 가정
-🔹 호출부는 생략
-🔹 인수 설계는 사용자 책임
-이렇게 될 가능성이 높습니다.
-지금 겪으신 연쇄 에러는 대부분 여기서 발생합니다.
 
-4️⃣ 앞으로 이렇게 질문하면 완벽합니다
-다음 문장을 복붙해서 쓰셔도 됩니다:
 
-기존 코드에 바로 붙여넣으면 실행 가능한 완성형 코드로 주세요.
-필요한 호출 코드, 변수 선언, 인수 설계까지 포함해서 주세요.
-기존 코드 구조도 고려해서 연결되게 작성해주세요.
 
-이렇게 하면 저는
-설계 단계부터 연결 구조까지 설명
-기존 코드 흐름 분석
-“이건 추가로 필요합니다”라고 사전 경고까지 해야 합니다.
 
 🔎 어디서 맥락이 끊어졌나? 이 지점입니다:
 “완성형 코드로 주세요” 그 순간 제가 기존 파일 구조를 100% 기준으로 재작성해야 했는데
@@ -1222,36 +1197,6 @@ AI 질문 효율은 결국:
 주제가 “가능성 검토”에서 “완성형 제작”으로 바뀌며 축이 이동했습니다.
 질문 방식은 충분히 좋았습니다.
 다만 “가정하지 말고 먼저 질문해달라”는 조건이 빠져 있었습니다.
-        </pre>
-      </div>
-    </div>
-    <div id="사고방법_gpt_개요2" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <div class="세로pre여러개div">
-          <pre>
-맥락이 끊어진 지점은 “파일 기반 대화 → 일반화된 코드 제시”로 넘어간 순간입니다.</pre>
-          <pre>
-🔎 어디서 맥락이 끊어졌나? 이 지점입니다:“완성형 코드로 주세요”
-그 순간 제가 기존 파일 구조를 100% 기준으로 재작성해야 했는데
-일부 전제를 다시 가정해버렸습니다</pre>
-        </div>
-        <pre class="fw-bold">
-    
-
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
         </pre>
       </div>
     </div>
@@ -4824,489 +4769,6 @@ arr(1), arr(2), arr(3)로 수동 할당하는 아래 블록만
         </pre>
       </div>
     </div>
-    <div id="사고방법_질문예시모음3" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold">코드 </h6>
-        <pre class="fw-bold">
-Option Explicit
-Public Type 단독컨_policy
-  
-    mainStName As String
-    compareStName As String
-    
-    mainConCol As Long
-    mainBLCol As Long
-    
-    compareConCol As Long
-    compareBLCol As Long
-    
-    DOSheetName As String
-    BaechaSheetName As String
-    DOBaeBLCol As Long
-    
-    배열용도 As String
-    배열의1차원공통 As Long '    ListArrayCol As Long    PasteArrayCol As Long 두개 없애고..
-    
-    '=========================
-    ' ?? ListBox용 출력 매핑 열정보
-    '=========================
-    ListBox용_BLCol As Long
-    ListBox용_ConCol As Long
-    ListBox용_DateCol As Long
-    ListBox용_CustCol As Long
-    ListBox용_QtyCol As Long
-    
-End Type
-
-
-'=============================
-' ?? 딕셔너리 묶음 (통합키 적용)
-'=============================
-Public Type 단독컨_DicSet
-    dictCompare As Object
-    dictCompareBL As Object
-    dictBaechaDO As Object   'BL 기준 DO/배차 확인용
-End Type
-'=========================================================
-' ?? 시트 정책 + 출력 매핑 정의
-'=========================================================
-Public Function 단독컨_FnIn_GetPolicy(mainStName As String, compareStName As String, 배열용도 As String) As 단독컨_policy
-    
-    Dim p As 단독컨_policy
-    
-    p.mainStName = mainStName
-    p.compareStName = compareStName
-    p.배열용도 = 배열용도
-    If 배열용도 = "폼ListBox용배열" Then p.배열의1차원공통 = 7
-    If 배열용도 = "뿌리기용배열" And compareStName = "리스트" Then p.배열의1차원공통 = 15
-    If 배열용도 = "뿌리기용배열" And compareStName = "입항관리" Then p.배열의1차원공통 = 12
-
-    p.BaechaSheetName = "배차"
-    p.DOSheetName = "DO"
-    p.DOBaeBLCol = 3
-    
-    If mainStName = compareStName Then Err.Raise 1001, , "main과 비교시트 이름이 같습니다."
-    If compareStName = "예정" Then Err.Raise 1001, , "compareStName에 예정 이 올수없음."
-    
-    '=======================
-    ' main 시트 정의
-    '=======================
-    Select Case mainStName
-        
-        Case "예정"
-            p.mainConCol = 5
-            p.mainBLCol = 4
-            
-            p.ListBox용_BLCol = 4
-            p.ListBox용_ConCol = 5
-            p.ListBox용_DateCol = 12
-            p.ListBox용_CustCol = 3
-            p.ListBox용_QtyCol = 6
-            
-        Case "리스트"
-            p.mainConCol = 5
-            p.mainBLCol = 3
-            
-            p.ListBox용_BLCol = 3
-            p.ListBox용_ConCol = 5
-            p.ListBox용_DateCol = 9
-            p.ListBox용_CustCol = 4
-            p.ListBox용_QtyCol = 7
-            
-        Case "입항관리"
-            p.mainConCol = 3
-            p.mainBLCol = 11
-            
-            p.ListBox용_BLCol = 11
-            p.ListBox용_ConCol = 3
-            p.ListBox용_DateCol = 13
-            p.ListBox용_CustCol = 2
-            p.ListBox용_QtyCol = 8
-            
-        Case Else
-            Err.Raise 1001, , "지원하지 않는 시트입니다."
-            
-    End Select
-    
-    '=======================
-    ' compare 시트 정의
-    '=======================
-    Select Case compareStName
-        
-        Case "리스트"
-            p.compareConCol = 5
-            p.compareBLCol = 3
-            
-        Case "입항관리"
-            p.compareConCol = 3
-            p.compareBLCol = 11
-            
-        Case Else
-            Err.Raise 1001, , "지원하지 않는 시트입니다."
-            
-    End Select
-    
-    단독컨_FnIn_GetPolicy = p
-    
-End Function
-'★네이밍 : 단독컨_Sub또는Fn_기능, 내부사용시 단독컨_SubIn또는FnIn_기능, 로직,DATA등은 아직 너무 세부적인듯 익숙하지 않다.
-'★네이밍 : FN으로 시작하면 거의 완성된 변수를 담는 동작을 뜻한다.
-'=============================
-Sub BT_배열받아서결과지우기()
-    Sheets("리스트").Range("Ay:Bs").Clear
-End Sub
-Sub BT_배열받아서()
-    Call BT_배열받아서결과지우기
-    ' "폼ListBox용배열"
-    'Call 단독컨_Fn_배열("입항관리", "리스트", "폼ListBox용배열")
-    Call 단독컨_Fn_배열("리스트", "입항관리", "폼ListBox용배열")
-    'Call 단독컨_Fn_배열("예정", "입항관리", "폼ListBox용배열")
-    ' "뿌리기용배열"
-    'Call 단독컨_Fn_배열("입항관리", "리스트", "뿌리기용배열")
-    'Call 단독컨_Fn_배열("리스트", "입항관리", "뿌리기용배열")
-    'Call 단독컨_Fn_배열("예정", "입항관리", "뿌리기용배열")
-End Sub
-
-Public Sub 단독컨_Fn_배열(mainStName As String, compareStName As String, 배열용도 As String)
-    Dim policy As 단독컨_policy
-    policy = 단독컨_FnIn_GetPolicy(mainStName, compareStName, 배열용도)
-    '====== 순회할 범위를 배열에 담아둠 =====
-    Dim vdata As Variant
-    vdata = 단독컨_FNin_vData준비(policy)
-    
-    '====== 딕셔너리 구성 ======
-    Dim dictSet As 단독컨_DicSet
-    dictSet = 단독컨_SubIn_DIC채우기(policy)
-    
-    Dim vdataRow As Long
-    Dim conNo As String, blNo As String
-    Dim plusRow As Long
-    
-    Dim 용도에맞는배열() As Variant
-    
-    ReDim 용도에맞는배열(1 To policy.배열의1차원공통, 1 To UBound(vdata, 1))
-    
-    For vdataRow = 1 To UBound(vdata, 1)
-        
-        conNo = vdata(vdataRow, policy.mainConCol)
-        blNo = vdata(vdataRow, policy.mainBLCol)
-        
-        '===== 단독판단 =====
-        If 단독컨_FnIn_단독컨판단(conNo, blNo, dictSet) Then
-            
-            plusRow = plusRow + 1
-            
-            Call 단독컨_FnIn_배열에값추가( _
-                    vdata, _
-                    vdataRow, _
-                    plusRow, _
-                    용도에맞는배열, _
-                    policy, _
-                    dictSet, 배열용도)
-                    
-        End If
-        
-    Next vdataRow
-    
-    If plusRow = 0 Then MsgBox "단독값이 없습니다": Exit Sub
-    
-    ReDim Preserve 용도에맞는배열(1 To policy.배열의1차원공통, 1 To plusRow)
-
-    Sheets("리스트").Range("ay1").Resize(UBound(용도에맞는배열, 2), UBound(용도에맞는배열, 1)) _
-        = Application.Transpose(용도에맞는배열)
-    
-End Sub
-
-
-
-
-
-'=========================================================
-' vData를 2차원 배열로 반환
-'=========================================================
-Public Function 단독컨_FNin_vData준비(policy As 단독컨_policy) As Variant
-    
-    Dim ws As Worksheet
-    Set ws = ThisWorkbook.Worksheets(policy.mainStName)
-    
-    Dim lastRow As Long, lastCol As Long
-    
-    lastRow = ws.Cells(ws.Rows.Count, policy.mainConCol).End(xlUp).Row
-    lastCol = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
-    
-    단독컨_FNin_vData준비 = ws.Range(ws.Cells(1, 1), ws.Cells(lastRow, lastCol)).Value
-    
-End Function
-'=========================================================
-' ?? 딕셔너리 구성
-'   1) dictCompare    : 컨+BL 통합키 (단독판단용)
-'   2) dictCompareBL  : BL별 개수 카운트용
-'   3) dictBaechaDO   : 배차/DO 존재여부 체크용
-'=========================================================
-Public Function 단독컨_SubIn_DIC채우기(policy As 단독컨_policy) As 단독컨_DicSet
-   '딕셔너리에 공백도 넣을수 있단다.
-    
-    Dim d As 단독컨_DicSet
-    
-    '==============================
-    ' 딕셔너리 생성
-    '==============================
-    Set d.dictCompare = CreateObject("Scripting.Dictionary")
-    Set d.dictCompareBL = CreateObject("Scripting.Dictionary")
-    Set d.dictBaechaDO = CreateObject("Scripting.Dictionary")
-    
-    Dim ws As Worksheet
-    Dim vCon As Variant, vBL As Variant
-    Dim v As Variant
-    Dim r As Long
-    Dim lastRow As Long
-    Dim key값 As String
-    Dim blKey As String
-    
-    '====================================================
-    ' 1?? compare 시트 → 컨+BL 통합키 + BL 개수 카운트
-    '====================================================
-    Set ws = ThisWorkbook.Worksheets(policy.compareStName)
-    
-    lastRow = ws.Cells(ws.Rows.Count, policy.compareConCol).End(xlUp).Row
-    
-    ' 컨열과 BL열을 각각 배열로 가져옴 (속도 최적)
-    vCon = ws.Range(ws.Cells(1, policy.compareConCol), _
-                    ws.Cells(lastRow, policy.compareConCol)).Value
-                    
-    vBL = ws.Range(ws.Cells(1, policy.compareBLCol), _
-                   ws.Cells(lastRow, policy.compareBLCol)).Value
-    
-    For r = 1 To UBound(vCon, 1)
-        
-        key값 = CStr(vCon(r, 1)) & "|" & CStr(vBL(r, 1))
-        d.dictCompare(key값) = 1   '통합키 (존재여부만 중요)
-        
-        blKey = CStr(vBL(r, 1))
-        
-        If d.dictCompareBL.Exists(blKey) Then
-            d.dictCompareBL(blKey) = d.dictCompareBL(blKey) + 1
-        Else
-            d.dictCompareBL(blKey) = 1
-        End If
-        
-    Next r
-    
-    
-    '====================================================
-    ' 2?? 배차 시트 → BL 기준 저장
-    '====================================================
-    Set ws = ThisWorkbook.Worksheets(policy.BaechaSheetName)
-    
-    lastRow = ws.Cells(ws.Rows.Count, policy.DOBaeBLCol).End(xlUp).Row
-    v = ws.Range(ws.Cells(1, policy.DOBaeBLCol), _
-                 ws.Cells(lastRow, policy.DOBaeBLCol)).Value
-    
-    For r = 1 To UBound(v, 1)
-        d.dictBaechaDO(CStr(v(r, 1))) = 1
-    Next r
-    
-    
-    '====================================================
-    ' 3?? DO 시트 → BL 기준 누적
-    '====================================================
-    Set ws = ThisWorkbook.Worksheets(policy.DOSheetName)
-    
-    lastRow = ws.Cells(ws.Rows.Count, policy.DOBaeBLCol).End(xlUp).Row
-    v = ws.Range(ws.Cells(1, policy.DOBaeBLCol), _
-                 ws.Cells(lastRow, policy.DOBaeBLCol)).Value
-    
-    For r = 1 To UBound(v, 1)
-        d.dictBaechaDO(CStr(v(r, 1))) = 1
-    Next r
-    
-    '==============================
-    ' 최종 반환
-    '==============================
-    단독컨_SubIn_DIC채우기 = d
-    
-End Function
-
-
-'=========================================================
-' ?? 단독판단
-'=========================================================
-Public Function 단독컨_FnIn_단독컨판단( _
-    ByVal conNo As String, _
-    ByVal blNo As String, _
-    ByRef dictSet As 단독컨_DicSet) As Boolean
-    
-    If conNo = "" Then Exit Function
-    If conNo = "입고및출고작업내용" Then Exit Function
-    If conNo = "컨테이너" Then Exit Function
-    If conNo = "컨테이너NO." Then Exit Function
-    
-    Dim key값 As String
-    key값 = conNo & "|" & blNo
-    '예를들어 main의 컨&BL 묶은값이 비교대상시트에 있다? ==> 완전일치인데?
-    '컨이 단독이라도 BL이 공백이거나 배차,DO에 있는BL이면 단독이 아님??
-
-    
-    If dictSet.dictCompare.Exists(key값) Then Exit Function 'TLLU1090181|HDMUSAOA48890200 형태의 값
-
-    '딕셔너리에 공백도 들어갈수 있다니까, 공백이 아닐때로 하자
-    If blNo <> "" And dictSet.dictBaechaDO.Exists(blNo) Then Exit Function
-    
-    단독컨_FnIn_단독컨판단 = True
-    
-End Function
-
-
-'=========================================================
-' ?? 배열에 값 추가 (분기 제거 완료)
-'=========================================================
-Private Sub 단독컨_FnIn_배열에값추가( _
-    vdata As Variant, _
-    vdataRow As Long, _
-    plusRow As Long, _
-    ByRef 용도에맞는배열 As Variant, _
-    policy As 단독컨_policy, _
-    ByRef dictSet As 단독컨_DicSet, 배열용도 As String)
-    
-    'LISTARRAY(7) :
-    'ROW,BLNO,컨,입항예정,화주,수량,BL개수
-    
-    Dim BL개수 As Long
-    Dim 항목수 As Long
-    Dim 가지고올정보수 As Long
-    Dim blKey As String
-    
-    If 배열용도 = "폼ListBox용배열" Then
-    
-        용도에맞는배열(1, plusRow) = vdataRow
-        용도에맞는배열(2, plusRow) = vdata(vdataRow, policy.ListBox용_BLCol)
-        용도에맞는배열(3, plusRow) = vdata(vdataRow, policy.ListBox용_ConCol)
-        용도에맞는배열(4, plusRow) = vdata(vdataRow, policy.ListBox용_DateCol)
-        용도에맞는배열(5, plusRow) = vdata(vdataRow, policy.ListBox용_CustCol)
-        용도에맞는배열(6, plusRow) = vdata(vdataRow, policy.ListBox용_QtyCol)
-        
-        blKey = vdata(vdataRow, policy.ListBox용_BLCol)
-        
-        If dictSet.dictCompareBL.Exists(blKey) Then
-            BL개수 = dictSet.dictCompareBL(blKey)
-        Else
-            BL개수 = 0
-        End If
-                
-        If BL개수 = 0 Then
-            용도에맞는배열(7, plusRow) = "단독"
-        Else
-            용도에맞는배열(7, plusRow) = BL개수 & "BL"
-        End If
-     End If
-     
-    If 배열용도 = "뿌리기용배열" Then
-
-       If policy.compareStName = "리스트" Then
-          항목수 = 15 'c열부터
-          If policy.mainStName = "예정" Then
-                용도에맞는배열(1, plusRow) = vdata(vdataRow, 4) 'C:BLno ---- 예정시트 d열(4)
-                용도에맞는배열(2, plusRow) = vdata(vdataRow, 3) 'D:화주
-                용도에맞는배열(3, plusRow) = vdata(vdataRow, 5) 'E:컨번호
-                용도에맞는배열(4, plusRow) = vdata(vdataRow, 16) 'F:품명(sr다리살)
-                용도에맞는배열(5, plusRow) = vdata(vdataRow, 6) 'G:수량
-                용도에맞는배열(6, plusRow) = "" 'H:""
-                용도에맞는배열(7, plusRow) = vdata(vdataRow, 9) 'I:입항일
-                용도에맞는배열(8, plusRow) = "" 'J:""
-                용도에맞는배열(9, plusRow) = "" 'K:""
-                용도에맞는배열(10, plusRow) = "" 'L:""
-                용도에맞는배열(11, plusRow) = "" 'M:""
-                용도에맞는배열(12, plusRow) = "" 'N:""  -------- 운.도VBA
-                용도에맞는배열(13, plusRow) = "" 'O:""
-                용도에맞는배열(14, plusRow) = "" 'P:""
-                용도에맞는배열(15, plusRow) = "" 'Q:선명 --- 예정시트에서는 선명 안가지고 옴
-          End If
-          If policy.mainStName = "입항관리" Then
-                용도에맞는배열(1, plusRow) = vdata(vdataRow, 11) 'C:BLno --- 입항관리 k열(11)
-                용도에맞는배열(2, plusRow) = vdata(vdataRow, 2) 'D:화주
-                용도에맞는배열(3, plusRow) = vdata(vdataRow, 3) 'E:컨번호
-                용도에맞는배열(4, plusRow) = "" 'F:품명 ------- 입항관리에서는 리스트시트로 가지고올 품명이 없다
-                용도에맞는배열(5, plusRow) = vdata(vdataRow, 8) 'G:수량   (수량 또는 닭(브라질)) ---- 일단 수량 부분에 가지고옴
-                용도에맞는배열(6, plusRow) = "" 'H:""
-                용도에맞는배열(7, plusRow) = vdata(vdataRow, 13) 'I:입항일 ---- 문자열 편집 필요
-                용도에맞는배열(8, plusRow) = "" 'J:""
-                용도에맞는배열(9, plusRow) = "" 'K:""
-                용도에맞는배열(10, plusRow) = "" 'L:""
-                용도에맞는배열(11, plusRow) = "" 'M:""
-                용도에맞는배열(12, plusRow) = "" 'N:""  -------- 운.도VBA
-                용도에맞는배열(13, plusRow) = "" 'O:""
-                용도에맞는배열(14, plusRow) = "" 'P:""
-                용도에맞는배열(15, plusRow) = vdata(vdataRow, 10) 'Q:선명 --- 예정시트에서는 선명 안가지고 옴-
-          End If
-       End If
-       If policy.compareStName = "입항관리" Then
-          항목수 = 12
-          If policy.mainStName = "예정" Then
-                용도에맞는배열(1, plusRow) = vdata(vdataRow, 3) 'B:화주
-                용도에맞는배열(2, plusRow) = vdata(vdataRow, 5) 'C:컨번호
-                용도에맞는배열(3, plusRow) = "작업미정" 'D:""
-                용도에맞는배열(4, plusRow) = "" 'E:""
-                용도에맞는배열(5, plusRow) = "" 'F:""
-                용도에맞는배열(6, plusRow) = "?????" 'G:"" 운송사
-                용도에맞는배열(7, plusRow) = vdata(vdataRow, 16) 'H:"" 물품 ------ 수량을 갖고오자
-                용도에맞는배열(8, plusRow) = "" 'I:""
-                용도에맞는배열(9, plusRow) = "" 'J:선명
-                용도에맞는배열(10, plusRow) = vdata(vdataRow, 4) 'K:BLno
-                용도에맞는배열(11, plusRow) = "확인안함" 'L:도착항
-                용도에맞는배열(12, plusRow) = vdata(vdataRow, 12) 'M:작업내용
-          End If
-          If policy.mainStName = "리스트" Then
-                용도에맞는배열(1, plusRow) = vdata(vdataRow, 4) 'B:화주
-                용도에맞는배열(2, plusRow) = vdata(vdataRow, 5) 'C:컨번호
-                용도에맞는배열(3, plusRow) = "" 'D:""
-                용도에맞는배열(4, plusRow) = "" 'E:""
-                용도에맞는배열(5, plusRow) = "" 'F:""
-                용도에맞는배열(6, plusRow) = "" 'G:"" 운송사
-                용도에맞는배열(7, plusRow) = vdata(vdataRow, 7) 'H:"" 물품 ------ 수량을 갖고오자
-                용도에맞는배열(8, plusRow) = "" 'I:""
-                용도에맞는배열(9, plusRow) = vdata(vdataRow, 17) 'J:선명
-                용도에맞는배열(10, plusRow) = vdata(vdataRow, 3) 'K:BLno
-                용도에맞는배열(11, plusRow) = "" 'L:도착항
-                용도에맞는배열(12, plusRow) = vdata(vdataRow, 9) 'M:작업내용 ----- 입항일을 갖고오자
-          End If
-       End If
-    End If
-     
-    
-End Sub
-
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-[모듈내보내서 bas파일을 올린다. 엑셀파일과 같이 올린다.]
-업로드한 "단독컨배열.bas" 코드를 참고하세요.
-코드 내부의 "★수정할부분시작" 에서 "수정할부분 끝★" 사이의 코드에 대한 질문입니다. 
-정책설정 변경을 통하여 한번의 반복문으로 대체할수 있는지 검토해주세요. 
-대체할수 있다면 수정되는 내용이 있는 함수를 각각 전체코드로 표현해주세요.
-        </pre>
-
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-업로드한 파일참고해주세요. 
-질문관련한 내용을 파일에서 읽을수 있나요?
-질문관련한 내용을 파일에서 읽고 질문을 이해하지 못하면 답변을 종료해주세요.
-"코드" 시트의 "a"열의 내용을 실제 vba 코드로 가정하고 
-업로드한 파일의 "트리"시트의 "a"열에 있는 내용은 vba 코드의 "Sub BT_배열받아서() 전체 실행 확장 트리" 작성결과로 참고해주세요. 
-[질문]
-"트리"시트에서 "★위치에 맞게 값 매핑" 부분의 실제코드를 참고하여 
-[폼ListBox용배열] 관련 코드에서처럼 정책을 통합하는 방법을 제시 및 적용해주세요. 
-수정되는 함수를 각각 전체 함수로 알려준 후.
-전체코드를 다시 만들어주세요. 
-
-          
-        </pre>
-      </div>
-    </div>
     <div id="사고방법_네이밍" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -5414,7 +4876,7 @@ result = ApplyDiscountPolicy(amount, policy) </pre>
         <h6 class="fw-bold"> </h6>
       </div>
     </div>
-    <div id="사고방법_맥락표현01" class="대체3줄">
+    <div id="사고방법_맥락표현_이해01" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
         <h6 class="fw-bold">구조개선 vs 아키텍쳐 개선</h6>
@@ -5551,7 +5013,7 @@ Sub RunProcess() '데이터 조회 '필터링 '정렬 '시트 출력 '파일 저
         </pre>
       </div>
     </div>
-    <div id="사고방법_맥락표현02" class="대체3줄">
+    <div id="사고방법_맥락표현_질문01" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
         <h6 class="fw-bold">기본 : 1)기본 모드(코칭포함), 2)분석 모드(확장 최소화), 3)설계 모드(구조 제안 포함)</h6>
