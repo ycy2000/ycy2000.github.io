@@ -5343,8 +5343,9 @@ arr(1), arr(2), arr(3)로 수동 할당하는 아래 블록만
         <div class="세로pre여러개div">
           <pre>VBA는 웹 프레임워크처럼 계층이 강제되지 않기 때문에 의도적으로 계층을 나눠야 합니다.</pre>
           <pre>
-1️⃣ Entry (진입점) 2️⃣ Policy (계산/규칙) 3️⃣ Data Access (시트/파일 접근) 
-4️⃣ Service (비즈니스 로직, <span class="단어색칠">핵심로직</span>) : Is단독컨, 배열에 값 담기 </pre>
+1.Entry (진입점) 2.Policy (class객체) 3.Configuration (Type 구조체) 
+4.Data Access (시트/파일 접근, 범위를 배열로 반환), 5.Service (비즈니스 로직, <span class="단어색칠">핵심로직</span>),
+6.Controller : 규모가 커지면 Service들을 담을수 있다. 7.Domain 계층, 8.Factory 계층 등</pre>
         </div>
         <h6 class="fw-bold">[구글 ai 모드에서 질문과 답변] </h6>
         <div class="세로pre여러개div">
@@ -5365,8 +5366,7 @@ if 분기나 if 분기속에서 변동이 있는 자료의 COLUMN값을
 3. Controller 계층(입구/지휘), UI(버튼/폼), 시작점 Entry 계열, 다양한 표현 가능
    - 사용자의 클릭(BT_배열받아서)을 받아서 함수가 해당하고,
    - "어떤 시트를 읽을지", "어떤 정책(Policy)을 가져올지" 결정하고 
-   <span class="blueviolet">- Service에 일감을 던지는 역할입니다.</span>
-   <span class="blueviolet">- 규모가 작다면 Service 계층에 포함해도 무방.</span>
+   <span class="blueviolet">- Service에 일감을 던지는 역할입니다. - 규모가 작다면 Service 계층에 포함해도 무방.</span>
 4. Service/Workflow 계층 (실행/조합)
    - 실제 업무 순서(Workflow)대로 로직을 실행하는 역할입니다.)
    - 여러 정책(Policy)과 저장소(Repository)를 조합하여 
@@ -5389,13 +5389,18 @@ if 분기나 if 분기속에서 변동이 있는 자료의 COLUMN값을
         </div>
       </div>
       <div>
-        <h6 class="fw-bold">● <span class="단어색칠">"함수"</span>의 이름에, [계층/역할] + [행위] + [대상] 이 중 2개 이상을 의미를 담기추천</h6>
+        <h6 class="fw-bold">● "함수"의 이름에, [계층] + [행위] + [대상] 이 중 2개 이상을 의미를 담기추천</h6>
+        <pre class="fw-bold">
+   - 계층과 관련된 네이밍에는 <span class="단어색칠">"역할"</span>을 표현하는 단어를 사용하여 
+     계층을 직관적으로 인지할수 있게 한다.</pre>
         <h6 class="fw-bold">● 내게 맞는 형식 : ①대상_(내가필요) + ②계층/역할_ + ③행위&대상(MakeArray)</h6>
         <h6 class="fw-bold">● Layer(계층)/역할을 의미하는 <span class="단어색칠">"함수"</span>의 네이밍 예시. 계층과 역할은 비슷한 의미.</h6>
         <div class="가로pre여러개div">
           <div class="세로pre여러개div내부">
             <pre>Entry(진입점) : 전체 코드 담은 함수</pre>
             <pre>
+<span class="단어색칠">• 보통 완전한 기능을 담는 역할</span>
+  - 폼 버튼 click 도 이에 속한다. 아주 쉬운 개념이다.
 <span class="단어색칠">• 단독컨_ProcessMakeArray</span>
   - 대상 + 역할(계층) + 행위
 • LoadSalesData : Load(행위)+대상
@@ -5415,6 +5420,8 @@ Pubiic Sub 또는 Public Function</span>
 • Determine~ : 결정하다. 
 
 
+
+
 <span class="단어색칠">👉 Type 구조체 같은 형식</span> </pre>
           </div>
         </div>
@@ -5427,12 +5434,14 @@ Pubiic Sub 또는 Public Function</span>
 • Load~ • Save~ • Read~
 • Write~ • Fetch~ • GetSheet~
 
+
 <span class="단어색칠">👉 데이터 접근임을 명확히 함</span></pre>
           </div>
           <div class="세로pre여러개div내부">
             <pre>Service (핵심 기능, ex) 배열 반환</pre>
             <pre>
 - 단독컨관련은 기능이 규모가 큰것이다.
+<span class="단어색칠">- 아주~ 다양한 네이밍이 있겠다. 기능을 설명해야 하니까.</span>
 • ReturnArray : 나의 함수에 적당할것 같다.
 • Calculate~ • Generate~ : 생성하다
 • Create~ • Build~ : 조립하다.
