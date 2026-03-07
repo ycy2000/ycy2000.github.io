@@ -5275,7 +5275,62 @@ End Sub
         </pre>
       </div>
       <div>
-        
+        <pre class="fw-bold">
+'--- 클래스 모듈: Student ---
+Option Explicit
+
+' 1. 개인 변수 선언 (Private)
+Private pName As String
+Private pScore As Long
+
+' 2. Property Let (값 설정)
+Public Property Let Name(Value As String)
+    pName = Value
+End Property
+
+Public Property Let Score(Value As Long)
+    If Value >= 0 And Value <= 100 Then
+        pScore = Value
+    Else
+        MsgBox "점수는 0~100 사이여야 합니다."
+    End If
+End Property
+
+' 3. Property Get (값 가져오기)
+Public Property Get Name() As String
+    Name = pName
+End Property
+
+Public Property Get Grade() As String
+    ' 메서드 기능: 점수에 따른 등급 반환
+    If pScore >= 90 Then
+    Grade = "A"
+    ElseIf pScore >= 80 Then
+    Grade = "B"
+    Else: Grade = "C"
+    End If
+End Property
+        </pre>
+        <pre class="fw-bold">
+'--- 표준 모듈: Module1 ---
+Sub UseStudentClass()
+    Dim std1 As Student
+    Set std1 = New Student ' 클래스 인스턴스화
+    
+    ' 속성 설정 (Property Let 호출)
+    std1.Name = "김철수"
+    std1.Score = 95
+    
+    ' 결과 출력 (Property Get 호출)
+    Debug.Print std1.Name & "의 등급: " & std1.Grade
+    ' 결과: 김철수의 등급: A
+End Sub
+
+
+        </pre>
+        <pre class="fw-bold">
+
+        </pre>
       </div>
     </div>
     <div id="엑셀_질문샘플1" class="대체3줄">
