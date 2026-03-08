@@ -145,8 +145,10 @@
 
       </div>
       <div>
+        <h6 class="fw-bold" title="VBA코드속도체감">VBA 코드 속도 체감 + "클래스 모듈, Type 구조체"는 자료형에 추가됨</h6>
         <h6 class="fw-bold" title='Type구조체'>Type 구조체, 숫자, 문자열, 배열까지 Configuration 분기설정, 분기내 값 설정</h6>
         <h6 class="fw-bold" title="클래스모듈">클래스모듈 = 자료형 Type 구조체와 사용법 유사</h6>
+        <h6 class="fw-bold" title="폼컨트롤용클래스모듈">폼 커맨드버튼 클릭이벤트 관련 "클래스 모듈" 사용법</h6>
 
       </div>
     </div>
@@ -5085,6 +5087,41 @@ Type은 의존성을 표현하는 도구이고
         </pre>
       </div>
     </div>
+    <div id="VBA코드속도체감" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">vba 내부적으로 자료형 분류 </h6>
+        <pre class="fw-bold">
+Built-in : String,Integer,Long,Double,Variant
+User Defined Type(UDT) : Type Person
+Object Types : Car(클래스 모듈의 이름), Worksheet,Range
+<span class="blueviolet">클래스모듈 이름, Type 구조체 이름 : 즉 개념적으로는 “자료형 목록에 추가된 것”이 맞습니다.</span></pre>
+        <h6 class="fw-bold">성능 체감 </h6>
+        <pre class="fw-bold">
+<span class="blueviolet">[UI : 엄청 느림 → 개선방법] </span>
+Application.ScreenUpdating = true <span class="blueviolet">→ false</span>
+Application.EnableEvents = False
+Application.Calculation = xlCalculationManual
+
+<span class="blueviolet">[점(.) 마다 객체에 접근하게 됨, 점(.) 마다 함수 호출이라고 보면 되겠다.] </span>
+- 따라서 With 사용도 조금 유리
+Sheets("시트").Range("a1:c20").cells(1,1).value <span class="blueviolet">→ 점(.)마다 함수호출과 같다.</span>
+
+<span class="blueviolet">[성능 10~100배 차이] </span>
+WorksheetFunction.CountIf <span class="blueviolet">→ 반복되면 딕셔너리 도입(item에 개수반영)</span>
+Range 객체 순회, <span class="blueviolet">→ 범위를 배열로 저장하여 사용, Ubound 만큼 반복 등</span>
+
+<span class="blueviolet">[클래스모듈 내용이 많아도 가볍다, 걱정 NO]</span>
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+        
     <div id="Type구조체" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -5331,6 +5368,56 @@ End Sub
         <pre class="fw-bold">
 
         </pre>
+      </div>
+    </div>
+    
+    <div id="폼컨트롤용클래스모듈" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"><span class="blueviolet">Dim btnClass As Collection</span>  폼이 꺼질때까지 유지되도록 전역변수로 선언 </h6>
+        <h6 class="fw-bold"><span class="blueviolet">버튼개수만큼 이벤트 객체가 담겨 있고 그 중 자신이 클릭된걸 감지되면 실행한다.</span> </h6>
+        <h6 class="fw-bold">[순서 간략히]</h6>
+        <pre class="fw-bold">
+<span class="blueviolet">1. 클래스모듈만들기(class_양_리스트폼_cmd) + 클릭이번트 Public 변수 등록</span>
+    Option Explicit
+    Public WithEvents cBtn As MSForms.CommandButton
+    Private Sub cBtn_Click() 
+      '-- 클릭한 버튼의 이름에 따라 동작 등록 
+      Select Case cBtn.Name
+        Case "시트이름_수산"
+          '동작
+      End Select
+    End Sub
+<span class="blueviolet">2. 폼 초기화때 커맨드버튼들을 각각 클래스객체로 만들어 담을 것이다.  </span> 
+    - 클래스모듈이름이 자료형으로 넘어갔으므로 변수로 가지고옴 + Set으로 초기화
+    - 가지고온 변수에 커맨드버튼 넣어둠 
+Private Sub UserForm_Initialize()
+    Dim ctl As Control
+
+    Dim btnClass As <span class="단어색칠">class_양_리스트폼_cmd</span> <span class="blueviolet">'클래스모듈 이름이 자료형에 있음</span>
+
+    Set 커맨드버튼들 = New Collection
+
+    For Each ctl In Me.Controls
+        If TypeName(ctl) = "CommandButton" Then
+
+           <span class="blueviolet">'- 반복마다 새로운 클래스모듈 객체를 생성한다.</span>
+            Set btnClass = New <span class="단어색칠">class_양_리스트폼_cmd</span>
+
+           <span class="blueviolet">'- 클래스모듈 객체의 이벤트감지객체를 지정한다.</span>
+            Set btnClass.cBtn = ctl 'cBtn은 클래스모듈꺼
+
+            커맨드버튼들.Add btnClass
+        End If
+    Next ctl
+
+
+
+
+</pre>
+      </div>
+      <div>
+
       </div>
     </div>
     <div id="엑셀_질문샘플1" class="대체3줄">
