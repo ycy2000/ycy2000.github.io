@@ -155,8 +155,15 @@
     <div class="개별카테고리" id="통합적용">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="blueviolet fw-bold">========== 단어 이해 및 코드별 플로우챠트, 구조, 모듈화방법 ========== </h6>
-        <h6 class="fw-bold" title='통합적용_단독컨추출'>코드 : 단독컨추출 (시트 : 예정, 리스트, 입항관리, DO, 배차)</h6>
+        <h6 class="blueviolet fw-bold">========== 통합적용 리뉴얼하면서 개선방향등 메모 ========== </h6>
+        <h6 class="fw-bold" title='통합적용_질의응답1'>질의응답1 : 의존성, 항상 의존성이 문제다.</h6>
+        <h6 class="fw-bold" title='통합적용_개선1'>질의응답1 개선방법</h6>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
 
       </div>
     </div>
@@ -5374,7 +5381,6 @@ End Sub
     <div id="폼컨트롤용클래스모듈" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold"><span class="blueviolet">Dim btnClass As Collection</span>  폼이 꺼질때까지 유지되도록 전역변수로 선언 </h6>
         <h6 class="fw-bold"><span class="blueviolet">버튼개수만큼 이벤트 객체가 담겨 있고 그 중 자신이 클릭된걸 감지되면 실행한다.</span> </h6>
         <h6 class="fw-bold">[순서 간략히]</h6>
         <pre class="fw-bold">
@@ -5391,12 +5397,14 @@ End Sub
 <span class="blueviolet">2. 폼 초기화때 커맨드버튼들을 각각 클래스객체로 만들어 담을 것이다.  </span> 
     - 클래스모듈이름이 자료형으로 넘어갔으므로 변수로 가지고옴 + Set으로 초기화
     - 가지고온 변수에 커맨드버튼 넣어둠 
+Option Explicit
+<span class="blueviolet">Dim btnClass As Collection</span>  폼이 꺼질때까지 유지되도록 전역변수로 선언
 Private Sub UserForm_Initialize()
     Dim ctl As Control
 
     Dim btnClass As <span class="단어색칠">class_양_리스트폼_cmd</span> <span class="blueviolet">'클래스모듈 이름이 자료형에 있음</span>
 
-    Set 커맨드버튼들 = New Collection
+    Set 커맨드버튼들 = New Collection '클래스 객체들이 담긴다
 
     For Each ctl In Me.Controls
         If TypeName(ctl) = "CommandButton" Then
@@ -5420,6 +5428,412 @@ Private Sub UserForm_Initialize()
 
       </div>
     </div>
+    <div id="통합적용_질의응답1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">"양_리스트폼" 단독독추출 및 리스트박스 클릭관련 정보에서</h6>
+        <pre class="fw-bold">
+Gemini의 응답
+제시해주신 파일들을 분석해본 결과, 현재 코드는 
+**'데이터(Sheet) - 처리 로직(Module) - 사용자 인터페이스(Form)'**가 
+유기적으로 연결되어 있습니다. 하지만 규모가 커지면서 관리의 어려움을 느끼시는 이유는 
+**의존성(Dependency)**이 너무 강하게 얽혀 있기 때문으로 보입니다.
+
+구조적인 관점에서 현재 상태를 리뷰하고, 개선 방향을 제안해 드립니다.
+
+1. 현재 구조의 특징 및 문제점 분석
+① 높은 결합도 (High Coupling)
+현재 클래스 모듈(class_양_리스트폼_cmd)이나 일반 모듈(폼_양리스트_필요)이 
+양_리스트폼이라는 특정 폼의 컨트롤 이름을 직접 참조하고 있습니다.
+
+문제: 폼의 컨트롤 이름(예: LBL_단독시트)이 바뀌면 관련된 모든 모듈의 코드를 수정해야 합니다. 
+모듈이 폼에 종속되어 있어 다른 프로젝트나 다른 폼에서 재사용하기가 어렵습니다.
+
+② 복잡한 정책 로직 (Policy Pattern의 과부하)
+단독컨_policy나 Public_policy를 통해 If/Select 분기를 줄이려는 시도는 
+매우 훌륭한 설계 방향입니다. 
+하지만 정책을 설정하는 함수(GetPolicy) 내부에서 너무 많은 조건(시트명, 용도 등)을 
+한꺼번에 처리하고 있어, 
+새로운 조건이 추가될 때마다 이 함수 자체가 다시 거대해지는 경향이 있습니다.
+
+③ 상태 관리의 파편화
+데이터를 추출하는 로직(단독컨배열.bas)과 화면을 갱신하는 로직(양_리스트폼.frm)이 
+분리되어 있긴 하지만, 
+중간 단계의 데이터(배열, 딕셔너리)가 어떻게 흐르는지 한눈에 파악하기 어렵습니다.
+
+2. 구조적 개선 제안 (Refactoring)
+더 깔끔한 구조를 위해 다음과 같은 방향으로 정리를 추천합니다.
+
+[이미지: MVC(Model-View-Controller) 패턴의 개념도]
+MVC pattern diagram for software architecture, AI로 생성
+Shutterstock
+① 인터페이스(Form)와 로직(Module)의 완전 분리
+모듈 함수가 폼의 컨트롤에 직접 접근하는 대신, 
+**매개변수(Parameter)**를 통해 값을 주고받아야 합니다.
+
+<span class="blueviolet">수정 전: 양_리스트폼.LST_목록.List = 배열 (모듈 안에서 폼을 직접 건드림)
+
+수정 후: Function GetListData(...) As Variant 형태로 결과물인 배열만 반환하고, 
+폼의 코드 내에서 Me.LST_목록.List = GetListData(...)와 같이 처리합니다.</span> 
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+② 클래스 모듈의 이벤트 위임 강화
+현재 class_양_리스트폼_cmd는 버튼 클릭 시 Select Case를 통해 모든 기능을 처리합니다. 
+버튼이 많아지면 이 클래스도 비대해집니다.
+
+개선: 공통 기능(정렬 등)은 클래스에서 처리하되, 
+특수한 기능은 **이벤트 발생(RaiseEvent)**을 통해 다시 폼으로 던져주거나, 
+기능별로 전담 클래스를 분리하는 것이 좋습니다.
+
+③ "Data Provider" 레이어 구축
+단독컨_Fn_배열과 같은 함수들이 시트에서 직접 데이터를 읽어오는데, 
+이를 별도의 클래스나 모듈(예: clsDataManager)로 묶어 
+"시트 구조가 바뀌어도 코드 로직은 바뀌지 않도록" 캡슐화해야 합니다.
+
+3. 권장하는 레이어링 구조, 계층 (Layer)	파일 예시	역할
+<table class="table-bordered thtd패딩">
+          <tr><th>계층 (Layer)</th><th>파일 예시</th><th>역할</th></tr>
+          <tr><th>Presentation (View)</th><td>양_리스트폼.frm</td><td>사용자 입력 받기, 최종 결과 출력 (로직 최소화)</td></tr>
+          <tr><th>Controller</th><td>class_..._cmd.cls   </td><td>버튼 클릭 등 이벤트 중재, 적절한 로직 호출</td></tr>
+          <tr><th>Service (Logic)</th><td>단독컨배열.bas <br>PublicM.bas</td><td>정책(Policy)에 따른 데이터 가공, 계산, 정렬 로직</td></tr>
+          <tr><th>Data Access (Model)</th><td>통합적용.xlsm</td><td>순수 데이터 저장소 및 시트 범위 참조</td></tr>
+        </table>
+4. 실전 팁: 가독성을 높이는 방법
+변수명 표준화: 현재 stName, compareStName 등 
+혼용되는 명칭을 SourceSheet, TargetSheet 등으로 더 명확하게 통일하세요.
+
+주석의 구조화: 단독컨배열.bas 상단에 적어두신 호출 순서(Tree 구조)는 매우 좋습니다. 
+이를 모든 주요 모듈 상단에 유지하세요.
+Option Explicit
+'=== 데이터 구조체매핑 설정 : 배열까지 됨. 주목적 : IF 분기제거 ===
+' Call 단독컨_Fn_배열("리스트", "입항관리", "폼용")
+' ├─ policy = 단독컨_1_GetPolicy(mainStName, compareStName, 배열용도)
+' ├─ vdata = 단독컨_2_vData준비(policy)
+' ├─ dictSet = 단독컨_3_DIC채우기(policy)
+' ├─ 단독컨_4_단독컨판단(conNo, blNo, dictSet)
+' ├─ Call 단독컨_5_배열에값추가(vdata,vdataRow,plusRow, _
+' ├       용도에맞는배열,policy,dictSet,배열용도)
+' ├─ CALL 단독컨_10_폼또는시트출력(mainStName, compareStName, 배열용도)
+'Type 안에서는 변수마다 한줄에 한줄씩 개별적으로 선언해 주어야 한다
+'줄바꿈은 : 사용하여 표현해도 된다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+정책 객체화: Type 정의 대신 클래스를 사용하여 초기화(Initialize) 시점에 
+모든 설정을 완료하도록 만들면 코드가 더 견고해집니다.
+
+현재 구현하신 Policy 기반 구조는 VBA에서 상당히 수준 높은 설계에 속합니다. 
+다만, "모듈이 폼을 아는 것"이 아니라 **"폼이 모듈을 이용하는 것"**으로 
+관계의 방향만 살짝 바꾸시면 훨씬 이해하기 쉬운 구조가 될 것입니다. 
+구체적으로 특정 로직의 분리 방법이 궁금하시면 다시 질문해 주세요.
+
+
+말씀하신 내용
+기능 구현에만 집중하였습니다. 중복되는 로직이 있는지, 
+더 간결하게 구현할수 있는곳이 있는지 분석해주세요.
+
+Gemini의 응답
+기능 구현에 집중하시다 보면 자연스럽게 **"일단 돌아가게 만들기"**를 위해 비슷한 코드를 
+복사하거나, 특정 폼/시트에 종속된 코드를 작성하게 됩니다. 
+분석 결과, 중복 로직 제거와 코드 간결화가 가능한 지점들이 명확히 보입니다.
+
+가장 개선이 필요한 3가지 핵심 포인트를 짚어 드립니다.
+
+1. Select Case를 이용한 시트/컬럼 매핑 중복 (중목도: 높음)
+현재 PublicM, 단독컨배열, 폼_양리스트_필요 모듈 곳곳에 "리스트" 시트일 때와 
+"입항관리" 시트일 때의 열 번호나 범위를 지정하는 If 또는 Select Case 문이 산재해 있습니다.
+
+현재 문제: 시트의 열 구조가 한 칸만 밀려도 모든 모듈의 숫자를 찾아다니며 수정해야 합니다.
+
+개선안: 이미 사용 중인 Policy 구조체를 더 적극적으로 활용하여 
+**"설정 정보"**를 한 곳으로 모으세요.
+
+VBA
+' [개선 예시] 폼_양리스트_필요.bas
+' 기존: If FindSheet = "리스트" Then 컨위치이동 = 2 ...
+' 개선: Policy에 Offset 정보를 포함시킵니다.
+
+Function GetColumnOffset(stName As String) As Long
+    Select Case stName
+        Case "리스트": GetColumnOffset = 2
+        Case "입항관리": GetColumnOffset = -8
+    End Select
+End Function
+2. UI 컨트롤과 비즈니스 로직의 강한 결합 (재사용성: 낮음)
+class_양_리스트폼_cmd 클래스나 일반 모듈에서 양_리스트폼.LST_목록.List = ... 처럼 
+폼의 컨트롤 이름을 직접 참조하는 로직이 많습니다.
+
+현재 문제: 이 로직은 양_리스트폼이 없으면 실행되지 않습니다. (테스트가 어렵고 확장이 힘듦)
+
+개선안: 로직은 **'배열'**만 반환하게 하고, 폼에서는 그 배열을 받아서 출력만 담당하게 하세요.
+
+VBA
+' [개선 예시] 클래스 내부
+' 기존: 배열 = 단독컨_Fn_배열(...): 양_리스트폼.LST_목록.List = 배열
+' 개선: 
+Dim result As Variant
+result = 단독컨_Fn_배열("리스트", "입항관리", "폼용")
+Call UpdateFormList(result) ' 출력을 전담하는 서브루틴 호출
+3. 정렬(Sort) 로직의 추상화 (간결함: 높음)
+PublicM 모듈의 PUBLIC_정렬 함수는 매우 좋은 시도입니다. 
+하지만 시트별로 범위를 잡는 Public_정렬범위 함수 내부에 
+하드코딩된 주소(A25:M300, A:U)가 많습니다.
+
+개선안: UsedRange나 CurrentRegion을 활용하여 동적으로 범위를 잡으면 코드가 훨씬 
+짧아집니다. <span class="blueviolet">나 : 무슨말인지는 알겠으나 이건 그대로 둘 수 밖에 없다.</span>
+
+VBA
+' [개선 예시] PublicM.bas
+Function GetDynamicRange(ws As Worksheet, StartCell As String) As Range
+    ' 시작 셀부터 데이터가 있는 끝까지 자동으로 범위를 잡음
+    Dim lastRow As Long, lastCol As Long
+    lastRow = ws.Cells(ws.Rows.Count, Range(StartCell).Column).End(xlUp).Row
+    lastCol = ws.Cells(Range(StartCell).Row, ws.Columns.Count).End(xlToLeft).Column
+    Set GetDynamicRange = ws.Range(ws.Range(StartCell), ws.Cells(lastRow, lastCol))
+End Function
+4. 단독컨_policy 구조체의 활용 극대화
+현재 단독컨배열 모듈에서 policy를 생성하고 이를 단계별(1~10번 함수)로 
+넘겨주는 구조는 매우 훌륭합니다. 여기서 더 간결하게 만들려면:
+
+함수 통합: 단독컨_1_GetPolicy부터 단독컨_3_DIC채우기까지는 사실상 하나의 "준비 단계"입니다. 
+이를 하나로 묶어 InitializePolicy 같은 함수로 만들면 메인 로직이 훨씬 간결해집니다.
+
+딕셔너리 중복: 여러 곳에서 딕셔너리를 생성하는데, 
+자주 쓰이는 딕셔너리(컨테이너-행번호 매핑 등)는 Static 변수나 전역 클래스에 
+한 번만 담아두고 재사용하여 속도를 높일 수 있습니다.
+
+요약 제언:
+숫자(열 번호)를 지우세요: 2, -8 같은 숫자를 
+COL_CON_OFFSET 같은 상수로 정의하거나 Policy에 넣으세요.
+
+폼 이름 직접 참조를 줄이세요: 모듈은 데이터(배열)만 처리하고, 
+폼은 그 데이터를 보여주기만 해야 합니다.
+
+반복되는 시트 선택 로직: Sheets(stName).Select 후 ActiveSheet를 쓰는 것보다, 
+With Sheets(stName)를 사용하여 화면 깜빡임과 선택 오류를 줄이세요.
+
+현재 구조는 VBA 치고는 매우 체계적인 Policy 기반 설계를 갖추고 있습니다. 
+위 지점들만 다듬으셔도 유지보수가 훨씬 쉬운 "구조적인 코드"가 될 것입니다. 
+구체적으로 특정 함수를 줄여보고 싶으시면 해당 코드를 알려주세요!
+        </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+말씀하신 내용
+구체적으로 줄여보고 싶은 함수는 클래스 모듈 내의 다음 코드입니다. 
+
+     Case "CMD_컨변경"
+
+        Call cls_CMD_컨번경
+
+        양_리스트폼.LST_목록.clear
+
+        배열 = 단독컨_Fn_배열(양_리스트폼.LBL_단독시트.Caption, 양_리스트폼.LBL_BL시트.Caption, "폼용")
+
+        If Not IsEmpty(배열) Then 양_리스트폼.LST_목록.List = Application.Transpose(배열)
+
+Gemini의 응답
+작성하신 코드는 전형적인 "동작 중심(Action-oriented)" 코드입니다. 현재 구조에서 가장 큰 중복은 **"데이터를 새로고침해서 리스트박스에 뿌리는 로직"**이 여러 이벤트에 반복적으로 나타날 가능성이 높다는 점입니다.
+
+이를 간결하게 만들고 구조적으로 개선할 수 있는 구체적인 방법을 제안해 드립니다.
+
+1. 중복 로직의 통합 (Refresh 메서드화)
+LST_목록.clear부터 Application.Transpose까지의 과정은 데이터를 변경한 후 항상 따라오는 '화면 갱신' 로직입니다. 이를 하나의 독립된 서브루틴으로 분리하세요.
+
+개선된 코드 (클래스 모듈 내부)
+VBA
+Case "CMD_컨변경"
+    Call cls_CMD_컨번경
+    Call RefreshMainList ' 중복되는 출력 로직을 하나의 함수로 호출
+분리할 공통 함수 (양_리스트폼 혹은 공용 모듈)
+VBA
+Sub RefreshMainList()
+    Dim vArray As Variant
+    With 양_리스트폼
+        .LST_목록.Clear
+        ' 폼의 Label 캡션을 인수로 직접 전달하여 유연성 확보
+        vArray = 단독컨_Fn_배열(.LBL_단독시트.Caption, .LBL_BL시트.Caption, "폼용")
+        
+        If Not IsEmpty(vArray) Then 
+            .LST_목록.List = Application.Transpose(vArray)
+        End If
+    End With
+End Sub
+2. "폼 참조"의 추상화 (의존성 제거)
+현재 클래스 내에서 양_리스트폼.LST_목록 처럼 특정 폼의 이름을 직접 명시하고 있습니다. 만약 폼의 이름이 바뀌면 클래스 코드도 다 수정해야 합니다. 클래스 내부에 ParentForm 객체를 만들어 이를 해결할 수 있습니다.
+
+[이미지: VBA Object Reference Pattern]
+클래스 모듈 (class_양_리스트폼_cmd) 수정 예시:
+VBA
+' 클래스 상단에 추가
+Private Property Get P_Form() As Object
+    Set P_Form = cBtn.Parent ' 버튼이 속한 부모 폼을 자동으로 참조
+End Property
+
+Private Sub cBtn_Click()
+    Select Case cBtn.Name
+        Case "CMD_컨변경"
+            Call cls_CMD_컨번경
+            Call RefreshMainList(P_Form) ' 부모 폼을 인수로 넘김
+    End Select
+End Sub
+3. Policy를 활용한 로직 간결화 (단독컨_Fn_배열 내부)
+업로드하신 단독컨배열.bas 파일의 단독컨_Fn_배열 함수 내부를 보면, 시트 이름을 인자로 받아 매번 policy를 생성합니다.
+
+만약 이 "컨변경" 작업이 빈번하다면, 매번 전체 데이터를 다시 읽어 배열을 만들기보다, 변경된 행(Row)만 찾아서 배열의 특정 요소만 업데이트하는 방식으로 전환하면 성능과 코드 양을 동시에 잡을 수 있습니다.
+
+Tip: 현재 Application.Transpose를 사용 중이신데, VBA의 Transpose는 데이터가 65,536행을 넘어가면 에러가 발생합니다. 데이터량이 많아질 계획이라면 처음부터 배열의 차원을 폼에 맞게 구성하여 Transpose 없이 넣는 것을 권장합니다.
+
+요약: 무엇이 좋아지나요?
+가독성: CMD_컨변경 케이스 문이 단 두 줄로 줄어들어 클릭 시 어떤 흐름으로 동작하는지 한눈에 보입니다.
+
+유지보수: 리스트 박스에 데이터를 뿌리는 방식(예: 컬럼 너비 조절, 색상 변경 등)을 수정하고 싶을 때 RefreshMainList 함수 하나만 고치면 모든 버튼에 적용됩니다.
+
+안정성: P_Form 참조 방식을 쓰면 폼 이름이 양_리스트폼_v2로 바뀌어도 클래스 코드는 수정할 필요가 없습니다.
+
+혹시 cls_CMD_컨번경 함수 내부의 로직(실제 시트 값을 바꾸는 부분)도 줄여보고 싶으시다면, 해당 함수가 포함된 코드 블록을 보여주세요! 더 구체적인 리팩토링이 가능합니다.
+
+말씀하신 내용
+업로드한 파일에서 cls_CMD_컨번경 함수실행시 호출되는 함수는 파악할수 없나요?
+
+Gemini의 응답
+파일 내용을 분석한 결과, cls_CMD_컨변경 함수 내부에서 호출되는 핵심 함수와 그 흐름을 명확히 파악할 수 있습니다.
+
+해당 함수는 class_양_리스트폼_cmd 클래스 모듈 안에 정의되어 있으며, 실행 시 다음과 같은 순서로 함수들을 호출합니다.
+
+1. 전체 호출 흐름 (Call Tree)
+cls_CMD_컨변경이 실행되면 내부적으로 다음 함수들을 순차적으로 호출하며 데이터를 처리합니다.
+
+cls_컨변경조건_폼에서확인후실행: 폼에 입력된 값들이 유효한지 검사하고 실제 로직을 실행하는 중간 매개체 역할을 합니다.
+
+단독컨_1_GetPolicy: 현재 시트 상황(리스트, 입항관리 등)에 맞는 설정값(Column 위치 등)을 구조체에 담아 가져옵니다.
+
+단독컨_FnIn_배열에값추가: (가장 중요한 부분) 실제로 시트의 값을 변경하거나 배열 데이터를 수정하는 핵심 로직을 수행합니다.
+
+단독컨_10_폼또는시트출력: 작업이 완료된 후 결과를 다시 시트나 폼에 반영합니다.
+
+2. 주요 호출 함수의 역할 분석
+cls_컨변경조건_폼에서확인후실행 (추출시트, BL시트)
+
+양_리스트폼에 있는 T_목록BL, T_목록컨, T_변경컨 등의 컨트롤 값을 읽어옵니다.
+
+변경 전/후의 값이 올바른지 체크한 후, 실제 데이터 수정 함수인 단독컨_FnIn_배열에값추가를 호출합니다.
+
+단독컨_FnIn_배열에값추가 (단독컨배열.bas 모듈)
+
+이 함수는 단순히 배열에 값을 넣는 기능 외에도, 실제 시트의 셀 값을 수정하는 역할을 겸하고 있습니다.
+
+사용자가 폼에서 입력한 T_변경컨(새로운 컨테이너 번호)을 해당 시트의 특정 행/열에 직접 기록하는 코드가 포함되어 있을 것입니다.
+
+3. 구조적 특징 및 참고사항
+의존성: 현재 이 함수들은 양_리스트폼이라는 특정 폼 객체에 강하게 결합되어 있습니다. (예: 코드 내에 양_리스트폼.T_변경컨.Value와 같은 표현이 직접 등장함)
+
+중복 가능성: 앞서 문의하신 것처럼 CMD_컨변경 버튼을 누를 때마다 매번 Policy를 새로 생성하고 전체 배열을 다시 읽어오는 과정이 반복되고 있습니다.
+
+결론적으로, cls_CMD_컨변경은 사용자 인터페이스(폼)의 입력을 받아 단독컨배열.bas 모듈에 정의된 데이터 처리 함수들을 호출하여 실제 엑셀 시트의 내용을 바꾸는 구조입니다.
+
+만약 특정 계산 로직이나 시트 값이 바뀌는 구체적인 위치를 알고 싶으시다면, 단독컨_FnIn_배열에값추가 함수의 내부 로직을 집중적으로 살펴보시는 것이 좋습니다. 구체적인 수정 코드가 필요하시면 말씀해 주세요!
+
+말씀하신 내용
+앞으로 정리해야할 코드인데 코드의 흐름을 역할로 표현해주세요. 역할별로 개념을 잡으려고합니다.
+
+Gemini의 응답
+업로드하신 파일들을 기반으로, 전체 시스템의 코드 흐름을 **역할(Role)**에 따라 4가지 계층으로 분류하여 정리해 드립니다. 현재 구조는 데이터를 읽고(Policy), 처리하고(Array/Logic), 보여주는(UI) 흐름이 명확히 나뉘어 있습니다.
+
+1. 전역 설정 및 전략 (The Policy Maker)
+시스템이 "어떤 규칙"으로 움직일지 결정하는 두뇌 역할입니다. Type 구조체를 활용해 시트별로 다른 열 위치나 정렬 기준을 중앙 집중 관리합니다.
+
+관련 코드: 단독컨배열.bas (단독컨_policy), PublicM.bas (Public_policy)
+
+핵심 역할: 시트 이름이 "리스트"인지 "입항관리"인지에 따라 어느 열에서 데이터를 읽을지(Offset) 상수로 정의합니다.
+
+비유: 요리하기 전, 메뉴(시트)에 따라 필요한 재료의 위치(열 번호)를 적어둔 레시피 리스트와 같습니다.
+
+2. 사용자 인터페이스 및 이벤트 중재 (The Controller)
+사용자의 클릭을 감지하고 로직을 실행시키는 통로입니다. 클래스 모듈을 사용해 수많은 버튼의 동작을 하나로 묶어 관리합니다.
+
+관련 코드: class_양_리스트폼_cmd.cls, 양_리스트폼.frm
+
+핵심 역할: 사용자가 '컨변경' 버튼을 누르면 폼의 입력값(BL번호, 변경할 컨번호)을 챙겨서 실제 로직 함수(cls_CMD_컨변경)로 전달합니다.
+
+비유: 손님이 벨을 누르면 주문을 받아 주방에 전달하는 홀 매니저입니다.
+
+3. 데이터 처리 및 비즈니스 로직 (The Engine)
+실제로 데이터를 비교하고, 찾고, 가공하는 핵심 기능입니다. 배열(Array)과 딕셔너리(Dictionary)를 사용해 메모리 상에서 빠르게 계산합니다.
+
+관련 코드: 단독컨배열.bas (Fn_배열, DIC채우기), 폼_양리스트_필요.bas
+
+핵심 역할: 1. 시트 전체 데이터를 배열에 담습니다.
+2. 딕셔너리를 이용해 중복을 체크하거나 특정 BL의 컨테이너를 찾습니다.
+3. 정책(Policy)에 따라 출력용 최종 배열을 생성합니다.
+
+비유: 주문받은 재료를 썰고 볶아서 접시에 담기 직전 상태로 만드는 주방 요리사입니다.
+
+4. 데이터 저장소 (The Storage)
+모든 정보가 기록되는 최종 목적지입니다.
+
+관련 파일: 통합적용 (1).xlsm (엑셀 시트들)
+
+핵심 역할: 로직에 의해 가공된 결과가 Range 객체를 통해 실제로 기록되는 장소입니다.
+
+비유: 재료가 보관되어 있고, 완성된 요리가 나가는 식자재 창고이자 테이블입니다.
+
+💡 역할별 흐름 요약 (Data Flow)
+[UI] 사용자가 폼에서 '컨변경' 클릭
+
+[Controller] 클래스 모듈이 이벤트를 가로채서 폼의 현재 값들을 수집
+
+[Policy] "리스트" 시트에 맞는 열 번호 규칙(Policy)을 로드
+
+[Engine] * 시트 데이터를 배열로 읽음
+
+입력된 BL번호와 매칭되는 컨테이너를 딕셔너리에서 검색
+
+변경이 필요한 행(Row)의 데이터를 수정
+
+[Storage/UI] 수정된 내용을 시트에 기록하고, 폼의 ListBox를 새로고침하여 출력
+
+향후 정리 팁
+현재 코드를 정리하실 때 **"이 코드가 요리사(로직)인가, 매니저(UI 제어)인가, 레시피(설정)인가?"**를 자문해 보세요. 만약 요리사가 홀 서빙(폼 컨트롤 직접 조작)까지 하고 있다면, 그 부분을 분리해 내는 것이 이번 리팩토링의 핵심입니다.
+
+혹시 이 4가지 역할 중 가장 먼저 코드를 분리하거나 정리하고 싶은 부분이 어디인가요? 구체적인 파일 하나를 정해주시면 더 상세히 가이드해 드릴 수 있습니다.
+        </pre>
+      </div>
+    </div>
+    <div id="통합적용_개선1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">요약하면 </h6>
+        <pre class="fw-bold">
+- 계층을 잘 나눠라. 
+1. type구조체 설정 알기쉽게 설명 주석넣고 구조체 설정을 잘하라...
+2. 폼과 관련된 동작은 폼 내에서만 조작하는 함수를 폼 안에 작성하여 사용하라 
+3. 변경이 없는 것이라면 type구조체를 전역변수에서 담아 놓으면 바로 사용할 수 있다. 
+   그런데 현재 전달값에 따라 다른데... 통합이 될까? 
+4. 클래스모듈의 Select Case는 Type 구조체의 설정을 통해 해결할수 있을수 있다. 
+    결과적으로는 Type 구조체의 설정만 고치면 될수도 있다. 이게 중요한듯 
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+        
+        
     <div id="엑셀_질문샘플1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
