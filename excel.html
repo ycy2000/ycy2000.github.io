@@ -149,6 +149,7 @@
         <h6 class="fw-bold" title='Type구조체'>Type 구조체, 숫자, 문자열, 배열까지 Configuration 분기설정, 분기내 값 설정</h6>
         <h6 class="fw-bold" title="클래스모듈">클래스모듈 = 자료형 Type 구조체와 사용법 유사</h6>
         <h6 class="fw-bold" title="폼컨트롤용클래스모듈">폼 커맨드버튼 클릭이벤트 관련 "클래스 모듈" 사용법</h6>
+        <h6 class="fw-bold" title="딕셔너리사용법">딕셔너리 사용법</h6>
 
       </div>
     </div>
@@ -5377,7 +5378,6 @@ End Sub
         </pre>
       </div>
     </div>
-    
     <div id="폼컨트롤용클래스모듈" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -5425,6 +5425,54 @@ Private Sub UserForm_Initialize()
 </pre>
       </div>
       <div>
+
+      </div>
+    </div>
+    <div id="딕셔너리사용법" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">딕셔너리 사용법</h6>
+        <pre class="fw-bold">
+Dim dic As Object
+Set dic = CreateObject("Scripting.Dictionary")
+[key 가 존재하는지 비교 방법]
+1. dic.CompareMode = vbTextCompare : 대소문자 구분 안함
+   - 이게 좀 더 빠르다. TEMU = teMu
+2. dic.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)
+
+[key 와 item 추가 방법]
+1. dic.Add "abc", 1 → key:abc, item:1
+    Add 방식은 존재하는 key 이면 error 
+2. dic("abc") = 1  → key:abc, item:1 
+    이 방식은 존재하는 key 이면 key를 덮어쓴다. 
+    item 값을 기존값을 사용할 수 있다. 카운트나 문자열 묶음 등 
+    없는것의 item이 0으로 인식된다. 
+    dic("abc") = dic("abc") + 1 </pre>
+        <h6 class="fw-bold">Add 방식이 빠르지만 신경이 쓰이므로 값 대입 방식으로 하자. </h6>
+        <h6 class="fw-bold">값 대입 방식에서 속도, item에 Empty를 대입하면 빠르다. </h6>
+        <pre class="fw-bold">
+1. key만 있으면 될 때 
+    Dim dic As Object
+    Set dic = CreateObject("Scripting.Dictionary")
+
+    dic.CompareMode = vbTextCompare '대소문자 구분 없으면 빠른 모드
+
+    For Each v In arr
+        If v &#60;> "" Then dic(v) = Empty
+    Next
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+
+        </pre>
 
       </div>
     </div>
