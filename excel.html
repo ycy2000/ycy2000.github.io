@@ -5494,7 +5494,9 @@ Set dic = CreateObject("Scripting.Dictionary")
 • Type 안에 Object가 있을 때 대량 반복 호출 시 메모리 누수 
   → Excel 다운이 발생하는 사례가 있습니다.
   하지만 지금처럼 1번 호출 정도는 문제 없습니다.
-• 강제 에러 발생 구문: Err.Raise(Number, [Source], [Description], [HelpFile], [HelpContext])
+• 강제 에러 발생 구문: 
+  Err.Raise(Number, [Source], [Description], [HelpFile], [HelpContext])
+  Err.Raise 600, "내 파일", "메모"
 • 루프 시작전에 PUBLIC_계산갱신이벤트_OFF
 
 지금 코드 구조는 이미 배열 + Dictionary 사용이라서 기본적으로 좋은 구조입니다.
@@ -5517,18 +5519,151 @@ Cells(i,1).Value = arr(i,1)
 3. 불필요한 문자열 변환 (CStr 등)
 4. UBound 반복 호출
 5. ScreenUpdating / Calculation
+
+• 배열크기 반복은 For 반복=LBound(배열,1) To UBound(배열,1)
+• 배열판단 : If Not IsArray(DICT용배열) Then Exit Function
+• CStr(vData(i, p.추출StConCol))
+  p.추출StConCol 이 객체의 속성값을 가져오므로 무겁다. 
+  Dim col As Long : col=p.추출StConCol 
+  Dim 문자열 As String : 문자열=CStr(vData(i, p.추출StConCol))
+  - 같은 표현이 자주 나오면 숫자나 문자열로 변환하여 쓰는게 낫다.
+        </pre>
+      </div>
+      <div>
+        <div class="가로pre여러개div">
+          <pre>
+1️⃣ 느린 패턴 (배열 직접 반복 접근)
+For i = 1 To UBound(vData, 1)
+
+    If vData(i, 3) <> "" Then
+        If dic.Exists(vData(i, 3)) Then                
+            result(1, r) = vData(i, 3)
+        End If
+    End If
+
+Next
+
+
+
+          </pre>
+          <pre>
+2️⃣ 빠른 패턴 (값을 변수에 저장)
+Dim con As String
+
+For i = 1 To UBound(vData, 1)               
+
+    con = vData(i, 3)
+
+    If con <> "" Then
+        If dic.Exists(con) Then
+            result(1, r) = con
+        End If
+    End If
+
+Next          </pre>
+        </div>
+        <pre class="fw-bold">
+• dic.RemoveAll, 재사용시
+• If 구문 4번은 4번이고, 다음과 같이 할 수 있는 구조이면 1번이다.
+  Select Case 값
+    Case "", "입고및출고작업내용", "컨테이너", "컨테이너NO."
+• For Each v In arr: dic(v) = 1:  Next
+  - Key 배열 얻기, arr = dic.Keys
+• For 문 안에 Call 단독컨_배열에값추가(...), 함수호출비용 자체가 크니 
+  내부에 직접 코딩 고려
+• 병목 영향 : Range 접근 ⭐⭐⭐⭐⭐, Loop 함수 호출 ⭐⭐⭐, 배열 접근 반복 ⭐⭐
+• 값을 column으로도 사용하고 특정값을 조건으로 사용하는 개념
+   Case -20
+    용도에맞는배열(반복, plusRow) = 값1
+    용도에맞는배열(반복 + 1, plusRow) = 값2
+• Array(1,,,2) 안넣으면 받을때 Empty인가 Null인가
+• 2️⃣ 고수들이 쓰는 방식 (처리 타입 같이 정의) 이렇게 바꿉니다.
+  가독성??
+  값추가key배열 = Array( _
+  Array("COL", BL), _
+  Array("COL", 화주), _
+  Array("COL", 컨), _
+  Array("SKIP", ""), _
+  Array("COL", 수량), _
+  Array("SKIP", ""), _
+  Array("DATE", 입항일) )
+
+  COL  → vData 컬럼
+  DATE → 입항일 함수
+  SKIP → 값 없음
         </pre>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-          
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
+• len(값)이 0이 되는 경우 : "", Empty
+  Null 은 0 이 아니라 Null 자체를 반환한다.
+  값 & "" 로 전달하면 값이 Null 이라도 0 을 반환한다.
+• 배열 재할당보다 각각 만드는게 좋다는 말이지요? 그렇다면 각각 만들지 않을 이유는 없어요.
+   - 큰 의미 없다. 조금 다른데 복붙하다가 이름이 꼬일가능성?
+
+6️⃣ 참고로 한 가지 더 (조금 고급 팁)
+
+지금 코드에서 Dictionary 만드는 루프는 이렇게 쓰면 조금 더 안전합니다.
+
+For i = 1 To UBound(arrMain, 1)
+
+    key = arrMain(i, 1)
+
+    If Len(key) > 0 Then
+        dictMain(key) = i
+    End If
+
+Next
+
+이유
+
+Empty
+Null
+"" 
+
+모두 자연스럽게 걸러집니다.
+
+2️⃣ 현재 코드 구조의 성능 평가
+
+지금 설명하신 구조는 아마 이런 흐름일 가능성이 큽니다.
+
+시트 → 배열 읽기
+        ↓
+Dictionary 생성
+        ↓
+데이터 비교
+        ↓
+결과 배열 작성
+        ↓
+시트에 한번에 출력
+
+이건 VBA에서 가장 빠른 패턴입니다.
+
+핵심 이유
+
+시트 접근 최소화
+루프는 메모리에서만 수행
+
+디버그용 작은 함수
+Public Sub D(msg As Variant)
+
+    Debug.Print Format(Now, "hh:mm:ss") & "  " & msg
+
+End Sub
+3️⃣ 사용 방법
+
+이제 코드에서 이렇게 씁니다.
+
+D "메인 루프 시작"
+
+또는
+
+D "현재 BL = " & BL
+
+출력 예
+
+14:32:01  메인 루프 시작
         </pre>
       </div>
     </div>

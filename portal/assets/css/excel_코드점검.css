@@ -91,7 +91,7 @@ code {color:black;display:block;}
 /* 대체3줄 관련 */
 .넓이595 {width:595px}
 .테두리595 {border:1px solid black;width:595px;padding:4px;}
-.가로pre여러개div > pre {font-weight: bold; display: inline-block;border:1px solid black;margin-right:-6px;padding:4px;}
+.가로pre여러개div > pre {font-weight: bold; display: inline-block;border:1px solid black;margin-right:-6px;padding:4px;vertical-align: top;}
 .가로pre여러개div > div {vertical-align: top;} 
 .세로pre여러개div > pre {font-weight: bold; border:1px solid black;width:595px;;padding:4px;}
 .세로pre여러개div > pre:first-child {background-color: greenyellow;}
