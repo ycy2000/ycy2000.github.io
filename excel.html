@@ -151,6 +151,7 @@
         <h6 class="fw-bold" title="폼컨트롤용클래스모듈">폼 커맨드버튼 클릭이벤트 관련 "클래스 모듈" 사용법</h6>
         <h6 class="fw-bold" title="딕셔너리사용법">딕셔너리 사용법</h6>
         <h6 class="fw-bold" title="gpt코드개선조언1">gpt코드개선조언1 : 단독컨 관련 코드 + 양_리스트폼 관련 조금 </h6>
+        <h6 class="fw-bold" title="gpt코드개선조언2">gpt코드개선조언2 : sub에 인수가 하나라도 있으면 리스트에 안 뜬다 </h6>
 
         
 
@@ -5667,6 +5668,52 @@ D "현재 BL = " & BL
         </pre>
       </div>
     </div>
+    <div id="gpt코드개선조언2" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">Private Sub 에 인수가 있으면 매크로 목록에 안 뜬다. </h6>
+        <pre class="fw-bold">
+• 다른모듈에 폼이름 넣고 있을때는 폼의 함수에 인수로 me를 넣어서 넘겨라.
+    ' Public이지만 인수가 있어서 매크로 목록에는 안 나타남
+    Public Sub ComboBox_Logic(f As UserForm)
+        With f
+            ' 로직 실행
+        End With
+    End Sub
+    [폼 내부]
+
+    VBA
+    Private Sub ComboBox1_Change()
+        Call ComboBox_Logic(Me)
+    End Sub
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">Call ComboBox_Logic(Me) →  Public Sub ComboBox_Logic(f As UserForm)</h6>
+        <pre class="fw-bold">
+• 폼이름 직접입력시, 폼이름 바꾸면 다 바꾸지만 이런식이면 
+  - 양_리스트폼.combobox1 → f.combobox1 
+  - with f 
+       .combobox1
+    end with
+
+• Option Private Module ' 이 모듈 전체를 프로젝트 내부용으로 설정
+  Public Sub MyProcess() ' 폼에서 호출 가능, 매크로 목록엔 안 뜸
+    ' ...
+  End Sub
+
+• 질문자님의 경우 **1번 방법(매개변수가 있는 Sub)**을 사용하시면 
+  "폼 이름 생략"과 "매크로 목록 숨기기" 두 마리 토끼를 모두 잡으실 수 있습니다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+        
         
     <div id="통합적용_질의응답1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
