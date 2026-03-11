@@ -5562,7 +5562,7 @@ Set dic = CreateObject("Scripting.Dictionary")
         </table>
 2️⃣ 모듈 네이밍 표준 : VBA는 폴더가 없으므로 모듈 prefix로 계층을 표현합니다.
 <table class="table-bordered thtd패딩">
-          <tr><th>추천 규칙</th><th></th><th></th><th></th><th>현재 나의 코드에서 분류하자면</th></tr>
+          <tr><th>추천 규칙</th><th>모듈이름</th><th>모듈이름</th><th>모듈이름</th><th>현재 나의 코드에서 분류하자면</th></tr>
           <tr><th>C_  Controller</th><td>C_단독컨</td><td>C_입항관리</td><td>C_출항관리</td><td>FN_단독컨배열_RETURN</td></tr>
           <tr><th>S_  Service</th><td>S_단독컨</td><td>S_컨테이너</td><td></td><td></td></tr>
           <tr><th>R_  Repository</th><td>R_DO</td><td>R_배차</td><td>R_입항관리</td><td></td></tr>
@@ -5649,10 +5649,9 @@ Set dic = CreateObject("Scripting.Dictionary")
 
     <span class="blueviolet">Utility에는 업무 로직을 절대 넣지 않습니다.</span>
 
-8️⃣ 함수 네이밍 표준 : 추천 패턴
+<div class="테두리595 단어색칠">8️⃣ 함수 네이밍 표준 : 추천 패턴
     - FN_  반환 함수, SUB_ 실행 프로시저, IS_  Boolean 반환, GET_ 단순 조회, SET_ 설정
-    - 예시 : FN_단독컨배열_RETURN, FN_BL개수Dict생성, GET_DO_BL목록, IS_단독컨,
-
+    - 예시 : FN_단독컨배열_RETURN, FN_BL개수Dict생성, GET_DO_BL목록, IS_단독컨,</div>
 9️⃣ Dictionary 네이밍 : Dictionary는 항상 자료형 표시
     - 예시 : BLDict, 컨번호Dict, 배차BLDict, BL컨개수Dict
     <span class="blueviolet">- 현재 코드 스타일, DICK_DO배차BL누적 보다 훨씬 읽기 쉽습니다.</span>
