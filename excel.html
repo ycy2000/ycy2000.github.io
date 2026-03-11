@@ -149,9 +149,13 @@
         <h6 class="fw-bold" title='Type구조체'>Type 구조체, 숫자, 문자열, 배열까지 Configuration 분기설정, 분기내 값 설정</h6>
         <h6 class="fw-bold" title="클래스모듈">클래스모듈 = 자료형 Type 구조체와 사용법 유사</h6>
         <h6 class="fw-bold" title="폼컨트롤용클래스모듈">폼 커맨드버튼 클릭이벤트 관련 "클래스 모듈" 사용법</h6>
-        <h6 class="fw-bold" title="딕셔너리사용법">딕셔너리 사용법</h6>
+        <h6 class="fw-bold" title="배열사용법">배열사용법. Array, Split, Dim 배열 As Variant, Dim 배열(1 To 3, 1 To 4) As ...</h6>
+        <h6 class="fw-bold" title="궁극적으로데이터조회">딕셔너리 사용법. 궁극적으로 Dictionary → Collection → Array</h6>
+        <h6 class="fw-bold blueviolet" title="계층책임분리및네이밍필요">계층분리, 책임분리 및 네이밍 필요</h6>
+        <h6 class="fw-bold blueviolet" title="궁극적으로데이터조회_사용1">실제 사용 예제 : Dictionary → Collection → Array</h6>
         <h6 class="fw-bold" title="gpt코드개선조언1">gpt코드개선조언1 : 단독컨 관련 코드 + 양_리스트폼 관련 조금 </h6>
         <h6 class="fw-bold" title="gpt코드개선조언2">gpt코드개선조언2 : sub에 인수가 하나라도 있으면 리스트에 안 뜬다 </h6>
+        <h6 class="fw-bold" title="gpt코드개선조언3">gpt코드개선조언3 : gpt답변 </h6>
 
         
 
@@ -5432,7 +5436,7 @@ Private Sub UserForm_Initialize()
 
       </div>
     </div>
-    <div id="딕셔너리사용법" class="대체3줄">
+    <div id="궁극적으로데이터조회" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
         <h6 class="fw-bold">딕셔너리 사용법</h6>
@@ -5444,7 +5448,7 @@ Set dic = CreateObject("Scripting.Dictionary")
    - 이게 좀 더 빠르다. TEMU = teMu
 2. dic.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)
 
-[key 와 item 추가 방법]
+[key 와 item 추가 방법, Add 방식과 item 대입방식]
 1. dic.Add "abc", 1 → key:abc, item:1
     Add 방식은 존재하는 key 이면 error 
 2. dic("abc") = 1  → key:abc, item:1 
@@ -5455,31 +5459,259 @@ Set dic = CreateObject("Scripting.Dictionary")
         <h6 class="fw-bold">Add 방식이 빠르지만 신경이 쓰이므로 값 대입 방식으로 하자. </h6>
         <h6 class="fw-bold">값 대입 방식에서 속도, item에 Empty를 대입하면 빠르다. </h6>
         <pre class="fw-bold">
-1. key만 있으면 될 때 
+1. key만 있으면 될 때, Item 값에 나온 횟수를 카운트할때
     Dim dic As Object
     Set dic = CreateObject("Scripting.Dictionary")
-
     dic.CompareMode = vbTextCompare '대소문자 구분 없으면 빠른 모드
+    For 반복 = 1 To 배열크기 '배열(반복,1)는 BL번호
+        1) 대입방식 : If v &#60;> "" Then dic(배열(반복,1)) = Empty
+        2) 대입방식 : If v &#60;> "" Then dic(배열(반복,1)) = dic(배열(반복,1)) + 1
+           - 카운트할때, 없는것의 item이 0으로 인식된다.
+    Next
 
-    For Each v In arr
-        If v &#60;> "" Then dic(v) = Empty
+2. 카운트가 아닌 결과 문자열을 모을때 
+    For 반복 = 1 To 배열크기 '배열(반복,1)는 BL번호
+        컨번호 = 배열(반복,5)
+        BL번호 = 배열(반복,1)
+        If Not dict.Exists(BL번호) Then  '처음일때
+           dic(배열(반복,1)) = 컨번호 & "/" & 반복
+           Else '이미 있으면 추가
+           dic(배열(반복,1)) = dic(배열(반복,1)) & "," & 컨번호 & "/" & 반복
+        End If
     Next
         </pre>
       </div>
       <div>
+        <pre class="fw-bold">
+3. 2.의 형식을 개선한 것이 Dictionary → Collection → Array 방식
+    <span class="blueviolet">-이 구조가 VBA에서 유명한 구조라고 한다.</span>
+    - 핵심 구문, 딕셔너리의 Item 은 Variant 형식이다. 객체도 된다는 말.
+    If BL값 <> "" Then 
+       If Not dict.Exists(BL값) Then 
+          1) Set dict(BL값) = New Collection
+             - 처음등장시 빈 Collection 객체를 Item에 넣는다.
+             - Dim 없이 Set : Set 은 변수에 객체를 대입할떄 쓰는것
+             - 변수 = New Collection 가능. 컬렉션의 구성원(자료)은 variant
+             - 이후 컬랙션변수.add 자료(배열이든 문자열이든)로 추가
+       End If 
+       'If 구문을 벗어난 상태에는 dict(BL값)은 컬랙션 객체라는 보장이 있다.
+       2) dict(BL값).Add Array(컨NO, 반복) 
+          <span class="blueviolet">- ★★ Add할때 같은 열의 여러정볼르 담아둘수 있겟다.★★</span> 
+          - 컬랙션에 자료 추가, dict(BL값)=Item=Collection 객체
+    End If
+
+    Dictionary
+    ├─ Key : BL001 → Item : Collection
+    ├─ Key : BL002 → Item : Collection
+    └─ Key : BL003 → Item : Collection
+    1️⃣ Dictionary에 BL값 Key가 없으면 2️⃣ 새로운 Collection 객체를 만들고
+    3️⃣ 그것을 Dictionary의 Item으로 저장
+
+    - 같은 BL값이 올때 Collection에 누적
+    Dictionary
+    │
+    ├── BL001
+    │      Collection
+    │        ├ Array(C01,1)
+    │        ├ Array(C03,3)
+    │        └ Array(C04,4)
+    │
+    └── BL002
+          Collection
+            └ Array(C02,2)
+
+4. 컬랙션 구성원 가지고 올때, 개수는 컬랙션객체.count
+    Dim col As Collection
+    Set col = dict(BL)
+    - 접근 : col(몇번째) → 두개 정보를 담은 배열일것이다, 값이면 그대로 써도 될것이다.
+             col(몇번째)(0)
+    - 몇번째 부분은 1부터(순번), 다음 0 은 앞의 정보가 배열이라서 그렇다.
+
+        </pre>
+      </div>
+      <div>
         <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+- 결과를 배열에 담아서 콤보박스.list에 배열을 전달. 
+    Dim 결과Arr() As Variant
+    Dim i As Long
+    ReDim 결과Arr(1 To col.Count, 1 To 2)
+    For i = 1 To col.Count
+        결과Arr(i, 1) = col(i)(0)
+        결과Arr(i, 2) = col(i)(1)
+    Next
+    f.ComboBox1.List = 결과Arr
+        </pre>
+
+      </div>
+    </div>
+    <div id="계층책임분리및네이밍필요" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">돌아돌아돌아서, 계층분리=역할분리≒모듈분리  </h6>
+        <h6 class="fw-bold">1️⃣ 전체 아키텍처 구조 (권장) VBA에서도 4계층 구조가 가장 안정적입니다.</h6>
+        <pre class="fw-bold">
+• Domin(Type)은 Type설정이 자료의 구조를 의미할때 Service에 포함되지만 분류
+  Controller  →  Service  →  Repository  →  Util
+                              ↓
+                            Domain(Type)
+<table class="table-bordered thtd패딩">
+          <tr><th>계층</th><th>역할</th><th>계층</th><th>역할</th><th>계층</th><th>역할</th></tr>
+          <tr><th>Controller</th><td>기능 흐름 제어</td><th>Repository</th><td>시트 데이터 접근</td><th>Util</th><td>공용 함수</td></tr>
+          <tr><th>Service</th><td>비즈니스 로직</td><th>Domain</th><td>데이터 구조(Type)</td><th></th><td></td></tr>
+        </table>
+2️⃣ 모듈 네이밍 표준 : VBA는 폴더가 없으므로 모듈 prefix로 계층을 표현합니다.
+<table class="table-bordered thtd패딩">
+          <tr><th>추천 규칙</th><th></th><th></th><th></th><th>현재 나의 코드에서 분류하자면</th></tr>
+          <tr><th>C_  Controller</th><td>C_단독컨</td><td>C_입항관리</td><td>C_출항관리</td><td>FN_단독컨배열_RETURN</td></tr>
+          <tr><th>S_  Service</th><td>S_단독컨</td><td>S_컨테이너</td><td></td><td></td></tr>
+          <tr><th>R_  Repository</th><td>R_DO</td><td>R_배차</td><td>R_입항관리</td><td></td></tr>
+          <tr><th>D_  Domain</th><td>D_단독컨</td><td>D_BL</td><td></td><td></td></tr>
+          <tr><th>U_  Util</th><td>U_Array</td><td>U_Range</td><td>U_Dict</td><td></td></tr>
+        </table>이렇게 하면 프로젝트 창에서도 구조가 바로 보입니다.
+
+    <span class="blueviolet">D_ : Dict 설정, Context 준비</span>
+    <span class="blueviolet">P_ : Config 설정, P_U_Policy, P_단독컨_Policy</span>
+
+3️⃣ Controller 규칙 : Controller는 흐름 제어만 합니다.
+    - 로직 금지, Dictionary 생성 금지, 시트 접근 금지, 20줄 이내 권장
+    (예시)
+    Function FN_단독컨배열_RETURN() As Variant
+
+        Dim p As 단독컨Policy
+        Dim ctx As 단독컨Context
+
+        p = S_단독컨Policy생성()
+
+        ctx = S_단독컨Context생성(p)
+
+        FN_단독컨배열_RETURN = S_단독컨배열생성(p, ctx)
+
+    End Function
+
+    <span class="blueviolet">Controller는 프로그램 흐름만 담당합니다.</span> 
+
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+4️⃣ Service 규칙 : Service는 프로젝트 핵심 로직입니다.
+    - 여기서 배열 처리, Dictionary 생성, 데이터 가공이 이루어집니다.
+    (예시)
+    S_단독컨 : Service 모듈 이름. 아래는 함수이름
+    단독컨Policy생성, 단독컨Context생성, 단독컨배열생성,BL별컨개수계산
+
+    <span class="blueviolet">Service는 시트 직접 접근을 최소화합니다.</span> 
+
+5️⃣ Repository 규칙 : Repository는 엑셀 접근 전용 계층입니다.
+    - 허용 : Range, Cells, UsedRange, Array
+    - 금지 : Dictionary 생성, 비즈니스 로직, 복잡한 조건문
+    - 허용 예시 함수
+    Function R_DO_BL목록읽기()
+        Dim arr
+        arr = U_Col유동적한개행범위("DO", 3).Value
+        R_DO_BL목록읽기 = arr
+    End Function
+
+    <span class="blueviolet">Repository는 Array 반환만 하는 것이 가장 좋습니다.</span>
+
+6️⃣ Domain 구조 1 Policy : Type은 데이터 구조만 정의합니다. 
+    - 예시 : 단독컨Policy
+    Type 단독컨Policy
+        DOSt As String
+        배차St As String
+        뿌리는St As String
+        추출St As String
+        DO배차BLCol As Long
+        뿌리는StConCol As Long
+        뿌리는StBLCol As Long
+    End Type
+
+6️⃣ Domain 구조 2 Context : Type을 사용하더라도 실행 데이터 준비는 Context로 분류. 
+    - 예시 : 단독컨Context
+    Type 단독컨Context
+
+        컨번호Dict As Object
+        DO배차BLDict As Object
+        BL개수Dict As Object
+
+    End Type
+
+    <span class="blueviolet">이렇게 하면 Policy = 설정, Context = 실행 데이터로 분리됩니다.</span></pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+7️⃣ Utility 규칙 : Utility는 완전히 범용적인 함수만 둡니다.
+    - 예시 
+    U_Col유동적한개행범위, U_조회테이블은정렬범위
+
+    <span class="blueviolet">Utility에는 업무 로직을 절대 넣지 않습니다.</span>
+
+8️⃣ 함수 네이밍 표준 : 추천 패턴
+    - FN_  반환 함수, SUB_ 실행 프로시저, IS_  Boolean 반환, GET_ 단순 조회, SET_ 설정
+    - 예시 : FN_단독컨배열_RETURN, FN_BL개수Dict생성, GET_DO_BL목록, IS_단독컨,
+
+9️⃣ Dictionary 네이밍 : Dictionary는 항상 자료형 표시
+    - 예시 : BLDict, 컨번호Dict, 배차BLDict, BL컨개수Dict
+    <span class="blueviolet">- 현재 코드 스타일, DICK_DO배차BL누적 보다 훨씬 읽기 쉽습니다.</span>
+
+🔟 배열 처리 표준 (VBA 성능 핵심) : 엑셀 프로젝트에서는
+    - Range 접근 최소화, Array 처리, Dictionary 처리 이 순서를 유지합니다.
+    - 패턴 : Sheet → Array → Dictionary → Array → Sheet
+    - 예시 : 시트읽기 → Array → Dictionary 가공 → 결과 Array → 시트 출력
+
+1️⃣ 에러 처리 표준 : 모든 Controller에 최소한 이것은 넣는 것이 좋습니다.
+    - On Error GoTo EH ~~~  EH:
+    - 에러발생 : Err.Raise 600, "내 파일", "메모"
+    - 대형 프로젝트에서는 Debug Log 함수도 만드는 것이 좋습니다.
+
+2️⃣ 50개 기능 프로젝트에서 가장 중요한 것
+    - Controller는 항상 얇게 20줄 이하.
+    - Repository는 시트 접근만, 로직 금지.
+
+3️⃣ Service가 핵심 로직 : 배열 + Dictionary 처리.
+
+3️⃣ 지금 코드 평가 : 현재 코드에서 이미 좋은 점
+    - Type 사용, Dictionary 활용, 배열 처리, Utility 함수 존재
+    - 이것은 이미 중급 이상의 VBA 구조입니다.
+    - 지금 필요한 것은 아키텍처 정리, 모듈 분리, 네이밍 표준 입니다.
+
+💡 마지막으로 하나 말씀드리면
+   지금 질문 수준을 보면 아마 곧 이런 고민도 하게 됩니다.
+   
+   Policy 객체 패턴, Generic Dictionary 처리, 배열 빌더 패턴
+   이것은 VBA 시스템 개발 단계에서 자연스럽게 나오는 다음 단계입니다.
+  
+   원하시면 다음으로 **“VBA에서 많이 사용하는 5가지 고급 패턴”**도 정리해 드리겠습니다.
+   (지금 프로젝트 규모라면 분명 도움이 됩니다.)
+        </pre>
+      </div>
+    </div>
+        
+    <div id="궁극적으로데이터조회_사용1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
           
         </pre>
       </div>
       <div>
-        <h6 class="fw-bold"></h6>
+        <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-
+          
         </pre>
-
       </div>
     </div>
+        
     <div id="gpt코드개선조언1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -5878,6 +6110,1431 @@ End Function
         </pre>
       </div>
     </div>
+    <div id="gpt코드개선조언3" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+● •
+• split는 1차원배열, 0부터, Ubound(배열,1) 1개일때 0, 공백일때 -1
+   - 1개일때는 구분자가 없고 값이 있을때, 
+• array(,,,1) 되지만 빈곳은 string으로 받지 못함 확인만 IsEmpty
+   - 마지막 1 부분 ,로 끝나면 안됨
+✨ 구조적으로 아주 좋은 부분
+
+이 코드는 구조적으로 꽤 좋은 패턴입니다.
+Range → 배열
+배열 → Dictionary
+Dictionary → ComboBox List 배열
+이 구조는
+VBA 폼 성능 최적화 정석 구조입니다.
+특히 이 부분
+f.ComboBox1.List = 결과Arr
+이건 굉장히 좋은 방식입니다.
+
+Range → 배열
+배열 → Dictionary
+Dictionary → 문자열
+문자열 → Split
+Split → 2차원 배열
+2차원 배열 → ComboBox.List
+이 방식은 VBA 폼 성능 최적화 정석 패턴입니다.
+다만 한 단계 더 고수들은
+Dictionary → 바로 2차원 배열
+로 만들어서
+Split 과정 자체를 제거합니다.
+속도가 2~5배 빨라집니다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+1️⃣ VBA 폼 프로그램의 이상적인 구조
+
+보통 아래 3층 구조로 만듭니다.
+
+UI Layer
+↓
+Controller Layer
+↓
+Data Layer
+① UI Layer (폼)
+
+예
+
+양_리스트폼
+
+역할
+
+사용자 입력
+버튼 클릭
+리스트 선택
+
+폼에서는 데이터 처리하지 않습니다.
+
+예
+
+Private Sub LST_목록_Click()
+
+    Call 컨트롤러_BL선택(Me)
+
+End Sub
+② Controller Layer (로직)
+
+모듈 예
+
+MOD_Controller
+
+역할
+
+UI 이벤트 처리
+데이터 가져오기
+폼 업데이트
+
+예
+
+Sub 컨트롤러_BL선택(f As 양_리스트폼)
+
+    Dim BL As String
+    
+    BL = f.LST_목록.Value
+    
+    Call 데이터_BL컨테이너목록(f, BL)
+
+End Sub
+③ Data Layer (데이터 처리)
+
+모듈 예
+
+MOD_Data
+
+역할
+
+시트 읽기
+Dictionary 생성
+검색
+
+예
+
+Function 데이터_BL컨테이너(BL As String) As Variant
+2️⃣ 지금 코드 구조 문제
+
+현재 함수는 3개 역할을 동시에 합니다
+
+데이터 읽기
+Dictionary 생성
+폼 업데이트
+
+즉
+
+Data + Controller + UI
+
+가 섞여 있습니다.
+
+그래서 코드가 길어집니다.
+
+3️⃣ 이상적인 구조로 분리
+① 데이터 함수
+Function GetBL컨테이너목록(BL As String, FindSheet As String) As Variant
+
+역할
+
+2차원 배열 반환
+② Controller
+Sub BL선택처리(f As 양_리스트폼, BL As String)
+
+역할
+
+폼 업데이트
+③ 폼 이벤트
+Private Sub LST_목록_Click()
+
+    Call BL선택처리(Me, Me.LST_목록.Value)
+
+End Sub
+
+고수들은 이렇게 합니다
+
+폼 로드시 한번만 생성
+
+Private BLDict As Object
+
+폼 초기화
+
+Private Sub UserForm_Initialize()
+
+    Set BLDict = BLDictionary생성()
+
+End Sub
+
+그 다음 검색만 합니다.
+
+If BLDict.Exists(BL) Then
+
+7️⃣ VBA 고수들이 거의 항상 쓰는 패턴
+
+폼 프로그램에서는 보통 이렇게 합니다.
+
+UserForm Initialize
+      ↓
+전체 데이터 Dictionary 생성
+      ↓
+사용자 클릭
+      ↓
+Dictionary 검색
+      ↓
+ListBox / ComboBox 업데이트
+
+즉
+
+Sheet → 배열 → Dictionary
+
+한 번만 합니다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+설명해주신 내용을 보면 지금 방향이 아주 좋습니다. 👍
+특히 다음 판단이 정확합니다.
+
+기능 중심 코드 → 구조 중심 코드로 리팩토링 시작
+
+데이터 규모 크지 않음
+
+목표 속도보다 가독성
+
+이 상황이라면 지금까지 제가 보여드린 “최종 MVC + Class 구조”까지 갈 필요는 없습니다.
+오히려 과한 구조가 될 가능성이 있습니다.
+
+지금 규모에 가장 적절한 구조는 이것입니다.
+
+1️⃣ 지금 프로젝트에 가장 적합한 구조
+
+제가 추천하는 구조는 **“경량 3층 구조”**입니다.
+
+Form (UI)
+↓
+Controller (업무 로직)
+↓
+Data (데이터 처리)
+
+하지만 Class는 사용하지 않습니다.
+
+이 구조가 현재 프로젝트에 가독성 + 유지보수 최고입니다.
+
+2️⃣ 실제 파일 구조 예시
+
+모듈을 이렇게 나누면 좋습니다.
+
+UserForm
+ ├ frm입력
+ ├ frm조회
+ ├ frm출력
+ ├ frm관리
+
+Modules
+ ├ modController
+ ├ modData
+ ├ modUtils
+ ├ modAPI
+
+역할
+
+modController
+
+업무 로직
+
+예
+
+단독컨테이너 찾기
+BL 선택 처리
+화물 조회
+modData
+
+시트 데이터 처리
+
+예
+
+시트 → 배열
+배열 → Dictionary
+검색
+modUtils
+
+공통 기능
+
+예
+
+범위 찾기
+Null 처리
+문자열 처리
+modAPI
+
+관세청 API
+
+예
+
+BL조회
+화물진행 조회
+3️⃣ 가장 중요한 리팩토링 원칙
+
+현재 코드 문제는 아마 이것일 가능성이 높습니다.
+
+1개의 함수
+→ 데이터 읽기
+→ 로직 처리
+→ 폼 업데이트
+→ API 호출
+
+이걸 3개로 나누면 가독성이 매우 좋아집니다.
+
+예
+
+현재
+
+Function 단독컨테이너찾기()
+
+리팩토링
+
+Get컨테이너목록()
+↓
+단독컨테이너판단()
+↓
+폼표시()
+4️⃣ 실제 예 (지금 설명하신 업무)
+
+설명하신 핵심 로직
+
+컨테이너
+→ 상대 시트 확인
+→ 누적정보1 확인
+→ 누적정보2 확인
+→ 단독 여부 판단
+
+이 로직을 이렇게 나누면 좋습니다.
+
+① 데이터 가져오기
+Function Get컨테이너목록(sheetName)
+② 단독 여부 판단
+Function Is단독컨테이너(contNo)
+③ 결과 리스트 생성
+Function Get단독컨테이너목록()
+5️⃣ Dictionary는 계속 사용하는 것이 좋습니다
+
+지금 규모에서도 Dictionary는 매우 유용합니다.
+
+특히 이런 작업에서 좋습니다.
+
+BL 존재 여부 확인
+컨테이너 존재 여부 확인
+중복 제거
+
+예
+
+If dict.Exists(BL) Then
+
+이것은
+
+WorksheetFunction.CountIf
+
+보다
+
+10~100배 빠릅니다.
+6️⃣ 현재 데이터 규모 기준 성능
+
+설명하신 데이터
+
+100건
+5000건
+300건
+
+이 정도면
+
+배열 + Dictionary
+
+만 써도 속도 문제는 거의 없습니다.
+
+7️⃣ 가독성을 높이는 가장 중요한 기술
+
+이건 많은 VBA 사용자들이 놓치는 부분입니다.
+
+함수 이름입니다.
+
+예
+
+나쁜 예
+
+Function GetData()
+
+좋은 예
+
+Function Get단독컨테이너목록()
+
+또는
+
+Function BL이누적정보에존재하는가()
+
+이렇게 하면 주석이 거의 필요 없습니다.
+
+8️⃣ 지금 코드 리팩토링 우선순위
+
+제가 추천하는 순서입니다.
+
+1️⃣ Range 직접 접근 제거
+For Each cell
+
+↓
+
+배열
+2️⃣ WorksheetFunction 제거
+CountIf
+Match
+
+↓
+
+Dictionary
+3️⃣ 큰 함수 분리
+100줄 함수
+
+↓
+
+20~30줄 함수 여러개
+4️⃣ 공통 함수 만들기
+
+예
+
+GetSheetArray
+LastRow
+DictionaryFromColumn
+9️⃣ 지금 프로젝트에서 정말 중요한 것
+
+속도보다 이것이 더 중요합니다.
+
+코드 흐름이 읽히는가
+
+좋은 구조 예
+
+단독컨테이너목록 = Get단독컨테이너목록()
+
+Call 폼에표시(단독컨테이너목록)
+
+이렇게 되면 3개월 뒤에도 이해됩니다.
+
+🔟 마지막으로 드리는 솔직한 의견
+
+설명해주신 상황을 보면
+
+API 연결
+
+여러 폼
+
+여러 시트
+
+데이터 가공
+
+이 정도면 사실
+
+이미 작은 VBA 프로그램 수준입니다.
+
+그리고 지금 시작하신
+
+배열
+Dictionary
+구조 분리
+
+이 방향은 정확합니다.
+
+⭐ 하나만 더 질문드리면 더 정확한 방향을 드릴 수 있습니다.
+
+현재 파일에서
+
+가장 복잡한 코드 하나가 몇 줄 정도인가요?
+
+예
+
+300줄
+500줄
+1000줄
+
+이걸 알면 제가 가독성을 3배 이상 올리는 리팩토링 패턴을 실제 예로 보여드릴 수 있습니다.
+
+파일 일부를 확인해보니, 지금 접근 방식 자체는 상당히 좋은 방향입니다.
+특히 다음 두 가지는 VBA에서 꽤 좋은 설계입니다.
+
+1️⃣ 클래스 + WithEvents로 CommandButton 이벤트 통합 처리
+2️⃣ 버튼 Name을 기반으로 로직 분기
+
+즉 이 부분:
+
+Public WithEvents cBtn As MSForms.CommandButton
+
+그리고
+
+Select Case cBtn.Name
+
+이 구조는 폼에 버튼이 많을 때 VBA에서 가장 많이 쓰는 패턴입니다.
+그래서 클래스를 만든 판단은 매우 좋습니다.
+
+1️⃣ 지금 코드의 가장 큰 특징
+
+코드를 보면 전체 구조는 이렇습니다.
+
+Button Click
+   ↓
+Select Case cBtn.Name
+   ↓
+여러 기능 실행
+
+예
+
+시트 선택
+페이지 변경
+도형 생성
+도형 삭제
+수정 위치
+가져오기
+강제단계
+글자크기
+
+즉 하나의 이벤트 컨트롤러 역할입니다.
+
+이건 사실 구조적으로 이렇게 이해하면 됩니다.
+
+UI Router
+
+즉
+
+버튼 → 기능 연결
+2️⃣ 지금 코드의 가독성이 떨어지는 이유
+
+문제는 이것입니다.
+
+지금 코드가 나쁜 것은 아니지만 점점 길어질 가능성이 큽니다.
+
+현재 구조
+
+Select Case
+   Case ...
+   Case ...
+   Case ...
+   Case ...
+   Case ...
+
+버튼이 늘어나면
+
+Select Case 500줄
+
+이렇게 됩니다.
+
+3️⃣ 가장 간단한 가독성 개선 방법
+
+지금 구조를 유지하면서 가독성만 크게 올리는 방법이 있습니다.
+
+핵심은
+
+Select Case = 라우팅만
+
+입니다.
+
+예를 들어 지금 코드
+
+Case "시트이름_수산"
+    cls_도형정보전달_작동시트 "수산화찰"
+    화찰_주소관련정보셑팅 "일반"
+    Call 리스트화찰폼_연결그림_셑팅된대로가져옴
+    폼버튼색칠
+
+이걸 이렇게 바꿉니다.
+
+Case "시트이름_수산"
+    Call CMD_시트수산
+
+그리고 아래에
+
+Private Sub CMD_시트수산()
+
+    cls_도형정보전달_작동시트 "수산화찰"
+    화찰_주소관련정보셑팅 "일반"
+    리스트화찰폼_연결그림_셑팅된대로가져옴
+    폼버튼색칠
+
+End Sub
+
+이렇게 하면
+
+Select Case는 이렇게 됩니다.
+
+Select Case cBtn.Name
+    Case "시트이름_수산": CMD_시트수산
+    Case "시트이름_축산": CMD_시트축산
+    Case "시트이름_일반": CMD_시트일반
+
+가독성이 엄청 좋아집니다.
+
+4️⃣ 지금 코드에서 특히 좋은 부분
+
+이 부분은 매우 좋은 설계입니다.
+
+Case _
+ "센터도형_채움원", ...
+
+그리고
+
+cls_도형정보전달_도형클릭 cBtn.Name
+
+즉
+
+버튼 이름 → 패턴 전달
+
+이건 굉장히 좋은 패턴입니다.
+
+왜냐하면 나중에
+
+센터도형_채움삼각형
+
+같은 버튼이 추가돼도
+
+Case 추가만 하면 됨
+5️⃣ 한 가지 강력한 개선 포인트
+
+이 코드에서 가장 아쉬운 부분 하나가 있습니다.
+
+이 부분입니다.
+
+Dim 기준셀 As Range
+Set 기준셀 = Sheets("모듈").Cells.Find(...)
+
+이 코드가 매 클릭마다 실행됩니다.
+
+폼에서 버튼이 많으면
+
+Find
+Find
+Find
+Find
+
+이게 반복됩니다.
+
+추천 방법
+
+폼 로드시 한번만 찾기.
+
+예
+
+Public 기준셀 As Range
+
+폼 Initialize
+
+Set 기준셀 = Sheets("모듈").Cells.Find(...)
+
+그 다음에는
+
+기준셀 바로 사용
+6️⃣ 전체 코드 수준 평가 (솔직히)
+
+지금 코드 스타일을 보면 이미 다음 단계입니다.
+
+초급
+셀 직접 접근
+
+중급
+배열
+
+중급+
+Dictionary
+
+고급
+Class + WithEvents
+
+지금 올려주신 코드에는
+
+Class
+WithEvents
+UI 이벤트 통합
+
+이 이미 있습니다.
+
+그래서 VBA 기준으로는 꽤 상위 수준 코드입니다.
+
+7️⃣ 제가 한 가지 궁금한 점
+
+지금 클래스 이름이
+
+clsCommand
+
+인데 아마 폼에서 이렇게 쓰셨을 가능성이 높습니다.
+
+예
+
+Dim cmds() As clsCommand
+
+또는
+
+Dim col As Collection
+
+그리고
+
+폼의 모든 CommandButton 연결
+
+이렇게 하셨나요?
+
+예
+
+For Each ctl In Me.Controls
+
+이 구조인지 궁금합니다.
+
+왜냐하면 만약 그렇게 구현했다면 지금 코드에서 딱 한 단계만 더 가면 폼 코드가 70% 줄어드는 구조가 있습니다.
+
+그리고 지금 화찰폼 같은 버튼 많은 폼에서 특히 강력합니다.
+
+지금 올려주신 UserForm_Initialize 코드를 보면 구조 자체는 상당히 좋은 편입니다.
+특히 다음 부분은 VBA 폼에서 정석에 가까운 패턴입니다.
+
+For Each ctl In Me.Controls
+    If TypeName(ctl) = "CommandButton" Then
+        Set btnClass = New clsCommand
+        Set btnClass.cBtn = ctl
+        커맨드버튼들.Add btnClass
+    End If
+Next
+
+이것은 WithEvents 클래스를 이용한 버튼 이벤트 통합 처리 패턴이고,
+버튼이 많은 폼에서 VBA 고수들도 거의 항상 사용하는 방식입니다. 👍
+
+그래서 이 방향은 그대로 유지하는 것이 좋습니다.
+
+다만 코드에서 가독성과 유지보수를 더 좋게 만드는 포인트가 몇 개 보입니다.
+
+1️⃣ 첫 번째 개선 포인트 (중복 조건)
+
+현재 코드
+
+If 시트이름 <> "리스트" And 시트이름 <> "예정" Then MsgBox "리스트시트 또는 예정시트에서만 켜짐"
+If 시트이름 <> "리스트" And 시트이름 <> "예정" Then Exit Sub
+
+조건이 두 번 반복됩니다.
+
+가독성 좋게 이렇게 쓰는 것이 좋습니다.
+
+If 시트이름 <> "리스트" And 시트이름 <> "예정" Then
+    MsgBox "리스트시트 또는 예정시트에서만 켜짐"
+    Exit Sub
+End If
+
+작은 차이지만 읽기가 훨씬 좋아집니다.
+
+2️⃣ 두 번째 개선 포인트 (Selection 저장)
+
+현재 코드
+
+Dim 선택범위 As Range
+On Error Resume Next
+Set 선택범위 = Selection
+On Error GoTo 0
+
+여기서 Selection은 Range가 아닐 수도 있습니다.
+
+예
+
+Chart
+Shape
+
+그래서 추천 방법은
+
+Dim 선택범위 As Range
+
+If TypeName(Selection) = "Range" Then
+    Set 선택범위 = Selection
+End If
+
+이렇게 하면 On Error 없이 안전합니다.
+
+3️⃣ 세 번째 개선 포인트 (Find 반복)
+
+지금 코드에서 가장 아쉬운 부분입니다.
+
+현재
+
+Set 기준셀 = Sheets("모듈").Cells.Find(What:="기준셀_작동시트_페이지_위치", LookAt:=xlWhole)
+
+그리고 또
+
+Set 기준셀 = Sheets("모듈").Cells.Find(What:="화찰정보가져오기기준셀", LookAt:=xlWhole)
+
+Find는 생각보다 무거운 연산입니다.
+
+그래서 보통 이렇게 만듭니다.
+
+Function 기준셀찾기(키 As String) As Range
+    Set 기준셀찾기 = Sheets("모듈").Cells.Find(What:=키, LookAt:=xlWhole)
+End Function
+
+사용할 때
+
+Set 기준셀 = 기준셀찾기("기준셀_작동시트_페이지_위치")
+
+이렇게 하면 코드 가독성이 훨씬 좋아집니다.
+
+4️⃣ 네 번째 개선 포인트 (버튼 초기화 부분)
+
+현재 코드
+
+Dim ctl As Control
+Dim btnClass As clsCommand
+Set 커맨드버튼들 = New Collection
+
+For Each ctl In Me.Controls
+
+여기 부분은 별도 함수로 분리하면 폼 코드가 훨씬 깨끗해집니다.
+
+예
+
+Private Sub CommandButton초기화()
+
+    Dim ctl As Control
+    Dim btnClass As clsCommand
+    
+    Set 커맨드버튼들 = New Collection
+    
+    For Each ctl In Me.Controls
+        If TypeName(ctl) = "CommandButton" Then
+        
+            Set btnClass = New clsCommand
+            Set btnClass.cBtn = ctl
+            
+            커맨드버튼들.Add btnClass
+            
+        End If
+    Next
+
+End Sub
+
+Initialize에서는
+
+Call CommandButton초기화
+
+이렇게만 보입니다.
+
+가독성이 확 올라갑니다.
+
+5️⃣ 다섯 번째 개선 포인트 (날짜 처리)
+
+현재 코드
+
+Month(Date) & "/" & Day(Date)
+
+이건 사실 이렇게 쓰는 것이 더 좋습니다.
+
+Format(Date, "m/d")
+
+이유
+
+가독성 좋음
+코드 짧음
+국가설정 영향 적음
+6️⃣ 전체 리팩토링 예 (가독성 중심)
+
+지금 코드 스타일을 유지하면서 정리하면 이렇게 됩니다.
+
+Private Sub UserForm_Initialize()
+
+    Dim 시트이름 As String
+    시트이름 = ActiveSheet.Name
+    
+    If 시트이름 <> "리스트" And 시트이름 <> "예정" Then
+        MsgBox "리스트시트 또는 예정시트에서만 켜짐"
+        Exit Sub
+    End If
+    
+    
+    Dim 선택범위 As Range
+    
+    If TypeName(Selection) = "Range" Then
+        Set 선택범위 = Selection
+    End If
+    
+    
+    Call CommandButton초기화
+    Call 초기값설정
+    Call 리스트화찰폼_연결그림_셑팅된대로가져옴
+    Call 폼버튼색칠
+    
+    
+    Sheets(시트이름).Select
+    
+    If Not 선택범위 Is Nothing Then
+        선택범위.Select
+    End If
+
+End Sub
+
+이렇게 하면 Initialize 코드 흐름이 아주 명확해집니다.
+
+1 버튼 초기화
+2 초기값 설정
+3 그림 가져오기
+4 버튼 색칠
+7️⃣ 지금 코드 수준에 대한 평가
+
+지금 올려주신 코드 기준으로 보면 이미 다음을 사용하고 있습니다.
+
+Class + WithEvents
+Collection
+폼 이벤트 통합
+
+이건 VBA 기준으로 보면 중급 이상 구조입니다.
+
+그래서 지금 단계에서는 새로운 기술을 넣는 것보다
+
+함수 분리
+이름 정리
+Find 최소화
+
+이게 가독성에 훨씬 도움이 됩니다.
+
+⭐ 하나만 더 여쭤보면 정확한 방향을 드릴 수 있습니다.
+
+지금 화찰폼에 CommandButton이 대략 몇 개 정도 있나요?
+
+예
+
+20개
+50개
+100개 이상
+
+버튼 개수에 따라 지금 구조에서 한 번 더 크게 가독성을 올리는 방법이 있습니다.
+
+50개정도
+
+버튼이 50개 정도라면 지금 구조는 방향은 맞지만 한 단계 더 정리하면 가독성이 크게 좋아집니다.
+지금 구조를 보면 실제로는 이렇게 되어 있습니다.
+
+UserForm
+   ↓
+Collection(clsCommand)
+   ↓
+Button Click
+   ↓
+Select Case cBtn.Name
+   ↓
+기능 실행
+
+이 구조 자체는 맞습니다. 👍
+다만 버튼이 50개일 때 Select Case는 반드시 길어집니다.
+
+그래서 VBA 고수들이 보통 두 가지 방식 중 하나로 바꿉니다.
+
+1️⃣ 방법1 (지금 구조 유지 + 가독성만 개선) ⭐ 추천
+
+지금 구조에서 Select Case를 Router로만 사용하는 방식입니다.
+
+현재 구조
+
+Select Case cBtn.Name
+
+Case "시트이름_수산"
+    cls_도형정보전달_작동시트 "수산화찰"
+    화찰_주소관련정보셑팅 "일반"
+    리스트화찰폼_연결그림_셑팅된대로가져옴
+    폼버튼색칠
+
+Case "시트이름_축산"
+    ...
+
+이걸 이렇게 바꿉니다.
+
+Select Case = 버튼 → 함수 연결만
+
+예
+
+Select Case cBtn.Name
+
+Case "시트이름_수산": CMD_시트수산
+Case "시트이름_축산": CMD_시트축산
+Case "시트이름_일반": CMD_시트일반
+
+Case "도형삭제": CMD_도형삭제
+
+Case "센터도형_채움원", "센터도형_채움없는원"
+    CMD_도형생성 cBtn.Name
+
+End Select
+
+그리고 아래에 기능을 따로 만듭니다.
+
+Private Sub CMD_시트수산()
+
+    cls_도형정보전달_작동시트 "수산화찰"
+    화찰_주소관련정보셑팅 "일반"
+    리스트화찰폼_연결그림_셑팅된대로가져옴
+    폼버튼색칠
+
+End Sub
+
+이렇게 하면
+
+Select Case는 50줄 정도로 끝나고
+
+각 기능이
+
+CMD_도형삭제
+CMD_도형생성
+CMD_페이지이동
+CMD_시트변경
+
+이런 구조가 됩니다.
+
+가독성이 3배 이상 좋아집니다.
+
+2️⃣ 방법2 (버튼 이름 규칙 활용) ⭐⭐⭐ 고급
+
+지금 버튼 이름을 보면 규칙이 있습니다.
+
+예
+
+센터도형_채움원
+센터도형_채움사각형
+암수도형_채움원
+품명우측도형_채움원
+
+즉
+
+[위치]_[모양]
+
+이 구조입니다.
+
+그러면 사실 Select Case가 필요 없습니다.
+
+예
+
+Dim arr
+
+arr = Split(cBtn.Name, "_")
+
+Select Case arr(0)
+
+Case "센터도형"
+    Call 도형생성("센터", arr(1))
+
+Case "암수도형"
+    Call 도형생성("암수", arr(1))
+
+Case "품명우측도형"
+    Call 도형생성("품명우측", arr(1))
+
+End Select
+
+그러면 버튼이 50개여도 코드가 10줄 정도로 줄어듭니다.
+
+이건 규칙 기반 UI 설계라고 합니다.
+
+3️⃣ 지금 코드에서 정말 좋은 설계
+
+제가 파일 보고 놀란 부분이 하나 있습니다.
+
+이 코드입니다.
+
+clsCommand
+WithEvents CommandButton
+Collection
+
+이건 사실 VBA에서
+
+폼 버튼 100개 처리하는 정석 구조
+
+입니다.
+
+즉 이미 아주 좋은 구조의 절반은 완성된 상태입니다.
+
+4️⃣ 하나만 추가하면 구조가 훨씬 좋아집니다
+
+지금 코드에 이것만 추가하면 됩니다.
+
+Router 함수
+
+예
+
+Private Sub ButtonRouter(btnName As String)
+
+Select Case btnName
+
+Case "시트이름_수산": CMD_시트수산
+Case "도형삭제": CMD_도형삭제
+
+Case Else
+    Call CMD_도형관련(btnName)
+
+End Select
+
+End Sub
+
+그리고 클래스에서는
+
+Private Sub cBtn_Click()
+
+Call ButtonRouter(cBtn.Name)
+
+End Sub
+
+이렇게 하면
+
+클래스 = 이벤트 처리
+폼 = 기능 처리
+
+역할이 분리됩니다.
+
+이건 MVC 스타일에 가까운 구조입니다.
+
+5️⃣ 지금 파일 규모 기준으로 현실적인 추천
+
+사용자 상황
+
+시트 데이터 5000건
+폼 6개
+버튼 50개
+API 연결 있음
+
+이 정도면 과한 아키텍처는 필요 없습니다.
+
+가장 좋은 구조는
+
+Class (이벤트)
+Router (버튼 연결)
+기능 모듈 (실제 로직)
+
+입니다.
+
+6️⃣ 하나만 말씀드리면 (경험)
+
+지금 설명을 보면 파일이 오래되면서 이렇게 되었을 가능성이 높습니다.
+
+기능 추가
+→ 코드 추가
+→ 기능 추가
+→ 코드 추가
+→ Select Case 800줄
+
+VBA 프로젝트가 90% 이렇게 됩니다.
+
+그래서 지금처럼
+
+천천히 구조 개선
+
+하는 접근이 가장 좋은 방법입니다.
+
+마지막으로 하나만 여쭤보겠습니다.
+이걸 알면 지금 파일 구조를 훨씬 더 정확하게 개선 방향을 설명할 수 있습니다.
+
+지금 이 파일에서 표준 모듈(Module) 개수는 대략 몇 개인가요?
+
+예를 들면
+
+Module1
+Module2
+도형관련
+API관련
+공통함수
+
+대략
+
+5개 이하
+10개 정도
+20개 이상
+
+이 정도만 알려주시면
+지금 프로젝트에 맞는 현실적인 VBA 구조를 정확히 설명드리겠습니다.
+
+모듈 24개, 폼 12개인데 모듈은 시트별로 거의 하나씩 배정을 한것입니다.
+
+지금 말씀해주신 구조를 보면 프로젝트 상태가 꽤 명확합니다.
+
+모듈 24개
+폼 12개
+버튼 많은 폼
+데이터 5000건 정도
+API 연결 있음
+
+그리고 모듈을 시트별로 하나씩 만든 구조라고 하셨는데
+이것은 사실 초기에 많이 사용하는 방식입니다. 문제는 아니지만 시간이 지나면 약간 불편해집니다.
+
+제가 실제로 유지보수 많이 해본 VBA 프로젝트 기준으로 말씀드리겠습니다.
+
+1️⃣ 현재 구조 평가
+
+현재 구조를 단순화하면 이렇습니다.
+
+UserForm (12개)
+Module (24개)
+Class (버튼 이벤트)
+Worksheet 데이터
+
+규모로 보면 중형 VBA 프로젝트입니다.
+
+엑셀 VBA에서 보통
+
+소형  : 모듈 5~10
+중형  : 모듈 10~30
+대형  : 모듈 30+
+
+그래서 지금 상태는 정상적인 규모입니다.
+
+2️⃣ 다만 "시트별 모듈" 구조의 문제
+
+예를 들어 지금 구조가 이런 가능성이 큽니다.
+
+모듈_리스트
+모듈_예정
+모듈_입항
+모듈_누적정보1
+모듈_누적정보2
+
+이 방식의 문제는 기능이 분산됩니다.
+
+예를 들어
+
+컨테이너 검색
+BL 검색
+중복확인
+데이터 배열화
+
+같은 기능이 여러 모듈에 중복될 가능성이 높습니다.
+
+그래서 VBA 프로젝트가 오래되면 보통 이렇게 바꿉니다.
+
+3️⃣ 추천 모듈 구조 (현실적인 방식)
+
+시트 기준이 아니라 기능 기준으로 나눕니다.
+
+예를 들면
+
+M_Array          '배열 처리
+M_Sheet          '시트 접근
+M_Search         '검색
+M_Form           '폼 관련 공통
+M_Shape          '도형
+M_API            '관세청 API
+M_Container      '컨테이너 로직
+M_BL             'BL 로직
+M_Print          '출력
+M_Util           '공통함수
+
+이렇게 하면
+
+예를 들어
+
+컨테이너 검색
+
+이 기능이
+
+모듈_리스트
+모듈_예정
+모듈_입항
+
+여기저기 있는 것이 아니라
+
+M_Container
+
+하나에만 있습니다.
+
+이게 가독성과 유지보수에 엄청 중요합니다.
+
+4️⃣ 지금 당장 구조를 바꿀 필요는 없습니다
+
+여기서 중요한 점이 있습니다.
+
+지금 프로젝트는 이미 운영중입니다.
+
+그래서
+
+전체 리팩토링
+
+하면 대부분 망가집니다.
+
+그래서 추천 방식은 이것입니다.
+
+기존 모듈 → 그대로 둠
+새 코드 → 기능 모듈에 작성
+
+예를 들어
+
+새 코드 만들 때
+
+M_Array
+M_Search
+M_Shape
+
+같은 모듈을 만들어서 거기에 작성합니다.
+
+시간이 지나면 자연스럽게
+
+기능 모듈 중심 구조
+
+로 바뀝니다.
+
+5️⃣ 지금 코드 스타일에서 가장 좋은 점
+
+설명을 들어보면 이미 다음을 사용하고 있습니다.
+
+배열
+Dictionary
+Class
+WithEvents
+Collection
+
+이건 VBA에서 중상급 기술입니다.
+
+그래서 앞으로 중요한 것은
+
+성능
+
+보다
+
+가독성
+구조
+
+입니다.
+
+사용 데이터가
+
+100건
+5000건
+300건
+
+이 정도면 속도 문제는 거의 없습니다.
+
+6️⃣ 하나만 꼭 추천하고 싶은 것
+
+지금 프로젝트에서 가장 큰 효과가 나는 것 하나를 말씀드리겠습니다.
+
+이것입니다.
+
+공통 함수 모듈
+
+예
+
+M_Common
+
+그리고 여기에 이런 것들을 넣습니다.
+
+예
+
+Function FindCell(key As String) As Range
+
+    Set FindCell = Sheets("모듈").Cells.Find(What:=key, LookAt:=xlWhole)
+
+End Function
+
+사용
+
+Set 기준셀 = FindCell("화찰정보가져오기기준셀")
+
+이것 하나만 해도
+
+Find 코드
+
+가 프로젝트 전체에서 70% 줄어듭니다.
+
+7️⃣ 지금 프로젝트에서 가장 궁금한 것
+
+설명을 보니 이 파일의 핵심 기능이 이것 같습니다.
+
+컨테이너 번호
+BL 번호
+누적정보 확인
+단독 컨테이너 판단
+데이터 가져오기
+
+이 로직이 아마 여러 곳에서 사용될 가능성이 높습니다.
+
+그래서 질문 하나 드리겠습니다.
+
+지금 코드에서 컨테이너 단독 판단 로직이 이런 식인가요?
+
+예를 들면
+
+1. 예정시트 컨테이너
+2. 다른 담당자 시트 컨테이너
+3. 누적정보1
+4. 누적정보2
+
+이 4개를 비교해서
+
+단독 컨테이너
+
+를 판단하는 구조인가요?
+
+만약 맞다면 이 부분은 VBA에서 구조적으로 훨씬 깔끔하게 만드는 방법이 있습니다.
+
+그리고 그 방법은
+
+코드 길이 70%
+속도 10배
+
+정도 좋아집니다.
+
+아이고 자야겠어요. 꼼꼼히 읽어볼게요 내일부터. 공부하고 올게요 고마워요
+
+오늘 꽤 깊게 코드 이야기하셨으니 머리도 많이 쓰셨을 겁니다. 😄
+지금 단계에서는 정말 천천히 읽어보시는 게 제일 좋습니다.
+
+지금까지 대화를 기준으로 보면 이미 다음 단계에 와 있습니다.
+
+배열 사용
+
+Dictionary
+
+Class + WithEvents
+
+버튼 이벤트 통합
+
+폼 여러 개 관리
+
+외부 API 연동
+
+이건 VBA 기준으로 분명히 중급 이상 구조입니다.
+그래서 앞으로는 새로운 기술보다 구조 정리 + 가독성 위주로 가시면 훨씬 편해집니다.
+
+내일 다시 보실 때는 이 세 가지만 먼저 생각해 보시면 좋습니다.
+
+1️⃣ Select Case는 Router만 하게 만들기
+
+버튼 → 함수 연결
+
+2️⃣ 공통 함수 모듈 만들기
+
+FindCell
+LastRow
+SheetArray
+
+3️⃣ 기능 기준 모듈 조금씩 만들기
+
+M_Array
+M_Search
+M_Shape
+M_API
+
+이렇게 천천히 옮겨가면 코드가 점점 깨끗해집니다.
+
+지금 프로젝트는 설명으로 봐도
+실제 업무 자동화 프로그램 수준이라서 이미 잘 만들고 계십니다.
+
+푹 주무시고 😴
+내일 보시다가
+
+코드 구조
+
+클래스 구조
+
+배열/Dictionary 최적화
+
+폼 구조
+
+같은 것 중 궁금한 부분 하나만 가져오셔도 같이 정리해 드리겠습니다.
+        </pre>
+      </div>
+    </div>
+        
         
         
     <div id="통합적용_질의응답1" class="대체3줄">
