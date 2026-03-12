@@ -151,6 +151,7 @@
         <h6 class="fw-bold" title="폼컨트롤용클래스모듈">폼 커맨드버튼 클릭이벤트 관련 "클래스 모듈" 사용법</h6>
         <h6 class="fw-bold" title="배열사용법">배열사용법. Array, Split, Dim 배열 As Variant, Dim 배열(1 To 3, 1 To 4) As ...</h6>
         <h6 class="fw-bold" title="궁극적으로데이터조회">딕셔너리 사용법. 궁극적으로 Dictionary → Collection → Array</h6>
+        <h6 class="fw-bold blueviolet" title="책임분리연습1">책임분리부터 어렵다. 예시가 되는지 메모!</h6>
         <h6 class="fw-bold blueviolet" title="계층책임분리및네이밍필요">계층분리, 책임분리 및 네이밍 필요</h6>
         <h6 class="fw-bold blueviolet" title="궁극적으로데이터조회_사용1">실제 사용 예제 : Dictionary → Collection → Array</h6>
         <h6 class="fw-bold" title="gpt코드개선조언1">gpt코드개선조언1 : 단독컨 관련 코드 + 양_리스트폼 관련 조금 </h6>
@@ -5542,9 +5543,87 @@ Set dic = CreateObject("Scripting.Dictionary")
     Next
     f.ComboBox1.List = 결과Arr
         </pre>
-
+        <h6 class="fw-bold">딕셔너리 순회 </h6>
+        <pre class="fw-bold">
+          
+        </pre>
       </div>
     </div>
+    <div id="책임분리연습1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">딕셔너리가 필요할때마다 새로운 코드를 만들게 되었다. </h6>
+        <h6 class="fw-bold">● 딕셔너리를 반환하는 함수 하나 예시</h6>
+        <pre class="fw-bold">
+    Public Function FN_DICT_입관BL과컨묶음이KEY_ITEM은날짜또는미정() As Object
+      Dim d As Object
+      Set d = CreateObject("Scripting.Dictionary")
+      Dim 배열 As Variant
+      배열 = U_A1부터조회테이블범위("입항관리").Value
+      Dim 반복 As Long, 값 As String, BL As String, 컨 As String
+      Dim 배열크기 As Long, KEY As String
+      배열크기 = UBound(배열, 1)
+         For 반복 = 1 To 배열크기
+          <span class="blueviolet">BL = 배열(반복, 11)
+          컨 = 배열(반복, 3)
+          If Len(BL) = 0 Or Len(컨) = 0 Then GoTo ET1
+          KEY = BL & "|" & 컨
+          If Not d.EXISTS(KEY) Then
+            d(KEY) = U_FN_상세내용날짜또는미정Return(배열(반복, 13))
+          End If</span>
+    ET1:
+      Next
+      Set FN_DICT_입관BL과컨묶음이KEY_ITEM은날짜또는미정 = d
+    End Function
+    ----------------------------------------------------------------------------------------------------------</pre>
+        <h6 class="fw-bold">※ 파란색 부분에서 역할만 분리하면 재사용성이 높아질것 같다. </h6><br>
+        <h6 class="fw-bold">● <span class="blueviolet">[통합할 딕셔너리 예시] </span>현재까지 만들게 되는 딕셔너리에 대해서 확인해보자.</h6>
+        <pre class="fw-bold">
+  1. 예시함수에서 : Key → 배열 1개정보, Item → 배열 2개정보
+  2. DICK_뿌리는StCon, DICK_DO배차BL누적
+     - Key → 배열 1개정보, Item → Empty
+  3. DICK_뿌리는StBL번호
+     - Key → 배열 1개정보, Item → 카운트
+  4. DICK_예정컨_물품과수량을ITEM에ARRAY로담음
+     - Key → 배열 1개정보, Item → 배열 2개 정보</pre>
+      </div>
+      <div>
+        <h6 class="fw-bold">● 목적 : 하나의 함수를 통해서 필요할때마다 만들어서 사용하기</h6>
+        <h6 class="fw-bold"><span class="단어색칠">※ 항상 유념 : 함수는 서로를 알지 못한다. 역할만 한다. 복잡하게 생각하지 말자.</span> </h6>
+        <pre class="fw-bold">
+  <span class="blueviolet">※ 함수 시그니처 예시</span>
+  FN_DictReturn(stName As String, keyCol As Long, Item에카운트또는컬렉션 As String, _
+                추가열1 As Long추가열1 As Long,추가열1 As Long) As Object
+  [설명]
+  1. stName : 배열(조회테이블) 만드는 인수.
+  2. keyCol : key 에 입력할 정보와 관련된 인수. 
+  3. Item에카운트또는컬렉션 
+     - 컬랙션 사용하는것이 코드가 통일성이 있고 간결하다. 
+     - 컬랙션의 정보를 사용하는 것은 다음 함수의 역할이다.
+     <span class="blueviolet">- 다른 생각은 말고 담아주는 역할만 생각한다.</span>
+  4. 추가열1, 추가열2, 추가열3 : 0 일때는 추가 x, 양수일때 추가 
+     - 추가할 개수를 정하는 카운팅 필요, 크기 ReDim 필요, 1차원 배열, Array는 제약이 있는듯 </pre>
+        <h6 class="fw-bold">● FN_DictReturn 함수로 <span class="blueviolet">[통합할 딕셔너리 통합]</span>, 역할분리 함수를 사용</h6>
+        <pre class="fw-bold">
+  1. Item 값에 카운팅 또는 Empty를 넣었던 것은 카운팅으로 통합 
+     For 반복 = 1 To 배열크기
+      KEY = 배열(반복, keyCol)
+      Select Case KEY
+         Case ""
+         
+         Case Else
+      
+      End Select
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+        
     <div id="계층책임분리및네이밍필요" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
