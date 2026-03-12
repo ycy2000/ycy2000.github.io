@@ -171,7 +171,7 @@
 
       </div>
       <div>
-
+        <h6 class="fw-bold" title='트리형식그리기필요한문자열'>트리형식그리기필요한문자열</h6>
       </div>
       <div>
 
@@ -5440,93 +5440,60 @@ Private Sub UserForm_Initialize()
     <div id="궁극적으로데이터조회" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold">딕셔너리 사용법</h6>
+        <h6 class="fw-bold blueviolet">딕셔너리 선언법 비교, key 와 Item 모두 Variant</h6>
         <pre class="fw-bold">
+1. 정석
 Dim dic As Object
 Set dic = CreateObject("Scripting.Dictionary")
-[key 가 존재하는지 비교 방법]
-1. dic.CompareMode = vbTextCompare : 대소문자 구분 안함
-   - 이게 좀 더 빠르다. TEMU = teMu
-2. dic.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)
+dic.CompareMode = vbTextCompare '대소문자 구분 안함, 선언직후
+dic.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)
 
-[key 와 item 추가 방법, Add 방식과 item 대입방식]
-1. dic.Add "abc", 1 → key:abc, item:1
-    Add 방식은 존재하는 key 이면 error 
-2. dic("abc") = 1  → key:abc, item:1 
-    이 방식은 존재하는 key 이면 key를 덮어쓴다. 
-    item 값을 기존값을 사용할 수 있다. 카운트나 문자열 묶음 등 
-    없는것의 item이 0으로 인식된다. 
-    dic("abc") = dic("abc") + 1 </pre>
-        <h6 class="fw-bold">Add 방식이 빠르지만 신경이 쓰이므로 값 대입 방식으로 하자. </h6>
-        <h6 class="fw-bold">값 대입 방식에서 속도, item에 Empty를 대입하면 빠르다. </h6>
-        <pre class="fw-bold">
-1. key만 있으면 될 때, Item 값에 나온 횟수를 카운트할때
-    Dim dic As Object
-    Set dic = CreateObject("Scripting.Dictionary")
-    dic.CompareMode = vbTextCompare '대소문자 구분 없으면 빠른 모드
-    For 반복 = 1 To 배열크기 '배열(반복,1)는 BL번호
-        1) 대입방식 : If v &#60;> "" Then dic(배열(반복,1)) = Empty
-        2) 대입방식 : If v &#60;> "" Then dic(배열(반복,1)) = dic(배열(반복,1)) + 1
-           - 카운트할때, 없는것의 item이 0으로 인식된다.
-    Next
+2. Type 선언에서 : dic As Object 
+   Type 설정에서 : Set d.dic = CreateObject("Scripting.Dictionary")
 
-2. 카운트가 아닌 결과 문자열을 모을때 
-    For 반복 = 1 To 배열크기 '배열(반복,1)는 BL번호
-        컨번호 = 배열(반복,5)
-        BL번호 = 배열(반복,1)
-        If Not dict.Exists(BL번호) Then  '처음일때
-           dic(배열(반복,1)) = 컨번호 & "/" & 반복
-           Else '이미 있으면 추가
-           dic(배열(반복,1)) = dic(배열(반복,1)) & "," & 컨번호 & "/" & 반복
-        End If
-    Next
-        </pre>
+3. Dictionary → Collection → Array 방식
+   <span class="blueviolet">-이 구조가 VBA에서 유명한 구조라고 한다.</span>
+    Dictionary
+    ├─ Key : BL001 → Item : Collection - Add array 누적
+    ├─ Key : BL002 → Item : Collection - Add array 누적
+    └─ Key : BL003 → Item : Collection - Add array 누적
+   <span class="blueviolet">내부의 array는 ReDim(새로운 배열 생성) 후 넣어야 된다 (참조때문).</span>
+4. d(key) = d(key) + 1 → 카운팅, 처음일때 d(key) 가 플러스하면 0 으로 인식됨. 
+
+<span class="blueviolet">6. 코드짤때 참고, 배열의 첫번째 정보 </span> 
+  <span class="blueviolet">a) 범위를 배열로 변환한것은 1 → 이거만 유의하고 0 으로 보면 되겠다.</span>
+  b) 직접 지정한것은 유동적 : Dim 배열(3 To 10) → 3 
+  c) Array(1,2,3) → 0, Split("1,2,3",",") → 0
+  d) 인수 : ParamArray ItemCols() 의 ItemCols → 0
+
+<span class="blueviolet">5. 딕셔너리 순서보장 X 이지만 key, Item 을 몰라도 n 번째 요소 알 수 있다.</span> 
+   <span class="단어색칠">- 컬렉션 내부의 배열의 크기를 미리 알고 싶었다. 루프에서 매번 확인 비효율</span> 
+   - dict.Keys() : key 를 배열로 반환, dict.Keys()(0)  → 첫번째 키
+   - dict.Items() : Item 을 배열로 반환, dict.Items()(0)  → 첫번째 Item 
+   - Item이 Collection이고 내부에 배열들이 있을때 첫번째 배열 
+     → dict.Items()(0) = Collection객체
+     → dict.Items()(0)(1) = Collection객체의 1번째 요소(이건 배열이 아닌듯 1부터) = 배열
+     → Ubound(dict.Items()(0)(1),1) : 이 값 + 1 을 하면 배열의 크기
+
+<span class="blueviolet">6. 딕셔너리 반환 함수의 함수 진행, 쉽게 이해해두자</span> 
+   - 객체생성 - 범위셑팅 - 범위 돌면서 key와 Item 셑팅, 이게 끝이다. 
+   <span class="blueviolet">[알아야할 개념들, 거의 고정적인 루틴이다]</span>
+   a) Set dict(key) = New Collection : Item 으로 빈 컬렉션 설정 
+   b) a)에서 "dict(key)=컬렉션객체" 컬렉션 객체는 Add 로 값을 넣는다.
+       dict(key).add array(1,2,3)
+  </pre>
       </div>
       <div>
         <pre class="fw-bold">
-3. 2.의 형식을 개선한 것이 Dictionary → Collection → Array 방식
-    <span class="blueviolet">-이 구조가 VBA에서 유명한 구조라고 한다.</span>
-    - 핵심 구문, 딕셔너리의 Item 은 Variant 형식이다. 객체도 된다는 말.
-    If BL값 <> "" Then 
-       If Not dict.Exists(BL값) Then 
-          1) Set dict(BL값) = New Collection
-             - 처음등장시 빈 Collection 객체를 Item에 넣는다.
-             - Dim 없이 Set : Set 은 변수에 객체를 대입할떄 쓰는것
-             - 변수 = New Collection 가능. 컬렉션의 구성원(자료)은 variant
-             - 이후 컬랙션변수.add 자료(배열이든 문자열이든)로 추가
-       End If 
-       'If 구문을 벗어난 상태에는 dict(BL값)은 컬랙션 객체라는 보장이 있다.
-       2) dict(BL값).Add Array(컨NO, 반복) 
-          <span class="blueviolet">- ★★ Add할때 같은 열의 여러정볼르 담아둘수 있겟다.★★</span> 
-          - 컬랙션에 자료 추가, dict(BL값)=Item=Collection 객체
+<span class="blueviolet">7. Dictionary → Collection → Array 방식 (요소 추가구문)</span> <span class="단어색칠">3.구조 참고</span> 
+    If key &#60;> "" Then
+        If Not d.Exists(key) Then
+            Set d(key) = New Collection
+        End If 
+        <span class="blueviolet">'if문 벗어나면 컬랙션은 이미 있는 상태를 보장한다.</span>
+        '------ 추가할 정보 편집 "컬랙션구성원배열"-----
+        d(key).Add 컬랙션구성원배열
     End If
-
-    Dictionary
-    ├─ Key : BL001 → Item : Collection
-    ├─ Key : BL002 → Item : Collection
-    └─ Key : BL003 → Item : Collection
-    1️⃣ Dictionary에 BL값 Key가 없으면 2️⃣ 새로운 Collection 객체를 만들고
-    3️⃣ 그것을 Dictionary의 Item으로 저장
-
-    - 같은 BL값이 올때 Collection에 누적
-    Dictionary
-    │
-    ├── BL001
-    │      Collection
-    │        ├ Array(C01,1)
-    │        ├ Array(C03,3)
-    │        └ Array(C04,4)
-    │
-    └── BL002
-          Collection
-            └ Array(C02,2)
-
-4. 컬랙션 구성원 가지고 올때, 개수는 컬랙션객체.count
-    Dim col As Collection
-    Set col = dict(BL)
-    - 접근 : col(몇번째) → 두개 정보를 담은 배열일것이다, 값이면 그대로 써도 될것이다.
-             col(몇번째)(0)
-    - 몇번째 부분은 1부터(순번), 다음 0 은 앞의 정보가 배열이라서 그렇다.
 
         </pre>
       </div>
@@ -8019,6 +7986,31 @@ Gemini의 응답
         </pre>
       </div>
     </div>
+    
+    <div id="트리형식그리기필요한문자열" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold"> </h6>
+
+        <pre class="fw-bold">
+
+
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+        
         
         
     <div id="엑셀_질문샘플1" class="대체3줄">
@@ -23574,6 +23566,36 @@ SF 클레이메이션 고양이
             &#60;/pre>
           &#60;/div>
         &#60;/div></pre>
+        <div class="가로pre여러개div">
+          <pre style="line-height: 20px;">
+            style="line-height: 20px;"
+● 루트
+├ ○ 노드1
+│  ├───── ○ 노드1-1
+│  └ ○ 노드1-2
+└ ○ 노드2
+   ├ ○ 노드2-1
+   └ ○ 노드2-2
+          </pre>
+          <pre>
+┌  ┌────────┐  └────┬────┘  ┬
+└  
+┴
+
+          </pre>
+        </div>
+        <div class="가로pre여러개div">
+          <pre style="line-height: 14px;">
+            style="line-height: 14px;"
+● 루트
+├ ○ 노드1
+│  ├───── ○ 노드1-1
+│  └ ○ 노드1-2
+└ ○ 노드2
+   ├ ○ 노드2-1
+   └ ○ 노드2-2
+          </pre>
+        </div>
       </div>
 
 
