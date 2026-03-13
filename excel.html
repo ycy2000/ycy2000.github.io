@@ -1070,12 +1070,54 @@ Sub 연습()
     For 반복 = LBound(배열, 1) To UBound(배열, 1)
         Debug.Print 배열(반복)
     Next
-End Sub
+End Sub</pre>
+        <h6 class="fw-bold">ItemCols() 에 array(1,2,3) 또는 배열인 변수를 넣어도 됨 </h6>
+        <h6 class="fw-bold">DICT 용도 정리해보자  </h6>
+        <pre class="fw-bold">
+• DICK_뿌리는StCon As Object '컨번호만
+  - FN_DictReturn(stName, conCol)
+• DICK_DOBL As Object 'BL번호만
+  - FN_DictReturn(stName, BLCol)
+• DICK_배차 As Object 'BL번호만
+  - FN_DictReturn(stName, BLCol)
+• DICK_뿌리는StBL번호 As Object 'Key:BL번호, Item:개수
+  - FN_DictReturn(stName, BLCol)
+  - Item개수 : d(key).count(컬랙션 요소 개수), d(key)=컬랙션 
+• DICK_예정컨_물품또는수량처리용 As Object 'Key:컨번호, Item:"수량,AU다리살"
+  - FN_DictReturn("예정", conCol, 수량Col, 품명Col)
+
+<span class="단어색칠">[단독컨 정보 한줄 추가]  </span> 
+
+
+
+  ''''이거 다른부분에 설명하는것이다
+  a) 뿌리는St : 입항관리, 추출St : 리스트 일때 
+     - 리스트 구분이 1 일때 수량, 1이 아닐때 품명 
+  b) 뿌리는St : 리스트, 추출St : 입항관리 일때 
+     1) 입항관리에 수량이면, 리스트 시트에 수량, 품명은 없다 
+     2) 입항관리에 품명이면, 리스트에 수량 없고, 품명만 가지고옴. ++ 
+        후속작업 : 입항관리에 컨번호가 있으면 수량과 AU다리살 갖고옴 
+
+FN_DictReturn("리스트", 5, 3, 4, 6, "행값")
+
+
+
+
+
+
+
+[리스트박스 1BL 클릭시]
+  1) 리스트박스의 목록은 단독컨추출결과 이다. 그 LST를 클릭하면 
+     <span class="blueviolet">콤보박스에 뿌리는St에 같은 BL이 있으면 개수만큼 컨번호와 ROW 값을 넣어야되는데.....</span> 
+  2) 필요한 딕셔너리 : FN_DictReturn(뿌리는St, BLCol, conCol, "행값")
+     - 컬렉션에 Array(컨번호1, 행값), Array(컨번호2, 행값)... 
+     - 가져와서 2차원배열로 만들어서 Lst.list=arr 전달 
+
+
 
 
 
         </pre>
-        <h6 class="fw-bold">ItemCols() 에 array(1,2,3) 또는 배열인 변수를 넣어도 됨 </h6>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
