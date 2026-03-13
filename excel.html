@@ -103,9 +103,28 @@
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
   <div id="엑셀" class="d-none 캔버스">
+    <div class="개별카테고리" id="통합적용">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold" title="성능배열첫정보SET">성능, 배열첫정보, Set 관련 개념 정리</h6>
+        <h6 class="fw-bold" title="궁극적으로데이터조회">딕셔너리 사용법. 궁극적으로 Dictionary → Collection → Array</h6>
+        <h6 class="fw-bold" title="궁극적으로데이터조회후속">딕셔너리를 만들면 반드시 필요해질거라고 하는 4종 챗gpt</h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold" title="통합적용설계">통합적용 구조 설계 메모</h6>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
     <div class="개별카테고리" id="질문방법">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold" title='통합적용_질의응답1'>질의응답1 : 의존성, 항상 의존성이 문제다.</h6>
+        <h6 class="fw-bold" title='통합적용_개선1'>질의응답1 개선방법</h6>
+        <h6 class="fw-bold" title='트리형식그리기필요한문자열'>트리형식그리기필요한문자열</h6>
         <h6 class="blueviolet fw-bold" title='사고방법_gpt경향1'>리뷰, 리펙토링, 분석, 기본 모드(코칭), 분석 모드(확장 최소), 설계 모드(구조 제안)</h6>
         <h6 class="blueviolet fw-bold" title='사고방법_gpt_개요'>gpt경향 : 맥락을 잃는 경우, 작동보장에 근접하는 질문</h6>
         <h6 class="blueviolet fw-bold" title='사고방법_gpt_현실적조언'>gpt경향 : 현실적 조언, 멘토역할을 기대한다면 (지금단계 현실적 조언 해달라고 해) </h6>
@@ -150,7 +169,7 @@
         <h6 class="fw-bold" title="클래스모듈">클래스모듈 = 자료형 Type 구조체와 사용법 유사</h6>
         <h6 class="fw-bold" title="폼컨트롤용클래스모듈">폼 커맨드버튼 클릭이벤트 관련 "클래스 모듈" 사용법</h6>
         <h6 class="fw-bold" title="배열사용법">배열사용법. Array, Split, Dim 배열 As Variant, Dim 배열(1 To 3, 1 To 4) As ...</h6>
-        <h6 class="fw-bold" title="궁극적으로데이터조회">딕셔너리 사용법. 궁극적으로 Dictionary → Collection → Array</h6>
+
         <h6 class="fw-bold blueviolet" title="책임분리연습1">책임분리부터 어렵다. 예시가 되는지 메모!</h6>
         <h6 class="fw-bold blueviolet" title="계층책임분리및네이밍필요">계층분리, 책임분리 및 네이밍 필요</h6>
         <h6 class="fw-bold blueviolet" title="궁극적으로데이터조회_사용1">실제 사용 예제 : Dictionary → Collection → Array</h6>
@@ -162,21 +181,7 @@
 
       </div>
     </div>
-    <div class="개별카테고리" id="통합적용">
-      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
-      <div>
-        <h6 class="blueviolet fw-bold">========== 통합적용 리뉴얼하면서 개선방향등 메모 ========== </h6>
-        <h6 class="fw-bold" title='통합적용_질의응답1'>질의응답1 : 의존성, 항상 의존성이 문제다.</h6>
-        <h6 class="fw-bold" title='통합적용_개선1'>질의응답1 개선방법</h6>
 
-      </div>
-      <div>
-        <h6 class="fw-bold" title='트리형식그리기필요한문자열'>트리형식그리기필요한문자열</h6>
-      </div>
-      <div>
-
-      </div>
-    </div>
     <div class="개별카테고리" id="코드질문">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
@@ -889,7 +894,207 @@
 
 <!-- 모든 ID-->
 <div class="d-none 모든id모음"><!-- 아래 : 순서관계없지만, div(캔버스별로 title표시후 감싸거나, 그냥 감싸거나) 안에 div(id)들어가도록 -->
-  <div title="엑셀">      
+  <div title="엑셀">
+    <div id="성능배열첫정보SET" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">객체 설정은 Set 사용 : Range범위, 컬랙션, 딕셔너리 등 </h6>
+        <pre class="fw-bold">
+1. Dim dic As Variant : Variant 선언시 변수에 객체가 담길때 
+   <span class="blueviolet">- a) b)는 정확하게는 Dim dic As Object</span> 
+   a) Set dic = CreateObject("Scripting.Dictionary") → 딕셔너리 객체
+   b) Set col = New Collection  → Collection 객체
+   - Varant 가 어떤자료인지 파악하면서 Object 객체이면 Set 을 요구한다.</pre>
+          <h6 class="fw-bold blueviolet">성능 : 범위를 배열로 변환하여 쓰면 일단 빠르다. </h6>
+   <pre class="fw-bold">
+1. Range 객체에 직접 접근시 상당히 느리다. 
+   - Sheets("리스트").Range("A1").Offset(1,2).Value 
+   - 점(.)마다 함수호출이 내부에서 이루어진다. Range 객체에 접근 느림 x 점(.) 마다 누적 
+
+2. 코딩시 1.의 점(.)의 설명과 유사한 관점에서 자꾸 사용되는 것이라면 
+   - 변수에 담아서 사용하기. 한번 사용이라도 변수에 담으면 빠르다? 
+
+3. WorksheetFunction 상당히 느리다. 딕셔너리 사용 고려
+
+4. <span class="blueviolet">엑셀에서는</span> 자료준비, 조회, 수집 과정에서 <span class="blueviolet">필연적으로 시트 및 범위에 접근</span>하게 된다.
+   - <span class="blueviolet">시트 접근은 엑셀 프로그램에서 함수실행.</span> 점으로 세부 접근또한 함수실행
+   - 시트에 값 기록, 실시간 계산 등은 더 큰 작업 
+   - 시트 선택시 시트에 이벤트라도 걸려있으면 이벤트가 실행됨 
+   - WorksheetFunctoin 도 아주 무거운 작업 (1회 사용이라도 딕셔너리 만드는게 낫다)
+
+   [위와 같은 이유로 성능관점에서는 다음을 사용하는 것이 좋다 <span class="단어색칠">시트 접근 최소화</span> ]
+   a) 계산, 갱신, 이벤트 중지 적절히 사용 후 되돌리기
+      Application.ScreenUpdating = False 'True
+      Application.Calculation = xlCalculationManual 'xlCalculationAutomatic
+      Application.EnableEvents = False 'True 폼이벤트 아님. 시트 change 등 이벤트
+
+   b) 범위를 배열로 변환하여 사용    - 개수파악은 딕셔너리 사용 
+     - 특정정보(key)에 연관정보(Item) 저장도 딕셔너리 사용 
+     - 딕셔너리가 활용이 범용적이고 많다. 이정도면 성능걱정 x </pre>
+
+      </div>
+      <div>
+          <h6 class="fw-bold blueviolet">Range → Array → Dictionary → Array → Range 구조 유지 (가장 중요)</h6>
+          <pre class="fw-bold">
+이미 하고 계신 방식입니다. 좋은 구조
+
+Sheet         
+  ↓
+Range.Value      : 사용할 범위를
+  ↓                       │
+vData (Array)     : 배열에 담기(이 범위에 대한 시트접근 1회로 종료)
+  ↓
+Dictionary 처리   : 배열에서 key와 Item 추출
+  ↓
+Result Array       : 추출결과를 배열로 반환
+  ↓
+Range.Value       : 배열을 시트에 출력(시트 접근)
+
+
+
+
+
+          </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="궁극적으로데이터조회" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">딕셔너리 : "key 에 대응하는 Item 의 묶음"을 담는 객체, key 와 Item 모두 Variant</h6>
+        <pre class="fw-bold">
+1. 객체 생성, key 검증 방식 설정
+Dim dic As Object
+Set dic = CreateObject("Scripting.Dictionary")
+dic.CompareMode = vbTextCompare '대소문자 구분 안함, 선언직후
+dic.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)
+
+2. key 와 Item 넣는 방식 
+   a) dic.add key, Item : 존재하는 key 일때 에러
+   b) dic(key) = Item : 존재하는 key 일때 덮어씀
+       dic(key) = dic(key) + 1 : 생선 전일때 숫자를 더하면 0 으로 인식 (카운트 활용)
+
+<span class="blueviolet">3. 딕셔너리 순서보장 X 이지만 key, Item 을 몰라도 n 번째 요소 알 수 있다.</span> 
+   <span class="단어색칠">- 컬렉션 내부의 배열의 크기를 미리 알고 싶었다. 루프에서 매번 확인 비효율</span> 
+   - dict.Keys() : key 를 배열로 반환, dict.Keys()(0)  → 첫번째 키
+   - dict.Items() : Item 을 배열로 반환, dict.Items()(0)  → 첫번째 Item 
+   - Item이 Collection이고 내부에 배열들이 있을때 첫번째 배열 
+     → dict.Items()(0) = Collection객체
+     → dict.Items()(0)(1) = Collection객체의 1번째 요소(이건 배열이 아닌듯 1부터) = 배열
+     → Ubound(dict.Items()(0)(1),1) : 이 값 + 1 을 하면 배열의 크기
+
+3. Dictionary → Collection → Array 방식
+   <span class="blueviolet">-이 구조가 VBA에서 유명한 구조라고 한다.</span>
+    Dictionary
+    ├─ Key : BL001 → Item : Collection - Add array 누적
+    ├─ Key : BL002 → Item : Collection - Add array 누적
+    └─ Key : BL003 → Item : Collection - Add array 누적
+   <span class="blueviolet">내부의 array는 ReDim(새로운 배열 생성) 후 넣어야 된다 (참조때문).</span>
+4. d(key) = d(key) + 1 → 카운팅, 처음일때 d(key) 가 플러스하면 0 으로 인식됨. 
+
+<span class="blueviolet">5. 딕셔너리 반환 함수의 함수 진행, 쉽게 이해해두자</span> 
+   - 객체생성 - 범위셑팅 - 범위 돌면서 key와 Item 셑팅, 이게 끝이다. 
+   <span class="blueviolet">[알아야할 개념들, 거의 고정적인 루틴이다]</span>
+   a) Set dict(key) = New Collection : Item 으로 빈 컬렉션 설정 
+   b) a)에서 "dict(key)=컬렉션객체" 컬렉션 객체는 Add 로 값을 넣는다.
+       dict(key).add array(1,2,3)
+  </pre>
+      </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">7. Dictionary → Collection → Array 방식 (요소 추가구문)</span> <span class="단어색칠">3.구조 참고</span> 
+    If key &#60;> "" Then
+        If Not d.Exists(key) Then
+            Set d(key) = New Collection
+        End If 
+        <span class="blueviolet">'if문 벗어나면 컬랙션은 이미 있는 상태를 보장한다.</span>
+        '------ 추가할 정보 편집 "컬랙션구성원배열"-----
+        <span class="blueviolet">d(key).Add 컬랙션구성원배열</span> 
+        'd(key)도 배열값을 lookup 하는 동작이 있으므로 별도의 변수에 넣어서. 변수.add 가 낫다.
+    End If
+
+    ------ 가독성 개선 및 접근단계 1단계 줄인 코드 ------
+    <span class="blueviolet">Dim 컬랙션 As Object </span>'컬랙션을 담을 별도의 함수 선언
+    If key &#60;> "" Then
+        If Not d.Exists(key) Then
+            Set d(key) = New Collection
+            <span class="blueviolet">Set 컬랙션 = d(key)</span>
+        End If 
+        '------ 추가할 정보 편집 "컬랙션구성원배열"-----
+        <span class="blueviolet">컬랙션.Add 컬랙션구성원배열</span> 
+    End If
+    ─────────────────────────────────────────
+6️⃣ VBA 고수들이 거의 항상 쓰는 패턴
+      데이터 저장 : Dictionary
+                                └ Collection
+                                      └ Array
+      데이터 반환 → 2D Array 왜냐하면 Excel Range.Value가 2D Array이기 때문입니다.
+
+7️⃣ 그래서 최종 구조(흐름)는 보통 이렇게 됩니다
+      Sheet → Array → Dictionary 그룹화 → Collection 저장 → 
+              Array 가공 → 2D Array 반환 → Sheet 출력
+      이게 VBA 데이터 처리의 정석 구조입니다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+        <pre class="fw-bold">
+
+        </pre>
+        <h6 class="fw-bold">딕셔너리 순회 </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>  
+    <div id="통합적용설계" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">배열을 받아서 두개 정보 넣어서 반환 (품명또는수량)   </h6>
+        <pre class="fw-bold">
+Function 제안(배열 As Variant) As Variant
+   배열(0) = "0"
+   배열(4) = "4"
+   제안 = 배열
+End Function
+Sub 연습()
+    Dim 배열 As Variant
+    ReDim 배열(0 To 4)
+    배열 = 제안(배열)
+    Dim 반복 As Long
+    For 반복 = LBound(배열, 1) To UBound(배열, 1)
+        Debug.Print 배열(반복)
+    Next
+End Sub
+
+
+
+        </pre>
+        <h6 class="fw-bold">ItemCols() 에 array(1,2,3) 또는 배열인 변수를 넣어도 됨 </h6>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+        
+
+        
+
+            
     <div id="사고방법_gpt경향1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -5437,85 +5642,7 @@ Private Sub UserForm_Initialize()
 
       </div>
     </div>
-    <div id="궁극적으로데이터조회" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold blueviolet">딕셔너리 선언법 비교, key 와 Item 모두 Variant</h6>
-        <pre class="fw-bold">
-1. 정석
-Dim dic As Object
-Set dic = CreateObject("Scripting.Dictionary")
-dic.CompareMode = vbTextCompare '대소문자 구분 안함, 선언직후
-dic.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)
 
-2. Type 선언에서 : dic As Object 
-   Type 설정에서 : Set d.dic = CreateObject("Scripting.Dictionary")
-
-3. Dictionary → Collection → Array 방식
-   <span class="blueviolet">-이 구조가 VBA에서 유명한 구조라고 한다.</span>
-    Dictionary
-    ├─ Key : BL001 → Item : Collection - Add array 누적
-    ├─ Key : BL002 → Item : Collection - Add array 누적
-    └─ Key : BL003 → Item : Collection - Add array 누적
-   <span class="blueviolet">내부의 array는 ReDim(새로운 배열 생성) 후 넣어야 된다 (참조때문).</span>
-4. d(key) = d(key) + 1 → 카운팅, 처음일때 d(key) 가 플러스하면 0 으로 인식됨. 
-
-<span class="blueviolet">6. 코드짤때 참고, 배열의 첫번째 정보 </span> 
-  <span class="blueviolet">a) 범위를 배열로 변환한것은 1 → 이거만 유의하고 0 으로 보면 되겠다.</span>
-  b) 직접 지정한것은 유동적 : Dim 배열(3 To 10) → 3 
-  c) Array(1,2,3) → 0, Split("1,2,3",",") → 0
-  d) 인수 : ParamArray ItemCols() 의 ItemCols → 0
-
-<span class="blueviolet">5. 딕셔너리 순서보장 X 이지만 key, Item 을 몰라도 n 번째 요소 알 수 있다.</span> 
-   <span class="단어색칠">- 컬렉션 내부의 배열의 크기를 미리 알고 싶었다. 루프에서 매번 확인 비효율</span> 
-   - dict.Keys() : key 를 배열로 반환, dict.Keys()(0)  → 첫번째 키
-   - dict.Items() : Item 을 배열로 반환, dict.Items()(0)  → 첫번째 Item 
-   - Item이 Collection이고 내부에 배열들이 있을때 첫번째 배열 
-     → dict.Items()(0) = Collection객체
-     → dict.Items()(0)(1) = Collection객체의 1번째 요소(이건 배열이 아닌듯 1부터) = 배열
-     → Ubound(dict.Items()(0)(1),1) : 이 값 + 1 을 하면 배열의 크기
-
-<span class="blueviolet">6. 딕셔너리 반환 함수의 함수 진행, 쉽게 이해해두자</span> 
-   - 객체생성 - 범위셑팅 - 범위 돌면서 key와 Item 셑팅, 이게 끝이다. 
-   <span class="blueviolet">[알아야할 개념들, 거의 고정적인 루틴이다]</span>
-   a) Set dict(key) = New Collection : Item 으로 빈 컬렉션 설정 
-   b) a)에서 "dict(key)=컬렉션객체" 컬렉션 객체는 Add 로 값을 넣는다.
-       dict(key).add array(1,2,3)
-  </pre>
-      </div>
-      <div>
-        <pre class="fw-bold">
-<span class="blueviolet">7. Dictionary → Collection → Array 방식 (요소 추가구문)</span> <span class="단어색칠">3.구조 참고</span> 
-    If key &#60;> "" Then
-        If Not d.Exists(key) Then
-            Set d(key) = New Collection
-        End If 
-        <span class="blueviolet">'if문 벗어나면 컬랙션은 이미 있는 상태를 보장한다.</span>
-        '------ 추가할 정보 편집 "컬랙션구성원배열"-----
-        d(key).Add 컬랙션구성원배열
-    End If
-
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"></h6>
-        <pre class="fw-bold">
-- 결과를 배열에 담아서 콤보박스.list에 배열을 전달. 
-    Dim 결과Arr() As Variant
-    Dim i As Long
-    ReDim 결과Arr(1 To col.Count, 1 To 2)
-    For i = 1 To col.Count
-        결과Arr(i, 1) = col(i)(0)
-        결과Arr(i, 2) = col(i)(1)
-    Next
-    f.ComboBox1.List = 결과Arr
-        </pre>
-        <h6 class="fw-bold">딕셔너리 순회 </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-    </div>
     <div id="책임분리연습1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -23597,11 +23724,18 @@ SF 클레이메이션 고양이
           </pre>
         </div>
       </div>
+      <div>
+        <pre class="fw-bold">
+<span class="blueviolet">6. 코드짤때 참고, 배열의 첫번째 정보 </span> 
+  <span class="blueviolet">a) 범위를 배열로 변환한것은 1 → 이거만 유의하고 0 으로 보면 되겠다.</span>
+  b) 직접 지정한것은 유동적 : Dim 배열(3 To 10) → 3 
+  c) Array(1,2,3) → 0, Split("1,2,3",",") → 0
+  d) 인수 : ParamArray ItemCols() 의 ItemCols → 0
+        </pre>
 
+        <br><br><br><br><br><br><br>
 
-
-
-      
+      </div>
       <div>
         <h6 class="fw-bold">기본 font-size 16px 기준</h6>
         <h6 class="fw-bold">P, ol, ul  : padding-left : 32px, margin-bottom : 16px </h6>
@@ -23626,7 +23760,15 @@ SF 클레이메이션 고양이
         <pre class="fw-bold">
 의미 정리 : 순서대로. 있는것 적용 마지막꺼를 fallback이라고 하는데 
 시스템에 무조건? 있는 글꼴이라서 최후의 보험용이다.        </pre>
-        <br><br><br><br><br><br><br>
+        <h6 class="fw-bold" style="font-family: serif;">fallback : os기본(앞에꺼 없을때 마지막적용 보험용)</h6>
+        <h6 class="fw-bold" style="font-family: serif;">1) serif, 획 끝에 장식 있음 (명조 계열) 책, 에세이, 기사, 장문</h6>
+        <h6 class="fw-bold" style="font-family: 'Noto Serif KR';margin-left:15px;">'Noto Serif KR' 명조계열</h6>
+        <h6 class="fw-bold" style="font-family: sans-serif;">2) sans-serif 장식 없는 고딕 계열, 웹 UI, 블로그, 본문, 화면 가독성 최고</h6>
+        <h6 class="fw-bold" style="font-family: 'Noto Sans KR';margin-left:15px;">'Noto Sans KR' 고딕계열</h6>
+        <h6 class="fw-bold" style="font-family: Pretendard;margin-left:15px;">'Pretendard' 고딕계열</h6>
+        <h6 class="fw-bold" style="font-family: monospace;">3) bold, monospace, 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 class="fw-bold" style="font-family: 'D2Coding';margin-left:15px;">bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
+        <h6 style="font-family: 'D2Coding';margin-left:15px;">no bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
         <h6 class="fw-bold">📝 한국 블로그용 글쓰기 CSS 추천</h6>
         <table class="table-bordered thtd패딩" style="font-size:14px;font-weight: bold;">
           <tr><th>용도</th><th>font-family (Fallback 포함)</th><th>제목</th><th>본문</th><th>LH</th><th>용도</th></tr>
@@ -23637,28 +23779,7 @@ SF 클레이메이션 고양이
           <tr><th>code, pre</th><td>'D2Coding', monospace</td><td>24</td><td>15.5</td><td>1.7</td><td>코드 블록 포함, 깔끔한 기술 문서용</td></tr>
         </table>
       </div>
-      <div>
-        <h6 class="fw-bold" style="font-family: serif;">fallback : os기본(앞에꺼 없을때 마지막적용 보험용)</h6>
-        <h6 class="fw-bold" style="font-family: serif;">1) serif, 획 끝에 장식 있음 (명조 계열) 책, 에세이, 기사, 장문</h6>
-        <h6 class="fw-bold" style="font-family: 'Noto Serif KR';margin-left:15px;">'Noto Serif KR' 명조계열</h6>
-        <h6 class="fw-bold" style="font-family: sans-serif;">2) sans-serif 장식 없는 고딕 계열, 웹 UI, 블로그, 본문, 화면 가독성 최고</h6>
-        <h6 class="fw-bold" style="font-family: 'Noto Sans KR';margin-left:15px;">'Noto Sans KR' 고딕계열</h6>
-        <h6 class="fw-bold" style="font-family: Pretendard;margin-left:15px;">'Pretendard' 고딕계열</h6>
-        <h6 class="fw-bold" style="font-family: monospace;">3) bold, monospace, 고정폭, 코드, 터미널, 표 정렬</h6>
-        <h6 class="fw-bold" style="font-family: 'D2Coding';margin-left:15px;">bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
-        <h6 style="font-family: 'D2Coding';margin-left:15px;">no bold, 'D2Coding' 고정폭, 코드, 터미널, 표 정렬</h6>
 
-        <br>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
     </div>
     <div id="코드_임시정보" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
