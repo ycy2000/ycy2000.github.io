@@ -115,6 +115,7 @@
         <h6 class="fw-bold" title="기능중심불핌요함수생성예시">기능중심 → 불필요한 함수 생성 → 복잡도 증가 예시 </h6>
         <h6 class="fw-bold blueviolet" title="딕셔너리디버깅코드">★ 딕셔너리 디버깅 코드 ★</h6>
         <h6 class="fw-bold blueviolet" title="딕셔너리엔진만든거">★ 딕셔너리 엔진 만든거 FN_DictBuild, Dictionary → Collection → Array ★</h6>
+        <h6 class="fw-bold blueviolet" title="딕셔너리엔진진짜는이거">★ 딕셔너리 새로 만들고 있음 ★</h6>
         <h6 class="fw-bold" title="딕셔너리후속필요해질4종">★ 딕셔너리 활용 확장 : 딕셔너리를 만들면 반드시 필요해질거라고 하는 4종 챗gpt ★ </h6>
         <h6 class="fw-bold" title="콜랙션을2DArray로변환">★ 딕셔너리에 있는 콜랙션을 2DArray로 변환 → 시트,폼에 뿌림★ </h6>
         <h6 class="fw-bold blueviolet" title="딕셔너리사용법">1) 딕셔너리 사용법. 엑셀은 궁극적으로 Dictionary → Collection → Array</h6>
@@ -1190,6 +1191,51 @@ End Function
 
       </div>
     </div>
+    
+    <div id="딕셔너리엔진진짜는이거" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">작성중인 함수 : FN_DictBuild 이것은 딕셔너리를 만드는 함수이다. </h6>
+        <pre class="fw-bold">
+Function FN_DictBuild( stName As String, _ 
+                                      Key1 As Long, key2 As Long, key3 As Long, 
+                                      ParamArray ItemCols()) As Object
+<span class="단어색칠">[작동 설명]</span> 
+1.stName 
+  - 입항관리 시트에서 
+
+2.key1, key2, key3 : 0 이면 공백이고 숫자면 vData에서 값을 가져옴 
+  - key = key1 & key2 & key3, 보통 하나 지정한다. 컨이나 BL 열 
+
+3.ItemCols : 종적으로 저장될 배열의 개수만큼 숫자 또는 문자열을 넣는다. 
+  - 폼용은 7개, 시트용은 15개(리스트용) 또는 12개(입항관리용) 
+  - 보통 여긴 하나만 들어가는 경우 많음. 
+  - 아무것도 안 넣으면 코드 내에서 하나 넣어줌 
+  <span class="blueviolet">- 0 을 넣으면 빈값이 저장된다. 목적시트의 칸수에 맞춘것 
+     추출하여 옮길 것이 없으면 호출할때 0 넣으면 된다.</span>
+
+<span class="단어색칠">[단독컨 추출 관련 함수에서]</span> 
+1.FN_DictBuild 이 함수를 이용하여 여러 딕셔너리를 만들어 사용하게 된다. 
+
+2.추출시트용이 인수가 길어진다. 
+
+3.BL개수는 "단독컨 추출 관련 함수"에서 구현하는 것이다. 
+  FN_DictBuild 이 함수는 하나의 시트의 정보만 보고 추출하는것이다.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
     <div id="딕셔너리후속필요해질4종" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
@@ -1924,15 +1970,202 @@ Configuration Object
     <div id="구조표현관련메모" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <div class="가로pre여러개div테두리없음">
+          <pre>
+3️⃣ 데이터 흐름 구조도
 
+Excel 처리 흐름은 
+보통 이렇게 됩니다.
 
-        
+Excel Sheet
+    ↓
+Sheet → Array
+    ↓
+Array → Dictionary
+    ↓
+Dictionary Processing
+    ↓
+Dictionary → Array
+    ↓
+Array → Sheet
+
+즉
+
+Excel
+ ↓
+Array
+ ↓
+Dictionary
+ ↓
+Array
+ ↓
+Excel
+
+이 패턴을 기억하면 거의 
+모든 코드를 이해할 수 있습니다.
+          </pre>
+          <pre>
+4️⃣ 가장 중요한 엔진
+FN_DictBuild
+
+이 함수 하나가 사실상 전체 시스템의 시작점입니다.
+
+구조
+
+FN_DictBuild
+
+    Excel Sheet
+        ↓
+    Array 로딩
+        ↓
+    Key 생성
+        ↓
+    Dictionary 생성
+        ↓
+    Collection 생성
+        ↓
+    Array 데이터 저장
+
+트리
+
+FN_DictBuild
+    ├ Read Sheet
+    ├ Create Dictionary
+    ├ Loop Rows
+    │     ├ Create Key
+    │     ├ Ensure Collection
+    │     └ Add Row Array
+    └ Return Dictionary
+          </pre>
+        </div>
+        <div class="가로pre여러개div테두리없음">
+          <pre>
+5️⃣ 그 다음 단계
+
+이제 모든 함수는 이 Dictionary를 
+입력으로 받습니다.
+
+예
+
+GroupBy
+FN_DictGroupBy
+
+Dictionary
+   ↓
+새로운 Key 생성
+   ↓
+새 Dictionary 생성
+Filter
+FN_DictFilter
+
+Dictionary
+   ↓
+조건 검사
+   ↓
+새 Dictionary 생성
+Sort
+FN_DictSort
+
+Dictionary
+   ↓
+Collection → Array
+   ↓
+Sort
+          </pre>
+          <pre>
+
+6️⃣ 실제 라이브러리 함수 트리
+FN_DictBuild
+    │
+    ├─ FN_DictGroupBy
+    │
+    ├─ FN_DictFilter
+    │
+    ├─ FN_DictJoin
+    │
+    ├─ FN_DictSort
+    │
+    ├─ FN_DictAggregate
+    │
+    └─ FN_DictToArray
+
+즉
+
+모든 함수는 FN_DictBuild 위에서 동작
+
+합니다.
+          </pre>
+        </div>
       </div>
       <div>
-        <h6 class="fw-bold"> </h6>
+        <div class="가로pre여러개div테두리없음">
+          <pre>
+9️⃣ 실제 프로젝트 규모
+
+이 구조로 보통 이렇게 됩니다.
+
+Utility Functions        30개
+Dictionary Functions     20개
+Domain Functions         10개
+Debug Functions          10개
+
+총 약 70개 함수 정도 됩니다.
+
+하지만 구조가 있기 때문에 관리가 됩니다.
+          </pre>
+          <pre>
+🔟 가장 중요한 깨달음 하나
+
+지금 이미 중요한 사실을 발견하셨습니다.
+
+코드를 이해하는 가장 빠른 방법은 구조도다
+
+정말 맞는 말입니다.
+
+고수들은 실제로 코드를 보기 전에
+
+Architecture Diagram
+
+을 먼저 그립니다.
+          </pre>
+        </div>
         <pre class="fw-bold">
-          
+마지막으로 하나만 말씀드리겠습니다
+
+지금 만드시는 구조는 사실 Excel을 작은 데이터베이스처럼 사용하는 구조입니다.
+
+그래서 다음 단계에서 보통 사람들이 이것을 만들게 됩니다.
+
+Excel Query Engine
+
+즉 이런 함수입니다.
+
+FN_Query( _
+    SheetName, _
+    KeyCol, _
+    Filter, _
+    GroupBy, _
+    Aggregate _
+)
+
+예를 들면
+
+"입항관리 시트에서
+BL번호 기준으로
+날짜 미정만 필터
+컨테이너 수 집계"
+
+이걸 함수 한 줄로 처리하는 구조입니다.
+
+원하시면 다음에 제가 진짜 VBA 고수들이 쓰는 Excel Query Engine 구조도를 하나 보여드리겠습니다.
+
+이걸 보면 아마 이런 생각이 드실 가능성이 큽니다.
+
+"아… 지금까지 만든 함수들이 전부 여기에 들어가는구나."
         </pre>
+        
+
+
       </div>
     </div>
         
@@ -6213,759 +6446,11 @@ Dictionary
     <div id="긴급메모6" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-아주 좋은 요청입니다.
-실제로 VBA에서 Dictionary → Collection → Array 구조를 쓰다 보면 말씀하신 문제가 거의 반드시 생깁니다.
-
-"데이터는 들어있는데 어떻게 꺼내는지 모르겠다"
-
-그래서 실무에서는 Debug Dump 함수를 하나 만들어 두고 계속 사용합니다.
-요청하신 기능 그대로 트리 형태로 시트에 출력하는 디버깅 함수를 만들어 드리겠습니다.
-
-1️⃣ 목표 출력 형태
-
-예를 들어 구조가
-
-Dictionary
-  "A001"
-      Collection
-         [1] Array
-              (1) 2024-01-01
-              (2) 500
-         [2] Array
-              (1) 2024-02-01
-              (2) 600
-  "B001"
-      Collection
-         [1] Array
-              (1) 700
-              (2) 800
-
-이걸 시트에 출력하면
-
-Dictionary
-    Key : A001
-        Collection[1]
-            (1) 2024-01-01
-            (2) 500
-        Collection[2]
-            (1) 2024-02-01
-            (2) 600
-    Key : B001
-        Collection[1]
-            (1) 700
-            (2) 800
-
-이렇게 오른쪽으로 트리 형태로 출력됩니다.
-
-2️⃣ 사용 방법
-
-예
-
-Dim d As Object
-Set d = FN_DictReturn("입항관리", 3, 13)
-
-Call U_DebugDumpDict(d, Range("A1"))
-
-출력 시작 위치
-
-A1
-3️⃣ 메인 디버그 함수
-Sub U_DebugDumpDict(d As Object, startCell As Range)
-
-    Dim r As Long
-    r = startCell.Row
-    
-    startCell.Value = "Dictionary"
-    
-    Dim key As Variant
-    
-    For Each key In d.Keys
-    
-        r = r + 1
-        
-        Cells(r, startCell.Column + 1).Value = "Key : " & key
-        
-        r = U_DebugDumpCollection(d(key), r, startCell.Column + 2)
-        
-    Next
-
-End Sub
-4️⃣ Collection 출력
-Function U_DebugDumpCollection(col As Collection, r As Long, c As Long) As Long
-
-    Dim i As Long
-    
-    For i = 1 To col.Count
-    
-        r = r + 1
-        
-        Cells(r, c).Value = "Collection[" & i & "]"
-        
-        If IsArray(col(i)) Then
-        
-            r = U_DebugDumpArray(col(i), r, c + 1)
-            
-        Else
-        
-            Cells(r, c + 1).Value = col(i)
-        
-        End If
-        
-    Next
-    
-    U_DebugDumpCollection = r
-
-End Function
-5️⃣ Array 출력
-Function U_DebugDumpArray(arr As Variant, r As Long, c As Long) As Long
-
-    Dim i As Long
-    
-    For i = LBound(arr) To UBound(arr)
-    
-        r = r + 1
-        
-        Cells(r, c).Value = "(" & i & ")"
-        Cells(r, c + 1).Value = arr(i)
-    
-    Next
-    
-    U_DebugDumpArray = r
-
-End Function
-6️⃣ 출력 예시 (실제 시트)
-A1 Dictionary
-B2 Key : BL001
-C3 Collection[1]
-D4 (1)     2024-02-01
-D5 (2)     500
-
-C6 Collection[2]
-D7 (1)     2024-02-02
-D8 (2)     700
-
-B9 Key : BL002
-C10 Collection[1]
-D11 (1)    2024-02-05
-D12 (2)    300
-7️⃣ 이 디버그 함수의 장점
-
-이 함수 하나로 다음을 모두 확인할 수 있습니다.
-
-Dictionary Key
-Collection 개수
-Collection 순서
-Array 값
-Array 인덱스
-
-즉 이런 문제를 바로 해결합니다.
-
-"내가 2번째 배열 3번째 값 넣었는데 왜 안나오지?"
-8️⃣ 디버깅할 때 정말 많이 쓰는 패턴
-
-실무에서는 보통 이렇게 합니다.
-
-Dim d As Object
-
-Set d = FN_DictReturn(...)
-
-Call U_DebugDumpDict(d, Sheets("Debug").Range("A1"))
-
-그러면 Debug 시트에 구조가 그대로 보입니다.
-
-9️⃣ 하나 더 알려드리면 (실무 팁)
-
-나중에는 이 함수가 이렇게 진화합니다.
-
-DebugDump
-    Dictionary
-    Collection
-    Array
-    Object
-
-즉 모든 객체를 자동으로 출력하는 범용 디버거가 됩니다.
-
-이제 약속드린 것
-
-다음으로 제가 보여드릴 것은 진짜 고수들이 쓰는 Dictionary 구조입니다.
-
-지금 구조
-
-Dictionary
-   Collection
-      Array
-
-이 구조를 속도 10배 빠르게 만드는 구조입니다.
-
-이 구조의 핵심은
-
-Collection 제거
-
-입니다.
-
-이 구조를 보면 아마 바로 이런 생각이 드실 겁니다.
-
-"아… 이걸 왜 지금까지 몰랐지?"
-
-원하시면 바로 이어서 속도 10배 구조 보여드리겠습니다.
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-좋습니다.
-이제 말씀드릴 구조는 VBA에서 데이터 처리 속도가 크게 올라가는 패턴입니다.
-특히 수천~수만 행 처리할 때 효과가 큽니다.
-
-핵심은 딱 하나입니다.
-
-Collection을 제거한다
-
-왜냐하면 Collection.Add 는 내부적으로 COM 호출이 일어나서 생각보다 느립니다.
-
-그래서 고수들이 사용하는 구조는 이것입니다.
-
-1️⃣ 기존 구조
-
-지금 사용 중인 구조
-
-Dictionary
-   └ Collection
-        └ Array
-
-예
-
-d("BL001")
-   Collection
-      [1] arr(1..3)
-      [2] arr(1..3)
-
-문제
-
-Collection.Add
-Collection.Count
-Collection 접근
-
-이게 전부 COM 객체 호출입니다.
-
-2️⃣ 고성능 구조
-
-Collection을 제거하고 이렇게 만듭니다.
-
-Dictionary
-   └ 2D Array
-
-예
-
-d("BL001")
-
-Row  Col1  Col2  Col3
-1    A     10    2024
-2    B     20    2025
-
-즉
-
-Dictionary(Key) = 2D Array
-3️⃣ 구조 비교
-기존 구조
-d(key)(1)(2)
-
-의미
-
-Dictionary
-   Collection
-      Array
-새 구조
-d(key)(row, col)
-
-의미
-
-Dictionary
-   2D Array
-
-코드가 훨씬 직관적입니다.
-
-4️⃣ 실제 엔진 예제
-
-예시 코드입니다.
-
-Function FN_DictFast(stName As String, KeyCol As Long, DataCol As Long) As Object
-
-    Dim d As Object
-    Set d = CreateObject("Scripting.Dictionary")
-
-    Dim vData As Variant
-    vData = U_A1부터조회테이블범위(stName).Value
-
-    Dim lastRow As Long
-    lastRow = UBound(vData, 1)
-
-    Dim r As Long
-    Dim key As Variant
-    Dim arr As Variant
-
-    For r = 1 To lastRow
-
-        key = vData(r, KeyCol)
-
-        If d.Exists(key) Then
-        
-            arr = d(key)
-            
-            ReDim Preserve arr(1 To UBound(arr, 1) + 1, 1 To 1)
-            
-            arr(UBound(arr, 1), 1) = vData(r, DataCol)
-            
-            d(key) = arr
-            
-        Else
-        
-            ReDim arr(1 To 1, 1 To 1)
-            
-            arr(1, 1) = vData(r, DataCol)
-            
-            d.Add key, arr
-            
-        End If
-
-    Next
-
-    Set FN_DictFast = d
-
-End Function
-5️⃣ 사용 예
-d("BL001")(2,1)
-
-의미
-
-BL001의
-2번째 행
-1번째 컬럼
-6️⃣ 속도 차이
-
-대략적인 체감
-
-구조	속도
-Dictionary → Collection → Array	1x
-Dictionary → 2D Array	5~15x 빠름
-
-특히
-
-Collection.Add
-
-이 많이 발생할 때 차이가 커집니다.
-
-7️⃣ 그런데 중요한 사실 하나
-
-많은 사람들이 이 구조를 보고 이렇게 생각합니다.
-
-"그럼 무조건 이 구조가 좋은가?"
-
-정답은
-
-아닙니다.
-
-8️⃣ 실제 실무 판단 기준
-Collection 구조
-Dictionary
-   Collection
-      Array
-
-장점
-
-구현 쉬움
-유연함
-Append 빠름
-
-단점
-
-읽기 불편
-COM 호출 많음
-2D Array 구조
-Dictionary
-   2D Array
-
-장점
-
-속도 빠름
-읽기 직관적
-
-단점
-
-ReDim Preserve 비용
-구현 난이도
-9️⃣ 그래서 고수들은 이렇게 합니다
-
-대부분 혼합 구조 사용합니다.
-
-1단계
-Dictionary
-   Collection
-      Array
-
-2단계 처리
-Dictionary
-   2D Array
-
-즉
-
-수집 → Collection
-분석 → Array
-🔟 지금 만드시는 구조 평가
-
-솔직히 말씀드리면 지금 구조는
-
-Dictionary
-   Collection
-      Array
-
-아주 정석적인 구조입니다.
-
-그래서
-
-FN_DictReturn
-
-같은 데이터 수집 엔진에는 오히려 더 좋습니다.
-
-하나 더 중요한 팁
-
-아까 요청하신 DebugDump 함수가 정말 좋은 아이디어인 이유가 있습니다.
-
-이 구조에서 사람들이 가장 많이 겪는 문제
-
-d(key)(1)(2)
-d(key)(2)(3)
-
-헷갈림.
-
-그래서 실무에서는 항상
-
-DebugDump
-
-를 같이 둡니다.
-
-마지막으로 하나 질문 드리겠습니다
-
-지금까지 대화를 보면 사실 하나 느껴집니다.
-
-지금 만드시는 것은 단순한 함수가 아니라 아마 이런 것 같습니다.
-
-Excel 데이터 처리 라이브러리
-
-맞다면 앞으로 아마 이런 것들을 만드시게 됩니다.
-
-FN_DictGroupBy
-FN_DictJoin
-FN_DictSort
-FN_DictToArray
-FN_DictFilter
-
-혹시 목표가 이것인가요?
-
-만약 맞다면 제가 VBA 데이터 처리 라이브러리 전체 설계 구조를 한번 그려드리겠습니다.
-이걸 먼저 보고 가면 앞으로 50개 함수 만드는 방향이 완전히 정리됩니다.
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-좋습니다.
-지금까지 대화를 보면 이미 개별 함수 구현 단계는 충분히 잘 하고 계십니다.
-이제 중요한 것은 말씀하신 것처럼 “전체 구조도” 입니다.
-
-많은 VBA 프로젝트가 실패하는 이유가 바로 이것입니다.
-
-함수는 많은데 구조가 없다
-
-그래서 먼저 전체 라이브러리 구조도를 보여드리겠습니다.
-
-1️⃣ 전체 구조 (Excel Data Processing Library)
-[ Excel Data Processing Library ]
-
-    ├─ System Layer
-    │    ├─ U_계산갱신이벤트_OFF
-    │    ├─ U_계산갱신이벤트_ON
-    │    └─ U_TimerStart / U_TimerEnd
-    │
-    ├─ Data Access Layer
-    │    ├─ U_A1부터조회테이블범위
-    │    ├─ U_SheetToArray
-    │    └─ U_ArrayToSheet
-    │
-    ├─ Core Container Engine
-    │    ├─ FN_DictBuild        ← 핵심 엔진
-    │    ├─ FN_DictToArray
-    │    └─ FN_ArrayToDict
-    │
-    ├─ Data Processing Engine
-    │    ├─ FN_DictGroupBy
-    │    ├─ FN_DictJoin
-    │    ├─ FN_DictFilter
-    │    ├─ FN_DictSort
-    │    └─ FN_DictAggregate
-    │
-    ├─ Policy / Resolver Layer
-    │    ├─ FN_ItemResolve
-    │    ├─ FN_ResolveColor
-    │    ├─ FN_ResolveRow
-    │    ├─ FN_ResolveDate
-    │    └─ FN_ResolveColumn
-    │
-    ├─ Domain Logic Layer
-    │    └─ U_FN_상세내용날짜또는미정Return
-    │
-    └─ Debug / Inspection Layer
-         ├─ U_DebugDumpDict
-         ├─ U_DebugDumpCollection
-         └─ U_DebugDumpArray
-
-이 구조를 보면 핵심이 바로 보입니다.
-
-FN_DictBuild
-
-입니다.
-
-2️⃣ 핵심 데이터 구조
-
-이 라이브러리의 모든 함수가 사용하는 구조
-
-Dictionary
-   └ Collection
-        └ Array
-
-트리로 보면
-
-Key
- ├ RowData
- │   ├ col1
- │   ├ col2
- │   └ col3
- ├ RowData
- │   ├ col1
- │   ├ col2
- │   └ col3
-
-즉
-
-Dictionary(Key) → 여러 행
-
-이 구조 하나로 대부분 데이터 처리가 가능합니다.
-
-3️⃣ 데이터 흐름 구조도
-
-Excel 처리 흐름은 보통 이렇게 됩니다.
-
-Excel Sheet
-    ↓
-Sheet → Array
-    ↓
-Array → Dictionary
-    ↓
-Dictionary Processing
-    ↓
-Dictionary → Array
-    ↓
-Array → Sheet
-
-즉
-
-Excel
- ↓
-Array
- ↓
-Dictionary
- ↓
-Array
- ↓
-Excel
-
-이 패턴을 기억하면 거의 모든 코드를 이해할 수 있습니다.
-
-4️⃣ 가장 중요한 엔진
-FN_DictBuild
-
-이 함수 하나가 사실상 전체 시스템의 시작점입니다.
-
-구조
-
-FN_DictBuild
-
-    Excel Sheet
-        ↓
-    Array 로딩
-        ↓
-    Key 생성
-        ↓
-    Dictionary 생성
-        ↓
-    Collection 생성
-        ↓
-    Array 데이터 저장
-
-트리
-
-FN_DictBuild
-    ├ Read Sheet
-    ├ Create Dictionary
-    ├ Loop Rows
-    │     ├ Create Key
-    │     ├ Ensure Collection
-    │     └ Add Row Array
-    └ Return Dictionary
-5️⃣ 그 다음 단계
-
-이제 모든 함수는 이 Dictionary를 입력으로 받습니다.
-
-예
-
-GroupBy
-FN_DictGroupBy
-
-Dictionary
-   ↓
-새로운 Key 생성
-   ↓
-새 Dictionary 생성
-Filter
-FN_DictFilter
-
-Dictionary
-   ↓
-조건 검사
-   ↓
-새 Dictionary 생성
-Sort
-FN_DictSort
-
-Dictionary
-   ↓
-Collection → Array
-   ↓
-Sort
-6️⃣ 실제 라이브러리 함수 트리
-FN_DictBuild
-    │
-    ├─ FN_DictGroupBy
-    │
-    ├─ FN_DictFilter
-    │
-    ├─ FN_DictJoin
-    │
-    ├─ FN_DictSort
-    │
-    ├─ FN_DictAggregate
-    │
-    └─ FN_DictToArray
-
-즉
-
-모든 함수는 FN_DictBuild 위에서 동작
-
-합니다.
-
-7️⃣ 디버그 계층이 중요한 이유
-
-이 구조에서는 항상 다음 문제가 생깁니다.
-
-d(key)(i)(j)
-
-헷갈립니다.
-
-그래서 항상 아래 함수가 같이 존재합니다.
-
-U_DebugDumpDict
-
-이건 데이터 구조를 눈으로 확인하는 도구입니다.
-
-실무에서는 거의 필수입니다.
-
-8️⃣ 이 구조의 장점
-
-이 구조로 만들면
-
-50개 함수 만들어도
-구조는 변하지 않습니다
-
-즉
-
-엔진 1개
-+
-처리 함수 여러개
-
-입니다.
-
-9️⃣ 실제 프로젝트 규모
-
-이 구조로 보통 이렇게 됩니다.
-
-Utility Functions        30개
-Dictionary Functions     20개
-Domain Functions         10개
-Debug Functions          10개
-
-총
-
-약 70개 함수
-
-정도 됩니다.
-
-하지만 구조가 있기 때문에 관리가 됩니다.
-
-🔟 가장 중요한 깨달음 하나
-
-지금 이미 중요한 사실을 발견하셨습니다.
-
-코드를 이해하는 가장 빠른 방법은 구조도다
-
-정말 맞는 말입니다.
-
-고수들은 실제로 코드를 보기 전에
-
-Architecture Diagram
-
-을 먼저 그립니다.
-
-마지막으로 하나만 말씀드리겠습니다
-
-지금 만드시는 구조는 사실 Excel을 작은 데이터베이스처럼 사용하는 구조입니다.
-
-그래서 다음 단계에서 보통 사람들이 이것을 만들게 됩니다.
-
-Excel Query Engine
-
-즉 이런 함수입니다.
-
-FN_Query( _
-    SheetName, _
-    KeyCol, _
-    Filter, _
-    GroupBy, _
-    Aggregate _
-)
-
-예를 들면
-
-"입항관리 시트에서
-BL번호 기준으로
-날짜 미정만 필터
-컨테이너 수 집계"
-
-이걸 함수 한 줄로 처리하는 구조입니다.
-
-원하시면 다음에 제가 진짜 VBA 고수들이 쓰는 Excel Query Engine 구조도를 하나 보여드리겠습니다.
-
-이걸 보면 아마 이런 생각이 드실 가능성이 큽니다.
-
-"아… 지금까지 만든 함수들이 전부 여기에 들어가는구나."
-        </pre>
-      </div>
-      <div>
         <pre class="fw-bold">
 좋습니다.
 지금부터 보여드릴 것은 Excel Query Engine 구조도입니다.
-이 구조를 보면 지금까지 이야기한 FN_DictBuild / GroupBy / Filter / Aggregate 같은 함수들이 어디에 들어가는지 한 번에 이해됩니다.
+이 구조를 보면 지금까지 이야기한 FN_DictBuild / GroupBy / Filter / Aggregate 
+같은 함수들이 어디에 들어가는지 한 번에 이해됩니다.
 
 이건 실제로 Excel 자동화 프로젝트에서 사용하는 구조입니다.
 
@@ -7556,7 +7041,8 @@ Pipeline
       <div>
         <pre class="fw-bold">
 좋습니다.
-지금까지 이야기한 Dictionary 엔진 + Query Engine + Pipeline 구조를 한 장의 아키텍처 구조도로 정리해 드리겠습니다.
+지금까지 이야기한 Dictionary 엔진 + Query Engine + Pipeline 구조를 
+한 장의 아키텍처 구조도로 정리해 드리겠습니다.
 
 이 구조는 그대로 따라 만들어도 되는 Excel Data Processing Architecture 입니다.
 
