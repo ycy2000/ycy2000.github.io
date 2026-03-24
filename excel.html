@@ -1296,9 +1296,15 @@ Function FN_DictBuild( stName As String, _
         </pre>
       </div>
       <div>
-        <h6 class="fw-bold"> </h6>
+        <h6 class="fw-bold">외부링크 </h6>
         <pre class="fw-bold">
-          
+<span class="blueviolet">[셀]</span>
+1. 둘 다 켜져있을때 : OFFSET([통합적용.xlsm]모듈!$A$1 → 파일이름이 대괄호
+2. 꺼져있을때 : OFFSET('C:\Users\COM\Desktop\계산중심180130\[통합적용.xlsm]모듈'!$A$1
+   → 경로와 파일이름 대괄호 전체를 ''로 묶었다. ' 로시작하고 '로 끝나는걸 지우나?
+<span class="blueviolet">매크로</span>
+1. 통합적용.xlsm!ListLinks (나에게 없는 매크로일때)
+   → 지울필요 있나? 지우면 "*!" 부분 지우나 
         </pre>
       </div>
       <div>
