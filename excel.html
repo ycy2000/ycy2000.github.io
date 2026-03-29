@@ -142,10 +142,11 @@
         <h6 class="fw-bold" title="긴급메모5">긴급메모5 : </h6>
         <h6 class="fw-bold blueviolet" title="긴급메모6">긴급메모6 : 딕셔너리 값 확인용 디버그 함수</h6>
         <h6 class="fw-bold blueviolet" title="FN_단독컨배열Return재설계">FN_단독컨배열Return재설계</h6>
-
+        <h6 class="fw-bold" title="딕셔너리용도별필요정리">딕셔너리 용도별 필요 정리, 2D Array변환, 2D Array변환시 값 수정</h6>
       </div>
       <div>
-        <h6 class="fw-bold" title="딕셔너리용도별필요정리">딕셔너리 용도별 필요 정리, 2D Array변환, 2D Array변환시 값 수정</h6>
+        <h6 class="fw-bold">----------------  다시 정리 ------------------------</h6>
+        <h6 class="fw-bold" title="다시_딕셔너리">다시정리1 : 딕셔너리</h6>
       </div>
     </div>
     <div class="개별카테고리" id="질문방법">
@@ -7755,6 +7756,35 @@ Configuration Object
         <h6 class="fw-bold">2) 2D Array 변환 : 원본정보 수정 → 개별 수정함수 필요</h6>
         <pre class="fw-bold">
 
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    
+    <div id="다시_딕셔너리" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold">● Dictionary - Collection - Array 구조</h6>
+        <pre class="fw-bold">
+     <span class="blueviolet">[기본 : DicReturn_MultiArray(vData, k1, k2, k3, ParamArray ItemCols())]</span>
+     Dictionary
+     └─ Key : BL001 → Item : Collection (Item 으로Collection은 1개)
+                                                   ├─ Array("우원","새우","1800","2/3")
+               <b style="margin-right:-1px"></b>      key가 중복될때마다  ├─ Array("대상","계육","1980","3/2")
+               <b style="margin-right:-2px"></b>      Array 하나씩 추가됨 └─ Array("동원","새우","1000","3/9")
+    1. 합계정보를 어떻게 구현하는가의 문제 → 따로 함수를 만들자
+    <span class="blueviolet">2. 원본 데이타 수집에 중점을 둔다. 데이타의 가공은 이 함수의 역할이 아니다.</span>
         </pre>
       </div>
       <div>
