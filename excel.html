@@ -146,7 +146,7 @@
         <h6 class="fw-bold" title="딕셔너리용도별필요정리">딕셔너리 용도별 필요 정리, 2D Array변환, 2D Array변환시 값 수정</h6>
       </div>
       <div>
-        <h6 class="fw-bold" title="엑셀_메모">다시정리1 : 딕셔너리</h6>
+        <h6 class="fw-bold" title="엑셀_메모">엑셀메모1 : </h6>
       </div>
     </div>
     <div class="개별카테고리" id="질문방법">
@@ -8064,7 +8064,17 @@ Tag 활용	🧠 유지보수 최강
       <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-          
+• 값:업데이트 물어보는 탐색기 켜지는거 중지 : Application.AskToUpdateLinks = False
+• 경고창 해제(삭제할까요) : Selection.Borders.LineStyle = xlNone
+• 테두리해제 : Selection.Borders.LineStyle = xlNone
+• 밑줄 : Selection.Borders(xlEdgeBottom).Weight = xlThin 
+• 폼에서 클래스모듈 사용 
+  1) 클래스모듈(이름) 생성 
+  2) 폼에 최상단 : Dim or private 변수명 as 이름 → 필요시(초기화시) Set 변수명 = New 이름
+
+• 외부파일 참조를 시트마다 말고, 파일 단위로 파악하고 해제(replace) 하기
+
+• 도형의 매크로는 onaction 을 사용하여 
         </pre>
       </div>
       <div>
