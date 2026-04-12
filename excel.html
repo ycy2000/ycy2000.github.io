@@ -106,7 +106,7 @@
     <div class="개별카테고리" id="통합적용">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="엑셀안전모드">엑셀 안전모드, CTRL + 더블클릭</h6>
+        <h6 class="fw-bold" title="엑셀안전모드">엑셀 안전모드, vClip(복사) 가져오기</h6>
         <h6 class="fw-bold" title="성능과배열첫정보">성능, 배열첫정보, Dictionary → Collection → Array</h6>
         <h6 class="fw-bold blueviolet" title="객체와SET과NEW">자료형 중에서 Object(객체), Set 과 New, 변수의 Type 확인</h6>
         <h6 class="fw-bold blueviolet" title="객체심화">자료형으로써 객채 심화, 폼, 클래스모듈도 객체 (일반모듈은 아님)</h6>
@@ -1287,25 +1287,81 @@ Function FN_DictBuild( stName As String, _
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
         <h6 class="fw-bold">Excel이 응답하지 않거나 중단되거나 작동이 중지되는 경우</h6>
-        <h6 class="fw-bold">안전 모드 문제 해결 수동 수행 </h6>
+        <h6 class="fw-bold"></h6>
         <pre class="fw-bold">
-1. Windows 11 또는 Windows 10의 경우 시작 > 모든 앱 > Windows 시스템 > 실행을 선택. 
+   - 안전 모드 문제 해결 수동 수행,  CTRL + 더블클릭
+   - 모듈, 폼의 문제라기보다 그 외 "독립적인 파일수준" 저장되는 정보에 문제가 생기는 경우가 있다.
+      → 새파일을 만들어 모듈 등 모두 옮겼을때 작동되는 경우가 있다.
+   <span class="blueviolet">- 파일갈이 순서 : </span>     
    실행 상자에 Excel /safe를 입력한 다음 확인을 클릭합니다.
-   <span class="blueviolet">Ctrl + 더블클릭 해도 된다.</span> 
-
-2. COM 추가 기능 : 다음 단계에 따라 COM 추가 기능으로 인해 문제가 발생했는지 확인합니다.
         </pre>
       </div>
       <div>
-        <h6 class="fw-bold">외부링크 </h6>
+        <h6 class="fw-bold">복사내용을 배열로 반환하기 </h6>
         <pre class="fw-bold">
-<span class="blueviolet">[셀]</span>
-1. 둘 다 켜져있을때 : OFFSET([통합적용.xlsm]모듈!$A$1 → 파일이름이 대괄호
-2. 꺼져있을때 : OFFSET('C:\Users\COM\Desktop\계산중심180130\[통합적용.xlsm]모듈'!$A$1
-   → 경로와 파일이름 대괄호 전체를 ''로 묶었다. ' 로시작하고 '로 끝나는걸 지우나?
-<span class="blueviolet">매크로</span>
-1. 통합적용.xlsm!ListLinks (나에게 없는 매크로일때)
-   → 지울필요 있나? 지우면 "*!" 부분 지우나 
+Sub 연습()
+    Dim 배열 As Variant
+    배열 = FN_vClip배열반환(): If Not IsArray(배열) Then MsgBox "복사결과 없음": Exit Sub
+End Sub
+Function FN_vClip배열반환() As Variant
+    '★★★ 배열이나 Empty를 반환, 확인은 IsArray
+    '복사 범위와 관계없이 붙여넣은 경과의 범위를 검사한다.
+    '빈범위 넓게 복사해서 붙여넣으면 붙여넣어지는 값이 없는것.
+    '그림이 붙여졌으면 배열로 가지고 오지 않는다.
+    Dim wsTemp As Worksheet
+    Dim vArr As Variant
+    
+    Application.ScreenUpdating = False
+    
+    Set wsTemp = ThisWorkbook.Worksheets.Add
+    Dim lastRow As Long
+    
+    '★lastRow 중심으로 판단한다.★
+    On Error Resume Next
+    
+    '======== 1) vlaues 붙여넣기 후 확인 (결과 없으면) 2) pasteAll 결과 확인 =======
+    'Application.Calculation = xlCalculationManual 이것하면 복사상태 해제됨
+
+    wsTemp.Range("A1").PasteSpecial xlPasteValues '붙여넣으면 있는데 이게 안되네
+    lastRow = wsTemp.UsedRange.Rows.Count
+    
+    If lastRow = 1 Then wsTemp.Range("A1").PasteSpecial xlPasteAll
+    
+    '-------- 복사상태 해제가 안되는경우 있어서 해제되는 편법코드 추가
+    wsTemp.Range("a100").Copy wsTemp.Range("b100")
+    Application.CutCopyMode = False
+    '-------- 복사상태 해제가 안되는경우 있어서 해제되는 편법코드 추가
+    
+    lastRow = wsTemp.UsedRange.Rows.Count
+    
+    On Error GoTo 0
+    On Error GoTo 오류
+    
+   '==== lastRow = 1 → wsTemp.UsedRange=A1 (셀하나는 그 셀의 값, 배열이 아님)
+    vArr = wsTemp.UsedRange.value '일단 담아두지만 배열인지는 미확인
+    
+    Application.DisplayAlerts = False
+    
+    wsTemp.Delete '★ 복사에 사용되었던 시트 삭제
+    
+    Application.DisplayAlerts = True
+    Application.ScreenUpdating = True
+
+    If lastRow = 1 Then Exit Function 'empty 반환
+
+    FN_vClip배열반환 = vArr
+    Exit Function
+
+오류:
+    On Error Resume Next
+    Application.DisplayAlerts = False
+    If Not wsTemp Is Nothing Then wsTemp.Delete
+    Application.DisplayAlerts = True
+    Application.ScreenUpdating = True
+
+End Function
+
+
         </pre>
       </div>
       <div>
@@ -7776,52 +7832,18 @@ Configuration Object
       <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
+<span class="blueviolet">[컴파일하는 방법]</span>
 • 컴파일 하는 방법 : vba편집기 - 상단메뮤 - 디버그(debug) - vba 프로젝트 컴파일 
-  - 오류있으면 해당줄 이동하면서 멈춤 → 반듯 수정해야 함
+  - 오류있으면 해당줄 이동하면서 멈춤 → 반드시 수정해야 함
   - 모든 모듈, 모든 클래스, 모든 UserForm 전부 검사
-  ✔️ 1. 이벤트는 얇게
-Private Sub btn_1_Click(): HandleButton Me.btn_1: End Sub
-Private Sub btn_2_Click(): HandleButton Me.btn_2: End Sub
-Private Sub btn_3_Click(): HandleButton Me.btn_3: End Sub
 
-👉 내용 없음 → 유지보수 쉬움
-
-✔️ 2. 실제 로직은 한 곳에서 처리
-Private Sub HandleButton(btn As MSForms.CommandButton)
-
-    Dim idx As Long
-    idx = CLng(Split(btn.Name, "_")(1))
-
-    Select Case idx
-        Case 1
-            MsgBox "1번 버튼"
-        Case 2
-            MsgBox "2번 버튼"
-        Case Else
-            MsgBox idx & "번 버튼"
-    End Select
-
-End Sub
-
-
-'With Application
-'    .ScreenUpdating = False
-'    .DisplayAlerts = False
-'End With
-'
-'Worksheets.Add Count:=50  ' ? 한 번에 생성
-'Print 3#; 시트; 미리; 숨기기; 후; 삭제
-'Sheets("삭제할시트").Visible = xlSheetVeryHidden
-'Sheets("삭제할시트").Delete
-Sub ExportAllModules()
-'2. 반드시 필요한 설정 ??
-'이 코드가 실행되려면:
-'?? 엑셀 옵션에서 반드시 활성화
+<span class="blueviolet">[폼,모듈,클래스모듈 한꺼번에 내보내기, 사전설정 동일함]</span>
+'----------- 사전 설정한 옵션 -----------
 '파일 → 옵션 → 보안 센터 → 보안 센터 설정
-'"VBA 프로젝트 개체 모델에 대한 신뢰 액세스 허용" 체크
-'이거 안 하면:
-'“Programmatic access to Visual Basic Project is not trusted” 오류 발생합니다.
-'3. 폴더 구조
+'1)"VBA 프로젝트 개체 모델에 대한 신뢰 액세스 허용" 체크
+'2) 1)못찾으면, 매크로설정 - VBA 프로젝트 개체 모델에 안전하게 액세스할 수 있음(V) 체크
+'이거 안 하면:'“Programmatic access to Visual Basic Project is not trusted” 오류 발생합니다.
+
 '실행하면 이런 식으로 생성됩니다:
 '엑셀파일폴더
 ' └─ VBA_Export
@@ -7829,6 +7851,9 @@ Sub ExportAllModules()
 '     ├─ Class1.cls
 '     ├─ UserForm1.frm
 '     └─ Sheet1.cls
+
+<span class="blueviolet">Sub ExportAllModules()</span>
+
     Dim vbComp As Object
     Dim exportPath As String
     
@@ -7853,11 +7878,11 @@ Sub ExportAllModules()
             Case 3 ' UserForm (.frm)
                 vbComp.Export exportPath & vbComp.Name & ".frm"
                 
-            Case 100 ' 시트 모듈 (선택)
-                vbComp.Export exportPath & vbComp.Name & ".cls"
+            'Case 100 ' 시트 모듈 (선택), 제외하라
+            '    vbComp.Export exportPath & vbComp.Name & ".cls"
                 
-            Case 1000 ' ThisWorkbook (선택)
-                vbComp.Export exportPath & vbComp.Name & ".cls"
+            'Case 1000 ' ThisWorkbook (선택), 제외하라
+            '    vbComp.Export exportPath & vbComp.Name & ".cls"
                 
         End Select
         
@@ -7866,8 +7891,9 @@ Sub ExportAllModules()
     MsgBox "모든 모듈 내보내기 완료!", vbInformation
 
 End Sub
-'네 ?? 완전히 가능합니다.
-'Export의 반대로 .bas / .cls / .frm 파일을 자동으로 Import할 수 있습니다.
+
+<span class="blueviolet">[폼,모듈,클래스모듈 삭제하면서 한꺼번에 가져오기, 사전설정 동일함]</span>
+
 Sub ImportAllModules()
 
     Dim importPath As String
@@ -7899,9 +7925,10 @@ Sub ImportAllModules()
 
     MsgBox "모든 모듈 가져오기 완료!", vbInformation
 
-End Sub
+<span class="blueviolet">End Sub</span>
+
 '? 기존 모듈 삭제 함수 (중요??)
-Sub RemoveModule(moduleName As String)
+<span class="blueviolet">Sub RemoveModule(moduleName As String)</span>
 
     Dim vbComp As Object
     
@@ -7918,157 +7945,36 @@ Sub RemoveModule(moduleName As String)
         
     End If
 
-End Sub
-'?? 추천 자동화 구조
+<span class="blueviolet">End Sub</span>
 
-'실무에서는 이렇게 구성하면 최고입니다:
-
-'Print 버튼; 2; 개
-'?? Export (백업)
-'?? Import (복원)
-'Print 또는; 자동화'
-'파일 열 때 → Impor't
-'파일 닫을 때 → Export
-'?? 한 단계 더 (원하면 해드림)
-
-'여기서 더 발전시키면:
-
-'변경된 모듈만 Import (diff 기반)
-'Git 연동 자동 백업'
-''특정 모듈만 선택 복원'
-'코드 버전 롤백 기능
-
-버튼 속성
-Tag = "SAVE"
-Tag = "DELETE"
-Tag = "SEARCH"
-코드
-Private Sub HandleButton(btn As MSForms.CommandButton)
-
-    Select Case btn.Tag
-        Case "SAVE"
-            Call SaveData
-        Case "DELETE"
-            Call DeleteData
-        Case "SEARCH"
-            Call SearchData
-    End Select
-
-End Sub
-🚀 2️⃣ 클래스 쓰면서도 “로딩 안 느리게”
-❌ 문제 구조
-Initialize에서 전부 생성 → 느림
-✅ 해결 핵심: “지연 초기화 + 선택적 바인딩”
-🔥 패턴 1: Lazy 초기화 (필수 ⭐)
-Private isInit As Boolean
-
-Private Sub UserForm_Activate()
-    If Not isInit Then
-        InitEvents
-        isInit = True
-    End If
-End Sub
-
-👉 폼 먼저 띄움 → 체감 속도 개선
-
-🔥 패턴 2: 필요한 것만 클래스화
-If ctrl.Tag = "GroupA" Then
-    ' 클래스 연결
-End If
-
-👉 100개 중 20개만 클래스 처리
-
-🔥 패턴 3: 배열로 먼저 수집 후 생성
-Dim btns As Collection
-Set btns = New Collection
-
-For Each ctrl In Me.Controls
-    If TypeName(ctrl) = "CommandButton" Then
-        If ctrl.Tag = "Event" Then
-            btns.Add ctrl
-        End If
-    End If
-Next
-
-' 나중에 한 번에 처리
-🔥 패턴 4: 클래스 재사용 구조
-
-👉 클래스 하나로 모든 버튼 처리
-
-클래스 (CButtonHandler)
-Public WithEvents Btn As MSForms.CommandButton
-
-Private Sub Btn_Click()
-    Handle Btn
-End Sub
-폼
-Dim handlers As Collection
-
-Private Sub InitEvents()
-
-    Dim ctrl As Control
-    Dim h As CButtonHandler
-    
-    Set handlers = New Collection
-    
-    For Each ctrl In Me.Controls
-        If TypeName(ctrl) = "CommandButton" Then
-            
-            If ctrl.Tag <> "" Then
-                Set h = New CButtonHandler
-                Set h.Btn = ctrl
-                handlers.Add h
-            End If
-            
-        End If
-    Next
-
-End Sub
-
-👉 클래스는 쓰되
-→ 최소한만 생성
-
-🚀 속도 최적화 핵심 요약
-🔥 제일 중요
-
-👉 객체 생성 수 = 속도
-
-전략
-전략	효과
-클래스 안 쓰기	🚀 최고 속도
-Lazy 초기화	⚡ 체감 개선
-일부만 클래스	⚡ 균형
-Tag 활용	🧠 유지보수 최강
-🎯 최종 선택 가이드
-👉 속도 최우선
-
-✔ 클래스 ❌
-✔ Tag + 공통 함수 ⭕
-
-👉 유지보수/확장성
-
-✔ 클래스 ⭕
-✔ Lazy 초기화 필수
-
-👍 한 줄 핵심
-
-👉 “버튼 많으면 Tag + 공통 함수가 가장 빠르고 실무적이다”
-
-원하시면 다음 단계로
-👉 “버튼 100개 자동 생성 + 이벤트 연결 (완전 자동 UI)”
-👉 “폼 로딩 0.1초 만드는 구조 (초고급 최적화)”
-
-이건 진짜 고수 영역인데 이어서 보여드릴게요 😎
         </pre>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
+<span class="blueviolet">[Option Explicit 꼭 맨 상단에 선언되게 할것]</span>
+• 새로운 모듈 생성시 자동으로 붙게하는 설정
+  - VBA 편집기 열기 (Alt + F11) - 메뉴: 도구 → 옵션 (Tools → Options) - Editor 탭
+    ✔ Require Variable Declaration 체크 [안보이면,편집기 - 변수선언요구 체크]
+<span class="blueviolet">[with 구문 활용, 성능 미세 향상, 적용 한번]</span>
+With Application
+   .ScreenUpdating = False
+   .DisplayAlerts = False
+End With
+<span class="blueviolet">[복사상태중 실행시 복사상태 해제]</span>
+• Application.Calculation = xlCalculationManual
+• Application.Calculation = xlCalculationAutomatic
+<span class="blueviolet">[경고창]</span>
 • 값:업데이트 물어보는 탐색기 켜지는거 중지 : Application.AskToUpdateLinks = False
-• 경고창 해제(삭제할까요) : Selection.Borders.LineStyle = xlNone
+• 경고창 해제(삭제할까요) : Application.DisplayAlerts = False
+<span class="blueviolet">[테두리, 밑줄]</span>
 • 테두리해제 : Selection.Borders.LineStyle = xlNone
 • 밑줄 : Selection.Borders(xlEdgeBottom).Weight = xlThin 
 • 전체기본테두리 : Selection.Borders.LineStyle = xlContinuous
+<span class="blueviolet">[복사상태 해제 : ctrl + v 해제, Application.CutCopyMode=false 해도 ctrl + v 작동할때]</span>
+• 편법 : range("a1").copy range("a1") 후 (다른셀도 가능)
+   Application.CutCopyMode=false
+
 • 폼에서 클래스모듈 사용 
   1) 클래스모듈(이름) 생성 
   2) 폼에 최상단 : Dim or private 변수명 as 이름 → 필요시(초기화시) Set 변수명 = New 이름
