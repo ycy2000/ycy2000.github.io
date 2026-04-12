@@ -7987,6 +7987,62 @@ End With
       <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
+Function FN_vClip배열반환() As Variant
+    '★★★ 배열 또는 Empty 반환
+    '웹/엑셀 복사 데이터 안정 처리
+    
+    Dim wsTemp As Worksheet
+    Dim vArr As Variant
+    Dim cnt As Long
+    
+    Application.ScreenUpdating = False
+    
+    On Error GoTo 오류
+    
+    '===== 임시 시트 생성 =====
+    Set wsTemp = ThisWorkbook.Worksheets.Add
+    
+    '===== 1) 무조건 붙여넣기 =====
+    On Error Resume Next
+    wsTemp.Range("A1").Select
+    wsTemp.Paste
+    On Error GoTo 오류
+    
+    '===== 2) 값으로 정규화 (핵심🔥) =====
+    With wsTemp.UsedRange
+        .Value = .Value
+    End With
+    
+    '===== 3) 실제 데이터 존재 여부 =====
+    cnt = Application.WorksheetFunction.CountA(wsTemp.UsedRange)
+    
+    '===== 4) 결과 반환 =====
+    If cnt = 0 Then
+        FN_vClip배열반환 = Empty
+    Else
+        vArr = wsTemp.UsedRange.Value
+        
+        ' 단일셀 → 2차원 배열 변환
+        If Not IsArray(vArr) Then
+            Dim temp(1 To 1, 1 To 1)
+            temp(1, 1) = vArr
+            vArr = temp
+        End If
+        
+        FN_vClip배열반환 = vArr
+    End If
+
+정리:
+    Application.DisplayAlerts = False
+    If Not wsTemp Is Nothing Then wsTemp.Delete
+    Application.DisplayAlerts = True
+    Application.ScreenUpdating = True
+    Exit Function
+
+오류:
+    Resume 정리
+    
+End Function
 
 
           🟢 정답 접근 방식 (중요🔥)
