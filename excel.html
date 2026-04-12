@@ -7987,7 +7987,7 @@ End With
       <div>
         <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-Function FN_vClip배열반환() As Variant
+Function FN_복사상태를vClip배열반환() As Variant
     '★★★ 배열 또는 Empty 반환
     '웹/엑셀 복사 데이터 안정 처리
     
@@ -8006,11 +8006,14 @@ Function FN_vClip배열반환() As Variant
     On Error Resume Next
     wsTemp.Range("A1").Select
     wsTemp.Paste
+    wsTemp.Range("t100").Copy wsTemp.Range("t100") '복사해제 편법
+    Application.CutCopyMode = False
+    
     On Error GoTo 오류
     
-    '===== 2) 값으로 정규화 (핵심🔥) =====
+    '===== 2) 값으로 정규화 (핵심??) =====
     With wsTemp.UsedRange
-        .Value = .Value
+        .value = .value
     End With
     
     '===== 3) 실제 데이터 존재 여부 =====
@@ -8018,9 +8021,9 @@ Function FN_vClip배열반환() As Variant
     
     '===== 4) 결과 반환 =====
     If cnt = 0 Then
-        FN_vClip배열반환 = Empty
+        FN_복사상태를vClip배열반환 = Empty
     Else
-        vArr = wsTemp.UsedRange.Value
+        vArr = wsTemp.UsedRange.value
         
         ' 단일셀 → 2차원 배열 변환
         If Not IsArray(vArr) Then
@@ -8029,12 +8032,12 @@ Function FN_vClip배열반환() As Variant
             vArr = temp
         End If
         
-        FN_vClip배열반환 = vArr
+        FN_복사상태를vClip배열반환 = vArr
     End If
 
 정리:
     Application.DisplayAlerts = False
-    If Not wsTemp Is Nothing Then wsTemp.Delete
+    'If Not wsTemp Is Nothing Then wsTemp.Delete
     Application.DisplayAlerts = True
     Application.ScreenUpdating = True
     Exit Function
