@@ -106,7 +106,7 @@
     <div class="개별카테고리" id="통합적용">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="엑셀안전모드">엑셀 안전모드, vClip(복사) 가져오기</h6>
+        <h6 class="fw-bold" title="엑셀안전모드">엑셀 안전모드, vClip(복사) 가져오기, UsedRange</h6>
         <h6 class="fw-bold" title="성능과배열첫정보">성능, 배열첫정보, Dictionary → Collection → Array</h6>
         <h6 class="fw-bold blueviolet" title="객체와SET과NEW">자료형 중에서 Object(객체), Set 과 New, 변수의 Type 확인</h6>
         <h6 class="fw-bold blueviolet" title="객체심화">자료형으로써 객채 심화, 폼, 클래스모듈도 객체 (일반모듈은 아님)</h6>
@@ -7836,7 +7836,16 @@ Configuration Object
 • 컴파일 하는 방법 : vba편집기 - 상단메뮤 - 디버그(debug) - vba 프로젝트 컴파일 
   - 오류있으면 해당줄 이동하면서 멈춤 → 반드시 수정해야 함
   - 모든 모듈, 모든 클래스, 모든 UserForm 전부 검사
-
+<span class="blueviolet">[저장안되면 → 멀티페이지 의심, 내보내기 안되는지 확인]</span>
+복구방법 (내보내기나 저장이 안되는 상태이고, 다른 작업은 된다는 상황일때(보통))
+1) 같은 파일에서 : 새폼 만들기  → 컨트롤복사(멀티페이지 제외, 멀티페이지는 새로만들기)
+    → 폼의 코드 복사 →  새 폼 내보내기 되면, 기존폼 삭제 → 저장해보기
+<span class="blueviolet">[파일갈이 순서, 새파일 → 모듈 → 시트, 관련함수이름]</span>
+1) 
+2) 
+3) 
+4) 
+5) 
 <span class="blueviolet">[폼,모듈,클래스모듈 한꺼번에 내보내기, 사전설정 동일함]</span>
 '----------- 사전 설정한 옵션 -----------
 '파일 → 옵션 → 보안 센터 → 보안 센터 설정
@@ -7971,7 +7980,7 @@ End With
 • 테두리해제 : Selection.Borders.LineStyle = xlNone
 • 밑줄 : Selection.Borders(xlEdgeBottom).Weight = xlThin 
 • 전체기본테두리 : Selection.Borders.LineStyle = xlContinuous
-<span class="blueviolet">[복사상태 해제 : ctrl + v 해제, Application.CutCopyMode=false 해도 ctrl + v 작동할때]</span>
+<span class="blueviolet">[복사상태 해제 : Application.CutCopyMode=false 해도 ctrl + v 작동할때]</span>
 • 편법 : range("a1").copy range("a1") 후 (다른셀도 가능)
    Application.CutCopyMode=false
 
