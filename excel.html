@@ -106,9 +106,14 @@
     <div class="개별카테고리" id="통합적용">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
+        <h6 class="fw-bold"">----------------- 잊었나? 기본을 상기하자. -----------------</h6>
+        <h6 class="fw-bold blueviolet" title="객체와SET과NEW">(... As 자료형) 중에서 Object(객체), Set 과 New, 폼도 클래스모듈도 Object라는점!!</h6>
+        <h6 class="fw-bold" title="엑셀_메모">엑셀메모1 : </h6>
+      </div>
+      <div>
         <h6 class="fw-bold" title="엑셀안전모드">엑셀 안전모드, vClip(복사) 가져오기 → UsedRange, countA, 범위.value는 2개셀</h6>
         <h6 class="fw-bold" title="성능과배열첫정보">성능, 배열첫정보, Dictionary → Collection → Array</h6>
-        <h6 class="fw-bold blueviolet" title="객체와SET과NEW">자료형 중에서 Object(객체), Set 과 New, 변수의 Type 확인</h6>
+
         <h6 class="fw-bold" title="계층관련메모">계층 관련 메모, 네이밍, 계층, 구조는 같이 보임</h6>
         <h6 class="fw-bold" title="구조표현관련메모">구조표현 관련 메모, 큰틀 → 세부적인 틀 ... </h6>
         <h6 class="fw-bold" title="네이밍참고">네이밍 관련 메모, 네이밍, 계층, 구조는 같이 보임</h6>
@@ -142,9 +147,6 @@
         <h6 class="fw-bold blueviolet" title="긴급메모6">긴급메모6 : 딕셔너리 값 확인용 디버그 함수</h6>
         <h6 class="fw-bold blueviolet" title="FN_단독컨배열Return재설계">FN_단독컨배열Return재설계</h6>
         <h6 class="fw-bold" title="딕셔너리용도별필요정리">딕셔너리 용도별 필요 정리, 2D Array변환, 2D Array변환시 값 수정</h6>
-      </div>
-      <div>
-        <h6 class="fw-bold" title="엑셀_메모">엑셀메모1 : </h6>
       </div>
     </div>
     <div class="개별카테고리" id="질문방법">
@@ -228,7 +230,7 @@
         <h6 class="fw-bold blueviolet" title="vba사용법_type">Type 인수정리</h6>
       </div>
     </div>
-    <div class="개별카테고리" id="성능개선">
+    <div class="개별카테고리" id="중요정리">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold" title='엑셀_성능개선1'>성능개선 : Dictionary, 배열관련 코드에서 transpose 사용 이유</h6>
@@ -1364,6 +1366,17 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     <div id="객체와SET과NEW" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <h6 class="fw-bold blueviolet">● 객체(Object) 분류 (엑셀 어플리케이션이 vba를 사용하고 있음) </h6>
+        <pre class="fw-bold">
+    <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
+    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체 → VBA가 인식함</span> 
+      - Dim ws as Worksheet (Workseet, Range 등), Set ws = ThisWorkbook.Sheets("모듈")
+      - Set 을 통해 설정하고 New 는 없음.
+    <span class="단어색칠">• Native Object : VBA 언어 자체에서 제공하는 표준 클래스 객체 또는 기본 제공 객체</span>
+      - Collection 등 → Dim 추출컬랙션 As Collection 또는 Dim 추출컬랙션 As Object
+      - Set 컬랙션 = New Collection  → 컬랙션.add item 
+        <span class="단어색칠">New를 통해 엑셀이 인식할 수 있는 과정이 필요함, 그 후 값을 대입, 추가 한다.</span>
+        ※ 외부 플러그인을 통해서 새로운 객체를 사용할수도 있다. </pre>
         <h6 class="fw-bold blueviolet">● 일단 Dim 과 Public 은 scope 개념이다. 예시 : 최상단에 선언하는 경우</h6>
         <pre class="fw-bold">
     • Dim 변수 as 자료형 : 현재 모듈 내에서 사용 가능. 다른 모듈에서 사용 안됨 
@@ -1386,15 +1399,6 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
       컬랙션.Add "고유키1" "Item1"
       컬랙션.Add "고유키2" "Item2"
       Debug.Print 컬랙션("고유키2")  → Item2 </pre>
-        <h6 class="fw-bold blueviolet">● 객체(Object) 분류  </h6>
-        <pre class="fw-bold">
-    <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
-    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체 → VBA가 인식함</span> 
-      - Workseet, Range 등 : Set 을 통해 설정하고 New 는 없음.
-    <span class="단어색칠">• Native Object : VBA 언어 자체에서 제공하는 표준 클래스 객체 또는 기본 제공 객체</span>
-      - Collection 등  → Set 컬랙션 = New Collection  → 컬랙션.add item 
-        <span class="단어색칠">New를 통해 엑셀이 인식할 수 있는 과정이 필요함, 그 후 값을 대입, 추가 한다.</span>
-        ※ 외부 플러그인을 통해서 새로운 객체를 사용할수도 있다. </pre>
         <h6 class="fw-bold blueviolet">● 생성해 놓은 클래스모듈, 폼 모두 내장 객체이다.  </h6>
         <h6 class="fw-bold blueviolet">● 일반 모듈은 객체가 아니지만,</h6>
         <pre class="fw-bold">
@@ -18077,11 +18081,12 @@ dict.CompareMode = 1 ' 1 = TextCompare (대소문자 구분 안 함),  기본 0 
 <span class="blueviolet">'ReDim Preserve는 값이 유지하며, 마지막 차원만 변경가능</span>
  ReDim Preserve 폼LIST용결과배열(1 To 7, 1 To 결과카운트)
 
-결론
+<span class="blueviolet">결론</span>
 배열의 1차원은 가로, 2차원은 세로이다. 일반적으로 세로로 이어지는 표와 같다.
 그러나 배열에서 마지막 차원 변경을 위하여 가로,세로에 담길 정보를
 차원을 서로 바꿔서 저장하는 경우가 많다.
 결과 도출후 행열을 바꾸는 transpose를 사용하게 된다.
+<span class="blueviolet">★1차원의 크기를 알 수 있을때는 transpose사용 안하도록 코딩할것</span>
 
 <span class="blueviolet">1차원은 가로인데 세로로 뿌리기</span>
 Sheets("모듈").Range("A1").Resize(dict.Count, 1) = Application.Transpose(dict.Keys)
