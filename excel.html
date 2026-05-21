@@ -107,6 +107,7 @@
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
         <h6 class="fw-bold">----------------------------------</h6>
+        <h6 class="fw-bold" title="vba_객체자료형1">Dim 변수명 As 자료형, 개체(Object)자료형이 생성되는 과정, IntelliSense, 바인딩</h6>
         <h6 class="fw-bold" title="엑셀_프로그램개념분리">[개념분리]엑셀 프로그램, vba, com('도구-참조'에 등록된 객체, 클래스모듈과 유사)</h6>
         <h6 class="fw-bold">1.개체객체Object(Built-In,com,클래스모듈,폼),바인딩,이벤트감지와Early-Binding</h6>
         <h6 class="fw-bold">1-1.ALT+F11로 열리는 것은 VBE(VBA Editor) 이다.</h6>
@@ -1368,6 +1369,120 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
         </pre>
       </div>
     </div>
+    <div id="vba_객체자료형1" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">순차적으로 이해한 후에 다음 정보로 넘어가도록 메모한 것이다.</h6>
+        <h6 class="fw-bold blueviolet">1. 엑셀에서 값형이 아닌 객체형(Object) 자료형은 변수명에 참조를 저장한다는 의미?</h6>
+        <pre class="fw-bold">
+    • "객체.속성명, 객체.메소드명" 처럼 Object 객체는 사용법이 정의되어 있는 객체이다.
+    • 큰 틀에서 Object 객체는 COM 객체이다. 
+    • COM 객체는 독립적으로 설계되어 프로그램이 필요시 가져다 쓴다.
+    • COM 객체는 모듈이라고 대충 이해하면 되겠고 내부에 여러 기능들이 있다. 
+    • VBE에서 변수명에 대입된 COM객체와 관련된 실제 동작은 COM객체의 모듈에서 이루어진다.
+    <span class="blueviolet">• 참조의 의미 : VBE에서는 문자열작성 - 해당 COM모듈에서 문자열을 해석/실행 </span>
+        </pre>
+        <h6 class="fw-bold blueviolet">● 엑셀에서 값형이 아닌 객체형(Object) 자료형으로써의 COM 객체</h6>
+        <h6 class="fw-bold blueviolet">● (vbe - 도구 - 참조) 참조목록에서 vba와 무관한것이 대부분이다.</h6>
+        <h6 class="fw-bold blueviolet">● COM (Component Object Model)</h6>
+        <pre class="fw-bold">
+    • 마이크로소프트가 개발한 기술로, 서로 다른 언어로 만들어진 소프트웨어 컴포넌트(부품)들이 
+      서로 통신하고 기능을 공유할 수 있게 해주는 표준 규격입니다
+    <span class="blueviolet">• 간단히만 이해하자. 독립적으로 존재하며 다른 프로그램에서 필요로할때 사용할 수 있다.</span>
+        <h6 class="fw-bold blueviolet">● COM (Component Object Model)</h6>
+
+    <span class="blueviolet">• 설계도</span>
+
+
+
+
+
+
+
+
+
+        </pre>
+
+        <h6 class="fw-bold blueviolet">● 개체(Object) 이해하기, vbe편집기에서 코드를 작성하므로 vba기준으로 이해하자. </h6>
+        <h6 class="fw-bold blueviolet">● Dim 변수명 As 자료형, 자료형 중에 객체형 리스트 IntelliSense, 바인딩 </h6>
+        <pre class="fw-bold">
+    • 바인딩 : vba가 객체를 아는것. 객체의 사용설명서를 아는것(조작법) + 객체의 구조를 참조 
+    • IntelliSense(자동완성), Dim 변수명 As 스페이스바 눌렀을때 뜨는 리스트와 관련됨
+      - vba가 알고있는(binding되어있는) 객체의 리스트가 나열됨
+
+
+
+
+
+
+
+    <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
+    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체 → VBA가 인식함</span> 
+      - Dim ws as Worksheet (Workseet, Range 등), Set ws = ThisWorkbook.Sheets("모듈")
+      - Set 을 통해 설정하고 New 는 없음.
+    <span class="단어색칠">• Native Object : VBA 언어 자체에서 제공하는 표준 클래스 객체 또는 기본 제공 객체</span>
+      - Collection 등 → Dim 추출컬랙션 As Collection 또는 Dim 추출컬랙션 As Object
+      - Set 컬랙션 = New Collection  → 컬랙션.add item 
+        <span class="단어색칠">New를 통해 엑셀이 인식할 수 있는 과정이 필요함, 그 후 값을 대입, 추가 한다.</span>
+        ※ 외부 플러그인을 통해서 새로운 객체를 사용할수도 있다. </pre>
+        <h6 class="fw-bold blueviolet">● 일단 Dim 과 Public 은 scope 개념이다. 예시 : 최상단에 선언하는 경우</h6>
+        <pre class="fw-bold">
+    • Dim 변수 as 자료형 : 현재 모듈 내에서 사용 가능. 다른 모듈에서 사용 안됨 
+    • Public 변수 as 자료형 : 다른 모듈에서도 사용 가능.
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">● CreateObject는 객체를 반환하는 Function, <span style="font-size:14px;">클래스:Interaction, 라이브러러:VBA</span></h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">● 객체(Object) 분류 (엑셀 어플리케이션이 vba를 사용하고 있음) </h6>
+        <pre class="fw-bold">
+    <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
+    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체 → VBA가 인식함</span> 
+      - Dim ws as Worksheet (Workseet, Range 등), Set ws = ThisWorkbook.Sheets("모듈")
+      - Set 을 통해 설정하고 New 는 없음.
+    <span class="단어색칠">• Native Object : VBA 언어 자체에서 제공하는 표준 클래스 객체 또는 기본 제공 객체</span>
+      - Collection 등 → Dim 추출컬랙션 As Collection 또는 Dim 추출컬랙션 As Object
+      - Set 컬랙션 = New Collection  → 컬랙션.add item 
+        <span class="단어색칠">New를 통해 엑셀이 인식할 수 있는 과정이 필요함, 그 후 값을 대입, 추가 한다.</span>
+        ※ 외부 플러그인을 통해서 새로운 객체를 사용할수도 있다. </pre>
+        <h6 class="fw-bold blueviolet">● 일단 Dim 과 Public 은 scope 개념이다. 예시 : 최상단에 선언하는 경우</h6>
+        <pre class="fw-bold">
+    • Dim 변수 as 자료형 : 현재 모듈 내에서 사용 가능. 다른 모듈에서 사용 안됨 
+    • Public 변수 as 자료형 : 다른 모듈에서도 사용 가능. </pre>
+        <h6 class="fw-bold blueviolet">● Dim 변수 as 자료형 에서 "자료형"</h6>
+        <pre class="fw-bold">
+    • 객채(Object) 형식은 객체를 통하여 <span class="blueviolet">참조(주소를 지정하면 찾아서</span> ) 내어주는 형식 
+    • 객체가 아닌 형식, 문자열, 배열, 숫자 등은 직접 내어주는 형식 
+    • 객체가 아닌 형식은 Dim 일반 As String → 일반 = "문자" → Set 을 쓰면 안된다.
+    • 객체(Object) 형식은 Dim 범위 As Range → Set 범위 = Range("a1:c4") → Set 을 써야 된다.</pre>
+        <h6 class="fw-bold blueviolet">● 객체(Object)는 참조형식이라는 내용 예시</h6>
+        <pre class="fw-bold">
+    • Range 객체는 좌표를 참조한다.
+      Dim a As Range
+      Set a = ThisWorkbook.Sheets(1).Range("a1").Offset(1, 0)
+      
+    • Collection 객체는 key를 참조한다. 
+      Dim 컬랙션 As Object
+      Set 컬랙션 = New Collection 
+      컬랙션.Add "고유키1" "Item1"
+      컬랙션.Add "고유키2" "Item2"
+      Debug.Print 컬랙션("고유키2")  → Item2 </pre>
+        <h6 class="fw-bold blueviolet">● 생성해 놓은 클래스모듈, 폼 모두 내장 객체이다.  </h6>
+        <h6 class="fw-bold blueviolet">● 일반 모듈은 객체가 아니지만,</h6>
+        <pre class="fw-bold">
+    • 모듈이름.함수이름 으로 함수를 호출할 수 있다. 이 경우 Private 함수도 호출 된다. </pre>
+        <h6 class="fw-bold blueviolet">● Set 은 객체를 초기화한다. 폼은 초기화 이벤트가 있다면 실행 된다.</h6>
+        <pre class="fw-bold">
+    • 클래스 모듈의 경우 내부의 Public 변수 as variant 등이 초기화 된다. 
+    • 폼의 경우 Set을 하면 폼에 초기화 이벤트가 등록되어 있으면 초기화 이벤트 작동한다. </pre>
+        <h6 class="fw-bold blueviolet">● As Variant 로 선언하면 객채인 경우 알아서 Set 을 해야 한다. </h6>
+      </div>
+    </div>
+        
     <div id="데이터타입에대해서_일반_개체" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
