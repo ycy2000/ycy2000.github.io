@@ -1372,6 +1372,88 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     <div id="vba_객체자료형1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+
+        <h6 class="fw-bold blueviolet">========== COM 객체(COM에 의해서 만들어지는 객체) ==========</h6>
+        <h6 class="fw-bold blueviolet">● COM(Component Object Model)</h6>
+        <pre class="fw-bold">
+    • COM(Component Object Model) 객체는 마이크로소프트가 만든 기술 표준으로, 
+      서로 다른 프로그램들이 언어와 관계없이 기능을 공유하고 상호작용할 수 있도록 만든 
+      독립된 소프트웨어 부품입니다.
+    <span class="blueviolet">• VBA와 관련하여 말하자면 "참조하여" 사용할 수 있다.</span>
+    <span class="blueviolet">• Excel 자체도 com 객체이다. 엑셀 파일은 Excel com 객체의 인스턴스이다.</span></pre>
+        <h6 class="fw-bold blueviolet">● VBE - 보기 - 개체 찾아보기 - 라이브러리/프로젝트 [참고] </h6>
+        <pre class="fw-bold">
+    ※ 라이브러리/프로젝트 : ‘개체’ 그 자체라기보다는, ‘개체들을 담고 있는 최상위 컨테이너’
+    <span class="blueviolet">라이브러리 - 클래스 - 구성원, 구성원이 클래스 자리에 올수도 있다.(예:Range)
+    [1단계: 라이브러리 선택] ➡️ 예: Excel, VBAProject, MSForms, Office, Scripting, VBA 등
+    [2단계: 클래스(Classes) 목록] ➡️ 예: Worksheet, Range, Module1 (개체의 설계도)
+    [3단계: 멤버(Members) 목록] ➡️ 예: Activate, Copy, Cells (개체가 가진 함수나 속성)
+    </span>
+    <span class="blueviolet">[밑에] 라이브러리 이름 - 객체를 생성하는 실체 파일경로 - Type Library 이름(참조이름)</span>
+    1) <span class="단어색칠">Library Excel</span> - C:\Program Files\Microsoft Office 15\Root\Office15\EXCEL.EXE 
+       - Microsoft Excel 15.0 Object Library <span class="blueviolet">[참조 해제 불가]</span>
+    2) <span class="단어색칠">Library VBA</span> - C:\Program Files (x86)\Common Files\Microsoft Shared\VBA\VBA7.1
+       \VBE7.DLL - Visual Basic For Applications <span class="blueviolet">[참조 해제 불가]</span>
+    3) <span class="단어색칠">Library MSForms</span> - C:\windows\SysWOW64\FM20.DLL 
+       - Microsoft Forms 2.0 Object Library <span class="blueviolet">[참조 해제 불가]</span>
+    4) <span class="단어색칠">Library Scripting</span> - C:\Windows\SysWOW64\scrrun.dll 
+       - Microsoft Scripting Runtime
+    5) Library Office - C:\Program Files (x86)\Common Files\Microsoft Shared
+       \OFFICE15\MSO.DLL - Microsoft Office 15.0 Object Library
+    6) Project VBAProject - C:\Users\COM\Desktop\계산중심180130\통합적용.xlsm
+       프로젝트(개체이다) - 프로젝트 경로 <span class="blueviolet">(주요 설명에서 이부분은 생각하지 않는다)</span>
+      - (내가만든) 클래스 : 시트, 폼, 모듈, 클래스모듈
+      - (내가만든) 구성요소 : Function, Sub, 폼의 컨트롤들, 폼의 기능들, 시트의 기능들</pre>
+        <h6 class="fw-bold">[라이브러리 / 클래스 예시]</h6>
+<table class="table-bordered thtd패딩">
+          <tr><th>Excel</th><th>VBA</th><th>Scripting</th><th>MSForms</th><th>Office</th></tr>
+          <tr><td>Chart</td><td>Collection</td><td>Dictionary</td><td>CheckBox</td><td>CommandBar</td></tr>
+          <tr><td>Font</td><td>FileSystem</td><td>File</td><td>Control</td><td>MsoLineStyle</td></tr>
+          <tr><td>Range</td><td>Interaction</td><td>FileSystemObject</td><td>Frame</td><td>NewFile</td></tr>
+          <tr><td>Shape</td><td>Math</td><td>Folder</td><td>Image</td><td>SmartArt</td></tr>
+          <tr><td>Sort</td><td></td><td></td><td>UserForm</td><td>TextFrame2</td></tr>
+          <tr><td>Worksheet</td><td></td><td></td><td></td><td>TextRange2</td></tr>
+          <tr><td>XPath</td><td></td><td></td><td></td><td>ThemeColor</td></tr>
+        </table>
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">● 다음 설명을 위한 예제 : vbe에서 Object 객체 선언 및 생성방법</h6>
+        <pre class="fw-bold">
+    1) vba 라이브러리 - Interaction 클래스 - <span class="단어색칠">CreateObject</span> Function 사용
+       - Function CreateObject(<span class="단어색칠">Class</span> As String, [<span class="단어색칠">ServerName</span> As String])
+       - <span class="단어색칠">Class</span>는 "라이브러리이름.클래스이름" 문자열 (Scripting.Dictionary)
+       - <span class="단어색칠">ServerName</span>은 다른 원격 컴퓨터(서버)의 이름을 지정할 때 사용
+       - Dim As Object에서 Object는 <span class="blueviolet">정해해지지 않은</span> 객체형 자료형)
+        
+        [<u>CreateObject 메서드 사용은 Late Binding 방식</u> : 코드 실행시 정해지는 방식]
+        참조체크와 관계없고, 참조체크되어 있어도 이 방식이면 자동완성 안됨.
+        <span class="blueviolet">Dim d As Object</span>
+        <span class="blueviolet">Set d = CreateObject("<u>Scripting.Dictionary</u>")
+        ProgID(Programmatic Identifier)└──── ProgID : 라이브러리이름.클래스이름 
+        d.CompareMode = vbTextCompare '대소문자 구분 안함, 선언 직후
+        d.CompareMode = vbBinaryCompare : 대소문자 구분 (기본 설정 값)   </span>       
+        </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h6 class="fw-bold blueviolet">● COM 이 설치될때 어떤일이 일어나는가?</h6>
+
+
+
+
+
+        <BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR>
         <h6 class="fw-bold blueviolet">순차적으로 이해한 후에 다음 정보로 넘어가도록 메모한 것이다.</h6>
         <h6 class="fw-bold blueviolet">1. 엑셀에서 값형이 아닌 객체형(Object) 자료형은 변수명에 참조를 저장한다는 의미?</h6>
         <pre class="fw-bold">
@@ -1402,7 +1484,30 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
 
 
         </pre>
-
+        <h6 class="fw-bold blueviolet">● VBE 자동구문검사, (VBE - 디버그)VBA Project 컴파일 </h6>
+        <pre class="fw-bold">
+    • 자동구문검사 : 코딩시 한줄입력후 엔터칠때 문법검사
+      - VBE 메뉴에서 [도구(Tools)] ➔ [옵션(Options)] ➔ [편집기(Editor)] 탭 
+      - 오타나 괄호 누락 같은 단순 문법 규칙만 검사
+      - 자동구문검사 체크 해제시 경고창 안뜨고 빨간색으로 표시됨
+    • (VBE - 디버그)VBA Project 컴파일
+      - 자동구문검사 + Option Explicit 선언시 선언되지 않은 변수사용 확인</pre>
+        <h6 class="fw-bold blueviolet">● "Dim 변수명 As 자료형"에서 자료형은</h6>
+        <pre class="fw-bold">
+    • "값형" : Long, Byte, String 등
+    • "객체(Object)형" : 클래스모듈, 참조체크된 COM 관련 클래스 <span class="blueviolet">(COM객체)
+      - 참조체크가 되어 있어서 IntelliSense(자동완성) 기능에 의해서 뜨는것이다. </span></pre>
+        <h6 class="fw-bold blueviolet">● IntelliSense(자동완성) : 실행결과가 아닌 코드자체에서 인식할수 있는것 <br>
+        ★ 객체(Object)형인데 type에 뜨는것은 바인딩(인식하고있다는)되어 있다는 의미</h6>
+        <pre class="fw-bold">
+    • "Dim 변수명 As 자료형"에서 자료형은 TYPE이라하는데 "Dim 변수명 As"입력 후,
+      스페이스바 눌렀을때 "알고있는" TYPE을 보여줌.
+      - 클래스모듈, 참조를 체크해두어서 알고있는 COM객체의 클래스
+    • Dim d As Object : Set d = Sheets(1) → 실행해야 d 가 worksheet임을 알게 된다. 
+      - 자동완성 안됨
+    • Dim C As Worksheet : Set C = Sheets(1) → C. 하면 메서드 리스트 나옴 (참조 체크시)
+    <span class="blueviolet">• 참조체크 안하고 Dim C As Worksheet 안됨 </span>
+    <span class="blueviolet">• 참조체크 = VBA가 객체의 사용법을 항상 기억하고 있게함</span></pre>
         <h6 class="fw-bold blueviolet">● 개체(Object) 이해하기, vbe편집기에서 코드를 작성하므로 vba기준으로 이해하자. </h6>
         <h6 class="fw-bold blueviolet">● Dim 변수명 As 자료형, 자료형 중에 객체형 리스트 IntelliSense, 바인딩 </h6>
         <pre class="fw-bold">
@@ -1430,8 +1535,6 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     • Dim 변수 as 자료형 : 현재 모듈 내에서 사용 가능. 다른 모듈에서 사용 안됨 
     • Public 변수 as 자료형 : 다른 모듈에서도 사용 가능.
         </pre>
-      </div>
-      <div>
         <h6 class="fw-bold blueviolet">● CreateObject는 객체를 반환하는 Function, <span style="font-size:14px;">클래스:Interaction, 라이브러러:VBA</span></h6>
         <pre class="fw-bold">
           
