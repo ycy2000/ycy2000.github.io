@@ -1370,9 +1370,15 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
       </div>
     </div>
     <div id="vba_객체자료형1" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <h6 class="대체3줄세로1h6"></h6>
       <div>
-
+        <h6 class="fw-bold blueviolet">● COM(Component Object Model) 객체</h6>
+        <h6 class="fw-bold blueviolet">● COM 서버</h6>
+        <h6 class="fw-bold blueviolet">● Type Library : 타입 설명서</h6>
+        <h6 class="fw-bold blueviolet">● 라이브러리, 클래스(객체), 구성원(메서드)</h6>
+        <h6 class="fw-bold blueviolet">● .dll COM서버, .exe COM서버</h6>
+        <h6 class="fw-bold blueviolet">● ProgID, CLSID</h6>
+        <h6 class="fw-bold blueviolet">● COM 서버 경로</h6>
         <h6 class="fw-bold blueviolet">========== COM 객체(COM에 의해서 만들어지는 객체) ==========</h6>
         <h6 class="fw-bold blueviolet">● COM(Component Object Model)</h6>
         <pre class="fw-bold">
@@ -1417,6 +1423,42 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
         </table>
       </div>
       <div>
+        <img data-src="portal/images/문서연결_엑셀VBA/typelibrary1.png" alt="이미지없음"><br><br>
+        <h6 class="대체3줄세로2h6"></h6>
+        <h6 class="fw-bold blueviolet">● COM 이 설치될때 and vbe가 켜질때 어떤일이 일어나는가?</h6>
+        <pre class="fw-bold">
+    <span class="blueviolet">VBE - 보기 - 개체 찾아보기 - <u>*라이브러리/프로젝트*</u> [참고] 
+    1), 3), 4)는 상단에서 라이브러리/프로젝트 선택시 최 하단에서 확인할수 있는 정보
+    2)는 라이브러리에 정의된 클래스 일부</span>
+    1) 라이브러리 이름 : Scripting
+    2) 클래스 : Dictionary, File, FileSystemObject, Folder 등
+    3) 객체생성 파일경로 : C:\Windows\SysWOW64\scrrun.dll 
+    4) Type Library 이름 : Microsoft Scripting Runtime [참조에 보이는 이름]
+
+    <span class="blueviolet">[COM이 설치될때 레지스트리에 등록되는 정보, VBE와 관련]</span>
+    - 여러 파일들이 설치되면서 COM 객체 관련 몇가지 정보가 윈도우 레지스트리에 등록된다 
+    1) Type Library 이름 : Microsoft Scripting Runtime [VBE 참조에 보이는 이름]
+       - 최상위 폴더 개념이고 실질적인 정보인 2), 3)을 담고있다.
+       <span class="blueviolet">- VBE가 켜질때 이 Type Library 이름(목록)을 다 가져온다.
+         → 참조체크 되어 있으면 사용법을 읽어와 기억하는 상태유지 → IntelliSense(자동완성)</span>
+    2) ProgID(Programmatic Identifier) : "라이브러리이름.객체이름" [클래스 개수만큼]
+    3) 객체생성 파일경로 : C:\Windows\SysWOW64\scrrun.dll 
+
+
+
+
+        </pre>
+
+
+
+
+
+
+
+
+
+
+
         <h6 class="fw-bold blueviolet">● 다음 설명을 위한 예제 : vbe에서 Object 객체 선언 및 생성방법</h6>
         <pre class="fw-bold">
     1) vba 라이브러리 - Interaction 클래스 - <span class="단어색칠">CreateObject</span> Function 사용
@@ -1447,7 +1489,7 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
 
 
 
-        <h6 class="fw-bold blueviolet">● COM 이 설치될때 어떤일이 일어나는가?</h6>
+
 
 
 
@@ -1541,6 +1583,7 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
         </pre>
       </div>
       <div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <h6 class="fw-bold blueviolet">● 객체(Object) 분류 (엑셀 어플리케이션이 vba를 사용하고 있음) </h6>
         <pre class="fw-bold">
     <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
