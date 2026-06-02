@@ -108,15 +108,11 @@
       <div>
         <h6 class="fw-bold">----------------------------------</h6>
         <h6 class="fw-bold" title="객체_COM1">1) COM(Component Object Model), 참조, 참조체크, vbe에서 관련정보 보기</h6>
-        <h6 class="fw-bold" title="COM객체생성과정">2) COM 객체 생성과정</h6>
-        <h6 class="fw-bold" title="COM_객체생성과정_수집1">COM_객체생성과정_수집1</h6>
-        <h6 class="fw-bold" title="COM_객체생성과정_수집2">COM_객체생성과정_수집2</h6>
-        <h6 class="fw-bold">Dim 변수명 As 자료형, 개체(Object)자료형이 생성되는 과정, IntelliSense(자동완성), 바인딩</h6>
-        <h6 class="fw-bold" title="엑셀_프로그램개념분리">[개념분리]엑셀 프로그램, vba, com('도구-참조'에 등록된 객체, 클래스모듈과 유사)</h6>
-        <h6 class="fw-bold">1.개체객체Object(Built-In,com,클래스모듈,폼),바인딩,이벤트감지와Early-Binding</h6>
-        <h6 class="fw-bold">1-1.ALT+F11로 열리는 것은 VBE(VBA Editor) 이다.</h6>
+        <h6 class="fw-bold" title="COM객체생성과정">2) 바인딩(객체의 기능 연결), 윈도우에서 작동하는 보이지 않는 COM Runtime의 역할</h6>
+        <h6 class="fw-bold" title="COM_컴파일자동완성자동구문검사">3) VBA Project 컴파일, 자동구문검사, IntelliSense(자동완성)</h6>
+        <h6 class="fw-bold" title="COM_collection특수">4) VBA 내장객체 Collection이 CreateObject 사용안되는 이유</h6>
+        <h6 class="fw-bold" title="COM_BuiltInObject">5) Built-in Object, Native Object, ★★WithEvents★★, ★★객체의 생명주기★★</h6>
         <h6 class="fw-bold">1-1.Public WithEvents cBtn As MSForms.CommandButton</h6>
-        <h6 class="fw-bold" title="데이터타입에대해서_일반_개체">vba 데이터타입, 사용목적, 일반/개체 차이점, set/let(생략) </h6>
         <h6 class="fw-bold blueviolet" title="객체와SET과NEW">(... As 자료형) 중에서 Object(객체), Set 과 New, 폼도 클래스모듈도 Object라는점!!</h6>
         <h6 class="fw-bold" title="엑셀_메모">엑셀메모1 : </h6>
       </div>
@@ -1384,28 +1380,34 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
       독립된 소프트웨어 부품입니다.
     • <span class="단어색칠">Component</span> (각각의 클래스, 클래스는 사용법을 정의하여 만들어놓은 것)
       - 독립적으로 제공되고, 다른 프로그램이 가져다 사용할 수 있는 기능 단위
-    • <span class="단어색칠">Component Object</span>
+    • <span class="단어색칠">Component Object</span>  (클래스의 코드동작에 의해서 반환되는 인스턴스)
       - Component 기능에 의해서 생성되어 메모리에 로드되는 객체
-      - 해당 객체는 Component의 기능을 가지고 있다.
+      - Component Object 들을 정의해놓은 것
       - vbe에서 변수가 컴파일 단계에서 객체를 참조할때 : Early Binding
         조건 : 참조체크 + vbe 코드에서 자료형으로 해당 객체(클래스)를 선언
       - vbe에서 변수가 코드실행 단계에서 객체를 참조할때 : Late Binding
-    • <span class="단어색칠">COM 서버</span>
-      - Component Object 생성하는 파일 
+    • <span class="단어색칠">Library(라이브러리), 자료형들의 집합체</span> Excel, VBA, Scripting,...
+      - 해당 COM 관련, Component Object 들을 정의해놓은 것
+      - 표현 : (라이브러리) Scripting 의 클래스는 대표적으로 Dictionary가 있다.
+    • <span class="단어색칠">클래스</span> Range, Worksheet, Dictionary, Collection,...
+      - 개별 Component Object를 지칭하는 이름 
+    • <span class="단어색칠">COM 서버</span> EXCEL.EXE, VBE7.DLL, FM20.DLL, MSO.DLL, scrrun.dll, ...
+      - Component Object 생성하는 파일 (프로그래밍 코드가 들어있다. 클래스처럼 여러 함수)
+      - 라이브러리가 가진 클래스들의 코드.. 등, TypeLib, vTable 등 여러 정보 제공
     • <span class="단어색칠">Type Library(TypeLib)</span>
       - 해당 COM이 제공하는 Type(자료형, 클래스, component)들의 사용설명서 
-      - Type(자료형, 클래스, component)
-      - Library(자료형들의 집합체)</pre>
+      - 예시 : 라이브러리인 Scripting을 풀어서 설명해주는 이름
+        Microsoft Scripting Runtime
+    • <span class="단어색칠">Runtime(환경, 실행시) : 표현예시</span>
+      - vba 런타임 → vba 환경에서는, vba 실행시에는
+    • <span class="단어색칠">ProgID : "라이브러리이름.클래스이름" 문자열</span>
+      - 예시 : Scripting.Dictionary, CLSID는 ProgID 찾았을때 컴퓨터가 사용하는 ID
+      - COM Runtime이 ProgID 요청받으면 (인스턴스 만들어 달라는 요청) 
+        VBA ↔ <u>COM Runtime</u> ↔ DLL(COM 서버) ↔ 객체 인스턴스</pre>
         <h6 class="fw-bold blueviolet">● COM 설치시 레지스트리에 저장되는 정보와 큰틀에서 사용처</h6>
         <pre class="fw-bold">
     1), 2), 3)은 상호 연결되는 묶음자료 성격이다.
     1) <span class="단어색칠">ProgID</span>, CLSID
-       - Dim d As Object
-         Set d = CreateObject("Scripting.Dictionary")
-         CreateObject는 vba라이브러리의 Interaction클래스의 객체호출 메서드
-       - ProgID : 예시 코드에서 사용자가 전달하는 "라이브러리.클래스" 문자열
-       - CLSID : ProgID 를 레지스트리에서 검색하여, 
-         컴퓨터가 COM 서버에 객체생성요청을 하는 고유문자열
        <span class="단어색칠">- 하나의 라이브러리(Scripting)에서 여러 클래스가 있어서</span> 
          <span class="단어색칠">ProgID 가 여러개 레지스트리에 등록된다.</span>
     2) Type Library(<span class="단어색칠">TypeLib</span>) : 타입 설명서, 객체 사용 설명서
@@ -1413,8 +1415,7 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
        - Visual Basic For Applications, Microsoft Scripting Runtime 등
     3) <span class="단어색칠">COM 서버</span> 경로
        - COM 서버 : EXCEL.EXE, VBE7.DLL, scrrun.dll 등. 객체 생성 - 조작
-       - COM 서버에 CLSID 요청 - 요청받은 객체를 생성하여 메모리에 로드 
-       - 생성된 객체의 조작요청을 처리하여 변경결과를 객체에 반영</pre>
+       - COM 서버 : 생성된 객체의 조작요청을 처리하여 변경결과를 객체에 반영</pre>
       </div>
       <div>
         <h6 class="fw-bold blueviolet">● VBE - 보기 - 개체 찾아보기 - 라이브러리/프로젝트 [참고] </h6>
@@ -1464,10 +1465,13 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
 
       </div>
       <div>
-        <h6 class="fw-bold blueviolet">● VBE 를 켜면 모든 TypeLib 을 읽어온다. → "vbe - 도구 - 참조" 리스트에 뜬다</h6>
+        <h6 class="fw-bold blueviolet">● VBE 를 켜면, 어떤 COM객체가 설치되었는지 레지스트리를 검색한다.</h6>
+        <pre class="fw-bold">
+    1) 사용가능 여부와 관계없이, 설치된 Type Library(TypeLib) 이름을 가져온다.
+       "vbe - 도구 - 참조" 리스트에 뜬다.</pre>
         <img data-src="portal/images/문서연결_엑셀VBA/vbe_도구_참조.png" alt="이미지없음">
         <pre class="fw-bold">
-    <span class="blueviolet">[+ 참조가 체크되었다면]
+    <span class="blueviolet">2) [+ 참조가 체크되었다면]
     - "vbe - 보기 - 개체 찾아보기"에 설명서가 등록되어 볼 수 있다.
     - "Dim d As 자료형"에서 자료형에 해당하는 "클래스" = Component(독립적인 기능)
     - 라이브러리를 클릭하면 하단에서 <u>"라이브러리이름, COM서버 경로, 설명서이름"</u> 확인가능</span> 
@@ -1479,12 +1483,21 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     <div id="COM객체생성과정" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold blueviolet">● Binding : "VBA ↔ COM 인터페이스" 객체사용법 연결</h6>
+        <h6 class="fw-bold blueviolet">● 인터페이스(Interface), 예시 UI (User Interfase), COM Interfase</h6>
         <pre class="fw-bold">
-    • Early Binding : 참조체크 + 선언시 COM 클래스로 선언
-      - Dim d As Dictionary
-        Set d = New Dictionary
-      - IntelliSense(자동완성) 사용가능, 그러나 다른 컴에서 참조체크 되어 있어야됨  
+    • 서로 다른 두 대상(기기, 시스템, 사람, 소프트웨어)이 
+      정보를 주고받을 수 있도록 연결해 주는 접점이나 경계면을 뜻합</pre>
+        <h6 class="fw-bold blueviolet">● COM 사용시 윈도우의 COM 인터페이스가 COM 객체간 상호작용을 중계함</h6>
+        <pre class="fw-bold">
+    • ★★ COM Runtime 이 있다 : 보이지 않지만 COM 관련 동작을 연결해주는 환경이다. ★★</pre>
+        <h6 class="fw-bold blueviolet">● Binding : 객체(객체 생성전)의 사용법을 연결하는 시점과 관련된다.</h6>
+        <h6 class="fw-bold blueviolet">● Early Binding</h6>
+        <pre class="fw-bold">
+    • Early Binding 조건 : 참조체크 + 선언시 COM 클래스로 선언
+      1) Dim d As Dictionary <span class="단어색칠">← 변수를 알게되는 시점. Set과 별개이다.</span>
+      2) IntelliSense(자동완성) 사용가능, 그러나 다른 컴에서 참조체크 되어 있어야됨  
+      3) 1)처럼 선언되어 있어야 New 사용 가능, Set d = New Dictionary
+
     • Late Binding : 코드 실행시 정해지는 방식
       <span class="blueviolet">- Dim d As Object</span>
       - Object 는 vba 에서 제공하는 정해지지않은 객체자료형
@@ -1493,101 +1506,46 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
       - CreateObject는 vba 라이브러리 - Interaction 클래스의 메서드
       - 참조체크와 관계없고, 참조체크되어 있어도 이 방식이면 자동완성 안됨.</pre>
         <h6 class="fw-bold blueviolet">● COM 인터페이스 : COM 관련 COM 상호간 여러가지 처리</h6>
-        <pre class="fw-bold">
-          
-        </pre>
         <h6 class="fw-bold blueviolet">● Set d = CreateObject("<u>Scripting.Dictionary</u>") [생성과정]</h6>
         <pre class="fw-bold">
-    [Late Binding 방식]
-    1. 요청 : "Scripting.Dictionary" 객체 만들어주세요.
-       - 레지스트리 검색 : 요청받은 ProgID 에 매칭되는 CLSID 검색 - COM 서버 파일 확인
-       - ProgID 를 못찾으면 에러남
-    2. COM 서버(실행파일) 실행, 여러 클래스 중에서 "Scripting.Dictionary"객체를 생성하는
-       클래스(기능) 실행 (여기서 클래스는 기능이며 객체가 생성된 것은 아직 아님)
-    3. Scripting.Dictionary 객체를 만들어 VBA 메모리에 로드
-1. "Scripting.Dictionary" 검색
-   ↓
-2. ProgID 확인
-   ↓
-3. CLSID 조회
-   ↓
-4. scrrun.dll 위치 확인
-   ↓
-5. COM 객체 생성 요청
-   ↓
-6. 객체가 IDispatch 반환
-   ↓
-7. GetIDsOfNames("Add")
-   ↓
-8. Invoke(DISPID_ADD)
-
-즉:
-
-ProgID/CLSID 는 "객체 찾기"
-IDispatch 는 "객체 사용"
-
-단계입니다.
-        </pre>
-
-
-
-
-
-
-
-
-
-
+    [Late Binding 방식, 요청 : "Scripting.Dictionary" 객체 만들어주세요.]
+    1. "Scripting.Dictionary" 레지스트리에서 검색
+      ↓
+    2. ProgID 확인 - CLSID 확인
+      ↓
+    3. COM 서버, scrrun.dll 위치 확인
+      ↓
+    4. scrrun.dll vba 메모리에 로드 - COM 객체 생성 요청
+      ↓
+    5. 객체 생성 후 - 객체가 IDispatch 반환 : Interfase Dispatch(배치, 전달)
+      ↓ IDispatch의 GetIDsOfNames,  Invoke 메서드
+    6. GetIDsOfNames("Add") : add 메서드 vtable번호(DISPID_ADD) 뭔가요
+      ↓
+    7. Invoke(DISPID_ADD) : 함수 실행
+      ↓
+    8. Scripting.Dictionary 객체를 만들어 VBA 메모리에 로드</pre>
       </div>
       <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
+        <h6 class="fw-bold blueviolet">● Set 키워드는 개체형 객체의 사용법을 셑팅한다는 의미라고 이해하자.</h6>
+        <h6 class="fw-bold blueviolet">● New 키워드는 Early Binding을 상태의 인스턴스(객체)를 생성한다고 이해하자.</h6>
+        <img data-src="portal/images/문서연결_엑셀VBA/com_vtable.png" alt="이미지없음"><br>
+        <img data-src="portal/images/문서연결_엑셀VBA/com_early와late.png" alt="이미지없음">
       </div>
       <div>
-        <pre class="fw-bold">
-    <span class="blueviolet">[COM이 설치될때 레지스트리에 등록되는 정보, VBE와 관련]</span>
-    - 여러 파일들이 설치되면서 COM 객체 관련 몇가지 정보가 윈도우 레지스트리에 등록된다 
-    1) Type Library 이름 : Microsoft Scripting Runtime [VBE 참조에 보이는 이름]
-       - 최상위 폴더 개념이고 실질적인 정보인 2), 3)을 담고있다.
-       <span class="blueviolet">- VBE가 켜질때 이 Type Library 이름(목록)을 다 가져온다.
-         → 참조체크 되어 있으면 사용법을 읽어와 기억하는 상태유지 → IntelliSense(자동완성)</span>
-    2) ProgID(Programmatic Identifier) : "라이브러리이름.객체이름" [클래스 개수만큼]
-    3) 객체생성 파일경로 : C:\Windows\SysWOW64\scrrun.dll  </pre>
-
-
-        <BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR>
         <h6 class="fw-bold blueviolet">순차적으로 이해한 후에 다음 정보로 넘어가도록 메모한 것이다.</h6>
-        <h6 class="fw-bold blueviolet">1. 엑셀에서 값형이 아닌 객체형(Object) 자료형은 변수명에 참조를 저장한다는 의미?</h6>
+        <h6 class="fw-bold blueviolet">1. 엑셀에서 값형이 아닌 객체형(Object) 자료형은 변수명에 사용법을 셑팅(참조)한다는 의미</h6>
         <pre class="fw-bold">
     • "객체.속성명, 객체.메소드명" 처럼 Object 객체는 사용법이 정의되어 있는 객체이다.
-    • 큰 틀에서 Object 객체는 COM 객체이다. 
+    • Object 객체는 COM 객체이다. 
     • COM 객체는 독립적으로 설계되어 프로그램이 필요시 가져다 쓴다.
-    • COM 객체는 모듈이라고 대충 이해하면 되겠고 내부에 여러 기능들이 있다. 
-    • VBE에서 변수명에 대입된 COM객체와 관련된 실제 동작은 COM객체의 모듈에서 이루어진다.
-    <span class="blueviolet">• 참조의 의미 : VBE에서는 문자열작성 - 해당 COM모듈에서 문자열을 해석/실행 </span>
-        </pre>
-        <h6 class="fw-bold blueviolet">● 엑셀에서 값형이 아닌 객체형(Object) 자료형으로써의 COM 객체</h6>
+    • COM 객체는 여러 기능과 속성들이 있다. 
+    • VBE에서 변수명에 대입된 COM객체와 관련된 실제 동작은 COM 서버에서 이루어진다. </pre>
         <h6 class="fw-bold blueviolet">● (vbe - 도구 - 참조) 참조목록에서 vba와 무관한것이 대부분이다.</h6>
-        <h6 class="fw-bold blueviolet">● COM (Component Object Model)</h6>
-        <pre class="fw-bold">
-    • 마이크로소프트가 개발한 기술로, 서로 다른 언어로 만들어진 소프트웨어 컴포넌트(부품)들이 
-      서로 통신하고 기능을 공유할 수 있게 해주는 표준 규격입니다
-    <span class="blueviolet">• 간단히만 이해하자. 독립적으로 존재하며 다른 프로그램에서 필요로할때 사용할 수 있다.</span>
-        <h6 class="fw-bold blueviolet">● COM (Component Object Model)</h6>
-
-    <span class="blueviolet">• 설계도</span>
-
-
-
-
-
-
-
-
-
-        </pre>
+      </div>
+    </div>
+    <div id="COM_컴파일자동완성자동구문검사" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
         <h6 class="fw-bold blueviolet">● VBE 자동구문검사, (VBE - 디버그)VBA Project 컴파일 </h6>
         <pre class="fw-bold">
     • 자동구문검사 : 코딩시 한줄입력후 엔터칠때 문법검사
@@ -1601,8 +1559,7 @@ IDispatch 는 "객체 사용"
     • "값형" : Long, Byte, String 등
     • "객체(Object)형" : 클래스모듈, 참조체크된 COM 관련 클래스 <span class="blueviolet">(COM객체)
       - 참조체크가 되어 있어서 IntelliSense(자동완성) 기능에 의해서 뜨는것이다. </span></pre>
-        <h6 class="fw-bold blueviolet">● IntelliSense(자동완성) : 실행결과가 아닌 코드자체에서 인식할수 있는것 <br>
-        ★ 객체(Object)형인데 type에 뜨는것은 바인딩(인식하고있다는)되어 있다는 의미</h6>
+        <h6 class="fw-bold blueviolet">● IntelliSense(자동완성) : 객체의 사용법(Type Library)이 등록되어 있음을 의미</h6>
         <pre class="fw-bold">
     • "Dim 변수명 As 자료형"에서 자료형은 TYPE이라하는데 "Dim 변수명 As"입력 후,
       스페이스바 눌렀을때 "알고있는" TYPE을 보여줌.
@@ -1612,93 +1569,73 @@ IDispatch 는 "객체 사용"
     • Dim C As Worksheet : Set C = Sheets(1) → C. 하면 메서드 리스트 나옴 (참조 체크시)
     <span class="blueviolet">• 참조체크 안하고 Dim C As Worksheet 안됨 </span>
     <span class="blueviolet">• 참조체크 = VBA가 객체의 사용법을 항상 기억하고 있게함</span></pre>
-        <h6 class="fw-bold blueviolet">● 개체(Object) 이해하기, vbe편집기에서 코드를 작성하므로 vba기준으로 이해하자. </h6>
-        <h6 class="fw-bold blueviolet">● Dim 변수명 As 자료형, 자료형 중에 객체형 리스트 IntelliSense, 바인딩 </h6>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-    • 바인딩 : vba가 객체를 아는것. 객체의 사용설명서를 아는것(조작법) + 객체의 구조를 참조 
-    • IntelliSense(자동완성), Dim 변수명 As 스페이스바 눌렀을때 뜨는 리스트와 관련됨
-      - vba가 알고있는(binding되어있는) 객체의 리스트가 나열됨
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="COM_collection특수" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">● Collection은 COM 등록 객체가 아님</h6>
+        <pre class="fw-bold">
+    • ProgID = VBA.Collection 같은 COM 등록 정보가 존재하지 않습니다.
+    • Collection은 VBA 런타임(VBE/VB Runtime)에 내장된 특수 객체입니다.
+      <span class="단어색칠">같은 부류로 UserForm, 클래스 모듈(Class Module)</span> 
+    • 정리 :  VBE의 개체 브라우저(F2)에서
+      VBA
+      └ Collection 이 보인다고 해서 COM ProgID가 있다는 뜻은 아닙니다.
 
 
 
 
+</pre>
 
-
-
-    <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
-    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체 → VBA가 인식함</span> 
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
+        <pre class="fw-bold">
+          
+        </pre>
+      </div>
+    </div>
+    <div id="COM_BuiltInObject" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">● Built-in Object(New 를 사용하지 않는 Object 객체) 를 이해하기 </h6>
+        <pre class="fw-bold">
+    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체</span> 
       - Dim ws as Worksheet (Workseet, Range 등), Set ws = ThisWorkbook.Sheets("모듈")
       - Set 을 통해 설정하고 New 는 없음.
-    <span class="단어색칠">• Native Object : VBA 언어 자체에서 제공하는 표준 클래스 객체 또는 기본 제공 객체</span>
-      - Collection 등 → Dim 추출컬랙션 As Collection 또는 Dim 추출컬랙션 As Object
-      - Set 컬랙션 = New Collection  → 컬랙션.add item 
-        <span class="단어색칠">New를 통해 엑셀이 인식할 수 있는 과정이 필요함, 그 후 값을 대입, 추가 한다.</span>
-        ※ 외부 플러그인을 통해서 새로운 객체를 사용할수도 있다. </pre>
-        <h6 class="fw-bold blueviolet">● 일단 Dim 과 Public 은 scope 개념이다. 예시 : 최상단에 선언하는 경우</h6>
+    <span class="단어색칠">• vba에서 접근할 수 있는 전역 변수를 EXCEL에서 편리하게 제공한다.</span>
+  "Excel 환경의 핵심 객체들에 대해 VBA가 전역 참조(전역 변수와 비슷한 접근점)를 제공한다"</pre>
+        <h6 class="fw-bold blueviolet">● Public WithEvents cBtn As MSForms.CommandButton </h6>
         <pre class="fw-bold">
-    • Dim 변수 as 자료형 : 현재 모듈 내에서 사용 가능. 다른 모듈에서 사용 안됨 
-    • Public 변수 as 자료형 : 다른 모듈에서도 사용 가능.
-        </pre>
-        <h6 class="fw-bold blueviolet">● CreateObject는 객체를 반환하는 Function, <span style="font-size:14px;">클래스:Interaction, 라이브러러:VBA</span></h6>
-        <pre class="fw-bold">
-          
-        </pre>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <h6 class="fw-bold blueviolet">● 객체(Object) 분류 (엑셀 어플리케이션이 vba를 사용하고 있음) </h6>
-        <pre class="fw-bold">
-    <span class="blueviolet">*New* : 엑셀에서 vba를 사용하는데 vba가 갖고 있는 객체를 사용할때 엑셀에게 알려줘야함</span>
-    <span class="단어색칠">• Built-in Object :  엑셀 어플리케이션에 설정되어 있는 객체 → VBA가 인식함</span> 
-      - Dim ws as Worksheet (Workseet, Range 등), Set ws = ThisWorkbook.Sheets("모듈")
-      - Set 을 통해 설정하고 New 는 없음.
-    <span class="단어색칠">• Native Object : VBA 언어 자체에서 제공하는 표준 클래스 객체 또는 기본 제공 객체</span>
-      - Collection 등 → Dim 추출컬랙션 As Collection 또는 Dim 추출컬랙션 As Object
-      - Set 컬랙션 = New Collection  → 컬랙션.add item 
-        <span class="단어색칠">New를 통해 엑셀이 인식할 수 있는 과정이 필요함, 그 후 값을 대입, 추가 한다.</span>
-        ※ 외부 플러그인을 통해서 새로운 객체를 사용할수도 있다. </pre>
-        <h6 class="fw-bold blueviolet">● 일단 Dim 과 Public 은 scope 개념이다. 예시 : 최상단에 선언하는 경우</h6>
-        <pre class="fw-bold">
-    • Dim 변수 as 자료형 : 현재 모듈 내에서 사용 가능. 다른 모듈에서 사용 안됨 
-    • Public 변수 as 자료형 : 다른 모듈에서도 사용 가능. </pre>
-        <h6 class="fw-bold blueviolet">● Dim 변수 as 자료형 에서 "자료형"</h6>
-        <pre class="fw-bold">
-    • 객채(Object) 형식은 객체를 통하여 <span class="blueviolet">참조(주소를 지정하면 찾아서</span> ) 내어주는 형식 
-    • 객체가 아닌 형식, 문자열, 배열, 숫자 등은 직접 내어주는 형식 
-    • 객체가 아닌 형식은 Dim 일반 As String → 일반 = "문자" → Set 을 쓰면 안된다.
-    • 객체(Object) 형식은 Dim 범위 As Range → Set 범위 = Range("a1:c4") → Set 을 써야 된다.</pre>
-        <h6 class="fw-bold blueviolet">● 객체(Object)는 참조형식이라는 내용 예시</h6>
-        <pre class="fw-bold">
-    • Range 객체는 좌표를 참조한다.
-      Dim a As Range
-      Set a = ThisWorkbook.Sheets(1).Range("a1").Offset(1, 0)
-      
-    • Collection 객체는 key를 참조한다. 
-      Dim 컬랙션 As Object
-      Set 컬랙션 = New Collection 
-      컬랙션.Add "고유키1" "Item1"
-      컬랙션.Add "고유키2" "Item2"
-      Debug.Print 컬랙션("고유키2")  → Item2 </pre>
-        <h6 class="fw-bold blueviolet">● 생성해 놓은 클래스모듈, 폼 모두 내장 객체이다.  </h6>
-        <h6 class="fw-bold blueviolet">● 일반 모듈은 객체가 아니지만,</h6>
-        <pre class="fw-bold">
-    • 모듈이름.함수이름 으로 함수를 호출할 수 있다. 이 경우 Private 함수도 호출 된다. </pre>
-        <h6 class="fw-bold blueviolet">● Set 은 객체를 초기화한다. 폼은 초기화 이벤트가 있다면 실행 된다.</h6>
-        <pre class="fw-bold">
-    • 클래스 모듈의 경우 내부의 Public 변수 as variant 등이 초기화 된다. 
-    • 폼의 경우 Set을 하면 폼에 초기화 이벤트가 등록되어 있으면 초기화 이벤트 작동한다. </pre>
-        <h6 class="fw-bold blueviolet">● As Variant 로 선언하면 객채인 경우 알아서 Set 을 해야 한다. </h6>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-
-        </pre>
-      </div>
-    </div>
-    <div id="COM_객체생성과정_수집1" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-
-        </pre>
+    <span class="blueviolet">• 위 구문은 클래스모듈 "cls_양_리스트폼_cmd"의 최상단 선언부</span>
+    <span class="blueviolet">• MSForms.CommandButton 객체처럼 이벤트 감지 기능이 있는 객체여야한다.</span>
+    • WithEvents는 모듈 최상단에 선언하는 문법구문이다. 파고들지 말자.
+    • "WithEvents 다음에 선언하는 변수의 이벤트를 수신하겠다."의 의미이다.
+    <span class="단어색칠">[작동순서 예시]</span>
+    1. 커맨드버튼 자체가 이벤트를 감지
+       - MSForms.CommandButton 클래스에 정의된 메서드중에 클릭이벤트 등의 함수가 있다.
+    2. 폼에 설정된 클릭이벤트 실행(설정된 것이 있는 경우)
+    3. WithEvents 선언하였으므로 이곳 코드 추가 실행
+  </pre>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
@@ -1714,188 +1651,7 @@ IDispatch 는 "객체 사용"
       </div>
     </div>
         
-    <div id="COM_객체생성과정_수집2" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
 
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-    </div>
-        
-        
-        
-    <div id="데이터타입에대해서_일반_개체" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-1. 개체변수(Object)를 지정할 때 Dim / Set을 사용하는 이유
-개체(Object)를 VBA 변수로 지정할 때에는 반드시 Set 키워드를 함께 사용해야 합니다. 그 이유를 이해하려면 먼저 Dim (Declare In Memory)이 어떤 동작을 수행하는지 정확히 알아야 합니다.
-
-1-A. Dim (Declare In Memory) : 메모리를 예약
-VBA에서 Dim은 변수를 선언하기 위해 사용하는 키워드입니다. 변수를 선언한다는 것은 프로그래머 입장에서 코드 작성을 편리하게 만들어 주는 동시에, 컴퓨터 입장에서는 코드 실행에 필요한 메모리 영역을 미리 할당하여 실행 속도를 최적화하는 작업이기도 합니다.
-
-즉, Dim으로 변수를 선언하면 VBA는 컴퓨터에게 "이 코드를 실행하려면 이만큼의 메모리가 필요하니 미리 예약해 두자"라는 명령을 전달합니다.
-
-엑셀 VBA 개체 Object 변수 강의 2
-
-1-B. Set: 개체변수를 할당
-Dim으로 변수를 선언한 뒤, 일반 데이터 타입(숫자·문자·논리값)은 Set 없이 바로 값을 대입할 수 있지만, 개체(Object) 데이터 타입은 반드시 Set 키워드를 사용해 데이터를 할당해야 합니다.
-
-엑셀 VBA 개체 Object 변수 강의 3
-
-1-C. 왜 개체(Object) 변수 안에 데이터를 할당할 때는 Set을 사용하나요?
-일반 데이터 타입은 Set 없이도 변수에 곧바로 값을 대입할 수 있습니다. 그 이유는 무엇일까요?
-
-사실 일반 데이터 타입도 원칙적으로는 값을 할당할 때 앞에 'Let' 키워드를 입력해야 하지만, VBA는 사용자의 편의를 위해 Let을 기본값으로 처리하여 사용자가 별도의 키워드 없이 바로 값을 대입할 수 있도록 설계되어 있습니다.
-
-엑셀 VBA 개체 Object 변수 강의 4
-
-2. VBA 일반 데이터타입과 개체 데이터타입의 차이점
-두 데이터 타입의 차이는 다음 한 줄로 정리할 수 있습니다.
-
-일반 데이터타입의 사용 목적 ⇨ 데이터의 입력 / 출력
-개체 데이터타입의 사용 목적 ⇨ 데이터의 입력 / 출력을 위한 프로시저(명령문) 동작
-일반 데이터 타입과 개체 데이터 타입의 보다 자세한 차이점은 영상강의에서 단계별로 설명합니다.
-
-2-A. 일반 데이터타입의 입/출력 확인
- 코드 복사
-Sub Test1()
- 
-Dim myName as String
-Dim myAge as Integer
- 
-myName = "오빠두"
-myAge = 20
- 
-Msgbox myName
-Msgbox myAge
- 
-End Sub
-2-B. 개체 데이터타입의 입/출력 확인
- 코드 복사
-Sub test2()
- 
-Dim myRange As Range
- 
-Set myRange = Sheet1.Range("A1")
- 
-myRange.Value = "오빠두"
- 
-MsgBox myRange.Address
-Msgbox myRange.ColumnWidth
- 
-myRange.ColumnWidth = 30
- 
-myRange.Interior.Color = vbYellow
- 
-End Sub
-
-3. VBA에서 개체변수(Object 변수)는 왜 사용하는가?
-개체변수가 왜 필요한지 이해하기 위해 자동차에 비유한 예시를 살펴보겠습니다.
-
-VBA 변수의 보다 기본적인 개념이 궁금하다면 엑셀 VBA - 자주 쓰는 변수 7가지 총정리 강의를 먼저 참고해 주세요.
-
-변수	⇨ 자동차
-데이터	⇨ 자동차에 탑승하는 사람
-데이터타입	⇨ 자동차의 종류 (차의 크기, 차의 종류, 차의 옵션 등)
-3-A. 일반 데이터타입 설정의 예시 (자동차의 크기를 정할 때)
-자동차의 종류 가운데 '자동차의 크기'를 지정해 보겠습니다. 자동차의 크기는 일반적으로 다음과 같이 사이즈가 정해져 있습니다.
-
-자동차의 크기 = "소형차" 또는 "중형차" 또는 "준중형차" 또는 "대형차"
-3-B. 개체 데이터타입 설정의 예시 (바퀴의 종류를 정할 때)
-이번에는 자동차의 옵션 중 하나인 바퀴의 종류를 지정해 보겠습니다. 바퀴는 타이어의 종류, 금속 재질, 색상 등 다양한 속성으로 구성되어 있습니다.
-따라서 바퀴를 지정할 때에는 여러 가지 속성을 조합해 종류를 정의해야 합니다.
-
- 코드 복사
-Set 바퀴의종류 As 자동차바퀴
-바퀴의종류.타이어종류 = "레이싱용"
-바퀴의종류.금속의재질 = "합금"
-바퀴의종류.색상 = "은색"
-이처럼 바퀴는 여러 속성을 조합해 원하는 형태를 정의해야 합니다.
-
-타이어 하나를 교체하는 작업만 보더라도 공기를 빼고 고무를 분리하는 등 여러 단계를 거치게 됩니다. 그러나 사용자 입장에서 중요한 것은 세부 작업 공정이 아니라, 어떤 종류의 타이어를 선택할지 결정하는 일입니다.
-
-따라서 개체변수를 사용하면 여러 속성값이 필요한 대상을 마치 블록을 조립하듯 다룰 수 있어, 코드를 한층 쉽고 체계적으로 작성할 수 있습니다.
-
-엑셀 VBA 개체 Object 변수 강의 8
-
-3-C. 개체 변수를 이해하기 위한 클래스모듈 설정해보기
-클래스 모듈은 사용자가 VBA 안에 직접 Object(개체)를 정의할 수 있도록 지원하는 모듈입니다.
-
-아래의 코드를 클래스 모듈에 입력하고 모듈 이름을 '자동차'로 변경하면, 해당 워크북 안에서 '자동차'라는 개체변수를 자유롭게 사용할 수 있습니다.
-
- 코드 복사
-'## 클래스모듈 안에 입력하세요.
-'## 클래스모듈 이름은 '자동차'로 변경해주세요.
- 
-Enum 엔진
-	Cc1000 = 1
-	Cc2000 = 2
-	Cc3000 = 3
-End Enum
- 
-Public 엔진종류 As 엔진
-Public 선팅 As Boolean
-엑셀 VBA 개체 Object 변수 강의 10
-
- 코드 복사
-'##일반 모듈안에 입력하세요.
-'##클래스모듈안에 속성을 설정하였으므로, 새자동차 입력후 .(점)을 입력하면편집창에서 해당하는 속성값을 자동으로 보여줍니다.
- 
-Sub Test3()
- 
-Dim 새자동차 AS 자동차
- 
-새자동차.엔진종류 = cc2000
-새자동차.선팅 = True
- 
-End Sub
-엑셀 VBA 개체 Object 변수 강의 5
-
-
-4. VBA에서 Set 없이 개체(Object) 변수에 데이터를 할당할 경우?
-VBA에서 Set 키워드 없이 개체(Object) 변수에 데이터를 할당하면 'Runtime 91 (런타임 91) 에러'가 발생합니다.
-
-엑셀 VBA 개체 Object 변수 강의 7
-
- 코드 복사
-Sub Test4()
- 
-Dim WB As Workbook
-WB = ThisWorkbook  '## Set을 WB 앞에 입력하세요.
-MsgBox WB.Name
- 
-End Sub
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-        <pre class="fw-bold">
-          
-        </pre>
-      </div>
-    </div>
         
     <div id="객체와SET과NEW" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
