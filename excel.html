@@ -1631,8 +1631,8 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
         b) Set d = New Dictionary [참조설정된 경우]
         b) Set d = New Scripting.Dictionary.Dictionary [참조설정된 경우]
     <span class="단어색칠">• Built-in Object 설명 추가</span>
-      - 엑셀 프로그램 실행시 객체가 생성되면서 항상 살아 있어 참조가능
-      - Range, Worksheet, Workbook, UserForm 등 
+      - 엑셀 프로그램 실행시 Excel 라이브러리의 객체가 생성되면서 항상 살아 있어 참조가능
+      - Range, Worksheet, Workbook 등 
       - Ser rng = Range("a1:b100")</pre>
         <h6 class="fw-bold blueviolet">------ 이벤트 코드 실행 예시 (커맨드버튼의 클릭이벤트시 실행되는 코드) ------</h6>
         <h6 class="fw-bold blueviolet">[딕셔너리 같은 경우 "클릭" 같은걸 할 수 있는 상태가 아니므로 클릭 이벤트는 없다.]</h6>
@@ -1668,7 +1668,15 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
         <pre class="fw-bold">
     1) 객체는 살아있는 상태여야 하므로 객체의 생명주기에 대한 이해가 필요하다.
     2) 살아있다 → 폼이 인지하고 있는 <span class="단어색칠">변수로써, 또는 변수의 클래스로써 존재하고 있음.</span> </pre>
-
+        <div class="세로pre여러개div">
+          <pre>
+    [WithEvents 사용 설명 : 다음 내용을 인지하면서 진행]
+    - WithEvents 는 클래스도 아니고 단지 선언이며 다음과 같이 해석하면 된다. 
+      → "현재 선언하는 변수의 이벤트에 대해 VBA 에서도 별도로 감지하고 실행한다."
+      → 이해를 돕기위함 표현 : 이벤트 감지 및 실행을 위한 특수한 객체
+      → 어딘가에(변수에, 배열에, Collection에,..) 살아있는 상태로 존재하면 된다.
+    - WithEvents 는 하나의 객체에 선언하는 것이다.</pre>
+        </div>
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
@@ -1679,37 +1687,32 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     <div id="COM_withevents" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
-        <h6 class="fw-bold blueviolet">● cBtn(커맨드버튼 객체)가 살아있는 상태 알기 및 살아있는 상태 유지 방법</h6>
-        <div class="세로pre여러개div">
-          <pre>
-    [WithEvents 사용 설명 : 다음 내용을 인지하면서 진행]
-    - WithEvents 는 클래스도 아니고 단지 선언이며 다음과 같이 해석하면 된다. 
-      → "현재 선언하는 변수의 이벤트에 대해 VBA 에서도 별도로 감지하고 실행한다."
-      → 이해를 돕기위함 표현 : 이벤트 감지 및 실행을 위한 특수한 객체
-      → 어딘가에(변수에, 배열에, Collection에,..) 살아있는 상태로 존재하면 된다.
-    - WithEvents 는 하나의 객체에 선언하는 것이다.</pre>
-        </div>
         <pre class="fw-bold">
-    <span class="단어색칠">[예시 : 폼에 커맨드버튼이 3개 있고 이름이 CMD_1, CMD_2, CMD_3 이다]</span>
-    1. 특정 커맨드버튼 1개 담기 예시
-       <span class="단어색칠">[폼 Activate 또는 Initialize 시 객체 생성 → 폼 종료시까지 메모리에 있음(살아있음)]</span>
-       <span class="blueviolet"><u>살아있게 보관만 하면 된다</u></span>
-        Option Explicit
-        Public WithEvents cBtn1 As MSForms.CommandButton
-        Public WithEvents cBtn2 As MSForms.CommandButton
+    <span class="단어색칠">[공통 예시 : 폼에 커맨드버튼이 3개 있고 이름이 CMD_1, CMD_2, CMD_3 이다]</span>
+    <span class="단어색칠">[폼 Activate 또는 Initialize 시 객체 생성 → 폼 종료시까지 메모리에 있음(살아있음) 유지]</span>
+    <span class="blueviolet"><u>살아있게 보관만 하면 된다</u></span></pre>
+        <h6 class="fw-bold blueviolet">● 특정 커맨드버튼 1개 담기 예시</h6>
+        <pre class="fw-bold">
+    Option Explicit
+    Public WithEvents cBtn1 As MSForms.CommandButton <span class="blueviolet"><u>문법상 이 위치만</u></span>
+    Public WithEvents cBtn2 As MSForms.CommandButton <span class="blueviolet"><u>WithEvents 선언 가능</u></span>
 
-        Private Sub UserForm_Initialize()
-          Set cBtn1 = Me.CMD_1
-          Set cBtn2 = Me.CMD_2
-        End Sub
+    Private Sub UserForm_Initialize()
+      Set cBtn1 = Me.CMD_1   <span class="blueviolet"><u>폼 종료시까지 살아있음</u></span>
+      Set cBtn2 = Me.CMD_2   <span class="blueviolet"><u>폼 종료시까지 살아있음</u></span>
+    End Sub
 
-        Private Sub cbtn1_click()
-        MsgBox "WithEvents cbtn1_click()"
-        End Sub
+    Private Sub cbtn1_click()   <span class="blueviolet"><u>WithEvents 객체의 이벤트</u></span>
+    MsgBox "WithEvents cbtn1_click()"
+    End Sub
 
-        Private Sub cbtn2_click()
-        MsgBox "WithEvents cbtn2_click()"
-        End Sub</pre>
+    Private Sub cbtn2_click()   <span class="blueviolet"><u>WithEvents 객체의 이벤트</u></span>
+    MsgBox "WithEvents cbtn2_click()"
+    End Sub</pre>
+        <h6 class="fw-bold blueviolet">● cBtn 한번 선언 + 폼 종료시까지 유지되는 배열변수 선언 + 배열에 여러개 담기</h6>
+        <pre class="fw-bold">
+
+        </pre>
       </div>
       <div>
         <pre class="fw-bold">
