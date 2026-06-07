@@ -58,6 +58,7 @@
             </div>
           </ul>
         </div>
+        <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="주식"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >주식</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="엑셀"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >EXCEL</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="java전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >JS</button>
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="통신과서버전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >통신,서버</button>
@@ -102,6 +103,36 @@
 <!-- 캔버스관련모두감싸기, 카테고리정보 -->
 <div class="d-none 캔버스관련모두감싸기">
   <!-- 캔버스하나 : 1.카테고리, 2.연결id(이것은 위치자유, 되도록 관련 캔버스정보 바로아래)-->
+  <div id="주식" class="d-none 캔버스">
+    <div class="개별카테고리" id="통합적용">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+        <h6 class="fw-bold">----------------------------------</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold" title="주식_정보1">주식정보1</h6>
+        <h6 class="fw-bold" title="주식_정보2">주식정보2</h6>
+        <h6 class="fw-bold" title="주식_정보3">주식정보3</h6>
+        <h6 class="fw-bold" title="주식_정보4">주식정보4</h6>
+        <h6 class="fw-bold" title="주식_정보5">주식정보5</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold"></h6>
+      </div>
+    </div>
+    <div class="개별카테고리" id="통합적용">
+      <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
+      <div>
+
+      </div>
+      <div>
+        <h6 class="fw-bold">----------------------------------</h6>
+      </div>
+      <div>
+        <h6 class="fw-bold">----------------------------------</h6>
+      </div>
+    </div>
+  </div>
   <div id="엑셀" class="d-none 캔버스">
     <div class="개별카테고리" id="통합적용">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
@@ -112,7 +143,8 @@
         <h6 class="fw-bold" title="COM_컴파일자동완성자동구문검사">3) VBA Project 컴파일, 자동구문검사, IntelliSense(자동완성)</h6>
         <h6 class="fw-bold" title="COM_collection특수">4) VBA 내장객체 Collection이 CreateObject 사용안되는 이유</h6>
         <h6 class="fw-bold" title="COM_BuiltInObject">5) Built-in Object, Native Object, ★★WithEvents★★, ★★객체의 생명주기★★</h6>
-        <h6 class="fw-bold" title="COM_withevents">6) WithEvents, 폼 내부와 클래스모듈 사용 비교</h6>
+        <h6 class="fw-bold">6) (COM서버의) 클래스는 설계도, 독립적인 인스턴스를 만든다.</h6>
+        <h6 class="fw-bold" title="COM_withevents">7) WithEvents, 클래스모듈 사용법</h6>
         <h6 class="fw-bold blueviolet" title="객체와SET과NEW">(... As 자료형) 중에서 Object(객체), Set 과 New, 폼도 클래스모듈도 Object라는점!!</h6>
         <h6 class="fw-bold" title="엑셀_메모">엑셀메모1 : </h6>
       </div>
@@ -1677,21 +1709,16 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
       → 어딘가에(변수에, 배열에, Collection에,..) 살아있는 상태로 존재하면 된다.
     - WithEvents 는 하나의 객체에 선언하는 것이다.</pre>
         </div>
-      </div>
-      <div>
-        <h6 class="fw-bold"> </h6>
-
-      </div>
-    </div>
-    
-    <div id="COM_withevents" class="대체3줄">
-      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
-      <div>
+        <h6 class="fw-bold blueviolet">● WithEvents 변수는 클래스(Class)의 멤버변수이다. </h6>
         <pre class="fw-bold">
-    <span class="단어색칠">[공통 예시 : 폼에 커맨드버튼이 3개 있고 이름이 CMD_1, CMD_2, CMD_3 이다]</span>
-    <span class="단어색칠">[폼 Activate 또는 Initialize 시 객체 생성 → 폼 종료시까지 메모리에 있음(살아있음) 유지]</span>
-    <span class="blueviolet"><u>살아있게 보관만 하면 된다</u></span></pre>
-        <h6 class="fw-bold blueviolet">● 특정 커맨드버튼 1개 담기 예시</h6>
+    1) 클래스 수준에서만 선언 가능 (선언부에서만 선언 가능)
+    2) 배열 불가.   <span class="blueviolet"><u>배열이 불가하므로 하나의 객체만 변수에 담을수 있다.</u></span>
+    3) 이벤트를 가진 객체만 가능.
+    4) 변수를 달리하여 여러개 선언 가능
+    5) 객체담기 + 이벤트수신감지 
+        같은 변수에 다른 객체를 Set 하면 기존 객체는 남고 이벤트감지는 새로운 객체로 이동
+        → 따라서 WithEvents 기능은 변수당 하나에만 남는다.  </pre>
+        <h6 class="fw-bold blueviolet">● 따라서 UserFrom 수준에서는 여러개 담기 안됨.</h6>
         <pre class="fw-bold">
     Option Explicit
     Public WithEvents cBtn1 As MSForms.CommandButton <span class="blueviolet"><u>문법상 이 위치만</u></span>
@@ -1709,12 +1736,96 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     Private Sub cbtn2_click()   <span class="blueviolet"><u>WithEvents 객체의 이벤트</u></span>
     MsgBox "WithEvents cbtn2_click()"
     End Sub</pre>
-        <h6 class="fw-bold blueviolet">● cBtn 한번 선언 + 폼 종료시까지 유지되는 배열변수 선언 + 배열에 여러개 담기</h6>
-        <pre class="fw-bold">
-
-        </pre>
       </div>
       <div>
+        <h6 class="fw-bold blueviolet">● UserFrom 수준에서는 여러개 담기 안됨. 예시</h6>
+        <pre class="fw-bold">
+    Option Explicit
+    Public WithEvents cBtn As MSForms.CommandButton
+    Dim arr() As Variant '선언부
+
+    Private Sub cBtn_Click()
+      MsgBox cBtn.Name '마지막꺼 : CMD_배열개수와컨트롤이름
+    End Sub
+
+    Private Sub CMD_배열개수와컨트롤이름_Click()
+      MsgBox UBound(arr)  '3 (0~3)
+      Dim r As Long
+      For r = 0 To UBound(arr)
+        MsgBox arr(r).Name 'CMD_1, CMD_2, CMD_3, CMD_배열개수와컨트롤이름
+      Next
+    End Sub
+
+    Private Sub UserForm_Initialize()
+      Dim ctl As Control
+      Dim i As Long
+      For Each ctl In Me.Controls
+            Select Case TypeName(ctl)
+              Case "CommandButton"
+                Set cBtn = ctl    <span class="blueviolet"><u>컨트롤은 각각 Set 된다.</u></span>
+                ReDim Preserve arr(i)
+                Set arr(i) = cBtn    <span class="blueviolet"><u>컨트롤은 각각 담기지만</u></span>
+                  <span class="blueviolet"><u>WithEvents 객체는 마지막에만(1개만) 담긴다.</u></span>
+                  <span class="blueviolet"><u>WithEvents 객체가 마지막에만 설정되고 나머지는 지워지는 느낌</u></span>
+                i = i + 1
+            End Select
+      Next
+    End Sub</pre>
+        <h6 class="fw-bold blueviolet">● 여러개 담으려면</h6>
+        <pre class="fw-bold">
+    1) 클래스모듈을 만들고 WithEvents 객체를 선언한다. 
+    2) 폼에서 클래스모듈을 선언부에 선언하여 가지고온다. 
+       + 클래스모듈의 WithEvents 변수를 담을 (배열이나) Collection을 선언한다.
+    3) 폼 Activate 또는 Initialize 시
+       - Set 변수 = New 클래스모듈로 독립적인 인스턴스 생성한다.
+       - 변수.클래스모듈의 WithEvents 변수에 컨트롤을 Set 한다.
+         클래스가 각각 독립적인 인스턴스안에 WithEvents 객체를 품고 있다.
+       - 누적하여 Collection 또는 배열에 담는다. 독립적인 WithEvents 객체의 집합이다.
+         Collection 또는 배열은 폼 종료시까지 살아있다. = WithEvents 객체들은 살아있다.
+        </pre>
+      </div>
+    </div>
+    <div id="COM_withevents" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <pre class="fw-bold">
+    <span class="단어색칠">[공통 예시 : 폼에 커맨드버튼이 3개 있고 이름이 CMD_1, CMD_2, CMD_3 이다]</span>
+    <span class="단어색칠">[폼 Activate 또는 Initialize 시 객체 생성 → 폼 종료시까지 메모리에 있음(살아있음) 유지]</span>
+    <span class="blueviolet"><u>살아있게 보관만 하면 된다 (배열이나 Collection 사용)</u></span></pre>
+        <div class="세로pre여러개div">
+          <pre>
+    [인지한 상태로 이해하기]
+    1) "클래스"는 설계도이다. 설계도대로 사용할 수 있는 인스턴스를 만든다.
+    2) "클래스"는 설계도므로 인스턴스를 무한정 만들수있고 독립적이다.
+    3) 인스턴스(변수)가 살아있는지 알아야 한다. 폼이 종료될때까지 유지되는 변수.</pre>
+        </div>
+        <h6 class="fw-bold blueviolet">● UserForm : MsForms 라이브러리의 클래스</h6>
+        <h6 class="fw-bold blueviolet">● 사용자 정의 UserForm : UserForm 클래스의 설계대로 사용가능한 인스턴스</h6>
+        <h6 class="fw-bold blueviolet">● MSForms.CommandButton : 폼에 종속된 클래스, 커맨드버튼(인스턴스) 생성</h6>
+        <h6 class="fw-bold blueviolet pb-2">● 클래스모듈 : 자신의 설계대로 사용가능한 인스턴스 생성</h6>
+        <h6 class="fw-bold">======= 실전 연습 : 커맨드버튼 여러개 담기 [코드완성 → 과정설명] =======</h6>
+        <h6 class="fw-bold blueviolet">[이해하기 쉬운 순서대로 코드를 오고가며 설명]</h6>
+        <h6 class="fw-bold blueviolet">1. 폼에서</h6>
+        <pre class="fw-bold">
+    Option Explicit
+    a) Public cls As cls_CODING_CMD
+    b) Dim cmdArr() As Variant
+    <span class="blueviolet">a) 클래스모듈 cls_CODING_CMD 기능 사용준비</span>
+    <span class="blueviolet">b) 클래스 cls_CODING_CMD 의 변수 cBtn (WithEvents 선언 객체) 변수 담을 변수 준비</span></pre>
+        <h6 class="fw-bold blueviolet">2. 클래스모듈 cls_CODING_CMD 에서</h6>
+        <pre class="fw-bold">
+    <span class="단어색칠">[클래스모듈은 <u>"클래스의 cBtn변수"</u>를 반복적으로 제공하기 위한 것]</span>
+    Option Explicit
+    a) Public WithEvents cBtn As MSForms.CommandButton
+    <span class="blueviolet">a) 변수 cBtn 은 "클래스.변수" cls_CODING_CMD.cBtn 으로 접근 가능하다.</span>
+        <span class="blueviolet">"cls_CODING_CMD.cBtn = 폼의 커맨드버튼" 형식으로 저장될 예정이다.</span>
+        <span class="blueviolet">폼에서 cls_CODING_CMD 는 변수 cls 이므로 cls.cBtn 으로 표현된다.</span></pre>
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">3. 폼 Initialize(또는 Activate) 시 Initialize 시 cBtn을 담아두기 (살아있게 유지) </h6>
+        <pre class="fw-bold">
+    <span class="단어색칠">[폼이 꺼질때까지 cls_CODING_CMD.cBtn 들이 살아있게 유지 된다.]</span>
+        </pre>
         <pre class="fw-bold">
 
 
@@ -1732,8 +1843,6 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     2. WithEvents 선언하였으므로 이곳 코드 추가 실행</pre>
         <h6 class="fw-bold blueviolet">------ 폼 객체의 생명주기와 밀접한 관련, 이벤트감지는 객체가 살아있어야 함 ------</h6>
         <h6 class="fw-bold blueviolet">● WithEvents 사용 예시 별도설명 : 클래스모듈을 사용하는 방법</h6>
-
-
       </div>
       <div>
         <h6 class="fw-bold"> </h6>
