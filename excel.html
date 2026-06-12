@@ -108,15 +108,19 @@
       <div>
         <h6 class="fw-bold">설명목적 : 클래스모듈에서 WithEvents를 사용하여 폼의 커맨드버튼 이벤트를 </h6>
         <h6 class="fw-bold" style="text-indent: 75px;">감지하고 실행하게하는 코드를 이해하기 위함</h6>
-        <h6 class="fw-bold">중요관점 : vbe에서 자료형 중에서 객체형자료 및 객체의 생명주기</h6>
+        <h6 class="fw-bold">중요이해 : vbe에서 "Dim 변수 As 자료형" 에서 자료형에 대한 이해 (COM 등장)</h6>
+        <h6 class="fw-bold">중요이해 : vbe에서 자료형 중에서 객체형자료 및 객체의 생명주기, + Scope 등장</h6>
+        <h6 class="fw-bold">[이해 순서]</h6>
+        <h6 class="fw-bold" title="객체_COM1">1-1. 기본 : COM 이란? And 프로그램(예:VBA)에서 다른프로그램의 COM 사용 예시</h6>
+        <h6 class="fw-bold" title="객체_CreateObjectAndNew">1-2. VBA의 메서드 CreateObject, New, 클래스와 인스턴스 이해</h6>
         <h6 class="fw-bold">1-1. 기본 : COM 서버, "라이브러리 - 클래스 - 구성원"</h6>
         <h6 class="fw-bold">1-2. 기본 : vbe의 자료형 중에서 클래스이름이 뜨는 것에 대해서</h6>
         <h6 class="fw-bold">2. 객체의 생명주기 : "객체의 구성원으로 존재할때" 의미 이해</h6>
         <h6 class="fw-bold" style="text-indent: 15px;">   (객체의 구성원이 객체를 보관할때도 보관한 객체는 살아있는 상태이다)</h6>
+
+        <h6 class="fw-bold">[알고 난 후 핵심은 객체의 생명주기이다]</h6>
         <h6 class="fw-bold">----------------------------------</h6>
-        <h6 class="fw-bold">----------------------------------</h6>
-        <h6 class="fw-bold">----------------------------------</h6>
-        <h6 class="fw-bold" title="객체_COM1">1) COM(Component Object Model), 참조, 참조체크, vbe에서 관련정보 보기</h6>
+
         <h6 class="fw-bold" title="COM객체생성과정">2) 바인딩(객체의 기능 연결), 윈도우에서 작동하는 보이지 않는 COM Runtime의 역할</h6>
         <h6 class="fw-bold" title="COM_컴파일자동완성자동구문검사">3) VBA Project 컴파일, 자동구문검사, IntelliSense(자동완성)</h6>
         <h6 class="fw-bold" title="COM_collection특수">4) VBA 내장객체 Collection이 CreateObject 사용안되는 이유</h6>
@@ -1382,55 +1386,69 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
     <div id="객체_COM1" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
+        <h6 class="fw-bold blueviolet">● 프로그램 설치시 여러가지 있겠지만 COM 관련된것</h6>
+        <h6 class="fw-bold blueviolet">● Runtime(환경, 실행시) : 표현예시 vba 런타임 → vba 환경에서는, vba 실행시에는</h6>
         <h6 class="fw-bold blueviolet">========== COM 관련 용어 정리 ==========</h6>
         <h6 class="fw-bold blueviolet">● COM(Component Object Model)</h6>
         <pre class="fw-bold">
     • <span class="단어색칠">COM(Component Object Model)</span> : 마이크로소프트가 만든 기술 표준으로, 
       서로 다른 프로그램들이 언어와 관계없이 기능을 공유하고 상호작용할 수 있도록 만든 
       독립된 소프트웨어 부품입니다.
+      <span class="blueviolet"><u>[★ 기능공유 예시]</u></span>
+      - Dim d As Object
+        Set d = CreateObject("Scripting.Dictionary")
+        → <span class="blueviolet"><u>Scripting 라이브러리에서</u></span>
+            Dictionary 클래스<span class="blueviolet"><u>(Component)</u></span>의 코드를 사용하여 
+            Dictionary 객체<span class="blueviolet"><u>(Component Object)</u></span>를 하나 만들어줘
+        → 클래스는 제공자
     • <span class="단어색칠">Component</span> (각각의 클래스, 클래스는 사용법을 정의하여 만들어놓은 것)
       - 독립적으로 제공되고, 다른 프로그램이 가져다 사용할 수 있는 기능 단위
     • <span class="단어색칠">Component Object</span>  (클래스의 코드동작에 의해서 반환되는 인스턴스)
-      - Component 기능에 의해서 생성되어 메모리에 로드되는 객체
-      - Component Object 들을 정의해놓은 것
-      - vbe에서 변수가 컴파일 단계에서 객체를 참조할때 : Early Binding
-        조건 : 참조체크 + vbe 코드에서 자료형으로 해당 객체(클래스)를 선언
-      - vbe에서 변수가 코드실행 단계에서 객체를 참조할때 : Late Binding
     • <span class="단어색칠">Library(라이브러리), 자료형들의 집합체</span> Excel, VBA, Scripting,...
       - 해당 COM 관련, Component Object 들을 정의해놓은 것
       - 표현 : (라이브러리) Scripting 의 클래스는 대표적으로 Dictionary가 있다.
     • <span class="단어색칠">클래스</span> Range, Worksheet, Dictionary, Collection,...
-      - 개별 Component Object를 지칭하는 이름 
+      - 개별 Component Object를 지칭하는 이름 </pre>
+        <h6 class="fw-bold blueviolet">● COM 서버 : 이곳에 COM 관련 코드를 가지고 있다. 실행(EXE) 또는 로드(DLL)</h6>
+        <pre class="fw-bold">
     • <span class="단어색칠">COM 서버</span> EXCEL.EXE, VBE7.DLL, FM20.DLL, MSO.DLL, scrrun.dll, ...
       - Component Object 생성하는 파일 (프로그래밍 코드가 들어있다. 클래스처럼 여러 함수)
-      - 라이브러리가 가진 클래스들의 코드.. 등, TypeLib, vTable 등 여러 정보 제공
-    • <span class="단어색칠">Type Library(TypeLib)</span>
-      - 해당 COM이 제공하는 Type(자료형, 클래스, component)들의 사용설명서 
-      - 예시 : 라이브러리인 Scripting을 풀어서 설명해주는 이름
-        Microsoft Scripting Runtime
-    • <span class="단어색칠">Runtime(환경, 실행시) : 표현예시</span>
-      - vba 런타임 → vba 환경에서는, vba 실행시에는
-    • <span class="단어색칠">ProgID : "라이브러리이름.클래스이름" 문자열</span>
-      - 예시 : Scripting.Dictionary, CLSID는 ProgID 찾았을때 컴퓨터가 사용하는 ID
-      - COM Runtime이 ProgID 요청받으면 (인스턴스 만들어 달라는 요청) 
-        VBA ↔ <u>COM Runtime</u> ↔ DLL(COM 서버) ↔ 객체 인스턴스</pre>
-        <h6 class="fw-bold blueviolet">● COM 설치시 레지스트리에 저장되는 정보와 큰틀에서 사용처</h6>
+      - 라이브러리가 가진 클래스들의 코드.. 등, TypeLib, vTable 등 여러 정보 제공</pre>      
+        <h6 class="fw-bold blueviolet">● Type Library(TypeLib) : 개념적 표현이다.</h6>
         <pre class="fw-bold">
-    1), 2), 3)은 상호 연결되는 묶음자료 성격이다.
-    1) <span class="단어색칠">ProgID</span>, CLSID
-       <span class="단어색칠">- 하나의 라이브러리(Scripting)에서 여러 클래스가 있어서</span> 
-         <span class="단어색칠">ProgID 가 여러개 레지스트리에 등록된다.</span>
-    2) Type Library(<span class="단어색칠">TypeLib</span>) : 타입 설명서, 객체 사용 설명서
-       - "vbe - 도구 - 참조"에 뜨는 이름
-       - Visual Basic For Applications, Microsoft Scripting Runtime 등
-    3) <span class="단어색칠">COM 서버</span> 경로
-       - COM 서버 : EXCEL.EXE, VBE7.DLL, scrrun.dll 등. 객체 생성 - 조작
-       - COM 서버 : 생성된 객체의 조작요청을 처리하여 변경결과를 객체에 반영</pre>
+    • <span class="단어색칠">VBE가 켜지면 레지스트리에 등록된 TypeLib 목록을 불러와서 표시해준다.</span>
+      - 해당 COM이 제공하는 Type(자료형, 클래스, component)들의 사용설명서 
+      - 예시 : 라이브러리인 Scripting을 사용자가 이해하기 쉽게 풀어서 설명해주는 이름
+        Microsoft Scripting Runtime, Visual Basic For Applications</pre>
+        <h6 class="fw-bold blueviolet">● Library(라이브러리) : 코딩시 사용되는 이름</h6>
+        <pre class="fw-bold">
+    • Scripting : Microsoft Scripting Runtime
+    • VBA : Visual Basic For Applications</pre>
+        <h6 class="fw-bold blueviolet">● 클래스 : 라이브러리가 가지고 있는 클래스, 이것을 실행하여 객체를 생성한다.</h6>
+
+      </div>
+      <div>
+        <h6 class="fw-bold blueviolet">● VBE 를 켜면, 어떤 COM객체가 설치되었는지 레지스트리를 검색한다.</h6>
+        <pre class="fw-bold">
+    1) 사용가능 여부와 관계없이, 설치된 <span class="단어색칠">Type Library(TypeLib)</span> 이름을 가져온다.
+       "vbe - 도구 - 참조" 리스트에 뜬다.</pre>
+        <img data-src="portal/images/문서연결_엑셀VBA/vbe_도구_참조.png" alt="이미지없음">
+        <pre class="fw-bold">
+    <span class="blueviolet">2) [+ 참조가 체크되었다면]
+    - "vbe - 보기 - 개체 찾아보기"에 설명서가 등록되어 볼 수 있다.
+    - "Dim d As 자료형"에서 자료형에 해당하는 "클래스" = Component(독립적인 기능)
+    - 라이브러리를 클릭하면 하단에서 <u>"라이브러리이름, COM서버 경로, 설명서이름"</u> 확인가능</span> 
+    - 함수내부에서 Dim d As Dictionary 형식으로 클래스를 자료형으로 정의하였다면 
+      정의한 d 에 대해서 IntelliSense(자동완성) 기능 사용됨.</pre>
+        <img data-src="portal/images/문서연결_엑셀VBA/vbe_보기_개체찾아보기.png" alt="이미지없음">
       </div>
       <div>
         <h6 class="fw-bold blueviolet">● VBE - 보기 - 개체 찾아보기 - 라이브러리/프로젝트 [참고] </h6>
         <pre class="fw-bold">
-    ※ 라이브러리/프로젝트 : ‘개체’ 그 자체라기보다는, ‘개체들을 담고 있는 최상위 컨테이너’
+    ※ 라이브러리/프로젝트 
+       - 라이브러리는 com 관련 설계도를 이해기 쉽게 표현해 놓은 이름
+       - 프로젝트는 내가 작성한 엑셀파일의 설계도이름(변경 가능)
+         모듈, 폼, 클래스모듈, 시트 등
     <span class="blueviolet">라이브러리 - 클래스 - 구성원, 구성원이 클래스 자리에 올수도 있다.(예:Range)
     [1단계: 라이브러리 선택] ➡️ 예: Excel, VBAProject, MSForms, Office, Scripting, VBA 등
     [2단계: 클래스(Classes) 목록] ➡️ 예: Worksheet, Range, Module1 (개체의 설계도)
@@ -1451,7 +1469,8 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
        프로젝트(개체이다) - 프로젝트 경로 <span class="blueviolet">(주요 설명에서 이부분은 생각하지 않는다)</span>
       - (내가만든) 클래스 : 시트, 폼, 모듈, 클래스모듈
       - (내가만든) 구성요소 : Function, Sub, 폼의 컨트롤들, 폼의 기능들, 시트의 기능들</pre>
-        <h6 class="fw-bold">[라이브러리 / 클래스 예시] "라이브러리.클래스" = ProgID</h6>
+        <h6 class="fw-bold"><span class="단어색칠">[라이브러리 / 클래스 예시] "라이브러리.클래스" = ProgID</span></h6>
+        <pre class="fw-bold">여러 라이브러리에 같은 클래스이름이 있을 수 있다. 예 : ComboBox</pre>
 <table class="table-bordered thtd패딩">
           <tr><th>Excel</th><th>VBA</th><th>Scripting</th><th>MSForms</th><th>Office</th></tr>
           <tr><td>Chart</td><td>Collection</td><td>Dictionary</td><td>CheckBox</td><td>CommandBar</td></tr>
@@ -1462,34 +1481,59 @@ Range.Value       : 배열을 시트에 출력(시트 접근) </pre>
           <tr><td>Worksheet</td><td></td><td></td><td></td><td>TextRange2</td></tr>
           <tr><td>XPath</td><td></td><td></td><td></td><td>ThemeColor</td></tr>
         </table>
+      </div>
 
+    </div>
+    
+    <div id="객체_CreateObjectAndNew" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
+      <div>
+        <h6 class="fw-bold blueviolet">● 윈도우나 엑셀이 설치될때 COM 관련 다음 정보가 셑팅된다. </h6>
         <pre class="fw-bold">
+    1) COM 서버 (Type)
+       - COM 관련 요청(생성, 조작)을 처리하는 파일
+       - COM 관련 요청을 처리하려면 로드(DLL파일 등) 또는 실행(EXE파일) 해야하는 파일
+    <span class="단어색칠">[레지스트리에 등록되는 정보]</span>
+ </pre>
 
-    <span class="blueviolet">VBE - 보기 - 개체 찾아보기 - <u>*라이브러리/프로젝트*</u> [참고] 
-    1), 3), 4)는 상단에서 라이브러리/프로젝트 선택시 최 하단에서 확인할수 있는 정보
-    2)는 라이브러리에 정의된 클래스 일부</span>
-    1) 라이브러리 이름 : Scripting
-    2) 클래스 : Dictionary, File, FileSystemObject, Folder 등
-    3) 객체생성 파일경로 : C:\Windows\SysWOW64\scrrun.dll 
-    4) Type Library 이름 : Microsoft Scripting Runtime [참조에 보이는 이름]</pre>
+        <h6 class="fw-bold blueviolet">● ProgID : "라이브러리이름.클래스이름" 문자열, VBA의 메서드 CreateObject 관련</h6>
+        <h6 class="fw-bold blueviolet">========== vbe에서 객체 set : CreateObject VS New ==========</h6>
+        <h6 class="fw-bold blueviolet">● VBA의 메서드 CreateObject 사용법 </h6>
+        <pre class="fw-bold">
+    Dim d As Object (Object는 정해지지 않은 객체형을 의미하는 vba의 자료형이다.)
+    Set d = CreateObject("Scripting.Dictionary")
+    • <span class="단어색칠">ProgID : "라이브러리이름.클래스이름" 문자열</span>
+      - 예시 : Scripting.Dictionary, CLSID는 ProgID 찾았을때 컴퓨터가 사용하는 ID
+      - COM Runtime이 ProgID 요청받으면 (인스턴스 만들어 달라는 요청) 
+        VBA ↔ <u>COM Runtime</u> ↔ DLL(COM 서버) ↔ 객체 인스턴스</pre>
+        <h6 class="fw-bold blueviolet">● COM 설치시 레지스트리에 저장되는 정보와 큰틀에서 사용처</h6>
+        <pre class="fw-bold">
+    1), 2), 3)은 상호 연결되는 묶음자료 성격이다.
+    1) <span class="단어색칠">ProgID</span>, CLSID
+       <span class="단어색칠">- 하나의 라이브러리(Scripting)에서 여러 클래스가 있어서</span> 
+         <span class="단어색칠">ProgID 가 여러개 레지스트리에 등록된다.</span>
+    2) Type Library(<span class="단어색칠">TypeLib</span>) : 타입 설명서, 객체 사용 설명서
+       - "vbe - 도구 - 참조"에 뜨는 이름
+       - Visual Basic For Applications, Microsoft Scripting Runtime 등
+    3) <span class="단어색칠">COM 서버</span> 경로
+       - COM 서버 : EXCEL.EXE, VBE7.DLL, scrrun.dll 등. 객체 생성 - 조작
+       - COM 서버 : 생성된 객체의 조작요청을 처리하여 변경결과를 객체에 반영</pre>
 
       </div>
       <div>
-        <h6 class="fw-bold blueviolet">● VBE 를 켜면, 어떤 COM객체가 설치되었는지 레지스트리를 검색한다.</h6>
+        <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-    1) 사용가능 여부와 관계없이, 설치된 Type Library(TypeLib) 이름을 가져온다.
-       "vbe - 도구 - 참조" 리스트에 뜬다.</pre>
-        <img data-src="portal/images/문서연결_엑셀VBA/vbe_도구_참조.png" alt="이미지없음">
+          
+        </pre>
+      </div>
+      <div>
+        <h6 class="fw-bold"> </h6>
         <pre class="fw-bold">
-    <span class="blueviolet">2) [+ 참조가 체크되었다면]
-    - "vbe - 보기 - 개체 찾아보기"에 설명서가 등록되어 볼 수 있다.
-    - "Dim d As 자료형"에서 자료형에 해당하는 "클래스" = Component(독립적인 기능)
-    - 라이브러리를 클릭하면 하단에서 <u>"라이브러리이름, COM서버 경로, 설명서이름"</u> 확인가능</span> 
-    - 함수내부에서 Dim d As Dictionary 형식으로 클래스를 자료형으로 정의하였다면 
-      정의한 d 에 대해서 IntelliSense(자동완성) 기능 사용됨.</pre>
-        <img data-src="portal/images/문서연결_엑셀VBA/vbe_보기_개체찾아보기.png" alt="이미지없음">
+          
+        </pre>
       </div>
     </div>
+        
     <div id="COM객체생성과정" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6><h6 class="대체3줄세로2h6"></h6>
       <div>
