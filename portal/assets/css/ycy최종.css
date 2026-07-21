@@ -15,7 +15,7 @@ body > div {display:inline-block}
 .설명_왼쪽div > span:nth-of-type(1) {width:85px;text-align: center;height:24px;margin-right:-1px;}
 .설명_왼쪽div > div {height:24px;}/* form-check  */
 .설명_왼쪽div_버튼5개 > button {width:33.2px;}
-.설명_왼쪽div_버튼5개 > button:nth-of-type(6) {width:60px;}
+.설명_왼쪽div_버튼5개 > button:nth-of-type(6) {width:62px;}
 /* #당번전체 (js로 .당번회차, .당번만, .보볼) */
 #당번전체 {margin-right:5px;}
 #당번_불러온당첨정보 button {border:1px solid gray; font-weight: bold;width:30px;height:30px;}
@@ -131,8 +131,12 @@ body > div {display:inline-block}
 #분석자료45칸 .다섯개씩번갈아색칠 button:nth-of-type(10n-4):not(.분석):not(.분석덧칠):not(.다음당번표시)
 {background-color:rgb(196, 169, 137);}
 
+.왼쪽몇칸 {display:inline-block;width:200px;width:161px;height:24px;}
+.왼쪽몇칸 > div {height:24px;margin-bottom:-1px;}
+.왼쪽몇칸 > button {display:block; border:1px solid black;height:24px;margin-bottom:-1px;}
+
 /* #버튼45오른쪽단독 */
-#버튼45오른쪽단독 > .설명_두번째div > #끝수 {margin-left:10px;}
+#버튼45오른쪽단독 > .설명_두번째div > #끝수 {margin-left:4px;}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div {display: inline-block;}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div:nth-of-type(1) {margin-right:13px;}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > button {margin-right:-1px;width:30px;height:25px; border:1px solid black;font-weight: bold;}
