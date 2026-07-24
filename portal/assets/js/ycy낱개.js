@@ -16,7 +16,6 @@ if ('초기설정' == '초기설정') {
   
   //회차select옵션생성, check_초기설정, 당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
   고정html_구조생성및_초기설정();
-  분석45총출현고정();
 
   //변수명순서대로 : 5주출관련, 30주출관련 정보가 여러번 쓰이기때문에 순서를 사용하기위함. forEach에서 체이닝이 안되어서 
   var 변수명순서대로 = []; document.querySelectorAll('#당번변수 > div').forEach(요소 => { 변수명순서대로.push(요소.classList[0]); })
@@ -201,7 +200,18 @@ function 고정html_구조생성및_초기설정() {
         var 번호45 = document.createElement('div');
         if (외부 != 1  && (외부<8 || 외부 > 18)) { 번호45.setAttribute('class', '다섯개씩번갈아색칠') }
 
-        if (외부==8) { 번호45.setAttribute('class', '총출현횟수') }
+        if (외부==8) { 번호45.setAttribute('class', '간격정보') }
+        if (외부==8) { 번호45.setAttribute('style', 'font-size:10px;') }
+        if (외부==9) { 번호45.setAttribute('class', '이전5') }
+        if (외부==10) { 번호45.setAttribute('class', '이전4') }
+        if (외부==11) { 번호45.setAttribute('class', '이전3') }
+        if (외부==12) { 번호45.setAttribute('class', '이전2') }
+        if (외부==13) { 번호45.setAttribute('class', '이전1') }
+        if (외부==14) { 번호45.setAttribute('class', '누적5') }
+        if (외부==15) { 번호45.setAttribute('class', '누적4') }
+        if (외부==16) { 번호45.setAttribute('class', '누적3') }
+        if (외부==17) { 번호45.setAttribute('class', '누적2') }
+        if (외부==18) { 번호45.setAttribute('class', '누적1') }
 
         if (외부 == 1) { 번호45.setAttribute('id', '삼십회횟수기록') }
         for (var i = 1; i < 46; i++) {
@@ -235,7 +245,7 @@ function 고정html_구조생성및_초기설정() {
       왼쪽몇칸.setAttribute('style', 'font-family : monospace;font-size:12px;');
       
       왼쪽몇칸.innerHTML = `<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-      <div style="border:1px solid black;border-right:0px;">총 출현횟수</div>
+      <div style="border:1px solid black;border-right:0px;">간격정보</div>
       <div style="border:1px solid black;border-right:0px;">이전-5</div>
       <div style="border:1px solid black;border-right:0px;">이전-4</div>
       <div style="border:1px solid black;border-right:0px;">이전-3</div>
@@ -262,7 +272,55 @@ function 고정html_구조생성및_초기설정() {
   for (var i = 0; i < 색칠관련.length; i++) { 색칠관련[i].children[1].innerHTML = div45개 }
   for (var i = 1; i < 46; i++) { 색칠관련[5].children[1].children[i - 1].innerHTML = i }
 }
-function 분석45총출현고정() {
+function 분석45간격관련1회성_첫값제외() {
+
+    // 번호별 출현회차 저장
+    const 번호정보 = Array.from({ length: 46 }, () => ({
+        출현회차: [],
+        간격: [],
+        문자열: ''
+    }));
+
+    배열당번정보.forEach((회차정보, idx) => {
+
+        for (let i = 2; i <= 7; i++) {
+            번호정보[회차정보[i]].출현회차.push(idx);
+        }
+
+    });
+
+    // 번호별 간격정보 생성
+    for (let 번호 = 1; 번호 <= 45; 번호++) {
+
+        const obj = 번호정보[번호];
+
+        // 이전1(최근 출현까지의 거리)
+        if (obj.출현회차.length) {
+            obj.간격.push(
+                배열당번정보.length - obj.출현회차.at(-1)
+            );
+        }
+
+        // 이전2 이후 간격
+        for (let i = obj.출현회차.length - 1; i > 0; i--) {
+
+            obj.간격.push(
+                obj.출현회차[i] - obj.출현회차[i - 1]
+            );
+
+        }
+
+        // ★ 첫 번째 값 제외
+        obj.문자열 = "_" + obj.간격.slice(1).join("_") + "_";
+
+        $(".간격정보 button")
+            .eq(번호 - 1)
+            .text(obj.문자열);
+
+    }
+
+}
+function 임시보관용() {
     let 횟수 = Array(46).fill(0);
 
     $('.당번6').each(function () {
@@ -821,9 +879,107 @@ function 분석자료_회차change설정() {
   분석자료_삼십회빈도와개수_js작성();
   셑팅2_번호45오른쪽_변경();
   색칠하기();
+  분석45간격관련이전누적();
 }
+function 분석45간격관련이전누적() {
 
+    const 기준index = 회차;
 
+    for (let 번호 = 1; 번호 <= 45; 번호++) {
+
+        //----------------------------
+        // 기준회차까지 출현회차
+        //----------------------------
+        let 출현 = [];
+
+        for (let i = 0; i <= 기준index; i++) {
+
+            for (let j = 2; j <= 7; j++) {
+
+                if (Number(배열당번정보[i][j]) === 번호) {
+                    출현.push(i);
+                    break;
+                }
+
+            }
+
+        }
+
+        //----------------------------
+        // 이전값, 간격정보 생성
+        //----------------------------
+        let 이전 = [0, 0, 0, 0, 0];
+        let 간격배열 = [];
+
+        if (출현.length) {
+
+            이전[0] = 기준index - 출현.at(-1) + 1;
+
+            for (let i = 출현.length - 1; i > 0; i--) {
+
+                const 간격 = 출현[i] - 출현[i - 1];
+
+                간격배열.push(간격);
+
+                if (간격배열.length <= 4)
+                    이전[간격배열.length] = 간격;
+
+            }
+
+        }
+
+        //----------------------------
+        // 이전1~5 출력
+        //----------------------------
+        for (let i = 0; i < 5; i++) {
+
+            $('.이전' + (i + 1) + ' button')
+                .eq(번호 - 1)
+                .text(이전[i]);
+
+        }
+
+        //----------------------------
+        // 간격정보 출력
+        //----------------------------
+        const 간격문자열 = "_" + 간격배열.join("_") + "_";
+
+        $('.간격정보 button')
+            .eq(번호 - 1)
+            .text(간격문자열);
+
+        //----------------------------
+        // 누적1~5
+        //----------------------------
+        for (let n = 1; n <= 5; n++) {
+
+            if (이전[n] === 0) {
+
+                $('.누적' + n + ' button')
+                    .eq(번호 - 1)
+                    .text(0);
+
+                continue;
+
+            }
+
+            let 찾기 = "_" + 이전.slice(1, n + 1).join("_") + "_";
+
+            let 개수 =
+                (간격문자열.match(new RegExp(찾기, "g")) || []).length;
+
+            if (기준index === 최근회차)
+                개수 = Math.max(0, 개수 - 1);
+
+            $('.누적' + n + ' button')
+                .eq(번호 - 1)
+                .text(개수);
+
+        }
+
+    }
+
+}
 function 분석자료_삼십회표3종_작성_미완성() {
 }
 function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던것

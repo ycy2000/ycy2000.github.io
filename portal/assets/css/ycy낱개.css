@@ -30,7 +30,10 @@ body > div:not(#머리글) {display:inline-block}
 
 #흐름전체 > span, #흐름전체 > span > span {display: inline-block;}
 #흐름_기본, .총출현횟수 > button{font-family : monospace;}
-.총출현횟수 > button{font-family : monospace;font-size:12px;}
+/* 간격관련 코딩 추가 */
+.간격정보 > button{font-family : monospace;font-size:12px;}
+.간격정보 > button:hover {width:1000px;}
+
 #칸_간격과삼이일_위 > div, #칸_간격과삼이일_아래 > div, #칸_삼십회_위 > div, #칸_삼십회_아래 > div,
 #칸_이월이웃수_위 > div, #칸_이월수_아래 > div, #칸_이웃수_아래 > div, #칸_이월이웃수_위_번호대 > div {height:22px;}
 #칸_간격과삼이일_위 > div > span, #칸_간격과삼이일_아래 > div > span, #칸_삼십회_위 > div > span, #칸_삼십회_아래 > div > span,
