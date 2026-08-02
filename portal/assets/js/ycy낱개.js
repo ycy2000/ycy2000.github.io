@@ -250,7 +250,7 @@ function 고정html_구조생성및_초기설정() {
       <div style="border:1px solid black;border-right:0px;">이전-4</div>
       <div style="border:1px solid black;border-right:0px;">이전-3</div>
       <div style="border:1px solid black;border-right:0px;">이전-2</div>
-      <div style="border:1px solid black;border-right:0px;">이전-1</div>
+      <div style="border:1px solid black;border-right:0px;">이전-1(출현시 간격)</div>
       <div style="border:1px solid black;border-right:0px;">누적출-5</div>
       <div style="border:1px solid black;border-right:0px;">누적출-4</div>
       <div style="border:1px solid black;border-right:0px;">누적출-3</div>

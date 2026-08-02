@@ -33,8 +33,10 @@ body > div:not(#머리글) {display:inline-block}
 /* 간격관련 코딩 추가 */
 .간격정보 > button{font-family : monospace;font-size:12px;}
 .간격정보 > button:hover {width:1000px;}
-.이전1 > button, .이전2 > button, .이전3 > button, .이전4 > button, .이전5 > button
+.이전2 > button, .이전3 > button, .이전4 > button, .이전5 > button
 {background-color: aqua;} 
+.이전1 > button
+{background-color:burlywood;} 
 
 #칸_간격과삼이일_위 > div, #칸_간격과삼이일_아래 > div, #칸_삼십회_위 > div, #칸_삼십회_아래 > div,
 #칸_이월이웃수_위 > div, #칸_이월수_아래 > div, #칸_이웃수_아래 > div, #칸_이월이웃수_위_번호대 > div {height:22px;}
