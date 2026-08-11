@@ -1,13 +1,8 @@
 @charset "UTF-8";
 body {font-family: 'Noto Serif KR', serif;white-space: nowrap;}
 body * {vertical-align: top;} button {margin-right:-1px;border:1px solid black;width:24px;height:24px;padding:0px;} div {margin-bottom:-1px;}
-/* 머리글 제외 첫번째 큰 덩어리 inline-block, nowrap */
-body > div:not(#머리글) {display:inline-block}
+body > div {display:inline-block}
 /* #머리글 */
-#머리글 {display:block;height:30px;margin:10px;border-bottom:1px solid black;}
-
-
-
 #이동하기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px; top:100px;left:300px;}
 #따라가기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px;}
 #이동하기 .active {background-color: cadetblue;}
@@ -29,15 +24,7 @@ body > div:not(#머리글) {display:inline-block}
 #당번_플마클리어버튼 > button {height:30px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
 
 #흐름전체 > span, #흐름전체 > span > span {display: inline-block;}
-#흐름_기본, .총출현횟수 > button{font-family : monospace;}
-/* 간격관련 코딩 추가 */
-.간격정보 > button{font-family : monospace;font-size:12px;}
-.간격정보 > button:hover {width:1000px;}
-.이전2 > button, .이전3 > button, .이전4 > button, .이전5 > button
-{background-color: aqua;} 
-.이전1 > button
-{background-color:burlywood;} 
-
+#흐름_기본 {font-family : monospace;}
 #칸_간격과삼이일_위 > div, #칸_간격과삼이일_아래 > div, #칸_삼십회_위 > div, #칸_삼십회_아래 > div,
 #칸_이월이웃수_위 > div, #칸_이월수_아래 > div, #칸_이웃수_아래 > div, #칸_이월이웃수_위_번호대 > div {height:22px;}
 #칸_간격과삼이일_위 > div > span, #칸_간격과삼이일_아래 > div > span, #칸_삼십회_위 > div > span, #칸_삼십회_아래 > div > span,

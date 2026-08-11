@@ -1,35 +1,201 @@
-if ('초기설정' == '초기설정') {
-  //양이 많아서 숨길것을 위로 두고 기록중인것을 아래로 두는데 합쳐야되기 때문에..... 합친후 '회차별배열'에 모든배열을 담는다.
-  $('#숨김정보_당번전체').append($('#숨김정보_당번전체기록중').html());
-  document.querySelector('#숨김정보_당번전체').innerHTML =
-    document.querySelector('#숨김정보_당번전체').innerHTML.replace(/\n|\s/g, '') //→ 줄바꿈(\n)과 모든 띄워쓰기(공백 및 탭 등)(\s)을 한 번에 제거
-  var 회차별배열 = [];
-  for (let i=0; i<$('#숨김정보_당번전체').html().split('_').length/9; i++) {
-    회차별배열.push($('#숨김정보_당번전체').html().split('_').slice(i*9,(i+1)*9))
-  }
-  
-  //변수명순서대로 : 5주출관련, 30주출관련 정보가 여러번 쓰이기때문에 순서를 사용하기위함. forEach에서 체이닝이 안되어서 
-  var 변수명순서대로 = []; document.querySelectorAll('#당번변수 > div').forEach(요소 => { 변수명순서대로.push(요소.classList[0]); })
-
-  //회차select옵션생성, check_초기설정, 당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
-  고정html_구조생성및_초기설정();
-  //회차는 1198회차인경우 1197이다. 
-  var 최근회차 = document.querySelectorAll('#당번_회차select option').length-1;
-  var 회차 = 최근회차;
-  var 전체변수색칠문자열 = '';
-  var 셑팅된곳변수포함id='#keep번호들_변수포함'
-  var 셑팅된곳숫자만id='#keep번호들'
-  var 색칠id='';
-
-  당번_회차change설정();
-  분석자료_회차change설정();
-  따라가기위치설정();
-  var 숨김버튼값 = '';
+//-------------------- 초 기 설 정 --------------------
+//(/\n|\s/g, '') → (/\s/g, '') : 줄바꿈(\n) 단독, 모든 띄워쓰기(줄바꿈 포함, 공백 및 탭 등)(\s)을 한 번에 제거
+// if 안에서도 스코프 내부로 간주되어 전역변수가 되지 않는다.
+const 당번배열 = $('#당번숨김').text().replace(/\s/g, '').split('_');
+const 회차별배열 = [];
+for (let i = 0; i < 당번배열.length / 9; i++) {
+    회차별배열.push(당번배열.slice(i * 9, (i + 1) * 9));
 }
+//변수명순서대로 : 5주출관련, 30주출관련 정보가 여러번 쓰이기때문에 순서를 사용하기위함. forEach에서 체이닝이 안되어서 
+let 변수명순서대로 = []; document.querySelectorAll('#당번변수 > div').forEach(요소 => { 변수명순서대로.push(요소.classList[0]); })
+// -- 공통변수_다음당번, 공통변수_당번, ....
+//회차select옵션생성, check_초기설정, 당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
+고정html_구조생성및_초기설정();
+//회차는 1198회차인경우 1197이다. 
+let 최근회차 = document.querySelectorAll('#당번_회차select option').length-1; // 고정html_구조생성및_초기설정() 으로 옵션이 생성된 후이다
+let 회차 = 최근회차;
+let 전체변수색칠문자열 = '';
+let 셑팅된곳변수포함id='#keep번호들_변수포함'
+let 셑팅된곳숫자만id='#keep번호들'
+let 색칠id='';
+당번_회차change설정();
+분석자료_회차change설정();
+따라가기위치설정();
+var 숨김버튼값 = '';
+//-------------------- 초 기 설 정    끝--------------------
 var 리스너_바디 = document.querySelector('body');
 var 드래그이동_버튼45오른쪽단독 = document.querySelector('#버튼45오른쪽단독');
 var 드래그이동_버튼45감싸기 = document.querySelector('#버튼45감싸기');
+function 고정html_구조생성및_초기설정() {
+  //#칸_간격과삼이일_위,#칸_간격과삼이일_아래,#칸_삼십회_위,#칸_삼십회_아래
+  var 칸_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  var 칸_별도html=`<div><span style="width:53px;">숫자개수</span><span></span><span></span><span></span><span></span></div>`
+  var 칸_이월이웃수html=`<div><span></span><span></span><span></span></div>`
+  var 칸_번호대html='<div><span></span><span></span><span></span><span></span><span></span></div>'
+  var 칸_아이디=['#칸_간격과삼이일_위','#칸_삼십회_위','#칸_이월이웃수_위','#칸_이월이웃수_위_번호대'];
+  for (var i=0; i<7; i++) {
+    칸_아이디.forEach ( (칸_id,칸_index) => {
+      if (칸_id=='#칸_이월이웃수_위') {document.querySelector(칸_id).innerHTML+=칸_이월이웃수html;}
+      else if (칸_id=='#칸_이월이웃수_위_번호대') {document.querySelector(칸_id).innerHTML+=칸_번호대html;}
+      else {
+        if (칸_id=='#칸_간격과삼이일_위' && i==6) {document.querySelector(칸_id).innerHTML+=칸_별도html;} 
+        else {
+          document.querySelector(칸_id).innerHTML+=칸_html;
+       }
+      }
+    });
+  }
+  var 칸_이웃수_아래html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  var 칸_아이디=['#칸_간격과삼이일_아래','#칸_삼십회_아래','#칸_이웃수_아래'];
+  for (var i=0; i<20; i++) {
+    칸_아이디.forEach ( (칸_id,칸_index) => {
+      if (칸_id=='#칸_이웃수_아래') {document.querySelector(칸_id).innerHTML+=칸_이웃수_아래html;}
+      else {
+        if (칸_id=='#칸_간격과삼이일_위' && i==6) {document.querySelector(칸_id).innerHTML+=칸_별도html;} 
+        else {document.querySelector(칸_id).innerHTML+=칸_html;}
+      }
+    });
+  }
+  var 칸_세로27_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  var 칸_가로10_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+  for (var i=0; i<17; i++) {
+    document.querySelector('#칸_가로세로_세로').innerHTML+=칸_세로27_html;
+  }
+  for (var i=0; i<7; i++) {
+    document.querySelector('#칸_가로세로_가로').innerHTML+=칸_가로10_html;
+  }
+  var 빈도정보=[{아이디:'#칸_빈도45_빈도',추가요소:'span',추가개수:5},
+               {아이디:'#칸_빈도45_당번',추가요소:'span',추가개수:30}];
 
+  for ( {아이디,추가요소,추가개수} of 빈도정보 ) {
+    for (var 내부반복=0; 내부반복<46; 내부반복++) {
+      var div=document.createElement('div');
+      for (var i=0; i<추가개수; i++) {
+        var span=document.createElement(추가요소);
+        div.appendChild(span);
+        document.querySelector(아이디).appendChild(div);        
+      }
+    }
+  }
+  //타이틀넣기
+  var 요소=document.querySelectorAll('.버튼45css button');
+  for (var i=0; i<요소.length; i++) {요소[i].setAttribute('title',요소[i].innerHTML)}
+
+  //회차select옵션생성
+  let 옵션 = 회차별배열.map(v => `<option>${v[0]}</option>`).reverse().join('');
+  $('#당번_회차select, #분석자료_회차select').html(옵션);
+
+  //check_초기설정 : .체크input checked인것 d-none제거(보이게), .분류 인것 이동리스트에 추가
+  $('.체크input').each(function () {
+    $(this).next('label').attr('for', this.id);
+    this.checked && $('#' + this.id.slice(6))?.removeClass('d-none');
+  });
+  const html = $('.이동리스트').map((_, el) => `<div>${el.id}</div>`).get().join('');
+  $('#이동할위치div리스트, #이동할div리스트').html(html);
+
+  const 당번한줄html = `<div><span class="당번회차 d-inline-block"><button style="width:45px;font-weight:lighter;"></button></span><span 
+  class="당번만 d-inline-block"><button></button><button></button><button></button><button></button><button></button><button></button></span><span 
+  class="보볼 d-inline-block"><button style="font-weight:lighter;"></button></span></div>`
+  document.querySelector('#당번_다음회차').innerHTML = 당번한줄html;
+  for (var i = 0; i < 30; i++) {
+    document.querySelector('#당번_불러온당첨정보').innerHTML += 당번한줄html;
+  }
+  //id="분석자료_표_상_js"
+  if ('분석자료_표_상_js' == '분석자료_표_상_js') {
+    for (var 외부 = 0; 외부 < 20; 외부++) { //처음 20칸
+      var 가로한줄 = document.createElement('div');
+      var 번호선택_추출_c = document.createElement('span');
+      var 번호선택배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주미출', '10주미출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
+      var 타이틀배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
+      for (var i = 0; i < 4; i++) {
+        var div요소 = document.createElement('span'); // div 요소 변수에 담는다.
+        if (i == 0) { div요소.textContent = 번호선택배열[외부]; div요소.setAttribute('style', 'width:75px;height:24px; border:1px solid black;display:inline-block;margin-right:-1px;') }
+        if (i == 1 && 외부 == 0) { div요소.textContent = '수' }
+        if (i == 1) { div요소.setAttribute('style', 'width:30px; border:1px solid black;display:inline-block;margin-right:-1px;text-align:center;height:24px;') }
+        if (i==0 && 외부<11) {
+          div요소.setAttribute('class','클릭번호로보냄');
+          div요소.setAttribute('title','#분석자료변수 .공통변수_'+타이틀배열[외부]);
+        }
+        if (i == 2) { div요소 = document.createElement('button'); }
+        if (i == 2 && 외부 == 0) { div요소.textContent = '출' }
+        if (i == 2 && 외부 != 0) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기
+
+        if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' }
+        if (i == 3 && 외부 != 0) { div요소 = document.createElement('button'); div요소.setAttribute('class', '앞요소값clear') }
+
+        if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
+        //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
+        if (외부 > 10) {
+          if (i == 0) { div요소.setAttribute('contenteditable', 'true') }
+          if (i == 1) { div요소.setAttribute('onclick', '토글11에서20_셑팅과초기화(this)') }
+        }
+        번호선택_추출_c.appendChild(div요소);
+      }
+      var 번호45 = document.createElement('span');
+      //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
+      번호45.setAttribute('class', '다섯개씩번갈아색칠');
+
+      for (var i = 1; i < 46; i++) {
+        var div요소 = document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
+        번호45.appendChild(div요소);
+      }
+      가로한줄.appendChild(번호선택_추출_c);
+      가로한줄.appendChild(번호45);
+      if (외부 < 11) {
+        가로한줄.setAttribute('class', 'js클릭번호 분석자료_표_상_지울곳')
+      } else {
+        가로한줄.setAttribute('class', 'js클릭번호')
+      }
+      document.querySelector('#분석자료_표_상_js').appendChild(가로한줄);
+    } //20회반복 끝
+
+    for (var i = 0; i < 45; i++) { document.querySelectorAll('#분석자료_표_상_js > div')[0].children[1].children[i].innerHTML = i + 1 }
+    //다 만들고 난 후에 숨김할것 처리
+    var 요소 = document.querySelectorAll('#분석자료숨김버튼 button');
+    for (var i = 0; i < 요소.length; i++) {
+      if (요소[i].classList.contains('분석버튼숨김')) {
+        document.querySelector('#분석자료_표_상_js').children[요소[i].innerHTML].classList.add('d-none');
+      }
+    }
+  }
+  //id="분석자료_표_하_js"
+  if ('분석자료_표_하_js' == '분석자료_표_하_js') {
+    //왼쪽과 오른쪽 구분하여 작성
+    if ('오른쪽' == '오른쪽') {
+      var 오른쪽45 = document.createElement('div');
+      오른쪽45.setAttribute('class', 'd-inline-block');
+      for (var 외부 = 0; 외부 < 39; 외부++) {
+        var 가로한줄 = document.createElement('div');
+        var 번호선택_추출_c = document.createElement('span');
+        var 번호45 = document.createElement('div');
+        if (외부 != 1) { 번호45.setAttribute('class', '다섯개씩번갈아색칠') }
+        if (외부 == 1) { 번호45.setAttribute('id', '삼십회횟수기록') }
+        for (var i = 1; i < 46; i++) {
+          var div요소 = document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
+          if (외부 == 0 || 외부 == 8) { div요소.innerText = i }
+          번호45.appendChild(div요소);
+        }
+        오른쪽45.appendChild(번호45);
+      }
+    }
+    if ('왼쪽' == '왼쪽') {
+      var 왼쪽몇칸 = document.createElement('div');
+      왼쪽몇칸.setAttribute('class', '왼쪽몇칸');
+      왼쪽몇칸.innerHTML = `<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      <div>1</div>
+      <button>1sdfsdfsdf</button>
+      <button>1</button>`;
+      document.querySelector('#분석자료_표_하_js').appendChild(왼쪽몇칸) //빈 div 한개 넣어둠, 왼쪽 만들기 건너뜀, css 가져오기위함
+    }
+
+    document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
+  }
+  //색칠하기의 45칸 div 6번넣기
+  var 색칠관련 = document.querySelectorAll('.설명_가로한줄'); //두번째자식
+  var div45개 = ''; for (var i = 0; i < 45; i++) { div45개 += '<button></button>' }
+  for (var i = 0; i < 색칠관련.length; i++) { 색칠관련[i].children[1].innerHTML = div45개 }
+  for (var i = 1; i < 46; i++) { 색칠관련[5].children[1].children[i - 1].innerHTML = i }
+}
 function 연습() {
   let 문자열='1_2002-12-07_10_23_29_33_35_40_16_2_2002-12-14_9_13_21_25_32_42_2_3_2002-12-21_11_16_19_21_27_31_30'
 
@@ -280,11 +446,11 @@ function 분석자료_회차change설정() {
       document.querySelector(`${부모id} .${변수명}`).innerHTML = '';
     })
 
-    if (i == 0 && 회차 == 최근회차) { 
-              console.log(document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML);
-      document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = '_,_,_,_,_,_' }//0 공통변수_다음당번
-
-
+    if (!회차별배열[Number(회차) + 1]) {
+      document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = '0,0,0,0,0,0' 
+    } else {
+      document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML=회차별배열[회차+1].slice(2, 8).join(',');
+    }//0 공통변수_다음당번
 
     if (i == 0 && 회차 != 최근회차) { document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = 회차별배열[회차 + 1].slice(2, 8).join(',') } //0 공통변수_다음당번
     var 좌우수 = [], 이웃수 = [];
@@ -297,7 +463,9 @@ function 분석자료_회차change설정() {
       if (숫자 == 45) { 좌우수.push(44); 좌우수.push(1); }
       if (숫자 > 1 && 숫자 < 45) { 좌우수.push(Number(숫자) - 1); 좌우수.push(Number(숫자) + 1); }
     })
-    좌우수 = new Set(좌우수); 좌우수 = [...좌우수]
+    좌우수 = new Set(좌우수); 
+    회차별배열[회차].slice(2, 8).forEach(숫자 => {좌우수.delete(Number(숫자));});
+    좌우수 = [...좌우수]
     좌우수.forEach(숫자 => {
       if (!회차별배열[회차].slice(2, 8).includes(숫자)) {
         document.querySelector(`${부모id} .공통변수_이웃`).innerHTML += 숫자 + ',';
@@ -469,7 +637,17 @@ function 분석자료_회차change설정() {
     var 색칠할요소 = document.querySelectorAll('#분석자료_표_하_js .다섯개씩번갈아색칠')[7]; // 8번째꺼
     //분석클래스는 지워지게 된다. 분석클래스였던게 숫자가 지워지네?
     for (var m = 0; m < 색칠할요소.children.length; m++) {
-
+      색칠할요소.children[m].classList.remove('다음당번표시');
+    }
+    if (회차<최근회차) {
+      for (var i=0; i<6; i++) {
+        색칠할요소.children[Number(회차별배열[Number(회차) + 1][i+2])-1].classList.add('다음당번표시');
+      }
+    }
+    //다음당번 위치에 색칠 추가
+    var 색칠할요소 = document.querySelectorAll('#분석자료_표_상_js .다섯개씩번갈아색칠')[0]; // 첫번째 숫자기록 부분
+    //분석클래스는 지워지게 된다. 분석클래스였던게 숫자가 지워지네?
+    for (var m = 0; m < 색칠할요소.children.length; m++) {
       색칠할요소.children[m].classList.remove('다음당번표시');
     }
     if (회차<최근회차) {
@@ -1246,181 +1424,7 @@ function 셑팅토글(인덱스) {
   console.log(셑팅된곳변수포함id)
   console.log(셑팅된곳숫자만id)
 }
-function 고정html_구조생성및_초기설정() {
-  //#칸_간격과삼이일_위,#칸_간격과삼이일_아래,#칸_삼십회_위,#칸_삼십회_아래
-  var 칸_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span></div>`
-  var 칸_별도html=`<div><span style="width:53px;">숫자개수</span><span></span><span></span><span></span><span></span></div>`
-  var 칸_이월이웃수html=`<div><span></span><span></span><span></span></div>`
-  var 칸_번호대html='<div><span></span><span></span><span></span><span></span><span></span></div>'
-  var 칸_아이디=['#칸_간격과삼이일_위','#칸_삼십회_위','#칸_이월이웃수_위','#칸_이월이웃수_위_번호대'];
-  for (var i=0; i<7; i++) {
-    칸_아이디.forEach ( (칸_id,칸_index) => {
-      if (칸_id=='#칸_이월이웃수_위') {document.querySelector(칸_id).innerHTML+=칸_이월이웃수html;}
-      else if (칸_id=='#칸_이월이웃수_위_번호대') {document.querySelector(칸_id).innerHTML+=칸_번호대html;}
-      else {
-        if (칸_id=='#칸_간격과삼이일_위' && i==6) {document.querySelector(칸_id).innerHTML+=칸_별도html;} 
-        else {
-          document.querySelector(칸_id).innerHTML+=칸_html;
-       }
-      }
-    });
-  }
-  var 칸_이웃수_아래html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
-  var 칸_아이디=['#칸_간격과삼이일_아래','#칸_삼십회_아래','#칸_이웃수_아래'];
-  for (var i=0; i<20; i++) {
-    칸_아이디.forEach ( (칸_id,칸_index) => {
-      if (칸_id=='#칸_이웃수_아래') {document.querySelector(칸_id).innerHTML+=칸_이웃수_아래html;}
-      else {
-        if (칸_id=='#칸_간격과삼이일_위' && i==6) {document.querySelector(칸_id).innerHTML+=칸_별도html;} 
-        else {document.querySelector(칸_id).innerHTML+=칸_html;}
-      }
-    });
-  }
-  var 칸_세로27_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
-  var 칸_가로10_html=`<div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
-  for (var i=0; i<17; i++) {
-    document.querySelector('#칸_가로세로_세로').innerHTML+=칸_세로27_html;
-  }
-  for (var i=0; i<7; i++) {
-    document.querySelector('#칸_가로세로_가로').innerHTML+=칸_가로10_html;
-  }
-  var 빈도정보=[{아이디:'#칸_빈도45_빈도',추가요소:'span',추가개수:5},
-               {아이디:'#칸_빈도45_당번',추가요소:'span',추가개수:30}];
 
-  for ( {아이디,추가요소,추가개수} of 빈도정보 ) {
-    for (var 내부반복=0; 내부반복<46; 내부반복++) {
-      var div=document.createElement('div');
-      for (var i=0; i<추가개수; i++) {
-        var span=document.createElement(추가요소);
-        div.appendChild(span);
-        document.querySelector(아이디).appendChild(div);        
-      }
-    }
-  }
-
-
-
-
-
-  //타이틀넣기
-  var 요소=document.querySelectorAll('.버튼45css button');
-  for (var i=0; i<요소.length; i++) {요소[i].setAttribute('title',요소[i].innerHTML)}
-
-  //회차select옵션생성
-  let 옵션 = 회차별배열.map(v => `<option>${v[0]}</option>`).reverse().join('');
-  $('#당번_회차select, #분석자료_회차select').html(옵션);
-
-  //check_초기설정 : .체크input checked인것 d-none제거(보이게), .분류 인것 이동리스트에 추가
-  $('.체크input').each(function () {
-    $(this).next('label').attr('for', this.id);
-    this.checked && $('#' + this.id.slice(6))?.removeClass('d-none');
-  });
-  const html = $('.이동리스트').map((_, el) => `<div>${el.id}</div>`).get().join('');
-  $('#이동할위치div리스트, #이동할div리스트').html(html);
-
-  const 당번한줄html = `<div><span class="당번회차 d-inline-block"><button style="width:45px;font-weight:lighter;"></button></span><span 
-  class="당번만 d-inline-block"><button></button><button></button><button></button><button></button><button></button><button></button></span><span 
-  class="보볼 d-inline-block"><button style="font-weight:lighter;"></button></span></div>`
-  document.querySelector('#당번_다음회차').innerHTML = 당번한줄html;
-  for (var i = 0; i < 30; i++) {
-    document.querySelector('#당번_불러온당첨정보').innerHTML += 당번한줄html;
-  }
-  //id="분석자료_표_상_js"
-  if ('분석자료_표_상_js' == '분석자료_표_상_js') {
-    for (var 외부 = 0; 외부 < 20; 외부++) { //처음 20칸
-      var 가로한줄 = document.createElement('div');
-      var 번호선택_추출_c = document.createElement('span');
-      var 번호선택배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주미출', '10주미출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
-      var 타이틀배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
-      for (var i = 0; i < 4; i++) {
-        var div요소 = document.createElement('span'); // div 요소 변수에 담는다.
-        if (i == 0) { div요소.textContent = 번호선택배열[외부]; div요소.setAttribute('style', 'width:75px;height:24px; border:1px solid black;display:inline-block;margin-right:-1px;') }
-        if (i == 1 && 외부 == 0) { div요소.textContent = '수' }
-        if (i == 1) { div요소.setAttribute('style', 'width:30px; border:1px solid black;display:inline-block;margin-right:-1px;text-align:center;height:24px;') }
-        if (i==0 && 외부<11) {
-          div요소.setAttribute('class','클릭번호로보냄');
-          div요소.setAttribute('title','#분석자료변수 .공통변수_'+타이틀배열[외부]);
-        }
-        if (i == 2) { div요소 = document.createElement('button'); }
-        if (i == 2 && 외부 == 0) { div요소.textContent = '출' }
-        if (i == 2 && 외부 != 0) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기
-
-        if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' }
-        if (i == 3 && 외부 != 0) { div요소 = document.createElement('button'); div요소.setAttribute('class', '앞요소값clear') }
-
-        if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
-        //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
-        if (외부 > 10) {
-          if (i == 0) { div요소.setAttribute('contenteditable', 'true') }
-          if (i == 1) { div요소.setAttribute('onclick', '토글11에서20_셑팅과초기화(this)') }
-        }
-        번호선택_추출_c.appendChild(div요소);
-      }
-      var 번호45 = document.createElement('span');
-      //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
-      번호45.setAttribute('class', '다섯개씩번갈아색칠');
-
-      for (var i = 1; i < 46; i++) {
-        var div요소 = document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-        번호45.appendChild(div요소);
-      }
-      가로한줄.appendChild(번호선택_추출_c);
-      가로한줄.appendChild(번호45);
-      if (외부 < 11) {
-        가로한줄.setAttribute('class', 'js클릭번호 분석자료_표_상_지울곳')
-      } else {
-        가로한줄.setAttribute('class', 'js클릭번호')
-      }
-      document.querySelector('#분석자료_표_상_js').appendChild(가로한줄);
-    } //20회반복 끝
-
-    for (var i = 0; i < 45; i++) { document.querySelectorAll('#분석자료_표_상_js > div')[0].children[1].children[i].innerHTML = i + 1 }
-    //다 만들고 난 후에 숨김할것 처리
-    var 요소 = document.querySelectorAll('#분석자료숨김버튼 button');
-    for (var i = 0; i < 요소.length; i++) {
-      if (요소[i].classList.contains('분석버튼숨김')) {
-        document.querySelector('#분석자료_표_상_js').children[요소[i].innerHTML].classList.add('d-none');
-      }
-    }
-  }
-  //id="분석자료_표_하_js"
-  if ('분석자료_표_하_js' == '분석자료_표_하_js') {
-    //왼쪽과 오른쪽 구분하여 작성
-    if ('오른쪽' == '오른쪽') {
-      var 오른쪽45 = document.createElement('div');
-      오른쪽45.setAttribute('class', 'd-inline-block');
-      for (var 외부 = 0; 외부 < 39; 외부++) {
-        var 가로한줄 = document.createElement('div');
-        var 번호선택_추출_c = document.createElement('span');
-        var 번호45 = document.createElement('div');
-        if (외부 != 1) { 번호45.setAttribute('class', '다섯개씩번갈아색칠') }
-        if (외부 == 1) { 번호45.setAttribute('id', '삼십회횟수기록') }
-        for (var i = 1; i < 46; i++) {
-          var div요소 = document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
-          if (외부 == 0 || 외부 == 8) { div요소.innerText = i }
-          번호45.appendChild(div요소);
-        }
-        오른쪽45.appendChild(번호45);
-      }
-    }
-    if ('왼쪽' == '왼쪽') {
-      var 왼쪽몇칸 = document.createElement('div');
-      왼쪽몇칸.setAttribute('class', '왼쪽몇칸');
-      왼쪽몇칸.innerHTML = `<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-      <div>1</div>
-      <button>1sdfsdfsdf</button>
-      <button>1</button>`;
-      document.querySelector('#분석자료_표_하_js').appendChild(왼쪽몇칸) //빈 div 한개 넣어둠, 왼쪽 만들기 건너뜀, css 가져오기위함
-    }
-
-    document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
-  }
-  //색칠하기의 45칸 div 6번넣기
-  var 색칠관련 = document.querySelectorAll('.설명_가로한줄'); //두번째자식
-  var div45개 = ''; for (var i = 0; i < 45; i++) { div45개 += '<button></button>' }
-  for (var i = 0; i < 색칠관련.length; i++) { 색칠관련[i].children[1].innerHTML = div45개 }
-  for (var i = 1; i < 46; i++) { 색칠관련[5].children[1].children[i - 1].innerHTML = i }
-}
 function 이동하기() {
   const $from = $('#이동할div리스트 .active'), $to = $('#이동할위치div리스트 .active');
   if (!$from.length || !$to.length) return alert('둘다선택되어야함');
