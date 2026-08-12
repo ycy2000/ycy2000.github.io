@@ -18,6 +18,7 @@ let 전체변수색칠문자열 = '';
 let 셑팅된곳변수포함id='#keep번호들_변수포함'
 let 셑팅된곳숫자만id='#keep번호들'
 let 색칠id='';
+document.querySelectorAll('#회귀지정값').innerHTML=1;
 당번_회차change설정();
 분석자료_회차change설정();
 따라가기위치설정();
@@ -120,7 +121,7 @@ function 고정html_구조생성및_초기설정() {
         if (i == 2 && 외부 == 0) { div요소.textContent = '출' }
         if (i == 2 && 외부 != 0) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기
 
-        if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' }
+        if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' ;}
         if (i == 3 && 외부 != 0) { div요소 = document.createElement('button'); div요소.setAttribute('class', '앞요소값clear') }
 
         if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
@@ -181,13 +182,16 @@ function 고정html_구조생성및_초기설정() {
     if ('왼쪽' == '왼쪽') {
       var 왼쪽몇칸 = document.createElement('div');
       왼쪽몇칸.setAttribute('class', '왼쪽몇칸');
-      왼쪽몇칸.innerHTML = `<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      왼쪽몇칸.innerHTML = `<div class="form-check d-inline-block" style="margin-left:5px;">
+          <input class="form-check-input" type="checkbox" value="" id="누적2"  onclick="누적연동()">
+          <label class="form-check-label" style="background-color: chocolate;" for="누적2">누적</label></div>
+      <div><button style="border:1px solid black;width:80px;padding:0px 5px;" onclick="색칠할번호들_clear()">번호clear</button></div>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
       <div>1</div>
       <button>1sdfsdfsdf</button>
       <button>1</button>`;
       document.querySelector('#분석자료_표_하_js').appendChild(왼쪽몇칸) //빈 div 한개 넣어둠, 왼쪽 만들기 건너뜀, css 가져오기위함
     }
-
     document.querySelector('#분석자료_표_하_js').appendChild(오른쪽45)
   }
   //색칠하기의 45칸 div 6번넣기
@@ -195,6 +199,13 @@ function 고정html_구조생성및_초기설정() {
   var div45개 = ''; for (var i = 0; i < 45; i++) { div45개 += '<button></button>' }
   for (var i = 0; i < 색칠관련.length; i++) { 색칠관련[i].children[1].innerHTML = div45개 }
   for (var i = 1; i < 46; i++) { 색칠관련[5].children[1].children[i - 1].innerHTML = i }
+}
+function 누적연동() {
+  $('#누적, #누적2').on('change', function () {
+    const 체크상태 = $(this).prop('checked');
+
+    $('#누적, #누적2').prop('checked', 체크상태);
+  });
 }
 function 연습() {
   let 문자열='1_2002-12-07_10_23_29_33_35_40_16_2_2002-12-14_9_13_21_25_32_42_2_3_2002-12-21_11_16_19_21_27_31_30'
@@ -212,7 +223,37 @@ function 연습() {
 
 
 
+function 당번회귀설정_30회분번호표시() {
+  //------------------ 번호바뀌는데 타이틀이 안바뀐다. 기존꺼 지우기(색칠포함), 색칠하기(설정대로)
+  //--------- 30회분 색칠 분리 필요 - 회귀관련
+  const THIRTY_WEEKS = 30;
+  const getNumbersRow = (idx) => 회차별배열[idx]; // 문자열 배열
+  const safeQueryAll = (sel) => document.querySelectorAll(sel);
+  // ===== 30회분 번호 표시 =====
+  const 회귀지정값문자 = document.querySelector('#회귀지정값').textContent.trim();
 
+  if (회귀지정값문자 === '' || isNaN(Number(회귀지정값문자))) {
+      alert('회귀지정값은 숫자로 입력해야 합니다.');
+      return;
+  }
+  let 회귀지정값=Number(회귀지정값문자);
+  // --- 회귀지정값이 숫자가 안되는 경우가 있다...
+  for (let 삼십번 = 0; 삼십번 < THIRTY_WEEKS; 삼십번++) {
+    const 회차차감 = 삼십번*회귀지정값;
+    //const row = getNumbersRow(Number(회차) - 삼십번);
+    //console.log('회귀지정값 : ', 회귀지정값, ', 회차차감 : ', 회차차감, ', 삼십번 : ', 삼십번)
+    const row = getNumbersRow(Number(회차) - 회차차감);
+    for (let i = 0; i < 8; i++) {
+      const btn = safeQueryAll(`#당번_불러온당첨정보 > div:nth-of-type(${삼십번 + 1}) > span > button`)[i];
+      if (!btn) continue;
+      if (i === 0) btn.innerHTML = row?.[i] ?? '';
+      else         btn.innerHTML = row?.[i + 1] ?? '';
+    }
+  }
+  // .당번만 > button : title 속성 넣기
+  safeQueryAll('.당번만 > button').forEach((btn) => btn.setAttribute('title', btn.innerHTML));
+  색칠하기(); //중복이지만 현재로써...
+}
 function 분석자료_삼십회표3종_작성_미완성() {
 }
 function 분석자료_버튼클릭시_상하_숨김동작() {//135줄이었던것
@@ -847,15 +888,7 @@ function 당번_회차change설정() {
     for (let i = 0; i < 8; i++) safeQueryAll('#당번_다음회차 > div > span > button')[i].innerHTML = '_';
   }
 
-  // ===== 30회분 번호 표시 =====
-  for (let 삼십번 = 0; 삼십번 < THIRTY_WEEKS; 삼십번++) {
-    const row = getNumbersRow(Number(회차) - 삼십번);
-    for (let i = 0; i < 8; i++) {
-      const btn = safeQueryAll(`#당번_불러온당첨정보 > div:nth-of-type(${삼십번 + 1}) > span > button`)[i];
-      if (i === 0) btn.innerHTML = row[i];
-      else         btn.innerHTML = row[i + 1];
-    }
-  }
+  당번회귀설정_30회분번호표시();
 
   // ===== 변수 채우기(#당번변수 / #당번_오주삼십주개수) =====
   const 부모id = '#당번변수';
@@ -979,10 +1012,6 @@ function 당번_회차change설정() {
       target.innerHTML = target.innerHTML.slice(0, -1);
     }
   });
-
-  // .당번만 > button : title 속성 넣기
-  safeQueryAll('.당번만 > button').forEach((btn) => btn.setAttribute('title', btn.innerHTML));
-
   // 마지막 후처리
   셑팅2_번호45오른쪽_변경();
   색칠하기();
@@ -994,284 +1023,6 @@ function 당번_흐름만들기() {
   //'내림간격당당첨'은 '내림차순간격'의 번호에 현재 당번의 포함개수
 
 
-}
-
-function 당번_회차change설____정() {
-  console.log('당번_회차change설정()')
-  document.querySelector('#당번_회차select').value = Number(회차+1);
-  var 당번 = 회차별배열[회차].slice(2, 8);
-  if (회차 > 최근회차) { console.log('회차가 최근회차보다 크면 종료'); 회차 = 회차 - 1; document.querySelector('#당번_회차select').value = Number(회차+1); return; } //회차=회차-1 ==> 원래대로 돌림
-  if (1 == 1) { //여러흐름
-    //여러흐름중 당번 : 값 초기화, 마지막 개수는 나중에
-    var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
-    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
-    var 요소=document.querySelectorAll('#칸_삼십회_위 > div:not(:first-child):not(:nth-of-type(2)):not(:last-child) > span')
-    Array.from(요소).forEach ( 요소 => 요소.innerHTML='');
-    var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span');
-    for (var i = 2; i < 6; i++) {
-      //마지막 4개 : 일단 0 기록
-      요소[i-1].innerHTML=0;
-    }
-    var 요소=document.querySelectorAll('#칸_삼십회_위 > div:last-child > span');
-    for (var i = 1; i < 7; i++) {
-      //마지막 6개 : 일단 0 기록, 30회
-      요소[i-1].innerHTML=0;
-    }
-    for (var i = 2; i < 8; i++) {
-        var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div > span:nth-of-type(1)');
-        요소[i].innerHTML=회차별배열[Number(회차)].split('_')[i];
-
-        var 간격;
-        var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div > span:nth-of-type(2)');            
-        if (i==7) {간격=Number(회차별배열[Number(회차)].split('_')[2])-
-                        Number(회차별배열[Number(회차)].split('_')[7])+45-1} 
-                        else {
-                    간격=Number(회차별배열[Number(회차)].split('_')[i+1])- 
-                        Number(회차별배열[Number(회차)].split('_')[i])-1
-                  }
-        요소[i].innerHTML=간격;
-    }
-    //여러흐름중 당번 : 당번에 대해서 미출, 1,2,3출 위치에 각각 다시 기록 및 숫자개수 카운팅...여러흐름용_이전오주당번모음
-    //          var 요소=document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span');
-    var 여러흐름용_이전오주당번모음=[], 여러흐름용_이전삼십주당번모음=[];
-    for (var i = 0; i < 31; i++) {
-      if (i>0 && i < 6) { 회차별배열[회차 - i].slice(2, 8).forEach(번호 => { 여러흐름용_이전오주당번모음.push(번호) }) }
-      if (i>0 && i < 31) { 회차별배열[회차 - i].slice(2, 8).forEach(번호 => { 여러흐름용_이전삼십주당번모음.push(번호) }) }
-    }    
-    var 오주출수;
-    for (var i=0; i<6; i++) {
-      오주출수=여러흐름용_이전오주당번모음.filter( 번호 => 번호==당번[i]).length;
-      //console.log('당번[i] : ' + 당번[i] + ',' + 오주출수)
-      if (오주출수>3) {오주출수=3}
-      document.querySelectorAll('#칸_간격과삼이일_위 > div:nth-of-type(' + (3+i) + ') > span')[2+오주출수].innerHTML=당번[i];
-      document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span')[1+오주출수].innerHTML=
-      Number(document.querySelectorAll('#칸_간격과삼이일_위 > div:last-child > span')[1+오주출수].innerHTML) + 1;
-    }
-    var 삼십주출수;
-    for (var i=0; i<6; i++) {
-      삼십주출수=여러흐름용_이전삼십주당번모음.filter( 번호 => 번호==당번[i]).length;
-      if (삼십주출수<2 || 삼십주출수>6) {삼십주출수=7} //7==기타의 위치
-      document.querySelectorAll('#칸_삼십회_위 > div:nth-of-type(' + (3+i) + ') > span')[삼십주출수-2].innerHTML=당번[i];
-      document.querySelectorAll('#칸_삼십회_위 > div:last-child > span')[삼십주출수-2].innerHTML=
-      Number(document.querySelectorAll('#칸_삼십회_위 > div:last-child > span')[삼십주출수-2].innerHTML) + 1;
-    }
-    //번호대, 삼이일20주간, 2345620주간, 당번이월20주간
-    for (var 이십주=0; 이십주<20; 이십주++) {
-      var 당번=회차별배열[회차 - 이십주].slice(2, 8); //당 회차
-      var 오주당번모음 = [], 십주당번모음 = [], 십오주당번모음 = [], 삼십주당번모음 = []; //이전부터 
-      for (var i = 0; i < 30; i++) {
-        if (i < 5) { 회차별배열[회차 - i - 이십주 -1].slice(2, 8).forEach(번호 => { 오주당번모음.push(번호) }) }
-        if (i < 10) { 회차별배열[회차 - i - 이십주 -1].slice(2, 8).forEach(번호 => { 십주당번모음.push(번호) }) }
-        if (i < 15) { 회차별배열[회차 - i - 이십주 -1].slice(2, 8).forEach(번호 => { 십오주당번모음.push(번호) }) }
-        if (i < 30) { 회차별배열[회차 - i - 이십주 -1].slice(2, 8).forEach(번호 => { 삼십주당번모음.push(번호) }) }
-      }
-      var 장미321=document.querySelectorAll('#칸_간격과삼이일_아래 > div:nth-of-type(' + (이십주+2) + ') > span'); //첫span 비어있음
-      Array.from(장미321).forEach ( (요소,인덱스) => {if (인덱스>0) {요소.innerHTML=0}});//일단 0 기록
-      당번.forEach ( (번호,인덱스) => { 
-        if (십주당번모음.filter (일치 => 일치==번호).length==0) {장미321[1].innerHTML=Number(장미321[1].innerHTML)+1}
-        if (오주당번모음.filter (일치 => 일치==번호).length==0) {장미321[2].innerHTML=Number(장미321[2].innerHTML)+1}
-        if (오주당번모음.filter (일치 => 일치==번호).length==1) {장미321[3].innerHTML=Number(장미321[3].innerHTML)+1}
-        if (오주당번모음.filter (일치 => 일치==번호).length==2) {장미321[4].innerHTML=Number(장미321[4].innerHTML)+1}
-        if (오주당번모음.filter (일치 => 일치==번호).length>2) {장미321[5].innerHTML=Number(장미321[5].innerHTML)+1}
-      });
-      var 삼십회=document.querySelectorAll('#칸_삼십회_아래 > div:nth-of-type(' + (이십주+2) + ') > span');
-      Array.from(삼십회).forEach ( (요소,인덱스) => 요소.innerHTML=0);//일단 0 기록
-      var 개수;
-      당번.forEach ( (번호,인덱스) => { 
-        개수=삼십주당번모음.filter ( m => m==번호 ).length;
-        if (개수>1 && 개수<7) {삼십회[개수-2].innerHTML=Number(삼십회[개수-2].innerHTML)+1}
-        if (개수>1 && 개수<7) {삼십회[5].innerHTML=Number(삼십회[5].innerHTML)+1}
-      });
-      var 이월이웃=document.querySelectorAll('#칸_이웃수_아래 > div:nth-of-type(' + (이십주+2) + ') > span'); //첫span 비어있음
-      var 이전당번=회차별배열[회차 - 이십주-1].slice(2, 8);
-      var 이전이웃=[];
-      var 왼쪽, 오른쪽;
-      이전당번.forEach (번호 => {
-        if (번호==1) {왼쪽=45; 오른쪽=2;};if (번호==45) {왼쪽=44; 오른쪽=1;};if (번호!=45 && 번호!=1) {왼쪽=Number(번호)-1; 오른쪽=Number(번호)+1;};
-        //왼쪽, 오른쪽 : 이전당번에 포함되지않는다, 이전이웃에 포함되지 않는다. => push
-        if (이전당번.includes(왼쪽) || 이전이웃.includes(왼쪽)) {} else {이전이웃.push(왼쪽)};
-        if (이전당번.includes(오른쪽) || 이전이웃.includes(오른쪽)) {} else {이전이웃.push(오른쪽)};
-      });
-      Array.from(이월이웃).forEach ( (요소,인덱스) => {if (인덱스<6) {요소.innerHTML=당번[인덱스]}}); //일단 당번 기록
-      Array.from(이월이웃).forEach ( (요소,인덱스) => {
-
-      });
-
-
-
-
-
-
-    } //for 닫음
-  }//if 닫음
-  if (1 == 1) { //#당번_오주삼십주개수 작성 및 변수에 값 넣기, //#당번변수 : 안에 class가 #분석자료변수 안에도 동일하므로... 부모id
-    //다음회차 위치
-    if (회차별배열[Number(회차) + 1]) {
-      for (var i = 0; i < 8; i++) {
-        if (i == 0) { document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML = 회차별배열[Number(회차) + 1].split('_')[i] }
-        if (i > 0) { document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML = 회차별배열[Number(회차) + 1].split('_')[i + 1] }
-      }
-    } else {
-      for (var i = 0; i < 8; i++) {
-        document.querySelectorAll('#당번_다음회차 > div > span > button')[i].innerHTML = '_';
-      }
-    }
-    //30회분 번호
-    for (var 삼십번 = 0; 삼십번 < 30; 삼십번++) {
-      for (var i = 0; i < 8; i++) { // 기존꺼다 건드리지 말것
-        if (i == 0) { document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번 + 1) + ') > span > button')[i].innerHTML = 회차별배열[Number(회차) - 삼십번].split('_')[i] }
-        if (i > 0) { document.querySelectorAll('#당번_불러온당첨정보 > div:nth-of-type(' + (삼십번 + 1) + ') > span > button')[i].innerHTML = 회차별배열[Number(회차) - 삼십번].split('_')[i + 1] }
-      }
-    }    
-    var 부모id = '#당번변수', 개수id = '#당번_오주삼십주개수';
-    변수명순서대로.forEach(변수명 => {
-      document.querySelector(`${부모id} .${변수명}`).innerHTML = '';
-      document.querySelector(`${개수id} .${변수명}`).innerHTML = 0; //?넣어도 안넘어가네 forEach, d-none으로 넣어줬다.
-      //forEach안에서는 삼항연산은 쓸수있다. 체이닝은 쓸수없다.
-    })
-    if (i == 0 && 회차 == 최근회차) { document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = '_,_,_,_,_,_' }//0 공통변수_다음당번
-    if (i == 0 && 회차 != 최근회차) { document.querySelector(`${부모id} .${변수명순서대로[0]}`).innerHTML = 회차별배열[회차 + 1].slice(2, 8).join(',') } //0 공통변수_다음당번
-    var 좌우수 = [], 이웃수 = [];
-    document.querySelector(`${부모id} .공통변수_당번`).innerHTML = 회차별배열[회차].slice(2, 8).join(',');
-    document.querySelector(`${개수id} .공통변수_당번`).innerHTML = 6;
-    document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML = 회차별배열[회차].slice(2, 8).join(',') + ',';
-    document.querySelector(`${개수id} .공통변수_당번이웃`).innerHTML = 6;
-
-    회차별배열[회차].slice(2, 8).forEach(숫자 => {
-      if (숫자 == 1) { 좌우수.push(45); 좌우수.push(2); }
-      if (숫자 == 45) { 좌우수.push(44); 좌우수.push(1); }
-      if (숫자 > 1 && 숫자 < 45) { 좌우수.push(Number(숫자) - 1); 좌우수.push(Number(숫자) + 1); }
-    })
-    좌우수 = new Set(좌우수); 좌우수 = [...좌우수]
-    좌우수.forEach(숫자 => {
-      if (!회차별배열[회차].slice(2, 8).includes(숫자)) {
-        document.querySelector(`${부모id} .공통변수_이웃`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .공통변수_이웃`).innerHTML = Number(document.querySelector(`${개수id} .공통변수_이웃`).innerHTML) + 1;
-        document.querySelector(`${부모id} .공통변수_당번이웃`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .공통변수_당번이웃`).innerHTML = Number(document.querySelector(`${개수id} .공통변수_당번이웃`).innerHTML) + 1;
-      };
-    })
-
-    var 오주당번모음 = [], 십주당번모음 = [], 십오주당번모음 = [], 삼십주당번모음 = [];
-    for (var i = 0; i < 30; i++) {
-      if (i < 5) { 회차별배열[회차 - i].slice(2, 8).forEach(번호 => { 오주당번모음.push(번호) }) }
-      if (i < 10) { 회차별배열[회차 - i].slice(2, 8).forEach(번호 => { 십주당번모음.push(번호) }) }
-      if (i < 15) { 회차별배열[회차 - i].slice(2, 8).forEach(번호 => { 십오주당번모음.push(번호) }) }
-      if (i < 30) { 회차별배열[회차 - i].slice(2, 8).forEach(번호 => { 삼십주당번모음.push(번호) }) }
-    }
-    /* 
-    0 공통변수_다음당번  1 공통변수_당번  2 공통변수_이웃  3 공통변수_당번이웃  4 공통변수_5주출  5 공통변수_5주0출  6 공통변수_5주1출  
-    7 공통변수_5주2출   8 공통변수_5주3출  9 공통변수_10주0출  10 공통변수_15주0출  11 공통변수_30주0출  12 공통변수_30주1출  
-    13 공통변수_30주2출  14 공통변수_30주3출  15 공통변수_30주4출  16 공통변수_30주5출  17 공통변수_30주6출  18 공통변수_30주7출 
-    19 공통변수_30주8출  20 공통변수_30주9출  21 공통변수_30주10출  22 공통변수_30주11출  23 공통변수_30주12출
-    */
-    for (var i = 0; i < 45; i++) {
-      var 오주출개수 = 오주당번모음.filter(숫자 => 숫자 == (i + 1)).length;
-      var 숫자 = i + 1;
-      if (오주출개수 > 0) {
-        document.querySelector(`${부모id} .${변수명순서대로[4]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[4]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[4]}`).innerHTML) + 1;
-      }
-      if (오주출개수 == 0) {
-        document.querySelector(`${부모id} .${변수명순서대로[5]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[5]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[5]}`).innerHTML) + 1;
-      }
-      if (오주출개수 == 1) {
-        document.querySelector(`${부모id} .${변수명순서대로[6]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[6]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[6]}`).innerHTML) + 1;
-      }
-      if (오주출개수 == 2) {
-        document.querySelector(`${부모id} .${변수명순서대로[7]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[7]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[7]}`).innerHTML) + 1;
-      }
-      if (오주출개수 > 2) {
-        document.querySelector(`${부모id} .${변수명순서대로[8]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[8]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[8]}`).innerHTML) + 1;
-      }
-      var 십주출개수 = 십주당번모음.filter(숫자 => 숫자 == (i + 1)).length;
-      var 십오주출개수 = 십오주당번모음.filter(숫자 => 숫자 == (i + 1)).length;
-      if (십주출개수 == 0) {
-        document.querySelector(`${부모id} .${변수명순서대로[9]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[9]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[9]}`).innerHTML) + 1;
-      }
-      if (십오주출개수 == 0) {
-        document.querySelector(`${부모id} .${변수명순서대로[10]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[10]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[10]}`).innerHTML) + 1;
-      }
-
-      var 삼십주출개수 = 삼십주당번모음.filter(숫자 => 숫자 == (i + 1)).length;
-      if (삼십주출개수 == 0) {
-        document.querySelector(`${부모id} .${변수명순서대로[11]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[11]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[11]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 1) {
-        document.querySelector(`${부모id} .${변수명순서대로[12]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[12]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[12]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 2) {
-        document.querySelector(`${부모id} .${변수명순서대로[13]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[13]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[13]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 3) {
-        document.querySelector(`${부모id} .${변수명순서대로[14]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[14]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[14]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 4) {
-        document.querySelector(`${부모id} .${변수명순서대로[15]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[15]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[15]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 5) {
-        document.querySelector(`${부모id} .${변수명순서대로[16]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[16]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[16]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 6) {
-        document.querySelector(`${부모id} .${변수명순서대로[17]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[17]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[17]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 7) {
-        document.querySelector(`${부모id} .${변수명순서대로[18]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[18]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[18]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 8) {
-        document.querySelector(`${부모id} .${변수명순서대로[19]}`).innerHTML = 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[19]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[19]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 9) {
-        document.querySelector(`${부모id} .${변수명순서대로[20]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[20]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[20]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 10) {
-        document.querySelector(`${부모id} .${변수명순서대로[21]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[21]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[21]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 11) {
-        document.querySelector(`${부모id} .${변수명순서대로[22]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[22]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[22]}`).innerHTML) + 1;
-      }
-      if (삼십주출개수 == 12) {
-        document.querySelector(`${부모id} .${변수명순서대로[23]}`).innerHTML += 숫자 + ',';
-        document.querySelector(`${개수id} .${변수명순서대로[23]}`).innerHTML = Number(document.querySelector(`${개수id} .${변수명순서대로[23]}`).innerHTML) + 1;
-      }
-    }
-    변수명순서대로.forEach(변수명 => {
-      var 요소확인 = document.querySelector(`${부모id} .${변수명}`);
-      if (요소확인.innerHTML.slice(-1) == ',') { 요소확인.innerHTML = 요소확인.innerHTML.slice(0, -1) } //마지막이 쉼표(,)이면 쉼표삭제
-    })
-
-
-
-    //.당번만 > button : title넣기
-    var 요소들 = document.querySelectorAll('.당번만 > button');
-    for (var i = 0; i < 요소들.length; i++) {
-      요소들[i].setAttribute('title', 요소들[i].innerHTML)
-    }
-
-  }
-  //-------------- 흐름
-
-
-  셑팅2_번호45오른쪽_변경();
-  색칠하기();
 }
 function 킵_보기숨기기(e) {
   var 버튼들 = document.querySelectorAll('.설명_왼쪽div_버튼5개 > button');
@@ -1469,6 +1220,9 @@ function 따라가기위치설정() {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
+  if (e.target.parentElement.id=='회귀관련') {
+    console.log('회귀관련')
+  }
   if (['버튼45의1st','버튼45의2st','버튼45의3st'].includes(e.target.parentElement.parentElement.id) && e.target.innerHTML=='콜') {
     console.log('콜')
     var 인덱스;

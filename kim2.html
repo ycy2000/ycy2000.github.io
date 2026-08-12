@@ -63,14 +63,6 @@
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_코드">
     <label class="form-check-label">코드</label>
   </span>  
-  <span onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_사진">
-    <label class="form-check-label">사진</label>
-  </span>
-  <span onchange="체크this활용(this);" style="margin-left:10px;">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_사진2">
-    <label class="form-check-label">사진2</label>
-  </span> 
   <button onclick="연습()" style="width:45px;">연습</button>
   <span>현재누적번호 : </span><span id="현재번호">[분석:30회3출]+[숫자:2,3,4,5,6]</span>
 </div>
@@ -200,7 +192,7 @@
           <label class="form-check-label" for="셑팅3_input">셑팅3</label>
         </div>
         <div class="form-check d-inline-block" style="margin-left:5px;">
-          <input class="form-check-input" type="checkbox" value="" id="누적">
+          <input class="form-check-input" type="checkbox" value="" id="누적" onclick="누적연동()">
           <label class="form-check-label" style="background-color: chocolate;" for="누적">누적</label>
         </div>
         <button style="border:1px solid black;width:80px;padding:0px 5px;" onclick="색칠할번호들_clear()">번호clear</button>
@@ -308,6 +300,10 @@
         <label class="form-check-label">오른쪽</label>
       </div>
     </div>
+    <div id="회귀관련">
+      <button onclick="document.querySelector('#회귀지정값').innerHTML=1;당번회귀설정_30회분번호표시()">1회귀</button>
+      <button onclick="document.querySelector('#회귀지정값').innerHTML=5;당번회귀설정_30회분번호표시()">5회귀</button>
+      <button onclick="당번회귀설정_30회분번호표시()">지정회귀</button><span contenteditable="true" id="회귀지정값">1</span></div>
     <div id="당번_불러온당첨정보" class="당번8칸"></div>
   </div>
   <div id="당번_오주삼십주개수" class="숨김리스트 d-inline-block">
@@ -325,6 +321,7 @@
         <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주3출">5주3출</button><button class="공통변수_5주3출"></button></div>
         <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_10주0출">10주0출</button><button class="공통변수_10주0출"></button></div>
         <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_15주0출">15주0출</button><button class="공통변수_15주0출"></button></div>
+        <div><button style="display:inline-block; width:92px;" onclick="색칠할번호들_clear()">번호clear</button></div>
       </span>
       <span class="소분류 d-inline-block" id="당번_삼십주연결버튼">
         <div>30주</div>
@@ -345,14 +342,6 @@
     </span>
     <div title="줄바꿈용"></div>
     <div id="흐름들보기숨기기">  
-      <div onchange="체크this활용(this);"><!-- class="form-check"  삭제, 띄우기가 커서 -->
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료30빈도전체" checked>
-        <label class="form-check-label">분석30빈도</label>
-      </div>
-      <div onchange="체크this활용(this);">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료45칸" checked>
-        <label class="form-check-label">분석자료45칸</label>
-      </div>
       <div onchange="체크this활용(this);" class="d-inline-block">
         <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_당번전체">
         <label class="form-check-label">당번</label>
@@ -408,7 +397,15 @@
       <div onchange="체크this활용(this);"  style="margin-left:10px;">
         <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
         <label class="form-check-label">내림간격당당첨</label>
-      </div>                                   
+      </div>   
+      <div onchange="체크this활용(this);"><!-- class="form-check"  삭제, 띄우기가 커서 -->
+        <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료30빈도전체" checked>
+        <label class="form-check-label">분석30빈도</label>
+      </div>
+      <div onchange="체크this활용(this);">
+        <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료45칸" checked>
+        <label class="form-check-label">분석자료45칸</label>
+      </div>                                
     </div>
   </div>
   <div id="흐름전체" class="d-none 숨김리스트 d-inline-block">
@@ -420,7 +417,7 @@
             <div><span>당</span><span>이전</span><span style="width:105px;">5주 출</span></div>
             <div><span>번</span><span>간격</span><span>미출</span><span>1</span><span>2</span><span>3</span></div>
           </div>
-          <br>
+          <div style="font-size:14px;margin-top:3px;margin-left:26px;">기본3종</div>
           <div id="칸_간격과삼이일_아래">
             <div><span></span><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
           </div>
@@ -430,7 +427,7 @@
             <div><span style="width:157px;">30회(이전회차에서)</span></div>
             <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span style="font-size:11px;">기타</span></div>
           </div>
-          <br>
+          <div style="font-size:14px;margin-top:3px;">기본3종</div>
           <div id="칸_삼십회_아래">
             <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
           </div>
@@ -443,8 +440,8 @@
           <div id="칸_이월이웃수_위_번호대" class="d-inline-block" style="margin-left:17px;">
             <div><span>단번</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
             <div><span></span><span></span><span></span><span></span><span></span></div>
-          </div>        
-          <br><br>
+          </div>  
+          <div style="font-size:14px;margin-top:3px;">기본3종</div>
           <div id="칸_이월이웃수_아래">
             <div id="칸_이웃수_아래" style="display: inline-block;">
               <div style="font-size:13px;font-weight: bold;"><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="color:blueviolet">당첨</span><span style="color:blueviolet">개수</span><span>이월</span><span>이웃</span><span>합</span></div>
@@ -488,7 +485,7 @@
 
 <div id="분석자료30빈도전체" class="이동리스트 숨김리스트 d-none">
   <div id="분석자료_삼십회표" class="숨김리스트 d-inline-block">
-    <div class="d-inline-block">30회 출현 빈도 (횟수에 기능)</div><br>
+    <div class="d-inline-block">분석45, 30회 출현 빈도 (횟수에 기능)</div><br>
     <div id="분석자료_삼십회표_js">
       
     </div>

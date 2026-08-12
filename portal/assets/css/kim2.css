@@ -22,6 +22,10 @@ body > div {display:inline-block}
 #당번_불러온당첨정보 > div:nth-of-type(odd) button:not(.색칠) {background-color:bisque;color:blue;}
 #당번_다음회차 button {border:1px solid gray; font-weight: bold;width:30px;height:30px;}
 #당번_플마클리어버튼 > button {height:30px; border:1px solid black; border-radius: 5px; display: inline-block; width:30px;}
+#회귀관련 > button, #회귀관련 > span {display:inline-block;height:30px;}
+#회귀관련 > button:nth-of-type(1), #회귀관련 > button:nth-of-type(2) {width:60px;}
+#회귀관련 > button:nth-of-type(3) {width:72px;} 
+#회귀관련 > span {border:1px solid gray; font-weight: bold;width:40px;text-align: center;} 
 
 #흐름전체 > span, #흐름전체 > span > span {display: inline-block;}
 #흐름_기본 {font-family : monospace;}
