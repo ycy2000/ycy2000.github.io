@@ -1,6 +1,8 @@
 @charset "UTF-8";
 body {font-family: 'Noto Serif KR', serif;white-space: nowrap;}
-body * {vertical-align: top;} button {margin-right:-1px;border:1px solid black;width:24px;height:24px;padding:0px;} div {margin-bottom:-1px;}
+body * {vertical-align: top;} 
+button {margin-right:-1px;border:1px solid black;width:24px;height:24px;padding:0px;}
+div {margin-bottom:-1px;}
 body > div {display:inline-block}
 /* #머리글 */
 #이동하기 {position: absolute;background-color: white;border:1px solid black;margin:5px;padding:5px;left:5px; top:100px;left:300px;}
@@ -27,8 +29,8 @@ body > div {display:inline-block}
 #회귀관련 > button:nth-of-type(3) {width:72px;} 
 #회귀관련 > span {border:1px solid gray; font-weight: bold;width:40px;text-align: center;} 
 
-#흐름전체 > span, #흐름전체 > span > span {display: inline-block;}
-#흐름_기본 {font-family : monospace;}
+.모노 {font-family : monospace;}
+.크기14 {font-size:14px;}
 #칸_간격과삼이일_위 > div, #칸_간격과삼이일_아래 > div, #칸_삼십회_위 > div, #칸_삼십회_아래 > div,
 #칸_이월이웃수_위 > div, #칸_이월수_아래 > div, #칸_이웃수_아래 > div, #칸_이월이웃수_위_번호대 > div {height:22px;}
 #칸_간격과삼이일_위 > div > span, #칸_간격과삼이일_아래 > div > span, #칸_삼십회_위 > div > span, #칸_삼십회_아래 > div > span,
@@ -147,7 +149,7 @@ body > div {display:inline-block}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > span 
 {margin-right:-1px;border:1px solid black;vertical-align: top; height:25px;font-weight: bold;display: inline-block;width:40px;text-align: center;}
 #버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > span:nth-of-type(1) {background-color: chartreuse;}
-#버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > span:nth-of-type(2) {width:30px;background-color:chocolate;}
+#버튼45오른쪽단독 > .설명_두번째div > #끝수 > div > button {margin-left:-5px;}
 .선택45 {background-color:chocolate;}
 #편집1, #편집2, #편집3 {border:1px solid black;display:inline-block;width:403px;white-space:normal;padding:4px;font-weight: bold;}
 .설명_가로한줄 .다섯개씩번갈아색칠 button:nth-of-type(10n+1):not(.분석):not(.분석덧칠),

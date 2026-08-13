@@ -15,6 +15,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body style="margin-left:5px;">
+<div id="임시탭크기"  class="d-none" style="width: 1280px;height: 800px;position: absolute;border:1px solid black;">
+  <button onclick="document.querySelector('#임시탭크기').classList.add('d-none')" style="width:100px;">닫기</button>  
+</div>
+
 <div id="머리글" style="display:block;height:30px;margin:10px;border-bottom:1px solid black;">
   <div id="따라가기" class="d-none" style="top:825px;left:518px;width:1258px;"><!--top:830px;left:518px; 처음에 auto 문제-->
     <div class="d-inline-block">
@@ -28,29 +32,15 @@
       <div contenteditable spellcheck="false" id="편집3"></div>
     </div>
   </div>
-  <button id="이동" class="radius5" style="margin-right:5px;width:45px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button>
-  <div id="이동하기" class="지정 d-none">
-    <div style="margin-bottom:5px;">
-      <button onclick="document.querySelector('#이동하기').classList.add('d-none')" class="radius5" style="width:45px;">닫기</button>
-      <span>
-        <input class="form-check-input" type="radio" name="radioDefault" id="앞에" checked>
-        <label class="form-check-label" for="앞에">앞에</label>
-      </span>
-      <span>
-        <input class="form-check-input" type="radio" name="radioDefault" id="뒤에">
-        <label class="form-check-label" for="뒤에">뒤에</label>
-      </span>
-      <button onclick="이동하기()" class="radius5" style="width:80px;">이동하기</button>
-    </div>
-    <span style="width:150px;display:inline-block">
-      <div style="border:1px solid black;">이동할div_id</div>
-      <div id="이동할div리스트" style="border:1px solid black;"></div>
-    </span>
-    <span style="width:150px;display:inline-block">
-      <div style="border:1px solid black;">이동할위치div_id</div>
-      <div id="이동할위치div리스트" style="border:1px solid black"></div>
-    </span>    
-  </div>
+  <!-- <button id="이동" class="radius5" style="margin-right:5px;width:45px;" onclick="document.querySelector('#이동하기').classList.remove('d-none')">이동</button> -->
+  <span onchange="체크this활용(this);" style="margin-left:10px;">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_이동하기">
+    <label class="form-check-label">이동</label>
+  </span> 
+  <span onchange="체크this활용(this);" style="margin-left:10px;">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_보기숨기기">
+    <label class="form-check-label">보기/숨기기</label>
+  </span> 
   <span onchange="체크this활용(this);" style="margin-left:10px;">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45감싸기">
     <label class="form-check-label">버튼45</label>
@@ -64,8 +54,413 @@
     <label class="form-check-label">코드</label>
   </span>  
   <button onclick="연습()" style="width:45px;">연습</button>
-  <span>현재누적번호 : </span><span id="현재번호">[분석:30회3출]+[숫자:2,3,4,5,6]</span>
 </div>
+
+<div id="이동하기" class="지정 d-none" style="position: absolute;top:47px;left:260px;background-color: white;">
+  <div style="margin-bottom:5px;">
+    <!-- <button onclick="document.querySelector('#이동하기').classList.add('d-none')" class="radius5" style="width:45px;">닫기</button> -->
+    <span>
+      <input class="form-check-input" type="radio" name="radioDefault" id="앞에" checked>
+      <label class="form-check-label" for="앞에">앞에</label>
+    </span>
+    <span>
+      <input class="form-check-input" type="radio" name="radioDefault" id="뒤에">
+      <label class="form-check-label" for="뒤에">뒤에</label>
+    </span>
+    <button onclick="이동하기()" class="radius5" style="width:80px;">이동하기</button>
+  </div>
+  <span style="width:150px;display:inline-block">
+    <div style="border:1px solid black;">이동할div_id</div>
+    <div id="이동할div리스트" style="border:1px solid black;"></div>
+  </span>
+  <span style="width:150px;display:inline-block">
+    <div style="border:1px solid black;">이동할위치div_id</div>
+    <div id="이동할위치div리스트" style="border:1px solid black"></div>
+  </span>    
+</div>
+<div id="보기숨기기" class="d-none" style="position: absolute;top:47px;left:260px;background-color: white;border:1px solid black;padding:3px;"> 
+  <div class="모노 크기14 mt-2">--- 당번 정보 ---</div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_임시탭크기">
+    <label class="form-check-label" for="check_임시탭크기" style="background-color: chocolate;">임시탭크기</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_당번선긋기" checked>
+    <label class="form-check-label" for="check_칸_당번선긋기" style="background-color: chocolate;">당번선긋기</label>
+  </div>
+  <div onchange="체크this활용(this);" class="d-inline-block">
+    <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_당번전체">
+    <label class="form-check-label">당번</label>
+  </div>
+  <div onchange="체크this활용(this);" class="d-inline-block">
+    <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_위에꺼">
+    <label class="form-check-label">5주30주</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종" checked>
+    <label class="form-check-label" for="check_칸_간격과삼이일">기본3종</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_빈도45_30주">
+    <label class="form-check-label" for="check_칸_빈도45_30주">빈도</label>
+  </div> 
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_가로세로">
+    <label class="form-check-label" for="check_칸_가로세로">가로세로</label>
+  </div> 
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_연번">
+    <label class="form-check-label">연번</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_홀짝">
+    <label class="form-check-label">홀짝</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격">
+    <label class="form-check-label">간격</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격당당첨개수">
+    <label class="form-check-label">간격당당첨</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격내림차순">
+    <label class="form-check-label">내림차순간격</label>
+  </div>       
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
+    <label class="form-check-label">내림간격당당첨</label>
+  </div>   
+  <div class="모노 크기14 mt-2">--- 분석자료 정보 ---</div>
+  <div onchange="체크this활용(this);"><!-- class="form-check"  삭제, 띄우기가 커서 -->
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료30빈도전체" checked>
+    <label class="form-check-label">분석30빈도</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료45칸" checked>
+    <label class="form-check-label">분석자료45칸</label>
+  </div>                                
+</div>
+<div id="당번전체" class="숨김리스트 d-inline-block">
+  <div id="당번_다음회차" class="당번8칸">
+  </div>
+  <select id="당번_회차select" class="d-inline-block" onchange="회차=this.value*1-1;당번_회차change설정();" style="margin:5px 0"></select>
+  <div id="당번_플마클리어버튼" class="d-inline-block" style="margin-top:5px;">
+    <button id="당번플러스" onclick="회차=Number(회차)+1;당번_회차change설정();">+</button> <button id="당번마이너스" onclick="회차=Number(회차)-1;당번_회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
+    <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;margin-left:10px;">
+      <input class="form-check-input 체크input" type="checkbox" value="" id="check_당번_오주삼십주개수" checked>
+      <label class="form-check-label">오른쪽</label>
+    </div>
+  </div>
+  <div id="회귀관련">
+    <button onclick="document.querySelector('#회귀지정값').innerHTML=1;당번회귀설정_30회분번호표시()">1회귀</button>
+    <button onclick="document.querySelector('#회귀지정값').innerHTML=5;당번회귀설정_30회분번호표시()">5회귀</button>
+    <button onclick="당번회귀설정_30회분번호표시()">지정회귀</button><span contenteditable="true" id="회귀지정값">1</span></div>
+  <div id="당번_불러온당첨정보" class="당번8칸"></div>
+</div>
+<div id="당번_오주삼십주개수" class="숨김리스트 d-inline-block">
+  <span id="위에꺼">
+    <span class="소분류 d-inline-block" id="당번_오주연결버튼">
+      <div>5주 관련</div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_다음당번">다음당번</button><button class="공통변수_다음당번">6</button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_당번">당번</button><button class="공통변수_당번"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_이웃">이웃</button><button class="공통변수_이웃"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_당번이웃">당번이웃</button><button class="공통변수_당번이웃"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주출">5주출</button><button class="공통변수_5주출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주0출">5주0출</button><button class="공통변수_5주0출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주1출">5주1출</button><button class="공통변수_5주1출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주2출">5주2출</button><button class="공통변수_5주2출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주3출">5주3출</button><button class="공통변수_5주3출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_10주0출">10주0출</button><button class="공통변수_10주0출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_15주0출">15주0출</button><button class="공통변수_15주0출"></button></div>
+      <div><button style="display:inline-block; width:92px;" onclick="색칠할번호들_clear()">번호clear</button></div>
+    </span>
+    <span class="소분류 d-inline-block" id="당번_삼십주연결버튼">
+      <div>30주</div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주0출">0</button><button class="공통변수_30주0출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주1출">1</button><button class="공통변수_30주1출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주2출">2</button><button class="공통변수_30주2출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주3출">3</button><button class="공통변수_30주3출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주4출">4</button><button class="공통변수_30주4출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주5출">5</button><button class="공통변수_30주5출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주6출">6</button><button class="공통변수_30주6출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주7출">7</button><button class="공통변수_30주7출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주8출">8</button><button class="공통변수_30주8출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주9출">9</button><button class="공통변수_30주9출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주10출">10</button><button class="공통변수_30주10출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주11출">11</button><button class="공통변수_30주11출"></button></div>
+      <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주12출">12</button><button class="공통변수_30주12출"></button></div>
+    </span>
+  </span>
+  <div title="줄바꿈용"></div>
+</div>
+<div id="칸_당번선긋기" class="숨김리스트 d-none d-inline-block 모노 크기14">
+  <button style="width:135px;text-align: center;" onclick="당번12회차선긋기();">당번 12회차 선긋기</button><br>
+  <div class="d-inline-block mr-4">
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+  </div>
+  <div class="d-inline-block mr-4">
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+  </div>
+  <div class="d-inline-block mr-4">
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css mb-3">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+    <div class="버튼45css">
+      <div class="회차와날짜">회차와날짜</div>
+      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
+      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
+      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
+      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
+      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
+      <div><button>43</button><button>44</button><button>45</button></div>
+    </div>
+  </div>
+</div>
+<div id="칸_기본3종" class="숨김리스트 d-none d-inline-block 모노 크기14">
+  <div>여러흐름 모음
+    <div onchange="체크this활용(this);" class="d-inline-block">
+      <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_간격과삼이일" checked>
+      <label class="form-check-label">기본3종_1</label>
+    </div>  
+    <div onchange="체크this활용(this);" class="d-inline-block">
+      <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_삼십회" checked>
+      <label class="form-check-label">기본3종_2</label>
+    </div>  
+    <div onchange="체크this활용(this);" class="d-inline-block">
+      <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_이월이웃수" checked>
+      <label class="form-check-label">기본3종_3</label>
+    </div>  
+  </div>
+  <div id="칸_간격과삼이일" style="margin-right:5px;" class="d-inline-block">
+    <!-- <div id="칸_간격과삼이일_위">
+      <div><span>당</span><span>이전</span><span style="width:105px;">5주 출</span></div>
+      <div><span>번</span><span>간격</span><span>미출</span><span>1</span><span>2</span><span>3</span></div>
+    </div> -->
+    <div style="font-size:14px;margin-top:3px;margin-left:26px;">기본3종_1</div>
+    <div id="칸_간격과삼이일_아래">
+      <div><span></span><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
+    </div>
+  </div>
+  <div id="칸_삼십회" class="d-inline-block">
+    <!-- <div id="칸_삼십회_위">
+      <div><span style="width:157px;">30회(이전회차에서)</span></div>
+      <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span style="font-size:11px;">기타</span></div>
+    </div> -->
+    <div style="font-size:14px;margin-top:3px;">기본3종_2</div>
+    <div id="칸_삼십회_아래">
+      <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
+    </div>
+  </div>
+  <div id="칸_이월이웃수" class="d-inline-block">
+    <!-- <div id="칸_이월이웃수_위" class="d-inline-block">
+      <div><span style="width:79px;">이전회차</span></div>
+      <div><span style="width:79px;">이월/이웃수</span></div>
+    </div> -->
+    <!-- <div id="칸_이월이웃수_위_번호대" class="d-inline-block" style="margin-left:17px;">
+      <div><span>단번</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
+      <div><span></span><span></span><span></span><span></span><span></span></div>
+    </div>   -->
+    <div style="font-size:14px;margin-top:3px;">기본3종_3</div>
+    <div id="칸_이월이웃수_아래">
+      <div id="칸_이웃수_아래" style="display: inline-block;">
+        <div style="font-size:13px;font-weight: bold;"><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="color:blueviolet">당첨</span><span style="color:blueviolet">개수</span><span>이월</span><span>이웃</span><span>합</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="칸_빈도45_30주" class="d-none d-inline-block">
+  <div>
+    <div id="칸_빈도45_빈도" style="display: inline-block;">
+      <div style="margin-bottom:4px;">빈도</div>
+    </div>
+    <div id="칸_빈도45_당번" style="display: inline-block;margin-top:24px;">
+    </div>
+  </div>
+</div>
+<div id="칸_가로세로" class="d-none d-inline-block">
+  <div>
+    <div id="칸_가로세로_세로" style="display: inline-block;">
+      <div>가로세로</div>
+    </div>
+    <div id="칸_가로세로_가로" style="display: inline-block;margin-top:23px;margin-left:-8px;">
+    </div>
+  </div>
+</div>
+<div id="흐름_연번" class="숨김리스트 d-none d-inline-block">흐름_연번</div>
+<div id="흐름_홀짝" class="숨김리스트 d-none d-inline-block">흐름_홀짝</div>
+<div id="흐름_간격" class="숨김리스트 d-none d-inline-block">흐름_간격</div>
+<div id="흐름_간격당당첨개수" class="숨김리스트 d-none d-inline-block">흐름_간격당당첨개수</div>
+<div id="흐름_간격내림차순" class="숨김리스트 d-none d-inline-block">
+  흐름_간격내림차순
+</div>
+<div id="흐름_간격내림차순당첨개수" class="d-none d-inline-block">흐름_간격내림차순당첨개수</div>
+
+
+
+<div id="분석자료30빈도전체" class="이동리스트 숨김리스트 d-none">
+  <div id="분석자료_삼십회표" class="숨김리스트 d-inline-block">
+    <div class="d-inline-block">분석45, 30회 출현 빈도 (횟수에 기능)</div><br>
+    <div id="분석자료_삼십회표_js">
+      
+    </div>
+    <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
+      <input class="form-check-input 체크input" type="checkbox" value="" id="check_삼십빈도개수">
+      <label class="form-check-label">30회개수</label>
+    </div>
+    <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
+      <input class="form-check-input 체크input" type="checkbox" value="" id="check_삼십빈도당첨">
+      <label class="form-check-label">30회당첨</label>
+    </div>    
+    <div class="메모메모" style="border:1px solid gray;" contenteditable spellcheck="false">
+    </div>    
+  </div>
+
+  <div id="삼십빈도개수" class="d-none 숨김리스트 d-inline-block">
+    <div class="d-inline-block">30회 숫자 개수</div><br>
+    <div id="분석자료_삼십회23456개수_js">
+      
+    </div>
+    <div class="메모메모" style="border:1px solid gray;width:272px;" contenteditable spellcheck="false">
+    </div>
+  </div>
+  <div id="삼십빈도당첨" class="d-none 숨김리스트 d-inline-block">
+    <div class="d-inline-block" title="이전회차 30히 출현 빈도표에서의 결과">다음회차 있을때 당번출현 개수</div><br>
+    <div id="분석자료_삼십회당첨개수_js">
+      
+    </div>
+    <div class="메모메모" style="border:1px solid gray;width:233px;" contenteditable spellcheck="false">
+    </div>
+  </div>
+
+</div>
+<div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;margin-left:10px;">
+  <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
+    <button style="width:95px;">30주간당번</button> <button style="width:75px;">5주출6번</button> <button style="width:110px;">30주간출횟수</button>
+  </div>
+  <select id="분석자료_회차select" class="d-inline-block" onchange="회차=this.value*1-1;분석자료_회차change설정();" style="margin:5px 0"></select>
+  <div id="분석자료_선택회차" class="d-inline-block" style="margin-top:5px;"><button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+  <div id="분석자료_플마버튼" class="d-inline-block" style="margin-top:5px;">
+    <button id="분석플러스" onclick="회차=Number(회차)+1;분석자료_회차change설정();">+</button><button id="분석마이너스" onclick="회차=Number(회차)-1;분석자료_회차change설정();">-</button>
+  </div>
+  <div id="분석자료숨김버튼" class="d-inline-block" style="margin-top:5px;margin-left:5px;"><!-- 버튼에 class="분석버튼숨김" 클래스  -->
+    <button>X</button><button>O</button>
+    <button>a</button><button>1</button><button class="분석버튼숨김">2</button><button class="분석버튼숨김">3</button>
+    <button>b</button><button>4</button><button>5</button><button>6</button>
+    <button>c</button><button>7</button><button>8</button><button>9</button><button>10</button>
+    <button>d</button><button class="분석버튼숨김">11</button><button class="분석버튼숨김">12</button><button class="분석버튼숨김">13</button><button class="분석버튼숨김">14</button><button class="분석버튼숨김">15</button><button class="분석버튼숨김">16</button><button class="분석버튼숨김">17</button><button class="분석버튼숨김">18</button><button class="분석버튼숨김">19</button>
+  </div>
+  <div id="분석자료_표_상_js"></div>
+  <div id="분석자료_표_하_js"></div>
+</div>
+
 <div id="버튼45감싸기" class="d-none" style="position: absolute;top:47px;left:260px;background-color: white;">
   <div id="버튼45왼쪽" class="d-inline-block" style="vertical-align: top;">
     <div id="id_버튼45_check">
@@ -124,6 +519,7 @@
     </div>
   </div>
 </div>
+<!-- id="버튼45오른쪽단독" : 색칠  -->
 <div id="버튼45오른쪽단독"  class="d-none" style="position: absolute;top:600px;left:523px;background-color: white;">
   <div class="설명_첫번째div">
     <div class="설명_가로한줄"><span class="설명_왼쪽div"><button>0</button><button onclick="색칠id='#keep번호들';색칠하기()">색칠</button><span class="초코">keep</span>
@@ -224,8 +620,19 @@
       </div>
     </div>
     <div id="끝수" class="d-inline-block" style="margin-top:5px;">
-      <div><span>끝수</span><span>C</span><button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></div>
-      <div><span>30주</span><span>C</span><button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></div>
+      <div>
+        <span>끝수</span>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수0">0</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수1">1</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수2">2</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수3">3</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수4">4</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수5">5</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수6">6</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수7">7</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수8">8</button>
+        <button class="클릭번호로보냄" title="#고정변수 #끝수9">9</button>
+      </div>
       <div id="셑팅번호설명보기" style="display:block;border:1px solid black;width:140px;text-align: center;" onclick="
       document.querySelector('#셑팅번호설명보기').classList.add('d-none');
       document.querySelector('#셑팅번호설명').classList.remove('d-none');
@@ -287,256 +694,6 @@
       <h6 style="text-indent: 25px;"></h6>
     </div>
   </div>
-</div>
-<div id="당번과흐름" class="이동리스트">
-  <div id="당번전체" class="숨김리스트 d-inline-block">
-    <div id="당번_다음회차" class="당번8칸">
-    </div>
-    <select id="당번_회차select" class="d-inline-block" onchange="회차=this.value*1-1;당번_회차change설정();" style="margin:5px 0"></select>
-    <div id="당번_플마클리어버튼" class="d-inline-block" style="margin-top:5px;">
-      <button id="당번플러스" onclick="회차=Number(회차)+1;당번_회차change설정();">+</button> <button id="당번마이너스" onclick="회차=Number(회차)-1;당번_회차change설정();">-</button> <button onclick="당번_색칠clear()">C</button>
-      <div class="form-check d-inline-block" onchange="체크this활용(this);" style="margin-top:5px;margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_당번_오주삼십주개수" checked>
-        <label class="form-check-label">오른쪽</label>
-      </div>
-    </div>
-    <div id="회귀관련">
-      <button onclick="document.querySelector('#회귀지정값').innerHTML=1;당번회귀설정_30회분번호표시()">1회귀</button>
-      <button onclick="document.querySelector('#회귀지정값').innerHTML=5;당번회귀설정_30회분번호표시()">5회귀</button>
-      <button onclick="당번회귀설정_30회분번호표시()">지정회귀</button><span contenteditable="true" id="회귀지정값">1</span></div>
-    <div id="당번_불러온당첨정보" class="당번8칸"></div>
-  </div>
-  <div id="당번_오주삼십주개수" class="숨김리스트 d-inline-block">
-    <span id="위에꺼">
-      <span class="소분류 d-inline-block" id="당번_오주연결버튼">
-        <div>5주 관련</div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_다음당번">다음당번</button><button class="공통변수_다음당번">6</button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_당번">당번</button><button class="공통변수_당번"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_이웃">이웃</button><button class="공통변수_이웃"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_당번이웃">당번이웃</button><button class="공통변수_당번이웃"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주출">5주출</button><button class="공통변수_5주출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주0출">5주0출</button><button class="공통변수_5주0출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주1출">5주1출</button><button class="공통변수_5주1출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주2출">5주2출</button><button class="공통변수_5주2출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_5주3출">5주3출</button><button class="공통변수_5주3출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_10주0출">10주0출</button><button class="공통변수_10주0출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_15주0출">15주0출</button><button class="공통변수_15주0출"></button></div>
-        <div><button style="display:inline-block; width:92px;" onclick="색칠할번호들_clear()">번호clear</button></div>
-      </span>
-      <span class="소분류 d-inline-block" id="당번_삼십주연결버튼">
-        <div>30주</div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주0출">0</button><button class="공통변수_30주0출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주1출">1</button><button class="공통변수_30주1출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주2출">2</button><button class="공통변수_30주2출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주3출">3</button><button class="공통변수_30주3출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주4출">4</button><button class="공통변수_30주4출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주5출">5</button><button class="공통변수_30주5출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주6출">6</button><button class="공통변수_30주6출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주7출">7</button><button class="공통변수_30주7출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주8출">8</button><button class="공통변수_30주8출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주9출">9</button><button class="공통변수_30주9출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주10출">10</button><button class="공통변수_30주10출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주11출">11</button><button class="공통변수_30주11출"></button></div>
-        <div><button class="클릭번호로보냄" title="#당번변수 .공통변수_30주12출">12</button><button class="공통변수_30주12출"></button></div>
-      </span>
-    </span>
-    <div title="줄바꿈용"></div>
-    <div id="흐름들보기숨기기">  
-      <div onchange="체크this활용(this);" class="d-inline-block">
-        <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_당번전체">
-        <label class="form-check-label">당번</label>
-      </div>
-      <div onchange="체크this활용(this);" class="d-inline-block">
-        <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_위에꺼">
-        <label class="form-check-label">위에꺼</label>
-      </div>
-      <div onchange="체크this활용(this);">
-        <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_흐름전체">
-        <label class="form-check-label">흐름전체</label>
-      </div>
-      <div onchange="체크this활용(this);"  style="margin-left:5px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_흐름_기본"><!-- 체크해제 -->
-        <label class="form-check-label">기본흐름</label>
-      </div>
-      <div onchange="체크this활용(this);" style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종" checked>
-        <label class="form-check-label" for="check_칸_간격과삼이일">기본3종</label>
-      </div>
-      <div onchange="체크this활용(this);" style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_빈도45_30주">
-        <label class="form-check-label" for="check_칸_빈도45_30주">빈도</label>
-      </div> 
-      <div onchange="체크this활용(this);" style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_가로세로">
-        <label class="form-check-label" for="check_칸_가로세로">가로세로</label>
-      </div> 
-      <div onchange="체크this활용(this);"  style="margin-left:5px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_기타"><!-- 체크해제 -->
-        <label class="form-check-label">기타흐름</label>
-      </div>
-      <div onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_연번">
-        <label class="form-check-label">연번</label>
-      </div>
-      <div onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_홀짝">
-        <label class="form-check-label">홀짝</label>
-      </div>
-      <div onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격">
-        <label class="form-check-label">간격</label>
-      </div>
-      <div onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격당당첨개수">
-        <label class="form-check-label">간격당당첨</label>
-      </div>
-      <div onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격내림차순">
-        <label class="form-check-label">내림차순간격</label>
-      </div>       
-      <div onchange="체크this활용(this);"  style="margin-left:10px;">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
-        <label class="form-check-label">내림간격당당첨</label>
-      </div>   
-      <div onchange="체크this활용(this);"><!-- class="form-check"  삭제, 띄우기가 커서 -->
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료30빈도전체" checked>
-        <label class="form-check-label">분석30빈도</label>
-      </div>
-      <div onchange="체크this활용(this);">
-        <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료45칸" checked>
-        <label class="form-check-label">분석자료45칸</label>
-      </div>                                
-    </div>
-  </div>
-  <div id="흐름전체" class="d-none 숨김리스트 d-inline-block">
-    <span id="흐름_기본" class="숨김리스트 d-none">
-      <span id="칸_기본3종" class="d-none">
-        <div>여러흐름 모음</div>
-        <div id="칸_간격과삼이일" style="margin-right:5px;" class="d-inline-block">
-          <div id="칸_간격과삼이일_위">
-            <div><span>당</span><span>이전</span><span style="width:105px;">5주 출</span></div>
-            <div><span>번</span><span>간격</span><span>미출</span><span>1</span><span>2</span><span>3</span></div>
-          </div>
-          <div style="font-size:14px;margin-top:3px;margin-left:26px;">기본3종</div>
-          <div id="칸_간격과삼이일_아래">
-            <div><span></span><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
-          </div>
-        </div>
-        <div id="칸_삼십회" class="d-inline-block">
-          <div id="칸_삼십회_위">
-            <div><span style="width:157px;">30회(이전회차에서)</span></div>
-            <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span style="font-size:11px;">기타</span></div>
-          </div>
-          <div style="font-size:14px;margin-top:3px;">기본3종</div>
-          <div id="칸_삼십회_아래">
-            <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
-          </div>
-        </div>
-        <div id="칸_이월이웃수" class="d-inline-block">
-          <div id="칸_이월이웃수_위" class="d-inline-block">
-            <div><span style="width:79px;">이전회차</span></div>
-            <div><span style="width:79px;">이월/이웃수</span></div>
-          </div>
-          <div id="칸_이월이웃수_위_번호대" class="d-inline-block" style="margin-left:17px;">
-            <div><span>단번</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
-            <div><span></span><span></span><span></span><span></span><span></span></div>
-          </div>  
-          <div style="font-size:14px;margin-top:3px;">기본3종</div>
-          <div id="칸_이월이웃수_아래">
-            <div id="칸_이웃수_아래" style="display: inline-block;">
-              <div style="font-size:13px;font-weight: bold;"><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="color:blueviolet">당첨</span><span style="color:blueviolet">개수</span><span>이월</span><span>이웃</span><span>합</span></div>
-            </div>
-          </div>
-        </div>
-      </span>
-      <span id="칸_빈도45_30주" class="d-none">
-        <div>
-          <div id="칸_빈도45_빈도" style="display: inline-block;">
-            <div style="margin-bottom:4px;">빈도</div>
-          </div>
-          <div id="칸_빈도45_당번" style="display: inline-block;margin-top:24px;">
-          </div>
-        </div>
-      </span>
-      <span id="칸_가로세로" class="d-none">
-        <div>
-          <div id="칸_가로세로_세로" style="display: inline-block;">
-            <div>가로세로</div>
-          </div>
-          <div id="칸_가로세로_가로" style="display: inline-block;margin-top:23px;margin-left:-8px;">
-          </div>
-        </div>
-      </span>
-    </span>
-    <span id="흐름_기타" class="숨김리스트 d-none">
-      <span id="흐름_연번" class="d-none">흐름_연번</span>
-      <span id="흐름_홀짝" class="d-none">흐름_홀짝</span>
-      <span id="흐름_간격" class="d-none">흐름_간격</span>
-      <span id="흐름_간격당당첨개수" class="d-none">흐름_간격당당첨개수</span>
-      <span id="흐름_간격내림차순" class="d-none">
-        흐름_간격내림차순
-      </span>
-      <span id="흐름_간격내림차순당첨개수" class="d-none">흐름_간격내림차순당첨개수</span>
-    </span>
-
-  </div>
-</div>
-
-
-<div id="분석자료30빈도전체" class="이동리스트 숨김리스트 d-none">
-  <div id="분석자료_삼십회표" class="숨김리스트 d-inline-block">
-    <div class="d-inline-block">분석45, 30회 출현 빈도 (횟수에 기능)</div><br>
-    <div id="분석자료_삼십회표_js">
-      
-    </div>
-    <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
-      <input class="form-check-input 체크input" type="checkbox" value="" id="check_삼십빈도개수">
-      <label class="form-check-label">30회개수</label>
-    </div>
-    <div class="form-check d-inline-block" onchange="체크this활용(this);"  style="margin-left:10px;">
-      <input class="form-check-input 체크input" type="checkbox" value="" id="check_삼십빈도당첨">
-      <label class="form-check-label">30회당첨</label>
-    </div>    
-    <div class="메모메모" style="border:1px solid gray;" contenteditable spellcheck="false">
-    </div>    
-  </div>
-
-  <div id="삼십빈도개수" class="d-none 숨김리스트 d-inline-block">
-    <div class="d-inline-block">30회 숫자 개수</div><br>
-    <div id="분석자료_삼십회23456개수_js">
-      
-    </div>
-    <div class="메모메모" style="border:1px solid gray;width:272px;" contenteditable spellcheck="false">
-    </div>
-  </div>
-  <div id="삼십빈도당첨" class="d-none 숨김리스트 d-inline-block">
-    <div class="d-inline-block" title="이전회차 30히 출현 빈도표에서의 결과">다음회차 있을때 당번출현 개수</div><br>
-    <div id="분석자료_삼십회당첨개수_js">
-      
-    </div>
-    <div class="메모메모" style="border:1px solid gray;width:233px;" contenteditable spellcheck="false">
-    </div>
-  </div>
-
-</div>
-<div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;margin-left:10px;">
-  <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
-    <button style="width:95px;">30주간당번</button> <button style="width:75px;">5주출6번</button> <button style="width:110px;">30주간출횟수</button>
-  </div>
-  <select id="분석자료_회차select" class="d-inline-block" onchange="회차=this.value*1-1;분석자료_회차change설정();" style="margin:5px 0"></select>
-  <div id="분석자료_선택회차" class="d-inline-block" style="margin-top:5px;"><button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
-  <div id="분석자료_플마버튼" class="d-inline-block" style="margin-top:5px;">
-    <button id="분석플러스" onclick="회차=Number(회차)+1;분석자료_회차change설정();">+</button><button id="분석마이너스" onclick="회차=Number(회차)-1;분석자료_회차change설정();">-</button>
-  </div>
-  <div id="분석자료숨김버튼" class="d-inline-block" style="margin-top:5px;margin-left:5px;"><!-- 버튼에 class="분석버튼숨김" 클래스  -->
-    <button>X</button><button>O</button>
-    <button>a</button><button>1</button><button class="분석버튼숨김">2</button><button class="분석버튼숨김">3</button>
-    <button>b</button><button>4</button><button>5</button><button>6</button>
-    <button>c</button><button>7</button><button>8</button><button>9</button><button>10</button>
-    <button>d</button><button class="분석버튼숨김">11</button><button class="분석버튼숨김">12</button><button class="분석버튼숨김">13</button><button class="분석버튼숨김">14</button><button class="분석버튼숨김">15</button><button class="분석버튼숨김">16</button><button class="분석버튼숨김">17</button><button class="분석버튼숨김">18</button><button class="분석버튼숨김">19</button>
-  </div>
-  <div id="분석자료_표_상_js"></div>
-  <div id="분석자료_표_하_js"></div>
 </div>
 <div title="'우측띄우기용" style="width:300px;"></div>
 
