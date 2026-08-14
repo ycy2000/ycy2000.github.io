@@ -195,11 +195,14 @@
   </span>
   <div title="줄바꿈용"></div>
 </div>
-<div id="칸_당번선긋기" class="숨김리스트 d-none d-inline-block 모노 크기14">
-  <button style="width:135px;text-align: center;" onclick="당번12회차선긋기();">당번 12회차 선긋기</button><br>
+<div id="칸_당번선긋기" class="숨김리스트 d-none d-inline-block 모노 크기14"> <!--여기에 .선긋기아쿠아 -->
+  <div class="mb-2">
+    <button style="width:135px;text-align: center;" onclick="당번9회차선긋기();">당번 9회차 선긋기</button> N 순서
+    <button style="width:135px;text-align: center;" onclick="$('#칸_당번선긋기').toggleClass('캔버스아쿠아');">선모양만/투명</button>
+  </div> 
   <div class="d-inline-block mr-4">
-    <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
+    <div class="버튼45css mb-3" style="position: relative;">
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -209,17 +212,7 @@
       <div><button>43</button><button>44</button><button>45</button></div>
     </div>
     <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
-      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
-      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
-      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
-      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
-      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
-      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-      <div><button>43</button><button>44</button><button>45</button></div>
-    </div>
-    <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -229,7 +222,7 @@
       <div><button>43</button><button>44</button><button>45</button></div>
     </div>
     <div class="버튼45css">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -241,7 +234,7 @@
   </div>
   <div class="d-inline-block mr-4">
     <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -251,17 +244,7 @@
       <div><button>43</button><button>44</button><button>45</button></div>
     </div>
     <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
-      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
-      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
-      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
-      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
-      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
-      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-      <div><button>43</button><button>44</button><button>45</button></div>
-    </div>
-    <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -271,7 +254,7 @@
       <div><button>43</button><button>44</button><button>45</button></div>
     </div>
     <div class="버튼45css">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -283,7 +266,7 @@
   </div>
   <div class="d-inline-block mr-4">
     <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -293,17 +276,7 @@
       <div><button>43</button><button>44</button><button>45</button></div>
     </div>
     <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
-      <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
-      <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
-      <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
-      <div><button>22</button><button>23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button></div>
-      <div><button>29</button><button>30</button><button>31</button><button>32</button><button>33</button><button>34</button><button>35</button></div>
-      <div><button>36</button><button>37</button><button>38</button><button>39</button><button>40</button><button>41</button><button>42</button></div>
-      <div><button>43</button><button>44</button><button>45</button></div>
-    </div>
-    <div class="버튼45css mb-3">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
@@ -313,7 +286,7 @@
       <div><button>43</button><button>44</button><button>45</button></div>
     </div>
     <div class="버튼45css">
-      <div class="회차와날짜">회차와날짜</div>
+      <canvas width="232" height="226" style="position:absolute;"></canvas>
       <div><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button></div>
       <div><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
       <div><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button></div>
