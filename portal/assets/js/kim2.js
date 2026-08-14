@@ -1583,6 +1583,8 @@ function 당번9회차선긋기() {
     let 현재버튼45=document.querySelectorAll('#칸_당번선긋기 .버튼45css')[i].querySelectorAll('button');
     let 현재캔버스=document.querySelectorAll('#칸_당번선긋기 canvas')[i];
 
+    현재캔버스.classList.remove('d-none');
+
     // 번호 추출하여 배열에 담기
     let 번호들 = [...document
         .querySelectorAll('#당번_불러온당첨정보 .당번만')[i]
@@ -1634,93 +1636,24 @@ function 당번9회차선긋기() {
 
         ctx.stroke();
     }
-
-
-
-
-
-    console.log('실행:', 번호들);
+    //console.log('실행:', 번호들);
   }
 }
-function 선긋기단독() {
-  //html 위에 캔버스 d-none 토글
-  console.log('번호입력 선긋기(e)')
-  var canvas = document.querySelector('#canvas');
-  var 선긋기요소=e.target.parentNode; //div안에 div 6개 안에 숫자있음
-  console.log('e.target.innerHTML : ' + e.target.innerHTML)
+function 당번9회차캔버스선지우기() {
+  for (let i = 0; i < 9; i++) {
 
-  //선긋기표시 없을때 x 일때 지우고 return;
-  if (!선긋기요소 && e.target.innerHTML=='X') {
-    console.log('!선긋기요소 && e.target.innerHTML==X')
-    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
-    for (var i=0; i<버튼들.length; i++) {
-      if (버튼들[i].classList.contains('bg-primary')) {
-        버튼들[i].classList.remove('bg-primary');
-      }
-    }
-    document.querySelector('#클릭수').innerHTML=0;
-    canvas.classList.add('d-none');
-    return;
-  }
+    // 개별 : 버튼45css 초기화, 버튼45css 캔버스 초기화
+    let 현재버튼45=document.querySelectorAll('#칸_당번선긋기 .버튼45css')[i].querySelectorAll('button');
+    let 현재캔버스=document.querySelectorAll('#칸_당번선긋기 canvas')[i];
 
-  //선긋기표시 있는거 클릭시 초기화, 
-  if (선긋기요소.classList.contains('선긋기표시')) {
-    console.log('선긋기(e) 선긋기표시 클래스 있는거 다시 클릭시')
-    선긋기요소.classList.remove('선긋기표시');
-    canvas.classList.add('d-none');
-      //번호45색칠 초기화
-    var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
-    for (var i=0; i<버튼들.length; i++) {
-      if (버튼들[i].classList.contains('bg-primary')) {
-        버튼들[i].classList.remove('bg-primary');
-      }
-    }
-    document.querySelector('#클릭수').innerHTML=0;
-    return; // 이 동작만 여깃 중단
-  } else if (document.querySelectorAll('.선긋기표시').length==1) {
-    console.log('선긋기(e) 선긋기표시 클래스 있을때')
-    document.querySelector('.선긋기표시').classList.remove('선긋기표시');
-    선긋기요소.classList.add('선긋기표시');
-  } else if (document.querySelectorAll('.선긋기표시').length==0) {
-    console.log('선긋기(e) 선긋기표시 클래스 없을때')
-    선긋기요소.classList.add('선긋기표시')
-  }
-  var 숫자담기배열=[];
-  for (var i=0; i<document.querySelectorAll('.선긋기표시 > div').length; i++) {
-    숫자담기배열.push(document.querySelectorAll('.선긋기표시 > div')[i].innerText)
-  }
-  //번호45색칠 초기화
-  var 버튼들=document.querySelectorAll('.모달바디왼쪽45 button');
-  for (var i=0; i<버튼들.length; i++) {
-    if (버튼들[i].classList.contains('bg-primary')) {
-      버튼들[i].classList.remove('bg-primary');
-    }
-  }
-  //번호45, 6개번호 색칠
-  for (var i=0; i<버튼들.length; i++) {
-    if (숫자담기배열.find(element => element == i+1)) { 버튼들[i].classList.add('bg-primary');}
-  }
-  document.querySelector('#클릭수').innerHTML=6;
+    // 현재 캔버스 기존 내용 초기화
+    const ctx = 현재캔버스.getContext('2d');
+    ctx.clearRect(0, 0, 현재캔버스.width, 현재캔버스.height);
 
-  var canvas = document.getElementById("canvas");
-  canvas.classList.remove('d-none')
-  var 선긋기 = canvas.getContext('2d');
-    // 픽셀 정리
-    선긋기.clearRect(0, 0, canvas.width, canvas.height);
-    // 컨텍스트 리셋
-    선긋기.beginPath();
-  var 가로;
-  var 세로;
-//5번 선을 긋는다. (가로, 세로), 메모_#숫자#몫#나머지:Math.floor( 12 / 5)==> 2, 10 % 3==> 1
-for (var i=0; i<6; i++) {
-    가로=버튼들[숫자담기배열[i]-1].offsetLeft+17;
-    세로=버튼들[숫자담기배열[i]-1].offsetTop-42;
-    console.log(가로 + ', ' + 세로 + ' , 버튼들[숫자담기배열[i]].innerHTML : '  + 버튼들[숫자담기배열[i]].innerHTML)
-    if (i==0) {선긋기.moveTo(가로,세로)}
-    if (i>0) {선긋기.lineTo(가로,세로)}
-    if (i==5) {선긋기.stroke()}
+    현재캔버스.classList.add('d-none');
   }
 }
+
 
 리스너_바디.addEventListener('mousedown', 리스너_바디_click);
 드래그이동_버튼45오른쪽단독.addEventListener('mousedown', mousedownOrTouchstart);
