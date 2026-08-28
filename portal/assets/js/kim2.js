@@ -1650,7 +1650,7 @@ function 당번9회차캔버스선지우기() {
     const ctx = 현재캔버스.getContext('2d');
     ctx.clearRect(0, 0, 현재캔버스.width, 현재캔버스.height);
 
-    현재캔버스.classList.add('d-none');
+    //현재캔버스.classList.add('d-none');
   }
 }
 
