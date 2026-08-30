@@ -210,14 +210,13 @@ function 누적연동() {
   });
 }
 function 연습() {
-  let 문자열='1_2002-12-07_10_23_29_33_35_40_16_2_2002-12-14_9_13_21_25_32_42_2_3_2002-12-21_11_16_19_21_27_31_30'
-
-
-
-  return;
-  let 쉼표10='1,2002-12-07,10,23,29,33,35,40,16,2';
-  let 당번6=쉼표10.split(',').slice(2,8).length;
-  alert(당번6);
+fetch('당번.txt')
+  .then(response => response.text())
+  .then(data => {
+    //document.getElementById('당번').innerHTML = data;
+    alert(data);
+  })
+  .catch(error => console.error('파일을 불러오는 중 오류 발생:', error));
 
 
 }
