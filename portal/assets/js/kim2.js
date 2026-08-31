@@ -109,13 +109,13 @@ function 고정html_구조생성및_초기설정() {
       var 가로한줄 = document.createElement('div');
       var 번호선택_추출_c = document.createElement('span');
       var 번호선택배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주미출', '10주미출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
-      var 타이틀배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출']
+      var 타이틀배열 = ['다음당번', '당번', '이웃', '당번이웃', '15주0출', '10주0출', '5주0출', '5주출', '5주1출', '5주2출', '5주3출','D11','D12','D13','D14','D15','D16','D17','D18','D19','D20']
       for (var i = 0; i < 4; i++) {
         var div요소 = document.createElement('span'); // div 요소 변수에 담는다.
         if (i == 0) { div요소.textContent = 번호선택배열[외부]; div요소.setAttribute('style', 'width:75px;height:24px; border:1px solid black;display:inline-block;margin-right:-1px;') }
-        if (i == 1 && 외부 == 0) { div요소.textContent = '수' }
+        if (i == 1 && 외부 == 0) { div요소.textContent = '수'; div요소.setAttribute('title','d11~19는 clear 동작 + 넣는 동작');}
         if (i == 1) { div요소.setAttribute('style', 'width:30px; border:1px solid black;display:inline-block;margin-right:-1px;text-align:center;height:24px;') }
-        if (i==0 && 외부<11) {
+        if (i==0 && 외부<11) { // 11 → 20 d11~20 적용
           div요소.setAttribute('class','클릭번호로보냄');
           div요소.setAttribute('title','#분석자료변수 .공통변수_'+타이틀배열[외부]);
         }
@@ -123,13 +123,15 @@ function 고정html_구조생성및_초기설정() {
         if (i == 2 && 외부 == 0) { div요소.textContent = '출' }
         if (i == 2 && 외부 != 0) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기
 
-        if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' ;}
+        if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' ;
+          div요소.setAttribute('title','출수제거');
+        }
         if (i == 3 && 외부 != 0) { div요소 = document.createElement('button'); div요소.setAttribute('class', '앞요소값clear') }
 
         if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
         //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
         if (외부 > 10) {
-          if (i == 0) { div요소.setAttribute('contenteditable', 'true') }
+          if (i == 0) { div요소.setAttribute('contenteditable', 'true');}
           if (i == 1) { div요소.setAttribute('onclick', '토글11에서20_셑팅과초기화(this)') }
         }
         번호선택_추출_c.appendChild(div요소);
@@ -186,8 +188,8 @@ function 고정html_구조생성및_초기설정() {
       왼쪽몇칸.setAttribute('class', '왼쪽몇칸');
       왼쪽몇칸.innerHTML = `<div class="form-check d-inline-block" style="margin-left:5px;">
           <input class="form-check-input" type="checkbox" value="" id="누적2"  onclick="누적연동()">
-          <label class="form-check-label" style="background-color: chocolate;" for="누적2">누적</label></div>
-      <div><button style="border:1px solid black;width:80px;padding:0px 5px;" onclick="색칠할번호들_clear()">번호clear</button></div>
+          <label class="form-check-label" style="background-color: chocolate;" for="누적2">누적</label>
+      <button style="border:1px solid black;width:80px;padding:0px 5px;margin-left:17px;" onclick="색칠할번호들_clear()">번호clear</button></div>
       <div></div><div></div><div></div><div></div><div></div><div></div>
       <div>1</div>
       <button>1sdfsdfsdf</button>
@@ -1126,6 +1128,7 @@ function 색칠하기() {
   색칠해제();
   if (인덱스==-1) {return;}
   var 색칠할번호=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
+  console.log(색칠할번호배열[인덱스]);
   var 색칠할곳체크배열=['#삼십회빈도','#당번표','#사오1ST','#사오2ST','#사오3ST'];
   var 색칠할곳id배열=['#분석자료_삼십회표_js > div:not(:first-child):not(:nth-of-type(2)) > button',
                      '.당번만 > button','#버튼45의1st button','#버튼45의2st button','#버튼45의3st button'];
@@ -1251,6 +1254,7 @@ function 리스너_바디_click(e) {
     document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들변수포함').innerHTML='';
     document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML='';
   }
+
   if (e.target.classList.contains('클릭번호로보냄')) {
     //e.target.title 생성해야하는 경우
     console.log('클릭번호로보내기 class 있을때')
@@ -1263,6 +1267,7 @@ function 리스너_바디_click(e) {
       document.querySelector('#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만').innerHTML=선택번호들.join(',');
       e.target.title='#' + e.target.parentElement.parentElement.id + '_클릭번호들숫자만';
     }
+
     //공통
     console.log(e.target.title)
     const 변수Selector = e.target.title; //숫자가 들어있는 id
@@ -1304,6 +1309,21 @@ function 리스너_바디_click(e) {
     //45오른쪽단독 에 색칠하기
     셑팅2_번호45오른쪽_변경();
     색칠하기();
+
+  }
+  if (e.target.classList.contains('클릭번호를d로보냄')) {
+    console.log('클릭번호를d로보냄')
+    let 클릭번호들=document.querySelector('#클릭번호들');
+    let 선택번호들=클릭번호들.innerHTML.split(',');
+        console.log(e.target.title)
+    let target=document.querySelector(e.target.title); //#분석자료_표_상_js #d11
+    //target 초기화 - 선택번호들 색칠
+    console.log(target.outerHTML)
+
+
+
+
+
 
   }
   if (e.target.parentElement.id == '삼십회횟수기록') {

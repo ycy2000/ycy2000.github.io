@@ -88,6 +88,10 @@
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_당번선긋기">
     <label class="form-check-label" for="check_칸_당번선긋기" style="background-color: chocolate;">당번선긋기</label>
   </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출">
+    <label class="form-check-label" for="check_분석추출" style="background-color: chocolate;">분석추출</label>
+  </div>
   <div onchange="체크this활용(this);" class="d-inline-block">
     <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_당번전체">
     <label class="form-check-label">당번</label>
@@ -415,6 +419,9 @@
   </div>
 
 </div>
+<div id="분석추출" class="이동리스트 숨김리스트 d-none">
+ 
+</div>
 <div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;margin-left:10px;">
   <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
     <button style="width:95px;">30주간당번</button> <button style="width:75px;">5주출6번</button> <button style="width:110px;">30주간출횟수</button>
@@ -429,7 +436,8 @@
     <button>a</button><button>1</button><button class="분석버튼숨김">2</button><button class="분석버튼숨김">3</button>
     <button>b</button><button>4</button><button>5</button><button>6</button>
     <button>c</button><button>7</button><button>8</button><button>9</button><button>10</button>
-    <button>d</button><button class="분석버튼숨김">11</button><button class="분석버튼숨김">12</button><button class="분석버튼숨김">13</button><button class="분석버튼숨김">14</button><button class="분석버튼숨김">15</button><button class="분석버튼숨김">16</button><button class="분석버튼숨김">17</button><button class="분석버튼숨김">18</button><button class="분석버튼숨김">19</button>
+    <button>d</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button><button>17</button><button>18</button><button>19</button>
+    <!-- <button>d</button><button class="분석버튼숨김">11</button><button class="분석버튼숨김">12</button><button class="분석버튼숨김">13</button><button class="분석버튼숨김">14</button><button class="분석버튼숨김">15</button><button class="분석버튼숨김">16</button><button class="분석버튼숨김">17</button><button class="분석버튼숨김">18</button><button class="분석버튼숨김">19</button> -->
   </div>
   <div id="분석자료_표_상_js"></div>
   <div id="분석자료_표_하_js"></div>
@@ -607,11 +615,12 @@
         <button class="클릭번호로보냄" title="#고정변수 #끝수8">8</button>
         <button class="클릭번호로보냄" title="#고정변수 #끝수9">9</button>
       </div>
-      <div id="셑팅번호설명보기" style="display:block;border:1px solid black;width:140px;text-align: center;" onclick="
+      <!-- <div id="셑팅번호설명보기" style="display:block;border:1px solid black;width:140px;text-align: center;" onclick="
       document.querySelector('#셑팅번호설명보기').classList.add('d-none');
       document.querySelector('#셑팅번호설명').classList.remove('d-none');
       따라가기위치설정();">셑팅번호설명보기
-      </div>
+      </div> 기능을 사용하지 않음. 연결된 코드를 잘 모르겠어서 -->
+      <div style="display:block;">클릭번호를 d11~20로 보내기</div>
       <div id="셑팅번호설명" class="d-none" style="display:block;">
         <div onclick="
           document.querySelector('#셑팅번호설명').classList.add('d-none');
