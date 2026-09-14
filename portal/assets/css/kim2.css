@@ -33,6 +33,7 @@ body > div {display:inline-block}
 .크기14 {font-size:14px;}
 #칸_간격과삼이일_위 > div, #칸_간격과삼이일_아래 > div, #칸_삼십회_위 > div, #칸_삼십회_아래 > div,
 #칸_이월이웃수_위 > div, #칸_이월수_아래 > div, #칸_이웃수_아래 > div, #칸_이월이웃수_위_번호대 > div {height:22px;}
+
 #칸_간격과삼이일_위 > div > span, #칸_간격과삼이일_아래 > div > span, #칸_삼십회_위 > div > span, #칸_삼십회_아래 > div > span,
 #칸_이월이웃수_위 > div > span, #칸_이월수_아래 > div > span, #칸_이웃수_아래 > div > span, #칸_이월이웃수_위_번호대 > div > span
  {display: inline-block;border:1px solid black;width:27px;height:22px;vertical-align: top;padding-top:1px;
@@ -47,7 +48,24 @@ body > div {display:inline-block}
 #칸_간격과삼이일_아래 > div > span:first-child {border:none;}
 #칸_간격과삼이일_아래 > div > span:nth-child(2) {font-weight: lighter; background-color: rgb(216, 206, 206);}
 #칸_삼십회_아래 > div > span:last-child, #칸_삼십회_아래 > div:first-child > span, #칸_삼십회_아래 > div > span:nth-of-type(2),
- #칸_삼십회_아래 > div > span:nth-of-type(3), #칸_삼십회_아래 > div > span:nth-of-type(4) { background-color: rgb(216, 206, 206);}
+#칸_삼십회_아래 > div > span:nth-of-type(3), #칸_삼십회_아래 > div > span:nth-of-type(4) { background-color: rgb(216, 206, 206);}
+
+#분석추출머리글 > div {display:inline-block}
+#분석추출내용 > div > div> span, #분석추출머리글 > div > span, #분석추출설명줄 *
+ {display: inline-block;border:1px solid black;width:27px;height:22px;vertical-align: top;padding-top:1px;
+  font-size:12px;font-weight: bold;text-align: center;margin-right:-1px;}
+#분석추출내용 > div {margin-bottom:-3px;}
+#분석추출내용 > div > div {display:inline-block}
+#분석추출내용 > div > div:nth-of-type(3) > span:nth-of-type(1),
+#분석추출내용 > div > div:nth-of-type(4) > span:not(:nth-of-type(1), :nth-of-type(5)),
+#분석추출머리글 > div:nth-of-type(3) > span,
+#분석추출머리글 > div:nth-of-type(4) > span {background-color: rgb(216, 206, 206);}
+#분석추출내용 > div > div:nth-of-type(2) > span:nth-of-type(1),
+#분석추출머리글 > div:nth-of-type(2) > span:nth-of-type(1) {background-color:yellow;}
+#분석추출내용 > div > div:nth-of-type(2) > span:nth-of-type(2),
+#분석추출머리글 > div:nth-of-type(2) > span:nth-of-type(2) {background-color:darkcyan;}
+#분석추출내용 > div > div:nth-of-type(2) > span:nth-of-type(3),
+#분석추출머리글 > div:nth-of-type(2) > span:nth-of-type(3) {background-color: rgb(216, 206, 206);}
 
 #칸_이웃수_아래 > div > span:nth-of-type(7), #칸_이웃수_아래 > div > .이월색칠 {background-color:yellow}
 #칸_이웃수_아래 > div > span:nth-of-type(8), #칸_이웃수_아래 > div > .이웃색칠 {background-color:darkcyan}

@@ -222,8 +222,193 @@ fetch('당번.txt')
 
 
 }
+function 추출clear() {
+  document.querySelector('#분석추출내용').innerHTML='';
+}
+function 추출계산() {
+  console.log('추출계산')
+}
+function 전체추출실행() {
+  console.log('전체추출실행');
+    //span 1~6:번호6, 7~9:이월,이웃,
+  let 당번,이웃,당번이웃,장미,미출,출1,출2,출3,삼십2,삼십3,삼십4,삼십5,삼십6,삼십합=0;
+  당번=$('#분석자료변수 .공통변수_당번').html().split(',');
+  이웃=$('#분석자료변수 .공통변수_이웃').html().split(',');
+  당번이웃=$('#분석자료변수 .공통변수_당번이웃').html().split(',');
+  장미=($('#분석자료변수 .공통변수_10주0출').html() + ',' + $('#분석자료변수 .공통변수_15주0출').html()).split(',');
+  미출=$('#분석자료변수 .공통변수_5주0출').html().split(',');
+  
+  출1=$('#분석자료변수 .공통변수_5주1출').html().split(',');
+  출2=$('#분석자료변수 .공통변수_5주2출').html().split(',');
+  출3=$('#분석자료변수 .공통변수_5주3출').html().split(',');
+  삼십2=$('#분석자료변수 .공통변수_30주2출').html().split(',');
+  삼십3=$('#분석자료변수 .공통변수_30주3출').html().split(',');
+  삼십4=$('#분석자료변수 .공통변수_30주4출').html().split(',');
+  삼십5=$('#분석자료변수 .공통변수_30주5출').html().split(',');
+  삼십6=$('#분석자료변수 .공통변수_30주6출').html().split(',');
+  let 반복횟수=document.getElementById('추출횟수').innerHTML;
+  const 컨테이너 = document.getElementById('분석추출내용');
+  if (isNaN(반복횟수)) {alert('반복횟수 입력필요');return;}
+  if (!컨테이너) return;
+
+  // 전체 HTML을 누적할 변수
+  let 전체HTML = '';
+  for (let i = 0; i < 반복횟수; i++) {
+    // 6개 숫자 배열 가져오기
+    const 결과배열 = 추출누적(); //숫자 배열 반환
+    console.log(결과배열.join(','));
+    if (결과배열.join(',')=='_,_,_,_,_,_') {alert('출수기록0 and 빈값채우기 미체크, 추출못함');return;}
+    
+    let 당번일치 = 결과배열.filter(숫자 => 당번.includes(String(숫자))).length;
+    let 이웃일치 = 결과배열.filter(숫자 => 이웃.includes(String(숫자))).length;
+    let 당번이웃일치 = 결과배열.filter(숫자 => 당번이웃.includes(String(숫자))).length;
+    let 장미일치 = 결과배열.filter(숫자 => 장미.includes(String(숫자))).length;
+    let 미출일치 = 결과배열.filter(숫자 => 미출.includes(String(숫자))).length;
+    let 출1일치 = 결과배열.filter(숫자 => 출1.includes(String(숫자))).length;
+    let 출2일치 = 결과배열.filter(숫자 => 출2.includes(String(숫자))).length;
+    let 출3일치 = 결과배열.filter(숫자 => 출3.includes(String(숫자))).length;
+    let 삼십2일치 = 결과배열.filter(숫자 => 삼십2.includes(String(숫자))).length;
+    let 삼십3일치 = 결과배열.filter(숫자 => 삼십3.includes(String(숫자))).length;
+    let 삼십4일치 = 결과배열.filter(숫자 => 삼십4.includes(String(숫자))).length;
+    let 삼십5일치 = 결과배열.filter(숫자 => 삼십5.includes(String(숫자))).length;
+    let 삼십6일치 = 결과배열.filter(숫자 => 삼십6.includes(String(숫자))).length;
+
+    if (!결과배열) {
+        continue; 
+    }
+    // span 태그들을 문자열로 생성
+    const span태그들 = 결과배열.map(값 => `<span>${값}</span>`).join('');
+
+    // 요청하신 구조의 HTML을 문자열로 누적
+    전체HTML += `
+      <div class="추출1단위">
+        <div class="추출6개">${span태그들}</div>
+        <div><span>${당번일치}</span><span>${이웃일치}</span><span>${당번이웃일치}</span></div>
+        <div><span>${장미일치}</span><span>${미출일치}</span><span>${출1일치}</span><span>${출2일치}</span><span>${출3일치}</span></div>
+        <div><span>${삼십2일치}</span><span>${삼십3일치}</span><span>${삼십4일치}</span><span>${삼십5일치}</span><span>${삼십6일치}</span><span>${삼십합}</span></div>
+      </div>
+    `;
+  }
+
+  // 마지막에 딱 한 번만 DOM에 삽입 (기존 내용 뒤에 누적)
+  컨테이너.insertAdjacentHTML('beforeend', 전체HTML);
+}
+
+function 추출누적() {
+  let 추출결과 = [];
+
+  document.querySelectorAll('.카운팅').forEach((요소) => {
+    let 추출개수 = 요소.innerHTML.trim();
+    let 숫자값 = Number(추출개수);
+
+    // 조건 검사: 숫자가 아니거나(NaN), 0이거나, 빈 문자열인 경우 건너뛰기
+    if (isNaN(숫자값) || 숫자값 === 0 || 추출개수 === "") {
+        return; 
+    }
+
+    // 1. 해당 요소의 하위에서 '.분석' 요소를 모두 찾습니다.
+    let 분석요소들 = 요소.parentElement.parentElement.querySelectorAll('.분석');
+    let 번호개수 = 분석요소들.length;
+
+    if (번호개수 < 숫자값) {
+        console.log('추출개수 : ' + 추출개수 + ', 번호개수 : ' + 번호개수 + ', 추출개수 초과!!, \n이 조건 무시하고 진행함'); 
+        return;
+    }
+
+    // 2. '분석' 클래스 요소의 innerHTML을 숫자 배열로 담기
+    let 분석숫자배열 = Array.from(분석요소들, el => Number(el.innerHTML.trim()));
+
+    // [질문 1] 분석숫자배열에서 중복 없이 추출개수(숫자값)만큼 무작위 추출하여 누적
+    // 배열을 무작위로 섞은 후 필요한 개수만큼 잘라냅니다. (비복원 추출)
+    let shuffled = [...분석숫자배열].sort(() => Math.random() - 0.5);
+    let 추출된숫자들 = shuffled.slice(0, 숫자값);
+
+    // 추출된 숫자들을 전체 결과 배열에 누적합니다.
+    추출결과.push(...추출된숫자들);
+  });
+
+  // [질문 2] 고유값 추출, 6개 맞추기(부족하면 "_"), 숫자 오름차순 정렬
+  // 1) 고유값(중복 제거) 추출
+  let 고유추출결과 = [...new Set(추출결과)];
+
+  // ★ 추가: 추출된 고유값이 하나도 없다면 null을 반환하여 실패임을 알림 ~~~ if 구문 없으면 출수 하나도 없을때 임의 픽하게됨
+  //if (고유추출결과.length === 0) {
+  //    console.log("추출된 유효한 값이 없습니다.");
+  //    return null; 
+  //}
+
+  let 채우기 = document.getElementById('빈값채우기설정').checked;
+
+  let 최종결과 = [];
+  for (let i = 0; i < 6; i++) {
+    if (i < 고유추출결과.length) {
+      최종결과.push(고유추출결과[i]);
+    } else {
+      if (채우기 === false) {
+        최종결과.push("_");
+      } else {
+        // 1~45 중에서 최종결과에 없는 숫자만 추림
+        let 후보숫자 = [];
+
+        for (let 숫자 = 1; 숫자 <= 45; 숫자++) {
+          if (!최종결과.includes(숫자)) {
+            후보숫자.push(숫자);
+          }
+        }
+
+        // 후보 숫자 중 무작위로 하나 선택
+        let 무작위숫자 = 후보숫자[
+          Math.floor(Math.random() * 후보숫자.length)
+        ];
+
+        최종결과.push(무작위숫자);
+      }
+    }
+  }
 
 
+  // 최종 결과 확인용 (원하시는 형태로 리턴하거나 화면에 출력하세요)
+  최종결과.sort((a, b) => a - b);
+  return 최종결과;
+}
+function 추출결과정렬() {
+
+    const 컨테이너 = document.getElementById('분석추출내용');
+    if (!컨테이너) return;
+
+    const 항목들 = Array.from(
+        컨테이너.querySelectorAll('.추출1단위')
+    );
+
+    항목들.sort((a, b) => {
+
+        const a번호 = Array.from(
+            a.querySelectorAll('.추출6개 span')
+        ).map(el => Number(el.textContent));
+
+        const b번호 = Array.from(
+            b.querySelectorAll('.추출6개 span')
+        ).map(el => Number(el.textContent));
+        // 첫 번째 숫자부터 차례대로 비교
+        for (let i = 0; i < 6; i++) {
+
+            // "_" 처리
+            if (isNaN(a번호[i]) && !isNaN(b번호[i])) return 1;
+            if (!isNaN(a번호[i]) && isNaN(b번호[i])) return -1;
+
+            if (a번호[i] !== b번호[i]) {
+                return a번호[i] - b번호[i];
+            }
+        }
+
+        return 0;
+    });
+
+    // 정렬된 순서대로 다시 DOM에 삽입
+    항목들.forEach(항목 => {
+        컨테이너.appendChild(항목);
+    });
+}
 
 
 function 당번회귀설정_30회분번호표시() {

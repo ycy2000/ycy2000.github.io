@@ -89,7 +89,7 @@
     <label class="form-check-label" for="check_칸_당번선긋기" style="background-color: chocolate;">당번선긋기</label>
   </div>
   <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출" checked>
     <label class="form-check-label" for="check_분석추출" style="background-color: chocolate;">분석추출</label>
   </div>
   <div onchange="체크this활용(this);" class="d-inline-block">
@@ -101,7 +101,7 @@
     <label class="form-check-label">5주30주</label>
   </div>
   <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종" checked>
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종">
     <label class="form-check-label" for="check_칸_간격과삼이일">기본3종</label>
   </div>
   <div onchange="체크this활용(this);">
@@ -419,8 +419,48 @@
   </div>
 
 </div>
-<div id="분석추출" class="이동리스트 숨김리스트 d-none">
- 
+<div id="분석추출" class="이동리스트 숨김리스트 d-none 모노">
+  <!-- div 안에 다음 div, 1)당번, 2)  -->
+  <div id="분석추출설명줄" style="position: relative;"><input class="form-check-input" type="checkbox" style="position:absolute;top:-3px;" value="" id="빈값채우기설정">
+    <label class="form-check-label" style="margin-right:10px;margin-left:30px; width:50px; border:none" for="빈값채우기설정">빈값채우기</label>
+    <button style="width:40px;background-color: aqua;" onclick="추출결과정렬();">정렬</button>
+    <button style="width:60px;background-color: aqua;">추출계산</button> 
+    <button style="width:70px;" onclick="추출clear();">추출clear</button>
+    <span style="border:none;margin-right:20px;">추출횟수</span>
+    <span id="추출횟수" style="text-align: center; display:inline-block; width:35px;border:1px solid black;" contenteditable="true">10</span>
+    <button style="width:60px;" onclick="전체추출실행();">추출누적</button>
+    <span style="border:none;margin-right:20px;">자료개수</span>
+    <span id="자료개수" style="text-align: center; display:inline-block; width:45px;border:1px solid black;"></span>
+  </div>
+  <div id="sort부터">
+    <div><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);">당첨</span><span style="background-color: rgb(216, 206, 206);">개수</span></div>
+    <div><span>이월</span><span>이웃</span><span>합</span></div>
+    <div><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
+    <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
+  </div>
+  <div id="sort까지">
+    <div><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);">당첨</span><span style="background-color: rgb(216, 206, 206);">개수</span></div>
+    <div><span>이월</span><span>이웃</span><span>합</span></div>
+    <div><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
+    <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
+  </div>
+  <div id="분석추출머리글">
+    <div><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);">당첨</span><span style="background-color: rgb(216, 206, 206);">개수</span></div>
+    <div><span>이월</span><span>이웃</span><span>합</span></div>
+    <div><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
+    <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
+  </div>
+  <div id="분석추출내용">
+    <!--  
+    <div class="추출1단위">
+      <div class="추출6개"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div><span></span><span></span><span></span></div>
+      <div><span></span><span></span><span></span><span></span><span></span></div>
+      <div><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </div>-->
+  </div>
+
+
 </div>
 <div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;margin-left:10px;">
   <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
