@@ -1,0 +1,6 @@
+@charset "UTF-8";
+#머리글 label {vertical-align: top;margin-right:10px;}
+/* .span20 : "크기조정 위해 display: inline-block" */
+.span20 > div {margin-bottom:-1px;}
+.span20 > div > span  {display: inline-block;border:1px solid black;width:24px;height:24px;vertical-align: top;padding-top:1px;
+  font-size:14px;font-weight: bold;text-align: center;margin-right:-1px;}

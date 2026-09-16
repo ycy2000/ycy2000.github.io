@@ -65,7 +65,7 @@
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="코드전체"data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom" >코드</button>
         <button onclick="특정id편집()">특정id</button> 
         <button type="button" onclick="캔버스_연결버튼_클릭(this)" title="정보" data-bs-toggle="offcanvas" data-bs-target="#대표캔버스" aria-controls="offcanvasBottom">현재캔버스</button>
-        <button onclick="연습()">연습()</button> 
+        <button onclick="연습()">테스트()</button> 
         <span class="fw-bold" onclick="document.querySelector('#전체대체').innerHTML=''">캔버스 : </span><span id="캔버스이름" style="color:blueviolet"></span>
         <span class="fw-bold">, ID : </span><span id="선택문서id" style="color:blueviolet"></span> <span class="fw-bold">, 제목 : </span><span id="선택문서제목" style="color:blueviolet"></span>
         <!-- 숨김버튼 클릭시 : 마지막에 넣는 이유는 먼저 넣으면 위로 뜬다. -->
@@ -436,14 +436,14 @@
         <h6 class="fw-bold blueviolet"></h6>
       </div>
     </div>
-    <div class="개별카테고리" id="JS">
+    <div class="개별카테고리" id="기록1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="js_배열split와join참고">배열.join => 문자열이 됨, 문자열.split => 배열이 됨</h6>
-        <h6 class="fw-bold" title='excel_js_scroll'>제대로 정리할것, JS > scroll : 위치, 찾기, 좌표,   </h6>
-
+        <h6 class="fw-bold" title="js_html_js로만들기">appendChild는 요소이동, html js로 만들기</h6>
 
         <br><br><br><br><br><br><br><br>
+        <h6 class="fw-bold" title="js_배열split와join참고">배열.join => 문자열이 됨, 문자열.split => 배열이 됨</h6>
+        <h6 class="fw-bold" title='excel_js_scroll'>제대로 정리할것, JS > scroll : 위치, 찾기, 좌표,   </h6>
 
         <h6 title='excel_js_search'>JS > search : <span style="color:blueviolet">시작위치 지정안됨,</span> 찾기, 정규식, 없으면 -1, 있으면 위치(첫글자 0부터)   </h6>
         <h6 title='excel_js_indexOf'>JS > indexOf : 찾기, 정규식X, 문자열로 찾는다, 뒤에서부터 검색 가능, 많이 사용, 없으면 -1, 있으면 위치(첫글자 0부터)  </h6>
@@ -23231,6 +23231,16 @@ Public Function GetSheetData(policy As TSheetPolicy) As variant
       </div>
     </div>
 
+    <div id="js_html_js로만들기" class="대체3줄">
+      <h6 class="대체3줄세로1h6"></h6>
+      <h6 class="대체3줄세로2h6"></h6>
+      <div>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
     <div id="js_배열split와join참고" class="대체3줄">
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
@@ -23938,7 +23948,7 @@ Dim 문자열 As String
     <div id="JS2_요소추가_APPENDCHILD">
       <div class=" d-inline-block align-top " style="width:925px;border-right:1px solid black;white-space:normal;word-break:break-all;">
         <h5 class="fw-bold">append와 appendChild 차이점, 요소생성 createElement, 텍스트넣기, 텍스트노드 넣기...</h5>
-        <code class="fw-bold">1. 둘 다, 부모노드에서 자식노드를 추가하는 메서드이다. </code>
+        <code class="fw-bold">1. 둘 다, 부모노드에서 자식노드를 추가하는 메서드이다. <span style="color:blueviolet">★이동하는것!!</span></code>
         <code class="fw-bold">2. append 메서드는, <span style="color:blueviolet">ⓐ 노드객체(Node object)</span>나 <span style="color:blueviolet">ⓑ DOMString(text)를 사용</span>할 수 있음. </code>
         <code class="fw-bold" style="text-indent: 25px;">또한 <span style="color:blueviolet">ⓒ 한번에 여러개의 자식요소를 설정</span>할 수 있다. </code>
         <code class="fw-bold" style="text-indent: 25px;color:blueviolet">ⓐ Node object 사용 예시</code>
@@ -23973,14 +23983,37 @@ Dim 문자열 As String
         <h6></h6>
         <h6 style="text-indent: 23px;"></h6>
         <img data-src="" alt="이미지없음">
-      </div>
-      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
         <h5 class="fw-bold">요소에 속성 추가하기, element.setAttribute(속성명, 속성값); : <span style="color:blueviolet">속성명 아무거나 써도 됨</span></h5>
         <code class="fw-bold">var 요소=document.createElement('div');</code>
         <code class="fw-bold">요소.textcontent='텍스트기록';</code>
         <code class="fw-bold">요소.setAttribute('id','임시아이디');</code>
         <code class="fw-bold">console.log(요소.outerHTML); <span style="color:blueviolet">==> &#60;div id="임시아이디">텍스트기록&#60;/div></span></code>
+      </div>
+      <div class=" d-inline-block align-top" style="width:925px;border-right:1px solid black;white-space:normal;">
+        <pre class="fw-bold">
+Element 인터페이스의 insertAdjacentHTML() 메서드는 지정된 텍스트를 HTML 혹은 XML로 파싱하고 결과 노드들을 지정된 위치의 
+DOM 트리에 삽입합니다.
 
+insertAdjacentHTML(position, text)
+매개변수
+position : "beforebegin","afterbegin","beforeend","afterend"
+요소와 상대적인 위치를 나타내는 문자열입니다. 다음 문자열 중 하나여야 합니다.
+
+"beforebegin"
+요소 이전에 위치합니다. 오직 요소가 DOM 트리에 있고 부모 요소를 가지고 있을 때만 유효합니다.
+
+"afterbegin"
+요소 바로 안에서 처음 자식 이전에 위치합니다.
+
+"beforeend"
+요소 바로 안에서 마지막 자식 이후에 위치합니다.
+
+"afterend"
+요소 이후에 위치합니다. 오직 요소가 DOM 트리에 있고 부모 요소를 가지고 있을 때만 유효합니다.
+
+text
+HTML 혹은 XML로 파싱되고 트리에 삽입되는 문자열입니다.
+        </pre>
 
       </div>
     </div>

@@ -11,8 +11,24 @@ function 이동배치(요소의타이틀,배치요소아이디) {
   Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
 }
 function 연습() {
-  console.log(document.querySelector('abcd').innerHTML);
-  console.log(document.querySelector('aBCd').innerHTML);
+
+  let 요소=document.createElement('div');
+
+
+  for (let i=0; i<3; i++) {
+    let 자식=document.createElement('span');
+    자식.innerText='자식';
+    요소.append(자식)
+    console.log(요소.outerHTML);
+  }
+
+
+
+  return;
+  //const span태그들 = 결과배열.map(값 => `<span>${값}</span>`).join('');
+  const span태그들 = Array.from({length:3}).map(() => `<span></span>`).join('');
+  //const span태그들 = Array(3).fill(0).map(() => `<span></span>`).join('');
+  alert(span태그들);
 }
 function 복사(id) {
   const text = document.getElementById(id).innerText;
