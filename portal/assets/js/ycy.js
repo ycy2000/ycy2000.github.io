@@ -6,4 +6,7 @@ function aaa() {
   div.innerHTML='<div class="span20">' + Array.from({length:30}).map(ele => {return spanDiv}).join('') + '</div>';
   document.querySelector('#기본_당번').innerHTML=div.innerHTML;
 }
-aaa();
+//aaa();
+function obsolute() {
+  document.querySelector('#obs').classList.toggle('d-none');
+}

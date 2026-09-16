@@ -11,29 +11,29 @@
 </head>
 <body>
 <div id="머리글" style="display:block;height:30px;margin:10px;border-bottom:1px solid black;">
-  <span onchange="체크this활용(this);"> 
+  <span> 
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45감싸기"> 
     <!-- label에 for="check_버튼45감싸기"를 추가하여 input과 연결합니다. -->
     <label class="form-check-label" for="check_버튼45감싸기">버튼45</label> 
   </span>
 
-  <span onchange="체크this활용(this);">
+  <span> 
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_이동하기">
     <label class="form-check-label" for="check_이동하기">이동</label>
   </span> 
-  <span onchange="체크this활용(this);">
+  <span> 
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_보기숨기기">
     <label class="form-check-label" for="check_보기숨기기">보기/숨기기</label>
   </span> 
-  <span onchange="체크this활용(this);">
+  <span> 
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45감싸기">
     <label class="form-check-label" for="check_버튼45감싸기">버튼45</label>
   </span>  
-  <span onchange="체크this활용(this);">
+  <span> 
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_버튼45오른쪽단독">
     <label class="form-check-label" for="check_버튼45오른쪽단독">색칠</label>
   </span>
-  <span onchange="체크this활용(this);">
+  <span onchange="obsolute();">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_코드">
     <label class="form-check-label" for="check_코드">코드</label>
   </span>  
@@ -41,9 +41,15 @@
 </div>
 
 <div class="d-none" style="height:50px;position: relative;"></div><!-- header와 띄우기용 -->
-
-<div id="기본정보">
-  <div id="기본_당번"></div>
+<div id="obs" style="width:1000px;height:1000px;background-color: aqua;position: absolute;left:200px;"></div>
+<div id="기본정보" class="하위div가로">
+  <div id="기본_당번">
+    <div>
+      <div class="기본_회차"><span></span></div>
+      <div class="기본_날짜"><span></span></div>
+      <div class="기본_당번6"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="기본_보볼"><span></span></div>
+  </div>
 </div>
 <!-- 부트스트랩.cdn으로 사용하게 함. js를 다운받아서 폴더만들어서 연결하는방법도 있다.. js는 html 다 읽고난 후 실행된다.-->
 <!-- body 끝부분위치이유 :  -->
