@@ -1,9 +1,10 @@
 @charset "UTF-8";
+/* 최신문법 : :is(.기본_당번6, .기본_보볼) > span */
 #머리글 label {vertical-align: top;margin-right:10px;}
 /* 하위div가로 */
-:is(.하위div가로) > div, :is(#기본_당번) > div > div {display: inline-block;}
+:is(.자식div가로) > div {display: inline-block;}
 /* div들끼리 아래위 붙임 */
-.하위div붙임 {margin-bottom:-1px;}
+.자식div상하붙임 {margin-bottom:-1px;}
 /* [span붙임사각] .span20 : "크기조정 위해 display: inline-block" */
-:is(.기본_당번6, .기본_보볼) > span  {display: inline-block;border:1px solid black;width:24px;height:24px;vertical-align: top;padding-top:1px;
+.자식span24 > span {display: inline-block;border:1px solid black;width:24px;height:24px;vertical-align: top;padding-top:1px;
   font-size:14px;font-weight: bold;text-align: center;margin-right:-1px;}
