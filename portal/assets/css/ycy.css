@@ -1,9 +1,9 @@
 @charset "UTF-8";
-body {font-family: monospace;font-weight: bold;}
+body {font-family: monospace;font-weight: bold;white-space: nowrap;}
 /* 최신문법 : :is(.기본_당번6, .기본_보볼) > span */
 #머리글 label {vertical-align: top;margin-right:10px;}
 /* 자식 div 인라인블록 */
-.자식div가로 > div {display: inline-block;vertical-align: top;}
+.자식div가로 > div, .자신inlineBlock {display: inline-block;vertical-align: top;}
 /* div들끼리 아래위 붙임 */
 .자식div상하붙임 > div {margin-bottom:-1px;}
 /* span 공통(1)당번부분 높이까지 포괄 */
@@ -20,8 +20,9 @@ font-size:14px;font-weight: bold;text-align: center;margin-right:-1px;}
 /* span 공통(3) 회차와 날짜의 넓이 */
 #기본_다음당번 > div > span:nth-of-type(1),:is(#기본_다음당번,#기본_당번) > div > span:nth-of-type(1){width:40px;}
 #기본_다음당번 > div > span:nth-of-type(2),:is(#기본_다음당번,#기본_당번) > div > span:nth-of-type(2){width:80px;}
-
-
+/* 요소 드래그할때 이미지는 자체 드래그 액션이 있는데 막아줌 */
+img {-webkit-user-drag: none;user-select: none;}
+#기본_당번기능 button {border:1px solid black;width:25px;}
 
 
 
