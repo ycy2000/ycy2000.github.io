@@ -8,7 +8,7 @@ body {font-family: monospace;font-weight: bold;white-space: nowrap;}
 .자식div상하붙임 > div {margin-bottom:-1px;}
 /* span 공통(1)당번부분 높이까지 포괄 */
 :is(#기본_다음당번, #기본_당번, #기본_321구조) > div > span,
-:is(#기본_321당첨구조,#기본_321개수구조,#기본_321평균구조, #기본_30주개수구조, #기본_30주당첨구조,
+:is(#기본_321당첨구조,#기본_321개수구조,#기본_321평균구조, #기본_30주개수구조, #기본_30주당첨구조,#기본_30주평균구조,
  #기본_빈공간개수구조, #기본_빈공간당첨구조, #기본_빈공간평균구조,) > div > div > span
 {display: inline-block;border:1px solid black;height:24px;vertical-align: top;padding-top:1px;
 font-size:14px;font-weight: bold;text-align: center;margin-right:-1px;}
@@ -16,14 +16,20 @@ font-size:14px;font-weight: bold;text-align: center;margin-right:-1px;}
 #기본_다음당번 > div > span:not(:nth-of-type(1),:nth-of-type(2)),
 :is(#기본_다음당번,#기본_당번) > div > span:not(:nth-of-type(1),:nth-of-type(2)) {width:24px;}
 :is(#기본_321당첨구조,#기본_321개수구조,#기본_321평균구조, #기본_30주개수구조, 
-#기본_30주당첨구조, #기본_빈공간개수구조, #기본_빈공간당첨구조, #기본_빈공간평균구조) > div > div > span {width:24px;}
+#기본_30주당첨구조,#기본_30주평균구조, #기본_빈공간개수구조, #기본_빈공간당첨구조, #기본_빈공간평균구조) > div > div > span {width:24px;}
 /* span 공통(3) 회차와 날짜의 넓이 */
 #기본_다음당번 > div > span:nth-of-type(1),:is(#기본_다음당번,#기본_당번) > div > span:nth-of-type(1){width:40px;}
-#기본_다음당번 > div > span:nth-of-type(2),:is(#기본_다음당번,#기본_당번) > div > span:nth-of-type(2){width:80px;}
+#기본_다음당번 > div > span:nth-of-type(2),:is(#기본_다음당번,#기본_당번) > div > span:nth-of-type(2){width:90px;}
 /* 요소 드래그할때 이미지는 자체 드래그 액션이 있는데 막아줌 */
 img {-webkit-user-drag: none;user-select: none;}
-#기본_당번기능 button {border:1px solid black;width:25px;}
+/* 자식버튼없어도 높이 유지 */
+.기본_321_기능 {height:21px;}
+/* 버튼 1px */
+#기본_당번기능 button, .기본_321_기능 > button {border:1px solid black;}
+/* 버튼 테두리제외 설정 */
+#기본_당번기능 button {width:25px;}
 
+#기본_321당첨_머리글 span {font-size:10px;}
 
 
 #캔버스바디 > div {display:inline-block;width:625px;}
