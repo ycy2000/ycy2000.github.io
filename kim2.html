@@ -78,20 +78,8 @@
     <div id="이동할위치div리스트" style="border:1px solid black"></div>
   </span>    
 </div>
-<div id="보기숨기기" class="d-none" style="position: absolute;top:47px;left:260px;background-color: white;border:1px solid black;padding:3px;"> 
-  <div class="모노 크기14 mt-2">--- 당번 정보 ---</div>
-  <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_임시탭크기">
-    <label class="form-check-label" for="check_임시탭크기" style="background-color: chocolate;">임시탭크기</label>
-  </div>
-  <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_당번선긋기">
-    <label class="form-check-label" for="check_칸_당번선긋기" style="background-color: chocolate;">당번선긋기</label>
-  </div>
-  <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출" checked>
-    <label class="form-check-label" for="check_분석추출" style="background-color: chocolate;">분석추출</label>
-  </div>
+<div id="보기숨기기" class="d-none" style="font-family: monospace;font-size:12px;font-weight:bold; position: absolute;top:47px;left:260px;background-color: white;border:1px solid black;padding:3px;"> 
+  <div class="mt-2">--- 당번 정보 ---</div>
   <div onchange="체크this활용(this);" class="d-inline-block">
     <input class="form-check-input 체크input" type="checkbox" value="" checked id="check_당번전체">
     <label class="form-check-label">당번</label>
@@ -102,7 +90,7 @@
   </div>
   <div onchange="체크this활용(this);">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종">
-    <label class="form-check-label" for="check_칸_간격과삼이일">기본3종</label>
+    <label class="form-check-label" for="check_칸_간격과삼이일">당번 > 기본3종</label>
   </div>
   <div onchange="체크this활용(this);">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_빈도45_30주">
@@ -135,8 +123,24 @@
   <div onchange="체크this활용(this);">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격내림차순당첨개수">
     <label class="form-check-label">내림간격당당첨</label>
-  </div>   
-  <div class="모노 크기14 mt-2">--- 분석자료 정보 ---</div>
+  </div>  
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_임시탭크기">
+    <label class="form-check-label" for="check_임시탭크기"">임시탭크기</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_당번선긋기">
+    <label class="form-check-label" for="check_칸_당번선긋기">당번선긋기</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출" checked>
+    <label class="form-check-label" for="check_분석추출">분석추출</label>
+  </div>
+  <div onchange="체크this활용(this);">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출별도저장" checked>
+    <label class="form-check-label" for="check_분석추출별도저장">분석추출 별도저장</label>
+  </div> 
+  <div class="mt-2">--- 분석자료 정보 ---</div>
   <div onchange="체크this활용(this);"><!-- class="form-check"  삭제, 띄우기가 커서 -->
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석자료30빈도전체" checked>
     <label class="form-check-label">분석30빈도</label>
@@ -368,7 +372,7 @@
     <div id="칸_가로세로_세로" style="display: inline-block;">
       <div>가로세로</div>
     </div>
-    <div id="칸_가로세로_가로" style="display: inline-block;margin-top:23px;margin-left:-8px;">
+    <div id="칸_가로세로_가로" style="display: inline-block;margin-top:23px;margin-left:-5px;">
     </div>
   </div>
 </div>
@@ -1081,8 +1085,8 @@
   </div>
   <!-- 당번숨김_안에_저장중 마지막은 (_) 기록중의 마지막은 쉼표 없음!! -->
   <div id="숨김정보_당번전체기록중">
-    _1233_2026-07-18_2_7_20_25_37_40_29_1234_2026-07-25_1_15_19_31_35_43_27_1235_2026-08-01_6_7_11_15_39_43_20_1236_2026-08-08_12_18_21_29_34_38_10_1237_2026-08-15_10_20_23_34_37_40_36_
-    1238_2026-08-22_2_13_18_32_38_42_22_1239_2026-08-29_11_13_22_32_33_36_8_1240_2026-09-05_11_13_19_20_31_44_27_1241_2026-09-12_7_13_16_23_24_43_9
+    _1233_2026-07-18_2_7_20_25_37_40_29_1234_2026-07-25_1_15_19_31_35_43_27_1235_2026-08-01_6_7_11_15_39_43_20_1236_2026-08-08_12_18_21_29_34_38_10_1237_2026-08-15_10_20_23_34_37_40_36
+    _1238_2026-08-22_2_13_18_32_38_42_22_1239_2026-08-29_11_13_22_32_33_36_8_1240_2026-09-05_11_13_19_20_31_44_27_1241_2026-09-12_7_13_16_23_24_43_9_1242_2026-09-19_2_4_10_16_31_41_9
 
   </div>
 </div>
