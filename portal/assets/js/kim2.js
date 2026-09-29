@@ -282,6 +282,7 @@ function 전체추출실행() {
     // 요청하신 구조의 HTML을 문자열로 누적
     전체HTML += `
       <div class="추출1단위">
+        <input class="form-check-input" type="checkbox" value="">
         <div class="추출6개">${span태그들}</div>
         <div><span>${당번일치}</span><span>${이웃일치}</span><span>${당번이웃일치}</span></div>
         <div><span>${장미일치}</span><span>${미출일치}</span><span>${출1일치}</span><span>${출2일치}</span><span>${출3일치}</span></div>
