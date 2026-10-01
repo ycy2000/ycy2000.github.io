@@ -439,7 +439,7 @@
     <div class="개별카테고리" id="기록1">
       <span class="개별카테고리세로1"></span><span class="개별카테고리세로2"></span>
       <div>
-        <h6 class="fw-bold" title="js_html_js로만들기">appendChild는 요소이동, html js로 만들기</h6>
+        <h6 class="fw-bold" title="js_html_js로만들기">forEach와 맵핑 이해, html js로 만들기, 로또구조코드중사용</h6>
 
         <br><br><br><br><br><br><br><br>
         <h6 class="fw-bold" title="js_배열split와join참고">배열.join => 문자열이 됨, 문자열.split => 배열이 됨</h6>
@@ -23235,6 +23235,15 @@ Public Function GetSheetData(policy As TSheetPolicy) As variant
       <h6 class="대체3줄세로1h6"></h6>
       <h6 class="대체3줄세로2h6"></h6>
       <div>
+        <pre class="fw-bold">Tip) 1. return => 결과값, 2. forEach는 코드 반복 실행, 3.mapFn은 새로운 값을 담아 반환
+       4.익명함수의 실행코드가 한줄이고 값일때 'return 값' 과 같은 결과 나옴(return 생략가능)
+       5.( ) => '리턴값', return 사용하려면 { }로 감싸야함, ( ) => {return '리턴값'}</pre>
+        <h6 class="fw-bold bluev">[예제 : div 안에 6개 span 있는 outerHTML]</h6>
+        <pre class="fw-bold">[문자열 반환 헬퍼함수]
+function span(num) {return '&#60;div>' + Array.from({length:num}).map(() => {return '&#60;span>&#60;/span>'}).join('') + '&#60;/div>';}
+
+  alert(span(3));
+        </pre>
       </div>
       <div>
       </div>

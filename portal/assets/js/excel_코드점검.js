@@ -1,6 +1,6 @@
 let 전체변수h6title='';
 function 특정id편집() {
-  전체변수h6title ='주식_심리확인' //원래는 h6의 title이다.
+  전체변수h6title ='js_html_js로만들기' //원래는 h6의 title이다.
   전체대체에셑팅();
 }
 function 이동배치(요소의타이틀,배치요소아이디) {
@@ -11,24 +11,10 @@ function 이동배치(요소의타이틀,배치요소아이디) {
   Array.from(document.querySelectorAll('#'+배치요소아이디 + ' .숨김')).forEach (ele => ele.classList.remove('d-none'));
 }
 function 연습() {
-
-  let 요소=document.createElement('div');
-
-
-  for (let i=0; i<3; i++) {
-    let 자식=document.createElement('span');
-    자식.innerText='자식';
-    요소.append(자식)
-    console.log(요소.outerHTML);
-  }
-
-
-
-  return;
+function span(num) {return '<div>' + Array.from({length:num}).map(() => {return '<span></span>'}).join('') + '</div>';}
   //const span태그들 = 결과배열.map(값 => `<span>${값}</span>`).join('');
-  const span태그들 = Array.from({length:3}).map(() => `<span></span>`).join('');
-  //const span태그들 = Array(3).fill(0).map(() => `<span></span>`).join('');
-  alert(span태그들);
+  //const span태그들 = Array.from({length:3}).map(() => `<span></span>`).join('');
+  alert(span(3));
 }
 function 복사(id) {
   const text = document.getElementById(id).innerText;

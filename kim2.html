@@ -132,13 +132,14 @@
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_당번선긋기">
     <label class="form-check-label" for="check_칸_당번선긋기">당번선긋기</label>
   </div>
+  <div class="mt-2">--- 분석추출 ---</div>
   <div onchange="체크this활용(this);">
     <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출" checked>
     <label class="form-check-label" for="check_분석추출">분석추출</label>
   </div>
   <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출별도저장" checked>
-    <label class="form-check-label" for="check_분석추출별도저장">분석추출 별도저장</label>
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_분석추출PICK" checked>
+    <label class="form-check-label" for="check_분석추출PICK">분석추출 별도저장</label>
   </div> 
   <div class="mt-2">--- 분석자료 정보 ---</div>
   <div onchange="체크this활용(this);"><!-- class="form-check"  삭제, 띄우기가 커서 -->
@@ -437,19 +438,22 @@
     <span id="자료개수" style="text-align: center; display:inline-block; width:45px;border:1px solid black;"></span>
   </div>
   <div id="sort부터">
-    <div style="margin-left:24px;"><span></span><span style="background-color:yellow"></span><span></span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);"></span><span style="background-color: rgb(216, 206, 206);"></span></div>
+    <input class="form-check-input" type="checkbox" value="">
+    <div><span></span><span style="background-color:yellow"></span><span></span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);"></span><span style="background-color: rgb(216, 206, 206);"></span></div>
     <div><span></span><span></span><span></span></div>
     <div><span></span><span></span><span></span><span></span><span></span></div>
     <div><span></span><span></span><span></span><span></span><span></span><span></span></div>
   </div>
   <div id="sort까지">
-    <div style="margin-left:24px;"><span></span><span style="background-color:yellow"></span><span></span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);"></span><span style="background-color: rgb(216, 206, 206);"></span></div>
+    <input class="form-check-input" type="checkbox" value="">
+    <div><span></span><span style="background-color:yellow"></span><span></span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);"></span><span style="background-color: rgb(216, 206, 206);"></span></div>
     <div><span></span><span></span><span></span></div>
     <div><span></span><span></span><span></span><span></span><span></span></div>
     <div><span></span><span></span><span></span><span></span><span></span><span></span></div>
   </div>
   <div id="분석추출머리글">
-    <div style="margin-left:24px;"><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);">당첨</span><span style="background-color: rgb(216, 206, 206);">개수</span></div>
+    <input class="form-check-input" type="checkbox" value="">
+    <div><span>이월</span><span style="background-color:yellow"></span><span>이웃</span><span style="background-color:darkcyan"></span><span style="background-color: rgb(216, 206, 206);">당첨</span><span style="background-color: rgb(216, 206, 206);">개수</span></div>
     <div><span>이월</span><span>이웃</span><span>합</span></div>
     <div><span>장미</span><span>미출</span><span>1출</span><span>2출</span><span>3출</span></div>
     <div><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>합</span></div>
@@ -457,6 +461,7 @@
   <div id="분석추출내용">
     <!--  
     <div class="추출1단위">
+      <input class="form-check-input" type="checkbox" value="">
       <div class="추출6개"><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <div><span></span><span></span><span></span></div>
       <div><span></span><span></span><span></span><span></span><span></span></div>
@@ -465,6 +470,9 @@
   </div>
 
 
+</div>
+<div id="분석추출PICK" class="이동리스트 숨김리스트 d-none 모노">
+분석추출PICK분석추출PICK분석추출PICK분석추출PICK분석추출PICK분석추출PICK
 </div>
 <div id="분석자료45칸" class="이동리스트 숨김리스트 d-none d-inline-block"  style="margin-bottom:300px;margin-left:10px;">
   <div id="분석자료_다음회차"><button style="width:57px;margin-right:0px;"></button> <button style="width:100px;"></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
