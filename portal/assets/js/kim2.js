@@ -224,15 +224,67 @@ fetch('당번.txt')
 
 
 }
+function 전체체크토글(e) {
+  let 확인=e.checked;
+  Array.from(document.querySelectorAll('.분석추출내용 .추출1단위 input')).forEach( ele => {ele.checked=확인;});
+}
 function 추출clear() {
-  document.querySelector('#분석추출내용').innerHTML='';
+  document.querySelector('.분석추출내용').innerHTML='';
 }
 function 추출계산() {
-  console.log('추출계산')
+  console.log('추출계산') //이미 있는것을 다시 계산
+  let 당번,이웃,당번이웃,장미,미출,출1,출2,출3,삼십2,삼십3,삼십4,삼십5,삼십6,삼십합=0;
+  당번=$('#분석자료변수 .공통변수_당번').html().split(',');
+  이웃=$('#분석자료변수 .공통변수_이웃').html().split(',');
+  당번이웃=$('#분석자료변수 .공통변수_당번이웃').html().split(',');
+  장미=($('#분석자료변수 .공통변수_10주0출').html() + ',' + $('#분석자료변수 .공통변수_15주0출').html()).split(',');
+  미출=$('#분석자료변수 .공통변수_5주0출').html().split(',');
+  
+  출1=$('#분석자료변수 .공통변수_5주1출').html().split(',');
+  출2=$('#분석자료변수 .공통변수_5주2출').html().split(',');
+  출3=$('#분석자료변수 .공통변수_5주3출').html().split(',');
+  삼십2=$('#분석자료변수 .공통변수_30주2출').html().split(',');
+  삼십3=$('#분석자료변수 .공통변수_30주3출').html().split(',');
+  삼십4=$('#분석자료변수 .공통변수_30주4출').html().split(',');
+  삼십5=$('#분석자료변수 .공통변수_30주5출').html().split(',');
+  삼십6=$('#분석자료변수 .공통변수_30주6출').html().split(',');
+
+  let 추출1단위=document.querySelectorAll('#분석추출 .분석추출내용 .추출1단위');
+  Array.from(추출1단위).forEach ( ele => {
+
+    let 결과배열=Array.from(ele.querySelectorAll('.추출6개 > span'), span => span.innerHTML);
+
+    let 당번일치 = 결과배열.filter(숫자 => 당번.includes(String(숫자))).length;
+    let 이웃일치 = 결과배열.filter(숫자 => 이웃.includes(String(숫자))).length;
+    let 당번이웃일치 = 결과배열.filter(숫자 => 당번이웃.includes(String(숫자))).length;
+    let 장미일치 = 결과배열.filter(숫자 => 장미.includes(String(숫자))).length;
+    let 미출일치 = 결과배열.filter(숫자 => 미출.includes(String(숫자))).length;
+    let 출1일치 = 결과배열.filter(숫자 => 출1.includes(String(숫자))).length;
+    let 출2일치 = 결과배열.filter(숫자 => 출2.includes(String(숫자))).length;
+    let 출3일치 = 결과배열.filter(숫자 => 출3.includes(String(숫자))).length;
+    let 삼십2일치 = 결과배열.filter(숫자 => 삼십2.includes(String(숫자))).length;
+    let 삼십3일치 = 결과배열.filter(숫자 => 삼십3.includes(String(숫자))).length;
+    let 삼십4일치 = 결과배열.filter(숫자 => 삼십4.includes(String(숫자))).length;
+    let 삼십5일치 = 결과배열.filter(숫자 => 삼십5.includes(String(숫자))).length;
+    let 삼십6일치 = 결과배열.filter(숫자 => 삼십6.includes(String(숫자))).length;
+    let 삼십일치합 = 삼십2일치+삼십3일치+삼십4일치+삼십5일치+삼십6일치;
+
+    let 결과순서=[당번일치,이웃일치,당번이웃일치,장미일치,미출일치,출1일치,출2일치,출3일치,삼십2일치,삼십3일치,삼십4일치,삼십5일치,삼십6일치,삼십일치합]
+
+    let 추출1단위span = ele.querySelectorAll('div:not(:first-of-type) > span');
+    //Array.from(추출1단위span).forEach ( span => {span.innerHTML='_'});
+    for (let i=0; i<결과순서.length; i++) {
+      추출1단위span[i].innerHTML=결과순서[i];
+    }
+
+
+  });
+  
+  
 }
 function 전체추출실행() {
   console.log('전체추출실행');
-    //span 1~6:번호6, 7~9:이월,이웃,
+    //span 1~6:번호6, 7~9:이월,이웃, 번호6개 추출 - 계산 - HTML 추가
   let 당번,이웃,당번이웃,장미,미출,출1,출2,출3,삼십2,삼십3,삼십4,삼십5,삼십6,삼십합=0;
   당번=$('#분석자료변수 .공통변수_당번').html().split(',');
   이웃=$('#분석자료변수 .공통변수_이웃').html().split(',');
@@ -249,7 +301,7 @@ function 전체추출실행() {
   삼십5=$('#분석자료변수 .공통변수_30주5출').html().split(',');
   삼십6=$('#분석자료변수 .공통변수_30주6출').html().split(',');
   let 반복횟수=document.getElementById('추출횟수').innerHTML;
-  const 컨테이너 = document.getElementById('분석추출내용');
+  const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
   if (isNaN(반복횟수)) {alert('반복횟수 입력필요');return;}
   if (!컨테이너) return;
 
@@ -258,7 +310,7 @@ function 전체추출실행() {
   for (let i = 0; i < 반복횟수; i++) {
     // 6개 숫자 배열 가져오기
     const 결과배열 = 추출누적(); //숫자 배열 반환
-    console.log(결과배열.join(','));
+    //console.log(결과배열.join(','));
     if (결과배열.join(',')=='_,_,_,_,_,_') {alert('출수기록0 and 빈값채우기 미체크, 추출못함');return;}
     
     let 당번일치 = 결과배열.filter(숫자 => 당번.includes(String(숫자))).length;
@@ -369,14 +421,54 @@ function 추출누적() {
     }
   }
 
-  $('#자료개수').html($('#분석추출내용 .추출1단위').length);
+  //$('#자료개수').html($('#분석추출내용 .추출1단위').length);
   // 최종 결과 확인용 (원하시는 형태로 리턴하거나 화면에 출력하세요)
   최종결과.sort((a, b) => a - b);
   return 최종결과;
 }
+function 추출체크이동() { 
+  console.log('체크이동');
+}
 function 추출결과정렬() {
+  const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
+  if (!컨테이너) return;
+  const 항목들 = Array.from(컨테이너.querySelectorAll('.추출1단위'));
+  if (!항목들[0]) return;
+  추출결과정렬_숫자();
+  추출결과정렬_조건();
 
-    const 컨테이너 = document.getElementById('분석추출내용');
+
+}
+function 추출결과정렬_조건() {
+  //체크.
+  const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
+  if (!컨테이너) return;
+  const 항목들 = Array.from(
+      컨테이너.querySelectorAll('.추출1단위')
+  );
+  if (!항목들[0]) return;
+
+  let 부터=document.querySelectorAll('#분석추출 .분석추출내용 .sort부터 > span');
+  let 까지=document.querySelectorAll('#분석추출 .분석추출내용 .sort까지 > span');
+  항목들.forEach ( e => {
+    e.querySelector('input').checked=false;
+
+    //조건에 안맞으면 맨뒤로 보낸다 - 조건에 맞으면 체크한다. ==> 체크된것만 남는다.
+
+    if (e.querySelectorAll('span')[6].innerHTML!=1) {
+      컨테이너.appendChild(e);
+    } else {
+      e.querySelector('input').checked=true;
+    }
+
+
+
+
+  });
+}
+function 추출결과정렬_숫자() {
+
+    const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
     if (!컨테이너) return;
 
     const 항목들 = Array.from(
@@ -384,6 +476,9 @@ function 추출결과정렬() {
     );
 
     항목들.sort((a, b) => {
+      //숫자 정렬후에 조건 정렬 하기??
+
+      //1)숫자 정렬하기
 
         const a번호 = Array.from(
             a.querySelectorAll('.추출6개 span')
@@ -404,6 +499,11 @@ function 추출결과정렬() {
             }
         }
 
+      //2-1) 조건정렬하기
+
+
+
+      //
         return 0;
     });
 
@@ -1412,6 +1512,7 @@ function 따라가기위치설정() {
 }
 function 리스너_바디_click(e) {
   console.log('리스너_바디_click(e)')
+  if (e.target.tagName=='BODY') {return;}
   if (e.target.parentElement.id=='회귀관련') {
     console.log('회귀관련')
   }
