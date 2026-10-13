@@ -123,24 +123,32 @@ function 고정html_구조생성및_초기설정() {
         }
         if (i == 2) { div요소 = document.createElement('button'); }
         if (i == 2 && 외부 == 0) { div요소.textContent = '출' }
-        if (i == 2 && 외부 != 0) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기
+        if (i == 2 && 외부 != 0 && 외부 !=19) { div요소.setAttribute('class', '카운팅') }      //녹색부분에 카운팅 클래스 넣기, 외부19는 제외수
 
         if (i == 3 && 외부 == 0) { div요소 = document.createElement('button'); div요소.textContent = 'C' ;
           div요소.setAttribute('title','출수제거');
         }
-        if (i == 3 && 외부 != 0) { div요소 = document.createElement('button'); div요소.setAttribute('class', '앞요소값clear') }
+        if (i == 3 && 외부 != 0 && 외부 !=19) { div요소 = document.createElement('button'); div요소.setAttribute('class', '앞요소값clear') }
+        if (i == 3 && 외부 != 0 && 외부 ==19) { div요소 = document.createElement('button'); }
 
         if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
         //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
         if (외부 > 10) {
-          if (i == 0) { div요소.setAttribute('contenteditable', 'true');}
+          if (i == 0  && 외부 !=19) { div요소.setAttribute('contenteditable', 'true');}
           if (i == 1) { div요소.setAttribute('onclick', '토글11에서20_셑팅과초기화(this)') }
+          if (i == 1 && 외부 == 19) { div요소.setAttribute('title', '타이틀제외수') }
         }
+        if (외부 == 19 && i==0) { div요소.textContent = '제외수' }
         번호선택_추출_c.appendChild(div요소);
       }
+
+
+
       var 번호45 = document.createElement('span');
       //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
       번호45.setAttribute('class', '다섯개씩번갈아색칠');
+
+      if (외부==19) {번호45.setAttribute('id', '제외수');}
 
       for (var i = 1; i < 46; i++) {
         var div요소 = document.createElement('button'); // div 요소 변수에 담는다. 다섯개씩번갈아색칠
@@ -214,24 +222,38 @@ function 누적연동() {
   });
 }
 function 연습() {
-fetch('당번.txt')
-  .then(response => response.text())
-  .then(data => {
-    //document.getElementById('당번').innerHTML = data;
-    alert(data);
-  })
-  .catch(error => console.error('파일을 불러오는 중 오류 발생:', error));
 
 
 }
-function 전체체크토글(e) {
+function ALERT번호6() {
+  console.log('ALERT번호6()');
+  //input이 체크되었을 때, 그 뒤에 있는 .추출6개를 찾고 싶은 경우
+  const 항목들 = Array.from(document.querySelectorAll('#분석추출PICK > .분석추출내용 input:checked ~ .추출6개'));
+  if (!항목들[0]) return;
+  let 번호join, 번호text합치기='';
+  항목들.forEach (e => {
+    번호join=Array.from(e.querySelectorAll('span'), span => span.innerHTML);
+    번호text합치기 += 번호join + '\n';
+  });
+  // 💡 클립보드에 복사 기능 추가
+  navigator.clipboard.writeText(번호text합치기)
+    .then(() => {
+      alert('번호가 클립보드에 복사되었습니다! 원하는 곳에 붙여넣기(Ctrl+V) 하세요.'+'\n'+번호text합치기);
+    })
+    .catch(err => {
+      console.error('복사 실패:', err);
+      // 브라우저 권한 문제 등으로 실패 시 기존 alert로 백업
+      alert(번호text합치기); 
+    });
+}
+function 전체체크토글(e, id) {
   let 확인=e.checked;
-  Array.from(document.querySelectorAll('.분석추출내용 .추출1단위 input')).forEach( ele => {ele.checked=확인;});
+  Array.from(document.querySelectorAll(id + ' .분석추출내용 .추출1단위 input')).forEach( ele => {ele.checked=확인;});
 }
 function 추출clear() {
   document.querySelector('.분석추출내용').innerHTML='';
 }
-function 추출계산() {
+function 추출계산(id) {
   console.log('추출계산') //이미 있는것을 다시 계산
   let 당번,이웃,당번이웃,장미,미출,출1,출2,출3,삼십2,삼십3,삼십4,삼십5,삼십6,삼십합=0;
   당번=$('#분석자료변수 .공통변수_당번').html().split(',');
@@ -249,7 +271,7 @@ function 추출계산() {
   삼십5=$('#분석자료변수 .공통변수_30주5출').html().split(',');
   삼십6=$('#분석자료변수 .공통변수_30주6출').html().split(',');
 
-  let 추출1단위=document.querySelectorAll('#분석추출 .분석추출내용 .추출1단위');
+  let 추출1단위=document.querySelectorAll(id + ' .분석추출내용 .추출1단위');
   Array.from(추출1단위).forEach ( ele => {
 
     let 결과배열=Array.from(ele.querySelectorAll('.추출6개 > span'), span => span.innerHTML);
@@ -365,6 +387,8 @@ function 추출누적() {
     let 분석요소들 = 요소.parentElement.parentElement.querySelectorAll('.분석');
     let 번호개수 = 분석요소들.length;
 
+    //???? title='타이틀제외수'안의 span안에 숫자들이 제외수인데, 이것을 제외한 후에 검사해야하는 코드 추가할것 --- 번호개수 변함
+
     if (번호개수 < 숫자값) {
         console.log('추출개수 : ' + 추출개수 + ', 번호개수 : ' + 번호개수 + ', 추출개수 초과!!, \n이 조건 무시하고 진행함'); 
         return;
@@ -428,28 +452,35 @@ function 추출누적() {
 }
 function 추출체크이동() { 
   console.log('체크이동');
-}
-function 추출결과정렬() {
   const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
   if (!컨테이너) return;
   const 항목들 = Array.from(컨테이너.querySelectorAll('.추출1단위'));
   if (!항목들[0]) return;
-  추출결과정렬_숫자();
-  추출결과정렬_조건();
+  const pick컨테이너 = document.querySelectorAll('#분석추출PICK .분석추출내용')[0];
+  const checked = document.querySelectorAll('#분석추출 > .분석추출내용 input:checked');
 
-
+  checked.forEach( e => {let target=e.parentElement;pick컨테이너.appendChild(target)});
+  console.log(pick컨테이너)
 }
-function 추출결과정렬_조건() {
+function 추출결과정렬(id) {
+  const 컨테이너 = document.querySelectorAll(id + ' .분석추출내용')[0];
+  if (!컨테이너) return;
+  const 항목들 = Array.from(컨테이너.querySelectorAll('.추출1단위'));
+  if (!항목들[0]) return;
+  추출결과정렬_숫자(id);
+  추출결과정렬_조건(id);
+}
+function 추출결과정렬_조건(id) {
   //체크.
-  const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
+  const 컨테이너 = document.querySelectorAll(id + ' .분석추출내용')[0];
   if (!컨테이너) return;
   const 항목들 = Array.from(
       컨테이너.querySelectorAll('.추출1단위')
   );
   if (!항목들[0]) return;
 
-  let 부터=document.querySelectorAll('#분석추출 .분석추출내용 .sort부터 > span');
-  let 까지=document.querySelectorAll('#분석추출 .분석추출내용 .sort까지 > span');
+  let 부터=document.querySelectorAll(id + ' .분석추출내용 .sort부터 > span');
+  let 까지=document.querySelectorAll(id + ' .분석추출내용 .sort까지 > span');
   항목들.forEach ( e => {
     e.querySelector('input').checked=false;
 
@@ -466,9 +497,9 @@ function 추출결과정렬_조건() {
 
   });
 }
-function 추출결과정렬_숫자() {
+function 추출결과정렬_숫자(id) {
 
-    const 컨테이너 = document.querySelectorAll('#분석추출 .분석추출내용')[0];
+    const 컨테이너 = document.querySelectorAll(id + ' .분석추출내용')[0];
     if (!컨테이너) return;
 
     const 항목들 = Array.from(
@@ -1355,7 +1386,8 @@ function 토글11에서20_셑팅과초기화(e) {
     if(번호들[0].length>0) {e.innerHTML=번호들.length;}
     e.previousElementSibling.title=document.querySelector(셑팅된곳변수포함id).innerHTML;  
   }
-  if (색칠있나) {e.previousElementSibling.title='';e.previousElementSibling.innerHTML='';e.nextElementSibling.innerHTML='';e.innerHTML=''}
+  if (색칠있나) {e.previousElementSibling.title='';e.nextElementSibling.innerHTML='';e.innerHTML=''}
+  if (색칠있나 && e.title!='타이틀제외수') {e.previousElementSibling.innerHTML='';}
 }
 function 셑팅2_번호45오른쪽_변경() {
   //색칠하기 : 변경cheched확인, 색칠할번호변수포함, 색칠할번호값, 색칠할곳
