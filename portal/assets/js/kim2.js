@@ -134,10 +134,11 @@ function 고정html_구조생성및_초기설정() {
         if (i == 3 && 외부 != 0) { div요소.textContent = 외부 }
         //11부터 추가 : 번호선택 위치에 onclick="분석자료_11에서20_keep번호셑팅(this)", 수 위치에 onclick="keep셑팅초기화()"
         if (외부 > 10) {
-          if (i == 0  && 외부 !=19) { div요소.setAttribute('contenteditable', 'true');}
+          if (i == 0  && (외부 !=19 || 외부 !=18)) { div요소.setAttribute('contenteditable', 'true');}
           if (i == 1) { div요소.setAttribute('onclick', '토글11에서20_셑팅과초기화(this)') }
           if (i == 1 && 외부 == 19) { div요소.setAttribute('title', '타이틀제외수') }
         }
+        if (외부 == 18 && i==0) { div요소.textContent = '고정수' }
         if (외부 == 19 && i==0) { div요소.textContent = '제외수' }
         번호선택_추출_c.appendChild(div요소);
       }
@@ -148,6 +149,7 @@ function 고정html_구조생성및_초기설정() {
       //if (외부!=0) {번호45.setAttribute('class','다섯개씩번갈아색칠');}
       번호45.setAttribute('class', '다섯개씩번갈아색칠');
 
+      if (외부==18) {번호45.setAttribute('id', '고정수');}
       if (외부==19) {번호45.setAttribute('id', '제외수');}
 
       for (var i = 1; i < 46; i++) {
@@ -306,6 +308,17 @@ function 추출계산(id) {
 }
 function 전체추출실행() {
   console.log('전체추출실행');
+
+  let 고정수=[];
+  let 제외수 = Array.from(document.querySelectorAll('#제외수 .분석'), el => Number(el.innerHTML.trim()));
+
+  let 겹치는숫자들 = 고정수.filter(숫자 => 제외수.includes(숫자));
+
+  if (겹치는숫자들.length > 0) {
+    alert(`고정수와 제외수에서 ⚠️ 겹치는 숫자: [${겹치는숫자들.join(', ')}] -- 종료`);
+    return;
+  }
+
     //span 1~6:번호6, 7~9:이월,이웃, 번호6개 추출 - 계산 - HTML 추가
   let 당번,이웃,당번이웃,장미,미출,출1,출2,출3,삼십2,삼십3,삼십4,삼십5,삼십6,삼십합=0;
   당번=$('#분석자료변수 .공통변수_당번').html().split(',');
@@ -372,7 +385,14 @@ function 전체추출실행() {
 }
 
 function 추출누적() {
-  let 추출결과 = [];
+  let 고정수=Array.from(document.querySelectorAll('#고정수 .분석'), el => Number(el.innerHTML.trim()));
+  let 추출결과 = 고정수;
+  let 제외수 = Array.from(document.querySelectorAll('#제외수 .분석'), el => Number(el.innerHTML.trim()));
+
+  //전체추출실행()에서 고정수와 제외수 겹치는것 있을때 종료된다
+
+  // 1. 제외수배열을 Set 객체로 변환 (중복 제거 및 검색 속도 최적화)
+  const 제외수Set = new Set(제외수);
 
   document.querySelectorAll('.카운팅').forEach((요소) => {
     let 추출개수 = 요소.innerHTML.trim();
@@ -385,17 +405,17 @@ function 추출누적() {
 
     // 1. 해당 요소의 하위에서 '.분석' 요소를 모두 찾습니다.
     let 분석요소들 = 요소.parentElement.parentElement.querySelectorAll('.분석');
-    let 번호개수 = 분석요소들.length;
 
-    //???? title='타이틀제외수'안의 span안에 숫자들이 제외수인데, 이것을 제외한 후에 검사해야하는 코드 추가할것 --- 번호개수 변함
+     // 2. 분석요소들에서 값을 가져오되, 제외수Set에 포함된 숫자는 filter로 걸러냄
+    let 분석숫자배열 = Array.from(분석요소들, el => Number(el.innerHTML.trim()))
+                          .filter(숫자 => !제외수Set.has(숫자));
+
+    let 번호개수 = 분석숫자배열.length;
 
     if (번호개수 < 숫자값) {
-        console.log('추출개수 : ' + 추출개수 + ', 번호개수 : ' + 번호개수 + ', 추출개수 초과!!, \n이 조건 무시하고 진행함'); 
+        alert('추출개수 : ' + 추출개수 + ', 번호개수 : ' + 번호개수 + ', 추출개수 초과!!, \n이 조건 무시하고 진행함'); 
         return;
     }
-
-    // 2. '분석' 클래스 요소의 innerHTML을 숫자 배열로 담기
-    let 분석숫자배열 = Array.from(분석요소들, el => Number(el.innerHTML.trim()));
 
     // [질문 1] 분석숫자배열에서 중복 없이 추출개수(숫자값)만큼 무작위 추출하여 누적
     // 배열을 무작위로 섞은 후 필요한 개수만큼 잘라냅니다. (비복원 추출)
@@ -408,13 +428,9 @@ function 추출누적() {
 
   // [질문 2] 고유값 추출, 6개 맞추기(부족하면 "_"), 숫자 오름차순 정렬
   // 1) 고유값(중복 제거) 추출
-  let 고유추출결과 = [...new Set(추출결과)];
+  let 고유추출결과 = [...new Set(추출결과)]; 
 
-  // ★ 추가: 추출된 고유값이 하나도 없다면 null을 반환하여 실패임을 알림 ~~~ if 구문 없으면 출수 하나도 없을때 임의 픽하게됨
-  //if (고유추출결과.length === 0) {
-  //    console.log("추출된 유효한 값이 없습니다.");
-  //    return null; 
-  //}
+  //---------------------- 고정수를 앞에 추가
 
   let 채우기 = document.getElementById('빈값채우기설정').checked;
 
@@ -445,8 +461,6 @@ function 추출누적() {
     }
   }
 
-  //$('#자료개수').html($('#분석추출내용 .추출1단위').length);
-  // 최종 결과 확인용 (원하시는 형태로 리턴하거나 화면에 출력하세요)
   최종결과.sort((a, b) => a - b);
   return 최종결과;
 }
@@ -1369,7 +1383,6 @@ function 토글11에서20_셑팅과초기화(e) {
       });
   }
   var 번호들=document.querySelector(색칠할번호배열[인덱스]).innerHTML.split(',');
-  console.log(번호들)
   var 사오칸=e.parentElement.nextElementSibling.children;
   var 색칠있나=false;
   for (var i=0; i<45; i++) {
