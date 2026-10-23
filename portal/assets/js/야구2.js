@@ -160,6 +160,7 @@ function 계산() {
   var 가능숫자하나=document.querySelectorAll('.가능숫자하나'); //다음 활용위해 재 정의 ... 없어야할번호에서 한번더 활용됨
   for (var i=0; i<document.querySelectorAll('.가능숫자하나 > div').length; i++) {
     document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js가능제외');
+    document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js노랑');
   }
   for (var i=0; i<없는번호1st.length; i++) {
     가능숫자하나[없는번호1st[i]].children[0].classList.add('js가능제외');
@@ -215,6 +216,16 @@ function 계산() {
   document.querySelector('#포함해야할번호').innerHTML=기회계산포함수;
 
   최종결과=결과;
+  //추가
+  var 포함번호=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
+  }
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
+  for (var i=0; i<포함번호.length; i++) {
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
+  }
+  //추가끝
   최종결과표시();
   첫번째빈C색칠();
 }
@@ -278,15 +289,6 @@ function 계산_기회계산만적용() {
   //기회정보제외_초기화();
   계산();
 
-    var 포함번호=[];
-  for (var i=0; i<9; i++) {
-    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
-  }
-  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
-  for (var i=0; i<포함번호.length; i++) {
-    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
-  }
-  최종결과표시();
 }
 
 var 바디=document.querySelector('body');
@@ -393,7 +395,7 @@ function 결과에가능정보적용() {
   var 없는번호1st=[],없는번호2st=[],없는번호3st=[],없는번호4st=[];
   for (var i=0; i<4; i++) {
     for (내부=0; 내부<10; 내부++) {
-      if (js노랑결과.filter(번호4 => 번호4[i]==내부).length=0) {
+      if (js노랑결과.filter(번호4 => 번호4[i]==내부).length==0) {
         if (i==0) {없는번호1st.push(내부)}
         if (i==1) {없는번호2st.push(내부)}
         if (i==2) {없는번호3st.push(내부)}
@@ -419,6 +421,16 @@ function 결과에가능정보적용() {
   }
 
   최종결과=js노랑결과;
+    //추가
+  var 포함번호=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
+  }
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
+  for (var i=0; i<포함번호.length; i++) {
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
+  }
+  //추가끝
   최종결과표시();
 }
 function 가능click(e) {
