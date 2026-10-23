@@ -275,8 +275,18 @@ function 기회정보제외_초기화() {
 }
 function 계산_기회계산만적용() {
   //기회계산을 제외한 다른 조건을 초기화하고 계산();
-  기회정보제외_초기화();
+  //기회정보제외_초기화();
   계산();
+
+    var 포함번호=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
+  }
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
+  for (var i=0; i<포함번호.length; i++) {
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
+  }
+  최종결과표시();
 }
 
 var 바디=document.querySelector('body');
@@ -292,7 +302,7 @@ function 결과에포함선택정보적용() {
   console.log('포함수 : [' + 포함수 + ']')
   console.log('최종결과.length : ' + 최종결과.length)
   for (var i=0; i<포함수.length; i++) {
-    최종결과=최종결과.filter(번호4 => 번호4.includes(포함수[i]))
+    최종결과=최종결과.filter(번호4 => 번호4.includes(포함수[i]));
   }
   //결과에가능정보적용() 마지막에 있는것 : 최종결과=js노랑결과; 최종결과표시();
   최종결과표시();
@@ -312,13 +322,14 @@ function 포함선택click(e) {
     e.target.classList.remove('js노랑');
   }
   결과에가능정보적용(); //마지막에   최종결과=js노랑결과; 최종결과표시();
+
   var 포함번호=[];
   for (var i=0; i<9; i++) {
     if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
   }
   if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
   for (var i=0; i<포함번호.length; i++) {
-    최종결과=최종결과.filter(번호4 => 번호4.includes(포함번호[i]))
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
   }
   최종결과표시();
 }
@@ -382,7 +393,7 @@ function 결과에가능정보적용() {
   var 없는번호1st=[],없는번호2st=[],없는번호3st=[],없는번호4st=[];
   for (var i=0; i<4; i++) {
     for (내부=0; 내부<10; 내부++) {
-      if (js노랑결과.filter(번호4 => 번호4[i]==내부).length==0) {
+      if (js노랑결과.filter(번호4 => 번호4[i]==내부).length=0) {
         if (i==0) {없는번호1st.push(내부)}
         if (i==1) {없는번호2st.push(내부)}
         if (i==2) {없는번호3st.push(내부)}
@@ -449,6 +460,7 @@ function 가능한조합click(e) {
   첫번째빈C색칠();
 }
 function 바디클릭이벤트(e) {
+  console.log('바디클릭이벤트(e)');
   //입력, 입력토글, 포함, 포함토글 기능 안씀.
   if (e.target.classList.contains('입력')) {
     console.log('바디이벤트 : class 입력 click')
