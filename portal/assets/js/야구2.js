@@ -160,6 +160,7 @@ function 계산() {
   var 가능숫자하나=document.querySelectorAll('.가능숫자하나'); //다음 활용위해 재 정의 ... 없어야할번호에서 한번더 활용됨
   for (var i=0; i<document.querySelectorAll('.가능숫자하나 > div').length; i++) {
     document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js가능제외');
+    document.querySelectorAll('.가능숫자하나 > div')[i].classList.remove('js노랑');
   }
   for (var i=0; i<없는번호1st.length; i++) {
     가능숫자하나[없는번호1st[i]].children[0].classList.add('js가능제외');
@@ -215,6 +216,16 @@ function 계산() {
   document.querySelector('#포함해야할번호').innerHTML=기회계산포함수;
 
   최종결과=결과;
+  //추가
+  var 포함번호=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
+  }
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
+  for (var i=0; i<포함번호.length; i++) {
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
+  }
+  //추가끝
   최종결과표시();
   첫번째빈C색칠();
 }
@@ -275,8 +286,9 @@ function 기회정보제외_초기화() {
 }
 function 계산_기회계산만적용() {
   //기회계산을 제외한 다른 조건을 초기화하고 계산();
-  기회정보제외_초기화();
+  //기회정보제외_초기화();
   계산();
+
 }
 
 var 바디=document.querySelector('body');
@@ -292,7 +304,7 @@ function 결과에포함선택정보적용() {
   console.log('포함수 : [' + 포함수 + ']')
   console.log('최종결과.length : ' + 최종결과.length)
   for (var i=0; i<포함수.length; i++) {
-    최종결과=최종결과.filter(번호4 => 번호4.includes(포함수[i]))
+    최종결과=최종결과.filter(번호4 => 번호4.includes(포함수[i]));
   }
   //결과에가능정보적용() 마지막에 있는것 : 최종결과=js노랑결과; 최종결과표시();
   최종결과표시();
@@ -312,13 +324,14 @@ function 포함선택click(e) {
     e.target.classList.remove('js노랑');
   }
   결과에가능정보적용(); //마지막에   최종결과=js노랑결과; 최종결과표시();
+
   var 포함번호=[];
   for (var i=0; i<9; i++) {
     if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
   }
   if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
   for (var i=0; i<포함번호.length; i++) {
-    최종결과=최종결과.filter(번호4 => 번호4.includes(포함번호[i]))
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
   }
   최종결과표시();
 }
@@ -408,6 +421,16 @@ function 결과에가능정보적용() {
   }
 
   최종결과=js노랑결과;
+    //추가
+  var 포함번호=[];
+  for (var i=0; i<9; i++) {
+    if (document.querySelectorAll('#포함선택번호10 > div > div')[i].classList.contains('js노랑')) {포함번호.push(i+1)}
+  }
+  if (document.querySelectorAll('#포함선택번호10 > div > div')[9].classList.contains('js노랑')) {포함번호.push(0)}
+  for (var i=0; i<포함번호.length; i++) {
+    최종결과=최종결과.filter(번호4 => !번호4.includes(포함번호[i]))
+  }
+  //추가끝
   최종결과표시();
 }
 function 가능click(e) {
@@ -449,6 +472,7 @@ function 가능한조합click(e) {
   첫번째빈C색칠();
 }
 function 바디클릭이벤트(e) {
+  console.log('바디클릭이벤트(e)');
   //입력, 입력토글, 포함, 포함토글 기능 안씀.
   if (e.target.classList.contains('입력')) {
     console.log('바디이벤트 : class 입력 click')
