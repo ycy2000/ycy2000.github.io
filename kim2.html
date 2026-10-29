@@ -89,7 +89,7 @@
     <label class="form-check-label">5주30주</label>
   </div>
   <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_칸_기본3종" checked>
     <label class="form-check-label" for="check_칸_간격과삼이일">당번 > 기본3종</label>
   </div>
   <div onchange="체크this활용(this);">
@@ -109,7 +109,7 @@
     <label class="form-check-label">홀짝</label>
   </div>
   <div onchange="체크this활용(this);">
-    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격">
+    <input class="form-check-input 체크input" type="checkbox" value="" id="check_흐름_간격" checked>
     <label class="form-check-label">간격</label>
   </div>
   <div onchange="체크this활용(this);">
@@ -167,6 +167,10 @@
     <button onclick="document.querySelector('#회귀지정값').innerHTML=5;당번회귀설정_30회분번호표시()">5회귀</button>
     <button onclick="당번회귀설정_30회분번호표시()">지정회귀</button><span contenteditable="true" id="회귀지정값">1</span></div>
   <div id="당번_불러온당첨정보" class="당번8칸"></div>
+</div>
+<div id="흐름_간격" class="숨김리스트 d-none d-inline-block">
+  흐름_간격
+  <div id="흐름_간격js"></div>
 </div>
 <div id="당번_오주삼십주개수" class="숨김리스트 d-inline-block">
   <span id="위에꺼">
@@ -379,7 +383,7 @@
 </div>
 <div id="흐름_연번" class="숨김리스트 d-none d-inline-block">흐름_연번</div>
 <div id="흐름_홀짝" class="숨김리스트 d-none d-inline-block">흐름_홀짝</div>
-<div id="흐름_간격" class="숨김리스트 d-none d-inline-block">흐름_간격</div>
+
 <div id="흐름_간격당당첨개수" class="숨김리스트 d-none d-inline-block">흐름_간격당당첨개수</div>
 <div id="흐름_간격내림차순" class="숨김리스트 d-none d-inline-block">
   흐름_간격내림차순

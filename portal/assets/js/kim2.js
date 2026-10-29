@@ -11,6 +11,20 @@ let 변수명순서대로 = []; document.querySelectorAll('#당번변수 > div')
 // -- 공통변수_다음당번, 공통변수_당번, ....
 //회차select옵션생성, check_초기설정, 당번 다음회차, 당번 30회정보, 분석자료45칸, ★30회빈도는 변동값이어서 제외됨
 고정html_구조생성및_초기설정();
+
+//---------추가 1 : 구조-----------
+//#기본_다음당번,9,1 => html에 있는 id가 '#기본_다음당번'인 div 안에, span요소 '9'개를 담은 div를, '1'회반복 넣는다
+const span구조정보 = ['#흐름_간격js,6,50'];
+//구조만들기
+function span(num) {return '<div>' + Array.from({length:num}).map(() => {return '<span></span>'}).join('') + '</div>';}
+span구조정보.forEach((ele) => {
+  const [selector, spanArg, countStr] = ele.split(',');
+  const count = Number(countStr); 
+  const spansHtml = Array(count).fill(null).map(() => span(spanArg)).join('');
+  $(selector).html(spansHtml); 
+});
+//---------추가 1 끝------------
+
 //회차는 1198회차인경우 1197이다. 
 let 최근회차 = document.querySelectorAll('#당번_회차select option').length-1; // 고정html_구조생성및_초기설정() 으로 옵션이 생성된 후이다
 let 회차 = 최근회차;
